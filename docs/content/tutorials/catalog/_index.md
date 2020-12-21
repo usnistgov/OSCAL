@@ -1426,6 +1426,6 @@ For more information you can review the [OSCAL catalog model documentation](/doc
 
 [catalog-docs]: /documentation/schema/catalog/
 [catalog-definition]: /learnmore/concepts/catalog/
-[catalog-prose-sample]: {{< param "contentRepoPath" >}}/examples/catalog/basic-catalog/
+[catalog-prose-sample]: {{< param "contentRepoPath" >}}/examples/catalog/basic-catalog.md
 [oscal-markup-line]: /documentation/schema/datatypes/#markup-line
 [oscal-markup-multiline]: /documentation/schema/datatypes/#markup-multiline
