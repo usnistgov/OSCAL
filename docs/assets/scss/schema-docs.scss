@@ -57,7 +57,9 @@ button.schema-link { @extend .usa-button }
 
 /* Schema Model Map styles */
 
-.OM-map summary {list-style-position: outside }
+.OM-map summary {
+/*  list-style-position: outside */
+}
 
 div.OM-map {
   margin-top: 0ex;

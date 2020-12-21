@@ -966,6 +966,7 @@
          <assembly ref="responsible-role" max-occurs="unbounded">
             <group-as name="responsible-roles" in-json="BY_KEY"/>
          </assembly>
+         <!-- CHANGED: removed "set-parameter" -->
          <field ref="remarks" in-xml="WITH_WRAPPER"/>
       </model>
       <constraint>
