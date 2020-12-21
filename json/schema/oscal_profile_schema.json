@@ -856,8 +856,7 @@
             "items" : 
             { "$ref" : "#/definitions/link" } } },
         "required" : 
-        [ "name",
-          "prose" ],
+        [ "name" ],
         "additionalProperties" : false },
       "parameter" : 
       { "title" : "Parameter",
