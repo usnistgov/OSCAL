@@ -4474,11 +4474,11 @@
                      <b>Local Definitions</b>: Used to define data objects that are used in the assessment plan, that do not appear in the referenced SSP.</xs:documentation>
                </xs:annotation>
                <xs:sequence>
-                  <xs:element name="objectives"
+                  <xs:element name="add-objectives-and-methods"
                               type="oscal-ar:local-objective-ASSEMBLY"
                               minOccurs="0"
                               maxOccurs="unbounded"/>
-                  <xs:element name="assessment-activity"
+                  <xs:element name="activity"
                               type="oscal-ar:activity-ASSEMBLY"
                               minOccurs="0"
                               maxOccurs="unbounded"/>
@@ -4606,6 +4606,10 @@
                </xs:sequence>
             </xs:complexType>
          </xs:element>
+         <xs:element name="reviewed-controls"
+                     type="oscal-ar:reviewed-controls-ASSEMBLY"
+                     minOccurs="1"
+                     maxOccurs="1"/>
          <xs:element name="assessment-subject"
                      type="oscal-ar:assessment-subject-ASSEMBLY"
                      minOccurs="0"
@@ -4613,10 +4617,6 @@
          <xs:element name="assessment-assets"
                      type="oscal-ar:assessment-assets-ASSEMBLY"
                      minOccurs="0"
-                     maxOccurs="1"/>
-         <xs:element name="reviewed-controls"
-                     type="oscal-ar:reviewed-controls-ASSEMBLY"
-                     minOccurs="1"
                      maxOccurs="1"/>
          <xs:element name="attestation" minOccurs="0" maxOccurs="unbounded">
             <xs:complexType>
