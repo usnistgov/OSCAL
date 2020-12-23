@@ -42,11 +42,17 @@ Continuous assessment monitoring practitioners consume the assessment results as
 An OSCAL profile is organized as follows:
 - **Metadata**: Metadata syntax is identical and required in all OSCAL models. It includes information such as the file's title, publication version, publication date, and OSCAL version. Metadata is also used to define roles, parties (people, teams and organizations), and locations.
 - **Import AP**: Identifies the OSCAL-based assessment plan (AP) for this assessment. The AP imports several pieces of information about the system being assessed including the system security plan (SSP), which is also represented according to the OSCAL [SSP model](../../implementation-layer/ssp/). This linking of data eliminates the need to duplicate and maintain the same information in multiple places.
-- **Objectives**: : Identifies the controls to be included within the scope of this assessment, as well as the control objectives and assessment methods.
-- **Assessment Subject**: Identifies the in-scope elements of the system, including locations, components, inventory items, and users.
-- **Assessment Assets**: Identifies the assessor's assets used to perform the assessment, including the team, tool, and rules of engagement content.
-- **Assessment Activities**: Describes the schedule, manual and automated tests, and other activities that may be explicitly be allowed or prohibited. 
+- **Local Definitions**: When the assessment results contain an activity or control objective not defined by the assessment plan, assessors define it here instead.
 - **Results**: Describes the assessment findings, identified risks, and recommended remediation. Also identifies false positive results, risk adjustments, and operationally required risks, as well as when the results should expire.
+  - **Local Definitions**: Normally other aspects of the assessment results point to content in the linked Assessment Plan and SSP. When the AR must reference information that is missing from the linked AP or SSP, assessors define it here instead.
+  - **Reviewed Controls**: Identifies the controls actually reviewed by this assessment.
+  - **Assessment Subject**: Identifies the in-scope elements of the system, including locations, components, inventory items, and users.
+  - **Assessment Assets**: Identifies the assessor's assets used to perform the assessment, including the team, tool, and rules of engagement content.
+  - **Attestation**: Assertions made by the assessor.
+  - **Assessment Log**: Log of performed assessment actions. This includes start and end timestamps for individual actions performed by the assessment team, with an optional link to defined assessment actions.
+  - **Observation**: Individual observations and related evidence. This may be evidence of compliance or non-compliance.
+  - **Risk**: Identifies individual risks, including weakness description, risk statement, and other risk characteristics.
+  - **Finding**: Identifies findings resulting from observations and risks, and can include the control objective status.
 - **Back Matter**: Back matter syntax is identical in all OSCAL models. It is used for attachments, citations, and embedded content such as graphics.
 {{% /usa-grid-column %}}
 {{% usa-grid-column class="grid-col-auto" %}}

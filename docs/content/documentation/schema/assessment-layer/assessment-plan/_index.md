@@ -46,10 +46,13 @@ Continuous assessment implementers consume an assessment plan when establishing 
 An OSCAL profile is organized as follows:
 - **Metadata**: Metadata syntax is identical and required in all OSCAL models. It includes information such as the document's title, publication version, publication date, and OSCAL version. Metadata is also used to define roles, parties (people, teams and organizations), and locations.
 - **Import SSP**: Identifies the OSCAL-based SSP of the system being assessed. Several pieces of information about a system that normally appear in an assessment plan are now referenced via this import statement, eliminating the need to duplicate and maintain the same information in multiple places.
-- **Objectives**: Identifies the controls to be included within the scope of the assessment, as well as the control objectives and assessment methods.
+- **Local Definitions**: Normally other aspects of the assessment plan point to content in the linked SSP. When necessary information is missing from linked SSP, assessors define it here instead.
+- **Terms and Conditions**: Identifies the rules of engagement, disclosures, limitation of liability statements, assumption statements, methodology, and other explanatory content as needed.
+- **Reviewed Controls**: Identifies the controls to be included within the scope of the assessment, as well as the control objectives and assessment methods.
 - **Assessment Subject**: Identifies the elements of the system that are in scope for the assessment, including locations, components, inventory items, and users.  
 - **Assessment Assets**: Identifies the assessor's assets used to perform the assessment, including the teams, tools, and rules of engagement.
-- **Assessment Activities**: Describes the schedule, manual and automated tests, and other activities that may be explicitly allowed or prohibited as part of the assessment.
+- **Assessment Action**: Describes the manual and automated activities that are intended to be as part of the assessment. This includes the steps required to perform the action.
+- **Task**: Identifies the intended schedule of milestones and assessment actions.
 - **Back Matter**: Back matter syntax is identical in all OSCAL models. It is used for attachments, citations, and embedded content such as graphics. 
 {{% /usa-grid-column %}}
 {{% usa-grid-column class="grid-col-auto" %}}
