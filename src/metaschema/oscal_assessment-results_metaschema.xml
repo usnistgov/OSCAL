@@ -280,14 +280,6 @@
                <p>Used to identify the individual and/or tool generated this finding.</p>
             </remarks>
          </assembly>         
-         <define-field name="collected" as-type="dateTime-with-timezone" min-occurs="1" max-occurs="1">
-            <formal-name>collected field</formal-name>
-            <description>Date/time stamp identifying when the finding information was collected.</description>
-         </define-field>
-         <define-field name="expires" as-type="dateTime-with-timezone" min-occurs="0" max-occurs="1">
-            <formal-name>expires field</formal-name>
-            <description>Date/time identifying when the finding information is out-of-date and no longer valid. Typically used with continuous assessment scenarios.</description>
-         </define-field>
          <assembly ref="objective-status" min-occurs="0" max-occurs="1"/>
          <define-field name="implementation-statement-uuid" as-type="uuid" min-occurs="0" max-occurs="1">
             <formal-name>Implementation Statement UUID</formal-name>
@@ -317,7 +309,6 @@
       </model>
    </define-assembly>
    
-   
    <!-- Assessment Plan Import -->
    <define-assembly name="import-ap">
       <formal-name>Import Assessment Plan</formal-name>
@@ -333,10 +324,7 @@
          </remarks>
       </define-flag>
       <model>
-         <field ref="remarks"
-            in-xml="WITH_WRAPPER"
-            min-occurs="0"
-            max-occurs="1"/>
+         <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
       </model>
    </define-assembly>
 </METASCHEMA>
