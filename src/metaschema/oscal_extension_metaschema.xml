@@ -27,9 +27,11 @@
       </define-flag>
       <model>
          <assembly ref="metadata" min-occurs="1" max-occurs="1"/>
+         
          <assembly ref="index" min-occurs="0" max-occurs="unbounded">
             <group-as name="indexes"/>
          </assembly>
+         
          <define-field name="extension-namespace" min-occurs="1" max-occurs="1" as-type="empty">
             <formal-name>Extension Namespace</formal-name>
             <description></description>
@@ -71,6 +73,7 @@
          <field ref="key-field" min-occurs="1" max-occurs="unbounded">
             <group-as name="key-fields"/>
          </field>
+         <field ref="remarks" in-xml="WITH_WRAPPER"/>
       </model>
    </define-assembly>
 
@@ -154,10 +157,8 @@
       </define-flag>
       
       <model>
-         <field ref="binding" min-occurs="0" max-occurs="unbounded">
-            <group-as name="bindings" in-json="ARRAY"/>
-         </field>
          <field ref="formal-name" min-occurs="0" max-occurs="1" />
+
          <field ref="description" min-occurs="0" max-occurs="1" >
             <remarks>
                <p>A human readable description of the business rule being enforced by these constraints. It should be meaningful to a security practitioner with no OSCAL knowledge.</p>
@@ -167,11 +168,27 @@
          <field ref="property" max-occurs="unbounded">
             <group-as name="props" in-json="ARRAY"/>
          </field>
+
          <assembly ref="annotation" max-occurs="unbounded">
             <group-as name="annotations" in-json="ARRAY"/>
          </assembly>
+
          <assembly ref="link" max-occurs="unbounded">
             <group-as name="links" in-json="ARRAY"/>
+         </assembly>
+         
+         <field ref="binding" min-occurs="0" max-occurs="unbounded">
+            <group-as name="bindings" in-json="ARRAY"/>
+         </field>
+
+         <assembly ref="matches" min-occurs="0" max-occurs="unbounded">
+            <group-as name="matches" in-json="ARRAY" />
+         </assembly>
+         
+         <assembly ref="has-cardinality" min-occurs="0" max-occurs="1" />
+         
+         <assembly ref="expect" min-occurs="0" max-occurs="unbounded">
+            <group-as name="expects" in-json="ARRAY" />
          </assembly>
          
          <assembly ref="allowed-values" min-occurs="0" max-occurs="unbounded">
@@ -182,16 +199,6 @@
             <group-as name="index-has-keys" in-json="ARRAY" />
          </assembly>
          
-         <assembly ref="matches" min-occurs="0" max-occurs="unbounded">
-            <group-as name="matches" in-json="ARRAY" />
-         </assembly>
-
-         <assembly ref="expect" min-occurs="0" max-occurs="unbounded">
-            <group-as name="expects" in-json="ARRAY" />
-         </assembly>
-         
-         <assembly ref="has-cardinality" min-occurs="0" max-occurs="1" />
-
          <field ref="remarks" in-xml="WITH_WRAPPER">
             <remarks>
                <p>Remarks about the OSCAL syntax used to enforce the business rule.</p>
