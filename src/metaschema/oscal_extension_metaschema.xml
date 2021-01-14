@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../build/metaschema/toolchains/xslt-M4/validate/metaschema-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!DOCTYPE METASCHEMA [
+   <!ENTITY allowed-values-data-types SYSTEM "shared-constraints/allowed-values-data-types.ent">
+]>
+<METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
+            xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/toolchains/xslt-M4/validate/metaschema.xsd">
+   <schema-name>OSCAL Extensions Model</schema-name>
+   <schema-version>1.0.0-rc1</schema-version>
+   <short-name>oscal-extension</short-name>
+   <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
+   <remarks>
+      <p>The OSCAL extension definition format is used to describe additional information fields, allowed values, and other constraints an organization may specify to tailor OSCAL for their requirements.</p>
+      <p>The root of the OSCAL extension extension format is <code>extension-definition</code>.</p>
+   </remarks>
+   <!-- IMPORT STATEMENTS -->
+   <import href="oscal_metadata_metaschema.xml"/>
+   <!-- TOP LEVEL ASSEMBLY -->
+   <define-assembly name="extensions">
+      <formal-name>Organizational Extensions</formal-name>
+      <description>Extensions specified to tailor OSCAL for organizational requirements.</description>
+      <root-name>extensions</root-name>
+      <define-flag name="uuid" required="yes" as-type="uuid">
+         <formal-name>Extension Definition Universally Unique Identifier</formal-name>
+         <description>Uniquely identifies this extension definition. This UUID must be changed each time the content of the extension definition file changes.</description>
+      </define-flag>
+      <model>
+         <assembly ref="metadata" min-occurs="1" max-occurs="1"/>
+         <assembly ref="index" min-occurs="0" max-occurs="unbounded">
+            <group-as name="indexes"/>
+         </assembly>
+         <define-field name="extension-namespace" min-occurs="1" max-occurs="1" as-type="empty">
+            <formal-name>Extension Namespace</formal-name>
+            <description></description>
+            <define-flag name="ns" as-type="uri" required="yes">
+               <formal-name>Name Space</formal-name>
+               <description>Identifies the namespace value applicable to all extensions defined in this file.</description>
+            </define-flag>
+         </define-field>
+
+         <assembly ref="extension" min-occurs="0" max-occurs="unbounded">
+            <group-as name="extensions" in-json="BY_KEY"/>
+         </assembly>
+         
+         <assembly ref="constraint" min-occurs="0" max-occurs="unbounded">
+            <group-as name="constraints" in-json="ARRAY"/>
+         </assembly>
+
+         <!-- FUTURE: "defined-values" Assembly == Ability to define framework-specific values that may be helpful to tools, such as the list and authoritative location of baselines.   -->
+
+         <assembly ref="back-matter" />
+         
+      </model>
+      <constraint>
+         <has-cardinality target="/extensions/constraint" min-occurs="1" />
+         <has-cardinality target="/extensions/constraint/description" min-occurs="1" />
+      </constraint>
+   </define-assembly>
+
+   <define-assembly name="index">
+      <formal-name>Index</formal-name>
+      <description>Identifies a field to index for validation.</description>
+      <flag ref="id" required="yes" />
+      <flag ref="name" />
+      <define-flag name="target" required="yes" as-type="string">
+         <formal-name>Target</formal-name>
+         <description>Defines a rquired value to index for subsequent searching.</description>
+      </define-flag>
+      <model>
+         <field ref="key-field" min-occurs="1" max-occurs="unbounded">
+            <group-as name="key-fields"/>
+         </field>
+      </model>
+   </define-assembly>
+
+   <define-field name="key-field" as-type="empty">
+      <formal-name>Key Field</formal-name>
+      <description>Identifies a value that should match a key elsewhere in the OSCAL file or stack.</description>
+      <flag ref="target" required="yes">
+         <remarks>
+            <p>Specifies the field or flag value that is used to generate the key for a given object that is a member of this index. If more than one key-field is provided, then the key is a composition of the specified key-fields. The ordering of the key-field defined the relative order of the index's key. The field or flag values pointed to must be a field value or a required flag value.</p>
+         </remarks>
+      </flag>
+      <define-flag name="pattern">
+         <formal-name>Pattern</formal-name>
+         <description>Identifies a pattern</description>
+      </define-flag>
+   </define-field>
+   
+
+   <define-assembly name="extension">
+      <formal-name>Extension</formal-name>
+      <description>Extends OSCAL using a property (prop) or annotation.</description>
+      <json-key flag-name="id" />
+      <define-flag name="id" required="yes" as-type="NCName">
+         <formal-name>Extension Identifier</formal-name>
+         <description>A unique identifier for this extension.</description>
+      </define-flag>
+      
+      <model>
+         <define-field name="extension-name" as-type="NCName" min-occurs="1" max-occurs="1">
+            <formal-name>Extension Name</formal-name>
+            <description>Defines the extextension name to be used in OSCAL syntax.</description>
+         </define-field>
+         <field ref="formal-name" min-occurs="1" max-occurs="1" />
+         <field ref="description" min-occurs="1" max-occurs="1" />
+         <field ref="property" max-occurs="unbounded">
+            <group-as name="props" in-json="ARRAY"/>
+         </field>
+         <assembly ref="annotation" max-occurs="unbounded">
+            <group-as name="annotations" in-json="ARRAY"/>
+         </assembly>
+         <assembly ref="link" max-occurs="unbounded">
+            <group-as name="links" in-json="ARRAY"/>
+         </assembly>
+         <field ref="binding" min-occurs="1" max-occurs="unbounded">
+            <group-as name="bindings" in-json="ARRAY"/>
+         </field>
+         <assembly ref="constraint" min-occurs="0" max-occurs="1" />
+         <field ref="remarks" in-xml="WITH_WRAPPER"/>
+      </model>
+      <constraint>
+         <has-cardinality target="formal-name" min-occurs="1" />
+         <has-cardinality target="description" min-occurs="1" />
+      </constraint>
+   </define-assembly>
+
+   <define-field name="binding" as-type="empty">
+      <formal-name>Binding</formal-name>
+      <description>Identifies the item to which this constraint or enhancment applies.</description>
+      <define-flag name="pattern" as-type="string" required="yes">
+         <formal-name>Binding Pattern</formal-name>
+         <description>Uses XPath notation to identify the location of the applicable constraint or enhancement.</description>
+      </define-flag>
+   </define-field>
+
+   <define-field name="formal-name" as-type="string">
+      <formal-name>Formal Name</formal-name>
+      <description>Provides a human-consumable label for the item.</description>
+   </define-field>
+
+   <define-field name="description" as-type="string">
+      <formal-name>Description</formal-name>
+      <description>Provides a human-consumable description of the item.</description>
+   </define-field>
+   
+   <define-assembly name="constraint">
+      <formal-name>Constraint</formal-name>
+      <description>Applies constraints to OSCAL content.</description>
+      <define-flag name="name" required="no" as-type="NCName">
+         <formal-name>Constraint Name</formal-name>
+         <description></description>
+      </define-flag>
+      
+      <model>
+         <field ref="binding" min-occurs="0" max-occurs="unbounded">
+            <group-as name="bindings" in-json="ARRAY"/>
+         </field>
+         <field ref="formal-name" min-occurs="0" max-occurs="1" />
+         <field ref="description" min-occurs="0" max-occurs="1" >
+            <remarks>
+               <p>A human readable description of the business rule being enforced by these constraints. It should be meaningful to a security practitioner with no OSCAL knowledge.</p>
+            </remarks>
+         </field>
+
+         <field ref="property" max-occurs="unbounded">
+            <group-as name="props" in-json="ARRAY"/>
+         </field>
+         <assembly ref="annotation" max-occurs="unbounded">
+            <group-as name="annotations" in-json="ARRAY"/>
+         </assembly>
+         <assembly ref="link" max-occurs="unbounded">
+            <group-as name="links" in-json="ARRAY"/>
+         </assembly>
+         
+         <assembly ref="allowed-values" min-occurs="0" max-occurs="unbounded">
+            <group-as name="allowed-values" in-json="ARRAY" />
+         </assembly>
+
+         <assembly ref="index-has-key" min-occurs="0" max-occurs="unbounded">
+            <group-as name="index-has-keys" in-json="ARRAY" />
+         </assembly>
+         
+         <assembly ref="matches" min-occurs="0" max-occurs="unbounded">
+            <group-as name="matches" in-json="ARRAY" />
+         </assembly>
+
+         <assembly ref="expect" min-occurs="0" max-occurs="unbounded">
+            <group-as name="expects" in-json="ARRAY" />
+         </assembly>
+         
+         <assembly ref="has-cardinality" min-occurs="0" max-occurs="1" />
+
+         <field ref="remarks" in-xml="WITH_WRAPPER">
+            <remarks>
+               <p>Remarks about the OSCAL syntax used to enforce the business rule.</p>
+            </remarks>
+         </field>
+      </model>
+      <constraint>
+         <allowed-values target="prop" allow-other="yes">
+            <enum value="reference">An optional identifier for the business rule.</enum>
+         </allowed-values>
+      </constraint>
+   </define-assembly>
+
+   <define-assembly name="has-cardinality">
+      <formal-name>Has Cardinality</formal-name>
+      <description>Defines the minimum and maximum required occurrences for the identified item.</description>
+      <flag ref="id" />
+      <flag ref="name" />
+      <define-flag name="min-occurs" as-type="integer">
+         <formal-name>Minimum Occurances</formal-name>
+         <description>Defines the minimum number of identified items that must be present.</description>
+      </define-flag>
+      <define-flag name="max-occurs" as-type="string">
+         <formal-name>Maximum Occurances</formal-name>
+         <description>Defines the maximum number of identified items that may be present.</description>
+      </define-flag>
+      <model>
+         <field ref="remarks" min-occurs="0" max-occurs="1" />
+      </model>
+   </define-assembly>
+   
+   <define-assembly name="matches">
+      <formal-name>Matches</formal-name>
+      <description>Allows a datatype assignment to an identified item.</description>
+      <flag ref="id" />
+      <flag ref="name" />
+      <define-flag name="data-type" as-type="NCName">
+         <formal-name>Data type</formal-name>
+         <description>Defines the OSCAL datatype for the identified item.</description>
+         <constraint>
+            <allowed-values allow-other="no">
+               &allowed-values-data-types;
+            </allowed-values>
+         </constraint>
+      </define-flag>
+      <define-flag name="regex" as-type="string">
+         <formal-name>Regular Expression</formal-name>
+         <description>Defines a Regular Expression (RegEx) constraining the value of the identified item.</description>
+      </define-flag>
+      <model>
+         <field ref="remarks" min-occurs="0" max-occurs="1" />
+      </model>
+      <constraint>
+         <expect test="not([@regex][not(@datatype='string']) or ([@regex] and not(@datatype)">
+            <remarks>
+               <p>If '@regex' is present, the datatype must be 'string'.</p>
+               <p>As the default datatype is 'string', the @regex flag may be present if either no @datatype flag is present (default='string') or if the @datatype flag is present and set to 'string'.</p>
+            </remarks>
+         </expect>
+      </constraint>
+   </define-assembly>
+
+   <define-assembly name="expect">
+      <formal-name>Expect</formal-name>
+      <description>Defines a condition which must be true.</description>
+      <define-flag name="test" as-type="string">
+         <formal-name>Test</formal-name>
+         <description>Using XPath notation, define a condition which must evaluate to a value of "true".</description>
+      </define-flag>
+      <model>
+         <field ref="remarks" min-occurs="0" max-occurs="1" />
+      </model>
+   </define-assembly>
+
+   <define-assembly name="index-has-key">
+      <formal-name>Index Has Key</formal-name>
+      <description>Checks that the specified <code>key-field</code> values match a key in the index with the specified name .</description>
+      <flag ref="id" />
+      <define-flag name="name" required="yes">
+         <formal-name>Name</formal-name>
+         <description>Specifies the name of the index, a reference to an index, or the name of a uniqueness constraint.</description>
+      </define-flag>
+      <define-flag name="target" required="yes">
+         <formal-name>Target</formal-name>
+         <description>Specifies the value objects to be included in the index or uniqueness constraint, or the object that contains a reference to an item in an index. If the value is ".", then the key is targeting the current metaschema object.</description>
+      </define-flag>
+      <model>
+         <field ref="key-field" min-occurs="1" max-occurs="unbounded">
+            <group-as name="key-fields"/>
+         </field>
+         <field ref="remarks" min-occurs="0" max-occurs="1" />
+      </model>
+   </define-assembly>
+
+   <define-flag name="target" as-type="string">
+      <formal-name>Target</formal-name>
+      <description>Identifies the target of a constraint rule.</description>
+   </define-flag>
+
+   <define-assembly name="allowed-values">
+      <formal-name>Allowed Values</formal-name>
+      <description>Enumerates a list of valid values for an identified item.</description>
+      <flag ref="id" />
+      <flag ref="name" />
+      <define-flag name="allow-other" as-type="NCName">
+         <formal-name>Allow Other</formal-name>
+         <description>Indicates whether the provided values are the only values allowed, or whether other values may be used when none of these are appropriate.</description>
+         <constraint>
+            <allowed-values allow-other="no">
+               <enum value="yes">Other values are allowed if none of the provided values are appropriate.</enum>
+               <enum value="no">Only the values provided are allowed.</enum>
+            </allowed-values>
+         </constraint>
+      </define-flag>
+      <model>
+         <define-field name="enum" as-type="string" min-occurs="1" max-occurs="unbounded">
+            <formal-name>Enumerated Item</formal-name>
+            <description>Identifies an individual item in a list of allowed values, with a description of the values meaning.</description>
+            <group-as name="enums" in-json="ARRAY"/>
+            <define-flag name="value" required="yes">
+               <formal-name>Value</formal-name>
+               <description>A case-sensitive acceptable value.</description>
+            </define-flag>
+            <define-flag name="label">
+               <formal-name>Label</formal-name>
+               <description>A short human-consumable label for the item, such as may be displayed by a tool for a user to select.</description>
+            </define-flag>
+         </define-field>
+         <field ref="remarks" min-occurs="0" max-occurs="1" />
+      </model>
+   </define-assembly>
+
+   <define-flag name="id" as-type="NCName">
+      <formal-name>Constraint Rule Identifier</formal-name>
+      <description>An identifier assigned to a constraint rule.</description>
+   </define-flag>
+   
+   <define-flag name="name" as-type="NCName">
+      <formal-name>Constraint Rule Name</formal-name>
+      <description>Provides a reference name for a constraint rule.</description>
+   </define-flag>
+   
+   
+   <!-- ===============================  -->
+   <!-- ======= END NEW CONTENT =======  -->
+   <!-- ===============================  -->
+</METASCHEMA>
