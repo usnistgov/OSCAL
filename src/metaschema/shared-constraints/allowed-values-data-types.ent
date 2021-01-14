@@ -1,0 +1,20 @@
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="boolean">A boolean value.</enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="string">A string value.</enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="NCName">An NC Name value.</enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="decimal">A number that may be expressed in whole numbers with or without decimal values.</enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="integer">A whole number interger.</enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="nonNegativeInteger">An integer of value zero (0) or greater.</enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="positiveInteger">An integer of value one (1) or greater.</enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="dateTime">A date and time with no timezone specified.</enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="date">A date with no timezone specified.</enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="base64Binary">Base-64 encoded binary content.</enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="dateTime-with-timezone">A date and time with the timezone specified.</enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="date-with-timezone">A date with the timezone specified.</enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="email">A valid electronic mail address.</enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="hostname">A valid host name.</enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="ip-v4-address">An Internet Protocol Version 4 address.</enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="ip-v6-address">An Internet Protocol Version 6 address.</enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="uri">A uniform resource identifier (URI).</enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="uri-reference">A reference to a uniform resource identifier (URI).</enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="uuid">A Universally Unique Identifier</enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="empty">No value.</enum>
