@@ -44,21 +44,12 @@ try {
   }
 
   // Get an array of arguments parsed from command line interface (the args should be the configs)
-  let metaSchemaArray: string[];
+  // let metaSchemaArray: string[];
   const readConfigFilesFromCLI = argv._.slice(1);
 
   // Establish which metaschema to process, either: the command line argument or the config file
-  if (readConfigFilesFromCLI.length) {
     // if a metaschema is provided as a command line argument, use it
-    metaSchemaArray = readConfigFilesFromCLI.map((metaschemaPath: string) => `${metaschemaPath}|xml,json|xml,json`);
-  } else {
-    // Locate the config file using relative path from the project root directory
-    const configFile = `${oscalRootDirectory}/build/ci-cd-v2/config/config-file`;
-    // Read the config file to get it's content
-    const readConfigFile = fs.readFileSync(configFile, 'utf8');
-    // Convert readConfigFile to string. Replace comments with an empty string. Convert readConfigFile to an array. Then remove all empty strings
-    metaSchemaArray = readConfigFile.toString().replace(/#.*\s/g, '').split('\n').filter(Boolean);
-  }
+  const metaSchemaArray: string[] = readConfigFilesFromCLI.map((metaschemaPath: string) => `${metaschemaPath}|xml,json|xml,json`);
 
   metaSchemaArray.forEach((schema) => {
     const schemaPathWithFormat = schema.split('|');
