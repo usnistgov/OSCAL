@@ -19,6 +19,7 @@ import {colorCodes, setupCliInputs, createWorkingDir} from '../utils/init'
 export const schemaFunction = (argv: any) => {
 // Set the root project root directory
 let oscalRootDirectory: any = path.join(__dirname, '../../../../..');
+
 // initialize the setup script
 setupCliInputs(oscalRootDirectory, argv);
 
@@ -48,22 +49,13 @@ setupCliInputs(oscalRootDirectory, argv);
     }
   
     // Get an array of arguments parsed from command line interface (the args should be the configs)
-    let metaSchemaArray: string[];
+    // let metaSchemaArray: string[];
     const readConfigFilesFromCLI = argv._.slice(1);
   
     // Establish which metaschema to process, either: the command line argument or the config file
-    if (readConfigFilesFromCLI.length) {
-      // if a metaschema is provided as a commandline argument, use it
-      metaSchemaArray = readConfigFilesFromCLI.map((metaschemaPath: string) => `${metaschemaPath}|xml,json`);
-    } else {
-      // Locate the config file using relative path from the project root directory
-      const configFile = `${oscalRootDirectory}/build/ci-cd-v2/config/config-file`;
-        // Read the config file to get it's content
-      const readConfigFile = fs.readFileSync(configFile, 'utf8');
-       // Convert readConfigFile to string. Replace comments with an empty string. Convert readConfigFile to an array. Then remove all empty strings
-      metaSchemaArray = readConfigFile.toString().replace(/#.*\s/g, '').split('\n').filter(Boolean);
-    }
-  
+    // if a metaschema is provided as a commandline argument, use it
+    const metaSchemaArray: string[] = readConfigFilesFromCLI.map((metaschemaPath: string) => `${metaschemaPath}|xml,json`);
+   
     metaSchemaArray.forEach((schema) => {
       const schemaPathWithFormat = schema.split('|');
       // Each Metaschema path read from the config
