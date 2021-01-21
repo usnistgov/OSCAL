@@ -48,7 +48,7 @@ try {
   const readConfigFilesFromCLI = argv._.slice(1);
 
   // Establish which metaschema to process, either: the command line argument or the config file
-    // if a metaschema is provided as a command line argument, use it
+  // if a metaschema is provided as a command line argument, use it
   const metaSchemaArray: string[] = readConfigFilesFromCLI.map((metaschemaPath: string) => `${metaschemaPath}|xml,json|xml,json`);
 
   metaSchemaArray.forEach((schema) => {
@@ -67,7 +67,6 @@ try {
 
     // The third element after splitting at the '|' is the schema formats to be used for convert files
     const convertOptions = schemaPathWithFormat[2];
-
 
     if (convertOptions) {
       // Split each formats at the comma sign to create an array of format to be used for schema generation in each iteration
@@ -145,4 +144,3 @@ try {
   console.error(error.message);
 }
 }
-
