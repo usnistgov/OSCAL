@@ -3,7 +3,7 @@
 import  {convertFunction} from '../modules/generate-content-converters';
 
 export const command = 'generate-converters'
-export const desc = 'Usage: oscalcli command [options] [metaschema paths]'
+export const desc = 'Usage: oscalcli generate-converters [metaschema paths] [options]'
 export const builder = {
     working_dir: {
         alias: 'w',

@@ -3,7 +3,7 @@
 import  {schemaFunction} from '../modules/generate-schema';
 
 export const command = 'generate-schema'
-export const desc = 'Usage: oscalcli command [options] [metaschema paths]'
+export const desc = 'Usage: oscalcli generate-schema [metaschema paths] [options]'
 export const builder = {
     working_dir: {
         alias: 'w',
