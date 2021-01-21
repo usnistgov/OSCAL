@@ -2,11 +2,15 @@
 "use strict";
 
 import { join } from 'path'
-import yargs from 'yargs'
+//import yargs from 'yargs'
+const yargs = require('yargs')
 
 yargs
     .commandDir(join(__dirname, 'oscal-cli-app', 'lib', 'commands'))
     .alias('help', 'h')
     .demandCommand()
-    .strict()
+    //Restricts use of other options not defined in modules
+    .strictOptions()
+    //Restricts use of other commands not defined in modules
+    //.strictCommands()
     .argv;
