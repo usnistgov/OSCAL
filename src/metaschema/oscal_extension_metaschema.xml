@@ -51,6 +51,8 @@
 
          <!-- FUTURE: "defined-values" Assembly == Ability to define framework-specific values that may be helpful to tools, such as the list and authoritative location of baselines.   -->
 
+         <!-- FUTURE: "rule-references" Assembly == Ability to provide an inventory and reference to more complex rules that can not be satisfied by this syntax (such as Schematron rules).   -->
+
          <assembly ref="back-matter" />
          
       </model>
