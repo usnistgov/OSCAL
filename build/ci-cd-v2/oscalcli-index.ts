@@ -11,6 +11,7 @@ yargs
     .demandCommand()
     //Restricts use of other options not defined in modules
     .strictOptions()
+    .recommendCommands()
     //Restricts use of other commands not defined in modules
     //.strictCommands()
     .argv;
