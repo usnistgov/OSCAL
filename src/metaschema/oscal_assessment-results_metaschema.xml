@@ -148,9 +148,13 @@
                <p>Any additional control objectives defined in the Assessment Plan <code>local-definitions</code> do not need to be re-defined in the Assessment Results <code>local-definitions</code>; however, if they were explicitly referenced with an Assessment Plan <code>control-objective-selection</code>, they need to be selected again in the Assessment Results <code>control-objective-selection</code>.</p>
             </remarks>
          </assembly>
+
+         <!-- CHANGED: Removed "assessment-subjects" from AR. should be defined in AP or in AR/local-definitions, but not at AR root.         
          <assembly ref="assessment-subject" min-occurs="0" max-occurs="unbounded">
             <group-as name="assessment-subjects" in-json="ARRAY"/>
          </assembly>
+         
+-->
          <!-- To augment the assessment plan -->
          <assembly ref="assessment-assets" min-occurs="0" max-occurs="1">
             <remarks>
