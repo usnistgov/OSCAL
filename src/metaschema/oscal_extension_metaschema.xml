@@ -119,9 +119,15 @@
          <assembly ref="link" max-occurs="unbounded">
             <group-as name="links" in-json="ARRAY"/>
          </assembly>
+<<<<<<< HEAD
          <assembly ref="binding" min-occurs="1" max-occurs="unbounded">
             <group-as name="bindings" in-json="ARRAY"/>
          </assembly>
+=======
+         <field ref="binding" min-occurs="1" max-occurs="unbounded">
+            <group-as name="bindings" in-json="ARRAY"/>
+         </field>
+>>>>>>> c2998f1ab65df7bbeb388ca5c26d95adca7eb606
          <assembly ref="constraint" min-occurs="0" max-occurs="1" />
          <field ref="remarks" in-xml="WITH_WRAPPER"/>
       </model>
@@ -131,13 +137,18 @@
       </constraint>
    </define-assembly>
 
+<<<<<<< HEAD
    <define-assembly name="binding">
+=======
+   <define-field name="binding" as-type="empty">
+>>>>>>> c2998f1ab65df7bbeb388ca5c26d95adca7eb606
       <formal-name>Binding</formal-name>
       <description>Identifies the item to which this constraint or enhancment applies.</description>
       <define-flag name="pattern" as-type="string" required="yes">
          <formal-name>Binding Pattern</formal-name>
          <description>Uses XPath notation to identify the location of the applicable constraint or enhancement.</description>
       </define-flag>
+<<<<<<< HEAD
       <model>
          <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1">
             <remarks>
@@ -146,6 +157,9 @@
          </field>
       </model>
    </define-assembly>
+=======
+   </define-field>
+>>>>>>> c2998f1ab65df7bbeb388ca5c26d95adca7eb606
 
    <define-field name="formal-name" as-type="string">
       <formal-name>Formal Name</formal-name>
@@ -186,9 +200,15 @@
             <group-as name="links" in-json="ARRAY"/>
          </assembly>
          
+<<<<<<< HEAD
          <assembly ref="binding" min-occurs="0" max-occurs="unbounded">
             <group-as name="bindings" in-json="ARRAY"/>
          </assembly>
+=======
+         <field ref="binding" min-occurs="0" max-occurs="unbounded">
+            <group-as name="bindings" in-json="ARRAY"/>
+         </field>
+>>>>>>> c2998f1ab65df7bbeb388ca5c26d95adca7eb606
 
          <assembly ref="matches" min-occurs="0" max-occurs="unbounded">
             <group-as name="matches" in-json="ARRAY" />
