@@ -323,7 +323,7 @@
          </constraint>
       </define-flag>
       <model>
-         <define-field name="enum" as-type="string" min-occurs="1" max-occurs="unbounded">
+         <define-field name="enum" as-type="markup-line" min-occurs="1" max-occurs="unbounded">
             <formal-name>Enumerated Item</formal-name>
             <description>Identifies an individual item in a list of allowed values, with a description of the values meaning.</description>
             <group-as name="enums" in-json="ARRAY"/>
