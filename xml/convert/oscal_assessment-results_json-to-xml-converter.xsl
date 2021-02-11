@@ -590,7 +590,6 @@
          <xsl:apply-templates select="*[@key='links']"/>
          <xsl:apply-templates select="*[@key='local-definitions']"/>
          <xsl:apply-templates select="*[@key='reviewed-controls']"/>
-         <xsl:apply-templates select="*[@key='assessment-subjects']"/>
          <xsl:apply-templates select="*[@key='assessment-assets']"/>
          <xsl:apply-templates select="*[@key='attestations']"/>
          <xsl:apply-templates select="*[@key='assessment-log']"/>
@@ -4454,115 +4453,6 @@
                  mode="get-value-property"
                  priority="9">
       <value>
-         <xsl:value-of select="."/>
-      </value>
-   </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:array[@key='assessment-subjects']/j:map/j:string[@key='description']"
-                 priority="7">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="assessment-results/result/assessment-subject/description" -->
-      <field name="description"
-             gi="description"
-             as-type="markup-multiline"
-             formal-name="Include Subjects Description"
-             in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">description</xsl:attribute>
-         </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
-      </field>
-   </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:array[@key='assessment-subjects']/j:map/j:string[@key='description']"
-                 mode="get-value-property"
-                 priority="7">
-      <value as-type="markup-multiline" in-json="string">
-         <xsl:value-of select="."/>
-      </value>
-   </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:array[@key='assessment-subjects']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
-                 priority="9">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="assessment-results/result/assessment-subject/link/text" -->
-      <field name="text"
-             gi="text"
-             as-type="markup-line"
-             formal-name="Link Text"
-             in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">text</xsl:attribute>
-         </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
-      </field>
-   </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:array[@key='assessment-subjects']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
-                 mode="get-value-property"
-                 priority="9">
-      <value as-type="markup-line" in-json="string">
-         <xsl:value-of select="."/>
-      </value>
-   </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:array[@key='assessment-subjects']/j:map/j:[@key='include-all']"
-                 priority="8">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="assessment-results/result/assessment-subject/include-all" -->
-      <field as-type="empty"
-             name="include-all"
-             gi="include-all"
-             formal-name="All"
-             in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">include-all</xsl:attribute>
-         </xsl:if>
-      </field>
-   </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:array[@key='assessment-subjects']/j:map/j:[@key='include-all']"
-                 mode="get-value-property"
-                 priority="8">
-      <value>
-         <xsl:value-of select="."/>
-      </value>
-   </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:array[@key='assessment-subjects']/j:map/j:array[@key='include-subjects']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
-                 priority="12">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="assessment-results/result/assessment-subject/include-subject/link/text" -->
-      <field name="text"
-             gi="text"
-             as-type="markup-line"
-             formal-name="Link Text"
-             in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">text</xsl:attribute>
-         </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
-      </field>
-   </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:array[@key='assessment-subjects']/j:map/j:array[@key='include-subjects']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
-                 mode="get-value-property"
-                 priority="12">
-      <value as-type="markup-line" in-json="string">
-         <xsl:value-of select="."/>
-      </value>
-   </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:array[@key='assessment-subjects']/j:map/j:array[@key='exclude-subjects']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
-                 priority="11">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="assessment-results/result/assessment-subject/exclude-subject/link/text" -->
-      <field name="text"
-             gi="text"
-             as-type="markup-line"
-             formal-name="Link Text"
-             in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">text</xsl:attribute>
-         </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
-      </field>
-   </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:array[@key='assessment-subjects']/j:map/j:array[@key='exclude-subjects']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
-                 mode="get-value-property"
-                 priority="11">
-      <value as-type="markup-line" in-json="string">
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
