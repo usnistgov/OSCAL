@@ -200,7 +200,7 @@ post_process_content() {
     if [ "$VERBOSE" = "true" ]; then
       echo -e "${P_INFO}Producing YAML '${P_END}${yaml_file_relative}${P_INFO}'.${P_END}"
     fi
-    prettyjson --nocolor=1 --indent=2 --inline-arrays=1 "$target_file" > "$yaml_file"
+    yaml-convert -y "$target_file" | (echo "---" && cat) > "$yaml_file"
 
     if [ "$VERBOSE" = "true" ]; then
       echo -e "${P_INFO}Translating relative paths in '${P_END}${yaml_file_relative}${P_INFO}'.${P_END}"

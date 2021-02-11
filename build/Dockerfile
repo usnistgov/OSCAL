@@ -1,12 +1,17 @@
 
-FROM ubuntu:18.04
+FROM ubuntu:20.04
 
 ARG saxonversion
 ARG hugoversion
 
-RUN apt-get update && apt-get install -y wget apt-utils libxml2-utils jq maven nodejs npm build-essential python-pip git && apt-get clean
-RUN npm install -g prettyjson markdown-link-check json-diff ajv-cli
-RUN pip install lxml
+ENV TZ=US/Eastern
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
+RUN apt-get update && apt-get install -y wget apt-utils libxml2-utils jq maven nodejs npm build-essential python3-pip git && apt-get clean
+RUN npm install -g npm n
+RUN n latest
+RUN npm install -g markdown-link-check json-diff ajv-formats@"^1.5.x" ajv-cli@"^4.0.x" yaml-convert@"^1.0.x"
+RUN pip3 install lxml
 
 #RUN useradd --create-home --home-dir /home/user user
 #USER user
