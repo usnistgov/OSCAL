@@ -33,194 +33,36 @@
                <xs:group ref="oscal-ssp:everything-inline"/>
             </xs:complexType>
          </xs:element>
-         <xs:element name="published" minOccurs="0" maxOccurs="1">
-            <xs:simpleType>
-               <xs:annotation>
-                  <xs:appinfo>
-                     <m:formal-name>Publication Timestamp</m:formal-name>
-                     <m:description>The date and time the document was published. The date-time value must be formatted according to <m:a>RFC 3339</m:a> with full time and time zone included.</m:description>
-                  </xs:appinfo>
-                  <xs:documentation>
-                     <b>Publication Timestamp</b>: The date and time the document was published. The date-time value must be formatted according to RFC 3339 with full time and time zone included.</xs:documentation>
-               </xs:annotation>
-               <xs:restriction base="oscal-ssp:dateTime-with-timezone"/>
-            </xs:simpleType>
-         </xs:element>
-         <xs:element name="last-modified" minOccurs="1" maxOccurs="1">
-            <xs:simpleType>
-               <xs:annotation>
-                  <xs:appinfo>
-                     <m:formal-name>Last Modified Timestamp</m:formal-name>
-                     <m:description>The date and time the document was last modified. The date-time value must be formatted according to <m:a>RFC 3339</m:a> with full time and time zone included.</m:description>
-                  </xs:appinfo>
-                  <xs:documentation>
-                     <b>Last Modified Timestamp</b>: The date and time the document was last modified. The date-time value must be formatted according to RFC 3339 with full time and time zone included.</xs:documentation>
-               </xs:annotation>
-               <xs:restriction base="oscal-ssp:dateTime-with-timezone"/>
-            </xs:simpleType>
-         </xs:element>
-         <xs:element name="version" minOccurs="1" maxOccurs="1">
-            <xs:simpleType>
-               <xs:annotation>
-                  <xs:appinfo>
-                     <m:formal-name>Document Version</m:formal-name>
-                     <m:description>A string used to distinguish the current version of the document from other previous (and future) versions.</m:description>
-                  </xs:appinfo>
-                  <xs:documentation>
-                     <b>Document Version</b>: A string used to distinguish the current version of the document from other previous (and future) versions.</xs:documentation>
-               </xs:annotation>
-               <xs:restriction base="xs:string"/>
-            </xs:simpleType>
-         </xs:element>
-         <xs:element name="oscal-version" minOccurs="1" maxOccurs="1">
-            <xs:simpleType>
-               <xs:annotation>
-                  <xs:appinfo>
-                     <m:formal-name>OSCAL version</m:formal-name>
-                     <m:description>The OSCAL model version the document was authored against.</m:description>
-                  </xs:appinfo>
-                  <xs:documentation>
-                     <b>OSCAL version</b>: The OSCAL model version the document was authored against.</xs:documentation>
-               </xs:annotation>
-               <xs:restriction base="xs:string"/>
-            </xs:simpleType>
-         </xs:element>
+         <xs:element name="published"
+                     type="oscal-ssp:oscal-metadata-published-FIELD"
+                     minOccurs="0"
+                     maxOccurs="1"/>
+         <xs:element name="last-modified"
+                     type="oscal-ssp:oscal-metadata-last-modified-FIELD"
+                     minOccurs="1"
+                     maxOccurs="1"/>
+         <xs:element name="version"
+                     type="oscal-ssp:oscal-metadata-version-FIELD"
+                     minOccurs="1"
+                     maxOccurs="1"/>
+         <xs:element name="oscal-version"
+                     type="oscal-ssp:oscal-metadata-oscal-version-FIELD"
+                     minOccurs="1"
+                     maxOccurs="1"/>
          <xs:element name="revisions" minOccurs="0" maxOccurs="1">
-            <xs:annotation>
-               <xs:appinfo>
-                  <m:formal-name>revisions</m:formal-name>
-                  <m:description>A group of 'revision' elements</m:description>
-               </xs:appinfo>
-               <xs:documentation>
-                  <b>revisions</b>: A group of 'revision' elements</xs:documentation>
-            </xs:annotation>
             <xs:complexType>
                <xs:sequence>
-                  <xs:element name="revision" minOccurs="0" maxOccurs="unbounded">
-                     <xs:complexType>
-                        <xs:annotation>
-                           <xs:appinfo>
-                              <m:formal-name>Revision History Entry</m:formal-name>
-                              <m:description>An entry in a sequential list of revisions to the containing document in reverse chronological order (i.e., most recent previous revision first).</m:description>
-                           </xs:appinfo>
-                           <xs:documentation>
-                              <b>Revision History Entry</b>: An entry in a sequential list of revisions to the containing document in reverse chronological order (i.e., most recent previous revision first).</xs:documentation>
-                        </xs:annotation>
-                        <xs:sequence>
-                           <xs:element name="title" minOccurs="0" maxOccurs="1">
-                              <xs:complexType mixed="true">
-                                 <xs:group ref="oscal-ssp:everything-inline"/>
-                              </xs:complexType>
-                           </xs:element>
-                           <xs:element name="published" minOccurs="0" maxOccurs="1">
-                              <xs:simpleType>
-                                 <xs:annotation>
-                                    <xs:appinfo>
-                                       <m:formal-name>Publication Timestamp</m:formal-name>
-                                       <m:description>The date and time the document was published. The date-time value must be formatted according to <m:a>RFC 3339</m:a> with full time and time zone included.</m:description>
-                                    </xs:appinfo>
-                                    <xs:documentation>
-                                       <b>Publication Timestamp</b>: The date and time the document was published. The date-time value must be formatted according to RFC 3339 with full time and time zone included.</xs:documentation>
-                                 </xs:annotation>
-                                 <xs:restriction base="oscal-ssp:dateTime-with-timezone"/>
-                              </xs:simpleType>
-                           </xs:element>
-                           <xs:element name="last-modified" minOccurs="0" maxOccurs="1">
-                              <xs:simpleType>
-                                 <xs:annotation>
-                                    <xs:appinfo>
-                                       <m:formal-name>Last Modified Timestamp</m:formal-name>
-                                       <m:description>The date and time the document was last modified. The date-time value must be formatted according to <m:a>RFC 3339</m:a> with full time and time zone included.</m:description>
-                                    </xs:appinfo>
-                                    <xs:documentation>
-                                       <b>Last Modified Timestamp</b>: The date and time the document was last modified. The date-time value must be formatted according to RFC 3339 with full time and time zone included.</xs:documentation>
-                                 </xs:annotation>
-                                 <xs:restriction base="oscal-ssp:dateTime-with-timezone"/>
-                              </xs:simpleType>
-                           </xs:element>
-                           <xs:element name="version" minOccurs="0" maxOccurs="1">
-                              <xs:simpleType>
-                                 <xs:annotation>
-                                    <xs:appinfo>
-                                       <m:formal-name>Document Version</m:formal-name>
-                                       <m:description>A string used to distinguish the current version of the document from other previous (and future) versions.</m:description>
-                                    </xs:appinfo>
-                                    <xs:documentation>
-                                       <b>Document Version</b>: A string used to distinguish the current version of the document from other previous (and future) versions.</xs:documentation>
-                                 </xs:annotation>
-                                 <xs:restriction base="xs:string"/>
-                              </xs:simpleType>
-                           </xs:element>
-                           <xs:element name="oscal-version" minOccurs="0" maxOccurs="1">
-                              <xs:simpleType>
-                                 <xs:annotation>
-                                    <xs:appinfo>
-                                       <m:formal-name>OSCAL version</m:formal-name>
-                                       <m:description>The OSCAL model version the document was authored against.</m:description>
-                                    </xs:appinfo>
-                                    <xs:documentation>
-                                       <b>OSCAL version</b>: The OSCAL model version the document was authored against.</xs:documentation>
-                                 </xs:annotation>
-                                 <xs:restriction base="xs:string"/>
-                              </xs:simpleType>
-                           </xs:element>
-                           <xs:element name="prop"
-                                       type="oscal-ssp:property-FIELD"
-                                       minOccurs="0"
-                                       maxOccurs="unbounded"/>
-                           <xs:element name="annotation"
-                                       type="oscal-ssp:annotation-ASSEMBLY"
-                                       minOccurs="0"
-                                       maxOccurs="unbounded"/>
-                           <xs:element name="link"
-                                       type="oscal-ssp:link-ASSEMBLY"
-                                       minOccurs="0"
-                                       maxOccurs="unbounded"/>
-                           <xs:element name="remarks" minOccurs="0" maxOccurs="1">
-                              <xs:annotation>
-                                 <xs:appinfo>
-                                    <m:formal-name>Remarks</m:formal-name>
-                                    <m:description>Additional commentary on the containing object.</m:description>
-                                 </xs:appinfo>
-                                 <xs:documentation>
-                                    <b>Remarks</b>: Additional commentary on the containing object.</xs:documentation>
-                              </xs:annotation>
-                              <xs:complexType>
-                                 <xs:group ref="oscal-ssp:PROSE" maxOccurs="unbounded" minOccurs="0"/>
-                              </xs:complexType>
-                           </xs:element>
-                        </xs:sequence>
-                     </xs:complexType>
-                  </xs:element>
+                  <xs:element name="revision"
+                              type="oscal-ssp:oscal-metadata-revision-ASSEMBLY"
+                              minOccurs="0"
+                              maxOccurs="unbounded"/>
                </xs:sequence>
             </xs:complexType>
          </xs:element>
-         <xs:element name="document-id" minOccurs="0" maxOccurs="unbounded">
-            <xs:complexType>
-               <xs:annotation>
-                  <xs:appinfo>
-                     <m:formal-name>Document Identifier</m:formal-name>
-                     <m:description>A document identifier qualified by an identifier <m:code>type</m:code>.</m:description>
-                  </xs:appinfo>
-                  <xs:documentation>
-                     <b>Document Identifier</b>: A document identifier qualified by an identifier type.</xs:documentation>
-               </xs:annotation>
-               <xs:simpleContent>
-                  <xs:extension base="xs:string">
-                     <xs:attribute name="scheme" use="required" type="oscal-ssp:uri">
-                        <xs:annotation>
-                           <xs:appinfo>
-                              <m:formal-name>Document Identification Scheme</m:formal-name>
-                              <m:description>Qualifies the kind of document identifier.</m:description>
-                           </xs:appinfo>
-                           <xs:documentation>
-                              <b>Document Identification Scheme</b>: Qualifies the kind of document identifier.</xs:documentation>
-                        </xs:annotation>
-                     </xs:attribute>
-                  </xs:extension>
-               </xs:simpleContent>
-            </xs:complexType>
-         </xs:element>
+         <xs:element name="document-id"
+                     type="oscal-ssp:oscal-metadata-document-id-FIELD"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
          <xs:element name="prop"
                      type="oscal-ssp:property-FIELD"
                      minOccurs="0"
@@ -264,6 +106,64 @@
          </xs:element>
       </xs:sequence>
    </xs:complexType>
+   <xs:complexType name="oscal-metadata-revision-ASSEMBLY">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Revision History Entry</m:formal-name>
+            <m:description>An entry in a sequential list of revisions to the containing document in reverse chronological order (i.e., most recent previous revision first).</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Revision History Entry</b>: An entry in a sequential list of revisions to the containing document in reverse chronological order (i.e., most recent previous revision first).</xs:documentation>
+      </xs:annotation>
+      <xs:sequence>
+         <xs:element name="title" minOccurs="0" maxOccurs="1">
+            <xs:complexType mixed="true">
+               <xs:group ref="oscal-ssp:everything-inline"/>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="published"
+                     type="oscal-ssp:oscal-metadata-published-FIELD"
+                     minOccurs="0"
+                     maxOccurs="1"/>
+         <xs:element name="last-modified"
+                     type="oscal-ssp:oscal-metadata-last-modified-FIELD"
+                     minOccurs="0"
+                     maxOccurs="1"/>
+         <xs:element name="version"
+                     type="oscal-ssp:oscal-metadata-version-FIELD"
+                     minOccurs="0"
+                     maxOccurs="1"/>
+         <xs:element name="oscal-version"
+                     type="oscal-ssp:oscal-metadata-oscal-version-FIELD"
+                     minOccurs="0"
+                     maxOccurs="1"/>
+         <xs:element name="prop"
+                     type="oscal-ssp:property-FIELD"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:element name="annotation"
+                     type="oscal-ssp:annotation-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:element name="link"
+                     type="oscal-ssp:link-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Remarks</m:formal-name>
+                  <m:description>Additional commentary on the containing object.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Remarks</b>: Additional commentary on the containing object.</xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+               <xs:group ref="oscal-ssp:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:complexType>
+         </xs:element>
+      </xs:sequence>
+   </xs:complexType>
    <xs:complexType name="location-ASSEMBLY">
       <xs:annotation>
          <xs:appinfo>
@@ -279,134 +179,18 @@
                <xs:group ref="oscal-ssp:everything-inline"/>
             </xs:complexType>
          </xs:element>
-         <xs:element name="address" minOccurs="1" maxOccurs="1">
-            <xs:complexType>
-               <xs:annotation>
-                  <xs:appinfo>
-                     <m:formal-name>Address</m:formal-name>
-                     <m:description>A postal address for the location.</m:description>
-                  </xs:appinfo>
-                  <xs:documentation>
-                     <b>Address</b>: A postal address for the location.</xs:documentation>
-               </xs:annotation>
-               <xs:sequence>
-                  <xs:element name="addr-line" minOccurs="0" maxOccurs="unbounded">
-                     <xs:simpleType>
-                        <xs:annotation>
-                           <xs:appinfo>
-                              <m:formal-name>Address line</m:formal-name>
-                              <m:description>A single line of an address.</m:description>
-                           </xs:appinfo>
-                           <xs:documentation>
-                              <b>Address line</b>: A single line of an address.</xs:documentation>
-                        </xs:annotation>
-                        <xs:restriction base="xs:string"/>
-                     </xs:simpleType>
-                  </xs:element>
-                  <xs:element name="city" minOccurs="0" maxOccurs="1">
-                     <xs:simpleType>
-                        <xs:annotation>
-                           <xs:appinfo>
-                              <m:formal-name>City</m:formal-name>
-                              <m:description>City, town or geographical region for the mailing address.</m:description>
-                           </xs:appinfo>
-                           <xs:documentation>
-                              <b>City</b>: City, town or geographical region for the mailing address.</xs:documentation>
-                        </xs:annotation>
-                        <xs:restriction base="xs:string"/>
-                     </xs:simpleType>
-                  </xs:element>
-                  <xs:element name="state" minOccurs="0" maxOccurs="1">
-                     <xs:simpleType>
-                        <xs:annotation>
-                           <xs:appinfo>
-                              <m:formal-name>State</m:formal-name>
-                              <m:description>State, province or analogous geographical region for mailing address</m:description>
-                           </xs:appinfo>
-                           <xs:documentation>
-                              <b>State</b>: State, province or analogous geographical region for mailing address</xs:documentation>
-                        </xs:annotation>
-                        <xs:restriction base="xs:string"/>
-                     </xs:simpleType>
-                  </xs:element>
-                  <xs:element name="postal-code" minOccurs="0" maxOccurs="1">
-                     <xs:simpleType>
-                        <xs:annotation>
-                           <xs:appinfo>
-                              <m:formal-name>Postal Code</m:formal-name>
-                              <m:description>Postal or ZIP code for mailing address</m:description>
-                           </xs:appinfo>
-                           <xs:documentation>
-                              <b>Postal Code</b>: Postal or ZIP code for mailing address</xs:documentation>
-                        </xs:annotation>
-                        <xs:restriction base="xs:string"/>
-                     </xs:simpleType>
-                  </xs:element>
-                  <xs:element name="country" minOccurs="0" maxOccurs="1">
-                     <xs:simpleType>
-                        <xs:annotation>
-                           <xs:appinfo>
-                              <m:formal-name>Country Code</m:formal-name>
-                              <m:description>The ISO 3166-1 alpha-2 country code for the mailing address.</m:description>
-                           </xs:appinfo>
-                           <xs:documentation>
-                              <b>Country Code</b>: The ISO 3166-1 alpha-2 country code for the mailing address.</xs:documentation>
-                        </xs:annotation>
-                        <xs:restriction base="xs:string"/>
-                     </xs:simpleType>
-                  </xs:element>
-               </xs:sequence>
-               <xs:attribute name="type" type="xs:NCName">
-                  <xs:annotation>
-                     <xs:appinfo>
-                        <m:formal-name>Address Type</m:formal-name>
-                        <m:description>Indicates the type of address.</m:description>
-                     </xs:appinfo>
-                     <xs:documentation>
-                        <b>Address Type</b>: Indicates the type of address.</xs:documentation>
-                  </xs:annotation>
-               </xs:attribute>
-            </xs:complexType>
-         </xs:element>
-         <xs:element name="email-address" minOccurs="0" maxOccurs="unbounded">
-            <xs:simpleType>
-               <xs:annotation>
-                  <xs:appinfo>
-                     <m:formal-name>Email Address</m:formal-name>
-                     <m:description>An email address as defined by <m:a>RFC 5322 Section 3.4.1</m:a>.</m:description>
-                  </xs:appinfo>
-                  <xs:documentation>
-                     <b>Email Address</b>: An email address as defined by RFC 5322 Section 3.4.1.</xs:documentation>
-               </xs:annotation>
-               <xs:restriction base="oscal-ssp:email"/>
-            </xs:simpleType>
-         </xs:element>
-         <xs:element name="telephone-number" minOccurs="0" maxOccurs="unbounded">
-            <xs:complexType>
-               <xs:annotation>
-                  <xs:appinfo>
-                     <m:formal-name>Telephone Number</m:formal-name>
-                     <m:description>Contact number by telephone.</m:description>
-                  </xs:appinfo>
-                  <xs:documentation>
-                     <b>Telephone Number</b>: Contact number by telephone.</xs:documentation>
-               </xs:annotation>
-               <xs:simpleContent>
-                  <xs:extension base="xs:string">
-                     <xs:attribute name="type" type="xs:string">
-                        <xs:annotation>
-                           <xs:appinfo>
-                              <m:formal-name>type flag</m:formal-name>
-                              <m:description>Indicates the type of phone number.</m:description>
-                           </xs:appinfo>
-                           <xs:documentation>
-                              <b>type flag</b>: Indicates the type of phone number.</xs:documentation>
-                        </xs:annotation>
-                     </xs:attribute>
-                  </xs:extension>
-               </xs:simpleContent>
-            </xs:complexType>
-         </xs:element>
+         <xs:element name="address"
+                     type="oscal-ssp:oscal-metadata-address-ASSEMBLY"
+                     minOccurs="1"
+                     maxOccurs="1"/>
+         <xs:element name="email-address"
+                     type="oscal-ssp:oscal-metadata-email-address-FIELD"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:element name="telephone-number"
+                     type="oscal-ssp:oscal-metadata-telephone-number-FIELD"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
          <xs:element name="url" minOccurs="0" maxOccurs="unbounded">
             <xs:simpleType>
                <xs:annotation>
@@ -542,135 +326,19 @@
                      type="oscal-ssp:link-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
-         <xs:element name="email-address" minOccurs="0" maxOccurs="unbounded">
-            <xs:simpleType>
-               <xs:annotation>
-                  <xs:appinfo>
-                     <m:formal-name>Email Address</m:formal-name>
-                     <m:description>An email address as defined by <m:a>RFC 5322 Section 3.4.1</m:a>.</m:description>
-                  </xs:appinfo>
-                  <xs:documentation>
-                     <b>Email Address</b>: An email address as defined by RFC 5322 Section 3.4.1.</xs:documentation>
-               </xs:annotation>
-               <xs:restriction base="oscal-ssp:email"/>
-            </xs:simpleType>
-         </xs:element>
-         <xs:element name="telephone-number" minOccurs="0" maxOccurs="unbounded">
-            <xs:complexType>
-               <xs:annotation>
-                  <xs:appinfo>
-                     <m:formal-name>Telephone Number</m:formal-name>
-                     <m:description>Contact number by telephone.</m:description>
-                  </xs:appinfo>
-                  <xs:documentation>
-                     <b>Telephone Number</b>: Contact number by telephone.</xs:documentation>
-               </xs:annotation>
-               <xs:simpleContent>
-                  <xs:extension base="xs:string">
-                     <xs:attribute name="type" type="xs:string">
-                        <xs:annotation>
-                           <xs:appinfo>
-                              <m:formal-name>type flag</m:formal-name>
-                              <m:description>Indicates the type of phone number.</m:description>
-                           </xs:appinfo>
-                           <xs:documentation>
-                              <b>type flag</b>: Indicates the type of phone number.</xs:documentation>
-                        </xs:annotation>
-                     </xs:attribute>
-                  </xs:extension>
-               </xs:simpleContent>
-            </xs:complexType>
-         </xs:element>
+         <xs:element name="email-address"
+                     type="oscal-ssp:oscal-metadata-email-address-FIELD"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:element name="telephone-number"
+                     type="oscal-ssp:oscal-metadata-telephone-number-FIELD"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
          <xs:choice>
-            <xs:element name="address" minOccurs="0" maxOccurs="unbounded">
-               <xs:complexType>
-                  <xs:annotation>
-                     <xs:appinfo>
-                        <m:formal-name>Address</m:formal-name>
-                        <m:description>A postal address for the location.</m:description>
-                     </xs:appinfo>
-                     <xs:documentation>
-                        <b>Address</b>: A postal address for the location.</xs:documentation>
-                  </xs:annotation>
-                  <xs:sequence>
-                     <xs:element name="addr-line" minOccurs="0" maxOccurs="unbounded">
-                        <xs:simpleType>
-                           <xs:annotation>
-                              <xs:appinfo>
-                                 <m:formal-name>Address line</m:formal-name>
-                                 <m:description>A single line of an address.</m:description>
-                              </xs:appinfo>
-                              <xs:documentation>
-                                 <b>Address line</b>: A single line of an address.</xs:documentation>
-                           </xs:annotation>
-                           <xs:restriction base="xs:string"/>
-                        </xs:simpleType>
-                     </xs:element>
-                     <xs:element name="city" minOccurs="0" maxOccurs="1">
-                        <xs:simpleType>
-                           <xs:annotation>
-                              <xs:appinfo>
-                                 <m:formal-name>City</m:formal-name>
-                                 <m:description>City, town or geographical region for the mailing address.</m:description>
-                              </xs:appinfo>
-                              <xs:documentation>
-                                 <b>City</b>: City, town or geographical region for the mailing address.</xs:documentation>
-                           </xs:annotation>
-                           <xs:restriction base="xs:string"/>
-                        </xs:simpleType>
-                     </xs:element>
-                     <xs:element name="state" minOccurs="0" maxOccurs="1">
-                        <xs:simpleType>
-                           <xs:annotation>
-                              <xs:appinfo>
-                                 <m:formal-name>State</m:formal-name>
-                                 <m:description>State, province or analogous geographical region for mailing address</m:description>
-                              </xs:appinfo>
-                              <xs:documentation>
-                                 <b>State</b>: State, province or analogous geographical region for mailing address</xs:documentation>
-                           </xs:annotation>
-                           <xs:restriction base="xs:string"/>
-                        </xs:simpleType>
-                     </xs:element>
-                     <xs:element name="postal-code" minOccurs="0" maxOccurs="1">
-                        <xs:simpleType>
-                           <xs:annotation>
-                              <xs:appinfo>
-                                 <m:formal-name>Postal Code</m:formal-name>
-                                 <m:description>Postal or ZIP code for mailing address</m:description>
-                              </xs:appinfo>
-                              <xs:documentation>
-                                 <b>Postal Code</b>: Postal or ZIP code for mailing address</xs:documentation>
-                           </xs:annotation>
-                           <xs:restriction base="xs:string"/>
-                        </xs:simpleType>
-                     </xs:element>
-                     <xs:element name="country" minOccurs="0" maxOccurs="1">
-                        <xs:simpleType>
-                           <xs:annotation>
-                              <xs:appinfo>
-                                 <m:formal-name>Country Code</m:formal-name>
-                                 <m:description>The ISO 3166-1 alpha-2 country code for the mailing address.</m:description>
-                              </xs:appinfo>
-                              <xs:documentation>
-                                 <b>Country Code</b>: The ISO 3166-1 alpha-2 country code for the mailing address.</xs:documentation>
-                           </xs:annotation>
-                           <xs:restriction base="xs:string"/>
-                        </xs:simpleType>
-                     </xs:element>
-                  </xs:sequence>
-                  <xs:attribute name="type" type="xs:NCName">
-                     <xs:annotation>
-                        <xs:appinfo>
-                           <m:formal-name>Address Type</m:formal-name>
-                           <m:description>Indicates the type of address.</m:description>
-                        </xs:appinfo>
-                        <xs:documentation>
-                           <b>Address Type</b>: Indicates the type of address.</xs:documentation>
-                     </xs:annotation>
-                  </xs:attribute>
-               </xs:complexType>
-            </xs:element>
+            <xs:element name="address"
+                        type="oscal-ssp:oscal-metadata-address-ASSEMBLY"
+                        minOccurs="0"
+                        maxOccurs="unbounded"/>
             <xs:element name="location-uuid"
                         type="oscal-ssp:location-uuid-FIELD"
                         minOccurs="0"
@@ -855,32 +523,10 @@
                               type="oscal-ssp:annotation-ASSEMBLY"
                               minOccurs="0"
                               maxOccurs="unbounded"/>
-                  <xs:element name="document-id" minOccurs="0" maxOccurs="unbounded">
-                     <xs:complexType>
-                        <xs:annotation>
-                           <xs:appinfo>
-                              <m:formal-name>Document Identifier</m:formal-name>
-                              <m:description>A document identifier qualified by an identifier <m:code>type</m:code>.</m:description>
-                           </xs:appinfo>
-                           <xs:documentation>
-                              <b>Document Identifier</b>: A document identifier qualified by an identifier type.</xs:documentation>
-                        </xs:annotation>
-                        <xs:simpleContent>
-                           <xs:extension base="xs:string">
-                              <xs:attribute name="scheme" use="required" type="oscal-ssp:uri">
-                                 <xs:annotation>
-                                    <xs:appinfo>
-                                       <m:formal-name>Document Identification Scheme</m:formal-name>
-                                       <m:description>Qualifies the kind of document identifier.</m:description>
-                                    </xs:appinfo>
-                                    <xs:documentation>
-                                       <b>Document Identification Scheme</b>: Qualifies the kind of document identifier.</xs:documentation>
-                                 </xs:annotation>
-                              </xs:attribute>
-                           </xs:extension>
-                        </xs:simpleContent>
-                     </xs:complexType>
-                  </xs:element>
+                  <xs:element name="document-id"
+                              type="oscal-ssp:oscal-metadata-document-id-FIELD"
+                              minOccurs="0"
+                              maxOccurs="unbounded"/>
                   <xs:element name="citation" minOccurs="0" maxOccurs="1">
                      <xs:complexType>
                         <xs:annotation>
@@ -1310,6 +956,189 @@
                   </xs:appinfo>
                   <xs:documentation>
                      <b>Hash algorithm</b>: Method by which a hash is derived</xs:documentation>
+               </xs:annotation>
+            </xs:attribute>
+         </xs:extension>
+      </xs:simpleContent>
+   </xs:complexType>
+   <xs:simpleType name="oscal-metadata-published-FIELD">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Publication Timestamp</m:formal-name>
+            <m:description>The date and time the document was published. The date-time value must be formatted according to <m:a>RFC 3339</m:a> with full time and time zone included.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Publication Timestamp</b>: The date and time the document was published. The date-time value must be formatted according to RFC 3339 with full time and time zone included.</xs:documentation>
+      </xs:annotation>
+      <xs:restriction base="oscal-ssp:dateTime-with-timezone"/>
+   </xs:simpleType>
+   <xs:simpleType name="oscal-metadata-last-modified-FIELD">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Last Modified Timestamp</m:formal-name>
+            <m:description>The date and time the document was last modified. The date-time value must be formatted according to <m:a>RFC 3339</m:a> with full time and time zone included.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Last Modified Timestamp</b>: The date and time the document was last modified. The date-time value must be formatted according to RFC 3339 with full time and time zone included.</xs:documentation>
+      </xs:annotation>
+      <xs:restriction base="oscal-ssp:dateTime-with-timezone"/>
+   </xs:simpleType>
+   <xs:simpleType name="oscal-metadata-version-FIELD">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Document Version</m:formal-name>
+            <m:description>A string used to distinguish the current version of the document from other previous (and future) versions.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Document Version</b>: A string used to distinguish the current version of the document from other previous (and future) versions.</xs:documentation>
+      </xs:annotation>
+      <xs:restriction base="xs:string"/>
+   </xs:simpleType>
+   <xs:simpleType name="oscal-metadata-oscal-version-FIELD">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>OSCAL version</m:formal-name>
+            <m:description>The OSCAL model version the document was authored against.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>OSCAL version</b>: The OSCAL model version the document was authored against.</xs:documentation>
+      </xs:annotation>
+      <xs:restriction base="xs:string"/>
+   </xs:simpleType>
+   <xs:simpleType name="oscal-metadata-email-address-FIELD">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Email Address</m:formal-name>
+            <m:description>An email address as defined by <m:a>RFC 5322 Section 3.4.1</m:a>.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Email Address</b>: An email address as defined by RFC 5322 Section 3.4.1.</xs:documentation>
+      </xs:annotation>
+      <xs:restriction base="oscal-ssp:email"/>
+   </xs:simpleType>
+   <xs:complexType name="oscal-metadata-telephone-number-FIELD">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Telephone Number</m:formal-name>
+            <m:description>Contact number by telephone.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Telephone Number</b>: Contact number by telephone.</xs:documentation>
+      </xs:annotation>
+      <xs:simpleContent>
+         <xs:extension base="xs:string">
+            <xs:attribute name="type" type="xs:string">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>type flag</m:formal-name>
+                     <m:description>Indicates the type of phone number.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>type flag</b>: Indicates the type of phone number.</xs:documentation>
+               </xs:annotation>
+            </xs:attribute>
+         </xs:extension>
+      </xs:simpleContent>
+   </xs:complexType>
+   <xs:complexType name="oscal-metadata-address-ASSEMBLY">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Address</m:formal-name>
+            <m:description>A postal address for the location.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Address</b>: A postal address for the location.</xs:documentation>
+      </xs:annotation>
+      <xs:sequence>
+         <xs:element name="addr-line"
+                     type="oscal-ssp:oscal-metadata-addr-line-FIELD"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:element name="city" minOccurs="0" maxOccurs="1">
+            <xs:simpleType>
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>City</m:formal-name>
+                     <m:description>City, town or geographical region for the mailing address.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>City</b>: City, town or geographical region for the mailing address.</xs:documentation>
+               </xs:annotation>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="state" minOccurs="0" maxOccurs="1">
+            <xs:simpleType>
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>State</m:formal-name>
+                     <m:description>State, province or analogous geographical region for mailing address</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>State</b>: State, province or analogous geographical region for mailing address</xs:documentation>
+               </xs:annotation>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="postal-code" minOccurs="0" maxOccurs="1">
+            <xs:simpleType>
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Postal Code</m:formal-name>
+                     <m:description>Postal or ZIP code for mailing address</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Postal Code</b>: Postal or ZIP code for mailing address</xs:documentation>
+               </xs:annotation>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="country" minOccurs="0" maxOccurs="1">
+            <xs:simpleType>
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Country Code</m:formal-name>
+                     <m:description>The ISO 3166-1 alpha-2 country code for the mailing address.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Country Code</b>: The ISO 3166-1 alpha-2 country code for the mailing address.</xs:documentation>
+               </xs:annotation>
+               <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+         </xs:element>
+      </xs:sequence>
+      <xs:attribute name="type" type="xs:string"/>
+   </xs:complexType>
+   <xs:simpleType name="oscal-metadata-addr-line-FIELD">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Address line</m:formal-name>
+            <m:description>A single line of an address.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Address line</b>: A single line of an address.</xs:documentation>
+      </xs:annotation>
+      <xs:restriction base="xs:string"/>
+   </xs:simpleType>
+   <xs:complexType name="oscal-metadata-document-id-FIELD">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Document Identifier</m:formal-name>
+            <m:description>A document identifier qualified by an identifier <m:code>type</m:code>.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Document Identifier</b>: A document identifier qualified by an identifier type.</xs:documentation>
+      </xs:annotation>
+      <xs:simpleContent>
+         <xs:extension base="xs:string">
+            <xs:attribute name="scheme" use="required" type="oscal-ssp:uri">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Document Identification Scheme</m:formal-name>
+                     <m:description>Qualifies the kind of document identifier.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Document Identification Scheme</b>: Qualifies the kind of document identifier.</xs:documentation>
                </xs:annotation>
             </xs:attribute>
          </xs:extension>
@@ -1928,19 +1757,10 @@
                      type="oscal-ssp:link-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
-         <xs:element name="date-authorized" minOccurs="0" maxOccurs="1">
-            <xs:simpleType>
-               <xs:annotation>
-                  <xs:appinfo>
-                     <m:formal-name>System Authorization Date</m:formal-name>
-                     <m:description>The date the system received its authorization.</m:description>
-                  </xs:appinfo>
-                  <xs:documentation>
-                     <b>System Authorization Date</b>: The date the system received its authorization.</xs:documentation>
-               </xs:annotation>
-               <xs:restriction base="xs:date"/>
-            </xs:simpleType>
-         </xs:element>
+         <xs:element name="date-authorized"
+                     type="oscal-ssp:oscal-ssp-date-authorized-FIELD"
+                     minOccurs="0"
+                     maxOccurs="1"/>
          <xs:element name="security-sensitivity-level" minOccurs="1" maxOccurs="1">
             <xs:simpleType>
                <xs:annotation>
@@ -1962,43 +1782,10 @@
                      type="oscal-ssp:security-impact-level-ASSEMBLY"
                      minOccurs="1"
                      maxOccurs="1"/>
-         <xs:element name="status" minOccurs="1" maxOccurs="1">
-            <xs:complexType>
-               <xs:annotation>
-                  <xs:appinfo>
-                     <m:formal-name>Status</m:formal-name>
-                     <m:description>Describes the operational status of the system.</m:description>
-                  </xs:appinfo>
-                  <xs:documentation>
-                     <b>Status</b>: Describes the operational status of the system.</xs:documentation>
-               </xs:annotation>
-               <xs:sequence>
-                  <xs:element name="remarks" minOccurs="0" maxOccurs="1">
-                     <xs:annotation>
-                        <xs:appinfo>
-                           <m:formal-name>Remarks</m:formal-name>
-                           <m:description>Additional commentary on the containing object.</m:description>
-                        </xs:appinfo>
-                        <xs:documentation>
-                           <b>Remarks</b>: Additional commentary on the containing object.</xs:documentation>
-                     </xs:annotation>
-                     <xs:complexType>
-                        <xs:group ref="oscal-ssp:PROSE" maxOccurs="unbounded" minOccurs="0"/>
-                     </xs:complexType>
-                  </xs:element>
-               </xs:sequence>
-               <xs:attribute name="state" use="required" type="xs:string">
-                  <xs:annotation>
-                     <xs:appinfo>
-                        <m:formal-name>State</m:formal-name>
-                        <m:description>The current operating status.</m:description>
-                     </xs:appinfo>
-                     <xs:documentation>
-                        <b>State</b>: The current operating status.</xs:documentation>
-                  </xs:annotation>
-               </xs:attribute>
-            </xs:complexType>
-         </xs:element>
+         <xs:element name="status"
+                     type="oscal-ssp:oscal-ssp-status-ASSEMBLY"
+                     minOccurs="1"
+                     maxOccurs="1"/>
          <xs:element name="authorization-boundary"
                      type="oscal-ssp:authorization-boundary-ASSEMBLY"
                      minOccurs="1"
@@ -2145,33 +1932,23 @@
                                        type="oscal-ssp:link-ASSEMBLY"
                                        minOccurs="0"
                                        maxOccurs="unbounded"/>
-                           <xs:element name="base" minOccurs="1" maxOccurs="1">
-                              <xs:simpleType>
-                                 <xs:annotation>
-                                    <xs:appinfo>
-                                       <m:formal-name>Base Level (Confidentiality, Integrity, or Availability)</m:formal-name>
-                                       <m:description>The prescribed base (Confidentiality, Integrity, or Availability) security impact level.</m:description>
-                                    </xs:appinfo>
-                                    <xs:documentation>
-                                       <b>Base Level (Confidentiality, Integrity, or Availability)</b>: The prescribed base (Confidentiality, Integrity, or Availability) security impact level.</xs:documentation>
-                                 </xs:annotation>
-                                 <xs:restriction base="xs:string"/>
-                              </xs:simpleType>
-                           </xs:element>
-                           <xs:element name="selected" minOccurs="0" maxOccurs="1">
-                              <xs:simpleType>
-                                 <xs:annotation>
-                                    <xs:appinfo>
-                                       <m:formal-name>Selected Level (Confidentiality, Integrity, or Availability)</m:formal-name>
-                                       <m:description>The selected (Confidentiality, Integrity, or Availability) security impact level.</m:description>
-                                    </xs:appinfo>
-                                    <xs:documentation>
-                                       <b>Selected Level (Confidentiality, Integrity, or Availability)</b>: The selected (Confidentiality, Integrity, or Availability) security impact level.</xs:documentation>
-                                 </xs:annotation>
-                                 <xs:restriction base="xs:string"/>
-                              </xs:simpleType>
-                           </xs:element>
+                           <xs:element name="base"
+                                       type="oscal-ssp:oscal-ssp-base-FIELD"
+                                       minOccurs="1"
+                                       maxOccurs="1"/>
+                           <xs:element name="selected"
+                                       type="oscal-ssp:oscal-ssp-selected-FIELD"
+                                       minOccurs="0"
+                                       maxOccurs="1"/>
                            <xs:element name="adjustment-justification" minOccurs="0" maxOccurs="1">
+                              <xs:annotation>
+                                 <xs:appinfo>
+                                    <m:formal-name>Adjustment Justification</m:formal-name>
+                                    <m:description>If the selected security level is different from the base security level, this contains the justification for the change.</m:description>
+                                 </xs:appinfo>
+                                 <xs:documentation>
+                                    <b>Adjustment Justification</b>: If the selected security level is different from the base security level, this contains the justification for the change.</xs:documentation>
+                              </xs:annotation>
                               <xs:complexType>
                                  <xs:group ref="oscal-ssp:PROSE" maxOccurs="unbounded" minOccurs="0"/>
                               </xs:complexType>
@@ -2202,33 +1979,23 @@
                                        type="oscal-ssp:link-ASSEMBLY"
                                        minOccurs="0"
                                        maxOccurs="unbounded"/>
-                           <xs:element name="base" minOccurs="1" maxOccurs="1">
-                              <xs:simpleType>
-                                 <xs:annotation>
-                                    <xs:appinfo>
-                                       <m:formal-name>Base Level (Confidentiality, Integrity, or Availability)</m:formal-name>
-                                       <m:description>The prescribed base (Confidentiality, Integrity, or Availability) security impact level.</m:description>
-                                    </xs:appinfo>
-                                    <xs:documentation>
-                                       <b>Base Level (Confidentiality, Integrity, or Availability)</b>: The prescribed base (Confidentiality, Integrity, or Availability) security impact level.</xs:documentation>
-                                 </xs:annotation>
-                                 <xs:restriction base="xs:string"/>
-                              </xs:simpleType>
-                           </xs:element>
-                           <xs:element name="selected" minOccurs="0" maxOccurs="1">
-                              <xs:simpleType>
-                                 <xs:annotation>
-                                    <xs:appinfo>
-                                       <m:formal-name>Selected Level (Confidentiality, Integrity, or Availability)</m:formal-name>
-                                       <m:description>The selected (Confidentiality, Integrity, or Availability) security impact level.</m:description>
-                                    </xs:appinfo>
-                                    <xs:documentation>
-                                       <b>Selected Level (Confidentiality, Integrity, or Availability)</b>: The selected (Confidentiality, Integrity, or Availability) security impact level.</xs:documentation>
-                                 </xs:annotation>
-                                 <xs:restriction base="xs:string"/>
-                              </xs:simpleType>
-                           </xs:element>
+                           <xs:element name="base"
+                                       type="oscal-ssp:oscal-ssp-base-FIELD"
+                                       minOccurs="1"
+                                       maxOccurs="1"/>
+                           <xs:element name="selected"
+                                       type="oscal-ssp:oscal-ssp-selected-FIELD"
+                                       minOccurs="0"
+                                       maxOccurs="1"/>
                            <xs:element name="adjustment-justification" minOccurs="0" maxOccurs="1">
+                              <xs:annotation>
+                                 <xs:appinfo>
+                                    <m:formal-name>Adjustment Justification</m:formal-name>
+                                    <m:description>If the selected security level is different from the base security level, this contains the justification for the change.</m:description>
+                                 </xs:appinfo>
+                                 <xs:documentation>
+                                    <b>Adjustment Justification</b>: If the selected security level is different from the base security level, this contains the justification for the change.</xs:documentation>
+                              </xs:annotation>
                               <xs:complexType>
                                  <xs:group ref="oscal-ssp:PROSE" maxOccurs="unbounded" minOccurs="0"/>
                               </xs:complexType>
@@ -2259,33 +2026,23 @@
                                        type="oscal-ssp:link-ASSEMBLY"
                                        minOccurs="0"
                                        maxOccurs="unbounded"/>
-                           <xs:element name="base" minOccurs="1" maxOccurs="1">
-                              <xs:simpleType>
-                                 <xs:annotation>
-                                    <xs:appinfo>
-                                       <m:formal-name>Base Level (Confidentiality, Integrity, or Availability)</m:formal-name>
-                                       <m:description>The prescribed base (Confidentiality, Integrity, or Availability) security impact level.</m:description>
-                                    </xs:appinfo>
-                                    <xs:documentation>
-                                       <b>Base Level (Confidentiality, Integrity, or Availability)</b>: The prescribed base (Confidentiality, Integrity, or Availability) security impact level.</xs:documentation>
-                                 </xs:annotation>
-                                 <xs:restriction base="xs:string"/>
-                              </xs:simpleType>
-                           </xs:element>
-                           <xs:element name="selected" minOccurs="0" maxOccurs="1">
-                              <xs:simpleType>
-                                 <xs:annotation>
-                                    <xs:appinfo>
-                                       <m:formal-name>Selected Level (Confidentiality, Integrity, or Availability)</m:formal-name>
-                                       <m:description>The selected (Confidentiality, Integrity, or Availability) security impact level.</m:description>
-                                    </xs:appinfo>
-                                    <xs:documentation>
-                                       <b>Selected Level (Confidentiality, Integrity, or Availability)</b>: The selected (Confidentiality, Integrity, or Availability) security impact level.</xs:documentation>
-                                 </xs:annotation>
-                                 <xs:restriction base="xs:string"/>
-                              </xs:simpleType>
-                           </xs:element>
+                           <xs:element name="base"
+                                       type="oscal-ssp:oscal-ssp-base-FIELD"
+                                       minOccurs="1"
+                                       maxOccurs="1"/>
+                           <xs:element name="selected"
+                                       type="oscal-ssp:oscal-ssp-selected-FIELD"
+                                       minOccurs="0"
+                                       maxOccurs="1"/>
                            <xs:element name="adjustment-justification" minOccurs="0" maxOccurs="1">
+                              <xs:annotation>
+                                 <xs:appinfo>
+                                    <m:formal-name>Adjustment Justification</m:formal-name>
+                                    <m:description>If the selected security level is different from the base security level, this contains the justification for the change.</m:description>
+                                 </xs:appinfo>
+                                 <xs:documentation>
+                                    <b>Adjustment Justification</b>: If the selected security level is different from the base security level, this contains the justification for the change.</xs:documentation>
+                              </xs:annotation>
                               <xs:complexType>
                                  <xs:group ref="oscal-ssp:PROSE" maxOccurs="unbounded" minOccurs="0"/>
                               </xs:complexType>
@@ -2308,6 +2065,28 @@
          </xs:element>
       </xs:sequence>
    </xs:complexType>
+   <xs:simpleType name="oscal-ssp-base-FIELD">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Base Level (Confidentiality, Integrity, or Availability)</m:formal-name>
+            <m:description>The prescribed base (Confidentiality, Integrity, or Availability) security impact level.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Base Level (Confidentiality, Integrity, or Availability)</b>: The prescribed base (Confidentiality, Integrity, or Availability) security impact level.</xs:documentation>
+      </xs:annotation>
+      <xs:restriction base="xs:string"/>
+   </xs:simpleType>
+   <xs:simpleType name="oscal-ssp-selected-FIELD">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Selected Level (Confidentiality, Integrity, or Availability)</m:formal-name>
+            <m:description>The selected (Confidentiality, Integrity, or Availability) security impact level.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Selected Level (Confidentiality, Integrity, or Availability)</b>: The selected (Confidentiality, Integrity, or Availability) security impact level.</xs:documentation>
+      </xs:annotation>
+      <xs:restriction base="xs:string"/>
+   </xs:simpleType>
    <xs:complexType name="security-impact-level-ASSEMBLY">
       <xs:annotation>
          <xs:appinfo>
@@ -2361,6 +2140,52 @@
          </xs:element>
       </xs:sequence>
    </xs:complexType>
+   <xs:complexType name="oscal-ssp-status-ASSEMBLY">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Status</m:formal-name>
+            <m:description>Describes the operational status of the system.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Status</b>: Describes the operational status of the system.</xs:documentation>
+      </xs:annotation>
+      <xs:sequence>
+         <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Remarks</m:formal-name>
+                  <m:description>Additional commentary on the containing object.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Remarks</b>: Additional commentary on the containing object.</xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+               <xs:group ref="oscal-ssp:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:complexType>
+         </xs:element>
+      </xs:sequence>
+      <xs:attribute name="state" use="required" type="xs:string">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>State</m:formal-name>
+               <m:description>The current operating status.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>State</b>: The current operating status.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+   </xs:complexType>
+   <xs:simpleType name="oscal-ssp-date-authorized-FIELD">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>System Authorization Date</m:formal-name>
+            <m:description>The date the system received its authorization.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>System Authorization Date</b>: The date the system received its authorization.</xs:documentation>
+      </xs:annotation>
+      <xs:restriction base="xs:date"/>
+   </xs:simpleType>
    <xs:complexType name="authorization-boundary-ASSEMBLY">
       <xs:annotation>
          <xs:appinfo>
@@ -2603,19 +2428,10 @@
                         <xs:restriction base="oscal-ssp:uuid"/>
                      </xs:simpleType>
                   </xs:element>
-                  <xs:element name="date-authorized" minOccurs="1" maxOccurs="1">
-                     <xs:simpleType>
-                        <xs:annotation>
-                           <xs:appinfo>
-                              <m:formal-name>System Authorization Date</m:formal-name>
-                              <m:description>The date the system received its authorization.</m:description>
-                           </xs:appinfo>
-                           <xs:documentation>
-                              <b>System Authorization Date</b>: The date the system received its authorization.</xs:documentation>
-                        </xs:annotation>
-                        <xs:restriction base="xs:date"/>
-                     </xs:simpleType>
-                  </xs:element>
+                  <xs:element name="date-authorized"
+                              type="oscal-ssp:oscal-ssp-date-authorized-FIELD"
+                              minOccurs="1"
+                              maxOccurs="1"/>
                   <xs:element name="remarks" minOccurs="0" maxOccurs="1">
                      <xs:annotation>
                         <xs:appinfo>
