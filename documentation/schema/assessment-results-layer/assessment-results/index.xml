@@ -4,7 +4,7 @@ published [0 or 1]: dateTime-with-timezone,
 last-modified [1]: dateTime-with-timezone,
 version [1]: string,
 oscal-version [1]: string,
-revisions [0 or 1]: [ … ], An array of revision objects [0 to ∞]{
+revisions [0 or 1]: [ … ], An array of oscal-metadata-revision objects [0 to ∞]{
 title [0 or 1]: markup-line,
 published [0 or 1]: dateTime-with-timezone,
 last-modified [0 or 1]: dateTime-with-timezone,

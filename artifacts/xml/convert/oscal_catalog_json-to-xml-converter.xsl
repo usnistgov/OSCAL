@@ -628,7 +628,7 @@
                  priority="4">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog/metadata/published" -->
-      <field name="published"
+      <field name="oscal-metadata-published"
              gi="published"
              as-type="dateTime-with-timezone"
              formal-name="Publication Timestamp"
@@ -650,7 +650,7 @@
                  priority="4">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog/metadata/last-modified" -->
-      <field name="last-modified"
+      <field name="oscal-metadata-last-modified"
              gi="last-modified"
              as-type="dateTime-with-timezone"
              formal-name="Last Modified Timestamp"
@@ -672,7 +672,7 @@
                  priority="4">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog/metadata/version" -->
-      <field name="version"
+      <field name="oscal-metadata-version"
              gi="version"
              formal-name="Document Version"
              in-json="SCALAR">
@@ -693,7 +693,7 @@
                  priority="4">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog/metadata/oscal-version" -->
-      <field name="oscal-version"
+      <field name="oscal-metadata-oscal-version"
              gi="oscal-version"
              formal-name="OSCAL version"
              in-json="SCALAR">
@@ -714,7 +714,9 @@
                  priority="5">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog/metadata/revisions/revision" -->
-      <assembly name="revision" gi="revision" formal-name="Revision History Entry">
+      <assembly name="oscal-metadata-revision"
+                gi="revision"
+                formal-name="Revision History Entry">
          <xsl:apply-templates select="*[@key='title']"/>
          <xsl:apply-templates select="*[@key='published']"/>
          <xsl:apply-templates select="*[@key='last-modified']"/>
@@ -763,7 +765,7 @@
                  priority="6">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog/metadata/revisions/revision/published" -->
-      <field name="published"
+      <field name="oscal-metadata-published"
              gi="published"
              as-type="dateTime-with-timezone"
              formal-name="Publication Timestamp"
@@ -785,7 +787,7 @@
                  priority="6">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog/metadata/revisions/revision/last-modified" -->
-      <field name="last-modified"
+      <field name="oscal-metadata-last-modified"
              gi="last-modified"
              as-type="dateTime-with-timezone"
              formal-name="Last Modified Timestamp"
@@ -807,7 +809,7 @@
                  priority="6">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog/metadata/revisions/revision/version" -->
-      <field name="version"
+      <field name="oscal-metadata-version"
              gi="version"
              formal-name="Document Version"
              in-json="SCALAR">
@@ -828,7 +830,7 @@
                  priority="6">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog/metadata/revisions/revision/oscal-version" -->
-      <field name="oscal-version"
+      <field name="oscal-metadata-oscal-version"
              gi="oscal-version"
              formal-name="OSCAL version"
              in-json="SCALAR">
@@ -871,7 +873,7 @@
                  priority="5">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog/metadata/document-id" -->
-      <field name="document-id"
+      <field name="oscal-metadata-document-id"
              gi="document-id"
              formal-name="Document Identifier">
          <xsl:apply-templates select="*[@key='scheme']"/>
@@ -1034,11 +1036,10 @@
                  priority="6">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog/metadata/location/address" -->
-      <assembly name="address" gi="address" formal-name="Address">
+      <assembly name="oscal-metadata-address" gi="address" formal-name="Address">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">address</xsl:attribute>
          </xsl:if>
-         <xsl:apply-templates select="*[@key='type']"/>
          <xsl:apply-templates select="*[@key='addr-lines']"/>
          <xsl:apply-templates select="*[@key='city']"/>
          <xsl:apply-templates select="*[@key='state']"/>
@@ -1046,25 +1047,11 @@
          <xsl:apply-templates select="*[@key='country']"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:map[@key='address']/j:string[@key='type']"
-                 priority="7"><!-- XML match="catalog/metadata/location/address/@type" -->
-      <flag in-json="string"
-            as-type="NCName"
-            name="location-type"
-            key="type"
-            gi="type"
-            formal-name="Address Type">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:map[@key='address']/j:string[@key='type']"
-                 mode="keep-value-property"
-                 priority="7"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:map[@key='address']/j:array[@key='addr-lines']/j:string"
                  priority="8">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog/metadata/location/address/addr-line" -->
-      <field name="addr-line"
+      <field name="oscal-metadata-addr-line"
              gi="addr-line"
              formal-name="Address line"
              in-json="SCALAR">
@@ -1160,7 +1147,7 @@
                  priority="7">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog/metadata/location/email-address" -->
-      <field name="email-address"
+      <field name="oscal-metadata-email-address"
              gi="email-address"
              as-type="email"
              formal-name="Email Address"
@@ -1179,7 +1166,7 @@
                  priority="7">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog/metadata/location/telephone-number" -->
-      <field name="telephone-number"
+      <field name="oscal-metadata-telephone-number"
              gi="telephone-number"
              formal-name="Telephone Number">
          <xsl:apply-templates select="*[@key='type']"/>
@@ -1345,7 +1332,7 @@
                  priority="7">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog/metadata/party/email-address" -->
-      <field name="email-address"
+      <field name="oscal-metadata-email-address"
              gi="email-address"
              as-type="email"
              formal-name="Email Address"
@@ -1364,7 +1351,7 @@
                  priority="7">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog/metadata/party/telephone-number" -->
-      <field name="telephone-number"
+      <field name="oscal-metadata-telephone-number"
              gi="telephone-number"
              formal-name="Telephone Number">
          <xsl:apply-templates select="*[@key='type']"/>
@@ -1396,8 +1383,7 @@
                  priority="8">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog/metadata/party/address" -->
-      <assembly name="address" gi="address" formal-name="Address">
-         <xsl:apply-templates select="*[@key='type']"/>
+      <assembly name="oscal-metadata-address" gi="address" formal-name="Address">
          <xsl:apply-templates select="*[@key='addr-lines']"/>
          <xsl:apply-templates select="*[@key='city']"/>
          <xsl:apply-templates select="*[@key='state']"/>
@@ -1405,25 +1391,11 @@
          <xsl:apply-templates select="*[@key='country']"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='addresses']/j:map/j:string[@key='type']"
-                 priority="9"><!-- XML match="catalog/metadata/party/address/@type" -->
-      <flag in-json="string"
-            as-type="NCName"
-            name="location-type"
-            key="type"
-            gi="type"
-            formal-name="Address Type">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='addresses']/j:map/j:string[@key='type']"
-                 mode="keep-value-property"
-                 priority="9"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='addresses']/j:map/j:array[@key='addr-lines']/j:string"
                  priority="10">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog/metadata/party/address/addr-line" -->
-      <field name="addr-line"
+      <field name="oscal-metadata-addr-line"
              gi="addr-line"
              formal-name="Address line"
              in-json="SCALAR">
@@ -2542,7 +2514,7 @@
                  priority="7">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog/back-matter/resource/document-id" -->
-      <field name="document-id"
+      <field name="oscal-metadata-document-id"
              gi="document-id"
              formal-name="Document Identifier">
          <xsl:apply-templates select="*[@key='scheme']"/>

@@ -4,7 +4,7 @@ published [0 or 1]: dateTime-with-timezone,
 last-modified [1]: dateTime-with-timezone,
 version [1]: string,
 oscal-version [1]: string,
-revisions [0 or 1]: [ … ], An array of revision objects [0 to ∞]{
+revisions [0 or 1]: [ … ], An array of oscal-metadata-revision objects [0 to ∞]{
 title [0 or 1]: markup-line,
 published [0 or 1]: dateTime-with-timezone,
 last-modified [0 or 1]: dateTime-with-timezone,
@@ -13,7 +13,7 @@ oscal-version [0 or 1]: string,
 props [0 or 1]: [ … ], An array of property objects [0 to ∞]{</description></item><item><title>Control Catalog Model JSON Format Reference</title><link>https://pages.nist.gov/OSCAL/documentation/schema/catalog-layer/catalog/json-schema/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/catalog-layer/catalog/json-schema/</guid><description>OSCAL model OSCAL Control Catalog Model
 Version 1.0.0-rc1
 JSON Schema oscal_catalog_schema.json XML to JSON converter oscal_catalog_xml-to-json-converter.xsl (How do I use the converter to convert OSCAL XML to JSON?) The OSCAL Control Catalog format can be used to describe a collection of security controls and related control enhancements, along with contextualizing documentation and metadata. The root of the Control Catalog format is catalog.
-Switch to XML annotation formal name Annotated Property An attribute, characteristic, or quality of the containing object expressed as a namespace qualified name/value pair with optional explanatory remarks.</description></item><item><title>OSCAL Catalog Model XML Format Outline</title><link>https://pages.nist.gov/OSCAL/documentation/schema/catalog-layer/catalog/xml-model-map/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/catalog-layer/catalog/xml-model-map/</guid><description>&amp;lt;catalog uuid="uuid"&amp;gt;… &amp;lt;/catalog&amp;gt;[1]&amp;lt;metadata&amp;gt;… &amp;lt;/metadata&amp;gt;[1]&amp;lt;title&amp;gt;markup-line&amp;lt;/title&amp;gt;[1]
+Switch to XML addr-line formal name Address line A single line of an address.</description></item><item><title>OSCAL Catalog Model XML Format Outline</title><link>https://pages.nist.gov/OSCAL/documentation/schema/catalog-layer/catalog/xml-model-map/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/catalog-layer/catalog/xml-model-map/</guid><description>&amp;lt;catalog uuid="uuid"&amp;gt;… &amp;lt;/catalog&amp;gt;[1]&amp;lt;metadata&amp;gt;… &amp;lt;/metadata&amp;gt;[1]&amp;lt;title&amp;gt;markup-line&amp;lt;/title&amp;gt;[1]
 &amp;lt;published&amp;gt;dateTime-with-timezone&amp;lt;/published&amp;gt;[0 or 1]
 &amp;lt;last-modified&amp;gt;dateTime-with-timezone&amp;lt;/last-modified&amp;gt;[1]
 &amp;lt;version&amp;gt;string&amp;lt;/version&amp;gt;[1]

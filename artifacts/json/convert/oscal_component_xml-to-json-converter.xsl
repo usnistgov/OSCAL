@@ -1113,7 +1113,7 @@
                  priority="4"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
-      <field name="published"
+      <field name="oscal-metadata-published"
              gi="published"
              as-type="dateTime-with-timezone"
              formal-name="Publication Timestamp"
@@ -1130,7 +1130,7 @@
                  priority="4"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
-      <field name="last-modified"
+      <field name="oscal-metadata-last-modified"
              gi="last-modified"
              as-type="dateTime-with-timezone"
              formal-name="Last Modified Timestamp"
@@ -1147,7 +1147,7 @@
                  priority="4"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
-      <field name="version"
+      <field name="oscal-metadata-version"
              gi="version"
              formal-name="Document Version"
              in-json="SCALAR">
@@ -1163,7 +1163,7 @@
                  priority="4"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
-      <field name="oscal-version"
+      <field name="oscal-metadata-oscal-version"
              gi="oscal-version"
              formal-name="OSCAL version"
              in-json="SCALAR">
@@ -1179,7 +1179,9 @@
                  priority="5"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
-      <assembly name="revision" gi="revision" formal-name="Revision History Entry">
+      <assembly name="oscal-metadata-revision"
+                gi="revision"
+                formal-name="Revision History Entry">
          <xsl:apply-templates select="title"/>
          <xsl:apply-templates select="published"/>
          <xsl:apply-templates select="last-modified"/>
@@ -1241,7 +1243,7 @@
                  priority="6"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
-      <field name="published"
+      <field name="oscal-metadata-published"
              gi="published"
              as-type="dateTime-with-timezone"
              formal-name="Publication Timestamp"
@@ -1258,7 +1260,7 @@
                  priority="6"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
-      <field name="last-modified"
+      <field name="oscal-metadata-last-modified"
              gi="last-modified"
              as-type="dateTime-with-timezone"
              formal-name="Last Modified Timestamp"
@@ -1275,7 +1277,7 @@
                  priority="6"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
-      <field name="version"
+      <field name="oscal-metadata-version"
              gi="version"
              formal-name="Document Version"
              in-json="SCALAR">
@@ -1291,7 +1293,7 @@
                  priority="6"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
-      <field name="oscal-version"
+      <field name="oscal-metadata-oscal-version"
              gi="oscal-version"
              formal-name="OSCAL version"
              in-json="SCALAR">
@@ -1324,7 +1326,7 @@
                  priority="5"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
-      <field name="document-id"
+      <field name="oscal-metadata-document-id"
              gi="document-id"
              formal-name="Document Identifier">
          <xsl:apply-templates select="@scheme"/>
@@ -1453,11 +1455,10 @@
                  priority="6"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
-      <assembly name="address" gi="address" formal-name="Address">
+      <assembly name="oscal-metadata-address" gi="address" formal-name="Address">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">address</xsl:attribute>
          </xsl:if>
-         <xsl:apply-templates select="@type"/>
          <xsl:for-each-group select="addr-line" group-by="true()">
             <group in-json="ARRAY" key="addr-lines">
                <xsl:apply-templates select="current-group()">
@@ -1471,23 +1472,11 @@
          <xsl:apply-templates select="country"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="component-definition/metadata/location/address/@type"
-                 priority="7"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-            as-type="NCName"
-            name="location-type"
-            key="type"
-            gi="type"
-            formal-name="Address Type">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
    <xsl:template match="component-definition/metadata/location/address/addr-line"
                  priority="8"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
-      <field name="addr-line"
+      <field name="oscal-metadata-addr-line"
              gi="addr-line"
              formal-name="Address line"
              in-json="SCALAR">
@@ -1558,7 +1547,7 @@
                  priority="7"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
-      <field name="email-address"
+      <field name="oscal-metadata-email-address"
              gi="email-address"
              as-type="email"
              formal-name="Email Address"
@@ -1572,7 +1561,7 @@
                  priority="7"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
-      <field name="telephone-number"
+      <field name="oscal-metadata-telephone-number"
              gi="telephone-number"
              formal-name="Telephone Number">
          <xsl:apply-templates select="@type"/>
@@ -1699,7 +1688,7 @@
                  priority="7"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
-      <field name="email-address"
+      <field name="oscal-metadata-email-address"
              gi="email-address"
              as-type="email"
              formal-name="Email Address"
@@ -1713,7 +1702,7 @@
                  priority="7"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
-      <field name="telephone-number"
+      <field name="oscal-metadata-telephone-number"
              gi="telephone-number"
              formal-name="Telephone Number">
          <xsl:apply-templates select="@type"/>
@@ -1738,8 +1727,7 @@
                  priority="8"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
-      <assembly name="address" gi="address" formal-name="Address">
-         <xsl:apply-templates select="@type"/>
+      <assembly name="oscal-metadata-address" gi="address" formal-name="Address">
          <xsl:for-each-group select="addr-line" group-by="true()">
             <group in-json="ARRAY" key="addr-lines">
                <xsl:apply-templates select="current-group()">
@@ -1753,23 +1741,11 @@
          <xsl:apply-templates select="country"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="component-definition/metadata/party/address/@type"
-                 priority="9"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-            as-type="NCName"
-            name="location-type"
-            key="type"
-            gi="type"
-            formal-name="Address Type">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
    <xsl:template match="component-definition/metadata/party/address/addr-line"
                  priority="10"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
-      <field name="addr-line"
+      <field name="oscal-metadata-addr-line"
              gi="addr-line"
              formal-name="Address line"
              in-json="SCALAR">
@@ -2441,7 +2417,7 @@
                  priority="7"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
-      <field name="document-id"
+      <field name="oscal-metadata-document-id"
              gi="document-id"
              formal-name="Document Identifier">
          <xsl:apply-templates select="@scheme"/>

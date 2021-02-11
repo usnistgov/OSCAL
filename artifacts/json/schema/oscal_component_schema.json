@@ -13,108 +13,26 @@
         { "title" : 
           { "title" : "Document Title",
             "description" : "A name given to the document, which may be used by a tool for display and navigation.",
-            "$id" : "#/definitions/title",
+            "$id" : "#/definitions/metadata-title",
             "type" : "string" },
           "published" : 
-          { "title" : "Publication Timestamp",
-            "description" : "The date and time the document was published. The date-time value must be formatted according to RFC 3339 with full time and time zone included.",
-            "$id" : "#/definitions/published",
-            "type" : "string",
-            "format" : "date-time",
-            "pattern" : "^((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})$" },
+          { "$ref" : "#/definitions/oscal-metadata-published" },
           "last-modified" : 
-          { "title" : "Last Modified Timestamp",
-            "description" : "The date and time the document was last modified. The date-time value must be formatted according to RFC 3339 with full time and time zone included.",
-            "$id" : "#/definitions/last-modified",
-            "type" : "string",
-            "format" : "date-time",
-            "pattern" : "^((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})$" },
+          { "$ref" : "#/definitions/oscal-metadata-last-modified" },
           "version" : 
-          { "title" : "Document Version",
-            "description" : "A string used to distinguish the current version of the document from other previous (and future) versions.",
-            "$id" : "#/definitions/version",
-            "type" : "string" },
+          { "$ref" : "#/definitions/oscal-metadata-version" },
           "oscal-version" : 
-          { "title" : "OSCAL version",
-            "description" : "The OSCAL model version the document was authored against.",
-            "$id" : "#/definitions/oscal-version",
-            "type" : "string" },
+          { "$ref" : "#/definitions/oscal-metadata-oscal-version" },
           "revisions" : 
           { "type" : "array",
             "minItems" : 1,
             "items" : 
-            { "title" : "Revision History Entry",
-              "description" : "An entry in a sequential list of revisions to the containing document in reverse chronological order (i.e., most recent previous revision first).",
-              "$id" : "#/definitions/revision",
-              "type" : "object",
-              "properties" : 
-              { "title" : 
-                { "title" : "Document Title",
-                  "description" : "A name given to the document revision, which may be used by a tool for display and navigation.",
-                  "$id" : "#/definitions/title",
-                  "type" : "string" },
-                "published" : 
-                { "title" : "Publication Timestamp",
-                  "description" : "The date and time the document was published. The date-time value must be formatted according to RFC 3339 with full time and time zone included.",
-                  "$id" : "#/definitions/published",
-                  "type" : "string",
-                  "format" : "date-time",
-                  "pattern" : "^((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})$" },
-                "last-modified" : 
-                { "title" : "Last Modified Timestamp",
-                  "description" : "The date and time the document was last modified. The date-time value must be formatted according to RFC 3339 with full time and time zone included.",
-                  "$id" : "#/definitions/last-modified",
-                  "type" : "string",
-                  "format" : "date-time",
-                  "pattern" : "^((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})$" },
-                "version" : 
-                { "title" : "Document Version",
-                  "description" : "A string used to distinguish the current version of the document from other previous (and future) versions.",
-                  "$id" : "#/definitions/version",
-                  "type" : "string" },
-                "oscal-version" : 
-                { "title" : "OSCAL version",
-                  "description" : "The OSCAL model version the document was authored against.",
-                  "$id" : "#/definitions/oscal-version",
-                  "type" : "string" },
-                "props" : 
-                { "type" : "array",
-                  "minItems" : 1,
-                  "items" : 
-                  { "$ref" : "#/definitions/property" } },
-                "annotations" : 
-                { "type" : "array",
-                  "minItems" : 1,
-                  "items" : 
-                  { "$ref" : "#/definitions/annotation" } },
-                "links" : 
-                { "type" : "array",
-                  "minItems" : 1,
-                  "items" : 
-                  { "$ref" : "#/definitions/link" } },
-                "remarks" : 
-                { "$ref" : "#/definitions/remarks" } },
-              "additionalProperties" : false } },
+            { "$ref" : "#/definitions/oscal-metadata-revision" } },
           "document-ids" : 
           { "type" : "array",
             "minItems" : 1,
             "items" : 
-            { "title" : "Document Identifier",
-              "description" : "A document identifier qualified by an identifier type.",
-              "$id" : "#/definitions/document-id",
-              "type" : "object",
-              "properties" : 
-              { "scheme" : 
-                { "title" : "Document Identification Scheme",
-                  "description" : "Qualifies the kind of document identifier.",
-                  "type" : "string",
-                  "format" : "uri" },
-                "identifier" : 
-                { "type" : "string" } },
-              "required" : 
-              [ "identifier",
-                "scheme" ],
-              "additionalProperties" : false } },
+            { "$ref" : "#/definitions/oscal-metadata-document-id" } },
           "props" : 
           { "type" : "array",
             "minItems" : 1,
@@ -163,6 +81,43 @@
           "version",
           "oscal-version" ],
         "additionalProperties" : false },
+      "oscal-metadata-revision" : 
+      { "title" : "Revision History Entry",
+        "description" : "An entry in a sequential list of revisions to the containing document in reverse chronological order (i.e., most recent previous revision first).",
+        "$id" : "#/definitions/oscal-metadata-revision",
+        "type" : "object",
+        "properties" : 
+        { "title" : 
+          { "title" : "Document Title",
+            "description" : "A name given to the document revision, which may be used by a tool for display and navigation.",
+            "$id" : "#/definitions/oscal-metadata-revision-title",
+            "type" : "string" },
+          "published" : 
+          { "$ref" : "#/definitions/oscal-metadata-published" },
+          "last-modified" : 
+          { "$ref" : "#/definitions/oscal-metadata-last-modified" },
+          "version" : 
+          { "$ref" : "#/definitions/oscal-metadata-version" },
+          "oscal-version" : 
+          { "$ref" : "#/definitions/oscal-metadata-oscal-version" },
+          "props" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/property" } },
+          "annotations" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/annotation" } },
+          "links" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/link" } },
+          "remarks" : 
+          { "$ref" : "#/definitions/remarks" } },
+        "additionalProperties" : false },
       "location" : 
       { "title" : "Location",
         "description" : "A location, with associated metadata that can be referenced.",
@@ -177,82 +132,27 @@
           "title" : 
           { "title" : "Location Title",
             "description" : "A name given to the location, which may be used by a tool for display and navigation.",
-            "$id" : "#/definitions/title",
+            "$id" : "#/definitions/location-title",
             "type" : "string" },
           "address" : 
-          { "title" : "Address",
-            "description" : "A postal address for the location.",
-            "$id" : "#/definitions/address",
-            "type" : "object",
-            "properties" : 
-            { "type" : 
-              { "title" : "Address Type",
-                "description" : "Indicates the type of address.",
-                "type" : "string" },
-              "addr-lines" : 
-              { "type" : "array",
-                "minItems" : 1,
-                "items" : 
-                { "title" : "Address line",
-                  "description" : "A single line of an address.",
-                  "$id" : "#/definitions/addr-line",
-                  "type" : "string" } },
-              "city" : 
-              { "title" : "City",
-                "description" : "City, town or geographical region for the mailing address.",
-                "$id" : "#/definitions/city",
-                "type" : "string" },
-              "state" : 
-              { "title" : "State",
-                "description" : "State, province or analogous geographical region for mailing address",
-                "$id" : "#/definitions/state",
-                "type" : "string" },
-              "postal-code" : 
-              { "title" : "Postal Code",
-                "description" : "Postal or ZIP code for mailing address",
-                "$id" : "#/definitions/postal-code",
-                "type" : "string" },
-              "country" : 
-              { "title" : "Country Code",
-                "description" : "The ISO 3166-1 alpha-2 country code for the mailing address.",
-                "$id" : "#/definitions/country",
-                "type" : "string" } },
-            "additionalProperties" : false },
+          { "$ref" : "#/definitions/oscal-metadata-address" },
           "email-addresses" : 
           { "type" : "array",
             "minItems" : 1,
             "items" : 
-            { "title" : "Email Address",
-              "description" : "An email address as defined by RFC 5322 Section 3.4.1.",
-              "$id" : "#/definitions/email-address",
-              "type" : "string",
-              "format" : "email",
-              "pattern" : "^.+@.+" } },
+            { "$ref" : "#/definitions/oscal-metadata-email-address" } },
           "telephone-numbers" : 
           { "type" : "array",
             "minItems" : 1,
             "items" : 
-            { "title" : "Telephone Number",
-              "description" : "Contact number by telephone.",
-              "$id" : "#/definitions/telephone-number",
-              "type" : "object",
-              "properties" : 
-              { "type" : 
-                { "title" : "type flag",
-                  "description" : "Indicates the type of phone number.",
-                  "type" : "string" },
-                "number" : 
-                { "type" : "string" } },
-              "required" : 
-              [ "number" ],
-              "additionalProperties" : false } },
+            { "$ref" : "#/definitions/oscal-metadata-telephone-number" } },
           "urls" : 
           { "type" : "array",
             "minItems" : 1,
             "items" : 
             { "title" : "Location URL",
               "description" : "The uniform resource locator (URL) for a web site or Internet presence associated with the location.",
-              "$id" : "#/definitions/url",
+              "$id" : "#/definitions/location-url",
               "type" : "string",
               "format" : "uri" } },
           "props" : 
@@ -303,12 +203,12 @@
           "name" : 
           { "title" : "Party Name",
             "description" : "The full name of the party. This is typically the legal name associated with the party.",
-            "$id" : "#/definitions/name",
+            "$id" : "#/definitions/party-name",
             "type" : "string" },
           "short-name" : 
           { "title" : "Party Short Name",
             "description" : "A short common name, abbreviation, or acronym for the party.",
-            "$id" : "#/definitions/short-name",
+            "$id" : "#/definitions/party-short-name",
             "type" : "string" },
           "external-ids" : 
           { "type" : "array",
@@ -316,7 +216,7 @@
             "items" : 
             { "title" : "Party External Identifier",
               "description" : "An identifier for a person or organization using a designated scheme. e.g. an Open Researcher and Contributor ID (ORCID)",
-              "$id" : "#/definitions/external-id",
+              "$id" : "#/definitions/party-external-id",
               "type" : "object",
               "properties" : 
               { "scheme" : 
@@ -349,72 +249,17 @@
           { "type" : "array",
             "minItems" : 1,
             "items" : 
-            { "title" : "Email Address",
-              "description" : "An email address as defined by RFC 5322 Section 3.4.1.",
-              "$id" : "#/definitions/email-address",
-              "type" : "string",
-              "format" : "email",
-              "pattern" : "^.+@.+" } },
+            { "$ref" : "#/definitions/oscal-metadata-email-address" } },
           "telephone-numbers" : 
           { "type" : "array",
             "minItems" : 1,
             "items" : 
-            { "title" : "Telephone Number",
-              "description" : "Contact number by telephone.",
-              "$id" : "#/definitions/telephone-number",
-              "type" : "object",
-              "properties" : 
-              { "type" : 
-                { "title" : "type flag",
-                  "description" : "Indicates the type of phone number.",
-                  "type" : "string" },
-                "number" : 
-                { "type" : "string" } },
-              "required" : 
-              [ "number" ],
-              "additionalProperties" : false } },
+            { "$ref" : "#/definitions/oscal-metadata-telephone-number" } },
           "addresses" : 
           { "type" : "array",
             "minItems" : 1,
             "items" : 
-            { "title" : "Address",
-              "description" : "A postal address for the location.",
-              "$id" : "#/definitions/address",
-              "type" : "object",
-              "properties" : 
-              { "type" : 
-                { "title" : "Address Type",
-                  "description" : "Indicates the type of address.",
-                  "type" : "string" },
-                "addr-lines" : 
-                { "type" : "array",
-                  "minItems" : 1,
-                  "items" : 
-                  { "title" : "Address line",
-                    "description" : "A single line of an address.",
-                    "$id" : "#/definitions/addr-line",
-                    "type" : "string" } },
-                "city" : 
-                { "title" : "City",
-                  "description" : "City, town or geographical region for the mailing address.",
-                  "$id" : "#/definitions/city",
-                  "type" : "string" },
-                "state" : 
-                { "title" : "State",
-                  "description" : "State, province or analogous geographical region for mailing address",
-                  "$id" : "#/definitions/state",
-                  "type" : "string" },
-                "postal-code" : 
-                { "title" : "Postal Code",
-                  "description" : "Postal or ZIP code for mailing address",
-                  "$id" : "#/definitions/postal-code",
-                  "type" : "string" },
-                "country" : 
-                { "title" : "Country Code",
-                  "description" : "The ISO 3166-1 alpha-2 country code for the mailing address.",
-                  "$id" : "#/definitions/country",
-                  "type" : "string" } },
-              "additionalProperties" : false } },
+            { "$ref" : "#/definitions/oscal-metadata-address" } },
           "location-uuids" : 
           { "type" : "array",
             "minItems" : 1,
@@ -426,7 +271,7 @@
             "items" : 
             { "title" : "Organizational Affiliation",
               "description" : "Identifies that the party object is a member of the organization associated with the provided UUID.",
-              "$id" : "#/definitions/member-of-organization",
+              "$id" : "#/definitions/party-member-of-organization",
               "type" : "string",
               "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" } },
           "remarks" : 
@@ -454,17 +299,17 @@
           "title" : 
           { "title" : "Role Title",
             "description" : "A name given to the role, which may be used by a tool for display and navigation.",
-            "$id" : "#/definitions/title",
+            "$id" : "#/definitions/role-title",
             "type" : "string" },
           "short-name" : 
           { "title" : "Role Short Name",
             "description" : "A short common name, abbreviation, or acronym for the role.",
-            "$id" : "#/definitions/short-name",
+            "$id" : "#/definitions/role-short-name",
             "type" : "string" },
           "description" : 
           { "title" : "Role Description",
             "description" : "A summary of the role's purpose and associated responsibilities.",
-            "$id" : "#/definitions/description",
+            "$id" : "#/definitions/role-description",
             "type" : "string" },
           "props" : 
           { "type" : "array",
@@ -504,7 +349,7 @@
             "items" : 
             { "title" : "Resource",
               "description" : "A resource associated with content in the containing document. A resource may be directly included in the document base64 encoded or may point to one or more equavalent internet resources.",
-              "$id" : "#/definitions/resource",
+              "$id" : "#/definitions/back-matter-resource",
               "type" : "object",
               "properties" : 
               { "uuid" : 
@@ -515,12 +360,12 @@
                 "title" : 
                 { "title" : "Resource Title",
                   "description" : "A name given to the resource, which may be used by a tool for display and navigation.",
-                  "$id" : "#/definitions/title",
+                  "$id" : "#/definitions/back-matter-resource-title",
                   "type" : "string" },
                 "description" : 
                 { "title" : "Resource Description",
                   "description" : "A short summary of the resource used to indicate the purpose of the resource.",
-                  "$id" : "#/definitions/description",
+                  "$id" : "#/definitions/back-matter-resource-description",
                   "type" : "string" },
                 "props" : 
                 { "type" : "array",
@@ -536,32 +381,17 @@
                 { "type" : "array",
                   "minItems" : 1,
                   "items" : 
-                  { "title" : "Document Identifier",
-                    "description" : "A document identifier qualified by an identifier type.",
-                    "$id" : "#/definitions/document-id",
-                    "type" : "object",
-                    "properties" : 
-                    { "scheme" : 
-                      { "title" : "Document Identification Scheme",
-                        "description" : "Qualifies the kind of document identifier.",
-                        "type" : "string",
-                        "format" : "uri" },
-                      "identifier" : 
-                      { "type" : "string" } },
-                    "required" : 
-                    [ "identifier",
-                      "scheme" ],
-                    "additionalProperties" : false } },
+                  { "$ref" : "#/definitions/oscal-metadata-document-id" } },
                 "citation" : 
                 { "title" : "Citation",
                   "description" : "A citation consisting of end note text and optional structured bibliographic data.",
-                  "$id" : "#/definitions/citation",
+                  "$id" : "#/definitions/back-matter-resource-citation",
                   "type" : "object",
                   "properties" : 
                   { "text" : 
                     { "title" : "Citation Text",
                       "description" : "A line of citation text.",
-                      "$id" : "#/definitions/text",
+                      "$id" : "#/definitions/back-matter-resource-citation-text",
                       "type" : "string" },
                     "props" : 
                     { "type" : "array",
@@ -576,7 +406,7 @@
                     "biblio" : 
                     { "title" : "Bibliographic Definition",
                       "description" : "A container for structured bibliographic information. The model of this information is undefined by OSCAL.",
-                      "$id" : "#/definitions/biblio",
+                      "$id" : "#/definitions/back-matter-resource-citation-biblio",
                       "type" : "object",
                       "additionalProperties" : false } },
                   "required" : 
@@ -588,7 +418,7 @@
                   "items" : 
                   { "title" : "Resource link",
                     "description" : "A pointer to an external resource with an optional hash for verification and change detection.",
-                    "$id" : "#/definitions/rlink",
+                    "$id" : "#/definitions/back-matter-resource-rlink",
                     "type" : "object",
                     "properties" : 
                     { "href" : 
@@ -611,7 +441,7 @@
                 "base64" : 
                 { "title" : "Base64",
                   "description" : "The Base64 alphabet in RFC 2045 - aligned with XSD.",
-                  "$id" : "#/definitions/base64",
+                  "$id" : "#/definitions/back-matter-resource-base64",
                   "type" : "object",
                   "properties" : 
                   { "filename" : 
@@ -716,7 +546,7 @@
           "text" : 
           { "title" : "Link Text",
             "description" : "A textual label to associate with the link, which may be used for presentation in a tool.",
-            "$id" : "#/definitions/text",
+            "$id" : "#/definitions/link-text",
             "type" : "string" } },
         "required" : 
         [ "href" ],
@@ -802,6 +632,108 @@
         "description" : "Additional commentary on the containing object.",
         "$id" : "#/definitions/remarks",
         "type" : "string" },
+      "oscal-metadata-published" : 
+      { "title" : "Publication Timestamp",
+        "description" : "The date and time the document was published. The date-time value must be formatted according to RFC 3339 with full time and time zone included.",
+        "$id" : "#/definitions/oscal-metadata-published",
+        "type" : "string",
+        "format" : "date-time",
+        "pattern" : "^((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})$" },
+      "oscal-metadata-last-modified" : 
+      { "title" : "Last Modified Timestamp",
+        "description" : "The date and time the document was last modified. The date-time value must be formatted according to RFC 3339 with full time and time zone included.",
+        "$id" : "#/definitions/oscal-metadata-last-modified",
+        "type" : "string",
+        "format" : "date-time",
+        "pattern" : "^((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})$" },
+      "oscal-metadata-version" : 
+      { "title" : "Document Version",
+        "description" : "A string used to distinguish the current version of the document from other previous (and future) versions.",
+        "$id" : "#/definitions/oscal-metadata-version",
+        "type" : "string" },
+      "oscal-metadata-oscal-version" : 
+      { "title" : "OSCAL version",
+        "description" : "The OSCAL model version the document was authored against.",
+        "$id" : "#/definitions/oscal-metadata-oscal-version",
+        "type" : "string" },
+      "oscal-metadata-email-address" : 
+      { "title" : "Email Address",
+        "description" : "An email address as defined by RFC 5322 Section 3.4.1.",
+        "$id" : "#/definitions/oscal-metadata-email-address",
+        "type" : "string",
+        "format" : "email",
+        "pattern" : "^.+@.+" },
+      "oscal-metadata-telephone-number" : 
+      { "title" : "Telephone Number",
+        "description" : "Contact number by telephone.",
+        "$id" : "#/definitions/oscal-metadata-telephone-number",
+        "type" : "object",
+        "properties" : 
+        { "type" : 
+          { "title" : "type flag",
+            "description" : "Indicates the type of phone number.",
+            "type" : "string" },
+          "number" : 
+          { "type" : "string" } },
+        "required" : 
+        [ "number" ],
+        "additionalProperties" : false },
+      "oscal-metadata-address" : 
+      { "title" : "Address",
+        "description" : "A postal address for the location.",
+        "$id" : "#/definitions/oscal-metadata-address",
+        "type" : "object",
+        "properties" : 
+        { "type" : 
+          { "type" : "string" },
+          "addr-lines" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/oscal-metadata-addr-line" } },
+          "city" : 
+          { "title" : "City",
+            "description" : "City, town or geographical region for the mailing address.",
+            "$id" : "#/definitions/oscal-metadata-address-city",
+            "type" : "string" },
+          "state" : 
+          { "title" : "State",
+            "description" : "State, province or analogous geographical region for mailing address",
+            "$id" : "#/definitions/oscal-metadata-address-state",
+            "type" : "string" },
+          "postal-code" : 
+          { "title" : "Postal Code",
+            "description" : "Postal or ZIP code for mailing address",
+            "$id" : "#/definitions/oscal-metadata-address-postal-code",
+            "type" : "string" },
+          "country" : 
+          { "title" : "Country Code",
+            "description" : "The ISO 3166-1 alpha-2 country code for the mailing address.",
+            "$id" : "#/definitions/oscal-metadata-address-country",
+            "type" : "string" } },
+        "additionalProperties" : false },
+      "oscal-metadata-addr-line" : 
+      { "title" : "Address line",
+        "description" : "A single line of an address.",
+        "$id" : "#/definitions/oscal-metadata-addr-line",
+        "type" : "string" },
+      "oscal-metadata-document-id" : 
+      { "title" : "Document Identifier",
+        "description" : "A document identifier qualified by an identifier type.",
+        "$id" : "#/definitions/oscal-metadata-document-id",
+        "type" : "object",
+        "properties" : 
+        { "scheme" : 
+          { "title" : "Document Identification Scheme",
+            "description" : "Qualifies the kind of document identifier.",
+            "type" : "string",
+            "format" : "uri" },
+          "identifier" : 
+          { "type" : "string" } },
+        "required" : 
+        [ "identifier",
+          "scheme" ],
+        "additionalProperties" : false },
       "system-component" : 
       { "title" : "Component",
         "description" : "A defined component that can be part of an implemented system.",
@@ -815,17 +747,17 @@
           "title" : 
           { "title" : "Component Title",
             "description" : "A human readable name for the system component.",
-            "$id" : "#/definitions/title",
+            "$id" : "#/definitions/system-component-title",
             "type" : "string" },
           "description" : 
           { "title" : "Component Description",
             "description" : "A description of the component, including information about its function.",
-            "$id" : "#/definitions/description",
+            "$id" : "#/definitions/system-component-description",
             "type" : "string" },
           "purpose" : 
           { "title" : "Purpose",
             "description" : "A summary of the technological or business purpose of the component.",
-            "$id" : "#/definitions/purpose",
+            "$id" : "#/definitions/system-component-purpose",
             "type" : "string" },
           "props" : 
           { "type" : "array",
@@ -845,7 +777,7 @@
           "status" : 
           { "title" : "Status",
             "description" : "Describes the operational status of the system component.",
-            "$id" : "#/definitions/status",
+            "$id" : "#/definitions/system-component-status",
             "type" : "object",
             "properties" : 
             { "state" : 
@@ -903,7 +835,7 @@
           "title" : 
           { "title" : "title field",
             "description" : "A human readable name for the protocol (e.g., Transport Layer Security).",
-            "$id" : "#/definitions/title",
+            "$id" : "#/definitions/protocol-title",
             "type" : "string" },
           "port-ranges" : 
           { "type" : "array",
@@ -948,17 +880,17 @@
         { "title" : 
           { "title" : "User Title",
             "description" : "A name given to the user, which may be used by a tool for display and navigation.",
-            "$id" : "#/definitions/title",
+            "$id" : "#/definitions/system-user-title",
             "type" : "string" },
           "short-name" : 
           { "title" : "User Short Name",
             "description" : "A short common name, abbreviation, or acronym for the user.",
-            "$id" : "#/definitions/short-name",
+            "$id" : "#/definitions/system-user-short-name",
             "type" : "string" },
           "description" : 
           { "title" : "User Description",
             "description" : "A summary of the user's purpose within the system.",
-            "$id" : "#/definitions/description",
+            "$id" : "#/definitions/system-user-description",
             "type" : "string" },
           "props" : 
           { "type" : "array",
@@ -997,12 +929,12 @@
         { "title" : 
           { "title" : "title field",
             "description" : "A human readable name for the privilege.",
-            "$id" : "#/definitions/title",
+            "$id" : "#/definitions/authorized-privilege-title",
             "type" : "string" },
           "description" : 
           { "title" : "Privilege Description",
             "description" : "A summary of the privilege's purpose within the system.",
-            "$id" : "#/definitions/description",
+            "$id" : "#/definitions/authorized-privilege-description",
             "type" : "string" },
           "functions-performed" : 
           { "type" : "array",
@@ -1032,7 +964,7 @@
           "description" : 
           { "title" : "Inventory Item Description",
             "description" : "A summary of the inventory item stating its purpose within the system.",
-            "$id" : "#/definitions/description",
+            "$id" : "#/definitions/inventory-item-description",
             "type" : "string" },
           "props" : 
           { "type" : "array",
@@ -1065,7 +997,7 @@
             "items" : 
             { "title" : "Implemented Component",
               "description" : "The set of components that are implemented in a given system inventory item.",
-              "$id" : "#/definitions/implemented-component",
+              "$id" : "#/definitions/inventory-item-implemented-component",
               "type" : "object",
               "properties" : 
               { "component-uuid" : 
@@ -1121,7 +1053,7 @@
             "items" : 
             { "title" : "Parameter Value",
               "description" : "A parameter value or set of values.",
-              "$id" : "#/definitions/parameter-value",
+              "$id" : "#/definitions/set-parameter-parameter-value",
               "type" : "string" } } },
         "required" : 
         [ "values" ],
@@ -1213,17 +1145,17 @@
           "title" : 
           { "title" : "Component Title",
             "description" : "A human readable name for the component.",
-            "$id" : "#/definitions/title",
+            "$id" : "#/definitions/defined-component-title",
             "type" : "string" },
           "description" : 
           { "title" : "Component Description",
             "description" : "A description of the component, including information about its function.",
-            "$id" : "#/definitions/description",
+            "$id" : "#/definitions/defined-component-description",
             "type" : "string" },
           "purpose" : 
           { "title" : "Purpose",
             "description" : "A summary of the technological or business purpose of the component.",
-            "$id" : "#/definitions/purpose",
+            "$id" : "#/definitions/defined-component-purpose",
             "type" : "string" },
           "props" : 
           { "type" : "array",
@@ -1280,7 +1212,7 @@
           "description" : 
           { "title" : "Capability Description",
             "description" : "A summary of the capability.",
-            "$id" : "#/definitions/description",
+            "$id" : "#/definitions/capability-description",
             "type" : "string" },
           "props" : 
           { "type" : "array",
@@ -1327,7 +1259,7 @@
         { "description" : 
           { "title" : "Component Description",
             "description" : "A description of the component, including information about its function.",
-            "$id" : "#/definitions/description",
+            "$id" : "#/definitions/incorporates-component-description",
             "type" : "string" } },
         "required" : 
         [ "description" ],
@@ -1351,7 +1283,7 @@
           "description" : 
           { "title" : "Control Implementation Description",
             "description" : "A description of how the spefied set of controls are implemented for the containing component or capability.",
-            "$id" : "#/definitions/description",
+            "$id" : "#/definitions/control-implementation-description",
             "type" : "string" },
           "props" : 
           { "type" : "array",
@@ -1397,7 +1329,7 @@
           "description" : 
           { "title" : "Control Implementation Description",
             "description" : "A description of how the spefied control is implemented for the containing component or capability.",
-            "$id" : "#/definitions/description",
+            "$id" : "#/definitions/implemented-requirement-description",
             "type" : "string" },
           "props" : 
           { "type" : "array",
@@ -1464,7 +1396,7 @@
           "description" : 
           { "title" : "Statement Implementation Description",
             "description" : "A summary of how the containing control statement is implemented by the component or capability.",
-            "$id" : "#/definitions/description",
+            "$id" : "#/definitions/statement-description",
             "type" : "string" },
           "props" : 
           { "type" : "array",
