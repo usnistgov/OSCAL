@@ -4610,10 +4610,6 @@
                      type="oscal-ar:reviewed-controls-ASSEMBLY"
                      minOccurs="1"
                      maxOccurs="1"/>
-         <xs:element name="assessment-subject"
-                     type="oscal-ar:assessment-subject-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
          <xs:element name="assessment-assets"
                      type="oscal-ar:assessment-assets-ASSEMBLY"
                      minOccurs="0"
