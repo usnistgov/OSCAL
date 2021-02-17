@@ -111,20 +111,7 @@
          </assembly>         
          
          <!-- TODO: add link; check in the other assessment models -->
-         <define-field name="collected"
-                       as-type="dateTime-with-timezone"
-                       min-occurs="1"
-                       max-occurs="1">
-            <formal-name>collected field</formal-name>
-            <description>Date/time stamp identifying when the finding information was collected.</description>
-         </define-field>
-         <define-field name="expires"
-                       as-type="dateTime-with-timezone"
-                       min-occurs="0"
-                       max-occurs="1">
-            <formal-name>expires field</formal-name>
-            <description>Date/time identifying when the finding information is out-of-date and no longer valid. Typically used with continuous assessment scenarios.</description>
-         </define-field>
+         <!-- CHANGED: removed "collected" and "expires" (moved to observation) by brianrufgsa -->
          <!-- CHANGED: removed "objective-status" per brianrufgsa -->
          <!-- CHANGED: (per Brian) removed "implementation-statement-uuid" since this is in the SAR -->
          <!-- CHANGED: replaced embedded observation with references -->
