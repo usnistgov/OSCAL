@@ -57,8 +57,8 @@
                </assembly>
                <!-- CHANGED: "ojbective" to "add-objectives-and-methods" -->
                <assembly ref="local-objective" min-occurs="0" max-occurs="unbounded">
-                  <use-name>add-objectives-and-methods</use-name>
-                  <group-as name="add-objectives-and-methods" in-json="ARRAY"/>
+                  <use-name>objectives-and-methods</use-name>
+                  <group-as name="objectives-and-methods" in-json="ARRAY"/>
                </assembly>
 
                <!-- CHANGED: implemented new model -->
