@@ -547,10 +547,9 @@
 
    <define-assembly name="select-control-by-id" scope="local">
       <formal-name>Select Control</formal-name>
-      <description>Used to select a control for inclusion/exclusion based on the control's identifier. A set of statement identifiers can be optionally used to target the inclusion/exclusion to only specific control statements providing more granularity over the specific statements that are within the asessment scope.</description>
-      <flag ref="control-id" required="yes"/>
+      <description>Used to select a control for inclusion/exclusion based on one or more control statement identifiers. A set of statement identifiers can be used to target the inclusion/exclusion to only specific control statements providing more granularity over the specific statements that are within the asessment scope. A control will always have a single top-level statement, which can be used to select the entire control.</description>
       <model>
-         <define-field name="statement-id" as-type="NCName" max-occurs="unbounded">
+         <define-field name="statement-id" as-type="NCName" min-occurs="1" max-occurs="unbounded" >
             <formal-name>Include Specific Statements</formal-name>
             <description>Used to constrain the selection to only specificly identified statements.</description>
             <group-as name="statement-ids" in-json="ARRAY"/>
@@ -768,12 +767,28 @@
    <!-- CHANGE: Removed exclude-activity assembly. Duplicating include-actviity assembly instead. -->
 
    <!-- ********** Assemblies used within RESULTS and POA&M Items ********** -->
-   <define-assembly name="objective-status">
+   <define-assembly name="finding-target">
+      <!-- RENAME: objective-status to finding-target -->
       <formal-name>Objective Status</formal-name>
       <description>Captures an assessor's conclusions regarding the degree to which an objective is satisfied.</description>
-      <!-- QUESTION: Should these IDs be required? One of the two should. (choice) -->
-      <flag ref="objective-id" />
-      <flag ref="control-id" />
+
+      <define-flag name="type" as-type="string" required="yes">
+         <formal-name>Finding Target Type</formal-name>
+         <description>Identifies the type of the target.</description>
+         <constraint>
+            <allowed-values>
+               <enum value="statement-id">A reference to a control statement identifier within a control.</enum>
+               <enum value="objective-id">A reference to a control objective identifier within a control.</enum>
+            </allowed-values>
+         </constraint>
+         <remarks>
+            <p>The target will always be a reference to: 1) a control statement, or 2) a control objective. In the former case, there is always a single top-level statement within a control. Thus, if the entire control is targeted, this statement identifier can be used.</p>
+         </remarks>
+      </define-flag>
+      <define-flag name="id-ref" as-type="NCName" required="yes">
+         <formal-name>Finding Target Identifier Reference</formal-name>
+         <description>Identifies the specific target qualified by the <code>type</code>.</description>
+      </define-flag>
       <model>
          <define-field name="title" min-occurs="0" max-occurs="1" as-type="markup-line">
             <formal-name>Objective Status Title</formal-name>
@@ -805,16 +820,9 @@
                </allowed-values>
             </constraint>
          </define-field>
-         <!-- CHANGED: "implementation-status" to a FedRAMP extension (prop[@name='implementation-status'] in the "objective-status" assembly) -->
+         <!-- CHANGED: "implementation-status" to a FedRAMP extension (prop[@name='implementation-status'] in this assembly) -->
          <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
       </model>
-      <constraint>
-         <has-cardinality target="@control-id | @objective-id" min-occurs="1" max-occurs="1">
-            <remarks>
-               <p>There should only be a control-id or an objective-id. Not both. This ensures the control-id is not differenat from the control the objective-id relates to.</p>
-            </remarks>
-         </has-cardinality>
-      </constraint>
    </define-assembly>
    
    <define-assembly name="observation">

@@ -279,7 +279,12 @@
                <p>Used to identify the individual and/or tool generated this finding.</p>
             </remarks>
          </assembly>         
-         <assembly ref="objective-status" min-occurs="0" max-occurs="1"/>
+         <assembly ref="finding-target">
+            <use-name>target</use-name>
+            <remarks>
+               <p>While use of <code>target</code> is optional, it is recommended to use this object to identify the target of the finding providing tracability.</p>
+            </remarks>
+         </assembly>
          <define-field name="implementation-statement-uuid" as-type="uuid" min-occurs="0" max-occurs="1">
             <formal-name>Implementation Statement UUID</formal-name>
             <description>Identifies the implementation statement in the SSP to which this finding is related.</description>
