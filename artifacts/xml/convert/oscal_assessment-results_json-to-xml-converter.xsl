@@ -977,6 +977,8 @@
          <xsl:apply-templates select="*[@key='origins']"/>
          <xsl:apply-templates select="*[@key='subjects']"/>
          <xsl:apply-templates select="*[@key='relevant-evidence']"/>
+         <xsl:apply-templates select="*[@key='collected']"/>
+         <xsl:apply-templates select="*[@key='expires']"/>
          <xsl:apply-templates select="*[@key='remarks']"/>
       </assembly>
    </xsl:template>
@@ -1104,8 +1106,6 @@
          <xsl:apply-templates select="*[@key='annotations']"/>
          <xsl:apply-templates select="*[@key='links']"/>
          <xsl:apply-templates select="*[@key='origins']"/>
-         <xsl:apply-templates select="*[@key='collected']"/>
-         <xsl:apply-templates select="*[@key='expires']"/>
          <xsl:apply-templates select="*[@key='objective-status']"/>
          <xsl:apply-templates select="*[@key='implementation-statement-uuid']"/>
          <xsl:apply-templates select="*[@key='related-observations']"/>
@@ -5699,6 +5699,50 @@
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
+   <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:array[@key='observations']/j:map/j:string[@key='collected']"
+                 priority="7">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="assessment-results/result/observation/collected" -->
+      <field name="collected"
+             gi="collected"
+             as-type="dateTime-with-timezone"
+             formal-name="collected field"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">collected</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:array[@key='observations']/j:map/j:string[@key='collected']"
+                 mode="get-value-property"
+                 priority="7">
+      <value as-type="dateTime-with-timezone" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:array[@key='observations']/j:map/j:string[@key='expires']"
+                 priority="7">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="assessment-results/result/observation/expires" -->
+      <field name="expires"
+             gi="expires"
+             as-type="dateTime-with-timezone"
+             formal-name="expires field"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">expires</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:array[@key='observations']/j:map/j:string[@key='expires']"
+                 mode="get-value-property"
+                 priority="7">
+      <value as-type="dateTime-with-timezone" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
    <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:array[@key='risks']/j:map/j:string[@key='title']"
                  priority="7">
       <xsl:param name="with-key" select="true()"/>
@@ -8022,50 +8066,6 @@
                  mode="get-value-property"
                  priority="17">
       <value as-type="markup-line" in-json="string">
-         <xsl:value-of select="."/>
-      </value>
-   </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:array[@key='findings']/j:map/j:string[@key='collected']"
-                 priority="7">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="assessment-results/result/finding/collected" -->
-      <field name="collected"
-             gi="collected"
-             as-type="dateTime-with-timezone"
-             formal-name="collected field"
-             in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">collected</xsl:attribute>
-         </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
-      </field>
-   </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:array[@key='findings']/j:map/j:string[@key='collected']"
-                 mode="get-value-property"
-                 priority="7">
-      <value as-type="dateTime-with-timezone" in-json="string">
-         <xsl:value-of select="."/>
-      </value>
-   </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:array[@key='findings']/j:map/j:string[@key='expires']"
-                 priority="7">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="assessment-results/result/finding/expires" -->
-      <field name="expires"
-             gi="expires"
-             as-type="dateTime-with-timezone"
-             formal-name="expires field"
-             in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">expires</xsl:attribute>
-         </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
-      </field>
-   </xsl:template>
-   <xsl:template match="j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:array[@key='findings']/j:map/j:string[@key='expires']"
-                 mode="get-value-property"
-                 priority="7">
-      <value as-type="dateTime-with-timezone" in-json="string">
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
