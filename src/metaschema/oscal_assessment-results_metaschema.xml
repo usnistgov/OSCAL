@@ -134,6 +134,14 @@
                      <p>Used to add any users, not defined via the System Security Plan (AR-&gt;AP-&gt;SSP)</p>
                   </remarks>
                </assembly>
+
+               <assembly ref="assessment-assets" min-occurs="0" max-occurs="1">
+                  <!-- To augment the assessment plan -->
+                  <remarks>
+                     <p>This needs to be defined in the results if an assessment platform used is different from the one described in the assessment plan. Else the platform(s) defined in the plan may be referenced within the results.</p>
+                  </remarks>
+               </assembly>
+               
                <assembly ref="action" min-occurs="0" max-occurs="unbounded">
                   <use-name>assessment-action</use-name>
                   <group-as name="assessment-actions" in-json="ARRAY"/>
@@ -146,19 +154,6 @@
                <p>The Assessment Results <code>control-selection</code> ignores any control selection in the Assessment Plan and re-selects controls from the baseline identified by the SSP.</p>
                <p>The Assessment Results <code>control-objective-selection</code> ignores any control objective selection in the Assessment Plan and re-selects control objectives from the baseline identified by the SSP.</p>
                <p>Any additional control objectives defined in the Assessment Plan <code>local-definitions</code> do not need to be re-defined in the Assessment Results <code>local-definitions</code>; however, if they were explicitly referenced with an Assessment Plan <code>control-objective-selection</code>, they need to be selected again in the Assessment Results <code>control-objective-selection</code>.</p>
-            </remarks>
-         </assembly>
-
-         <!-- CHANGED: Removed "assessment-subjects" from AR. should be defined in AP or in AR/local-definitions, but not at AR root.         
-         <assembly ref="assessment-subject" min-occurs="0" max-occurs="unbounded">
-            <group-as name="assessment-subjects" in-json="ARRAY"/>
-         </assembly>
-         
--->
-         <!-- To augment the assessment plan -->
-         <assembly ref="assessment-assets" min-occurs="0" max-occurs="1">
-            <remarks>
-               <p>This needs to be defined in the results if an assessment platform used is different from the one described in the assessment plan. Else the platform(s) defined in the plan may be referenced within the results.</p>
             </remarks>
          </assembly>
          
