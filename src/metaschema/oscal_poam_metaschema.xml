@@ -103,12 +103,20 @@
          <assembly ref="link" max-occurs="unbounded">
             <group-as name="links" in-json="ARRAY"/>
          </assembly>
-         <assembly ref="origin" max-occurs="unbounded">
+         <define-assembly name="origin" max-occurs="unbounded">
+            <formal-name>Origin</formal-name>
+            <description>Identifies the source of the finding, such as a tool or person.</description>
             <group-as name="origins" in-json="ARRAY"/>
+            <model>
+               <assembly ref="origin-actor" min-occurs="1" max-occurs="unbounded">
+                  <use-name>actor</use-name>
+                  <group-as name="actors" in-json="ARRAY"/>
+               </assembly>
+            </model>
             <remarks>
-               <p>Used to identify the individual and/or tool generated this finding.</p>
+               <p>Used to identify the individual and/or tool generated this poam-item.</p>
             </remarks>
-         </assembly>         
+         </define-assembly>
          
          <!-- TODO: add link; check in the other assessment models -->
          <!-- CHANGED: removed "collected" and "expires" (moved to observation) by brianrufgsa -->

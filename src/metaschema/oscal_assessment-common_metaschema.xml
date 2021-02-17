@@ -957,42 +957,10 @@
       <formal-name>Origin</formal-name>
       <description>Identifies the source of the finding, such as a tool, interviewed person, or activity.</description>
       <model>
-         <define-assembly name="actor" min-occurs="1" max-occurs="unbounded">
-            <formal-name>Assessment Actor</formal-name>
-            <description>The actor that produces an observation, a finding, or a risk. One or more actor type can be used to specify a person that is using a tool.</description>
+         <assembly ref="origin-actor" min-occurs="1" max-occurs="unbounded">
+            <use-name>actor</use-name>
             <group-as name="actors" in-json="ARRAY"/>
-            <define-flag name="type" as-type="NCName" required="yes">
-               <formal-name>Actor Type</formal-name>
-               <description>The kind of actor.</description>
-               <constraint>
-                  <allowed-values>
-                     <!-- QUESTION: Should this point to the platform instead, since the platform is associated with IP addresses? -->
-                     <enum value="tool">A reference to a tool component defined with the assessment assets.</enum>
-                     <enum value="assessment-platform">A reference to an assessment-platform defined with the assessment assets.</enum>
-                     <enum value="party">A reference to a party defined within the document metadata.</enum>
-                  </allowed-values>
-               </constraint>
-            </define-flag>
-            <define-flag name="uuid-ref" as-type="uuid" required="yes">
-               <formal-name>Actor UUID Reference</formal-name>
-               <description>A pointer to the tool or person based on the associated type.</description>
-            </define-flag>
-            <define-flag name="role-id" as-type="NCName">
-               <formal-name>Actor Role</formal-name>
-               <description>For a party, this can optionally be used to specify the role the actor was performing.</description>
-            </define-flag>
-            <model>
-               <field ref="property" min-occurs="0" max-occurs="unbounded">
-                  <group-as name="props" in-json="ARRAY"/>
-               </field>
-               <assembly ref="annotation" max-occurs="unbounded">
-                  <group-as name="annotations" in-json="ARRAY"/>
-               </assembly>
-               <assembly ref="link" max-occurs="unbounded">
-                  <group-as name="links" in-json="ARRAY"/>
-               </assembly>
-            </model>
-         </define-assembly>
+         </assembly>
          <!-- CHANGED: Added "related-action" -->
          <assembly ref="related-action" max-occurs="unbounded">
             <group-as name="related-actions" in-json="ARRAY"/>
@@ -1000,6 +968,42 @@
          <!-- CHANGED: Added "related-task" -->
          <assembly ref="related-task" max-occurs="unbounded">
             <group-as name="related-tasks" in-json="ARRAY"/>
+         </assembly>
+      </model>
+   </define-assembly>
+
+   <define-assembly name="origin-actor">
+      <formal-name>Originating Actor</formal-name>
+      <description>The actor that produces an observation, a finding, or a risk. One or more actor type can be used to specify a person that is using a tool.</description>
+      <define-flag name="type" as-type="NCName" required="yes">
+         <formal-name>Actor Type</formal-name>
+         <description>The kind of actor.</description>
+         <constraint>
+            <allowed-values>
+               <!-- QUESTION: Should this point to the platform instead, since the platform is associated with IP addresses? -->
+               <enum value="tool">A reference to a tool component defined with the assessment assets.</enum>
+               <enum value="assessment-platform">A reference to an assessment-platform defined with the assessment assets.</enum>
+               <enum value="party">A reference to a party defined within the document metadata.</enum>
+            </allowed-values>
+         </constraint>
+      </define-flag>
+      <define-flag name="uuid-ref" as-type="uuid" required="yes">
+         <formal-name>Actor UUID Reference</formal-name>
+         <description>A pointer to the tool or person based on the associated type.</description>
+      </define-flag>
+      <define-flag name="role-id" as-type="NCName">
+         <formal-name>Actor Role</formal-name>
+         <description>For a party, this can optionally be used to specify the role the actor was performing.</description>
+      </define-flag>
+      <model>
+         <field ref="property" min-occurs="0" max-occurs="unbounded">
+            <group-as name="props" in-json="ARRAY"/>
+         </field>
+         <assembly ref="annotation" max-occurs="unbounded">
+            <group-as name="annotations" in-json="ARRAY"/>
+         </assembly>
+         <assembly ref="link" max-occurs="unbounded">
+            <group-as name="links" in-json="ARRAY"/>
          </assembly>
       </model>
    </define-assembly>
