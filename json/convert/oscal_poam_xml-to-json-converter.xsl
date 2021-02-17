@@ -940,6 +940,8 @@
                </xsl:apply-templates>
             </group>
          </xsl:for-each-group>
+         <xsl:apply-templates select="collected"/>
+         <xsl:apply-templates select="expires"/>
          <xsl:apply-templates select="remarks"/>
       </assembly>
    </xsl:template>
@@ -1420,8 +1422,6 @@
                </xsl:apply-templates>
             </group>
          </xsl:for-each-group>
-         <xsl:apply-templates select="collected"/>
-         <xsl:apply-templates select="expires"/>
          <xsl:for-each-group select="related-observation" group-by="true()">
             <group in-json="ARRAY" key="related-observations">
                <xsl:apply-templates select="current-group()">
@@ -2984,6 +2984,40 @@
          </xsl:if>
          <value as-type="markup-line" in-json="string">
             <xsl:apply-templates mode="cast-prose"/>
+         </value>
+      </field>
+   </xsl:template>
+   <xsl:template match="plan-of-action-and-milestones/observation/collected"
+                 priority="5"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <field name="collected"
+             gi="collected"
+             as-type="dateTime-with-timezone"
+             formal-name="collected field"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">collected</xsl:attribute>
+         </xsl:if>
+         <value as-type="dateTime-with-timezone" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
+   </xsl:template>
+   <xsl:template match="plan-of-action-and-milestones/observation/expires"
+                 priority="5"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <field name="expires"
+             gi="expires"
+             as-type="dateTime-with-timezone"
+             formal-name="expires field"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">expires</xsl:attribute>
+         </xsl:if>
+         <value as-type="dateTime-with-timezone" in-json="string">
+            <xsl:value-of select="."/>
          </value>
       </field>
    </xsl:template>
@@ -5152,40 +5186,6 @@
          </xsl:if>
          <value as-type="markup-line" in-json="string">
             <xsl:apply-templates mode="cast-prose"/>
-         </value>
-      </field>
-   </xsl:template>
-   <xsl:template match="plan-of-action-and-milestones/poam-item/collected"
-                 priority="5"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field name="collected"
-             gi="collected"
-             as-type="dateTime-with-timezone"
-             formal-name="collected field"
-             in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">collected</xsl:attribute>
-         </xsl:if>
-         <value as-type="dateTime-with-timezone" in-json="string">
-            <xsl:value-of select="."/>
-         </value>
-      </field>
-   </xsl:template>
-   <xsl:template match="plan-of-action-and-milestones/poam-item/expires"
-                 priority="5"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field name="expires"
-             gi="expires"
-             as-type="dateTime-with-timezone"
-             formal-name="expires field"
-             in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">expires</xsl:attribute>
-         </xsl:if>
-         <value as-type="dateTime-with-timezone" in-json="string">
-            <xsl:value-of select="."/>
          </value>
       </field>
    </xsl:template>
