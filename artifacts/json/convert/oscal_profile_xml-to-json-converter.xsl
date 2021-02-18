@@ -906,6 +906,7 @@
             </group>
          </xsl:for-each-group>
          <xsl:apply-templates select="select"/>
+         <xsl:apply-templates select="remarks"/>
       </assembly>
    </xsl:template>
    <xsl:template match="param/@depends-on | set-parameter/@depends-on"

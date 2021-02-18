@@ -849,7 +849,9 @@
             "items" : 
             { "$ref" : "#/definitions/parameter-value" } },
           "select" : 
-          { "$ref" : "#/definitions/parameter-selection" } },
+          { "$ref" : "#/definitions/parameter-selection" },
+          "remarks" : 
+          { "$ref" : "#/definitions/remarks" } },
         "required" : 
         [ "id" ],
         "additionalProperties" : false },
