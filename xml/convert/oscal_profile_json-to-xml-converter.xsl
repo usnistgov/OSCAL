@@ -672,6 +672,7 @@
          <xsl:apply-templates select="*[@key='guidelines']"/>
          <xsl:apply-templates select="*[@key='values']"/>
          <xsl:apply-templates select="*[@key='select']"/>
+         <xsl:apply-templates select="*[@key='remarks']"/>
       </assembly>
    </xsl:template>
    <xsl:template match="j:array[@key='params']/j:map/j:string[@key='depends-on'] | j:map[@key='set-parameters']/j:map/j:string[@key='depends-on']"><!-- XML match="param/@depends-on | set-parameter/@depends-on" -->

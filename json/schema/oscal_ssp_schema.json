@@ -1054,7 +1054,9 @@
             { "title" : "Parameter Value",
               "description" : "A parameter value or set of values.",
               "$id" : "#/definitions/set-parameter-parameter-value",
-              "type" : "string" } } },
+              "type" : "string" } },
+          "remarks" : 
+          { "$ref" : "#/definitions/remarks" } },
         "required" : 
         [ "values" ],
         "additionalProperties" : false },

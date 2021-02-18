@@ -911,6 +911,7 @@
                </xsl:apply-templates>
             </group>
          </xsl:for-each-group>
+         <xsl:apply-templates select="remarks"/>
       </assembly>
    </xsl:template>
    <xsl:template match="set-parameter/@param-id"

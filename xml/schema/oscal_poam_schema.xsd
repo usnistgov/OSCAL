@@ -142,6 +142,19 @@
                         minOccurs="0"
                         maxOccurs="1"/>
          </xs:choice>
+         <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Remarks</m:formal-name>
+                  <m:description>Additional commentary on the containing object.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Remarks</b>: Additional commentary on the containing object.</xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+               <xs:group ref="oscal-poam:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:complexType>
+         </xs:element>
       </xs:sequence>
       <xs:attribute name="id" use="required" type="xs:NCName">
          <xs:annotation>
@@ -1844,6 +1857,19 @@
                </xs:annotation>
                <xs:restriction base="xs:string"/>
             </xs:simpleType>
+         </xs:element>
+         <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Remarks</m:formal-name>
+                  <m:description>Additional commentary on the containing object.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Remarks</b>: Additional commentary on the containing object.</xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+               <xs:group ref="oscal-poam:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:complexType>
          </xs:element>
       </xs:sequence>
       <xs:attribute name="param-id" use="required" type="xs:NCName">
