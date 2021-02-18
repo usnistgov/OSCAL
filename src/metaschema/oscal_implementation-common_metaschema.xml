@@ -638,6 +638,7 @@
             <use-name>value</use-name>
             <group-as name="values" in-json="ARRAY"/>
          </define-field>
+         <field ref="remarks" in-xml="WITH_WRAPPER"/>
       </model>
    </define-assembly>
 

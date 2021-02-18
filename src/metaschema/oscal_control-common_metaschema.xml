@@ -188,6 +188,7 @@
                </remarks>
             </assembly>
          </choice>
+         <field ref="remarks" in-xml="WITH_WRAPPER"/>
          <any/>
       </model>
       <remarks>
