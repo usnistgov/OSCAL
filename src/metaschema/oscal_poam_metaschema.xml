@@ -132,6 +132,7 @@
                <description>References an observation defined in the list of observations.</description>
             </define-flag>
          </define-field>
+
          <!-- CHANGED: replaced "risk" with new "assciated-risk" -->
          <define-field name="associated-risk" as-type="empty" max-occurs="unbounded">
             <formal-name>Associated Risk</formal-name>

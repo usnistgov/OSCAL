@@ -234,37 +234,73 @@
          <assembly ref="link" max-occurs="unbounded">
             <group-as name="links" in-json="ARRAY"/>
          </assembly>
+         <assembly ref="responsible-role" max-occurs="unbounded">
+            <group-as name="responsible-roles" in-json="BY_KEY"/>
+            <remarks>
+               <p>Identifies the person or organization responsible for performing a specific role defined by the activity.</p>
+            </remarks>
+         </assembly>
+
+         <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
+      </model>
+   </define-assembly>
+   
+   <define-assembly name="task">
+      <formal-name>Task</formal-name>
+      <description>Represents a scheduled event or milestone, which may be associated with a series of assessment actions.</description>
+      <define-flag name="uuid" required="yes" as-type="uuid">
+         <formal-name>Task Universally Unique Identifier</formal-name>
+         <description>Uniquely identifies this assessment task. </description>
+      </define-flag>
+      <model>
+         <define-field name="title" min-occurs="1" as-type="markup-line">
+            <formal-name>Task Title</formal-name>
+            <description>The title for this task.</description>
+         </define-field>
+         <define-field name="description" max-occurs="1" as-type="markup-multiline" in-xml="WITH_WRAPPER">
+            <formal-name>Task Description</formal-name>
+            <description>A human-readable description of this task.</description>
+         </define-field>
+         <field ref="property" min-occurs="0" max-occurs="unbounded">
+            <group-as name="props" in-json="ARRAY"/>
+         </field>
+         <assembly ref="annotation" max-occurs="unbounded">
+            <group-as name="annotations" in-json="ARRAY"/>
+         </assembly>
+         <assembly ref="link" max-occurs="unbounded">
+            <group-as name="links" in-json="ARRAY"/>
+         </assembly>
          <define-assembly name="timing">
             <formal-name>Event Timing</formal-name>
-            <description>The timing under which the event is intended to occur.</description>
+            <description>The timing under which the task is intended to occur.</description>
             <model>
                <choice>
                   <define-field name="on-date" as-type="empty" min-occurs="1">
                      <formal-name>On Date Condition</formal-name>
-                     <description>The event is intended to occur on the specified date.</description>
+                     <description>The task is intended to occur on the specified date.</description>
                      <define-flag name="date" as-type="dateTime-with-timezone" required="yes">
                         <formal-name>On Date Condition</formal-name>
-                        <description>The event must occur on the specified date.</description>
+                        <description>The task must occur on the specified date.</description>
                      </define-flag>
                   </define-field>
                   <define-field name="within-date-range" as-type="empty" min-occurs="1">
                      <formal-name>On Date Range Condition</formal-name>
-                     <description>The event is intended to occur within the specified date range.</description>
+                     <description>The task is intended to occur within the specified date range.</description>
                      <define-flag name="start" as-type="dateTime-with-timezone" required="yes">
                         <formal-name>Start Date Condition</formal-name>
-                        <description>The event must occur on or after the specified date.</description>
+                        <description>The task must occur on or after the specified date.</description>
                      </define-flag>
                      <define-flag name="end" as-type="dateTime-with-timezone" required="yes">
                         <formal-name>End Date Condition</formal-name>
-                        <description>The event must occur on or before the specified date.</description>
+                        <description>The task must occur on or before the specified date.</description>
                      </define-flag>
                   </define-field>
                   <define-field name="at-frequency" as-type="empty" min-occurs="1">
                      <formal-name>Frequency Condition</formal-name>
-                     <description>The event is intended to occur at the specified frequency.</description>
+                     <description>The task is intended to occur at the specified frequency.</description>
                      <define-flag name="period" as-type="positiveInteger" required="yes">
                         <formal-name>Period</formal-name>
-                        <description>The event must occur after the specified period has elapsed.</description>
+                        <description>The task must occur after the specified period has elapsed.</description>
                      </define-flag>
                      <define-flag name="unit" as-type="string" required="yes">
                         <formal-name>Time Unit</formal-name>
@@ -284,17 +320,8 @@
                </choice>
             </model>
          </define-assembly>
-         <assembly ref="assessment-subject" max-occurs="unbounded">
-            <group-as name="assessment-subjects" in-json="ARRAY"/>
-            <remarks>
-               <p>The assessment subjects that the action was performed against.</p>
-            </remarks>
-         </assembly>
-         <assembly ref="responsible-role" max-occurs="unbounded">
-            <group-as name="responsible-roles" in-json="BY_KEY"/>
-            <remarks>
-               <p>Identifies the person or organization responsible for performing a specific role defined by the activity.</p>
-            </remarks>
+         <assembly ref="task" min-occurs="0" max-occurs="unbounded">
+            <group-as name="tasks" in-json="ARRAY"/>
          </assembly>
          
          <!-- CHANGED: Added "associated-activity" -->
@@ -328,80 +355,22 @@
                </assembly>
                <choice>
                   <assembly ref="assessment-subject" min-occurs="1" max-occurs="unbounded">
-                     <group-as name="assessment-subjects" in-json="ARRAY"/>
+                     <use-name>subject</use-name>
+                     <group-as name="subjects" in-json="ARRAY"/>
                   </assembly>
-                  <define-assembly name="assessment-subject-placeholder">
-                     <formal-name>Assessment Subject Placeholder</formal-name>
-                     <description>Used when the assessment subjects will be determined as part of one or more other assessment activities. These assessment subjects will be recorded in the assessment results.</description>
-                     <model>
-                        <define-field name="description" as-type="markup-multiline" in-xml="WITH_WRAPPER">
-                           <formal-name>Assessment Subject Placeholder Description</formal-name>
-                           <description>A human-readable description of intent of this assessment subject placeholder.</description>
-                        </define-field>
-                        <define-field name="source" as-type="empty" min-occurs="1" max-occurs="unbounded">
-                           <formal-name>Assessment Subject Source</formal-name>
-                           <description>Assessment subjects will be identified while conducting the referenced activity-instance.</description>
-                           <group-as name="sources" in-json="ARRAY"/>
-                           <define-flag name="activity-instance-uuid" required="yes" as-type="uuid">
-                              <formal-name>Activity Instance Universally Unique Identifier</formal-name>
-                              <description>Uniquely identifies an assessment activity to be performed as part of the event. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. A UUID should be consistantly used for this schedule across revisions of the document.</description>
-                           </define-flag>
-                        </define-field>
-                        <field ref="property" min-occurs="0" max-occurs="unbounded">
-                           <group-as name="props" in-json="ARRAY"/>
-                        </field>
-                        <assembly ref="annotation" max-occurs="unbounded">
-                           <group-as name="annotations" in-json="ARRAY"/>
-                        </assembly>
-                        <assembly ref="link" max-occurs="unbounded">
-                           <group-as name="links" in-json="ARRAY"/>
-                        </assembly>
-                        <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
-                     </model>
-                  </define-assembly>
+                  <assembly ref="assessment-subject-placeholder">
+                     <use-name>subject-placeholder</use-name>
+                  </assembly>
                </choice>
                <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
             </model>
          </define-assembly>
-         <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
-      </model>
-   </define-assembly>
-   
-   <define-assembly name="task">
-      <formal-name>Task</formal-name>
-      <description>Represents a scheduled event or milestone, which may be associated with a series of assessment actions.</description>
-      <define-flag name="uuid" required="yes" as-type="uuid">
-         <formal-name>Task Universally Unique Identifier</formal-name>
-         <description>Uniquely identifies this assessment task. </description>
-      </define-flag>
-      <model>
-         <define-field name="title" min-occurs="1" as-type="markup-line">
-            <formal-name>Task Title</formal-name>
-            <description>The title for this task.</description>
-         </define-field>
-         <define-field name="description" max-occurs="1" as-type="markup-multiline" in-xml="WITH_WRAPPER">
-            <formal-name>Task Description</formal-name>
-            <description>A human-readable description of this task.</description>
-         </define-field>
-         <field ref="property" min-occurs="0" max-occurs="unbounded">
-            <group-as name="props" in-json="ARRAY"/>
-         </field>
-         <assembly ref="annotation" max-occurs="unbounded">
-            <group-as name="annotations" in-json="ARRAY"/>
-         </assembly>
-         <assembly ref="link" max-occurs="unbounded">
-            <group-as name="links" in-json="ARRAY"/>
-         </assembly>
-         <define-field name="start" as-type="dateTime-with-timezone" min-occurs="1">
-            <formal-name>Task Start Date</formal-name>
-            <description>The task must occur on or after the specified date.</description>
-         </define-field>
-         <define-field name="end" as-type="dateTime-with-timezone" min-occurs="1">
-            <formal-name>Task End Date</formal-name>
-            <description>The task must occur on or before the specified date.</description>
-         </define-field>
-         <assembly ref="related-action" max-occurs="unbounded">
-            <group-as name="related-actions" in-json="ARRAY"/>
+         <assembly ref="assessment-subject" max-occurs="unbounded">
+            <use-name>subject</use-name>
+            <group-as name="subjects" in-json="ARRAY"/>
+            <remarks>
+               <p>The assessment subjects that the action was performed against.</p>
+            </remarks>
          </assembly>
          <assembly ref="responsible-role" max-occurs="unbounded">
             <group-as name="responsible-roles" in-json="BY_KEY"/>
@@ -564,6 +533,40 @@
    </define-field>
 
    <!-- ********** ASSESSMENT SUBJECT Assembly ********** -->
+   <define-assembly name="assessment-subject-placeholder">
+      <formal-name>Assessment Subject Placeholder</formal-name>
+      <description>Used when the assessment subjects will be determined as part of one or more other assessment activities. These assessment subjects will be recorded in the assessment results in the assessment log.</description>
+      <define-flag name="uuid" required="yes" as-type="uuid">
+         <formal-name>Assessment Subject Placeholder Universally Unique Identifier</formal-name>
+         <description>Uniquely identifies a set of assessment subjects that will be identified by a task or an activity that is part of a task.</description>
+      </define-flag>
+      <model>
+         <define-field name="description" as-type="markup-multiline" in-xml="WITH_WRAPPER">
+            <formal-name>Assessment Subject Placeholder Description</formal-name>
+            <description>A human-readable description of intent of this assessment subject placeholder.</description>
+         </define-field>
+         <define-field name="source" as-type="empty" min-occurs="1" max-occurs="unbounded">
+            <formal-name>Assessment Subject Source</formal-name>
+            <description>Assessment subjects will be identified while conducting the referenced activity-instance.</description>
+            <group-as name="sources" in-json="ARRAY"/>
+            <define-flag name="task-uuid" required="yes" as-type="uuid">
+               <formal-name>Task Universally Unique Identifier</formal-name>
+               <description>Uniquely identifies an assessment activity to be performed as part of the event. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. A UUID should be consistantly used for this schedule across revisions of the document.</description>
+            </define-flag>
+         </define-field>
+         <field ref="property" min-occurs="0" max-occurs="unbounded">
+            <group-as name="props" in-json="ARRAY"/>
+         </field>
+         <assembly ref="annotation" max-occurs="unbounded">
+            <group-as name="annotations" in-json="ARRAY"/>
+         </assembly>
+         <assembly ref="link" max-occurs="unbounded">
+            <group-as name="links" in-json="ARRAY"/>
+         </assembly>
+         <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
+      </model>
+   </define-assembly>
+   
    <define-assembly name="assessment-subject">
       <formal-name>Subject of Assessment</formal-name>
       <description>Identifies system elements being assessed, such as components, inventory items, and locations. In the assessment plan, this identifies a planned assessment subject. In the assessment results this is an actual assessment subject, and reflects any changes from the plan. exactly what will be the focus of this assessment. Any subjects not identified in this way are out-of-scope.</description>
@@ -952,7 +955,7 @@
          </allowed-values>
 -->      </constraint>
    </define-assembly>
-
+   
    <define-assembly name="origin">
       <formal-name>Origin</formal-name>
       <description>Identifies the source of the finding, such as a tool, interviewed person, or activity.</description>
@@ -961,17 +964,13 @@
             <use-name>actor</use-name>
             <group-as name="actors" in-json="ARRAY"/>
          </assembly>
-         <!-- CHANGED: Added "related-action" -->
-         <assembly ref="related-action" max-occurs="unbounded">
-            <group-as name="related-actions" in-json="ARRAY"/>
-         </assembly>
          <!-- CHANGED: Added "related-task" -->
          <assembly ref="related-task" max-occurs="unbounded">
             <group-as name="related-tasks" in-json="ARRAY"/>
          </assembly>
       </model>
    </define-assembly>
-
+   
    <define-assembly name="origin-actor">
       <formal-name>Originating Actor</formal-name>
       <description>The actor that produces an observation, a finding, or a risk. One or more actor type can be used to specify a person that is using a tool.</description>
@@ -1005,6 +1004,59 @@
          <assembly ref="link" max-occurs="unbounded">
             <group-as name="links" in-json="ARRAY"/>
          </assembly>
+      </model>
+   </define-assembly>
+   
+   <define-assembly name="related-task">
+      <formal-name>Task Reference</formal-name>
+      <description>Identifies an individual task for which the containing object is a consequence of.</description>
+      <define-flag name="task-uuid" required="yes" as-type="uuid">
+         <formal-name>Task Universally Unique Identifier Reference</formal-name>
+         <description>References a unique task by UUID.</description>
+      </define-flag>
+      <model>
+         <field ref="property" min-occurs="0" max-occurs="unbounded">
+            <group-as name="props" in-json="ARRAY"/>
+         </field>
+         <assembly ref="annotation" max-occurs="unbounded">
+            <group-as name="annotations" in-json="ARRAY"/>
+         </assembly>
+         <assembly ref="link" max-occurs="unbounded">
+            <group-as name="links" in-json="ARRAY"/>
+         </assembly>
+         <assembly ref="responsible-party" max-occurs="unbounded">
+            <group-as name="responsible-parties" in-json="BY_KEY"/>
+            <remarks>
+               <p>Identifies the person or organization responsible for performing a specific role defined by the activity.</p>
+            </remarks>
+         </assembly>
+         <assembly ref="assessment-subject" max-occurs="unbounded">
+            <!-- CHANGE: renamed "assessment-subject" to "subject" -->
+            <use-name>subject</use-name>
+            <group-as name="subjects" in-json="ARRAY"/>
+            <remarks>
+               <p>The assessment subjects that the task was performed against.</p>
+            </remarks>
+         </assembly>
+         <define-assembly name="identified-subject">
+            <formal-name>Identified Subject</formal-name>
+            <description>Used to detail assessment subjects that were identfied by this task.</description>
+            
+            <define-flag name="subject-placeholder-uuid" required="yes" as-type="uuid">
+               <formal-name>Assessment Subject Placeholder Universally Unique Identifier Reference</formal-name>
+               <description>References a unique assessment subject placeholder defined by this task.</description>
+            </define-flag>
+            <model>
+               <assembly ref="assessment-subject" min-occurs="1" max-occurs="unbounded">
+                  <use-name>subject</use-name>
+                  <group-as name="subjects" in-json="ARRAY"/>
+                  <remarks>
+                     <p>The assessment subjects that the task identified, which will be used by another task through a subject-placeholder reference. Such a task will "consume" these subjects.</p>
+                  </remarks>
+               </assembly>
+            </model>
+         </define-assembly>
+         <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
       </model>
    </define-assembly>
 
@@ -1212,8 +1264,8 @@
                            </assembly>
                            <!-- CHANGED: Added "related-action" -->
                            <!-- CHANGED: Added "related-action" -->
-                           <assembly ref="related-action" max-occurs="unbounded">
-                              <group-as name="related-actions" in-json="ARRAY"/>
+                           <assembly ref="related-task" max-occurs="unbounded">
+                              <group-as name="related-tasks" in-json="ARRAY"/>
                               <remarks>
                                  <p>This is used to identify the response action that this log entry relates to.</p>
                               </remarks>
@@ -1814,66 +1866,6 @@
          <p>To ensure a <code>ns</code> is unique to an organization and naming conflicts are avoided, a URI containing a DNS or other globally defined organization name should be used. For example, if FedRAMP and DoD both extend OSCAL, FedRAMP will use the <code>ns</code> "https://fedramp.gov", while DoD will use the <code>ns</code> "https://defense.gov" for any organization specific <code>name</code>.</p>
          <p>Tools that process OSCAL content are not required to interpret unrecognized OSCAL extensions; however, OSCAL-compliant tools should not modify or remove unrecognized extensions, unless there is a compelling reason to do so, such as data sensitivity.</p>
       </remarks>
-   </define-assembly>
-
-   <define-assembly name="related-action">
-      <formal-name>Action Reference</formal-name>
-      <description>Identifies an individual action for which the containing object is a consequence of.</description>
-      <define-flag name="action-uuid" required="yes" as-type="uuid">
-         <formal-name>Action Universally Unique Identifier Reference</formal-name>
-         <description>References a unique action by UUID.</description>
-      </define-flag>
-      <model>
-         <field ref="property" min-occurs="0" max-occurs="unbounded">
-            <group-as name="props" in-json="ARRAY"/>
-         </field>
-         <assembly ref="annotation" max-occurs="unbounded">
-            <group-as name="annotations" in-json="ARRAY"/>
-         </assembly>
-         <assembly ref="link" max-occurs="unbounded">
-            <group-as name="links" in-json="ARRAY"/>
-         </assembly>
-         <assembly ref="responsible-party" max-occurs="unbounded">
-            <group-as name="responsible-parties" in-json="BY_KEY"/>
-            <remarks>
-               <p>Identifies the person or organization responsible for performing a specific role defined by the activity.</p>
-            </remarks>
-         </assembly>
-         <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
-      </model>
-   </define-assembly>
-   
-   <define-assembly name="related-task">
-      <formal-name>Task Reference</formal-name>
-      <description>Identifies an individual task for which the containing object is a consequence of.</description>
-      <define-flag name="task-uuid" required="yes" as-type="uuid">
-         <formal-name>Task Universally Unique Identifier Reference</formal-name>
-         <description>References a unique task by UUID.</description>
-      </define-flag>
-      <model>
-         <field ref="property" min-occurs="0" max-occurs="unbounded">
-            <group-as name="props" in-json="ARRAY"/>
-         </field>
-         <assembly ref="annotation" max-occurs="unbounded">
-            <group-as name="annotations" in-json="ARRAY"/>
-         </assembly>
-         <assembly ref="link" max-occurs="unbounded">
-            <group-as name="links" in-json="ARRAY"/>
-         </assembly>
-         <assembly ref="responsible-party" max-occurs="unbounded">
-            <group-as name="responsible-parties" in-json="BY_KEY"/>
-            <remarks>
-               <p>Identifies the person or organization responsible for performing a specific role defined by the activity.</p>
-            </remarks>
-         </assembly>
-         <assembly ref="assessment-subject" max-occurs="unbounded">
-            <group-as name="assessment-subjects" in-json="ARRAY"/>
-            <remarks>
-               <p>The assessment subjects that the action was performed against.</p>
-            </remarks>
-         </assembly>
-         <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
-      </model>
    </define-assembly>
 
 </METASCHEMA>

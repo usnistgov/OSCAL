@@ -216,10 +216,6 @@
                      <field ref="logged-by" max-occurs="unbounded">
                         <group-as name="logged-by" in-json="ARRAY"/>
                      </field>
-                     <!-- CHANGED: Added "related-action" -->
-                     <assembly ref="related-action" max-occurs="unbounded">
-                        <group-as name="related-actions" in-json="ARRAY"/>
-                     </assembly>
                      <!-- CHANGED: Added "related-task" -->
                      <assembly ref="related-task" max-occurs="unbounded">
                         <group-as name="related-tasks" in-json="ARRAY"/>
@@ -331,4 +327,5 @@
          <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
       </model>
    </define-assembly>
+
 </METASCHEMA>
