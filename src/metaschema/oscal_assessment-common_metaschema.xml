@@ -252,6 +252,17 @@
          <formal-name>Task Universally Unique Identifier</formal-name>
          <description>Uniquely identifies this assessment task. </description>
       </define-flag>
+      <define-flag name="type" required="yes" as-type="NCName">
+         <formal-name>Task Type</formal-name>
+         <description>The type of task.</description>
+         <constraint>
+            <allowed-values allow-other="yes">
+               <enum value="milestone">The task represents a planned milestone.</enum>
+               <enum value="action">The task represents a specific assessment action to be performed.</enum>
+            </allowed-values>
+         </constraint>
+      </define-flag>
+         
       <model>
          <define-field name="title" min-occurs="1" as-type="markup-line">
             <formal-name>Task Title</formal-name>
@@ -318,6 +329,18 @@
                      </define-flag>
                   </define-field>
                </choice>
+            </model>
+         </define-assembly>
+         <define-assembly name="dependency" max-occurs="unbounded">
+            <formal-name>Task Dependency</formal-name>
+            <description>Used to indicate that a task is dependant on another task.</description>
+            <group-as name="dependencies"/>
+            <define-flag name="task-uuid" required="yes" as-type="uuid">
+               <formal-name>Task Universally Unique Identifier Reference</formal-name>
+               <description>References a unique task by UUID.</description>
+            </define-flag>
+            <model>
+               <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
             </model>
          </define-assembly>
          <assembly ref="task" min-occurs="0" max-occurs="unbounded">
