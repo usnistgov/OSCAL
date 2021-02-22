@@ -97,10 +97,7 @@
             <!-- CHANGED: "assets" to "assessment-assets" -->
          </assembly>
 
-         <assembly ref="action" min-occurs="0" max-occurs="unbounded">
-            <use-name>assessment-action</use-name>
-            <group-as name="assessment-actions" in-json="ARRAY"/>
-         </assembly>
+         <!-- CHANGED: removed "assessment-actions" merging with "tasks" -->
 
          <!-- CHANGED: Moved "schedule" to top level (from assessment-activities), and changed model to "task" -->
          <assembly ref="task" min-occurs="0" max-occurs="unbounded">
@@ -109,6 +106,7 @@
          <assembly ref="back-matter" min-occurs="0" max-occurs="1"/>
       </model>
    </define-assembly>
+   
    <!-- ===============================  -->
    <!-- ======= END NEW CONTENT =======  -->
    <!-- ===============================  -->
