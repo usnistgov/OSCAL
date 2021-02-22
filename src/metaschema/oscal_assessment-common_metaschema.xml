@@ -539,7 +539,8 @@
 
    <define-assembly name="select-control-by-id" scope="local">
       <formal-name>Select Control</formal-name>
-      <description>Used to select a control for inclusion/exclusion based on one or more control statement identifiers. A set of statement identifiers can be used to target the inclusion/exclusion to only specific control statements providing more granularity over the specific statements that are within the asessment scope. A control will always have a single top-level statement, which can be used to select the entire control.</description>
+      <description>Used to select a control for inclusion/exclusion based on one or more control identifiers. A set of statement identifiers can be used to target the inclusion/exclusion to only specific control statements providing more granularity over the specific statements that are within the asessment scope.</description>
+      <flag ref="control-id" required="yes"/>
       <model>
          <define-field name="statement-id" as-type="NCName" min-occurs="1" max-occurs="unbounded" >
             <formal-name>Include Specific Statements</formal-name>
