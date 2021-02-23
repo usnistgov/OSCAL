@@ -37,4 +37,4 @@ Switch to XML action formal name Action Identifies an assessment-related event t
 Version 1.0.0-rc1
 XML namespace http://csrc.nist.gov/ns/oscal/1.0 XML Schema oscal_assessment-plan_schema.xsd JSON to XML converter oscal_assessment-plan_json-to-xml-converter.xsl (How do I use the converter to convert OSCAL JSON to XML?) The OSCAL assessment plan format is used to describe the information typically provided by an assessor during the preparation for an assessment.
 The root of the OSCAL assessment plan format is assessment-plan.
-Switch to JSON assessment-action formal name Action Identifies an assessment-related event that must occur as part of executing an assessment plan, the result of which may be recorded within the assessment log in assessment results.</description></item></channel></rss>
+Switch to JSON formal name Action Identifies an assessment-related event that must occur as part of executing an assessment plan, the result of which may be recorded within the assessment log in assessment results.</description></item></channel></rss>

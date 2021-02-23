@@ -1509,21 +1509,77 @@
             "minItems" : 1,
             "items" : 
             { "$ref" : "#/definitions/link" } },
+          "responsible-roles" : 
+          { "type" : "object",
+            "minProperties" : 1,
+            "additionalProperties" : 
+            { "allOf" : 
+              [ 
+                { "$ref" : "#/definitions/responsible-role" },
+                
+                { "not" : 
+                  { "type" : "string" } } ] } },
+          "remarks" : 
+          { "$ref" : "#/definitions/remarks" } },
+        "required" : 
+        [ "uuid",
+          "description" ],
+        "additionalProperties" : false },
+      "task" : 
+      { "title" : "Task",
+        "description" : "Represents a scheduled event or milestone, which may be associated with a series of assessment actions.",
+        "$id" : "#/definitions/task",
+        "type" : "object",
+        "properties" : 
+        { "uuid" : 
+          { "title" : "Task Universally Unique Identifier",
+            "description" : "Uniquely identifies this assessment task.",
+            "type" : "string",
+            "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
+          "type" : 
+          { "title" : "Task Type",
+            "description" : "The type of task.",
+            "type" : "string" },
+          "title" : 
+          { "title" : "Task Title",
+            "description" : "The title for this task.",
+            "$id" : "#/definitions/task-title",
+            "type" : "string" },
+          "description" : 
+          { "title" : "Task Description",
+            "description" : "A human-readable description of this task.",
+            "$id" : "#/definitions/task-description",
+            "type" : "string" },
+          "props" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/property" } },
+          "annotations" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/annotation" } },
+          "links" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/link" } },
           "timing" : 
           { "title" : "Event Timing",
-            "description" : "The timing under which the event is intended to occur.",
-            "$id" : "#/definitions/action-timing",
+            "description" : "The timing under which the task is intended to occur.",
+            "$id" : "#/definitions/task-timing",
             "type" : "object",
             "properties" : 
             { "on-date" : 
               { "title" : "On Date Condition",
-                "description" : "The event is intended to occur on the specified date.",
-                "$id" : "#/definitions/action-timing-on-date",
+                "description" : "The task is intended to occur on the specified date.",
+                "$id" : "#/definitions/task-timing-on-date",
                 "type" : "object",
                 "properties" : 
                 { "date" : 
                   { "title" : "On Date Condition",
-                    "description" : "The event must occur on the specified date.",
+                    "description" : "The task must occur on the specified date.",
                     "type" : "string",
                     "format" : "date-time",
                     "pattern" : "^((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})$" } },
@@ -1532,19 +1588,19 @@
                 "additionalProperties" : false },
               "within-date-range" : 
               { "title" : "On Date Range Condition",
-                "description" : "The event is intended to occur within the specified date range.",
-                "$id" : "#/definitions/action-timing-within-date-range",
+                "description" : "The task is intended to occur within the specified date range.",
+                "$id" : "#/definitions/task-timing-within-date-range",
                 "type" : "object",
                 "properties" : 
                 { "start" : 
                   { "title" : "Start Date Condition",
-                    "description" : "The event must occur on or after the specified date.",
+                    "description" : "The task must occur on or after the specified date.",
                     "type" : "string",
                     "format" : "date-time",
                     "pattern" : "^((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})$" },
                   "end" : 
                   { "title" : "End Date Condition",
-                    "description" : "The event must occur on or before the specified date.",
+                    "description" : "The task must occur on or before the specified date.",
                     "type" : "string",
                     "format" : "date-time",
                     "pattern" : "^((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})$" } },
@@ -1554,13 +1610,13 @@
                 "additionalProperties" : false },
               "at-frequency" : 
               { "title" : "Frequency Condition",
-                "description" : "The event is intended to occur at the specified frequency.",
-                "$id" : "#/definitions/action-timing-at-frequency",
+                "description" : "The task is intended to occur at the specified frequency.",
+                "$id" : "#/definitions/task-timing-at-frequency",
                 "type" : "object",
                 "properties" : 
                 { "period" : 
                   { "title" : "Period",
-                    "description" : "The event must occur after the specified period has elapsed.",
+                    "description" : "The task must occur after the specified period has elapsed.",
                     "type" : "integer",
                     "multipleOf" : 1,
                     "minimum" : 1 },
@@ -1580,36 +1636,58 @@
                   "unit" ],
                 "additionalProperties" : false } },
             "additionalProperties" : false },
-          "assessment-subjects" : 
+          "dependencies" : 
+          { "anyOf" : 
+            [ 
+              { "title" : "Task Dependency",
+                "description" : "Used to indicate that a task is dependant on another task.",
+                "$id" : "#/definitions/task-dependency",
+                "type" : "object",
+                "properties" : 
+                { "task-uuid" : 
+                  { "title" : "Task Universally Unique Identifier Reference",
+                    "description" : "References a unique task by UUID.",
+                    "type" : "string",
+                    "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
+                  "remarks" : 
+                  { "$ref" : "#/definitions/remarks" } },
+                "required" : 
+                [ "task-uuid" ],
+                "additionalProperties" : false },
+              
+              { "type" : "array",
+                "minItems" : 1,
+                "items" : 
+                { "title" : "Task Dependency",
+                  "description" : "Used to indicate that a task is dependant on another task.",
+                  "$id" : "#/definitions/task-dependency",
+                  "type" : "object",
+                  "properties" : 
+                  { "task-uuid" : 
+                    { "title" : "Task Universally Unique Identifier Reference",
+                      "description" : "References a unique task by UUID.",
+                      "type" : "string",
+                      "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
+                    "remarks" : 
+                    { "$ref" : "#/definitions/remarks" } },
+                  "required" : 
+                  [ "task-uuid" ],
+                  "additionalProperties" : false } } ] },
+          "tasks" : 
           { "type" : "array",
             "minItems" : 1,
             "items" : 
-            { "$ref" : "#/definitions/assessment-subject" } },
-          "responsible-roles" : 
-          { "type" : "object",
-            "minProperties" : 1,
-            "additionalProperties" : 
-            { "allOf" : 
-              [ 
-                { "$ref" : "#/definitions/responsible-role" },
-                
-                { "not" : 
-                  { "type" : "string" } } ] } },
+            { "$ref" : "#/definitions/task" } },
           "associated-activities" : 
           { "type" : "array",
             "minItems" : 1,
             "items" : 
             { "title" : "Associated Activity",
               "description" : "Identifies an individual activity to be performed as part of an action.",
-              "$id" : "#/definitions/action-associated-activity",
+              "$id" : "#/definitions/task-associated-activity",
               "type" : "object",
               "properties" : 
-              { "uuid" : 
-                { "title" : "Associated Activity Universally Unique Identifier",
-                  "description" : "Uniquely identifies an activity to be performed as part of the action. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. A UUID should be consistantly used for this schedule across revisions of the document.",
-                  "type" : "string",
-                  "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
-                "activity-uuid" : 
+              { "activity-uuid" : 
                 { "title" : "Activity Universally Unique Identifier Reference",
                   "description" : "References an activity defined in the list of activities.",
                   "type" : "string",
@@ -1639,126 +1717,23 @@
                       
                       { "not" : 
                         { "type" : "string" } } ] } },
-                "assessment-subjects" : 
+                "subjects" : 
                 { "type" : "array",
                   "minItems" : 1,
                   "items" : 
                   { "$ref" : "#/definitions/assessment-subject" } },
-                "assessment-subject-placeholder" : 
-                { "title" : "Assessment Subject Placeholder",
-                  "description" : "Used when the assessment subjects will be determined as part of one or more other assessment activities. These assessment subjects will be recorded in the assessment results.",
-                  "$id" : "#/definitions/action-associated-activity-assessment-subject-placeholder",
-                  "type" : "object",
-                  "properties" : 
-                  { "description" : 
-                    { "title" : "Assessment Subject Placeholder Description",
-                      "description" : "A human-readable description of intent of this assessment subject placeholder.",
-                      "$id" : "#/definitions/action-associated-activity-assessment-subject-placeholder-description",
-                      "type" : "string" },
-                    "sources" : 
-                    { "type" : "array",
-                      "minItems" : 1,
-                      "items" : 
-                      { "title" : "Assessment Subject Source",
-                        "description" : "Assessment subjects will be identified while conducting the referenced activity-instance.",
-                        "$id" : "#/definitions/action-associated-activity-assessment-subject-placeholder-source",
-                        "type" : "object",
-                        "properties" : 
-                        { "activity-instance-uuid" : 
-                          { "title" : "Activity Instance Universally Unique Identifier",
-                            "description" : "Uniquely identifies an assessment activity to be performed as part of the event. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. A UUID should be consistantly used for this schedule across revisions of the document.",
-                            "type" : "string",
-                            "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" } },
-                        "required" : 
-                        [ "activity-instance-uuid" ],
-                        "additionalProperties" : false } },
-                    "props" : 
-                    { "type" : "array",
-                      "minItems" : 1,
-                      "items" : 
-                      { "$ref" : "#/definitions/property" } },
-                    "annotations" : 
-                    { "type" : "array",
-                      "minItems" : 1,
-                      "items" : 
-                      { "$ref" : "#/definitions/annotation" } },
-                    "links" : 
-                    { "type" : "array",
-                      "minItems" : 1,
-                      "items" : 
-                      { "$ref" : "#/definitions/link" } },
-                    "remarks" : 
-                    { "$ref" : "#/definitions/remarks" } },
-                  "required" : 
-                  [ "sources" ],
-                  "additionalProperties" : false },
+                "subject-placeholder" : 
+                { "$ref" : "#/definitions/assessment-subject-placeholder" },
                 "remarks" : 
                 { "$ref" : "#/definitions/remarks" } },
               "required" : 
-              [ "uuid",
-                "activity-uuid" ],
+              [ "activity-uuid" ],
               "additionalProperties" : false } },
-          "remarks" : 
-          { "$ref" : "#/definitions/remarks" } },
-        "required" : 
-        [ "uuid",
-          "description" ],
-        "additionalProperties" : false },
-      "task" : 
-      { "title" : "Task",
-        "description" : "Represents a scheduled event or milestone, which may be associated with a series of assessment actions.",
-        "$id" : "#/definitions/task",
-        "type" : "object",
-        "properties" : 
-        { "uuid" : 
-          { "title" : "Task Universally Unique Identifier",
-            "description" : "Uniquely identifies this assessment task.",
-            "type" : "string",
-            "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
-          "title" : 
-          { "title" : "Task Title",
-            "description" : "The title for this task.",
-            "$id" : "#/definitions/task-title",
-            "type" : "string" },
-          "description" : 
-          { "title" : "Task Description",
-            "description" : "A human-readable description of this task.",
-            "$id" : "#/definitions/task-description",
-            "type" : "string" },
-          "props" : 
+          "subjects" : 
           { "type" : "array",
             "minItems" : 1,
             "items" : 
-            { "$ref" : "#/definitions/property" } },
-          "annotations" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/annotation" } },
-          "links" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/link" } },
-          "start" : 
-          { "title" : "Task Start Date",
-            "description" : "The task must occur on or after the specified date.",
-            "$id" : "#/definitions/task-start",
-            "type" : "string",
-            "format" : "date-time",
-            "pattern" : "^((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})$" },
-          "end" : 
-          { "title" : "Task End Date",
-            "description" : "The task must occur on or before the specified date.",
-            "$id" : "#/definitions/task-end",
-            "type" : "string",
-            "format" : "date-time",
-            "pattern" : "^((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})$" },
-          "related-actions" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/related-action" } },
+            { "$ref" : "#/definitions/assessment-subject" } },
           "responsible-roles" : 
           { "type" : "object",
             "minProperties" : 1,
@@ -1773,9 +1748,8 @@
           { "$ref" : "#/definitions/remarks" } },
         "required" : 
         [ "uuid",
-          "title",
-          "start",
-          "end" ],
+          "type",
+          "title" ],
         "additionalProperties" : false },
       "reviewed-controls" : 
       { "title" : "Reviewed Controls and Control Objectives",
@@ -1904,7 +1878,7 @@
         "additionalProperties" : false },
       "oscal-assessment-common-select-control-by-id" : 
       { "title" : "Select Control",
-        "description" : "Used to select a control for inclusion/exclusion based on the control's identifier. A set of statement identifiers can be optionally used to target the inclusion/exclusion to only specific control statements providing more granularity over the specific statements that are within the asessment scope.",
+        "description" : "Used to select a control for inclusion/exclusion based on one or more control identifiers. A set of statement identifiers can be used to target the inclusion/exclusion to only specific control statements providing more granularity over the specific statements that are within the asessment scope.",
         "$id" : "#/definitions/oscal-assessment-common-select-control-by-id",
         "type" : "object",
         "properties" : 
@@ -1931,6 +1905,60 @@
         "properties" : 
         { "" : 
           { "type" : "string" } },
+        "additionalProperties" : false },
+      "assessment-subject-placeholder" : 
+      { "title" : "Assessment Subject Placeholder",
+        "description" : "Used when the assessment subjects will be determined as part of one or more other assessment activities. These assessment subjects will be recorded in the assessment results in the assessment log.",
+        "$id" : "#/definitions/assessment-subject-placeholder",
+        "type" : "object",
+        "properties" : 
+        { "uuid" : 
+          { "title" : "Assessment Subject Placeholder Universally Unique Identifier",
+            "description" : "Uniquely identifies a set of assessment subjects that will be identified by a task or an activity that is part of a task.",
+            "type" : "string",
+            "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
+          "description" : 
+          { "title" : "Assessment Subject Placeholder Description",
+            "description" : "A human-readable description of intent of this assessment subject placeholder.",
+            "$id" : "#/definitions/assessment-subject-placeholder-description",
+            "type" : "string" },
+          "sources" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "title" : "Assessment Subject Source",
+              "description" : "Assessment subjects will be identified while conducting the referenced activity-instance.",
+              "$id" : "#/definitions/assessment-subject-placeholder-source",
+              "type" : "object",
+              "properties" : 
+              { "task-uuid" : 
+                { "title" : "Task Universally Unique Identifier",
+                  "description" : "Uniquely identifies an assessment activity to be performed as part of the event. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. A UUID should be consistantly used for this schedule across revisions of the document.",
+                  "type" : "string",
+                  "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" } },
+              "required" : 
+              [ "task-uuid" ],
+              "additionalProperties" : false } },
+          "props" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/property" } },
+          "annotations" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/annotation" } },
+          "links" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/link" } },
+          "remarks" : 
+          { "$ref" : "#/definitions/remarks" } },
+        "required" : 
+        [ "uuid",
+          "sources" ],
         "additionalProperties" : false },
       "assessment-subject" : 
       { "title" : "Subject of Assessment",
@@ -2156,27 +2184,32 @@
         "required" : 
         [ "assessment-platforms" ],
         "additionalProperties" : false },
-      "objective-status" : 
+      "finding-target" : 
       { "title" : "Objective Status",
         "description" : "Captures an assessor's conclusions regarding the degree to which an objective is satisfied.",
-        "$id" : "#/definitions/objective-status",
+        "$id" : "#/definitions/finding-target",
         "type" : "object",
         "properties" : 
-        { "" : 
-          { "type" : "string" },
-          "control-id" : 
-          { "title" : "Control Identifier Reference",
-            "description" : "A reference to a control identifier.",
+        { "type" : 
+          { "title" : "Finding Target Type",
+            "description" : "Identifies the type of the target.",
+            "type" : "string",
+            "enum" : 
+            [ "statement-id",
+              "objective-id" ] },
+          "id-ref" : 
+          { "title" : "Finding Target Identifier Reference",
+            "description" : "Identifies the specific target qualified by the type.",
             "type" : "string" },
           "title" : 
           { "title" : "Objective Status Title",
             "description" : "The title for this objective status.",
-            "$id" : "#/definitions/objective-status-title",
+            "$id" : "#/definitions/finding-target-title",
             "type" : "string" },
           "description" : 
           { "title" : "Objective Status Description",
             "description" : "A human-readable description of the assessor's conclusions regarding the degree to which an objective is satisfied.",
-            "$id" : "#/definitions/objective-status-description",
+            "$id" : "#/definitions/finding-target-description",
             "type" : "string" },
           "props" : 
           { "type" : "array",
@@ -2196,7 +2229,7 @@
           "status" : 
           { "title" : "Implementation Status",
             "description" : "A brief indication as to whether the objective is satisfied or not within a given system.",
-            "$id" : "#/definitions/objective-status-status",
+            "$id" : "#/definitions/finding-target-status",
             "type" : "string",
             "enum" : 
             [ "satisfied",
@@ -2204,7 +2237,9 @@
           "remarks" : 
           { "$ref" : "#/definitions/remarks" } },
         "required" : 
-        [ "status" ],
+        [ "type",
+          "id-ref",
+          "status" ],
         "additionalProperties" : false },
       "observation" : 
       { "title" : "Objective",
@@ -2339,52 +2374,7 @@
           { "type" : "array",
             "minItems" : 1,
             "items" : 
-            { "title" : "Assessment Actor",
-              "description" : "The actor that produces an observation, a finding, or a risk. One or more actor type can be used to specify a person that is using a tool.",
-              "$id" : "#/definitions/origin-actor",
-              "type" : "object",
-              "properties" : 
-              { "type" : 
-                { "title" : "Actor Type",
-                  "description" : "The kind of actor.",
-                  "type" : "string",
-                  "enum" : 
-                  [ "tool",
-                    "assessment-platform",
-                    "party" ] },
-                "uuid-ref" : 
-                { "title" : "Actor UUID Reference",
-                  "description" : "A pointer to the tool or person based on the associated type.",
-                  "type" : "string",
-                  "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
-                "role-id" : 
-                { "title" : "Actor Role",
-                  "description" : "For a party, this can optionally be used to specify the role the actor was performing.",
-                  "type" : "string" },
-                "props" : 
-                { "type" : "array",
-                  "minItems" : 1,
-                  "items" : 
-                  { "$ref" : "#/definitions/property" } },
-                "annotations" : 
-                { "type" : "array",
-                  "minItems" : 1,
-                  "items" : 
-                  { "$ref" : "#/definitions/annotation" } },
-                "links" : 
-                { "type" : "array",
-                  "minItems" : 1,
-                  "items" : 
-                  { "$ref" : "#/definitions/link" } } },
-              "required" : 
-              [ "type",
-                "uuid-ref" ],
-              "additionalProperties" : false } },
-          "related-actions" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/related-action" } },
+            { "$ref" : "#/definitions/origin-actor" } },
           "related-tasks" : 
           { "type" : "array",
             "minItems" : 1,
@@ -2392,6 +2382,114 @@
             { "$ref" : "#/definitions/related-task" } } },
         "required" : 
         [ "actors" ],
+        "additionalProperties" : false },
+      "origin-actor" : 
+      { "title" : "Originating Actor",
+        "description" : "The actor that produces an observation, a finding, or a risk. One or more actor type can be used to specify a person that is using a tool.",
+        "$id" : "#/definitions/origin-actor",
+        "type" : "object",
+        "properties" : 
+        { "type" : 
+          { "title" : "Actor Type",
+            "description" : "The kind of actor.",
+            "type" : "string",
+            "enum" : 
+            [ "tool",
+              "assessment-platform",
+              "party" ] },
+          "uuid-ref" : 
+          { "title" : "Actor UUID Reference",
+            "description" : "A pointer to the tool or person based on the associated type.",
+            "type" : "string",
+            "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
+          "role-id" : 
+          { "title" : "Actor Role",
+            "description" : "For a party, this can optionally be used to specify the role the actor was performing.",
+            "type" : "string" },
+          "props" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/property" } },
+          "annotations" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/annotation" } },
+          "links" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/link" } } },
+        "required" : 
+        [ "type",
+          "uuid-ref" ],
+        "additionalProperties" : false },
+      "related-task" : 
+      { "title" : "Task Reference",
+        "description" : "Identifies an individual task for which the containing object is a consequence of.",
+        "$id" : "#/definitions/related-task",
+        "type" : "object",
+        "properties" : 
+        { "task-uuid" : 
+          { "title" : "Task Universally Unique Identifier Reference",
+            "description" : "References a unique task by UUID.",
+            "type" : "string",
+            "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
+          "props" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/property" } },
+          "annotations" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/annotation" } },
+          "links" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/link" } },
+          "responsible-parties" : 
+          { "type" : "object",
+            "minProperties" : 1,
+            "additionalProperties" : 
+            { "allOf" : 
+              [ 
+                { "$ref" : "#/definitions/responsible-party" },
+                
+                { "not" : 
+                  { "type" : "string" } } ] } },
+          "subjects" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/assessment-subject" } },
+          "identified-subject" : 
+          { "title" : "Identified Subject",
+            "description" : "Used to detail assessment subjects that were identfied by this task.",
+            "$id" : "#/definitions/related-task-identified-subject",
+            "type" : "object",
+            "properties" : 
+            { "subject-placeholder-uuid" : 
+              { "title" : "Assessment Subject Placeholder Universally Unique Identifier Reference",
+                "description" : "References a unique assessment subject placeholder defined by this task.",
+                "type" : "string",
+                "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
+              "subjects" : 
+              { "type" : "array",
+                "minItems" : 1,
+                "items" : 
+                { "$ref" : "#/definitions/assessment-subject" } } },
+            "required" : 
+            [ "subject-placeholder-uuid",
+              "subjects" ],
+            "additionalProperties" : false },
+          "remarks" : 
+          { "$ref" : "#/definitions/remarks" } },
+        "required" : 
+        [ "task-uuid" ],
         "additionalProperties" : false },
       "threat-id" : 
       { "title" : "Threat ID",
@@ -2631,11 +2729,11 @@
                             "minItems" : 1,
                             "items" : 
                             { "$ref" : "#/definitions/link" } },
-                          "related-actions" : 
+                          "related-tasks" : 
                           { "type" : "array",
                             "minItems" : 1,
                             "items" : 
-                            { "$ref" : "#/definitions/related-action" } },
+                            { "$ref" : "#/definitions/related-task" } },
                           "remarks" : 
                           { "$ref" : "#/definitions/remarks" } },
                         "required" : 
@@ -2934,93 +3032,6 @@
         [ "name",
           "prose" ],
         "additionalProperties" : false },
-      "related-action" : 
-      { "title" : "Action Reference",
-        "description" : "Identifies an individual action for which the containing object is a consequence of.",
-        "$id" : "#/definitions/related-action",
-        "type" : "object",
-        "properties" : 
-        { "action-uuid" : 
-          { "title" : "Action Universally Unique Identifier Reference",
-            "description" : "References a unique action by UUID.",
-            "type" : "string",
-            "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
-          "props" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/property" } },
-          "annotations" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/annotation" } },
-          "links" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/link" } },
-          "responsible-parties" : 
-          { "type" : "object",
-            "minProperties" : 1,
-            "additionalProperties" : 
-            { "allOf" : 
-              [ 
-                { "$ref" : "#/definitions/responsible-party" },
-                
-                { "not" : 
-                  { "type" : "string" } } ] } },
-          "remarks" : 
-          { "$ref" : "#/definitions/remarks" } },
-        "required" : 
-        [ "action-uuid" ],
-        "additionalProperties" : false },
-      "related-task" : 
-      { "title" : "Task Reference",
-        "description" : "Identifies an individual task for which the containing object is a consequence of.",
-        "$id" : "#/definitions/related-task",
-        "type" : "object",
-        "properties" : 
-        { "task-uuid" : 
-          { "title" : "Task Universally Unique Identifier Reference",
-            "description" : "References a unique task by UUID.",
-            "type" : "string",
-            "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
-          "props" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/property" } },
-          "annotations" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/annotation" } },
-          "links" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/link" } },
-          "responsible-parties" : 
-          { "type" : "object",
-            "minProperties" : 1,
-            "additionalProperties" : 
-            { "allOf" : 
-              [ 
-                { "$ref" : "#/definitions/responsible-party" },
-                
-                { "not" : 
-                  { "type" : "string" } } ] } },
-          "assessment-subjects" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/assessment-subject" } },
-          "remarks" : 
-          { "$ref" : "#/definitions/remarks" } },
-        "required" : 
-        [ "task-uuid" ],
-        "additionalProperties" : false },
       "assessment-results" : 
       { "title" : "Security Assessment Results (SAR)",
         "description" : "Security assessment results, such as those provided by a FedRAMP assessor in the FedRAMP Security Assessment Report.",
@@ -3042,7 +3053,7 @@
             "$id" : "#/definitions/assessment-results-local-definitions",
             "type" : "object",
             "properties" : 
-            { "add-objectives-and-methods" : 
+            { "objectives-and-methods" : 
               { "type" : "array",
                 "minItems" : 1,
                 "items" : 
@@ -3149,6 +3160,8 @@
                     
                     { "not" : 
                       { "type" : "string" } } ] } },
+              "assessment-assets" : 
+              { "$ref" : "#/definitions/assessment-assets" },
               "assessment-actions" : 
               { "type" : "array",
                 "minItems" : 1,
@@ -3157,8 +3170,6 @@
             "additionalProperties" : false },
           "reviewed-controls" : 
           { "$ref" : "#/definitions/reviewed-controls" },
-          "assessment-assets" : 
-          { "$ref" : "#/definitions/assessment-assets" },
           "attestations" : 
           { "type" : "array",
             "minItems" : 1,
@@ -3250,11 +3261,6 @@
                       "minItems" : 1,
                       "items" : 
                       { "$ref" : "#/definitions/logged-by" } },
-                    "related-actions" : 
-                    { "type" : "array",
-                      "minItems" : 1,
-                      "items" : 
-                      { "$ref" : "#/definitions/related-action" } },
                     "related-tasks" : 
                     { "type" : "array",
                       "minItems" : 1,
@@ -3335,8 +3341,8 @@
             "minItems" : 1,
             "items" : 
             { "$ref" : "#/definitions/origin" } },
-          "objective-status" : 
-          { "$ref" : "#/definitions/objective-status" },
+          "target" : 
+          { "$ref" : "#/definitions/finding-target" },
           "implementation-statement-uuid" : 
           { "title" : "Implementation Statement UUID",
             "description" : "Identifies the implementation statement in the SSP to which this finding is related.",
