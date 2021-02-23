@@ -142,6 +142,19 @@
                         minOccurs="0"
                         maxOccurs="1"/>
          </xs:choice>
+         <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Remarks</m:formal-name>
+                  <m:description>Additional commentary on the containing object.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Remarks</b>: Additional commentary on the containing object.</xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+               <xs:group ref="oscal-ar:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:complexType>
+         </xs:element>
       </xs:sequence>
       <xs:attribute name="id" use="required" type="xs:NCName">
          <xs:annotation>
@@ -1845,6 +1858,19 @@
                <xs:restriction base="xs:string"/>
             </xs:simpleType>
          </xs:element>
+         <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Remarks</m:formal-name>
+                  <m:description>Additional commentary on the containing object.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Remarks</b>: Additional commentary on the containing object.</xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+               <xs:group ref="oscal-ar:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:complexType>
+         </xs:element>
       </xs:sequence>
       <xs:attribute name="param-id" use="required" type="xs:NCName">
          <xs:annotation>
@@ -3205,6 +3231,32 @@
                </xs:attribute>
             </xs:complexType>
          </xs:element>
+         <xs:element name="collected" minOccurs="1" maxOccurs="1">
+            <xs:simpleType>
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>collected field</m:formal-name>
+                     <m:description>Date/time stamp identifying when the finding information was collected.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>collected field</b>: Date/time stamp identifying when the finding information was collected.</xs:documentation>
+               </xs:annotation>
+               <xs:restriction base="oscal-ar:dateTime-with-timezone"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="expires" minOccurs="0" maxOccurs="1">
+            <xs:simpleType>
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>expires field</m:formal-name>
+                     <m:description>Date/time identifying when the finding information is out-of-date and no longer valid. Typically used with continuous assessment scenarios.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>expires field</b>: Date/time identifying when the finding information is out-of-date and no longer valid. Typically used with continuous assessment scenarios.</xs:documentation>
+               </xs:annotation>
+               <xs:restriction base="oscal-ar:dateTime-with-timezone"/>
+            </xs:simpleType>
+         </xs:element>
          <xs:element name="remarks" minOccurs="0" maxOccurs="1">
             <xs:annotation>
                <xs:appinfo>
@@ -4484,32 +4536,6 @@
                      type="oscal-ar:origin-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
-         <xs:element name="collected" minOccurs="1" maxOccurs="1">
-            <xs:simpleType>
-               <xs:annotation>
-                  <xs:appinfo>
-                     <m:formal-name>collected field</m:formal-name>
-                     <m:description>Date/time stamp identifying when the finding information was collected.</m:description>
-                  </xs:appinfo>
-                  <xs:documentation>
-                     <b>collected field</b>: Date/time stamp identifying when the finding information was collected.</xs:documentation>
-               </xs:annotation>
-               <xs:restriction base="oscal-ar:dateTime-with-timezone"/>
-            </xs:simpleType>
-         </xs:element>
-         <xs:element name="expires" minOccurs="0" maxOccurs="1">
-            <xs:simpleType>
-               <xs:annotation>
-                  <xs:appinfo>
-                     <m:formal-name>expires field</m:formal-name>
-                     <m:description>Date/time identifying when the finding information is out-of-date and no longer valid. Typically used with continuous assessment scenarios.</m:description>
-                  </xs:appinfo>
-                  <xs:documentation>
-                     <b>expires field</b>: Date/time identifying when the finding information is out-of-date and no longer valid. Typically used with continuous assessment scenarios.</xs:documentation>
-               </xs:annotation>
-               <xs:restriction base="oscal-ar:dateTime-with-timezone"/>
-            </xs:simpleType>
-         </xs:element>
          <xs:element name="objective-status"
                      type="oscal-ar:objective-status-ASSEMBLY"
                      minOccurs="0"

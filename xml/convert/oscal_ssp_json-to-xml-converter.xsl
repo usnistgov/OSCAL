@@ -919,6 +919,7 @@
          </flag>
          <xsl:apply-templates select="*[@key='param-id']"/>
          <xsl:apply-templates select="*[@key='values']"/>
+         <xsl:apply-templates select="*[@key='remarks']"/>
       </assembly>
    </xsl:template>
    <xsl:template match="j:map[@key='parameter-settings']/j:map/@key"><!-- XML match="set-parameter/@param-id" -->
