@@ -2218,221 +2218,10 @@
                      type="oscal-poam:link-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
-         <xs:element name="timing" minOccurs="0" maxOccurs="1">
-            <xs:complexType>
-               <xs:annotation>
-                  <xs:appinfo>
-                     <m:formal-name>Event Timing</m:formal-name>
-                     <m:description>The timing under which the event is intended to occur.</m:description>
-                  </xs:appinfo>
-                  <xs:documentation>
-                     <b>Event Timing</b>: The timing under which the event is intended to occur.</xs:documentation>
-               </xs:annotation>
-               <xs:sequence>
-                  <xs:choice>
-                     <xs:element name="on-date" minOccurs="1" maxOccurs="1">
-                        <xs:complexType>
-                           <xs:attribute name="date" use="required" type="oscal-poam:dateTime-with-timezone">
-                              <xs:annotation>
-                                 <xs:appinfo>
-                                    <m:formal-name>On Date Condition</m:formal-name>
-                                    <m:description>The event must occur on the specified date.</m:description>
-                                 </xs:appinfo>
-                                 <xs:documentation>
-                                    <b>On Date Condition</b>: The event must occur on the specified date.</xs:documentation>
-                              </xs:annotation>
-                           </xs:attribute>
-                        </xs:complexType>
-                     </xs:element>
-                     <xs:element name="within-date-range" minOccurs="1" maxOccurs="1">
-                        <xs:complexType>
-                           <xs:attribute name="start"
-                                         use="required"
-                                         type="oscal-poam:dateTime-with-timezone">
-                              <xs:annotation>
-                                 <xs:appinfo>
-                                    <m:formal-name>Start Date Condition</m:formal-name>
-                                    <m:description>The event must occur on or after the specified date.</m:description>
-                                 </xs:appinfo>
-                                 <xs:documentation>
-                                    <b>Start Date Condition</b>: The event must occur on or after the specified date.</xs:documentation>
-                              </xs:annotation>
-                           </xs:attribute>
-                           <xs:attribute name="end" use="required" type="oscal-poam:dateTime-with-timezone">
-                              <xs:annotation>
-                                 <xs:appinfo>
-                                    <m:formal-name>End Date Condition</m:formal-name>
-                                    <m:description>The event must occur on or before the specified date.</m:description>
-                                 </xs:appinfo>
-                                 <xs:documentation>
-                                    <b>End Date Condition</b>: The event must occur on or before the specified date.</xs:documentation>
-                              </xs:annotation>
-                           </xs:attribute>
-                        </xs:complexType>
-                     </xs:element>
-                     <xs:element name="at-frequency" minOccurs="1" maxOccurs="1">
-                        <xs:complexType>
-                           <xs:attribute name="period" use="required" type="xs:positiveInteger">
-                              <xs:annotation>
-                                 <xs:appinfo>
-                                    <m:formal-name>Period</m:formal-name>
-                                    <m:description>The event must occur after the specified period has elapsed.</m:description>
-                                 </xs:appinfo>
-                                 <xs:documentation>
-                                    <b>Period</b>: The event must occur after the specified period has elapsed.</xs:documentation>
-                              </xs:annotation>
-                           </xs:attribute>
-                           <xs:attribute name="unit" use="required" type="xs:string">
-                              <xs:annotation>
-                                 <xs:appinfo>
-                                    <m:formal-name>Time Unit</m:formal-name>
-                                    <m:description>The unit of time for the period.</m:description>
-                                 </xs:appinfo>
-                                 <xs:documentation>
-                                    <b>Time Unit</b>: The unit of time for the period.</xs:documentation>
-                              </xs:annotation>
-                           </xs:attribute>
-                        </xs:complexType>
-                     </xs:element>
-                  </xs:choice>
-               </xs:sequence>
-            </xs:complexType>
-         </xs:element>
-         <xs:element name="assessment-subject"
-                     type="oscal-poam:assessment-subject-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
          <xs:element name="responsible-role"
                      type="oscal-poam:responsible-role-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
-         <xs:element name="associated-activity" minOccurs="0" maxOccurs="unbounded">
-            <xs:complexType>
-               <xs:annotation>
-                  <xs:appinfo>
-                     <m:formal-name>Associated Activity</m:formal-name>
-                     <m:description>Identifies an individual activity to be performed as part of an action.</m:description>
-                  </xs:appinfo>
-                  <xs:documentation>
-                     <b>Associated Activity</b>: Identifies an individual activity to be performed as part of an action.</xs:documentation>
-               </xs:annotation>
-               <xs:sequence>
-                  <xs:element name="prop"
-                              type="oscal-poam:property-FIELD"
-                              minOccurs="0"
-                              maxOccurs="unbounded"/>
-                  <xs:element name="annotation"
-                              type="oscal-poam:annotation-ASSEMBLY"
-                              minOccurs="0"
-                              maxOccurs="unbounded"/>
-                  <xs:element name="link"
-                              type="oscal-poam:link-ASSEMBLY"
-                              minOccurs="0"
-                              maxOccurs="unbounded"/>
-                  <xs:element name="responsible-role"
-                              type="oscal-poam:responsible-role-ASSEMBLY"
-                              minOccurs="0"
-                              maxOccurs="unbounded"/>
-                  <xs:choice>
-                     <xs:element name="assessment-subject"
-                                 type="oscal-poam:assessment-subject-ASSEMBLY"
-                                 minOccurs="1"
-                                 maxOccurs="unbounded"/>
-                     <xs:element name="assessment-subject-placeholder" minOccurs="0" maxOccurs="1">
-                        <xs:complexType>
-                           <xs:annotation>
-                              <xs:appinfo>
-                                 <m:formal-name>Assessment Subject Placeholder</m:formal-name>
-                                 <m:description>Used when the assessment subjects will be determined as part of one or more other assessment activities. These assessment subjects will be recorded in the assessment results.</m:description>
-                              </xs:appinfo>
-                              <xs:documentation>
-                                 <b>Assessment Subject Placeholder</b>: Used when the assessment subjects will be determined as part of one or more other assessment activities. These assessment subjects will be recorded in the assessment results.</xs:documentation>
-                           </xs:annotation>
-                           <xs:sequence>
-                              <xs:element name="description" minOccurs="0" maxOccurs="1">
-                                 <xs:complexType>
-                                    <xs:group ref="oscal-poam:PROSE" maxOccurs="unbounded" minOccurs="0"/>
-                                 </xs:complexType>
-                              </xs:element>
-                              <xs:element name="source" minOccurs="1" maxOccurs="unbounded">
-                                 <xs:complexType>
-                                    <xs:attribute name="activity-instance-uuid" use="required" type="oscal-poam:uuid">
-                                       <xs:annotation>
-                                          <xs:appinfo>
-                                             <m:formal-name>Activity Instance Universally Unique Identifier</m:formal-name>
-                                             <m:description>Uniquely identifies an assessment activity to be performed as part of the event. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. A UUID should be consistantly used for this schedule across revisions of the document.</m:description>
-                                          </xs:appinfo>
-                                          <xs:documentation>
-                                             <b>Activity Instance Universally Unique Identifier</b>: Uniquely identifies an assessment activity to be performed as part of the event. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. A UUID should be consistantly used for this schedule across revisions of the document.</xs:documentation>
-                                       </xs:annotation>
-                                    </xs:attribute>
-                                 </xs:complexType>
-                              </xs:element>
-                              <xs:element name="prop"
-                                          type="oscal-poam:property-FIELD"
-                                          minOccurs="0"
-                                          maxOccurs="unbounded"/>
-                              <xs:element name="annotation"
-                                          type="oscal-poam:annotation-ASSEMBLY"
-                                          minOccurs="0"
-                                          maxOccurs="unbounded"/>
-                              <xs:element name="link"
-                                          type="oscal-poam:link-ASSEMBLY"
-                                          minOccurs="0"
-                                          maxOccurs="unbounded"/>
-                              <xs:element name="remarks" minOccurs="0" maxOccurs="1">
-                                 <xs:annotation>
-                                    <xs:appinfo>
-                                       <m:formal-name>Remarks</m:formal-name>
-                                       <m:description>Additional commentary on the containing object.</m:description>
-                                    </xs:appinfo>
-                                    <xs:documentation>
-                                       <b>Remarks</b>: Additional commentary on the containing object.</xs:documentation>
-                                 </xs:annotation>
-                                 <xs:complexType>
-                                    <xs:group ref="oscal-poam:PROSE" maxOccurs="unbounded" minOccurs="0"/>
-                                 </xs:complexType>
-                              </xs:element>
-                           </xs:sequence>
-                        </xs:complexType>
-                     </xs:element>
-                  </xs:choice>
-                  <xs:element name="remarks" minOccurs="0" maxOccurs="1">
-                     <xs:annotation>
-                        <xs:appinfo>
-                           <m:formal-name>Remarks</m:formal-name>
-                           <m:description>Additional commentary on the containing object.</m:description>
-                        </xs:appinfo>
-                        <xs:documentation>
-                           <b>Remarks</b>: Additional commentary on the containing object.</xs:documentation>
-                     </xs:annotation>
-                     <xs:complexType>
-                        <xs:group ref="oscal-poam:PROSE" maxOccurs="unbounded" minOccurs="0"/>
-                     </xs:complexType>
-                  </xs:element>
-               </xs:sequence>
-               <xs:attribute name="uuid" use="required" type="oscal-poam:uuid">
-                  <xs:annotation>
-                     <xs:appinfo>
-                        <m:formal-name>Associated Activity Universally Unique Identifier</m:formal-name>
-                        <m:description>Uniquely identifies an activity to be performed as part of the action. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. A UUID should be consistantly used for this schedule across revisions of the document.</m:description>
-                     </xs:appinfo>
-                     <xs:documentation>
-                        <b>Associated Activity Universally Unique Identifier</b>: Uniquely identifies an activity to be performed as part of the action. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. A UUID should be consistantly used for this schedule across revisions of the document.</xs:documentation>
-                  </xs:annotation>
-               </xs:attribute>
-               <xs:attribute name="activity-uuid" use="required" type="oscal-poam:uuid">
-                  <xs:annotation>
-                     <xs:appinfo>
-                        <m:formal-name>Activity Universally Unique Identifier Reference</m:formal-name>
-                        <m:description>References an activity defined in the list of activities.</m:description>
-                     </xs:appinfo>
-                     <xs:documentation>
-                        <b>Activity Universally Unique Identifier Reference</b>: References an activity defined in the list of activities.</xs:documentation>
-                  </xs:annotation>
-               </xs:attribute>
-            </xs:complexType>
-         </xs:element>
          <xs:element name="remarks" minOccurs="0" maxOccurs="1">
             <xs:annotation>
                <xs:appinfo>
@@ -2490,34 +2279,192 @@
                      type="oscal-poam:link-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
-         <xs:element name="start" minOccurs="1" maxOccurs="1">
-            <xs:simpleType>
+         <xs:element name="timing" minOccurs="0" maxOccurs="1">
+            <xs:complexType>
                <xs:annotation>
                   <xs:appinfo>
-                     <m:formal-name>Task Start Date</m:formal-name>
-                     <m:description>The task must occur on or after the specified date.</m:description>
+                     <m:formal-name>Event Timing</m:formal-name>
+                     <m:description>The timing under which the task is intended to occur.</m:description>
                   </xs:appinfo>
                   <xs:documentation>
-                     <b>Task Start Date</b>: The task must occur on or after the specified date.</xs:documentation>
+                     <b>Event Timing</b>: The timing under which the task is intended to occur.</xs:documentation>
                </xs:annotation>
-               <xs:restriction base="oscal-poam:dateTime-with-timezone"/>
-            </xs:simpleType>
+               <xs:sequence>
+                  <xs:choice>
+                     <xs:element name="on-date" minOccurs="1" maxOccurs="1">
+                        <xs:complexType>
+                           <xs:attribute name="date" use="required" type="oscal-poam:dateTime-with-timezone">
+                              <xs:annotation>
+                                 <xs:appinfo>
+                                    <m:formal-name>On Date Condition</m:formal-name>
+                                    <m:description>The task must occur on the specified date.</m:description>
+                                 </xs:appinfo>
+                                 <xs:documentation>
+                                    <b>On Date Condition</b>: The task must occur on the specified date.</xs:documentation>
+                              </xs:annotation>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="within-date-range" minOccurs="1" maxOccurs="1">
+                        <xs:complexType>
+                           <xs:attribute name="start"
+                                         use="required"
+                                         type="oscal-poam:dateTime-with-timezone">
+                              <xs:annotation>
+                                 <xs:appinfo>
+                                    <m:formal-name>Start Date Condition</m:formal-name>
+                                    <m:description>The task must occur on or after the specified date.</m:description>
+                                 </xs:appinfo>
+                                 <xs:documentation>
+                                    <b>Start Date Condition</b>: The task must occur on or after the specified date.</xs:documentation>
+                              </xs:annotation>
+                           </xs:attribute>
+                           <xs:attribute name="end" use="required" type="oscal-poam:dateTime-with-timezone">
+                              <xs:annotation>
+                                 <xs:appinfo>
+                                    <m:formal-name>End Date Condition</m:formal-name>
+                                    <m:description>The task must occur on or before the specified date.</m:description>
+                                 </xs:appinfo>
+                                 <xs:documentation>
+                                    <b>End Date Condition</b>: The task must occur on or before the specified date.</xs:documentation>
+                              </xs:annotation>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="at-frequency" minOccurs="1" maxOccurs="1">
+                        <xs:complexType>
+                           <xs:attribute name="period" use="required" type="xs:positiveInteger">
+                              <xs:annotation>
+                                 <xs:appinfo>
+                                    <m:formal-name>Period</m:formal-name>
+                                    <m:description>The task must occur after the specified period has elapsed.</m:description>
+                                 </xs:appinfo>
+                                 <xs:documentation>
+                                    <b>Period</b>: The task must occur after the specified period has elapsed.</xs:documentation>
+                              </xs:annotation>
+                           </xs:attribute>
+                           <xs:attribute name="unit" use="required" type="xs:string">
+                              <xs:annotation>
+                                 <xs:appinfo>
+                                    <m:formal-name>Time Unit</m:formal-name>
+                                    <m:description>The unit of time for the period.</m:description>
+                                 </xs:appinfo>
+                                 <xs:documentation>
+                                    <b>Time Unit</b>: The unit of time for the period.</xs:documentation>
+                              </xs:annotation>
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:choice>
+               </xs:sequence>
+            </xs:complexType>
          </xs:element>
-         <xs:element name="end" minOccurs="1" maxOccurs="1">
-            <xs:simpleType>
+         <xs:element name="dependency" minOccurs="0" maxOccurs="unbounded">
+            <xs:complexType>
                <xs:annotation>
                   <xs:appinfo>
-                     <m:formal-name>Task End Date</m:formal-name>
-                     <m:description>The task must occur on or before the specified date.</m:description>
+                     <m:formal-name>Task Dependency</m:formal-name>
+                     <m:description>Used to indicate that a task is dependant on another task.</m:description>
                   </xs:appinfo>
                   <xs:documentation>
-                     <b>Task End Date</b>: The task must occur on or before the specified date.</xs:documentation>
+                     <b>Task Dependency</b>: Used to indicate that a task is dependant on another task.</xs:documentation>
                </xs:annotation>
-               <xs:restriction base="oscal-poam:dateTime-with-timezone"/>
-            </xs:simpleType>
+               <xs:sequence>
+                  <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+                     <xs:annotation>
+                        <xs:appinfo>
+                           <m:formal-name>Remarks</m:formal-name>
+                           <m:description>Additional commentary on the containing object.</m:description>
+                        </xs:appinfo>
+                        <xs:documentation>
+                           <b>Remarks</b>: Additional commentary on the containing object.</xs:documentation>
+                     </xs:annotation>
+                     <xs:complexType>
+                        <xs:group ref="oscal-poam:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+                     </xs:complexType>
+                  </xs:element>
+               </xs:sequence>
+               <xs:attribute name="task-uuid" use="required" type="oscal-poam:uuid">
+                  <xs:annotation>
+                     <xs:appinfo>
+                        <m:formal-name>Task Universally Unique Identifier Reference</m:formal-name>
+                        <m:description>References a unique task by UUID.</m:description>
+                     </xs:appinfo>
+                     <xs:documentation>
+                        <b>Task Universally Unique Identifier Reference</b>: References a unique task by UUID.</xs:documentation>
+                  </xs:annotation>
+               </xs:attribute>
+            </xs:complexType>
          </xs:element>
-         <xs:element name="related-action"
-                     type="oscal-poam:related-action-ASSEMBLY"
+         <xs:element name="task"
+                     type="oscal-poam:task-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:element name="associated-activity" minOccurs="0" maxOccurs="unbounded">
+            <xs:complexType>
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Associated Activity</m:formal-name>
+                     <m:description>Identifies an individual activity to be performed as part of an action.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Associated Activity</b>: Identifies an individual activity to be performed as part of an action.</xs:documentation>
+               </xs:annotation>
+               <xs:sequence>
+                  <xs:element name="prop"
+                              type="oscal-poam:property-FIELD"
+                              minOccurs="0"
+                              maxOccurs="unbounded"/>
+                  <xs:element name="annotation"
+                              type="oscal-poam:annotation-ASSEMBLY"
+                              minOccurs="0"
+                              maxOccurs="unbounded"/>
+                  <xs:element name="link"
+                              type="oscal-poam:link-ASSEMBLY"
+                              minOccurs="0"
+                              maxOccurs="unbounded"/>
+                  <xs:element name="responsible-role"
+                              type="oscal-poam:responsible-role-ASSEMBLY"
+                              minOccurs="0"
+                              maxOccurs="unbounded"/>
+                  <xs:choice>
+                     <xs:element name="subject"
+                                 type="oscal-poam:assessment-subject-ASSEMBLY"
+                                 minOccurs="1"
+                                 maxOccurs="unbounded"/>
+                     <xs:element name="subject-placeholder"
+                                 type="oscal-poam:assessment-subject-placeholder-ASSEMBLY"
+                                 minOccurs="0"
+                                 maxOccurs="1"/>
+                  </xs:choice>
+                  <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+                     <xs:annotation>
+                        <xs:appinfo>
+                           <m:formal-name>Remarks</m:formal-name>
+                           <m:description>Additional commentary on the containing object.</m:description>
+                        </xs:appinfo>
+                        <xs:documentation>
+                           <b>Remarks</b>: Additional commentary on the containing object.</xs:documentation>
+                     </xs:annotation>
+                     <xs:complexType>
+                        <xs:group ref="oscal-poam:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+                     </xs:complexType>
+                  </xs:element>
+               </xs:sequence>
+               <xs:attribute name="activity-uuid" use="required" type="oscal-poam:uuid">
+                  <xs:annotation>
+                     <xs:appinfo>
+                        <m:formal-name>Activity Universally Unique Identifier Reference</m:formal-name>
+                        <m:description>References an activity defined in the list of activities.</m:description>
+                     </xs:appinfo>
+                     <xs:documentation>
+                        <b>Activity Universally Unique Identifier Reference</b>: References an activity defined in the list of activities.</xs:documentation>
+                  </xs:annotation>
+               </xs:attribute>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="subject"
+                     type="oscal-poam:assessment-subject-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="responsible-role"
@@ -2546,6 +2493,16 @@
             </xs:appinfo>
             <xs:documentation>
                <b>Task Universally Unique Identifier</b>: Uniquely identifies this assessment task. </xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="type" use="required" type="xs:NCName">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Task Type</m:formal-name>
+               <m:description>The type of task.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Task Type</b>: The type of task.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
@@ -2711,10 +2668,10 @@
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Select Control</m:formal-name>
-            <m:description>Used to select a control for inclusion/exclusion based on the control's identifier. A set of statement identifiers can be optionally used to target the inclusion/exclusion to only specific control statements providing more granularity over the specific statements that are within the asessment scope.</m:description>
+            <m:description>Used to select a control for inclusion/exclusion based on one or more control identifiers. A set of statement identifiers can be used to target the inclusion/exclusion to only specific control statements providing more granularity over the specific statements that are within the asessment scope.</m:description>
          </xs:appinfo>
          <xs:documentation>
-            <b>Select Control</b>: Used to select a control for inclusion/exclusion based on the control's identifier. A set of statement identifiers can be optionally used to target the inclusion/exclusion to only specific control statements providing more granularity over the specific statements that are within the asessment scope.</xs:documentation>
+            <b>Select Control</b>: Used to select a control for inclusion/exclusion based on one or more control identifiers. A set of statement identifiers can be used to target the inclusion/exclusion to only specific control statements providing more granularity over the specific statements that are within the asessment scope.</xs:documentation>
       </xs:annotation>
       <xs:sequence>
          <xs:element name="statement-id" minOccurs="0" maxOccurs="unbounded">
@@ -2744,6 +2701,72 @@
    </xs:complexType>
    <xs:complexType name="select-objective-by-id-FIELD">
       <xs:attribute name="objective-id" use="required" type="xs:string"/>
+   </xs:complexType>
+   <xs:complexType name="assessment-subject-placeholder-ASSEMBLY">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Assessment Subject Placeholder</m:formal-name>
+            <m:description>Used when the assessment subjects will be determined as part of one or more other assessment activities. These assessment subjects will be recorded in the assessment results in the assessment log.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Assessment Subject Placeholder</b>: Used when the assessment subjects will be determined as part of one or more other assessment activities. These assessment subjects will be recorded in the assessment results in the assessment log.</xs:documentation>
+      </xs:annotation>
+      <xs:sequence>
+         <xs:element name="description" minOccurs="0" maxOccurs="1">
+            <xs:complexType>
+               <xs:group ref="oscal-poam:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="source" minOccurs="1" maxOccurs="unbounded">
+            <xs:complexType>
+               <xs:attribute name="task-uuid" use="required" type="oscal-poam:uuid">
+                  <xs:annotation>
+                     <xs:appinfo>
+                        <m:formal-name>Task Universally Unique Identifier</m:formal-name>
+                        <m:description>Uniquely identifies an assessment activity to be performed as part of the event. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. A UUID should be consistantly used for this schedule across revisions of the document.</m:description>
+                     </xs:appinfo>
+                     <xs:documentation>
+                        <b>Task Universally Unique Identifier</b>: Uniquely identifies an assessment activity to be performed as part of the event. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. A UUID should be consistantly used for this schedule across revisions of the document.</xs:documentation>
+                  </xs:annotation>
+               </xs:attribute>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="prop"
+                     type="oscal-poam:property-FIELD"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:element name="annotation"
+                     type="oscal-poam:annotation-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:element name="link"
+                     type="oscal-poam:link-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Remarks</m:formal-name>
+                  <m:description>Additional commentary on the containing object.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Remarks</b>: Additional commentary on the containing object.</xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+               <xs:group ref="oscal-poam:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:complexType>
+         </xs:element>
+      </xs:sequence>
+      <xs:attribute name="uuid" use="required" type="oscal-poam:uuid">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Assessment Subject Placeholder Universally Unique Identifier</m:formal-name>
+               <m:description>Uniquely identifies a set of assessment subjects that will be identified by a task or an activity that is part of a task.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Assessment Subject Placeholder Universally Unique Identifier</b>: Uniquely identifies a set of assessment subjects that will be identified by a task or an activity that is part of a task.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
    </xs:complexType>
    <xs:complexType name="assessment-subject-ASSEMBLY">
       <xs:annotation>
@@ -3042,7 +3065,7 @@
          </xs:element>
       </xs:sequence>
    </xs:complexType>
-   <xs:complexType name="objective-status-ASSEMBLY">
+   <xs:complexType name="finding-target-ASSEMBLY">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Objective Status</m:formal-name>
@@ -3101,15 +3124,24 @@
             </xs:complexType>
          </xs:element>
       </xs:sequence>
-      <xs:attribute name="objective-id" type="xs:string"/>
-      <xs:attribute name="control-id" type="xs:NCName">
+      <xs:attribute name="type" use="required" type="xs:string">
          <xs:annotation>
             <xs:appinfo>
-               <m:formal-name>Control Identifier Reference</m:formal-name>
-               <m:description>A reference to a control identifier.</m:description>
+               <m:formal-name>Finding Target Type</m:formal-name>
+               <m:description>Identifies the type of the target.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>Control Identifier Reference</b>: A reference to a control identifier.</xs:documentation>
+               <b>Finding Target Type</b>: Identifies the type of the target.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="id-ref" use="required" type="xs:NCName">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Finding Target Identifier Reference</m:formal-name>
+               <m:description>Identifies the specific target qualified by the <m:code>type</m:code>.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Finding Target Identifier Reference</b>: Identifies the specific target qualified by the type.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
@@ -3294,71 +3326,154 @@
             <b>Origin</b>: Identifies the source of the finding, such as a tool, interviewed person, or activity.</xs:documentation>
       </xs:annotation>
       <xs:sequence>
-         <xs:element name="actor" minOccurs="1" maxOccurs="unbounded">
-            <xs:complexType>
-               <xs:annotation>
-                  <xs:appinfo>
-                     <m:formal-name>Assessment Actor</m:formal-name>
-                     <m:description>The actor that produces an observation, a finding, or a risk. One or more actor type can be used to specify a person that is using a tool.</m:description>
-                  </xs:appinfo>
-                  <xs:documentation>
-                     <b>Assessment Actor</b>: The actor that produces an observation, a finding, or a risk. One or more actor type can be used to specify a person that is using a tool.</xs:documentation>
-               </xs:annotation>
-               <xs:sequence>
-                  <xs:element name="prop"
-                              type="oscal-poam:property-FIELD"
-                              minOccurs="0"
-                              maxOccurs="unbounded"/>
-                  <xs:element name="annotation"
-                              type="oscal-poam:annotation-ASSEMBLY"
-                              minOccurs="0"
-                              maxOccurs="unbounded"/>
-                  <xs:element name="link"
-                              type="oscal-poam:link-ASSEMBLY"
-                              minOccurs="0"
-                              maxOccurs="unbounded"/>
-               </xs:sequence>
-               <xs:attribute name="type" use="required" type="xs:NCName">
-                  <xs:annotation>
-                     <xs:appinfo>
-                        <m:formal-name>Actor Type</m:formal-name>
-                        <m:description>The kind of actor.</m:description>
-                     </xs:appinfo>
-                     <xs:documentation>
-                        <b>Actor Type</b>: The kind of actor.</xs:documentation>
-                  </xs:annotation>
-               </xs:attribute>
-               <xs:attribute name="uuid-ref" use="required" type="oscal-poam:uuid">
-                  <xs:annotation>
-                     <xs:appinfo>
-                        <m:formal-name>Actor UUID Reference</m:formal-name>
-                        <m:description>A pointer to the tool or person based on the associated type.</m:description>
-                     </xs:appinfo>
-                     <xs:documentation>
-                        <b>Actor UUID Reference</b>: A pointer to the tool or person based on the associated type.</xs:documentation>
-                  </xs:annotation>
-               </xs:attribute>
-               <xs:attribute name="role-id" type="xs:NCName">
-                  <xs:annotation>
-                     <xs:appinfo>
-                        <m:formal-name>Actor Role</m:formal-name>
-                        <m:description>For a party, this can optionally be used to specify the role the actor was performing.</m:description>
-                     </xs:appinfo>
-                     <xs:documentation>
-                        <b>Actor Role</b>: For a party, this can optionally be used to specify the role the actor was performing.</xs:documentation>
-                  </xs:annotation>
-               </xs:attribute>
-            </xs:complexType>
-         </xs:element>
-         <xs:element name="related-action"
-                     type="oscal-poam:related-action-ASSEMBLY"
-                     minOccurs="0"
+         <xs:element name="actor"
+                     type="oscal-poam:origin-actor-ASSEMBLY"
+                     minOccurs="1"
                      maxOccurs="unbounded"/>
          <xs:element name="related-task"
                      type="oscal-poam:related-task-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
       </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="origin-actor-ASSEMBLY">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Originating Actor</m:formal-name>
+            <m:description>The actor that produces an observation, a finding, or a risk. One or more actor type can be used to specify a person that is using a tool.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Originating Actor</b>: The actor that produces an observation, a finding, or a risk. One or more actor type can be used to specify a person that is using a tool.</xs:documentation>
+      </xs:annotation>
+      <xs:sequence>
+         <xs:element name="prop"
+                     type="oscal-poam:property-FIELD"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:element name="annotation"
+                     type="oscal-poam:annotation-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:element name="link"
+                     type="oscal-poam:link-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="type" use="required" type="xs:NCName">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Actor Type</m:formal-name>
+               <m:description>The kind of actor.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Actor Type</b>: The kind of actor.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="uuid-ref" use="required" type="oscal-poam:uuid">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Actor UUID Reference</m:formal-name>
+               <m:description>A pointer to the tool or person based on the associated type.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Actor UUID Reference</b>: A pointer to the tool or person based on the associated type.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="role-id" type="xs:NCName">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Actor Role</m:formal-name>
+               <m:description>For a party, this can optionally be used to specify the role the actor was performing.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Actor Role</b>: For a party, this can optionally be used to specify the role the actor was performing.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+   </xs:complexType>
+   <xs:complexType name="related-task-ASSEMBLY">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Task Reference</m:formal-name>
+            <m:description>Identifies an individual task for which the containing object is a consequence of.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Task Reference</b>: Identifies an individual task for which the containing object is a consequence of.</xs:documentation>
+      </xs:annotation>
+      <xs:sequence>
+         <xs:element name="prop"
+                     type="oscal-poam:property-FIELD"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:element name="annotation"
+                     type="oscal-poam:annotation-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:element name="link"
+                     type="oscal-poam:link-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:element name="responsible-party"
+                     type="oscal-poam:responsible-party-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:element name="subject"
+                     type="oscal-poam:assessment-subject-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:element name="identified-subject" minOccurs="0" maxOccurs="1">
+            <xs:complexType>
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Identified Subject</m:formal-name>
+                     <m:description>Used to detail assessment subjects that were identfied by this task.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Identified Subject</b>: Used to detail assessment subjects that were identfied by this task.</xs:documentation>
+               </xs:annotation>
+               <xs:sequence>
+                  <xs:element name="subject"
+                              type="oscal-poam:assessment-subject-ASSEMBLY"
+                              minOccurs="1"
+                              maxOccurs="unbounded"/>
+               </xs:sequence>
+               <xs:attribute name="subject-placeholder-uuid"
+                             use="required"
+                             type="oscal-poam:uuid">
+                  <xs:annotation>
+                     <xs:appinfo>
+                        <m:formal-name>Assessment Subject Placeholder Universally Unique Identifier Reference</m:formal-name>
+                        <m:description>References a unique assessment subject placeholder defined by this task.</m:description>
+                     </xs:appinfo>
+                     <xs:documentation>
+                        <b>Assessment Subject Placeholder Universally Unique Identifier Reference</b>: References a unique assessment subject placeholder defined by this task.</xs:documentation>
+                  </xs:annotation>
+               </xs:attribute>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Remarks</m:formal-name>
+                  <m:description>Additional commentary on the containing object.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Remarks</b>: Additional commentary on the containing object.</xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+               <xs:group ref="oscal-poam:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:complexType>
+         </xs:element>
+      </xs:sequence>
+      <xs:attribute name="task-uuid" use="required" type="oscal-poam:uuid">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Task Universally Unique Identifier Reference</m:formal-name>
+               <m:description>References a unique task by UUID.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Task Universally Unique Identifier Reference</b>: References a unique task by UUID.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
    </xs:complexType>
    <xs:complexType name="threat-id-FIELD">
       <xs:annotation>
@@ -3629,8 +3744,8 @@
                                                 type="oscal-poam:link-ASSEMBLY"
                                                 minOccurs="0"
                                                 maxOccurs="unbounded"/>
-                                    <xs:element name="related-action"
-                                                type="oscal-poam:related-action-ASSEMBLY"
+                                    <xs:element name="related-task"
+                                                type="oscal-poam:related-task-ASSEMBLY"
                                                 minOccurs="0"
                                                 maxOccurs="unbounded"/>
                                     <xs:element name="remarks" minOccurs="0" maxOccurs="1">
@@ -4056,112 +4171,6 @@
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
-   <xs:complexType name="related-action-ASSEMBLY">
-      <xs:annotation>
-         <xs:appinfo>
-            <m:formal-name>Action Reference</m:formal-name>
-            <m:description>Identifies an individual action for which the containing object is a consequence of.</m:description>
-         </xs:appinfo>
-         <xs:documentation>
-            <b>Action Reference</b>: Identifies an individual action for which the containing object is a consequence of.</xs:documentation>
-      </xs:annotation>
-      <xs:sequence>
-         <xs:element name="prop"
-                     type="oscal-poam:property-FIELD"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
-         <xs:element name="annotation"
-                     type="oscal-poam:annotation-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
-         <xs:element name="link"
-                     type="oscal-poam:link-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
-         <xs:element name="responsible-party"
-                     type="oscal-poam:responsible-party-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
-         <xs:element name="remarks" minOccurs="0" maxOccurs="1">
-            <xs:annotation>
-               <xs:appinfo>
-                  <m:formal-name>Remarks</m:formal-name>
-                  <m:description>Additional commentary on the containing object.</m:description>
-               </xs:appinfo>
-               <xs:documentation>
-                  <b>Remarks</b>: Additional commentary on the containing object.</xs:documentation>
-            </xs:annotation>
-            <xs:complexType>
-               <xs:group ref="oscal-poam:PROSE" maxOccurs="unbounded" minOccurs="0"/>
-            </xs:complexType>
-         </xs:element>
-      </xs:sequence>
-      <xs:attribute name="action-uuid" use="required" type="oscal-poam:uuid">
-         <xs:annotation>
-            <xs:appinfo>
-               <m:formal-name>Action Universally Unique Identifier Reference</m:formal-name>
-               <m:description>References a unique action by UUID.</m:description>
-            </xs:appinfo>
-            <xs:documentation>
-               <b>Action Universally Unique Identifier Reference</b>: References a unique action by UUID.</xs:documentation>
-         </xs:annotation>
-      </xs:attribute>
-   </xs:complexType>
-   <xs:complexType name="related-task-ASSEMBLY">
-      <xs:annotation>
-         <xs:appinfo>
-            <m:formal-name>Task Reference</m:formal-name>
-            <m:description>Identifies an individual task for which the containing object is a consequence of.</m:description>
-         </xs:appinfo>
-         <xs:documentation>
-            <b>Task Reference</b>: Identifies an individual task for which the containing object is a consequence of.</xs:documentation>
-      </xs:annotation>
-      <xs:sequence>
-         <xs:element name="prop"
-                     type="oscal-poam:property-FIELD"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
-         <xs:element name="annotation"
-                     type="oscal-poam:annotation-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
-         <xs:element name="link"
-                     type="oscal-poam:link-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
-         <xs:element name="responsible-party"
-                     type="oscal-poam:responsible-party-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
-         <xs:element name="assessment-subject"
-                     type="oscal-poam:assessment-subject-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
-         <xs:element name="remarks" minOccurs="0" maxOccurs="1">
-            <xs:annotation>
-               <xs:appinfo>
-                  <m:formal-name>Remarks</m:formal-name>
-                  <m:description>Additional commentary on the containing object.</m:description>
-               </xs:appinfo>
-               <xs:documentation>
-                  <b>Remarks</b>: Additional commentary on the containing object.</xs:documentation>
-            </xs:annotation>
-            <xs:complexType>
-               <xs:group ref="oscal-poam:PROSE" maxOccurs="unbounded" minOccurs="0"/>
-            </xs:complexType>
-         </xs:element>
-      </xs:sequence>
-      <xs:attribute name="task-uuid" use="required" type="oscal-poam:uuid">
-         <xs:annotation>
-            <xs:appinfo>
-               <m:formal-name>Task Universally Unique Identifier Reference</m:formal-name>
-               <m:description>References a unique task by UUID.</m:description>
-            </xs:appinfo>
-            <xs:documentation>
-               <b>Task Universally Unique Identifier Reference</b>: References a unique task by UUID.</xs:documentation>
-         </xs:annotation>
-      </xs:attribute>
-   </xs:complexType>
    <xs:element name="plan-of-action-and-milestones"
                type="oscal-poam:plan-of-action-and-milestones-ASSEMBLY"/>
    <xs:complexType name="plan-of-action-and-milestones-ASSEMBLY">
@@ -4283,10 +4292,24 @@
                      type="oscal-poam:link-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
-         <xs:element name="origin"
-                     type="oscal-poam:origin-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
+         <xs:element name="origin" minOccurs="0" maxOccurs="unbounded">
+            <xs:complexType>
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Origin</m:formal-name>
+                     <m:description>Identifies the source of the finding, such as a tool or person.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Origin</b>: Identifies the source of the finding, such as a tool or person.</xs:documentation>
+               </xs:annotation>
+               <xs:sequence>
+                  <xs:element name="actor"
+                              type="oscal-poam:origin-actor-ASSEMBLY"
+                              minOccurs="1"
+                              maxOccurs="unbounded"/>
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
          <xs:element name="related-observation" minOccurs="0" maxOccurs="unbounded">
             <xs:complexType>
                <xs:attribute name="observation-uuid" use="required" type="oscal-poam:uuid">
