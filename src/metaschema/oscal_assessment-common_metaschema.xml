@@ -353,10 +353,6 @@
             <description>Identifies an individual activity to be performed as part of an action.</description>
             <group-as name="associated-activities" in-json="ARRAY"/>
             <define-flag name="activity-uuid" required="yes" as-type="uuid">
-               <formal-name>Associated Activity Universally Unique Identifier</formal-name>
-               <description>Uniquely identifies an activity to be performed as part of the action. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. A UUID should be consistantly used for this schedule across revisions of the document.</description>
-            </define-flag>
-            <define-flag name="activity-uuid" required="yes" as-type="uuid">
                <formal-name>Activity Universally Unique Identifier Reference</formal-name>
                <description>References an activity defined in the list of activities.</description>
             </define-flag>
