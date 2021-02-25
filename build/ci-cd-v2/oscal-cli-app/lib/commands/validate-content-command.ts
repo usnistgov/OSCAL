@@ -3,8 +3,8 @@
 import {validateContent} from '../modules/validate-content-mod';
 
 export const command = 'validate-content'
-export const desc = 'Usage: oscalcli validate-content [schema] [config-file] [options]'
-//export const desc = 'Usage: oscalcli validate-content [artifact-dir] [option1] [option2] [artifacts] [option3] [oscal-dir]'
+export const desc = 'Usage: oscalcli validate-content [arg] [options]'
+
 export const builder = {
     'oscal-dir': {
         type: 'string',
@@ -16,12 +16,6 @@ export const builder = {
         type: 'boolean',
         alias: 'v',
         describe: 'Provide verbose output',
-        demand: false
-    },
-    'config-file': {
-        type: 'string',
-        alias: 'c',
-        describe: 'The config file location',
         demand: false
     },
     'artifact-dir': {
