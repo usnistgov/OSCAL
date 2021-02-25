@@ -23,7 +23,9 @@
   },
   "dependencies": {
     "ajv": "^6.12.6",
-    "commander": "^5.1.0"
+    "commander": "^5.1.0",
+    "saxon-js": "^2.0.3",
+    "xslt3": "^2.0.3"
   },
   "nodemonConfig": {
     "watch": "src/**/*.ts",
