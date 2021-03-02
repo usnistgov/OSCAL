@@ -35,9 +35,9 @@
       </define-flag>
       <model>
          <assembly ref="metadata" min-occurs="1"/>
-         <field ref="import-component-definition" max-occurs="unbounded">
+         <assembly ref="import-component-definition" max-occurs="unbounded">
             <group-as name="import-component-definitions" in-json="ARRAY"/>
-         </field>
+         </assembly>
          <assembly ref="defined-component" max-occurs="unbounded">
             <use-name>component</use-name>
             <group-as name="components" in-json="BY_KEY"/>
@@ -54,14 +54,14 @@
       </constraint>
    </define-assembly>
    
-   <define-field name="import-component-definition" as-type="empty">
+   <define-assembly name="import-component-definition">
       <formal-name>Import Component Definition</formal-name>
       <description>Loads a component definition from another resource.</description>
       <define-flag name="href" as-type="uri-reference" required="yes">
          <formal-name>Hyperlink Reference</formal-name>
          <description>A link to a resource that defines a set of components and/or capabilities to import into this collection.</description>
       </define-flag>
-   </define-field>
+   </define-assembly>
    
    <define-assembly name="defined-component">
       <formal-name>Component</formal-name>

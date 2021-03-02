@@ -271,12 +271,12 @@
             <formal-name>title field</formal-name>
             <description>A human readable name for the protocol (e.g., Transport Layer Security).</description>
          </define-field>
-         <field ref="port-range" max-occurs="unbounded">
+         <assembly ref="port-range" max-occurs="unbounded">
             <group-as name="port-ranges" in-json="ARRAY"/>
-         </field>
+         </assembly>
       </model>
    </define-assembly>
-   <define-field name="port-range" as-type="empty">
+   <define-assembly name="port-range">
       <formal-name>Port Range</formal-name>
       <description>Where applicable this is the IPv4 port range on which the service operates.</description>
       <define-flag name="start" as-type="nonNegativeInteger">
@@ -315,7 +315,7 @@
             </protocol>
          </service>
       </example>
-   </define-field>
+   </define-assembly>
    
    <!-- ############################################# -->
    <!-- # The System User and supporting constructs # -->

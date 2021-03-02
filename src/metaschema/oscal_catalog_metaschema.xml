@@ -108,7 +108,7 @@
                <group-as name="controls" in-json="ARRAY"/>
             </assembly>
          </choice>
-         <any/>
+         <!--<any/>-->
       </model>
       <constraint>
          <!-- CHANGE: added allowed values for a property/@name -->
