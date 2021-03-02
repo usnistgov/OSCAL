@@ -286,15 +286,15 @@
             <description>The timing under which the task is intended to occur.</description>
             <model>
                <choice>
-                  <define-field name="on-date" as-type="empty" min-occurs="1">
+                  <define-assembly name="on-date" min-occurs="1">
                      <formal-name>On Date Condition</formal-name>
                      <description>The task is intended to occur on the specified date.</description>
                      <define-flag name="date" as-type="dateTime-with-timezone" required="yes">
                         <formal-name>On Date Condition</formal-name>
                         <description>The task must occur on the specified date.</description>
                      </define-flag>
-                  </define-field>
-                  <define-field name="within-date-range" as-type="empty" min-occurs="1">
+                  </define-assembly>
+                  <define-assembly name="within-date-range" min-occurs="1">
                      <formal-name>On Date Range Condition</formal-name>
                      <description>The task is intended to occur within the specified date range.</description>
                      <define-flag name="start" as-type="dateTime-with-timezone" required="yes">
@@ -305,8 +305,8 @@
                         <formal-name>End Date Condition</formal-name>
                         <description>The task must occur on or before the specified date.</description>
                      </define-flag>
-                  </define-field>
-                  <define-field name="at-frequency" as-type="empty" min-occurs="1">
+                  </define-assembly>
+                  <define-assembly name="at-frequency" min-occurs="1">
                      <formal-name>Frequency Condition</formal-name>
                      <description>The task is intended to occur at the specified frequency.</description>
                      <define-flag name="period" as-type="positiveInteger" required="yes">
@@ -327,14 +327,14 @@
                            </allowed-values>
                         </constraint>
                      </define-flag>
-                  </define-field>
+                  </define-assembly>
                </choice>
             </model>
          </define-assembly>
          <define-assembly name="dependency" max-occurs="unbounded">
             <formal-name>Task Dependency</formal-name>
             <description>Used to indicate that a task is dependant on another task.</description>
-            <group-as name="dependencies"/>
+            <group-as name="dependencies" in-json="ARRAY"/>
             <define-flag name="task-uuid" required="yes" as-type="uuid">
                <formal-name>Task Universally Unique Identifier Reference</formal-name>
                <description>References a unique task by UUID.</description>
@@ -446,11 +446,11 @@
                </assembly>
                <choice>
                   <!-- CHANGED: "all" to "include-all" -->
-                  <define-field name="include-all" as-type="empty" min-occurs="1">
+                  <define-assembly name="include-all" min-occurs="1">
                      <!-- CHANGED: type to "empty" -->
                      <formal-name>All</formal-name>
                      <description>A key word to indicate all.</description>
-                  </define-field>
+                  </define-assembly>
                   <assembly ref="select-control-by-id" min-occurs="1" max-occurs="unbounded">
                      <use-name>include-control</use-name>
                      <group-as name="include-controls" in-json="ARRAY"/>
@@ -496,26 +496,26 @@
                </assembly>
                <choice>
                   <!-- CHANGED: "all" to "include-all" -->
-                  <define-field name="include-all" as-type="empty" min-occurs="1">
+                  <define-assembly name="include-all" min-occurs="1">
                      <!-- CHANGED: type to "empty" -->
                      <formal-name>All</formal-name>
                      <description>A key word to indicate all.</description>
-                  </define-field>
-                  <field ref="select-objective-by-id" min-occurs="1" max-occurs="unbounded">
+                  </define-assembly>
+                  <assembly ref="select-objective-by-id" min-occurs="1" max-occurs="unbounded">
                      <use-name>include-objective</use-name>
                      <group-as name="include-objectives" in-json="ARRAY"/>
                      <remarks>
                         <p>Used to select a control objective for inclusion by the control objective's identifier.</p>
                      </remarks>
-                  </field>
+                  </assembly>
                </choice>
-               <field ref="select-objective-by-id" max-occurs="unbounded">
+               <assembly ref="select-objective-by-id" max-occurs="unbounded">
                   <use-name>exclude-objective</use-name>
                   <group-as name="exclude-objectives" in-json="ARRAY"/>
                   <remarks>
                      <p>Used to select a control objective for exclusion by the control objective's identifier.</p>
                   </remarks>
-               </field>
+               </assembly>
                <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
             </model>
             <remarks>
@@ -546,11 +546,11 @@
       </model>
    </define-assembly>
    
-   <define-field name="select-objective-by-id" as-type="empty">
+   <define-assembly name="select-objective-by-id">
       <formal-name>Select Objective</formal-name>
       <description>Used to select a control objective for inclusion/exclusion based on the control objective's identifier.</description>
       <flag ref="objective-id" required="yes"/>
-   </define-field>
+   </define-assembly>
 
    <!-- ********** ASSESSMENT SUBJECT Assembly ********** -->
    <define-assembly name="assessment-subject-placeholder">
@@ -565,7 +565,7 @@
             <formal-name>Assessment Subject Placeholder Description</formal-name>
             <description>A human-readable description of intent of this assessment subject placeholder.</description>
          </define-field>
-         <define-field name="source" as-type="empty" min-occurs="1" max-occurs="unbounded">
+         <define-assembly name="source" min-occurs="1" max-occurs="unbounded">
             <formal-name>Assessment Subject Source</formal-name>
             <description>Assessment subjects will be identified while conducting the referenced activity-instance.</description>
             <group-as name="sources" in-json="ARRAY"/>
@@ -573,7 +573,7 @@
                <formal-name>Task Universally Unique Identifier</formal-name>
                <description>Uniquely identifies an assessment activity to be performed as part of the event. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. A UUID should be consistantly used for this schedule across revisions of the document.</description>
             </define-flag>
-         </define-field>
+         </define-assembly>
          <field ref="property" min-occurs="0" max-occurs="unbounded">
             <group-as name="props" in-json="ARRAY"/>
          </field>
@@ -620,11 +620,11 @@
          </assembly>
          <choice>
             <!-- CHANGED: "all" to "include-all" -->
-            <define-field name="include-all" as-type="empty" min-occurs="1">
+            <define-assembly name="include-all" min-occurs="1">
                <!-- CHANGED: type to "empty" -->
                <formal-name>All</formal-name>
                <description>A key word to indicate all.</description>
-            </define-field>
+            </define-assembly>
             <assembly ref="select-subject-by-id" min-occurs="1" max-occurs="unbounded">
                <use-name>include-subject</use-name>
                <!-- CHANGED: "includes" to "include-subjects" -->
@@ -1255,9 +1255,9 @@
                      <assembly ref="link" max-occurs="unbounded">
                         <group-as name="links" in-json="ARRAY"/>
                      </assembly>
-                     <field ref="logged-by" max-occurs="unbounded">
+                     <assembly ref="logged-by" max-occurs="unbounded">
                         <group-as name="logged-by" in-json="ARRAY"/>
-                     </field>
+                     </assembly>
                      <field ref="risk-status">
                         <use-name>status-change</use-name>
                         <remarks>
@@ -1365,7 +1365,7 @@
          </define-assembly>
 -->
          <!-- CHANGE: Added to relate a risk to an observation -->
-         <define-field name="related-observation" as-type="empty" max-occurs="unbounded">
+         <define-assembly name="related-observation" max-occurs="unbounded">
             <formal-name>Related Observation</formal-name>
             <description>Relates the finding to a set of referenced observations that were used to determine the finding.</description>
             <group-as name="related-observations" in-json="ARRAY"/>
@@ -1373,7 +1373,7 @@
                <formal-name>Observation Universally Unique Identifier Reference</formal-name>
                <description>References an observation defined in the list of observations.</description>
             </define-flag>
-         </define-field>
+         </define-assembly>
          
          <!-- QUESTION: ** (PROP) PRIORITY NEEDS TO BE ADDRESSED HERE, NOT ELSEWHERE ** -->
          <!-- CHANGED: "removed "party-uuid" and replaced with "origin" -->
@@ -1389,7 +1389,7 @@
       </constraint>
    </define-assembly>
 
-   <define-field name="logged-by" as-type="empty">
+   <define-assembly name="logged-by">
       <formal-name>Logged By</formal-name>
       <description>Used to indicate who created a log entry in what role.</description>
       <define-flag name="party-uuid" as-type="uuid" required="yes">
@@ -1400,7 +1400,7 @@
          <formal-name>Actor Role</formal-name>
          <description>A point to the role-id of the role in which the party is making the log entry.</description>
       </define-flag>
-   </define-field>
+   </define-assembly>
    
    <define-field name="risk-status" as-type="NCName">
       <!-- CHANGED: from "risk-status" to "status" -->
@@ -1853,7 +1853,7 @@
          <assembly ref="annotation" max-occurs="unbounded">
             <group-as name="annotations" in-json="ARRAY"/>
          </assembly>
-         <define-field name="prose" as-type="markup-multiline" in-xml="UNWRAPPED" min-occurs="1">
+         <define-field name="prose" as-type="markup-multiline" in-xml="UNWRAPPED" min-occurs="0">
             <!-- QUESTION: Is this the right name? -->
             <formal-name>Part Text</formal-name>
             <description>Permits multiple paragraphs, lists, tables etc.</description>

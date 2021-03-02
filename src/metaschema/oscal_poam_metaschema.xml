@@ -123,7 +123,7 @@
          <!-- CHANGED: removed "objective-status" per brianrufgsa -->
          <!-- CHANGED: (per Brian) removed "implementation-statement-uuid" since this is in the SAR -->
          <!-- CHANGED: replaced embedded observation with references -->
-         <define-field name="related-observation" as-type="empty" max-occurs="unbounded">
+         <define-assembly name="related-observation" max-occurs="unbounded">
             <formal-name>Related Observation</formal-name>
             <description>Relates the poam-item to a set of referenced observations that were used to determine the finding.</description>
             <group-as name="related-observations" in-json="ARRAY"/>
@@ -131,10 +131,10 @@
                <formal-name>Observation Universally Unique Identifier Reference</formal-name>
                <description>References an observation defined in the list of observations.</description>
             </define-flag>
-         </define-field>
+         </define-assembly>
 
          <!-- CHANGED: replaced "risk" with new "assciated-risk" -->
-         <define-field name="associated-risk" as-type="empty" max-occurs="unbounded">
+         <define-assembly name="associated-risk" max-occurs="unbounded">
             <formal-name>Associated Risk</formal-name>
             <description>Relates the finding to a set of referenced risks that were used to determine the finding.</description>
             <group-as name="related-risks" in-json="ARRAY"/>
@@ -142,7 +142,7 @@
                <formal-name>Risk Universally Unique Identifier Reference</formal-name>
                <description>References an risk defined in the list of risks.</description>
             </define-flag>
-         </define-field>
+         </define-assembly>
          <field ref="remarks"
                 in-xml="WITH_WRAPPER"
                 min-occurs="0"
