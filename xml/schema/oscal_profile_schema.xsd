@@ -29,7 +29,9 @@
       <xs:sequence>
          <xs:element name="title" minOccurs="1" maxOccurs="1">
             <xs:complexType mixed="true">
-               <xs:group ref="oscal-profile:everything-inline"/>
+               <xs:complexContent>
+                  <xs:extension base="oscal-profile:markupLineType"/>
+               </xs:complexContent>
             </xs:complexType>
          </xs:element>
          <xs:element name="published"
@@ -100,7 +102,9 @@
                   <b>Remarks</b>: Additional commentary on the containing object.</xs:documentation>
             </xs:annotation>
             <xs:complexType>
-               <xs:group ref="oscal-profile:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+               <xs:group ref="oscal-profile:blockElementGroup"
+                         maxOccurs="unbounded"
+                         minOccurs="0"/>
             </xs:complexType>
          </xs:element>
       </xs:sequence>
@@ -117,7 +121,9 @@
       <xs:sequence>
          <xs:element name="title" minOccurs="0" maxOccurs="1">
             <xs:complexType mixed="true">
-               <xs:group ref="oscal-profile:everything-inline"/>
+               <xs:complexContent>
+                  <xs:extension base="oscal-profile:markupLineType"/>
+               </xs:complexContent>
             </xs:complexType>
          </xs:element>
          <xs:element name="published"
@@ -158,7 +164,9 @@
                   <b>Remarks</b>: Additional commentary on the containing object.</xs:documentation>
             </xs:annotation>
             <xs:complexType>
-               <xs:group ref="oscal-profile:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+               <xs:group ref="oscal-profile:blockElementGroup"
+                         maxOccurs="unbounded"
+                         minOccurs="0"/>
             </xs:complexType>
          </xs:element>
       </xs:sequence>
@@ -175,7 +183,9 @@
       <xs:sequence>
          <xs:element name="title" minOccurs="0" maxOccurs="1">
             <xs:complexType mixed="true">
-               <xs:group ref="oscal-profile:everything-inline"/>
+               <xs:complexContent>
+                  <xs:extension base="oscal-profile:markupLineType"/>
+               </xs:complexContent>
             </xs:complexType>
          </xs:element>
          <xs:element name="address"
@@ -225,7 +235,9 @@
                   <b>Remarks</b>: Additional commentary on the containing object.</xs:documentation>
             </xs:annotation>
             <xs:complexType>
-               <xs:group ref="oscal-profile:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+               <xs:group ref="oscal-profile:blockElementGroup"
+                         maxOccurs="unbounded"
+                         minOccurs="0"/>
             </xs:complexType>
          </xs:element>
       </xs:sequence>
@@ -366,7 +378,9 @@
                   <b>Remarks</b>: Additional commentary on the containing object.</xs:documentation>
             </xs:annotation>
             <xs:complexType>
-               <xs:group ref="oscal-profile:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+               <xs:group ref="oscal-profile:blockElementGroup"
+                         maxOccurs="unbounded"
+                         minOccurs="0"/>
             </xs:complexType>
          </xs:element>
       </xs:sequence>
@@ -414,7 +428,9 @@
       <xs:sequence>
          <xs:element name="title" minOccurs="1" maxOccurs="1">
             <xs:complexType mixed="true">
-               <xs:group ref="oscal-profile:everything-inline"/>
+               <xs:complexContent>
+                  <xs:extension base="oscal-profile:markupLineType"/>
+               </xs:complexContent>
             </xs:complexType>
          </xs:element>
          <xs:element name="short-name" minOccurs="0" maxOccurs="1">
@@ -432,7 +448,9 @@
          </xs:element>
          <xs:element name="description" minOccurs="0" maxOccurs="1">
             <xs:complexType>
-               <xs:group ref="oscal-profile:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+               <xs:complexContent>
+                  <xs:extension base="oscal-profile:markupMultilineType"/>
+               </xs:complexContent>
             </xs:complexType>
          </xs:element>
          <xs:element name="prop"
@@ -457,7 +475,9 @@
                   <b>Remarks</b>: Additional commentary on the containing object.</xs:documentation>
             </xs:annotation>
             <xs:complexType>
-               <xs:group ref="oscal-profile:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+               <xs:group ref="oscal-profile:blockElementGroup"
+                         maxOccurs="unbounded"
+                         minOccurs="0"/>
             </xs:complexType>
          </xs:element>
       </xs:sequence>
@@ -472,17 +492,6 @@
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
-   <xs:simpleType name="role-id-FIELD">
-      <xs:annotation>
-         <xs:appinfo>
-            <m:formal-name>Role Identifier Reference</m:formal-name>
-            <m:description>A reference to the roles served by the user.</m:description>
-         </xs:appinfo>
-         <xs:documentation>
-            <b>Role Identifier Reference</b>: A reference to the roles served by the user.</xs:documentation>
-      </xs:annotation>
-      <xs:restriction base="xs:NCName"/>
-   </xs:simpleType>
    <xs:complexType name="back-matter-ASSEMBLY">
       <xs:annotation>
          <xs:appinfo>
@@ -506,12 +515,16 @@
                <xs:sequence>
                   <xs:element name="title" minOccurs="0" maxOccurs="1">
                      <xs:complexType mixed="true">
-                        <xs:group ref="oscal-profile:everything-inline"/>
+                        <xs:complexContent>
+                           <xs:extension base="oscal-profile:markupLineType"/>
+                        </xs:complexContent>
                      </xs:complexType>
                   </xs:element>
                   <xs:element name="description" minOccurs="0" maxOccurs="1">
                      <xs:complexType>
-                        <xs:group ref="oscal-profile:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+                        <xs:complexContent>
+                           <xs:extension base="oscal-profile:markupMultilineType"/>
+                        </xs:complexContent>
                      </xs:complexType>
                   </xs:element>
                   <xs:element name="prop"
@@ -539,7 +552,9 @@
                         <xs:sequence>
                            <xs:element name="text" minOccurs="1" maxOccurs="1">
                               <xs:complexType mixed="true">
-                                 <xs:group ref="oscal-profile:everything-inline"/>
+                                 <xs:complexContent>
+                                    <xs:extension base="oscal-profile:markupLineType"/>
+                                 </xs:complexContent>
                               </xs:complexType>
                            </xs:element>
                            <xs:element name="prop"
@@ -560,7 +575,12 @@
                                     <xs:documentation>
                                        <b>Bibliographic Definition</b>: A container for structured bibliographic information. The model of this information is undefined by OSCAL.</xs:documentation>
                                  </xs:annotation>
-                                 <xs:sequence/>
+                                 <xs:sequence>
+                                    <xs:any namespace="##other"
+                                            processContents="lax"
+                                            minOccurs="0"
+                                            maxOccurs="unbounded"/>
+                                 </xs:sequence>
                               </xs:complexType>
                            </xs:element>
                         </xs:sequence>
@@ -650,9 +670,15 @@
                            <b>Remarks</b>: Additional commentary on the containing object.</xs:documentation>
                      </xs:annotation>
                      <xs:complexType>
-                        <xs:group ref="oscal-profile:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+                        <xs:group ref="oscal-profile:blockElementGroup"
+                                  maxOccurs="unbounded"
+                                  minOccurs="0"/>
                      </xs:complexType>
                   </xs:element>
+                  <xs:any namespace="##other"
+                          processContents="lax"
+                          minOccurs="0"
+                          maxOccurs="unbounded"/>
                </xs:sequence>
                <xs:attribute name="uuid" use="required" type="oscal-profile:uuid">
                   <xs:annotation>
@@ -742,7 +768,9 @@
                   <b>Remarks</b>: Additional commentary on the containing object.</xs:documentation>
             </xs:annotation>
             <xs:complexType>
-               <xs:group ref="oscal-profile:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+               <xs:group ref="oscal-profile:blockElementGroup"
+                         maxOccurs="unbounded"
+                         minOccurs="0"/>
             </xs:complexType>
          </xs:element>
       </xs:sequence>
@@ -799,7 +827,9 @@
       <xs:sequence>
          <xs:element name="text" minOccurs="0" maxOccurs="1">
             <xs:complexType mixed="true">
-               <xs:group ref="oscal-profile:everything-inline"/>
+               <xs:complexContent>
+                  <xs:extension base="oscal-profile:markupLineType"/>
+               </xs:complexContent>
             </xs:complexType>
          </xs:element>
       </xs:sequence>
@@ -870,7 +900,9 @@
                   <b>Remarks</b>: Additional commentary on the containing object.</xs:documentation>
             </xs:annotation>
             <xs:complexType>
-               <xs:group ref="oscal-profile:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+               <xs:group ref="oscal-profile:blockElementGroup"
+                         maxOccurs="unbounded"
+                         minOccurs="0"/>
             </xs:complexType>
          </xs:element>
       </xs:sequence>
@@ -882,57 +914,6 @@
             </xs:appinfo>
             <xs:documentation>
                <b>Responsible Role</b>: The role that the party is responsible for.</xs:documentation>
-         </xs:annotation>
-      </xs:attribute>
-   </xs:complexType>
-   <xs:complexType name="responsible-role-ASSEMBLY">
-      <xs:annotation>
-         <xs:appinfo>
-            <m:formal-name>Responsible Role</m:formal-name>
-            <m:description>A reference to one or more roles with responsibility for performing a function relative to the containing object.</m:description>
-         </xs:appinfo>
-         <xs:documentation>
-            <b>Responsible Role</b>: A reference to one or more roles with responsibility for performing a function relative to the containing object.</xs:documentation>
-      </xs:annotation>
-      <xs:sequence>
-         <xs:element name="prop"
-                     type="oscal-profile:property-FIELD"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
-         <xs:element name="annotation"
-                     type="oscal-profile:annotation-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
-         <xs:element name="link"
-                     type="oscal-profile:link-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
-         <xs:element name="party-uuid"
-                     type="oscal-profile:party-uuid-FIELD"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
-         <xs:element name="remarks" minOccurs="0" maxOccurs="1">
-            <xs:annotation>
-               <xs:appinfo>
-                  <m:formal-name>Remarks</m:formal-name>
-                  <m:description>Additional commentary on the containing object.</m:description>
-               </xs:appinfo>
-               <xs:documentation>
-                  <b>Remarks</b>: Additional commentary on the containing object.</xs:documentation>
-            </xs:annotation>
-            <xs:complexType>
-               <xs:group ref="oscal-profile:PROSE" maxOccurs="unbounded" minOccurs="0"/>
-            </xs:complexType>
-         </xs:element>
-      </xs:sequence>
-      <xs:attribute name="role-id" use="required" type="xs:NCName">
-         <xs:annotation>
-            <xs:appinfo>
-               <m:formal-name>Responsible Role ID</m:formal-name>
-               <m:description>The role that is responsible for the business function.</m:description>
-            </xs:appinfo>
-            <xs:documentation>
-               <b>Responsible Role ID</b>: The role that is responsible for the business function.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
@@ -1155,7 +1136,9 @@
       <xs:sequence>
          <xs:element name="title" minOccurs="0" maxOccurs="1">
             <xs:complexType mixed="true">
-               <xs:group ref="oscal-profile:everything-inline"/>
+               <xs:complexContent>
+                  <xs:extension base="oscal-profile:markupLineType"/>
+               </xs:complexContent>
             </xs:complexType>
          </xs:element>
          <xs:element name="prop"
@@ -1166,7 +1149,9 @@
                      type="oscal-profile:annotation-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
-         <xs:group ref="oscal-profile:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+         <xs:group ref="oscal-profile:blockElementGroup"
+                   maxOccurs="unbounded"
+                   minOccurs="0"/>
          <xs:element name="part"
                      type="oscal-profile:part-ASSEMBLY"
                      minOccurs="0"
@@ -1175,6 +1160,10 @@
                      type="oscal-profile:link-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
+         <xs:any namespace="##other"
+                 processContents="lax"
+                 minOccurs="0"
+                 maxOccurs="unbounded"/>
       </xs:sequence>
       <xs:attribute name="id" type="xs:NCName">
          <xs:annotation>
@@ -1241,12 +1230,16 @@
                      maxOccurs="unbounded"/>
          <xs:element name="label" minOccurs="0" maxOccurs="1">
             <xs:complexType mixed="true">
-               <xs:group ref="oscal-profile:everything-inline"/>
+               <xs:complexContent>
+                  <xs:extension base="oscal-profile:markupLineType"/>
+               </xs:complexContent>
             </xs:complexType>
          </xs:element>
          <xs:element name="usage" minOccurs="0" maxOccurs="1">
             <xs:complexType>
-               <xs:group ref="oscal-profile:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+               <xs:complexContent>
+                  <xs:extension base="oscal-profile:markupMultilineType"/>
+               </xs:complexContent>
             </xs:complexType>
          </xs:element>
          <xs:element name="constraint"
@@ -1277,9 +1270,15 @@
                   <b>Remarks</b>: Additional commentary on the containing object.</xs:documentation>
             </xs:annotation>
             <xs:complexType>
-               <xs:group ref="oscal-profile:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+               <xs:group ref="oscal-profile:blockElementGroup"
+                         maxOccurs="unbounded"
+                         minOccurs="0"/>
             </xs:complexType>
          </xs:element>
+         <xs:any namespace="##other"
+                 processContents="lax"
+                 minOccurs="0"
+                 maxOccurs="unbounded"/>
       </xs:sequence>
       <xs:attribute name="id" use="required" type="xs:NCName">
          <xs:annotation>
@@ -1324,7 +1323,9 @@
       <xs:sequence>
          <xs:element name="description" minOccurs="0" maxOccurs="1">
             <xs:complexType>
-               <xs:group ref="oscal-profile:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+               <xs:complexContent>
+                  <xs:extension base="oscal-profile:markupMultilineType"/>
+               </xs:complexContent>
             </xs:complexType>
          </xs:element>
          <xs:element name="test" minOccurs="0" maxOccurs="unbounded">
@@ -1361,7 +1362,9 @@
                            <b>Remarks</b>: Additional commentary on the containing object.</xs:documentation>
                      </xs:annotation>
                      <xs:complexType>
-                        <xs:group ref="oscal-profile:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+                        <xs:group ref="oscal-profile:blockElementGroup"
+                                  maxOccurs="unbounded"
+                                  minOccurs="0"/>
                      </xs:complexType>
                   </xs:element>
                </xs:sequence>
@@ -1379,7 +1382,13 @@
             <b>Guideline</b>: A prose statement that provides a recommendation for the use of a parameter.</xs:documentation>
       </xs:annotation>
       <xs:sequence>
-         <xs:group ref="oscal-profile:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+         <xs:group ref="oscal-profile:blockElementGroup"
+                   maxOccurs="unbounded"
+                   minOccurs="0"/>
+         <xs:any namespace="##other"
+                 processContents="lax"
+                 minOccurs="0"
+                 maxOccurs="unbounded"/>
       </xs:sequence>
    </xs:complexType>
    <xs:simpleType name="parameter-value-FIELD">
@@ -1405,9 +1414,15 @@
       <xs:sequence>
          <xs:element name="choice" minOccurs="0" maxOccurs="unbounded">
             <xs:complexType mixed="true">
-               <xs:group ref="oscal-profile:everything-inline"/>
+               <xs:complexContent>
+                  <xs:extension base="oscal-profile:markupLineType"/>
+               </xs:complexContent>
             </xs:complexType>
          </xs:element>
+         <xs:any namespace="##other"
+                 processContents="lax"
+                 minOccurs="0"
+                 maxOccurs="unbounded"/>
       </xs:sequence>
       <xs:attribute name="how-many" type="xs:string">
          <xs:annotation>
@@ -1504,7 +1519,7 @@
       </xs:annotation>
       <xs:sequence>
          <xs:element name="combine"
-                     type="oscal-profile:combine-FIELD"
+                     type="oscal-profile:combine-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="1"/>
          <xs:choice>
@@ -1519,7 +1534,15 @@
          </xs:choice>
       </xs:sequence>
    </xs:complexType>
-   <xs:complexType name="combine-FIELD">
+   <xs:complexType name="combine-ASSEMBLY">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Combination rule</m:formal-name>
+            <m:description>A Combine element defines whether and how to combine multiple (competing) versions of the same control</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Combination rule</b>: A Combine element defines whether and how to combine multiple (competing) versions of the same control</xs:documentation>
+      </xs:annotation>
       <xs:attribute name="method" type="xs:string">
          <xs:annotation>
             <xs:appinfo>
@@ -1558,11 +1581,11 @@
                         minOccurs="0"
                         maxOccurs="unbounded"/>
             <xs:element name="call"
-                        type="oscal-profile:call-FIELD"
+                        type="oscal-profile:call-ASSEMBLY"
                         minOccurs="0"
                         maxOccurs="unbounded"/>
             <xs:element name="match"
-                        type="oscal-profile:match-FIELD"
+                        type="oscal-profile:match-ASSEMBLY"
                         minOccurs="0"
                         maxOccurs="unbounded"/>
          </xs:choice>
@@ -1580,7 +1603,9 @@
       <xs:sequence>
          <xs:element name="title" minOccurs="1" maxOccurs="1">
             <xs:complexType mixed="true">
-               <xs:group ref="oscal-profile:everything-inline"/>
+               <xs:complexContent>
+                  <xs:extension base="oscal-profile:markupLineType"/>
+               </xs:complexContent>
             </xs:complexType>
          </xs:element>
          <xs:element name="param"
@@ -1609,11 +1634,11 @@
                         minOccurs="0"
                         maxOccurs="unbounded"/>
             <xs:element name="call"
-                        type="oscal-profile:call-FIELD"
+                        type="oscal-profile:call-ASSEMBLY"
                         minOccurs="0"
                         maxOccurs="unbounded"/>
             <xs:element name="match"
-                        type="oscal-profile:match-FIELD"
+                        type="oscal-profile:match-ASSEMBLY"
                         minOccurs="0"
                         maxOccurs="unbounded"/>
          </xs:choice>
@@ -1671,21 +1696,29 @@
       <xs:sequence>
          <xs:choice>
             <xs:element name="all"
-                        type="oscal-profile:all-FIELD"
+                        type="oscal-profile:all-ASSEMBLY"
                         minOccurs="0"
                         maxOccurs="1"/>
             <xs:element name="call"
-                        type="oscal-profile:call-FIELD"
+                        type="oscal-profile:call-ASSEMBLY"
                         minOccurs="0"
                         maxOccurs="unbounded"/>
             <xs:element name="match"
-                        type="oscal-profile:match-FIELD"
+                        type="oscal-profile:match-ASSEMBLY"
                         minOccurs="0"
                         maxOccurs="unbounded"/>
          </xs:choice>
       </xs:sequence>
    </xs:complexType>
-   <xs:complexType name="all-FIELD">
+   <xs:complexType name="all-ASSEMBLY">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Include all</m:formal-name>
+            <m:description>Include all controls from the imported resource (catalog)</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Include all</b>: Include all controls from the imported resource (catalog)</xs:documentation>
+      </xs:annotation>
       <xs:attribute name="with-child-controls" type="xs:NCName">
          <xs:annotation>
             <xs:appinfo>
@@ -1697,7 +1730,15 @@
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
-   <xs:complexType name="call-FIELD">
+   <xs:complexType name="call-ASSEMBLY">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Call</m:formal-name>
+            <m:description>Call a control by its ID</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Call</b>: Call a control by its ID</xs:documentation>
+      </xs:annotation>
       <xs:attribute name="control-id" use="required" type="xs:NCName">
          <xs:annotation>
             <xs:appinfo>
@@ -1719,7 +1760,15 @@
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
-   <xs:complexType name="match-FIELD">
+   <xs:complexType name="match-ASSEMBLY">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Match controls by identifier</m:formal-name>
+            <m:description>Select controls by (regular expression) match on ID</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Match controls by identifier</b>: Select controls by (regular expression) match on ID</xs:documentation>
+      </xs:annotation>
       <xs:attribute name="pattern" type="xs:string">
          <xs:annotation>
             <xs:appinfo>
@@ -1763,11 +1812,11 @@
       <xs:sequence>
          <xs:choice>
             <xs:element name="call"
-                        type="oscal-profile:call-FIELD"
+                        type="oscal-profile:call-ASSEMBLY"
                         minOccurs="0"
                         maxOccurs="unbounded"/>
             <xs:element name="match"
-                        type="oscal-profile:match-FIELD"
+                        type="oscal-profile:match-ASSEMBLY"
                         minOccurs="0"
                         maxOccurs="unbounded"/>
          </xs:choice>
@@ -1797,12 +1846,16 @@
                      maxOccurs="unbounded"/>
          <xs:element name="label" minOccurs="0" maxOccurs="1">
             <xs:complexType mixed="true">
-               <xs:group ref="oscal-profile:everything-inline"/>
+               <xs:complexContent>
+                  <xs:extension base="oscal-profile:markupLineType"/>
+               </xs:complexContent>
             </xs:complexType>
          </xs:element>
          <xs:element name="usage" minOccurs="0" maxOccurs="1">
             <xs:complexType>
-               <xs:group ref="oscal-profile:PROSE" maxOccurs="unbounded" minOccurs="0"/>
+               <xs:complexContent>
+                  <xs:extension base="oscal-profile:markupMultilineType"/>
+               </xs:complexContent>
             </xs:complexType>
          </xs:element>
          <xs:element name="constraint"
@@ -1866,7 +1919,7 @@
       </xs:annotation>
       <xs:sequence>
          <xs:element name="remove"
-                     type="oscal-profile:remove-FIELD"
+                     type="oscal-profile:remove-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="add"
@@ -1885,7 +1938,15 @@
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
-   <xs:complexType name="remove-FIELD">
+   <xs:complexType name="remove-ASSEMBLY">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Removal</m:formal-name>
+            <m:description>Specifies elements to be removed from a control, in resolution</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Removal</b>: Specifies elements to be removed from a control, in resolution</xs:documentation>
+      </xs:annotation>
       <xs:attribute name="name-ref" type="xs:NCName">
          <xs:annotation>
             <xs:appinfo>
@@ -1940,7 +2001,9 @@
       <xs:sequence>
          <xs:element name="title" minOccurs="0" maxOccurs="1">
             <xs:complexType mixed="true">
-               <xs:group ref="oscal-profile:everything-inline"/>
+               <xs:complexContent>
+                  <xs:extension base="oscal-profile:markupLineType"/>
+               </xs:complexContent>
             </xs:complexType>
          </xs:element>
          <xs:element name="param"
@@ -1985,245 +2048,151 @@
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
-   <xs:group name="PROSE">
-      <xs:choice>
-         <xs:element ref="oscal-prose:h1"/>
-         <xs:element ref="oscal-prose:h2"/>
-         <xs:element ref="oscal-prose:h3"/>
-         <xs:element ref="oscal-prose:h4"/>
-         <xs:element ref="oscal-prose:h5"/>
-         <xs:element ref="oscal-prose:h6"/>
-         <xs:element ref="oscal-prose:p"/>
-         <xs:element ref="oscal-prose:ul"/>
-         <xs:element ref="oscal-prose:ol"/>
-         <xs:element ref="oscal-prose:pre"/>
-         <xs:element ref="oscal-prose:table"/>
+   <xs:complexType name="markupLineType" mixed="true">
+      <xs:group ref="oscal-profile:mixedInlineMarkupGroup"/>
+   </xs:complexType>
+   <xs:complexType name="markupMultilineType">
+      <xs:group ref="oscal-profile:blockElementGroup"/>
+   </xs:complexType>
+   <xs:group name="blockElementGroup">
+      <xs:sequence>
+         <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="h1" type="oscal-profile:blockElementType"/>
+            <xs:element name="h2" type="oscal-profile:blockElementType"/>
+            <xs:element name="h3" type="oscal-profile:blockElementType"/>
+            <xs:element name="h4" type="oscal-profile:blockElementType"/>
+            <xs:element name="h5" type="oscal-profile:blockElementType"/>
+            <xs:element name="h6" type="oscal-profile:blockElementType"/>
+            <xs:element name="p" type="oscal-profile:blockElementType"/>
+            <xs:element name="ul" type="oscal-profile:listType"/>
+            <xs:element name="ol" type="oscal-profile:listType"/>
+            <xs:element name="pre" type="oscal-profile:preformattedType"/>
+            <xs:element name="table" type="oscal-profile:tableType"/>
+            <!-- TODO: need to add support for blockquote, which can contain block elements. usnistgov/metaschema#70 -->
+         </xs:choice>
+      </xs:sequence>
+   </xs:group>
+   <!--
+    headers: phrase inline markup, a, insert (phrase)
+    p: phrase inline markup, a, insert, img (phrase+img)
+    li: phrase inline markup, a, insert, img (phrase+img)
+    pre: phrase inline markup, a, insert (phrase)
+    td th: phrase inline markup, a, insert, img (phrase+img)
+  -->
+   <xs:complexType name="blockElementType" mixed="true">
+      <xs:group ref="oscal-profile:phraseInlineMarkupGroup"/>
+   </xs:complexType>
+   <xs:complexType name="headingType" mixed="true">
+      <xs:complexContent>
+         <xs:extension base="oscal-profile:blockElementType">
+            <xs:annotation>
+               <xs:documentation>The content model is the same as blockElementType, but line endings need
+            to be preserved, since this is preformatted.</xs:documentation>
+            </xs:annotation>
+         </xs:extension>
+      </xs:complexContent>
+   </xs:complexType>
+   <xs:complexType name="preformattedType" mixed="true">
+      <xs:complexContent>
+         <xs:extension base="oscal-profile:blockElementType">
+            <xs:annotation>
+               <xs:documentation>The content model is the same as blockElementType, but line endings need
+            to be preserved, since this is preformatted.</xs:documentation>
+            </xs:annotation>
+         </xs:extension>
+      </xs:complexContent>
+   </xs:complexType>
+   <xs:complexType name="listType">
+      <xs:sequence>
+         <xs:element name="li"
+                     type="oscal-profile:listItemType"
+                     minOccurs="1"
+                     maxOccurs="unbounded"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="listItemType" mixed="true">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+         <xs:group ref="oscal-profile:mixedInlineMarkupGroup"/>
+         <xs:element name="ul" type="oscal-profile:listType"/>
+         <xs:element name="ol" type="oscal-profile:listType"/>
       </xs:choice>
-   </xs:group>
-   <xs:element name="h1">
-      <xs:complexType mixed="true">
-         <xs:group ref="oscal-prose:inlines"/>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="h2">
-      <xs:complexType mixed="true">
-         <xs:group ref="oscal-prose:inlines"/>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="h3">
-      <xs:complexType mixed="true">
-         <xs:group ref="oscal-prose:inlines"/>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="h4">
-      <xs:complexType mixed="true">
-         <xs:group ref="oscal-prose:inlines"/>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="h5">
-      <xs:complexType mixed="true">
-         <xs:group ref="oscal-prose:inlines"/>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="h6">
-      <xs:complexType mixed="true">
-         <xs:group ref="oscal-prose:inlines"/>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="p">
-      <xs:complexType mixed="true">
-         <xs:group ref="oscal-prose:everything-inline"/>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="pre">
-      <xs:complexType mixed="true">
-         <xs:choice minOccurs="0" maxOccurs="unbounded">
-            <xs:group ref="oscal-prose:mix"/>
-            <xs:element ref="oscal-prose:a"/>
-         </xs:choice>
-         <xs:attributeGroup ref="oscal-prose:optionalClass"/>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="ol">
-      <xs:complexType>
-         <xs:sequence>
-            <xs:element maxOccurs="unbounded" ref="oscal-prose:li"/>
-         </xs:sequence>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="li">
-      <xs:complexType mixed="true">
-         <xs:choice minOccurs="0" maxOccurs="unbounded">
-            <xs:group ref="oscal-prose:everything-inline"/>
-            <xs:element ref="oscal-prose:ol"/>
-            <xs:element ref="oscal-prose:ul"/>
-         </xs:choice>
-         <xs:attributeGroup ref="oscal-prose:optionalClass"/>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="ul">
-      <xs:complexType>
-         <xs:sequence>
-            <xs:element maxOccurs="unbounded" ref="oscal-prose:li"/>
-         </xs:sequence>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="table">
-      <xs:complexType>
-         <xs:sequence>
-            <xs:element maxOccurs="unbounded" ref="oscal-prose:tr"/>
-         </xs:sequence>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="tr">
-      <xs:complexType>
-         <xs:choice minOccurs="0" maxOccurs="unbounded">
-            <xs:element maxOccurs="unbounded" ref="oscal-prose:td"/>
-            <xs:element maxOccurs="unbounded" ref="oscal-prose:th"/>
-         </xs:choice>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="th">
-      <xs:complexType mixed="true">
-         <xs:group ref="oscal-prose:everything-inline"/>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="td">
-      <xs:complexType mixed="true">
-         <xs:group ref="oscal-prose:everything-inline"/>
-      </xs:complexType>
-   </xs:element>
-   <xs:group name="everything-inline">
+   </xs:complexType>
+   <xs:complexType name="tableType">
+      <xs:sequence>
+         <xs:element maxOccurs="unbounded" name="tr" type="oscal-profile:tableRowType"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="tableRowType"><!-- QUESTION: Should we allow TH and TD to be mixed? -->
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+         <xs:element name="td" type="oscal-profile:tableCellType" maxOccurs="unbounded"/>
+         <xs:element name="th" type="oscal-profile:tableCellType" maxOccurs="unbounded"/>
+      </xs:choice>
+   </xs:complexType>
+   <xs:complexType name="tableCellType" mixed="true">
+      <xs:group ref="oscal-profile:mixedInlineMarkupGroup"/>
+      <!-- TODO: consider adding a choice between the inline or paragraphs. We need to figure out what is supported in Markdown. -->
+      <xs:attribute name="align" type="oscal-profile:alignType" default="left"/>
+      <!-- TODO: need to add support for alignment. usnistgov/metaschema#70 -->
+   </xs:complexType>
+   <xs:simpleType name="alignType">
+      <xs:restriction base="xs:token">
+         <xs:enumeration value="left"/>
+         <xs:enumeration value="center"/>
+         <xs:enumeration value="right"/>
+      </xs:restriction>
+   </xs:simpleType>
+   <!-- note mix does not include anchors, which do not come for free -->
+   <xs:group name="mixedInlineMarkupGroup">
       <xs:sequence>
          <xs:choice minOccurs="0" maxOccurs="unbounded">
-            <xs:group ref="oscal-prose:mix"/>
-            <xs:group ref="oscal-prose:special"/>
-            <xs:element ref="oscal-prose:a"/>
+            <xs:group ref="oscal-profile:phraseInlineMarkupGroup"/>
+            <xs:element name="img" type="oscal-profile:imageType"/>
          </xs:choice>
       </xs:sequence>
    </xs:group>
-   <xs:group name="mix">
-      <xs:sequence>
-         <xs:group minOccurs="0" maxOccurs="unbounded" ref="oscal-prose:inlines"/>
-      </xs:sequence>
-   </xs:group>
-   <xs:group name="inlines">
+   <xs:group name="phraseInlineMarkupGroup">
       <xs:sequence>
          <xs:choice minOccurs="0" maxOccurs="unbounded">
-            <xs:element ref="oscal-prose:q"/>
-            <xs:element ref="oscal-prose:code"/>
-            <xs:element ref="oscal-prose:em"/>
-            <xs:element ref="oscal-prose:i"/>
-            <xs:element ref="oscal-prose:strong"/>
-            <xs:element ref="oscal-prose:b"/>
-            <xs:element ref="oscal-prose:sub"/>
-            <xs:element ref="oscal-prose:sup"/>
-            <xs:element ref="oscal-prose:img"/>
+            <xs:element name="code" type="oscal-profile:inlineMarkupType" minOccurs="1"/>
+            <xs:element name="em" type="oscal-profile:inlineMarkupType" minOccurs="1"/>
+            <xs:element name="i" type="oscal-profile:inlineMarkupType" minOccurs="1"/>
+            <xs:element name="b" type="oscal-profile:inlineMarkupType" minOccurs="1"/>
+            <xs:element name="strong" type="oscal-profile:inlineMarkupType" minOccurs="1"/>
+            <xs:element name="sub" type="oscal-profile:inlineMarkupType" minOccurs="1"/>
+            <xs:element name="sup" type="oscal-profile:inlineMarkupType" minOccurs="1"/>
+            <xs:element name="q" type="oscal-profile:inlineMarkupType" minOccurs="1"/>
+            <xs:element name="insert" type="oscal-profile:insertType"/>
+            <xs:element name="a" type="oscal-profile:anchorType"/>
          </xs:choice>
       </xs:sequence>
    </xs:group>
-   <xs:element name="q">
-      <xs:complexType mixed="true">
-         <xs:choice minOccurs="0" maxOccurs="unbounded">
-            <xs:element ref="oscal-prose:code"/>
-            <xs:element ref="oscal-prose:em"/>
-            <xs:element ref="oscal-prose:i"/>
-            <xs:element ref="oscal-prose:b"/>
-            <xs:element ref="oscal-prose:strong"/>
-            <xs:element ref="oscal-prose:sub"/>
-            <xs:element ref="oscal-prose:sup"/>
-         </xs:choice>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="code">
-      <xs:complexType mixed="true">
-         <xs:group ref="oscal-prose:mix"/>
-         <xs:attributeGroup ref="oscal-prose:optionalClass"/>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="strong">
-      <xs:complexType mixed="true">
-         <xs:choice minOccurs="0" maxOccurs="unbounded">
-            <xs:group ref="oscal-prose:mix"/>
-            <xs:element ref="oscal-prose:a"/>
-         </xs:choice>
-         <xs:attributeGroup ref="oscal-prose:optionalClass"/>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="em">
-      <xs:complexType mixed="true">
-         <xs:choice minOccurs="0" maxOccurs="unbounded">
-            <xs:group ref="oscal-prose:mix"/>
-            <xs:element ref="oscal-prose:a"/>
-         </xs:choice>
-         <xs:attributeGroup ref="oscal-prose:optionalClass"/>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="i">
-      <xs:complexType mixed="true">
-         <xs:choice minOccurs="0" maxOccurs="unbounded">
-            <xs:group ref="oscal-prose:mix"/>
-            <xs:element ref="oscal-prose:a"/>
-         </xs:choice>
-         <xs:attributeGroup ref="oscal-prose:optionalClass"/>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="b">
-      <xs:complexType mixed="true">
-         <xs:choice minOccurs="0" maxOccurs="unbounded">
-            <xs:group ref="oscal-prose:mix"/>
-            <xs:element ref="oscal-prose:a"/>
-         </xs:choice>
-         <xs:attributeGroup ref="oscal-prose:optionalClass"/>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="sub">
-      <xs:complexType mixed="true">
-         <xs:attributeGroup ref="oscal-prose:optionalClass"/>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="sup">
-      <xs:complexType mixed="true">
-         <xs:attributeGroup ref="oscal-prose:optionalClass"/>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="img">
-      <xs:complexType>
-         <xs:attribute name="alt"/>
-         <xs:attribute name="src" use="required" type="xs:anyURI"/>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="a">
-      <xs:complexType mixed="true">
-         <xs:choice minOccurs="0" maxOccurs="unbounded">
-            <xs:element ref="oscal-prose:q"/>
-            <xs:element ref="oscal-prose:code"/>
-            <xs:element name="em">
-               <xs:complexType mixed="true">
-                  <xs:attributeGroup ref="oscal-prose:optionalClass"/>
-               </xs:complexType>
-            </xs:element>
-         </xs:choice>
-         <xs:attribute name="href"/>
-      </xs:complexType>
-   </xs:element>
-   <xs:group name="special">
-      <xs:sequence>
-         <xs:choice minOccurs="0" maxOccurs="unbounded">
-            <xs:element ref="oscal-prose:insert"/>
-         </xs:choice>
-      </xs:sequence>
-   </xs:group>
-   <xs:element name="insert">
-      <xs:complexType>
-         <xs:attribute name="param-id" use="required" type="xs:NCName"/>
-      </xs:complexType>
-   </xs:element>
-   <xs:attributeGroup name="requiredClass"/>
-   <xs:attributeGroup name="optionalClass"/>
-   <xs:attributeGroup name="hrefAttr">
-      <xs:attribute name="href"/>
-   </xs:attributeGroup>
+   <xs:complexType name="inlineMarkupType" mixed="true">
+      <xs:group ref="oscal-profile:phraseInlineMarkupGroup"/>
+   </xs:complexType>
+   <xs:complexType name="imageType">
+      <xs:attribute name="alt" type="xs:string"/>
+      <xs:attribute name="src" use="required" type="xs:anyURI"/>
+   </xs:complexType>
+   <xs:complexType name="anchorType" mixed="true">
+      <xs:group ref="oscal-profile:phraseInlineMarkupGroup"/>
+      <xs:attribute name="href" type="xs:anyURI"/>
+   </xs:complexType>
+   <!--
+    A value to be assigned by responder via parameter
+    (a parameter must be available)
+  -->
+   <xs:complexType name="insertType">
+      <xs:attribute name="param-id" use="required" type="xs:NCName"/>
+   </xs:complexType>
+   <!--
+    Within a selection, a choice - tbd
+    unlike 'value', choice may have inline stuff as well as 'assign' elements
+    choice = element choice { (assign | mix)* }
+  -->
+   <!--
+    IDs are required everywhere for now
+    idAttr      = attribute id { xsd:ID }
+  -->
    <xs:simpleType name="dateTime-with-timezone">
       <xs:annotation>
          <xs:documentation>The xs:dateTime with a required timezone.</xs:documentation>

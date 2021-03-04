@@ -76,7 +76,7 @@
       </xsl:if>
    </xsl:template>
    <!-- XML to JSON conversion: object filters -->
-   <xsl:strip-space elements="assessment-results metadata revision annotation link role location address party responsible-party import-ap local-definitions objectives-and-methods part activity step reviewed-controls control-selection include-control exclude-control control-objective-selection responsible-role related-controls result component status protocol inventory-item implemented-component user authorized-privilege assessment-assets assessment-platform uses-component assessment-action attestation assessment-log entry related-task subject include-subject exclude-subject identified-subject observation origin actor relevant-evidence risk characterization facet mitigating-factor response required-asset task timing dependency associated-activity subject-placeholder risk-log related-response finding target back-matter resource citation biblio rlink"/>
+   <xsl:strip-space elements="assessment-results metadata revision annotation link role location address party responsible-party import-ap local-definitions objectives-and-methods part activity step reviewed-controls control-selection include-all include-control exclude-control control-objective-selection include-objective exclude-objective responsible-role related-controls result component status protocol port-range inventory-item implemented-component user authorized-privilege assessment-assets assessment-platform uses-component assessment-action attestation assessment-log entry logged-by related-task subject include-subject exclude-subject identified-subject observation origin actor relevant-evidence risk characterization facet mitigating-factor response required-asset task timing on-date within-date-range at-frequency dependency associated-activity subject-placeholder source risk-log related-response related-observation finding target associated-risk back-matter resource citation biblio rlink"/>
    <!-- METASCHEMA conversion stylesheet supports XML -> METASCHEMA/SUPERMODEL conversion -->
    <!-- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ -->
    <!-- METASCHEMA: OSCAL Assessment Results Model (version 1.0.0-rc1) in namespace "http://csrc.nist.gov/ns/oscal/1.0"-->
@@ -105,17 +105,6 @@
          </xsl:for-each-group>
          <xsl:apply-templates select="back-matter"/>
       </assembly>
-   </xsl:template>
-   <xsl:template match="assessment-results/@uuid | prop/@uuid | annotation/@uuid | location/@uuid | party/@uuid | activity/@uuid | result/@uuid | component/@uuid | protocol/@uuid | inventory-item/@uuid | user/@uuid | assessment-action/@uuid | part/@uuid | observation/@uuid | risk/@uuid | task/@uuid | subject-placeholder/@uuid | finding/@uuid"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-            as-type="uuid"
-            name="uuid"
-            key="uuid"
-            gi="uuid"
-            formal-name="Assessment Results Universally Unique Identifier">
-         <xsl:value-of select="."/>
-      </flag>
    </xsl:template>
    <xsl:template match="metadata"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -189,52 +178,6 @@
          <xsl:apply-templates select="remarks"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="prop"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field name="property" gi="prop" formal-name="Property">
-         <xsl:apply-templates select="@uuid"/>
-         <xsl:apply-templates select="@name"/>
-         <xsl:apply-templates select="@ns"/>
-         <xsl:apply-templates select="@class"/>
-         <value as-type="string" key="value" in-json="string">
-            <xsl:value-of select="."/>
-         </value>
-      </field>
-   </xsl:template>
-   <xsl:template match="prop/@name | annotation/@name | part/@name | protocol/@name"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-            as-type="NCName"
-            name="name"
-            key="name"
-            gi="name"
-            formal-name="Property Name">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="prop/@ns | annotation/@ns | part/@ns"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-            as-type="uri"
-            name="ns"
-            key="ns"
-            gi="ns"
-            formal-name="Property Namespace">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="prop/@class | part/@class"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-            as-type="NCName"
-            name="class"
-            key="class"
-            gi="class"
-            formal-name="Property Class">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
    <xsl:template match="annotation"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
@@ -246,36 +189,6 @@
          <xsl:apply-templates select="remarks"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="annotation/@value"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-            as-type="string"
-            name="value"
-            key="value"
-            gi="value"
-            formal-name="Annotated Property Value">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="remarks"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field name="remarks"
-             gi="remarks"
-             as-type="markup-multiline"
-             formal-name="Remarks"
-             in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">remarks</xsl:attribute>
-         </xsl:if>
-         <value as-type="markup-multiline" in-json="string">
-            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
-                                group-by="true()">
-               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
-            </xsl:for-each-group>
-         </value>
-      </field>
-   </xsl:template>
    <xsl:template match="link"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
@@ -285,39 +198,6 @@
          <xsl:apply-templates select="@media-type"/>
          <xsl:apply-templates select="text"/>
       </assembly>
-   </xsl:template>
-   <xsl:template match="link/@href | import-ap/@href | threat-id/@href"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-            as-type="uri-reference"
-            name="href"
-            key="href"
-            gi="href"
-            formal-name="Hypertext Reference">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="link/@rel"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-            as-type="NCName"
-            name="rel"
-            key="rel"
-            gi="rel"
-            formal-name="Relation">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="link/@media-type | assessment-results/back-matter/resource/rlink/@media-type | assessment-results/back-matter/resource/base64/@media-type"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-            as-type="string"
-            name="media-type"
-            key="media-type"
-            gi="media-type"
-            formal-name="Media Type">
-         <xsl:value-of select="."/>
-      </flag>
    </xsl:template>
    <xsl:template match="role"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -350,17 +230,6 @@
          </xsl:for-each-group>
          <xsl:apply-templates select="remarks"/>
       </assembly>
-   </xsl:template>
-   <xsl:template match="role/@id | part/@id"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-            as-type="NCName"
-            name="id"
-            key="id"
-            gi="id"
-            formal-name="Role Identifier">
-         <xsl:value-of select="."/>
-      </flag>
    </xsl:template>
    <xsl:template match="location"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -490,30 +359,6 @@
          <xsl:apply-templates select="remarks"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="party/@type | subject/@type | actor/@type | task/@type | target/@type"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-            as-type="string"
-            name="type"
-            key="type"
-            gi="type"
-            formal-name="Party Type">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="location-uuid"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field name="location-uuid"
-             gi="location-uuid"
-             as-type="uuid"
-             formal-name="Location Reference"
-             in-json="SCALAR">
-         <value as-type="uuid" in-json="string">
-            <xsl:value-of select="."/>
-         </value>
-      </field>
-   </xsl:template>
    <xsl:template match="responsible-party"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
@@ -555,30 +400,6 @@
          </xsl:for-each-group>
          <xsl:apply-templates select="remarks"/>
       </assembly>
-   </xsl:template>
-   <xsl:template match="responsible-party/@role-id | responsible-role/@role-id | logged-by/@role-id | actor/@role-id"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-            as-type="NCName"
-            name="role-id"
-            key="role-id"
-            gi="role-id"
-            formal-name="Responsible Role">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="party-uuid"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field name="party-uuid"
-             gi="party-uuid"
-             as-type="uuid"
-             formal-name="Party Reference"
-             in-json="SCALAR">
-         <value as-type="uuid" in-json="string">
-            <xsl:value-of select="."/>
-         </value>
-      </field>
    </xsl:template>
    <xsl:template match="import-ap"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -632,22 +453,62 @@
          <xsl:apply-templates select="remarks"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="objectives-and-methods/@control-id | assessment-results/local-definitions/activity/step/reviewed-controls/control-selection/include-control/@control-id | assessment-results/local-definitions/activity/step/reviewed-controls/control-selection/exclude-control/@control-id | assessment-results/local-definitions/activity/related-controls/control-selection/include-control/@control-id | assessment-results/local-definitions/activity/related-controls/control-selection/exclude-control/@control-id | assessment-results/result/reviewed-controls/control-selection/include-control/@control-id | assessment-results/result/reviewed-controls/control-selection/exclude-control/@control-id"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-            as-type="NCName"
-            name="control-id"
-            key="control-id"
-            gi="control-id"
-            formal-name="Control Identifier Reference">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="part"
+   <xsl:template match="objectives-and-methods/part | objectives-and-methods/part//part"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <assembly name="part" gi="part" formal-name="Part">
          <xsl:apply-templates select="@id"/>
+         <xsl:apply-templates select="@name"/>
+         <xsl:apply-templates select="@ns"/>
+         <xsl:apply-templates select="@class"/>
+         <xsl:apply-templates select="title"/>
+         <xsl:for-each-group select="prop" group-by="true()">
+            <group in-json="ARRAY" key="props">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="annotation" group-by="true()">
+            <group in-json="ARRAY" key="annotations">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                             group-by="true()">
+            <field in-json="SCALAR"
+                   name="prose"
+                   key="prose"
+                   as-type="markup-multiline"
+                   formal-name="Part Text">
+               <value in-json="string" as-type="markup-multiline">
+                  <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+               </value>
+            </field>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="part" group-by="true()">
+            <group in-json="ARRAY" key="parts">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="link" group-by="true()">
+            <group in-json="ARRAY" key="links">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="attestation/part | attestation/part//part"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <assembly name="assessment-part" gi="part" formal-name="Assessment Part">
+         <xsl:apply-templates select="@uuid"/>
          <xsl:apply-templates select="@name"/>
          <xsl:apply-templates select="@ns"/>
          <xsl:apply-templates select="@class"/>
@@ -791,11 +652,18 @@
    <xsl:template match="include-objective"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
-      <field as-type="empty"
-             name="select-objective-by-id"
-             gi="include-objective"
-             formal-name="Select Objective"
-             in-json="SCALAR"/>
+      <assembly as-type="empty"
+                name="select-objective-by-id"
+                gi="include-objective"
+                formal-name="Select Objective"/>
+   </xsl:template>
+   <xsl:template match="exclude-objective"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <assembly as-type="empty"
+                name="select-objective-by-id"
+                gi="exclude-objective"
+                formal-name="Select Objective"/>
    </xsl:template>
    <xsl:template match="responsible-role"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -831,6 +699,54 @@
          </xsl:for-each-group>
          <xsl:for-each-group select="party-uuid" group-by="true()">
             <group in-json="ARRAY" key="party-uuids">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:apply-templates select="remarks"/>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="related-controls"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <assembly name="reviewed-controls"
+                gi="related-controls"
+                formal-name="Reviewed Controls and Control Objectives">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">related-controls</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="description"/>
+         <xsl:for-each-group select="prop" group-by="true()">
+            <group in-json="ARRAY" key="props">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="annotation" group-by="true()">
+            <group in-json="ARRAY" key="annotations">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="link" group-by="true()">
+            <group in-json="ARRAY" key="links">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="control-selection" group-by="true()">
+            <group in-json="ARRAY" key="control-selections">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="control-objective-selection" group-by="true()">
+            <group in-json="ARRAY" key="control-objective-selections">
                <xsl:apply-templates select="current-group()">
                   <xsl:with-param name="with-key" select="false()"/>
                </xsl:apply-templates>
@@ -957,17 +873,6 @@
          <xsl:apply-templates select="remarks"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="component/@type"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-            as-type="string"
-            name="component-type"
-            key="type"
-            gi="type"
-            formal-name="Component Type">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
    <xsl:template match="protocol"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
@@ -989,47 +894,14 @@
    <xsl:template match="port-range"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
-      <field as-type="empty"
-             name="port-range"
-             gi="port-range"
-             formal-name="Port Range">
+      <assembly as-type="empty"
+                name="port-range"
+                gi="port-range"
+                formal-name="Port Range">
          <xsl:apply-templates select="@start"/>
          <xsl:apply-templates select="@end"/>
          <xsl:apply-templates select="@transport"/>
-      </field>
-   </xsl:template>
-   <xsl:template match="port-range/@start"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="number"
-            as-type="nonNegativeInteger"
-            name="start"
-            key="start"
-            gi="start"
-            formal-name="Start">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="port-range/@end"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="number"
-            as-type="nonNegativeInteger"
-            name="end"
-            key="end"
-            gi="end"
-            formal-name="End">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="port-range/@transport"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-            as-type="NCName"
-            name="transport"
-            key="transport"
-            gi="transport"
-            formal-name="Transport">
-         <xsl:value-of select="."/>
-      </flag>
+      </assembly>
    </xsl:template>
    <xsl:template match="inventory-item"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -1129,19 +1001,6 @@
          <xsl:apply-templates select="remarks"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="role-id"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field name="role-id"
-             gi="role-id"
-             as-type="NCName"
-             formal-name="Role Identifier Reference"
-             in-json="SCALAR">
-         <value as-type="NCName" in-json="string">
-            <xsl:value-of select="."/>
-         </value>
-      </field>
-   </xsl:template>
    <xsl:template match="authorized-privilege"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
@@ -1158,19 +1017,6 @@
             </group>
          </xsl:for-each-group>
       </assembly>
-   </xsl:template>
-   <xsl:template match="function-performed"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field name="function-performed"
-             gi="function-performed"
-             as-type="string"
-             formal-name="Functions Performed"
-             in-json="SCALAR">
-         <value as-type="string" in-json="string">
-            <xsl:value-of select="."/>
-         </value>
-      </field>
    </xsl:template>
    <xsl:template match="assessment-assets"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -1235,78 +1081,16 @@
          <xsl:apply-templates select="remarks"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="part"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <assembly name="assessment-part" gi="part" formal-name="Assessment Part">
-         <xsl:apply-templates select="@uuid"/>
-         <xsl:apply-templates select="@name"/>
-         <xsl:apply-templates select="@ns"/>
-         <xsl:apply-templates select="@class"/>
-         <xsl:apply-templates select="title"/>
-         <xsl:for-each-group select="prop" group-by="true()">
-            <group in-json="ARRAY" key="props">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
-         <xsl:for-each-group select="annotation" group-by="true()">
-            <group in-json="ARRAY" key="annotations">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
-         <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
-                             group-by="true()">
-            <field in-json="SCALAR"
-                   name="prose"
-                   key="prose"
-                   as-type="markup-multiline"
-                   formal-name="Part Text">
-               <value in-json="string" as-type="markup-multiline">
-                  <xsl:apply-templates select="current-group()" mode="cast-prose"/>
-               </value>
-            </field>
-         </xsl:for-each-group>
-         <xsl:for-each-group select="part" group-by="true()">
-            <group in-json="ARRAY" key="parts">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
-         <xsl:for-each-group select="link" group-by="true()">
-            <group in-json="ARRAY" key="links">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
-      </assembly>
-   </xsl:template>
    <xsl:template match="logged-by"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
-      <field as-type="empty"
-             name="logged-by"
-             gi="logged-by"
-             formal-name="Logged By">
+      <assembly as-type="empty"
+                name="logged-by"
+                gi="logged-by"
+                formal-name="Logged By">
          <xsl:apply-templates select="@party-uuid"/>
          <xsl:apply-templates select="@role-id"/>
-      </field>
-   </xsl:template>
-   <xsl:template match="logged-by/@party-uuid"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-            as-type="uuid"
-            name="party-uuid"
-            key="party-uuid"
-            gi="party-uuid"
-            formal-name="Party UUID Reference">
-         <xsl:value-of select="."/>
-      </flag>
+      </assembly>
    </xsl:template>
    <xsl:template match="related-task"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -1351,17 +1135,6 @@
          <xsl:apply-templates select="identified-subject"/>
          <xsl:apply-templates select="remarks"/>
       </assembly>
-   </xsl:template>
-   <xsl:template match="related-task/@task-uuid"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-            as-type="uuid"
-            name="task-uuid"
-            key="task-uuid"
-            gi="task-uuid"
-            formal-name="Task Universally Unique Identifier Reference">
-         <xsl:value-of select="."/>
-      </flag>
    </xsl:template>
    <xsl:template match="subject"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -1441,16 +1214,36 @@
          <xsl:apply-templates select="remarks"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="include-subject/@uuid-ref | exclude-subject/@uuid-ref | actor/@uuid-ref"
+   <xsl:template match="exclude-subject"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-            as-type="uuid"
-            name="uuid-ref"
-            key="uuid-ref"
-            gi="uuid-ref"
-            formal-name="UUID Reference">
-         <xsl:value-of select="."/>
-      </flag>
+      <xsl:param name="with-key" select="true()"/>
+      <assembly name="select-subject-by-id"
+                gi="exclude-subject"
+                formal-name="Select Assessment Subject">
+         <xsl:apply-templates select="@uuid-ref"/>
+         <xsl:for-each-group select="prop" group-by="true()">
+            <group in-json="ARRAY" key="props">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="annotation" group-by="true()">
+            <group in-json="ARRAY" key="annotations">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="link" group-by="true()">
+            <group in-json="ARRAY" key="links">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:apply-templates select="remarks"/>
+      </assembly>
    </xsl:template>
    <xsl:template match="observation"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -1524,6 +1317,9 @@
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <assembly name="origin" gi="origin" formal-name="Origin">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">origin</xsl:attribute>
+         </xsl:if>
          <xsl:for-each-group select="actor" group-by="true()">
             <group in-json="ARRAY" key="actors">
                <xsl:apply-templates select="current-group()">
@@ -1646,31 +1442,6 @@
          </xsl:for-each-group>
       </assembly>
    </xsl:template>
-   <xsl:template match="threat-id"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field name="threat-id"
-             gi="threat-id"
-             as-type="uri"
-             formal-name="Threat ID">
-         <xsl:apply-templates select="@system"/>
-         <xsl:apply-templates select="@href"/>
-         <value as-type="uri" key="id" in-json="string">
-            <xsl:value-of select="."/>
-         </value>
-      </field>
-   </xsl:template>
-   <xsl:template match="threat-id/@system"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-            as-type="uri"
-            name="system"
-            key="system"
-            gi="system"
-            formal-name="Threat Type Identification System">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
    <xsl:template match="characterization"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
@@ -1708,7 +1479,7 @@
          </xsl:for-each-group>
       </assembly>
    </xsl:template>
-   <xsl:template match="task"
+   <xsl:template match="task | task//task"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <assembly name="task" gi="task" formal-name="Task">
@@ -1739,7 +1510,7 @@
          </xsl:for-each-group>
          <xsl:apply-templates select="timing"/>
          <xsl:for-each-group select="dependency" group-by="true()">
-            <group in-json="SINGLETON_OR_ARRAY" key="dependencies">
+            <group in-json="ARRAY" key="dependencies">
                <xsl:apply-templates select="current-group()">
                   <xsl:with-param name="with-key" select="false()"/>
                </xsl:apply-templates>
@@ -1817,22 +1588,6 @@
          </xsl:for-each-group>
          <xsl:apply-templates select="remarks"/>
       </assembly>
-   </xsl:template>
-   <xsl:template match="status-change"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field name="risk-status"
-             gi="status-change"
-             as-type="NCName"
-             formal-name="Risk Status"
-             in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">status-change</xsl:attribute>
-         </xsl:if>
-         <value as-type="NCName" in-json="string">
-            <xsl:value-of select="."/>
-         </value>
-      </field>
    </xsl:template>
    <xsl:template match="finding"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -1924,17 +1679,6 @@
          <xsl:apply-templates select="remarks"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="target/@id-ref"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-            as-type="NCName"
-            name="id-ref"
-            key="id-ref"
-            gi="id-ref"
-            formal-name="Finding Target Identifier Reference">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
    <xsl:template match="back-matter"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
@@ -1951,6 +1695,120 @@
          </xsl:for-each-group>
       </assembly>
    </xsl:template>
+   <xsl:template match="prop"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <field name="property" gi="prop" formal-name="Property">
+         <xsl:apply-templates select="@uuid"/>
+         <xsl:apply-templates select="@name"/>
+         <xsl:apply-templates select="@ns"/>
+         <xsl:apply-templates select="@class"/>
+         <value as-type="string" key="value" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
+   </xsl:template>
+   <xsl:template match="remarks"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <field name="remarks"
+             gi="remarks"
+             as-type="markup-multiline"
+             formal-name="Remarks"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">remarks</xsl:attribute>
+         </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
+      </field>
+   </xsl:template>
+   <xsl:template match="location-uuid"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <field name="location-uuid"
+             gi="location-uuid"
+             as-type="uuid"
+             formal-name="Location Reference"
+             in-json="SCALAR">
+         <value as-type="uuid" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
+   </xsl:template>
+   <xsl:template match="party-uuid"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <field name="party-uuid"
+             gi="party-uuid"
+             as-type="uuid"
+             formal-name="Party Reference"
+             in-json="SCALAR">
+         <value as-type="uuid" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
+   </xsl:template>
+   <xsl:template match="role-id"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <field name="role-id"
+             gi="role-id"
+             as-type="NCName"
+             formal-name="Role Identifier Reference"
+             in-json="SCALAR">
+         <value as-type="NCName" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
+   </xsl:template>
+   <xsl:template match="function-performed"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <field name="function-performed"
+             gi="function-performed"
+             as-type="string"
+             formal-name="Functions Performed"
+             in-json="SCALAR">
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
+   </xsl:template>
+   <xsl:template match="threat-id"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <field name="threat-id"
+             gi="threat-id"
+             as-type="uri"
+             formal-name="Threat ID">
+         <xsl:apply-templates select="@system"/>
+         <xsl:apply-templates select="@href"/>
+         <value as-type="uri" key="id" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
+   </xsl:template>
+   <xsl:template match="status-change"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <field name="risk-status"
+             gi="status-change"
+             as-type="NCName"
+             formal-name="Risk Status"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">status-change</xsl:attribute>
+         </xsl:if>
+         <value as-type="NCName" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
+   </xsl:template>
    <xsl:template match="hash"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
@@ -1961,6 +1819,440 @@
          </value>
       </field>
    </xsl:template>
+   <xsl:template match="assessment-results/@uuid | prop/@uuid | annotation/@uuid | location/@uuid | party/@uuid | activity/@uuid | assessment-results/local-definitions/activity/step/@uuid | result/@uuid | component/@uuid | protocol/@uuid | inventory-item/@uuid | user/@uuid | assessment-results/result/local-definitions/assessment-assets/assessment-platform/@uuid | assessment-action/@uuid | part/@uuid | part//part/@uuid | assessment-results/result/assessment-log/entry/@uuid | observation/@uuid | risk/@uuid | assessment-results/result/risk/mitigating-factor/@uuid | assessment-results/result/risk/response/@uuid | assessment-results/result/risk/response/required-asset/@uuid | task/@uuid | task//task/@uuid | subject-placeholder/@uuid | assessment-results/result/risk/risk-log/entry/@uuid | finding/@uuid | assessment-results/back-matter/resource/@uuid"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <flag in-json="string"
+            as-type="uuid"
+            name="uuid"
+            key="uuid"
+            gi="uuid"
+            formal-name="Assessment Results Universally Unique Identifier">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="prop/@name | annotation/@name | part/@name | part//part/@name | assessment-results/result/risk/characterization/facet/@name"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <flag in-json="string"
+            as-type="NCName"
+            name="name"
+            key="name"
+            gi="name"
+            formal-name="Property Name">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="prop/@ns | annotation/@ns | part/@ns | part//part/@ns"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <flag in-json="string"
+            as-type="uri"
+            name="ns"
+            key="ns"
+            gi="ns"
+            formal-name="Property Namespace">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="prop/@class | part/@class | part//part/@class"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <flag in-json="string"
+            as-type="NCName"
+            name="class"
+            key="class"
+            gi="class"
+            formal-name="Property Class">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="annotation/@value | assessment-results/result/risk/characterization/facet/@value"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <flag in-json="string"
+            as-type="string"
+            name="value"
+            key="value"
+            gi="value"
+            formal-name="Annotated Property Value">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="link/@href | import-ap/@href | assessment-results/result/observation/relevant-evidence/@href | threat-id/@href | assessment-results/back-matter/resource/rlink/@href"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <flag in-json="string"
+            as-type="uri-reference"
+            name="href"
+            key="href"
+            gi="href"
+            formal-name="Hypertext Reference">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="link/@rel"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <flag in-json="string"
+            as-type="NCName"
+            name="rel"
+            key="rel"
+            gi="rel"
+            formal-name="Relation">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="link/@media-type | assessment-results/back-matter/resource/rlink/@media-type | assessment-results/back-matter/resource/base64/@media-type"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <flag in-json="string"
+            as-type="string"
+            name="media-type"
+            key="media-type"
+            gi="media-type"
+            formal-name="Media Type">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="assessment-results/metadata/document-id/@scheme | assessment-results/metadata/party/external-id/@scheme | assessment-results/back-matter/resource/document-id/@scheme"
+                 priority="6"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <flag in-json="string"
+            as-type="uri"
+            name="scheme"
+            key="scheme"
+            gi="scheme"
+            formal-name="Document Identification Scheme">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="role/@id | part/@id | part//part/@id"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <flag in-json="string"
+            as-type="NCName"
+            name="id"
+            key="id"
+            gi="id"
+            formal-name="Role Identifier">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="assessment-results/metadata/location/telephone-number/@type | party/@type | assessment-results/metadata/party/telephone-number/@type | target/@type"
+                 priority="8"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <flag in-json="string"
+            as-type="string"
+            name="type"
+            key="type"
+            gi="type"
+            formal-name="type flag">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="responsible-party/@role-id | responsible-role/@role-id | logged-by/@role-id | actor/@role-id"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <flag in-json="string"
+            as-type="NCName"
+            name="role-id"
+            key="role-id"
+            gi="role-id"
+            formal-name="Responsible Role">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="objectives-and-methods/@control-id | assessment-results/local-definitions/activity/step/reviewed-controls/control-selection/include-control/@control-id | assessment-results/local-definitions/activity/step/reviewed-controls/control-selection/exclude-control/@control-id | assessment-results/local-definitions/activity/related-controls/control-selection/include-control/@control-id | assessment-results/local-definitions/activity/related-controls/control-selection/exclude-control/@control-id | assessment-results/result/reviewed-controls/control-selection/include-control/@control-id | assessment-results/result/reviewed-controls/control-selection/exclude-control/@control-id"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <flag in-json="string"
+            as-type="NCName"
+            name="control-id"
+            key="control-id"
+            gi="control-id"
+            formal-name="Control Identifier Reference">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="component/@type"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <flag in-json="string"
+            as-type="string"
+            name="component-type"
+            key="type"
+            gi="type"
+            formal-name="Component Type">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="assessment-results/result/local-definitions/component/status/@state | assessment-results/result/local-definitions/assessment-assets/component/status/@state"
+                 priority="9"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <flag in-json="string"
+            as-type="NCName"
+            name="state"
+            key="state"
+            gi="state"
+            formal-name="State">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="protocol/@name"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <flag in-json="string"
+            as-type="string"
+            name="name"
+            key="name"
+            gi="name"
+            formal-name="Protocol Name">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="port-range/@start"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <flag in-json="number"
+            as-type="nonNegativeInteger"
+            name="start"
+            key="start"
+            gi="start"
+            formal-name="Start">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="port-range/@end"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <flag in-json="number"
+            as-type="nonNegativeInteger"
+            name="end"
+            key="end"
+            gi="end"
+            formal-name="End">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="port-range/@transport"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <flag in-json="string"
+            as-type="NCName"
+            name="transport"
+            key="transport"
+            gi="transport"
+            formal-name="Transport">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="assessment-results/result/local-definitions/inventory-item/implemented-component/@component-uuid | assessment-results/result/local-definitions/assessment-assets/assessment-platform/uses-component/@component-uuid"
+                 priority="10"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <flag in-json="string"
+            as-type="uuid"
+            name="component-uuid"
+            key="component-uuid"
+            gi="component-uuid"
+            formal-name="Component Universally Unique Identifier Reference">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="logged-by/@party-uuid"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <flag in-json="string"
+            as-type="uuid"
+            name="party-uuid"
+            key="party-uuid"
+            gi="party-uuid"
+            formal-name="Party UUID Reference">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="related-task/@task-uuid | assessment-results/result/risk/response//task/dependency/@task-uuid | assessment-results/result/risk/response//task/associated-activity/subject-placeholder/source/@task-uuid"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <flag in-json="string"
+            as-type="uuid"
+            name="task-uuid"
+            key="task-uuid"
+            gi="task-uuid"
+            formal-name="Task Universally Unique Identifier Reference">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="subject/@type | actor/@type | assessment-results/result/observation/subject/@type | assessment-results/result/risk/mitigating-factor/subject/@type | assessment-results/result/risk/response/required-asset/subject/@type | task/@type | task//task/@type"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <flag in-json="string"
+            as-type="NCName"
+            name="type"
+            key="type"
+            gi="type"
+            formal-name="Subject Type">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="include-subject/@uuid-ref | exclude-subject/@uuid-ref | actor/@uuid-ref | assessment-results/result/observation/subject/@uuid-ref | assessment-results/result/risk/mitigating-factor/subject/@uuid-ref | assessment-results/result/risk/response/required-asset/subject/@uuid-ref"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <flag in-json="string"
+            as-type="uuid"
+            name="uuid-ref"
+            key="uuid-ref"
+            gi="uuid-ref"
+            formal-name="UUID Reference">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="assessment-results/result/assessment-log/entry/related-task/identified-subject/@subject-placeholder-uuid | assessment-results/result/observation/origin/related-task/identified-subject/@subject-placeholder-uuid | assessment-results/result/risk/origin/related-task/identified-subject/@subject-placeholder-uuid | assessment-results/result/risk/characterization/origin/related-task/identified-subject/@subject-placeholder-uuid | assessment-results/result/risk/response/origin/related-task/identified-subject/@subject-placeholder-uuid | assessment-results/result/risk/risk-log/entry/related-response/related-task/identified-subject/@subject-placeholder-uuid | assessment-results/result/finding/origin/related-task/identified-subject/@subject-placeholder-uuid"
+                 priority="11"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <flag in-json="string"
+            as-type="uuid"
+            name="subject-placeholder-uuid"
+            key="subject-placeholder-uuid"
+            gi="subject-placeholder-uuid"
+            formal-name="Assessment Subject Placeholder Universally Unique Identifier Reference">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="threat-id/@system | assessment-results/result/risk/characterization/facet/@system"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <flag in-json="string"
+            as-type="uri"
+            name="system"
+            key="system"
+            gi="system"
+            formal-name="Threat Type Identification System">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="assessment-results/result/risk/mitigating-factor/@implementation-uuid"
+                 priority="9"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <flag in-json="string"
+            as-type="uuid"
+            name="implementation-uuid"
+            key="implementation-uuid"
+            gi="implementation-uuid"
+            formal-name="Implementation UUID">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="assessment-results/result/risk/response/@lifecycle"
+                 priority="9"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <flag in-json="string"
+            as-type="NCName"
+            name="lifecycle"
+            key="lifecycle"
+            gi="lifecycle"
+            formal-name="Remediation Intent">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="assessment-results/result/risk/response//task/timing/on-date/@date"
+                 priority="14"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <flag in-json="string"
+            as-type="dateTime-with-timezone"
+            name="date"
+            key="date"
+            gi="date"
+            formal-name="On Date Condition">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="assessment-results/result/risk/response//task/timing/within-date-range/@start"
+                 priority="14"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <flag in-json="string"
+            as-type="dateTime-with-timezone"
+            name="start"
+            key="start"
+            gi="start"
+            formal-name="Start Date Condition">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="assessment-results/result/risk/response//task/timing/within-date-range/@end"
+                 priority="14"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <flag in-json="string"
+            as-type="dateTime-with-timezone"
+            name="end"
+            key="end"
+            gi="end"
+            formal-name="End Date Condition">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="assessment-results/result/risk/response//task/timing/at-frequency/@period"
+                 priority="14"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <flag in-json="number"
+            as-type="positiveInteger"
+            name="period"
+            key="period"
+            gi="period"
+            formal-name="Period">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="assessment-results/result/risk/response//task/timing/at-frequency/@unit"
+                 priority="14"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <flag in-json="string"
+            as-type="string"
+            name="unit"
+            key="unit"
+            gi="unit"
+            formal-name="Time Unit">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="assessment-results/result/risk/response//task/associated-activity/@activity-uuid"
+                 priority="13"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <flag in-json="string"
+            as-type="uuid"
+            name="activity-uuid"
+            key="activity-uuid"
+            gi="activity-uuid"
+            formal-name="Activity Universally Unique Identifier Reference">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="assessment-results/result/risk/risk-log/entry/related-response/@response-uuid"
+                 priority="12"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <flag in-json="string"
+            as-type="uuid"
+            name="response-uuid"
+            key="response-uuid"
+            gi="response-uuid"
+            formal-name="Response Universally Unique Identifier Reference">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="assessment-results/result/risk/related-observation/@observation-uuid | assessment-results/result/finding/related-observation/@observation-uuid"
+                 priority="9"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <flag in-json="string"
+            as-type="uuid"
+            name="observation-uuid"
+            key="observation-uuid"
+            gi="observation-uuid"
+            formal-name="Observation Universally Unique Identifier Reference">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="target/@id-ref"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <flag in-json="string"
+            as-type="NCName"
+            name="id-ref"
+            key="id-ref"
+            gi="id-ref"
+            formal-name="Finding Target Identifier Reference">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="assessment-results/result/finding/associated-risk/@risk-uuid"
+                 priority="9"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <flag in-json="string"
+            as-type="uuid"
+            name="risk-uuid"
+            key="risk-uuid"
+            gi="risk-uuid"
+            formal-name="Risk Universally Unique Identifier Reference">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
    <xsl:template match="hash/@algorithm"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
@@ -1969,6 +2261,18 @@
             key="algorithm"
             gi="algorithm"
             formal-name="Hash algorithm">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="assessment-results/back-matter/resource/base64/@filename"
+                 priority="7"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <flag in-json="string"
+            as-type="uri-reference"
+            name="filename"
+            key="filename"
+            gi="filename"
+            formal-name="File Name">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
@@ -2215,18 +2519,6 @@
          </value>
       </field>
    </xsl:template>
-   <xsl:template match="assessment-results/metadata/document-id/@scheme"
-                 priority="6"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-            as-type="uri"
-            name="scheme"
-            key="scheme"
-            gi="scheme"
-            formal-name="Document Identification Scheme">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
    <xsl:template match="assessment-results/metadata/link/text"
                  priority="6"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -2450,18 +2742,6 @@
          </value>
       </field>
    </xsl:template>
-   <xsl:template match="assessment-results/metadata/location/telephone-number/@type"
-                 priority="8"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-            as-type="string"
-            name="type"
-            key="type"
-            gi="type"
-            formal-name="type flag">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
    <xsl:template match="assessment-results/metadata/location/url"
                  priority="7"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -2535,18 +2815,6 @@
          </value>
       </field>
    </xsl:template>
-   <xsl:template match="assessment-results/metadata/party/external-id/@scheme"
-                 priority="8"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-            as-type="uri"
-            name="scheme"
-            key="scheme"
-            gi="scheme"
-            formal-name="External Identifier Schema">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
    <xsl:template match="assessment-results/metadata/party/link/text"
                  priority="8"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -2590,18 +2858,6 @@
             <xsl:value-of select="."/>
          </value>
       </field>
-   </xsl:template>
-   <xsl:template match="assessment-results/metadata/party/telephone-number/@type"
-                 priority="8"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-            as-type="string"
-            name="type"
-            key="type"
-            gi="type"
-            formal-name="type flag">
-         <xsl:value-of select="."/>
-      </flag>
    </xsl:template>
    <xsl:template match="assessment-results/metadata/party/address"
                  priority="8"
@@ -2915,18 +3171,6 @@
          <xsl:apply-templates select="remarks"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="assessment-results/local-definitions/activity/step/@uuid"
-                 priority="8"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-            as-type="uuid"
-            name="uuid"
-            key="uuid"
-            gi="uuid"
-            formal-name="Action Universally Unique Identifier">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
    <xsl:template match="assessment-results/local-definitions/activity/step/title"
                  priority="8"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -3106,15 +3350,14 @@
                  priority="12"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
-      <field as-type="empty"
-             name="include-all"
-             gi="include-all"
-             formal-name="All"
-             in-json="SCALAR">
+      <assembly as-type="empty"
+                name="include-all"
+                gi="include-all"
+                formal-name="All">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">include-all</xsl:attribute>
          </xsl:if>
-      </field>
+      </assembly>
    </xsl:template>
    <xsl:template match="assessment-results/local-definitions/activity/step/reviewed-controls/control-selection/include-control"
                  priority="13"
@@ -3266,15 +3509,14 @@
                  priority="12"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
-      <field as-type="empty"
-             name="include-all"
-             gi="include-all"
-             formal-name="All"
-             in-json="SCALAR">
+      <assembly as-type="empty"
+                name="include-all"
+                gi="include-all"
+                formal-name="All">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">include-all</xsl:attribute>
          </xsl:if>
-      </field>
+      </assembly>
    </xsl:template>
    <xsl:template match="assessment-results/local-definitions/activity/step/responsible-role/link/text"
                  priority="12"
@@ -3418,15 +3660,14 @@
                  priority="10"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
-      <field as-type="empty"
-             name="include-all"
-             gi="include-all"
-             formal-name="All"
-             in-json="SCALAR">
+      <assembly as-type="empty"
+                name="include-all"
+                gi="include-all"
+                formal-name="All">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">include-all</xsl:attribute>
          </xsl:if>
-      </field>
+      </assembly>
    </xsl:template>
    <xsl:template match="assessment-results/local-definitions/activity/related-controls/control-selection/include-control"
                  priority="11"
@@ -3578,15 +3819,14 @@
                  priority="10"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
-      <field as-type="empty"
-             name="include-all"
-             gi="include-all"
-             formal-name="All"
-             in-json="SCALAR">
+      <assembly as-type="empty"
+                name="include-all"
+                gi="include-all"
+                formal-name="All">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">include-all</xsl:attribute>
          </xsl:if>
-      </field>
+      </assembly>
    </xsl:template>
    <xsl:template match="assessment-results/local-definitions/activity/responsible-role/link/text"
                  priority="10"
@@ -3817,18 +4057,6 @@
          <xsl:apply-templates select="remarks"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="assessment-results/result/local-definitions/component/status/@state"
-                 priority="9"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-            as-type="NCName"
-            name="state"
-            key="state"
-            gi="state"
-            formal-name="State">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
    <xsl:template match="assessment-results/result/local-definitions/component/responsible-role/link/text"
                  priority="12"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -3955,18 +4183,6 @@
          </xsl:for-each-group>
          <xsl:apply-templates select="remarks"/>
       </assembly>
-   </xsl:template>
-   <xsl:template match="assessment-results/result/local-definitions/inventory-item/implemented-component/@component-uuid"
-                 priority="10"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-            as-type="uuid"
-            name="component-uuid"
-            key="component-uuid"
-            gi="component-uuid"
-            formal-name="Component Universally Unique Identifier Reference">
-         <xsl:value-of select="."/>
-      </flag>
    </xsl:template>
    <xsl:template match="assessment-results/result/local-definitions/inventory-item/implemented-component/link/text"
                  priority="12"
@@ -4192,18 +4408,6 @@
          <xsl:apply-templates select="remarks"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="assessment-results/result/local-definitions/assessment-assets/component/status/@state"
-                 priority="10"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-            as-type="NCName"
-            name="state"
-            key="state"
-            gi="state"
-            formal-name="State">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
    <xsl:template match="assessment-results/result/local-definitions/assessment-assets/component/responsible-role/link/text"
                  priority="13"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -4278,18 +4482,6 @@
          <xsl:apply-templates select="remarks"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="assessment-results/result/local-definitions/assessment-assets/assessment-platform/@uuid"
-                 priority="9"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-            as-type="uuid"
-            name="uuid"
-            key="uuid"
-            gi="uuid"
-            formal-name="Assessment Platform Universally Unique Identifier">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
    <xsl:template match="assessment-results/result/local-definitions/assessment-assets/assessment-platform/title"
                  priority="9"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -4362,18 +4554,6 @@
          </xsl:for-each-group>
          <xsl:apply-templates select="remarks"/>
       </assembly>
-   </xsl:template>
-   <xsl:template match="assessment-results/result/local-definitions/assessment-assets/assessment-platform/uses-component/@component-uuid"
-                 priority="11"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-            as-type="uuid"
-            name="component-uuid"
-            key="component-uuid"
-            gi="component-uuid"
-            formal-name="Component Universally Unique Identifier Reference">
-         <xsl:value-of select="."/>
-      </flag>
    </xsl:template>
    <xsl:template match="assessment-results/result/local-definitions/assessment-assets/assessment-platform/uses-component/link/text"
                  priority="13"
@@ -4605,15 +4785,14 @@
                  priority="9"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
-      <field as-type="empty"
-             name="include-all"
-             gi="include-all"
-             formal-name="All"
-             in-json="SCALAR">
+      <assembly as-type="empty"
+                name="include-all"
+                gi="include-all"
+                formal-name="All">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">include-all</xsl:attribute>
          </xsl:if>
-      </field>
+      </assembly>
    </xsl:template>
    <xsl:template match="assessment-results/result/reviewed-controls/control-selection/include-control"
                  priority="10"
@@ -4765,15 +4944,14 @@
                  priority="9"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
-      <field as-type="empty"
-             name="include-all"
-             gi="include-all"
-             formal-name="All"
-             in-json="SCALAR">
+      <assembly as-type="empty"
+                name="include-all"
+                gi="include-all"
+                formal-name="All">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">include-all</xsl:attribute>
          </xsl:if>
-      </field>
+      </assembly>
    </xsl:template>
    <xsl:template match="assessment-results/result/attestation"
                  priority="6"
@@ -4915,18 +5093,6 @@
          </xsl:for-each-group>
          <xsl:apply-templates select="remarks"/>
       </assembly>
-   </xsl:template>
-   <xsl:template match="assessment-results/result/assessment-log/entry/@uuid"
-                 priority="8"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-            as-type="uuid"
-            name="uuid"
-            key="uuid"
-            gi="uuid"
-            formal-name="Assessment Log Entry Universally Unique Identifier">
-         <xsl:value-of select="."/>
-      </flag>
    </xsl:template>
    <xsl:template match="assessment-results/result/assessment-log/entry/title"
                  priority="8"
@@ -5091,15 +5257,14 @@
                  priority="13"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
-      <field as-type="empty"
-             name="include-all"
-             gi="include-all"
-             formal-name="All"
-             in-json="SCALAR">
+      <assembly as-type="empty"
+                name="include-all"
+                gi="include-all"
+                formal-name="All">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">include-all</xsl:attribute>
          </xsl:if>
-      </field>
+      </assembly>
    </xsl:template>
    <xsl:template match="assessment-results/result/assessment-log/entry/related-task/subject/include-subject/link/text"
                  priority="17"
@@ -5155,18 +5320,6 @@
          </xsl:for-each-group>
       </assembly>
    </xsl:template>
-   <xsl:template match="assessment-results/result/assessment-log/entry/related-task/identified-subject/@subject-placeholder-uuid"
-                 priority="11"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-            as-type="uuid"
-            name="subject-placeholder-uuid"
-            key="subject-placeholder-uuid"
-            gi="subject-placeholder-uuid"
-            formal-name="Assessment Subject Placeholder Universally Unique Identifier Reference">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
    <xsl:template match="assessment-results/result/assessment-log/entry/related-task/identified-subject/subject/description"
                  priority="13"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -5208,15 +5361,14 @@
                  priority="14"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
-      <field as-type="empty"
-             name="include-all"
-             gi="include-all"
-             formal-name="All"
-             in-json="SCALAR">
+      <assembly as-type="empty"
+                name="include-all"
+                gi="include-all"
+                formal-name="All">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">include-all</xsl:attribute>
          </xsl:if>
-      </field>
+      </assembly>
    </xsl:template>
    <xsl:template match="assessment-results/result/assessment-log/entry/related-task/identified-subject/subject/include-subject/link/text"
                  priority="18"
@@ -5425,15 +5577,14 @@
                  priority="14"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
-      <field as-type="empty"
-             name="include-all"
-             gi="include-all"
-             formal-name="All"
-             in-json="SCALAR">
+      <assembly as-type="empty"
+                name="include-all"
+                gi="include-all"
+                formal-name="All">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">include-all</xsl:attribute>
          </xsl:if>
-      </field>
+      </assembly>
    </xsl:template>
    <xsl:template match="assessment-results/result/observation/origin/related-task/subject/include-subject/link/text"
                  priority="18"
@@ -5489,18 +5640,6 @@
          </xsl:for-each-group>
       </assembly>
    </xsl:template>
-   <xsl:template match="assessment-results/result/observation/origin/related-task/identified-subject/@subject-placeholder-uuid"
-                 priority="12"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-            as-type="uuid"
-            name="subject-placeholder-uuid"
-            key="subject-placeholder-uuid"
-            gi="subject-placeholder-uuid"
-            formal-name="Assessment Subject Placeholder Universally Unique Identifier Reference">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
    <xsl:template match="assessment-results/result/observation/origin/related-task/identified-subject/subject/description"
                  priority="14"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -5542,15 +5681,14 @@
                  priority="15"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
-      <field as-type="empty"
-             name="include-all"
-             gi="include-all"
-             formal-name="All"
-             in-json="SCALAR">
+      <assembly as-type="empty"
+                name="include-all"
+                gi="include-all"
+                formal-name="All">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">include-all</xsl:attribute>
          </xsl:if>
-      </field>
+      </assembly>
    </xsl:template>
    <xsl:template match="assessment-results/result/observation/origin/related-task/identified-subject/subject/include-subject/link/text"
                  priority="19"
@@ -5620,30 +5758,6 @@
          <xsl:apply-templates select="remarks"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="assessment-results/result/observation/subject/@uuid-ref"
-                 priority="9"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-            as-type="uuid"
-            name="uuid-ref"
-            key="uuid-ref"
-            gi="uuid-ref"
-            formal-name="UUID Reference">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="assessment-results/result/observation/subject/@type"
-                 priority="9"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-            as-type="NCName"
-            name="type"
-            key="type"
-            gi="type"
-            formal-name="Universally Unique Identifier Reference Type">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
    <xsl:template match="assessment-results/result/observation/subject/title"
                  priority="9"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -5710,18 +5824,6 @@
          </xsl:for-each-group>
          <xsl:apply-templates select="remarks"/>
       </assembly>
-   </xsl:template>
-   <xsl:template match="assessment-results/result/observation/relevant-evidence/@href"
-                 priority="9"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-            as-type="uri-reference"
-            name="href"
-            key="href"
-            gi="href"
-            formal-name="Relevant Evidence Reference">
-         <xsl:value-of select="."/>
-      </flag>
    </xsl:template>
    <xsl:template match="assessment-results/result/observation/relevant-evidence/description"
                  priority="9"
@@ -5977,15 +6079,14 @@
                  priority="14"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
-      <field as-type="empty"
-             name="include-all"
-             gi="include-all"
-             formal-name="All"
-             in-json="SCALAR">
+      <assembly as-type="empty"
+                name="include-all"
+                gi="include-all"
+                formal-name="All">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">include-all</xsl:attribute>
          </xsl:if>
-      </field>
+      </assembly>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/origin/related-task/subject/include-subject/link/text"
                  priority="18"
@@ -6041,18 +6142,6 @@
          </xsl:for-each-group>
       </assembly>
    </xsl:template>
-   <xsl:template match="assessment-results/result/risk/origin/related-task/identified-subject/@subject-placeholder-uuid"
-                 priority="12"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-            as-type="uuid"
-            name="subject-placeholder-uuid"
-            key="subject-placeholder-uuid"
-            gi="subject-placeholder-uuid"
-            formal-name="Assessment Subject Placeholder Universally Unique Identifier Reference">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
    <xsl:template match="assessment-results/result/risk/origin/related-task/identified-subject/subject/description"
                  priority="14"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -6094,15 +6183,14 @@
                  priority="15"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
-      <field as-type="empty"
-             name="include-all"
-             gi="include-all"
-             formal-name="All"
-             in-json="SCALAR">
+      <assembly as-type="empty"
+                name="include-all"
+                gi="include-all"
+                formal-name="All">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">include-all</xsl:attribute>
          </xsl:if>
-      </field>
+      </assembly>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/origin/related-task/identified-subject/subject/include-subject/link/text"
                  priority="19"
@@ -6247,15 +6335,14 @@
                  priority="15"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
-      <field as-type="empty"
-             name="include-all"
-             gi="include-all"
-             formal-name="All"
-             in-json="SCALAR">
+      <assembly as-type="empty"
+                name="include-all"
+                gi="include-all"
+                formal-name="All">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">include-all</xsl:attribute>
          </xsl:if>
-      </field>
+      </assembly>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/characterization/origin/related-task/subject/include-subject/link/text"
                  priority="19"
@@ -6311,18 +6398,6 @@
          </xsl:for-each-group>
       </assembly>
    </xsl:template>
-   <xsl:template match="assessment-results/result/risk/characterization/origin/related-task/identified-subject/@subject-placeholder-uuid"
-                 priority="13"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-            as-type="uuid"
-            name="subject-placeholder-uuid"
-            key="subject-placeholder-uuid"
-            gi="subject-placeholder-uuid"
-            formal-name="Assessment Subject Placeholder Universally Unique Identifier Reference">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
    <xsl:template match="assessment-results/result/risk/characterization/origin/related-task/identified-subject/subject/description"
                  priority="15"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -6364,15 +6439,14 @@
                  priority="16"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
-      <field as-type="empty"
-             name="include-all"
-             gi="include-all"
-             formal-name="All"
-             in-json="SCALAR">
+      <assembly as-type="empty"
+                name="include-all"
+                gi="include-all"
+                formal-name="All">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">include-all</xsl:attribute>
          </xsl:if>
-      </field>
+      </assembly>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/characterization/origin/related-task/identified-subject/subject/include-subject/link/text"
                  priority="20"
@@ -6440,42 +6514,6 @@
          <xsl:apply-templates select="remarks"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="assessment-results/result/risk/characterization/facet/@name"
-                 priority="11"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-            as-type="NCName"
-            name="name"
-            key="name"
-            gi="name"
-            formal-name="Facet Name">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="assessment-results/result/risk/characterization/facet/@system"
-                 priority="11"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-            as-type="uri"
-            name="system"
-            key="system"
-            gi="system"
-            formal-name="Naming System">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="assessment-results/result/risk/characterization/facet/@value"
-                 priority="11"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-            as-type="string"
-            name="value"
-            key="value"
-            gi="value"
-            formal-name="Facet Value">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
    <xsl:template match="assessment-results/result/risk/characterization/facet/link/text"
                  priority="13"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -6532,30 +6570,6 @@
             </group>
          </xsl:for-each-group>
       </assembly>
-   </xsl:template>
-   <xsl:template match="assessment-results/result/risk/mitigating-factor/@uuid"
-                 priority="9"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-            as-type="uuid"
-            name="uuid"
-            key="uuid"
-            gi="uuid"
-            formal-name="Mitigating Factor Universally Unique Identifier">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="assessment-results/result/risk/mitigating-factor/@implementation-uuid"
-                 priority="9"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-            as-type="uuid"
-            name="implementation-uuid"
-            key="implementation-uuid"
-            gi="implementation-uuid"
-            formal-name="Implementation UUID">
-         <xsl:value-of select="."/>
-      </flag>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/mitigating-factor/description"
                  priority="9"
@@ -6627,30 +6641,6 @@
          </xsl:for-each-group>
          <xsl:apply-templates select="remarks"/>
       </assembly>
-   </xsl:template>
-   <xsl:template match="assessment-results/result/risk/mitigating-factor/subject/@uuid-ref"
-                 priority="11"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-            as-type="uuid"
-            name="uuid-ref"
-            key="uuid-ref"
-            gi="uuid-ref"
-            formal-name="UUID Reference">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="assessment-results/result/risk/mitigating-factor/subject/@type"
-                 priority="11"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-            as-type="NCName"
-            name="type"
-            key="type"
-            gi="type"
-            formal-name="Universally Unique Identifier Reference Type">
-         <xsl:value-of select="."/>
-      </flag>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/mitigating-factor/subject/title"
                  priority="11"
@@ -6758,30 +6748,6 @@
          </xsl:for-each-group>
          <xsl:apply-templates select="remarks"/>
       </assembly>
-   </xsl:template>
-   <xsl:template match="assessment-results/result/risk/response/@uuid"
-                 priority="9"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-            as-type="uuid"
-            name="uuid"
-            key="uuid"
-            gi="uuid"
-            formal-name="Remediation Universally Unique Identifier">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="assessment-results/result/risk/response/@lifecycle"
-                 priority="9"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-            as-type="NCName"
-            name="lifecycle"
-            key="lifecycle"
-            gi="lifecycle"
-            formal-name="Remediation Intent">
-         <xsl:value-of select="."/>
-      </flag>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/response/title"
                  priority="9"
@@ -6929,15 +6895,14 @@
                  priority="16"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
-      <field as-type="empty"
-             name="include-all"
-             gi="include-all"
-             formal-name="All"
-             in-json="SCALAR">
+      <assembly as-type="empty"
+                name="include-all"
+                gi="include-all"
+                formal-name="All">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">include-all</xsl:attribute>
          </xsl:if>
-      </field>
+      </assembly>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/response/origin/related-task/subject/include-subject/link/text"
                  priority="20"
@@ -6993,18 +6958,6 @@
          </xsl:for-each-group>
       </assembly>
    </xsl:template>
-   <xsl:template match="assessment-results/result/risk/response/origin/related-task/identified-subject/@subject-placeholder-uuid"
-                 priority="14"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-            as-type="uuid"
-            name="subject-placeholder-uuid"
-            key="subject-placeholder-uuid"
-            gi="subject-placeholder-uuid"
-            formal-name="Assessment Subject Placeholder Universally Unique Identifier Reference">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
    <xsl:template match="assessment-results/result/risk/response/origin/related-task/identified-subject/subject/description"
                  priority="16"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -7046,15 +6999,14 @@
                  priority="17"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
-      <field as-type="empty"
-             name="include-all"
-             gi="include-all"
-             formal-name="All"
-             in-json="SCALAR">
+      <assembly as-type="empty"
+                name="include-all"
+                gi="include-all"
+                formal-name="All">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">include-all</xsl:attribute>
          </xsl:if>
-      </field>
+      </assembly>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/response/origin/related-task/identified-subject/subject/include-subject/link/text"
                  priority="21"
@@ -7131,18 +7083,6 @@
          <xsl:apply-templates select="remarks"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="assessment-results/result/risk/response/required-asset/@uuid"
-                 priority="11"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-            as-type="uuid"
-            name="uuid"
-            key="uuid"
-            gi="uuid"
-            formal-name="Required Universally Unique Identifier">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
    <xsl:template match="assessment-results/result/risk/response/required-asset/subject"
                  priority="12"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -7176,30 +7116,6 @@
          </xsl:for-each-group>
          <xsl:apply-templates select="remarks"/>
       </assembly>
-   </xsl:template>
-   <xsl:template match="assessment-results/result/risk/response/required-asset/subject/@uuid-ref"
-                 priority="13"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-            as-type="uuid"
-            name="uuid-ref"
-            key="uuid-ref"
-            gi="uuid-ref"
-            formal-name="UUID Reference">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="assessment-results/result/risk/response/required-asset/subject/@type"
-                 priority="13"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-            as-type="NCName"
-            name="type"
-            key="type"
-            gi="type"
-            formal-name="Universally Unique Identifier Reference Type">
-         <xsl:value-of select="."/>
-      </flag>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/response/required-asset/subject/title"
                  priority="13"
@@ -7360,129 +7276,54 @@
                  priority="13"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
-      <field as-type="empty"
-             name="on-date"
-             gi="on-date"
-             formal-name="On Date Condition">
+      <assembly as-type="empty"
+                name="on-date"
+                gi="on-date"
+                formal-name="On Date Condition">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">on-date</xsl:attribute>
          </xsl:if>
          <xsl:apply-templates select="@date"/>
-      </field>
-   </xsl:template>
-   <xsl:template match="assessment-results/result/risk/response//task/timing/on-date/@date"
-                 priority="14"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-            as-type="dateTime-with-timezone"
-            name="date"
-            key="date"
-            gi="date"
-            formal-name="On Date Condition">
-         <xsl:value-of select="."/>
-      </flag>
+      </assembly>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/response//task/timing/within-date-range"
                  priority="13"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
-      <field as-type="empty"
-             name="within-date-range"
-             gi="within-date-range"
-             formal-name="On Date Range Condition">
+      <assembly as-type="empty"
+                name="within-date-range"
+                gi="within-date-range"
+                formal-name="On Date Range Condition">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">within-date-range</xsl:attribute>
          </xsl:if>
          <xsl:apply-templates select="@start"/>
          <xsl:apply-templates select="@end"/>
-      </field>
-   </xsl:template>
-   <xsl:template match="assessment-results/result/risk/response//task/timing/within-date-range/@start"
-                 priority="14"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-            as-type="dateTime-with-timezone"
-            name="start"
-            key="start"
-            gi="start"
-            formal-name="Start Date Condition">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="assessment-results/result/risk/response//task/timing/within-date-range/@end"
-                 priority="14"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-            as-type="dateTime-with-timezone"
-            name="end"
-            key="end"
-            gi="end"
-            formal-name="End Date Condition">
-         <xsl:value-of select="."/>
-      </flag>
+      </assembly>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/response//task/timing/at-frequency"
                  priority="13"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
-      <field as-type="empty"
-             name="at-frequency"
-             gi="at-frequency"
-             formal-name="Frequency Condition">
+      <assembly as-type="empty"
+                name="at-frequency"
+                gi="at-frequency"
+                formal-name="Frequency Condition">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">at-frequency</xsl:attribute>
          </xsl:if>
          <xsl:apply-templates select="@period"/>
          <xsl:apply-templates select="@unit"/>
-      </field>
-   </xsl:template>
-   <xsl:template match="assessment-results/result/risk/response//task/timing/at-frequency/@period"
-                 priority="14"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="number"
-            as-type="positiveInteger"
-            name="period"
-            key="period"
-            gi="period"
-            formal-name="Period">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="assessment-results/result/risk/response//task/timing/at-frequency/@unit"
-                 priority="14"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-            as-type="string"
-            name="unit"
-            key="unit"
-            gi="unit"
-            formal-name="Time Unit">
-         <xsl:value-of select="."/>
-      </flag>
+      </assembly>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/response//task/dependency"
                  priority="12"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <assembly name="dependency" gi="dependency" formal-name="Task Dependency">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">dependency</xsl:attribute>
-         </xsl:if>
          <xsl:apply-templates select="@task-uuid"/>
          <xsl:apply-templates select="remarks"/>
       </assembly>
-   </xsl:template>
-   <xsl:template match="assessment-results/result/risk/response//task/dependency/@task-uuid"
-                 priority="13"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-            as-type="uuid"
-            name="task-uuid"
-            key="task-uuid"
-            gi="task-uuid"
-            formal-name="Task Universally Unique Identifier Reference">
-         <xsl:value-of select="."/>
-      </flag>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/response//task/associated-activity"
                  priority="12"
@@ -7530,18 +7371,6 @@
          <xsl:apply-templates select="subject-placeholder"/>
          <xsl:apply-templates select="remarks"/>
       </assembly>
-   </xsl:template>
-   <xsl:template match="assessment-results/result/risk/response//task/associated-activity/@activity-uuid"
-                 priority="13"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-            as-type="uuid"
-            name="activity-uuid"
-            key="activity-uuid"
-            gi="activity-uuid"
-            formal-name="Activity Universally Unique Identifier Reference">
-         <xsl:value-of select="."/>
-      </flag>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/response//task/associated-activity/link/text"
                  priority="15"
@@ -7618,15 +7447,14 @@
                  priority="17"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
-      <field as-type="empty"
-             name="include-all"
-             gi="include-all"
-             formal-name="All"
-             in-json="SCALAR">
+      <assembly as-type="empty"
+                name="include-all"
+                gi="include-all"
+                formal-name="All">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">include-all</xsl:attribute>
          </xsl:if>
-      </field>
+      </assembly>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/response//task/associated-activity/subject/include-subject/link/text"
                  priority="21"
@@ -7686,24 +7514,12 @@
                  priority="16"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
-      <field as-type="empty"
-             name="source"
-             gi="source"
-             formal-name="Assessment Subject Source">
+      <assembly as-type="empty"
+                name="source"
+                gi="source"
+                formal-name="Assessment Subject Source">
          <xsl:apply-templates select="@task-uuid"/>
-      </field>
-   </xsl:template>
-   <xsl:template match="assessment-results/result/risk/response//task/associated-activity/subject-placeholder/source/@task-uuid"
-                 priority="17"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-            as-type="uuid"
-            name="task-uuid"
-            key="task-uuid"
-            gi="task-uuid"
-            formal-name="Task Universally Unique Identifier">
-         <xsl:value-of select="."/>
-      </flag>
+      </assembly>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/response//task/associated-activity/subject-placeholder/link/text"
                  priority="17"
@@ -7763,15 +7579,14 @@
                  priority="14"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
-      <field as-type="empty"
-             name="include-all"
-             gi="include-all"
-             formal-name="All"
-             in-json="SCALAR">
+      <assembly as-type="empty"
+                name="include-all"
+                gi="include-all"
+                formal-name="All">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">include-all</xsl:attribute>
          </xsl:if>
-      </field>
+      </assembly>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/response//task/subject/include-subject/link/text"
                  priority="18"
@@ -7889,18 +7704,6 @@
          </xsl:for-each-group>
          <xsl:apply-templates select="remarks"/>
       </assembly>
-   </xsl:template>
-   <xsl:template match="assessment-results/result/risk/risk-log/entry/@uuid"
-                 priority="10"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-            as-type="uuid"
-            name="uuid"
-            key="uuid"
-            gi="uuid"
-            formal-name="Risk Log Entry Universally Unique Identifier">
-         <xsl:value-of select="."/>
-      </flag>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/risk-log/entry/title"
                  priority="10"
@@ -8029,18 +7832,6 @@
          <xsl:apply-templates select="remarks"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="assessment-results/result/risk/risk-log/entry/related-response/@response-uuid"
-                 priority="12"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-            as-type="uuid"
-            name="response-uuid"
-            key="response-uuid"
-            gi="response-uuid"
-            formal-name="Response Universally Unique Identifier Reference">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
    <xsl:template match="assessment-results/result/risk/risk-log/entry/related-response/link/text"
                  priority="14"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -8133,15 +7924,14 @@
                  priority="17"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
-      <field as-type="empty"
-             name="include-all"
-             gi="include-all"
-             formal-name="All"
-             in-json="SCALAR">
+      <assembly as-type="empty"
+                name="include-all"
+                gi="include-all"
+                formal-name="All">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">include-all</xsl:attribute>
          </xsl:if>
-      </field>
+      </assembly>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/risk-log/entry/related-response/related-task/subject/include-subject/link/text"
                  priority="21"
@@ -8197,18 +7987,6 @@
          </xsl:for-each-group>
       </assembly>
    </xsl:template>
-   <xsl:template match="assessment-results/result/risk/risk-log/entry/related-response/related-task/identified-subject/@subject-placeholder-uuid"
-                 priority="15"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-            as-type="uuid"
-            name="subject-placeholder-uuid"
-            key="subject-placeholder-uuid"
-            gi="subject-placeholder-uuid"
-            formal-name="Assessment Subject Placeholder Universally Unique Identifier Reference">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
    <xsl:template match="assessment-results/result/risk/risk-log/entry/related-response/related-task/identified-subject/subject/description"
                  priority="17"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -8250,15 +8028,14 @@
                  priority="18"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
-      <field as-type="empty"
-             name="include-all"
-             gi="include-all"
-             formal-name="All"
-             in-json="SCALAR">
+      <assembly as-type="empty"
+                name="include-all"
+                gi="include-all"
+                formal-name="All">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">include-all</xsl:attribute>
          </xsl:if>
-      </field>
+      </assembly>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/risk-log/entry/related-response/related-task/identified-subject/subject/include-subject/link/text"
                  priority="22"
@@ -8298,24 +8075,12 @@
                  priority="8"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
-      <field as-type="empty"
-             name="related-observation"
-             gi="related-observation"
-             formal-name="Related Observation">
+      <assembly as-type="empty"
+                name="related-observation"
+                gi="related-observation"
+                formal-name="Related Observation">
          <xsl:apply-templates select="@observation-uuid"/>
-      </field>
-   </xsl:template>
-   <xsl:template match="assessment-results/result/risk/related-observation/@observation-uuid"
-                 priority="9"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-            as-type="uuid"
-            name="observation-uuid"
-            key="observation-uuid"
-            gi="observation-uuid"
-            formal-name="Observation Universally Unique Identifier Reference">
-         <xsl:value-of select="."/>
-      </flag>
+      </assembly>
    </xsl:template>
    <xsl:template match="assessment-results/result/finding/title"
                  priority="7"
@@ -8463,15 +8228,14 @@
                  priority="14"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
-      <field as-type="empty"
-             name="include-all"
-             gi="include-all"
-             formal-name="All"
-             in-json="SCALAR">
+      <assembly as-type="empty"
+                name="include-all"
+                gi="include-all"
+                formal-name="All">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">include-all</xsl:attribute>
          </xsl:if>
-      </field>
+      </assembly>
    </xsl:template>
    <xsl:template match="assessment-results/result/finding/origin/related-task/subject/include-subject/link/text"
                  priority="18"
@@ -8527,18 +8291,6 @@
          </xsl:for-each-group>
       </assembly>
    </xsl:template>
-   <xsl:template match="assessment-results/result/finding/origin/related-task/identified-subject/@subject-placeholder-uuid"
-                 priority="12"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-            as-type="uuid"
-            name="subject-placeholder-uuid"
-            key="subject-placeholder-uuid"
-            gi="subject-placeholder-uuid"
-            formal-name="Assessment Subject Placeholder Universally Unique Identifier Reference">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
    <xsl:template match="assessment-results/result/finding/origin/related-task/identified-subject/subject/description"
                  priority="14"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -8580,15 +8332,14 @@
                  priority="15"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
-      <field as-type="empty"
-             name="include-all"
-             gi="include-all"
-             formal-name="All"
-             in-json="SCALAR">
+      <assembly as-type="empty"
+                name="include-all"
+                gi="include-all"
+                formal-name="All">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">include-all</xsl:attribute>
          </xsl:if>
-      </field>
+      </assembly>
    </xsl:template>
    <xsl:template match="assessment-results/result/finding/origin/related-task/identified-subject/subject/include-subject/link/text"
                  priority="19"
@@ -8716,47 +8467,23 @@
                  priority="8"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
-      <field as-type="empty"
-             name="related-observation"
-             gi="related-observation"
-             formal-name="Related Observation">
+      <assembly as-type="empty"
+                name="related-observation"
+                gi="related-observation"
+                formal-name="Related Observation">
          <xsl:apply-templates select="@observation-uuid"/>
-      </field>
-   </xsl:template>
-   <xsl:template match="assessment-results/result/finding/related-observation/@observation-uuid"
-                 priority="9"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-            as-type="uuid"
-            name="observation-uuid"
-            key="observation-uuid"
-            gi="observation-uuid"
-            formal-name="Observation Universally Unique Identifier Reference">
-         <xsl:value-of select="."/>
-      </flag>
+      </assembly>
    </xsl:template>
    <xsl:template match="assessment-results/result/finding/associated-risk"
                  priority="8"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
-      <field as-type="empty"
-             name="associated-risk"
-             gi="associated-risk"
-             formal-name="Associated Risk">
+      <assembly as-type="empty"
+                name="associated-risk"
+                gi="associated-risk"
+                formal-name="Associated Risk">
          <xsl:apply-templates select="@risk-uuid"/>
-      </field>
-   </xsl:template>
-   <xsl:template match="assessment-results/result/finding/associated-risk/@risk-uuid"
-                 priority="9"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-            as-type="uuid"
-            name="risk-uuid"
-            key="risk-uuid"
-            gi="risk-uuid"
-            formal-name="Risk Universally Unique Identifier Reference">
-         <xsl:value-of select="."/>
-      </flag>
+      </assembly>
    </xsl:template>
    <xsl:template match="assessment-results/back-matter/resource"
                  priority="5"
@@ -8798,18 +8525,6 @@
          <xsl:apply-templates select="base64"/>
          <xsl:apply-templates select="remarks"/>
       </assembly>
-   </xsl:template>
-   <xsl:template match="assessment-results/back-matter/resource/@uuid"
-                 priority="6"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-            as-type="uuid"
-            name="uuid"
-            key="uuid"
-            gi="uuid"
-            formal-name="Resource Universally Unique Identifier">
-         <xsl:value-of select="."/>
-      </flag>
    </xsl:template>
    <xsl:template match="assessment-results/back-matter/resource/title"
                  priority="6"
@@ -8860,18 +8575,6 @@
             <xsl:value-of select="."/>
          </value>
       </field>
-   </xsl:template>
-   <xsl:template match="assessment-results/back-matter/resource/document-id/@scheme"
-                 priority="8"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-            as-type="uri"
-            name="scheme"
-            key="scheme"
-            gi="scheme"
-            formal-name="Document Identification Scheme">
-         <xsl:value-of select="."/>
-      </flag>
    </xsl:template>
    <xsl:template match="assessment-results/back-matter/resource/citation"
                  priority="6"
@@ -8942,18 +8645,6 @@
          </xsl:for-each-group>
       </assembly>
    </xsl:template>
-   <xsl:template match="assessment-results/back-matter/resource/rlink/@href"
-                 priority="8"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-            as-type="uri-reference"
-            name="href"
-            key="href"
-            gi="href"
-            formal-name="Hypertext Reference">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
    <xsl:template match="assessment-results/back-matter/resource/base64"
                  priority="6"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -8971,18 +8662,6 @@
             <xsl:value-of select="."/>
          </value>
       </field>
-   </xsl:template>
-   <xsl:template match="assessment-results/back-matter/resource/base64/@filename"
-                 priority="7"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-            as-type="uri-reference"
-            name="filename"
-            key="filename"
-            gi="filename"
-            formal-name="File Name">
-         <xsl:value-of select="."/>
-      </flag>
    </xsl:template>
    <xsl:template match="*"
                  mode="cast-prose"
@@ -9141,7 +8820,7 @@
       <xsl:variable name="key-flag-name" select="@key-flag"/>
       <xsl:element name="{(@in-json[matches(.,'\S')],'string')[1]}"
                    namespace="http://www.w3.org/2005/xpath-functions">
-         <xsl:copy-of select="(../flag[@key=$key-flag-name],parent::field[@in-json = 'SCALAR']/@key, @key)[1]"/>
+         <xsl:copy-of select="((../flag[@key=$key-flag-name],parent::field[@in-json = 'SCALAR'])/@key, @key)[1]"/>
          <xsl:apply-templates select="." mode="cast-data"/>
       </xsl:element>
    </xsl:template>

@@ -13,7 +13,6 @@
         { "title" : 
           { "title" : "Document Title",
             "description" : "A name given to the document, which may be used by a tool for display and navigation.",
-            "$id" : "#/definitions/metadata-title",
             "type" : "string" },
           "published" : 
           { "$ref" : "#/definitions/oscal-metadata-published" },
@@ -90,7 +89,6 @@
         { "title" : 
           { "title" : "Document Title",
             "description" : "A name given to the document revision, which may be used by a tool for display and navigation.",
-            "$id" : "#/definitions/oscal-metadata-revision-title",
             "type" : "string" },
           "published" : 
           { "$ref" : "#/definitions/oscal-metadata-published" },
@@ -132,7 +130,6 @@
           "title" : 
           { "title" : "Location Title",
             "description" : "A name given to the location, which may be used by a tool for display and navigation.",
-            "$id" : "#/definitions/location-title",
             "type" : "string" },
           "address" : 
           { "$ref" : "#/definitions/oscal-metadata-address" },
@@ -152,7 +149,6 @@
             "items" : 
             { "title" : "Location URL",
               "description" : "The uniform resource locator (URL) for a web site or Internet presence associated with the location.",
-              "$id" : "#/definitions/location-url",
               "type" : "string",
               "format" : "uri" } },
           "props" : 
@@ -203,12 +199,10 @@
           "name" : 
           { "title" : "Party Name",
             "description" : "The full name of the party. This is typically the legal name associated with the party.",
-            "$id" : "#/definitions/party-name",
             "type" : "string" },
           "short-name" : 
           { "title" : "Party Short Name",
             "description" : "A short common name, abbreviation, or acronym for the party.",
-            "$id" : "#/definitions/party-short-name",
             "type" : "string" },
           "external-ids" : 
           { "type" : "array",
@@ -216,7 +210,6 @@
             "items" : 
             { "title" : "Party External Identifier",
               "description" : "An identifier for a person or organization using a designated scheme. e.g. an Open Researcher and Contributor ID (ORCID)",
-              "$id" : "#/definitions/party-external-id",
               "type" : "object",
               "properties" : 
               { "scheme" : 
@@ -271,7 +264,6 @@
             "items" : 
             { "title" : "Organizational Affiliation",
               "description" : "Identifies that the party object is a member of the organization associated with the provided UUID.",
-              "$id" : "#/definitions/party-member-of-organization",
               "type" : "string",
               "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" } },
           "remarks" : 
@@ -299,17 +291,14 @@
           "title" : 
           { "title" : "Role Title",
             "description" : "A name given to the role, which may be used by a tool for display and navigation.",
-            "$id" : "#/definitions/role-title",
             "type" : "string" },
           "short-name" : 
           { "title" : "Role Short Name",
             "description" : "A short common name, abbreviation, or acronym for the role.",
-            "$id" : "#/definitions/role-short-name",
             "type" : "string" },
           "description" : 
           { "title" : "Role Description",
             "description" : "A summary of the role's purpose and associated responsibilities.",
-            "$id" : "#/definitions/role-description",
             "type" : "string" },
           "props" : 
           { "type" : "array",
@@ -332,11 +321,6 @@
         [ "id",
           "title" ],
         "additionalProperties" : false },
-      "role-id" : 
-      { "title" : "Role Identifier Reference",
-        "description" : "A reference to the roles served by the user.",
-        "$id" : "#/definitions/role-id",
-        "type" : "string" },
       "back-matter" : 
       { "title" : "Back matter",
         "description" : "A collection of resources, which may be included directly or by reference.",
@@ -349,7 +333,6 @@
             "items" : 
             { "title" : "Resource",
               "description" : "A resource associated with content in the containing document. A resource may be directly included in the document base64 encoded or may point to one or more equavalent internet resources.",
-              "$id" : "#/definitions/back-matter-resource",
               "type" : "object",
               "properties" : 
               { "uuid" : 
@@ -360,12 +343,10 @@
                 "title" : 
                 { "title" : "Resource Title",
                   "description" : "A name given to the resource, which may be used by a tool for display and navigation.",
-                  "$id" : "#/definitions/back-matter-resource-title",
                   "type" : "string" },
                 "description" : 
                 { "title" : "Resource Description",
                   "description" : "A short summary of the resource used to indicate the purpose of the resource.",
-                  "$id" : "#/definitions/back-matter-resource-description",
                   "type" : "string" },
                 "props" : 
                 { "type" : "array",
@@ -385,13 +366,11 @@
                 "citation" : 
                 { "title" : "Citation",
                   "description" : "A citation consisting of end note text and optional structured bibliographic data.",
-                  "$id" : "#/definitions/back-matter-resource-citation",
                   "type" : "object",
                   "properties" : 
                   { "text" : 
                     { "title" : "Citation Text",
                       "description" : "A line of citation text.",
-                      "$id" : "#/definitions/back-matter-resource-citation-text",
                       "type" : "string" },
                     "props" : 
                     { "type" : "array",
@@ -406,9 +385,8 @@
                     "biblio" : 
                     { "title" : "Bibliographic Definition",
                       "description" : "A container for structured bibliographic information. The model of this information is undefined by OSCAL.",
-                      "$id" : "#/definitions/back-matter-resource-citation-biblio",
                       "type" : "object",
-                      "additionalProperties" : false } },
+                      "additionalProperties" : true } },
                   "required" : 
                   [ "text" ],
                   "additionalProperties" : false },
@@ -418,7 +396,6 @@
                   "items" : 
                   { "title" : "Resource link",
                     "description" : "A pointer to an external resource with an optional hash for verification and change detection.",
-                    "$id" : "#/definitions/back-matter-resource-rlink",
                     "type" : "object",
                     "properties" : 
                     { "href" : 
@@ -441,7 +418,6 @@
                 "base64" : 
                 { "title" : "Base64",
                   "description" : "The Base64 alphabet in RFC 2045 - aligned with XSD.",
-                  "$id" : "#/definitions/back-matter-resource-base64",
                   "type" : "object",
                   "properties" : 
                   { "filename" : 
@@ -462,7 +438,7 @@
                 { "$ref" : "#/definitions/remarks" } },
               "required" : 
               [ "uuid" ],
-              "additionalProperties" : false } } },
+              "additionalProperties" : true } } },
         "additionalProperties" : false },
       "property" : 
       { "title" : "Property",
@@ -546,7 +522,6 @@
           "text" : 
           { "title" : "Link Text",
             "description" : "A textual label to associate with the link, which may be used for presentation in a tool.",
-            "$id" : "#/definitions/link-text",
             "type" : "string" } },
         "required" : 
         [ "href" ],
@@ -694,22 +669,18 @@
           "city" : 
           { "title" : "City",
             "description" : "City, town or geographical region for the mailing address.",
-            "$id" : "#/definitions/oscal-metadata-address-city",
             "type" : "string" },
           "state" : 
           { "title" : "State",
             "description" : "State, province or analogous geographical region for mailing address",
-            "$id" : "#/definitions/oscal-metadata-address-state",
             "type" : "string" },
           "postal-code" : 
           { "title" : "Postal Code",
             "description" : "Postal or ZIP code for mailing address",
-            "$id" : "#/definitions/oscal-metadata-address-postal-code",
             "type" : "string" },
           "country" : 
           { "title" : "Country Code",
             "description" : "The ISO 3166-1 alpha-2 country code for the mailing address.",
-            "$id" : "#/definitions/oscal-metadata-address-country",
             "type" : "string" } },
         "additionalProperties" : false },
       "oscal-metadata-addr-line" : 
@@ -734,89 +705,6 @@
         [ "identifier",
           "scheme" ],
         "additionalProperties" : false },
-      "system-component" : 
-      { "title" : "Component",
-        "description" : "A defined component that can be part of an implemented system.",
-        "$id" : "#/definitions/system-component",
-        "type" : "object",
-        "properties" : 
-        { "type" : 
-          { "title" : "Component Type",
-            "description" : "A category describing the purpose of the component.",
-            "type" : "string" },
-          "title" : 
-          { "title" : "Component Title",
-            "description" : "A human readable name for the system component.",
-            "$id" : "#/definitions/system-component-title",
-            "type" : "string" },
-          "description" : 
-          { "title" : "Component Description",
-            "description" : "A description of the component, including information about its function.",
-            "$id" : "#/definitions/system-component-description",
-            "type" : "string" },
-          "purpose" : 
-          { "title" : "Purpose",
-            "description" : "A summary of the technological or business purpose of the component.",
-            "$id" : "#/definitions/system-component-purpose",
-            "type" : "string" },
-          "props" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/property" } },
-          "annotations" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/annotation" } },
-          "links" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/link" } },
-          "status" : 
-          { "title" : "Status",
-            "description" : "Describes the operational status of the system component.",
-            "$id" : "#/definitions/system-component-status",
-            "type" : "object",
-            "properties" : 
-            { "state" : 
-              { "title" : "State",
-                "description" : "The operational status.",
-                "type" : "string",
-                "enum" : 
-                [ "under-development",
-                  "operational",
-                  "disposition",
-                  "other" ] },
-              "remarks" : 
-              { "$ref" : "#/definitions/remarks" } },
-            "required" : 
-            [ "state" ],
-            "additionalProperties" : false },
-          "responsible-roles" : 
-          { "type" : "object",
-            "minProperties" : 1,
-            "additionalProperties" : 
-            { "allOf" : 
-              [ 
-                { "$ref" : "#/definitions/responsible-role" },
-                
-                { "not" : 
-                  { "type" : "string" } } ] } },
-          "protocols" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/protocol" } },
-          "remarks" : 
-          { "$ref" : "#/definitions/remarks" } },
-        "required" : 
-        [ "type",
-          "title",
-          "description",
-          "status" ],
-        "additionalProperties" : false },
       "protocol" : 
       { "title" : "Service Protocol Information",
         "description" : "Information about the protocol used to provide a service.",
@@ -835,7 +723,6 @@
           "title" : 
           { "title" : "title field",
             "description" : "A human readable name for the protocol (e.g., Transport Layer Security).",
-            "$id" : "#/definitions/protocol-title",
             "type" : "string" },
           "port-ranges" : 
           { "type" : "array",
@@ -871,176 +758,6 @@
             [ "TCP",
               "UDP" ] } },
         "additionalProperties" : false },
-      "system-user" : 
-      { "title" : "System User",
-        "description" : "A type of user that interacts with the system based on an associated role.",
-        "$id" : "#/definitions/system-user",
-        "type" : "object",
-        "properties" : 
-        { "title" : 
-          { "title" : "User Title",
-            "description" : "A name given to the user, which may be used by a tool for display and navigation.",
-            "$id" : "#/definitions/system-user-title",
-            "type" : "string" },
-          "short-name" : 
-          { "title" : "User Short Name",
-            "description" : "A short common name, abbreviation, or acronym for the user.",
-            "$id" : "#/definitions/system-user-short-name",
-            "type" : "string" },
-          "description" : 
-          { "title" : "User Description",
-            "description" : "A summary of the user's purpose within the system.",
-            "$id" : "#/definitions/system-user-description",
-            "type" : "string" },
-          "props" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/property" } },
-          "annotations" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/annotation" } },
-          "links" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/link" } },
-          "role-ids" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/role-id" } },
-          "authorized-privileges" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/authorized-privilege" } },
-          "remarks" : 
-          { "$ref" : "#/definitions/remarks" } },
-        "additionalProperties" : false },
-      "authorized-privilege" : 
-      { "title" : "Privilege",
-        "description" : "Identifies a specific system privilege held by the user, along with an associated description and/or rationale for the privilege.",
-        "$id" : "#/definitions/authorized-privilege",
-        "type" : "object",
-        "properties" : 
-        { "title" : 
-          { "title" : "title field",
-            "description" : "A human readable name for the privilege.",
-            "$id" : "#/definitions/authorized-privilege-title",
-            "type" : "string" },
-          "description" : 
-          { "title" : "Privilege Description",
-            "description" : "A summary of the privilege's purpose within the system.",
-            "$id" : "#/definitions/authorized-privilege-description",
-            "type" : "string" },
-          "functions-performed" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/function-performed" } } },
-        "required" : 
-        [ "title",
-          "functions-performed" ],
-        "additionalProperties" : false },
-      "function-performed" : 
-      { "title" : "Functions Performed",
-        "description" : "Describes a function performed for a given authorized privilege by this user class.",
-        "$id" : "#/definitions/function-performed",
-        "type" : "string" },
-      "inventory-item" : 
-      { "title" : "Inventory Item",
-        "description" : "A single managed inventory item within the system.",
-        "$id" : "#/definitions/inventory-item",
-        "type" : "object",
-        "properties" : 
-        { "uuid" : 
-          { "title" : "Inventory Item Universally Unique Identifier",
-            "description" : "A globally unique identifier that can be used to reference this inventory item entry elsewhere in an OSCAL document. A UUID should be consistently used for a given resource across revisions of the document.",
-            "type" : "string",
-            "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
-          "description" : 
-          { "title" : "Inventory Item Description",
-            "description" : "A summary of the inventory item stating its purpose within the system.",
-            "$id" : "#/definitions/inventory-item-description",
-            "type" : "string" },
-          "props" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/property" } },
-          "annotations" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/annotation" } },
-          "links" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/link" } },
-          "responsible-parties" : 
-          { "type" : "object",
-            "minProperties" : 1,
-            "additionalProperties" : 
-            { "allOf" : 
-              [ 
-                { "$ref" : "#/definitions/responsible-party" },
-                
-                { "not" : 
-                  { "type" : "string" } } ] } },
-          "implemented-components" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "title" : "Implemented Component",
-              "description" : "The set of components that are implemented in a given system inventory item.",
-              "$id" : "#/definitions/inventory-item-implemented-component",
-              "type" : "object",
-              "properties" : 
-              { "component-uuid" : 
-                { "title" : "Component Universally Unique Identifier Reference",
-                  "description" : "A reference to a component that is implemented as part of an inventory item.",
-                  "type" : "string",
-                  "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
-                "props" : 
-                { "type" : "array",
-                  "minItems" : 1,
-                  "items" : 
-                  { "$ref" : "#/definitions/property" } },
-                "annotations" : 
-                { "type" : "array",
-                  "minItems" : 1,
-                  "items" : 
-                  { "$ref" : "#/definitions/annotation" } },
-                "links" : 
-                { "type" : "array",
-                  "minItems" : 1,
-                  "items" : 
-                  { "$ref" : "#/definitions/link" } },
-                "responsible-parties" : 
-                { "type" : "object",
-                  "minProperties" : 1,
-                  "additionalProperties" : 
-                  { "allOf" : 
-                    [ 
-                      { "$ref" : "#/definitions/responsible-party" },
-                      
-                      { "not" : 
-                        { "type" : "string" } } ] } },
-                "remarks" : 
-                { "$ref" : "#/definitions/remarks" } },
-              "required" : 
-              [ "component-uuid" ],
-              "additionalProperties" : false } },
-          "remarks" : 
-          { "$ref" : "#/definitions/remarks" } },
-        "required" : 
-        [ "uuid",
-          "description" ],
-        "additionalProperties" : false },
       "set-parameter" : 
       { "title" : "Set Parameter Value",
         "description" : "Identifies the parameter that will be set by the enclosed value.",
@@ -1053,28 +770,11 @@
             "items" : 
             { "title" : "Parameter Value",
               "description" : "A parameter value or set of values.",
-              "$id" : "#/definitions/set-parameter-parameter-value",
               "type" : "string" } },
           "remarks" : 
           { "$ref" : "#/definitions/remarks" } },
         "required" : 
         [ "values" ],
-        "additionalProperties" : false },
-      "system-id" : 
-      { "title" : "System Identification",
-        "description" : "A unique identifier for the system described by this system security plan.",
-        "$id" : "#/definitions/system-id",
-        "type" : "object",
-        "properties" : 
-        { "identifier-type" : 
-          { "title" : "Identification System Type",
-            "description" : "Identifies the identification system from which the provided identifier was assigned.",
-            "type" : "string",
-            "format" : "uri" },
-          "id" : 
-          { "type" : "string" } },
-        "required" : 
-        [ "id" ],
         "additionalProperties" : false },
       "component-definition" : 
       { "title" : "Component Definition",
@@ -1147,17 +847,14 @@
           "title" : 
           { "title" : "Component Title",
             "description" : "A human readable name for the component.",
-            "$id" : "#/definitions/defined-component-title",
             "type" : "string" },
           "description" : 
           { "title" : "Component Description",
             "description" : "A description of the component, including information about its function.",
-            "$id" : "#/definitions/defined-component-description",
             "type" : "string" },
           "purpose" : 
           { "title" : "Purpose",
             "description" : "A summary of the technological or business purpose of the component.",
-            "$id" : "#/definitions/defined-component-purpose",
             "type" : "string" },
           "props" : 
           { "type" : "array",
@@ -1214,7 +911,6 @@
           "description" : 
           { "title" : "Capability Description",
             "description" : "A summary of the capability.",
-            "$id" : "#/definitions/capability-description",
             "type" : "string" },
           "props" : 
           { "type" : "array",
@@ -1261,7 +957,6 @@
         { "description" : 
           { "title" : "Component Description",
             "description" : "A description of the component, including information about its function.",
-            "$id" : "#/definitions/incorporates-component-description",
             "type" : "string" } },
         "required" : 
         [ "description" ],
@@ -1285,7 +980,6 @@
           "description" : 
           { "title" : "Control Implementation Description",
             "description" : "A description of how the spefied set of controls are implemented for the containing component or capability.",
-            "$id" : "#/definitions/control-implementation-description",
             "type" : "string" },
           "props" : 
           { "type" : "array",
@@ -1331,7 +1025,6 @@
           "description" : 
           { "title" : "Control Implementation Description",
             "description" : "A description of how the spefied control is implemented for the containing component or capability.",
-            "$id" : "#/definitions/implemented-requirement-description",
             "type" : "string" },
           "props" : 
           { "type" : "array",
@@ -1398,7 +1091,6 @@
           "description" : 
           { "title" : "Statement Implementation Description",
             "description" : "A summary of how the containing control statement is implemented by the component or capability.",
-            "$id" : "#/definitions/statement-description",
             "type" : "string" },
           "props" : 
           { "type" : "array",
