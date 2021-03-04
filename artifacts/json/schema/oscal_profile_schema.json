@@ -13,7 +13,6 @@
         { "title" : 
           { "title" : "Document Title",
             "description" : "A name given to the document, which may be used by a tool for display and navigation.",
-            "$id" : "#/definitions/metadata-title",
             "type" : "string" },
           "published" : 
           { "$ref" : "#/definitions/oscal-metadata-published" },
@@ -90,7 +89,6 @@
         { "title" : 
           { "title" : "Document Title",
             "description" : "A name given to the document revision, which may be used by a tool for display and navigation.",
-            "$id" : "#/definitions/oscal-metadata-revision-title",
             "type" : "string" },
           "published" : 
           { "$ref" : "#/definitions/oscal-metadata-published" },
@@ -132,7 +130,6 @@
           "title" : 
           { "title" : "Location Title",
             "description" : "A name given to the location, which may be used by a tool for display and navigation.",
-            "$id" : "#/definitions/location-title",
             "type" : "string" },
           "address" : 
           { "$ref" : "#/definitions/oscal-metadata-address" },
@@ -152,7 +149,6 @@
             "items" : 
             { "title" : "Location URL",
               "description" : "The uniform resource locator (URL) for a web site or Internet presence associated with the location.",
-              "$id" : "#/definitions/location-url",
               "type" : "string",
               "format" : "uri" } },
           "props" : 
@@ -203,12 +199,10 @@
           "name" : 
           { "title" : "Party Name",
             "description" : "The full name of the party. This is typically the legal name associated with the party.",
-            "$id" : "#/definitions/party-name",
             "type" : "string" },
           "short-name" : 
           { "title" : "Party Short Name",
             "description" : "A short common name, abbreviation, or acronym for the party.",
-            "$id" : "#/definitions/party-short-name",
             "type" : "string" },
           "external-ids" : 
           { "type" : "array",
@@ -216,7 +210,6 @@
             "items" : 
             { "title" : "Party External Identifier",
               "description" : "An identifier for a person or organization using a designated scheme. e.g. an Open Researcher and Contributor ID (ORCID)",
-              "$id" : "#/definitions/party-external-id",
               "type" : "object",
               "properties" : 
               { "scheme" : 
@@ -271,7 +264,6 @@
             "items" : 
             { "title" : "Organizational Affiliation",
               "description" : "Identifies that the party object is a member of the organization associated with the provided UUID.",
-              "$id" : "#/definitions/party-member-of-organization",
               "type" : "string",
               "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" } },
           "remarks" : 
@@ -299,17 +291,14 @@
           "title" : 
           { "title" : "Role Title",
             "description" : "A name given to the role, which may be used by a tool for display and navigation.",
-            "$id" : "#/definitions/role-title",
             "type" : "string" },
           "short-name" : 
           { "title" : "Role Short Name",
             "description" : "A short common name, abbreviation, or acronym for the role.",
-            "$id" : "#/definitions/role-short-name",
             "type" : "string" },
           "description" : 
           { "title" : "Role Description",
             "description" : "A summary of the role's purpose and associated responsibilities.",
-            "$id" : "#/definitions/role-description",
             "type" : "string" },
           "props" : 
           { "type" : "array",
@@ -332,11 +321,6 @@
         [ "id",
           "title" ],
         "additionalProperties" : false },
-      "role-id" : 
-      { "title" : "Role Identifier Reference",
-        "description" : "A reference to the roles served by the user.",
-        "$id" : "#/definitions/role-id",
-        "type" : "string" },
       "back-matter" : 
       { "title" : "Back matter",
         "description" : "A collection of resources, which may be included directly or by reference.",
@@ -349,7 +333,6 @@
             "items" : 
             { "title" : "Resource",
               "description" : "A resource associated with content in the containing document. A resource may be directly included in the document base64 encoded or may point to one or more equavalent internet resources.",
-              "$id" : "#/definitions/back-matter-resource",
               "type" : "object",
               "properties" : 
               { "uuid" : 
@@ -360,12 +343,10 @@
                 "title" : 
                 { "title" : "Resource Title",
                   "description" : "A name given to the resource, which may be used by a tool for display and navigation.",
-                  "$id" : "#/definitions/back-matter-resource-title",
                   "type" : "string" },
                 "description" : 
                 { "title" : "Resource Description",
                   "description" : "A short summary of the resource used to indicate the purpose of the resource.",
-                  "$id" : "#/definitions/back-matter-resource-description",
                   "type" : "string" },
                 "props" : 
                 { "type" : "array",
@@ -385,13 +366,11 @@
                 "citation" : 
                 { "title" : "Citation",
                   "description" : "A citation consisting of end note text and optional structured bibliographic data.",
-                  "$id" : "#/definitions/back-matter-resource-citation",
                   "type" : "object",
                   "properties" : 
                   { "text" : 
                     { "title" : "Citation Text",
                       "description" : "A line of citation text.",
-                      "$id" : "#/definitions/back-matter-resource-citation-text",
                       "type" : "string" },
                     "props" : 
                     { "type" : "array",
@@ -406,9 +385,8 @@
                     "biblio" : 
                     { "title" : "Bibliographic Definition",
                       "description" : "A container for structured bibliographic information. The model of this information is undefined by OSCAL.",
-                      "$id" : "#/definitions/back-matter-resource-citation-biblio",
                       "type" : "object",
-                      "additionalProperties" : false } },
+                      "additionalProperties" : true } },
                   "required" : 
                   [ "text" ],
                   "additionalProperties" : false },
@@ -418,7 +396,6 @@
                   "items" : 
                   { "title" : "Resource link",
                     "description" : "A pointer to an external resource with an optional hash for verification and change detection.",
-                    "$id" : "#/definitions/back-matter-resource-rlink",
                     "type" : "object",
                     "properties" : 
                     { "href" : 
@@ -441,7 +418,6 @@
                 "base64" : 
                 { "title" : "Base64",
                   "description" : "The Base64 alphabet in RFC 2045 - aligned with XSD.",
-                  "$id" : "#/definitions/back-matter-resource-base64",
                   "type" : "object",
                   "properties" : 
                   { "filename" : 
@@ -462,7 +438,7 @@
                 { "$ref" : "#/definitions/remarks" } },
               "required" : 
               [ "uuid" ],
-              "additionalProperties" : false } } },
+              "additionalProperties" : true } } },
         "additionalProperties" : false },
       "property" : 
       { "title" : "Property",
@@ -546,7 +522,6 @@
           "text" : 
           { "title" : "Link Text",
             "description" : "A textual label to associate with the link, which may be used for presentation in a tool.",
-            "$id" : "#/definitions/link-text",
             "type" : "string" } },
         "required" : 
         [ "href" ],
@@ -581,35 +556,6 @@
           { "$ref" : "#/definitions/remarks" } },
         "required" : 
         [ "party-uuids" ],
-        "additionalProperties" : false },
-      "responsible-role" : 
-      { "title" : "Responsible Role",
-        "description" : "A reference to one or more roles with responsibility for performing a function relative to the containing object.",
-        "$id" : "#/definitions/responsible-role",
-        "type" : "object",
-        "properties" : 
-        { "props" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/property" } },
-          "annotations" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/annotation" } },
-          "links" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/link" } },
-          "party-uuids" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/party-uuid" } },
-          "remarks" : 
-          { "$ref" : "#/definitions/remarks" } },
         "additionalProperties" : false },
       "hash" : 
       { "title" : "Hash",
@@ -694,22 +640,18 @@
           "city" : 
           { "title" : "City",
             "description" : "City, town or geographical region for the mailing address.",
-            "$id" : "#/definitions/oscal-metadata-address-city",
             "type" : "string" },
           "state" : 
           { "title" : "State",
             "description" : "State, province or analogous geographical region for mailing address",
-            "$id" : "#/definitions/oscal-metadata-address-state",
             "type" : "string" },
           "postal-code" : 
           { "title" : "Postal Code",
             "description" : "Postal or ZIP code for mailing address",
-            "$id" : "#/definitions/oscal-metadata-address-postal-code",
             "type" : "string" },
           "country" : 
           { "title" : "Country Code",
             "description" : "The ISO 3166-1 alpha-2 country code for the mailing address.",
-            "$id" : "#/definitions/oscal-metadata-address-country",
             "type" : "string" } },
         "additionalProperties" : false },
       "oscal-metadata-addr-line" : 
@@ -760,7 +702,6 @@
           "title" : 
           { "title" : "Part Title",
             "description" : "A name given to the part, which may be used by a tool for display and navigation.",
-            "$id" : "#/definitions/part-title",
             "type" : "string" },
           "props" : 
           { "type" : "array",
@@ -775,7 +716,6 @@
           "prose" : 
           { "title" : "Part Text",
             "description" : "Permits multiple paragraphs, lists, tables etc.",
-            "$id" : "#/definitions/part-prose",
             "type" : "string" },
           "parts" : 
           { "type" : "array",
@@ -789,7 +729,7 @@
             { "$ref" : "#/definitions/link" } } },
         "required" : 
         [ "name" ],
-        "additionalProperties" : false },
+        "additionalProperties" : true },
       "parameter" : 
       { "title" : "Parameter",
         "description" : "Parameters provide a mechanism for the dynamic assignment of value(s) in a control.",
@@ -826,12 +766,10 @@
           "label" : 
           { "title" : "Parameter Label",
             "description" : "A short, placeholder name for the parameter, which can be used as a subsitute for a value if no value is assigned.",
-            "$id" : "#/definitions/parameter-label",
             "type" : "string" },
           "usage" : 
           { "title" : "Parameter Usage Description",
             "description" : "Describes the purpose and use of a parameter",
-            "$id" : "#/definitions/parameter-usage",
             "type" : "string" },
           "constraints" : 
           { "type" : "array",
@@ -854,7 +792,7 @@
           { "$ref" : "#/definitions/remarks" } },
         "required" : 
         [ "id" ],
-        "additionalProperties" : false },
+        "additionalProperties" : true },
       "parameter-constraint" : 
       { "title" : "Constraint",
         "description" : "A formal or informal expression of a constraint or test",
@@ -864,7 +802,6 @@
         { "description" : 
           { "title" : "Constraint Description",
             "description" : "A textual summary of the constraint to be applied.",
-            "$id" : "#/definitions/parameter-constraint-description",
             "type" : "string" },
           "tests" : 
           { "type" : "array",
@@ -872,13 +809,11 @@
             "items" : 
             { "title" : "Constraint Test",
               "description" : "A test expression which is expected to be evaluated by a tool.",
-              "$id" : "#/definitions/parameter-constraint-test",
               "type" : "object",
               "properties" : 
               { "expression" : 
                 { "title" : "Constraint test",
                   "description" : "A formal (executable) expression of a constraint",
-                  "$id" : "#/definitions/parameter-constraint-test-expression",
                   "type" : "string" },
                 "remarks" : 
                 { "$ref" : "#/definitions/remarks" } },
@@ -895,11 +830,10 @@
         { "prose" : 
           { "title" : "Guideline Text",
             "description" : "Prose permits multiple paragraphs, lists, tables etc.",
-            "$id" : "#/definitions/parameter-guideline-prose",
             "type" : "string" } },
         "required" : 
         [ "prose" ],
-        "additionalProperties" : false },
+        "additionalProperties" : true },
       "parameter-value" : 
       { "title" : "Parameter Value",
         "description" : "A parameter value or set of values.",
@@ -921,9 +855,8 @@
             "items" : 
             { "title" : "Choice",
               "description" : "A value selection among several such options",
-              "$id" : "#/definitions/parameter-selection-parameter-choice",
               "type" : "string" } } },
-        "additionalProperties" : false },
+        "additionalProperties" : true },
       "profile" : 
       { "title" : "Profile",
         "description" : "Each OSCAL profile is defined by a Profile element",
@@ -1043,7 +976,6 @@
           "title" : 
           { "title" : "Group Title",
             "description" : "A name given to the group, which may be used by a tool for display and navigation.",
-            "$id" : "#/definitions/group-title",
             "type" : "string" },
           "params" : 
           { "type" : "array",
@@ -1238,12 +1170,10 @@
           "label" : 
           { "title" : "Parameter Label",
             "description" : "A short, placeholder name for the parameter, which can be used as a subsitute for a value if no value is assigned.",
-            "$id" : "#/definitions/set-parameter-label",
             "type" : "string" },
           "usage" : 
           { "title" : "Parameter Usage Description",
             "description" : "Describes the purpose and use of a parameter",
-            "$id" : "#/definitions/set-parameter-usage",
             "type" : "string" },
           "constraints" : 
           { "type" : "array",
@@ -1329,7 +1259,6 @@
           "title" : 
           { "title" : "Title Change",
             "description" : "A name given to the control, which may be used by a tool for display and navigation.",
-            "$id" : "#/definitions/add-title",
             "type" : "string" },
           "params" : 
           { "type" : "array",

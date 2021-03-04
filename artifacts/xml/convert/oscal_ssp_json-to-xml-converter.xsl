@@ -73,7 +73,7 @@
    <!-- METASCHEMA: OSCAL System Security Plan (SSP) Model (version 1.0.0-rc1) in namespace "http://csrc.nist.gov/ns/oscal/1.0"-->
    <xsl:template match="j:map[@key='system-security-plan']">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="system-security-plan" -->
+      <!-- XML match="  system-security-plan" -->
       <assembly name="system-security-plan"
                 gi="system-security-plan"
                 formal-name="System Security Plan (SSP)">
@@ -92,22 +92,9 @@
          <xsl:apply-templates select="*[@key='back-matter']"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="j:map[@key='system-security-plan']/j:string[@key='uuid'] | j:array[@key='props']/j:map/j:string[@key='uuid'] | j:array[@key='annotations']/j:map/j:string[@key='uuid'] | j:array[@key='locations']/j:map/j:string[@key='uuid'] | j:array[@key='parties']/j:map/j:string[@key='uuid'] | j:map[@key='diagrams']/j:map/@key | j:map[@key='users']/j:map/@key | j:map[@key='components']/j:map/@key | j:array[@key='protocols']/j:map/j:string[@key='uuid'] | j:array[@key='inventory-items']/j:map/j:string[@key='uuid'] | j:array[@key='implemented-requirements']/j:map/j:string[@key='uuid'] | j:map[@key='by-components']/j:map/j:string[@key='uuid'] | j:map[@key='statements']/j:map/j:string[@key='uuid']"><!-- XML match="system-security-plan/@uuid | prop/@uuid | annotation/@uuid | location/@uuid | party/@uuid | diagram/@uuid | user/@uuid | component/@uuid | protocol/@uuid | inventory-item/@uuid | implemented-requirement/@uuid | by-component/@uuid | statement/@uuid" -->
-      <flag in-json="string"
-            as-type="uuid"
-            name="uuid"
-            key="uuid"
-            gi="uuid"
-            formal-name="System Security Plan Universally Unique Identifier">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="j:map[@key='system-security-plan']/j:string[@key='uuid'] | j:array[@key='props']/j:map/j:string[@key='uuid'] | j:array[@key='annotations']/j:map/j:string[@key='uuid'] | j:array[@key='locations']/j:map/j:string[@key='uuid'] | j:array[@key='parties']/j:map/j:string[@key='uuid'] | j:map[@key='diagrams']/j:map/@key | j:map[@key='users']/j:map/@key | j:map[@key='components']/j:map/@key | j:array[@key='protocols']/j:map/j:string[@key='uuid'] | j:array[@key='inventory-items']/j:map/j:string[@key='uuid'] | j:array[@key='implemented-requirements']/j:map/j:string[@key='uuid'] | j:map[@key='by-components']/j:map/j:string[@key='uuid'] | j:map[@key='statements']/j:map/j:string[@key='uuid']"
-                 mode="keep-value-property"
-                 priority="3"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:map[@key='metadata']">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="metadata" -->
+      <!-- XML match="  metadata" -->
       <assembly name="metadata" gi="metadata" formal-name="Publication metadata">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">metadata</xsl:attribute>
@@ -129,65 +116,9 @@
          <xsl:apply-templates select="*[@key='remarks']"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="j:array[@key='props']/j:map">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="prop" -->
-      <field name="property" gi="prop" formal-name="Property">
-         <xsl:apply-templates select="*[@key='uuid']"/>
-         <xsl:apply-templates select="*[@key='name']"/>
-         <xsl:apply-templates select="*[@key='ns']"/>
-         <xsl:apply-templates select="*[@key='class']"/>
-         <xsl:apply-templates select="." mode="get-value-property"/>
-      </field>
-   </xsl:template>
-   <!-- matching prop-->
-   <xsl:template match="j:array[@key='props']/j:map" mode="get-value-property">
-      <value as-type="string" key="value" in-json="string">
-         <xsl:apply-templates mode="keep-value-property"/>
-      </value>
-   </xsl:template>
-   <xsl:template match="j:array[@key='props']/j:map/j:string[@key='name'] | j:array[@key='annotations']/j:map/j:string[@key='name'] | j:array[@key='protocols']/j:map/j:string[@key='name']"><!-- XML match="prop/@name | annotation/@name | protocol/@name" -->
-      <flag in-json="string"
-            as-type="NCName"
-            name="name"
-            key="name"
-            gi="name"
-            formal-name="Property Name">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="j:array[@key='props']/j:map/j:string[@key='name'] | j:array[@key='annotations']/j:map/j:string[@key='name'] | j:array[@key='protocols']/j:map/j:string[@key='name']"
-                 mode="keep-value-property"
-                 priority="8"><!-- Not keeping the flag here. --></xsl:template>
-   <xsl:template match="j:array[@key='props']/j:map/j:string[@key='ns'] | j:array[@key='annotations']/j:map/j:string[@key='ns']"><!-- XML match="prop/@ns | annotation/@ns" -->
-      <flag in-json="string"
-            as-type="uri"
-            name="ns"
-            key="ns"
-            gi="ns"
-            formal-name="Property Namespace">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="j:array[@key='props']/j:map/j:string[@key='ns'] | j:array[@key='annotations']/j:map/j:string[@key='ns']"
-                 mode="keep-value-property"
-                 priority="8"><!-- Not keeping the flag here. --></xsl:template>
-   <xsl:template match="j:array[@key='props']/j:map/j:string[@key='class']"><!-- XML match="prop/@class" -->
-      <flag in-json="string"
-            as-type="NCName"
-            name="class"
-            key="class"
-            gi="class"
-            formal-name="Property Class">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="j:array[@key='props']/j:map/j:string[@key='class']"
-                 mode="keep-value-property"
-                 priority="8"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:array[@key='annotations']/j:map">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="annotation" -->
+      <!-- XML match="  annotation" -->
       <assembly name="annotation" gi="annotation" formal-name="Annotated Property">
          <xsl:apply-templates select="*[@key='name']"/>
          <xsl:apply-templates select="*[@key='uuid']"/>
@@ -196,43 +127,9 @@
          <xsl:apply-templates select="*[@key='remarks']"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="j:array[@key='annotations']/j:map/j:string[@key='value']"><!-- XML match="annotation/@value" -->
-      <flag in-json="string"
-            as-type="string"
-            name="value"
-            key="value"
-            gi="value"
-            formal-name="Annotated Property Value">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="j:array[@key='annotations']/j:map/j:string[@key='value']"
-                 mode="keep-value-property"
-                 priority="8"><!-- Not keeping the flag here. --></xsl:template>
-   <xsl:template match="j:string[@key='remarks']">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="remarks" -->
-      <field name="remarks"
-             gi="remarks"
-             as-type="markup-multiline"
-             formal-name="Remarks"
-             in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">remarks</xsl:attribute>
-         </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
-      </field>
-   </xsl:template>
-   <xsl:template match="j:string[@key='remarks']"
-                 mode="get-value-property"
-                 priority="8">
-      <value as-type="markup-multiline" in-json="string">
-         <xsl:value-of select="."/>
-      </value>
-   </xsl:template>
    <xsl:template match="j:array[@key='links']/j:map">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="link" -->
+      <!-- XML match="  link" -->
       <assembly name="link" gi="link" formal-name="Link">
          <xsl:apply-templates select="*[@key='href']"/>
          <xsl:apply-templates select="*[@key='rel']"/>
@@ -240,48 +137,9 @@
          <xsl:apply-templates select="*[@key='text']"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="j:array[@key='links']/j:map/j:string[@key='href'] | j:map[@key='import-profile']/j:string[@key='href']"><!-- XML match="link/@href | import-profile/@href" -->
-      <flag in-json="string"
-            as-type="uri-reference"
-            name="href"
-            key="href"
-            gi="href"
-            formal-name="Hypertext Reference">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="j:array[@key='links']/j:map/j:string[@key='href'] | j:map[@key='import-profile']/j:string[@key='href']"
-                 mode="keep-value-property"
-                 priority="8"><!-- Not keeping the flag here. --></xsl:template>
-   <xsl:template match="j:array[@key='links']/j:map/j:string[@key='rel']"><!-- XML match="link/@rel" -->
-      <flag in-json="string"
-            as-type="NCName"
-            name="rel"
-            key="rel"
-            gi="rel"
-            formal-name="Relation">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="j:array[@key='links']/j:map/j:string[@key='rel']"
-                 mode="keep-value-property"
-                 priority="8"><!-- Not keeping the flag here. --></xsl:template>
-   <xsl:template match="j:array[@key='links']/j:map/j:string[@key='media-type'] | j:map[@key='system-security-plan']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:array[@key='rlinks']/j:map/j:string[@key='media-type'] | j:map[@key='system-security-plan']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:map[@key='base64']/j:string[@key='media-type']"><!-- XML match="link/@media-type | system-security-plan/back-matter/resource/rlink/@media-type | system-security-plan/back-matter/resource/base64/@media-type" -->
-      <flag in-json="string"
-            as-type="string"
-            name="media-type"
-            key="media-type"
-            gi="media-type"
-            formal-name="Media Type">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="j:array[@key='links']/j:map/j:string[@key='media-type'] | j:map[@key='system-security-plan']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:array[@key='rlinks']/j:map/j:string[@key='media-type'] | j:map[@key='system-security-plan']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:map[@key='base64']/j:string[@key='media-type']"
-                 mode="keep-value-property"
-                 priority="8"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:array[@key='roles']/j:map">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="role" -->
+      <!-- XML match="  role" -->
       <assembly name="role" gi="role" formal-name="Role">
          <xsl:apply-templates select="*[@key='id']"/>
          <xsl:apply-templates select="*[@key='title']"/>
@@ -293,22 +151,9 @@
          <xsl:apply-templates select="*[@key='remarks']"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="j:array[@key='roles']/j:map/j:string[@key='id']"><!-- XML match="role/@id" -->
-      <flag in-json="string"
-            as-type="NCName"
-            name="id"
-            key="id"
-            gi="id"
-            formal-name="Role Identifier">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="j:array[@key='roles']/j:map/j:string[@key='id']"
-                 mode="keep-value-property"
-                 priority="6"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:array[@key='locations']/j:map">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="location" -->
+      <!-- XML match="  location" -->
       <assembly name="location" gi="location" formal-name="Location">
          <xsl:apply-templates select="*[@key='uuid']"/>
          <xsl:apply-templates select="*[@key='title']"/>
@@ -324,7 +169,7 @@
    </xsl:template>
    <xsl:template match="j:array[@key='parties']/j:map">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="party" -->
+      <!-- XML match="  party" -->
       <assembly name="party"
                 gi="party"
                 formal-name="Party (organization or person)">
@@ -344,40 +189,9 @@
          <xsl:apply-templates select="*[@key='remarks']"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="j:array[@key='parties']/j:map/j:string[@key='type']"><!-- XML match="party/@type" -->
-      <flag in-json="string"
-            as-type="string"
-            name="type"
-            key="type"
-            gi="type"
-            formal-name="Party Type">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="j:array[@key='parties']/j:map/j:string[@key='type']"
-                 mode="keep-value-property"
-                 priority="6"><!-- Not keeping the flag here. --></xsl:template>
-   <xsl:template match="j:array[@key='location-uuids']/j:string">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="location-uuid" -->
-      <field name="location-uuid"
-             gi="location-uuid"
-             as-type="uuid"
-             formal-name="Location Reference"
-             in-json="SCALAR">
-         <xsl:apply-templates select="." mode="get-value-property"/>
-      </field>
-   </xsl:template>
-   <xsl:template match="j:array[@key='location-uuids']/j:string"
-                 mode="get-value-property"
-                 priority="8">
-      <value as-type="uuid" in-json="string">
-         <xsl:value-of select="."/>
-      </value>
-   </xsl:template>
    <xsl:template match="j:map[@key='responsible-parties']/j:map">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="responsible-party" -->
+      <!-- XML match="  responsible-party" -->
       <assembly name="responsible-party"
                 gi="responsible-party"
                 formal-name="Responsible Party"
@@ -400,40 +214,9 @@
          <xsl:apply-templates select="*[@key='remarks']"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="j:map[@key='responsible-parties']/j:map/@key | j:map[@key='responsible-roles']/j:map/@key"><!-- XML match="responsible-party/@role-id | responsible-role/@role-id" -->
-      <flag in-json="string"
-            as-type="NCName"
-            name="role-id"
-            key="role-id"
-            gi="role-id"
-            formal-name="Responsible Role">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="j:map[@key='responsible-parties']/j:map/@key | j:map[@key='responsible-roles']/j:map/@key"
-                 mode="keep-value-property"
-                 priority="6"><!-- Not keeping the flag here. --></xsl:template>
-   <xsl:template match="(j:array[@key='party-uuids']/j:string | j:array[@key='party-uuids']/j:string | j:string[@key='party-uuid'] | j:array[@key='party-uuids']/j:string | j:array[@key='party-uuids']/j:string | j:array[@key='party-uuids']/j:string | j:array[@key='party-uuids']/j:string | j:array[@key='party-uuids']/j:string | j:array[@key='party-uuids']/j:string | j:array[@key='party-uuids']/j:string | j:array[@key='party-uuids']/j:string | j:array[@key='party-uuids']/j:string | j:array[@key='party-uuids']/j:string | j:array[@key='party-uuids']/j:string | j:array[@key='party-uuids']/j:string | j:array[@key='party-uuids']/j:string | j:array[@key='party-uuids']/j:string)">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="party-uuid" -->
-      <field name="party-uuid"
-             gi="party-uuid"
-             as-type="uuid"
-             formal-name="Party Reference"
-             in-json="SCALAR">
-         <xsl:apply-templates select="." mode="get-value-property"/>
-      </field>
-   </xsl:template>
-   <xsl:template match="(j:array[@key='party-uuids']/j:string | j:array[@key='party-uuids']/j:string | j:string[@key='party-uuid'] | j:array[@key='party-uuids']/j:string | j:array[@key='party-uuids']/j:string | j:array[@key='party-uuids']/j:string | j:array[@key='party-uuids']/j:string | j:array[@key='party-uuids']/j:string | j:array[@key='party-uuids']/j:string | j:array[@key='party-uuids']/j:string | j:array[@key='party-uuids']/j:string | j:array[@key='party-uuids']/j:string | j:array[@key='party-uuids']/j:string | j:array[@key='party-uuids']/j:string | j:array[@key='party-uuids']/j:string | j:array[@key='party-uuids']/j:string | j:array[@key='party-uuids']/j:string)"
-                 mode="get-value-property"
-                 priority="7">
-      <value as-type="uuid" in-json="string">
-         <xsl:value-of select="."/>
-      </value>
-   </xsl:template>
    <xsl:template match="j:map[@key='import-profile']">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="import-profile" -->
+      <!-- XML match="  import-profile" -->
       <assembly name="import-profile"
                 gi="import-profile"
                 formal-name="Import Profile">
@@ -446,7 +229,7 @@
    </xsl:template>
    <xsl:template match="j:map[@key='system-characteristics']">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="system-characteristics" -->
+      <!-- XML match="  system-characteristics" -->
       <assembly name="system-characteristics"
                 gi="system-characteristics"
                 formal-name="System Characteristics">
@@ -472,39 +255,9 @@
          <xsl:apply-templates select="*[@key='remarks']"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="j:array[@key='system-ids']/j:map">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="system-id" -->
-      <field name="system-id"
-             gi="system-id"
-             as-type="string"
-             formal-name="System Identification">
-         <xsl:apply-templates select="*[@key='identifier-type']"/>
-         <xsl:apply-templates select="." mode="get-value-property"/>
-      </field>
-   </xsl:template>
-   <!-- matching system-id-->
-   <xsl:template match="j:array[@key='system-ids']/j:map" mode="get-value-property">
-      <value as-type="string" key="id" in-json="string">
-         <xsl:apply-templates mode="keep-value-property"/>
-      </value>
-   </xsl:template>
-   <xsl:template match="j:array[@key='system-ids']/j:map/j:string[@key='identifier-type']"><!-- XML match="system-id/@identifier-type" -->
-      <flag in-json="string"
-            as-type="uri"
-            name="identifier-type"
-            key="identifier-type"
-            gi="identifier-type"
-            formal-name="Identification System Type">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="j:array[@key='system-ids']/j:map/j:string[@key='identifier-type']"
-                 mode="keep-value-property"
-                 priority="6"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:map[@key='system-information']">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="system-information" -->
+      <!-- XML match="  system-information" -->
       <assembly name="system-information"
                 gi="system-information"
                 formal-name="System Information">
@@ -519,7 +272,7 @@
    </xsl:template>
    <xsl:template match="j:map[@key='security-impact-level']">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="security-impact-level" -->
+      <!-- XML match="  security-impact-level" -->
       <assembly name="security-impact-level"
                 gi="security-impact-level"
                 formal-name="Security Impact Level">
@@ -533,7 +286,7 @@
    </xsl:template>
    <xsl:template match="j:map[@key='authorization-boundary']">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="authorization-boundary" -->
+      <!-- XML match="  authorization-boundary" -->
       <assembly name="authorization-boundary"
                 gi="authorization-boundary"
                 formal-name="Authorization Boundary">
@@ -550,7 +303,7 @@
    </xsl:template>
    <xsl:template match="j:map[@key='diagrams']/j:map">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="diagram" -->
+      <!-- XML match="  diagram" -->
       <assembly name="diagram"
                 gi="diagram"
                 formal-name="Diagram"
@@ -576,7 +329,7 @@
    </xsl:template>
    <xsl:template match="j:map[@key='network-architecture']">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="network-architecture" -->
+      <!-- XML match="  network-architecture" -->
       <assembly name="network-architecture"
                 gi="network-architecture"
                 formal-name="Network Architecture">
@@ -593,7 +346,7 @@
    </xsl:template>
    <xsl:template match="j:map[@key='data-flow']">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="data-flow" -->
+      <!-- XML match="  data-flow" -->
       <assembly name="data-flow" gi="data-flow" formal-name="Data Flow">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">data-flow</xsl:attribute>
@@ -608,7 +361,7 @@
    </xsl:template>
    <xsl:template match="j:map[@key='system-implementation']">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="system-implementation" -->
+      <!-- XML match="  system-implementation" -->
       <assembly name="system-implementation"
                 gi="system-implementation"
                 formal-name="System Implementation">
@@ -627,7 +380,7 @@
    </xsl:template>
    <xsl:template match="j:map[@key='users']/j:map">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="user" -->
+      <!-- XML match="  user" -->
       <assembly name="system-user"
                 gi="user"
                 formal-name="System User"
@@ -654,27 +407,9 @@
          <xsl:apply-templates select="*[@key='remarks']"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="(@key | @key | j:array[@key='role-ids']/j:string | @key | @key | @key | @key | @key | @key | @key | @key | @key | @key | @key | @key | @key | @key)">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="role-id" -->
-      <field name="role-id"
-             gi="role-id"
-             as-type="NCName"
-             formal-name="Role Identifier Reference"
-             in-json="SCALAR">
-         <xsl:apply-templates select="." mode="get-value-property"/>
-      </field>
-   </xsl:template>
-   <xsl:template match="(@key | @key | j:array[@key='role-ids']/j:string | @key | @key | @key | @key | @key | @key | @key | @key | @key | @key | @key | @key | @key | @key)"
-                 mode="get-value-property"
-                 priority="7">
-      <value as-type="NCName" in-json="string">
-         <xsl:value-of select="."/>
-      </value>
-   </xsl:template>
    <xsl:template match="j:array[@key='authorized-privileges']/j:map">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="authorized-privilege" -->
+      <!-- XML match="  authorized-privilege" -->
       <assembly name="authorized-privilege"
                 gi="authorized-privilege"
                 formal-name="Privilege">
@@ -683,27 +418,9 @@
          <xsl:apply-templates select="*[@key='functions-performed']"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="j:array[@key='functions-performed']/j:string">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="function-performed" -->
-      <field name="function-performed"
-             gi="function-performed"
-             as-type="string"
-             formal-name="Functions Performed"
-             in-json="SCALAR">
-         <xsl:apply-templates select="." mode="get-value-property"/>
-      </field>
-   </xsl:template>
-   <xsl:template match="j:array[@key='functions-performed']/j:string"
-                 mode="get-value-property"
-                 priority="9">
-      <value as-type="string" in-json="string">
-         <xsl:value-of select="."/>
-      </value>
-   </xsl:template>
    <xsl:template match="j:map[@key='components']/j:map">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="component" -->
+      <!-- XML match="  component" -->
       <assembly name="system-component"
                 gi="component"
                 formal-name="Component"
@@ -732,22 +449,9 @@
          <xsl:apply-templates select="*[@key='remarks']"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="j:map[@key='components']/j:map/j:string[@key='type']"><!-- XML match="component/@type" -->
-      <flag in-json="string"
-            as-type="string"
-            name="component-type"
-            key="type"
-            gi="type"
-            formal-name="Component Type">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="j:map[@key='components']/j:map/j:string[@key='type']"
-                 mode="keep-value-property"
-                 priority="6"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:map[@key='responsible-roles']/j:map">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="responsible-role" -->
+      <!-- XML match="  responsible-role" -->
       <assembly name="responsible-role"
                 gi="responsible-role"
                 formal-name="Responsible Role"
@@ -772,7 +476,7 @@
    </xsl:template>
    <xsl:template match="j:array[@key='protocols']/j:map">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="protocol" -->
+      <!-- XML match="  protocol" -->
       <assembly name="protocol"
                 gi="protocol"
                 formal-name="Service Protocol Information">
@@ -784,22 +488,534 @@
    </xsl:template>
    <xsl:template match="j:array[@key='port-ranges']/j:map">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="port-range" -->
-      <field as-type="empty"
-             name="port-range"
-             gi="port-range"
-             formal-name="Port Range">
+      <!-- XML match="  port-range" -->
+      <assembly as-type="empty"
+                name="port-range"
+                gi="port-range"
+                formal-name="Port Range">
          <xsl:apply-templates select="*[@key='start']"/>
          <xsl:apply-templates select="*[@key='end']"/>
          <xsl:apply-templates select="*[@key='transport']"/>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="j:array[@key='inventory-items']/j:map">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="  inventory-item" -->
+      <assembly name="inventory-item"
+                gi="inventory-item"
+                formal-name="Inventory Item">
+         <xsl:apply-templates select="*[@key='uuid']"/>
+         <xsl:apply-templates select="*[@key='description']"/>
+         <xsl:apply-templates select="*[@key='props']"/>
+         <xsl:apply-templates select="*[@key='annotations']"/>
+         <xsl:apply-templates select="*[@key='links']"/>
+         <xsl:apply-templates select="*[@key='responsible-parties']"/>
+         <xsl:apply-templates select="*[@key='implemented-components']"/>
+         <xsl:apply-templates select="*[@key='remarks']"/>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="j:map[@key='control-implementation']">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="  control-implementation" -->
+      <assembly name="control-implementation"
+                gi="control-implementation"
+                formal-name="Control Implementation">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">control-implementation</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="*[@key='description']"/>
+         <xsl:apply-templates select="*[@key='implemented-requirements']"/>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="j:array[@key='implemented-requirements']/j:map">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="  implemented-requirement" -->
+      <assembly name="implemented-requirement"
+                gi="implemented-requirement"
+                formal-name="Control-based Requirement">
+         <xsl:apply-templates select="*[@key='uuid']"/>
+         <xsl:apply-templates select="*[@key='control-id']"/>
+         <xsl:apply-templates select="*[@key='props']"/>
+         <xsl:apply-templates select="*[@key='annotations']"/>
+         <xsl:apply-templates select="*[@key='links']"/>
+         <xsl:apply-templates select="*[@key='parameter-settings']"/>
+         <xsl:apply-templates select="*[@key='responsible-roles']"/>
+         <xsl:apply-templates select="*[@key='by-components']"/>
+         <xsl:apply-templates select="*[@key='statements']"/>
+         <xsl:apply-templates select="*[@key='remarks']"/>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="j:map[@key='parameter-settings']/j:map">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="  set-parameter" -->
+      <assembly name="set-parameter"
+                gi="set-parameter"
+                formal-name="Set Parameter Value"
+                json-key-flag="param-id">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">set-parameter</xsl:attribute>
+         </xsl:if>
+         <flag as-type="NCName"
+               name="param-id"
+               key="param-id"
+               gi="param-id"
+               scope="global"
+               formal-name="Parameter ID">
+            <xsl:value-of select="@key"/>
+         </flag>
+         <xsl:apply-templates select="*[@key='param-id']"/>
+         <xsl:apply-templates select="*[@key='values']"/>
+         <xsl:apply-templates select="*[@key='remarks']"/>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="j:map[@key='by-components']/j:map">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="  by-component" -->
+      <assembly name="by-component"
+                gi="by-component"
+                formal-name="Component Control Implementation"
+                json-key-flag="component-uuid">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">by-component</xsl:attribute>
+         </xsl:if>
+         <flag as-type="uuid"
+               name="component-uuid"
+               key="component-uuid"
+               gi="component-uuid"
+               formal-name="Component Universally Unique Identifier Reference">
+            <xsl:value-of select="@key"/>
+         </flag>
+         <xsl:apply-templates select="*[@key='component-uuid']"/>
+         <xsl:apply-templates select="*[@key='uuid']"/>
+         <xsl:apply-templates select="*[@key='description']"/>
+         <xsl:apply-templates select="*[@key='props']"/>
+         <xsl:apply-templates select="*[@key='annotations']"/>
+         <xsl:apply-templates select="*[@key='links']"/>
+         <xsl:apply-templates select="*[@key='parameter-settings']"/>
+         <xsl:apply-templates select="*[@key='export']"/>
+         <xsl:apply-templates select="*[@key='inherited']"/>
+         <xsl:apply-templates select="*[@key='satisfied']"/>
+         <xsl:apply-templates select="*[@key='responsible-roles']"/>
+         <xsl:apply-templates select="*[@key='remarks']"/>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="j:map[@key='statements']/j:map">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="  statement" -->
+      <assembly name="statement"
+                gi="statement"
+                formal-name="Specific Control Statement"
+                json-key-flag="statement-id">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">statement</xsl:attribute>
+         </xsl:if>
+         <flag as-type="NCName"
+               name="statement-id"
+               key="statement-id"
+               gi="statement-id"
+               scope="global"
+               formal-name="Control Statement Reference">
+            <xsl:value-of select="@key"/>
+         </flag>
+         <xsl:apply-templates select="*[@key='statement-id']"/>
+         <xsl:apply-templates select="*[@key='uuid']"/>
+         <xsl:apply-templates select="*[@key='props']"/>
+         <xsl:apply-templates select="*[@key='annotations']"/>
+         <xsl:apply-templates select="*[@key='links']"/>
+         <xsl:apply-templates select="*[@key='by-components']"/>
+         <xsl:apply-templates select="*[@key='remarks']"/>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="j:map[@key='back-matter']">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="  back-matter" -->
+      <assembly name="back-matter" gi="back-matter" formal-name="Back matter">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">back-matter</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="*[@key='resources']"/>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="j:array[@key='props']/j:map">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="  prop" -->
+      <field name="property" gi="prop" formal-name="Property">
+         <xsl:apply-templates select="*[@key='uuid']"/>
+         <xsl:apply-templates select="*[@key='name']"/>
+         <xsl:apply-templates select="*[@key='ns']"/>
+         <xsl:apply-templates select="*[@key='class']"/>
+         <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <!-- matching port-range-->
-   <xsl:template match="j:array[@key='port-ranges']/j:map" mode="get-value-property">
-      <value>
+   <!-- matching   prop-->
+   <xsl:template match="j:array[@key='props']/j:map" mode="get-value-property">
+      <value as-type="string" key="value" in-json="string">
          <xsl:apply-templates mode="keep-value-property"/>
       </value>
    </xsl:template>
+   <xsl:template match="j:string[@key='remarks']">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="  remarks" -->
+      <field name="remarks"
+             gi="remarks"
+             as-type="markup-multiline"
+             formal-name="Remarks"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">remarks</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:string[@key='remarks']"
+                 mode="get-value-property"
+                 priority="8">
+      <value as-type="markup-multiline" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:array[@key='location-uuids']/j:string">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="  location-uuid" -->
+      <field name="location-uuid"
+             gi="location-uuid"
+             as-type="uuid"
+             formal-name="Location Reference"
+             in-json="SCALAR">
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:array[@key='location-uuids']/j:string"
+                 mode="get-value-property"
+                 priority="8">
+      <value as-type="uuid" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="(j:array[@key='party-uuids']/j:string | j:array[@key='party-uuids']/j:string | j:string[@key='party-uuid'] | j:array[@key='party-uuids']/j:string | j:array[@key='party-uuids']/j:string | j:array[@key='party-uuids']/j:string | j:array[@key='party-uuids']/j:string | j:array[@key='party-uuids']/j:string | j:array[@key='party-uuids']/j:string | j:array[@key='party-uuids']/j:string | j:array[@key='party-uuids']/j:string | j:array[@key='party-uuids']/j:string | j:array[@key='party-uuids']/j:string | j:array[@key='party-uuids']/j:string | j:array[@key='party-uuids']/j:string | j:array[@key='party-uuids']/j:string | j:array[@key='party-uuids']/j:string)">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="  party-uuid" -->
+      <field name="party-uuid"
+             gi="party-uuid"
+             as-type="uuid"
+             formal-name="Party Reference"
+             in-json="SCALAR">
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="(j:array[@key='party-uuids']/j:string | j:array[@key='party-uuids']/j:string | j:string[@key='party-uuid'] | j:array[@key='party-uuids']/j:string | j:array[@key='party-uuids']/j:string | j:array[@key='party-uuids']/j:string | j:array[@key='party-uuids']/j:string | j:array[@key='party-uuids']/j:string | j:array[@key='party-uuids']/j:string | j:array[@key='party-uuids']/j:string | j:array[@key='party-uuids']/j:string | j:array[@key='party-uuids']/j:string | j:array[@key='party-uuids']/j:string | j:array[@key='party-uuids']/j:string | j:array[@key='party-uuids']/j:string | j:array[@key='party-uuids']/j:string | j:array[@key='party-uuids']/j:string)"
+                 mode="get-value-property"
+                 priority="7">
+      <value as-type="uuid" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:array[@key='system-ids']/j:map">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="  system-id" -->
+      <field name="system-id"
+             gi="system-id"
+             as-type="string"
+             formal-name="System Identification">
+         <xsl:apply-templates select="*[@key='identifier-type']"/>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <!-- matching   system-id-->
+   <xsl:template match="j:array[@key='system-ids']/j:map" mode="get-value-property">
+      <value as-type="string" key="id" in-json="string">
+         <xsl:apply-templates mode="keep-value-property"/>
+      </value>
+   </xsl:template>
+   <xsl:template match="(@key | @key | j:array[@key='role-ids']/j:string | @key | @key | @key | @key | @key | @key | @key | @key | @key | @key | @key | @key | @key | @key)">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="  role-id" -->
+      <field name="role-id"
+             gi="role-id"
+             as-type="NCName"
+             formal-name="Role Identifier Reference"
+             in-json="SCALAR">
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="(@key | @key | j:array[@key='role-ids']/j:string | @key | @key | @key | @key | @key | @key | @key | @key | @key | @key | @key | @key | @key | @key)"
+                 mode="get-value-property"
+                 priority="7">
+      <value as-type="NCName" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:array[@key='functions-performed']/j:string">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="  function-performed" -->
+      <field name="function-performed"
+             gi="function-performed"
+             as-type="string"
+             formal-name="Functions Performed"
+             in-json="SCALAR">
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:array[@key='functions-performed']/j:string"
+                 mode="get-value-property"
+                 priority="9">
+      <value as-type="string" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:array[@key='hashes']/j:map">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="  hash" -->
+      <field name="hash" gi="hash" formal-name="Hash">
+         <xsl:apply-templates select="*[@key='algorithm']"/>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <!-- matching   hash-->
+   <xsl:template match="j:array[@key='hashes']/j:map" mode="get-value-property">
+      <value as-type="string" key="value" in-json="string">
+         <xsl:apply-templates mode="keep-value-property"/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='system-security-plan']/j:string[@key='uuid'] | j:array[@key='props']/j:map/j:string[@key='uuid'] | j:array[@key='annotations']/j:map/j:string[@key='uuid'] | j:array[@key='locations']/j:map/j:string[@key='uuid'] | j:array[@key='parties']/j:map/j:string[@key='uuid'] | j:map[@key='system-security-plan']/j:map[@key='system-characteristics']/j:map[@key='system-information']/j:array[@key='information-types']/j:map/j:string[@key='uuid'] | j:map[@key='diagrams']/j:map/@key | j:map[@key='system-security-plan']/j:map[@key='system-implementation']/j:array[@key='leveraged-authorizations']/j:map/j:string[@key='uuid'] | j:map[@key='users']/j:map/@key | j:map[@key='components']/j:map/@key | j:array[@key='protocols']/j:map/j:string[@key='uuid'] | j:array[@key='inventory-items']/j:map/j:string[@key='uuid'] | j:array[@key='implemented-requirements']/j:map/j:string[@key='uuid'] | j:map[@key='by-components']/j:map/j:string[@key='uuid'] | j:map[@key='system-security-plan']/j:map[@key='control-implementation']/j:array[@key='implemented-requirements']/j:map/j:map[@key='by-components']/j:map/j:map[@key='export']/j:array[@key='provided']/j:map/j:string[@key='uuid'] | j:map[@key='system-security-plan']/j:map[@key='control-implementation']/j:array[@key='implemented-requirements']/j:map/j:map[@key='by-components']/j:map/j:map[@key='export']/j:array[@key='responsibilities']/j:map/j:string[@key='uuid'] | j:map[@key='system-security-plan']/j:map[@key='control-implementation']/j:array[@key='implemented-requirements']/j:map/j:map[@key='by-components']/j:map/j:array[@key='inherited']/j:map/j:string[@key='uuid'] | j:map[@key='system-security-plan']/j:map[@key='control-implementation']/j:array[@key='implemented-requirements']/j:map/j:map[@key='by-components']/j:map/j:array[@key='satisfied']/j:map/j:string[@key='uuid'] | j:map[@key='statements']/j:map/j:string[@key='uuid'] | j:map[@key='system-security-plan']/j:map[@key='control-implementation']/j:array[@key='implemented-requirements']/j:map/j:map[@key='statements']/j:map/j:map[@key='by-components']/j:map/j:map[@key='export']/j:array[@key='provided']/j:map/j:string[@key='uuid'] | j:map[@key='system-security-plan']/j:map[@key='control-implementation']/j:array[@key='implemented-requirements']/j:map/j:map[@key='statements']/j:map/j:map[@key='by-components']/j:map/j:map[@key='export']/j:array[@key='responsibilities']/j:map/j:string[@key='uuid'] | j:map[@key='system-security-plan']/j:map[@key='control-implementation']/j:array[@key='implemented-requirements']/j:map/j:map[@key='statements']/j:map/j:map[@key='by-components']/j:map/j:array[@key='inherited']/j:map/j:string[@key='uuid'] | j:map[@key='system-security-plan']/j:map[@key='control-implementation']/j:array[@key='implemented-requirements']/j:map/j:map[@key='statements']/j:map/j:map[@key='by-components']/j:map/j:array[@key='satisfied']/j:map/j:string[@key='uuid'] | j:map[@key='system-security-plan']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:string[@key='uuid']"><!-- XML match="system-security-plan/@uuid | prop/@uuid | annotation/@uuid | location/@uuid | party/@uuid | system-security-plan/system-characteristics/system-information/information-type/@uuid | diagram/@uuid | system-security-plan/system-implementation/leveraged-authorization/@uuid | user/@uuid | component/@uuid | protocol/@uuid | inventory-item/@uuid | implemented-requirement/@uuid | by-component/@uuid | system-security-plan/control-implementation/implemented-requirement/by-component/export/provided/@uuid | system-security-plan/control-implementation/implemented-requirement/by-component/export/responsibility/@uuid | system-security-plan/control-implementation/implemented-requirement/by-component/inherited/@uuid | system-security-plan/control-implementation/implemented-requirement/by-component/satisfied/@uuid | statement/@uuid | system-security-plan/control-implementation/implemented-requirement/statement/by-component/export/provided/@uuid | system-security-plan/control-implementation/implemented-requirement/statement/by-component/export/responsibility/@uuid | system-security-plan/control-implementation/implemented-requirement/statement/by-component/inherited/@uuid | system-security-plan/control-implementation/implemented-requirement/statement/by-component/satisfied/@uuid | system-security-plan/back-matter/resource/@uuid" -->
+      <flag in-json="string"
+            as-type="uuid"
+            name="uuid"
+            key="uuid"
+            gi="uuid"
+            formal-name="System Security Plan Universally Unique Identifier">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:map[@key='system-security-plan']/j:string[@key='uuid'] | j:array[@key='props']/j:map/j:string[@key='uuid'] | j:array[@key='annotations']/j:map/j:string[@key='uuid'] | j:array[@key='locations']/j:map/j:string[@key='uuid'] | j:array[@key='parties']/j:map/j:string[@key='uuid'] | j:map[@key='system-security-plan']/j:map[@key='system-characteristics']/j:map[@key='system-information']/j:array[@key='information-types']/j:map/j:string[@key='uuid'] | j:map[@key='diagrams']/j:map/@key | j:map[@key='system-security-plan']/j:map[@key='system-implementation']/j:array[@key='leveraged-authorizations']/j:map/j:string[@key='uuid'] | j:map[@key='users']/j:map/@key | j:map[@key='components']/j:map/@key | j:array[@key='protocols']/j:map/j:string[@key='uuid'] | j:array[@key='inventory-items']/j:map/j:string[@key='uuid'] | j:array[@key='implemented-requirements']/j:map/j:string[@key='uuid'] | j:map[@key='by-components']/j:map/j:string[@key='uuid'] | j:map[@key='system-security-plan']/j:map[@key='control-implementation']/j:array[@key='implemented-requirements']/j:map/j:map[@key='by-components']/j:map/j:map[@key='export']/j:array[@key='provided']/j:map/j:string[@key='uuid'] | j:map[@key='system-security-plan']/j:map[@key='control-implementation']/j:array[@key='implemented-requirements']/j:map/j:map[@key='by-components']/j:map/j:map[@key='export']/j:array[@key='responsibilities']/j:map/j:string[@key='uuid'] | j:map[@key='system-security-plan']/j:map[@key='control-implementation']/j:array[@key='implemented-requirements']/j:map/j:map[@key='by-components']/j:map/j:array[@key='inherited']/j:map/j:string[@key='uuid'] | j:map[@key='system-security-plan']/j:map[@key='control-implementation']/j:array[@key='implemented-requirements']/j:map/j:map[@key='by-components']/j:map/j:array[@key='satisfied']/j:map/j:string[@key='uuid'] | j:map[@key='statements']/j:map/j:string[@key='uuid'] | j:map[@key='system-security-plan']/j:map[@key='control-implementation']/j:array[@key='implemented-requirements']/j:map/j:map[@key='statements']/j:map/j:map[@key='by-components']/j:map/j:map[@key='export']/j:array[@key='provided']/j:map/j:string[@key='uuid'] | j:map[@key='system-security-plan']/j:map[@key='control-implementation']/j:array[@key='implemented-requirements']/j:map/j:map[@key='statements']/j:map/j:map[@key='by-components']/j:map/j:map[@key='export']/j:array[@key='responsibilities']/j:map/j:string[@key='uuid'] | j:map[@key='system-security-plan']/j:map[@key='control-implementation']/j:array[@key='implemented-requirements']/j:map/j:map[@key='statements']/j:map/j:map[@key='by-components']/j:map/j:array[@key='inherited']/j:map/j:string[@key='uuid'] | j:map[@key='system-security-plan']/j:map[@key='control-implementation']/j:array[@key='implemented-requirements']/j:map/j:map[@key='statements']/j:map/j:map[@key='by-components']/j:map/j:array[@key='satisfied']/j:map/j:string[@key='uuid'] | j:map[@key='system-security-plan']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:string[@key='uuid']"
+                 mode="keep-value-property"
+                 priority="3"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:array[@key='props']/j:map/j:string[@key='name'] | j:array[@key='annotations']/j:map/j:string[@key='name']"><!-- XML match="prop/@name | annotation/@name" -->
+      <flag in-json="string"
+            as-type="NCName"
+            name="name"
+            key="name"
+            gi="name"
+            formal-name="Property Name">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:array[@key='props']/j:map/j:string[@key='name'] | j:array[@key='annotations']/j:map/j:string[@key='name']"
+                 mode="keep-value-property"
+                 priority="8"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:array[@key='props']/j:map/j:string[@key='ns'] | j:array[@key='annotations']/j:map/j:string[@key='ns']"><!-- XML match="prop/@ns | annotation/@ns" -->
+      <flag in-json="string"
+            as-type="uri"
+            name="ns"
+            key="ns"
+            gi="ns"
+            formal-name="Property Namespace">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:array[@key='props']/j:map/j:string[@key='ns'] | j:array[@key='annotations']/j:map/j:string[@key='ns']"
+                 mode="keep-value-property"
+                 priority="8"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:array[@key='props']/j:map/j:string[@key='class']"><!-- XML match="prop/@class" -->
+      <flag in-json="string"
+            as-type="NCName"
+            name="class"
+            key="class"
+            gi="class"
+            formal-name="Property Class">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:array[@key='props']/j:map/j:string[@key='class']"
+                 mode="keep-value-property"
+                 priority="8"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:array[@key='annotations']/j:map/j:string[@key='value']"><!-- XML match="annotation/@value" -->
+      <flag in-json="string"
+            as-type="string"
+            name="value"
+            key="value"
+            gi="value"
+            formal-name="Annotated Property Value">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:array[@key='annotations']/j:map/j:string[@key='value']"
+                 mode="keep-value-property"
+                 priority="8"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:array[@key='links']/j:map/j:string[@key='href'] | j:map[@key='import-profile']/j:string[@key='href'] | j:map[@key='system-security-plan']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:array[@key='rlinks']/j:map/j:string[@key='href']"><!-- XML match="link/@href | import-profile/@href | system-security-plan/back-matter/resource/rlink/@href" -->
+      <flag in-json="string"
+            as-type="uri-reference"
+            name="href"
+            key="href"
+            gi="href"
+            formal-name="Hypertext Reference">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:array[@key='links']/j:map/j:string[@key='href'] | j:map[@key='import-profile']/j:string[@key='href'] | j:map[@key='system-security-plan']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:array[@key='rlinks']/j:map/j:string[@key='href']"
+                 mode="keep-value-property"
+                 priority="8"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:array[@key='links']/j:map/j:string[@key='rel']"><!-- XML match="link/@rel" -->
+      <flag in-json="string"
+            as-type="NCName"
+            name="rel"
+            key="rel"
+            gi="rel"
+            formal-name="Relation">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:array[@key='links']/j:map/j:string[@key='rel']"
+                 mode="keep-value-property"
+                 priority="8"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:array[@key='links']/j:map/j:string[@key='media-type'] | j:map[@key='system-security-plan']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:array[@key='rlinks']/j:map/j:string[@key='media-type'] | j:map[@key='system-security-plan']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:map[@key='base64']/j:string[@key='media-type']"><!-- XML match="link/@media-type | system-security-plan/back-matter/resource/rlink/@media-type | system-security-plan/back-matter/resource/base64/@media-type" -->
+      <flag in-json="string"
+            as-type="string"
+            name="media-type"
+            key="media-type"
+            gi="media-type"
+            formal-name="Media Type">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:array[@key='links']/j:map/j:string[@key='media-type'] | j:map[@key='system-security-plan']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:array[@key='rlinks']/j:map/j:string[@key='media-type'] | j:map[@key='system-security-plan']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:map[@key='base64']/j:string[@key='media-type']"
+                 mode="keep-value-property"
+                 priority="8"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='metadata']/j:array[@key='document-ids']/j:map/j:string[@key='scheme'] | j:map[@key='system-security-plan']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='external-ids']/j:map/j:string[@key='scheme'] | j:map[@key='system-security-plan']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:array[@key='document-ids']/j:map/j:string[@key='scheme']"
+                 priority="6"><!-- XML match="system-security-plan/metadata/document-id/@scheme | system-security-plan/metadata/party/external-id/@scheme | system-security-plan/back-matter/resource/document-id/@scheme" -->
+      <flag in-json="string"
+            as-type="uri"
+            name="scheme"
+            key="scheme"
+            gi="scheme"
+            formal-name="Document Identification Scheme">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='metadata']/j:array[@key='document-ids']/j:map/j:string[@key='scheme'] | j:map[@key='system-security-plan']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='external-ids']/j:map/j:string[@key='scheme'] | j:map[@key='system-security-plan']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:array[@key='document-ids']/j:map/j:string[@key='scheme']"
+                 mode="keep-value-property"
+                 priority="6"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:array[@key='roles']/j:map/j:string[@key='id']"><!-- XML match="role/@id" -->
+      <flag in-json="string"
+            as-type="NCName"
+            name="id"
+            key="id"
+            gi="id"
+            formal-name="Role Identifier">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:array[@key='roles']/j:map/j:string[@key='id']"
+                 mode="keep-value-property"
+                 priority="6"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:array[@key='telephone-numbers']/j:map/j:string[@key='type'] | j:array[@key='parties']/j:map/j:string[@key='type'] | j:map[@key='system-security-plan']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='telephone-numbers']/j:map/j:string[@key='type']"
+                 priority="8"><!-- XML match="system-security-plan/metadata/location/telephone-number/@type | party/@type | system-security-plan/metadata/party/telephone-number/@type" -->
+      <flag in-json="string"
+            as-type="string"
+            name="type"
+            key="type"
+            gi="type"
+            formal-name="type flag">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:array[@key='telephone-numbers']/j:map/j:string[@key='type'] | j:array[@key='parties']/j:map/j:string[@key='type'] | j:map[@key='system-security-plan']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='telephone-numbers']/j:map/j:string[@key='type']"
+                 mode="keep-value-property"
+                 priority="8"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:map[@key='responsible-parties']/j:map/@key | j:map[@key='responsible-roles']/j:map/@key"><!-- XML match="responsible-party/@role-id | responsible-role/@role-id" -->
+      <flag in-json="string"
+            as-type="NCName"
+            name="role-id"
+            key="role-id"
+            gi="role-id"
+            formal-name="Responsible Role">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:map[@key='responsible-parties']/j:map/@key | j:map[@key='responsible-roles']/j:map/@key"
+                 mode="keep-value-property"
+                 priority="6"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:array[@key='system-ids']/j:map/j:string[@key='identifier-type']"><!-- XML match="system-id/@identifier-type" -->
+      <flag in-json="string"
+            as-type="uri"
+            name="identifier-type"
+            key="identifier-type"
+            gi="identifier-type"
+            formal-name="Identification System Type">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:array[@key='system-ids']/j:map/j:string[@key='identifier-type']"
+                 mode="keep-value-property"
+                 priority="6"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='system-characteristics']/j:map[@key='system-information']/j:array[@key='information-types']/j:map/j:array[@key='categorizations']/j:map/j:string[@key='system']"
+                 priority="9"><!-- XML match="system-security-plan/system-characteristics/system-information/information-type/categorization/@system" -->
+      <flag in-json="string"
+            as-type="uri"
+            name="system"
+            key="system"
+            gi="system"
+            formal-name="Information Type Identification System">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='system-characteristics']/j:map[@key='system-information']/j:array[@key='information-types']/j:map/j:array[@key='categorizations']/j:map/j:string[@key='system']"
+                 mode="keep-value-property"
+                 priority="9"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='system-characteristics']/j:map[@key='status']/j:string[@key='state']"
+                 priority="5"><!-- XML match="system-security-plan/system-characteristics/status/@state" -->
+      <flag in-json="string"
+            as-type="string"
+            name="state"
+            key="state"
+            gi="state"
+            formal-name="State">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='system-characteristics']/j:map[@key='status']/j:string[@key='state']"
+                 mode="keep-value-property"
+                 priority="5"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:map[@key='components']/j:map/j:string[@key='type']"><!-- XML match="component/@type" -->
+      <flag in-json="string"
+            as-type="string"
+            name="component-type"
+            key="type"
+            gi="type"
+            formal-name="Component Type">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:map[@key='components']/j:map/j:string[@key='type']"
+                 mode="keep-value-property"
+                 priority="6"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='system-implementation']/j:map[@key='components']/j:map/j:map[@key='status']/j:string[@key='state']"
+                 priority="7"><!-- XML match="system-security-plan/system-implementation/component/status/@state" -->
+      <flag in-json="string"
+            as-type="NCName"
+            name="state"
+            key="state"
+            gi="state"
+            formal-name="State">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='system-implementation']/j:map[@key='components']/j:map/j:map[@key='status']/j:string[@key='state']"
+                 mode="keep-value-property"
+                 priority="7"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:array[@key='protocols']/j:map/j:string[@key='name']"><!-- XML match="protocol/@name" -->
+      <flag in-json="string"
+            as-type="string"
+            name="name"
+            key="name"
+            gi="name"
+            formal-name="Protocol Name">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:array[@key='protocols']/j:map/j:string[@key='name']"
+                 mode="keep-value-property"
+                 priority="8"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:array[@key='port-ranges']/j:map/j:number[@key='start']"><!-- XML match="port-range/@start" -->
       <flag in-json="number"
             as-type="nonNegativeInteger"
@@ -839,53 +1055,20 @@
    <xsl:template match="j:array[@key='port-ranges']/j:map/j:string[@key='transport']"
                  mode="keep-value-property"
                  priority="10"><!-- Not keeping the flag here. --></xsl:template>
-   <xsl:template match="j:array[@key='inventory-items']/j:map">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="inventory-item" -->
-      <assembly name="inventory-item"
-                gi="inventory-item"
-                formal-name="Inventory Item">
-         <xsl:apply-templates select="*[@key='uuid']"/>
-         <xsl:apply-templates select="*[@key='description']"/>
-         <xsl:apply-templates select="*[@key='props']"/>
-         <xsl:apply-templates select="*[@key='annotations']"/>
-         <xsl:apply-templates select="*[@key='links']"/>
-         <xsl:apply-templates select="*[@key='responsible-parties']"/>
-         <xsl:apply-templates select="*[@key='implemented-components']"/>
-         <xsl:apply-templates select="*[@key='remarks']"/>
-      </assembly>
+   <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='system-implementation']/j:array[@key='inventory-items']/j:map/j:array[@key='implemented-components']/j:map/j:string[@key='component-uuid'] | j:map[@key='by-components']/j:map/@key"
+                 priority="8"><!-- XML match="system-security-plan/system-implementation/inventory-item/implemented-component/@component-uuid | by-component/@component-uuid" -->
+      <flag in-json="string"
+            as-type="uuid"
+            name="component-uuid"
+            key="component-uuid"
+            gi="component-uuid"
+            formal-name="Component Universally Unique Identifier Reference">
+         <xsl:value-of select="."/>
+      </flag>
    </xsl:template>
-   <xsl:template match="j:map[@key='control-implementation']">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="control-implementation" -->
-      <assembly name="control-implementation"
-                gi="control-implementation"
-                formal-name="Control Implementation">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">control-implementation</xsl:attribute>
-         </xsl:if>
-         <xsl:apply-templates select="*[@key='description']"/>
-         <xsl:apply-templates select="*[@key='implemented-requirements']"/>
-      </assembly>
-   </xsl:template>
-   <xsl:template match="j:array[@key='implemented-requirements']/j:map">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="implemented-requirement" -->
-      <assembly name="implemented-requirement"
-                gi="implemented-requirement"
-                formal-name="Control-based Requirement">
-         <xsl:apply-templates select="*[@key='uuid']"/>
-         <xsl:apply-templates select="*[@key='control-id']"/>
-         <xsl:apply-templates select="*[@key='props']"/>
-         <xsl:apply-templates select="*[@key='annotations']"/>
-         <xsl:apply-templates select="*[@key='links']"/>
-         <xsl:apply-templates select="*[@key='parameter-settings']"/>
-         <xsl:apply-templates select="*[@key='responsible-roles']"/>
-         <xsl:apply-templates select="*[@key='by-components']"/>
-         <xsl:apply-templates select="*[@key='statements']"/>
-         <xsl:apply-templates select="*[@key='remarks']"/>
-      </assembly>
-   </xsl:template>
+   <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='system-implementation']/j:array[@key='inventory-items']/j:map/j:array[@key='implemented-components']/j:map/j:string[@key='component-uuid'] | j:map[@key='by-components']/j:map/@key"
+                 mode="keep-value-property"
+                 priority="8"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:array[@key='implemented-requirements']/j:map/j:string[@key='control-id']"><!-- XML match="implemented-requirement/@control-id" -->
       <flag in-json="string"
             as-type="NCName"
@@ -899,29 +1082,6 @@
    <xsl:template match="j:array[@key='implemented-requirements']/j:map/j:string[@key='control-id']"
                  mode="keep-value-property"
                  priority="6"><!-- Not keeping the flag here. --></xsl:template>
-   <xsl:template match="j:map[@key='parameter-settings']/j:map">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="set-parameter" -->
-      <assembly name="set-parameter"
-                gi="set-parameter"
-                formal-name="Set Parameter Value"
-                json-key-flag="param-id">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">set-parameter</xsl:attribute>
-         </xsl:if>
-         <flag as-type="NCName"
-               name="param-id"
-               key="param-id"
-               gi="param-id"
-               scope="global"
-               formal-name="Parameter ID">
-            <xsl:value-of select="@key"/>
-         </flag>
-         <xsl:apply-templates select="*[@key='param-id']"/>
-         <xsl:apply-templates select="*[@key='values']"/>
-         <xsl:apply-templates select="*[@key='remarks']"/>
-      </assembly>
-   </xsl:template>
    <xsl:template match="j:map[@key='parameter-settings']/j:map/@key"><!-- XML match="set-parameter/@param-id" -->
       <flag in-json="string"
             as-type="NCName"
@@ -933,50 +1093,6 @@
       </flag>
    </xsl:template>
    <xsl:template match="j:map[@key='parameter-settings']/j:map/@key"
-                 mode="keep-value-property"
-                 priority="8"><!-- Not keeping the flag here. --></xsl:template>
-   <xsl:template match="j:map[@key='by-components']/j:map">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="by-component" -->
-      <assembly name="by-component"
-                gi="by-component"
-                formal-name="Component Control Implementation"
-                json-key-flag="component-uuid">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">by-component</xsl:attribute>
-         </xsl:if>
-         <flag as-type="uuid"
-               name="component-uuid"
-               key="component-uuid"
-               gi="component-uuid"
-               formal-name="Component Universally Unique Identifier Reference">
-            <xsl:value-of select="@key"/>
-         </flag>
-         <xsl:apply-templates select="*[@key='component-uuid']"/>
-         <xsl:apply-templates select="*[@key='uuid']"/>
-         <xsl:apply-templates select="*[@key='description']"/>
-         <xsl:apply-templates select="*[@key='props']"/>
-         <xsl:apply-templates select="*[@key='annotations']"/>
-         <xsl:apply-templates select="*[@key='links']"/>
-         <xsl:apply-templates select="*[@key='parameter-settings']"/>
-         <xsl:apply-templates select="*[@key='export']"/>
-         <xsl:apply-templates select="*[@key='inherited']"/>
-         <xsl:apply-templates select="*[@key='satisfied']"/>
-         <xsl:apply-templates select="*[@key='responsible-roles']"/>
-         <xsl:apply-templates select="*[@key='remarks']"/>
-      </assembly>
-   </xsl:template>
-   <xsl:template match="j:map[@key='by-components']/j:map/@key"><!-- XML match="by-component/@component-uuid" -->
-      <flag in-json="string"
-            as-type="uuid"
-            name="component-uuid"
-            key="component-uuid"
-            gi="component-uuid"
-            formal-name="Component Universally Unique Identifier Reference">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="j:map[@key='by-components']/j:map/@key"
                  mode="keep-value-property"
                  priority="8"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='control-implementation']/j:array[@key='implemented-requirements']/j:map/j:map[@key='by-components']/j:map/j:map[@key='export']/j:array[@key='responsibilities']/j:map/j:string[@key='provided-uuid'] | j:map[@key='system-security-plan']/j:map[@key='control-implementation']/j:array[@key='implemented-requirements']/j:map/j:map[@key='by-components']/j:map/j:array[@key='inherited']/j:map/j:string[@key='provided-uuid'] | j:map[@key='system-security-plan']/j:map[@key='control-implementation']/j:array[@key='implemented-requirements']/j:map/j:map[@key='statements']/j:map/j:map[@key='by-components']/j:map/j:map[@key='export']/j:array[@key='responsibilities']/j:map/j:string[@key='provided-uuid'] | j:map[@key='system-security-plan']/j:map[@key='control-implementation']/j:array[@key='implemented-requirements']/j:map/j:map[@key='statements']/j:map/j:map[@key='by-components']/j:map/j:array[@key='inherited']/j:map/j:string[@key='provided-uuid']"><!-- XML match="system-security-plan/control-implementation/implemented-requirement/by-component/export/responsibility/@provided-uuid | system-security-plan/control-implementation/implemented-requirement/by-component/inherited/@provided-uuid | system-security-plan/control-implementation/implemented-requirement/statement/by-component/export/responsibility/@provided-uuid | system-security-plan/control-implementation/implemented-requirement/statement/by-component/inherited/@provided-uuid" -->
@@ -1005,33 +1121,6 @@
    <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='control-implementation']/j:array[@key='implemented-requirements']/j:map/j:map[@key='by-components']/j:map/j:array[@key='satisfied']/j:map/j:string[@key='responsibility-uuid'] | j:map[@key='system-security-plan']/j:map[@key='control-implementation']/j:array[@key='implemented-requirements']/j:map/j:map[@key='statements']/j:map/j:map[@key='by-components']/j:map/j:array[@key='satisfied']/j:map/j:string[@key='responsibility-uuid']"
                  mode="keep-value-property"
                  priority="10"><!-- Not keeping the flag here. --></xsl:template>
-   <xsl:template match="j:map[@key='statements']/j:map">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="statement" -->
-      <assembly name="statement"
-                gi="statement"
-                formal-name="Specific Control Statement"
-                json-key-flag="statement-id">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">statement</xsl:attribute>
-         </xsl:if>
-         <flag as-type="NCName"
-               name="statement-id"
-               key="statement-id"
-               gi="statement-id"
-               scope="global"
-               formal-name="Control Statement Reference">
-            <xsl:value-of select="@key"/>
-         </flag>
-         <xsl:apply-templates select="*[@key='statement-id']"/>
-         <xsl:apply-templates select="*[@key='uuid']"/>
-         <xsl:apply-templates select="*[@key='props']"/>
-         <xsl:apply-templates select="*[@key='annotations']"/>
-         <xsl:apply-templates select="*[@key='links']"/>
-         <xsl:apply-templates select="*[@key='by-components']"/>
-         <xsl:apply-templates select="*[@key='remarks']"/>
-      </assembly>
-   </xsl:template>
    <xsl:template match="j:map[@key='statements']/j:map/@key"><!-- XML match="statement/@statement-id" -->
       <flag in-json="string"
             as-type="NCName"
@@ -1045,30 +1134,6 @@
    <xsl:template match="j:map[@key='statements']/j:map/@key"
                  mode="keep-value-property"
                  priority="8"><!-- Not keeping the flag here. --></xsl:template>
-   <xsl:template match="j:map[@key='back-matter']">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="back-matter" -->
-      <assembly name="back-matter" gi="back-matter" formal-name="Back matter">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">back-matter</xsl:attribute>
-         </xsl:if>
-         <xsl:apply-templates select="*[@key='resources']"/>
-      </assembly>
-   </xsl:template>
-   <xsl:template match="j:array[@key='hashes']/j:map">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="hash" -->
-      <field name="hash" gi="hash" formal-name="Hash">
-         <xsl:apply-templates select="*[@key='algorithm']"/>
-         <xsl:apply-templates select="." mode="get-value-property"/>
-      </field>
-   </xsl:template>
-   <!-- matching hash-->
-   <xsl:template match="j:array[@key='hashes']/j:map" mode="get-value-property">
-      <value as-type="string" key="value" in-json="string">
-         <xsl:apply-templates mode="keep-value-property"/>
-      </value>
-   </xsl:template>
    <xsl:template match="j:array[@key='hashes']/j:map/j:string[@key='algorithm']"><!-- XML match="hash/@algorithm" -->
       <flag in-json="string"
             as-type="string"
@@ -1082,6 +1147,20 @@
    <xsl:template match="j:array[@key='hashes']/j:map/j:string[@key='algorithm']"
                  mode="keep-value-property"
                  priority="10"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:map[@key='base64']/j:string[@key='filename']"
+                 priority="7"><!-- XML match="system-security-plan/back-matter/resource/base64/@filename" -->
+      <flag in-json="string"
+            as-type="uri-reference"
+            name="filename"
+            key="filename"
+            gi="filename"
+            formal-name="File Name">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:map[@key='base64']/j:string[@key='filename']"
+                 mode="keep-value-property"
+                 priority="7"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='metadata']/j:string[@key='title']"
                  priority="4">
       <xsl:param name="with-key" select="true()"/>
@@ -1367,20 +1446,6 @@
          <xsl:apply-templates mode="keep-value-property"/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='metadata']/j:array[@key='document-ids']/j:map/j:string[@key='scheme']"
-                 priority="6"><!-- XML match="system-security-plan/metadata/document-id/@scheme" -->
-      <flag in-json="string"
-            as-type="uri"
-            name="scheme"
-            key="scheme"
-            gi="scheme"
-            formal-name="Document Identification Scheme">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='metadata']/j:array[@key='document-ids']/j:map/j:string[@key='scheme']"
-                 mode="keep-value-property"
-                 priority="6"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='metadata']/j:array[@key='links']/j:map/j:string[@key='text']"
                  priority="6">
       <xsl:param name="with-key" select="true()"/>
@@ -1660,20 +1725,6 @@
          <xsl:apply-templates mode="keep-value-property"/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:array[@key='telephone-numbers']/j:map/j:string[@key='type']"
-                 priority="8"><!-- XML match="system-security-plan/metadata/location/telephone-number/@type" -->
-      <flag in-json="string"
-            as-type="string"
-            name="type"
-            key="type"
-            gi="type"
-            formal-name="type flag">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:array[@key='telephone-numbers']/j:map/j:string[@key='type']"
-                 mode="keep-value-property"
-                 priority="8"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:array[@key='urls']/j:string"
                  priority="7">
       <xsl:param name="with-key" select="true()"/>
@@ -1772,20 +1823,6 @@
          <xsl:apply-templates mode="keep-value-property"/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='external-ids']/j:map/j:string[@key='scheme']"
-                 priority="8"><!-- XML match="system-security-plan/metadata/party/external-id/@scheme" -->
-      <flag in-json="string"
-            as-type="uri"
-            name="scheme"
-            key="scheme"
-            gi="scheme"
-            formal-name="External Identifier Schema">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='external-ids']/j:map/j:string[@key='scheme']"
-                 mode="keep-value-property"
-                 priority="8"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
                  priority="8">
       <xsl:param name="with-key" select="true()"/>
@@ -1845,20 +1882,6 @@
          <xsl:apply-templates mode="keep-value-property"/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='telephone-numbers']/j:map/j:string[@key='type']"
-                 priority="8"><!-- XML match="system-security-plan/metadata/party/telephone-number/@type" -->
-      <flag in-json="string"
-            as-type="string"
-            name="type"
-            key="type"
-            gi="type"
-            formal-name="type flag">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='telephone-numbers']/j:map/j:string[@key='type']"
-                 mode="keep-value-property"
-                 priority="8"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='addresses']/j:map"
                  priority="8">
       <xsl:param name="with-key" select="true()"/>
@@ -2180,20 +2203,6 @@
          <xsl:apply-templates select="*[@key='availability-impact']"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='system-characteristics']/j:map[@key='system-information']/j:array[@key='information-types']/j:map/j:string[@key='uuid']"
-                 priority="7"><!-- XML match="system-security-plan/system-characteristics/system-information/information-type/@uuid" -->
-      <flag in-json="string"
-            as-type="uuid"
-            name="uuid"
-            key="uuid"
-            gi="uuid"
-            formal-name="Information Type Universally Unique Identifier">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='system-characteristics']/j:map[@key='system-information']/j:array[@key='information-types']/j:map/j:string[@key='uuid']"
-                 mode="keep-value-property"
-                 priority="7"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='system-characteristics']/j:map[@key='system-information']/j:array[@key='information-types']/j:map/j:string[@key='title']"
                  priority="7">
       <xsl:param name="with-key" select="true()"/>
@@ -2249,20 +2258,6 @@
          <xsl:apply-templates select="*[@key='information-type-ids']"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='system-characteristics']/j:map[@key='system-information']/j:array[@key='information-types']/j:map/j:array[@key='categorizations']/j:map/j:string[@key='system']"
-                 priority="9"><!-- XML match="system-security-plan/system-characteristics/system-information/information-type/categorization/@system" -->
-      <flag in-json="string"
-            as-type="uri"
-            name="system"
-            key="system"
-            gi="system"
-            formal-name="Information Type Identification System">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='system-characteristics']/j:map[@key='system-information']/j:array[@key='information-types']/j:map/j:array[@key='categorizations']/j:map/j:string[@key='system']"
-                 mode="keep-value-property"
-                 priority="9"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='system-characteristics']/j:map[@key='system-information']/j:array[@key='information-types']/j:map/j:array[@key='categorizations']/j:map/j:array[@key='information-type-ids']/j:string"
                  priority="10">
       <xsl:param name="with-key" select="true()"/>
@@ -2700,20 +2695,6 @@
          <xsl:apply-templates select="*[@key='remarks']"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='system-characteristics']/j:map[@key='status']/j:string[@key='state']"
-                 priority="5"><!-- XML match="system-security-plan/system-characteristics/status/@state" -->
-      <flag in-json="string"
-            as-type="string"
-            name="state"
-            key="state"
-            gi="state"
-            formal-name="State">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='system-characteristics']/j:map[@key='status']/j:string[@key='state']"
-                 mode="keep-value-property"
-                 priority="5"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='system-characteristics']/j:map[@key='authorization-boundary']/j:string[@key='description']"
                  priority="5">
       <xsl:param name="with-key" select="true()"/>
@@ -3193,20 +3174,6 @@
          <xsl:apply-templates select="*[@key='remarks']"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='system-implementation']/j:array[@key='leveraged-authorizations']/j:map/j:string[@key='uuid']"
-                 priority="6"><!-- XML match="system-security-plan/system-implementation/leveraged-authorization/@uuid" -->
-      <flag in-json="string"
-            as-type="uuid"
-            name="uuid"
-            key="uuid"
-            gi="uuid"
-            formal-name="Leveraged Authorization Universally Unique Identifier">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='system-implementation']/j:array[@key='leveraged-authorizations']/j:map/j:string[@key='uuid']"
-                 mode="keep-value-property"
-                 priority="6"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='system-implementation']/j:array[@key='leveraged-authorizations']/j:map/j:string[@key='title']"
                  priority="6">
       <xsl:param name="with-key" select="true()"/>
@@ -3526,20 +3493,6 @@
          <xsl:apply-templates select="*[@key='remarks']"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='system-implementation']/j:map[@key='components']/j:map/j:map[@key='status']/j:string[@key='state']"
-                 priority="7"><!-- XML match="system-security-plan/system-implementation/component/status/@state" -->
-      <flag in-json="string"
-            as-type="NCName"
-            name="state"
-            key="state"
-            gi="state"
-            formal-name="State">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='system-implementation']/j:map[@key='components']/j:map/j:map[@key='status']/j:string[@key='state']"
-                 mode="keep-value-property"
-                 priority="7"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='system-implementation']/j:map[@key='components']/j:map/j:map[@key='responsible-roles']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
                  priority="10">
       <xsl:param name="with-key" select="true()"/>
@@ -3665,20 +3618,6 @@
          <xsl:apply-templates select="*[@key='remarks']"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='system-implementation']/j:array[@key='inventory-items']/j:map/j:array[@key='implemented-components']/j:map/j:string[@key='component-uuid']"
-                 priority="8"><!-- XML match="system-security-plan/system-implementation/inventory-item/implemented-component/@component-uuid" -->
-      <flag in-json="string"
-            as-type="uuid"
-            name="component-uuid"
-            key="component-uuid"
-            gi="component-uuid"
-            formal-name="Component Universally Unique Identifier Reference">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='system-implementation']/j:array[@key='inventory-items']/j:map/j:array[@key='implemented-components']/j:map/j:string[@key='component-uuid']"
-                 mode="keep-value-property"
-                 priority="8"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='system-implementation']/j:array[@key='inventory-items']/j:map/j:array[@key='implemented-components']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
                  priority="10">
       <xsl:param name="with-key" select="true()"/>
@@ -3948,20 +3887,6 @@
          <xsl:apply-templates select="*[@key='remarks']"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='control-implementation']/j:array[@key='implemented-requirements']/j:map/j:map[@key='by-components']/j:map/j:map[@key='export']/j:array[@key='provided']/j:map/j:string[@key='uuid']"
-                 priority="11"><!-- XML match="system-security-plan/control-implementation/implemented-requirement/by-component/export/provided/@uuid" -->
-      <flag in-json="string"
-            as-type="uuid"
-            name="uuid"
-            key="uuid"
-            gi="uuid"
-            formal-name="Provided Universally Unique Identifier">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='control-implementation']/j:array[@key='implemented-requirements']/j:map/j:map[@key='by-components']/j:map/j:map[@key='export']/j:array[@key='provided']/j:map/j:string[@key='uuid']"
-                 mode="keep-value-property"
-                 priority="11"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='control-implementation']/j:array[@key='implemented-requirements']/j:map/j:map[@key='by-components']/j:map/j:map[@key='export']/j:array[@key='provided']/j:map/j:string[@key='description']"
                  priority="11">
       <xsl:param name="with-key" select="true()"/>
@@ -4045,20 +3970,6 @@
          <xsl:apply-templates select="*[@key='remarks']"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='control-implementation']/j:array[@key='implemented-requirements']/j:map/j:map[@key='by-components']/j:map/j:map[@key='export']/j:array[@key='responsibilities']/j:map/j:string[@key='uuid']"
-                 priority="11"><!-- XML match="system-security-plan/control-implementation/implemented-requirement/by-component/export/responsibility/@uuid" -->
-      <flag in-json="string"
-            as-type="uuid"
-            name="uuid"
-            key="uuid"
-            gi="uuid"
-            formal-name="Responsibility Universally Unique Identifier">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='control-implementation']/j:array[@key='implemented-requirements']/j:map/j:map[@key='by-components']/j:map/j:map[@key='export']/j:array[@key='responsibilities']/j:map/j:string[@key='uuid']"
-                 mode="keep-value-property"
-                 priority="11"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='control-implementation']/j:array[@key='implemented-requirements']/j:map/j:map[@key='by-components']/j:map/j:map[@key='export']/j:array[@key='responsibilities']/j:map/j:string[@key='description']"
                  priority="11">
       <xsl:param name="with-key" select="true()"/>
@@ -4141,20 +4052,6 @@
          <xsl:apply-templates select="*[@key='responsible-roles']"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='control-implementation']/j:array[@key='implemented-requirements']/j:map/j:map[@key='by-components']/j:map/j:array[@key='inherited']/j:map/j:string[@key='uuid']"
-                 priority="10"><!-- XML match="system-security-plan/control-implementation/implemented-requirement/by-component/inherited/@uuid" -->
-      <flag in-json="string"
-            as-type="uuid"
-            name="uuid"
-            key="uuid"
-            gi="uuid"
-            formal-name="Inherited Universally Unique Identifier">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='control-implementation']/j:array[@key='implemented-requirements']/j:map/j:map[@key='by-components']/j:map/j:array[@key='inherited']/j:map/j:string[@key='uuid']"
-                 mode="keep-value-property"
-                 priority="10"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='control-implementation']/j:array[@key='implemented-requirements']/j:map/j:map[@key='by-components']/j:map/j:array[@key='inherited']/j:map/j:string[@key='description']"
                  priority="10">
       <xsl:param name="with-key" select="true()"/>
@@ -4238,20 +4135,6 @@
          <xsl:apply-templates select="*[@key='remarks']"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='control-implementation']/j:array[@key='implemented-requirements']/j:map/j:map[@key='by-components']/j:map/j:array[@key='satisfied']/j:map/j:string[@key='uuid']"
-                 priority="10"><!-- XML match="system-security-plan/control-implementation/implemented-requirement/by-component/satisfied/@uuid" -->
-      <flag in-json="string"
-            as-type="uuid"
-            name="uuid"
-            key="uuid"
-            gi="uuid"
-            formal-name="Satisfied Universally Unique Identifier">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='control-implementation']/j:array[@key='implemented-requirements']/j:map/j:map[@key='by-components']/j:map/j:array[@key='satisfied']/j:map/j:string[@key='uuid']"
-                 mode="keep-value-property"
-                 priority="10"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='control-implementation']/j:array[@key='implemented-requirements']/j:map/j:map[@key='by-components']/j:map/j:array[@key='satisfied']/j:map/j:string[@key='description']"
                  priority="10">
       <xsl:param name="with-key" select="true()"/>
@@ -4502,20 +4385,6 @@
          <xsl:apply-templates select="*[@key='remarks']"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='control-implementation']/j:array[@key='implemented-requirements']/j:map/j:map[@key='statements']/j:map/j:map[@key='by-components']/j:map/j:map[@key='export']/j:array[@key='provided']/j:map/j:string[@key='uuid']"
-                 priority="13"><!-- XML match="system-security-plan/control-implementation/implemented-requirement/statement/by-component/export/provided/@uuid" -->
-      <flag in-json="string"
-            as-type="uuid"
-            name="uuid"
-            key="uuid"
-            gi="uuid"
-            formal-name="Provided Universally Unique Identifier">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='control-implementation']/j:array[@key='implemented-requirements']/j:map/j:map[@key='statements']/j:map/j:map[@key='by-components']/j:map/j:map[@key='export']/j:array[@key='provided']/j:map/j:string[@key='uuid']"
-                 mode="keep-value-property"
-                 priority="13"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='control-implementation']/j:array[@key='implemented-requirements']/j:map/j:map[@key='statements']/j:map/j:map[@key='by-components']/j:map/j:map[@key='export']/j:array[@key='provided']/j:map/j:string[@key='description']"
                  priority="13">
       <xsl:param name="with-key" select="true()"/>
@@ -4599,20 +4468,6 @@
          <xsl:apply-templates select="*[@key='remarks']"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='control-implementation']/j:array[@key='implemented-requirements']/j:map/j:map[@key='statements']/j:map/j:map[@key='by-components']/j:map/j:map[@key='export']/j:array[@key='responsibilities']/j:map/j:string[@key='uuid']"
-                 priority="13"><!-- XML match="system-security-plan/control-implementation/implemented-requirement/statement/by-component/export/responsibility/@uuid" -->
-      <flag in-json="string"
-            as-type="uuid"
-            name="uuid"
-            key="uuid"
-            gi="uuid"
-            formal-name="Responsibility Universally Unique Identifier">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='control-implementation']/j:array[@key='implemented-requirements']/j:map/j:map[@key='statements']/j:map/j:map[@key='by-components']/j:map/j:map[@key='export']/j:array[@key='responsibilities']/j:map/j:string[@key='uuid']"
-                 mode="keep-value-property"
-                 priority="13"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='control-implementation']/j:array[@key='implemented-requirements']/j:map/j:map[@key='statements']/j:map/j:map[@key='by-components']/j:map/j:map[@key='export']/j:array[@key='responsibilities']/j:map/j:string[@key='description']"
                  priority="13">
       <xsl:param name="with-key" select="true()"/>
@@ -4695,20 +4550,6 @@
          <xsl:apply-templates select="*[@key='responsible-roles']"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='control-implementation']/j:array[@key='implemented-requirements']/j:map/j:map[@key='statements']/j:map/j:map[@key='by-components']/j:map/j:array[@key='inherited']/j:map/j:string[@key='uuid']"
-                 priority="12"><!-- XML match="system-security-plan/control-implementation/implemented-requirement/statement/by-component/inherited/@uuid" -->
-      <flag in-json="string"
-            as-type="uuid"
-            name="uuid"
-            key="uuid"
-            gi="uuid"
-            formal-name="Inherited Universally Unique Identifier">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='control-implementation']/j:array[@key='implemented-requirements']/j:map/j:map[@key='statements']/j:map/j:map[@key='by-components']/j:map/j:array[@key='inherited']/j:map/j:string[@key='uuid']"
-                 mode="keep-value-property"
-                 priority="12"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='control-implementation']/j:array[@key='implemented-requirements']/j:map/j:map[@key='statements']/j:map/j:map[@key='by-components']/j:map/j:array[@key='inherited']/j:map/j:string[@key='description']"
                  priority="12">
       <xsl:param name="with-key" select="true()"/>
@@ -4792,20 +4633,6 @@
          <xsl:apply-templates select="*[@key='remarks']"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='control-implementation']/j:array[@key='implemented-requirements']/j:map/j:map[@key='statements']/j:map/j:map[@key='by-components']/j:map/j:array[@key='satisfied']/j:map/j:string[@key='uuid']"
-                 priority="12"><!-- XML match="system-security-plan/control-implementation/implemented-requirement/statement/by-component/satisfied/@uuid" -->
-      <flag in-json="string"
-            as-type="uuid"
-            name="uuid"
-            key="uuid"
-            gi="uuid"
-            formal-name="Satisfied Universally Unique Identifier">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='control-implementation']/j:array[@key='implemented-requirements']/j:map/j:map[@key='statements']/j:map/j:map[@key='by-components']/j:map/j:array[@key='satisfied']/j:map/j:string[@key='uuid']"
-                 mode="keep-value-property"
-                 priority="12"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='control-implementation']/j:array[@key='implemented-requirements']/j:map/j:map[@key='statements']/j:map/j:map[@key='by-components']/j:map/j:array[@key='satisfied']/j:map/j:string[@key='description']"
                  priority="12">
       <xsl:param name="with-key" select="true()"/>
@@ -4911,20 +4738,6 @@
          <xsl:apply-templates select="*[@key='remarks']"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:string[@key='uuid']"
-                 priority="6"><!-- XML match="system-security-plan/back-matter/resource/@uuid" -->
-      <flag in-json="string"
-            as-type="uuid"
-            name="uuid"
-            key="uuid"
-            gi="uuid"
-            formal-name="Resource Universally Unique Identifier">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:string[@key='uuid']"
-                 mode="keep-value-property"
-                 priority="6"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:string[@key='title']"
                  priority="6">
       <xsl:param name="with-key" select="true()"/>
@@ -4987,20 +4800,6 @@
          <xsl:apply-templates mode="keep-value-property"/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:array[@key='document-ids']/j:map/j:string[@key='scheme']"
-                 priority="8"><!-- XML match="system-security-plan/back-matter/resource/document-id/@scheme" -->
-      <flag in-json="string"
-            as-type="uri"
-            name="scheme"
-            key="scheme"
-            gi="scheme"
-            formal-name="Document Identification Scheme">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:array[@key='document-ids']/j:map/j:string[@key='scheme']"
-                 mode="keep-value-property"
-                 priority="8"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:map[@key='citation']"
                  priority="6">
       <xsl:param name="with-key" select="true()"/>
@@ -5057,20 +4856,6 @@
          <xsl:apply-templates select="*[@key='hashes']"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:array[@key='rlinks']/j:map/j:string[@key='href']"
-                 priority="8"><!-- XML match="system-security-plan/back-matter/resource/rlink/@href" -->
-      <flag in-json="string"
-            as-type="uri-reference"
-            name="href"
-            key="href"
-            gi="href"
-            formal-name="Hypertext Reference">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:array[@key='rlinks']/j:map/j:string[@key='href']"
-                 mode="keep-value-property"
-                 priority="8"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:map[@key='base64']"
                  priority="6">
       <xsl:param name="with-key" select="true()"/>
@@ -5094,20 +4879,6 @@
          <xsl:apply-templates mode="keep-value-property"/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:map[@key='base64']/j:string[@key='filename']"
-                 priority="7"><!-- XML match="system-security-plan/back-matter/resource/base64/@filename" -->
-      <flag in-json="string"
-            as-type="uri-reference"
-            name="filename"
-            key="filename"
-            gi="filename"
-            formal-name="File Name">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:map[@key='base64']/j:string[@key='filename']"
-                 mode="keep-value-property"
-                 priority="7"><!-- Not keeping the flag here. --></xsl:template>
    <!-- by default, fields traverse their properties to find a value -->
    <xsl:template match="*" mode="get-value-property">
       <xsl:apply-templates mode="keep-value-property"/>
