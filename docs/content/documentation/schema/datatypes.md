@@ -7,6 +7,8 @@ aliases:
   - /docs/schemas/datatypes/
   - /documentation/schema/datatypes/
   - /documentation/schema/model-concepts/datatypes/
+  - /documentation/schema/catalog-layer/datatypes/
+  - /documentation/schema/profile-layer/datatypes/
 ---
 
 The OSCAL models share a set of data type primitives. These data types are documented in the following sections.

@@ -183,7 +183,7 @@ executors:
     <<: *common_environment
   ruby-node-executor:
     docker: # run the ruby jobs with Docker
-      - image: circleci/ruby:2.6.5-node-browsers
+      - image: circleci/ruby:2.7.0-node-browsers
     <<: *common_environment
   python-executor:
     docker: #run the python jobs with Docker
