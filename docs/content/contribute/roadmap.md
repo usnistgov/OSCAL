@@ -18,6 +18,13 @@ Each [milestone](https://github.com/usnistgov/OSCAL/milestones) will result in a
 
 The first major version of OSCAL, OSCAL v1, will be developed over a series of milestone releases, culminating in a a [full release](#oscal-1-0-0-full-release) of OSCAL v1.
 
+OSCAL release history:
+
+- [OSCAL 1.0.0 Milestone 1](https://pages.nist.gov/OSCAL/contribute/roadmap/#oscal-100-milestone-1) - June 15, 2019
+- [OSCAL 1.0.0 Milestone 2](https://pages.nist.gov/OSCAL/contribute/roadmap/#oscal-100-milestone-2) - October 1, 2019
+- [OSCAL 1.0.0 Milestone 3](https://pages.nist.gov/OSCAL/contribute/roadmap/#oscal-100-milestone-3) - June 3, 2020
+- [OSCAL 1.0.0 Release Candidate 1](https://pages.nist.gov/OSCAL/contribute/roadmap/#oscal-100-release-candidate-1-rc1) - Dec 21, 2020
+
 ### OSCAL 1.0.0 Milestone 1
 
 {{<usa-tag>}}Development Milestone{{</usa-tag>}} OSCAL 1.0.0 [Milestone 1](https://github.com/usnistgov/OSCAL/milestone/1)
@@ -58,7 +65,7 @@ The following additional stakeholders can benefit from SSPs formatted based on t
 
 {{<usa-tag>}}Development Milestone{{</usa-tag>}} OSCAL 1.0.0 [Milestone 3](https://github.com/usnistgov/OSCAL/milestone/3)
 
-{{<usa-tag>}}Status{{</usa-tag>}} [Released](https://github.com/usnistgov/OSCAL/releases/tag/v1.0.0-milestone3)
+{{<usa-tag>}}Status{{</usa-tag>}} [Released](https://github.com/usnistgov/OSCAL/releases/tag/v1.0.0-milestone3) (June 3, 2020)
 
 {{<usa-tag>}}Focus{{</usa-tag>}} Development of the OSCAL Component Definition model and drafts of the assessment and assessment result layer models.
 
@@ -79,7 +86,7 @@ The following additional stakeholders can benefit from component definitions for
 
 {{<usa-tag>}}Development Milestone{{</usa-tag>}} OSCAL 1.0.0 [Release Candidate 1](https://github.com/usnistgov/OSCAL/milestone/8)
 
-{{<usa-tag>}}Status{{</usa-tag>}} [Released](https://github.com/usnistgov/OSCAL/releases/tag/v1.0.0-rc1)
+{{<usa-tag>}}Status{{</usa-tag>}} [Released](https://github.com/usnistgov/OSCAL/releases/tag/v1.0.0-rc1) (Dec 21, 2020)
 
 {{<usa-tag>}}Focus{{</usa-tag>}} Promote review of draft OSCAL 1.0.0 documentation and formats ahead of finalizing OSCAL 1.0.0
 
