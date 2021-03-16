@@ -30,6 +30,14 @@
       <xs:sequence>
          <xs:element name="title" minOccurs="1" maxOccurs="1">
             <xs:complexType mixed="true">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Document Title</m:formal-name>
+                     <m:description>A name given to the document, which may be used by a tool for display and navigation.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Document Title</b>: A name given to the document, which may be used by a tool for display and navigation.</xs:documentation>
+               </xs:annotation>
                <xs:complexContent>
                   <xs:extension base="oscal-ssp:markupLineType"/>
                </xs:complexContent>
@@ -122,6 +130,14 @@
       <xs:sequence>
          <xs:element name="title" minOccurs="0" maxOccurs="1">
             <xs:complexType mixed="true">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Document Title</m:formal-name>
+                     <m:description>A name given to the document revision, which may be used by a tool for display and navigation.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Document Title</b>: A name given to the document revision, which may be used by a tool for display and navigation.</xs:documentation>
+               </xs:annotation>
                <xs:complexContent>
                   <xs:extension base="oscal-ssp:markupLineType"/>
                </xs:complexContent>
@@ -184,6 +200,14 @@
       <xs:sequence>
          <xs:element name="title" minOccurs="0" maxOccurs="1">
             <xs:complexType mixed="true">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Location Title</m:formal-name>
+                     <m:description>A name given to the location, which may be used by a tool for display and navigation.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Location Title</b>: A name given to the location, which may be used by a tool for display and navigation.</xs:documentation>
+               </xs:annotation>
                <xs:complexContent>
                   <xs:extension base="oscal-ssp:markupLineType"/>
                </xs:complexContent>
@@ -429,6 +453,14 @@
       <xs:sequence>
          <xs:element name="title" minOccurs="1" maxOccurs="1">
             <xs:complexType mixed="true">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Role Title</m:formal-name>
+                     <m:description>A name given to the role, which may be used by a tool for display and navigation.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Role Title</b>: A name given to the role, which may be used by a tool for display and navigation.</xs:documentation>
+               </xs:annotation>
                <xs:complexContent>
                   <xs:extension base="oscal-ssp:markupLineType"/>
                </xs:complexContent>
@@ -448,6 +480,14 @@
             </xs:simpleType>
          </xs:element>
          <xs:element name="description" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Role Description</m:formal-name>
+                  <m:description>A summary of the role's purpose and associated responsibilities.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Role Description</b>: A summary of the role's purpose and associated responsibilities.</xs:documentation>
+            </xs:annotation>
             <xs:complexType>
                <xs:complexContent>
                   <xs:extension base="oscal-ssp:markupMultilineType"/>
@@ -527,12 +567,28 @@
                <xs:sequence>
                   <xs:element name="title" minOccurs="0" maxOccurs="1">
                      <xs:complexType mixed="true">
+                        <xs:annotation>
+                           <xs:appinfo>
+                              <m:formal-name>Resource Title</m:formal-name>
+                              <m:description>A name given to the resource, which may be used by a tool for display and navigation.</m:description>
+                           </xs:appinfo>
+                           <xs:documentation>
+                              <b>Resource Title</b>: A name given to the resource, which may be used by a tool for display and navigation.</xs:documentation>
+                        </xs:annotation>
                         <xs:complexContent>
                            <xs:extension base="oscal-ssp:markupLineType"/>
                         </xs:complexContent>
                      </xs:complexType>
                   </xs:element>
                   <xs:element name="description" minOccurs="0" maxOccurs="1">
+                     <xs:annotation>
+                        <xs:appinfo>
+                           <m:formal-name>Resource Description</m:formal-name>
+                           <m:description>A short summary of the resource used to indicate the purpose of the resource.</m:description>
+                        </xs:appinfo>
+                        <xs:documentation>
+                           <b>Resource Description</b>: A short summary of the resource used to indicate the purpose of the resource.</xs:documentation>
+                     </xs:annotation>
                      <xs:complexType>
                         <xs:complexContent>
                            <xs:extension base="oscal-ssp:markupMultilineType"/>
@@ -564,6 +620,14 @@
                         <xs:sequence>
                            <xs:element name="text" minOccurs="1" maxOccurs="1">
                               <xs:complexType mixed="true">
+                                 <xs:annotation>
+                                    <xs:appinfo>
+                                       <m:formal-name>Citation Text</m:formal-name>
+                                       <m:description>A line of citation text.</m:description>
+                                    </xs:appinfo>
+                                    <xs:documentation>
+                                       <b>Citation Text</b>: A line of citation text.</xs:documentation>
+                                 </xs:annotation>
                                  <xs:complexContent>
                                     <xs:extension base="oscal-ssp:markupLineType"/>
                                  </xs:complexContent>
@@ -839,6 +903,14 @@
       <xs:sequence>
          <xs:element name="text" minOccurs="0" maxOccurs="1">
             <xs:complexType mixed="true">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Link Text</m:formal-name>
+                     <m:description>A textual label to associate with the link, which may be used for presentation in a tool.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Link Text</b>: A textual label to associate with the link, which may be used for presentation in a tool.</xs:documentation>
+               </xs:annotation>
                <xs:complexContent>
                   <xs:extension base="oscal-ssp:markupLineType"/>
                </xs:complexContent>
@@ -1152,7 +1224,16 @@
             </xs:simpleType>
          </xs:element>
       </xs:sequence>
-      <xs:attribute name="type" type="xs:string"/>
+      <xs:attribute name="type" type="xs:NCName">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Address Type</m:formal-name>
+               <m:description>Indicates the type of address.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Address Type</b>: Indicates the type of address.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
    </xs:complexType>
    <xs:simpleType name="oscal-metadata-addr-line-FIELD">
       <xs:annotation>
@@ -1201,12 +1282,28 @@
       <xs:sequence>
          <xs:element name="title" minOccurs="1" maxOccurs="1">
             <xs:complexType mixed="true">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Component Title</m:formal-name>
+                     <m:description>A human readable name for the system component.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Component Title</b>: A human readable name for the system component.</xs:documentation>
+               </xs:annotation>
                <xs:complexContent>
                   <xs:extension base="oscal-ssp:markupLineType"/>
                </xs:complexContent>
             </xs:complexType>
          </xs:element>
          <xs:element name="description" minOccurs="1" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Component Description</m:formal-name>
+                  <m:description>A description of the component, including information about its function.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Component Description</b>: A description of the component, including information about its function.</xs:documentation>
+            </xs:annotation>
             <xs:complexType>
                <xs:complexContent>
                   <xs:extension base="oscal-ssp:markupMultilineType"/>
@@ -1215,6 +1312,14 @@
          </xs:element>
          <xs:element name="purpose" minOccurs="0" maxOccurs="1">
             <xs:complexType mixed="true">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Purpose</m:formal-name>
+                     <m:description>A summary of the technological or business purpose of the component.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Purpose</b>: A summary of the technological or business purpose of the component.</xs:documentation>
+               </xs:annotation>
                <xs:complexContent>
                   <xs:extension base="oscal-ssp:markupLineType"/>
                </xs:complexContent>
@@ -1328,6 +1433,14 @@
       <xs:sequence>
          <xs:element name="title" minOccurs="0" maxOccurs="1">
             <xs:complexType mixed="true">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>title field</m:formal-name>
+                     <m:description>A human readable name for the protocol (e.g., Transport Layer Security).</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>title field</b>: A human readable name for the protocol (e.g., Transport Layer Security).</xs:documentation>
+               </xs:annotation>
                <xs:complexContent>
                   <xs:extension base="oscal-ssp:markupLineType"/>
                </xs:complexContent>
@@ -1411,6 +1524,14 @@
       <xs:sequence>
          <xs:element name="title" minOccurs="0" maxOccurs="1">
             <xs:complexType mixed="true">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>User Title</m:formal-name>
+                     <m:description>A name given to the user, which may be used by a tool for display and navigation.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>User Title</b>: A name given to the user, which may be used by a tool for display and navigation.</xs:documentation>
+               </xs:annotation>
                <xs:complexContent>
                   <xs:extension base="oscal-ssp:markupLineType"/>
                </xs:complexContent>
@@ -1430,6 +1551,14 @@
             </xs:simpleType>
          </xs:element>
          <xs:element name="description" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>User Description</m:formal-name>
+                  <m:description>A summary of the user's purpose within the system.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>User Description</b>: A summary of the user's purpose within the system.</xs:documentation>
+            </xs:annotation>
             <xs:complexType>
                <xs:complexContent>
                   <xs:extension base="oscal-ssp:markupMultilineType"/>
@@ -1495,12 +1624,28 @@
       <xs:sequence>
          <xs:element name="title" minOccurs="1" maxOccurs="1">
             <xs:complexType mixed="true">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>title field</m:formal-name>
+                     <m:description>A human readable name for the privilege.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>title field</b>: A human readable name for the privilege.</xs:documentation>
+               </xs:annotation>
                <xs:complexContent>
                   <xs:extension base="oscal-ssp:markupLineType"/>
                </xs:complexContent>
             </xs:complexType>
          </xs:element>
          <xs:element name="description" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Privilege Description</m:formal-name>
+                  <m:description>A summary of the privilege's purpose within the system.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Privilege Description</b>: A summary of the privilege's purpose within the system.</xs:documentation>
+            </xs:annotation>
             <xs:complexType>
                <xs:complexContent>
                   <xs:extension base="oscal-ssp:markupMultilineType"/>
@@ -1535,6 +1680,14 @@
       </xs:annotation>
       <xs:sequence>
          <xs:element name="description" minOccurs="1" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Inventory Item Description</m:formal-name>
+                  <m:description>A summary of the inventory item stating its purpose within the system.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Inventory Item Description</b>: A summary of the inventory item stating its purpose within the system.</xs:documentation>
+            </xs:annotation>
             <xs:complexType>
                <xs:complexContent>
                   <xs:extension base="oscal-ssp:markupMultilineType"/>
@@ -1839,6 +1992,14 @@
             </xs:simpleType>
          </xs:element>
          <xs:element name="description" minOccurs="1" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>System Description</m:formal-name>
+                  <m:description>A summary of the system.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>System Description</b>: A summary of the system.</xs:documentation>
+            </xs:annotation>
             <xs:complexType>
                <xs:complexContent>
                   <xs:extension base="oscal-ssp:markupMultilineType"/>
@@ -1954,12 +2115,28 @@
                <xs:sequence>
                   <xs:element name="title" minOccurs="1" maxOccurs="1">
                      <xs:complexType mixed="true">
+                        <xs:annotation>
+                           <xs:appinfo>
+                              <m:formal-name>title field</m:formal-name>
+                              <m:description>A human readable name for the information type. This title should be meaningful within the context of the system.</m:description>
+                           </xs:appinfo>
+                           <xs:documentation>
+                              <b>title field</b>: A human readable name for the information type. This title should be meaningful within the context of the system.</xs:documentation>
+                        </xs:annotation>
                         <xs:complexContent>
                            <xs:extension base="oscal-ssp:markupLineType"/>
                         </xs:complexContent>
                      </xs:complexType>
                   </xs:element>
                   <xs:element name="description" minOccurs="1" maxOccurs="1">
+                     <xs:annotation>
+                        <xs:appinfo>
+                           <m:formal-name>Information Type Description</m:formal-name>
+                           <m:description>A summary of how this information type is used within the system.</m:description>
+                        </xs:appinfo>
+                        <xs:documentation>
+                           <b>Information Type Description</b>: A summary of how this information type is used within the system.</xs:documentation>
+                     </xs:annotation>
                      <xs:complexType>
                         <xs:complexContent>
                            <xs:extension base="oscal-ssp:markupMultilineType"/>
@@ -2311,6 +2488,14 @@
       </xs:annotation>
       <xs:sequence>
          <xs:element name="description" minOccurs="1" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Authorization Boundary Description</m:formal-name>
+                  <m:description>A summary of the system's authorization boundary.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Authorization Boundary Description</b>: A summary of the system's authorization boundary.</xs:documentation>
+            </xs:annotation>
             <xs:complexType>
                <xs:complexContent>
                   <xs:extension base="oscal-ssp:markupMultilineType"/>
@@ -2334,6 +2519,14 @@
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>remarks field</m:formal-name>
+                  <m:description>Commentary about the system's authorization boundary that enhances the diagram.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>remarks field</b>: Commentary about the system's authorization boundary that enhances the diagram.</xs:documentation>
+            </xs:annotation>
             <xs:complexType>
                <xs:complexContent>
                   <xs:extension base="oscal-ssp:markupMultilineType"/>
@@ -2353,6 +2546,14 @@
       </xs:annotation>
       <xs:sequence>
          <xs:element name="description" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Diagram Description</m:formal-name>
+                  <m:description>A summary of the diagram.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Diagram Description</b>: A summary of the diagram.</xs:documentation>
+            </xs:annotation>
             <xs:complexType>
                <xs:complexContent>
                   <xs:extension base="oscal-ssp:markupMultilineType"/>
@@ -2373,12 +2574,28 @@
                      maxOccurs="unbounded"/>
          <xs:element name="caption" minOccurs="0" maxOccurs="1">
             <xs:complexType mixed="true">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Caption</m:formal-name>
+                     <m:description>A brief caption to annotate the diagram.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Caption</b>: A brief caption to annotate the diagram.</xs:documentation>
+               </xs:annotation>
                <xs:complexContent>
                   <xs:extension base="oscal-ssp:markupLineType"/>
                </xs:complexContent>
             </xs:complexType>
          </xs:element>
          <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>remarks field</m:formal-name>
+                  <m:description>Commentary about the diagram that enhances it.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>remarks field</b>: Commentary about the diagram that enhances it.</xs:documentation>
+            </xs:annotation>
             <xs:complexType>
                <xs:complexContent>
                   <xs:extension base="oscal-ssp:markupMultilineType"/>
@@ -2408,6 +2625,14 @@
       </xs:annotation>
       <xs:sequence>
          <xs:element name="description" minOccurs="1" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Network Architecture Description</m:formal-name>
+                  <m:description>A summary of the system's network architecture.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Network Architecture Description</b>: A summary of the system's network architecture.</xs:documentation>
+            </xs:annotation>
             <xs:complexType>
                <xs:complexContent>
                   <xs:extension base="oscal-ssp:markupMultilineType"/>
@@ -2458,6 +2683,14 @@
       </xs:annotation>
       <xs:sequence>
          <xs:element name="description" minOccurs="1" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Data Flow Description</m:formal-name>
+                  <m:description>A summary of the system's data flow.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Data Flow Description</b>: A summary of the system's data flow.</xs:documentation>
+            </xs:annotation>
             <xs:complexType>
                <xs:complexContent>
                   <xs:extension base="oscal-ssp:markupMultilineType"/>
@@ -2532,6 +2765,14 @@
                <xs:sequence>
                   <xs:element name="title" minOccurs="1" maxOccurs="1">
                      <xs:complexType mixed="true">
+                        <xs:annotation>
+                           <xs:appinfo>
+                              <m:formal-name>title field</m:formal-name>
+                              <m:description>A human readable name for the leveraged authorization in the context of the system.</m:description>
+                           </xs:appinfo>
+                           <xs:documentation>
+                              <b>title field</b>: A human readable name for the leveraged authorization in the context of the system.</xs:documentation>
+                        </xs:annotation>
                         <xs:complexContent>
                            <xs:extension base="oscal-ssp:markupLineType"/>
                         </xs:complexContent>
@@ -2634,6 +2875,14 @@
       </xs:annotation>
       <xs:sequence>
          <xs:element name="description" minOccurs="1" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Control Implementation Description</m:formal-name>
+                  <m:description>A statement describing important things to know about how this set of control satisfaction documentation is approached.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Control Implementation Description</b>: A statement describing important things to know about how this set of control satisfaction documentation is approached.</xs:documentation>
+            </xs:annotation>
             <xs:complexType>
                <xs:complexContent>
                   <xs:extension base="oscal-ssp:markupMultilineType"/>
@@ -2795,6 +3044,14 @@
       </xs:annotation>
       <xs:sequence>
          <xs:element name="description" minOccurs="1" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Control Implementation Description</m:formal-name>
+                  <m:description>An implementation statement that describes how a control or a control statement is implemented within the referenced system component.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Control Implementation Description</b>: An implementation statement that describes how a control or a control statement is implemented within the referenced system component.</xs:documentation>
+            </xs:annotation>
             <xs:complexType>
                <xs:complexContent>
                   <xs:extension base="oscal-ssp:markupMultilineType"/>
@@ -2829,6 +3086,14 @@
                </xs:annotation>
                <xs:sequence>
                   <xs:element name="description" minOccurs="0" maxOccurs="1">
+                     <xs:annotation>
+                        <xs:appinfo>
+                           <m:formal-name>Control Implementation Export Description</m:formal-name>
+                           <m:description>An implementation statement that describes the aspects of the control or control statement implementation that can be available to another system leveraging this system.</m:description>
+                        </xs:appinfo>
+                        <xs:documentation>
+                           <b>Control Implementation Export Description</b>: An implementation statement that describes the aspects of the control or control statement implementation that can be available to another system leveraging this system.</xs:documentation>
+                     </xs:annotation>
                      <xs:complexType>
                         <xs:complexContent>
                            <xs:extension base="oscal-ssp:markupMultilineType"/>
@@ -2859,6 +3124,14 @@
                         </xs:annotation>
                         <xs:sequence>
                            <xs:element name="description" minOccurs="1" maxOccurs="1">
+                              <xs:annotation>
+                                 <xs:appinfo>
+                                    <m:formal-name>Provided Control Implementation Description</m:formal-name>
+                                    <m:description>An implementation statement that describes the aspects of the control or control statement implementation that can be provided to another system leveraging this system.</m:description>
+                                 </xs:appinfo>
+                                 <xs:documentation>
+                                    <b>Provided Control Implementation Description</b>: An implementation statement that describes the aspects of the control or control statement implementation that can be provided to another system leveraging this system.</xs:documentation>
+                              </xs:annotation>
                               <xs:complexType>
                                  <xs:complexContent>
                                     <xs:extension base="oscal-ssp:markupMultilineType"/>
@@ -2921,6 +3194,14 @@
                         </xs:annotation>
                         <xs:sequence>
                            <xs:element name="description" minOccurs="1" maxOccurs="1">
+                              <xs:annotation>
+                                 <xs:appinfo>
+                                    <m:formal-name>Control Implementation Responsibility Description</m:formal-name>
+                                    <m:description>An implementation statement that describes the aspects of the control or control statement implementation that a leveraging system must implement to satisfy the control provided by a leveraged system.</m:description>
+                                 </xs:appinfo>
+                                 <xs:documentation>
+                                    <b>Control Implementation Responsibility Description</b>: An implementation statement that describes the aspects of the control or control statement implementation that a leveraging system must implement to satisfy the control provided by a leveraged system.</xs:documentation>
+                              </xs:annotation>
                               <xs:complexType>
                                  <xs:complexContent>
                                     <xs:extension base="oscal-ssp:markupMultilineType"/>
@@ -3011,6 +3292,14 @@
                </xs:annotation>
                <xs:sequence>
                   <xs:element name="description" minOccurs="1" maxOccurs="1">
+                     <xs:annotation>
+                        <xs:appinfo>
+                           <m:formal-name>Inherited Control Implementation Description</m:formal-name>
+                           <m:description>An implementation statement that describes the aspects of a control or control statement implementation that a leveraging system is inheriting from a leveraged system.</m:description>
+                        </xs:appinfo>
+                        <xs:documentation>
+                           <b>Inherited Control Implementation Description</b>: An implementation statement that describes the aspects of a control or control statement implementation that a leveraging system is inheriting from a leveraged system.</xs:documentation>
+                     </xs:annotation>
                      <xs:complexType>
                         <xs:complexContent>
                            <xs:extension base="oscal-ssp:markupMultilineType"/>
@@ -3068,6 +3357,14 @@
                </xs:annotation>
                <xs:sequence>
                   <xs:element name="description" minOccurs="1" maxOccurs="1">
+                     <xs:annotation>
+                        <xs:appinfo>
+                           <m:formal-name>Satisfied Control Implementation Responsibility Description</m:formal-name>
+                           <m:description>An implementation statement that describes the aspects of a control or control statement implementation that a leveraging system is implementing based on a requirement from a leveraged system.</m:description>
+                        </xs:appinfo>
+                        <xs:documentation>
+                           <b>Satisfied Control Implementation Responsibility Description</b>: An implementation statement that describes the aspects of a control or control statement implementation that a leveraging system is implementing based on a requirement from a leveraged system.</xs:documentation>
+                     </xs:annotation>
                      <xs:complexType>
                         <xs:complexContent>
                            <xs:extension base="oscal-ssp:markupMultilineType"/>

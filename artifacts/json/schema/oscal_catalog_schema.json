@@ -4,7 +4,7 @@
     "$comment" : "OSCAL Control Catalog Model: JSON Schema",
     "type" : "object",
     "definitions" : 
-    { "part" : 
+    { "oscal-catalog-part" : 
       { "title" : "Part",
         "description" : "A partition of a control's definition or a child of another part.",
         "$id" : "#/definitions/part",
@@ -58,7 +58,7 @@
         "required" : 
         [ "name" ],
         "additionalProperties" : true },
-      "parameter" : 
+      "oscal-catalog-parameter" : 
       { "title" : "Parameter",
         "description" : "Parameters provide a mechanism for the dynamic assignment of value(s) in a control.",
         "$id" : "#/definitions/parameter",
@@ -121,7 +121,7 @@
         "required" : 
         [ "id" ],
         "additionalProperties" : true },
-      "parameter-constraint" : 
+      "oscal-catalog-parameter-constraint" : 
       { "title" : "Constraint",
         "description" : "A formal or informal expression of a constraint or test",
         "$id" : "#/definitions/parameter-constraint",
@@ -149,7 +149,7 @@
               [ "expression" ],
               "additionalProperties" : false } } },
         "additionalProperties" : false },
-      "parameter-guideline" : 
+      "oscal-catalog-parameter-guideline" : 
       { "title" : "Guideline",
         "description" : "A prose statement that provides a recommendation for the use of a parameter.",
         "$id" : "#/definitions/parameter-guideline",
@@ -162,12 +162,12 @@
         "required" : 
         [ "prose" ],
         "additionalProperties" : true },
-      "parameter-value" : 
+      "oscal-catalog-parameter-value" : 
       { "title" : "Parameter Value",
         "description" : "A parameter value or set of values.",
         "$id" : "#/definitions/parameter-value",
         "type" : "string" },
-      "parameter-selection" : 
+      "oscal-catalog-parameter-selection" : 
       { "title" : "Selection",
         "description" : "Presenting a choice among alternatives",
         "$id" : "#/definitions/parameter-selection",
@@ -185,7 +185,7 @@
               "description" : "A value selection among several such options",
               "type" : "string" } } },
         "additionalProperties" : true },
-      "metadata" : 
+      "oscal-catalog-metadata" : 
       { "title" : "Publication metadata",
         "description" : "Provides information about the publication and availability of the containing document.",
         "$id" : "#/definitions/metadata",
@@ -261,7 +261,7 @@
           "version",
           "oscal-version" ],
         "additionalProperties" : false },
-      "oscal-metadata-revision" : 
+      "oscal-catalog-oscal-metadata-revision" : 
       { "title" : "Revision History Entry",
         "description" : "An entry in a sequential list of revisions to the containing document in reverse chronological order (i.e., most recent previous revision first).",
         "$id" : "#/definitions/oscal-metadata-revision",
@@ -297,7 +297,7 @@
           "remarks" : 
           { "$ref" : "#/definitions/remarks" } },
         "additionalProperties" : false },
-      "location" : 
+      "oscal-catalog-location" : 
       { "title" : "Location",
         "description" : "A location, with associated metadata that can be referenced.",
         "$id" : "#/definitions/location",
@@ -353,13 +353,13 @@
         [ "uuid",
           "address" ],
         "additionalProperties" : false },
-      "location-uuid" : 
+      "oscal-catalog-location-uuid" : 
       { "title" : "Location Reference",
         "description" : "References a location defined in metadata.",
         "$id" : "#/definitions/location-uuid",
         "type" : "string",
         "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
-      "party" : 
+      "oscal-catalog-party" : 
       { "title" : "Party (organization or person)",
         "description" : "A responsible entity which is either a person or an organization.",
         "$id" : "#/definitions/party",
@@ -453,13 +453,13 @@
         [ "uuid",
           "type" ],
         "additionalProperties" : false },
-      "party-uuid" : 
+      "oscal-catalog-party-uuid" : 
       { "title" : "Party Reference",
         "description" : "References a party defined in metadata.",
         "$id" : "#/definitions/party-uuid",
         "type" : "string",
         "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
-      "role" : 
+      "oscal-catalog-role" : 
       { "title" : "Role",
         "description" : "Defines a function assumed or expected to be assumed by a party in a specific situation.",
         "$id" : "#/definitions/role",
@@ -502,7 +502,7 @@
         [ "id",
           "title" ],
         "additionalProperties" : false },
-      "back-matter" : 
+      "oscal-catalog-back-matter" : 
       { "title" : "Back matter",
         "description" : "A collection of resources, which may be included directly or by reference.",
         "$id" : "#/definitions/back-matter",
@@ -621,7 +621,7 @@
               [ "uuid" ],
               "additionalProperties" : true } } },
         "additionalProperties" : false },
-      "property" : 
+      "oscal-catalog-property" : 
       { "title" : "Property",
         "description" : "An attribute, characteristic, or quality of the containing object expressed as a namespace qualified name/value pair. The value of a property is a simple scalar value, which may be expressed as a list of values in some OSCAL formats.",
         "$id" : "#/definitions/property",
@@ -651,7 +651,7 @@
         [ "value",
           "name" ],
         "additionalProperties" : false },
-      "annotation" : 
+      "oscal-catalog-annotation" : 
       { "title" : "Annotated Property",
         "description" : "An attribute, characteristic, or quality of the containing object expressed as a namespace qualified name/value pair with optional explanatory remarks. The value of an annotated property is a simple scalar value.",
         "$id" : "#/definitions/annotation",
@@ -681,7 +681,7 @@
         [ "name",
           "value" ],
         "additionalProperties" : false },
-      "link" : 
+      "oscal-catalog-link" : 
       { "title" : "Link",
         "description" : "A reference to a local or remote resource",
         "$id" : "#/definitions/link",
@@ -707,7 +707,7 @@
         "required" : 
         [ "href" ],
         "additionalProperties" : false },
-      "responsible-party" : 
+      "oscal-catalog-responsible-party" : 
       { "title" : "Responsible Party",
         "description" : "A reference to a set of organizations or persons that have responsibility for performing a referenced role in the context of the containing object.",
         "$id" : "#/definitions/responsible-party",
@@ -738,7 +738,7 @@
         "required" : 
         [ "party-uuids" ],
         "additionalProperties" : false },
-      "hash" : 
+      "oscal-catalog-hash" : 
       { "title" : "Hash",
         "description" : "A representation of a cryptographic digest generated over a resource using a specified hash algorithm.",
         "$id" : "#/definitions/hash",
@@ -754,43 +754,43 @@
         [ "value",
           "algorithm" ],
         "additionalProperties" : false },
-      "remarks" : 
+      "oscal-catalog-remarks" : 
       { "title" : "Remarks",
         "description" : "Additional commentary on the containing object.",
         "$id" : "#/definitions/remarks",
         "type" : "string" },
-      "oscal-metadata-published" : 
+      "oscal-catalog-oscal-metadata-published" : 
       { "title" : "Publication Timestamp",
         "description" : "The date and time the document was published. The date-time value must be formatted according to RFC 3339 with full time and time zone included.",
         "$id" : "#/definitions/oscal-metadata-published",
         "type" : "string",
         "format" : "date-time",
         "pattern" : "^((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})$" },
-      "oscal-metadata-last-modified" : 
+      "oscal-catalog-oscal-metadata-last-modified" : 
       { "title" : "Last Modified Timestamp",
         "description" : "The date and time the document was last modified. The date-time value must be formatted according to RFC 3339 with full time and time zone included.",
         "$id" : "#/definitions/oscal-metadata-last-modified",
         "type" : "string",
         "format" : "date-time",
         "pattern" : "^((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})$" },
-      "oscal-metadata-version" : 
+      "oscal-catalog-oscal-metadata-version" : 
       { "title" : "Document Version",
         "description" : "A string used to distinguish the current version of the document from other previous (and future) versions.",
         "$id" : "#/definitions/oscal-metadata-version",
         "type" : "string" },
-      "oscal-metadata-oscal-version" : 
+      "oscal-catalog-oscal-metadata-oscal-version" : 
       { "title" : "OSCAL version",
         "description" : "The OSCAL model version the document was authored against.",
         "$id" : "#/definitions/oscal-metadata-oscal-version",
         "type" : "string" },
-      "oscal-metadata-email-address" : 
+      "oscal-catalog-oscal-metadata-email-address" : 
       { "title" : "Email Address",
         "description" : "An email address as defined by RFC 5322 Section 3.4.1.",
         "$id" : "#/definitions/oscal-metadata-email-address",
         "type" : "string",
         "format" : "email",
         "pattern" : "^.+@.+" },
-      "oscal-metadata-telephone-number" : 
+      "oscal-catalog-oscal-metadata-telephone-number" : 
       { "title" : "Telephone Number",
         "description" : "Contact number by telephone.",
         "$id" : "#/definitions/oscal-metadata-telephone-number",
@@ -805,14 +805,16 @@
         "required" : 
         [ "number" ],
         "additionalProperties" : false },
-      "oscal-metadata-address" : 
+      "oscal-catalog-oscal-metadata-address" : 
       { "title" : "Address",
         "description" : "A postal address for the location.",
         "$id" : "#/definitions/oscal-metadata-address",
         "type" : "object",
         "properties" : 
         { "type" : 
-          { "type" : "string" },
+          { "title" : "Address Type",
+            "description" : "Indicates the type of address.",
+            "type" : "string" },
           "addr-lines" : 
           { "type" : "array",
             "minItems" : 1,
@@ -835,12 +837,12 @@
             "description" : "The ISO 3166-1 alpha-2 country code for the mailing address.",
             "type" : "string" } },
         "additionalProperties" : false },
-      "oscal-metadata-addr-line" : 
+      "oscal-catalog-oscal-metadata-addr-line" : 
       { "title" : "Address line",
         "description" : "A single line of an address.",
         "$id" : "#/definitions/oscal-metadata-addr-line",
         "type" : "string" },
-      "oscal-metadata-document-id" : 
+      "oscal-catalog-oscal-metadata-document-id" : 
       { "title" : "Document Identifier",
         "description" : "A document identifier qualified by an identifier type.",
         "$id" : "#/definitions/oscal-metadata-document-id",
@@ -857,7 +859,7 @@
         [ "identifier",
           "scheme" ],
         "additionalProperties" : false },
-      "catalog" : 
+      "oscal-catalog-catalog" : 
       { "title" : "Catalog",
         "description" : "A collection of controls.",
         "$id" : "#/definitions/catalog",
@@ -891,7 +893,7 @@
         [ "uuid",
           "metadata" ],
         "additionalProperties" : false },
-      "group" : 
+      "oscal-catalog-group" : 
       { "title" : "Control Group",
         "description" : "A group of controls, or of groups of controls.",
         "$id" : "#/definitions/group",
@@ -947,7 +949,7 @@
         "required" : 
         [ "title" ],
         "additionalProperties" : false },
-      "control" : 
+      "oscal-catalog-control" : 
       { "title" : "Control",
         "description" : "A structured information object representing a security or privacy control. Each security or privacy control within the Catalog is defined by a distinct control instance.",
         "$id" : "#/definitions/control",

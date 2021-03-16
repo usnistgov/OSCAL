@@ -4,7 +4,7 @@
     "$comment" : "OSCAL Component Definition Model: JSON Schema",
     "type" : "object",
     "definitions" : 
-    { "metadata" : 
+    { "oscal-component-definition-metadata" : 
       { "title" : "Publication metadata",
         "description" : "Provides information about the publication and availability of the containing document.",
         "$id" : "#/definitions/metadata",
@@ -80,7 +80,7 @@
           "version",
           "oscal-version" ],
         "additionalProperties" : false },
-      "oscal-metadata-revision" : 
+      "oscal-component-definition-oscal-metadata-revision" : 
       { "title" : "Revision History Entry",
         "description" : "An entry in a sequential list of revisions to the containing document in reverse chronological order (i.e., most recent previous revision first).",
         "$id" : "#/definitions/oscal-metadata-revision",
@@ -116,7 +116,7 @@
           "remarks" : 
           { "$ref" : "#/definitions/remarks" } },
         "additionalProperties" : false },
-      "location" : 
+      "oscal-component-definition-location" : 
       { "title" : "Location",
         "description" : "A location, with associated metadata that can be referenced.",
         "$id" : "#/definitions/location",
@@ -172,13 +172,13 @@
         [ "uuid",
           "address" ],
         "additionalProperties" : false },
-      "location-uuid" : 
+      "oscal-component-definition-location-uuid" : 
       { "title" : "Location Reference",
         "description" : "References a location defined in metadata.",
         "$id" : "#/definitions/location-uuid",
         "type" : "string",
         "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
-      "party" : 
+      "oscal-component-definition-party" : 
       { "title" : "Party (organization or person)",
         "description" : "A responsible entity which is either a person or an organization.",
         "$id" : "#/definitions/party",
@@ -272,13 +272,13 @@
         [ "uuid",
           "type" ],
         "additionalProperties" : false },
-      "party-uuid" : 
+      "oscal-component-definition-party-uuid" : 
       { "title" : "Party Reference",
         "description" : "References a party defined in metadata.",
         "$id" : "#/definitions/party-uuid",
         "type" : "string",
         "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
-      "role" : 
+      "oscal-component-definition-role" : 
       { "title" : "Role",
         "description" : "Defines a function assumed or expected to be assumed by a party in a specific situation.",
         "$id" : "#/definitions/role",
@@ -321,7 +321,7 @@
         [ "id",
           "title" ],
         "additionalProperties" : false },
-      "back-matter" : 
+      "oscal-component-definition-back-matter" : 
       { "title" : "Back matter",
         "description" : "A collection of resources, which may be included directly or by reference.",
         "$id" : "#/definitions/back-matter",
@@ -440,7 +440,7 @@
               [ "uuid" ],
               "additionalProperties" : true } } },
         "additionalProperties" : false },
-      "property" : 
+      "oscal-component-definition-property" : 
       { "title" : "Property",
         "description" : "An attribute, characteristic, or quality of the containing object expressed as a namespace qualified name/value pair. The value of a property is a simple scalar value, which may be expressed as a list of values in some OSCAL formats.",
         "$id" : "#/definitions/property",
@@ -470,7 +470,7 @@
         [ "value",
           "name" ],
         "additionalProperties" : false },
-      "annotation" : 
+      "oscal-component-definition-annotation" : 
       { "title" : "Annotated Property",
         "description" : "An attribute, characteristic, or quality of the containing object expressed as a namespace qualified name/value pair with optional explanatory remarks. The value of an annotated property is a simple scalar value.",
         "$id" : "#/definitions/annotation",
@@ -500,7 +500,7 @@
         [ "name",
           "value" ],
         "additionalProperties" : false },
-      "link" : 
+      "oscal-component-definition-link" : 
       { "title" : "Link",
         "description" : "A reference to a local or remote resource",
         "$id" : "#/definitions/link",
@@ -526,7 +526,7 @@
         "required" : 
         [ "href" ],
         "additionalProperties" : false },
-      "responsible-party" : 
+      "oscal-component-definition-responsible-party" : 
       { "title" : "Responsible Party",
         "description" : "A reference to a set of organizations or persons that have responsibility for performing a referenced role in the context of the containing object.",
         "$id" : "#/definitions/responsible-party",
@@ -557,7 +557,7 @@
         "required" : 
         [ "party-uuids" ],
         "additionalProperties" : false },
-      "responsible-role" : 
+      "oscal-component-definition-responsible-role" : 
       { "title" : "Responsible Role",
         "description" : "A reference to one or more roles with responsibility for performing a function relative to the containing object.",
         "$id" : "#/definitions/responsible-role",
@@ -586,7 +586,7 @@
           "remarks" : 
           { "$ref" : "#/definitions/remarks" } },
         "additionalProperties" : false },
-      "hash" : 
+      "oscal-component-definition-hash" : 
       { "title" : "Hash",
         "description" : "A representation of a cryptographic digest generated over a resource using a specified hash algorithm.",
         "$id" : "#/definitions/hash",
@@ -602,43 +602,43 @@
         [ "value",
           "algorithm" ],
         "additionalProperties" : false },
-      "remarks" : 
+      "oscal-component-definition-remarks" : 
       { "title" : "Remarks",
         "description" : "Additional commentary on the containing object.",
         "$id" : "#/definitions/remarks",
         "type" : "string" },
-      "oscal-metadata-published" : 
+      "oscal-component-definition-oscal-metadata-published" : 
       { "title" : "Publication Timestamp",
         "description" : "The date and time the document was published. The date-time value must be formatted according to RFC 3339 with full time and time zone included.",
         "$id" : "#/definitions/oscal-metadata-published",
         "type" : "string",
         "format" : "date-time",
         "pattern" : "^((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})$" },
-      "oscal-metadata-last-modified" : 
+      "oscal-component-definition-oscal-metadata-last-modified" : 
       { "title" : "Last Modified Timestamp",
         "description" : "The date and time the document was last modified. The date-time value must be formatted according to RFC 3339 with full time and time zone included.",
         "$id" : "#/definitions/oscal-metadata-last-modified",
         "type" : "string",
         "format" : "date-time",
         "pattern" : "^((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})$" },
-      "oscal-metadata-version" : 
+      "oscal-component-definition-oscal-metadata-version" : 
       { "title" : "Document Version",
         "description" : "A string used to distinguish the current version of the document from other previous (and future) versions.",
         "$id" : "#/definitions/oscal-metadata-version",
         "type" : "string" },
-      "oscal-metadata-oscal-version" : 
+      "oscal-component-definition-oscal-metadata-oscal-version" : 
       { "title" : "OSCAL version",
         "description" : "The OSCAL model version the document was authored against.",
         "$id" : "#/definitions/oscal-metadata-oscal-version",
         "type" : "string" },
-      "oscal-metadata-email-address" : 
+      "oscal-component-definition-oscal-metadata-email-address" : 
       { "title" : "Email Address",
         "description" : "An email address as defined by RFC 5322 Section 3.4.1.",
         "$id" : "#/definitions/oscal-metadata-email-address",
         "type" : "string",
         "format" : "email",
         "pattern" : "^.+@.+" },
-      "oscal-metadata-telephone-number" : 
+      "oscal-component-definition-oscal-metadata-telephone-number" : 
       { "title" : "Telephone Number",
         "description" : "Contact number by telephone.",
         "$id" : "#/definitions/oscal-metadata-telephone-number",
@@ -653,14 +653,16 @@
         "required" : 
         [ "number" ],
         "additionalProperties" : false },
-      "oscal-metadata-address" : 
+      "oscal-component-definition-oscal-metadata-address" : 
       { "title" : "Address",
         "description" : "A postal address for the location.",
         "$id" : "#/definitions/oscal-metadata-address",
         "type" : "object",
         "properties" : 
         { "type" : 
-          { "type" : "string" },
+          { "title" : "Address Type",
+            "description" : "Indicates the type of address.",
+            "type" : "string" },
           "addr-lines" : 
           { "type" : "array",
             "minItems" : 1,
@@ -683,12 +685,12 @@
             "description" : "The ISO 3166-1 alpha-2 country code for the mailing address.",
             "type" : "string" } },
         "additionalProperties" : false },
-      "oscal-metadata-addr-line" : 
+      "oscal-component-definition-oscal-metadata-addr-line" : 
       { "title" : "Address line",
         "description" : "A single line of an address.",
         "$id" : "#/definitions/oscal-metadata-addr-line",
         "type" : "string" },
-      "oscal-metadata-document-id" : 
+      "oscal-component-definition-oscal-metadata-document-id" : 
       { "title" : "Document Identifier",
         "description" : "A document identifier qualified by an identifier type.",
         "$id" : "#/definitions/oscal-metadata-document-id",
@@ -705,7 +707,7 @@
         [ "identifier",
           "scheme" ],
         "additionalProperties" : false },
-      "protocol" : 
+      "oscal-component-definition-protocol" : 
       { "title" : "Service Protocol Information",
         "description" : "Information about the protocol used to provide a service.",
         "$id" : "#/definitions/protocol",
@@ -732,7 +734,7 @@
         "required" : 
         [ "name" ],
         "additionalProperties" : false },
-      "port-range" : 
+      "oscal-component-definition-port-range" : 
       { "title" : "Port Range",
         "description" : "Where applicable this is the IPv4 port range on which the service operates.",
         "$id" : "#/definitions/port-range",
@@ -758,7 +760,7 @@
             [ "TCP",
               "UDP" ] } },
         "additionalProperties" : false },
-      "set-parameter" : 
+      "oscal-component-definition-set-parameter" : 
       { "title" : "Set Parameter Value",
         "description" : "Identifies the parameter that will be set by the enclosed value.",
         "$id" : "#/definitions/set-parameter",
@@ -776,7 +778,7 @@
         "required" : 
         [ "values" ],
         "additionalProperties" : false },
-      "component-definition" : 
+      "oscal-component-definition-component-definition" : 
       { "title" : "Component Definition",
         "description" : "A collection of component descriptions, which may optionally be grouped by capability.",
         "$id" : "#/definitions/component-definition",
@@ -820,7 +822,7 @@
         [ "uuid",
           "metadata" ],
         "additionalProperties" : false },
-      "import-component-definition" : 
+      "oscal-component-definition-import-component-definition" : 
       { "title" : "Import Component Definition",
         "description" : "Loads a component definition from another resource.",
         "$id" : "#/definitions/import-component-definition",
@@ -834,7 +836,7 @@
         "required" : 
         [ "href" ],
         "additionalProperties" : false },
-      "defined-component" : 
+      "oscal-component-definition-defined-component" : 
       { "title" : "Component",
         "description" : "A defined component that can be part of an implemented system.",
         "$id" : "#/definitions/defined-component",
@@ -898,7 +900,7 @@
           "title",
           "description" ],
         "additionalProperties" : false },
-      "capability" : 
+      "oscal-component-definition-capability" : 
       { "title" : "Capability",
         "description" : "A grouping of other components and/or capabilities.",
         "$id" : "#/definitions/capability",
@@ -948,7 +950,7 @@
         [ "name",
           "description" ],
         "additionalProperties" : false },
-      "incorporates-component" : 
+      "oscal-component-definition-incorporates-component" : 
       { "title" : "Incorporates Component",
         "description" : "TBD",
         "$id" : "#/definitions/incorporates-component",
@@ -961,7 +963,7 @@
         "required" : 
         [ "description" ],
         "additionalProperties" : false },
-      "control-implementation" : 
+      "oscal-component-definition-control-implementation" : 
       { "title" : "Control Implementation Set",
         "description" : "Defines how the component or capability supports a set of controls.",
         "$id" : "#/definitions/control-implementation",
@@ -1007,7 +1009,7 @@
           "description",
           "implemented-requirements" ],
         "additionalProperties" : false },
-      "implemented-requirement" : 
+      "oscal-component-definition-implemented-requirement" : 
       { "title" : "Control Implementation",
         "description" : "Describes how the containing component or capability implements an individual control.",
         "$id" : "#/definitions/implemented-requirement",
@@ -1077,7 +1079,7 @@
         [ "uuid",
           "description" ],
         "additionalProperties" : false },
-      "statement" : 
+      "oscal-component-definition-statement" : 
       { "title" : "Control Statement Implementation",
         "description" : "Identifies which statements within a control are addressed.",
         "$id" : "#/definitions/statement",

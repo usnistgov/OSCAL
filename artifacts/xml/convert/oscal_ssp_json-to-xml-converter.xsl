@@ -908,6 +908,19 @@
    <xsl:template match="j:array[@key='roles']/j:map/j:string[@key='id']"
                  mode="keep-value-property"
                  priority="6"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:map[@key='address']/j:string[@key='type'] | j:map[@key='system-security-plan']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='addresses']/j:map/j:string[@key='type']"><!-- XML match="system-security-plan/metadata/location/address/@type | system-security-plan/metadata/party/address/@type" -->
+      <flag in-json="string"
+            as-type="NCName"
+            name="oscal-metadata-location-type"
+            key="type"
+            gi="type"
+            formal-name="Address Type">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:map[@key='address']/j:string[@key='type'] | j:map[@key='system-security-plan']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='addresses']/j:map/j:string[@key='type']"
+                 mode="keep-value-property"
+                 priority="7"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:array[@key='telephone-numbers']/j:map/j:string[@key='type'] | j:array[@key='parties']/j:map/j:string[@key='type'] | j:map[@key='system-security-plan']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='telephone-numbers']/j:map/j:string[@key='type']"
                  priority="8"><!-- XML match="system-security-plan/metadata/location/telephone-number/@type | party/@type | system-security-plan/metadata/party/telephone-number/@type" -->
       <flag in-json="string"
@@ -1585,6 +1598,7 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">address</xsl:attribute>
          </xsl:if>
+         <xsl:apply-templates select="*[@key='type']"/>
          <xsl:apply-templates select="*[@key='addr-lines']"/>
          <xsl:apply-templates select="*[@key='city']"/>
          <xsl:apply-templates select="*[@key='state']"/>
@@ -1887,6 +1901,7 @@
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="system-security-plan/metadata/party/address" -->
       <assembly name="oscal-metadata-address" gi="address" formal-name="Address">
+         <xsl:apply-templates select="*[@key='type']"/>
          <xsl:apply-templates select="*[@key='addr-lines']"/>
          <xsl:apply-templates select="*[@key='city']"/>
          <xsl:apply-templates select="*[@key='state']"/>

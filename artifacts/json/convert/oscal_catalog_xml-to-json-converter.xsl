@@ -885,6 +885,17 @@
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
+   <xsl:template match="catalog/metadata/location/address/@type | catalog/metadata/party/address/@type"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <flag in-json="string"
+            as-type="NCName"
+            name="oscal-metadata-location-type"
+            key="type"
+            gi="type"
+            formal-name="Address Type">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
    <xsl:template match="catalog/metadata/location/telephone-number/@type | party/@type | catalog/metadata/party/telephone-number/@type"
                  priority="8"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -1308,6 +1319,7 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">address</xsl:attribute>
          </xsl:if>
+         <xsl:apply-templates select="@type"/>
          <xsl:for-each-group select="addr-line" group-by="true()">
             <group in-json="ARRAY" key="addr-lines">
                <xsl:apply-templates select="current-group()">
@@ -1541,6 +1553,7 @@
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <assembly name="oscal-metadata-address" gi="address" formal-name="Address">
+         <xsl:apply-templates select="@type"/>
          <xsl:for-each-group select="addr-line" group-by="true()">
             <group in-json="ARRAY" key="addr-lines">
                <xsl:apply-templates select="current-group()">
