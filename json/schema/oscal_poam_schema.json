@@ -4,7 +4,7 @@
     "$comment" : "OSCAL Plan of Action and Milestones (POA&M) Model: JSON Schema",
     "type" : "object",
     "definitions" : 
-    { "metadata" : 
+    { "oscal-poam-metadata" : 
       { "title" : "Publication metadata",
         "description" : "Provides information about the publication and availability of the containing document.",
         "$id" : "#/definitions/metadata",
@@ -80,7 +80,7 @@
           "version",
           "oscal-version" ],
         "additionalProperties" : false },
-      "oscal-metadata-revision" : 
+      "oscal-poam-oscal-metadata-revision" : 
       { "title" : "Revision History Entry",
         "description" : "An entry in a sequential list of revisions to the containing document in reverse chronological order (i.e., most recent previous revision first).",
         "$id" : "#/definitions/oscal-metadata-revision",
@@ -116,7 +116,7 @@
           "remarks" : 
           { "$ref" : "#/definitions/remarks" } },
         "additionalProperties" : false },
-      "location" : 
+      "oscal-poam-location" : 
       { "title" : "Location",
         "description" : "A location, with associated metadata that can be referenced.",
         "$id" : "#/definitions/location",
@@ -172,13 +172,13 @@
         [ "uuid",
           "address" ],
         "additionalProperties" : false },
-      "location-uuid" : 
+      "oscal-poam-location-uuid" : 
       { "title" : "Location Reference",
         "description" : "References a location defined in metadata.",
         "$id" : "#/definitions/location-uuid",
         "type" : "string",
         "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
-      "party" : 
+      "oscal-poam-party" : 
       { "title" : "Party (organization or person)",
         "description" : "A responsible entity which is either a person or an organization.",
         "$id" : "#/definitions/party",
@@ -272,13 +272,13 @@
         [ "uuid",
           "type" ],
         "additionalProperties" : false },
-      "party-uuid" : 
+      "oscal-poam-party-uuid" : 
       { "title" : "Party Reference",
         "description" : "References a party defined in metadata.",
         "$id" : "#/definitions/party-uuid",
         "type" : "string",
         "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
-      "role" : 
+      "oscal-poam-role" : 
       { "title" : "Role",
         "description" : "Defines a function assumed or expected to be assumed by a party in a specific situation.",
         "$id" : "#/definitions/role",
@@ -321,7 +321,7 @@
         [ "id",
           "title" ],
         "additionalProperties" : false },
-      "back-matter" : 
+      "oscal-poam-back-matter" : 
       { "title" : "Back matter",
         "description" : "A collection of resources, which may be included directly or by reference.",
         "$id" : "#/definitions/back-matter",
@@ -440,7 +440,7 @@
               [ "uuid" ],
               "additionalProperties" : true } } },
         "additionalProperties" : false },
-      "property" : 
+      "oscal-poam-property" : 
       { "title" : "Property",
         "description" : "An attribute, characteristic, or quality of the containing object expressed as a namespace qualified name/value pair. The value of a property is a simple scalar value, which may be expressed as a list of values in some OSCAL formats.",
         "$id" : "#/definitions/property",
@@ -470,7 +470,7 @@
         [ "value",
           "name" ],
         "additionalProperties" : false },
-      "annotation" : 
+      "oscal-poam-annotation" : 
       { "title" : "Annotated Property",
         "description" : "An attribute, characteristic, or quality of the containing object expressed as a namespace qualified name/value pair with optional explanatory remarks. The value of an annotated property is a simple scalar value.",
         "$id" : "#/definitions/annotation",
@@ -500,7 +500,7 @@
         [ "name",
           "value" ],
         "additionalProperties" : false },
-      "link" : 
+      "oscal-poam-link" : 
       { "title" : "Link",
         "description" : "A reference to a local or remote resource",
         "$id" : "#/definitions/link",
@@ -526,7 +526,7 @@
         "required" : 
         [ "href" ],
         "additionalProperties" : false },
-      "responsible-party" : 
+      "oscal-poam-responsible-party" : 
       { "title" : "Responsible Party",
         "description" : "A reference to a set of organizations or persons that have responsibility for performing a referenced role in the context of the containing object.",
         "$id" : "#/definitions/responsible-party",
@@ -557,7 +557,7 @@
         "required" : 
         [ "party-uuids" ],
         "additionalProperties" : false },
-      "responsible-role" : 
+      "oscal-poam-responsible-role" : 
       { "title" : "Responsible Role",
         "description" : "A reference to one or more roles with responsibility for performing a function relative to the containing object.",
         "$id" : "#/definitions/responsible-role",
@@ -586,7 +586,7 @@
           "remarks" : 
           { "$ref" : "#/definitions/remarks" } },
         "additionalProperties" : false },
-      "hash" : 
+      "oscal-poam-hash" : 
       { "title" : "Hash",
         "description" : "A representation of a cryptographic digest generated over a resource using a specified hash algorithm.",
         "$id" : "#/definitions/hash",
@@ -602,43 +602,43 @@
         [ "value",
           "algorithm" ],
         "additionalProperties" : false },
-      "remarks" : 
+      "oscal-poam-remarks" : 
       { "title" : "Remarks",
         "description" : "Additional commentary on the containing object.",
         "$id" : "#/definitions/remarks",
         "type" : "string" },
-      "oscal-metadata-published" : 
+      "oscal-poam-oscal-metadata-published" : 
       { "title" : "Publication Timestamp",
         "description" : "The date and time the document was published. The date-time value must be formatted according to RFC 3339 with full time and time zone included.",
         "$id" : "#/definitions/oscal-metadata-published",
         "type" : "string",
         "format" : "date-time",
         "pattern" : "^((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})$" },
-      "oscal-metadata-last-modified" : 
+      "oscal-poam-oscal-metadata-last-modified" : 
       { "title" : "Last Modified Timestamp",
         "description" : "The date and time the document was last modified. The date-time value must be formatted according to RFC 3339 with full time and time zone included.",
         "$id" : "#/definitions/oscal-metadata-last-modified",
         "type" : "string",
         "format" : "date-time",
         "pattern" : "^((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})$" },
-      "oscal-metadata-version" : 
+      "oscal-poam-oscal-metadata-version" : 
       { "title" : "Document Version",
         "description" : "A string used to distinguish the current version of the document from other previous (and future) versions.",
         "$id" : "#/definitions/oscal-metadata-version",
         "type" : "string" },
-      "oscal-metadata-oscal-version" : 
+      "oscal-poam-oscal-metadata-oscal-version" : 
       { "title" : "OSCAL version",
         "description" : "The OSCAL model version the document was authored against.",
         "$id" : "#/definitions/oscal-metadata-oscal-version",
         "type" : "string" },
-      "oscal-metadata-email-address" : 
+      "oscal-poam-oscal-metadata-email-address" : 
       { "title" : "Email Address",
         "description" : "An email address as defined by RFC 5322 Section 3.4.1.",
         "$id" : "#/definitions/oscal-metadata-email-address",
         "type" : "string",
         "format" : "email",
         "pattern" : "^.+@.+" },
-      "oscal-metadata-telephone-number" : 
+      "oscal-poam-oscal-metadata-telephone-number" : 
       { "title" : "Telephone Number",
         "description" : "Contact number by telephone.",
         "$id" : "#/definitions/oscal-metadata-telephone-number",
@@ -653,14 +653,16 @@
         "required" : 
         [ "number" ],
         "additionalProperties" : false },
-      "oscal-metadata-address" : 
+      "oscal-poam-oscal-metadata-address" : 
       { "title" : "Address",
         "description" : "A postal address for the location.",
         "$id" : "#/definitions/oscal-metadata-address",
         "type" : "object",
         "properties" : 
         { "type" : 
-          { "type" : "string" },
+          { "title" : "Address Type",
+            "description" : "Indicates the type of address.",
+            "type" : "string" },
           "addr-lines" : 
           { "type" : "array",
             "minItems" : 1,
@@ -683,12 +685,12 @@
             "description" : "The ISO 3166-1 alpha-2 country code for the mailing address.",
             "type" : "string" } },
         "additionalProperties" : false },
-      "oscal-metadata-addr-line" : 
+      "oscal-poam-oscal-metadata-addr-line" : 
       { "title" : "Address line",
         "description" : "A single line of an address.",
         "$id" : "#/definitions/oscal-metadata-addr-line",
         "type" : "string" },
-      "oscal-metadata-document-id" : 
+      "oscal-poam-oscal-metadata-document-id" : 
       { "title" : "Document Identifier",
         "description" : "A document identifier qualified by an identifier type.",
         "$id" : "#/definitions/oscal-metadata-document-id",
@@ -705,7 +707,7 @@
         [ "identifier",
           "scheme" ],
         "additionalProperties" : false },
-      "system-component" : 
+      "oscal-poam-system-component" : 
       { "title" : "Component",
         "description" : "A defined component that can be part of an implemented system.",
         "$id" : "#/definitions/system-component",
@@ -784,7 +786,7 @@
           "description",
           "status" ],
         "additionalProperties" : false },
-      "protocol" : 
+      "oscal-poam-protocol" : 
       { "title" : "Service Protocol Information",
         "description" : "Information about the protocol used to provide a service.",
         "$id" : "#/definitions/protocol",
@@ -811,7 +813,7 @@
         "required" : 
         [ "name" ],
         "additionalProperties" : false },
-      "port-range" : 
+      "oscal-poam-port-range" : 
       { "title" : "Port Range",
         "description" : "Where applicable this is the IPv4 port range on which the service operates.",
         "$id" : "#/definitions/port-range",
@@ -837,7 +839,7 @@
             [ "TCP",
               "UDP" ] } },
         "additionalProperties" : false },
-      "inventory-item" : 
+      "oscal-poam-inventory-item" : 
       { "title" : "Inventory Item",
         "description" : "A single managed inventory item within the system.",
         "$id" : "#/definitions/inventory-item",
@@ -926,7 +928,7 @@
         [ "uuid",
           "description" ],
         "additionalProperties" : false },
-      "system-id" : 
+      "oscal-poam-system-id" : 
       { "title" : "System Identification",
         "description" : "A unique identifier for the system described by this system security plan.",
         "$id" : "#/definitions/system-id",
@@ -942,7 +944,7 @@
         "required" : 
         [ "id" ],
         "additionalProperties" : false },
-      "import-ssp" : 
+      "oscal-poam-import-ssp" : 
       { "title" : "Import System Security Plan",
         "description" : "Used by the assessment plan and POA&M to import information about the system.",
         "$id" : "#/definitions/import-ssp",
@@ -958,7 +960,7 @@
         "required" : 
         [ "href" ],
         "additionalProperties" : false },
-      "task" : 
+      "oscal-poam-task" : 
       { "title" : "Task",
         "description" : "Represents a scheduled event or milestone, which may be associated with a series of assessment actions.",
         "$id" : "#/definitions/task",
@@ -1158,7 +1160,7 @@
           "type",
           "title" ],
         "additionalProperties" : false },
-      "assessment-subject-placeholder" : 
+      "oscal-poam-assessment-subject-placeholder" : 
       { "title" : "Assessment Subject Placeholder",
         "description" : "Used when the assessment subjects will be determined as part of one or more other assessment activities. These assessment subjects will be recorded in the assessment results in the assessment log.",
         "$id" : "#/definitions/assessment-subject-placeholder",
@@ -1210,7 +1212,7 @@
         [ "uuid",
           "sources" ],
         "additionalProperties" : false },
-      "assessment-subject" : 
+      "oscal-poam-assessment-subject" : 
       { "title" : "Subject of Assessment",
         "description" : "Identifies system elements being assessed, such as components, inventory items, and locations. In the assessment plan, this identifies a planned assessment subject. In the assessment results this is an actual assessment subject, and reflects any changes from the plan. exactly what will be the focus of this assessment. Any subjects not identified in this way are out-of-scope.",
         "$id" : "#/definitions/assessment-subject",
@@ -1259,7 +1261,7 @@
         "required" : 
         [ "type" ],
         "additionalProperties" : false },
-      "select-subject-by-id" : 
+      "oscal-poam-select-subject-by-id" : 
       { "title" : "Select Assessment Subject",
         "description" : "Identifies a set of assessment subjects to include/exclude by UUID.",
         "$id" : "#/definitions/select-subject-by-id",
@@ -1290,7 +1292,7 @@
         "required" : 
         [ "uuid-ref" ],
         "additionalProperties" : false },
-      "oscal-assessment-common-subject-reference" : 
+      "oscal-poam-oscal-assessment-common-subject-reference" : 
       { "title" : "Identifies the Subject",
         "description" : "A pointer to a resource based on its universally unique identifier (UUID). Use type to indicate whether the identified resource is a component, inventory item, location, user, or something else.",
         "$id" : "#/definitions/oscal-assessment-common-subject-reference",
@@ -1330,7 +1332,7 @@
         [ "uuid-ref",
           "type" ],
         "additionalProperties" : false },
-      "observation" : 
+      "oscal-poam-observation" : 
       { "title" : "Objective",
         "description" : "Describes an individual observation.",
         "$id" : "#/definitions/observation",
@@ -1445,7 +1447,7 @@
           "methods",
           "collected" ],
         "additionalProperties" : false },
-      "origin" : 
+      "oscal-poam-origin" : 
       { "title" : "Origin",
         "description" : "Identifies the source of the finding, such as a tool, interviewed person, or activity.",
         "$id" : "#/definitions/origin",
@@ -1464,7 +1466,7 @@
         "required" : 
         [ "actors" ],
         "additionalProperties" : false },
-      "origin-actor" : 
+      "oscal-poam-origin-actor" : 
       { "title" : "Originating Actor",
         "description" : "The actor that produces an observation, a finding, or a risk. One or more actor type can be used to specify a person that is using a tool.",
         "$id" : "#/definitions/origin-actor",
@@ -1506,7 +1508,7 @@
         [ "type",
           "uuid-ref" ],
         "additionalProperties" : false },
-      "related-task" : 
+      "oscal-poam-related-task" : 
       { "title" : "Task Reference",
         "description" : "Identifies an individual task for which the containing object is a consequence of.",
         "$id" : "#/definitions/related-task",
@@ -1571,7 +1573,7 @@
         "required" : 
         [ "task-uuid" ],
         "additionalProperties" : false },
-      "threat-id" : 
+      "oscal-poam-threat-id" : 
       { "title" : "Threat ID",
         "description" : "A pointer, by ID, to an externally-defined threat.",
         "$id" : "#/definitions/threat-id",
@@ -1593,7 +1595,7 @@
         [ "id",
           "system" ],
         "additionalProperties" : false },
-      "risk" : 
+      "oscal-poam-risk" : 
       { "title" : "Identified Risk",
         "description" : "An identified risk.",
         "$id" : "#/definitions/risk",
@@ -1837,7 +1839,7 @@
           "statement",
           "status" ],
         "additionalProperties" : false },
-      "logged-by" : 
+      "oscal-poam-logged-by" : 
       { "title" : "Logged By",
         "description" : "Used to indicate who created a log entry in what role.",
         "$id" : "#/definitions/logged-by",
@@ -1855,12 +1857,12 @@
         "required" : 
         [ "party-uuid" ],
         "additionalProperties" : false },
-      "risk-status" : 
+      "oscal-poam-risk-status" : 
       { "title" : "Risk Status",
         "description" : "Describes the status of the associated risk.",
         "$id" : "#/definitions/risk-status",
         "type" : "string" },
-      "characterization" : 
+      "oscal-poam-characterization" : 
       { "title" : "Characterization",
         "description" : "A collection of descriptive data about the containing object from a specific origin.",
         "$id" : "#/definitions/characterization",
@@ -1930,7 +1932,7 @@
         [ "origin",
           "facets" ],
         "additionalProperties" : false },
-      "oscal-assessment-common-response" : 
+      "oscal-poam-oscal-assessment-common-response" : 
       { "title" : "Risk Response",
         "description" : "Describes either recommended or an actual plan for addressing the risk.",
         "$id" : "#/definitions/oscal-assessment-common-response",
@@ -2033,7 +2035,7 @@
           "title",
           "description" ],
         "additionalProperties" : false },
-      "plan-of-action-and-milestones" : 
+      "oscal-poam-plan-of-action-and-milestones" : 
       { "title" : "Plan of Action and Milestones (POA&M)",
         "description" : "A plan of action and milestones which identifies initial and residual risks, deviations, and disposition, such as those required by FedRAMP.",
         "$id" : "#/definitions/plan-of-action-and-milestones",
@@ -2074,7 +2076,7 @@
           "metadata",
           "poam-items" ],
         "additionalProperties" : false },
-      "local-definitions" : 
+      "oscal-poam-local-definitions" : 
       { "title" : "Local Definitions",
         "description" : "Allows components, and inventory-items to be defined within the POA&M for circumstances where no OSCAL-based SSP exists, or is not delivered with the POA&M.",
         "$id" : "#/definitions/local-definitions",
@@ -2098,7 +2100,7 @@
           "remarks" : 
           { "$ref" : "#/definitions/remarks" } },
         "additionalProperties" : false },
-      "poam-item" : 
+      "oscal-poam-poam-item" : 
       { "title" : "POA&M Item",
         "description" : "Describes an individual POA&M item.",
         "$id" : "#/definitions/poam-item",

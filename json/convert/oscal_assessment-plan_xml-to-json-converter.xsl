@@ -906,7 +906,9 @@
       <assembly as-type="empty"
                 name="select-objective-by-id"
                 gi="include-objective"
-                formal-name="Select Objective"/>
+                formal-name="Select Objective">
+         <xsl:apply-templates select="@objective-id"/>
+      </assembly>
    </xsl:template>
    <xsl:template match="exclude-objective"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -914,7 +916,9 @@
       <assembly as-type="empty"
                 name="select-objective-by-id"
                 gi="exclude-objective"
-                formal-name="Select Objective"/>
+                formal-name="Select Objective">
+         <xsl:apply-templates select="@objective-id"/>
+      </assembly>
    </xsl:template>
    <xsl:template match="related-controls"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -1476,6 +1480,17 @@
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
+   <xsl:template match="assessment-plan/metadata/location/address/@type | assessment-plan/metadata/party/address/@type"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <flag in-json="string"
+            as-type="NCName"
+            name="oscal-metadata-location-type"
+            key="type"
+            gi="type"
+            formal-name="Address Type">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
    <xsl:template match="assessment-plan/metadata/location/telephone-number/@type | party/@type | assessment-plan/metadata/party/telephone-number/@type"
                  priority="8"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -1586,6 +1601,17 @@
             key="control-id"
             gi="control-id"
             formal-name="Control Identifier Reference">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="include-objective/@objective-id | exclude-objective/@objective-id"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <flag in-json="string"
+            as-type="NCName"
+            name="oscal-assessment-common-objective-id"
+            key="objective-id"
+            gi="objective-id"
+            formal-name="Objective ID">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
@@ -2073,6 +2099,7 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">address</xsl:attribute>
          </xsl:if>
+         <xsl:apply-templates select="@type"/>
          <xsl:for-each-group select="addr-line" group-by="true()">
             <group in-json="ARRAY" key="addr-lines">
                <xsl:apply-templates select="current-group()">
@@ -2306,6 +2333,7 @@
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <assembly name="oscal-metadata-address" gi="address" formal-name="Address">
+         <xsl:apply-templates select="@type"/>
          <xsl:for-each-group select="addr-line" group-by="true()">
             <group in-json="ARRAY" key="addr-lines">
                <xsl:apply-templates select="current-group()">

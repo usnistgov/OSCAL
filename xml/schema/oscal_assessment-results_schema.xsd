@@ -30,6 +30,14 @@
       <xs:sequence>
          <xs:element name="title" minOccurs="0" maxOccurs="1">
             <xs:complexType mixed="true">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Part Title</m:formal-name>
+                     <m:description>A name given to the part, which may be used by a tool for display and navigation.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Part Title</b>: A name given to the part, which may be used by a tool for display and navigation.</xs:documentation>
+               </xs:annotation>
                <xs:complexContent>
                   <xs:extension base="oscal-ar:markupLineType"/>
                </xs:complexContent>
@@ -112,6 +120,14 @@
       <xs:sequence>
          <xs:element name="title" minOccurs="1" maxOccurs="1">
             <xs:complexType mixed="true">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Document Title</m:formal-name>
+                     <m:description>A name given to the document, which may be used by a tool for display and navigation.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Document Title</b>: A name given to the document, which may be used by a tool for display and navigation.</xs:documentation>
+               </xs:annotation>
                <xs:complexContent>
                   <xs:extension base="oscal-ar:markupLineType"/>
                </xs:complexContent>
@@ -204,6 +220,14 @@
       <xs:sequence>
          <xs:element name="title" minOccurs="0" maxOccurs="1">
             <xs:complexType mixed="true">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Document Title</m:formal-name>
+                     <m:description>A name given to the document revision, which may be used by a tool for display and navigation.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Document Title</b>: A name given to the document revision, which may be used by a tool for display and navigation.</xs:documentation>
+               </xs:annotation>
                <xs:complexContent>
                   <xs:extension base="oscal-ar:markupLineType"/>
                </xs:complexContent>
@@ -266,6 +290,14 @@
       <xs:sequence>
          <xs:element name="title" minOccurs="0" maxOccurs="1">
             <xs:complexType mixed="true">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Location Title</m:formal-name>
+                     <m:description>A name given to the location, which may be used by a tool for display and navigation.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Location Title</b>: A name given to the location, which may be used by a tool for display and navigation.</xs:documentation>
+               </xs:annotation>
                <xs:complexContent>
                   <xs:extension base="oscal-ar:markupLineType"/>
                </xs:complexContent>
@@ -511,6 +543,14 @@
       <xs:sequence>
          <xs:element name="title" minOccurs="1" maxOccurs="1">
             <xs:complexType mixed="true">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Role Title</m:formal-name>
+                     <m:description>A name given to the role, which may be used by a tool for display and navigation.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Role Title</b>: A name given to the role, which may be used by a tool for display and navigation.</xs:documentation>
+               </xs:annotation>
                <xs:complexContent>
                   <xs:extension base="oscal-ar:markupLineType"/>
                </xs:complexContent>
@@ -530,6 +570,14 @@
             </xs:simpleType>
          </xs:element>
          <xs:element name="description" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Role Description</m:formal-name>
+                  <m:description>A summary of the role's purpose and associated responsibilities.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Role Description</b>: A summary of the role's purpose and associated responsibilities.</xs:documentation>
+            </xs:annotation>
             <xs:complexType>
                <xs:complexContent>
                   <xs:extension base="oscal-ar:markupMultilineType"/>
@@ -609,12 +657,28 @@
                <xs:sequence>
                   <xs:element name="title" minOccurs="0" maxOccurs="1">
                      <xs:complexType mixed="true">
+                        <xs:annotation>
+                           <xs:appinfo>
+                              <m:formal-name>Resource Title</m:formal-name>
+                              <m:description>A name given to the resource, which may be used by a tool for display and navigation.</m:description>
+                           </xs:appinfo>
+                           <xs:documentation>
+                              <b>Resource Title</b>: A name given to the resource, which may be used by a tool for display and navigation.</xs:documentation>
+                        </xs:annotation>
                         <xs:complexContent>
                            <xs:extension base="oscal-ar:markupLineType"/>
                         </xs:complexContent>
                      </xs:complexType>
                   </xs:element>
                   <xs:element name="description" minOccurs="0" maxOccurs="1">
+                     <xs:annotation>
+                        <xs:appinfo>
+                           <m:formal-name>Resource Description</m:formal-name>
+                           <m:description>A short summary of the resource used to indicate the purpose of the resource.</m:description>
+                        </xs:appinfo>
+                        <xs:documentation>
+                           <b>Resource Description</b>: A short summary of the resource used to indicate the purpose of the resource.</xs:documentation>
+                     </xs:annotation>
                      <xs:complexType>
                         <xs:complexContent>
                            <xs:extension base="oscal-ar:markupMultilineType"/>
@@ -646,6 +710,14 @@
                         <xs:sequence>
                            <xs:element name="text" minOccurs="1" maxOccurs="1">
                               <xs:complexType mixed="true">
+                                 <xs:annotation>
+                                    <xs:appinfo>
+                                       <m:formal-name>Citation Text</m:formal-name>
+                                       <m:description>A line of citation text.</m:description>
+                                    </xs:appinfo>
+                                    <xs:documentation>
+                                       <b>Citation Text</b>: A line of citation text.</xs:documentation>
+                                 </xs:annotation>
                                  <xs:complexContent>
                                     <xs:extension base="oscal-ar:markupLineType"/>
                                  </xs:complexContent>
@@ -921,6 +993,14 @@
       <xs:sequence>
          <xs:element name="text" minOccurs="0" maxOccurs="1">
             <xs:complexType mixed="true">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Link Text</m:formal-name>
+                     <m:description>A textual label to associate with the link, which may be used for presentation in a tool.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Link Text</b>: A textual label to associate with the link, which may be used for presentation in a tool.</xs:documentation>
+               </xs:annotation>
                <xs:complexContent>
                   <xs:extension base="oscal-ar:markupLineType"/>
                </xs:complexContent>
@@ -1234,7 +1314,16 @@
             </xs:simpleType>
          </xs:element>
       </xs:sequence>
-      <xs:attribute name="type" type="xs:string"/>
+      <xs:attribute name="type" type="xs:NCName">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Address Type</m:formal-name>
+               <m:description>Indicates the type of address.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Address Type</b>: Indicates the type of address.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
    </xs:complexType>
    <xs:simpleType name="oscal-metadata-addr-line-FIELD">
       <xs:annotation>
@@ -1283,12 +1372,28 @@
       <xs:sequence>
          <xs:element name="title" minOccurs="1" maxOccurs="1">
             <xs:complexType mixed="true">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Component Title</m:formal-name>
+                     <m:description>A human readable name for the system component.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Component Title</b>: A human readable name for the system component.</xs:documentation>
+               </xs:annotation>
                <xs:complexContent>
                   <xs:extension base="oscal-ar:markupLineType"/>
                </xs:complexContent>
             </xs:complexType>
          </xs:element>
          <xs:element name="description" minOccurs="1" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Component Description</m:formal-name>
+                  <m:description>A description of the component, including information about its function.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Component Description</b>: A description of the component, including information about its function.</xs:documentation>
+            </xs:annotation>
             <xs:complexType>
                <xs:complexContent>
                   <xs:extension base="oscal-ar:markupMultilineType"/>
@@ -1297,6 +1402,14 @@
          </xs:element>
          <xs:element name="purpose" minOccurs="0" maxOccurs="1">
             <xs:complexType mixed="true">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Purpose</m:formal-name>
+                     <m:description>A summary of the technological or business purpose of the component.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Purpose</b>: A summary of the technological or business purpose of the component.</xs:documentation>
+               </xs:annotation>
                <xs:complexContent>
                   <xs:extension base="oscal-ar:markupLineType"/>
                </xs:complexContent>
@@ -1410,6 +1523,14 @@
       <xs:sequence>
          <xs:element name="title" minOccurs="0" maxOccurs="1">
             <xs:complexType mixed="true">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>title field</m:formal-name>
+                     <m:description>A human readable name for the protocol (e.g., Transport Layer Security).</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>title field</b>: A human readable name for the protocol (e.g., Transport Layer Security).</xs:documentation>
+               </xs:annotation>
                <xs:complexContent>
                   <xs:extension base="oscal-ar:markupLineType"/>
                </xs:complexContent>
@@ -1493,6 +1614,14 @@
       <xs:sequence>
          <xs:element name="title" minOccurs="0" maxOccurs="1">
             <xs:complexType mixed="true">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>User Title</m:formal-name>
+                     <m:description>A name given to the user, which may be used by a tool for display and navigation.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>User Title</b>: A name given to the user, which may be used by a tool for display and navigation.</xs:documentation>
+               </xs:annotation>
                <xs:complexContent>
                   <xs:extension base="oscal-ar:markupLineType"/>
                </xs:complexContent>
@@ -1512,6 +1641,14 @@
             </xs:simpleType>
          </xs:element>
          <xs:element name="description" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>User Description</m:formal-name>
+                  <m:description>A summary of the user's purpose within the system.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>User Description</b>: A summary of the user's purpose within the system.</xs:documentation>
+            </xs:annotation>
             <xs:complexType>
                <xs:complexContent>
                   <xs:extension base="oscal-ar:markupMultilineType"/>
@@ -1577,12 +1714,28 @@
       <xs:sequence>
          <xs:element name="title" minOccurs="1" maxOccurs="1">
             <xs:complexType mixed="true">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>title field</m:formal-name>
+                     <m:description>A human readable name for the privilege.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>title field</b>: A human readable name for the privilege.</xs:documentation>
+               </xs:annotation>
                <xs:complexContent>
                   <xs:extension base="oscal-ar:markupLineType"/>
                </xs:complexContent>
             </xs:complexType>
          </xs:element>
          <xs:element name="description" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Privilege Description</m:formal-name>
+                  <m:description>A summary of the privilege's purpose within the system.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Privilege Description</b>: A summary of the privilege's purpose within the system.</xs:documentation>
+            </xs:annotation>
             <xs:complexType>
                <xs:complexContent>
                   <xs:extension base="oscal-ar:markupMultilineType"/>
@@ -1617,6 +1770,14 @@
       </xs:annotation>
       <xs:sequence>
          <xs:element name="description" minOccurs="1" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Inventory Item Description</m:formal-name>
+                  <m:description>A summary of the inventory item stating its purpose within the system.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Inventory Item Description</b>: A summary of the inventory item stating its purpose within the system.</xs:documentation>
+            </xs:annotation>
             <xs:complexType>
                <xs:complexContent>
                   <xs:extension base="oscal-ar:markupMultilineType"/>
@@ -1732,6 +1893,14 @@
       </xs:annotation>
       <xs:sequence>
          <xs:element name="description" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Objective Description</m:formal-name>
+                  <m:description>A human-readable description of this control objective.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Objective Description</b>: A human-readable description of this control objective.</xs:documentation>
+            </xs:annotation>
             <xs:complexType>
                <xs:complexContent>
                   <xs:extension base="oscal-ar:markupMultilineType"/>
@@ -1793,12 +1962,28 @@
       <xs:sequence>
          <xs:element name="title" minOccurs="0" maxOccurs="1">
             <xs:complexType mixed="true">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Included Activity Title</m:formal-name>
+                     <m:description>The title for this included activity.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Included Activity Title</b>: The title for this included activity.</xs:documentation>
+               </xs:annotation>
                <xs:complexContent>
                   <xs:extension base="oscal-ar:markupLineType"/>
                </xs:complexContent>
             </xs:complexType>
          </xs:element>
          <xs:element name="description" minOccurs="1" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Included Activity Description</m:formal-name>
+                  <m:description>A human-readable description of this included activity.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Included Activity Description</b>: A human-readable description of this included activity.</xs:documentation>
+            </xs:annotation>
             <xs:complexType>
                <xs:complexContent>
                   <xs:extension base="oscal-ar:markupMultilineType"/>
@@ -1830,12 +2015,28 @@
                <xs:sequence>
                   <xs:element name="title" minOccurs="0" maxOccurs="1">
                      <xs:complexType mixed="true">
+                        <xs:annotation>
+                           <xs:appinfo>
+                              <m:formal-name>Action Title</m:formal-name>
+                              <m:description>The title for this action.</m:description>
+                           </xs:appinfo>
+                           <xs:documentation>
+                              <b>Action Title</b>: The title for this action.</xs:documentation>
+                        </xs:annotation>
                         <xs:complexContent>
                            <xs:extension base="oscal-ar:markupLineType"/>
                         </xs:complexContent>
                      </xs:complexType>
                   </xs:element>
                   <xs:element name="description" minOccurs="1" maxOccurs="1">
+                     <xs:annotation>
+                        <xs:appinfo>
+                           <m:formal-name>Action Description</m:formal-name>
+                           <m:description>A human-readable description of this action.</m:description>
+                        </xs:appinfo>
+                        <xs:documentation>
+                           <b>Action Description</b>: A human-readable description of this action.</xs:documentation>
+                     </xs:annotation>
                      <xs:complexType>
                         <xs:complexContent>
                            <xs:extension base="oscal-ar:markupMultilineType"/>
@@ -1937,12 +2138,28 @@
       <xs:sequence>
          <xs:element name="title" minOccurs="0" maxOccurs="1">
             <xs:complexType mixed="true">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Event Title</m:formal-name>
+                     <m:description>The title for this event.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Event Title</b>: The title for this event.</xs:documentation>
+               </xs:annotation>
                <xs:complexContent>
                   <xs:extension base="oscal-ar:markupLineType"/>
                </xs:complexContent>
             </xs:complexType>
          </xs:element>
          <xs:element name="description" minOccurs="1" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Event Description</m:formal-name>
+                  <m:description>A human-readable description of this event.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Event Description</b>: A human-readable description of this event.</xs:documentation>
+            </xs:annotation>
             <xs:complexType>
                <xs:complexContent>
                   <xs:extension base="oscal-ar:markupMultilineType"/>
@@ -2004,12 +2221,28 @@
       <xs:sequence>
          <xs:element name="title" minOccurs="1" maxOccurs="1">
             <xs:complexType mixed="true">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Task Title</m:formal-name>
+                     <m:description>The title for this task.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Task Title</b>: The title for this task.</xs:documentation>
+               </xs:annotation>
                <xs:complexContent>
                   <xs:extension base="oscal-ar:markupLineType"/>
                </xs:complexContent>
             </xs:complexType>
          </xs:element>
          <xs:element name="description" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Task Description</m:formal-name>
+                  <m:description>A human-readable description of this task.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Task Description</b>: A human-readable description of this task.</xs:documentation>
+            </xs:annotation>
             <xs:complexType>
                <xs:complexContent>
                   <xs:extension base="oscal-ar:markupMultilineType"/>
@@ -2294,6 +2527,14 @@
       </xs:annotation>
       <xs:sequence>
          <xs:element name="description" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Control Objective Description</m:formal-name>
+                  <m:description>A human-readable description of control objectives.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Control Objective Description</b>: A human-readable description of control objectives.</xs:documentation>
+            </xs:annotation>
             <xs:complexType>
                <xs:complexContent>
                   <xs:extension base="oscal-ar:markupMultilineType"/>
@@ -2324,6 +2565,14 @@
                </xs:annotation>
                <xs:sequence>
                   <xs:element name="description" minOccurs="0" maxOccurs="1">
+                     <xs:annotation>
+                        <xs:appinfo>
+                           <m:formal-name>Assessed Controls Description</m:formal-name>
+                           <m:description>A human-readable description of in-scope controls specified for assessment.</m:description>
+                        </xs:appinfo>
+                        <xs:documentation>
+                           <b>Assessed Controls Description</b>: A human-readable description of in-scope controls specified for assessment.</xs:documentation>
+                     </xs:annotation>
                      <xs:complexType>
                         <xs:complexContent>
                            <xs:extension base="oscal-ar:markupMultilineType"/>
@@ -2396,6 +2645,14 @@
                </xs:annotation>
                <xs:sequence>
                   <xs:element name="description" minOccurs="0" maxOccurs="1">
+                     <xs:annotation>
+                        <xs:appinfo>
+                           <m:formal-name>Control Ojectives Description</m:formal-name>
+                           <m:description>A human-readable description of this collection of control objectives.</m:description>
+                        </xs:appinfo>
+                        <xs:documentation>
+                           <b>Control Ojectives Description</b>: A human-readable description of this collection of control objectives.</xs:documentation>
+                     </xs:annotation>
                      <xs:complexType>
                         <xs:complexContent>
                            <xs:extension base="oscal-ar:markupMultilineType"/>
@@ -2515,7 +2772,16 @@
          <xs:documentation>
             <b>Select Objective</b>: Used to select a control objective for inclusion/exclusion based on the control objective's identifier.</xs:documentation>
       </xs:annotation>
-      <xs:attribute name="objective-id" use="required" type="xs:string"/>
+      <xs:attribute name="objective-id" use="required" type="xs:NCName">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Objective ID</m:formal-name>
+               <m:description>Points to an assessment objective.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Objective ID</b>: Points to an assessment objective.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
    </xs:complexType>
    <xs:complexType name="assessment-subject-placeholder-ASSEMBLY">
       <xs:annotation>
@@ -2528,6 +2794,14 @@
       </xs:annotation>
       <xs:sequence>
          <xs:element name="description" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Assessment Subject Placeholder Description</m:formal-name>
+                  <m:description>A human-readable description of intent of this assessment subject placeholder.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Assessment Subject Placeholder Description</b>: A human-readable description of intent of this assessment subject placeholder.</xs:documentation>
+            </xs:annotation>
             <xs:complexType>
                <xs:complexContent>
                   <xs:extension base="oscal-ar:markupMultilineType"/>
@@ -2606,6 +2880,14 @@
       </xs:annotation>
       <xs:sequence>
          <xs:element name="description" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Include Subjects Description</m:formal-name>
+                  <m:description>A human-readable description of the collection of subjects being included in this assessment.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Include Subjects Description</b>: A human-readable description of the collection of subjects being included in this assessment.</xs:documentation>
+            </xs:annotation>
             <xs:complexType>
                <xs:complexContent>
                   <xs:extension base="oscal-ar:markupMultilineType"/>
@@ -2734,6 +3016,14 @@
       <xs:sequence>
          <xs:element name="title" minOccurs="0" maxOccurs="1">
             <xs:complexType mixed="true">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Subject Reference Title</m:formal-name>
+                     <m:description>The title or name for the referenced subject.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Subject Reference Title</b>: The title or name for the referenced subject.</xs:documentation>
+               </xs:annotation>
                <xs:complexContent>
                   <xs:extension base="oscal-ar:markupLineType"/>
                </xs:complexContent>
@@ -2815,6 +3105,14 @@
                <xs:sequence>
                   <xs:element name="title" minOccurs="0" maxOccurs="1">
                      <xs:complexType mixed="true">
+                        <xs:annotation>
+                           <xs:appinfo>
+                              <m:formal-name>Assessment Platform Title</m:formal-name>
+                              <m:description>The title or name for the assessment platform.</m:description>
+                           </xs:appinfo>
+                           <xs:documentation>
+                              <b>Assessment Platform Title</b>: The title or name for the assessment platform.</xs:documentation>
+                        </xs:annotation>
                         <xs:complexContent>
                            <xs:extension base="oscal-ar:markupLineType"/>
                         </xs:complexContent>
@@ -2929,12 +3227,28 @@
       <xs:sequence>
          <xs:element name="title" minOccurs="0" maxOccurs="1">
             <xs:complexType mixed="true">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Objective Status Title</m:formal-name>
+                     <m:description>The title for this objective status.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Objective Status Title</b>: The title for this objective status.</xs:documentation>
+               </xs:annotation>
                <xs:complexContent>
                   <xs:extension base="oscal-ar:markupLineType"/>
                </xs:complexContent>
             </xs:complexType>
          </xs:element>
          <xs:element name="description" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Objective Status Description</m:formal-name>
+                  <m:description>A human-readable description of the assessor's conclusions regarding the degree to which an objective is satisfied.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Objective Status Description</b>: A human-readable description of the assessor's conclusions regarding the degree to which an objective is satisfied.</xs:documentation>
+            </xs:annotation>
             <xs:complexType>
                <xs:complexContent>
                   <xs:extension base="oscal-ar:markupMultilineType"/>
@@ -3015,12 +3329,28 @@
       <xs:sequence>
          <xs:element name="title" minOccurs="0" maxOccurs="1">
             <xs:complexType mixed="true">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Observation Title</m:formal-name>
+                     <m:description>The title for this observation.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Observation Title</b>: The title for this observation.</xs:documentation>
+               </xs:annotation>
                <xs:complexContent>
                   <xs:extension base="oscal-ar:markupLineType"/>
                </xs:complexContent>
             </xs:complexType>
          </xs:element>
          <xs:element name="description" minOccurs="1" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Observaton Description</m:formal-name>
+                  <m:description>A human-readable description of this assessment observation.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Observaton Description</b>: A human-readable description of this assessment observation.</xs:documentation>
+            </xs:annotation>
             <xs:complexType>
                <xs:complexContent>
                   <xs:extension base="oscal-ar:markupMultilineType"/>
@@ -3085,6 +3415,14 @@
                </xs:annotation>
                <xs:sequence>
                   <xs:element name="description" minOccurs="1" maxOccurs="1">
+                     <xs:annotation>
+                        <xs:appinfo>
+                           <m:formal-name>Relevant Evidence Description</m:formal-name>
+                           <m:description>A human-readable description of this evidence.</m:description>
+                        </xs:appinfo>
+                        <xs:documentation>
+                           <b>Relevant Evidence Description</b>: A human-readable description of this evidence.</xs:documentation>
+                     </xs:annotation>
                      <xs:complexType>
                         <xs:complexContent>
                            <xs:extension base="oscal-ar:markupMultilineType"/>
@@ -3389,12 +3727,28 @@
       <xs:sequence>
          <xs:element name="title" minOccurs="1" maxOccurs="1">
             <xs:complexType mixed="true">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Risk Title</m:formal-name>
+                     <m:description>The title for this risk.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Risk Title</b>: The title for this risk.</xs:documentation>
+               </xs:annotation>
                <xs:complexContent>
                   <xs:extension base="oscal-ar:markupLineType"/>
                </xs:complexContent>
             </xs:complexType>
          </xs:element>
          <xs:element name="description" minOccurs="1" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Risk Description</m:formal-name>
+                  <m:description>A human-readable summary of what was identified regarding the risk.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Risk Description</b>: A human-readable summary of what was identified regarding the risk.</xs:documentation>
+            </xs:annotation>
             <xs:complexType>
                <xs:complexContent>
                   <xs:extension base="oscal-ar:markupMultilineType"/>
@@ -3402,6 +3756,14 @@
             </xs:complexType>
          </xs:element>
          <xs:element name="statement" minOccurs="1" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Risk Statement</m:formal-name>
+                  <m:description>An summary of impact for how the risk affects the system.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Risk Statement</b>: An summary of impact for how the risk affects the system.</xs:documentation>
+            </xs:annotation>
             <xs:complexType>
                <xs:complexContent>
                   <xs:extension base="oscal-ar:markupMultilineType"/>
@@ -3457,6 +3819,14 @@
                </xs:annotation>
                <xs:sequence>
                   <xs:element name="description" minOccurs="1" maxOccurs="1">
+                     <xs:annotation>
+                        <xs:appinfo>
+                           <m:formal-name>Mitigating Factor Description</m:formal-name>
+                           <m:description>A human-readable description of this mitigating factor.</m:description>
+                        </xs:appinfo>
+                        <xs:documentation>
+                           <b>Mitigating Factor Description</b>: A human-readable description of this mitigating factor.</xs:documentation>
+                     </xs:annotation>
                      <xs:complexType>
                         <xs:complexContent>
                            <xs:extension base="oscal-ar:markupMultilineType"/>
@@ -3543,12 +3913,28 @@
                         <xs:sequence>
                            <xs:element name="title" minOccurs="0" maxOccurs="1">
                               <xs:complexType mixed="true">
+                                 <xs:annotation>
+                                    <xs:appinfo>
+                                       <m:formal-name>Action Title</m:formal-name>
+                                       <m:description>The title for this event.</m:description>
+                                    </xs:appinfo>
+                                    <xs:documentation>
+                                       <b>Action Title</b>: The title for this event.</xs:documentation>
+                                 </xs:annotation>
                                  <xs:complexContent>
                                     <xs:extension base="oscal-ar:markupLineType"/>
                                  </xs:complexContent>
                               </xs:complexType>
                            </xs:element>
                            <xs:element name="description" minOccurs="0" maxOccurs="1">
+                              <xs:annotation>
+                                 <xs:appinfo>
+                                    <m:formal-name>Action Description</m:formal-name>
+                                    <m:description>A human-readable description of this event.</m:description>
+                                 </xs:appinfo>
+                                 <xs:documentation>
+                                    <b>Action Description</b>: A human-readable description of this event.</xs:documentation>
+                              </xs:annotation>
                               <xs:complexType>
                                  <xs:complexContent>
                                     <xs:extension base="oscal-ar:markupMultilineType"/>
@@ -3873,12 +4259,28 @@
       <xs:sequence>
          <xs:element name="title" minOccurs="1" maxOccurs="1">
             <xs:complexType mixed="true">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Response Title</m:formal-name>
+                     <m:description>The title for this response activity.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Response Title</b>: The title for this response activity.</xs:documentation>
+               </xs:annotation>
                <xs:complexContent>
                   <xs:extension base="oscal-ar:markupLineType"/>
                </xs:complexContent>
             </xs:complexType>
          </xs:element>
          <xs:element name="description" minOccurs="1" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Response Description</m:formal-name>
+                  <m:description>A human-readable description of this response plan.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Response Description</b>: A human-readable description of this response plan.</xs:documentation>
+            </xs:annotation>
             <xs:complexType>
                <xs:complexContent>
                   <xs:extension base="oscal-ar:markupMultilineType"/>
@@ -3918,12 +4320,28 @@
                               maxOccurs="unbounded"/>
                   <xs:element name="title" minOccurs="0" maxOccurs="1">
                      <xs:complexType mixed="true">
+                        <xs:annotation>
+                           <xs:appinfo>
+                              <m:formal-name>Title for Required Asset</m:formal-name>
+                              <m:description>The title for this required asset.</m:description>
+                           </xs:appinfo>
+                           <xs:documentation>
+                              <b>Title for Required Asset</b>: The title for this required asset.</xs:documentation>
+                        </xs:annotation>
                         <xs:complexContent>
                            <xs:extension base="oscal-ar:markupLineType"/>
                         </xs:complexContent>
                      </xs:complexType>
                   </xs:element>
                   <xs:element name="description" minOccurs="1" maxOccurs="1">
+                     <xs:annotation>
+                        <xs:appinfo>
+                           <m:formal-name>Description of Required Asset</m:formal-name>
+                           <m:description>A human-readable description of this required asset.</m:description>
+                        </xs:appinfo>
+                        <xs:documentation>
+                           <b>Description of Required Asset</b>: A human-readable description of this required asset.</xs:documentation>
+                     </xs:annotation>
                      <xs:complexType>
                         <xs:complexContent>
                            <xs:extension base="oscal-ar:markupMultilineType"/>
@@ -4023,6 +4441,14 @@
       <xs:sequence>
          <xs:element name="title" minOccurs="0" maxOccurs="1">
             <xs:complexType mixed="true">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Part Title</m:formal-name>
+                     <m:description>A name given to the part, which may be used by a tool for display and navigation.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Part Title</b>: A name given to the part, which may be used by a tool for display and navigation.</xs:documentation>
+               </xs:annotation>
                <xs:complexContent>
                   <xs:extension base="oscal-ar:markupLineType"/>
                </xs:complexContent>
@@ -4181,12 +4607,28 @@
       <xs:sequence>
          <xs:element name="title" minOccurs="1" maxOccurs="1">
             <xs:complexType mixed="true">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Results Title</m:formal-name>
+                     <m:description>The title for this set of results.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Results Title</b>: The title for this set of results.</xs:documentation>
+               </xs:annotation>
                <xs:complexContent>
                   <xs:extension base="oscal-ar:markupLineType"/>
                </xs:complexContent>
             </xs:complexType>
          </xs:element>
          <xs:element name="description" minOccurs="1" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Results Description</m:formal-name>
+                  <m:description>A human-readable description of this set of test results.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Results Description</b>: A human-readable description of this set of test results.</xs:documentation>
+            </xs:annotation>
             <xs:complexType>
                <xs:complexContent>
                   <xs:extension base="oscal-ar:markupMultilineType"/>
@@ -4315,12 +4757,28 @@
                         <xs:sequence>
                            <xs:element name="title" minOccurs="0" maxOccurs="1">
                               <xs:complexType mixed="true">
+                                 <xs:annotation>
+                                    <xs:appinfo>
+                                       <m:formal-name>Action Title</m:formal-name>
+                                       <m:description>The title for this event.</m:description>
+                                    </xs:appinfo>
+                                    <xs:documentation>
+                                       <b>Action Title</b>: The title for this event.</xs:documentation>
+                                 </xs:annotation>
                                  <xs:complexContent>
                                     <xs:extension base="oscal-ar:markupLineType"/>
                                  </xs:complexContent>
                               </xs:complexType>
                            </xs:element>
                            <xs:element name="description" minOccurs="0" maxOccurs="1">
+                              <xs:annotation>
+                                 <xs:appinfo>
+                                    <m:formal-name>Action Description</m:formal-name>
+                                    <m:description>A human-readable description of this event.</m:description>
+                                 </xs:appinfo>
+                                 <xs:documentation>
+                                    <b>Action Description</b>: A human-readable description of this event.</xs:documentation>
+                              </xs:annotation>
                               <xs:complexType>
                                  <xs:complexContent>
                                     <xs:extension base="oscal-ar:markupMultilineType"/>
@@ -4455,12 +4913,28 @@
       <xs:sequence>
          <xs:element name="title" minOccurs="1" maxOccurs="1">
             <xs:complexType mixed="true">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Finding Title</m:formal-name>
+                     <m:description>The title for this finding.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Finding Title</b>: The title for this finding.</xs:documentation>
+               </xs:annotation>
                <xs:complexContent>
                   <xs:extension base="oscal-ar:markupLineType"/>
                </xs:complexContent>
             </xs:complexType>
          </xs:element>
          <xs:element name="description" minOccurs="1" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Finding Description</m:formal-name>
+                  <m:description>A human-readable description of this finding.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Finding Description</b>: A human-readable description of this finding.</xs:documentation>
+            </xs:annotation>
             <xs:complexType>
                <xs:complexContent>
                   <xs:extension base="oscal-ar:markupMultilineType"/>

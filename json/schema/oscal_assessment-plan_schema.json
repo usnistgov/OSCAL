@@ -4,7 +4,7 @@
     "$comment" : "OSCAL Assessment Plan Model: JSON Schema",
     "type" : "object",
     "definitions" : 
-    { "part" : 
+    { "oscal-ap-part" : 
       { "title" : "Part",
         "description" : "A partition of a control's definition or a child of another part.",
         "$id" : "#/definitions/part",
@@ -58,7 +58,7 @@
         "required" : 
         [ "name" ],
         "additionalProperties" : true },
-      "metadata" : 
+      "oscal-ap-metadata" : 
       { "title" : "Publication metadata",
         "description" : "Provides information about the publication and availability of the containing document.",
         "$id" : "#/definitions/metadata",
@@ -134,7 +134,7 @@
           "version",
           "oscal-version" ],
         "additionalProperties" : false },
-      "oscal-metadata-revision" : 
+      "oscal-ap-oscal-metadata-revision" : 
       { "title" : "Revision History Entry",
         "description" : "An entry in a sequential list of revisions to the containing document in reverse chronological order (i.e., most recent previous revision first).",
         "$id" : "#/definitions/oscal-metadata-revision",
@@ -170,7 +170,7 @@
           "remarks" : 
           { "$ref" : "#/definitions/remarks" } },
         "additionalProperties" : false },
-      "location" : 
+      "oscal-ap-location" : 
       { "title" : "Location",
         "description" : "A location, with associated metadata that can be referenced.",
         "$id" : "#/definitions/location",
@@ -226,13 +226,13 @@
         [ "uuid",
           "address" ],
         "additionalProperties" : false },
-      "location-uuid" : 
+      "oscal-ap-location-uuid" : 
       { "title" : "Location Reference",
         "description" : "References a location defined in metadata.",
         "$id" : "#/definitions/location-uuid",
         "type" : "string",
         "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
-      "party" : 
+      "oscal-ap-party" : 
       { "title" : "Party (organization or person)",
         "description" : "A responsible entity which is either a person or an organization.",
         "$id" : "#/definitions/party",
@@ -326,13 +326,13 @@
         [ "uuid",
           "type" ],
         "additionalProperties" : false },
-      "party-uuid" : 
+      "oscal-ap-party-uuid" : 
       { "title" : "Party Reference",
         "description" : "References a party defined in metadata.",
         "$id" : "#/definitions/party-uuid",
         "type" : "string",
         "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
-      "role" : 
+      "oscal-ap-role" : 
       { "title" : "Role",
         "description" : "Defines a function assumed or expected to be assumed by a party in a specific situation.",
         "$id" : "#/definitions/role",
@@ -375,12 +375,12 @@
         [ "id",
           "title" ],
         "additionalProperties" : false },
-      "role-id" : 
+      "oscal-ap-role-id" : 
       { "title" : "Role Identifier Reference",
         "description" : "A reference to the roles served by the user.",
         "$id" : "#/definitions/role-id",
         "type" : "string" },
-      "back-matter" : 
+      "oscal-ap-back-matter" : 
       { "title" : "Back matter",
         "description" : "A collection of resources, which may be included directly or by reference.",
         "$id" : "#/definitions/back-matter",
@@ -499,7 +499,7 @@
               [ "uuid" ],
               "additionalProperties" : true } } },
         "additionalProperties" : false },
-      "property" : 
+      "oscal-ap-property" : 
       { "title" : "Property",
         "description" : "An attribute, characteristic, or quality of the containing object expressed as a namespace qualified name/value pair. The value of a property is a simple scalar value, which may be expressed as a list of values in some OSCAL formats.",
         "$id" : "#/definitions/property",
@@ -529,7 +529,7 @@
         [ "value",
           "name" ],
         "additionalProperties" : false },
-      "annotation" : 
+      "oscal-ap-annotation" : 
       { "title" : "Annotated Property",
         "description" : "An attribute, characteristic, or quality of the containing object expressed as a namespace qualified name/value pair with optional explanatory remarks. The value of an annotated property is a simple scalar value.",
         "$id" : "#/definitions/annotation",
@@ -559,7 +559,7 @@
         [ "name",
           "value" ],
         "additionalProperties" : false },
-      "link" : 
+      "oscal-ap-link" : 
       { "title" : "Link",
         "description" : "A reference to a local or remote resource",
         "$id" : "#/definitions/link",
@@ -585,7 +585,7 @@
         "required" : 
         [ "href" ],
         "additionalProperties" : false },
-      "responsible-party" : 
+      "oscal-ap-responsible-party" : 
       { "title" : "Responsible Party",
         "description" : "A reference to a set of organizations or persons that have responsibility for performing a referenced role in the context of the containing object.",
         "$id" : "#/definitions/responsible-party",
@@ -616,7 +616,7 @@
         "required" : 
         [ "party-uuids" ],
         "additionalProperties" : false },
-      "responsible-role" : 
+      "oscal-ap-responsible-role" : 
       { "title" : "Responsible Role",
         "description" : "A reference to one or more roles with responsibility for performing a function relative to the containing object.",
         "$id" : "#/definitions/responsible-role",
@@ -645,7 +645,7 @@
           "remarks" : 
           { "$ref" : "#/definitions/remarks" } },
         "additionalProperties" : false },
-      "hash" : 
+      "oscal-ap-hash" : 
       { "title" : "Hash",
         "description" : "A representation of a cryptographic digest generated over a resource using a specified hash algorithm.",
         "$id" : "#/definitions/hash",
@@ -661,43 +661,43 @@
         [ "value",
           "algorithm" ],
         "additionalProperties" : false },
-      "remarks" : 
+      "oscal-ap-remarks" : 
       { "title" : "Remarks",
         "description" : "Additional commentary on the containing object.",
         "$id" : "#/definitions/remarks",
         "type" : "string" },
-      "oscal-metadata-published" : 
+      "oscal-ap-oscal-metadata-published" : 
       { "title" : "Publication Timestamp",
         "description" : "The date and time the document was published. The date-time value must be formatted according to RFC 3339 with full time and time zone included.",
         "$id" : "#/definitions/oscal-metadata-published",
         "type" : "string",
         "format" : "date-time",
         "pattern" : "^((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})$" },
-      "oscal-metadata-last-modified" : 
+      "oscal-ap-oscal-metadata-last-modified" : 
       { "title" : "Last Modified Timestamp",
         "description" : "The date and time the document was last modified. The date-time value must be formatted according to RFC 3339 with full time and time zone included.",
         "$id" : "#/definitions/oscal-metadata-last-modified",
         "type" : "string",
         "format" : "date-time",
         "pattern" : "^((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})$" },
-      "oscal-metadata-version" : 
+      "oscal-ap-oscal-metadata-version" : 
       { "title" : "Document Version",
         "description" : "A string used to distinguish the current version of the document from other previous (and future) versions.",
         "$id" : "#/definitions/oscal-metadata-version",
         "type" : "string" },
-      "oscal-metadata-oscal-version" : 
+      "oscal-ap-oscal-metadata-oscal-version" : 
       { "title" : "OSCAL version",
         "description" : "The OSCAL model version the document was authored against.",
         "$id" : "#/definitions/oscal-metadata-oscal-version",
         "type" : "string" },
-      "oscal-metadata-email-address" : 
+      "oscal-ap-oscal-metadata-email-address" : 
       { "title" : "Email Address",
         "description" : "An email address as defined by RFC 5322 Section 3.4.1.",
         "$id" : "#/definitions/oscal-metadata-email-address",
         "type" : "string",
         "format" : "email",
         "pattern" : "^.+@.+" },
-      "oscal-metadata-telephone-number" : 
+      "oscal-ap-oscal-metadata-telephone-number" : 
       { "title" : "Telephone Number",
         "description" : "Contact number by telephone.",
         "$id" : "#/definitions/oscal-metadata-telephone-number",
@@ -712,14 +712,16 @@
         "required" : 
         [ "number" ],
         "additionalProperties" : false },
-      "oscal-metadata-address" : 
+      "oscal-ap-oscal-metadata-address" : 
       { "title" : "Address",
         "description" : "A postal address for the location.",
         "$id" : "#/definitions/oscal-metadata-address",
         "type" : "object",
         "properties" : 
         { "type" : 
-          { "type" : "string" },
+          { "title" : "Address Type",
+            "description" : "Indicates the type of address.",
+            "type" : "string" },
           "addr-lines" : 
           { "type" : "array",
             "minItems" : 1,
@@ -742,12 +744,12 @@
             "description" : "The ISO 3166-1 alpha-2 country code for the mailing address.",
             "type" : "string" } },
         "additionalProperties" : false },
-      "oscal-metadata-addr-line" : 
+      "oscal-ap-oscal-metadata-addr-line" : 
       { "title" : "Address line",
         "description" : "A single line of an address.",
         "$id" : "#/definitions/oscal-metadata-addr-line",
         "type" : "string" },
-      "oscal-metadata-document-id" : 
+      "oscal-ap-oscal-metadata-document-id" : 
       { "title" : "Document Identifier",
         "description" : "A document identifier qualified by an identifier type.",
         "$id" : "#/definitions/oscal-metadata-document-id",
@@ -764,7 +766,7 @@
         [ "identifier",
           "scheme" ],
         "additionalProperties" : false },
-      "system-component" : 
+      "oscal-ap-system-component" : 
       { "title" : "Component",
         "description" : "A defined component that can be part of an implemented system.",
         "$id" : "#/definitions/system-component",
@@ -843,7 +845,7 @@
           "description",
           "status" ],
         "additionalProperties" : false },
-      "protocol" : 
+      "oscal-ap-protocol" : 
       { "title" : "Service Protocol Information",
         "description" : "Information about the protocol used to provide a service.",
         "$id" : "#/definitions/protocol",
@@ -870,7 +872,7 @@
         "required" : 
         [ "name" ],
         "additionalProperties" : false },
-      "port-range" : 
+      "oscal-ap-port-range" : 
       { "title" : "Port Range",
         "description" : "Where applicable this is the IPv4 port range on which the service operates.",
         "$id" : "#/definitions/port-range",
@@ -896,7 +898,7 @@
             [ "TCP",
               "UDP" ] } },
         "additionalProperties" : false },
-      "system-user" : 
+      "oscal-ap-system-user" : 
       { "title" : "System User",
         "description" : "A type of user that interacts with the system based on an associated role.",
         "$id" : "#/definitions/system-user",
@@ -942,7 +944,7 @@
           "remarks" : 
           { "$ref" : "#/definitions/remarks" } },
         "additionalProperties" : false },
-      "authorized-privilege" : 
+      "oscal-ap-authorized-privilege" : 
       { "title" : "Privilege",
         "description" : "Identifies a specific system privilege held by the user, along with an associated description and/or rationale for the privilege.",
         "$id" : "#/definitions/authorized-privilege",
@@ -965,12 +967,12 @@
         [ "title",
           "functions-performed" ],
         "additionalProperties" : false },
-      "function-performed" : 
+      "oscal-ap-function-performed" : 
       { "title" : "Functions Performed",
         "description" : "Describes a function performed for a given authorized privilege by this user class.",
         "$id" : "#/definitions/function-performed",
         "type" : "string" },
-      "inventory-item" : 
+      "oscal-ap-inventory-item" : 
       { "title" : "Inventory Item",
         "description" : "A single managed inventory item within the system.",
         "$id" : "#/definitions/inventory-item",
@@ -1059,7 +1061,7 @@
         [ "uuid",
           "description" ],
         "additionalProperties" : false },
-      "import-ssp" : 
+      "oscal-ap-import-ssp" : 
       { "title" : "Import System Security Plan",
         "description" : "Used by the assessment plan and POA&M to import information about the system.",
         "$id" : "#/definitions/import-ssp",
@@ -1075,7 +1077,7 @@
         "required" : 
         [ "href" ],
         "additionalProperties" : false },
-      "local-objective" : 
+      "oscal-ap-local-objective" : 
       { "title" : "Assessment-Specific Control Objective",
         "description" : "A local definition of a control objective for this assessment. Uses catalog syntax for control objective and assessment actions.",
         "$id" : "#/definitions/local-objective",
@@ -1115,7 +1117,7 @@
         [ "control-id",
           "parts" ],
         "additionalProperties" : false },
-      "activity" : 
+      "oscal-ap-activity" : 
       { "title" : "Activity",
         "description" : "Identifies an assessment or related process that can be performed. In the assessment plan, this is an intended activity which may be associated with an assessment task. In the assessment results, this an activity that was actually performed as part of an assessement.",
         "$id" : "#/definitions/activity",
@@ -1221,7 +1223,7 @@
         [ "uuid",
           "description" ],
         "additionalProperties" : false },
-      "task" : 
+      "oscal-ap-task" : 
       { "title" : "Task",
         "description" : "Represents a scheduled event or milestone, which may be associated with a series of assessment actions.",
         "$id" : "#/definitions/task",
@@ -1421,7 +1423,7 @@
           "type",
           "title" ],
         "additionalProperties" : false },
-      "reviewed-controls" : 
+      "oscal-ap-reviewed-controls" : 
       { "title" : "Reviewed Controls and Control Objectives",
         "description" : "Identifies the controls being assessed and their control objectives.",
         "$id" : "#/definitions/reviewed-controls",
@@ -1541,7 +1543,7 @@
         "required" : 
         [ "control-selections" ],
         "additionalProperties" : false },
-      "oscal-assessment-common-select-control-by-id" : 
+      "oscal-ap-oscal-assessment-common-select-control-by-id" : 
       { "title" : "Select Control",
         "description" : "Used to select a control for inclusion/exclusion based on one or more control identifiers. A set of statement identifiers can be used to target the inclusion/exclusion to only specific control statements providing more granularity over the specific statements that are within the asessment scope.",
         "$id" : "#/definitions/oscal-assessment-common-select-control-by-id",
@@ -1561,16 +1563,20 @@
         "required" : 
         [ "control-id" ],
         "additionalProperties" : false },
-      "select-objective-by-id" : 
+      "oscal-ap-select-objective-by-id" : 
       { "title" : "Select Objective",
         "description" : "Used to select a control objective for inclusion/exclusion based on the control objective's identifier.",
         "$id" : "#/definitions/select-objective-by-id",
         "type" : "object",
         "properties" : 
-        { "" : 
-          { "type" : "string" } },
+        { "objective-id" : 
+          { "title" : "Objective ID",
+            "description" : "Points to an assessment objective.",
+            "type" : "string" } },
+        "required" : 
+        [ "objective-id" ],
         "additionalProperties" : false },
-      "assessment-subject-placeholder" : 
+      "oscal-ap-assessment-subject-placeholder" : 
       { "title" : "Assessment Subject Placeholder",
         "description" : "Used when the assessment subjects will be determined as part of one or more other assessment activities. These assessment subjects will be recorded in the assessment results in the assessment log.",
         "$id" : "#/definitions/assessment-subject-placeholder",
@@ -1622,7 +1628,7 @@
         [ "uuid",
           "sources" ],
         "additionalProperties" : false },
-      "assessment-subject" : 
+      "oscal-ap-assessment-subject" : 
       { "title" : "Subject of Assessment",
         "description" : "Identifies system elements being assessed, such as components, inventory items, and locations. In the assessment plan, this identifies a planned assessment subject. In the assessment results this is an actual assessment subject, and reflects any changes from the plan. exactly what will be the focus of this assessment. Any subjects not identified in this way are out-of-scope.",
         "$id" : "#/definitions/assessment-subject",
@@ -1671,7 +1677,7 @@
         "required" : 
         [ "type" ],
         "additionalProperties" : false },
-      "select-subject-by-id" : 
+      "oscal-ap-select-subject-by-id" : 
       { "title" : "Select Assessment Subject",
         "description" : "Identifies a set of assessment subjects to include/exclude by UUID.",
         "$id" : "#/definitions/select-subject-by-id",
@@ -1702,7 +1708,7 @@
         "required" : 
         [ "uuid-ref" ],
         "additionalProperties" : false },
-      "assessment-assets" : 
+      "oscal-ap-assessment-assets" : 
       { "title" : "Assessment Assets",
         "description" : "Identifies the assets used to perform this assessment, such as the assessment team, scanning tools, and assumptions.",
         "$id" : "#/definitions/assessment-assets",
@@ -1801,7 +1807,7 @@
         "required" : 
         [ "assessment-platforms" ],
         "additionalProperties" : false },
-      "assessment-part" : 
+      "oscal-ap-assessment-part" : 
       { "title" : "Assessment Part",
         "description" : "A partition of an assessment plan or results or a child of another part.",
         "$id" : "#/definitions/assessment-part",
@@ -1856,7 +1862,7 @@
         "required" : 
         [ "name" ],
         "additionalProperties" : true },
-      "assessment-plan" : 
+      "oscal-ap-assessment-plan" : 
       { "title" : "Security Assessment Plan (SAP)",
         "description" : "An assessment plan, such as those provided by a FedRAMP assessor.",
         "$id" : "#/definitions/assessment-plan",

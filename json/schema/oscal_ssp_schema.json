@@ -4,7 +4,7 @@
     "$comment" : "OSCAL System Security Plan (SSP) Model: JSON Schema",
     "type" : "object",
     "definitions" : 
-    { "metadata" : 
+    { "oscal-ssp-metadata" : 
       { "title" : "Publication metadata",
         "description" : "Provides information about the publication and availability of the containing document.",
         "$id" : "#/definitions/metadata",
@@ -80,7 +80,7 @@
           "version",
           "oscal-version" ],
         "additionalProperties" : false },
-      "oscal-metadata-revision" : 
+      "oscal-ssp-oscal-metadata-revision" : 
       { "title" : "Revision History Entry",
         "description" : "An entry in a sequential list of revisions to the containing document in reverse chronological order (i.e., most recent previous revision first).",
         "$id" : "#/definitions/oscal-metadata-revision",
@@ -116,7 +116,7 @@
           "remarks" : 
           { "$ref" : "#/definitions/remarks" } },
         "additionalProperties" : false },
-      "location" : 
+      "oscal-ssp-location" : 
       { "title" : "Location",
         "description" : "A location, with associated metadata that can be referenced.",
         "$id" : "#/definitions/location",
@@ -172,13 +172,13 @@
         [ "uuid",
           "address" ],
         "additionalProperties" : false },
-      "location-uuid" : 
+      "oscal-ssp-location-uuid" : 
       { "title" : "Location Reference",
         "description" : "References a location defined in metadata.",
         "$id" : "#/definitions/location-uuid",
         "type" : "string",
         "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
-      "party" : 
+      "oscal-ssp-party" : 
       { "title" : "Party (organization or person)",
         "description" : "A responsible entity which is either a person or an organization.",
         "$id" : "#/definitions/party",
@@ -272,13 +272,13 @@
         [ "uuid",
           "type" ],
         "additionalProperties" : false },
-      "party-uuid" : 
+      "oscal-ssp-party-uuid" : 
       { "title" : "Party Reference",
         "description" : "References a party defined in metadata.",
         "$id" : "#/definitions/party-uuid",
         "type" : "string",
         "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
-      "role" : 
+      "oscal-ssp-role" : 
       { "title" : "Role",
         "description" : "Defines a function assumed or expected to be assumed by a party in a specific situation.",
         "$id" : "#/definitions/role",
@@ -321,12 +321,12 @@
         [ "id",
           "title" ],
         "additionalProperties" : false },
-      "role-id" : 
+      "oscal-ssp-role-id" : 
       { "title" : "Role Identifier Reference",
         "description" : "A reference to the roles served by the user.",
         "$id" : "#/definitions/role-id",
         "type" : "string" },
-      "back-matter" : 
+      "oscal-ssp-back-matter" : 
       { "title" : "Back matter",
         "description" : "A collection of resources, which may be included directly or by reference.",
         "$id" : "#/definitions/back-matter",
@@ -445,7 +445,7 @@
               [ "uuid" ],
               "additionalProperties" : true } } },
         "additionalProperties" : false },
-      "property" : 
+      "oscal-ssp-property" : 
       { "title" : "Property",
         "description" : "An attribute, characteristic, or quality of the containing object expressed as a namespace qualified name/value pair. The value of a property is a simple scalar value, which may be expressed as a list of values in some OSCAL formats.",
         "$id" : "#/definitions/property",
@@ -475,7 +475,7 @@
         [ "value",
           "name" ],
         "additionalProperties" : false },
-      "annotation" : 
+      "oscal-ssp-annotation" : 
       { "title" : "Annotated Property",
         "description" : "An attribute, characteristic, or quality of the containing object expressed as a namespace qualified name/value pair with optional explanatory remarks. The value of an annotated property is a simple scalar value.",
         "$id" : "#/definitions/annotation",
@@ -505,7 +505,7 @@
         [ "name",
           "value" ],
         "additionalProperties" : false },
-      "link" : 
+      "oscal-ssp-link" : 
       { "title" : "Link",
         "description" : "A reference to a local or remote resource",
         "$id" : "#/definitions/link",
@@ -531,7 +531,7 @@
         "required" : 
         [ "href" ],
         "additionalProperties" : false },
-      "responsible-party" : 
+      "oscal-ssp-responsible-party" : 
       { "title" : "Responsible Party",
         "description" : "A reference to a set of organizations or persons that have responsibility for performing a referenced role in the context of the containing object.",
         "$id" : "#/definitions/responsible-party",
@@ -562,7 +562,7 @@
         "required" : 
         [ "party-uuids" ],
         "additionalProperties" : false },
-      "responsible-role" : 
+      "oscal-ssp-responsible-role" : 
       { "title" : "Responsible Role",
         "description" : "A reference to one or more roles with responsibility for performing a function relative to the containing object.",
         "$id" : "#/definitions/responsible-role",
@@ -591,7 +591,7 @@
           "remarks" : 
           { "$ref" : "#/definitions/remarks" } },
         "additionalProperties" : false },
-      "hash" : 
+      "oscal-ssp-hash" : 
       { "title" : "Hash",
         "description" : "A representation of a cryptographic digest generated over a resource using a specified hash algorithm.",
         "$id" : "#/definitions/hash",
@@ -607,43 +607,43 @@
         [ "value",
           "algorithm" ],
         "additionalProperties" : false },
-      "remarks" : 
+      "oscal-ssp-remarks" : 
       { "title" : "Remarks",
         "description" : "Additional commentary on the containing object.",
         "$id" : "#/definitions/remarks",
         "type" : "string" },
-      "oscal-metadata-published" : 
+      "oscal-ssp-oscal-metadata-published" : 
       { "title" : "Publication Timestamp",
         "description" : "The date and time the document was published. The date-time value must be formatted according to RFC 3339 with full time and time zone included.",
         "$id" : "#/definitions/oscal-metadata-published",
         "type" : "string",
         "format" : "date-time",
         "pattern" : "^((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})$" },
-      "oscal-metadata-last-modified" : 
+      "oscal-ssp-oscal-metadata-last-modified" : 
       { "title" : "Last Modified Timestamp",
         "description" : "The date and time the document was last modified. The date-time value must be formatted according to RFC 3339 with full time and time zone included.",
         "$id" : "#/definitions/oscal-metadata-last-modified",
         "type" : "string",
         "format" : "date-time",
         "pattern" : "^((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})$" },
-      "oscal-metadata-version" : 
+      "oscal-ssp-oscal-metadata-version" : 
       { "title" : "Document Version",
         "description" : "A string used to distinguish the current version of the document from other previous (and future) versions.",
         "$id" : "#/definitions/oscal-metadata-version",
         "type" : "string" },
-      "oscal-metadata-oscal-version" : 
+      "oscal-ssp-oscal-metadata-oscal-version" : 
       { "title" : "OSCAL version",
         "description" : "The OSCAL model version the document was authored against.",
         "$id" : "#/definitions/oscal-metadata-oscal-version",
         "type" : "string" },
-      "oscal-metadata-email-address" : 
+      "oscal-ssp-oscal-metadata-email-address" : 
       { "title" : "Email Address",
         "description" : "An email address as defined by RFC 5322 Section 3.4.1.",
         "$id" : "#/definitions/oscal-metadata-email-address",
         "type" : "string",
         "format" : "email",
         "pattern" : "^.+@.+" },
-      "oscal-metadata-telephone-number" : 
+      "oscal-ssp-oscal-metadata-telephone-number" : 
       { "title" : "Telephone Number",
         "description" : "Contact number by telephone.",
         "$id" : "#/definitions/oscal-metadata-telephone-number",
@@ -658,14 +658,16 @@
         "required" : 
         [ "number" ],
         "additionalProperties" : false },
-      "oscal-metadata-address" : 
+      "oscal-ssp-oscal-metadata-address" : 
       { "title" : "Address",
         "description" : "A postal address for the location.",
         "$id" : "#/definitions/oscal-metadata-address",
         "type" : "object",
         "properties" : 
         { "type" : 
-          { "type" : "string" },
+          { "title" : "Address Type",
+            "description" : "Indicates the type of address.",
+            "type" : "string" },
           "addr-lines" : 
           { "type" : "array",
             "minItems" : 1,
@@ -688,12 +690,12 @@
             "description" : "The ISO 3166-1 alpha-2 country code for the mailing address.",
             "type" : "string" } },
         "additionalProperties" : false },
-      "oscal-metadata-addr-line" : 
+      "oscal-ssp-oscal-metadata-addr-line" : 
       { "title" : "Address line",
         "description" : "A single line of an address.",
         "$id" : "#/definitions/oscal-metadata-addr-line",
         "type" : "string" },
-      "oscal-metadata-document-id" : 
+      "oscal-ssp-oscal-metadata-document-id" : 
       { "title" : "Document Identifier",
         "description" : "A document identifier qualified by an identifier type.",
         "$id" : "#/definitions/oscal-metadata-document-id",
@@ -710,7 +712,7 @@
         [ "identifier",
           "scheme" ],
         "additionalProperties" : false },
-      "system-component" : 
+      "oscal-ssp-system-component" : 
       { "title" : "Component",
         "description" : "A defined component that can be part of an implemented system.",
         "$id" : "#/definitions/system-component",
@@ -789,7 +791,7 @@
           "description",
           "status" ],
         "additionalProperties" : false },
-      "protocol" : 
+      "oscal-ssp-protocol" : 
       { "title" : "Service Protocol Information",
         "description" : "Information about the protocol used to provide a service.",
         "$id" : "#/definitions/protocol",
@@ -816,7 +818,7 @@
         "required" : 
         [ "name" ],
         "additionalProperties" : false },
-      "port-range" : 
+      "oscal-ssp-port-range" : 
       { "title" : "Port Range",
         "description" : "Where applicable this is the IPv4 port range on which the service operates.",
         "$id" : "#/definitions/port-range",
@@ -842,7 +844,7 @@
             [ "TCP",
               "UDP" ] } },
         "additionalProperties" : false },
-      "system-user" : 
+      "oscal-ssp-system-user" : 
       { "title" : "System User",
         "description" : "A type of user that interacts with the system based on an associated role.",
         "$id" : "#/definitions/system-user",
@@ -888,7 +890,7 @@
           "remarks" : 
           { "$ref" : "#/definitions/remarks" } },
         "additionalProperties" : false },
-      "authorized-privilege" : 
+      "oscal-ssp-authorized-privilege" : 
       { "title" : "Privilege",
         "description" : "Identifies a specific system privilege held by the user, along with an associated description and/or rationale for the privilege.",
         "$id" : "#/definitions/authorized-privilege",
@@ -911,12 +913,12 @@
         [ "title",
           "functions-performed" ],
         "additionalProperties" : false },
-      "function-performed" : 
+      "oscal-ssp-function-performed" : 
       { "title" : "Functions Performed",
         "description" : "Describes a function performed for a given authorized privilege by this user class.",
         "$id" : "#/definitions/function-performed",
         "type" : "string" },
-      "inventory-item" : 
+      "oscal-ssp-inventory-item" : 
       { "title" : "Inventory Item",
         "description" : "A single managed inventory item within the system.",
         "$id" : "#/definitions/inventory-item",
@@ -1005,7 +1007,7 @@
         [ "uuid",
           "description" ],
         "additionalProperties" : false },
-      "set-parameter" : 
+      "oscal-ssp-set-parameter" : 
       { "title" : "Set Parameter Value",
         "description" : "Identifies the parameter that will be set by the enclosed value.",
         "$id" : "#/definitions/set-parameter",
@@ -1023,7 +1025,7 @@
         "required" : 
         [ "values" ],
         "additionalProperties" : false },
-      "system-id" : 
+      "oscal-ssp-system-id" : 
       { "title" : "System Identification",
         "description" : "A unique identifier for the system described by this system security plan.",
         "$id" : "#/definitions/system-id",
@@ -1039,7 +1041,7 @@
         "required" : 
         [ "id" ],
         "additionalProperties" : false },
-      "system-security-plan" : 
+      "oscal-ssp-system-security-plan" : 
       { "title" : "System Security Plan (SSP)",
         "description" : "A system security plan, such as those described in NIST SP 800-18",
         "$id" : "#/definitions/system-security-plan",
@@ -1070,7 +1072,7 @@
           "system-implementation",
           "control-implementation" ],
         "additionalProperties" : false },
-      "import-profile" : 
+      "oscal-ssp-import-profile" : 
       { "title" : "Import Profile",
         "description" : "Used to import the OSCAL profile representing the system's control baseline.",
         "$id" : "#/definitions/import-profile",
@@ -1086,7 +1088,7 @@
         "required" : 
         [ "href" ],
         "additionalProperties" : false },
-      "system-characteristics" : 
+      "oscal-ssp-system-characteristics" : 
       { "title" : "System Characteristics",
         "description" : "Contains the characteristics of the system, such as its name, purpose, and security impact level.",
         "$id" : "#/definitions/system-characteristics",
@@ -1164,7 +1166,7 @@
           "status",
           "authorization-boundary" ],
         "additionalProperties" : false },
-      "system-information" : 
+      "oscal-ssp-system-information" : 
       { "title" : "System Information",
         "description" : "Contains details about all information types that are stored, processed, or transmitted by the system, such as privacy information, and those defined in NIST SP 800-60.",
         "$id" : "#/definitions/system-information",
@@ -1341,22 +1343,22 @@
         "required" : 
         [ "information-types" ],
         "additionalProperties" : false },
-      "oscal-ssp-base" : 
+      "oscal-ssp-oscal-ssp-base" : 
       { "title" : "Base Level (Confidentiality, Integrity, or Availability)",
         "description" : "The prescribed base (Confidentiality, Integrity, or Availability) security impact level.",
         "$id" : "#/definitions/oscal-ssp-base",
         "type" : "string" },
-      "oscal-ssp-selected" : 
+      "oscal-ssp-oscal-ssp-selected" : 
       { "title" : "Selected Level (Confidentiality, Integrity, or Availability)",
         "description" : "The selected (Confidentiality, Integrity, or Availability) security impact level.",
         "$id" : "#/definitions/oscal-ssp-selected",
         "type" : "string" },
-      "oscal-ssp-adjustment-justification" : 
+      "oscal-ssp-oscal-ssp-adjustment-justification" : 
       { "title" : "Adjustment Justification",
         "description" : "If the selected security level is different from the base security level, this contains the justification for the change.",
         "$id" : "#/definitions/oscal-ssp-adjustment-justification",
         "type" : "string" },
-      "security-impact-level" : 
+      "oscal-ssp-security-impact-level" : 
       { "title" : "Security Impact Level",
         "description" : "The overall level of expected impact resulting from unauthorized disclosure, modification, or loss of access to information.",
         "$id" : "#/definitions/security-impact-level",
@@ -1379,7 +1381,7 @@
           "security-objective-integrity",
           "security-objective-availability" ],
         "additionalProperties" : false },
-      "oscal-ssp-status" : 
+      "oscal-ssp-oscal-ssp-status" : 
       { "title" : "Status",
         "description" : "Describes the operational status of the system.",
         "$id" : "#/definitions/oscal-ssp-status",
@@ -1400,13 +1402,13 @@
         "required" : 
         [ "state" ],
         "additionalProperties" : false },
-      "oscal-ssp-date-authorized" : 
+      "oscal-ssp-oscal-ssp-date-authorized" : 
       { "title" : "System Authorization Date",
         "description" : "The date the system received its authorization.",
         "$id" : "#/definitions/oscal-ssp-date-authorized",
         "type" : "string",
         "pattern" : "^((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))(Z|[+-][0-9]{2}:[0-9]{2})?$" },
-      "authorization-boundary" : 
+      "oscal-ssp-authorization-boundary" : 
       { "title" : "Authorization Boundary",
         "description" : "A description of this system's authorization boundary, optionally supplemented by diagrams that illustrate the authorization boundary.",
         "$id" : "#/definitions/authorization-boundary",
@@ -1448,7 +1450,7 @@
         "required" : 
         [ "description" ],
         "additionalProperties" : false },
-      "diagram" : 
+      "oscal-ssp-diagram" : 
       { "title" : "Diagram",
         "description" : "A graphic that provides a visual representation the system, or some aspect of it.",
         "$id" : "#/definitions/diagram",
@@ -1482,7 +1484,7 @@
             "description" : "Commentary about the diagram that enhances it.",
             "type" : "string" } },
         "additionalProperties" : false },
-      "network-architecture" : 
+      "oscal-ssp-network-architecture" : 
       { "title" : "Network Architecture",
         "description" : "A description of the system's network architecture, optionally supplemented by diagrams that illustrate the network architecture.",
         "$id" : "#/definitions/network-architecture",
@@ -1522,7 +1524,7 @@
         "required" : 
         [ "description" ],
         "additionalProperties" : false },
-      "data-flow" : 
+      "oscal-ssp-data-flow" : 
       { "title" : "Data Flow",
         "description" : "A description of the logical flow of information within the system and across its boundaries, optionally supplemented by diagrams that illustrate these flows.",
         "$id" : "#/definitions/data-flow",
@@ -1562,7 +1564,7 @@
         "required" : 
         [ "description" ],
         "additionalProperties" : false },
-      "system-implementation" : 
+      "oscal-ssp-system-implementation" : 
       { "title" : "System Implementation",
         "description" : "Provides information as to how the system is implemented.",
         "$id" : "#/definitions/system-implementation",
@@ -1661,7 +1663,7 @@
         [ "users",
           "components" ],
         "additionalProperties" : false },
-      "control-implementation" : 
+      "oscal-ssp-control-implementation" : 
       { "title" : "Control Implementation",
         "description" : "Describes how the system satisfies a set of controls.",
         "$id" : "#/definitions/control-implementation",
@@ -1680,7 +1682,7 @@
         [ "description",
           "implemented-requirements" ],
         "additionalProperties" : false },
-      "implemented-requirement" : 
+      "oscal-ssp-implemented-requirement" : 
       { "title" : "Control-based Requirement",
         "description" : "Describes how the system satisfies an individual control.",
         "$id" : "#/definitions/implemented-requirement",
@@ -1756,7 +1758,7 @@
         [ "uuid",
           "control-id" ],
         "additionalProperties" : false },
-      "statement" : 
+      "oscal-ssp-statement" : 
       { "title" : "Specific Control Statement",
         "description" : "Identifies which statements within a control are addressed.",
         "$id" : "#/definitions/statement",
@@ -1797,7 +1799,7 @@
         "required" : 
         [ "uuid" ],
         "additionalProperties" : false },
-      "by-component" : 
+      "oscal-ssp-by-component" : 
       { "title" : "Component Control Implementation",
         "description" : "Defines how the referenced component implements a set of controls.",
         "$id" : "#/definitions/by-component",

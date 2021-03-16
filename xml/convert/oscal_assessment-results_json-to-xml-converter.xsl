@@ -313,7 +313,9 @@
       <assembly as-type="empty"
                 name="select-objective-by-id"
                 gi="include-objective"
-                formal-name="Select Objective"/>
+                formal-name="Select Objective">
+         <xsl:apply-templates select="*[@key='objective-id']"/>
+      </assembly>
    </xsl:template>
    <xsl:template match="j:array[@key='exclude-objectives']/j:map">
       <xsl:param name="with-key" select="true()"/>
@@ -321,7 +323,9 @@
       <assembly as-type="empty"
                 name="select-objective-by-id"
                 gi="exclude-objective"
-                formal-name="Select Objective"/>
+                formal-name="Select Objective">
+         <xsl:apply-templates select="*[@key='objective-id']"/>
+      </assembly>
    </xsl:template>
    <xsl:template match="j:map[@key='responsible-roles']/j:map">
       <xsl:param name="with-key" select="true()"/>
@@ -1050,6 +1054,19 @@
    <xsl:template match="j:array[@key='roles']/j:map/j:string[@key='id'] | j:array[@key='parts']/j:map/j:string[@key='id'] | j:array[@key='parts']/j:map//j:array[@key='parts']/j:map/()"
                  mode="keep-value-property"
                  priority="6"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:map[@key='address']/j:string[@key='type'] | j:map[@key='assessment-results']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='addresses']/j:map/j:string[@key='type']"><!-- XML match="assessment-results/metadata/location/address/@type | assessment-results/metadata/party/address/@type" -->
+      <flag in-json="string"
+            as-type="NCName"
+            name="oscal-metadata-location-type"
+            key="type"
+            gi="type"
+            formal-name="Address Type">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:map[@key='assessment-results']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:map[@key='address']/j:string[@key='type'] | j:map[@key='assessment-results']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='addresses']/j:map/j:string[@key='type']"
+                 mode="keep-value-property"
+                 priority="7"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:map[@key='assessment-results']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:array[@key='telephone-numbers']/j:map/j:string[@key='type'] | j:array[@key='parties']/j:map/j:string[@key='type'] | j:map[@key='assessment-results']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='telephone-numbers']/j:map/j:string[@key='type'] | j:map[@key='target']/j:string[@key='type']"
                  priority="8"><!-- XML match="assessment-results/metadata/location/telephone-number/@type | party/@type | assessment-results/metadata/party/telephone-number/@type | target/@type" -->
       <flag in-json="string"
@@ -1090,6 +1107,19 @@
    <xsl:template match="j:array[@key='objectives-and-methods']/j:map/j:string[@key='control-id'] | j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:array[@key='actions']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:array[@key='include-controls']/j:map/j:string[@key='control-id'] | j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:array[@key='actions']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:array[@key='exclude-controls']/j:map/j:string[@key='control-id'] | j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:map[@key='related-controls']/j:array[@key='control-selections']/j:map/j:array[@key='include-controls']/j:map/j:string[@key='control-id'] | j:map[@key='assessment-results']/j:map[@key='local-definitions']/j:array[@key='activities']/j:map/j:map[@key='related-controls']/j:array[@key='control-selections']/j:map/j:array[@key='exclude-controls']/j:map/j:string[@key='control-id'] | j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:array[@key='include-controls']/j:map/j:string[@key='control-id'] | j:map[@key='assessment-results']/j:array[@key='results']/j:map/j:map[@key='reviewed-controls']/j:array[@key='control-selections']/j:map/j:array[@key='exclude-controls']/j:map/j:string[@key='control-id']"
                  mode="keep-value-property"
                  priority="6"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:array[@key='include-objectives']/j:map/j:string[@key='objective-id'] | j:array[@key='exclude-objectives']/j:map/j:string[@key='objective-id']"><!-- XML match="include-objective/@objective-id | exclude-objective/@objective-id" -->
+      <flag in-json="string"
+            as-type="NCName"
+            name="oscal-assessment-common-objective-id"
+            key="objective-id"
+            gi="objective-id"
+            formal-name="Objective ID">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:array[@key='include-objectives']/j:map/j:string[@key='objective-id'] | j:array[@key='exclude-objectives']/j:map/j:string[@key='objective-id']"
+                 mode="keep-value-property"
+                 priority="14"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:map[@key='components']/j:map/j:string[@key='type']"><!-- XML match="component/@type" -->
       <flag in-json="string"
             as-type="string"
@@ -1880,6 +1910,7 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">address</xsl:attribute>
          </xsl:if>
+         <xsl:apply-templates select="*[@key='type']"/>
          <xsl:apply-templates select="*[@key='addr-lines']"/>
          <xsl:apply-templates select="*[@key='city']"/>
          <xsl:apply-templates select="*[@key='state']"/>
@@ -2182,6 +2213,7 @@
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="assessment-results/metadata/party/address" -->
       <assembly name="oscal-metadata-address" gi="address" formal-name="Address">
+         <xsl:apply-templates select="*[@key='type']"/>
          <xsl:apply-templates select="*[@key='addr-lines']"/>
          <xsl:apply-templates select="*[@key='city']"/>
          <xsl:apply-templates select="*[@key='state']"/>
