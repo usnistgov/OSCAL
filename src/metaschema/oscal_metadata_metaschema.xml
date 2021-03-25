@@ -63,7 +63,8 @@
             <key-field target="@id"/>
          </index>
          <is-unique id="unique-metadata-doc-id" name="unique-metadata-doc-id" target="document-id">
-            <key-field target="@type"/>
+            <!--  CHANGE: Fixing field name @type -> @scheme   -->
+            <key-field target="@scheme"/>
             <key-field target="value()"/>
          </is-unique>
          <is-unique id="unique-metadata-property" name="unique-metadata-property" target="prop">
@@ -95,7 +96,7 @@
                   <o:title>Document Preparer</o:title>
                </o:role>
             </builtin>
--->         </index>
+-->      </index>
          <index id="index-metadata-location-uuid" name="index-metadata-location-uuid" target="location">
             <key-field target="@uuid"/>
          </index>
@@ -113,6 +114,9 @@
          <allowed-values target="link/@rel" allow-other="yes">
             <enum value="canonical">The link identifies the authoritative location for this file.</enum>
             <enum value="alternate">The link identifies an alternative location or format for this file.</enum>
+            <enum value="latest-version">This link identifies a resource containing the latest version in the version history. Defined by <a href="https://tools.ietf.org/html/rfc5829">RFC 5829</a>.</enum>
+            <enum value="predecessor-version">This link identifies a resource containing the predecessor version in the version history. <a href="https://tools.ietf.org/html/rfc5829">RFC 5829</a>.</enum>
+            <enum value="successor-version">This link identifies a resource containing the predecessor version in the version history. <a href="https://tools.ietf.org/html/rfc5829">RFC 5829</a>.</enum>
          </allowed-values>
       </constraint>
    </define-assembly>
@@ -946,12 +950,13 @@
    <define-field name="document-id" scope="local">
       <!-- This is an id because the idenfier is assigned and managed externally by humans. -->
       <formal-name>Document Identifier</formal-name>
-      <description>A document identifier qualified by an identifier <code>type</code>.</description>
+      <description>A document identifier qualified by an identifier <code>scheme</code>. A document identifier provides a globally unique identifier for a group of documents that are to be treated as different versions of the same document. If this element does not appear, or if the value of this element is empty, the value of "document-id" is equal to the value of the "uuid" flag of the top-level root element.</description>
       <json-value-key>identifier</json-value-key>
       <!-- CHANGE: "type" to "scheme" -->
-      <define-flag name="scheme" as-type="uri" required="yes">
+      <!-- CHANGE: "Required" to "no" -->
+      <define-flag name="scheme" as-type="uri" required="no">
          <formal-name>Document Identification Scheme</formal-name>
-         <description>Qualifies the kind of document identifier.</description>
+         <description>Qualifies the kind of document identifier using a URI. If the scheme is not provided the value of the element will be interpreted as a string of characters. </description>
          <constraint>
             <allowed-values allow-other="yes">
                <enum value="https://www.doi.org/">A <a href="https://www.doi.org/hb.html">Digital Object Identifier</a> (DOI); use is preferred, since this allows for retrieval of a full bibliographic record.</enum>
@@ -959,8 +964,7 @@
          </constraint>
       </define-flag>
       <remarks>
-         <p>A document identifier or name, qualified by a <code>type</code> that indicates the naming system of the identifier. A document identifier may provide a hint to the persistent location of <q>the same</q> or <q>another version</q> of the document.</p>
-         <p>Specific usage rules, nomenclatures, and recognized file types (e.g., DOIs, CMS locators, etc.) may be defined at application level. The value of this field may also be a hash or checksum.</p>
+         <p>This element is optional, but it will always have a valid value, as if it is missing the value of "document-id" is assumed to be equal to the UUID of the root. This requirement allows for document creators to retroactively link an update to the original version, by providing a document-id on the new document that is equal to the uuid of the original document.</p>
       </remarks>
    </define-field>
 
