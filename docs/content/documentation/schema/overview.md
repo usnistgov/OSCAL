@@ -114,7 +114,7 @@ OSCAL strongly recommends the creation of a <code>document-id</code> when creati
 
 If <code>document-id</code> is ever omitted in a document, its value is assumed to be equal to the <code>uuid</code> of the root element.
 
-Used this way, <code>document-id</code> allows for consumers of OSCAL documents to be aware of which documents are updates, and to be able to determine which document they are intended to be updating. For more advanced version control, see [Version Control with Links](#version-control-with-links).
+When used this way, <code>document-id</code> allows for consumers of OSCAL documents to be aware of which documents are updates, and to be able to determine which document they are intended to be updating. For more advanced version control, see [Version Control with Links](#version-control-with-links).
 
 ### Version Control with Links
 
