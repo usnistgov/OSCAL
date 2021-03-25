@@ -1239,21 +1239,21 @@
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Document Identifier</m:formal-name>
-            <m:description>A document identifier qualified by an identifier <m:code>type</m:code>.</m:description>
+            <m:description>A document identifier qualified by an identifier <m:code>scheme</m:code>. A document identifier provides a globally unique identifier for a group of documents that are to be treated as different versions of the same document. If this element does not appear, or if the value of this element is empty, the value of "document-id" is equal to the value of the "uuid" flag of the top-level root element.</m:description>
          </xs:appinfo>
          <xs:documentation>
-            <b>Document Identifier</b>: A document identifier qualified by an identifier type.</xs:documentation>
+            <b>Document Identifier</b>: A document identifier qualified by an identifier scheme. A document identifier provides a globally unique identifier for a group of documents that are to be treated as different versions of the same document. If this element does not appear, or if the value of this element is empty, the value of "document-id" is equal to the value of the "uuid" flag of the top-level root element.</xs:documentation>
       </xs:annotation>
       <xs:simpleContent>
          <xs:extension base="xs:string">
-            <xs:attribute name="scheme" use="required" type="oscal-poam:uri">
+            <xs:attribute name="scheme" type="oscal-poam:uri">
                <xs:annotation>
                   <xs:appinfo>
                      <m:formal-name>Document Identification Scheme</m:formal-name>
-                     <m:description>Qualifies the kind of document identifier.</m:description>
+                     <m:description>Qualifies the kind of document identifier using a URI. If the scheme is not provided the value of the element will be interpreted as a string of characters. </m:description>
                   </xs:appinfo>
                   <xs:documentation>
-                     <b>Document Identification Scheme</b>: Qualifies the kind of document identifier.</xs:documentation>
+                     <b>Document Identification Scheme</b>: Qualifies the kind of document identifier using a URI. If the scheme is not provided the value of the element will be interpreted as a string of characters. </xs:documentation>
                </xs:annotation>
             </xs:attribute>
          </xs:extension>

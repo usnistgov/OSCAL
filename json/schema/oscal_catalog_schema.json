@@ -844,20 +844,19 @@
         "type" : "string" },
       "oscal-catalog-oscal-metadata-document-id" : 
       { "title" : "Document Identifier",
-        "description" : "A document identifier qualified by an identifier type.",
+        "description" : "A document identifier qualified by an identifier scheme. A document identifier provides a globally unique identifier for a group of documents that are to be treated as different versions of the same document. If this element does not appear, or if the value of this element is empty, the value of \"document-id\" is equal to the value of the \"uuid\" flag of the top-level root element.",
         "$id" : "#/definitions/oscal-metadata-document-id",
         "type" : "object",
         "properties" : 
         { "scheme" : 
           { "title" : "Document Identification Scheme",
-            "description" : "Qualifies the kind of document identifier.",
+            "description" : "Qualifies the kind of document identifier using a URI. If the scheme is not provided the value of the element will be interpreted as a string of characters.",
             "type" : "string",
             "format" : "uri" },
           "identifier" : 
           { "type" : "string" } },
         "required" : 
-        [ "identifier",
-          "scheme" ],
+        [ "identifier" ],
         "additionalProperties" : false },
       "oscal-catalog-catalog" : 
       { "title" : "Catalog",
