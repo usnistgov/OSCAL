@@ -2,7 +2,7 @@
 
 /*.model-entry p { margin-top: units( 0.5 )*/
   
-summary { display: list-item; cursor: pointer }
+summary { display: list-item; cursor: pointer; list-style-position: outside }
 
 summary:focus { outline: none }
 
@@ -15,6 +15,11 @@ summary:focus { outline: none }
 li.model-entry > *:not(:first-child) { @extend .font-body-xs }
 
 li.model-entry h3 { margin: 0em }
+
+
+h2, h3 { @include u-font-family('sans') }
+
+body > div > section { margin-top: 1em }
 
 .definition-header { @extend .padding-1; @extend .bg-base-lightest }
 
@@ -129,11 +134,23 @@ span.OM-datatype { @extend .font-sans-sm; @include u-font-family('sans');
   font-size: smaller }
 
 .OM-name {
-  @extend .text-primary; }
- 
+    font-style: normal;
+    @include u-font-family('mono');
+   }
+   
+.OM-ref {
+    @extend .text-primary;
+    font-style: normal;
+    font-size: 90%;
+    @include u-font-family('mono');
+   }
+   
+     
 .OM-map a {
   text-decoration: none;
   @extend .text-primary; }
+
+.OM-gloss { font-style: italic }
 
 OM-map a:visited {
   @extend .text-primary; }
@@ -156,17 +173,21 @@ pre.json {
 .define-assembly,
 .define-field,
 .define-flag {
+}
+
+section {
   @extend .margin-top-1;
   @extend .border;
   @extend .border-base-lighter;
-  @extend .padding-1 
-}
+  @extend .padding-1  }
 
 .formal-name {
   @extend .font-sans-lg;
   font-weight: bold;
   margin: 0.5em 0em
 }
+
+.syntax-boxes { display: flex; flex-direction: row; flex-wrap: wrap; gap: 1em }
 
 .cnstr-tag {
   @extend .usa-tag;
