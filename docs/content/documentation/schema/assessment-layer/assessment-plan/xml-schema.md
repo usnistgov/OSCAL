@@ -1,6 +1,6 @@
 ---
 title: "OSCAL Assessment Plan Model XML Format Reference"
-heading: "OSCAL Assessment PlanModel Model XML Format Reference"
+heading: "OSCAL Assessment Plan Model XML Format Reference"
 description: Element-level definitions of the OSCAL Assessment Plan model XML format.
 weight: 60
 sidenav:
