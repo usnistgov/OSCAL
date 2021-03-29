@@ -1,152 +1,143 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="../../build/metaschema/toolchains/xslt-M4/validate/metaschema-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-   xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
-   xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/toolchains/xslt-M4/validate/metaschema.xsd">
-   <schema-name>OSCAL Plan of Action and Milestones (POA&amp;M) Model</schema-name>
-   <schema-version>1.0.0-rc1</schema-version>
-   <short-name>oscal-poam</short-name>
-   <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
-   <remarks>
-      <p>The OSCAL Plan of Action and Milestones (POA&amp;M) format is used to describe the information typically provided by an assessor during the preparation for an assessment.</p>
-      <p>The root of the OSCAL Plan of Action and Milestones (POA&amp;M) format is <code>plan-action-milestones</code>.</p>
-   </remarks>
-   <!-- IMPORT STATEMENTS -->
-   <import href="oscal_metadata_metaschema.xml"/>
-   <import href="oscal_implementation-common_metaschema.xml"/>
-   <import href="oscal_assessment-common_metaschema.xml"/>
-   <!-- TOP LEVEL ASSEMBLY -->
-   <define-assembly name="plan-of-action-and-milestones">
-      <formal-name>Plan of Action and Milestones (POA&amp;M)</formal-name>
-      <description>A plan of action and milestones which identifies initial and residual risks, deviations, and disposition, such as those required by FedRAMP.</description>
-      <root-name>plan-of-action-and-milestones</root-name>
-      <define-flag name="uuid" required="yes" as-type="uuid">
-         <formal-name>POA&amp;M Universally Unique Identifier</formal-name>
-         <description>Uniquely identifies this POA&amp;M. This UUID must be changed each time the content of the POA&amp;M changes.</description>
-      </define-flag>
-      <model>
-         <assembly ref="metadata" min-occurs="1" max-occurs="1"/>
-         <!-- QUESTION: should this be a choice with system-id? -->
-         <assembly ref="import-ssp" min-occurs="0" max-occurs="1">
-            <remarks>
-               <p>Used by the POA&amp;M to import information about the system.</p>
-            </remarks>
-         </assembly>
-         <field ref="system-id" min-occurs="0" max-occurs="1"/>
-         <assembly ref="local-definitions" min-occurs="0" max-occurs="1"/>
-         <!-- CHANGE: move "observation" from poam-item -->
-         <assembly ref="observation" min-occurs="0" max-occurs="unbounded">
-            <group-as name="observations" in-json="ARRAY"/>
-         </assembly>
-         <!-- CHANGE: move "risk" from poam-item -->
-         <assembly ref="risk" min-occurs="0" max-occurs="unbounded">
-            <group-as name="risks" in-json="ARRAY"/>
-         </assembly>
-         <assembly ref="poam-item" min-occurs="1" max-occurs="unbounded">
-            <!-- CHANGED: removed the top-level "poam-items" -->
-            <!-- CHANGED: "poam-item-group" to "poam-items" -->
-            <group-as name="poam-items" in-json="ARRAY"/>
-         </assembly>
-         <assembly ref="back-matter" min-occurs="0" max-occurs="1"/>
-      </model>
-      <remarks>
-         <p>Either an OSCAL-based SSP must be imported, or a unique system-id must be specified. Both may be present.</p>
-      </remarks>
-   </define-assembly>
-   <define-assembly name="local-definitions">
-      <formal-name>Local Definitions</formal-name>
-      <description>Allows components, and inventory-items to be defined within the POA&amp;M for circumstances where no OSCAL-based SSP exists, or is not delivered with the POA&amp;M.</description>
-      <model>
-         <assembly ref="system-component" min-occurs="0" max-occurs="unbounded">
-            <use-name>component</use-name>
-            <group-as name="components" in-json="BY_KEY"/>
-            <remarks>
-               <p>Used to add any components, not defined via the System Security Plan (AR-&gt;AP-&gt;SSP)</p>
-            </remarks>
-         </assembly>
-         <assembly ref="inventory-item" min-occurs="0" max-occurs="unbounded">
-            <group-as name="inventory-items" in-json="ARRAY"/>
-            <remarks>
-               <p>Used to add any inventory-items, not defined via the System Security Plan (AR-&gt;AP-&gt;SSP)</p>
-            </remarks>
-         </assembly>
-         <field ref="remarks"
-                in-xml="WITH_WRAPPER"
-                min-occurs="0"
-                max-occurs="1"/>
-      </model>
-   </define-assembly>
-   
-   <define-assembly name="poam-item">
-      <formal-name>POA&amp;M Item</formal-name>
-      <description>Describes an individual POA&amp;M item.</description>
-      <define-flag name="uuid" required="no" as-type="uuid">
-         <formal-name>POA&amp;M Item Universally Unique Identifier</formal-name>
-         <description>Uniquely identifies the POA&amp;M entry. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. A UUID should be consistantly used for a given POA&amp;M item across revisions of the document.</description>
-      </define-flag>
-      <model>
-         <define-field name="title" min-occurs="1" max-occurs="1" as-type="markup-line">
-            <formal-name>POA&amp;M Item Title</formal-name>
-            <description>The title or name for this POA&amp;M item .</description>
-         </define-field>
-         <!-- CHANGE: Added WITH_WRAPPER to description-->
-         <define-field name="description" min-occurs="1" max-occurs="1" in-xml="WITH_WRAPPER" as-type="markup-multiline">
-            <formal-name>POA&amp;M Item Description</formal-name>
-            <description>A human-readable description of POA&amp;M item.</description>
-         </define-field>
-         <field ref="property" max-occurs="unbounded">
-            <group-as name="props" in-json="ARRAY"/>
-         </field>
-         <assembly ref="annotation" min-occurs="0" max-occurs="unbounded">
-            <group-as name="annotations" in-json="ARRAY"/>
-         </assembly>
-         <assembly ref="link" max-occurs="unbounded">
-            <group-as name="links" in-json="ARRAY"/>
-         </assembly>
-         <define-assembly name="origin" max-occurs="unbounded">
-            <formal-name>Origin</formal-name>
-            <description>Identifies the source of the finding, such as a tool or person.</description>
-            <group-as name="origins" in-json="ARRAY"/>
-            <model>
-               <assembly ref="origin-actor" min-occurs="1" max-occurs="unbounded">
-                  <use-name>actor</use-name>
-                  <group-as name="actors" in-json="ARRAY"/>
-               </assembly>
-            </model>
-            <remarks>
-               <p>Used to identify the individual and/or tool generated this poam-item.</p>
-            </remarks>
-         </define-assembly>
-         
-         <!-- TODO: add link; check in the other assessment models -->
-         <!-- CHANGED: removed "collected" and "expires" (moved to observation) by brianrufgsa -->
-         <!-- CHANGED: removed "objective-status" per brianrufgsa -->
-         <!-- CHANGED: (per Brian) removed "implementation-statement-uuid" since this is in the SAR -->
-         <!-- CHANGED: replaced embedded observation with references -->
-         <define-assembly name="related-observation" max-occurs="unbounded">
-            <formal-name>Related Observation</formal-name>
-            <description>Relates the poam-item to a set of referenced observations that were used to determine the finding.</description>
-            <group-as name="related-observations" in-json="ARRAY"/>
-            <define-flag name="observation-uuid" as-type="uuid" required="yes">
-               <formal-name>Observation Universally Unique Identifier Reference</formal-name>
-               <description>References an observation defined in the list of observations.</description>
-            </define-flag>
-         </define-assembly>
+    xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/toolchains/xslt-M4/validate/metaschema.xsd">
+    <schema-name>OSCAL Plan of Action and Milestones (POA&amp;M) Model</schema-name>
+    <schema-version>1.0.0-rc1</schema-version>
+    <short-name>oscal-poam</short-name>
+    <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
+    <remarks>
+        <p>The OSCAL Plan of Action and Milestones (POA&amp;M) format is used to describe the information typically provided by an assessor during the preparation for an assessment.</p>
+        <p>The root of the OSCAL Plan of Action and Milestones (POA&amp;M) format is <code>plan-action-milestones</code>.
+        </p>
+    </remarks>
+    <!-- IMPORT STATEMENTS -->
+    <import href="oscal_metadata_metaschema.xml"/>
+    <import href="oscal_implementation-common_metaschema.xml"/>
+    <import href="oscal_assessment-common_metaschema.xml"/>
+    <!-- TOP LEVEL ASSEMBLY -->
+    <define-assembly name="plan-of-action-and-milestones">
+        <formal-name>Plan of Action and Milestones (POA&amp;M)</formal-name>
+        <description>A plan of action and milestones which identifies initial and residual risks, deviations, and disposition, such as those required by FedRAMP.</description>
+        <root-name>plan-of-action-and-milestones</root-name>
+        <define-flag name="uuid" required="yes" as-type="uuid">
+            <formal-name>POA&amp;M Universally Unique Identifier</formal-name>
+            <description>Uniquely identifies this POA&amp;M. This UUID must be changed each time the content of the POA&amp;M changes.</description>
+        </define-flag>
+        <model>
+            <assembly ref="metadata" min-occurs="1" max-occurs="1"/>
+            <!-- QUESTION: should this be a choice with system-id? -->
+            <assembly ref="import-ssp" min-occurs="0" max-occurs="1">
+                <remarks>
+                    <p>Used by the POA&amp;M to import information about the system.</p>
+                </remarks>
+            </assembly>
+            <field ref="system-id" min-occurs="0" max-occurs="1"/>
+            <assembly ref="local-definitions" min-occurs="0" max-occurs="1"/>
+            <!-- CHANGE: move "observation" from poam-item -->
+            <assembly ref="observation" min-occurs="0" max-occurs="unbounded">
+                <group-as name="observations" in-json="ARRAY"/>
+            </assembly>
+            <!-- CHANGE: move "risk" from poam-item -->
+            <assembly ref="risk" min-occurs="0" max-occurs="unbounded">
+                <group-as name="risks" in-json="ARRAY"/>
+            </assembly>
+            <assembly ref="poam-item" min-occurs="1" max-occurs="unbounded">
+                <!-- CHANGED: removed the top-level "poam-items" -->
+                <!-- CHANGED: "poam-item-group" to "poam-items" -->
+                <group-as name="poam-items" in-json="ARRAY"/>
+            </assembly>
+            <assembly ref="back-matter" min-occurs="0" max-occurs="1"/>
+        </model>
+        <remarks>
+            <p>Either an OSCAL-based SSP must be imported, or a unique system-id must be specified. Both may be present.</p>
+        </remarks>
+    </define-assembly>
+    <define-assembly name="local-definitions">
+        <formal-name>Local Definitions</formal-name>
+        <description>Allows components, and inventory-items to be defined within the POA&amp;M for circumstances where no OSCAL-based SSP exists, or is not delivered with the POA&amp;M.</description>
+        <model>
+            <assembly ref="system-component" min-occurs="0" max-occurs="unbounded">
+                <use-name>component</use-name>
+                <group-as name="components" in-json="BY_KEY"/>
+                <remarks>
+                    <p>Used to add any components, not defined via the System Security Plan (AR-&gt;AP-&gt;SSP)</p>
+                </remarks>
+            </assembly>
+            <assembly ref="inventory-item" min-occurs="0" max-occurs="unbounded">
+                <group-as name="inventory-items" in-json="ARRAY"/>
+                <remarks>
+                    <p>Used to add any inventory-items, not defined via the System Security Plan (AR-&gt;AP-&gt;SSP)</p>
+                </remarks>
+            </assembly>
+            <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
+        </model>
+    </define-assembly>
 
-         <!-- CHANGED: replaced "risk" with new "assciated-risk" -->
-         <define-assembly name="associated-risk" max-occurs="unbounded">
-            <formal-name>Associated Risk</formal-name>
-            <description>Relates the finding to a set of referenced risks that were used to determine the finding.</description>
-            <group-as name="related-risks" in-json="ARRAY"/>
-            <define-flag name="risk-uuid" as-type="uuid" required="yes">
-               <formal-name>Risk Universally Unique Identifier Reference</formal-name>
-               <description>References an risk defined in the list of risks.</description>
-            </define-flag>
-         </define-assembly>
-         <field ref="remarks"
-                in-xml="WITH_WRAPPER"
-                min-occurs="0"
-                max-occurs="1"/>
-      </model>
-   </define-assembly>
+    <define-assembly name="poam-item">
+        <formal-name>POA&amp;M Item</formal-name>
+        <description>Describes an individual POA&amp;M item.</description>
+        <define-flag name="uuid" required="no" as-type="uuid">
+            <formal-name>POA&amp;M Item Universally Unique Identifier</formal-name>
+            <description>Uniquely identifies the POA&amp;M entry. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. A UUID should be consistantly used for a given POA&amp;M item across revisions of the document.</description>
+        </define-flag>
+        <model>
+            <define-field name="title" min-occurs="1" max-occurs="1" as-type="markup-line">
+                <formal-name>POA&amp;M Item Title</formal-name>
+                <description>The title or name for this POA&amp;M item .</description>
+            </define-field>
+            <!-- CHANGE: Added WITH_WRAPPER to description-->
+            <define-field name="description" min-occurs="1" max-occurs="1" in-xml="WITH_WRAPPER" as-type="markup-multiline">
+                <formal-name>POA&amp;M Item Description</formal-name>
+                <description>A human-readable description of POA&amp;M item.</description>
+            </define-field>
+            <assembly ref="property" max-occurs="unbounded">
+                <group-as name="props" in-json="ARRAY"/>
+            </assembly>
+            <assembly ref="link" max-occurs="unbounded">
+                <group-as name="links" in-json="ARRAY"/>
+            </assembly>
+            <define-assembly name="origin" max-occurs="unbounded">
+                <formal-name>Origin</formal-name>
+                <description>Identifies the source of the finding, such as a tool or person.</description>
+                <group-as name="origins" in-json="ARRAY"/>
+                <model>
+                    <assembly ref="origin-actor" min-occurs="1" max-occurs="unbounded">
+                        <use-name>actor</use-name>
+                        <group-as name="actors" in-json="ARRAY"/>
+                    </assembly>
+                </model>
+                <remarks>
+                    <p>Used to identify the individual and/or tool generated this poam-item.</p>
+                </remarks>
+            </define-assembly>
+
+            <!-- TODO: add link; check in the other assessment models -->
+            <!-- CHANGED: removed "collected" and "expires" (moved to observation) by brianrufgsa -->
+            <!-- CHANGED: removed "objective-status" per brianrufgsa -->
+            <!-- CHANGED: (per Brian) removed "implementation-statement-uuid" since this is in the SAR -->
+            <!-- CHANGED: replaced embedded observation with references -->
+            <define-assembly name="related-observation" max-occurs="unbounded">
+                <formal-name>Related Observation</formal-name>
+                <description>Relates the poam-item to a set of referenced observations that were used to determine the finding.</description>
+                <group-as name="related-observations" in-json="ARRAY"/>
+                <define-flag name="observation-uuid" as-type="uuid" required="yes">
+                    <formal-name>Observation Universally Unique Identifier Reference</formal-name>
+                    <description>References an observation defined in the list of observations.</description>
+                </define-flag>
+            </define-assembly>
+
+            <!-- CHANGED: replaced "risk" with new "assciated-risk" -->
+            <define-assembly name="associated-risk" max-occurs="unbounded">
+                <formal-name>Associated Risk</formal-name>
+                <description>Relates the finding to a set of referenced risks that were used to determine the finding.</description>
+                <group-as name="related-risks" in-json="ARRAY"/>
+                <define-flag name="risk-uuid" as-type="uuid" required="yes">
+                    <formal-name>Risk Universally Unique Identifier Reference</formal-name>
+                    <description>References an risk defined in the list of risks.</description>
+                </define-flag>
+            </define-assembly>
+            <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
+        </model>
+    </define-assembly>
 </METASCHEMA>

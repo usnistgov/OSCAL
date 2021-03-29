@@ -53,11 +53,8 @@
             <formal-name>Objective Description</formal-name>
             <description>A human-readable description of this control objective.</description>
          </define-field>
-         <field ref="property" min-occurs="0" max-occurs="unbounded">
+         <assembly ref="property" max-occurs="unbounded">
             <group-as name="props" in-json="ARRAY"/>
-         </field>
-         <assembly ref="annotation" max-occurs="unbounded">
-            <group-as name="annotations" in-json="ARRAY"/>
          </assembly>
          <assembly ref="link" max-occurs="unbounded">
             <group-as name="links" in-json="ARRAY"/>
@@ -93,11 +90,8 @@
             <formal-name>Assessment Method Description</formal-name>
             <description>A human-readable description of this assessment method.</description>
          </define-field>
-         <field ref="property" min-occurs="0" max-occurs="unbounded">
+         <assembly ref="property" max-occurs="unbounded">
             <group-as name="props" in-json="ARRAY"/>
-         </field>
-         <assembly ref="annotation" max-occurs="unbounded">
-            <group-as name="annotations" in-json="ARRAY"/>
          </assembly>
          <assembly ref="link" max-occurs="unbounded">
             <group-as name="links" in-json="ARRAY"/>
@@ -126,11 +120,8 @@
             <formal-name>Included Activity Description</formal-name>
             <description>A human-readable description of this included activity.</description>
          </define-field>
-         <field ref="property" max-occurs="unbounded">
+         <assembly ref="property" max-occurs="unbounded">
             <group-as name="props" in-json="ARRAY"/>
-         </field>
-         <assembly ref="annotation" max-occurs="unbounded">
-            <group-as name="annotations" in-json="ARRAY"/>
          </assembly>
          <assembly ref="link" max-occurs="unbounded">
             <group-as name="links" in-json="ARRAY"/>
@@ -155,11 +146,8 @@
                   <formal-name>Action Description</formal-name>
                   <description>A human-readable description of this action.</description>
                </define-field>
-               <field ref="property" min-occurs="0" max-occurs="unbounded">
+               <assembly ref="property" max-occurs="unbounded">
                   <group-as name="props" in-json="ARRAY"/>
-               </field>
-               <assembly ref="annotation" max-occurs="unbounded">
-                  <group-as name="annotations" in-json="ARRAY"/>
                </assembly>
                <assembly ref="link" max-occurs="unbounded">
                   <group-as name="links" in-json="ARRAY"/>
@@ -225,11 +213,8 @@
             <formal-name>Event Description</formal-name>
             <description>A human-readable description of this event.</description>
          </define-field>
-         <field ref="property" min-occurs="0" max-occurs="unbounded">
+         <assembly ref="property" max-occurs="unbounded">
             <group-as name="props" in-json="ARRAY"/>
-         </field>
-         <assembly ref="annotation" max-occurs="unbounded">
-            <group-as name="annotations" in-json="ARRAY"/>
          </assembly>
          <assembly ref="link" max-occurs="unbounded">
             <group-as name="links" in-json="ARRAY"/>
@@ -272,11 +257,8 @@
             <formal-name>Task Description</formal-name>
             <description>A human-readable description of this task.</description>
          </define-field>
-         <field ref="property" min-occurs="0" max-occurs="unbounded">
+         <assembly ref="property" max-occurs="unbounded">
             <group-as name="props" in-json="ARRAY"/>
-         </field>
-         <assembly ref="annotation" max-occurs="unbounded">
-            <group-as name="annotations" in-json="ARRAY"/>
          </assembly>
          <assembly ref="link" max-occurs="unbounded">
             <group-as name="links" in-json="ARRAY"/>
@@ -357,11 +339,8 @@
                <description>References an activity defined in the list of activities.</description>
             </define-flag>
             <model>
-               <field ref="property" min-occurs="0" max-occurs="unbounded">
+               <assembly ref="property" max-occurs="unbounded">
                   <group-as name="props" in-json="ARRAY"/>
-               </field>
-               <assembly ref="annotation" max-occurs="unbounded">
-                  <group-as name="annotations" in-json="ARRAY"/>
                </assembly>
                <assembly ref="link" max-occurs="unbounded">
                   <group-as name="links" in-json="ARRAY"/>
@@ -414,11 +393,8 @@
             <formal-name>Control Objective Description</formal-name>
             <description>A human-readable description of control objectives.</description>
          </define-field>
-         <field ref="property" min-occurs="0" max-occurs="unbounded">
+         <assembly ref="property" max-occurs="unbounded">
             <group-as name="props" in-json="ARRAY"/>
-         </field>
-         <assembly ref="annotation" max-occurs="unbounded">
-            <group-as name="annotations" in-json="ARRAY"/>
          </assembly>
          <assembly ref="link" max-occurs="unbounded">
             <group-as name="links" in-json="ARRAY"/>
@@ -435,11 +411,8 @@
                   <formal-name>Assessed Controls Description</formal-name>
                   <description>A human-readable description of in-scope controls specified for assessment.</description>
                </define-field>
-               <field ref="property" min-occurs="0" max-occurs="unbounded">
+               <assembly ref="property" max-occurs="unbounded">
                   <group-as name="props" in-json="ARRAY"/>
-               </field>
-               <assembly ref="annotation" max-occurs="unbounded">
-                  <group-as name="annotations" in-json="ARRAY"/>
                </assembly>
                <assembly ref="link" max-occurs="unbounded">
                   <group-as name="links" in-json="ARRAY"/>
@@ -485,11 +458,8 @@
                   <formal-name>Control Ojectives Description</formal-name>
                   <description>A human-readable description of this collection of control objectives.</description>
                </define-field>
-               <field ref="property" min-occurs="0" max-occurs="unbounded">
+               <assembly ref="property" max-occurs="unbounded">
                   <group-as name="props" in-json="ARRAY"/>
-               </field>
-               <assembly ref="annotation" max-occurs="unbounded">
-                  <group-as name="annotations" in-json="ARRAY"/>
                </assembly>
                <assembly ref="link" max-occurs="unbounded">
                   <group-as name="links" in-json="ARRAY"/>
@@ -574,11 +544,8 @@
                <description>Uniquely identifies an assessment activity to be performed as part of the event. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. A UUID should be consistantly used for this schedule across revisions of the document.</description>
             </define-flag>
          </define-assembly>
-         <field ref="property" min-occurs="0" max-occurs="unbounded">
+         <assembly ref="property" max-occurs="unbounded">
             <group-as name="props" in-json="ARRAY"/>
-         </field>
-         <assembly ref="annotation" max-occurs="unbounded">
-            <group-as name="annotations" in-json="ARRAY"/>
          </assembly>
          <assembly ref="link" max-occurs="unbounded">
             <group-as name="links" in-json="ARRAY"/>
@@ -609,11 +576,8 @@
             <formal-name>Include Subjects Description</formal-name>
             <description>A human-readable description of the collection of subjects being included in this assessment.</description>
          </define-field>
-         <field ref="property" min-occurs="0" max-occurs="unbounded">
+         <assembly ref="property" max-occurs="unbounded">
             <group-as name="props" in-json="ARRAY"/>
-         </field>
-         <assembly ref="annotation" max-occurs="unbounded">
-            <group-as name="annotations" in-json="ARRAY"/>
          </assembly>
          <assembly ref="link" max-occurs="unbounded">
             <group-as name="links" in-json="ARRAY"/>
@@ -662,11 +626,8 @@
          <description>A pointer to a component, inventory-item, location, party, user, or resource using it's UUID.</description>
       </define-flag>
       <model>
-         <field ref="property" min-occurs="0" max-occurs="unbounded">
+         <assembly ref="property" max-occurs="unbounded">
             <group-as name="props" in-json="ARRAY"/>
-         </field>
-         <assembly ref="annotation" max-occurs="unbounded">
-            <group-as name="annotations" in-json="ARRAY"/>
          </assembly>
          <assembly ref="link" max-occurs="unbounded">
             <group-as name="links" in-json="ARRAY"/>
@@ -702,11 +663,8 @@
             <formal-name>Subject Reference Title</formal-name>
             <description>The title or name for the referenced subject.</description>
          </define-field>
-         <field ref="property" min-occurs="0" max-occurs="unbounded">
+         <assembly ref="property" max-occurs="unbounded">
             <group-as name="props" in-json="ARRAY"/>
-         </field>
-         <assembly ref="annotation" max-occurs="unbounded">
-            <group-as name="annotations" in-json="ARRAY"/>
          </assembly>
          <assembly ref="link" max-occurs="unbounded">
             <group-as name="links" in-json="ARRAY"/>
@@ -745,11 +703,8 @@
                   <formal-name>Assessment Platform Title</formal-name>
                   <description>The title or name for the assessment platform.</description>
                </define-field>
-               <field ref="property" min-occurs="0" max-occurs="unbounded">
+               <assembly ref="property" max-occurs="unbounded">
                   <group-as name="props" in-json="ARRAY"/>
-               </field>
-               <assembly ref="annotation" max-occurs="unbounded">
-                  <group-as name="annotations" in-json="ARRAY"/>
                </assembly>
                <assembly ref="link" max-occurs="unbounded">
                   <group-as name="links" in-json="ARRAY"/>
@@ -763,11 +718,8 @@
                      <description>A reference to a component that is implemented as part of an inventory item.</description>
                   </define-flag>
                   <model>
-                     <field ref="property" max-occurs="unbounded">
+                     <assembly ref="property" max-occurs="unbounded">
                         <group-as name="props" in-json="ARRAY"/>
-                     </field>
-                     <assembly ref="annotation" max-occurs="unbounded">
-                        <group-as name="annotations" in-json="ARRAY"/>
                      </assembly>
                      <assembly ref="link" max-occurs="unbounded">
                         <group-as name="links" in-json="ARRAY"/>
@@ -822,11 +774,8 @@
             <formal-name>Objective Status Description</formal-name>
             <description>A human-readable description of the assessor's conclusions regarding the degree to which an objective is satisfied.</description>
          </define-field>
-         <field ref="property" min-occurs="0" max-occurs="unbounded">
+         <assembly ref="property" max-occurs="unbounded">
             <group-as name="props" in-json="ARRAY"/>
-         </field>
-         <assembly ref="annotation" max-occurs="unbounded">
-            <group-as name="annotations" in-json="ARRAY"/>
          </assembly>
          <assembly ref="link" max-occurs="unbounded">
             <group-as name="links" in-json="ARRAY"/>
@@ -866,11 +815,8 @@
             <formal-name>Observaton Description</formal-name>
             <description>A human-readable description of this assessment observation.</description>
          </define-field>
-         <field ref="property" min-occurs="0" max-occurs="unbounded">
+         <assembly ref="property" max-occurs="unbounded">
             <group-as name="props" in-json="ARRAY"/>
-         </field>
-         <assembly ref="annotation" max-occurs="unbounded">
-            <group-as name="annotations" in-json="ARRAY"/>
          </assembly>
          <assembly ref="link" max-occurs="unbounded">
             <group-as name="links" in-json="ARRAY"/>
@@ -941,11 +887,8 @@
                   <formal-name>Relevant Evidence Description</formal-name>
                   <description>A human-readable description of this evidence.</description>
                </define-field>
-               <field ref="property" min-occurs="0" max-occurs="unbounded">
+               <assembly ref="property" max-occurs="unbounded">
                   <group-as name="props" in-json="ARRAY"/>
-               </field>
-               <assembly ref="annotation" max-occurs="unbounded">
-                  <group-as name="annotations" in-json="ARRAY"/>
                </assembly>
                <assembly ref="link" max-occurs="unbounded">
                   <group-as name="links" in-json="ARRAY"/>
@@ -1015,11 +958,8 @@
          <description>For a party, this can optionally be used to specify the role the actor was performing.</description>
       </define-flag>
       <model>
-         <field ref="property" min-occurs="0" max-occurs="unbounded">
+         <assembly ref="property" max-occurs="unbounded">
             <group-as name="props" in-json="ARRAY"/>
-         </field>
-         <assembly ref="annotation" max-occurs="unbounded">
-            <group-as name="annotations" in-json="ARRAY"/>
          </assembly>
          <assembly ref="link" max-occurs="unbounded">
             <group-as name="links" in-json="ARRAY"/>
@@ -1035,11 +975,8 @@
          <description>References a unique task by UUID.</description>
       </define-flag>
       <model>
-         <field ref="property" min-occurs="0" max-occurs="unbounded">
+         <assembly ref="property" max-occurs="unbounded">
             <group-as name="props" in-json="ARRAY"/>
-         </field>
-         <assembly ref="annotation" max-occurs="unbounded">
-            <group-as name="annotations" in-json="ARRAY"/>
          </assembly>
          <assembly ref="link" max-occurs="unbounded">
             <group-as name="links" in-json="ARRAY"/>
@@ -1125,11 +1062,8 @@
             <formal-name>Risk Statement</formal-name>
             <description>An summary of impact for how the risk affects the system.</description>
          </define-field>
-         <field ref="property" min-occurs="0" max-occurs="unbounded">
+         <assembly ref="property" max-occurs="unbounded">
             <group-as name="props" in-json="ARRAY"/>
-         </field>
-         <assembly ref="annotation" max-occurs="unbounded">
-            <group-as name="annotations" in-json="ARRAY"/>
          </assembly>
          <assembly ref="link" max-occurs="unbounded">
             <group-as name="links" in-json="ARRAY"/>
@@ -1187,11 +1121,8 @@
                   <formal-name>Mitigating Factor Description</formal-name>
                   <description>A human-readable description of this mitigating factor.</description>
                </define-field>
-               <field ref="property" min-occurs="0" max-occurs="unbounded">
+               <assembly ref="property" max-occurs="unbounded">
                   <group-as name="props" in-json="ARRAY"/>
-               </field>
-               <assembly ref="annotation" max-occurs="unbounded">
-                  <group-as name="annotations" in-json="ARRAY"/>
                </assembly>
                <assembly ref="link" max-occurs="unbounded">
                   <group-as name="links" in-json="ARRAY"/>
@@ -1246,11 +1177,8 @@
                         <formal-name>End</formal-name>
                         <description>Identifies the end date and time of an event. If the event is a point in time, the start and end will be the same date and time.</description>
                      </define-field>
-                     <field ref="property" min-occurs="0" max-occurs="unbounded">
+                     <assembly ref="property" max-occurs="unbounded">
                         <group-as name="props" in-json="ARRAY"/>
-                     </field>
-                     <assembly ref="annotation" max-occurs="unbounded">
-                        <group-as name="annotations" in-json="ARRAY"/>
                      </assembly>
                      <assembly ref="link" max-occurs="unbounded">
                         <group-as name="links" in-json="ARRAY"/>
@@ -1273,11 +1201,8 @@
                            <description>References a unique risk response by UUID.</description>
                         </define-flag>
                         <model>
-                           <field ref="property" min-occurs="0" max-occurs="unbounded">
+                           <assembly ref="property" max-occurs="unbounded">
                               <group-as name="props" in-json="ARRAY"/>
-                           </field>
-                           <assembly ref="annotation" max-occurs="unbounded">
-                              <group-as name="annotations" in-json="ARRAY"/>
                            </assembly>
                            <assembly ref="link" max-occurs="unbounded">
                               <group-as name="links" in-json="ARRAY"/>
@@ -1349,11 +1274,8 @@
                         <formal-name>Tracking Entry Description</formal-name>
                         <description>A human-readable description of this tracking entry.</description>
                      </define-field>
-                     <field ref="property" min-occurs="0" max-occurs="unbounded">
+                     <assembly ref="property" max-occurs="unbounded">
                         <group-as name="props" in-json="ARRAY"/>
-                     </field>
-                     <assembly ref="annotation" max-occurs="unbounded">
-                        <group-as name="annotations" in-json="ARRAY"/>
                      </assembly>
                      <assembly ref="link" max-occurs="unbounded">
                         <group-as name="links" in-json="ARRAY"/>
@@ -1422,11 +1344,8 @@
       <formal-name>Characterization</formal-name>
       <description>A collection of descriptive data about the containing object from a specific origin.</description>
       <model>
-         <field ref="property" min-occurs="0" max-occurs="unbounded">
+         <assembly ref="property" max-occurs="unbounded">
             <group-as name="props" in-json="ARRAY"/>
-         </field>
-         <assembly ref="annotation" max-occurs="unbounded">
-            <group-as name="annotations" in-json="ARRAY"/>
          </assembly>
          <assembly ref="link" max-occurs="unbounded">
             <group-as name="links" in-json="ARRAY"/>
@@ -1465,11 +1384,8 @@
                <description>Indicates the value of the facet.</description>
             </define-flag>
             <model>
-               <field ref="property" min-occurs="0" max-occurs="unbounded">
+               <assembly ref="property" max-occurs="unbounded">
                   <group-as name="props" in-json="ARRAY"/>
-               </field>
-               <assembly ref="annotation" max-occurs="unbounded">
-                  <group-as name="annotations" in-json="ARRAY"/>
                </assembly>
                <assembly ref="link" max-occurs="unbounded">
                   <group-as name="links" in-json="ARRAY"/>
@@ -1477,10 +1393,10 @@
                <field ref="remarks" in-xml="WITH_WRAPPER"/>
             </model>
             <constraint>
-               <allowed-values target="annotation/@name">
+               <allowed-values target="property/@name">
                   <enum value="state">Indicates if the facet is 'initial' as first identified, or 'adjusted' indicating that the value has be changed after some adjustments have been made (e.g., to identify residual risk).</enum>
                </allowed-values>
-               <allowed-values target="annotation[@name='risk-state']/@value" allow-other="yes"><!-- For values related to initial and residual (mitigated) risk -->
+               <allowed-values target="property[@name='risk-state']/@value" allow-other="yes"><!-- For values related to initial and residual (mitigated) risk -->
                   <enum value="initial">As first identified.</enum>
                   <!-- CHANGED: residual to adjusted -->
                   <enum value="adjusted">Indicates that residual risk remains after some adjustments have been made.</enum>
@@ -1711,11 +1627,8 @@
             <formal-name>Response Description</formal-name>
             <description>A human-readable description of this response plan.</description>
          </define-field>
-         <field ref="property" min-occurs="0" max-occurs="unbounded">
+         <assembly ref="property" max-occurs="unbounded">
             <group-as name="props" in-json="ARRAY"/>
-         </field>
-         <assembly ref="annotation" max-occurs="unbounded">
-            <group-as name="annotations" in-json="ARRAY"/>
          </assembly>
          <assembly ref="link" max-occurs="unbounded">
             <group-as name="links" in-json="ARRAY"/>
@@ -1755,11 +1668,8 @@
                   <formal-name>Description of Required Asset</formal-name>
                   <description>A human-readable description of this required asset.</description>
                </define-field>
-               <field ref="property" min-occurs="0" max-occurs="unbounded">
+               <assembly ref="property" max-occurs="unbounded">
                   <group-as name="props" in-json="ARRAY"/>
-               </field>
-               <assembly ref="annotation" max-occurs="unbounded">
-                  <group-as name="annotations" in-json="ARRAY"/>
                </assembly>
                <assembly ref="link" max-occurs="unbounded">
                   <group-as name="links" in-json="ARRAY"/>
@@ -1847,11 +1757,8 @@
             <formal-name>Part Title</formal-name>
             <description>A name given to the part, which may be used by a tool for display and navigation.</description>
          </define-field>
-         <field ref="property" max-occurs="unbounded">
+         <assembly ref="property" max-occurs="unbounded">
             <group-as name="props" in-json="ARRAY"/>
-         </field>
-         <assembly ref="annotation" max-occurs="unbounded">
-            <group-as name="annotations" in-json="ARRAY"/>
          </assembly>
          <define-field name="prose" as-type="markup-multiline" in-xml="UNWRAPPED" min-occurs="0">
             <!-- QUESTION: Is this the right name? -->
