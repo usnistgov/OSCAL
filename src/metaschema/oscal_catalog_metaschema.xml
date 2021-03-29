@@ -119,7 +119,7 @@
             <example>
                   <group xmlns="http://csrc.nist.gov/ns/oscal/example" id="xyz">
                         <title>My Group</title>
-                        <prop class="required">some property</prop>
+                        <prop name="required" value="some value"/>
                         <control id="xyz1">
                               <title>Control</title>
                         </control>
@@ -172,7 +172,7 @@
             &allowed-values-control-group-property-name;
                         <enum value="status">The status of a <code>control</code>. For example, a value of 'withdrawn' can indicate that the <code>control</code> has been withdrawn and should no longer be used.</enum>
                   </allowed-values>
-                  <allowed-values target="prop[@name='status']/value()">
+                  <allowed-values target="prop[@name='status']/@value">
                         <enum value="withdrawn">The control is no longer used.</enum>
                   </allowed-values>
                   <allowed-values target="link/@rel" allow-other="yes">
