@@ -116,7 +116,7 @@
             &allowed-values-responsible-roles-component-production;
                   </allowed-values>
 
-                  <allowed-values target="prop[@name='asset-type']/value()">
+                  <allowed-values target="prop[@name='asset-type']/@value">
             &allowed-values-property-name-asset-type-values;
                   </allowed-values>
 
@@ -125,28 +125,27 @@
                         <enum value="no">The component does not allow an authenticated scan.</enum>
                   </allowed-values>
 
-                  <allowed-values target="prop[@name='public']/value()">
+                  <allowed-values target="prop[@name='public']/@value">
                         <enum value="yes">The component is publicly accessible.</enum>
                         <enum value="no">The component is not publicly accessible.</enum>
                   </allowed-values>
 
-                  <allowed-values target="prop[@name='virtual']/value()">
+                  <allowed-values target="prop[@name='virtual']/@value">
                         <enum value="yes">The component is virtualized.</enum>
                         <enum value="no">The component is not virtualized.</enum>
                   </allowed-values>
 
-                  <allowed-values target="prop[@name='implementation-point']/value()">
+                  <allowed-values target="prop[@name='implementation-point']/@value">
                         <enum value="inteneral">The component is implemented within the system boundary.</enum>
                         <enum value="external">The component is implemented outside the system boundary.</enum>
                   </allowed-values>
 
-                  <index-has-key name="index-metadata-location-uuid" target="prop[@name='physical
-            -location']">
+                  <index-has-key name="index-metadata-location-uuid" target="prop[@name='physical-location']">
                         <key-field target="@value"/>
                   </index-has-key>
 
-                  <matches target="prop[@name='inherited-uuid']/value()" datatype="uuid" />
-                  <matches target="prop[@name='release-date']/value()" datatype="date"/>
+                  <matches target="prop[@name='inherited-uuid']/@value" datatype="uuid" />
+                  <matches target="prop[@name='release-date']/@value" datatype="date"/>
 
                   <!-- ========================================================================================================== -->
                   <!-- = Changes to the following values need to be synced with component in the SSP and component metaschemas. = -->
@@ -207,10 +206,10 @@
                         <enum value="isa-authorizing-official-local">Interconnection Security Agreement (ISA) authorizing official for this system.</enum>
                         <enum value="isa-authorizing-official-remote">Interconnection Security Agreement (ISA) authorizing official for the remote interconnected system.</enum>
                   </allowed-values>
-                  <matches target="prop[@name='isa-date']/value()" datatype="dateTime"/>
-                  <matches target="prop[@name='ipv4-address']/value()" datatype="ip-v4-address" />
-                  <matches target="prop[@name='ipv6-address']/value()" datatype="ip-v6-address" />
-                  <allowed-values target="prop[@name='direction')]/value()" allow-other="yes">
+                  <matches target="prop[@name='isa-date']/@value" datatype="dateTime"/>
+                  <matches target="prop[@name='ipv4-address']/@value" datatype="ip-v4-address" />
+                  <matches target="prop[@name='ipv6-address']/@value" datatype="ip-v6-address" />
+                  <allowed-values target="prop[@name='direction')]/@value" allow-other="yes">
                         <enum value="incoming">Data from the remote system flows into this system.</enum>
                         <enum value="outgoing">Data from this system flows to the remote system.</enum>
                   </allowed-values>
@@ -351,7 +350,7 @@
                         <enum value="external">A user account for a person or entity that is not part of the organizaiton who owns or operates the system.</enum>
                         <enum value="general-public">A user of the system considered to be outside </enum>
                   </allowed-values>
-                  <allowed-values target="prop[@name='privilege-level']/value()">
+                  <allowed-values target="prop[@name='privilege-level']/@value">
                         <enum value="privileged">This role has elevated access to the system, such as a group or system administrator.</enum>
                         <enum value="non-privileged">This role has typical user-level access to the system without elevated access.</enum>
                         <enum value="no-logical-access">This role has no access to the system, such as a manager who approves acess as part of a process.</enum>
@@ -521,7 +520,7 @@
                         &allowed-values-component_inventory-item_property-name;
 
                   </allowed-values>
-                  <allowed-values target="prop[@name='asset-type']/value()">
+                  <allowed-values target="prop[@name='asset-type']/@value">
                         &allowed-values-property-name-asset-type-values;
                   </allowed-values>
 
@@ -530,7 +529,7 @@
                   </allowed-values>
 
 
-                  <allowed-values target="prop[@name='is-scanned']/value()">
+                  <allowed-values target="prop[@name='is-scanned']/@value">
                         <enum value="yes">The asset is included in periodic vulnerability scanning.</enum>
                         <enum value="no">The asset is not included in periodic vulnerability scanning.</enum>
                   </allowed-values>

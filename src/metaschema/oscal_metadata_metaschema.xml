@@ -66,17 +66,9 @@
                 <key-field target="@name"/>
                 <key-field target="@ns"/>
                 <key-field target="@class"/>
-                <key-field target="value()"/>
-            </is-unique>
-            <index id="index-metadata-property-id" name="index-metadata-property-id" target=".//prop">
-                <key-field target="@id"/>
-            </index>
-            <is-unique id="unique-metadata-property" name="unique-metadata-property" target="property">
-                <key-field target="@name"/>
-                <key-field target="@ns"/>
                 <key-field target="@value"/>
             </is-unique>
-            <index id="index-metadata-property-id" name="index-metadata-property-id" target=".//property">
+            <index id="index-metadata-property-id" name="index-metadata-property-id" target=".//prop">
                 <key-field target="@id"/>
             </index>
             <is-unique id="unique-metadata-link" name="unique-metadata-link" target="link">
@@ -200,10 +192,10 @@
             <allowed-values target="prop/@name" allow-other="yes">
                 <enum value="type">Characterizes the kind of location.</enum>
             </allowed-values>
-            <allowed-values target="prop[@name='type']/value()" allow-other="yes">
+            <allowed-values target="prop[@name='type']/@value" allow-other="yes">
                 <enum value="data-center">A location that contains computing assets. A <code>class</code> can be used to indicate a subclass of data-center.</enum>
             </allowed-values>
-            <allowed-values target="prop[@name='type' and value()='data-center']/@class" allow-other="yes">
+            <allowed-values target="prop[@name='type' and @value='data-center']/@class" allow-other="yes">
                 <enum value="primary">The lcoation is a data-center used for normal operations.</enum>
                 <enum value="alternate">The lcoation is a data-center used for fail-over or backup operations.</enum>
             </allowed-values>
@@ -494,9 +486,9 @@
                         <enum value="version">For resources representing a published document, this represents the version number of that document.</enum>
                         <enum value="published">For resources representing a published document, this represents the publication date of that document.</enum>
                     </allowed-values>
-                    <matches target="prop[@name='published' and (not(exists(@ns)) or @ns='http://csrc.nist.gov/ns/oscal')]/value()" datatype="dateTime"/>
+                    <matches target="prop[(not(exists(@ns)) or @ns='http://csrc.nist.gov/ns/oscal') and @name='published']/@value" datatype="dateTime"/>
                     <!-- CHANGED: Added enumerated choices for the resource type property -->
-                    <allowed-values target="prop[@name='type']/value()" allow-other="yes">
+                    <allowed-values target="prop[@name='type']/@value" allow-other="yes">
                         <!-- More general. Applies across all models. -->
                         <enum value="logo">Indicates the resource is an organization's logo.</enum>
                         <enum value="image">Indicates the resource represents an image.</enum>
@@ -613,7 +605,7 @@
         </define-flag>
         <define-flag name="value" as-type="string" required="yes">
             <formal-name>Annotated Property Value</formal-name>
-            <description>Indicates the value of the attribute, characteristic, or quality.</description>
+            <description>Indicates the optional value of the attribute, characteristic, or quality. Typically, a value will be provided; however, the value is optional allowing cases were the name is asserting some characteristic or quality.</description>
         </define-flag>
         <define-flag name="class" as-type="NCName">
             <formal-name>Property Class</formal-name>
@@ -628,7 +620,7 @@
         </model>
         <remarks>
             <p>Properties permit the deployment and management of arbitrary controlled values, within OSCAL objects. A property can be included for any purpose useful to an application or implementation. Typically, properties will be used to sort, filter, select, order, and arrange OSCAL content objects, to relate OSCAL objects to one another, or to associate an OSCAL object to class hierarchies, taxonomies, or external authorities. Thus, the lexical composition of properties may be constrained by external processes to ensure consistency.</p>
-            <p>Annotated property allows for associated remarks that describe why the specific annotation value was applied to the containing object, or the significance of the annotation value in the context of the containing object.</p>
+            <p>Property allows for associated remarks that describe why the specific property value was applied to the containing object, or the significance of the value in the context of the containing object.</p>
         </remarks>
     </define-assembly>
 
