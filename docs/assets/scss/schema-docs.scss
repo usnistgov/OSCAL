@@ -4,6 +4,8 @@
   
 summary { display: list-item; cursor: pointer; list-style-position: outside }
 
+.OM-entry summary { line-height: 1.5 }
+
 summary:focus { outline: none }
 
 .field-header, .assembly-header, .flag-header {
@@ -78,7 +80,7 @@ div.OM-map {
   hyphens: none;
   margin-left: 2em; }
 
-div.OM-choice { margin-left: 2em; margin-top: 0em }
+div.OM-choice { margin-left: 4em; margin-top: 0em }
 
 .OM-entry {
   padding-right: 0.5rem;
@@ -100,7 +102,9 @@ div.OM-choice { margin-left: 2em; margin-top: 0em }
 div.OM-map p {
   margin: 0ex; }
 
-div.OM-flex { display: flex; flex-flow: row; margin-top: 0em }
+div.OM-map > p:last-child { margin-left: -2em }
+
+.OM-flex { display: flex; flex-flow: row; margin-top: 0em }
 .OM-flex .sq { flex-grow: 1 }
 .OM-flex .sq.card { flex-basis: 4em; flex-grow: 0; width: 4em }
 
