@@ -188,7 +188,7 @@
             <enum value="method">The assessment method to use. This typically appears on parts with the name "assessment".</enum>
          </allowed-values>
          <has-cardinality target="prop[@name='method']" min-occurs="1"/>
-         <allowed-values target="prop[@name='method']/value()">
+         <allowed-values target="prop[@name='method']/@value">
             <enum value="INTERVIEW">The process of holding discussions with individuals or groups of individuals within an organization to once again, facilitate assessor understanding, achieve clarification, or obtain evidence.</enum>
             <enum value="EXAMINE">The process of reviewing, inspecting, observing, studying, or analyzing one or more assessment objects (i.e., specifications, mechanisms, or activities).</enum>
             <enum value="TEST">The process of exercising one or more assessment objects (i.e., activities or mechanisms) under specified conditions to compare actual with expected behavior.</enum>
@@ -1224,7 +1224,7 @@
                      <allowed-values target="prop/@name" allow-other="yes">
                         <enum value="type">The type of remediation tracking entry. Can be multi-valued.</enum>
                      </allowed-values>
-                     <allowed-values target="prop/[@name='type']/value()" allow-other="yes">
+                     <allowed-values target="prop/[@name='type']/@value" allow-other="yes">
                         <enum value="vendor-check-in">Contacted vendor to determine the status of a pending fix to a known vulnerability.</enum>
                         <enum value="status-update">Information related to the current state of response to this risk.</enum>
                         <enum value="milestone-complete">A significant step in the response plan has been achieved.</enum>
@@ -1307,7 +1307,7 @@
             <enum value="risk-adjusted">The risk has been adjusted.</enum>
             <enum value="priority">A numeric value indicating the sequence in which risks should be addressed. (Lower numbers are higher priority)</enum>
          </allowed-values>
-         <matches target="prop[@name='priority']/value()" datatype="integer" />
+         <matches target="prop[@name='priority']/@value" datatype="integer" />
       </constraint>
    </define-assembly>
 
@@ -1393,10 +1393,10 @@
                <field ref="remarks" in-xml="WITH_WRAPPER"/>
             </model>
             <constraint>
-               <allowed-values target="property/@name">
+               <allowed-values target="prop/@name">
                   <enum value="state">Indicates if the facet is 'initial' as first identified, or 'adjusted' indicating that the value has be changed after some adjustments have been made (e.g., to identify residual risk).</enum>
                </allowed-values>
-               <allowed-values target="property[@name='risk-state']/@value" allow-other="yes"><!-- For values related to initial and residual (mitigated) risk -->
+               <allowed-values target="prop[@name='risk-state']/@value" allow-other="yes"><!-- For values related to initial and residual (mitigated) risk -->
                   <enum value="initial">As first identified.</enum>
                   <!-- CHANGED: residual to adjusted -->
                   <enum value="adjusted">Indicates that residual risk remains after some adjustments have been made.</enum>
@@ -1515,79 +1515,79 @@
                   <enum value="integrity-requirement" >Environmental: Integrity Requirement Modifier</enum>
                   <enum value="availability-requirement" >Environmental: Availability Requirement Modifier</enum>
                </allowed-values>
-               <allowed-values target="(.)[@system=('http://www.first.org/cvss/v3.0', 'http://www.first.org/cvss/v3.1') and @name='access-vector']/@name">
+               <allowed-values target="(.)[@system=('http://www.first.org/cvss/v3.0', 'http://www.first.org/cvss/v3.1') and @name='access-vector']/@value">
                   <enum value="network">Network</enum>
                   <enum value="adjacent">Adjacent</enum>
                   <enum value="local">Local</enum>
                   <enum value="physical">Physical</enum>
                </allowed-values>
-               <allowed-values target="(.)[@system=('http://www.first.org/cvss/v3.0', 'http://www.first.org/cvss/v3.1') and @name='access-complexity']/@name">
+               <allowed-values target="(.)[@system=('http://www.first.org/cvss/v3.0', 'http://www.first.org/cvss/v3.1') and @name='access-complexity']/@value">
                   <enum value="high">High</enum>
                   <enum value="low">Low</enum>
                </allowed-values>
-               <allowed-values target="(.)[@system=('http://www.first.org/cvss/v3.0', 'http://www.first.org/cvss/v3.1') and @name=('privileges-required', 'confidentiality-impact', 'integrity-impact', 'availability-impact')]/@name">
+               <allowed-values target="(.)[@system=('http://www.first.org/cvss/v3.0', 'http://www.first.org/cvss/v3.1') and @name=('privileges-required', 'confidentiality-impact', 'integrity-impact', 'availability-impact')]/@value">
                   <enum value="none">None</enum>
                   <enum value="low">Low</enum>
                   <enum value="high">High</enum>
                </allowed-values>
-               <allowed-values target="(.)[@system=('http://www.first.org/cvss/v3.0', 'http://www.first.org/cvss/v3.1') and @name='user-interaction']/@name">
+               <allowed-values target="(.)[@system=('http://www.first.org/cvss/v3.0', 'http://www.first.org/cvss/v3.1') and @name='user-interaction']/@value">
                   <enum value="none">None</enum>
                   <enum value="required">Required</enum>
                </allowed-values>
-               <allowed-values target="(.)[@system=('http://www.first.org/cvss/v3.0', 'http://www.first.org/cvss/v3.1') and @name='scope']/@name">
+               <allowed-values target="(.)[@system=('http://www.first.org/cvss/v3.0', 'http://www.first.org/cvss/v3.1') and @name='scope']/@value">
                   <enum value="unchanged">Unchanged</enum>
                   <enum value="changed">Changed</enum>
                </allowed-values>
-               <allowed-values target="(.)[@system=('http://www.first.org/cvss/v3.0', 'http://www.first.org/cvss/v3.1') and @name='exploit-code-maturity']/@name">
+               <allowed-values target="(.)[@system=('http://www.first.org/cvss/v3.0', 'http://www.first.org/cvss/v3.1') and @name='exploit-code-maturity']/@value">
                   <enum value="not-defined">Not Defined</enum>
                   <enum value="unproven">Unproven</enum>
                   <enum value="proof-of-concept">Proof-of-Concept</enum>
                   <enum value="functional">Functional</enum>
                   <enum value="high">High</enum>
                </allowed-values>
-               <allowed-values target="(.)[@system=('http://www.first.org/cvss/v3.0', 'http://www.first.org/cvss/v3.1') and @name='remediation-level']/@name">
+               <allowed-values target="(.)[@system=('http://www.first.org/cvss/v3.0', 'http://www.first.org/cvss/v3.1') and @name='remediation-level']/@value">
                   <enum value="not-defined">Not Defined</enum>
                   <enum value="official-fix">Official Fix</enum>
                   <enum value="temporary-fix">Temporary Fix</enum>
                   <enum value="workaround">Workaround</enum>
                   <enum value="unavailable">Unavailable</enum>
                </allowed-values>
-               <allowed-values target="(.)[@system=('http://www.first.org/cvss/v3.0', 'http://www.first.org/cvss/v3.1') and @name='report-confidence']/@name">
+               <allowed-values target="(.)[@system=('http://www.first.org/cvss/v3.0', 'http://www.first.org/cvss/v3.1') and @name='report-confidence']/@value">
                   <enum value="not-defined">Not Defined</enum>
                   <enum value="unknown">Unknown</enum>
                   <enum value="reasonable">Reasonable</enum>
                   <enum value="confirmed">Confirmed</enum>
                </allowed-values>
-               <allowed-values target="(.)[@system=('http://www.first.org/cvss/v3.0', 'http://www.first.org/cvss/v3.1') and @name=('confidentiality-requirement', 'integrity-requirement', 'availability-requirement')]/@name">
+               <allowed-values target="(.)[@system=('http://www.first.org/cvss/v3.0', 'http://www.first.org/cvss/v3.1') and @name=('confidentiality-requirement', 'integrity-requirement', 'availability-requirement')]/@value">
                   <enum value="not-defined">Not Defined</enum>
                   <enum value="low">Low</enum>
                   <enum value="medium">Medium</enum>
                   <enum value="high">High</enum>
                </allowed-values>
-               <allowed-values target="(.)[@system=('http://www.first.org/cvss/v3.0', 'http://www.first.org/cvss/v3.1') and @name='modified-attack-vector']/@name">
+               <allowed-values target="(.)[@system=('http://www.first.org/cvss/v3.0', 'http://www.first.org/cvss/v3.1') and @name='modified-attack-vector']/@value">
                   <enum value="not-defined">Not Defined</enum>
                   <enum value="network">Network</enum>
                   <enum value="adjacent">Adjacent</enum>
                   <enum value="local">Local</enum>
                   <enum value="physical">Physical</enum>
                </allowed-values>
-               <allowed-values target="(.)[@system=('http://www.first.org/cvss/v3.0', 'http://www.first.org/cvss/v3.1') and @name='modified-attack-complexity']/@name">
+               <allowed-values target="(.)[@system=('http://www.first.org/cvss/v3.0', 'http://www.first.org/cvss/v3.1') and @name='modified-attack-complexity']/@value">
                   <enum value="not-defined">Not Defined</enum>
                   <enum value="high">High</enum>
                   <enum value="low">Low</enum>
                </allowed-values>
-               <allowed-values target="(.)[@system=('http://www.first.org/cvss/v3.0', 'http://www.first.org/cvss/v3.1') and @name=('modified-privileges-required', 'modified-confidentiality', 'modified-integrity', 'modified-availability')]/@name">
+               <allowed-values target="(.)[@system=('http://www.first.org/cvss/v3.0', 'http://www.first.org/cvss/v3.1') and @name=('modified-privileges-required', 'modified-confidentiality', 'modified-integrity', 'modified-availability')]/@value">
                   <enum value="not-defined">Not Defined</enum>
                   <enum value="none">None</enum>
                   <enum value="low">Low</enum>
                   <enum value="high">High</enum>
                </allowed-values>
-               <allowed-values target="(.)[@system=('http://www.first.org/cvss/v3.0', 'http://www.first.org/cvss/v3.1') and @name='modified-user-interaction']/@name">
+               <allowed-values target="(.)[@system=('http://www.first.org/cvss/v3.0', 'http://www.first.org/cvss/v3.1') and @name='modified-user-interaction']/@value">
                   <enum value="not-defined">Not Defined</enum>
                   <enum value="none">None</enum>
                   <enum value="required">Required</enum>
                </allowed-values>
-               <allowed-values target="(.)[@system=('http://www.first.org/cvss/v3.0', 'http://www.first.org/cvss/v3.1') and @name='modified-scope']/@name">
+               <allowed-values target="(.)[@system=('http://www.first.org/cvss/v3.0', 'http://www.first.org/cvss/v3.1') and @name='modified-scope']/@value">
                   <enum value="not-defined">Not Defined</enum>
                   <enum value="unchanged">Unchanged</enum>
                   <enum value="changed">Changed</enum>
@@ -1779,7 +1779,7 @@
                <enum value="method">The assessment method to use. This typically appears on parts with the name "assessment".</enum>
             </allowed-values>
             <has-cardinality target="prop[@name='method']" min-occurs="1"/>
-            <allowed-values target="prop[@name='method']/value()">
+            <allowed-values target="prop[@name='method']/@value">
                <enum value="INTERVIEW">The process of holding discussions with individuals or groups of individuals within an organization to once again, facilitate assessor understanding, achieve clarification, or obtain evidence.</enum>
                <enum value="EXAMINE">The process of reviewing, inspecting, observing, studying, or analyzing one or more assessment objects (i.e., specifications, mechanisms, or activities).</enum>
                <enum value="TEST">The process of exercising one or more assessment objects (i.e., activities or mechanisms) under specified conditions to compare actual with expected behavior.</enum>

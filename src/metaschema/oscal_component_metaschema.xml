@@ -159,7 +159,7 @@
             &allowed-values-responsible-roles-component-production;
       </allowed-values>
 
-      <allowed-values target="prop[@name='asset-type']/value()">
+      <allowed-values target="prop[@name='asset-type']/@value">
             &allowed-values-property-name-asset-type-values;
       </allowed-values>
 
@@ -172,29 +172,28 @@
         <enum value="no">The component does not allow an authenticated scan.</enum>
       </allowed-values>
 
-      <allowed-values target="prop[@name='virtual']/value()">
+      <allowed-values target="prop[@name='virtual']/@value">
         <enum value="yes">The component is virtualized.</enum>
         <enum value="no">The component is not virtualized.</enum>
       </allowed-values>
 
-      <allowed-values target="prop[@name='public']/value()">
+      <allowed-values target="prop[@name='public']/@value">
         <enum value="yes">The component is publicly accessible.</enum>
         <enum value="no">The component is not publicly accessible.</enum>
       </allowed-values>
 
-      <allowed-values target="prop[@name='implementation-point']/value()">
+      <allowed-values target="prop[@name='implementation-point']/@value">
         <enum value="inteneral">The component is implemented within the system boundary.</enum>
         <enum value="external">The component is implemented outside the system boundary.</enum>
       </allowed-values>
       <!-- ========================================================================================================== -->
 
-      <index-has-key name="index-metadata-location-uuid" target="property[@name='physical
-            -location']">
+      <index-has-key name="index-metadata-location-uuid" target="prop[@name='physical-location']">
         <key-field target="@value"/>
       </index-has-key>
 
-      <matches target="prop[@name='inherited-uuid']/value()" datatype="uuid" />
-      <matches target="prop[@name='release-date']/value()" datatype="date"/>
+      <matches target="prop[@name='inherited-uuid']/@value" datatype="uuid" />
+      <matches target="prop[@name='release-date']/@value" datatype="date"/>
 
       <!-- ========================================================================================================== -->
       <!-- = Changes to the following values need to be synced with component in the SSP and component metaschemas. = -->
