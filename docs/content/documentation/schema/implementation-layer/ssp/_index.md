@@ -1,7 +1,7 @@
 ---
 title: System Security Plan Model (SSP)
 heading: "OSCAL Implementation Layer: System Security Plan (SSP) Model"
-description: XML and JSON format documentation for the OSCAL System Security Plan (SSP) model, which is part of the OSCAL implementation layer in the OSCAL [architecture](/learnmore/architecture/). These formats model the control implementation of an information system.
+description: XML and JSON format documentation for the OSCAL System Security Plan (SSP) model, which is part of the OSCAL implementation layer in the OSCAL [Layers and Models Reference](/documentation/schema/). These formats model the control implementation of an information system.
 weight: 55
 aliases:
   - /documentation/schema/ssp/

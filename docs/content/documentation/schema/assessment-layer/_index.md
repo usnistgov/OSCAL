@@ -18,4 +18,4 @@ The OSCAL models comprising the assessment layer are:
 
 The assessment plan and execution models are designed to work together. They enable automated testing as well as expedited manual activities. These models are intended to be used in the context of a specific system.
 
-The OSCAL assessment layer is part of the OSCAL [architecture](/learnmore/architecture/).
+The OSCAL assessment layer is part of the OSCAL [Layers and Models Reference](/documentation/schema/).
