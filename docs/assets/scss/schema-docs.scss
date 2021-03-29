@@ -279,21 +279,19 @@ ul.e_map {
 
 .name-link { @include u-font-family('mono'); font-weight: bold }
 
-div.constraints { 
-  @extend .bg-base-lightest;
-  @extend .border-base-light;
-  @extend .border-y;
-}
+// div.constraints { }
 
-div.constraint { margin: 0em; font-size: smaller;
-//    @extend .bg-secondary-lighter;
-    @extend .border-base-light;
-    @extend .border-y;
-    max-height: 2.6em;
-    overflow: clip;
-}
- 
-div.constraint:hover { max-height: unset; transition-duration: 2s }
+div.constraint { font-size: smaller;
+  @extend .border-base-light;
+  @extend .bg-base-lightest;
+  @extend .border-y;
+  @extend .margin-top-05;
+  @extend .padding-x-05;
+    //    max-height: 2.6em;
+    //    overflow: clip;
+  }
+  
+// div.constraint:hover { max-height: unset; transition-duration: 2s }
 
 div.constraint * { margin: 0em; }
 
