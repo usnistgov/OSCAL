@@ -83,7 +83,7 @@ div.OM-choice { margin-left: 2em; margin-top: 0em }
   margin-top: 0rem;
   @extend .border-right;
   @extend .border-y-2px;
-  border-color: white  
+  @extend .border-transparent
 }
 
 .OM-entry span.sq { display: inline-block }
@@ -91,7 +91,8 @@ div.OM-choice { margin-left: 2em; margin-top: 0em }
 .nobr { white-space: nowrap }
 
 .OM-entry:hover { 
-   @extend .border-accent-cool-lighter
+  // @extend .bg-accent-cool-lighter;
+  @extend .border-accent-cool-light;
 }
 
 div.OM-map p {
@@ -278,14 +279,13 @@ div.constraint { margin: 0em; font-size: smaller;
 //    @extend .bg-secondary-lighter;
     @extend .border-base-light;
     @extend .border-y;
-//    max-height: 2.6em;
-//    overflow: clip;
+    max-height: 2.6em;
+    overflow: clip;
 }
  
-// div.constraint:hover { max-height: unset; transition-duration: 2s }
+div.constraint:hover { max-height: unset; transition-duration: 2s }
 
 div.constraint * { margin: 0em; }
-
 
 .description {
 //  @extend .bg-primary-lighter;
