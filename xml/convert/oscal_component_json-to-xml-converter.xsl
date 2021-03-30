@@ -106,7 +106,6 @@
          <xsl:apply-templates select="*[@key='revisions']"/>
          <xsl:apply-templates select="*[@key='document-ids']"/>
          <xsl:apply-templates select="*[@key='props']"/>
-         <xsl:apply-templates select="*[@key='annotations']"/>
          <xsl:apply-templates select="*[@key='links']"/>
          <xsl:apply-templates select="*[@key='roles']"/>
          <xsl:apply-templates select="*[@key='locations']"/>
@@ -115,14 +114,15 @@
          <xsl:apply-templates select="*[@key='remarks']"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="j:array[@key='annotations']/j:map">
+   <xsl:template match="j:array[@key='props']/j:map">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="  annotation" -->
-      <assembly name="annotation" gi="annotation" formal-name="Annotated Property">
+      <!-- XML match="  prop" -->
+      <assembly name="property" gi="prop" formal-name="Property">
          <xsl:apply-templates select="*[@key='name']"/>
          <xsl:apply-templates select="*[@key='uuid']"/>
          <xsl:apply-templates select="*[@key='ns']"/>
          <xsl:apply-templates select="*[@key='value']"/>
+         <xsl:apply-templates select="*[@key='class']"/>
          <xsl:apply-templates select="*[@key='remarks']"/>
       </assembly>
    </xsl:template>
@@ -145,7 +145,6 @@
          <xsl:apply-templates select="*[@key='short-name']"/>
          <xsl:apply-templates select="*[@key='description']"/>
          <xsl:apply-templates select="*[@key='props']"/>
-         <xsl:apply-templates select="*[@key='annotations']"/>
          <xsl:apply-templates select="*[@key='links']"/>
          <xsl:apply-templates select="*[@key='remarks']"/>
       </assembly>
@@ -161,7 +160,6 @@
          <xsl:apply-templates select="*[@key='telephone-numbers']"/>
          <xsl:apply-templates select="*[@key='urls']"/>
          <xsl:apply-templates select="*[@key='props']"/>
-         <xsl:apply-templates select="*[@key='annotations']"/>
          <xsl:apply-templates select="*[@key='links']"/>
          <xsl:apply-templates select="*[@key='remarks']"/>
       </assembly>
@@ -178,7 +176,6 @@
          <xsl:apply-templates select="*[@key='short-name']"/>
          <xsl:apply-templates select="*[@key='external-ids']"/>
          <xsl:apply-templates select="*[@key='props']"/>
-         <xsl:apply-templates select="*[@key='annotations']"/>
          <xsl:apply-templates select="*[@key='links']"/>
          <xsl:apply-templates select="*[@key='email-addresses']"/>
          <xsl:apply-templates select="*[@key='telephone-numbers']"/>
@@ -208,7 +205,6 @@
          <xsl:apply-templates select="*[@key='role-id']"/>
          <xsl:apply-templates select="*[@key='party-uuids']"/>
          <xsl:apply-templates select="*[@key='props']"/>
-         <xsl:apply-templates select="*[@key='annotations']"/>
          <xsl:apply-templates select="*[@key='links']"/>
          <xsl:apply-templates select="*[@key='remarks']"/>
       </assembly>
@@ -246,7 +242,6 @@
          <xsl:apply-templates select="*[@key='description']"/>
          <xsl:apply-templates select="*[@key='purpose']"/>
          <xsl:apply-templates select="*[@key='props']"/>
-         <xsl:apply-templates select="*[@key='annotations']"/>
          <xsl:apply-templates select="*[@key='links']"/>
          <xsl:apply-templates select="*[@key='responsible-roles']"/>
          <xsl:apply-templates select="*[@key='protocols']"/>
@@ -273,7 +268,6 @@
          </flag>
          <xsl:apply-templates select="*[@key='role-id']"/>
          <xsl:apply-templates select="*[@key='props']"/>
-         <xsl:apply-templates select="*[@key='annotations']"/>
          <xsl:apply-templates select="*[@key='links']"/>
          <xsl:apply-templates select="*[@key='party-uuids']"/>
          <xsl:apply-templates select="*[@key='remarks']"/>
@@ -313,7 +307,6 @@
          <xsl:apply-templates select="*[@key='source']"/>
          <xsl:apply-templates select="*[@key='description']"/>
          <xsl:apply-templates select="*[@key='props']"/>
-         <xsl:apply-templates select="*[@key='annotations']"/>
          <xsl:apply-templates select="*[@key='links']"/>
          <xsl:apply-templates select="*[@key='implemented-requirements']"/>
       </assembly>
@@ -328,7 +321,6 @@
          <xsl:apply-templates select="*[@key='control-id']"/>
          <xsl:apply-templates select="*[@key='description']"/>
          <xsl:apply-templates select="*[@key='props']"/>
-         <xsl:apply-templates select="*[@key='annotations']"/>
          <xsl:apply-templates select="*[@key='links']"/>
          <xsl:apply-templates select="*[@key='responsible-roles']"/>
          <xsl:apply-templates select="*[@key='set-parameters']"/>
@@ -381,7 +373,6 @@
          <xsl:apply-templates select="*[@key='uuid']"/>
          <xsl:apply-templates select="*[@key='description']"/>
          <xsl:apply-templates select="*[@key='props']"/>
-         <xsl:apply-templates select="*[@key='annotations']"/>
          <xsl:apply-templates select="*[@key='links']"/>
          <xsl:apply-templates select="*[@key='responsible-roles']"/>
          <xsl:apply-templates select="*[@key='remarks']"/>
@@ -408,7 +399,6 @@
          <xsl:apply-templates select="*[@key='name']"/>
          <xsl:apply-templates select="*[@key='description']"/>
          <xsl:apply-templates select="*[@key='props']"/>
-         <xsl:apply-templates select="*[@key='annotations']"/>
          <xsl:apply-templates select="*[@key='links']"/>
          <xsl:apply-templates select="*[@key='incorporates-components']"/>
          <xsl:apply-templates select="*[@key='control-implementations']"/>
@@ -445,23 +435,6 @@
          </xsl:if>
          <xsl:apply-templates select="*[@key='resources']"/>
       </assembly>
-   </xsl:template>
-   <xsl:template match="j:array[@key='props']/j:map">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="  prop" -->
-      <field name="property" gi="prop" formal-name="Property">
-         <xsl:apply-templates select="*[@key='uuid']"/>
-         <xsl:apply-templates select="*[@key='name']"/>
-         <xsl:apply-templates select="*[@key='ns']"/>
-         <xsl:apply-templates select="*[@key='class']"/>
-         <xsl:apply-templates select="." mode="get-value-property"/>
-      </field>
-   </xsl:template>
-   <!-- matching   prop-->
-   <xsl:template match="j:array[@key='props']/j:map" mode="get-value-property">
-      <value as-type="string" key="value" in-json="string">
-         <xsl:apply-templates mode="keep-value-property"/>
-      </value>
    </xsl:template>
    <xsl:template match="j:string[@key='remarks']">
       <xsl:param name="with-key" select="true()"/>
@@ -534,7 +507,7 @@
          <xsl:apply-templates mode="keep-value-property"/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='component-definition']/j:string[@key='uuid'] | j:array[@key='props']/j:map/j:string[@key='uuid'] | j:array[@key='annotations']/j:map/j:string[@key='uuid'] | j:array[@key='locations']/j:map/j:string[@key='uuid'] | j:array[@key='parties']/j:map/j:string[@key='uuid'] | j:map[@key='components']/j:map/@key | j:array[@key='protocols']/j:map/j:string[@key='uuid'] | j:array[@key='control-implementations']/j:map/j:string[@key='uuid'] | j:array[@key='implemented-requirements']/j:map/j:string[@key='uuid'] | j:map[@key='statements']/j:map/j:string[@key='uuid'] | j:map[@key='capabilities']/j:map/@key | j:map[@key='component-definition']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:string[@key='uuid']"><!-- XML match="component-definition/@uuid | prop/@uuid | annotation/@uuid | location/@uuid | party/@uuid | component/@uuid | protocol/@uuid | control-implementation/@uuid | implemented-requirement/@uuid | statement/@uuid | capability/@uuid | component-definition/back-matter/resource/@uuid" -->
+   <xsl:template match="j:map[@key='component-definition']/j:string[@key='uuid'] | j:array[@key='props']/j:map/j:string[@key='uuid'] | j:array[@key='locations']/j:map/j:string[@key='uuid'] | j:array[@key='parties']/j:map/j:string[@key='uuid'] | j:map[@key='components']/j:map/@key | j:array[@key='protocols']/j:map/j:string[@key='uuid'] | j:array[@key='control-implementations']/j:map/j:string[@key='uuid'] | j:array[@key='implemented-requirements']/j:map/j:string[@key='uuid'] | j:map[@key='statements']/j:map/j:string[@key='uuid'] | j:map[@key='capabilities']/j:map/@key | j:map[@key='component-definition']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:string[@key='uuid']"><!-- XML match="component-definition/@uuid | prop/@uuid | location/@uuid | party/@uuid | component/@uuid | protocol/@uuid | control-implementation/@uuid | implemented-requirement/@uuid | statement/@uuid | capability/@uuid | component-definition/back-matter/resource/@uuid" -->
       <flag in-json="string"
             as-type="uuid"
             name="uuid"
@@ -544,10 +517,10 @@
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
-   <xsl:template match="j:map[@key='component-definition']/j:string[@key='uuid'] | j:array[@key='props']/j:map/j:string[@key='uuid'] | j:array[@key='annotations']/j:map/j:string[@key='uuid'] | j:array[@key='locations']/j:map/j:string[@key='uuid'] | j:array[@key='parties']/j:map/j:string[@key='uuid'] | j:map[@key='components']/j:map/@key | j:array[@key='protocols']/j:map/j:string[@key='uuid'] | j:array[@key='control-implementations']/j:map/j:string[@key='uuid'] | j:array[@key='implemented-requirements']/j:map/j:string[@key='uuid'] | j:map[@key='statements']/j:map/j:string[@key='uuid'] | j:map[@key='capabilities']/j:map/@key | j:map[@key='component-definition']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:string[@key='uuid']"
+   <xsl:template match="j:map[@key='component-definition']/j:string[@key='uuid'] | j:array[@key='props']/j:map/j:string[@key='uuid'] | j:array[@key='locations']/j:map/j:string[@key='uuid'] | j:array[@key='parties']/j:map/j:string[@key='uuid'] | j:map[@key='components']/j:map/@key | j:array[@key='protocols']/j:map/j:string[@key='uuid'] | j:array[@key='control-implementations']/j:map/j:string[@key='uuid'] | j:array[@key='implemented-requirements']/j:map/j:string[@key='uuid'] | j:map[@key='statements']/j:map/j:string[@key='uuid'] | j:map[@key='capabilities']/j:map/@key | j:map[@key='component-definition']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:string[@key='uuid']"
                  mode="keep-value-property"
                  priority="3"><!-- Not keeping the flag here. --></xsl:template>
-   <xsl:template match="j:array[@key='props']/j:map/j:string[@key='name'] | j:array[@key='annotations']/j:map/j:string[@key='name']"><!-- XML match="prop/@name | annotation/@name" -->
+   <xsl:template match="j:array[@key='props']/j:map/j:string[@key='name']"><!-- XML match="prop/@name" -->
       <flag in-json="string"
             as-type="NCName"
             name="name"
@@ -557,10 +530,10 @@
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
-   <xsl:template match="j:array[@key='props']/j:map/j:string[@key='name'] | j:array[@key='annotations']/j:map/j:string[@key='name']"
+   <xsl:template match="j:array[@key='props']/j:map/j:string[@key='name']"
                  mode="keep-value-property"
                  priority="8"><!-- Not keeping the flag here. --></xsl:template>
-   <xsl:template match="j:array[@key='props']/j:map/j:string[@key='ns'] | j:array[@key='annotations']/j:map/j:string[@key='ns']"><!-- XML match="prop/@ns | annotation/@ns" -->
+   <xsl:template match="j:array[@key='props']/j:map/j:string[@key='ns']"><!-- XML match="prop/@ns" -->
       <flag in-json="string"
             as-type="uri"
             name="ns"
@@ -570,7 +543,20 @@
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
-   <xsl:template match="j:array[@key='props']/j:map/j:string[@key='ns'] | j:array[@key='annotations']/j:map/j:string[@key='ns']"
+   <xsl:template match="j:array[@key='props']/j:map/j:string[@key='ns']"
+                 mode="keep-value-property"
+                 priority="8"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:array[@key='props']/j:map/j:string[@key='value']"><!-- XML match="prop/@value" -->
+      <flag in-json="string"
+            as-type="string"
+            name="value"
+            key="value"
+            gi="value"
+            formal-name="Annotated Property Value">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:array[@key='props']/j:map/j:string[@key='value']"
                  mode="keep-value-property"
                  priority="8"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:array[@key='props']/j:map/j:string[@key='class']"><!-- XML match="prop/@class" -->
@@ -584,19 +570,6 @@
       </flag>
    </xsl:template>
    <xsl:template match="j:array[@key='props']/j:map/j:string[@key='class']"
-                 mode="keep-value-property"
-                 priority="8"><!-- Not keeping the flag here. --></xsl:template>
-   <xsl:template match="j:array[@key='annotations']/j:map/j:string[@key='value']"><!-- XML match="annotation/@value" -->
-      <flag in-json="string"
-            as-type="string"
-            name="value"
-            key="value"
-            gi="value"
-            formal-name="Annotated Property Value">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="j:array[@key='annotations']/j:map/j:string[@key='value']"
                  mode="keep-value-property"
                  priority="8"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:array[@key='links']/j:map/j:string[@key='href'] | j:array[@key='import-component-definitions']/j:map/j:string[@key='href'] | j:map[@key='component-definition']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:array[@key='rlinks']/j:map/j:string[@key='href']"><!-- XML match="link/@href | import-component-definition/@href | component-definition/back-matter/resource/rlink/@href" -->
@@ -983,7 +956,6 @@
          <xsl:apply-templates select="*[@key='version']"/>
          <xsl:apply-templates select="*[@key='oscal-version']"/>
          <xsl:apply-templates select="*[@key='props']"/>
-         <xsl:apply-templates select="*[@key='annotations']"/>
          <xsl:apply-templates select="*[@key='links']"/>
          <xsl:apply-templates select="*[@key='remarks']"/>
       </assembly>
@@ -2331,7 +2303,6 @@
          <xsl:apply-templates select="*[@key='title']"/>
          <xsl:apply-templates select="*[@key='description']"/>
          <xsl:apply-templates select="*[@key='props']"/>
-         <xsl:apply-templates select="*[@key='annotations']"/>
          <xsl:apply-templates select="*[@key='document-ids']"/>
          <xsl:apply-templates select="*[@key='citation']"/>
          <xsl:apply-templates select="*[@key='rlinks']"/>
@@ -2411,7 +2382,6 @@
          </xsl:if>
          <xsl:apply-templates select="*[@key='text']"/>
          <xsl:apply-templates select="*[@key='props']"/>
-         <xsl:apply-templates select="*[@key='annotations']"/>
          <xsl:apply-templates select="*[@key='biblio']"/>
       </assembly>
    </xsl:template>

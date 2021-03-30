@@ -36,11 +36,6 @@
             "minItems" : 1,
             "items" : 
             { "$ref" : "#/definitions/property" } },
-          "annotations" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/annotation" } },
           "prose" : 
           { "title" : "Part Text",
             "description" : "Permits multiple paragraphs, lists, tables etc.",
@@ -91,11 +86,6 @@
             "minItems" : 1,
             "items" : 
             { "$ref" : "#/definitions/property" } },
-          "annotations" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/annotation" } },
           "links" : 
           { "type" : "array",
             "minItems" : 1,
@@ -157,11 +147,6 @@
             "minItems" : 1,
             "items" : 
             { "$ref" : "#/definitions/property" } },
-          "annotations" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/annotation" } },
           "links" : 
           { "type" : "array",
             "minItems" : 1,
@@ -210,11 +195,6 @@
             "minItems" : 1,
             "items" : 
             { "$ref" : "#/definitions/property" } },
-          "annotations" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/annotation" } },
           "links" : 
           { "type" : "array",
             "minItems" : 1,
@@ -282,11 +262,6 @@
             "minItems" : 1,
             "items" : 
             { "$ref" : "#/definitions/property" } },
-          "annotations" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/annotation" } },
           "links" : 
           { "type" : "array",
             "minItems" : 1,
@@ -359,11 +334,6 @@
             "minItems" : 1,
             "items" : 
             { "$ref" : "#/definitions/property" } },
-          "annotations" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/annotation" } },
           "links" : 
           { "type" : "array",
             "minItems" : 1,
@@ -412,11 +382,6 @@
                   "minItems" : 1,
                   "items" : 
                   { "$ref" : "#/definitions/property" } },
-                "annotations" : 
-                { "type" : "array",
-                  "minItems" : 1,
-                  "items" : 
-                  { "$ref" : "#/definitions/annotation" } },
                 "document-ids" : 
                 { "type" : "array",
                   "minItems" : 1,
@@ -436,11 +401,6 @@
                       "minItems" : 1,
                       "items" : 
                       { "$ref" : "#/definitions/property" } },
-                    "annotations" : 
-                    { "type" : "array",
-                      "minItems" : 1,
-                      "items" : 
-                      { "$ref" : "#/definitions/annotation" } },
                     "biblio" : 
                     { "title" : "Bibliographic Definition",
                       "description" : "A container for structured bibliographic information. The model of this information is undefined by OSCAL.",
@@ -505,53 +465,27 @@
         "$id" : "#/definitions/property",
         "type" : "object",
         "properties" : 
-        { "uuid" : 
+        { "name" : 
+          { "title" : "Property Name",
+            "description" : "A textual label that uniquely identifies a specific attribute, characteristic, or quality of the property's containing object.",
+            "type" : "string" },
+          "uuid" : 
           { "title" : "Property Universally Unique Identifier",
             "description" : "A unique identifier that can be used to reference this property elsewhere in an OSCAL document. A UUID should be consistantly used for a given location across revisions of the document.",
             "type" : "string",
             "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
-          "name" : 
-          { "title" : "Property Name",
-            "description" : "A textual label that uniquely identifies a specific attribute, characteristic, or quality of the property's containing object.",
-            "type" : "string" },
           "ns" : 
           { "title" : "Property Namespace",
             "description" : "A namespace qualifying the property's name. This allows different organizations to associate distinct semantics with the same name.",
             "type" : "string",
             "format" : "uri" },
+          "value" : 
+          { "title" : "Annotated Property Value",
+            "description" : "Indicates the optional value of the attribute, characteristic, or quality. Typically, a value will be provided; however, the value is optional allowing cases were the name is asserting some characteristic or quality.",
+            "type" : "string" },
           "class" : 
           { "title" : "Property Class",
             "description" : "A textual label that provides a sub-type or characterization of the property's name. This can be used to further distinguish or discriminate between the semantics of multiple properties of the same object with the same name and ns.",
-            "type" : "string" },
-          "value" : 
-          { "type" : "string" } },
-        "required" : 
-        [ "value",
-          "name" ],
-        "additionalProperties" : false },
-      "oscal-ar-annotation" : 
-      { "title" : "Annotated Property",
-        "description" : "An attribute, characteristic, or quality of the containing object expressed as a namespace qualified name/value pair with optional explanatory remarks. The value of an annotated property is a simple scalar value.",
-        "$id" : "#/definitions/annotation",
-        "type" : "object",
-        "properties" : 
-        { "name" : 
-          { "title" : "Annotated Property Name",
-            "description" : "A textual label that uniquely identifies a specific attribute, characteristic, or quality of the annotated property's containing object.",
-            "type" : "string" },
-          "uuid" : 
-          { "title" : "Annotated Property Universally Unique Identifier",
-            "description" : "A unique identifier that can be used to reference this annotated property elsewhere in an OSCAL document. A UUID should be consistantly used for a given location across revisions of the document.",
-            "type" : "string",
-            "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
-          "ns" : 
-          { "title" : "Annotated Property Namespace",
-            "description" : "A namespace qualifying the annotated property's name. This allows different organizations to associate distinct semantics with the same name.",
-            "type" : "string",
-            "format" : "uri" },
-          "value" : 
-          { "title" : "Annotated Property Value",
-            "description" : "Indicates the value of the attribute, characteristic, or quality.",
             "type" : "string" },
           "remarks" : 
           { "$ref" : "#/definitions/remarks" } },
@@ -601,11 +535,6 @@
             "minItems" : 1,
             "items" : 
             { "$ref" : "#/definitions/property" } },
-          "annotations" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/annotation" } },
           "links" : 
           { "type" : "array",
             "minItems" : 1,
@@ -627,11 +556,6 @@
             "minItems" : 1,
             "items" : 
             { "$ref" : "#/definitions/property" } },
-          "annotations" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/annotation" } },
           "links" : 
           { "type" : "array",
             "minItems" : 1,
@@ -792,11 +716,6 @@
             "minItems" : 1,
             "items" : 
             { "$ref" : "#/definitions/property" } },
-          "annotations" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/annotation" } },
           "links" : 
           { "type" : "array",
             "minItems" : 1,
@@ -920,11 +839,6 @@
             "minItems" : 1,
             "items" : 
             { "$ref" : "#/definitions/property" } },
-          "annotations" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/annotation" } },
           "links" : 
           { "type" : "array",
             "minItems" : 1,
@@ -991,11 +905,6 @@
             "minItems" : 1,
             "items" : 
             { "$ref" : "#/definitions/property" } },
-          "annotations" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/annotation" } },
           "links" : 
           { "type" : "array",
             "minItems" : 1,
@@ -1029,11 +938,6 @@
                   "minItems" : 1,
                   "items" : 
                   { "$ref" : "#/definitions/property" } },
-                "annotations" : 
-                { "type" : "array",
-                  "minItems" : 1,
-                  "items" : 
-                  { "$ref" : "#/definitions/annotation" } },
                 "links" : 
                 { "type" : "array",
                   "minItems" : 1,
@@ -1079,11 +983,6 @@
             "minItems" : 1,
             "items" : 
             { "$ref" : "#/definitions/property" } },
-          "annotations" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/annotation" } },
           "links" : 
           { "type" : "array",
             "minItems" : 1,
@@ -1124,11 +1023,6 @@
             "minItems" : 1,
             "items" : 
             { "$ref" : "#/definitions/property" } },
-          "annotations" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/annotation" } },
           "links" : 
           { "type" : "array",
             "minItems" : 1,
@@ -1160,11 +1054,6 @@
                   "minItems" : 1,
                   "items" : 
                   { "$ref" : "#/definitions/property" } },
-                "annotations" : 
-                { "type" : "array",
-                  "minItems" : 1,
-                  "items" : 
-                  { "$ref" : "#/definitions/annotation" } },
                 "links" : 
                 { "type" : "array",
                   "minItems" : 1,
@@ -1230,11 +1119,6 @@
             "minItems" : 1,
             "items" : 
             { "$ref" : "#/definitions/property" } },
-          "annotations" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/annotation" } },
           "links" : 
           { "type" : "array",
             "minItems" : 1,
@@ -1284,11 +1168,6 @@
             "minItems" : 1,
             "items" : 
             { "$ref" : "#/definitions/property" } },
-          "annotations" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/annotation" } },
           "links" : 
           { "type" : "array",
             "minItems" : 1,
@@ -1402,11 +1281,6 @@
                   "minItems" : 1,
                   "items" : 
                   { "$ref" : "#/definitions/property" } },
-                "annotations" : 
-                { "type" : "array",
-                  "minItems" : 1,
-                  "items" : 
-                  { "$ref" : "#/definitions/annotation" } },
                 "links" : 
                 { "type" : "array",
                   "minItems" : 1,
@@ -1471,11 +1345,6 @@
             "minItems" : 1,
             "items" : 
             { "$ref" : "#/definitions/property" } },
-          "annotations" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/annotation" } },
           "links" : 
           { "type" : "array",
             "minItems" : 1,
@@ -1498,11 +1367,6 @@
                   "minItems" : 1,
                   "items" : 
                   { "$ref" : "#/definitions/property" } },
-                "annotations" : 
-                { "type" : "array",
-                  "minItems" : 1,
-                  "items" : 
-                  { "$ref" : "#/definitions/annotation" } },
                 "links" : 
                 { "type" : "array",
                   "minItems" : 1,
@@ -1543,11 +1407,6 @@
                   "minItems" : 1,
                   "items" : 
                   { "$ref" : "#/definitions/property" } },
-                "annotations" : 
-                { "type" : "array",
-                  "minItems" : 1,
-                  "items" : 
-                  { "$ref" : "#/definitions/annotation" } },
                 "links" : 
                 { "type" : "array",
                   "minItems" : 1,
@@ -1645,11 +1504,6 @@
             "minItems" : 1,
             "items" : 
             { "$ref" : "#/definitions/property" } },
-          "annotations" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/annotation" } },
           "links" : 
           { "type" : "array",
             "minItems" : 1,
@@ -1680,11 +1534,6 @@
             "minItems" : 1,
             "items" : 
             { "$ref" : "#/definitions/property" } },
-          "annotations" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/annotation" } },
           "links" : 
           { "type" : "array",
             "minItems" : 1,
@@ -1726,11 +1575,6 @@
             "minItems" : 1,
             "items" : 
             { "$ref" : "#/definitions/property" } },
-          "annotations" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/annotation" } },
           "links" : 
           { "type" : "array",
             "minItems" : 1,
@@ -1765,11 +1609,6 @@
             "minItems" : 1,
             "items" : 
             { "$ref" : "#/definitions/property" } },
-          "annotations" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/annotation" } },
           "links" : 
           { "type" : "array",
             "minItems" : 1,
@@ -1819,11 +1658,6 @@
                   "minItems" : 1,
                   "items" : 
                   { "$ref" : "#/definitions/property" } },
-                "annotations" : 
-                { "type" : "array",
-                  "minItems" : 1,
-                  "items" : 
-                  { "$ref" : "#/definitions/annotation" } },
                 "links" : 
                 { "type" : "array",
                   "minItems" : 1,
@@ -1847,11 +1681,6 @@
                         "minItems" : 1,
                         "items" : 
                         { "$ref" : "#/definitions/property" } },
-                      "annotations" : 
-                      { "type" : "array",
-                        "minItems" : 1,
-                        "items" : 
-                        { "$ref" : "#/definitions/annotation" } },
                       "links" : 
                       { "type" : "array",
                         "minItems" : 1,
@@ -1910,11 +1739,6 @@
             "minItems" : 1,
             "items" : 
             { "$ref" : "#/definitions/property" } },
-          "annotations" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/annotation" } },
           "links" : 
           { "type" : "array",
             "minItems" : 1,
@@ -1958,11 +1782,6 @@
             "minItems" : 1,
             "items" : 
             { "$ref" : "#/definitions/property" } },
-          "annotations" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/annotation" } },
           "links" : 
           { "type" : "array",
             "minItems" : 1,
@@ -2014,11 +1833,6 @@
                   "minItems" : 1,
                   "items" : 
                   { "$ref" : "#/definitions/property" } },
-                "annotations" : 
-                { "type" : "array",
-                  "minItems" : 1,
-                  "items" : 
-                  { "$ref" : "#/definitions/annotation" } },
                 "links" : 
                 { "type" : "array",
                   "minItems" : 1,
@@ -2096,11 +1910,6 @@
             "minItems" : 1,
             "items" : 
             { "$ref" : "#/definitions/property" } },
-          "annotations" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/annotation" } },
           "links" : 
           { "type" : "array",
             "minItems" : 1,
@@ -2126,11 +1935,6 @@
             "minItems" : 1,
             "items" : 
             { "$ref" : "#/definitions/property" } },
-          "annotations" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/annotation" } },
           "links" : 
           { "type" : "array",
             "minItems" : 1,
@@ -2225,11 +2029,6 @@
             "minItems" : 1,
             "items" : 
             { "$ref" : "#/definitions/property" } },
-          "annotations" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/annotation" } },
           "links" : 
           { "type" : "array",
             "minItems" : 1,
@@ -2281,11 +2080,6 @@
                   "minItems" : 1,
                   "items" : 
                   { "$ref" : "#/definitions/property" } },
-                "annotations" : 
-                { "type" : "array",
-                  "minItems" : 1,
-                  "items" : 
-                  { "$ref" : "#/definitions/annotation" } },
                 "links" : 
                 { "type" : "array",
                   "minItems" : 1,
@@ -2354,11 +2148,6 @@
                       "minItems" : 1,
                       "items" : 
                       { "$ref" : "#/definitions/property" } },
-                    "annotations" : 
-                    { "type" : "array",
-                      "minItems" : 1,
-                      "items" : 
-                      { "$ref" : "#/definitions/annotation" } },
                     "links" : 
                     { "type" : "array",
                       "minItems" : 1,
@@ -2389,11 +2178,6 @@
                             "minItems" : 1,
                             "items" : 
                             { "$ref" : "#/definitions/property" } },
-                          "annotations" : 
-                          { "type" : "array",
-                            "minItems" : 1,
-                            "items" : 
-                            { "$ref" : "#/definitions/annotation" } },
                           "links" : 
                           { "type" : "array",
                             "minItems" : 1,
@@ -2475,11 +2259,6 @@
             "minItems" : 1,
             "items" : 
             { "$ref" : "#/definitions/property" } },
-          "annotations" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/annotation" } },
           "links" : 
           { "type" : "array",
             "minItems" : 1,
@@ -2513,11 +2292,6 @@
                   "minItems" : 1,
                   "items" : 
                   { "$ref" : "#/definitions/property" } },
-                "annotations" : 
-                { "type" : "array",
-                  "minItems" : 1,
-                  "items" : 
-                  { "$ref" : "#/definitions/annotation" } },
                 "links" : 
                 { "type" : "array",
                   "minItems" : 1,
@@ -2562,11 +2336,6 @@
             "minItems" : 1,
             "items" : 
             { "$ref" : "#/definitions/property" } },
-          "annotations" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/annotation" } },
           "links" : 
           { "type" : "array",
             "minItems" : 1,
@@ -2608,11 +2377,6 @@
                   "minItems" : 1,
                   "items" : 
                   { "$ref" : "#/definitions/property" } },
-                "annotations" : 
-                { "type" : "array",
-                  "minItems" : 1,
-                  "items" : 
-                  { "$ref" : "#/definitions/annotation" } },
                 "links" : 
                 { "type" : "array",
                   "minItems" : 1,
@@ -2670,11 +2434,6 @@
             "minItems" : 1,
             "items" : 
             { "$ref" : "#/definitions/property" } },
-          "annotations" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/annotation" } },
           "prose" : 
           { "title" : "Part Text",
             "description" : "Permits multiple paragraphs, lists, tables etc.",
@@ -2769,16 +2528,11 @@
             "type" : "string",
             "format" : "date-time",
             "pattern" : "^((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})$" },
-          "props" : 
+          "prop" : 
           { "type" : "array",
             "minItems" : 1,
             "items" : 
             { "$ref" : "#/definitions/property" } },
-          "annotations" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/annotation" } },
           "links" : 
           { "type" : "array",
             "minItems" : 1,
@@ -2893,11 +2647,6 @@
                       "minItems" : 1,
                       "items" : 
                       { "$ref" : "#/definitions/property" } },
-                    "annotations" : 
-                    { "type" : "array",
-                      "minItems" : 1,
-                      "items" : 
-                      { "$ref" : "#/definitions/annotation" } },
                     "links" : 
                     { "type" : "array",
                       "minItems" : 1,
@@ -2971,11 +2720,6 @@
             "minItems" : 1,
             "items" : 
             { "$ref" : "#/definitions/property" } },
-          "annotations" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/annotation" } },
           "links" : 
           { "type" : "array",
             "minItems" : 1,
