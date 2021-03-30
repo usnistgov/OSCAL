@@ -455,7 +455,7 @@
             <group-as name="control-objective-selections" in-json="ARRAY"/>
             <model>
                <define-field name="description" min-occurs="0" max-occurs="1" in-xml="WITH_WRAPPER" as-type="markup-multiline">
-                  <formal-name>Control Ojectives Description</formal-name>
+                  <formal-name>Control Objectives Description</formal-name>
                   <description>A human-readable description of this collection of control objectives.</description>
                </define-field>
                <assembly ref="property" max-occurs="unbounded">
