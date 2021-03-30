@@ -1,7 +1,7 @@
 ---
 title: Component Definition Model
 heading: "OSCAL Implementation Layer: Component Definition Model"
-description: XML and JSON format documentation for the OSCAL Component Definition model, which is part of the OSCAL implementation layer in the OSCAL [architecture]](/learnmore/architecture/). These formats model a description of the controls that are supported in a given implementation of a hardware, software, service, policy, process, procedure, or compliance artifact (e.g., FIPS 140-2 validation).
+description: XML and JSON format documentation for the OSCAL Component Definition model, which is part of the OSCAL implementation layer in the OSCAL [Layers and Models Reference](/documentation/schema/). These formats model a description of the controls that are supported in a given implementation of a hardware, software, service, policy, process, procedure, or compliance artifact (e.g., FIPS 140-2 validation).
 weight: 50
 aliases:
   - /docs/model/component/
