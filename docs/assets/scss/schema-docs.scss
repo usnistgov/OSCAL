@@ -104,9 +104,10 @@ div.OM-map p {
 
 div.OM-map > p:last-child { margin-left: -2em }
 
-.OM-flex { display: flex; flex-flow: row; margin-top: 0em }
-.OM-flex .sq { flex-grow: 1 }
-.OM-flex .sq.card { flex-basis: 4em; flex-grow: 0; width: 4em }
+// for cardinality on the left
+// .OM-flex { display: flex; flex-flow: row; margin-top: 0em }
+// .OM-flex .sq { flex-grow: 1 }
+// .OM-flex .sq.card { flex-basis: 4em; flex-grow: 0; width: 4em }
 
 .OM-line { display: block 
 //  padding-left: 1em
