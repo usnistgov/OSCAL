@@ -268,7 +268,7 @@
       </define-flag>
       <model>
          <define-field name="title" as-type="markup-line">
-            <formal-name>title field</formal-name>
+            <formal-name>Protocol Title</formal-name>
             <description>A human readable name for the protocol (e.g., Transport Layer Security).</description>
          </define-field>
          <assembly ref="port-range" max-occurs="unbounded">
@@ -387,7 +387,7 @@
       <description>Identifies a specific system privilege held by the user, along with an associated description and/or rationale for the privilege.</description>
       <model>
          <define-field name="title" as-type="markup-line" min-occurs="1">
-            <formal-name>title field</formal-name>
+            <formal-name>Privilege Title</formal-name>
             <description>A human readable name for the privilege.</description>
          </define-field>
          <define-field name="description" as-type="markup-multiline" in-xml="WITH_WRAPPER">
