@@ -13,8 +13,7 @@ oscal-version [0 or 1]: string,
 props [0 or 1]: [ … ], An array of property objects [0 to ∞]{</description></item><item><title>Assessment Results Model JSON Format Reference</title><link>https://pages.nist.gov/OSCAL/documentation/schema/assessment-results-layer/assessment-results/json-schema/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/assessment-results-layer/assessment-results/json-schema/</guid><description>OSCAL model OSCAL Assessment Results Model
 Version 1.0.0-rc1
 JSON Schema oscal_assessment-results_schema.json XML to JSON converter oscal_assessment-results_xml-to-json-converter.xsl (How do I use the converter to convert OSCAL XML to JSON?) The OSCAL assessment results format is used to describe the information typically provided by an assessor following an assessment.
-The root of the OSCAL assessment results format is assessment-results.
-Switch to XML action formal name Action Identifies an assessment-related event that must occur as part of executing an assessment plan, the result of which may be recorded within the assessment log in assessment results.</description></item><item><title>OSCAL Assessment Results Model XML Format Outline</title><link>https://pages.nist.gov/OSCAL/documentation/schema/assessment-results-layer/assessment-results/xml-model-map/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/assessment-results-layer/assessment-results/xml-model-map/</guid><description>&amp;lt;assessment-results uuid="uuid"&amp;gt;… &amp;lt;/assessment-results&amp;gt;[1]&amp;lt;metadata&amp;gt;… &amp;lt;/metadata&amp;gt;[1]&amp;lt;title&amp;gt;markup-line&amp;lt;/title&amp;gt;[1]
+The root of the OSCAL assessment results format is assessment-results. Switch to XML action formal name Action Identifies an assessment-related event that must occur as part of executing an assessment plan, the result of which may be recorded within the assessment log in assessment results.</description></item><item><title>OSCAL Assessment Results Model XML Format Outline</title><link>https://pages.nist.gov/OSCAL/documentation/schema/assessment-results-layer/assessment-results/xml-model-map/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/assessment-results-layer/assessment-results/xml-model-map/</guid><description>&amp;lt;assessment-results uuid="uuid"&amp;gt;… &amp;lt;/assessment-results&amp;gt;[1]&amp;lt;metadata&amp;gt;… &amp;lt;/metadata&amp;gt;[1]&amp;lt;title&amp;gt;markup-line&amp;lt;/title&amp;gt;[1]
 &amp;lt;published&amp;gt;dateTime-with-timezone&amp;lt;/published&amp;gt;[0 or 1]
 &amp;lt;last-modified&amp;gt;dateTime-with-timezone&amp;lt;/last-modified&amp;gt;[1]
 &amp;lt;version&amp;gt;string&amp;lt;/version&amp;gt;[1]
@@ -24,17 +23,15 @@ Switch to XML action formal name Action Identifies an assessment-related event t
 &amp;lt;last-modified&amp;gt;dateTime-with-timezone&amp;lt;/last-modified&amp;gt;[0 or 1]
 &amp;lt;version&amp;gt;string&amp;lt;/version&amp;gt;[0 or 1]
 &amp;lt;oscal-version&amp;gt;string&amp;lt;/oscal-version&amp;gt;[0 or 1]
-&amp;lt;prop uuid="uuid" name="NCName" ns="uri" class="NCName"&amp;gt;string&amp;lt;/prop&amp;gt;[0 to ∞]
-&amp;lt;annotation name="NCName" uuid="uuid" ns="uri" value="string"&amp;gt;… &amp;lt;/annotation&amp;gt;[0 to ∞]&amp;lt;remarks&amp;gt;markup-multiline&amp;lt;/remarks&amp;gt;[0 or 1]
-&amp;lt;/annotation&amp;gt;
+&amp;lt;prop name="NCName" uuid="uuid" ns="uri" value="string" class="NCName"&amp;gt;… &amp;lt;/prop&amp;gt;[0 to ∞]&amp;lt;remarks&amp;gt;markup-multiline&amp;lt;/remarks&amp;gt;[0 or 1]
+&amp;lt;/prop&amp;gt;
 &amp;lt;link href="uri-reference" rel="NCName" media-type="string"&amp;gt;… &amp;lt;/link&amp;gt;[0 to ∞]&amp;lt;text&amp;gt;markup-line&amp;lt;/text&amp;gt;[0 or 1]
 &amp;lt;/link&amp;gt;
 &amp;lt;remarks&amp;gt;markup-multiline&amp;lt;/remarks&amp;gt;[0 or 1]
 &amp;lt;/revision&amp;gt;
 &amp;lt;/revisions&amp;gt;
 &amp;lt;document-id scheme="uri"&amp;gt;string&amp;lt;/document-id&amp;gt;[0 to ∞]
-&amp;lt;prop uuid="uuid" name="</description></item><item><title>OSCAL Assessment Results Model XML Format Reference</title><link>https://pages.nist.gov/OSCAL/documentation/schema/assessment-results-layer/assessment-results/xml-schema/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/assessment-results-layer/assessment-results/xml-schema/</guid><description>OSCAL model OSCAL Assessment Results Model
+&amp;lt;prop name="NCName" uuid="uuid" ns="uri" value="string" class="NCName"&amp;gt;… &amp;lt;/prop&amp;gt;[0 to ∞]&amp;lt;remarks&amp;gt;markup-multiline&amp;lt;/remarks&amp;gt;[0 or 1]</description></item><item><title>OSCAL Assessment Results Model XML Format Reference</title><link>https://pages.nist.gov/OSCAL/documentation/schema/assessment-results-layer/assessment-results/xml-schema/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/assessment-results-layer/assessment-results/xml-schema/</guid><description>OSCAL model OSCAL Assessment Results Model
 Version 1.0.0-rc1
 XML namespace http://csrc.nist.gov/ns/oscal/1.0 XML Schema oscal_assessment-results_schema.xsd JSON to XML converter oscal_assessment-results_json-to-xml-converter.xsl (How do I use the converter to convert OSCAL JSON to XML?) The OSCAL assessment results format is used to describe the information typically provided by an assessor following an assessment.
-The root of the OSCAL assessment results format is assessment-results.
-Switch to JSON assessment-action formal name Action Identifies an assessment-related event that must occur as part of executing an assessment plan, the result of which may be recorded within the assessment log in assessment results.</description></item></channel></rss>
+The root of the OSCAL assessment results format is assessment-results. Switch to JSON assessment-action formal name Action Identifies an assessment-related event that must occur as part of executing an assessment plan, the result of which may be recorded within the assessment log in assessment results.</description></item></channel></rss>

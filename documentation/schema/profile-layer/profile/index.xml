@@ -12,8 +12,7 @@ version [0 or 1]: string,
 oscal-version [0 or 1]: string,
 props [0 or 1]: [ … ], An array of property objects [0 to ∞]{</description></item><item><title>Profile Model JSON Format Reference</title><link>https://pages.nist.gov/OSCAL/documentation/schema/profile-layer/profile/json-schema/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/profile-layer/profile/json-schema/</guid><description>OSCAL model OSCAL Profile Model
 Version 1.0.0-rc1
-JSON Schema oscal_profile_schema.json XML to JSON converter oscal_profile_xml-to-json-converter.xsl (How do I use the converter to convert OSCAL XML to JSON?) A profile designates a selection and configuration of controls from one or more catalogs, along with a series of operations over them. The topmost element in the OSCAL profile XML schema is profile.
-Switch to XML add formal name Addition Specifies contents to be added into controls, in resolution</description></item><item><title>OSCAL Profile Model XML Format Outline</title><link>https://pages.nist.gov/OSCAL/documentation/schema/profile-layer/profile/xml-model-map/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/profile-layer/profile/xml-model-map/</guid><description>&amp;lt;profile uuid="uuid"&amp;gt;… &amp;lt;/profile&amp;gt;[1]&amp;lt;metadata&amp;gt;… &amp;lt;/metadata&amp;gt;[1]&amp;lt;title&amp;gt;markup-line&amp;lt;/title&amp;gt;[1]
+JSON Schema oscal_profile_schema.json XML to JSON converter oscal_profile_xml-to-json-converter.xsl (How do I use the converter to convert OSCAL XML to JSON?) A profile designates a selection and configuration of controls from one or more catalogs, along with a series of operations over them. The topmost element in the OSCAL profile XML schema is profile. Switch to XML add formal name Addition Specifies contents to be added into controls, in resolution</description></item><item><title>OSCAL Profile Model XML Format Outline</title><link>https://pages.nist.gov/OSCAL/documentation/schema/profile-layer/profile/xml-model-map/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/profile-layer/profile/xml-model-map/</guid><description>&amp;lt;profile uuid="uuid"&amp;gt;… &amp;lt;/profile&amp;gt;[1]&amp;lt;metadata&amp;gt;… &amp;lt;/metadata&amp;gt;[1]&amp;lt;title&amp;gt;markup-line&amp;lt;/title&amp;gt;[1]
 &amp;lt;published&amp;gt;dateTime-with-timezone&amp;lt;/published&amp;gt;[0 or 1]
 &amp;lt;last-modified&amp;gt;dateTime-with-timezone&amp;lt;/last-modified&amp;gt;[1]
 &amp;lt;version&amp;gt;string&amp;lt;/version&amp;gt;[1]
@@ -23,16 +22,14 @@ Switch to XML add formal name Addition Specifies contents to be added into contr
 &amp;lt;last-modified&amp;gt;dateTime-with-timezone&amp;lt;/last-modified&amp;gt;[0 or 1]
 &amp;lt;version&amp;gt;string&amp;lt;/version&amp;gt;[0 or 1]
 &amp;lt;oscal-version&amp;gt;string&amp;lt;/oscal-version&amp;gt;[0 or 1]
-&amp;lt;prop uuid="uuid" name="NCName" ns="uri" class="NCName"&amp;gt;string&amp;lt;/prop&amp;gt;[0 to ∞]
-&amp;lt;annotation name="NCName" uuid="uuid" ns="uri" value="string"&amp;gt;… &amp;lt;/annotation&amp;gt;[0 to ∞]&amp;lt;remarks&amp;gt;markup-multiline&amp;lt;/remarks&amp;gt;[0 or 1]
-&amp;lt;/annotation&amp;gt;
+&amp;lt;prop name="NCName" uuid="uuid" ns="uri" value="string" class="NCName"&amp;gt;… &amp;lt;/prop&amp;gt;[0 to ∞]&amp;lt;remarks&amp;gt;markup-multiline&amp;lt;/remarks&amp;gt;[0 or 1]
+&amp;lt;/prop&amp;gt;
 &amp;lt;link href="uri-reference" rel="NCName" media-type="string"&amp;gt;… &amp;lt;/link&amp;gt;[0 to ∞]&amp;lt;text&amp;gt;markup-line&amp;lt;/text&amp;gt;[0 or 1]
 &amp;lt;/link&amp;gt;
 &amp;lt;remarks&amp;gt;markup-multiline&amp;lt;/remarks&amp;gt;[0 or 1]
 &amp;lt;/revision&amp;gt;
 &amp;lt;/revisions&amp;gt;
 &amp;lt;document-id scheme="uri"&amp;gt;string&amp;lt;/document-id&amp;gt;[0 to ∞]
-&amp;lt;prop uuid="uuid" name="</description></item><item><title>OSCAL Profile Model XML Format Reference</title><link>https://pages.nist.gov/OSCAL/documentation/schema/profile-layer/profile/xml-schema/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/profile-layer/profile/xml-schema/</guid><description>OSCAL model OSCAL Profile Model
+&amp;lt;prop name="NCName" uuid="uuid" ns="uri" value="string" class="NCName"&amp;gt;… &amp;lt;/prop&amp;gt;[0 to ∞]&amp;lt;remarks&amp;gt;markup-multiline&amp;lt;/remarks&amp;gt;[0 or 1]</description></item><item><title>OSCAL Profile Model XML Format Reference</title><link>https://pages.nist.gov/OSCAL/documentation/schema/profile-layer/profile/xml-schema/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/profile-layer/profile/xml-schema/</guid><description>OSCAL model OSCAL Profile Model
 Version 1.0.0-rc1
-XML namespace http://csrc.nist.gov/ns/oscal/1.0 XML Schema oscal_profile_schema.xsd JSON to XML converter oscal_profile_json-to-xml-converter.xsl (How do I use the converter to convert OSCAL JSON to XML?) A profile designates a selection and configuration of controls from one or more catalogs, along with a series of operations over them. The topmost element in the OSCAL profile XML schema is profile.
-Switch to JSON add formal name Addition Specifies contents to be added into controls, in resolution</description></item></channel></rss>
+XML namespace http://csrc.nist.gov/ns/oscal/1.0 XML Schema oscal_profile_schema.xsd JSON to XML converter oscal_profile_json-to-xml-converter.xsl (How do I use the converter to convert OSCAL JSON to XML?) A profile designates a selection and configuration of controls from one or more catalogs, along with a series of operations over them. The topmost element in the OSCAL profile XML schema is profile. Switch to JSON add formal name Addition Specifies contents to be added into controls, in resolution</description></item></channel></rss>

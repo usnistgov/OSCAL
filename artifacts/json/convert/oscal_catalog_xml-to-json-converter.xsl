@@ -76,7 +76,7 @@
       </xsl:if>
    </xsl:template>
    <!-- XML to JSON conversion: object filters -->
-   <xsl:strip-space elements="catalog metadata revision annotation link role location address party responsible-party param constraint test guideline select control part group back-matter resource citation biblio rlink"/>
+   <xsl:strip-space elements="catalog metadata revision prop link role location address party responsible-party param constraint test guideline select control part group back-matter resource citation biblio rlink"/>
    <!-- METASCHEMA conversion stylesheet supports XML -> METASCHEMA/SUPERMODEL conversion -->
    <!-- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ -->
    <!-- METASCHEMA: OSCAL Control Catalog Model (version 1.0.0-rc1) in namespace "http://csrc.nist.gov/ns/oscal/1.0"-->
@@ -143,13 +143,6 @@
                </xsl:apply-templates>
             </group>
          </xsl:for-each-group>
-         <xsl:for-each-group select="annotation" group-by="true()">
-            <group in-json="ARRAY" key="annotations">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
          <xsl:for-each-group select="link" group-by="true()">
             <group in-json="ARRAY" key="links">
                <xsl:apply-templates select="current-group()">
@@ -188,14 +181,15 @@
          <xsl:apply-templates select="remarks"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="annotation"
+   <xsl:template match="prop"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
-      <assembly name="annotation" gi="annotation" formal-name="Annotated Property">
+      <assembly name="property" gi="prop" formal-name="Property">
          <xsl:apply-templates select="@name"/>
          <xsl:apply-templates select="@uuid"/>
          <xsl:apply-templates select="@ns"/>
          <xsl:apply-templates select="@value"/>
+         <xsl:apply-templates select="@class"/>
          <xsl:apply-templates select="remarks"/>
       </assembly>
    </xsl:template>
@@ -219,13 +213,6 @@
          <xsl:apply-templates select="description"/>
          <xsl:for-each-group select="prop" group-by="true()">
             <group in-json="ARRAY" key="props">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
-         <xsl:for-each-group select="annotation" group-by="true()">
-            <group in-json="ARRAY" key="annotations">
                <xsl:apply-templates select="current-group()">
                   <xsl:with-param name="with-key" select="false()"/>
                </xsl:apply-templates>
@@ -276,13 +263,6 @@
                </xsl:apply-templates>
             </group>
          </xsl:for-each-group>
-         <xsl:for-each-group select="annotation" group-by="true()">
-            <group in-json="ARRAY" key="annotations">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
          <xsl:for-each-group select="link" group-by="true()">
             <group in-json="ARRAY" key="links">
                <xsl:apply-templates select="current-group()">
@@ -312,13 +292,6 @@
          </xsl:for-each-group>
          <xsl:for-each-group select="prop" group-by="true()">
             <group in-json="ARRAY" key="props">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
-         <xsl:for-each-group select="annotation" group-by="true()">
-            <group in-json="ARRAY" key="annotations">
                <xsl:apply-templates select="current-group()">
                   <xsl:with-param name="with-key" select="false()"/>
                </xsl:apply-templates>
@@ -394,13 +367,6 @@
                </xsl:apply-templates>
             </group>
          </xsl:for-each-group>
-         <xsl:for-each-group select="annotation" group-by="true()">
-            <group in-json="ARRAY" key="annotations">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
          <xsl:for-each-group select="link" group-by="true()">
             <group in-json="ARRAY" key="links">
                <xsl:apply-templates select="current-group()">
@@ -420,13 +386,6 @@
          <xsl:apply-templates select="@depends-on"/>
          <xsl:for-each-group select="prop" group-by="true()">
             <group in-json="ARRAY" key="props">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
-         <xsl:for-each-group select="annotation" group-by="true()">
-            <group in-json="ARRAY" key="annotations">
                <xsl:apply-templates select="current-group()">
                   <xsl:with-param name="with-key" select="false()"/>
                </xsl:apply-templates>
@@ -538,13 +497,6 @@
                </xsl:apply-templates>
             </group>
          </xsl:for-each-group>
-         <xsl:for-each-group select="annotation" group-by="true()">
-            <group in-json="ARRAY" key="annotations">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
          <xsl:for-each-group select="link" group-by="true()">
             <group in-json="ARRAY" key="links">
                <xsl:apply-templates select="current-group()">
@@ -579,13 +531,6 @@
          <xsl:apply-templates select="title"/>
          <xsl:for-each-group select="prop" group-by="true()">
             <group in-json="ARRAY" key="props">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
-         <xsl:for-each-group select="annotation" group-by="true()">
-            <group in-json="ARRAY" key="annotations">
                <xsl:apply-templates select="current-group()">
                   <xsl:with-param name="with-key" select="false()"/>
                </xsl:apply-templates>
@@ -640,13 +585,6 @@
                </xsl:apply-templates>
             </group>
          </xsl:for-each-group>
-         <xsl:for-each-group select="annotation" group-by="true()">
-            <group in-json="ARRAY" key="annotations">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
          <xsl:for-each-group select="link" group-by="true()">
             <group in-json="ARRAY" key="links">
                <xsl:apply-templates select="current-group()">
@@ -692,19 +630,6 @@
             </group>
          </xsl:for-each-group>
       </assembly>
-   </xsl:template>
-   <xsl:template match="prop"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field name="property" gi="prop" formal-name="Property">
-         <xsl:apply-templates select="@uuid"/>
-         <xsl:apply-templates select="@name"/>
-         <xsl:apply-templates select="@ns"/>
-         <xsl:apply-templates select="@class"/>
-         <value as-type="string" key="value" in-json="string">
-            <xsl:value-of select="."/>
-         </value>
-      </field>
    </xsl:template>
    <xsl:template match="remarks"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -774,7 +699,7 @@
          </value>
       </field>
    </xsl:template>
-   <xsl:template match="catalog/@uuid | prop/@uuid | annotation/@uuid | location/@uuid | party/@uuid | catalog/back-matter/resource/@uuid"
+   <xsl:template match="catalog/@uuid | prop/@uuid | location/@uuid | party/@uuid | catalog/back-matter/resource/@uuid"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
             as-type="uuid"
@@ -785,7 +710,7 @@
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
-   <xsl:template match="prop/@name | annotation/@name | part/@name | part//part/@name"
+   <xsl:template match="prop/@name | part/@name | part//part/@name"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
             as-type="NCName"
@@ -796,7 +721,7 @@
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
-   <xsl:template match="prop/@ns | annotation/@ns | part/@ns | part//part/@ns"
+   <xsl:template match="prop/@ns | part/@ns | part//part/@ns"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
             as-type="uri"
@@ -804,6 +729,17 @@
             key="ns"
             gi="ns"
             formal-name="Property Namespace">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="prop/@value"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <flag in-json="string"
+            as-type="string"
+            name="value"
+            key="value"
+            gi="value"
+            formal-name="Annotated Property Value">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
@@ -815,17 +751,6 @@
             key="class"
             gi="class"
             formal-name="Property Class">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="annotation/@value"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-            as-type="string"
-            name="value"
-            key="value"
-            gi="value"
-            formal-name="Annotated Property Value">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
@@ -1061,13 +986,6 @@
          <xsl:apply-templates select="oscal-version"/>
          <xsl:for-each-group select="prop" group-by="true()">
             <group in-json="ARRAY" key="props">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
-         <xsl:for-each-group select="annotation" group-by="true()">
-            <group in-json="ARRAY" key="annotations">
                <xsl:apply-templates select="current-group()">
                   <xsl:with-param name="with-key" select="false()"/>
                </xsl:apply-templates>
@@ -2344,13 +2262,6 @@
                </xsl:apply-templates>
             </group>
          </xsl:for-each-group>
-         <xsl:for-each-group select="annotation" group-by="true()">
-            <group in-json="ARRAY" key="annotations">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
          <xsl:for-each-group select="document-id" group-by="true()">
             <group in-json="ARRAY" key="document-ids">
                <xsl:apply-templates select="current-group()">
@@ -2431,13 +2342,6 @@
          <xsl:apply-templates select="text"/>
          <xsl:for-each-group select="prop" group-by="true()">
             <group in-json="ARRAY" key="props">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
-         <xsl:for-each-group select="annotation" group-by="true()">
-            <group in-json="ARRAY" key="annotations">
                <xsl:apply-templates select="current-group()">
                   <xsl:with-param name="with-key" select="false()"/>
                </xsl:apply-templates>

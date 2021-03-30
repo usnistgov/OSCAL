@@ -22,15 +22,14 @@ JSON Schema oscal_component_schema.json XML to JSON converter oscal_component_xm
 &amp;lt;last-modified&amp;gt;dateTime-with-timezone&amp;lt;/last-modified&amp;gt;[0 or 1]
 &amp;lt;version&amp;gt;string&amp;lt;/version&amp;gt;[0 or 1]
 &amp;lt;oscal-version&amp;gt;string&amp;lt;/oscal-version&amp;gt;[0 or 1]
-&amp;lt;prop uuid="uuid" name="NCName" ns="uri" class="NCName"&amp;gt;string&amp;lt;/prop&amp;gt;[0 to ∞]
-&amp;lt;annotation name="NCName" uuid="uuid" ns="uri" value="string"&amp;gt;… &amp;lt;/annotation&amp;gt;[0 to ∞]&amp;lt;remarks&amp;gt;markup-multiline&amp;lt;/remarks&amp;gt;[0 or 1]
-&amp;lt;/annotation&amp;gt;
+&amp;lt;prop name="NCName" uuid="uuid" ns="uri" value="string" class="NCName"&amp;gt;… &amp;lt;/prop&amp;gt;[0 to ∞]&amp;lt;remarks&amp;gt;markup-multiline&amp;lt;/remarks&amp;gt;[0 or 1]
+&amp;lt;/prop&amp;gt;
 &amp;lt;link href="uri-reference" rel="NCName" media-type="string"&amp;gt;… &amp;lt;/link&amp;gt;[0 to ∞]&amp;lt;text&amp;gt;markup-line&amp;lt;/text&amp;gt;[0 or 1]
 &amp;lt;/link&amp;gt;
 &amp;lt;remarks&amp;gt;markup-multiline&amp;lt;/remarks&amp;gt;[0 or 1]
 &amp;lt;/revision&amp;gt;
 &amp;lt;/revisions&amp;gt;
 &amp;lt;document-id scheme="uri"&amp;gt;string&amp;lt;/document-id&amp;gt;[0 to ∞]
-&amp;lt;prop uuid="uuid" name="</description></item><item><title>OSCAL Component Definition Model XML Format Reference</title><link>https://pages.nist.gov/OSCAL/documentation/schema/implementation-layer/component/xml-schema/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/implementation-layer/component/xml-schema/</guid><description>OSCAL model OSCAL Component Definition Model
+&amp;lt;prop name="NCName" uuid="uuid" ns="uri" value="string" class="NCName"&amp;gt;… &amp;lt;/prop&amp;gt;[0 to ∞]&amp;lt;remarks&amp;gt;markup-multiline&amp;lt;/remarks&amp;gt;[0 or 1]</description></item><item><title>OSCAL Component Definition Model XML Format Reference</title><link>https://pages.nist.gov/OSCAL/documentation/schema/implementation-layer/component/xml-schema/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/implementation-layer/component/xml-schema/</guid><description>OSCAL model OSCAL Component Definition Model
 Version 1.0.0-rc1
 XML namespace http://csrc.nist.gov/ns/oscal/1.0 XML Schema oscal_component_schema.xsd JSON to XML converter oscal_component_json-to-xml-converter.xsl (How do I use the converter to convert OSCAL JSON to XML?) The OSCAL Component Definition Model can be used to describe the implementation of controls in a component or a set of components grouped as a capability. A component can be either a technical component, or a documentary component.</description></item></channel></rss>

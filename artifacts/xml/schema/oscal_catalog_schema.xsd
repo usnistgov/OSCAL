@@ -12,7 +12,7 @@
          <m:schema-version>1.0.0-rc1</m:schema-version>
          <m:short-name>oscal-catalog</m:short-name>
          <m:remarks>
-            <p>The OSCAL Control Catalog format can be used to describe a collection of security controls and related control enhancements, along with contextualizing documentation and metadata. The root of the Control Catalog format is <code>catalog</code>.</p>
+            <p>The OSCAL Control Catalog format can be used to describe a collection of security controls and related control enhancements, along with contextualizing documentation and metadata. The root of the Control Catalog format is <code>catalog</code>. </p>
          </m:remarks>
          <m:root>catalog</m:root>
       </xs:appinfo>
@@ -43,11 +43,7 @@
             </xs:complexType>
          </xs:element>
          <xs:element name="prop"
-                     type="oscal-catalog:property-FIELD"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
-         <xs:element name="annotation"
-                     type="oscal-catalog:annotation-ASSEMBLY"
+                     type="oscal-catalog:property-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:group ref="oscal-catalog:blockElementGroup"
@@ -100,10 +96,10 @@
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Part Class</m:formal-name>
-               <m:description>A textual label that provides a sub-type or characterization of the part's <m:code>name</m:code>. This can be used to further distinguish or discriminate between the semantics of multiple parts of the same control with the same <m:code>name</m:code> and <m:code>ns</m:code>.</m:description>
+               <m:description>A textual label that provides a sub-type or characterization of the part's <m:code>name</m:code>. This can be used to further distinguish or discriminate between the semantics of multiple parts of the same control with the same <m:code>name</m:code> and <m:code>ns</m:code>. </m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>Part Class</b>: A textual label that provides a sub-type or characterization of the part's name. This can be used to further distinguish or discriminate between the semantics of multiple parts of the same control with the same name and ns.</xs:documentation>
+               <b>Part Class</b>: A textual label that provides a sub-type or characterization of the part's name. This can be used to further distinguish or discriminate between the semantics of multiple parts of the same control with the same name and ns. </xs:documentation>
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
@@ -118,11 +114,7 @@
       </xs:annotation>
       <xs:sequence>
          <xs:element name="prop"
-                     type="oscal-catalog:property-FIELD"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
-         <xs:element name="annotation"
-                     type="oscal-catalog:annotation-ASSEMBLY"
+                     type="oscal-catalog:property-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="link"
@@ -424,11 +416,7 @@
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="prop"
-                     type="oscal-catalog:property-FIELD"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
-         <xs:element name="annotation"
-                     type="oscal-catalog:annotation-ASSEMBLY"
+                     type="oscal-catalog:property-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="link"
@@ -510,11 +498,7 @@
                      minOccurs="0"
                      maxOccurs="1"/>
          <xs:element name="prop"
-                     type="oscal-catalog:property-FIELD"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
-         <xs:element name="annotation"
-                     type="oscal-catalog:annotation-ASSEMBLY"
+                     type="oscal-catalog:property-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="link"
@@ -589,11 +573,7 @@
             </xs:simpleType>
          </xs:element>
          <xs:element name="prop"
-                     type="oscal-catalog:property-FIELD"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
-         <xs:element name="annotation"
-                     type="oscal-catalog:annotation-ASSEMBLY"
+                     type="oscal-catalog:property-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="link"
@@ -631,10 +611,10 @@
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Location Reference</m:formal-name>
-            <m:description>References a <m:code>location</m:code> defined in <m:code>metadata</m:code>.</m:description>
+            <m:description>References a <m:code>location</m:code> defined in <m:code>metadata</m:code>. </m:description>
          </xs:appinfo>
          <xs:documentation>
-            <b>Location Reference</b>: References a location defined in metadata.</xs:documentation>
+            <b>Location Reference</b>: References a location defined in metadata. </xs:documentation>
       </xs:annotation>
       <xs:restriction base="oscal-catalog:uuid"/>
    </xs:simpleType>
@@ -701,11 +681,7 @@
             </xs:complexType>
          </xs:element>
          <xs:element name="prop"
-                     type="oscal-catalog:property-FIELD"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
-         <xs:element name="annotation"
-                     type="oscal-catalog:annotation-ASSEMBLY"
+                     type="oscal-catalog:property-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="link"
@@ -784,10 +760,10 @@
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Party Reference</m:formal-name>
-            <m:description>References a <m:code>party</m:code> defined in <m:code>metadata</m:code>.</m:description>
+            <m:description>References a <m:code>party</m:code> defined in <m:code>metadata</m:code>. </m:description>
          </xs:appinfo>
          <xs:documentation>
-            <b>Party Reference</b>: References a party defined in metadata.</xs:documentation>
+            <b>Party Reference</b>: References a party defined in metadata. </xs:documentation>
       </xs:annotation>
       <xs:restriction base="oscal-catalog:uuid"/>
    </xs:simpleType>
@@ -845,11 +821,7 @@
             </xs:complexType>
          </xs:element>
          <xs:element name="prop"
-                     type="oscal-catalog:property-FIELD"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
-         <xs:element name="annotation"
-                     type="oscal-catalog:annotation-ASSEMBLY"
+                     type="oscal-catalog:property-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="link"
@@ -935,11 +907,7 @@
                      </xs:complexType>
                   </xs:element>
                   <xs:element name="prop"
-                              type="oscal-catalog:property-FIELD"
-                              minOccurs="0"
-                              maxOccurs="unbounded"/>
-                  <xs:element name="annotation"
-                              type="oscal-catalog:annotation-ASSEMBLY"
+                              type="oscal-catalog:property-ASSEMBLY"
                               minOccurs="0"
                               maxOccurs="unbounded"/>
                   <xs:element name="document-id"
@@ -973,11 +941,7 @@
                               </xs:complexType>
                            </xs:element>
                            <xs:element name="prop"
-                                       type="oscal-catalog:property-FIELD"
-                                       minOccurs="0"
-                                       maxOccurs="unbounded"/>
-                           <xs:element name="annotation"
-                                       type="oscal-catalog:annotation-ASSEMBLY"
+                                       type="oscal-catalog:property-ASSEMBLY"
                                        minOccurs="0"
                                        maxOccurs="unbounded"/>
                            <xs:element name="biblio" minOccurs="0" maxOccurs="1">
@@ -1031,10 +995,10 @@
                            <xs:annotation>
                               <xs:appinfo>
                                  <m:formal-name>Media Type</m:formal-name>
-                                 <m:description>Specifies a media type as defined by the Internet Assigned Numbers Authority (IANA) <m:a>Media Types Registry</m:a>.</m:description>
+                                 <m:description>Specifies a media type as defined by the Internet Assigned Numbers Authority (IANA) <m:a>Media Types Registry</m:a>. </m:description>
                               </xs:appinfo>
                               <xs:documentation>
-                                 <b>Media Type</b>: Specifies a media type as defined by the Internet Assigned Numbers Authority (IANA) Media Types Registry.</xs:documentation>
+                                 <b>Media Type</b>: Specifies a media type as defined by the Internet Assigned Numbers Authority (IANA) Media Types Registry. </xs:documentation>
                            </xs:annotation>
                         </xs:attribute>
                      </xs:complexType>
@@ -1065,10 +1029,10 @@
                                  <xs:annotation>
                                     <xs:appinfo>
                                        <m:formal-name>Media Type</m:formal-name>
-                                       <m:description>Specifies a media type as defined by the Internet Assigned Numbers Authority (IANA) <m:a>Media Types Registry</m:a>.</m:description>
+                                       <m:description>Specifies a media type as defined by the Internet Assigned Numbers Authority (IANA) <m:a>Media Types Registry</m:a>. </m:description>
                                     </xs:appinfo>
                                     <xs:documentation>
-                                       <b>Media Type</b>: Specifies a media type as defined by the Internet Assigned Numbers Authority (IANA) Media Types Registry.</xs:documentation>
+                                       <b>Media Type</b>: Specifies a media type as defined by the Internet Assigned Numbers Authority (IANA) Media Types Registry. </xs:documentation>
                                  </xs:annotation>
                               </xs:attribute>
                            </xs:extension>
@@ -1109,7 +1073,7 @@
          </xs:element>
       </xs:sequence>
    </xs:complexType>
-   <xs:complexType name="property-FIELD">
+   <xs:complexType name="property-ASSEMBLY">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Property</m:formal-name>
@@ -1117,60 +1081,6 @@
          </xs:appinfo>
          <xs:documentation>
             <b>Property</b>: An attribute, characteristic, or quality of the containing object expressed as a namespace qualified name/value pair. The value of a property is a simple scalar value, which may be expressed as a list of values in some OSCAL formats.</xs:documentation>
-      </xs:annotation>
-      <xs:simpleContent>
-         <xs:extension base="xs:string">
-            <xs:attribute name="uuid" type="oscal-catalog:uuid">
-               <xs:annotation>
-                  <xs:appinfo>
-                     <m:formal-name>Property Universally Unique Identifier</m:formal-name>
-                     <m:description>A unique identifier that can be used to reference this property elsewhere in an OSCAL document. A UUID should be consistantly used for a given location across revisions of the document.</m:description>
-                  </xs:appinfo>
-                  <xs:documentation>
-                     <b>Property Universally Unique Identifier</b>: A unique identifier that can be used to reference this property elsewhere in an OSCAL document. A UUID should be consistantly used for a given location across revisions of the document.</xs:documentation>
-               </xs:annotation>
-            </xs:attribute>
-            <xs:attribute name="name" use="required" type="xs:NCName">
-               <xs:annotation>
-                  <xs:appinfo>
-                     <m:formal-name>Property Name</m:formal-name>
-                     <m:description>A textual label that uniquely identifies a specific attribute, characteristic, or quality of the property's containing object.</m:description>
-                  </xs:appinfo>
-                  <xs:documentation>
-                     <b>Property Name</b>: A textual label that uniquely identifies a specific attribute, characteristic, or quality of the property's containing object.</xs:documentation>
-               </xs:annotation>
-            </xs:attribute>
-            <xs:attribute name="ns" type="oscal-catalog:uri">
-               <xs:annotation>
-                  <xs:appinfo>
-                     <m:formal-name>Property Namespace</m:formal-name>
-                     <m:description>A namespace qualifying the property's name. This allows different organizations to associate distinct semantics with the same name.</m:description>
-                  </xs:appinfo>
-                  <xs:documentation>
-                     <b>Property Namespace</b>: A namespace qualifying the property's name. This allows different organizations to associate distinct semantics with the same name.</xs:documentation>
-               </xs:annotation>
-            </xs:attribute>
-            <xs:attribute name="class" type="xs:NCName">
-               <xs:annotation>
-                  <xs:appinfo>
-                     <m:formal-name>Property Class</m:formal-name>
-                     <m:description>A textual label that provides a sub-type or characterization of the property's <m:code>name</m:code>. This can be used to further distinguish or discriminate between the semantics of multiple properties of the same object with the same <m:code>name</m:code> and <m:code>ns</m:code>.</m:description>
-                  </xs:appinfo>
-                  <xs:documentation>
-                     <b>Property Class</b>: A textual label that provides a sub-type or characterization of the property's name. This can be used to further distinguish or discriminate between the semantics of multiple properties of the same object with the same name and ns.</xs:documentation>
-               </xs:annotation>
-            </xs:attribute>
-         </xs:extension>
-      </xs:simpleContent>
-   </xs:complexType>
-   <xs:complexType name="annotation-ASSEMBLY">
-      <xs:annotation>
-         <xs:appinfo>
-            <m:formal-name>Annotated Property</m:formal-name>
-            <m:description>An attribute, characteristic, or quality of the containing object expressed as a namespace qualified name/value pair with optional explanatory remarks. The value of an annotated property is a simple scalar value.</m:description>
-         </xs:appinfo>
-         <xs:documentation>
-            <b>Annotated Property</b>: An attribute, characteristic, or quality of the containing object expressed as a namespace qualified name/value pair with optional explanatory remarks. The value of an annotated property is a simple scalar value.</xs:documentation>
       </xs:annotation>
       <xs:sequence>
          <xs:element name="remarks" minOccurs="0" maxOccurs="1">
@@ -1192,41 +1102,51 @@
       <xs:attribute name="name" use="required" type="xs:NCName">
          <xs:annotation>
             <xs:appinfo>
-               <m:formal-name>Annotated Property Name</m:formal-name>
-               <m:description>A textual label that uniquely identifies a specific attribute, characteristic, or quality of the annotated property's containing object.</m:description>
+               <m:formal-name>Property Name</m:formal-name>
+               <m:description>A textual label that uniquely identifies a specific attribute, characteristic, or quality of the property's containing object.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>Annotated Property Name</b>: A textual label that uniquely identifies a specific attribute, characteristic, or quality of the annotated property's containing object.</xs:documentation>
+               <b>Property Name</b>: A textual label that uniquely identifies a specific attribute, characteristic, or quality of the property's containing object.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
       <xs:attribute name="uuid" type="oscal-catalog:uuid">
          <xs:annotation>
             <xs:appinfo>
-               <m:formal-name>Annotated Property Universally Unique Identifier</m:formal-name>
-               <m:description>A unique identifier that can be used to reference this annotated property elsewhere in an OSCAL document. A UUID should be consistantly used for a given location across revisions of the document.</m:description>
+               <m:formal-name>Property Universally Unique Identifier</m:formal-name>
+               <m:description>A unique identifier that can be used to reference this property elsewhere in an OSCAL document. A UUID should be consistantly used for a given location across revisions of the document.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>Annotated Property Universally Unique Identifier</b>: A unique identifier that can be used to reference this annotated property elsewhere in an OSCAL document. A UUID should be consistantly used for a given location across revisions of the document.</xs:documentation>
+               <b>Property Universally Unique Identifier</b>: A unique identifier that can be used to reference this property elsewhere in an OSCAL document. A UUID should be consistantly used for a given location across revisions of the document.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
       <xs:attribute name="ns" type="oscal-catalog:uri">
          <xs:annotation>
             <xs:appinfo>
-               <m:formal-name>Annotated Property Namespace</m:formal-name>
-               <m:description>A namespace qualifying the annotated property's name. This allows different organizations to associate distinct semantics with the same name.</m:description>
+               <m:formal-name>Property Namespace</m:formal-name>
+               <m:description>A namespace qualifying the property's name. This allows different organizations to associate distinct semantics with the same name.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>Annotated Property Namespace</b>: A namespace qualifying the annotated property's name. This allows different organizations to associate distinct semantics with the same name.</xs:documentation>
+               <b>Property Namespace</b>: A namespace qualifying the property's name. This allows different organizations to associate distinct semantics with the same name.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
       <xs:attribute name="value" use="required" type="xs:string">
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Annotated Property Value</m:formal-name>
-               <m:description>Indicates the value of the attribute, characteristic, or quality.</m:description>
+               <m:description>Indicates the optional value of the attribute, characteristic, or quality. Typically, a value will be provided; however, the value is optional allowing cases were the name is asserting some characteristic or quality.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>Annotated Property Value</b>: Indicates the value of the attribute, characteristic, or quality.</xs:documentation>
+               <b>Annotated Property Value</b>: Indicates the optional value of the attribute, characteristic, or quality. Typically, a value will be provided; however, the value is optional allowing cases were the name is asserting some characteristic or quality.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="class" type="xs:NCName">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Property Class</m:formal-name>
+               <m:description>A textual label that provides a sub-type or characterization of the property's <m:code>name</m:code>. This can be used to further distinguish or discriminate between the semantics of multiple properties of the same object with the same <m:code>name</m:code> and <m:code>ns</m:code>. </m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Property Class</b>: A textual label that provides a sub-type or characterization of the property's name. This can be used to further distinguish or discriminate between the semantics of multiple properties of the same object with the same name and ns. </xs:documentation>
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
@@ -1280,10 +1200,10 @@
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Media Type</m:formal-name>
-               <m:description>Specifies a media type as defined by the Internet Assigned Numbers Authority (IANA) <m:a>Media Types Registry</m:a>.</m:description>
+               <m:description>Specifies a media type as defined by the Internet Assigned Numbers Authority (IANA) <m:a>Media Types Registry</m:a>. </m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>Media Type</b>: Specifies a media type as defined by the Internet Assigned Numbers Authority (IANA) Media Types Registry.</xs:documentation>
+               <b>Media Type</b>: Specifies a media type as defined by the Internet Assigned Numbers Authority (IANA) Media Types Registry. </xs:documentation>
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
@@ -1302,11 +1222,7 @@
                      minOccurs="1"
                      maxOccurs="unbounded"/>
          <xs:element name="prop"
-                     type="oscal-catalog:property-FIELD"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
-         <xs:element name="annotation"
-                     type="oscal-catalog:annotation-ASSEMBLY"
+                     type="oscal-catalog:property-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="link"
@@ -1412,10 +1328,10 @@
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Email Address</m:formal-name>
-            <m:description>An email address as defined by <m:a>RFC 5322 Section 3.4.1</m:a>.</m:description>
+            <m:description>An email address as defined by <m:a>RFC 5322 Section 3.4.1</m:a>. </m:description>
          </xs:appinfo>
          <xs:documentation>
-            <b>Email Address</b>: An email address as defined by RFC 5322 Section 3.4.1.</xs:documentation>
+            <b>Email Address</b>: An email address as defined by RFC 5322 Section 3.4.1. </xs:documentation>
       </xs:annotation>
       <xs:restriction base="oscal-catalog:email"/>
    </xs:simpleType>
@@ -1629,11 +1545,7 @@
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="prop"
-                     type="oscal-catalog:property-FIELD"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
-         <xs:element name="annotation"
-                     type="oscal-catalog:annotation-ASSEMBLY"
+                     type="oscal-catalog:property-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="link"
@@ -1706,11 +1618,7 @@
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="prop"
-                     type="oscal-catalog:property-FIELD"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
-         <xs:element name="annotation"
-                     type="oscal-catalog:annotation-ASSEMBLY"
+                     type="oscal-catalog:property-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="link"
