@@ -168,6 +168,7 @@
                   <any/>
             </model>
             <constraint>
+                  <has-cardinality target="part[@name='statement']" min-occurs="1" max-occurs="1" />
                   <allowed-values target="prop/@name" allow-other="yes">
             &allowed-values-control-group-property-name;
                         <enum value="status">The status of a <code>control</code>. For example, a value of 'withdrawn' can indicate that the <code>control</code> has been withdrawn and should no longer be used.</enum>
@@ -183,8 +184,8 @@
                   </allowed-values>
             </constraint>
             <remarks>
-                  <p>Controls may be grouped using <code>group</code>, and controls may be partitioned using <code>part</code> or further enhanced (extended) using <code>control</code>.
-                  </p>
+                  <p>Controls may be grouped using <code>group</code>, and controls may be partitioned using <code>part</code> or further enhanced (extended) using <code>control</code>.</p>
+                  <p>A control must have a part with the name "statement", which represents the textual narrative of the control. This "statement" part must occur only once, but may have nested parts to allow for multiple paragraphs or sections of text.</p>
             </remarks>
             <example>
                   <control xmlns="http://csrc.nist.gov/ns/oscal/example" id="x">
