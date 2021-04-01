@@ -324,26 +324,29 @@
       </define-assembly>
       <define-assembly name="remove">
             <formal-name>Removal</formal-name>
-            <description>Specifies elements to be removed from a control, in resolution</description>
+            <description>Specifies objects to be removed from a control based on specific aspects of the object that must all match.</description>
             <define-flag name="name-ref" as-type="NCName">
                   <formal-name>Reference by (assigned) name</formal-name>
-                  <description>Items to remove, by assigned name</description>
+                  <description>Identify items to remove by matching their assigned name</description>
             </define-flag>
             <define-flag name="class-ref" as-type="NCName">
                   <formal-name>Reference by class</formal-name>
-                  <description>Items to remove, by class. A token match.</description>
+                  <description>Identify items to remove by matching their <code>class</code>.</description>
             </define-flag>
             <define-flag name="id-ref" as-type="NCName">
                   <formal-name>Reference by ID</formal-name>
-                  <description>Items to remove, indicated by their IDs</description>
+                  <description>Identify items to remove indicated by their <code>id</code>.</description>
             </define-flag>
             <define-flag name="item-name" as-type="NCName">
-                  <formal-name>References by item name or generic identifier</formal-name>
-                  <description>Items to remove, by the name of the item's type, or generic identifier, e.g. <code>title</code> or <code>prop</code>
-                  </description>
+                  <formal-name>Item Name Reference</formal-name>
+                  <description>Identify items to remove by the name of the item's information element name, e.g. <code>title</code> or <code>prop</code></description>
+            </define-flag>
+            <define-flag name="ns-ref" as-type="NCName">
+                  <formal-name>Item Namespace Reference</formal-name>
+                  <description>Identify items to remove by the item's <code>ns</code>, which is the namespace associated with a <code>part</code>, or <code>prop</code>.</description>
             </define-flag>
             <remarks>
-                  <p>Use <code>name-ref</code>,                        <code>class-ref</code>,                        <code>id-ref</code> or <code>generic-identifier</code> to indicate class tokens or ID reference, or the formal name, of the component to be removed or erased from a control, when a catalog is resolved. The control affected is indicated by the pointer on the removal's parent (containing) <code>alter</code> element.</p>
+                  <p>Use <code>name-ref</code>, <code>class-ref</code>, <code>id-ref</code> or <code>generic-identifier</code> to indicate class tokens or ID reference, or the formal name, of the component to be removed or erased from a control, when a catalog is resolved. The control affected is indicated by the pointer on the removal's parent (containing) <code>alter</code> element.</p>
                   <p>To change an element, use <code>remove</code> to remove the element, then <code>add</code> to add it back again with changes.</p>
             </remarks>
       </define-assembly>
