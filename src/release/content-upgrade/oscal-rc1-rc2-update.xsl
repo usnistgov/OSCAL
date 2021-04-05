@@ -103,4 +103,6 @@
         </insert>
     </xsl:template>
     
+    <xsl:template match="insert/@param-id"/>
+    
 </xsl:stylesheet>

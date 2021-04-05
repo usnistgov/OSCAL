@@ -29,7 +29,7 @@
                         <title>XYZ Tiny Catalog</title>
                         <last-modified>2020-05-30T14:51:42.355-04:00</last-modified>
                         <version>1.0</version>
-                        <oscal-version>1.0.0-milestone3</oscal-version>
+                        <oscal-version>1.0.0-rc2</oscal-version>
                     </metadata>
                     <group opr:id="160a974c-2aaf-45cd-b504-44bb86bebada#d19e10">
                         <title>Group X of XYZ</title>
@@ -59,7 +59,7 @@
                         <title>XYZ Tiny Catalog</title>
                         <last-modified>2020-05-30T14:51:42.355-04:00</last-modified>
                         <version>1.0</version>
-                        <oscal-version>1.0.0-milestone3</oscal-version>
+                        <oscal-version>1.0.0-rc2</oscal-version>
                     </metadata>
                     <group opr:id="...">
                         <title>Group X of XYZ</title>
@@ -105,7 +105,7 @@
                         <title>XYZ Tiny Catalog</title>
                         <last-modified>2020-05-30T14:51:42.355-04:00</last-modified>
                         <version>1.0</version>
-                        <oscal-version>1.0.0-milestone3</oscal-version>
+                        <oscal-version>1.0.0-rc2</oscal-version>
                     </metadata>
                     <group opr:id="...">
                             <title>Group X of XYZ</title>
@@ -137,7 +137,7 @@
                         <title>XYZ Tiny Catalog</title>
                         <last-modified>2020-05-30T14:51:42.355-04:00</last-modified>
                         <version>1.0</version>
-                        <oscal-version>1.0.0-milestone3</oscal-version>
+                        <oscal-version>1.0.0-rc2</oscal-version>
                     </metadata>
                     <group opr:id="...">
                         <title>Group X of XYZ</title>
@@ -173,7 +173,7 @@
                         <title>XYZ Tiny Catalog</title>
                         <last-modified>2020-05-30T14:51:42.355-04:00</last-modified>
                         <version>1.0</version>
-                        <oscal-version>1.0.0-milestone3</oscal-version>
+                        <oscal-version>1.0.0-rc2</oscal-version>
                     </metadata>
                     <group opr:id="...">
                         <title>Group X of XYZ</title>
@@ -222,7 +222,7 @@
                         <title>XYZ Tiny Catalog</title>
                         <last-modified>2020-05-30T14:51:42.355-04:00</last-modified>
                         <version>1.0</version>
-                        <oscal-version>1.0.0-milestone3</oscal-version>
+                        <oscal-version>1.0.0-rc2</oscal-version>
                     </metadata>
                     <group opr:id="...">
                         <title>Group X of XYZ</title>
@@ -236,7 +236,7 @@
                         <title>XYZ Tiny Catalog</title>
                         <last-modified>2020-05-30T14:51:42.355-04:00</last-modified>
                         <version>1.0</version>
-                        <oscal-version>1.0.0-milestone3</oscal-version>
+                        <oscal-version>1.0.0-rc2</oscal-version>
                     </metadata>
                     <group opr:id="...">
                         <title>Group X of XYZ</title>
@@ -270,7 +270,7 @@
                         <title>ABC Catalog</title>
                         <last-modified>2020-05-30T14:51:38.311-04:00</last-modified>
                         <version>1.0</version>
-                        <oscal-version>1.0.0-milestone3</oscal-version>
+                        <oscal-version>1.0.0-rc2</oscal-version>
                     </metadata>
                     <group opr:id="...">
                         <title>Group A of C</title>
