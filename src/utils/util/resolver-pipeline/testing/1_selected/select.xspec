@@ -2,8 +2,10 @@
 <!DOCTYPE x:description [
 <!ENTITY filedir "file:/C:/Users/wap1/Documents/usnistgov/OSCAL/src/specifications/profile-resolution/profile-resolution-examples/catalogs" >
 ]>
-
-<x:description xmlns="http://csrc.nist.gov/ns/oscal/1.0" xmlns:opr="http://csrc.nist.gov/ns/oscal/profile-resolution" xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../oscal-profile-resolve-select.xsl">
+<x:description xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+    xmlns:opr="http://csrc.nist.gov/ns/oscal/profile-resolution"
+    xmlns:x="http://www.jenitennison.com/xslt/xspec"
+    stylesheet="../../oscal-profile-resolve-select.xsl">
     <x:scenario label="Profile root">
         <x:context>
             <profile/>
@@ -59,9 +61,9 @@
         <x:context>
             <profile>
                 <import href="&filedir;/xyz-tiny_catalog.xml">
-                    <include>
-                        <call control-id="x1"/>
-                    </include>
+                    <include-controls>
+                        <with-id>x1</with-id>
+                    </include-controls>
                 </import>
             </profile>
         </x:context>
@@ -90,10 +92,10 @@
         <x:context>
             <profile>
                 <import href="&filedir;/xyz-tiny_catalog.xml">
-                    <include>
+                    <include-controls>
                         <!-- any x control -->
-                        <match pattern="^x\d+$"/>
-                    </include>
+                        <matching pattern="^x\d+$"/>
+                    </include-controls>
                 </import>
             </profile>
         </x:context>
@@ -124,11 +126,11 @@
         <x:context>
             <profile>
                 <import href="&filedir;/xyz-tiny_catalog.xml">
-                    <exclude>
-                        <call control-id="x1"/>
-                        <call control-id="y1"/>
-                        <call control-id="z1"/>
-                    </exclude>
+                    <exclude-controls>
+                        <with-id>x1</with-id>
+                        <with-id>y1</with-id>
+                        <with-id>z1</with-id>
+                    </exclude-controls>
                 </import>
             </profile>
         </x:context>
@@ -170,14 +172,14 @@
         <x:context>
             <profile>
                 <import href="&filedir;/xyz-tiny_catalog.xml">
-                    <include>
-                        <call control-id="x1"/>
-                    </include>
+                    <include-controls>
+                        <with-id>x1</with-id>
+                    </include-controls>
                 </import>
                 <import href="&filedir;/xyz-tiny_catalog.xml">
-                    <include>
-                        <call control-id="y1"/>
-                    </include>
+                    <include-controls>
+                        <with-id>y1</with-id>
+                    </include-controls>
                 </import>
             </profile>
         </x:context>
@@ -222,10 +224,10 @@
         <x:context>
             <profile>
                 <import href="&filedir;/abc-full_catalog.xml">
-                    <include>
-                        <call control-id="a1"/>
-                        <call control-id="b1"/>
-                    </include>
+                    <include-controls>
+                        <with-id>a1</with-id>
+                        <with-id>b1</with-id>
+                    </include-controls>
                 </import>
             </profile>
         </x:context>
@@ -258,7 +260,7 @@
                                 <label>a1.a parameter</label>
                                 <value>a1.a value</value>
                             </param>
-                            <prop name="place">first</prop>
+                            <prop name="place" value="first"/>
                             <part name="statement" id="a1-stmt">
                                 <p>A1 aaaaa aaaaaaaaaa</p>
                                 <p>Parameter A.a is set: <insert param-id="param-A.a"/>...</p>
@@ -271,7 +273,7 @@
                         <title>Group B of C</title>
                         <control id="b1" opr:id="...">
                             <title>Control B1</title>
-                            <prop name="place">first</prop>
+                            <prop name="place" value="first"/>
                             <part name="statement" id="b1-stmt">
                                 <p>B1 bbbb bbbbbbb.</p>
                             </part>
