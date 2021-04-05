@@ -39,7 +39,7 @@
                             <choice>choice 3</choice>
                         </select>
                     </param>
-                    <prop name="rating">AAA</prop>
+                    <prop value="AAA" name="rating"/>
                 </control>
                 <modify>
                     <set-parameter param-id="a123-1">
@@ -76,7 +76,7 @@
                             <choice>choice 1</choice>
                         </select>
                     </param>
-                    <prop name="rating">AAA</prop>
+                    <prop value="AAA" name="rating"/>
                 </control>
             </catalog>
         </x:expect>
@@ -89,7 +89,7 @@
                 <modify>
                     <alter control-id="a123">
                         <add>
-                            <prop name="due_date">2020-02-20</prop>
+                            <prop value="2020-02-20" name="due_date"/>
                         </add>
                     </alter>
                 </modify>
@@ -99,7 +99,7 @@
             <catalog id="abc">
                 <control id="a123">
                     <title>Control A</title>
-                    <prop name="due_date">2020-02-20</prop>
+                    <prop value="2020-02-20" name="due_date"/>
                 </control>
             </catalog>
         </x:expect>
@@ -109,12 +109,12 @@
             <catalog id="abc">
                 <control id="a123">
                     <title>Control A</title>
-                    <prop name="rating">AAA</prop>
+                    <prop value="AAA" name="rating"/>
                 </control>
                 <modify>
                     <alter control-id="a123">
                         <add position="starting">
-                            <prop name="due_date">2020-02-20</prop>
+                            <prop value="2020-02-20" name="due_date"/>
                         </add>
                     </alter>
                 </modify>
@@ -124,8 +124,8 @@
             <catalog id="abc">
                 <control id="a123">
                     <title>Control A</title>
-                    <prop name="due_date">2020-02-20</prop>
-                    <prop name="rating">AAA</prop>
+                    <prop value="2020-02-20" name="due_date"/>
+                    <prop value="AAA" name="rating"/>
                 </control>
             </catalog>
         </x:expect>
@@ -135,12 +135,12 @@
             <catalog id="abc">
                 <control id="a123">
                     <title>Control A</title>
-                    <prop name="rating">AAA</prop>
+                    <prop value="AAA" name="rating"/>
                 </control>
                 <modify>
                     <alter control-id="a123">
                         <add>
-                            <prop name="due_date">2020-02-20</prop>
+                            <prop value="2020-02-20" name="due_date"/>
                         </add>
                     </alter>
                 </modify>
@@ -150,8 +150,8 @@
             <catalog id="abc">
                 <control id="a123">
                     <title>Control A</title>
-                    <prop name="rating">AAA</prop>
-                    <prop name="due_date">2020-02-20</prop>
+                    <prop value="AAA" name="rating"/>
+                    <prop value="2020-02-20" name="due_date"/>
                 </control>
             </catalog>
         </x:expect>
@@ -162,12 +162,12 @@
             <catalog id="abc">
                 <control id="a123">
                     <title>Control A</title>
-                    <prop name="rating">AAA</prop>
+                    <prop value="AAA" name="rating"/>
                 </control>
                 <modify>
                     <alter control-id="a123">
                         <add position="ending">
-                            <prop name="due_date">2020-02-20</prop>
+                            <prop value="2020-02-20" name="due_date"/>
                             <part name="statement"><p>Statement</p></part>
                         </add>
                     </alter>
@@ -178,13 +178,39 @@
             <catalog id="abc">
                 <control id="a123">
                     <title>Control A</title>
-                    <prop name="rating">AAA</prop>
-                    <prop name="due_date">2020-02-20</prop>
+                    <prop value="AAA" name="rating"/>
+                    <prop value="2020-02-20" name="due_date"/>
                     <part name="statement"><p>Statement</p></part>
                 </control>
             </catalog>
         </x:expect>
     </x:scenario>
+        <x:scenario label="Remove a part and a prop">
+            <x:context>
+                <catalog id="abc">
+                    <control id="a123">
+                        <title>Control A</title>
+                        <prop value="AAA" name="rating"/>
+                        <prop value="hd" name="display"/>
+                        <part name="context"><title>Context to consider</title></part>
+                    </control>
+                    <modify>
+                        <alter control-id="a123">
+                            <remove name-ref="display"/>
+                            <remove name-ref="context"/>
+                        </alter>
+                    </modify>
+                </catalog>
+            </x:context>
+            <x:expect label="Keeping one prop, removing another">
+                <catalog id="abc">
+                    <control id="a123">
+                        <title>Control A</title>
+                        <prop value="AAA" name="rating"/>
+                    </control>
+                </catalog>
+            </x:expect>
+        </x:scenario>
     <x:scenario label="Add a constraint to a parameter">
         <x:context>
             <catalog id="abc">
@@ -193,7 +219,7 @@
                 </param>
                 <control id="a123">
                     <title>Control A</title>
-                    <prop name="rating">AAA</prop>
+                    <prop value="AAA" name="rating"/>
                 </control>
                 <modify>
                     <set-parameter param-id="p1">
@@ -210,7 +236,7 @@
                 </param>
                 <control id="a123">
                     <title>Control A</title>
-                    <prop name="rating">AAA</prop>
+                    <prop value="AAA" name="rating"/>
                 </control>
             </catalog>
         </x:expect>

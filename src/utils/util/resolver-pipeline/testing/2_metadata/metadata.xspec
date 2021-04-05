@@ -31,7 +31,7 @@
                     <last-modified>2019-11-13T12:13:58.517-05:00</last-modified>
                     <version>1.0</version>
                     <oscal-version>1.0-MR2</oscal-version>
-                    <prop name="resolution-timestamp">...</prop>
+                    <prop value="..." name="resolution-timestamp"/>
                     <link href="urn:UNKNOWN"
                         rel="resolution-source"/>
                 </metadata>
@@ -65,7 +65,7 @@
                     <last-modified>2019-11-13T12:41:07.061-05:00</last-modified>
                     <version>1.0</version>
                     <oscal-version>1.0-MR2</oscal-version>
-                    <prop name="resolution-timestamp">...</prop>
+                    <prop value="..." name="resolution-timestamp"/>
                     <link href="urn:UNKNOWN"
                         rel="resolution-source"/>
                 </metadata>
@@ -105,7 +105,7 @@
                     <last-modified>2019-11-13T12:41:07.061-05:00</last-modified>
                     <version>1.0</version>
                     <oscal-version>1.0-MR2</oscal-version>
-                    <prop name="resolution-timestamp">...</prop>
+                    <prop value="..." name="resolution-timestamp"/>
                     <link href="urn:UNKNOWN" rel="resolution-source"/>
                     <party>
                         <org>
@@ -150,7 +150,7 @@
                     <last-modified>...</last-modified>
                     <version>1.0</version>
                     <oscal-version>1.0-MR2</oscal-version>
-                    <prop name="resolution-timestamp">...</prop>
+                    <prop value="..." name="resolution-timestamp"/>
                     <link href="urn:UNKNOWN"
                         rel="resolution-source"/>
                     <link href="#internal"><text>Internal link</text></link>

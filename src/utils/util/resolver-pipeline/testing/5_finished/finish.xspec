@@ -47,7 +47,7 @@
                 <control id="control_A">
                     <title>Control A</title>
                     <part>
-                        <p><insert param-id="loose"/> goes here.</p></part>
+                        <p><insert type="param" id-ref="loose"/> goes here.</p></part>
                 </control>
             </catalog>
         </x:context>
@@ -62,7 +62,7 @@
                 <control id="control_A">
                     <title>Control A</title>
                     <part>
-                        <p><insert param-id="loose"/> goes here.</p>
+                        <p><insert type="param" id-ref="loose"/> goes here.</p>
                     </part>
                 </control>
             </catalog>
