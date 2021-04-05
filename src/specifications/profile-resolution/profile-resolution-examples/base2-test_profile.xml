@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Modified by conversion XSLT 2020-06-01T15:56:37.706-04:00 - UUIDs refreshed -->
 <?xml-model href="../example-checkup.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
-<!-- Modified by conversion XSLT 2020-05-30T14:39:37.3-04:00 - Milestone 2 OSCAL becomes Milestone 3 OSCAL  - -->
+<!-- Modified by conversion XSLT 2021-04-05T11:22:08.131-04:00 - RC2 OSCAL becomes RC3 OSCAL -->
 <profile xmlns="http://csrc.nist.gov/ns/oscal/1.0"
-         uuid="36ad7a43-3b43-482e-8472-554b79c90567"><!-- Like base-test_profile, except references the catalog in a resource.   -->
+         uuid="427f8c54-c3af-4ca3-a92c-f6abaa015ba5"><!-- Like base-test_profile, except references the catalog in a resource.   -->
    <metadata>
       <title>Test Profile</title>
       <last-modified>2020-05-30T14:39:37.3-04:00</last-modified>
@@ -11,12 +10,12 @@
       <oscal-version>1.0.0-rc1</oscal-version>
    </metadata>
    <import href="#0050231f-4fd0-43d6-8fa0-431367cd83e1">
-      <include>
-         <call control-id="a1"/>
-         <call control-id="b1"/>
-         <call control-id="c1"/>
-         <call control-id="c3"/>
-      </include>
+      <include-controls>
+         <with-id>a1</with-id>
+         <with-id>b1</with-id>
+         <with-id>c1</with-id>
+         <with-id>c3</with-id>
+      </include-controls>
    </import>
    <back-matter>
       <resource uuid="0050231f-4fd0-43d6-8fa0-431367cd83e1">
