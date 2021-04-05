@@ -20,19 +20,11 @@
     
     <!-- Grabbing the old UUID or the new UUID if there is no old one. -->
     <xsl:variable name="this-system-component-uuid" select="(/*/system-implementation/component[(@type|@component-type='this-system')]/@uuid,$new-this-system-component-uuid)[1]"/>
+
+    <xsl:template match="/comment()"/>
     
-<!-- 
-In {top-level-element}/metadata:
-x renamed "revision-history" to "revisions"
-x renamed "doc-id" to "document-id"
-
-In {top-level-element}/metadata/document-id:
-x renamed "type" to "scheme"
-a doc-id/@type 'doi' to document-id/@scheme 'https://www.doi.org/'
-
-    -->
-
     <xsl:template match="/*">
+        <xsl:comment expand-text="true"> Modified by conversion XSLT { current-dateTime() } - RC2 OSCAL becomes RC3 OSCAL </xsl:comment>
         <xsl:copy>
             <xsl:apply-templates select="@* except @id"/>
             <xsl:attribute name="uuid" select="$new-document-uuid"/>
@@ -46,6 +38,61 @@ a doc-id/@type 'doi' to document-id/@scheme 'https://www.doi.org/'
             <xsl:apply-templates/>
         </objectives-and-methods>
     </xsl:template>
-    
    
+    <xsl:template match="prop">
+        <xsl:copy>
+            <xsl:apply-templates select="@*"/>
+            <xsl:attribute name="value">
+                <xsl:apply-templates/>
+            </xsl:attribute>
+        </xsl:copy>
+    </xsl:template>
+    
+    <xsl:template match="annotation">
+        <prop>
+            <xsl:apply-templates select="@*"/>
+            <xsl:apply-templates/>
+        </prop>
+    </xsl:template>
+    
+    <xsl:template match="import/include[exists(all)]" priority="10">
+        <xsl:apply-templates/>
+    </xsl:template>
+    
+    <xsl:template match="import/include">
+        <include-controls>
+            <!-- any becomes every -->
+            <xsl:copy select="child::*/@with-child-controls[.='yes']"/>
+            <xsl:apply-templates/>
+        </include-controls>
+    </xsl:template>
+    
+    <xsl:template match="import/exclude">
+        <exclude-controls>
+            <!-- any becomes every -->
+            <xsl:copy select="child::*/@with-child-controls[.='yes']"/>
+            <xsl:apply-templates/>
+        </exclude-controls>
+    </xsl:template>
+    
+    <xsl:template match="import/include/call | import/exclude/call">
+        <with-id>
+            <xsl:apply-templates select="@*"/>
+            <xsl:text expand-text="true">{ @control-id }</xsl:text>
+        </with-id>
+    </xsl:template>
+
+    <xsl:template match="import/include/call/@control-id | import/exclude/call/@control-id"/>
+    
+    <xsl:template match="import/include/all/@with-child-controls | import/include/call/@with-child-controls"/>
+    
+    <xsl:template match="import/exclude/all/@with-child-controls | import/exclude/call/@with-child-controls"/>
+    
+    <xsl:template match="import/include/match | import/exclude/match">
+        <matching>
+            <xsl:apply-templates select="@*"/>
+            <!--<xsl:text expand-text="true">{ @pattern }</xsl:text>-->
+        </matching>
+    </xsl:template>
+    
 </xsl:stylesheet>
