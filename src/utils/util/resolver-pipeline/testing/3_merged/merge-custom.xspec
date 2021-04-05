@@ -95,7 +95,7 @@
                         <title>Group X of XYZ</title>
                         <control id="x1" opr:id="xyz-tiny_catalog#x1">
                             <title>Control X1</title>
-                            <prop name="mod">modified property</prop>
+                            <prop value="modified property" name="mod"/>
                         </control>
                         <control id="x2" opr:id="xyz-tiny_catalog#x2"><title>Control X2</title></control>
                     </group>
@@ -127,7 +127,7 @@
                 </control>
                 <control id="x1">
                     <title>Control X1</title>
-                    <prop name="mod">modified property</prop>
+                    <prop value="modified property" name="mod"/>
                 </control>
                 <control id="x2"><title>Control X2</title></control>
                 <control id="y1"><title>Control Y1</title></control>

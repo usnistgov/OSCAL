@@ -14,6 +14,8 @@
     <xsl:key name="addition-by-id-ref"        match="add"           use="@id-ref"/>
     <xsl:key name="parameter-setting-for-id"  match="set-parameter" use="@param-id"/>
     
+    <xsl:variable name="oscal-ns" select="'http://csrc.nist.gov/ns/oscal'"/>
+    
     <xsl:template match="node() | @*">
         <xsl:copy>
             <xsl:apply-templates select="node() | @*"/>
@@ -118,14 +120,19 @@
         
         <xsl:sequence select="some $r in $removals satisfies oscal:remove-match($who,$r)"/>
     </xsl:function>  
+
+    <!-- <remove item-name="" id-ref="" class-ref="" name-ref="" ns-ref=""/>-->
     
     <xsl:function name="oscal:remove-match">
         <xsl:param name="who" as="node()"/>
         <xsl:param name="removal" as="element(remove)"/>
         <xsl:variable name="item-okay"  select="empty($removal/@item-name) or ($removal/@item-name = local-name($who))"/>
         <xsl:variable name="id-okay"    select="empty($removal/@id-ref)    or ($removal/@id-ref = $who/@id)"/>
+        <xsl:variable name="name-okay"  select="empty($removal/@name-ref)  or ($removal/@name-ref/normalize-space(.) = $who/@name/normalize-space(.))"/>
+        <xsl:variable name="ns-okay"    select="empty($removal/@ns[not(normalize-space(.) = $oscal-ns)])
+            or ($removal/@ns-ref/normalize-space(.) = $who/@ns/normalize-space(.))"/>
         <xsl:variable name="class-okay" select="empty($removal/@class-ref) or ($removal/@class-ref = oscal:classes($who))"/>
-        <xsl:sequence select="exists($removal/(@item-name|@id-ref|@class-ref)) and ($item-okay and $id-okay and $class-okay)"/>
+        <xsl:sequence select="exists($removal/(@item-name|@id-ref|@name-ref|@ns-ref|@class-ref)) and ($item-okay and $id-okay and $name-okay and $ns-okay and $class-okay)"/>
     </xsl:function>
     
 </xsl:stylesheet>

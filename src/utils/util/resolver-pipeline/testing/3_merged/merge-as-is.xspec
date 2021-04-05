@@ -153,7 +153,7 @@
                 <selection id="xyz-tiny_catalog" opr:id="xyz-tiny_catalog#xyz-tiny_catalog">
                     <group id="x" opr:id="xyz-tiny_catalog#x">
                         <title>Group X of XYZ</title>
-                        <prop name="status">special</prop>
+                        <prop value="special" name="status"/>
                         <param id="param-x">
                             <label>Param X</label>
                             <constraint>no control</constraint>
@@ -173,7 +173,7 @@
                 <selection id="xyz-tiny_catalog" opr:id="xyz-tiny_catalog#xyz-tiny_catalog">
                     <group id="x" opr:id="xyz-tiny_catalog#x">
                         <title>Group X of XYZ</title>
-                        <prop name="status">special</prop>
+                        <prop value="special" name="status"/>
                         <param id="param-x">
                             <select>
                                 <choice>some choice</choice>
@@ -207,8 +207,8 @@
             <catalog>
                 <group id="x">
                     <title>Group X of XYZ</title>
-                    <prop name="status">special</prop>
-                    <prop name="status">special</prop>
+                    <prop value="special" name="status"/>
+                    <prop value="special" name="status"/>
                     <param id="param-x">
                         <label>Param X</label>
                         <constraint>no control</constraint>
