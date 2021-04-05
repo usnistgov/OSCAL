@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="../../example-checkup.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
-<!-- Modified by conversion XSLT 2021-04-05T11:12:31.217-04:00 - RC2 OSCAL becomes RC3 OSCAL -->
+<!-- Modified by conversion XSLT 2021-04-05T14:13:38.826-04:00 - RC2 OSCAL becomes RC3 OSCAL -->
 <catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         uuid="7c53485d-1c7d-4383-b3d5-a783bb82720b"
+         uuid="6498eb6e-8653-4470-8b97-54054d3ba886"
          xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 ../../../../../xml/schema/oscal_catalog_schema.xsd">
    <metadata>
       <title>ABC Catalog</title>
@@ -30,28 +30,28 @@
             <label>a1.a parameter</label>
             <value>a1.a value</value>
          </param>
-         <prop name="place" value=""/>
+         <prop name="place" value="1st"/>
          <part name="statement" id="a1-stmt">
             <p>A1 aaaaa aaaaaaaaaa</p>
-            <p>Parameter A.a is set: <insert param-id="param-A.a"/>
+            <p>Parameter A.a is set: <insert type="param" id-ref="param-A.a"/>
             </p>
-            <p>Parameter a1.a is set: <insert param-id="param-a1.a"/>
+            <p>Parameter a1.a is set: <insert type="param" id-ref="param-a1.a"/>
             </p>
             <p>Also, we <a href="#citation">refer to a citation</a>.</p>
          </part>
       </control>
       <control id="a2">
          <title>Control A2</title>
-         <prop name="place" value=""/>
+         <prop name="place" value="2nd"/>
          <part name="statement" id="a2-stmt">
             <p>A2 aaa aaaaaaaaaa aaaaaaaaaaaaa</p>
-            <p>Parameter A.b is set: <insert param-id="param-A.b"/>
+            <p>Parameter A.b is set: <insert type="param" id-ref="param-A.b"/>
             </p>
          </part>
       </control>
       <control id="a3">
          <title>Control A3</title>
-         <prop name="place" value=""/>
+         <prop name="place" value="3rd"/>
          <part name="statement" id="a3-stmt">
             <p>A3 aaaaa aaaaaaaaaa</p>
          </part>
@@ -61,21 +61,21 @@
       <title>Group B of C</title>
       <control id="b1">
          <title>Control B1</title>
-         <prop name="place" value=""/>
+         <prop name="place" value="4th"/>
          <part name="statement" id="b1-stmt">
             <p>B1 bbbb bbbbbbb.</p>
          </part>
       </control>
       <control id="b2">
          <title>Control B2</title>
-         <prop name="place" value=""/>
+         <prop name="place" value="5th"/>
          <part name="statement" id="b2-stmt">
             <p>B2 bbb bbbbbbbbbbb bbbbbbbbbbbb.</p>
          </part>
       </control>
       <control id="b3">
          <title>Control B3</title>
-         <prop name="place" value=""/>
+         <prop name="place" value="6th"/>
          <part name="statement" id="b3-stmt">
             <p>B3 bbbb bbbbbbb bbbb.</p>
          </part>
@@ -85,7 +85,7 @@
       <title>Group C of C</title>
       <control id="c1">
          <title>Control C1</title>
-         <prop name="place" value=""/>
+         <prop name="place" value="7th"/>
          <part name="statement" id="c1-stmt">
             <p>C1 ccccc ccc ccccccccccccccccc.</p>
             <p>We cite a document with an anchor: <a href="#citation">... citation ...</a>.</p>
@@ -93,7 +93,7 @@
       </control>
       <control id="c2">
          <title>Control C2</title>
-         <prop name="place" value=""/>
+         <prop name="place" value="8th"/>
          <link rel="citation" href="#ef4c1cf0-a3cc-4354-bdd5-690466f61d4f"/>
          <part name="statement" id="c2-stmt">
             <p>C2 cccccccc ccccccccccccccccc.</p>
@@ -101,19 +101,19 @@
       </control>
       <control id="c3">
          <title>Control C3</title>
-         <prop name="place" value=""/>
+         <prop name="place" value="9th"/>
          <part name="statement" id="c3-stmt">
             <p>C3 ccccc cccccccccccccc.</p>
          </part>
          <control id="c3.a">
             <title>Control C3-A</title>
-            <prop name="place" value=""/>
+            <prop name="place" value="10th"/>
             <part name="statement" id="c3-stmt">
                <p>C3 A ccccc cccccccccccccc.</p>
             </part>
             <control id="c3.a-1">
                <title>Control C3-A-1</title>
-               <prop name="place" value=""/>
+               <prop name="place" value="11th"/>
                <part name="statement" id="c3-stmt">
                   <p>C3 A-1 ccccc cccccccccccccc.</p>
                </part>
