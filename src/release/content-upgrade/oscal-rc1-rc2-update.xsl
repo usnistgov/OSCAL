@@ -41,10 +41,10 @@
    
     <xsl:template match="prop">
         <xsl:copy>
-            <xsl:apply-templates select="@*"/>
             <xsl:attribute name="value">
                 <xsl:apply-templates/>
             </xsl:attribute>
+            <xsl:apply-templates select="@*"/>
         </xsl:copy>
     </xsl:template>
     
@@ -93,6 +93,14 @@
             <xsl:apply-templates select="@*"/>
             <!--<xsl:text expand-text="true">{ @pattern }</xsl:text>-->
         </matching>
+    </xsl:template>
+    
+    <!-- assumption is made that all inserts are type param given rc1 @param-id -->
+    <xsl:template match="insert">
+        <insert type="param" id-ref="{ @param-id }">
+            <!-- so as not to mess up when already updated -->
+            <xsl:apply-templates select="@*"/>
+        </insert>
     </xsl:template>
     
 </xsl:stylesheet>
