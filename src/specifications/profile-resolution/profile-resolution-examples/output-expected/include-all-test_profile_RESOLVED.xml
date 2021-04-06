@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0"
-         uuid="27050b88-a06a-45e8-93fb-ba4d141d7bf7">
+         uuid="c222a47f-0003-4e31-b5cd-316889392d38">
    <metadata>
       <title>Test Profile</title>
-      <last-modified>2020-05-30T14:39:44.948-04:00</last-modified>
+      <last-modified>2021-04-06T15:00:51.847-04:00</last-modified>
       <version>1.0</version>
       <oscal-version>1.0.0-rc2</oscal-version>
-      <prop name="resolution-timestamp">2021-04-06T13:56:45.384-04:00</prop>
       <link rel="resolution-source" href="include-all-test_profile.xml"/>
    </metadata>
    <control id="a1">
