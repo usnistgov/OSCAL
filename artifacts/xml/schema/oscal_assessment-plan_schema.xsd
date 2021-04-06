@@ -1437,11 +1437,11 @@
             <xs:complexType mixed="true">
                <xs:annotation>
                   <xs:appinfo>
-                     <m:formal-name>title field</m:formal-name>
+                     <m:formal-name>Protocol Title</m:formal-name>
                      <m:description>A human readable name for the protocol (e.g., Transport Layer Security).</m:description>
                   </xs:appinfo>
                   <xs:documentation>
-                     <b>title field</b>: A human readable name for the protocol (e.g., Transport Layer Security).</xs:documentation>
+                     <b>Protocol Title</b>: A human readable name for the protocol (e.g., Transport Layer Security).</xs:documentation>
                </xs:annotation>
                <xs:complexContent>
                   <xs:extension base="oscal-ap:markupLineType"/>
@@ -1624,11 +1624,11 @@
             <xs:complexType mixed="true">
                <xs:annotation>
                   <xs:appinfo>
-                     <m:formal-name>title field</m:formal-name>
+                     <m:formal-name>Privilege Title</m:formal-name>
                      <m:description>A human readable name for the privilege.</m:description>
                   </xs:appinfo>
                   <xs:documentation>
-                     <b>title field</b>: A human readable name for the privilege.</xs:documentation>
+                     <b>Privilege Title</b>: A human readable name for the privilege.</xs:documentation>
                </xs:annotation>
                <xs:complexContent>
                   <xs:extension base="oscal-ap:markupLineType"/>
@@ -2473,11 +2473,11 @@
                   <xs:element name="description" minOccurs="0" maxOccurs="1">
                      <xs:annotation>
                         <xs:appinfo>
-                           <m:formal-name>Control Ojectives Description</m:formal-name>
+                           <m:formal-name>Control Objectives Description</m:formal-name>
                            <m:description>A human-readable description of this collection of control objectives.</m:description>
                         </xs:appinfo>
                         <xs:documentation>
-                           <b>Control Ojectives Description</b>: A human-readable description of this collection of control objectives.</xs:documentation>
+                           <b>Control Objectives Description</b>: A human-readable description of this collection of control objectives.</xs:documentation>
                      </xs:annotation>
                      <xs:complexType>
                         <xs:complexContent>

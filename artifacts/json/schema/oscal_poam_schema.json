@@ -725,7 +725,7 @@
             "description" : "The common name of the protocol, which should be the appropriate \"service name\" from the IANA Service Name and Transport Protocol Port Number Registry.",
             "type" : "string" },
           "title" : 
-          { "title" : "title field",
+          { "title" : "Protocol Title",
             "description" : "A human readable name for the protocol (e.g., Transport Layer Security).",
             "type" : "string" },
           "port-ranges" : 

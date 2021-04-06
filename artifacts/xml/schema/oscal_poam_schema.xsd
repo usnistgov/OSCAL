@@ -1340,11 +1340,11 @@
             <xs:complexType mixed="true">
                <xs:annotation>
                   <xs:appinfo>
-                     <m:formal-name>title field</m:formal-name>
+                     <m:formal-name>Protocol Title</m:formal-name>
                      <m:description>A human readable name for the protocol (e.g., Transport Layer Security).</m:description>
                   </xs:appinfo>
                   <xs:documentation>
-                     <b>title field</b>: A human readable name for the protocol (e.g., Transport Layer Security).</xs:documentation>
+                     <b>Protocol Title</b>: A human readable name for the protocol (e.g., Transport Layer Security).</xs:documentation>
                </xs:annotation>
                <xs:complexContent>
                   <xs:extension base="oscal-poam:markupLineType"/>

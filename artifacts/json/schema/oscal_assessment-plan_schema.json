@@ -779,7 +779,7 @@
             "description" : "The common name of the protocol, which should be the appropriate \"service name\" from the IANA Service Name and Transport Protocol Port Number Registry.",
             "type" : "string" },
           "title" : 
-          { "title" : "title field",
+          { "title" : "Protocol Title",
             "description" : "A human readable name for the protocol (e.g., Transport Layer Security).",
             "type" : "string" },
           "port-ranges" : 
@@ -864,7 +864,7 @@
         "type" : "object",
         "properties" : 
         { "title" : 
-          { "title" : "title field",
+          { "title" : "Privilege Title",
             "description" : "A human readable name for the privilege.",
             "type" : "string" },
           "description" : 
@@ -1370,7 +1370,7 @@
               "type" : "object",
               "properties" : 
               { "description" : 
-                { "title" : "Control Ojectives Description",
+                { "title" : "Control Objectives Description",
                   "description" : "A human-readable description of this collection of control objectives.",
                   "type" : "string" },
                 "props" : 

@@ -2438,7 +2438,7 @@
       <field name="title"
              gi="title"
              as-type="markup-line"
-             formal-name="title field"
+             formal-name="Protocol Title"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
@@ -2645,7 +2645,7 @@
       <field name="title"
              gi="title"
              as-type="markup-line"
-             formal-name="title field"
+             formal-name="Privilege Title"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
@@ -3123,7 +3123,7 @@
       <field name="description"
              gi="description"
              as-type="markup-multiline"
-             formal-name="Control Ojectives Description"
+             formal-name="Control Objectives Description"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
@@ -3419,7 +3419,7 @@
       <field name="description"
              gi="description"
              as-type="markup-multiline"
-             formal-name="Control Ojectives Description"
+             formal-name="Control Objectives Description"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
@@ -3768,7 +3768,7 @@
       <field name="description"
              gi="description"
              as-type="markup-multiline"
-             formal-name="Control Ojectives Description"
+             formal-name="Control Objectives Description"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
@@ -4002,7 +4002,7 @@
       <field name="title"
              gi="title"
              as-type="markup-line"
-             formal-name="title field"
+             formal-name="Protocol Title"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
