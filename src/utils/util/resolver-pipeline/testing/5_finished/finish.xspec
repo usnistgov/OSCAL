@@ -150,9 +150,9 @@
                 <control id="a123">
                     <title>Control A</title>
                     <link href="linkme.pdf"><text>Link Me</text></link>
-                    <prop name="rating">AAA</prop>
+                    <prop name="rating" value="AAA"/>
                     <part name="statement"><p>Statement</p></part>
-                    <prop name="due_date">2020-02-20</prop>
+                    <prop name="due_date" value="2020-02-20"/>
                 </control>
             </catalog>
         </x:context>
@@ -160,8 +160,8 @@
             <catalog id="abc">
                 <control id="a123">
                     <title>Control A</title>
-                    <prop name="rating">AAA</prop>
-                    <prop name="due_date">2020-02-20</prop>
+                    <prop name="rating" value="AAA"/>
+                    <prop name="due_date" value="2020-02-20"></prop>
                     <link href="linkme.pdf"><text>Link Me</text></link>
                     <part name="statement"><p>Statement</p></part>
                 </control>
