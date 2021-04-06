@@ -129,10 +129,12 @@
         <xsl:variable name="item-okay"  select="empty($removal/@item-name) or ($removal/@item-name = local-name($who))"/>
         <xsl:variable name="id-okay"    select="empty($removal/@id-ref)    or ($removal/@id-ref = $who/@id)"/>
         <xsl:variable name="name-okay"  select="empty($removal/@name-ref)  or ($removal/@name-ref/normalize-space(.) = $who/@name/normalize-space(.))"/>
-        <xsl:variable name="ns-okay"    select="empty($removal/@ns[not(normalize-space(.) = $oscal-ns)])
+        <xsl:variable name="ns-okay"    select="empty($removal/@ns-ref[not(normalize-space(.) = $oscal-ns)])
             or ($removal/@ns-ref/normalize-space(.) = $who/@ns/normalize-space(.))"/>
+        <xsl:variable name="oscal-ns-okay"    select="empty($removal/@ns-ref[normalize-space(.) = $oscal-ns])
+            or (($who/@ns/normalize-space(.) = $oscal-ns) or empty($who/@ns))"/>
         <xsl:variable name="class-okay" select="empty($removal/@class-ref) or ($removal/@class-ref = oscal:classes($who))"/>
-        <xsl:sequence select="exists($removal/(@item-name|@id-ref|@name-ref|@ns-ref|@class-ref)) and ($item-okay and $id-okay and $name-okay and $ns-okay and $class-okay)"/>
+        <xsl:sequence select="exists($removal/(@item-name|@id-ref|@name-ref|@ns-ref|@class-ref)) and ($item-okay and $id-okay and $name-okay and $ns-okay and $oscal-ns-okay and $class-okay)"/>
     </xsl:function>
     
 </xsl:stylesheet>

@@ -14,7 +14,7 @@
     
     <xsl:strip-space elements="catalog group control param guideline select part
         metadata back-matter annotation party person org rlink address resource role responsible-party citation
-        profile import merge custom modify include exclude set alter add"/>
+        profile import merge custom modify include-controls exclude-controls set alter add"/>
     
     <!--<xsl:param name="profile-origin-uri"   required="yes" as="xs:anyURI"/>-->
     <xsl:param name="uri-stack-in" select="()" as="xs:anyURI*"/>
@@ -50,8 +50,8 @@
      not, we execute the Ourobouros function, which calls the parent wrapper RESOLVE pipeline
      to return a catalog. -->
     <xsl:template match="profile" mode="o:select">
-        <!-- $uri-stack contains an import call stack trace from the point of entry -->
         <xsl:param name="uri-stack" tunnel="yes" select="()"/>
+        <!-- $uri-stack contains an import call stack trace from the point of entry -->
         <xsl:variable name="uri-here" select="base-uri(.)"/>
         <xsl:if test="not($uri-here = $uri-stack)">
           <!--<xsl:sequence select="o:resolve-profile(.,$uri-stack)"/>-->
@@ -93,10 +93,17 @@
     </xsl:template>
     
     <xsl:template match="resource" mode="o:import">
-        <xsl:apply-templates mode="o:select" select="o:resource-or-warning(rlink/@href)"/>
+        <xsl:variable name="linked-xml" select="child::rlink[ends-with(@href,'.xml') or matches(@media-type,'xml')][1]"/>
+        <xsl:apply-templates mode="o:select" select="o:resource-or-warning($linked-xml/@href)"/>
     </xsl:template>
     
     <xsl:template priority="1" mode="o:select" match="import">
+        
+<!-- OSCAL issue        -->
+        <xsl:variable name="linked-resource" select="key('cross-reference',@href)"/>
+        <xsl:apply-templates select="$linked-resource" mode="o:import">
+            <xsl:with-param name="import-instruction" select="." tunnel="yes"/>
+        </xsl:apply-templates>
         <xsl:apply-templates mode="#current" select="o:resource-or-warning(@href)">
             <xsl:with-param name="import-instruction" select="." tunnel="yes"/>
         </xsl:apply-templates>
@@ -168,9 +175,9 @@
             <xsl:sequence select="some $c in ($importing/include-controls[o:calls-children(.)]/with-id)
                 satisfies ($c = $candidate/parent::control/@id)"/>
             <xsl:sequence select="some $m in ($importing/include-controls/matching)
-                                  satisfies (matches($candidate/@id,$m/@pattern))"/>
+                                  satisfies (matches($candidate/@id,$m/@pattern/o:glob-as-regex(string(.)) ))"/>
             <xsl:sequence select="some $m in ($importing/include/matching[o:calls-children(.)])
-                satisfies (matches($candidate/parent::control/@id,$m/@pattern))"/>
+                satisfies (matches($candidate/parent::control/@id,$m/@pattern/o:glob-as-regex(string(.))))"/>
         </xsl:variable>
         <xsl:variable name="exclude-reasons" as="xs:boolean+">
             <xsl:sequence select="exists($candidate/parent::control) and $importing/include-all/@with-child-controls='no'"/>
@@ -178,9 +185,9 @@
             <xsl:sequence select="some $c in ($importing/exclude-controls[o:calls-children(.)]/with-id)
                 satisfies ($c = $candidate/parent::control/@id)"/>
             <xsl:sequence select="some $m in ($importing/exclude-controls/matching)
-                satisfies (matches($candidate/@id,$m/@pattern))"/>
+                satisfies (matches($candidate/@id,$m/@pattern/o:glob-as-regex(string(.))))"/>
             <xsl:sequence select="some $m in ($importing/exclude-controls[o:calls-children(.)]/matcjomg)
-                satisfies (matches($candidate/parent::control/@id,$m/@pattern))"/>
+                satisfies (matches($candidate/parent::control/@id,$m/@pattern/o:glob-as-regex(string(.))))"/>
         </xsl:variable>
         <!-- predicate [.] filters reasons as booleans -->
         <xsl:sequence select="exists($include-reasons[.]) and empty($exclude-reasons[.])"/>
@@ -202,15 +209,27 @@
             <xsl:otherwise>
                 <xsl:document>
                     <opr:WARNING>
-                        <xsl:text>Document not found: '</xsl:text>
+                        <xsl:text>Document not acquired: '</xsl:text>
                         <xsl:value-of select="$href"/>
                         <xsl:text>' resolved as '</xsl:text>
                         <xsl:value-of select="$resolved-href"/>
-                        <xsl:text>'</xsl:text>
+                        <xsl:text>' (as OSCAL XML)</xsl:text>
                     </opr:WARNING>
                 </xsl:document>
             </xsl:otherwise>
         </xsl:choose>
+    </xsl:function>
+    
+    <!-- XSD regex metacharacters except '*' and '?' https://www.w3.org/TR/xmlschema11-2/#regex-char-metachar -->
+    <xsl:variable name="metachars" select="('.', '\', '+', '{', '}', '(', ')', '|', '[', ']')"/>
+    <xsl:variable name="metachar-match" select="'(' || string-join( ($metachars ! ('\' || .)),'|') || ')'"/>
+        
+    <xsl:function name="o:glob-as-regex">
+        <xsl:param name="glob" as="xs:string"/>
+        <xsl:variable name="escaped" select="replace($glob,$metachar-match,'\\$1')"/>
+        <!-- replace ? with . and * with .* -->
+        <xsl:sequence select="'^' || ($escaped => replace('\?','.') => replace('\*','.*') ) || '$'"/>
+        <!--<xsl:sequence select="$escaped"/>-->
     </xsl:function>
     
     <xsl:function name="o:resolve-profile">
