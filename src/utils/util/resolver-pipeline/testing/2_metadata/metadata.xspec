@@ -19,7 +19,7 @@
                     <title>Small Profile for Testing</title>
                     <last-modified>2019-11-13T12:13:58.517-05:00</last-modified>
                     <version>1.0</version>
-                    <oscal-version>1.0-MR2</oscal-version>
+                    <oscal-version>1.0-rc2</oscal-version>
                 </metadata>
             </profile>
         </x:context>
@@ -28,12 +28,10 @@
             <catalog uuid="...">
                 <metadata>
                     <title>Small Profile for Testing</title>
-                    <last-modified>2019-11-13T12:13:58.517-05:00</last-modified>
+                    <last-modified>...</last-modified>
                     <version>1.0</version>
-                    <oscal-version>1.0-MR2</oscal-version>
-                    <prop value="..." name="resolution-timestamp"/>
-                    <link href="urn:UNKNOWN"
-                        rel="resolution-source"/>
+                    <oscal-version>1.0-rc2</oscal-version>
+                    <link href="urn:UNKNOWN" rel="resolution-source"/>
                 </metadata>
             </catalog>
         </x:expect>
@@ -45,14 +43,14 @@
                     <title>Pathological Profile</title>
                     <last-modified>2019-11-13T12:41:07.061-05:00</last-modified>
                     <version>1.0</version>
-                    <oscal-version>1.0-MR2</oscal-version>
+                    <oscal-version>1.0-rc2</oscal-version>
                 </metadata>
                 <selection uuid="abc-full_catalog">
                     <metadata>
                         <title>ABC Catalog</title>
                         <last-modified>2019-11-01T10:16:22.939-04:00</last-modified>
                         <version>1.0</version>
-                        <oscal-version>1.0-MR2</oscal-version>
+                        <oscal-version>1.0-rc2</oscal-version>
                     </metadata>
                 </selection>
             </profile>
@@ -62,10 +60,9 @@
             <catalog uuid="...">
                 <metadata>
                     <title>Pathological Profile</title>
-                    <last-modified>2019-11-13T12:41:07.061-05:00</last-modified>
+                    <last-modified>...</last-modified>
                     <version>1.0</version>
-                    <oscal-version>1.0-MR2</oscal-version>
-                    <prop value="..." name="resolution-timestamp"/>
+                    <oscal-version>1.0-rc2</oscal-version>
                     <link href="urn:UNKNOWN"
                         rel="resolution-source"/>
                 </metadata>
@@ -80,7 +77,7 @@
                     <title>Pathological Profile</title>
                     <last-modified>2019-11-13T12:41:07.061-05:00</last-modified>
                     <version>1.0</version>
-                    <oscal-version>1.0-MR2</oscal-version>
+                    <oscal-version>1.0-rc2</oscal-version>
                     <party>
                         <org>
                             <org-name>Standing Committee</org-name>
@@ -92,7 +89,7 @@
                         <title>ABC Catalog</title>
                         <last-modified>2019-11-01T10:16:22.939-04:00</last-modified>
                         <version>1.0</version>
-                        <oscal-version>1.0-MR2</oscal-version>
+                        <oscal-version>1.0-rc2</oscal-version>
                     </metadata>
                 </selection>
             </profile>
@@ -102,10 +99,9 @@
             <catalog uuid="...">
                 <metadata>
                     <title>Pathological Profile</title>
-                    <last-modified>2019-11-13T12:41:07.061-05:00</last-modified>
+                    <last-modified>...</last-modified>
                     <version>1.0</version>
-                    <oscal-version>1.0-MR2</oscal-version>
-                    <prop value="..." name="resolution-timestamp"/>
+                    <oscal-version>1.0-rc2</oscal-version>
                     <link href="urn:UNKNOWN" rel="resolution-source"/>
                     <party>
                         <org>
@@ -124,7 +120,7 @@
                     <title>Pathological Profile</title>
                     <last-modified>2019-11-13T12:41:07.061-05:00</last-modified>
                     <version>1.0</version>
-                    <oscal-version>1.0-MR2</oscal-version>
+                    <oscal-version>1.0-rc2</oscal-version>
                     <link href="#internal"><text>Internal link</text></link>
                     <party>
                         <org>
@@ -137,7 +133,7 @@
                         <title>ABC Catalog</title>
                         <last-modified>2019-11-01T10:16:22.939-04:00</last-modified>
                         <version>1.0</version>
-                        <oscal-version>1.0-MR2</oscal-version>
+                        <oscal-version>1.0-rc2</oscal-version>
                     </metadata>
                 </selection>
             </profile>
@@ -149,8 +145,7 @@
                     <title>Pathological Profile</title>
                     <last-modified>...</last-modified>
                     <version>1.0</version>
-                    <oscal-version>1.0-MR2</oscal-version>
-                    <prop value="..." name="resolution-timestamp"/>
+                    <oscal-version>1.0-rc2</oscal-version>
                     <link href="urn:UNKNOWN"
                         rel="resolution-source"/>
                     <link href="#internal"><text>Internal link</text></link>
