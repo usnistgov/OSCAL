@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<x:description
-    xmlns="http://csrc.nist.gov/ns/oscal/1.0" xmlns:x="http://www.jenitennison.com/xslt/xspec"
+<x:description xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+    xmlns:x="http://www.jenitennison.com/xslt/xspec"
     stylesheet="../../oscal-profile-resolve-modify.xsl">
     <x:scenario label="Modify Base">
         <x:context>
@@ -8,7 +8,7 @@
                 <modify/>
             </catalog>
         </x:context>
-        
+
         <x:expect label="modify element is dropped">
             <catalog id="abc"/>
         </x:expect>
@@ -81,7 +81,7 @@
             </catalog>
         </x:expect>
     </x:scenario>
-    
+
     <x:scenario label="Simple property addition to a control, solo">
         <x:context>
             <catalog id="abc">
@@ -156,7 +156,7 @@
             </catalog>
         </x:expect>
     </x:scenario>
-    
+
     <x:scenario label="Add a part and a prop, explicit ending position">
         <x:context>
             <catalog id="abc">
@@ -185,32 +185,86 @@
             </catalog>
         </x:expect>
     </x:scenario>
-        <x:scenario label="Remove a part and a prop">
-            <x:context>
-                <catalog id="abc">
-                    <control id="a123">
-                        <title>Control A</title>
-                        <prop value="AAA" name="rating"/>
-                        <prop value="hd" name="display"/>
-                        <part name="context"><title>Context to consider</title></part>
-                    </control>
-                    <modify>
-                        <alter control-id="a123">
-                            <remove name-ref="display"/>
-                            <remove name-ref="context"/>
-                        </alter>
-                    </modify>
-                </catalog>
-            </x:context>
-            <x:expect label="Keeping one prop, removing another">
-                <catalog id="abc">
-                    <control id="a123">
-                        <title>Control A</title>
-                        <prop value="AAA" name="rating"/>
-                    </control>
-                </catalog>
-            </x:expect>
-        </x:scenario>
+    <x:scenario label="Remove a part and a prop">
+        <x:context>
+            <catalog id="abc">
+                <control id="a123">
+                    <title>Control A</title>
+                    <prop value="AAA" name="rating"/>
+                    <prop value="hd" name="display"/>
+                    <part name="context"><title>Context to consider</title></part>
+                </control>
+                <modify>
+                    <alter control-id="a123">
+                        <remove name-ref="display"/>
+                        <remove name-ref="context"/>
+                    </alter>
+                </modify>
+            </catalog>
+        </x:context>
+        <x:expect label="Keeping one prop, removing another">
+            <catalog id="abc">
+                <control id="a123">
+                    <title>Control A</title>
+                    <prop value="AAA" name="rating"/>
+                </control>
+            </catalog>
+        </x:expect>
+    </x:scenario>
+    <x:scenario label="Fun removal 1">
+        <x:context>
+            <catalog id="abc">
+                <control id="a123">
+                    <title>Control A</title>
+                    <prop value="AAA" name="rating"/>
+                    <prop value="hd" name="display"/>
+                    <part name="context"><title>Context to consider</title></part>
+                    <part name="context" ns="http://none.org"><title>No context</title></part>
+                </control>
+                <modify>
+                    <alter control-id="a123">
+                        <remove name-ref="display"/>
+                        <remove name-ref="context" ns-ref="http://none.org"/>
+                    </alter>
+                </modify>
+            </catalog>
+        </x:context>
+        <x:expect label="Not removing a part without a given namespace">
+            <catalog id="abc">
+                <control id="a123">
+                    <title>Control A</title>
+                    <prop value="AAA" name="rating"/>
+                    <part name="context"><title>Context to consider</title></part>
+                </control>
+            </catalog>
+        </x:expect>
+    </x:scenario>
+    <x:scenario label="Fun removal 2">
+        <x:context>
+            <catalog id="abc">
+                <control id="a123">
+                    <title>Control A</title>
+                    <prop value="AAA" name="rating"/>
+                    <prop value="hd" name="display"/>
+                    <part name="context"><title>Context to consider</title></part>
+                </control>
+                <modify>
+                    <alter control-id="a123">
+                        <remove name-ref="display"/>
+                        <remove name-ref="context" ns-ref="http://csrc.nist.gov/ns/oscal"/>
+                    </alter>
+                </modify>
+            </catalog>
+        </x:context>
+        <x:expect label="Keeping one prop, removing another; removing a part implicitly assigned the OSCAL namespace">
+            <catalog id="abc">
+                <control id="a123">
+                    <title>Control A</title>
+                    <prop value="AAA" name="rating"/>
+                </control>
+            </catalog>
+        </x:expect>
+    </x:scenario>
     <x:scenario label="Add a constraint to a parameter">
         <x:context>
             <catalog id="abc">
@@ -240,8 +294,8 @@
                 </control>
             </catalog>
         </x:expect>
-        
-        
-        
+
+
+
     </x:scenario>
 </x:description>
