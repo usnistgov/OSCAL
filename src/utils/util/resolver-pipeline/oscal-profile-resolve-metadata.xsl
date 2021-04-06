@@ -37,13 +37,17 @@
         <xsl:copy>
             <xsl:apply-templates mode="#current" select="@*"/>
             <xsl:apply-templates mode="#current" select="$leaders"/>
-            <prop name="resolution-timestamp">
-                <xsl:value-of select="current-dateTime()"/>
-            </prop>
             <xsl:apply-templates mode="#current" select="prop"/>
             <link href="{$profile-origin-uri}" rel="resolution-source"/>
             <xsl:apply-templates mode="#current" select="* except ($leaders | prop)"/>
+            
             <!--<xsl:apply-templates select="../selection" mode="imported-metadata"/>-->
+        </xsl:copy>
+    </xsl:template>
+
+    <xsl:template match="last-modified">
+        <xsl:copy>
+            <xsl:value-of select="current-dateTime()"/>
         </xsl:copy>
     </xsl:template>
     
