@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0"
-         uuid="85670c16-d945-46b5-bfc2-447ca591548e">
+         uuid="07c30c7d-aa92-4120-a667-b80b92f5cda0">
    <metadata>
       <title>Example</title>
       <last-modified>2020-05-30T14:39:50.536-04:00</last-modified>
       <version>1.2</version>
-      <oscal-version>1.0.0-rc1</oscal-version>
-      <prop name="resolution-timestamp">2020-12-15T14:31:30.288-05:00</prop>
+      <oscal-version>1.0.0-rc2</oscal-version>
+      <prop name="resolution-timestamp">2021-04-06T13:56:47.5-04:00</prop>
       <link rel="resolution-source" href="modify-adds_profile.xml"/>
    </metadata>
    <group>
@@ -21,11 +21,13 @@
                </description>
             </constraint>
          </param>
-         <prop name="CORE" ns="https://fedramp.gov/ns/oscal"/>
-         <prop name="place">first</prop>
+         <prop name="CORE" ns="https://fedramp.gov/ns/oscal" value=""/>
+         <prop name="place" value="first"/>
          <part name="statement" id="a1-stmt">
-            <prop name="conformity" ns="https://fedramp.gov/ns/oscal">assessment-objective</prop>
-            <prop name="method" class="fedramp">EXAMINE</prop>
+            <prop name="conformity"
+                  ns="https://fedramp.gov/ns/oscal"
+                  value="assessment-objective"/>
+            <prop name="method" class="fedramp" value="EXAMINE"/>
             <p>A1 aaaaa aaaaaaaaaa</p>
          </part>
       </control>
@@ -39,7 +41,7 @@
                </description>
             </constraint>
          </param>
-         <prop name="place">third</prop>
+         <prop name="place" value="third"/>
          <part name="statement" id="a3-stmt">
             <p>A3 aaaaa aaaaaaaaaa</p>
          </part>

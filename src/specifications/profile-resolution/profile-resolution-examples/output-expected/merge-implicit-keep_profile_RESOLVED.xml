@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0"
-         uuid="28d712a0-0fed-4fac-a4a9-dd4867265039">
+         uuid="19be0023-2b38-4060-ba35-f8fd5aafbc78">
    <metadata>
       <title>Test Profile</title>
       <last-modified>2020-05-30T14:39:47.95-04:00</last-modified>
       <version>1.0</version>
-      <oscal-version>1.0.0-rc1</oscal-version>
-      <prop name="resolution-timestamp">2020-12-15T14:31:29.38-05:00</prop>
+      <oscal-version>1.0.0-rc2</oscal-version>
+      <prop name="resolution-timestamp">2021-04-06T13:56:46.604-04:00</prop>
       <link rel="resolution-source" href="merge-implicit-keep_profile.xml"/>
    </metadata>
    <control id="a1">
@@ -14,14 +14,14 @@
       <param id="a1_prm1">
          <label>A1 Parameter 1</label>
       </param>
-      <prop name="place">first</prop>
+      <prop name="place" value="first"/>
       <part name="statement" id="a1-stmt">
          <p>A1 aaaaa aaaaaaaaaa</p>
       </part>
    </control>
    <control id="b1">
       <title>Control B1</title>
-      <prop name="place">first</prop>
+      <prop name="place" value="fourth"/>
       <part name="statement" id="b1-stmt">
          <p>B1 bbbb bbbbbbb.</p>
       </part>
@@ -31,14 +31,14 @@
       <param id="a1_prm1">
          <label>A1 Parameter 1</label>
       </param>
-      <prop name="place">first</prop>
+      <prop name="place" value="first"/>
       <part name="statement" id="a1-stmt">
          <p>A1 aaaaa aaaaaaaaaa</p>
       </part>
    </control>
    <control id="b1">
       <title>Control B1</title>
-      <prop name="place">first</prop>
+      <prop name="place" value="fourth"/>
       <part name="statement" id="b1-stmt">
          <p>B1 bbbb bbbbbbb.</p>
       </part>
