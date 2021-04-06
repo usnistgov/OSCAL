@@ -32,6 +32,10 @@
         </xsl:copy>
     </xsl:template>
 
+    <xsl:template match="oscal-version">
+        <oscal-version>1.0.0-rc2</oscal-version>
+    </xsl:template>
+    
     <xsl:template match="add-objectives-and-methods">
         <objectives-and-methods>
             <xsl:apply-templates select="@*"/>
