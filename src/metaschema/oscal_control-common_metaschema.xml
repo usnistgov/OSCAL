@@ -32,7 +32,7 @@
                                 <allowed-values allow-other="yes">
                                         <!-- QUESTION: "method" doesn't appear in this list, but has a constraint below. Why? -->
                                         <enum value="overview">An introduction to a control or a group of controls.</enum>
-                                        <enum value="statement">A set of contol implementation requirements.</enum>
+                                        <enum value="statement">A set of control implementation requirements.</enum>
                                         <enum value="item">An individual item within a control statement.</enum>
                                         <enum value="guidance">Additional information to consider when selecting, implementing, assessing, and monitoring a control.</enum>
                                         <enum value="objective">Describes a set of assessment objectives.</enum>
