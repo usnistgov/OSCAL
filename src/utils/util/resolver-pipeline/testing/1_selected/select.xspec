@@ -124,7 +124,7 @@
                 <import href="&filedir;/xyz-tiny_catalog.xml">
                     <include-controls>
                         <!-- any x control -->
-                        <matching pattern="^x\d+$"/>
+                        <matching pattern="x*"/>
                     </include-controls>
                 </import>
             </profile>
