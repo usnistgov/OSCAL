@@ -14,7 +14,7 @@
 <METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/toolchains/xslt-M4/validate/metaschema.xsd">
   <schema-name>OSCAL System Security Plan (SSP) Model</schema-name>
-  <schema-version>1.0.0-rc1</schema-version>
+  <schema-version>1.0.0-rc2</schema-version>
   <short-name>oscal-ssp</short-name>
   <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
   <remarks>
@@ -623,10 +623,16 @@
         <formal-name>Control Implementation Description</formal-name>
         <description>A statement describing important things to know about how this set of control satisfaction documentation is approached.</description>
       </define-field>
+      <assembly ref="set-parameter" max-occurs="unbounded">
+        <group-as name="set-parameters" in-json="BY_KEY"/>
+      </assembly>
       <assembly ref="implemented-requirement" min-occurs="1" max-occurs="unbounded">
         <group-as name="implemented-requirements" in-json="ARRAY"/>
       </assembly>
     </model>
+    <remarks>
+      <p>Use of <code>set-parameter</code> in this context, sets the parameter for all related controls referenced in an <code>implemented-requirement</code>. If the same parameter is also set in a specific <code>implemented-requirement</code>, then the new value will override this value.</p>
+    </remarks>
   </define-assembly>
   <define-assembly name="implemented-requirement">
     <formal-name>Control-based Requirement</formal-name>
@@ -656,26 +662,12 @@
       <assembly ref="statement" max-occurs="unbounded">
         <group-as name="statements" in-json="BY_KEY"/>
       </assembly>
-      <!--
-         <assembly ref="by-capability" max-occurs="unbounded">
-            <group-as name="by-capabilities" in-json="BY_KEY"/>
-         </assembly>  -->
-      <!--            <assembly ref="using"/>   -->
-
       <!-- TODO: Implement parameters -->
       <field ref="remarks" in-xml="WITH_WRAPPER"/>
     </model>
     <constraint>
       <allowed-values target="property/@name" allow-other="yes">
-        <enum value="implementation-status">Provides the current state of the control's implementation.</enum>
-        <enum value="control-origination">Identifies the source of the implementated control.</enum>
-      </allowed-values>
-      <allowed-values target="property[@name='implementation-status']/value()">
-        <enum value="implemented">The control is fully implemented.</enum>
-        <enum value="partial">The control is partially implemented.</enum>
-        <enum value="planned">There is a plan for implementing the control as explained in the remarks.</enum>
-        <enum value="alternative">There is an alternative implementaiton for this control as explained in the remarks.</enum>
-        <enum value="not-applicable">This control does not apply to this system as justified in the remarks.</enum>
+        <enum value="control-origination">Identifies the source of the implemented control.</enum>
       </allowed-values>
       <allowed-values target="property[@name='control-origination']/value()">
         <enum value="organization">The control is implemented by the organization owning the system, but is not specific to the system itself.</enum>
@@ -724,8 +716,6 @@
         <group-as name="links" in-json="ARRAY"/>
         <!-- TODO: Model specific link relationships -->
       </assembly>
-      <!--            <assembly ref="using"/>
--->
       <!-- CHANGED: removed "set-parameter" -->
       <!-- CHANGED: removed "responsible-role" -->
       <assembly ref="by-component" max-occurs="unbounded">
@@ -771,6 +761,11 @@
       <!-- CHANGED: resequenced "set-parameter" -->
       <assembly ref="set-parameter" max-occurs="unbounded">
         <group-as name="parameter-settings" in-json="BY_KEY"/>
+      </assembly>
+      <assembly ref="implementation-status">
+        <remarks>
+          <p>The <code>implementation-status</code> is used to qualify the <code>status</code> value to indicate the degree to which the control is implemented.</p>
+        </remarks>
       </assembly>
       <define-assembly name="export" max-occurs="1">
         <formal-name>Export</formal-name>
@@ -885,12 +880,12 @@
       </define-assembly>
       <define-assembly name="satisfied" max-occurs="unbounded">
         <formal-name>Satisfied Control Implementation Responsibility</formal-name>
-        <description>Describes how this system satisfies a responsibiity imposed by a leveraged system.</description>
+        <description>Describes how this system satisfies a responsibility imposed by a leveraged system.</description>
         <!-- CHANGED: "satisfied-group" to "satisfied" -->
         <group-as name="satisfied" in-json="ARRAY"/>
         <define-flag name="uuid" as-type="uuid" required="yes">
           <formal-name>Satisfied Universally Unique Identifier</formal-name>
-          <description>A globally unique identifier that can be used to reference this satisfied entry elsewhere in an OSCAL document. A UUID should be consistantly used for a given resource across revisions of the document.</description>
+          <description>A globally unique identifier that can be used to reference this satisfied entry elsewhere in an OSCAL document. A UUID should be consistently used for a given resource across revisions of the document.</description>
         </define-flag>
         <flag ref="responsibility-uuid" required="no" />
         <model>
@@ -918,16 +913,6 @@
       <field ref="remarks" in-xml="WITH_WRAPPER"/>
     </model>
     <constraint>
-      <allowed-values target="property[not(@ns) or @ns='http://csrc.nist.gov/ns/oscal']/@name">
-        <enum value="implementation-status">TODO: brian please define</enum>
-      </allowed-values>
-      <allowed-values target="annotation[(not(@ns) or @ns='http://csrc.nist.gov/ns/oscal') and @name='implementation-status']/value()">
-        <enum value="implemented">TODO: brian please define</enum>
-        <enum value="partial">TODO: brian please define</enum>
-        <enum value="planned">TODO: brian please define</enum>
-        <enum value="alternative">TODO: brian please define</enum>
-        <enum value="not-applicable">TODO: brian please define</enum>
-      </allowed-values>
       <allowed-values target=".//responsible-role/@role-id" allow-other="yes">
             &allowed-values-responsible-roles-operations;
             &allowed-values-responsible-roles-component-production;

@@ -6,12 +6,11 @@
 <METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/toolchains/xslt-M4/validate/metaschema.xsd">
       <schema-name>OSCAL Profile Model</schema-name>
-      <schema-version>1.0.0-rc1</schema-version>
+      <schema-version>1.0.0-rc2</schema-version>
       <short-name>oscal-profile</short-name>
       <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
       <remarks>
-            <p>A profile designates a selection and configuration of controls from one or more catalogs, along with a series of operations over them. The topmost element in the OSCAL profile XML schema is <code>profile</code>.
-            </p>
+            <p>A profile designates a selection and configuration of controls from one or more catalogs, along with a series of operations over them. The topmost element in the OSCAL profile XML schema is <code>profile</code>.</p>
       </remarks>
       <import href="oscal_metadata_metaschema.xml"/>
       <import href="oscal_control-common_metaschema.xml"/>
@@ -33,12 +32,12 @@
                   <assembly ref="back-matter"/>
             </model>
             <remarks>
-                  <p>An OSCAL document that describes a selection with possible modification of multiple controls from multiple catalogs. It provides mechanisms by which controls may be selected (<code>import</code>), merged or (re)structured (<code>merge</code>), and emended (<code>modify</code>). OSCAL profiles may select subsets of control sets, set parameter values for them in application, and even qualify the representation of controls as given in and by a catalog. They may also serve as sources for further modification in and by other profiles, that import them.</p>
+                  <p>An OSCAL document that describes a tailoring of controls from one or more catalogs, with possible modification of multiple controls. It provides mechanisms by which controls may be selected (<code>import</code>), merged or (re)structured (<code>merge</code>), and amended (<code>modify</code>). OSCAL profiles may select subsets of controls, set parameter values for them in application, and even adjust the representation of controls as given in and by a catalog. They may also serve as sources for further modification in and by other profiles, that import them.</p>
             </remarks>
       </define-assembly>
       <define-assembly name="import">
             <formal-name>Import resource</formal-name>
-            <description>An Import element designates a catalog, profile, or other resource to be included (referenced and potentially modified) by this profile.</description>
+            <description>The <code>import</code> designates a catalog, profile, or other resource to be included (referenced and potentially modified) by this profile. The import also identifies which controls to select using the <code>include-all</code>, <code>include-controls</code>, and <code>exclude-controls</code> directives.</description>
             <define-flag name="href" as-type="uri-reference" required="yes">
                   <formal-name>Catalog or Profile Reference</formal-name>
                   <description>A resolvable URL reference to the base catalog or profile that this profile is tailoring.</description>
@@ -47,35 +46,39 @@
                               <code>resource</code> in the same document.</p>
                         <!-- TODO: Add a link to "within the scope of the containing OSCAL document" to point to documentation of identification scopes" -->
                         <p>If a local reference using a fragment is used, this will be indicated by a fragment "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
-                        <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced resource. A relative URI will be resolved relative to the location of the document containing the link.</p>
+                        <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URL pointing to the location of the referenced resource. A relative URL will be resolved relative to the location of the document containing the link.</p>
                   </remarks>
             </define-flag>
             <model>
                   <choice>
-                        <assembly ref="include-all" min-occurs="1"/>
+                        <assembly ref="include-all" min-occurs="1">
+                              <remarks>
+                                    <p>Identifies that all controls are to be included from the imported catalog or profile.</p>
+                              </remarks>
+                        </assembly>
                         <assembly ref="select-control-by-id" min-occurs="1" max-occurs="unbounded">
                               <use-name>include-controls</use-name>
                               <group-as name="include-controls" in-json="ARRAY"/>
+                              <remarks>
+                                    <p>Identifies a subset of controls to import from the referenced catalog or profile by control identifier or match pattern.</p>
+                              </remarks>
                         </assembly>
                   </choice>
                   <assembly ref="select-control-by-id" max-occurs="unbounded">
                         <use-name>exclude-controls</use-name>
                         <group-as name="exclude-controls" in-json="ARRAY"/>
                         <remarks>
-                              <p>Identifies which controls to exclude, or eliminate, from the set of matching includes.</p>
+                              <p>Identifies which controls to exclude, or eliminate, from the set of included controls by control identifier or match pattern.</p>
                         </remarks>
                   </assembly>
             </model>
             <remarks>
                   <p>A profile must be based on an existing OSCAL catalog or another OSCAL profile. An <code>import</code> indicates such a source whose controls are to be included (referenced and modified) in a profile. This source will either be a catalog whose controls are given (<q>by value</q>), or a profile with its own control imports.</p>
-                  <p>The contents of the <code>import</code> element indicate which controls from the source will be included. Controls may be either selected (using an <code>include</code> element) or de-selected (using an <code>exclude</code> element) from the source catalog or profile.</p>
-                  <p>When no <code>include</code> is given (whether an <code>exclude</code> is given or not), an <code>include</code>/                        <code>all</code> is assumed (that is, all controls will be included by default).</p>
+                  <p>The contents of the <code>import</code> element indicate which controls from the source will be included. Controls from the source catalog or profile may be either selected, using the <code>include-all</code> or <code>include-controls</code> directives, or de-selected (using an <code>exclude-controls</code> directive).</p>
             </remarks>
             <example>
                   <import xmlns="http://csrc.nist.gov/ns/oscal/example" href="catalog.xml">
-                        <include>
-                              <call control-id="ac-1"/>
-                        </include>
+                        <include-all/>
                   </import>
             </example>
       </define-assembly>
@@ -130,7 +133,7 @@
                   </assembly>
             </model>
             <remarks>
-                  <p>The <code>custom</code> element represents a custom arrangement or organization of controls in the resolution of a catalog. </p>
+                  <p>The <code>custom</code> element represents a custom arrangement or organization of controls in the resolution of a catalog.</p>
                   <p>While the <code>as-is</code> element provides for a restitution of a control set's organization (in one or more source catalogs), this element permits the definition of an entirely different structure.</p>
             </remarks>
       </define-assembly>
@@ -156,7 +159,6 @@
                         <description>A name given to the group, which may be used by a tool for display and navigation.</description>
                   </define-field>
                   <assembly ref="parameter" max-occurs="unbounded">
-                        <!-- CHANGED: "parameters" to "params" -->
                         <group-as name="params" in-json="ARRAY"/>
                   </assembly>
                   <assembly ref="property" max-occurs="unbounded">
@@ -186,11 +188,9 @@
             <description>Set parameters or amend controls in resolution</description>
             <model>
                   <assembly ref="set-parameter" max-occurs="unbounded">
-                        <!-- CHANGED: "parameter-settings" to "set-parameters" -->
                         <group-as name="set-parameters" in-json="BY_KEY"/>
                   </assembly>
                   <assembly ref="alter" max-occurs="unbounded">
-                        <!-- CHANGED: "alterations" to "alters" -->
                         <group-as name="alters" in-json="ARRAY"/>
                   </assembly>
             </model>
@@ -211,8 +211,8 @@
             </define-flag>
             <model>
                   <choice>
-                        <assembly ref="include-all"/>
-                        <assembly ref="select-control-by-id" max-occurs="unbounded">
+                        <assembly ref="include-all" min-occurs="1"/>
+                        <assembly ref="select-control-by-id" min-occurs="1" max-occurs="unbounded">
                               <use-name>include-controls</use-name>
                               <group-as name="include-controls" in-json="ARRAY"/>
                         </assembly>
@@ -226,17 +226,16 @@
                   </assembly>
             </model>
             <remarks>
-                  <p>To be schema-valid, this element must contain either (but not both) a single <code>all</code> element, or a sequence of <code>call</code> elements.</p>
-                  <p>If this element is not given, it is assumed to be present with contents <code>all</code> (qv); i.e., all controls are included by default, unless the <code>include</code> instruction calls controls specifically.</p>
+                  <p>To be schema-valid, this element must contain either (but not both) a single <code>include-all</code> directive, or a sequence of <code>include-controls</code> directives.</p>
+                  <p>If this directive is not provided, then no controls are to be inserted; i.e., all controls are included explicitly.</p>
             </remarks>
       </define-assembly>
       
       <define-assembly name="include-all">
-            <formal-name>Include all</formal-name>
-            <description>Include all controls from the imported resource (catalog)</description>
-            <flag ref="with-child-controls"/>
+            <formal-name>Insert All</formal-name>
+            <description>Insert all controls from the imported catalog or profile resources identified in the <code>import</code> directive.</description>
             <remarks>
-                  <p>This element provides an alternative to calling controls individually from a catalog. But this is also the default behavior when no <code>include</code> element is given in an <code>import</code>; so ordinarily one might not see this element unless it is for purposes of including its <code>with-child-controls</code> flag. </p>
+                  <p>This element provides an alternative to calling controls individually from a catalog.</p>
             </remarks>
       </define-assembly>
       <define-assembly name="select-control-by-id">
@@ -278,7 +277,6 @@
             </define-flag>
             <flag ref="depends-on"/>
             <model>
-                  <!-- CHANGE: relative order in sequence -->
                   <assembly ref="property" max-occurs="unbounded">
                         <group-as name="props" in-json="ARRAY"/>
                   </assembly>
@@ -302,12 +300,10 @@
                   </assembly>
                   <assembly ref="parameter-guideline" max-occurs="unbounded">
                         <use-name>guideline</use-name>
-                        <!-- CHANGED from "guidance" to "guidelines" -->
                         <group-as name="guidelines" in-json="ARRAY"/>
                   </assembly>
                   <choice>
                         <field ref="parameter-value" max-occurs="unbounded">
-                              <!-- CHANGED cardinality to allow for multiple values -->
                               <use-name>value</use-name>
                               <group-as name="values" in-json="ARRAY"/>
                               <remarks>
@@ -326,11 +322,9 @@
             <flag ref="control-id"/>
             <model>
                   <assembly ref="remove" max-occurs="unbounded">
-                        <!-- CHANGED: "removals" to "removes" -->
                         <group-as name="removes" in-json="ARRAY"/>
                   </assembly>
                   <assembly ref="add" max-occurs="unbounded">
-                        <!-- CHANGED: "additions" to "adds" -->
                         <group-as name="adds" in-json="ARRAY"/>
                   </assembly>
             </model>
@@ -413,10 +407,8 @@
                   </allowed-values>
             </constraint>
             <remarks>
-                  <p>When no <code>id-ref</code> is given, the addition is inserted into the control targeted by the alteration at the start or end as indicated by <code>position</code>. Only <code>position</code> values of "starting" or "ending" are permitted when there is no <code>id-ref</code>.
-                  </p>
-                  <p>
-                        <code>id-ref</code>, when given, should indicate, by its ID, an element inside the control to serve as the anchor point for the addition. In this case, <code>position</code> value may be any of the permitted values.</p>
+                  <p>When no <code>id-ref</code> is given, the addition is inserted into the control targeted by the alteration at the start or end as indicated by <code>position</code>. Only <code>position</code> values of "starting" or "ending" are permitted when there is no <code>id-ref</code>.</p>
+                  <p><code>id-ref</code>, when given, should indicate, by its ID, an element inside the control to serve as the anchor point for the addition. In this case, <code>position</code> value may be any of the permitted values.</p>
             </remarks>
       </define-assembly>
       <define-flag as-type="NCName" name="control-id">
@@ -435,6 +427,6 @@
       </define-flag>
       <define-flag as-type="string" name="pattern">
             <formal-name>Pattern</formal-name>
-            <description>A regular expression matching the IDs of one or more controls to be selected</description>
+            <description>A <a href="https://en.wikipedia.org/wiki/Glob_(programming)">glob expression</a> matching the IDs of one or more controls to be selected.</description>
       </define-flag>
 </METASCHEMA>
