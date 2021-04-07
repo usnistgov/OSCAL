@@ -5,7 +5,7 @@
    xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/toolchains/xslt-M4/validate/metaschema.xsd"
    abstract="yes">
    <schema-name>OSCAL Assessment Layer Format -- Common Modules</schema-name>
-   <schema-version>1.0.0-rc1</schema-version>
+   <schema-version>1.0.0-rc2</schema-version>
    <short-name>oscal-assessment-common</short-name>
    <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
    <remarks>
@@ -781,7 +781,7 @@
             <group-as name="links" in-json="ARRAY"/>
          </assembly>
          <define-field name="status" as-type="NCName" min-occurs="1" max-occurs="1">
-            <formal-name>Implementation Status</formal-name>
+            <formal-name>Objective Status</formal-name>
             <description>A brief indication as to whether the objective is satisfied or not within a given system.</description>
             <!-- CHANGED: removed @system flag -->
             <constraint>
@@ -792,13 +792,38 @@
                </allowed-values>
             </constraint>
          </define-field>
-         <!-- CHANGED: "implementation-status" to a FedRAMP extension (prop[@name='implementation-status'] in this assembly) -->
+         <assembly ref="implementation-status">
+            <remarks>
+               <p>The <code>implementation-status</code> is used to qualify the <code>status</code> value to indicate the degree to which the control was found to be implemented.</p>
+            </remarks>
+         </assembly>
+         <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
+      </model>
+   </define-assembly>
+   
+   <define-assembly name="implementation-status">
+      <formal-name>Implementation Status</formal-name>
+      <description>Indicates the degree to which the a given control is implemented.</description>
+      <define-flag name="state" as-type="NCName" required="yes">
+         <formal-name>Implementation State</formal-name>
+         <description>Identifies the implementation status of the control or control objective.</description>
+         <constraint>
+            <allowed-values allow-other="yes">
+               <enum value="implemented">The control is fully implemented.</enum>
+               <enum value="partial">The control is partially implemented.</enum>
+               <enum value="planned">There is a plan for implementing the control as explained in the remarks.</enum>
+               <enum value="alternative">There is an alternative implementation for this control as explained in the remarks.</enum>
+               <enum value="not-applicable">This control does not apply to this system as justified in the remarks.</enum>
+            </allowed-values>
+         </constraint>
+      </define-flag>
+      <model>
          <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
       </model>
    </define-assembly>
    
    <define-assembly name="observation">
-      <formal-name>Objective</formal-name>
+      <formal-name>Observation</formal-name>
       <description>Describes an individual observation.</description>
       <define-flag name="uuid" required="yes" as-type="uuid">
          <formal-name>Observation Universally Unique Identifier</formal-name>
@@ -812,7 +837,7 @@
          <!-- CHANGE: Added WITH_WRAPPER to description -->
          <define-field name="description" min-occurs="1" max-occurs="1" in-xml="WITH_WRAPPER"
             as-type="markup-multiline">
-            <formal-name>Observaton Description</formal-name>
+            <formal-name>Observation Description</formal-name>
             <description>A human-readable description of this assessment observation.</description>
          </define-field>
          <assembly ref="property" max-occurs="unbounded">

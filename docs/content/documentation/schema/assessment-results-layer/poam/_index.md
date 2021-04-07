@@ -43,7 +43,7 @@ Continuous monitoring practitioners consume the POA&M as part of monitoring the 
 {{% usa-grid-container %}}
 {{% usa-grid-row %}}
 {{% usa-grid-column class="grid-col-fill" %}}
-An OSCAL profile is organized as follows:
+An OSCAL POA&M is organized as follows:
 - **Metadata**: Metadata syntax is identical and required in all OSCAL models. It includes information such as the file's title, publication version, publication date, and OSCAL version. Metadata is also used to define roles, parties (people, teams and organizations), and locations.
 - **Import SSP**: Identifies the OSCAL-based SSP of the system being assessed. Several pieces of information about a system that normally appear in the POA&M are now referenced via this import statement.
 - **System Identifier**: Intended when a POA&M is not delivered with an SSP, this allows a continuous monitoring organization to uniquely identify the system associated with this POA&M.
@@ -72,7 +72,7 @@ The current version of this model was created based on the information requireme
 
 It was designed to use identical syntax to the [assessment results model](/documentation/schema/assessment-results-layer/assessment-results/), for overlapping assemblies (results: observations and risks), which allows easy transfer of identified risks for an assessment report to a POA&M. 
 
-The figure below expresses represents the portion of the OSCAL stack as it relates to an OSCAL POA&M.
+The figure below represents the portion of the OSCAL stack as it relates to an OSCAL POA&M.
 ![A diagram representing the OSCAL stack from a system security plan's perspective.](OSCAL-stack-POAM.svg)
 
 {{<partial "note-to-developers-uuid.html" >}}
