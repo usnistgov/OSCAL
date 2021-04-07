@@ -163,6 +163,8 @@
     
     <!-- Function o:selects($importing,$candidate) returns a true or false
          depending on whether the import calls the candidate control  -->
+    
+<!-- @with-child-controls='yes' is recursive - given on a control it brings all control descendants, not only children   -->
     <xsl:function name="o:selects" as="xs:boolean">
         <xsl:param name="importing" as="element(o:import)"/>
         <xsl:param name="candidate" as="element(o:control)"/>
@@ -173,21 +175,21 @@
             <xsl:sequence select="some $c in ($importing/include-controls/with-id)
                                   satisfies ($c = $candidate/@id)"/>
             <xsl:sequence select="some $c in ($importing/include-controls[o:calls-children(.)]/with-id)
-                satisfies ($c = $candidate/parent::control/@id)"/>
+                satisfies ($c = $candidate/ancestor::control/@id)"/>
             <xsl:sequence select="some $m in ($importing/include-controls/matching)
                                   satisfies (matches($candidate/@id,$m/@pattern/o:glob-as-regex(string(.)) ))"/>
             <xsl:sequence select="some $m in ($importing/include/matching[o:calls-children(.)])
-                satisfies (matches($candidate/parent::control/@id,$m/@pattern/o:glob-as-regex(string(.))))"/>
+                satisfies (matches($candidate/ancestor::control/@id,$m/@pattern/o:glob-as-regex(string(.))))"/>
         </xsl:variable>
         <xsl:variable name="exclude-reasons" as="xs:boolean+">
             <xsl:sequence select="exists($candidate/parent::control) and $importing/include-all/@with-child-controls='no'"/>
             <xsl:sequence select="some $c in ($importing/exclude-controls/with-id) satisfies ($c = $candidate/@id)"/>
             <xsl:sequence select="some $c in ($importing/exclude-controls[o:calls-children(.)]/with-id)
-                satisfies ($c = $candidate/parent::control/@id)"/>
+                satisfies ($c = $candidate/ancestor::control/@id)"/>
             <xsl:sequence select="some $m in ($importing/exclude-controls/matching)
                 satisfies (matches($candidate/@id,$m/@pattern/o:glob-as-regex(string(.))))"/>
             <xsl:sequence select="some $m in ($importing/exclude-controls[o:calls-children(.)]/matcjomg)
-                satisfies (matches($candidate/parent::control/@id,$m/@pattern/o:glob-as-regex(string(.))))"/>
+                satisfies (matches($candidate/ancestor::control/@id,$m/@pattern/o:glob-as-regex(string(.))))"/>
         </xsl:variable>
         <!-- predicate [.] filters reasons as booleans -->
         <xsl:sequence select="exists($include-reasons[.]) and empty($exclude-reasons[.])"/>
