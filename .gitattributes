@@ -6,6 +6,7 @@
 *.json  text eol=lf
 *.xml   text eol=lf
 *.xsl   text eol=lf
+*.sch	text eol=lf
 *.yaml  text eol=lf
 *.yml   text eol=lf
 
