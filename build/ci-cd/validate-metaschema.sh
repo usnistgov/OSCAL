@@ -114,7 +114,6 @@ cp "${metaschema_toolchain}/validate/metaschema-metaprocess.xsl" "${SCRATCH_DIR}
 cp "${metaschema_toolchain}/validate/metaschema-collect.xsl" "${SCRATCH_DIR}"
 cp "${metaschema_toolchain}/validate/metaschema-reduce1.xsl" "${SCRATCH_DIR}"
 cp "${metaschema_toolchain}/validate/metaschema-digest.xsl" "${SCRATCH_DIR}"
-cp "${metaschema_toolchain}/validate/metaschema-reduce2.xsl" "${SCRATCH_DIR}"
 
 
 exitcode=0
