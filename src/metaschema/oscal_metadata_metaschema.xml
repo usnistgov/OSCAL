@@ -577,7 +577,7 @@
     <!-- ##################### -->
     <define-assembly name="property">
         <formal-name>Property</formal-name>
-        <description>An attribute, characteristic, or quality of the containing object expressed as a namespace qualified name/value pair. The value of a property is a simple scalar value, which may be expressed as a list of values in some OSCAL formats.</description>
+        <description>An attribute, characteristic, or quality of the containing object expressed as a namespace qualified name/value pair. The value of a property is a simple scalar value, which may be expressed as a list of values.</description>
         <use-name>prop</use-name>
         <define-flag name="name" as-type="NCName" required="yes">
             <formal-name>Property Name</formal-name>
@@ -604,8 +604,8 @@
             </remarks>
         </define-flag>
         <define-flag name="value" as-type="string" required="yes">
-            <formal-name>Annotated Property Value</formal-name>
-            <description>Indicates the optional value of the attribute, characteristic, or quality. Typically, a value will be provided; however, the value is optional allowing cases were the name is asserting some characteristic or quality.</description>
+            <formal-name>Property Value</formal-name>
+            <description>Indicates the value of the attribute, characteristic, or quality.</description>
         </define-flag>
         <define-flag name="class" as-type="NCName">
             <formal-name>Property Class</formal-name>

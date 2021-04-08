@@ -801,27 +801,6 @@
       </model>
    </define-assembly>
    
-   <define-assembly name="implementation-status">
-      <formal-name>Implementation Status</formal-name>
-      <description>Indicates the degree to which the a given control is implemented.</description>
-      <define-flag name="state" as-type="NCName" required="yes">
-         <formal-name>Implementation State</formal-name>
-         <description>Identifies the implementation status of the control or control objective.</description>
-         <constraint>
-            <allowed-values allow-other="yes">
-               <enum value="implemented">The control is fully implemented.</enum>
-               <enum value="partial">The control is partially implemented.</enum>
-               <enum value="planned">There is a plan for implementing the control as explained in the remarks.</enum>
-               <enum value="alternative">There is an alternative implementation for this control as explained in the remarks.</enum>
-               <enum value="not-applicable">This control does not apply to this system as justified in the remarks.</enum>
-            </allowed-values>
-         </constraint>
-      </define-flag>
-      <model>
-         <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
-      </model>
-   </define-assembly>
-   
    <define-assembly name="observation">
       <formal-name>Observation</formal-name>
       <description>Describes an individual observation.</description>
