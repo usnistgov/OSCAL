@@ -367,14 +367,14 @@
                         <enum value="privilege-level">The user's privilege level within the system, such as privileged, non-privileged, no-logical-access.</enum>
                   </allowed-values>
                   <allowed-values target="prop[@name='type']/@value">
-                        <enum value="internal">A user account for a person or entity that is part of the organizaiton who owns or operates the system.</enum>
-                        <enum value="external">A user account for a person or entity that is not part of the organizaiton who owns or operates the system.</enum>
+                        <enum value="internal">A user account for a person or entity that is part of the organization who owns or operates the system.</enum>
+                        <enum value="external">A user account for a person or entity that is not part of the organization who owns or operates the system.</enum>
                         <enum value="general-public">A user of the system considered to be outside </enum>
                   </allowed-values>
                   <allowed-values target="prop[@name='privilege-level']/@value">
                         <enum value="privileged">This role has elevated access to the system, such as a group or system administrator.</enum>
                         <enum value="non-privileged">This role has typical user-level access to the system without elevated access.</enum>
-                        <enum value="no-logical-access">This role has no access to the system, such as a manager who approves acess as part of a process.</enum>
+                        <enum value="no-logical-access">This role has no access to the system, such as a manager who approves access as part of a process.</enum>
                   </allowed-values>
                   <allowed-values target="role-id" allow-other="yes">
             &allowed-values-responsible-roles-operations;

@@ -73,7 +73,7 @@
     <description>Used by the assessment results and POA&amp;M. In the assessment results, this identifies all of the assessment observations and findings, initial and residual risks, deviations, and disposition. In the POA&amp;M, this identifies initial and residual risks, deviations, and disposition.</description>
     <define-flag name="uuid" required="yes" as-type="uuid">
       <formal-name>Results Universally Unique Identifier</formal-name>
-      <description>Uniquely identifies this set of results. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. Once assigned, a UUID should be consistantly used for a given set of results across revisions.</description>
+      <description>Uniquely identifies this set of results. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. Once assigned, a UUID should be consistently used for a given set of results across revisions.</description>
     </define-flag>
     <model>
       <define-field name="title" min-occurs="1" max-occurs="1" as-type="markup-line">
@@ -134,9 +134,9 @@
             </remarks>
           </assembly>
 
-          <assembly ref="action" min-occurs="0" max-occurs="unbounded">
-            <use-name>assessment-action</use-name>
-            <group-as name="assessment-actions" in-json="ARRAY"/>
+          <assembly ref="task" min-occurs="0" max-occurs="unbounded">
+            <use-name>assessment-task</use-name>
+            <group-as name="tasks" in-json="ARRAY"/>
           </assembly>
         </model>
       </define-assembly>
@@ -173,11 +173,11 @@
           <define-assembly name="entry" min-occurs="1" max-occurs="unbounded">
             <formal-name>Assessment Log Entry</formal-name>
             <!-- TODO: improve this description -->
-            <description>Identifies the result of an action and/or task that occured as part of executing an assessment plan or an assessment event that occured in producing the assessment results.</description>
+            <description>Identifies the result of an action and/or task that occurred as part of executing an assessment plan or an assessment event that occurred in producing the assessment results.</description>
             <group-as name="entries" in-json="ARRAY"/>
             <define-flag name="uuid" required="yes" as-type="uuid">
               <formal-name>Assessment Log Entry Universally Unique Identifier</formal-name>
-              <description>Uniquely identifies an assessment event. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. A UUID should be consistantly used for this schedule across revisions of the document.</description>
+              <description>Uniquely identifies an assessment event. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. A UUID should be consistently used for this schedule across revisions of the document.</description>
             </define-flag>
             <model>
               <define-field name="title" min-occurs="0" max-occurs="1" as-type="markup-line">
@@ -237,7 +237,7 @@
     <description>Describes an individual finding.</description>
     <define-flag name="uuid" required="yes" as-type="uuid">
       <formal-name>Finding Universally Unique Identifier</formal-name>
-      <description>Uniquely identifies this finding. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. Once assigned, a UUID should be consistantly used for a given finding across revisions.</description>
+      <description>Uniquely identifies this finding. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. Once assigned, a UUID should be consistently used for a given finding across revisions.</description>
     </define-flag>
     <model>
       <define-field name="title" min-occurs="1" as-type="markup-line">
@@ -266,7 +266,7 @@
       <assembly ref="finding-target">
         <use-name>target</use-name>
         <remarks>
-          <p>While use of <code>target</code> is optional, it is recommended to use this object to identify the target of the finding providing tracability.</p>
+          <p>While use of <code>target</code> is optional, it is recommended to use this object to identify the target of the finding providing traceability.</p>
         </remarks>
       </assembly>
       <define-field name="implementation-statement-uuid" as-type="uuid" min-occurs="0" max-occurs="1">

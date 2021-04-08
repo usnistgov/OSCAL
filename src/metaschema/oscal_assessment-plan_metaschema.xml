@@ -78,10 +78,10 @@
                 </model>
                 <constraint>
                     <allowed-values target="part/@name">
-                        <enum value="rules-of-engagement">Defines the circumstances, conditions, degree, and manner in which the use of cyber attack techniques or actions may be applied to the assessment.</enum>
+                        <enum value="rules-of-engagement">Defines the circumstances, conditions, degree, and manner in which the use of cyber-attack techniques or actions may be applied to the assessment.</enum>
                         <enum value="disclosures">Any information the assessor should make known to the system owner or authorizing official. Has child 'item' parts for each individual disclosure.</enum>
-                        <enum value="assessment-inclusions">Defines any assessment activities which the system owner or authorizing official wishes to esnure are performed as part of the assessemnt.</enum>
-                        <enum value="assessment-exclusions">Defines any assessment activities which the system owner or authorizing official explicitly prohibits from being performed as part of the assessemnt.</enum>
+                        <enum value="assessment-inclusions">Defines any assessment activities which the system owner or authorizing official wishes to ensure are performed as part of the assessment.</enum>
+                        <enum value="assessment-exclusions">Defines any assessment activities which the system owner or authorizing official explicitly prohibits from being performed as part of the assessment.</enum>
                         <enum value="results-delivery">Defines conditions related to the delivery of the assessment results, such as when to deliver, how, and to whom.</enum>
                         <enum value="assumptions">Defines any supposition made by the assessor. Has child 'item' parts for each assumption.</enum>
                         <enum value="methodology">An explanation of practices, procedures, and rules used in the course of the assessment.</enum>

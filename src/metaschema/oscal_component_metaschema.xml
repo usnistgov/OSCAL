@@ -98,7 +98,8 @@
         <!-- CHANGE: from responsible-party to responsible-role -->
         <group-as name="responsible-roles" in-json="BY_KEY"/>
       </assembly>
-      <assembly ref="protocol" max-occurs="unbounded">        <!-- TODO: protocol (tcp/UDP), port range, service name, purpose, used by -->
+      <assembly ref="protocol" max-occurs="unbounded">
+        <!-- TODO: protocol (tcp/UDP), port range, service name, purpose, used by -->
         <group-as name="protocols" in-json="ARRAY"/>
         <remarks>
           <p>Used for <code>service</code> components to define the protocols supported by the service.</p>
