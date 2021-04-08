@@ -78,12 +78,12 @@
    <define-assembly name="assessment-method">
       <!-- CHANGED "method" to "assessment-method" -->
       <formal-name>Assessment Method</formal-name>
-      <description>A local definition of a control objective. Uses catalog syntax for control objective and assessment actions.</description>
+      <description>A local definition of a control objective. Uses catalog syntax for control objective and assessment activities.</description>
       <!-- CHANGED group-as from "method-definitions" to "assessment-methods" -->
 <!--      <group-as name="assessment-methods" in-json="ARRAY"/>
 -->      <define-flag name="uuid" required="yes" as-type="uuid">
          <formal-name>Assessment Method Universally Unique Identifier</formal-name>
-         <description>Uniquely identifies this defined assessment method. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. A UUID should be consistantly used for a given assessment method across revisions of the document.</description>
+         <description>Uniquely identifies this defined assessment method. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. A UUID should be consistently used for a given assessment method across revisions of the document.</description>
       </define-flag>
       <model>
          <define-field name="description" min-occurs="0" max-occurs="1" in-xml="WITH_WRAPPER" as-type="markup-multiline">
@@ -106,9 +106,10 @@
    <!-- ===============================  -->
    <define-assembly name="activity">
       <formal-name>Activity</formal-name>
-      <description>Identifies an assessment or related process that can be performed. In the assessment plan, this is an intended activity which may be associated with an assessment task. In the assessment results, this an activity that was actually performed as part of an assessement.</description>
+      <description>Identifies an assessment or related process that can be performed. In the assessment plan, this is an intended activity which may be associated with an assessment task. In the assessment results, this an activity that was actually performed as part of an assessment.</description>
       <define-flag name="uuid" required="yes" as-type="uuid">
-         <formal-name>Assessment Activity Universally Unique Identifier</formal-name>         <description>Uniquely identifies this assessment activity. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. A UUID should be consistantly used for a given included activity across revisions of the document.</description>
+         <formal-name>Assessment Activity Universally Unique Identifier</formal-name>
+         <description>Uniquely identifies this assessment activity. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. A UUID should be consistently used for a given included activity across revisions of the document.</description>
       </define-flag>
       <model>
          <define-field name="title" min-occurs="0" max-occurs="1" as-type="markup-line">
@@ -129,22 +130,22 @@
          
          <!-- CHANGE: Add "step". Replaces "test-step".  -->
          <define-assembly name="step" min-occurs="0" max-occurs="unbounded">
-            <formal-name>Action</formal-name>
-            <description>Identifies an individual actions, such as test steps or examination procedures.</description>
-            <group-as name="actions" in-json="ARRAY"/>
+            <formal-name>Step</formal-name>
+            <description>Identifies an individual step in a series of steps related to an activity, such as an assessment test or examination procedure.</description>
+            <group-as name="steps" in-json="ARRAY"/>
             <define-flag name="uuid" required="yes" as-type="uuid">
-               <formal-name>Action Universally Unique Identifier</formal-name>
-               <description>Uniquely identifies this defined action. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. A UUID should be consistantly used for a given test step across revisions of the document.</description>
+               <formal-name>Step Universally Unique Identifier</formal-name>
+               <description>Uniquely identifies a step. This UUID may be referenced elsewhere in an OSCAL document when referring to this step. A UUID should be consistently used for a given test step across revisions of the document.</description>
             </define-flag>
             <model>
                <define-field name="title" min-occurs="0" max-occurs="1" as-type="markup-line">
-                  <formal-name>Action Title</formal-name>
-                  <description>The title for this action.</description>
+                  <formal-name>Step Title</formal-name>
+                  <description>The title for this step.</description>
                </define-field>
                <!-- CHANGED: removed "sequence", since the collection is ordered -->
                <define-field name="description" min-occurs="1" max-occurs="1" as-type="markup-multiline" in-xml="WITH_WRAPPER">
-                  <formal-name>Action Description</formal-name>
-                  <description>A human-readable description of this action.</description>
+                  <formal-name>Step Description</formal-name>
+                  <description>A human-readable description of this step.</description>
                </define-field>
                <assembly ref="property" max-occurs="unbounded">
                   <group-as name="props" in-json="ARRAY"/>
@@ -154,14 +155,14 @@
                </assembly>
                <assembly ref="reviewed-controls">
                   <remarks>
-                     <p>This can be optionally used to define the set of controls and control objectives that are assessed by this action.</p>
+                     <p>This can be optionally used to define the set of controls and control objectives that are assessed by this step.</p>
                   </remarks>
                </assembly>
                <assembly ref="responsible-role" max-occurs="unbounded">
                   <!-- CHANGE: Removed "role-id" and "party-uuid" in favor of the standard "responsible-role". -->
                   <group-as name="responsible-roles" in-json="BY_KEY"/>
                   <remarks>
-                     <p>Identifies the roles, and optionally the parties, associated with this action that is part of an assessment activity.</p>
+                     <p>Identifies the roles, and optionally the parties, associated with this step that is part of an assessment activity.</p>
                   </remarks>
                </assembly>
                <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
@@ -194,40 +195,6 @@
             <enum value="TEST">The process of exercising one or more assessment objects (i.e., activities or mechanisms) under specified conditions to compare actual with expected behavior.</enum>
          </allowed-values>
       </constraint>
-   </define-assembly>
-   
-   <define-assembly name="action">
-      <formal-name>Action</formal-name>
-      <description>Identifies an assessment-related event that must occur as part of executing an assessment plan, the result of which may be recorded within the assessment log in assessment results.</description>
-      <define-flag name="uuid" required="yes" as-type="uuid">
-         <formal-name>Event Universally Unique Identifier</formal-name>
-         <description>Uniquely identifies an assessment event. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. A UUID should be consistantly used for this schedule across revisions of the document.</description>
-      </define-flag>
-      <model>
-         <define-field name="title" min-occurs="0" max-occurs="1" as-type="markup-line">
-            <formal-name>Event Title</formal-name>
-            <description>The title for this event.</description>
-         </define-field>
-         <!-- CHANGE: Added WITH_WRAPPER to description -->
-         <define-field name="description" min-occurs="1" max-occurs="1" as-type="markup-multiline" in-xml="WITH_WRAPPER">
-            <formal-name>Event Description</formal-name>
-            <description>A human-readable description of this event.</description>
-         </define-field>
-         <assembly ref="property" max-occurs="unbounded">
-            <group-as name="props" in-json="ARRAY"/>
-         </assembly>
-         <assembly ref="link" max-occurs="unbounded">
-            <group-as name="links" in-json="ARRAY"/>
-         </assembly>
-         <assembly ref="responsible-role" max-occurs="unbounded">
-            <group-as name="responsible-roles" in-json="BY_KEY"/>
-            <remarks>
-               <p>Identifies the person or organization responsible for performing a specific role defined by the activity.</p>
-            </remarks>
-         </assembly>
-
-         <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
-      </model>
    </define-assembly>
    
    <define-assembly name="task">
@@ -332,7 +299,7 @@
          <!-- CHANGED: Added "associated-activity" -->
          <define-assembly name="associated-activity" min-occurs="0" max-occurs="unbounded">
             <formal-name>Associated Activity</formal-name>
-            <description>Identifies an individual activity to be performed as part of an action.</description>
+            <description>Identifies an individual activity to be performed as part of a task.</description>
             <group-as name="associated-activities" in-json="ARRAY"/>
             <define-flag name="activity-uuid" required="yes" as-type="uuid">
                <formal-name>Activity Universally Unique Identifier Reference</formal-name>
@@ -367,7 +334,7 @@
             <use-name>subject</use-name>
             <group-as name="subjects" in-json="ARRAY"/>
             <remarks>
-               <p>The assessment subjects that the action was performed against.</p>
+               <p>The assessment subjects that the activity was performed against.</p>
             </remarks>
          </assembly>
          <assembly ref="responsible-role" max-occurs="unbounded">
@@ -510,7 +477,7 @@
       <model>
          <define-field name="statement-id" as-type="NCName" min-occurs="0" max-occurs="unbounded" >
             <formal-name>Include Specific Statements</formal-name>
-            <description>Used to constrain the selection to only specificly identified statements.</description>
+            <description>Used to constrain the selection to only specificity identified statements.</description>
             <group-as name="statement-ids" in-json="ARRAY"/>
          </define-field>
       </model>
@@ -541,7 +508,7 @@
             <group-as name="sources" in-json="ARRAY"/>
             <define-flag name="task-uuid" required="yes" as-type="uuid">
                <formal-name>Task Universally Unique Identifier</formal-name>
-               <description>Uniquely identifies an assessment activity to be performed as part of the event. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. A UUID should be consistantly used for this schedule across revisions of the document.</description>
+               <description>Uniquely identifies an assessment activity to be performed as part of the event. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. A UUID should be consistently used for this schedule across revisions of the document.</description>
             </define-flag>
          </define-assembly>
          <assembly ref="property" max-occurs="unbounded">
@@ -604,7 +571,7 @@
          <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
       </model>
       <remarks>
-         <p>Processing of an include/excluse pair starts with processing the include, then removing matching entries in the exlcude.</p>
+         <p>Processing of an include/exclude pair starts with processing the include, then removing matching entries in the exclude.</p>
       </remarks>
    </define-assembly>
 
@@ -686,7 +653,7 @@
             <use-name>component</use-name>
             <group-as name="components" in-json="BY_KEY"/>
             <remarks>
-               <p>Used to add any components for tools used during the assessment. These are represented here to avoid mixing with system compoenents.</p>
+               <p>Used to add any components for tools used during the assessment. These are represented here to avoid mixing with system components.</p>
                <p>The technology tools used by the assessor to perform the assessment, such as vulnerability scanners. In the assessment plan these are the intended tools. In the assessment results, these are the actual tools used, including any differences from the assessment plan.</p>
             </remarks>
          </assembly>
@@ -806,7 +773,7 @@
       <description>Describes an individual observation.</description>
       <define-flag name="uuid" required="yes" as-type="uuid">
          <formal-name>Observation Universally Unique Identifier</formal-name>
-         <description>Uniquely identifies this observation. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. Once assigned, a UUID should be consistantly used for a given observation across revisions.</description>
+         <description>Uniquely identifies this observation. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. Once assigned, a UUID should be consistently used for a given observation across revisions.</description>
       </define-flag>
       <model>
          <define-field name="title" min-occurs="0" max-occurs="1" as-type="markup-line">
@@ -1153,15 +1120,15 @@
          </assembly>
          <define-assembly name="risk-log">
             <formal-name>Risk Log</formal-name>
-            <description>A log of all risk-related actions taken.</description>
+            <description>A log of all risk-related tasks taken.</description>
             <model>
                <define-assembly name="entry" min-occurs="1" max-occurs="unbounded">
                   <formal-name>Risk Log Entry</formal-name>
-                  <description>Identifies the result of an action and/or task that occured as part of executing an assessment plan or an assessment event that occured in producing the assessment results.</description>
+                  <description>Identifies the result of a task that occurred as part of executing an assessment plan or an assessment event that occurred in producing the assessment results.</description>
                   <group-as name="entries" in-json="ARRAY"/>
                   <define-flag name="uuid" required="yes" as-type="uuid">
                      <formal-name>Risk Log Entry Universally Unique Identifier</formal-name>
-                     <description>Uniquely identifies an assessment event. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. A UUID should be consistantly used for this schedule across revisions of the document.</description>
+                     <description>Uniquely identifies an assessment event. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. A UUID should be consistently used for this schedule across revisions of the document.</description>
                   </define-flag>
                   <model>
                      <define-field name="title" min-occurs="0" max-occurs="1" as-type="markup-line">
@@ -1193,7 +1160,7 @@
                      <field ref="risk-status">
                         <use-name>status-change</use-name>
                         <remarks>
-                           <p>Identifies a change in risk status made by the action described in this risk log entry. This allows the risk's status history to be captured as a sequence of risk log entries.</p>
+                           <p>Identifies a change in risk status made resulting from the task described by this risk log entry. This allows the risk's status history to be captured as a sequence of risk log entries.</p>
                         </remarks>
                      </field>
                      <define-assembly name="related-response" max-occurs="unbounded">
@@ -1216,7 +1183,7 @@
                            <assembly ref="related-task" max-occurs="unbounded">
                               <group-as name="related-tasks" in-json="ARRAY"/>
                               <remarks>
-                                 <p>This is used to identify the response action that this log entry relates to.</p>
+                                 <p>This is used to identify the task(s) that this log entry was generated for.</p>
                               </remarks>
                            </assembly>
                            <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
@@ -1245,52 +1212,7 @@
                </define-assembly>
             </model>            
          </define-assembly>
-         
-<!--         <define-field name="closure-actions" as-type="markup-multiline">
-            <formal-name>Closer Actions</formal-name>
-            <description>Describes the actions taken that resulted in the closure of the identified risk.</description>
-         </define-field>
-         <define-assembly name="remediation-tracking">
-            <formal-name>Remediation Tracking</formal-name>
-            <description>A log of events and actions taken towards the remediation of the associated risk.</description>
-            <model>
-               <define-assembly name="entry" min-occurs="1" max-occurs="unbounded">
-                  <!-\- CHANGED "tracking-entry" to "entry", and "tracking-entries" to "entries" -\->
-                  <formal-name>Tracking Entry</formal-name>
-                  <description>Individual remediation tracking entry, which logs an event or action taken towards the remediation of the associated risk.</description>
-                  <group-as name="entries" in-json="ARRAY"/>
-                  <define-flag name="uuid" required="no" as-type="uuid">
-                     <formal-name>Tracking Entry Universally Unique Identifier</formal-name>
-                     <description>Uniquely identifies this tracking entry. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. Once assigned, a UUID should be consistantly used for a given tracking entry across revisions.</description>
-                  </define-flag>
-                  <!-\- CHANGED: removed "type" flag and moved this to prop/@name='type' -\->
-                  <model>
-                     <define-field name="date-time-stamp" as-type="dateTime-with-timezone" min-occurs="1">
-                        <!-\- QUESTION: Is this named appropriately? -\->
-                        <formal-name>Date/Time Stamp</formal-name>
-                        <description>Date/time stamp of the associated information.</description>
-                     </define-field>
-                     <define-field name="title" min-occurs="0" max-occurs="1" as-type="markup-line">
-                        <formal-name>Tracking Entry Title</formal-name>
-                        <description>The title for this tracking entry.</description>
-                     </define-field>
-                     <define-field name="description" min-occurs="1" max-occurs="1" as-type="markup-multiline" >
-                        <formal-name>Tracking Entry Description</formal-name>
-                        <description>A human-readable description of this tracking entry.</description>
-                     </define-field>
-                     <assembly ref="property" max-occurs="unbounded">
-                        <group-as name="props" in-json="ARRAY"/>
-                     </assembly>
-                     <assembly ref="link" max-occurs="unbounded">
-                        <group-as name="links" in-json="ARRAY"/>
-                     </assembly>
-                     <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
-                  </model>
-               </define-assembly>
-            </model>
-         </define-assembly>
--->
-         <!-- CHANGE: Added to relate a risk to an observation -->
+
          <define-assembly name="related-observation" max-occurs="unbounded">
             <formal-name>Related Observation</formal-name>
             <description>Relates the finding to a set of referenced observations that were used to determine the finding.</description>
@@ -1300,9 +1222,6 @@
                <description>References an observation defined in the list of observations.</description>
             </define-flag>
          </define-assembly>
-         
-         <!-- QUESTION: ** (PROP) PRIORITY NEEDS TO BE ADDRESSED HERE, NOT ELSEWHERE ** -->
-         <!-- CHANGED: "removed "party-uuid" and replaced with "origin" -->
       </model>
       <constraint>
          <allowed-values target="prop/@name">
@@ -1414,9 +1333,9 @@
                </allowed-values>
                <allowed-values target="(.)[@system='http://fedramp.gov']/@name" allow-other="yes">
                   <!-- CHANGED: "fedramp-likelihood" to "likelihood" -->
-                  <enum value="likelihood">Likelihood as defined by FedRAMP. The class can be used to specifiy 'inital' and 'adjusted'.</enum>
-                  <enum value="impact">Impact as defined by FedRAMP.</enum>
-                  <enum value="risk">Risk as calculated according to FedRAMP.</enum>
+                  <enum value="likelihood">Likelihood as defined by FedRAMP. The <code>class</code> can be used to specify 'initial' and 'adjusted' risk states.</enum>
+                  <enum value="impact">Impact as defined by FedRAMP. The <code>class</code> can be used to specify 'initial' and 'adjusted' risk states.</enum>
+                  <enum value="risk">Risk as calculated according to FedRAMP. The <code>class</code> can be used to specify 'initial' and 'adjusted' risk states.</enum>
                </allowed-values>
                <allowed-values target="(.)[@system='http://cve.mitre.org']/@name">
                   <enum value="cve-id">An identifier managed by the CVE program (see <a>https://cve.mitre.org/</a>).</enum>
@@ -1607,7 +1526,7 @@
       <description>Describes either recommended or an actual plan for addressing the risk.</description>
       <define-flag name="uuid" required="yes" as-type="uuid">
          <formal-name>Remediation Universally Unique Identifier</formal-name>
-         <description>Uniquely identifies this remediation. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. Once assigned, a UUID should be consistantly used for a given remediation across revisions.</description>
+         <description>Uniquely identifies this remediation. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. Once assigned, a UUID should be consistently used for a given remediation across revisions.</description>
       </define-flag>
       <!-- CHANGED: type to lifecycle -->
       <define-flag name="lifecycle" as-type="NCName" required="yes">
@@ -1653,7 +1572,7 @@
             <group-as name="required-assets" in-json="ARRAY"/>
             <define-flag name="uuid" required="yes" as-type="uuid">
                <formal-name>Required Universally Unique Identifier</formal-name>
-               <description>Uniquely identifies this required asset. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. Once assigned, a UUID should be consistantly used for a given required asset across revisions.</description>
+               <description>Uniquely identifies this required asset. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. Once assigned, a UUID should be consistently used for a given required asset across revisions.</description>
             </define-flag>
             <model>
                <assembly ref="subject-reference" min-occurs="0" max-occurs="unbounded">
@@ -1704,7 +1623,7 @@
             <enum value="transfer">The risk will be transferred to another organization or entity.</enum>
             <enum value="accept">The risk will continue to exist without further efforts to address it. (Sometimes referred to as "Operationally required")</enum>
             <enum value="share">The risk will be partially transferred to another organization or entity.</enum>
-            <enum value="contingency">Plans will be made to address the risk impact if the risk occurs. (This is a form of mitigaton.)</enum>
+            <enum value="contingency">Plans will be made to address the risk impact if the risk occurs. (This is a form of mitigation.)</enum>
             <enum value="none">No response, such as when the identified risk is found to be a false positive.</enum>
          </allowed-values>
       </constraint>
@@ -1775,7 +1694,7 @@
          <assembly ref="link" max-occurs="unbounded">
             <group-as name="links" in-json="ARRAY"/>
          </assembly>
-         <any/>
+         <!-- <any/> -->
       </model>
       <constraint>
          <require when="@name='assessment'">
@@ -1795,7 +1714,7 @@
          <p>A <code>part</code> can be assigned an optional <code>id</code>, which allows for internal and external references to the textual concept contained within a <code>part</code>. A <code>id</code> provides a means for an OSCAL profile, or a higher layer OSCAL model to reference a specific part within a <code>catalog</code>. For example, an <code>id</code> can be used to reference or to make modifications to a control statement in a profile.</p>
          <p>Use of <code>part</code> and <code>prop</code> provides for a wide degree of extensibility within the OSCAL catalog model. The optional <code>ns</code> provides a means to qualify a part's <code>name</code>, allowing for organization-specific vocabularies to be defined with clear semantics. Any organization that extends OSCAL in this way should consistently assign a <code>ns</code> value that represents the organization, making a given namespace qualified <code>name</code> unique to that organization. This allows the combination of <code>ns</code> and <code>name</code> to always be unique and unambiguous, even when mixed with extensions from other organizations. Each organization is responsible for governance of their own extensions, and is strongly encouraged to publish their extensions as standards to their user community. If no <code>ns</code> is provided, the name is expected to be in the "OSCAL" namespace.</p>
          <p>To ensure a <code>ns</code> is unique to an organization and naming conflicts are avoided, a URI containing a DNS or other globally defined organization name should be used. For example, if FedRAMP and DoD both extend OSCAL, FedRAMP will use the <code>ns</code> "https://fedramp.gov", while DoD will use the <code>ns</code> "https://defense.gov" for any organization specific <code>name</code>.</p>
-         <p>Tools that process OSCAL content are not required to interpret unrecognized OSCAL extensions; however, OSCAL-compliant tools should not modify or remove unrecognized extensions, unless there is a compelling reason to do so, such as data sensitivity.</p>
+         <p>Tools that process OSCAL content are not required to interpret unrecognized OSCAL extensions; however, OSCAL compliant tools should not modify or remove unrecognized extensions, unless there is a compelling reason to do so, such as data sensitivity.</p>
       </remarks>
    </define-assembly>
 

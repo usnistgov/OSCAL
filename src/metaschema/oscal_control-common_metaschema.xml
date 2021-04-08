@@ -78,7 +78,7 @@
                         <assembly ref="link" max-occurs="unbounded">
                                 <group-as name="links" in-json="ARRAY"/>
                         </assembly>
-                        <any/>
+                        <!-- <any/> -->
                 </model>
                 <constraint>
                         <!-- CHANGE: added allowed values for a property/@name -->
@@ -103,7 +103,7 @@
                         <p>Use of <code>part</code> and <code>prop</code> provides for a wide degree of extensibility within the OSCAL catalog model. The optional <code>ns</code> provides a means to qualify a part's <code>name</code>, allowing for organization-specific vocabularies to be defined with clear semantics. Any organization that extends OSCAL in this way should consistently assign a <code>ns</code> value that represents the organization, making a given namespace qualified <code>name</code> unique to that organization. This allows the combination of <code>ns</code> and <code>name</code> to always be unique and unambiguous, even when mixed with extensions from other organizations. Each organization is responsible for governance of their own extensions, and is strongly encouraged to publish their extensions as standards to their user community. If no <code>ns</code> is provided, the name is expected to be in the "OSCAL" namespace.</p>
                         <p>To ensure a <code>ns</code> is unique to an organization and naming conflicts are avoided, a URI containing a DNS or other globally defined organization name should be used. For example, if FedRAMP and DoD both extend OSCAL, FedRAMP will use the <code>ns</code> "https://fedramp.gov", while DoD will use the <code>ns</code> "https://defense.gov" for any organization specific <code>name</code>.
                         </p>
-                        <p>Tools that process OSCAL content are not required to interpret unrecognized OSCAL extensions; however, OSCAL-compliant tools should not modify or remove unrecognized extensions, unless there is a compelling reason to do so, such as data sensitivity.</p>
+                        <p>Tools that process OSCAL content are not required to interpret unrecognized OSCAL extensions; however, OSCAL compliant tools should not modify or remove unrecognized extensions, unless there is a compelling reason to do so, such as data sensitivity.</p>
                 </remarks>
                 <example>
                         <description>Multiple Parts with Different Organization-Specific Names</description>
@@ -146,7 +146,7 @@
                         </assembly>
                         <define-field name="label" as-type="markup-line">
                                 <formal-name>Parameter Label</formal-name>
-                                <description>A short, placeholder name for the parameter, which can be used as a subsitute for a <code>value</code> if no value is assigned.</description>
+                                <description>A short, placeholder name for the parameter, which can be used as a substitute for a <code>value</code> if no value is assigned.</description>
                                 <remarks>
                                         <p>The label value should be suitable for inline display in a rendered catalog.</p>
                                 </remarks>
@@ -181,7 +181,7 @@
                                 </assembly>
                         </choice>
                         <field ref="remarks" in-xml="WITH_WRAPPER"/>
-                        <any/>
+                        <!-- <any/> -->
                 </model>
                 <remarks>
                         <p>In a catalog, a parameter is typically used as a placeholder for the future assignment of a parameter value, although the OSCAL model allows for the direct assignment of a value if desired by the control author. The <code>value</code> may be optionally used to specify one or more values. If no value is provided, then it is expected that the value will be provided at the Profile or Implementation layer.</p>
@@ -222,7 +222,7 @@
                                 <formal-name>Guideline Text</formal-name>
                                 <description>Prose permits multiple paragraphs, lists, tables etc.</description>
                         </define-field>
-                        <any/>
+                        <!-- <any/> -->
                 </model>
         </define-assembly>
 
@@ -248,7 +248,7 @@
                                 <!-- CHANGED "alternatives" to "choices" -->
                                 <group-as name="choice" in-json="ARRAY"/>
                         </define-field>
-                        <any/>
+                        <!-- <any/> -->
                 </model>
                 <remarks>
                         <p>A set of parameter value choices, that may be picked from to set the parameter value.</p>

@@ -285,7 +285,7 @@
                   </assembly>
                   <define-field name="label" as-type="markup-line">
                         <formal-name>Parameter Label</formal-name>
-                        <description>A short, placeholder name for the parameter, which can be used as a subsitute for a <code>value</code> if no value is assigned.</description>
+                        <description>A short, placeholder name for the parameter, which can be used as a substitute for a <code>value</code> if no value is assigned.</description>
                         <remarks>
                               <p>The label value should be suitable for inline display in a rendered catalog.</p>
                         </remarks>

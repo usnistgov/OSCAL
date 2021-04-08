@@ -138,8 +138,7 @@
             </allowed-values>
         </constraint>
         <remarks>
-            <p>While <code>published</code>,                <code>last-modified</code>,                <code>oscal-version</code>, and <code>version</code> are not required, values for these entries should be provided if the information is known. For a revision entry to be considered valid, at least one of the following items must be provided: <code>published</code>,                <code>last-modified</code>,                <code>version</code>, or a <code>link</code> with a <code>rel</code> of <q>source</q>.
-            </p>
+            <p>While <code>published</code>, <code>last-modified</code>, <code>oscal-version</code>, and <code>version</code> are not required, values for these entries should be provided if the information is known. For a revision entry to be considered valid, at least one of the following items must be provided: <code>published</code>, <code>last-modified</code>, <code>version</code>, or a <code>link</code> with a <code>rel</code> of <q>source</q>.</p>
         </remarks>
     </define-assembly>
 
@@ -148,7 +147,7 @@
         <description>A location, with associated metadata that can be referenced.</description>
         <define-flag name="uuid" as-type="uuid" required="yes">
             <formal-name>Location Universally Unique Identifier</formal-name>
-            <description>A unique identifier that can be used to reference this defined location elsewhere in an OSCAL document. A UUID should be consistantly used for a given location across revisions of the document.</description>
+            <description>A unique identifier that can be used to reference this defined location elsewhere in an OSCAL document. A UUID should be consistently used for a given location across revisions of the document.</description>
         </define-flag>
         <model>
             <define-field name="title" as-type="markup-line">
@@ -196,8 +195,8 @@
                 <enum value="data-center">A location that contains computing assets. A <code>class</code> can be used to indicate a subclass of data-center.</enum>
             </allowed-values>
             <allowed-values target="prop[@name='type' and @value='data-center']/@class" allow-other="yes">
-                <enum value="primary">The lcoation is a data-center used for normal operations.</enum>
-                <enum value="alternate">The lcoation is a data-center used for fail-over or backup operations.</enum>
+                <enum value="primary">The location is a data-center used for normal operations.</enum>
+                <enum value="alternate">The location is a data-center used for fail-over or backup operations.</enum>
             </allowed-values>
         </constraint>
     </define-assembly>
@@ -345,7 +344,7 @@
             <formal-name>Role Identifier</formal-name>
             <description>A unique identifier for a specific role instance. This identifier's uniqueness is document scoped and is intended to be consistent for the same role across minor revisions of the document.</description>
             <remarks>
-                <p>OSCAL has defined a set of standardized roles for consistant use in OSCAL documents. This allows tools consuming OSCAL content to infer specific semantics when these roles are used. These roles are documented in the specific contexts of their use (e.g., responsible-party, responsible-role). When using such a role, it is necessary to define these roles in this list, which will then allow such a role to be referenced.</p>
+                <p>OSCAL has defined a set of standardized roles for consistent use in OSCAL documents. This allows tools consuming OSCAL content to infer specific semantics when these roles are used. These roles are documented in the specific contexts of their use (e.g., responsible-party, responsible-role). When using such a role, it is necessary to define these roles in this list, which will then allow such a role to be referenced.</p>
             </remarks>
         </define-flag>
         <model>
@@ -395,11 +394,11 @@
         <model>
             <define-assembly name="resource" max-occurs="unbounded">
                 <formal-name>Resource</formal-name>
-                <description>A resource associated with content in the containing document. A resource may be directly included in the document base64 encoded or may point to one or more equavalent internet resources.</description>
+                <description>A resource associated with content in the containing document. A resource may be directly included in the document base64 encoded or may point to one or more equivalent internet resources.</description>
                 <group-as name="resources" in-json="ARRAY"/>
                 <define-flag name="uuid" as-type="uuid" required="yes">
                     <formal-name>Resource Universally Unique Identifier</formal-name>
-                    <description>A globally unique identifier that can be used to reference this defined resource elsewhere in an OSCAL document. A UUID should be consistantly used for a given resource across revisions of the document.</description>
+                    <description>A globally unique identifier that can be used to reference this defined resource elsewhere in an OSCAL document. A UUID should be consistently used for a given resource across revisions of the document.</description>
                 </define-flag>
                 <model>
                     <define-field name="title" as-type="markup-line">
@@ -439,7 +438,7 @@
                         </model>
                         <remarks>
                             <p>The <code>text</code> is used to define the endnote text, without any required bibliographic structure. If structured bibliographic data is needed, then the <code>biblio</code> can be used for this purpose.</p>
-                            <p>A <code>biblio</code> can be used to capture a structured bibliograpical citation in an appropriate format.</p>
+                            <p>A <code>biblio</code> can be used to capture a structured bibliographical citation in an appropriate format.</p>
                         </remarks>
                     </define-assembly>
                     <define-assembly name="rlink" max-occurs="unbounded">
@@ -478,7 +477,7 @@
                         <flag ref="media-type"/>
                     </define-field>
                     <field ref="remarks" in-xml="WITH_WRAPPER"/>
-                    <any/>
+                    <!-- <any/> -->
                 </model>
                 <constraint>
                     <allowed-values target="prop/@name">
