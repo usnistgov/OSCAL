@@ -12,7 +12,7 @@ fi
 echo -e "${P_INFO}Working in '${P_END}${working_dir}${P_INFO}'.${P_END}"
 
 
-release_version=${CIRCLE_TAG#"v"}
+release_version=${RELEASE_VERSION}
 release_name="oscal-${release_version}"
 
 archive_dir="${working_dir}/archive/${release_name}"
@@ -52,40 +52,5 @@ while IFS="|" read path dest_path || [[ -n "$path" ]]; do
 done < "$OSCALDIR/build/ci-cd/config/release-content"
 shopt -u nullglob
 shopt -u globstar
-
-archive_dir="${working_dir}/archive" # reassign to parent
-
-github-release release \
-    --user "${CIRCLE_PROJECT_USERNAME}" \
-    --repo "${CIRCLE_PROJECT_REPONAME}" \
-    --tag "${CIRCLE_TAG}" \
-    --name "OSCAL ${release_version} Release" \
-    --draft \
-    --pre-release \
-    2>&1 | sed -e "s/access_token=[0-9a-fA-F]*/access_token=**redacted**/g"
-
-archive_file="${working_dir}/${release_name}.tar.bz2"
-
-tar cvfj "${archive_file}" -C "${archive_dir}" .
-
-github-release upload \
-    --user "${CIRCLE_PROJECT_USERNAME}" \
-    --repo "${CIRCLE_PROJECT_REPONAME}" \
-    --tag "${CIRCLE_TAG}" \
-    --name "${archive_file/${working_dir}\//}" \
-    --file "${archive_file}" \
-    2>&1 | sed -e "s/access_token=[0-9a-fA-F]*/access_token=**redacted**/g"
-
-archive_file="${working_dir}/${release_name}.zip"
-
-(cd "${archive_dir}" && zip -r "${archive_file}" .)
-
-github-release upload \
-    --user "${CIRCLE_PROJECT_USERNAME}" \
-    --repo "${CIRCLE_PROJECT_REPONAME}" \
-    --tag "${CIRCLE_TAG}" \
-    --name "${archive_file/${working_dir}\//}" \
-    --file "${archive_file}" \
-    2>&1 | sed -e "s/access_token=[0-9a-fA-F]*/access_token=**redacted**/g"
 
 set +e
