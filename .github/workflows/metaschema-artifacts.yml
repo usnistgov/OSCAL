@@ -241,9 +241,6 @@ jobs:
         run: |
             cd "${OSCAL_WEBSITE_PATH}"
             hugo -v --debug --minify
-            # copy the circleci config
-            mkdir -p public/.circleci
-            cp ../.circleci/config.yml public/.circleci/config.yml
       - uses: actions/upload-artifact@v2
         with:
           name: website
