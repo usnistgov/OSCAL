@@ -76,10 +76,10 @@
       </xsl:if>
    </xsl:template>
    <!-- XML to JSON conversion: object filters -->
-   <xsl:strip-space elements="assessment-results metadata revision prop link role location address party responsible-party import-ap local-definitions objectives-and-methods part activity step reviewed-controls control-selection include-all include-control exclude-control control-objective-selection include-objective exclude-objective responsible-role related-controls result component status protocol port-range inventory-item implemented-component user authorized-privilege assessment-assets assessment-platform uses-component assessment-action attestation assessment-log entry logged-by related-task subject include-subject exclude-subject identified-subject observation origin actor relevant-evidence risk characterization facet mitigating-factor response required-asset task timing on-date within-date-range at-frequency dependency associated-activity subject-placeholder source risk-log related-response related-observation finding target associated-risk back-matter resource citation biblio rlink"/>
+   <xsl:strip-space elements="assessment-results metadata revision prop link role location address party responsible-party import-ap local-definitions objectives-and-methods part activity step reviewed-controls control-selection include-all include-control exclude-control control-objective-selection include-objective exclude-objective responsible-role related-controls result component status protocol port-range inventory-item implemented-component user authorized-privilege assessment-assets assessment-platform uses-component assessment-action attestation assessment-log entry logged-by related-task subject include-subject exclude-subject identified-subject observation origin actor relevant-evidence risk characterization facet mitigating-factor response required-asset task timing on-date within-date-range at-frequency dependency associated-activity subject-placeholder source risk-log related-response related-observation finding target implementation-status associated-risk back-matter resource citation biblio rlink"/>
    <!-- METASCHEMA conversion stylesheet supports XML -> METASCHEMA/SUPERMODEL conversion -->
    <!-- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ -->
-   <!-- METASCHEMA: OSCAL Assessment Results Model (version 1.0.0-rc1) in namespace "http://csrc.nist.gov/ns/oscal/1.0"-->
+   <!-- METASCHEMA: OSCAL Assessment Results Model (version 1.0.0-rc2) in namespace "http://csrc.nist.gov/ns/oscal/1.0"-->
    <xsl:template match="assessment-results"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
@@ -1106,7 +1106,7 @@
    <xsl:template match="observation"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
-      <assembly name="observation" gi="observation" formal-name="Objective">
+      <assembly name="observation" gi="observation" formal-name="Observation">
          <xsl:apply-templates select="@uuid"/>
          <xsl:apply-templates select="title"/>
          <xsl:apply-templates select="description"/>
@@ -1478,6 +1478,20 @@
             </group>
          </xsl:for-each-group>
          <xsl:apply-templates select="status"/>
+         <xsl:apply-templates select="implementation-status"/>
+         <xsl:apply-templates select="remarks"/>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="implementation-status"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <assembly name="implementation-status"
+                gi="implementation-status"
+                formal-name="Implementation Status">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">implementation-status</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="@state"/>
          <xsl:apply-templates select="remarks"/>
       </assembly>
    </xsl:template>
@@ -1648,7 +1662,7 @@
             name="value"
             key="value"
             gi="value"
-            formal-name="Annotated Property Value">
+            formal-name="Property Value">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
@@ -1786,7 +1800,7 @@
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
-   <xsl:template match="assessment-results/result/local-definitions/component/status/@state | assessment-results/result/local-definitions/assessment-assets/component/status/@state"
+   <xsl:template match="assessment-results/result/local-definitions/component/status/@state | assessment-results/result/local-definitions/assessment-assets/component/status/@state | implementation-status/@state"
                  priority="9"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
@@ -5157,7 +5171,7 @@
       <field name="description"
              gi="description"
              as-type="markup-multiline"
-             formal-name="Observaton Description"
+             formal-name="Observation Description"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
@@ -8088,7 +8102,7 @@
       <field name="status"
              gi="status"
              as-type="NCName"
-             formal-name="Implementation Status"
+             formal-name="Objective Status"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">status</xsl:attribute>
@@ -8701,8 +8715,8 @@
                  mode="md"
                  match="insert"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
-      <xsl:text>{{ </xsl:text>
-      <xsl:value-of select="@param-id"/>
+      <xsl:text>{{ insert: </xsl:text>
+      <xsl:value-of select="@type, @id-ref" separator=", "/>
       <xsl:text> }}</xsl:text>
    </xsl:template>
    <xsl:template xmlns:math="http://www.w3.org/2005/xpath-functions/math"

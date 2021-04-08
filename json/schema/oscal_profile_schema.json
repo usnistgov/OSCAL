@@ -407,7 +407,7 @@
         "additionalProperties" : false },
       "oscal-profile-property" : 
       { "title" : "Property",
-        "description" : "An attribute, characteristic, or quality of the containing object expressed as a namespace qualified name/value pair. The value of a property is a simple scalar value, which may be expressed as a list of values in some OSCAL formats.",
+        "description" : "An attribute, characteristic, or quality of the containing object expressed as a namespace qualified name/value pair. The value of a property is a simple scalar value, which may be expressed as a list of values.",
         "$id" : "#/definitions/property",
         "type" : "object",
         "properties" : 
@@ -426,8 +426,8 @@
             "type" : "string",
             "format" : "uri" },
           "value" : 
-          { "title" : "Annotated Property Value",
-            "description" : "Indicates the optional value of the attribute, characteristic, or quality. Typically, a value will be provided; however, the value is optional allowing cases were the name is asserting some characteristic or quality.",
+          { "title" : "Property Value",
+            "description" : "Indicates the value of the attribute, characteristic, or quality.",
             "type" : "string" },
           "class" : 
           { "title" : "Property Class",
@@ -813,7 +813,7 @@
         "additionalProperties" : false },
       "oscal-profile-import" : 
       { "title" : "Import resource",
-        "description" : "An Import element designates a catalog, profile, or other resource to be included (referenced and potentially modified) by this profile.",
+        "description" : "The import designates a catalog, profile, or other resource to be included (referenced and potentially modified) by this profile. The import also identifies which controls to select using the include-all, include-controls, and exclude-controls directives.",
         "$id" : "#/definitions/import",
         "type" : "object",
         "properties" : 
@@ -822,10 +822,18 @@
             "description" : "A resolvable URL reference to the base catalog or profile that this profile is tailoring.",
             "type" : "string",
             "format" : "uri-reference" },
-          "include" : 
-          { "$ref" : "#/definitions/include" },
-          "exclude" : 
-          { "$ref" : "#/definitions/exclude" } },
+          "include-all" : 
+          { "$ref" : "#/definitions/include-all" },
+          "include-controls" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/select-control-by-id" } },
+          "exclude-controls" : 
+          { "type" : "array",
+            "minItems" : 1,
+            "items" : 
+            { "$ref" : "#/definitions/select-control-by-id" } } },
         "required" : 
         [ "href" ],
         "additionalProperties" : false },
@@ -873,16 +881,11 @@
             "minItems" : 1,
             "items" : 
             { "$ref" : "#/definitions/group" } },
-          "id-selectors" : 
+          "insert-controls" : 
           { "type" : "array",
             "minItems" : 1,
             "items" : 
-            { "$ref" : "#/definitions/call" } },
-          "pattern-selectors" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/match" } } },
+            { "$ref" : "#/definitions/insert-controls" } } },
         "additionalProperties" : false },
       "oscal-profile-group" : 
       { "title" : "Control group",
@@ -927,16 +930,11 @@
             "minItems" : 1,
             "items" : 
             { "$ref" : "#/definitions/group" } },
-          "calls" : 
+          "insert-controls" : 
           { "type" : "array",
             "minItems" : 1,
             "items" : 
-            { "$ref" : "#/definitions/call" } },
-          "matches" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/match" } } },
+            { "$ref" : "#/definitions/insert-controls" } } },
         "required" : 
         [ "title" ],
         "additionalProperties" : false },
@@ -962,29 +960,43 @@
             "items" : 
             { "$ref" : "#/definitions/alter" } } },
         "additionalProperties" : false },
-      "oscal-profile-include" : 
-      { "title" : "Include controls",
-        "description" : "Specifies which controls to include from the resource (source catalog) being imported",
-        "$id" : "#/definitions/include",
+      "oscal-profile-insert-controls" : 
+      { "title" : "Select controls",
+        "description" : "Specifies which controls to use in the containing context.",
+        "$id" : "#/definitions/insert-controls",
         "type" : "object",
         "properties" : 
-        { "all" : 
-          { "$ref" : "#/definitions/all" },
-          "calls" : 
+        { "order" : 
+          { "title" : "Order",
+            "description" : "A designation of how a selection of controls in a profile is to be ordered.",
+            "type" : "string",
+            "enum" : 
+            [ "keep",
+              "ascending",
+              "descending" ] },
+          "include-all" : 
+          { "$ref" : "#/definitions/include-all" },
+          "include-controls" : 
           { "type" : "array",
             "minItems" : 1,
             "items" : 
-            { "$ref" : "#/definitions/call" } },
-          "matches" : 
+            { "$ref" : "#/definitions/select-control-by-id" } },
+          "exclude-controls" : 
           { "type" : "array",
             "minItems" : 1,
             "items" : 
-            { "$ref" : "#/definitions/match" } } },
+            { "$ref" : "#/definitions/select-control-by-id" } } },
         "additionalProperties" : false },
-      "oscal-profile-all" : 
-      { "title" : "Include all",
-        "description" : "Include all controls from the imported resource (catalog)",
-        "$id" : "#/definitions/all",
+      "oscal-profile-include-all" : 
+      { "title" : "Insert All",
+        "description" : "Insert all controls from the imported catalog or profile resources identified in the import directive.",
+        "$id" : "#/definitions/include-all",
+        "type" : "object",
+        "additionalProperties" : false },
+      "oscal-profile-select-control-by-id" : 
+      { "title" : "Call",
+        "description" : "Call a control by its ID",
+        "$id" : "#/definitions/select-control-by-id",
         "type" : "object",
         "properties" : 
         { "with-child-controls" : 
@@ -993,70 +1005,27 @@
             "type" : "string",
             "enum" : 
             [ "yes",
-              "no" ] } },
-        "additionalProperties" : false },
-      "oscal-profile-call" : 
-      { "title" : "Call",
-        "description" : "Call a control by its ID",
-        "$id" : "#/definitions/call",
-        "type" : "object",
-        "properties" : 
-        { "control-id" : 
-          { "title" : "Control ID",
-            "description" : "Value of the 'id' flag on a target control",
-            "type" : "string" },
-          "with-child-controls" : 
-          { "title" : "Include contained controls with control",
-            "description" : "When a control is included, whether its child (dependent) controls are also included.",
-            "type" : "string",
-            "enum" : 
-            [ "yes",
-              "no" ] } },
-        "required" : 
-        [ "control-id" ],
-        "additionalProperties" : false },
-      "oscal-profile-match" : 
-      { "title" : "Match controls by identifier",
-        "description" : "Select controls by (regular expression) match on ID",
-        "$id" : "#/definitions/match",
-        "type" : "object",
-        "properties" : 
-        { "pattern" : 
-          { "title" : "Pattern",
-            "description" : "A regular expression matching the IDs of one or more controls to be selected",
-            "type" : "string" },
-          "order" : 
-          { "title" : "Order",
-            "description" : "A designation of how a selection of controls in a profile is to be ordered.",
-            "type" : "string",
-            "enum" : 
-            [ "keep",
-              "ascending",
-              "descending" ] },
-          "with-child-controls" : 
-          { "title" : "Include contained controls with control",
-            "description" : "When a control is included, whether its child (dependent) controls are also included.",
-            "type" : "string",
-            "enum" : 
-            [ "yes",
-              "no" ] } },
-        "additionalProperties" : false },
-      "oscal-profile-exclude" : 
-      { "title" : "Exclude controls",
-        "description" : "Which controls to exclude from the resource (source catalog) being imported",
-        "$id" : "#/definitions/exclude",
-        "type" : "object",
-        "properties" : 
-        { "calls" : 
+              "no" ] },
+          "with-ids" : 
           { "type" : "array",
             "minItems" : 1,
             "items" : 
-            { "$ref" : "#/definitions/call" } },
-          "matches" : 
+            { "title" : "Match Controls by Identifier",
+              "description" : "",
+              "type" : "string" } },
+          "matching" : 
           { "type" : "array",
             "minItems" : 1,
             "items" : 
-            { "$ref" : "#/definitions/match" } } },
+            { "title" : "Match Controls by Pattern",
+              "description" : "Select controls by (regular expression) match on ID",
+              "type" : "object",
+              "properties" : 
+              { "pattern" : 
+                { "title" : "Pattern",
+                  "description" : "A glob expression matching the IDs of one or more controls to be selected.",
+                  "type" : "string" } },
+              "additionalProperties" : false } } },
         "additionalProperties" : false },
       "oscal-profile-set-parameter" : 
       { "title" : "Parameter Setting",
@@ -1131,25 +1100,29 @@
         "additionalProperties" : false },
       "oscal-profile-remove" : 
       { "title" : "Removal",
-        "description" : "Specifies elements to be removed from a control, in resolution",
+        "description" : "Specifies objects to be removed from a control based on specific aspects of the object that must all match.",
         "$id" : "#/definitions/remove",
         "type" : "object",
         "properties" : 
         { "name-ref" : 
           { "title" : "Reference by (assigned) name",
-            "description" : "Items to remove, by assigned name",
+            "description" : "Identify items to remove by matching their assigned name",
             "type" : "string" },
           "class-ref" : 
           { "title" : "Reference by class",
-            "description" : "Items to remove, by class. A token match.",
+            "description" : "Identify items to remove by matching their class.",
             "type" : "string" },
           "id-ref" : 
           { "title" : "Reference by ID",
-            "description" : "Items to remove, indicated by their IDs",
+            "description" : "Identify items to remove indicated by their id.",
             "type" : "string" },
           "item-name" : 
-          { "title" : "References by item name or generic identifier",
-            "description" : "Items to remove, by the name of the item's type, or generic identifier, e.g. title or prop",
+          { "title" : "Item Name Reference",
+            "description" : "Identify items to remove by the name of the item's information element name, e.g. title or prop",
+            "type" : "string" },
+          "ns-ref" : 
+          { "title" : "Item Namespace Reference",
+            "description" : "Identify items to remove by the item's ns, which is the namespace associated with a part, or prop.",
             "type" : "string" } },
         "additionalProperties" : false },
       "oscal-profile-add" : 

@@ -578,7 +578,7 @@
         "additionalProperties" : false },
       "oscal-catalog-property" : 
       { "title" : "Property",
-        "description" : "An attribute, characteristic, or quality of the containing object expressed as a namespace qualified name/value pair. The value of a property is a simple scalar value, which may be expressed as a list of values in some OSCAL formats.",
+        "description" : "An attribute, characteristic, or quality of the containing object expressed as a namespace qualified name/value pair. The value of a property is a simple scalar value, which may be expressed as a list of values.",
         "$id" : "#/definitions/property",
         "type" : "object",
         "properties" : 
@@ -597,8 +597,8 @@
             "type" : "string",
             "format" : "uri" },
           "value" : 
-          { "title" : "Annotated Property Value",
-            "description" : "Indicates the optional value of the attribute, characteristic, or quality. Typically, a value will be provided; however, the value is optional allowing cases were the name is asserting some characteristic or quality.",
+          { "title" : "Property Value",
+            "description" : "Indicates the value of the attribute, characteristic, or quality.",
             "type" : "string" },
           "class" : 
           { "title" : "Property Class",

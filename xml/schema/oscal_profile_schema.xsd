@@ -5,14 +5,14 @@
            xmlns:oscal-prose="http://csrc.nist.gov/ns/oscal/1.0"
            elementFormDefault="qualified"
            targetNamespace="http://csrc.nist.gov/ns/oscal/1.0"
-           version="1.0.0-rc1">
+           version="1.0.0-rc2">
    <xs:annotation>
       <xs:appinfo>
          <m:schema-name>OSCAL Profile Model</m:schema-name>
-         <m:schema-version>1.0.0-rc1</m:schema-version>
+         <m:schema-version>1.0.0-rc2</m:schema-version>
          <m:short-name>oscal-profile</m:short-name>
          <m:remarks>
-            <p>A profile designates a selection and configuration of controls from one or more catalogs, along with a series of operations over them. The topmost element in the OSCAL profile XML schema is <code>profile</code>. </p>
+            <p>A profile designates a selection and configuration of controls from one or more catalogs, along with a series of operations over them. The topmost element in the OSCAL profile XML schema is <code>profile</code>.</p>
          </m:remarks>
          <m:root>profile</m:root>
       </xs:appinfo>
@@ -463,15 +463,15 @@
             </xs:simpleType>
          </xs:element>
          <xs:element name="description" minOccurs="0" maxOccurs="1">
-            <xs:annotation>
-               <xs:appinfo>
-                  <m:formal-name>Role Description</m:formal-name>
-                  <m:description>A summary of the role's purpose and associated responsibilities.</m:description>
-               </xs:appinfo>
-               <xs:documentation>
-                  <b>Role Description</b>: A summary of the role's purpose and associated responsibilities.</xs:documentation>
-            </xs:annotation>
             <xs:complexType>
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Role Description</m:formal-name>
+                     <m:description>A summary of the role's purpose and associated responsibilities.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Role Description</b>: A summary of the role's purpose and associated responsibilities.</xs:documentation>
+               </xs:annotation>
                <xs:complexContent>
                   <xs:extension base="oscal-profile:markupMultilineType"/>
                </xs:complexContent>
@@ -549,15 +549,15 @@
                      </xs:complexType>
                   </xs:element>
                   <xs:element name="description" minOccurs="0" maxOccurs="1">
-                     <xs:annotation>
-                        <xs:appinfo>
-                           <m:formal-name>Resource Description</m:formal-name>
-                           <m:description>A short summary of the resource used to indicate the purpose of the resource.</m:description>
-                        </xs:appinfo>
-                        <xs:documentation>
-                           <b>Resource Description</b>: A short summary of the resource used to indicate the purpose of the resource.</xs:documentation>
-                     </xs:annotation>
                      <xs:complexType>
+                        <xs:annotation>
+                           <xs:appinfo>
+                              <m:formal-name>Resource Description</m:formal-name>
+                              <m:description>A short summary of the resource used to indicate the purpose of the resource.</m:description>
+                           </xs:appinfo>
+                           <xs:documentation>
+                              <b>Resource Description</b>: A short summary of the resource used to indicate the purpose of the resource.</xs:documentation>
+                        </xs:annotation>
                         <xs:complexContent>
                            <xs:extension base="oscal-profile:markupMultilineType"/>
                         </xs:complexContent>
@@ -734,10 +734,10 @@
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Property</m:formal-name>
-            <m:description>An attribute, characteristic, or quality of the containing object expressed as a namespace qualified name/value pair. The value of a property is a simple scalar value, which may be expressed as a list of values in some OSCAL formats.</m:description>
+            <m:description>An attribute, characteristic, or quality of the containing object expressed as a namespace qualified name/value pair. The value of a property is a simple scalar value, which may be expressed as a list of values.</m:description>
          </xs:appinfo>
          <xs:documentation>
-            <b>Property</b>: An attribute, characteristic, or quality of the containing object expressed as a namespace qualified name/value pair. The value of a property is a simple scalar value, which may be expressed as a list of values in some OSCAL formats.</xs:documentation>
+            <b>Property</b>: An attribute, characteristic, or quality of the containing object expressed as a namespace qualified name/value pair. The value of a property is a simple scalar value, which may be expressed as a list of values.</xs:documentation>
       </xs:annotation>
       <xs:sequence>
          <xs:element name="remarks" minOccurs="0" maxOccurs="1">
@@ -789,11 +789,11 @@
       <xs:attribute name="value" use="required" type="xs:string">
          <xs:annotation>
             <xs:appinfo>
-               <m:formal-name>Annotated Property Value</m:formal-name>
-               <m:description>Indicates the optional value of the attribute, characteristic, or quality. Typically, a value will be provided; however, the value is optional allowing cases were the name is asserting some characteristic or quality.</m:description>
+               <m:formal-name>Property Value</m:formal-name>
+               <m:description>Indicates the value of the attribute, characteristic, or quality.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>Annotated Property Value</b>: Indicates the optional value of the attribute, characteristic, or quality. Typically, a value will be provided; however, the value is optional allowing cases were the name is asserting some characteristic or quality.</xs:documentation>
+               <b>Property Value</b>: Indicates the value of the attribute, characteristic, or quality.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
       <xs:attribute name="class" type="xs:NCName">
@@ -1249,15 +1249,15 @@
             </xs:complexType>
          </xs:element>
          <xs:element name="usage" minOccurs="0" maxOccurs="1">
-            <xs:annotation>
-               <xs:appinfo>
-                  <m:formal-name>Parameter Usage Description</m:formal-name>
-                  <m:description>Describes the purpose and use of a parameter</m:description>
-               </xs:appinfo>
-               <xs:documentation>
-                  <b>Parameter Usage Description</b>: Describes the purpose and use of a parameter</xs:documentation>
-            </xs:annotation>
             <xs:complexType>
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Parameter Usage Description</m:formal-name>
+                     <m:description>Describes the purpose and use of a parameter</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Parameter Usage Description</b>: Describes the purpose and use of a parameter</xs:documentation>
+               </xs:annotation>
                <xs:complexContent>
                   <xs:extension base="oscal-profile:markupMultilineType"/>
                </xs:complexContent>
@@ -1343,15 +1343,15 @@
       </xs:annotation>
       <xs:sequence>
          <xs:element name="description" minOccurs="0" maxOccurs="1">
-            <xs:annotation>
-               <xs:appinfo>
-                  <m:formal-name>Constraint Description</m:formal-name>
-                  <m:description>A textual summary of the constraint to be applied.</m:description>
-               </xs:appinfo>
-               <xs:documentation>
-                  <b>Constraint Description</b>: A textual summary of the constraint to be applied.</xs:documentation>
-            </xs:annotation>
             <xs:complexType>
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Constraint Description</m:formal-name>
+                     <m:description>A textual summary of the constraint to be applied.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Constraint Description</b>: A textual summary of the constraint to be applied.</xs:documentation>
+               </xs:annotation>
                <xs:complexContent>
                   <xs:extension base="oscal-profile:markupMultilineType"/>
                </xs:complexContent>
@@ -1519,20 +1519,26 @@
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Import resource</m:formal-name>
-            <m:description>An Import element designates a catalog, profile, or other resource to be included (referenced and potentially modified) by this profile.</m:description>
+            <m:description>The <m:code>import</m:code> designates a catalog, profile, or other resource to be included (referenced and potentially modified) by this profile. The import also identifies which controls to select using the <m:code>include-all</m:code>, <m:code>include-controls</m:code>, and <m:code>exclude-controls</m:code> directives.</m:description>
          </xs:appinfo>
          <xs:documentation>
-            <b>Import resource</b>: An Import element designates a catalog, profile, or other resource to be included (referenced and potentially modified) by this profile.</xs:documentation>
+            <b>Import resource</b>: The import designates a catalog, profile, or other resource to be included (referenced and potentially modified) by this profile. The import also identifies which controls to select using the include-all, include-controls, and exclude-controls directives.</xs:documentation>
       </xs:annotation>
       <xs:sequence>
-         <xs:element name="include"
-                     type="oscal-profile:include-ASSEMBLY"
+         <xs:choice>
+            <xs:element name="include-all"
+                        type="oscal-profile:include-all-ASSEMBLY"
+                        minOccurs="1"
+                        maxOccurs="1"/>
+            <xs:element name="include-controls"
+                        type="oscal-profile:select-control-by-id-ASSEMBLY"
+                        minOccurs="1"
+                        maxOccurs="unbounded"/>
+         </xs:choice>
+         <xs:element name="exclude-controls"
+                     type="oscal-profile:select-control-by-id-ASSEMBLY"
                      minOccurs="0"
-                     maxOccurs="1"/>
-         <xs:element name="exclude"
-                     type="oscal-profile:exclude-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="1"/>
+                     maxOccurs="unbounded"/>
       </xs:sequence>
       <xs:attribute name="href" use="required" type="oscal-profile:uri-reference">
          <xs:annotation>
@@ -1612,20 +1618,14 @@
             <b>Custom grouping</b>: A Custom element frames a structure for embedding represented controls in resolution.</xs:documentation>
       </xs:annotation>
       <xs:sequence>
-         <xs:choice>
-            <xs:element name="group"
-                        type="oscal-profile:group-ASSEMBLY"
-                        minOccurs="0"
-                        maxOccurs="unbounded"/>
-            <xs:element name="call"
-                        type="oscal-profile:call-ASSEMBLY"
-                        minOccurs="0"
-                        maxOccurs="unbounded"/>
-            <xs:element name="match"
-                        type="oscal-profile:match-ASSEMBLY"
-                        minOccurs="0"
-                        maxOccurs="unbounded"/>
-         </xs:choice>
+         <xs:element name="group"
+                     type="oscal-profile:group-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:element name="insert-controls"
+                     type="oscal-profile:insert-controls-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
       </xs:sequence>
    </xs:complexType>
    <xs:complexType name="group-ASSEMBLY">
@@ -1674,12 +1674,8 @@
                         type="oscal-profile:group-ASSEMBLY"
                         minOccurs="0"
                         maxOccurs="unbounded"/>
-            <xs:element name="call"
-                        type="oscal-profile:call-ASSEMBLY"
-                        minOccurs="0"
-                        maxOccurs="unbounded"/>
-            <xs:element name="match"
-                        type="oscal-profile:match-ASSEMBLY"
+            <xs:element name="insert-controls"
+                        type="oscal-profile:insert-controls-ASSEMBLY"
                         minOccurs="0"
                         maxOccurs="unbounded"/>
          </xs:choice>
@@ -1725,101 +1721,31 @@
                      maxOccurs="unbounded"/>
       </xs:sequence>
    </xs:complexType>
-   <xs:complexType name="include-ASSEMBLY">
+   <xs:complexType name="insert-controls-ASSEMBLY">
       <xs:annotation>
          <xs:appinfo>
-            <m:formal-name>Include controls</m:formal-name>
-            <m:description>Specifies which controls to include from the resource (source catalog) being imported</m:description>
+            <m:formal-name>Select controls</m:formal-name>
+            <m:description>Specifies which controls to use in the containing context.</m:description>
          </xs:appinfo>
          <xs:documentation>
-            <b>Include controls</b>: Specifies which controls to include from the resource (source catalog) being imported</xs:documentation>
+            <b>Select controls</b>: Specifies which controls to use in the containing context.</xs:documentation>
       </xs:annotation>
       <xs:sequence>
          <xs:choice>
-            <xs:element name="all"
-                        type="oscal-profile:all-ASSEMBLY"
-                        minOccurs="0"
+            <xs:element name="include-all"
+                        type="oscal-profile:include-all-ASSEMBLY"
+                        minOccurs="1"
                         maxOccurs="1"/>
-            <xs:element name="call"
-                        type="oscal-profile:call-ASSEMBLY"
-                        minOccurs="0"
-                        maxOccurs="unbounded"/>
-            <xs:element name="match"
-                        type="oscal-profile:match-ASSEMBLY"
-                        minOccurs="0"
+            <xs:element name="include-controls"
+                        type="oscal-profile:select-control-by-id-ASSEMBLY"
+                        minOccurs="1"
                         maxOccurs="unbounded"/>
          </xs:choice>
+         <xs:element name="exclude-controls"
+                     type="oscal-profile:select-control-by-id-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
       </xs:sequence>
-   </xs:complexType>
-   <xs:complexType name="all-ASSEMBLY">
-      <xs:annotation>
-         <xs:appinfo>
-            <m:formal-name>Include all</m:formal-name>
-            <m:description>Include all controls from the imported resource (catalog)</m:description>
-         </xs:appinfo>
-         <xs:documentation>
-            <b>Include all</b>: Include all controls from the imported resource (catalog)</xs:documentation>
-      </xs:annotation>
-      <xs:attribute name="with-child-controls" type="xs:NCName">
-         <xs:annotation>
-            <xs:appinfo>
-               <m:formal-name>Include contained controls with control</m:formal-name>
-               <m:description>When a control is included, whether its child (dependent) controls are also included.</m:description>
-            </xs:appinfo>
-            <xs:documentation>
-               <b>Include contained controls with control</b>: When a control is included, whether its child (dependent) controls are also included.</xs:documentation>
-         </xs:annotation>
-      </xs:attribute>
-   </xs:complexType>
-   <xs:complexType name="call-ASSEMBLY">
-      <xs:annotation>
-         <xs:appinfo>
-            <m:formal-name>Call</m:formal-name>
-            <m:description>Call a control by its ID</m:description>
-         </xs:appinfo>
-         <xs:documentation>
-            <b>Call</b>: Call a control by its ID</xs:documentation>
-      </xs:annotation>
-      <xs:attribute name="control-id" use="required" type="xs:NCName">
-         <xs:annotation>
-            <xs:appinfo>
-               <m:formal-name>Control ID</m:formal-name>
-               <m:description>Value of the 'id' flag on a target control</m:description>
-            </xs:appinfo>
-            <xs:documentation>
-               <b>Control ID</b>: Value of the 'id' flag on a target control</xs:documentation>
-         </xs:annotation>
-      </xs:attribute>
-      <xs:attribute name="with-child-controls" type="xs:NCName">
-         <xs:annotation>
-            <xs:appinfo>
-               <m:formal-name>Include contained controls with control</m:formal-name>
-               <m:description>When a control is included, whether its child (dependent) controls are also included.</m:description>
-            </xs:appinfo>
-            <xs:documentation>
-               <b>Include contained controls with control</b>: When a control is included, whether its child (dependent) controls are also included.</xs:documentation>
-         </xs:annotation>
-      </xs:attribute>
-   </xs:complexType>
-   <xs:complexType name="match-ASSEMBLY">
-      <xs:annotation>
-         <xs:appinfo>
-            <m:formal-name>Match controls by identifier</m:formal-name>
-            <m:description>Select controls by (regular expression) match on ID</m:description>
-         </xs:appinfo>
-         <xs:documentation>
-            <b>Match controls by identifier</b>: Select controls by (regular expression) match on ID</xs:documentation>
-      </xs:annotation>
-      <xs:attribute name="pattern" type="xs:string">
-         <xs:annotation>
-            <xs:appinfo>
-               <m:formal-name>Pattern</m:formal-name>
-               <m:description>A regular expression matching the IDs of one or more controls to be selected</m:description>
-            </xs:appinfo>
-            <xs:documentation>
-               <b>Pattern</b>: A regular expression matching the IDs of one or more controls to be selected</xs:documentation>
-         </xs:annotation>
-      </xs:attribute>
       <xs:attribute name="order" type="xs:NCName">
          <xs:annotation>
             <xs:appinfo>
@@ -1830,6 +1756,63 @@
                <b>Order</b>: A designation of how a selection of controls in a profile is to be ordered.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
+   </xs:complexType>
+   <xs:complexType name="include-all-ASSEMBLY">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Insert All</m:formal-name>
+            <m:description>Insert all controls from the imported catalog or profile resources identified in the <m:code>import</m:code> directive.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Insert All</b>: Insert all controls from the imported catalog or profile resources identified in the import directive.</xs:documentation>
+      </xs:annotation>
+   </xs:complexType>
+   <xs:complexType name="select-control-by-id-ASSEMBLY">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Call</m:formal-name>
+            <m:description>Call a control by its ID</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Call</b>: Call a control by its ID</xs:documentation>
+      </xs:annotation>
+      <xs:sequence>
+         <xs:element name="with-id" minOccurs="0" maxOccurs="unbounded">
+            <xs:simpleType>
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Match Controls by Identifier</m:formal-name>
+                     <m:description/>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Match Controls by Identifier</b>: </xs:documentation>
+               </xs:annotation>
+               <xs:restriction base="xs:NCName"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="matching" minOccurs="0" maxOccurs="unbounded">
+            <xs:complexType>
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Match Controls by Pattern</m:formal-name>
+                     <m:description>Select controls by (regular expression) match on ID</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Match Controls by Pattern</b>: Select controls by (regular expression) match on ID</xs:documentation>
+               </xs:annotation>
+               <xs:attribute name="pattern" type="xs:string">
+                  <xs:annotation>
+                     <xs:appinfo>
+                        <m:formal-name>Pattern</m:formal-name>
+                        <m:description>A <m:a>glob expression</m:a> matching the IDs of one or more controls to be selected.</m:description>
+                     </xs:appinfo>
+                     <xs:documentation>
+                        <b>Pattern</b>: A glob expression matching the IDs of one or more controls to be selected.</xs:documentation>
+                  </xs:annotation>
+               </xs:attribute>
+            </xs:complexType>
+         </xs:element>
+      </xs:sequence>
       <xs:attribute name="with-child-controls" type="xs:NCName">
          <xs:annotation>
             <xs:appinfo>
@@ -1840,28 +1823,6 @@
                <b>Include contained controls with control</b>: When a control is included, whether its child (dependent) controls are also included.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
-   </xs:complexType>
-   <xs:complexType name="exclude-ASSEMBLY">
-      <xs:annotation>
-         <xs:appinfo>
-            <m:formal-name>Exclude controls</m:formal-name>
-            <m:description>Which controls to exclude from the resource (source catalog) being imported</m:description>
-         </xs:appinfo>
-         <xs:documentation>
-            <b>Exclude controls</b>: Which controls to exclude from the resource (source catalog) being imported</xs:documentation>
-      </xs:annotation>
-      <xs:sequence>
-         <xs:choice>
-            <xs:element name="call"
-                        type="oscal-profile:call-ASSEMBLY"
-                        minOccurs="0"
-                        maxOccurs="unbounded"/>
-            <xs:element name="match"
-                        type="oscal-profile:match-ASSEMBLY"
-                        minOccurs="0"
-                        maxOccurs="unbounded"/>
-         </xs:choice>
-      </xs:sequence>
    </xs:complexType>
    <xs:complexType name="set-parameter-ASSEMBLY">
       <xs:annotation>
@@ -1897,15 +1858,15 @@
             </xs:complexType>
          </xs:element>
          <xs:element name="usage" minOccurs="0" maxOccurs="1">
-            <xs:annotation>
-               <xs:appinfo>
-                  <m:formal-name>Parameter Usage Description</m:formal-name>
-                  <m:description>Describes the purpose and use of a parameter</m:description>
-               </xs:appinfo>
-               <xs:documentation>
-                  <b>Parameter Usage Description</b>: Describes the purpose and use of a parameter</xs:documentation>
-            </xs:annotation>
             <xs:complexType>
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Parameter Usage Description</m:formal-name>
+                     <m:description>Describes the purpose and use of a parameter</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Parameter Usage Description</b>: Describes the purpose and use of a parameter</xs:documentation>
+               </xs:annotation>
                <xs:complexContent>
                   <xs:extension base="oscal-profile:markupMultilineType"/>
                </xs:complexContent>
@@ -1995,50 +1956,60 @@
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Removal</m:formal-name>
-            <m:description>Specifies elements to be removed from a control, in resolution</m:description>
+            <m:description>Specifies objects to be removed from a control based on specific aspects of the object that must all match.</m:description>
          </xs:appinfo>
          <xs:documentation>
-            <b>Removal</b>: Specifies elements to be removed from a control, in resolution</xs:documentation>
+            <b>Removal</b>: Specifies objects to be removed from a control based on specific aspects of the object that must all match.</xs:documentation>
       </xs:annotation>
       <xs:attribute name="name-ref" type="xs:NCName">
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Reference by (assigned) name</m:formal-name>
-               <m:description>Items to remove, by assigned name</m:description>
+               <m:description>Identify items to remove by matching their assigned name</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>Reference by (assigned) name</b>: Items to remove, by assigned name</xs:documentation>
+               <b>Reference by (assigned) name</b>: Identify items to remove by matching their assigned name</xs:documentation>
          </xs:annotation>
       </xs:attribute>
       <xs:attribute name="class-ref" type="xs:NCName">
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Reference by class</m:formal-name>
-               <m:description>Items to remove, by class. A token match.</m:description>
+               <m:description>Identify items to remove by matching their <m:code>class</m:code>.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>Reference by class</b>: Items to remove, by class. A token match.</xs:documentation>
+               <b>Reference by class</b>: Identify items to remove by matching their class.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
       <xs:attribute name="id-ref" type="xs:NCName">
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Reference by ID</m:formal-name>
-               <m:description>Items to remove, indicated by their IDs</m:description>
+               <m:description>Identify items to remove indicated by their <m:code>id</m:code>.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>Reference by ID</b>: Items to remove, indicated by their IDs</xs:documentation>
+               <b>Reference by ID</b>: Identify items to remove indicated by their id.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
       <xs:attribute name="item-name" type="xs:NCName">
          <xs:annotation>
             <xs:appinfo>
-               <m:formal-name>References by item name or generic identifier</m:formal-name>
-               <m:description>Items to remove, by the name of the item's type, or generic identifier, e.g. <m:code>title</m:code> or <m:code>prop</m:code>
+               <m:formal-name>Item Name Reference</m:formal-name>
+               <m:description>Identify items to remove by the name of the item's information element name, e.g. <m:code>title</m:code> or <m:code>prop</m:code>
                </m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>References by item name or generic identifier</b>: Items to remove, by the name of the item's type, or generic identifier, e.g. title or prop </xs:documentation>
+               <b>Item Name Reference</b>: Identify items to remove by the name of the item's information element name, e.g. title or prop</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="ns-ref" type="xs:NCName">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Item Namespace Reference</m:formal-name>
+               <m:description>Identify items to remove by the item's <m:code>ns</m:code>, which is the namespace associated with a <m:code>part</m:code>, or <m:code>prop</m:code>.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Item Namespace Reference</b>: Identify items to remove by the item's ns, which is the namespace associated with a part, or prop.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
@@ -2239,7 +2210,19 @@
     (a parameter must be available)
   -->
    <xs:complexType name="insertType">
-      <xs:attribute name="param-id" use="required" type="xs:NCName"/>
+      <xs:annotation>
+         <xs:documentation>An insert can be used to identify a placeholder for dynamically inserting text related to a specific object, which is referenced by the object's identifier using an <code xmlns="http://csrc.nist.gov/ns/oscal/1.0">id-ref</code>. This insert mechanism allows the selection of which text value from the object to dynamically include based on the application's display requirements.</xs:documentation>
+      </xs:annotation>
+      <xs:attribute name="type" use="required" type="xs:NCName">
+         <xs:annotation>
+            <xs:documentation>The type of object to include from (e.g., parameter, control, component, role, etc.)</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="id-ref" use="required" type="xs:NCName">
+         <xs:annotation>
+            <xs:documentation>The identity of the object to insert a value for. The identity will be selected from the index of objects of the specified <code xmlns="http://csrc.nist.gov/ns/oscal/1.0">type</code>. The specific value to include is based on the application's display requirements, which will likely use a specific data element associated with the <code xmlns="http://csrc.nist.gov/ns/oscal/1.0">type</code> (e.g., title, identifier, value, etc.) that is appropriate for the application.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
    </xs:complexType>
    <!--
     Within a selection, a choice - tbd

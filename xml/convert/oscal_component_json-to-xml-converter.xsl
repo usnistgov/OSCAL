@@ -308,24 +308,8 @@
          <xsl:apply-templates select="*[@key='description']"/>
          <xsl:apply-templates select="*[@key='props']"/>
          <xsl:apply-templates select="*[@key='links']"/>
-         <xsl:apply-templates select="*[@key='implemented-requirements']"/>
-      </assembly>
-   </xsl:template>
-   <xsl:template match="j:array[@key='implemented-requirements']/j:map">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="  implemented-requirement" -->
-      <assembly name="implemented-requirement"
-                gi="implemented-requirement"
-                formal-name="Control Implementation">
-         <xsl:apply-templates select="*[@key='uuid']"/>
-         <xsl:apply-templates select="*[@key='control-id']"/>
-         <xsl:apply-templates select="*[@key='description']"/>
-         <xsl:apply-templates select="*[@key='props']"/>
-         <xsl:apply-templates select="*[@key='links']"/>
-         <xsl:apply-templates select="*[@key='responsible-roles']"/>
          <xsl:apply-templates select="*[@key='set-parameters']"/>
-         <xsl:apply-templates select="*[@key='statements']"/>
-         <xsl:apply-templates select="*[@key='remarks']"/>
+         <xsl:apply-templates select="*[@key='implemented-requirements']"/>
       </assembly>
    </xsl:template>
    <xsl:template match="j:map[@key='set-parameters']/j:map">
@@ -348,6 +332,23 @@
          </flag>
          <xsl:apply-templates select="*[@key='param-id']"/>
          <xsl:apply-templates select="*[@key='values']"/>
+         <xsl:apply-templates select="*[@key='remarks']"/>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="j:array[@key='implemented-requirements']/j:map">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="  implemented-requirement" -->
+      <assembly name="implemented-requirement"
+                gi="implemented-requirement"
+                formal-name="Control Implementation">
+         <xsl:apply-templates select="*[@key='uuid']"/>
+         <xsl:apply-templates select="*[@key='control-id']"/>
+         <xsl:apply-templates select="*[@key='description']"/>
+         <xsl:apply-templates select="*[@key='props']"/>
+         <xsl:apply-templates select="*[@key='links']"/>
+         <xsl:apply-templates select="*[@key='responsible-roles']"/>
+         <xsl:apply-templates select="*[@key='set-parameters']"/>
+         <xsl:apply-templates select="*[@key='statements']"/>
          <xsl:apply-templates select="*[@key='remarks']"/>
       </assembly>
    </xsl:template>
@@ -552,7 +553,7 @@
             name="value"
             key="value"
             gi="value"
-            formal-name="Annotated Property Value">
+            formal-name="Property Value">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
@@ -756,6 +757,19 @@
    <xsl:template match="j:array[@key='control-implementations']/j:map/j:string[@key='source']"
                  mode="keep-value-property"
                  priority="7"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:map[@key='set-parameters']/j:map/@key"><!-- XML match="set-parameter/@param-id" -->
+      <flag in-json="string"
+            as-type="NCName"
+            name="param-id"
+            key="param-id"
+            gi="param-id"
+            formal-name="Parameter ID">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:map[@key='set-parameters']/j:map/@key"
+                 mode="keep-value-property"
+                 priority="9"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:array[@key='implemented-requirements']/j:map/j:string[@key='control-id']"><!-- XML match="implemented-requirement/@control-id" -->
       <flag in-json="string"
             as-type="NCName"
@@ -769,19 +783,6 @@
    <xsl:template match="j:array[@key='implemented-requirements']/j:map/j:string[@key='control-id']"
                  mode="keep-value-property"
                  priority="9"><!-- Not keeping the flag here. --></xsl:template>
-   <xsl:template match="j:map[@key='set-parameters']/j:map/@key"><!-- XML match="set-parameter/@param-id" -->
-      <flag in-json="string"
-            as-type="NCName"
-            name="param-id"
-            key="param-id"
-            gi="param-id"
-            formal-name="Parameter ID">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="j:map[@key='set-parameters']/j:map/@key"
-                 mode="keep-value-property"
-                 priority="11"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:map[@key='statements']/j:map/@key"><!-- XML match="statement/@statement-id" -->
       <flag in-json="string"
             as-type="NCName"
@@ -1882,6 +1883,25 @@
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='components']/j:map/j:array[@key='control-implementations']/j:map/j:map[@key='set-parameters']/j:map/j:array[@key='values']/j:string"
+                 priority="10">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/component/control-implementation/set-parameter/value" -->
+      <field name="parameter-value"
+             gi="value"
+             as-type="string"
+             formal-name="Parameter Value"
+             in-json="SCALAR">
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='components']/j:map/j:array[@key='control-implementations']/j:map/j:map[@key='set-parameters']/j:map/j:array[@key='values']/j:string"
+                 mode="get-value-property"
+                 priority="10">
+      <value as-type="string" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
    <xsl:template match="j:map[@key='component-definition']/j:map[@key='components']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:string[@key='description']"
                  priority="9">
       <xsl:param name="with-key" select="true()"/>
@@ -2140,6 +2160,25 @@
                  mode="get-value-property"
                  priority="9">
       <value as-type="markup-line" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:map[@key='set-parameters']/j:map/j:array[@key='values']/j:string"
+                 priority="10">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/capability/control-implementation/set-parameter/value" -->
+      <field name="parameter-value"
+             gi="value"
+             as-type="string"
+             formal-name="Parameter Value"
+             in-json="SCALAR">
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:map[@key='set-parameters']/j:map/j:array[@key='values']/j:string"
+                 mode="get-value-property"
+                 priority="10">
+      <value as-type="string" in-json="string">
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
@@ -2741,7 +2780,7 @@
             <!-- Note that text contents are regex notation for matching so * must be \* -->
          <q>"<text/>"</q>
          <img alt="!\[{{$noclosebracket}}\]" src="\({{$nocloseparen}}\)"/>
-         <insert param-id="\{{\{{{{$nws}}\}}\}}"/>
+         <insert>\{\{\s*insert: <type/>,\s*<id-ref/>\s*\}\}</insert>
          <a href="\[{{$noclosebracket}}\]">\(<text not="\)"/>\)</a>
          <code>`<text/>`</code>
          <strong>
@@ -2753,6 +2792,27 @@
          <sup>\^<text/>\^</sup>
       </tag-spec>
    </xsl:variable>
+   <xsl:template match="*" mode="write-match">
+      <xsl:apply-templates select="@*, node()" mode="write-match"/>
+   </xsl:template>
+   <xsl:template match="@*[matches(., '\{\$text\}')]" mode="write-match">
+      <xsl:value-of select="replace(., '\{\$text\}', '(.*)?')"/>
+   </xsl:template>
+   <xsl:template match="@*[matches(., '\{\$nocloseparen\}')]" mode="write-match">
+      <xsl:value-of select="replace(., '\{\$nocloseparen\}', '([^\\(]*)?')"/>
+   </xsl:template>
+   <xsl:template match="@*[matches(., '\{\$noclosebracket\}')]" mode="write-match">
+      <xsl:value-of select="replace(., '\{\$noclosebracket\}', '([^\\[]*)?')"/>
+   </xsl:template>
+   <xsl:template match="text" mode="write-match">
+      <xsl:text>(.*?)</xsl:text>
+   </xsl:template>
+   <xsl:template match="insert/type | insert/id-ref" mode="write-match">
+      <xsl:text>(\i\c*?)</xsl:text>
+   </xsl:template>
+   <xsl:template match="text[@not]" mode="write-match">
+      <xsl:text expand-text="true">([^{ @not }]*?)</xsl:text>
+   </xsl:template>
    <xsl:template match="*" mode="write-replace">
         <!-- we can write an open/close pair even for an empty element b/c
              it will be parsed and serialized -->
@@ -2768,28 +2828,22 @@
       <xsl:value-of select="local-name()"/>
       <xsl:text>&gt;</xsl:text>
    </xsl:template>
-   <xsl:template match="*" mode="write-match">
-      <xsl:apply-templates select="@*, node()" mode="write-match"/>
-   </xsl:template>
-   <xsl:template match="@*[matches(., '\{\$text\}')]" mode="write-match">
-      <xsl:value-of select="replace(., '\{\$text\}', '(.*)?')"/>
-   </xsl:template>
-   <xsl:template match="@*[matches(., '\{\$nocloseparen\}')]" mode="write-match">
-      <xsl:value-of select="replace(., '\{\$nocloseparen\}', '([^\\(]*)?')"/>
-   </xsl:template>
-   <xsl:template match="@*[matches(., '\{\$noclosebracket\}')]" mode="write-match">
-      <xsl:value-of select="replace(., '\{\$noclosebracket\}', '([^\\[]*)?')"/>
-   </xsl:template>
-   <xsl:template match="@*[matches(., '\{\$nws\}')]" mode="write-match">
-        <!--<xsl:value-of select="."/>-->
-        <!--<xsl:value-of select="replace(., '\{\$nws\}', '(\S*)?')"/>-->
-      <xsl:value-of select="replace(., '\{\$nws\}', '\\s*(\\S+)?\\s*')"/>
-   </xsl:template>
    <xsl:template match="text" mode="write-replace">
       <xsl:text>$1</xsl:text>
    </xsl:template>
-   <xsl:template match="insert/@param-id" mode="write-replace">
-      <xsl:text> param-id='$1'</xsl:text>
+   <xsl:template match="insert" mode="write-replace">
+        <!-- we can write an open/close pair even for an empty element b/c
+             it will be parsed and serialized -->
+      <xsl:text>&lt;insert xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel"</xsl:text>
+      <!-- coercing the order to ensure correct formation of regegex       -->
+      <xsl:apply-templates mode="#current" select="*"/>
+      <xsl:text>/&gt;</xsl:text>
+   </xsl:template>
+   <xsl:template match="insert/type" mode="write-replace">
+      <xsl:text> type='$1'</xsl:text>
+   </xsl:template>
+   <xsl:template match="insert/id-ref" mode="write-replace">
+      <xsl:text> id-ref='$2'</xsl:text>
    </xsl:template>
    <xsl:template match="a/@href" mode="write-replace">
       <xsl:text> href='$2'</xsl:text>
@@ -2802,12 +2856,6 @@
    <xsl:template match="img/@src" mode="write-replace">
       <xsl:text> src='$2'</xsl:text>
       <!--<xsl:value-of select="replace(.,'\{\$insert\}','\$2')"/>-->
-   </xsl:template>
-   <xsl:template match="text" mode="write-match">
-      <xsl:text>(.*?)</xsl:text>
-   </xsl:template>
-   <xsl:template match="text[@not]" mode="write-match">
-      <xsl:text expand-text="true">([^{ @not }]*?)</xsl:text>
    </xsl:template>
    <xsl:variable name="line-example" xml:space="preserve"> { insertion } </xsl:variable>
    <!-- JSON to XML conversion: Supermodel serialization as XML -->

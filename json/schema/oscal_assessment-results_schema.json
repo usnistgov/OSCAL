@@ -461,7 +461,7 @@
         "additionalProperties" : false },
       "oscal-ar-property" : 
       { "title" : "Property",
-        "description" : "An attribute, characteristic, or quality of the containing object expressed as a namespace qualified name/value pair. The value of a property is a simple scalar value, which may be expressed as a list of values in some OSCAL formats.",
+        "description" : "An attribute, characteristic, or quality of the containing object expressed as a namespace qualified name/value pair. The value of a property is a simple scalar value, which may be expressed as a list of values.",
         "$id" : "#/definitions/property",
         "type" : "object",
         "properties" : 
@@ -480,8 +480,8 @@
             "type" : "string",
             "format" : "uri" },
           "value" : 
-          { "title" : "Annotated Property Value",
-            "description" : "Indicates the optional value of the attribute, characteristic, or quality. Typically, a value will be provided; however, the value is optional allowing cases were the name is asserting some characteristic or quality.",
+          { "title" : "Property Value",
+            "description" : "Indicates the value of the attribute, characteristic, or quality.",
             "type" : "string" },
           "class" : 
           { "title" : "Property Class",
@@ -815,6 +815,21 @@
             "enum" : 
             [ "TCP",
               "UDP" ] } },
+        "additionalProperties" : false },
+      "oscal-ar-implementation-status" : 
+      { "title" : "Implementation Status",
+        "description" : "Indicates the degree to which the a given control is implemented.",
+        "$id" : "#/definitions/implementation-status",
+        "type" : "object",
+        "properties" : 
+        { "state" : 
+          { "title" : "Implementation State",
+            "description" : "Identifies the implementation status of the control or control objective.",
+            "type" : "string" },
+          "remarks" : 
+          { "$ref" : "#/definitions/remarks" } },
+        "required" : 
+        [ "state" ],
         "additionalProperties" : false },
       "oscal-ar-system-user" : 
       { "title" : "System User",
@@ -1745,12 +1760,14 @@
             "items" : 
             { "$ref" : "#/definitions/link" } },
           "status" : 
-          { "title" : "Implementation Status",
+          { "title" : "Objective Status",
             "description" : "A brief indication as to whether the objective is satisfied or not within a given system.",
             "type" : "string",
             "enum" : 
             [ "satisfied",
               "not-satisfied" ] },
+          "implementation-status" : 
+          { "$ref" : "#/definitions/implementation-status" },
           "remarks" : 
           { "$ref" : "#/definitions/remarks" } },
         "required" : 
@@ -1759,7 +1776,7 @@
           "status" ],
         "additionalProperties" : false },
       "oscal-ar-observation" : 
-      { "title" : "Objective",
+      { "title" : "Observation",
         "description" : "Describes an individual observation.",
         "$id" : "#/definitions/observation",
         "type" : "object",
@@ -1774,7 +1791,7 @@
             "description" : "The title for this observation.",
             "type" : "string" },
           "description" : 
-          { "title" : "Observaton Description",
+          { "title" : "Observation Description",
             "description" : "A human-readable description of this assessment observation.",
             "type" : "string" },
           "props" : 
