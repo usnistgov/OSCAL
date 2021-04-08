@@ -76,10 +76,10 @@
       </xsl:if>
    </xsl:template>
    <!-- XML to JSON conversion: object filters -->
-   <xsl:strip-space elements="profile metadata revision prop link role location address party responsible-party import include all call match exclude merge combine custom group param constraint test guideline select part modify set-parameter alter remove add back-matter resource citation biblio rlink"/>
+   <xsl:strip-space elements="profile metadata revision prop link role location address party responsible-party import include-all include-controls matching exclude-controls merge combine custom group param constraint test guideline select part insert-controls modify set-parameter alter remove add back-matter resource citation biblio rlink"/>
    <!-- METASCHEMA conversion stylesheet supports XML -> METASCHEMA/SUPERMODEL conversion -->
    <!-- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ -->
-   <!-- METASCHEMA: OSCAL Profile Model (version 1.0.0-rc1) in namespace "http://csrc.nist.gov/ns/oscal/1.0"-->
+   <!-- METASCHEMA: OSCAL Profile Model (version 1.0.0-rc2) in namespace "http://csrc.nist.gov/ns/oscal/1.0"-->
    <xsl:template match="profile"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
@@ -370,27 +370,16 @@
       <xsl:param name="with-key" select="true()"/>
       <assembly name="import" gi="import" formal-name="Import resource">
          <xsl:apply-templates select="@href"/>
-         <xsl:apply-templates select="include"/>
-         <xsl:apply-templates select="exclude"/>
-      </assembly>
-   </xsl:template>
-   <xsl:template match="include"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <assembly name="include" gi="include" formal-name="Include controls">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">include</xsl:attribute>
-         </xsl:if>
-         <xsl:apply-templates select="all"/>
-         <xsl:for-each-group select="call" group-by="true()">
-            <group in-json="ARRAY" key="calls">
+         <xsl:apply-templates select="include-all"/>
+         <xsl:for-each-group select="include-controls" group-by="true()">
+            <group in-json="ARRAY" key="include-controls">
                <xsl:apply-templates select="current-group()">
                   <xsl:with-param name="with-key" select="false()"/>
                </xsl:apply-templates>
             </group>
          </xsl:for-each-group>
-         <xsl:for-each-group select="match" group-by="true()">
-            <group in-json="ARRAY" key="matches">
+         <xsl:for-each-group select="exclude-controls" group-by="true()">
+            <group in-json="ARRAY" key="exclude-controls">
                <xsl:apply-templates select="current-group()">
                   <xsl:with-param name="with-key" select="false()"/>
                </xsl:apply-templates>
@@ -398,51 +387,57 @@
          </xsl:for-each-group>
       </assembly>
    </xsl:template>
-   <xsl:template match="all" xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <assembly as-type="empty" name="all" gi="all" formal-name="Include all">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">all</xsl:attribute>
-         </xsl:if>
-         <xsl:apply-templates select="@with-child-controls"/>
-      </assembly>
-   </xsl:template>
-   <xsl:template match="call"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <assembly as-type="empty" name="call" gi="call" formal-name="Call">
-         <xsl:apply-templates select="@control-id"/>
-         <xsl:apply-templates select="@with-child-controls"/>
-      </assembly>
-   </xsl:template>
-   <xsl:template match="match"
+   <xsl:template match="include-all"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <assembly as-type="empty"
-                name="match"
-                gi="match"
-                formal-name="Match controls by identifier">
-         <xsl:apply-templates select="@pattern"/>
-         <xsl:apply-templates select="@order"/>
-         <xsl:apply-templates select="@with-child-controls"/>
+                name="include-all"
+                gi="include-all"
+                formal-name="Insert All">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">include-all</xsl:attribute>
+         </xsl:if>
       </assembly>
    </xsl:template>
-   <xsl:template match="exclude"
+   <xsl:template match="include-controls"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
-      <assembly name="exclude" gi="exclude" formal-name="Exclude controls">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">exclude</xsl:attribute>
-         </xsl:if>
-         <xsl:for-each-group select="call" group-by="true()">
-            <group in-json="ARRAY" key="calls">
+      <assembly name="select-control-by-id"
+                gi="include-controls"
+                formal-name="Call">
+         <xsl:apply-templates select="@with-child-controls"/>
+         <xsl:for-each-group select="with-id" group-by="true()">
+            <group in-json="ARRAY" key="with-ids">
                <xsl:apply-templates select="current-group()">
                   <xsl:with-param name="with-key" select="false()"/>
                </xsl:apply-templates>
             </group>
          </xsl:for-each-group>
-         <xsl:for-each-group select="match" group-by="true()">
-            <group in-json="ARRAY" key="matches">
+         <xsl:for-each-group select="matching" group-by="true()">
+            <group in-json="ARRAY" key="matching">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="exclude-controls"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <assembly name="select-control-by-id"
+                gi="exclude-controls"
+                formal-name="Call">
+         <xsl:apply-templates select="@with-child-controls"/>
+         <xsl:for-each-group select="with-id" group-by="true()">
+            <group in-json="ARRAY" key="with-ids">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="matching" group-by="true()">
+            <group in-json="ARRAY" key="matching">
                <xsl:apply-templates select="current-group()">
                   <xsl:with-param name="with-key" select="false()"/>
                </xsl:apply-templates>
@@ -489,15 +484,8 @@
                </xsl:apply-templates>
             </group>
          </xsl:for-each-group>
-         <xsl:for-each-group select="call" group-by="true()">
-            <group in-json="ARRAY" key="id-selectors">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
-         <xsl:for-each-group select="match" group-by="true()">
-            <group in-json="ARRAY" key="pattern-selectors">
+         <xsl:for-each-group select="insert-controls" group-by="true()">
+            <group in-json="ARRAY" key="insert-controls">
                <xsl:apply-templates select="current-group()">
                   <xsl:with-param name="with-key" select="false()"/>
                </xsl:apply-templates>
@@ -547,15 +535,8 @@
                </xsl:apply-templates>
             </group>
          </xsl:for-each-group>
-         <xsl:for-each-group select="call" group-by="true()">
-            <group in-json="ARRAY" key="calls">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
-         <xsl:for-each-group select="match" group-by="true()">
-            <group in-json="ARRAY" key="matches">
+         <xsl:for-each-group select="insert-controls" group-by="true()">
+            <group in-json="ARRAY" key="insert-controls">
                <xsl:apply-templates select="current-group()">
                   <xsl:with-param name="with-key" select="false()"/>
                </xsl:apply-templates>
@@ -706,6 +687,30 @@
          </xsl:for-each-group>
       </assembly>
    </xsl:template>
+   <xsl:template match="insert-controls"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <assembly name="insert-controls"
+                gi="insert-controls"
+                formal-name="Select controls">
+         <xsl:apply-templates select="@order"/>
+         <xsl:apply-templates select="include-all"/>
+         <xsl:for-each-group select="include-controls" group-by="true()">
+            <group in-json="ARRAY" key="include-controls">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="exclude-controls" group-by="true()">
+            <group in-json="ARRAY" key="exclude-controls">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+      </assembly>
+   </xsl:template>
    <xsl:template match="modify"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
@@ -811,6 +816,7 @@
          <xsl:apply-templates select="@class-ref"/>
          <xsl:apply-templates select="@id-ref"/>
          <xsl:apply-templates select="@item-name"/>
+         <xsl:apply-templates select="@ns-ref"/>
       </assembly>
    </xsl:template>
    <xsl:template match="add" xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -989,7 +995,7 @@
             name="value"
             key="value"
             gi="value"
-            formal-name="Annotated Property Value">
+            formal-name="Property Value">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
@@ -1094,7 +1100,7 @@
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
-   <xsl:template match="all/@with-child-controls | call/@with-child-controls | match/@with-child-controls"
+   <xsl:template match="include-controls/@with-child-controls | exclude-controls/@with-child-controls"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
             as-type="NCName"
@@ -1105,18 +1111,7 @@
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
-   <xsl:template match="call/@control-id | alter/@control-id"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-            as-type="NCName"
-            name="control-id"
-            key="control-id"
-            gi="control-id"
-            formal-name="Control ID">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="match/@pattern"
+   <xsl:template match="profile/import/include-controls/matching/@pattern | profile/import/exclude-controls/matching/@pattern | profile/merge/custom//group/insert-controls/include-controls/matching/@pattern | profile/merge/custom//group/insert-controls/exclude-controls/matching/@pattern | profile/merge/custom/insert-controls/include-controls/matching/@pattern | profile/merge/custom/insert-controls/exclude-controls/matching/@pattern"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
             as-type="string"
@@ -1124,17 +1119,6 @@
             key="pattern"
             gi="pattern"
             formal-name="Pattern">
-         <xsl:value-of select="."/>
-      </flag>
-   </xsl:template>
-   <xsl:template match="match/@order"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <flag in-json="string"
-            as-type="NCName"
-            name="order"
-            key="order"
-            gi="order"
-            formal-name="Order">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
@@ -1171,6 +1155,17 @@
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
+   <xsl:template match="insert-controls/@order"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <flag in-json="string"
+            as-type="NCName"
+            name="order"
+            key="order"
+            gi="order"
+            formal-name="Order">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
    <xsl:template match="set-parameter/@param-id"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
@@ -1179,6 +1174,17 @@
             key="param-id"
             gi="param-id"
             formal-name="Parameter ID">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="alter/@control-id"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <flag in-json="string"
+            as-type="NCName"
+            name="control-id"
+            key="control-id"
+            gi="control-id"
+            formal-name="Control ID">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
@@ -1222,7 +1228,18 @@
             name="item-name"
             key="item-name"
             gi="item-name"
-            formal-name="References by item name or generic identifier">
+            formal-name="Item Name Reference">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="remove/@ns-ref"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <flag in-json="string"
+            as-type="NCName"
+            name="ns-ref"
+            key="ns-ref"
+            gi="ns-ref"
+            formal-name="Item Namespace Reference">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
@@ -1958,8 +1975,58 @@
          </value>
       </field>
    </xsl:template>
-   <xsl:template match="profile/merge/custom//group/title"
+   <xsl:template match="profile/import/include-controls/with-id"
                  priority="9"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <field name="with-id"
+             gi="with-id"
+             as-type="NCName"
+             formal-name="Match Controls by Identifier"
+             in-json="SCALAR">
+         <value as-type="NCName" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
+   </xsl:template>
+   <xsl:template match="profile/import/include-controls/matching"
+                 priority="9"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <assembly as-type="empty"
+                name="matching"
+                gi="matching"
+                formal-name="Match Controls by Pattern">
+         <xsl:apply-templates select="@pattern"/>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="profile/import/exclude-controls/with-id"
+                 priority="8"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <field name="with-id"
+             gi="with-id"
+             as-type="NCName"
+             formal-name="Match Controls by Identifier"
+             in-json="SCALAR">
+         <value as-type="NCName" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
+   </xsl:template>
+   <xsl:template match="profile/import/exclude-controls/matching"
+                 priority="8"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <assembly as-type="empty"
+                name="matching"
+                gi="matching"
+                formal-name="Match Controls by Pattern">
+         <xsl:apply-templates select="@pattern"/>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="profile/merge/custom//group/title"
+                 priority="8"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field name="title"
@@ -1976,7 +2043,7 @@
       </field>
    </xsl:template>
    <xsl:template match="profile/merge/custom//group/param/link/text"
-                 priority="13"
+                 priority="12"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field name="text"
@@ -1993,7 +2060,7 @@
       </field>
    </xsl:template>
    <xsl:template match="profile/merge/custom//group/param/label"
-                 priority="11"
+                 priority="10"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field name="label"
@@ -2010,7 +2077,7 @@
       </field>
    </xsl:template>
    <xsl:template match="profile/merge/custom//group/param/usage"
-                 priority="11"
+                 priority="10"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field name="usage"
@@ -2030,7 +2097,7 @@
       </field>
    </xsl:template>
    <xsl:template match="profile/merge/custom//group/param/constraint/description"
-                 priority="13"
+                 priority="12"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field name="description"
@@ -2050,7 +2117,7 @@
       </field>
    </xsl:template>
    <xsl:template match="profile/merge/custom//group/param/constraint/test"
-                 priority="14"
+                 priority="13"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <assembly name="test" gi="test" formal-name="Constraint Test">
@@ -2059,7 +2126,7 @@
       </assembly>
    </xsl:template>
    <xsl:template match="profile/merge/custom//group/param/constraint/test/expression"
-                 priority="15"
+                 priority="14"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field name="expression"
@@ -2076,7 +2143,7 @@
       </field>
    </xsl:template>
    <xsl:template match="profile/merge/custom//group/param/select/choice"
-                 priority="14"
+                 priority="13"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field name="parameter-choice"
@@ -2090,7 +2157,7 @@
       </field>
    </xsl:template>
    <xsl:template match="profile/merge/custom//group/link/text"
-                 priority="11"
+                 priority="10"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field name="text"
@@ -2107,7 +2174,7 @@
       </field>
    </xsl:template>
    <xsl:template match="profile/merge/custom//group//part/title"
-                 priority="11"
+                 priority="10"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field name="title"
@@ -2124,7 +2191,7 @@
       </field>
    </xsl:template>
    <xsl:template match="profile/merge/custom//group//part/link/text"
-                 priority="13"
+                 priority="12"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
       <field name="text"
@@ -2139,6 +2206,106 @@
             <xsl:apply-templates mode="cast-prose"/>
          </value>
       </field>
+   </xsl:template>
+   <xsl:template match="profile/merge/custom//group/insert-controls/include-controls/with-id"
+                 priority="15"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <field name="with-id"
+             gi="with-id"
+             as-type="NCName"
+             formal-name="Match Controls by Identifier"
+             in-json="SCALAR">
+         <value as-type="NCName" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
+   </xsl:template>
+   <xsl:template match="profile/merge/custom//group/insert-controls/include-controls/matching"
+                 priority="15"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <assembly as-type="empty"
+                name="matching"
+                gi="matching"
+                formal-name="Match Controls by Pattern">
+         <xsl:apply-templates select="@pattern"/>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="profile/merge/custom//group/insert-controls/exclude-controls/with-id"
+                 priority="14"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <field name="with-id"
+             gi="with-id"
+             as-type="NCName"
+             formal-name="Match Controls by Identifier"
+             in-json="SCALAR">
+         <value as-type="NCName" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
+   </xsl:template>
+   <xsl:template match="profile/merge/custom//group/insert-controls/exclude-controls/matching"
+                 priority="14"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <assembly as-type="empty"
+                name="matching"
+                gi="matching"
+                formal-name="Match Controls by Pattern">
+         <xsl:apply-templates select="@pattern"/>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="profile/merge/custom/insert-controls/include-controls/with-id"
+                 priority="12"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <field name="with-id"
+             gi="with-id"
+             as-type="NCName"
+             formal-name="Match Controls by Identifier"
+             in-json="SCALAR">
+         <value as-type="NCName" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
+   </xsl:template>
+   <xsl:template match="profile/merge/custom/insert-controls/include-controls/matching"
+                 priority="12"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <assembly as-type="empty"
+                name="matching"
+                gi="matching"
+                formal-name="Match Controls by Pattern">
+         <xsl:apply-templates select="@pattern"/>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="profile/merge/custom/insert-controls/exclude-controls/with-id"
+                 priority="11"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <field name="with-id"
+             gi="with-id"
+             as-type="NCName"
+             formal-name="Match Controls by Identifier"
+             in-json="SCALAR">
+         <value as-type="NCName" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
+   </xsl:template>
+   <xsl:template match="profile/merge/custom/insert-controls/exclude-controls/matching"
+                 priority="11"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <assembly as-type="empty"
+                name="matching"
+                gi="matching"
+                formal-name="Match Controls by Pattern">
+         <xsl:apply-templates select="@pattern"/>
+      </assembly>
    </xsl:template>
    <xsl:template match="profile/modify/set-parameter/link/text"
                  priority="8"
@@ -3000,8 +3167,8 @@
                  mode="md"
                  match="insert"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
-      <xsl:text>{{ </xsl:text>
-      <xsl:value-of select="@param-id"/>
+      <xsl:text>{{ insert: </xsl:text>
+      <xsl:value-of select="@type, @id-ref" separator=", "/>
       <xsl:text> }}</xsl:text>
    </xsl:template>
    <xsl:template xmlns:math="http://www.w3.org/2005/xpath-functions/math"

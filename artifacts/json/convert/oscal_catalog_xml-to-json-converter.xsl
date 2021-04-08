@@ -79,7 +79,7 @@
    <xsl:strip-space elements="catalog metadata revision prop link role location address party responsible-party param constraint test guideline select control part group back-matter resource citation biblio rlink"/>
    <!-- METASCHEMA conversion stylesheet supports XML -> METASCHEMA/SUPERMODEL conversion -->
    <!-- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ -->
-   <!-- METASCHEMA: OSCAL Control Catalog Model (version 1.0.0-rc1) in namespace "http://csrc.nist.gov/ns/oscal/1.0"-->
+   <!-- METASCHEMA: OSCAL Control Catalog Model (version 1.0.0-rc2) in namespace "http://csrc.nist.gov/ns/oscal/1.0"-->
    <xsl:template match="catalog"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
@@ -739,7 +739,7 @@
             name="value"
             key="value"
             gi="value"
-            formal-name="Annotated Property Value">
+            formal-name="Property Value">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
@@ -2811,8 +2811,8 @@
                  mode="md"
                  match="insert"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
-      <xsl:text>{{ </xsl:text>
-      <xsl:value-of select="@param-id"/>
+      <xsl:text>{{ insert: </xsl:text>
+      <xsl:value-of select="@type, @id-ref" separator=", "/>
       <xsl:text> }}</xsl:text>
    </xsl:template>
    <xsl:template xmlns:math="http://www.w3.org/2005/xpath-functions/math"

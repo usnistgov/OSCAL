@@ -412,7 +412,7 @@
         "additionalProperties" : false },
       "oscal-ssp-property" : 
       { "title" : "Property",
-        "description" : "An attribute, characteristic, or quality of the containing object expressed as a namespace qualified name/value pair. The value of a property is a simple scalar value, which may be expressed as a list of values in some OSCAL formats.",
+        "description" : "An attribute, characteristic, or quality of the containing object expressed as a namespace qualified name/value pair. The value of a property is a simple scalar value, which may be expressed as a list of values.",
         "$id" : "#/definitions/property",
         "type" : "object",
         "properties" : 
@@ -431,8 +431,8 @@
             "type" : "string",
             "format" : "uri" },
           "value" : 
-          { "title" : "Annotated Property Value",
-            "description" : "Indicates the optional value of the attribute, characteristic, or quality. Typically, a value will be provided; however, the value is optional allowing cases were the name is asserting some characteristic or quality.",
+          { "title" : "Property Value",
+            "description" : "Indicates the value of the attribute, characteristic, or quality.",
             "type" : "string" },
           "class" : 
           { "title" : "Property Class",
@@ -766,6 +766,21 @@
             "enum" : 
             [ "TCP",
               "UDP" ] } },
+        "additionalProperties" : false },
+      "oscal-ssp-implementation-status" : 
+      { "title" : "Implementation Status",
+        "description" : "Indicates the degree to which the a given control is implemented.",
+        "$id" : "#/definitions/implementation-status",
+        "type" : "object",
+        "properties" : 
+        { "state" : 
+          { "title" : "Implementation State",
+            "description" : "Identifies the implementation status of the control or control objective.",
+            "type" : "string" },
+          "remarks" : 
+          { "$ref" : "#/definitions/remarks" } },
+        "required" : 
+        [ "state" ],
         "additionalProperties" : false },
       "oscal-ssp-system-user" : 
       { "title" : "System User",
@@ -1521,6 +1536,16 @@
           { "title" : "Control Implementation Description",
             "description" : "A statement describing important things to know about how this set of control satisfaction documentation is approached.",
             "type" : "string" },
+          "set-parameters" : 
+          { "type" : "object",
+            "minProperties" : 1,
+            "additionalProperties" : 
+            { "allOf" : 
+              [ 
+                { "$ref" : "#/definitions/set-parameter" },
+                
+                { "not" : 
+                  { "type" : "string" } } ] } },
           "implemented-requirements" : 
           { "type" : "array",
             "minItems" : 1,
@@ -1672,6 +1697,8 @@
                 
                 { "not" : 
                   { "type" : "string" } } ] } },
+          "implementation-status" : 
+          { "$ref" : "#/definitions/implementation-status" },
           "export" : 
           { "title" : "Export",
             "description" : "Identifies content intended for external consumption, such as with leveraged organizations.",
@@ -1836,12 +1863,12 @@
             "minItems" : 1,
             "items" : 
             { "title" : "Satisfied Control Implementation Responsibility",
-              "description" : "Describes how this system satisfies a responsibiity imposed by a leveraged system.",
+              "description" : "Describes how this system satisfies a responsibility imposed by a leveraged system.",
               "type" : "object",
               "properties" : 
               { "uuid" : 
                 { "title" : "Satisfied Universally Unique Identifier",
-                  "description" : "A globally unique identifier that can be used to reference this satisfied entry elsewhere in an OSCAL document. A UUID should be consistantly used for a given resource across revisions of the document.",
+                  "description" : "A globally unique identifier that can be used to reference this satisfied entry elsewhere in an OSCAL document. A UUID should be consistently used for a given resource across revisions of the document.",
                   "type" : "string",
                   "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
                 "responsibility-uuid" : 

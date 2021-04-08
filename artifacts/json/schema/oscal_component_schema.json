@@ -407,7 +407,7 @@
         "additionalProperties" : false },
       "oscal-component-definition-property" : 
       { "title" : "Property",
-        "description" : "An attribute, characteristic, or quality of the containing object expressed as a namespace qualified name/value pair. The value of a property is a simple scalar value, which may be expressed as a list of values in some OSCAL formats.",
+        "description" : "An attribute, characteristic, or quality of the containing object expressed as a namespace qualified name/value pair. The value of a property is a simple scalar value, which may be expressed as a list of values.",
         "$id" : "#/definitions/property",
         "type" : "object",
         "properties" : 
@@ -426,8 +426,8 @@
             "type" : "string",
             "format" : "uri" },
           "value" : 
-          { "title" : "Annotated Property Value",
-            "description" : "Indicates the optional value of the attribute, characteristic, or quality. Typically, a value will be provided; however, the value is optional allowing cases were the name is asserting some characteristic or quality.",
+          { "title" : "Property Value",
+            "description" : "Indicates the value of the attribute, characteristic, or quality.",
             "type" : "string" },
           "class" : 
           { "title" : "Property Class",
@@ -899,7 +899,7 @@
             "format" : "uri-reference" },
           "description" : 
           { "title" : "Control Implementation Description",
-            "description" : "A description of how the spefied set of controls are implemented for the containing component or capability.",
+            "description" : "A description of how the specified set of controls are implemented for the containing component or capability.",
             "type" : "string" },
           "props" : 
           { "type" : "array",
@@ -911,6 +911,16 @@
             "minItems" : 1,
             "items" : 
             { "$ref" : "#/definitions/link" } },
+          "set-parameters" : 
+          { "type" : "object",
+            "minProperties" : 1,
+            "additionalProperties" : 
+            { "allOf" : 
+              [ 
+                { "$ref" : "#/definitions/set-parameter" },
+                
+                { "not" : 
+                  { "type" : "string" } } ] } },
           "implemented-requirements" : 
           { "type" : "array",
             "minItems" : 1,
@@ -939,7 +949,7 @@
             "type" : "string" },
           "description" : 
           { "title" : "Control Implementation Description",
-            "description" : "A description of how the spefied control is implemented for the containing component or capability.",
+            "description" : "A description of how the specified control is implemented for the containing component or capability.",
             "type" : "string" },
           "props" : 
           { "type" : "array",

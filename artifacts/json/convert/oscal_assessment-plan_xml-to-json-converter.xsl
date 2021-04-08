@@ -79,7 +79,7 @@
    <xsl:strip-space elements="assessment-plan metadata revision prop link role location address party responsible-party import-ssp local-definitions component status responsible-role protocol port-range inventory-item implemented-component user authorized-privilege objectives-and-methods part activity step reviewed-controls control-selection include-all include-control exclude-control control-objective-selection include-objective exclude-objective related-controls terms-and-conditions assessment-subject include-subject exclude-subject assessment-assets assessment-platform uses-component task timing on-date within-date-range at-frequency dependency associated-activity subject subject-placeholder source back-matter resource citation biblio rlink"/>
    <!-- METASCHEMA conversion stylesheet supports XML -> METASCHEMA/SUPERMODEL conversion -->
    <!-- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ -->
-   <!-- METASCHEMA: OSCAL Assessment Plan Model (version 1.0.0-rc1) in namespace "http://csrc.nist.gov/ns/oscal/1.0"-->
+   <!-- METASCHEMA: OSCAL Assessment Plan Model (version 1.0.0-rc2) in namespace "http://csrc.nist.gov/ns/oscal/1.0"-->
    <xsl:template match="assessment-plan"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
@@ -1250,7 +1250,7 @@
             name="value"
             key="value"
             gi="value"
-            formal-name="Annotated Property Value">
+            formal-name="Property Value">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
@@ -5136,8 +5136,8 @@
                  mode="md"
                  match="insert"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
-      <xsl:text>{{ </xsl:text>
-      <xsl:value-of select="@param-id"/>
+      <xsl:text>{{ insert: </xsl:text>
+      <xsl:value-of select="@type, @id-ref" separator=", "/>
       <xsl:text> }}</xsl:text>
    </xsl:template>
    <xsl:template xmlns:math="http://www.w3.org/2005/xpath-functions/math"

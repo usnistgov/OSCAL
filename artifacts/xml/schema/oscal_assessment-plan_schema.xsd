@@ -5,11 +5,11 @@
            xmlns:oscal-prose="http://csrc.nist.gov/ns/oscal/1.0"
            elementFormDefault="qualified"
            targetNamespace="http://csrc.nist.gov/ns/oscal/1.0"
-           version="1.0.0-rc1">
+           version="1.0.0-rc2">
    <xs:annotation>
       <xs:appinfo>
          <m:schema-name>OSCAL Assessment Plan Model</m:schema-name>
-         <m:schema-version>1.0.0-rc1</m:schema-version>
+         <m:schema-version>1.0.0-rc2</m:schema-version>
          <m:short-name>oscal-ap</m:short-name>
          <m:remarks>
             <p>The OSCAL assessment plan format is used to describe the information typically provided by an assessor during the preparation for an assessment.</p>
@@ -550,15 +550,15 @@
             </xs:simpleType>
          </xs:element>
          <xs:element name="description" minOccurs="0" maxOccurs="1">
-            <xs:annotation>
-               <xs:appinfo>
-                  <m:formal-name>Role Description</m:formal-name>
-                  <m:description>A summary of the role's purpose and associated responsibilities.</m:description>
-               </xs:appinfo>
-               <xs:documentation>
-                  <b>Role Description</b>: A summary of the role's purpose and associated responsibilities.</xs:documentation>
-            </xs:annotation>
             <xs:complexType>
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Role Description</m:formal-name>
+                     <m:description>A summary of the role's purpose and associated responsibilities.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Role Description</b>: A summary of the role's purpose and associated responsibilities.</xs:documentation>
+               </xs:annotation>
                <xs:complexContent>
                   <xs:extension base="oscal-ap:markupMultilineType"/>
                </xs:complexContent>
@@ -647,15 +647,15 @@
                      </xs:complexType>
                   </xs:element>
                   <xs:element name="description" minOccurs="0" maxOccurs="1">
-                     <xs:annotation>
-                        <xs:appinfo>
-                           <m:formal-name>Resource Description</m:formal-name>
-                           <m:description>A short summary of the resource used to indicate the purpose of the resource.</m:description>
-                        </xs:appinfo>
-                        <xs:documentation>
-                           <b>Resource Description</b>: A short summary of the resource used to indicate the purpose of the resource.</xs:documentation>
-                     </xs:annotation>
                      <xs:complexType>
+                        <xs:annotation>
+                           <xs:appinfo>
+                              <m:formal-name>Resource Description</m:formal-name>
+                              <m:description>A short summary of the resource used to indicate the purpose of the resource.</m:description>
+                           </xs:appinfo>
+                           <xs:documentation>
+                              <b>Resource Description</b>: A short summary of the resource used to indicate the purpose of the resource.</xs:documentation>
+                        </xs:annotation>
                         <xs:complexContent>
                            <xs:extension base="oscal-ap:markupMultilineType"/>
                         </xs:complexContent>
@@ -832,10 +832,10 @@
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Property</m:formal-name>
-            <m:description>An attribute, characteristic, or quality of the containing object expressed as a namespace qualified name/value pair. The value of a property is a simple scalar value, which may be expressed as a list of values in some OSCAL formats.</m:description>
+            <m:description>An attribute, characteristic, or quality of the containing object expressed as a namespace qualified name/value pair. The value of a property is a simple scalar value, which may be expressed as a list of values.</m:description>
          </xs:appinfo>
          <xs:documentation>
-            <b>Property</b>: An attribute, characteristic, or quality of the containing object expressed as a namespace qualified name/value pair. The value of a property is a simple scalar value, which may be expressed as a list of values in some OSCAL formats.</xs:documentation>
+            <b>Property</b>: An attribute, characteristic, or quality of the containing object expressed as a namespace qualified name/value pair. The value of a property is a simple scalar value, which may be expressed as a list of values.</xs:documentation>
       </xs:annotation>
       <xs:sequence>
          <xs:element name="remarks" minOccurs="0" maxOccurs="1">
@@ -887,11 +887,11 @@
       <xs:attribute name="value" use="required" type="xs:string">
          <xs:annotation>
             <xs:appinfo>
-               <m:formal-name>Annotated Property Value</m:formal-name>
-               <m:description>Indicates the optional value of the attribute, characteristic, or quality. Typically, a value will be provided; however, the value is optional allowing cases were the name is asserting some characteristic or quality.</m:description>
+               <m:formal-name>Property Value</m:formal-name>
+               <m:description>Indicates the value of the attribute, characteristic, or quality.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>Annotated Property Value</b>: Indicates the optional value of the attribute, characteristic, or quality. Typically, a value will be provided; however, the value is optional allowing cases were the name is asserting some characteristic or quality.</xs:documentation>
+               <b>Property Value</b>: Indicates the value of the attribute, characteristic, or quality.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
       <xs:attribute name="class" type="xs:NCName">
@@ -1302,15 +1302,15 @@
             </xs:complexType>
          </xs:element>
          <xs:element name="description" minOccurs="1" maxOccurs="1">
-            <xs:annotation>
-               <xs:appinfo>
-                  <m:formal-name>Component Description</m:formal-name>
-                  <m:description>A description of the component, including information about its function.</m:description>
-               </xs:appinfo>
-               <xs:documentation>
-                  <b>Component Description</b>: A description of the component, including information about its function.</xs:documentation>
-            </xs:annotation>
             <xs:complexType>
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Component Description</m:formal-name>
+                     <m:description>A description of the component, including information about its function.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Component Description</b>: A description of the component, including information about its function.</xs:documentation>
+               </xs:annotation>
                <xs:complexContent>
                   <xs:extension base="oscal-ap:markupMultilineType"/>
                </xs:complexContent>
@@ -1553,15 +1553,15 @@
             </xs:simpleType>
          </xs:element>
          <xs:element name="description" minOccurs="0" maxOccurs="1">
-            <xs:annotation>
-               <xs:appinfo>
-                  <m:formal-name>User Description</m:formal-name>
-                  <m:description>A summary of the user's purpose within the system.</m:description>
-               </xs:appinfo>
-               <xs:documentation>
-                  <b>User Description</b>: A summary of the user's purpose within the system.</xs:documentation>
-            </xs:annotation>
             <xs:complexType>
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>User Description</m:formal-name>
+                     <m:description>A summary of the user's purpose within the system.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>User Description</b>: A summary of the user's purpose within the system.</xs:documentation>
+               </xs:annotation>
                <xs:complexContent>
                   <xs:extension base="oscal-ap:markupMultilineType"/>
                </xs:complexContent>
@@ -1636,15 +1636,15 @@
             </xs:complexType>
          </xs:element>
          <xs:element name="description" minOccurs="0" maxOccurs="1">
-            <xs:annotation>
-               <xs:appinfo>
-                  <m:formal-name>Privilege Description</m:formal-name>
-                  <m:description>A summary of the privilege's purpose within the system.</m:description>
-               </xs:appinfo>
-               <xs:documentation>
-                  <b>Privilege Description</b>: A summary of the privilege's purpose within the system.</xs:documentation>
-            </xs:annotation>
             <xs:complexType>
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Privilege Description</m:formal-name>
+                     <m:description>A summary of the privilege's purpose within the system.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Privilege Description</b>: A summary of the privilege's purpose within the system.</xs:documentation>
+               </xs:annotation>
                <xs:complexContent>
                   <xs:extension base="oscal-ap:markupMultilineType"/>
                </xs:complexContent>
@@ -1678,15 +1678,15 @@
       </xs:annotation>
       <xs:sequence>
          <xs:element name="description" minOccurs="1" maxOccurs="1">
-            <xs:annotation>
-               <xs:appinfo>
-                  <m:formal-name>Inventory Item Description</m:formal-name>
-                  <m:description>A summary of the inventory item stating its purpose within the system.</m:description>
-               </xs:appinfo>
-               <xs:documentation>
-                  <b>Inventory Item Description</b>: A summary of the inventory item stating its purpose within the system.</xs:documentation>
-            </xs:annotation>
             <xs:complexType>
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Inventory Item Description</m:formal-name>
+                     <m:description>A summary of the inventory item stating its purpose within the system.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Inventory Item Description</b>: A summary of the inventory item stating its purpose within the system.</xs:documentation>
+               </xs:annotation>
                <xs:complexContent>
                   <xs:extension base="oscal-ap:markupMultilineType"/>
                </xs:complexContent>
@@ -1830,15 +1830,15 @@
       </xs:annotation>
       <xs:sequence>
          <xs:element name="description" minOccurs="0" maxOccurs="1">
-            <xs:annotation>
-               <xs:appinfo>
-                  <m:formal-name>Objective Description</m:formal-name>
-                  <m:description>A human-readable description of this control objective.</m:description>
-               </xs:appinfo>
-               <xs:documentation>
-                  <b>Objective Description</b>: A human-readable description of this control objective.</xs:documentation>
-            </xs:annotation>
             <xs:complexType>
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Objective Description</m:formal-name>
+                     <m:description>A human-readable description of this control objective.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Objective Description</b>: A human-readable description of this control objective.</xs:documentation>
+               </xs:annotation>
                <xs:complexContent>
                   <xs:extension base="oscal-ap:markupMultilineType"/>
                </xs:complexContent>
@@ -1909,15 +1909,15 @@
             </xs:complexType>
          </xs:element>
          <xs:element name="description" minOccurs="1" maxOccurs="1">
-            <xs:annotation>
-               <xs:appinfo>
-                  <m:formal-name>Included Activity Description</m:formal-name>
-                  <m:description>A human-readable description of this included activity.</m:description>
-               </xs:appinfo>
-               <xs:documentation>
-                  <b>Included Activity Description</b>: A human-readable description of this included activity.</xs:documentation>
-            </xs:annotation>
             <xs:complexType>
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Included Activity Description</m:formal-name>
+                     <m:description>A human-readable description of this included activity.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Included Activity Description</b>: A human-readable description of this included activity.</xs:documentation>
+               </xs:annotation>
                <xs:complexContent>
                   <xs:extension base="oscal-ap:markupMultilineType"/>
                </xs:complexContent>
@@ -1958,15 +1958,15 @@
                      </xs:complexType>
                   </xs:element>
                   <xs:element name="description" minOccurs="1" maxOccurs="1">
-                     <xs:annotation>
-                        <xs:appinfo>
-                           <m:formal-name>Action Description</m:formal-name>
-                           <m:description>A human-readable description of this action.</m:description>
-                        </xs:appinfo>
-                        <xs:documentation>
-                           <b>Action Description</b>: A human-readable description of this action.</xs:documentation>
-                     </xs:annotation>
                      <xs:complexType>
+                        <xs:annotation>
+                           <xs:appinfo>
+                              <m:formal-name>Action Description</m:formal-name>
+                              <m:description>A human-readable description of this action.</m:description>
+                           </xs:appinfo>
+                           <xs:documentation>
+                              <b>Action Description</b>: A human-readable description of this action.</xs:documentation>
+                        </xs:annotation>
                         <xs:complexContent>
                            <xs:extension base="oscal-ap:markupMultilineType"/>
                         </xs:complexContent>
@@ -2077,15 +2077,15 @@
             </xs:complexType>
          </xs:element>
          <xs:element name="description" minOccurs="0" maxOccurs="1">
-            <xs:annotation>
-               <xs:appinfo>
-                  <m:formal-name>Task Description</m:formal-name>
-                  <m:description>A human-readable description of this task.</m:description>
-               </xs:appinfo>
-               <xs:documentation>
-                  <b>Task Description</b>: A human-readable description of this task.</xs:documentation>
-            </xs:annotation>
             <xs:complexType>
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Task Description</m:formal-name>
+                     <m:description>A human-readable description of this task.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Task Description</b>: A human-readable description of this task.</xs:documentation>
+               </xs:annotation>
                <xs:complexContent>
                   <xs:extension base="oscal-ap:markupMultilineType"/>
                </xs:complexContent>
@@ -2361,15 +2361,15 @@
       </xs:annotation>
       <xs:sequence>
          <xs:element name="description" minOccurs="0" maxOccurs="1">
-            <xs:annotation>
-               <xs:appinfo>
-                  <m:formal-name>Control Objective Description</m:formal-name>
-                  <m:description>A human-readable description of control objectives.</m:description>
-               </xs:appinfo>
-               <xs:documentation>
-                  <b>Control Objective Description</b>: A human-readable description of control objectives.</xs:documentation>
-            </xs:annotation>
             <xs:complexType>
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Control Objective Description</m:formal-name>
+                     <m:description>A human-readable description of control objectives.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Control Objective Description</b>: A human-readable description of control objectives.</xs:documentation>
+               </xs:annotation>
                <xs:complexContent>
                   <xs:extension base="oscal-ap:markupMultilineType"/>
                </xs:complexContent>
@@ -2395,15 +2395,15 @@
                </xs:annotation>
                <xs:sequence>
                   <xs:element name="description" minOccurs="0" maxOccurs="1">
-                     <xs:annotation>
-                        <xs:appinfo>
-                           <m:formal-name>Assessed Controls Description</m:formal-name>
-                           <m:description>A human-readable description of in-scope controls specified for assessment.</m:description>
-                        </xs:appinfo>
-                        <xs:documentation>
-                           <b>Assessed Controls Description</b>: A human-readable description of in-scope controls specified for assessment.</xs:documentation>
-                     </xs:annotation>
                      <xs:complexType>
+                        <xs:annotation>
+                           <xs:appinfo>
+                              <m:formal-name>Assessed Controls Description</m:formal-name>
+                              <m:description>A human-readable description of in-scope controls specified for assessment.</m:description>
+                           </xs:appinfo>
+                           <xs:documentation>
+                              <b>Assessed Controls Description</b>: A human-readable description of in-scope controls specified for assessment.</xs:documentation>
+                        </xs:annotation>
                         <xs:complexContent>
                            <xs:extension base="oscal-ap:markupMultilineType"/>
                         </xs:complexContent>
@@ -2471,15 +2471,15 @@
                </xs:annotation>
                <xs:sequence>
                   <xs:element name="description" minOccurs="0" maxOccurs="1">
-                     <xs:annotation>
-                        <xs:appinfo>
-                           <m:formal-name>Control Objectives Description</m:formal-name>
-                           <m:description>A human-readable description of this collection of control objectives.</m:description>
-                        </xs:appinfo>
-                        <xs:documentation>
-                           <b>Control Objectives Description</b>: A human-readable description of this collection of control objectives.</xs:documentation>
-                     </xs:annotation>
                      <xs:complexType>
+                        <xs:annotation>
+                           <xs:appinfo>
+                              <m:formal-name>Control Objectives Description</m:formal-name>
+                              <m:description>A human-readable description of this collection of control objectives.</m:description>
+                           </xs:appinfo>
+                           <xs:documentation>
+                              <b>Control Objectives Description</b>: A human-readable description of this collection of control objectives.</xs:documentation>
+                        </xs:annotation>
                         <xs:complexContent>
                            <xs:extension base="oscal-ap:markupMultilineType"/>
                         </xs:complexContent>
@@ -2616,15 +2616,15 @@
       </xs:annotation>
       <xs:sequence>
          <xs:element name="description" minOccurs="0" maxOccurs="1">
-            <xs:annotation>
-               <xs:appinfo>
-                  <m:formal-name>Assessment Subject Placeholder Description</m:formal-name>
-                  <m:description>A human-readable description of intent of this assessment subject placeholder.</m:description>
-               </xs:appinfo>
-               <xs:documentation>
-                  <b>Assessment Subject Placeholder Description</b>: A human-readable description of intent of this assessment subject placeholder.</xs:documentation>
-            </xs:annotation>
             <xs:complexType>
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Assessment Subject Placeholder Description</m:formal-name>
+                     <m:description>A human-readable description of intent of this assessment subject placeholder.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Assessment Subject Placeholder Description</b>: A human-readable description of intent of this assessment subject placeholder.</xs:documentation>
+               </xs:annotation>
                <xs:complexContent>
                   <xs:extension base="oscal-ap:markupMultilineType"/>
                </xs:complexContent>
@@ -2698,15 +2698,15 @@
       </xs:annotation>
       <xs:sequence>
          <xs:element name="description" minOccurs="0" maxOccurs="1">
-            <xs:annotation>
-               <xs:appinfo>
-                  <m:formal-name>Include Subjects Description</m:formal-name>
-                  <m:description>A human-readable description of the collection of subjects being included in this assessment.</m:description>
-               </xs:appinfo>
-               <xs:documentation>
-                  <b>Include Subjects Description</b>: A human-readable description of the collection of subjects being included in this assessment.</xs:documentation>
-            </xs:annotation>
             <xs:complexType>
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Include Subjects Description</m:formal-name>
+                     <m:description>A human-readable description of the collection of subjects being included in this assessment.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Include Subjects Description</b>: A human-readable description of the collection of subjects being included in this assessment.</xs:documentation>
+               </xs:annotation>
                <xs:complexContent>
                   <xs:extension base="oscal-ap:markupMultilineType"/>
                </xs:complexContent>
@@ -3281,7 +3281,19 @@
     (a parameter must be available)
   -->
    <xs:complexType name="insertType">
-      <xs:attribute name="param-id" use="required" type="xs:NCName"/>
+      <xs:annotation>
+         <xs:documentation>An insert can be used to identify a placeholder for dynamically inserting text related to a specific object, which is referenced by the object's identifier using an <code xmlns="http://csrc.nist.gov/ns/oscal/1.0">id-ref</code>. This insert mechanism allows the selection of which text value from the object to dynamically include based on the application's display requirements.</xs:documentation>
+      </xs:annotation>
+      <xs:attribute name="type" use="required" type="xs:NCName">
+         <xs:annotation>
+            <xs:documentation>The type of object to include from (e.g., parameter, control, component, role, etc.)</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="id-ref" use="required" type="xs:NCName">
+         <xs:annotation>
+            <xs:documentation>The identity of the object to insert a value for. The identity will be selected from the index of objects of the specified <code xmlns="http://csrc.nist.gov/ns/oscal/1.0">type</code>. The specific value to include is based on the application's display requirements, which will likely use a specific data element associated with the <code xmlns="http://csrc.nist.gov/ns/oscal/1.0">type</code> (e.g., title, identifier, value, etc.) that is appropriate for the application.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
    </xs:complexType>
    <!--
     Within a selection, a choice - tbd

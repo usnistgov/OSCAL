@@ -11,7 +11,7 @@ last-modified [0 or 1]: dateTime-with-timezone,
 version [0 or 1]: string,
 oscal-version [0 or 1]: string,
 props [0 or 1]: [ … ], An array of property objects [1 to ∞]{</description></item><item><title>System Security Plan Model JSON Format Reference</title><link>https://pages.nist.gov/OSCAL/documentation/schema/implementation-layer/ssp/json-schema/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/implementation-layer/ssp/json-schema/</guid><description>OSCAL model OSCAL System Security Plan (SSP) Model
-Version 1.0.0-rc1
+Version 1.0.0-rc2
 JSON Schema oscal_ssp_schema.json XML to JSON converter oscal_ssp_xml-to-json-converter.xsl (How do I use the converter to convert OSCAL XML to JSON?) The OSCAL Control SSP format can be used to describe the information typically specified in a system security plan, such as those defined in NIST SP 800-18.
 The root of the OSCAL System Security Plan (SSP) format is system-security-plan.</description></item><item><title>OSCAL System Security Plan Model XML Format Outline</title><link>https://pages.nist.gov/OSCAL/documentation/schema/implementation-layer/ssp/xml-model-map/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/implementation-layer/ssp/xml-model-map/</guid><description>&amp;lt;system-security-plan uuid="uuid"&amp;gt;… &amp;lt;/system-security-plan&amp;gt;[1]&amp;lt;metadata&amp;gt;… &amp;lt;/metadata&amp;gt;[1]&amp;lt;title&amp;gt;markup-line&amp;lt;/title&amp;gt;[1]
 &amp;lt;published&amp;gt;datetime-with-timezone&amp;lt;/published&amp;gt;[0 or 1]
@@ -32,6 +32,6 @@ The root of the OSCAL System Security Plan (SSP) format is system-security-plan.
 &amp;lt;/revisions&amp;gt;
 &amp;lt;document-id scheme="uri"&amp;gt;string&amp;lt;/document-id&amp;gt;[0 to ∞]
 &amp;lt;prop name="ncname" uuid="uuid" ns="uri" value="string" class="ncname"&amp;gt;… &amp;lt;/prop&amp;gt;[0 to ∞]&amp;lt;remarks&amp;gt;markup-multiline&amp;lt;/remarks&amp;gt;[0 or 1]</description></item><item><title>OSCAL System Security Plan Model XML Format Reference</title><link>https://pages.nist.gov/OSCAL/documentation/schema/implementation-layer/ssp/xml-schema/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://pages.nist.gov/OSCAL/documentation/schema/implementation-layer/ssp/xml-schema/</guid><description>OSCAL model OSCAL System Security Plan (SSP) Model
-Version 1.0.0-rc1
+Version 1.0.0-rc2
 XML namespace http://csrc.nist.gov/ns/oscal/1.0 XML Schema oscal_ssp_schema.xsd JSON to XML converter oscal_ssp_json-to-xml-converter.xsl (How do I use the converter to convert OSCAL JSON to XML?) The OSCAL Control SSP format can be used to describe the information typically specified in a system security plan, such as those defined in NIST SP 800-18.
 The root of the OSCAL System Security Plan (SSP) format is system-security-plan.</description></item></channel></rss>
