@@ -31,6 +31,7 @@
                     <last-modified>...</last-modified>
                     <version>1.0</version>
                     <oscal-version>1.0-rc2</oscal-version>
+                    <prop name="source-profile-last-modified">2019-11-13T12:13:58.517-05:00</prop>
                     <link href="urn:UNKNOWN" rel="resolution-source"/>
                 </metadata>
             </catalog>
@@ -62,7 +63,8 @@
                     <title>Pathological Profile</title>
                     <last-modified>...</last-modified>
                     <version>1.0</version>
-                    <oscal-version>1.0-rc2</oscal-version>
+                    <oscal-version>1.0-rc2</oscal-version>                    
+                    <prop name="source-profile-last-modified">2019-11-13T12:41:07.061-05:00</prop>
                     <link href="urn:UNKNOWN"
                         rel="resolution-source"/>
                 </metadata>
@@ -102,6 +104,7 @@
                     <last-modified>...</last-modified>
                     <version>1.0</version>
                     <oscal-version>1.0-rc2</oscal-version>
+                    <prop name="source-profile-last-modified">2019-11-13T12:41:07.061-05:00</prop>
                     <link href="urn:UNKNOWN" rel="resolution-source"/>
                     <party>
                         <org>
@@ -146,8 +149,8 @@
                     <last-modified>...</last-modified>
                     <version>1.0</version>
                     <oscal-version>1.0-rc2</oscal-version>
-                    <link href="urn:UNKNOWN"
-                        rel="resolution-source"/>
+                    <prop name="source-profile-last-modified">2019-11-13T12:41:07.061-05:00</prop>
+                    <link href="urn:UNKNOWN" rel="resolution-source"/>
                     <link href="#internal"><text>Internal link</text></link>
                     <party>
                         <org>

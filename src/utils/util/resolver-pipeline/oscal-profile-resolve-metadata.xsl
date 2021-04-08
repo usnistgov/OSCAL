@@ -37,14 +37,16 @@
         <xsl:copy>
             <xsl:apply-templates mode="#current" select="@*"/>
             <xsl:apply-templates mode="#current" select="$leaders"/>
+            <xsl:for-each select="last-modified" expand-text="true">
+              <prop name="source-profile-last-modified">{ . }</prop>
+            </xsl:for-each>
             <xsl:apply-templates mode="#current" select="prop"/>
             <link href="{$profile-origin-uri}" rel="resolution-source"/>
             <xsl:apply-templates mode="#current" select="* except ($leaders | prop)"/>
-            
             <!--<xsl:apply-templates select="../selection" mode="imported-metadata"/>-->
         </xsl:copy>
     </xsl:template>
-
+    
     <xsl:template match="last-modified">
         <xsl:copy>
             <xsl:value-of select="current-dateTime()"/>

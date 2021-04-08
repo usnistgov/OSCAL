@@ -222,17 +222,7 @@
         </xsl:choose>
     </xsl:function>
     
-    <!-- XSD regex metacharacters except '*' and '?' https://www.w3.org/TR/xmlschema11-2/#regex-char-metachar -->
-    <xsl:variable name="metachars" select="('.', '\', '+', '{', '}', '(', ')', '|', '[', ']')"/>
-    <xsl:variable name="metachar-match" select="'(' || string-join( ($metachars ! ('\' || .)),'|') || ')'"/>
-        
-    <xsl:function name="o:glob-as-regex">
-        <xsl:param name="glob" as="xs:string"/>
-        <xsl:variable name="escaped" select="replace($glob,$metachar-match,'\\$1')"/>
-        <!-- replace ? with . and * with .* -->
-        <xsl:sequence select="'^' || ($escaped => replace('\?','.') => replace('\*','.*') ) || '$'"/>
-        <!--<xsl:sequence select="$escaped"/>-->
-    </xsl:function>
+    <xsl:include href="oscal-profile-resolve-functions.xsl"/>
     
     <xsl:function name="o:resolve-profile">
         <xsl:param name="profile" as="element(profile)"/>
