@@ -24,7 +24,7 @@
     <xsl:template match="/comment()"/>
     
     <xsl:template match="/*">
-        <xsl:comment expand-text="true"> Modified by conversion XSLT { current-dateTime() } - RC2 OSCAL becomes RC3 OSCAL </xsl:comment>
+        <xsl:comment expand-text="true"> Modified by the OSCAL 1.0.0 RC1 to OSCAL 1.0.0 RC2 conversion XSLT on { current-dateTime() } </xsl:comment>
         <xsl:copy>
             <xsl:apply-templates select="@* except @id"/>
             <xsl:attribute name="uuid" select="$new-document-uuid"/>
@@ -35,7 +35,11 @@
     <xsl:template match="oscal-version">
         <oscal-version>1.0.0-rc2</oscal-version>
     </xsl:template>
-    
+
+    <xsl:template match="last-modified" expand-text="true">
+        <last-modified>{ current-dateTime() }</last-modified>
+    </xsl:template>
+
     <xsl:template match="add-objectives-and-methods">
         <objectives-and-methods>
             <xsl:apply-templates select="@*"/>
@@ -45,10 +49,12 @@
    
     <xsl:template match="prop">
         <xsl:copy>
-            <xsl:attribute name="value">
-                <xsl:apply-templates/>
-            </xsl:attribute>
-            <xsl:apply-templates select="@*"/>
+            <xsl:apply-templates select="@ns,@name,@value,(@* except (@ns,@name,@value))"/>
+            <xsl:if test="empty(@value)">
+                <xsl:attribute name="value">
+                    <xsl:apply-templates/>
+                </xsl:attribute>
+            </xsl:if>
         </xsl:copy>
     </xsl:template>
     
