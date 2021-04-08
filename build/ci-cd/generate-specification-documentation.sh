@@ -49,8 +49,8 @@ done
 OTHER_ARGS=$@ # save the remaining args
 
 echo -e ""
-echo -e "${P_INFO}Generating XML <-> JSON Content Converters${P_END}"
-echo -e "${P_INFO}==========================================${P_END}"
+echo -e "${P_INFO}Generating OSCAL Specification Documentation${P_END}"
+echo -e "${P_INFO}============================================${P_END}"
 
 if [ "$VERBOSE" = "true" ]; then
   echo -e "${P_INFO}Using working directory:${P_END} ${WORKING_DIR}"
