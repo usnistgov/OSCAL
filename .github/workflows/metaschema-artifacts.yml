@@ -10,7 +10,7 @@ on:
 name: Build Metaschema and Documentation Artifacts
 env:
   # the name of the repo
-  HOME_REPO: david-waltermire-nist/OSCAL
+  HOME_REPO: usnistgov/OSCAL
   # dependency versions
   SAXON_VERSION: 9.9.0-1
   HUGO_VERSION: 0.69.2
