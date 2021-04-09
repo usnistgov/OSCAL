@@ -21,7 +21,7 @@ Assembly models are noted with DTD (RNC) notation indicating cardinality: suffix
 Changes in this release are focused on the following major areas:
 - Simplification of key OSCAL features
   - Properties and annotations have been merged into a single property that now allows an optional remark and UUID.
-  - In the  assessment plan and assessment results models, the concepts of a `task` and `action` have been combined.
+  - In the assessment plan and assessment results models, the concepts of a `task` and `action` have been combined.
   - Use of `local-definitions` in the assessment plan, assessment results, and POA&M models has been simplified and made more consistent.
 - Model documentation improvements
   - Some usage descriptions were enhanced to provide more detail and to be more consistent overall.
@@ -30,11 +30,13 @@ Changes in this release are focused on the following major areas:
 - Based on community discussion, use of XML `<any>` and JSON `additonalProperties` for arbitrary extension has been mostly removed. Extended data can be provided using `link` declarations to external content. This decision can be revisited in future revisions once there is more implementation experience with the OSCAL models.
 - `latest-version`, `predecessor-version`, and `successor-versio` link relations were added to allow an OSCAL document to link to latest, previous, and next document revisions.
 - Fixed a few bugs in the profile resolver code, and updated the resolver to work with new profile import/insert structures.
+- Markup content may now contain data insertion points for data other than parameters.
 
 ## Changes common to all models
 
 - "props" and "annotations" in JSON, and "prop" and "annotation in XML, have been merged into a single property that now allows an optional `remark` and `uuid`. Semantically, the optional `remark` and `uuid` were the only difference between a "prop" and an "annotation" in OSCAL. The resulting model is simpler with a single construct that will always allow a remark. Names and values that were allowed on annotations are now allowed on properties.
-- `latest-version`, `predecessor-version`, and `successor-versio` link relations were added to allow an OSCAL document to link to latest, previous, and next document revisions.
+- `latest-version`, `predecessor-version`, and `successor-version` link relations were added to allow an OSCAL document to link to latest, previous, and next document revisions.
+- Markup content may now contain data insertion points for data other than parameters. The `insert` object, which may appear in markup content strings, now supports a `type` which can be used to indicate the type of data to insert, and an `id-ref` that identifies the specific data object to take data from.
 
 ## Model-Specific Changes
 
