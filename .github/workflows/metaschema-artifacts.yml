@@ -43,7 +43,6 @@ jobs:
       - uses: actions/checkout@v2
         if: github.repository == env.HOME_REPO && github.ref == 'refs/heads/master'
         with:
-          ref: ${{ github.head_ref }}
           path: ${{ env.OSCAL_HOME }}
           submodules: recursive
           token: ${{ secrets.COMMIT_TOKEN }}
@@ -51,7 +50,6 @@ jobs:
       - uses: actions/checkout@v2
         if: github.repository != env.HOME_REPO || github.ref != 'refs/heads/master'
         with:
-          ref: ${{ github.head_ref }}
           path: ${{ env.OSCAL_HOME }}
           submodules: recursive
       # Setup runtime environment
