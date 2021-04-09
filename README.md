@@ -37,6 +37,7 @@ Changes in this release are focused on the following major areas:
 - Based on community discussion, use of XML `<any>` and JSON `additonalProperties` for arbitrary extension has been mostly removed. Extended data can be provided using `link` declarations to external content. This decision can be revisited in future revisions once there is more implementation experience with the OSCAL models.
 - `latest-version`, `predecessor-version`, and `successor-versio` link relations were added to allow an OSCAL document to link to latest, previous, and next document revisions.
 - Fixed a few bugs in the profile resolver code, and updated the resolver to work with new profile import/insert structures.
+- Markup content may now contain data insertion points for data other than parameters.
 
 These changes were made based on all the excellent feedback we received from the OSCAL community. The NIST OSCAL team is very thankful for all of the great feedback we have received.
 
