@@ -1,4 +1,15 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns="http://csrc.nist.gov/ns/oscal/1.0" xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:opr="http://csrc.nist.gov/ns/oscal/profile-resolution" stylesheet="../../oscal-profile-resolve-merge.xsl">
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+    xmlns:x="http://www.jenitennison.com/xslt/xspec"
+    xmlns:opr="http://csrc.nist.gov/ns/oscal/profile-resolution"
+    stylesheet="../../oscal-profile-resolve-merge.xsl">
+    
+    <!-- Still needing unit tests
+      more elaborated merge scenarios
+      different selections and sorting
+      different rules on control/parameter merging using combine @method=keep|use-first|merge
+      -->
+    
     <x:scenario label="Base">
         <x:context>
             <catalog/>
@@ -40,15 +51,23 @@
                         <custom>
                             <group>
                                 <title>New Group 1</title>
-                                <call control-id="x1"/>
-                                <call control-id="y1"/>
-                                <call control-id="z1"/>
+                                <insert-controls>
+                                    <include-controls>
+                                        <with-id>x1</with-id>
+                                        <with-id>y1</with-id>
+                                        <with-id>z1</with-id>
+                                    </include-controls>
+                                </insert-controls>
                             </group>
                             <group>
                                 <title>New Group 1</title>
-                                <call control-id="x2"/>
-                                <call control-id="y2"/>
-                                <call control-id="z2"/>
+                                <insert-controls>
+                                    <include-controls>
+                                        <with-id>x2</with-id>
+                                        <with-id>y2</with-id>
+                                        <with-id>z2</with-id>
+                                    </include-controls>
+                                </insert-controls>
                             </group>
                         </custom>
                     </merge>

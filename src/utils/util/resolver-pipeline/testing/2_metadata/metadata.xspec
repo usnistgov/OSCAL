@@ -146,8 +146,7 @@
                     <last-modified>...</last-modified>
                     <version>1.0</version>
                     <oscal-version>1.0-rc2</oscal-version>
-                    <link href="urn:UNKNOWN"
-                        rel="resolution-source"/>
+                    <link href="urn:UNKNOWN" rel="resolution-source"/>
                     <link href="#internal"><text>Internal link</text></link>
                     <party>
                         <org>

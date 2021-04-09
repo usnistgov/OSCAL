@@ -108,19 +108,47 @@
         <xsl:apply-templates mode="#current"/>
     </xsl:template>
     
-    <xsl:template match="call" mode="o:custom-merge">
+    <xsl:template match="insert-controls" mode="o:custom-merge">
+        <xsl:variable name="inserted-controls">
+            <xsl:apply-templates mode="#current"/>
+        </xsl:variable>
+        <xsl:variable name="keep-order" select="not(@order = ('descending','ascending'))" as="xs:boolean"/>
+        <xsl:variable name="sort-order" select="@order[.='descending'],'ascending'"/>
+        <!-- Setting sort-key to '1' sorts into given order -->
+        <xsl:perform-sort  select="$inserted-controls">
+                <xsl:sort select="if ($keep-order) then '1' else @control-id"/>
+        </xsl:perform-sort>
+    </xsl:template>
+    
+    <xsl:template match="include-controls" mode="o:custom-merge">
+        <xsl:variable name="match-patterns" select="matching/@pattern"/>
+        <xsl:call-template name="combine-elements">
+            <xsl:with-param name="who" select="key('control-by-id', with-id),
+                /*/selection//control[some $p in ($match-patterns) satisfies (matches(@id,o:glob-as-regex(string($p))))]"/>
+        </xsl:call-template>
+    </xsl:template>
+    
+    <xsl:template match="include-all" mode="o:custom-merge">
+        <xsl:variable name="match-patterns" select="matching/@pattern"/>
+        <xsl:call-template name="combine-elements">
+            <xsl:with-param name="who" select="//control"/>
+        </xsl:call-template>
+    </xsl:template>
+    
+    <xsl:include href="oscal-profile-resolve-functions.xsl"/>
+    
+    <!--<xsl:template match="with-id">
         <xsl:call-template name="combine-elements">
             <xsl:with-param name="who" select="key('control-by-id', @control-id)"/>
         </xsl:call-template>
     </xsl:template>
     
-    <xsl:template match="match" mode="o:custom-merge">
+    <xsl:template match="matching" mode="o:custom-merge">
         <xsl:variable name="p" select="@pattern"/>
         <xsl:call-template name="combine-elements">
             <xsl:with-param name="who" select="/*/selection//control[matches(@id,$p)]"/>
         </xsl:call-template>
-    </xsl:template>
-    
+    </xsl:template>-->
     
     <xsl:template name="o:merge-groups-as-is">
         <xsl:param name="merging" select="()"/>
