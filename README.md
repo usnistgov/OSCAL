@@ -46,7 +46,7 @@ These changes were made based on all the excellent feedback we received from the
 The NIST team is also maintaining **OSCAL content** that is updated to the latest OSCAL 1.0.0 RC2. The OSCAL [content repository](https://github.com/usnistgov/oscal-content/) provides OSCAL examples, in addition to:
 
 - The [NIST SP 800-53 revision 5 catalog](https://github.com/usnistgov/oscal-content/tree/master/nist.gov/SP800-53/rev5) and the security and privacy [NIST SP 800-53B baselines](https://github.com/usnistgov/oscal-content/tree/master/nist.gov/SP800-53/rev5).
-- The [NIST SP 800-53 revision 4 catalog]((https://github.com/usnistgov/oscal-content/tree/master/nist.gov/SP800-53/rev4) and the [three NIST SP 800-53 revision 4 baselines](https://github.com/usnistgov/oscal-content/tree/master/nist.gov/SP800-53/rev4).
+- The [NIST SP 800-53 revision 4 catalog](https://github.com/usnistgov/oscal-content/tree/master/nist.gov/SP800-53/rev4) and the [three NIST SP 800-53 revision 4 baselines](https://github.com/usnistgov/oscal-content/tree/master/nist.gov/SP800-53/rev4).
 - The [FedRAMP SP 800-53 revision 4 baselines](https://github.com/usnistgov/oscal-content/tree/master/fedramp.gov). Please note, these baselines are also available on [GSA/fedramp-automation](https://github.com/GSA/fedramp-automation/tree/master/baselines) repository.
 
 All of this content is provided in XML, JSON and YAML formats.
