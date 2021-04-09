@@ -7,10 +7,11 @@ on:
   workflow_dispatch:
     branches:
       - master
-name: Build Metaschema and Documentation Artifacts
+name: Build Artifacts and Documentation
 env:
   # the name of the repo
   HOME_REPO: usnistgov/OSCAL
+  HOME_BRANCH: master
   # dependency versions
   SAXON_VERSION: 9.9.0-1
   HUGO_VERSION: 0.69.2
@@ -41,14 +42,14 @@ jobs:
     steps:
       # use this for main repo master builds
       - uses: actions/checkout@v2
-        if: github.repository == env.HOME_REPO && github.ref == 'refs/heads/master'
+        if: github.repository == env.HOME_REPO && github.ref == 'refs/heads/${{ env.HOME_BRANCH }}'
         with:
           path: ${{ env.OSCAL_HOME }}
           submodules: recursive
           token: ${{ secrets.COMMIT_TOKEN }}
       # use this for pull request builds where checkout uses the builtin token
       - uses: actions/checkout@v2
-        if: github.repository != env.HOME_REPO || github.ref != 'refs/heads/master'
+        if: github.repository != env.HOME_REPO || github.ref != 'refs/heads/${{ env.HOME_BRANCH }}'
         with:
           path: ${{ env.OSCAL_HOME }}
           submodules: recursive
@@ -122,7 +123,7 @@ jobs:
       # ---------------
       - name: Publish Artifacts
         # only do this on master
-        if: github.repository == env.HOME_REPO && github.ref == 'refs/heads/master'
+        if: github.repository == env.HOME_REPO && github.ref == 'refs/heads/${{ env.HOME_BRANCH }}'
         uses: stefanzweifel/git-auto-commit-action@v4.9.2
         with:
           repository: ${{ env.OSCAL_HOME }}
@@ -163,20 +164,20 @@ jobs:
     steps:
       # use this for main repo master builds
       - uses: actions/checkout@v2
-        if: github.repository == env.HOME_REPO && github.ref == 'refs/heads/master'
+        if: github.repository == env.HOME_REPO && github.ref == 'refs/heads/${{ env.HOME_BRANCH }}'
         with:
           path: ${{ env.OSCAL_HOME }}
           submodules: recursive
           token: ${{ secrets.COMMIT_TOKEN }}
       - name: Get latest from repo
-        if: github.repository == env.HOME_REPO && github.ref == 'refs/heads/master'
+        if: github.repository == env.HOME_REPO && github.ref == 'refs/heads/${{ env.HOME_BRANCH }}'
         # This will ensure that any files committed by the previous job, will be updated
         run: |
           git pull --ff-only
         working-directory: ${{ env.OSCAL_HOME }}
       # use this for pull request builds where checkout uses the builtin token
       - uses: actions/checkout@v2
-        if: github.repository != env.HOME_REPO || github.ref != 'refs/heads/master'
+        if: github.repository != env.HOME_REPO || github.ref != 'refs/heads/${{ env.HOME_BRANCH }}'
         with:
           path: ${{ env.OSCAL_HOME }}
           submodules: recursive
@@ -246,7 +247,7 @@ jobs:
             ${{ env.OSCAL_WEBSITE_PATH }}/public
           retention-days: 5
       - name: Run deploy script
-        if: github.repository == env.HOME_REPO && github.ref == 'refs/heads/master'
+        if: github.repository == env.HOME_REPO && github.ref == 'refs/heads/${{ env.HOME_BRANCH }}'
         run: |
             cd "$OSCAL_WEBSITE_PATH"
             git config user.name "Deployment Bot"
