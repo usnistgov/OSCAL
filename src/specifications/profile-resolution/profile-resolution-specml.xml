@@ -457,7 +457,6 @@
           <tagging whose="target_catalog">&lt;metadata>
   &lt;title>Example Profile&lt;/title>
   &lt;last-modified><hi>{ timestamp of profile resolution runtime }</hi>&lt;/last-modified>
-  &lt;prop name="source-profile-last-modified"><hi>2019-06-30T10:54:16.372-05:00</hi>&lt;/last-modified>
   &lt;prop name="status" value="NEW"/>
 &lt;/metadata></tagging>
           <p>The presence of this property with a valid timestamp may be taken as an indicator that
@@ -498,10 +497,9 @@
 &lt;/metadata></tagging>
           <tagging whose="target_catalog">&lt;metadata>
   &lt;title>Test profile - RESOLUTION RESULT&lt;/title>
-  &lt;last-modified>2019-12-03T11:36:32.284-05:00&lt;/last-modified>
+  &lt;last-modified><hi>{ timestamp of profile resolution runtime }</hi>&lt;/last-modified>
   &lt;version>1.0&lt;/version>
   &lt;oscal-version>1.0-MR2&lt;/oscal-version>
-  &lt;prop name="resolution-timestamp"><hi>{ timestamp of profile resolution runtime }</hi>&lt;/last-modified>
   &lt;link rel="resolution-source" href="<hi>{ URI to resolution source data instance }</hi>">Test profile&lt;/link>
   &lt;party>
     &lt;org>
