@@ -39,18 +39,21 @@ Changes in this release are focused on the following major areas:
 - Fixed a few bugs in the profile resolver code, and updated the resolver to work with new profile import/insert structures.
 - Markup content may now contain data insertion points for data other than parameters.
 
-These changes were made based on all the excellent feedback we received from the OSCAL community. The NIST OSCAL team is very thankful for all of the great feedback we have received.
-
-The NIST team is also maintaining **OSCAL content** that is updated to the latest OSCAL 1.0.0 RC2. The OSCAL [content repository](https://github.com/usnistgov/oscal-content/) provides OSCAL examples, in addition to the final [NIST SP 800-53 revision 5 catalog](https://github.com/usnistgov/oscal-content/tree/master/nist.gov/SP800-53/rev5) and the final security and privacy [NIST SP 800-53B baselines](https://github.com/usnistgov/oscal-content/tree/master/nist.gov/SP800-53/rev5). All this content is provided in XML, JSON and YAML formats, including the following:
-
-- Updated content for the [NIST SP 800-53 revision 4 catalogs](https://github.com/usnistgov/oscal-content/tree/master/nist.gov/SP800-53/rev4), and for the [three NIST baselines](https://github.com/usnistgov/oscal-content/tree/master/nist.gov/SP800-53/rev4).
-- Updated content in OSCAL XML, JSON and YAML formats of the [FedRAMP SP 800-53 revision 4 baselines](https://github.com/usnistgov/oscal-content/tree/master/fedramp.gov). Please note, these baselines are also available on [GSA/fedramp-automation](https://github.com/GSA/fedramp-automation/tree/master/baselines) repository.
-
 There are also [release notes](https://github.com/usnistgov/OSCAL/blob/master/src/release/release-notes.txt) containing a summary of changes in this and previous releases.
 
-The OSCAL team is working to release OSCAL 1.0.0 FINAL. To this end, we appreciate any feedback you have on the updated RC2 models. Receiving your comments is instrumental for our team to make the OSCAL 1.0.0 FINAL release as robust as is feasible, and to address any gaps that might cause backwards compatibilities between future OSCAL minor releases (e.g., 1.1.0, 1.2.0) and OSCAL 1.0.0.
+These changes were made based on all the excellent feedback we received from the OSCAL community. The NIST OSCAL team is very thankful for all of the great feedback we have received.
 
-At our end, we will continue the development of OSCAL focusing our full attention on providing a more complete set of documentation for all the OSCAL layers and models, creating more examples, and providing a diverse set of tutorials.
+The NIST team is also maintaining **OSCAL content** that is updated to the latest OSCAL 1.0.0 RC2. The OSCAL [content repository](https://github.com/usnistgov/oscal-content/) provides OSCAL examples, in addition to:
+
+- The [NIST SP 800-53 revision 5 catalog](https://github.com/usnistgov/oscal-content/tree/master/nist.gov/SP800-53/rev5) and the security and privacy [NIST SP 800-53B baselines](https://github.com/usnistgov/oscal-content/tree/master/nist.gov/SP800-53/rev5).
+- The [NIST SP 800-53 revision 4 catalog]((https://github.com/usnistgov/oscal-content/tree/master/nist.gov/SP800-53/rev4) and the [three NIST SP 800-53 revision 4 baselines](https://github.com/usnistgov/oscal-content/tree/master/nist.gov/SP800-53/rev4).
+- The [FedRAMP SP 800-53 revision 4 baselines](https://github.com/usnistgov/oscal-content/tree/master/fedramp.gov). Please note, these baselines are also available on [GSA/fedramp-automation](https://github.com/GSA/fedramp-automation/tree/master/baselines) repository.
+
+All of this content is provided in XML, JSON and YAML formats.
+
+The OSCAL team is working to release OSCAL 1.0.0 FINAL. To this end, we appreciate any feedback you have on the OSCAL 1.0.0 RC2 models. Reviewing your comments is instrumental for our team to make the OSCAL 1.0.0 FINAL release as robust as is feasible, and to address any gaps that might cause backwards compatibilities between future OSCAL minor releases (e.g., 1.1.0, 1.2.0) and OSCAL 1.0.0.
+
+We will continue the development of OSCAL focusing our full attention on providing a more complete set of documentation for all the OSCAL layers and models, creating more examples, and providing a diverse set of tutorials.
 
 NIST is also seeking tool developers, vendors, and service providers that would like to implement the OSCAL 1.0.0 models in commercial and open-source offerings. To provide feedback, to ask questions, or to let us know about an OSCAL implementation you are working on, please email the NIST OSCAL team at [oscal@nist.gov](mailto:oscal@nist.gov). You can also post publicly to the OSCAL development list: [oscal-dev@list.nist.gov](mailto:oscal-dev@list.nist.gov) or [create an issue](https://github.com/usnistgov/OSCAL/issues) on our GitHub repository.
 
