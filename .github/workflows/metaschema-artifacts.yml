@@ -35,21 +35,21 @@ jobs:
       - id: ci-skip-step
         uses: mstachniuk/ci-skip@v1
   build-and-publish-metaschema-artifacts:
-    name: Build, Validate, and Publish Metaschema Artifacts
+    name: Produce Metaschema Artifacts
     needs: check-skip
     if: ${{ needs.check-skip.outputs.skip == 'false' }}
     runs-on: ubuntu-18.04
     steps:
       # use this for main repo master builds
       - uses: actions/checkout@v2
-        if: github.repository == env.HOME_REPO && github.ref == 'refs/heads/${{ env.HOME_BRANCH }}'
+        if: ${{ github.repository == env.HOME_REPO && github.ref == format('refs/heads/{0}',env.HOME_BRANCH) }}
         with:
           path: ${{ env.OSCAL_HOME }}
           submodules: recursive
           token: ${{ secrets.COMMIT_TOKEN }}
       # use this for pull request builds where checkout uses the builtin token
       - uses: actions/checkout@v2
-        if: github.repository != env.HOME_REPO || github.ref != 'refs/heads/${{ env.HOME_BRANCH }}'
+        if: ${{ github.repository != env.HOME_REPO || github.ref != format('refs/heads/{0}',env.HOME_BRANCH) }}
         with:
           path: ${{ env.OSCAL_HOME }}
           submodules: recursive
@@ -123,7 +123,7 @@ jobs:
       # ---------------
       - name: Publish Artifacts
         # only do this on master
-        if: github.repository == env.HOME_REPO && github.ref == 'refs/heads/${{ env.HOME_BRANCH }}'
+        if: ${{ github.repository == env.HOME_REPO && github.ref == format('refs/heads/{0}',env.HOME_BRANCH) }}
         uses: stefanzweifel/git-auto-commit-action@v4.9.2
         with:
           repository: ${{ env.OSCAL_HOME }}
@@ -164,20 +164,20 @@ jobs:
     steps:
       # use this for main repo master builds
       - uses: actions/checkout@v2
-        if: github.repository == env.HOME_REPO && github.ref == 'refs/heads/${{ env.HOME_BRANCH }}'
+        if: ${{ github.repository == env.HOME_REPO && github.ref == format('refs/heads/{0}',env.HOME_BRANCH) }}
         with:
           path: ${{ env.OSCAL_HOME }}
           submodules: recursive
           token: ${{ secrets.COMMIT_TOKEN }}
       - name: Get latest from repo
-        if: github.repository == env.HOME_REPO && github.ref == 'refs/heads/${{ env.HOME_BRANCH }}'
+        if: ${{ github.repository == env.HOME_REPO && github.ref == format('refs/heads/{0}',env.HOME_BRANCH) }}
         # This will ensure that any files committed by the previous job, will be updated
         run: |
           git pull --ff-only
         working-directory: ${{ env.OSCAL_HOME }}
       # use this for pull request builds where checkout uses the builtin token
       - uses: actions/checkout@v2
-        if: github.repository != env.HOME_REPO || github.ref != 'refs/heads/${{ env.HOME_BRANCH }}'
+        if: ${{ github.repository != env.HOME_REPO || github.ref != format('refs/heads/{0}',env.HOME_BRANCH) }}
         with:
           path: ${{ env.OSCAL_HOME }}
           submodules: recursive
@@ -247,7 +247,7 @@ jobs:
             ${{ env.OSCAL_WEBSITE_PATH }}/public
           retention-days: 5
       - name: Run deploy script
-        if: github.repository == env.HOME_REPO && github.ref == 'refs/heads/${{ env.HOME_BRANCH }}'
+        if: ${{ github.repository == env.HOME_REPO && github.ref == format('refs/heads/{0}',env.HOME_BRANCH) }}
         run: |
             cd "$OSCAL_WEBSITE_PATH"
             git config user.name "Deployment Bot"
