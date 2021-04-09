@@ -67,7 +67,7 @@ After importing a control, a profile may be used to tailor the control. This inc
 
 OSCAL profiles can import controls from catalogs or other OSCAL profiles, enabling the creation of a new baseline by customizing an existing baseline. This approach provides full transparency and traceability of control tailoring from a baseline back to the original catalog's control definition. Every control imported by a profile must originate within a catalog.
 
-Organizations already perform such selections manually. OSCAL profiles enable automation of control selection and tailoring while providing tracablity.
+Organizations already perform such selections manually. OSCAL profiles enable automation of control selection and tailoring while providing traceability.
 
 ### Implementation Layer Overview
 
@@ -96,7 +96,7 @@ The **[assessment plan model](assessment-layer/assessment-plan/)** allows assess
 
 ### Assessment Results Layer Overview
 
-The [OSCAL assessment results layer](assessment-results-layer/) focuses on communicating all assessment findings including supporting evidence, as well identifying and managing the remediaiton of identified risks
+The [OSCAL assessment results layer](assessment-results-layer/) focuses on communicating all assessment findings including supporting evidence, as well identifying and managing the remediation of identified risks
  to a system identified as a result of activities in the assessment layer. 
 This includes the ability to report all findings 
 
@@ -126,6 +126,6 @@ The following is the release state of each model, along with download links for 
 | Profile | Profile | Pre-Final | Released (1.0.0 Final) | [XML](https://raw.githubusercontent.com/usnistgov/OSCAL/master/xml/schema/oscal_profile_schema.xsd), [JSON](https://raw.githubusercontent.com/usnistgov/OSCAL/master/json/schema/oscal_profile_schema.json), YAML |
 | Implementation | Component Definition | Pre-Final | Released (1.0.0 Final) | [XML](https://raw.githubusercontent.com/usnistgov/OSCAL/master/xml/schema/oscal_component_schema.xsd), [JSON](https://raw.githubusercontent.com/usnistgov/OSCAL/master/json/schema/oscal_component_schema.json), YAML |
 | Implementation | System Security Plan | Pre-Final | Released (1.0.0 Final) | [XML](https://raw.githubusercontent.com/usnistgov/OSCAL/master/xml/schema/oscal_ssp_schema.xsd), [JSON](https://raw.githubusercontent.com/usnistgov/OSCAL/master/json/schema/oscal_ssp_schema.json), YAML |
-| Assessment | Assessment Plan | Draft | Released (1.0.0 Final) | [XML](https://raw.githubusercontent.com/usnistgov/OSCAL/master/xml/schema/oscal_assessment-plan_schema.xsd), [JSON](https://raw.githubusercontent.com/usnistgov/OSCAL/master/json/schema/oscal_assessment-plan_schema.json), YAML |
-| Assessment Results | Assessment Results | Draft | Released (1.0.0 Final) | [XML](https://raw.githubusercontent.com/usnistgov/OSCAL/master/xml/schema/oscal_assessment-results_schema.xsd), [JSON](https://raw.githubusercontent.com/usnistgov/OSCAL/master/json/schema/oscal_assessment-results_schema.json), YAML |
-| Assessment Results | Plan of Action and Milestones | Draft | Released (1.0.0 Final) | [XML](https://raw.githubusercontent.com/usnistgov/OSCAL/master/xml/schema/oscal_poam_schema.xsd), [JSON](https://raw.githubusercontent.com/usnistgov/OSCAL/master/json/schema/oscal_poam_schema.json), YAML |
+| Assessment | Assessment Plan | Pre-Final | Released (1.0.0 Final) | [XML](https://raw.githubusercontent.com/usnistgov/OSCAL/master/xml/schema/oscal_assessment-plan_schema.xsd), [JSON](https://raw.githubusercontent.com/usnistgov/OSCAL/master/json/schema/oscal_assessment-plan_schema.json), YAML |
+| Assessment Results | Assessment Results | Pre-Final | Released (1.0.0 Final) | [XML](https://raw.githubusercontent.com/usnistgov/OSCAL/master/xml/schema/oscal_assessment-results_schema.xsd), [JSON](https://raw.githubusercontent.com/usnistgov/OSCAL/master/json/schema/oscal_assessment-results_schema.json), YAML |
+| Assessment Results | Plan of Action and Milestones | Pre-Final | Released (1.0.0 Final) | [XML](https://raw.githubusercontent.com/usnistgov/OSCAL/master/xml/schema/oscal_poam_schema.xsd), [JSON](https://raw.githubusercontent.com/usnistgov/OSCAL/master/json/schema/oscal_poam_schema.json), YAML |
