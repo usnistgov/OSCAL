@@ -24,7 +24,7 @@ OSCAL release history:
 - [OSCAL 1.0.0 Milestone 2](https://pages.nist.gov/OSCAL/contribute/roadmap/#oscal-100-milestone-2) - October 1, 2019
 - [OSCAL 1.0.0 Milestone 3](https://pages.nist.gov/OSCAL/contribute/roadmap/#oscal-100-milestone-3) - June 3, 2020
 - [OSCAL 1.0.0 Release Candidate 1](https://pages.nist.gov/OSCAL/contribute/roadmap/#oscal-100-release-candidate-1) - December 21, 2020
-- [OSCAL 1.0.0 Release Candidate 2](https://pages.nist.gov/OSCAL/contribute/roadmap/#oscal-100-release-candidate-2) - April 9, 2021
+- [OSCAL 1.0.0 Release Candidate 2](https://pages.nist.gov/OSCAL/contribute/roadmap/#oscal-100-release-candidate-2) - April 12, 2021
 
 ### OSCAL 1.0.0 Milestone 1
 
@@ -104,7 +104,7 @@ These changes were made based on all the excellent feedback we received from the
 
 {{<usa-tag>}}Development Milestone{{</usa-tag>}} OSCAL 1.0.0 [Release Candidate 2](https://github.com/usnistgov/OSCAL/milestone/10)
 
-{{<usa-tag>}}Status{{</usa-tag>}} [Released](https://github.com/usnistgov/OSCAL/releases/tag/v1.0.0-rc2) (April 9, 2021)
+{{<usa-tag>}}Status{{</usa-tag>}} [Released](https://github.com/usnistgov/OSCAL/releases/tag/v1.0.0-rc2) (April 12, 2021)
 
 {{<usa-tag>}}Focus{{</usa-tag>}} Promote review of draft OSCAL 1.0.0 documentation and formats ahead of finalizing OSCAL 1.0.0
 

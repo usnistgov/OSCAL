@@ -12,7 +12,7 @@ If you are interested in contributing to the development of OSCAL, refer to the 
 
 ## Project Status
 
-OSCAL 1.0.0 Release Candidate 2 was released on April 9, 2021. The full announcement can be found below:
+OSCAL 1.0.0 Release Candidate 2 was released on April 12, 2021. The full announcement can be found below:
 
 <blockquote>
 We are pleased to announce the publication of OSCAL 1.0.0 Release Candidate (RC) 2. This is the second full draft release of OSCAL 1.0.0 which is made available for public review and feedback before releasing the final OSCAL 1.0.0.
