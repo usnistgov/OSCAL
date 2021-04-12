@@ -1,7 +1,5 @@
-The OSCAL Project has releases Milestone 3, Milestone 2 and Milestone 1, given here in reverse order of release date.
 
-# OSCAL 1.0.0 Milestone 3
---
+# OSCAL 1.0.0 Release Candidate (RC) 2
 
 ## Understanding this change log
 
@@ -18,7 +16,55 @@ In the log below, [M3} indicates the Milestone 3 definitions, while [M2] indicat
 
 Assembly models are noted with DTD (RNC) notation indicating cardinality: suffix '*' indicates zero-or-more, '+' is one-or-more, '?' is zero-or-one (i.e., optional), no indicator is used for one-only (required). So (a, b, b) and (a, b, c) are valid to pattern expression (a, b+, c*), but (a, c) is not.
 
-# Changes from OSCAL 1.0.0 Milestone 3 (M3) to Release Candidate 1 (RC1)
+# Changes from OSCAL 1.0.0 Release Candidate (RC) 1 to RC 2
+
+Changes in this release are focused on the following major areas:
+
+- Simplification of key OSCAL features
+  - Properties and annotations have been merged into a single `prop` that now allows an optional `remarks` and `uuid`.
+  - In the  assessment plan and assessment results models, the concepts of a `task` and `action` have been combined.
+  - Use of `local-definitions` in the assessment plan, assessment results, and POA&M models has been simplified and made more consistent.
+- Model documentation improvements
+  - Some usage descriptions were enhanced to provide more detail and to be more consistent overall.
+  - Formal names were updated in some places where the names did not match the data element.
+  - Many spelling errors were corrected.
+- Removed the use of XML `<any>` and JSON `additonalProperties` for arbitrary extensions based on community discussion. Extended data can still be provided using `link` declarations to external content. This decision can be revisited in future revisions once there is more implementation experience with the OSCAL models.
+- Added the following `link` relations: `latest-version`, `predecessor-version`, and `successor-version` to allow an OSCAL document to link to latest, previous, and next document revisions.
+- Fixed a few bugs in the profile resolver code and updated the resolver to work with new profile import/insert structures.
+- Provided support for data insertion points for data other than parameters in markup content.
+
+## Changes common to all models
+
+- "props" and "annotations" in JSON, and "prop" and "annotation in XML, have been merged into a single property that now allows an optional `remark` and `uuid`. Semantically, the optional `remark` and `uuid` were the only difference between a "prop" and an "annotation" in OSCAL. The resulting model is simpler with a single construct that will always allow a remark. Names and values that were allowed on annotations are now allowed on properties.
+- `latest-version`, `predecessor-version`, and `successor-version` link relations were added to allow an OSCAL document to link to latest, previous, and next document revisions.
+- Markup content may now contain data insertion points for data other than parameters. The `insert` object, which may appear in markup content strings, now supports a `type` which can be used to indicate the type of data to insert, and an `id-ref` that identifies the specific data object to take data from.
+
+## Model-Specific Changes
+
+### Catalog and Profile
+
+- Remarks were added to `param` declarations.
+- The import/insert structure in OSCAL profiles has been updated to align with the include/exclude syntax used in the assessment models. This lays the groundwork for more dynamic extension and expansion of include/exclude capabilities in future releases.
+
+### Component Definition
+
+- `set-parameter` was added to `/component-definition/component(s)//control-implementations` to allow for parameter values to be more conveniently defined for all control implementations.
+
+### Assessment Plan and Assessment Results
+
+- The concepts of task and action were combined, resulting in only the concept of a task. A task now has a type, which defines if the task is a "milestone" or "action". This resulted in the following changes:
+  - `/assessment-results/results/local-definitions/action(s)` was removed.
+  - `/assessment-results/results/assessment-log/entry/related-action(s)` was removed.
+  - A task can now define a `dependency` on another task.
+- In multiple locations `assessment-subject` has been renamed to `subject` to be more consistent. Before there was a mixture of names.
+- In JSON the `/assessment-plan/terms-and-conditions//parts` is always an array. In RC1, if a single part object was provided, the value was a single object.
+- In JSON the `/assessment-results/local-definitions/add-objectives-and-methods` was renamed to "objectives-and-methods". Similarly, in XML `/assessment-results/local-definitions/add-objectives-and-methods` was renamed to "objectives-and-methods".
+- In JSON and XML `/assessment-results/results/local-definitions/assessment-assets` has been added to allow each result to declare which assessment assets were used during the assessment, if these assets differ from what was defined in the assessment plan. This construct was moved from `/assessment-results/results`.
+- In JSON and XML `/assessment-results/results/assessment-subject` has been removed. This was originally used to add subjects that were not found in the assessment plan or SSP. In `/assessment-results/results/local-definitions` you can specify `component(s)`, `inventory-item(s)`, and `user(s)` definitions. These allow the identification of subjects that are not in the assessment plan or SSP, making `assessment-subject` unneeded.
+- In `/assessment-results/results/finding` the `collected` and `expires` was removed, since this is an aspect of the observation, not the finding.
+- In `/assessment-results/results/finding` the `objective-status` has been replaced by `finding-target` which can now be used to provide a status on a per-subject basis. This allows a finding to be associated with multiple related subjects that might have different states.
+
+# Changes from OSCAL 1.0.0 Milestone 3 (M3) to RC 1
 
 Changes in this release have been focused on the following major areas:
 - Making naming in XML and JSON/YAML more consistent.

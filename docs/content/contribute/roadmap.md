@@ -23,7 +23,8 @@ OSCAL release history:
 - [OSCAL 1.0.0 Milestone 1](https://pages.nist.gov/OSCAL/contribute/roadmap/#oscal-100-milestone-1) - June 15, 2019
 - [OSCAL 1.0.0 Milestone 2](https://pages.nist.gov/OSCAL/contribute/roadmap/#oscal-100-milestone-2) - October 1, 2019
 - [OSCAL 1.0.0 Milestone 3](https://pages.nist.gov/OSCAL/contribute/roadmap/#oscal-100-milestone-3) - June 3, 2020
-- [OSCAL 1.0.0 Release Candidate 1](https://pages.nist.gov/OSCAL/contribute/roadmap/#oscal-100-release-candidate-1-rc1) - Dec 21, 2020
+- [OSCAL 1.0.0 Release Candidate 1](https://pages.nist.gov/OSCAL/contribute/roadmap/#oscal-100-release-candidate-1) - December 21, 2020
+- [OSCAL 1.0.0 Release Candidate 2](https://pages.nist.gov/OSCAL/contribute/roadmap/#oscal-100-release-candidate-2) - April 12, 2021
 
 ### OSCAL 1.0.0 Milestone 1
 
@@ -81,12 +82,11 @@ The following additional stakeholders can benefit from component definitions for
 - **Policy personnel:** Can publish information about their policies as a component formatted using the OSCAL component definition model.
 - **Tool vendors:** Creating tools that help organizations document and assess security and privacy control implementations using OSCAL formatted component and system implementation information to support risk assessment, continuous monitoring, compliance reporting, and other purposes
 
-
-### OSCAL 1.0.0 Release Candidate 1 (RC1)
+### OSCAL 1.0.0 Release Candidate 1
 
 {{<usa-tag>}}Development Milestone{{</usa-tag>}} OSCAL 1.0.0 [Release Candidate 1](https://github.com/usnistgov/OSCAL/milestone/8)
 
-{{<usa-tag>}}Status{{</usa-tag>}} [Released](https://github.com/usnistgov/OSCAL/releases/tag/v1.0.0-rc1) (Dec 21, 2020)
+{{<usa-tag>}}Status{{</usa-tag>}} [Released](https://github.com/usnistgov/OSCAL/releases/tag/v1.0.0-rc1) (December 21, 2020)
 
 {{<usa-tag>}}Focus{{</usa-tag>}} Promote review of draft OSCAL 1.0.0 documentation and formats ahead of finalizing OSCAL 1.0.0
 
@@ -99,6 +99,35 @@ This development phase focused on producing:
 - Updated tools to convert between OSCAL [XML](https://github.com/usnistgov/OSCAL/tree/master/xml) and [JSON](https://github.com/usnistgov/OSCAL/tree/master/json) formats, and to [up convert](https://github.com/usnistgov/OSCAL/tree/master/src/release/content-upgrade) content from milestone 3 to RC1.
 
 These changes were made based on all the excellent feedback we received from the OSCAL community. The NIST OSCAL team is very thankful for all of the great feedback we have received.
+
+### OSCAL 1.0.0 Release Candidate 2 
+
+{{<usa-tag>}}Development Milestone{{</usa-tag>}} OSCAL 1.0.0 [Release Candidate 2](https://github.com/usnistgov/OSCAL/milestone/10)
+
+{{<usa-tag>}}Status{{</usa-tag>}} [Released](https://github.com/usnistgov/OSCAL/releases/tag/v1.0.0-rc2) (April 12, 2021)
+
+{{<usa-tag>}}Focus{{</usa-tag>}} Promote review of draft OSCAL 1.0.0 documentation and formats ahead of finalizing OSCAL 1.0.0
+
+This development phase provided updated stable versions of all OSCAL models, with a focus on the following areas of change:
+
+- Simplification of key OSCAL features
+  - Properties and annotations have been merged into a single `prop` that now allows an optional `remarks` and `uuid`.
+  - In the  assessment plan and assessment results models, the concepts of a `task` and `action` have been combined.
+  - Use of `local-definitions` in the assessment plan, assessment results, and POA&M models has been simplified and made more consistent.
+- Model documentation improvements
+  - Some usage descriptions were enhanced to provide more detail and to be more consistent overall.
+  - Formal names were updated in some places where the names did not match the data element.
+  - Many spelling errors were corrected.
+- Removed the use of XML `<any>` and JSON `additonalProperties` for arbitrary extensions based on community discussion. Extended data can still be provided using `link` declarations to external content. This decision can be revisited in future revisions once there is more implementation experience with the OSCAL models.
+- Added the following `link` relations: `latest-version`, `predecessor-version`, and `successor-version` to allow an OSCAL document to link to latest, previous, and next document revisions.
+- Fixed a few bugs in the profile resolver code and updated the resolver to work with new profile import/insert structures.
+- Provided support for data insertion points for data other than parameters in markup content.
+
+These changes were made based on all the excellent feedback we received from the OSCAL community. The NIST OSCAL team is very thankful for all of the great feedback we have received.
+
+Updated tools to convert between OSCAL [XML](https://github.com/usnistgov/OSCAL/tree/master/xml) and [JSON](https://github.com/usnistgov/OSCAL/tree/master/json) formats, and to [up convert](https://github.com/usnistgov/OSCAL/tree/master/src/release/content-upgrade) content from previous releases to RC2.
+
+This will be the final release candidate before the full release of OSCAL 1.0.0.
 
 ### OSCAL 1.0.0 Full Release
 

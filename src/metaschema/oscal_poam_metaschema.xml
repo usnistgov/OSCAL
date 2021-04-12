@@ -79,7 +79,7 @@
         <description>Describes an individual POA&amp;M item.</description>
         <define-flag name="uuid" required="no" as-type="uuid">
             <formal-name>POA&amp;M Item Universally Unique Identifier</formal-name>
-            <description>Uniquely identifies the POA&amp;M entry. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. A UUID should be consistantly used for a given POA&amp;M item across revisions of the document.</description>
+            <description>Uniquely identifies the POA&amp;M entry. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. A UUID should be consistently used for a given POA&amp;M item across revisions of the document.</description>
         </define-flag>
         <model>
             <define-field name="title" min-occurs="1" max-occurs="1" as-type="markup-line">
