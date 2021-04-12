@@ -258,10 +258,10 @@
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Location Universally Unique Identifier</m:formal-name>
-               <m:description>A unique identifier that can be used to reference this defined location elsewhere in an OSCAL document. A UUID should be consistantly used for a given location across revisions of the document.</m:description>
+               <m:description>A unique identifier that can be used to reference this defined location elsewhere in an OSCAL document. A UUID should be consistently used for a given location across revisions of the document.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>Location Universally Unique Identifier</b>: A unique identifier that can be used to reference this defined location elsewhere in an OSCAL document. A UUID should be consistantly used for a given location across revisions of the document.</xs:documentation>
+               <b>Location Universally Unique Identifier</b>: A unique identifier that can be used to reference this defined location elsewhere in an OSCAL document. A UUID should be consistently used for a given location across revisions of the document.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
@@ -539,10 +539,10 @@
                <xs:annotation>
                   <xs:appinfo>
                      <m:formal-name>Resource</m:formal-name>
-                     <m:description>A resource associated with content in the containing document. A resource may be directly included in the document base64 encoded or may point to one or more equavalent internet resources.</m:description>
+                     <m:description>A resource associated with content in the containing document. A resource may be directly included in the document base64 encoded or may point to one or more equivalent internet resources.</m:description>
                   </xs:appinfo>
                   <xs:documentation>
-                     <b>Resource</b>: A resource associated with content in the containing document. A resource may be directly included in the document base64 encoded or may point to one or more equavalent internet resources.</xs:documentation>
+                     <b>Resource</b>: A resource associated with content in the containing document. A resource may be directly included in the document base64 encoded or may point to one or more equivalent internet resources.</xs:documentation>
                </xs:annotation>
                <xs:sequence>
                   <xs:element name="title" minOccurs="0" maxOccurs="1">
@@ -723,19 +723,15 @@
                                   minOccurs="0"/>
                      </xs:complexType>
                   </xs:element>
-                  <xs:any namespace="##other"
-                          processContents="lax"
-                          minOccurs="0"
-                          maxOccurs="unbounded"/>
                </xs:sequence>
                <xs:attribute name="uuid" use="required" type="oscal-ssp:uuid">
                   <xs:annotation>
                      <xs:appinfo>
                         <m:formal-name>Resource Universally Unique Identifier</m:formal-name>
-                        <m:description>A globally unique identifier that can be used to reference this defined resource elsewhere in an OSCAL document. A UUID should be consistantly used for a given resource across revisions of the document.</m:description>
+                        <m:description>A globally unique identifier that can be used to reference this defined resource elsewhere in an OSCAL document. A UUID should be consistently used for a given resource across revisions of the document.</m:description>
                      </xs:appinfo>
                      <xs:documentation>
-                        <b>Resource Universally Unique Identifier</b>: A globally unique identifier that can be used to reference this defined resource elsewhere in an OSCAL document. A UUID should be consistantly used for a given resource across revisions of the document.</xs:documentation>
+                        <b>Resource Universally Unique Identifier</b>: A globally unique identifier that can be used to reference this defined resource elsewhere in an OSCAL document. A UUID should be consistently used for a given resource across revisions of the document.</xs:documentation>
                   </xs:annotation>
                </xs:attribute>
             </xs:complexType>
@@ -2261,10 +2257,10 @@
                   <xs:annotation>
                      <xs:appinfo>
                         <m:formal-name>Information Type Universally Unique Identifier</m:formal-name>
-                        <m:description>A globally unique identifier that can be used to reference this information type entry elsewhere in an OSCAL document. A UUID should be consistantly used for a given resource across revisions of the document.</m:description>
+                        <m:description>A globally unique identifier that can be used to reference this information type entry elsewhere in an OSCAL document. A UUID should be consistently used for a given resource across revisions of the document.</m:description>
                      </xs:appinfo>
                      <xs:documentation>
-                        <b>Information Type Universally Unique Identifier</b>: A globally unique identifier that can be used to reference this information type entry elsewhere in an OSCAL document. A UUID should be consistantly used for a given resource across revisions of the document.</xs:documentation>
+                        <b>Information Type Universally Unique Identifier</b>: A globally unique identifier that can be used to reference this information type entry elsewhere in an OSCAL document. A UUID should be consistently used for a given resource across revisions of the document.</xs:documentation>
                   </xs:annotation>
                </xs:attribute>
             </xs:complexType>
@@ -2720,10 +2716,10 @@
                   <xs:annotation>
                      <xs:appinfo>
                         <m:formal-name>Leveraged Authorization Universally Unique Identifier</m:formal-name>
-                        <m:description>A globally unique identifier that can be used to reference this leveraged authorization entry elsewhere in an OSCAL document. A UUID should be consistantly used for a given resource across revisions of the document.</m:description>
+                        <m:description>A globally unique identifier that can be used to reference this leveraged authorization entry elsewhere in an OSCAL document. A UUID should be consistently used for a given resource across revisions of the document.</m:description>
                      </xs:appinfo>
                      <xs:documentation>
-                        <b>Leveraged Authorization Universally Unique Identifier</b>: A globally unique identifier that can be used to reference this leveraged authorization entry elsewhere in an OSCAL document. A UUID should be consistantly used for a given resource across revisions of the document.</xs:documentation>
+                        <b>Leveraged Authorization Universally Unique Identifier</b>: A globally unique identifier that can be used to reference this leveraged authorization entry elsewhere in an OSCAL document. A UUID should be consistently used for a given resource across revisions of the document.</xs:documentation>
                   </xs:annotation>
                </xs:attribute>
             </xs:complexType>
@@ -2915,10 +2911,10 @@
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Control Statement Reference Universally Unique Identifier</m:formal-name>
-               <m:description>A globally unique identifier that can be used to reference this control statement entry elsewhere in an OSCAL document. A UUID should be consistantly used for a given resource across revisions of the document.</m:description>
+               <m:description>A globally unique identifier that can be used to reference this control statement entry elsewhere in an OSCAL document. A UUID should be consistently used for a given resource across revisions of the document.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>Control Statement Reference Universally Unique Identifier</b>: A globally unique identifier that can be used to reference this control statement entry elsewhere in an OSCAL document. A UUID should be consistantly used for a given resource across revisions of the document.</xs:documentation>
+               <b>Control Statement Reference Universally Unique Identifier</b>: A globally unique identifier that can be used to reference this control statement entry elsewhere in an OSCAL document. A UUID should be consistently used for a given resource across revisions of the document.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
@@ -3055,10 +3051,10 @@
                            <xs:annotation>
                               <xs:appinfo>
                                  <m:formal-name>Provided Universally Unique Identifier</m:formal-name>
-                                 <m:description>A globally unique identifier that can be used to reference this provided entry elsewhere in an OSCAL document. A UUID should be consistantly used for a given resource across revisions of the document.</m:description>
+                                 <m:description>A globally unique identifier that can be used to reference this provided entry elsewhere in an OSCAL document. A UUID should be consistently used for a given resource across revisions of the document.</m:description>
                               </xs:appinfo>
                               <xs:documentation>
-                                 <b>Provided Universally Unique Identifier</b>: A globally unique identifier that can be used to reference this provided entry elsewhere in an OSCAL document. A UUID should be consistantly used for a given resource across revisions of the document.</xs:documentation>
+                                 <b>Provided Universally Unique Identifier</b>: A globally unique identifier that can be used to reference this provided entry elsewhere in an OSCAL document. A UUID should be consistently used for a given resource across revisions of the document.</xs:documentation>
                            </xs:annotation>
                         </xs:attribute>
                      </xs:complexType>
@@ -3068,10 +3064,10 @@
                         <xs:annotation>
                            <xs:appinfo>
                               <m:formal-name>Control Implementation Responsibility</m:formal-name>
-                              <m:description>Describes a control implementation responsibiity imposed on a leveraging system.</m:description>
+                              <m:description>Describes a control implementation responsibility imposed on a leveraging system.</m:description>
                            </xs:appinfo>
                            <xs:documentation>
-                              <b>Control Implementation Responsibility</b>: Describes a control implementation responsibiity imposed on a leveraging system.</xs:documentation>
+                              <b>Control Implementation Responsibility</b>: Describes a control implementation responsibility imposed on a leveraging system.</xs:documentation>
                         </xs:annotation>
                         <xs:sequence>
                            <xs:element name="description" minOccurs="1" maxOccurs="1">
@@ -3121,10 +3117,10 @@
                            <xs:annotation>
                               <xs:appinfo>
                                  <m:formal-name>Responsibility Universally Unique Identifier</m:formal-name>
-                                 <m:description>A globally unique identifier that can be used to reference this responsibility entry elsewhere in an OSCAL document. A UUID should be consistantly used for a given resource across revisions of the document.</m:description>
+                                 <m:description>A globally unique identifier that can be used to reference this responsibility entry elsewhere in an OSCAL document. A UUID should be consistently used for a given resource across revisions of the document.</m:description>
                               </xs:appinfo>
                               <xs:documentation>
-                                 <b>Responsibility Universally Unique Identifier</b>: A globally unique identifier that can be used to reference this responsibility entry elsewhere in an OSCAL document. A UUID should be consistantly used for a given resource across revisions of the document.</xs:documentation>
+                                 <b>Responsibility Universally Unique Identifier</b>: A globally unique identifier that can be used to reference this responsibility entry elsewhere in an OSCAL document. A UUID should be consistently used for a given resource across revisions of the document.</xs:documentation>
                            </xs:annotation>
                         </xs:attribute>
                         <xs:attribute name="provided-uuid" type="oscal-ssp:uuid">
@@ -3200,10 +3196,10 @@
                   <xs:annotation>
                      <xs:appinfo>
                         <m:formal-name>Inherited Universally Unique Identifier</m:formal-name>
-                        <m:description>A globally unique identifier that can be used to reference this inherited entry elsewhere in an OSCAL document. A UUID should be consistantly used for a given resource across revisions of the document.</m:description>
+                        <m:description>A globally unique identifier that can be used to reference this inherited entry elsewhere in an OSCAL document. A UUID should be consistently used for a given resource across revisions of the document.</m:description>
                      </xs:appinfo>
                      <xs:documentation>
-                        <b>Inherited Universally Unique Identifier</b>: A globally unique identifier that can be used to reference this inherited entry elsewhere in an OSCAL document. A UUID should be consistantly used for a given resource across revisions of the document.</xs:documentation>
+                        <b>Inherited Universally Unique Identifier</b>: A globally unique identifier that can be used to reference this inherited entry elsewhere in an OSCAL document. A UUID should be consistently used for a given resource across revisions of the document.</xs:documentation>
                   </xs:annotation>
                </xs:attribute>
                <xs:attribute name="provided-uuid" type="oscal-ssp:uuid">
@@ -3328,10 +3324,10 @@
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>By-Component Universally Unique Identifier</m:formal-name>
-               <m:description>A globally unique identifier that can be used to reference this by-component entry elsewhere in an OSCAL document. A UUID should be consistantly used for a given resource across revisions of the document.</m:description>
+               <m:description>A globally unique identifier that can be used to reference this by-component entry elsewhere in an OSCAL document. A UUID should be consistently used for a given resource across revisions of the document.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>By-Component Universally Unique Identifier</b>: A globally unique identifier that can be used to reference this by-component entry elsewhere in an OSCAL document. A UUID should be consistantly used for a given resource across revisions of the document.</xs:documentation>
+               <b>By-Component Universally Unique Identifier</b>: A globally unique identifier that can be used to reference this by-component entry elsewhere in an OSCAL document. A UUID should be consistently used for a given resource across revisions of the document.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>

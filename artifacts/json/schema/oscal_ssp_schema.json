@@ -114,7 +114,7 @@
         "properties" : 
         { "uuid" : 
           { "title" : "Location Universally Unique Identifier",
-            "description" : "A unique identifier that can be used to reference this defined location elsewhere in an OSCAL document. A UUID should be consistantly used for a given location across revisions of the document.",
+            "description" : "A unique identifier that can be used to reference this defined location elsewhere in an OSCAL document. A UUID should be consistently used for a given location across revisions of the document.",
             "type" : "string",
             "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
           "title" : 
@@ -312,12 +312,12 @@
             "minItems" : 1,
             "items" : 
             { "title" : "Resource",
-              "description" : "A resource associated with content in the containing document. A resource may be directly included in the document base64 encoded or may point to one or more equavalent internet resources.",
+              "description" : "A resource associated with content in the containing document. A resource may be directly included in the document base64 encoded or may point to one or more equivalent internet resources.",
               "type" : "object",
               "properties" : 
               { "uuid" : 
                 { "title" : "Resource Universally Unique Identifier",
-                  "description" : "A globally unique identifier that can be used to reference this defined resource elsewhere in an OSCAL document. A UUID should be consistantly used for a given resource across revisions of the document.",
+                  "description" : "A globally unique identifier that can be used to reference this defined resource elsewhere in an OSCAL document. A UUID should be consistently used for a given resource across revisions of the document.",
                   "type" : "string",
                   "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
                 "title" : 
@@ -408,7 +408,7 @@
                 { "$ref" : "#/definitions/remarks" } },
               "required" : 
               [ "uuid" ],
-              "additionalProperties" : true } } },
+              "additionalProperties" : false } } },
         "additionalProperties" : false },
       "oscal-ssp-property" : 
       { "title" : "Property",
@@ -1110,7 +1110,7 @@
               "properties" : 
               { "uuid" : 
                 { "title" : "Information Type Universally Unique Identifier",
-                  "description" : "A globally unique identifier that can be used to reference this information type entry elsewhere in an OSCAL document. A UUID should be consistantly used for a given resource across revisions of the document.",
+                  "description" : "A globally unique identifier that can be used to reference this information type entry elsewhere in an OSCAL document. A UUID should be consistently used for a given resource across revisions of the document.",
                   "type" : "string",
                   "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
                 "title" : 
@@ -1463,7 +1463,7 @@
               "properties" : 
               { "uuid" : 
                 { "title" : "Leveraged Authorization Universally Unique Identifier",
-                  "description" : "A globally unique identifier that can be used to reference this leveraged authorization entry elsewhere in an OSCAL document. A UUID should be consistantly used for a given resource across revisions of the document.",
+                  "description" : "A globally unique identifier that can be used to reference this leveraged authorization entry elsewhere in an OSCAL document. A UUID should be consistently used for a given resource across revisions of the document.",
                   "type" : "string",
                   "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
                 "title" : 
@@ -1634,7 +1634,7 @@
         "properties" : 
         { "uuid" : 
           { "title" : "Control Statement Reference Universally Unique Identifier",
-            "description" : "A globally unique identifier that can be used to reference this control statement entry elsewhere in an OSCAL document. A UUID should be consistantly used for a given resource across revisions of the document.",
+            "description" : "A globally unique identifier that can be used to reference this control statement entry elsewhere in an OSCAL document. A UUID should be consistently used for a given resource across revisions of the document.",
             "type" : "string",
             "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
           "props" : 
@@ -1670,7 +1670,7 @@
         "properties" : 
         { "uuid" : 
           { "title" : "By-Component Universally Unique Identifier",
-            "description" : "A globally unique identifier that can be used to reference this by-component entry elsewhere in an OSCAL document. A UUID should be consistantly used for a given resource across revisions of the document.",
+            "description" : "A globally unique identifier that can be used to reference this by-component entry elsewhere in an OSCAL document. A UUID should be consistently used for a given resource across revisions of the document.",
             "type" : "string",
             "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
           "description" : 
@@ -1728,7 +1728,7 @@
                   "properties" : 
                   { "uuid" : 
                     { "title" : "Provided Universally Unique Identifier",
-                      "description" : "A globally unique identifier that can be used to reference this provided entry elsewhere in an OSCAL document. A UUID should be consistantly used for a given resource across revisions of the document.",
+                      "description" : "A globally unique identifier that can be used to reference this provided entry elsewhere in an OSCAL document. A UUID should be consistently used for a given resource across revisions of the document.",
                       "type" : "string",
                       "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
                     "description" : 
@@ -1766,12 +1766,12 @@
                 "minItems" : 1,
                 "items" : 
                 { "title" : "Control Implementation Responsibility",
-                  "description" : "Describes a control implementation responsibiity imposed on a leveraging system.",
+                  "description" : "Describes a control implementation responsibility imposed on a leveraging system.",
                   "type" : "object",
                   "properties" : 
                   { "uuid" : 
                     { "title" : "Responsibility Universally Unique Identifier",
-                      "description" : "A globally unique identifier that can be used to reference this responsibility entry elsewhere in an OSCAL document. A UUID should be consistantly used for a given resource across revisions of the document.",
+                      "description" : "A globally unique identifier that can be used to reference this responsibility entry elsewhere in an OSCAL document. A UUID should be consistently used for a given resource across revisions of the document.",
                       "type" : "string",
                       "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
                     "provided-uuid" : 
@@ -1822,7 +1822,7 @@
               "properties" : 
               { "uuid" : 
                 { "title" : "Inherited Universally Unique Identifier",
-                  "description" : "A globally unique identifier that can be used to reference this inherited entry elsewhere in an OSCAL document. A UUID should be consistantly used for a given resource across revisions of the document.",
+                  "description" : "A globally unique identifier that can be used to reference this inherited entry elsewhere in an OSCAL document. A UUID should be consistently used for a given resource across revisions of the document.",
                   "type" : "string",
                   "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
                 "provided-uuid" : 

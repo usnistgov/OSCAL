@@ -114,7 +114,7 @@
         "properties" : 
         { "uuid" : 
           { "title" : "Location Universally Unique Identifier",
-            "description" : "A unique identifier that can be used to reference this defined location elsewhere in an OSCAL document. A UUID should be consistantly used for a given location across revisions of the document.",
+            "description" : "A unique identifier that can be used to reference this defined location elsewhere in an OSCAL document. A UUID should be consistently used for a given location across revisions of the document.",
             "type" : "string",
             "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
           "title" : 
@@ -307,12 +307,12 @@
             "minItems" : 1,
             "items" : 
             { "title" : "Resource",
-              "description" : "A resource associated with content in the containing document. A resource may be directly included in the document base64 encoded or may point to one or more equavalent internet resources.",
+              "description" : "A resource associated with content in the containing document. A resource may be directly included in the document base64 encoded or may point to one or more equivalent internet resources.",
               "type" : "object",
               "properties" : 
               { "uuid" : 
                 { "title" : "Resource Universally Unique Identifier",
-                  "description" : "A globally unique identifier that can be used to reference this defined resource elsewhere in an OSCAL document. A UUID should be consistantly used for a given resource across revisions of the document.",
+                  "description" : "A globally unique identifier that can be used to reference this defined resource elsewhere in an OSCAL document. A UUID should be consistently used for a given resource across revisions of the document.",
                   "type" : "string",
                   "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
                 "title" : 
@@ -403,7 +403,7 @@
                 { "$ref" : "#/definitions/remarks" } },
               "required" : 
               [ "uuid" ],
-              "additionalProperties" : true } } },
+              "additionalProperties" : false } } },
         "additionalProperties" : false },
       "oscal-profile-property" : 
       { "title" : "Property",
@@ -659,7 +659,7 @@
             { "$ref" : "#/definitions/link" } } },
         "required" : 
         [ "name" ],
-        "additionalProperties" : true },
+        "additionalProperties" : false },
       "oscal-profile-parameter" : 
       { "title" : "Parameter",
         "description" : "Parameters provide a mechanism for the dynamic assignment of value(s) in a control.",
@@ -690,7 +690,7 @@
             { "$ref" : "#/definitions/link" } },
           "label" : 
           { "title" : "Parameter Label",
-            "description" : "A short, placeholder name for the parameter, which can be used as a subsitute for a value if no value is assigned.",
+            "description" : "A short, placeholder name for the parameter, which can be used as a substitute for a value if no value is assigned.",
             "type" : "string" },
           "usage" : 
           { "title" : "Parameter Usage Description",
@@ -717,7 +717,7 @@
           { "$ref" : "#/definitions/remarks" } },
         "required" : 
         [ "id" ],
-        "additionalProperties" : true },
+        "additionalProperties" : false },
       "oscal-profile-parameter-constraint" : 
       { "title" : "Constraint",
         "description" : "A formal or informal expression of a constraint or test",
@@ -758,7 +758,7 @@
             "type" : "string" } },
         "required" : 
         [ "prose" ],
-        "additionalProperties" : true },
+        "additionalProperties" : false },
       "oscal-profile-parameter-value" : 
       { "title" : "Parameter Value",
         "description" : "A parameter value or set of values.",
@@ -781,7 +781,7 @@
             { "title" : "Choice",
               "description" : "A value selection among several such options",
               "type" : "string" } } },
-        "additionalProperties" : true },
+        "additionalProperties" : false },
       "oscal-profile-profile" : 
       { "title" : "Profile",
         "description" : "Each OSCAL profile is defined by a Profile element",
@@ -1053,7 +1053,7 @@
             { "$ref" : "#/definitions/link" } },
           "label" : 
           { "title" : "Parameter Label",
-            "description" : "A short, placeholder name for the parameter, which can be used as a subsitute for a value if no value is assigned.",
+            "description" : "A short, placeholder name for the parameter, which can be used as a substitute for a value if no value is assigned.",
             "type" : "string" },
           "usage" : 
           { "title" : "Parameter Usage Description",
