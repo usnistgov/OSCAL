@@ -141,7 +141,7 @@ To build the XML and JSON Schema for the OSCAL models, run the following:
 ./build/ci-cd/generate-schema.sh
 ```
 
-This will generate schemas for the Metaschema definitions defined in the metaschema [configuration file][metaschema-config].
+This will generate schemas based on the Metaschema definitions in the metaschema [configuration file][metaschema-config].
 
 ### Building XML-to-JSON and JSON-to-XML Converters for the OSCAL models
 
@@ -151,7 +151,7 @@ To build the XML-to-JSON and JSON-to-XML Converters for the OSCAL models, run th
 ./build/ci-cd/generate-content-converters.sh
 ```
 
-This will generate converters for the Metaschema definitions defined in the metaschema [configuration file][metaschema-config].
+This will generate converters based on the definitions in the metaschema [configuration file][metaschema-config].
 
 ### Building Website Documentation
 
