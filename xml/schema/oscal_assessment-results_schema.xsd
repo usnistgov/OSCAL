@@ -58,10 +58,6 @@
                      type="oscal-ar:link-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
-         <xs:any namespace="##other"
-                 processContents="lax"
-                 minOccurs="0"
-                 maxOccurs="unbounded"/>
       </xs:sequence>
       <xs:attribute name="id" type="xs:NCName">
          <xs:annotation>
@@ -344,10 +340,10 @@
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Location Universally Unique Identifier</m:formal-name>
-               <m:description>A unique identifier that can be used to reference this defined location elsewhere in an OSCAL document. A UUID should be consistantly used for a given location across revisions of the document.</m:description>
+               <m:description>A unique identifier that can be used to reference this defined location elsewhere in an OSCAL document. A UUID should be consistently used for a given location across revisions of the document.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>Location Universally Unique Identifier</b>: A unique identifier that can be used to reference this defined location elsewhere in an OSCAL document. A UUID should be consistantly used for a given location across revisions of the document.</xs:documentation>
+               <b>Location Universally Unique Identifier</b>: A unique identifier that can be used to reference this defined location elsewhere in an OSCAL document. A UUID should be consistently used for a given location across revisions of the document.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
@@ -625,10 +621,10 @@
                <xs:annotation>
                   <xs:appinfo>
                      <m:formal-name>Resource</m:formal-name>
-                     <m:description>A resource associated with content in the containing document. A resource may be directly included in the document base64 encoded or may point to one or more equavalent internet resources.</m:description>
+                     <m:description>A resource associated with content in the containing document. A resource may be directly included in the document base64 encoded or may point to one or more equivalent internet resources.</m:description>
                   </xs:appinfo>
                   <xs:documentation>
-                     <b>Resource</b>: A resource associated with content in the containing document. A resource may be directly included in the document base64 encoded or may point to one or more equavalent internet resources.</xs:documentation>
+                     <b>Resource</b>: A resource associated with content in the containing document. A resource may be directly included in the document base64 encoded or may point to one or more equivalent internet resources.</xs:documentation>
                </xs:annotation>
                <xs:sequence>
                   <xs:element name="title" minOccurs="0" maxOccurs="1">
@@ -809,19 +805,15 @@
                                   minOccurs="0"/>
                      </xs:complexType>
                   </xs:element>
-                  <xs:any namespace="##other"
-                          processContents="lax"
-                          minOccurs="0"
-                          maxOccurs="unbounded"/>
                </xs:sequence>
                <xs:attribute name="uuid" use="required" type="oscal-ar:uuid">
                   <xs:annotation>
                      <xs:appinfo>
                         <m:formal-name>Resource Universally Unique Identifier</m:formal-name>
-                        <m:description>A globally unique identifier that can be used to reference this defined resource elsewhere in an OSCAL document. A UUID should be consistantly used for a given resource across revisions of the document.</m:description>
+                        <m:description>A globally unique identifier that can be used to reference this defined resource elsewhere in an OSCAL document. A UUID should be consistently used for a given resource across revisions of the document.</m:description>
                      </xs:appinfo>
                      <xs:documentation>
-                        <b>Resource Universally Unique Identifier</b>: A globally unique identifier that can be used to reference this defined resource elsewhere in an OSCAL document. A UUID should be consistantly used for a given resource across revisions of the document.</xs:documentation>
+                        <b>Resource Universally Unique Identifier</b>: A globally unique identifier that can be used to reference this defined resource elsewhere in an OSCAL document. A UUID should be consistently used for a given resource across revisions of the document.</xs:documentation>
                   </xs:annotation>
                </xs:attribute>
             </xs:complexType>
@@ -1887,10 +1879,10 @@
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Activity</m:formal-name>
-            <m:description>Identifies an assessment or related process that can be performed. In the assessment plan, this is an intended activity which may be associated with an assessment task. In the assessment results, this an activity that was actually performed as part of an assessement.</m:description>
+            <m:description>Identifies an assessment or related process that can be performed. In the assessment plan, this is an intended activity which may be associated with an assessment task. In the assessment results, this an activity that was actually performed as part of an assessment.</m:description>
          </xs:appinfo>
          <xs:documentation>
-            <b>Activity</b>: Identifies an assessment or related process that can be performed. In the assessment plan, this is an intended activity which may be associated with an assessment task. In the assessment results, this an activity that was actually performed as part of an assessement.</xs:documentation>
+            <b>Activity</b>: Identifies an assessment or related process that can be performed. In the assessment plan, this is an intended activity which may be associated with an assessment task. In the assessment results, this an activity that was actually performed as part of an assessment.</xs:documentation>
       </xs:annotation>
       <xs:sequence>
          <xs:element name="title" minOccurs="0" maxOccurs="1">
@@ -1935,22 +1927,22 @@
             <xs:complexType>
                <xs:annotation>
                   <xs:appinfo>
-                     <m:formal-name>Action</m:formal-name>
-                     <m:description>Identifies an individual actions, such as test steps or examination procedures.</m:description>
+                     <m:formal-name>Step</m:formal-name>
+                     <m:description>Identifies an individual step in a series of steps related to an activity, such as an assessment test or examination procedure.</m:description>
                   </xs:appinfo>
                   <xs:documentation>
-                     <b>Action</b>: Identifies an individual actions, such as test steps or examination procedures.</xs:documentation>
+                     <b>Step</b>: Identifies an individual step in a series of steps related to an activity, such as an assessment test or examination procedure.</xs:documentation>
                </xs:annotation>
                <xs:sequence>
                   <xs:element name="title" minOccurs="0" maxOccurs="1">
                      <xs:complexType mixed="true">
                         <xs:annotation>
                            <xs:appinfo>
-                              <m:formal-name>Action Title</m:formal-name>
-                              <m:description>The title for this action.</m:description>
+                              <m:formal-name>Step Title</m:formal-name>
+                              <m:description>The title for this step.</m:description>
                            </xs:appinfo>
                            <xs:documentation>
-                              <b>Action Title</b>: The title for this action.</xs:documentation>
+                              <b>Step Title</b>: The title for this step.</xs:documentation>
                         </xs:annotation>
                         <xs:complexContent>
                            <xs:extension base="oscal-ar:markupLineType"/>
@@ -1961,11 +1953,11 @@
                      <xs:complexType>
                         <xs:annotation>
                            <xs:appinfo>
-                              <m:formal-name>Action Description</m:formal-name>
-                              <m:description>A human-readable description of this action.</m:description>
+                              <m:formal-name>Step Description</m:formal-name>
+                              <m:description>A human-readable description of this step.</m:description>
                            </xs:appinfo>
                            <xs:documentation>
-                              <b>Action Description</b>: A human-readable description of this action.</xs:documentation>
+                              <b>Step Description</b>: A human-readable description of this step.</xs:documentation>
                         </xs:annotation>
                         <xs:complexContent>
                            <xs:extension base="oscal-ar:markupMultilineType"/>
@@ -2007,11 +1999,11 @@
                <xs:attribute name="uuid" use="required" type="oscal-ar:uuid">
                   <xs:annotation>
                      <xs:appinfo>
-                        <m:formal-name>Action Universally Unique Identifier</m:formal-name>
-                        <m:description>Uniquely identifies this defined action. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. A UUID should be consistantly used for a given test step across revisions of the document.</m:description>
+                        <m:formal-name>Step Universally Unique Identifier</m:formal-name>
+                        <m:description>Uniquely identifies a step. This UUID may be referenced elsewhere in an OSCAL document when referring to this step. A UUID should be consistently used for a given test step across revisions of the document.</m:description>
                      </xs:appinfo>
                      <xs:documentation>
-                        <b>Action Universally Unique Identifier</b>: Uniquely identifies this defined action. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. A UUID should be consistantly used for a given test step across revisions of the document.</xs:documentation>
+                        <b>Step Universally Unique Identifier</b>: Uniquely identifies a step. This UUID may be referenced elsewhere in an OSCAL document when referring to this step. A UUID should be consistently used for a given test step across revisions of the document.</xs:documentation>
                   </xs:annotation>
                </xs:attribute>
             </xs:complexType>
@@ -2044,89 +2036,10 @@
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Assessment Activity Universally Unique Identifier</m:formal-name>
-               <m:description>Uniquely identifies this assessment activity. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. A UUID should be consistantly used for a given included activity across revisions of the document.</m:description>
+               <m:description>Uniquely identifies this assessment activity. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. A UUID should be consistently used for a given included activity across revisions of the document.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>Assessment Activity Universally Unique Identifier</b>: Uniquely identifies this assessment activity. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. A UUID should be consistantly used for a given included activity across revisions of the document.</xs:documentation>
-         </xs:annotation>
-      </xs:attribute>
-   </xs:complexType>
-   <xs:complexType name="action-ASSEMBLY">
-      <xs:annotation>
-         <xs:appinfo>
-            <m:formal-name>Action</m:formal-name>
-            <m:description>Identifies an assessment-related event that must occur as part of executing an assessment plan, the result of which may be recorded within the assessment log in assessment results.</m:description>
-         </xs:appinfo>
-         <xs:documentation>
-            <b>Action</b>: Identifies an assessment-related event that must occur as part of executing an assessment plan, the result of which may be recorded within the assessment log in assessment results.</xs:documentation>
-      </xs:annotation>
-      <xs:sequence>
-         <xs:element name="title" minOccurs="0" maxOccurs="1">
-            <xs:complexType mixed="true">
-               <xs:annotation>
-                  <xs:appinfo>
-                     <m:formal-name>Event Title</m:formal-name>
-                     <m:description>The title for this event.</m:description>
-                  </xs:appinfo>
-                  <xs:documentation>
-                     <b>Event Title</b>: The title for this event.</xs:documentation>
-               </xs:annotation>
-               <xs:complexContent>
-                  <xs:extension base="oscal-ar:markupLineType"/>
-               </xs:complexContent>
-            </xs:complexType>
-         </xs:element>
-         <xs:element name="description" minOccurs="1" maxOccurs="1">
-            <xs:complexType>
-               <xs:annotation>
-                  <xs:appinfo>
-                     <m:formal-name>Event Description</m:formal-name>
-                     <m:description>A human-readable description of this event.</m:description>
-                  </xs:appinfo>
-                  <xs:documentation>
-                     <b>Event Description</b>: A human-readable description of this event.</xs:documentation>
-               </xs:annotation>
-               <xs:complexContent>
-                  <xs:extension base="oscal-ar:markupMultilineType"/>
-               </xs:complexContent>
-            </xs:complexType>
-         </xs:element>
-         <xs:element name="prop"
-                     type="oscal-ar:property-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
-         <xs:element name="link"
-                     type="oscal-ar:link-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
-         <xs:element name="responsible-role"
-                     type="oscal-ar:responsible-role-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
-         <xs:element name="remarks" minOccurs="0" maxOccurs="1">
-            <xs:annotation>
-               <xs:appinfo>
-                  <m:formal-name>Remarks</m:formal-name>
-                  <m:description>Additional commentary on the containing object.</m:description>
-               </xs:appinfo>
-               <xs:documentation>
-                  <b>Remarks</b>: Additional commentary on the containing object.</xs:documentation>
-            </xs:annotation>
-            <xs:complexType>
-               <xs:group ref="oscal-ar:blockElementGroup"
-                         maxOccurs="unbounded"
-                         minOccurs="0"/>
-            </xs:complexType>
-         </xs:element>
-      </xs:sequence>
-      <xs:attribute name="uuid" use="required" type="oscal-ar:uuid">
-         <xs:annotation>
-            <xs:appinfo>
-               <m:formal-name>Event Universally Unique Identifier</m:formal-name>
-               <m:description>Uniquely identifies an assessment event. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. A UUID should be consistantly used for this schedule across revisions of the document.</m:description>
-            </xs:appinfo>
-            <xs:documentation>
-               <b>Event Universally Unique Identifier</b>: Uniquely identifies an assessment event. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. A UUID should be consistantly used for this schedule across revisions of the document.</xs:documentation>
+               <b>Assessment Activity Universally Unique Identifier</b>: Uniquely identifies this assessment activity. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. A UUID should be consistently used for a given included activity across revisions of the document.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
@@ -2328,10 +2241,10 @@
                <xs:annotation>
                   <xs:appinfo>
                      <m:formal-name>Associated Activity</m:formal-name>
-                     <m:description>Identifies an individual activity to be performed as part of an action.</m:description>
+                     <m:description>Identifies an individual activity to be performed as part of a task.</m:description>
                   </xs:appinfo>
                   <xs:documentation>
-                     <b>Associated Activity</b>: Identifies an individual activity to be performed as part of an action.</xs:documentation>
+                     <b>Associated Activity</b>: Identifies an individual activity to be performed as part of a task.</xs:documentation>
                </xs:annotation>
                <xs:sequence>
                   <xs:element name="prop"
@@ -2644,10 +2557,10 @@
                <xs:annotation>
                   <xs:appinfo>
                      <m:formal-name>Include Specific Statements</m:formal-name>
-                     <m:description>Used to constrain the selection to only specificly identified statements.</m:description>
+                     <m:description>Used to constrain the selection to only specificity identified statements.</m:description>
                   </xs:appinfo>
                   <xs:documentation>
-                     <b>Include Specific Statements</b>: Used to constrain the selection to only specificly identified statements.</xs:documentation>
+                     <b>Include Specific Statements</b>: Used to constrain the selection to only specificity identified statements.</xs:documentation>
                </xs:annotation>
                <xs:restriction base="xs:NCName"/>
             </xs:simpleType>
@@ -2723,10 +2636,10 @@
                   <xs:annotation>
                      <xs:appinfo>
                         <m:formal-name>Task Universally Unique Identifier</m:formal-name>
-                        <m:description>Uniquely identifies an assessment activity to be performed as part of the event. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. A UUID should be consistantly used for this schedule across revisions of the document.</m:description>
+                        <m:description>Uniquely identifies an assessment activity to be performed as part of the event. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. A UUID should be consistently used for this schedule across revisions of the document.</m:description>
                      </xs:appinfo>
                      <xs:documentation>
-                        <b>Task Universally Unique Identifier</b>: Uniquely identifies an assessment activity to be performed as part of the event. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. A UUID should be consistantly used for this schedule across revisions of the document.</xs:documentation>
+                        <b>Task Universally Unique Identifier</b>: Uniquely identifies an assessment activity to be performed as part of the event. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. A UUID should be consistently used for this schedule across revisions of the document.</xs:documentation>
                   </xs:annotation>
                </xs:attribute>
             </xs:complexType>
@@ -3384,10 +3297,10 @@
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Observation Universally Unique Identifier</m:formal-name>
-               <m:description>Uniquely identifies this observation. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. Once assigned, a UUID should be consistantly used for a given observation across revisions.</m:description>
+               <m:description>Uniquely identifies this observation. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. Once assigned, a UUID should be consistently used for a given observation across revisions.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>Observation Universally Unique Identifier</b>: Uniquely identifies this observation. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. Once assigned, a UUID should be consistantly used for a given observation across revisions.</xs:documentation>
+               <b>Observation Universally Unique Identifier</b>: Uniquely identifies this observation. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. Once assigned, a UUID should be consistently used for a given observation across revisions.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
@@ -3747,10 +3660,10 @@
                <xs:annotation>
                   <xs:appinfo>
                      <m:formal-name>Risk Log</m:formal-name>
-                     <m:description>A log of all risk-related actions taken.</m:description>
+                     <m:description>A log of all risk-related tasks taken.</m:description>
                   </xs:appinfo>
                   <xs:documentation>
-                     <b>Risk Log</b>: A log of all risk-related actions taken.</xs:documentation>
+                     <b>Risk Log</b>: A log of all risk-related tasks taken.</xs:documentation>
                </xs:annotation>
                <xs:sequence>
                   <xs:element name="entry" minOccurs="1" maxOccurs="unbounded">
@@ -3758,10 +3671,10 @@
                         <xs:annotation>
                            <xs:appinfo>
                               <m:formal-name>Risk Log Entry</m:formal-name>
-                              <m:description>Identifies the result of an action and/or task that occured as part of executing an assessment plan or an assessment event that occured in producing the assessment results.</m:description>
+                              <m:description>Identifies the result of a task that occurred as part of executing an assessment plan or an assessment event that occurred in producing the assessment results.</m:description>
                            </xs:appinfo>
                            <xs:documentation>
-                              <b>Risk Log Entry</b>: Identifies the result of an action and/or task that occured as part of executing an assessment plan or an assessment event that occured in producing the assessment results.</xs:documentation>
+                              <b>Risk Log Entry</b>: Identifies the result of a task that occurred as part of executing an assessment plan or an assessment event that occurred in producing the assessment results.</xs:documentation>
                         </xs:annotation>
                         <xs:sequence>
                            <xs:element name="title" minOccurs="0" maxOccurs="1">
@@ -3907,10 +3820,10 @@
                            <xs:annotation>
                               <xs:appinfo>
                                  <m:formal-name>Risk Log Entry Universally Unique Identifier</m:formal-name>
-                                 <m:description>Uniquely identifies an assessment event. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. A UUID should be consistantly used for this schedule across revisions of the document.</m:description>
+                                 <m:description>Uniquely identifies an assessment event. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. A UUID should be consistently used for this schedule across revisions of the document.</m:description>
                               </xs:appinfo>
                               <xs:documentation>
-                                 <b>Risk Log Entry Universally Unique Identifier</b>: Uniquely identifies an assessment event. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. A UUID should be consistantly used for this schedule across revisions of the document.</xs:documentation>
+                                 <b>Risk Log Entry Universally Unique Identifier</b>: Uniquely identifies an assessment event. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. A UUID should be consistently used for this schedule across revisions of the document.</xs:documentation>
                            </xs:annotation>
                         </xs:attribute>
                      </xs:complexType>
@@ -4209,10 +4122,10 @@
                   <xs:annotation>
                      <xs:appinfo>
                         <m:formal-name>Required Universally Unique Identifier</m:formal-name>
-                        <m:description>Uniquely identifies this required asset. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. Once assigned, a UUID should be consistantly used for a given required asset across revisions.</m:description>
+                        <m:description>Uniquely identifies this required asset. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. Once assigned, a UUID should be consistently used for a given required asset across revisions.</m:description>
                      </xs:appinfo>
                      <xs:documentation>
-                        <b>Required Universally Unique Identifier</b>: Uniquely identifies this required asset. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. Once assigned, a UUID should be consistantly used for a given required asset across revisions.</xs:documentation>
+                        <b>Required Universally Unique Identifier</b>: Uniquely identifies this required asset. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. Once assigned, a UUID should be consistently used for a given required asset across revisions.</xs:documentation>
                   </xs:annotation>
                </xs:attribute>
             </xs:complexType>
@@ -4241,10 +4154,10 @@
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Remediation Universally Unique Identifier</m:formal-name>
-               <m:description>Uniquely identifies this remediation. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. Once assigned, a UUID should be consistantly used for a given remediation across revisions.</m:description>
+               <m:description>Uniquely identifies this remediation. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. Once assigned, a UUID should be consistently used for a given remediation across revisions.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>Remediation Universally Unique Identifier</b>: Uniquely identifies this remediation. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. Once assigned, a UUID should be consistantly used for a given remediation across revisions.</xs:documentation>
+               <b>Remediation Universally Unique Identifier</b>: Uniquely identifies this remediation. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. Once assigned, a UUID should be consistently used for a given remediation across revisions.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
       <xs:attribute name="lifecycle" use="required" type="xs:NCName">
@@ -4298,10 +4211,6 @@
                      type="oscal-ar:link-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
-         <xs:any namespace="##other"
-                 processContents="lax"
-                 minOccurs="0"
-                 maxOccurs="unbounded"/>
       </xs:sequence>
       <xs:attribute name="uuid" type="oscal-ar:uuid">
          <xs:annotation>
@@ -4521,8 +4430,8 @@
                               type="oscal-ar:assessment-assets-ASSEMBLY"
                               minOccurs="0"
                               maxOccurs="1"/>
-                  <xs:element name="assessment-action"
-                              type="oscal-ar:action-ASSEMBLY"
+                  <xs:element name="assessment-task"
+                              type="oscal-ar:task-ASSEMBLY"
                               minOccurs="0"
                               maxOccurs="unbounded"/>
                </xs:sequence>
@@ -4570,10 +4479,10 @@
                         <xs:annotation>
                            <xs:appinfo>
                               <m:formal-name>Assessment Log Entry</m:formal-name>
-                              <m:description>Identifies the result of an action and/or task that occured as part of executing an assessment plan or an assessment event that occured in producing the assessment results.</m:description>
+                              <m:description>Identifies the result of an action and/or task that occurred as part of executing an assessment plan or an assessment event that occurred in producing the assessment results.</m:description>
                            </xs:appinfo>
                            <xs:documentation>
-                              <b>Assessment Log Entry</b>: Identifies the result of an action and/or task that occured as part of executing an assessment plan or an assessment event that occured in producing the assessment results.</xs:documentation>
+                              <b>Assessment Log Entry</b>: Identifies the result of an action and/or task that occurred as part of executing an assessment plan or an assessment event that occurred in producing the assessment results.</xs:documentation>
                         </xs:annotation>
                         <xs:sequence>
                            <xs:element name="title" minOccurs="0" maxOccurs="1">
@@ -4668,10 +4577,10 @@
                            <xs:annotation>
                               <xs:appinfo>
                                  <m:formal-name>Assessment Log Entry Universally Unique Identifier</m:formal-name>
-                                 <m:description>Uniquely identifies an assessment event. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. A UUID should be consistantly used for this schedule across revisions of the document.</m:description>
+                                 <m:description>Uniquely identifies an assessment event. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. A UUID should be consistently used for this schedule across revisions of the document.</m:description>
                               </xs:appinfo>
                               <xs:documentation>
-                                 <b>Assessment Log Entry Universally Unique Identifier</b>: Uniquely identifies an assessment event. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. A UUID should be consistantly used for this schedule across revisions of the document.</xs:documentation>
+                                 <b>Assessment Log Entry Universally Unique Identifier</b>: Uniquely identifies an assessment event. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. A UUID should be consistently used for this schedule across revisions of the document.</xs:documentation>
                            </xs:annotation>
                         </xs:attribute>
                      </xs:complexType>
@@ -4711,10 +4620,10 @@
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Results Universally Unique Identifier</m:formal-name>
-               <m:description>Uniquely identifies this set of results. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. Once assigned, a UUID should be consistantly used for a given set of results across revisions.</m:description>
+               <m:description>Uniquely identifies this set of results. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. Once assigned, a UUID should be consistently used for a given set of results across revisions.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>Results Universally Unique Identifier</b>: Uniquely identifies this set of results. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. Once assigned, a UUID should be consistantly used for a given set of results across revisions.</xs:documentation>
+               <b>Results Universally Unique Identifier</b>: Uniquely identifies this set of results. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. Once assigned, a UUID should be consistently used for a given set of results across revisions.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
@@ -4851,10 +4760,10 @@
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Finding Universally Unique Identifier</m:formal-name>
-               <m:description>Uniquely identifies this finding. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. Once assigned, a UUID should be consistantly used for a given finding across revisions.</m:description>
+               <m:description>Uniquely identifies this finding. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. Once assigned, a UUID should be consistently used for a given finding across revisions.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>Finding Universally Unique Identifier</b>: Uniquely identifies this finding. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. Once assigned, a UUID should be consistantly used for a given finding across revisions.</xs:documentation>
+               <b>Finding Universally Unique Identifier</b>: Uniquely identifies this finding. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. Once assigned, a UUID should be consistently used for a given finding across revisions.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>

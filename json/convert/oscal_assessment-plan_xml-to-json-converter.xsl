@@ -745,7 +745,7 @@
             </group>
          </xsl:for-each-group>
          <xsl:for-each-group select="step" group-by="true()">
-            <group in-json="ARRAY" key="actions">
+            <group in-json="ARRAY" key="steps">
                <xsl:apply-templates select="current-group()">
                   <xsl:with-param name="with-key" select="false()"/>
                </xsl:apply-templates>
@@ -2804,7 +2804,7 @@
                  priority="7"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
-      <assembly name="step" gi="step" formal-name="Action">
+      <assembly name="step" gi="step" formal-name="Step">
          <xsl:apply-templates select="@uuid"/>
          <xsl:apply-templates select="title"/>
          <xsl:apply-templates select="description"/>
@@ -2840,7 +2840,7 @@
       <field name="title"
              gi="title"
              as-type="markup-line"
-             formal-name="Action Title"
+             formal-name="Step Title"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
@@ -2857,7 +2857,7 @@
       <field name="description"
              gi="description"
              as-type="markup-multiline"
-             formal-name="Action Description"
+             formal-name="Step Description"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>

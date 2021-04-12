@@ -52,7 +52,7 @@
             { "$ref" : "#/definitions/link" } } },
         "required" : 
         [ "name" ],
-        "additionalProperties" : true },
+        "additionalProperties" : false },
       "oscal-ar-metadata" : 
       { "title" : "Publication metadata",
         "description" : "Provides information about the publication and availability of the containing document.",
@@ -163,7 +163,7 @@
         "properties" : 
         { "uuid" : 
           { "title" : "Location Universally Unique Identifier",
-            "description" : "A unique identifier that can be used to reference this defined location elsewhere in an OSCAL document. A UUID should be consistantly used for a given location across revisions of the document.",
+            "description" : "A unique identifier that can be used to reference this defined location elsewhere in an OSCAL document. A UUID should be consistently used for a given location across revisions of the document.",
             "type" : "string",
             "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
           "title" : 
@@ -361,12 +361,12 @@
             "minItems" : 1,
             "items" : 
             { "title" : "Resource",
-              "description" : "A resource associated with content in the containing document. A resource may be directly included in the document base64 encoded or may point to one or more equavalent internet resources.",
+              "description" : "A resource associated with content in the containing document. A resource may be directly included in the document base64 encoded or may point to one or more equivalent internet resources.",
               "type" : "object",
               "properties" : 
               { "uuid" : 
                 { "title" : "Resource Universally Unique Identifier",
-                  "description" : "A globally unique identifier that can be used to reference this defined resource elsewhere in an OSCAL document. A UUID should be consistantly used for a given resource across revisions of the document.",
+                  "description" : "A globally unique identifier that can be used to reference this defined resource elsewhere in an OSCAL document. A UUID should be consistently used for a given resource across revisions of the document.",
                   "type" : "string",
                   "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
                 "title" : 
@@ -457,7 +457,7 @@
                 { "$ref" : "#/definitions/remarks" } },
               "required" : 
               [ "uuid" ],
-              "additionalProperties" : true } } },
+              "additionalProperties" : false } } },
         "additionalProperties" : false },
       "oscal-ar-property" : 
       { "title" : "Property",
@@ -1016,13 +1016,13 @@
         "additionalProperties" : false },
       "oscal-ar-activity" : 
       { "title" : "Activity",
-        "description" : "Identifies an assessment or related process that can be performed. In the assessment plan, this is an intended activity which may be associated with an assessment task. In the assessment results, this an activity that was actually performed as part of an assessement.",
+        "description" : "Identifies an assessment or related process that can be performed. In the assessment plan, this is an intended activity which may be associated with an assessment task. In the assessment results, this an activity that was actually performed as part of an assessment.",
         "$id" : "#/definitions/activity",
         "type" : "object",
         "properties" : 
         { "uuid" : 
           { "title" : "Assessment Activity Universally Unique Identifier",
-            "description" : "Uniquely identifies this assessment activity. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. A UUID should be consistantly used for a given included activity across revisions of the document.",
+            "description" : "Uniquely identifies this assessment activity. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. A UUID should be consistently used for a given included activity across revisions of the document.",
             "type" : "string",
             "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
           "title" : 
@@ -1043,26 +1043,26 @@
             "minItems" : 1,
             "items" : 
             { "$ref" : "#/definitions/link" } },
-          "actions" : 
+          "steps" : 
           { "type" : "array",
             "minItems" : 1,
             "items" : 
-            { "title" : "Action",
-              "description" : "Identifies an individual actions, such as test steps or examination procedures.",
+            { "title" : "Step",
+              "description" : "Identifies an individual step in a series of steps related to an activity, such as an assessment test or examination procedure.",
               "type" : "object",
               "properties" : 
               { "uuid" : 
-                { "title" : "Action Universally Unique Identifier",
-                  "description" : "Uniquely identifies this defined action. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. A UUID should be consistantly used for a given test step across revisions of the document.",
+                { "title" : "Step Universally Unique Identifier",
+                  "description" : "Uniquely identifies a step. This UUID may be referenced elsewhere in an OSCAL document when referring to this step. A UUID should be consistently used for a given test step across revisions of the document.",
                   "type" : "string",
                   "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
                 "title" : 
-                { "title" : "Action Title",
-                  "description" : "The title for this action.",
+                { "title" : "Step Title",
+                  "description" : "The title for this step.",
                   "type" : "string" },
                 "description" : 
-                { "title" : "Action Description",
-                  "description" : "A human-readable description of this action.",
+                { "title" : "Step Description",
+                  "description" : "A human-readable description of this step.",
                   "type" : "string" },
                 "props" : 
                 { "type" : "array",
@@ -1094,51 +1094,6 @@
               "additionalProperties" : false } },
           "related-controls" : 
           { "$ref" : "#/definitions/reviewed-controls" },
-          "responsible-roles" : 
-          { "type" : "object",
-            "minProperties" : 1,
-            "additionalProperties" : 
-            { "allOf" : 
-              [ 
-                { "$ref" : "#/definitions/responsible-role" },
-                
-                { "not" : 
-                  { "type" : "string" } } ] } },
-          "remarks" : 
-          { "$ref" : "#/definitions/remarks" } },
-        "required" : 
-        [ "uuid",
-          "description" ],
-        "additionalProperties" : false },
-      "oscal-ar-action" : 
-      { "title" : "Action",
-        "description" : "Identifies an assessment-related event that must occur as part of executing an assessment plan, the result of which may be recorded within the assessment log in assessment results.",
-        "$id" : "#/definitions/action",
-        "type" : "object",
-        "properties" : 
-        { "uuid" : 
-          { "title" : "Event Universally Unique Identifier",
-            "description" : "Uniquely identifies an assessment event. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. A UUID should be consistantly used for this schedule across revisions of the document.",
-            "type" : "string",
-            "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
-          "title" : 
-          { "title" : "Event Title",
-            "description" : "The title for this event.",
-            "type" : "string" },
-          "description" : 
-          { "title" : "Event Description",
-            "description" : "A human-readable description of this event.",
-            "type" : "string" },
-          "props" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/property" } },
-          "links" : 
-          { "type" : "array",
-            "minItems" : 1,
-            "items" : 
-            { "$ref" : "#/definitions/link" } },
           "responsible-roles" : 
           { "type" : "object",
             "minProperties" : 1,
@@ -1283,7 +1238,7 @@
             "minItems" : 1,
             "items" : 
             { "title" : "Associated Activity",
-              "description" : "Identifies an individual activity to be performed as part of an action.",
+              "description" : "Identifies an individual activity to be performed as part of a task.",
               "type" : "object",
               "properties" : 
               { "activity-uuid" : 
@@ -1465,7 +1420,7 @@
             "minItems" : 1,
             "items" : 
             { "title" : "Include Specific Statements",
-              "description" : "Used to constrain the selection to only specificly identified statements.",
+              "description" : "Used to constrain the selection to only specificity identified statements.",
               "type" : "string" } } },
         "required" : 
         [ "control-id" ],
@@ -1508,7 +1463,7 @@
               "properties" : 
               { "task-uuid" : 
                 { "title" : "Task Universally Unique Identifier",
-                  "description" : "Uniquely identifies an assessment activity to be performed as part of the event. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. A UUID should be consistantly used for this schedule across revisions of the document.",
+                  "description" : "Uniquely identifies an assessment activity to be performed as part of the event. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. A UUID should be consistently used for this schedule across revisions of the document.",
                   "type" : "string",
                   "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" } },
               "required" : 
@@ -1783,7 +1738,7 @@
         "properties" : 
         { "uuid" : 
           { "title" : "Observation Universally Unique Identifier",
-            "description" : "Uniquely identifies this observation. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. Once assigned, a UUID should be consistantly used for a given observation across revisions.",
+            "description" : "Uniquely identifies this observation. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. Once assigned, a UUID should be consistently used for a given observation across revisions.",
             "type" : "string",
             "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
           "title" : 
@@ -2124,7 +2079,7 @@
             { "$ref" : "#/definitions/oscal-assessment-common-response" } },
           "risk-log" : 
           { "title" : "Risk Log",
-            "description" : "A log of all risk-related actions taken.",
+            "description" : "A log of all risk-related tasks taken.",
             "type" : "object",
             "properties" : 
             { "entries" : 
@@ -2132,12 +2087,12 @@
                 "minItems" : 1,
                 "items" : 
                 { "title" : "Risk Log Entry",
-                  "description" : "Identifies the result of an action and/or task that occured as part of executing an assessment plan or an assessment event that occured in producing the assessment results.",
+                  "description" : "Identifies the result of a task that occurred as part of executing an assessment plan or an assessment event that occurred in producing the assessment results.",
                   "type" : "object",
                   "properties" : 
                   { "uuid" : 
                     { "title" : "Risk Log Entry Universally Unique Identifier",
-                      "description" : "Uniquely identifies an assessment event. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. A UUID should be consistantly used for this schedule across revisions of the document.",
+                      "description" : "Uniquely identifies an assessment event. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. A UUID should be consistently used for this schedule across revisions of the document.",
                       "type" : "string",
                       "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
                     "title" : 
@@ -2333,7 +2288,7 @@
         "properties" : 
         { "uuid" : 
           { "title" : "Remediation Universally Unique Identifier",
-            "description" : "Uniquely identifies this remediation. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. Once assigned, a UUID should be consistantly used for a given remediation across revisions.",
+            "description" : "Uniquely identifies this remediation. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. Once assigned, a UUID should be consistently used for a given remediation across revisions.",
             "type" : "string",
             "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
           "lifecycle" : 
@@ -2373,7 +2328,7 @@
               "properties" : 
               { "uuid" : 
                 { "title" : "Required Universally Unique Identifier",
-                  "description" : "Uniquely identifies this required asset. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. Once assigned, a UUID should be consistantly used for a given required asset across revisions.",
+                  "description" : "Uniquely identifies this required asset. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. Once assigned, a UUID should be consistently used for a given required asset across revisions.",
                   "type" : "string",
                   "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
                 "subjects" : 
@@ -2467,7 +2422,7 @@
             { "$ref" : "#/definitions/link" } } },
         "required" : 
         [ "name" ],
-        "additionalProperties" : true },
+        "additionalProperties" : false },
       "oscal-ar-assessment-results" : 
       { "title" : "Security Assessment Results (SAR)",
         "description" : "Security assessment results, such as those provided by a FedRAMP assessor in the FedRAMP Security Assessment Report.",
@@ -2522,7 +2477,7 @@
         "properties" : 
         { "uuid" : 
           { "title" : "Results Universally Unique Identifier",
-            "description" : "Uniquely identifies this set of results. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. Once assigned, a UUID should be consistantly used for a given set of results across revisions.",
+            "description" : "Uniquely identifies this set of results. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. Once assigned, a UUID should be consistently used for a given set of results across revisions.",
             "type" : "string",
             "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
           "title" : 
@@ -2587,11 +2542,11 @@
                       { "type" : "string" } } ] } },
               "assessment-assets" : 
               { "$ref" : "#/definitions/assessment-assets" },
-              "assessment-actions" : 
+              "tasks" : 
               { "type" : "array",
                 "minItems" : 1,
                 "items" : 
-                { "$ref" : "#/definitions/action" } } },
+                { "$ref" : "#/definitions/task" } } },
             "additionalProperties" : false },
           "reviewed-controls" : 
           { "$ref" : "#/definitions/reviewed-controls" },
@@ -2631,12 +2586,12 @@
                 "minItems" : 1,
                 "items" : 
                 { "title" : "Assessment Log Entry",
-                  "description" : "Identifies the result of an action and/or task that occured as part of executing an assessment plan or an assessment event that occured in producing the assessment results.",
+                  "description" : "Identifies the result of an action and/or task that occurred as part of executing an assessment plan or an assessment event that occurred in producing the assessment results.",
                   "type" : "object",
                   "properties" : 
                   { "uuid" : 
                     { "title" : "Assessment Log Entry Universally Unique Identifier",
-                      "description" : "Uniquely identifies an assessment event. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. A UUID should be consistantly used for this schedule across revisions of the document.",
+                      "description" : "Uniquely identifies an assessment event. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. A UUID should be consistently used for this schedule across revisions of the document.",
                       "type" : "string",
                       "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
                     "title" : 
@@ -2721,7 +2676,7 @@
         "properties" : 
         { "uuid" : 
           { "title" : "Finding Universally Unique Identifier",
-            "description" : "Uniquely identifies this finding. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. Once assigned, a UUID should be consistantly used for a given finding across revisions.",
+            "description" : "Uniquely identifies this finding. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. Once assigned, a UUID should be consistently used for a given finding across revisions.",
             "type" : "string",
             "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
           "title" : 

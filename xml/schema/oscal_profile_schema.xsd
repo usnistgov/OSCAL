@@ -257,10 +257,10 @@
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Location Universally Unique Identifier</m:formal-name>
-               <m:description>A unique identifier that can be used to reference this defined location elsewhere in an OSCAL document. A UUID should be consistantly used for a given location across revisions of the document.</m:description>
+               <m:description>A unique identifier that can be used to reference this defined location elsewhere in an OSCAL document. A UUID should be consistently used for a given location across revisions of the document.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>Location Universally Unique Identifier</b>: A unique identifier that can be used to reference this defined location elsewhere in an OSCAL document. A UUID should be consistantly used for a given location across revisions of the document.</xs:documentation>
+               <b>Location Universally Unique Identifier</b>: A unique identifier that can be used to reference this defined location elsewhere in an OSCAL document. A UUID should be consistently used for a given location across revisions of the document.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
@@ -527,10 +527,10 @@
                <xs:annotation>
                   <xs:appinfo>
                      <m:formal-name>Resource</m:formal-name>
-                     <m:description>A resource associated with content in the containing document. A resource may be directly included in the document base64 encoded or may point to one or more equavalent internet resources.</m:description>
+                     <m:description>A resource associated with content in the containing document. A resource may be directly included in the document base64 encoded or may point to one or more equivalent internet resources.</m:description>
                   </xs:appinfo>
                   <xs:documentation>
-                     <b>Resource</b>: A resource associated with content in the containing document. A resource may be directly included in the document base64 encoded or may point to one or more equavalent internet resources.</xs:documentation>
+                     <b>Resource</b>: A resource associated with content in the containing document. A resource may be directly included in the document base64 encoded or may point to one or more equivalent internet resources.</xs:documentation>
                </xs:annotation>
                <xs:sequence>
                   <xs:element name="title" minOccurs="0" maxOccurs="1">
@@ -711,19 +711,15 @@
                                   minOccurs="0"/>
                      </xs:complexType>
                   </xs:element>
-                  <xs:any namespace="##other"
-                          processContents="lax"
-                          minOccurs="0"
-                          maxOccurs="unbounded"/>
                </xs:sequence>
                <xs:attribute name="uuid" use="required" type="oscal-profile:uuid">
                   <xs:annotation>
                      <xs:appinfo>
                         <m:formal-name>Resource Universally Unique Identifier</m:formal-name>
-                        <m:description>A globally unique identifier that can be used to reference this defined resource elsewhere in an OSCAL document. A UUID should be consistantly used for a given resource across revisions of the document.</m:description>
+                        <m:description>A globally unique identifier that can be used to reference this defined resource elsewhere in an OSCAL document. A UUID should be consistently used for a given resource across revisions of the document.</m:description>
                      </xs:appinfo>
                      <xs:documentation>
-                        <b>Resource Universally Unique Identifier</b>: A globally unique identifier that can be used to reference this defined resource elsewhere in an OSCAL document. A UUID should be consistantly used for a given resource across revisions of the document.</xs:documentation>
+                        <b>Resource Universally Unique Identifier</b>: A globally unique identifier that can be used to reference this defined resource elsewhere in an OSCAL document. A UUID should be consistently used for a given resource across revisions of the document.</xs:documentation>
                   </xs:annotation>
                </xs:attribute>
             </xs:complexType>
@@ -1169,10 +1165,6 @@
                      type="oscal-profile:link-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
-         <xs:any namespace="##other"
-                 processContents="lax"
-                 minOccurs="0"
-                 maxOccurs="unbounded"/>
       </xs:sequence>
       <xs:attribute name="id" type="xs:NCName">
          <xs:annotation>
@@ -1238,10 +1230,10 @@
                <xs:annotation>
                   <xs:appinfo>
                      <m:formal-name>Parameter Label</m:formal-name>
-                     <m:description>A short, placeholder name for the parameter, which can be used as a subsitute for a <m:code>value</m:code> if no value is assigned.</m:description>
+                     <m:description>A short, placeholder name for the parameter, which can be used as a substitute for a <m:code>value</m:code> if no value is assigned.</m:description>
                   </xs:appinfo>
                   <xs:documentation>
-                     <b>Parameter Label</b>: A short, placeholder name for the parameter, which can be used as a subsitute for a value if no value is assigned.</xs:documentation>
+                     <b>Parameter Label</b>: A short, placeholder name for the parameter, which can be used as a substitute for a value if no value is assigned.</xs:documentation>
                </xs:annotation>
                <xs:complexContent>
                   <xs:extension base="oscal-profile:markupLineType"/>
@@ -1296,10 +1288,6 @@
                          minOccurs="0"/>
             </xs:complexType>
          </xs:element>
-         <xs:any namespace="##other"
-                 processContents="lax"
-                 minOccurs="0"
-                 maxOccurs="unbounded"/>
       </xs:sequence>
       <xs:attribute name="id" use="required" type="xs:NCName">
          <xs:annotation>
@@ -1414,10 +1402,6 @@
          <xs:group ref="oscal-profile:blockElementGroup"
                    maxOccurs="unbounded"
                    minOccurs="0"/>
-         <xs:any namespace="##other"
-                 processContents="lax"
-                 minOccurs="0"
-                 maxOccurs="unbounded"/>
       </xs:sequence>
    </xs:complexType>
    <xs:simpleType name="parameter-value-FIELD">
@@ -1456,10 +1440,6 @@
                </xs:complexContent>
             </xs:complexType>
          </xs:element>
-         <xs:any namespace="##other"
-                 processContents="lax"
-                 minOccurs="0"
-                 maxOccurs="unbounded"/>
       </xs:sequence>
       <xs:attribute name="how-many" type="xs:string">
          <xs:annotation>
@@ -1847,10 +1827,10 @@
                <xs:annotation>
                   <xs:appinfo>
                      <m:formal-name>Parameter Label</m:formal-name>
-                     <m:description>A short, placeholder name for the parameter, which can be used as a subsitute for a <m:code>value</m:code> if no value is assigned.</m:description>
+                     <m:description>A short, placeholder name for the parameter, which can be used as a substitute for a <m:code>value</m:code> if no value is assigned.</m:description>
                   </xs:appinfo>
                   <xs:documentation>
-                     <b>Parameter Label</b>: A short, placeholder name for the parameter, which can be used as a subsitute for a value if no value is assigned.</xs:documentation>
+                     <b>Parameter Label</b>: A short, placeholder name for the parameter, which can be used as a substitute for a value if no value is assigned.</xs:documentation>
                </xs:annotation>
                <xs:complexContent>
                   <xs:extension base="oscal-profile:markupLineType"/>
