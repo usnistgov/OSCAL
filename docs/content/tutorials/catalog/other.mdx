@@ -17,8 +17,8 @@
 
 When necessary, revision history can be also documented. See additional information [here](https://pages.nist.gov/OSCAL/documentation/schema/catalog/xml-model-map/)
 
-The `metadata` is also designed to accommodate the representation of other information related to the content of the catalog and the entity (individual or organization) that created it in OSCAL. 
-For example, we can select and represent *keywords* using the property tag `<prop></prop>`, for which we define the `name` of the property as being *keywords*. 
+The `metadata` is also designed to accommodate the representation of other information related to the content of the catalog and the entity (individual or organization) that created it in OSCAL.
+For example, we can select and represent *keywords* using the property tag `<prop></prop>`, for which we define the `name` of the property as being *keywords*.
 The *keywords* will be a `string` comprised of a comma-separated list of significant words, in alphabetical order.
 
 The information will look as follows:
@@ -27,7 +27,7 @@ The information will look as follows:
 ```
 
 To do so, one can use the tags `<role></role`> and `<party></party>` each instance with a distinct `id`, and the tag `<responsible-party></responsible-party>` with the field `role-id` that identifies the id of the pointed role and the tag `<party-id></party-id>` that points to the `id` of the defined `<party>`.
-In this example the `<party>` is an organization (NIST) for which the name is provided using the tag `<org-name></org-name>`, an email address is listed using the tag `<email></email>` and the URL using the tag `<url>`. 
+In this example the `<party>` is an organization (NIST) for which the name is provided using the tag `<org-name></org-name>`, an email address is listed using the tag `<email></email>` and the URL using the tag `<url>`.
 Below is all this information assembled in OSCAL.
 
 ```xml
@@ -54,13 +54,13 @@ Below is all this information assembled in OSCAL.
 
 #### Formatting a Back-matter
 
-Often documents have references, links to other documents, diagrams/images, citations, remarks. 
+Often documents have references, links to other documents, diagrams/images, citations, remarks.
 OSCAL defines elements that can be used to represent such information.
 
 Back-matters are optional elements and therefore often the OSCAL Catalogs will not contain any.
 
-A back-matter element is identified by the tag `<back-matter></back-matter>`. 
-This element may have `resources` which are identified with the tag `<resources></resources>`.     
+A back-matter element is identified by the tag `<back-matter></back-matter>`.
+This element may have `resources` which are identified with the tag `<resources></resources>`.
 
 Each `resource` may have:
 
@@ -74,5 +74,5 @@ Each `resource` may have:
     * `base64-binary-data` identified by the tags <base64></base64>
     * `remarks` identified by the tags <remarks></remarks>
 ```
-Our catalog does not contain any back-matter, but additional information about the available 
+Our catalog does not contain any back-matter, but additional information about the available
 elements and their fields, can be found [here](https://pages.nist.gov/OSCAL/documentation/schema/catalog/xml-model-map/)

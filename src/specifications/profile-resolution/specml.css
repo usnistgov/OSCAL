@@ -28,7 +28,7 @@ section { margin-top: 1em; border: thin dotted black; padding: 0.5em;
     -oxy-foldable:true;
     -oxy-not-foldable-child: head }
 
-section:before { content: 'section ' oxy_textfield(           
+section:before { content: 'section ' oxy_textfield(
             edit, "@id"  ) }
 
 em { display: inline; font-style: italic }
@@ -63,8 +63,8 @@ tagging[whose=source_profile] hi { background-color: #CCFFCC }
 tagging[whose=target_catalog] hi { background-color: #CCCCFF }
 
 tagging:after {
-    content: 
-        oxy_combobox(           
+    content:
+        oxy_combobox(
             edit, "@whose",
             editable, false,
             values, "source_catalog, source_profile, target_catalog");
@@ -73,7 +73,7 @@ tagging:after {
 mapping:before {
      background-color: white; padding: 0em 0.5em; border: thin solid black;
      content:
-            'unit test: ' oxy_urlChooser(        
+            'unit test: ' oxy_urlChooser(
               edit, "@unit-test",
               columns 25) }
 
@@ -83,16 +83,16 @@ cf { background-color: pink; font-family: sans-serif; font-weight: bold; font-si
 
 cf:before {
      content:
-            'example: ' oxy_urlChooser(        
+            'example: ' oxy_urlChooser(
               edit, "@file",
               columns 35) }
 
 xref { display: inline }
 
 
-xref:after { content: oxy_combobox(           
+xref:after { content: oxy_combobox(
             edit, "@rid",
-            editable, false 
+            editable, false
             )}
 
 xref:before { font-weight: bold; font-size: 80%; content: " [See section \201C" oxy_xpath(
@@ -112,4 +112,3 @@ section section head { font-size: 110%; font-style: italic }
 section section section head { font-size: 100% }
 
 section section section section head { font-size: 90% }
-

@@ -16,7 +16,7 @@ The OSCAL models comprising the assessment layer are:
 
 1. A **[Plan of Action and Milestones (POA&M) model](poam/)**, which represents the known risks for a specific system, as well as the identified deviations, remediation plan, and disposition status of each risk.
 
-1. Possible additional assessment results models to be defined and developed as part of [OSCAL 2.0](https://github.com/usnistgov/OSCAL/milestones). 
+1. Possible additional assessment results models to be defined and developed as part of [OSCAL 2.0](https://github.com/usnistgov/OSCAL/milestones).
 
 The assessment results and POA&M models are designed to enable easy flow of risk information from the results to the POA&M. These models are intended to be used in the context of a specific system. The assessment results are further intended to be used in the context of a specific assessment plan.
 

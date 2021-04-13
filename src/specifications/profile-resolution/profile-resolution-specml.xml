@@ -376,7 +376,7 @@
       </mapping>
       <p>A valid catalog must have <tgt>metadata</tgt> in addition to controls and control groups.
         Additionally it may have <tgt>back-matter</tgt>. How to produce and populate the
-          <tgt>metadata</tgt> and <tgt>back-matter</tgt> is described below 
+          <tgt>metadata</tgt> and <tgt>back-matter</tgt> is described below
         <revisit>link me</revisit>, as is the construction
         of the <tgt>catalog/@id</tgt> in the target.</p>
     </section>
@@ -684,7 +684,7 @@
 &lt;/import>
 
   ...
-  
+
 &lt;back-matter>
   &lt;resource id="nist-sp800-53_catalog">
     &lt;desc>SP 800-53 catalog (OSCAL format) on Github&lt;/desc>
@@ -696,7 +696,7 @@
           a cross-reference to something other than a resource, is inoperative for purposes of
           importing. It may be signaled as an error [or warning] by a processor. <revisit>Allow
             processors to import other stuff as they like?</revisit></p>
-        
+
       </section>
       <section id="stateless-URIs">
         <head>Availability of documents returned by given URIs</head>
@@ -844,7 +844,7 @@
             <head>Selecting by ID</head>
             <p>Select individual controls or controls by groups using <src>with-id</src> selectors
               inside <src>include-controls</src>, corresponding to their IDs.</p>
-            
+
             <tagging whose="source_profile">&lt;include-controls>
   &lt;with-id>ac-1&lt;/with-id>
 &lt;/include-controls>
@@ -855,7 +855,7 @@
             <p>Controls may also be selected using match patterns against their IDs. This is useful
               because related controls (either in a hierarchy, or together in a group) frequently
               have related IDs as well.</p>
-            
+
             <tagging whose="source_profile">&lt;include-controls>
   &lt;matching pattern="ac*"/>&lt;!-- matches any control whose ID matches glob expression 'ac*' -->
 &lt;/include-controls>
@@ -866,7 +866,7 @@
           <section id="include-all">
             <head>Selecting all controls</head>
             <p>Select all controls from a catalog by using an <src>include-all</src> directive:</p>
-            
+
             <tagging whose="source_profile">&lt;include-all/>
 </tagging>
           </section>
@@ -888,7 +888,7 @@
             <p>Furthermore, <src>include-all[@with-child-controls='no']</src> may select all
               controls placed directly within a group, excluding all controls appearing inside other
               controls.</p>
-            
+
           </section>
           <section id="redundant-calls">
             <head>Redundant calls</head>
@@ -956,7 +956,7 @@
     &lt;/part>
 &lt;/control></tagging>
           </mapping>
-          
+
         </section>
         <section id="loose-params">
           <head>Loose parameters</head>

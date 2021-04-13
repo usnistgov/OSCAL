@@ -7,7 +7,7 @@ aliases:
   - /documentation/schema/assessment-results/
 ---
 
-| Assessment Results Schema | Assessment Results Converters 
+| Assessment Results Schema | Assessment Results Converters
 |:--- |:--- |
 | [XML Schema](https://raw.githubusercontent.com/usnistgov/OSCAL/master/xml/schema/oscal_assessment-results_schema.xsd) | [JSON to XML Converter](https://raw.githubusercontent.com/usnistgov/OSCAL/master/xml/convert/oscal_assessment-results_json-to-xml-converter.xsl)<br />([How do I use this?](https://github.com/usnistgov/OSCAL/tree/master/xml#converting-oscal-json-content-to-xml)) |
 | [JSON Schema](https://raw.githubusercontent.com/usnistgov/OSCAL/master/json/schema/oscal_assessment-results_schema.json) | [XML to JSON Converter](https://raw.githubusercontent.com/usnistgov/OSCAL/master/json/convert/oscal_assessment-results_xml-to-json-converter.xsl)<br />([How do I use this?](https://github.com/usnistgov/OSCAL/tree/master/json#converting-oscal-xml-content-to-json)) |
@@ -67,16 +67,15 @@ The OSCAL Assessment Results model is part of the [OSCAL Assessment Results Laye
 
 This model is typically used by anyone performing assessment or continuous monitoring activities on a system to determine the degree to which that system complies with one or more frameworks.
 
-This model allows an assessor to express all details associated with a classic "snapshot in time" assessment, including the scope of the assessment, times and dates of activities, actual assessment activities performed, as well as any observations, findings, and identified risks. It also allows organizations to report continuous assessment information. 
+This model allows an assessor to express all details associated with a classic "snapshot in time" assessment, including the scope of the assessment, times and dates of activities, actual assessment activities performed, as well as any observations, findings, and identified risks. It also allows organizations to report continuous assessment information.
 
 OSCAL assessment results are always defined in the context of an assessment plan, and must always be associated with an OSCAL [Assessment Plan (AP)](../../assessment-layer/assessment-plan/). OSCAL assessment results are associated with a specific system via the OSCAL assessment plan, which identifies the system to be assessed.
 
-The current version of this model was created based on the information requirements of a [FedRAMP Security Assessment Report](https://www.fedramp.gov/assets/resources/templates/FedRAMP-Annual-SAR-Template.docx), and was expanded to include continuous assessment capabilities. 
+The current version of this model was created based on the information requirements of a [FedRAMP Security Assessment Report](https://www.fedramp.gov/assets/resources/templates/FedRAMP-Annual-SAR-Template.docx), and was expanded to include continuous assessment capabilities.
 
-This model was designed to use identical syntax to the [assessment plan model](../../assessment-layer/assessment-plan/), for overlapping syntax (Objectives, Assessment Subject, Assets, and Assessment Activities). It was also designed to use identical syntax to the [Plan of Action and Milestones (POA&M)](../poam/), for Results/Risks. 
+This model was designed to use identical syntax to the [assessment plan model](../../assessment-layer/assessment-plan/), for overlapping syntax (Objectives, Assessment Subject, Assets, and Assessment Activities). It was also designed to use identical syntax to the [Plan of Action and Milestones (POA&M)](../poam/), for Results/Risks.
 
 The figure below expresses represents the portion of the OSCAL stack as it relates to an OSCAL Assessment Results.
 ![A diagram representing the OSCAL stack from a assessment results' perspective.](OSCAL-stack-assessment_results.svg)
 
 {{<partial "note-to-developers-uuid.html" >}}
-

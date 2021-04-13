@@ -13,7 +13,7 @@ The ID of a control is the `@id` in the XML of that control.
 <include>
    <call control-id="pm3"/>
 </include>
-      
+
 ```
 
 `call` with `control-id` works to select the control with with given ID (identifier) in its catalog.
@@ -29,7 +29,7 @@ It is also possible to use a `with-subcontrols` flag when calling controls by ID
 <include>
    <call control-id="pm3" with-subcontrols="yes"/>
 </include>
-      
+
 ```
 
 ### Including controls by matching their ID
@@ -38,7 +38,7 @@ It is also possible to use a `with-subcontrols` flag when calling controls by ID
 <include>
    <match pattern="^pm"/>
 </include>
-      
+
 ```
 
 The value of `@pattern` is an (XSD) regular expression. It is matched against the ID. Both/any controls and subcontrols whose IDs match the patterns, are selected - so in this case, any whose ID starts with "pm".
@@ -121,7 +121,7 @@ When elements are matched using class tokens, there is the possibility that mult
 
 The difference between `position='before'` and `position='starting'` is that "before" places the inserted content *before* the targeted element, while "starting" places it *inside* it, at the front. "ending" will place the inserted content at the end, inside the identified element.
 
-When the targeted element is a control or subcontrol, `before` is a synonym for `starting` 
+When the targeted element is a control or subcontrol, `before` is a synonym for `starting`
 
 If no position is given, `position='ending'` is inferred: the insertion happens inside the targeted element (or the matched control or subcontrol), at the end.
 
@@ -136,7 +136,7 @@ Note that this default works along with the rule that if no target (class or ID)
     <part class="supplemental">
        <title>Supplementary Guidance</title>
        <p>More advice ...</p>
-    </part>       
+    </part>
   </add>
 </modify>
 ```
@@ -144,4 +144,3 @@ Note that this default works along with the rule that if no target (class or ID)
 This adds the new `part` at the end of the `ac.1` control.
 
 Note also that position "before" and "after" work only when @target is also used (to identify some contents inside a control); they are inoperable when the target is a control or subcontrol. They result in no addition being made. (A Schematron check could be made for this.)
-

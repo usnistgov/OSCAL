@@ -3,7 +3,7 @@
         <x:context>
             <catalog/>
         </x:context>
-        
+
         <x:expect label="profile becomes catalog">
             <catalog/>
         </x:expect>
@@ -57,7 +57,7 @@
             </catalog>
         </x:expect>
     </x:scenario>
-    
+
     <x:scenario label="Parallel imports, no merge, keeping all">
         <x:context>
             <catalog>

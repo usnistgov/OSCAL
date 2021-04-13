@@ -120,7 +120,7 @@ while IFS="|" read path_glob format model converttoformats || [[ -n "$path_glob"
 #    echo "Format: $format"
 #    echo "Model: $model"
 #    echo "Convert to: $converttoformats"
-    
+
     paths+=("$path")
     formats+=("$format")
     models+=("$model")
@@ -341,7 +341,7 @@ copy_or_convert_content() {
         fi
         resolved_profile="${target_dir}/${source_filename%_profile.xml}-resolved-profile_catalog.xml"
 #        printf 'resolved profile: %s\n' "$resolved_profile"
-    
+
         result=$(xsl_transform "${PROFILE_RESOLVER}" "$source_file" "${resolved_profile}" 2>&1)
         cmd_exitcode=$?
         if [ $cmd_exitcode != 0 ]; then
@@ -351,7 +351,7 @@ copy_or_convert_content() {
           echo -e "${P_ERROR}Failed to resolve profile '${P_END}${resolved_profile}${P_ERROR}'.${P_END}"
           return 1;
         fi
-        
+
         result=$(validate_xml "$CATALOG_SCHEMA" "${resolved_profile}")
         cmd_exitcode=$?
         if [ $cmd_exitcode != 0 ]; then

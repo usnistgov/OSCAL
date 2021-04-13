@@ -4,7 +4,7 @@ Build out examples
  - catalog (pointing to its source material)
    - w/ pointer to "latest version"
    - also w/ pointer to exact same version online
- - profile 
+ - profile
    - same, plus
    - catalog(s)
 
@@ -13,7 +13,7 @@ A profile showing links
   PDF version (source material) of profile
 
 title: "XYZ"
-version-title: "XYZ, revision 4" 
+version-title: "XYZ, revision 4"
 
 In profiles and other citing documents:
 
@@ -33,7 +33,7 @@ then in the metadata of any OSCAL document (catalog, profile or other)
 
 www [media type]"
 status="superseding | current | subsumed | superseded">
-  <title>...</title> 
+  <title>...</title>
   <doc-id>...</doc-id>
   <link>...</link>
   <hash href="link-to-hash">hash</hash>
@@ -70,11 +70,10 @@ Providing a subsumed mirror with appropriate document-identifiers can be enough 
 
 ## content handling by format
 
-We'll use media types of the normal sort, i.e. 
+We'll use media types of the normal sort, i.e.
 application/xml
 application/json
 application/pdf, application/vnd.openxmlformats-officedocument.wordprocessingml.document
 etc
 
 Note that putatively comparable or "the same" XML and JSON versions can be checked against each other, given a metaschema to cast the conversion.
-

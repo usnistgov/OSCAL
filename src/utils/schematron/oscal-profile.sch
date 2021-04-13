@@ -4,13 +4,13 @@
   xmlns:sqf="http://www.schematron-quickfix.com/validator/process"
   xmlns:oscal="http://csrc.nist.gov/ns/oscal/1.0">
 
-  
-  
+
+
   <sch:ns uri="http://csrc.nist.gov/ns/oscal/1.0" prefix="oscal"/>
 
   <xsl:key name="call-by-id"       match="oscal:import//oscal:call | oscal:set" use="@control-id | @subcontrol-id | @param-id"/>
   <xsl:key name="alteration-by-id" match="oscal:alter"                  use="@control-id | @subcontrol-id"/>
-  
+
   <sch:pattern>
     <sch:rule context="oscal:import//oscal:call[@control-id]">
       <sch:assert test="count(key('call-by-id',@control-id,..)) = 1">Control (<sch:value-of select="@control-id"/>) should not be <sch:value-of select="local-name(..)"/>d more than once.</sch:assert>
@@ -23,6 +23,6 @@
       <sch:assert test="count(key('alteration-by-id',(@control-id|@subcontrol-id))) = 1">Alteration may not be declared more than once for a control or subcontrol (<sch:value-of select="@control-id|@subcontrol-id"/>).</sch:assert>
     </sch:rule>
 </sch:pattern>
-  
-    
+
+
 </sch:schema>

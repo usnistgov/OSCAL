@@ -11,7 +11,7 @@
   <schema-version>1.0</schema-version>
   <short-name>computer-build</short-name>
   <namespace>http://csrc.nist.gov/ns/computer-build/1.0</namespace>
-  
+
   <define-assembly name="computer-build">
     <formal-name>Computer Build</formal-name>
     <description>A description of the components used to build a computer.</description>
@@ -25,7 +25,7 @@
       </assembly>
     </model>
   </define-assembly>
-  
+
   <define-assembly name="component">
     <formal-name>Computer Component</formal-name>
     <description>A description of a component used to build a computer.</description>
@@ -39,17 +39,17 @@
       <field ref="model"/>
     </model>
   </define-assembly>
-  
+
   <define-field name="name">
     <formal-name>Component Name</formal-name>
     <description>A name of a component used to build a computer.</description>
   </define-field>
-  
+
   <define-field name="description" as-type="markup-line">
     <formal-name>Description</formal-name>
     <description>A description of a component used in a computer build.</description>
   </define-field>
-  
+
   <define-field name="model">
     <formal-name>Model</formal-name>
     <description>The model code of a computer component.</description>

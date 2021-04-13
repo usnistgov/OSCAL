@@ -1,7 +1,7 @@
 
 
 /*.model-entry p { margin-top: units( 0.5 )*/
-  
+
 summary { display: list-item; cursor: pointer; list-style-position: outside }
 
 .OM-entry summary { line-height: 1.5 }
@@ -94,7 +94,7 @@ div.OM-choice { margin-left: 4em; margin-top: 0em }
 
 .nobr { white-space: nowrap }
 
-.OM-entry:hover { 
+.OM-entry:hover {
   // @extend .bg-accent-cool-lighter;
   @extend .border-accent-cool-light;
 }
@@ -109,7 +109,7 @@ div.OM-map > p:last-child { margin-left: -2em }
 // .OM-flex .sq { flex-grow: 1 }
 // .OM-flex .sq.card { flex-basis: 4em; flex-grow: 0; width: 4em }
 
-.OM-line { display: block 
+.OM-line { display: block
 //  padding-left: 1em
 }
 
@@ -143,15 +143,15 @@ span.OM-datatype { @extend .font-sans-sm; @include u-font-family('sans');
     font-style: normal;
     @include u-font-family('mono');
    }
-   
+
 .OM-ref {
     @extend .text-primary;
     font-style: normal;
     font-size: 90%;
     @include u-font-family('mono');
    }
-   
-     
+
+
 .OM-map a {
   text-decoration: none;
   @extend .text-primary; }
@@ -167,7 +167,7 @@ a.OM-name:hover {
 details[open] > summary .show-closed {
     display: none; }
 
-    
+
 pre {
   @extend .bg-base-lighter
 }
@@ -197,7 +197,7 @@ section {
 
 .cnstr-tag {
   @extend .usa-tag;
-  @extend .bg-primary-dark } 
+  @extend .bg-primary-dark }
 
 .subhead {
     font-size: 80%;
@@ -261,7 +261,7 @@ ul.e_map {
 }
 
 .model-descr { @extend .border-top; @extend .border-base-lighter }
-       
+
 .model-descr:focus { @extend .bg-primary-lighter }
 
 .model-descr div { margin: 0.5em 0em }
@@ -291,7 +291,7 @@ div.constraint { font-size: smaller;
     //    max-height: 2.6em;
     //    overflow: clip;
   }
-  
+
 // div.constraint:hover { max-height: unset; transition-duration: 2s }
 
 div.constraint * { margin: 0em; }
@@ -302,7 +302,7 @@ div.constraint * { margin: 0em; }
   padding: 0.5em; font-size: 90% }
 
 .global.description { display: block // keeping the syntax-checker quiet
-//  @extend .bg-accent-cool-light; 
+//  @extend .bg-accent-cool-light;
 //  @extend .border-accent-cool-dark
 }
 
@@ -310,4 +310,3 @@ div.constraint * { margin: 0em; }
     font-size: 80%;
     margin: 0em 0em
 }
-

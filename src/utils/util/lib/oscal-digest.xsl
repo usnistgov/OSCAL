@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet 
+<xsl:stylesheet
   version="2.0"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns="http://www.w3.org/1999/xhtml"
   xmlns:oscal="http://csrc.nist.gov/ns/oscal/1.0"
-  
+
   xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0"
   exclude-result-prefixes="#all">
-  
+
 <!-- Produces an HTML report describing OSCAL inputs. -->
 
-<!-- TO DO: 
-  
+<!-- TO DO:
+
   skip declarations
   sort properties and statements (and title and descriptions)
   list counts as (9/10)
@@ -26,7 +26,7 @@
       </xsl:with-param>
     </xsl:call-template>
   </xsl:template>
-  
+
   <xsl:template name="analysis">
     <!--<div>
       <h2>Elements by signature <code style="font-size: smaller">name(#type|@role)</code></h2>
@@ -44,9 +44,9 @@
       <h2>Abstract tree hierarchy (by signature)</h2>
       <xsl:call-template name="element-hierarchy"/>
     </div>
-    
+
   </xsl:template>
-  
+
   <xsl:template name="element-hierarchy">
     <xsl:param name="n" select="/*"/>
     <xsl:if test="exists($n)">
@@ -67,7 +67,7 @@
       </ul>
     </xsl:if>
   </xsl:template>
-  
+
   <xsl:function name="oscal:signature" as="xs:string">
     <xsl:param name="n" as="element()"/>
     <xsl:value-of>
@@ -82,7 +82,7 @@
       </xsl:for-each>
     </xsl:value-of>
   </xsl:function>
-  
+
   <xsl:template name="page">
     <xsl:param name="contents">
       <xsl:apply-templates/>
@@ -93,7 +93,7 @@
         <style type="text/css">
 .e { color: darkgreen; font-weight: bold }
 .count { color: darkred; font-style: italic; padding-left: 1em }
-          
+
         </style>
       </head>
       <body>
@@ -101,5 +101,5 @@
       </body>
     </html>
   </xsl:template>
-  
+
 </xsl:stylesheet>

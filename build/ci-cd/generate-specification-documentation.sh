@@ -68,4 +68,3 @@ if [ $cmd_exitcode -ne 0 ]; then
 else
   echo -e "${P_OK}Generating specification '${P_END}${SPEC_OUTPUT}${P_OK}' was successful for '${P_END}${SPEC_SOURCE}${P_OK}.${P_END}"
 fi
-

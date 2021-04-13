@@ -5,9 +5,9 @@
   xpath-default-namespace="http://www.w3.org/1999/xhtml"
   exclude-result-prefixes="xs math"
   version="3.0">
-  
+
   <xsl:mode on-no-match="shallow-copy"/>
-  
+
   <xsl:template match="body">
     <xsl:copy>
       <xsl:copy-of select="@*"/>
@@ -20,7 +20,7 @@
       <xsl:apply-templates select="$divs[not(h3=$families)]"/>
     </xsl:copy>
   </xsl:template>
-  
+
   <xsl:template match="div[h3]">
     <xsl:copy>
       <xsl:copy-of select="@*"/>
@@ -30,5 +30,5 @@
       <xsl:apply-templates select="div[empty(p[starts-with(.,'XSweet')][matches(.,'\[')])]"/>
     </xsl:copy>
   </xsl:template>
-  
+
 </xsl:stylesheet>

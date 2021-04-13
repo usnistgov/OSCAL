@@ -29,7 +29,7 @@ A variety of organizations define a set of security and privacy requirements, wh
 
 ### Control
 
-Many privacy and security compliance programs are based on or make use of **controls**. Framework authors provide control requirements, system owners implement the controls, and assessors validate the implemented control against the requirement. 
+Many privacy and security compliance programs are based on or make use of **controls**. Framework authors provide control requirements, system owners implement the controls, and assessors validate the implemented control against the requirement.
 
 In OSCAL, a control is *a requirement or guideline, which when implemented will reduce an aspect of risk related to an information system and its information.*
 
@@ -90,7 +90,7 @@ The OSCAL catalog model documentation provides an [example](/documentation/schem
 Framework providers organize control requirements into a **catalog**.
 The OSCAL [catalog model](../schema/catalog-layer/catalog/) is designed to represent control requirement information and its catalog organization in a machine-readable format with a high degree of fidelity and granularity.
 
-An OSCAL catalog allows control requirements to be grouped, and allows individual control requirements to contain subordinate control requirements (enhancements), control objectives, assessment methods, references, and other content as may be necessary in some frameworks. 
+An OSCAL catalog allows control requirements to be grouped, and allows individual control requirements to contain subordinate control requirements (enhancements), control objectives, assessment methods, references, and other content as may be necessary in some frameworks.
 
 In OSCAL a control catalog is *an organized collection of controls*.
 

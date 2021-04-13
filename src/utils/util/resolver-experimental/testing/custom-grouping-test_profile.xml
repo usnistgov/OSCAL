@@ -34,7 +34,7 @@
                 <!-- AC-3 is not selected, so it should not appear in the group -->
                 <call control-id="ac-3"/>
             </group>
-        </custom>  
+        </custom>
     </merge>
     <modify>
         <set param-id="ac-2_prm_2">
@@ -51,7 +51,7 @@
             <add position="starting">
                 <prop name="extra">EXTRA SPECIAL PROPERTY</prop>
             </add>
-            
+
         </alter>
     </modify>
     <back-matter>

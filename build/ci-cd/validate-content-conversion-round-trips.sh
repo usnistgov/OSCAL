@@ -140,7 +140,7 @@ while IFS="|" read path_glob format model converttoformats || [[ -n "$path_glob"
 #    echo "Format: $format"
 #    echo "Model: $model"
 #    echo "Convert to: $converttoformats"
-    
+
     paths+=("$path")
     formats+=("$format")
     models+=("$model")
@@ -186,20 +186,20 @@ process_paths() {
         local oscal_dir="$OSCAL_DIR"
         local result
         local converttoformats="${conversion_formats[$i]}"
-    
+
         # get the base file name
         local source_file_basename=$(basename $source_file)
         local source_file_relative="$(get_rel_path "${artifact_dir}" "$source_file")"
-    
+
         # debuggging statements, shows what is processing
         #  printf 'path: %s\n' "$file"
         #  printf 'file name: %s\n' "$file_basename"
         #  printf 'Source format: %s\n' "$source_format"
         #  printf 'model: %s\n' "$model"
         #  printf 'convert-to: %s\n' "$converttoformats"
-    
+
         # source_schema="$WORKING_DIR/$source_format/schema/oscal_${model}_schema.xsd"
-        
+
         #split on commas
         IFS_OLD="$IFS"
         IFS=, to_formats=($converttoformats)
@@ -209,24 +209,24 @@ process_paths() {
           # skip blanks
           continue;
         fi
-        
+
         # convert to target format
         local target_file="${SCRATCH_DIR}/roundtrip/${source_file_basename}-to.${target_format}"
         # local target_file_relative="$(get_rel_path "${working_dir}" "$target_file")";
-        
+
         result=$(convert_to_format_and_validate "$source_file" "$target_file" "$source_format" "$target_format" "$model" "$oscal_dir")
         cmd_exitcode=$?
         if [ -n "$result" ]; then
           echo -e "${result}"
         fi
-        
+
         if [ $cmd_exitcode != 0 ]; then
           exitcode=1
           continue;
         else
           echo -e "${P_OK}Converted ${source_format^^} '${P_END}${source_file_relative}${P_OK}' to ${target_format^^} as '${P_END}${target_file}${P_OK}'.${P_END}"
         fi
-        
+
         # convert back to source format
         roundtrip_file="${SCRATCH_DIR}/roundtrip/${source_file_basename}-to-${target_format}-back-to.${source_format}"
         result=$(convert_to_format_and_validate "$target_file" "$roundtrip_file" "$target_format" "$source_format" "$model" "$oscal_dir")
@@ -234,19 +234,19 @@ process_paths() {
         if [ -n "$result" ]; then
           echo -e "${result}"
         fi
-        
+
         if [ $cmd_exitcode != 0 ]; then
           exitcode=1
           continue;
         else
           echo -e "${P_OK}Converted ${target_format^^} '${P_END}${target_file}${P_OK}' to ${source_format^^} as '${P_END}${roundtrip_file}${P_OK}'.${P_END}"
         fi
-        
+
         # compare the XML files to see if there is data loss
         if [ "$VERBOSE" = "true" ]; then
           echo -e "${P_INFO}Checking ${source_format^^}->${target_format^^}->${source_format^^} conversion for '${P_END}${source_file_relative}${P_INFO}'.${P_END}"
         fi
-        
+
         case $source_format in
         xml)
           result=$(python ${OSCALDIR}/build/ci-cd/python/xmlComparison.py "$roundtrip_file" "$source_file" 2>&1)
@@ -272,7 +272,7 @@ process_paths() {
         fi
         done
     done
-    
+
   return $exitcode;
 }
 

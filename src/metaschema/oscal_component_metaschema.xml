@@ -107,7 +107,7 @@
       </assembly>
 
       <!-- Now addressed using: <link rel="validation" href="#22222222-0000-4000-a000-000000000002" /> -->
-      <!--      
+      <!--
          <assembly ref="proof-of-compliance" max-occurs="unbounded">
            <group-as name="proofs-of-compliance" />
          </assembly>

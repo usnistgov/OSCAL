@@ -14,15 +14,15 @@
         <include >
             <call control-id="a1"/>
         </include>
-        
+
     </import>
     <import href="../../../../specifications/profile-resolution/profile-resolution-examples/catalogs/abc-full_catalog.xml">
         <include>
             <match pattern="^a"/>
         </include>
-        
+
     </import>
     <merge>
-      <as-is>true</as-is>    
+      <as-is>true</as-is>
     </merge>
 </profile>

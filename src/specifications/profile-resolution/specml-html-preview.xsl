@@ -7,15 +7,15 @@
     xpath-default-namespace="http://csrc.nist.gov/ns/oscal/specml"
     version="3.0"
     expand-text="true">
-    
+
     <xsl:import href="specml-html-xslt1.xsl"/>
-    
+
     <xsl:output method="xhtml" html-version="5.0" use-character-maps="html-safe"/>
-    
+
     <xsl:character-map name="html-safe">
         <xsl:output-character character=">" string=">" />
     </xsl:character-map>
-    
+
     <xsl:template match="SPECIFICATION">
         <html>
             <head>
@@ -33,11 +33,11 @@
             </body>
         </html>
     </xsl:template>
-    
+
     <xsl:template name="css">
         <xsl:variable name="display-font" as="xs:string"> 'Corbel', sans-serif </xsl:variable>
         <style type="text/css">
-            
+
 body {{ line-height: 140%; font-family: "Cambria", serif }}
 
 * {{ box-sizing: border-box }}
@@ -81,22 +81,22 @@ a.linked {{ color: inherit }}
 
         </style>
     </xsl:template>
-    
-    
+
+
     <xsl:template name="toc">
         <ul>
             <xsl:apply-templates mode="toc" select="section"/>
         </ul>
     </xsl:template>
-    
+
     <xsl:template mode="toc" match="*"/>
-    
+
     <xsl:template mode="toc" match="head">
         <a href="#{generate-id(.)}-head">
             <xsl:apply-templates select="." mode="header-text"/>
         </a>
     </xsl:template>
-    
+
     <xsl:template mode="toc" match="section">
         <li>
             <xsl:apply-templates select="head" mode="toc"/>
@@ -107,7 +107,7 @@ a.linked {{ color: inherit }}
             </xsl:for-each-group>
         </li>
     </xsl:template>
-    
+
     <xsl:template match="head" mode="header-text">
         <span class="secnum">
           <xsl:number level="multiple" count="section" format="1.1"/>
@@ -115,7 +115,7 @@ a.linked {{ color: inherit }}
         <xsl:text> </xsl:text>
         <xsl:apply-templates/>
     </xsl:template>
-    
+
     <xsl:template match="section">
         <details open="open">
             <summary>
@@ -124,30 +124,30 @@ a.linked {{ color: inherit }}
             <xsl:apply-templates select="* except head"/>
         </details>
     </xsl:template>
-    
+
     <xsl:template match="mapping">
       <xsl:apply-templates/>
         <xsl:for-each select="attribute::unit-test">
             <p class="unit-test">Unit test: <a href="{.}">{ . }</a></p>
         </xsl:for-each>
     </xsl:template>
-    
+
     <xsl:template match="tagging" mode="tagging-label">
         <h4 class="label">Source data:</h4>
     </xsl:template>
-    
+
     <xsl:template match="tagging[@whose='target_catalog']" mode="tagging-label">
         <h4 class="label">Target (catalog):</h4>
     </xsl:template>
-    
+
     <xsl:template match="tagging[@whose='source_catalog']" mode="tagging-label">
         <h4 class="label">Source (catalog):</h4>
     </xsl:template>
-    
+
     <xsl:template match="tagging[@whose='source_profile']" mode="tagging-label">
         <h4 class="label">Source (profile):</h4>
     </xsl:template>
-    
+
     <xsl:template match="tagging">
         <div class="{@whose}-tagging example">
             <xsl:apply-templates select="." mode="tagging-label"/>
@@ -162,5 +162,5 @@ a.linked {{ color: inherit }}
             <xsl:apply-templates select="@* | node()" mode="#current"/>
         </xsl:copy>
     </xsl:template>
-    
+
 </xsl:stylesheet>

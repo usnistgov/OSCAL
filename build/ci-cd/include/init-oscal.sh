@@ -12,4 +12,3 @@ if [ -z ${OSCAL_SCRIPT_INIT+x} ]; then
 
   OSCAL_SCRIPT_INIT=true
 fi
-

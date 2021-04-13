@@ -46,7 +46,7 @@
         </x:context>
         <x:expect label="XYZ catalog with original grouping">
             <catalog>
-                
+
                     <group id="x">
                         <title>Group X of XYZ</title>
                         <control id="x1"><title>Control X1</title></control>
@@ -246,5 +246,5 @@
             </catalog>
         </x:expect>
     </x:scenario>
-    
+
 </x:description>

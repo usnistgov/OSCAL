@@ -21,20 +21,20 @@
         ^ becomes <sup>
         " becomes <q>
         ()[] becomes <a href>
-        
+
         We manage this by casting syntax to tagging, then attempting to parse the tagging (when it is available).
     First, we have to escape characters that will be construed as markup
     i.e. < and & to &lt; and &amp;
     (we can ignore quotes as long as our markup has no attributes only elements)
-    
+
     casting delimiter-string pairs to tags
     trying to parse (eheh) - wf error drops back
       to show raw syntax
     -->
 
-    
-    
-    
+
+
+
     <xsl:template match="/">
         <xsl:element name="examples" namespace="{$target-ns}">
             <xsl:apply-templates select="$examples/*" mode="parse"/>
@@ -42,15 +42,15 @@
     </xsl:template>
 
     <xsl:template mode="parse" match=".">
-        
+
 <!-- First, group according to ``` delimiters btw codeblocks and not
         within codeblock, escape & and < (only)
         within not-codeblock split lines at \n\s*\n
-        
+
         -->
         <xsl:variable name="str" select="string(.)"/>
         <xsl:variable name="starts-with-code" select="matches($str,'^```')"/>
-        
+
         <xsl:variable name="blocks">
             <xsl:for-each-group select="tokenize($str, '\n')"
                 group-starting-with=".[matches(., '^```')]">
@@ -65,7 +65,7 @@
                 </p>
             </xsl:for-each-group>
         </xsl:variable>
-        
+
         <xsl:variable name="rough-blocks">
             <xsl:apply-templates select="$blocks" mode="parse-block"/>
         </xsl:variable>
@@ -76,13 +76,13 @@
         <xsl:variable name="nested-list-blocks">
             <xsl:apply-templates select="$list-blocks" mode="nest-lists"/>
         </xsl:variable>
-        
+
         <xsl:variable name="fully-marked">
             <xsl:apply-templates select="$nested-list-blocks" mode="infer-inlines"/>
         </xsl:variable>
-        
+
         <xsl:apply-templates select="$fully-marked" mode="cast-ns"/>
-        
+
     </xsl:template>
 
     <xsl:template match="*" mode="copy mark-lists nest-lists infer-inlines">
@@ -91,7 +91,7 @@
             <xsl:apply-templates mode="#current"/>
         </xsl:copy>
     </xsl:template>
-    
+
     <xsl:template mode="parse-block" priority="1" match="p[exists(@code)]" expand-text="true">
         <xsl:element name="pre" namespace="{ $target-ns }">
             <xsl:element name="code" namespace="{ $target-ns }">
@@ -102,7 +102,7 @@
             </xsl:element>
         </xsl:element>
     </xsl:template>
-    
+
 <!-- outside blocks marked as code, we have paragraphs and lists -->
     <xsl:template mode="parse-block" match="p" expand-text="true">
         <xsl:for-each select="tokenize(string(.),'\n\s*\n')[normalize-space(.)]">
@@ -111,7 +111,7 @@
             </p>
         </xsl:for-each>
     </xsl:template>
-    
+
     <xsl:template mode="mark-lists" match="p[matches(.,'^\s*\*')]">
         <ul>
             <xsl:for-each select="tokenize(., '\n')">
@@ -121,7 +121,7 @@
             </xsl:for-each>
         </ul>
     </xsl:template>
-    
+
     <xsl:template mode="nest-lists" match="ul" name="nest-lists">
         <!-- Starting at level 0 and grouping       -->
         <xsl:param name="level" select="0"/>
@@ -162,7 +162,7 @@
     <xsl:template match="pre//text()" mode="infer-inlines">
         <xsl:copy-of select="."/>
     </xsl:template>
-        
+
     <xsl:template match="text()" mode="infer-inlines">
         <xsl:variable name="markup" expand-text="true">
             <xsl:apply-templates select="$tag-replacements/o:rules">
@@ -173,8 +173,8 @@
             <xsl:catch expand-text="yes" select="."/>
         </xsl:try>
     </xsl:template>
-    
-     
+
+
     <xsl:template mode="cast-ns" match="*">
         <xsl:element name="{local-name()}" namespace="{ $target-ns }">
             <xsl:copy-of select="@*"/>
@@ -221,7 +221,7 @@
             <replace match="\\`"    >&amp;#60;</replace>
             <replace match="\\~"    >&amp;#7E;</replace>
             <replace match="\\^"    >&amp;#5E;</replace>
-            
+
             <!-- then, replacements based on $tag-specification -->
             <xsl:for-each select="$tag-specification/*">
                 <xsl:variable name="match-expr">
@@ -230,16 +230,16 @@
                 <xsl:variable name="repl-expr">
                     <xsl:apply-templates select="." mode="write-replace"/>
                 </xsl:variable>
-                
+
                 <replace match="{$match-expr}">
                     <xsl:sequence select="$repl-expr"/>
                 </replace>
-                
+
             </xsl:for-each>
         </rules>
     </xsl:variable>
-    
-    
+
+
 
     <xsl:variable name="tag-specification" as="element(o:tag-spec)" xmlns="http://csrc.nist.gov/ns/oscal/1.0">
         <tag-spec>
@@ -256,47 +256,47 @@
             <sup>\^<insert/>\^</sup>
         </tag-spec>
     </xsl:variable>
-    
+
     <xsl:template match="*" mode="write-replace">
         <xsl:text>&lt;</xsl:text>
         <xsl:value-of select="local-name()"/>
         <xsl:apply-templates mode="#current" select="@*"/>
-        
+
         <xsl:text>&gt;</xsl:text>
-        
+
         <xsl:apply-templates mode="#current" select="*"/>
         <xsl:text>&lt;/</xsl:text>
         <xsl:value-of select="local-name()"/>
         <xsl:text>&gt;</xsl:text>
     </xsl:template>
-    
+
     <xsl:template match="*" mode="write-match">
         <xsl:apply-templates select="@*, node()" mode="write-match"/>
     </xsl:template>
-    
+
     <xsl:template match="@*[matches(., '\{\$insert\}')]" mode="write-match">
         <xsl:value-of select="replace(., '\{\$insert\}', '(.*)?')"/>
     </xsl:template>
-    
+
     <xsl:template match="o:insert" mode="write-replace">
         <xsl:text>$1</xsl:text>
     </xsl:template>
-    
+
     <xsl:template match="o:a/@href" mode="write-replace">
         <xsl:text> href="$2"</xsl:text>
         <!--<xsl:value-of select="replace(.,'\{\$insert\}','\$2')"/>-->
     </xsl:template>
-    
+
     <xsl:template match="o:insert" mode="write-match">
         <xsl:text>(.*?)</xsl:text>
     </xsl:template>
-    
+
     <xsl:variable name="examples" xml:space="preserve">
         <p>Extra long x
             y and z
-            
-            
-            
+
+
+
 
 And interesting.
 
@@ -335,5 +335,5 @@ And stuff.
         <p>Here's a ***really interesting*** markdown string.</p>
         <p>Some paragraphs might have [links elsewhere](https://link.org).</p>
     </xsl:variable>
-    
+
 </xsl:stylesheet>

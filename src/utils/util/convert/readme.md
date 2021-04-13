@@ -36,4 +36,3 @@ $ java -jar $SAXON -o:$OSCALXML -xsl:oscal-catalog-json-converter.xsl json-file=
 ```
 
 Note in this case the JSON file is designated with a runtime (stylesheet) parameter `json-file=`, and no (XML) source file (`-s`) is given.
-

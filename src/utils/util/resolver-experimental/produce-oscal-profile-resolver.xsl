@@ -9,7 +9,7 @@
     <xsl:output indent="yes"/>
 
     <xsl:strip-space elements="*"/>
-    
+
     <xsl:preserve-space elements="title prop p li th td h1 h1 h2 h3 h4 h5 h6 link value description"/>
     <!-- Purpose: from OSCAL profile input, produce a representation of all controls called with insertions, alterations, modifications and settings applied. -->
     <!-- Primary input: an OSCAL profile -->
@@ -24,11 +24,11 @@
 
     <xsl:variable name="echoing-transform" as="xs:boolean" select="$write-xslt = 'yes'"/>
     <xsl:variable name="tracing"           as="xs:boolean" select="$trace-resolution = 'yes'"/>
-    
+
     <xsl:variable name="xslt-name" select="/*/@id || '-resolver.xsl'"/>
 
     <xsl:variable name="in" select="/"/>
-    
+
     <xsl:template match="profile">
         <xsl:param tunnel="yes" name="visited" select="()"/>
 
@@ -56,7 +56,7 @@
                     <ERROR>Generated transformation failed with this error: [{ $err:code }] { $err:description } </ERROR>
                 </xsl:catch>
             </xsl:try>
-            
+
         </xsl:variable>
         <xsl:sequence select="$resolution-result"/>
         <xsl:if test="$echoing-transform">
@@ -77,8 +77,8 @@
             <xsl:apply-templates mode="#current" select="node() | @*"/>
         </xsl:copy>
     </xsl:template>
-    
-    
+
+
     <!--Function permits us to key templates by 'clash' criteria - same match, same priority
     this is not adequate in general (clashing templates do not always have the same match as literal)
     but adequate for us).-->
@@ -160,7 +160,7 @@
     <xsl:template match="merge" mode="build-merge">
         <!-- the merge direction itself is dropped -->
         <XSLT:template match="merge" mode="oscal:resolve" priority="101"/>
-        
+
         <!-- next, the templates for configuring the merge -->
         <xsl:apply-templates mode="#current"/>
     </xsl:template>
@@ -175,22 +175,22 @@
             <catalog id="RESOLVED_CUSTOMIZED-{ancestor::profile/@id}">
                 <XSLT:call-template name="resolution-metadata"/>
                 <!-- traversing the merge/custom to build a 'pull' -->
-                <xsl:apply-templates mode="#current"/>                
+                <xsl:apply-templates mode="#current"/>
             </catalog>
         </XSLT:template>
     </xsl:template>
-    
+
     <xsl:template match="merge/custom//*" mode="build-merge">
         <xsl:copy copy-namespaces="no">
             <xsl:copy-of select="@*"/>
             <xsl:apply-templates mode="#current"/>
         </xsl:copy>
     </xsl:template>
-    
+
     <xsl:template priority="2" match="merge/custom//call" mode="build-merge">
         <XSLT:sequence select="key('controls-by-id','{@control-id}',$imported-controls)"/>
     </xsl:template>
-    
+
     <xsl:template priority="5" match="as-is[. = ('true', '1')]" mode="build-merge">
         <XSLT:template priority="100" match="group" mode="oscal:resolve">
             <XSLT:variable name="resolved-contents">
@@ -210,7 +210,7 @@
     <xsl:template match="modify" mode="contriving-modifiers">
         <xsl:apply-templates mode="#current"/>
     </xsl:template>
-    
+
     <xsl:template match="modify/set" mode="contriving-modifiers">
     <xsl:variable name="setting" select="."/>
     <!--control[@id='{@control-id}']-->
@@ -223,7 +223,7 @@
             <xsl:if test="empty(label)">
                 <XSLT:copy-of copy-namespaces="no" select="label"/>
             </xsl:if>
-            
+
             <!-- Any provided usage, constraint or guideline adds to (does not replace elements in) the catalog -->
             <XSLT:copy-of copy-namespaces="no" select="usage"/>
             <xsl:copy-of  copy-namespaces="no" select="usage"/>
@@ -231,22 +231,22 @@
             <xsl:copy-of  copy-namespaces="no" select="constraint"/>
             <XSLT:copy-of copy-namespaces="no" select="guideline"/>
             <xsl:copy-of  copy-namespaces="no" select="guideline"/>
-            
+
             <!-- Any value or select replaces any given value or select -->
             <xsl:copy-of copy-namespaces="no" select="value | select"/>
             <xsl:if test="empty(value|select)">
                 <XSLT:copy-of copy-namespaces="no" select="value|select"/>
             </xsl:if>
-            
+
             <!-- Links are also additive -->
             <xsl:copy-of copy-namespaces="no" select="link"/>
             <XSLT:copy-of copy-namespaces="no" select="link"/>
-            
+
         </XSLT:copy>
     </XSLT:template>
-    
+
     </xsl:template>
-    
+
     <xsl:template match="modify/alter" mode="contriving-modifiers">
         <xsl:variable name="alteration" select="."/>
         <!--control[@id='{@control-id}']-->
@@ -278,15 +278,15 @@
                 <xsl:copy-of copy-namespaces="no" select="$alteration/add[@position = 'after']/*"/>
             </XSLT:for-each>
         </XSLT:template>
-        
+
         <!-- Next, templates to match elements inside controls that get additions -->
         <xsl:apply-templates select="add[exists(@id-ref)]" mode="#current"/>
-        
+
         <!-- Then templates to drop elements indicated for removal -->
         <xsl:apply-templates select="remove" mode="#current"/>
-        
+
     </xsl:template>
-    
+
     <xsl:template match="add[exists(@id-ref)]" mode="contriving-modifiers">
         <XSLT:template mode="oscal:resolve"
             match="key('elements-by-id','{@id-ref}',key('controls-by-id','{../@control-id}')))"
@@ -302,7 +302,7 @@
             <xsl:copy-of select=".[@position = 'after']"/>
         </XSLT:template>
     </xsl:template>
-    
+
     <!-- Finally implementing removals as straight up empty templates -->
     <xsl:template match="remove[exists(@id-ref)]" mode="contriving-modifiers">
         <XSLT:template mode="oscal:resolve" match="key('elements-by-id','{@id-ref}')" priority="1005">
@@ -311,19 +311,19 @@
             </XSLT:if>
         </XSLT:template>
     </xsl:template>
-    
+
     <xsl:template match="remove[exists(@name-ref)]" mode="contriving-modifiers">
         <XSLT:template mode="oscal:resolve" match="key('controls-by-id','{../@control-id}')//*[@name='{@name-ref}']" priority="1004"/>
     </xsl:template>
-    
+
     <xsl:template match="remove[exists(@class-ref)]" mode="contriving-modifiers">
         <XSLT:template mode="oscal:resolve" match="key('controls-by-id','{../@control-id}')//*[@class-ref='{@class-ref}']" priority="1003"/>
     </xsl:template>
-    
+
     <xsl:template match="remove[exists(@item-name)]" mode="contriving-modifiers">
         <XSLT:template mode="oscal:resolve" match="key('controls-by-id','{../@control-id}')//{@item-name}" priority="1002"/>
     </xsl:template>
-    
+
     <xsl:template name="catalog-base">
         <XSLT:template match="catalog" mode="oscal:resolve">
             <!--<group>-->
@@ -363,23 +363,23 @@
                 <XSLT:apply-templates mode="oscal:resolve" select="node() | @*"/>
             </XSLT:copy>
         </XSLT:template>
-        
+
         <XSLT:mode name="oscal:copy-branch" on-no-match="deep-copy"/>
 
         <XSLT:variable name="imported-controls">
             <XSLT:apply-templates select="/profile/import" mode="oscal:resolve"/>
         </XSLT:variable>
-        
+
         <XSLT:key name="controls-by-id" match="control" use="@id"/>
-        
+
         <xsl:if test="exists(child::modify/set)">
             <XSLT:key name="parameters-by-id" match="param" use="@id"/>
         </xsl:if>
-        
+
         <xsl:if test="exists(child::modify/alter/*/@id-ref)">
             <XSLT:key name="elements-by-id" match="*" use="@id"/>
         </xsl:if>
-        
+
         <XSLT:template match="profile" mode="oscal:resolve">
             <catalog id="RESOLVED-{@id}">
                 <XSLT:call-template name="resolution-metadata"/>
@@ -395,18 +395,18 @@
         <XSLT:template match="resource[rlink/@href castable as xs:anyURI]" mode="oscal:fetch">
             <XSLT:apply-templates select="document(rlink/@href, /)" mode="oscal:resolve"/>
         </XSLT:template>
-        
+
         <XSLT:template match="import" mode="oscal:fetch">
             <XSLT:apply-templates select="document(@href, /)" mode="oscal:resolve"/>
         </XSLT:template>
-        
+
         <!-- For now, each import is traversed separately, meaning we can get duplicated groups
              repair this by grouping either/both imports/@hrefs and resource targets -->
-        
+
         <XSLT:template match="import" mode="oscal:resolve">
             <XSLT:comment expand-text="yes"> No resolution available for import href '{ @href }'</XSLT:comment>
         </XSLT:template>
-            
+
         <XSLT:template priority="2" match="profile/import[starts-with(@href, '#')]" mode="oscal:resolve">
                 <XSLT:apply-templates select="key('resource-fetch', @href)" mode="oscal:fetch"/>
         </XSLT:template>
@@ -414,7 +414,7 @@
         <XSLT:template match="profile/import[exists(document(@href,/))]" mode="oscal:resolve">
             <XSLT:apply-templates select="." mode="oscal:fetch"/>
         </XSLT:template>
-        
+
         <XSLT:template name="resolution-metadata" expand-text="true">
             <metadata>
                 <title>{metadata/title} - RESOLVED</title>
@@ -423,10 +423,10 @@
                 <oscal-version>1.0-MR2</oscal-version>
             </metadata>
         </XSLT:template>
-        
+
         <XSLT:template match="comment()" mode="#all"/>
     </xsl:template>
-    
-    
-    
+
+
+
 </xsl:stylesheet>

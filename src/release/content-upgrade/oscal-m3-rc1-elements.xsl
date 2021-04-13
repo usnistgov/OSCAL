@@ -2,26 +2,26 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0"
     xmlns="http://csrc.nist.gov/ns/oscal/1.0"
-    xmlns:uuid="java:java.util.UUID" 
+    xmlns:uuid="java:java.util.UUID"
     exclude-result-prefixes="#all"
     version="3.0">
-    
+
 <!-- This XSLT, applied to an XML document valid to the Milestone 3 OSCAL schema version for Catalog, Profile, SSP or Component,
      will produce a similar XML document, valid or closer to valid to the Release Candidate 1 OSCAL schema. -->
-    
+
     <xsl:output indent="yes"/>
-    
+
     <xsl:mode on-no-match="shallow-copy"/>
-    
+
     <xsl:mode name="copy" on-no-match="shallow-copy"/>
-    
+
     <xsl:variable select="uuid:randomUUID()" name="new-document-uuid"/>
     <xsl:variable select="uuid:randomUUID()" name="new-this-system-component-uuid"/>
-    
+
     <!-- Grabbing the old UUID or the new UUID if there is no old one. -->
     <xsl:variable name="this-system-component-uuid" select="(/*/system-implementation/component[(@type|@component-type='this-system')]/@uuid,$new-this-system-component-uuid)[1]"/>
-    
-<!-- 
+
+<!--
 In {top-level-element}/metadata:
 x renamed "revision-history" to "revisions"
 x renamed "doc-id" to "document-id"
@@ -50,14 +50,14 @@ a doc-id/@type 'doi' to document-id/@scheme 'https://www.doi.org/'
             <xsl:apply-templates select="* except (title | published)"/>
         </xsl:copy>
     </xsl:template>
-    
+
     <xsl:template match="last-modified" priority="6"/>
-    
+
     <xsl:template match="oscal-version" priority="6">
         <oscal-version>1.0.0-rc1</oscal-version>
     </xsl:template>
-    
-    
+
+
     <xsl:template match="link">
         <xsl:copy>
             <xsl:apply-templates select="@*"/>
@@ -75,15 +75,15 @@ a doc-id/@type 'doi' to document-id/@scheme 'https://www.doi.org/'
             <xsl:apply-templates/>
         </revisions>
     </xsl:template>
-    
-    
+
+
     <xsl:template match="doc-id">
         <document-id>
             <xsl:apply-templates select="@*"/>
             <xsl:apply-templates/>
         </document-id>
     </xsl:template>
-    
+
     <xsl:template match="doc-id/@type | external-id/@type">
         <xsl:attribute name="scheme" select="."/>
     </xsl:template>
@@ -91,8 +91,8 @@ a doc-id/@type 'doi' to document-id/@scheme 'https://www.doi.org/'
     <xsl:template priority="10" match="doc-id/@type[.='doi']">
         <xsl:attribute name="scheme">https://www.doi.org/</xsl:attribute>
     </xsl:template>
-    
-<!-- 
+
+<!--
 In {top-level-element}/metadata/link:
 n Defined allowed values for the "rel" property
 
@@ -107,14 +107,14 @@ x renamed "phone" to "telephone-number"
             <xsl:apply-templates/>
         </email-address>
     </xsl:template>
-    
+
     <xsl:template match="phone">
         <telephone-number>
             <xsl:apply-templates select="@*"/>
             <xsl:apply-templates/>
         </telephone-number>
     </xsl:template>
-    
+
 <!--
 
 In {top-level-element}/metadata/location/prop:
@@ -122,7 +122,7 @@ n Defined allowed values for the "name" attribute. Using the "type" as the name 
 
 In {top-level-element}/metadata/party:
 a reordered contents of party
-x renamed "party-name" to "name" 
+x renamed "party-name" to "name"
 x renamed "email" to "email-address"
 x renamed "phone" to "telephone-number"
 n made use of address and location-uuid mutually exclusive, since either a static address or a reference to location provides similar functionality. The "location-type" attribute has been removed. This should data should now be described on the referenced "location" element using a prop element with a name of "type".
@@ -131,10 +131,10 @@ In {top-level-element}/metadata/party/prop:
 n Defined allowed values for the "name" attribute. This can be used to provide a "mail-stop", "office", or "job-title".
 
 In {top-level-element}/metadata/party/external-id:
-x renamed "type" to "scheme" 
+x renamed "type" to "scheme"
 
     -->
-    
+
     <xsl:template match="party">
         <!-- order of contents of `party`:
     M3: party-name, short-name, external-id, prop, annotation, link, address, email, phone, member-of-organization, location-uuid, remarks
@@ -144,8 +144,8 @@ x renamed "type" to "scheme"
             <xsl:apply-templates select="@*"/>
             <xsl:apply-templates select="party-name, short-name, external-id, prop, annotation, link, email, phone, address, location-uuid, member-of-organization, remarks"/>
         </xsl:copy>
-    </xsl:template>  
-    
+    </xsl:template>
+
     <xsl:template match="party-name">
         <name>
             <xsl:apply-templates select="@*"/>
@@ -167,8 +167,8 @@ x renamed "doc-id" to "document-id"
             <xsl:apply-templates/>
         </description>
     </xsl:template>
-    
-<!-- 
+
+<!--
 In {top-level-element}/back-matter/resource/prop:
 n defined allowed values "type", "version", and "published" for the "name" property.
 
@@ -182,7 +182,7 @@ Changes to all "prop" elements:
 n changed the data type of "ns" to "uri"
 x renamed "id" to "uuid" and changed type to "uuid" (prop has @uuid under M3+)
 a - note, results will not have valid uuids until the UUID refresher is run
-    
+
 Changes to all "annotation" elements:
 n changed the data type of "ns" to "uri"
 x renamed "id" to "uuid" and changed type to "uuid"
@@ -193,7 +193,7 @@ a - again note that uuid values are unlikely to be valid until reassignment
     <xsl:template match="prop/@id | annotation/@id">
         <xsl:attribute name="uuid" select="."/>
     </xsl:template>
- 
+
 <!--
 ### Changes affecting the catalog and profile XML formats
 
@@ -208,7 +208,7 @@ x changed "constraint" from an element with a text value, to an element with chi
 x changed the cardinality of "value" to allow for multiple values". The data type of a value has changed from markup-line to string.
 
 -->
- 
+
 <!-- Handles either catalog//param or profile//set-parameter -->
     <xsl:template match="param | set-parameter">
         <!-- old: (label{0-1}, usage{0-UNBOUNDED}, constraint{0-UNBOUNDED}, guideline{0-UNBOUNDED}, (value{0-1} | select{0-1}), link{0-UNBOUNDED})-->
@@ -218,7 +218,7 @@ x changed the cardinality of "value" to allow for multiple values". The data typ
             <xsl:apply-templates select="link, label, usage, constraint, guideline, value, select"/>
         </xsl:copy>
     </xsl:template>
-    
+
     <xsl:template match="usage[matches(.,'\S')]">
         <xsl:copy>
             <xsl:apply-templates select="@*"/>
@@ -227,7 +227,7 @@ x changed the cardinality of "value" to allow for multiple values". The data typ
             </p>
         </xsl:copy>
     </xsl:template>
-    
+
     <xsl:template match="constraint">
         <xsl:copy>
             <xsl:apply-templates select="@* except @test"/>
@@ -241,7 +241,7 @@ x changed the cardinality of "value" to allow for multiple values". The data typ
             <xsl:apply-templates select="@test"/>
         </xsl:copy>
     </xsl:template>
-    
+
     <xsl:template match="constraint/@test">
         <test>
             <expression>
@@ -249,7 +249,7 @@ x changed the cardinality of "value" to allow for multiple values". The data typ
             </expression>
         </test>
     </xsl:template>
-    
+
     <xsl:template match="param/value">
         <xsl:copy>
             <xsl:apply-templates select="@*"/>
@@ -257,7 +257,7 @@ x changed the cardinality of "value" to allow for multiple values". The data typ
             <xsl:value-of select="."/>
         </xsl:copy>
     </xsl:template>
-    
+
 <!--
 For /catalog//group and /catalog//control:
 n defined allowed values for prop/@name
@@ -276,7 +276,7 @@ x change sequencing of "link"
 
 For /profile/modify/alter/add:
 n defined allowed values for prop/@name
-    
+
     -->
 
 <!--
@@ -296,29 +296,29 @@ x changed structure of "information-type-id" to be wrapped by an outer character
 a actually this is 'categorization'
 n added "annotation"
     -->
-    
+
     <xsl:template match="system-security-plan//information-type/information-type-id">
         <categorization>
             <xsl:copy-of select="@system"/>
             <xsl:next-match/>
         </categorization>
     </xsl:template>
-    
+
     <xsl:template match="information-type-id/@id">
         <!-- not lexically valid in result until uuid fixup -->
         <xsl:attribute name="uuid" select="."/>
     </xsl:template>
-    
+
     <xsl:template match="system-security-plan//information-type/information-type-id/@system"/>
-    
-    
+
+
 <!--
 
 a /system-security-plan/system-implementation/system-inventory element removed from SSP
   with its inventory-item contents kept
- 
- 
- 
+
+
+
     -->
 
     <!-- A new requirement in RC1 is the presence of a 'this-system' component (i.e. component[@type='this-system']
@@ -333,7 +333,7 @@ a /system-security-plan/system-implementation/system-inventory element removed f
             <xsl:apply-templates select="component | system-inventory | remarks"/>
         </xsl:copy>
     </xsl:template>
-    
+
     <xsl:template name="this-system-boilerplate" xmlns:uuid="java:java.util.UUID">
         <component type="this-system" uuid="{$new-this-system-component-uuid}">
             <title>This System</title>
@@ -348,12 +348,12 @@ a /system-security-plan/system-implementation/system-inventory element removed f
             </status>
         </component>
     </xsl:template>
-    
- 
+
+
     <xsl:template match="system-implementation/system-inventory">
         <xsl:apply-templates/>
     </xsl:template>
-      
+
 <!--
 
 For /system-security-plan/system-characteristics/system-information/information-type/*-impact:
@@ -369,23 +369,23 @@ n defined allowed values for annotation/@name and role-id
 For /system-security-plan/system-implementation/component:
 x renamed "component-type" to "type", and updated allowed values (RC1 shows @component-type)
 n defined allowed values for prop/@name, annotation/@name, link/@rel, and responsible-role/@role-id
-    
-    
+
+
     -->
 
     <xsl:template match="@component-type">
-        <xsl:attribute name="type" select="."/>    
+        <xsl:attribute name="type" select="."/>
     </xsl:template>
-    
+
 <!--
 
 For /system-security-plan/system-implementation/inventory-item:
 x moved "@asset-id" to a required prop/@name
 n defined allowed values for prop/@name, annotation/@name, link/@rel, and responsible-role/@role-id
 
-    
+
     -->
-    
+
     <xsl:template match="inventory-item">
         <xsl:copy>
             <xsl:apply-templates select="@* except @asset-id"/>
@@ -394,28 +394,28 @@ n defined allowed values for prop/@name, annotation/@name, link/@rel, and respon
             <xsl:apply-templates select="* except description"/>
         </xsl:copy>
     </xsl:template>
-    
+
     <xsl:template match="inventory-item/@asset-id" expand-text="true">
         <prop name="asset-id">{ . }</prop>
     </xsl:template>
-    
-<!--    
- 
+
+<!--
+
 For /system-security-plan/system-implementation/inventory-item/implemented-component:
 x renamed "component-id" to "component-uuid"
 n defined allowed values for prop/@name, annotation/@name, and responsible-party/@role-id
 x removed "use", since this is capturing similar information to the component's type
     -->
-    
+
     <xsl:template match="implemented-component/@component-id | by-component/@component-id">
         <xsl:attribute name="component-uuid" select="."/>
     </xsl:template>
-    
+
     <xsl:template match="implemented-component/@use"/>
-    
-        
+
+
 <!--
-        
+
 
 
 ## Changes to the SSP model
@@ -432,7 +432,7 @@ n added allowed values for responsible-role/$role-id
 -->
 
     <xsl:template match="implemented-requirement/description"/>
-    
+
     <xsl:template match="implemented-requirement/statement/description"/>
 
     <!-- Adding a 'this-system' by-component if we don't already have one...-->
@@ -448,7 +448,7 @@ n added allowed values for responsible-role/$role-id
             <xsl:apply-templates select="by-component, statement, remarks"/>
         </xsl:copy>
     </xsl:template>
-    
+
     <xsl:template match="implemented-requirement//by-component[@component-uuid=$this-system-component-uuid]">
         <xsl:copy>
             <xsl:apply-templates select="@*"/>
@@ -516,5 +516,5 @@ n added "export", "inherited", and "satisfied" to support documenting leveraged 
 n added "remarks" to allow for adding general commentary
 
     -->
-   
+
 </xsl:stylesheet>

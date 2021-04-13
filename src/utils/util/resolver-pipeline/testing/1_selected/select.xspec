@@ -10,7 +10,7 @@
         <x:context>
             <profile/>
         </x:context>
-        
+
         <x:expect label="root becomes root">
             <profile/>
         </x:expect>
@@ -21,7 +21,7 @@
                 <import href="&filedir;/xyz-tiny_catalog.xml"/>
             </profile>
         </x:context>
-        
+
         <x:expect label="Select no controls">
             <profile>
                 <selection uuid="..." opr:src="...">
@@ -97,7 +97,7 @@
                 </import>
             </profile>
         </x:context>
-        
+
         <x:expect label="Control x1, in its group, with other groups empty">
             <profile>
                 <selection uuid="..." opr:src="...">
@@ -117,7 +117,7 @@
             </profile>
         </x:expect>
     </x:scenario>
-    
+
     <x:scenario label="Profile select include call match">
         <x:context>
             <profile>
@@ -129,7 +129,7 @@
                 </import>
             </profile>
         </x:context>
-        
+
         <x:expect label="The x controls, matched as such">
             <profile>
                 <selection uuid="..." opr:src="...">
@@ -151,7 +151,7 @@
             </profile>
         </x:expect>
     </x:scenario>
-    
+
     <x:scenario label="Profile implicit select all, excluding x1 y1 z1">
         <x:context>
             <profile>
@@ -165,7 +165,7 @@
                 </import>
             </profile>
         </x:context>
-        
+
         <x:expect label="All controls but x1,y1,z1, grouped">
             <profile>
                 <selection uuid="..." opr:src="...">
@@ -198,7 +198,7 @@
             </profile>
         </x:expect>
     </x:scenario>
-    
+
     <x:scenario label="Recursive 'with-child-controls'">
         <x:context>
             <profile>
@@ -209,7 +209,7 @@
                 </import>
             </profile>
         </x:context>
-        
+
         <x:expect label="Only the Z3 control, with all control descendants">
             <profile>
                 <selection uuid="..." opr:src="...">
@@ -237,7 +237,7 @@
             </profile>
         </x:expect>
     </x:scenario>
-    
+
     <x:scenario label="Doubled import, exclusive call">
         <x:context>
             <profile>
@@ -253,7 +253,7 @@
                 </import>
             </profile>
         </x:context>
-        
+
         <x:expect label="Showing two control selections">
             <profile>
                 <selection uuid="..." opr:src="...">
@@ -289,7 +289,7 @@
             </profile>
         </x:expect>
     </x:scenario>
-    
+
     <x:scenario label="Loose parameters">
         <x:context>
             <profile>
@@ -301,7 +301,7 @@
                 </import>
             </profile>
         </x:context>
-        
+
         <x:expect label="Two controls in three groups with back matter and loose parameters">
             <profile>
                 <selection uuid="..." opr:src="...">
@@ -363,5 +363,5 @@
             </profile>
         </x:expect>
     </x:scenario>
-    
+
 </x:description>

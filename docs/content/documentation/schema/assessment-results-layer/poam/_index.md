@@ -7,7 +7,7 @@ aliases:
   - /documentation/schema/poam/
 ---
 
-| POA&M Schema | POA&M Converters 
+| POA&M Schema | POA&M Converters
 |:--- |:--- |
 | [XML Schema](https://raw.githubusercontent.com/usnistgov/OSCAL/master/xml/schema/oscal_poam_schema.xsd) | [JSON to XML Converter](https://raw.githubusercontent.com/usnistgov/OSCAL/master/xml/convert/oscal_poam_json-to-xml-converter.xsl)<br />([How do I use this?](https://github.com/usnistgov/OSCAL/tree/master/xml#converting-oscal-json-content-to-xml)) |
 | [JSON Schema](https://raw.githubusercontent.com/usnistgov/OSCAL/master/json/schema/oscal_poam_schema.json) | [XML to JSON Converter](https://raw.githubusercontent.com/usnistgov/OSCAL/master/json/convert/oscal_poam_xml-to-json-converter.xsl)<br />([How do I use this?](https://github.com/usnistgov/OSCAL/tree/master/json#converting-oscal-xml-content-to-json)) |
@@ -18,7 +18,7 @@ aliases:
 
 ## Purpose
 
-The OSCAL Plan of Action and Milestones (POA&M) model defines the information contained within a POA&M. 
+The OSCAL Plan of Action and Milestones (POA&M) model defines the information contained within a POA&M.
 
 ## Authors and Consumers
 
@@ -60,9 +60,9 @@ An OSCAL POA&M is organized as follows:
 
 ## Key Concepts
 
-The OSCAL Plan of Action and Milestones (POA&M) model is part of the [OSCAL Results Layer](/documentation/schema/assessment-results-layer/). It defines structured, machine-readable XML, JSON, and YAML representations of the information contained within a POA&M. 
+The OSCAL Plan of Action and Milestones (POA&M) model is part of the [OSCAL Results Layer](/documentation/schema/assessment-results-layer/). It defines structured, machine-readable XML, JSON, and YAML representations of the information contained within a POA&M.
 
-This model is used by anyone responsible for tracking and reporting compliance issues or risks identified for a system, typically on behalf of a system owner. 
+This model is used by anyone responsible for tracking and reporting compliance issues or risks identified for a system, typically on behalf of a system owner.
 
 This model supports details typically associated with a POA&M, including source of discovery, risk description and recommendations, remediation planning/tracking, and disposition status. It also supports deviations, such as false positive (FP), risk acceptance, and risk adjustments (RA).
 
@@ -70,10 +70,9 @@ An OSCAL POA&M is always defined in the context of a specific system. It must ei
 
 The current version of this model was created based on the information requirements of a [FedRAMP POA&M](https://www.fedramp.gov/assets/resources/templates/FedRAMP-POAM-Template.xlsm).
 
-It was designed to use identical syntax to the [assessment results model](/documentation/schema/assessment-results-layer/assessment-results/), for overlapping assemblies (results: observations and risks), which allows easy transfer of identified risks for an assessment report to a POA&M. 
+It was designed to use identical syntax to the [assessment results model](/documentation/schema/assessment-results-layer/assessment-results/), for overlapping assemblies (results: observations and risks), which allows easy transfer of identified risks for an assessment report to a POA&M.
 
 The figure below represents the portion of the OSCAL stack as it relates to an OSCAL POA&M.
 ![A diagram representing the OSCAL stack from a system security plan's perspective.](OSCAL-stack-POAM.svg)
 
 {{<partial "note-to-developers-uuid.html" >}}
-

@@ -7,32 +7,32 @@
     xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
     exclude-result-prefixes="xs math m xsi"
     version="3.0">
-    
-<!-- 
-        
+
+<!--
+
         Not to be used standalone, this XSLT is called by produce-xsd.xsl and produce-json-schema.xsl
-    
+
     it depends on declarations for $root-name and for key('definitions-by-name') -->
-    
+
     <xsl:output indent="yes"/>
-    
+
     <xsl:strip-space elements="METASCHEMA define-flag define-field define-assembly remarks model choice"/>
-    
+
     <xsl:variable name="verbose-warnings" as="xs:string">no</xsl:variable>
     <xsl:variable name="verbose" select="lower-case($verbose-warnings)=('yes','y','1','true')"/>
-    
+
     <xsl:variable name="root-name" select="/METASCHEMA/@root/string(.)"/>
-    
+
     <xsl:variable name="target-ns" select="/METASCHEMA/namespace/string()"/>
-    
+
     <xsl:key name="definition-by-name" match="define-flag | define-field | define-assembly" use="@name"/>
-    
+
     <xsl:template match="/">
         <!--<xsl:sequence select="$compleat"/>-->
         <!--<xsl:sequence select="$eligible"/>-->
         <xsl:sequence select="$composed-metaschema"/>
     </xsl:template>
-    
+
 <!-- pull all schemas together
      traverse from top level
        discard any definition that has a subsequent override
@@ -40,7 +40,7 @@
          include docs from <augment> elements
          annotate with home module
          expand @group-as on field | flag | assembly ?
-     
+
      diagnostic mode
        notes when definitions are discarded or kept
          switch $verbose
@@ -48,10 +48,10 @@
        alerts when formal-name or description is overridden in imports
      -->
 
-    
+
     <!-- ====== ====== ====== ====== ====== ====== ====== ====== ====== ====== ====== ====== -->
     <!-- Pass One: assemble definitions -->
-    
+
     <xsl:variable name="compleat" as="document-node()">
         <xsl:apply-templates mode="acquire" select="/">
             <xsl:with-param name="so-far" tunnel="true" select="document-uri(/)"/>
@@ -59,9 +59,9 @@
     </xsl:variable>
 
     <xsl:mode name="acquire" on-no-match="shallow-copy"/>
-    
+
     <xsl:template match="comment() | processing-instruction()" mode="acquire"/>
-    
+
     <xsl:template match="METASCHEMA" mode="acquire">
         <xsl:copy copy-namespaces="no">
             <xsl:copy-of select="@* except @xsi:*"/>
@@ -69,13 +69,13 @@
             <xsl:apply-templates mode="#current"/>
         </xsl:copy>
     </xsl:template>
-    
-    
+
+
     <!-- quitting traversal by cloning branch -->
     <xsl:template match="define-field | define-flag | define-assembly" mode="acquire">
         <xsl:copy-of select="."/>
     </xsl:template>
-    
+
     <xsl:template match="import" mode="acquire">
         <xsl:param name="so-far" tunnel="yes" required="yes"/>
         <xsl:variable name="uri" select="resolve-uri(@href,document-uri(/))"/>
@@ -90,8 +90,8 @@
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-    
-    
+
+
     <!-- ====== ====== ====== ====== ====== ====== ====== ====== ====== ====== ====== ====== -->
     <!-- Pass Two: filter definitions (1) - eligible definitions are the last-declared with their name
          but we keep everything else including all 'augments' (documentation) for the next pass -->
@@ -100,10 +100,10 @@
     </xsl:variable>
 
     <xsl:mode name="keep-eligible" on-no-match="shallow-copy"/>
-    
+
     <xsl:template mode="keep-eligible" priority="10"
         match="define-field[   . is key('definition-by-name',@name)[last()]]
-             | define-flag[    . is key('definition-by-name',@name)[last()]] 
+             | define-flag[    . is key('definition-by-name',@name)[last()]]
              | define-assembly[. is key('definition-by-name',@name)[last()]]">
         <xsl:if test="$verbose">
             <xsl:message expand-text="true">KEEPING definition for '{ @name }' { replace(local-name(),'^define-','')} from { ancestor::METASCHEMA[1]/@module }</xsl:message>
@@ -118,14 +118,14 @@
             <xsl:message expand-text="true">TOSSING definition for '{ @name }' { replace(local-name(),'^define-','')}  from { ancestor::METASCHEMA[1]/@module }</xsl:message>
         </xsl:if>
     </xsl:template>
-        
+
     <!-- ====== ====== ====== ====== ====== ====== ====== ====== ====== ====== ====== ====== -->
     <!-- Pass Three: filter definitions (1) - keep definitions actually used, with all docs
           (i.e. drops definitions 'never picked for a team') -->
     <!-- Also consolidates documentation - definitions that are kept, are also annotated
            with applicable 'augment' elements i.e. those belonging to ancestor metaschemas
            in the import hierarchy. -->
-    
+
     <xsl:variable name="composed-metaschema" as="document-node()">
         <xsl:variable name="all-references" as="xs:string*">
             <xsl:apply-templates mode="collect-references" select="$eligible/METASCHEMA/*[@name=$root-name]">
@@ -136,17 +136,17 @@
             <xsl:with-param tunnel="yes" name="keepers" select="$all-references"/>
         </xsl:apply-templates>
     </xsl:variable>
-    
+
     <xsl:mode name="digest" on-no-match="shallow-copy"/>
-    
+
     <xsl:template match="METASCHEMA//METASCHEMA" priority="5" mode="digest">
         <xsl:apply-templates mode="#current"/>
     </xsl:template>
-    
+
     <xsl:template match="formal-name//text() | description//text() | p//text()" mode="digest">
         <xsl:value-of select="replace(.,'\s+',' ')"/>
     </xsl:template>
-    
+
     <!-- Dropping augment elements since their contents are being consolidated. -->
     <xsl:template match="augment" mode="digest"/>
 
@@ -181,7 +181,7 @@
             <xsl:message expand-text="true">DISCARDING definition for '{ @name }' { replace(local-name(),'^define-','')} from { ancestor::METASCHEMA[1]/@module } (not being used)</xsl:message>
         </xsl:if>
     </xsl:template>
-    
+
     <xsl:template mode="digest" match="augment/remarks | augment/example">
         <xsl:copy>
             <xsl:call-template name="mark-module"/>
@@ -189,11 +189,11 @@
             <xsl:apply-templates mode="#current"/>
         </xsl:copy>
     </xsl:template>
-    
+
     <xsl:template priority="10" mode="digest" match="example/description | example/remarks">
         <xsl:copy-of select="."/>
     </xsl:template>
-    
+
     <!-- Casting all examples into the master metaschema's declared namespace. -->
     <xsl:template mode="digest" match="example//* | example//*">
         <xsl:element name="{ local-name() }" namespace="{ $target-ns }">
@@ -201,7 +201,7 @@
             <xsl:apply-templates mode="#current"/>
         </xsl:element>
     </xsl:template>
-    
+
     <xsl:template mode="digest" match="flag | json-key | json-value-key">
         <xsl:copy>
             <xsl:copy-of select="key('definition-by-name',(@name|@ref))/@as-type"/>
@@ -210,11 +210,11 @@
             <xsl:apply-templates mode="#current"/>
         </xsl:copy>
     </xsl:template>
-    
+
     <xsl:template name="mark-module">
         <xsl:copy-of select="ancestor-or-self::METASCHEMA/@module"/>
     </xsl:template>
-    
+
 <!-- Mode 'collect references' collects a set of strings naming definitions
      we actually need, by traversing the definitions tree from the root;
      recursive models are accounted for -->
@@ -227,21 +227,21 @@
             </xsl:apply-templates>
         </xsl:if>
     </xsl:template>
-    
+
     <xsl:template match="define-field" mode="collect-references">
         <xsl:sequence select="@name, flag/@ref"/>
     </xsl:template>
-    
+
     <xsl:template match="model | model//*" mode="collect-references">
-        <xsl:apply-templates mode="#current"/>  
+        <xsl:apply-templates mode="#current"/>
     </xsl:template>
-    
+
     <!-- Matching inside the $distinct-definitions variable, so traversing only applicable definitions -->
     <xsl:template priority="10" match="field | assembly" mode="collect-references">
         <xsl:apply-templates select="key('definition-by-name',@ref,root())" mode="#current"/>
     </xsl:template>
-        
+
     <!--hitting anything but a define-assembly, we are done collecting references-->
     <xsl:template match="* | text()" mode="collect-references"/>
-    
+
 </xsl:stylesheet>

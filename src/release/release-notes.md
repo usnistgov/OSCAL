@@ -5,7 +5,7 @@
 
 The models are described using OSCAL Metaschema terminology. Depending on the OSCAL representation you prefer (for example, XML or JSON), the object in question may be represented as a labeled property or unlabeled array member (in JSON) or as an element or attribute (XML). Similarly, in either case it may be an object with or without a nominal data value associated (such as at leaf nodes of the nominal information network), or alternatively a composite of other objects.
 
-Refer to docs on Metaschema language and mappings into data objects, especially 
+Refer to docs on Metaschema language and mappings into data objects, especially
 [Terminology](https://pages.nist.gov/metaschema/specification/concepts/terminology/) and [Mapping](https://pages.nist.gov/metaschema/specification/mapping/).
 
 Users of object notations should take note that individual objects described in the Metaschema model may, when serialized as JSON, take the form of array members without keys, the semantic key (a grouping key) being assigned to the group of like objects. So a 'prop' object defined in the Metaschema appears in the JSON as a member of an object 'properties'.
@@ -95,7 +95,7 @@ In {top-level-element}/metadata/location/prop:
 - Defined allowed values for the "name" attribute. Using the "type" as the name attribute value, you can now specify that a location is a "data-center" location and also use the "class" attribute to qualify the data center location as "primary" or "alternate".
 
 In {top-level-element}/metadata/party:
-- renamed "party-name" to "name" 
+- renamed "party-name" to "name"
 - renamed "email" to "email-address"
 - renamed "phone" to "telephone-number"
 - changed sequencing of where "address" appears
@@ -105,7 +105,7 @@ In {top-level-element}/metadata/party/prop:
 - Defined allowed values for the "name" attribute. This can be used to provide a "mail-stop", "office", or "job-title".
 
 In {top-level-element}/metadata/party/external-id:
-- renamed "type" to "scheme" 
+- renamed "type" to "scheme"
 
 In {top-level-element}/metadata/role:
 - renamed "desc" to "description"
@@ -154,7 +154,7 @@ In {top-level-object}/metadata/locations/props:
 - Defined allowed values for the "name" property. Using the "type" prop name, you can now specify that a location is a "data-center" location and also use the "class" property to qualify the data center location as "primary" or "alternate".
 
 In {top-level-object}/metadata/parties:
-- renamed "party-name" to "name" 
+- renamed "party-name" to "name"
 - renamed "properties" to "props"
 - made use of addresses and location-uuids mutually exclusive, since either a static address or a reference to location provides similar functionality. The "location-type" property on "location-uuid" has been removed. This should data should now be described on the referenced "location" element using a prop element with a name of "type".
 
@@ -162,7 +162,7 @@ In {top-level-object}/metadata/parties/props:
 - defined allowed values for the "name" property. This can be used to provide a "mail-stop", "office", or "job-title".
 
 In {top-level-object}/metadata/parties/external-ids:
-- renamed "type" to "scheme" 
+- renamed "type" to "scheme"
 
 In {top-level-object}/metadata/roles:
 - renamed "desc" to "description"
@@ -450,7 +450,7 @@ For /system-security-plan/control-implementation/implemented-requirements/statem
 
 Overall, this model was updated to bring the structure of components into alignment with how components are organized in the system security plan model.
 
-The following changes have been made in the XML, JSON, and YAML formats for the OSCAL component definition model. 
+The following changes have been made in the XML, JSON, and YAML formats for the OSCAL component definition model.
 
 ### Changes to the component definition XML format
 
@@ -663,7 +663,7 @@ Due to the nature of changes in this model, the following documentation details 
 - An "entry" can be used to log any event that occurs during an assessment.
   - An "entry" can be associated with an action or a task. An action is a concrete activity that is performed during an assessment, while a task is a high-level scheduled event used for project management that may be associated with multiple actions. The two can be used together to detail the work accomplished during the assessment.
   - The "related-action" element can associate the log entry with an action declared in the plan or the results to record progress on or completion of the action. The "related-action" can be used to assign a "responsible-party" and can also be associated with an "assessment-subject".
-  - The "related-task" element can associate the log entry with a task declared in the plan to record progress on or completion of the task. The "related-task" can be used to assign a "responsible-party" and can also be associated with an "assessment-subject". 
+  - The "related-task" element can associate the log entry with a task declared in the plan to record progress on or completion of the task. The "related-task" can be used to assign a "responsible-party" and can also be associated with an "assessment-subject".
   - "title" is now required.
   - "activity-uuids" is replaced with "related-actions".
   - "party-uuids" and "location-uuids" are now specified on a per-action basis using the referenced "assessment-action" object's "assessment-subjects" array items, which allows both parties and locations to be subjects.
@@ -682,7 +682,7 @@ Due to the nature of changes in this model, the following documentation details 
 - The new "origin" element can be used to describe the tool or party that generated the risk record.
 - Replaced "risk-metric" with "characterization", which allows any risk characteristic to be as a "facet". The specific tool, assessment-platform, and/or any parties producing a characterization can be identified using one or more "actor" elements. The related action and/or task can also be associated here using "related-action" and "related-task".
 - All remediation related contents has been moved to "response", which will be discussed below.
-- A "risk-log/entry" can be used to identify any action that relates to the assessment of or handling of a risk. This replaces the "/assessment-results/results/risk/remediation-tracking", while proving more robust capabilities. 
+- A "risk-log/entry" can be used to identify any action that relates to the assessment of or handling of a risk. This replaces the "/assessment-results/results/risk/remediation-tracking", while proving more robust capabilities.
 - "party-id" has been replaced with identifying the party as an actor under "origin".
 
 /assessment-results/results/risk/response
@@ -746,7 +746,7 @@ Due to the nature of changes in this model, the following documentation details 
 - An "entry" can be used to log any event that occurs during an assessment.
   - An "entry" can be associated with an action or a task. An action is a concrete activity that is performed during an assessment, while a task is a high-level scheduled event used for project management that may be associated with multiple actions. The two can be used together to detail the work accomplished during the assessment.
   - The "related-actions" property can associate the log entry with an action declared in the plan or the results to record progress on or completion of the action. The "related-action" can be used to assign a "responsible-party" and can also be associated with an "assessment-subject".
-  - The "related-tasks" property can associate the log entry with a task declared in the plan to record progress on or completion of the task. The "related-task" can be used to assign a "responsible-party" and can also be associated with an "assessment-subject". 
+  - The "related-tasks" property can associate the log entry with a task declared in the plan to record progress on or completion of the task. The "related-task" can be used to assign a "responsible-party" and can also be associated with an "assessment-subject".
   - "title" is now required.
   - "activity-uuids" is replaced with "related-actions".
   - "party-uuids" and "location-uuids" are now specified on a per-action basis using the referenced "assessment-action" object's "assessment-subjects" array items, which allows both parties and locations to be subjects.
@@ -765,7 +765,7 @@ Due to the nature of changes in this model, the following documentation details 
 - The new "origin" property can be used to describe the tool or party that generated the risk record.
 - Replaced "risk-metric" with "characterization", which allows any risk characteristic to be as a "facet". The specific tool, assessment-platform, and/or any parties producing a characterization can be identified using one or more "actor" properties. The related action and/or task can also be associated here using "related-action" and "related-task".
 - All remediation related contents has been moved to "response", which will be discussed below.
-- A "risk-log/entry" can be used to identify any action that relates to the assessment of or handling of a risk. This replaces the "/assessment-results/results_group/risks/remediation-tracking" and "/assessment-results/results_group/risks/closure-actions", while proving more robust capabilities. 
+- A "risk-log/entry" can be used to identify any action that relates to the assessment of or handling of a risk. This replaces the "/assessment-results/results_group/risks/remediation-tracking" and "/assessment-results/results_group/risks/closure-actions", while proving more robust capabilities.
 - "party-ids" has been replaced with identifying the party as an actor under "origin".
 
 /assessment-results/results/risks/responses
@@ -1034,5 +1034,3 @@ XXX see Issues #494, #288 (adding 'guideline' to profile model)
 - Provides stable versions of the OSCAL catalog and profile models in XML and JSON formats, along with associated XML and JSON schemas.
 - Includes draft versions of the NIST SP 800-53 revision 4 OSCAL content and FedRAMP baselines in OSCAL XML, JSON, and YAML formats.
 - Provides content converters that are capable of accurately converting between OSCAL catalog and profile content in OSCAL XML to OSCAL JSON format and vice versa.
-
-

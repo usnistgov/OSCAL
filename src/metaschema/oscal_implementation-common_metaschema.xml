@@ -321,7 +321,7 @@
                   <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
             </model>
       </define-assembly>
-      
+
       <!-- ############################################# -->
       <!-- # The System User and supporting constructs # -->
       <!-- ############################################# -->
@@ -454,7 +454,7 @@
       <flag ref="component-type" required="yes" />
 -->
                         <!-- The following is commented because this is not being used and can be inferred based on the type of the component -->
-                        <!-- 
+                        <!--
       <define-flag name="use">
          <formal-name>Implementation Use Type</formal-name>
          <description>The type of implementation</description>

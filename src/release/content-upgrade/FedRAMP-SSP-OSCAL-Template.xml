@@ -446,12 +446,12 @@
    <!-- ====================================================
       Link this SSP to the appropriate FedRAMP baseline using ONE of the import statements below.
       NOTE: This points to a resource at the end of this file with links to both the XML and JSON
-            versions of the baseline. Tools must select the appropriate link 
-      FedRAMP HIGH Baseline: 
+            versions of the baseline. Tools must select the appropriate link
+      FedRAMP HIGH Baseline:
       <import-profile href="#fedramp-high-baseline"/>
       FedRAMP MODERATE Baseline:
       <import-profile href="#fedramp-moderate-baseline"/>
-      FedRAMP LOW Baseline: 
+      FedRAMP LOW Baseline:
       <import-profile href="#fedramp-low-baseline"/>
    ==================================================== -->
    <import-profile href="#fedramp-moderate-baseline"/>

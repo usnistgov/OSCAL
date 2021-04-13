@@ -6,12 +6,12 @@
         <x:context>
             <profile uuid="test"/>
         </x:context>
-        
+
         <x:expect label="profile becomes catalog">
             <catalog uuid="..."/>
         </x:expect>
     </x:scenario>
-    
+
     <x:scenario label="floor">
         <x:context>
             <profile uuid="test">
@@ -23,7 +23,7 @@
                 </metadata>
             </profile>
         </x:context>
-        
+
         <x:expect label="profile becomes catalog">
             <catalog uuid="...">
                 <metadata>
@@ -55,7 +55,7 @@
                 </selection>
             </profile>
         </x:context>
-        
+
         <x:expect label="title amended, with properties and link added">
             <catalog uuid="...">
                 <metadata>
@@ -94,7 +94,7 @@
                 </selection>
             </profile>
         </x:context>
-        
+
         <x:expect label="title amended, link added before party">
             <catalog uuid="...">
                 <metadata>
@@ -138,7 +138,7 @@
                 </selection>
             </profile>
         </x:context>
-        
+
         <x:expect label="title amended, link added before old link">
             <catalog uuid="...">
                 <metadata>
@@ -158,5 +158,5 @@
             </catalog>
         </x:expect>
     </x:scenario>
-    
+
 </x:description>

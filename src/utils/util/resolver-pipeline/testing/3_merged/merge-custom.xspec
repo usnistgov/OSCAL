@@ -3,18 +3,18 @@
     xmlns:x="http://www.jenitennison.com/xslt/xspec"
     xmlns:opr="http://csrc.nist.gov/ns/oscal/profile-resolution"
     stylesheet="../../oscal-profile-resolve-merge.xsl">
-    
+
     <!-- Still needing unit tests
       more elaborated merge scenarios
       different selections and sorting
       different rules on control/parameter merging using combine @method=keep|use-first|merge
       -->
-    
+
     <x:scenario label="Base">
         <x:context>
             <catalog/>
         </x:context>
-        
+
         <x:expect label="profile becomes catalog">
             <catalog/>
         </x:expect>
@@ -90,7 +90,7 @@
             </catalog>
         </x:expect>
     </x:scenario>
-    
+
     <x:scenario label="Parallel imports, no merge, keeping all">
         <x:context>
             <catalog>

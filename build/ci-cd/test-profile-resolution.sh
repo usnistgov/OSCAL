@@ -121,7 +121,7 @@ for file in ${test_files[@]}; do
 
   resolved_profile="${unit_test_scratch_dir}/${filename_minus_extension}_RESOLVED.${extension}"
 #  echo "${resolved_profile}"
-  
+
   result=$(xsl_transform "${PROFILE_RESOLVER}" "$file" "${resolved_profile}" 2>&1)
   cmd_exitcode=$?
   if [ -n "$result" ]; then
@@ -132,7 +132,7 @@ for file in ${test_files[@]}; do
     exitcode=1
     continue;
   fi
-  
+
   result=$(validate_xml "$CATALOG_SCHEMA" "${resolved_profile}")
   cmd_exitcode=$?
   if [ $cmd_exitcode -ne 0 ]; then

@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env node
+#!/usr/bin/env node
 
 import * as SaxonJS from "../node_modules/saxon-js/SaxonJS2N.js";
 //const SaxonJS = require('SaxonJS');

@@ -31,7 +31,7 @@
             <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced resource. A relative URI will be resolved relative to the location of the document containing the link.</p>
          </remarks>
       </define-flag>
-         
+
       <model>
          <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
       </model>
@@ -70,7 +70,7 @@
             <enum value="assessment"></enum>
          </allowed-values>
          <has-cardinality target="part[@name='objective']" min-occurs="0" max-occurs="1" />
-         <has-cardinality target="part[@name='assessment']/prop[@name='method']" min-occurs="1" max-occurs="1" />         
+         <has-cardinality target="part[@name='assessment']/prop[@name='method']" min-occurs="1" max-occurs="1" />
          <has-cardinality target="part[@name='assessment']/part[@name='objects']" min-occurs="1" max-occurs="1" />
          <has-cardinality target="part[@name='objective']/prop[@name='method-id']" min-occurs="1" max-occurs="unbounded" />
       </constraint>
@@ -100,7 +100,7 @@
          <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
       </model>
    </define-assembly>
-   
+
    <!-- ===============================  -->
    <!-- ========= NEW CONTENT =========  -->
    <!-- ===============================  -->
@@ -127,7 +127,7 @@
          <assembly ref="link" max-occurs="unbounded">
             <group-as name="links" in-json="ARRAY"/>
          </assembly>
-         
+
          <!-- CHANGE: Add "step". Replaces "test-step".  -->
          <define-assembly name="step" min-occurs="0" max-occurs="unbounded">
             <formal-name>Step</formal-name>
@@ -196,7 +196,7 @@
          </allowed-values>
       </constraint>
    </define-assembly>
-   
+
    <define-assembly name="task">
       <formal-name>Task</formal-name>
       <description>Represents a scheduled event or milestone, which may be associated with a series of assessment actions.</description>
@@ -214,7 +214,7 @@
             </allowed-values>
          </constraint>
       </define-flag>
-         
+
       <model>
          <define-field name="title" min-occurs="1" as-type="markup-line">
             <formal-name>Task Title</formal-name>
@@ -295,7 +295,7 @@
          <assembly ref="task" min-occurs="0" max-occurs="unbounded">
             <group-as name="tasks" in-json="ARRAY"/>
          </assembly>
-         
+
          <!-- CHANGED: Added "associated-activity" -->
          <define-assembly name="associated-activity" min-occurs="0" max-occurs="unbounded">
             <formal-name>Associated Activity</formal-name>
@@ -366,7 +366,7 @@
          <assembly ref="link" max-occurs="unbounded">
             <group-as name="links" in-json="ARRAY"/>
          </assembly>
-         
+
          <define-assembly name="control-selection" min-occurs="1" max-occurs="unbounded">
             <formal-name>Assessed Controls</formal-name>
             <description>Identifies the controls being assessed. In the assessment plan, these are the planned controls. In the assessment results, these are the actual controls, and reflects any changes from the plan.</description>
@@ -413,7 +413,7 @@
                <p>Any control specified within <code>exclude-controls</code> must first be within a range of explicitly included controls, via <code>include-controls</code> or <code>include-all</code>.</p>
             </remarks>
          </define-assembly>
-         
+
          <define-assembly name="control-objective-selection" min-occurs="0" max-occurs="unbounded">
             <!-- CHANGED: "control-objectives" to "control-objective-selection" -->
             <formal-name>Referened Control Objectives</formal-name>
@@ -482,7 +482,7 @@
          </define-field>
       </model>
    </define-assembly>
-   
+
    <define-assembly name="select-objective-by-id">
       <formal-name>Select Objective</formal-name>
       <description>Used to select a control objective for inclusion/exclusion based on the control objective's identifier.</description>
@@ -520,7 +520,7 @@
          <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
       </model>
    </define-assembly>
-   
+
    <define-assembly name="assessment-subject">
       <formal-name>Subject of Assessment</formal-name>
       <description>Identifies system elements being assessed, such as components, inventory items, and locations. In the assessment plan, this identifies a planned assessment subject. In the assessment results this is an actual assessment subject, and reflects any changes from the plan. exactly what will be the focus of this assessment. Any subjects not identified in this way are out-of-scope.</description>
@@ -578,7 +578,7 @@
    <define-assembly name="select-subject-by-id">
       <formal-name>Select Assessment Subject</formal-name>
       <description>Identifies a set of assessment subjects to include/exclude by UUID.</description>
-      <!-- CHANGED: remove class --> 
+      <!-- CHANGED: remove class -->
 <!--      <define-flag name="class" as-type="NCName">
          <formal-name>Subject Class</formal-name>
          <description>A textual label that provides a sub-type or characterization of the <code>include-subject</code>. This can be used to further distinguish or discriminate between the semantics of multiple include-subjects of the same <code>ns</code>.</description>
@@ -587,7 +587,7 @@
          </remarks>
       </define-flag>
 -->
-      <!-- CHANGED: Flattened assembly by: adding "uuid-ref" flag. Removing "subject/subjects". --> 
+      <!-- CHANGED: Flattened assembly by: adding "uuid-ref" flag. Removing "subject/subjects". -->
       <define-flag name="uuid-ref" as-type="uuid" required="yes">
          <formal-name>UUID Reference</formal-name>
          <description>A pointer to a component, inventory-item, location, party, user, or resource using it's UUID.</description>
@@ -602,7 +602,7 @@
          <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
       </model>
    </define-assembly>
-   
+
    <define-assembly name="subject-reference" scope="local">
       <formal-name>Identifies the Subject</formal-name>
       <description>A pointer to a resource based on its universally unique identifier (UUID). Use type to indicate whether the identified resource is a component, inventory item, location, user, or something else.</description>
@@ -767,7 +767,7 @@
          <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
       </model>
    </define-assembly>
-   
+
    <define-assembly name="observation">
       <formal-name>Observation</formal-name>
       <description>Describes an individual observation.</description>
@@ -807,7 +807,7 @@
                </allowed-values>
             </constraint>
          </define-field>
-         
+
          <define-field name="type" as-type="NCName" max-occurs="unbounded">
             <!-- CHANGED "observation-type" to "type" -->
             <formal-name>Observation Type</formal-name>
@@ -829,7 +829,7 @@
             <remarks>
                <p>Used to identify the individual and/or tool that gathered the evidence resulting in the observation identification.</p>
             </remarks>
-         </assembly>         
+         </assembly>
          <assembly ref="subject-reference" min-occurs="0" max-occurs="unbounded">
             <use-name>subject</use-name>
             <group-as name="subjects" in-json="ARRAY"/>
@@ -837,7 +837,7 @@
                <p>Identifies who was interviewed, or what was tested or inspected.</p>
             </remarks>
          </assembly>
-         
+
          <define-assembly name="relevant-evidence" max-occurs="unbounded">
             <formal-name>Relevant Evidence</formal-name>
             <description>Links this observation to relevant evidence.</description>
@@ -889,7 +889,7 @@
          </allowed-values>
 -->      </constraint>
    </define-assembly>
-   
+
    <define-assembly name="origin">
       <formal-name>Origin</formal-name>
       <description>Identifies the source of the finding, such as a tool, interviewed person, or activity.</description>
@@ -904,7 +904,7 @@
          </assembly>
       </model>
    </define-assembly>
-   
+
    <define-assembly name="origin-actor">
       <formal-name>Originating Actor</formal-name>
       <description>The actor that produces an observation, a finding, or a risk. One or more actor type can be used to specify a person that is using a tool.</description>
@@ -937,7 +937,7 @@
          </assembly>
       </model>
    </define-assembly>
-   
+
    <define-assembly name="related-task">
       <formal-name>Task Reference</formal-name>
       <description>Identifies an individual task for which the containing object is a consequence of.</description>
@@ -969,7 +969,7 @@
          <define-assembly name="identified-subject">
             <formal-name>Identified Subject</formal-name>
             <description>Used to detail assessment subjects that were identfied by this task.</description>
-            
+
             <define-flag name="subject-placeholder-uuid" required="yes" as-type="uuid">
                <formal-name>Assessment Subject Placeholder Universally Unique Identifier Reference</formal-name>
                <description>References a unique assessment subject placeholder defined by this task.</description>
@@ -1009,7 +1009,7 @@
          <description>An optional location for the threat data, from which this ID originates.</description>
       </define-flag>
    </define-field>
-   
+
    <define-assembly name="risk">
       <formal-name>Identified Risk</formal-name>
       <description>An identified risk.</description>
@@ -1054,20 +1054,20 @@
                </allowed-values>
             </constraint>
          </define-field>
-         
+
          <assembly ref="origin" max-occurs="unbounded">
             <group-as name="origins" in-json="ARRAY"/>
             <remarks>
                <p>Used to identify the individual and/or tool that identified this risk.</p>
             </remarks>
-         </assembly>         
+         </assembly>
 
          <!-- CHANGED: moved from finding to here -->
          <field ref="threat-id" min-occurs="0" max-occurs="unbounded">
             <!-- QUESTION: Should this be moved to risk? -->
             <group-as name="threat-ids" in-json="ARRAY"/>
          </field>
-         
+
          <!-- CHANGED: "risk-metric" to "characterization" -->
          <assembly ref="characterization" min-occurs="0" max-occurs="unbounded">
             <!-- CHANGE from a field to an assembly, adding a value flag -->
@@ -1113,7 +1113,7 @@
             <formal-name>Risk Resolution Deadline</formal-name>
             <description>The date/time by which the risk must be resolved.</description>
          </define-field>
-         
+
          <assembly ref="response" min-occurs="0" max-occurs="unbounded">
             <!-- CHANGED: "remediation-group" to "remediations" -->
             <group-as name="remediations" in-json="ARRAY"/>
@@ -1210,7 +1210,7 @@
                      </allowed-values>
                   </constraint>
                </define-assembly>
-            </model>            
+            </model>
          </define-assembly>
 
          <define-assembly name="related-observation" max-occurs="unbounded">
@@ -1246,7 +1246,7 @@
          <description>A point to the role-id of the role in which the party is making the log entry.</description>
       </define-flag>
    </define-assembly>
-   
+
    <define-field name="risk-status" as-type="NCName">
       <!-- CHANGED: from "risk-status" to "status" -->
       <formal-name>Risk Status</formal-name>
@@ -1412,7 +1412,7 @@
                   <enum value="high"></enum>
                   <enum value="not-defined"></enum>
                </allowed-values>
-               
+
                <allowed-values target="(.)[@system=('http://www.first.org/cvss/v3.0', 'http://www.first.org/cvss/v3.1')]/@name">
                   <!-- CHANGED: Only allow the abbreviations. No longer allow the lower-case name values -->
                   <enum value="attack-vector" >Base: Attack Vector</enum>
@@ -1519,7 +1519,7 @@
          </define-assembly>
       </model>
    </define-assembly>
-   
+
    <!-- CHANGED: "remediation" to "response" -->
    <define-assembly name="response" scope="local">
       <formal-name>Risk Response</formal-name>
@@ -1561,8 +1561,8 @@
             <remarks>
                <p>Used to identify the individual and/or tool that generated this recommended or planned response.</p>
             </remarks>
-         </assembly>         
-         
+         </assembly>
+
          <define-assembly name="required-asset" max-occurs="unbounded">
             <!-- QUESTION: Do we need to identify a set of remediation assets similar to assessment-assets -->
             <!-- CHANGED: "required" to "required-asset" -->
@@ -1606,7 +1606,7 @@
                </allowed-values>
             </constraint>
          </define-assembly>
-         
+
          <!-- CHANGED: "schedule" to "task", and changed cardinality to unbounded.  -->
          <assembly ref="task" min-occurs="0" max-occurs="unbounded">
             <group-as name="tasks" in-json="ARRAY"/>
@@ -1628,13 +1628,13 @@
          </allowed-values>
       </constraint>
    </define-assembly>
-   
+
    <define-flag name="objective-id" as-type="NCName" scope="local">
       <!-- This is an id to sync with control syntax -->
       <formal-name>Objective ID</formal-name>
       <description>Points to an assessment objective.</description>
    </define-flag>
-   
+
    <define-assembly name="assessment-part"> <!--scope="local"-->
       <!-- QUESTION: Is it confusing to use part here, given the control meaning of part? -->
       <formal-name>Assessment Part</formal-name>

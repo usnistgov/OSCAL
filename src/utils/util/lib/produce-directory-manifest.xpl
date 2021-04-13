@@ -3,11 +3,11 @@
   xmlns:c="http://www.w3.org/ns/xproc-step" version="1.0"
   xmlns:oscal="http://csrc.nist.gov/ns/oscal/1.0"
   type="oscal:produce-directory-manifest" name="produce-directory-manifest">
-  
+
   <p:input port="parameters" kind="parameter"/>
-  
+
   <p:option name="dirpath" required="true"/>
-  
+
   <p:output port="_html" primary="false">
     <p:pipe port="result" step="produce-manifest-html"/>
   </p:output>
@@ -21,7 +21,7 @@
   <p:serialization port="_html"        method="html" omit-xml-declaration="true" indent="true"/>
   <p:serialization port="_html-sorted" method="html" omit-xml-declaration="true" indent="true"/>
   <p:serialization port="manifest-file"    method="text" omit-xml-declaration="true"/>
-  
+
   <p:xslt name="produce-manifest-html">
     <p:input port="source">
       <p:inline><oscal:empty/></p:inline>
@@ -31,17 +31,17 @@
     </p:input>
     <p:with-param name="dirpath" select="$dirpath"/>
   </p:xslt>
-  
+
   <p:xslt name="organize-manifest">
     <p:input port="stylesheet">
       <p:document href="manifest-reorder.xsl"/>
     </p:input>
   </p:xslt>
-  
+
   <p:xslt name="render-markdown">
     <p:input port="stylesheet">
       <p:document href="html-to-markdown.xsl"/>
     </p:input>
   </p:xslt>
-  
+
 </p:declare-step>

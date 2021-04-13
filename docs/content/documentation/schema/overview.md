@@ -69,7 +69,7 @@ All human-readable identifiers must be a compliant non-colonized name as defined
 
 These identifiers are intended to be consistently used to represent the same concept over multiple major and minor revisions of the same document; thus, they should only be changed if the underlying identified subject has changed in a significant way that no longer represents the same identified subject.
 
-Human-readable identifiers tend to be named `id` and appear where the identifier is declared on the identified subject. Fields that form an association between another subject and the identified subject by referencing a human-readable identifier will end with the suffix `-id` in OSCAL formats. These identifiers are scoped to their containing documents; therefore, the identifiers are guaranteed to be unique only in the context of the containing document. While these identifiers are document scoped, they can still be referenced by 3rd-parties in OSCAL and related content, by referencing the document source and then the identifier in that context. 
+Human-readable identifiers tend to be named `id` and appear where the identifier is declared on the identified subject. Fields that form an association between another subject and the identified subject by referencing a human-readable identifier will end with the suffix `-id` in OSCAL formats. These identifiers are scoped to their containing documents; therefore, the identifiers are guaranteed to be unique only in the context of the containing document. While these identifiers are document scoped, they can still be referenced by 3rd-parties in OSCAL and related content, by referencing the document source and then the identifier in that context.
 
 #### Use of Version 4 UUIDs
 
@@ -84,7 +84,7 @@ Fields containing UUIDs tend to be named `uuid` in OSCAL. When an associated sub
 
 UUIDs are intended to be consistently used to represent the same concept over multiple major and minor revisions of the same document; thus, they should only be changed if the underlying identified subject has changed in a significant way that no longer represents the same identified subject.
 
-_Example #1_: If a person's phone number changes, a tool should update the phone number, but leave the party UUID for that person unchanged. Changing the person's phone number does not change their identity, or relationships involving this party in OSCAL content. If the person was replaced by someone new, the original person's party UUID should be retired and a different one used for their replacement. 
+_Example #1_: If a person's phone number changes, a tool should update the phone number, but leave the party UUID for that person unchanged. Changing the person's phone number does not change their identity, or relationships involving this party in OSCAL content. If the person was replaced by someone new, the original person's party UUID should be retired and a different one used for their replacement.
 
 _Example #2_: If a component represents a database, and the software version is updated, the UUID for that component should remain the same. If the database is replaced by a competing product from a different vendor, the component UUID should be updated.
 
@@ -120,21 +120,21 @@ When used this way, <code>document-id</code> allows for consumers of OSCAL docum
 
 OSCAL recommends the use of <code>link</code> to establish resolvable version graphs of OSCAL documents. [RFC5829](https://tools.ietf.org/html/rfc5829) defines a set of values for the <code>rel</code> flag of <code>link</code> that allow for a document to provides resolvable links to the latest version, the next version, and the previous version. With this combination of links, a human or machine consumer of an OSCAL document can understand the version history of a document, and automatically update itself to the latest version.
 
-Note that successful deployment of version control through <code>link</code> requires the document creator to maintain a well-structured static set of ersolvable resources that are reachable from where ever the document is to be consumed (usually on the public web). 
+Note that successful deployment of version control through <code>link</code> requires the document creator to maintain a well-structured static set of ersolvable resources that are reachable from where ever the document is to be consumed (usually on the public web).
 
-As an example of such a system, let us assume that "Author" has just released OSCAL document "Example 1.0". They can now setup a redirect system based on the document-id: 
+As an example of such a system, let us assume that "Author" has just released OSCAL document "Example 1.0". They can now setup a redirect system based on the document-id:
 
-```<link rel="latest-version" href="www.author.com/example/latest">``` 
+```<link rel="latest-version" href="www.author.com/example/latest">```
 
-will always resolve to the latest version of "Example". Forward linking is done in the same manner: by including 
+will always resolve to the latest version of "Example". Forward linking is done in the same manner: by including
 
-```<link rel="successor-version" href="www.author.com/example/1.0/successor-version">``` 
+```<link rel="successor-version" href="www.author.com/example/1.0/successor-version">```
 
 in the original document, the author ensures a valid graph of versions even before a second version is released. Once that update is released, the given "href" will simply redirect to it.
 
 ## Accepted Values
 
-To facilitate consistent processing, the value for some fields is limited to a list of _case-sensitive_ acceptable values. For some fields, OSCAL defines acceptable values, which are enforced by OSCAL-based syntax validation mechanisms. 
+To facilitate consistent processing, the value for some fields is limited to a list of _case-sensitive_ acceptable values. For some fields, OSCAL defines acceptable values, which are enforced by OSCAL-based syntax validation mechanisms.
 
 Where OSCAL does not strictly limit the acceptable values, organizations are free to allow other values. The following is encouraged:
 - If OSCAL offers recommended values, these should be given preference and used whenever applicable.
@@ -181,8 +181,8 @@ For any property or annotation identified with the organization's namespace, the
 {{% callout %}}
 **IMPORTANT NOTE TO DEVELOPERS**
 
-Tools should always check for the `ns` assignment within properties and annotations. 
-When no `ns` is provided, the default is `http://csrc.nist.gov/ns/oscal`, which means the annotation or property is assumed to be part of the core OSCAL syntax. 
+Tools should always check for the `ns` assignment within properties and annotations.
+When no `ns` is provided, the default is `http://csrc.nist.gov/ns/oscal`, which means the annotation or property is assumed to be part of the core OSCAL syntax.
 
 This is especially important as organizations extending OSCAL may use the same `name` value, but in a different namespace as compared to core OSCAL.
 
@@ -191,8 +191,8 @@ This is especially important as organizations extending OSCAL may use the same `
 {{< tabs XML JSON YAML >}}
 {{% tab %}}
 {{< highlight xml >}}
-<prop 
-   name="status" 
+<prop
+   name="status"
    ns="https://fedramp.gov/ns/oscal">fedramp-defined-status</prop>
 {{< /highlight >}}
 {{% /tab %}}
@@ -230,5 +230,3 @@ Currently, converters are available to convert XML-based OSCAL files to JSON and
 
 - [XML to JSON converters](https://github.com/usnistgov/OSCAL/tree/master/json/convert) ([How do I use this?](https://github.com/usnistgov/OSCAL/tree/master/json#converting-oscal-xml-content-to-json))
 - [JSON to XML converters](https://github.com/usnistgov/OSCAL/tree/master/xml/convert) ([How do I use this?](https://github.com/usnistgov/OSCAL/tree/master/xml#converting-oscal-json-content-to-xml))
-
-

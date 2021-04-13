@@ -8,7 +8,7 @@ aliases:
   - /documentation/schema/component/
 ---
 
-| Component Schema | Component Converters 
+| Component Schema | Component Converters
 |:--- |:--- |
 | [XML Schema](https://raw.githubusercontent.com/usnistgov/OSCAL/master/xml/schema/oscal_component_schema.xsd) | [JSON to XML Converter](https://raw.githubusercontent.com/usnistgov/OSCAL/master/xml/convert/oscal_component_json-to-xml-converter.xsl)<br />([How do I use this?](https://github.com/usnistgov/OSCAL/tree/master/xml#converting-oscal-json-content-to-xml)) |
 | [JSON Schema](https://raw.githubusercontent.com/usnistgov/OSCAL/master/json/schema/oscal_component_schema.json) | [XML to JSON Converter](https://raw.githubusercontent.com/usnistgov/OSCAL/master/json/convert/oscal_component_xml-to-json-converter.xsl)<br />([How do I use this?](https://github.com/usnistgov/OSCAL/tree/master/json#converting-oscal-xml-content-to-json)) |
@@ -54,8 +54,8 @@ An OSCAL profile is organized as follows:
 - **Metadata**: Metadata syntax is identical and required in all OSCAL models. It includes information such as the document's title, publication version, publication date, and OSCAL version. Metadata is also used to define roles, parties (people, teams and organizations), and locations.
 - **Import**: Identifies a component definition from another resource, from which related information is referenced.
 - **Component**: Provides information about a defined component that can be part of an implemented system.
-- **Capability**: Identifies a capability as a grouping of multiple components or capabilities. 
-- **Back Matter**: Back matter syntax is identical in all OSCAL models. It is used for attachments, citations, and embedded content such as graphics. 
+- **Capability**: Identifies a capability as a grouping of multiple components or capabilities.
+- **Back Matter**: Back matter syntax is identical in all OSCAL models. It is used for attachments, citations, and embedded content such as graphics.
 {{% /usa-grid-column %}}
 {{% usa-grid-column class="grid-col-auto" %}}
 {{<figure src="component-model.svg" alt="A diagram depicting the component definition model. As described in the text, within the larger component definition model box, it shows a metadata at the top, followed by an import box, component box, capability box, and finally a back matter box." class="maxw-full margin-top-0">}}
@@ -92,4 +92,3 @@ The figure below expresses represents the portion of the OSCAL stack as it relat
 ### Modeling Validation Information
 
 OSCAL is designed to allow capture relevant details related to independent validation of components. See [Validation Modeling](../validation-modeling) for details.
-

@@ -9,4 +9,4 @@ RUN mkdir /hugo && \
   apt-get install ./hugo_extended_${HUGO_VERSION}_Linux-64bit.deb
 WORKDIR /docs
 COPY . .
-ENTRYPOINT hugo server --enableGitInfo=false -v --debug --minify --bind 0.0.0.0 
+ENTRYPOINT hugo server --enableGitInfo=false -v --debug --minify --bind 0.0.0.0

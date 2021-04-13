@@ -6,6 +6,5 @@ metadata > *:before { content: oxy_xpath('name()');
 a:after { content:
    oxy_urlChooser(
           edit, '@href',
-          columns, 40 ) 
+          columns, 40 )
  }
-

@@ -100,7 +100,7 @@ This development phase focused on producing:
 
 These changes were made based on all the excellent feedback we received from the OSCAL community. The NIST OSCAL team is very thankful for all of the great feedback we have received.
 
-### OSCAL 1.0.0 Release Candidate 2 
+### OSCAL 1.0.0 Release Candidate 2
 
 {{<usa-tag>}}Development Milestone{{</usa-tag>}} OSCAL 1.0.0 [Release Candidate 2](https://github.com/usnistgov/OSCAL/milestone/10)
 

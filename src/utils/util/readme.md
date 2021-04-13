@@ -26,5 +26,3 @@ An XSLT transformation combining a pipeline of smaller transformations implement
 ## [resolver-experimental](resolver-experimental)
 
 An experimental XSLT transformation that produces a custom profile resolver XSLT, which is then applied to the original profile to resolve it into its tailored catalog. Experimental and not feature complete (at time of writing).
-
-

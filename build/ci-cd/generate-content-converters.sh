@@ -135,7 +135,7 @@ for i in ${!paths[@]}; do
 
     if [ "$VERBOSE" == "true" ]; then
       args+=("-v")
-    fi    
+    fi
 
     args+=("$metaschema")
     args+=("$converter")
@@ -154,4 +154,3 @@ for i in ${!paths[@]}; do
 done
 
 exit $exitcode
-

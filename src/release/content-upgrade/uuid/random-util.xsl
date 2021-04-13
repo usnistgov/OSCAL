@@ -5,12 +5,12 @@
     xmlns:r="http://csrc.nist.gov/ns/random" version="3.0">
 
     <!-- from the spec https://www.w3.org/TR/xpath-functions-31/#func-random-number-generator
-    
+
 declare %public function r:random-sequence($length as xs:integer) as xs:double* {
   r:random-sequence($length, fn:random-number-generator())
 };
 
-declare %private function r:random-sequence($length as xs:integer, 
+declare %private function r:random-sequence($length as xs:integer,
                                             $G as map(xs:string, item())) {
   if ($length eq 0)
   then ()
@@ -23,13 +23,13 @@ v4 UUID
    hex fields 8 4 4 4 12
      place 13 = 4
      place 17 = 8-b
-            
+
     -->
     <xsl:output indent="yes"/>
 
     <!-- set $germ to a string for reproducible outputs of r:make-uuid-sequence
          pass in a blind value - and don't save it - for irreproducible outputs -->
-    
+
     <xsl:param name="germ" select="current-dateTime() || document-uri(/)"/>
 
     <!-- for testing random number features   -->
@@ -54,7 +54,7 @@ v4 UUID
         <xsl:param name="length" as="xs:integer"/>
         <xsl:sequence select="r:produce-uuid-sequence($length,random-number-generator($seed))"/>
     </xsl:function>
-    
+
     <xsl:function name="r:produce-uuid-sequence" as="xs:string*">
         <xsl:param name="length" as="xs:integer"/>
         <xsl:param name="PRNG" as="map(xs:string, item())"/>
@@ -63,13 +63,13 @@ v4 UUID
             <xsl:sequence select="r:produce-uuid-sequence($length - 1, $PRNG?next())"/>
         </xsl:if>
     </xsl:function>
-    
+
     <!-- make-uuid produces a UUID for a given seed - the same UUID every time for the same seed -->
     <xsl:function name="r:make-uuid" as="xs:string">
         <xsl:param name="seed" as="item()"/>
         <xsl:sequence select="r:produce-uuid($uuid-v4-template, random-number-generator($seed))"/>
     </xsl:function>
-    
+
     <!--$template is a string to serve as a template for the UUID syntax
         $PRNG is a pseudo-random-number generator produced by fn:random-number-generator() -->
     <xsl:function name="r:produce-uuid" as="xs:string">
@@ -84,7 +84,7 @@ v4 UUID
             </xsl:if>
         </xsl:value-of>
     </xsl:function>
-    
+
     <xsl:variable name="uuid-v4-template" as="xs:string">________-____-4___-=___-____________</xsl:variable>
     <!--                                                 a847eaab-cec8-41bd-98e2-02d02900b554            -->
     <!-- replacements for UUID v4:
@@ -93,7 +93,7 @@ v4 UUID
            any other character is copied -->
 
     <xsl:variable name="hex-digits" select="tokenize('0 1 2 3 4 5 6 7 8 9 a b c d e f', ' ')"/>
-    
+
     <xsl:template match=".[. = '_']" mode="uuid-char">
         <xsl:param name="PRNG" as="map(xs:string, item())"/>
         <xsl:sequence select="$PRNG?permute($hex-digits)[1]"/>

@@ -3,8 +3,8 @@
     elementFormDefault="qualified"
     targetNamespace="http://www.w3.org/2005/xpath-functions"
     xmlns:j="http://www.w3.org/2005/xpath-functions">
-    
-    <!-- 
+
+    <!--
      * This is a schema for the XML representation of JSON used as the target for the
      * function fn:json-to-xml()
      *
@@ -12,7 +12,7 @@
      * at http://www.w3.org/Consortium/Legal/copyright-software-19980720
      *
     -->
-    
+
     <xs:element name="map" type="j:mapType">
         <xs:unique name="unique-key">
             <xs:selector xpath="*"/>
@@ -20,22 +20,22 @@
             <xs:field xpath="@escaped-key"/>
         </xs:unique>
     </xs:element>
-    
+
     <xs:element name="array" type="j:arrayType"/>
-    
+
     <xs:element name="string" type="j:stringType"/>
-    
+
     <xs:element name="number" type="j:numberType"/>
-    
+
     <xs:element name="boolean" type="j:booleanType"/>
-    
+
     <xs:element name="null" type="j:nullType"/>
-    
+
     <xs:complexType name="nullType">
         <xs:sequence/>
         <xs:anyAttribute processContents="skip" namespace="##other"/>
     </xs:complexType>
-    
+
     <xs:complexType name="booleanType">
         <xs:simpleContent>
             <xs:extension base="xs:boolean">
@@ -43,7 +43,7 @@
             </xs:extension>
         </xs:simpleContent>
     </xs:complexType>
-    
+
     <xs:complexType name="stringType">
         <xs:simpleContent>
             <xs:extension base="xs:string">
@@ -52,7 +52,7 @@
             </xs:extension>
         </xs:simpleContent>
     </xs:complexType>
-    
+
     <xs:simpleType name="finiteNumberType">
         <xs:restriction base="xs:double">
             <!-- exclude positive and negative infinity, and NaN -->
@@ -60,7 +60,7 @@
             <xs:maxExclusive value="INF"/>
         </xs:restriction>
     </xs:simpleType>
-    
+
     <xs:complexType name="numberType">
         <xs:simpleContent>
             <xs:extension base="j:finiteNumberType">
@@ -68,7 +68,7 @@
             </xs:extension>
         </xs:simpleContent>
     </xs:complexType>
-    
+
     <xs:complexType name="arrayType">
         <xs:choice minOccurs="0" maxOccurs="unbounded">
             <xs:element ref="j:map"/>
@@ -80,7 +80,7 @@
         </xs:choice>
         <xs:anyAttribute processContents="skip" namespace="##other"/>
     </xs:complexType>
-    
+
     <xs:complexType name="mapWithinMapType">
         <xs:complexContent>
             <xs:extension base="j:mapType">
@@ -88,7 +88,7 @@
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
-    
+
     <xs:complexType name="arrayWithinMapType">
         <xs:complexContent>
             <xs:extension base="j:arrayType">
@@ -96,7 +96,7 @@
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
-    
+
     <xs:complexType name="stringWithinMapType">
         <xs:simpleContent>
             <xs:extension base="j:stringType">
@@ -104,7 +104,7 @@
             </xs:extension>
         </xs:simpleContent>
     </xs:complexType>
-    
+
     <xs:complexType name="numberWithinMapType">
         <xs:simpleContent>
             <xs:extension base="j:numberType">
@@ -112,7 +112,7 @@
             </xs:extension>
         </xs:simpleContent>
     </xs:complexType>
-    
+
     <xs:complexType name="booleanWithinMapType">
         <xs:simpleContent>
             <xs:extension base="j:booleanType">
@@ -120,11 +120,11 @@
             </xs:extension>
         </xs:simpleContent>
     </xs:complexType>
-    
+
     <xs:complexType name="nullWithinMapType">
         <xs:attributeGroup ref="j:key-group"/>
     </xs:complexType>
-    
+
     <xs:complexType name="mapType">
         <xs:choice minOccurs="0" maxOccurs="unbounded">
             <xs:element name="map" type="j:mapWithinMapType">
@@ -133,18 +133,18 @@
                     <xs:field xpath="@key"/>
                 </xs:unique>
             </xs:element>
-            <xs:element name="array" type="j:arrayWithinMapType"/>            
-            <xs:element name="string" type="j:stringWithinMapType"/>   
+            <xs:element name="array" type="j:arrayWithinMapType"/>
+            <xs:element name="string" type="j:stringWithinMapType"/>
             <xs:element name="number" type="j:numberWithinMapType"/>
             <xs:element name="boolean" type="j:booleanWithinMapType"/>
             <xs:element name="null" type="j:nullWithinMapType"/>
         </xs:choice>
         <xs:anyAttribute processContents="skip" namespace="##other"/>
     </xs:complexType>
-    
+
     <xs:attributeGroup name="key-group">
         <xs:attribute name="key" type="xs:string" use="required"/>
         <xs:attribute name="escaped-key" type="xs:boolean" use="optional" default="false"/>
     </xs:attributeGroup>
-    
+
 </xs:schema>

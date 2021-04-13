@@ -1,23 +1,23 @@
 /* Note this CSS hasn't been reviewed for tightness it is likely to contain obsolte (ordinarily no-op) code */
 /* Extra note - yes, although it works tolerably well it really ought to be stripped down */
-* { display: block } 
+* { display: block }
 
 catalog, framework { max-width: 48em }
 
-framework { background-color: cornsilk } 
+framework { background-color: cornsilk }
 
 declarations { font-family: sans-serif; font-size: 80%;
    padding: 0.5em; margin: 0.5em; border: thin solid black; background-color: gainsboro;
     -oxy-foldable: true; -oxy-not-foldable-child: title }
 
-declarations:before { font-weight: bold; content: "Declarations " attr(href) } 
+declarations:before { font-weight: bold; content: "Declarations " attr(href) }
 
 declare-prop, declare-part, declare-param
   { padding: 0.2em; margin: 0.2em; border: thin outset black;
     -oxy-foldable: true; -oxy-not-foldable-child: title }
 
 declare-prop {  border: thin outset pink; background-color: #FDDDE6; margin-top: 0.5em; color: black }
-declare-part     {  border: thin outset blue } 
+declare-part     {  border: thin outset blue }
 declare-param {  border: thin dotted green; background-color: lightgreen }
 
 declare-param:before { content: 'declare parameter "' attr(class) '" on ' attr(context) ' '  }
@@ -121,7 +121,7 @@ remarks:before,part[name=remarks]:before { content: "Remarks"; font-weight: bold
  */
 
 
-component p[class]:before  { content: attr(class) ': ';  font-weight: bold; font-size:90%; font-family: sans-serif } 
+component p[class]:before  { content: attr(class) ': ';  font-weight: bold; font-size:90%; font-family: sans-serif }
 
 p { margin-top: 0.5em }
 
@@ -137,8 +137,8 @@ li, list-item { display: list-item; margin-top: 0.5em }
 li > p, list-item > p { margin-top: 0.5em }
 
 std[href]:before, citation[href]:before {
-    content: 
-        oxy_urlChooser(        
+    content:
+        oxy_urlChooser(
         edit, "@href",
         columns 53);
 }
@@ -147,7 +147,7 @@ b { display: inline; font-weight: bold; font-size: 95% }
 i { display: inline; font-style: italic }
 
 q { display: inline;
-    
+
   quotes: "“" "”" "‘" "’";
 }
 q:before {
@@ -164,8 +164,8 @@ em { font-style: italic; display: inline }
 xref, a { display: inline; color: blue }
 
 link { color: blue; font-size: 90%; font-weight: bold }
-link[href]:before { color: blue; font-size: 90%; font-weight: bold; content: 
-        'link: ' oxy_urlChooser(        
+link[href]:before { color: blue; font-size: 90%; font-weight: bold; content:
+        'link: ' oxy_urlChooser(
         edit, "@href",
         columns 53); }
 
@@ -234,4 +234,3 @@ augment { display:block; background-color: #C3FDB8; border: thin outset lavender
   padding: 2px; font-size: 90% }
 
 augment prop { background-color: inherit }
-

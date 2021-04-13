@@ -8,7 +8,7 @@ aliases:
   - /documentation/schema/profile/
 ---
 
-| Profile Schema | Profile Converters 
+| Profile Schema | Profile Converters
 |:--- |:--- |
 | [XML Schema](https://raw.githubusercontent.com/usnistgov/OSCAL/master/xml/schema/oscal_profile_schema.xsd) | [JSON to XML Converter](https://raw.githubusercontent.com/usnistgov/OSCAL/master/xml/convert/oscal_profile_json-to-xml-converter.xsl)<br />([How do I use this?](https://github.com/usnistgov/OSCAL/tree/master/xml#converting-oscal-json-content-to-xml)) |
 | [JSON Schema](https://raw.githubusercontent.com/usnistgov/OSCAL/master/json/schema/oscal_profile_schema.json) | [XML to JSON Converter](https://raw.githubusercontent.com/usnistgov/OSCAL/master/json/convert/oscal_profile_xml-to-json-converter.xsl)<br />([How do I use this?](https://github.com/usnistgov/OSCAL/tree/master/json#converting-oscal-xml-content-to-json)) |
@@ -25,7 +25,7 @@ The OSCAL Profile model represents a [baseline](../../../concepts/#baseline) of 
 
 Profiles are authored by an organization that defines or governs control baselines, such as the High, Moderate, and Low baselines defined for NIST's Special Publication (SP) 800-53 controls.
 
-Organizations may also author a profiles when they need to define or tailor a set of controls applicable to their organization. 
+Organizations may also author a profiles when they need to define or tailor a set of controls applicable to their organization.
 
 Finally, system owners or authorizing officials may author profiles to establish a baseline of tailored controls applicable to a specific system.
 
@@ -49,8 +49,8 @@ An OSCAL profile is organized as follows:
 - **Metadata**: Metadata syntax is identical and required in all OSCAL models. It includes information such as the file's title, publication version, publication date, and OSCAL version. Metadata is also used to define roles, parties (people, teams and organizations), and locations.
 - **Import**: Identifies an OSCAL [catalog](../../catalog-layer/) or other profile from which controls are to be imported. A control must be imported to be included in a baseline. All parameters and back-matter resources cited by an imported control are also imported.
 - **Merge**: Provides directives as to how controls should be organized. It also provides directives for resolving conflicts where two or more variations of a control are imported as a result of multiple import statements.
-- **Modify**: Provides the ability to tailor imported controls, including their parameters, control requirement definitions, references, control objectives, and assessment actions. 
-- **Back Matter**: Back matter syntax is identical in all OSCAL models. It is used for attachments, citations, and embedded content such as graphics. 
+- **Modify**: Provides the ability to tailor imported controls, including their parameters, control requirement definitions, references, control objectives, and assessment actions.
+- **Back Matter**: Back matter syntax is identical in all OSCAL models. It is used for attachments, citations, and embedded content such as graphics.
 {{% /usa-grid-column %}}
 {{% usa-grid-column class="grid-col-auto" %}}
 {{<figure src="profile-model.svg" alt="A diagram depicting the profile model. As described in the text, within the larger profile model box, it shows a metadata at the top, followed by an import box, merge box, modify box, and finally a back matter box." class="maxw-full margin-top-0">}}

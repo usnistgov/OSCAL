@@ -24,7 +24,7 @@ except:
     sys.exit(0)
 
 try:
-    # get the date created 
+    # get the date created
     print('Filename 1 timestamp: ' + datetime.fromtimestamp(stat1.st_birthtime).strftime('%Y-%m-%d %H:%M:%S:%f'))
     print('Filename 2 timestamp: ' + datetime.fromtimestamp(stat2.st_birthtime).strftime('%Y-%m-%d %H:%M:%S:%f'))
 except AttributeError:

@@ -9,7 +9,7 @@ aliases:
   - /documentation/schema/catalog-layer/catalog/examples/
 ---
 
-| Catalog Schema | Catalog Converters 
+| Catalog Schema | Catalog Converters
 |:--- |:--- |
 | [XML Schema](https://raw.githubusercontent.com/usnistgov/OSCAL/master/xml/schema/oscal_catalog_schema.xsd) | [JSON to XML Converter](https://raw.githubusercontent.com/usnistgov/OSCAL/master/xml/convert/oscal_catalog_json-to-xml-converter.xsl)<br />([How do I use this?](https://github.com/usnistgov/OSCAL/tree/master/xml#converting-oscal-json-content-to-xml)) |
 | [JSON Schema](https://raw.githubusercontent.com/usnistgov/OSCAL/master/json/schema/oscal_catalog_schema.json) | [XML to JSON Converter](https://raw.githubusercontent.com/usnistgov/OSCAL/master/json/convert/oscal_catalog_xml-to-json-converter.xsl)<br />([How do I use this?](https://github.com/usnistgov/OSCAL/tree/master/json#converting-oscal-xml-content-to-json)) |
@@ -30,13 +30,13 @@ The OSCAL catalog model was designed to represent security and privacy controls;
 
 Catalogs are authored by an organization that defines or governs controls, such as NIST's Special Publication (SP) 800-53 controls.
 
-Organizations may also author a catalog when they need to define a control not found in an applicable framework. 
+Organizations may also author a catalog when they need to define a control not found in an applicable framework.
 
 ### Catalog Consumers
 
 {{<callout>}}Baseline Authors and Consumers, Component Definition Authors and Consumers, System Security Plan Authors and Consumers, Auditors, Authorizing Officials{{</callout>}}
 
-As the catalog forms the foundation for OSCAL, the authors and consumers of all other OSCAL artifacts are catalog consumers. 
+As the catalog forms the foundation for OSCAL, the authors and consumers of all other OSCAL artifacts are catalog consumers.
 
 ## Catalog Organization
 
@@ -47,8 +47,8 @@ An OSCAL catalog is organized as follows, which is based on the standard OSCAL [
 - **Metadata**: Metadata syntax is identical and required in all OSCAL models. It includes information such as the file's title, publication version, publication date, and OSCAL version. Metadata is also used to define roles, parties (people, teams and organizations), and locations.
 - **Parameter**: Any parameter applicable to more than one control requirement statement in the catalog may be defined here.
 - **Control**: Each control may contain control-specific parameters, control requirement statements, control objectives, assessment methods, references, and subordinate controls.
-- **Group**: Related controls may be grouped. Parameters related to this group may be defined here. 
-- **Back Matter**: Back matter syntax is identical in all OSCAL models. It is used for attachments, citations, and embedded content such as graphics. 
+- **Group**: Related controls may be grouped. Parameters related to this group may be defined here.
+- **Back Matter**: Back matter syntax is identical in all OSCAL models. It is used for attachments, citations, and embedded content such as graphics.
 {{% /usa-grid-column %}}
 {{% usa-grid-column class="grid-col-auto" %}}
 {{<figure src="catalog-model.svg" alt="A diagram depicting the catalog model. As described in the text, within the larger catalog model box, it shows a metadata at the top, followed by a parameter box, control box, group box, and finally a back matter box." class="maxw-full margin-top-0">}}
@@ -58,8 +58,8 @@ An OSCAL catalog is organized as follows, which is based on the standard OSCAL [
 
 ## Key Concepts
 
-OSCAL catalogs define a complete set of controls. The primary use of the model is representing an entire collection of controls from an organization from which control baselines are created. 
-The catalog model is also used to represent the tailored baseline resulting from a processed (resolved) profile. 
+OSCAL catalogs define a complete set of controls. The primary use of the model is representing an entire collection of controls from an organization from which control baselines are created.
+The catalog model is also used to represent the tailored baseline resulting from a processed (resolved) profile.
 
 In both uses, a catalog defines:
 
@@ -94,7 +94,7 @@ First we start with the following control text from SP 800-53.
 > **AC-1  ACCESS CONTROL POLICY AND PROCEDURES**
 >
 > __Control:__ The organization:
-> 
+>
 > a. Develops, documents, and disseminates to [Assignment: organization-defined personnel or roles]:
 >   1. An access control policy that addresses purpose, scope, roles, responsibilities, management commitment, coordination among organizational entities, and compliance; and
 >   2. Procedures to facilitate the implementation of the access control policy and associated access controls; and
@@ -104,11 +104,11 @@ First we start with the following control text from SP 800-53.
 >   2. Access control procedures [Assignment: organization-defined frequency].
 >
 > __Supplemental Guidance:__  This control addresses the establishment of policy and procedures for the effective implementation of selected security controls and control enhancements in the AC family. Policy and procedures reflect applicable federal laws, Executive Orders, directives, regulations, policies, standards, and guidance. Security program policies and procedures at the organization level may make the need for system-specific policies and procedures unnecessary. The policy can be included as part of the general information security policy for organizations or conversely, can be represented by multiple policies reflecting the complex nature of certain organizations. The procedures can be established for the security program in general and for particular information systems, if needed. The organizational risk management strategy is a key factor in establishing policy and procedures.
-> 
+>
 > __Related control:__ PM-9.
-> 
+>
 > __Control Enhancements:__  None.
-> 
+>
 > __References:__  NIST Special Publications 800-12, 800-100.
 
 This control has a number of high-level data elements, including a security control identifier ("AC-1"), a title ("ACCESS CONTROL POLICY AND PROCEDURES"), the control itself, supplemental guidance, control enhancements, and references. In contrast, the next control is from ISO 27002 on access control policy. It is also detailed in a different way, with an identifier ("9.1.1"), a title ("Access control policy"), control text, lengthy implementation guidance, and other information (additional advice on access control policy).
@@ -230,7 +230,7 @@ These can be resolved to elements elsewhere in the catalog, as for example here 
   <citation href="http://csrc.nist.gov/publications/PubsSPs.html#800-12">NIST Special
   Publication 800-12</citation>
 </ref>
-{{< / highlight >}}     
+{{< / highlight >}}
 
 
 {{<todo>}}

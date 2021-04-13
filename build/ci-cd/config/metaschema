@@ -6,4 +6,3 @@ src/metaschema/oscal_ssp_metaschema.xml|xml,json|xml,json|xml,json
 src/metaschema/oscal_poam_metaschema.xml|xml,json|xml,json|xml,json
 src/metaschema/oscal_assessment-plan_metaschema.xml|xml,json|xml,json|xml,json
 src/metaschema/oscal_assessment-results_metaschema.xml|xml,json|xml,json|xml,json
-

@@ -2,58 +2,58 @@
 
 declarations:before { content:
   "Declarations "
-  oxy_textfield(edit, '@href', columns, 30) 
+  oxy_textfield(edit, '@href', columns, 30)
  }
 
 value, regex { display: block }
 
-identifier, required, regex, autonum { 
+identifier, required, regex, autonum {
   display: block; visibility: -oxy-collapse-text }
 
-inherit { 
+inherit {
   display: inline; visibility: -oxy-collapse-text }
 
 autonum  { display: inline }
-  
+
 property:before { content:
   oxy_label(text, "property ", styles, "font-weight:bold")
-  oxy_textfield(edit, '@class', columns, 12) 
+  oxy_textfield(edit, '@class', columns, 12)
   ' on '
-  oxy_textfield(edit, '@context', columns, 20) 
+  oxy_textfield(edit, '@context', columns, 20)
  }
 
 parameter:before { content:
   oxy_label(text, "parameter ", styles, "font-weight:bold")
   oxy_textfield(edit, '@class', columns, 30)
   ' on '
-  oxy_textfield(edit, '@context', columns, 20) 
+  oxy_textfield(edit, '@context', columns, 20)
  }
 
 value:before { content:
-  oxy_label(text, "value ", styles, "font-weight:normal") 
+  oxy_label(text, "value ", styles, "font-weight:normal")
  }
 
 regex:before { content:
   oxy_label(text, "matching (regex) ", styles, "font-weight:normal")
-  oxy_textfield(edit, '#text', columns, 50) 
+  oxy_textfield(edit, '#text', columns, 50)
  }
 
 autonum:before { content:
   oxy_label(text, "format like ", styles, "font-weight:normal")
-  oxy_textfield(edit, '#text', columns, 6) 
+  oxy_textfield(edit, '#text', columns, 6)
  }
 
 inherit:before { content:
   oxy_label(text, "inherit from (ancestor property) ", styles, "font-weight:normal")
   oxy_textfield(edit, '@from', columns, 6)
-  
+
  }
 
 part_declaration:before { content:
   oxy_label(text, "part ", styles, "font-weight:bold")
-  oxy_textfield(edit, '@class', columns, 20) 
+  oxy_textfield(edit, '@class', columns, 20)
   ' on '
-  oxy_textfield(edit, '@context', columns, 20) 
+  oxy_textfield(edit, '@context', columns, 20)
  }
 
 
@@ -74,9 +74,9 @@ component:before { content: 'component: ' oxy_textfield(
 
 
 subcontrol:before { font-weight: bold; color: darkred; font-family: sans-serif;
-          content: 
+          content:
            oxy_capitalize(attr(class)) ' '
-            oxy_combobox( 
+            oxy_combobox(
               edit, '@class',
               editable, true )
 }
@@ -90,9 +90,9 @@ control p:before[class], component p:before[class] { content: oxy_textfield(
           columns, 15); }
 
 part:before { font-weight: bold; color: midnightblue; font-family: sans-serif;
-          content: 
+          content:
            oxy_capitalize(attr(class)) ' '
-            oxy_combobox( 
+            oxy_combobox(
               edit, '@class',
               editable, true,
               values, 'description, objectives, guidance, information, remarks' )
@@ -100,7 +100,7 @@ part:before { font-weight: bold; color: midnightblue; font-family: sans-serif;
 
 param:before { content: 'param targets ' oxy_textfield(
           edit, '@target',
-          columns, 10) 
+          columns, 10)
            'class ' oxy_textfield(
           edit, '@class',
           columns, 10); }
@@ -112,7 +112,5 @@ inject:before { content: 'id ' oxy_textfield(
 a:after { content:
    oxy_urlChooser(
           edit, '@href',
-          columns, 50 ) 
+          columns, 50 )
  }
-
-

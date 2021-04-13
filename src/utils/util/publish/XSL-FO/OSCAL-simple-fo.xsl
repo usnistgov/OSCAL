@@ -48,25 +48,25 @@
       <xsl:apply-templates/>
     </fo:block>
   </xsl:template>
-  
+
   <xsl:template match="group/title">
     <fo:block font-size="14pt" font-weight="bold" font-style="italic" keep-with-next="always">
       <xsl:apply-templates/>
     </fo:block>
   </xsl:template>
-  
+
   <xsl:template match="group/group/title" priority="2">
     <fo:block font-size="12pt" font-weight="bold" keep-with-next="always">
       <xsl:apply-templates/>
     </fo:block>
   </xsl:template>
-  
+
   <xsl:template match="control/title">
     <fo:block font-size="14pt" font-family="sans-serif" font-weight="bold" font-style="italic" keep-with-next="always">
       <xsl:apply-templates/>
     </fo:block>
   </xsl:template>
-  
+
 
   <xsl:template match="p">
     <fo:block space-before="0.5em">
@@ -100,7 +100,7 @@
       <xsl:apply-templates/>
     </fo:block>
   </xsl:template>
-  
+
   <xsl:template match="prop">
     <fo:block font-family="sans-serif" space-before="0.5m" font-size="80%">
       <fo:inline font-weight="bold">
@@ -110,7 +110,7 @@
       <xsl:apply-templates/>
     </fo:block>
   </xsl:template>
-  
+
   <xsl:template match="desc">
     <fo:block space-before="1em">
       <xsl:apply-templates/>
@@ -129,23 +129,23 @@
       <xsl:apply-templates select="@class"/>
     </fo:block>
   </xsl:template>
-  
-  
+
+
   <xsl:template match="references">
     <fo:block space-before="1em">
       <fo:block font-size="12pt" font-family="sans-serif">References</fo:block>
       <xsl:apply-templates/>
     </fo:block>
   </xsl:template>
-  
-  
+
+
   <xsl:template match="ol">
     <fo:list-block provisional-distance-between-starts="2em"
       provisional-label-separation="1em"  space-before="0.5em">
       <xsl:apply-templates/>
     </fo:list-block>
   </xsl:template>
-  
+
   <xsl:template match="li">
     <fo:list-item space-before="0.5em">
       <xsl:apply-templates select="." mode="item-no"/>
@@ -156,7 +156,7 @@
       </fo:list-item-body>
     </fo:list-item>
   </xsl:template>
-  
+
   <xsl:template match="li" mode="item-no">
     <fo:list-item-label end-indent="label-end()">
       <fo:block>
@@ -165,7 +165,7 @@
       </fo:block>
     </fo:list-item-label>
   </xsl:template>
-  
+
   <xsl:template match="li//li" mode="item-no">
     <fo:list-item-label end-indent="label-end()">
       <fo:block>
@@ -173,14 +173,14 @@
       </fo:block>
     </fo:list-item-label>
   </xsl:template>
-  
+
   <xsl:template match="em | i">
     <fo:inline font-style="italic">
       <xsl:apply-templates/>
     </fo:inline>
   </xsl:template>
-  
-  
+
+
   <xsl:template match="ref">
       <xsl:apply-templates/>
   </xsl:template>
@@ -190,19 +190,19 @@
       <xsl:apply-templates/>
     </fo:block>
   </xsl:template>
-  
+
   <xsl:template match="extensions">
     <fo:block space-before="1em">
       <fo:block font-size="12pt" font-family="sans-serif">Extensions</fo:block>
       <xsl:apply-templates/>
     </fo:block>
   </xsl:template>
-  
+
   <xsl:template match="xref">
     <fo:inline font-style="italic">
       <xsl:apply-templates/>
     </fo:inline>
   </xsl:template>
 
-  
+
 </xsl:stylesheet>

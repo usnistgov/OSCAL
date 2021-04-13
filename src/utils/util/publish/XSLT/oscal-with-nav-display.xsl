@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   version="1.0"
   xmlns="http://www.w3.org/1999/xhtml"
-  
+
   xmlns:oscal="http://csrc.nist.gov/ns/oscal/1.0"
   exclude-result-prefixes="oscal">
 
@@ -27,11 +27,11 @@
         <div id="main">
           <xsl:apply-templates select="$catalog-or-resolution"/>
         </div>
-        
+
       </body>
     </html>
   </xsl:template>
-  
+
   <xsl:template match="oscal:catalog | oscal:collection | oscal:framework">
     <xsl:apply-templates/>
   </xsl:template>
@@ -42,19 +42,19 @@
       <xsl:apply-templates/>
     </div>
   </xsl:template>
-  
- 
-  
+
+
+
   <xsl:template match="oscal:title">
     <h2 class="title">
       <xsl:apply-templates/>
     </h2>
   </xsl:template>
 
-  
+
   <xsl:template match="oscal:declarations"/>
-    
-  
+
+
   <xsl:template match="oscal:group">
     <xsl:variable name="new-id">
       <xsl:apply-templates select="." mode="new-id"/>
@@ -63,14 +63,14 @@
       <xsl:apply-templates/>
     </div>
   </xsl:template>
-  
+
   <!--<xsl:key name="declarations" match="oscal:control-spec" use="@type"/>
-  
+
   <xsl:key name="declarations" match="oscal:property | oscal:statement | oscal:parameter"
     use="concat(@context,'#',@role)"/>-->
-  
+
   <xsl:key name="element-by-id"  match="*[@id]" use="@id"/>
-  
+
   <xsl:template match="oscal:control | oscal:component">
     <div class="{local-name()}">
       <xsl:copy-of select="@id"/>
@@ -91,10 +91,10 @@
       <!-- impact table went here -->
     </div>
   </xsl:template>
-  
+
   <!-- dropped in default traversal -->
   <xsl:template match="oscal:subcontrol"/>
-  
+
   <xsl:template match="oscal:subcontrol" mode="include">
     <div class="{local-name()}">
       <xsl:copy-of select="@id"/>
@@ -104,16 +104,16 @@
       <xsl:apply-templates/>
     </div>
   </xsl:template>
-  
+
   <!-- Check out xsl:template[@mode='impact-table'] in the original SP800-53 rendering XSL
        for drawing the impact table in HTML -->
-  
+
   <!-- Picked up from parent -->
   <xsl:template match="oscal:control/oscal:title | oscal:subcontrol/oscal:title | oscal:component/oscal:title"/>
 
   <!-- Pulled into title or otherwise handled -->
   <xsl:template match="oscal:prop[@class='name']"/>
-  
+
   <xsl:template name="make-title">
     <!-- $runins are properties to be inserted into the title inline, such as numbering -->
     <xsl:param name="runins"/>
@@ -126,7 +126,7 @@
       </xsl:for-each>
     </h3>
   </xsl:template>
-  
+
   <xsl:template match="oscal:part">
     <div class="part {@class}">
       <xsl:copy-of select="@id"/>
@@ -135,10 +135,10 @@
       <xsl:apply-templates/>
     </div>
   </xsl:template>
-  
+
   <xsl:template match="oscal:part[@class='assessment']/oscal:prop[@class='method']"/>
 
-  
+
   <xsl:template match="oscal:part[@class='statement'] | oscal:part[@class='item'] | oscal:part[@class='objective']">
     <div class="part">
       <xsl:copy-of select="@id"/>
@@ -157,11 +157,11 @@
     </table>
     </div>
   </xsl:template>
-  
+
   <xsl:template priority="10" match="oscal:part//oscal:part" mode="title"/>
-  
+
   <xsl:template match="oscal:part" mode="part-number"/>
-  
+
   <xsl:template match="oscal:part[oscal:prop[@class='name']]" mode="part-number">
     <xsl:variable name="inherited-no" select="ancestor::*[oscal:prop[@class='name']][1]/oscal:prop[@class='name']"/>
     <xsl:variable name="inherited-trimmed" select="translate($inherited-no,' ','')"/>
@@ -169,7 +169,7 @@
       <xsl:value-of select="substring-after(translate(oscal:prop[@class='name'],' ',''),$inherited-trimmed)"/>
     </p>
   </xsl:template>
-  
+
   <xsl:template match="oscal:param">
     <xsl:variable name="target" select="key('element-by-id',@target)"/>
     <div class="param">
@@ -186,7 +186,7 @@
       <xsl:apply-templates/>
     </p>
   </xsl:template>
-  
+
   <xsl:template match="oscal:param/oscal:label">
     <p class="label">
       <span class="subst">Label:</span>
@@ -194,7 +194,7 @@
       <xsl:apply-templates/>
     </p>
   </xsl:template>
-  
+
   <xsl:template match="oscal:param/oscal:value">
     <p class="value">
       <span class="subst">Value:</span>
@@ -202,7 +202,7 @@
       <xsl:apply-templates/>
     </p>
   </xsl:template>
-  
+
   <xsl:template match="oscal:param/oscal:default">
     <p class="default">
       <span class="subst">Default:</span>
@@ -210,22 +210,22 @@
       <xsl:apply-templates/>
     </p>
   </xsl:template>
-  
+
   <xsl:template mode="inline" match="oscal:param/oscal:desc"/>
-  
+
   <xsl:template mode="inline" match="oscal:param/oscal:value">
     <span class="value">
       <xsl:apply-templates/>
     </span>
   </xsl:template>
-  
+
   <xsl:template mode="inline" match="oscal:param/oscal:label">
     <span class="label">
       <xsl:apply-templates/>
     </span>
   </xsl:template>
-  
-    
+
+
   <xsl:template match="oscal:prop">
     <p class="prop {@class}">
       <xsl:apply-templates select="." mode="label"/>
@@ -239,49 +239,49 @@
     </span>
     <xsl:text> </xsl:text>
   </xsl:template>
-  
+
   <xsl:template match="oscal:p[@class = 'object']">
     <p class="object">
       <input type="checkbox" class="box"/>
       <xsl:apply-templates/>
     </p>
   </xsl:template>
-  
+
   <xsl:template match="oscal:prop" mode="label">
     <span class="subst">
       <xsl:value-of select="@class"/>
       <xsl:text>: </xsl:text>
     </span>
   </xsl:template>
-  
+
   <xsl:template match="oscal:part[@class='statement']" mode="title">
     <h4>Control</h4>
   </xsl:template>
-  
+
   <xsl:template match="oscal:part[@class='guidance']" mode="title">
     <h4>Supplemental guidance</h4>
   </xsl:template>
-  
+
   <xsl:template match="oscal:part[@class='objective']" mode="title">
     <h4>
       <xsl:text>Objective</xsl:text>
       <xsl:if test="oscal:part">s</xsl:if>
     </h4>
   </xsl:template>
-  
+
   <xsl:template match="oscal:part[@class='assessment']" mode="title">
     <h4>
       <xsl:text>Assessment: </xsl:text>
       <xsl:value-of select="oscal:prop[@class='method']"/>
     </h4>
   </xsl:template>
-  
+
   <xsl:template match="oscal:part[@class='objective']//oscal:part[@class='objective']" priority="2" mode="title"/>
-    
+
   <xsl:template match="*" mode="title">
     <span class="subst"><xsl:value-of select="@class"/></span>
   </xsl:template>
-  
+
   <xsl:template match="oscal:p">
     <p class="p">
       <xsl:apply-templates/>
@@ -293,7 +293,7 @@
       <xsl:apply-templates/>
     </pre>
   </xsl:template>
-  
+
 <!-- 'insert' is a site of injection for a parameter value
      its param contains a description and (optionally) a value -->
   <xsl:template match="oscal:insert">
@@ -326,8 +326,8 @@
     </span>
     <xsl:text> </xsl:text>
   </xsl:template>
-  
-  
+
+
   <xsl:template match="oscal:ul">
     <ul class="ol">
       <xsl:apply-templates/>
@@ -343,14 +343,14 @@
       <xsl:apply-templates/>
     </li>
   </xsl:template>
-  
+
   <xsl:template match="oscal:a">
     <a>
       <xsl:copy-of select="@href"/>
       <xsl:apply-templates/>
     </a>
   </xsl:template>
-  
+
   <xsl:template match="oscal:link">
     <p class="link">
       <a>
@@ -366,7 +366,7 @@
       </a>
     </p>
   </xsl:template>
-  
+
   <xsl:template match="oscal:link[starts-with(@href,'#')]">
     <xsl:variable name="target" select="key('element-by-id',substring-after(@href,'#'))"/>
     <p class="link">
@@ -391,7 +391,7 @@
       </a>
     </p>
   </xsl:template>
-  
+
   <xsl:template match="*" mode="link-text">
     <xsl:choose>
       <xsl:when test="oscal:prop[@class='name']">
@@ -400,17 +400,17 @@
       <xsl:otherwise>[Error: no 'name' property on link target]</xsl:otherwise>
     </xsl:choose>
   </xsl:template>
-        
+
   <!-- dropped in default traversal -->
   <xsl:template match="oscal:references"/>
-  
+
   <xsl:template match="oscal:references" mode="include">
     <div class="references">
       <h4>References</h4>
       <xsl:apply-templates/>
     </div>
   </xsl:template>
-  
+
   <xsl:template match="oscal:ref">
     <div class="ref">
       <xsl:apply-templates/>
@@ -428,13 +428,13 @@
       <xsl:apply-templates/>
     </span>
   </xsl:template>
-  
+
   <xsl:template match="oscal:select">
     <div class="select">
       <xsl:apply-templates/>
     </div>
   </xsl:template>
-  
+
   <xsl:template match="oscal:choice">
     <p class="choice">
       <xsl:apply-templates/>
@@ -446,13 +446,13 @@
       <xsl:apply-templates/>
     </p>
   </xsl:template>
-  
+
   <xsl:template match="oscal:section">
     <div class="section">
       <xsl:apply-templates/>
     </div>
   </xsl:template>
-  
+
   <xsl:template match="oscal:code | oscal:q | oscal:b | oscal:i | oscal:em | oscal:sup | oscal:sub">
     <xsl:element name="{local-name()}">
       <xsl:for-each select="@class">
@@ -460,7 +460,7 @@
           <xsl:value-of select="."/>
         </xsl:attribute>
       </xsl:for-each>
-            
+
       <xsl:apply-templates/>
     </xsl:element>
   </xsl:template>
@@ -471,25 +471,25 @@
       <xsl:value-of select="."/>
     </span>
   </xsl:template>
-  
+
 
   <xsl:template priority="10" match="*[normalize-space(@id)]" mode="new-id">
     <xsl:value-of select="@id"/>
   </xsl:template>
-  
+
   <xsl:template match="oscal:group[oscal:control|oscal:component]" mode="new-id">
     <xsl:value-of select="substring-before((oscal:control|oscal:component)[1]/@id,'.')"/>
   </xsl:template>
-  
+
   <!-- only if not matching another 'new-id' template -->
   <xsl:template match="*" mode="new-id">
     <xsl:value-of select="generate-id(.)"/>
   </xsl:template>
-  
+
   <xsl:template match="oscal:importing | oscal:merged | oscal:modified | oscal:catalog | oscal:group[oscal:catalog]" mode="toc">
     <xsl:apply-templates mode="toc"/>
   </xsl:template>
-  
+
   <xsl:template match="/oscal:catalog | oscal:framework | oscal:section | oscal:group | oscal:control | oscal:subcontrol | oscal:component" mode="toc">
     <xsl:variable name="new-id">
       <xsl:apply-templates select="." mode="new-id"/>
@@ -508,13 +508,13 @@
   </xsl:template>
 
   <xsl:template match="oscal:references | oscal:title" mode="toc"/>
-  
-  
+
+
   <xsl:template match="oscal:title" mode="inline">
     <xsl:apply-templates/>
   </xsl:template>
-  
-  
+
+
   <xsl:template match="oscal:import" mode="display-invocation">
     <div class="invocation">
       <p>
@@ -524,36 +524,36 @@
       </p>
     </div>
   </xsl:template>
-  
+
   <xsl:template match="oscal:import/oscal:include" mode="display-invocation">
     <span class="subst">Included:</span>
     <xsl:apply-templates mode="display-invocation"/>
   </xsl:template>
-  
+
   <xsl:template match="oscal:import/oscal:exclude" mode="display-invocation">
     <span class="subst">Excluded:</span>
     <xsl:apply-templates mode="display-invocation"/>
   </xsl:template>
-  
-  
+
+
   <xsl:template match="oscal:import/oscal:include/oscal:all" mode="display-invocation">
     <xsl:text> ALL </xsl:text>
   </xsl:template>
-  
+
   <xsl:template match="oscal:import/*/oscal:call[@control-id]" mode="display-invocation">
     <span class="invoking">
       <span class="subst">Control </span>
       <xsl:value-of select="@control-id"/>
     </span>
   </xsl:template>
-  
+
   <xsl:template match="oscal:import/*/oscal:call[@subcontrol-id]" mode="display-invocation">
     <span class="invoking">
       <span class="subst">Subcontrol </span>
       <xsl:value-of select="@subcontrol-id"/>
     </span>
   </xsl:template>
-  
+
   <xsl:template match="oscal:set-param" mode="display-invocation">
     <span class="invoking">
       <span class="subst">
@@ -565,5 +565,5 @@
       <xsl:apply-templates select="oscal:value" mode="display-invocation"/>
     </span>
   </xsl:template>
-  
+
 </xsl:stylesheet>

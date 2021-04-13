@@ -3,7 +3,7 @@
   version="1.0"
   xmlns="http://www.w3.org/1999/xhtml"
   xmlns:oscal="http://csrc.nist.gov/ns/oscal/1.0">
-  
+
   <xsl:template match="/">
     <html>
       <head>
@@ -27,7 +27,7 @@ div div div h3 { font-size: 110% }
 .param { font-style: italic }
 .insert, .choice { border: thin solid black; padding: 0.1em }
 
-.subst  { color: midnightblue; font-family: sans-serif; font-sizea; 85% } 
+.subst  { color: midnightblue; font-family: sans-serif; font-sizea; 85% }
 
 .param .em { font-style: roman }
 
@@ -38,39 +38,39 @@ div div div h3 { font-size: 110% }
       </body>
     </html>
   </xsl:template>
-  
+
   <xsl:template match="oscal:catalog">
     <div class="catalog">
       <xsl:apply-templates/>
     </div>
   </xsl:template>
-  
+
   <xsl:template match="oscal:title">
     <h2 class="title">
       <xsl:apply-templates/>
     </h2>
   </xsl:template>
-  
+
   <xsl:template match="oscal:declarations"/>
-    
+
     <xsl:template match="oscal:title" mode="title">
       <xsl:value-of select="."/>
     </xsl:template>
 
-  
+
   <xsl:template match="oscal:group">
     <section class="group">
       <xsl:apply-templates/>
     </section>
   </xsl:template>
-  
+
   <!--<xsl:key name="declarations" match="oscal:control-spec" use="@type"/>
-  
+
   <xsl:key name="declarations" match="oscal:property | oscal:statement | oscal:parameter"
     use="concat(@context,'#',@role)"/>-->
-  
+
   <xsl:key name="assignment"  match="oscal:param" use="@id"/>
-  
+
   <xsl:template match="oscal:control | oscal:subcontrol | oscal:component | oscal:part">
     <div class="{local-name()} {@class}">
       <xsl:copy-of select="@id"/>
@@ -80,10 +80,10 @@ div div div h3 { font-size: 110% }
       <xsl:apply-templates/>
     </div>
   </xsl:template>
-  
+
   <!-- Picked up in parent -->
   <xsl:template match="oscal:control/oscal:title"/>
-  
+
   <xsl:template name="make-title">
     <xsl:param name="runins" select="/.."/>
     <h3>
@@ -93,20 +93,20 @@ div div div h3 { font-size: 110% }
         <xsl:value-of select="."/>
         <xsl:text>] </xsl:text>
       </xsl:for-each>
-      
+
       <xsl:for-each select="oscal:title">
         <xsl:apply-templates/>
       </xsl:for-each>
     </h3>
   </xsl:template>
-  
+
   <xsl:template match="oscal:prop" mode="run-in">
     <span class="run-in subst">
       <xsl:apply-templates/>
     </span>
     <xsl:text> </xsl:text>
   </xsl:template>
-      
+
   <xsl:template match="oscal:param">
     <p class="param">
       <span class="subst">
@@ -117,11 +117,11 @@ div div div h3 { font-size: 110% }
       </span>
         <xsl:apply-templates/>
       </p>
-    
+
   </xsl:template>
-  
+
   <xsl:template match="oscal:prop[@class='name']"/>
-  
+
   <xsl:template match="oscal:prop">
     <p class="prop {@class}">
       <span class="subst">
@@ -135,7 +135,7 @@ div div div h3 { font-size: 110% }
   <xsl:template match="*" mode="title">
     <xsl:value-of select="@class"/>
   </xsl:template>
-  
+
   <xsl:template match="oscal:p">
     <p class="p">
       <xsl:apply-templates/>
@@ -168,7 +168,7 @@ div div div h3 { font-size: 110% }
       <xsl:apply-templates/>
     </li>
   </xsl:template>
-  
+
   <xsl:template match="oscal:stmt">
     <div class="stmt {@role}">
       <xsl:apply-templates select="." mode="title"/>
@@ -182,13 +182,13 @@ div div div h3 { font-size: 110% }
       <xsl:apply-templates/>
     </a>
   </xsl:template>
-  
+
   <xsl:template match="oscal:references">
     <section class="references">
       <xsl:apply-templates/>
     </section>
   </xsl:template>
-  
+
   <xsl:template match="oscal:ref">
     <div class="ref">
       <xsl:apply-templates/>
@@ -199,7 +199,7 @@ div div div h3 { font-size: 110% }
       <xsl:apply-templates/>
     </p>
   </xsl:template>
-  
+
   <xsl:template match="oscal:withdrawn">
     <span class="withdrawn">
       <xsl:apply-templates/>
@@ -210,7 +210,7 @@ div div div h3 { font-size: 110% }
       <xsl:apply-templates/>
     </em>
   </xsl:template>
-  
+
   <xsl:template match="oscal:citation">
     <p class="citation">
       <xsl:apply-templates/>
@@ -231,6 +231,6 @@ div div div h3 { font-size: 110% }
       <xsl:apply-templates/>
     </q>
   </xsl:template>
-  
-  
+
+
 </xsl:stylesheet>

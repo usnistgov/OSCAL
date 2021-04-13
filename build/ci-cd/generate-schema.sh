@@ -7,7 +7,7 @@ if [ -z ${OSCAL_SCRIPT_INIT+x} ]; then
 fi
 
 # A bash function that displays the command help message called when "-h" argument is provided
-usage() {                                      
+usage() {
   cat << EOF
 Usage: $0 [options] [metaschema paths]
 
@@ -164,7 +164,7 @@ for i in ${!paths[@]}; do
 
     if [ "$VERBOSE" == "true" ]; then
       args+=("-v") # if verbose, have the generation script generate verbose messages
-    fi    
+    fi
 
     # call the schema generation script
     result=$("$OSCALDIR/build/metaschema/scripts/generate-schema.sh" "${args[@]}" 2>&1)

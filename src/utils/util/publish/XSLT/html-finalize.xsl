@@ -13,23 +13,23 @@
 
   <!-- Keeping whitespace but removing it from value, where it is significant (and we don't want it added) -->
   <xsl:strip-space elements="value"/>
-  
+
   <xsl:mode on-no-match="shallow-copy"/>
-  
+
   <xsl:output indent="no"/>
 
   <xsl:param name="xslt-process" as="xs:string">finalize</xsl:param>
-  
+
   <xsl:template match="/">
-    
+
     <xsl:comment expand-text="true"> HTML produced by '{ $xslt-process }' :{ format-date(current-date(),' [Y] [MNn] [D]') => replace('([^\d\s]{3})[^\d\s]*','$1') } { format-time(current-time(),'[h]:[m] [P]') } </xsl:comment>
-    
+
     <xsl:apply-templates/>
   </xsl:template>
-  
+
   <xsl:template match="/node()">
     <xsl:text>&#xA;</xsl:text>
     <xsl:next-match/>
   </xsl:template>
-  
+
 </xsl:stylesheet>

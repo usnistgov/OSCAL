@@ -5,7 +5,7 @@ An OSCAL Metaschema defines the the information structures that define an OSCAL 
 OSCAL Metaschemas are used to generate other OSCAL artifacts based on the metaschema description. These artifacts include:
 
 - XML and JSON Schemas, or *data models*, are derived from the metaschema, expressed as XSD and JSON Schema;
-- Conversion scripts that can convert OSCAL content between the XML and JSON OSCAL formats, ensuring the resulting content is schema valid; 
+- Conversion scripts that can convert OSCAL content between the XML and JSON OSCAL formats, ensuring the resulting content is schema valid;
 - XML and JSON [model documentation](https://pages.nist.gov/OSCAL/docs/schemas/) for use on the [OSCAL website](https://pages.nist.gov/OSCAL).
 
 Use of Metaschemas in OSCAL allow us to maintain seamless and consistent support for multiple OSCAL model formats, including XML and JSON. Content can also be kept up-to-date in multiple formats using generated content converters, and can be validated using generated schema. Adding support for new formats (e.g., YAML) can accomplished by extending the Metaschema tooling to produce schema and converters for other formats.
@@ -49,7 +49,7 @@ With these limitations, a model may be defined to contain any mix of fields and 
 * `assembly` refers to an assembly definition and permits a single occurrence of the indicated assembly.
 * `fields` - same as `field`, but permits the field to be repeated. In the JSON representation the multiple values are represented as any array unless `@address` is given
 * `assemblies` - same as `fields`, but for assemblies. In JSON, this construct is also presented as an array unless there is an `@address`
-* `prose` refers to a "region of prose", that is, a section of prose text of unspecified length. In XML, prose is represented in conventional fashion as (a sequence of) `<p>` and list elements (`<ul>` or `<ol>`) perhaps with inline markup (indicating further formatting). For consistency across metaschema applications, the permitted tagging will always be conformant to the same model for prose, managed to reflect (echo) a clean HTML subset. This specification also permits the markup vocabulary to be mapped to a text-based markdown syntax, suitable for use within JSON expressions of the same or similar data. 
+* `prose` refers to a "region of prose", that is, a section of prose text of unspecified length. In XML, prose is represented in conventional fashion as (a sequence of) `<p>` and list elements (`<ul>` or `<ol>`) perhaps with inline markup (indicating further formatting). For consistency across metaschema applications, the permitted tagging will always be conformant to the same model for prose, managed to reflect (echo) a clean HTML subset. This specification also permits the markup vocabulary to be mapped to a text-based markdown syntax, suitable for use within JSON expressions of the same or similar data.
 
 
 ## JSON Enhancement features
@@ -73,9 +73,7 @@ To support this, flags used as addresses should be declared as type `ID`, provid
 ```
 <title>Water (H<sub>2</sub>0)</title>
 ```
- 
+
 ```
 "title" : "Water (H~~2~~0)"
 ```
-
-

@@ -10,25 +10,25 @@
 
     <xsl:strip-space elements="*"/>
     <xsl:preserve-space elements="value regex autonum"/>
-    
+
     <xsl:variable name="context-doc" select="document('NIST_SP-800-53_rev4_catalog.xml')"/>
-    
+
     <xsl:output indent="yes"/>
     <!--declarations
-        
+
         declare-part
         declare-prop
         declare-p
-        
+
         required
-        
+
         singleton
         regex
         calc
           inherit
           autonum
         value-->
-    
+
     <xsl:template match="/declarations">
         <sch:schema queryBinding="xslt2">
 
@@ -69,26 +69,26 @@
             </xsl:for-each-group>
         </sch:schema>
     </xsl:template>
-    
+
     <xsl:template mode="as-appearing" match="declare-prop">
             <xsl:variable name="decl" select="."/>
             <xsl:for-each select="tokenize(@class, '\s+')">
                 <xsl:variable name="target-name" select="."/>
                 <xsl:variable name="contexts" select="tokenize($decl/@context,'\s+') !  ('''' || . || '''')"/>
-                
+
                 <xsl:variable name="assertions" as="element()*">
                     <xsl:apply-templates select="$decl/*" mode="#current">
                         <xsl:with-param name="target-name" select="$target-name"/>
                         <xsl:with-param name="contexts" select="$contexts"/>
                     </xsl:apply-templates>
-                    
+
                     <xsl:if test="exists($decl/value)">
                         <xsl:variable name="value-strings" select="$decl/value ! ('''' || . || '''')"/>
                         <sch:assert xsl:expand-text="true"
                             test=". = ({ string-join($value-strings,',') })">prop name='{ $target-name
                             }' here must have a value { o:or-sequence( $value-strings) }</sch:assert>
                     </xsl:if>
-                    
+
                 </xsl:variable>
                 <xsl:if test="exists($assertions)">
                     <sch:rule context="*[(@name|@class)=({string-join($contexts,',')})]/o:prop[@name='{ $target-name }']">
@@ -104,7 +104,7 @@
         <sch:assert xsl:expand-text="true"
             test="empty(../o:prop[@name='{$target-name}'] except .)">prop with name='{$target-name}' must be a singleton: no other properties named '{$target-name}' may appear in the same context</sch:assert>
     </xsl:template>
-    
+
     <xsl:template mode="as-appearing" match="declare-prop/regex">
         <xsl:param name="target-name"/>
         <sch:assert xsl:expand-text="true"
@@ -114,15 +114,15 @@
     <xsl:template mode="as-appearing" match="declare-part | declare-p">
         <!--<xsl:apply-templates mode="#current"/>-->
     </xsl:template>
-    
+
     <xsl:template mode="as-appearing" match="calc">
-        
+
     </xsl:template>
-    
+
     <xsl:template mode="as-appearing" match="value">
-        
+
     </xsl:template>
-    
+
     <xsl:function name="o:or-sequence" as="xs:string?">
         <xsl:param name="seq" as="item()*"/>
         <xsl:value-of>
@@ -138,27 +138,27 @@
         </xsl:for-each>
         </xsl:value-of>
     </xsl:function>
-    
+
 <!-- Unfinished! implementation of calculation logic. (We have only one so far so we do it by hand.)  -->
     <!--<xsl:template match="calc" mode="calculate">
         <xsl:copy>
             <xsl:apply-templates mode="calculate"/>
         </xsl:copy>
     </xsl:template>
-    
+
     <xsl:template match="inherit" mode="calculate">
         <xsl:param name="who-cares" required="yes" tunnel="yes"/>
         <xsl:variable name="named-classes" select="tokenize(@from/normalize-space(string(.)),'\s')"/>
         <xsl:variable name="matching-classes" select="if (empty($named-classes))
             then parent::calc/parent::declare-prop/oscal:classes(.) else $named-classes"/>
-        
+
         <xsl:variable name="forebear"
             select="$who-cares/../ancestor::*[prop/oscal:classes(.)=$matching-classes][1]/
             prop[oscal:classes(.)=$matching-classes]"/>
         <xsl:value-of select="normalize-space($forebear)"/>
         <xsl:if test="empty($forebear)">[RESOLUTIONFAIL]</xsl:if>
     </xsl:template>
-    
+
     <xsl:template match="autonum" mode="calculate">
         <xsl:param name="who-cares" required="yes" tunnel="yes"/>
         <xsl:param name="call" select="."/>
@@ -171,6 +171,6 @@
         </xsl:variable>
         <xsl:value-of select="normalize-space($expanded)"/>
     </xsl:template>-->
-    
-    
+
+
 </xsl:stylesheet>
