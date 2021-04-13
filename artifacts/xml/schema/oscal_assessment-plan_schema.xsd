@@ -479,10 +479,10 @@
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Party Universally Unique Identifier</m:formal-name>
-               <m:description>A unique identifier that can be used to reference this defined location elsewhere in an OSCAL document. A UUID should be consistantly used for a given party across revisions of the document.</m:description>
+               <m:description>A unique identifier that can be used to reference this defined location elsewhere in an OSCAL document. A UUID should be consistently used for a given party across revisions of the document.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>Party Universally Unique Identifier</b>: A unique identifier that can be used to reference this defined location elsewhere in an OSCAL document. A UUID should be consistantly used for a given party across revisions of the document.</xs:documentation>
+               <b>Party Universally Unique Identifier</b>: A unique identifier that can be used to reference this defined location elsewhere in an OSCAL document. A UUID should be consistently used for a given party across revisions of the document.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
       <xs:attribute name="type" use="required" type="xs:string">
@@ -860,10 +860,10 @@
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Property Universally Unique Identifier</m:formal-name>
-               <m:description>A unique identifier that can be used to reference this property elsewhere in an OSCAL document. A UUID should be consistantly used for a given location across revisions of the document.</m:description>
+               <m:description>A unique identifier that can be used to reference this property elsewhere in an OSCAL document. A UUID should be consistently used for a given location across revisions of the document.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>Property Universally Unique Identifier</b>: A unique identifier that can be used to reference this property elsewhere in an OSCAL document. A UUID should be consistantly used for a given location across revisions of the document.</xs:documentation>
+               <b>Property Universally Unique Identifier</b>: A unique identifier that can be used to reference this property elsewhere in an OSCAL document. A UUID should be consistently used for a given location across revisions of the document.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
       <xs:attribute name="ns" type="oscal-ap:uri">
@@ -2198,10 +2198,10 @@
                <xs:annotation>
                   <xs:appinfo>
                      <m:formal-name>Task Dependency</m:formal-name>
-                     <m:description>Used to indicate that a task is dependant on another task.</m:description>
+                     <m:description>Used to indicate that a task is dependent on another task.</m:description>
                   </xs:appinfo>
                   <xs:documentation>
-                     <b>Task Dependency</b>: Used to indicate that a task is dependant on another task.</xs:documentation>
+                     <b>Task Dependency</b>: Used to indicate that a task is dependent on another task.</xs:documentation>
                </xs:annotation>
                <xs:sequence>
                   <xs:element name="remarks" minOccurs="0" maxOccurs="1">
