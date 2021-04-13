@@ -108,7 +108,7 @@ The **[plan of action and milestones (POA&M) model](assessment-results-layer/poa
 
 ## Status of the OSCAL Layers
 
-The OSCAL layers described above provide a framework for organizing the OSCAL models. As the OSCAL project [progresses](/contribute/roadmap/), the features of these models are expected to evolve and expand; the layer descriptions above are included here to indicate the current status of the related models within OSCAL and may not represent the final features supported by each layer and their corrisponding model(s). XML, JSON, and YAML formats for each model will be provided when the model is released.
+The OSCAL layers described above provide a framework for organizing the OSCAL models. As the OSCAL project [progresses](/contribute/roadmap/), the features of these models are expected to evolve and expand; the layer descriptions above are included here to indicate the current status of the related models within OSCAL and may not represent the final features supported by each layer and their corresponding model(s). XML, JSON, and YAML formats for each model will be provided when the model is released.
 
 The OSCAL models above are in various states of readiness for release:
 

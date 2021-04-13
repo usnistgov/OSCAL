@@ -639,7 +639,7 @@
     <description>Describes how the system satisfies an individual control.</description>
     <define-flag name="uuid" as-type="uuid" required="yes">
       <formal-name>Control Requirement Universally Unique Identifier</formal-name>
-      <description>A globally unique identifier that can be used to reference this control requirement entry elsewhere in an OSCAL document. A UUID should be consistantly used for a given resource across revisions of the document.</description>
+      <description>A globally unique identifier that can be used to reference this control requirement entry elsewhere in an OSCAL document. A UUID should be consistently used for a given resource across revisions of the document.</description>
     </define-flag>
     <flag ref="control-id" required="yes"/>
     <model>

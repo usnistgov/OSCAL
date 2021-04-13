@@ -7,9 +7,10 @@
 }
 
 @media print {
-  #nist-header {
+  .nist-header {
     display: none;
   }
+
   .nist-footer {
     display: none;
   }

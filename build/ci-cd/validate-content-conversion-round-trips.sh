@@ -255,7 +255,7 @@ process_paths() {
           result=$(json-diff "$source_file" "$roundtrip_file" 2>&1)
           ;;
         *)
-          echo -e "${P_WARN}Unsupported source compairison format '${source_format^^}'.${P_END}"
+          echo -e "${P_WARN}Unsupported source comparison format '${source_format^^}'.${P_END}"
           return 4;
           ;;
         esac

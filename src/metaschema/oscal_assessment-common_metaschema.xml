@@ -282,7 +282,7 @@
          </define-assembly>
          <define-assembly name="dependency" max-occurs="unbounded">
             <formal-name>Task Dependency</formal-name>
-            <description>Used to indicate that a task is dependant on another task.</description>
+            <description>Used to indicate that a task is dependent on another task.</description>
             <group-as name="dependencies" in-json="ARRAY"/>
             <define-flag name="task-uuid" required="yes" as-type="uuid">
                <formal-name>Task Universally Unique Identifier Reference</formal-name>
@@ -803,7 +803,7 @@
                   <enum value="EXAMINE">An inspection was performed.</enum>
                   <enum value="INTERVIEW">An interview was performed.</enum>
                   <enum value="TEST">A manual or automated test was performed.</enum>
-                  <enum value="UNKNOWN">This is only for use when converting historic content to OSCAL, where the conversion process cannot initially identify the appopriate method(s).</enum>
+                  <enum value="UNKNOWN">This is only for use when converting historic content to OSCAL, where the conversion process cannot initially identify the appropriate method(s).</enum>
                </allowed-values>
             </constraint>
          </define-field>
@@ -1015,7 +1015,7 @@
       <description>An identified risk.</description>
       <define-flag name="uuid" required="yes" as-type="uuid">
          <formal-name>Risk Universally Unique Identifier</formal-name>
-         <description>Uniquely identifies this risk. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. Once assigned, a UUID should be consistantly used for a given risk across revisions.</description>
+         <description>Uniquely identifies this risk. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. Once assigned, a UUID should be consistently used for a given risk across revisions.</description>
       </define-flag>
       <model>
          <define-field name="title" min-occurs="1" max-occurs="1" as-type="markup-line">
@@ -1080,7 +1080,7 @@
             <group-as name="mitigating-factors" in-json="ARRAY"/>
             <define-flag name="uuid" required="yes" as-type="uuid">
                <formal-name>Mitigating Factor Universally Unique Identifier</formal-name>
-               <description>Uniquely identifies this mitigating factor. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. Once assigned, a UUID should be consistantly used for a given mitigating factor across revisions.</description>
+               <description>Uniquely identifies this mitigating factor. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. Once assigned, a UUID should be consistently used for a given mitigating factor across revisions.</description>
             </define-flag>
             <define-flag name="implementation-uuid" as-type="uuid">
                <formal-name>Implementation UUID</formal-name>
@@ -1200,7 +1200,7 @@
                         <enum value="status-update">Information related to the current state of response to this risk.</enum>
                         <enum value="milestone-complete">A significant step in the response plan has been achieved.</enum>
                         <enum value="mitigation">An activity was completed that reduces the likelihood or impact of this risk.</enum>
-                        <enum value="remediated">An activitiy was completed that eliminates the likelihood or impact of this risk.</enum>
+                        <enum value="remediated">An activity was completed that eliminates the likelihood or impact of this risk.</enum>
                         <!-- QUESTION: Is this needed, since this is handled by the status field? -->
                         <enum value="closed">The risk is no longer applicable to the system.</enum>
                         <enum value="dr-submission">A deviation request was made to the authorizing official.</enum>

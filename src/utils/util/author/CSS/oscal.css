@@ -1,4 +1,5 @@
-/* Note this CSS hasn't been reviewed for tightness it is likely to contain obsolte (ordinarily no-op) code */
+/*csslint universal-selector:false*/
+/* Note this CSS hasn't been reviewed for tightness it is likely to contain obsolete (ordinarily no-op) code */
 /* Extra note - yes, although it works tolerably well it really ought to be stripped down */
 * { display: block }
 

@@ -167,7 +167,7 @@ Breaking this down line-by-line you will notice the following:
 
 Breaking this down line-by-line you will notice the following:
 
-- Line 2: The [`metadata`](/documentation/schema/catalog/json-schema/#oscal-catalog-json_metadata) property, who's value is an objec which contains properties representing the document's metadata.
+- Line 2: The [`metadata`](/documentation/schema/catalog/json-schema/#oscal-catalog-json_metadata) property, who's value is an object which contains properties representing the document's metadata.
 - Line 3: The document's title (i.e., `Sample Security Catalog`) is provided using `title` property. The document's title is a mandatory field for an OSCAL catalog.
 - Line 4: The date when the document was published (i.e., `2020-02-02T11:01:04.736-04:00`) is provided using the `published` property. This date is provided using the [RFC 3339](https://tools.ietf.org/html/rfc3339#section-5.6) format with a required timezone. The published date is not a mandatory field for an OSCAL Catalog.
 - Line 5: The date when the document was last modified (i.e., `2020-12-18T16:23:23.811-05:00`) is provided using the `last-modified` property. This date is provided using the [RFC 3339](https://tools.ietf.org/html/rfc3339#section-5.6) format with a required timezone. The last modified date is a mandatory field for an OSCAL Catalog.
@@ -659,20 +659,20 @@ The sample security catalog also has the `Implementation Guidance` and `Other In
     "parts" : [ {
       "id" : "s1.1.1_gdn.1",
       "name" : "item",
-      "prose" : "Allocation of information security responsibilities should be done in accordance with\nthe information security policies. Responsibilities for the protection of individual\nassets and for carrying out specific information security processes should be\nidentified. Responsibilities for information security risk management activities and\nin particular for acceptance of residual risks should be defined. These\nresponsibilities should be supplemented, where necessary, with more detailed guidance\nfor specific sites and information processing facilities. Local responsibilities for\nthe protection of assets and for carrying out specific security processes should be\ndefined."
+      "prose" : "Allocation of information security responsibilities should be done in accordance with the information security policies. Responsibilities for the protection of individual assets and for carrying out specific information security processes should be identified. Responsibilities for information security risk management activities and in particular for acceptance of residual risks should be defined. These responsibilities should be supplemented, where necessary, with more detailed guidance for specific sites and information processing facilities. Local responsibilities for the protection of assets and for carrying out specific security processes should be defined."
     }, {
       "id" : "s1.1.1_gdn.2",
       "name" : "item",
-      "prose" : "Individuals with allocated information security responsibilities may delegate\nsecurity tasks to others. Nevertheless they remain accountable and should determine\nthat any delegated tasks have been correctly performed."
+      "prose" : "Individuals with allocated information security responsibilities may delegate security tasks to others. Nevertheless they remain accountable and should determine that any delegated tasks have been correctly performed."
     }, {
       "id" : "s1.1.1_gdn.3",
       "name" : "item",
-      "prose" : "Areas for which individuals are responsible should be stated. In particular the\nfollowing should take place:\n\n1. the assets and information security processes should be identified and defined;\n2. the entity responsible for each asset or information security process should be assigned and the details of this responsibility should be documented;\n3. authorization levels should be defined and documented;\n4. to be able to fulfil responsibilities in the information security area the appointed individuals should be competent in the area and be given opportunities to keep up to date with developments;\n5. coordination and oversight of information security aspects of supplier relationships should be identified and documented."
+      "prose" : "Areas for which individuals are responsible should be stated. In particular the following should take place:\n\n1. the assets and information security processes should be identified and defined;\n2. the entity responsible for each asset or information security process should be assigned and the details of this responsibility should be documented;\n3. authorization levels should be defined and documented;\n4. to be able to fulfil responsibilities in the information security area the appointed individuals should be competent in the area and be given opportunities to keep up to date with developments;\n5. coordination and oversight of information security aspects of supplier relationships should be identified and documented."
     } ]
   }, {
     "id" : "s1.1.1_inf",
     "name" : "information",
-    "prose" : "Many organizations appoint an information security manager to take overall\nresponsibility for the development and implementation of information security and to\nsupport the identification of controls.\n\nHowever, responsibility for resourcing and implementing the controls will often remain\nwith individual managers. One common practice is to appoint an owner for each asset who\nthen becomes responsible for its day-to-day protection."
+    "prose" : "Many organizations appoint an information security manager to take overall responsibility for the development and implementation of information security and to support the identification of controls.\n\nHowever, responsibility for resourcing and implementing the controls will often remain with individual managers. One common practice is to appoint an owner for each asset who then becomes responsible for its day-to-day protection."
   } ]
 } ]
 {{< /highlight >}}
@@ -1017,15 +1017,15 @@ Assembling all of the control content described in this tutorial, we obtain the 
             "parts" : [ {
               "id" : "s1.1.1_gdn.1",
               "name" : "item",
-              "prose" : "Allocation of information security responsibilities should be done in accordance with\nthe information security policies. Responsibilities for the protection of individual\nassets and for carrying out specific information security processes should be\nidentified. Responsibilities for information security risk management activities and\nin particular for acceptance of residual risks should be defined. These\nresponsibilities should be supplemented, where necessary, with more detailed guidance\nfor specific sites and information processing facilities. Local responsibilities for\nthe protection of assets and for carrying out specific security processes should be\ndefined."
+              "prose" : "Allocation of information security responsibilities should be done in accordance with the information security policies. Responsibilities for the protection of individual assets and for carrying out specific information security processes should be identified. Responsibilities for information security risk management activities and in particular for acceptance of residual risks should be defined. These responsibilities should be supplemented, where necessary, with more detailed guidance for specific sites and information processing facilities. Local responsibilities for the protection of assets and for carrying out specific security processes should be defined."
             }, {
               "id" : "s1.1.1_gdn.2",
               "name" : "item",
-              "prose" : "Individuals with allocated information security responsibilities may delegate\nsecurity tasks to others. Nevertheless they remain accountable and should determine\nthat any delegated tasks have been correctly performed."
+              "prose" : "Individuals with allocated information security responsibilities may delegate security tasks to others. Nevertheless they remain accountable and should determine that any delegated tasks have been correctly performed."
             }, {
               "id" : "s1.1.1_gdn.3",
               "name" : "item",
-              "prose" : "Areas for which individuals are responsible should be stated. In particular the\nfollowing should take place:\n\n1. the assets and information security processes should be identified and defined;\n2. the entity responsible for each asset or information security process should be assigned and the details of this responsibility should be documented;\n3. authorization levels should be defined and documented;\n4. to be able to fulfil responsibilities in the information security area the appointed individuals should be competent in the area and be given opportunities to keep up to date with developments;\n5. coordination and oversight of information security aspects of supplier relationships should be identified and documented."
+              "prose" : "Areas for which individuals are responsible should be stated. In particular the following should take place:\n\n1. the assets and information security processes should be identified and defined;\n2. the entity responsible for each asset or information security process should be assigned and the details of this responsibility should be documented;\n3. authorization levels should be defined and documented;\n4. to be able to fulfil responsibilities in the information security area the appointed individuals should be competent in the area and be given opportunities to keep up to date with developments;\n5. coordination and oversight of information security aspects of supplier relationships should be identified and documented."
             } ]
           }, {
             "id" : "s1.1.1_inf",
@@ -1034,7 +1034,7 @@ Assembling all of the control content described in this tutorial, we obtain the 
               "name" : "label",
               "value" : "Other information"
             } ],
-            "prose" : "Many organizations appoint an information security manager to take overall\nresponsibility for the development and implementation of information security and to\nsupport the identification of controls.\n\nHowever, responsibility for resourcing and implementing the controls will often remain\nwith individual managers. One common practice is to appoint an owner for each asset who\nthen becomes responsible for its day-to-day protection."
+            "prose" : "Many organizations appoint an information security manager to take overall responsibility for the development and implementation of information security and to support the identification of controls.\n\nHowever, responsibility for resourcing and implementing the controls will often remain with individual managers. One common practice is to appoint an owner for each asset who then becomes responsible for its day-to-day protection."
           } ]
         }, {
           "id" : "s1.1.2",
@@ -1046,23 +1046,23 @@ Assembling all of the control content described in this tutorial, we obtain the 
           "parts" : [ {
             "id" : "s1.1.2_stm",
             "name" : "statement",
-            "prose" : "Conflicting duties and areas of responsibility should be segregated to reduce\nopportunities for unauthorized or unintentional modification or misuse of the\norganization’s assets."
+            "prose" : "Conflicting duties and areas of responsibility should be segregated to reduce opportunities for unauthorized or unintentional modification or misuse of the organization’s assets."
           }, {
             "id" : "s1.1.2_gdn",
             "name" : "guidance",
             "parts" : [ {
               "id" : "s1.1.2_gdn.1",
               "name" : "item",
-              "prose" : "Care should be taken that no single person can access, modify or use assets without\nauthorization or detection. The initiation of an event should be separated from its\nauthorization. The possibility of collusion should be considered in designing the\ncontrols."
+              "prose" : "Care should be taken that no single person can access, modify or use assets without authorization or detection. The initiation of an event should be separated from its authorization. The possibility of collusion should be considered in designing the controls."
             }, {
               "id" : "s1.1.2_gdn.2",
               "name" : "item",
-              "prose" : "Small organizations may find segregation of duties difficult to achieve, but the\nprinciple should be applied as far as is possible and practicable. Whenever it is\ndifficult to segregate, other controls such as monitoring of activities, audit trails\nand management supervision should be considered."
+              "prose" : "Small organizations may find segregation of duties difficult to achieve, but the principle should be applied as far as is possible and practicable. Whenever it is difficult to segregate, other controls such as monitoring of activities, audit trails and management supervision should be considered."
             } ]
           }, {
             "id" : "s1.1.2_inf",
             "name" : "information",
-            "prose" : "Segregation of duties is a method for reducing the risk of accidental or deliberate\nmisuse of an organization’s assets."
+            "prose" : "Segregation of duties is a method for reducing the risk of accidental or deliberate misuse of an organization’s assets."
           } ]
         } ]
       } ]
@@ -1095,22 +1095,22 @@ Assembling all of the control content described in this tutorial, we obtain the 
           "parts" : [ {
             "id" : "s2.1.1_stm",
             "name" : "statement",
-            "prose" : "An access control policy should be established, documented and reviewed based on\nbusiness and information security requirements."
+            "prose" : "An access control policy should be established, documented and reviewed based on business and information security requirements."
           }, {
             "id" : "s2.1.1_gdn",
             "name" : "guidance",
             "parts" : [ {
               "id" : "s2.1.1_gdn.1",
               "name" : "item",
-              "prose" : "Asset owners should determine appropriate access control rules, access rights and\nrestrictions for specific user roles towards their assets, with the amount of detail\nand the strictness of the controls reflecting the associated information security\nrisks."
+              "prose" : "Asset owners should determine appropriate access control rules, access rights and restrictions for specific user roles towards their assets, with the amount of detail and the strictness of the controls reflecting the associated information security risks."
             }, {
               "id" : "s2.1.1_gdn.2",
               "name" : "item",
-              "prose" : "Access controls are both logical and physical and these should be considered\ntogether."
+              "prose" : "Access controls are both logical and physical and these should be considered together."
             }, {
               "id" : "s2.1.1_gdn.3",
               "name" : "item",
-              "prose" : "Users and service providers should be given a clear statement of the business\nrequirements to be met by access controls."
+              "prose" : "Users and service providers should be given a clear statement of the business requirements to be met by access controls."
             }, {
               "id" : "s2.1.1_gdn.4",
               "name" : "item",
@@ -1126,11 +1126,11 @@ Assembling all of the control content described in this tutorial, we obtain the 
             }, {
               "id" : "s2.1.1_stm.2",
               "name" : "item",
-              "prose" : "Access control rules should be supported by formal procedures and defined\nresponsibilities."
+              "prose" : "Access control rules should be supported by formal procedures and defined responsibilities."
             }, {
               "id" : "s2.1.1_stm.3",
               "name" : "item",
-              "prose" : "Role based access control is an approach used successfully by many organizations to\nlink access rights with business roles."
+              "prose" : "Role based access control is an approach used successfully by many organizations to link access rights with business roles."
             }, {
               "id" : "s2.1.1_stm.4",
               "name" : "item",
@@ -1147,7 +1147,7 @@ Assembling all of the control content described in this tutorial, we obtain the 
           "parts" : [ {
             "id" : "s2.1.2_stm",
             "name" : "statement",
-            "prose" : "Users should only be provided with access to the network and network services that they\nhave been specifically authorized to use."
+            "prose" : "Users should only be provided with access to the network and network services that they have been specifically authorized to use."
           }, {
             "id" : "s2.1.2_gdn",
             "name" : "guidance",
@@ -1158,7 +1158,7 @@ Assembling all of the control content described in this tutorial, we obtain the 
             }, {
               "id" : "s2.1.2_gdn.2",
               "name" : "item",
-              "prose" : "The policy on the use of network services should be consistent with the\norganization’s access control policy"
+              "prose" : "The policy on the use of network services should be consistent with the organization’s access control policy"
             } ]
           } ]
         } ]
@@ -1342,7 +1342,7 @@ catalog:
               2. policies for information dissemination and authorization, e.g. the need-to-know principle and information security levels and classification of information;
               3. consistency between the access rights and information classification policies of systems and networks;
               4. relevant legislation and any contractual obligations regarding limitation of access to data or services;
-              5. management of access rights in a distributed and networked environment which recognizes all types of connections availabel;
+              5. management of access rights in a distributed and networked environment which recognizes all types of connections available;
               6. segregation of access control roles, e.g. access request, access authorization, access administration;
               7. requirements for formal authorization of access requests;
               8. requirements for periodic review of access rights;

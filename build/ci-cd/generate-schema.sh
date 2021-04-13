@@ -53,7 +53,7 @@ done
 
 OTHER_ARGS=$@ # save the remaining args
 
-# start the script execution by outputing some details
+# start the script execution by outputting some details
 echo -e ""
 echo -e "${P_INFO}Generating XML and JSON Schema${P_END}"
 echo -e "${P_INFO}==============================${P_END}"
@@ -128,13 +128,13 @@ for i in ${!paths[@]}; do
     # depending on the target schema format
     case $format in
     xml)
-      # indiate which type of schema to generate
+      # indicate which type of schema to generate
       generator_arg="--xml"
       # name the target schema
       schema="$WORKING_DIR/$format/schema/${base}_schema.xsd"
       ;;
     json)
-      # indiate which type of schema to generate
+      # indicate which type of schema to generate
       generator_arg="--json"
       # name the target schema
       schema="$WORKING_DIR/$format/schema/${base}_schema.json"

@@ -1889,7 +1889,7 @@
             <ul>
               <li>
                 <p>Any <src>resource</src> given in either an imported catalog
-                  (baseline), or in the <src>back-matter </src>of the soruce
+                  (baseline), or in the <src>back-matter </src>of the source
                   profile, is kept (appears in the result) if it is marked in
                   source with a <src>prop</src> element whose <src>@name</src>
                   is given as <code>keep</code> and whose value is

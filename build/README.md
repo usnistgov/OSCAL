@@ -23,7 +23,7 @@ A Docker container configuration is provided that establishes the runtime enviro
 
 2. Build the Docker container
 
-    You can build the Docker conatiner for the build environment using Docker Compose as follows from the OSCAL `/build` directory:
+    You can build the Docker container for the build environment using Docker Compose as follows from the OSCAL `/build` directory:
 
     ```
     docker-compose build
@@ -33,13 +33,13 @@ A Docker container configuration is provided that establishes the runtime enviro
 
     Executing the container will launch an interactive shell that is preconfigured with all required tools and the needed environment pre-configured.
 
-    You can run the Docker conatiner for the build environment using Docker Compose as follows:
+    You can run the Docker container for the build environment using Docker Compose as follows:
 
     ```
     docker-compose run cli
     ```
 
-    On Windows environments, you may need to execute in a pty that allows for using an interactive shell. In such a case you can run the Docker conatiner as follows:
+    On Windows environments, you may need to execute in a pty that allows for using an interactive shell. In such a case you can run the Docker container as follows:
 
 
     ```
