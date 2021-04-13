@@ -21,7 +21,7 @@ The following directories provide:
 - [schema](schema): XML Schema files that can be used to validate OSCAL content expressed in XML.
 - [convert](convert): eXtensible Stylesheet Language Transformations (XSLTs) to convert OSCAL content expressed in other OSCAL formats into XML.
 
-# XML Schema for OSCAL Models 
+# XML Schema for OSCAL Models
 
 XML Schema based on the [XML Schema Definition Language (XSD) 1.1](https://www.w3.org/TR/xmlschema11-1/) are provided for the following [OSCAL models](https://pages.nist.gov/OSCAL/documentation/schema/):
 
@@ -74,4 +74,3 @@ java -jar "saxon9he.jar" -xsl:"oscal_catalog_json-to-xml-converter.xsl" -o:"osca
 The Saxon JAR file is named ```saxon9he.jar```. The catalog converter is specified as ```-xsl:"oscal_catalog_json-to-xml-converter.xsl"```, the source catalog JSON file is specified as ```json-file="oscal-catalog.json"```, and the destination catalog XML file is specified as ```-o:"oscal-catalog.xml"```. Paths\names of these files need to be provided based on the location of the files on your computer.
 
 The [online documentation](http://www.saxonica.com/documentation/#!using-xsl/commandline) for *Saxon* provides more information on the command line arguments.
-
