@@ -24,8 +24,9 @@
   "dependencies": {
     "ajv": "^6.12.6",
     "commander": "^5.1.0",
-    "saxon-js": "^2.0.3",
-    "xslt3": "^2.0.3"
+    "libxmljs2-xsd": "^0.26.5",
+    "saxon-js": "^2.1.0",
+    "xslt3": "^2.1.0"
   },
   "nodemonConfig": {
     "watch": "src/**/*.ts",
