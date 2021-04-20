@@ -1,9 +1,9 @@
 import {join} from 'path';
 import fs from 'fs';
 import Ajv from 'ajv';
-const libxmljs = require('libxmljs2');
-
+import {spawnSync} from 'child_process';
 import {colorCodes} from '../utils/init';
+
 const {P_END, P_INFO, P_ERROR, P_OK, P_PATH, P_WARN} = colorCodes
 
 export const validateSchema = (
@@ -40,25 +40,25 @@ export const validateSchema = (
     if (format === 'xml') {
          // Using xsd Validator for XML
         const xsdValidatorPath = `${oscalRootDirectory}/build/metaschema/scripts/../support/xml/XMLSchema.xsd`;
+      
         //Using generated XML = XSD file
         const xmlSchema = generatedSchemaPath;
-    
-       //const xsdSchemaPath = schema;
-        const xsdSchemaFile = fs.readFileSync(xmlSchema, 'utf8')
-        const xsdSchemaContent = libxmljs.parseXml(xsdSchemaFile)
-        const xsdValidatorFile = fs.readFileSync(xsdValidatorPath, 'utf8');
-        const xsdValidatorContent= libxmljs.parseXml(xsdValidatorFile)
-        const valid = xsdValidatorContent.validate(xsdSchemaContent);
+        const spawnArg = [
+          `--schema ${xsdValidatorPath}`,
+          `${xmlSchema}`,
+          '--noout',
+        ]
+        //Using XMLLint for Windows
+        const result: any = spawnSync('xmllint', spawnArg, {shell: true, stdio: 'inherit'})
 
-      if (!valid) {
-        console.log(`${P_ERROR}XML Schema validation failed for '${P_END}${P_PATH}${generatedSchemaPath}${P_END}${P_PATH} using schema ${xsdValidatorPath}${P_END}${P_ERROR}'${P_END}.`);
-
-        process.exit(1);
+        if (!result || result.status >= 1) {
+          console.log(`${P_ERROR}XML Schema validation failed for '${P_END}${P_PATH}${xmlSchema}${P_ERROR}' using schema '${P_END}${P_PATH}${xsdValidatorPath}${P_ERROR}'.${P_END}`);
+          process.exit(1);
+        }
+        else {
+          console.log(`${P_OK}Schema validation passed for '${P_END}${P_PATH}${generatedSchemaPath}${P_END}${P_PATH}.`);
+        }
       }
-      else {
-        console.log(`${P_OK}Schema validation passed for '${P_END}${P_PATH}${generatedSchemaPath}${P_END}${P_PATH}.`);
-      }
-    }
 
     if (format === 'json') {
       //Uses AJV for the JSON validation
@@ -70,11 +70,11 @@ export const validateSchema = (
       const valid = validate(JSON.parse(jsonContent));
 
       if (!valid) {
-        console.log(`${P_ERROR}JSON Schema validation failed for '${P_END}${P_PATH}${generatedSchemaPath}${P_END}${P_PATH} using schema ${generatedSchemaPath}${P_END}${P_ERROR}'${P_END}.`);
+        console.log(`${P_ERROR}JSON Schema validation failed for '${P_END}${P_PATH}${generatedSchemaPath}${P_ERROR}' using schema '${P_END}${P_PATH}${jsonSchemaValidatorPath}${P_ERROR}'.${P_END}`);
 
         process.exit(1);
       } else {
-          console.log(`${P_OK}Schema validation passed for '${P_END}${P_PATH}${generatedSchemaPath}${P_END}${P_PATH}.`);
+          console.log(`${P_OK}Schema validation passed for '${P_END}${P_PATH}${generatedSchemaPath}${P_END}${P_OK}'.`);
       }
     }
   } catch (error) {
