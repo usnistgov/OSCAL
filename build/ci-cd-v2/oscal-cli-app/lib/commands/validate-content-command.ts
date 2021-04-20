@@ -6,10 +6,16 @@ export const command = 'validate-content'
 export const desc = 'Usage: oscalcli validate-content [arg] [options]'
 
 export const builder = {
+    'artifact-dir': {
+        type: 'string',
+        alias: 'a',
+        describe: 'Build source artifacts are stored in this location',
+        demand: false
+    },
     'oscal-dir': {
         type: 'string',
         alias: 'o',
-        describe: 'Directory where schemas are located',
+        describe: 'Directory where OSCAL schemas are located',
         demand: false
     },
     verbose: {
@@ -18,12 +24,6 @@ export const builder = {
         describe: 'Provide verbose output',
         demand: false
     },
-    'artifact-dir': {
-        type: 'string',
-        alias: 'a',
-        describe: 'Build source artifact are stored in this location',
-        demand: false
-    }
 }
 export const handler = function (argv: any) {
     const {a: artifactDir, o: oscalDir, v: verbose, _} = argv;
