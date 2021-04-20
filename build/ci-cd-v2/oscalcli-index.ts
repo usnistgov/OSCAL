@@ -2,7 +2,6 @@
 "use strict";
 
 import { join } from 'path'
-//import yargs from 'yargs'
 const yargs = require('yargs')
 
 yargs
@@ -12,6 +11,5 @@ yargs
     //Restricts use of other options not defined in modules
     .strictOptions()
     .recommendCommands()
-    //Restricts use of other commands not defined in modules
     //.strictCommands()
     .argv;
