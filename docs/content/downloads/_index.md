@@ -9,6 +9,8 @@ toc:
 aliases:
   - /resources/
   - /downloads/other-resources/
+toc:
+  enabled: true
 ---
 
 
