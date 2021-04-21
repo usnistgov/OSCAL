@@ -2,7 +2,8 @@
 title: OSCAL Stakeholders
 description: OSCAL supports the needs of many different stakeholder groups.
 weight: 50
-
+toc:
+  enabled: true
 ---
 Our stakeholders are segmented, as is our industry, into constituencies with various needs.
 

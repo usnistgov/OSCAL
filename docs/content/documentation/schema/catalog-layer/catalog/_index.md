@@ -3,6 +3,8 @@ title: Catalog Model
 heading: "OSCAL Catalog Layer: Catalog Model"
 description: XML and JSON format documentation for the OSCAL Catalog model, which models a [control catalog](/documentation/schema/catalog-layer/#catalog).
 weight: 30
+toc:
+  enabled: true
 aliases:
   - /docs/model/catalog/
   - /documentation/schema/catalog/

@@ -3,6 +3,8 @@ title: Project Goals and Design Principles
 description: OSCAL is being developed to address a number of challenges faced by information security professionals.
 heading:
 weight: 30
+toc:
+  enabled: true
 ---
 
 ## Goals of the OSCAL Project

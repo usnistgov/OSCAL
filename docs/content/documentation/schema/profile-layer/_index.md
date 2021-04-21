@@ -3,6 +3,8 @@ title: Profile Layer
 heading: "OSCAL Profile Layer"
 description: Provides the OSCAL [profile model](/documentation/schema/profile-layer/profile/), which represents a [profile](/learnmore/concepts/profile/), also known as a *baseline* or *overlay*.
 weight: 60
+toc:
+  enabled: true
 sidenav:
     activerenderdepth: 2
     inactiverenderdepth: 2

@@ -10,6 +10,8 @@ menu:
     name: Contact Us
     url: /contact/
     weight: 50
+toc:
+  enabled: true
 aliases:
 - /contribute/contact/
 ---

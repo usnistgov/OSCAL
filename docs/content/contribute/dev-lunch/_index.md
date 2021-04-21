@@ -4,9 +4,9 @@ description: The NIST OSCAL team hosts a bi-weekly web conference to discuss OSC
 layout: devlunch
 aliases:
 - /contribute/devlunch/
-sidenav:
-  toc:
-    headingselectors: "h3,h4"
+toc:
+  enabled: true
+  headingselectors: "h3,h4"
 weight: 10
 ---
 

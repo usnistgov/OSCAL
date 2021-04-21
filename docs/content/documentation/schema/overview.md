@@ -3,6 +3,8 @@ title: OSCAL Model Overview
 heading: Introduction to the OSCAL Models
 description: Reviews OSCAL modeling concepts, and discusses the supported OSCAL formats and related validation mechanisms.
 weight: 10
+toc:
+  enabled: true
 sidenav:
     title: OSCAL Model Overview
 aliases:

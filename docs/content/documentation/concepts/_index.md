@@ -5,9 +5,10 @@ description: Reviews the control- and assessment-related concepts used within OS
 weight: 10
 sidenav:
     title: Concepts Used in OSCAL
-    toc:
-        headingselectors: h2,h3,h4,h5
-        collapsedepth: 4
+toc:
+    enabled: true
+    headingselectors: h2,h3,h4,h5
+    collapsedepth: 4
 aliases:
  - /learnmore/concepts/
  - /learnmore/concepts/control/

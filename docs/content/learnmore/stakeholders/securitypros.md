@@ -2,6 +2,8 @@
 title: For Security Professionals
 heading: How can security professionals get involved?
 description: How can security professionals get involved?
+toc:
+  enabled: true
 aliases:
   - /learnmore/securitypros/
 ---

@@ -2,6 +2,8 @@
 title: Use Cases
 description: OSCAL supports a number of use cases.
 weight: 70
+toc:
+  enabled: true
 aliases:
   - /learnmore/scenarios/
   - /learnmore/casestudies/

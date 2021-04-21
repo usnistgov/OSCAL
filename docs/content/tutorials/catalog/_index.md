@@ -3,6 +3,8 @@ title: Creating a Basic Control Catalog
 description: A tutorial on creating a basic OSCAL control catalog.
 weight: 5
 suppresstopiclist: true
+toc:
+  enabled: true
 ---
 
 This tutorial covers creating a basic OSCAL control catalog. Before reading this tutorial you should:

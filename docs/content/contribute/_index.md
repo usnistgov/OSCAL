@@ -11,11 +11,13 @@ menu:
     name: Get involved
     url: /contribute/
     weight: 10
+toc:
+  enabled: true
 ---
 
 We are excited that you want to contribute to the OSCAL project. We are striving to provide a collaborative environment for professionals to contribute to the project's goals and objectives. A primary focus of this project is to improve security assessment efficiency, accuracy, and consistency on the basis of real-world experience with the technology used in this space. The language we develop must be well-defined, with easy to use formats.
 
-# Contributing
+## Contributing
 
 We use GitHub as a collaboration platform for the development of the OSCAL models. Within the OSCAL GitHub repository you will find:
 
