@@ -18,15 +18,14 @@
     "@types/yargs": "^15.0.5",
     "nodemon": "^2.0.4",
     "ts-node": "^8.10.2",
-    "typescript": "^3.9.5",
-    "yargs": "^16.2.0"
+    "typescript": "^3.9.5"
   },
   "dependencies": {
     "ajv": "^6.12.6",
-    "commander": "^5.1.0",
     "libxmljs2-xsd": "^0.26.5",
     "saxon-js": "^2.1.0",
-    "xslt3": "^2.1.0"
+    "xslt3": "^2.1.0",
+    "yargs": "^16.2.0"
   },
   "nodemonConfig": {
     "watch": "src/**/*.ts",
