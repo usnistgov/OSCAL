@@ -4,6 +4,8 @@ menu:
   primary:
     name: Downloads
     weight: 50
+toc:
+  enabled: true
 ---
 
 Official releases of the OSCAL Project are available on the project's [GitHub repository](https://github.com/usnistgov/OSCAL/releases). These releases align with the project's [roadmap](/contribute/roadmap/).
@@ -17,7 +19,7 @@ You can also get the [latest development version](https://github.com/usnistgov/O
 
 OSCAL uses version strings for releases based on the [semantic versioning v2.0.0](https://semver.org/spec/v2.0.0.html) specification.
 
-# Future OSCAL Compatibility Commitment
+## Future OSCAL Compatibility Commitment
 
 The OSCAL Project team recognizes the impact of syntax changes on content and tool developers following an evolving language. As we develop OSCAL, the team will take care to minimize the impact of any necessary changes. Syntax changes to the OSCAL XML and JSON models will only occur where there is a compelling need to do so. To the greatest extend practical, OSCAL-based content produced today will be future compatible.
 

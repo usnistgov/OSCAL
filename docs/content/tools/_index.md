@@ -5,6 +5,8 @@ menu:
   primary:
     name: Tools
     weight: 30
+toc:
+  enabled: true
 ---
 
 The [OSCAL models](/documentation/schema/) provide standardized formats for exchanging control, control implementation, and control assessment information in XML, JSON, and YAML. These formats allow this information to be exchanged between tools and for individual tools to process exchanged data, supporting analytics, user interaction, and increased automation.

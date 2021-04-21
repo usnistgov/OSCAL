@@ -3,6 +3,8 @@ title: Profile Model
 heading: "OSCAL Profile Layer: Profile Model"
 description: XML and JSON format documentation for the OSCAL [Profile model](.), which is the sole model in the OSCAL [Profile](../) layer. These formats model a [profile](/documentation/schema/profile-layer/#profile).
 weight: 40
+toc:
+  enabled: true
 aliases:
   - /docs/model/profile/
   - /documentation/schema/profile/

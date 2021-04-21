@@ -3,6 +3,8 @@ title: Assessment Plan Model
 heading: "OSCAL Assessment Layer: Assessment Plan Model"
 description: XML and JSON format documentation for the OSCAL Assessment Plan model, which is part of the OSCAL Assessment layer. These formats model the planning of a periodic or continuous assessment.
 weight: 60
+toc:
+  enabled: true
 aliases:
   - /documentation/schema/assessment-plan/
 ---

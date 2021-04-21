@@ -2,10 +2,9 @@
 title: OSCAL Model Review
 description: The NIST OSCAL team hosts a bi-weekly web conference to discuss OSCAL model issues.
 layout: devlunch
-sidenav:
-  toc:
-    headingselectors: "h3,h4"
-    includeHtml: true
+toc:
+  headingselectors: "h3,h4"
+  includeHtml: true
 weight: 20
 ---
 

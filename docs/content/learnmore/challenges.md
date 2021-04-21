@@ -2,6 +2,8 @@
 title: Challenges Addressed by OSCAL
 description: OSCAL addresses a number of challenges related to the definition and assessment of security controls.
 weight: 10
+toc:
+  enabled: true
 ---
 
 OSCAL addresses a number of challenges around security controls and security control assessment.

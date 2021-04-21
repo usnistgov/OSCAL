@@ -2,12 +2,14 @@
 title: Layers and Models Reference
 description: Provides details on the layers, models, and formats that comprise OSCAL. Concepts for each layer and model are discussed, and the semantics of each model and associated formats are defined.
 weight: 50
-aliases:
-  - /docs/model/ssp/
-  - /learnmore/architecture/
+toc:
+  enabled: true
 sidenav:
   activerenderdepth: 1
   inactiverenderdepth: 1
+aliases:
+  - /docs/model/ssp/
+  - /learnmore/architecture/
 ---
 
 The OSCAL architecture is organized in a stack of *layers*. Each lower layer in the stack provides information structures that are referenced and used by each higher layer. Each layer is composed of one or more *models*, which represent a information structure supporting a specific operational purpose. Each model in OSCAL is intended to build on the information provided by the model(s) in the lower layers.

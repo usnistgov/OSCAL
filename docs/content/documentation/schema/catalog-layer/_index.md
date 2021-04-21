@@ -6,6 +6,8 @@ weight: 70
 sidenav:
     activerenderdepth: 2
     inactiverenderdepth: 2
+toc:
+  enabled: true
 ---
 
 The OSCAL catalog layer provides a structured catalog model for representing a **catalog** of **controls**.

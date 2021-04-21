@@ -3,6 +3,8 @@ title:
 title: For Tool Developers
 heading: How can tool developers get involved?
 description: How can tool developers get involved?
+toc:
+  enabled: true
 aliases:
   - /learnmore/tooldevelopers/
 ---

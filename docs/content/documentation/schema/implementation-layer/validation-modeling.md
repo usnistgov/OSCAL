@@ -3,6 +3,8 @@ title: Representing Test Validation Information
 heading: "Representing Test Validation Information for Components"
 description: Discussed how test validation information (e.g., ) can be represented for an OSCAL [component](/documentation/schema/implementation-layer/component/).
 weight: 50
+toc:
+  enabled: true
 sidenav:
     activerenderdepth: 2
     inactiverenderdepth: 2
