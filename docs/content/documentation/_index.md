@@ -5,7 +5,7 @@ aliases:
 menu:
   primary:
     name: Documentation
-    weight: 40
+    weight: 30
 suppresstopiclist: false
 sidenav:
   inactiverenderdepth: 1

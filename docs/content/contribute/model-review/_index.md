@@ -36,6 +36,6 @@ Each bi-weekly teleconference will cover some or all of the following topics:
 -	Discussing property and annotation values
 -	Collecting feedback on how to improve the models and related documentation
 
-We specifically want to hear from community members that are authoring OSCAL content and creating OSCAL tools. ***Your [feedback](/contribute/contact/) is important to us***, which is the primary reason we are hosting these teleconferences.
+We specifically want to hear from community members that are authoring OSCAL content and creating OSCAL tools. ***Your [feedback](/contact/) is important to us***, which is the primary reason we are hosting these teleconferences.
 
 If you are interested in developing OSCAL content or tools, we would encourage you to participate. We look forward to talking with you about OSCAL.

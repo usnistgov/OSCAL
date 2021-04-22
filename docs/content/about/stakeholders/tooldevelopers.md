@@ -3,10 +3,9 @@ title:
 title: For Tool Developers
 heading: How can tool developers get involved?
 description: How can tool developers get involved?
-toc:
-  enabled: true
 aliases:
   - /learnmore/tooldevelopers/
+  - /learnmore/stakeholders/tooldevelopers/
 ---
 
 {{<callout>}}*Tool developers who build security compliance systems (Electronic Governance Risk and Compliance [eGRC] systems), or who provide secure infrastructure/software solutions to the Federal Government or to highly regulated industries*{{</callout>}}

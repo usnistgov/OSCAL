@@ -2,10 +2,9 @@
 title: For Baseline Authors
 heading: How can authors of baselines get involved?
 description: How can authors of baselines get involved?
-toc:
-  enabled: true
 aliases:
   - /learnmore/contentcreators/
+  - /learnmore/stakeholders/contentcreators/
 ---
 
 {{<callout>}}*Systems security policy professionals who set requirements for security programs, both across and within organizations and agencies*{{</callout>}}

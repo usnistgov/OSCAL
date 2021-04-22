@@ -1,7 +1,7 @@
 ---
 title: "OSCAL"
 ---
-{{% usa-hero image="automation-hero.png" calloutText="Automated" calloutAltText="Control-Based Assessment" buttonURL="/learnmore/" buttonText="Learn More" %}}
+{{% usa-hero image="automation-hero.png" calloutText="Automated" calloutAltText="Control-Based Assessment" buttonURL="/about/" buttonText="Learn More" %}}
 Supporting Control-Based<br/>
 Risk Management with<br/>
 Standardized Formats
@@ -41,6 +41,6 @@ Control-based information expressed using OSCAL formats allows you to:
 - Maintain and share actionable, up-to-date information about how controls are implemented in your systems
 - Automate the monitoring and assessment of your system control implementation effectiveness
 
-If you are new to the OSCAL project, we provide [learning material](learnmore/) on the project.
+If you are new to the OSCAL project, we provide [learning materials](learn/) for the project.
 {{%/usa-grid-container%}}
 {{</usa-section>}}

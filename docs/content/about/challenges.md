@@ -4,6 +4,8 @@ description: OSCAL addresses a number of challenges related to the definition an
 weight: 10
 toc:
   enabled: true
+aliases:
+  - /learnmore/challenges/
 ---
 
 OSCAL addresses a number of challenges around security controls and security control assessment.

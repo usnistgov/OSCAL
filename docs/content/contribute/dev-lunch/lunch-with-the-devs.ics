@@ -42,20 +42,21 @@ DESCRIPTION:OSCAL Community Members\,\n \nYou are invited to join the NIST
 	08d78ffb697d%7C2ab5d82fd8fa4797a93e054655c61dec%7C1%7C1%7C6371361824972360
 	80&sdata=5jTKbsbhfUw26YetRf5DRHkgMpL3UXWfkMic97ypubI%3D&reserved=0> )\n\nM
 	eeting ID: 187 858 571\nParticipant Passcode: 0183\n
-DTEND;TZID="Eastern Standard Time":20200423T130000
-DTSTAMP:20200417T185059Z
-DTSTART;TZID="Eastern Standard Time":20200423T120000
-LAST-MODIFIED:20200417T185059Z
+DTEND;TZID="Eastern Standard Time":20200116T130000
+DTSTAMP:20210421T161416Z
+DTSTART;TZID="Eastern Standard Time":20200116T120000
+EXDATE;TZID="Eastern Standard Time":20201217T120000,20201231T120000
+LAST-MODIFIED:20210421T161416Z
 LOCATION:https://bluejeans.com/187858571/0183
 ORGANIZER;CN="Waltermire, David A. (Fed)":mailto:david.waltermire@nist.gov
 PRIORITY:5
-RECURRENCE-ID;TZID="Eastern Standard Time":20200423T120000
+RRULE:FREQ=WEEKLY;INTERVAL=2;BYDAY=TH;WKST=SU
 SEQUENCE:0
 SUMMARY;LANGUAGE=en-us:OSCAL Lunch with the Devs
 TRANSP:OPAQUE
 UID:040000008200E00074C5B7101A82E00800000000B0CF8015E1C7D501000000000000000
 	0100000008FEB97393E285548B266498D0DC1FA26
-X-ALT-DESC;FMTTYPE=text/html:<html xmlns:v="urn:schemas-microsoft-com:vml"
+X-ALT-DESC;FMTTYPE=text/html:<html xmlns:v="urn:schemas-microsoft-com:vml" 
 	xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-mic
 	rosoft-com:office:word" xmlns:m="http://schemas.microsoft.com/office/2004/
 	12/omml" xmlns="http://www.w3.org/TR/REC-html40"><head><meta name=ProgId c
@@ -93,12 +94,12 @@ X-ALT-DESC;FMTTYPE=text/html:<html xmlns:v="urn:schemas-microsoft-com:vml"
 	sdException Locked="false" Priority="9" SemiHidden="true" UnhideWhenUsed="
 	true" QFormat="true" Name="heading 6"/>\n<w:LsdException Locked="false" Pr
 	iority="9" SemiHidden="true" UnhideWhenUsed="true" QFormat="true" Name="he
-	ading 7"/>\n<w:LsdException Locked="false" Priority="9" SemiHidden="true"
+	ading 7"/>\n<w:LsdException Locked="false" Priority="9" SemiHidden="true" 
 	UnhideWhenUsed="true" QFormat="true" Name="heading 8"/>\n<w:LsdException L
 	ocked="false" Priority="9" SemiHidden="true" UnhideWhenUsed="true" QFormat
 	="true" Name="heading 9"/>\n<w:LsdException Locked="false" SemiHidden="tru
-	e" UnhideWhenUsed="true" Name="index 1"/>\n<w:LsdException Locked="false"
-	SemiHidden="true" UnhideWhenUsed="true" Name="index 2"/>\n<w:LsdException
+	e" UnhideWhenUsed="true" Name="index 1"/>\n<w:LsdException Locked="false" 
+	SemiHidden="true" UnhideWhenUsed="true" Name="index 2"/>\n<w:LsdException 
 	Locked="false" SemiHidden="true" UnhideWhenUsed="true" Name="index 3"/>\n<
 	w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true" Name
 	="index 4"/>\n<w:LsdException Locked="false" SemiHidden="true" UnhideWhenU
@@ -115,7 +116,7 @@ X-ALT-DESC;FMTTYPE=text/html:<html xmlns:v="urn:schemas-microsoft-com:vml"
 	den="true" UnhideWhenUsed="true" Name="toc 4"/>\n<w:LsdException Locked="f
 	alse" Priority="39" SemiHidden="true" UnhideWhenUsed="true" Name="toc 5"/>
 	\n<w:LsdException Locked="false" Priority="39" SemiHidden="true" UnhideWhe
-	nUsed="true" Name="toc 6"/>\n<w:LsdException Locked="false" Priority="39"
+	nUsed="true" Name="toc 6"/>\n<w:LsdException Locked="false" Priority="39" 
 	SemiHidden="true" UnhideWhenUsed="true" Name="toc 7"/>\n<w:LsdException Lo
 	cked="false" Priority="39" SemiHidden="true" UnhideWhenUsed="true" Name="t
 	oc 8"/>\n<w:LsdException Locked="false" Priority="39" SemiHidden="true" Un
@@ -132,7 +133,7 @@ X-ALT-DESC;FMTTYPE=text/html:<html xmlns:v="urn:schemas-microsoft-com:vml"
 	e" SemiHidden="true" UnhideWhenUsed="true" Name="table of figures"/>\n<w:L
 	sdException Locked="false" SemiHidden="true" UnhideWhenUsed="true" Name="e
 	nvelope address"/>\n<w:LsdException Locked="false" SemiHidden="true" Unhid
-	eWhenUsed="true" Name="envelope return"/>\n<w:LsdException Locked="false"
+	eWhenUsed="true" Name="envelope return"/>\n<w:LsdException Locked="false" 
 	SemiHidden="true" UnhideWhenUsed="true" Name="footnote reference"/>\n<w:Ls
 	dException Locked="false" SemiHidden="true" UnhideWhenUsed="true" Name="an
 	notation reference"/>\n<w:LsdException Locked="false" SemiHidden="true" Un
@@ -166,7 +167,7 @@ X-ALT-DESC;FMTTYPE=text/html:<html xmlns:v="urn:schemas-microsoft-com:vml"
 	sdException Locked="false" Priority="10" QFormat="true" Name="Title"/>\n<w
 	:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true" Name=
 	"Closing"/>\n<w:LsdException Locked="false" SemiHidden="true" UnhideWhenUs
-	ed="true" Name="Signature"/>\n<w:LsdException Locked="false" Priority="1"
+	ed="true" Name="Signature"/>\n<w:LsdException Locked="false" Priority="1" 
 	SemiHidden="true" UnhideWhenUsed="true" Name="Default Paragraph Font"/>\n<
 	w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true" Name
 	="Body Text"/>\n<w:LsdException Locked="false" SemiHidden="true" UnhideWhe
@@ -222,15 +223,15 @@ X-ALT-DESC;FMTTYPE=text/html:<html xmlns:v="urn:schemas-microsoft-com:vml"
 	dException Locked="false" SemiHidden="true" UnhideWhenUsed="true" Name="an
 	notation subject"/>\n<w:LsdException Locked="false" SemiHidden="true" Unhi
 	deWhenUsed="true" Name="No List"/>\n<w:LsdException Locked="false" SemiHid
-	den="true" UnhideWhenUsed="true" Name="Outline List 1"/>\n<w:LsdException
-	Locked="false" SemiHidden="true" UnhideWhenUsed="true" Name="Outline List
+	den="true" UnhideWhenUsed="true" Name="Outline List 1"/>\n<w:LsdException 
+	Locked="false" SemiHidden="true" UnhideWhenUsed="true" Name="Outline List 
 	2"/>\n<w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="tru
 	e" Name="Outline List 3"/>\n<w:LsdException Locked="false" SemiHidden="tru
 	e" UnhideWhenUsed="true" Name="Table Simple 1"/>\n<w:LsdException Locked="
 	false" SemiHidden="true" UnhideWhenUsed="true" Name="Table Simple 2"/>\n<w
 	:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true" Name=
 	"Table Simple 3"/>\n<w:LsdException Locked="false" SemiHidden="true" Unhid
-	eWhenUsed="true" Name="Table Classic 1"/>\n<w:LsdException Locked="false"
+	eWhenUsed="true" Name="Table Classic 1"/>\n<w:LsdException Locked="false" 
 	SemiHidden="true" UnhideWhenUsed="true" Name="Table Classic 2"/>\n<w:LsdEx
 	ception Locked="false" SemiHidden="true" UnhideWhenUsed="true" Name="Table
 	 Classic 3"/>\n<w:LsdException Locked="false" SemiHidden="true" UnhideWhen
@@ -245,9 +246,9 @@ X-ALT-DESC;FMTTYPE=text/html:<html xmlns:v="urn:schemas-microsoft-com:vml"
 	rue" Name="Table Columns 3"/>\n<w:LsdException Locked="false" SemiHidden="
 	true" UnhideWhenUsed="true" Name="Table Columns 4"/>\n<w:LsdException Lock
 	ed="false" SemiHidden="true" UnhideWhenUsed="true" Name="Table Columns 5"/
-	>\n<w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+	>\n<w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true" 
 	Name="Table Grid 1"/>\n<w:LsdException Locked="false" SemiHidden="true" Un
-	hideWhenUsed="true" Name="Table Grid 2"/>\n<w:LsdException Locked="false"
+	hideWhenUsed="true" Name="Table Grid 2"/>\n<w:LsdException Locked="false" 
 	SemiHidden="true" UnhideWhenUsed="true" Name="Table Grid 3"/>\n<w:LsdExcep
 	tion Locked="false" SemiHidden="true" UnhideWhenUsed="true" Name="Table Gr
 	id 4"/>\n<w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="
@@ -286,7 +287,7 @@ X-ALT-DESC;FMTTYPE=text/html:<html xmlns:v="urn:schemas-microsoft-com:vml"
 	ble Theme"/>\n<w:LsdException Locked="false" SemiHidden="true" Name="Place
 	holder Text"/>\n<w:LsdException Locked="false" Priority="1" QFormat="true"
 	 Name="No Spacing"/>\n<w:LsdException Locked="false" Priority="60" Name="L
-	ight Shading"/>\n<w:LsdException Locked="false" Priority="61" Name="Light
+	ight Shading"/>\n<w:LsdException Locked="false" Priority="61" Name="Light 
 	List"/>\n<w:LsdException Locked="false" Priority="62" Name="Light Grid"/>\
 	n<w:LsdException Locked="false" Priority="63" Name="Medium Shading 1"/>\n<
 	w:LsdException Locked="false" Priority="64" Name="Medium Shading 2"/>\n<w:
@@ -299,13 +300,13 @@ X-ALT-DESC;FMTTYPE=text/html:<html xmlns:v="urn:schemas-microsoft-com:vml"
 	ty="71" Name="Colorful Shading"/>\n<w:LsdException Locked="false" Priority
 	="72" Name="Colorful List"/>\n<w:LsdException Locked="false" Priority="73"
 	 Name="Colorful Grid"/>\n<w:LsdException Locked="false" Priority="60" Name
-	="Light Shading Accent 1"/>\n<w:LsdException Locked="false" Priority="61"
+	="Light Shading Accent 1"/>\n<w:LsdException Locked="false" Priority="61" 
 	Name="Light List Accent 1"/>\n<w:LsdException Locked="false" Priority="62"
 	 Name="Light Grid Accent 1"/>\n<w:LsdException Locked="false" Priority="63
 	" Name="Medium Shading 1 Accent 1"/>\n<w:LsdException Locked="false" Prior
 	ity="64" Name="Medium Shading 2 Accent 1"/>\n<w:LsdException Locked="false
 	" Priority="65" Name="Medium List 1 Accent 1"/>\n<w:LsdException Locked="f
-	alse" SemiHidden="true" Name="Revision"/>\n<w:LsdException Locked="false"
+	alse" SemiHidden="true" Name="Revision"/>\n<w:LsdException Locked="false" 
 	Priority="34" QFormat="true" Name="List Paragraph"/>\n<w:LsdException Lock
 	ed="false" Priority="29" QFormat="true" Name="Quote"/>\n<w:LsdException Lo
 	cked="false" Priority="30" QFormat="true" Name="Intense Quote"/>\n<w:LsdEx
@@ -320,9 +321,9 @@ X-ALT-DESC;FMTTYPE=text/html:<html xmlns:v="urn:schemas-microsoft-com:vml"
 	rful Grid Accent 1"/>\n<w:LsdException Locked="false" Priority="60" Name="
 	Light Shading Accent 2"/>\n<w:LsdException Locked="false" Priority="61" Na
 	me="Light List Accent 2"/>\n<w:LsdException Locked="false" Priority="62" N
-	ame="Light Grid Accent 2"/>\n<w:LsdException Locked="false" Priority="63"
+	ame="Light Grid Accent 2"/>\n<w:LsdException Locked="false" Priority="63" 
 	Name="Medium Shading 1 Accent 2"/>\n<w:LsdException Locked="false" Priorit
-	y="64" Name="Medium Shading 2 Accent 2"/>\n<w:LsdException Locked="false"
+	y="64" Name="Medium Shading 2 Accent 2"/>\n<w:LsdException Locked="false" 
 	Priority="65" Name="Medium List 1 Accent 2"/>\n<w:LsdException Locked="fal
 	se" Priority="66" Name="Medium List 2 Accent 2"/>\n<w:LsdException Locked=
 	"false" Priority="67" Name="Medium Grid 1 Accent 2"/>\n<w:LsdException Loc
@@ -353,7 +354,7 @@ X-ALT-DESC;FMTTYPE=text/html:<html xmlns:v="urn:schemas-microsoft-com:vml"
 	eption Locked="false" Priority="63" Name="Medium Shading 1 Accent 4"/>\n<w
 	:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 4
 	"/>\n<w:LsdException Locked="false" Priority="65" Name="Medium List 1 Acce
-	nt 4"/>\n<w:LsdException Locked="false" Priority="66" Name="Medium List 2
+	nt 4"/>\n<w:LsdException Locked="false" Priority="66" Name="Medium List 2 
 	Accent 4"/>\n<w:LsdException Locked="false" Priority="67" Name="Medium Gri
 	d 1 Accent 4"/>\n<w:LsdException Locked="false" Priority="68" Name="Medium
 	 Grid 2 Accent 4"/>\n<w:LsdException Locked="false" Priority="69" Name="Me
@@ -371,9 +372,9 @@ X-ALT-DESC;FMTTYPE=text/html:<html xmlns:v="urn:schemas-microsoft-com:vml"
 	ption Locked="false" Priority="66" Name="Medium List 2 Accent 5"/>\n<w:Lsd
 	Exception Locked="false" Priority="67" Name="Medium Grid 1 Accent 5"/>\n<w
 	:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 5"/>
-	\n<w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent
-	5"/>\n<w:LsdException Locked="false" Priority="70" Name="Dark List Accent
-	5"/>\n<w:LsdException Locked="false" Priority="71" Name="Colorful Shading
+	\n<w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 
+	5"/>\n<w:LsdException Locked="false" Priority="70" Name="Dark List Accent 
+	5"/>\n<w:LsdException Locked="false" Priority="71" Name="Colorful Shading 
 	Accent 5"/>\n<w:LsdException Locked="false" Priority="72" Name="Colorful L
 	ist Accent 5"/>\n<w:LsdException Locked="false" Priority="73" Name="Colorf
 	ul Grid Accent 5"/>\n<w:LsdException Locked="false" Priority="60" Name="Li
@@ -392,7 +393,7 @@ X-ALT-DESC;FMTTYPE=text/html:<html xmlns:v="urn:schemas-microsoft-com:vml"
 	Exception Locked="false" Priority="72" Name="Colorful List Accent 6"/>\n<w
 	:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 6"/>
 	\n<w:LsdException Locked="false" Priority="19" QFormat="true" Name="Subtle
-	 Emphasis"/>\n<w:LsdException Locked="false" Priority="21" QFormat="true"
+	 Emphasis"/>\n<w:LsdException Locked="false" Priority="21" QFormat="true" 
 	Name="Intense Emphasis"/>\n<w:LsdException Locked="false" Priority="31" QF
 	ormat="true" Name="Subtle Reference"/>\n<w:LsdException Locked="false" Pri
 	ority="32" QFormat="true" Name="Intense Reference"/>\n<w:LsdException Lock
@@ -412,7 +413,7 @@ X-ALT-DESC;FMTTYPE=text/html:<html xmlns:v="urn:schemas-microsoft-com:vml"
 	 Name="Grid Table 4"/>\n<w:LsdException Locked="false" Priority="50" Name=
 	"Grid Table 5 Dark"/>\n<w:LsdException Locked="false" Priority="51" Name="
 	Grid Table 6 Colorful"/>\n<w:LsdException Locked="false" Priority="52" Nam
-	e="Grid Table 7 Colorful"/>\n<w:LsdException Locked="false" Priority="46"
+	e="Grid Table 7 Colorful"/>\n<w:LsdException Locked="false" Priority="46" 
 	Name="Grid Table 1 Light Accent 1"/>\n<w:LsdException Locked="false" Prior
 	ity="47" Name="Grid Table 2 Accent 1"/>\n<w:LsdException Locked="false" Pr
 	iority="48" Name="Grid Table 3 Accent 1"/>\n<w:LsdException Locked="false"
@@ -426,7 +427,7 @@ X-ALT-DESC;FMTTYPE=text/html:<html xmlns:v="urn:schemas-microsoft-com:vml"
 	able 3 Accent 2"/>\n<w:LsdException Locked="false" Priority="49" Name="Gri
 	d Table 4 Accent 2"/>\n<w:LsdException Locked="false" Priority="50" Name="
 	Grid Table 5 Dark Accent 2"/>\n<w:LsdException Locked="false" Priority="51
-	" Name="Grid Table 6 Colorful Accent 2"/>\n<w:LsdException Locked="false"
+	" Name="Grid Table 6 Colorful Accent 2"/>\n<w:LsdException Locked="false" 
 	Priority="52" Name="Grid Table 7 Colorful Accent 2"/>\n<w:LsdException Loc
 	ked="false" Priority="46" Name="Grid Table 1 Light Accent 3"/>\n<w:LsdExce
 	ption Locked="false" Priority="47" Name="Grid Table 2 Accent 3"/>\n<w:LsdE
@@ -437,7 +438,7 @@ X-ALT-DESC;FMTTYPE=text/html:<html xmlns:v="urn:schemas-microsoft-com:vml"
 	orful Accent 3"/>\n<w:LsdException Locked="false" Priority="52" Name="Grid
 	 Table 7 Colorful Accent 3"/>\n<w:LsdException Locked="false" Priority="46
 	" Name="Grid Table 1 Light Accent 4"/>\n<w:LsdException Locked="false" Pri
-	ority="47" Name="Grid Table 2 Accent 4"/>\n<w:LsdException Locked="false"
+	ority="47" Name="Grid Table 2 Accent 4"/>\n<w:LsdException Locked="false" 
 	Priority="48" Name="Grid Table 3 Accent 4"/>\n<w:LsdException Locked="fals
 	e" Priority="49" Name="Grid Table 4 Accent 4"/>\n<w:LsdException Locked="f
 	alse" Priority="50" Name="Grid Table 5 Dark Accent 4"/>\n<w:LsdException L
@@ -466,12 +467,12 @@ X-ALT-DESC;FMTTYPE=text/html:<html xmlns:v="urn:schemas-microsoft-com:vml"
 	le 5 Dark"/>\n<w:LsdException Locked="false" Priority="51" Name="List Tabl
 	e 6 Colorful"/>\n<w:LsdException Locked="false" Priority="52" Name="List T
 	able 7 Colorful"/>\n<w:LsdException Locked="false" Priority="46" Name="Lis
-	t Table 1 Light Accent 1"/>\n<w:LsdException Locked="false" Priority="47"
+	t Table 1 Light Accent 1"/>\n<w:LsdException Locked="false" Priority="47" 
 	Name="List Table 2 Accent 1"/>\n<w:LsdException Locked="false" Priority="4
 	8" Name="List Table 3 Accent 1"/>\n<w:LsdException Locked="false" Priority
 	="49" Name="List Table 4 Accent 1"/>\n<w:LsdException Locked="false" Prior
 	ity="50" Name="List Table 5 Dark Accent 1"/>\n<w:LsdException Locked="fals
-	e" Priority="51" Name="List Table 6 Colorful Accent 1"/>\n<w:LsdException
+	e" Priority="51" Name="List Table 6 Colorful Accent 1"/>\n<w:LsdException 
 	Locked="false" Priority="52" Name="List Table 7 Colorful Accent 1"/>\n<w:L
 	sdException Locked="false" Priority="46" Name="List Table 1 Light Accent 2
 	"/>\n<w:LsdException Locked="false" Priority="47" Name="List Table 2 Accen
@@ -482,12 +483,12 @@ X-ALT-DESC;FMTTYPE=text/html:<html xmlns:v="urn:schemas-microsoft-com:vml"
 	ist Table 6 Colorful Accent 2"/>\n<w:LsdException Locked="false" Priority=
 	"52" Name="List Table 7 Colorful Accent 2"/>\n<w:LsdException Locked="fals
 	e" Priority="46" Name="List Table 1 Light Accent 3"/>\n<w:LsdException Loc
-	ked="false" Priority="47" Name="List Table 2 Accent 3"/>\n<w:LsdException
+	ked="false" Priority="47" Name="List Table 2 Accent 3"/>\n<w:LsdException 
 	Locked="false" Priority="48" Name="List Table 3 Accent 3"/>\n<w:LsdExcepti
 	on Locked="false" Priority="49" Name="List Table 4 Accent 3"/>\n<w:LsdExce
 	ption Locked="false" Priority="50" Name="List Table 5 Dark Accent 3"/>\n<w
 	:LsdException Locked="false" Priority="51" Name="List Table 6 Colorful Acc
-	ent 3"/>\n<w:LsdException Locked="false" Priority="52" Name="List Table 7
+	ent 3"/>\n<w:LsdException Locked="false" Priority="52" Name="List Table 7 
 	Colorful Accent 3"/>\n<w:LsdException Locked="false" Priority="46" Name="L
 	ist Table 1 Light Accent 4"/>\n<w:LsdException Locked="false" Priority="47
 	" Name="List Table 2 Accent 4"/>\n<w:LsdException Locked="false" Priority=
@@ -498,7 +499,7 @@ X-ALT-DESC;FMTTYPE=text/html:<html xmlns:v="urn:schemas-microsoft-com:vml"
 	n Locked="false" Priority="52" Name="List Table 7 Colorful Accent 4"/>\n<w
 	:LsdException Locked="false" Priority="46" Name="List Table 1 Light Accent
 	 5"/>\n<w:LsdException Locked="false" Priority="47" Name="List Table 2 Acc
-	ent 5"/>\n<w:LsdException Locked="false" Priority="48" Name="List Table 3
+	ent 5"/>\n<w:LsdException Locked="false" Priority="48" Name="List Table 3 
 	Accent 5"/>\n<w:LsdException Locked="false" Priority="49" Name="List Table
 	 4 Accent 5"/>\n<w:LsdException Locked="false" Priority="50" Name="List Ta
 	ble 5 Dark Accent 5"/>\n<w:LsdException Locked="false" Priority="51" Name=
@@ -510,12 +511,12 @@ X-ALT-DESC;FMTTYPE=text/html:<html xmlns:v="urn:schemas-microsoft-com:vml"
 	tion Locked="false" Priority="49" Name="List Table 4 Accent 6"/>\n<w:LsdEx
 	ception Locked="false" Priority="50" Name="List Table 5 Dark Accent 6"/>\n
 	<w:LsdException Locked="false" Priority="51" Name="List Table 6 Colorful A
-	ccent 6"/>\n<w:LsdException Locked="false" Priority="52" Name="List Table
+	ccent 6"/>\n<w:LsdException Locked="false" Priority="52" Name="List Table 
 	7 Colorful Accent 6"/>\n<w:LsdException Locked="false" SemiHidden="true" U
 	nhideWhenUsed="true" Name="Mention"/>\n<w:LsdException Locked="false" Semi
 	Hidden="true" UnhideWhenUsed="true" Name="Smart Hyperlink"/>\n<w:LsdExcept
 	ion Locked="false" SemiHidden="true" UnhideWhenUsed="true" Name="Hashtag"/
-	>\n<w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+	>\n<w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true" 
 	Name="Unresolved Mention"/>\n</w:LatentStyles>\n</xml><![endif]--><style><
 	!--\n/* Font Definitions */\n@font-face\n	{font-family:Wingdings\;\n	panos
 	e-1:5 0 0 0 0 0 0 0 0 0\;\n	mso-font-charset:2\;\n	mso-generic-font-family
@@ -523,7 +524,7 @@ X-ALT-DESC;FMTTYPE=text/html:<html xmlns:v="urn:schemas-microsoft-com:vml"
 	2147483648 0\;}\n@font-face\n	{font-family:"Cambria Math"\;\n	panose-1:2 4
 	 5 3 5 4 6 3 2 4\;\n	mso-font-charset:0\;\n	mso-generic-font-family:roman\
 	;\n	mso-font-pitch:variable\;\n	mso-font-signature:-536869121 1107305727 3
-	3554432 0 415 0\;}\n@font-face\n	{font-family:Calibri\;\n	panose-1:2 15 5
+	3554432 0 415 0\;}\n@font-face\n	{font-family:Calibri\;\n	panose-1:2 15 5 
 	2 2 2 4 3 2 4\;\n	mso-font-charset:0\;\n	mso-generic-font-family:swiss\;\n
 		mso-font-pitch:variable\;\n	mso-font-signature:-536859905 -1073732485 9 0
 	 511 0\;}\n/* Style Definitions */\np.MsoNormal\, li.MsoNormal\, div.MsoNo
@@ -604,7 +605,7 @@ X-ALT-DESC;FMTTYPE=text/html:<html xmlns:v="urn:schemas-microsoft-com:vml"
 	F0A7\;\n	mso-level-tab-stop:4.0in\;\n	mso-level-number-position:left\;\n	t
 	ext-indent:-.25in\;\n	mso-ansi-font-size:10.0pt\;\n	font-family:Wingdings\
 	;}\n@list l1:level9\n	{mso-level-number-format:bullet\;\n	mso-level-text:\
-	\F0A7\;\n	mso-level-tab-stop:4.5in\;\n	mso-level-number-position:left\;\n
+	\F0A7\;\n	mso-level-tab-stop:4.5in\;\n	mso-level-number-position:left\;\n	
 	text-indent:-.25in\;\n	mso-ansi-font-size:10.0pt\;\n	font-family:Wingdings
 	\;}\n@list l2\n	{mso-list-id:1481268996\;\n	mso-list-type:hybrid\;\n	mso-l
 	ist-template-ids:-816553704 67698689 67698691 67698693 67698689 67698691 6
@@ -628,7 +629,7 @@ X-ALT-DESC;FMTTYPE=text/html:<html xmlns:v="urn:schemas-microsoft-com:vml"
 	\;\n	mso-level-tab-stop:none\;\n	mso-level-number-position:left\;\n	text-i
 	ndent:-.25in\;\n	font-family:Symbol\;}\n@list l2:level8\n	{mso-level-numbe
 	r-format:bullet\;\n	mso-level-text:o\;\n	mso-level-tab-stop:none\;\n	mso-l
-	evel-number-position:left\;\n	text-indent:-.25in\;\n	font-family:"Courier
+	evel-number-position:left\;\n	text-indent:-.25in\;\n	font-family:"Courier 
 	New"\;}\n@list l2:level9\n	{mso-level-number-format:bullet\;\n	mso-level-t
 	ext:\\F0A7\;\n	mso-level-tab-stop:none\;\n	mso-level-number-position:left\
 	;\n	text-indent:-.25in\;\n	font-family:Wingdings\;}\nol\n	{margin-bottom:0
@@ -664,11 +665,11 @@ X-ALT-DESC;FMTTYPE=text/html:<html xmlns:v="urn:schemas-microsoft-com:vml"
 	ck on or help with\, if we have any for that week. (0 to 10 minutes)<o:p><
 	/o:p></span></li><li class=MsoListParagraph style='margin-left:0in\;mso-li
 	st:l2 level1 lfo3'><span style='mso-ascii-font-family:Calibri\;mso-hansi-f
-	ont-family:Calibri\;mso-bidi-font-family:"Times New Roman"'>The remainder
+	ont-family:Calibri\;mso-bidi-font-family:"Times New Roman"'>The remainder 
 	of the call will be available to answer questions on OSCAL. This is an opp
-	ortunity ask clarifying questions\, to discuss features you would like to
+	ortunity ask clarifying questions\, to discuss features you would like to 
 	see in OSCAL\, and to report potential defects you have found. We specific
-	ally want to hear from community members that are authoring OSCAL content
+	ally want to hear from community members that are authoring OSCAL content 
 	and creating OSCAL tools.<o:p></o:p></span></li></ul><p class=MsoNormal><s
 	pan style='mso-ascii-font-family:Calibri\;mso-hansi-font-family:Calibri\;m
 	so-bidi-font-family:"Times New Roman"'><o:p>&nbsp\;</o:p></span></p><p cla
@@ -683,7 +684,7 @@ X-ALT-DESC;FMTTYPE=text/html:<html xmlns:v="urn:schemas-microsoft-com:vml"
 	ly:Calibri\;mso-hansi-font-family:Calibri\;mso-bidi-font-family:"Times New
 	 Roman"'><a href="https://nist.bluejeans.com/">https://nist.bluejeans.com/
 	</a><o:p></o:p></span></p><p class=MsoNormal><span style='mso-ascii-font-f
-	amily:Calibri\;mso-hansi-font-family:Calibri\;mso-bidi-font-family:"Times
+	amily:Calibri\;mso-hansi-font-family:Calibri\;mso-bidi-font-family:"Times 
 	New Roman"'>Meeting ID: 187 858 571<o:p></o:p></span></p><p class=MsoNorma
 	l><span style='mso-ascii-font-family:Calibri\;mso-hansi-font-family:Calibr
 	i\;mso-bidi-font-family:"Times New Roman"'>Participant Passcode: 0183<o:p>

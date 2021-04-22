@@ -4,6 +4,8 @@ description: OSCAL supports the needs of many different stakeholder groups.
 weight: 50
 toc:
   enabled: true
+aliases:
+  - /learnmore/stakeholders/
 ---
 Our stakeholders are segmented, as is our industry, into constituencies with various needs.
 
@@ -20,4 +22,4 @@ Please decide which roles you fit into, then go from there.
 
 ## Get Involved
 
-We are seeking [more collaboration](/contribute/) with our community. If you have questions about getting involved, please [contact us](/contribute/contact/).
+We are seeking [more collaboration](/contribute/) with our community. If you have questions about getting involved, please [contact us](/contact/).
