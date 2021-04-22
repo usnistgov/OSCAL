@@ -4,7 +4,7 @@ heading: OSCAL Tools
 menu:
   primary:
     name: Tools
-    weight: 30
+    weight: 50
 toc:
   enabled: true
 ---
@@ -16,7 +16,7 @@ Tools exist that support the use of the OSCAL models. These tools are listed bel
 - OSCAL Project provided tools and libraries
 - Open Source Tools provided by 3rd parties
 
-If you have produced a tool that supports the OSCAL formats that you would like to have listed on this page, please [contact us](/contribute/contact/).
+If you have produced a tool that supports the OSCAL formats that you would like to have listed on this page, please [contact us](/contact/).
 
 ## Disclaimer
 

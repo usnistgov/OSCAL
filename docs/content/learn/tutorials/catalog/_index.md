@@ -1,10 +1,12 @@
 ---
-title: Creating a Basic Control Catalog
-description: A tutorial on creating a basic OSCAL control catalog.
+title: Creating a Control Catalog
+description: A tutorial on creating an OSCAL control catalog.
 weight: 5
 suppresstopiclist: true
 toc:
   enabled: true
+aliases:
+  - /tutorials/catalog/
 ---
 
 This tutorial covers creating a basic OSCAL control catalog. Before reading this tutorial you should:
@@ -1426,8 +1428,8 @@ This concludes the tutorial. At this point you should be familiar with:
 
 For more information you can review the [OSCAL catalog model documentation](/documentation/schema/catalog-layer/catalog/).
 
-[catalog-docs]: /documentation/schema/catalog/
-[catalog-definition]: /learnmore/concepts/catalog/
+[catalog-docs]: /documentation/schema/catalog-layer/catalog/
+[catalog-definition]: /documentation/concepts/#catalog
 [catalog-prose-sample]: {{< param "contentRepoPath" >}}/examples/catalog/basic-catalog.md
 [oscal-markup-line]: /documentation/schema/datatypes/#markup-line
 [oscal-markup-multiline]: /documentation/schema/datatypes/#markup-multiline

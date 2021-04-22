@@ -8,6 +8,7 @@ aliases:
   - /learnmore/scenarios/
   - /learnmore/casestudies/
   - /learnmore/case-studies/
+  - /learnmore/use-cases/
 ---
 
 OSCAL supports a number of use cases, some of which are described below.

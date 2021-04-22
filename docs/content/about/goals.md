@@ -5,6 +5,8 @@ heading:
 weight: 30
 toc:
   enabled: true
+aliases:
+  - /learnmore/goals/
 ---
 
 ## Goals of the OSCAL Project

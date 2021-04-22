@@ -37,6 +37,6 @@ After a brief introduction to the meeting, each teleconference will cover the fo
 
 - The OSCAL team will provide a *short summary* of **what we are currently working on**. (5 to 10 minutes)
 - The OSCAL team will **discuss issues** that we need **community feedback** on or **help with**, if we have any for that week. (0 to 10 minutes)
-- The remainder of the call will be **available to answer questions on OSCAL**. This is an opportunity **ask clarifying questions**, to **discuss features** you would like to see in OSCAL, and to **report potential defects** you have found. We specifically want to hear from community members that are authoring OSCAL content and creating OSCAL tools. ***Your [feedback](/contribute/contact/) is important to us***, which is the primary reason we are hosting these teleconferences.
+- The remainder of the call will be **available to answer questions on OSCAL**. This is an opportunity **ask clarifying questions**, to **discuss features** you would like to see in OSCAL, and to **report potential defects** you have found. We specifically want to hear from community members that are authoring OSCAL content and creating OSCAL tools. ***Your [feedback](/contact/) is important to us***, which is the primary reason we are hosting these teleconferences.
 
 We look forward to talking with you about OSCAL.
