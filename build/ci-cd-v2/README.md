@@ -58,7 +58,7 @@ When working directory option is not specified, the XML and JSON directories wil
 
 - ## arguments
 
-Arguments are used to pass the schema through the command line interface. The argument passed through CLI should not contain the pipes that indicate format, convert, doc as in the regular schema defined in a config file.\
+Arguments are used to pass the metaschema through the command line interface. The argument passed through the CLI should not contain the pipes that indicate format, convert, doc as in the regular schema defined in a config file.\
 For example: \
 Instead of `src/metaschema/file_metaschema.xml|xml,json|xml,json|xml,json` use `src/metaschema/file_metaschema.xml`.
 
@@ -95,7 +95,7 @@ When working directory option is not specified, the XML and JSON directories wil
 
 - ## arguments
 
-Arguments are used to pass the schema through the command line interface. \
+Arguments are used to pass the metaschema through the command line interface. \
 For example: `src/metaschema/file_metaschema.xml`.
 
 
