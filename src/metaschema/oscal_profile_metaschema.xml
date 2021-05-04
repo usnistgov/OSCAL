@@ -189,9 +189,64 @@
             <formal-name>Modify controls</formal-name>
             <description>Set parameters or amend controls in resolution</description>
             <model>
-                  <assembly ref="set-parameter" max-occurs="unbounded">
+                  <define-assembly name="set-parameter">
+                        <formal-name>Parameter Setting</formal-name>
+                        <description>A parameter setting, to be propagated to points of insertion</description>
+                        <json-key flag-name="param-id"/>
                         <group-as name="set-parameters" in-json="BY_KEY"/>
-                  </assembly>
+                        <define-flag required="yes" name="param-id" as-type="NCName">
+                              <!-- This is an id because the idenfier is assigned and managed by humans. -->
+                              <formal-name>Parameter ID</formal-name>
+                              <description>Indicates the value of the 'id' flag on a target parameter; i.e. which parameter to set</description>
+                        </define-flag>
+                        <define-flag name="class" as-type="NCName">
+                              <formal-name>Parameter Class</formal-name>
+                              <description>A textual label that provides a characterization of the parameter.</description>
+                              <remarks>
+                                    <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of a specific <code>class</code> value.</p>
+                              </remarks>
+                        </define-flag>
+                        <flag ref="depends-on"/>
+                        <model>
+                              <assembly ref="property" max-occurs="unbounded">
+                                    <group-as name="props" in-json="ARRAY"/>
+                              </assembly>
+                              <assembly ref="link" max-occurs="unbounded">
+                                    <group-as name="links" in-json="ARRAY"/>
+                              </assembly>
+                              <define-field name="label" as-type="markup-line">
+                                    <formal-name>Parameter Label</formal-name>
+                                    <description>A short, placeholder name for the parameter, which can be used as a substitute for a <code>value</code> if no value is assigned.</description>
+                                    <remarks>
+                                          <p>The label value should be suitable for inline display in a rendered catalog.</p>
+                                    </remarks>
+                              </define-field>
+                              <define-field name="usage" as-type="markup-multiline" in-xml="WITH_WRAPPER">
+                                    <formal-name>Parameter Usage Description</formal-name>
+                                    <description>Describes the purpose and use of a parameter</description>
+                              </define-field>
+                              <assembly ref="parameter-constraint" max-occurs="unbounded">
+                                    <use-name>constraint</use-name>
+                                    <group-as name="constraints" in-json="ARRAY"/>
+                              </assembly>
+                              <assembly ref="parameter-guideline" max-occurs="unbounded">
+                                    <use-name>guideline</use-name>
+                                    <group-as name="guidelines" in-json="ARRAY"/>
+                              </assembly>
+                              <choice>
+                                    <field ref="parameter-value" max-occurs="unbounded">
+                                          <use-name>value</use-name>
+                                          <group-as name="values" in-json="ARRAY"/>
+                                          <remarks>
+                                                <p>Used to (re)define a parameter value.</p>
+                                          </remarks>
+                                    </field>
+                                    <assembly ref="parameter-selection">
+                                          <use-name>select</use-name>
+                                    </assembly>
+                              </choice>
+                        </model>
+                  </define-assembly>
                   <assembly ref="alter" max-occurs="unbounded">
                         <group-as name="alters" in-json="ARRAY"/>
                   </assembly>
@@ -260,63 +315,6 @@
             <remarks>
                   <p>If <code>with-child-controls</code> is <q>yes</q> on the call to a control, no sibling <code>call</code>elements need to be used to call any controls appearing within it. Since generally, this is how control enhancements are represented (as controls within controls), this provides a way to include controls with all their dependent controls (enhancements) without having to call them individually.</p>
             </remarks>
-      </define-assembly>
-      <define-assembly name="set-parameter" scope="local">
-            <formal-name>Parameter Setting</formal-name>
-            <description>A parameter setting, to be propagated to points of insertion</description>
-            <json-key flag-name="param-id"/>
-            <define-flag required="yes" name="param-id" as-type="NCName">
-                  <!-- This is an id because the idenfier is assigned and managed by humans. -->
-                  <formal-name>Parameter ID</formal-name>
-                  <description>Indicates the value of the 'id' flag on a target parameter; i.e. which parameter to set</description>
-            </define-flag>
-            <define-flag name="class" as-type="NCName">
-                  <formal-name>Parameter Class</formal-name>
-                  <description>A textual label that provides a characterization of the parameter.</description>
-                  <remarks>
-                        <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of a specific <code>class</code> value.</p>
-                  </remarks>
-            </define-flag>
-            <flag ref="depends-on"/>
-            <model>
-                  <assembly ref="property" max-occurs="unbounded">
-                        <group-as name="props" in-json="ARRAY"/>
-                  </assembly>
-                  <assembly ref="link" max-occurs="unbounded">
-                        <group-as name="links" in-json="ARRAY"/>
-                  </assembly>
-                  <define-field name="label" as-type="markup-line">
-                        <formal-name>Parameter Label</formal-name>
-                        <description>A short, placeholder name for the parameter, which can be used as a substitute for a <code>value</code> if no value is assigned.</description>
-                        <remarks>
-                              <p>The label value should be suitable for inline display in a rendered catalog.</p>
-                        </remarks>
-                  </define-field>
-                  <define-field name="usage" as-type="markup-multiline" in-xml="WITH_WRAPPER">
-                        <formal-name>Parameter Usage Description</formal-name>
-                        <description>Describes the purpose and use of a parameter</description>
-                  </define-field>
-                  <assembly ref="parameter-constraint" max-occurs="unbounded">
-                        <use-name>constraint</use-name>
-                        <group-as name="constraints" in-json="ARRAY"/>
-                  </assembly>
-                  <assembly ref="parameter-guideline" max-occurs="unbounded">
-                        <use-name>guideline</use-name>
-                        <group-as name="guidelines" in-json="ARRAY"/>
-                  </assembly>
-                  <choice>
-                        <field ref="parameter-value" max-occurs="unbounded">
-                              <use-name>value</use-name>
-                              <group-as name="values" in-json="ARRAY"/>
-                              <remarks>
-                                    <p>Used to (re)define a parameter value.</p>
-                              </remarks>
-                        </field>
-                        <assembly ref="parameter-selection">
-                              <use-name>select</use-name>
-                        </assembly>
-                  </choice>
-            </model>
       </define-assembly>
       <define-assembly name="alter">
             <formal-name>Alteration</formal-name>
