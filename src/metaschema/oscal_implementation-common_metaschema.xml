@@ -75,7 +75,7 @@
                         </model>
                   </define-assembly>
                   <assembly ref="responsible-role" max-occurs="unbounded">
-                        <group-as name="responsible-roles" in-json="BY_KEY"/>
+                        <group-as name="responsible-roles" in-json="ARRAY"/>
                   </assembly>
                   <assembly ref="protocol" max-occurs="unbounded">
                         <group-as name="protocols" in-json="ARRAY"/>
@@ -215,7 +215,12 @@
                         <enum value="incoming">Data from the remote system flows into this system.</enum>
                         <enum value="outgoing">Data from this system flows to the remote system.</enum>
                   </allowed-values>
-
+                  <is-unique name="unique-system-component-responsible-role" target="responsible-role">
+                        <key-field target="role-id"/>
+                        <remarks>
+                              <p>Since multiple <code>party-uuid</code> entries can be provided, each role-id must be referenced only once.</p>
+                        </remarks>
+                  </is-unique>
             </constraint>
             <remarks>
                   <p>Components may be products, services, application programming interface (APIs), policies, processes, plans, guidance, standards, or other tangible items that enable security and/or privacy.</p>

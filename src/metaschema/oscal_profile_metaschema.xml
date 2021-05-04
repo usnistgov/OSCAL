@@ -189,7 +189,7 @@
             <formal-name>Modify controls</formal-name>
             <description>Set parameters or amend controls in resolution</description>
             <model>
-                  <define-assembly name="set-parameter">
+                  <define-assembly name="set-parameter" max-occurs="unbounded">
                         <formal-name>Parameter Setting</formal-name>
                         <description>A parameter setting, to be propagated to points of insertion</description>
                         <json-key flag-name="param-id"/>
