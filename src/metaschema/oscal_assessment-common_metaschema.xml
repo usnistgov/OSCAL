@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="../../build/metaschema/toolchains/xslt-M4/validate/metaschema-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
-<METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-   xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
-   xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/toolchains/xslt-M4/validate/metaschema.xsd"
-   abstract="yes">
+<METASCHEMA xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" abstract="yes">
    <schema-name>OSCAL Assessment Layer Format -- Common Modules</schema-name>
    <schema-version>1.0.0-rc2</schema-version>
    <short-name>oscal-assessment-common</short-name>
@@ -416,7 +412,7 @@
 
          <define-assembly name="control-objective-selection" min-occurs="0" max-occurs="unbounded">
             <!-- CHANGED: "control-objectives" to "control-objective-selection" -->
-            <formal-name>Referened Control Objectives</formal-name>
+            <formal-name>Referenced Control Objectives</formal-name>
             <description>Identifies the control objectives of the assessment. In the assessment plan, these are the planned objectives. In the assessment results, these are the assessed objectives, and reflects any changes from the plan.</description>
             <!-- CHANGED: "control-objective-group" to "control-objective-selections" -->
             <group-as name="control-objective-selections" in-json="ARRAY"/>

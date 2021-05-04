@@ -259,4 +259,8 @@
                 <formal-name>Depends on</formal-name>
                 <description>Another parameter invoking this one</description>
         </define-flag>
+        <define-flag name="control-id" as-type="NCName">
+                <formal-name>Control Identifier Reference</formal-name>
+                <description>A reference to a control with a corresponding <code>id</code> value.</description>
+        </define-flag>
 </METASCHEMA>
