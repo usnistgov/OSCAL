@@ -23,7 +23,9 @@
     </p>
     <p>NOTE: This documentation is a work in progress. As a result, documentation for many of the information elements is missing or incomplete.</p>
   </remarks>
+
   <import href="oscal_implementation-common_metaschema.xml"/>
+
   <define-assembly name="component-definition">
     <formal-name>Component Definition</formal-name>
     <description>A collection of component descriptions, which may optionally be grouped by capability.</description>
@@ -71,7 +73,7 @@
       <description>The unique identifier for the component.</description>
     </define-flag>
     <!-- CHANGE: removed "name" -->
-    <flag ref="component-type" required="yes">
+    <flag ref="defined-component-type" required="yes">
       <!-- CHANGED: "component-type" to "type" -->
       <use-name>type</use-name>
     </flag>
@@ -233,7 +235,7 @@
     </remarks>
   </define-assembly>
 
-  <define-flag name="component-type" as-type="string">
+  <define-flag name="defined-component-type" as-type="string">
     <formal-name>Component Type</formal-name>
     <description>A category describing the purpose of the component.</description>
     <constraint>
@@ -299,7 +301,7 @@
     </model>
   </define-assembly>
 
-  <define-assembly name="control-implementation">
+  <define-assembly name="control-implementation" scope="local">
     <formal-name>Control Implementation Set</formal-name>
     <description>Defines how the component or capability supports a set of controls.</description>
     <define-flag name="uuid" as-type="uuid" required="yes">
@@ -334,14 +336,14 @@
       <p>Use of <code>set-parameter</code> in this context, sets the parameter for all related controls referenced in an <code>implemented-requirement</code>. If the same parameter is also set in a specific <code>implemented-requirement</code>, then the new value will override this value.</p>
     </remarks>
   </define-assembly>
-  <define-assembly name="implemented-requirement">
+  <define-assembly name="implemented-requirement" scope="local">
     <formal-name>Control Implementation</formal-name>
     <description>Describes how the containing component or capability implements an individual control.</description>
     <define-flag name="uuid" as-type="uuid" required="yes">
       <formal-name>Control Implementation Identifier</formal-name>
       <description>A unique identifier for a specific control implementation.</description>
     </define-flag>
-    <flag ref="control-id"/>
+    <flag ref="control-id" required="yes"/>
     <model>
       <define-field name="description" as-type="markup-multiline" min-occurs="1" in-xml="WITH_WRAPPER">
         <formal-name>Control Implementation Description</formal-name>

@@ -17,8 +17,10 @@
       <schema-version>1.0.0-rc2</schema-version>
       <short-name>oscal-implementation-common</short-name>
       <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
-      <import href="oscal_metadata_metaschema.xml"/>
 
+      <import href="oscal_metadata_metaschema.xml"/>
+      <import href="oscal_control-common_metaschema.xml"/>
+      
       <!-- ################################################## -->
       <!-- # The System Component and supporting constructs # -->
       <!-- ################################################## -->
@@ -30,7 +32,7 @@
                   <formal-name>Component Identifier</formal-name>
                   <description>The unique identifier for the component.</description>
             </define-flag>
-            <flag ref="component-type" required="yes">
+            <flag ref="system-component-type" required="yes">
                   <!-- CHANGED: "component-type" to "type" -->
                   <use-name>type</use-name>
             </flag>
@@ -224,7 +226,7 @@
             </remarks>
       </define-assembly>
 
-      <define-flag name="component-type" as-type="string">
+      <define-flag name="system-component-type" as-type="string">
             <formal-name>Component Type</formal-name>
             <description>A category describing the purpose of the component.</description>
             <constraint>
@@ -578,10 +580,6 @@
       <define-flag name="source" as-type="uri-reference">
             <formal-name>Source Resource Reference</formal-name>
             <description>A reference to an OSCAL catalog or profile providing the referenced control or subcontrol definition.</description>
-      </define-flag>
-      <define-flag name="control-id" as-type="NCName">
-            <formal-name>Control Identifier Reference</formal-name>
-            <description>A reference to a control identifier.</description>
       </define-flag>
       <!--   <define-assembly name="only-statement">
       <formal-name>Specific Statement</formal-name>

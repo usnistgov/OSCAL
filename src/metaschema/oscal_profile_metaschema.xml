@@ -12,8 +12,10 @@
       <remarks>
             <p>A profile designates a selection and configuration of controls from one or more catalogs, along with a series of operations over them. The topmost element in the OSCAL profile XML schema is <code>profile</code>.</p>
       </remarks>
+
       <import href="oscal_metadata_metaschema.xml"/>
       <import href="oscal_control-common_metaschema.xml"/>
+
       <define-assembly name="profile">
             <formal-name>Profile</formal-name>
             <description>Each OSCAL profile is defined by a Profile element</description>
@@ -238,7 +240,7 @@
                   <p>This element provides an alternative to calling controls individually from a catalog.</p>
             </remarks>
       </define-assembly>
-      <define-assembly name="select-control-by-id">
+      <define-assembly name="select-control-by-id" scope="local">
             <formal-name>Call</formal-name>
             <description>Call a control by its ID</description>
             <flag ref="with-child-controls"/>
@@ -259,7 +261,7 @@
                   <p>If <code>with-child-controls</code> is <q>yes</q> on the call to a control, no sibling <code>call</code>elements need to be used to call any controls appearing within it. Since generally, this is how control enhancements are represented (as controls within controls), this provides a way to include controls with all their dependent controls (enhancements) without having to call them individually.</p>
             </remarks>
       </define-assembly>
-      <define-assembly name="set-parameter">
+      <define-assembly name="set-parameter" scope="local">
             <formal-name>Parameter Setting</formal-name>
             <description>A parameter setting, to be propagated to points of insertion</description>
             <json-key flag-name="param-id"/>
@@ -411,10 +413,6 @@
                   <p><code>id-ref</code>, when given, should indicate, by its ID, an element inside the control to serve as the anchor point for the addition. In this case, <code>position</code> value may be any of the permitted values.</p>
             </remarks>
       </define-assembly>
-      <define-flag as-type="NCName" name="control-id">
-            <formal-name>Control ID</formal-name>
-            <description>Value of the 'id' flag on a target control</description>
-      </define-flag>
       <define-flag as-type="NCName" name="with-child-controls">
             <formal-name>Include contained controls with control</formal-name>
             <description>When a control is included, whether its child (dependent) controls are also included.</description>
