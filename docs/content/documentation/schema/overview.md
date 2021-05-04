@@ -166,7 +166,7 @@ The sample schemas have been created with the following design principles in min
 
 ### Modeling Approach
 
-The OSCAL project is modeling each OSCAL layer using a modeling framework, called a [Metaschema](https://github.com/usnistgov/OSCAL/tree/master/src/metaschema). As described above, this framework allows the OSCAL project to define each OSCAL **model** in a given OSCAL **layer**. The information domain of each model is defined using Metaschema, creating an *information model* for each OSCAL model. An OSCAL **schema** represents a *data model* that defines how to represent an OSCAL *information model* in a serialized format, such as JSON, YAML, or XML. The OSCAL project uses the Metaschema framework to produce these schemas supporting the XML, JSON, and YAML formats.
+The OSCAL project is modeling each OSCAL layer using a modeling framework, called a [Metaschema](https://github.com/usnistgov/OSCAL/tree/main/src/metaschema). As described above, this framework allows the OSCAL project to define each OSCAL **model** in a given OSCAL **layer**. The information domain of each model is defined using Metaschema, creating an *information model* for each OSCAL model. An OSCAL **schema** represents a *data model* that defines how to represent an OSCAL *information model* in a serialized format, such as JSON, YAML, or XML. The OSCAL project uses the Metaschema framework to produce these schemas supporting the XML, JSON, and YAML formats.
 
 This framework is also used to generate converters capable of converting OSCAL content for a given model to another supported format, and to produce the documentation in this section of the website for each OSCAL model as it applies to each format.
 
@@ -230,5 +230,5 @@ This allows developers to use their preferred format. A tool designed for one fo
 
 Currently, converters are available to convert XML-based OSCAL files to JSON and JSON-based OSCAL files to XML.
 
-- [XML to JSON converters](https://github.com/usnistgov/OSCAL/tree/master/json/convert) ([How do I use this?](https://github.com/usnistgov/OSCAL/tree/master/json#converting-oscal-xml-content-to-json))
-- [JSON to XML converters](https://github.com/usnistgov/OSCAL/tree/master/xml/convert) ([How do I use this?](https://github.com/usnistgov/OSCAL/tree/master/xml#converting-oscal-json-content-to-xml))
+- [XML to JSON converters](https://github.com/usnistgov/OSCAL/tree/main/json/convert) ([How do I use this?](https://github.com/usnistgov/OSCAL/tree/main/json#converting-oscal-xml-content-to-json))
+- [JSON to XML converters](https://github.com/usnistgov/OSCAL/tree/main/xml/convert) ([How do I use this?](https://github.com/usnistgov/OSCAL/tree/main/xml#converting-oscal-json-content-to-xml))
