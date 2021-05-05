@@ -379,7 +379,7 @@
         <!-- TODO: Model specific link relationships? -->
       </assembly>
       <assembly ref="diagram" max-occurs="unbounded">
-        <group-as name="diagrams" in-json="BY_KEY"/>
+        <group-as name="diagrams" in-json="ARRAY"/>
         <remarks>
           <p>A visual depiction of the system's authorization boundary.</p>
         </remarks>
@@ -389,6 +389,14 @@
         <description>Commentary about the system's authorization boundary that enhances the diagram.</description>
       </define-field>
     </model>
+    <constraint>
+      <is-unique name="unique-ssp-authorization-boundary-diagram" target="diagram">
+        <key-field target="uuid"/>
+        <remarks>
+          <p>A given <code>uuid</code> must be assigned only once to a diagram.</p>
+        </remarks>
+      </is-unique>
+    </constraint>
   </define-assembly>
   <define-assembly name="diagram">
     <formal-name>Diagram</formal-name>
@@ -461,10 +469,19 @@
         <!-- TODO: Model specific link relationships? -->
       </assembly>
       <assembly ref="diagram" max-occurs="unbounded">
-        <group-as name="diagrams" in-json="BY_KEY"/>
+        <group-as name="diagrams" in-json="ARRAY"/>
       </assembly>
       <field ref="remarks" in-xml="WITH_WRAPPER"/>
     </model>
+    <constraint>
+      <is-unique name="unique-ssp-network-architecture-diagram" target="diagram">
+        <key-field target="uuid"/>
+        <remarks>
+          <p>A given <code>uuid</code> must be assigned only once to a diagram.</p>
+        </remarks>
+      </is-unique>
+    </constraint>
+    
   </define-assembly>
   <define-assembly name="data-flow">
     <formal-name>Data Flow</formal-name>
@@ -482,10 +499,18 @@
         <!-- TODO: Model specific link relationships? -->
       </assembly>
       <assembly ref="diagram" max-occurs="unbounded">
-        <group-as name="diagrams" in-json="BY_KEY"/>
+        <group-as name="diagrams" in-json="ARRAY"/>
       </assembly>
       <field ref="remarks" in-xml="WITH_WRAPPER"/>
     </model>
+    <constraint>
+      <is-unique name="unique-ssp-data-flow-diagram" target="diagram">
+        <key-field target="uuid"/>
+        <remarks>
+          <p>A given <code>uuid</code> must be assigned only once to a diagram.</p>
+        </remarks>
+      </is-unique>
+    </constraint>
   </define-assembly>
 
   <!-- ################################################################ -->
