@@ -278,7 +278,7 @@
         -->
       </assembly>
       <assembly ref="incorporates-component" max-occurs="unbounded">
-        <group-as name="incorporates-components" in-json="BY_KEY"/>
+        <group-as name="incorporates-components" in-json="ARRAY"/>
       </assembly>
       <assembly ref="control-implementation" max-occurs="unbounded">
         <group-as name="control-implementations" in-json="ARRAY"/>
@@ -289,9 +289,18 @@
 -->
       <field ref="remarks" in-xml="WITH_WRAPPER"/>
     </model>
+    <constraint>
+      <is-unique name="unique-component-definition-capability-incorporates-component" target="incorporates-component">
+        <key-field target="component-uuid"></key-field>
+        <remarks>
+          <p>A given <code>component</code> must not be referenced more than once within the same <code>capability</code>.</p>
+        </remarks>
+      </is-unique>
+    </constraint>
   </define-assembly>
   <define-assembly name="incorporates-component">
     <formal-name>Incorporates Component</formal-name>
+    <!-- TODO: needs a description -->
     <description>TBD</description>
     <json-key flag-name="component-uuid"/>
     <define-flag required="yes" name="component-uuid" as-type="uuid">
