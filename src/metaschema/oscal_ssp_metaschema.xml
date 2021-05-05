@@ -666,7 +666,7 @@
         <group-as name="statements" in-json="ARRAY"/>
       </assembly>
       <assembly ref="by-component" min-occurs="0" max-occurs="unbounded">
-        <group-as name="by-components" in-json="BY_KEY"/>
+        <group-as name="by-components" in-json="ARRAY"/>
       </assembly>
       <!-- TODO: Implement parameters -->
       <field ref="remarks" in-xml="WITH_WRAPPER"/>
@@ -711,6 +711,12 @@
           <p>Since <code>statement</code> entries can be referenced using the statement's statement-id, each statement must be referenced only once.</p>
         </remarks>
       </is-unique>
+      <is-unique name="unique-ssp-implemented-requirement-by-component" target="by-component">
+        <key-field target="component-uuid"/>
+        <remarks>
+          <p>Since <code>by-component</code> can reference <code>component</code> entries using the component's uuid, each component must be referenced only once. This ensures that all implementation statements are contained in the same <code>by-component</code> entry.</p>
+        </remarks>
+      </is-unique>
     </constraint>
   </define-assembly>
   <define-assembly name="statement" scope="local">
@@ -736,7 +742,7 @@
         <group-as name="responsible-roles" in-json="ARRAY"/>
       </assembly>
       <assembly ref="by-component" max-occurs="unbounded">
-        <group-as name="by-components" in-json="BY_KEY"/>
+        <group-as name="by-components" in-json="ARRAY"/>
       </assembly>
       <field ref="remarks" in-xml="WITH_WRAPPER"/>
     </model>
@@ -750,6 +756,13 @@
           <p>Since multiple <code>party-uuid</code> entries can be provided, each role-id must be referenced only once.</p>
         </remarks>
       </is-unique>
+      <is-unique name="unique-ssp-implemented-requirement-statement-by-component" target="by-component">
+        <key-field target="component-uuid"/>
+        <remarks>
+          <p>Since <code>by-component</code> can reference <code>component</code> entries using the component's uuid, each component must be referenced only once. This ensures that all implementation statements are contained in the same <code>by-component</code> entry.</p>
+        </remarks>
+      </is-unique>
+      
     </constraint>
   </define-assembly>
   <define-assembly name="by-component">
