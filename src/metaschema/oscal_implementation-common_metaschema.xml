@@ -624,7 +624,6 @@
       <define-assembly name="set-parameter">
             <formal-name>Set Parameter Value</formal-name>
             <description>Identifies the parameter that will be set by the enclosed value.</description>
-            <json-key flag-name="param-id"/>
             <flag ref="param-id" required="yes"/>
             <model>
                   <define-field name="parameter-value" as-type="string" min-occurs="1" max-occurs="unbounded">
