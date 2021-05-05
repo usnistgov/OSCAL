@@ -99,14 +99,11 @@
                 <enum value="content-approver">Indicates the organization responsible for all content represented in the "document".</enum>
             </allowed-values>
             <allowed-values target="link/@rel" allow-other="yes">
-                <enum value="canonical">The link identifies the authoritative location for this file.</enum>
-                <enum value="alternate">The link identifies an alternative location or format for this file.</enum>
-                <enum value="latest-version">This link identifies a resource containing the latest version in the version history. Defined by <a href="https://tools.ietf.org/html/rfc5829">RFC 5829</a>.
-                </enum>
-                <enum value="predecessor-version">This link identifies a resource containing the predecessor version in the version history. <a href="https://tools.ietf.org/html/rfc5829">RFC 5829</a>.
-                </enum>
-                <enum value="successor-version">This link identifies a resource containing the predecessor version in the version history. <a href="https://tools.ietf.org/html/rfc5829">RFC 5829</a>.
-                </enum>
+                <enum value="canonical">The link identifies the authoritative location for this file. Defined by <a href="https://tools.ietf.org/html/rfc6596">RFC 6596</a>.</enum>
+                <enum value="alternate">The link identifies an alternative location or format for this file. Defined by <a href="https://html.spec.whatwg.org/multipage/links.html#linkTypes">the HTML Living Standard</a></enum>
+                <enum value="latest-version">This link identifies a resource containing the latest version in the version history. Defined by <a href="https://tools.ietf.org/html/rfc5829">RFC 5829</a>.</enum>
+                <enum value="predecessor-version">This link identifies a resource containing the predecessor version in the version history. Defined by  <a href="https://tools.ietf.org/html/rfc5829">RFC 5829</a>.</enum>
+                <enum value="successor-version">This link identifies a resource containing the predecessor version in the version history. Defined by <a href="https://tools.ietf.org/html/rfc5829">RFC 5829</a>.</enum>
             </allowed-values>
         </constraint>
     </define-assembly>
@@ -132,9 +129,12 @@
             <field ref="remarks" in-xml="WITH_WRAPPER"/>
         </model>
         <constraint>
-            <has-cardinality target="published|last-modified|version|link[@rel='source']" min-occurs="1"/>
+            <has-cardinality target="published|last-modified|version|link[@rel='canonical']" min-occurs="1"/>
             <allowed-values target="link/@rel" allow-other="yes">
-                <enum value="source">Indicates that the href points to the source resource for the revision entry.</enum>
+                <enum value="canonical">The link identifies the authoritative location for this file. Defined by <a href="https://tools.ietf.org/html/rfc6596">RFC 6596</a>.</enum>
+                <enum value="alternate">The link identifies an alternative location or format for this file. Defined by <a href="https://html.spec.whatwg.org/multipage/links.html#linkTypes">the HTML Living Standard</a></enum>
+                <enum value="predecessor-version">This link identifies a resource containing the predecessor version in the version history. Defined by  <a href="https://tools.ietf.org/html/rfc5829">RFC 5829</a>.</enum>
+                <enum value="successor-version">This link identifies a resource containing the predecessor version in the version history. Defined by <a href="https://tools.ietf.org/html/rfc5829">RFC 5829</a>.</enum>
             </allowed-values>
         </constraint>
         <remarks>
