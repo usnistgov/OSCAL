@@ -49,7 +49,7 @@
                 <group-as name="parties" in-json="ARRAY"/>
             </assembly>
             <assembly ref="responsible-party" max-occurs="unbounded">
-                <group-as name="responsible-parties" in-json="BY_KEY"/>
+                <group-as name="responsible-parties" in-json="ARRAY"/>
             </assembly>
             <field ref="remarks" in-xml="WITH_WRAPPER"/>
         </model>
@@ -93,6 +93,12 @@
             <index id="index-metadata-party-organizations-uuid" name="index-metadata-party-organizations-uuid" target="party[@type='organization']">
                 <key-field target="@uuid"/>
             </index>
+            <is-unique name="unique-metadata-responsible-party" target="responsible-party">
+                <key-field target="@role-id"/>
+                <remarks>
+                    <p>Since <code>responsible-party</code> associates multiple <code>party-uuid</code> entries with a single <code>role-id</code>, each role-id must be referenced only once.</p>
+                </remarks>
+            </is-unique>
             <allowed-values id="allowed-metadata-responsibe-party-role-ids" target="responsible-party/@role-id" allow-other="yes">
                 <enum value="prepared-by">Indicates the organization that created this content.</enum>
                 <enum value="prepared-for">Indicates the organization for which this content was created.</enum>
@@ -697,7 +703,6 @@
     <define-assembly name="responsible-party">
         <formal-name>Responsible Party</formal-name>
         <description>A reference to a set of organizations or persons that have responsibility for performing a referenced role in the context of the containing object.</description>
-        <json-key flag-name="role-id"/>
         <define-flag required="yes" name="role-id" as-type="NCName">
             <formal-name>Responsible Role</formal-name>
             <description>The role that the party is responsible for.</description>

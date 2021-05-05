@@ -234,7 +234,7 @@
       <is-unique name="unique-defined-component-responsible-role" target="responsible-role">
         <key-field target="@role-id"/>
         <remarks>
-          <p>Since multiple <code>party-uuid</code> entries can be provided, each role-id must be referenced only once.</p>
+          <p>Since <code>responsible-role</code> associates multiple <code>party-uuid</code> entries with a single <code>role-id</code>, each role-id must be referenced only once.</p>
         </remarks>
       </is-unique>
     </constraint>
@@ -402,7 +402,7 @@
       <is-unique name="unique-component-definition-implemented-requirement-responsible-role" target="responsible-role">
         <key-field target="@role-id"/>
         <remarks>
-          <p>Since multiple <code>party-uuid</code> entries can be provided, each role-id must be referenced only once.</p>
+          <p>Since <code>responsible-role</code> associates multiple <code>party-uuid</code> entries with a single <code>role-id</code>, each role-id must be referenced only once.</p>
         </remarks>
       </is-unique>
       <is-unique name="unique-component-definition-implemented-requirement-statement" target="statement">
@@ -445,7 +445,7 @@
       <is-unique name="unique-component-definition-statement-responsible-role" target="responsible-role">
         <key-field target="@role-id"/>
         <remarks>
-          <p>Since multiple <code>party-uuid</code> entries can be provided, each role-id must be referenced only once.</p>
+          <p>Since <code>responsible-role</code> associates multiple <code>party-uuid</code> entries with a single <code>role-id</code>, each role-id must be referenced only once.</p>
         </remarks>
       </is-unique>
     </constraint>

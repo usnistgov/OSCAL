@@ -218,7 +218,7 @@
                   <is-unique name="unique-system-component-responsible-role" target="responsible-role">
                         <key-field target="@role-id"/>
                         <remarks>
-                              <p>Since multiple <code>party-uuid</code> entries can be provided, each role-id must be referenced only once.</p>
+                              <p>Since <code>responsible-role</code> associates multiple <code>party-uuid</code> entries with a single <code>role-id</code>, each role-id must be referenced only once.</p>
                         </remarks>
                   </is-unique>
             </constraint>
@@ -442,7 +442,7 @@
                         <group-as name="links" in-json="ARRAY"/>
                   </assembly>
                   <assembly ref="responsible-party" max-occurs="unbounded">
-                        <group-as name="responsible-parties" in-json="BY_KEY"/>
+                        <group-as name="responsible-parties" in-json="ARRAY"/>
                   </assembly>
                   <define-assembly name="implemented-component" max-occurs="unbounded">
                         <!-- TODO: Sync constraints with system-component; maybe remove this? (CHANGED (BJR): Dave-See Gitter for details on this. -->
@@ -482,7 +482,7 @@
                                     <group-as name="links" in-json="ARRAY"/>
                               </assembly>
                               <assembly ref="responsible-party" max-occurs="unbounded">
-                                    <group-as name="responsible-parties" in-json="BY_KEY"/>
+                                    <group-as name="responsible-parties" in-json="ARRAY"/>
                                     <remarks>
                                           <p>This construct is used to either: 1) associate a party or parties to a role defined on the component using the <code>responsible-role</code> construct, or 2) to define a party or parties that are responsible for a role defined within the context of the containing <code>inventory-item</code>.
                                           </p>
@@ -510,6 +510,12 @@
 
                               <!-- TODO: constrain party-id references to parties defined in the document. (BJR Unsure how to do this. )-->
 
+                              <is-unique name="unique-implemented-component-responsible-party" target="responsible-party">
+                                    <key-field target="@role-id"/>
+                                    <remarks>
+                                          <p>Since <code>responsible-party</code> associates multiple <code>party-uuid</code> entries with a single <code>role-id</code>, each role-id must be referenced only once.</p>
+                                    </remarks>
+                              </is-unique>
                         </constraint>
                   </define-assembly>
                   <field ref="remarks" in-xml="WITH_WRAPPER"/>
@@ -577,6 +583,12 @@
                   <index-has-key name="index-metadata-party-uuid" target="responsible-party">
                         <key-field target="@party-uuid"></key-field>
                   </index-has-key>
+                  <is-unique name="unique-inventory-item-responsible-party" target="responsible-party">
+                        <key-field target="@role-id"/>
+                        <remarks>
+                              <p>Since <code>responsible-party</code> associates multiple <code>party-uuid</code> entries with a single <code>role-id</code>, each role-id must be referenced only once.</p>
+                        </remarks>
+                  </is-unique>
             </constraint>
       </define-assembly>
 

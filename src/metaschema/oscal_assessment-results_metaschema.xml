@@ -163,7 +163,7 @@
         <group-as name="attestations" in-json="ARRAY"/>
         <model>
           <assembly ref="responsible-party" max-occurs="unbounded">
-            <group-as name="responsible-parties" in-json="BY_KEY"/>
+            <group-as name="responsible-parties" in-json="ARRAY"/>
           </assembly>
           <assembly ref="assessment-part" min-occurs="1" max-occurs="unbounded">
             <!-- TODO: defined allowed parts: authorization-statement -->
@@ -171,6 +171,14 @@
             <group-as name="parts" in-json="ARRAY"/>
           </assembly>
         </model>
+        <constraint>
+          <is-unique name="unique-ar-attestation-responsible-party" target="responsible-party">
+            <key-field target="@role-id"/>
+            <remarks>
+              <p>Since <code>responsible-party</code> associates multiple <code>party-uuid</code> entries with a single <code>role-id</code>, each role-id must be referenced only once.</p>
+            </remarks>
+          </is-unique>
+        </constraint>
       </define-assembly>
       <!-- CHANGED: removed "schedule" and replaced with "assessment-log" -->
       <define-assembly name="assessment-log">
