@@ -368,7 +368,7 @@
         <group-as name="responsible-roles" in-json="ARRAY"/>
       </assembly>
       <assembly ref="statement" max-occurs="unbounded">
-        <group-as name="statements" in-json="BY_KEY"/>
+        <group-as name="statements" in-json="ARRAY"/>
       </assembly>
       <field ref="remarks" in-xml="WITH_WRAPPER"/>
     </model>
@@ -379,12 +379,17 @@
           <p>Since multiple <code>party-uuid</code> entries can be provided, each role-id must be referenced only once.</p>
         </remarks>
       </is-unique>
+      <is-unique name="unique-component-definition-implemented-requirement-statement" target="statement">
+        <key-field target="statement-id"/>
+        <remarks>
+          <p>Since <code>statement</code> entries can be referenced using the statement's statement-id, each statement must be referenced only once.</p>
+        </remarks>
+      </is-unique>
     </constraint>
   </define-assembly>
   <define-assembly name="statement" scope="local">
     <formal-name>Control Statement Implementation</formal-name>
     <description>Identifies which statements within a control are addressed.</description>
-    <json-key flag-name="statement-id"/>
     <flag ref="statement-id" required="yes">
       <remarks>
         <p>A reference to the specific implemented statement associated with a control.</p>
