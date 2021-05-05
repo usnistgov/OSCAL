@@ -81,9 +81,7 @@
       <formal-name>Component Identifier</formal-name>
       <description>The unique identifier for the component.</description>
     </define-flag>
-    <!-- CHANGE: removed "name" -->
     <flag ref="defined-component-type" required="yes">
-      <!-- CHANGED: "component-type" to "type" -->
       <use-name>type</use-name>
     </flag>
     <model>
@@ -106,31 +104,18 @@
         <group-as name="links" in-json="ARRAY"/>
       </assembly>
       <assembly ref="responsible-role" max-occurs="unbounded">
-        <!-- CHANGE: from responsible-party to responsible-role -->
         <group-as name="responsible-roles" in-json="ARRAY"/>
       </assembly>
       <assembly ref="protocol" max-occurs="unbounded">
-        <!-- TODO: protocol (tcp/UDP), port range, service name, purpose, used by -->
         <group-as name="protocols" in-json="ARRAY"/>
         <remarks>
           <p>Used for <code>service</code> components to define the protocols supported by the service.</p>
         </remarks>
       </assembly>
 
-      <!-- Now addressed using: <link rel="validation" href="#22222222-0000-4000-a000-000000000002" /> -->
-      <!--
-         <assembly ref="proof-of-compliance" max-occurs="unbounded">
-           <group-as name="proofs-of-compliance" />
-         </assembly>
--->
       <assembly ref="control-implementation" max-occurs="unbounded">
         <group-as name="control-implementations" in-json="ARRAY"/>
       </assembly>
-      <!--
-         <assembly ref="supported-profile" max-occurs="unbounded">
-           <group-as name="supported-profiles" />
-         </assembly>
--->
       <!--
          <assembly ref="configuration" max-occurs="unbounded">
            <group-as name="configurations" in-json="BY_KEY" />
@@ -280,10 +265,6 @@
       </assembly>
       <assembly ref="link" max-occurs="unbounded">
         <group-as name="links" in-json="ARRAY"/>
-        <!-- TODO: Model specific link relationships for:
-          depends-on: component has a dependency on another component
-          validated-by:, etc.
-        -->
       </assembly>
       <assembly ref="incorporates-component" max-occurs="unbounded">
         <group-as name="incorporates-components" in-json="ARRAY"/>
@@ -291,10 +272,6 @@
       <assembly ref="control-implementation" max-occurs="unbounded">
         <group-as name="control-implementations" in-json="ARRAY"/>
       </assembly>
-      <!--      <assembly ref="supported-profile" max-occurs="unbounded">
-        <group-as name="supported-profiles" />
-      </assembly>
--->
       <field ref="remarks" in-xml="WITH_WRAPPER"/>
     </model>
     <constraint>
@@ -344,7 +321,6 @@
       </assembly>
       <assembly ref="link" max-occurs="unbounded">
         <group-as name="links" in-json="ARRAY"/>
-        <!-- TODO: Model specific link relationships -->
       </assembly>
       <assembly ref="set-parameter" max-occurs="unbounded">
         <group-as name="set-parameters" in-json="ARRAY"/>
@@ -453,38 +429,4 @@
       </is-unique>
     </constraint>
   </define-assembly>
-  <!--
-  <define-assembly name="supported-profile">
-    <formal-name>Supported Profile</formal-name>
-    <description>How the component supports a given baseline expressed as an OSCAL profile.</description>
-    <flag ref="source" required="yes"/>
-    <model>
-      <field ref="description" min-occurs="1"/>
-      <assembly ref="meets-requirement-set" max-occurs="unbounded">
-        <group-as name="meets-requirement-sets"/>
-      </assembly>
-      <field ref="prop" max-occurs="unbounded">
-        <group-as name="properties"/>
-      </field>
-      <field ref="link" max-occurs="unbounded">
-        <group-as name="links"/>
-        <!-\- TODO: Model specific link relationships -\->
-      </field>
-      <!-\- TODO: Implement parameters -\->
-      <field ref="remarks"/>
-    </model>
-  </define-assembly>
-
-  <define-assembly name="meets-requirement-set">
-    <formal-name>Can Meet</formal-name>
-    <description>Defines what sets of controls are supported by the component.</description>
-    <flag ref="source" required="yes"/>
-    <model>
-      <assembly ref="requirement" min-occurs="1" max-occurs="unbounded">
-        <group-as name="requirements"/>
-      </assembly>
-      <assembly ref="using"/>
-    </model>
-  </define-assembly>
--->
 </METASCHEMA>
