@@ -141,7 +141,7 @@
         </model>
         <constraint>
           <is-unique name="unique-ar-local-definitions-user" target="user">
-            <key-field target="uuid"/>
+            <key-field target="@uuid"/>
             <remarks>
               <p>A given <code>uuid</code> must be assigned only once to a user.</p>
             </remarks>
@@ -153,8 +153,7 @@
         <remarks>
           <p>The Assessment Results <code>control-selection</code> ignores any control selection in the Assessment Plan and re-selects controls from the baseline identified by the SSP.</p>
           <p>The Assessment Results <code>control-objective-selection</code> ignores any control objective selection in the Assessment Plan and re-selects control objectives from the baseline identified by the SSP.</p>
-          <p>Any additional control objectives defined in the Assessment Plan <code>local-definitions</code> do not need to be re-defined in the Assessment Results <code>local-definitions</code>; however, if they were explicitly referenced with an Assessment Plan <code>control-objective-selection</code>, they need to be selected again in the Assessment Results <code>control-objective-selection</code>.
-          </p>
+          <p>Any additional control objectives defined in the Assessment Plan <code>local-definitions</code> do not need to be re-defined in the Assessment Results <code>local-definitions</code>; however, if they were explicitly referenced with an Assessment Plan <code>control-objective-selection</code>, they need to be selected again in the Assessment Results <code>control-objective-selection</code>.</p>
         </remarks>
       </assembly>
 

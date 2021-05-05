@@ -216,7 +216,7 @@
                         <enum value="outgoing">Data from this system flows to the remote system.</enum>
                   </allowed-values>
                   <is-unique name="unique-system-component-responsible-role" target="responsible-role">
-                        <key-field target="role-id"/>
+                        <key-field target="@role-id"/>
                         <remarks>
                               <p>Since multiple <code>party-uuid</code> entries can be provided, each role-id must be referenced only once.</p>
                         </remarks>

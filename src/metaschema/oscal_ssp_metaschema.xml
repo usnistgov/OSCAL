@@ -391,7 +391,7 @@
     </model>
     <constraint>
       <is-unique name="unique-ssp-authorization-boundary-diagram" target="diagram">
-        <key-field target="uuid"/>
+        <key-field target="@uuid"/>
         <remarks>
           <p>A given <code>uuid</code> must be assigned only once to a diagram.</p>
         </remarks>
@@ -401,7 +401,6 @@
   <define-assembly name="diagram">
     <formal-name>Diagram</formal-name>
     <description>A graphic that provides a visual representation the system, or some aspect of it.</description>
-    <json-key flag-name="uuid"/>
     <define-flag name="uuid" as-type="uuid" required="yes">
       <formal-name>Diagram ID</formal-name>
       <description>The identifier for this diagram.</description>
@@ -475,7 +474,7 @@
     </model>
     <constraint>
       <is-unique name="unique-ssp-network-architecture-diagram" target="diagram">
-        <key-field target="uuid"/>
+        <key-field target="@uuid"/>
         <remarks>
           <p>A given <code>uuid</code> must be assigned only once to a diagram.</p>
         </remarks>
@@ -505,7 +504,7 @@
     </model>
     <constraint>
       <is-unique name="unique-ssp-data-flow-diagram" target="diagram">
-        <key-field target="uuid"/>
+        <key-field target="@uuid"/>
         <remarks>
           <p>A given <code>uuid</code> must be assigned only once to a diagram.</p>
         </remarks>
@@ -638,7 +637,7 @@
       <!-- TODO: only allow a single "this-system" component -->
 
       <is-unique name="unique-ssp-system-implementation-user" target="user">
-        <key-field target="uuid"/>
+        <key-field target="@uuid"/>
         <remarks>
           <p>A given <code>uuid</code> must be assigned only once to a user.</p>
         </remarks>
@@ -725,19 +724,19 @@
         </remarks>
       </has-cardinality>
       <is-unique name="unique-ssp-implemented-requirement-responsible-role" target="responsible-role">
-        <key-field target="role-id"/>
+        <key-field target="@role-id"/>
         <remarks>
           <p>Since multiple <code>party-uuid</code> entries can be provided, each role-id must be referenced only once.</p>
         </remarks>
       </is-unique>
       <is-unique name="unique-ssp-implemented-requirement-statement" target="statement">
-        <key-field target="statement-id"/>
+        <key-field target="@statement-id"/>
         <remarks>
           <p>Since <code>statement</code> entries can be referenced using the statement's statement-id, each statement must be referenced only once.</p>
         </remarks>
       </is-unique>
       <is-unique name="unique-ssp-implemented-requirement-by-component" target="by-component">
-        <key-field target="component-uuid"/>
+        <key-field target="@component-uuid"/>
         <remarks>
           <p>Since <code>by-component</code> can reference <code>component</code> entries using the component's uuid, each component must be referenced only once. This ensures that all implementation statements are contained in the same <code>by-component</code> entry.</p>
         </remarks>
@@ -776,13 +775,13 @@
             &allowed-values-responsible-roles-operations;
       </allowed-values>
       <is-unique name="unique-ssp-statement-responsible-role" target="responsible-role">
-        <key-field target="role-id"/>
+        <key-field target="@role-id"/>
         <remarks>
           <p>Since multiple <code>party-uuid</code> entries can be provided, each role-id must be referenced only once.</p>
         </remarks>
       </is-unique>
       <is-unique name="unique-ssp-implemented-requirement-statement-by-component" target="by-component">
-        <key-field target="component-uuid"/>
+        <key-field target="@component-uuid"/>
         <remarks>
           <p>Since <code>by-component</code> can reference <code>component</code> entries using the component's uuid, each component must be referenced only once. This ensures that all implementation statements are contained in the same <code>by-component</code> entry.</p>
         </remarks>
@@ -865,7 +864,7 @@
             </model>
             <constraint>
               <is-unique name="unique-provided-responsible-role" target="responsible-role">
-                <key-field target="role-id"/>
+                <key-field target="@role-id"/>
                 <remarks>
                   <p>Since multiple <code>party-uuid</code> entries can be provided, each role-id must be referenced only once.</p>
                 </remarks>
@@ -903,7 +902,7 @@
             </model>
             <constraint>
               <is-unique name="unique-responsibility-responsible-role" target="responsible-role">
-                <key-field target="role-id"/>
+                <key-field target="@role-id"/>
                 <remarks>
                   <p>Since multiple <code>party-uuid</code> entries can be provided, each role-id must be referenced only once.</p>
                 </remarks>
@@ -950,7 +949,7 @@
         </model>
         <constraint>
           <is-unique name="unique-inherited-responsible-role" target="responsible-role">
-            <key-field target="role-id"/>
+            <key-field target="@role-id"/>
             <remarks>
               <p>Since multiple <code>party-uuid</code> entries can be provided, each role-id must be referenced only once.</p>
             </remarks>
@@ -986,7 +985,7 @@
         </model>
         <constraint>
           <is-unique name="unique-satisfied-responsible-role" target="responsible-role">
-            <key-field target="role-id"/>
+            <key-field target="@role-id"/>
             <remarks>
               <p>Since multiple <code>party-uuid</code> entries can be provided, each role-id must be referenced only once.</p>
             </remarks>

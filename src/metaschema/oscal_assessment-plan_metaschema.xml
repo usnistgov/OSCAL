@@ -67,7 +67,7 @@
                 </model>
                 <constraint>
                     <is-unique name="unique-ap-local-definitions-user" target="user">
-                        <key-field target="uuid"/>
+                        <key-field target="@uuid"/>
                         <remarks>
                             <p>A given <code>uuid</code> must be assigned only once to a user.</p>
                         </remarks>

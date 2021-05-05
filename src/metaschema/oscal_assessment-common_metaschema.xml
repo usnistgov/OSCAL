@@ -165,7 +165,7 @@
             </model>
             <constraint>
                <is-unique name="unique-step-responsible-role" target="responsible-role">
-                  <key-field target="role-id"/>
+                  <key-field target="@role-id"/>
                   <remarks>
                      <p>Since multiple <code>party-uuid</code> entries can be provided, each role-id must be referenced only once.</p>
                   </remarks>
@@ -199,7 +199,7 @@
             <enum value="TEST">The process of exercising one or more assessment objects (i.e., activities or mechanisms) under specified conditions to compare actual with expected behavior.</enum>
          </allowed-values>
          <is-unique name="unique-activity-responsible-role" target="responsible-role">
-            <key-field target="role-id"/>
+            <key-field target="@role-id"/>
             <remarks>
                <p>Since multiple <code>party-uuid</code> entries can be provided, each role-id must be referenced only once.</p>
             </remarks>
@@ -341,7 +341,7 @@
             </model>
             <constraint>
                <is-unique name="unique-associated-activity-responsible-role" target="responsible-role">
-                  <key-field target="role-id"/>
+                  <key-field target="@role-id"/>
                   <remarks>
                      <p>Since multiple <code>party-uuid</code> entries can be provided, each role-id must be referenced only once.</p>
                   </remarks>
