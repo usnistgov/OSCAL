@@ -543,7 +543,7 @@
 
       <assembly ref="system-user" min-occurs="1" max-occurs="unbounded">
         <use-name>user</use-name>
-        <group-as name="users" in-json="BY_KEY"/>
+        <group-as name="users" in-json="ARRAY"/>
       </assembly>
       <assembly ref="system-component" min-occurs="1" max-occurs="unbounded">
         <use-name>component</use-name>
@@ -611,6 +611,13 @@
       </allowed-values>
 
       <!-- TODO: only allow a single "this-system" component -->
+
+      <is-unique name="unique-ssp-system-implementation-user" target="user">
+        <key-field target="uuid"/>
+        <remarks>
+          <p>A given <code>uuid</code> must be assigned only once to a user.</p>
+        </remarks>
+      </is-unique>
     </constraint>
   </define-assembly>
 

@@ -121,7 +121,7 @@
           </assembly>
           <assembly ref="system-user" min-occurs="0" max-occurs="unbounded">
             <use-name>user</use-name>
-            <group-as name="users" in-json="BY_KEY"/>
+            <group-as name="users" in-json="ARRAY"/>
             <remarks>
               <p>Used to add any users, not defined via the System Security Plan (AR-&gt;AP-&gt;SSP)</p>
             </remarks>
@@ -139,6 +139,14 @@
             <group-as name="tasks" in-json="ARRAY"/>
           </assembly>
         </model>
+        <constraint>
+          <is-unique name="unique-ar-local-definitions-user" target="user">
+            <key-field target="uuid"/>
+            <remarks>
+              <p>A given <code>uuid</code> must be assigned only once to a user.</p>
+            </remarks>
+          </is-unique>
+        </constraint>
       </define-assembly>
       <!-- CHANGED: "objectives" to "reviewed-controls" -->
       <assembly ref="reviewed-controls" min-occurs="1" max-occurs="1">
