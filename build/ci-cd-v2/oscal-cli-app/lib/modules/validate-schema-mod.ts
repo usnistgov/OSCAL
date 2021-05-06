@@ -39,7 +39,8 @@ export const validateSchema = (
 
     if (format === 'xml') {
          // Using xsd Validator for XML
-        const xsdValidatorPath = `${oscalRootDirectory}/build/metaschema/scripts/../support/xml/XMLSchema.xsd`;
+        const xsdValidatorPath = `${oscalRootDirectory}/build/metaschema/scripts/../support/schema/XMLSchema.xsd`;
+
       
         //Using generated XML = XSD file
         const xmlSchema = generatedSchemaPath;
@@ -63,7 +64,8 @@ export const validateSchema = (
     if (format === 'json') {
       //Uses AJV for the JSON validation
       const ajv = new Ajv();
-      const jsonSchemaValidatorPath = `${oscalRootDirectory}/build/metaschema/scripts/../support/json/json-schema-schema.json`
+      const jsonSchemaValidatorPath = `${oscalRootDirectory}/build/metaschema/scripts/../support/schema/json-schema-schema.json`
+
       const jsonSchemaValidatorContent = fs.readFileSync(jsonSchemaValidatorPath, 'utf8');
       const validate = ajv.compile(JSON.parse(jsonSchemaValidatorContent));
       const jsonContent = fs.readFileSync(generatedSchemaPath, 'utf8');
