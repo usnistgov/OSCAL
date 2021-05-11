@@ -20,12 +20,12 @@ This tutorial covers creating a basic OSCAL component definition. Before reading
 
 A component definition describes how a given implementation of a component or sets of components (e.g., hardware, software, service, policy, process, or procedure) can support specific controls.  Providers, such as hardware and software manufacturers, organizational security professionals and system integrators, can create component definitions that can readily serve as a foundation for implementation details regarding how to satisfy controls.  Furthermore, these component definitions can be imported into the SSP OSCAL model, providing useful content for the development of consistent control implementations within an SSP.
 
-In this example, we will walk through the process of creating a component definition model for a MongoDB NoSQL database solution.  We’ll assume this MongoDB solution is being considered for use as part of on-premise application that is subject to FISMA NIST 800-53 rev 5 security controls, although the same approach could be used for any cybersecurity frameworks.  We'll presume the NoSQL database component can partially or fully satisfy the following controls:
+In this example, we will walk through the process of creating a component definition model for a MongoDB NoSQL database solution.  We’ll assume this MongoDB solution is being considered for use as part of on-premise system. As component of a system that needs to meet the OMB A-130 Authorization to Operate requirements, the component definition demonstrates proper implementation of the NIST SP 800-53 controls deemed necessary for high/ moderate/low impact systems. While this example focuses on NIST controls, the same approach could be used for any cybersecurity frameworks and their respective controls.  We'll presume the NoSQL database component can partially or fully satisfy the following controls:
 
-| NIST 800-53 rev5 Control | Description | 
+| NIST 800-53 rev5 Control | Description |
 | -------- | -------- |
 | AU-2 | Audit Events |
-| AC-2 | Account Management     | 
+| AC-2 | Account Management     |
 | AC-3 | Access Enforcement |
 | AC-5 | Separation of Duties |
 | AC-6 | Least Privilege |
@@ -57,20 +57,67 @@ The examples below illustrate the top-level structure of the OSCAL Component Def
 </component-definition>
 {{< /highlight >}}
 
-The root of the OSCAL component definition model is `<component-definition>`. Note that the schema location attribute is omitted for this example. The @id attribute (on line #) is the document's universally unique identifier (UUID), a unique 128-bit number displayed as a string of hyphenated hexadecimal digits as defined by RFC 4122. OSCAL documents use a version 4 UUID (randomly generated) to uniquely identify the document.
+The root of the OSCAL component definition model is `<component-definition>`. Note that the schema location attribute is omitted for this example. The @id attribute (on line 3) is the document's universally unique identifier (UUID), a unique 128-bit number displayed as a string of hyphenated hexadecimal digits as defined by RFC 4122. OSCAL documents use a version 4 UUID (randomly generated) to uniquely identify the document.
 A `<component-definition>` contains:
-* `<metadata>` (required) - Provides document metadata for the component definition. This is similar to metadata for other OSCAL models, therefor is not described extensively in this tutorial.
-* `<import-component-definition>` (optional) – Identifies component definition from other resources from which related information is referenced.  Use of `<import-component-definition>` is not covered in this tutorial.
-* `<component>` (optional) - Defines a given component in the component definition. Zero or more `<component>` elements may be used.
-* `<capability>` (optional) - Defines a given capability in the component definition. Zero or more `<capability>` elements may be used. Capabilities are not covered in this tutorial.
-* `<back-matter>` (optional) – Contains references used within the component definition. Use of `<back-matter>` is not covered in this tutorial.
+
+- `<metadata>` (required) - Provides document metadata for the component definition. This is similar to metadata for other OSCAL models, therefor is not described extensively in this tutorial.
+- `<import-component-definition>` (optional) – Identifies component definition from other resources from which related information is referenced.  Use of `<import-component-definition>` is not covered in this tutorial.
+- `<component>` (optional) - Defines a given component in the component definition. Zero or more `<component>` elements may be used.
+- `<capability>` (optional) - Defines a given capability in the component definition. Zero or more `<capability>` elements may be used. Capabilities are not covered in this tutorial.
+- `<back-matter>` (optional) – Contains references used within the component definition. Use of `<back-matter>` is not covered in this tutorial.
+
+{{% /tab %}}
+{{% tab %}}
+{{< highlight json "linenos=table" >}}
+{
+    "component-definition": {
+        "uuid": "a7ba800c-a432-44cd-9075-0862cd66da6b",
+        "metadata": {},
+        "import-component-definition": {},
+        "component": {},
+        "capability": {},
+        "back-matter": {}
+    }
+}
+{{< /highlight >}}
+
+The root of the OSCAL component definition model is `component-definition`. The @id attribute (on line 3) is the document's universally unique identifier (UUID), a unique 128-bit number displayed as a string of hyphenated hexadecimal digits as defined by RFC 4122. OSCAL documents use a version 4 UUID (randomly generated) to uniquely identify the document.
+A `component-definition` contains:
+
+- `metadata` (required) - Provides document metadata for the component definition. This is similar to metadata for other OSCAL models, therefor is not described extensively in this tutorial.
+- `import-component-definition` (optional) – Identifies component definition from other resources from which related information is referenced.  Use of `import-component-definition` is not covered in this tutorial.
+- `component` (optional) - Defines a given component in the component definition. Zero or more `component` objects may be used.
+- `capability` (optional) - Defines a given capability in the component definition. Zero or more `capability` objects may be used. Capabilities are not covered in this tutorial.
+- `back-matter` (optional) – Contains references used within the component definition. Use of `back-matter` is not covered in this tutorial.
+{{% /tab %}}
+{{% tab %}}
+{{< highlight yaml "linenos=table" >}}
+---
+component-definition: 
+  uuid: "a7ba800c-a432-44cd-9075-0862cd66da6b"
+  metadata: 
+  import-component-definition: 
+  component: 
+  capability: 
+  back-matter: 
+{{< /highlight >}}
+
+The root of the OSCAL component definition model is `component-definition`. The @id attribute (on line 3) is the document's universally unique identifier (UUID), a unique 128-bit number displayed as a string of hyphenated hexadecimal digits as defined by RFC 4122. OSCAL documents use a version 4 UUID (randomly generated) to uniquely identify the document.
+A `component-definition` contains:
+
+- `metadata` (required) - Provides document metadata for the component definition. This is similar to metadata for other OSCAL models, therefor is not described extensively in this tutorial.
+- `import-component-definition` (optional) – Identifies component definition from other resources from which related information is referenced.  Use of `import-component-definition` is not covered in this tutorial.
+- `component` (optional) - Defines a given component in the component definition. Zero or more `component` items may be used.
+- `capability` (optional) - Defines a given capability in the component definition. Zero or more `capability` items may be used. Capabilities are not covered in this tutorial.
+- `back-matter` (optional) – Contains references used within the component definition. Use of `back-matter` is not covered in this tutorial.
+{{% /tab %}}
+{{< /tabs >}}
 
 We will now discuss each of these data structures in the following sections and identify how they each can be used to represent our component definition.
 
 ## Defining the Component Definition’s Metadata
 
 The metadata section of the component definition contains data about the component definition document. This section has an identical structure which is used consistently across all OSCAL models, therefore, this is not covered in this tutorial.  For details on how to construct metadata, please refer to the [Metadata Tutorial](/documentation/tutorials/metadata).
-
 
 ## Component
 
@@ -103,11 +150,11 @@ The optional `<responsible-role>` element can be used to reference one or more r
 
 Another optional but valuable sub-element of `<component>` is `<protocol>`.  In our example, the MongoDB database uses the following protocols:
 
-| Port	| Transport	| Direction	| Description | 
-| ----- | --------- | --------- | ----------- |   
-| 27017	| TCP	| Inbound	| The default port for mongod and mongos instances. | 
-| 27018	| TCP	| Inbound	| The default port when running with --shardsvr runtime operation. | 
-| 27009	| TCP | Inbound-Outbound	| The default port when running with --configsvr runtime operation | 
+| Port| Transport | Direction | Description |
+| ----- | --------- | --------- | ----------- |
+| 27017 | TCP | Inbound | The default port for mongod and mongos instances. |
+| 27018 | TCP | Inbound | The default port when running with --shardsvr runtime operation. |
+| 27009 | TCP | Inbound-Outbound | The default port when running with --configsvr runtime operation |
 
 This is represented below.
 
@@ -124,11 +171,11 @@ This is represented below.
 
 The `<protocol />` element has a mandatory `@name` attribute.  In this example, we set it to "Transmission Control" because uses TCP.  A supplier may provide some descriptive text in the `<title />` element.  The `<port-range />` element is where we can specify the port number(s) and transport. If the port numbers are contiguous, a single `<port-range />` element with `start="27017" end="27019"` is sufficient, however, it is also acceptable to have multiple port-range elements as shown in the example xml snipped above.
 
-
 ## Control-Implementations
 
 The control implementations help define how the component can satisfy controls.  
-* Todo: Basic elements (props, links)
+
+- Todo: Basic elements (props, links)
 
 {{< tabs XML JSON YAML >}}
 {{% tab %}}
@@ -203,9 +250,11 @@ Combining all the content described in this tutorial, we can produce this final 
 ## Summary
 
 This concludes the tutorial.  You should now be familiar with:
-* The basic structure of a component definition in OSCAL.
-* How to provide the basic metadata required in an OSCAL component definition.
-* How to use of a component within an OSCAL component definition.
-* How to use the protocol elements in a component.
-* How to specify the control implementation in a component.
+
+- The basic structure of a component definition in OSCAL.
+- How to provide the basic metadata required in an OSCAL component definition.
+- How to use of a component within an OSCAL component definition.
+- How to use the protocol elements in a component.
+- How to specify the control implementation in a component.
+
 For more information, you can review the OSCAL component definition model documentation.
