@@ -41,7 +41,7 @@
       </assembly>
       <assembly ref="defined-component" max-occurs="unbounded">
         <use-name>component</use-name>
-        <group-as name="components" in-json="BY_KEY"/>
+        <group-as name="components" in-json="ARRAY"/>
       </assembly>
       <assembly ref="capability" max-occurs="unbounded">
         <group-as name="capabilities" in-json="ARRAY"/>
@@ -51,6 +51,9 @@
     <constraint>
       <index name="index-system-component-uuid" target="component">
         <key-field target="@uuid"/>
+        <remarks>
+          <p>Since multiple <code>component</code> entries can be provided, each component must have a unique <code>uuid</code>.</p>
+        </remarks>
       </index>
       <is-unique name="unique-component-definition-capability" target="capability">
         <key-field target="@uuid"/>
@@ -73,7 +76,6 @@
   <define-assembly name="defined-component">
     <formal-name>Component</formal-name>
     <description>A defined component that can be part of an implemented system.</description>
-    <json-key flag-name="uuid"/>
     <define-flag name="uuid" as-type="uuid" required="yes">
       <formal-name>Component Identifier</formal-name>
       <description>The unique identifier for the component.</description>

@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="../../build/metaschema/toolchains/xslt-M4/validate/metaschema-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <!DOCTYPE METASCHEMA [
-   <!ENTITY allowed-values-responsible-roles-operations SYSTEM "shared-constraints/allowed-values-responsible-roles-operations.ent">
-<!ENTITY allowed-values-responsible-roles-component-production SYSTEM "shared-constraints/allowed-values-responsible-roles-component-production.ent">
-<!ENTITY allowed-values-property-name-asset-type-values SYSTEM "shared-constraints/allowed-values-property-name-asset-type-values.ent">
-<!ENTITY allowed-values-component_component_property-name SYSTEM "shared-constraints/allowed-values-component_component_property-name.ent">
-<!ENTITY allowed-values-component_component_software SYSTEM "shared-constraints/allowed-values-component_component_software.ent">
-<!ENTITY allowed-values-component_component_service SYSTEM "shared-constraints/allowed-values-component_component_service.ent">
-<!ENTITY allowed-values-component_inventory-item_property-name SYSTEM "shared-constraints/allowed-values-component_inventory-item_property-name.ent">
-<!ENTITY allowed-values-component_component_link-rel SYSTEM "shared-constraints/allowed-values-component_component_link-rel.ent">
-<!ENTITY allowed-values-component-type SYSTEM "shared-constraints/allowed-values-component-type.ent">
+      <!ENTITY allowed-values-responsible-roles-operations SYSTEM "shared-constraints/allowed-values-responsible-roles-operations.ent">
+      <!ENTITY allowed-values-responsible-roles-component-production SYSTEM "shared-constraints/allowed-values-responsible-roles-component-production.ent">
+      <!ENTITY allowed-values-property-name-asset-type-values SYSTEM "shared-constraints/allowed-values-property-name-asset-type-values.ent">
+      <!ENTITY allowed-values-component_component_property-name SYSTEM "shared-constraints/allowed-values-component_component_property-name.ent">
+      <!ENTITY allowed-values-component_component_software SYSTEM "shared-constraints/allowed-values-component_component_software.ent">
+      <!ENTITY allowed-values-component_component_service SYSTEM "shared-constraints/allowed-values-component_component_service.ent">
+      <!ENTITY allowed-values-component_inventory-item_property-name SYSTEM "shared-constraints/allowed-values-component_inventory-item_property-name.ent">
+      <!ENTITY allowed-values-component_component_link-rel SYSTEM "shared-constraints/allowed-values-component_component_link-rel.ent">
+      <!ENTITY allowed-values-component-type SYSTEM "shared-constraints/allowed-values-component-type.ent">
 ]>
 <METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/toolchains/xslt-M4/validate/metaschema.xsd" abstract="yes">
@@ -27,7 +27,6 @@
       <define-assembly name="system-component">
             <formal-name>Component</formal-name>
             <description>A defined component that can be part of an implemented system.</description>
-            <json-key flag-name="uuid"/>
             <define-flag name="uuid" as-type="uuid" required="yes">
                   <formal-name>Component Identifier</formal-name>
                   <description>The unique identifier for the component.</description>

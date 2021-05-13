@@ -727,6 +727,14 @@
             </model>
          </define-assembly>
       </model>
+      <constraint>
+         <is-unique name="unique-ssp-assessment-assets-component" target="component">
+            <key-field target="@uuid"/>
+            <remarks>
+               <p>Since multiple assessment <code>component</code> entries can be provided, each component must have a unique <code>uuid</code>.</p>
+            </remarks>
+         </is-unique>
+      </constraint>
    </define-assembly>
 
    <!-- CHANGE: Removed exclude-activity assembly. Duplicating include-actviity assembly instead. -->
