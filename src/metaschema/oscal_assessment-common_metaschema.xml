@@ -669,7 +669,7 @@
       <model>
          <assembly ref="system-component" min-occurs="0" max-occurs="unbounded">
             <use-name>component</use-name>
-            <group-as name="components" in-json="BY_KEY"/>
+            <group-as name="components" in-json="ARRAY"/>
             <remarks>
                <p>Used to add any components for tools used during the assessment. These are represented here to avoid mixing with system components.</p>
                <p>The technology tools used by the assessor to perform the assessment, such as vulnerability scanners. In the assessment plan these are the intended tools. In the assessment results, these are the actual tools used, including any differences from the assessment plan.</p>
