@@ -35,7 +35,7 @@
                 <model>
                     <assembly ref="system-component" min-occurs="0" max-occurs="unbounded">
                         <use-name>component</use-name>
-                        <group-as name="components" in-json="BY_KEY"/>
+                        <group-as name="components" in-json="ARRAY"/>
                         <remarks>
                             <p>Used to add any components, not defined via the System Security Plan (AR-&gt;AP-&gt;SSP)</p>
                         </remarks>
@@ -48,7 +48,7 @@
                     </assembly>
                     <assembly ref="system-user" min-occurs="0" max-occurs="unbounded">
                         <use-name>user</use-name>
-                        <group-as name="users" in-json="BY_KEY"/>
+                        <group-as name="users" in-json="ARRAY"/>
                         <remarks>
                             <p>Used to add any users, not defined via the System Security Plan (AR-&gt;AP-&gt;SSP)</p>
                         </remarks>
@@ -65,6 +65,20 @@
                     </assembly>
                     <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
                 </model>
+                <constraint>
+                    <is-unique name="unique-ap-local-definitions-component" target="component">
+                        <key-field target="@uuid"/>
+                        <remarks>
+                            <p>Since multiple <code>component</code> entries can be provided, each component must have a unique <code>uuid</code>.</p>
+                        </remarks>
+                    </is-unique>
+                    <is-unique name="unique-ap-local-definitions-user" target="user">
+                        <key-field target="@uuid"/>
+                        <remarks>
+                            <p>A given <code>uuid</code> must be assigned only once to a user.</p>
+                        </remarks>
+                    </is-unique>
+                </constraint>
             </define-assembly>
             <define-assembly name="terms-and-conditions">
                 <formal-name>Assessment Plan Terms and Conditions</formal-name>

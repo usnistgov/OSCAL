@@ -189,11 +189,10 @@
             <formal-name>Modify controls</formal-name>
             <description>Set parameters or amend controls in resolution</description>
             <model>
-                  <define-assembly name="set-parameter">
+                  <define-assembly name="set-parameter" max-occurs="unbounded">
                         <formal-name>Parameter Setting</formal-name>
                         <description>A parameter setting, to be propagated to points of insertion</description>
-                        <json-key flag-name="param-id"/>
-                        <group-as name="set-parameters" in-json="BY_KEY"/>
+                        <group-as name="set-parameters" in-json="ARRAY"/>
                         <define-flag required="yes" name="param-id" as-type="NCName">
                               <!-- This is an id because the idenfier is assigned and managed by humans. -->
                               <formal-name>Parameter ID</formal-name>
@@ -246,6 +245,14 @@
                                     </assembly>
                               </choice>
                         </model>
+                        <constraint>
+                              <is-unique name="unique-profile-modify-set-parameter" target="set-parameter">
+                                    <key-field target="@param-id"/>
+                                    <remarks>
+                                          <p>Since multiple <code>set-parameter</code> entries can be provided, each parameter must be set only once.</p>
+                                    </remarks>
+                              </is-unique>
+                        </constraint>
                   </define-assembly>
                   <assembly ref="alter" max-occurs="unbounded">
                         <group-as name="alters" in-json="ARRAY"/>
