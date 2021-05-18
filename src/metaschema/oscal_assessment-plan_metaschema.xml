@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <METASCHEMA xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0">
     <schema-name>OSCAL Assessment Plan Model</schema-name>
-    <schema-version>1.0.0-rc2</schema-version>
+    <schema-version>1.0.0</schema-version>
     <short-name>oscal-ap</short-name>
     <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
+    <json-base-uri>http://csrc.nist.gov/ns/oscal</json-base-uri>
     <remarks>
         <p>The OSCAL assessment plan format is used to describe the information typically provided by an assessor during the preparation for an assessment.</p>
         <p>The root of the OSCAL assessment plan format is <code>assessment-plan</code>.
