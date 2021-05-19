@@ -1169,7 +1169,7 @@
             <model>
                <define-assembly name="entry" min-occurs="1" max-occurs="unbounded">
                   <formal-name>Risk Log Entry</formal-name>
-                  <description>dentifies an individual risk response that occurred as part of managing an identified risk.</description>
+                  <description>Identifies an individual risk response that occurred as part of managing an identified risk.</description>
                   <group-as name="entries" in-json="ARRAY"/>
                   <define-flag name="uuid" required="yes" as-type="uuid">
                      <formal-name>Risk Log Entry Universally Unique Identifier</formal-name>
