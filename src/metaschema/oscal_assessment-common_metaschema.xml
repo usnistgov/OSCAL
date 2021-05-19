@@ -606,10 +606,10 @@
       </define-flag>
 -->
       <!-- CHANGED: Flattened assembly by: adding "uuid-ref" flag. Removing "subject/subjects". -->
-      <define-flag name="uuid-ref" as-type="uuid" required="yes">
-         <formal-name>UUID Reference</formal-name>
-         <description>A pointer to a component, inventory-item, location, party, user, or resource using it's UUID.</description>
-      </define-flag>
+      <flag ref="subject-uuid" required="yes"/>
+      <flag ref="subject-type" required="yes">
+         <use-name>type</use-name>
+      </flag>
       <model>
          <assembly ref="property" max-occurs="unbounded">
             <group-as name="props" in-json="ARRAY"/>
@@ -620,28 +620,34 @@
          <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
       </model>
    </define-assembly>
-
+   
+   <define-flag name="subject-uuid" as-type="uuid" scope="local">
+      <formal-name>Subject Universally Unique Identifier Reference</formal-name>
+      <description>A pointer to a component, inventory-item, location, party, user, or resource using it's UUID.</description>
+   </define-flag>
+   
+   <define-flag name="subject-type" as-type="NCName" scope="local">
+      <formal-name>Subject Universally Unique Identifier Reference Type</formal-name>
+      <description>Used to indicate the type of object pointed to by the <code>uuid-ref</code> within a subject.</description>
+      <constraint>
+         <allowed-values allow-other="yes">
+            <enum value="component">Component</enum>
+            <enum value="inventory-item">Inventory Item</enum>
+            <enum value="location">Location</enum>
+            <enum value="party">Interview Party</enum>
+            <enum value="user">User</enum>
+            <enum value="resource">Resource or Artifact</enum>
+         </allowed-values>
+      </constraint>
+   </define-flag>
+   
    <define-assembly name="subject-reference" scope="local">
       <formal-name>Identifies the Subject</formal-name>
       <description>A pointer to a resource based on its universally unique identifier (UUID). Use type to indicate whether the identified resource is a component, inventory item, location, user, or something else.</description>
-      <define-flag name="uuid-ref" as-type="uuid" required="yes">
-         <formal-name>UUID Reference</formal-name>
-         <description>A pointer to a component, inventory-item, location, party, user, or resource using it's UUID.</description>
-      </define-flag>
-      <define-flag name="type" as-type="NCName" required="yes">
-         <formal-name>Universally Unique Identifier Reference Type</formal-name>
-         <description>Used to indicate the type of object pointed to by the <code>uuid-ref</code>.</description>
-         <constraint>
-            <allowed-values allow-other="yes">
-               <enum value="component">Component</enum>
-               <enum value="inventory-item">Inventory Item</enum>
-               <enum value="location">Location</enum>
-               <enum value="party">Interview Party</enum>
-               <enum value="user">User</enum>
-               <enum value="resource">Resource or Artifact</enum>
-            </allowed-values>
-         </constraint>
-      </define-flag>
+      <flag ref="subject-uuid" required="yes"/>
+      <flag ref="subject-type" required="yes">
+         <use-name>type</use-name>
+      </flag>
       <model>
          <define-field name="title" min-occurs="0" max-occurs="1" as-type="markup-line">
             <!-- QUESTION: Is this needed, since the title from the target can be used? -->
@@ -758,7 +764,7 @@
             <p>The target will always be a reference to: 1) a control statement, or 2) a control objective. In the former case, there is always a single top-level statement within a control. Thus, if the entire control is targeted, this statement identifier can be used.</p>
          </remarks>
       </define-flag>
-      <define-flag name="id-ref" as-type="NCName" required="yes">
+      <define-flag name="target-id" as-type="NCName" required="yes">
          <formal-name>Finding Target Identifier Reference</formal-name>
          <description>Identifies the specific target qualified by the <code>type</code>.</description>
       </define-flag>
@@ -951,8 +957,8 @@
             </allowed-values>
          </constraint>
       </define-flag>
-      <define-flag name="uuid-ref" as-type="uuid" required="yes">
-         <formal-name>Actor UUID Reference</formal-name>
+      <define-flag name="actor-uuid" as-type="uuid" required="yes">
+         <formal-name>Actor Universally Unique Identifier Reference</formal-name>
          <description>A pointer to the tool or person based on the associated type.</description>
       </define-flag>
       <define-flag name="role-id" as-type="NCName">
@@ -1163,29 +1169,29 @@
             <model>
                <define-assembly name="entry" min-occurs="1" max-occurs="unbounded">
                   <formal-name>Risk Log Entry</formal-name>
-                  <description>Identifies the result of a task that occurred as part of executing an assessment plan or an assessment event that occurred in producing the assessment results.</description>
+                  <description>dentifies an individual risk response that occurred as part of managing an identified risk.</description>
                   <group-as name="entries" in-json="ARRAY"/>
                   <define-flag name="uuid" required="yes" as-type="uuid">
                      <formal-name>Risk Log Entry Universally Unique Identifier</formal-name>
-                     <description>Uniquely identifies an assessment event. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. A UUID should be consistently used for this schedule across revisions of the document.</description>
+                     <description>Uniquely identifies a risk log entry. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. A UUID should be consistently used for this schedule across revisions of the document.</description>
                   </define-flag>
                   <model>
                      <define-field name="title" min-occurs="0" max-occurs="1" as-type="markup-line">
-                        <formal-name>Action Title</formal-name>
-                        <description>The title for this event.</description>
+                        <formal-name>Title</formal-name>
+                        <description>The title for this risk log entry.</description>
                      </define-field>
                      <!-- CHANGE: Added WITH_WRAPPER to description -->
                      <define-field name="description" min-occurs="0" max-occurs="1" as-type="markup-multiline" in-xml="WITH_WRAPPER">
-                        <formal-name>Action Description</formal-name>
-                        <description>A human-readable description of this event.</description>
+                        <formal-name>Risk Task Description</formal-name>
+                        <description>A human-readable description of what was done regarding the risk.</description>
                      </define-field>
                      <define-field name="start" as-type="dateTime-with-timezone" min-occurs="1" max-occurs="1">
                         <formal-name>Start</formal-name>
-                        <description>Identifies the start date and time of an event.</description>
+                        <description>Identifies the start date and time of the event.</description>
                      </define-field>
                      <define-field name="end" as-type="dateTime-with-timezone" max-occurs="1">
                         <formal-name>End</formal-name>
-                        <description>Identifies the end date and time of an event. If the event is a point in time, the start and end will be the same date and time.</description>
+                        <description>Identifies the end date and time of the event. If the event is a point in time, the start and end will be the same date and time.</description>
                      </define-field>
                      <assembly ref="property" max-occurs="unbounded">
                         <group-as name="props" in-json="ARRAY"/>
@@ -1203,7 +1209,7 @@
                         </remarks>
                      </field>
                      <define-assembly name="related-response" max-occurs="unbounded">
-                        <formal-name>Action Reference</formal-name>
+                        <formal-name>Risk Response Reference</formal-name>
                         <description>Identifies an individual risk response that this log entry is for.</description>
                         <group-as name="related-responses" in-json="ARRAY"/>
                         <define-flag name="response-uuid" required="yes" as-type="uuid">

@@ -344,23 +344,23 @@
       <define-assembly name="remove">
             <formal-name>Removal</formal-name>
             <description>Specifies objects to be removed from a control based on specific aspects of the object that must all match.</description>
-            <define-flag name="name-ref" as-type="NCName">
+            <define-flag name="by-name" as-type="NCName">
                   <formal-name>Reference by (assigned) name</formal-name>
                   <description>Identify items to remove by matching their assigned name</description>
             </define-flag>
-            <define-flag name="class-ref" as-type="NCName">
+            <define-flag name="by-class" as-type="NCName">
                   <formal-name>Reference by class</formal-name>
                   <description>Identify items to remove by matching their <code>class</code>.</description>
             </define-flag>
-            <define-flag name="id-ref" as-type="NCName">
+            <define-flag name="by-id" as-type="NCName">
                   <formal-name>Reference by ID</formal-name>
                   <description>Identify items to remove indicated by their <code>id</code>.</description>
             </define-flag>
-            <define-flag name="item-name" as-type="NCName">
+            <define-flag name="by-item-name" as-type="NCName">
                   <formal-name>Item Name Reference</formal-name>
                   <description>Identify items to remove by the name of the item's information element name, e.g. <code>title</code> or <code>prop</code></description>
             </define-flag>
-            <define-flag name="ns-ref" as-type="NCName">
+            <define-flag name="by-ns" as-type="NCName">
                   <formal-name>Item Namespace Reference</formal-name>
                   <description>Identify items to remove by the item's <code>ns</code>, which is the namespace associated with a <code>part</code>, or <code>prop</code>.</description>
             </define-flag>
@@ -384,7 +384,7 @@
                         </allowed-values>
                   </constraint>
             </define-flag>
-            <define-flag name="id-ref" as-type="NCName">
+            <define-flag name="by-id" as-type="NCName">
                   <formal-name>Reference by ID</formal-name>
                   <description>Target location of the addition.</description>
             </define-flag>
