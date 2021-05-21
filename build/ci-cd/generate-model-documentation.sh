@@ -180,8 +180,8 @@ for i in "${!metaschema_paths[@]}"; do
     echo "Doc File: $doc_file_path"
     echo "Temp File: $temp_file_path"
 
-    # sed -n '/^<!-- DO NOT REMOVE. Generated text below -->$/q;p' "$doc_file_path" > "$doc_file_path"
-    # cat "$temp_file_path" >> "$doc_file_path"
+    sed -i '1,/<!-- DO NOT REMOVE. Generated text below -->/!d' "$doc_file_path"
+    cat "$temp_file_path" | sed 's|href="\([^"]*\).md#/|href="\1/#/|g' >> "$doc_file_path"
   done
   
 
