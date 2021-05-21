@@ -30,7 +30,7 @@
             <description>A defined component that can be part of an implemented system.</description>
             <define-flag name="uuid" as-type="uuid" required="yes">
                   <formal-name>Component Identifier</formal-name>
-                  <description>The unique identifier for the component.</description>
+                  <description>The unique identifier for the component. This identifier's uniqueness is document scoped and is intended to be consistent for the same component across minor revisions of the document.</description>
             </define-flag>
             <flag ref="system-component-type" required="yes">
                   <!-- CHANGED: "component-type" to "type" -->
@@ -337,7 +337,7 @@
             <description>A type of user that interacts with the system based on an associated role.</description>
             <define-flag name="uuid" as-type="uuid" required="yes">
                   <formal-name>User Universally Unique Identifier</formal-name>
-                  <description>The unique identifier for the user class.</description>
+                  <description>The unique identifier for the user class. This identifier's uniqueness is document scoped and is intended to be consistent for the same user universally unique idenfier across minor revisions of the document.</description>
             </define-flag>
             <model>
                   <define-field name="title" as-type="markup-line">
@@ -452,7 +452,7 @@
 
                         <define-flag required="yes" name="component-uuid" as-type="uuid">
                               <formal-name>Component Universally Unique Identifier Reference</formal-name>
-                              <description>A reference to a component that is implemented as part of an inventory item.</description>
+                              <description>A reference to a component that is implemented as part of an inventory item. This identifier's uniqueness is document scoped and is intended to be consistent for the same component across minor revisions of the document.</description>
                         </define-flag>
 
                         <!-- CHANGED (daw): the following is not needed since it is required on the referenced component -->
@@ -657,7 +657,7 @@
             <json-value-key>id</json-value-key>
             <define-flag name="identifier-type" as-type="uri">
                   <formal-name>Identification System Type</formal-name>
-                  <description>Identifies the identification system from which the provided identifier was assigned.</description>
+                  <description>Identifies the identification system from which the provided identifier was assigned. This is a globally unique identifier and should be consistently used for a given system across revisions of the document.</description>
                   <constraint>
                         <allowed-values allow-other="yes">
                               <enum value="https://fedramp.gov">The identifier was assigned by FedRAMP.</enum>
@@ -671,7 +671,7 @@
       <define-flag name="param-id" as-type="token">
             <!-- This is an id because the idenfier is assigned and managed by humans. -->
             <formal-name>Parameter ID</formal-name>
-            <description>A reference to a parameter within a control, who's catalog has been imported into the current implementation context.</description>
+            <description>A reference to a parameter within a control, who's catalog has been imported into the current implementation context.  This identifier's uniqueness is document scoped and is intended to be consistent for the same param across minor revisions of the document.</description>
             <example>
                   <set-param xmlns="http://csrc.nist.gov/ns/oscal/example" param-id="ac-2_prm_2">
                         <enum>System ISSO</enum>

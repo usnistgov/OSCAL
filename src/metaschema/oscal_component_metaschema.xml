@@ -79,7 +79,7 @@
     <description>A defined component that can be part of an implemented system.</description>
     <define-flag name="uuid" as-type="uuid" required="yes">
       <formal-name>Component Identifier</formal-name>
-      <description>The unique identifier for the component.</description>
+      <description>The unique identifier for the component. This identifier's uniqueness is document scoped and is intended to be consistent for the same component across minor revisions of the document.</description>
     </define-flag>
     <flag ref="defined-component-type" required="yes">
       <use-name>type</use-name>
@@ -249,7 +249,7 @@
     <description>A grouping of other components and/or capabilities.</description>
     <define-flag required="yes" name="uuid" as-type="uuid">
       <formal-name>Capability Identifier</formal-name>
-      <description>A unique identifier for a capability.</description>
+      <description>A unique identifier for a capability. This identifier's uniqueness is document scoped and is intended to be consistent for the same capability across minor revisions of the document.</description>
     </define-flag>
     <define-flag name="name" as-type="string" required="yes">
       <formal-name>Capability Name</formal-name>
@@ -304,7 +304,7 @@
     <description>Defines how the component or capability supports a set of controls.</description>
     <define-flag name="uuid" as-type="uuid" required="yes">
       <formal-name>Control Implementation Set Identifier</formal-name>
-      <description>A unique identifier for the set of implemented controls.</description>
+      <description>A unique identifier for the set of implemented controls. This identifier's uniqueness is document scoped and is intended to be consistent for the same control implementation set across minor revisions of the document.</description>
     </define-flag>
     <flag ref="source" required="yes">
       <remarks>
@@ -346,7 +346,7 @@
     <description>Describes how the containing component or capability implements an individual control.</description>
     <define-flag name="uuid" as-type="uuid" required="yes">
       <formal-name>Control Implementation Identifier</formal-name>
-      <description>A unique identifier for a specific control implementation.</description>
+      <description>A unique identifier for a specific control implementation. This identifier's uniqueness is document scoped and is intended to be consistent for the same control implementation across minor revisions of the document.</description>
     </define-flag>
     <flag ref="control-id" required="yes"/>
     <model>

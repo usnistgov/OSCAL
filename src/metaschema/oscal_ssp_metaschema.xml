@@ -815,7 +815,7 @@
     <description>Defines how the referenced component implements a set of controls.</description>
     <define-flag required="yes" name="component-uuid" as-type="uuid">
       <formal-name>Component Universally Unique Identifier Reference</formal-name>
-      <description>A reference to the component that is implementing a given control or control statement.</description>
+      <description>A reference to the component that is implementing a given control or control statement. A UUID should be consistantly used for a given resource across revisions of the document.</description>
     </define-flag>
     <define-flag name="uuid" as-type="uuid" required="yes">
       <formal-name>By-Component Universally Unique Identifier</formal-name>
