@@ -215,7 +215,7 @@
          <formal-name>Task Universally Unique Identifier</formal-name>
          <description>Uniquely identifies this assessment task. </description>
       </define-flag>
-      <define-flag name="type" required="yes" as-type="NCName">
+      <define-flag name="type" required="yes" as-type="token">
          <formal-name>Task Type</formal-name>
          <description>The type of task.</description>
          <constraint>
@@ -494,7 +494,7 @@
       <description>Used to select a control for inclusion/exclusion based on one or more control identifiers. A set of statement identifiers can be used to target the inclusion/exclusion to only specific control statements providing more granularity over the specific statements that are within the asessment scope.</description>
       <flag ref="control-id" required="yes"/>
       <model>
-         <define-field name="statement-id" as-type="NCName" min-occurs="0" max-occurs="unbounded" >
+         <define-field name="statement-id" as-type="token" min-occurs="0" max-occurs="unbounded" >
             <formal-name>Include Specific Statements</formal-name>
             <description>Used to constrain the selection to only specificity identified statements.</description>
             <group-as name="statement-ids" in-json="ARRAY"/>
@@ -544,7 +544,7 @@
       <formal-name>Subject of Assessment</formal-name>
       <description>Identifies system elements being assessed, such as components, inventory items, and locations. In the assessment plan, this identifies a planned assessment subject. In the assessment results this is an actual assessment subject, and reflects any changes from the plan. exactly what will be the focus of this assessment. Any subjects not identified in this way are out-of-scope.</description>
       <!-- CHANGED: "name" to "type" -->
-      <define-flag name="type" as-type="NCName" required="yes">
+      <define-flag name="type" as-type="token" required="yes">
          <formal-name>Subject Type</formal-name>
          <description>Indicates the type of assessment subject, such as a component, inventory, item, location, or party represented by this selection statement.</description>
          <constraint>
@@ -627,7 +627,7 @@
       <description>A pointer to a component, inventory-item, location, party, user, or resource using it's UUID.</description>
    </define-flag>
    
-   <define-flag name="subject-type" as-type="NCName" scope="local">
+   <define-flag name="subject-type" as-type="token" scope="local">
       <formal-name>Subject Universally Unique Identifier Reference Type</formal-name>
       <description>Used to indicate the type of object pointed to by the <code>uuid-ref</code> within a subject.</description>
       <constraint>
@@ -765,7 +765,7 @@
             <p>The target will always be a reference to: 1) a control statement, or 2) a control objective. In the former case, there is always a single top-level statement within a control. Thus, if the entire control is targeted, this statement identifier can be used.</p>
          </remarks>
       </define-flag>
-      <define-flag name="target-id" as-type="NCName" required="yes">
+      <define-flag name="target-id" as-type="token" required="yes">
          <formal-name>Finding Target Identifier Reference</formal-name>
          <description>Identifies the specific target qualified by the <code>type</code>.</description>
       </define-flag>
@@ -785,7 +785,7 @@
          <assembly ref="link" max-occurs="unbounded">
             <group-as name="links" in-json="ARRAY"/>
          </assembly>
-         <define-field name="status" as-type="NCName" min-occurs="1" max-occurs="1">
+         <define-field name="status" as-type="token" min-occurs="1" max-occurs="1">
             <formal-name>Objective Status</formal-name>
             <description>A brief indication as to whether the objective is satisfied or not within a given system.</description>
             <!-- CHANGED: removed @system flag -->
@@ -846,7 +846,7 @@
             </constraint>
          </define-field>
 
-         <define-field name="type" as-type="NCName" max-occurs="unbounded">
+         <define-field name="type" as-type="token" max-occurs="unbounded">
             <!-- CHANGED "observation-type" to "type" -->
             <formal-name>Observation Type</formal-name>
             <description>Identifies the nature of the observation. More than one may be used to further qualify and enable filtering.</description>
@@ -946,7 +946,7 @@
    <define-assembly name="origin-actor">
       <formal-name>Originating Actor</formal-name>
       <description>The actor that produces an observation, a finding, or a risk. One or more actor type can be used to specify a person that is using a tool.</description>
-      <define-flag name="type" as-type="NCName" required="yes">
+      <define-flag name="type" as-type="token" required="yes">
          <formal-name>Actor Type</formal-name>
          <description>The kind of actor.</description>
          <constraint>
@@ -962,7 +962,7 @@
          <formal-name>Actor Universally Unique Identifier Reference</formal-name>
          <description>A pointer to the tool or person based on the associated type.</description>
       </define-flag>
-      <define-flag name="role-id" as-type="NCName">
+      <define-flag name="role-id" as-type="token">
          <formal-name>Actor Role</formal-name>
          <description>For a party, this can optionally be used to specify the role the actor was performing.</description>
       </define-flag>
@@ -1085,7 +1085,7 @@
          <assembly ref="link" max-occurs="unbounded">
             <group-as name="links" in-json="ARRAY"/>
          </assembly>
-         <define-field name="status" as-type="NCName" min-occurs="1">
+         <define-field name="status" as-type="token" min-occurs="1">
             <!-- CHANGED: from "risk-status" to "status" -->
             <formal-name>Status</formal-name>
             <description>Describes the status of the associated risk.</description>
@@ -1287,13 +1287,13 @@
          <formal-name>Party UUID Reference</formal-name>
          <description>A pointer to the party who is making the log entry.</description>
       </define-flag>
-      <define-flag name="role-id" as-type="NCName">
+      <define-flag name="role-id" as-type="token">
          <formal-name>Actor Role</formal-name>
          <description>A point to the role-id of the role in which the party is making the log entry.</description>
       </define-flag>
    </define-assembly>
 
-   <define-field name="risk-status" as-type="NCName">
+   <define-field name="risk-status" as-type="token">
       <!-- CHANGED: from "risk-status" to "status" -->
       <formal-name>Risk Status</formal-name>
       <description>Describes the status of the associated risk.</description>
@@ -1328,7 +1328,7 @@
             <formal-name>Facet</formal-name>
             <description>An individual characteristic that is part of a larger set produced by the same actor.</description>
             <group-as name="facets" in-json="ARRAY"/>
-            <define-flag name="name" as-type="NCName" required="yes">
+            <define-flag name="name" as-type="token" required="yes">
                <formal-name>Facet Name</formal-name>
                <description>The name of the risk metric within the specified system.</description>
             </define-flag>
@@ -1575,7 +1575,7 @@
          <description>Uniquely identifies this remediation. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. Once assigned, a UUID should be consistently used for a given remediation across revisions.</description>
       </define-flag>
       <!-- CHANGED: type to lifecycle -->
-      <define-flag name="lifecycle" as-type="NCName" required="yes">
+      <define-flag name="lifecycle" as-type="token" required="yes">
          <formal-name>Remediation Intent</formal-name>
          <description>Identifies whether this is a recommendation, such as from an assessor or tool, or an actual plan accepted by the system owner.</description>
          <constraint>
@@ -1675,7 +1675,7 @@
       </constraint>
    </define-assembly>
 
-   <define-flag name="objective-id" as-type="NCName" scope="local">
+   <define-flag name="objective-id" as-type="token" scope="local">
       <!-- This is an id to sync with control syntax -->
       <formal-name>Objective ID</formal-name>
       <description>Points to an assessment objective.</description>
@@ -1691,7 +1691,7 @@
          <formal-name>Part Identifier</formal-name>
          <description>A unique identifier for a specific part instance. This identifier's uniqueness is document scoped and is intended to be consistent for the same part across minor revisions of the document.</description>
       </define-flag>
-      <define-flag name="name" as-type="NCName" required="yes">
+      <define-flag name="name" as-type="token" required="yes">
          <formal-name>Part Name</formal-name>
          <description>A textual label that uniquely identifies the part's semantic type.</description>
          <constraint>
@@ -1713,7 +1713,7 @@
             <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
          </remarks>
       </define-flag>
-      <define-flag name="class" as-type="NCName">
+      <define-flag name="class" as-type="token">
          <formal-name>Part Class</formal-name>
          <description>A textual label that provides a sub-type or characterization of the part's <code>name</code>. This can be used to further distinguish or discriminate between the semantics of multiple parts of the same control with the same <code>name</code> and <code>ns</code>.</description>
          <remarks>

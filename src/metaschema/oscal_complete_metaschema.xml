@@ -6,9 +6,9 @@
    <!ENTITY allowed-values-control-group-property-name SYSTEM "shared-constraints/allowed-values-control-group-property-name.ent">
 ]>
 <METASCHEMA xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0">
-      <schema-name>OSCAL Unified Model</schema-name>
+      <schema-name>OSCAL Unified Model of Models</schema-name>
       <schema-version>1.0.0</schema-version>
-      <short-name>oscal-all</short-name>
+      <short-name>oscal-complete</short-name>
       <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
       <json-base-uri>http://csrc.nist.gov/ns/oscal</json-base-uri>
       <remarks>
