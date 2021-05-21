@@ -8,7 +8,7 @@ aliases:
   - /learnmore/roadmap/
 ---
 
-OSCAL is a community-driven, NIST-led project, with an [open invitation](https://github.com/usnistgov/OSCAL/blob/master/CONTRIBUTING.md) to the community to participate in the framing and development of OSCAL. Feature requests can be [created and submitted](https://github.com/usnistgov/OSCAL/issues/new?assignees=&labels=User+Story%2C+enhancement&template=feature_request.md) directly into the project's GitHub repository. Feedback in the form of [bug reports](https://github.com/usnistgov/OSCAL/issues/new?assignees=&labels=bug&template=bug_report.md) are also encouraged and appreciated. If appropriate, we ask you add a comment to an [existing relevant issue](https://github.com/usnistgov/OSCAL/issues), and only create a new issue when no relevant issue exists. Before opening an issue, we ask that you review our [contributing guidelines](https://github.com/usnistgov/OSCAL/blob/master/CONTRIBUTING.md).
+OSCAL is a community-driven, NIST-led project, with an [open invitation](https://github.com/usnistgov/OSCAL/blob/main/CONTRIBUTING.md) to the community to participate in the framing and development of OSCAL. Feature requests can be [created and submitted](https://github.com/usnistgov/OSCAL/issues/new?assignees=&labels=User+Story%2C+enhancement&template=feature_request.md) directly into the project's GitHub repository. Feedback in the form of [bug reports](https://github.com/usnistgov/OSCAL/issues/new?assignees=&labels=bug&template=bug_report.md) are also encouraged and appreciated. If appropriate, we ask you add a comment to an [existing relevant issue](https://github.com/usnistgov/OSCAL/issues), and only create a new issue when no relevant issue exists. Before opening an issue, we ask that you review our [contributing guidelines](https://github.com/usnistgov/OSCAL/blob/main/CONTRIBUTING.md).
 
 # Development Epics
 
@@ -98,7 +98,7 @@ This development phase focused on producing:
 - Updated stable version of the [system security plan](https://pages.nist.gov/OSCAL/documentation/schema/implementation-layer/ssp/) model which provides a structured representations of a system&#39;s control-based implementation. This model has been enhanced to support documenting how controls from an existing authorized system can be leveraged in another information system, which supports common control provider and platform as a service (PaaS) use cases.
 - Updated stable version of the [component definition](https://pages.nist.gov/OSCAL/documentation/schema/implementation-layer/component/) model which provides a structured representation of the controls that are supported in a given implementation of a hardware, software, service, policy, process, procedure, or compliance artifact (e.g., FIPS 140-2 validation).
 - Revised drafts of the [assessment plan](https://pages.nist.gov/OSCAL/documentation/schema/assessment-layer/assessment-plan/), [assessment results](https://pages.nist.gov/OSCAL/documentation/schema/assessment-results-layer/assessment-results/), [plan of action and milestones](https://pages.nist.gov/OSCAL/documentation/schema/assessment-results-layer/poam/) (POA&amp;M) models, which support the structured representation of information used for planning and documenting the results of an information system assessment or continuous monitoring activity. These models have been enhanced to better support continuous assessment; to provide more traceability between the assessment schedule, specific assessment activities, collected data, and resulting findings and identified risks; and to improve the extensibility of these models.
-- Updated tools to convert between OSCAL [XML](https://github.com/usnistgov/OSCAL/tree/master/xml) and [JSON](https://github.com/usnistgov/OSCAL/tree/master/json) formats, and to [up convert](https://github.com/usnistgov/OSCAL/tree/master/src/release/content-upgrade) content from milestone 3 to RC1.
+- Updated tools to convert between OSCAL [XML](https://github.com/usnistgov/OSCAL/tree/main/xml) and [JSON](https://github.com/usnistgov/OSCAL/tree/main/json) formats, and to [up convert](https://github.com/usnistgov/OSCAL/tree/main/src/release/content-upgrade) content from milestone 3 to RC1.
 
 These changes were made based on all the excellent feedback we received from the OSCAL community. The NIST OSCAL team is very thankful for all of the great feedback we have received.
 
@@ -127,7 +127,7 @@ This development phase provided updated stable versions of all OSCAL models, wit
 
 These changes were made based on all the excellent feedback we received from the OSCAL community. The NIST OSCAL team is very thankful for all of the great feedback we have received.
 
-Updated tools to convert between OSCAL [XML](https://github.com/usnistgov/OSCAL/tree/master/xml) and [JSON](https://github.com/usnistgov/OSCAL/tree/master/json) formats, and to [up convert](https://github.com/usnistgov/OSCAL/tree/master/src/release/content-upgrade) content from previous releases to RC2.
+Updated tools to convert between OSCAL [XML](https://github.com/usnistgov/OSCAL/tree/main/xml) and [JSON](https://github.com/usnistgov/OSCAL/tree/main/json) formats, and to [up convert](https://github.com/usnistgov/OSCAL/tree/main/src/release/content-upgrade) content from previous releases to RC2.
 
 This will be the final release candidate before the full release of OSCAL 1.0.0.
 

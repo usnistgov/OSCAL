@@ -49,7 +49,7 @@
                 <group-as name="parties" in-json="ARRAY"/>
             </assembly>
             <assembly ref="responsible-party" max-occurs="unbounded">
-                <group-as name="responsible-parties" in-json="BY_KEY"/>
+                <group-as name="responsible-parties" in-json="ARRAY"/>
             </assembly>
             <field ref="remarks" in-xml="WITH_WRAPPER"/>
         </model>
@@ -93,20 +93,23 @@
             <index id="index-metadata-party-organizations-uuid" name="index-metadata-party-organizations-uuid" target="party[@type='organization']">
                 <key-field target="@uuid"/>
             </index>
+            <is-unique name="unique-metadata-responsible-party" target="responsible-party">
+                <key-field target="@role-id"/>
+                <remarks>
+                    <p>Since <code>responsible-party</code> associates multiple <code>party-uuid</code> entries with a single <code>role-id</code>, each role-id must be referenced only once.</p>
+                </remarks>
+            </is-unique>
             <allowed-values id="allowed-metadata-responsibe-party-role-ids" target="responsible-party/@role-id" allow-other="yes">
                 <enum value="prepared-by">Indicates the organization that created this content.</enum>
                 <enum value="prepared-for">Indicates the organization for which this content was created.</enum>
                 <enum value="content-approver">Indicates the organization responsible for all content represented in the "document".</enum>
             </allowed-values>
             <allowed-values target="link/@rel" allow-other="yes">
-                <enum value="canonical">The link identifies the authoritative location for this file.</enum>
-                <enum value="alternate">The link identifies an alternative location or format for this file.</enum>
-                <enum value="latest-version">This link identifies a resource containing the latest version in the version history. Defined by <a href="https://tools.ietf.org/html/rfc5829">RFC 5829</a>.
-                </enum>
-                <enum value="predecessor-version">This link identifies a resource containing the predecessor version in the version history. <a href="https://tools.ietf.org/html/rfc5829">RFC 5829</a>.
-                </enum>
-                <enum value="successor-version">This link identifies a resource containing the predecessor version in the version history. <a href="https://tools.ietf.org/html/rfc5829">RFC 5829</a>.
-                </enum>
+                <enum value="canonical">The link identifies the authoritative location for this file. Defined by <a href="https://tools.ietf.org/html/rfc6596">RFC 6596</a>.</enum>
+                <enum value="alternate">The link identifies an alternative location or format for this file. Defined by <a href="https://html.spec.whatwg.org/multipage/links.html#linkTypes">the HTML Living Standard</a></enum>
+                <enum value="latest-version">This link identifies a resource containing the latest version in the version history. Defined by <a href="https://tools.ietf.org/html/rfc5829">RFC 5829</a>.</enum>
+                <enum value="predecessor-version">This link identifies a resource containing the predecessor version in the version history. Defined by  <a href="https://tools.ietf.org/html/rfc5829">RFC 5829</a>.</enum>
+                <enum value="successor-version">This link identifies a resource containing the predecessor version in the version history. Defined by <a href="https://tools.ietf.org/html/rfc5829">RFC 5829</a>.</enum>
             </allowed-values>
         </constraint>
     </define-assembly>
@@ -132,9 +135,12 @@
             <field ref="remarks" in-xml="WITH_WRAPPER"/>
         </model>
         <constraint>
-            <has-cardinality target="published|last-modified|version|link[@rel='source']" min-occurs="1"/>
+            <has-cardinality target="published|last-modified|version|link[@rel='canonical']" min-occurs="1"/>
             <allowed-values target="link/@rel" allow-other="yes">
-                <enum value="source">Indicates that the href points to the source resource for the revision entry.</enum>
+                <enum value="canonical">The link identifies the authoritative location for this file. Defined by <a href="https://tools.ietf.org/html/rfc6596">RFC 6596</a>.</enum>
+                <enum value="alternate">The link identifies an alternative location or format for this file. Defined by <a href="https://html.spec.whatwg.org/multipage/links.html#linkTypes">the HTML Living Standard</a></enum>
+                <enum value="predecessor-version">This link identifies a resource containing the predecessor version in the version history. Defined by  <a href="https://tools.ietf.org/html/rfc5829">RFC 5829</a>.</enum>
+                <enum value="successor-version">This link identifies a resource containing the predecessor version in the version history. Defined by <a href="https://tools.ietf.org/html/rfc5829">RFC 5829</a>.</enum>
             </allowed-values>
         </constraint>
         <remarks>
@@ -697,7 +703,6 @@
     <define-assembly name="responsible-party">
         <formal-name>Responsible Party</formal-name>
         <description>A reference to a set of organizations or persons that have responsibility for performing a referenced role in the context of the containing object.</description>
-        <json-key flag-name="role-id"/>
         <define-flag required="yes" name="role-id" as-type="NCName">
             <formal-name>Responsible Role</formal-name>
             <description>The role that the party is responsible for.</description>
@@ -730,7 +735,6 @@
     <define-assembly name="responsible-role">
         <formal-name>Responsible Role</formal-name>
         <description>A reference to one or more roles with responsibility for performing a function relative to the containing object.</description>
-        <json-key flag-name="role-id"/>
         <define-flag name="role-id" as-type="NCName" required="yes">
             <formal-name>Responsible Role ID</formal-name>
             <description>The role that is responsible for the business function.</description>

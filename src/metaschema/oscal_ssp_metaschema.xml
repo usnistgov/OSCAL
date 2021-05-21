@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="../../build/metaschema/toolchains/xslt-M4/validate/metaschema-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <!-- ** NOTES **
 - Need to check latest FR SSP template for "Privacy Impact Designation".
   Was it dropped in latest template, or is it missing from schema?
@@ -114,7 +113,7 @@
       <assembly ref="network-architecture"/>
       <assembly ref="data-flow"/>
       <assembly ref="responsible-party" max-occurs="unbounded">
-        <group-as name="responsible-parties" in-json="BY_KEY"/>
+        <group-as name="responsible-parties" in-json="ARRAY"/>
       </assembly>
       <field ref="remarks" in-xml="WITH_WRAPPER"/>
     </model>
@@ -162,6 +161,12 @@
         </enum>
         <enum value="other">Any other type of cloud service model that is exclusive to the other choices.</enum>
       </allowed-values>
+      <is-unique name="unique-ssp-system-characteristics-responsible-party" target="responsible-party">
+        <key-field target="@role-id"/>
+        <remarks>
+          <p>Since <code>responsible-party</code> associates multiple <code>party-uuid</code> entries with a single <code>role-id</code>, each role-id must be referenced only once.</p>
+        </remarks>
+      </is-unique>
       <allowed-values target="responsible-party/@role-id" allow-other="yes">
             &allowed-values-responsible-roles-system;
       </allowed-values>
@@ -214,7 +219,7 @@
             <model>
               <define-field name="information-type-id" as-type="string" max-occurs="unbounded">
                 <!-- This is an id because the idenfier is assigned and managed externally by humans. -->
-                <formal-name>Information Type Systemized Identifier</formal-name>
+                <formal-name>Information Type Systematized Identifier</formal-name>
                 <description>An identifier qualified by the given identification <code>system</code> used, such as NIST SP 800-60.</description>
                 <json-value-key>id</json-value-key>
                 <group-as name="information-type-ids" in-json="ARRAY"/>
@@ -380,7 +385,7 @@
         <!-- TODO: Model specific link relationships? -->
       </assembly>
       <assembly ref="diagram" max-occurs="unbounded">
-        <group-as name="diagrams" in-json="BY_KEY"/>
+        <group-as name="diagrams" in-json="ARRAY"/>
         <remarks>
           <p>A visual depiction of the system's authorization boundary.</p>
         </remarks>
@@ -390,11 +395,18 @@
         <description>Commentary about the system's authorization boundary that enhances the diagram.</description>
       </define-field>
     </model>
+    <constraint>
+      <is-unique name="unique-ssp-authorization-boundary-diagram" target="diagram">
+        <key-field target="@uuid"/>
+        <remarks>
+          <p>A given <code>uuid</code> must be assigned only once to a diagram.</p>
+        </remarks>
+      </is-unique>
+    </constraint>
   </define-assembly>
   <define-assembly name="diagram">
     <formal-name>Diagram</formal-name>
     <description>A graphic that provides a visual representation the system, or some aspect of it.</description>
-    <json-key flag-name="uuid"/>
     <define-flag name="uuid" as-type="uuid" required="yes">
       <formal-name>Diagram ID</formal-name>
       <description>The identifier for this diagram.</description>
@@ -462,10 +474,19 @@
         <!-- TODO: Model specific link relationships? -->
       </assembly>
       <assembly ref="diagram" max-occurs="unbounded">
-        <group-as name="diagrams" in-json="BY_KEY"/>
+        <group-as name="diagrams" in-json="ARRAY"/>
       </assembly>
       <field ref="remarks" in-xml="WITH_WRAPPER"/>
     </model>
+    <constraint>
+      <is-unique name="unique-ssp-network-architecture-diagram" target="diagram">
+        <key-field target="@uuid"/>
+        <remarks>
+          <p>A given <code>uuid</code> must be assigned only once to a diagram.</p>
+        </remarks>
+      </is-unique>
+    </constraint>
+    
   </define-assembly>
   <define-assembly name="data-flow">
     <formal-name>Data Flow</formal-name>
@@ -483,10 +504,18 @@
         <!-- TODO: Model specific link relationships? -->
       </assembly>
       <assembly ref="diagram" max-occurs="unbounded">
-        <group-as name="diagrams" in-json="BY_KEY"/>
+        <group-as name="diagrams" in-json="ARRAY"/>
       </assembly>
       <field ref="remarks" in-xml="WITH_WRAPPER"/>
     </model>
+    <constraint>
+      <is-unique name="unique-ssp-data-flow-diagram" target="diagram">
+        <key-field target="@uuid"/>
+        <remarks>
+          <p>A given <code>uuid</code> must be assigned only once to a diagram.</p>
+        </remarks>
+      </is-unique>
+    </constraint>
   </define-assembly>
 
   <!-- ################################################################ -->
@@ -544,11 +573,11 @@
 
       <assembly ref="system-user" min-occurs="1" max-occurs="unbounded">
         <use-name>user</use-name>
-        <group-as name="users" in-json="BY_KEY"/>
+        <group-as name="users" in-json="ARRAY"/>
       </assembly>
       <assembly ref="system-component" min-occurs="1" max-occurs="unbounded">
         <use-name>component</use-name>
-        <group-as name="components" in-json="BY_KEY"/>
+        <group-as name="components" in-json="ARRAY"/>
       </assembly>
       <!--         <assembly ref="capability" max-occurs="unbounded">
             <group-as name="capabilities" in-json="BY_KEY"/>
@@ -612,10 +641,17 @@
       </allowed-values>
 
       <!-- TODO: only allow a single "this-system" component -->
+
+      <is-unique name="unique-ssp-system-implementation-user" target="user">
+        <key-field target="@uuid"/>
+        <remarks>
+          <p>A given <code>uuid</code> must be assigned only once to a user.</p>
+        </remarks>
+      </is-unique>
     </constraint>
   </define-assembly>
 
-  <define-assembly name="control-implementation">
+  <define-assembly name="control-implementation" scope="local">
     <formal-name>Control Implementation</formal-name>
     <description>Describes how the system satisfies a set of controls.</description>
     <model>
@@ -624,17 +660,25 @@
         <description>A statement describing important things to know about how this set of control satisfaction documentation is approached.</description>
       </define-field>
       <assembly ref="set-parameter" max-occurs="unbounded">
-        <group-as name="set-parameters" in-json="BY_KEY"/>
+        <group-as name="set-parameters" in-json="ARRAY"/>
       </assembly>
       <assembly ref="implemented-requirement" min-occurs="1" max-occurs="unbounded">
         <group-as name="implemented-requirements" in-json="ARRAY"/>
       </assembly>
     </model>
+    <constraint>
+      <is-unique name="unique-ssp-control-implementation-set-parameter" target="set-parameter">
+        <key-field target="@param-id"/>
+        <remarks>
+          <p>Since multiple <code>set-parameter</code> entries can be provided, each parameter must be set only once.</p>
+        </remarks>
+      </is-unique>
+    </constraint>
     <remarks>
       <p>Use of <code>set-parameter</code> in this context, sets the parameter for all related controls referenced in an <code>implemented-requirement</code>. If the same parameter is also set in a specific <code>implemented-requirement</code>, then the new value will override this value.</p>
     </remarks>
   </define-assembly>
-  <define-assembly name="implemented-requirement">
+  <define-assembly name="implemented-requirement" scope="local">
     <formal-name>Control-based Requirement</formal-name>
     <description>Describes how the system satisfies an individual control.</description>
     <define-flag name="uuid" as-type="uuid" required="yes">
@@ -651,16 +695,16 @@
         <!-- TODO: Model specific link relationships -->
       </assembly>
       <assembly ref="set-parameter" max-occurs="unbounded">
-        <group-as name="parameter-settings" in-json="BY_KEY"/>
+        <group-as name="set-parameters" in-json="ARRAY"/>
       </assembly>
       <assembly ref="responsible-role" max-occurs="unbounded">
-        <group-as name="responsible-roles" in-json="BY_KEY"/>
-      </assembly>
-      <assembly ref="by-component" min-occurs="0" max-occurs="unbounded">
-        <group-as name="by-components" in-json="BY_KEY"/>
+        <group-as name="responsible-roles" in-json="ARRAY"/>
       </assembly>
       <assembly ref="statement" max-occurs="unbounded">
-        <group-as name="statements" in-json="BY_KEY"/>
+        <group-as name="statements" in-json="ARRAY"/>
+      </assembly>
+      <assembly ref="by-component" min-occurs="0" max-occurs="unbounded">
+        <group-as name="by-components" in-json="ARRAY"/>
       </assembly>
       <!-- TODO: Implement parameters -->
       <field ref="remarks" in-xml="WITH_WRAPPER"/>
@@ -693,12 +737,35 @@
           <p>Since all implementation statements are defined at the by-component level (e.g., type=this-system), there must be at least one by-component.</p>
         </remarks>
       </has-cardinality>
+      <is-unique name="unique-ssp-implemented-requirement-set-parameter" target="set-parameter">
+        <key-field target="@param-id"/>
+        <remarks>
+          <p>Since multiple <code>set-parameter</code> entries can be provided, each parameter must be set only once.</p>
+        </remarks>
+      </is-unique>
+      <is-unique name="unique-ssp-implemented-requirement-responsible-role" target="responsible-role">
+        <key-field target="@role-id"/>
+        <remarks>
+          <p>Since <code>responsible-role</code> associates multiple <code>party-uuid</code> entries with a single <code>role-id</code>, each role-id must be referenced only once.</p>
+        </remarks>
+      </is-unique>
+      <is-unique name="unique-ssp-implemented-requirement-statement" target="statement">
+        <key-field target="@statement-id"/>
+        <remarks>
+          <p>Since <code>statement</code> entries can be referenced using the statement's statement-id, each statement must be referenced only once.</p>
+        </remarks>
+      </is-unique>
+      <is-unique name="unique-ssp-implemented-requirement-by-component" target="by-component">
+        <key-field target="@component-uuid"/>
+        <remarks>
+          <p>Since <code>by-component</code> can reference <code>component</code> entries using the component's uuid, each component must be referenced only once. This ensures that all implementation statements are contained in the same <code>by-component</code> entry.</p>
+        </remarks>
+      </is-unique>
     </constraint>
   </define-assembly>
-  <define-assembly name="statement">
+  <define-assembly name="statement" scope="local">
     <formal-name>Specific Control Statement</formal-name>
     <description>Identifies which statements within a control are addressed.</description>
-    <json-key flag-name="statement-id"/>
     <flag ref="statement-id" required="yes">
       <remarks>
         <p>A reference to the specific implemented statement associated with a control.</p>
@@ -714,30 +781,38 @@
       </assembly>
       <assembly ref="link" max-occurs="unbounded">
         <group-as name="links" in-json="ARRAY"/>
-        <!-- TODO: Model specific link relationships -->
       </assembly>
-      <!-- CHANGED: removed "set-parameter" -->
-      <!-- CHANGED: removed "responsible-role" -->
+      <assembly ref="responsible-role" max-occurs="unbounded">
+        <group-as name="responsible-roles" in-json="ARRAY"/>
+      </assembly>
       <assembly ref="by-component" max-occurs="unbounded">
-        <group-as name="by-components" in-json="BY_KEY"/>
+        <group-as name="by-components" in-json="ARRAY"/>
       </assembly>
-      <!--         <assembly ref="by-capability" max-occurs="unbounded">
-            <group-as name="by-capabilities" in-json="BY_KEY"/>
-         </assembly>
--->
       <field ref="remarks" in-xml="WITH_WRAPPER"/>
     </model>
     <constraint>
       <allowed-values target="responsible-role/@role-id" allow-other="yes">
             &allowed-values-responsible-roles-operations;
       </allowed-values>
+      <is-unique name="unique-ssp-statement-responsible-role" target="responsible-role">
+        <key-field target="@role-id"/>
+        <remarks>
+          <p>Since <code>responsible-role</code> associates multiple <code>party-uuid</code> entries with a single <code>role-id</code>, each role-id must be referenced only once.</p>
+        </remarks>
+      </is-unique>
+      <is-unique name="unique-ssp-implemented-requirement-statement-by-component" target="by-component">
+        <key-field target="@component-uuid"/>
+        <remarks>
+          <p>Since <code>by-component</code> can reference <code>component</code> entries using the component's uuid, each component must be referenced only once. This ensures that all implementation statements are contained in the same <code>by-component</code> entry.</p>
+        </remarks>
+      </is-unique>
+      
     </constraint>
   </define-assembly>
   <define-assembly name="by-component">
     <!-- QUESTION: Should set-parameter be moved here to allow component-specific parameter settings? or "this-system" for the whole system? -->
     <formal-name>Component Control Implementation</formal-name>
     <description>Defines how the referenced component implements a set of controls.</description>
-    <json-key flag-name="component-uuid"/>
     <define-flag required="yes" name="component-uuid" as-type="uuid">
       <formal-name>Component Universally Unique Identifier Reference</formal-name>
       <description>A reference to the component that is implementing a given control or control statement.</description>
@@ -756,11 +831,9 @@
       </assembly>
       <assembly ref="link" max-occurs="unbounded">
         <group-as name="links" in-json="ARRAY"/>
-        <!-- TODO: Model specific link relationships -->
       </assembly>
-      <!-- CHANGED: resequenced "set-parameter" -->
       <assembly ref="set-parameter" max-occurs="unbounded">
-        <group-as name="parameter-settings" in-json="BY_KEY"/>
+        <group-as name="set-parameters" in-json="ARRAY"/>
       </assembly>
       <assembly ref="implementation-status">
         <remarks>
@@ -804,10 +877,18 @@
                 <!-- TODO: Model specific link relationships -->
               </assembly>
               <assembly ref="responsible-role" min-occurs="0" max-occurs="unbounded">
-                <group-as name="responsible-roles" in-json="BY_KEY"/>
+                <group-as name="responsible-roles" in-json="ARRAY"/>
               </assembly>
               <field ref="remarks" in-xml="WITH_WRAPPER"/>
             </model>
+            <constraint>
+              <is-unique name="unique-provided-responsible-role" target="responsible-role">
+                <key-field target="@role-id"/>
+                <remarks>
+                  <p>Since <code>responsible-role</code> associates multiple <code>party-uuid</code> entries with a single <code>role-id</code>, each role-id must be referenced only once.</p>
+                </remarks>
+              </is-unique>
+            </constraint>
           </define-assembly>
           <define-assembly name="responsibility" max-occurs="unbounded">
             <formal-name>Control Implementation Responsibility</formal-name>
@@ -831,13 +912,21 @@
                 <!-- TODO: Model specific link relationships -->
               </assembly>
               <assembly ref="responsible-role" min-occurs="0" max-occurs="unbounded">
-                <group-as name="responsible-roles" in-json="BY_KEY"/>
+                <group-as name="responsible-roles" in-json="ARRAY"/>
                 <remarks>
                   <p>A role defined at the by-component level takes precedence over the same role defined on the parent implemented-requirement or on the referenced component. </p>
                 </remarks>
               </assembly>
               <field ref="remarks" in-xml="WITH_WRAPPER"/>
             </model>
+            <constraint>
+              <is-unique name="unique-responsibility-responsible-role" target="responsible-role">
+                <key-field target="@role-id"/>
+                <remarks>
+                  <p>Since <code>responsible-role</code> associates multiple <code>party-uuid</code> entries with a single <code>role-id</code>, each role-id must be referenced only once.</p>
+                </remarks>
+              </is-unique>
+            </constraint>
           </define-assembly>
           <field ref="remarks" in-xml="WITH_WRAPPER"/>
         </model>
@@ -874,9 +963,17 @@
             <!-- TODO: Model specific link relationships -->
           </assembly>
           <assembly ref="responsible-role" min-occurs="0" max-occurs="unbounded">
-            <group-as name="responsible-roles" in-json="BY_KEY"/>
+            <group-as name="responsible-roles" in-json="ARRAY"/>
           </assembly>
         </model>
+        <constraint>
+          <is-unique name="unique-inherited-responsible-role" target="responsible-role">
+            <key-field target="@role-id"/>
+            <remarks>
+              <p>Since <code>responsible-role</code> associates multiple <code>party-uuid</code> entries with a single <code>role-id</code>, each role-id must be referenced only once.</p>
+            </remarks>
+          </is-unique>
+        </constraint>
       </define-assembly>
       <define-assembly name="satisfied" max-occurs="unbounded">
         <formal-name>Satisfied Control Implementation Responsibility</formal-name>
@@ -901,13 +998,21 @@
             <!-- TODO: Model specific link relationships -->
           </assembly>
           <assembly ref="responsible-role" min-occurs="0" max-occurs="unbounded">
-            <group-as name="responsible-roles" in-json="BY_KEY"/>
+            <group-as name="responsible-roles" in-json="ARRAY"/>
           </assembly>
           <field ref="remarks" in-xml="WITH_WRAPPER"/>
         </model>
+        <constraint>
+          <is-unique name="unique-satisfied-responsible-role" target="responsible-role">
+            <key-field target="@role-id"/>
+            <remarks>
+              <p>Since <code>responsible-role</code> associates multiple <code>party-uuid</code> entries with a single <code>role-id</code>, each role-id must be referenced only once.</p>
+            </remarks>
+          </is-unique>
+        </constraint>
       </define-assembly>
       <assembly ref="responsible-role" max-occurs="unbounded">
-        <group-as name="responsible-roles" in-json="BY_KEY"/>
+        <group-as name="responsible-roles" in-json="ARRAY"/>
       </assembly>
       <!-- CHANGED: removed "set-parameter" -->
       <field ref="remarks" in-xml="WITH_WRAPPER"/>
@@ -917,6 +1022,12 @@
             &allowed-values-responsible-roles-operations;
             &allowed-values-responsible-roles-component-production;
       </allowed-values>
+      <is-unique name="unique-ssp-by-component-set-parameter" target="set-parameter">
+        <key-field target="@param-id"/>
+        <remarks>
+          <p>Since multiple <code>set-parameter</code> entries can be provided, each parameter must be set only once.</p>
+        </remarks>
+      </is-unique>
     </constraint>
   </define-assembly>
 

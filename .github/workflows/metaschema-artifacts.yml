@@ -1,17 +1,17 @@
 on:
   push:
     branches:
-      - master
+      - main
   pull_request:
     types: [opened, synchronize, reopened]
   workflow_dispatch:
     branches:
-      - master
+      - main
 name: Build Artifacts and Documentation
 env:
   # the name of the repo
   HOME_REPO: usnistgov/OSCAL
-  HOME_BRANCH: master
+  HOME_BRANCH: main
   # dependency versions
   SAXON_VERSION: 9.9.0-1
   HUGO_VERSION: 0.69.2
@@ -246,6 +246,10 @@ jobs:
           path: |
             ${{ env.OSCAL_WEBSITE_PATH }}/public
           retention-days: 5
+      - name: Run HTMLProofer
+        run: |
+          cd "${OSCAL_WEBSITE_PATH}"
+          bundle exec htmlproofer --allow-hash-href public/ --url-swap "https\://pages.nist.gov/OSCAL/:/" --assume-extension --log-level :debug --url-ignore "/\/OSCAL\/docs\/\/documentation\/schemas\/[^/]+\/(?:json|xml)-(?:model-map|schema)/,/#/,/pages.nist.gov\/(?:nist-header-footer|leaveNotice)\/.+/"
       - name: Run deploy script
         if: ${{ github.repository == env.HOME_REPO && github.ref == format('refs/heads/{0}',env.HOME_BRANCH) }}
         run: |

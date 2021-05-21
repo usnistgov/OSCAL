@@ -59,7 +59,7 @@
         <model>
             <assembly ref="system-component" min-occurs="0" max-occurs="unbounded">
                 <use-name>component</use-name>
-                <group-as name="components" in-json="BY_KEY"/>
+                <group-as name="components" in-json="ARRAY"/>
                 <remarks>
                     <p>Used to add any components, not defined via the System Security Plan (AR-&gt;AP-&gt;SSP)</p>
                 </remarks>
@@ -72,6 +72,14 @@
             </assembly>
             <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
         </model>
+        <constraint>
+            <is-unique name="unique-poam-local-definitions-component" target="component">
+                <key-field target="@uuid"/>
+                <remarks>
+                    <p>Since multiple <code>component</code> entries can be provided, each component must have a unique <code>uuid</code>.</p>
+                </remarks>
+            </is-unique>
+        </constraint>
     </define-assembly>
 
     <define-assembly name="poam-item">
