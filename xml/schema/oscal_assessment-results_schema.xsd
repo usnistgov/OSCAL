@@ -2346,10 +2346,10 @@
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Task Universally Unique Identifier</m:formal-name>
-               <m:description>Uniquely identifies this assessment task. </m:description>
+               <m:description>Uniquely identifies this assessment task. This identifier's uniqueness is document scoped and is intended to be consistent for the same task across minor revisions of the document.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>Task Universally Unique Identifier</b>: Uniquely identifies this assessment task. </xs:documentation>
+               <b>Task Universally Unique Identifier</b>: Uniquely identifies this assessment task. This identifier's uniqueness is document scoped and is intended to be consistent for the same task across minor revisions of the document.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
       <xs:attribute name="type" use="required" type="oscal-ar:token">
@@ -2693,10 +2693,10 @@
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Assessment Subject Placeholder Universally Unique Identifier</m:formal-name>
-               <m:description>Uniquely identifies a set of assessment subjects that will be identified by a task or an activity that is part of a task.</m:description>
+               <m:description>Uniquely identifies a set of assessment subjects that will be identified by a task or an activity that is part of a task. This identifier's uniqueness is document scoped and is intended to be consistent for the same assessment subject across minor revisions of the document.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>Assessment Subject Placeholder Universally Unique Identifier</b>: Uniquely identifies a set of assessment subjects that will be identified by a task or an activity that is part of a task.</xs:documentation>
+               <b>Assessment Subject Placeholder Universally Unique Identifier</b>: Uniquely identifies a set of assessment subjects that will be identified by a task or an activity that is part of a task. This identifier's uniqueness is document scoped and is intended to be consistent for the same assessment subject across minor revisions of the document.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
@@ -3026,10 +3026,10 @@
                   <xs:annotation>
                      <xs:appinfo>
                         <m:formal-name>Assessment Platform Universally Unique Identifier</m:formal-name>
-                        <m:description>Uniquely identifies this assessment Platform.</m:description>
+                        <m:description>Uniquely identifies this assessment Platform. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. Once assigned, a UUID should be consistantly used for a given observation across revisions.</m:description>
                      </xs:appinfo>
                      <xs:documentation>
-                        <b>Assessment Platform Universally Unique Identifier</b>: Uniquely identifies this assessment Platform.</xs:documentation>
+                        <b>Assessment Platform Universally Unique Identifier</b>: Uniquely identifies this assessment Platform. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. Once assigned, a UUID should be consistantly used for a given observation across revisions.</xs:documentation>
                   </xs:annotation>
                </xs:attribute>
             </xs:complexType>

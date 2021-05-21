@@ -1543,10 +1543,10 @@
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Component Identifier</m:formal-name>
-               <m:description>The unique identifier for the component.</m:description>
+               <m:description>The unique identifier for the component. This identifier's uniqueness is document scoped and is intended to be consistent for the same component across minor revisions of the document.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>Component Identifier</b>: The unique identifier for the component.</xs:documentation>
+               <b>Component Identifier</b>: The unique identifier for the component. This identifier's uniqueness is document scoped and is intended to be consistent for the same component across minor revisions of the document.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
       <xs:attribute name="type" use="required" type="oscal-poam:string">
@@ -3315,10 +3315,10 @@
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Assessment Subject Placeholder Universally Unique Identifier</m:formal-name>
-               <m:description>Uniquely identifies a set of assessment subjects that will be identified by a task or an activity that is part of a task.</m:description>
+               <m:description>Uniquely identifies a set of assessment subjects that will be identified by a task or an activity that is part of a task. This identifier's uniqueness is document scoped and is intended to be consistent for the same assessment subject across minor revisions of the document.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>Assessment Subject Placeholder Universally Unique Identifier</b>: Uniquely identifies a set of assessment subjects that will be identified by a task or an activity that is part of a task.</xs:documentation>
+               <b>Assessment Subject Placeholder Universally Unique Identifier</b>: Uniquely identifies a set of assessment subjects that will be identified by a task or an activity that is part of a task. This identifier's uniqueness is document scoped and is intended to be consistent for the same assessment subject across minor revisions of the document.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>

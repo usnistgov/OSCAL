@@ -204,7 +204,7 @@
       <description>Represents a scheduled event or milestone, which may be associated with a series of assessment actions.</description>
       <define-flag name="uuid" required="yes" as-type="uuid">
          <formal-name>Task Universally Unique Identifier</formal-name>
-         <description>Uniquely identifies this assessment task. </description>
+         <description>Uniquely identifies this assessment task. This identifier's uniqueness is document scoped and is intended to be consistent for the same task across minor revisions of the document.</description>
       </define-flag>
       <define-flag name="type" required="yes" as-type="token">
          <formal-name>Task Type</formal-name>
@@ -495,7 +495,7 @@
       <description>Used when the assessment subjects will be determined as part of one or more other assessment activities. These assessment subjects will be recorded in the assessment results in the assessment log.</description>
       <define-flag name="uuid" required="yes" as-type="uuid">
          <formal-name>Assessment Subject Placeholder Universally Unique Identifier</formal-name>
-         <description>Uniquely identifies a set of assessment subjects that will be identified by a task or an activity that is part of a task.</description>
+         <description>Uniquely identifies a set of assessment subjects that will be identified by a task or an activity that is part of a task.  This identifier's uniqueness is document scoped and is intended to be consistent for the same assessment subject across minor revisions of the document.</description>
       </define-flag>
       <model>
          <define-field name="description" as-type="markup-multiline" in-xml="WITH_WRAPPER">
@@ -653,7 +653,7 @@
             <group-as name="assessment-platforms" in-json="ARRAY"/>
             <define-flag name="uuid" required="yes" as-type="uuid">
                <formal-name>Assessment Platform Universally Unique Identifier</formal-name>
-               <description>Uniquely identifies this assessment Platform.</description>
+               <description>Uniquely identifies this assessment Platform. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. Once assigned, a UUID should be consistantly used for a given observation across revisions.</description>
             </define-flag>
             <model>
                <define-field name="title" max-occurs="1" as-type="markup-line">
