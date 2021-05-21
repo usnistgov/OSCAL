@@ -6,9 +6,10 @@
 <METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/toolchains/xslt-M4/validate/metaschema.xsd">
       <schema-name>OSCAL Profile Model</schema-name>
-      <schema-version>1.0.0-rc2</schema-version>
+      <schema-version>1.0.0</schema-version>
       <short-name>oscal-profile</short-name>
       <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
+      <json-base-uri>http://csrc.nist.gov/ns/oscal</json-base-uri>
       <remarks>
             <p>A profile designates a selection and configuration of controls from one or more catalogs, along with a series of operations over them. The topmost element in the OSCAL profile XML schema is <code>profile</code>.</p>
       </remarks>
@@ -142,12 +143,12 @@
       <define-assembly name="group">
             <formal-name>Control group</formal-name>
             <description>A group of (selected) controls or of groups of controls</description>
-            <define-flag name="id" as-type="NCName">
+            <define-flag name="id" as-type="token">
                   <!-- This is an id because the idenfier is assigned and managed externally by humans. -->
                   <formal-name>Group Identifier</formal-name>
                   <description>A unique identifier for a specific group instance that can be used to reference the group within this and in other OSCAL documents. This identifier's uniqueness is document scoped and is intended to be consistent for the same group across minor revisions of the document.</description>
             </define-flag>
-            <define-flag name="class" as-type="NCName">
+            <define-flag name="class" as-type="token">
                   <formal-name>Group Class</formal-name>
                   <description>A textual label that provides a sub-type or characterization of the group.</description>
                   <remarks>
@@ -193,12 +194,12 @@
                         <formal-name>Parameter Setting</formal-name>
                         <description>A parameter setting, to be propagated to points of insertion</description>
                         <group-as name="set-parameters" in-json="ARRAY"/>
-                        <define-flag required="yes" name="param-id" as-type="NCName">
+                        <define-flag required="yes" name="param-id" as-type="token">
                               <!-- This is an id because the idenfier is assigned and managed by humans. -->
                               <formal-name>Parameter ID</formal-name>
                               <description>Indicates the value of the 'id' flag on a target parameter; i.e. which parameter to set</description>
                         </define-flag>
-                        <define-flag name="class" as-type="NCName">
+                        <define-flag name="class" as-type="token">
                               <formal-name>Parameter Class</formal-name>
                               <description>A textual label that provides a characterization of the parameter.</description>
                               <remarks>
@@ -262,7 +263,7 @@
       <define-assembly name="insert-controls">
             <formal-name>Select controls</formal-name>
             <description>Specifies which controls to use in the containing context.</description>
-            <define-flag as-type="NCName" name="order">
+            <define-flag as-type="token" name="order">
                   <formal-name>Order</formal-name>
                   <description>A designation of how a selection of controls in a profile is to be ordered.</description>
                   <constraint>
@@ -307,7 +308,7 @@
             <description>Call a control by its ID</description>
             <flag ref="with-child-controls"/>
             <model>
-                  <define-field name="with-id" as-type="NCName" max-occurs="unbounded">
+                  <define-field name="with-id" as-type="token" max-occurs="unbounded">
                         <formal-name>Match Controls by Identifier</formal-name>
                         <description></description>
                         <group-as name="with-ids" in-json="ARRAY"/>
@@ -344,23 +345,23 @@
       <define-assembly name="remove">
             <formal-name>Removal</formal-name>
             <description>Specifies objects to be removed from a control based on specific aspects of the object that must all match.</description>
-            <define-flag name="by-name" as-type="NCName">
+            <define-flag name="by-name" as-type="token">
                   <formal-name>Reference by (assigned) name</formal-name>
                   <description>Identify items to remove by matching their assigned name</description>
             </define-flag>
-            <define-flag name="by-class" as-type="NCName">
+            <define-flag name="by-class" as-type="token">
                   <formal-name>Reference by class</formal-name>
                   <description>Identify items to remove by matching their <code>class</code>.</description>
             </define-flag>
-            <define-flag name="by-id" as-type="NCName">
+            <define-flag name="by-id" as-type="token">
                   <formal-name>Reference by ID</formal-name>
                   <description>Identify items to remove indicated by their <code>id</code>.</description>
             </define-flag>
-            <define-flag name="by-item-name" as-type="NCName">
+            <define-flag name="by-item-name" as-type="token">
                   <formal-name>Item Name Reference</formal-name>
                   <description>Identify items to remove by the name of the item's information element name, e.g. <code>title</code> or <code>prop</code></description>
             </define-flag>
-            <define-flag name="by-ns" as-type="NCName">
+            <define-flag name="by-ns" as-type="token">
                   <formal-name>Item Namespace Reference</formal-name>
                   <description>Identify items to remove by the item's <code>ns</code>, which is the namespace associated with a <code>part</code>, or <code>prop</code>.</description>
             </define-flag>
@@ -372,7 +373,7 @@
       <define-assembly name="add">
             <formal-name>Addition</formal-name>
             <description>Specifies contents to be added into controls, in resolution</description>
-            <define-flag name="position" as-type="NCName">
+            <define-flag name="position" as-type="token">
                   <formal-name>Position</formal-name>
                   <description>Where to add the new content with respect to the targeted element (beside it or inside it)</description>
                   <constraint>
@@ -384,7 +385,7 @@
                         </allowed-values>
                   </constraint>
             </define-flag>
-            <define-flag name="by-id" as-type="NCName">
+            <define-flag name="by-id" as-type="token">
                   <formal-name>Reference by ID</formal-name>
                   <description>Target location of the addition.</description>
             </define-flag>
@@ -418,7 +419,7 @@
                   <p><code>id-ref</code>, when given, should indicate, by its ID, an element inside the control to serve as the anchor point for the addition. In this case, <code>position</code> value may be any of the permitted values.</p>
             </remarks>
       </define-assembly>
-      <define-flag as-type="NCName" name="with-child-controls">
+      <define-flag as-type="token" name="with-child-controls">
             <formal-name>Include contained controls with control</formal-name>
             <description>When a control is included, whether its child (dependent) controls are also included.</description>
             <constraint>
