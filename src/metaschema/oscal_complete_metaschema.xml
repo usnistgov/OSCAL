@@ -1,16 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/toolchains/xslt-M4/validate/metaschema.xsd">
-  <schema-name>OSCAL System Security Plan (SSP) Model</schema-name>
-  <schema-version>1.0.0-rc2</schema-version>
-  <short-name>oscal-complete</short-name>
-  <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
- 
-  <import href="oscal_catalog_metaschema.xml"/>
-  <import href="oscal_profile_metaschema.xml"/>
-  <import href="oscal_component_metaschema.xml"/>
-  <import href="oscal_ssp_metaschema.xml"/>
-  <import href="oscal_assessment-plan_metaschema.xml"/>
-  <import href="oscal_assessment-results_metaschema.xml"/>
-  <import href="oscal_poam_metaschema.xml"/>
+<!--<?xml-model href="../../build/metaschema/toolchains/xslt-M4/validate/metaschema-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>-->
+<!-- OSCAL GRAND UNIFIED MEGALOMETASCHEMA -->
+<!-- validate with XSD and Schematron (linked) -->
+<!DOCTYPE METASCHEMA [
+   <!ENTITY allowed-values-control-group-property-name SYSTEM "shared-constraints/allowed-values-control-group-property-name.ent">
+]>
+<METASCHEMA xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0">
+      <schema-name>OSCAL Unified Model of Models</schema-name>
+      <schema-version>1.0.0</schema-version>
+      <short-name>oscal-complete</short-name>
+      <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
+      <json-base-uri>http://csrc.nist.gov/ns/oscal</json-base-uri>
+      <remarks>
+            <p>The OSCAL Control Catalog format can be used to describe a collection of security controls and related control enhancements, along with contextualizing documentation and metadata. The root of the Control Catalog format is <code>catalog</code>.
+            </p>
+      </remarks>
+      <import href="oscal_catalog_metaschema.xml"/>
+      <import href="oscal_profile_metaschema.xml"/>
+      <import href="oscal_component_metaschema.xml"/>
+      <import href="oscal_ssp_metaschema.xml"/>
+      <import href="oscal_assessment-plan_metaschema.xml"/>
+      <import href="oscal_assessment-results_metaschema.xml"/>
+      <import href="oscal_poam_metaschema.xml"/>
+      
 </METASCHEMA>

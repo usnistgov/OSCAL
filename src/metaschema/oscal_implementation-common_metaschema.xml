@@ -14,9 +14,10 @@
 <METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/toolchains/xslt-M4/validate/metaschema.xsd" abstract="yes">
       <schema-name>OSCAL Implementation Common Information</schema-name>
-      <schema-version>1.0.0-rc2</schema-version>
+      <schema-version>1.0.0</schema-version>
       <short-name>oscal-implementation-common</short-name>
       <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
+      <json-base-uri>http://csrc.nist.gov/ns/oscal</json-base-uri>
 
       <import href="oscal_metadata_metaschema.xml"/>
       <import href="oscal_control-common_metaschema.xml"/>
@@ -57,7 +58,7 @@
                   <define-assembly name="status" min-occurs="1">
                         <formal-name>Status</formal-name>
                         <description>Describes the operational status of the system component.</description>
-                        <define-flag name="state" as-type="NCName" required="yes">
+                        <define-flag name="state" as-type="token" required="yes">
                               <formal-name>State</formal-name>
                               <description>The operational status.</description>
                               <constraint>
@@ -285,7 +286,7 @@
                         <p>Should be a number within a permitted range</p>
                   </remarks>
             </define-flag>
-            <define-flag name="transport" as-type="NCName">
+            <define-flag name="transport" as-type="token">
                   <formal-name>Transport</formal-name>
                   <description>Indicates the transport type.</description>
                   <constraint>
@@ -310,7 +311,7 @@
       <define-assembly name="implementation-status">
             <formal-name>Implementation Status</formal-name>
             <description>Indicates the degree to which the a given control is implemented.</description>
-            <define-flag name="state" as-type="NCName" required="yes">
+            <define-flag name="state" as-type="token" required="yes">
                   <formal-name>Implementation State</formal-name>
                   <description>Identifies the implementation status of the control or control objective.</description>
                   <constraint>
@@ -628,7 +629,7 @@
       </model>
    </define-assembly>
 -->
-      <define-flag name="statement-id" as-type="NCName">
+      <define-flag name="statement-id" as-type="token">
             <formal-name>Control Statement Reference</formal-name>
             <description>A reference to a control statement by its identifier</description>
       </define-flag>
@@ -667,7 +668,7 @@
       </define-field>
 
       <!-- ===== FLAGS ===== -->
-      <define-flag name="param-id" as-type="NCName">
+      <define-flag name="param-id" as-type="token">
             <!-- This is an id because the idenfier is assigned and managed by humans. -->
             <formal-name>Parameter ID</formal-name>
             <description>A reference to a parameter within a control, who's catalog has been imported into the current implementation context.</description>
