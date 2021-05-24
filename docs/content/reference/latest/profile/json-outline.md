@@ -1,0 +1,17 @@
+---
+title: "Profile Model JSON Format Outline"
+heading: OSCAL Profile Model JSON Format Outline
+description: An outline of the OSCAL Profile model JSON format.
+custom_js:
+  - "/js/oscal-metaschema-map-expander.js"
+weight: 10
+sidenav:
+  title: JSON Outline
+aliases:
+  - /docs/maps/oscal-profile-json/
+  - /documentation/schema/profile/json-model-map/
+  - /documentation/schema/profile-layer/profile/json-model-map/
+---
+
+<!-- DO NOT REMOVE. Generated text below -->
+{{<partial "generated/oscal-profile-json-map.html" >}}
