@@ -1,2 +1,8 @@
 # path to metaschema source|path to documentation folder
-src/metaschema/oscal_catalog_metaschema.xml|docs/content/documentation/schema/implementation-layer/ssp
+src/metaschema/oscal_catalog_metaschema.xml|docs/content/reference/latest/catalog
+src/metaschema/oscal_profile_metaschema.xml|docs/content/reference/latest/profile
+src/metaschema/oscal_ssp_metaschema.xml|docs/content/reference/latest/system-security-plan
+src/metaschema/oscal_component_metaschema.xml|docs/content/reference/latest/component-definition
+src/metaschema/oscal_assessment-plan_metaschema.xml|docs/content/reference/latest/assessment-plan
+src/metaschema/oscal_assessment-results_metaschema.xml|docs/content/reference/latest/assessment-results
+src/metaschema/oscal_poam_metaschema.xml|docs/content/reference/latest/plan-of-action-and-milestones
