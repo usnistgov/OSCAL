@@ -1,4 +1,35 @@
 
+- JSON: BY_KEY to ARRAY 
+- replace ncname with token
+
+# SSP
+
+//control-implementation
+
+- control-id is now required
+- XML: responsible-role was moved in the sequence
+
+- sync sequencing of component definition and ssp
+
+# profile
+
+//remove
+
+- name-ref -> by-name
+- class-ref -> by-class
+- id-ref -> by-id
+- item-name -> by-item-name
+- ns-ref -> by-ns
+
+//add
+
+- id-ref -> by-id
+
+# assessment results
+
+- findings are now optional
+
+
 # OSCAL 1.0.0 Release Candidate (RC) 2
 
 ## Understanding this change log
