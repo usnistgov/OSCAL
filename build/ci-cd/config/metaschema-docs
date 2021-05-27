@@ -1,4 +1,5 @@
 # path to metaschema source|path to documentation folder
+src/metaschema/oscal_complete_metaschema.xml|docs/content/reference/latest/complete
 src/metaschema/oscal_catalog_metaschema.xml|docs/content/reference/latest/catalog
 src/metaschema/oscal_profile_metaschema.xml|docs/content/reference/latest/profile
 src/metaschema/oscal_ssp_metaschema.xml|docs/content/reference/latest/system-security-plan
