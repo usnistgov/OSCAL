@@ -17,6 +17,189 @@
          <m:root>catalog</m:root>
       </xs:appinfo>
    </xs:annotation>
+   <xs:element name="catalog" type="oscal-catalog:catalog-ASSEMBLY"/>
+   <xs:complexType name="catalog-ASSEMBLY">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Catalog</m:formal-name>
+            <m:description>A collection of controls.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Catalog</b>: A collection of controls.</xs:documentation>
+      </xs:annotation>
+      <xs:sequence>
+         <xs:element name="metadata"
+                     type="oscal-catalog:metadata-ASSEMBLY"
+                     minOccurs="1"
+                     maxOccurs="1"/>
+         <xs:element name="param"
+                     type="oscal-catalog:parameter-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:element name="control"
+                     type="oscal-catalog:control-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:element name="group"
+                     type="oscal-catalog:group-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:element name="back-matter"
+                     type="oscal-catalog:back-matter-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="1"/>
+      </xs:sequence>
+      <xs:attribute name="uuid" use="required" type="oscal-catalog:uuid">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Catalog Universally Unique Identifier</m:formal-name>
+               <m:description>A globally unique identifier for this catalog instance. This UUID should be changed when this document is revised.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Catalog Universally Unique Identifier</b>: A globally unique identifier for this catalog instance. This UUID should be changed when this document is revised.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+   </xs:complexType>
+   <xs:complexType name="group-ASSEMBLY">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Control Group</m:formal-name>
+            <m:description>A group of controls, or of groups of controls.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Control Group</b>: A group of controls, or of groups of controls.</xs:documentation>
+      </xs:annotation>
+      <xs:sequence>
+         <xs:element name="title" minOccurs="1" maxOccurs="1">
+            <xs:complexType mixed="true">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Group Title</m:formal-name>
+                     <m:description>A name given to the group, which may be used by a tool for display and navigation.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Group Title</b>: A name given to the group, which may be used by a tool for display and navigation.</xs:documentation>
+               </xs:annotation>
+               <xs:complexContent>
+                  <xs:extension base="oscal-catalog:markupLineType"/>
+               </xs:complexContent>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="param"
+                     type="oscal-catalog:parameter-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:element name="prop"
+                     type="oscal-catalog:property-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:element name="link"
+                     type="oscal-catalog:link-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:element name="part"
+                     type="oscal-catalog:part-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:choice>
+            <xs:element name="group"
+                        type="oscal-catalog:group-ASSEMBLY"
+                        minOccurs="0"
+                        maxOccurs="unbounded"/>
+            <xs:element name="control"
+                        type="oscal-catalog:control-ASSEMBLY"
+                        minOccurs="0"
+                        maxOccurs="unbounded"/>
+         </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="id" type="xs:NCName">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Group Identifier</m:formal-name>
+               <m:description>A unique identifier for a specific group instance that can be used to reference the group within this and in other OSCAL documents. This identifier's uniqueness is document scoped and is intended to be consistent for the same group across minor revisions of the document.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Group Identifier</b>: A unique identifier for a specific group instance that can be used to reference the group within this and in other OSCAL documents. This identifier's uniqueness is document scoped and is intended to be consistent for the same group across minor revisions of the document.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="class" type="xs:NCName">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Group Class</m:formal-name>
+               <m:description>A textual label that provides a sub-type or characterization of the group.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Group Class</b>: A textual label that provides a sub-type or characterization of the group.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+   </xs:complexType>
+   <xs:complexType name="control-ASSEMBLY">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Control</m:formal-name>
+            <m:description>A structured information object representing a security or privacy control. Each security or privacy control within the Catalog is defined by a distinct control instance.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Control</b>: A structured information object representing a security or privacy control. Each security or privacy control within the Catalog is defined by a distinct control instance.</xs:documentation>
+      </xs:annotation>
+      <xs:sequence>
+         <xs:element name="title" minOccurs="1" maxOccurs="1">
+            <xs:complexType mixed="true">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Control Title</m:formal-name>
+                     <m:description>A name given to the control, which may be used by a tool for display and navigation.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Control Title</b>: A name given to the control, which may be used by a tool for display and navigation.</xs:documentation>
+               </xs:annotation>
+               <xs:complexContent>
+                  <xs:extension base="oscal-catalog:markupLineType"/>
+               </xs:complexContent>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="param"
+                     type="oscal-catalog:parameter-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:element name="prop"
+                     type="oscal-catalog:property-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:element name="link"
+                     type="oscal-catalog:link-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:element name="part"
+                     type="oscal-catalog:part-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:element name="control"
+                     type="oscal-catalog:control-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="id" use="required" type="xs:NCName">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Control Identifier</m:formal-name>
+               <m:description>A unique identifier for a specific control instance that can be used to reference the control in other OSCAL documents. This identifier's uniqueness is document scoped and is intended to be consistent for the same control across minor revisions of the document.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Control Identifier</b>: A unique identifier for a specific control instance that can be used to reference the control in other OSCAL documents. This identifier's uniqueness is document scoped and is intended to be consistent for the same control across minor revisions of the document.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="class" type="xs:NCName">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Control Class</m:formal-name>
+               <m:description>A textual label that provides a sub-type or characterization of the control.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Control Class</b>: A textual label that provides a sub-type or characterization of the control.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+   </xs:complexType>
    <xs:complexType name="part-ASSEMBLY">
       <xs:annotation>
          <xs:appinfo>
@@ -370,33 +553,33 @@
             </xs:complexType>
          </xs:element>
          <xs:element name="published"
-                     type="oscal-catalog:oscal-metadata-published-FIELD"
+                     type="oscal-catalog:published-FIELD"
                      minOccurs="0"
                      maxOccurs="1"/>
          <xs:element name="last-modified"
-                     type="oscal-catalog:oscal-metadata-last-modified-FIELD"
+                     type="oscal-catalog:last-modified-FIELD"
                      minOccurs="1"
                      maxOccurs="1"/>
          <xs:element name="version"
-                     type="oscal-catalog:oscal-metadata-version-FIELD"
+                     type="oscal-catalog:version-FIELD"
                      minOccurs="1"
                      maxOccurs="1"/>
          <xs:element name="oscal-version"
-                     type="oscal-catalog:oscal-metadata-oscal-version-FIELD"
+                     type="oscal-catalog:oscal-version-FIELD"
                      minOccurs="1"
                      maxOccurs="1"/>
          <xs:element name="revisions" minOccurs="0" maxOccurs="1">
             <xs:complexType>
                <xs:sequence>
                   <xs:element name="revision"
-                              type="oscal-catalog:oscal-metadata-revision-ASSEMBLY"
+                              type="oscal-catalog:revision-ASSEMBLY"
                               minOccurs="0"
                               maxOccurs="unbounded"/>
                </xs:sequence>
             </xs:complexType>
          </xs:element>
          <xs:element name="document-id"
-                     type="oscal-catalog:oscal-metadata-document-id-FIELD"
+                     type="oscal-catalog:document-id-FIELD"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="prop"
@@ -440,7 +623,7 @@
          </xs:element>
       </xs:sequence>
    </xs:complexType>
-   <xs:complexType name="oscal-metadata-revision-ASSEMBLY">
+   <xs:complexType name="revision-ASSEMBLY">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Revision History Entry</m:formal-name>
@@ -466,19 +649,19 @@
             </xs:complexType>
          </xs:element>
          <xs:element name="published"
-                     type="oscal-catalog:oscal-metadata-published-FIELD"
+                     type="oscal-catalog:published-FIELD"
                      minOccurs="0"
                      maxOccurs="1"/>
          <xs:element name="last-modified"
-                     type="oscal-catalog:oscal-metadata-last-modified-FIELD"
+                     type="oscal-catalog:last-modified-FIELD"
                      minOccurs="0"
                      maxOccurs="1"/>
          <xs:element name="version"
-                     type="oscal-catalog:oscal-metadata-version-FIELD"
+                     type="oscal-catalog:version-FIELD"
                      minOccurs="0"
                      maxOccurs="1"/>
          <xs:element name="oscal-version"
-                     type="oscal-catalog:oscal-metadata-oscal-version-FIELD"
+                     type="oscal-catalog:oscal-version-FIELD"
                      minOccurs="0"
                      maxOccurs="1"/>
          <xs:element name="prop"
@@ -532,15 +715,15 @@
             </xs:complexType>
          </xs:element>
          <xs:element name="address"
-                     type="oscal-catalog:oscal-metadata-address-ASSEMBLY"
+                     type="oscal-catalog:address-ASSEMBLY"
                      minOccurs="1"
                      maxOccurs="1"/>
          <xs:element name="email-address"
-                     type="oscal-catalog:oscal-metadata-email-address-FIELD"
+                     type="oscal-catalog:email-address-FIELD"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="telephone-number"
-                     type="oscal-catalog:oscal-metadata-telephone-number-FIELD"
+                     type="oscal-catalog:telephone-number-FIELD"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="url" minOccurs="0" maxOccurs="unbounded">
@@ -673,16 +856,16 @@
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="email-address"
-                     type="oscal-catalog:oscal-metadata-email-address-FIELD"
+                     type="oscal-catalog:email-address-FIELD"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="telephone-number"
-                     type="oscal-catalog:oscal-metadata-telephone-number-FIELD"
+                     type="oscal-catalog:telephone-number-FIELD"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:choice>
             <xs:element name="address"
-                        type="oscal-catalog:oscal-metadata-address-ASSEMBLY"
+                        type="oscal-catalog:address-ASSEMBLY"
                         minOccurs="0"
                         maxOccurs="unbounded"/>
             <xs:element name="location-uuid"
@@ -839,6 +1022,17 @@
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
+   <xs:simpleType name="role-id-FIELD">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Role Identifier Reference</m:formal-name>
+            <m:description>A reference to the roles served by the user.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Role Identifier Reference</b>: A reference to the roles served by the user.</xs:documentation>
+      </xs:annotation>
+      <xs:restriction base="xs:NCName"/>
+   </xs:simpleType>
    <xs:complexType name="back-matter-ASSEMBLY">
       <xs:annotation>
          <xs:appinfo>
@@ -895,7 +1089,7 @@
                               minOccurs="0"
                               maxOccurs="unbounded"/>
                   <xs:element name="document-id"
-                              type="oscal-catalog:oscal-metadata-document-id-FIELD"
+                              type="oscal-catalog:document-id-FIELD"
                               minOccurs="0"
                               maxOccurs="unbounded"/>
                   <xs:element name="citation" minOccurs="0" maxOccurs="1">
@@ -1236,6 +1430,55 @@
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
+   <xs:complexType name="responsible-role-ASSEMBLY">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Responsible Role</m:formal-name>
+            <m:description>A reference to one or more roles with responsibility for performing a function relative to the containing object.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Responsible Role</b>: A reference to one or more roles with responsibility for performing a function relative to the containing object.</xs:documentation>
+      </xs:annotation>
+      <xs:sequence>
+         <xs:element name="prop"
+                     type="oscal-catalog:property-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:element name="link"
+                     type="oscal-catalog:link-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:element name="party-uuid"
+                     type="oscal-catalog:party-uuid-FIELD"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Remarks</m:formal-name>
+                  <m:description>Additional commentary on the containing object.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Remarks</b>: Additional commentary on the containing object.</xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+               <xs:group ref="oscal-catalog:blockElementGroup"
+                         maxOccurs="unbounded"
+                         minOccurs="0"/>
+            </xs:complexType>
+         </xs:element>
+      </xs:sequence>
+      <xs:attribute name="role-id" use="required" type="xs:NCName">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Responsible Role ID</m:formal-name>
+               <m:description>The role that is responsible for the business function.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Responsible Role ID</b>: The role that is responsible for the business function.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+   </xs:complexType>
    <xs:complexType name="hash-FIELD">
       <xs:annotation>
          <xs:appinfo>
@@ -1260,7 +1503,20 @@
          </xs:extension>
       </xs:simpleContent>
    </xs:complexType>
-   <xs:simpleType name="oscal-metadata-published-FIELD">
+   <xs:complexType name="remarks-FIELD">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Remarks</m:formal-name>
+            <m:description>Additional commentary on the containing object.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Remarks</b>: Additional commentary on the containing object.</xs:documentation>
+      </xs:annotation>
+      <xs:complexContent>
+         <xs:extension base="oscal-catalog:markupMultilineType"/>
+      </xs:complexContent>
+   </xs:complexType>
+   <xs:simpleType name="published-FIELD">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Publication Timestamp</m:formal-name>
@@ -1271,7 +1527,7 @@
       </xs:annotation>
       <xs:restriction base="oscal-catalog:dateTime-with-timezone"/>
    </xs:simpleType>
-   <xs:simpleType name="oscal-metadata-last-modified-FIELD">
+   <xs:simpleType name="last-modified-FIELD">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Last Modified Timestamp</m:formal-name>
@@ -1282,7 +1538,7 @@
       </xs:annotation>
       <xs:restriction base="oscal-catalog:dateTime-with-timezone"/>
    </xs:simpleType>
-   <xs:simpleType name="oscal-metadata-version-FIELD">
+   <xs:simpleType name="version-FIELD">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Document Version</m:formal-name>
@@ -1293,7 +1549,7 @@
       </xs:annotation>
       <xs:restriction base="xs:string"/>
    </xs:simpleType>
-   <xs:simpleType name="oscal-metadata-oscal-version-FIELD">
+   <xs:simpleType name="oscal-version-FIELD">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>OSCAL version</m:formal-name>
@@ -1304,7 +1560,7 @@
       </xs:annotation>
       <xs:restriction base="xs:string"/>
    </xs:simpleType>
-   <xs:simpleType name="oscal-metadata-email-address-FIELD">
+   <xs:simpleType name="email-address-FIELD">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Email Address</m:formal-name>
@@ -1315,7 +1571,7 @@
       </xs:annotation>
       <xs:restriction base="oscal-catalog:email"/>
    </xs:simpleType>
-   <xs:complexType name="oscal-metadata-telephone-number-FIELD">
+   <xs:complexType name="telephone-number-FIELD">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Telephone Number</m:formal-name>
@@ -1339,7 +1595,7 @@
          </xs:extension>
       </xs:simpleContent>
    </xs:complexType>
-   <xs:complexType name="oscal-metadata-address-ASSEMBLY">
+   <xs:complexType name="address-ASSEMBLY">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Address</m:formal-name>
@@ -1350,7 +1606,7 @@
       </xs:annotation>
       <xs:sequence>
          <xs:element name="addr-line"
-                     type="oscal-catalog:oscal-metadata-addr-line-FIELD"
+                     type="oscal-catalog:addr-line-FIELD"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="city" minOccurs="0" maxOccurs="1">
@@ -1417,7 +1673,7 @@
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
-   <xs:simpleType name="oscal-metadata-addr-line-FIELD">
+   <xs:simpleType name="addr-line-FIELD">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Address line</m:formal-name>
@@ -1428,7 +1684,7 @@
       </xs:annotation>
       <xs:restriction base="xs:string"/>
    </xs:simpleType>
-   <xs:complexType name="oscal-metadata-document-id-FIELD">
+   <xs:complexType name="document-id-FIELD">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Document Identifier</m:formal-name>
@@ -1451,189 +1707,6 @@
             </xs:attribute>
          </xs:extension>
       </xs:simpleContent>
-   </xs:complexType>
-   <xs:element name="catalog" type="oscal-catalog:catalog-ASSEMBLY"/>
-   <xs:complexType name="catalog-ASSEMBLY">
-      <xs:annotation>
-         <xs:appinfo>
-            <m:formal-name>Catalog</m:formal-name>
-            <m:description>A collection of controls.</m:description>
-         </xs:appinfo>
-         <xs:documentation>
-            <b>Catalog</b>: A collection of controls.</xs:documentation>
-      </xs:annotation>
-      <xs:sequence>
-         <xs:element name="metadata"
-                     type="oscal-catalog:metadata-ASSEMBLY"
-                     minOccurs="1"
-                     maxOccurs="1"/>
-         <xs:element name="param"
-                     type="oscal-catalog:parameter-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
-         <xs:element name="control"
-                     type="oscal-catalog:control-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
-         <xs:element name="group"
-                     type="oscal-catalog:group-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
-         <xs:element name="back-matter"
-                     type="oscal-catalog:back-matter-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="1"/>
-      </xs:sequence>
-      <xs:attribute name="uuid" use="required" type="oscal-catalog:uuid">
-         <xs:annotation>
-            <xs:appinfo>
-               <m:formal-name>Catalog Universally Unique Identifier</m:formal-name>
-               <m:description>A globally unique identifier for this catalog instance. This UUID should be changed when this document is revised.</m:description>
-            </xs:appinfo>
-            <xs:documentation>
-               <b>Catalog Universally Unique Identifier</b>: A globally unique identifier for this catalog instance. This UUID should be changed when this document is revised.</xs:documentation>
-         </xs:annotation>
-      </xs:attribute>
-   </xs:complexType>
-   <xs:complexType name="group-ASSEMBLY">
-      <xs:annotation>
-         <xs:appinfo>
-            <m:formal-name>Control Group</m:formal-name>
-            <m:description>A group of controls, or of groups of controls.</m:description>
-         </xs:appinfo>
-         <xs:documentation>
-            <b>Control Group</b>: A group of controls, or of groups of controls.</xs:documentation>
-      </xs:annotation>
-      <xs:sequence>
-         <xs:element name="title" minOccurs="1" maxOccurs="1">
-            <xs:complexType mixed="true">
-               <xs:annotation>
-                  <xs:appinfo>
-                     <m:formal-name>Group Title</m:formal-name>
-                     <m:description>A name given to the group, which may be used by a tool for display and navigation.</m:description>
-                  </xs:appinfo>
-                  <xs:documentation>
-                     <b>Group Title</b>: A name given to the group, which may be used by a tool for display and navigation.</xs:documentation>
-               </xs:annotation>
-               <xs:complexContent>
-                  <xs:extension base="oscal-catalog:markupLineType"/>
-               </xs:complexContent>
-            </xs:complexType>
-         </xs:element>
-         <xs:element name="param"
-                     type="oscal-catalog:parameter-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
-         <xs:element name="prop"
-                     type="oscal-catalog:property-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
-         <xs:element name="link"
-                     type="oscal-catalog:link-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
-         <xs:element name="part"
-                     type="oscal-catalog:part-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
-         <xs:choice>
-            <xs:element name="group"
-                        type="oscal-catalog:group-ASSEMBLY"
-                        minOccurs="0"
-                        maxOccurs="unbounded"/>
-            <xs:element name="control"
-                        type="oscal-catalog:control-ASSEMBLY"
-                        minOccurs="0"
-                        maxOccurs="unbounded"/>
-         </xs:choice>
-      </xs:sequence>
-      <xs:attribute name="id" type="xs:NCName">
-         <xs:annotation>
-            <xs:appinfo>
-               <m:formal-name>Group Identifier</m:formal-name>
-               <m:description>A unique identifier for a specific group instance that can be used to reference the group within this and in other OSCAL documents. This identifier's uniqueness is document scoped and is intended to be consistent for the same group across minor revisions of the document.</m:description>
-            </xs:appinfo>
-            <xs:documentation>
-               <b>Group Identifier</b>: A unique identifier for a specific group instance that can be used to reference the group within this and in other OSCAL documents. This identifier's uniqueness is document scoped and is intended to be consistent for the same group across minor revisions of the document.</xs:documentation>
-         </xs:annotation>
-      </xs:attribute>
-      <xs:attribute name="class" type="xs:NCName">
-         <xs:annotation>
-            <xs:appinfo>
-               <m:formal-name>Group Class</m:formal-name>
-               <m:description>A textual label that provides a sub-type or characterization of the group.</m:description>
-            </xs:appinfo>
-            <xs:documentation>
-               <b>Group Class</b>: A textual label that provides a sub-type or characterization of the group.</xs:documentation>
-         </xs:annotation>
-      </xs:attribute>
-   </xs:complexType>
-   <xs:complexType name="control-ASSEMBLY">
-      <xs:annotation>
-         <xs:appinfo>
-            <m:formal-name>Control</m:formal-name>
-            <m:description>A structured information object representing a security or privacy control. Each security or privacy control within the Catalog is defined by a distinct control instance.</m:description>
-         </xs:appinfo>
-         <xs:documentation>
-            <b>Control</b>: A structured information object representing a security or privacy control. Each security or privacy control within the Catalog is defined by a distinct control instance.</xs:documentation>
-      </xs:annotation>
-      <xs:sequence>
-         <xs:element name="title" minOccurs="1" maxOccurs="1">
-            <xs:complexType mixed="true">
-               <xs:annotation>
-                  <xs:appinfo>
-                     <m:formal-name>Control Title</m:formal-name>
-                     <m:description>A name given to the control, which may be used by a tool for display and navigation.</m:description>
-                  </xs:appinfo>
-                  <xs:documentation>
-                     <b>Control Title</b>: A name given to the control, which may be used by a tool for display and navigation.</xs:documentation>
-               </xs:annotation>
-               <xs:complexContent>
-                  <xs:extension base="oscal-catalog:markupLineType"/>
-               </xs:complexContent>
-            </xs:complexType>
-         </xs:element>
-         <xs:element name="param"
-                     type="oscal-catalog:parameter-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
-         <xs:element name="prop"
-                     type="oscal-catalog:property-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
-         <xs:element name="link"
-                     type="oscal-catalog:link-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
-         <xs:element name="part"
-                     type="oscal-catalog:part-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
-         <xs:element name="control"
-                     type="oscal-catalog:control-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
-      </xs:sequence>
-      <xs:attribute name="id" use="required" type="xs:NCName">
-         <xs:annotation>
-            <xs:appinfo>
-               <m:formal-name>Control Identifier</m:formal-name>
-               <m:description>A unique identifier for a specific control instance that can be used to reference the control in other OSCAL documents. This identifier's uniqueness is document scoped and is intended to be consistent for the same control across minor revisions of the document.</m:description>
-            </xs:appinfo>
-            <xs:documentation>
-               <b>Control Identifier</b>: A unique identifier for a specific control instance that can be used to reference the control in other OSCAL documents. This identifier's uniqueness is document scoped and is intended to be consistent for the same control across minor revisions of the document.</xs:documentation>
-         </xs:annotation>
-      </xs:attribute>
-      <xs:attribute name="class" type="xs:NCName">
-         <xs:annotation>
-            <xs:appinfo>
-               <m:formal-name>Control Class</m:formal-name>
-               <m:description>A textual label that provides a sub-type or characterization of the control.</m:description>
-            </xs:appinfo>
-            <xs:documentation>
-               <b>Control Class</b>: A textual label that provides a sub-type or characterization of the control.</xs:documentation>
-         </xs:annotation>
-      </xs:attribute>
    </xs:complexType>
    <xs:complexType name="markupLineType" mixed="true">
       <xs:group ref="oscal-catalog:mixedInlineMarkupGroup"/>

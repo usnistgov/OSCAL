@@ -1,6 +1,7 @@
 title: "OSCAL"
 baseURL: https://pages.nist.gov/OSCAL/
 defaultContentLanguage: en
+# disableAliases: false
 languages:
   en:
     lang: en
@@ -33,8 +34,7 @@ params:
   contentRepoPath: https://github.com/usnistgov/oscal-content/tree/master
   searchAffiliate: oscal
   sidenav:
-#    activerenderdepth: 2
-#    inactiverenderdepth: 5
+#    debug: true
 menu:
   secondary:
   - name: Github

@@ -249,7 +249,7 @@ jobs:
       - name: Run HTMLProofer
         run: |
           cd "${OSCAL_WEBSITE_PATH}"
-          bundle exec htmlproofer --allow-hash-href public/ --url-swap "https\://pages.nist.gov/OSCAL/:/" --assume-extension --log-level :debug --url-ignore "/\/OSCAL\/docs\/\/documentation\/schemas\/[^/]+\/(?:json|xml)-(?:model-map|schema)/,/#/,/pages.nist.gov\/(?:nist-header-footer|leaveNotice)\/.+/"
+          bundle exec htmlproofer --allow-hash-href public/ --url-swap "https\://pages.nist.gov/OSCAL/:/" --assume-extension --log-level :debug --url-ignore "/\/OSCAL\/docs\/\/reference\/[^/]+\/[^/]+\/(?:json|xml)-(?:outline|reference|index|definitions)/,/#/,/pages.nist.gov\/(?:nist-header-footer|leaveNotice)\/.+/"
       - name: Run deploy script
         if: ${{ github.repository == env.HOME_REPO && github.ref == format('refs/heads/{0}',env.HOME_BRANCH) }}
         run: |

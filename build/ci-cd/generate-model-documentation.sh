@@ -6,21 +6,43 @@ fi
 
 source "$OSCALDIR/build/metaschema/scripts/include/init-saxon.sh"
 
-# Option defaults
+integrate_hugo_docs() {
+  local source="$1"; shift
+  local hugo-page="$1"; shift
+
+  # truncate the hugo page
+  sed '/---/q' inputfile
+}
+
+# defaults
+XPROC="${OSCALDIR}/build/metaschema/toolchains/xslt-M4/write-hugo-metaschema-docs.xpl"
+xml_outline_filename="xml-outline.md"
+xml_reference_filename="xml-reference.md"
+xml_index_filename="xml-index.md"
+xml_definitions_filename="xml-definitions.md"
+json_outline_filename="json-outline.md"
+json_reference_filename="json-reference.md"
+json_index_filename="json-index.md"
+json_definitions_filename="json-definitions.md"
+
+declare -a doc_files=("$xml_outline_filename" "$xml_reference_filename" "$xml_index_filename" "$xml_definitions_filename" "$json_outline_filename" "$json_reference_filename" "$json_index_filename" "$json_definitions_filename")
 
 usage() { # Function: Print a help message.
   cat <<EOF
-Usage: $0 [options] [metaschema paths]
+Usage: $0 [options] [metaschema] [documentation directory]
 
 -h, --help                        Display help
 -w DIR, --working-dir DIR         Generate artifacts in DIR
 -v                                Provide verbose output
+--scratch-dir DIR                 Generate temporary artifacts in DIR
+                                  If not provided a new directory will be
+                                  created under \$TMPDIR if set or in /tmp.
 --keep-temp-scratch-dir           If a scratch directory is automatically
                                   created, it will not be automatically removed.
 EOF
 }
 
-OPTS=$(getopt -o w:vh --long working-dir:,help -n "$0" -- "$@")
+OPTS=$(getopt -o vh --long scratch-dir:,keep-temp-scratch-dir,help -n "$0" -- "$@")
 if [[ "$OSTYPE" == "darwin"* ]]; then
   OPTS=$(getopt w:vh $*)
 fi
@@ -35,9 +57,12 @@ eval set -- "$OPTS"
 while [ $# -gt 0 ]; do
   arg="$1"
   case "$arg" in
-  -w | --working-dir)
-    WORKING_DIR="$(realpath "$2")"
+  --scratch-dir)
+    SCRATCH_DIR="$(realpath "$2")"
     shift # past path
+    ;;
+  --keep-temp-scratch-dir)
+    KEEP_TEMP_SCRATCH_DIR=true
     ;;
   -v)
     VERBOSE=true
@@ -65,185 +90,101 @@ echo -e "${P_INFO}Generating XML and JSON Model Documentation${P_END}"
 echo -e "${P_INFO}===========================================${P_END}"
 
 if [ "$VERBOSE" = "true" ]; then
-  echo -e "${P_INFO}Using working directory:${P_END} ${WORKING_DIR}"
+  echo -e "${P_INFO}Using scratch directory:${P_END} ${SCRATCH_DIR}"
+fi
+
+if [ -z "${SCRATCH_DIR+x}" ]; then
+  SCRATCH_DIR="$(mktemp -d)"
+  if [ "$KEEP_TEMP_SCRATCH_DIR" != "true" ]; then
+    function CleanupScratchDir() {
+      rc=$?
+      if [ "$VERBOSE" = "true" ]; then
+        echo -e ""
+        echo -e "${P_INFO}Cleanup${P_END}"
+        echo -e "${P_INFO}=======${P_END}"
+        echo -e "${P_INFO}Deleting scratch directory:${P_END} ${SCRATCH_DIR}"
+      fi
+      rm -rf "${SCRATCH_DIR}"
+      exit $rc
+    }
+    trap CleanupScratchDir EXIT
+  fi
 fi
 
 declare -a paths
 declare -a formats
 if [ "$#" -ne 0 ]; then
-  paths=("$@")
-  for i in "${!paths[@]}"; do
-    formats[$i]="xml,json"
-  done
+  metaschema_paths=("$1")
+  doc_paths=("$2")
 else
-  while IFS="|" read path gen_schema gen_converter gen_docs || [[ -n "$path" ]]; do
-    [[ "$path" =~ ^[[:space:]]*# ]] && continue
+  while IFS="|" read metaschema_path doc_path || [[ -n "$metaschema_path" ]]; do
+    [[ "$metaschema_path" =~ ^[[:space:]]*# ]] && continue
     # remove leading space
-    path="${path##+([[:space:]])}"
+    metaschema_path="${metaschema_path##+([[:space:]])}"
+    doc_path="${doc_path##+([[:space:]])}"
 
-    ([ -z "$path" ] || [ -z "$gen_docs" ]) && continue
+    ([ -z "$metaschema_path" ] || [ -z "$doc_path" ]) && continue
 
-    path_absolute="$OSCALDIR"/"$path"
+    metaschema_path_absolute="$OSCALDIR"/"$metaschema_path"
+    doc_path_absolute="$OSCALDIR"/"$doc_path"
 
-    IFS_OLD=$IFS
-    IFS= # disable word splitting
-    for metaschema in $path_absolute; do
-      paths+=("$metaschema")
-      formats+=("$gen_converter")
-    done
-    IFS=$IFS_OLD
-  done <"$OSCALDIR/build/ci-cd/config/metaschema"
+    metaschema_paths+=("$metaschema_path_absolute")
+    doc_paths+=("$doc_path")
+  done <"$OSCALDIR/build/ci-cd/config/metaschema-docs"
 fi
 
-# the URL of the github repo where generated artifacts will be accessible
-github_url="/artifacts"
-
-# the directory to generate the documentation in
-schema_doc_dir="${WORKING_DIR}/docs/layouts/partials/generated"
-mkdir -p "$schema_doc_dir" # ensure this directory exists
-
 exitcode=0
-for i in "${!paths[@]}"; do
-  metaschema="${paths[$i]}"
-  gen_docs="${formats[$i]}"
+for i in "${!metaschema_paths[@]}"; do
+  metaschema="${metaschema_paths[$i]}"
+  doc_path="${doc_paths[$i]}"
 
   filename=$(basename -- "$metaschema")
   extension="${filename##*.}"
   filename="${filename%.*}"
   base="${filename/_metaschema/}"
-  metaschema_relative=$(realpath --relative-to="$WORKING_DIR" "$metaschema")
+  metaschema_relative=$(realpath --relative-to="$OSCALDIR" "$metaschema")
   metaschema_path=$(realpath --relative-to="$PWD" "$metaschema")
 
   model="${base/oscal_/}"
 
-  #split on commas
-  IFS_OLD=$IFS
-  IFS=, #read -a formats <<< "$gen_schema"
+  docs=()
 
-  for format in ${gen_docs}; do
-    if [ -z "$format" ]; then
-      # skip blanks
-      continue
-    fi
+  docs+=("output-path=file://$SCRATCH_DIR/$model/")
+  docs+=("xml-outline-filename=${xml_outline_filename}")
+  docs+=("xml-reference-filename=${xml_reference_filename}")
+  docs+=("xml-index-filename=${xml_index_filename}")
+  docs+=("xml-definitions-filename=${xml_definitions_filename}")
+  docs+=("json-outline-filename=${json_outline_filename}")
+  docs+=("json-reference-filename=${json_reference_filename}")
+  docs+=("json-index-filename=${json_index_filename}")
+  docs+=("json-definitions-filename=${json_definitions_filename}")
 
-    # Run the model docs XSL template for the format
-    if [ "$VERBOSE" = "true" ]; then
-      echo -e "  ${P_INFO}Generating ${format} model documentation for metaschema '${P_END}${metaschema_relative}${P_INFO}'.${P_END}"
-    fi
+  mkdir -p "$SCRATCH_DIR/$model"
 
-    case $format in
-    xml)
-      # the stylesheet used to generate the documentation
-      stylesheet="$OSCALDIR/build/metaschema/toolchains/xslt-M4/nist-metaschema-MAKE-XML-DOCS.xsl"
-      stylesheet_path=$(realpath --relative-to="$PWD" "$stylesheet")
-      stylesheet_dir=$(dirname "$stylesheet")
+  result=$(run_calabash "$XPROC" "-i source=$metaschema_path ${docs[@]}" 2>&1)
+  cmd_exitcode=$?
+  if [ $cmd_exitcode -ne 0 ]; then
+    echo -e "${P_ERROR}Generating docs failed for '${P_END}${metaschema_relative}${P_ERROR}'.${P_END}"
+    echo -e "${P_ERROR}${result}${P_END}"
+    exitcode=1
+    continue
+  else
+    echo -e "${P_OK}Generated docs for '${P_END}${metaschema_relative}${P_OK}' in '${P_END}${SCRATCH_DIR}/${model}${P_OK}'.${P_END}"
+  fi
 
-      # Make converter path relative to the stylesheet
-      # determine web location of schema
-      schema_url="${github_url}/xml/schema/${base}_schema.xsd"
+  for filename in "${doc_files[@]}"
+  do
+    doc_file_path="$OSCALDIR/${doc_path}/$filename"
+    temp_file_path="$SCRATCH_DIR/$model/$filename"
 
-      # determine documentation location
-      output="${schema_doc_dir}/oscal-${model}-xml-schema.html"
-      output_path=$(realpath --relative-to="$PWD" "$output")
+    echo "Doc File: $doc_file_path"
+    echo "Temp File: $temp_file_path"
 
-      result=$(xsl_transform "$stylesheet_path" "$metaschema_path" "${output_path}" \
-        "schema-path=${schema_url}" 2>&1)
-      ;;
-    json)
-      # the stylesheet used to generate the documentation
-      stylesheet="$OSCALDIR/build/metaschema/toolchains/xslt-M4/nist-metaschema-MAKE-JSON-DOCS.xsl"
-      stylesheet_path=$(realpath --relative-to="$PWD" "$stylesheet")
-      stylesheet_dir=$(dirname "$stylesheet")
-
-      # the converter used to generate the JSON examples
-      converter="$WORKING_DIR/json/convert/${base}_xml-to-json-converter.xsl"
-      converter_path=$(realpath --relative-to="$stylesheet_dir" "$converter")
-
-      # determine documentation location
-      output="${schema_doc_dir}/oscal-${model}-json-schema.html"
-      output_path=$(realpath --relative-to="$PWD" "$output")
-
-      # determine web location of schema
-      schema_url="${github_url}/json/schema/${base}_schema.json"
-      result=$(xsl_transform "$stylesheet_path" "$metaschema_path" "${output_path}" \
-        "example-converter-xslt-path=${converter_path}" \
-        "schema-path=${schema_url}" 2>&1)
-      ;;
-    *)
-      echo -e "${P_WARN}Generating documentation for '${format}' is unsupported for '${P_END}${metaschema_relative}${P_WARN}'.${P_END}"
-      continue
-      ;;
-    esac
-    cmd_exitcode=$?
-    if [ $cmd_exitcode -ne 0 ]; then
-      echo -e "${P_ERROR}Generating ${format} model documentation failed for '${P_END}${metaschema_relative}${P_ERROR}'.${P_END}"
-      echo -e "${P_ERROR}${result}${P_END}"
-      exitcode=1
-      continue
-    fi
-
-    if [ "$VERBOSE" = "true" ]; then
-      echo -e "${P_INFO}${result}${P_END}"
-    fi
-    echo -e "${P_OK}Generated ${format} model documentation for '${P_END}${metaschema_relative}${P_OK}'.${P_END}"
-
-    # Run the model map XSL template for the format
-    if [ "$VERBOSE" = "true" ]; then
-      echo -e "  ${P_INFO}Generating ${format} model map for metaschema '${P_END}${metaschema_relative}${P_INFO}'.${P_END}"
-    fi
-
-    case $format in
-    xml)
-      # the stylesheet used to generate the documentation
-      stylesheet="$OSCALDIR/build/metaschema/toolchains/xslt-M4/nist-metaschema-MAKE-XML-MAP.xsl"
-      stylesheet_path=$(realpath --relative-to="$PWD" "$stylesheet")
-      stylesheet_dir=$(dirname "$stylesheet")
-
-      # determine documentation location
-      output="${schema_doc_dir}/oscal-${model}-xml-map.html"
-      output_path=$(realpath --relative-to="$PWD" "$output")
-
-      # Make converter path relative to the stylesheet
-      # determine web location of schema
-      schema_url="${github_url}/xml/schema/${base}_schema.xsd"
-      result=$(xsl_transform "$stylesheet_path" "$metaschema_path" "${output_path}" 2>&1)
-      ;;
-    json)
-      # the stylesheet used to generate the documentation
-      stylesheet="$OSCALDIR/build/metaschema/toolchains/xslt-M4/nist-metaschema-MAKE-JSON-MAP.xsl"
-      stylesheet_path=$(realpath --relative-to="$PWD" "$stylesheet")
-      stylesheet_dir=$(dirname "$stylesheet")
-
-      # determine documentation location
-      output="${schema_doc_dir}/oscal-${model}-json-map.html"
-      output_path=$(realpath --relative-to="$PWD" "$output")
-
-      # determine web location of schema
-      schema_url="${github_url}/json/schema/${base}_schema.json"
-      result=$(xsl_transform "$stylesheet_path" "$metaschema_path" "${output_path}" 2>&1)
-      ;;
-    *)
-      echo -e "${P_WARN}Generating model map for '${format}' is unsupported for '${P_END}${metaschema_relative}${P_WARN}'.${P_END}"
-      continue
-      ;;
-    esac
-    cmd_exitcode=$?
-    if [ $cmd_exitcode -ne 0 ]; then
-      echo -e "${P_ERROR}Generating ${format} model map failed for '${P_END}${metaschema_relative}${P_ERROR}'.${P_END}"
-      echo -e "${P_ERROR}${result}${P_END}"
-      exitcode=1
-      continue
-    fi
-
-    if [ "$VERBOSE" = "true" ]; then
-      echo -e "${P_INFO}${result}${P_END}"
-    fi
-    echo -e "${P_OK}Generated ${format} model map for '${P_END}${metaschema_relative}${P_OK}'.${P_END}"
-
-    touch -c "$OSCALDIR/docs/content/documentation/schema/$model/${format}-model-map.md"
-    touch -c "$OSCALDIR/docs/content/documentation/schema/$model/${format}-schema.md"
+    sed -i '1,/<!-- DO NOT REMOVE. Generated text below -->/!d' "$doc_file_path"
+    cat "$temp_file_path" | sed 's|href="\([^"]*\).md#/|href="\1/#/|g' >> "$doc_file_path"
   done
-  IFS=$IFS_OLD
+  
+
 done
 
 exit $exitcode
