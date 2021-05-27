@@ -4,15 +4,7 @@ if [ -z ${OSCAL_SCRIPT_INIT+x} ]; then
     source "$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null && pwd)/include/init-oscal.sh"
 fi
 
-source "$OSCALDIR/build/metaschema/scripts/include/init-saxon.sh"
-
-integrate_hugo_docs() {
-  local source="$1"; shift
-  local hugo-page="$1"; shift
-
-  # truncate the hugo page
-  sed '/---/q' inputfile
-}
+source "$OSCALDIR/build/metaschema/scripts/include/init-calabash.sh"
 
 # defaults
 XPROC="${OSCALDIR}/build/metaschema/toolchains/xslt-M4/write-hugo-metaschema-docs.xpl"
@@ -176,9 +168,6 @@ for i in "${!metaschema_paths[@]}"; do
   do
     doc_file_path="$OSCALDIR/${doc_path}/$filename"
     temp_file_path="$SCRATCH_DIR/$model/$filename"
-
-    echo "Doc File: $doc_file_path"
-    echo "Temp File: $temp_file_path"
 
     sed -i '1,/<!-- DO NOT REMOVE. Generated text below -->/!d' "$doc_file_path"
     cat "$temp_file_path" | sed 's|href="\([^"]*\).md#/|href="\1/#/|g' >> "$doc_file_path"
