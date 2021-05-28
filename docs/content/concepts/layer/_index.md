@@ -1,5 +1,5 @@
 ---
-title: Layers and Models Reference
+title: Layers and Models
 description: Provides details on the layers, models, and formats that comprise OSCAL. Concepts for each layer and model are discussed, and the semantics of each model and associated formats are defined.
 suppresstopiclist: true
 weight: 50
@@ -18,7 +18,7 @@ The OSCAL architecture is organized in a stack of *layers*. Each lower layer in 
 
 The following image depicts each layer and the corresponding model(s) for each layer.
 
-{{<imagemap src="oscal-layers.png" width="901" height="400" alt="OSCAL layers and models. The layers are listed (from top to bottom): Assessment, Implementation, and Control. The Assessment Layer is comprised of the Assessment Plan Model, Assessment Results Model, and the Plan of Action and Milestones (POA&M) Model. The Implementation Layer is comprised of the System Security Plan Model and the Component Model. The Control Layer is comprised of the Catalog Model and the Profile Model.">}}
+{{<imagemap src="oscal-layers.svg" width="673" height="301" alt="OSCAL layers and models. The layers are listed (from top to bottom): Assessment, Implementation, and Control. The Assessment Layer is comprised of the Assessment Plan Model, Assessment Results Model, and the Plan of Action and Milestones (POA&M) Model. The Implementation Layer is comprised of the System Security Plan Model and the Component Model. The Control Layer is comprised of the Catalog Model and the Profile Model.">}}
   <!-- Assessment Layer -->
   {{<area alt="Assessment Plan Model" title="Assessment Plan Model" href="assessment/assessment-plan/" coords="199,8,891,42" shape="rect">}}
   {{<area alt="Assessment Results Model" title="Assessment Results Model" href="assessment/assessment-results/" coords="200,50,891,73" shape="rect">}}
