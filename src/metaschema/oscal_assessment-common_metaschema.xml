@@ -329,16 +329,16 @@
                      <p>Identifies the person or organization responsible for performing a specific role defined by the activity.</p>
                   </remarks>
                </assembly>
-               <choice>
-                  <assembly ref="assessment-subject" min-occurs="1" max-occurs="unbounded">
+<!--               <choice>
+-->                  <assembly ref="assessment-subject" min-occurs="1" max-occurs="unbounded">
                      <use-name>subject</use-name>
                      <group-as name="subjects" in-json="ARRAY"/>
                   </assembly>
-                  <assembly ref="assessment-subject-placeholder">
+<!--                  <assembly ref="assessment-subject-placeholder">
                      <use-name>subject-placeholder</use-name>
                   </assembly>
                </choice>
-               <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
+-->               <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
             </model>
             <constraint>
                <is-unique name="unique-associated-activity-responsible-role" target="responsible-role">
