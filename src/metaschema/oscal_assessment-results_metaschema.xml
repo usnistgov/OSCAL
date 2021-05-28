@@ -263,11 +263,8 @@
           <p>Used to identify the individual and/or tool generated this finding.</p>
         </remarks>
       </assembly>
-      <assembly ref="finding-target">
+      <assembly ref="finding-target" min-occurs="1">
         <use-name>target</use-name>
-        <remarks>
-          <p>While use of <code>target</code> is optional, it is recommended to use this object to identify the target of the finding providing traceability.</p>
-        </remarks>
       </assembly>
       <define-field name="implementation-statement-uuid" as-type="uuid" min-occurs="0" max-occurs="1">
         <formal-name>Implementation Statement UUID</formal-name>

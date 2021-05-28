@@ -713,7 +713,6 @@
       <!-- RENAME: objective-status to finding-target -->
       <formal-name>Objective Status</formal-name>
       <description>Captures an assessor's conclusions regarding the degree to which an objective is satisfied.</description>
-
       <define-flag name="type" as-type="string" required="yes">
          <formal-name>Finding Target Type</formal-name>
          <description>Identifies the type of the target.</description>
@@ -726,7 +725,6 @@
          <remarks>
             <p>The target will always be a reference to: 1) a control statement, or 2) a control objective. In the former case, there is always a single top-level statement within a control. Thus, if the entire control is targeted, this statement identifier can be used.</p>
          </remarks>
-      </define-flag>
       <define-flag name="id-ref" as-type="NCName" required="yes">
          <formal-name>Finding Target Identifier Reference</formal-name>
          <description>Identifies the specific target qualified by the <code>type</code>.</description>
@@ -756,6 +754,23 @@
                   <enum value="satisfied">The objective has been completely satisfied.</enum>
                   <!-- CHANGED "other-than-satisfied" to "not-satisfied" -->
                   <enum value="not-satisfied">The objective has not been completely satisfied, but may be partially satisfied.</enum>
+               </allowed-values>
+            </constraint>
+         </define-field>
+         <define-field name="reason" as-type="NCName" max-occurs="unbounded">
+            <formal-name>Objective Status Reason</formal-name>
+            <description>The reason the objective was given it's status.</description>
+            <constraint>
+               <allowed-values target="." allow-other="yes">
+                  <enum value="pass">The target system or system component satisfied all the conditions.</enum>
+                  <enum value="fail">The target system or system component did not satisfy all the conditions.</enum>
+                  <enum value="error">The checking engine could not complete the evaluation, therefore the status of the target’s compliance is not certain. This could happen, for example, if a testing tool was run with insufficient privileges and could not gather all of the necessary information.</enum>
+                  <enum value="unknown">The testing tool encountered some problem and the result is unknown.For example, a result of ‘unknown’ might be given if the testing tool was unable to interpret the output of the checking engine (the output has no meaning to the testing tool).</enum>
+                  <enum value="notapplicable">The objective was not applicable to the target of the test. For example, the objective might have been specific to a different version of the target OS, or it might have been a test against a platform feature that was not installed.</enum>
+                  <enum value="notchecked">The objective was not evaluated by the checking engine. It may correspond to a status returned by a checking engine if the checking engine does not support the indicated check code.</enum>
+                  <enum value="notselected">The objective was not selected in the benchmark.</enum>
+                  <enum value="informational">The objective was checked, but the output from the checking engine is simply information for auditors or administrators; it is not a compliance category.This status value is designed for objectives whose main purpose is to extract information from the target rather than test the target. </enum>
+                  <enum value="fixed">The objective was fixed (possibly by a tool that can automatically apply remediation, or possibly by the human auditor)</enum>
                </allowed-values>
             </constraint>
          </define-field>
