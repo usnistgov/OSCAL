@@ -170,7 +170,9 @@ for i in "${!metaschema_paths[@]}"; do
     temp_file_path="$SCRATCH_DIR/$model/$filename"
 
     sed -i '1,/<!-- DO NOT REMOVE. Generated text below -->/!d' "$doc_file_path"
+    echo "{{< rawhtml >}}" >> "$doc_file_path"
     cat "$temp_file_path" | sed 's|href="\([^"]*\).md#/|href="\1/#/|g' >> "$doc_file_path"
+    echo "{{< /rawhtml >}}" >> "$doc_file_path"
   done
   
 
