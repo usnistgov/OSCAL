@@ -139,19 +139,19 @@
     @include u-margin(0);
     grid-area: name;
     margin: 0;
-    align-self: center;
+    align-self: start;
   }
   p.type {
     @include model-text();
     grid-area: type;
     margin: 0;
-    align-self: center;
+    align-self: start;
   }
   p.occurrence {
     @include model-text();
     grid-area: occurance;
     margin: 0;
-    align-self: center;
+    align-self: start;
   }
   div.crosslink {
     grid-area: crosslink;
@@ -175,6 +175,7 @@
   div.definition-header {
     @include u-bg($definition-header-bg);
     @include header-text($header-fg);
+    @include u-margin-top(2px);
     @include u-border(1px,'base-light');
     @include u-radius('md');
     padding: .5rem;
@@ -185,11 +186,16 @@
     grid-template-areas: 
       "name type crosslink"
       "formal-name formal-name crosslink";
+
+    &+ p {
+      margin-top: 0.5rem;
+    }
   }
 
   div.instance-header {
     @include u-bg($instance-header-bg);
     @include header-text($header-fg);
+    @include u-margin-top(2px);
     @include u-border(1px,'base-light');
     @include u-radius('md');
     padding: .5rem;
@@ -200,6 +206,9 @@
     grid-template-areas: 
       "name type occurance crosslink"
       "formal-name formal-name formal-name crosslink";
+    &+ p {
+      margin-top: 0.5rem;
+    }
   }
   div.array-header {
     @include u-bg('gray-10');
@@ -217,6 +226,16 @@
       .formal-name {
         align-self: right;
     }
+    &+ p {
+      margin-top: 0.5rem;
+    }
+  }
+  details {
+    margin-top: 0.5rem;
+  }
+  .model-entry {
+    @include u-margin-left(2px);
+    @include u-border-left(1px,'base-light');
   }
 }
 
