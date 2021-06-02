@@ -18,22 +18,22 @@ The OSCAL architecture is organized in a stack of *layers*. Each lower layer in 
 
 The following image depicts each layer and the corresponding model(s) for each layer.
 
-{{<imagemap src="oscal-layers.svg" width="673" height="301" alt="OSCAL layers and models. The layers are listed (from top to bottom): Assessment, Implementation, and Control. The Assessment Layer is comprised of the Assessment Plan Model, Assessment Results Model, and the Plan of Action and Milestones (POA&M) Model. The Implementation Layer is comprised of the System Security Plan Model and the Component Model. The Control Layer is comprised of the Catalog Model and the Profile Model.">}}
+{{<imagemap src="oscal-layers.svg" width="896" height="400" alt="OSCAL layers and models. The layers are listed (from top to bottom): Assessment, Implementation, and Control. The Assessment Layer is comprised of the Assessment Plan Model, Assessment Results Model, and the Plan of Action and Milestones (POA&M) Model. The Implementation Layer is comprised of the System Security Plan Model and the Component Model. The Control Layer is comprised of the Catalog Model and the Profile Model.">}}
   <!-- Assessment Layer -->
-  {{<area alt="Assessment Plan Model" title="Assessment Plan Model" href="assessment/assessment-plan/" coords="199,8,891,42" shape="rect">}}
-  {{<area alt="Assessment Results Model" title="Assessment Results Model" href="assessment/assessment-results/" coords="200,50,891,73" shape="rect">}}
-  {{<area alt="Plan of Action and Milestones Model" title="Plan of Action and Milestones Model" href="assessment/poam/" coords="199,82,892,107" shape="rect">}}
-  {{<area alt="Assessment Layer" title="Assessment Layer" href="assessment/" coords="8,0,897,149" shape="rect">}}
+  {{<area alt="Plan of Action and Milestones Model" title="Plan of Action and Milestones Model" href="assessment/poam/" coords="193,8,890,33" shape="rect">}}
+  {{<area alt="Assessment Results Model" title="Assessment Results Model" href="assessment/assessment-results/" coords="193,41,890,67" shape="rect">}}
+  {{<area alt="Assessment Plan Model" title="Assessment Plan Model" href="assessment/assessment-plan/" coords="193,74,890,109" shape="rect">}}
+  {{<area alt="Assessment Layer" title="Assessment Layer" href="assessment/" coords="0,0,896,151" shape="rect">}}
 
   <!-- Implementation Layer -->
-  {{<area alt="System Security Plan" title="System Security Plan" href="implementation/ssp/" coords="200,170,892,214" shape="rect">}}
-  {{<area alt="Component Definition" title="Component Definition" href="implementation/component-definition/" coords="198,220,891,247" shape="rect">}}
-  {{<area alt="Implementation Layer" title="Implementation Layer" href="implementation/" coords="8,163,898,288" shape="rect">}}
+  {{<area alt="System Security Plan" title="System Security Plan" href="implementation/ssp/" coords="194,168,890,214" shape="rect">}}
+  {{<area alt="Component Definition" title="Component Definition" href="implementation/component-definition/" coords="193,219,890,247" shape="rect">}}
+  {{<area alt="Implementation Layer" title="Implementation Layer" href="implementation/" coords="0,162,896,289" shape="rect">}}
 
   <!-- Control Layer -->
-  {{<area alt="Profile Model" title="Profile Model" href="control/profile/" coords="200,307,892,347" shape="rect">}}
-  {{<area alt="Catalog Model" title="Catalog Model" href="control/catalog/" coords="199,354,892,391" shape="rect">}}
-  {{<area alt="Control Layer" title="Control Layer" href="control/" coords="6,300,898,398" shape="rect">}}
+  {{<area alt="Profile Model" title="Profile Model" href="control/profile/" coords="193,307,890,347" shape="rect">}}
+  {{<area alt="Catalog Model" title="Catalog Model" href="control/catalog/" coords="193,356,890,391" shape="rect">}}
+  {{<area alt="Control Layer" title="Control Layer" href="control/" coords="0,300,896,400" shape="rect">}}
 {{</imagemap>}}
 
 Each OSCAL model is represented in multiple, machine readable *formats* (e.g., XML, JSON, YAML), which provide a serialization and encoding mechanism for representing and exchanging OSCAL data, also referred to as *OSCAL content*.
