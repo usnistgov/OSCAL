@@ -129,55 +129,123 @@
   }
 }
 
-@mixin reference-header($header-bg,$header-fg) {
-  div.header {
-    @include u-bg($header-bg);
+@mixin reference-header($definition-header-bg,$instance-header-bg,$header-fg) {
+  ul {
+    list-style: none;
+  }
+  .name, p.array-member {
     @include header-text($header-fg);
-    h1 {
-      @include u-margin(0);
-      clear:left;
+    @include u-font('heading', lg);
+    @include u-margin(0);
+    grid-area: name;
+    margin: 0;
+    align-self: center;
+  }
+  p.type {
+    @include model-text();
+    grid-area: type;
+    margin: 0;
+    align-self: center;
+  }
+  p.occurrence {
+    @include model-text();
+    grid-area: occurance;
+    margin: 0;
+    align-self: center;
+  }
+  div.crosslink {
+    grid-area: crosslink;
+    margin: 0;
+    align-self: start;
+    justify-self: end;
+
+    /*
+    a.usa-button {
+
     }
-    h2,h3,h4,h5,h6 {
-      @include u-font('heading', lg);
-      @include u-margin(0);
-      clear:left;
-    }
-    div.crosslink {
-      float: right;
-    }
+    */
   }
-}
-
-/*
-.xml-reference {
-  @include reference-header('green-cool-20','green-cool-80');
-
-  button.schema-link {
-    @include u-bg('green-cool-70');
+  .formal-name {
+    @include supporting-text();
+    grid-area: formal-name;
+    margin: 0;
+    align-self: center;
   }
-}
-
-.json-reference {
-  @include reference-header('blue-20','blue-80');
-
-  button.schema-link {
-    @include u-bg('blue-70');
-  }
-}
-
-.xml-reference, .json-reference {
-  .json-obj {
-    border-left: 2px solid grey;
-  }
-  div.header {
-    @include u-padding(1);
+  
+  div.definition-header {
+    @include u-bg($definition-header-bg);
+    @include header-text($header-fg);
     @include u-border(1px,'base-light');
     @include u-radius('md');
-
-    button.schema-link {
-      @extend .usa-button;
-    }
+    padding: .5rem;
+    display: grid;
+    grid-template-columns: 3fr 3fr 2fr;
+    grid-template-rows: auto auto;
+    grid-gap: .5em;
+    grid-template-areas: 
+      "name type crosslink"
+      "formal-name formal-name crosslink";
   }
 
+  div.instance-header {
+    @include u-bg($instance-header-bg);
+    @include header-text($header-fg);
+    @include u-border(1px,'base-light');
+    @include u-radius('md');
+    padding: .5rem;
+    display: grid;
+    grid-template-columns: 3fr 3fr 2fr 2fr;
+    grid-template-rows: auto auto;
+    grid-gap: .5em;
+    grid-template-areas: 
+      "name type occurance crosslink"
+      "formal-name formal-name formal-name crosslink";
+  }
+  div.array-header {
+    @include u-bg('gray-10');
+    @include header-text($header-fg);
+    @include u-border(1px,'base-light');
+    @include u-radius-bottom('md');
+    padding: .5rem;
+    display: grid;
+    grid-template-columns: 3fr 3fr 2fr 2fr;
+    grid-template-rows: auto auto;
+    grid-gap: .5em;
+    grid-template-areas: 
+      "name type occurance formal-name";
+
+      .formal-name {
+        align-self: right;
+    }
+  }
 }
-*/
+
+.xml-reference, .xml-definition {
+  @include reference-header('green-cool-20','green-cool-10','green-cool-80');
+
+  div.crosslink a.usa-button {
+    @include u-bg('green-cool-70');
+    @include u-text('white','bold');
+    &:visited {
+      @include u-text('white');
+    }
+    &:hover {
+      @include u-text('bold');
+    }
+  }
+}
+
+.json-reference, .json-definition {
+  @include reference-header('blue-20','blue-10','blue-80');
+
+  div.crosslink a.usa-button {
+    @include u-bg('blue-70');
+    @include u-text('white','bold');
+    &:visited {
+      @include u-text('white');
+    }
+    &:hover {
+      @include u-text('bold');
+    }
+  }
+}
