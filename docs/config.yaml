@@ -42,8 +42,8 @@ menu:
     weight: 90
 module:
   mounts:
-  - source: content
-    target: content
+#  - source: content
+#    target: content
   - source: static
     target: static
   - source: ../xml
@@ -52,13 +52,13 @@ module:
     target: static/artifacts/json
   - source: ../content
     target: static/artifacts/content
-  - source: layouts
-    target: layouts
-  - source: data
-    target: data
-  - source: assets
-    target: assets
-  - source: i18n
-    target: i18n
-  - source: archetypes
-    target: archetypes
+#  - source: layouts
+#    target: layouts
+#  - source: data
+#    target: data
+#  - source: assets
+#    target: assets
+#  - source: i18n
+#    target: i18n
+#  - source: archetypes
+#    target: archetypes
