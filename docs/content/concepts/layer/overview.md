@@ -9,6 +9,7 @@ sidenav:
     title: OSCAL Model Overview
 aliases:
   - /documentation/schema/model-concepts/
+  - /documentation/schema/overview/
 ---
 
 OSCAL is organized in a series of **layers** that each provide a set of **models**.
