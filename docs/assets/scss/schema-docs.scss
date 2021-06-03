@@ -136,6 +136,7 @@
   .name, p.array-member {
     @include header-text($header-fg);
     @include u-font('heading', lg);
+    @include u-line-height('heading', 1);
     @include u-margin(0);
     grid-area: name;
     margin: 0;
@@ -143,12 +144,14 @@
   }
   p.type {
     @include model-text();
+    @include u-line-height('mono', 1);
     grid-area: type;
     margin: 0;
     align-self: start;
   }
   p.occurrence {
     @include model-text();
+    @include u-line-height('mono', 1);
     grid-area: occurance;
     margin: 0;
     align-self: start;
@@ -175,7 +178,7 @@
   div.definition-header {
     @include u-bg($definition-header-bg);
     @include header-text($header-fg);
-    @include u-margin-top(2px);
+    @include u-margin-top('105');
     @include u-border(1px,'base-light');
     @include u-radius('md');
     padding: .5rem;
@@ -186,16 +189,11 @@
     grid-template-areas: 
       "name type crosslink"
       "formal-name formal-name crosslink";
-
-    &+ p {
-      margin-top: 0.5rem;
-    }
   }
 
   div.instance-header {
     @include u-bg($instance-header-bg);
     @include header-text($header-fg);
-    @include u-margin-top(2px);
     @include u-border(1px,'base-light');
     @include u-radius('md');
     padding: .5rem;
@@ -206,9 +204,6 @@
     grid-template-areas: 
       "name type occurance crosslink"
       "formal-name formal-name formal-name crosslink";
-    &+ p {
-      margin-top: 0.5rem;
-    }
   }
   div.array-header {
     @include u-bg('gray-10');
@@ -226,16 +221,21 @@
       .formal-name {
         align-self: right;
     }
-    &+ p {
+  }
+  div.model-entry div.body {
+    @include u-padding-left('105');
+    @include u-border-left(2px,'base-lightest');
+    @include u-margin-bottom('105');
+    
+    > p {
       margin-top: 0.5rem;
     }
-  }
-  details {
-    margin-top: 0.5rem;
-  }
-  .model-entry {
-    @include u-margin-left(2px);
-    @include u-border-left(1px,'base-light');
+    details {
+      margin-top: 0.5rem;
+      summary {
+        @include u-margin-bottom('05');
+      }
+    }
   }
 }
 
