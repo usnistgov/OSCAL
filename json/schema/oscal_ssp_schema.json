@@ -1,6 +1,6 @@
 
   { "$schema" : "http://json-schema.org/draft-07/schema#",
-    "$id" : "/1.0.0-rc2/oscal-ssp-schema.json",
+    "$id" : "http://csrc.nist.gov/ns/oscal/1.0.0/oscal-ssp-schema.json",
     "$comment" : "OSCAL System Security Plan (SSP) Model: JSON Schema",
     "type" : "object",
     "definitions" : 
@@ -65,11 +65,13 @@
           "system-name" : 
           { "title" : "System Name - Full",
             "description" : "The full name of the system.",
-            "type" : "string" },
+            "type" : "string",
+            "pattern" : "^\\S(.*\\S)?$" },
           "system-name-short" : 
           { "title" : "System Name - Short",
             "description" : "A short name for the system, such as an acronym, that is suitable for display in a data table or summary list.",
-            "type" : "string" },
+            "type" : "string",
+            "pattern" : "^\\S(.*\\S)?$" },
           "description" : 
           { "title" : "System Description",
             "description" : "A summary of the system.",
@@ -89,7 +91,8 @@
           "security-sensitivity-level" : 
           { "title" : "Security Sensitivity Level",
             "description" : "The overall information system sensitivity categorization, such as defined by FIPS-199.",
-            "type" : "string" },
+            "type" : "string",
+            "pattern" : "^\\S(.*\\S)?$" },
           "system-information" : 
           { "$ref" : "#assembly_oscal-ssp_system-information" },
           "security-impact-level" : 
@@ -175,7 +178,8 @@
                         "items" : 
                         { "title" : "Information Type Systematized Identifier",
                           "description" : "An identifier qualified by the given identification system used, such as NIST SP 800-60.",
-                          "type" : "string" } } },
+                          "type" : "string",
+                          "pattern" : "^\\S(.*\\S)?$" } } },
                     "required" : 
                     [ "system" ],
                     "additionalProperties" : false } },
@@ -275,12 +279,14 @@
       { "title" : "Base Level (Confidentiality, Integrity, or Availability)",
         "description" : "The prescribed base (Confidentiality, Integrity, or Availability) security impact level.",
         "$id" : "#field_oscal-ssp_base",
-        "type" : "string" },
+        "type" : "string",
+        "pattern" : "^\\S(.*\\S)?$" },
       "oscal-ssp-oscal-ssp:selected" : 
       { "title" : "Selected Level (Confidentiality, Integrity, or Availability)",
         "description" : "The selected (Confidentiality, Integrity, or Availability) security impact level.",
         "$id" : "#field_oscal-ssp_selected",
-        "type" : "string" },
+        "type" : "string",
+        "pattern" : "^\\S(.*\\S)?$" },
       "oscal-ssp-oscal-ssp:adjustment-justification" : 
       { "title" : "Adjustment Justification",
         "description" : "If the selected security level is different from the base security level, this contains the justification for the change.",
@@ -295,15 +301,18 @@
         { "security-objective-confidentiality" : 
           { "title" : "Security Objective: Confidentiality",
             "description" : "A target-level of confidentiality for the system, based on the sensitivity of information within the system.",
-            "type" : "string" },
+            "type" : "string",
+            "pattern" : "^\\S(.*\\S)?$" },
           "security-objective-integrity" : 
           { "title" : "Security Objective: Integrity",
             "description" : "A target-level of integrity for the system, based on the sensitivity of information within the system.",
-            "type" : "string" },
+            "type" : "string",
+            "pattern" : "^\\S(.*\\S)?$" },
           "security-objective-availability" : 
           { "title" : "Security Objective: Availability",
             "description" : "A target-level of availability for the system, based on the sensitivity of information within the system.",
-            "type" : "string" } },
+            "type" : "string",
+            "pattern" : "^\\S(.*\\S)?$" } },
         "required" : 
         [ "security-objective-confidentiality",
           "security-objective-integrity",
@@ -319,6 +328,7 @@
           { "title" : "State",
             "description" : "The current operating status.",
             "type" : "string",
+            "pattern" : "^\\S(.*\\S)?$",
             "enum" : 
             [ "operational",
               "under-development",
@@ -581,7 +591,8 @@
           "control-id" : 
           { "title" : "Control Identifier Reference",
             "description" : "A reference to a control with a corresponding id value.",
-            "type" : "string" },
+            "type" : "string",
+            "pattern" : "^[_A-Za-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD][_A-Za-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD\\-\\.0-9\\u00B7\\u0300-\\u036F\\u203F-\\u2040]*$" },
           "props" : 
           { "type" : "array",
             "minItems" : 1,
@@ -627,7 +638,8 @@
         { "statement-id" : 
           { "title" : "Control Statement Reference",
             "description" : "A reference to a control statement by its identifier",
-            "type" : "string" },
+            "type" : "string",
+            "pattern" : "^[_A-Za-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD][_A-Za-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD\\-\\.0-9\\u00B7\\u0300-\\u036F\\u203F-\\u2040]*$" },
           "uuid" : 
           { "title" : "Control Statement Reference Universally Unique Identifier",
             "description" : "A globally unique identifier that can be used to reference this control statement entry elsewhere in an OSCAL document. A UUID should be consistently used for a given resource across revisions of the document.",
@@ -1064,17 +1076,20 @@
           { "title" : "Party Type",
             "description" : "A category describing the kind of party the object describes.",
             "type" : "string",
+            "pattern" : "^\\S(.*\\S)?$",
             "enum" : 
             [ "person",
               "organization" ] },
           "name" : 
           { "title" : "Party Name",
             "description" : "The full name of the party. This is typically the legal name associated with the party.",
-            "type" : "string" },
+            "type" : "string",
+            "pattern" : "^\\S(.*\\S)?$" },
           "short-name" : 
           { "title" : "Party Short Name",
             "description" : "A short common name, abbreviation, or acronym for the party.",
-            "type" : "string" },
+            "type" : "string",
+            "pattern" : "^\\S(.*\\S)?$" },
           "external-ids" : 
           { "type" : "array",
             "minItems" : 1,
@@ -1153,7 +1168,8 @@
         { "id" : 
           { "title" : "Role Identifier",
             "description" : "A unique identifier for a specific role instance. This identifier's uniqueness is document scoped and is intended to be consistent for the same role across minor revisions of the document.",
-            "type" : "string" },
+            "type" : "string",
+            "pattern" : "^[_A-Za-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD][_A-Za-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD\\-\\.0-9\\u00B7\\u0300-\\u036F\\u203F-\\u2040]*$" },
           "title" : 
           { "title" : "Role Title",
             "description" : "A name given to the role, which may be used by a tool for display and navigation.",
@@ -1161,7 +1177,8 @@
           "short-name" : 
           { "title" : "Role Short Name",
             "description" : "A short common name, abbreviation, or acronym for the role.",
-            "type" : "string" },
+            "type" : "string",
+            "pattern" : "^\\S(.*\\S)?$" },
           "description" : 
           { "title" : "Role Description",
             "description" : "A summary of the role's purpose and associated responsibilities.",
@@ -1186,7 +1203,8 @@
       { "title" : "Role Identifier Reference",
         "description" : "A reference to the roles served by the user.",
         "$id" : "#field_oscal-metadata_role-id",
-        "type" : "string" },
+        "type" : "string",
+        "pattern" : "^[_A-Za-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD][_A-Za-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD\\-\\.0-9\\u00B7\\u0300-\\u036F\\u203F-\\u2040]*$" },
       "oscal-ssp-oscal-metadata:back-matter" : 
       { "title" : "Back matter",
         "description" : "A collection of resources, which may be included directly or by reference.",
@@ -1238,11 +1256,11 @@
                       "minItems" : 1,
                       "items" : 
                       { "$ref" : "#assembly_oscal-metadata_property" } },
-                    "biblio" : 
-                    { "title" : "Bibliographic Definition",
-                      "description" : "A container for structured bibliographic information. The model of this information is undefined by OSCAL.",
-                      "type" : "object",
-                      "additionalProperties" : true } },
+                    "links" : 
+                    { "type" : "array",
+                      "minItems" : 1,
+                      "items" : 
+                      { "$ref" : "#assembly_oscal-metadata_link" } } },
                   "required" : 
                   [ "text" ],
                   "additionalProperties" : false },
@@ -1262,7 +1280,8 @@
                       "media-type" : 
                       { "title" : "Media Type",
                         "description" : "Specifies a media type as defined by the Internet Assigned Numbers Authority (IANA) Media Types Registry.",
-                        "type" : "string" },
+                        "type" : "string",
+                        "pattern" : "^\\S(.*\\S)?$" },
                       "hashes" : 
                       { "type" : "array",
                         "minItems" : 1,
@@ -1284,7 +1303,8 @@
                     "media-type" : 
                     { "title" : "Media Type",
                       "description" : "Specifies a media type as defined by the Internet Assigned Numbers Authority (IANA) Media Types Registry.",
-                      "type" : "string" },
+                      "type" : "string",
+                      "pattern" : "^\\S(.*\\S)?$" },
                     "value" : 
                     { "type" : "string" } },
                   "required" : 
@@ -1305,7 +1325,8 @@
         { "name" : 
           { "title" : "Property Name",
             "description" : "A textual label that uniquely identifies a specific attribute, characteristic, or quality of the property's containing object.",
-            "type" : "string" },
+            "type" : "string",
+            "pattern" : "^[_A-Za-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD][_A-Za-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD\\-\\.0-9\\u00B7\\u0300-\\u036F\\u203F-\\u2040]*$" },
           "uuid" : 
           { "title" : "Property Universally Unique Identifier",
             "description" : "A unique identifier that can be used to reference this property elsewhere in an OSCAL document. A UUID should be consistently used for a given location across revisions of the document.",
@@ -1319,11 +1340,13 @@
           "value" : 
           { "title" : "Property Value",
             "description" : "Indicates the value of the attribute, characteristic, or quality.",
-            "type" : "string" },
+            "type" : "string",
+            "pattern" : "^\\S(.*\\S)?$" },
           "class" : 
           { "title" : "Property Class",
             "description" : "A textual label that provides a sub-type or characterization of the property's name. This can be used to further distinguish or discriminate between the semantics of multiple properties of the same object with the same name and ns.",
-            "type" : "string" },
+            "type" : "string",
+            "pattern" : "^[_A-Za-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD][_A-Za-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD\\-\\.0-9\\u00B7\\u0300-\\u036F\\u203F-\\u2040]*$" },
           "remarks" : 
           { "$ref" : "#field_oscal-metadata_remarks" } },
         "required" : 
@@ -1344,11 +1367,13 @@
           "rel" : 
           { "title" : "Relation",
             "description" : "Describes the type of relationship provided by the link. This can be an indicator of the link's purpose.",
-            "type" : "string" },
+            "type" : "string",
+            "pattern" : "^[_A-Za-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD][_A-Za-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD\\-\\.0-9\\u00B7\\u0300-\\u036F\\u203F-\\u2040]*$" },
           "media-type" : 
           { "title" : "Media Type",
             "description" : "Specifies a media type as defined by the Internet Assigned Numbers Authority (IANA) Media Types Registry.",
-            "type" : "string" },
+            "type" : "string",
+            "pattern" : "^\\S(.*\\S)?$" },
           "text" : 
           { "title" : "Link Text",
             "description" : "A textual label to associate with the link, which may be used for presentation in a tool.",
@@ -1365,7 +1390,8 @@
         { "role-id" : 
           { "title" : "Responsible Role",
             "description" : "The role that the party is responsible for.",
-            "type" : "string" },
+            "type" : "string",
+            "pattern" : "^[_A-Za-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD][_A-Za-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD\\-\\.0-9\\u00B7\\u0300-\\u036F\\u203F-\\u2040]*$" },
           "party-uuids" : 
           { "type" : "array",
             "minItems" : 1,
@@ -1396,7 +1422,8 @@
         { "role-id" : 
           { "title" : "Responsible Role ID",
             "description" : "The role that is responsible for the business function.",
-            "type" : "string" },
+            "type" : "string",
+            "pattern" : "^[_A-Za-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD][_A-Za-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD\\-\\.0-9\\u00B7\\u0300-\\u036F\\u203F-\\u2040]*$" },
           "props" : 
           { "type" : "array",
             "minItems" : 1,
@@ -1426,7 +1453,8 @@
         { "algorithm" : 
           { "title" : "Hash algorithm",
             "description" : "Method by which a hash is derived",
-            "type" : "string" },
+            "type" : "string",
+            "pattern" : "^\\S(.*\\S)?$" },
           "value" : 
           { "type" : "string" } },
         "required" : 
@@ -1456,12 +1484,14 @@
       { "title" : "Document Version",
         "description" : "A string used to distinguish the current version of the document from other previous (and future) versions.",
         "$id" : "#field_oscal-metadata_version",
-        "type" : "string" },
+        "type" : "string",
+        "pattern" : "^\\S(.*\\S)?$" },
       "oscal-ssp-oscal-metadata:oscal-version" : 
       { "title" : "OSCAL version",
         "description" : "The OSCAL model version the document was authored against.",
         "$id" : "#field_oscal-metadata_oscal-version",
-        "type" : "string" },
+        "type" : "string",
+        "pattern" : "^\\S(.*\\S)?$" },
       "oscal-ssp-oscal-metadata:email-address" : 
       { "title" : "Email Address",
         "description" : "An email address as defined by RFC 5322 Section 3.4.1.",
@@ -1478,7 +1508,8 @@
         { "type" : 
           { "title" : "type flag",
             "description" : "Indicates the type of phone number.",
-            "type" : "string" },
+            "type" : "string",
+            "pattern" : "^\\S(.*\\S)?$" },
           "number" : 
           { "type" : "string" } },
         "required" : 
@@ -1493,7 +1524,8 @@
         { "type" : 
           { "title" : "Address Type",
             "description" : "Indicates the type of address.",
-            "type" : "string" },
+            "type" : "string",
+            "pattern" : "^[_A-Za-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD][_A-Za-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD\\-\\.0-9\\u00B7\\u0300-\\u036F\\u203F-\\u2040]*$" },
           "addr-lines" : 
           { "type" : "array",
             "minItems" : 1,
@@ -1502,25 +1534,30 @@
           "city" : 
           { "title" : "City",
             "description" : "City, town or geographical region for the mailing address.",
-            "type" : "string" },
+            "type" : "string",
+            "pattern" : "^\\S(.*\\S)?$" },
           "state" : 
           { "title" : "State",
             "description" : "State, province or analogous geographical region for mailing address",
-            "type" : "string" },
+            "type" : "string",
+            "pattern" : "^\\S(.*\\S)?$" },
           "postal-code" : 
           { "title" : "Postal Code",
             "description" : "Postal or ZIP code for mailing address",
-            "type" : "string" },
+            "type" : "string",
+            "pattern" : "^\\S(.*\\S)?$" },
           "country" : 
           { "title" : "Country Code",
             "description" : "The ISO 3166-1 alpha-2 country code for the mailing address.",
-            "type" : "string" } },
+            "type" : "string",
+            "pattern" : "^\\S(.*\\S)?$" } },
         "additionalProperties" : false },
       "oscal-ssp-oscal-metadata:addr-line" : 
       { "title" : "Address line",
         "description" : "A single line of an address.",
         "$id" : "#field_oscal-metadata_addr-line",
-        "type" : "string" },
+        "type" : "string",
+        "pattern" : "^\\S(.*\\S)?$" },
       "oscal-ssp-oscal-metadata:document-id" : 
       { "title" : "Document Identifier",
         "description" : "A document identifier qualified by an identifier scheme. A document identifier provides a globally unique identifier for a group of documents that are to be treated as different versions of the same document. If this element does not appear, or if the value of this element is empty, the value of \"document-id\" is equal to the value of the \"uuid\" flag of the top-level root element.",
@@ -1551,7 +1588,8 @@
           "type" : 
           { "title" : "Component Type",
             "description" : "A category describing the purpose of the component.",
-            "type" : "string" },
+            "type" : "string",
+            "pattern" : "^\\S(.*\\S)?$" },
           "title" : 
           { "title" : "Component Title",
             "description" : "A human readable name for the system component.",
@@ -1583,6 +1621,7 @@
               { "title" : "State",
                 "description" : "The operational status.",
                 "type" : "string",
+                "pattern" : "^[_A-Za-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD][_A-Za-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD\\-\\.0-9\\u00B7\\u0300-\\u036F\\u203F-\\u2040]*$",
                 "enum" : 
                 [ "under-development",
                   "operational",
@@ -1626,7 +1665,8 @@
           "name" : 
           { "title" : "Protocol Name",
             "description" : "The common name of the protocol, which should be the appropriate \"service name\" from the IANA Service Name and Transport Protocol Port Number Registry.",
-            "type" : "string" },
+            "type" : "string",
+            "pattern" : "^\\S(.*\\S)?$" },
           "title" : 
           { "title" : "Protocol Title",
             "description" : "A human readable name for the protocol (e.g., Transport Layer Security).",
@@ -1661,6 +1701,7 @@
           { "title" : "Transport",
             "description" : "Indicates the transport type.",
             "type" : "string",
+            "pattern" : "^[_A-Za-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD][_A-Za-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD\\-\\.0-9\\u00B7\\u0300-\\u036F\\u203F-\\u2040]*$",
             "enum" : 
             [ "TCP",
               "UDP" ] } },
@@ -1674,7 +1715,8 @@
         { "state" : 
           { "title" : "Implementation State",
             "description" : "Identifies the implementation status of the control or control objective.",
-            "type" : "string" },
+            "type" : "string",
+            "pattern" : "^[_A-Za-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD][_A-Za-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD\\-\\.0-9\\u00B7\\u0300-\\u036F\\u203F-\\u2040]*$" },
           "remarks" : 
           { "$ref" : "#field_oscal-metadata_remarks" } },
         "required" : 
@@ -1698,7 +1740,8 @@
           "short-name" : 
           { "title" : "User Short Name",
             "description" : "A short common name, abbreviation, or acronym for the user.",
-            "type" : "string" },
+            "type" : "string",
+            "pattern" : "^\\S(.*\\S)?$" },
           "description" : 
           { "title" : "User Description",
             "description" : "A summary of the user's purpose within the system.",
@@ -1755,7 +1798,8 @@
       { "title" : "Functions Performed",
         "description" : "Describes a function performed for a given authorized privilege by this user class.",
         "$id" : "#field_oscal-implementation-common_function-performed",
-        "type" : "string" },
+        "type" : "string",
+        "pattern" : "^\\S(.*\\S)?$" },
       "oscal-ssp-oscal-implementation-common:inventory-item" : 
       { "title" : "Inventory Item",
         "description" : "A single managed inventory item within the system.",
@@ -1834,14 +1878,16 @@
         { "param-id" : 
           { "title" : "Parameter ID",
             "description" : "A reference to a parameter within a control, who's catalog has been imported into the current implementation context.",
-            "type" : "string" },
+            "type" : "string",
+            "pattern" : "^[_A-Za-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD][_A-Za-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD\\-\\.0-9\\u00B7\\u0300-\\u036F\\u203F-\\u2040]*$" },
           "values" : 
           { "type" : "array",
             "minItems" : 1,
             "items" : 
             { "title" : "Parameter Value",
               "description" : "A parameter value or set of values.",
-              "type" : "string" } },
+              "type" : "string",
+              "pattern" : "^\\S(.*\\S)?$" } },
           "remarks" : 
           { "$ref" : "#field_oscal-metadata_remarks" } },
         "required" : 
@@ -1873,11 +1919,13 @@
         { "id" : 
           { "title" : "Part Identifier",
             "description" : "A unique identifier for a specific part instance. This identifier's uniqueness is document scoped and is intended to be consistent for the same part across minor revisions of the document.",
-            "type" : "string" },
+            "type" : "string",
+            "pattern" : "^[_A-Za-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD][_A-Za-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD\\-\\.0-9\\u00B7\\u0300-\\u036F\\u203F-\\u2040]*$" },
           "name" : 
           { "title" : "Part Name",
             "description" : "A textual label that uniquely identifies the part's semantic type.",
-            "type" : "string" },
+            "type" : "string",
+            "pattern" : "^[_A-Za-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD][_A-Za-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD\\-\\.0-9\\u00B7\\u0300-\\u036F\\u203F-\\u2040]*$" },
           "ns" : 
           { "title" : "Part Namespace",
             "description" : "A namespace qualifying the part's name. This allows different organizations to associate distinct semantics with the same name.",
@@ -1886,7 +1934,8 @@
           "class" : 
           { "title" : "Part Class",
             "description" : "A textual label that provides a sub-type or characterization of the part's name. This can be used to further distinguish or discriminate between the semantics of multiple parts of the same control with the same name and ns.",
-            "type" : "string" },
+            "type" : "string",
+            "pattern" : "^[_A-Za-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD][_A-Za-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD\\-\\.0-9\\u00B7\\u0300-\\u036F\\u203F-\\u2040]*$" },
           "title" : 
           { "title" : "Part Title",
             "description" : "A name given to the part, which may be used by a tool for display and navigation.",
@@ -1922,15 +1971,18 @@
         { "id" : 
           { "title" : "Parameter Identifier",
             "description" : "A unique identifier for a specific parameter instance. This identifier's uniqueness is document scoped and is intended to be consistent for the same parameter across minor revisions of the document.",
-            "type" : "string" },
+            "type" : "string",
+            "pattern" : "^[_A-Za-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD][_A-Za-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD\\-\\.0-9\\u00B7\\u0300-\\u036F\\u203F-\\u2040]*$" },
           "class" : 
           { "title" : "Parameter Class",
             "description" : "A textual label that provides a characterization of the parameter.",
-            "type" : "string" },
+            "type" : "string",
+            "pattern" : "^[_A-Za-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD][_A-Za-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD\\-\\.0-9\\u00B7\\u0300-\\u036F\\u203F-\\u2040]*$" },
           "depends-on" : 
           { "title" : "Depends on",
             "description" : "Another parameter invoking this one",
-            "type" : "string" },
+            "type" : "string",
+            "pattern" : "^[_A-Za-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD][_A-Za-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD\\-\\.0-9\\u00B7\\u0300-\\u036F\\u203F-\\u2040]*$" },
           "props" : 
           { "type" : "array",
             "minItems" : 1,
@@ -1992,7 +2044,8 @@
               { "expression" : 
                 { "title" : "Constraint test",
                   "description" : "A formal (executable) expression of a constraint",
-                  "type" : "string" },
+                  "type" : "string",
+                  "pattern" : "^\\S(.*\\S)?$" },
                 "remarks" : 
                 { "$ref" : "#field_oscal-metadata_remarks" } },
               "required" : 
@@ -2016,7 +2069,8 @@
       { "title" : "Parameter Value",
         "description" : "A parameter value or set of values.",
         "$id" : "#field_oscal-catalog-common_parameter-value",
-        "type" : "string" },
+        "type" : "string",
+        "pattern" : "^\\S(.*\\S)?$" },
       "oscal-ssp-oscal-catalog-common:parameter-selection" : 
       { "title" : "Selection",
         "description" : "Presenting a choice among alternatives",
@@ -2025,8 +2079,12 @@
         "properties" : 
         { "how-many" : 
           { "title" : "Parameter Cardinality",
-            "description" : "Describes the number of selections that must occur.",
-            "type" : "string" },
+            "description" : "Describes the number of selections that must occur. Without this setting, only one value should be assumed to be permitted.",
+            "type" : "string",
+            "pattern" : "^[_A-Za-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD][_A-Za-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD\\-\\.0-9\\u00B7\\u0300-\\u036F\\u203F-\\u2040]*$",
+            "enum" : 
+            [ "one",
+              "one-or-more" ] },
           "choice" : 
           { "type" : "array",
             "minItems" : 1,
