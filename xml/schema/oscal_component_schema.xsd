@@ -5,11 +5,11 @@
            xmlns:oscal-prose="http://csrc.nist.gov/ns/oscal/1.0"
            elementFormDefault="qualified"
            targetNamespace="http://csrc.nist.gov/ns/oscal/1.0"
-           version="1.0.0-rc1">
+           version="1.0.0">
    <xs:annotation>
       <xs:appinfo>
          <m:schema-name>OSCAL Component Definition Model</m:schema-name>
-         <m:schema-version>1.0.0-rc1</m:schema-version>
+         <m:schema-version>1.0.0</m:schema-version>
          <m:short-name>oscal-component-definition</m:short-name>
          <m:remarks>
             <p>The OSCAL Component Definition Model can be used to describe the implementation of controls in a <code>component</code> or a set of components grouped as a <code>capability</code>. A component can be either a <em>technical component</em>, or a <em>documentary component</em>. A technical component is a component that is implemented in hardware (physical or virtual) or software. A documentary component is a component implemented in a document, such as a process, procedure, or policy.</p>
@@ -20,8 +20,8 @@
       </xs:appinfo>
    </xs:annotation>
    <xs:element name="component-definition"
-               type="oscal-component-definition:component-definition-ASSEMBLY"/>
-   <xs:complexType name="component-definition-ASSEMBLY">
+               type="oscal-component-definition:oscal-component-definition-component-definition-ASSEMBLY"/>
+   <xs:complexType name="oscal-component-definition-component-definition-ASSEMBLY">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Component Definition</m:formal-name>
@@ -32,23 +32,23 @@
       </xs:annotation>
       <xs:sequence>
          <xs:element name="metadata"
-                     type="oscal-component-definition:metadata-ASSEMBLY"
+                     type="oscal-component-definition:oscal-metadata-metadata-ASSEMBLY"
                      minOccurs="1"
                      maxOccurs="1"/>
          <xs:element name="import-component-definition"
-                     type="oscal-component-definition:import-component-definition-ASSEMBLY"
+                     type="oscal-component-definition:oscal-component-definition-import-component-definition-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="component"
-                     type="oscal-component-definition:defined-component-ASSEMBLY"
+                     type="oscal-component-definition:oscal-component-definition-defined-component-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="capability"
-                     type="oscal-component-definition:capability-ASSEMBLY"
+                     type="oscal-component-definition:oscal-component-definition-capability-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="back-matter"
-                     type="oscal-component-definition:back-matter-ASSEMBLY"
+                     type="oscal-component-definition:oscal-metadata-back-matter-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="1"/>
       </xs:sequence>
@@ -63,7 +63,7 @@
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
-   <xs:complexType name="import-component-definition-ASSEMBLY">
+   <xs:complexType name="oscal-component-definition-import-component-definition-ASSEMBLY">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Import Component Definition</m:formal-name>
@@ -85,7 +85,7 @@
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
-   <xs:complexType name="defined-component-ASSEMBLY">
+   <xs:complexType name="oscal-component-definition-defined-component-ASSEMBLY">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Component</m:formal-name>
@@ -141,23 +141,23 @@
             </xs:complexType>
          </xs:element>
          <xs:element name="prop"
-                     type="oscal-component-definition:property-ASSEMBLY"
+                     type="oscal-component-definition:oscal-metadata-property-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="link"
-                     type="oscal-component-definition:link-ASSEMBLY"
+                     type="oscal-component-definition:oscal-metadata-link-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="responsible-role"
-                     type="oscal-component-definition:responsible-role-ASSEMBLY"
+                     type="oscal-component-definition:oscal-metadata-responsible-role-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="protocol"
-                     type="oscal-component-definition:protocol-ASSEMBLY"
+                     type="oscal-component-definition:oscal-implementation-common-protocol-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="control-implementation"
-                     type="oscal-component-definition:control-implementation-ASSEMBLY"
+                     type="oscal-component-definition:oscal-component-definition-control-implementation-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="remarks" minOccurs="0" maxOccurs="1">
@@ -186,7 +186,7 @@
                <b>Component Identifier</b>: The unique identifier for the component.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="type" use="required" type="xs:string">
+      <xs:attribute name="type" use="required" type="oscal-component-definition:string">
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Component Type</m:formal-name>
@@ -197,7 +197,7 @@
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
-   <xs:complexType name="capability-ASSEMBLY">
+   <xs:complexType name="oscal-component-definition-capability-ASSEMBLY">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Capability</m:formal-name>
@@ -223,19 +223,19 @@
             </xs:complexType>
          </xs:element>
          <xs:element name="prop"
-                     type="oscal-component-definition:property-ASSEMBLY"
+                     type="oscal-component-definition:oscal-metadata-property-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="link"
-                     type="oscal-component-definition:link-ASSEMBLY"
+                     type="oscal-component-definition:oscal-metadata-link-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="incorporates-component"
-                     type="oscal-component-definition:incorporates-component-ASSEMBLY"
+                     type="oscal-component-definition:oscal-component-definition-incorporates-component-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="control-implementation"
-                     type="oscal-component-definition:control-implementation-ASSEMBLY"
+                     type="oscal-component-definition:oscal-component-definition-control-implementation-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="remarks" minOccurs="0" maxOccurs="1">
@@ -264,7 +264,7 @@
                <b>Capability Identifier</b>: A unique identifier for a capability.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="name" use="required" type="xs:string">
+      <xs:attribute name="name" use="required" type="oscal-component-definition:string">
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Capability Name</m:formal-name>
@@ -275,7 +275,7 @@
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
-   <xs:complexType name="incorporates-component-ASSEMBLY">
+   <xs:complexType name="oscal-component-definition-incorporates-component-ASSEMBLY">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Incorporates Component</m:formal-name>
@@ -314,7 +314,7 @@
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
-   <xs:complexType name="control-implementation-ASSEMBLY">
+   <xs:complexType name="oscal-component-definition-control-implementation-ASSEMBLY">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Control Implementation Set</m:formal-name>
@@ -340,19 +340,19 @@
             </xs:complexType>
          </xs:element>
          <xs:element name="prop"
-                     type="oscal-component-definition:property-ASSEMBLY"
+                     type="oscal-component-definition:oscal-metadata-property-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="link"
-                     type="oscal-component-definition:link-ASSEMBLY"
+                     type="oscal-component-definition:oscal-metadata-link-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="set-parameter"
-                     type="oscal-component-definition:set-parameter-ASSEMBLY"
+                     type="oscal-component-definition:oscal-implementation-common-set-parameter-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="implemented-requirement"
-                     type="oscal-component-definition:implemented-requirement-ASSEMBLY"
+                     type="oscal-component-definition:oscal-component-definition-implemented-requirement-ASSEMBLY"
                      minOccurs="1"
                      maxOccurs="unbounded"/>
       </xs:sequence>
@@ -379,7 +379,7 @@
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
-   <xs:complexType name="implemented-requirement-ASSEMBLY">
+   <xs:complexType name="oscal-component-definition-implemented-requirement-ASSEMBLY">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Control Implementation</m:formal-name>
@@ -405,23 +405,23 @@
             </xs:complexType>
          </xs:element>
          <xs:element name="prop"
-                     type="oscal-component-definition:property-ASSEMBLY"
+                     type="oscal-component-definition:oscal-metadata-property-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="link"
-                     type="oscal-component-definition:link-ASSEMBLY"
+                     type="oscal-component-definition:oscal-metadata-link-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="set-parameter"
-                     type="oscal-component-definition:set-parameter-ASSEMBLY"
+                     type="oscal-component-definition:oscal-implementation-common-set-parameter-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="responsible-role"
-                     type="oscal-component-definition:responsible-role-ASSEMBLY"
+                     type="oscal-component-definition:oscal-metadata-responsible-role-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="statement"
-                     type="oscal-component-definition:statement-ASSEMBLY"
+                     type="oscal-component-definition:oscal-component-definition-statement-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="remarks" minOccurs="0" maxOccurs="1">
@@ -450,7 +450,9 @@
                <b>Control Implementation Identifier</b>: A unique identifier for a specific control implementation.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="control-id" use="required" type="xs:NCName">
+      <xs:attribute name="control-id"
+                    use="required"
+                    type="oscal-component-definition:token">
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Control Identifier Reference</m:formal-name>
@@ -461,7 +463,7 @@
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
-   <xs:complexType name="statement-ASSEMBLY">
+   <xs:complexType name="oscal-component-definition-statement-ASSEMBLY">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Control Statement Implementation</m:formal-name>
@@ -487,15 +489,15 @@
             </xs:complexType>
          </xs:element>
          <xs:element name="prop"
-                     type="oscal-component-definition:property-ASSEMBLY"
+                     type="oscal-component-definition:oscal-metadata-property-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="link"
-                     type="oscal-component-definition:link-ASSEMBLY"
+                     type="oscal-component-definition:oscal-metadata-link-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="responsible-role"
-                     type="oscal-component-definition:responsible-role-ASSEMBLY"
+                     type="oscal-component-definition:oscal-metadata-responsible-role-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="remarks" minOccurs="0" maxOccurs="1">
@@ -514,7 +516,9 @@
             </xs:complexType>
          </xs:element>
       </xs:sequence>
-      <xs:attribute name="statement-id" use="required" type="xs:NCName">
+      <xs:attribute name="statement-id"
+                    use="required"
+                    type="oscal-component-definition:token">
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Control Statement Reference</m:formal-name>
@@ -535,7 +539,7 @@
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
-   <xs:complexType name="system-component-ASSEMBLY">
+   <xs:complexType name="oscal-implementation-common-system-component-ASSEMBLY">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Component</m:formal-name>
@@ -591,11 +595,11 @@
             </xs:complexType>
          </xs:element>
          <xs:element name="prop"
-                     type="oscal-component-definition:property-ASSEMBLY"
+                     type="oscal-component-definition:oscal-metadata-property-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="link"
-                     type="oscal-component-definition:link-ASSEMBLY"
+                     type="oscal-component-definition:oscal-metadata-link-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="status" minOccurs="1" maxOccurs="1">
@@ -625,7 +629,7 @@
                      </xs:complexType>
                   </xs:element>
                </xs:sequence>
-               <xs:attribute name="state" use="required" type="xs:NCName">
+               <xs:attribute name="state" use="required" type="oscal-component-definition:token">
                   <xs:annotation>
                      <xs:appinfo>
                         <m:formal-name>State</m:formal-name>
@@ -638,11 +642,11 @@
             </xs:complexType>
          </xs:element>
          <xs:element name="responsible-role"
-                     type="oscal-component-definition:responsible-role-ASSEMBLY"
+                     type="oscal-component-definition:oscal-metadata-responsible-role-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="protocol"
-                     type="oscal-component-definition:protocol-ASSEMBLY"
+                     type="oscal-component-definition:oscal-implementation-common-protocol-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="remarks" minOccurs="0" maxOccurs="1">
@@ -671,7 +675,7 @@
                <b>Component Identifier</b>: The unique identifier for the component.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="type" use="required" type="xs:string">
+      <xs:attribute name="type" use="required" type="oscal-component-definition:string">
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Component Type</m:formal-name>
@@ -682,7 +686,7 @@
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
-   <xs:complexType name="protocol-ASSEMBLY">
+   <xs:complexType name="oscal-implementation-common-protocol-ASSEMBLY">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Service Protocol Information</m:formal-name>
@@ -708,7 +712,7 @@
             </xs:complexType>
          </xs:element>
          <xs:element name="port-range"
-                     type="oscal-component-definition:port-range-ASSEMBLY"
+                     type="oscal-component-definition:oscal-implementation-common-port-range-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
       </xs:sequence>
@@ -722,7 +726,7 @@
                <b>Service Protocol Information Universally Unique Identifier</b>: A globally unique identifier that can be used to reference this service protocol entry elsewhere in an OSCAL document. A UUID should be consistently used for a given resource across revisions of the document.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="name" use="required" type="xs:string">
+      <xs:attribute name="name" use="required" type="oscal-component-definition:string">
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Protocol Name</m:formal-name>
@@ -733,7 +737,7 @@
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
-   <xs:complexType name="port-range-ASSEMBLY">
+   <xs:complexType name="oscal-implementation-common-port-range-ASSEMBLY">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Port Range</m:formal-name>
@@ -762,7 +766,7 @@
                <b>End</b>: Indicates the ending port number in a port range</xs:documentation>
          </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="transport" type="xs:NCName">
+      <xs:attribute name="transport" type="oscal-component-definition:token">
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Transport</m:formal-name>
@@ -773,7 +777,7 @@
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
-   <xs:complexType name="implementation-status-ASSEMBLY">
+   <xs:complexType name="oscal-implementation-common-implementation-status-ASSEMBLY">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Implementation Status</m:formal-name>
@@ -799,7 +803,7 @@
             </xs:complexType>
          </xs:element>
       </xs:sequence>
-      <xs:attribute name="state" use="required" type="xs:NCName">
+      <xs:attribute name="state" use="required" type="oscal-component-definition:token">
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Implementation State</m:formal-name>
@@ -810,7 +814,7 @@
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
-   <xs:complexType name="system-user-ASSEMBLY">
+   <xs:complexType name="oscal-implementation-common-system-user-ASSEMBLY">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>System User</m:formal-name>
@@ -845,7 +849,7 @@
                   <xs:documentation>
                      <b>User Short Name</b>: A short common name, abbreviation, or acronym for the user.</xs:documentation>
                </xs:annotation>
-               <xs:restriction base="xs:string"/>
+               <xs:restriction base="oscal-component-definition:string"/>
             </xs:simpleType>
          </xs:element>
          <xs:element name="description" minOccurs="0" maxOccurs="1">
@@ -864,19 +868,19 @@
             </xs:complexType>
          </xs:element>
          <xs:element name="prop"
-                     type="oscal-component-definition:property-ASSEMBLY"
+                     type="oscal-component-definition:oscal-metadata-property-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="link"
-                     type="oscal-component-definition:link-ASSEMBLY"
+                     type="oscal-component-definition:oscal-metadata-link-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="role-id"
-                     type="oscal-component-definition:role-id-FIELD"
+                     type="oscal-component-definition:oscal-metadata-role-id-FIELD"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="authorized-privilege"
-                     type="oscal-component-definition:authorized-privilege-ASSEMBLY"
+                     type="oscal-component-definition:oscal-implementation-common-authorized-privilege-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="remarks" minOccurs="0" maxOccurs="1">
@@ -906,7 +910,7 @@
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
-   <xs:complexType name="authorized-privilege-ASSEMBLY">
+   <xs:complexType name="oscal-implementation-common-authorized-privilege-ASSEMBLY">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Privilege</m:formal-name>
@@ -947,12 +951,12 @@
             </xs:complexType>
          </xs:element>
          <xs:element name="function-performed"
-                     type="oscal-component-definition:function-performed-FIELD"
+                     type="oscal-component-definition:oscal-implementation-common-function-performed-FIELD"
                      minOccurs="1"
                      maxOccurs="unbounded"/>
       </xs:sequence>
    </xs:complexType>
-   <xs:simpleType name="function-performed-FIELD">
+   <xs:simpleType name="oscal-implementation-common-function-performed-FIELD">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Functions Performed</m:formal-name>
@@ -961,9 +965,9 @@
          <xs:documentation>
             <b>Functions Performed</b>: Describes a function performed for a given authorized privilege by this user class.</xs:documentation>
       </xs:annotation>
-      <xs:restriction base="xs:string"/>
+      <xs:restriction base="oscal-component-definition:string"/>
    </xs:simpleType>
-   <xs:complexType name="inventory-item-ASSEMBLY">
+   <xs:complexType name="oscal-implementation-common-inventory-item-ASSEMBLY">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Inventory Item</m:formal-name>
@@ -989,15 +993,15 @@
             </xs:complexType>
          </xs:element>
          <xs:element name="prop"
-                     type="oscal-component-definition:property-ASSEMBLY"
+                     type="oscal-component-definition:oscal-metadata-property-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="link"
-                     type="oscal-component-definition:link-ASSEMBLY"
+                     type="oscal-component-definition:oscal-metadata-link-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="responsible-party"
-                     type="oscal-component-definition:responsible-party-ASSEMBLY"
+                     type="oscal-component-definition:oscal-metadata-responsible-party-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="implemented-component" minOccurs="0" maxOccurs="unbounded">
@@ -1012,15 +1016,15 @@
                </xs:annotation>
                <xs:sequence>
                   <xs:element name="prop"
-                              type="oscal-component-definition:property-ASSEMBLY"
+                              type="oscal-component-definition:oscal-metadata-property-ASSEMBLY"
                               minOccurs="0"
                               maxOccurs="unbounded"/>
                   <xs:element name="link"
-                              type="oscal-component-definition:link-ASSEMBLY"
+                              type="oscal-component-definition:oscal-metadata-link-ASSEMBLY"
                               minOccurs="0"
                               maxOccurs="unbounded"/>
                   <xs:element name="responsible-party"
-                              type="oscal-component-definition:responsible-party-ASSEMBLY"
+                              type="oscal-component-definition:oscal-metadata-responsible-party-ASSEMBLY"
                               minOccurs="0"
                               maxOccurs="unbounded"/>
                   <xs:element name="remarks" minOccurs="0" maxOccurs="1">
@@ -1080,7 +1084,7 @@
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
-   <xs:complexType name="set-parameter-ASSEMBLY">
+   <xs:complexType name="oscal-implementation-common-set-parameter-ASSEMBLY">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Set Parameter Value</m:formal-name>
@@ -1100,7 +1104,7 @@
                   <xs:documentation>
                      <b>Parameter Value</b>: A parameter value or set of values.</xs:documentation>
                </xs:annotation>
-               <xs:restriction base="xs:string"/>
+               <xs:restriction base="oscal-component-definition:string"/>
             </xs:simpleType>
          </xs:element>
          <xs:element name="remarks" minOccurs="0" maxOccurs="1">
@@ -1119,7 +1123,9 @@
             </xs:complexType>
          </xs:element>
       </xs:sequence>
-      <xs:attribute name="param-id" use="required" type="xs:NCName">
+      <xs:attribute name="param-id"
+                    use="required"
+                    type="oscal-component-definition:token">
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Parameter ID</m:formal-name>
@@ -1130,7 +1136,7 @@
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
-   <xs:complexType name="system-id-FIELD">
+   <xs:complexType name="oscal-implementation-common-system-id-FIELD">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>System Identification</m:formal-name>
@@ -1140,7 +1146,7 @@
             <b>System Identification</b>: A unique identifier for the system described by this system security plan.</xs:documentation>
       </xs:annotation>
       <xs:simpleContent>
-         <xs:extension base="xs:string">
+         <xs:extension base="oscal-component-definition:string">
             <xs:attribute name="identifier-type" type="oscal-component-definition:uri">
                <xs:annotation>
                   <xs:appinfo>
@@ -1154,7 +1160,7 @@
          </xs:extension>
       </xs:simpleContent>
    </xs:complexType>
-   <xs:complexType name="metadata-ASSEMBLY">
+   <xs:complexType name="oscal-metadata-metadata-ASSEMBLY">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Publication metadata</m:formal-name>
@@ -1180,57 +1186,57 @@
             </xs:complexType>
          </xs:element>
          <xs:element name="published"
-                     type="oscal-component-definition:published-FIELD"
+                     type="oscal-component-definition:oscal-metadata-published-FIELD"
                      minOccurs="0"
                      maxOccurs="1"/>
          <xs:element name="last-modified"
-                     type="oscal-component-definition:last-modified-FIELD"
+                     type="oscal-component-definition:oscal-metadata-last-modified-FIELD"
                      minOccurs="1"
                      maxOccurs="1"/>
          <xs:element name="version"
-                     type="oscal-component-definition:version-FIELD"
+                     type="oscal-component-definition:oscal-metadata-version-FIELD"
                      minOccurs="1"
                      maxOccurs="1"/>
          <xs:element name="oscal-version"
-                     type="oscal-component-definition:oscal-version-FIELD"
+                     type="oscal-component-definition:oscal-metadata-oscal-version-FIELD"
                      minOccurs="1"
                      maxOccurs="1"/>
          <xs:element name="revisions" minOccurs="0" maxOccurs="1">
             <xs:complexType>
                <xs:sequence>
                   <xs:element name="revision"
-                              type="oscal-component-definition:revision-ASSEMBLY"
+                              type="oscal-component-definition:oscal-metadata-revision-ASSEMBLY"
                               minOccurs="0"
                               maxOccurs="unbounded"/>
                </xs:sequence>
             </xs:complexType>
          </xs:element>
          <xs:element name="document-id"
-                     type="oscal-component-definition:document-id-FIELD"
+                     type="oscal-component-definition:oscal-metadata-document-id-FIELD"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="prop"
-                     type="oscal-component-definition:property-ASSEMBLY"
+                     type="oscal-component-definition:oscal-metadata-property-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="link"
-                     type="oscal-component-definition:link-ASSEMBLY"
+                     type="oscal-component-definition:oscal-metadata-link-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="role"
-                     type="oscal-component-definition:role-ASSEMBLY"
+                     type="oscal-component-definition:oscal-metadata-role-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="location"
-                     type="oscal-component-definition:location-ASSEMBLY"
+                     type="oscal-component-definition:oscal-metadata-location-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="party"
-                     type="oscal-component-definition:party-ASSEMBLY"
+                     type="oscal-component-definition:oscal-metadata-party-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="responsible-party"
-                     type="oscal-component-definition:responsible-party-ASSEMBLY"
+                     type="oscal-component-definition:oscal-metadata-responsible-party-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="remarks" minOccurs="0" maxOccurs="1">
@@ -1250,7 +1256,7 @@
          </xs:element>
       </xs:sequence>
    </xs:complexType>
-   <xs:complexType name="revision-ASSEMBLY">
+   <xs:complexType name="oscal-metadata-revision-ASSEMBLY">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Revision History Entry</m:formal-name>
@@ -1276,27 +1282,27 @@
             </xs:complexType>
          </xs:element>
          <xs:element name="published"
-                     type="oscal-component-definition:published-FIELD"
+                     type="oscal-component-definition:oscal-metadata-published-FIELD"
                      minOccurs="0"
                      maxOccurs="1"/>
          <xs:element name="last-modified"
-                     type="oscal-component-definition:last-modified-FIELD"
+                     type="oscal-component-definition:oscal-metadata-last-modified-FIELD"
                      minOccurs="0"
                      maxOccurs="1"/>
          <xs:element name="version"
-                     type="oscal-component-definition:version-FIELD"
+                     type="oscal-component-definition:oscal-metadata-version-FIELD"
                      minOccurs="0"
                      maxOccurs="1"/>
          <xs:element name="oscal-version"
-                     type="oscal-component-definition:oscal-version-FIELD"
+                     type="oscal-component-definition:oscal-metadata-oscal-version-FIELD"
                      minOccurs="0"
                      maxOccurs="1"/>
          <xs:element name="prop"
-                     type="oscal-component-definition:property-ASSEMBLY"
+                     type="oscal-component-definition:oscal-metadata-property-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="link"
-                     type="oscal-component-definition:link-ASSEMBLY"
+                     type="oscal-component-definition:oscal-metadata-link-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="remarks" minOccurs="0" maxOccurs="1">
@@ -1316,7 +1322,7 @@
          </xs:element>
       </xs:sequence>
    </xs:complexType>
-   <xs:complexType name="location-ASSEMBLY">
+   <xs:complexType name="oscal-metadata-location-ASSEMBLY">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Location</m:formal-name>
@@ -1342,15 +1348,15 @@
             </xs:complexType>
          </xs:element>
          <xs:element name="address"
-                     type="oscal-component-definition:address-ASSEMBLY"
+                     type="oscal-component-definition:oscal-metadata-address-ASSEMBLY"
                      minOccurs="1"
                      maxOccurs="1"/>
          <xs:element name="email-address"
-                     type="oscal-component-definition:email-address-FIELD"
+                     type="oscal-component-definition:oscal-metadata-email-address-FIELD"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="telephone-number"
-                     type="oscal-component-definition:telephone-number-FIELD"
+                     type="oscal-component-definition:oscal-metadata-telephone-number-FIELD"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="url" minOccurs="0" maxOccurs="unbounded">
@@ -1367,11 +1373,11 @@
             </xs:simpleType>
          </xs:element>
          <xs:element name="prop"
-                     type="oscal-component-definition:property-ASSEMBLY"
+                     type="oscal-component-definition:oscal-metadata-property-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="link"
-                     type="oscal-component-definition:link-ASSEMBLY"
+                     type="oscal-component-definition:oscal-metadata-link-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="remarks" minOccurs="0" maxOccurs="1">
@@ -1401,7 +1407,7 @@
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
-   <xs:simpleType name="location-uuid-FIELD">
+   <xs:simpleType name="oscal-metadata-location-uuid-FIELD">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Location Reference</m:formal-name>
@@ -1412,7 +1418,7 @@
       </xs:annotation>
       <xs:restriction base="oscal-component-definition:uuid"/>
    </xs:simpleType>
-   <xs:complexType name="party-ASSEMBLY">
+   <xs:complexType name="oscal-metadata-party-ASSEMBLY">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Party (organization or person)</m:formal-name>
@@ -1432,7 +1438,7 @@
                   <xs:documentation>
                      <b>Party Name</b>: The full name of the party. This is typically the legal name associated with the party.</xs:documentation>
                </xs:annotation>
-               <xs:restriction base="xs:string"/>
+               <xs:restriction base="oscal-component-definition:string"/>
             </xs:simpleType>
          </xs:element>
          <xs:element name="short-name" minOccurs="0" maxOccurs="1">
@@ -1445,7 +1451,7 @@
                   <xs:documentation>
                      <b>Party Short Name</b>: A short common name, abbreviation, or acronym for the party.</xs:documentation>
                </xs:annotation>
-               <xs:restriction base="xs:string"/>
+               <xs:restriction base="oscal-component-definition:string"/>
             </xs:simpleType>
          </xs:element>
          <xs:element name="external-id" minOccurs="0" maxOccurs="unbounded">
@@ -1459,7 +1465,7 @@
                      <b>Party External Identifier</b>: An identifier for a person or organization using a designated scheme. e.g. an Open Researcher and Contributor ID (ORCID)</xs:documentation>
                </xs:annotation>
                <xs:simpleContent>
-                  <xs:extension base="xs:string">
+                  <xs:extension base="oscal-component-definition:string">
                      <xs:attribute name="scheme" use="required" type="oscal-component-definition:uri">
                         <xs:annotation>
                            <xs:appinfo>
@@ -1475,28 +1481,28 @@
             </xs:complexType>
          </xs:element>
          <xs:element name="prop"
-                     type="oscal-component-definition:property-ASSEMBLY"
+                     type="oscal-component-definition:oscal-metadata-property-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="link"
-                     type="oscal-component-definition:link-ASSEMBLY"
+                     type="oscal-component-definition:oscal-metadata-link-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="email-address"
-                     type="oscal-component-definition:email-address-FIELD"
+                     type="oscal-component-definition:oscal-metadata-email-address-FIELD"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="telephone-number"
-                     type="oscal-component-definition:telephone-number-FIELD"
+                     type="oscal-component-definition:oscal-metadata-telephone-number-FIELD"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:choice>
             <xs:element name="address"
-                        type="oscal-component-definition:address-ASSEMBLY"
+                        type="oscal-component-definition:oscal-metadata-address-ASSEMBLY"
                         minOccurs="0"
                         maxOccurs="unbounded"/>
             <xs:element name="location-uuid"
-                        type="oscal-component-definition:location-uuid-FIELD"
+                        type="oscal-component-definition:oscal-metadata-location-uuid-FIELD"
                         minOccurs="0"
                         maxOccurs="unbounded"/>
          </xs:choice>
@@ -1539,7 +1545,7 @@
                <b>Party Universally Unique Identifier</b>: A unique identifier that can be used to reference this defined location elsewhere in an OSCAL document. A UUID should be consistently used for a given party across revisions of the document.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="type" use="required" type="xs:string">
+      <xs:attribute name="type" use="required" type="oscal-component-definition:string">
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Party Type</m:formal-name>
@@ -1550,7 +1556,7 @@
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
-   <xs:simpleType name="party-uuid-FIELD">
+   <xs:simpleType name="oscal-metadata-party-uuid-FIELD">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Party Reference</m:formal-name>
@@ -1561,7 +1567,7 @@
       </xs:annotation>
       <xs:restriction base="oscal-component-definition:uuid"/>
    </xs:simpleType>
-   <xs:complexType name="role-ASSEMBLY">
+   <xs:complexType name="oscal-metadata-role-ASSEMBLY">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Role</m:formal-name>
@@ -1596,7 +1602,7 @@
                   <xs:documentation>
                      <b>Role Short Name</b>: A short common name, abbreviation, or acronym for the role.</xs:documentation>
                </xs:annotation>
-               <xs:restriction base="xs:string"/>
+               <xs:restriction base="oscal-component-definition:string"/>
             </xs:simpleType>
          </xs:element>
          <xs:element name="description" minOccurs="0" maxOccurs="1">
@@ -1615,11 +1621,11 @@
             </xs:complexType>
          </xs:element>
          <xs:element name="prop"
-                     type="oscal-component-definition:property-ASSEMBLY"
+                     type="oscal-component-definition:oscal-metadata-property-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="link"
-                     type="oscal-component-definition:link-ASSEMBLY"
+                     type="oscal-component-definition:oscal-metadata-link-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="remarks" minOccurs="0" maxOccurs="1">
@@ -1638,7 +1644,7 @@
             </xs:complexType>
          </xs:element>
       </xs:sequence>
-      <xs:attribute name="id" use="required" type="xs:NCName">
+      <xs:attribute name="id" use="required" type="oscal-component-definition:token">
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Role Identifier</m:formal-name>
@@ -1649,7 +1655,7 @@
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
-   <xs:simpleType name="role-id-FIELD">
+   <xs:simpleType name="oscal-metadata-role-id-FIELD">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Role Identifier Reference</m:formal-name>
@@ -1658,9 +1664,9 @@
          <xs:documentation>
             <b>Role Identifier Reference</b>: A reference to the roles served by the user.</xs:documentation>
       </xs:annotation>
-      <xs:restriction base="xs:NCName"/>
+      <xs:restriction base="oscal-component-definition:token"/>
    </xs:simpleType>
-   <xs:complexType name="back-matter-ASSEMBLY">
+   <xs:complexType name="oscal-metadata-back-matter-ASSEMBLY">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Back matter</m:formal-name>
@@ -1712,11 +1718,11 @@
                      </xs:complexType>
                   </xs:element>
                   <xs:element name="prop"
-                              type="oscal-component-definition:property-ASSEMBLY"
+                              type="oscal-component-definition:oscal-metadata-property-ASSEMBLY"
                               minOccurs="0"
                               maxOccurs="unbounded"/>
                   <xs:element name="document-id"
-                              type="oscal-component-definition:document-id-FIELD"
+                              type="oscal-component-definition:oscal-metadata-document-id-FIELD"
                               minOccurs="0"
                               maxOccurs="unbounded"/>
                   <xs:element name="citation" minOccurs="0" maxOccurs="1">
@@ -1746,27 +1752,13 @@
                               </xs:complexType>
                            </xs:element>
                            <xs:element name="prop"
-                                       type="oscal-component-definition:property-ASSEMBLY"
+                                       type="oscal-component-definition:oscal-metadata-property-ASSEMBLY"
                                        minOccurs="0"
                                        maxOccurs="unbounded"/>
-                           <xs:element name="biblio" minOccurs="0" maxOccurs="1">
-                              <xs:complexType>
-                                 <xs:annotation>
-                                    <xs:appinfo>
-                                       <m:formal-name>Bibliographic Definition</m:formal-name>
-                                       <m:description>A container for structured bibliographic information. The model of this information is undefined by OSCAL.</m:description>
-                                    </xs:appinfo>
-                                    <xs:documentation>
-                                       <b>Bibliographic Definition</b>: A container for structured bibliographic information. The model of this information is undefined by OSCAL.</xs:documentation>
-                                 </xs:annotation>
-                                 <xs:sequence>
-                                    <xs:any namespace="##other"
-                                            processContents="lax"
-                                            minOccurs="0"
-                                            maxOccurs="unbounded"/>
-                                 </xs:sequence>
-                              </xs:complexType>
-                           </xs:element>
+                           <xs:element name="link"
+                                       type="oscal-component-definition:oscal-metadata-link-ASSEMBLY"
+                                       minOccurs="0"
+                                       maxOccurs="unbounded"/>
                         </xs:sequence>
                      </xs:complexType>
                   </xs:element>
@@ -1782,7 +1774,7 @@
                         </xs:annotation>
                         <xs:sequence>
                            <xs:element name="hash"
-                                       type="oscal-component-definition:hash-FIELD"
+                                       type="oscal-component-definition:oscal-metadata-hash-FIELD"
                                        minOccurs="0"
                                        maxOccurs="unbounded"/>
                         </xs:sequence>
@@ -1798,7 +1790,7 @@
                                  <b>Hypertext Reference</b>: A resolvable URI reference to a resource.</xs:documentation>
                            </xs:annotation>
                         </xs:attribute>
-                        <xs:attribute name="media-type" type="xs:string">
+                        <xs:attribute name="media-type" type="oscal-component-definition:string">
                            <xs:annotation>
                               <xs:appinfo>
                                  <m:formal-name>Media Type</m:formal-name>
@@ -1832,7 +1824,7 @@
                                        <b>File Name</b>: Name of the file before it was encoded as Base64 to be embedded in a resource. This is the name that will be assigned to the file when the file is decoded.</xs:documentation>
                                  </xs:annotation>
                               </xs:attribute>
-                              <xs:attribute name="media-type" type="xs:string">
+                              <xs:attribute name="media-type" type="oscal-component-definition:string">
                                  <xs:annotation>
                                     <xs:appinfo>
                                        <m:formal-name>Media Type</m:formal-name>
@@ -1876,7 +1868,7 @@
          </xs:element>
       </xs:sequence>
    </xs:complexType>
-   <xs:complexType name="property-ASSEMBLY">
+   <xs:complexType name="oscal-metadata-property-ASSEMBLY">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Property</m:formal-name>
@@ -1902,7 +1894,7 @@
             </xs:complexType>
          </xs:element>
       </xs:sequence>
-      <xs:attribute name="name" use="required" type="xs:NCName">
+      <xs:attribute name="name" use="required" type="oscal-component-definition:token">
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Property Name</m:formal-name>
@@ -1932,7 +1924,9 @@
                <b>Property Namespace</b>: A namespace qualifying the property's name. This allows different organizations to associate distinct semantics with the same name.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="value" use="required" type="xs:string">
+      <xs:attribute name="value"
+                    use="required"
+                    type="oscal-component-definition:string">
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Property Value</m:formal-name>
@@ -1942,7 +1936,7 @@
                <b>Property Value</b>: Indicates the value of the attribute, characteristic, or quality.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="class" type="xs:NCName">
+      <xs:attribute name="class" type="oscal-component-definition:token">
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Property Class</m:formal-name>
@@ -1953,7 +1947,7 @@
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
-   <xs:complexType name="link-ASSEMBLY">
+   <xs:complexType name="oscal-metadata-link-ASSEMBLY">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Link</m:formal-name>
@@ -1991,7 +1985,7 @@
                <b>Hypertext Reference</b>: A resolvable URL reference to a resource.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="rel" type="xs:NCName">
+      <xs:attribute name="rel" type="oscal-component-definition:token">
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Relation</m:formal-name>
@@ -2001,7 +1995,7 @@
                <b>Relation</b>: Describes the type of relationship provided by the link. This can be an indicator of the link's purpose.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="media-type" type="xs:string">
+      <xs:attribute name="media-type" type="oscal-component-definition:string">
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Media Type</m:formal-name>
@@ -2012,7 +2006,7 @@
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
-   <xs:complexType name="responsible-party-ASSEMBLY">
+   <xs:complexType name="oscal-metadata-responsible-party-ASSEMBLY">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Responsible Party</m:formal-name>
@@ -2023,15 +2017,15 @@
       </xs:annotation>
       <xs:sequence>
          <xs:element name="party-uuid"
-                     type="oscal-component-definition:party-uuid-FIELD"
+                     type="oscal-component-definition:oscal-metadata-party-uuid-FIELD"
                      minOccurs="1"
                      maxOccurs="unbounded"/>
          <xs:element name="prop"
-                     type="oscal-component-definition:property-ASSEMBLY"
+                     type="oscal-component-definition:oscal-metadata-property-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="link"
-                     type="oscal-component-definition:link-ASSEMBLY"
+                     type="oscal-component-definition:oscal-metadata-link-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="remarks" minOccurs="0" maxOccurs="1">
@@ -2050,7 +2044,9 @@
             </xs:complexType>
          </xs:element>
       </xs:sequence>
-      <xs:attribute name="role-id" use="required" type="xs:NCName">
+      <xs:attribute name="role-id"
+                    use="required"
+                    type="oscal-component-definition:token">
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Responsible Role</m:formal-name>
@@ -2061,7 +2057,7 @@
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
-   <xs:complexType name="responsible-role-ASSEMBLY">
+   <xs:complexType name="oscal-metadata-responsible-role-ASSEMBLY">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Responsible Role</m:formal-name>
@@ -2072,15 +2068,15 @@
       </xs:annotation>
       <xs:sequence>
          <xs:element name="prop"
-                     type="oscal-component-definition:property-ASSEMBLY"
+                     type="oscal-component-definition:oscal-metadata-property-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="link"
-                     type="oscal-component-definition:link-ASSEMBLY"
+                     type="oscal-component-definition:oscal-metadata-link-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="party-uuid"
-                     type="oscal-component-definition:party-uuid-FIELD"
+                     type="oscal-component-definition:oscal-metadata-party-uuid-FIELD"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="remarks" minOccurs="0" maxOccurs="1">
@@ -2099,7 +2095,9 @@
             </xs:complexType>
          </xs:element>
       </xs:sequence>
-      <xs:attribute name="role-id" use="required" type="xs:NCName">
+      <xs:attribute name="role-id"
+                    use="required"
+                    type="oscal-component-definition:token">
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Responsible Role ID</m:formal-name>
@@ -2110,7 +2108,7 @@
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
-   <xs:complexType name="hash-FIELD">
+   <xs:complexType name="oscal-metadata-hash-FIELD">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Hash</m:formal-name>
@@ -2120,8 +2118,10 @@
             <b>Hash</b>: A representation of a cryptographic digest generated over a resource using a specified hash algorithm.</xs:documentation>
       </xs:annotation>
       <xs:simpleContent>
-         <xs:extension base="xs:string">
-            <xs:attribute name="algorithm" use="required" type="xs:string">
+         <xs:extension base="oscal-component-definition:string">
+            <xs:attribute name="algorithm"
+                          use="required"
+                          type="oscal-component-definition:string">
                <xs:annotation>
                   <xs:appinfo>
                      <m:formal-name>Hash algorithm</m:formal-name>
@@ -2134,7 +2134,7 @@
          </xs:extension>
       </xs:simpleContent>
    </xs:complexType>
-   <xs:complexType name="remarks-FIELD">
+   <xs:complexType name="oscal-metadata-remarks-FIELD">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Remarks</m:formal-name>
@@ -2147,7 +2147,7 @@
          <xs:extension base="oscal-component-definition:markupMultilineType"/>
       </xs:complexContent>
    </xs:complexType>
-   <xs:simpleType name="published-FIELD">
+   <xs:simpleType name="oscal-metadata-published-FIELD">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Publication Timestamp</m:formal-name>
@@ -2158,7 +2158,7 @@
       </xs:annotation>
       <xs:restriction base="oscal-component-definition:dateTime-with-timezone"/>
    </xs:simpleType>
-   <xs:simpleType name="last-modified-FIELD">
+   <xs:simpleType name="oscal-metadata-last-modified-FIELD">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Last Modified Timestamp</m:formal-name>
@@ -2169,7 +2169,7 @@
       </xs:annotation>
       <xs:restriction base="oscal-component-definition:dateTime-with-timezone"/>
    </xs:simpleType>
-   <xs:simpleType name="version-FIELD">
+   <xs:simpleType name="oscal-metadata-version-FIELD">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Document Version</m:formal-name>
@@ -2178,9 +2178,9 @@
          <xs:documentation>
             <b>Document Version</b>: A string used to distinguish the current version of the document from other previous (and future) versions.</xs:documentation>
       </xs:annotation>
-      <xs:restriction base="xs:string"/>
+      <xs:restriction base="oscal-component-definition:string"/>
    </xs:simpleType>
-   <xs:simpleType name="oscal-version-FIELD">
+   <xs:simpleType name="oscal-metadata-oscal-version-FIELD">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>OSCAL version</m:formal-name>
@@ -2189,9 +2189,9 @@
          <xs:documentation>
             <b>OSCAL version</b>: The OSCAL model version the document was authored against.</xs:documentation>
       </xs:annotation>
-      <xs:restriction base="xs:string"/>
+      <xs:restriction base="oscal-component-definition:string"/>
    </xs:simpleType>
-   <xs:simpleType name="email-address-FIELD">
+   <xs:simpleType name="oscal-metadata-email-address-FIELD">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Email Address</m:formal-name>
@@ -2202,7 +2202,7 @@
       </xs:annotation>
       <xs:restriction base="oscal-component-definition:email"/>
    </xs:simpleType>
-   <xs:complexType name="telephone-number-FIELD">
+   <xs:complexType name="oscal-metadata-telephone-number-FIELD">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Telephone Number</m:formal-name>
@@ -2212,8 +2212,8 @@
             <b>Telephone Number</b>: Contact number by telephone.</xs:documentation>
       </xs:annotation>
       <xs:simpleContent>
-         <xs:extension base="xs:string">
-            <xs:attribute name="type" type="xs:string">
+         <xs:extension base="oscal-component-definition:string">
+            <xs:attribute name="type" type="oscal-component-definition:string">
                <xs:annotation>
                   <xs:appinfo>
                      <m:formal-name>type flag</m:formal-name>
@@ -2226,7 +2226,7 @@
          </xs:extension>
       </xs:simpleContent>
    </xs:complexType>
-   <xs:complexType name="address-ASSEMBLY">
+   <xs:complexType name="oscal-metadata-address-ASSEMBLY">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Address</m:formal-name>
@@ -2237,7 +2237,7 @@
       </xs:annotation>
       <xs:sequence>
          <xs:element name="addr-line"
-                     type="oscal-component-definition:addr-line-FIELD"
+                     type="oscal-component-definition:oscal-metadata-addr-line-FIELD"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="city" minOccurs="0" maxOccurs="1">
@@ -2250,7 +2250,7 @@
                   <xs:documentation>
                      <b>City</b>: City, town or geographical region for the mailing address.</xs:documentation>
                </xs:annotation>
-               <xs:restriction base="xs:string"/>
+               <xs:restriction base="oscal-component-definition:string"/>
             </xs:simpleType>
          </xs:element>
          <xs:element name="state" minOccurs="0" maxOccurs="1">
@@ -2263,7 +2263,7 @@
                   <xs:documentation>
                      <b>State</b>: State, province or analogous geographical region for mailing address</xs:documentation>
                </xs:annotation>
-               <xs:restriction base="xs:string"/>
+               <xs:restriction base="oscal-component-definition:string"/>
             </xs:simpleType>
          </xs:element>
          <xs:element name="postal-code" minOccurs="0" maxOccurs="1">
@@ -2276,7 +2276,7 @@
                   <xs:documentation>
                      <b>Postal Code</b>: Postal or ZIP code for mailing address</xs:documentation>
                </xs:annotation>
-               <xs:restriction base="xs:string"/>
+               <xs:restriction base="oscal-component-definition:string"/>
             </xs:simpleType>
          </xs:element>
          <xs:element name="country" minOccurs="0" maxOccurs="1">
@@ -2289,11 +2289,11 @@
                   <xs:documentation>
                      <b>Country Code</b>: The ISO 3166-1 alpha-2 country code for the mailing address.</xs:documentation>
                </xs:annotation>
-               <xs:restriction base="xs:string"/>
+               <xs:restriction base="oscal-component-definition:string"/>
             </xs:simpleType>
          </xs:element>
       </xs:sequence>
-      <xs:attribute name="type" type="xs:NCName">
+      <xs:attribute name="type" type="oscal-component-definition:token">
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Address Type</m:formal-name>
@@ -2304,7 +2304,7 @@
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
-   <xs:simpleType name="addr-line-FIELD">
+   <xs:simpleType name="oscal-metadata-addr-line-FIELD">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Address line</m:formal-name>
@@ -2313,9 +2313,9 @@
          <xs:documentation>
             <b>Address line</b>: A single line of an address.</xs:documentation>
       </xs:annotation>
-      <xs:restriction base="xs:string"/>
+      <xs:restriction base="oscal-component-definition:string"/>
    </xs:simpleType>
-   <xs:complexType name="document-id-FIELD">
+   <xs:complexType name="oscal-metadata-document-id-FIELD">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Document Identifier</m:formal-name>
@@ -2325,7 +2325,7 @@
             <b>Document Identifier</b>: A document identifier qualified by an identifier scheme. A document identifier provides a globally unique identifier for a group of documents that are to be treated as different versions of the same document. If this element does not appear, or if the value of this element is empty, the value of "document-id" is equal to the value of the "uuid" flag of the top-level root element.</xs:documentation>
       </xs:annotation>
       <xs:simpleContent>
-         <xs:extension base="xs:string">
+         <xs:extension base="oscal-component-definition:string">
             <xs:attribute name="scheme" type="oscal-component-definition:uri">
                <xs:annotation>
                   <xs:appinfo>
@@ -2339,7 +2339,7 @@
          </xs:extension>
       </xs:simpleContent>
    </xs:complexType>
-   <xs:complexType name="part-ASSEMBLY">
+   <xs:complexType name="oscal-catalog-common-part-ASSEMBLY">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Part</m:formal-name>
@@ -2365,22 +2365,22 @@
             </xs:complexType>
          </xs:element>
          <xs:element name="prop"
-                     type="oscal-component-definition:property-ASSEMBLY"
+                     type="oscal-component-definition:oscal-metadata-property-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:group ref="oscal-component-definition:blockElementGroup"
                    maxOccurs="unbounded"
                    minOccurs="0"/>
          <xs:element name="part"
-                     type="oscal-component-definition:part-ASSEMBLY"
+                     type="oscal-component-definition:oscal-catalog-common-part-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="link"
-                     type="oscal-component-definition:link-ASSEMBLY"
+                     type="oscal-component-definition:oscal-metadata-link-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
       </xs:sequence>
-      <xs:attribute name="id" type="xs:NCName">
+      <xs:attribute name="id" type="oscal-component-definition:token">
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Part Identifier</m:formal-name>
@@ -2390,7 +2390,7 @@
                <b>Part Identifier</b>: A unique identifier for a specific part instance. This identifier's uniqueness is document scoped and is intended to be consistent for the same part across minor revisions of the document.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="name" use="required" type="xs:NCName">
+      <xs:attribute name="name" use="required" type="oscal-component-definition:token">
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Part Name</m:formal-name>
@@ -2410,7 +2410,7 @@
                <b>Part Namespace</b>: A namespace qualifying the part's name. This allows different organizations to associate distinct semantics with the same name.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="class" type="xs:NCName">
+      <xs:attribute name="class" type="oscal-component-definition:token">
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Part Class</m:formal-name>
@@ -2421,7 +2421,7 @@
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
-   <xs:complexType name="parameter-ASSEMBLY">
+   <xs:complexType name="oscal-catalog-common-parameter-ASSEMBLY">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Parameter</m:formal-name>
@@ -2432,11 +2432,11 @@
       </xs:annotation>
       <xs:sequence>
          <xs:element name="prop"
-                     type="oscal-component-definition:property-ASSEMBLY"
+                     type="oscal-component-definition:oscal-metadata-property-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="link"
-                     type="oscal-component-definition:link-ASSEMBLY"
+                     type="oscal-component-definition:oscal-metadata-link-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="label" minOccurs="0" maxOccurs="1">
@@ -2470,20 +2470,20 @@
             </xs:complexType>
          </xs:element>
          <xs:element name="constraint"
-                     type="oscal-component-definition:parameter-constraint-ASSEMBLY"
+                     type="oscal-component-definition:oscal-catalog-common-parameter-constraint-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="guideline"
-                     type="oscal-component-definition:parameter-guideline-ASSEMBLY"
+                     type="oscal-component-definition:oscal-catalog-common-parameter-guideline-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:choice>
             <xs:element name="value"
-                        type="oscal-component-definition:parameter-value-FIELD"
+                        type="oscal-component-definition:oscal-catalog-common-parameter-value-FIELD"
                         minOccurs="0"
                         maxOccurs="unbounded"/>
             <xs:element name="select"
-                        type="oscal-component-definition:parameter-selection-ASSEMBLY"
+                        type="oscal-component-definition:oscal-catalog-common-parameter-selection-ASSEMBLY"
                         minOccurs="0"
                         maxOccurs="1"/>
          </xs:choice>
@@ -2503,7 +2503,7 @@
             </xs:complexType>
          </xs:element>
       </xs:sequence>
-      <xs:attribute name="id" use="required" type="xs:NCName">
+      <xs:attribute name="id" use="required" type="oscal-component-definition:token">
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Parameter Identifier</m:formal-name>
@@ -2513,7 +2513,7 @@
                <b>Parameter Identifier</b>: A unique identifier for a specific parameter instance. This identifier's uniqueness is document scoped and is intended to be consistent for the same parameter across minor revisions of the document.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="class" type="xs:NCName">
+      <xs:attribute name="class" type="oscal-component-definition:token">
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Parameter Class</m:formal-name>
@@ -2523,7 +2523,7 @@
                <b>Parameter Class</b>: A textual label that provides a characterization of the parameter.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="depends-on" type="xs:NCName">
+      <xs:attribute name="depends-on" type="oscal-component-definition:token">
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Depends on</m:formal-name>
@@ -2534,7 +2534,7 @@
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
-   <xs:complexType name="parameter-constraint-ASSEMBLY">
+   <xs:complexType name="oscal-catalog-common-parameter-constraint-ASSEMBLY">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Constraint</m:formal-name>
@@ -2580,7 +2580,7 @@
                            <xs:documentation>
                               <b>Constraint test</b>: A formal (executable) expression of a constraint</xs:documentation>
                         </xs:annotation>
-                        <xs:restriction base="xs:string"/>
+                        <xs:restriction base="oscal-component-definition:string"/>
                      </xs:simpleType>
                   </xs:element>
                   <xs:element name="remarks" minOccurs="0" maxOccurs="1">
@@ -2603,7 +2603,7 @@
          </xs:element>
       </xs:sequence>
    </xs:complexType>
-   <xs:complexType name="parameter-guideline-ASSEMBLY">
+   <xs:complexType name="oscal-catalog-common-parameter-guideline-ASSEMBLY">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Guideline</m:formal-name>
@@ -2618,7 +2618,7 @@
                    minOccurs="0"/>
       </xs:sequence>
    </xs:complexType>
-   <xs:simpleType name="parameter-value-FIELD">
+   <xs:simpleType name="oscal-catalog-common-parameter-value-FIELD">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Parameter Value</m:formal-name>
@@ -2627,9 +2627,9 @@
          <xs:documentation>
             <b>Parameter Value</b>: A parameter value or set of values.</xs:documentation>
       </xs:annotation>
-      <xs:restriction base="xs:string"/>
+      <xs:restriction base="oscal-component-definition:string"/>
    </xs:simpleType>
-   <xs:complexType name="parameter-selection-ASSEMBLY">
+   <xs:complexType name="oscal-catalog-common-parameter-selection-ASSEMBLY">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Selection</m:formal-name>
@@ -2655,14 +2655,14 @@
             </xs:complexType>
          </xs:element>
       </xs:sequence>
-      <xs:attribute name="how-many" type="xs:string">
+      <xs:attribute name="how-many" type="oscal-component-definition:token">
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Parameter Cardinality</m:formal-name>
-               <m:description>Describes the number of selections that must occur.</m:description>
+               <m:description>Describes the number of selections that must occur. Without this setting, only one value should be assumed to be permitted.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>Parameter Cardinality</b>: Describes the number of selections that must occur.</xs:documentation>
+               <b>Parameter Cardinality</b>: Describes the number of selections that must occur. Without this setting, only one value should be assumed to be permitted.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
@@ -2847,6 +2847,19 @@
     IDs are required everywhere for now
     idAttr      = attribute id { xsd:ID }
   -->
+   <xs:simpleType name="string">
+      <xs:annotation>
+         <xs:documentation>A string, but not empty and not whitespace-only (whitespace is U+9, U+10, U+32 or [ \n\t]+ )</xs:documentation>
+      </xs:annotation>
+      <xs:restriction base="xs:string">
+         <xs:whiteSpace value="preserve"/>
+         <xs:pattern value="\S(.*\S)?">
+            <xs:annotation>
+               <xs:documentation>A trimmed string, at least one character with no leading or trailing whitespace.</xs:documentation>
+            </xs:annotation>
+         </xs:pattern>
+      </xs:restriction>
+   </xs:simpleType>
    <xs:simpleType name="dateTime-with-timezone">
       <xs:annotation>
          <xs:documentation>The xs:dateTime with a required timezone.</xs:documentation>
@@ -2898,6 +2911,20 @@
          <xs:pattern value="[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}">
             <xs:annotation>
                <xs:documentation>A sequence of 8-4-4-4-12 hex digits, with extra constraints in the 13th and 17-18th places for version 4</xs:documentation>
+            </xs:annotation>
+         </xs:pattern>
+      </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name="token">
+      <xs:annotation><!--<xs:documentation>Matching XSD NCName, except whitespace is not collapsed.</xs:documentation>-->
+         <xs:documentation>A string token following the rules of XML "no colon" names, with no whitespace. (XML names are single alphabetic characters
+      followed by alphanumeric characters, periods, underscores or dashes.)</xs:documentation>
+      </xs:annotation>
+      <xs:restriction base="xs:string">
+         <xs:whiteSpace value="preserve"/>
+         <xs:pattern value="[\i-[:𐀀-󯿿]][\c-[:𐀀-󯿿]]*">
+            <xs:annotation><!--<xs:documentation>An XML initial character (but not colon), followed by any XML name character (but not colon).</xs:documentation>-->
+               <xs:documentation>A single token may not contain whitespace.</xs:documentation>
             </xs:annotation>
          </xs:pattern>
       </xs:restriction>
