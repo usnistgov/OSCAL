@@ -130,9 +130,6 @@
 }
 
 @mixin reference-header($definition-header-bg,$instance-header-bg,$header-fg) {
-  ul {
-    list-style: none;
-  }
   .name, p.array-member {
     @include header-text($header-fg);
     @include u-font('heading', lg);
@@ -141,6 +138,7 @@
     grid-area: name;
     margin: 0;
     align-self: start;
+    text-transform: inherit;
   }
   p.type {
     @include model-text();
