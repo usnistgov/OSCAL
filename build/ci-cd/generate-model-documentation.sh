@@ -19,6 +19,8 @@ json_definitions_filename="json-definitions.md"
 doc_path_base="/docs/content/reference/"
 BRANCH="$(git branch --show-current)"
 DISABLE_ARCHETYPE_CREATION=false
+OSCAL_DIR="${OSCALDIR}"
+WORKING_DIR="${OSCALDIR}"
 
 declare -a doc_files=("$xml_outline_filename" "$xml_reference_filename" "$xml_index_filename" "$xml_definitions_filename" "$json_outline_filename" "$json_reference_filename" "$json_index_filename" "$json_definitions_filename")
 
@@ -39,7 +41,7 @@ Usage: $0 [options]
 EOF
 }
 
-OPTS=$(getopt -o b:w:vh --long disable-archetype-creation,branch:,release:,scratch-dir:,keep-temp-scratch-dir,help -n "$0" -- "$@")
+OPTS=$(getopt -o o:b:w:vh --long oscal-dir:,disable-archetype-creation,branch:,release:,scratch-dir:,keep-temp-scratch-dir,help -n "$0" -- "$@")
 if [[ "$OSTYPE" == "darwin"* ]]; then
   OPTS=$(getopt b:r:w:vh $*)
 fi
@@ -67,6 +69,14 @@ while [ $# -gt 0 ]; do
     ;;
   --keep-temp-scratch-dir)
     KEEP_TEMP_SCRATCH_DIR=true
+    ;;
+  -o|--oscal-dir)
+    OSCAL_DIR="$(realpath "$2")"
+    shift # past path
+    ;;
+  -w|--working-dir)
+    WORKING_DIR="$(realpath "$2")"
+    shift # past path
     ;;
   -v)
     VERBOSE=true
@@ -140,7 +150,7 @@ else
   TYPE="branch"
 fi
 
-doc_path="${OSCALDIR}${doc_path_base}${REVISION}"
+doc_path="${WORKING_DIR}${doc_path_base}${REVISION}"
 
 #echo "BRANCH='${BRANCH}'"
 #echo "VERSION='${VERSION}'"
@@ -149,7 +159,7 @@ doc_path="${OSCALDIR}${doc_path_base}${REVISION}"
 #echo "doc_path='${doc_path}'"
 
 # build the version folder
-if [ "$DISABLE_ARCHETYPE_CREATION" = "false" ] || [ ! -d "${doc_path}" ]; then
+if [ ! -d "${doc_path}" ] || [ "$DISABLE_ARCHETYPE_CREATION" = "false" ]; then
   [ -d "${doc_path}" ] && rm -rf "${doc_path}"
 
   result=$(HUGO_REF_TYPE="${TYPE}" HUGO_REF_BRANCH="${BRANCH}" HUGO_REF_VERSION="${VERSION}" HUGO_REF_REVISION="${REVISION}" hugo new --kind reference "${doc_path}" 2>&1)
@@ -176,7 +186,7 @@ while IFS="|" read metaschema_path archetype model_id model_name schema_id || [[
   model_name="${model_name##+([[:space:]])}"
   schema_id="${schema_id##+([[:space:]])}"
 
-  metaschema="$OSCALDIR"/"$metaschema_path"
+  metaschema="$OSCAL_DIR"/"$metaschema_path"
   metaschema_relative=$(realpath --relative-to="$WORKING_DIR" "$metaschema")
 
   filename=$(basename -- "$metaschema")
@@ -246,6 +256,6 @@ while IFS="|" read metaschema_path archetype model_id model_name schema_id || [[
 
   echo -e "${P_OK}Generated docs for '${P_END}${metaschema_relative}${P_OK}' in '${P_END}${model_path}${P_OK}'.${P_END}"
 
-done <"$OSCALDIR/build/ci-cd/config/metaschema-docs"
+done <"$OSCAL_DIR/build/ci-cd/config/metaschema-docs"
 
 exit $exitcode
