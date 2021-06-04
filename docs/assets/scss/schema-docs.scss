@@ -130,47 +130,49 @@
 }
 
 @mixin reference-header($definition-header-bg,$instance-header-bg,$header-fg) {
-  .name, p.array-member {
-    @include header-text($header-fg);
-    @include u-font('heading', lg);
-    @include u-line-height('heading', 1);
-    @include u-margin(0);
-    grid-area: name;
-    margin: 0;
-    align-self: start;
-    text-transform: inherit;
-  }
-  p.type {
-    @include model-text();
-    @include u-line-height('mono', 1);
-    grid-area: type;
-    margin: 0;
-    align-self: start;
-  }
-  p.occurrence {
-    @include model-text();
-    @include u-line-height('mono', 1);
-    grid-area: occurance;
-    margin: 0;
-    align-self: start;
-  }
-  div.crosslink {
-    grid-area: crosslink;
-    margin: 0;
-    align-self: start;
-    justify-self: end;
-
-    /*
-    a.usa-button {
-
+  div.definition-header, div.instance-header, div.array-header {
+    .name, p.array-member {
+      @include header-text($header-fg);
+      @include u-font('heading', lg);
+      @include u-line-height('heading', 1);
+      @include u-margin(0);
+      grid-area: name;
+      margin: 0;
+      align-self: start;
+      text-transform: inherit;
     }
-    */
-  }
-  .formal-name {
-    @include supporting-text();
-    grid-area: formal-name;
-    margin: 0;
-    align-self: center;
+    p.type {
+      @include model-text();
+      @include u-line-height('mono', 1);
+      grid-area: type;
+      margin: 0;
+      align-self: start;
+    }
+    p.occurrence {
+      @include model-text();
+      @include u-line-height('mono', 1);
+      grid-area: occurance;
+      margin: 0;
+      align-self: start;
+    }
+    div.crosslink {
+      grid-area: crosslink;
+      margin: 0;
+      align-self: start;
+      justify-self: end;
+
+      /*
+      a.usa-button {
+
+      }
+      */
+    }
+    .formal-name {
+      @include supporting-text();
+      grid-area: formal-name;
+      margin: 0;
+      align-self: center;
+    }
   }
   
   div.definition-header {
