@@ -229,8 +229,23 @@ jobs:
       # job-generate-docs
       - name: Generate Model Documentation
         run: |
-          cd "${OSCAL_WEBSITE_PATH}"
-          bash "${OSCAL_CICD_PATH}/generate-model-documentation.sh"
+          echo "PWD: ${PWD}"
+          echo "OSCAL_HOME: ${OSCAL_HOME}"
+          echo "Github Workspace: ${{ github.workspace }}"
+          echo "Branch: $(git branch --show-current)"
+
+          BRANCH="${GITHUB_REF}"
+          echo "Branch(1): ${BRANCH}"
+          if [[ "$BRANCH" =~ ^refs/pull/.* ]]; then
+            BRANCH="${GITHUB_HEAD_REF}"
+            echo "Branch(2): ${BRANCH}"
+          elif [[ "$BRANCH" =~ ^refs/heads/.* ]]; then
+            BRANCH="${GITHUB_REF#refs/heads/}"
+            echo "Branch(3): ${BRANCH}"
+          fi
+          echo "Branch(4): ${BRANCH}"
+          bash "../build/ci-cd/generate-model-documentation.sh" -b "${BRANCH}"
+        working-directory: ${{ github.workspace }}/${{ env.OSCAL_HOME }}/docs
 #      - uses: actions/upload-artifact@v2
 #        with:
 #          name: model-docs
