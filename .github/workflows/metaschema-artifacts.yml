@@ -229,13 +229,14 @@ jobs:
       # job-generate-docs
       - name: Generate Model Documentation
         run: |
+          cd "${OSCAL_WEBSITE_PATH}"
           bash "${OSCAL_CICD_PATH}/generate-model-documentation.sh"
-      - uses: actions/upload-artifact@v2
-        with:
-          name: model-docs
-          path: |
-            ${{ env.OSCAL_HOME }}/docs/layouts/partials/generated
-          retention-days: 5
+#      - uses: actions/upload-artifact@v2
+#        with:
+#          name: model-docs
+#          path: |
+#            ${{ env.OSCAL_HOME }}/docs/layouts/partials/generated
+#          retention-days: 5
       - name: Run Hugo
         run: |
             cd "${OSCAL_WEBSITE_PATH}"
