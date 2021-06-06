@@ -219,22 +219,22 @@ jobs:
       # ---------------
       - name: Generate specification documentation
         run: |
-          bash "${OSCAL_CICD_PATH}/generate-specification-documentation.sh" -w "${OSCAL_WORKING_PATH}"
+          bash "${OSCAL_CICD_PATH}/generate-specification-documentation.sh"
       - uses: actions/upload-artifact@v2
         with:
           name: specification-docs
           path: |
-            ${{ env.OSCAL_WORKING_PATH }}/docs/content/documentation/processing/profile-resolution.html
+            ${{ env.OSCAL_HOME }}/docs/content/documentation/processing/profile-resolution.html
           retention-days: 5
       # job-generate-docs
       - name: Generate Model Documentation
         run: |
-          bash "${OSCAL_CICD_PATH}/generate-model-documentation.sh" -w "${OSCAL_WORKING_PATH}"
+          bash "${OSCAL_CICD_PATH}/generate-model-documentation.sh"
       - uses: actions/upload-artifact@v2
         with:
           name: model-docs
           path: |
-            ${{ env.OSCAL_WORKING_PATH }}/docs/layouts/partials/generated
+            ${{ env.OSCAL_HOME }}/docs/layouts/partials/generated
           retention-days: 5
       - name: Run Hugo
         run: |
@@ -249,7 +249,8 @@ jobs:
       - name: Run HTMLProofer
         run: |
           cd "${OSCAL_WEBSITE_PATH}"
-          bundle exec htmlproofer --allow-hash-href public/ --url-swap "https\://pages.nist.gov/OSCAL/:/" --assume-extension --log-level :debug --url-ignore "/\/OSCAL\/docs\/\/reference\/[^/]+\/[^/]+\/(?:json|xml)-(?:outline|reference|index|definitions)/,/#/,/pages.nist.gov\/(?:nist-header-footer|leaveNotice)\/.+/"
+          #--allow-hash-href
+          bundle exec htmlproofer --check-external-hash public/ --url-swap "https\://pages.nist.gov/OSCAL/:/" --assume-extension --log-level :debug --url-ignore "/\/OSCAL\/docs\/\/reference\/[^/]+\/[^/]+\/(?:json|xml)-(?:outline|reference|index|definitions)/,/#/,/pages.nist.gov\/(?:nist-header-footer|leaveNotice)\/.+/"
       - name: Run deploy script
         if: ${{ github.repository == env.HOME_REPO && github.ref == format('refs/heads/{0}',env.HOME_BRANCH) }}
         run: |
