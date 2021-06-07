@@ -2669,143 +2669,146 @@ The following is the JSON format reference for this model, which is organized hi
                                     </details>
                                  </div>
                               </div>
-                              <div class="model-entry definition assembly">
-                                 <div class="instance-header">
-                                    <h4 id="/profile/metadata/parties/addresses" class="toc4 name">addresses</h4>
-                                    <p class="type">array<br /></p>
-                                    <p class="occurrence">[0 or 1]</p>
-                                    <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/metadata/party/address">Switch to XML</a></div>
+                              <div class="choice">
+                                 <p>A choice:</p>
+                                 <div class="model-entry definition assembly">
+                                    <div class="instance-header">
+                                       <h4 id="/profile/metadata/parties/addresses" class="toc4 name">addresses</h4>
+                                       <p class="type">array<br /></p>
+                                       <p class="occurrence">[0 or 1]</p>
+                                       <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/metadata/party/address">Switch to XML</a></div>
+                                    </div>
+                                    <div class="array-header">
+                                       <p class="array-member">(array member)</p>
+                                       <p class="type">object<br /></p>
+                                       <p class="occurrence">[1 to ∞]</p>
+                                       <p class="formal-name">Address</p>
+                                    </div>
+                                    <div class="body">
+                                       <p class="description"><span class="usa-tag">Description</span> A postal address for the location.</p>
+                                       <details class="properties" open="open">
+                                          <summary>Properties (6)</summary>
+                                          <div class="model-entry definition assembly">
+                                             <div class="instance-header">
+                                                <h5 id="/profile/metadata/parties/addresses/type" class="toc5 name">type</h5>
+                                                <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                <p class="occurrence">[0 or 1]</p>
+                                                <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/metadata/party/address/@type">Switch to XML</a></div>
+                                                <p class="formal-name">Address Type</p>
+                                             </div>
+                                             <div class="body">
+                                                <p class="description"><span class="usa-tag">Description</span> Indicates the type of address.</p>
+                                                <details class="constraints" open="open">
+                                                   <summary>Constraint (1)</summary>
+                                                   <div class="constraint">
+                                                      <p><span class="usa-tag">allowed values</span></p>
+                                                      <p>The value <b>may be locally defined</b>, or one of the following:</p>
+                                                      <ul>
+                                                         
+                                                         <li><strong>home</strong>: A home address.</li>
+                                                         
+                                                         <li><strong>work</strong>: A work address.</li>
+                                                         </ul>
+                                                   </div>
+                                                </details>
+                                             </div>
+                                          </div>
+                                          <div class="model-entry definition assembly">
+                                             <div class="instance-header">
+                                                <h5 id="/profile/metadata/parties/addresses/addr-lines" class="toc5 name">addr-lines</h5>
+                                                <p class="type">array<br /></p>
+                                                <p class="occurrence">[0 or 1]</p>
+                                                <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/metadata/party/address/addr-line">Switch to XML</a></div>
+                                             </div>
+                                             <div class="array-header">
+                                                <p class="array-member">(array member)</p>
+                                                <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                <p class="occurrence">[0 to ∞]</p>
+                                                <p class="formal-name">Address line</p>
+                                             </div>
+                                             <div class="body">
+                                                <p class="description"><span class="usa-tag">Description</span> A single line of an address.</p>
+                                             </div>
+                                          </div>
+                                          <div class="model-entry definition assembly">
+                                             <div class="instance-header">
+                                                <h5 id="/profile/metadata/parties/addresses/city" class="toc5 name">city</h5>
+                                                <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                <p class="occurrence">[0 or 1]</p>
+                                                <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/metadata/party/address/city">Switch to XML</a></div>
+                                                <p class="formal-name">City</p>
+                                             </div>
+                                             <div class="body">
+                                                <p class="description"><span class="usa-tag">Description</span> City, town or geographical region for the mailing address.</p>
+                                             </div>
+                                          </div>
+                                          <div class="model-entry definition assembly">
+                                             <div class="instance-header">
+                                                <h5 id="/profile/metadata/parties/addresses/state" class="toc5 name">state</h5>
+                                                <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                <p class="occurrence">[0 or 1]</p>
+                                                <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/metadata/party/address/state">Switch to XML</a></div>
+                                                <p class="formal-name">State</p>
+                                             </div>
+                                             <div class="body">
+                                                <p class="description"><span class="usa-tag">Description</span> State, province or analogous geographical region for mailing address</p>
+                                             </div>
+                                          </div>
+                                          <div class="model-entry definition assembly">
+                                             <div class="instance-header">
+                                                <h5 id="/profile/metadata/parties/addresses/postal-code" class="toc5 name">postal-code</h5>
+                                                <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                <p class="occurrence">[0 or 1]</p>
+                                                <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/metadata/party/address/postal-code">Switch to XML</a></div>
+                                                <p class="formal-name">Postal Code</p>
+                                             </div>
+                                             <div class="body">
+                                                <p class="description"><span class="usa-tag">Description</span> Postal or ZIP code for mailing address</p>
+                                             </div>
+                                          </div>
+                                          <div class="model-entry definition assembly">
+                                             <div class="instance-header">
+                                                <h5 id="/profile/metadata/parties/addresses/country" class="toc5 name">country</h5>
+                                                <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                <p class="occurrence">[0 or 1]</p>
+                                                <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/metadata/party/address/country">Switch to XML</a></div>
+                                                <p class="formal-name">Country Code</p>
+                                             </div>
+                                             <div class="body">
+                                                <p class="description"><span class="usa-tag">Description</span> The ISO 3166-1 alpha-2 country code for the mailing address.</p>
+                                                <details class="constraints" open="open">
+                                                   <summary>Constraint (1)</summary>
+                                                   <div class="constraint">
+                                                      <p><span class="usa-tag">matches</span>: a target (value) must match the regular expression '[A-Z](2)'.</p>
+                                                   </div>
+                                                </details>
+                                             </div>
+                                          </div>
+                                       </details>
+                                    </div>
                                  </div>
-                                 <div class="array-header">
-                                    <p class="array-member">(array member)</p>
-                                    <p class="type">object<br /></p>
-                                    <p class="occurrence">[1 to ∞]</p>
-                                    <p class="formal-name">Address</p>
-                                 </div>
-                                 <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> A postal address for the location.</p>
-                                    <details class="properties" open="open">
-                                       <summary>Properties (6)</summary>
-                                       <div class="model-entry definition assembly">
-                                          <div class="instance-header">
-                                             <h5 id="/profile/metadata/parties/addresses/type" class="toc5 name">type</h5>
-                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
-                                             <p class="occurrence">[0 or 1]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/metadata/party/address/@type">Switch to XML</a></div>
-                                             <p class="formal-name">Address Type</p>
+                                 <div class="model-entry definition assembly">
+                                    <div class="instance-header">
+                                       <h4 id="/profile/metadata/parties/location-uuids" class="toc4 name">location-uuids</h4>
+                                       <p class="type">array<br /></p>
+                                       <p class="occurrence">[0 or 1]</p>
+                                       <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/metadata/party/location-uuid">Switch to XML</a></div>
+                                    </div>
+                                    <div class="array-header">
+                                       <p class="array-member">(array member)</p>
+                                       <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                       <p class="occurrence">[0 to ∞]</p>
+                                       <p class="formal-name">Location Reference</p>
+                                    </div>
+                                    <div class="body">
+                                       <p class="description"><span class="usa-tag">Description</span> References a <code>location</code> defined in <code>metadata</code>. </p>
+                                       <details class="constraints" open="open">
+                                          <summary>Constraint (1)</summary>
+                                          <div class="constraint">
+                                             <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-location-uuid</code> using a key constructed of key field(s) <code>value()</code></p>
                                           </div>
-                                          <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> Indicates the type of address.</p>
-                                             <details class="constraints" open="open">
-                                                <summary>Constraint (1)</summary>
-                                                <div class="constraint">
-                                                   <p><span class="usa-tag">allowed values</span></p>
-                                                   <p>The value <b>may be locally defined</b>, or one of the following:</p>
-                                                   <ul>
-                                                      
-                                                      <li><strong>home</strong>: A home address.</li>
-                                                      
-                                                      <li><strong>work</strong>: A work address.</li>
-                                                      </ul>
-                                                </div>
-                                             </details>
-                                          </div>
-                                       </div>
-                                       <div class="model-entry definition assembly">
-                                          <div class="instance-header">
-                                             <h5 id="/profile/metadata/parties/addresses/addr-lines" class="toc5 name">addr-lines</h5>
-                                             <p class="type">array<br /></p>
-                                             <p class="occurrence">[0 or 1]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/metadata/party/address/addr-line">Switch to XML</a></div>
-                                          </div>
-                                          <div class="array-header">
-                                             <p class="array-member">(array member)</p>
-                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
-                                             <p class="occurrence">[0 to ∞]</p>
-                                             <p class="formal-name">Address line</p>
-                                          </div>
-                                          <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> A single line of an address.</p>
-                                          </div>
-                                       </div>
-                                       <div class="model-entry definition assembly">
-                                          <div class="instance-header">
-                                             <h5 id="/profile/metadata/parties/addresses/city" class="toc5 name">city</h5>
-                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
-                                             <p class="occurrence">[0 or 1]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/metadata/party/address/city">Switch to XML</a></div>
-                                             <p class="formal-name">City</p>
-                                          </div>
-                                          <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> City, town or geographical region for the mailing address.</p>
-                                          </div>
-                                       </div>
-                                       <div class="model-entry definition assembly">
-                                          <div class="instance-header">
-                                             <h5 id="/profile/metadata/parties/addresses/state" class="toc5 name">state</h5>
-                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
-                                             <p class="occurrence">[0 or 1]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/metadata/party/address/state">Switch to XML</a></div>
-                                             <p class="formal-name">State</p>
-                                          </div>
-                                          <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> State, province or analogous geographical region for mailing address</p>
-                                          </div>
-                                       </div>
-                                       <div class="model-entry definition assembly">
-                                          <div class="instance-header">
-                                             <h5 id="/profile/metadata/parties/addresses/postal-code" class="toc5 name">postal-code</h5>
-                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
-                                             <p class="occurrence">[0 or 1]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/metadata/party/address/postal-code">Switch to XML</a></div>
-                                             <p class="formal-name">Postal Code</p>
-                                          </div>
-                                          <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> Postal or ZIP code for mailing address</p>
-                                          </div>
-                                       </div>
-                                       <div class="model-entry definition assembly">
-                                          <div class="instance-header">
-                                             <h5 id="/profile/metadata/parties/addresses/country" class="toc5 name">country</h5>
-                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
-                                             <p class="occurrence">[0 or 1]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/metadata/party/address/country">Switch to XML</a></div>
-                                             <p class="formal-name">Country Code</p>
-                                          </div>
-                                          <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> The ISO 3166-1 alpha-2 country code for the mailing address.</p>
-                                             <details class="constraints" open="open">
-                                                <summary>Constraint (1)</summary>
-                                                <div class="constraint">
-                                                   <p><span class="usa-tag">matches</span>: a target (value) must match the regular expression '[A-Z](2)'.</p>
-                                                </div>
-                                             </details>
-                                          </div>
-                                       </div>
-                                    </details>
-                                 </div>
-                              </div>
-                              <div class="model-entry definition assembly">
-                                 <div class="instance-header">
-                                    <h4 id="/profile/metadata/parties/location-uuids" class="toc4 name">location-uuids</h4>
-                                    <p class="type">array<br /></p>
-                                    <p class="occurrence">[0 or 1]</p>
-                                    <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/metadata/party/location-uuid">Switch to XML</a></div>
-                                 </div>
-                                 <div class="array-header">
-                                    <p class="array-member">(array member)</p>
-                                    <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
-                                    <p class="occurrence">[0 to ∞]</p>
-                                    <p class="formal-name">Location Reference</p>
-                                 </div>
-                                 <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> References a <code>location</code> defined in <code>metadata</code>. </p>
-                                    <details class="constraints" open="open">
-                                       <summary>Constraint (1)</summary>
-                                       <div class="constraint">
-                                          <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-location-uuid</code> using a key constructed of key field(s) <code>value()</code></p>
-                                       </div>
-                                    </details>
+                                       </details>
+                                    </div>
                                  </div>
                               </div>
                               <div class="model-entry definition assembly">
@@ -3323,137 +3326,140 @@ The following is the JSON format reference for this model, which is organized hi
                            </div>
                         </div>
                      </div>
-                     <div class="model-entry definition assembly">
-                        <div class="instance-header">
-                           <h3 id="/profile/imports/include-all" class="toc3 name">include-all</h3>
-                           <p class="type"><a href="/reference/datatypes/#empty">empty</a></p>
-                           <p class="occurrence">[1]</p>
-                           <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/import/include-all">Switch to XML</a></div>
-                           <p class="formal-name">Insert All</p>
+                     <div class="choice">
+                        <p>A choice:</p>
+                        <div class="model-entry definition assembly">
+                           <div class="instance-header">
+                              <h3 id="/profile/imports/include-all" class="toc3 name">include-all</h3>
+                              <p class="type"><a href="/reference/datatypes/#empty">empty</a></p>
+                              <p class="occurrence">[1]</p>
+                              <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/import/include-all">Switch to XML</a></div>
+                              <p class="formal-name">Insert All</p>
+                           </div>
+                           <div class="body">
+                              <p class="description"><span class="usa-tag">Description</span> Insert all controls from the imported catalog or profile resources identified in
+                                 the <code>import</code> directive.</p>
+                              <div class="remarks-group usa-prose">
+                                 <details open="open">
+                                    <summary class="subhead">Remarks</summary>
+                                    <div class="remarks">
+                                       <p>This element provides an alternative to calling controls individually from a catalog.</p>
+                                    </div>
+                                    <div class="remarks in-use">
+                                       <p>Identifies that all controls are to be included from the imported catalog or profile.</p>
+                                    </div>
+                                 </details>
+                              </div>
+                           </div>
                         </div>
-                        <div class="body">
-                           <p class="description"><span class="usa-tag">Description</span> Insert all controls from the imported catalog or profile resources identified in
-                              the <code>import</code> directive.</p>
-                           <div class="remarks-group usa-prose">
-                              <details open="open">
-                                 <summary class="subhead">Remarks</summary>
-                                 <div class="remarks">
-                                    <p>This element provides an alternative to calling controls individually from a catalog.</p>
+                        <div class="model-entry definition assembly">
+                           <div class="instance-header">
+                              <h3 id="/profile/imports/include-controls" class="toc3 name">include-controls</h3>
+                              <p class="type">array<br /></p>
+                              <p class="occurrence">[1]</p>
+                              <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/import/include-controls">Switch to XML</a></div>
+                           </div>
+                           <div class="array-header">
+                              <p class="array-member">(array member)</p>
+                              <p class="type">object<br /></p>
+                              <p class="occurrence">[1 to ∞]</p>
+                              <p class="formal-name">Call</p>
+                           </div>
+                           <div class="body">
+                              <p class="description"><span class="usa-tag">Description</span> Call a control by its ID</p>
+                              <div class="remarks-group usa-prose">
+                                 <details open="open">
+                                    <summary class="subhead">Remarks</summary>
+                                    <div class="remarks">
+                                       <p>If <code>with-child-controls</code> is <q>yes</q> on the call to a control, no sibling <code>call</code>elements need to be used to call any controls appearing within it. Since generally,
+                                          this is how control enhancements are represented (as controls within controls), this
+                                          provides a way to include controls with all their dependent controls (enhancements)
+                                          without having to call them individually.</p>
+                                    </div>
+                                    <div class="remarks in-use">
+                                       <p>Identifies a subset of controls to import from the referenced catalog or profile by
+                                          control identifier or match pattern.</p>
+                                    </div>
+                                 </details>
+                              </div>
+                              <details class="properties" open="open">
+                                 <summary>Properties (3)</summary>
+                                 <div class="model-entry definition assembly">
+                                    <div class="instance-header">
+                                       <h4 id="/profile/imports/include-controls/with-child-controls" class="toc4 name">with-child-controls</h4>
+                                       <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                       <p class="occurrence">[0 or 1]</p>
+                                       <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/import/include-controls/@with-child-controls">Switch to XML</a></div>
+                                       <p class="formal-name">Include contained controls with control</p>
+                                    </div>
+                                    <div class="body">
+                                       <p class="description"><span class="usa-tag">Description</span> When a control is included, whether its child (dependent) controls are also included.</p>
+                                       <details class="constraints" open="open">
+                                          <summary>Constraint (1)</summary>
+                                          <div class="constraint">
+                                             <p><span class="usa-tag">allowed values</span></p>
+                                             <p>The value <b>must</b> be one of the following:</p>
+                                             <ul>
+                                                
+                                                <li><strong>yes</strong>: Include child controls with an included control.</li>
+                                                
+                                                <li><strong>no</strong>: When importing a control, only include child controls that are also explicitly called.</li>
+                                                </ul>
+                                          </div>
+                                       </details>
+                                    </div>
                                  </div>
-                                 <div class="remarks in-use">
-                                    <p>Identifies that all controls are to be included from the imported catalog or profile.</p>
+                                 <div class="model-entry definition assembly">
+                                    <div class="instance-header">
+                                       <h4 id="/profile/imports/include-controls/with-ids" class="toc4 name">with-ids</h4>
+                                       <p class="type">array<br /></p>
+                                       <p class="occurrence">[0 or 1]</p>
+                                       <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/import/include-controls/with-id">Switch to XML</a></div>
+                                    </div>
+                                    <div class="array-header">
+                                       <p class="array-member">(array member)</p>
+                                       <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                       <p class="occurrence">[0 to ∞]</p>
+                                       <p class="formal-name">Match Controls by Identifier</p>
+                                    </div>
+                                    <div class="body">
+                                       <p class="description"><span class="usa-tag">Description</span> </p>
+                                    </div>
+                                 </div>
+                                 <div class="model-entry definition assembly">
+                                    <div class="instance-header">
+                                       <h4 id="/profile/imports/include-controls/matching" class="toc4 name">matching</h4>
+                                       <p class="type">array<br /></p>
+                                       <p class="occurrence">[0 or 1]</p>
+                                       <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/import/include-controls/matching">Switch to XML</a></div>
+                                    </div>
+                                    <div class="array-header">
+                                       <p class="array-member">(array member)</p>
+                                       <p class="type"><a href="/reference/datatypes/#empty">empty</a></p>
+                                       <p class="occurrence">[1 to ∞]</p>
+                                       <p class="formal-name">Match Controls by Pattern</p>
+                                    </div>
+                                    <div class="body">
+                                       <p class="description"><span class="usa-tag">Description</span> Select controls by (regular expression) match on ID</p>
+                                       <details class="properties" open="open">
+                                          <summary>Property (1)</summary>
+                                          <div class="model-entry definition assembly">
+                                             <div class="instance-header">
+                                                <h5 id="/profile/imports/include-controls/matching/pattern" class="toc5 name">pattern</h5>
+                                                <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                <p class="occurrence">[0 or 1]</p>
+                                                <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/import/include-controls/matching/@pattern">Switch to XML</a></div>
+                                                <p class="formal-name">Pattern</p>
+                                             </div>
+                                             <div class="body">
+                                                <p class="description"><span class="usa-tag">Description</span> A <a href="https://en.wikipedia.org/wiki/Glob_(programming)">glob expression</a> matching the IDs of one or more controls to be selected.</p>
+                                             </div>
+                                          </div>
+                                       </details>
+                                    </div>
                                  </div>
                               </details>
                            </div>
-                        </div>
-                     </div>
-                     <div class="model-entry definition assembly">
-                        <div class="instance-header">
-                           <h3 id="/profile/imports/include-controls" class="toc3 name">include-controls</h3>
-                           <p class="type">array<br /></p>
-                           <p class="occurrence">[1]</p>
-                           <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/import/include-controls">Switch to XML</a></div>
-                        </div>
-                        <div class="array-header">
-                           <p class="array-member">(array member)</p>
-                           <p class="type">object<br /></p>
-                           <p class="occurrence">[1 to ∞]</p>
-                           <p class="formal-name">Call</p>
-                        </div>
-                        <div class="body">
-                           <p class="description"><span class="usa-tag">Description</span> Call a control by its ID</p>
-                           <div class="remarks-group usa-prose">
-                              <details open="open">
-                                 <summary class="subhead">Remarks</summary>
-                                 <div class="remarks">
-                                    <p>If <code>with-child-controls</code> is <q>yes</q> on the call to a control, no sibling <code>call</code>elements need to be used to call any controls appearing within it. Since generally,
-                                       this is how control enhancements are represented (as controls within controls), this
-                                       provides a way to include controls with all their dependent controls (enhancements)
-                                       without having to call them individually.</p>
-                                 </div>
-                                 <div class="remarks in-use">
-                                    <p>Identifies a subset of controls to import from the referenced catalog or profile by
-                                       control identifier or match pattern.</p>
-                                 </div>
-                              </details>
-                           </div>
-                           <details class="properties" open="open">
-                              <summary>Properties (3)</summary>
-                              <div class="model-entry definition assembly">
-                                 <div class="instance-header">
-                                    <h4 id="/profile/imports/include-controls/with-child-controls" class="toc4 name">with-child-controls</h4>
-                                    <p class="type"><a href="/reference/datatypes/#token">token</a></p>
-                                    <p class="occurrence">[0 or 1]</p>
-                                    <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/import/include-controls/@with-child-controls">Switch to XML</a></div>
-                                    <p class="formal-name">Include contained controls with control</p>
-                                 </div>
-                                 <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> When a control is included, whether its child (dependent) controls are also included.</p>
-                                    <details class="constraints" open="open">
-                                       <summary>Constraint (1)</summary>
-                                       <div class="constraint">
-                                          <p><span class="usa-tag">allowed values</span></p>
-                                          <p>The value <b>must</b> be one of the following:</p>
-                                          <ul>
-                                             
-                                             <li><strong>yes</strong>: Include child controls with an included control.</li>
-                                             
-                                             <li><strong>no</strong>: When importing a control, only include child controls that are also explicitly called.</li>
-                                             </ul>
-                                       </div>
-                                    </details>
-                                 </div>
-                              </div>
-                              <div class="model-entry definition assembly">
-                                 <div class="instance-header">
-                                    <h4 id="/profile/imports/include-controls/with-ids" class="toc4 name">with-ids</h4>
-                                    <p class="type">array<br /></p>
-                                    <p class="occurrence">[0 or 1]</p>
-                                    <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/import/include-controls/with-id">Switch to XML</a></div>
-                                 </div>
-                                 <div class="array-header">
-                                    <p class="array-member">(array member)</p>
-                                    <p class="type"><a href="/reference/datatypes/#token">token</a></p>
-                                    <p class="occurrence">[0 to ∞]</p>
-                                    <p class="formal-name">Match Controls by Identifier</p>
-                                 </div>
-                                 <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> </p>
-                                 </div>
-                              </div>
-                              <div class="model-entry definition assembly">
-                                 <div class="instance-header">
-                                    <h4 id="/profile/imports/include-controls/matching" class="toc4 name">matching</h4>
-                                    <p class="type">array<br /></p>
-                                    <p class="occurrence">[0 or 1]</p>
-                                    <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/import/include-controls/matching">Switch to XML</a></div>
-                                 </div>
-                                 <div class="array-header">
-                                    <p class="array-member">(array member)</p>
-                                    <p class="type"><a href="/reference/datatypes/#empty">empty</a></p>
-                                    <p class="occurrence">[1 to ∞]</p>
-                                    <p class="formal-name">Match Controls by Pattern</p>
-                                 </div>
-                                 <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> Select controls by (regular expression) match on ID</p>
-                                    <details class="properties" open="open">
-                                       <summary>Property (1)</summary>
-                                       <div class="model-entry definition assembly">
-                                          <div class="instance-header">
-                                             <h5 id="/profile/imports/include-controls/matching/pattern" class="toc5 name">pattern</h5>
-                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
-                                             <p class="occurrence">[0 or 1]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/import/include-controls/matching/@pattern">Switch to XML</a></div>
-                                             <p class="formal-name">Pattern</p>
-                                          </div>
-                                          <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> A <a href="https://en.wikipedia.org/wiki/Glob_(programming)">glob expression</a> matching the IDs of one or more controls to be selected.</p>
-                                          </div>
-                                       </div>
-                                    </details>
-                                 </div>
-                              </div>
-                           </details>
                         </div>
                      </div>
                      <div class="model-entry definition assembly">
@@ -3646,485 +3652,1772 @@ The following is the JSON format reference for this model, which is organized hi
                            </details>
                         </div>
                      </div>
-                     <div class="model-entry definition assembly">
-                        <div class="instance-header">
-                           <h3 id="/profile/merge/as-is" class="toc3 name">as-is</h3>
-                           <p class="type"><a href="/reference/datatypes/#boolean">boolean</a></p>
-                           <p class="occurrence">[0 or 1]</p>
-                           <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/as-is">Switch to XML</a></div>
-                           <p class="formal-name">As is</p>
-                        </div>
-                        <div class="body">
-                           <p class="description"><span class="usa-tag">Description</span> An As-is element indicates that the controls should be structured in resolution as
-                              they are structured in their source catalogs. It does not contain any elements or
-                              attributes.</p>
-                        </div>
-                     </div>
-                     <div class="model-entry definition assembly">
-                        <div class="instance-header">
-                           <h3 id="/profile/merge/custom" class="toc3 name">custom</h3>
-                           <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-profile/merge/custom">(global definition)</a></p>
-                           <p class="occurrence">[0 or 1]</p>
-                           <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom">Switch to XML</a></div>
-                           <p class="formal-name">Custom grouping</p>
-                        </div>
-                        <div class="body">
-                           <p class="description"><span class="usa-tag">Description</span> A Custom element frames a structure for embedding represented controls in resolution.</p>
-                           <div class="remarks-group usa-prose">
-                              <details open="open">
-                                 <summary class="subhead">Remarks</summary>
-                                 <div class="remarks">
-                                    <p>The <code>custom</code> element represents a custom arrangement or organization of controls in the resolution
-                                       of a catalog.</p>
-                                    <p>While the <code>as-is</code> element provides for a restitution of a control set's organization (in one or more
-                                       source catalogs), this element permits the definition of an entirely different structure.</p>
-                                 </div>
-                              </details>
+                     <div class="choice">
+                        <p>A choice:</p>
+                        <div class="model-entry definition assembly">
+                           <div class="instance-header">
+                              <h3 id="/profile/merge/as-is" class="toc3 name">as-is</h3>
+                              <p class="type"><a href="/reference/datatypes/#boolean">boolean</a></p>
+                              <p class="occurrence">[0 or 1]</p>
+                              <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/as-is">Switch to XML</a></div>
+                              <p class="formal-name">As is</p>
                            </div>
-                           <details class="properties" open="open">
-                              <summary>Properties (2)</summary>
-                              <div class="model-entry definition assembly">
-                                 <div class="instance-header">
-                                    <h4 id="/profile/merge/custom/groups" class="toc4 name">groups</h4>
-                                    <p class="type">array<br /></p>
-                                    <p class="occurrence">[0 or 1]</p>
-                                    <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group">Switch to XML</a></div>
-                                 </div>
-                                 <div class="array-header">
-                                    <p class="array-member">(array member)</p>
-                                    <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-profile/custom/groups">(global definition)</a></p>
-                                    <p class="occurrence">[1 to ∞]</p>
-                                    <p class="formal-name">Control group</p>
-                                 </div>
-                                 <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> A group of (selected) controls or of groups of controls</p>
-                                    <div class="remarks-group usa-prose">
-                                       <details open="open">
-                                          <summary class="subhead">Remarks</summary>
-                                          <div class="remarks">
-                                             <p>This construct mirrors the same construct that exists in an OSCAL catalog.</p>
-                                          </div>
-                                       </details>
+                           <div class="body">
+                              <p class="description"><span class="usa-tag">Description</span> An As-is element indicates that the controls should be structured in resolution as
+                                 they are structured in their source catalogs. It does not contain any elements or
+                                 attributes.</p>
+                           </div>
+                        </div>
+                        <div class="model-entry definition assembly">
+                           <div class="instance-header">
+                              <h3 id="/profile/merge/custom" class="toc3 name">custom</h3>
+                              <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-profile/merge/custom">(global definition)</a></p>
+                              <p class="occurrence">[0 or 1]</p>
+                              <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom">Switch to XML</a></div>
+                              <p class="formal-name">Custom grouping</p>
+                           </div>
+                           <div class="body">
+                              <p class="description"><span class="usa-tag">Description</span> A Custom element frames a structure for embedding represented controls in resolution.</p>
+                              <div class="remarks-group usa-prose">
+                                 <details open="open">
+                                    <summary class="subhead">Remarks</summary>
+                                    <div class="remarks">
+                                       <p>The <code>custom</code> element represents a custom arrangement or organization of controls in the resolution
+                                          of a catalog.</p>
+                                       <p>While the <code>as-is</code> element provides for a restitution of a control set's organization (in one or more
+                                          source catalogs), this element permits the definition of an entirely different structure.</p>
                                     </div>
-                                    <details class="properties" open="open">
-                                       <summary>Properties (8)</summary>
-                                       <div class="model-entry definition assembly">
-                                          <div class="instance-header">
-                                             <h5 id="/profile/merge/custom/groups/id" class="toc5 name">id</h5>
-                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
-                                             <p class="occurrence">[0 or 1]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/@id">Switch to XML</a></div>
-                                             <p class="formal-name">Group Identifier</p>
-                                          </div>
-                                          <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> A unique identifier for a specific group instance that can be used to reference the
-                                                group within this and in other OSCAL documents. This identifier's uniqueness is document
-                                                scoped and is intended to be consistent for the same group across minor revisions
-                                                of the document.</p>
-                                          </div>
+                                 </details>
+                              </div>
+                              <details class="properties" open="open">
+                                 <summary>Properties (2)</summary>
+                                 <div class="model-entry definition assembly">
+                                    <div class="instance-header">
+                                       <h4 id="/profile/merge/custom/groups" class="toc4 name">groups</h4>
+                                       <p class="type">array<br /></p>
+                                       <p class="occurrence">[0 or 1]</p>
+                                       <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group">Switch to XML</a></div>
+                                    </div>
+                                    <div class="array-header">
+                                       <p class="array-member">(array member)</p>
+                                       <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-profile/custom/groups">(global definition)</a></p>
+                                       <p class="occurrence">[1 to ∞]</p>
+                                       <p class="formal-name">Control group</p>
+                                    </div>
+                                    <div class="body">
+                                       <p class="description"><span class="usa-tag">Description</span> A group of (selected) controls or of groups of controls</p>
+                                       <div class="remarks-group usa-prose">
+                                          <details open="open">
+                                             <summary class="subhead">Remarks</summary>
+                                             <div class="remarks">
+                                                <p>This construct mirrors the same construct that exists in an OSCAL catalog.</p>
+                                             </div>
+                                          </details>
                                        </div>
-                                       <div class="model-entry definition assembly">
-                                          <div class="instance-header">
-                                             <h5 id="/profile/merge/custom/groups/class" class="toc5 name">class</h5>
-                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
-                                             <p class="occurrence">[0 or 1]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/@class">Switch to XML</a></div>
-                                             <p class="formal-name">Group Class</p>
-                                          </div>
-                                          <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> A textual label that provides a sub-type or characterization of the group.</p>
-                                             <div class="remarks-group usa-prose">
-                                                <details open="open">
-                                                   <summary class="subhead">Remarks</summary>
-                                                   <div class="remarks">
-                                                      <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                         a specific <code>class</code> value.</p>
-                                                      <p>A <code>class</code> can also be used in an OSCAL profile as a means to target an alteration to control
-                                                         content.</p>
-                                                   </div>
-                                                   <div class="remarks">
-                                                      <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                         a specific <code>class</code> value.</p>
-                                                      <p>A <code>class</code> can also be used in an OSCAL profile as a means to target an alteration to control
-                                                         content.</p>
-                                                   </div>
-                                                </details>
+                                       <details class="properties" open="open">
+                                          <summary>Properties (8)</summary>
+                                          <div class="model-entry definition assembly">
+                                             <div class="instance-header">
+                                                <h5 id="/profile/merge/custom/groups/id" class="toc5 name">id</h5>
+                                                <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                <p class="occurrence">[0 or 1]</p>
+                                                <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/@id">Switch to XML</a></div>
+                                                <p class="formal-name">Group Identifier</p>
+                                             </div>
+                                             <div class="body">
+                                                <p class="description"><span class="usa-tag">Description</span> A unique identifier for a specific group instance that can be used to reference the
+                                                   group within this and in other OSCAL documents. This identifier's uniqueness is document
+                                                   scoped and is intended to be consistent for the same group across minor revisions
+                                                   of the document.</p>
                                              </div>
                                           </div>
-                                       </div>
-                                       <div class="model-entry definition assembly">
-                                          <div class="instance-header">
-                                             <h5 id="/profile/merge/custom/groups/title" class="toc5 name">title</h5>
-                                             <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
-                                             <p class="occurrence">[1]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/title">Switch to XML</a></div>
-                                             <p class="formal-name">Group Title</p>
-                                          </div>
-                                          <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> A name given to the group, which may be used by a tool for display and navigation.</p>
-                                          </div>
-                                       </div>
-                                       <div class="model-entry definition assembly">
-                                          <div class="instance-header">
-                                             <h5 id="/profile/merge/custom/groups/params" class="toc5 name">params</h5>
-                                             <p class="type">array<br /></p>
-                                             <p class="occurrence">[0 or 1]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/param">Switch to XML</a></div>
-                                          </div>
-                                          <div class="array-header">
-                                             <p class="array-member">(array member)</p>
-                                             <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-profile/group/params">(global definition)</a></p>
-                                             <p class="occurrence">[1 to ∞]</p>
-                                             <p class="formal-name">Parameter</p>
-                                          </div>
-                                          <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> Parameters provide a mechanism for the dynamic assignment of value(s) in a control.</p>
-                                             <div class="remarks-group usa-prose">
-                                                <details open="open">
-                                                   <summary class="subhead">Remarks</summary>
-                                                   <div class="remarks">
-                                                      <p>In a catalog, a parameter is typically used as a placeholder for the future assignment
-                                                         of a parameter value, although the OSCAL model allows for the direct assignment of
-                                                         a value if desired by the control author. The <code>value</code> may be optionally used to specify one or more values. If no value is provided, then
-                                                         it is expected that the value will be provided at the Profile or Implementation layer.</p>
-                                                      <p>A parameter can include a variety of metadata options that support the future solicitation
-                                                         of one or more values. A <code>label</code> provides a textual placeholder that can be used in a tool to solicit parameter value
-                                                         input, or to display in catalog documentation. The <code>desc</code> provides a short description of what the parameter is used for, which can be used
-                                                         in tooling to help a user understand how to use the parameter. A <code>constraint</code> can be used to provide criteria for the allowed values. A <code>guideline</code> provides a recommendation for the use of a parameter.</p>
-                                                   </div>
-                                                </details>
+                                          <div class="model-entry definition assembly">
+                                             <div class="instance-header">
+                                                <h5 id="/profile/merge/custom/groups/class" class="toc5 name">class</h5>
+                                                <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                <p class="occurrence">[0 or 1]</p>
+                                                <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/@class">Switch to XML</a></div>
+                                                <p class="formal-name">Group Class</p>
                                              </div>
-                                             <details class="properties" open="open">
-                                                <summary>Properties (11)</summary>
-                                                <div class="model-entry definition assembly">
-                                                   <div class="instance-header">
-                                                      <h6 id="/profile/merge/custom/groups/params/id" class="toc6 name">id</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#token">token</a></p>
-                                                      <p class="occurrence">[1]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/param/@id">Switch to XML</a></div>
-                                                      <p class="formal-name">Parameter Identifier</p>
-                                                   </div>
-                                                   <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> A unique identifier for a specific parameter instance. This identifier's uniqueness
-                                                         is document scoped and is intended to be consistent for the same parameter across
-                                                         minor revisions of the document.</p>
-                                                   </div>
+                                             <div class="body">
+                                                <p class="description"><span class="usa-tag">Description</span> A textual label that provides a sub-type or characterization of the group.</p>
+                                                <div class="remarks-group usa-prose">
+                                                   <details open="open">
+                                                      <summary class="subhead">Remarks</summary>
+                                                      <div class="remarks">
+                                                         <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
+                                                            a specific <code>class</code> value.</p>
+                                                         <p>A <code>class</code> can also be used in an OSCAL profile as a means to target an alteration to control
+                                                            content.</p>
+                                                      </div>
+                                                      <div class="remarks">
+                                                         <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
+                                                            a specific <code>class</code> value.</p>
+                                                         <p>A <code>class</code> can also be used in an OSCAL profile as a means to target an alteration to control
+                                                            content.</p>
+                                                      </div>
+                                                   </details>
                                                 </div>
-                                                <div class="model-entry definition assembly">
-                                                   <div class="instance-header">
-                                                      <h6 id="/profile/merge/custom/groups/params/class" class="toc6 name">class</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#token">token</a></p>
-                                                      <p class="occurrence">[0 or 1]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/param/@class">Switch to XML</a></div>
-                                                      <p class="formal-name">Parameter Class</p>
+                                             </div>
+                                          </div>
+                                          <div class="model-entry definition assembly">
+                                             <div class="instance-header">
+                                                <h5 id="/profile/merge/custom/groups/title" class="toc5 name">title</h5>
+                                                <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                                <p class="occurrence">[1]</p>
+                                                <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/title">Switch to XML</a></div>
+                                                <p class="formal-name">Group Title</p>
+                                             </div>
+                                             <div class="body">
+                                                <p class="description"><span class="usa-tag">Description</span> A name given to the group, which may be used by a tool for display and navigation.</p>
+                                             </div>
+                                          </div>
+                                          <div class="model-entry definition assembly">
+                                             <div class="instance-header">
+                                                <h5 id="/profile/merge/custom/groups/params" class="toc5 name">params</h5>
+                                                <p class="type">array<br /></p>
+                                                <p class="occurrence">[0 or 1]</p>
+                                                <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/param">Switch to XML</a></div>
+                                             </div>
+                                             <div class="array-header">
+                                                <p class="array-member">(array member)</p>
+                                                <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-profile/group/params">(global definition)</a></p>
+                                                <p class="occurrence">[1 to ∞]</p>
+                                                <p class="formal-name">Parameter</p>
+                                             </div>
+                                             <div class="body">
+                                                <p class="description"><span class="usa-tag">Description</span> Parameters provide a mechanism for the dynamic assignment of value(s) in a control.</p>
+                                                <div class="remarks-group usa-prose">
+                                                   <details open="open">
+                                                      <summary class="subhead">Remarks</summary>
+                                                      <div class="remarks">
+                                                         <p>In a catalog, a parameter is typically used as a placeholder for the future assignment
+                                                            of a parameter value, although the OSCAL model allows for the direct assignment of
+                                                            a value if desired by the control author. The <code>value</code> may be optionally used to specify one or more values. If no value is provided, then
+                                                            it is expected that the value will be provided at the Profile or Implementation layer.</p>
+                                                         <p>A parameter can include a variety of metadata options that support the future solicitation
+                                                            of one or more values. A <code>label</code> provides a textual placeholder that can be used in a tool to solicit parameter value
+                                                            input, or to display in catalog documentation. The <code>desc</code> provides a short description of what the parameter is used for, which can be used
+                                                            in tooling to help a user understand how to use the parameter. A <code>constraint</code> can be used to provide criteria for the allowed values. A <code>guideline</code> provides a recommendation for the use of a parameter.</p>
+                                                      </div>
+                                                   </details>
+                                                </div>
+                                                <details class="properties" open="open">
+                                                   <summary>Properties (11)</summary>
+                                                   <div class="model-entry definition assembly">
+                                                      <div class="instance-header">
+                                                         <h6 id="/profile/merge/custom/groups/params/id" class="toc6 name">id</h6>
+                                                         <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                         <p class="occurrence">[1]</p>
+                                                         <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/param/@id">Switch to XML</a></div>
+                                                         <p class="formal-name">Parameter Identifier</p>
+                                                      </div>
+                                                      <div class="body">
+                                                         <p class="description"><span class="usa-tag">Description</span> A unique identifier for a specific parameter instance. This identifier's uniqueness
+                                                            is document scoped and is intended to be consistent for the same parameter across
+                                                            minor revisions of the document.</p>
+                                                      </div>
                                                    </div>
-                                                   <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> A textual label that provides a characterization of the parameter.</p>
-                                                      <div class="remarks-group usa-prose">
-                                                         <details open="open">
-                                                            <summary class="subhead">Remarks</summary>
-                                                            <div class="remarks">
-                                                               <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                                  a specific <code>class</code> value.</p>
+                                                   <div class="model-entry definition assembly">
+                                                      <div class="instance-header">
+                                                         <h6 id="/profile/merge/custom/groups/params/class" class="toc6 name">class</h6>
+                                                         <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                         <p class="occurrence">[0 or 1]</p>
+                                                         <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/param/@class">Switch to XML</a></div>
+                                                         <p class="formal-name">Parameter Class</p>
+                                                      </div>
+                                                      <div class="body">
+                                                         <p class="description"><span class="usa-tag">Description</span> A textual label that provides a characterization of the parameter.</p>
+                                                         <div class="remarks-group usa-prose">
+                                                            <details open="open">
+                                                               <summary class="subhead">Remarks</summary>
+                                                               <div class="remarks">
+                                                                  <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
+                                                                     a specific <code>class</code> value.</p>
+                                                               </div>
+                                                               <div class="remarks">
+                                                                  <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
+                                                                     a specific <code>class</code> value.</p>
+                                                               </div>
+                                                            </details>
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                   <div class="model-entry definition assembly">
+                                                      <div class="instance-header">
+                                                         <h6 id="/profile/merge/custom/groups/params/depends-on" class="toc6 name">depends-on</h6>
+                                                         <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                         <p class="occurrence">[0 or 1]</p>
+                                                         <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/param/@depends-on">Switch to XML</a></div>
+                                                         <p class="formal-name">Depends on</p>
+                                                      </div>
+                                                      <div class="body">
+                                                         <p class="description"><span class="usa-tag">Description</span> Another parameter invoking this one</p>
+                                                      </div>
+                                                   </div>
+                                                   <div class="model-entry definition assembly">
+                                                      <div class="instance-header">
+                                                         <h6 id="/profile/merge/custom/groups/params/props" class="toc6 name">props</h6>
+                                                         <p class="type">array<br /></p>
+                                                         <p class="occurrence">[0 or 1]</p>
+                                                         <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/param/prop">Switch to XML</a></div>
+                                                      </div>
+                                                      <div class="array-header">
+                                                         <p class="array-member">(array member)</p>
+                                                         <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-catalog-common/parameter/props">(global definition)</a></p>
+                                                         <p class="occurrence">[1 to ∞]</p>
+                                                         <p class="formal-name">Property</p>
+                                                      </div>
+                                                      <div class="body">
+                                                         <p class="description"><span class="usa-tag">Description</span> An attribute, characteristic, or quality of the containing object expressed as a
+                                                            namespace qualified name/value pair. The value of a property is a simple scalar value,
+                                                            which may be expressed as a list of values.</p>
+                                                         <div class="remarks-group usa-prose">
+                                                            <details open="open">
+                                                               <summary class="subhead">Remarks</summary>
+                                                               <div class="remarks">
+                                                                  <p>Properties permit the deployment and management of arbitrary controlled values, within
+                                                                     OSCAL objects. A property can be included for any purpose useful to an application
+                                                                     or implementation. Typically, properties will be used to sort, filter, select, order,
+                                                                     and arrange OSCAL content objects, to relate OSCAL objects to one another, or to associate
+                                                                     an OSCAL object to class hierarchies, taxonomies, or external authorities. Thus, the
+                                                                     lexical composition of properties may be constrained by external processes to ensure
+                                                                     consistency.</p>
+                                                                  <p>Property allows for associated remarks that describe why the specific property value
+                                                                     was applied to the containing object, or the significance of the value in the context
+                                                                     of the containing object.</p>
+                                                               </div>
+                                                            </details>
+                                                         </div>
+                                                         <details class="properties" open="open">
+                                                            <summary>Properties (6)</summary>
+                                                            <div class="model-entry definition assembly">
+                                                               <div class="instance-header">
+                                                                  <p id="/profile/merge/custom/groups/params/props/name" class="toc7 name">name</p>
+                                                                  <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                                  <p class="occurrence">[1]</p>
+                                                                  <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/param/prop/@name">Switch to XML</a></div>
+                                                                  <p class="formal-name">Property Name</p>
+                                                               </div>
+                                                               <div class="body">
+                                                                  <p class="description"><span class="usa-tag">Description</span> A textual label that uniquely identifies a specific attribute, characteristic, or
+                                                                     quality of the property's containing object.</p>
+                                                                  <details class="constraints" open="open">
+                                                                     <summary>Constraint (1)</summary>
+                                                                     <div class="constraint">
+                                                                        <p><span class="usa-tag">allowed value</span></p>
+                                                                        <p>The value <b>may be locally defined</b>, or the following:</p>
+                                                                        <ul>
+                                                                           
+                                                                           <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                                                              An optional class can be used to define the specific marking system used for the associated
+                                                                              value.</li>
+                                                                           </ul>
+                                                                     </div>
+                                                                  </details>
+                                                               </div>
                                                             </div>
-                                                            <div class="remarks">
-                                                               <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                                  a specific <code>class</code> value.</p>
+                                                            <div class="model-entry definition assembly">
+                                                               <div class="instance-header">
+                                                                  <p id="/profile/merge/custom/groups/params/props/uuid" class="toc7 name">uuid</p>
+                                                                  <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                                                  <p class="occurrence">[0 or 1]</p>
+                                                                  <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/param/prop/@uuid">Switch to XML</a></div>
+                                                                  <p class="formal-name">Property Universally Unique Identifier</p>
+                                                               </div>
+                                                               <div class="body">
+                                                                  <p class="description"><span class="usa-tag">Description</span> A unique identifier that can be used to reference this property elsewhere in an OSCAL
+                                                                     document. A UUID should be consistently used for a given location across revisions
+                                                                     of the document.</p>
+                                                               </div>
+                                                            </div>
+                                                            <div class="model-entry definition assembly">
+                                                               <div class="instance-header">
+                                                                  <p id="/profile/merge/custom/groups/params/props/ns" class="toc7 name">ns</p>
+                                                                  <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
+                                                                  <p class="occurrence">[0 or 1]</p>
+                                                                  <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/param/prop/@ns">Switch to XML</a></div>
+                                                                  <p class="formal-name">Property Namespace</p>
+                                                               </div>
+                                                               <div class="body">
+                                                                  <p class="description"><span class="usa-tag">Description</span> A namespace qualifying the property's name. This allows different organizations to
+                                                                     associate distinct semantics with the same name.</p>
+                                                                  <div class="remarks-group usa-prose">
+                                                                     <details open="open">
+                                                                        <summary class="subhead">Remarks</summary>
+                                                                        <div class="remarks">
+                                                                           <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
+                                                                              names and associated values used in a property. This allows the semantics associated
+                                                                              with a given name/value pair to be defined on an organization-by-organization basis.</p>
+                                                                           <p>An organization MUST use a URI that they have control over. e.g., a domain registered
+                                                                              to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
+                                                                           <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
+                                                                        </div>
+                                                                        <div class="remarks">
+                                                                           <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
+                                                                              names and associated values used in a property. This allows the semantics associated
+                                                                              with a given name/value pair to be defined on an organization-by-organization basis.</p>
+                                                                           <p>An organization MUST use a URI that they have control over. e.g., a domain registered
+                                                                              to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
+                                                                           <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
+                                                                        </div>
+                                                                     </details>
+                                                                  </div>
+                                                               </div>
+                                                            </div>
+                                                            <div class="model-entry definition assembly">
+                                                               <div class="instance-header">
+                                                                  <p id="/profile/merge/custom/groups/params/props/value" class="toc7 name">value</p>
+                                                                  <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                                  <p class="occurrence">[1]</p>
+                                                                  <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/param/prop/@value">Switch to XML</a></div>
+                                                                  <p class="formal-name">Property Value</p>
+                                                               </div>
+                                                               <div class="body">
+                                                                  <p class="description"><span class="usa-tag">Description</span> Indicates the value of the attribute, characteristic, or quality.</p>
+                                                               </div>
+                                                            </div>
+                                                            <div class="model-entry definition assembly">
+                                                               <div class="instance-header">
+                                                                  <p id="/profile/merge/custom/groups/params/props/class" class="toc7 name">class</p>
+                                                                  <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                                  <p class="occurrence">[0 or 1]</p>
+                                                                  <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/param/prop/@class">Switch to XML</a></div>
+                                                                  <p class="formal-name">Property Class</p>
+                                                               </div>
+                                                               <div class="body">
+                                                                  <p class="description"><span class="usa-tag">Description</span> A textual label that provides a sub-type or characterization of the property's <code>name</code>. This can be used to further distinguish or discriminate between the semantics of
+                                                                     multiple properties of the same object with the same <code>name</code> and <code>ns</code>. </p>
+                                                                  <div class="remarks-group usa-prose">
+                                                                     <details open="open">
+                                                                        <summary class="subhead">Remarks</summary>
+                                                                        <div class="remarks">
+                                                                           <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
+                                                                              a specific <code>class</code> value.</p>
+                                                                        </div>
+                                                                        <div class="remarks">
+                                                                           <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
+                                                                              a specific <code>class</code> value.</p>
+                                                                        </div>
+                                                                     </details>
+                                                                  </div>
+                                                               </div>
+                                                            </div>
+                                                            <div class="model-entry definition assembly">
+                                                               <div class="instance-header">
+                                                                  <p id="/profile/merge/custom/groups/params/props/remarks" class="toc7 name">remarks</p>
+                                                                  <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                                  <p class="occurrence">[0 or 1]</p>
+                                                                  <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/param/prop/remarks">Switch to XML</a></div>
+                                                                  <p class="formal-name">Remarks</p>
+                                                               </div>
+                                                               <div class="body">
+                                                                  <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                                               </div>
                                                             </div>
                                                          </details>
                                                       </div>
                                                    </div>
-                                                </div>
-                                                <div class="model-entry definition assembly">
-                                                   <div class="instance-header">
-                                                      <h6 id="/profile/merge/custom/groups/params/depends-on" class="toc6 name">depends-on</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#token">token</a></p>
-                                                      <p class="occurrence">[0 or 1]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/param/@depends-on">Switch to XML</a></div>
-                                                      <p class="formal-name">Depends on</p>
-                                                   </div>
-                                                   <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> Another parameter invoking this one</p>
-                                                   </div>
-                                                </div>
-                                                <div class="model-entry definition assembly">
-                                                   <div class="instance-header">
-                                                      <h6 id="/profile/merge/custom/groups/params/props" class="toc6 name">props</h6>
-                                                      <p class="type">array<br /></p>
-                                                      <p class="occurrence">[0 or 1]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/param/prop">Switch to XML</a></div>
-                                                   </div>
-                                                   <div class="array-header">
-                                                      <p class="array-member">(array member)</p>
-                                                      <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-catalog-common/parameter/props">(global definition)</a></p>
-                                                      <p class="occurrence">[1 to ∞]</p>
-                                                      <p class="formal-name">Property</p>
-                                                   </div>
-                                                   <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> An attribute, characteristic, or quality of the containing object expressed as a
-                                                         namespace qualified name/value pair. The value of a property is a simple scalar value,
-                                                         which may be expressed as a list of values.</p>
-                                                      <div class="remarks-group usa-prose">
-                                                         <details open="open">
-                                                            <summary class="subhead">Remarks</summary>
-                                                            <div class="remarks">
-                                                               <p>Properties permit the deployment and management of arbitrary controlled values, within
-                                                                  OSCAL objects. A property can be included for any purpose useful to an application
-                                                                  or implementation. Typically, properties will be used to sort, filter, select, order,
-                                                                  and arrange OSCAL content objects, to relate OSCAL objects to one another, or to associate
-                                                                  an OSCAL object to class hierarchies, taxonomies, or external authorities. Thus, the
-                                                                  lexical composition of properties may be constrained by external processes to ensure
-                                                                  consistency.</p>
-                                                               <p>Property allows for associated remarks that describe why the specific property value
-                                                                  was applied to the containing object, or the significance of the value in the context
-                                                                  of the containing object.</p>
+                                                   <div class="model-entry definition assembly">
+                                                      <div class="instance-header">
+                                                         <h6 id="/profile/merge/custom/groups/params/links" class="toc6 name">links</h6>
+                                                         <p class="type">array<br /></p>
+                                                         <p class="occurrence">[0 or 1]</p>
+                                                         <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/param/link">Switch to XML</a></div>
+                                                      </div>
+                                                      <div class="array-header">
+                                                         <p class="array-member">(array member)</p>
+                                                         <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-catalog-common/parameter/links">(global definition)</a></p>
+                                                         <p class="occurrence">[1 to ∞]</p>
+                                                         <p class="formal-name">Link</p>
+                                                      </div>
+                                                      <div class="body">
+                                                         <p class="description"><span class="usa-tag">Description</span> A reference to a local or remote resource</p>
+                                                         <div class="remarks-group usa-prose">
+                                                            <details open="open">
+                                                               <summary class="subhead">Remarks</summary>
+                                                               <div class="remarks">
+                                                                  <p>To provide a cryptographic hash for a remote target resource, a local reference to
+                                                                     a back matter <code>resource</code> is needed. The resource allows one or more hash values to be provided using the <code>rlink/hash</code> object.</p>
+                                                                  <p>The OSCAL <code>link</code> is a roughly based on the HTML <a href="https://www.w3.org/TR/html401/struct/links.html#edef-LINK">link element</a>. </p>
+                                                               </div>
+                                                            </details>
+                                                         </div>
+                                                         <details class="constraints" open="open">
+                                                            <summary>Constraints (3)</summary>
+                                                            <div class="constraint">
+                                                               <p><span class="usa-tag">matches</span>  for <code class="path">@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
+                                                            </div>
+                                                            <div class="constraint">
+                                                               <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-back-matter-resource</code> using a key constructed of key field(s) <code>@href</code></p>
+                                                            </div>
+                                                            <div class="constraint">
+                                                               <p><span class="usa-tag">matches</span>  for <code class="path">@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
+                                                            </div>
+                                                         </details>
+                                                         <details class="properties" open="open">
+                                                            <summary>Properties (4)</summary>
+                                                            <div class="model-entry definition assembly">
+                                                               <div class="instance-header">
+                                                                  <p id="/profile/merge/custom/groups/params/links/href" class="toc7 name">href</p>
+                                                                  <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
+                                                                  <p class="occurrence">[1]</p>
+                                                                  <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/param/link/@href">Switch to XML</a></div>
+                                                                  <p class="formal-name">Hypertext Reference</p>
+                                                               </div>
+                                                               <div class="body">
+                                                                  <p class="description"><span class="usa-tag">Description</span> A resolvable URL reference to a resource.</p>
+                                                                  <div class="remarks-group usa-prose">
+                                                                     <details open="open">
+                                                                        <summary class="subhead">Remarks</summary>
+                                                                        <div class="remarks">
+                                                                           <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
+                                                                              that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
+                                                                           <p>If a local reference using a fragment is used, this will be indicated by a fragment
+                                                                              "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
+                                                                           <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
+                                                                              resource. A relative URI will be resolved relative to the location of the document
+                                                                              containing the link.</p>
+                                                                        </div>
+                                                                        <div class="remarks">
+                                                                           <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
+                                                                              that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
+                                                                           <p>If a local reference using a fragment is used, this will be indicated by a fragment
+                                                                              "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
+                                                                           <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
+                                                                              resource. A relative URI will be resolved relative to the location of the document
+                                                                              containing the link.</p>
+                                                                        </div>
+                                                                     </details>
+                                                                  </div>
+                                                               </div>
+                                                            </div>
+                                                            <div class="model-entry definition assembly">
+                                                               <div class="instance-header">
+                                                                  <p id="/profile/merge/custom/groups/params/links/rel" class="toc7 name">rel</p>
+                                                                  <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                                  <p class="occurrence">[0 or 1]</p>
+                                                                  <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/param/link/@rel">Switch to XML</a></div>
+                                                                  <p class="formal-name">Relation</p>
+                                                               </div>
+                                                               <div class="body">
+                                                                  <p class="description"><span class="usa-tag">Description</span> Describes the type of relationship provided by the link. This can be an indicator
+                                                                     of the link's purpose.</p>
+                                                                  <details class="constraints" open="open">
+                                                                     <summary>Constraint (1)</summary>
+                                                                     <div class="constraint">
+                                                                        <p><span class="usa-tag">allowed value</span></p>
+                                                                        <p>The value <b>may be locally defined</b>, or the following:</p>
+                                                                        <ul>
+                                                                           
+                                                                           <li><strong>reference</strong>: Reference</li>
+                                                                           </ul>
+                                                                     </div>
+                                                                  </details>
+                                                               </div>
+                                                            </div>
+                                                            <div class="model-entry definition assembly">
+                                                               <div class="instance-header">
+                                                                  <p id="/profile/merge/custom/groups/params/links/media-type" class="toc7 name">media-type</p>
+                                                                  <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                                  <p class="occurrence">[0 or 1]</p>
+                                                                  <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/param/link/@media-type">Switch to XML</a></div>
+                                                                  <p class="formal-name">Media Type</p>
+                                                               </div>
+                                                               <div class="body">
+                                                                  <p class="description"><span class="usa-tag">Description</span> Specifies a media type as defined by the Internet Assigned Numbers Authority (IANA)
+                                                                     <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">Media Types Registry</a>. </p>
+                                                                  <div class="remarks-group usa-prose">
+                                                                     <details open="open">
+                                                                        <summary class="subhead">Remarks</summary>
+                                                                        <div class="remarks">
+                                                                           <p>The <code>media-type</code> provides a hint about the content model of the referenced resource. A valid entry
+                                                                              from the <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">IANA Media Types registry</a> SHOULD be used.</p>
+                                                                        </div>
+                                                                     </details>
+                                                                  </div>
+                                                               </div>
+                                                            </div>
+                                                            <div class="model-entry definition assembly">
+                                                               <div class="instance-header">
+                                                                  <p id="/profile/merge/custom/groups/params/links/text" class="toc7 name">text</p>
+                                                                  <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                                                  <p class="occurrence">[0 or 1]</p>
+                                                                  <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/param/link/text">Switch to XML</a></div>
+                                                                  <p class="formal-name">Link Text</p>
+                                                               </div>
+                                                               <div class="body">
+                                                                  <p class="description"><span class="usa-tag">Description</span> A textual label to associate with the link, which may be used for presentation in
+                                                                     a tool.</p>
+                                                               </div>
                                                             </div>
                                                          </details>
                                                       </div>
-                                                      <details class="properties" open="open">
-                                                         <summary>Properties (6)</summary>
-                                                         <div class="model-entry definition assembly">
-                                                            <div class="instance-header">
-                                                               <p id="/profile/merge/custom/groups/params/props/name" class="toc7 name">name</p>
-                                                               <p class="type"><a href="/reference/datatypes/#token">token</a></p>
-                                                               <p class="occurrence">[1]</p>
-                                                               <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/param/prop/@name">Switch to XML</a></div>
-                                                               <p class="formal-name">Property Name</p>
+                                                   </div>
+                                                   <div class="model-entry definition assembly">
+                                                      <div class="instance-header">
+                                                         <h6 id="/profile/merge/custom/groups/params/label" class="toc6 name">label</h6>
+                                                         <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                                         <p class="occurrence">[0 or 1]</p>
+                                                         <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/param/label">Switch to XML</a></div>
+                                                         <p class="formal-name">Parameter Label</p>
+                                                      </div>
+                                                      <div class="body">
+                                                         <p class="description"><span class="usa-tag">Description</span> A short, placeholder name for the parameter, which can be used as a substitute for
+                                                            a <code>value</code> if no value is assigned.</p>
+                                                         <div class="remarks-group usa-prose">
+                                                            <details open="open">
+                                                               <summary class="subhead">Remarks</summary>
+                                                               <div class="remarks">
+                                                                  <p>The label value should be suitable for inline display in a rendered catalog.</p>
+                                                               </div>
+                                                               <div class="remarks">
+                                                                  <p>The label value should be suitable for inline display in a rendered catalog.</p>
+                                                               </div>
+                                                            </details>
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                   <div class="model-entry definition assembly">
+                                                      <div class="instance-header">
+                                                         <h6 id="/profile/merge/custom/groups/params/usage" class="toc6 name">usage</h6>
+                                                         <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                         <p class="occurrence">[0 or 1]</p>
+                                                         <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/param/usage">Switch to XML</a></div>
+                                                         <p class="formal-name">Parameter Usage Description</p>
+                                                      </div>
+                                                      <div class="body">
+                                                         <p class="description"><span class="usa-tag">Description</span> Describes the purpose and use of a parameter</p>
+                                                      </div>
+                                                   </div>
+                                                   <div class="model-entry definition assembly">
+                                                      <div class="instance-header">
+                                                         <h6 id="/profile/merge/custom/groups/params/constraints" class="toc6 name">constraints</h6>
+                                                         <p class="type">array<br /></p>
+                                                         <p class="occurrence">[0 or 1]</p>
+                                                         <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/param/constraint">Switch to XML</a></div>
+                                                      </div>
+                                                      <div class="array-header">
+                                                         <p class="array-member">(array member)</p>
+                                                         <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-catalog-common/parameter/constraints">(global definition)</a></p>
+                                                         <p class="occurrence">[1 to ∞]</p>
+                                                         <p class="formal-name">Constraint</p>
+                                                      </div>
+                                                      <div class="body">
+                                                         <p class="description"><span class="usa-tag">Description</span> A formal or informal expression of a constraint or test</p>
+                                                         <details class="properties" open="open">
+                                                            <summary>Properties (2)</summary>
+                                                            <div class="model-entry definition assembly">
+                                                               <div class="instance-header">
+                                                                  <p id="/profile/merge/custom/groups/params/constraints/description" class="toc7 name">description</p>
+                                                                  <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                                  <p class="occurrence">[0 or 1]</p>
+                                                                  <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/param/constraint/description">Switch to XML</a></div>
+                                                                  <p class="formal-name">Constraint Description</p>
+                                                               </div>
+                                                               <div class="body">
+                                                                  <p class="description"><span class="usa-tag">Description</span> A textual summary of the constraint to be applied.</p>
+                                                               </div>
                                                             </div>
-                                                            <div class="body">
-                                                               <p class="description"><span class="usa-tag">Description</span> A textual label that uniquely identifies a specific attribute, characteristic, or
-                                                                  quality of the property's containing object.</p>
-                                                               <details class="constraints" open="open">
-                                                                  <summary>Constraint (1)</summary>
-                                                                  <div class="constraint">
-                                                                     <p><span class="usa-tag">allowed value</span></p>
-                                                                     <p>The value <b>may be locally defined</b>, or the following:</p>
-                                                                     <ul>
-                                                                        
-                                                                        <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
-                                                                           An optional class can be used to define the specific marking system used for the associated
-                                                                           value.</li>
-                                                                        </ul>
+                                                            <div class="model-entry definition assembly">
+                                                               <div class="instance-header">
+                                                                  <p id="/profile/merge/custom/groups/params/constraints/tests" class="toc7 name">tests</p>
+                                                                  <p class="type">array<br /></p>
+                                                                  <p class="occurrence">[0 or 1]</p>
+                                                                  <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/param/constraint/test">Switch to XML</a></div>
+                                                               </div>
+                                                               <div class="array-header">
+                                                                  <p class="array-member">(array member)</p>
+                                                                  <p class="type">object<br /></p>
+                                                                  <p class="occurrence">[1 to ∞]</p>
+                                                                  <p class="formal-name">Constraint Test</p>
+                                                               </div>
+                                                               <div class="body">
+                                                                  <p class="description"><span class="usa-tag">Description</span> A test expression which is expected to be evaluated by a tool.</p>
+                                                                  <details class="properties" open="open">
+                                                                     <summary>Properties (2)</summary>
+                                                                     <div class="model-entry definition assembly">
+                                                                        <div class="instance-header">
+                                                                           <p id="/profile/merge/custom/groups/params/constraints/tests/expression" class="toc8 name">expression</p>
+                                                                           <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                                           <p class="occurrence">[1]</p>
+                                                                           <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/param/constraint/test/expression">Switch to XML</a></div>
+                                                                           <p class="formal-name">Constraint test</p>
+                                                                        </div>
+                                                                        <div class="body">
+                                                                           <p class="description"><span class="usa-tag">Description</span> A formal (executable) expression of a constraint</p>
+                                                                        </div>
+                                                                     </div>
+                                                                     <div class="model-entry definition assembly">
+                                                                        <div class="instance-header">
+                                                                           <p id="/profile/merge/custom/groups/params/constraints/tests/remarks" class="toc8 name">remarks</p>
+                                                                           <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                                           <p class="occurrence">[0 or 1]</p>
+                                                                           <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/param/constraint/test/remarks">Switch to XML</a></div>
+                                                                           <p class="formal-name">Remarks</p>
+                                                                        </div>
+                                                                        <div class="body">
+                                                                           <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                                                        </div>
+                                                                     </div>
+                                                                  </details>
+                                                               </div>
+                                                            </div>
+                                                         </details>
+                                                      </div>
+                                                   </div>
+                                                   <div class="model-entry definition assembly">
+                                                      <div class="instance-header">
+                                                         <h6 id="/profile/merge/custom/groups/params/guidelines" class="toc6 name">guidelines</h6>
+                                                         <p class="type">array<br /></p>
+                                                         <p class="occurrence">[0 or 1]</p>
+                                                         <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/param/guideline">Switch to XML</a></div>
+                                                      </div>
+                                                      <div class="array-header">
+                                                         <p class="array-member">(array member)</p>
+                                                         <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-catalog-common/parameter/guidelines">(global definition)</a></p>
+                                                         <p class="occurrence">[1 to ∞]</p>
+                                                         <p class="formal-name">Guideline</p>
+                                                      </div>
+                                                      <div class="body">
+                                                         <p class="description"><span class="usa-tag">Description</span> A prose statement that provides a recommendation for the use of a parameter.</p>
+                                                         <details class="properties" open="open">
+                                                            <summary>Property (1)</summary>
+                                                            <div class="model-entry definition assembly">
+                                                               <div class="instance-header">
+                                                                  <p id="/profile/merge/custom/groups/params/guidelines/prose" class="toc7 name">prose</p>
+                                                                  <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                                  <p class="occurrence">[1]</p>
+                                                                  <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/param/guideline">Switch to XML</a></div>
+                                                                  <p class="formal-name">Guideline Text</p>
+                                                               </div>
+                                                               <div class="body">
+                                                                  <p class="description"><span class="usa-tag">Description</span> Prose permits multiple paragraphs, lists, tables etc.</p>
+                                                               </div>
+                                                            </div>
+                                                         </details>
+                                                      </div>
+                                                   </div>
+                                                   <div class="choice">
+                                                      <p>A choice:</p>
+                                                      <div class="model-entry definition assembly">
+                                                         <div class="instance-header">
+                                                            <h6 id="/profile/merge/custom/groups/params/values" class="toc6 name">values</h6>
+                                                            <p class="type">array<br /></p>
+                                                            <p class="occurrence">[0 or 1]</p>
+                                                            <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/param/value">Switch to XML</a></div>
+                                                         </div>
+                                                         <div class="array-header">
+                                                            <p class="array-member">(array member)</p>
+                                                            <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                            <p class="occurrence">[0 to ∞]</p>
+                                                            <p class="formal-name">Parameter Value</p>
+                                                         </div>
+                                                         <div class="body">
+                                                            <p class="description"><span class="usa-tag">Description</span> A parameter value or set of values.</p>
+                                                            <div class="remarks-group usa-prose">
+                                                               <details open="open">
+                                                                  <summary class="subhead">Remarks</summary>
+                                                                  <div class="remarks in-use">
+                                                                     <p>A set of values provided in a catalog can be redefined at any higher layer of OSCAL
+                                                                        (e.g., Profile).</p>
                                                                   </div>
                                                                </details>
                                                             </div>
                                                          </div>
-                                                         <div class="model-entry definition assembly">
-                                                            <div class="instance-header">
-                                                               <p id="/profile/merge/custom/groups/params/props/uuid" class="toc7 name">uuid</p>
-                                                               <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
-                                                               <p class="occurrence">[0 or 1]</p>
-                                                               <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/param/prop/@uuid">Switch to XML</a></div>
-                                                               <p class="formal-name">Property Universally Unique Identifier</p>
-                                                            </div>
-                                                            <div class="body">
-                                                               <p class="description"><span class="usa-tag">Description</span> A unique identifier that can be used to reference this property elsewhere in an OSCAL
-                                                                  document. A UUID should be consistently used for a given location across revisions
-                                                                  of the document.</p>
-                                                            </div>
-                                                         </div>
-                                                         <div class="model-entry definition assembly">
-                                                            <div class="instance-header">
-                                                               <p id="/profile/merge/custom/groups/params/props/ns" class="toc7 name">ns</p>
-                                                               <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
-                                                               <p class="occurrence">[0 or 1]</p>
-                                                               <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/param/prop/@ns">Switch to XML</a></div>
-                                                               <p class="formal-name">Property Namespace</p>
-                                                            </div>
-                                                            <div class="body">
-                                                               <p class="description"><span class="usa-tag">Description</span> A namespace qualifying the property's name. This allows different organizations to
-                                                                  associate distinct semantics with the same name.</p>
-                                                               <div class="remarks-group usa-prose">
-                                                                  <details open="open">
-                                                                     <summary class="subhead">Remarks</summary>
-                                                                     <div class="remarks">
-                                                                        <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
-                                                                           names and associated values used in a property. This allows the semantics associated
-                                                                           with a given name/value pair to be defined on an organization-by-organization basis.</p>
-                                                                        <p>An organization MUST use a URI that they have control over. e.g., a domain registered
-                                                                           to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
-                                                                        <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
-                                                                     </div>
-                                                                     <div class="remarks">
-                                                                        <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
-                                                                           names and associated values used in a property. This allows the semantics associated
-                                                                           with a given name/value pair to be defined on an organization-by-organization basis.</p>
-                                                                        <p>An organization MUST use a URI that they have control over. e.g., a domain registered
-                                                                           to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
-                                                                        <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
-                                                                     </div>
-                                                                  </details>
-                                                               </div>
-                                                            </div>
-                                                         </div>
-                                                         <div class="model-entry definition assembly">
-                                                            <div class="instance-header">
-                                                               <p id="/profile/merge/custom/groups/params/props/value" class="toc7 name">value</p>
-                                                               <p class="type"><a href="/reference/datatypes/#string">string</a></p>
-                                                               <p class="occurrence">[1]</p>
-                                                               <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/param/prop/@value">Switch to XML</a></div>
-                                                               <p class="formal-name">Property Value</p>
-                                                            </div>
-                                                            <div class="body">
-                                                               <p class="description"><span class="usa-tag">Description</span> Indicates the value of the attribute, characteristic, or quality.</p>
-                                                            </div>
-                                                         </div>
-                                                         <div class="model-entry definition assembly">
-                                                            <div class="instance-header">
-                                                               <p id="/profile/merge/custom/groups/params/props/class" class="toc7 name">class</p>
-                                                               <p class="type"><a href="/reference/datatypes/#token">token</a></p>
-                                                               <p class="occurrence">[0 or 1]</p>
-                                                               <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/param/prop/@class">Switch to XML</a></div>
-                                                               <p class="formal-name">Property Class</p>
-                                                            </div>
-                                                            <div class="body">
-                                                               <p class="description"><span class="usa-tag">Description</span> A textual label that provides a sub-type or characterization of the property's <code>name</code>. This can be used to further distinguish or discriminate between the semantics of
-                                                                  multiple properties of the same object with the same <code>name</code> and <code>ns</code>. </p>
-                                                               <div class="remarks-group usa-prose">
-                                                                  <details open="open">
-                                                                     <summary class="subhead">Remarks</summary>
-                                                                     <div class="remarks">
-                                                                        <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                                           a specific <code>class</code> value.</p>
-                                                                     </div>
-                                                                     <div class="remarks">
-                                                                        <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                                           a specific <code>class</code> value.</p>
-                                                                     </div>
-                                                                  </details>
-                                                               </div>
-                                                            </div>
-                                                         </div>
-                                                         <div class="model-entry definition assembly">
-                                                            <div class="instance-header">
-                                                               <p id="/profile/merge/custom/groups/params/props/remarks" class="toc7 name">remarks</p>
-                                                               <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
-                                                               <p class="occurrence">[0 or 1]</p>
-                                                               <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/param/prop/remarks">Switch to XML</a></div>
-                                                               <p class="formal-name">Remarks</p>
-                                                            </div>
-                                                            <div class="body">
-                                                               <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
-                                                            </div>
-                                                         </div>
-                                                      </details>
-                                                   </div>
-                                                </div>
-                                                <div class="model-entry definition assembly">
-                                                   <div class="instance-header">
-                                                      <h6 id="/profile/merge/custom/groups/params/links" class="toc6 name">links</h6>
-                                                      <p class="type">array<br /></p>
-                                                      <p class="occurrence">[0 or 1]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/param/link">Switch to XML</a></div>
-                                                   </div>
-                                                   <div class="array-header">
-                                                      <p class="array-member">(array member)</p>
-                                                      <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-catalog-common/parameter/links">(global definition)</a></p>
-                                                      <p class="occurrence">[1 to ∞]</p>
-                                                      <p class="formal-name">Link</p>
-                                                   </div>
-                                                   <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> A reference to a local or remote resource</p>
-                                                      <div class="remarks-group usa-prose">
-                                                         <details open="open">
-                                                            <summary class="subhead">Remarks</summary>
-                                                            <div class="remarks">
-                                                               <p>To provide a cryptographic hash for a remote target resource, a local reference to
-                                                                  a back matter <code>resource</code> is needed. The resource allows one or more hash values to be provided using the <code>rlink/hash</code> object.</p>
-                                                               <p>The OSCAL <code>link</code> is a roughly based on the HTML <a href="https://www.w3.org/TR/html401/struct/links.html#edef-LINK">link element</a>. </p>
-                                                            </div>
-                                                         </details>
                                                       </div>
-                                                      <details class="constraints" open="open">
-                                                         <summary>Constraints (3)</summary>
-                                                         <div class="constraint">
-                                                            <p><span class="usa-tag">matches</span>  for <code class="path">@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
+                                                      <div class="model-entry definition assembly">
+                                                         <div class="instance-header">
+                                                            <h6 id="/profile/merge/custom/groups/params/select" class="toc6 name">select</h6>
+                                                            <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-catalog-common/parameter/select">(global definition)</a></p>
+                                                            <p class="occurrence">[0 or 1]</p>
+                                                            <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/param/select">Switch to XML</a></div>
+                                                            <p class="formal-name">Selection</p>
                                                          </div>
-                                                         <div class="constraint">
-                                                            <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-back-matter-resource</code> using a key constructed of key field(s) <code>@href</code></p>
-                                                         </div>
-                                                         <div class="constraint">
-                                                            <p><span class="usa-tag">matches</span>  for <code class="path">@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
-                                                         </div>
-                                                      </details>
-                                                      <details class="properties" open="open">
-                                                         <summary>Properties (4)</summary>
-                                                         <div class="model-entry definition assembly">
-                                                            <div class="instance-header">
-                                                               <p id="/profile/merge/custom/groups/params/links/href" class="toc7 name">href</p>
-                                                               <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
-                                                               <p class="occurrence">[1]</p>
-                                                               <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/param/link/@href">Switch to XML</a></div>
-                                                               <p class="formal-name">Hypertext Reference</p>
-                                                            </div>
-                                                            <div class="body">
-                                                               <p class="description"><span class="usa-tag">Description</span> A resolvable URL reference to a resource.</p>
-                                                               <div class="remarks-group usa-prose">
-                                                                  <details open="open">
-                                                                     <summary class="subhead">Remarks</summary>
-                                                                     <div class="remarks">
-                                                                        <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
-                                                                           that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
-                                                                        <p>If a local reference using a fragment is used, this will be indicated by a fragment
-                                                                           "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
-                                                                        <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
-                                                                           resource. A relative URI will be resolved relative to the location of the document
-                                                                           containing the link.</p>
-                                                                     </div>
-                                                                     <div class="remarks">
-                                                                        <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
-                                                                           that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
-                                                                        <p>If a local reference using a fragment is used, this will be indicated by a fragment
-                                                                           "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
-                                                                        <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
-                                                                           resource. A relative URI will be resolved relative to the location of the document
-                                                                           containing the link.</p>
-                                                                     </div>
-                                                                  </details>
-                                                               </div>
-                                                            </div>
-                                                         </div>
-                                                         <div class="model-entry definition assembly">
-                                                            <div class="instance-header">
-                                                               <p id="/profile/merge/custom/groups/params/links/rel" class="toc7 name">rel</p>
-                                                               <p class="type"><a href="/reference/datatypes/#token">token</a></p>
-                                                               <p class="occurrence">[0 or 1]</p>
-                                                               <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/param/link/@rel">Switch to XML</a></div>
-                                                               <p class="formal-name">Relation</p>
-                                                            </div>
-                                                            <div class="body">
-                                                               <p class="description"><span class="usa-tag">Description</span> Describes the type of relationship provided by the link. This can be an indicator
-                                                                  of the link's purpose.</p>
-                                                               <details class="constraints" open="open">
-                                                                  <summary>Constraint (1)</summary>
-                                                                  <div class="constraint">
-                                                                     <p><span class="usa-tag">allowed value</span></p>
-                                                                     <p>The value <b>may be locally defined</b>, or the following:</p>
-                                                                     <ul>
-                                                                        
-                                                                        <li><strong>reference</strong>: Reference</li>
-                                                                        </ul>
+                                                         <div class="body">
+                                                            <p class="description"><span class="usa-tag">Description</span> Presenting a choice among alternatives</p>
+                                                            <div class="remarks-group usa-prose">
+                                                               <details open="open">
+                                                                  <summary class="subhead">Remarks</summary>
+                                                                  <div class="remarks">
+                                                                     <p>A set of parameter value choices, that may be picked from to set the parameter value.</p>
+                                                                  </div>
+                                                                  <div class="remarks in-use">
+                                                                     <p>A set of parameter value choices, that may be picked from to set the parameter value.</p>
                                                                   </div>
                                                                </details>
                                                             </div>
+                                                            <details class="properties" open="open">
+                                                               <summary>Properties (2)</summary>
+                                                               <div class="model-entry definition assembly">
+                                                                  <div class="instance-header">
+                                                                     <p id="/profile/merge/custom/groups/params/select/how-many" class="toc7 name">how-many</p>
+                                                                     <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                                     <p class="occurrence">[0 or 1]</p>
+                                                                     <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/param/select/@how-many">Switch to XML</a></div>
+                                                                     <p class="formal-name">Parameter Cardinality</p>
+                                                                  </div>
+                                                                  <div class="body">
+                                                                     <p class="description"><span class="usa-tag">Description</span> Describes the number of selections that must occur. Without this setting, only one
+                                                                        value should be assumed to be permitted.</p>
+                                                                     <details class="constraints" open="open">
+                                                                        <summary>Constraint (1)</summary>
+                                                                        <div class="constraint">
+                                                                           <p><span class="usa-tag">allowed values</span></p>
+                                                                           <p>The value <b>must</b> be one of the following:</p>
+                                                                           <ul>
+                                                                              
+                                                                              <li><strong>one</strong>: Only one value is permitted.</li>
+                                                                              
+                                                                              <li><strong>one-or-more</strong>: One or more values are permitted.</li>
+                                                                              </ul>
+                                                                        </div>
+                                                                     </details>
+                                                                  </div>
+                                                               </div>
+                                                               <div class="model-entry definition assembly">
+                                                                  <div class="instance-header">
+                                                                     <p id="/profile/merge/custom/groups/params/select/choice" class="toc7 name">choice</p>
+                                                                     <p class="type">array<br /></p>
+                                                                     <p class="occurrence">[0 or 1]</p>
+                                                                     <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/param/select/choice">Switch to XML</a></div>
+                                                                  </div>
+                                                                  <div class="array-header">
+                                                                     <p class="array-member">(array member)</p>
+                                                                     <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                                                     <p class="occurrence">[0 to ∞]</p>
+                                                                     <p class="formal-name">Choice</p>
+                                                                  </div>
+                                                                  <div class="body">
+                                                                     <p class="description"><span class="usa-tag">Description</span> A value selection among several such options</p>
+                                                                  </div>
+                                                               </div>
+                                                            </details>
                                                          </div>
+                                                      </div>
+                                                   </div>
+                                                   <div class="model-entry definition assembly">
+                                                      <div class="instance-header">
+                                                         <h6 id="/profile/merge/custom/groups/params/remarks" class="toc6 name">remarks</h6>
+                                                         <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                         <p class="occurrence">[0 or 1]</p>
+                                                         <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/param/remarks">Switch to XML</a></div>
+                                                         <p class="formal-name">Remarks</p>
+                                                      </div>
+                                                      <div class="body">
+                                                         <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                                      </div>
+                                                   </div>
+                                                </details>
+                                             </div>
+                                          </div>
+                                          <div class="model-entry definition assembly">
+                                             <div class="instance-header">
+                                                <h5 id="/profile/merge/custom/groups/props" class="toc5 name">props</h5>
+                                                <p class="type">array<br /></p>
+                                                <p class="occurrence">[0 or 1]</p>
+                                                <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/prop">Switch to XML</a></div>
+                                             </div>
+                                             <div class="array-header">
+                                                <p class="array-member">(array member)</p>
+                                                <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-profile/group/props">(global definition)</a></p>
+                                                <p class="occurrence">[1 to ∞]</p>
+                                                <p class="formal-name">Property</p>
+                                             </div>
+                                             <div class="body">
+                                                <p class="description"><span class="usa-tag">Description</span> An attribute, characteristic, or quality of the containing object expressed as a
+                                                   namespace qualified name/value pair. The value of a property is a simple scalar value,
+                                                   which may be expressed as a list of values.</p>
+                                                <div class="remarks-group usa-prose">
+                                                   <details open="open">
+                                                      <summary class="subhead">Remarks</summary>
+                                                      <div class="remarks">
+                                                         <p>Properties permit the deployment and management of arbitrary controlled values, within
+                                                            OSCAL objects. A property can be included for any purpose useful to an application
+                                                            or implementation. Typically, properties will be used to sort, filter, select, order,
+                                                            and arrange OSCAL content objects, to relate OSCAL objects to one another, or to associate
+                                                            an OSCAL object to class hierarchies, taxonomies, or external authorities. Thus, the
+                                                            lexical composition of properties may be constrained by external processes to ensure
+                                                            consistency.</p>
+                                                         <p>Property allows for associated remarks that describe why the specific property value
+                                                            was applied to the containing object, or the significance of the value in the context
+                                                            of the containing object.</p>
+                                                      </div>
+                                                   </details>
+                                                </div>
+                                                <details class="properties" open="open">
+                                                   <summary>Properties (6)</summary>
+                                                   <div class="model-entry definition assembly">
+                                                      <div class="instance-header">
+                                                         <h6 id="/profile/merge/custom/groups/props/name" class="toc6 name">name</h6>
+                                                         <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                         <p class="occurrence">[1]</p>
+                                                         <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/prop/@name">Switch to XML</a></div>
+                                                         <p class="formal-name">Property Name</p>
+                                                      </div>
+                                                      <div class="body">
+                                                         <p class="description"><span class="usa-tag">Description</span> A textual label that uniquely identifies a specific attribute, characteristic, or
+                                                            quality of the property's containing object.</p>
+                                                         <details class="constraints" open="open">
+                                                            <summary>Constraint (1)</summary>
+                                                            <div class="constraint">
+                                                               <p><span class="usa-tag">allowed value</span></p>
+                                                               <p>The value <b>may be locally defined</b>, or the following:</p>
+                                                               <ul>
+                                                                  
+                                                                  <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                                                     An optional class can be used to define the specific marking system used for the associated
+                                                                     value.</li>
+                                                                  </ul>
+                                                            </div>
+                                                         </details>
+                                                      </div>
+                                                   </div>
+                                                   <div class="model-entry definition assembly">
+                                                      <div class="instance-header">
+                                                         <h6 id="/profile/merge/custom/groups/props/uuid" class="toc6 name">uuid</h6>
+                                                         <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                                         <p class="occurrence">[0 or 1]</p>
+                                                         <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/prop/@uuid">Switch to XML</a></div>
+                                                         <p class="formal-name">Property Universally Unique Identifier</p>
+                                                      </div>
+                                                      <div class="body">
+                                                         <p class="description"><span class="usa-tag">Description</span> A unique identifier that can be used to reference this property elsewhere in an OSCAL
+                                                            document. A UUID should be consistently used for a given location across revisions
+                                                            of the document.</p>
+                                                      </div>
+                                                   </div>
+                                                   <div class="model-entry definition assembly">
+                                                      <div class="instance-header">
+                                                         <h6 id="/profile/merge/custom/groups/props/ns" class="toc6 name">ns</h6>
+                                                         <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
+                                                         <p class="occurrence">[0 or 1]</p>
+                                                         <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/prop/@ns">Switch to XML</a></div>
+                                                         <p class="formal-name">Property Namespace</p>
+                                                      </div>
+                                                      <div class="body">
+                                                         <p class="description"><span class="usa-tag">Description</span> A namespace qualifying the property's name. This allows different organizations to
+                                                            associate distinct semantics with the same name.</p>
+                                                         <div class="remarks-group usa-prose">
+                                                            <details open="open">
+                                                               <summary class="subhead">Remarks</summary>
+                                                               <div class="remarks">
+                                                                  <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
+                                                                     names and associated values used in a property. This allows the semantics associated
+                                                                     with a given name/value pair to be defined on an organization-by-organization basis.</p>
+                                                                  <p>An organization MUST use a URI that they have control over. e.g., a domain registered
+                                                                     to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
+                                                                  <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
+                                                               </div>
+                                                               <div class="remarks">
+                                                                  <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
+                                                                     names and associated values used in a property. This allows the semantics associated
+                                                                     with a given name/value pair to be defined on an organization-by-organization basis.</p>
+                                                                  <p>An organization MUST use a URI that they have control over. e.g., a domain registered
+                                                                     to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
+                                                                  <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
+                                                               </div>
+                                                            </details>
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                   <div class="model-entry definition assembly">
+                                                      <div class="instance-header">
+                                                         <h6 id="/profile/merge/custom/groups/props/value" class="toc6 name">value</h6>
+                                                         <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                         <p class="occurrence">[1]</p>
+                                                         <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/prop/@value">Switch to XML</a></div>
+                                                         <p class="formal-name">Property Value</p>
+                                                      </div>
+                                                      <div class="body">
+                                                         <p class="description"><span class="usa-tag">Description</span> Indicates the value of the attribute, characteristic, or quality.</p>
+                                                      </div>
+                                                   </div>
+                                                   <div class="model-entry definition assembly">
+                                                      <div class="instance-header">
+                                                         <h6 id="/profile/merge/custom/groups/props/class" class="toc6 name">class</h6>
+                                                         <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                         <p class="occurrence">[0 or 1]</p>
+                                                         <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/prop/@class">Switch to XML</a></div>
+                                                         <p class="formal-name">Property Class</p>
+                                                      </div>
+                                                      <div class="body">
+                                                         <p class="description"><span class="usa-tag">Description</span> A textual label that provides a sub-type or characterization of the property's <code>name</code>. This can be used to further distinguish or discriminate between the semantics of
+                                                            multiple properties of the same object with the same <code>name</code> and <code>ns</code>. </p>
+                                                         <div class="remarks-group usa-prose">
+                                                            <details open="open">
+                                                               <summary class="subhead">Remarks</summary>
+                                                               <div class="remarks">
+                                                                  <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
+                                                                     a specific <code>class</code> value.</p>
+                                                               </div>
+                                                               <div class="remarks">
+                                                                  <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
+                                                                     a specific <code>class</code> value.</p>
+                                                               </div>
+                                                            </details>
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                   <div class="model-entry definition assembly">
+                                                      <div class="instance-header">
+                                                         <h6 id="/profile/merge/custom/groups/props/remarks" class="toc6 name">remarks</h6>
+                                                         <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                         <p class="occurrence">[0 or 1]</p>
+                                                         <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/prop/remarks">Switch to XML</a></div>
+                                                         <p class="formal-name">Remarks</p>
+                                                      </div>
+                                                      <div class="body">
+                                                         <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                                      </div>
+                                                   </div>
+                                                </details>
+                                             </div>
+                                          </div>
+                                          <div class="model-entry definition assembly">
+                                             <div class="instance-header">
+                                                <h5 id="/profile/merge/custom/groups/links" class="toc5 name">links</h5>
+                                                <p class="type">array<br /></p>
+                                                <p class="occurrence">[0 or 1]</p>
+                                                <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/link">Switch to XML</a></div>
+                                             </div>
+                                             <div class="array-header">
+                                                <p class="array-member">(array member)</p>
+                                                <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-profile/group/links">(global definition)</a></p>
+                                                <p class="occurrence">[1 to ∞]</p>
+                                                <p class="formal-name">Link</p>
+                                             </div>
+                                             <div class="body">
+                                                <p class="description"><span class="usa-tag">Description</span> A reference to a local or remote resource</p>
+                                                <div class="remarks-group usa-prose">
+                                                   <details open="open">
+                                                      <summary class="subhead">Remarks</summary>
+                                                      <div class="remarks">
+                                                         <p>To provide a cryptographic hash for a remote target resource, a local reference to
+                                                            a back matter <code>resource</code> is needed. The resource allows one or more hash values to be provided using the <code>rlink/hash</code> object.</p>
+                                                         <p>The OSCAL <code>link</code> is a roughly based on the HTML <a href="https://www.w3.org/TR/html401/struct/links.html#edef-LINK">link element</a>. </p>
+                                                      </div>
+                                                   </details>
+                                                </div>
+                                                <details class="constraints" open="open">
+                                                   <summary>Constraints (3)</summary>
+                                                   <div class="constraint">
+                                                      <p><span class="usa-tag">matches</span>  for <code class="path">@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
+                                                   </div>
+                                                   <div class="constraint">
+                                                      <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-back-matter-resource</code> using a key constructed of key field(s) <code>@href</code></p>
+                                                   </div>
+                                                   <div class="constraint">
+                                                      <p><span class="usa-tag">matches</span>  for <code class="path">@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
+                                                   </div>
+                                                </details>
+                                                <details class="properties" open="open">
+                                                   <summary>Properties (4)</summary>
+                                                   <div class="model-entry definition assembly">
+                                                      <div class="instance-header">
+                                                         <h6 id="/profile/merge/custom/groups/links/href" class="toc6 name">href</h6>
+                                                         <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
+                                                         <p class="occurrence">[1]</p>
+                                                         <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/link/@href">Switch to XML</a></div>
+                                                         <p class="formal-name">Hypertext Reference</p>
+                                                      </div>
+                                                      <div class="body">
+                                                         <p class="description"><span class="usa-tag">Description</span> A resolvable URL reference to a resource.</p>
+                                                         <div class="remarks-group usa-prose">
+                                                            <details open="open">
+                                                               <summary class="subhead">Remarks</summary>
+                                                               <div class="remarks">
+                                                                  <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
+                                                                     that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
+                                                                  <p>If a local reference using a fragment is used, this will be indicated by a fragment
+                                                                     "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
+                                                                  <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
+                                                                     resource. A relative URI will be resolved relative to the location of the document
+                                                                     containing the link.</p>
+                                                               </div>
+                                                               <div class="remarks">
+                                                                  <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
+                                                                     that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
+                                                                  <p>If a local reference using a fragment is used, this will be indicated by a fragment
+                                                                     "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
+                                                                  <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
+                                                                     resource. A relative URI will be resolved relative to the location of the document
+                                                                     containing the link.</p>
+                                                               </div>
+                                                            </details>
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                   <div class="model-entry definition assembly">
+                                                      <div class="instance-header">
+                                                         <h6 id="/profile/merge/custom/groups/links/rel" class="toc6 name">rel</h6>
+                                                         <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                         <p class="occurrence">[0 or 1]</p>
+                                                         <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/link/@rel">Switch to XML</a></div>
+                                                         <p class="formal-name">Relation</p>
+                                                      </div>
+                                                      <div class="body">
+                                                         <p class="description"><span class="usa-tag">Description</span> Describes the type of relationship provided by the link. This can be an indicator
+                                                            of the link's purpose.</p>
+                                                         <details class="constraints" open="open">
+                                                            <summary>Constraint (1)</summary>
+                                                            <div class="constraint">
+                                                               <p><span class="usa-tag">allowed value</span></p>
+                                                               <p>The value <b>may be locally defined</b>, or the following:</p>
+                                                               <ul>
+                                                                  
+                                                                  <li><strong>reference</strong>: Reference</li>
+                                                                  </ul>
+                                                            </div>
+                                                         </details>
+                                                      </div>
+                                                   </div>
+                                                   <div class="model-entry definition assembly">
+                                                      <div class="instance-header">
+                                                         <h6 id="/profile/merge/custom/groups/links/media-type" class="toc6 name">media-type</h6>
+                                                         <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                         <p class="occurrence">[0 or 1]</p>
+                                                         <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/link/@media-type">Switch to XML</a></div>
+                                                         <p class="formal-name">Media Type</p>
+                                                      </div>
+                                                      <div class="body">
+                                                         <p class="description"><span class="usa-tag">Description</span> Specifies a media type as defined by the Internet Assigned Numbers Authority (IANA)
+                                                            <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">Media Types Registry</a>. </p>
+                                                         <div class="remarks-group usa-prose">
+                                                            <details open="open">
+                                                               <summary class="subhead">Remarks</summary>
+                                                               <div class="remarks">
+                                                                  <p>The <code>media-type</code> provides a hint about the content model of the referenced resource. A valid entry
+                                                                     from the <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">IANA Media Types registry</a> SHOULD be used.</p>
+                                                               </div>
+                                                            </details>
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                   <div class="model-entry definition assembly">
+                                                      <div class="instance-header">
+                                                         <h6 id="/profile/merge/custom/groups/links/text" class="toc6 name">text</h6>
+                                                         <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                                         <p class="occurrence">[0 or 1]</p>
+                                                         <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/link/text">Switch to XML</a></div>
+                                                         <p class="formal-name">Link Text</p>
+                                                      </div>
+                                                      <div class="body">
+                                                         <p class="description"><span class="usa-tag">Description</span> A textual label to associate with the link, which may be used for presentation in
+                                                            a tool.</p>
+                                                      </div>
+                                                   </div>
+                                                </details>
+                                             </div>
+                                          </div>
+                                          <div class="model-entry definition assembly">
+                                             <div class="instance-header">
+                                                <h5 id="/profile/merge/custom/groups/parts" class="toc5 name">parts</h5>
+                                                <p class="type">array<br /></p>
+                                                <p class="occurrence">[0 or 1]</p>
+                                                <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/part">Switch to XML</a></div>
+                                             </div>
+                                             <div class="array-header">
+                                                <p class="array-member">(array member)</p>
+                                                <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-profile/group/parts">(global definition)</a></p>
+                                                <p class="occurrence">[1 to ∞]</p>
+                                                <p class="formal-name">Part</p>
+                                             </div>
+                                             <div class="body">
+                                                <p class="description"><span class="usa-tag">Description</span> A partition of a control's definition or a child of another part.</p>
+                                                <div class="remarks-group usa-prose">
+                                                   <details open="open">
+                                                      <summary class="subhead">Remarks</summary>
+                                                      <div class="remarks">
+                                                         <p>A <code>part</code> provides for logical partitioning of prose, and can be thought of as a grouping structure
+                                                            (e.g., section). A <code>part</code> can have child parts allowing for arbitrary nesting of prose content (e.g., statement
+                                                            hierarchy). A <code>part</code> can contain <code>prop</code> objects that allow for enriching prose text with structured name/value information.</p>
+                                                         <p>A <code>part</code> can be assigned an optional <code>id</code>, which allows for internal and external references to the textual concept contained
+                                                            within a <code>part</code>. A <code>id</code> provides a means for an OSCAL profile, or a higher layer OSCAL model to reference
+                                                            a specific part within a <code>catalog</code>. For example, an <code>id</code> can be used to reference or to make modifications to a control statement in a profile.</p>
+                                                         <p>Use of <code>part</code> and <code>prop</code> provides for a wide degree of extensibility within the OSCAL catalog model. The optional
+                                                            <code>ns</code> provides a means to qualify a part's <code>name</code>, allowing for organization-specific vocabularies to be defined with clear semantics.
+                                                            Any organization that extends OSCAL in this way should consistently assign a <code>ns</code> value that represents the organization, making a given namespace qualified <code>name</code> unique to that organization. This allows the combination of <code>ns</code> and <code>name</code> to always be unique and unambiguous, even when mixed with extensions from other organizations.
+                                                            Each organization is responsible for governance of their own extensions, and is strongly
+                                                            encouraged to publish their extensions as standards to their user community. If no
+                                                            <code>ns</code> is provided, the name is expected to be in the "OSCAL" namespace.</p>
+                                                         <p>To ensure a <code>ns</code> is unique to an organization and naming conflicts are avoided, a URI containing a
+                                                            DNS or other globally defined organization name should be used. For example, if FedRAMP
+                                                            and DoD both extend OSCAL, FedRAMP will use the <code>ns</code> "https://fedramp.gov", while DoD will use the <code>ns</code> "https://defense.gov" for any organization specific <code>name</code>. </p>
+                                                         <p>Tools that process OSCAL content are not required to interpret unrecognized OSCAL
+                                                            extensions; however, OSCAL compliant tools should not modify or remove unrecognized
+                                                            extensions, unless there is a compelling reason to do so, such as data sensitivity.</p>
+                                                      </div>
+                                                   </details>
+                                                </div>
+                                                <details class="constraints" open="open">
+                                                   <summary>Constraints (4)</summary>
+                                                   <div class="constraint">
+                                                      <p><span class="usa-tag">allowed values</span>  for <code class="path">prop/@name</code></p>
+                                                      <p>The value <b>may be locally defined</b>, or one of the following:</p>
+                                                      <ul>
+                                                         
+                                                         <li><strong>label</strong>: A human-readable label for the parent context.</li>
+                                                         
+                                                         <li><strong>sort-id</strong>: An alternative identifier, whose value is easily sortable among other such values
+                                                            in the document.</li>
+                                                         
+                                                         </ul>
+                                                   </div>
+                                                   <div class="constraint">
+                                                      <p><span class="usa-tag">allowed value</span>  for <code class="path">prop/@name</code></p>
+                                                      <p>The value <b>may be locally defined</b>, or the following:</p>
+                                                      <ul>
+                                                         
+                                                         <li><strong>method</strong>: The assessment method to use. This typically appears on parts with the name "assessment".</li>
+                                                         </ul>
+                                                   </div>
+                                                   <div class="constraint">
+                                                      <p><span class="usa-tag">has cardinality</span>  for <code class="path">prop[@name='method']</code> the cardinality of  <code>prop[@name='method']</code> is constrained: <b>1</b>; maximum <b>unbounded</b>.</p>
+                                                   </div>
+                                                   <div class="constraint">
+                                                      <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[@name='method']/@value</code></p>
+                                                      <p>The value <b>must</b> be one of the following:</p>
+                                                      <ul>
+                                                         
+                                                         <li><strong>INTERVIEW</strong>: The process of holding discussions with individuals or groups of individuals within
+                                                            an organization to once again, facilitate assessor understanding, achieve clarification,
+                                                            or obtain evidence.</li>
+                                                         
+                                                         <li><strong>EXAMINE</strong>: The process of reviewing, inspecting, observing, studying, or analyzing one or more
+                                                            assessment objects (i.e., specifications, mechanisms, or activities).</li>
+                                                         
+                                                         <li><strong>TEST</strong>: The process of exercising one or more assessment objects (i.e., activities or mechanisms)
+                                                            under specified conditions to compare actual with expected behavior.</li>
+                                                         </ul>
+                                                   </div>
+                                                </details>
+                                                <details class="properties" open="open">
+                                                   <summary>Properties (9)</summary>
+                                                   <div class="model-entry definition assembly">
+                                                      <div class="instance-header">
+                                                         <h6 id="/profile/merge/custom/groups/parts/id" class="toc6 name">id</h6>
+                                                         <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                         <p class="occurrence">[0 or 1]</p>
+                                                         <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/part/@id">Switch to XML</a></div>
+                                                         <p class="formal-name">Part Identifier</p>
+                                                      </div>
+                                                      <div class="body">
+                                                         <p class="description"><span class="usa-tag">Description</span> A unique identifier for a specific part instance. This identifier's uniqueness is
+                                                            document scoped and is intended to be consistent for the same part across minor revisions
+                                                            of the document.</p>
+                                                      </div>
+                                                   </div>
+                                                   <div class="model-entry definition assembly">
+                                                      <div class="instance-header">
+                                                         <h6 id="/profile/merge/custom/groups/parts/name" class="toc6 name">name</h6>
+                                                         <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                         <p class="occurrence">[1]</p>
+                                                         <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/part/@name">Switch to XML</a></div>
+                                                         <p class="formal-name">Part Name</p>
+                                                      </div>
+                                                      <div class="body">
+                                                         <p class="description"><span class="usa-tag">Description</span> A textual label that uniquely identifies the part's semantic type.</p>
+                                                         <details class="constraints" open="open">
+                                                            <summary>Constraint (1)</summary>
+                                                            <div class="constraint">
+                                                               <p><span class="usa-tag">allowed values</span></p>
+                                                               <p>The value <b>may be locally defined</b>, or one of the following:</p>
+                                                               <ul>
+                                                                  
+                                                                  
+                                                                  <li><strong>overview</strong>: An introduction to a control or a group of controls.</li>
+                                                                  
+                                                                  <li><strong>statement</strong>: A set of control implementation requirements.</li>
+                                                                  
+                                                                  <li><strong>item</strong>: An individual item within a control statement.</li>
+                                                                  
+                                                                  <li><strong>guidance</strong>: Additional information to consider when selecting, implementing, assessing, and
+                                                                     monitoring a control.</li>
+                                                                  
+                                                                  <li><strong>objective</strong>: Describes a set of assessment objectives.</li>
+                                                                  
+                                                                  <li><strong>assessment</strong>: Describes a method-based assessment over a set of assessment objects.</li>
+                                                                  
+                                                                  <li><strong>objects</strong>: Provides a list of assessment objects.</li>
+                                                                  </ul>
+                                                            </div>
+                                                         </details>
+                                                      </div>
+                                                   </div>
+                                                   <div class="model-entry definition assembly">
+                                                      <div class="instance-header">
+                                                         <h6 id="/profile/merge/custom/groups/parts/ns" class="toc6 name">ns</h6>
+                                                         <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
+                                                         <p class="occurrence">[0 or 1]</p>
+                                                         <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/part/@ns">Switch to XML</a></div>
+                                                         <p class="formal-name">Part Namespace</p>
+                                                      </div>
+                                                      <div class="body">
+                                                         <p class="description"><span class="usa-tag">Description</span> A namespace qualifying the part's name. This allows different organizations to associate
+                                                            distinct semantics with the same name.</p>
+                                                         <div class="remarks-group usa-prose">
+                                                            <details open="open">
+                                                               <summary class="subhead">Remarks</summary>
+                                                               <div class="remarks">
+                                                                  <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
+                                                                     names and associated text used in a part. This allows the semantics associated with
+                                                                     a given name to be defined on an organization-by-organization basis.</p>
+                                                                  <p>An organization MUST use a URI that they have control over. e.g., a domain registered
+                                                                     to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
+                                                                  <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
+                                                               </div>
+                                                               <div class="remarks">
+                                                                  <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
+                                                                     names and associated text used in a part. This allows the semantics associated with
+                                                                     a given name to be defined on an organization-by-organization basis.</p>
+                                                                  <p>An organization MUST use a URI that they have control over. e.g., a domain registered
+                                                                     to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
+                                                                  <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
+                                                               </div>
+                                                            </details>
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                   <div class="model-entry definition assembly">
+                                                      <div class="instance-header">
+                                                         <h6 id="/profile/merge/custom/groups/parts/class" class="toc6 name">class</h6>
+                                                         <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                         <p class="occurrence">[0 or 1]</p>
+                                                         <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/part/@class">Switch to XML</a></div>
+                                                         <p class="formal-name">Part Class</p>
+                                                      </div>
+                                                      <div class="body">
+                                                         <p class="description"><span class="usa-tag">Description</span> A textual label that provides a sub-type or characterization of the part's <code>name</code>. This can be used to further distinguish or discriminate between the semantics of
+                                                            multiple parts of the same control with the same <code>name</code> and <code>ns</code>. </p>
+                                                         <div class="remarks-group usa-prose">
+                                                            <details open="open">
+                                                               <summary class="subhead">Remarks</summary>
+                                                               <div class="remarks">
+                                                                  <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
+                                                                     a specific <code>class</code> value.</p>
+                                                                  <p>A <code>class</code> can also be used in an OSCAL profile as a means to target an alteration to control
+                                                                     content.</p>
+                                                               </div>
+                                                               <div class="remarks">
+                                                                  <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
+                                                                     a specific <code>class</code> value.</p>
+                                                                  <p>A <code>class</code> can also be used in an OSCAL profile as a means to target an alteration to control
+                                                                     content.</p>
+                                                               </div>
+                                                            </details>
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                   <div class="model-entry definition assembly">
+                                                      <div class="instance-header">
+                                                         <h6 id="/profile/merge/custom/groups/parts/title" class="toc6 name">title</h6>
+                                                         <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                                         <p class="occurrence">[0 or 1]</p>
+                                                         <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/part/title">Switch to XML</a></div>
+                                                         <p class="formal-name">Part Title</p>
+                                                      </div>
+                                                      <div class="body">
+                                                         <p class="description"><span class="usa-tag">Description</span> A name given to the part, which may be used by a tool for display and navigation.</p>
+                                                      </div>
+                                                   </div>
+                                                   <div class="model-entry definition assembly">
+                                                      <div class="instance-header">
+                                                         <h6 id="/profile/merge/custom/groups/parts/props" class="toc6 name">props</h6>
+                                                         <p class="type">array<br /></p>
+                                                         <p class="occurrence">[0 or 1]</p>
+                                                         <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/part/prop">Switch to XML</a></div>
+                                                      </div>
+                                                      <div class="array-header">
+                                                         <p class="array-member">(array member)</p>
+                                                         <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-catalog-common/part/props">(global definition)</a></p>
+                                                         <p class="occurrence">[1 to ∞]</p>
+                                                         <p class="formal-name">Property</p>
+                                                      </div>
+                                                      <div class="body">
+                                                         <p class="description"><span class="usa-tag">Description</span> An attribute, characteristic, or quality of the containing object expressed as a
+                                                            namespace qualified name/value pair. The value of a property is a simple scalar value,
+                                                            which may be expressed as a list of values.</p>
+                                                         <div class="remarks-group usa-prose">
+                                                            <details open="open">
+                                                               <summary class="subhead">Remarks</summary>
+                                                               <div class="remarks">
+                                                                  <p>Properties permit the deployment and management of arbitrary controlled values, within
+                                                                     OSCAL objects. A property can be included for any purpose useful to an application
+                                                                     or implementation. Typically, properties will be used to sort, filter, select, order,
+                                                                     and arrange OSCAL content objects, to relate OSCAL objects to one another, or to associate
+                                                                     an OSCAL object to class hierarchies, taxonomies, or external authorities. Thus, the
+                                                                     lexical composition of properties may be constrained by external processes to ensure
+                                                                     consistency.</p>
+                                                                  <p>Property allows for associated remarks that describe why the specific property value
+                                                                     was applied to the containing object, or the significance of the value in the context
+                                                                     of the containing object.</p>
+                                                               </div>
+                                                            </details>
+                                                         </div>
+                                                         <details class="properties" open="open">
+                                                            <summary>Properties (6)</summary>
+                                                            <div class="model-entry definition assembly">
+                                                               <div class="instance-header">
+                                                                  <p id="/profile/merge/custom/groups/parts/props/name" class="toc7 name">name</p>
+                                                                  <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                                  <p class="occurrence">[1]</p>
+                                                                  <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/part/prop/@name">Switch to XML</a></div>
+                                                                  <p class="formal-name">Property Name</p>
+                                                               </div>
+                                                               <div class="body">
+                                                                  <p class="description"><span class="usa-tag">Description</span> A textual label that uniquely identifies a specific attribute, characteristic, or
+                                                                     quality of the property's containing object.</p>
+                                                                  <details class="constraints" open="open">
+                                                                     <summary>Constraint (1)</summary>
+                                                                     <div class="constraint">
+                                                                        <p><span class="usa-tag">allowed value</span></p>
+                                                                        <p>The value <b>may be locally defined</b>, or the following:</p>
+                                                                        <ul>
+                                                                           
+                                                                           <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                                                              An optional class can be used to define the specific marking system used for the associated
+                                                                              value.</li>
+                                                                           </ul>
+                                                                     </div>
+                                                                  </details>
+                                                               </div>
+                                                            </div>
+                                                            <div class="model-entry definition assembly">
+                                                               <div class="instance-header">
+                                                                  <p id="/profile/merge/custom/groups/parts/props/uuid" class="toc7 name">uuid</p>
+                                                                  <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                                                  <p class="occurrence">[0 or 1]</p>
+                                                                  <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/part/prop/@uuid">Switch to XML</a></div>
+                                                                  <p class="formal-name">Property Universally Unique Identifier</p>
+                                                               </div>
+                                                               <div class="body">
+                                                                  <p class="description"><span class="usa-tag">Description</span> A unique identifier that can be used to reference this property elsewhere in an OSCAL
+                                                                     document. A UUID should be consistently used for a given location across revisions
+                                                                     of the document.</p>
+                                                               </div>
+                                                            </div>
+                                                            <div class="model-entry definition assembly">
+                                                               <div class="instance-header">
+                                                                  <p id="/profile/merge/custom/groups/parts/props/ns" class="toc7 name">ns</p>
+                                                                  <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
+                                                                  <p class="occurrence">[0 or 1]</p>
+                                                                  <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/part/prop/@ns">Switch to XML</a></div>
+                                                                  <p class="formal-name">Property Namespace</p>
+                                                               </div>
+                                                               <div class="body">
+                                                                  <p class="description"><span class="usa-tag">Description</span> A namespace qualifying the property's name. This allows different organizations to
+                                                                     associate distinct semantics with the same name.</p>
+                                                                  <div class="remarks-group usa-prose">
+                                                                     <details open="open">
+                                                                        <summary class="subhead">Remarks</summary>
+                                                                        <div class="remarks">
+                                                                           <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
+                                                                              names and associated values used in a property. This allows the semantics associated
+                                                                              with a given name/value pair to be defined on an organization-by-organization basis.</p>
+                                                                           <p>An organization MUST use a URI that they have control over. e.g., a domain registered
+                                                                              to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
+                                                                           <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
+                                                                        </div>
+                                                                        <div class="remarks">
+                                                                           <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
+                                                                              names and associated values used in a property. This allows the semantics associated
+                                                                              with a given name/value pair to be defined on an organization-by-organization basis.</p>
+                                                                           <p>An organization MUST use a URI that they have control over. e.g., a domain registered
+                                                                              to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
+                                                                           <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
+                                                                        </div>
+                                                                     </details>
+                                                                  </div>
+                                                               </div>
+                                                            </div>
+                                                            <div class="model-entry definition assembly">
+                                                               <div class="instance-header">
+                                                                  <p id="/profile/merge/custom/groups/parts/props/value" class="toc7 name">value</p>
+                                                                  <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                                  <p class="occurrence">[1]</p>
+                                                                  <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/part/prop/@value">Switch to XML</a></div>
+                                                                  <p class="formal-name">Property Value</p>
+                                                               </div>
+                                                               <div class="body">
+                                                                  <p class="description"><span class="usa-tag">Description</span> Indicates the value of the attribute, characteristic, or quality.</p>
+                                                               </div>
+                                                            </div>
+                                                            <div class="model-entry definition assembly">
+                                                               <div class="instance-header">
+                                                                  <p id="/profile/merge/custom/groups/parts/props/class" class="toc7 name">class</p>
+                                                                  <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                                  <p class="occurrence">[0 or 1]</p>
+                                                                  <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/part/prop/@class">Switch to XML</a></div>
+                                                                  <p class="formal-name">Property Class</p>
+                                                               </div>
+                                                               <div class="body">
+                                                                  <p class="description"><span class="usa-tag">Description</span> A textual label that provides a sub-type or characterization of the property's <code>name</code>. This can be used to further distinguish or discriminate between the semantics of
+                                                                     multiple properties of the same object with the same <code>name</code> and <code>ns</code>. </p>
+                                                                  <div class="remarks-group usa-prose">
+                                                                     <details open="open">
+                                                                        <summary class="subhead">Remarks</summary>
+                                                                        <div class="remarks">
+                                                                           <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
+                                                                              a specific <code>class</code> value.</p>
+                                                                        </div>
+                                                                        <div class="remarks">
+                                                                           <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
+                                                                              a specific <code>class</code> value.</p>
+                                                                        </div>
+                                                                     </details>
+                                                                  </div>
+                                                               </div>
+                                                            </div>
+                                                            <div class="model-entry definition assembly">
+                                                               <div class="instance-header">
+                                                                  <p id="/profile/merge/custom/groups/parts/props/remarks" class="toc7 name">remarks</p>
+                                                                  <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                                  <p class="occurrence">[0 or 1]</p>
+                                                                  <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/part/prop/remarks">Switch to XML</a></div>
+                                                                  <p class="formal-name">Remarks</p>
+                                                               </div>
+                                                               <div class="body">
+                                                                  <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                                               </div>
+                                                            </div>
+                                                         </details>
+                                                      </div>
+                                                   </div>
+                                                   <div class="model-entry definition assembly">
+                                                      <div class="instance-header">
+                                                         <h6 id="/profile/merge/custom/groups/parts/prose" class="toc6 name">prose</h6>
+                                                         <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                         <p class="occurrence">[0 or 1]</p>
+                                                         <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/part">Switch to XML</a></div>
+                                                         <p class="formal-name">Part Text</p>
+                                                      </div>
+                                                      <div class="body">
+                                                         <p class="description"><span class="usa-tag">Description</span> Permits multiple paragraphs, lists, tables etc.</p>
+                                                      </div>
+                                                   </div>
+                                                   <div class="model-entry definition assembly">
+                                                      <div class="instance-header">
+                                                         <h6 id="/profile/merge/custom/groups/parts/parts" class="toc6 name">parts</h6>
+                                                         <p class="type">array<br /></p>
+                                                         <p class="occurrence">[0 or 1]</p>
+                                                         <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/part/part">Switch to XML</a></div>
+                                                      </div>
+                                                      <div class="array-header">
+                                                         <p class="array-member">(array member)</p>
+                                                         <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-catalog-common/part/parts">(global definition)</a></p>
+                                                         <p class="occurrence">[1 to ∞]</p>
+                                                         <p class="formal-name">Part</p>
+                                                      </div>
+                                                      <div class="body">
+                                                         <p class="description"><span class="usa-tag">Description</span> A partition of a control's definition or a child of another part.</p>
+                                                         <div class="remarks-group usa-prose">
+                                                            <details open="open">
+                                                               <summary class="subhead">Remarks</summary>
+                                                               <div class="remarks">
+                                                                  <p>A <code>part</code> provides for logical partitioning of prose, and can be thought of as a grouping structure
+                                                                     (e.g., section). A <code>part</code> can have child parts allowing for arbitrary nesting of prose content (e.g., statement
+                                                                     hierarchy). A <code>part</code> can contain <code>prop</code> objects that allow for enriching prose text with structured name/value information.</p>
+                                                                  <p>A <code>part</code> can be assigned an optional <code>id</code>, which allows for internal and external references to the textual concept contained
+                                                                     within a <code>part</code>. A <code>id</code> provides a means for an OSCAL profile, or a higher layer OSCAL model to reference
+                                                                     a specific part within a <code>catalog</code>. For example, an <code>id</code> can be used to reference or to make modifications to a control statement in a profile.</p>
+                                                                  <p>Use of <code>part</code> and <code>prop</code> provides for a wide degree of extensibility within the OSCAL catalog model. The optional
+                                                                     <code>ns</code> provides a means to qualify a part's <code>name</code>, allowing for organization-specific vocabularies to be defined with clear semantics.
+                                                                     Any organization that extends OSCAL in this way should consistently assign a <code>ns</code> value that represents the organization, making a given namespace qualified <code>name</code> unique to that organization. This allows the combination of <code>ns</code> and <code>name</code> to always be unique and unambiguous, even when mixed with extensions from other organizations.
+                                                                     Each organization is responsible for governance of their own extensions, and is strongly
+                                                                     encouraged to publish their extensions as standards to their user community. If no
+                                                                     <code>ns</code> is provided, the name is expected to be in the "OSCAL" namespace.</p>
+                                                                  <p>To ensure a <code>ns</code> is unique to an organization and naming conflicts are avoided, a URI containing a
+                                                                     DNS or other globally defined organization name should be used. For example, if FedRAMP
+                                                                     and DoD both extend OSCAL, FedRAMP will use the <code>ns</code> "https://fedramp.gov", while DoD will use the <code>ns</code> "https://defense.gov" for any organization specific <code>name</code>. </p>
+                                                                  <p>Tools that process OSCAL content are not required to interpret unrecognized OSCAL
+                                                                     extensions; however, OSCAL compliant tools should not modify or remove unrecognized
+                                                                     extensions, unless there is a compelling reason to do so, such as data sensitivity.</p>
+                                                               </div>
+                                                            </details>
+                                                         </div>
+                                                         <details class="constraints" open="open">
+                                                            <summary>Constraints (4)</summary>
+                                                            <div class="constraint">
+                                                               <p><span class="usa-tag">allowed values</span>  for <code class="path">prop/@name</code></p>
+                                                               <p>The value <b>may be locally defined</b>, or one of the following:</p>
+                                                               <ul>
+                                                                  
+                                                                  <li><strong>label</strong>: A human-readable label for the parent context.</li>
+                                                                  
+                                                                  <li><strong>sort-id</strong>: An alternative identifier, whose value is easily sortable among other such values
+                                                                     in the document.</li>
+                                                                  
+                                                                  </ul>
+                                                            </div>
+                                                            <div class="constraint">
+                                                               <p><span class="usa-tag">allowed value</span>  for <code class="path">prop/@name</code></p>
+                                                               <p>The value <b>may be locally defined</b>, or the following:</p>
+                                                               <ul>
+                                                                  
+                                                                  <li><strong>method</strong>: The assessment method to use. This typically appears on parts with the name "assessment".</li>
+                                                                  </ul>
+                                                            </div>
+                                                            <div class="constraint">
+                                                               <p><span class="usa-tag">has cardinality</span>  for <code class="path">prop[@name='method']</code> the cardinality of  <code>prop[@name='method']</code> is constrained: <b>1</b>; maximum <b>unbounded</b>.</p>
+                                                            </div>
+                                                            <div class="constraint">
+                                                               <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[@name='method']/@value</code></p>
+                                                               <p>The value <b>must</b> be one of the following:</p>
+                                                               <ul>
+                                                                  
+                                                                  <li><strong>INTERVIEW</strong>: The process of holding discussions with individuals or groups of individuals within
+                                                                     an organization to once again, facilitate assessor understanding, achieve clarification,
+                                                                     or obtain evidence.</li>
+                                                                  
+                                                                  <li><strong>EXAMINE</strong>: The process of reviewing, inspecting, observing, studying, or analyzing one or more
+                                                                     assessment objects (i.e., specifications, mechanisms, or activities).</li>
+                                                                  
+                                                                  <li><strong>TEST</strong>: The process of exercising one or more assessment objects (i.e., activities or mechanisms)
+                                                                     under specified conditions to compare actual with expected behavior.</li>
+                                                                  </ul>
+                                                            </div>
+                                                         </details>
+                                                      </div>
+                                                   </div>
+                                                   <div class="model-entry definition assembly">
+                                                      <div class="instance-header">
+                                                         <h6 id="/profile/merge/custom/groups/parts/links" class="toc6 name">links</h6>
+                                                         <p class="type">array<br /></p>
+                                                         <p class="occurrence">[0 or 1]</p>
+                                                         <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/part/link">Switch to XML</a></div>
+                                                      </div>
+                                                      <div class="array-header">
+                                                         <p class="array-member">(array member)</p>
+                                                         <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-catalog-common/part/links">(global definition)</a></p>
+                                                         <p class="occurrence">[1 to ∞]</p>
+                                                         <p class="formal-name">Link</p>
+                                                      </div>
+                                                      <div class="body">
+                                                         <p class="description"><span class="usa-tag">Description</span> A reference to a local or remote resource</p>
+                                                         <div class="remarks-group usa-prose">
+                                                            <details open="open">
+                                                               <summary class="subhead">Remarks</summary>
+                                                               <div class="remarks">
+                                                                  <p>To provide a cryptographic hash for a remote target resource, a local reference to
+                                                                     a back matter <code>resource</code> is needed. The resource allows one or more hash values to be provided using the <code>rlink/hash</code> object.</p>
+                                                                  <p>The OSCAL <code>link</code> is a roughly based on the HTML <a href="https://www.w3.org/TR/html401/struct/links.html#edef-LINK">link element</a>. </p>
+                                                               </div>
+                                                            </details>
+                                                         </div>
+                                                         <details class="constraints" open="open">
+                                                            <summary>Constraints (3)</summary>
+                                                            <div class="constraint">
+                                                               <p><span class="usa-tag">matches</span>  for <code class="path">@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
+                                                            </div>
+                                                            <div class="constraint">
+                                                               <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-back-matter-resource</code> using a key constructed of key field(s) <code>@href</code></p>
+                                                            </div>
+                                                            <div class="constraint">
+                                                               <p><span class="usa-tag">matches</span>  for <code class="path">@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
+                                                            </div>
+                                                         </details>
+                                                         <details class="properties" open="open">
+                                                            <summary>Properties (4)</summary>
+                                                            <div class="model-entry definition assembly">
+                                                               <div class="instance-header">
+                                                                  <p id="/profile/merge/custom/groups/parts/links/href" class="toc7 name">href</p>
+                                                                  <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
+                                                                  <p class="occurrence">[1]</p>
+                                                                  <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/part/link/@href">Switch to XML</a></div>
+                                                                  <p class="formal-name">Hypertext Reference</p>
+                                                               </div>
+                                                               <div class="body">
+                                                                  <p class="description"><span class="usa-tag">Description</span> A resolvable URL reference to a resource.</p>
+                                                                  <div class="remarks-group usa-prose">
+                                                                     <details open="open">
+                                                                        <summary class="subhead">Remarks</summary>
+                                                                        <div class="remarks">
+                                                                           <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
+                                                                              that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
+                                                                           <p>If a local reference using a fragment is used, this will be indicated by a fragment
+                                                                              "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
+                                                                           <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
+                                                                              resource. A relative URI will be resolved relative to the location of the document
+                                                                              containing the link.</p>
+                                                                        </div>
+                                                                        <div class="remarks">
+                                                                           <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
+                                                                              that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
+                                                                           <p>If a local reference using a fragment is used, this will be indicated by a fragment
+                                                                              "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
+                                                                           <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
+                                                                              resource. A relative URI will be resolved relative to the location of the document
+                                                                              containing the link.</p>
+                                                                        </div>
+                                                                     </details>
+                                                                  </div>
+                                                               </div>
+                                                            </div>
+                                                            <div class="model-entry definition assembly">
+                                                               <div class="instance-header">
+                                                                  <p id="/profile/merge/custom/groups/parts/links/rel" class="toc7 name">rel</p>
+                                                                  <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                                  <p class="occurrence">[0 or 1]</p>
+                                                                  <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/part/link/@rel">Switch to XML</a></div>
+                                                                  <p class="formal-name">Relation</p>
+                                                               </div>
+                                                               <div class="body">
+                                                                  <p class="description"><span class="usa-tag">Description</span> Describes the type of relationship provided by the link. This can be an indicator
+                                                                     of the link's purpose.</p>
+                                                                  <details class="constraints" open="open">
+                                                                     <summary>Constraint (1)</summary>
+                                                                     <div class="constraint">
+                                                                        <p><span class="usa-tag">allowed value</span></p>
+                                                                        <p>The value <b>may be locally defined</b>, or the following:</p>
+                                                                        <ul>
+                                                                           
+                                                                           <li><strong>reference</strong>: Reference</li>
+                                                                           </ul>
+                                                                     </div>
+                                                                  </details>
+                                                               </div>
+                                                            </div>
+                                                            <div class="model-entry definition assembly">
+                                                               <div class="instance-header">
+                                                                  <p id="/profile/merge/custom/groups/parts/links/media-type" class="toc7 name">media-type</p>
+                                                                  <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                                  <p class="occurrence">[0 or 1]</p>
+                                                                  <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/part/link/@media-type">Switch to XML</a></div>
+                                                                  <p class="formal-name">Media Type</p>
+                                                               </div>
+                                                               <div class="body">
+                                                                  <p class="description"><span class="usa-tag">Description</span> Specifies a media type as defined by the Internet Assigned Numbers Authority (IANA)
+                                                                     <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">Media Types Registry</a>. </p>
+                                                                  <div class="remarks-group usa-prose">
+                                                                     <details open="open">
+                                                                        <summary class="subhead">Remarks</summary>
+                                                                        <div class="remarks">
+                                                                           <p>The <code>media-type</code> provides a hint about the content model of the referenced resource. A valid entry
+                                                                              from the <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">IANA Media Types registry</a> SHOULD be used.</p>
+                                                                        </div>
+                                                                     </details>
+                                                                  </div>
+                                                               </div>
+                                                            </div>
+                                                            <div class="model-entry definition assembly">
+                                                               <div class="instance-header">
+                                                                  <p id="/profile/merge/custom/groups/parts/links/text" class="toc7 name">text</p>
+                                                                  <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                                                  <p class="occurrence">[0 or 1]</p>
+                                                                  <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/part/link/text">Switch to XML</a></div>
+                                                                  <p class="formal-name">Link Text</p>
+                                                               </div>
+                                                               <div class="body">
+                                                                  <p class="description"><span class="usa-tag">Description</span> A textual label to associate with the link, which may be used for presentation in
+                                                                     a tool.</p>
+                                                               </div>
+                                                            </div>
+                                                         </details>
+                                                      </div>
+                                                   </div>
+                                                </details>
+                                             </div>
+                                          </div>
+                                          <div class="choice">
+                                             <p>A choice:</p>
+                                             <div class="model-entry definition assembly">
+                                                <div class="instance-header">
+                                                   <h5 id="/profile/merge/custom/groups/groups" class="toc5 name">groups</h5>
+                                                   <p class="type">array<br /></p>
+                                                   <p class="occurrence">[0 or 1]</p>
+                                                   <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/group">Switch to XML</a></div>
+                                                </div>
+                                                <div class="array-header">
+                                                   <p class="array-member">(array member)</p>
+                                                   <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-profile/group/groups">(global definition)</a></p>
+                                                   <p class="occurrence">[1 to ∞]</p>
+                                                   <p class="formal-name">Control group</p>
+                                                </div>
+                                                <div class="body">
+                                                   <p class="description"><span class="usa-tag">Description</span> A group of (selected) controls or of groups of controls</p>
+                                                   <div class="remarks-group usa-prose">
+                                                      <details open="open">
+                                                         <summary class="subhead">Remarks</summary>
+                                                         <div class="remarks">
+                                                            <p>This construct mirrors the same construct that exists in an OSCAL catalog.</p>
+                                                         </div>
+                                                      </details>
+                                                   </div>
+                                                </div>
+                                             </div>
+                                             <div class="model-entry definition assembly">
+                                                <div class="instance-header">
+                                                   <h5 id="/profile/merge/custom/groups/insert-controls" class="toc5 name">insert-controls</h5>
+                                                   <p class="type">array<br /></p>
+                                                   <p class="occurrence">[0 or 1]</p>
+                                                   <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/insert-controls">Switch to XML</a></div>
+                                                </div>
+                                                <div class="array-header">
+                                                   <p class="array-member">(array member)</p>
+                                                   <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-profile/group/insert-controls">(global definition)</a></p>
+                                                   <p class="occurrence">[1 to ∞]</p>
+                                                   <p class="formal-name">Select controls</p>
+                                                </div>
+                                                <div class="body">
+                                                   <p class="description"><span class="usa-tag">Description</span> Specifies which controls to use in the containing context.</p>
+                                                   <div class="remarks-group usa-prose">
+                                                      <details open="open">
+                                                         <summary class="subhead">Remarks</summary>
+                                                         <div class="remarks">
+                                                            <p>To be schema-valid, this element must contain either (but not both) a single <code>include-all</code> directive, or a sequence of <code>include-controls</code> directives.</p>
+                                                            <p>If this directive is not provided, then no controls are to be inserted; i.e., all
+                                                               controls are included explicitly.</p>
+                                                         </div>
+                                                      </details>
+                                                   </div>
+                                                   <details class="properties" open="open">
+                                                      <summary>Properties (3)</summary>
+                                                      <div class="model-entry definition assembly">
+                                                         <div class="instance-header">
+                                                            <h6 id="/profile/merge/custom/groups/insert-controls/order" class="toc6 name">order</h6>
+                                                            <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                            <p class="occurrence">[0 or 1]</p>
+                                                            <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/insert-controls/@order">Switch to XML</a></div>
+                                                            <p class="formal-name">Order</p>
+                                                         </div>
+                                                         <div class="body">
+                                                            <p class="description"><span class="usa-tag">Description</span> A designation of how a selection of controls in a profile is to be ordered.</p>
+                                                            <details class="constraints" open="open">
+                                                               <summary>Constraint (1)</summary>
+                                                               <div class="constraint">
+                                                                  <p><span class="usa-tag">allowed values</span></p>
+                                                                  <p>The value <b>must</b> be one of the following:</p>
+                                                                  <ul>
+                                                                     
+                                                                     <li><strong>keep</strong></li>
+                                                                     
+                                                                     <li><strong>ascending</strong></li>
+                                                                     
+                                                                     <li><strong>descending</strong></li>
+                                                                     </ul>
+                                                               </div>
+                                                            </details>
+                                                         </div>
+                                                      </div>
+                                                      <div class="choice">
+                                                         <p>A choice:</p>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
-                                                               <p id="/profile/merge/custom/groups/params/links/media-type" class="toc7 name">media-type</p>
-                                                               <p class="type"><a href="/reference/datatypes/#string">string</a></p>
-                                                               <p class="occurrence">[0 or 1]</p>
-                                                               <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/param/link/@media-type">Switch to XML</a></div>
-                                                               <p class="formal-name">Media Type</p>
+                                                               <h6 id="/profile/merge/custom/groups/insert-controls/include-all" class="toc6 name">include-all</h6>
+                                                               <p class="type"><a href="/reference/datatypes/#empty">empty</a></p>
+                                                               <p class="occurrence">[1]</p>
+                                                               <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/insert-controls/include-all">Switch to XML</a></div>
+                                                               <p class="formal-name">Insert All</p>
                                                             </div>
                                                             <div class="body">
-                                                               <p class="description"><span class="usa-tag">Description</span> Specifies a media type as defined by the Internet Assigned Numbers Authority (IANA)
-                                                                  <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">Media Types Registry</a>. </p>
+                                                               <p class="description"><span class="usa-tag">Description</span> Insert all controls from the imported catalog or profile resources identified in
+                                                                  the <code>import</code> directive.</p>
                                                                <div class="remarks-group usa-prose">
                                                                   <details open="open">
                                                                      <summary class="subhead">Remarks</summary>
                                                                      <div class="remarks">
-                                                                        <p>The <code>media-type</code> provides a hint about the content model of the referenced resource. A valid entry
-                                                                           from the <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">IANA Media Types registry</a> SHOULD be used.</p>
+                                                                        <p>This element provides an alternative to calling controls individually from a catalog.</p>
                                                                      </div>
                                                                   </details>
                                                                </div>
@@ -4132,1793 +5425,521 @@ The following is the JSON format reference for this model, which is organized hi
                                                          </div>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
-                                                               <p id="/profile/merge/custom/groups/params/links/text" class="toc7 name">text</p>
-                                                               <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
-                                                               <p class="occurrence">[0 or 1]</p>
-                                                               <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/param/link/text">Switch to XML</a></div>
-                                                               <p class="formal-name">Link Text</p>
-                                                            </div>
-                                                            <div class="body">
-                                                               <p class="description"><span class="usa-tag">Description</span> A textual label to associate with the link, which may be used for presentation in
-                                                                  a tool.</p>
-                                                            </div>
-                                                         </div>
-                                                      </details>
-                                                   </div>
-                                                </div>
-                                                <div class="model-entry definition assembly">
-                                                   <div class="instance-header">
-                                                      <h6 id="/profile/merge/custom/groups/params/label" class="toc6 name">label</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
-                                                      <p class="occurrence">[0 or 1]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/param/label">Switch to XML</a></div>
-                                                      <p class="formal-name">Parameter Label</p>
-                                                   </div>
-                                                   <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> A short, placeholder name for the parameter, which can be used as a substitute for
-                                                         a <code>value</code> if no value is assigned.</p>
-                                                      <div class="remarks-group usa-prose">
-                                                         <details open="open">
-                                                            <summary class="subhead">Remarks</summary>
-                                                            <div class="remarks">
-                                                               <p>The label value should be suitable for inline display in a rendered catalog.</p>
-                                                            </div>
-                                                            <div class="remarks">
-                                                               <p>The label value should be suitable for inline display in a rendered catalog.</p>
-                                                            </div>
-                                                         </details>
-                                                      </div>
-                                                   </div>
-                                                </div>
-                                                <div class="model-entry definition assembly">
-                                                   <div class="instance-header">
-                                                      <h6 id="/profile/merge/custom/groups/params/usage" class="toc6 name">usage</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
-                                                      <p class="occurrence">[0 or 1]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/param/usage">Switch to XML</a></div>
-                                                      <p class="formal-name">Parameter Usage Description</p>
-                                                   </div>
-                                                   <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> Describes the purpose and use of a parameter</p>
-                                                   </div>
-                                                </div>
-                                                <div class="model-entry definition assembly">
-                                                   <div class="instance-header">
-                                                      <h6 id="/profile/merge/custom/groups/params/constraints" class="toc6 name">constraints</h6>
-                                                      <p class="type">array<br /></p>
-                                                      <p class="occurrence">[0 or 1]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/param/constraint">Switch to XML</a></div>
-                                                   </div>
-                                                   <div class="array-header">
-                                                      <p class="array-member">(array member)</p>
-                                                      <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-catalog-common/parameter/constraints">(global definition)</a></p>
-                                                      <p class="occurrence">[1 to ∞]</p>
-                                                      <p class="formal-name">Constraint</p>
-                                                   </div>
-                                                   <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> A formal or informal expression of a constraint or test</p>
-                                                      <details class="properties" open="open">
-                                                         <summary>Properties (2)</summary>
-                                                         <div class="model-entry definition assembly">
-                                                            <div class="instance-header">
-                                                               <p id="/profile/merge/custom/groups/params/constraints/description" class="toc7 name">description</p>
-                                                               <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
-                                                               <p class="occurrence">[0 or 1]</p>
-                                                               <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/param/constraint/description">Switch to XML</a></div>
-                                                               <p class="formal-name">Constraint Description</p>
-                                                            </div>
-                                                            <div class="body">
-                                                               <p class="description"><span class="usa-tag">Description</span> A textual summary of the constraint to be applied.</p>
-                                                            </div>
-                                                         </div>
-                                                         <div class="model-entry definition assembly">
-                                                            <div class="instance-header">
-                                                               <p id="/profile/merge/custom/groups/params/constraints/tests" class="toc7 name">tests</p>
+                                                               <h6 id="/profile/merge/custom/groups/insert-controls/include-controls" class="toc6 name">include-controls</h6>
                                                                <p class="type">array<br /></p>
-                                                               <p class="occurrence">[0 or 1]</p>
-                                                               <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/param/constraint/test">Switch to XML</a></div>
+                                                               <p class="occurrence">[1]</p>
+                                                               <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/insert-controls/include-controls">Switch to XML</a></div>
                                                             </div>
                                                             <div class="array-header">
                                                                <p class="array-member">(array member)</p>
                                                                <p class="type">object<br /></p>
                                                                <p class="occurrence">[1 to ∞]</p>
-                                                               <p class="formal-name">Constraint Test</p>
+                                                               <p class="formal-name">Call</p>
                                                             </div>
                                                             <div class="body">
-                                                               <p class="description"><span class="usa-tag">Description</span> A test expression which is expected to be evaluated by a tool.</p>
+                                                               <p class="description"><span class="usa-tag">Description</span> Call a control by its ID</p>
+                                                               <div class="remarks-group usa-prose">
+                                                                  <details open="open">
+                                                                     <summary class="subhead">Remarks</summary>
+                                                                     <div class="remarks">
+                                                                        <p>If <code>with-child-controls</code> is <q>yes</q> on the call to a control, no sibling <code>call</code>elements need to be used to call any controls appearing within it. Since generally,
+                                                                           this is how control enhancements are represented (as controls within controls), this
+                                                                           provides a way to include controls with all their dependent controls (enhancements)
+                                                                           without having to call them individually.</p>
+                                                                     </div>
+                                                                  </details>
+                                                               </div>
                                                                <details class="properties" open="open">
-                                                                  <summary>Properties (2)</summary>
+                                                                  <summary>Properties (3)</summary>
                                                                   <div class="model-entry definition assembly">
                                                                      <div class="instance-header">
-                                                                        <p id="/profile/merge/custom/groups/params/constraints/tests/expression" class="toc8 name">expression</p>
-                                                                        <p class="type"><a href="/reference/datatypes/#string">string</a></p>
-                                                                        <p class="occurrence">[1]</p>
-                                                                        <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/param/constraint/test/expression">Switch to XML</a></div>
-                                                                        <p class="formal-name">Constraint test</p>
-                                                                     </div>
-                                                                     <div class="body">
-                                                                        <p class="description"><span class="usa-tag">Description</span> A formal (executable) expression of a constraint</p>
-                                                                     </div>
-                                                                  </div>
-                                                                  <div class="model-entry definition assembly">
-                                                                     <div class="instance-header">
-                                                                        <p id="/profile/merge/custom/groups/params/constraints/tests/remarks" class="toc8 name">remarks</p>
-                                                                        <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                                        <p id="/profile/merge/custom/groups/insert-controls/include-controls/with-child-controls" class="toc7 name">with-child-controls</p>
+                                                                        <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                                         <p class="occurrence">[0 or 1]</p>
-                                                                        <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/param/constraint/test/remarks">Switch to XML</a></div>
-                                                                        <p class="formal-name">Remarks</p>
+                                                                        <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/insert-controls/include-controls/@with-child-controls">Switch to XML</a></div>
+                                                                        <p class="formal-name">Include contained controls with control</p>
                                                                      </div>
                                                                      <div class="body">
-                                                                        <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                                                        <p class="description"><span class="usa-tag">Description</span> When a control is included, whether its child (dependent) controls are also included.</p>
+                                                                        <details class="constraints" open="open">
+                                                                           <summary>Constraint (1)</summary>
+                                                                           <div class="constraint">
+                                                                              <p><span class="usa-tag">allowed values</span></p>
+                                                                              <p>The value <b>must</b> be one of the following:</p>
+                                                                              <ul>
+                                                                                 
+                                                                                 <li><strong>yes</strong>: Include child controls with an included control.</li>
+                                                                                 
+                                                                                 <li><strong>no</strong>: When importing a control, only include child controls that are also explicitly called.</li>
+                                                                                 </ul>
+                                                                           </div>
+                                                                        </details>
                                                                      </div>
                                                                   </div>
-                                                               </details>
-                                                            </div>
-                                                         </div>
-                                                      </details>
-                                                   </div>
-                                                </div>
-                                                <div class="model-entry definition assembly">
-                                                   <div class="instance-header">
-                                                      <h6 id="/profile/merge/custom/groups/params/guidelines" class="toc6 name">guidelines</h6>
-                                                      <p class="type">array<br /></p>
-                                                      <p class="occurrence">[0 or 1]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/param/guideline">Switch to XML</a></div>
-                                                   </div>
-                                                   <div class="array-header">
-                                                      <p class="array-member">(array member)</p>
-                                                      <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-catalog-common/parameter/guidelines">(global definition)</a></p>
-                                                      <p class="occurrence">[1 to ∞]</p>
-                                                      <p class="formal-name">Guideline</p>
-                                                   </div>
-                                                   <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> A prose statement that provides a recommendation for the use of a parameter.</p>
-                                                      <details class="properties" open="open">
-                                                         <summary>Property (1)</summary>
-                                                         <div class="model-entry definition assembly">
-                                                            <div class="instance-header">
-                                                               <p id="/profile/merge/custom/groups/params/guidelines/prose" class="toc7 name">prose</p>
-                                                               <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
-                                                               <p class="occurrence">[1]</p>
-                                                               <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/param/guideline">Switch to XML</a></div>
-                                                               <p class="formal-name">Guideline Text</p>
-                                                            </div>
-                                                            <div class="body">
-                                                               <p class="description"><span class="usa-tag">Description</span> Prose permits multiple paragraphs, lists, tables etc.</p>
-                                                            </div>
-                                                         </div>
-                                                      </details>
-                                                   </div>
-                                                </div>
-                                                <div class="model-entry definition assembly">
-                                                   <div class="instance-header">
-                                                      <h6 id="/profile/merge/custom/groups/params/values" class="toc6 name">values</h6>
-                                                      <p class="type">array<br /></p>
-                                                      <p class="occurrence">[0 or 1]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/param/value">Switch to XML</a></div>
-                                                   </div>
-                                                   <div class="array-header">
-                                                      <p class="array-member">(array member)</p>
-                                                      <p class="type"><a href="/reference/datatypes/#string">string</a></p>
-                                                      <p class="occurrence">[0 to ∞]</p>
-                                                      <p class="formal-name">Parameter Value</p>
-                                                   </div>
-                                                   <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> A parameter value or set of values.</p>
-                                                      <div class="remarks-group usa-prose">
-                                                         <details open="open">
-                                                            <summary class="subhead">Remarks</summary>
-                                                            <div class="remarks in-use">
-                                                               <p>A set of values provided in a catalog can be redefined at any higher layer of OSCAL
-                                                                  (e.g., Profile).</p>
-                                                            </div>
-                                                         </details>
-                                                      </div>
-                                                   </div>
-                                                </div>
-                                                <div class="model-entry definition assembly">
-                                                   <div class="instance-header">
-                                                      <h6 id="/profile/merge/custom/groups/params/select" class="toc6 name">select</h6>
-                                                      <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-catalog-common/parameter/select">(global definition)</a></p>
-                                                      <p class="occurrence">[0 or 1]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/param/select">Switch to XML</a></div>
-                                                      <p class="formal-name">Selection</p>
-                                                   </div>
-                                                   <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> Presenting a choice among alternatives</p>
-                                                      <div class="remarks-group usa-prose">
-                                                         <details open="open">
-                                                            <summary class="subhead">Remarks</summary>
-                                                            <div class="remarks">
-                                                               <p>A set of parameter value choices, that may be picked from to set the parameter value.</p>
-                                                            </div>
-                                                            <div class="remarks in-use">
-                                                               <p>A set of parameter value choices, that may be picked from to set the parameter value.</p>
-                                                            </div>
-                                                         </details>
-                                                      </div>
-                                                      <details class="properties" open="open">
-                                                         <summary>Properties (2)</summary>
-                                                         <div class="model-entry definition assembly">
-                                                            <div class="instance-header">
-                                                               <p id="/profile/merge/custom/groups/params/select/how-many" class="toc7 name">how-many</p>
-                                                               <p class="type"><a href="/reference/datatypes/#token">token</a></p>
-                                                               <p class="occurrence">[0 or 1]</p>
-                                                               <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/param/select/@how-many">Switch to XML</a></div>
-                                                               <p class="formal-name">Parameter Cardinality</p>
-                                                            </div>
-                                                            <div class="body">
-                                                               <p class="description"><span class="usa-tag">Description</span> Describes the number of selections that must occur. Without this setting, only one
-                                                                  value should be assumed to be permitted.</p>
-                                                               <details class="constraints" open="open">
-                                                                  <summary>Constraint (1)</summary>
-                                                                  <div class="constraint">
-                                                                     <p><span class="usa-tag">allowed values</span></p>
-                                                                     <p>The value <b>must</b> be one of the following:</p>
-                                                                     <ul>
-                                                                        
-                                                                        <li><strong>one</strong>: Only one value is permitted.</li>
-                                                                        
-                                                                        <li><strong>one-or-more</strong>: One or more values are permitted.</li>
-                                                                        </ul>
-                                                                  </div>
-                                                               </details>
-                                                            </div>
-                                                         </div>
-                                                         <div class="model-entry definition assembly">
-                                                            <div class="instance-header">
-                                                               <p id="/profile/merge/custom/groups/params/select/choice" class="toc7 name">choice</p>
-                                                               <p class="type">array<br /></p>
-                                                               <p class="occurrence">[0 or 1]</p>
-                                                               <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/param/select/choice">Switch to XML</a></div>
-                                                            </div>
-                                                            <div class="array-header">
-                                                               <p class="array-member">(array member)</p>
-                                                               <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
-                                                               <p class="occurrence">[0 to ∞]</p>
-                                                               <p class="formal-name">Choice</p>
-                                                            </div>
-                                                            <div class="body">
-                                                               <p class="description"><span class="usa-tag">Description</span> A value selection among several such options</p>
-                                                            </div>
-                                                         </div>
-                                                      </details>
-                                                   </div>
-                                                </div>
-                                                <div class="model-entry definition assembly">
-                                                   <div class="instance-header">
-                                                      <h6 id="/profile/merge/custom/groups/params/remarks" class="toc6 name">remarks</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
-                                                      <p class="occurrence">[0 or 1]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/param/remarks">Switch to XML</a></div>
-                                                      <p class="formal-name">Remarks</p>
-                                                   </div>
-                                                   <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
-                                                   </div>
-                                                </div>
-                                             </details>
-                                          </div>
-                                       </div>
-                                       <div class="model-entry definition assembly">
-                                          <div class="instance-header">
-                                             <h5 id="/profile/merge/custom/groups/props" class="toc5 name">props</h5>
-                                             <p class="type">array<br /></p>
-                                             <p class="occurrence">[0 or 1]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/prop">Switch to XML</a></div>
-                                          </div>
-                                          <div class="array-header">
-                                             <p class="array-member">(array member)</p>
-                                             <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-profile/group/props">(global definition)</a></p>
-                                             <p class="occurrence">[1 to ∞]</p>
-                                             <p class="formal-name">Property</p>
-                                          </div>
-                                          <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> An attribute, characteristic, or quality of the containing object expressed as a
-                                                namespace qualified name/value pair. The value of a property is a simple scalar value,
-                                                which may be expressed as a list of values.</p>
-                                             <div class="remarks-group usa-prose">
-                                                <details open="open">
-                                                   <summary class="subhead">Remarks</summary>
-                                                   <div class="remarks">
-                                                      <p>Properties permit the deployment and management of arbitrary controlled values, within
-                                                         OSCAL objects. A property can be included for any purpose useful to an application
-                                                         or implementation. Typically, properties will be used to sort, filter, select, order,
-                                                         and arrange OSCAL content objects, to relate OSCAL objects to one another, or to associate
-                                                         an OSCAL object to class hierarchies, taxonomies, or external authorities. Thus, the
-                                                         lexical composition of properties may be constrained by external processes to ensure
-                                                         consistency.</p>
-                                                      <p>Property allows for associated remarks that describe why the specific property value
-                                                         was applied to the containing object, or the significance of the value in the context
-                                                         of the containing object.</p>
-                                                   </div>
-                                                </details>
-                                             </div>
-                                             <details class="properties" open="open">
-                                                <summary>Properties (6)</summary>
-                                                <div class="model-entry definition assembly">
-                                                   <div class="instance-header">
-                                                      <h6 id="/profile/merge/custom/groups/props/name" class="toc6 name">name</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#token">token</a></p>
-                                                      <p class="occurrence">[1]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/prop/@name">Switch to XML</a></div>
-                                                      <p class="formal-name">Property Name</p>
-                                                   </div>
-                                                   <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> A textual label that uniquely identifies a specific attribute, characteristic, or
-                                                         quality of the property's containing object.</p>
-                                                      <details class="constraints" open="open">
-                                                         <summary>Constraint (1)</summary>
-                                                         <div class="constraint">
-                                                            <p><span class="usa-tag">allowed value</span></p>
-                                                            <p>The value <b>may be locally defined</b>, or the following:</p>
-                                                            <ul>
-                                                               
-                                                               <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
-                                                                  An optional class can be used to define the specific marking system used for the associated
-                                                                  value.</li>
-                                                               </ul>
-                                                         </div>
-                                                      </details>
-                                                   </div>
-                                                </div>
-                                                <div class="model-entry definition assembly">
-                                                   <div class="instance-header">
-                                                      <h6 id="/profile/merge/custom/groups/props/uuid" class="toc6 name">uuid</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
-                                                      <p class="occurrence">[0 or 1]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/prop/@uuid">Switch to XML</a></div>
-                                                      <p class="formal-name">Property Universally Unique Identifier</p>
-                                                   </div>
-                                                   <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> A unique identifier that can be used to reference this property elsewhere in an OSCAL
-                                                         document. A UUID should be consistently used for a given location across revisions
-                                                         of the document.</p>
-                                                   </div>
-                                                </div>
-                                                <div class="model-entry definition assembly">
-                                                   <div class="instance-header">
-                                                      <h6 id="/profile/merge/custom/groups/props/ns" class="toc6 name">ns</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
-                                                      <p class="occurrence">[0 or 1]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/prop/@ns">Switch to XML</a></div>
-                                                      <p class="formal-name">Property Namespace</p>
-                                                   </div>
-                                                   <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> A namespace qualifying the property's name. This allows different organizations to
-                                                         associate distinct semantics with the same name.</p>
-                                                      <div class="remarks-group usa-prose">
-                                                         <details open="open">
-                                                            <summary class="subhead">Remarks</summary>
-                                                            <div class="remarks">
-                                                               <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
-                                                                  names and associated values used in a property. This allows the semantics associated
-                                                                  with a given name/value pair to be defined on an organization-by-organization basis.</p>
-                                                               <p>An organization MUST use a URI that they have control over. e.g., a domain registered
-                                                                  to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
-                                                               <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
-                                                            </div>
-                                                            <div class="remarks">
-                                                               <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
-                                                                  names and associated values used in a property. This allows the semantics associated
-                                                                  with a given name/value pair to be defined on an organization-by-organization basis.</p>
-                                                               <p>An organization MUST use a URI that they have control over. e.g., a domain registered
-                                                                  to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
-                                                               <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
-                                                            </div>
-                                                         </details>
-                                                      </div>
-                                                   </div>
-                                                </div>
-                                                <div class="model-entry definition assembly">
-                                                   <div class="instance-header">
-                                                      <h6 id="/profile/merge/custom/groups/props/value" class="toc6 name">value</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#string">string</a></p>
-                                                      <p class="occurrence">[1]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/prop/@value">Switch to XML</a></div>
-                                                      <p class="formal-name">Property Value</p>
-                                                   </div>
-                                                   <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> Indicates the value of the attribute, characteristic, or quality.</p>
-                                                   </div>
-                                                </div>
-                                                <div class="model-entry definition assembly">
-                                                   <div class="instance-header">
-                                                      <h6 id="/profile/merge/custom/groups/props/class" class="toc6 name">class</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#token">token</a></p>
-                                                      <p class="occurrence">[0 or 1]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/prop/@class">Switch to XML</a></div>
-                                                      <p class="formal-name">Property Class</p>
-                                                   </div>
-                                                   <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> A textual label that provides a sub-type or characterization of the property's <code>name</code>. This can be used to further distinguish or discriminate between the semantics of
-                                                         multiple properties of the same object with the same <code>name</code> and <code>ns</code>. </p>
-                                                      <div class="remarks-group usa-prose">
-                                                         <details open="open">
-                                                            <summary class="subhead">Remarks</summary>
-                                                            <div class="remarks">
-                                                               <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                                  a specific <code>class</code> value.</p>
-                                                            </div>
-                                                            <div class="remarks">
-                                                               <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                                  a specific <code>class</code> value.</p>
-                                                            </div>
-                                                         </details>
-                                                      </div>
-                                                   </div>
-                                                </div>
-                                                <div class="model-entry definition assembly">
-                                                   <div class="instance-header">
-                                                      <h6 id="/profile/merge/custom/groups/props/remarks" class="toc6 name">remarks</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
-                                                      <p class="occurrence">[0 or 1]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/prop/remarks">Switch to XML</a></div>
-                                                      <p class="formal-name">Remarks</p>
-                                                   </div>
-                                                   <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
-                                                   </div>
-                                                </div>
-                                             </details>
-                                          </div>
-                                       </div>
-                                       <div class="model-entry definition assembly">
-                                          <div class="instance-header">
-                                             <h5 id="/profile/merge/custom/groups/links" class="toc5 name">links</h5>
-                                             <p class="type">array<br /></p>
-                                             <p class="occurrence">[0 or 1]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/link">Switch to XML</a></div>
-                                          </div>
-                                          <div class="array-header">
-                                             <p class="array-member">(array member)</p>
-                                             <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-profile/group/links">(global definition)</a></p>
-                                             <p class="occurrence">[1 to ∞]</p>
-                                             <p class="formal-name">Link</p>
-                                          </div>
-                                          <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> A reference to a local or remote resource</p>
-                                             <div class="remarks-group usa-prose">
-                                                <details open="open">
-                                                   <summary class="subhead">Remarks</summary>
-                                                   <div class="remarks">
-                                                      <p>To provide a cryptographic hash for a remote target resource, a local reference to
-                                                         a back matter <code>resource</code> is needed. The resource allows one or more hash values to be provided using the <code>rlink/hash</code> object.</p>
-                                                      <p>The OSCAL <code>link</code> is a roughly based on the HTML <a href="https://www.w3.org/TR/html401/struct/links.html#edef-LINK">link element</a>. </p>
-                                                   </div>
-                                                </details>
-                                             </div>
-                                             <details class="constraints" open="open">
-                                                <summary>Constraints (3)</summary>
-                                                <div class="constraint">
-                                                   <p><span class="usa-tag">matches</span>  for <code class="path">@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
-                                                </div>
-                                                <div class="constraint">
-                                                   <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-back-matter-resource</code> using a key constructed of key field(s) <code>@href</code></p>
-                                                </div>
-                                                <div class="constraint">
-                                                   <p><span class="usa-tag">matches</span>  for <code class="path">@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
-                                                </div>
-                                             </details>
-                                             <details class="properties" open="open">
-                                                <summary>Properties (4)</summary>
-                                                <div class="model-entry definition assembly">
-                                                   <div class="instance-header">
-                                                      <h6 id="/profile/merge/custom/groups/links/href" class="toc6 name">href</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
-                                                      <p class="occurrence">[1]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/link/@href">Switch to XML</a></div>
-                                                      <p class="formal-name">Hypertext Reference</p>
-                                                   </div>
-                                                   <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> A resolvable URL reference to a resource.</p>
-                                                      <div class="remarks-group usa-prose">
-                                                         <details open="open">
-                                                            <summary class="subhead">Remarks</summary>
-                                                            <div class="remarks">
-                                                               <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
-                                                                  that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
-                                                               <p>If a local reference using a fragment is used, this will be indicated by a fragment
-                                                                  "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
-                                                               <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
-                                                                  resource. A relative URI will be resolved relative to the location of the document
-                                                                  containing the link.</p>
-                                                            </div>
-                                                            <div class="remarks">
-                                                               <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
-                                                                  that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
-                                                               <p>If a local reference using a fragment is used, this will be indicated by a fragment
-                                                                  "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
-                                                               <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
-                                                                  resource. A relative URI will be resolved relative to the location of the document
-                                                                  containing the link.</p>
-                                                            </div>
-                                                         </details>
-                                                      </div>
-                                                   </div>
-                                                </div>
-                                                <div class="model-entry definition assembly">
-                                                   <div class="instance-header">
-                                                      <h6 id="/profile/merge/custom/groups/links/rel" class="toc6 name">rel</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#token">token</a></p>
-                                                      <p class="occurrence">[0 or 1]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/link/@rel">Switch to XML</a></div>
-                                                      <p class="formal-name">Relation</p>
-                                                   </div>
-                                                   <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> Describes the type of relationship provided by the link. This can be an indicator
-                                                         of the link's purpose.</p>
-                                                      <details class="constraints" open="open">
-                                                         <summary>Constraint (1)</summary>
-                                                         <div class="constraint">
-                                                            <p><span class="usa-tag">allowed value</span></p>
-                                                            <p>The value <b>may be locally defined</b>, or the following:</p>
-                                                            <ul>
-                                                               
-                                                               <li><strong>reference</strong>: Reference</li>
-                                                               </ul>
-                                                         </div>
-                                                      </details>
-                                                   </div>
-                                                </div>
-                                                <div class="model-entry definition assembly">
-                                                   <div class="instance-header">
-                                                      <h6 id="/profile/merge/custom/groups/links/media-type" class="toc6 name">media-type</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#string">string</a></p>
-                                                      <p class="occurrence">[0 or 1]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/link/@media-type">Switch to XML</a></div>
-                                                      <p class="formal-name">Media Type</p>
-                                                   </div>
-                                                   <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> Specifies a media type as defined by the Internet Assigned Numbers Authority (IANA)
-                                                         <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">Media Types Registry</a>. </p>
-                                                      <div class="remarks-group usa-prose">
-                                                         <details open="open">
-                                                            <summary class="subhead">Remarks</summary>
-                                                            <div class="remarks">
-                                                               <p>The <code>media-type</code> provides a hint about the content model of the referenced resource. A valid entry
-                                                                  from the <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">IANA Media Types registry</a> SHOULD be used.</p>
-                                                            </div>
-                                                         </details>
-                                                      </div>
-                                                   </div>
-                                                </div>
-                                                <div class="model-entry definition assembly">
-                                                   <div class="instance-header">
-                                                      <h6 id="/profile/merge/custom/groups/links/text" class="toc6 name">text</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
-                                                      <p class="occurrence">[0 or 1]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/link/text">Switch to XML</a></div>
-                                                      <p class="formal-name">Link Text</p>
-                                                   </div>
-                                                   <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> A textual label to associate with the link, which may be used for presentation in
-                                                         a tool.</p>
-                                                   </div>
-                                                </div>
-                                             </details>
-                                          </div>
-                                       </div>
-                                       <div class="model-entry definition assembly">
-                                          <div class="instance-header">
-                                             <h5 id="/profile/merge/custom/groups/parts" class="toc5 name">parts</h5>
-                                             <p class="type">array<br /></p>
-                                             <p class="occurrence">[0 or 1]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/part">Switch to XML</a></div>
-                                          </div>
-                                          <div class="array-header">
-                                             <p class="array-member">(array member)</p>
-                                             <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-profile/group/parts">(global definition)</a></p>
-                                             <p class="occurrence">[1 to ∞]</p>
-                                             <p class="formal-name">Part</p>
-                                          </div>
-                                          <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> A partition of a control's definition or a child of another part.</p>
-                                             <div class="remarks-group usa-prose">
-                                                <details open="open">
-                                                   <summary class="subhead">Remarks</summary>
-                                                   <div class="remarks">
-                                                      <p>A <code>part</code> provides for logical partitioning of prose, and can be thought of as a grouping structure
-                                                         (e.g., section). A <code>part</code> can have child parts allowing for arbitrary nesting of prose content (e.g., statement
-                                                         hierarchy). A <code>part</code> can contain <code>prop</code> objects that allow for enriching prose text with structured name/value information.</p>
-                                                      <p>A <code>part</code> can be assigned an optional <code>id</code>, which allows for internal and external references to the textual concept contained
-                                                         within a <code>part</code>. A <code>id</code> provides a means for an OSCAL profile, or a higher layer OSCAL model to reference
-                                                         a specific part within a <code>catalog</code>. For example, an <code>id</code> can be used to reference or to make modifications to a control statement in a profile.</p>
-                                                      <p>Use of <code>part</code> and <code>prop</code> provides for a wide degree of extensibility within the OSCAL catalog model. The optional
-                                                         <code>ns</code> provides a means to qualify a part's <code>name</code>, allowing for organization-specific vocabularies to be defined with clear semantics.
-                                                         Any organization that extends OSCAL in this way should consistently assign a <code>ns</code> value that represents the organization, making a given namespace qualified <code>name</code> unique to that organization. This allows the combination of <code>ns</code> and <code>name</code> to always be unique and unambiguous, even when mixed with extensions from other organizations.
-                                                         Each organization is responsible for governance of their own extensions, and is strongly
-                                                         encouraged to publish their extensions as standards to their user community. If no
-                                                         <code>ns</code> is provided, the name is expected to be in the "OSCAL" namespace.</p>
-                                                      <p>To ensure a <code>ns</code> is unique to an organization and naming conflicts are avoided, a URI containing a
-                                                         DNS or other globally defined organization name should be used. For example, if FedRAMP
-                                                         and DoD both extend OSCAL, FedRAMP will use the <code>ns</code> "https://fedramp.gov", while DoD will use the <code>ns</code> "https://defense.gov" for any organization specific <code>name</code>. </p>
-                                                      <p>Tools that process OSCAL content are not required to interpret unrecognized OSCAL
-                                                         extensions; however, OSCAL compliant tools should not modify or remove unrecognized
-                                                         extensions, unless there is a compelling reason to do so, such as data sensitivity.</p>
-                                                   </div>
-                                                </details>
-                                             </div>
-                                             <details class="constraints" open="open">
-                                                <summary>Constraints (4)</summary>
-                                                <div class="constraint">
-                                                   <p><span class="usa-tag">allowed values</span>  for <code class="path">prop/@name</code></p>
-                                                   <p>The value <b>may be locally defined</b>, or one of the following:</p>
-                                                   <ul>
-                                                      
-                                                      <li><strong>label</strong>: A human-readable label for the parent context.</li>
-                                                      
-                                                      <li><strong>sort-id</strong>: An alternative identifier, whose value is easily sortable among other such values
-                                                         in the document.</li>
-                                                      
-                                                      </ul>
-                                                </div>
-                                                <div class="constraint">
-                                                   <p><span class="usa-tag">allowed value</span>  for <code class="path">prop/@name</code></p>
-                                                   <p>The value <b>may be locally defined</b>, or the following:</p>
-                                                   <ul>
-                                                      
-                                                      <li><strong>method</strong>: The assessment method to use. This typically appears on parts with the name "assessment".</li>
-                                                      </ul>
-                                                </div>
-                                                <div class="constraint">
-                                                   <p><span class="usa-tag">has cardinality</span>  for <code class="path">prop[@name='method']</code> the cardinality of  <code>prop[@name='method']</code> is constrained: <b>1</b>; maximum <b>unbounded</b>.</p>
-                                                </div>
-                                                <div class="constraint">
-                                                   <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[@name='method']/@value</code></p>
-                                                   <p>The value <b>must</b> be one of the following:</p>
-                                                   <ul>
-                                                      
-                                                      <li><strong>INTERVIEW</strong>: The process of holding discussions with individuals or groups of individuals within
-                                                         an organization to once again, facilitate assessor understanding, achieve clarification,
-                                                         or obtain evidence.</li>
-                                                      
-                                                      <li><strong>EXAMINE</strong>: The process of reviewing, inspecting, observing, studying, or analyzing one or more
-                                                         assessment objects (i.e., specifications, mechanisms, or activities).</li>
-                                                      
-                                                      <li><strong>TEST</strong>: The process of exercising one or more assessment objects (i.e., activities or mechanisms)
-                                                         under specified conditions to compare actual with expected behavior.</li>
-                                                      </ul>
-                                                </div>
-                                             </details>
-                                             <details class="properties" open="open">
-                                                <summary>Properties (9)</summary>
-                                                <div class="model-entry definition assembly">
-                                                   <div class="instance-header">
-                                                      <h6 id="/profile/merge/custom/groups/parts/id" class="toc6 name">id</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#token">token</a></p>
-                                                      <p class="occurrence">[0 or 1]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/part/@id">Switch to XML</a></div>
-                                                      <p class="formal-name">Part Identifier</p>
-                                                   </div>
-                                                   <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> A unique identifier for a specific part instance. This identifier's uniqueness is
-                                                         document scoped and is intended to be consistent for the same part across minor revisions
-                                                         of the document.</p>
-                                                   </div>
-                                                </div>
-                                                <div class="model-entry definition assembly">
-                                                   <div class="instance-header">
-                                                      <h6 id="/profile/merge/custom/groups/parts/name" class="toc6 name">name</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#token">token</a></p>
-                                                      <p class="occurrence">[1]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/part/@name">Switch to XML</a></div>
-                                                      <p class="formal-name">Part Name</p>
-                                                   </div>
-                                                   <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> A textual label that uniquely identifies the part's semantic type.</p>
-                                                      <details class="constraints" open="open">
-                                                         <summary>Constraint (1)</summary>
-                                                         <div class="constraint">
-                                                            <p><span class="usa-tag">allowed values</span></p>
-                                                            <p>The value <b>may be locally defined</b>, or one of the following:</p>
-                                                            <ul>
-                                                               
-                                                               
-                                                               <li><strong>overview</strong>: An introduction to a control or a group of controls.</li>
-                                                               
-                                                               <li><strong>statement</strong>: A set of control implementation requirements.</li>
-                                                               
-                                                               <li><strong>item</strong>: An individual item within a control statement.</li>
-                                                               
-                                                               <li><strong>guidance</strong>: Additional information to consider when selecting, implementing, assessing, and
-                                                                  monitoring a control.</li>
-                                                               
-                                                               <li><strong>objective</strong>: Describes a set of assessment objectives.</li>
-                                                               
-                                                               <li><strong>assessment</strong>: Describes a method-based assessment over a set of assessment objects.</li>
-                                                               
-                                                               <li><strong>objects</strong>: Provides a list of assessment objects.</li>
-                                                               </ul>
-                                                         </div>
-                                                      </details>
-                                                   </div>
-                                                </div>
-                                                <div class="model-entry definition assembly">
-                                                   <div class="instance-header">
-                                                      <h6 id="/profile/merge/custom/groups/parts/ns" class="toc6 name">ns</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
-                                                      <p class="occurrence">[0 or 1]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/part/@ns">Switch to XML</a></div>
-                                                      <p class="formal-name">Part Namespace</p>
-                                                   </div>
-                                                   <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> A namespace qualifying the part's name. This allows different organizations to associate
-                                                         distinct semantics with the same name.</p>
-                                                      <div class="remarks-group usa-prose">
-                                                         <details open="open">
-                                                            <summary class="subhead">Remarks</summary>
-                                                            <div class="remarks">
-                                                               <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
-                                                                  names and associated text used in a part. This allows the semantics associated with
-                                                                  a given name to be defined on an organization-by-organization basis.</p>
-                                                               <p>An organization MUST use a URI that they have control over. e.g., a domain registered
-                                                                  to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
-                                                               <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
-                                                            </div>
-                                                            <div class="remarks">
-                                                               <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
-                                                                  names and associated text used in a part. This allows the semantics associated with
-                                                                  a given name to be defined on an organization-by-organization basis.</p>
-                                                               <p>An organization MUST use a URI that they have control over. e.g., a domain registered
-                                                                  to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
-                                                               <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
-                                                            </div>
-                                                         </details>
-                                                      </div>
-                                                   </div>
-                                                </div>
-                                                <div class="model-entry definition assembly">
-                                                   <div class="instance-header">
-                                                      <h6 id="/profile/merge/custom/groups/parts/class" class="toc6 name">class</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#token">token</a></p>
-                                                      <p class="occurrence">[0 or 1]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/part/@class">Switch to XML</a></div>
-                                                      <p class="formal-name">Part Class</p>
-                                                   </div>
-                                                   <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> A textual label that provides a sub-type or characterization of the part's <code>name</code>. This can be used to further distinguish or discriminate between the semantics of
-                                                         multiple parts of the same control with the same <code>name</code> and <code>ns</code>. </p>
-                                                      <div class="remarks-group usa-prose">
-                                                         <details open="open">
-                                                            <summary class="subhead">Remarks</summary>
-                                                            <div class="remarks">
-                                                               <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                                  a specific <code>class</code> value.</p>
-                                                               <p>A <code>class</code> can also be used in an OSCAL profile as a means to target an alteration to control
-                                                                  content.</p>
-                                                            </div>
-                                                            <div class="remarks">
-                                                               <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                                  a specific <code>class</code> value.</p>
-                                                               <p>A <code>class</code> can also be used in an OSCAL profile as a means to target an alteration to control
-                                                                  content.</p>
-                                                            </div>
-                                                         </details>
-                                                      </div>
-                                                   </div>
-                                                </div>
-                                                <div class="model-entry definition assembly">
-                                                   <div class="instance-header">
-                                                      <h6 id="/profile/merge/custom/groups/parts/title" class="toc6 name">title</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
-                                                      <p class="occurrence">[0 or 1]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/part/title">Switch to XML</a></div>
-                                                      <p class="formal-name">Part Title</p>
-                                                   </div>
-                                                   <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> A name given to the part, which may be used by a tool for display and navigation.</p>
-                                                   </div>
-                                                </div>
-                                                <div class="model-entry definition assembly">
-                                                   <div class="instance-header">
-                                                      <h6 id="/profile/merge/custom/groups/parts/props" class="toc6 name">props</h6>
-                                                      <p class="type">array<br /></p>
-                                                      <p class="occurrence">[0 or 1]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/part/prop">Switch to XML</a></div>
-                                                   </div>
-                                                   <div class="array-header">
-                                                      <p class="array-member">(array member)</p>
-                                                      <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-catalog-common/part/props">(global definition)</a></p>
-                                                      <p class="occurrence">[1 to ∞]</p>
-                                                      <p class="formal-name">Property</p>
-                                                   </div>
-                                                   <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> An attribute, characteristic, or quality of the containing object expressed as a
-                                                         namespace qualified name/value pair. The value of a property is a simple scalar value,
-                                                         which may be expressed as a list of values.</p>
-                                                      <div class="remarks-group usa-prose">
-                                                         <details open="open">
-                                                            <summary class="subhead">Remarks</summary>
-                                                            <div class="remarks">
-                                                               <p>Properties permit the deployment and management of arbitrary controlled values, within
-                                                                  OSCAL objects. A property can be included for any purpose useful to an application
-                                                                  or implementation. Typically, properties will be used to sort, filter, select, order,
-                                                                  and arrange OSCAL content objects, to relate OSCAL objects to one another, or to associate
-                                                                  an OSCAL object to class hierarchies, taxonomies, or external authorities. Thus, the
-                                                                  lexical composition of properties may be constrained by external processes to ensure
-                                                                  consistency.</p>
-                                                               <p>Property allows for associated remarks that describe why the specific property value
-                                                                  was applied to the containing object, or the significance of the value in the context
-                                                                  of the containing object.</p>
-                                                            </div>
-                                                         </details>
-                                                      </div>
-                                                      <details class="properties" open="open">
-                                                         <summary>Properties (6)</summary>
-                                                         <div class="model-entry definition assembly">
-                                                            <div class="instance-header">
-                                                               <p id="/profile/merge/custom/groups/parts/props/name" class="toc7 name">name</p>
-                                                               <p class="type"><a href="/reference/datatypes/#token">token</a></p>
-                                                               <p class="occurrence">[1]</p>
-                                                               <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/part/prop/@name">Switch to XML</a></div>
-                                                               <p class="formal-name">Property Name</p>
-                                                            </div>
-                                                            <div class="body">
-                                                               <p class="description"><span class="usa-tag">Description</span> A textual label that uniquely identifies a specific attribute, characteristic, or
-                                                                  quality of the property's containing object.</p>
-                                                               <details class="constraints" open="open">
-                                                                  <summary>Constraint (1)</summary>
-                                                                  <div class="constraint">
-                                                                     <p><span class="usa-tag">allowed value</span></p>
-                                                                     <p>The value <b>may be locally defined</b>, or the following:</p>
-                                                                     <ul>
-                                                                        
-                                                                        <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
-                                                                           An optional class can be used to define the specific marking system used for the associated
-                                                                           value.</li>
-                                                                        </ul>
-                                                                  </div>
-                                                               </details>
-                                                            </div>
-                                                         </div>
-                                                         <div class="model-entry definition assembly">
-                                                            <div class="instance-header">
-                                                               <p id="/profile/merge/custom/groups/parts/props/uuid" class="toc7 name">uuid</p>
-                                                               <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
-                                                               <p class="occurrence">[0 or 1]</p>
-                                                               <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/part/prop/@uuid">Switch to XML</a></div>
-                                                               <p class="formal-name">Property Universally Unique Identifier</p>
-                                                            </div>
-                                                            <div class="body">
-                                                               <p class="description"><span class="usa-tag">Description</span> A unique identifier that can be used to reference this property elsewhere in an OSCAL
-                                                                  document. A UUID should be consistently used for a given location across revisions
-                                                                  of the document.</p>
-                                                            </div>
-                                                         </div>
-                                                         <div class="model-entry definition assembly">
-                                                            <div class="instance-header">
-                                                               <p id="/profile/merge/custom/groups/parts/props/ns" class="toc7 name">ns</p>
-                                                               <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
-                                                               <p class="occurrence">[0 or 1]</p>
-                                                               <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/part/prop/@ns">Switch to XML</a></div>
-                                                               <p class="formal-name">Property Namespace</p>
-                                                            </div>
-                                                            <div class="body">
-                                                               <p class="description"><span class="usa-tag">Description</span> A namespace qualifying the property's name. This allows different organizations to
-                                                                  associate distinct semantics with the same name.</p>
-                                                               <div class="remarks-group usa-prose">
-                                                                  <details open="open">
-                                                                     <summary class="subhead">Remarks</summary>
-                                                                     <div class="remarks">
-                                                                        <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
-                                                                           names and associated values used in a property. This allows the semantics associated
-                                                                           with a given name/value pair to be defined on an organization-by-organization basis.</p>
-                                                                        <p>An organization MUST use a URI that they have control over. e.g., a domain registered
-                                                                           to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
-                                                                        <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
-                                                                     </div>
-                                                                     <div class="remarks">
-                                                                        <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
-                                                                           names and associated values used in a property. This allows the semantics associated
-                                                                           with a given name/value pair to be defined on an organization-by-organization basis.</p>
-                                                                        <p>An organization MUST use a URI that they have control over. e.g., a domain registered
-                                                                           to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
-                                                                        <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
-                                                                     </div>
-                                                                  </details>
-                                                               </div>
-                                                            </div>
-                                                         </div>
-                                                         <div class="model-entry definition assembly">
-                                                            <div class="instance-header">
-                                                               <p id="/profile/merge/custom/groups/parts/props/value" class="toc7 name">value</p>
-                                                               <p class="type"><a href="/reference/datatypes/#string">string</a></p>
-                                                               <p class="occurrence">[1]</p>
-                                                               <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/part/prop/@value">Switch to XML</a></div>
-                                                               <p class="formal-name">Property Value</p>
-                                                            </div>
-                                                            <div class="body">
-                                                               <p class="description"><span class="usa-tag">Description</span> Indicates the value of the attribute, characteristic, or quality.</p>
-                                                            </div>
-                                                         </div>
-                                                         <div class="model-entry definition assembly">
-                                                            <div class="instance-header">
-                                                               <p id="/profile/merge/custom/groups/parts/props/class" class="toc7 name">class</p>
-                                                               <p class="type"><a href="/reference/datatypes/#token">token</a></p>
-                                                               <p class="occurrence">[0 or 1]</p>
-                                                               <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/part/prop/@class">Switch to XML</a></div>
-                                                               <p class="formal-name">Property Class</p>
-                                                            </div>
-                                                            <div class="body">
-                                                               <p class="description"><span class="usa-tag">Description</span> A textual label that provides a sub-type or characterization of the property's <code>name</code>. This can be used to further distinguish or discriminate between the semantics of
-                                                                  multiple properties of the same object with the same <code>name</code> and <code>ns</code>. </p>
-                                                               <div class="remarks-group usa-prose">
-                                                                  <details open="open">
-                                                                     <summary class="subhead">Remarks</summary>
-                                                                     <div class="remarks">
-                                                                        <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                                           a specific <code>class</code> value.</p>
-                                                                     </div>
-                                                                     <div class="remarks">
-                                                                        <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                                           a specific <code>class</code> value.</p>
-                                                                     </div>
-                                                                  </details>
-                                                               </div>
-                                                            </div>
-                                                         </div>
-                                                         <div class="model-entry definition assembly">
-                                                            <div class="instance-header">
-                                                               <p id="/profile/merge/custom/groups/parts/props/remarks" class="toc7 name">remarks</p>
-                                                               <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
-                                                               <p class="occurrence">[0 or 1]</p>
-                                                               <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/part/prop/remarks">Switch to XML</a></div>
-                                                               <p class="formal-name">Remarks</p>
-                                                            </div>
-                                                            <div class="body">
-                                                               <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
-                                                            </div>
-                                                         </div>
-                                                      </details>
-                                                   </div>
-                                                </div>
-                                                <div class="model-entry definition assembly">
-                                                   <div class="instance-header">
-                                                      <h6 id="/profile/merge/custom/groups/parts/prose" class="toc6 name">prose</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
-                                                      <p class="occurrence">[0 or 1]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/part">Switch to XML</a></div>
-                                                      <p class="formal-name">Part Text</p>
-                                                   </div>
-                                                   <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> Permits multiple paragraphs, lists, tables etc.</p>
-                                                   </div>
-                                                </div>
-                                                <div class="model-entry definition assembly">
-                                                   <div class="instance-header">
-                                                      <h6 id="/profile/merge/custom/groups/parts/parts" class="toc6 name">parts</h6>
-                                                      <p class="type">array<br /></p>
-                                                      <p class="occurrence">[0 or 1]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/part/part">Switch to XML</a></div>
-                                                   </div>
-                                                   <div class="array-header">
-                                                      <p class="array-member">(array member)</p>
-                                                      <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-catalog-common/part/parts">(global definition)</a></p>
-                                                      <p class="occurrence">[1 to ∞]</p>
-                                                      <p class="formal-name">Part</p>
-                                                   </div>
-                                                   <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> A partition of a control's definition or a child of another part.</p>
-                                                      <div class="remarks-group usa-prose">
-                                                         <details open="open">
-                                                            <summary class="subhead">Remarks</summary>
-                                                            <div class="remarks">
-                                                               <p>A <code>part</code> provides for logical partitioning of prose, and can be thought of as a grouping structure
-                                                                  (e.g., section). A <code>part</code> can have child parts allowing for arbitrary nesting of prose content (e.g., statement
-                                                                  hierarchy). A <code>part</code> can contain <code>prop</code> objects that allow for enriching prose text with structured name/value information.</p>
-                                                               <p>A <code>part</code> can be assigned an optional <code>id</code>, which allows for internal and external references to the textual concept contained
-                                                                  within a <code>part</code>. A <code>id</code> provides a means for an OSCAL profile, or a higher layer OSCAL model to reference
-                                                                  a specific part within a <code>catalog</code>. For example, an <code>id</code> can be used to reference or to make modifications to a control statement in a profile.</p>
-                                                               <p>Use of <code>part</code> and <code>prop</code> provides for a wide degree of extensibility within the OSCAL catalog model. The optional
-                                                                  <code>ns</code> provides a means to qualify a part's <code>name</code>, allowing for organization-specific vocabularies to be defined with clear semantics.
-                                                                  Any organization that extends OSCAL in this way should consistently assign a <code>ns</code> value that represents the organization, making a given namespace qualified <code>name</code> unique to that organization. This allows the combination of <code>ns</code> and <code>name</code> to always be unique and unambiguous, even when mixed with extensions from other organizations.
-                                                                  Each organization is responsible for governance of their own extensions, and is strongly
-                                                                  encouraged to publish their extensions as standards to their user community. If no
-                                                                  <code>ns</code> is provided, the name is expected to be in the "OSCAL" namespace.</p>
-                                                               <p>To ensure a <code>ns</code> is unique to an organization and naming conflicts are avoided, a URI containing a
-                                                                  DNS or other globally defined organization name should be used. For example, if FedRAMP
-                                                                  and DoD both extend OSCAL, FedRAMP will use the <code>ns</code> "https://fedramp.gov", while DoD will use the <code>ns</code> "https://defense.gov" for any organization specific <code>name</code>. </p>
-                                                               <p>Tools that process OSCAL content are not required to interpret unrecognized OSCAL
-                                                                  extensions; however, OSCAL compliant tools should not modify or remove unrecognized
-                                                                  extensions, unless there is a compelling reason to do so, such as data sensitivity.</p>
-                                                            </div>
-                                                         </details>
-                                                      </div>
-                                                      <details class="constraints" open="open">
-                                                         <summary>Constraints (4)</summary>
-                                                         <div class="constraint">
-                                                            <p><span class="usa-tag">allowed values</span>  for <code class="path">prop/@name</code></p>
-                                                            <p>The value <b>may be locally defined</b>, or one of the following:</p>
-                                                            <ul>
-                                                               
-                                                               <li><strong>label</strong>: A human-readable label for the parent context.</li>
-                                                               
-                                                               <li><strong>sort-id</strong>: An alternative identifier, whose value is easily sortable among other such values
-                                                                  in the document.</li>
-                                                               
-                                                               </ul>
-                                                         </div>
-                                                         <div class="constraint">
-                                                            <p><span class="usa-tag">allowed value</span>  for <code class="path">prop/@name</code></p>
-                                                            <p>The value <b>may be locally defined</b>, or the following:</p>
-                                                            <ul>
-                                                               
-                                                               <li><strong>method</strong>: The assessment method to use. This typically appears on parts with the name "assessment".</li>
-                                                               </ul>
-                                                         </div>
-                                                         <div class="constraint">
-                                                            <p><span class="usa-tag">has cardinality</span>  for <code class="path">prop[@name='method']</code> the cardinality of  <code>prop[@name='method']</code> is constrained: <b>1</b>; maximum <b>unbounded</b>.</p>
-                                                         </div>
-                                                         <div class="constraint">
-                                                            <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[@name='method']/@value</code></p>
-                                                            <p>The value <b>must</b> be one of the following:</p>
-                                                            <ul>
-                                                               
-                                                               <li><strong>INTERVIEW</strong>: The process of holding discussions with individuals or groups of individuals within
-                                                                  an organization to once again, facilitate assessor understanding, achieve clarification,
-                                                                  or obtain evidence.</li>
-                                                               
-                                                               <li><strong>EXAMINE</strong>: The process of reviewing, inspecting, observing, studying, or analyzing one or more
-                                                                  assessment objects (i.e., specifications, mechanisms, or activities).</li>
-                                                               
-                                                               <li><strong>TEST</strong>: The process of exercising one or more assessment objects (i.e., activities or mechanisms)
-                                                                  under specified conditions to compare actual with expected behavior.</li>
-                                                               </ul>
-                                                         </div>
-                                                      </details>
-                                                   </div>
-                                                </div>
-                                                <div class="model-entry definition assembly">
-                                                   <div class="instance-header">
-                                                      <h6 id="/profile/merge/custom/groups/parts/links" class="toc6 name">links</h6>
-                                                      <p class="type">array<br /></p>
-                                                      <p class="occurrence">[0 or 1]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/part/link">Switch to XML</a></div>
-                                                   </div>
-                                                   <div class="array-header">
-                                                      <p class="array-member">(array member)</p>
-                                                      <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-catalog-common/part/links">(global definition)</a></p>
-                                                      <p class="occurrence">[1 to ∞]</p>
-                                                      <p class="formal-name">Link</p>
-                                                   </div>
-                                                   <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> A reference to a local or remote resource</p>
-                                                      <div class="remarks-group usa-prose">
-                                                         <details open="open">
-                                                            <summary class="subhead">Remarks</summary>
-                                                            <div class="remarks">
-                                                               <p>To provide a cryptographic hash for a remote target resource, a local reference to
-                                                                  a back matter <code>resource</code> is needed. The resource allows one or more hash values to be provided using the <code>rlink/hash</code> object.</p>
-                                                               <p>The OSCAL <code>link</code> is a roughly based on the HTML <a href="https://www.w3.org/TR/html401/struct/links.html#edef-LINK">link element</a>. </p>
-                                                            </div>
-                                                         </details>
-                                                      </div>
-                                                      <details class="constraints" open="open">
-                                                         <summary>Constraints (3)</summary>
-                                                         <div class="constraint">
-                                                            <p><span class="usa-tag">matches</span>  for <code class="path">@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
-                                                         </div>
-                                                         <div class="constraint">
-                                                            <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-back-matter-resource</code> using a key constructed of key field(s) <code>@href</code></p>
-                                                         </div>
-                                                         <div class="constraint">
-                                                            <p><span class="usa-tag">matches</span>  for <code class="path">@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
-                                                         </div>
-                                                      </details>
-                                                      <details class="properties" open="open">
-                                                         <summary>Properties (4)</summary>
-                                                         <div class="model-entry definition assembly">
-                                                            <div class="instance-header">
-                                                               <p id="/profile/merge/custom/groups/parts/links/href" class="toc7 name">href</p>
-                                                               <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
-                                                               <p class="occurrence">[1]</p>
-                                                               <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/part/link/@href">Switch to XML</a></div>
-                                                               <p class="formal-name">Hypertext Reference</p>
-                                                            </div>
-                                                            <div class="body">
-                                                               <p class="description"><span class="usa-tag">Description</span> A resolvable URL reference to a resource.</p>
-                                                               <div class="remarks-group usa-prose">
-                                                                  <details open="open">
-                                                                     <summary class="subhead">Remarks</summary>
-                                                                     <div class="remarks">
-                                                                        <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
-                                                                           that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
-                                                                        <p>If a local reference using a fragment is used, this will be indicated by a fragment
-                                                                           "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
-                                                                        <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
-                                                                           resource. A relative URI will be resolved relative to the location of the document
-                                                                           containing the link.</p>
-                                                                     </div>
-                                                                     <div class="remarks">
-                                                                        <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
-                                                                           that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
-                                                                        <p>If a local reference using a fragment is used, this will be indicated by a fragment
-                                                                           "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
-                                                                        <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
-                                                                           resource. A relative URI will be resolved relative to the location of the document
-                                                                           containing the link.</p>
-                                                                     </div>
-                                                                  </details>
-                                                               </div>
-                                                            </div>
-                                                         </div>
-                                                         <div class="model-entry definition assembly">
-                                                            <div class="instance-header">
-                                                               <p id="/profile/merge/custom/groups/parts/links/rel" class="toc7 name">rel</p>
-                                                               <p class="type"><a href="/reference/datatypes/#token">token</a></p>
-                                                               <p class="occurrence">[0 or 1]</p>
-                                                               <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/part/link/@rel">Switch to XML</a></div>
-                                                               <p class="formal-name">Relation</p>
-                                                            </div>
-                                                            <div class="body">
-                                                               <p class="description"><span class="usa-tag">Description</span> Describes the type of relationship provided by the link. This can be an indicator
-                                                                  of the link's purpose.</p>
-                                                               <details class="constraints" open="open">
-                                                                  <summary>Constraint (1)</summary>
-                                                                  <div class="constraint">
-                                                                     <p><span class="usa-tag">allowed value</span></p>
-                                                                     <p>The value <b>may be locally defined</b>, or the following:</p>
-                                                                     <ul>
-                                                                        
-                                                                        <li><strong>reference</strong>: Reference</li>
-                                                                        </ul>
-                                                                  </div>
-                                                               </details>
-                                                            </div>
-                                                         </div>
-                                                         <div class="model-entry definition assembly">
-                                                            <div class="instance-header">
-                                                               <p id="/profile/merge/custom/groups/parts/links/media-type" class="toc7 name">media-type</p>
-                                                               <p class="type"><a href="/reference/datatypes/#string">string</a></p>
-                                                               <p class="occurrence">[0 or 1]</p>
-                                                               <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/part/link/@media-type">Switch to XML</a></div>
-                                                               <p class="formal-name">Media Type</p>
-                                                            </div>
-                                                            <div class="body">
-                                                               <p class="description"><span class="usa-tag">Description</span> Specifies a media type as defined by the Internet Assigned Numbers Authority (IANA)
-                                                                  <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">Media Types Registry</a>. </p>
-                                                               <div class="remarks-group usa-prose">
-                                                                  <details open="open">
-                                                                     <summary class="subhead">Remarks</summary>
-                                                                     <div class="remarks">
-                                                                        <p>The <code>media-type</code> provides a hint about the content model of the referenced resource. A valid entry
-                                                                           from the <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">IANA Media Types registry</a> SHOULD be used.</p>
-                                                                     </div>
-                                                                  </details>
-                                                               </div>
-                                                            </div>
-                                                         </div>
-                                                         <div class="model-entry definition assembly">
-                                                            <div class="instance-header">
-                                                               <p id="/profile/merge/custom/groups/parts/links/text" class="toc7 name">text</p>
-                                                               <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
-                                                               <p class="occurrence">[0 or 1]</p>
-                                                               <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/part/link/text">Switch to XML</a></div>
-                                                               <p class="formal-name">Link Text</p>
-                                                            </div>
-                                                            <div class="body">
-                                                               <p class="description"><span class="usa-tag">Description</span> A textual label to associate with the link, which may be used for presentation in
-                                                                  a tool.</p>
-                                                            </div>
-                                                         </div>
-                                                      </details>
-                                                   </div>
-                                                </div>
-                                             </details>
-                                          </div>
-                                       </div>
-                                       <div class="model-entry definition assembly">
-                                          <div class="instance-header">
-                                             <h5 id="/profile/merge/custom/groups/groups" class="toc5 name">groups</h5>
-                                             <p class="type">array<br /></p>
-                                             <p class="occurrence">[0 or 1]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/group">Switch to XML</a></div>
-                                          </div>
-                                          <div class="array-header">
-                                             <p class="array-member">(array member)</p>
-                                             <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-profile/group/groups">(global definition)</a></p>
-                                             <p class="occurrence">[1 to ∞]</p>
-                                             <p class="formal-name">Control group</p>
-                                          </div>
-                                          <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> A group of (selected) controls or of groups of controls</p>
-                                             <div class="remarks-group usa-prose">
-                                                <details open="open">
-                                                   <summary class="subhead">Remarks</summary>
-                                                   <div class="remarks">
-                                                      <p>This construct mirrors the same construct that exists in an OSCAL catalog.</p>
-                                                   </div>
-                                                </details>
-                                             </div>
-                                          </div>
-                                       </div>
-                                       <div class="model-entry definition assembly">
-                                          <div class="instance-header">
-                                             <h5 id="/profile/merge/custom/groups/insert-controls" class="toc5 name">insert-controls</h5>
-                                             <p class="type">array<br /></p>
-                                             <p class="occurrence">[0 or 1]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/insert-controls">Switch to XML</a></div>
-                                          </div>
-                                          <div class="array-header">
-                                             <p class="array-member">(array member)</p>
-                                             <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-profile/group/insert-controls">(global definition)</a></p>
-                                             <p class="occurrence">[1 to ∞]</p>
-                                             <p class="formal-name">Select controls</p>
-                                          </div>
-                                          <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> Specifies which controls to use in the containing context.</p>
-                                             <div class="remarks-group usa-prose">
-                                                <details open="open">
-                                                   <summary class="subhead">Remarks</summary>
-                                                   <div class="remarks">
-                                                      <p>To be schema-valid, this element must contain either (but not both) a single <code>include-all</code> directive, or a sequence of <code>include-controls</code> directives.</p>
-                                                      <p>If this directive is not provided, then no controls are to be inserted; i.e., all
-                                                         controls are included explicitly.</p>
-                                                   </div>
-                                                </details>
-                                             </div>
-                                             <details class="properties" open="open">
-                                                <summary>Properties (3)</summary>
-                                                <div class="model-entry definition assembly">
-                                                   <div class="instance-header">
-                                                      <h6 id="/profile/merge/custom/groups/insert-controls/order" class="toc6 name">order</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#token">token</a></p>
-                                                      <p class="occurrence">[0 or 1]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/insert-controls/@order">Switch to XML</a></div>
-                                                      <p class="formal-name">Order</p>
-                                                   </div>
-                                                   <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> A designation of how a selection of controls in a profile is to be ordered.</p>
-                                                      <details class="constraints" open="open">
-                                                         <summary>Constraint (1)</summary>
-                                                         <div class="constraint">
-                                                            <p><span class="usa-tag">allowed values</span></p>
-                                                            <p>The value <b>must</b> be one of the following:</p>
-                                                            <ul>
-                                                               
-                                                               <li><strong>keep</strong></li>
-                                                               
-                                                               <li><strong>ascending</strong></li>
-                                                               
-                                                               <li><strong>descending</strong></li>
-                                                               </ul>
-                                                         </div>
-                                                      </details>
-                                                   </div>
-                                                </div>
-                                                <div class="model-entry definition assembly">
-                                                   <div class="instance-header">
-                                                      <h6 id="/profile/merge/custom/groups/insert-controls/include-all" class="toc6 name">include-all</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#empty">empty</a></p>
-                                                      <p class="occurrence">[1]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/insert-controls/include-all">Switch to XML</a></div>
-                                                      <p class="formal-name">Insert All</p>
-                                                   </div>
-                                                   <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> Insert all controls from the imported catalog or profile resources identified in
-                                                         the <code>import</code> directive.</p>
-                                                      <div class="remarks-group usa-prose">
-                                                         <details open="open">
-                                                            <summary class="subhead">Remarks</summary>
-                                                            <div class="remarks">
-                                                               <p>This element provides an alternative to calling controls individually from a catalog.</p>
-                                                            </div>
-                                                         </details>
-                                                      </div>
-                                                   </div>
-                                                </div>
-                                                <div class="model-entry definition assembly">
-                                                   <div class="instance-header">
-                                                      <h6 id="/profile/merge/custom/groups/insert-controls/include-controls" class="toc6 name">include-controls</h6>
-                                                      <p class="type">array<br /></p>
-                                                      <p class="occurrence">[1]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/insert-controls/include-controls">Switch to XML</a></div>
-                                                   </div>
-                                                   <div class="array-header">
-                                                      <p class="array-member">(array member)</p>
-                                                      <p class="type">object<br /></p>
-                                                      <p class="occurrence">[1 to ∞]</p>
-                                                      <p class="formal-name">Call</p>
-                                                   </div>
-                                                   <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> Call a control by its ID</p>
-                                                      <div class="remarks-group usa-prose">
-                                                         <details open="open">
-                                                            <summary class="subhead">Remarks</summary>
-                                                            <div class="remarks">
-                                                               <p>If <code>with-child-controls</code> is <q>yes</q> on the call to a control, no sibling <code>call</code>elements need to be used to call any controls appearing within it. Since generally,
-                                                                  this is how control enhancements are represented (as controls within controls), this
-                                                                  provides a way to include controls with all their dependent controls (enhancements)
-                                                                  without having to call them individually.</p>
-                                                            </div>
-                                                         </details>
-                                                      </div>
-                                                      <details class="properties" open="open">
-                                                         <summary>Properties (3)</summary>
-                                                         <div class="model-entry definition assembly">
-                                                            <div class="instance-header">
-                                                               <p id="/profile/merge/custom/groups/insert-controls/include-controls/with-child-controls" class="toc7 name">with-child-controls</p>
-                                                               <p class="type"><a href="/reference/datatypes/#token">token</a></p>
-                                                               <p class="occurrence">[0 or 1]</p>
-                                                               <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/insert-controls/include-controls/@with-child-controls">Switch to XML</a></div>
-                                                               <p class="formal-name">Include contained controls with control</p>
-                                                            </div>
-                                                            <div class="body">
-                                                               <p class="description"><span class="usa-tag">Description</span> When a control is included, whether its child (dependent) controls are also included.</p>
-                                                               <details class="constraints" open="open">
-                                                                  <summary>Constraint (1)</summary>
-                                                                  <div class="constraint">
-                                                                     <p><span class="usa-tag">allowed values</span></p>
-                                                                     <p>The value <b>must</b> be one of the following:</p>
-                                                                     <ul>
-                                                                        
-                                                                        <li><strong>yes</strong>: Include child controls with an included control.</li>
-                                                                        
-                                                                        <li><strong>no</strong>: When importing a control, only include child controls that are also explicitly called.</li>
-                                                                        </ul>
-                                                                  </div>
-                                                               </details>
-                                                            </div>
-                                                         </div>
-                                                         <div class="model-entry definition assembly">
-                                                            <div class="instance-header">
-                                                               <p id="/profile/merge/custom/groups/insert-controls/include-controls/with-ids" class="toc7 name">with-ids</p>
-                                                               <p class="type">array<br /></p>
-                                                               <p class="occurrence">[0 or 1]</p>
-                                                               <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/insert-controls/include-controls/with-id">Switch to XML</a></div>
-                                                            </div>
-                                                            <div class="array-header">
-                                                               <p class="array-member">(array member)</p>
-                                                               <p class="type"><a href="/reference/datatypes/#token">token</a></p>
-                                                               <p class="occurrence">[0 to ∞]</p>
-                                                               <p class="formal-name">Match Controls by Identifier</p>
-                                                            </div>
-                                                            <div class="body">
-                                                               <p class="description"><span class="usa-tag">Description</span> </p>
-                                                            </div>
-                                                         </div>
-                                                         <div class="model-entry definition assembly">
-                                                            <div class="instance-header">
-                                                               <p id="/profile/merge/custom/groups/insert-controls/include-controls/matching" class="toc7 name">matching</p>
-                                                               <p class="type">array<br /></p>
-                                                               <p class="occurrence">[0 or 1]</p>
-                                                               <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/insert-controls/include-controls/matching">Switch to XML</a></div>
-                                                            </div>
-                                                            <div class="array-header">
-                                                               <p class="array-member">(array member)</p>
-                                                               <p class="type"><a href="/reference/datatypes/#empty">empty</a></p>
-                                                               <p class="occurrence">[1 to ∞]</p>
-                                                               <p class="formal-name">Match Controls by Pattern</p>
-                                                            </div>
-                                                            <div class="body">
-                                                               <p class="description"><span class="usa-tag">Description</span> Select controls by (regular expression) match on ID</p>
-                                                               <details class="properties" open="open">
-                                                                  <summary>Property (1)</summary>
                                                                   <div class="model-entry definition assembly">
                                                                      <div class="instance-header">
-                                                                        <p id="/profile/merge/custom/groups/insert-controls/include-controls/matching/pattern" class="toc8 name">pattern</p>
-                                                                        <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                                        <p id="/profile/merge/custom/groups/insert-controls/include-controls/with-ids" class="toc7 name">with-ids</p>
+                                                                        <p class="type">array<br /></p>
                                                                         <p class="occurrence">[0 or 1]</p>
-                                                                        <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/insert-controls/include-controls/matching/@pattern">Switch to XML</a></div>
-                                                                        <p class="formal-name">Pattern</p>
+                                                                        <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/insert-controls/include-controls/with-id">Switch to XML</a></div>
+                                                                     </div>
+                                                                     <div class="array-header">
+                                                                        <p class="array-member">(array member)</p>
+                                                                        <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                                        <p class="occurrence">[0 to ∞]</p>
+                                                                        <p class="formal-name">Match Controls by Identifier</p>
                                                                      </div>
                                                                      <div class="body">
-                                                                        <p class="description"><span class="usa-tag">Description</span> A <a href="https://en.wikipedia.org/wiki/Glob_(programming)">glob expression</a> matching the IDs of one or more controls to be selected.</p>
+                                                                        <p class="description"><span class="usa-tag">Description</span> </p>
                                                                      </div>
                                                                   </div>
-                                                               </details>
-                                                            </div>
-                                                         </div>
-                                                      </details>
-                                                   </div>
-                                                </div>
-                                                <div class="model-entry definition assembly">
-                                                   <div class="instance-header">
-                                                      <h6 id="/profile/merge/custom/groups/insert-controls/exclude-controls" class="toc6 name">exclude-controls</h6>
-                                                      <p class="type">array<br /></p>
-                                                      <p class="occurrence">[0 or 1]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/insert-controls/exclude-controls">Switch to XML</a></div>
-                                                   </div>
-                                                   <div class="array-header">
-                                                      <p class="array-member">(array member)</p>
-                                                      <p class="type">object<br /></p>
-                                                      <p class="occurrence">[1 to ∞]</p>
-                                                      <p class="formal-name">Call</p>
-                                                   </div>
-                                                   <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> Call a control by its ID</p>
-                                                      <div class="remarks-group usa-prose">
-                                                         <details open="open">
-                                                            <summary class="subhead">Remarks</summary>
-                                                            <div class="remarks">
-                                                               <p>If <code>with-child-controls</code> is <q>yes</q> on the call to a control, no sibling <code>call</code>elements need to be used to call any controls appearing within it. Since generally,
-                                                                  this is how control enhancements are represented (as controls within controls), this
-                                                                  provides a way to include controls with all their dependent controls (enhancements)
-                                                                  without having to call them individually.</p>
-                                                            </div>
-                                                            <div class="remarks in-use">
-                                                               <p>Identifies which controls to exclude, or eliminate, from the set of matching includes.</p>
-                                                            </div>
-                                                         </details>
-                                                      </div>
-                                                      <details class="properties" open="open">
-                                                         <summary>Properties (3)</summary>
-                                                         <div class="model-entry definition assembly">
-                                                            <div class="instance-header">
-                                                               <p id="/profile/merge/custom/groups/insert-controls/exclude-controls/with-child-controls" class="toc7 name">with-child-controls</p>
-                                                               <p class="type"><a href="/reference/datatypes/#token">token</a></p>
-                                                               <p class="occurrence">[0 or 1]</p>
-                                                               <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/insert-controls/exclude-controls/@with-child-controls">Switch to XML</a></div>
-                                                               <p class="formal-name">Include contained controls with control</p>
-                                                            </div>
-                                                            <div class="body">
-                                                               <p class="description"><span class="usa-tag">Description</span> When a control is included, whether its child (dependent) controls are also included.</p>
-                                                               <details class="constraints" open="open">
-                                                                  <summary>Constraint (1)</summary>
-                                                                  <div class="constraint">
-                                                                     <p><span class="usa-tag">allowed values</span></p>
-                                                                     <p>The value <b>must</b> be one of the following:</p>
-                                                                     <ul>
-                                                                        
-                                                                        <li><strong>yes</strong>: Include child controls with an included control.</li>
-                                                                        
-                                                                        <li><strong>no</strong>: When importing a control, only include child controls that are also explicitly called.</li>
-                                                                        </ul>
-                                                                  </div>
-                                                               </details>
-                                                            </div>
-                                                         </div>
-                                                         <div class="model-entry definition assembly">
-                                                            <div class="instance-header">
-                                                               <p id="/profile/merge/custom/groups/insert-controls/exclude-controls/with-ids" class="toc7 name">with-ids</p>
-                                                               <p class="type">array<br /></p>
-                                                               <p class="occurrence">[0 or 1]</p>
-                                                               <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/insert-controls/exclude-controls/with-id">Switch to XML</a></div>
-                                                            </div>
-                                                            <div class="array-header">
-                                                               <p class="array-member">(array member)</p>
-                                                               <p class="type"><a href="/reference/datatypes/#token">token</a></p>
-                                                               <p class="occurrence">[0 to ∞]</p>
-                                                               <p class="formal-name">Match Controls by Identifier</p>
-                                                            </div>
-                                                            <div class="body">
-                                                               <p class="description"><span class="usa-tag">Description</span> </p>
-                                                            </div>
-                                                         </div>
-                                                         <div class="model-entry definition assembly">
-                                                            <div class="instance-header">
-                                                               <p id="/profile/merge/custom/groups/insert-controls/exclude-controls/matching" class="toc7 name">matching</p>
-                                                               <p class="type">array<br /></p>
-                                                               <p class="occurrence">[0 or 1]</p>
-                                                               <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/insert-controls/exclude-controls/matching">Switch to XML</a></div>
-                                                            </div>
-                                                            <div class="array-header">
-                                                               <p class="array-member">(array member)</p>
-                                                               <p class="type"><a href="/reference/datatypes/#empty">empty</a></p>
-                                                               <p class="occurrence">[1 to ∞]</p>
-                                                               <p class="formal-name">Match Controls by Pattern</p>
-                                                            </div>
-                                                            <div class="body">
-                                                               <p class="description"><span class="usa-tag">Description</span> Select controls by (regular expression) match on ID</p>
-                                                               <details class="properties" open="open">
-                                                                  <summary>Property (1)</summary>
                                                                   <div class="model-entry definition assembly">
                                                                      <div class="instance-header">
-                                                                        <p id="/profile/merge/custom/groups/insert-controls/exclude-controls/matching/pattern" class="toc8 name">pattern</p>
-                                                                        <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                                        <p id="/profile/merge/custom/groups/insert-controls/include-controls/matching" class="toc7 name">matching</p>
+                                                                        <p class="type">array<br /></p>
                                                                         <p class="occurrence">[0 or 1]</p>
-                                                                        <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/insert-controls/exclude-controls/matching/@pattern">Switch to XML</a></div>
-                                                                        <p class="formal-name">Pattern</p>
+                                                                        <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/insert-controls/include-controls/matching">Switch to XML</a></div>
+                                                                     </div>
+                                                                     <div class="array-header">
+                                                                        <p class="array-member">(array member)</p>
+                                                                        <p class="type"><a href="/reference/datatypes/#empty">empty</a></p>
+                                                                        <p class="occurrence">[1 to ∞]</p>
+                                                                        <p class="formal-name">Match Controls by Pattern</p>
                                                                      </div>
                                                                      <div class="body">
-                                                                        <p class="description"><span class="usa-tag">Description</span> A <a href="https://en.wikipedia.org/wiki/Glob_(programming)">glob expression</a> matching the IDs of one or more controls to be selected.</p>
+                                                                        <p class="description"><span class="usa-tag">Description</span> Select controls by (regular expression) match on ID</p>
+                                                                        <details class="properties" open="open">
+                                                                           <summary>Property (1)</summary>
+                                                                           <div class="model-entry definition assembly">
+                                                                              <div class="instance-header">
+                                                                                 <p id="/profile/merge/custom/groups/insert-controls/include-controls/matching/pattern" class="toc8 name">pattern</p>
+                                                                                 <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                                                 <p class="occurrence">[0 or 1]</p>
+                                                                                 <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/insert-controls/include-controls/matching/@pattern">Switch to XML</a></div>
+                                                                                 <p class="formal-name">Pattern</p>
+                                                                              </div>
+                                                                              <div class="body">
+                                                                                 <p class="description"><span class="usa-tag">Description</span> A <a href="https://en.wikipedia.org/wiki/Glob_(programming)">glob expression</a> matching the IDs of one or more controls to be selected.</p>
+                                                                              </div>
+                                                                           </div>
+                                                                        </details>
                                                                      </div>
                                                                   </div>
                                                                </details>
                                                             </div>
                                                          </div>
-                                                      </details>
-                                                   </div>
+                                                      </div>
+                                                      <div class="model-entry definition assembly">
+                                                         <div class="instance-header">
+                                                            <h6 id="/profile/merge/custom/groups/insert-controls/exclude-controls" class="toc6 name">exclude-controls</h6>
+                                                            <p class="type">array<br /></p>
+                                                            <p class="occurrence">[0 or 1]</p>
+                                                            <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/insert-controls/exclude-controls">Switch to XML</a></div>
+                                                         </div>
+                                                         <div class="array-header">
+                                                            <p class="array-member">(array member)</p>
+                                                            <p class="type">object<br /></p>
+                                                            <p class="occurrence">[1 to ∞]</p>
+                                                            <p class="formal-name">Call</p>
+                                                         </div>
+                                                         <div class="body">
+                                                            <p class="description"><span class="usa-tag">Description</span> Call a control by its ID</p>
+                                                            <div class="remarks-group usa-prose">
+                                                               <details open="open">
+                                                                  <summary class="subhead">Remarks</summary>
+                                                                  <div class="remarks">
+                                                                     <p>If <code>with-child-controls</code> is <q>yes</q> on the call to a control, no sibling <code>call</code>elements need to be used to call any controls appearing within it. Since generally,
+                                                                        this is how control enhancements are represented (as controls within controls), this
+                                                                        provides a way to include controls with all their dependent controls (enhancements)
+                                                                        without having to call them individually.</p>
+                                                                  </div>
+                                                                  <div class="remarks in-use">
+                                                                     <p>Identifies which controls to exclude, or eliminate, from the set of matching includes.</p>
+                                                                  </div>
+                                                               </details>
+                                                            </div>
+                                                            <details class="properties" open="open">
+                                                               <summary>Properties (3)</summary>
+                                                               <div class="model-entry definition assembly">
+                                                                  <div class="instance-header">
+                                                                     <p id="/profile/merge/custom/groups/insert-controls/exclude-controls/with-child-controls" class="toc7 name">with-child-controls</p>
+                                                                     <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                                     <p class="occurrence">[0 or 1]</p>
+                                                                     <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/insert-controls/exclude-controls/@with-child-controls">Switch to XML</a></div>
+                                                                     <p class="formal-name">Include contained controls with control</p>
+                                                                  </div>
+                                                                  <div class="body">
+                                                                     <p class="description"><span class="usa-tag">Description</span> When a control is included, whether its child (dependent) controls are also included.</p>
+                                                                     <details class="constraints" open="open">
+                                                                        <summary>Constraint (1)</summary>
+                                                                        <div class="constraint">
+                                                                           <p><span class="usa-tag">allowed values</span></p>
+                                                                           <p>The value <b>must</b> be one of the following:</p>
+                                                                           <ul>
+                                                                              
+                                                                              <li><strong>yes</strong>: Include child controls with an included control.</li>
+                                                                              
+                                                                              <li><strong>no</strong>: When importing a control, only include child controls that are also explicitly called.</li>
+                                                                              </ul>
+                                                                        </div>
+                                                                     </details>
+                                                                  </div>
+                                                               </div>
+                                                               <div class="model-entry definition assembly">
+                                                                  <div class="instance-header">
+                                                                     <p id="/profile/merge/custom/groups/insert-controls/exclude-controls/with-ids" class="toc7 name">with-ids</p>
+                                                                     <p class="type">array<br /></p>
+                                                                     <p class="occurrence">[0 or 1]</p>
+                                                                     <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/insert-controls/exclude-controls/with-id">Switch to XML</a></div>
+                                                                  </div>
+                                                                  <div class="array-header">
+                                                                     <p class="array-member">(array member)</p>
+                                                                     <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                                     <p class="occurrence">[0 to ∞]</p>
+                                                                     <p class="formal-name">Match Controls by Identifier</p>
+                                                                  </div>
+                                                                  <div class="body">
+                                                                     <p class="description"><span class="usa-tag">Description</span> </p>
+                                                                  </div>
+                                                               </div>
+                                                               <div class="model-entry definition assembly">
+                                                                  <div class="instance-header">
+                                                                     <p id="/profile/merge/custom/groups/insert-controls/exclude-controls/matching" class="toc7 name">matching</p>
+                                                                     <p class="type">array<br /></p>
+                                                                     <p class="occurrence">[0 or 1]</p>
+                                                                     <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/insert-controls/exclude-controls/matching">Switch to XML</a></div>
+                                                                  </div>
+                                                                  <div class="array-header">
+                                                                     <p class="array-member">(array member)</p>
+                                                                     <p class="type"><a href="/reference/datatypes/#empty">empty</a></p>
+                                                                     <p class="occurrence">[1 to ∞]</p>
+                                                                     <p class="formal-name">Match Controls by Pattern</p>
+                                                                  </div>
+                                                                  <div class="body">
+                                                                     <p class="description"><span class="usa-tag">Description</span> Select controls by (regular expression) match on ID</p>
+                                                                     <details class="properties" open="open">
+                                                                        <summary>Property (1)</summary>
+                                                                        <div class="model-entry definition assembly">
+                                                                           <div class="instance-header">
+                                                                              <p id="/profile/merge/custom/groups/insert-controls/exclude-controls/matching/pattern" class="toc8 name">pattern</p>
+                                                                              <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                                              <p class="occurrence">[0 or 1]</p>
+                                                                              <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/insert-controls/exclude-controls/matching/@pattern">Switch to XML</a></div>
+                                                                              <p class="formal-name">Pattern</p>
+                                                                           </div>
+                                                                           <div class="body">
+                                                                              <p class="description"><span class="usa-tag">Description</span> A <a href="https://en.wikipedia.org/wiki/Glob_(programming)">glob expression</a> matching the IDs of one or more controls to be selected.</p>
+                                                                           </div>
+                                                                        </div>
+                                                                     </details>
+                                                                  </div>
+                                                               </div>
+                                                            </details>
+                                                         </div>
+                                                      </div>
+                                                   </details>
                                                 </div>
-                                             </details>
-                                          </div>
-                                       </div>
-                                    </details>
-                                 </div>
-                              </div>
-                              <div class="model-entry definition assembly">
-                                 <div class="instance-header">
-                                    <h4 id="/profile/merge/custom/insert-controls" class="toc4 name">insert-controls</h4>
-                                    <p class="type">array<br /></p>
-                                    <p class="occurrence">[0 or 1]</p>
-                                    <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/insert-controls">Switch to XML</a></div>
-                                 </div>
-                                 <div class="array-header">
-                                    <p class="array-member">(array member)</p>
-                                    <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-profile/custom/insert-controls">(global definition)</a></p>
-                                    <p class="occurrence">[1 to ∞]</p>
-                                    <p class="formal-name">Select controls</p>
-                                 </div>
-                                 <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> Specifies which controls to use in the containing context.</p>
-                                    <div class="remarks-group usa-prose">
-                                       <details open="open">
-                                          <summary class="subhead">Remarks</summary>
-                                          <div class="remarks">
-                                             <p>To be schema-valid, this element must contain either (but not both) a single <code>include-all</code> directive, or a sequence of <code>include-controls</code> directives.</p>
-                                             <p>If this directive is not provided, then no controls are to be inserted; i.e., all
-                                                controls are included explicitly.</p>
+                                             </div>
                                           </div>
                                        </details>
                                     </div>
-                                    <details class="properties" open="open">
-                                       <summary>Properties (3)</summary>
-                                       <div class="model-entry definition assembly">
-                                          <div class="instance-header">
-                                             <h5 id="/profile/merge/custom/insert-controls/order" class="toc5 name">order</h5>
-                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
-                                             <p class="occurrence">[0 or 1]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/insert-controls/@order">Switch to XML</a></div>
-                                             <p class="formal-name">Order</p>
-                                          </div>
-                                          <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> A designation of how a selection of controls in a profile is to be ordered.</p>
-                                             <details class="constraints" open="open">
-                                                <summary>Constraint (1)</summary>
-                                                <div class="constraint">
-                                                   <p><span class="usa-tag">allowed values</span></p>
-                                                   <p>The value <b>must</b> be one of the following:</p>
-                                                   <ul>
-                                                      
-                                                      <li><strong>keep</strong></li>
-                                                      
-                                                      <li><strong>ascending</strong></li>
-                                                      
-                                                      <li><strong>descending</strong></li>
-                                                      </ul>
-                                                </div>
-                                             </details>
-                                          </div>
-                                       </div>
-                                       <div class="model-entry definition assembly">
-                                          <div class="instance-header">
-                                             <h5 id="/profile/merge/custom/insert-controls/include-all" class="toc5 name">include-all</h5>
-                                             <p class="type"><a href="/reference/datatypes/#empty">empty</a></p>
-                                             <p class="occurrence">[1]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/insert-controls/include-all">Switch to XML</a></div>
-                                             <p class="formal-name">Insert All</p>
-                                          </div>
-                                          <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> Insert all controls from the imported catalog or profile resources identified in
-                                                the <code>import</code> directive.</p>
-                                             <div class="remarks-group usa-prose">
-                                                <details open="open">
-                                                   <summary class="subhead">Remarks</summary>
-                                                   <div class="remarks">
-                                                      <p>This element provides an alternative to calling controls individually from a catalog.</p>
-                                                   </div>
-                                                </details>
-                                             </div>
-                                          </div>
-                                       </div>
-                                       <div class="model-entry definition assembly">
-                                          <div class="instance-header">
-                                             <h5 id="/profile/merge/custom/insert-controls/include-controls" class="toc5 name">include-controls</h5>
-                                             <p class="type">array<br /></p>
-                                             <p class="occurrence">[1]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/insert-controls/include-controls">Switch to XML</a></div>
-                                          </div>
-                                          <div class="array-header">
-                                             <p class="array-member">(array member)</p>
-                                             <p class="type">object<br /></p>
-                                             <p class="occurrence">[1 to ∞]</p>
-                                             <p class="formal-name">Call</p>
-                                          </div>
-                                          <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> Call a control by its ID</p>
-                                             <div class="remarks-group usa-prose">
-                                                <details open="open">
-                                                   <summary class="subhead">Remarks</summary>
-                                                   <div class="remarks">
-                                                      <p>If <code>with-child-controls</code> is <q>yes</q> on the call to a control, no sibling <code>call</code>elements need to be used to call any controls appearing within it. Since generally,
-                                                         this is how control enhancements are represented (as controls within controls), this
-                                                         provides a way to include controls with all their dependent controls (enhancements)
-                                                         without having to call them individually.</p>
-                                                   </div>
-                                                </details>
-                                             </div>
-                                             <details class="properties" open="open">
-                                                <summary>Properties (3)</summary>
-                                                <div class="model-entry definition assembly">
-                                                   <div class="instance-header">
-                                                      <h6 id="/profile/merge/custom/insert-controls/include-controls/with-child-controls" class="toc6 name">with-child-controls</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#token">token</a></p>
-                                                      <p class="occurrence">[0 or 1]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/insert-controls/include-controls/@with-child-controls">Switch to XML</a></div>
-                                                      <p class="formal-name">Include contained controls with control</p>
-                                                   </div>
-                                                   <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> When a control is included, whether its child (dependent) controls are also included.</p>
-                                                      <details class="constraints" open="open">
-                                                         <summary>Constraint (1)</summary>
-                                                         <div class="constraint">
-                                                            <p><span class="usa-tag">allowed values</span></p>
-                                                            <p>The value <b>must</b> be one of the following:</p>
-                                                            <ul>
-                                                               
-                                                               <li><strong>yes</strong>: Include child controls with an included control.</li>
-                                                               
-                                                               <li><strong>no</strong>: When importing a control, only include child controls that are also explicitly called.</li>
-                                                               </ul>
-                                                         </div>
-                                                      </details>
-                                                   </div>
-                                                </div>
-                                                <div class="model-entry definition assembly">
-                                                   <div class="instance-header">
-                                                      <h6 id="/profile/merge/custom/insert-controls/include-controls/with-ids" class="toc6 name">with-ids</h6>
-                                                      <p class="type">array<br /></p>
-                                                      <p class="occurrence">[0 or 1]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/insert-controls/include-controls/with-id">Switch to XML</a></div>
-                                                   </div>
-                                                   <div class="array-header">
-                                                      <p class="array-member">(array member)</p>
-                                                      <p class="type"><a href="/reference/datatypes/#token">token</a></p>
-                                                      <p class="occurrence">[0 to ∞]</p>
-                                                      <p class="formal-name">Match Controls by Identifier</p>
-                                                   </div>
-                                                   <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> </p>
-                                                   </div>
-                                                </div>
-                                                <div class="model-entry definition assembly">
-                                                   <div class="instance-header">
-                                                      <h6 id="/profile/merge/custom/insert-controls/include-controls/matching" class="toc6 name">matching</h6>
-                                                      <p class="type">array<br /></p>
-                                                      <p class="occurrence">[0 or 1]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/insert-controls/include-controls/matching">Switch to XML</a></div>
-                                                   </div>
-                                                   <div class="array-header">
-                                                      <p class="array-member">(array member)</p>
-                                                      <p class="type"><a href="/reference/datatypes/#empty">empty</a></p>
-                                                      <p class="occurrence">[1 to ∞]</p>
-                                                      <p class="formal-name">Match Controls by Pattern</p>
-                                                   </div>
-                                                   <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> Select controls by (regular expression) match on ID</p>
-                                                      <details class="properties" open="open">
-                                                         <summary>Property (1)</summary>
-                                                         <div class="model-entry definition assembly">
-                                                            <div class="instance-header">
-                                                               <p id="/profile/merge/custom/insert-controls/include-controls/matching/pattern" class="toc7 name">pattern</p>
-                                                               <p class="type"><a href="/reference/datatypes/#string">string</a></p>
-                                                               <p class="occurrence">[0 or 1]</p>
-                                                               <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/insert-controls/include-controls/matching/@pattern">Switch to XML</a></div>
-                                                               <p class="formal-name">Pattern</p>
-                                                            </div>
-                                                            <div class="body">
-                                                               <p class="description"><span class="usa-tag">Description</span> A <a href="https://en.wikipedia.org/wiki/Glob_(programming)">glob expression</a> matching the IDs of one or more controls to be selected.</p>
-                                                            </div>
-                                                         </div>
-                                                      </details>
-                                                   </div>
-                                                </div>
-                                             </details>
-                                          </div>
-                                       </div>
-                                       <div class="model-entry definition assembly">
-                                          <div class="instance-header">
-                                             <h5 id="/profile/merge/custom/insert-controls/exclude-controls" class="toc5 name">exclude-controls</h5>
-                                             <p class="type">array<br /></p>
-                                             <p class="occurrence">[0 or 1]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/insert-controls/exclude-controls">Switch to XML</a></div>
-                                          </div>
-                                          <div class="array-header">
-                                             <p class="array-member">(array member)</p>
-                                             <p class="type">object<br /></p>
-                                             <p class="occurrence">[1 to ∞]</p>
-                                             <p class="formal-name">Call</p>
-                                          </div>
-                                          <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> Call a control by its ID</p>
-                                             <div class="remarks-group usa-prose">
-                                                <details open="open">
-                                                   <summary class="subhead">Remarks</summary>
-                                                   <div class="remarks">
-                                                      <p>If <code>with-child-controls</code> is <q>yes</q> on the call to a control, no sibling <code>call</code>elements need to be used to call any controls appearing within it. Since generally,
-                                                         this is how control enhancements are represented (as controls within controls), this
-                                                         provides a way to include controls with all their dependent controls (enhancements)
-                                                         without having to call them individually.</p>
-                                                   </div>
-                                                   <div class="remarks in-use">
-                                                      <p>Identifies which controls to exclude, or eliminate, from the set of matching includes.</p>
-                                                   </div>
-                                                </details>
-                                             </div>
-                                             <details class="properties" open="open">
-                                                <summary>Properties (3)</summary>
-                                                <div class="model-entry definition assembly">
-                                                   <div class="instance-header">
-                                                      <h6 id="/profile/merge/custom/insert-controls/exclude-controls/with-child-controls" class="toc6 name">with-child-controls</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#token">token</a></p>
-                                                      <p class="occurrence">[0 or 1]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/insert-controls/exclude-controls/@with-child-controls">Switch to XML</a></div>
-                                                      <p class="formal-name">Include contained controls with control</p>
-                                                   </div>
-                                                   <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> When a control is included, whether its child (dependent) controls are also included.</p>
-                                                      <details class="constraints" open="open">
-                                                         <summary>Constraint (1)</summary>
-                                                         <div class="constraint">
-                                                            <p><span class="usa-tag">allowed values</span></p>
-                                                            <p>The value <b>must</b> be one of the following:</p>
-                                                            <ul>
-                                                               
-                                                               <li><strong>yes</strong>: Include child controls with an included control.</li>
-                                                               
-                                                               <li><strong>no</strong>: When importing a control, only include child controls that are also explicitly called.</li>
-                                                               </ul>
-                                                         </div>
-                                                      </details>
-                                                   </div>
-                                                </div>
-                                                <div class="model-entry definition assembly">
-                                                   <div class="instance-header">
-                                                      <h6 id="/profile/merge/custom/insert-controls/exclude-controls/with-ids" class="toc6 name">with-ids</h6>
-                                                      <p class="type">array<br /></p>
-                                                      <p class="occurrence">[0 or 1]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/insert-controls/exclude-controls/with-id">Switch to XML</a></div>
-                                                   </div>
-                                                   <div class="array-header">
-                                                      <p class="array-member">(array member)</p>
-                                                      <p class="type"><a href="/reference/datatypes/#token">token</a></p>
-                                                      <p class="occurrence">[0 to ∞]</p>
-                                                      <p class="formal-name">Match Controls by Identifier</p>
-                                                   </div>
-                                                   <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> </p>
-                                                   </div>
-                                                </div>
-                                                <div class="model-entry definition assembly">
-                                                   <div class="instance-header">
-                                                      <h6 id="/profile/merge/custom/insert-controls/exclude-controls/matching" class="toc6 name">matching</h6>
-                                                      <p class="type">array<br /></p>
-                                                      <p class="occurrence">[0 or 1]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/insert-controls/exclude-controls/matching">Switch to XML</a></div>
-                                                   </div>
-                                                   <div class="array-header">
-                                                      <p class="array-member">(array member)</p>
-                                                      <p class="type"><a href="/reference/datatypes/#empty">empty</a></p>
-                                                      <p class="occurrence">[1 to ∞]</p>
-                                                      <p class="formal-name">Match Controls by Pattern</p>
-                                                   </div>
-                                                   <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> Select controls by (regular expression) match on ID</p>
-                                                      <details class="properties" open="open">
-                                                         <summary>Property (1)</summary>
-                                                         <div class="model-entry definition assembly">
-                                                            <div class="instance-header">
-                                                               <p id="/profile/merge/custom/insert-controls/exclude-controls/matching/pattern" class="toc7 name">pattern</p>
-                                                               <p class="type"><a href="/reference/datatypes/#string">string</a></p>
-                                                               <p class="occurrence">[0 or 1]</p>
-                                                               <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/insert-controls/exclude-controls/matching/@pattern">Switch to XML</a></div>
-                                                               <p class="formal-name">Pattern</p>
-                                                            </div>
-                                                            <div class="body">
-                                                               <p class="description"><span class="usa-tag">Description</span> A <a href="https://en.wikipedia.org/wiki/Glob_(programming)">glob expression</a> matching the IDs of one or more controls to be selected.</p>
-                                                            </div>
-                                                         </div>
-                                                      </details>
-                                                   </div>
-                                                </div>
-                                             </details>
-                                          </div>
-                                       </div>
-                                    </details>
                                  </div>
-                              </div>
-                           </details>
+                                 <div class="model-entry definition assembly">
+                                    <div class="instance-header">
+                                       <h4 id="/profile/merge/custom/insert-controls" class="toc4 name">insert-controls</h4>
+                                       <p class="type">array<br /></p>
+                                       <p class="occurrence">[0 or 1]</p>
+                                       <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/insert-controls">Switch to XML</a></div>
+                                    </div>
+                                    <div class="array-header">
+                                       <p class="array-member">(array member)</p>
+                                       <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-profile/custom/insert-controls">(global definition)</a></p>
+                                       <p class="occurrence">[1 to ∞]</p>
+                                       <p class="formal-name">Select controls</p>
+                                    </div>
+                                    <div class="body">
+                                       <p class="description"><span class="usa-tag">Description</span> Specifies which controls to use in the containing context.</p>
+                                       <div class="remarks-group usa-prose">
+                                          <details open="open">
+                                             <summary class="subhead">Remarks</summary>
+                                             <div class="remarks">
+                                                <p>To be schema-valid, this element must contain either (but not both) a single <code>include-all</code> directive, or a sequence of <code>include-controls</code> directives.</p>
+                                                <p>If this directive is not provided, then no controls are to be inserted; i.e., all
+                                                   controls are included explicitly.</p>
+                                             </div>
+                                          </details>
+                                       </div>
+                                       <details class="properties" open="open">
+                                          <summary>Properties (3)</summary>
+                                          <div class="model-entry definition assembly">
+                                             <div class="instance-header">
+                                                <h5 id="/profile/merge/custom/insert-controls/order" class="toc5 name">order</h5>
+                                                <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                <p class="occurrence">[0 or 1]</p>
+                                                <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/insert-controls/@order">Switch to XML</a></div>
+                                                <p class="formal-name">Order</p>
+                                             </div>
+                                             <div class="body">
+                                                <p class="description"><span class="usa-tag">Description</span> A designation of how a selection of controls in a profile is to be ordered.</p>
+                                                <details class="constraints" open="open">
+                                                   <summary>Constraint (1)</summary>
+                                                   <div class="constraint">
+                                                      <p><span class="usa-tag">allowed values</span></p>
+                                                      <p>The value <b>must</b> be one of the following:</p>
+                                                      <ul>
+                                                         
+                                                         <li><strong>keep</strong></li>
+                                                         
+                                                         <li><strong>ascending</strong></li>
+                                                         
+                                                         <li><strong>descending</strong></li>
+                                                         </ul>
+                                                   </div>
+                                                </details>
+                                             </div>
+                                          </div>
+                                          <div class="choice">
+                                             <p>A choice:</p>
+                                             <div class="model-entry definition assembly">
+                                                <div class="instance-header">
+                                                   <h5 id="/profile/merge/custom/insert-controls/include-all" class="toc5 name">include-all</h5>
+                                                   <p class="type"><a href="/reference/datatypes/#empty">empty</a></p>
+                                                   <p class="occurrence">[1]</p>
+                                                   <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/insert-controls/include-all">Switch to XML</a></div>
+                                                   <p class="formal-name">Insert All</p>
+                                                </div>
+                                                <div class="body">
+                                                   <p class="description"><span class="usa-tag">Description</span> Insert all controls from the imported catalog or profile resources identified in
+                                                      the <code>import</code> directive.</p>
+                                                   <div class="remarks-group usa-prose">
+                                                      <details open="open">
+                                                         <summary class="subhead">Remarks</summary>
+                                                         <div class="remarks">
+                                                            <p>This element provides an alternative to calling controls individually from a catalog.</p>
+                                                         </div>
+                                                      </details>
+                                                   </div>
+                                                </div>
+                                             </div>
+                                             <div class="model-entry definition assembly">
+                                                <div class="instance-header">
+                                                   <h5 id="/profile/merge/custom/insert-controls/include-controls" class="toc5 name">include-controls</h5>
+                                                   <p class="type">array<br /></p>
+                                                   <p class="occurrence">[1]</p>
+                                                   <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/insert-controls/include-controls">Switch to XML</a></div>
+                                                </div>
+                                                <div class="array-header">
+                                                   <p class="array-member">(array member)</p>
+                                                   <p class="type">object<br /></p>
+                                                   <p class="occurrence">[1 to ∞]</p>
+                                                   <p class="formal-name">Call</p>
+                                                </div>
+                                                <div class="body">
+                                                   <p class="description"><span class="usa-tag">Description</span> Call a control by its ID</p>
+                                                   <div class="remarks-group usa-prose">
+                                                      <details open="open">
+                                                         <summary class="subhead">Remarks</summary>
+                                                         <div class="remarks">
+                                                            <p>If <code>with-child-controls</code> is <q>yes</q> on the call to a control, no sibling <code>call</code>elements need to be used to call any controls appearing within it. Since generally,
+                                                               this is how control enhancements are represented (as controls within controls), this
+                                                               provides a way to include controls with all their dependent controls (enhancements)
+                                                               without having to call them individually.</p>
+                                                         </div>
+                                                      </details>
+                                                   </div>
+                                                   <details class="properties" open="open">
+                                                      <summary>Properties (3)</summary>
+                                                      <div class="model-entry definition assembly">
+                                                         <div class="instance-header">
+                                                            <h6 id="/profile/merge/custom/insert-controls/include-controls/with-child-controls" class="toc6 name">with-child-controls</h6>
+                                                            <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                            <p class="occurrence">[0 or 1]</p>
+                                                            <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/insert-controls/include-controls/@with-child-controls">Switch to XML</a></div>
+                                                            <p class="formal-name">Include contained controls with control</p>
+                                                         </div>
+                                                         <div class="body">
+                                                            <p class="description"><span class="usa-tag">Description</span> When a control is included, whether its child (dependent) controls are also included.</p>
+                                                            <details class="constraints" open="open">
+                                                               <summary>Constraint (1)</summary>
+                                                               <div class="constraint">
+                                                                  <p><span class="usa-tag">allowed values</span></p>
+                                                                  <p>The value <b>must</b> be one of the following:</p>
+                                                                  <ul>
+                                                                     
+                                                                     <li><strong>yes</strong>: Include child controls with an included control.</li>
+                                                                     
+                                                                     <li><strong>no</strong>: When importing a control, only include child controls that are also explicitly called.</li>
+                                                                     </ul>
+                                                               </div>
+                                                            </details>
+                                                         </div>
+                                                      </div>
+                                                      <div class="model-entry definition assembly">
+                                                         <div class="instance-header">
+                                                            <h6 id="/profile/merge/custom/insert-controls/include-controls/with-ids" class="toc6 name">with-ids</h6>
+                                                            <p class="type">array<br /></p>
+                                                            <p class="occurrence">[0 or 1]</p>
+                                                            <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/insert-controls/include-controls/with-id">Switch to XML</a></div>
+                                                         </div>
+                                                         <div class="array-header">
+                                                            <p class="array-member">(array member)</p>
+                                                            <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                            <p class="occurrence">[0 to ∞]</p>
+                                                            <p class="formal-name">Match Controls by Identifier</p>
+                                                         </div>
+                                                         <div class="body">
+                                                            <p class="description"><span class="usa-tag">Description</span> </p>
+                                                         </div>
+                                                      </div>
+                                                      <div class="model-entry definition assembly">
+                                                         <div class="instance-header">
+                                                            <h6 id="/profile/merge/custom/insert-controls/include-controls/matching" class="toc6 name">matching</h6>
+                                                            <p class="type">array<br /></p>
+                                                            <p class="occurrence">[0 or 1]</p>
+                                                            <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/insert-controls/include-controls/matching">Switch to XML</a></div>
+                                                         </div>
+                                                         <div class="array-header">
+                                                            <p class="array-member">(array member)</p>
+                                                            <p class="type"><a href="/reference/datatypes/#empty">empty</a></p>
+                                                            <p class="occurrence">[1 to ∞]</p>
+                                                            <p class="formal-name">Match Controls by Pattern</p>
+                                                         </div>
+                                                         <div class="body">
+                                                            <p class="description"><span class="usa-tag">Description</span> Select controls by (regular expression) match on ID</p>
+                                                            <details class="properties" open="open">
+                                                               <summary>Property (1)</summary>
+                                                               <div class="model-entry definition assembly">
+                                                                  <div class="instance-header">
+                                                                     <p id="/profile/merge/custom/insert-controls/include-controls/matching/pattern" class="toc7 name">pattern</p>
+                                                                     <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                                     <p class="occurrence">[0 or 1]</p>
+                                                                     <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/insert-controls/include-controls/matching/@pattern">Switch to XML</a></div>
+                                                                     <p class="formal-name">Pattern</p>
+                                                                  </div>
+                                                                  <div class="body">
+                                                                     <p class="description"><span class="usa-tag">Description</span> A <a href="https://en.wikipedia.org/wiki/Glob_(programming)">glob expression</a> matching the IDs of one or more controls to be selected.</p>
+                                                                  </div>
+                                                               </div>
+                                                            </details>
+                                                         </div>
+                                                      </div>
+                                                   </details>
+                                                </div>
+                                             </div>
+                                          </div>
+                                          <div class="model-entry definition assembly">
+                                             <div class="instance-header">
+                                                <h5 id="/profile/merge/custom/insert-controls/exclude-controls" class="toc5 name">exclude-controls</h5>
+                                                <p class="type">array<br /></p>
+                                                <p class="occurrence">[0 or 1]</p>
+                                                <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/insert-controls/exclude-controls">Switch to XML</a></div>
+                                             </div>
+                                             <div class="array-header">
+                                                <p class="array-member">(array member)</p>
+                                                <p class="type">object<br /></p>
+                                                <p class="occurrence">[1 to ∞]</p>
+                                                <p class="formal-name">Call</p>
+                                             </div>
+                                             <div class="body">
+                                                <p class="description"><span class="usa-tag">Description</span> Call a control by its ID</p>
+                                                <div class="remarks-group usa-prose">
+                                                   <details open="open">
+                                                      <summary class="subhead">Remarks</summary>
+                                                      <div class="remarks">
+                                                         <p>If <code>with-child-controls</code> is <q>yes</q> on the call to a control, no sibling <code>call</code>elements need to be used to call any controls appearing within it. Since generally,
+                                                            this is how control enhancements are represented (as controls within controls), this
+                                                            provides a way to include controls with all their dependent controls (enhancements)
+                                                            without having to call them individually.</p>
+                                                      </div>
+                                                      <div class="remarks in-use">
+                                                         <p>Identifies which controls to exclude, or eliminate, from the set of matching includes.</p>
+                                                      </div>
+                                                   </details>
+                                                </div>
+                                                <details class="properties" open="open">
+                                                   <summary>Properties (3)</summary>
+                                                   <div class="model-entry definition assembly">
+                                                      <div class="instance-header">
+                                                         <h6 id="/profile/merge/custom/insert-controls/exclude-controls/with-child-controls" class="toc6 name">with-child-controls</h6>
+                                                         <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                         <p class="occurrence">[0 or 1]</p>
+                                                         <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/insert-controls/exclude-controls/@with-child-controls">Switch to XML</a></div>
+                                                         <p class="formal-name">Include contained controls with control</p>
+                                                      </div>
+                                                      <div class="body">
+                                                         <p class="description"><span class="usa-tag">Description</span> When a control is included, whether its child (dependent) controls are also included.</p>
+                                                         <details class="constraints" open="open">
+                                                            <summary>Constraint (1)</summary>
+                                                            <div class="constraint">
+                                                               <p><span class="usa-tag">allowed values</span></p>
+                                                               <p>The value <b>must</b> be one of the following:</p>
+                                                               <ul>
+                                                                  
+                                                                  <li><strong>yes</strong>: Include child controls with an included control.</li>
+                                                                  
+                                                                  <li><strong>no</strong>: When importing a control, only include child controls that are also explicitly called.</li>
+                                                                  </ul>
+                                                            </div>
+                                                         </details>
+                                                      </div>
+                                                   </div>
+                                                   <div class="model-entry definition assembly">
+                                                      <div class="instance-header">
+                                                         <h6 id="/profile/merge/custom/insert-controls/exclude-controls/with-ids" class="toc6 name">with-ids</h6>
+                                                         <p class="type">array<br /></p>
+                                                         <p class="occurrence">[0 or 1]</p>
+                                                         <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/insert-controls/exclude-controls/with-id">Switch to XML</a></div>
+                                                      </div>
+                                                      <div class="array-header">
+                                                         <p class="array-member">(array member)</p>
+                                                         <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                         <p class="occurrence">[0 to ∞]</p>
+                                                         <p class="formal-name">Match Controls by Identifier</p>
+                                                      </div>
+                                                      <div class="body">
+                                                         <p class="description"><span class="usa-tag">Description</span> </p>
+                                                      </div>
+                                                   </div>
+                                                   <div class="model-entry definition assembly">
+                                                      <div class="instance-header">
+                                                         <h6 id="/profile/merge/custom/insert-controls/exclude-controls/matching" class="toc6 name">matching</h6>
+                                                         <p class="type">array<br /></p>
+                                                         <p class="occurrence">[0 or 1]</p>
+                                                         <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/insert-controls/exclude-controls/matching">Switch to XML</a></div>
+                                                      </div>
+                                                      <div class="array-header">
+                                                         <p class="array-member">(array member)</p>
+                                                         <p class="type"><a href="/reference/datatypes/#empty">empty</a></p>
+                                                         <p class="occurrence">[1 to ∞]</p>
+                                                         <p class="formal-name">Match Controls by Pattern</p>
+                                                      </div>
+                                                      <div class="body">
+                                                         <p class="description"><span class="usa-tag">Description</span> Select controls by (regular expression) match on ID</p>
+                                                         <details class="properties" open="open">
+                                                            <summary>Property (1)</summary>
+                                                            <div class="model-entry definition assembly">
+                                                               <div class="instance-header">
+                                                                  <p id="/profile/merge/custom/insert-controls/exclude-controls/matching/pattern" class="toc7 name">pattern</p>
+                                                                  <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                                  <p class="occurrence">[0 or 1]</p>
+                                                                  <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/insert-controls/exclude-controls/matching/@pattern">Switch to XML</a></div>
+                                                                  <p class="formal-name">Pattern</p>
+                                                               </div>
+                                                               <div class="body">
+                                                                  <p class="description"><span class="usa-tag">Description</span> A <a href="https://en.wikipedia.org/wiki/Glob_(programming)">glob expression</a> matching the IDs of one or more controls to be selected.</p>
+                                                               </div>
+                                                            </div>
+                                                         </details>
+                                                      </div>
+                                                   </div>
+                                                </details>
+                                             </div>
+                                          </div>
+                                       </details>
+                                    </div>
+                                 </div>
+                              </details>
+                           </div>
                         </div>
                      </div>
                   </details>
@@ -6452,95 +6473,98 @@ The following is the JSON format reference for this model, which is organized hi
                                     </details>
                                  </div>
                               </div>
-                              <div class="model-entry definition assembly">
-                                 <div class="instance-header">
-                                    <h4 id="/profile/modify/set-parameters/values" class="toc4 name">values</h4>
-                                    <p class="type">array<br /></p>
-                                    <p class="occurrence">[0 or 1]</p>
-                                    <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/modify/set-parameter/value">Switch to XML</a></div>
+                              <div class="choice">
+                                 <p>A choice:</p>
+                                 <div class="model-entry definition assembly">
+                                    <div class="instance-header">
+                                       <h4 id="/profile/modify/set-parameters/values" class="toc4 name">values</h4>
+                                       <p class="type">array<br /></p>
+                                       <p class="occurrence">[0 or 1]</p>
+                                       <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/modify/set-parameter/value">Switch to XML</a></div>
+                                    </div>
+                                    <div class="array-header">
+                                       <p class="array-member">(array member)</p>
+                                       <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                       <p class="occurrence">[0 to ∞]</p>
+                                       <p class="formal-name">Parameter Value</p>
+                                    </div>
+                                    <div class="body">
+                                       <p class="description"><span class="usa-tag">Description</span> A parameter value or set of values.</p>
+                                       <div class="remarks-group usa-prose">
+                                          <details open="open">
+                                             <summary class="subhead">Remarks</summary>
+                                             <div class="remarks in-use">
+                                                <p>Used to (re)define a parameter value.</p>
+                                             </div>
+                                          </details>
+                                       </div>
+                                    </div>
                                  </div>
-                                 <div class="array-header">
-                                    <p class="array-member">(array member)</p>
-                                    <p class="type"><a href="/reference/datatypes/#string">string</a></p>
-                                    <p class="occurrence">[0 to ∞]</p>
-                                    <p class="formal-name">Parameter Value</p>
-                                 </div>
-                                 <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> A parameter value or set of values.</p>
-                                    <div class="remarks-group usa-prose">
-                                       <details open="open">
-                                          <summary class="subhead">Remarks</summary>
-                                          <div class="remarks in-use">
-                                             <p>Used to (re)define a parameter value.</p>
+                                 <div class="model-entry definition assembly">
+                                    <div class="instance-header">
+                                       <h4 id="/profile/modify/set-parameters/select" class="toc4 name">select</h4>
+                                       <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-profile/modify/set-parameters/select">(global definition)</a></p>
+                                       <p class="occurrence">[0 or 1]</p>
+                                       <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/modify/set-parameter/select">Switch to XML</a></div>
+                                       <p class="formal-name">Selection</p>
+                                    </div>
+                                    <div class="body">
+                                       <p class="description"><span class="usa-tag">Description</span> Presenting a choice among alternatives</p>
+                                       <div class="remarks-group usa-prose">
+                                          <details open="open">
+                                             <summary class="subhead">Remarks</summary>
+                                             <div class="remarks">
+                                                <p>A set of parameter value choices, that may be picked from to set the parameter value.</p>
+                                             </div>
+                                          </details>
+                                       </div>
+                                       <details class="properties" open="open">
+                                          <summary>Properties (2)</summary>
+                                          <div class="model-entry definition assembly">
+                                             <div class="instance-header">
+                                                <h5 id="/profile/modify/set-parameters/select/how-many" class="toc5 name">how-many</h5>
+                                                <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                <p class="occurrence">[0 or 1]</p>
+                                                <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/modify/set-parameter/select/@how-many">Switch to XML</a></div>
+                                                <p class="formal-name">Parameter Cardinality</p>
+                                             </div>
+                                             <div class="body">
+                                                <p class="description"><span class="usa-tag">Description</span> Describes the number of selections that must occur. Without this setting, only one
+                                                   value should be assumed to be permitted.</p>
+                                                <details class="constraints" open="open">
+                                                   <summary>Constraint (1)</summary>
+                                                   <div class="constraint">
+                                                      <p><span class="usa-tag">allowed values</span></p>
+                                                      <p>The value <b>must</b> be one of the following:</p>
+                                                      <ul>
+                                                         
+                                                         <li><strong>one</strong>: Only one value is permitted.</li>
+                                                         
+                                                         <li><strong>one-or-more</strong>: One or more values are permitted.</li>
+                                                         </ul>
+                                                   </div>
+                                                </details>
+                                             </div>
+                                          </div>
+                                          <div class="model-entry definition assembly">
+                                             <div class="instance-header">
+                                                <h5 id="/profile/modify/set-parameters/select/choice" class="toc5 name">choice</h5>
+                                                <p class="type">array<br /></p>
+                                                <p class="occurrence">[0 or 1]</p>
+                                                <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/modify/set-parameter/select/choice">Switch to XML</a></div>
+                                             </div>
+                                             <div class="array-header">
+                                                <p class="array-member">(array member)</p>
+                                                <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                                <p class="occurrence">[0 to ∞]</p>
+                                                <p class="formal-name">Choice</p>
+                                             </div>
+                                             <div class="body">
+                                                <p class="description"><span class="usa-tag">Description</span> A value selection among several such options</p>
+                                             </div>
                                           </div>
                                        </details>
                                     </div>
-                                 </div>
-                              </div>
-                              <div class="model-entry definition assembly">
-                                 <div class="instance-header">
-                                    <h4 id="/profile/modify/set-parameters/select" class="toc4 name">select</h4>
-                                    <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-profile/modify/set-parameters/select">(global definition)</a></p>
-                                    <p class="occurrence">[0 or 1]</p>
-                                    <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/modify/set-parameter/select">Switch to XML</a></div>
-                                    <p class="formal-name">Selection</p>
-                                 </div>
-                                 <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> Presenting a choice among alternatives</p>
-                                    <div class="remarks-group usa-prose">
-                                       <details open="open">
-                                          <summary class="subhead">Remarks</summary>
-                                          <div class="remarks">
-                                             <p>A set of parameter value choices, that may be picked from to set the parameter value.</p>
-                                          </div>
-                                       </details>
-                                    </div>
-                                    <details class="properties" open="open">
-                                       <summary>Properties (2)</summary>
-                                       <div class="model-entry definition assembly">
-                                          <div class="instance-header">
-                                             <h5 id="/profile/modify/set-parameters/select/how-many" class="toc5 name">how-many</h5>
-                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
-                                             <p class="occurrence">[0 or 1]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/modify/set-parameter/select/@how-many">Switch to XML</a></div>
-                                             <p class="formal-name">Parameter Cardinality</p>
-                                          </div>
-                                          <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> Describes the number of selections that must occur. Without this setting, only one
-                                                value should be assumed to be permitted.</p>
-                                             <details class="constraints" open="open">
-                                                <summary>Constraint (1)</summary>
-                                                <div class="constraint">
-                                                   <p><span class="usa-tag">allowed values</span></p>
-                                                   <p>The value <b>must</b> be one of the following:</p>
-                                                   <ul>
-                                                      
-                                                      <li><strong>one</strong>: Only one value is permitted.</li>
-                                                      
-                                                      <li><strong>one-or-more</strong>: One or more values are permitted.</li>
-                                                      </ul>
-                                                </div>
-                                             </details>
-                                          </div>
-                                       </div>
-                                       <div class="model-entry definition assembly">
-                                          <div class="instance-header">
-                                             <h5 id="/profile/modify/set-parameters/select/choice" class="toc5 name">choice</h5>
-                                             <p class="type">array<br /></p>
-                                             <p class="occurrence">[0 or 1]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/modify/set-parameter/select/choice">Switch to XML</a></div>
-                                          </div>
-                                          <div class="array-header">
-                                             <p class="array-member">(array member)</p>
-                                             <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
-                                             <p class="occurrence">[0 to ∞]</p>
-                                             <p class="formal-name">Choice</p>
-                                          </div>
-                                          <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> A value selection among several such options</p>
-                                          </div>
-                                       </div>
-                                    </details>
                                  </div>
                               </div>
                            </details>
@@ -7305,99 +7329,102 @@ The following is the JSON format reference for this model, which is organized hi
                                                       </details>
                                                    </div>
                                                 </div>
-                                                <div class="model-entry definition assembly">
-                                                   <div class="instance-header">
-                                                      <h6 id="/profile/modify/alters/adds/params/values" class="toc6 name">values</h6>
-                                                      <p class="type">array<br /></p>
-                                                      <p class="occurrence">[0 or 1]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/modify/alter/add/param/value">Switch to XML</a></div>
+                                                <div class="choice">
+                                                   <p>A choice:</p>
+                                                   <div class="model-entry definition assembly">
+                                                      <div class="instance-header">
+                                                         <h6 id="/profile/modify/alters/adds/params/values" class="toc6 name">values</h6>
+                                                         <p class="type">array<br /></p>
+                                                         <p class="occurrence">[0 or 1]</p>
+                                                         <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/modify/alter/add/param/value">Switch to XML</a></div>
+                                                      </div>
+                                                      <div class="array-header">
+                                                         <p class="array-member">(array member)</p>
+                                                         <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                         <p class="occurrence">[0 to ∞]</p>
+                                                         <p class="formal-name">Parameter Value</p>
+                                                      </div>
+                                                      <div class="body">
+                                                         <p class="description"><span class="usa-tag">Description</span> A parameter value or set of values.</p>
+                                                         <div class="remarks-group usa-prose">
+                                                            <details open="open">
+                                                               <summary class="subhead">Remarks</summary>
+                                                               <div class="remarks in-use">
+                                                                  <p>A set of values provided in a catalog can be redefined at any higher layer of OSCAL
+                                                                     (e.g., Profile).</p>
+                                                               </div>
+                                                            </details>
+                                                         </div>
+                                                      </div>
                                                    </div>
-                                                   <div class="array-header">
-                                                      <p class="array-member">(array member)</p>
-                                                      <p class="type"><a href="/reference/datatypes/#string">string</a></p>
-                                                      <p class="occurrence">[0 to ∞]</p>
-                                                      <p class="formal-name">Parameter Value</p>
-                                                   </div>
-                                                   <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> A parameter value or set of values.</p>
-                                                      <div class="remarks-group usa-prose">
-                                                         <details open="open">
-                                                            <summary class="subhead">Remarks</summary>
-                                                            <div class="remarks in-use">
-                                                               <p>A set of values provided in a catalog can be redefined at any higher layer of OSCAL
-                                                                  (e.g., Profile).</p>
+                                                   <div class="model-entry definition assembly">
+                                                      <div class="instance-header">
+                                                         <h6 id="/profile/modify/alters/adds/params/select" class="toc6 name">select</h6>
+                                                         <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-catalog-common/parameter/select">(global definition)</a></p>
+                                                         <p class="occurrence">[0 or 1]</p>
+                                                         <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/modify/alter/add/param/select">Switch to XML</a></div>
+                                                         <p class="formal-name">Selection</p>
+                                                      </div>
+                                                      <div class="body">
+                                                         <p class="description"><span class="usa-tag">Description</span> Presenting a choice among alternatives</p>
+                                                         <div class="remarks-group usa-prose">
+                                                            <details open="open">
+                                                               <summary class="subhead">Remarks</summary>
+                                                               <div class="remarks">
+                                                                  <p>A set of parameter value choices, that may be picked from to set the parameter value.</p>
+                                                               </div>
+                                                               <div class="remarks in-use">
+                                                                  <p>A set of parameter value choices, that may be picked from to set the parameter value.</p>
+                                                               </div>
+                                                            </details>
+                                                         </div>
+                                                         <details class="properties" open="open">
+                                                            <summary>Properties (2)</summary>
+                                                            <div class="model-entry definition assembly">
+                                                               <div class="instance-header">
+                                                                  <p id="/profile/modify/alters/adds/params/select/how-many" class="toc7 name">how-many</p>
+                                                                  <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                                  <p class="occurrence">[0 or 1]</p>
+                                                                  <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/modify/alter/add/param/select/@how-many">Switch to XML</a></div>
+                                                                  <p class="formal-name">Parameter Cardinality</p>
+                                                               </div>
+                                                               <div class="body">
+                                                                  <p class="description"><span class="usa-tag">Description</span> Describes the number of selections that must occur. Without this setting, only one
+                                                                     value should be assumed to be permitted.</p>
+                                                                  <details class="constraints" open="open">
+                                                                     <summary>Constraint (1)</summary>
+                                                                     <div class="constraint">
+                                                                        <p><span class="usa-tag">allowed values</span></p>
+                                                                        <p>The value <b>must</b> be one of the following:</p>
+                                                                        <ul>
+                                                                           
+                                                                           <li><strong>one</strong>: Only one value is permitted.</li>
+                                                                           
+                                                                           <li><strong>one-or-more</strong>: One or more values are permitted.</li>
+                                                                           </ul>
+                                                                     </div>
+                                                                  </details>
+                                                               </div>
+                                                            </div>
+                                                            <div class="model-entry definition assembly">
+                                                               <div class="instance-header">
+                                                                  <p id="/profile/modify/alters/adds/params/select/choice" class="toc7 name">choice</p>
+                                                                  <p class="type">array<br /></p>
+                                                                  <p class="occurrence">[0 or 1]</p>
+                                                                  <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/modify/alter/add/param/select/choice">Switch to XML</a></div>
+                                                               </div>
+                                                               <div class="array-header">
+                                                                  <p class="array-member">(array member)</p>
+                                                                  <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                                                  <p class="occurrence">[0 to ∞]</p>
+                                                                  <p class="formal-name">Choice</p>
+                                                               </div>
+                                                               <div class="body">
+                                                                  <p class="description"><span class="usa-tag">Description</span> A value selection among several such options</p>
+                                                               </div>
                                                             </div>
                                                          </details>
                                                       </div>
-                                                   </div>
-                                                </div>
-                                                <div class="model-entry definition assembly">
-                                                   <div class="instance-header">
-                                                      <h6 id="/profile/modify/alters/adds/params/select" class="toc6 name">select</h6>
-                                                      <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-catalog-common/parameter/select">(global definition)</a></p>
-                                                      <p class="occurrence">[0 or 1]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/modify/alter/add/param/select">Switch to XML</a></div>
-                                                      <p class="formal-name">Selection</p>
-                                                   </div>
-                                                   <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> Presenting a choice among alternatives</p>
-                                                      <div class="remarks-group usa-prose">
-                                                         <details open="open">
-                                                            <summary class="subhead">Remarks</summary>
-                                                            <div class="remarks">
-                                                               <p>A set of parameter value choices, that may be picked from to set the parameter value.</p>
-                                                            </div>
-                                                            <div class="remarks in-use">
-                                                               <p>A set of parameter value choices, that may be picked from to set the parameter value.</p>
-                                                            </div>
-                                                         </details>
-                                                      </div>
-                                                      <details class="properties" open="open">
-                                                         <summary>Properties (2)</summary>
-                                                         <div class="model-entry definition assembly">
-                                                            <div class="instance-header">
-                                                               <p id="/profile/modify/alters/adds/params/select/how-many" class="toc7 name">how-many</p>
-                                                               <p class="type"><a href="/reference/datatypes/#token">token</a></p>
-                                                               <p class="occurrence">[0 or 1]</p>
-                                                               <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/modify/alter/add/param/select/@how-many">Switch to XML</a></div>
-                                                               <p class="formal-name">Parameter Cardinality</p>
-                                                            </div>
-                                                            <div class="body">
-                                                               <p class="description"><span class="usa-tag">Description</span> Describes the number of selections that must occur. Without this setting, only one
-                                                                  value should be assumed to be permitted.</p>
-                                                               <details class="constraints" open="open">
-                                                                  <summary>Constraint (1)</summary>
-                                                                  <div class="constraint">
-                                                                     <p><span class="usa-tag">allowed values</span></p>
-                                                                     <p>The value <b>must</b> be one of the following:</p>
-                                                                     <ul>
-                                                                        
-                                                                        <li><strong>one</strong>: Only one value is permitted.</li>
-                                                                        
-                                                                        <li><strong>one-or-more</strong>: One or more values are permitted.</li>
-                                                                        </ul>
-                                                                  </div>
-                                                               </details>
-                                                            </div>
-                                                         </div>
-                                                         <div class="model-entry definition assembly">
-                                                            <div class="instance-header">
-                                                               <p id="/profile/modify/alters/adds/params/select/choice" class="toc7 name">choice</p>
-                                                               <p class="type">array<br /></p>
-                                                               <p class="occurrence">[0 or 1]</p>
-                                                               <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/modify/alter/add/param/select/choice">Switch to XML</a></div>
-                                                            </div>
-                                                            <div class="array-header">
-                                                               <p class="array-member">(array member)</p>
-                                                               <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
-                                                               <p class="occurrence">[0 to ∞]</p>
-                                                               <p class="formal-name">Choice</p>
-                                                            </div>
-                                                            <div class="body">
-                                                               <p class="description"><span class="usa-tag">Description</span> A value selection among several such options</p>
-                                                            </div>
-                                                         </div>
-                                                      </details>
                                                    </div>
                                                 </div>
                                                 <div class="model-entry definition assembly">

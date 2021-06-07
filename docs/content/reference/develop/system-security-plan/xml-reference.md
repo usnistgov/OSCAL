@@ -49,7 +49,7 @@ The following is the XML format reference for this model, which is organized hie
             </div>
          </details>
          <details class="properties elements" open="open">
-            <summary>Elements (6)</summary>
+            <summary>Elements (48)</summary>
             <div class="model-entry definition assembly">
                <div class="instance-header">
                   <h2 id="/system-security-plan/metadata" class="toc2 name">metadata</h2>
@@ -126,7 +126,7 @@ The following is the XML format reference for this model, which is organized hie
                      </div>
                   </details>
                   <details class="properties elements" open="open">
-                     <summary>Elements (14)</summary>
+                     <summary>Elements (44)</summary>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
                            <h3 id="/system-security-plan/metadata/title" class="toc3 name">title</h3>
@@ -253,7 +253,7 @@ The following is the XML format reference for this model, which is organized hie
                         </div>
                         <div class="body">
                            <details class="properties elements" open="open">
-                              <summary>Element (1)</summary>
+                              <summary>Elements (9)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/system-security-plan/metadata/revisions/revision" class="toc4 name">revision</h4>
@@ -299,7 +299,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                     </details>
                                     <details class="properties elements" open="open">
-                                       <summary>Elements (8)</summary>
+                                       <summary>Elements (10)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/metadata/revisions/revision/title" class="toc5 name">title</h5>
@@ -1140,7 +1140,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                            </details>
                            <details class="properties elements" open="open">
-                              <summary>Elements (6)</summary>
+                              <summary>Elements (8)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/system-security-plan/metadata/role/title" class="toc4 name">title</h4>
@@ -1545,7 +1545,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                            </details>
                            <details class="properties elements" open="open">
-                              <summary>Elements (8)</summary>
+                              <summary>Elements (15)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/system-security-plan/metadata/location/title" class="toc4 name">title</h4>
@@ -2140,7 +2140,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                            </details>
                            <details class="properties elements" open="open">
-                              <summary>Elements (9)</summary>
+                              <summary>Elements (13)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/system-security-plan/metadata/party/name" class="toc4 name">name</h4>
@@ -2576,6 +2576,136 @@ The following is the XML format reference for this model, which is organized hie
                                     </details>
                                  </div>
                               </div>
+                              <div class="choice">
+                                 <p>A choice:</p>
+                                 <div class="model-entry definition assembly">
+                                    <div class="instance-header">
+                                       <h4 id="/system-security-plan/metadata/party/address" class="toc4 name">address</h4>
+                                       <p class="type">element<br /></p>
+                                       <p class="occurrence">[0 to ∞]</p>
+                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/metadata/parties/addresses">Switch to JSON</a></div>
+                                       <p class="formal-name">Address</p>
+                                    </div>
+                                    <div class="body">
+                                       <p class="description"><span class="usa-tag">Description</span> A postal address for the location.</p>
+                                       <details class="properties attributes" open="open">
+                                          <summary>Attribute (1)</summary>
+                                          <div class="model-entry definition assembly">
+                                             <div class="instance-header">
+                                                <h5 id="/system-security-plan/metadata/party/address/@type" class="toc5 name">type</h5>
+                                                <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                <p class="occurrence">[0 or 1]</p>
+                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/metadata/parties/addresses/type">Switch to JSON</a></div>
+                                                <p class="formal-name">Address Type</p>
+                                             </div>
+                                             <div class="body">
+                                                <p class="description"><span class="usa-tag">Description</span> Indicates the type of address.</p>
+                                                <details class="constraints" open="open">
+                                                   <summary>Constraint (1)</summary>
+                                                   <div class="constraint">
+                                                      <p><span class="usa-tag">allowed values</span></p>
+                                                      <p>The value <b>may be locally defined</b>, or one of the following:</p>
+                                                      <ul>
+                                                         
+                                                         <li><strong>home</strong>: A home address.</li>
+                                                         
+                                                         <li><strong>work</strong>: A work address.</li>
+                                                         </ul>
+                                                   </div>
+                                                </details>
+                                             </div>
+                                          </div>
+                                       </details>
+                                       <details class="properties elements" open="open">
+                                          <summary>Elements (5)</summary>
+                                          <div class="model-entry definition assembly">
+                                             <div class="instance-header">
+                                                <h5 id="/system-security-plan/metadata/party/address/addr-line" class="toc5 name">addr-line</h5>
+                                                <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                <p class="occurrence">[0 to ∞]</p>
+                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/metadata/parties/addresses/addr-lines">Switch to JSON</a></div>
+                                                <p class="formal-name">Address line</p>
+                                             </div>
+                                             <div class="body">
+                                                <p class="description"><span class="usa-tag">Description</span> A single line of an address.</p>
+                                             </div>
+                                          </div>
+                                          <div class="model-entry definition assembly">
+                                             <div class="instance-header">
+                                                <h5 id="/system-security-plan/metadata/party/address/city" class="toc5 name">city</h5>
+                                                <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                <p class="occurrence">[0 or 1]</p>
+                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/metadata/parties/addresses/city">Switch to JSON</a></div>
+                                                <p class="formal-name">City</p>
+                                             </div>
+                                             <div class="body">
+                                                <p class="description"><span class="usa-tag">Description</span> City, town or geographical region for the mailing address.</p>
+                                             </div>
+                                          </div>
+                                          <div class="model-entry definition assembly">
+                                             <div class="instance-header">
+                                                <h5 id="/system-security-plan/metadata/party/address/state" class="toc5 name">state</h5>
+                                                <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                <p class="occurrence">[0 or 1]</p>
+                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/metadata/parties/addresses/state">Switch to JSON</a></div>
+                                                <p class="formal-name">State</p>
+                                             </div>
+                                             <div class="body">
+                                                <p class="description"><span class="usa-tag">Description</span> State, province or analogous geographical region for mailing address</p>
+                                             </div>
+                                          </div>
+                                          <div class="model-entry definition assembly">
+                                             <div class="instance-header">
+                                                <h5 id="/system-security-plan/metadata/party/address/postal-code" class="toc5 name">postal-code</h5>
+                                                <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                <p class="occurrence">[0 or 1]</p>
+                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/metadata/parties/addresses/postal-code">Switch to JSON</a></div>
+                                                <p class="formal-name">Postal Code</p>
+                                             </div>
+                                             <div class="body">
+                                                <p class="description"><span class="usa-tag">Description</span> Postal or ZIP code for mailing address</p>
+                                             </div>
+                                          </div>
+                                          <div class="model-entry definition assembly">
+                                             <div class="instance-header">
+                                                <h5 id="/system-security-plan/metadata/party/address/country" class="toc5 name">country</h5>
+                                                <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                <p class="occurrence">[0 or 1]</p>
+                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/metadata/parties/addresses/country">Switch to JSON</a></div>
+                                                <p class="formal-name">Country Code</p>
+                                             </div>
+                                             <div class="body">
+                                                <p class="description"><span class="usa-tag">Description</span> The ISO 3166-1 alpha-2 country code for the mailing address.</p>
+                                                <details class="constraints" open="open">
+                                                   <summary>Constraint (1)</summary>
+                                                   <div class="constraint">
+                                                      <p><span class="usa-tag">matches</span>: a target (value) must match the regular expression '[A-Z](2)'.</p>
+                                                   </div>
+                                                </details>
+                                             </div>
+                                          </div>
+                                       </details>
+                                    </div>
+                                 </div>
+                                 <div class="model-entry definition assembly">
+                                    <div class="instance-header">
+                                       <h4 id="/system-security-plan/metadata/party/location-uuid" class="toc4 name">location-uuid</h4>
+                                       <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                       <p class="occurrence">[0 to ∞]</p>
+                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/metadata/parties/location-uuids">Switch to JSON</a></div>
+                                       <p class="formal-name">Location Reference</p>
+                                    </div>
+                                    <div class="body">
+                                       <p class="description"><span class="usa-tag">Description</span> References a <code>location</code> defined in <code>metadata</code>. </p>
+                                       <details class="constraints" open="open">
+                                          <summary>Constraint (1)</summary>
+                                          <div class="constraint">
+                                             <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-location-uuid</code> using a key constructed of key field(s) <code>value()</code></p>
+                                          </div>
+                                       </details>
+                                    </div>
+                                 </div>
+                              </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/system-security-plan/metadata/party/member-of-organization" class="toc4 name">member-of-organization</h4>
@@ -2657,7 +2787,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                            </details>
                            <details class="properties elements" open="open">
-                              <summary>Elements (4)</summary>
+                              <summary>Elements (6)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/system-security-plan/metadata/responsible-party/party-uuid" class="toc4 name">party-uuid</h4>
@@ -3201,7 +3331,7 @@ The following is the XML format reference for this model, which is organized hie
                      </div>
                   </details>
                   <details class="properties elements" open="open">
-                     <summary>Elements (16)</summary>
+                     <summary>Elements (44)</summary>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
                            <h3 id="/system-security-plan/system-characteristics/system-id" class="toc3 name">system-id</h3>
@@ -3681,7 +3811,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                            </details>
                            <details class="properties elements" open="open">
-                              <summary>Elements (3)</summary>
+                              <summary>Elements (13)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/system-security-plan/system-characteristics/system-information/prop" class="toc4 name">prop</h4>
@@ -4006,7 +4136,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                     </details>
                                     <details class="properties elements" open="open">
-                                       <summary>Elements (8)</summary>
+                                       <summary>Elements (26)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/system-characteristics/system-information/information-type/title" class="toc5 name">title</h5>
@@ -4394,7 +4524,7 @@ The following is the XML format reference for this model, which is organized hie
                                              <p class="description"><span class="usa-tag">Description</span> The expected level of impact resulting from the unauthorized disclosure of the described
                                                 information.</p>
                                              <details class="properties elements" open="open">
-                                                <summary>Elements (5)</summary>
+                                                <summary>Elements (7)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/system-security-plan/system-characteristics/system-information/information-type/confidentiality-impact/prop" class="toc6 name">prop</h6>
@@ -4743,7 +4873,7 @@ The following is the XML format reference for this model, which is organized hie
                                              <p class="description"><span class="usa-tag">Description</span> The expected level of impact resulting from the unauthorized modification of the
                                                 described information.</p>
                                              <details class="properties elements" open="open">
-                                                <summary>Elements (5)</summary>
+                                                <summary>Elements (7)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/system-security-plan/system-characteristics/system-information/information-type/integrity-impact/prop" class="toc6 name">prop</h6>
@@ -5092,7 +5222,7 @@ The following is the XML format reference for this model, which is organized hie
                                              <p class="description"><span class="usa-tag">Description</span> The expected level of impact resulting from the disruption of access to or use of
                                                 the described information or the information system.</p>
                                              <details class="properties elements" open="open">
-                                                <summary>Elements (5)</summary>
+                                                <summary>Elements (7)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/system-security-plan/system-characteristics/system-information/information-type/availability-impact/prop" class="toc6 name">prop</h6>
@@ -5577,7 +5707,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                            </details>
                            <details class="properties elements" open="open">
-                              <summary>Elements (5)</summary>
+                              <summary>Elements (12)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/system-security-plan/system-characteristics/authorization-boundary/description" class="toc4 name">description</h4>
@@ -5943,7 +6073,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                     </details>
                                     <details class="properties elements" open="open">
-                                       <summary>Elements (5)</summary>
+                                       <summary>Elements (7)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/system-characteristics/authorization-boundary/diagram/description" class="toc5 name">description</h5>
@@ -6324,7 +6454,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                            </details>
                            <details class="properties elements" open="open">
-                              <summary>Elements (5)</summary>
+                              <summary>Elements (12)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/system-security-plan/system-characteristics/network-architecture/description" class="toc4 name">description</h4>
@@ -6687,7 +6817,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                     </details>
                                     <details class="properties elements" open="open">
-                                       <summary>Elements (5)</summary>
+                                       <summary>Elements (7)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/system-characteristics/network-architecture/diagram/description" class="toc5 name">description</h5>
@@ -7068,7 +7198,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                            </details>
                            <details class="properties elements" open="open">
-                              <summary>Elements (5)</summary>
+                              <summary>Elements (12)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/system-security-plan/system-characteristics/data-flow/description" class="toc4 name">description</h4>
@@ -7431,7 +7561,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                     </details>
                                     <details class="properties elements" open="open">
-                                       <summary>Elements (5)</summary>
+                                       <summary>Elements (7)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/system-characteristics/data-flow/diagram/description" class="toc5 name">description</h5>
@@ -7830,7 +7960,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                            </details>
                            <details class="properties elements" open="open">
-                              <summary>Elements (4)</summary>
+                              <summary>Elements (6)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/system-security-plan/system-characteristics/responsible-party/party-uuid" class="toc4 name">party-uuid</h4>
@@ -8242,7 +8372,7 @@ The following is the XML format reference for this model, which is organized hie
                      </div>
                   </details>
                   <details class="properties elements" open="open">
-                     <summary>Elements (7)</summary>
+                     <summary>Elements (38)</summary>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
                            <h3 id="/system-security-plan/system-implementation/prop" class="toc3 name">prop</h3>
@@ -8587,7 +8717,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                            </details>
                            <details class="properties elements" open="open">
-                              <summary>Elements (6)</summary>
+                              <summary>Elements (8)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/system-security-plan/system-implementation/leveraged-authorization/title" class="toc4 name">title</h4>
@@ -9037,7 +9167,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                            </details>
                            <details class="properties elements" open="open">
-                              <summary>Elements (8)</summary>
+                              <summary>Elements (13)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/system-security-plan/system-implementation/user/title" class="toc4 name">title</h4>
@@ -9881,7 +10011,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                            </details>
                            <details class="properties elements" open="open">
-                              <summary>Elements (9)</summary>
+                              <summary>Elements (18)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/system-security-plan/system-implementation/component/title" class="toc4 name">title</h4>
@@ -10299,7 +10429,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                     </details>
                                     <details class="properties elements" open="open">
-                                       <summary>Elements (4)</summary>
+                                       <summary>Elements (6)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/system-implementation/component/responsible-role/prop" class="toc5 name">prop</h5>
@@ -11042,7 +11172,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                            </details>
                            <details class="properties elements" open="open">
-                              <summary>Elements (6)</summary>
+                              <summary>Elements (16)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/system-security-plan/system-implementation/inventory-item/description" class="toc4 name">description</h4>
@@ -11386,7 +11516,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                     </details>
                                     <details class="properties elements" open="open">
-                                       <summary>Elements (4)</summary>
+                                       <summary>Elements (6)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/system-implementation/inventory-item/responsible-party/party-uuid" class="toc5 name">party-uuid</h5>
@@ -11839,7 +11969,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                     </details>
                                     <details class="properties elements" open="open">
-                                       <summary>Elements (4)</summary>
+                                       <summary>Elements (10)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/system-implementation/inventory-item/implemented-component/prop" class="toc5 name">prop</h5>
@@ -12181,7 +12311,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                              </details>
                                              <details class="properties elements" open="open">
-                                                <summary>Elements (4)</summary>
+                                                <summary>Elements (6)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/system-security-plan/system-implementation/inventory-item/implemented-component/responsible-party/party-uuid" class="toc6 name">party-uuid</h6>
@@ -12588,7 +12718,7 @@ The following is the XML format reference for this model, which is organized hie
                      </div>
                   </details>
                   <details class="properties elements" open="open">
-                     <summary>Elements (3)</summary>
+                     <summary>Elements (12)</summary>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
                            <h3 id="/system-security-plan/control-implementation/description" class="toc3 name">description</h3>
@@ -12782,7 +12912,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                            </details>
                            <details class="properties elements" open="open">
-                              <summary>Elements (7)</summary>
+                              <summary>Elements (30)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/system-security-plan/control-implementation/implemented-requirement/prop" class="toc4 name">prop</h4>
@@ -13160,7 +13290,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                     </details>
                                     <details class="properties elements" open="open">
-                                       <summary>Elements (4)</summary>
+                                       <summary>Elements (6)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/control-implementation/implemented-requirement/responsible-role/prop" class="toc5 name">prop</h5>
@@ -13573,7 +13703,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                     </details>
                                     <details class="properties elements" open="open">
-                                       <summary>Elements (5)</summary>
+                                       <summary>Elements (21)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/control-implementation/implemented-requirement/statement/prop" class="toc5 name">prop</h5>
@@ -13896,7 +14026,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                              </details>
                                              <details class="properties elements" open="open">
-                                                <summary>Elements (4)</summary>
+                                                <summary>Elements (6)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/system-security-plan/control-implementation/implemented-requirement/statement/responsible-role/prop" class="toc6 name">prop</h6>
@@ -14304,7 +14434,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                              </details>
                                              <details class="properties elements" open="open">
-                                                <summary>Elements (10)</summary>
+                                                <summary>Elements (34)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/description" class="toc6 name">description</h6>
@@ -14760,7 +14890,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          </div>
                                                       </details>
                                                       <details class="properties elements" open="open">
-                                                         <summary>Elements (6)</summary>
+                                                         <summary>Elements (18)</summary>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
                                                                <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/export/description" class="toc7 name">description</p>
@@ -15103,7 +15233,7 @@ The following is the XML format reference for this model, which is organized hie
                                                                   </div>
                                                                </details>
                                                                <details class="properties elements" open="open">
-                                                                  <summary>Elements (5)</summary>
+                                                                  <summary>Elements (11)</summary>
                                                                   <div class="model-entry definition assembly">
                                                                      <div class="instance-header">
                                                                         <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/export/provided/description" class="toc8 name">description</p>
@@ -15439,7 +15569,7 @@ The following is the XML format reference for this model, which is organized hie
                                                                            </div>
                                                                         </details>
                                                                         <details class="properties elements" open="open">
-                                                                           <summary>Elements (4)</summary>
+                                                                           <summary>Elements (6)</summary>
                                                                            <div class="model-entry definition assembly">
                                                                               <div class="instance-header">
                                                                                  <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/export/provided/responsible-role/prop" class="toc9 name">prop</p>
@@ -15829,7 +15959,7 @@ The following is the XML format reference for this model, which is organized hie
                                                                   </div>
                                                                </details>
                                                                <details class="properties elements" open="open">
-                                                                  <summary>Elements (5)</summary>
+                                                                  <summary>Elements (11)</summary>
                                                                   <div class="model-entry definition assembly">
                                                                      <div class="instance-header">
                                                                         <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/export/responsibility/description" class="toc8 name">description</p>
@@ -16175,7 +16305,7 @@ The following is the XML format reference for this model, which is organized hie
                                                                            </div>
                                                                         </details>
                                                                         <details class="properties elements" open="open">
-                                                                           <summary>Elements (4)</summary>
+                                                                           <summary>Elements (6)</summary>
                                                                            <div class="model-entry definition assembly">
                                                                               <div class="instance-header">
                                                                                  <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/export/responsibility/responsible-role/prop" class="toc9 name">prop</p>
@@ -16580,7 +16710,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          </div>
                                                       </details>
                                                       <details class="properties elements" open="open">
-                                                         <summary>Elements (4)</summary>
+                                                         <summary>Elements (10)</summary>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
                                                                <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/inherited/description" class="toc7 name">description</p>
@@ -16916,7 +17046,7 @@ The following is the XML format reference for this model, which is organized hie
                                                                   </div>
                                                                </details>
                                                                <details class="properties elements" open="open">
-                                                                  <summary>Elements (4)</summary>
+                                                                  <summary>Elements (6)</summary>
                                                                   <div class="model-entry definition assembly">
                                                                      <div class="instance-header">
                                                                         <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/inherited/responsible-role/prop" class="toc8 name">prop</p>
@@ -17294,7 +17424,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          </div>
                                                       </details>
                                                       <details class="properties elements" open="open">
-                                                         <summary>Elements (5)</summary>
+                                                         <summary>Elements (11)</summary>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
                                                                <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/satisfied/description" class="toc7 name">description</p>
@@ -17631,7 +17761,7 @@ The following is the XML format reference for this model, which is organized hie
                                                                   </div>
                                                                </details>
                                                                <details class="properties elements" open="open">
-                                                                  <summary>Elements (4)</summary>
+                                                                  <summary>Elements (6)</summary>
                                                                   <div class="model-entry definition assembly">
                                                                      <div class="instance-header">
                                                                         <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/satisfied/responsible-role/prop" class="toc8 name">prop</p>
@@ -18002,7 +18132,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          </div>
                                                       </details>
                                                       <details class="properties elements" open="open">
-                                                         <summary>Elements (4)</summary>
+                                                         <summary>Elements (6)</summary>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
                                                                <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/responsible-role/prop" class="toc7 name">prop</p>
@@ -18440,7 +18570,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                     </details>
                                     <details class="properties elements" open="open">
-                                       <summary>Elements (10)</summary>
+                                       <summary>Elements (34)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/control-implementation/implemented-requirement/by-component/description" class="toc5 name">description</h5>
@@ -18896,7 +19026,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                              </details>
                                              <details class="properties elements" open="open">
-                                                <summary>Elements (6)</summary>
+                                                <summary>Elements (18)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/system-security-plan/control-implementation/implemented-requirement/by-component/export/description" class="toc6 name">description</h6>
@@ -19239,7 +19369,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          </div>
                                                       </details>
                                                       <details class="properties elements" open="open">
-                                                         <summary>Elements (5)</summary>
+                                                         <summary>Elements (11)</summary>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
                                                                <p id="/system-security-plan/control-implementation/implemented-requirement/by-component/export/provided/description" class="toc7 name">description</p>
@@ -19575,7 +19705,7 @@ The following is the XML format reference for this model, which is organized hie
                                                                   </div>
                                                                </details>
                                                                <details class="properties elements" open="open">
-                                                                  <summary>Elements (4)</summary>
+                                                                  <summary>Elements (6)</summary>
                                                                   <div class="model-entry definition assembly">
                                                                      <div class="instance-header">
                                                                         <p id="/system-security-plan/control-implementation/implemented-requirement/by-component/export/provided/responsible-role/prop" class="toc8 name">prop</p>
@@ -19965,7 +20095,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          </div>
                                                       </details>
                                                       <details class="properties elements" open="open">
-                                                         <summary>Elements (5)</summary>
+                                                         <summary>Elements (11)</summary>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
                                                                <p id="/system-security-plan/control-implementation/implemented-requirement/by-component/export/responsibility/description" class="toc7 name">description</p>
@@ -20311,7 +20441,7 @@ The following is the XML format reference for this model, which is organized hie
                                                                   </div>
                                                                </details>
                                                                <details class="properties elements" open="open">
-                                                                  <summary>Elements (4)</summary>
+                                                                  <summary>Elements (6)</summary>
                                                                   <div class="model-entry definition assembly">
                                                                      <div class="instance-header">
                                                                         <p id="/system-security-plan/control-implementation/implemented-requirement/by-component/export/responsibility/responsible-role/prop" class="toc8 name">prop</p>
@@ -20716,7 +20846,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                              </details>
                                              <details class="properties elements" open="open">
-                                                <summary>Elements (4)</summary>
+                                                <summary>Elements (10)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/system-security-plan/control-implementation/implemented-requirement/by-component/inherited/description" class="toc6 name">description</h6>
@@ -21052,7 +21182,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          </div>
                                                       </details>
                                                       <details class="properties elements" open="open">
-                                                         <summary>Elements (4)</summary>
+                                                         <summary>Elements (6)</summary>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
                                                                <p id="/system-security-plan/control-implementation/implemented-requirement/by-component/inherited/responsible-role/prop" class="toc7 name">prop</p>
@@ -21430,7 +21560,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                              </details>
                                              <details class="properties elements" open="open">
-                                                <summary>Elements (5)</summary>
+                                                <summary>Elements (11)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/system-security-plan/control-implementation/implemented-requirement/by-component/satisfied/description" class="toc6 name">description</h6>
@@ -21767,7 +21897,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          </div>
                                                       </details>
                                                       <details class="properties elements" open="open">
-                                                         <summary>Elements (4)</summary>
+                                                         <summary>Elements (6)</summary>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
                                                                <p id="/system-security-plan/control-implementation/implemented-requirement/by-component/satisfied/responsible-role/prop" class="toc7 name">prop</p>
@@ -22138,7 +22268,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                              </details>
                                              <details class="properties elements" open="open">
-                                                <summary>Elements (4)</summary>
+                                                <summary>Elements (6)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/system-security-plan/control-implementation/implemented-requirement/by-component/responsible-role/prop" class="toc6 name">prop</h6>
@@ -22527,7 +22657,7 @@ The following is the XML format reference for this model, which is organized hie
                      </div>
                   </details>
                   <details class="properties elements" open="open">
-                     <summary>Element (1)</summary>
+                     <summary>Elements (9)</summary>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
                            <h3 id="/system-security-plan/back-matter/resource" class="toc3 name">resource</h3>
@@ -22677,7 +22807,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                            </details>
                            <details class="properties elements" open="open">
-                              <summary>Elements (8)</summary>
+                              <summary>Elements (13)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/system-security-plan/back-matter/resource/title" class="toc4 name">title</h4>
@@ -22947,7 +23077,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </details>
                                     </div>
                                     <details class="properties elements" open="open">
-                                       <summary>Elements (3)</summary>
+                                       <summary>Elements (5)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/back-matter/resource/citation/text" class="toc5 name">text</h5>

@@ -2648,143 +2648,146 @@ The following is the JSON format reference for this model, which is organized hi
                                     </details>
                                  </div>
                               </div>
-                              <div class="model-entry definition assembly">
-                                 <div class="instance-header">
-                                    <h4 id="/system-security-plan/metadata/parties/addresses" class="toc4 name">addresses</h4>
-                                    <p class="type">array<br /></p>
-                                    <p class="occurrence">[0 or 1]</p>
-                                    <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/metadata/party/address">Switch to XML</a></div>
+                              <div class="choice">
+                                 <p>A choice:</p>
+                                 <div class="model-entry definition assembly">
+                                    <div class="instance-header">
+                                       <h4 id="/system-security-plan/metadata/parties/addresses" class="toc4 name">addresses</h4>
+                                       <p class="type">array<br /></p>
+                                       <p class="occurrence">[0 or 1]</p>
+                                       <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/metadata/party/address">Switch to XML</a></div>
+                                    </div>
+                                    <div class="array-header">
+                                       <p class="array-member">(array member)</p>
+                                       <p class="type">object<br /></p>
+                                       <p class="occurrence">[1 to ∞]</p>
+                                       <p class="formal-name">Address</p>
+                                    </div>
+                                    <div class="body">
+                                       <p class="description"><span class="usa-tag">Description</span> A postal address for the location.</p>
+                                       <details class="properties" open="open">
+                                          <summary>Properties (6)</summary>
+                                          <div class="model-entry definition assembly">
+                                             <div class="instance-header">
+                                                <h5 id="/system-security-plan/metadata/parties/addresses/type" class="toc5 name">type</h5>
+                                                <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                <p class="occurrence">[0 or 1]</p>
+                                                <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/metadata/party/address/@type">Switch to XML</a></div>
+                                                <p class="formal-name">Address Type</p>
+                                             </div>
+                                             <div class="body">
+                                                <p class="description"><span class="usa-tag">Description</span> Indicates the type of address.</p>
+                                                <details class="constraints" open="open">
+                                                   <summary>Constraint (1)</summary>
+                                                   <div class="constraint">
+                                                      <p><span class="usa-tag">allowed values</span></p>
+                                                      <p>The value <b>may be locally defined</b>, or one of the following:</p>
+                                                      <ul>
+                                                         
+                                                         <li><strong>home</strong>: A home address.</li>
+                                                         
+                                                         <li><strong>work</strong>: A work address.</li>
+                                                         </ul>
+                                                   </div>
+                                                </details>
+                                             </div>
+                                          </div>
+                                          <div class="model-entry definition assembly">
+                                             <div class="instance-header">
+                                                <h5 id="/system-security-plan/metadata/parties/addresses/addr-lines" class="toc5 name">addr-lines</h5>
+                                                <p class="type">array<br /></p>
+                                                <p class="occurrence">[0 or 1]</p>
+                                                <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/metadata/party/address/addr-line">Switch to XML</a></div>
+                                             </div>
+                                             <div class="array-header">
+                                                <p class="array-member">(array member)</p>
+                                                <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                <p class="occurrence">[0 to ∞]</p>
+                                                <p class="formal-name">Address line</p>
+                                             </div>
+                                             <div class="body">
+                                                <p class="description"><span class="usa-tag">Description</span> A single line of an address.</p>
+                                             </div>
+                                          </div>
+                                          <div class="model-entry definition assembly">
+                                             <div class="instance-header">
+                                                <h5 id="/system-security-plan/metadata/parties/addresses/city" class="toc5 name">city</h5>
+                                                <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                <p class="occurrence">[0 or 1]</p>
+                                                <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/metadata/party/address/city">Switch to XML</a></div>
+                                                <p class="formal-name">City</p>
+                                             </div>
+                                             <div class="body">
+                                                <p class="description"><span class="usa-tag">Description</span> City, town or geographical region for the mailing address.</p>
+                                             </div>
+                                          </div>
+                                          <div class="model-entry definition assembly">
+                                             <div class="instance-header">
+                                                <h5 id="/system-security-plan/metadata/parties/addresses/state" class="toc5 name">state</h5>
+                                                <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                <p class="occurrence">[0 or 1]</p>
+                                                <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/metadata/party/address/state">Switch to XML</a></div>
+                                                <p class="formal-name">State</p>
+                                             </div>
+                                             <div class="body">
+                                                <p class="description"><span class="usa-tag">Description</span> State, province or analogous geographical region for mailing address</p>
+                                             </div>
+                                          </div>
+                                          <div class="model-entry definition assembly">
+                                             <div class="instance-header">
+                                                <h5 id="/system-security-plan/metadata/parties/addresses/postal-code" class="toc5 name">postal-code</h5>
+                                                <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                <p class="occurrence">[0 or 1]</p>
+                                                <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/metadata/party/address/postal-code">Switch to XML</a></div>
+                                                <p class="formal-name">Postal Code</p>
+                                             </div>
+                                             <div class="body">
+                                                <p class="description"><span class="usa-tag">Description</span> Postal or ZIP code for mailing address</p>
+                                             </div>
+                                          </div>
+                                          <div class="model-entry definition assembly">
+                                             <div class="instance-header">
+                                                <h5 id="/system-security-plan/metadata/parties/addresses/country" class="toc5 name">country</h5>
+                                                <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                <p class="occurrence">[0 or 1]</p>
+                                                <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/metadata/party/address/country">Switch to XML</a></div>
+                                                <p class="formal-name">Country Code</p>
+                                             </div>
+                                             <div class="body">
+                                                <p class="description"><span class="usa-tag">Description</span> The ISO 3166-1 alpha-2 country code for the mailing address.</p>
+                                                <details class="constraints" open="open">
+                                                   <summary>Constraint (1)</summary>
+                                                   <div class="constraint">
+                                                      <p><span class="usa-tag">matches</span>: a target (value) must match the regular expression '[A-Z](2)'.</p>
+                                                   </div>
+                                                </details>
+                                             </div>
+                                          </div>
+                                       </details>
+                                    </div>
                                  </div>
-                                 <div class="array-header">
-                                    <p class="array-member">(array member)</p>
-                                    <p class="type">object<br /></p>
-                                    <p class="occurrence">[1 to ∞]</p>
-                                    <p class="formal-name">Address</p>
-                                 </div>
-                                 <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> A postal address for the location.</p>
-                                    <details class="properties" open="open">
-                                       <summary>Properties (6)</summary>
-                                       <div class="model-entry definition assembly">
-                                          <div class="instance-header">
-                                             <h5 id="/system-security-plan/metadata/parties/addresses/type" class="toc5 name">type</h5>
-                                             <p class="type"><a href="/reference/datatypes/#token">token</a></p>
-                                             <p class="occurrence">[0 or 1]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/metadata/party/address/@type">Switch to XML</a></div>
-                                             <p class="formal-name">Address Type</p>
+                                 <div class="model-entry definition assembly">
+                                    <div class="instance-header">
+                                       <h4 id="/system-security-plan/metadata/parties/location-uuids" class="toc4 name">location-uuids</h4>
+                                       <p class="type">array<br /></p>
+                                       <p class="occurrence">[0 or 1]</p>
+                                       <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/metadata/party/location-uuid">Switch to XML</a></div>
+                                    </div>
+                                    <div class="array-header">
+                                       <p class="array-member">(array member)</p>
+                                       <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                       <p class="occurrence">[0 to ∞]</p>
+                                       <p class="formal-name">Location Reference</p>
+                                    </div>
+                                    <div class="body">
+                                       <p class="description"><span class="usa-tag">Description</span> References a <code>location</code> defined in <code>metadata</code>. </p>
+                                       <details class="constraints" open="open">
+                                          <summary>Constraint (1)</summary>
+                                          <div class="constraint">
+                                             <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-location-uuid</code> using a key constructed of key field(s) <code>value()</code></p>
                                           </div>
-                                          <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> Indicates the type of address.</p>
-                                             <details class="constraints" open="open">
-                                                <summary>Constraint (1)</summary>
-                                                <div class="constraint">
-                                                   <p><span class="usa-tag">allowed values</span></p>
-                                                   <p>The value <b>may be locally defined</b>, or one of the following:</p>
-                                                   <ul>
-                                                      
-                                                      <li><strong>home</strong>: A home address.</li>
-                                                      
-                                                      <li><strong>work</strong>: A work address.</li>
-                                                      </ul>
-                                                </div>
-                                             </details>
-                                          </div>
-                                       </div>
-                                       <div class="model-entry definition assembly">
-                                          <div class="instance-header">
-                                             <h5 id="/system-security-plan/metadata/parties/addresses/addr-lines" class="toc5 name">addr-lines</h5>
-                                             <p class="type">array<br /></p>
-                                             <p class="occurrence">[0 or 1]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/metadata/party/address/addr-line">Switch to XML</a></div>
-                                          </div>
-                                          <div class="array-header">
-                                             <p class="array-member">(array member)</p>
-                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
-                                             <p class="occurrence">[0 to ∞]</p>
-                                             <p class="formal-name">Address line</p>
-                                          </div>
-                                          <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> A single line of an address.</p>
-                                          </div>
-                                       </div>
-                                       <div class="model-entry definition assembly">
-                                          <div class="instance-header">
-                                             <h5 id="/system-security-plan/metadata/parties/addresses/city" class="toc5 name">city</h5>
-                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
-                                             <p class="occurrence">[0 or 1]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/metadata/party/address/city">Switch to XML</a></div>
-                                             <p class="formal-name">City</p>
-                                          </div>
-                                          <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> City, town or geographical region for the mailing address.</p>
-                                          </div>
-                                       </div>
-                                       <div class="model-entry definition assembly">
-                                          <div class="instance-header">
-                                             <h5 id="/system-security-plan/metadata/parties/addresses/state" class="toc5 name">state</h5>
-                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
-                                             <p class="occurrence">[0 or 1]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/metadata/party/address/state">Switch to XML</a></div>
-                                             <p class="formal-name">State</p>
-                                          </div>
-                                          <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> State, province or analogous geographical region for mailing address</p>
-                                          </div>
-                                       </div>
-                                       <div class="model-entry definition assembly">
-                                          <div class="instance-header">
-                                             <h5 id="/system-security-plan/metadata/parties/addresses/postal-code" class="toc5 name">postal-code</h5>
-                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
-                                             <p class="occurrence">[0 or 1]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/metadata/party/address/postal-code">Switch to XML</a></div>
-                                             <p class="formal-name">Postal Code</p>
-                                          </div>
-                                          <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> Postal or ZIP code for mailing address</p>
-                                          </div>
-                                       </div>
-                                       <div class="model-entry definition assembly">
-                                          <div class="instance-header">
-                                             <h5 id="/system-security-plan/metadata/parties/addresses/country" class="toc5 name">country</h5>
-                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
-                                             <p class="occurrence">[0 or 1]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/metadata/party/address/country">Switch to XML</a></div>
-                                             <p class="formal-name">Country Code</p>
-                                          </div>
-                                          <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> The ISO 3166-1 alpha-2 country code for the mailing address.</p>
-                                             <details class="constraints" open="open">
-                                                <summary>Constraint (1)</summary>
-                                                <div class="constraint">
-                                                   <p><span class="usa-tag">matches</span>: a target (value) must match the regular expression '[A-Z](2)'.</p>
-                                                </div>
-                                             </details>
-                                          </div>
-                                       </div>
-                                    </details>
-                                 </div>
-                              </div>
-                              <div class="model-entry definition assembly">
-                                 <div class="instance-header">
-                                    <h4 id="/system-security-plan/metadata/parties/location-uuids" class="toc4 name">location-uuids</h4>
-                                    <p class="type">array<br /></p>
-                                    <p class="occurrence">[0 or 1]</p>
-                                    <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/metadata/party/location-uuid">Switch to XML</a></div>
-                                 </div>
-                                 <div class="array-header">
-                                    <p class="array-member">(array member)</p>
-                                    <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
-                                    <p class="occurrence">[0 to ∞]</p>
-                                    <p class="formal-name">Location Reference</p>
-                                 </div>
-                                 <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> References a <code>location</code> defined in <code>metadata</code>. </p>
-                                    <details class="constraints" open="open">
-                                       <summary>Constraint (1)</summary>
-                                       <div class="constraint">
-                                          <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-location-uuid</code> using a key constructed of key field(s) <code>value()</code></p>
-                                       </div>
-                                    </details>
+                                       </details>
+                                    </div>
                                  </div>
                               </div>
                               <div class="model-entry definition assembly">

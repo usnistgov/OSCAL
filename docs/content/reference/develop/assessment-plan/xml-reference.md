@@ -49,7 +49,7 @@ The following is the XML format reference for this model, which is organized hie
             </div>
          </details>
          <details class="properties elements" open="open">
-            <summary>Elements (9)</summary>
+            <summary>Elements (56)</summary>
             <div class="model-entry definition assembly">
                <div class="instance-header">
                   <h2 id="/assessment-plan/metadata" class="toc2 name">metadata</h2>
@@ -126,7 +126,7 @@ The following is the XML format reference for this model, which is organized hie
                      </div>
                   </details>
                   <details class="properties elements" open="open">
-                     <summary>Elements (14)</summary>
+                     <summary>Elements (44)</summary>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
                            <h3 id="/assessment-plan/metadata/title" class="toc3 name">title</h3>
@@ -253,7 +253,7 @@ The following is the XML format reference for this model, which is organized hie
                         </div>
                         <div class="body">
                            <details class="properties elements" open="open">
-                              <summary>Element (1)</summary>
+                              <summary>Elements (9)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/assessment-plan/metadata/revisions/revision" class="toc4 name">revision</h4>
@@ -299,7 +299,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                     </details>
                                     <details class="properties elements" open="open">
-                                       <summary>Elements (8)</summary>
+                                       <summary>Elements (10)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/assessment-plan/metadata/revisions/revision/title" class="toc5 name">title</h5>
@@ -1140,7 +1140,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                            </details>
                            <details class="properties elements" open="open">
-                              <summary>Elements (6)</summary>
+                              <summary>Elements (8)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/assessment-plan/metadata/role/title" class="toc4 name">title</h4>
@@ -1545,7 +1545,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                            </details>
                            <details class="properties elements" open="open">
-                              <summary>Elements (8)</summary>
+                              <summary>Elements (15)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/assessment-plan/metadata/location/title" class="toc4 name">title</h4>
@@ -2140,7 +2140,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                            </details>
                            <details class="properties elements" open="open">
-                              <summary>Elements (9)</summary>
+                              <summary>Elements (13)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/assessment-plan/metadata/party/name" class="toc4 name">name</h4>
@@ -2576,6 +2576,136 @@ The following is the XML format reference for this model, which is organized hie
                                     </details>
                                  </div>
                               </div>
+                              <div class="choice">
+                                 <p>A choice:</p>
+                                 <div class="model-entry definition assembly">
+                                    <div class="instance-header">
+                                       <h4 id="/assessment-plan/metadata/party/address" class="toc4 name">address</h4>
+                                       <p class="type">element<br /></p>
+                                       <p class="occurrence">[0 to ∞]</p>
+                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/metadata/parties/addresses">Switch to JSON</a></div>
+                                       <p class="formal-name">Address</p>
+                                    </div>
+                                    <div class="body">
+                                       <p class="description"><span class="usa-tag">Description</span> A postal address for the location.</p>
+                                       <details class="properties attributes" open="open">
+                                          <summary>Attribute (1)</summary>
+                                          <div class="model-entry definition assembly">
+                                             <div class="instance-header">
+                                                <h5 id="/assessment-plan/metadata/party/address/@type" class="toc5 name">type</h5>
+                                                <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                <p class="occurrence">[0 or 1]</p>
+                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/metadata/parties/addresses/type">Switch to JSON</a></div>
+                                                <p class="formal-name">Address Type</p>
+                                             </div>
+                                             <div class="body">
+                                                <p class="description"><span class="usa-tag">Description</span> Indicates the type of address.</p>
+                                                <details class="constraints" open="open">
+                                                   <summary>Constraint (1)</summary>
+                                                   <div class="constraint">
+                                                      <p><span class="usa-tag">allowed values</span></p>
+                                                      <p>The value <b>may be locally defined</b>, or one of the following:</p>
+                                                      <ul>
+                                                         
+                                                         <li><strong>home</strong>: A home address.</li>
+                                                         
+                                                         <li><strong>work</strong>: A work address.</li>
+                                                         </ul>
+                                                   </div>
+                                                </details>
+                                             </div>
+                                          </div>
+                                       </details>
+                                       <details class="properties elements" open="open">
+                                          <summary>Elements (5)</summary>
+                                          <div class="model-entry definition assembly">
+                                             <div class="instance-header">
+                                                <h5 id="/assessment-plan/metadata/party/address/addr-line" class="toc5 name">addr-line</h5>
+                                                <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                <p class="occurrence">[0 to ∞]</p>
+                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/metadata/parties/addresses/addr-lines">Switch to JSON</a></div>
+                                                <p class="formal-name">Address line</p>
+                                             </div>
+                                             <div class="body">
+                                                <p class="description"><span class="usa-tag">Description</span> A single line of an address.</p>
+                                             </div>
+                                          </div>
+                                          <div class="model-entry definition assembly">
+                                             <div class="instance-header">
+                                                <h5 id="/assessment-plan/metadata/party/address/city" class="toc5 name">city</h5>
+                                                <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                <p class="occurrence">[0 or 1]</p>
+                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/metadata/parties/addresses/city">Switch to JSON</a></div>
+                                                <p class="formal-name">City</p>
+                                             </div>
+                                             <div class="body">
+                                                <p class="description"><span class="usa-tag">Description</span> City, town or geographical region for the mailing address.</p>
+                                             </div>
+                                          </div>
+                                          <div class="model-entry definition assembly">
+                                             <div class="instance-header">
+                                                <h5 id="/assessment-plan/metadata/party/address/state" class="toc5 name">state</h5>
+                                                <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                <p class="occurrence">[0 or 1]</p>
+                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/metadata/parties/addresses/state">Switch to JSON</a></div>
+                                                <p class="formal-name">State</p>
+                                             </div>
+                                             <div class="body">
+                                                <p class="description"><span class="usa-tag">Description</span> State, province or analogous geographical region for mailing address</p>
+                                             </div>
+                                          </div>
+                                          <div class="model-entry definition assembly">
+                                             <div class="instance-header">
+                                                <h5 id="/assessment-plan/metadata/party/address/postal-code" class="toc5 name">postal-code</h5>
+                                                <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                <p class="occurrence">[0 or 1]</p>
+                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/metadata/parties/addresses/postal-code">Switch to JSON</a></div>
+                                                <p class="formal-name">Postal Code</p>
+                                             </div>
+                                             <div class="body">
+                                                <p class="description"><span class="usa-tag">Description</span> Postal or ZIP code for mailing address</p>
+                                             </div>
+                                          </div>
+                                          <div class="model-entry definition assembly">
+                                             <div class="instance-header">
+                                                <h5 id="/assessment-plan/metadata/party/address/country" class="toc5 name">country</h5>
+                                                <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                <p class="occurrence">[0 or 1]</p>
+                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/metadata/parties/addresses/country">Switch to JSON</a></div>
+                                                <p class="formal-name">Country Code</p>
+                                             </div>
+                                             <div class="body">
+                                                <p class="description"><span class="usa-tag">Description</span> The ISO 3166-1 alpha-2 country code for the mailing address.</p>
+                                                <details class="constraints" open="open">
+                                                   <summary>Constraint (1)</summary>
+                                                   <div class="constraint">
+                                                      <p><span class="usa-tag">matches</span>: a target (value) must match the regular expression '[A-Z](2)'.</p>
+                                                   </div>
+                                                </details>
+                                             </div>
+                                          </div>
+                                       </details>
+                                    </div>
+                                 </div>
+                                 <div class="model-entry definition assembly">
+                                    <div class="instance-header">
+                                       <h4 id="/assessment-plan/metadata/party/location-uuid" class="toc4 name">location-uuid</h4>
+                                       <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                       <p class="occurrence">[0 to ∞]</p>
+                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/metadata/parties/location-uuids">Switch to JSON</a></div>
+                                       <p class="formal-name">Location Reference</p>
+                                    </div>
+                                    <div class="body">
+                                       <p class="description"><span class="usa-tag">Description</span> References a <code>location</code> defined in <code>metadata</code>. </p>
+                                       <details class="constraints" open="open">
+                                          <summary>Constraint (1)</summary>
+                                          <div class="constraint">
+                                             <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-location-uuid</code> using a key constructed of key field(s) <code>value()</code></p>
+                                          </div>
+                                       </details>
+                                    </div>
+                                 </div>
+                              </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/assessment-plan/metadata/party/member-of-organization" class="toc4 name">member-of-organization</h4>
@@ -2657,7 +2787,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                            </details>
                            <details class="properties elements" open="open">
-                              <summary>Elements (4)</summary>
+                              <summary>Elements (6)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/assessment-plan/metadata/responsible-party/party-uuid" class="toc4 name">party-uuid</h4>
@@ -3103,7 +3233,7 @@ The following is the XML format reference for this model, which is organized hie
                      </div>
                   </details>
                   <details class="properties elements" open="open">
-                     <summary>Elements (6)</summary>
+                     <summary>Elements (42)</summary>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
                            <h3 id="/assessment-plan/local-definitions/component" class="toc3 name">component</h3>
@@ -3534,7 +3664,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                            </details>
                            <details class="properties elements" open="open">
-                              <summary>Elements (9)</summary>
+                              <summary>Elements (18)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/assessment-plan/local-definitions/component/title" class="toc4 name">title</h4>
@@ -3952,7 +4082,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                     </details>
                                     <details class="properties elements" open="open">
-                                       <summary>Elements (4)</summary>
+                                       <summary>Elements (6)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/assessment-plan/local-definitions/component/responsible-role/prop" class="toc5 name">prop</h5>
@@ -4695,7 +4825,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                            </details>
                            <details class="properties elements" open="open">
-                              <summary>Elements (6)</summary>
+                              <summary>Elements (16)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/assessment-plan/local-definitions/inventory-item/description" class="toc4 name">description</h4>
@@ -5039,7 +5169,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                     </details>
                                     <details class="properties elements" open="open">
-                                       <summary>Elements (4)</summary>
+                                       <summary>Elements (6)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/assessment-plan/local-definitions/inventory-item/responsible-party/party-uuid" class="toc5 name">party-uuid</h5>
@@ -5492,7 +5622,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                     </details>
                                     <details class="properties elements" open="open">
-                                       <summary>Elements (4)</summary>
+                                       <summary>Elements (10)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/assessment-plan/local-definitions/inventory-item/implemented-component/prop" class="toc5 name">prop</h5>
@@ -5834,7 +5964,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                              </details>
                                              <details class="properties elements" open="open">
-                                                <summary>Elements (4)</summary>
+                                                <summary>Elements (6)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/assessment-plan/local-definitions/inventory-item/implemented-component/responsible-party/party-uuid" class="toc6 name">party-uuid</h6>
@@ -6307,7 +6437,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                            </details>
                            <details class="properties elements" open="open">
-                              <summary>Elements (8)</summary>
+                              <summary>Elements (13)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/assessment-plan/local-definitions/user/title" class="toc4 name">title</h4>
@@ -6785,7 +6915,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                            </details>
                            <details class="properties elements" open="open">
-                              <summary>Elements (5)</summary>
+                              <summary>Elements (12)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/assessment-plan/local-definitions/objectives-and-methods/description" class="toc4 name">description</h4>
@@ -7289,7 +7419,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                     </details>
                                     <details class="properties elements" open="open">
-                                       <summary>Elements (5)</summary>
+                                       <summary>Elements (7)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/assessment-plan/local-definitions/objectives-and-methods/part/title" class="toc5 name">title</h5>
@@ -7758,7 +7888,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                            </details>
                            <details class="properties elements" open="open">
-                              <summary>Elements (8)</summary>
+                              <summary>Elements (27)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/assessment-plan/local-definitions/activity/title" class="toc4 name">title</h4>
@@ -8113,7 +8243,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                     </details>
                                     <details class="properties elements" open="open">
-                                       <summary>Elements (7)</summary>
+                                       <summary>Elements (19)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/assessment-plan/local-definitions/activity/step/title" class="toc5 name">title</h5>
@@ -8466,7 +8596,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 </details>
                                              </div>
                                              <details class="properties elements" open="open">
-                                                <summary>Elements (6)</summary>
+                                                <summary>Elements (18)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/assessment-plan/local-definitions/activity/step/reviewed-controls/description" class="toc6 name">description</h6>
@@ -8800,7 +8930,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          </details>
                                                       </div>
                                                       <details class="properties elements" open="open">
-                                                         <summary>Elements (5)</summary>
+                                                         <summary>Elements (10)</summary>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
                                                                <p id="/assessment-plan/local-definitions/activity/step/reviewed-controls/control-selection/description" class="toc7 name">description</p>
@@ -9108,6 +9238,75 @@ The following is the XML format reference for this model, which is organized hie
                                                                </details>
                                                             </div>
                                                          </div>
+                                                         <div class="choice">
+                                                            <p>A choice:</p>
+                                                            <div class="model-entry definition assembly">
+                                                               <div class="instance-header">
+                                                                  <p id="/assessment-plan/local-definitions/activity/step/reviewed-controls/control-selection/include-all" class="toc7 name">include-all</p>
+                                                                  <p class="type"><a href="/reference/datatypes/#empty">empty</a></p>
+                                                                  <p class="occurrence">[1]</p>
+                                                                  <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/local-definitions/activities/steps/reviewed-controls/control-selections/include-all">Switch to JSON</a></div>
+                                                                  <p class="formal-name">All</p>
+                                                               </div>
+                                                               <div class="body">
+                                                                  <p class="description"><span class="usa-tag">Description</span> A key word to indicate all.</p>
+                                                               </div>
+                                                            </div>
+                                                            <div class="model-entry definition assembly">
+                                                               <div class="instance-header">
+                                                                  <p id="/assessment-plan/local-definitions/activity/step/reviewed-controls/control-selection/include-control" class="toc7 name">include-control</p>
+                                                                  <p class="type">element<br /></p>
+                                                                  <p class="occurrence">[1 to ∞]</p>
+                                                                  <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/local-definitions/activities/steps/reviewed-controls/control-selections/include-controls">Switch to JSON</a></div>
+                                                                  <p class="formal-name">Select Control</p>
+                                                               </div>
+                                                               <div class="body">
+                                                                  <p class="description"><span class="usa-tag">Description</span> Used to select a control for inclusion/exclusion based on one or more control identifiers.
+                                                                     A set of statement identifiers can be used to target the inclusion/exclusion to only
+                                                                     specific control statements providing more granularity over the specific statements
+                                                                     that are within the asessment scope.</p>
+                                                                  <div class="remarks-group usa-prose">
+                                                                     <details open="open">
+                                                                        <summary class="subhead">Remarks</summary>
+                                                                        <div class="remarks in-use">
+                                                                           <p>Used to select a control for inclusion by the control's identifier. Specific control
+                                                                              statements can be selected by their statement identifier.</p>
+                                                                        </div>
+                                                                     </details>
+                                                                  </div>
+                                                                  <details class="properties attributes" open="open">
+                                                                     <summary>Attribute (1)</summary>
+                                                                     <div class="model-entry definition assembly">
+                                                                        <div class="instance-header">
+                                                                           <p id="/assessment-plan/local-definitions/activity/step/reviewed-controls/control-selection/include-control/@control-id" class="toc8 name">control-id</p>
+                                                                           <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                                           <p class="occurrence">[1]</p>
+                                                                           <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/local-definitions/activities/steps/reviewed-controls/control-selections/include-controls/control-id">Switch to JSON</a></div>
+                                                                           <p class="formal-name">Control Identifier Reference</p>
+                                                                        </div>
+                                                                        <div class="body">
+                                                                           <p class="description"><span class="usa-tag">Description</span> A reference to a control with a corresponding <code>id</code> value.</p>
+                                                                        </div>
+                                                                     </div>
+                                                                  </details>
+                                                                  <details class="properties elements" open="open">
+                                                                     <summary>Element (1)</summary>
+                                                                     <div class="model-entry definition assembly">
+                                                                        <div class="instance-header">
+                                                                           <p id="/assessment-plan/local-definitions/activity/step/reviewed-controls/control-selection/include-control/statement-id" class="toc8 name">statement-id</p>
+                                                                           <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                                           <p class="occurrence">[0 to ∞]</p>
+                                                                           <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/local-definitions/activities/steps/reviewed-controls/control-selections/include-controls/statement-ids">Switch to JSON</a></div>
+                                                                           <p class="formal-name">Include Specific Statements</p>
+                                                                        </div>
+                                                                        <div class="body">
+                                                                           <p class="description"><span class="usa-tag">Description</span> Used to constrain the selection to only specificity identified statements.</p>
+                                                                        </div>
+                                                                     </div>
+                                                                  </details>
+                                                               </div>
+                                                            </div>
+                                                         </div>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
                                                                <p id="/assessment-plan/local-definitions/activity/step/reviewed-controls/control-selection/exclude-control" class="toc7 name">exclude-control</p>
@@ -9205,7 +9404,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          </details>
                                                       </div>
                                                       <details class="properties elements" open="open">
-                                                         <summary>Elements (5)</summary>
+                                                         <summary>Elements (9)</summary>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
                                                                <p id="/assessment-plan/local-definitions/activity/step/reviewed-controls/control-objective-selection/description" class="toc7 name">description</p>
@@ -9513,6 +9712,57 @@ The following is the XML format reference for this model, which is organized hie
                                                                </details>
                                                             </div>
                                                          </div>
+                                                         <div class="choice">
+                                                            <p>A choice:</p>
+                                                            <div class="model-entry definition assembly">
+                                                               <div class="instance-header">
+                                                                  <p id="/assessment-plan/local-definitions/activity/step/reviewed-controls/control-objective-selection/include-all" class="toc7 name">include-all</p>
+                                                                  <p class="type"><a href="/reference/datatypes/#empty">empty</a></p>
+                                                                  <p class="occurrence">[1]</p>
+                                                                  <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/local-definitions/activities/steps/reviewed-controls/control-objective-selections/include-all">Switch to JSON</a></div>
+                                                                  <p class="formal-name">All</p>
+                                                               </div>
+                                                               <div class="body">
+                                                                  <p class="description"><span class="usa-tag">Description</span> A key word to indicate all.</p>
+                                                               </div>
+                                                            </div>
+                                                            <div class="model-entry definition assembly">
+                                                               <div class="instance-header">
+                                                                  <p id="/assessment-plan/local-definitions/activity/step/reviewed-controls/control-objective-selection/include-objective" class="toc7 name">include-objective</p>
+                                                                  <p class="type"><a href="/reference/datatypes/#empty">empty</a></p>
+                                                                  <p class="occurrence">[1 to ∞]</p>
+                                                                  <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/local-definitions/activities/steps/reviewed-controls/control-objective-selections/include-objectives">Switch to JSON</a></div>
+                                                                  <p class="formal-name">Select Objective</p>
+                                                               </div>
+                                                               <div class="body">
+                                                                  <p class="description"><span class="usa-tag">Description</span> Used to select a control objective for inclusion/exclusion based on the control objective's
+                                                                     identifier.</p>
+                                                                  <div class="remarks-group usa-prose">
+                                                                     <details open="open">
+                                                                        <summary class="subhead">Remarks</summary>
+                                                                        <div class="remarks in-use">
+                                                                           <p>Used to select a control objective for inclusion by the control objective's identifier.</p>
+                                                                        </div>
+                                                                     </details>
+                                                                  </div>
+                                                                  <details class="properties attributes" open="open">
+                                                                     <summary>Attribute (1)</summary>
+                                                                     <div class="model-entry definition assembly">
+                                                                        <div class="instance-header">
+                                                                           <p id="/assessment-plan/local-definitions/activity/step/reviewed-controls/control-objective-selection/include-objective/@objective-id" class="toc8 name">objective-id</p>
+                                                                           <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                                           <p class="occurrence">[1]</p>
+                                                                           <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/local-definitions/activities/steps/reviewed-controls/control-objective-selections/include-objectives/objective-id">Switch to JSON</a></div>
+                                                                           <p class="formal-name">Objective ID</p>
+                                                                        </div>
+                                                                        <div class="body">
+                                                                           <p class="description"><span class="usa-tag">Description</span> Points to an assessment objective.</p>
+                                                                        </div>
+                                                                     </div>
+                                                                  </details>
+                                                               </div>
+                                                            </div>
+                                                         </div>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
                                                                <p id="/assessment-plan/local-definitions/activity/step/reviewed-controls/control-objective-selection/exclude-objective" class="toc7 name">exclude-objective</p>
@@ -9615,7 +9865,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                              </details>
                                              <details class="properties elements" open="open">
-                                                <summary>Elements (4)</summary>
+                                                <summary>Elements (6)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/assessment-plan/local-definitions/activity/step/responsible-role/prop" class="toc6 name">prop</h6>
@@ -9992,7 +10242,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </details>
                                     </div>
                                     <details class="properties elements" open="open">
-                                       <summary>Elements (6)</summary>
+                                       <summary>Elements (18)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/assessment-plan/local-definitions/activity/related-controls/description" class="toc5 name">description</h5>
@@ -10326,7 +10576,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 </details>
                                              </div>
                                              <details class="properties elements" open="open">
-                                                <summary>Elements (5)</summary>
+                                                <summary>Elements (10)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/assessment-plan/local-definitions/activity/related-controls/control-selection/description" class="toc6 name">description</h6>
@@ -10634,6 +10884,75 @@ The following is the XML format reference for this model, which is organized hie
                                                       </details>
                                                    </div>
                                                 </div>
+                                                <div class="choice">
+                                                   <p>A choice:</p>
+                                                   <div class="model-entry definition assembly">
+                                                      <div class="instance-header">
+                                                         <h6 id="/assessment-plan/local-definitions/activity/related-controls/control-selection/include-all" class="toc6 name">include-all</h6>
+                                                         <p class="type"><a href="/reference/datatypes/#empty">empty</a></p>
+                                                         <p class="occurrence">[1]</p>
+                                                         <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/local-definitions/activities/related-controls/control-selections/include-all">Switch to JSON</a></div>
+                                                         <p class="formal-name">All</p>
+                                                      </div>
+                                                      <div class="body">
+                                                         <p class="description"><span class="usa-tag">Description</span> A key word to indicate all.</p>
+                                                      </div>
+                                                   </div>
+                                                   <div class="model-entry definition assembly">
+                                                      <div class="instance-header">
+                                                         <h6 id="/assessment-plan/local-definitions/activity/related-controls/control-selection/include-control" class="toc6 name">include-control</h6>
+                                                         <p class="type">element<br /></p>
+                                                         <p class="occurrence">[1 to ∞]</p>
+                                                         <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/local-definitions/activities/related-controls/control-selections/include-controls">Switch to JSON</a></div>
+                                                         <p class="formal-name">Select Control</p>
+                                                      </div>
+                                                      <div class="body">
+                                                         <p class="description"><span class="usa-tag">Description</span> Used to select a control for inclusion/exclusion based on one or more control identifiers.
+                                                            A set of statement identifiers can be used to target the inclusion/exclusion to only
+                                                            specific control statements providing more granularity over the specific statements
+                                                            that are within the asessment scope.</p>
+                                                         <div class="remarks-group usa-prose">
+                                                            <details open="open">
+                                                               <summary class="subhead">Remarks</summary>
+                                                               <div class="remarks in-use">
+                                                                  <p>Used to select a control for inclusion by the control's identifier. Specific control
+                                                                     statements can be selected by their statement identifier.</p>
+                                                               </div>
+                                                            </details>
+                                                         </div>
+                                                         <details class="properties attributes" open="open">
+                                                            <summary>Attribute (1)</summary>
+                                                            <div class="model-entry definition assembly">
+                                                               <div class="instance-header">
+                                                                  <p id="/assessment-plan/local-definitions/activity/related-controls/control-selection/include-control/@control-id" class="toc7 name">control-id</p>
+                                                                  <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                                  <p class="occurrence">[1]</p>
+                                                                  <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/local-definitions/activities/related-controls/control-selections/include-controls/control-id">Switch to JSON</a></div>
+                                                                  <p class="formal-name">Control Identifier Reference</p>
+                                                               </div>
+                                                               <div class="body">
+                                                                  <p class="description"><span class="usa-tag">Description</span> A reference to a control with a corresponding <code>id</code> value.</p>
+                                                               </div>
+                                                            </div>
+                                                         </details>
+                                                         <details class="properties elements" open="open">
+                                                            <summary>Element (1)</summary>
+                                                            <div class="model-entry definition assembly">
+                                                               <div class="instance-header">
+                                                                  <p id="/assessment-plan/local-definitions/activity/related-controls/control-selection/include-control/statement-id" class="toc7 name">statement-id</p>
+                                                                  <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                                  <p class="occurrence">[0 to ∞]</p>
+                                                                  <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/local-definitions/activities/related-controls/control-selections/include-controls/statement-ids">Switch to JSON</a></div>
+                                                                  <p class="formal-name">Include Specific Statements</p>
+                                                               </div>
+                                                               <div class="body">
+                                                                  <p class="description"><span class="usa-tag">Description</span> Used to constrain the selection to only specificity identified statements.</p>
+                                                               </div>
+                                                            </div>
+                                                         </details>
+                                                      </div>
+                                                   </div>
+                                                </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/assessment-plan/local-definitions/activity/related-controls/control-selection/exclude-control" class="toc6 name">exclude-control</h6>
@@ -10731,7 +11050,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 </details>
                                              </div>
                                              <details class="properties elements" open="open">
-                                                <summary>Elements (5)</summary>
+                                                <summary>Elements (9)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/assessment-plan/local-definitions/activity/related-controls/control-objective-selection/description" class="toc6 name">description</h6>
@@ -11039,6 +11358,57 @@ The following is the XML format reference for this model, which is organized hie
                                                       </details>
                                                    </div>
                                                 </div>
+                                                <div class="choice">
+                                                   <p>A choice:</p>
+                                                   <div class="model-entry definition assembly">
+                                                      <div class="instance-header">
+                                                         <h6 id="/assessment-plan/local-definitions/activity/related-controls/control-objective-selection/include-all" class="toc6 name">include-all</h6>
+                                                         <p class="type"><a href="/reference/datatypes/#empty">empty</a></p>
+                                                         <p class="occurrence">[1]</p>
+                                                         <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/local-definitions/activities/related-controls/control-objective-selections/include-all">Switch to JSON</a></div>
+                                                         <p class="formal-name">All</p>
+                                                      </div>
+                                                      <div class="body">
+                                                         <p class="description"><span class="usa-tag">Description</span> A key word to indicate all.</p>
+                                                      </div>
+                                                   </div>
+                                                   <div class="model-entry definition assembly">
+                                                      <div class="instance-header">
+                                                         <h6 id="/assessment-plan/local-definitions/activity/related-controls/control-objective-selection/include-objective" class="toc6 name">include-objective</h6>
+                                                         <p class="type"><a href="/reference/datatypes/#empty">empty</a></p>
+                                                         <p class="occurrence">[1 to ∞]</p>
+                                                         <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/local-definitions/activities/related-controls/control-objective-selections/include-objectives">Switch to JSON</a></div>
+                                                         <p class="formal-name">Select Objective</p>
+                                                      </div>
+                                                      <div class="body">
+                                                         <p class="description"><span class="usa-tag">Description</span> Used to select a control objective for inclusion/exclusion based on the control objective's
+                                                            identifier.</p>
+                                                         <div class="remarks-group usa-prose">
+                                                            <details open="open">
+                                                               <summary class="subhead">Remarks</summary>
+                                                               <div class="remarks in-use">
+                                                                  <p>Used to select a control objective for inclusion by the control objective's identifier.</p>
+                                                               </div>
+                                                            </details>
+                                                         </div>
+                                                         <details class="properties attributes" open="open">
+                                                            <summary>Attribute (1)</summary>
+                                                            <div class="model-entry definition assembly">
+                                                               <div class="instance-header">
+                                                                  <p id="/assessment-plan/local-definitions/activity/related-controls/control-objective-selection/include-objective/@objective-id" class="toc7 name">objective-id</p>
+                                                                  <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                                  <p class="occurrence">[1]</p>
+                                                                  <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/local-definitions/activities/related-controls/control-objective-selections/include-objectives/objective-id">Switch to JSON</a></div>
+                                                                  <p class="formal-name">Objective ID</p>
+                                                               </div>
+                                                               <div class="body">
+                                                                  <p class="description"><span class="usa-tag">Description</span> Points to an assessment objective.</p>
+                                                               </div>
+                                                            </div>
+                                                         </details>
+                                                      </div>
+                                                   </div>
+                                                </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/assessment-plan/local-definitions/activity/related-controls/control-objective-selection/exclude-objective" class="toc6 name">exclude-objective</h6>
@@ -11140,7 +11510,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                     </details>
                                     <details class="properties elements" open="open">
-                                       <summary>Elements (4)</summary>
+                                       <summary>Elements (6)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/assessment-plan/local-definitions/activity/responsible-role/prop" class="toc5 name">prop</h5>
@@ -11540,7 +11910,7 @@ The following is the XML format reference for this model, which is organized hie
                      </div>
                   </details>
                   <details class="properties elements" open="open">
-                     <summary>Element (1)</summary>
+                     <summary>Elements (6)</summary>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
                            <h3 id="/assessment-plan/terms-and-conditions/part" class="toc3 name">part</h3>
@@ -11716,7 +12086,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                            </details>
                            <details class="properties elements" open="open">
-                              <summary>Elements (5)</summary>
+                              <summary>Elements (7)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/assessment-plan/terms-and-conditions/part/title" class="toc4 name">title</h4>
@@ -12126,7 +12496,7 @@ The following is the XML format reference for this model, which is organized hie
                      </details>
                   </div>
                   <details class="properties elements" open="open">
-                     <summary>Elements (6)</summary>
+                     <summary>Elements (18)</summary>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
                            <h3 id="/assessment-plan/reviewed-controls/description" class="toc3 name">description</h3>
@@ -12460,7 +12830,7 @@ The following is the XML format reference for this model, which is organized hie
                               </details>
                            </div>
                            <details class="properties elements" open="open">
-                              <summary>Elements (5)</summary>
+                              <summary>Elements (10)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/assessment-plan/reviewed-controls/control-selection/description" class="toc4 name">description</h4>
@@ -12768,6 +13138,75 @@ The following is the XML format reference for this model, which is organized hie
                                     </details>
                                  </div>
                               </div>
+                              <div class="choice">
+                                 <p>A choice:</p>
+                                 <div class="model-entry definition assembly">
+                                    <div class="instance-header">
+                                       <h4 id="/assessment-plan/reviewed-controls/control-selection/include-all" class="toc4 name">include-all</h4>
+                                       <p class="type"><a href="/reference/datatypes/#empty">empty</a></p>
+                                       <p class="occurrence">[1]</p>
+                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/reviewed-controls/control-selections/include-all">Switch to JSON</a></div>
+                                       <p class="formal-name">All</p>
+                                    </div>
+                                    <div class="body">
+                                       <p class="description"><span class="usa-tag">Description</span> A key word to indicate all.</p>
+                                    </div>
+                                 </div>
+                                 <div class="model-entry definition assembly">
+                                    <div class="instance-header">
+                                       <h4 id="/assessment-plan/reviewed-controls/control-selection/include-control" class="toc4 name">include-control</h4>
+                                       <p class="type">element<br /></p>
+                                       <p class="occurrence">[1 to ∞]</p>
+                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/reviewed-controls/control-selections/include-controls">Switch to JSON</a></div>
+                                       <p class="formal-name">Select Control</p>
+                                    </div>
+                                    <div class="body">
+                                       <p class="description"><span class="usa-tag">Description</span> Used to select a control for inclusion/exclusion based on one or more control identifiers.
+                                          A set of statement identifiers can be used to target the inclusion/exclusion to only
+                                          specific control statements providing more granularity over the specific statements
+                                          that are within the asessment scope.</p>
+                                       <div class="remarks-group usa-prose">
+                                          <details open="open">
+                                             <summary class="subhead">Remarks</summary>
+                                             <div class="remarks in-use">
+                                                <p>Used to select a control for inclusion by the control's identifier. Specific control
+                                                   statements can be selected by their statement identifier.</p>
+                                             </div>
+                                          </details>
+                                       </div>
+                                       <details class="properties attributes" open="open">
+                                          <summary>Attribute (1)</summary>
+                                          <div class="model-entry definition assembly">
+                                             <div class="instance-header">
+                                                <h5 id="/assessment-plan/reviewed-controls/control-selection/include-control/@control-id" class="toc5 name">control-id</h5>
+                                                <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                <p class="occurrence">[1]</p>
+                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/reviewed-controls/control-selections/include-controls/control-id">Switch to JSON</a></div>
+                                                <p class="formal-name">Control Identifier Reference</p>
+                                             </div>
+                                             <div class="body">
+                                                <p class="description"><span class="usa-tag">Description</span> A reference to a control with a corresponding <code>id</code> value.</p>
+                                             </div>
+                                          </div>
+                                       </details>
+                                       <details class="properties elements" open="open">
+                                          <summary>Element (1)</summary>
+                                          <div class="model-entry definition assembly">
+                                             <div class="instance-header">
+                                                <h5 id="/assessment-plan/reviewed-controls/control-selection/include-control/statement-id" class="toc5 name">statement-id</h5>
+                                                <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                <p class="occurrence">[0 to ∞]</p>
+                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/reviewed-controls/control-selections/include-controls/statement-ids">Switch to JSON</a></div>
+                                                <p class="formal-name">Include Specific Statements</p>
+                                             </div>
+                                             <div class="body">
+                                                <p class="description"><span class="usa-tag">Description</span> Used to constrain the selection to only specificity identified statements.</p>
+                                             </div>
+                                          </div>
+                                       </details>
+                                    </div>
+                                 </div>
+                              </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/assessment-plan/reviewed-controls/control-selection/exclude-control" class="toc4 name">exclude-control</h4>
@@ -12865,7 +13304,7 @@ The following is the XML format reference for this model, which is organized hie
                               </details>
                            </div>
                            <details class="properties elements" open="open">
-                              <summary>Elements (5)</summary>
+                              <summary>Elements (9)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/assessment-plan/reviewed-controls/control-objective-selection/description" class="toc4 name">description</h4>
@@ -13173,6 +13612,57 @@ The following is the XML format reference for this model, which is organized hie
                                     </details>
                                  </div>
                               </div>
+                              <div class="choice">
+                                 <p>A choice:</p>
+                                 <div class="model-entry definition assembly">
+                                    <div class="instance-header">
+                                       <h4 id="/assessment-plan/reviewed-controls/control-objective-selection/include-all" class="toc4 name">include-all</h4>
+                                       <p class="type"><a href="/reference/datatypes/#empty">empty</a></p>
+                                       <p class="occurrence">[1]</p>
+                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/reviewed-controls/control-objective-selections/include-all">Switch to JSON</a></div>
+                                       <p class="formal-name">All</p>
+                                    </div>
+                                    <div class="body">
+                                       <p class="description"><span class="usa-tag">Description</span> A key word to indicate all.</p>
+                                    </div>
+                                 </div>
+                                 <div class="model-entry definition assembly">
+                                    <div class="instance-header">
+                                       <h4 id="/assessment-plan/reviewed-controls/control-objective-selection/include-objective" class="toc4 name">include-objective</h4>
+                                       <p class="type"><a href="/reference/datatypes/#empty">empty</a></p>
+                                       <p class="occurrence">[1 to ∞]</p>
+                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/reviewed-controls/control-objective-selections/include-objectives">Switch to JSON</a></div>
+                                       <p class="formal-name">Select Objective</p>
+                                    </div>
+                                    <div class="body">
+                                       <p class="description"><span class="usa-tag">Description</span> Used to select a control objective for inclusion/exclusion based on the control objective's
+                                          identifier.</p>
+                                       <div class="remarks-group usa-prose">
+                                          <details open="open">
+                                             <summary class="subhead">Remarks</summary>
+                                             <div class="remarks in-use">
+                                                <p>Used to select a control objective for inclusion by the control objective's identifier.</p>
+                                             </div>
+                                          </details>
+                                       </div>
+                                       <details class="properties attributes" open="open">
+                                          <summary>Attribute (1)</summary>
+                                          <div class="model-entry definition assembly">
+                                             <div class="instance-header">
+                                                <h5 id="/assessment-plan/reviewed-controls/control-objective-selection/include-objective/@objective-id" class="toc5 name">objective-id</h5>
+                                                <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                <p class="occurrence">[1]</p>
+                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/reviewed-controls/control-objective-selections/include-objectives/objective-id">Switch to JSON</a></div>
+                                                <p class="formal-name">Objective ID</p>
+                                             </div>
+                                             <div class="body">
+                                                <p class="description"><span class="usa-tag">Description</span> Points to an assessment objective.</p>
+                                             </div>
+                                          </div>
+                                       </details>
+                                    </div>
+                                 </div>
+                              </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/assessment-plan/reviewed-controls/control-objective-selection/exclude-objective" class="toc4 name">exclude-objective</h4>
@@ -13303,7 +13793,7 @@ The following is the XML format reference for this model, which is organized hie
                      </div>
                   </details>
                   <details class="properties elements" open="open">
-                     <summary>Elements (5)</summary>
+                     <summary>Elements (12)</summary>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
                            <h3 id="/assessment-plan/assessment-subject/description" class="toc3 name">description</h3>
@@ -13612,6 +14102,392 @@ The following is the XML format reference for this model, which is organized hie
                            </details>
                         </div>
                      </div>
+                     <div class="choice">
+                        <p>A choice:</p>
+                        <div class="model-entry definition assembly">
+                           <div class="instance-header">
+                              <h3 id="/assessment-plan/assessment-subject/include-all" class="toc3 name">include-all</h3>
+                              <p class="type"><a href="/reference/datatypes/#empty">empty</a></p>
+                              <p class="occurrence">[1]</p>
+                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/assessment-subjects/include-all">Switch to JSON</a></div>
+                              <p class="formal-name">All</p>
+                           </div>
+                           <div class="body">
+                              <p class="description"><span class="usa-tag">Description</span> A key word to indicate all.</p>
+                           </div>
+                        </div>
+                        <div class="model-entry definition assembly">
+                           <div class="instance-header">
+                              <h3 id="/assessment-plan/assessment-subject/include-subject" class="toc3 name">include-subject</h3>
+                              <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-assessment-common/assessment-subject/include-subject">(global definition)</a></p>
+                              <p class="occurrence">[1 to ∞]</p>
+                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/assessment-subjects/include-subjects">Switch to JSON</a></div>
+                              <p class="formal-name">Select Assessment Subject</p>
+                           </div>
+                           <div class="body">
+                              <p class="description"><span class="usa-tag">Description</span> Identifies a set of assessment subjects to include/exclude by UUID.</p>
+                              <details class="properties attributes" open="open">
+                                 <summary>Attributes (2)</summary>
+                                 <div class="model-entry definition assembly">
+                                    <div class="instance-header">
+                                       <h4 id="/assessment-plan/assessment-subject/include-subject/@subject-uuid" class="toc4 name">subject-uuid</h4>
+                                       <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                       <p class="occurrence">[1]</p>
+                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/assessment-subjects/include-subjects/subject-uuid">Switch to JSON</a></div>
+                                       <p class="formal-name">Subject Universally Unique Identifier Reference</p>
+                                    </div>
+                                    <div class="body">
+                                       <p class="description"><span class="usa-tag">Description</span> A pointer to a component, inventory-item, location, party, user, or resource using
+                                          it's UUID.</p>
+                                    </div>
+                                 </div>
+                                 <div class="model-entry definition assembly">
+                                    <div class="instance-header">
+                                       <h4 id="/assessment-plan/assessment-subject/include-subject/@type" class="toc4 name">type</h4>
+                                       <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                       <p class="occurrence">[1]</p>
+                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/assessment-subjects/include-subjects/type">Switch to JSON</a></div>
+                                       <p class="formal-name">Subject Universally Unique Identifier Reference Type</p>
+                                    </div>
+                                    <div class="body">
+                                       <p class="description"><span class="usa-tag">Description</span> Used to indicate the type of object pointed to by the <code>uuid-ref</code> within a subject.</p>
+                                       <details class="constraints" open="open">
+                                          <summary>Constraint (1)</summary>
+                                          <div class="constraint">
+                                             <p><span class="usa-tag">allowed values</span></p>
+                                             <p>The value <b>may be locally defined</b>, or one of the following:</p>
+                                             <ul>
+                                                
+                                                <li><strong>component</strong>: Component</li>
+                                                
+                                                <li><strong>inventory-item</strong>: Inventory Item</li>
+                                                
+                                                <li><strong>location</strong>: Location</li>
+                                                
+                                                <li><strong>party</strong>: Interview Party</li>
+                                                
+                                                <li><strong>user</strong>: User</li>
+                                                
+                                                <li><strong>resource</strong>: Resource or Artifact</li>
+                                                </ul>
+                                          </div>
+                                       </details>
+                                    </div>
+                                 </div>
+                              </details>
+                              <details class="properties elements" open="open">
+                                 <summary>Elements (5)</summary>
+                                 <div class="model-entry definition assembly">
+                                    <div class="instance-header">
+                                       <h4 id="/assessment-plan/assessment-subject/include-subject/prop" class="toc4 name">prop</h4>
+                                       <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-assessment-common/select-subject-by-id/prop">(global definition)</a></p>
+                                       <p class="occurrence">[0 to ∞]</p>
+                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/assessment-subjects/include-subjects/props">Switch to JSON</a></div>
+                                       <p class="formal-name">Property</p>
+                                    </div>
+                                    <div class="body">
+                                       <p class="description"><span class="usa-tag">Description</span> An attribute, characteristic, or quality of the containing object expressed as a
+                                          namespace qualified name/value pair. The value of a property is a simple scalar value,
+                                          which may be expressed as a list of values.</p>
+                                       <div class="remarks-group usa-prose">
+                                          <details open="open">
+                                             <summary class="subhead">Remarks</summary>
+                                             <div class="remarks">
+                                                <p>Properties permit the deployment and management of arbitrary controlled values, within
+                                                   OSCAL objects. A property can be included for any purpose useful to an application
+                                                   or implementation. Typically, properties will be used to sort, filter, select, order,
+                                                   and arrange OSCAL content objects, to relate OSCAL objects to one another, or to associate
+                                                   an OSCAL object to class hierarchies, taxonomies, or external authorities. Thus, the
+                                                   lexical composition of properties may be constrained by external processes to ensure
+                                                   consistency.</p>
+                                                <p>Property allows for associated remarks that describe why the specific property value
+                                                   was applied to the containing object, or the significance of the value in the context
+                                                   of the containing object.</p>
+                                             </div>
+                                          </details>
+                                       </div>
+                                       <details class="properties attributes" open="open">
+                                          <summary>Attributes (5)</summary>
+                                          <div class="model-entry definition assembly">
+                                             <div class="instance-header">
+                                                <h5 id="/assessment-plan/assessment-subject/include-subject/prop/@name" class="toc5 name">name</h5>
+                                                <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                <p class="occurrence">[1]</p>
+                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/assessment-subjects/include-subjects/props/name">Switch to JSON</a></div>
+                                                <p class="formal-name">Property Name</p>
+                                             </div>
+                                             <div class="body">
+                                                <p class="description"><span class="usa-tag">Description</span> A textual label that uniquely identifies a specific attribute, characteristic, or
+                                                   quality of the property's containing object.</p>
+                                                <details class="constraints" open="open">
+                                                   <summary>Constraint (1)</summary>
+                                                   <div class="constraint">
+                                                      <p><span class="usa-tag">allowed value</span></p>
+                                                      <p>The value <b>may be locally defined</b>, or the following:</p>
+                                                      <ul>
+                                                         
+                                                         <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                                            An optional class can be used to define the specific marking system used for the associated
+                                                            value.</li>
+                                                         </ul>
+                                                   </div>
+                                                </details>
+                                             </div>
+                                          </div>
+                                          <div class="model-entry definition assembly">
+                                             <div class="instance-header">
+                                                <h5 id="/assessment-plan/assessment-subject/include-subject/prop/@uuid" class="toc5 name">uuid</h5>
+                                                <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                                <p class="occurrence">[0 or 1]</p>
+                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/assessment-subjects/include-subjects/props/uuid">Switch to JSON</a></div>
+                                                <p class="formal-name">Property Universally Unique Identifier</p>
+                                             </div>
+                                             <div class="body">
+                                                <p class="description"><span class="usa-tag">Description</span> A unique identifier that can be used to reference this property elsewhere in an OSCAL
+                                                   document. A UUID should be consistently used for a given location across revisions
+                                                   of the document.</p>
+                                             </div>
+                                          </div>
+                                          <div class="model-entry definition assembly">
+                                             <div class="instance-header">
+                                                <h5 id="/assessment-plan/assessment-subject/include-subject/prop/@ns" class="toc5 name">ns</h5>
+                                                <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
+                                                <p class="occurrence">[0 or 1]</p>
+                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/assessment-subjects/include-subjects/props/ns">Switch to JSON</a></div>
+                                                <p class="formal-name">Property Namespace</p>
+                                             </div>
+                                             <div class="body">
+                                                <p class="description"><span class="usa-tag">Description</span> A namespace qualifying the property's name. This allows different organizations to
+                                                   associate distinct semantics with the same name.</p>
+                                                <div class="remarks-group usa-prose">
+                                                   <details open="open">
+                                                      <summary class="subhead">Remarks</summary>
+                                                      <div class="remarks">
+                                                         <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
+                                                            names and associated values used in a property. This allows the semantics associated
+                                                            with a given name/value pair to be defined on an organization-by-organization basis.</p>
+                                                         <p>An organization MUST use a URI that they have control over. e.g., a domain registered
+                                                            to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
+                                                         <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
+                                                      </div>
+                                                      <div class="remarks">
+                                                         <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
+                                                            names and associated values used in a property. This allows the semantics associated
+                                                            with a given name/value pair to be defined on an organization-by-organization basis.</p>
+                                                         <p>An organization MUST use a URI that they have control over. e.g., a domain registered
+                                                            to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
+                                                         <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
+                                                      </div>
+                                                   </details>
+                                                </div>
+                                             </div>
+                                          </div>
+                                          <div class="model-entry definition assembly">
+                                             <div class="instance-header">
+                                                <h5 id="/assessment-plan/assessment-subject/include-subject/prop/@value" class="toc5 name">value</h5>
+                                                <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                <p class="occurrence">[1]</p>
+                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/assessment-subjects/include-subjects/props/value">Switch to JSON</a></div>
+                                                <p class="formal-name">Property Value</p>
+                                             </div>
+                                             <div class="body">
+                                                <p class="description"><span class="usa-tag">Description</span> Indicates the value of the attribute, characteristic, or quality.</p>
+                                             </div>
+                                          </div>
+                                          <div class="model-entry definition assembly">
+                                             <div class="instance-header">
+                                                <h5 id="/assessment-plan/assessment-subject/include-subject/prop/@class" class="toc5 name">class</h5>
+                                                <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                <p class="occurrence">[0 or 1]</p>
+                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/assessment-subjects/include-subjects/props/class">Switch to JSON</a></div>
+                                                <p class="formal-name">Property Class</p>
+                                             </div>
+                                             <div class="body">
+                                                <p class="description"><span class="usa-tag">Description</span> A textual label that provides a sub-type or characterization of the property's <code>name</code>. This can be used to further distinguish or discriminate between the semantics of
+                                                   multiple properties of the same object with the same <code>name</code> and <code>ns</code>. </p>
+                                                <div class="remarks-group usa-prose">
+                                                   <details open="open">
+                                                      <summary class="subhead">Remarks</summary>
+                                                      <div class="remarks">
+                                                         <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
+                                                            a specific <code>class</code> value.</p>
+                                                      </div>
+                                                      <div class="remarks">
+                                                         <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
+                                                            a specific <code>class</code> value.</p>
+                                                      </div>
+                                                   </details>
+                                                </div>
+                                             </div>
+                                          </div>
+                                       </details>
+                                       <details class="properties elements" open="open">
+                                          <summary>Element (1)</summary>
+                                          <div class="model-entry definition assembly">
+                                             <div class="instance-header">
+                                                <h5 id="/assessment-plan/assessment-subject/include-subject/prop/remarks" class="toc5 name">remarks</h5>
+                                                <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                <p class="occurrence">[0 or 1]</p>
+                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/assessment-subjects/include-subjects/props/remarks">Switch to JSON</a></div>
+                                                <p class="formal-name">Remarks</p>
+                                             </div>
+                                             <div class="body">
+                                                <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                             </div>
+                                          </div>
+                                       </details>
+                                    </div>
+                                 </div>
+                                 <div class="model-entry definition assembly">
+                                    <div class="instance-header">
+                                       <h4 id="/assessment-plan/assessment-subject/include-subject/link" class="toc4 name">link</h4>
+                                       <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-assessment-common/select-subject-by-id/link">(global definition)</a></p>
+                                       <p class="occurrence">[0 to ∞]</p>
+                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/assessment-subjects/include-subjects/links">Switch to JSON</a></div>
+                                       <p class="formal-name">Link</p>
+                                    </div>
+                                    <div class="body">
+                                       <p class="description"><span class="usa-tag">Description</span> A reference to a local or remote resource</p>
+                                       <div class="remarks-group usa-prose">
+                                          <details open="open">
+                                             <summary class="subhead">Remarks</summary>
+                                             <div class="remarks">
+                                                <p>To provide a cryptographic hash for a remote target resource, a local reference to
+                                                   a back matter <code>resource</code> is needed. The resource allows one or more hash values to be provided using the <code>rlink/hash</code> object.</p>
+                                                <p>The OSCAL <code>link</code> is a roughly based on the HTML <a href="https://www.w3.org/TR/html401/struct/links.html#edef-LINK">link element</a>. </p>
+                                             </div>
+                                          </details>
+                                       </div>
+                                       <details class="constraints" open="open">
+                                          <summary>Constraints (3)</summary>
+                                          <div class="constraint">
+                                             <p><span class="usa-tag">matches</span>  for <code class="path">@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
+                                          </div>
+                                          <div class="constraint">
+                                             <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-back-matter-resource</code> using a key constructed of key field(s) <code>@href</code></p>
+                                          </div>
+                                          <div class="constraint">
+                                             <p><span class="usa-tag">matches</span>  for <code class="path">@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
+                                          </div>
+                                       </details>
+                                       <details class="properties attributes" open="open">
+                                          <summary>Attributes (3)</summary>
+                                          <div class="model-entry definition assembly">
+                                             <div class="instance-header">
+                                                <h5 id="/assessment-plan/assessment-subject/include-subject/link/@href" class="toc5 name">href</h5>
+                                                <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
+                                                <p class="occurrence">[1]</p>
+                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/assessment-subjects/include-subjects/links/href">Switch to JSON</a></div>
+                                                <p class="formal-name">Hypertext Reference</p>
+                                             </div>
+                                             <div class="body">
+                                                <p class="description"><span class="usa-tag">Description</span> A resolvable URL reference to a resource.</p>
+                                                <div class="remarks-group usa-prose">
+                                                   <details open="open">
+                                                      <summary class="subhead">Remarks</summary>
+                                                      <div class="remarks">
+                                                         <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
+                                                            that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
+                                                         <p>If a local reference using a fragment is used, this will be indicated by a fragment
+                                                            "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
+                                                         <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
+                                                            resource. A relative URI will be resolved relative to the location of the document
+                                                            containing the link.</p>
+                                                      </div>
+                                                      <div class="remarks">
+                                                         <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
+                                                            that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
+                                                         <p>If a local reference using a fragment is used, this will be indicated by a fragment
+                                                            "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
+                                                         <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
+                                                            resource. A relative URI will be resolved relative to the location of the document
+                                                            containing the link.</p>
+                                                      </div>
+                                                   </details>
+                                                </div>
+                                             </div>
+                                          </div>
+                                          <div class="model-entry definition assembly">
+                                             <div class="instance-header">
+                                                <h5 id="/assessment-plan/assessment-subject/include-subject/link/@rel" class="toc5 name">rel</h5>
+                                                <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                <p class="occurrence">[0 or 1]</p>
+                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/assessment-subjects/include-subjects/links/rel">Switch to JSON</a></div>
+                                                <p class="formal-name">Relation</p>
+                                             </div>
+                                             <div class="body">
+                                                <p class="description"><span class="usa-tag">Description</span> Describes the type of relationship provided by the link. This can be an indicator
+                                                   of the link's purpose.</p>
+                                                <details class="constraints" open="open">
+                                                   <summary>Constraint (1)</summary>
+                                                   <div class="constraint">
+                                                      <p><span class="usa-tag">allowed value</span></p>
+                                                      <p>The value <b>may be locally defined</b>, or the following:</p>
+                                                      <ul>
+                                                         
+                                                         <li><strong>reference</strong>: Reference</li>
+                                                         </ul>
+                                                   </div>
+                                                </details>
+                                             </div>
+                                          </div>
+                                          <div class="model-entry definition assembly">
+                                             <div class="instance-header">
+                                                <h5 id="/assessment-plan/assessment-subject/include-subject/link/@media-type" class="toc5 name">media-type</h5>
+                                                <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                <p class="occurrence">[0 or 1]</p>
+                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/assessment-subjects/include-subjects/links/media-type">Switch to JSON</a></div>
+                                                <p class="formal-name">Media Type</p>
+                                             </div>
+                                             <div class="body">
+                                                <p class="description"><span class="usa-tag">Description</span> Specifies a media type as defined by the Internet Assigned Numbers Authority (IANA)
+                                                   <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">Media Types Registry</a>. </p>
+                                                <div class="remarks-group usa-prose">
+                                                   <details open="open">
+                                                      <summary class="subhead">Remarks</summary>
+                                                      <div class="remarks">
+                                                         <p>The <code>media-type</code> provides a hint about the content model of the referenced resource. A valid entry
+                                                            from the <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">IANA Media Types registry</a> SHOULD be used.</p>
+                                                      </div>
+                                                   </details>
+                                                </div>
+                                             </div>
+                                          </div>
+                                       </details>
+                                       <details class="properties elements" open="open">
+                                          <summary>Element (1)</summary>
+                                          <div class="model-entry definition assembly">
+                                             <div class="instance-header">
+                                                <h5 id="/assessment-plan/assessment-subject/include-subject/link/text" class="toc5 name">text</h5>
+                                                <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                                <p class="occurrence">[0 or 1]</p>
+                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/assessment-subjects/include-subjects/links/text">Switch to JSON</a></div>
+                                                <p class="formal-name">Link Text</p>
+                                             </div>
+                                             <div class="body">
+                                                <p class="description"><span class="usa-tag">Description</span> A textual label to associate with the link, which may be used for presentation in
+                                                   a tool.</p>
+                                             </div>
+                                          </div>
+                                       </details>
+                                    </div>
+                                 </div>
+                                 <div class="model-entry definition assembly">
+                                    <div class="instance-header">
+                                       <h4 id="/assessment-plan/assessment-subject/include-subject/remarks" class="toc4 name">remarks</h4>
+                                       <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                       <p class="occurrence">[0 or 1]</p>
+                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/assessment-subjects/include-subjects/remarks">Switch to JSON</a></div>
+                                       <p class="formal-name">Remarks</p>
+                                    </div>
+                                    <div class="body">
+                                       <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                    </div>
+                                 </div>
+                              </details>
+                           </div>
+                        </div>
+                     </div>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
                            <h3 id="/assessment-plan/assessment-subject/exclude-subject" class="toc3 name">exclude-subject</h3>
@@ -13672,7 +14548,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                            </details>
                            <details class="properties elements" open="open">
-                              <summary>Elements (3)</summary>
+                              <summary>Elements (5)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/assessment-plan/assessment-subject/exclude-subject/prop" class="toc4 name">prop</h4>
@@ -14016,7 +14892,7 @@ The following is the XML format reference for this model, which is organized hie
                      </div>
                   </details>
                   <details class="properties elements" open="open">
-                     <summary>Elements (2)</summary>
+                     <summary>Elements (16)</summary>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
                            <h3 id="/assessment-plan/assessment-assets/component" class="toc3 name">component</h3>
@@ -14451,7 +15327,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                            </details>
                            <details class="properties elements" open="open">
-                              <summary>Elements (9)</summary>
+                              <summary>Elements (18)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/assessment-plan/assessment-assets/component/title" class="toc4 name">title</h4>
@@ -14869,7 +15745,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                     </details>
                                     <details class="properties elements" open="open">
-                                       <summary>Elements (4)</summary>
+                                       <summary>Elements (6)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/assessment-plan/assessment-assets/component/responsible-role/prop" class="toc5 name">prop</h5>
@@ -15410,7 +16286,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                            </details>
                            <details class="properties elements" open="open">
-                              <summary>Elements (5)</summary>
+                              <summary>Elements (11)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/assessment-plan/assessment-assets/assessment-platform/title" class="toc4 name">title</h4>
@@ -15750,7 +16626,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                     </details>
                                     <details class="properties elements" open="open">
-                                       <summary>Elements (4)</summary>
+                                       <summary>Elements (10)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/assessment-plan/assessment-assets/assessment-platform/uses-component/prop" class="toc5 name">prop</h5>
@@ -16082,7 +16958,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                              </details>
                                              <details class="properties elements" open="open">
-                                                <summary>Elements (4)</summary>
+                                                <summary>Elements (6)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/assessment-plan/assessment-assets/assessment-platform/uses-component/responsible-party/party-uuid" class="toc6 name">party-uuid</h6>
@@ -16504,7 +17380,7 @@ The following is the XML format reference for this model, which is organized hie
                      </div>
                   </details>
                   <details class="properties elements" open="open">
-                     <summary>Elements (11)</summary>
+                     <summary>Elements (28)</summary>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
                            <h3 id="/assessment-plan/task/title" class="toc3 name">title</h3>
@@ -16834,6 +17710,138 @@ The following is the XML format reference for this model, which is organized hie
                         </div>
                         <div class="body">
                            <p class="description"><span class="usa-tag">Description</span> The timing under which the task is intended to occur.</p>
+                           <details class="properties elements" open="open">
+                              <summary>Elements (3)</summary>
+                              <div class="choice">
+                                 <p>A choice:</p>
+                                 <div class="model-entry definition assembly">
+                                    <div class="instance-header">
+                                       <h4 id="/assessment-plan/task/timing/on-date" class="toc4 name">on-date</h4>
+                                       <p class="type"><a href="/reference/datatypes/#empty">empty</a></p>
+                                       <p class="occurrence">[1]</p>
+                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/tasks/timing/on-date">Switch to JSON</a></div>
+                                       <p class="formal-name">On Date Condition</p>
+                                    </div>
+                                    <div class="body">
+                                       <p class="description"><span class="usa-tag">Description</span> The task is intended to occur on the specified date.</p>
+                                       <details class="properties attributes" open="open">
+                                          <summary>Attribute (1)</summary>
+                                          <div class="model-entry definition assembly">
+                                             <div class="instance-header">
+                                                <h5 id="/assessment-plan/task/timing/on-date/@date" class="toc5 name">date</h5>
+                                                <p class="type"><a href="/reference/datatypes/#datetime-with-timezone">dateTime-with-timezone</a></p>
+                                                <p class="occurrence">[1]</p>
+                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/tasks/timing/on-date/date">Switch to JSON</a></div>
+                                                <p class="formal-name">On Date Condition</p>
+                                             </div>
+                                             <div class="body">
+                                                <p class="description"><span class="usa-tag">Description</span> The task must occur on the specified date.</p>
+                                             </div>
+                                          </div>
+                                       </details>
+                                    </div>
+                                 </div>
+                                 <div class="model-entry definition assembly">
+                                    <div class="instance-header">
+                                       <h4 id="/assessment-plan/task/timing/within-date-range" class="toc4 name">within-date-range</h4>
+                                       <p class="type"><a href="/reference/datatypes/#empty">empty</a></p>
+                                       <p class="occurrence">[1]</p>
+                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/tasks/timing/within-date-range">Switch to JSON</a></div>
+                                       <p class="formal-name">On Date Range Condition</p>
+                                    </div>
+                                    <div class="body">
+                                       <p class="description"><span class="usa-tag">Description</span> The task is intended to occur within the specified date range.</p>
+                                       <details class="properties attributes" open="open">
+                                          <summary>Attributes (2)</summary>
+                                          <div class="model-entry definition assembly">
+                                             <div class="instance-header">
+                                                <h5 id="/assessment-plan/task/timing/within-date-range/@start" class="toc5 name">start</h5>
+                                                <p class="type"><a href="/reference/datatypes/#datetime-with-timezone">dateTime-with-timezone</a></p>
+                                                <p class="occurrence">[1]</p>
+                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/tasks/timing/within-date-range/start">Switch to JSON</a></div>
+                                                <p class="formal-name">Start Date Condition</p>
+                                             </div>
+                                             <div class="body">
+                                                <p class="description"><span class="usa-tag">Description</span> The task must occur on or after the specified date.</p>
+                                             </div>
+                                          </div>
+                                          <div class="model-entry definition assembly">
+                                             <div class="instance-header">
+                                                <h5 id="/assessment-plan/task/timing/within-date-range/@end" class="toc5 name">end</h5>
+                                                <p class="type"><a href="/reference/datatypes/#datetime-with-timezone">dateTime-with-timezone</a></p>
+                                                <p class="occurrence">[1]</p>
+                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/tasks/timing/within-date-range/end">Switch to JSON</a></div>
+                                                <p class="formal-name">End Date Condition</p>
+                                             </div>
+                                             <div class="body">
+                                                <p class="description"><span class="usa-tag">Description</span> The task must occur on or before the specified date.</p>
+                                             </div>
+                                          </div>
+                                       </details>
+                                    </div>
+                                 </div>
+                                 <div class="model-entry definition assembly">
+                                    <div class="instance-header">
+                                       <h4 id="/assessment-plan/task/timing/at-frequency" class="toc4 name">at-frequency</h4>
+                                       <p class="type"><a href="/reference/datatypes/#empty">empty</a></p>
+                                       <p class="occurrence">[1]</p>
+                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/tasks/timing/at-frequency">Switch to JSON</a></div>
+                                       <p class="formal-name">Frequency Condition</p>
+                                    </div>
+                                    <div class="body">
+                                       <p class="description"><span class="usa-tag">Description</span> The task is intended to occur at the specified frequency.</p>
+                                       <details class="properties attributes" open="open">
+                                          <summary>Attributes (2)</summary>
+                                          <div class="model-entry definition assembly">
+                                             <div class="instance-header">
+                                                <h5 id="/assessment-plan/task/timing/at-frequency/@period" class="toc5 name">period</h5>
+                                                <p class="type"><a href="/reference/datatypes/#positiveinteger">positiveInteger</a></p>
+                                                <p class="occurrence">[1]</p>
+                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/tasks/timing/at-frequency/period">Switch to JSON</a></div>
+                                                <p class="formal-name">Period</p>
+                                             </div>
+                                             <div class="body">
+                                                <p class="description"><span class="usa-tag">Description</span> The task must occur after the specified period has elapsed.</p>
+                                             </div>
+                                          </div>
+                                          <div class="model-entry definition assembly">
+                                             <div class="instance-header">
+                                                <h5 id="/assessment-plan/task/timing/at-frequency/@unit" class="toc5 name">unit</h5>
+                                                <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                <p class="occurrence">[1]</p>
+                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/tasks/timing/at-frequency/unit">Switch to JSON</a></div>
+                                                <p class="formal-name">Time Unit</p>
+                                             </div>
+                                             <div class="body">
+                                                <p class="description"><span class="usa-tag">Description</span> The unit of time for the period.</p>
+                                                <details class="constraints" open="open">
+                                                   <summary>Constraint (1)</summary>
+                                                   <div class="constraint">
+                                                      <p><span class="usa-tag">allowed values</span></p>
+                                                      <p>The value <b>must</b> be one of the following:</p>
+                                                      <ul>
+                                                         
+                                                         <li><strong>seconds</strong>: The period is specified in seconds.</li>
+                                                         
+                                                         <li><strong>minutes</strong>: The period is specified in minutes.</li>
+                                                         
+                                                         <li><strong>hours</strong>: The period is specified in hours.</li>
+                                                         
+                                                         <li><strong>days</strong>: The period is specified in days.</li>
+                                                         
+                                                         <li><strong>months</strong>: The period is specified in calendar months.</li>
+                                                         
+                                                         <li><strong>years</strong>: The period is specified in calendar years.</li>
+                                                         </ul>
+                                                   </div>
+                                                </details>
+                                             </div>
+                                          </div>
+                                       </details>
+                                    </div>
+                                 </div>
+                              </div>
+                           </details>
                         </div>
                      </div>
                      <div class="model-entry definition assembly">
@@ -16923,7 +17931,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                            </details>
                            <details class="properties elements" open="open">
-                              <summary>Elements (5)</summary>
+                              <summary>Elements (16)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/assessment-plan/task/associated-activity/prop" class="toc4 name">prop</h4>
@@ -17255,7 +18263,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                     </details>
                                     <details class="properties elements" open="open">
-                                       <summary>Elements (4)</summary>
+                                       <summary>Elements (6)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/assessment-plan/task/associated-activity/responsible-role/prop" class="toc5 name">prop</h5>
@@ -17648,7 +18656,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                     </details>
                                     <details class="properties elements" open="open">
-                                       <summary>Elements (5)</summary>
+                                       <summary>Elements (12)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/assessment-plan/task/associated-activity/subject/description" class="toc5 name">description</h5>
@@ -17957,6 +18965,392 @@ The following is the XML format reference for this model, which is organized hie
                                              </details>
                                           </div>
                                        </div>
+                                       <div class="choice">
+                                          <p>A choice:</p>
+                                          <div class="model-entry definition assembly">
+                                             <div class="instance-header">
+                                                <h5 id="/assessment-plan/task/associated-activity/subject/include-all" class="toc5 name">include-all</h5>
+                                                <p class="type"><a href="/reference/datatypes/#empty">empty</a></p>
+                                                <p class="occurrence">[1]</p>
+                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/tasks/associated-activities/subjects/include-all">Switch to JSON</a></div>
+                                                <p class="formal-name">All</p>
+                                             </div>
+                                             <div class="body">
+                                                <p class="description"><span class="usa-tag">Description</span> A key word to indicate all.</p>
+                                             </div>
+                                          </div>
+                                          <div class="model-entry definition assembly">
+                                             <div class="instance-header">
+                                                <h5 id="/assessment-plan/task/associated-activity/subject/include-subject" class="toc5 name">include-subject</h5>
+                                                <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-assessment-common/assessment-subject/include-subject">(global definition)</a></p>
+                                                <p class="occurrence">[1 to ∞]</p>
+                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/tasks/associated-activities/subjects/include-subjects">Switch to JSON</a></div>
+                                                <p class="formal-name">Select Assessment Subject</p>
+                                             </div>
+                                             <div class="body">
+                                                <p class="description"><span class="usa-tag">Description</span> Identifies a set of assessment subjects to include/exclude by UUID.</p>
+                                                <details class="properties attributes" open="open">
+                                                   <summary>Attributes (2)</summary>
+                                                   <div class="model-entry definition assembly">
+                                                      <div class="instance-header">
+                                                         <h6 id="/assessment-plan/task/associated-activity/subject/include-subject/@subject-uuid" class="toc6 name">subject-uuid</h6>
+                                                         <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                                         <p class="occurrence">[1]</p>
+                                                         <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/tasks/associated-activities/subjects/include-subjects/subject-uuid">Switch to JSON</a></div>
+                                                         <p class="formal-name">Subject Universally Unique Identifier Reference</p>
+                                                      </div>
+                                                      <div class="body">
+                                                         <p class="description"><span class="usa-tag">Description</span> A pointer to a component, inventory-item, location, party, user, or resource using
+                                                            it's UUID.</p>
+                                                      </div>
+                                                   </div>
+                                                   <div class="model-entry definition assembly">
+                                                      <div class="instance-header">
+                                                         <h6 id="/assessment-plan/task/associated-activity/subject/include-subject/@type" class="toc6 name">type</h6>
+                                                         <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                         <p class="occurrence">[1]</p>
+                                                         <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/tasks/associated-activities/subjects/include-subjects/type">Switch to JSON</a></div>
+                                                         <p class="formal-name">Subject Universally Unique Identifier Reference Type</p>
+                                                      </div>
+                                                      <div class="body">
+                                                         <p class="description"><span class="usa-tag">Description</span> Used to indicate the type of object pointed to by the <code>uuid-ref</code> within a subject.</p>
+                                                         <details class="constraints" open="open">
+                                                            <summary>Constraint (1)</summary>
+                                                            <div class="constraint">
+                                                               <p><span class="usa-tag">allowed values</span></p>
+                                                               <p>The value <b>may be locally defined</b>, or one of the following:</p>
+                                                               <ul>
+                                                                  
+                                                                  <li><strong>component</strong>: Component</li>
+                                                                  
+                                                                  <li><strong>inventory-item</strong>: Inventory Item</li>
+                                                                  
+                                                                  <li><strong>location</strong>: Location</li>
+                                                                  
+                                                                  <li><strong>party</strong>: Interview Party</li>
+                                                                  
+                                                                  <li><strong>user</strong>: User</li>
+                                                                  
+                                                                  <li><strong>resource</strong>: Resource or Artifact</li>
+                                                                  </ul>
+                                                            </div>
+                                                         </details>
+                                                      </div>
+                                                   </div>
+                                                </details>
+                                                <details class="properties elements" open="open">
+                                                   <summary>Elements (5)</summary>
+                                                   <div class="model-entry definition assembly">
+                                                      <div class="instance-header">
+                                                         <h6 id="/assessment-plan/task/associated-activity/subject/include-subject/prop" class="toc6 name">prop</h6>
+                                                         <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-assessment-common/select-subject-by-id/prop">(global definition)</a></p>
+                                                         <p class="occurrence">[0 to ∞]</p>
+                                                         <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/tasks/associated-activities/subjects/include-subjects/props">Switch to JSON</a></div>
+                                                         <p class="formal-name">Property</p>
+                                                      </div>
+                                                      <div class="body">
+                                                         <p class="description"><span class="usa-tag">Description</span> An attribute, characteristic, or quality of the containing object expressed as a
+                                                            namespace qualified name/value pair. The value of a property is a simple scalar value,
+                                                            which may be expressed as a list of values.</p>
+                                                         <div class="remarks-group usa-prose">
+                                                            <details open="open">
+                                                               <summary class="subhead">Remarks</summary>
+                                                               <div class="remarks">
+                                                                  <p>Properties permit the deployment and management of arbitrary controlled values, within
+                                                                     OSCAL objects. A property can be included for any purpose useful to an application
+                                                                     or implementation. Typically, properties will be used to sort, filter, select, order,
+                                                                     and arrange OSCAL content objects, to relate OSCAL objects to one another, or to associate
+                                                                     an OSCAL object to class hierarchies, taxonomies, or external authorities. Thus, the
+                                                                     lexical composition of properties may be constrained by external processes to ensure
+                                                                     consistency.</p>
+                                                                  <p>Property allows for associated remarks that describe why the specific property value
+                                                                     was applied to the containing object, or the significance of the value in the context
+                                                                     of the containing object.</p>
+                                                               </div>
+                                                            </details>
+                                                         </div>
+                                                         <details class="properties attributes" open="open">
+                                                            <summary>Attributes (5)</summary>
+                                                            <div class="model-entry definition assembly">
+                                                               <div class="instance-header">
+                                                                  <p id="/assessment-plan/task/associated-activity/subject/include-subject/prop/@name" class="toc7 name">name</p>
+                                                                  <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                                  <p class="occurrence">[1]</p>
+                                                                  <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/tasks/associated-activities/subjects/include-subjects/props/name">Switch to JSON</a></div>
+                                                                  <p class="formal-name">Property Name</p>
+                                                               </div>
+                                                               <div class="body">
+                                                                  <p class="description"><span class="usa-tag">Description</span> A textual label that uniquely identifies a specific attribute, characteristic, or
+                                                                     quality of the property's containing object.</p>
+                                                                  <details class="constraints" open="open">
+                                                                     <summary>Constraint (1)</summary>
+                                                                     <div class="constraint">
+                                                                        <p><span class="usa-tag">allowed value</span></p>
+                                                                        <p>The value <b>may be locally defined</b>, or the following:</p>
+                                                                        <ul>
+                                                                           
+                                                                           <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                                                              An optional class can be used to define the specific marking system used for the associated
+                                                                              value.</li>
+                                                                           </ul>
+                                                                     </div>
+                                                                  </details>
+                                                               </div>
+                                                            </div>
+                                                            <div class="model-entry definition assembly">
+                                                               <div class="instance-header">
+                                                                  <p id="/assessment-plan/task/associated-activity/subject/include-subject/prop/@uuid" class="toc7 name">uuid</p>
+                                                                  <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                                                  <p class="occurrence">[0 or 1]</p>
+                                                                  <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/tasks/associated-activities/subjects/include-subjects/props/uuid">Switch to JSON</a></div>
+                                                                  <p class="formal-name">Property Universally Unique Identifier</p>
+                                                               </div>
+                                                               <div class="body">
+                                                                  <p class="description"><span class="usa-tag">Description</span> A unique identifier that can be used to reference this property elsewhere in an OSCAL
+                                                                     document. A UUID should be consistently used for a given location across revisions
+                                                                     of the document.</p>
+                                                               </div>
+                                                            </div>
+                                                            <div class="model-entry definition assembly">
+                                                               <div class="instance-header">
+                                                                  <p id="/assessment-plan/task/associated-activity/subject/include-subject/prop/@ns" class="toc7 name">ns</p>
+                                                                  <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
+                                                                  <p class="occurrence">[0 or 1]</p>
+                                                                  <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/tasks/associated-activities/subjects/include-subjects/props/ns">Switch to JSON</a></div>
+                                                                  <p class="formal-name">Property Namespace</p>
+                                                               </div>
+                                                               <div class="body">
+                                                                  <p class="description"><span class="usa-tag">Description</span> A namespace qualifying the property's name. This allows different organizations to
+                                                                     associate distinct semantics with the same name.</p>
+                                                                  <div class="remarks-group usa-prose">
+                                                                     <details open="open">
+                                                                        <summary class="subhead">Remarks</summary>
+                                                                        <div class="remarks">
+                                                                           <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
+                                                                              names and associated values used in a property. This allows the semantics associated
+                                                                              with a given name/value pair to be defined on an organization-by-organization basis.</p>
+                                                                           <p>An organization MUST use a URI that they have control over. e.g., a domain registered
+                                                                              to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
+                                                                           <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
+                                                                        </div>
+                                                                        <div class="remarks">
+                                                                           <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
+                                                                              names and associated values used in a property. This allows the semantics associated
+                                                                              with a given name/value pair to be defined on an organization-by-organization basis.</p>
+                                                                           <p>An organization MUST use a URI that they have control over. e.g., a domain registered
+                                                                              to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
+                                                                           <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
+                                                                        </div>
+                                                                     </details>
+                                                                  </div>
+                                                               </div>
+                                                            </div>
+                                                            <div class="model-entry definition assembly">
+                                                               <div class="instance-header">
+                                                                  <p id="/assessment-plan/task/associated-activity/subject/include-subject/prop/@value" class="toc7 name">value</p>
+                                                                  <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                                  <p class="occurrence">[1]</p>
+                                                                  <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/tasks/associated-activities/subjects/include-subjects/props/value">Switch to JSON</a></div>
+                                                                  <p class="formal-name">Property Value</p>
+                                                               </div>
+                                                               <div class="body">
+                                                                  <p class="description"><span class="usa-tag">Description</span> Indicates the value of the attribute, characteristic, or quality.</p>
+                                                               </div>
+                                                            </div>
+                                                            <div class="model-entry definition assembly">
+                                                               <div class="instance-header">
+                                                                  <p id="/assessment-plan/task/associated-activity/subject/include-subject/prop/@class" class="toc7 name">class</p>
+                                                                  <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                                  <p class="occurrence">[0 or 1]</p>
+                                                                  <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/tasks/associated-activities/subjects/include-subjects/props/class">Switch to JSON</a></div>
+                                                                  <p class="formal-name">Property Class</p>
+                                                               </div>
+                                                               <div class="body">
+                                                                  <p class="description"><span class="usa-tag">Description</span> A textual label that provides a sub-type or characterization of the property's <code>name</code>. This can be used to further distinguish or discriminate between the semantics of
+                                                                     multiple properties of the same object with the same <code>name</code> and <code>ns</code>. </p>
+                                                                  <div class="remarks-group usa-prose">
+                                                                     <details open="open">
+                                                                        <summary class="subhead">Remarks</summary>
+                                                                        <div class="remarks">
+                                                                           <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
+                                                                              a specific <code>class</code> value.</p>
+                                                                        </div>
+                                                                        <div class="remarks">
+                                                                           <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
+                                                                              a specific <code>class</code> value.</p>
+                                                                        </div>
+                                                                     </details>
+                                                                  </div>
+                                                               </div>
+                                                            </div>
+                                                         </details>
+                                                         <details class="properties elements" open="open">
+                                                            <summary>Element (1)</summary>
+                                                            <div class="model-entry definition assembly">
+                                                               <div class="instance-header">
+                                                                  <p id="/assessment-plan/task/associated-activity/subject/include-subject/prop/remarks" class="toc7 name">remarks</p>
+                                                                  <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                                  <p class="occurrence">[0 or 1]</p>
+                                                                  <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/tasks/associated-activities/subjects/include-subjects/props/remarks">Switch to JSON</a></div>
+                                                                  <p class="formal-name">Remarks</p>
+                                                               </div>
+                                                               <div class="body">
+                                                                  <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                                               </div>
+                                                            </div>
+                                                         </details>
+                                                      </div>
+                                                   </div>
+                                                   <div class="model-entry definition assembly">
+                                                      <div class="instance-header">
+                                                         <h6 id="/assessment-plan/task/associated-activity/subject/include-subject/link" class="toc6 name">link</h6>
+                                                         <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-assessment-common/select-subject-by-id/link">(global definition)</a></p>
+                                                         <p class="occurrence">[0 to ∞]</p>
+                                                         <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/tasks/associated-activities/subjects/include-subjects/links">Switch to JSON</a></div>
+                                                         <p class="formal-name">Link</p>
+                                                      </div>
+                                                      <div class="body">
+                                                         <p class="description"><span class="usa-tag">Description</span> A reference to a local or remote resource</p>
+                                                         <div class="remarks-group usa-prose">
+                                                            <details open="open">
+                                                               <summary class="subhead">Remarks</summary>
+                                                               <div class="remarks">
+                                                                  <p>To provide a cryptographic hash for a remote target resource, a local reference to
+                                                                     a back matter <code>resource</code> is needed. The resource allows one or more hash values to be provided using the <code>rlink/hash</code> object.</p>
+                                                                  <p>The OSCAL <code>link</code> is a roughly based on the HTML <a href="https://www.w3.org/TR/html401/struct/links.html#edef-LINK">link element</a>. </p>
+                                                               </div>
+                                                            </details>
+                                                         </div>
+                                                         <details class="constraints" open="open">
+                                                            <summary>Constraints (3)</summary>
+                                                            <div class="constraint">
+                                                               <p><span class="usa-tag">matches</span>  for <code class="path">@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
+                                                            </div>
+                                                            <div class="constraint">
+                                                               <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-back-matter-resource</code> using a key constructed of key field(s) <code>@href</code></p>
+                                                            </div>
+                                                            <div class="constraint">
+                                                               <p><span class="usa-tag">matches</span>  for <code class="path">@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
+                                                            </div>
+                                                         </details>
+                                                         <details class="properties attributes" open="open">
+                                                            <summary>Attributes (3)</summary>
+                                                            <div class="model-entry definition assembly">
+                                                               <div class="instance-header">
+                                                                  <p id="/assessment-plan/task/associated-activity/subject/include-subject/link/@href" class="toc7 name">href</p>
+                                                                  <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
+                                                                  <p class="occurrence">[1]</p>
+                                                                  <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/tasks/associated-activities/subjects/include-subjects/links/href">Switch to JSON</a></div>
+                                                                  <p class="formal-name">Hypertext Reference</p>
+                                                               </div>
+                                                               <div class="body">
+                                                                  <p class="description"><span class="usa-tag">Description</span> A resolvable URL reference to a resource.</p>
+                                                                  <div class="remarks-group usa-prose">
+                                                                     <details open="open">
+                                                                        <summary class="subhead">Remarks</summary>
+                                                                        <div class="remarks">
+                                                                           <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
+                                                                              that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
+                                                                           <p>If a local reference using a fragment is used, this will be indicated by a fragment
+                                                                              "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
+                                                                           <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
+                                                                              resource. A relative URI will be resolved relative to the location of the document
+                                                                              containing the link.</p>
+                                                                        </div>
+                                                                        <div class="remarks">
+                                                                           <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
+                                                                              that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
+                                                                           <p>If a local reference using a fragment is used, this will be indicated by a fragment
+                                                                              "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
+                                                                           <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
+                                                                              resource. A relative URI will be resolved relative to the location of the document
+                                                                              containing the link.</p>
+                                                                        </div>
+                                                                     </details>
+                                                                  </div>
+                                                               </div>
+                                                            </div>
+                                                            <div class="model-entry definition assembly">
+                                                               <div class="instance-header">
+                                                                  <p id="/assessment-plan/task/associated-activity/subject/include-subject/link/@rel" class="toc7 name">rel</p>
+                                                                  <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                                  <p class="occurrence">[0 or 1]</p>
+                                                                  <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/tasks/associated-activities/subjects/include-subjects/links/rel">Switch to JSON</a></div>
+                                                                  <p class="formal-name">Relation</p>
+                                                               </div>
+                                                               <div class="body">
+                                                                  <p class="description"><span class="usa-tag">Description</span> Describes the type of relationship provided by the link. This can be an indicator
+                                                                     of the link's purpose.</p>
+                                                                  <details class="constraints" open="open">
+                                                                     <summary>Constraint (1)</summary>
+                                                                     <div class="constraint">
+                                                                        <p><span class="usa-tag">allowed value</span></p>
+                                                                        <p>The value <b>may be locally defined</b>, or the following:</p>
+                                                                        <ul>
+                                                                           
+                                                                           <li><strong>reference</strong>: Reference</li>
+                                                                           </ul>
+                                                                     </div>
+                                                                  </details>
+                                                               </div>
+                                                            </div>
+                                                            <div class="model-entry definition assembly">
+                                                               <div class="instance-header">
+                                                                  <p id="/assessment-plan/task/associated-activity/subject/include-subject/link/@media-type" class="toc7 name">media-type</p>
+                                                                  <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                                  <p class="occurrence">[0 or 1]</p>
+                                                                  <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/tasks/associated-activities/subjects/include-subjects/links/media-type">Switch to JSON</a></div>
+                                                                  <p class="formal-name">Media Type</p>
+                                                               </div>
+                                                               <div class="body">
+                                                                  <p class="description"><span class="usa-tag">Description</span> Specifies a media type as defined by the Internet Assigned Numbers Authority (IANA)
+                                                                     <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">Media Types Registry</a>. </p>
+                                                                  <div class="remarks-group usa-prose">
+                                                                     <details open="open">
+                                                                        <summary class="subhead">Remarks</summary>
+                                                                        <div class="remarks">
+                                                                           <p>The <code>media-type</code> provides a hint about the content model of the referenced resource. A valid entry
+                                                                              from the <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">IANA Media Types registry</a> SHOULD be used.</p>
+                                                                        </div>
+                                                                     </details>
+                                                                  </div>
+                                                               </div>
+                                                            </div>
+                                                         </details>
+                                                         <details class="properties elements" open="open">
+                                                            <summary>Element (1)</summary>
+                                                            <div class="model-entry definition assembly">
+                                                               <div class="instance-header">
+                                                                  <p id="/assessment-plan/task/associated-activity/subject/include-subject/link/text" class="toc7 name">text</p>
+                                                                  <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                                                  <p class="occurrence">[0 or 1]</p>
+                                                                  <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/tasks/associated-activities/subjects/include-subjects/links/text">Switch to JSON</a></div>
+                                                                  <p class="formal-name">Link Text</p>
+                                                               </div>
+                                                               <div class="body">
+                                                                  <p class="description"><span class="usa-tag">Description</span> A textual label to associate with the link, which may be used for presentation in
+                                                                     a tool.</p>
+                                                               </div>
+                                                            </div>
+                                                         </details>
+                                                      </div>
+                                                   </div>
+                                                   <div class="model-entry definition assembly">
+                                                      <div class="instance-header">
+                                                         <h6 id="/assessment-plan/task/associated-activity/subject/include-subject/remarks" class="toc6 name">remarks</h6>
+                                                         <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                         <p class="occurrence">[0 or 1]</p>
+                                                         <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/tasks/associated-activities/subjects/include-subjects/remarks">Switch to JSON</a></div>
+                                                         <p class="formal-name">Remarks</p>
+                                                      </div>
+                                                      <div class="body">
+                                                         <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                                      </div>
+                                                   </div>
+                                                </details>
+                                             </div>
+                                          </div>
+                                       </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/assessment-plan/task/associated-activity/subject/exclude-subject" class="toc5 name">exclude-subject</h5>
@@ -18017,7 +19411,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                              </details>
                                              <details class="properties elements" open="open">
-                                                <summary>Elements (3)</summary>
+                                                <summary>Elements (5)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/assessment-plan/task/associated-activity/subject/exclude-subject/prop" class="toc6 name">prop</h6>
@@ -18425,7 +19819,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                            </details>
                            <details class="properties elements" open="open">
-                              <summary>Elements (5)</summary>
+                              <summary>Elements (12)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/assessment-plan/task/subject/description" class="toc4 name">description</h4>
@@ -18734,6 +20128,392 @@ The following is the XML format reference for this model, which is organized hie
                                     </details>
                                  </div>
                               </div>
+                              <div class="choice">
+                                 <p>A choice:</p>
+                                 <div class="model-entry definition assembly">
+                                    <div class="instance-header">
+                                       <h4 id="/assessment-plan/task/subject/include-all" class="toc4 name">include-all</h4>
+                                       <p class="type"><a href="/reference/datatypes/#empty">empty</a></p>
+                                       <p class="occurrence">[1]</p>
+                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/tasks/subjects/include-all">Switch to JSON</a></div>
+                                       <p class="formal-name">All</p>
+                                    </div>
+                                    <div class="body">
+                                       <p class="description"><span class="usa-tag">Description</span> A key word to indicate all.</p>
+                                    </div>
+                                 </div>
+                                 <div class="model-entry definition assembly">
+                                    <div class="instance-header">
+                                       <h4 id="/assessment-plan/task/subject/include-subject" class="toc4 name">include-subject</h4>
+                                       <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-assessment-common/assessment-subject/include-subject">(global definition)</a></p>
+                                       <p class="occurrence">[1 to ∞]</p>
+                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/tasks/subjects/include-subjects">Switch to JSON</a></div>
+                                       <p class="formal-name">Select Assessment Subject</p>
+                                    </div>
+                                    <div class="body">
+                                       <p class="description"><span class="usa-tag">Description</span> Identifies a set of assessment subjects to include/exclude by UUID.</p>
+                                       <details class="properties attributes" open="open">
+                                          <summary>Attributes (2)</summary>
+                                          <div class="model-entry definition assembly">
+                                             <div class="instance-header">
+                                                <h5 id="/assessment-plan/task/subject/include-subject/@subject-uuid" class="toc5 name">subject-uuid</h5>
+                                                <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                                <p class="occurrence">[1]</p>
+                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/tasks/subjects/include-subjects/subject-uuid">Switch to JSON</a></div>
+                                                <p class="formal-name">Subject Universally Unique Identifier Reference</p>
+                                             </div>
+                                             <div class="body">
+                                                <p class="description"><span class="usa-tag">Description</span> A pointer to a component, inventory-item, location, party, user, or resource using
+                                                   it's UUID.</p>
+                                             </div>
+                                          </div>
+                                          <div class="model-entry definition assembly">
+                                             <div class="instance-header">
+                                                <h5 id="/assessment-plan/task/subject/include-subject/@type" class="toc5 name">type</h5>
+                                                <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                <p class="occurrence">[1]</p>
+                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/tasks/subjects/include-subjects/type">Switch to JSON</a></div>
+                                                <p class="formal-name">Subject Universally Unique Identifier Reference Type</p>
+                                             </div>
+                                             <div class="body">
+                                                <p class="description"><span class="usa-tag">Description</span> Used to indicate the type of object pointed to by the <code>uuid-ref</code> within a subject.</p>
+                                                <details class="constraints" open="open">
+                                                   <summary>Constraint (1)</summary>
+                                                   <div class="constraint">
+                                                      <p><span class="usa-tag">allowed values</span></p>
+                                                      <p>The value <b>may be locally defined</b>, or one of the following:</p>
+                                                      <ul>
+                                                         
+                                                         <li><strong>component</strong>: Component</li>
+                                                         
+                                                         <li><strong>inventory-item</strong>: Inventory Item</li>
+                                                         
+                                                         <li><strong>location</strong>: Location</li>
+                                                         
+                                                         <li><strong>party</strong>: Interview Party</li>
+                                                         
+                                                         <li><strong>user</strong>: User</li>
+                                                         
+                                                         <li><strong>resource</strong>: Resource or Artifact</li>
+                                                         </ul>
+                                                   </div>
+                                                </details>
+                                             </div>
+                                          </div>
+                                       </details>
+                                       <details class="properties elements" open="open">
+                                          <summary>Elements (5)</summary>
+                                          <div class="model-entry definition assembly">
+                                             <div class="instance-header">
+                                                <h5 id="/assessment-plan/task/subject/include-subject/prop" class="toc5 name">prop</h5>
+                                                <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-assessment-common/select-subject-by-id/prop">(global definition)</a></p>
+                                                <p class="occurrence">[0 to ∞]</p>
+                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/tasks/subjects/include-subjects/props">Switch to JSON</a></div>
+                                                <p class="formal-name">Property</p>
+                                             </div>
+                                             <div class="body">
+                                                <p class="description"><span class="usa-tag">Description</span> An attribute, characteristic, or quality of the containing object expressed as a
+                                                   namespace qualified name/value pair. The value of a property is a simple scalar value,
+                                                   which may be expressed as a list of values.</p>
+                                                <div class="remarks-group usa-prose">
+                                                   <details open="open">
+                                                      <summary class="subhead">Remarks</summary>
+                                                      <div class="remarks">
+                                                         <p>Properties permit the deployment and management of arbitrary controlled values, within
+                                                            OSCAL objects. A property can be included for any purpose useful to an application
+                                                            or implementation. Typically, properties will be used to sort, filter, select, order,
+                                                            and arrange OSCAL content objects, to relate OSCAL objects to one another, or to associate
+                                                            an OSCAL object to class hierarchies, taxonomies, or external authorities. Thus, the
+                                                            lexical composition of properties may be constrained by external processes to ensure
+                                                            consistency.</p>
+                                                         <p>Property allows for associated remarks that describe why the specific property value
+                                                            was applied to the containing object, or the significance of the value in the context
+                                                            of the containing object.</p>
+                                                      </div>
+                                                   </details>
+                                                </div>
+                                                <details class="properties attributes" open="open">
+                                                   <summary>Attributes (5)</summary>
+                                                   <div class="model-entry definition assembly">
+                                                      <div class="instance-header">
+                                                         <h6 id="/assessment-plan/task/subject/include-subject/prop/@name" class="toc6 name">name</h6>
+                                                         <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                         <p class="occurrence">[1]</p>
+                                                         <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/tasks/subjects/include-subjects/props/name">Switch to JSON</a></div>
+                                                         <p class="formal-name">Property Name</p>
+                                                      </div>
+                                                      <div class="body">
+                                                         <p class="description"><span class="usa-tag">Description</span> A textual label that uniquely identifies a specific attribute, characteristic, or
+                                                            quality of the property's containing object.</p>
+                                                         <details class="constraints" open="open">
+                                                            <summary>Constraint (1)</summary>
+                                                            <div class="constraint">
+                                                               <p><span class="usa-tag">allowed value</span></p>
+                                                               <p>The value <b>may be locally defined</b>, or the following:</p>
+                                                               <ul>
+                                                                  
+                                                                  <li><strong>marking</strong>: A label or descriptor that is tied to a sensitivity or classification marking system.
+                                                                     An optional class can be used to define the specific marking system used for the associated
+                                                                     value.</li>
+                                                                  </ul>
+                                                            </div>
+                                                         </details>
+                                                      </div>
+                                                   </div>
+                                                   <div class="model-entry definition assembly">
+                                                      <div class="instance-header">
+                                                         <h6 id="/assessment-plan/task/subject/include-subject/prop/@uuid" class="toc6 name">uuid</h6>
+                                                         <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                                         <p class="occurrence">[0 or 1]</p>
+                                                         <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/tasks/subjects/include-subjects/props/uuid">Switch to JSON</a></div>
+                                                         <p class="formal-name">Property Universally Unique Identifier</p>
+                                                      </div>
+                                                      <div class="body">
+                                                         <p class="description"><span class="usa-tag">Description</span> A unique identifier that can be used to reference this property elsewhere in an OSCAL
+                                                            document. A UUID should be consistently used for a given location across revisions
+                                                            of the document.</p>
+                                                      </div>
+                                                   </div>
+                                                   <div class="model-entry definition assembly">
+                                                      <div class="instance-header">
+                                                         <h6 id="/assessment-plan/task/subject/include-subject/prop/@ns" class="toc6 name">ns</h6>
+                                                         <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
+                                                         <p class="occurrence">[0 or 1]</p>
+                                                         <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/tasks/subjects/include-subjects/props/ns">Switch to JSON</a></div>
+                                                         <p class="formal-name">Property Namespace</p>
+                                                      </div>
+                                                      <div class="body">
+                                                         <p class="description"><span class="usa-tag">Description</span> A namespace qualifying the property's name. This allows different organizations to
+                                                            associate distinct semantics with the same name.</p>
+                                                         <div class="remarks-group usa-prose">
+                                                            <details open="open">
+                                                               <summary class="subhead">Remarks</summary>
+                                                               <div class="remarks">
+                                                                  <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
+                                                                     names and associated values used in a property. This allows the semantics associated
+                                                                     with a given name/value pair to be defined on an organization-by-organization basis.</p>
+                                                                  <p>An organization MUST use a URI that they have control over. e.g., a domain registered
+                                                                     to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
+                                                                  <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
+                                                               </div>
+                                                               <div class="remarks">
+                                                                  <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
+                                                                     names and associated values used in a property. This allows the semantics associated
+                                                                     with a given name/value pair to be defined on an organization-by-organization basis.</p>
+                                                                  <p>An organization MUST use a URI that they have control over. e.g., a domain registered
+                                                                     to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
+                                                                  <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
+                                                               </div>
+                                                            </details>
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                   <div class="model-entry definition assembly">
+                                                      <div class="instance-header">
+                                                         <h6 id="/assessment-plan/task/subject/include-subject/prop/@value" class="toc6 name">value</h6>
+                                                         <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                         <p class="occurrence">[1]</p>
+                                                         <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/tasks/subjects/include-subjects/props/value">Switch to JSON</a></div>
+                                                         <p class="formal-name">Property Value</p>
+                                                      </div>
+                                                      <div class="body">
+                                                         <p class="description"><span class="usa-tag">Description</span> Indicates the value of the attribute, characteristic, or quality.</p>
+                                                      </div>
+                                                   </div>
+                                                   <div class="model-entry definition assembly">
+                                                      <div class="instance-header">
+                                                         <h6 id="/assessment-plan/task/subject/include-subject/prop/@class" class="toc6 name">class</h6>
+                                                         <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                         <p class="occurrence">[0 or 1]</p>
+                                                         <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/tasks/subjects/include-subjects/props/class">Switch to JSON</a></div>
+                                                         <p class="formal-name">Property Class</p>
+                                                      </div>
+                                                      <div class="body">
+                                                         <p class="description"><span class="usa-tag">Description</span> A textual label that provides a sub-type or characterization of the property's <code>name</code>. This can be used to further distinguish or discriminate between the semantics of
+                                                            multiple properties of the same object with the same <code>name</code> and <code>ns</code>. </p>
+                                                         <div class="remarks-group usa-prose">
+                                                            <details open="open">
+                                                               <summary class="subhead">Remarks</summary>
+                                                               <div class="remarks">
+                                                                  <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
+                                                                     a specific <code>class</code> value.</p>
+                                                               </div>
+                                                               <div class="remarks">
+                                                                  <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
+                                                                     a specific <code>class</code> value.</p>
+                                                               </div>
+                                                            </details>
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                </details>
+                                                <details class="properties elements" open="open">
+                                                   <summary>Element (1)</summary>
+                                                   <div class="model-entry definition assembly">
+                                                      <div class="instance-header">
+                                                         <h6 id="/assessment-plan/task/subject/include-subject/prop/remarks" class="toc6 name">remarks</h6>
+                                                         <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                         <p class="occurrence">[0 or 1]</p>
+                                                         <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/tasks/subjects/include-subjects/props/remarks">Switch to JSON</a></div>
+                                                         <p class="formal-name">Remarks</p>
+                                                      </div>
+                                                      <div class="body">
+                                                         <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                                      </div>
+                                                   </div>
+                                                </details>
+                                             </div>
+                                          </div>
+                                          <div class="model-entry definition assembly">
+                                             <div class="instance-header">
+                                                <h5 id="/assessment-plan/task/subject/include-subject/link" class="toc5 name">link</h5>
+                                                <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-assessment-common/select-subject-by-id/link">(global definition)</a></p>
+                                                <p class="occurrence">[0 to ∞]</p>
+                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/tasks/subjects/include-subjects/links">Switch to JSON</a></div>
+                                                <p class="formal-name">Link</p>
+                                             </div>
+                                             <div class="body">
+                                                <p class="description"><span class="usa-tag">Description</span> A reference to a local or remote resource</p>
+                                                <div class="remarks-group usa-prose">
+                                                   <details open="open">
+                                                      <summary class="subhead">Remarks</summary>
+                                                      <div class="remarks">
+                                                         <p>To provide a cryptographic hash for a remote target resource, a local reference to
+                                                            a back matter <code>resource</code> is needed. The resource allows one or more hash values to be provided using the <code>rlink/hash</code> object.</p>
+                                                         <p>The OSCAL <code>link</code> is a roughly based on the HTML <a href="https://www.w3.org/TR/html401/struct/links.html#edef-LINK">link element</a>. </p>
+                                                      </div>
+                                                   </details>
+                                                </div>
+                                                <details class="constraints" open="open">
+                                                   <summary>Constraints (3)</summary>
+                                                   <div class="constraint">
+                                                      <p><span class="usa-tag">matches</span>  for <code class="path">@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
+                                                   </div>
+                                                   <div class="constraint">
+                                                      <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-back-matter-resource</code> using a key constructed of key field(s) <code>@href</code></p>
+                                                   </div>
+                                                   <div class="constraint">
+                                                      <p><span class="usa-tag">matches</span>  for <code class="path">@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
+                                                   </div>
+                                                </details>
+                                                <details class="properties attributes" open="open">
+                                                   <summary>Attributes (3)</summary>
+                                                   <div class="model-entry definition assembly">
+                                                      <div class="instance-header">
+                                                         <h6 id="/assessment-plan/task/subject/include-subject/link/@href" class="toc6 name">href</h6>
+                                                         <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
+                                                         <p class="occurrence">[1]</p>
+                                                         <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/tasks/subjects/include-subjects/links/href">Switch to JSON</a></div>
+                                                         <p class="formal-name">Hypertext Reference</p>
+                                                      </div>
+                                                      <div class="body">
+                                                         <p class="description"><span class="usa-tag">Description</span> A resolvable URL reference to a resource.</p>
+                                                         <div class="remarks-group usa-prose">
+                                                            <details open="open">
+                                                               <summary class="subhead">Remarks</summary>
+                                                               <div class="remarks">
+                                                                  <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
+                                                                     that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
+                                                                  <p>If a local reference using a fragment is used, this will be indicated by a fragment
+                                                                     "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
+                                                                  <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
+                                                                     resource. A relative URI will be resolved relative to the location of the document
+                                                                     containing the link.</p>
+                                                               </div>
+                                                               <div class="remarks">
+                                                                  <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
+                                                                     that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
+                                                                  <p>If a local reference using a fragment is used, this will be indicated by a fragment
+                                                                     "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
+                                                                  <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
+                                                                     resource. A relative URI will be resolved relative to the location of the document
+                                                                     containing the link.</p>
+                                                               </div>
+                                                            </details>
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                   <div class="model-entry definition assembly">
+                                                      <div class="instance-header">
+                                                         <h6 id="/assessment-plan/task/subject/include-subject/link/@rel" class="toc6 name">rel</h6>
+                                                         <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                                         <p class="occurrence">[0 or 1]</p>
+                                                         <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/tasks/subjects/include-subjects/links/rel">Switch to JSON</a></div>
+                                                         <p class="formal-name">Relation</p>
+                                                      </div>
+                                                      <div class="body">
+                                                         <p class="description"><span class="usa-tag">Description</span> Describes the type of relationship provided by the link. This can be an indicator
+                                                            of the link's purpose.</p>
+                                                         <details class="constraints" open="open">
+                                                            <summary>Constraint (1)</summary>
+                                                            <div class="constraint">
+                                                               <p><span class="usa-tag">allowed value</span></p>
+                                                               <p>The value <b>may be locally defined</b>, or the following:</p>
+                                                               <ul>
+                                                                  
+                                                                  <li><strong>reference</strong>: Reference</li>
+                                                                  </ul>
+                                                            </div>
+                                                         </details>
+                                                      </div>
+                                                   </div>
+                                                   <div class="model-entry definition assembly">
+                                                      <div class="instance-header">
+                                                         <h6 id="/assessment-plan/task/subject/include-subject/link/@media-type" class="toc6 name">media-type</h6>
+                                                         <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                         <p class="occurrence">[0 or 1]</p>
+                                                         <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/tasks/subjects/include-subjects/links/media-type">Switch to JSON</a></div>
+                                                         <p class="formal-name">Media Type</p>
+                                                      </div>
+                                                      <div class="body">
+                                                         <p class="description"><span class="usa-tag">Description</span> Specifies a media type as defined by the Internet Assigned Numbers Authority (IANA)
+                                                            <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">Media Types Registry</a>. </p>
+                                                         <div class="remarks-group usa-prose">
+                                                            <details open="open">
+                                                               <summary class="subhead">Remarks</summary>
+                                                               <div class="remarks">
+                                                                  <p>The <code>media-type</code> provides a hint about the content model of the referenced resource. A valid entry
+                                                                     from the <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">IANA Media Types registry</a> SHOULD be used.</p>
+                                                               </div>
+                                                            </details>
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                </details>
+                                                <details class="properties elements" open="open">
+                                                   <summary>Element (1)</summary>
+                                                   <div class="model-entry definition assembly">
+                                                      <div class="instance-header">
+                                                         <h6 id="/assessment-plan/task/subject/include-subject/link/text" class="toc6 name">text</h6>
+                                                         <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                                         <p class="occurrence">[0 or 1]</p>
+                                                         <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/tasks/subjects/include-subjects/links/text">Switch to JSON</a></div>
+                                                         <p class="formal-name">Link Text</p>
+                                                      </div>
+                                                      <div class="body">
+                                                         <p class="description"><span class="usa-tag">Description</span> A textual label to associate with the link, which may be used for presentation in
+                                                            a tool.</p>
+                                                      </div>
+                                                   </div>
+                                                </details>
+                                             </div>
+                                          </div>
+                                          <div class="model-entry definition assembly">
+                                             <div class="instance-header">
+                                                <h5 id="/assessment-plan/task/subject/include-subject/remarks" class="toc5 name">remarks</h5>
+                                                <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                <p class="occurrence">[0 or 1]</p>
+                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/tasks/subjects/include-subjects/remarks">Switch to JSON</a></div>
+                                                <p class="formal-name">Remarks</p>
+                                             </div>
+                                             <div class="body">
+                                                <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                             </div>
+                                          </div>
+                                       </details>
+                                    </div>
+                                 </div>
+                              </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/assessment-plan/task/subject/exclude-subject" class="toc4 name">exclude-subject</h4>
@@ -18794,7 +20574,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                     </details>
                                     <details class="properties elements" open="open">
-                                       <summary>Elements (3)</summary>
+                                       <summary>Elements (5)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/assessment-plan/task/subject/exclude-subject/prop" class="toc5 name">prop</h5>
@@ -19156,7 +20936,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                            </details>
                            <details class="properties elements" open="open">
-                              <summary>Elements (4)</summary>
+                              <summary>Elements (6)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/assessment-plan/task/responsible-role/prop" class="toc4 name">prop</h4>
@@ -19527,7 +21307,7 @@ The following is the XML format reference for this model, which is organized hie
                      </div>
                   </details>
                   <details class="properties elements" open="open">
-                     <summary>Element (1)</summary>
+                     <summary>Elements (9)</summary>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
                            <h3 id="/assessment-plan/back-matter/resource" class="toc3 name">resource</h3>
@@ -19677,7 +21457,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                            </details>
                            <details class="properties elements" open="open">
-                              <summary>Elements (8)</summary>
+                              <summary>Elements (13)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/assessment-plan/back-matter/resource/title" class="toc4 name">title</h4>
@@ -19947,7 +21727,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </details>
                                     </div>
                                     <details class="properties elements" open="open">
-                                       <summary>Elements (3)</summary>
+                                       <summary>Elements (5)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/assessment-plan/back-matter/resource/citation/text" class="toc5 name">text</h5>
