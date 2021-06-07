@@ -7,7 +7,7 @@ services:
       context: .
       args:
         saxonversion: 9.9.1-3
-        hugoversion: 0.74.3
+        hugoversion: 0.83.1
     volumes:
       - "../:/oscal"
     environment:
