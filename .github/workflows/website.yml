@@ -68,7 +68,7 @@ jobs:
       - name: Check internal links
         uses: untitaker/hyperlink@0.1.15
         with:
-          args: ${{ env.OSCAL_WEBSITE_PATH }}/public/ --sources ${{ env.OSCAL_WEBSITE_PATH }}/content
+          args: ${{ env.OSCAL_WEBSITE_PATH }}/public/ --sources ${{ env.OSCAL_WEBSITE_PATH }}/content --check-anchors
           working-directory: ${{ env.OSCAL_WEBSITE_PATH }}
 #      - name: Run HTMLProofer
 #        run: |
