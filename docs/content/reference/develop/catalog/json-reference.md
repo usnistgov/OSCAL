@@ -19,7 +19,7 @@ The following is the JSON format reference for this model, which is organized hi
    <p><span class="usa-tag">Schema version:</span> 1.0.0</p>
    <p><span class="usa-tag">JSON Base URI</span> <code>http://csrc.nist.gov/ns/oscal</code></p>
    <p><span class="usa-tag">JSON Schema</span> <a href="/artifacts/json/schema/oscal_catalog_schema.json">oscal_catalog_schema.json</a></p>
-   <p><span class="usa-tag">XML to JSON converter</span> <a href="/artifacts/json/convert/oscal_catalog_xml-to-json-converter.xsl">oscal_catalog_xml-to-json-converter.xsl</a><a href="https://github.com/usnistgov/OSCAL/tree/main/json#converting-oscal-xml-content-to-json">(How do I use the converter to convert OSCAL XML to JSON?)</a></p>
+   <p><span class="usa-tag">XML to JSON converter</span> <a href="/artifacts/json/convert/oscal_catalog_xml-to-json-converter.xsl">oscal_catalog_xml-to-json-converter.xsl</a> <a href="https://github.com/usnistgov/OSCAL/tree/main/json#converting-oscal-xml-content-to-json">(How do I use the converter to convert OSCAL XML to JSON?)</a></p>
    <div class="remarks">The OSCAL Control Catalog format can be used to describe a collection of security
       controls and related control enhancements, along with contextualizing documentation
       and metadata. The root of the Control Catalog format is catalog. </div>
