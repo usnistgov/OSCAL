@@ -38,6 +38,10 @@ A boolean value mapped in XML, JSON, and YAML as follows:
 
 A string of Unicode characters.
 
+### token
+
+A non-colonized name as defined by [XML Schema Part 2: Datatypes Second Edition](https://www.w3.org/TR/xmlschema11-2/#NCName).
+
 ### NCName
 
 A non-colonized name as defined by [XML Schema Part 2: Datatypes Second Edition](https://www.w3.org/TR/xmlschema11-2/#NCName).
