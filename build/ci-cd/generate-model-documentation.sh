@@ -147,7 +147,7 @@ elif [ "$BRANCH" = "develop" ]; then
 else
   echo -e "${P_WARN}Unrecognized branch: ${P_END}${BRANCH}"
   VERSION="develop"
-  REVISION="${BRANCH}"
+  REVISION="develop"
   TYPE="branch"
 fi
 
