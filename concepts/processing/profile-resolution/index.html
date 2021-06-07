@@ -1,0 +1,1217 @@
+<!doctype html><html><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=x-ua-compatible content="IE=edge"><title>OSCAL Profile Resolution</title><script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga('create','UA-42404149-54','auto'),ga('send','pageview'))</script><script async src=https://www.google-analytics.com/analytics.js></script><script src=https://code.jquery.com/jquery-3.4.1.min.js integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin=anonymous></script><link rel=stylesheet href=../../../css/hugo-uswds.css integrity="sha512-zwRUOizUEeP39M648e/0KFwQ6SOo+gTeFkz1xuC06otJPeBxsz4NUcOR2RYnnqPJ4zoqiiZJwf97JfvAE02xGA=="><link rel="shortcut icon" type=image/png href=../../../img/oscal-page-icon-180.png><link rel=icon type=image/png href=../../../img/oscal-gears-icon-140.png><link rel=icon type=image/png sizes=192x192 href=../../../img/oscal-page-icon-180.png><link rel=apple-touch-icon-precomposed type=image/png href=../../../img/oscal-page-icon-180.png><link rel=apple-touch-icon-precomposed type=image/png sizes=72x72 href=../../../img/oscal-page-icon-180.png><link rel=apple-touch-icon-precomposed type=image/png sizes=114x114 href=../../../img/oscal-page-icon-180.png><link rel=apple-touch-icon-precomposed type=image/png sizes=144x144 href=../../../img/oscal-page-icon-180.png><link rel=stylesheet href=https://pages.nist.gov/nist-header-footer/css/nist-combined.css><script src=https://pages.nist.gov/nist-header-footer/js/nist-header-footer.js defer></script><link rel=stylesheet type=text/css href=https://pages.nist.gov/leaveNotice/css/jquery.leaveNotice.css><script src=https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.3.0/anchor.min.js integrity="sha512-G2OGlm41XXw+fcgDcRPjVYEn7qCY6qiKWNqDGT37SnKh0qtRXTuKZ5/UQR0kDN0PZRNWcGExd3lAeqEH0I36bQ==" crossorigin=anonymous></script></head><body><a class=usa-skipnav href=#main-content>Skip to main content</a><div class=usa-overlay></div><header class="usa-header usa-header--basic"><div class=usa-nav-container><div class=usa-navbar><div class=usa-logo id=basic-logo><em class=usa-logo__text><a href=../../../ title="OSCAL: the Open Security Controls Assessment Language" aria-label=Home>OSCAL</a></em></div><button class=usa-menu-btn>Menu</button></div><nav aria-label="Primary navigation" class=usa-nav><button class=usa-nav__close><img src=../../../img/close.svg alt=close></button><ul class="usa-nav__primary usa-accordion"><li class=usa-nav__primary-item><a class=usa-nav__link href=../../../about/><span>About</span></a></li><li class=usa-nav__primary-item><a class=usa-nav__link href=../../../learn/><span>Learn</span></a></li><li class=usa-nav__primary-item><a class=usa-nav__link href=../../../concepts/><span>Concepts</span></a></li><li class=usa-nav__primary-item><a class=usa-nav__link href=../../../reference/><span>Reference</span></a></li><li class=usa-nav__primary-item><a class=usa-nav__link href=../../../downloads/><span>Downloads</span></a></li><li class=usa-nav__primary-item><a class=usa-nav__link href=../../../tools/><span>Tools</span></a></li><li class=usa-nav__primary-item><a class=usa-nav__link href=../../../contribute/><span>Contribute</span></a></li><li class=usa-nav__primary-item><a class=usa-nav__link href=../../../contact/><span>Contact Us</span></a></li></ul><form class="usa-search usa-search--small" action=https://search.usa.gov/search><input id=affiliate name=affiliate type=hidden value=oscal>
+<input name=utf8 type=hidden value=&#x2713;><div role=search><label class=usa-sr-only for=basic-search-field-small>Search</label>
+<input class=usa-input id=query type=search name=query>
+<button class=usa-button type=submit><span class=usa-sr-only>Search</span></button></div></form></nav></div></header><main class="usa-layout-docs padding-top-2"><div class="grid-container grid-container-widescreen"><div class="grid-row grid-gap"><nav aria-label="Secondary Navigation" class="usa-layout-docs__sidenav widescreen:grid-col-3 desktop:grid-col-2"><ul class=usa-sidenav><li><a class="usa-sidenav__item subnav-top-level section" href=../../../concepts/>OSCAL Concepts</a><ul class=usa-sidenav__sublist><li><a class="usa-sidenav__item section" href=../../../concepts/terminology/>Key Concepts and Terms</a></li><li><a class="usa-sidenav__item section" href=../../../concepts/layer/>Layers and Models</a><ul class=usa-sidenav__sublist><li><a class="usa-sidenav__item page" href=../../../concepts/layer/overview/>OSCAL Model Overview</a></li><li><a class="usa-sidenav__item section" href=../../../concepts/layer/assessment/>Assessment Layer</a><ul class=usa-sidenav__sublist><li><a class="usa-sidenav__item section" href=../../../concepts/layer/assessment/assessment-plan/>Assessment Plan Model</a></li><li><a class="usa-sidenav__item section" href=../../../concepts/layer/assessment/assessment-results/>Assessment Results Model</a></li><li><a class="usa-sidenav__item section" href=../../../concepts/layer/assessment/poam/>Plan of Action and Milestones Model</a></li></ul></li><li><a class="usa-sidenav__item section" href=../../../concepts/layer/implementation/>Implementation Layer</a><ul class=usa-sidenav__sublist><li><a class="usa-sidenav__item section" href=../../../concepts/layer/implementation/component-definition/>Component Definition Model</a></li><li><a class="usa-sidenav__item section" href=../../../concepts/layer/implementation/ssp/>System Security Plan Model (SSP)</a></li><li><a class="usa-sidenav__item page" href=../../../concepts/layer/implementation/validation-modeling/>Representing Test Validation Information</a></li></ul></li><li><a class="usa-sidenav__item section" href=../../../concepts/layer/control/>Control Layer</a><ul class=usa-sidenav__sublist><li><a class="usa-sidenav__item section" href=../../../concepts/layer/control/catalog/>Catalog Model</a></li><li><a class="usa-sidenav__item section" href=../../../concepts/layer/control/profile/>Profile Model</a></li></ul></li></ul></li><li><a class="usa-sidenav__item section" href=../../../concepts/processing/>Processing Specification</a><ul class=usa-sidenav__sublist><li><a class="usa-sidenav__item page active-page usa-current" href=../../../concepts/processing/profile-resolution/>OSCAL Profile Resolution</a></li></ul></li><li><a class="usa-sidenav__item page" href=../../../concepts/examples/>OSCAL Content Examples</a></li><li><a class="usa-sidenav__item page" href=../../../concepts/relations-to-other/>Relations to Other Documentary Encoding Standards</a></li></ul></li></ul></nav><div id=main-content class="usa-layout-docs__main widescreen:grid-col-7 desktop:grid-col-8 display-block"><article><header><h1>OSCAL Profile Resolution</h1></header><p xmlns=http://www.w3.org/1999/xhtml>These specifications describe how to render an OSCAL profile document in
+the form of an OSCAL catalog. We call this <b class=term>profile resolution</b>.</p><h2 xmlns=http://www.w3.org/1999/xhtml id=d2e12-head>Reading these specifications</h2><h3 xmlns=http://www.w3.org/1999/xhtml id=d2e14-head>Terminology</h3><p xmlns=http://www.w3.org/1999/xhtml>These DRAFT specifications take the form of a tag set mapping between the OSCAL
+<b class=term>profile</b> and OSCAL <b class=term>catalog</b> XML document models. The same mapping
+(transformation from source to target) can be effected using other expressions of the OSCAL
+model such as JSON or YAML object serializations. In these specifications, XML terminology
+is used, with reference to XML constructs such as <q class=q>element</q> and <q class=q>attribute</q>, with
+examples given using XML syntax: these however are for illustrative purposes only and
+normative only with respect to the semantic mapping, not the syntax as such. The XML
+orientation of the specification of this mapping is an expediency; in the longer term we
+plan specifications that are format-agnostic.<span class=revisit> Let us know if you have an interest
+in helping to recast the specs / metaschema terminology?</span></p><p xmlns=http://www.w3.org/1999/xhtml>In these specifications there are references to <b class=term>source</b>, <b class=term>target</b>
+and <b class=term>result</b>. <b class=term>Source</b> refers sometimes to profile documents as a type
+(abstractly), and sometimes to instance profiles in operation, or elements within profiles
+(particular kinds of sources). <b class=term>Target</b> refers to the intended output of the
+transformation, that is the catalog model generally (as a document type) or, for particular
+source instances or elements, particular targets.</p><p xmlns=http://www.w3.org/1999/xhtml>Elements in the source format are marked in these specifications to appear distinctively as
+<code class=src>source-element</code> (for an element named <q class=q>source-element</q>).</p><p xmlns=http://www.w3.org/1999/xhtml>Elements in the target format are marked in these specifications to appear distinctively as
+<code class=tgt>target-element</code> (for an element named <q class=q>target-element</q>).</p><p xmlns=http://www.w3.org/1999/xhtml>The term <b class=term>result</b> refers to the actual results of transformation, as opposed to
+the intended or expected results. Conformance to these specifications requires that a
+processor's result corresponds to the target as described here, given a particular
+source.</p><p xmlns=http://www.w3.org/1999/xhtml>The term <b class=term>directive</b> is used in these specifications to refer to an element or
+combination of elements in source data, which is designed to effect a particular outcome in
+the target catalog. For the most part, directives are in the source profile document – for
+example, a <code class=src>set</code> element in a profile is a directive to set a parameter value in
+the target catalog.</p><p xmlns=http://www.w3.org/1999/xhtml>In contrast to profiles, catalogs do not contain directives but instead, representations of
+security controls and their parts, optionally gathered in groups, on which directives are
+assumed to operate. There is one exception: the <code class=src>insert</code> element in control
+catalogs can be considered a directive that a parameter value be inserted into a particular
+location in running text (data content), when a catalog is rendered. Since these semantics
+respect catalog rendering, however, not profile resolution, they are out of scope for this
+document. For purposes of profile resolution, catalogs may be considered to be passive
+resources from which contents are replicated (copied): the operation of the profile, in
+contrast - its <q class=q>OSCAL semantics</q> as opposed to the domain-specific semantics of the
+information it handles – requires that it express what is to be done and how.</p><p xmlns=http://www.w3.org/1999/xhtml><b class=term>Original order</b> refers to the order of elements and objects as given in the
+source. <b class=term>Canonical order</b> refers to the <q class=q>correct</q> order of elements or
+objects as defined by an OSCAL format such as the catalog or profile models. That is, the
+respective schemas of these models enforce order to the extent it is meaningful; where it is
+not (for example, in the ordering of properties on objects in JSON), a metaschema can
+nevertheless be referenced to provide an order.</p><p xmlns=http://www.w3.org/1999/xhtml>So for example, on a JSON object, a <code class=src>links</code> object and a <code class=src>parts</code> object
+may be given as properties on an OSCAL <code class=src>control</code> object. Each of these collects a
+sequence of one or more objects of the appropriate type (links or parts). As properties in
+JSON, these collections are not ordered with respect to one another. However, for the sake
+of a complete definition in another of OSCAL's operational contexts (namely XML), the OSCAL
+catalog model stipulates that all links come before all parts. This has two consequences.
+First, lossless conversion between formats is possible, even when one or both is defective
+in some respect (as in this case, JSON's object model does not capture the order of object
+properties): the metaschema can provide the difference, enabling a compliant OSCAL processor
+to know how deterministically to emit valid XML (with respect to ordering) even from a
+property set (intrinsically unordered) JSON source. Second, it ensures that the relative
+ordering of links to parts will never be significant in the data: while the order of links
+within <code class=tgt>links</code> and the order of parts within <code class=tgt>parts</code> may be significant
+and can hence be preserved across representations, the order <q class=q>first links, then parts</q>,
+being defined by the model, becomes invariant across instances and thus insignificant.</p><p xmlns=http://www.w3.org/1999/xhtml>Canonical order is important since there are occasions when, in order to produce valid
+outputs in XML, a profile resolver must resequence items. This may happen any place where
+the natural or intrinsic order resulting from splicing sequences in original order is not
+correct.</p><p xmlns=http://www.w3.org/1999/xhtml>Finally, this specification describes not only (source) profiles and (target or result)
+catalogs, but <b class=term>control selections</b> as well. The conceptual model of profile
+resolution takes a profile through several steps, in which controls are collected from
+source catalogs, combined, and potentially modified. As described by this specification,
+control selections are produced during this process, as temporary collections of controls in
+a transitional state. In the last phase of processing, the discrete selections are combined
+into the single catalog, the target.</p><p xmlns=http://www.w3.org/1999/xhtml>For illustrative purposes, these control selections are, like source and target formats,
+also represented by tagging in examples given here, and described as intermediate targets,
+even though no OSCAL processor is obliged to produce or recognize such XML at any point, as
+long as it produces the same results (final outputs) from the same inputs.</p><h3 xmlns=http://www.w3.org/1999/xhtml id=d2e96-head>RFC 2119 Keywords</h3><p xmlns=http://www.w3.org/1999/xhtml><span class=revisit>When complete, this specification will conform to IETF RFC 2119 in its use of
+keywords such as <q class=q>must</q>
+<q class=q>required</q> and <q class=q>shall</q>. At present (time of writing) an editorial pass to ensure
+this consistency has <em class=em>not</em> been conducted.</span></p><h3 xmlns=http://www.w3.org/1999/xhtml id=d2e109-head>Use of XPath</h3><p xmlns=http://www.w3.org/1999/xhtml>Additionally, in these specifications XPath notation is used to identify elements and
+attributes in the XML. A summary of some lightweight XPath syntax:</p><ul xmlns=http://www.w3.org/1999/xhtml><li><p><b class=xpath>element</b> (unpunctuated) indicates an element named
+<b class=xpath>element</b></p></li><li><p><b class=xpath>@attribute</b> (punctuated <q class=q>@</q>) indicates an attribute named
+<b class=xpath>attribute</b></p></li><li><p><b class=xpath>elem/@attr</b> indicates an attribute named <b class=xpath>attr</b> on an
+element named <b class=xpath>elem</b></p></li><li><p><b class=xpath>elmn[@att='val']</b> indicates an element <b class=xpath>elmn</b> that has an
+attribute <b class=xpath>@att</b> with value <code class=code>val</code>.</p></li></ul><h3 xmlns=http://www.w3.org/1999/xhtml id=d2e142-head>Variable contents in XML examples</h3><p xmlns=http://www.w3.org/1999/xhtml>Examples given to illustrate targets for particular source (example) inputs are given, like
+the source, in XML notation. Sometimes, however, the expected outputs are not fully defined
+by the inputs given. In these cases, a description of the dynamic (variable) contents in
+curly braces <b class=term>{ }</b>.</p><p xmlns=http://www.w3.org/1999/xhtml>So for example where a property is added to target <code class=tgt>metadata</code>, an example could
+show</p><div class=highlight><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;last-modified&gt;</span>{ timestamp }<span class=nt>&lt;/last-modified&gt;</span></code></pre></div><p xmlns=http://www.w3.org/1999/xhtml>This indicates the <code class=tgt>last-modified</code> element should be produced with contents
+generated appropriately, namely with an actual time stamp in this case, and not the string
+<q class=q>{ timestamp }</q>. In display, these values should also be shown with special
+formatting as shown here.</p><p xmlns=http://www.w3.org/1999/xhtml>Examples also indicate unspecified content using a simple <q class=q> …</q> (elision) character,
+typically for more verbose chunks of target data whose production is specified elsewhere in
+the document.</p><h2 xmlns=http://www.w3.org/1999/xhtml id=d2e166-head>Operational context</h2><h3 xmlns=http://www.w3.org/1999/xhtml id=d2e168-head>Processing context and scope</h3><p xmlns=http://www.w3.org/1999/xhtml>A <b class=term>profile</b> in OSCAL represents a selection and configuration of a set of
+<b class=term>controls</b>. In the normal case, the set of controls available to a profile is
+provided by a catalog. For example, the three NIST SP 800-53 profiles representing the
+impact baselines HIGH, MODERATE and LOW: each of these calls on a catalog representing the
+families, controls and control enhancements described in SP 800-53/53A. In a data processing
+system, this dependency can be modeled in the form of separate documents or data instances -
+the (nominal) <q class=q>catalog</q> and its <q class=q>profile</q>, the latter being a selection,
+adaptation and organization of controls, as distinct from the catalog from which those
+controls are derived.</p><p xmlns=http://www.w3.org/1999/xhtml>However, profiles may also select controls from profiles, thus deriving them from
+underlying catalogs as modified by those profiles. This feature enables an organization that
+wishes to promulgate guidelines or requirements to do so by publishing a set of
+customizations to an existing catalog, rather than create a catalog from scratch. Profiles
+can also arrange combinations of controls from more than one catalog or profile origin,
+making it possible to use them to support the creation of hybrid catalogs.</p><p xmlns=http://www.w3.org/1999/xhtml>In the general case OSCAL must support sourcing more than one catalog at once, in order to
+aggregate and organize controls from disparate sources. For example, it should be routine
+for a profile to acquire its controls from an authoritative standard catalog, plus a local
+supplement. But multiple catalog inputs, especially when they are produced and sourced
+independently of one another, may not combine without issues. In order to provide sensible
+and transparent results even for incoherent inputs, this specification defines these
+processes such that legible and testable results are produced even when they are formally
+invalid to constraints governing the outputs. Such downstream processing errors including
+validation errors are expected to be detectable and remediable. This especially applies to
+situations where multiple catalogs are sourced, or where the same catalog is sourced more
+than once, directly or indirectly.</p><p xmlns=http://www.w3.org/1999/xhtml>In order to support these semantics – because whatever data set is sourced by a profile, it
+must <q class=q>look like a catalog</q> – the results of resolving a single profile must be in the
+form of a single catalog. Two different OSCAL processors that promise profile resolution,
+must deliver, for the same input, the same catalog with regard to its contents: which
+controls are included; their ordering (insofar as the target format represents ordering);
+and the structure (groups) in which they are embedded. This specification is designed to
+make this possible, by defining outputs with sufficient rigor that <q class=q>the same</q> is
+meaningful and testable in this context.</p><h3 xmlns=http://www.w3.org/1999/xhtml id=d2e188-head>Why resolve a profile as a catalog</h3><p xmlns=http://www.w3.org/1999/xhtml>A profile is a representation of a delta, a <q class=q>here to there</q>. As such, a profile might
+be conceived of as a recipe or instruction set – a sequence of steps or procedures – whereby
+to create an OSCAL catalog (set of controls describing security requirements) from an OSCAL
+catalog (set of controls describing security requirements). The primary use case for this is
+when we need to make a new catalog to apply to a system or set of systems, starting from a
+canonical, received, mandated or standard catalog with a more general scope.</p><p xmlns=http://www.w3.org/1999/xhtml>This is because although catalogs - for example, the controls described in NIST SP 800-53 -
+are published, available for use, and even standardized, they can never be used exactly in
+the form in which they are acquired. They must be taken from the packaging and placed into
+operational context before they mean anything. This typically requires that a few operations
+over <q class=q>raw catalogs</q> be supported by a profiling mechanism. We must be able to select
+controls; we must be able to arrange them in order (or not); and we must be able to qualify
+or condition them by setting parameters defined for them and making adjustments to them.</p><p xmlns=http://www.w3.org/1999/xhtml>By representing the steps by which a base catalog can be sliced, sifted, amended and
+edited, into a (nominally) finished or ready set of control requirements, a profile makes it
+easier to codify and preserve even very incidental or temporary local revisions of a control
+catalog. Once expressed as a profile in OSCAL format, a set of emendations to a catalog can
+be managed entirely separately and independently from the catalog. Because a conformant
+processor can always create the customized catalog by resolving the profile against its
+sources (executing the transformation described in this document), the profile can also be
+examined and used as a proxy for that catalog for other purposes. The customized catalog can
+be made available wherever and for whatever purposes it is needed, while its revision and
+maintenance can be focused on the profile.</p><p xmlns=http://www.w3.org/1999/xhtml>This separation of concerns - between the originating catalog authors, who describe policy
+in only general terms, and the authors of the <q class=q>user manual</q> catalog, who must describe
+policy in very particular and local terms - is a necessary factor in supporting sustainable
+processes with the potential for automation and process improvement. An OSCAL profile
+bridges the gap between a set of general guidelines, and actionable rules. Only by examining
+the system in the context of the actual intentions appropriate to that system, can we
+properly assess its security. Profiles make this possible.</p><p xmlns=http://www.w3.org/1999/xhtml>In order for this to work however we need a process that can perform the necessary
+operations, to apply the delta to an unmodified catalog, to produce the local view of the
+catalog as modified. This is profile resolution.</p><h3 xmlns=http://www.w3.org/1999/xhtml id=d2e204-head>Formal validation of source and result</h3><p xmlns=http://www.w3.org/1999/xhtml>In an XML context, document validation is available as a means of determining whether an
+arbitrary XML document entity conforms to structural and naming constraints such as must be
+assumed by processors respecting application semantics. These specifications assume that XML
+inputs for profile resolution will be <em class=em>schema-valid</em> with respect to the OSCAL
+<b class=term>profile</b> model, and hence will be tagged in the namespace
+<code class=code>http://csrc.nist.gov/ns/oscal/1.0</code>.</p><p xmlns=http://www.w3.org/1999/xhtml>Similarly, the definition of the output format or results, is constrained by the OSCAL
+<b class=term>catalog</b> model as defined by its schema.</p><h3 xmlns=http://www.w3.org/1999/xhtml id=d2e218-head>Order of objects in serialization</h3><p xmlns=http://www.w3.org/1999/xhtml>As described above, <b class=term>original order</b> refers to the order of elements and objects
+as given in the source, whereas <b class=term>canonical order</b> refers to the <q class=q>correct</q>
+order of elements or objects as defined by an OSCAL format such as the catalog or profile
+models. That is, the respective schemas of these models enforce order to the extent it is
+meaningful; where it is not (for example, in the ordering of properties on objects in JSON),
+a metaschema can nevertheless be referenced to restore an order.</p><p xmlns=http://www.w3.org/1999/xhtml>So for example, on a JSON object, a <code class=src>links</code> object and a <code class=src>parts</code> object
+may be given as properties on a <code class=src>control</code> object. As properties, they are not
+ordered with respect to one another. However, for the sake of a complete definition in
+another of OSCAL's operational contexts (namely XML), the catalog model stipulates that all
+links come before all parts: in an XML representation, <code class=tgt>link</code> elements come before
+<code class=tgt>part</code> elements. This restriction ensures that the relative ordering of links to
+parts will never be significant in the data: while the order of links within
+<code class=tgt>links</code> and the order of parts within <code class=tgt>parts</code> may be significant and can
+hence be preserved across representations, the order <q class=q>first links, then parts</q> is
+defined by the model, with the consequence that it can be represented as such even when an
+underlying representation (such as a compiled JSON object) does not encode that relationship
+natively.</p><p xmlns=http://www.w3.org/1999/xhtml>There are occasions especially when control contents are altered or amended, when a
+straightforward representation of elements in their original order, or in two sequences
+spliced together (say, the parts of a control, followed by new properties for the same
+control, added by the profile), would be invalid, which is to say not conformant with
+canonical order. In general the rule in these cases is, in resolution, to reorder the
+elements. <span class=revisit>Example</span></p><p xmlns=http://www.w3.org/1999/xhtml>For any given element (defined as an assembly in the metaschema), the canonical order is
+given by its model. So for example the canonical order for contents of a catalog is
+<code class=tgt>metadata</code>, <code class=tgt>param</code>, <code class=tgt>control</code>, <code class=tgt>group</code>,
+<code class=tgt>back-matter</code>. Within this sequence, members may be missing, as for example not
+all catalogs will have parameters or groups. Any members that are present, however, must be
+given in this order.</p><h3 xmlns=http://www.w3.org/1999/xhtml id=d2e262-head>ID uniqueness constraint</h3><p xmlns=http://www.w3.org/1999/xhtml>In addition to those described and enforced by the respective schemas, there are additional
+constraints over the data that this process relies on. The most important of these is
+ID-distinctiveness. Every <code class=src>id</code> flag (in XML, represented by <b class=xpath>@id</b>
+attributes) on an element in the model, whether it be attached to a control, group or an
+element within a control, must be distinct and unique, within the defined processing scope,
+inasmuch as this value will be used in processing as a proxy for <b class=term>element
+identity</b> and especially (in the case of controls) for <b class=term>control
+identity</b>. That is, it is on the basis of their IDs that controls are selected and
+referenced, and clashes are detected and recognized between competing representations of
+controls.</p><p xmlns=http://www.w3.org/1999/xhtml>In this context, <q class=q>defined processing scope</q> includes a profile along with all profiles
+and all catalogs it imports, directly and indirectly. Many arrangements are possible in
+which a single catalog provides controls to more than a single branch on the import tree. In
+profiles where this occurs, distinct imports must identify discrete, non-intersecting, sets
+of controls, or clashes occur. Additionally, clashes may naturally occur through implicit
+copying of parameters from multiple imports.</p><p xmlns=http://www.w3.org/1999/xhtml>OSCAL profiles provide three different modes for handling clashing controls or replicas in
+general, where <b class=term>replica</b> refers to any element represented more than once. Each
+of these modes is indicated by different directives given on <code class=src>merge/@combine</code>,
+namely <q class=q>keep</q> (also the default), <q class=q>use-first</q> and <q class=q>merge</q>.</p><p xmlns=http://www.w3.org/1999/xhtml><span class=revisit>Because ID distinctiveness within the scope of processing, is critical, OSCAL
+users should take care that different catalogs have distinct sets of IDs. This applies to
+all structures within the catalogs, not only controls but also groups, parameters,
+citations and resources.</span></p><h3 xmlns=http://www.w3.org/1999/xhtml id=d2e292-head>Defining control identity</h3><p xmlns=http://www.w3.org/1999/xhtml>A central problem in profile resolution is determining when two controls are both
+representations of <q class=q>the same</q> control, even when those representations have dissimilar
+contents or come to a profile through different import pathways.</p><p xmlns=http://www.w3.org/1999/xhtml>For purposes of profile resolution, control identity (or parameter, group identity etc.)
+can be determined by any of several ways, depending on the <b class=term>identity designation
+mode</b>:</p><ul xmlns=http://www.w3.org/1999/xhtml><li><p>strict - control ID only - ordinary mode for well-controlled inputs</p></li><li><p>diagnostic - control ID + provenance identifier</p></li><li><p>maintenance - control ID + provenance + class (version etc)</p></li><li><p>none - no identification (each input control is distinct) - for tracing</p></li></ul><p xmlns=http://www.w3.org/1999/xhtml><span class=revisit>Brian Ruf suggested we provide a resolution/disambiguation/debugging mode that
+produces valid OSCAL by producing new IDs for everything, thereby disambiguating by brute
+force. This is not a bad idea. This proposal offers that feature as 'no identity
+designation', i.e. nothing is found to be identical with anything.</span></p><h3 xmlns=http://www.w3.org/1999/xhtml id=d2e314-head>Detecting issues in profiles</h3><p xmlns=http://www.w3.org/1999/xhtml>It is frequently possible by static analysis to detect many conditions even in schema-valid
+profile documents, that will result in problematic catalogs in resolution. The most common
+issue will be clashing controls, that is more than one control in underlying catalogs with a
+given identifier (ID), making references to such controls ambiguous. The <b class=term>identity
+designation mode</b> is intended to give profile developers some control over this
+handling, for purposes of development or diagnosis; but the quality of the results can only
+be guaranteed determinatively by the quality of the inputs, and full analysis in support of
+profile development and diagnostics – to produce correct inputs that accurately reflect the
+intent – is outside the scope of these specifications.</p><h3 xmlns=http://www.w3.org/1999/xhtml id=d2e320-head>Comments in result documents</h3><p xmlns=http://www.w3.org/1999/xhtml>In an XML-based profile resolution, XML comments are one straightforward way for a
+processor to record events or conditions without affecting the output's nominal semantics.
+To support this, while two processors are obliged to return the same catalog XML for the
+same profile XML inputs, they are not required to match one another's comments, whitespace
+usage, attribute order, or processing instructions, only each other's elements, attributes
+and data content.</p><p xmlns=http://www.w3.org/1999/xhtml>One consequence of this is that processes intended to compare two profile resolutions may
+have to accommodate differences in comments, considering them as insignificant along with
+other differences in serialization.</p><h2 xmlns=http://www.w3.org/1999/xhtml id=d2e324-head>Target catalog structure</h2><p xmlns=http://www.w3.org/1999/xhtml>Inasmuch as the target of profile resolution is a catalog, the resulting document is expected
+to be a catalog document as specified by OSCAL, conforming to the applicable schema, XSD in
+the case of OSCAL XML or JSON Schema for OSCAL object serialization formats.</p><p xmlns=http://www.w3.org/1999/xhtml>These two approaches to validation do not constrain their respective data models – although
+OSCAL-equivalent – in exactly the same way. In particular, element structures in the XML may
+be represented in JSON by either objects, or arrays of objects, depending on the respective object's
+OSCAL definition; and where objects appear outside arrays, ordering semantics cannot be respected (whereas in XML, order among nodes is
+always an intrinsic property of the graph).</p><p xmlns=http://www.w3.org/1999/xhtml>Consequently, where these specifications dictate that targets appear in order, it must be
+understood that what is described is <em class=em>both</em> (a) the order in XML, and (b) the
+<b class=term>canonical order</b> in OSCAL, which while it is not exposed in a JSON object
+serialization, will always available to an OSCAL processor by reference to the appropriate
+metaschema (in this case, the Metaschema instance that defines the catalog model). [See: <a href=#d2e14-head class=xref>Terminology</a>]</p><h3 xmlns=http://www.w3.org/1999/xhtml id=d2e335-head>Form and organization of resolution target</h3><p xmlns=http://www.w3.org/1999/xhtml>The output of a profile resolution should take the form of a catalog. Catalog results (the
+output of a conformant profile resolution) will be valid to the OSCAL catalog schema.</p><p xmlns=http://www.w3.org/1999/xhtml>At its base, an OSCAL <code class=src>profile</code> source produces a <code class=tgt>catalog</code>:</p><div xmlns=http://www.w3.org/1999/xhtml class=mapping><div class=highlight><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;profile</span> <span class=na>id=</span><span class=s>&#34;profile-identifier&#34;</span><span class=nt>&gt;</span>...<span class=nt>&lt;/profile&gt;</span></code></pre></div><div class=highlight><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;catalog</span> <span class=na>id=</span><span class=s>&#34;{ new-catalog-identifier }&#34;</span><span class=nt>&gt;</span>
+  <span class=nt>&lt;metadata&gt;</span>[Required metadata, as described below]<span class=nt>&lt;/metadata&gt;</span>
+  { controls or control groups, as described below }
+  <span class=nt>&lt;back-matter&gt;</span>{ back matter as described below }<span class=nt>&lt;/back-matter&gt;</span>
+<span class=nt>&lt;/catalog&gt;</span></code></pre></div></div><p xmlns=http://www.w3.org/1999/xhtml>A valid catalog must have <code class=tgt>metadata</code> in addition to controls and control groups.
+Additionally it may have <code class=tgt>back-matter</code>. How to produce and populate the
+<code class=tgt>metadata</code> and <code class=tgt>back-matter</code> is described below
+<span class=revisit>link me</span>, as is the construction
+of the <code class=tgt>catalog/@id</code> in the target.</p><h3 xmlns=http://www.w3.org/1999/xhtml id=d2e370-head>Validation of resolution result</h3><p xmlns=http://www.w3.org/1999/xhtml>Although the target of profile resolution takes the form of a catalog, it may not be valid
+to all constraints that define the OSCAL catalog format, whether enforced by its schema or
+by other means such as Schematron. Specifically, while a correctly implemented profile
+resolution may produce a result catalog that is structurally valid, there is a mode of
+operation, namely the <code class=tgt>keep-all combination rule</code>, which can permit replication of
+controls or control contents, when the control imports are redundant or contain redundant
+<code class=src>call</code> or <code class=src>match</code> directives. Such replication can result in violations
+of ID uniqueness constraints, in particular. [See: <a href=#d2e204-head class=xref>Formal validation of source and result</a>]</p><p xmlns=http://www.w3.org/1999/xhtml>If the merge behavior is set to <code class=src>combine[@method='keep']</code>, or not given (as this
+setting is the default), a profile with multiple calls on controls will result in multiple
+copies of controls with clashing IDs. These should raise validation errors in the results,
+since IDs must be unique on elements in document scope. Accordingly, this is an appropriate
+combination rule to use in development when any potential collisions should be detected and
+removed; it is also an appropriate rule to apply when a profile has been tested and found to
+be free of any such collisions. Other combination rules (<code class=src>method='use-first'</code> or
+<code class=src>method='merge'</code>) are provided for special exigencies or to permit certain kinds
+of optimization.</p><h3 xmlns=http://www.w3.org/1999/xhtml id=d2e389-head>top-level @id</h3><p xmlns=http://www.w3.org/1999/xhtml>Because document IDs are sometimes used to distinguish data points in processing context, a
+resolved profile may not present the same ID as any of the catalogs it is importing, or the
+same ID as its source profile.</p><p xmlns=http://www.w3.org/1999/xhtml>It is permitted to produce the profile’s ID in resolution via a static mapping from the ID
+of the source. For example, the resolution of profile with ID <code class=code>profile-X</code> might
+have ID <code class=code>profile-X-RESOLVED</code>.</p><p xmlns=http://www.w3.org/1999/xhtml><span class=revisit>BR feels this is underspecified and I agree. He also thinks that resolutions
+should always have a (generated) unique IDs, since upstream catalogs can change between
+resolutions.</span></p><h3 xmlns=http://www.w3.org/1999/xhtml id=d2e400-head>Instance metadata</h3><p xmlns=http://www.w3.org/1999/xhtml>Metadata in the target is derived directly from the source metadata, with modifications.
+All elements inside <code class=src>metadata</code> in the source profile are copied in their original
+order into the catalog. Additionally, new elements are introduced as described here.</p><p xmlns=http://www.w3.org/1999/xhtml>Because of options in producing metadata and especially the requirement for a timestamp,
+developers and users should note that two different resolutions of the same profile will
+not, ordinarily, be identical inside <code class=tgt>metadata</code>.</p><p xmlns=http://www.w3.org/1999/xhtml><span class=revisit>This has been worked, with changes suggested by DW, since BR's
+review</span></p><h4 xmlns=http://www.w3.org/1999/xhtml id=d2e412-head>Metadata resolution timestamp</h4><div xmlns=http://www.w3.org/1999/xhtml class=mapping><p>A <code class=tgt>prop</code> element with <code class=tgt>name</code>
+<q class=q>resolution-timestamp</q> is added to the resolution target metadata with a valid
+timestamp indicating the time of the resolution runtime. Conforming with canonical order
+of <code class=tgt>metadata</code> in the target, It must be placed into metadata structure after
+any <code class=tgt>title</code>, <code class=tgt>published</code>, <code class=tgt>last-modified</code>,
+<code class=tgt>version</code>, <code class=tgt>oscal-version</code>, or <code class=tgt>doc-id</code> elements, and before
+any <code class=tgt>prop</code><code class=tgt>, link</code>, <code class=tgt>role</code>, <code class=tgt>party</code>, or
+<code class=tgt>responsible-party</code> elements. The target is schema valid, and the new
+<code class=tgt>prop</code> is given before copies of <code class=src>prop</code> elements already
+present.</p><div class=highlight><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;metadata&gt;</span>
+  <span class=nt>&lt;title&gt;</span>Example Profile<span class=nt>&lt;/title&gt;</span>
+  <span class=nt>&lt;last-modified&gt;</span>2019-06-30T10:54:16.372-05:00<span class=nt>&lt;/last-modified&gt;</span>
+  <span class=nt>&lt;prop</span> <span class=na>name=</span><span class=s>&#34;status&#34;</span><span class=nt>&gt;</span>NEW<span class=nt>&lt;/prop&gt;</span>
+<span class=nt>&lt;/metadata&gt;</span></code></pre></div><div class=highlight><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;metadata&gt;</span>
+  <span class=nt>&lt;title&gt;</span>Example Profile<span class=nt>&lt;/title&gt;</span>
+  <span class=nt>&lt;last-modified&gt;</span>2019-06-30T10:54:16.372-05:00<span class=nt>&lt;/last-modified&gt;</span>
+  <span class=nt>&lt;prop</span> <span class=na>name=</span><span class=s>&#34;resolution-timestamp&#34;</span><span class=nt>&gt;</span>{ timestamp of profile resolution runtime }<span class=nt>&lt;/last-modified&gt;</span>
+  <span class=nt>&lt;prop</span> <span class=na>name=</span><span class=s>&#34;status&#34;</span><span class=nt>&gt;</span>NEW<span class=nt>&lt;/prop&gt;</span>
+<span class=nt>&lt;/metadata&gt;</span></code></pre></div><p>The presence of this property with a valid timestamp may be taken as an indicator that
+an OSCAL <code class=src>catalog</code> has been produced by resolution of a <code class=src>profile</code>.</p></div><p xmlns=http://www.w3.org/1999/xhtml>Note that due to this provision, two different resolutions of the same profile produced
+at different times will not be bit-equivalent, since their timestamps will be
+different.</p><p xmlns=http://www.w3.org/1999/xhtml><span class=revisit>Any provision for systems that cannot provide a valid timestamp?</span></p><h4 xmlns=http://www.w3.org/1999/xhtml id=d2e467-head>Metadata link to source profile</h4><div xmlns=http://www.w3.org/1999/xhtml class=mapping><p><span class=revisit>Optionally</span>, a processor may add a link to the result<code class=tgt>
+metadata</code>. Conforming with canonical order of <code class=tgt>metadata</code> in the target,
+It must be placed into metadata structure after any <code class=tgt>title</code>,
+<code class=tgt>published</code>, <code class=tgt>last-modified</code>, <code class=tgt>version</code>,
+<code class=tgt>oscal-version</code>, <code class=tgt>doc-id</code> or <code class=tgt>prop</code> elements, and before
+any<code class=tgt> link</code>, <code class=tgt>role</code>, <code class=tgt>party</code>, or
+<code class=tgt>responsible-party</code> elements. The target is schema valid, and the new
+<code class=tgt>link</code> is given before copies of <code class=src>link</code> elements already present</p><p>The new link should have two flags (attributes):</p><ul><li><p><code class=tgt>@rel</code> has the value <q class=q>resolution-source</q></p></li><li><p><code class=tgt>@href</code> provides a URL or URI address for the source profile</p></li></ul><div class=highlight><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;metadata&gt;</span>
+  <span class=nt>&lt;title&gt;</span>Test profile<span class=nt>&lt;/title&gt;</span>
+  <span class=nt>&lt;last-modified&gt;</span>2019-12-03T11:36:32.284-05:00<span class=nt>&lt;/last-modified&gt;</span>
+  <span class=nt>&lt;version&gt;</span>1.0<span class=nt>&lt;/version&gt;</span>
+  <span class=nt>&lt;oscal-version&gt;</span>1.0-MR2<span class=nt>&lt;/oscal-version&gt;</span>
+  <span class=nt>&lt;party&gt;</span>
+    <span class=nt>&lt;org&gt;</span>
+      <span class=nt>&lt;org-name&gt;</span>Standing Committee<span class=nt>&lt;/org-name&gt;</span>
+    <span class=nt>&lt;/org&gt;</span>
+  <span class=nt>&lt;/party&gt;</span>
+<span class=nt>&lt;/metadata&gt;</span></code></pre></div><div class=highlight><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;metadata&gt;</span>
+  <span class=nt>&lt;title&gt;</span>Test profile - RESOLUTION RESULT<span class=nt>&lt;/title&gt;</span>
+  <span class=nt>&lt;last-modified&gt;</span>2019-12-03T11:36:32.284-05:00<span class=nt>&lt;/last-modified&gt;</span>
+  <span class=nt>&lt;version&gt;</span>1.0<span class=nt>&lt;/version&gt;</span>
+  <span class=nt>&lt;oscal-version&gt;</span>1.0-MR2<span class=nt>&lt;/oscal-version&gt;</span>
+  <span class=nt>&lt;prop</span> <span class=na>name=</span><span class=s>&#34;resolution-timestamp&#34;</span><span class=nt>&gt;</span>{ timestamp of profile resolution runtime }<span class=nt>&lt;/last-modified&gt;</span>
+  <span class=nt>&lt;link</span> <span class=na>rel=</span><span class=s>&#34;resolution-source&#34;</span> <span class=na>href=</span><span class=s>&#34;{ URI to resolution source data instance }&#34;</span><span class=nt>&gt;</span>Test profile<span class=nt>&lt;/link&gt;</span>
+  <span class=nt>&lt;party&gt;</span>
+    <span class=nt>&lt;org&gt;</span>
+      <span class=nt>&lt;org-name&gt;</span>Standing Committee<span class=nt>&lt;/org-name&gt;</span>
+    <span class=nt>&lt;/org&gt;</span>
+  <span class=nt>&lt;/party&gt;</span>
+<span class=nt>&lt;/metadata&gt;</span></code></pre></div></div><h3 xmlns=http://www.w3.org/1999/xhtml id=d2e524-head>Body of the target</h3><p xmlns=http://www.w3.org/1999/xhtml>The construction of the body of the target catalog is described in the next section. [See: <a href=#d2e669-head class=xref>Phases of profile resolution</a>]</p><p xmlns=http://www.w3.org/1999/xhtml>The body of the target <code class=tgt>catalog</code>, after its <b class=term>metadata</b>, is structured
+as follows, depending on its merge directive. (Details on merging are given below [See: <a href=#d2e1064-head class=xref>Merge phase</a>].)</p><ul xmlns=http://www.w3.org/1999/xhtml><li><p>If no <code class=src>merge</code> was given, or if <code class=src>merge</code> is given without
+<code class=src>custom</code> or <code class=src>as-is</code>, controls are flat (unstructured) in the target
+catalog. This mode of processing is referred to as <q class=q>no merge</q>. Note that the same
+<code class=src>merge</code> element in the source is also the location for the combination
+directive, expressed as <code class=src>merge/combine/@method</code>. The combination method and the
+merge rule are two distinct concepts in profile resolution; and any merge rule (<q class=q>no
+merge</q>, <q class=q>as is</q> or <q class=q>custom</q>) can work with any combination method
+(<q class=q>keep</q>, <q class=q>use-first</q> or <q class=q>merge</q>).</p><p>Conforming with canonical order, the target catalog has a content model as follows
+<span class=revisit>(DTD/RNC notatation)</span>: <code class=code>(metadata, param*, control*,
+back-matter?)</code></p><p><span class=revisit>BR: note we have Issue #523 about permitting param to appear at the
+top.</span></p></li><li><p>If <code class=src>merge/as-is</code> is used, the structure of the target will reflect the
+structure(s) of the source catalog(s).</p><p>Conforming with canonical order, the target catalog has the content model
+<code class=code>(metadata, param*, control*, group*, back-matter?)</code> where
+<code class=code>group</code> has the model <code class=code>(title?, prop*, part*, param*, control*,
+group*)</code>.</p></li><li><p>If <code class=src>merge/custom</code> is used, see above. The content model of the target catalog
+is the same as that for <code class=src>merge/as-is</code>.</p></li></ul><p xmlns=http://www.w3.org/1999/xhtml>Unless it be for special purposes in a debugging or tracing mode, profile results may not
+show any groups or structures in the form of elements not described here. Depending on the
+merge directive, all groups will be given either by the catalog source(s)
+(<code class=src>merge/as-is</code>) or the profile (<code class=src>merge/custom</code>), or there will be no
+groups at all (no merge directive).</p><h3 xmlns=http://www.w3.org/1999/xhtml id=d2e602-head>Back matter</h3><p xmlns=http://www.w3.org/1999/xhtml>The back matter in target catalogs is assembled from the back matter of their source
+profiles in combination with the back matter of source catalogs. In both catalogs and
+profiles, <code class=src>back-matter</code> is comprised of (multiple uses of either)
+<code class=src>citation</code> or <code class=src>resource</code>. Either of these elements may be
+cross-referenced from any location in their source documents by means of a URI fragment
+identifier on an <code class=src>href</code> flag, for example <code class=code>&lt;resource id="document-X</code>>
+may be referenced from inside its containing document by <code class=code>&lt;link
+href="#document-X"></code> appearing elsewhere. Whether an element inside back matter must
+be included in the target, depends on whether such a cross-reference has also been included
+in the same target.</p><p xmlns=http://www.w3.org/1999/xhtml>Specifically, any <code class=src>citation</code> or <code class=src>resource</code> inside <code class=src>back-matter</code>
+either in the profile, or in any imported catalog, is considered eligible for propagation
+into the target if either of two conditions obtains:</p><ul xmlns=http://www.w3.org/1999/xhtml><li><p>The element (<code class=src>citation</code> or <code class=src>resource</code>) is referenced by any element
+inside the profile metadata.</p></li><li><p>The element is referenced from a link or anchor (<code class=src>link</code> or <code class=src>a</code>
+element) inside controls, parameters, or any contents (for example, paragraphs inside
+<code class=tgt>group/part</code>) included in the resolved profile. The link takes the form of a
+URI fragment identifier <code class=code>#id</code>, where <code class=code>id</code> is the value of the
+<code class=src>@id</code> attribute of the <code class=src>citation</code> or <code class=src>resource</code>.</p></li></ul><p xmlns=http://www.w3.org/1999/xhtml>The assembly of the target <code class=tgt>back-matter</code> occurs by including copies of all
+eligible <code class=src>citation</code> elements followed by all eligible <code class=src>resource</code> elements,
+in the same order as given in their sources.</p><p xmlns=http://www.w3.org/1999/xhtml>Additionally, combination rules (see next section) will affect whether and how duplicate or
+competing <code class=src>citation</code> or <code class=src>resource</code> elements are handled, to remove or
+combine multiple occurrences of the same referenced object.</p><h2 xmlns=http://www.w3.org/1999/xhtml id=d2e669-head>Phases of profile resolution</h2><p xmlns=http://www.w3.org/1999/xhtml>Considered as a <q class=q>document</q> or integrated data set (object), a profile has three
+sections, each of which corresponds to a conceptual step in resolution. To resolve a catalog
+fully is to perform all these steps.</p><p xmlns=http://www.w3.org/1999/xhtml>While the steps are described in this specification as occurring in sequence, a profile
+processor is not obliged to perform them in the order described. Conformance to these
+specifications is determined by whether the results of processing (<b class=term>resolution</b>)
+appear as described, not on whether the means to produce those results work in exactly the
+manner described here.</p><p xmlns=http://www.w3.org/1999/xhtml>The three steps are <code class=src>import</code> (control <b class=term>selection</b>); <code class=src>merge</code>; and
+<code class=src>modify</code>. In brief:</p><ul xmlns=http://www.w3.org/1999/xhtml><li><p><code class=src>import</code> identifies one or more control sources (catalogs or profiles) and the
+controls within them to be included in this (resolved) profile;</p></li><li><p><code class=src>merge</code> designates the rules for how controls will be organized and merged (or
+not) in the result catalog;</p></li><li><p><code class=src>modify</code> indicates how parameters in the underlying catalog may be modified or
+set, and how control contents may be amended or modified.</p></li></ul><p xmlns=http://www.w3.org/1999/xhtml>The <b class=term>selection</b> phase provides the basis for a customized catalog by designating
+controls to be included in it; a profile that designates no controls, produces no catalog. The
+selection phase is controlled by <code class=src>profile/import</code> directives in the source
+profile.</p><p xmlns=http://www.w3.org/1999/xhtml>The <b class=term>merge</b> phase addresses two questions: what a processor should produce in
+cases of (accidental or intentional) ambiguities in control identification in the selection
+phase; and how to structure the outputs, whether in a hierarchy (copied or created) or flat
+(without grouping). These two aspects of resolution are addressed by the <b class=term>combination
+rule</b> (or <b class=term>combination method</b>) and the <b class=term>merge rule</b> (which
+includes a <q class=q>no merge option</q>). In source data (a valid profile document), a
+<code class=src>profile/merge</code> directive is optional; when it or its child directives are absent,
+default combination and merge rules apply.</p><p xmlns=http://www.w3.org/1999/xhtml>The <b class=term>modification</b> phase is an opportunity for a profile to amend, alter or edit
+controls, and to set parameter values or constrain or qualify parameters as represented in the
+target. A profile can be valid and useful without making any modifications, only selections,
+so the <code class=src>profile/modify</code> element (node) is optional in the profile model.</p><p xmlns=http://www.w3.org/1999/xhtml>As described in the previous section, when resolved, an OSCAL profile takes the form of an
+OSCAL catalog. The merge semantics described below will produce outputs conforming to this
+organization.</p><h3 xmlns=http://www.w3.org/1999/xhtml id=d2e730-head>Selection phase</h3><p xmlns=http://www.w3.org/1999/xhtml>A profile begins by importing catalogs, all of whose controls are made available. The
+catalogs it references may be available as static resources, or they may be produced
+dynamically on request; accordingly a profile may also import profiles, to be resolved as
+catalogs, instead of or in addition to catalogs as such. Imports are given in sequence after
+the metadata:</p><div class=highlight><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;profile&gt;</span>
+  <span class=nt>&lt;metadata&gt;</span>{ Profile metadata }<span class=nt>&lt;/metadata&gt;</span>
+  <span class=nt>&lt;import</span> <span class=na>href=</span><span class=s>&#34;#catalog&#34;</span><span class=nt>&gt;</span>{ … selection of controls … }<span class=nt>&lt;/import&gt;</span>
+  <span class=nt>&lt;import</span> <span class=na>href=</span><span class=s>&#34;#catalog-supplemental&#34;</span><span class=nt>&gt;</span>{ … selection of controls … }<span class=nt>&lt;/import&gt;</span>
+<span class=nt>&lt;/profile&gt;</span></code></pre></div><div class=highlight><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;profile&gt;</span>
+  <span class=nt>&lt;metadata&gt;</span>{ Profile metadata }<span class=nt>&lt;/metadata&gt;</span>
+  <span class=nt>&lt;selection</span> <span class=na>href=</span><span class=s>&#34;#catalog&#34;</span> <span class=na>catalog-id=</span><span class=s>&#34;{ catalog-identifier }&#34;</span><span class=nt>&gt;</span>{ … selection of controls … }<span class=nt>&lt;/selection&gt;</span>
+  <span class=nt>&lt;selection</span> <span class=na>href=</span><span class=s>&#34;#catalog-supplemental&#34;</span> <span class=na>catalog-id=</span><span class=s>&#34;{ catalog-identifier }&#34;</span><span class=nt>&gt;</span>{ … selection of controls … }<span class=nt>&lt;/selection&gt;</span>
+<span class=nt>&lt;/profile&gt;</span></code></pre></div><p xmlns=http://www.w3.org/1999/xhtml>The resource indicated can be either an OSCAL catalog or an OSCAL profile. A catalog
+provides controls in their native form. An imported profile is resolved on import, using the
+same rules for profile resolution, so a catalog is presented to the importing profile.</p><p xmlns=http://www.w3.org/1999/xhtml>(The result of importing other endpoints or resources besides valid OSCAL catalogs and
+profiles is not defined by this specification.)</p><p xmlns=http://www.w3.org/1999/xhtml>No profile may import itself either directly or indirectly. An import directive that
+indicates either the profile itself, or a profile into which it is being (currently)
+imported, must be ignored. Optionally, a processor may issue a warning.</p><p xmlns=http://www.w3.org/1999/xhtml>In an import directive, the reference to the resource to be imported appears on an
+<code class=src>@href</code> flag. It takes either of two forms, external or internal:</p><h4 xmlns=http://www.w3.org/1999/xhtml id=d2e760-head>External - import via URI</h4><p xmlns=http://www.w3.org/1999/xhtml>An external reference appears as an absolute or relative URL</p><p xmlns=http://www.w3.org/1999/xhtml>Indicating a file available via <span class=revisit>[prototol?]</span></p><div class=highlight><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;import</span> <span class=na>href=</span><span class=s>&#34;../../nist.gov/SP800-53/rev4/xml/NIST_SP-800-53_rev4_catalog.xml&#34;</span><span class=nt>&gt;</span>
+  <span class=nt>&lt;include&gt;</span>
+    <span class=nt>&lt;call</span> <span class=na>control-id=</span><span class=s>&#34;ac-1&#34;</span><span class=nt>/&gt;</span>
+  <span class=nt>&lt;/include&gt;</span>
+<span class=nt>&lt;/import&gt;</span></code></pre></div><h4 xmlns=http://www.w3.org/1999/xhtml id=d2e768-head>Internal - import via resource</h4><p xmlns=http://www.w3.org/1999/xhtml>A catalog or profile to be imported can also be indicated using an internal link via a
+URI fragment identifier (starting with <code class=code>#</code>). If an import href resolves to a
+<code class=code>resource</code> elsewhere in the profile (typically in back matter), that resource
+can be retrieved to provide the source catalog.</p><div class=highlight><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;import</span> <span class=na>href=</span><span class=s>&#34;#nist-sp800-53_catalog&#34;</span><span class=nt>&gt;</span>
+  <span class=nt>&lt;include&gt;</span>
+    <span class=nt>&lt;call</span> <span class=na>control-id=</span><span class=s>&#34;ac-1&#34;</span><span class=nt>/&gt;</span>
+  <span class=nt>&lt;/include&gt;</span>
+<span class=nt>&lt;/import&gt;</span>
+
+  ...
+  
+<span class=nt>&lt;back-matter&gt;</span>
+  <span class=nt>&lt;resource</span> <span class=na>id=</span><span class=s>&#34;nist-sp800-53_catalog&#34;</span><span class=nt>&gt;</span>
+    <span class=nt>&lt;desc&gt;</span>SP 800-53 catalog (OSCAL format) on Github<span class=nt>&lt;/desc&gt;</span>
+    <span class=nt>&lt;rlink</span> <span class=na>href=</span><span class=s>&#34;https://github.com/usnistgov/OSCAL/blob/master/content/nist.gov/SP800-53/rev4/xml/NIST_SP-800-53_rev4_catalog.xml&#34;</span><span class=nt>/&gt;</span>
+  <span class=nt>&lt;/resource&gt;</span>
+<span class=nt>&lt;/back-matter&gt;</span></code></pre></div><p xmlns=http://www.w3.org/1999/xhtml>A reference from an import to a resource that does not reference a catalog or profile, or
+a cross-reference to something other than a resource, is inoperative for purposes of
+importing. It may be signaled as an error [or warning] by a processor. <span class=revisit>Allow
+processors to import other stuff as they like?</span></p><h4 xmlns=http://www.w3.org/1999/xhtml id=d2e781-head>Availability of documents returned by given URIs</h4><p xmlns=http://www.w3.org/1999/xhtml>The rules of XSLT <code class=code>document()</code> apply to the traversal of any URI: that is, it
+is assumed that all calls to a given (resolved) URI reference, will return the same
+result.</p><p xmlns=http://www.w3.org/1999/xhtml>If documents called for import are determined to be unavailable, the processor may drop
+them along with a warning, both or either out of band (e.g. through <code class=code>STDERR</code>)
+or in the catalog results.</p><p xmlns=http://www.w3.org/1999/xhtml>URIs are used as a widely supported, global address with broad utility. A processor is
+not obliged, when requested for a resource, to use the given URI in an http request to
+produce it. Processors may offer fallback behaviors for URI requests that fail; conversely
+a processor may be able to avoid a URI request in favor of a better way to provide
+resources identified by URI.</p><h4 xmlns=http://www.w3.org/1999/xhtml id=d2e793-head>Missing imports</h4><p xmlns=http://www.w3.org/1999/xhtml>An import that does not reference either an OSCAL catalog, or an OSCAL profile that can
+be resolved as a catalog, is dropped.</p><div xmlns=http://www.w3.org/1999/xhtml class=mapping><div class=highlight><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;profile</span> <span class=na>id=</span><span class=s>&#34;broken_profile&#34;</span><span class=nt>&gt;</span>
+  <span class=nt>&lt;metadata&gt;</span> … <span class=nt>&lt;/metadata&gt;</span>
+  <span class=nt>&lt;import</span> <span class=na>href=</span><span class=s>&#34;missing_profile.xml&#34;</span><span class=nt>&gt;</span>
+     <span class=nt>&lt;include&gt;</span>
+        <span class=nt>&lt;call</span> <span class=na>control-id=</span><span class=s>&#34;ac-1&#34;</span><span class=nt>/&gt;</span>
+     <span class=nt>&lt;/include&gt;</span>
+  <span class=nt>&lt;/import&gt;</span>
+<span class=nt>&lt;/profile&gt;</span></code></pre></div><div class=highlight><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;profile</span> <span class=na>id=</span><span class=s>&#34;home_profile_RESOLVED&#34;</span><span class=nt>&gt;</span>
+  <span class=nt>&lt;metadata&gt;</span> … <span class=nt>&lt;/metadata&gt;</span>
+<span class=nt>&lt;/profile&gt;</span></code></pre></div><p>Optionally, a processor may produce a comment indicating the lapse:</p><div class=highlight><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;profile</span> <span class=na>id=</span><span class=s>&#34;home_profile_RESOLVED&#34;</span><span class=nt>&gt;</span>
+  <span class=nt>&lt;metadata&gt;</span> … <span class=nt>&lt;/metadata&gt;</span>
+  <span class=c>&lt;!-- referenced resource &#39;missing_profile.xml&#39; cannot be resolved --&gt;</span>
+<span class=nt>&lt;/profile&gt;</span></code></pre></div></div><p xmlns=http://www.w3.org/1999/xhtml>In this context, an OSCAL profile that makes direct or indirect reference (via its own
+imports) to the importing catalog, is also dropped as unavailable. See below under
+<q class=q>Circular Imports</q>.</p><h4 xmlns=http://www.w3.org/1999/xhtml id=d2e808-head>Circular imports</h4><p xmlns=http://www.w3.org/1999/xhtml>When a profile imports a profile, the subordinate profile is resolved into a catalog
+using the same rules. This presents a possibility of circular imports, when a profile is
+directed to import itself either directly or indirectly.</p><p xmlns=http://www.w3.org/1999/xhtml>A <b class=term>circular import</b> is defined as a directive to import a resource, which has
+already been called higher in the import hierarchy. For example, if Profile A imports
+Profile B, and Profile B imports Profile A, the second import is circular. (An import at
+the top can only be circular if a profile tries to import itself.) If A imports B, B
+imports C and C imports A, C’s import is circular.</p><p xmlns=http://www.w3.org/1999/xhtml>Note that an import can only be circular within the context of processing a particular
+profile. In the last example, C’s import would not be circular if invoked in the context
+of resolving B by itself (without being imported by A), or of resolving some other profile
+that did not import A. (D importing B importing C importing A would not be a problem.)</p><p xmlns=http://www.w3.org/1999/xhtml>Circular imports are inoperative, and may be reported as an error <span class=revisit>or
+warning</span>.<span class=revisit>BR wants this to be more draconian but I am not sure every
+situation warrants it. It seems like the same sort of thing as a missing import to me,
+except it's missing by definition.</span></p><p xmlns=http://www.w3.org/1999/xhtml>An import that is not circular (refers to a document not already imported) results in a
+control selection, subject to merging with other control selections in the merge
+phase.</p><div xmlns=http://www.w3.org/1999/xhtml class=mapping><p>A profile identified as <code class=code>home_profile.xml</code> imports another one identified as
+<code class=code>circular_profile.xml</code>:</p><div class=highlight><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;profile</span> <span class=na>id=</span><span class=s>&#34;home_profile&#34;</span><span class=nt>&gt;</span>
+  <span class=nt>&lt;metadata&gt;</span>...<span class=nt>&lt;/metadata&gt;</span>
+  <span class=nt>&lt;import</span> <span class=na>href=</span><span class=s>&#34;circular_profile.xml&#34;</span><span class=nt>&gt;</span>
+     <span class=nt>&lt;include&gt;</span>
+        <span class=nt>&lt;call</span> <span class=na>control-id=</span><span class=s>&#34;ac-1&#34;</span><span class=nt>/&gt;</span>
+     <span class=nt>&lt;/include&gt;</span>
+  <span class=nt>&lt;/import&gt;</span>
+<span class=nt>&lt;/profile&gt;</span></code></pre></div><p>In turn this file invokes <code class=code>home_profile.xml</code>:</p><div class=highlight><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;profile</span> <span class=na>id=</span><span class=s>&#34;circular_profile&#34;</span><span class=nt>&gt;</span>
+  <span class=nt>&lt;metadata&gt;</span>...<span class=nt>&lt;/metadata&gt;</span>
+  <span class=nt>&lt;import</span> <span class=na>href=</span><span class=s>&#34;home_profile.xml&#34;</span><span class=nt>&gt;</span>
+     <span class=nt>&lt;include&gt;</span>
+        <span class=nt>&lt;call</span> <span class=na>control-id=</span><span class=s>&#34;ac-1&#34;</span><span class=nt>/&gt;</span>
+     <span class=nt>&lt;/include&gt;</span>
+  <span class=nt>&lt;/import&gt;</span>
+<span class=nt>&lt;/profile&gt;</span></code></pre></div><p>No control selection is produced for the circular import:</p><div class=highlight><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;profile</span> <span class=na>id=</span><span class=s>&#34;home_profile_RESOLVED&#34;</span><span class=nt>&gt;</span>
+  <span class=nt>&lt;metadata&gt;</span>...<span class=nt>&lt;/metadata&gt;</span>
+<span class=nt>&lt;/profile&gt;</span></code></pre></div><p>Optionally, a processor may produce a comment indicating the lapse:</p><div class=highlight><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;profile</span> <span class=na>id=</span><span class=s>&#34;home_profile_RESOLVED&#34;</span><span class=nt>&gt;</span>
+  <span class=nt>&lt;metadata&gt;</span>...<span class=nt>&lt;/metadata&gt;</span>
+  <span class=c>&lt;!-- referenced resource &#39;home_profile.xml&#39; cannot be resolved from resource &#39;circular_profile&#39;: circular dependency --&gt;</span>
+<span class=nt>&lt;/profile&gt;</span></code></pre></div></div><h4 xmlns=http://www.w3.org/1999/xhtml id=d2e843-head>Multiple imports</h4><p xmlns=http://www.w3.org/1999/xhtml>In the selection phase, each import directive is processed to produce a set of controls
+and (when they are referenced) parameters. These controls and parameters are represented
+in the form of a control selection. Note that this occurs in the selection phase even if
+the same catalog (resource) is imported multiple times: each distinct import collects
+controls into a <code class=tgt>selection</code>:</p><div xmlns=http://www.w3.org/1999/xhtml class=mapping><div class=highlight><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;profile</span> <span class=na>id=</span><span class=s>&#34;import-twice_profile&#34;</span><span class=nt>&gt;</span>
+    <span class=nt>&lt;metadata&gt;</span> … <span class=nt>&lt;/metadata&gt;</span>
+    <span class=nt>&lt;import</span> <span class=na>href=</span><span class=s>&#34;#catalog&#34;</span><span class=nt>&gt;</span>
+        <span class=nt>&lt;include&gt;</span> … select controls …  <span class=nt>&lt;/include&gt;</span>
+    <span class=nt>&lt;/import&gt;</span>
+    <span class=nt>&lt;import</span> <span class=na>href=</span><span class=s>&#34;#catalog&#34;</span><span class=nt>&gt;</span>
+        <span class=nt>&lt;include&gt;</span> … select controls …  <span class=nt>&lt;/include&gt;</span>
+    <span class=nt>&lt;/import&gt;</span>
+    <span class=nt>&lt;back-matter&gt;</span> … <span class=nt>&lt;/back-matter&gt;</span>
+<span class=nt>&lt;/profile&gt;</span></code></pre></div><div class=highlight><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;profile</span> <span class=na>id=</span><span class=s>&#34;import-twice_profile_RESOLVED&#34;</span><span class=nt>&gt;</span>
+  <span class=nt>&lt;metadata&gt;</span> … <span class=nt>&lt;/metadata&gt;</span>
+  <span class=nt>&lt;selection</span> <span class=na>id=</span><span class=s>&#34;catalog-id&#34;</span><span class=nt>&gt;</span> … selected controls … <span class=nt>&lt;/selection&gt;</span>
+  <span class=nt>&lt;selection</span> <span class=na>id=</span><span class=s>&#34;catalog-id&#34;</span><span class=nt>&gt;</span> … selected controls … <span class=nt>&lt;/selection&gt;</span>
+  <span class=nt>&lt;back-matter&gt;</span> … <span class=nt>&lt;/back-matter&gt;</span>
+<span class=nt>&lt;/profile&gt;</span></code></pre></div></div><p xmlns=http://www.w3.org/1999/xhtml>The control selections are combined and collapsed in the next phase of processing,
+<b class=term>merge</b> (see below) .</p><p xmlns=http://www.w3.org/1999/xhtml>Multiple imports may result in outputs with clashing controls (see below). Typically this
+will be because a control has been selected twice (in selection or in the selections of
+underlying profiles), and no merge behavior has been indicated to resolve the clash.</p><p xmlns=http://www.w3.org/1999/xhtml>Typical cases of multiple imports of the same (underlying) resource will be when a
+profile A imports another profile B, which calls catalog Z, and then profile A calls
+catalog Z again to acquire other controls not included in profile B, or in an original
+form unmodified by profile B.</p><h4 xmlns=http://www.w3.org/1999/xhtml id=d2e860-head>Selecting controls</h4><p xmlns=http://www.w3.org/1999/xhtml>Imports can specify controls by inclusion and exclusion, either or both in
+combination.</p><h5 xmlns=http://www.w3.org/1999/xhtml id=d2e863-head>Including controls</h5><p xmlns=http://www.w3.org/1999/xhtml>Using inclusion, all or some controls may be selected from a catalog.</p><h6 xmlns=http://www.w3.org/1999/xhtml id=d2e866-head>Selecting by ID</h6><p xmlns=http://www.w3.org/1999/xhtml>Select individual controls or controls by groups using <code class=src>control-id</code>
+selectors corresponding to their IDs.</p><div class=highlight><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;include&gt;</span>
+  <span class=nt>&lt;call</span> <span class=na>control-id=</span><span class=s>&#34;ac-1&#34;</span><span class=nt>/&gt;</span>
+<span class=nt>&lt;/include&gt;</span></code></pre></div><h6 xmlns=http://www.w3.org/1999/xhtml id=d2e874-head>Matching IDs to select groups of related controls</h6><p xmlns=http://www.w3.org/1999/xhtml>Controls may also be selected using match patterns against their IDs. This is useful
+because related controls (either in a hierarchy, or together in a group) frequently
+have related IDs as well.</p><div class=highlight><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;include&gt;</span>
+  <span class=nt>&lt;match</span> <span class=na>pattern=</span><span class=s>&#34;^ac&#34;</span><span class=nt>/&gt;</span><span class=c>&lt;!-- matches any control whose ID matches regex &#39;^ac&#39; --&gt;</span>
+<span class=nt>&lt;/include&gt;</span></code></pre></div><p xmlns=http://www.w3.org/1999/xhtml><span class=revisit>The match pattern is evaluated as a regular expression using XPath regular
+expression syntax. [XXXX]</span></p><h6 xmlns=http://www.w3.org/1999/xhtml id=d2e881-head>Selecting all controls</h6><p xmlns=http://www.w3.org/1999/xhtml>Select all controls from a catalog by using an <code class=src>include/all</code> rule:</p><div class=highlight><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;include&gt;</span>
+  <span class=nt>&lt;all/&gt;</span>
+<span class=nt>&lt;/include&gt;</span></code></pre></div><h6 xmlns=http://www.w3.org/1999/xhtml id=d2e889-head>Including child controls</h6><p xmlns=http://www.w3.org/1999/xhtml>In OSCAL, controls may contain controls. For example, in SP 800-53 many controls are
+supplemented with control enhancements; in OSCAL these are represented as child
+controls within parent controls. So parent AC-2 has children AC-2(1) through AC-2(13),
+for example.</p><p xmlns=http://www.w3.org/1999/xhtml>Child controls can be included by the same mechanism as controls, i.e. by means of an
+ID call. Alternatively a match can frequently be applied (at least given most ID
+assignment schemes) to match controls and child controls together.</p><p xmlns=http://www.w3.org/1999/xhtml>Additionally, a <code class=src>@with-child-controls</code> directive on a <code class=src>call</code> or
+<code class=src>match</code> can indicate that child controls (that is, direct children not all
+descendants) should be included with the applicable call(s) or match(es).</p><p xmlns=http://www.w3.org/1999/xhtml>Furthermore, <code class=src>all[@with-child-controls='no']</code> may select all controls placed
+directly within a group, excluding all controls appearing inside other controls.</p><h6 xmlns=http://www.w3.org/1999/xhtml id=d2e905-head>Redundant calls</h6><p xmlns=http://www.w3.org/1999/xhtml>Calls and matches may be combined in a single import. Their effect is cumulative; any
+control that is selected by both calling and matching from a given <code class=src>include</code>
+directive, or by matching more than one pattern, is included once (unless it is also
+marked for exclusion, see [See: <a href=#d2e913-head class=xref>Excluding controls</a>]).</p><h5 xmlns=http://www.w3.org/1999/xhtml id=d2e913-head>Excluding controls</h5><p xmlns=http://www.w3.org/1999/xhtml>Exclusions work the same way as inclusions, except with the opposite effect - the
+indicated control(s) do not appear in the target catalog.</p><p xmlns=http://www.w3.org/1999/xhtml>Additionally, there is no such thing as <code class=src>exclude/all</code>, which is invalid and
+should be considered inoperable.</p><p xmlns=http://www.w3.org/1999/xhtml>Any control designated to be both included and excluded, is excluded. This holds
+irrespective of the specificity of the selection for inclusion or exclusion. For
+example, if AC-1 is included by id <code class=code>ac-1</code> and excluded by matching
+<code class=code>ac.*</code>, it is excluded. Selection for exclusion prevails.</p><p xmlns=http://www.w3.org/1999/xhtml>One possible exception: what about when a control is excluded, but it has
+descendant controls that are included? Under <code class=src>include/all</code>, the descendants
+maybe would be excluded. If the subcontrol is included by <code class=src>call</code> or
+<code class=src>match</code> perhaps the 'shells' of its ancestors should be included despite
+their nominal exclusion. See section on "implicit inclusions under as-is",
+below.</p><h5 xmlns=http://www.w3.org/1999/xhtml id=d2e935-head>Implicit <code class=src>all</code></h5><p xmlns=http://www.w3.org/1999/xhtml>An empty import statement should be considered the same as an import with an
+<code class=src>include/all</code>. An empy <code class=src>import</code> directive</p><div class=highlight><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;import</span> <span class=na>href=</span><span class=s>&#34;#nist-catalog&#34;</span><span class=nt>/&gt;</span></code></pre></div><p xmlns=http://www.w3.org/1999/xhtml>is functionally equivalent to this:</p><div class=highlight><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;import</span> <span class=na>href=</span><span class=s>&#34;#nist-catalog&#34;</span><span class=nt>&gt;</span>
+  <span class=nt>&lt;include&gt;</span>
+    <span class=nt>&lt;all/&gt;</span>
+  <span class=nt>&lt;/include&gt;</span>
+<span class=nt>&lt;/import&gt;</span></code></pre></div><p xmlns=http://www.w3.org/1999/xhtml>The same thing occurs if an <code class=src>exclude</code> directive is given without an
+<code class=src>include</code> directive.</p><p xmlns=http://www.w3.org/1999/xhtml>Example:</p><div class=highlight><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;import</span> <span class=na>href=</span><span class=s>&#34;#nist-catalog&#34;</span><span class=nt>&gt;</span>
+  <span class=nt>&lt;exclude&gt;</span>
+    <span class=nt>&lt;call</span> <span class=na>control-id=</span><span class=s>&#34;ac-1&#34;</span><span class=nt>/&gt;</span>
+  <span class=nt>&lt;/exclude&gt;</span>
+<span class=nt>&lt;/import&gt;</span></code></pre></div><p xmlns=http://www.w3.org/1999/xhtml>is the same as this:</p><div class=highlight><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;import</span> <span class=na>href=</span><span class=s>&#34;#nist-catalog&#34;</span><span class=nt>&gt;</span>
+  <span class=nt>&lt;include&gt;</span>
+    <span class=nt>&lt;all/&gt;</span>
+  <span class=nt>&lt;/include&gt;</span>
+  <span class=nt>&lt;exclude&gt;</span>
+    <span class=nt>&lt;call</span> <span class=na>control-id=</span><span class=s>&#34;ac-1&#34;</span><span class=nt>/&gt;</span>
+  <span class=nt>&lt;/exclude&gt;</span>
+<span class=nt>&lt;/import&gt;</span></code></pre></div><p xmlns=http://www.w3.org/1999/xhtml>Target: all controls from the catalog are included <em class=em>except</em> AC-1.</p><h5 xmlns=http://www.w3.org/1999/xhtml id=d2e966-head>Order of controls returned in selection</h5><p xmlns=http://www.w3.org/1999/xhtml>Because controls may be organized in the subsequence merge phase, order of controls
+returned in the selection step is unimportant in most circumstances. If no merge
+directive is applied, however, or the <q class=q>no merge</q> combination rule is used (see
+below), controls are returned for an import in the order of their appearance in their
+catalog of origin.</p><p xmlns=http://www.w3.org/1999/xhtml><span class=revisit>BR suggests we revisit as an alternative would be to sort in call order. I
+think the given proposal is simplier given cases of match and "all".</span></p><h4 xmlns=http://www.w3.org/1999/xhtml id=d2e974-head>Copying parameters</h4><p xmlns=http://www.w3.org/1999/xhtml>Unlike controls, parameters are copied implicitly. Whether a parameter in the source
+catalog is copied into the target depends on two factors: its location, and whether it is
+referenced by an <code class=tgt>insert</code> directive in the target catalog.</p><p xmlns=http://www.w3.org/1999/xhtml><code class=src>insert</code> directives may occur anywhere in a catalog's data content including not
+only in controls, but in other parameters. Thus a parameter may have to be included by
+virtue of an <code class=src>insert</code> directive, making reference to it, that occurs in another
+parameter, included by virtue of a different <code class=src>insert</code> directive found in an
+included control.</p><h5 xmlns=http://www.w3.org/1999/xhtml id=d2e987-head>Parameters given in controls</h5><p xmlns=http://www.w3.org/1999/xhtml>Any parameter (<code class=src>param</code> element) that appears in a control being selected,
+appears in the target, unless the parameter element was indicated by a remove directive
+(see below [See: <a href=#d2e1808-head class=xref>Removing contents from controls</a>]).</p><p xmlns=http://www.w3.org/1999/xhtml><span class=revisit>BR thinks such nonsense should be prevented somehow perhaps warnings or
+errors. My feeling is, that's what validation is all about.</span></p><div xmlns=http://www.w3.org/1999/xhtml class=mapping><div class=highlight><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;control</span> <span class=na>id=</span><span class=s>&#34;a1&#34;</span><span class=nt>&gt;</span>
+    <span class=nt>&lt;title&gt;</span>Control A1<span class=nt>&lt;/title&gt;</span>
+    <span class=nt>&lt;param</span> <span class=na>id=</span><span class=s>&#34;param-a1.a&#34;</span><span class=nt>&gt;</span>
+        <span class=nt>&lt;label&gt;</span>a1.a parameter<span class=nt>&lt;/label&gt;</span>
+        <span class=nt>&lt;value&gt;</span>a1.a value<span class=nt>&lt;/value&gt;</span>
+    <span class=nt>&lt;/param&gt;</span>
+    <span class=nt>&lt;prop</span> <span class=na>name=</span><span class=s>&#34;status&#34;</span><span class=nt>&gt;</span>alive<span class=nt>&lt;/prop&gt;</span>
+    <span class=nt>&lt;part</span> <span class=na>name=</span><span class=s>&#34;statement&#34;</span> <span class=na>id=</span><span class=s>&#34;a1-stmt&#34;</span><span class=nt>&gt;</span>
+        <span class=nt>&lt;p&gt;</span>A1 aaaaa aaaaaaaaaa<span class=nt>&lt;/p&gt;</span>
+    <span class=nt>&lt;/part&gt;</span>
+<span class=nt>&lt;/control&gt;</span></code></pre></div></div><h5 xmlns=http://www.w3.org/1999/xhtml id=d2e1000-head>Loose parameters</h5><p xmlns=http://www.w3.org/1999/xhtml>There are two situations where parameters must be considered separately from controls,
+in which case they are considered to be <q class=q>loose</q>, appearing in the target directly
+inside <code class=tgt>catalog</code> or <code class=tgt>group</code>. The first is when they have no control
+parent in the source catalog (or rendered profile): they are <q class=q>inherently loose</q>.
+The second is when they <q class=q>become loose</q> because the control in which they appear, is
+not selected, but they are needed in the target, due to being referenced for insertion
+elsewhere. <span class=revisit>(Examples)</span></p><p xmlns=http://www.w3.org/1999/xhtml>The same parameter, however, cannot be both loose and anchored. If it is invoked from
+inside its parent control, it is considered as anchored, even if it would also be called
+(as loose) by virtue of insertions made outside the parent control, were the parent
+control not included. That is, a <code class=tgt>param</code> only appears loose in the resolution
+target, if it is also loose in its source catalog, or if its parent control in the
+source catalog is not included in the profile.</p><p xmlns=http://www.w3.org/1999/xhtml>In general, loose parameters (parameter declarations, <code class=src>param</code>) are permitted
+to support flexibility for referencing, especially making multiple references to a
+parameter. It may be convenient to represent a parameter that is referenced from inside
+two different controls, outside both of them, or to group parameters separately from
+controls for simpler management. <span class=revisit>(This does not occur in the SP800-53
+catalog.)</span></p><p xmlns=http://www.w3.org/1999/xhtml>Loose parameters (that is, with <code class=tgt>catalog</code> or <code class=tgt>group</code> parents, not
+controls) appear in the target if (only if) elsewhere in the target, some content is
+also propagated, which after modification contains an <code class=src>insert</code> directive
+referencing this parameter. (The <code class=src>param/@id</code> appears on an
+<code class=src>insert/@param-id</code> elsewhere in the target document.) In the target, the
+<code class=tgt>param</code> appears in the location corresponding to its location in the source,
+albeit ungrouped if no <code class=src>merge/as-is</code> is given, and sorted with respect to
+<code class=tgt>control</code> elements at the same level: all <code class=tgt>param</code> elements first,
+followed by all <code class=tgt>control</code> elements, conforming to canonical order for the
+<code class=tgt>catalog</code> or <code class=tgt>group</code> container. <span class=revisit>this is a case where the
+XML and JSON requirements are different.</span></p><p xmlns=http://www.w3.org/1999/xhtml>When a catalog is organized by a <code class=src>merge/custom</code> directive, loose parameters
+are copied into the resulting grouping structure directly preceding the first control
+appearing that contains an <code class=src>insert</code> directive referencing that parameter.</p><p xmlns=http://www.w3.org/1999/xhtml>Parameters that are not referenced by an <code class=src>insert</code> elsewhere in the target, do not appear
+in the target. While it is not formally invalid to include unreferenced (unused) parameters,
+profile resolution requires that none be included except as a special option.</p><h3 xmlns=http://www.w3.org/1999/xhtml id=d2e1064-head>Merge phase</h3><h4 xmlns=http://www.w3.org/1999/xhtml id=d2e1066-head><code class=src>merge/combine</code> - handling control collisions</h4><p xmlns=http://www.w3.org/1999/xhtml><b class=term>Colliding controls</b> (or <b class=term>clashing</b>) describes the condition that
+occurs when multiple invocations of controls with the same ID are given, and so a profile
+resolution will result in duplicative and/or contradictory information. Even given a rule
+against multiple imports of the same resource, it may frequently occur that in profiles
+(especially profiles under development), multiple copies – and with variations – may be
+invoked from different sources. For example, if a profile tailors another profile which
+includes a control with amendments, and then (the top-level profile) includes the same
+control directly from its original catalog, a collision will occur between these two
+variants.</p><p xmlns=http://www.w3.org/1999/xhtml>Generally such a collision is readily detectable as long as IDs have not been modified;
+in other words, constraints over uniqueness (within document scope) of IDs will be
+violated in resolved instances where two (perhaps different) representations of the same
+control appear. Careful profile authors will be able to detect and prevent these resulting
+problems.</p><p xmlns=http://www.w3.org/1999/xhtml>Apart from handling problems and exceptions, however, for different purposes different
+profiles might wish to apply different rules. OSCAL offers three such rules: the
+directives for each are given as a value on the <code class=src>@method</code> attribute of a profile
+<code class=src>merge/combine</code> element.</p><h5 xmlns=http://www.w3.org/1999/xhtml id=d2e1082-head>No <code class=src>merge/combine</code> given</h5><p xmlns=http://www.w3.org/1999/xhtml>If no <code class=src>merge</code> directive is given in the profile, or if a <code class=src>merge</code> is
+given without a <code class=src>combine</code>, control or parameter clashes are treated as if
+<code class=src>merge/combine[@method='keep']</code> were given. A profile with no
+<code class=src>merge</code> directive:</p><div class=highlight><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;profile&gt;</span>
+  <span class=nt>&lt;import</span> <span class=na>href=</span><span class=s>&#34;#catalog1&#34;</span><span class=nt>/&gt;</span>
+  <span class=nt>&lt;import</span> <span class=na>href=</span><span class=s>&#34;#catalog2&#34;</span><span class=nt>/&gt;</span>
+<span class=nt>&lt;/profile&gt;</span></code></pre></div><p xmlns=http://www.w3.org/1999/xhtml>is the same as</p><div class=highlight><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;profile&gt;</span>
+  <span class=nt>&lt;import</span> <span class=na>href=</span><span class=s>&#34;#catalog1&#34;</span><span class=nt>/&gt;</span>
+  <span class=nt>&lt;import</span> <span class=na>href=</span><span class=s>&#34;#catalog2&#34;</span><span class=nt>/&gt;</span>
+  <span class=nt>&lt;merge&gt;</span>
+    <span class=nt>&lt;combine</span> <span class=na>method=</span><span class=s>&#34;keep&#34;</span><span class=nt>/&gt;</span>
+  <span class=nt>&lt;/merge&gt;</span>
+<span class=nt>&lt;/profile&gt;</span></code></pre></div><div xmlns=http://www.w3.org/1999/xhtml class=mapping><h5 xmlns=http://www.w3.org/1999/xhtml id=d2e1105-head><q class=q>No merge</q> combination rule</h5><p xmlns=http://www.w3.org/1999/xhtml>When a merge is indicated by <code class=src>merge/combine[@method='keep']</code>, or not given,
+the <q class=q>no merge</q> combination rule is used. Clashing controls or parameters are not
+merged. (They are kept.) Their groups are merged only if another <code class=src>merge</code>
+directive such as <code class=src>as-is</code> is given. (The combination rules affect only the
+handling of colliding controls, not their grouping in the target.)</p><div class=highlight><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;merge&gt;</span>
+  <span class=nt>&lt;combine</span> <span class=na>method=</span><span class=s>&#34;keep&#34;</span><span class=nt>/&gt;</span>
+<span class=nt>&lt;/merge&gt;</span></code></pre></div><p xmlns=http://www.w3.org/1999/xhtml>Under this directive, colliding controls will result in invalid results, as they will
+both appear in the results with the same ID. Accordingly, this setting may be useful in
+ensuring integrity of references to controls as given in the profile: if any included
+control is called only once, clashing controls will not be produced and validation will
+succeed.</p><div xmlns=http://www.w3.org/1999/xhtml class=mapping><div class=highlight><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;profile</span> <span class=na>xmlns=</span><span class=s>&#34;http://csrc.nist.gov/ns/oscal/1.0&#34;</span>
+    <span class=na>xmlns:xsi=</span><span class=s>&#34;http://www.w3.org/2001/XMLSchema-instance&#34;</span>
+    <span class=na>xsi:schemaLocation=</span><span class=s>&#34;http://csrc.nist.gov/ns/oscal/1.0 ../../../../xml/schema/oscal_profile_schema.xsd&#34;</span>
+    <span class=na>id=</span><span class=s>&#34;merge-keep_profile&#34;</span><span class=nt>&gt;</span>
+    <span class=nt>&lt;metadata&gt;</span> … <span class=nt>&lt;/metadata&gt;</span>
+    <span class=nt>&lt;import</span> <span class=na>href=</span><span class=s>&#34;abc-simple_catalog.xml&#34;</span><span class=nt>&gt;</span>
+        <span class=nt>&lt;include&gt;</span>
+            <span class=nt>&lt;call</span> <span class=na>control-id=</span><span class=s>&#34;a1&#34;</span><span class=nt>/&gt;</span>
+            <span class=nt>&lt;call</span> <span class=na>control-id=</span><span class=s>&#34;b1&#34;</span><span class=nt>/&gt;</span>
+        <span class=nt>&lt;/include&gt;</span>
+    <span class=nt>&lt;/import&gt;</span>
+    <span class=nt>&lt;import</span> <span class=na>href=</span><span class=s>&#34;abc-simple_catalog.xml&#34;</span><span class=nt>&gt;</span>
+        <span class=nt>&lt;include&gt;</span>
+            <span class=nt>&lt;call</span> <span class=na>control-id=</span><span class=s>&#34;a1&#34;</span><span class=nt>/&gt;</span>
+            <span class=nt>&lt;call</span> <span class=na>control-id=</span><span class=s>&#34;b1&#34;</span><span class=nt>/&gt;</span>
+        <span class=nt>&lt;/include&gt;</span>
+    <span class=nt>&lt;/import&gt;</span>
+    <span class=nt>&lt;merge&gt;</span>
+        <span class=nt>&lt;combine</span> <span class=na>method=</span><span class=s>&#34;keep&#34;</span><span class=nt>/&gt;</span>
+    <span class=nt>&lt;/merge&gt;</span>
+<span class=nt>&lt;/profile&gt;</span></code></pre></div><p>In the target (showing control selections):</p><div class=highlight><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;profile</span> <span class=na>xmlns=</span><span class=s>&#34;http://csrc.nist.gov/ns/oscal/1.0&#34;</span>
+    <span class=na>id=</span><span class=s>&#34;merge-keep_profile&#34;</span><span class=nt>&gt;</span>
+    <span class=nt>&lt;metadata&gt;</span> … <span class=nt>&lt;/metadata&gt;</span>
+    <span class=nt>&lt;selection</span> <span class=na>id=</span><span class=s>&#34;…&#34;</span><span class=nt>&gt;</span>
+      <span class=nt>&lt;control</span> <span class=na>id=</span><span class=s>&#34;a1&#34;</span><span class=nt>&gt;</span> … <span class=nt>&lt;/control&gt;</span>
+      <span class=nt>&lt;control</span> <span class=na>id=</span><span class=s>&#34;b1&#34;</span><span class=nt>&gt;</span> … <span class=nt>&lt;/control&gt;</span>
+    <span class=nt>&lt;/selection&gt;</span>
+    <span class=nt>&lt;selection</span> <span class=na>id=</span><span class=s>&#34;…&#34;</span><span class=nt>&gt;</span>
+      <span class=nt>&lt;control</span> <span class=na>id=</span><span class=s>&#34;a1&#34;</span><span class=nt>&gt;</span> … <span class=nt>&lt;/control&gt;</span>
+      <span class=nt>&lt;control</span> <span class=na>id=</span><span class=s>&#34;b1&#34;</span><span class=nt>&gt;</span> … <span class=nt>&lt;/control&gt;</span>
+    <span class=nt>&lt;/selection&gt;</span>
+<span class=nt>&lt;/profile&gt;</span></code></pre></div></div><p xmlns=http://www.w3.org/1999/xhtml>In this case, downstream errors should be expected: the two <code class=code>a1</code> controls
+clash with each other, as do the two <code class=code>b1</code> controls. To remove the duplicates,
+either repair the source catalog to avoid the redundant invocations (usually a better
+solution) or (when that is unavoidable) use a different merge combination rule.</p><p xmlns=http://www.w3.org/1999/xhtml>Processors may optionally produce warnings when clashing controls are produced due to
+redundant invocations.</p><h5 xmlns=http://www.w3.org/1999/xhtml id=d2e1135-head><q class=q>Use first</q> merge combination rule</h5><div class=highlight><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;merge&gt;</span>
+  <span class=nt>&lt;combine</span><span class=err>=&#34;use-first&#34;</span><span class=nt>/&gt;</span>
+<span class=nt>&lt;/merge&gt;</span></code></pre></div><p xmlns=http://www.w3.org/1999/xhtml>When the <q class=q>use first</q> combination rule is applied, the first reference to a given
+control, with respect to the document order of the source data, prevails over later
+references. <q class=q>First</q> is determined in reference to a top-down, depth-first traversal
+of the profile import hierarchy. So if a profile is imported before a catalog, and the
+imported profile presents a representation of a control also given in the catalog
+import, the profile’s representation (perhaps modified) is taken. However, if the import
+directive targeting the catalog appears first, the catalog's (unmodified) representation
+of the control is included.</p><p xmlns=http://www.w3.org/1999/xhtml>The same logic applies to parameters in the source catalogs, as modified by parameter
+<code class=src>set</code> directives.</p><div xmlns=http://www.w3.org/1999/xhtml class=mapping><div class=highlight><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;profile</span> <span class=na>xmlns=</span><span class=s>&#34;http://csrc.nist.gov/ns/oscal/1.0&#34;</span>
+    <span class=na>xmlns:xsi=</span><span class=s>&#34;http://www.w3.org/2001/XMLSchema-instance&#34;</span>
+    <span class=na>xsi:schemaLocation=</span><span class=s>&#34;http://csrc.nist.gov/ns/oscal/1.0 ../../../../xml/schema/oscal_profile_schema.xsd&#34;</span>
+    <span class=na>id=</span><span class=s>&#34;merge-keep_profile&#34;</span><span class=nt>&gt;</span>
+    <span class=nt>&lt;metadata&gt;</span> … <span class=nt>&lt;/metadata&gt;</span>
+    <span class=nt>&lt;import</span> <span class=na>href=</span><span class=s>&#34;abc-simple_catalog.xml&#34;</span><span class=nt>&gt;</span>
+        <span class=nt>&lt;include&gt;</span>
+            <span class=nt>&lt;call</span> <span class=na>control-id=</span><span class=s>&#34;a1&#34;</span><span class=nt>/&gt;</span>
+            <span class=nt>&lt;call</span> <span class=na>control-id=</span><span class=s>&#34;c1&#34;</span><span class=nt>/&gt;</span>
+        <span class=nt>&lt;/include&gt;</span>
+    <span class=nt>&lt;/import&gt;</span>
+    <span class=nt>&lt;import</span> <span class=na>href=</span><span class=s>&#34;abc-simple_catalog.xml&#34;</span><span class=nt>&gt;</span>
+        <span class=nt>&lt;include&gt;</span>
+            <span class=nt>&lt;call</span> <span class=na>control-id=</span><span class=s>&#34;a1&#34;</span><span class=nt>/&gt;</span>
+            <span class=nt>&lt;call</span> <span class=na>control-id=</span><span class=s>&#34;b1&#34;</span><span class=nt>/&gt;</span>
+        <span class=nt>&lt;/include&gt;</span>
+    <span class=nt>&lt;/import&gt;</span>
+    <span class=nt>&lt;merge&gt;</span>
+        <span class=nt>&lt;combine</span> <span class=na>method=</span><span class=s>&#34;use-first&#34;</span><span class=nt>/&gt;</span>
+    <span class=nt>&lt;/merge&gt;</span>
+<span class=nt>&lt;/profile&gt;</span></code></pre></div><p>In the target (showing control selections):</p><div class=highlight><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;profile</span> <span class=na>xmlns=</span><span class=s>&#34;http://csrc.nist.gov/ns/oscal/1.0&#34;</span>
+    <span class=na>id=</span><span class=s>&#34;merge-keep_profile&#34;</span><span class=nt>&gt;</span>
+    <span class=nt>&lt;metadata&gt;</span> … <span class=nt>&lt;/metadata&gt;</span>
+    <span class=nt>&lt;selection</span> <span class=na>id=</span><span class=s>&#34;…&#34;</span><span class=nt>&gt;</span>
+      <span class=nt>&lt;control</span> <span class=na>id=</span><span class=s>&#34;a1&#34;</span><span class=nt>&gt;</span> … <span class=nt>&lt;/control&gt;</span>
+      <span class=nt>&lt;control</span> <span class=na>id=</span><span class=s>&#34;c1&#34;</span><span class=nt>&gt;</span> … <span class=nt>&lt;/control&gt;</span>
+    <span class=nt>&lt;/selection&gt;</span>
+    <span class=nt>&lt;selection</span> <span class=na>id=</span><span class=s>&#34;…&#34;</span><span class=nt>&gt;</span>
+      <span class=nt>&lt;control</span> <span class=na>id=</span><span class=s>&#34;b1&#34;</span><span class=nt>&gt;</span> … <span class=nt>&lt;/control&gt;</span>
+    <span class=nt>&lt;/selection&gt;</span>
+<span class=nt>&lt;/profile&gt;</span></code></pre></div></div><p xmlns=http://www.w3.org/1999/xhtml><span class=revisit>The <q class=q>use first</q> combination rule also affects back matter,
+q.v.</span></p><h5 xmlns=http://www.w3.org/1999/xhtml id=d2e1162-head><q class=q>Merge controls</q> merge combination rule</h5><div class=highlight><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;merge&gt;</span>
+  <span class=nt>&lt;combine</span><span class=err>=&#34;merge&#34;</span><span class=nt>/&gt;</span>
+<span class=nt>&lt;/merge&gt;</span></code></pre></div><p xmlns=http://www.w3.org/1999/xhtml>When the <b class=term>merge controls</b> merge combination rule is applied, the processor
+will merge all representations of a given control, as distinguished by ID, into a single
+unified representation.</p><p xmlns=http://www.w3.org/1999/xhtml>The single unified representation is assembled by aggregating all the contents of all
+the (clashing) control instances and discarding replicated branches, so that only a
+single instance of each distinctive element appears in the result. The order of the
+copied contents will be their original order within their controls, given in the
+original order of the controls in their source catalog, then sorted into canonical order
+for control contents.</p><p xmlns=http://www.w3.org/1999/xhtml>Example:</p><div class=highlight><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;control</span> <span class=na>id=</span><span class=s>&#34;a1&#34;</span><span class=nt>&gt;</span>
+  <span class=nt>&lt;title&gt;</span>Control A1<span class=nt>&lt;/title&gt;</span>
+  <span class=nt>&lt;prop</span> <span class=na>name=</span><span class=s>&#34;label&#34;</span><span class=nt>&gt;</span>A-1<span class=nt>&lt;/prop&gt;</span>
+  <span class=nt>&lt;prop</span> <span class=na>name=</span><span class=s>&#34;status&#34;</span><span class=nt>&gt;</span>pending<span class=nt>&lt;/prop&gt;</span>
+<span class=nt>&lt;/control&gt;</span></code></pre></div><p xmlns=http://www.w3.org/1999/xhtml>merging with</p><div class=highlight><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;control</span> <span class=na>id=</span><span class=s>&#34;a1&#34;</span><span class=nt>&gt;</span>
+  <span class=nt>&lt;title&gt;</span>Control A1<span class=nt>&lt;/title&gt;</span>
+  <span class=nt>&lt;prop</span> <span class=na>name=</span><span class=s>&#34;label&#34;</span><span class=nt>&gt;</span>A-1<span class=nt>&lt;/prop&gt;</span>
+  <span class=nt>&lt;prop</span> <span class=na>name=</span><span class=s>&#34;status&#34;</span><span class=nt>&gt;</span>ready<span class=nt>&lt;/prop&gt;</span>
+<span class=nt>&lt;/control&gt;</span></code></pre></div><p xmlns=http://www.w3.org/1999/xhtml>produces</p><div class=highlight><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;control</span> <span class=na>id=</span><span class=s>&#34;a1&#34;</span><span class=nt>&gt;</span>
+  <span class=nt>&lt;title&gt;</span>Control A1<span class=nt>&lt;/title&gt;</span>
+  <span class=nt>&lt;prop</span> <span class=na>name=</span><span class=s>&#34;label&#34;</span><span class=nt>&gt;</span>A-1<span class=nt>&lt;/prop&gt;</span>
+  <span class=nt>&lt;prop</span> <span class=na>name=</span><span class=s>&#34;status&#34;</span><span class=nt>&gt;</span>pending<span class=nt>&lt;/prop&gt;</span>
+  <span class=nt>&lt;prop</span> <span class=na>name=</span><span class=s>&#34;status&#34;</span><span class=nt>&gt;</span>ready<span class=nt>&lt;/prop&gt;</span>
+<span class=nt>&lt;/control&gt;</span></code></pre></div><p xmlns=http://www.w3.org/1999/xhtml>Note that groups are not merged by this rule; for that purpose, <code class=src>merge/as-is</code>
+or <code class=src>merge/custom</code> should be used (in addition to the combine directive).</p><p xmlns=http://www.w3.org/1999/xhtml>Since the effect of this merge rule is to drop data silently (when it is considered to
+be redundant or duplicative), it should only be used on well-understood, well-controlled
+catalog and profile inputs, whose potential clashes or collisions are known in
+advance.</p><p xmlns=http://www.w3.org/1999/xhtml><span class=revisit>BR wants SP800-53 examples and points out prop[@name='status'] is not in it.
+But this is not a guide to SP800-53 it is a spec for any profile
+resolution.</span></p><h5 xmlns=http://www.w3.org/1999/xhtml id=d2e1192-head>Effects of combination rules on back matter</h5><p xmlns=http://www.w3.org/1999/xhtml>When profiles import from more than one resource (catalog or profile), not only is
+there a potential for clashing controls, but also citation and resource elements
+appearing in the back matter, may clash with other citations and resources, yielding
+validation errors in the result when an ID appears more than once.</p><p xmlns=http://www.w3.org/1999/xhtml>This situation is not remedied by the <q class=q>no merge</q> combination rule. Under this
+rule, any citation or resource that is referenced from an imported catalog or profile,
+is included in the resolution target. This may result in replicated contents, where the
+same element is given more than once in the target, producing violations of
+ID-uniqueness constraints. For profiles that call controls from more than one import
+pathway, the <q class=q>no merge</q> combination may be most useful for debugging.</p><p xmlns=http://www.w3.org/1999/xhtml>Under the <q class=q>use first</q> rule (with <code class=src>merge/combine[@method='use-first']</code>),
+only the first <code class=src>citation</code> with a given ID is kept from the set of citations
+(gathered from all sources). Likewise only the first <code class=src>resource</code> with a given ID
+is kept from the set of resources. Note that uncontrolled identifiers may still clash –
+for example, this will not prevent a <code class=tgt>citation</code> and <code class=tgt>resource</code> from
+appearing in the result with the same ID (perhaps sourced from two different catalogs).
+Maintenance and possibly revision of upstream data sets is necessary to prevent such
+ambiguities.</p><p xmlns=http://www.w3.org/1999/xhtml><span class=revisit>Examples</span></p><p xmlns=http://www.w3.org/1999/xhtml><span class=revisit>How does the <code class=src>merge/combine[@method='merge']</code> (<q class=q>merge controls</q>)
+rule apply to back matter? Maybe the same as use-first. Or maybe use an approach
+similar to controls.</span></p><h4 xmlns=http://www.w3.org/1999/xhtml id=d2e1225-head>Structuring the target</h4><p xmlns=http://www.w3.org/1999/xhtml>The overall organization of the target document at the top level has been described [See: <a href=#d2e324-head class=xref>Target catalog structure</a>]. This section describes how a profile may dictate the body of
+the target <code class=tgt>catalog</code>, apart from its <code class=tgt>metadata</code> or
+<code class=tgt>back-matter</code>.</p><p xmlns=http://www.w3.org/1999/xhtml>The <code class=src>merge</code> element, in addition to proposing a strategy by which to
+disambiguate clashing controls, also includes directives that can be used to organize the
+target catalog into a structure or hierarchy of groups. Two <code class=src>merge</code> directives
+are used to introduce structure into the target catalog, <code class=src>as-is</code> and
+<code class=src>custom</code>. If neither is given, no structure is provided: parameters and
+controls in the target appear in sequence, with no structure or grouping apart from what
+is internal to the controls</p><h5 xmlns=http://www.w3.org/1999/xhtml id=d2e1247-head>Unstructured catalog output</h5><p xmlns=http://www.w3.org/1999/xhtml>Profiles that have neither of these directives are resolved as unstructured catalogs,
+with no groupings of controls.</p><p xmlns=http://www.w3.org/1999/xhtml>Unstructured catalog output is produced by emitting the contents of the sequence of
+control selections produced in the selection phase, seeing to it that (for validity in
+XML) they are sorted so that all loose <code class=tgt>param</code> elements (that is, that do not
+appear inside controls) appear before all <code class=tgt>control</code> elements.</p><div xmlns=http://www.w3.org/1999/xhtml class=mapping><div class=highlight><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;profile</span> <span class=na>xmlns=</span><span class=s>&#34;http://csrc.nist.gov/ns/oscal/1.0&#34;</span>
+    <span class=na>id=</span><span class=s>&#34;merge-keep_profile&#34;</span><span class=nt>&gt;</span>
+    <span class=nt>&lt;metadata&gt;</span> … <span class=nt>&lt;/metadata&gt;</span>
+    <span class=nt>&lt;selection</span> <span class=na>id=</span><span class=s>&#34;…&#34;</span><span class=nt>&gt;</span>
+      <span class=nt>&lt;param</span> <span class=na>id=</span><span class=s>&#34;p1&#34;</span><span class=nt>&gt;</span> … <span class=nt>&lt;/param&gt;</span>
+      <span class=nt>&lt;control</span> <span class=na>id=</span><span class=s>&#34;a1&#34;</span><span class=nt>&gt;</span>
+        <span class=nt>&lt;param</span> <span class=na>id=</span><span class=s>&#34;p3&#34;</span><span class=nt>&gt;</span> … <span class=nt>&lt;/param&gt;</span>
+         … <span class=nt>&lt;/control&gt;</span>
+      <span class=nt>&lt;control</span> <span class=na>id=</span><span class=s>&#34;c1&#34;</span><span class=nt>&gt;</span> … <span class=nt>&lt;/control&gt;</span>
+    <span class=nt>&lt;/selection&gt;</span>
+    <span class=nt>&lt;selection</span> <span class=na>id=</span><span class=s>&#34;…&#34;</span><span class=nt>&gt;</span>
+      <span class=nt>&lt;param</span> <span class=na>id=</span><span class=s>&#34;p2&#34;</span><span class=nt>&gt;</span> … <span class=nt>&lt;/param&gt;</span>
+      <span class=nt>&lt;control</span> <span class=na>id=</span><span class=s>&#34;b1&#34;</span><span class=nt>&gt;</span> … <span class=nt>&lt;/control&gt;</span>
+    <span class=nt>&lt;/selection&gt;</span>
+<span class=nt>&lt;/profile&gt;</span></code></pre></div><div class=highlight><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;catalog</span> <span class=na>xmlns=</span><span class=s>&#34;http://csrc.nist.gov/ns/oscal/1.0&#34;</span>
+    <span class=na>id=</span><span class=s>&#34;{ catalog-id }&#34;</span><span class=nt>&gt;</span>
+    <span class=nt>&lt;metadata&gt;</span> … <span class=nt>&lt;/metadata&gt;</span>
+    <span class=nt>&lt;param</span> <span class=na>id=</span><span class=s>&#34;p1&#34;</span><span class=nt>&gt;</span> … <span class=nt>&lt;/param&gt;</span>
+    <span class=nt>&lt;param</span> <span class=na>id=</span><span class=s>&#34;p2&#34;</span><span class=nt>&gt;</span> … <span class=nt>&lt;/param&gt;</span>
+    <span class=nt>&lt;control</span> <span class=na>id=</span><span class=s>&#34;a1&#34;</span><span class=nt>&gt;</span>
+      <span class=nt>&lt;param</span> <span class=na>id=</span><span class=s>&#34;p3&#34;</span><span class=nt>&gt;</span> … <span class=nt>&lt;/param&gt;</span>
+       … <span class=nt>&lt;/control&gt;</span>
+    <span class=nt>&lt;control</span> <span class=na>id=</span><span class=s>&#34;c1&#34;</span><span class=nt>&gt;</span> … <span class=nt>&lt;/control&gt;</span>
+    <span class=nt>&lt;control</span> <span class=na>id=</span><span class=s>&#34;b1&#34;</span><span class=nt>&gt;</span> … <span class=nt>&lt;/control&gt;</span>
+<span class=nt>&lt;/profile&gt;</span></code></pre></div></div><h5 xmlns=http://www.w3.org/1999/xhtml id=d2e1263-head>Merging <q class=q>as is</q></h5><p xmlns=http://www.w3.org/1999/xhtml>An <code class=src>as-is</code>directive is used to reproduce the structure of a source catalog in
+the target catalog. When more than one catalog is referenced by a profile, the
+<code class=src>as-is</code> directive produces a catalog that combines the grouping structures of
+all the source catalogs.</p><p xmlns=http://www.w3.org/1999/xhtml><span class=revisit>(consider case of multiple imports of single resource – we need to track
+catalog identity here)</span></p><h6 xmlns=http://www.w3.org/1999/xhtml id=d2e1275-head>Implicit inclusions under <code class=src>as-is</code></h6><p xmlns=http://www.w3.org/1999/xhtml>Under <b class=term>as is</b>, a resolved profile’s structure is expected to replicate the
+structure of source catalogs.</p><p xmlns=http://www.w3.org/1999/xhtml>This is achieved by propagating, with all controls that are included, all groups that
+they appear within, along with the groups’ IDs, titles and other contents, including
+any parameters to be referenced in the target ([See: <a href=#d2e1000-head class=xref>Loose parameters</a>] ) or
+<code class=src>part</code> element children; but not including any controls not included in one
+or another control selection, directly or indirectly. Controls may be included into a
+group indirectly when merging <b class=term>as is</b>, by virtue of containing controls
+that have been included [See: <a href=#d2e1263-head class=xref>Merging <q class=q>as is</q></a>]</p><p xmlns=http://www.w3.org/1999/xhtml>Groups that do not include controls that have been included (either directly or as
+descendants of contained groups), are not propagated to the target.</p><p xmlns=http://www.w3.org/1999/xhtml>This is slightly different from groups, which may in valid inputs have other contents
+– besides titles, controls, or groups – that profile authors wish to see copied into
+the customized catalog.</p><p xmlns=http://www.w3.org/1999/xhtml>Example:</p><div class=highlight><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;control</span> <span class=na>id=</span><span class=s>&#34;xyz-1&#34;</span><span class=nt>&gt;</span>
+  <span class=nt>&lt;title&gt;</span>Basic Household<span class=nt>&lt;/title&gt;</span>
+  <span class=nt>&lt;control</span> <span class=na>id=</span><span class=s>&#34;xyz-1.1&#34;</span><span class=nt>&gt;</span><span class=c>&lt;!-- bedtime routine --&gt;</span>...<span class=nt>&lt;/control&gt;</span>
+  <span class=nt>&lt;control</span> <span class=na>id=</span><span class=s>&#34;xyz-1.2&#34;</span><span class=nt>&gt;</span>
+    <span class=nt>&lt;title&gt;</span>Kitchen cleanup<span class=nt>&lt;/title&gt;</span>
+	<span class=nt>&lt;control</span> <span class=na>id=</span><span class=s>&#34;xyz-1.2.1&#34;</span><span class=nt>&gt;</span><span class=c>&lt;!-- kitchen trashcan --&gt;</span>...<span class=nt>&lt;/control&gt;</span>
+  <span class=nt>&lt;/control&gt;</span>
+  <span class=nt>&lt;control</span> <span class=na>id=</span><span class=s>&#34;xyz-1.3&#34;</span><span class=nt>&gt;</span><span class=c>&lt;!-- newspaper delivery --&gt;</span>...<span class=nt>&lt;/control&gt;</span>
+<span class=nt>&lt;/control&gt;</span></code></pre></div><p xmlns=http://www.w3.org/1999/xhtml>In this case the profile does not designate either control <code class=code>xyz-1</code> or
+control <code class=code>xyz-1.2</code> for inclusion</p><div class=highlight><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;import</span> <span class=na>href=</span><span class=s>&#34;#XYZ-catalog&#34;</span><span class=nt>&gt;</span>
+  <span class=nt>&lt;include&gt;</span>
+    <span class=nt>&lt;call</span> <span class=na>control-id=</span><span class=s>&#39;xyz-1.1&#39;</span><span class=nt>/&gt;</span><span class=c>&lt;!-- bedtime routine --&gt;</span>
+    <span class=nt>&lt;call</span> <span class=na>control-id=</span><span class=s>&#39;xyz-1.2.1&#39;</span><span class=nt>/&gt;</span><span class=c>&lt;!-- kitchen trashcan --&gt;</span>
+  <span class=nt>&lt;/include&gt;</span>
+<span class=nt>&lt;/import&gt;</span></code></pre></div><p xmlns=http://www.w3.org/1999/xhtml>The unmentioned elements are included, however, with their titles, because controls
+that they contain are included. But control <code class=code>xyz-1.3</code> does not appear in
+the target.</p><div class=highlight><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;control</span> <span class=na>id=</span><span class=s>&#34;xyz-1&#34;</span><span class=nt>&gt;</span>
+  <span class=nt>&lt;title&gt;</span>Basic Hygiene<span class=nt>&lt;/title&gt;</span>
+  <span class=nt>&lt;control</span> <span class=na>id=</span><span class=s>&#34;xyz-1.1&#34;</span><span class=nt>&gt;</span><span class=c>&lt;!-- bedtime routine --&gt;</span>...<span class=nt>&lt;/control&gt;</span>
+  <span class=nt>&lt;control</span> <span class=na>id=</span><span class=s>&#34;xyz-1.2&#34;</span><span class=nt>&gt;</span>
+    <span class=nt>&lt;title&gt;</span>Kitchen cleanup<span class=nt>&lt;/title&gt;</span>
+	<span class=nt>&lt;control</span> <span class=na>id=</span><span class=s>&#34;xyz-1.2.1&#34;</span><span class=nt>&gt;</span><span class=c>&lt;!-- kitchen trashcan --&gt;</span>...<span class=nt>&lt;/control&gt;</span>
+  <span class=nt>&lt;/control&gt;</span>
+<span class=nt>&lt;/control&gt;</span></code></pre></div><p xmlns=http://www.w3.org/1999/xhtml>Note that this means there may be controls that are selected implicitly by
+<code class=tgt>as-is</code> merging, over and above controls actually designated in import
+statements. Thus the control set, considered strictly, of the target of an
+<code class=tgt>as-is</code> process, will be different from the control set delivered by a
+<q class=q>no merge</q> process.</p><p xmlns=http://www.w3.org/1999/xhtml>Processors may optionally provide services for detection of nesting and structural
+issues related to the importing and merging of controls, including but not limited to
+validation / detection utilities (for imports regarded as incorrect, incomplete or
+otherwise subject to improvement); runtime warnings; or user interfaces.</p><h6 xmlns=http://www.w3.org/1999/xhtml id=d2e1321-head>Group contents under merging as-is</h6><p xmlns=http://www.w3.org/1999/xhtml>One title only. Other contents? Elements and controls are subject to the merge
+combination rules. <span class=revisit>Other kinds of contents of groups …</span></p><h5 xmlns=http://www.w3.org/1999/xhtml id=d2e1326-head>Merging into a new structure: <code class=src>custom</code></h5><p xmlns=http://www.w3.org/1999/xhtml>The <code class=src>merge/custom</code> directive provides a way to provide a target catalog with a
+custom structure. It combines <code class=src>call</code> or <code class=src>match</code> directives, which work
+as they do in selection, into groups, which provide the target with its structure.</p><p xmlns=http://www.w3.org/1999/xhtml>The controls to be included must be selected in the profile's import. A call or match
+appearing inside <code class=src>custom</code>, if it refers to controls not selected, is
+inoperative.</p><p xmlns=http://www.w3.org/1999/xhtml>The structures given inside the <code class=src>custom</code> assembly indicate the structure of
+the target catalog. They produce this structure by mapping one for one. Unlike
+<q class=q>as-is</q> merging, there is no implicit inclusion of controls by virtue of
+including descendant controls. Instead, all controls are included in the target in the
+locations indicated by the custom structure.</p><h6 xmlns=http://www.w3.org/1999/xhtml id=d2e1348-head>Grouping controls inside a custom structure</h6><p xmlns=http://www.w3.org/1999/xhtml>A <code class=src>group</code> element given in a custom structure results in an analogous
+<code class=tgt>group</code>. Its attributes (flags) are copied to the target catalog to appear
+on the <code class=tgt>group</code> in the target. All element contents inside the group,
+including <code class=src>title</code>, <code class=src>param</code>, <code class=src>prop</code> and <code class=src>part</code>
+elements are likewise copied into the target, appearing in the same order as in the
+source.</p><p xmlns=http://www.w3.org/1999/xhtml>Within <code class=src>custom</code>, <code class=src>call</code> and <code class=src>match</code> elements reference
+controls in much the same way as they do when given in import/include directives - a
+control is either selected by <code class=src>@id</code> (<code class=src>call.@control-id</code>) or matched
+using a pattern on its <code class=src>@id</code> (<code class=src>match/@pattern</code>).</p><p xmlns=http://www.w3.org/1999/xhtml>A <code class=src>call</code> results in including, at that point inside the new grouping, all
+controls with the <code class=src>@id</code> given by the <code class=src>call/@control-id</code>. They should
+be given in the same order as they appear in the control selection(s). Merge
+combination rules apply. [See: <a href=#d2e1066-head class=xref><code class=src>merge/combine</code> - handling control collisions</a>]</p><p xmlns=http://www.w3.org/1999/xhtml>A <code class=src>match</code> results in including, at that point inside the new grouping, all
+controls whose <code class=src>@id</code> matching, as an XPath regular expression, the pattern
+given in the <code class=src>match/@pattern</code>. This may result in several or many controls;
+again they are given in the same order as they have in the control selection(s).
+Again, among clashing controls (that have the same ID), merge combination rules apply.
+[See: <a href=#d2e1066-head class=xref><code class=src>merge/combine</code> - handling control collisions</a>]</p><div xmlns=http://www.w3.org/1999/xhtml class=mapping><div class=highlight><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;profile</span> <span class=na>xmlns=</span><span class=s>&#34;http://csrc.nist.gov/ns/oscal/1.0&#34;</span>
+    <span class=na>id=</span><span class=s>&#34;merge-custom_profile&#34;</span><span class=nt>&gt;</span>
+    <span class=nt>&lt;metadata&gt;</span> … <span class=nt>&lt;/metadata&gt;</span>
+    <span class=nt>&lt;import</span> <span class=na>href=</span><span class=s>&#34;abc-simple_catalog.xml&#34;</span><span class=nt>&gt;</span>
+        <span class=nt>&lt;include&gt;</span>
+            <span class=nt>&lt;call</span> <span class=na>control-id=</span><span class=s>&#34;a1&#34;</span><span class=nt>/&gt;</span>
+            <span class=nt>&lt;call</span> <span class=na>control-id=</span><span class=s>&#34;a2&#34;</span><span class=nt>/&gt;</span>
+            <span class=nt>&lt;call</span> <span class=na>control-id=</span><span class=s>&#34;b1&#34;</span><span class=nt>/&gt;</span>
+            <span class=nt>&lt;call</span> <span class=na>control-id=</span><span class=s>&#34;b2&#34;</span><span class=nt>/&gt;</span>
+            <span class=nt>&lt;call</span> <span class=na>control-id=</span><span class=s>&#34;c1&#34;</span><span class=nt>/&gt;</span>
+            <span class=nt>&lt;call</span> <span class=na>control-id=</span><span class=s>&#34;c2&#34;</span><span class=nt>/&gt;</span>
+        <span class=nt>&lt;/include&gt;</span>
+    <span class=nt>&lt;/import&gt;</span>
+    <span class=nt>&lt;merge&gt;</span>
+        <span class=nt>&lt;custom&gt;</span>
+            <span class=nt>&lt;group&gt;</span>
+                <span class=nt>&lt;title&gt;</span>New Group I<span class=nt>&lt;/title&gt;</span>
+                <span class=nt>&lt;call</span> <span class=na>control-id=</span><span class=s>&#34;a1&#34;</span><span class=nt>/&gt;</span>
+                <span class=nt>&lt;call</span> <span class=na>control-id=</span><span class=s>&#34;b1&#34;</span><span class=nt>/&gt;</span>
+                <span class=nt>&lt;call</span> <span class=na>control-id=</span><span class=s>&#34;c1&#34;</span><span class=nt>/&gt;</span>
+            <span class=nt>&lt;/group&gt;</span>
+            <span class=nt>&lt;group&gt;</span>
+                <span class=nt>&lt;title&gt;</span>New Group II<span class=nt>&lt;/title&gt;</span>
+                <span class=nt>&lt;call</span> <span class=na>control-id=</span><span class=s>&#34;b2&#34;</span><span class=nt>/&gt;</span>
+                <span class=nt>&lt;call</span> <span class=na>control-id=</span><span class=s>&#34;c2&#34;</span><span class=nt>/&gt;</span>
+            <span class=nt>&lt;/group&gt;</span>
+    <span class=nt>&lt;/merge&gt;</span>
+<span class=nt>&lt;/profile&gt;</span></code></pre></div><div class=highlight><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;catalog</span> <span class=na>xmlns=</span><span class=s>&#34;http://csrc.nist.gov/ns/oscal/1.0&#34;</span>
+    <span class=na>id=</span><span class=s>&#34;{ new-catalog-identifier }&#34;</span><span class=nt>&gt;</span>
+    <span class=nt>&lt;metadata&gt;</span> … <span class=nt>&lt;/metadata&gt;</span>
+    <span class=nt>&lt;group&gt;</span>
+        <span class=nt>&lt;title&gt;</span>New Group I<span class=nt>&lt;/title&gt;</span>
+        <span class=nt>&lt;control</span> <span class=na>id=</span><span class=s>&#34;a1&#34;</span><span class=nt>&gt;</span> … <span class=nt>&lt;/control&gt;</span>
+        <span class=nt>&lt;control</span> <span class=na>id=</span><span class=s>&#34;b1&#34;</span><span class=nt>&gt;</span> … <span class=nt>&lt;/control&gt;</span>
+        <span class=nt>&lt;control</span> <span class=na>id=</span><span class=s>&#34;c1&#34;</span><span class=nt>&gt;</span> … <span class=nt>&lt;/control&gt;</span>
+    <span class=nt>&lt;/group&gt;</span>
+    <span class=nt>&lt;group&gt;</span>
+        <span class=nt>&lt;title&gt;</span>New Group II<span class=nt>&lt;/title&gt;</span>
+        <span class=nt>&lt;control</span> <span class=na>id=</span><span class=s>&#34;b2&#34;</span><span class=nt>&gt;</span> … <span class=nt>&lt;/control&gt;</span>
+        <span class=nt>&lt;control</span> <span class=na>id=</span><span class=s>&#34;c2&#34;</span><span class=nt>&gt;</span> … <span class=nt>&lt;/control&gt;</span>
+    <span class=nt>&lt;/group&gt;</span>
+<span class=nt>&lt;/profile&gt;</span></code></pre></div><p>In this example, control <code class=code>a2</code> does <em class=em>not</em> appear in the target
+catalog, as a custom structure was indicated (by the presence of the source profile
+<code class=src>merge/custom</code>), but the control never referenced by a <code class=src>call</code>
+(or <code class=src>match</code>) directive inside the custom structure.</p><p>When a custom structure references a control that is not included in any control
+selection (in the import phase), the reference is inoperative. A processor may
+signal a warning in this case.</p><p>Similarly, no error occurs if a control is selected (appears in a control selection
+or even more than one), but it is never referenced from the <code class=src>custom</code>
+structure given. The control does not appear in the target catalog. Again, a
+processor may optionally signal a warning if this occurs.</p></div><div xmlns=http://www.w3.org/1999/xhtml class=mapping><div class=highlight><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;profile</span> <span class=na>xmlns=</span><span class=s>&#34;http://csrc.nist.gov/ns/oscal/1.0&#34;</span>
+    <span class=na>id=</span><span class=s>&#34;merge-custom_profile&#34;</span><span class=nt>&gt;</span>
+    <span class=nt>&lt;metadata&gt;</span> … <span class=nt>&lt;/metadata&gt;</span>
+    <span class=nt>&lt;import</span> <span class=na>href=</span><span class=s>&#34;abc-simple_catalog.xml&#34;</span><span class=nt>&gt;</span>
+        <span class=nt>&lt;include&gt;</span>
+            <span class=nt>&lt;call</span> <span class=na>control-id=</span><span class=s>&#34;a1&#34;</span><span class=nt>/&gt;</span>
+            <span class=nt>&lt;call</span> <span class=na>control-id=</span><span class=s>&#34;a2&#34;</span><span class=nt>/&gt;</span>
+            <span class=nt>&lt;call</span> <span class=na>control-id=</span><span class=s>&#34;b1&#34;</span><span class=nt>/&gt;</span>
+            <span class=nt>&lt;call</span> <span class=na>control-id=</span><span class=s>&#34;b2&#34;</span><span class=nt>/&gt;</span>
+            <span class=nt>&lt;call</span> <span class=na>control-id=</span><span class=s>&#34;c1&#34;</span><span class=nt>/&gt;</span>
+            <span class=nt>&lt;call</span> <span class=na>control-id=</span><span class=s>&#34;c2&#34;</span><span class=nt>/&gt;</span>
+        <span class=nt>&lt;/include&gt;</span>
+    <span class=nt>&lt;/import&gt;</span>
+    <span class=nt>&lt;merge&gt;</span>
+        <span class=nt>&lt;custom&gt;</span>
+            <span class=nt>&lt;call</span> <span class=na>control-id=</span><span class=s>&#34;b2&#34;</span><span class=nt>/&gt;</span>
+            <span class=nt>&lt;call</span> <span class=na>control-id=</span><span class=s>&#34;c2&#34;</span><span class=nt>/&gt;</span>
+            <span class=nt>&lt;group</span> <span class=na>id=</span><span class=s>&#34;group1&#34;</span><span class=nt>&gt;</span>
+                <span class=nt>&lt;title&gt;</span>New Grouping<span class=nt>&lt;/title&gt;</span>
+                <span class=nt>&lt;call</span> <span class=na>control-id=</span><span class=s>&#34;a1&#34;</span><span class=nt>/&gt;</span>
+                <span class=nt>&lt;call</span> <span class=na>control-id=</span><span class=s>&#34;b1&#34;</span><span class=nt>/&gt;</span>
+                <span class=nt>&lt;group</span>  <span class=na>id=</span><span class=s>&#34;group2&#34;</span><span class=nt>&gt;</span>
+                  <span class=nt>&lt;call</span> <span class=na>control-id=</span><span class=s>&#34;c1&#34;</span><span class=nt>/&gt;</span>
+                <span class=nt>&lt;/group&gt;</span>
+            <span class=nt>&lt;/group&gt;</span>
+    <span class=nt>&lt;/merge&gt;</span>
+<span class=nt>&lt;/profile&gt;</span></code></pre></div><div class=highlight><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;catalog</span> <span class=na>xmlns=</span><span class=s>&#34;http://csrc.nist.gov/ns/oscal/1.0&#34;</span>
+    <span class=na>id=</span><span class=s>&#34;{ new-catalog-identifier }&#34;</span><span class=nt>&gt;</span>
+    <span class=nt>&lt;metadata&gt;</span> … <span class=nt>&lt;/metadata&gt;</span>
+    <span class=nt>&lt;control</span> <span class=na>id=</span><span class=s>&#34;b2&#34;</span><span class=nt>&gt;</span> … <span class=nt>&lt;/control&gt;</span>
+    <span class=nt>&lt;control</span> <span class=na>id=</span><span class=s>&#34;c2&#34;</span><span class=nt>&gt;</span> … <span class=nt>&lt;/control&gt;</span>
+    <span class=nt>&lt;group</span> <span class=na>id=</span><span class=s>&#34;group1&#34;</span><span class=nt>&gt;</span>
+        <span class=nt>&lt;title&gt;</span>New Grouping<span class=nt>&lt;/title&gt;</span>
+        <span class=nt>&lt;control</span> <span class=na>id=</span><span class=s>&#34;a1&#34;</span><span class=nt>&gt;</span> … <span class=nt>&lt;/control&gt;</span>
+        <span class=nt>&lt;control</span> <span class=na>id=</span><span class=s>&#34;b1&#34;</span><span class=nt>&gt;</span> … <span class=nt>&lt;/control&gt;</span>
+        <span class=nt>&lt;group</span> <span class=na>id=</span><span class=s>&#34;group2&#34;</span><span class=nt>&gt;</span>
+          <span class=nt>&lt;control</span> <span class=na>id=</span><span class=s>&#34;c1&#34;</span><span class=nt>&gt;</span> … <span class=nt>&lt;/control&gt;</span>
+        <span class=nt>&lt;/group&gt;</span>
+    <span class=nt>&lt;/group&gt;</span>
+<span class=nt>&lt;/profile&gt;</span></code></pre></div><p>In this case, no <code class=tgt>group</code> container appears in the target for the controls
+<code class=code>b2</code> and <code class=code>c2</code>; because they appear unwrapped before the
+<code class=src>group</code> in the profile source, they appear the same way in the target
+catalog. Control <code class=code>c2</code>, however, appears in a subgroup <code class=code>group2</code>
+inside the group with ID <code class=code>group1</code> , again reflecting the source
+organization. Note also that <code class=src>id</code> flags are copied.</p><p>Again, no provision is made to prevent duplicate or colliding controls from
+appearing. Optionally, a processor may signal warnings when it determines that
+controls from selections are designated to appear in the results more than once, due
+to multiple colliding occurrences of <code class=src>call</code> or <code class=src>match</code> inside
+<code class=src>custom</code>.</p></div><h6 xmlns=http://www.w3.org/1999/xhtml id=d2e1460-head><code class=src>with-child-controls</code> inside a custom catalog structure</h6><p xmlns=http://www.w3.org/1999/xhtml><code class=src>@with-child-controls</code> works also: if child controls are selected, they can
+be included implicitly by virtue of including their parents.)</p><p xmlns=http://www.w3.org/1999/xhtml><span class=revisit>How do we arrange for deeper nesting of controls in a custom
+structure?</span></p><h3 xmlns=http://www.w3.org/1999/xhtml id=d2e1470-head>Modification phase</h3><p xmlns=http://www.w3.org/1999/xhtml>(Aka <b class=term>patching</b>) Explicit modification of control content</p><p xmlns=http://www.w3.org/1999/xhtml>There are two ways a control may need to be modified. Commonly, controls might be amended –
+new material might be added. (For example, the priority marker properties P1-P3 in the
+SP800-53 LOW MODERATE and HIGH baselines.) Less commonly, materials might be removed or
+edited.</p><p xmlns=http://www.w3.org/1999/xhtml>OSCAL does not provide for <q class=q>changing</q> a control, but editing can be achieved by
+removing contents and adding (edited) contents back. This can be achieved at the control
+level, or, when constituent elements inside a control have distinct IDs, at more granular
+levels as well. Features make it easy both to trim (filter) and to supplement catalogs.</p><p xmlns=http://www.w3.org/1999/xhtml>In addition to any modification or adjustment to controls, this section of a profile is
+used to set parameter values or other properties of parameters declared in catalogs and
+referenced from their text. Parameters are propagated with the profile's setting into the
+target catalog for its use.</p><h4 xmlns=http://www.w3.org/1999/xhtml id=d2e1482-head>Setting Parameters</h4><p xmlns=http://www.w3.org/1999/xhtml>Modification of parameter settings is indicated using <code class=src>set</code>.</p><p xmlns=http://www.w3.org/1999/xhtml>Parameters are not always given within controls. A profile resolution target must include
+copies (with or without modifications or settings) of all parameters defined within the
+source catalog, which are referenced from <code class=src>insert</code> directives anywhere inside
+included controls.</p><p xmlns=http://www.w3.org/1999/xhtml>Accordingly, any parameter referenced by an <code class=src>insert</code> in any source catalog is
+copied from catalog source to target <span class=revisit>parameter propagation rules for merge/as-is,
+merge/custom</span> without any configuration required in the profile.</p><p xmlns=http://www.w3.org/1999/xhtml>However, a profile should not reproduce parameters from source catalogs, which are not
+referenced from <code class=src>insert</code> directives.</p><p xmlns=http://www.w3.org/1999/xhtml>When parameters are propagated, they may be modified by <code class=src>set</code> directives given
+in the profile.</p><p xmlns=http://www.w3.org/1999/xhtml>If more than one <code class=src>set</code> directive is given for the same parameter, all are
+applied, in the sequence given in the profile. <span class=revisit>[XXX even when
+merge/combine/@method='use-first'?]</span></p><ul xmlns=http://www.w3.org/1999/xhtml><li><p>A <code class=src>set/label</code> replaces the <code class=src>param/label</code> on the affected
+parameter</p></li><li><p>A <code class=src>set/value</code>
+<em class=em>or</em> a <code class=src>set/select</code> replaces <em class=em>any</em>
+<code class=src>param/value</code> or <code class=src>param/select</code> on the affected parameter</p></li><li><p>Other elements given in a parameter <code class=src>set</code> are added to the affected
+parameter, after elements of the same name</p></li><li><p>The prescribed order of elements in the affected parameter is retained:
+<code class=tgt>label</code>; <code class=tgt>usage</code>; <code class=tgt>constraint</code>; <code class=tgt>guideline</code>;
+<code class=tgt>value</code> or <code class=tgt>select</code> (a choice); and <code class=tgt>link</code>.</p></li></ul><p xmlns=http://www.w3.org/1999/xhtml>[example]</p><div class=highlight><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;param</span> <span class=na>id=</span><span class=s>&#34;p1&#34;</span><span class=nt>&gt;</span>
+  <span class=nt>&lt;title&gt;</span>Password length<span class=nt>&lt;/title&gt;</span>
+  <span class=nt>&lt;value&gt;</span>10<span class=nt>&lt;/value&gt;</span>
+<span class=nt>&lt;/param&gt;</span></code></pre></div><div class=highlight><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;set</span> <span class=na>param-id=</span><span class=s>&#34;p1&#34;</span><span class=nt>&gt;</span>
+  <span class=nt>&lt;select&gt;</span>
+    <span class=nt>&lt;choice&gt;</span>10<span class=nt>&lt;/choice&gt;</span>
+    <span class=nt>&lt;choice&gt;</span>11<span class=nt>&lt;/choice&gt;</span>
+  <span class=nt>&lt;/select&gt;</span>
+<span class=nt>&lt;/set&gt;</span></code></pre></div><p xmlns=http://www.w3.org/1999/xhtml>Note that <code class=tgt>select</code> replaces <code class=src>value</code>:</p><div class=highlight><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;param</span> <span class=na>id=</span><span class=s>&#34;p1&#34;</span><span class=nt>&gt;</span>
+  <span class=nt>&lt;title&gt;</span>Password length<span class=nt>&lt;/title&gt;</span>
+  <span class=nt>&lt;select&gt;</span>
+    <span class=nt>&lt;choice&gt;</span>10<span class=nt>&lt;/choice&gt;</span>
+    <span class=nt>&lt;choice&gt;</span>11<span class=nt>&lt;/choice&gt;</span>
+  <span class=nt>&lt;/select&gt;</span>
+<span class=nt>&lt;/param&gt;</span></code></pre></div><h5 xmlns=http://www.w3.org/1999/xhtml id=d2e1572-head>Setting a missing parameter</h5><p xmlns=http://www.w3.org/1999/xhtml>A <code class=src>set</code> directive whose <code class=src>@control-id</code> does not correspond to any
+control in the resolved catalog, is inoperative.</p><p xmlns=http://www.w3.org/1999/xhtml>Optionally, a processor may issue a warning where such directives are found.</p><h4 xmlns=http://www.w3.org/1999/xhtml id=d2e1581-head>Altering controls</h4><p xmlns=http://www.w3.org/1999/xhtml>A control can be altered by an <code class=src>alter</code> directive on a control. The
+<code class=src>@control-id</code> flag on the <code class=src>alter</code> indicates the control to which the
+alteration is applied.</p><h5 xmlns=http://www.w3.org/1999/xhtml id=d2e1591-head>Adding contents to controls</h5><p xmlns=http://www.w3.org/1999/xhtml>Contents may be added to controls using an add directive inside an alter directive.
+There are two forms of alteration: with implicit and explicit bindings.</p><h6 xmlns=http://www.w3.org/1999/xhtml id=d2e1594-head>Implicit binding</h6><p xmlns=http://www.w3.org/1999/xhtml>An <code class=src>add</code> directive with no <code class=src>id-ref</code> flag is taken to apply to the
+control as a whole. Its <code class=src>position</code> flag may be either of two values:
+<code class=code>starting</code> and <code class=code>ending</code>.</p><p xmlns=http://www.w3.org/1999/xhtml>The contents of the add directive are then added to the control contents in the
+target, either after its <code class=tgt>title</code> when <code class=src>position</code> is
+<code class=code>starting</code>, or at the end if its position is <code class=code>ending</code>, or not
+given.</p><p xmlns=http://www.w3.org/1999/xhtml>However, control contents in catalogs must appear in the order <code class=code>title, param,
+prop, link, part, control</code>. Subsequent to adding new elements, the control
+contents are sorted to appear in the required order. As a consequence, a new
+<code class=tgt>prop</code> appears after any <code class=src>prop</code> already in the control, when
+<code class=src>position</code> is <code class=code>ending</code>, or not given,, or before any
+<code class=src>prop</code> in the control when <code class=src>position</code> is
+<code class=code>starting</code>.</p><p xmlns=http://www.w3.org/1999/xhtml>When add has no <code class=src>@ref-id</code> (has an implicit binding), the <code class=src>position</code>
+values <code class=code>before</code> and <code class=code>after</code> are treated like
+<code class=code>starting</code> and <code class=code>ending</code>, respectively. <span class=revisit>The schema
+permits these values.</span></p><div xmlns=http://www.w3.org/1999/xhtml class=mapping><p>An addition operating on a control with implicit binding and position
+<code class=code>starting</code></p><div class=highlight><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;control</span> <span class=na>id=</span><span class=s>&#34;a1&#34;</span><span class=nt>&gt;</span>
+  <span class=nt>&lt;title&gt;</span>Basic precautions<span class=nt>&lt;/title&gt;</span>
+  <span class=nt>&lt;prop</span> <span class=na>name=</span><span class=s>&#34;status&#34;</span><span class=nt>&gt;</span>ready<span class=nt>&lt;/prop&gt;</span>
+<span class=nt>&lt;/control&gt;</span></code></pre></div><div class=highlight><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;alter</span> <span class=na>control-id=</span><span class=s>&#34;a1&#34;</span><span class=nt>&gt;</span>
+  <span class=nt>&lt;add</span> <span class=na>position=</span><span class=s>&#34;starting&#34;</span><span class=nt>&gt;</span>
+    <span class=nt>&lt;prop</span> <span class=na>name=</span><span class=s>&#34;basis&#34;</span><span class=nt>&gt;</span>enumerated<span class=nt>&lt;/prop&gt;</span>
+    <span class=nt>&lt;part</span> <span class=na>name=</span><span class=s>&#34;caution&#34;</span><span class=nt>&gt;&lt;p&gt;</span>Only for adult use.<span class=nt>&lt;/p&gt;&lt;/part&gt;</span>
+  <span class=nt>&lt;/add&gt;</span>
+<span class=nt>&lt;/alter&gt;</span></code></pre></div><div class=highlight><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;control</span> <span class=na>id=</span><span class=s>&#34;a1&#34;</span><span class=nt>&gt;</span>
+  <span class=nt>&lt;title&gt;</span>Basic precautions<span class=nt>&lt;/title&gt;</span>
+  <span class=nt>&lt;prop</span> <span class=na>name=</span><span class=s>&#34;basis&#34;</span><span class=nt>&gt;</span>enumerated<span class=nt>&lt;/prop&gt;</span>
+  <span class=nt>&lt;prop</span> <span class=na>name=</span><span class=s>&#34;status&#34;</span><span class=nt>&gt;</span>ready<span class=nt>&lt;/prop&gt;</span>
+  <span class=nt>&lt;part</span> <span class=na>name=</span><span class=s>&#34;caution&#34;</span><span class=nt>&gt;&lt;p&gt;</span>Only for adult use.<span class=nt>&lt;/p&gt;&lt;/part&gt;</span>
+<span class=nt>&lt;/control&gt;</span></code></pre></div><p>Position is <code class=code>starting</code> but the new <code class=tgt>part</code> is added after the
+existing <code class=tgt>prop</code>, because <code class=tgt>prop</code> elements must always occur
+first.</p></div><div xmlns=http://www.w3.org/1999/xhtml class=mapping><p>An addition operating on a control with implicit binding and position
+<code class=code>ending</code></p><div class=highlight><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;control</span> <span class=na>id=</span><span class=s>&#34;a1&#34;</span><span class=nt>&gt;</span>
+  <span class=nt>&lt;title&gt;</span>Basic precautions<span class=nt>&lt;/title&gt;</span>
+  <span class=nt>&lt;prop</span> <span class=na>name=</span><span class=s>&#34;status&#34;</span><span class=nt>&gt;</span>ready<span class=nt>&lt;/prop&gt;</span>
+<span class=nt>&lt;/control&gt;</span></code></pre></div><div class=highlight><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;alter</span> <span class=na>control-id=</span><span class=s>&#34;a1&#34;</span><span class=nt>&gt;</span>
+  <span class=nt>&lt;add</span> <span class=na>position=</span><span class=s>&#34;ending&#34;</span><span class=nt>&gt;</span>
+    <span class=nt>&lt;prop</span> <span class=na>name=</span><span class=s>&#34;basis&#34;</span><span class=nt>&gt;</span>enumerated<span class=nt>&lt;/prop&gt;</span>
+    <span class=nt>&lt;part</span> <span class=na>name=</span><span class=s>&#34;caution&#34;</span><span class=nt>&gt;&lt;p&gt;</span>Only for adult use.<span class=nt>&lt;/p&gt;&lt;/part&gt;</span>
+  <span class=nt>&lt;/add&gt;</span>
+<span class=nt>&lt;/alter&gt;</span></code></pre></div><div class=highlight><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;control</span> <span class=na>id=</span><span class=s>&#34;a1&#34;</span><span class=nt>&gt;</span>
+  <span class=nt>&lt;title&gt;</span>Basic precautions<span class=nt>&lt;/title&gt;</span>
+  <span class=nt>&lt;prop</span> <span class=na>name=</span><span class=s>&#34;status&#34;</span><span class=nt>&gt;</span>ready<span class=nt>&lt;/prop&gt;</span>
+  <span class=nt>&lt;prop</span> <span class=na>name=</span><span class=s>&#34;basis&#34;</span><span class=nt>&gt;</span>enumerated<span class=nt>&lt;/prop&gt;</span>
+  <span class=nt>&lt;part</span> <span class=na>name=</span><span class=s>&#34;caution&#34;</span><span class=nt>&gt;&lt;p&gt;</span>Only for adult use.<span class=nt>&lt;/p&gt;&lt;/part&gt;</span>
+<span class=nt>&lt;/control&gt;</span></code></pre></div><p>The <code class=src>add/@position</code> is <code class=code>ending</code> so the new <code class=tgt>prop</code>
+appears after the existing <code class=tgt>prop</code>.</p></div><h6 xmlns=http://www.w3.org/1999/xhtml id=d2e1693-head>Explicit binding</h6><p xmlns=http://www.w3.org/1999/xhtml>An explicit binding on an addition permits inserting new contents anywhere in a
+control, not only at the top level. It is given by a <code class=src>@ref-id</code> flag on the
+<code class=src>add</code> directive. The value of the <code class=src>@ref-id</code> must correspond to the
+value of an <code class=src>@id</code> flag on an element inside the control, and not the control
+itself. If <code class=src>ref-id</code> does not correspond to such a value, the <code class=src>add</code>
+directive is inoperative. Optionally, a warning may be issued in such a case.</p><p xmlns=http://www.w3.org/1999/xhtml>The element with <code class=src>@id</code> equal to the <code class=src>@ref-id</code> is considered the
+<b class=term>target</b> of the addition.</p><p xmlns=http://www.w3.org/1999/xhtml>Additionally, with an explicit binding given by a <code class=src>@ref-id</code>,
+<code class=src>@position</code> may have any of the values <code class=code>starting</code>,
+<code class=code>ending</code>, <code class=code>before</code> and <code class=code>after</code>.</p><p xmlns=http://www.w3.org/1999/xhtml>When <code class=src>position</code> is <code class=code>starting</code> or <code class=code>ending</code>, the new
+contents are added at the beginning or ending of the target element, inside that
+element, as are additions into controls (using implicit bindings).</p><p xmlns=http://www.w3.org/1999/xhtml>Additionally, a <code class=src>position</code> given as <code class=code>before</code> indicates the
+addition should be made directly before the target element, while <code class=code>after</code>
+indicates the addition should appear directly after the target element.</p><p xmlns=http://www.w3.org/1999/xhtml><span class=revisit>Unlike additions with implicit bindings, an explicit binding does not
+provide for sorting of newly added elements to ensure correct ordering.
+Consequently, profile authors must take care that additions they make into control
+contents using explicit bindings will produce results valid to the catalog
+schema.</span></p><div xmlns=http://www.w3.org/1999/xhtml class=mapping><p>An addition operating on a control with explicit binding and position
+<code class=code>after</code></p><div class=highlight><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;control</span> <span class=na>id=</span><span class=s>&#34;a1&#34;</span><span class=nt>&gt;</span>
+  <span class=nt>&lt;title&gt;</span>Basic precautions<span class=nt>&lt;/title&gt;</span>
+  <span class=nt>&lt;prop</span> <span class=na>name=</span><span class=s>&#34;status&#34;</span><span class=nt>&gt;</span>ready<span class=nt>&lt;/prop&gt;</span>
+  <span class=nt>&lt;part</span> <span class=na>id=</span><span class=s>&#34;a1.b&#34;</span> <span class=na>name=</span><span class=s>&#34;recommendations&#34;</span><span class=nt>&gt;</span>
+    <span class=nt>&lt;part</span> <span class=na>id=</span><span class=s>&#34;a1.b1&#34;</span><span class=nt>&gt;&lt;p&gt;</span>Collect recycling for pickup.<span class=nt>&lt;/p&gt;&lt;/part&gt;</span>
+    <span class=nt>&lt;part</span> <span class=na>id=</span><span class=s>&#34;a1.b2&#34;</span><span class=nt>&gt;&lt;p&gt;</span>Sweep surfaces free of dust.<span class=nt>&lt;/p&gt;&lt;/part&gt;</span>
+  <span class=nt>&lt;/part&gt;</span>
+<span class=nt>&lt;/control&gt;</span></code></pre></div><p>Note that the <code class=src>add</code> directive identifies the element with <code class=src>@id</code>
+<code class=code>a1.b1</code> as its target.</p><div class=highlight><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;alter</span> <span class=na>control-id=</span><span class=s>&#34;a1&#34;</span><span class=nt>&gt;</span>
+  <span class=nt>&lt;add</span> <span class=na>position=</span><span class=s>&#34;after&#34;</span> <span class=na>ref-id=</span><span class=s>&#34;a1.b1&#34;</span><span class=nt>&gt;</span>
+    <span class=nt>&lt;prop</span> <span class=na>name=</span><span class=s>&#34;basis&#34;</span><span class=nt>&gt;</span>allocated<span class=nt>&lt;/prop&gt;</span>
+    <span class=nt>&lt;part</span> <span class=na>name=</span><span class=s>&#34;caution&#34;</span><span class=nt>&gt;&lt;p&gt;</span>Unavailable on weekends.<span class=nt>&lt;/p&gt;&lt;/part&gt;</span>
+  <span class=nt>&lt;/add&gt;</span>
+<span class=nt>&lt;/alter&gt;</span></code></pre></div><div class=highlight><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;control</span> <span class=na>id=</span><span class=s>&#34;a1&#34;</span><span class=nt>&gt;</span>
+  <span class=nt>&lt;title&gt;</span>Basic precautions<span class=nt>&lt;/title&gt;</span>
+  <span class=nt>&lt;prop</span> <span class=na>name=</span><span class=s>&#34;status&#34;</span><span class=nt>&gt;</span>ready<span class=nt>&lt;/prop&gt;</span>
+  <span class=nt>&lt;part</span> <span class=na>id=</span><span class=s>&#34;a1.b&#34;</span> <span class=na>name=</span><span class=s>&#34;recommendations&#34;</span><span class=nt>&gt;</span>
+    <span class=nt>&lt;part</span> <span class=na>id=</span><span class=s>&#34;a1.b1&#34;</span><span class=nt>&gt;&lt;p&gt;</span>Collect recycling for pickup.<span class=nt>&lt;/p&gt;&lt;/part&gt;</span>
+    <span class=nt>&lt;prop</span> <span class=na>name=</span><span class=s>&#34;basis&#34;</span><span class=nt>&gt;</span>allocated<span class=nt>&lt;/prop&gt;</span>
+    <span class=nt>&lt;part</span> <span class=na>name=</span><span class=s>&#34;caution&#34;</span><span class=nt>&gt;&lt;p&gt;</span>Unavailable on weekends.<span class=nt>&lt;/p&gt;&lt;/part&gt;</span>
+    <span class=nt>&lt;part</span> <span class=na>id=</span><span class=s>&#34;a1.b2&#34;</span><span class=nt>&gt;&lt;p&gt;</span>Sweep surfaces free of dust.<span class=nt>&lt;/p&gt;&lt;/part&gt;</span>
+  <span class=nt>&lt;/part&gt;</span>
+<span class=nt>&lt;/control&gt;</span></code></pre></div><p>The <code class=src>position</code> is <code class=code>after</code> so both elements inside
+<code class=src>add</code> are added after (not inside) the target element. Since the target
+element is inside another <code class=tgt>part</code> in the control, the new additions appear
+there as well.</p><p>Note that the result in this case will be schema-invalid since a <code class=tgt>prop</code>
+may not occur directly following a <code class=tgt>part</code>. A better result can be obtained
+(a better target may be defined) by using two <code class=src>add</code> directives, to insert
+the new <code class=tgt>prop</code> separately
+before any <code class=tgt>part</code> elements in the target.</p></div><h6 xmlns=http://www.w3.org/1999/xhtml id=d2e1791-head>Usage of <code class=src>add</code> directives modifying controls inside controls</h6><p xmlns=http://www.w3.org/1999/xhtml>OSCAL supports control extensions inside controls in the form of <code class=src>control</code>
+elements inside <code class=src>control</code> elements. Because the semantics of the
+<code class=src>add</code> directive target any (element) contents of controls, they can be used
+to target these control extensions for modification as well as other contents.</p><p xmlns=http://www.w3.org/1999/xhtml>Because such a control can already be modified using implicit bindings, it is
+recommended that they not be targeted with explicit bindings. Using an implicit
+binding supports more robust alteration since contents in the target can be ordered
+properly by the resolution processor. <span class=revisit>XXX can we guarantee valid results here
+and do we have to specify a sort/order?</span> However, it is not an error to
+target control elements in this way, manipulating them in the same way as other
+targets may be manipulated.</p><h5 xmlns=http://www.w3.org/1999/xhtml id=d2e1808-head>Removing contents from controls</h5><p xmlns=http://www.w3.org/1999/xhtml>Contents inside controls can be removed from them in catalog targets. In combination
+with adding new contents, this feature can be used to edit controls as well as amend
+them.</p><p xmlns=http://www.w3.org/1999/xhtml>A <code class=src>remove</code> directive inside an <code class=src>alter</code> directive identifies an
+element or set of elements inside a control to be removed. It does this using any of
+four flags:</p><ul xmlns=http://www.w3.org/1999/xhtml><li><p><code class=src>@id-ref</code>, like <code class=src>add/@id-ref</code>, matches an element by its
+<code class=src>@id</code> value.</p><p>Because <code class=src>@id</code> values are unique, the remove directive will remove only a
+single element.</p></li><li><p><code class=src>@name-ref</code> keys to the <code class=src>@name</code> attribute on any element inside
+the control.</p><p>Any element inside the control with the assigned <code class=src>name</code>, is removed.</p></li><li><p><code class=src>@class-ref</code> keys to the <code class=src>@class</code> attribute on any element inside
+the control. All elements with matching <code class=src>class</code> are removed.</p></li><li><p><code class=src>@item-name</code> keys to the element or property name; for example,
+<code class=code>&lt;remove item-name='prop'/></code> has the effect of removing all
+<code class=src>prop</code> elements from inside the control. <span class=revisit>(NB: what about in JSON
+where names are often group names? Can we support removal by item
+name?)</span></p></li></ul><p xmlns=http://www.w3.org/1999/xhtml>These are examined in the order given here; the first one that appears is used. Thus a
+remove directive with both a <code class=src>name-ref</code> and a <code class=src>class-ref</code>, uses only
+the <code class=src>name-ref</code>. <span class=revisit>(Or should the effect be cumulative?)</span></p><p xmlns=http://www.w3.org/1999/xhtml>Unlike an <code class=src>add</code> directive, a <code class=src>remove</code> may not be bound implicitly to
+the control; its binding, to contents inside the control, must be explicit.</p><p xmlns=http://www.w3.org/1999/xhtml>To remove an control, simply avoid selecting it into the profile, or exclude it
+specifically using <code class=src>import/exclude</code>.</p><p xmlns=http://www.w3.org/1999/xhtml>As with <code class=src>add</code>, a remove that targets any element outside the control, is
+inoperative. Similarly, a remove directive that indicates that all <code class=tgt>prop</code>
+elements should be removed from the target catalog, applies only to <code class=src>prop</code></p><h5 xmlns=http://www.w3.org/1999/xhtml id=d2e1883-head>Implicit alterations</h5><p xmlns=http://www.w3.org/1999/xhtml>Finally some alterations are made automatically.</p><p xmlns=http://www.w3.org/1999/xhtml>For example, <code class=src>link</code> elements in source data representing cross-references in a
+catalog, may no longer be effective in catalogs produced from profiles, which have not
+included the elements (controls or other) to which the links refer.</p><p xmlns=http://www.w3.org/1999/xhtml><span class=revisit>Either: expand the links to refer back to the source catalogs; or remove the
+links.</span></p><p xmlns=http://www.w3.org/1999/xhtml><span class=revisit>Note: we could also expand links to point back to the (resolved) source,
+particularly if it is described in back-matter as a resource...</span></p><h3 xmlns=http://www.w3.org/1999/xhtml id=d2e1894-head>Operations irrespective of phase</h3><p xmlns=http://www.w3.org/1999/xhtml>In addition to selecting, merging and modifying, certainl operations
+are conducted in profile resolution that occur irrespective of phases,
+that is in any profile resolution. These include rewriting the profile
+metadata into the resolved baseline (catalog), and filtering and
+rewriting back matter.</p><h4 xmlns=http://www.w3.org/1999/xhtml id=d2e1897-head>Metadata in the resolved (baseline) catalog</h4><h4 xmlns=http://www.w3.org/1999/xhtml id=d2e1899-head>Back matter in the resolved (baseline) catalog</h4><p xmlns=http://www.w3.org/1999/xhtml><code class=tgt>back-matter</code> in the result is produced by combining all
+elements within <code class=src>back-matter</code> in all source catalogs, with
+the <code class=src>back-matter</code> in the input profile. Since catalog
+resolution is defined to operate recursively, when profiles import
+profiles, the back matter to be merged is defined by the resolution of
+the imported profile. These elements are combined in order and
+filtered according to the following:</p><ul xmlns=http://www.w3.org/1999/xhtml><li><p><code class=src>resource</code> elements copied from imported baseline into a
+resolved catalog (result baseline) are preserved as is, with no
+modification. New resources can be added in a profile by including
+them in its <code class=src>back-matter</code>, but resources cannot be
+targeted for modification. Resources either propagated from source
+catalogs, or included in the importing catalog, are treated the
+same for these purposes.</p></li><li><p>In the result catalog, <code class=tgt>resource</code> data objects are given
+in the order they occur in the imported baselines, with the
+baselines given in imported order, and the importing profiles
+.</p></li><li><p>Where <b class=term>node identity</b> can be established between
+<code class=src>resource</code> elements, only the <em class=em>last</em> of the
+duplicate resources is included, within the given total order of
+baselines and resources within those baselines, or if a
+<b class=xpath>prop[@name='keep']</b> with value <code class=code>always</code>
+is given on any such <code class=src>resource</code>, the last of these, as
+noted below. That is, each imported catalog or baseline overrides
+any imported before it, while a profile's own resources are
+preferred (as coming last).</p></li><li><p>However, resources are discarded if they are not designated as
+the target of any link (<b class=term>link</b> or <b class=term>a</b>
+element) somewhere in the metadata or body of the resulting
+resolved catalog, by means of an ID reference taking the form of
+the reference's <code class=tgt>id</code> value prepended with <code class=code>#</code>,
+with the following exception:</p><ul><li><p>Any <code class=src>resource</code> given in either an imported catalog
+(baseline), or in the <code class=src>back-matter </code>of the soruce
+profile, is kept (appears in the result) if it is marked in
+source with a <code class=src>prop</code> element whose <code class=src>@name</code>
+is given as <code class=code>keep</code> and whose value is
+<code class=code>always</code>.</p><p>Within a group of <code class=src>resource</code> objects considered to
+be identical, this property (<code class=src>prop</code> element) given on
+any member has the effect of excluding from the group, any
+that do not. In other words, only the resources marked as
+<q class=q>always keep</q> with that identity, are selected from,
+and the last of these (only) is propagated.</p></li></ul></li><li><p>Marking a resource as <code class=code>name='keep'</code> and value
+<code class=code>always</code> thus has a couple of uses:</p><ul><li><p>Placing such a property on a resource in a catalog, has the
+effect of ensuring it will always appear in the baseline
+produced by any profile importing that catalog, even if
+nothing links to the resource. This version of the resource
+will also be the one copied, unless a later-imported catalog
+or importing profile offers its own version marked to
+<q class=q>always keep</q>.</p></li><li><p>Placing such a property on a resource in a profile, ensures
+both that the resource appears (even if not cross-referenced)
+in the resulting baseline catalog, and that its version is
+used, unless when imported into another profile, in which case
+it may be overridden by another one (also marked as always
+keep).</p></li></ul></li></ul><div class=highlight><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;resource</span> <span class=na>id=</span><span class=s>&#34;fedramp-1&#34;</span><span class=nt>&gt;</span>
+   <span class=nt>&lt;title&gt;</span>FedRAMP Applicable Laws and Regulations<span class=nt>&lt;/title&gt;</span>
+   <span class=nt>&lt;prop</span> <span class=na>name=</span><span class=s>&#34;keep&#34;</span><span class=nt>&gt;</span>always<span class=nt>&lt;/prop&gt;</span>
+   <span class=nt>&lt;prop</span> <span class=na>name=</span><span class=s>&#34;conformity&#34;</span> <span class=na>ns=</span><span class=s>&#34;https://fedramp.gov/ns/oscal&#34;</span><span class=nt>&gt;</span>fedramp-citations<span class=nt>&lt;/prop&gt;</span>
+   <span class=nt>&lt;rlink</span> <span class=na>href=</span><span class=s>&#34;https://www.fedramp.gov/assets/resources/templates/SSP-A12-FedRAMP-Laws-and-Regulations-Template.xlsx&#34;</span><span class=nt>/&gt;</span>
+/resource&gt; </code></pre></div><h2 xmlns=http://www.w3.org/1999/xhtml id=d2e1989-head>Null profile</h2><p xmlns=http://www.w3.org/1999/xhtml>A <b class=term>null profile</b> is a profile that imports a catalog and selects all its controls
+without modification. A truly <q class=q>null</q> profile – that is, with only an import and nothing
+else – does not return its imported catalog unchanged. But the changes it makes can be useful.
+This makes a null profile or its <b class=term>near-null</b> variants, as described in this
+section, potentially useful for catalog management, design and use, as described in this
+section.</p><h3 xmlns=http://www.w3.org/1999/xhtml id=d2e1999-head>Importing and nothing else</h3><div class=highlight><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;profile&gt;</span>
+  <span class=nt>&lt;metadata&gt;</span>...<span class=nt>&lt;/metadata&gt;</span>
+  <span class=nt>&lt;import</span> <span class=na>href=</span><span class=s>&#34;catalog.xml&#34;</span><span class=nt>/&gt;</span>
+<span class=nt>&lt;/profile&gt;</span></code></pre></div><p xmlns=http://www.w3.org/1999/xhtml>In the target, the catalog group structure and all hierarchy is removed; its controls are
+all returned in sequence. Any loose parameters in the catalog not referenced in a control,
+are dropped.</p><p xmlns=http://www.w3.org/1999/xhtml>This is the same as</p><div class=highlight><pre class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;profile&gt;</span>
+  <span class=nt>&lt;metadata&gt;</span>...<span class=nt>&lt;/metadata&gt;</span>
+  <span class=nt>&lt;import</span> <span class=na>href=</span><span class=s>&#34;catalog.xml&#34;</span><span class=nt>&gt;</span>
+    <span class=nt>&lt;include&gt;</span>
+      <span class=nt>&lt;all/&gt;</span>
+    <span class=nt>&lt;/include&gt;</span>
+  <span class=nt>&lt;/import&gt;</span>
+  <span class=nt>&lt;merge&gt;</span>
+    <span class=nt>&lt;combine</span> <span class=na>method=</span><span class=s>&#34;keep&#34;</span><span class=nt>/&gt;</span>
+  <span class=nt>&lt;/merge&gt;</span>
+<span class=nt>&lt;/profile&gt;</span></code></pre></div><h3 xmlns=http://www.w3.org/1999/xhtml id=d2e2007-head>all/with-child-controls='no'</h3><p xmlns=http://www.w3.org/1999/xhtml>The same, except that only top-level controls are included, not descendants.</p><p xmlns=http://www.w3.org/1999/xhtml><span class=revisit>unit test this</span></p><h3 xmlns=http://www.w3.org/1999/xhtml id=d2e2012-head>including merge directives</h3><p xmlns=http://www.w3.org/1999/xhtml>Using merge <code class=src>as-is='true'</code>, the grouping hierarchy of a source catalog can be
+reflected in the target.</p><p xmlns=http://www.w3.org/1999/xhtml>This enables a near-null profile to define a normalization or cleanup pass on a catalog, as
+it will have the result of removing dangling references and orphan parameters, without
+otherwise affecting controls.</p><p xmlns=http://www.w3.org/1999/xhtml><span class=revisit>unit test this too, especially with more than two levels of control hierarchy as
+well as groups</span></p><p xmlns=http://www.w3.org/1999/xhtml><span class=revisit>unit test this</span></p><h2 xmlns=http://www.w3.org/1999/xhtml id=d2e2023-head>Options</h2><p xmlns=http://www.w3.org/1999/xhtml>For conformance, an OSCAL processor must deliver results of profile processing, in a basic
+configuration, exactly as described in these specifications with no elaboration.</p><p xmlns=http://www.w3.org/1999/xhtml>Conformance does not preclude providing additional features, however, including elaborated
+outputs, in an optional mode. Such features could include offering warning or process
+exception handling (appropriate to workflow) not described here; outputs provided with
+comments or extra structure to support tracing or analytics; or <q class=q>gateway</q> or
+<q class=q>Draconian</q> modes that would provide user assistance or refuse to deliver results for
+inputs considered erroneous in a workflow.</p><h2 xmlns=http://www.w3.org/1999/xhtml id=d2e2032-head>Profile tools and utilities</h2><ul xmlns=http://www.w3.org/1999/xhtml><li><p>rendering - showing both unresolved (raw) and resolved profiles</p></li><li><p>editing / integrity checking</p></li><li><p>rewriting/normalization</p></li><li><p>diffing</p></li><li><p>deriving a profile as the delta of two catalogs (<q class=q>base</q> and <q class=q>tailored</q>)</p></li></ul></article></div><nav aria-label="Table of Contents" class="toc-container usa-layout-docs__sidenav widescreen:grid-col-2 desktop:grid-col-2"><div id=js-toc></div></nav></div></div></main><p class="font-sans-sm text-center" style="margin:1.5rem auto">This page was last updated on May 27, 2021. <button id=main-improve-page onclick="window.location.href='https://github.com/usnistgov/oscal-content/tree/master/concepts\\processing\\profile-resolution.html'" class="usa-button usa-button--accent-cool">Improve this Page</button></p><script src=https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.12.0/tocbot.min.js integrity=sha384-roIHE2HuL+PZHzo8X7MgpHu256WMUJvsKqI2GaUJY3moVp06oLtx0QvZnvZJdcCb crossorigin=anonymous></script><script type=text/javascript src=../../../js/site.min.js integrity="sha512-mvMDkcWHn+S7rGw0GBdQtJMxzUBz+marY8/wUsQwb8T/se7QuarUomGaI0/donMDAJUpMHBHdADeI7JY5CVlwg=="></script><script>$(document).ready(function(a){}),tocbot.init({tocSelector:'#js-toc',contentSelector:'#main-content',headingSelector:'h2,h3,h4',includeHtml:!1,collapseDepth:0,hasInnerContainers:!0,orderedList:!1,listClass:'usa-sidenav',extraLinkClasses:'usa-sidenav__item',activeLinkClass:'usa-current',headingsOffset:1,scrollSmoothOffset:0})</script><script type=text/javascript src=https://pages.nist.gov/leaveNotice/js/jquery.leaveNotice-nist.min.js></script><script>$(document).ready(function(){$('a[href*="//"]:not([href*="pages.nist.gov"]):not([href*="www.nist.gov"]):not([href^="#"]):not([href^="/"])').addClass('usa-link usa-link--external'),$('a.usa-link--external').leaveNotice()})</script><script>anchors.options={placement:'left'},anchors.add()</script></body></html>
