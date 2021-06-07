@@ -70,15 +70,22 @@
    <xsl:strip-space elements="j:map j:array"/>
    <!-- METASCHEMA conversion stylesheet supports JSON -> METASCHEMA/SUPERMODEL conversion -->
    <!-- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ -->
-   <!-- METASCHEMA: OSCAL Control Catalog Model (version 1.0.0-rc2) in namespace "http://csrc.nist.gov/ns/oscal/1.0"-->
+   <!-- METASCHEMA:  in namespace "http://csrc.nist.gov/ns/oscal/1.0"-->
    <xsl:template match="j:map[@key='catalog']">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="  catalog" -->
-      <assembly name="catalog" gi="catalog" formal-name="Catalog">
+      <!-- XML match="catalog" -->
+      <assembly _metaschema-xml-id="/assembly/oscal-catalog/catalog"
+                _metaschema-json-id="/assembly/oscal-catalog/catalog"
+                name="catalog"
+                key="catalog"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_catalog_metaschema.xml"
+                _key-name="oscal-catalog:catalog"
+                _using-root-name="catalog"
+                gi="catalog">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">catalog</xsl:attribute>
          </xsl:if>
-         <xsl:if test=". is /*">
+         <xsl:if test=".. is /j:map">
             <xsl:attribute name="namespace">http://csrc.nist.gov/ns/oscal/1.0</xsl:attribute>
          </xsl:if>
          <xsl:apply-templates select="*[@key='uuid']"/>
@@ -91,8 +98,20 @@
    </xsl:template>
    <xsl:template match="j:map[@key='metadata']">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="  metadata" -->
-      <assembly name="metadata" gi="metadata" formal-name="Publication metadata">
+      <!-- XML match="metadata" -->
+      <assembly _metaschema-xml-id="/assembly/oscal-catalog/catalog/metadata"
+                _metaschema-json-id="/assembly/oscal-catalog/catalog/metadata"
+                name="metadata"
+                key="metadata"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+                _key-name="oscal-metadata:metadata"
+                _step="metadata"
+                _key="metadata"
+                _key-ref="oscal-metadata:metadata"
+                _using-name="metadata"
+                _in-xml-name="metadata"
+                _in-json-name="metadata"
+                gi="metadata">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">metadata</xsl:attribute>
          </xsl:if>
@@ -114,8 +133,19 @@
    </xsl:template>
    <xsl:template match="j:array[@key='props']/j:map">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="  prop" -->
-      <assembly name="property" gi="prop" formal-name="Property">
+      <!-- XML match="prop" -->
+      <assembly _metaschema-xml-id="/assembly/oscal-metadata/revision/prop"
+                _metaschema-json-id="/assembly/oscal-metadata/revision/props"
+                name="property"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+                _key-name="oscal-metadata:property"
+                _step="prop"
+                _key="props"
+                _key-ref="oscal-metadata:property"
+                _using-name="prop"
+                _in-xml-name="prop"
+                _in-json-name="props"
+                gi="prop">
          <xsl:apply-templates select="*[@key='name']"/>
          <xsl:apply-templates select="*[@key='uuid']"/>
          <xsl:apply-templates select="*[@key='ns']"/>
@@ -126,8 +156,19 @@
    </xsl:template>
    <xsl:template match="j:array[@key='links']/j:map">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="  link" -->
-      <assembly name="link" gi="link" formal-name="Link">
+      <!-- XML match="link" -->
+      <assembly _metaschema-xml-id="/assembly/oscal-metadata/revision/link"
+                _metaschema-json-id="/assembly/oscal-metadata/revision/links"
+                name="link"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+                _key-name="oscal-metadata:link"
+                _step="link"
+                _key="links"
+                _key-ref="oscal-metadata:link"
+                _using-name="link"
+                _in-xml-name="link"
+                _in-json-name="links"
+                gi="link">
          <xsl:apply-templates select="*[@key='href']"/>
          <xsl:apply-templates select="*[@key='rel']"/>
          <xsl:apply-templates select="*[@key='media-type']"/>
@@ -136,8 +177,19 @@
    </xsl:template>
    <xsl:template match="j:array[@key='roles']/j:map">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="  role" -->
-      <assembly name="role" gi="role" formal-name="Role">
+      <!-- XML match="role" -->
+      <assembly _metaschema-xml-id="/assembly/oscal-metadata/metadata/role"
+                _metaschema-json-id="/assembly/oscal-metadata/metadata/roles"
+                name="role"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+                _key-name="oscal-metadata:role"
+                _step="role"
+                _key="roles"
+                _key-ref="oscal-metadata:role"
+                _using-name="role"
+                _in-xml-name="role"
+                _in-json-name="roles"
+                gi="role">
          <xsl:apply-templates select="*[@key='id']"/>
          <xsl:apply-templates select="*[@key='title']"/>
          <xsl:apply-templates select="*[@key='short-name']"/>
@@ -149,8 +201,19 @@
    </xsl:template>
    <xsl:template match="j:array[@key='locations']/j:map">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="  location" -->
-      <assembly name="location" gi="location" formal-name="Location">
+      <!-- XML match="location" -->
+      <assembly _metaschema-xml-id="/assembly/oscal-metadata/metadata/location"
+                _metaschema-json-id="/assembly/oscal-metadata/metadata/locations"
+                name="location"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+                _key-name="oscal-metadata:location"
+                _step="location"
+                _key="locations"
+                _key-ref="oscal-metadata:location"
+                _using-name="location"
+                _in-xml-name="location"
+                _in-json-name="locations"
+                gi="location">
          <xsl:apply-templates select="*[@key='uuid']"/>
          <xsl:apply-templates select="*[@key='title']"/>
          <xsl:apply-templates select="*[@key='address']"/>
@@ -164,10 +227,19 @@
    </xsl:template>
    <xsl:template match="j:array[@key='parties']/j:map">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="  party" -->
-      <assembly name="party"
-                gi="party"
-                formal-name="Party (organization or person)">
+      <!-- XML match="party" -->
+      <assembly _metaschema-xml-id="/assembly/oscal-metadata/metadata/party"
+                _metaschema-json-id="/assembly/oscal-metadata/metadata/parties"
+                name="party"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+                _key-name="oscal-metadata:party"
+                _step="party"
+                _key="parties"
+                _key-ref="oscal-metadata:party"
+                _using-name="party"
+                _in-xml-name="party"
+                _in-json-name="parties"
+                gi="party">
          <xsl:apply-templates select="*[@key='uuid']"/>
          <xsl:apply-templates select="*[@key='type']"/>
          <xsl:apply-templates select="*[@key='name']"/>
@@ -183,23 +255,21 @@
          <xsl:apply-templates select="*[@key='remarks']"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="j:map[@key='responsible-parties']/j:map">
+   <xsl:template match="j:array[@key='responsible-parties']/j:map">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="  responsible-party" -->
-      <assembly name="responsible-party"
-                gi="responsible-party"
-                formal-name="Responsible Party"
-                json-key-flag="role-id">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">responsible-party</xsl:attribute>
-         </xsl:if>
-         <flag as-type="NCName"
-               name="role-id"
-               key="role-id"
-               gi="role-id"
-               formal-name="Responsible Role">
-            <xsl:value-of select="@key"/>
-         </flag>
+      <!-- XML match="responsible-party" -->
+      <assembly _metaschema-xml-id="/assembly/oscal-metadata/metadata/responsible-party"
+                _metaschema-json-id="/assembly/oscal-metadata/metadata/responsible-parties"
+                name="responsible-party"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+                _key-name="oscal-metadata:responsible-party"
+                _step="responsible-party"
+                _key="responsible-parties"
+                _key-ref="oscal-metadata:responsible-party"
+                _using-name="responsible-party"
+                _in-xml-name="responsible-party"
+                _in-json-name="responsible-parties"
+                gi="responsible-party">
          <xsl:apply-templates select="*[@key='role-id']"/>
          <xsl:apply-templates select="*[@key='party-uuids']"/>
          <xsl:apply-templates select="*[@key='props']"/>
@@ -209,8 +279,19 @@
    </xsl:template>
    <xsl:template match="j:array[@key='params']/j:map">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="  param" -->
-      <assembly name="parameter" gi="param" formal-name="Parameter">
+      <!-- XML match="param" -->
+      <assembly _metaschema-xml-id="/assembly/oscal-catalog/catalog/param"
+                _metaschema-json-id="/assembly/oscal-catalog/catalog/params"
+                name="parameter"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_control-common_metaschema.xml"
+                _key-name="oscal-catalog-common:parameter"
+                _step="param"
+                _key="params"
+                _key-ref="oscal-catalog-common:parameter"
+                _using-name="param"
+                _in-xml-name="param"
+                _in-json-name="params"
+                gi="param">
          <xsl:apply-templates select="*[@key='id']"/>
          <xsl:apply-templates select="*[@key='class']"/>
          <xsl:apply-templates select="*[@key='depends-on']"/>
@@ -227,25 +308,57 @@
    </xsl:template>
    <xsl:template match="j:array[@key='constraints']/j:map">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="  constraint" -->
-      <assembly name="parameter-constraint"
-                gi="constraint"
-                formal-name="Constraint">
+      <!-- XML match="constraint" -->
+      <assembly _metaschema-xml-id="/assembly/oscal-catalog-common/parameter/constraint"
+                _metaschema-json-id="/assembly/oscal-catalog-common/parameter/constraints"
+                name="parameter-constraint"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_control-common_metaschema.xml"
+                _key-name="oscal-catalog-common:parameter-constraint"
+                _step="constraint"
+                _key="constraints"
+                _key-ref="oscal-catalog-common:parameter-constraint"
+                _using-name="constraint"
+                _in-xml-name="constraint"
+                _in-json-name="constraints"
+                gi="constraint">
          <xsl:apply-templates select="*[@key='description']"/>
          <xsl:apply-templates select="*[@key='tests']"/>
       </assembly>
    </xsl:template>
    <xsl:template match="j:array[@key='guidelines']/j:map">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="  guideline" -->
-      <assembly name="parameter-guideline" gi="guideline" formal-name="Guideline">
+      <!-- XML match="guideline" -->
+      <assembly _metaschema-xml-id="/assembly/oscal-catalog-common/parameter/guideline"
+                _metaschema-json-id="/assembly/oscal-catalog-common/parameter/guidelines"
+                name="parameter-guideline"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_control-common_metaschema.xml"
+                _key-name="oscal-catalog-common:parameter-guideline"
+                _step="guideline"
+                _key="guidelines"
+                _key-ref="oscal-catalog-common:parameter-guideline"
+                _using-name="guideline"
+                _in-xml-name="guideline"
+                _in-json-name="guidelines"
+                gi="guideline">
          <xsl:apply-templates select="*[@key='prose']"/>
       </assembly>
    </xsl:template>
    <xsl:template match="j:map[@key='select']">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="  select" -->
-      <assembly name="parameter-selection" gi="select" formal-name="Selection">
+      <!-- XML match="select" -->
+      <assembly _metaschema-xml-id="/assembly/oscal-catalog-common/parameter/select"
+                _metaschema-json-id="/assembly/oscal-catalog-common/parameter/select"
+                name="parameter-selection"
+                key="select"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_control-common_metaschema.xml"
+                _key-name="oscal-catalog-common:parameter-selection"
+                _step="select"
+                _key="select"
+                _key-ref="oscal-catalog-common:parameter-selection"
+                _using-name="select"
+                _in-xml-name="select"
+                _in-json-name="select"
+                gi="select">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">select</xsl:attribute>
          </xsl:if>
@@ -253,10 +366,21 @@
          <xsl:apply-templates select="*[@key='choice']"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="j:array[@key='controls']/j:map | j:array[@key='controls']/j:map//j:array[@key='controls']/j:map">
+   <xsl:template match="j:array[@key='controls']/j:map">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="  control |   control//control" -->
-      <assembly name="control" gi="control" formal-name="Control">
+      <!-- XML match="control" -->
+      <assembly _metaschema-xml-id="/assembly/oscal-catalog/catalog/control"
+                _metaschema-json-id="/assembly/oscal-catalog/catalog/controls"
+                name="control"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_catalog_metaschema.xml"
+                _key-name="oscal-catalog:control"
+                _step="control"
+                _key="controls"
+                _key-ref="oscal-catalog:control"
+                _using-name="control"
+                _in-xml-name="control"
+                _in-json-name="controls"
+                gi="control">
          <xsl:apply-templates select="*[@key='id']"/>
          <xsl:apply-templates select="*[@key='class']"/>
          <xsl:apply-templates select="*[@key='title']"/>
@@ -267,10 +391,21 @@
          <xsl:apply-templates select="*[@key='controls']"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="j:array[@key='parts']/j:map | j:array[@key='parts']/j:map//j:array[@key='parts']/j:map">
+   <xsl:template match="j:array[@key='parts']/j:map">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="  part |   part//part" -->
-      <assembly name="part" gi="part" formal-name="Part">
+      <!-- XML match="part" -->
+      <assembly _metaschema-xml-id="/assembly/oscal-catalog/control/part"
+                _metaschema-json-id="/assembly/oscal-catalog/control/parts"
+                name="part"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_control-common_metaschema.xml"
+                _key-name="oscal-catalog-common:part"
+                _step="part"
+                _key="parts"
+                _key-ref="oscal-catalog-common:part"
+                _using-name="part"
+                _in-xml-name="part"
+                _in-json-name="parts"
+                gi="part">
          <xsl:apply-templates select="*[@key='id']"/>
          <xsl:apply-templates select="*[@key='name']"/>
          <xsl:apply-templates select="*[@key='ns']"/>
@@ -282,10 +417,21 @@
          <xsl:apply-templates select="*[@key='links']"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="j:array[@key='groups']/j:map | j:array[@key='groups']/j:map//j:array[@key='groups']/j:map">
+   <xsl:template match="j:array[@key='groups']/j:map">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="  group |   group//group" -->
-      <assembly name="group" gi="group" formal-name="Control Group">
+      <!-- XML match="group" -->
+      <assembly _metaschema-xml-id="/assembly/oscal-catalog/catalog/group"
+                _metaschema-json-id="/assembly/oscal-catalog/catalog/groups"
+                name="group"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_catalog_metaschema.xml"
+                _key-name="oscal-catalog:group"
+                _step="group"
+                _key="groups"
+                _key-ref="oscal-catalog:group"
+                _using-name="group"
+                _in-xml-name="group"
+                _in-json-name="groups"
+                gi="group">
          <xsl:apply-templates select="*[@key='id']"/>
          <xsl:apply-templates select="*[@key='class']"/>
          <xsl:apply-templates select="*[@key='title']"/>
@@ -299,281 +445,566 @@
    </xsl:template>
    <xsl:template match="j:map[@key='back-matter']">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="  back-matter" -->
-      <assembly name="back-matter" gi="back-matter" formal-name="Back matter">
+      <!-- XML match="back-matter" -->
+      <assembly _metaschema-xml-id="/assembly/oscal-catalog/catalog/back-matter"
+                _metaschema-json-id="/assembly/oscal-catalog/catalog/back-matter"
+                name="back-matter"
+                key="back-matter"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+                _key-name="oscal-metadata:back-matter"
+                _step="back-matter"
+                _key="back-matter"
+                _key-ref="oscal-metadata:back-matter"
+                _using-name="back-matter"
+                _in-xml-name="back-matter"
+                _in-json-name="back-matter"
+                gi="back-matter">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">back-matter</xsl:attribute>
          </xsl:if>
          <xsl:apply-templates select="*[@key='resources']"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="j:string[@key='remarks']">
+   <xsl:template match="j:[@key='remarks']">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="  remarks" -->
-      <field name="remarks"
-             gi="remarks"
+      <!-- XML match="remarks" -->
+      <field _metaschema-xml-id="/assembly/oscal-metadata/property/remarks"
+             _metaschema-json-id="/assembly/oscal-metadata/property/remarks"
+             in-xml="WITH_WRAPPER"
+             collapsible="no"
              as-type="markup-multiline"
-             formal-name="Remarks"
+             name="remarks"
+             key="remarks"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _key-name="oscal-metadata:remarks"
+             _step="remarks"
+             _key="remarks"
+             _key-ref="oscal-metadata:remarks"
+             _using-name="remarks"
+             _in-xml-name="remarks"
+             _in-json-name="remarks"
+             gi="remarks"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">remarks</xsl:attribute>
          </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:string[@key='remarks']"
-                 mode="get-value-property"
-                 priority="8">
-      <value as-type="markup-multiline" in-json="string">
+   <xsl:template match="j:[@key='remarks']" mode="get-value-property" priority="8">
+      <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:array[@key='location-uuids']/j:string">
+   <xsl:template match="j:array[@key='location-uuids']/j:">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="  location-uuid" -->
-      <field name="location-uuid"
+      <!-- XML match="location-uuid" -->
+      <field _metaschema-xml-id="/assembly/oscal-metadata/party/location-uuid"
+             _metaschema-json-id="/assembly/oscal-metadata/party/location-uuids"
+             collapsible="no"
+             as-type="uuid"
+             name="location-uuid"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _key-name="oscal-metadata:location-uuid"
+             _step="location-uuid"
+             _key="location-uuids"
+             _key-ref="oscal-metadata:location-uuid"
+             _using-name="location-uuid"
+             _in-xml-name="location-uuid"
+             _in-json-name="location-uuids"
              gi="location-uuid"
-             as-type="uuid"
-             formal-name="Location Reference"
-             in-json="SCALAR">
-         <xsl:apply-templates select="." mode="get-value-property"/>
-      </field>
+             in-json="SCALAR"/>
    </xsl:template>
-   <xsl:template match="j:array[@key='location-uuids']/j:string"
+   <xsl:template match="j:array[@key='location-uuids']/j:"
                  mode="get-value-property"
                  priority="8">
-      <value as-type="uuid" in-json="string">
+      <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:array[@key='party-uuids']/j:string">
+   <xsl:template match="j:array[@key='party-uuids']/j:">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="  party-uuid" -->
-      <field name="party-uuid"
-             gi="party-uuid"
+      <!-- XML match="party-uuid" -->
+      <field _metaschema-xml-id="/assembly/oscal-metadata/responsible-party/party-uuid"
+             _metaschema-json-id="/assembly/oscal-metadata/responsible-party/party-uuids"
+             collapsible="no"
              as-type="uuid"
-             formal-name="Party Reference"
-             in-json="SCALAR">
-         <xsl:apply-templates select="." mode="get-value-property"/>
-      </field>
+             name="party-uuid"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _key-name="oscal-metadata:party-uuid"
+             _step="party-uuid"
+             _key="party-uuids"
+             _key-ref="oscal-metadata:party-uuid"
+             _using-name="party-uuid"
+             _in-xml-name="party-uuid"
+             _in-json-name="party-uuids"
+             gi="party-uuid"
+             in-json="SCALAR"/>
    </xsl:template>
-   <xsl:template match="j:array[@key='party-uuids']/j:string"
+   <xsl:template match="j:array[@key='party-uuids']/j:"
                  mode="get-value-property"
                  priority="7">
-      <value as-type="uuid" in-json="string">
+      <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="(j:string[@key='value'] | j:string[@key='value'] | j:string[@key='value'] | j:string[@key='value'] | j:string[@key='value'] | j:string[@key='value'] | j:string[@key='value'] | j:array[@key='values']/j:string | j:string[@key='value'] | j:array[@key='values']/j:string | j:string[@key='value'] | j:string[@key='value'] | j:string[@key='value'] | j:array[@key='values']/j:string | j:string[@key='value'] | j:string[@key='value'] | j:string[@key='value'] | j:array[@key='values']/j:string | j:string[@key='value'] | j:string[@key='value'] | j:string[@key='value'] | j:string[@key='value'])">
+   <xsl:template match="(j:string[@key='value'] | j:string[@key='value'] | j:string[@key='value'] | j:string[@key='value'] | j:string[@key='value'] | j:string[@key='value'] | j:string[@key='value'] | j:array[@key='values']/j: | j:string[@key='value'] | j:array[@key='values']/j: | j:string[@key='value'] | j:string[@key='value'] | j:string[@key='value'] | j:array[@key='values']/j: | j:string[@key='value'] | j:string[@key='value'] | j:string[@key='value'] | j:array[@key='values']/j: | j:string[@key='value'] | j:string[@key='value'] | j:string[@key='value'] | j:string[@key='value'])">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="  value" -->
-      <field name="parameter-value"
-             gi="value"
+      <!-- XML match="value" -->
+      <field _metaschema-xml-id="/assembly/oscal-catalog-common/parameter/value"
+             _metaschema-json-id="/assembly/oscal-catalog-common/parameter/values"
+             collapsible="no"
              as-type="string"
-             formal-name="Parameter Value"
-             in-json="SCALAR">
-         <xsl:apply-templates select="." mode="get-value-property"/>
-      </field>
+             name="parameter-value"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_control-common_metaschema.xml"
+             _key-name="oscal-catalog-common:parameter-value"
+             _step="value"
+             _key="values"
+             _key-ref="oscal-catalog-common:parameter-value"
+             _using-name="value"
+             _in-xml-name="value"
+             _in-json-name="values"
+             gi="value"
+             in-json="SCALAR"/>
    </xsl:template>
-   <xsl:template match="(j:string[@key='value'] | j:string[@key='value'] | j:string[@key='value'] | j:string[@key='value'] | j:string[@key='value'] | j:string[@key='value'] | j:string[@key='value'] | j:array[@key='values']/j:string | j:string[@key='value'] | j:array[@key='values']/j:string | j:string[@key='value'] | j:string[@key='value'] | j:string[@key='value'] | j:array[@key='values']/j:string | j:string[@key='value'] | j:string[@key='value'] | j:string[@key='value'] | j:array[@key='values']/j:string | j:string[@key='value'] | j:string[@key='value'] | j:string[@key='value'] | j:string[@key='value'])"
+   <xsl:template match="(j:string[@key='value'] | j:string[@key='value'] | j:string[@key='value'] | j:string[@key='value'] | j:string[@key='value'] | j:string[@key='value'] | j:string[@key='value'] | j:array[@key='values']/j: | j:string[@key='value'] | j:array[@key='values']/j: | j:string[@key='value'] | j:string[@key='value'] | j:string[@key='value'] | j:array[@key='values']/j: | j:string[@key='value'] | j:string[@key='value'] | j:string[@key='value'] | j:array[@key='values']/j: | j:string[@key='value'] | j:string[@key='value'] | j:string[@key='value'] | j:string[@key='value'])"
                  mode="get-value-property"
                  priority="7">
-      <value as-type="string" in-json="string">
+      <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
    <xsl:template match="j:array[@key='hashes']/j:map">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="  hash" -->
-      <field name="hash" gi="hash" formal-name="Hash">
+      <!-- XML match="hash" -->
+      <field _metaschema-xml-id="/assembly/oscal-metadata/back-matter/resource/rlink/hash"
+             _metaschema-json-id="/assembly/oscal-metadata/back-matter/resources/rlinks/hashes"
+             collapsible="no"
+             as-type="string"
+             name="hash"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _key-name="oscal-metadata:hash"
+             _step="hash"
+             _key="hashes"
+             _key-ref="oscal-metadata:hash"
+             _using-name="hash"
+             _in-xml-name="hash"
+             _in-json-name="hashes"
+             gi="hash">
          <xsl:apply-templates select="*[@key='algorithm']"/>
          <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <!-- matching   hash-->
+   <!-- matching hash-->
    <xsl:template match="j:array[@key='hashes']/j:map" mode="get-value-property">
       <value as-type="string" key="value" in-json="string">
          <xsl:apply-templates mode="keep-value-property"/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:string[@key='uuid'] | j:array[@key='props']/j:map/j:string[@key='uuid'] | j:array[@key='locations']/j:map/j:string[@key='uuid'] | j:array[@key='parties']/j:map/j:string[@key='uuid'] | j:map[@key='catalog']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:string[@key='uuid']"><!-- XML match="catalog/@uuid | prop/@uuid | location/@uuid | party/@uuid | catalog/back-matter/resource/@uuid" -->
+   <xsl:template match="j:map[@key='catalog']/j:string[@key='uuid']"><!-- XML match="catalog/@uuid" -->
       <flag in-json="string"
             as-type="uuid"
+            _step="uuid"
+            _key="uuid"
+            _metaschema-xml-id="/assembly/oscal-catalog/catalog/uuid"
+            _metaschema-json-id="/assembly/oscal-catalog/catalog/uuid"
             name="uuid"
             key="uuid"
-            gi="uuid"
-            formal-name="Catalog Universally Unique Identifier">
+            _using-name="uuid"
+            _in-xml-name="uuid"
+            _in-json-name="uuid"
+            gi="uuid">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:string[@key='uuid'] | j:array[@key='props']/j:map/j:string[@key='uuid'] | j:array[@key='locations']/j:map/j:string[@key='uuid'] | j:array[@key='parties']/j:map/j:string[@key='uuid'] | j:map[@key='catalog']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:string[@key='uuid']"
+   <xsl:template match="j:map[@key='catalog']/j:string[@key='uuid']"
                  mode="keep-value-property"
                  priority="3"><!-- Not keeping the flag here. --></xsl:template>
-   <xsl:template match="j:array[@key='props']/j:map/j:string[@key='name'] | j:array[@key='parts']/j:map/j:string[@key='name'] | j:array[@key='parts']/j:map//j:array[@key='parts']/j:map/()"><!-- XML match="prop/@name | part/@name | part//part/@name" -->
+   <xsl:template match="j:array[@key='props']/j:map/j:string[@key='name']"><!-- XML match="prop/@name" -->
       <flag in-json="string"
-            as-type="NCName"
+            as-type="token"
+            _step="name"
+            _key="name"
+            _metaschema-xml-id="/assembly/oscal-metadata/property/name"
+            _metaschema-json-id="/assembly/oscal-metadata/property/name"
             name="name"
             key="name"
-            gi="name"
-            formal-name="Property Name">
+            _using-name="name"
+            _in-xml-name="name"
+            _in-json-name="name"
+            gi="name">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
-   <xsl:template match="j:array[@key='props']/j:map/j:string[@key='name'] | j:array[@key='parts']/j:map/j:string[@key='name'] | j:array[@key='parts']/j:map//j:array[@key='parts']/j:map/()"
+   <xsl:template match="j:array[@key='props']/j:map/j:string[@key='name']"
                  mode="keep-value-property"
                  priority="8"><!-- Not keeping the flag here. --></xsl:template>
-   <xsl:template match="j:array[@key='props']/j:map/j:string[@key='ns'] | j:array[@key='parts']/j:map/j:string[@key='ns'] | j:array[@key='parts']/j:map//j:array[@key='parts']/j:map/()"><!-- XML match="prop/@ns | part/@ns | part//part/@ns" -->
+   <xsl:template match="j:array[@key='props']/j:map/j:string[@key='uuid']"><!-- XML match="prop/@uuid" -->
       <flag in-json="string"
-            as-type="uri"
-            name="ns"
-            key="ns"
-            gi="ns"
-            formal-name="Property Namespace">
+            as-type="uuid"
+            _step="uuid"
+            _key="uuid"
+            _metaschema-xml-id="/assembly/oscal-metadata/property/uuid"
+            _metaschema-json-id="/assembly/oscal-metadata/property/uuid"
+            name="uuid"
+            key="uuid"
+            _using-name="uuid"
+            _in-xml-name="uuid"
+            _in-json-name="uuid"
+            gi="uuid">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
-   <xsl:template match="j:array[@key='props']/j:map/j:string[@key='ns'] | j:array[@key='parts']/j:map/j:string[@key='ns'] | j:array[@key='parts']/j:map//j:array[@key='parts']/j:map/()"
+   <xsl:template match="j:array[@key='props']/j:map/j:string[@key='uuid']"
+                 mode="keep-value-property"
+                 priority="8"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:array[@key='props']/j:map/j:string[@key='ns']"><!-- XML match="prop/@ns" -->
+      <flag in-json="string"
+            as-type="uri"
+            _step="ns"
+            _key="ns"
+            _metaschema-xml-id="/assembly/oscal-metadata/property/ns"
+            _metaschema-json-id="/assembly/oscal-metadata/property/ns"
+            name="ns"
+            key="ns"
+            _using-name="ns"
+            _in-xml-name="ns"
+            _in-json-name="ns"
+            gi="ns">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:array[@key='props']/j:map/j:string[@key='ns']"
                  mode="keep-value-property"
                  priority="8"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:array[@key='props']/j:map/j:string[@key='value']"><!-- XML match="prop/@value" -->
       <flag in-json="string"
             as-type="string"
+            _step="value"
+            _key="value"
+            _metaschema-xml-id="/assembly/oscal-metadata/property/value"
+            _metaschema-json-id="/assembly/oscal-metadata/property/value"
             name="value"
             key="value"
-            gi="value"
-            formal-name="Property Value">
+            _using-name="value"
+            _in-xml-name="value"
+            _in-json-name="value"
+            gi="value">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
    <xsl:template match="j:array[@key='props']/j:map/j:string[@key='value']"
                  mode="keep-value-property"
                  priority="8"><!-- Not keeping the flag here. --></xsl:template>
-   <xsl:template match="j:array[@key='props']/j:map/j:string[@key='class'] | j:array[@key='params']/j:map/j:string[@key='class'] | j:array[@key='controls']/j:map/j:string[@key='class'] | j:array[@key='controls']/j:map//j:array[@key='controls']/j:map/()| j:array[@key='parts']/j:map/j:string[@key='class'] | j:array[@key='parts']/j:map//j:array[@key='parts']/j:map/()| j:array[@key='groups']/j:map/j:string[@key='class'] | j:array[@key='groups']/j:map//j:array[@key='groups']/j:map/()"><!-- XML match="prop/@class | param/@class | control/@class | control//control/@class | part/@class | part//part/@class | group/@class | group//group/@class" -->
+   <xsl:template match="j:array[@key='props']/j:map/j:string[@key='class']"><!-- XML match="prop/@class" -->
       <flag in-json="string"
-            as-type="NCName"
+            as-type="token"
+            _step="class"
+            _key="class"
+            _metaschema-xml-id="/assembly/oscal-metadata/property/class"
+            _metaschema-json-id="/assembly/oscal-metadata/property/class"
             name="class"
             key="class"
-            gi="class"
-            formal-name="Property Class">
+            _using-name="class"
+            _in-xml-name="class"
+            _in-json-name="class"
+            gi="class">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
-   <xsl:template match="j:array[@key='props']/j:map/j:string[@key='class'] | j:array[@key='params']/j:map/j:string[@key='class'] | j:array[@key='controls']/j:map/j:string[@key='class'] | j:array[@key='controls']/j:map//j:array[@key='controls']/j:map/()| j:array[@key='parts']/j:map/j:string[@key='class'] | j:array[@key='parts']/j:map//j:array[@key='parts']/j:map/()| j:array[@key='groups']/j:map/j:string[@key='class'] | j:array[@key='groups']/j:map//j:array[@key='groups']/j:map/()"
+   <xsl:template match="j:array[@key='props']/j:map/j:string[@key='class']"
                  mode="keep-value-property"
                  priority="8"><!-- Not keeping the flag here. --></xsl:template>
-   <xsl:template match="j:array[@key='links']/j:map/j:string[@key='href'] | j:map[@key='catalog']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:array[@key='rlinks']/j:map/j:string[@key='href']"><!-- XML match="link/@href | catalog/back-matter/resource/rlink/@href" -->
+   <xsl:template match="j:array[@key='links']/j:map/j:string[@key='href']"><!-- XML match="link/@href" -->
       <flag in-json="string"
             as-type="uri-reference"
+            _step="href"
+            _key="href"
+            _metaschema-xml-id="/assembly/oscal-metadata/link/href"
+            _metaschema-json-id="/assembly/oscal-metadata/link/href"
             name="href"
             key="href"
-            gi="href"
-            formal-name="Hypertext Reference">
+            _using-name="href"
+            _in-xml-name="href"
+            _in-json-name="href"
+            gi="href">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
-   <xsl:template match="j:array[@key='links']/j:map/j:string[@key='href'] | j:map[@key='catalog']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:array[@key='rlinks']/j:map/j:string[@key='href']"
+   <xsl:template match="j:array[@key='links']/j:map/j:string[@key='href']"
                  mode="keep-value-property"
                  priority="8"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:array[@key='links']/j:map/j:string[@key='rel']"><!-- XML match="link/@rel" -->
       <flag in-json="string"
-            as-type="NCName"
+            as-type="token"
+            _step="rel"
+            _key="rel"
+            _metaschema-xml-id="/assembly/oscal-metadata/link/rel"
+            _metaschema-json-id="/assembly/oscal-metadata/link/rel"
             name="rel"
             key="rel"
-            gi="rel"
-            formal-name="Relation">
+            _using-name="rel"
+            _in-xml-name="rel"
+            _in-json-name="rel"
+            gi="rel">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
    <xsl:template match="j:array[@key='links']/j:map/j:string[@key='rel']"
                  mode="keep-value-property"
                  priority="8"><!-- Not keeping the flag here. --></xsl:template>
-   <xsl:template match="j:array[@key='links']/j:map/j:string[@key='media-type'] | j:map[@key='catalog']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:array[@key='rlinks']/j:map/j:string[@key='media-type'] | j:map[@key='catalog']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:map[@key='base64']/j:string[@key='media-type']"><!-- XML match="link/@media-type | catalog/back-matter/resource/rlink/@media-type | catalog/back-matter/resource/base64/@media-type" -->
+   <xsl:template match="j:array[@key='links']/j:map/j:string[@key='media-type']"><!-- XML match="link/@media-type" -->
       <flag in-json="string"
             as-type="string"
+            _metaschema-xml-id="/assembly/oscal-metadata/link/media-type"
+            _metaschema-json-id="/assembly/oscal-metadata/link/media-type"
             name="media-type"
             key="media-type"
-            gi="media-type"
-            formal-name="Media Type">
+            _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+            _key-name="oscal-metadata:media-type"
+            _step="media-type"
+            _key="media-type"
+            _key-ref="oscal-metadata:media-type"
+            _using-name="media-type"
+            _in-xml-name="media-type"
+            _in-json-name="media-type"
+            gi="media-type">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
-   <xsl:template match="j:array[@key='links']/j:map/j:string[@key='media-type'] | j:map[@key='catalog']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:array[@key='rlinks']/j:map/j:string[@key='media-type'] | j:map[@key='catalog']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:map[@key='base64']/j:string[@key='media-type']"
+   <xsl:template match="j:array[@key='links']/j:map/j:string[@key='media-type']"
                  mode="keep-value-property"
                  priority="8"><!-- Not keeping the flag here. --></xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='document-ids']/j:map/j:string[@key='scheme'] | j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='external-ids']/j:map/j:string[@key='scheme'] | j:map[@key='catalog']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:array[@key='document-ids']/j:map/j:string[@key='scheme']"
-                 priority="6"><!-- XML match="catalog/metadata/document-id/@scheme | catalog/metadata/party/external-id/@scheme | catalog/back-matter/resource/document-id/@scheme" -->
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='document-ids']/j:map/j:string[@key='scheme'] | j:map[@key='catalog']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:array[@key='document-ids']/j:map/j:string[@key='scheme']"
+                 priority="6"><!-- XML match="catalog/metadata/document-id/@scheme | catalog/back-matter/resource/document-id/@scheme" -->
       <flag in-json="string"
             as-type="uri"
+            _step="scheme"
+            _key="scheme"
+            _metaschema-xml-id="/field/oscal-metadata/document-id/scheme"
+            _metaschema-json-id="/field/oscal-metadata/document-id/scheme"
             name="scheme"
             key="scheme"
-            gi="scheme"
-            formal-name="Document Identification Scheme">
+            _using-name="scheme"
+            _in-xml-name="scheme"
+            _in-json-name="scheme"
+            gi="scheme">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='document-ids']/j:map/j:string[@key='scheme'] | j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='external-ids']/j:map/j:string[@key='scheme'] | j:map[@key='catalog']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:array[@key='document-ids']/j:map/j:string[@key='scheme']"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='document-ids']/j:map/j:string[@key='scheme'] | j:map[@key='catalog']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:array[@key='document-ids']/j:map/j:string[@key='scheme']"
                  mode="keep-value-property"
                  priority="6"><!-- Not keeping the flag here. --></xsl:template>
-   <xsl:template match="j:array[@key='roles']/j:map/j:string[@key='id'] | j:array[@key='params']/j:map/j:string[@key='id'] | j:array[@key='controls']/j:map/j:string[@key='id'] | j:array[@key='controls']/j:map//j:array[@key='controls']/j:map/()| j:array[@key='parts']/j:map/j:string[@key='id'] | j:array[@key='parts']/j:map//j:array[@key='parts']/j:map/()| j:array[@key='groups']/j:map/j:string[@key='id'] | j:array[@key='groups']/j:map//j:array[@key='groups']/j:map/()"><!-- XML match="role/@id | param/@id | control/@id | control//control/@id | part/@id | part//part/@id | group/@id | group//group/@id" -->
+   <xsl:template match="j:array[@key='roles']/j:map/j:string[@key='id']"><!-- XML match="role/@id" -->
       <flag in-json="string"
-            as-type="NCName"
+            as-type="token"
+            _step="id"
+            _key="id"
+            _metaschema-xml-id="/assembly/oscal-metadata/role/id"
+            _metaschema-json-id="/assembly/oscal-metadata/role/id"
             name="id"
             key="id"
-            gi="id"
-            formal-name="Role Identifier">
+            _using-name="id"
+            _in-xml-name="id"
+            _in-json-name="id"
+            gi="id">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
-   <xsl:template match="j:array[@key='roles']/j:map/j:string[@key='id'] | j:array[@key='params']/j:map/j:string[@key='id'] | j:array[@key='controls']/j:map/j:string[@key='id'] | j:array[@key='controls']/j:map//j:array[@key='controls']/j:map/()| j:array[@key='parts']/j:map/j:string[@key='id'] | j:array[@key='parts']/j:map//j:array[@key='parts']/j:map/()| j:array[@key='groups']/j:map/j:string[@key='id'] | j:array[@key='groups']/j:map//j:array[@key='groups']/j:map/()"
+   <xsl:template match="j:array[@key='roles']/j:map/j:string[@key='id']"
+                 mode="keep-value-property"
+                 priority="6"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:array[@key='locations']/j:map/j:string[@key='uuid']"><!-- XML match="location/@uuid" -->
+      <flag in-json="string"
+            as-type="uuid"
+            _step="uuid"
+            _key="uuid"
+            _metaschema-xml-id="/assembly/oscal-metadata/location/uuid"
+            _metaschema-json-id="/assembly/oscal-metadata/location/uuid"
+            name="uuid"
+            key="uuid"
+            _using-name="uuid"
+            _in-xml-name="uuid"
+            _in-json-name="uuid"
+            gi="uuid">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:array[@key='locations']/j:map/j:string[@key='uuid']"
                  mode="keep-value-property"
                  priority="6"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:map[@key='address']/j:string[@key='type'] | j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='addresses']/j:map/j:string[@key='type']"><!-- XML match="catalog/metadata/location/address/@type | catalog/metadata/party/address/@type" -->
       <flag in-json="string"
-            as-type="NCName"
-            name="oscal-metadata-location-type"
+            as-type="token"
+            _metaschema-xml-id="/assembly/oscal-metadata/address/type"
+            _metaschema-json-id="/assembly/oscal-metadata/address/type"
+            name="location-type"
             key="type"
-            gi="type"
-            formal-name="Address Type">
+            _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+            _key-name="oscal-metadata:location-type"
+            _step="type"
+            _key="type"
+            _key-ref="oscal-metadata:location-type"
+            _using-name="type"
+            _in-xml-name="type"
+            _in-json-name="type"
+            gi="type">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
    <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:map[@key='address']/j:string[@key='type'] | j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='addresses']/j:map/j:string[@key='type']"
                  mode="keep-value-property"
                  priority="7"><!-- Not keeping the flag here. --></xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:array[@key='telephone-numbers']/j:map/j:string[@key='type'] | j:array[@key='parties']/j:map/j:string[@key='type'] | j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='telephone-numbers']/j:map/j:string[@key='type']"
-                 priority="8"><!-- XML match="catalog/metadata/location/telephone-number/@type | party/@type | catalog/metadata/party/telephone-number/@type" -->
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:array[@key='telephone-numbers']/j:map/j:string[@key='type'] | j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='telephone-numbers']/j:map/j:string[@key='type']"
+                 priority="8"><!-- XML match="catalog/metadata/location/telephone-number/@type | catalog/metadata/party/telephone-number/@type" -->
       <flag in-json="string"
             as-type="string"
+            _step="type"
+            _key="type"
+            _metaschema-xml-id="/field/oscal-metadata/telephone-number/type"
+            _metaschema-json-id="/field/oscal-metadata/telephone-number/type"
             name="type"
             key="type"
-            gi="type"
-            formal-name="type flag">
+            _using-name="type"
+            _in-xml-name="type"
+            _in-json-name="type"
+            gi="type">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:array[@key='telephone-numbers']/j:map/j:string[@key='type'] | j:array[@key='parties']/j:map/j:string[@key='type'] | j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='telephone-numbers']/j:map/j:string[@key='type']"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:array[@key='telephone-numbers']/j:map/j:string[@key='type'] | j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='telephone-numbers']/j:map/j:string[@key='type']"
                  mode="keep-value-property"
                  priority="8"><!-- Not keeping the flag here. --></xsl:template>
-   <xsl:template match="j:map[@key='responsible-parties']/j:map/@key"><!-- XML match="responsible-party/@role-id" -->
+   <xsl:template match="j:array[@key='parties']/j:map/j:string[@key='uuid']"><!-- XML match="party/@uuid" -->
       <flag in-json="string"
-            as-type="NCName"
-            name="role-id"
-            key="role-id"
-            gi="role-id"
-            formal-name="Responsible Role">
+            as-type="uuid"
+            _step="uuid"
+            _key="uuid"
+            _metaschema-xml-id="/assembly/oscal-metadata/party/uuid"
+            _metaschema-json-id="/assembly/oscal-metadata/party/uuid"
+            name="uuid"
+            key="uuid"
+            _using-name="uuid"
+            _in-xml-name="uuid"
+            _in-json-name="uuid"
+            gi="uuid">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
-   <xsl:template match="j:map[@key='responsible-parties']/j:map/@key"
+   <xsl:template match="j:array[@key='parties']/j:map/j:string[@key='uuid']"
                  mode="keep-value-property"
                  priority="6"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:array[@key='parties']/j:map/j:string[@key='type']"><!-- XML match="party/@type" -->
+      <flag in-json="string"
+            as-type="string"
+            _step="type"
+            _key="type"
+            _metaschema-xml-id="/assembly/oscal-metadata/party/type"
+            _metaschema-json-id="/assembly/oscal-metadata/party/type"
+            name="type"
+            key="type"
+            _using-name="type"
+            _in-xml-name="type"
+            _in-json-name="type"
+            gi="type">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:array[@key='parties']/j:map/j:string[@key='type']"
+                 mode="keep-value-property"
+                 priority="6"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='external-ids']/j:map/j:string[@key='scheme']"
+                 priority="8"><!-- XML match="catalog/metadata/party/external-id/@scheme" -->
+      <flag in-json="string"
+            as-type="uri"
+            _step="scheme"
+            _key="scheme"
+            _metaschema-xml-id="/assembly/oscal-metadata/party/external-id/scheme"
+            _metaschema-json-id="/assembly/oscal-metadata/party/external-ids/scheme"
+            name="scheme"
+            key="scheme"
+            _using-name="scheme"
+            _in-xml-name="scheme"
+            _in-json-name="scheme"
+            gi="scheme">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='external-ids']/j:map/j:string[@key='scheme']"
+                 mode="keep-value-property"
+                 priority="8"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:array[@key='responsible-parties']/j:map/j:string[@key='role-id']"><!-- XML match="responsible-party/@role-id" -->
+      <flag in-json="string"
+            as-type="token"
+            _step="role-id"
+            _key="role-id"
+            _metaschema-xml-id="/assembly/oscal-metadata/responsible-party/role-id"
+            _metaschema-json-id="/assembly/oscal-metadata/responsible-party/role-id"
+            name="role-id"
+            key="role-id"
+            _using-name="role-id"
+            _in-xml-name="role-id"
+            _in-json-name="role-id"
+            gi="role-id">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:array[@key='responsible-parties']/j:map/j:string[@key='role-id']"
+                 mode="keep-value-property"
+                 priority="6"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:array[@key='params']/j:map/j:string[@key='id']"><!-- XML match="param/@id" -->
+      <flag in-json="string"
+            as-type="token"
+            _step="id"
+            _key="id"
+            _metaschema-xml-id="/assembly/oscal-catalog-common/parameter/id"
+            _metaschema-json-id="/assembly/oscal-catalog-common/parameter/id"
+            name="id"
+            key="id"
+            _using-name="id"
+            _in-xml-name="id"
+            _in-json-name="id"
+            gi="id">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:array[@key='params']/j:map/j:string[@key='id']"
+                 mode="keep-value-property"
+                 priority="5"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:array[@key='params']/j:map/j:string[@key='class']"><!-- XML match="param/@class" -->
+      <flag in-json="string"
+            as-type="token"
+            _step="class"
+            _key="class"
+            _metaschema-xml-id="/assembly/oscal-catalog-common/parameter/class"
+            _metaschema-json-id="/assembly/oscal-catalog-common/parameter/class"
+            name="class"
+            key="class"
+            _using-name="class"
+            _in-xml-name="class"
+            _in-json-name="class"
+            gi="class">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:array[@key='params']/j:map/j:string[@key='class']"
+                 mode="keep-value-property"
+                 priority="5"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:array[@key='params']/j:map/j:string[@key='depends-on']"><!-- XML match="param/@depends-on" -->
       <flag in-json="string"
-            as-type="NCName"
+            as-type="token"
+            _metaschema-xml-id="/assembly/oscal-catalog-common/parameter/depends-on"
+            _metaschema-json-id="/assembly/oscal-catalog-common/parameter/depends-on"
             name="depends-on"
             key="depends-on"
-            gi="depends-on"
-            formal-name="Depends on">
+            _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_control-common_metaschema.xml"
+            _key-name="oscal-catalog-common:depends-on"
+            _step="depends-on"
+            _key="depends-on"
+            _key-ref="oscal-catalog-common:depends-on"
+            _using-name="depends-on"
+            _in-xml-name="depends-on"
+            _in-json-name="depends-on"
+            gi="depends-on">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
@@ -582,24 +1013,250 @@
                  priority="5"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:map[@key='select']/j:string[@key='how-many']"><!-- XML match="select/@how-many" -->
       <flag in-json="string"
-            as-type="string"
+            as-type="token"
+            _step="how-many"
+            _key="how-many"
+            _metaschema-xml-id="/assembly/oscal-catalog-common/parameter-selection/how-many"
+            _metaschema-json-id="/assembly/oscal-catalog-common/parameter-selection/how-many"
             name="how-many"
             key="how-many"
-            gi="how-many"
-            formal-name="Parameter Cardinality">
+            _using-name="how-many"
+            _in-xml-name="how-many"
+            _in-json-name="how-many"
+            gi="how-many">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
    <xsl:template match="j:map[@key='select']/j:string[@key='how-many']"
                  mode="keep-value-property"
                  priority="7"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:array[@key='controls']/j:map/j:string[@key='id']"><!-- XML match="control/@id" -->
+      <flag in-json="string"
+            as-type="token"
+            _step="id"
+            _key="id"
+            _metaschema-xml-id="/assembly/oscal-catalog/control/id"
+            _metaschema-json-id="/assembly/oscal-catalog/control/id"
+            name="id"
+            key="id"
+            _using-name="id"
+            _in-xml-name="id"
+            _in-json-name="id"
+            gi="id">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:array[@key='controls']/j:map/j:string[@key='id']"
+                 mode="keep-value-property"
+                 priority="5"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:array[@key='controls']/j:map/j:string[@key='class']"><!-- XML match="control/@class" -->
+      <flag in-json="string"
+            as-type="token"
+            _step="class"
+            _key="class"
+            _metaschema-xml-id="/assembly/oscal-catalog/control/class"
+            _metaschema-json-id="/assembly/oscal-catalog/control/class"
+            name="class"
+            key="class"
+            _using-name="class"
+            _in-xml-name="class"
+            _in-json-name="class"
+            gi="class">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:array[@key='controls']/j:map/j:string[@key='class']"
+                 mode="keep-value-property"
+                 priority="5"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:array[@key='parts']/j:map/j:string[@key='id']"><!-- XML match="part/@id" -->
+      <flag in-json="string"
+            as-type="token"
+            _step="id"
+            _key="id"
+            _metaschema-xml-id="/assembly/oscal-catalog-common/part/id"
+            _metaschema-json-id="/assembly/oscal-catalog-common/part/id"
+            name="id"
+            key="id"
+            _using-name="id"
+            _in-xml-name="id"
+            _in-json-name="id"
+            gi="id">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:array[@key='parts']/j:map/j:string[@key='id']"
+                 mode="keep-value-property"
+                 priority="7"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:array[@key='parts']/j:map/j:string[@key='name']"><!-- XML match="part/@name" -->
+      <flag in-json="string"
+            as-type="token"
+            _step="name"
+            _key="name"
+            _metaschema-xml-id="/assembly/oscal-catalog-common/part/name"
+            _metaschema-json-id="/assembly/oscal-catalog-common/part/name"
+            name="name"
+            key="name"
+            _using-name="name"
+            _in-xml-name="name"
+            _in-json-name="name"
+            gi="name">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:array[@key='parts']/j:map/j:string[@key='name']"
+                 mode="keep-value-property"
+                 priority="7"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:array[@key='parts']/j:map/j:string[@key='ns']"><!-- XML match="part/@ns" -->
+      <flag in-json="string"
+            as-type="uri"
+            _step="ns"
+            _key="ns"
+            _metaschema-xml-id="/assembly/oscal-catalog-common/part/ns"
+            _metaschema-json-id="/assembly/oscal-catalog-common/part/ns"
+            name="ns"
+            key="ns"
+            _using-name="ns"
+            _in-xml-name="ns"
+            _in-json-name="ns"
+            gi="ns">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:array[@key='parts']/j:map/j:string[@key='ns']"
+                 mode="keep-value-property"
+                 priority="7"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:array[@key='parts']/j:map/j:string[@key='class']"><!-- XML match="part/@class" -->
+      <flag in-json="string"
+            as-type="token"
+            _step="class"
+            _key="class"
+            _metaschema-xml-id="/assembly/oscal-catalog-common/part/class"
+            _metaschema-json-id="/assembly/oscal-catalog-common/part/class"
+            name="class"
+            key="class"
+            _using-name="class"
+            _in-xml-name="class"
+            _in-json-name="class"
+            gi="class">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:array[@key='parts']/j:map/j:string[@key='class']"
+                 mode="keep-value-property"
+                 priority="7"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:array[@key='groups']/j:map/j:string[@key='id']"><!-- XML match="group/@id" -->
+      <flag in-json="string"
+            as-type="token"
+            _step="id"
+            _key="id"
+            _metaschema-xml-id="/assembly/oscal-catalog/group/id"
+            _metaschema-json-id="/assembly/oscal-catalog/group/id"
+            name="id"
+            key="id"
+            _using-name="id"
+            _in-xml-name="id"
+            _in-json-name="id"
+            gi="id">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:array[@key='groups']/j:map/j:string[@key='id']"
+                 mode="keep-value-property"
+                 priority="5"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:array[@key='groups']/j:map/j:string[@key='class']"><!-- XML match="group/@class" -->
+      <flag in-json="string"
+            as-type="token"
+            _step="class"
+            _key="class"
+            _metaschema-xml-id="/assembly/oscal-catalog/group/class"
+            _metaschema-json-id="/assembly/oscal-catalog/group/class"
+            name="class"
+            key="class"
+            _using-name="class"
+            _in-xml-name="class"
+            _in-json-name="class"
+            gi="class">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:array[@key='groups']/j:map/j:string[@key='class']"
+                 mode="keep-value-property"
+                 priority="5"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:string[@key='uuid']"
+                 priority="6"><!-- XML match="catalog/back-matter/resource/@uuid" -->
+      <flag in-json="string"
+            as-type="uuid"
+            _step="uuid"
+            _key="uuid"
+            _metaschema-xml-id="/assembly/oscal-metadata/back-matter/resource/uuid"
+            _metaschema-json-id="/assembly/oscal-metadata/back-matter/resources/uuid"
+            name="uuid"
+            key="uuid"
+            _using-name="uuid"
+            _in-xml-name="uuid"
+            _in-json-name="uuid"
+            gi="uuid">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:string[@key='uuid']"
+                 mode="keep-value-property"
+                 priority="6"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:array[@key='rlinks']/j:map/j:string[@key='href']"
+                 priority="8"><!-- XML match="catalog/back-matter/resource/rlink/@href" -->
+      <flag in-json="string"
+            as-type="uri-reference"
+            _step="href"
+            _key="href"
+            _metaschema-xml-id="/assembly/oscal-metadata/back-matter/resource/rlink/href"
+            _metaschema-json-id="/assembly/oscal-metadata/back-matter/resources/rlinks/href"
+            name="href"
+            key="href"
+            _using-name="href"
+            _in-xml-name="href"
+            _in-json-name="href"
+            gi="href">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:array[@key='rlinks']/j:map/j:string[@key='href']"
+                 mode="keep-value-property"
+                 priority="8"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:array[@key='rlinks']/j:map/j:string[@key='media-type']"><!-- XML match="catalog/back-matter/resource/rlink/@media-type" -->
+      <flag in-json="string"
+            as-type="string"
+            _metaschema-xml-id="/assembly/oscal-metadata/back-matter/resource/rlink/media-type"
+            _metaschema-json-id="/assembly/oscal-metadata/back-matter/resources/rlinks/media-type"
+            name="media-type"
+            key="media-type"
+            _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+            _key-name="oscal-metadata:media-type"
+            _step="media-type"
+            _key="media-type"
+            _key-ref="oscal-metadata:media-type"
+            _using-name="media-type"
+            _in-xml-name="media-type"
+            _in-json-name="media-type"
+            gi="media-type">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:array[@key='rlinks']/j:map/j:string[@key='media-type']"
+                 mode="keep-value-property"
+                 priority="8"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:array[@key='hashes']/j:map/j:string[@key='algorithm']"><!-- XML match="hash/@algorithm" -->
       <flag in-json="string"
             as-type="string"
+            _step="algorithm"
+            _key="algorithm"
+            _metaschema-xml-id="/field/oscal-metadata/hash/algorithm"
+            _metaschema-json-id="/field/oscal-metadata/hash/algorithm"
             name="algorithm"
             key="algorithm"
-            gi="algorithm"
-            formal-name="Hash algorithm">
+            _using-name="algorithm"
+            _in-xml-name="algorithm"
+            _in-json-name="algorithm"
+            gi="algorithm">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
@@ -610,121 +1267,198 @@
                  priority="7"><!-- XML match="catalog/back-matter/resource/base64/@filename" -->
       <flag in-json="string"
             as-type="uri-reference"
+            _step="filename"
+            _key="filename"
+            _metaschema-xml-id="/assembly/oscal-metadata/back-matter/resource/base64/filename"
+            _metaschema-json-id="/assembly/oscal-metadata/back-matter/resources/base64/filename"
             name="filename"
             key="filename"
-            gi="filename"
-            formal-name="File Name">
+            _using-name="filename"
+            _in-xml-name="filename"
+            _in-json-name="filename"
+            gi="filename">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
    <xsl:template match="j:map[@key='catalog']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:map[@key='base64']/j:string[@key='filename']"
                  mode="keep-value-property"
                  priority="7"><!-- Not keeping the flag here. --></xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:string[@key='title']"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:map[@key='base64']/j:string[@key='media-type']"><!-- XML match="catalog/back-matter/resource/base64/@media-type" -->
+      <flag in-json="string"
+            as-type="string"
+            _metaschema-xml-id="/assembly/oscal-metadata/back-matter/resource/base64/media-type"
+            _metaschema-json-id="/assembly/oscal-metadata/back-matter/resources/base64/media-type"
+            name="media-type"
+            key="media-type"
+            _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+            _key-name="oscal-metadata:media-type"
+            _step="media-type"
+            _key="media-type"
+            _key-ref="oscal-metadata:media-type"
+            _using-name="media-type"
+            _in-xml-name="media-type"
+            _in-json-name="media-type"
+            gi="media-type">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:map[@key='base64']/j:string[@key='media-type']"
+                 mode="keep-value-property"
+                 priority="7"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:[@key='title']"
                  priority="4">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog/metadata/title" -->
-      <field name="title"
-             gi="title"
+      <field _step="title"
+             _key="title"
+             _metaschema-xml-id="/assembly/oscal-metadata/metadata/title"
+             _metaschema-json-id="/assembly/oscal-metadata/metadata/title"
+             collapsible="no"
              as-type="markup-line"
-             formal-name="Document Title"
+             name="title"
+             key="title"
+             _using-name="title"
+             _in-xml-name="title"
+             _in-json-name="title"
+             gi="title"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:string[@key='title']"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:[@key='title']"
                  mode="get-value-property"
                  priority="4">
-      <value as-type="markup-line" in-json="string">
+      <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:string[@key='published']"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:[@key='published']"
                  priority="4">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog/metadata/published" -->
-      <field name="oscal-metadata-published"
-             gi="published"
+      <field _metaschema-xml-id="/assembly/oscal-metadata/metadata/published"
+             _metaschema-json-id="/assembly/oscal-metadata/metadata/published"
+             collapsible="no"
              as-type="dateTime-with-timezone"
-             formal-name="Publication Timestamp"
+             name="published"
+             key="published"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _key-name="oscal-metadata:published"
+             _step="published"
+             _key="published"
+             _key-ref="oscal-metadata:published"
+             _using-name="published"
+             _in-xml-name="published"
+             _in-json-name="published"
+             gi="published"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">published</xsl:attribute>
          </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:string[@key='published']"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:[@key='published']"
                  mode="get-value-property"
                  priority="4">
-      <value as-type="dateTime-with-timezone" in-json="string">
+      <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:string[@key='last-modified']"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:[@key='last-modified']"
                  priority="4">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog/metadata/last-modified" -->
-      <field name="oscal-metadata-last-modified"
-             gi="last-modified"
+      <field _metaschema-xml-id="/assembly/oscal-metadata/metadata/last-modified"
+             _metaschema-json-id="/assembly/oscal-metadata/metadata/last-modified"
+             collapsible="no"
              as-type="dateTime-with-timezone"
-             formal-name="Last Modified Timestamp"
+             name="last-modified"
+             key="last-modified"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _key-name="oscal-metadata:last-modified"
+             _step="last-modified"
+             _key="last-modified"
+             _key-ref="oscal-metadata:last-modified"
+             _using-name="last-modified"
+             _in-xml-name="last-modified"
+             _in-json-name="last-modified"
+             gi="last-modified"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">last-modified</xsl:attribute>
          </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:string[@key='last-modified']"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:[@key='last-modified']"
                  mode="get-value-property"
                  priority="4">
-      <value as-type="dateTime-with-timezone" in-json="string">
+      <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:string[@key='version']"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:[@key='version']"
                  priority="4">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog/metadata/version" -->
-      <field name="oscal-metadata-version"
+      <field _metaschema-xml-id="/assembly/oscal-metadata/metadata/version"
+             _metaschema-json-id="/assembly/oscal-metadata/metadata/version"
+             collapsible="no"
+             as-type="string"
+             name="version"
+             key="version"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _key-name="oscal-metadata:version"
+             _step="version"
+             _key="version"
+             _key-ref="oscal-metadata:version"
+             _using-name="version"
+             _in-xml-name="version"
+             _in-json-name="version"
              gi="version"
-             formal-name="Document Version"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">version</xsl:attribute>
          </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:string[@key='version']"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:[@key='version']"
                  mode="get-value-property"
                  priority="4">
-      <value as-type="string" in-json="string">
+      <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:string[@key='oscal-version']"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:[@key='oscal-version']"
                  priority="4">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog/metadata/oscal-version" -->
-      <field name="oscal-metadata-oscal-version"
+      <field _metaschema-xml-id="/assembly/oscal-metadata/metadata/oscal-version"
+             _metaschema-json-id="/assembly/oscal-metadata/metadata/oscal-version"
+             collapsible="no"
+             as-type="string"
+             name="oscal-version"
+             key="oscal-version"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _key-name="oscal-metadata:oscal-version"
+             _step="oscal-version"
+             _key="oscal-version"
+             _key-ref="oscal-metadata:oscal-version"
+             _using-name="oscal-version"
+             _in-xml-name="oscal-version"
+             _in-json-name="oscal-version"
              gi="oscal-version"
-             formal-name="OSCAL version"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">oscal-version</xsl:attribute>
          </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:string[@key='oscal-version']"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:[@key='oscal-version']"
                  mode="get-value-property"
                  priority="4">
-      <value as-type="string" in-json="string">
+      <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
@@ -732,9 +1466,18 @@
                  priority="5">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog/metadata/revisions/revision" -->
-      <assembly name="oscal-metadata-revision"
-                gi="revision"
-                formal-name="Revision History Entry">
+      <assembly _metaschema-xml-id="/assembly/oscal-metadata/metadata/revisions/revision"
+                _metaschema-json-id="/assembly/oscal-metadata/metadata/revisions"
+                name="revision"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+                _key-name="oscal-metadata:revision"
+                _step="revisions/revision"
+                _key="revisions"
+                _key-ref="oscal-metadata:revision"
+                _using-name="revision"
+                _in-xml-name="revision"
+                _in-json-name="revisions"
+                gi="revision">
          <xsl:apply-templates select="*[@key='title']"/>
          <xsl:apply-templates select="*[@key='published']"/>
          <xsl:apply-templates select="*[@key='last-modified']"/>
@@ -749,140 +1492,203 @@
                  priority="4">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog/metadata/revisions" -->
-      <group name="revisions" gi="revisions" group-json="ARRAY">
+      <group in-xml="SHOWN"
+             gi="revisions"
+             group-json="ARRAY"
+             name="revision"
+             key="revisions"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _key-name="oscal-metadata:revision"
+             _key-ref="oscal-metadata:revision">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">revisions</xsl:attribute>
          </xsl:if>
          <xsl:apply-templates select="*"/>
       </group>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='revisions']/j:array[@key='revisions']/j:map/j:string[@key='title']"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='revisions']/j:array[@key='revisions']/j:map/j:[@key='title']"
                  priority="6">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog/metadata/revisions/revision/title" -->
-      <field name="title"
-             gi="title"
+      <field _step="title"
+             _key="title"
+             _metaschema-xml-id="/assembly/oscal-metadata/revision/title"
+             _metaschema-json-id="/assembly/oscal-metadata/revision/title"
+             collapsible="no"
              as-type="markup-line"
-             formal-name="Document Title"
+             name="title"
+             key="title"
+             _using-name="title"
+             _in-xml-name="title"
+             _in-json-name="title"
+             gi="title"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='revisions']/j:array[@key='revisions']/j:map/j:string[@key='title']"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='revisions']/j:array[@key='revisions']/j:map/j:[@key='title']"
                  mode="get-value-property"
                  priority="6">
-      <value as-type="markup-line" in-json="string">
+      <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='revisions']/j:array[@key='revisions']/j:map/j:string[@key='published']"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='revisions']/j:array[@key='revisions']/j:map/j:[@key='published']"
                  priority="6">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog/metadata/revisions/revision/published" -->
-      <field name="oscal-metadata-published"
-             gi="published"
+      <field _metaschema-xml-id="/assembly/oscal-metadata/revision/published"
+             _metaschema-json-id="/assembly/oscal-metadata/revision/published"
+             collapsible="no"
              as-type="dateTime-with-timezone"
-             formal-name="Publication Timestamp"
+             name="published"
+             key="published"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _key-name="oscal-metadata:published"
+             _step="published"
+             _key="published"
+             _key-ref="oscal-metadata:published"
+             _using-name="published"
+             _in-xml-name="published"
+             _in-json-name="published"
+             gi="published"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">published</xsl:attribute>
          </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='revisions']/j:array[@key='revisions']/j:map/j:string[@key='published']"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='revisions']/j:array[@key='revisions']/j:map/j:[@key='published']"
                  mode="get-value-property"
                  priority="6">
-      <value as-type="dateTime-with-timezone" in-json="string">
+      <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='revisions']/j:array[@key='revisions']/j:map/j:string[@key='last-modified']"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='revisions']/j:array[@key='revisions']/j:map/j:[@key='last-modified']"
                  priority="6">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog/metadata/revisions/revision/last-modified" -->
-      <field name="oscal-metadata-last-modified"
-             gi="last-modified"
+      <field _metaschema-xml-id="/assembly/oscal-metadata/revision/last-modified"
+             _metaschema-json-id="/assembly/oscal-metadata/revision/last-modified"
+             collapsible="no"
              as-type="dateTime-with-timezone"
-             formal-name="Last Modified Timestamp"
+             name="last-modified"
+             key="last-modified"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _key-name="oscal-metadata:last-modified"
+             _step="last-modified"
+             _key="last-modified"
+             _key-ref="oscal-metadata:last-modified"
+             _using-name="last-modified"
+             _in-xml-name="last-modified"
+             _in-json-name="last-modified"
+             gi="last-modified"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">last-modified</xsl:attribute>
          </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='revisions']/j:array[@key='revisions']/j:map/j:string[@key='last-modified']"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='revisions']/j:array[@key='revisions']/j:map/j:[@key='last-modified']"
                  mode="get-value-property"
                  priority="6">
-      <value as-type="dateTime-with-timezone" in-json="string">
+      <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='revisions']/j:array[@key='revisions']/j:map/j:string[@key='version']"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='revisions']/j:array[@key='revisions']/j:map/j:[@key='version']"
                  priority="6">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog/metadata/revisions/revision/version" -->
-      <field name="oscal-metadata-version"
+      <field _metaschema-xml-id="/assembly/oscal-metadata/revision/version"
+             _metaschema-json-id="/assembly/oscal-metadata/revision/version"
+             collapsible="no"
+             as-type="string"
+             name="version"
+             key="version"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _key-name="oscal-metadata:version"
+             _step="version"
+             _key="version"
+             _key-ref="oscal-metadata:version"
+             _using-name="version"
+             _in-xml-name="version"
+             _in-json-name="version"
              gi="version"
-             formal-name="Document Version"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">version</xsl:attribute>
          </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='revisions']/j:array[@key='revisions']/j:map/j:string[@key='version']"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='revisions']/j:array[@key='revisions']/j:map/j:[@key='version']"
                  mode="get-value-property"
                  priority="6">
-      <value as-type="string" in-json="string">
+      <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='revisions']/j:array[@key='revisions']/j:map/j:string[@key='oscal-version']"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='revisions']/j:array[@key='revisions']/j:map/j:[@key='oscal-version']"
                  priority="6">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog/metadata/revisions/revision/oscal-version" -->
-      <field name="oscal-metadata-oscal-version"
+      <field _metaschema-xml-id="/assembly/oscal-metadata/revision/oscal-version"
+             _metaschema-json-id="/assembly/oscal-metadata/revision/oscal-version"
+             collapsible="no"
+             as-type="string"
+             name="oscal-version"
+             key="oscal-version"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _key-name="oscal-metadata:oscal-version"
+             _step="oscal-version"
+             _key="oscal-version"
+             _key-ref="oscal-metadata:oscal-version"
+             _using-name="oscal-version"
+             _in-xml-name="oscal-version"
+             _in-json-name="oscal-version"
              gi="oscal-version"
-             formal-name="OSCAL version"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">oscal-version</xsl:attribute>
          </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='revisions']/j:array[@key='revisions']/j:map/j:string[@key='oscal-version']"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='revisions']/j:array[@key='revisions']/j:map/j:[@key='oscal-version']"
                  mode="get-value-property"
                  priority="6">
-      <value as-type="string" in-json="string">
+      <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='revisions']/j:array[@key='revisions']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='revisions']/j:array[@key='revisions']/j:map/j:array[@key='links']/j:map/j:[@key='text']"
                  priority="8">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog/metadata/revisions/revision/link/text" -->
-      <field name="text"
-             gi="text"
+      <field _step="text"
+             _key="text"
+             _metaschema-xml-id="/assembly/oscal-metadata/link/text"
+             _metaschema-json-id="/assembly/oscal-metadata/link/text"
+             collapsible="no"
              as-type="markup-line"
-             formal-name="Link Text"
+             name="text"
+             key="text"
+             _using-name="text"
+             _in-xml-name="text"
+             _in-json-name="text"
+             gi="text"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='revisions']/j:array[@key='revisions']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='revisions']/j:array[@key='revisions']/j:map/j:array[@key='links']/j:map/j:[@key='text']"
                  mode="get-value-property"
                  priority="8">
-      <value as-type="markup-line" in-json="string">
+      <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
@@ -890,9 +1696,20 @@
                  priority="5">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog/metadata/document-id" -->
-      <field name="oscal-metadata-document-id"
-             gi="document-id"
-             formal-name="Document Identifier">
+      <field _metaschema-xml-id="/assembly/oscal-metadata/metadata/document-id"
+             _metaschema-json-id="/assembly/oscal-metadata/metadata/document-ids"
+             collapsible="no"
+             as-type="string"
+             name="document-id"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _key-name="oscal-metadata:document-id"
+             _step="document-id"
+             _key="document-ids"
+             _key-ref="oscal-metadata:document-id"
+             _using-name="document-id"
+             _in-xml-name="document-id"
+             _in-json-name="document-ids"
+             gi="document-id">
          <xsl:apply-templates select="*[@key='scheme']"/>
          <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
@@ -904,134 +1721,178 @@
          <xsl:apply-templates mode="keep-value-property"/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='links']/j:map/j:string[@key='text']"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='links']/j:map/j:[@key='text']"
                  priority="6">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog/metadata/link/text" -->
-      <field name="text"
-             gi="text"
+      <field _step="text"
+             _key="text"
+             _metaschema-xml-id="/assembly/oscal-metadata/link/text"
+             _metaschema-json-id="/assembly/oscal-metadata/link/text"
+             collapsible="no"
              as-type="markup-line"
-             formal-name="Link Text"
+             name="text"
+             key="text"
+             _using-name="text"
+             _in-xml-name="text"
+             _in-json-name="text"
+             gi="text"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='links']/j:map/j:string[@key='text']"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='links']/j:map/j:[@key='text']"
                  mode="get-value-property"
                  priority="6">
-      <value as-type="markup-line" in-json="string">
+      <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='roles']/j:map/j:string[@key='title']"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='roles']/j:map/j:[@key='title']"
                  priority="6">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog/metadata/role/title" -->
-      <field name="title"
-             gi="title"
+      <field _step="title"
+             _key="title"
+             _metaschema-xml-id="/assembly/oscal-metadata/role/title"
+             _metaschema-json-id="/assembly/oscal-metadata/role/title"
+             collapsible="no"
              as-type="markup-line"
-             formal-name="Role Title"
+             name="title"
+             key="title"
+             _using-name="title"
+             _in-xml-name="title"
+             _in-json-name="title"
+             gi="title"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='roles']/j:map/j:string[@key='title']"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='roles']/j:map/j:[@key='title']"
                  mode="get-value-property"
                  priority="6">
-      <value as-type="markup-line" in-json="string">
+      <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='roles']/j:map/j:string[@key='short-name']"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='roles']/j:map/j:[@key='short-name']"
                  priority="6">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog/metadata/role/short-name" -->
-      <field name="short-name"
+      <field _step="short-name"
+             _key="short-name"
+             _metaschema-xml-id="/assembly/oscal-metadata/role/short-name"
+             _metaschema-json-id="/assembly/oscal-metadata/role/short-name"
+             collapsible="no"
+             as-type="string"
+             name="short-name"
+             key="short-name"
+             _using-name="short-name"
+             _in-xml-name="short-name"
+             _in-json-name="short-name"
              gi="short-name"
-             formal-name="Role Short Name"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">short-name</xsl:attribute>
          </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='roles']/j:map/j:string[@key='short-name']"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='roles']/j:map/j:[@key='short-name']"
                  mode="get-value-property"
                  priority="6">
-      <value as-type="string" in-json="string">
+      <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='roles']/j:map/j:string[@key='description']"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='roles']/j:map/j:[@key='description']"
                  priority="6">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog/metadata/role/description" -->
-      <field name="description"
-             gi="description"
+      <field _step="description"
+             _key="description"
+             _metaschema-xml-id="/assembly/oscal-metadata/role/description"
+             _metaschema-json-id="/assembly/oscal-metadata/role/description"
+             in-xml="WITH_WRAPPER"
+             collapsible="no"
              as-type="markup-multiline"
-             formal-name="Role Description"
+             name="description"
+             key="description"
+             _using-name="description"
+             _in-xml-name="description"
+             _in-json-name="description"
+             gi="description"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='roles']/j:map/j:string[@key='description']"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='roles']/j:map/j:[@key='description']"
                  mode="get-value-property"
                  priority="6">
-      <value as-type="markup-multiline" in-json="string">
+      <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='roles']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='roles']/j:map/j:array[@key='links']/j:map/j:[@key='text']"
                  priority="8">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog/metadata/role/link/text" -->
-      <field name="text"
-             gi="text"
+      <field _step="text"
+             _key="text"
+             _metaschema-xml-id="/assembly/oscal-metadata/link/text"
+             _metaschema-json-id="/assembly/oscal-metadata/link/text"
+             collapsible="no"
              as-type="markup-line"
-             formal-name="Link Text"
+             name="text"
+             key="text"
+             _using-name="text"
+             _in-xml-name="text"
+             _in-json-name="text"
+             gi="text"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='roles']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='roles']/j:map/j:array[@key='links']/j:map/j:[@key='text']"
                  mode="get-value-property"
                  priority="8">
-      <value as-type="markup-line" in-json="string">
+      <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:string[@key='title']"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:[@key='title']"
                  priority="6">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog/metadata/location/title" -->
-      <field name="title"
-             gi="title"
+      <field _step="title"
+             _key="title"
+             _metaschema-xml-id="/assembly/oscal-metadata/location/title"
+             _metaschema-json-id="/assembly/oscal-metadata/location/title"
+             collapsible="no"
              as-type="markup-line"
-             formal-name="Location Title"
+             name="title"
+             key="title"
+             _using-name="title"
+             _in-xml-name="title"
+             _in-json-name="title"
+             gi="title"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:string[@key='title']"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:[@key='title']"
                  mode="get-value-property"
                  priority="6">
-      <value as-type="markup-line" in-json="string">
+      <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
@@ -1039,7 +1900,19 @@
                  priority="6">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog/metadata/location/address" -->
-      <assembly name="oscal-metadata-address" gi="address" formal-name="Address">
+      <assembly _metaschema-xml-id="/assembly/oscal-metadata/location/address"
+                _metaschema-json-id="/assembly/oscal-metadata/location/address"
+                name="address"
+                key="address"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+                _key-name="oscal-metadata:address"
+                _step="address"
+                _key="address"
+                _key-ref="oscal-metadata:address"
+                _using-name="address"
+                _in-xml-name="address"
+                _in-json-name="address"
+                gi="address">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">address</xsl:attribute>
          </xsl:if>
@@ -1051,118 +1924,173 @@
          <xsl:apply-templates select="*[@key='country']"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:map[@key='address']/j:array[@key='addr-lines']/j:string"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:map[@key='address']/j:array[@key='addr-lines']/j:"
                  priority="8">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog/metadata/location/address/addr-line" -->
-      <field name="oscal-metadata-addr-line"
+      <field _metaschema-xml-id="/assembly/oscal-metadata/address/addr-line"
+             _metaschema-json-id="/assembly/oscal-metadata/address/addr-lines"
+             collapsible="no"
+             as-type="string"
+             name="addr-line"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _key-name="oscal-metadata:addr-line"
+             _step="addr-line"
+             _key="addr-lines"
+             _key-ref="oscal-metadata:addr-line"
+             _using-name="addr-line"
+             _in-xml-name="addr-line"
+             _in-json-name="addr-lines"
              gi="addr-line"
-             formal-name="Address line"
-             in-json="SCALAR">
-         <xsl:apply-templates select="." mode="get-value-property"/>
-      </field>
+             in-json="SCALAR"/>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:map[@key='address']/j:array[@key='addr-lines']/j:string"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:map[@key='address']/j:array[@key='addr-lines']/j:"
                  mode="get-value-property"
                  priority="8">
-      <value as-type="string" in-json="string">
+      <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:map[@key='address']/j:string[@key='city']"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:map[@key='address']/j:[@key='city']"
                  priority="7">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog/metadata/location/address/city" -->
-      <field name="city" gi="city" formal-name="City" in-json="SCALAR">
+      <field _step="city"
+             _key="city"
+             _metaschema-xml-id="/assembly/oscal-metadata/address/city"
+             _metaschema-json-id="/assembly/oscal-metadata/address/city"
+             collapsible="no"
+             as-type="string"
+             name="city"
+             key="city"
+             _using-name="city"
+             _in-xml-name="city"
+             _in-json-name="city"
+             gi="city"
+             in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">city</xsl:attribute>
          </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:map[@key='address']/j:string[@key='city']"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:map[@key='address']/j:[@key='city']"
                  mode="get-value-property"
                  priority="7">
-      <value as-type="string" in-json="string">
+      <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:map[@key='address']/j:string[@key='state']"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:map[@key='address']/j:[@key='state']"
                  priority="7">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog/metadata/location/address/state" -->
-      <field name="state" gi="state" formal-name="State" in-json="SCALAR">
+      <field _step="state"
+             _key="state"
+             _metaschema-xml-id="/assembly/oscal-metadata/address/state"
+             _metaschema-json-id="/assembly/oscal-metadata/address/state"
+             collapsible="no"
+             as-type="string"
+             name="state"
+             key="state"
+             _using-name="state"
+             _in-xml-name="state"
+             _in-json-name="state"
+             gi="state"
+             in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">state</xsl:attribute>
          </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:map[@key='address']/j:string[@key='state']"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:map[@key='address']/j:[@key='state']"
                  mode="get-value-property"
                  priority="7">
-      <value as-type="string" in-json="string">
+      <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:map[@key='address']/j:string[@key='postal-code']"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:map[@key='address']/j:[@key='postal-code']"
                  priority="7">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog/metadata/location/address/postal-code" -->
-      <field name="postal-code"
+      <field _step="postal-code"
+             _key="postal-code"
+             _metaschema-xml-id="/assembly/oscal-metadata/address/postal-code"
+             _metaschema-json-id="/assembly/oscal-metadata/address/postal-code"
+             collapsible="no"
+             as-type="string"
+             name="postal-code"
+             key="postal-code"
+             _using-name="postal-code"
+             _in-xml-name="postal-code"
+             _in-json-name="postal-code"
              gi="postal-code"
-             formal-name="Postal Code"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">postal-code</xsl:attribute>
          </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:map[@key='address']/j:string[@key='postal-code']"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:map[@key='address']/j:[@key='postal-code']"
                  mode="get-value-property"
                  priority="7">
-      <value as-type="string" in-json="string">
+      <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:map[@key='address']/j:string[@key='country']"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:map[@key='address']/j:[@key='country']"
                  priority="7">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog/metadata/location/address/country" -->
-      <field name="country"
+      <field _step="country"
+             _key="country"
+             _metaschema-xml-id="/assembly/oscal-metadata/address/country"
+             _metaschema-json-id="/assembly/oscal-metadata/address/country"
+             collapsible="no"
+             as-type="string"
+             name="country"
+             key="country"
+             _using-name="country"
+             _in-xml-name="country"
+             _in-json-name="country"
              gi="country"
-             formal-name="Country Code"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">country</xsl:attribute>
          </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:map[@key='address']/j:string[@key='country']"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:map[@key='address']/j:[@key='country']"
                  mode="get-value-property"
                  priority="7">
-      <value as-type="string" in-json="string">
+      <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:array[@key='email-addresses']/j:string"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:array[@key='email-addresses']/j:"
                  priority="7">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog/metadata/location/email-address" -->
-      <field name="oscal-metadata-email-address"
-             gi="email-address"
+      <field _metaschema-xml-id="/assembly/oscal-metadata/location/email-address"
+             _metaschema-json-id="/assembly/oscal-metadata/location/email-addresses"
+             collapsible="no"
              as-type="email"
-             formal-name="Email Address"
-             in-json="SCALAR">
-         <xsl:apply-templates select="." mode="get-value-property"/>
-      </field>
+             name="email-address"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _key-name="oscal-metadata:email-address"
+             _step="email-address"
+             _key="email-addresses"
+             _key-ref="oscal-metadata:email-address"
+             _using-name="email-address"
+             _in-xml-name="email-address"
+             _in-json-name="email-addresses"
+             gi="email-address"
+             in-json="SCALAR"/>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:array[@key='email-addresses']/j:string"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:array[@key='email-addresses']/j:"
                  mode="get-value-property"
                  priority="7">
-      <value as-type="email" in-json="string">
+      <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
@@ -1170,9 +2098,20 @@
                  priority="7">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog/metadata/location/telephone-number" -->
-      <field name="oscal-metadata-telephone-number"
-             gi="telephone-number"
-             formal-name="Telephone Number">
+      <field _metaschema-xml-id="/assembly/oscal-metadata/location/telephone-number"
+             _metaschema-json-id="/assembly/oscal-metadata/location/telephone-numbers"
+             collapsible="no"
+             as-type="string"
+             name="telephone-number"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _key-name="oscal-metadata:telephone-number"
+             _step="telephone-number"
+             _key="telephone-numbers"
+             _key-ref="oscal-metadata:telephone-number"
+             _using-name="telephone-number"
+             _in-xml-name="telephone-number"
+             _in-json-name="telephone-numbers"
+             gi="telephone-number">
          <xsl:apply-templates select="*[@key='type']"/>
          <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
@@ -1184,83 +2123,114 @@
          <xsl:apply-templates mode="keep-value-property"/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:array[@key='urls']/j:string"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:array[@key='urls']/j:"
                  priority="7">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog/metadata/location/url" -->
-      <field name="url"
-             gi="url"
+      <field _step="url"
+             _key="urls"
+             _metaschema-xml-id="/assembly/oscal-metadata/location/url"
+             _metaschema-json-id="/assembly/oscal-metadata/location/urls"
+             collapsible="no"
              as-type="uri"
-             formal-name="Location URL"
-             in-json="SCALAR">
-         <xsl:apply-templates select="." mode="get-value-property"/>
-      </field>
+             name="url"
+             _using-name="url"
+             _in-xml-name="url"
+             _in-json-name="urls"
+             gi="url"
+             in-json="SCALAR"/>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:array[@key='urls']/j:string"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:array[@key='urls']/j:"
                  mode="get-value-property"
                  priority="7">
-      <value as-type="uri" in-json="string">
+      <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:array[@key='links']/j:map/j:[@key='text']"
                  priority="8">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog/metadata/location/link/text" -->
-      <field name="text"
-             gi="text"
+      <field _step="text"
+             _key="text"
+             _metaschema-xml-id="/assembly/oscal-metadata/link/text"
+             _metaschema-json-id="/assembly/oscal-metadata/link/text"
+             collapsible="no"
              as-type="markup-line"
-             formal-name="Link Text"
+             name="text"
+             key="text"
+             _using-name="text"
+             _in-xml-name="text"
+             _in-json-name="text"
+             gi="text"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:array[@key='links']/j:map/j:[@key='text']"
                  mode="get-value-property"
                  priority="8">
-      <value as-type="markup-line" in-json="string">
+      <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:string[@key='name']"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:[@key='name']"
                  priority="6">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog/metadata/party/name" -->
-      <field name="name" gi="name" formal-name="Party Name" in-json="SCALAR">
+      <field _step="name"
+             _key="name"
+             _metaschema-xml-id="/assembly/oscal-metadata/party/name"
+             _metaschema-json-id="/assembly/oscal-metadata/party/name"
+             collapsible="no"
+             as-type="string"
+             name="name"
+             key="name"
+             _using-name="name"
+             _in-xml-name="name"
+             _in-json-name="name"
+             gi="name"
+             in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">name</xsl:attribute>
          </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:string[@key='name']"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:[@key='name']"
                  mode="get-value-property"
                  priority="6">
-      <value as-type="string" in-json="string">
+      <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:string[@key='short-name']"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:[@key='short-name']"
                  priority="6">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog/metadata/party/short-name" -->
-      <field name="short-name"
+      <field _step="short-name"
+             _key="short-name"
+             _metaschema-xml-id="/assembly/oscal-metadata/party/short-name"
+             _metaschema-json-id="/assembly/oscal-metadata/party/short-name"
+             collapsible="no"
+             as-type="string"
+             name="short-name"
+             key="short-name"
+             _using-name="short-name"
+             _in-xml-name="short-name"
+             _in-json-name="short-name"
              gi="short-name"
-             formal-name="Party Short Name"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">short-name</xsl:attribute>
          </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:string[@key='short-name']"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:[@key='short-name']"
                  mode="get-value-property"
                  priority="6">
-      <value as-type="string" in-json="string">
+      <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
@@ -1268,9 +2238,17 @@
                  priority="7">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog/metadata/party/external-id" -->
-      <field name="external-id"
-             gi="external-id"
-             formal-name="Party External Identifier">
+      <field _step="external-id"
+             _key="external-ids"
+             _metaschema-xml-id="/assembly/oscal-metadata/party/external-id"
+             _metaschema-json-id="/assembly/oscal-metadata/party/external-ids"
+             collapsible="no"
+             as-type="string"
+             name="external-id"
+             _using-name="external-id"
+             _in-xml-name="external-id"
+             _in-json-name="external-ids"
+             gi="external-id">
          <xsl:apply-templates select="*[@key='scheme']"/>
          <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
@@ -1282,44 +2260,59 @@
          <xsl:apply-templates mode="keep-value-property"/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='links']/j:map/j:[@key='text']"
                  priority="8">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog/metadata/party/link/text" -->
-      <field name="text"
-             gi="text"
+      <field _step="text"
+             _key="text"
+             _metaschema-xml-id="/assembly/oscal-metadata/link/text"
+             _metaschema-json-id="/assembly/oscal-metadata/link/text"
+             collapsible="no"
              as-type="markup-line"
-             formal-name="Link Text"
+             name="text"
+             key="text"
+             _using-name="text"
+             _in-xml-name="text"
+             _in-json-name="text"
+             gi="text"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='links']/j:map/j:[@key='text']"
                  mode="get-value-property"
                  priority="8">
-      <value as-type="markup-line" in-json="string">
+      <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='email-addresses']/j:string"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='email-addresses']/j:"
                  priority="7">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog/metadata/party/email-address" -->
-      <field name="oscal-metadata-email-address"
-             gi="email-address"
+      <field _metaschema-xml-id="/assembly/oscal-metadata/party/email-address"
+             _metaschema-json-id="/assembly/oscal-metadata/party/email-addresses"
+             collapsible="no"
              as-type="email"
-             formal-name="Email Address"
-             in-json="SCALAR">
-         <xsl:apply-templates select="." mode="get-value-property"/>
-      </field>
+             name="email-address"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _key-name="oscal-metadata:email-address"
+             _step="email-address"
+             _key="email-addresses"
+             _key-ref="oscal-metadata:email-address"
+             _using-name="email-address"
+             _in-xml-name="email-address"
+             _in-json-name="email-addresses"
+             gi="email-address"
+             in-json="SCALAR"/>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='email-addresses']/j:string"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='email-addresses']/j:"
                  mode="get-value-property"
                  priority="7">
-      <value as-type="email" in-json="string">
+      <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
@@ -1327,9 +2320,20 @@
                  priority="7">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog/metadata/party/telephone-number" -->
-      <field name="oscal-metadata-telephone-number"
-             gi="telephone-number"
-             formal-name="Telephone Number">
+      <field _metaschema-xml-id="/assembly/oscal-metadata/party/telephone-number"
+             _metaschema-json-id="/assembly/oscal-metadata/party/telephone-numbers"
+             collapsible="no"
+             as-type="string"
+             name="telephone-number"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _key-name="oscal-metadata:telephone-number"
+             _step="telephone-number"
+             _key="telephone-numbers"
+             _key-ref="oscal-metadata:telephone-number"
+             _using-name="telephone-number"
+             _in-xml-name="telephone-number"
+             _in-json-name="telephone-numbers"
+             gi="telephone-number">
          <xsl:apply-templates select="*[@key='type']"/>
          <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
@@ -1345,7 +2349,18 @@
                  priority="8">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog/metadata/party/address" -->
-      <assembly name="oscal-metadata-address" gi="address" formal-name="Address">
+      <assembly _metaschema-xml-id="/assembly/oscal-metadata/party/address"
+                _metaschema-json-id="/assembly/oscal-metadata/party/addresses"
+                name="address"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+                _key-name="oscal-metadata:address"
+                _step="address"
+                _key="addresses"
+                _key-ref="oscal-metadata:address"
+                _using-name="address"
+                _in-xml-name="address"
+                _in-json-name="addresses"
+                gi="address">
          <xsl:apply-templates select="*[@key='type']"/>
          <xsl:apply-templates select="*[@key='addr-lines']"/>
          <xsl:apply-templates select="*[@key='city']"/>
@@ -1354,228 +2369,317 @@
          <xsl:apply-templates select="*[@key='country']"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='addresses']/j:map/j:array[@key='addr-lines']/j:string"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='addresses']/j:map/j:array[@key='addr-lines']/j:"
                  priority="10">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog/metadata/party/address/addr-line" -->
-      <field name="oscal-metadata-addr-line"
+      <field _metaschema-xml-id="/assembly/oscal-metadata/address/addr-line"
+             _metaschema-json-id="/assembly/oscal-metadata/address/addr-lines"
+             collapsible="no"
+             as-type="string"
+             name="addr-line"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _key-name="oscal-metadata:addr-line"
+             _step="addr-line"
+             _key="addr-lines"
+             _key-ref="oscal-metadata:addr-line"
+             _using-name="addr-line"
+             _in-xml-name="addr-line"
+             _in-json-name="addr-lines"
              gi="addr-line"
-             formal-name="Address line"
-             in-json="SCALAR">
-         <xsl:apply-templates select="." mode="get-value-property"/>
-      </field>
+             in-json="SCALAR"/>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='addresses']/j:map/j:array[@key='addr-lines']/j:string"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='addresses']/j:map/j:array[@key='addr-lines']/j:"
                  mode="get-value-property"
                  priority="10">
-      <value as-type="string" in-json="string">
+      <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='addresses']/j:map/j:string[@key='city']"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='addresses']/j:map/j:[@key='city']"
                  priority="9">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog/metadata/party/address/city" -->
-      <field name="city" gi="city" formal-name="City" in-json="SCALAR">
+      <field _step="city"
+             _key="city"
+             _metaschema-xml-id="/assembly/oscal-metadata/address/city"
+             _metaschema-json-id="/assembly/oscal-metadata/address/city"
+             collapsible="no"
+             as-type="string"
+             name="city"
+             key="city"
+             _using-name="city"
+             _in-xml-name="city"
+             _in-json-name="city"
+             gi="city"
+             in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">city</xsl:attribute>
          </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='addresses']/j:map/j:string[@key='city']"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='addresses']/j:map/j:[@key='city']"
                  mode="get-value-property"
                  priority="9">
-      <value as-type="string" in-json="string">
+      <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='addresses']/j:map/j:string[@key='state']"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='addresses']/j:map/j:[@key='state']"
                  priority="9">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog/metadata/party/address/state" -->
-      <field name="state" gi="state" formal-name="State" in-json="SCALAR">
+      <field _step="state"
+             _key="state"
+             _metaschema-xml-id="/assembly/oscal-metadata/address/state"
+             _metaschema-json-id="/assembly/oscal-metadata/address/state"
+             collapsible="no"
+             as-type="string"
+             name="state"
+             key="state"
+             _using-name="state"
+             _in-xml-name="state"
+             _in-json-name="state"
+             gi="state"
+             in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">state</xsl:attribute>
          </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='addresses']/j:map/j:string[@key='state']"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='addresses']/j:map/j:[@key='state']"
                  mode="get-value-property"
                  priority="9">
-      <value as-type="string" in-json="string">
+      <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='addresses']/j:map/j:string[@key='postal-code']"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='addresses']/j:map/j:[@key='postal-code']"
                  priority="9">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog/metadata/party/address/postal-code" -->
-      <field name="postal-code"
+      <field _step="postal-code"
+             _key="postal-code"
+             _metaschema-xml-id="/assembly/oscal-metadata/address/postal-code"
+             _metaschema-json-id="/assembly/oscal-metadata/address/postal-code"
+             collapsible="no"
+             as-type="string"
+             name="postal-code"
+             key="postal-code"
+             _using-name="postal-code"
+             _in-xml-name="postal-code"
+             _in-json-name="postal-code"
              gi="postal-code"
-             formal-name="Postal Code"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">postal-code</xsl:attribute>
          </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='addresses']/j:map/j:string[@key='postal-code']"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='addresses']/j:map/j:[@key='postal-code']"
                  mode="get-value-property"
                  priority="9">
-      <value as-type="string" in-json="string">
+      <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='addresses']/j:map/j:string[@key='country']"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='addresses']/j:map/j:[@key='country']"
                  priority="9">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog/metadata/party/address/country" -->
-      <field name="country"
+      <field _step="country"
+             _key="country"
+             _metaschema-xml-id="/assembly/oscal-metadata/address/country"
+             _metaschema-json-id="/assembly/oscal-metadata/address/country"
+             collapsible="no"
+             as-type="string"
+             name="country"
+             key="country"
+             _using-name="country"
+             _in-xml-name="country"
+             _in-json-name="country"
              gi="country"
-             formal-name="Country Code"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">country</xsl:attribute>
          </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='addresses']/j:map/j:string[@key='country']"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='addresses']/j:map/j:[@key='country']"
                  mode="get-value-property"
                  priority="9">
-      <value as-type="string" in-json="string">
+      <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='member-of-organizations']/j:string"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='member-of-organizations']/j:"
                  priority="7">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog/metadata/party/member-of-organization" -->
-      <field name="member-of-organization"
-             gi="member-of-organization"
+      <field _step="member-of-organization"
+             _key="member-of-organizations"
+             _metaschema-xml-id="/assembly/oscal-metadata/party/member-of-organization"
+             _metaschema-json-id="/assembly/oscal-metadata/party/member-of-organizations"
+             collapsible="no"
              as-type="uuid"
-             formal-name="Organizational Affiliation"
-             in-json="SCALAR">
-         <xsl:apply-templates select="." mode="get-value-property"/>
-      </field>
+             name="member-of-organization"
+             _using-name="member-of-organization"
+             _in-xml-name="member-of-organization"
+             _in-json-name="member-of-organizations"
+             gi="member-of-organization"
+             in-json="SCALAR"/>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='member-of-organizations']/j:string"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='member-of-organizations']/j:"
                  mode="get-value-property"
                  priority="7">
-      <value as-type="uuid" in-json="string">
+      <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:map[@key='responsible-parties']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='responsible-parties']/j:map/j:array[@key='links']/j:map/j:[@key='text']"
                  priority="8">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog/metadata/responsible-party/link/text" -->
-      <field name="text"
-             gi="text"
+      <field _step="text"
+             _key="text"
+             _metaschema-xml-id="/assembly/oscal-metadata/link/text"
+             _metaschema-json-id="/assembly/oscal-metadata/link/text"
+             collapsible="no"
              as-type="markup-line"
-             formal-name="Link Text"
+             name="text"
+             key="text"
+             _using-name="text"
+             _in-xml-name="text"
+             _in-json-name="text"
+             gi="text"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:map[@key='responsible-parties']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='metadata']/j:array[@key='responsible-parties']/j:map/j:array[@key='links']/j:map/j:[@key='text']"
                  mode="get-value-property"
                  priority="8">
-      <value as-type="markup-line" in-json="string">
+      <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:array[@key='params']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+   <xsl:template match="j:map[@key='catalog']/j:array[@key='params']/j:map/j:array[@key='links']/j:map/j:[@key='text']"
                  priority="7">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog/param/link/text" -->
-      <field name="text"
-             gi="text"
+      <field _step="text"
+             _key="text"
+             _metaschema-xml-id="/assembly/oscal-metadata/link/text"
+             _metaschema-json-id="/assembly/oscal-metadata/link/text"
+             collapsible="no"
              as-type="markup-line"
-             formal-name="Link Text"
+             name="text"
+             key="text"
+             _using-name="text"
+             _in-xml-name="text"
+             _in-json-name="text"
+             gi="text"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:array[@key='params']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+   <xsl:template match="j:map[@key='catalog']/j:array[@key='params']/j:map/j:array[@key='links']/j:map/j:[@key='text']"
                  mode="get-value-property"
                  priority="7">
-      <value as-type="markup-line" in-json="string">
+      <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:array[@key='params']/j:map/j:string[@key='label']"
+   <xsl:template match="j:map[@key='catalog']/j:array[@key='params']/j:map/j:[@key='label']"
                  priority="5">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog/param/label" -->
-      <field name="label"
-             gi="label"
+      <field _step="label"
+             _key="label"
+             _metaschema-xml-id="/assembly/oscal-catalog-common/parameter/label"
+             _metaschema-json-id="/assembly/oscal-catalog-common/parameter/label"
+             collapsible="no"
              as-type="markup-line"
-             formal-name="Parameter Label"
+             name="label"
+             key="label"
+             _using-name="label"
+             _in-xml-name="label"
+             _in-json-name="label"
+             gi="label"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">label</xsl:attribute>
          </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:array[@key='params']/j:map/j:string[@key='label']"
+   <xsl:template match="j:map[@key='catalog']/j:array[@key='params']/j:map/j:[@key='label']"
                  mode="get-value-property"
                  priority="5">
-      <value as-type="markup-line" in-json="string">
+      <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:array[@key='params']/j:map/j:string[@key='usage']"
+   <xsl:template match="j:map[@key='catalog']/j:array[@key='params']/j:map/j:[@key='usage']"
                  priority="5">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog/param/usage" -->
-      <field name="usage"
-             gi="usage"
+      <field _step="usage"
+             _key="usage"
+             _metaschema-xml-id="/assembly/oscal-catalog-common/parameter/usage"
+             _metaschema-json-id="/assembly/oscal-catalog-common/parameter/usage"
+             in-xml="WITH_WRAPPER"
+             collapsible="no"
              as-type="markup-multiline"
-             formal-name="Parameter Usage Description"
+             name="usage"
+             key="usage"
+             _using-name="usage"
+             _in-xml-name="usage"
+             _in-json-name="usage"
+             gi="usage"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">usage</xsl:attribute>
          </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:array[@key='params']/j:map/j:string[@key='usage']"
+   <xsl:template match="j:map[@key='catalog']/j:array[@key='params']/j:map/j:[@key='usage']"
                  mode="get-value-property"
                  priority="5">
-      <value as-type="markup-multiline" in-json="string">
+      <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:array[@key='params']/j:map/j:array[@key='constraints']/j:map/j:string[@key='description']"
+   <xsl:template match="j:map[@key='catalog']/j:array[@key='params']/j:map/j:array[@key='constraints']/j:map/j:[@key='description']"
                  priority="7">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog/param/constraint/description" -->
-      <field name="description"
-             gi="description"
+      <field _step="description"
+             _key="description"
+             _metaschema-xml-id="/assembly/oscal-catalog-common/parameter-constraint/description"
+             _metaschema-json-id="/assembly/oscal-catalog-common/parameter-constraint/description"
+             in-xml="WITH_WRAPPER"
+             collapsible="no"
              as-type="markup-multiline"
-             formal-name="Constraint Description"
+             name="description"
+             key="description"
+             _using-name="description"
+             _in-xml-name="description"
+             _in-json-name="description"
+             gi="description"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:array[@key='params']/j:map/j:array[@key='constraints']/j:map/j:string[@key='description']"
+   <xsl:template match="j:map[@key='catalog']/j:array[@key='params']/j:map/j:array[@key='constraints']/j:map/j:[@key='description']"
                  mode="get-value-property"
                  priority="7">
-      <value as-type="markup-multiline" in-json="string">
+      <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
@@ -1583,172 +2687,245 @@
                  priority="8">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog/param/constraint/test" -->
-      <assembly name="test" gi="test" formal-name="Constraint Test">
+      <assembly _step="test"
+                _key="tests"
+                _metaschema-xml-id="/assembly/oscal-catalog-common/parameter-constraint/test"
+                _metaschema-json-id="/assembly/oscal-catalog-common/parameter-constraint/tests"
+                name="test"
+                _using-name="test"
+                _in-xml-name="test"
+                _in-json-name="tests"
+                gi="test">
          <xsl:apply-templates select="*[@key='expression']"/>
          <xsl:apply-templates select="*[@key='remarks']"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:array[@key='params']/j:map/j:array[@key='constraints']/j:map/j:array[@key='tests']/j:map/j:string[@key='expression']"
+   <xsl:template match="j:map[@key='catalog']/j:array[@key='params']/j:map/j:array[@key='constraints']/j:map/j:array[@key='tests']/j:map/j:[@key='expression']"
                  priority="9">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog/param/constraint/test/expression" -->
-      <field name="expression"
-             gi="expression"
+      <field _step="expression"
+             _key="expression"
+             _metaschema-xml-id="/assembly/oscal-catalog-common/parameter-constraint/test/expression"
+             _metaschema-json-id="/assembly/oscal-catalog-common/parameter-constraint/tests/expression"
+             collapsible="no"
              as-type="string"
-             formal-name="Constraint test"
+             name="expression"
+             key="expression"
+             _using-name="expression"
+             _in-xml-name="expression"
+             _in-json-name="expression"
+             gi="expression"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">expression</xsl:attribute>
          </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:array[@key='params']/j:map/j:array[@key='constraints']/j:map/j:array[@key='tests']/j:map/j:string[@key='expression']"
+   <xsl:template match="j:map[@key='catalog']/j:array[@key='params']/j:map/j:array[@key='constraints']/j:map/j:array[@key='tests']/j:map/j:[@key='expression']"
                  mode="get-value-property"
                  priority="9">
-      <value as-type="string" in-json="string">
+      <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <!-- matching markup-multiline value for catalog/param/guideline-->
-   <xsl:template priority="3"
-                 match="j:map[@key='catalog']/j:array[@key='params']/j:map/j:array[@key='guidelines']/j:map/j:string[@key='prose']">
-      <field scope="local"
+   <xsl:template match="j:map[@key='catalog']/j:array[@key='params']/j:map/j:array[@key='guidelines']/j:map"
+                 priority="7">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="catalog/param/guideline" -->
+      <field _step="p ul ol pre table h1 h2 h3 h4 h5 h6"
+             _key="prose"
+             _metaschema-xml-id="/assembly/oscal-catalog-common/parameter-guideline/p ul ol pre table h1 h2 h3 h4 h5 h6"
+             _metaschema-json-id="/assembly/oscal-catalog-common/parameter-guideline/prose"
+             in-xml="UNWRAPPED"
+             collapsible="no"
+             as-type="markup-multiline"
              name="prose"
              key="prose"
-             as-type="markup-multiline"
-             formal-name="Guideline Text">
-         <value as-type="markup-multiline" in-json="string">
-            <xsl:value-of select="."/>
-         </value>
+             _using-name="prose"
+             _in-xml-name="p ul ol pre table h1 h2 h3 h4 h5 h6"
+             _in-json-name="prose"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">prose</xsl:attribute>
+         </xsl:if>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:array[@key='params']/j:map/j:map[@key='select']/j:array[@key='choice']/j:string"
+   <xsl:template match="j:map[@key='catalog']/j:array[@key='params']/j:map/j:array[@key='guidelines']/j:map"
+                 mode="get-value-property"
+                 priority="7">
+      <value>
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='catalog']/j:array[@key='params']/j:map/j:map[@key='select']/j:array[@key='choice']/j:"
                  priority="8">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog/param/select/choice" -->
-      <field name="parameter-choice"
-             gi="choice"
+      <field _step="choice"
+             _key="choice"
+             _metaschema-xml-id="/assembly/oscal-catalog-common/parameter-selection/choice"
+             _metaschema-json-id="/assembly/oscal-catalog-common/parameter-selection/choice"
+             collapsible="no"
              as-type="markup-line"
-             formal-name="Choice"
-             in-json="SCALAR">
-         <xsl:apply-templates select="." mode="get-value-property"/>
-      </field>
+             name="parameter-choice"
+             _using-name="choice"
+             _in-xml-name="choice"
+             _in-json-name="choice"
+             gi="choice"
+             in-json="SCALAR"/>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:array[@key='params']/j:map/j:map[@key='select']/j:array[@key='choice']/j:string"
+   <xsl:template match="j:map[@key='catalog']/j:array[@key='params']/j:map/j:map[@key='select']/j:array[@key='choice']/j:"
                  mode="get-value-property"
                  priority="8">
-      <value as-type="markup-line" in-json="string">
+      <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']//j:array[@key='controls']/j:map/j:string[@key='title']"
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='controls']/j:map/j:[@key='title']"
                  priority="5">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog//control/title" -->
-      <field name="title"
-             gi="title"
+      <field _step="title"
+             _key="title"
+             _metaschema-xml-id="/assembly/oscal-catalog/control/title"
+             _metaschema-json-id="/assembly/oscal-catalog/control/title"
+             collapsible="no"
              as-type="markup-line"
-             formal-name="Control Title"
+             name="title"
+             key="title"
+             _using-name="title"
+             _in-xml-name="title"
+             _in-json-name="title"
+             gi="title"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']//j:array[@key='controls']/j:map/j:string[@key='title']"
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='controls']/j:map/j:[@key='title']"
                  mode="get-value-property"
                  priority="5">
-      <value as-type="markup-line" in-json="string">
+      <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']//j:array[@key='controls']/j:map/j:array[@key='params']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='controls']/j:map/j:array[@key='params']/j:map/j:array[@key='links']/j:map/j:[@key='text']"
                  priority="9">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog//control/param/link/text" -->
-      <field name="text"
-             gi="text"
+      <field _step="text"
+             _key="text"
+             _metaschema-xml-id="/assembly/oscal-metadata/link/text"
+             _metaschema-json-id="/assembly/oscal-metadata/link/text"
+             collapsible="no"
              as-type="markup-line"
-             formal-name="Link Text"
+             name="text"
+             key="text"
+             _using-name="text"
+             _in-xml-name="text"
+             _in-json-name="text"
+             gi="text"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']//j:array[@key='controls']/j:map/j:array[@key='params']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='controls']/j:map/j:array[@key='params']/j:map/j:array[@key='links']/j:map/j:[@key='text']"
                  mode="get-value-property"
                  priority="9">
-      <value as-type="markup-line" in-json="string">
+      <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']//j:array[@key='controls']/j:map/j:array[@key='params']/j:map/j:string[@key='label']"
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='controls']/j:map/j:array[@key='params']/j:map/j:[@key='label']"
                  priority="7">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog//control/param/label" -->
-      <field name="label"
-             gi="label"
+      <field _step="label"
+             _key="label"
+             _metaschema-xml-id="/assembly/oscal-catalog-common/parameter/label"
+             _metaschema-json-id="/assembly/oscal-catalog-common/parameter/label"
+             collapsible="no"
              as-type="markup-line"
-             formal-name="Parameter Label"
+             name="label"
+             key="label"
+             _using-name="label"
+             _in-xml-name="label"
+             _in-json-name="label"
+             gi="label"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">label</xsl:attribute>
          </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']//j:array[@key='controls']/j:map/j:array[@key='params']/j:map/j:string[@key='label']"
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='controls']/j:map/j:array[@key='params']/j:map/j:[@key='label']"
                  mode="get-value-property"
                  priority="7">
-      <value as-type="markup-line" in-json="string">
+      <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']//j:array[@key='controls']/j:map/j:array[@key='params']/j:map/j:string[@key='usage']"
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='controls']/j:map/j:array[@key='params']/j:map/j:[@key='usage']"
                  priority="7">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog//control/param/usage" -->
-      <field name="usage"
-             gi="usage"
+      <field _step="usage"
+             _key="usage"
+             _metaschema-xml-id="/assembly/oscal-catalog-common/parameter/usage"
+             _metaschema-json-id="/assembly/oscal-catalog-common/parameter/usage"
+             in-xml="WITH_WRAPPER"
+             collapsible="no"
              as-type="markup-multiline"
-             formal-name="Parameter Usage Description"
+             name="usage"
+             key="usage"
+             _using-name="usage"
+             _in-xml-name="usage"
+             _in-json-name="usage"
+             gi="usage"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">usage</xsl:attribute>
          </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']//j:array[@key='controls']/j:map/j:array[@key='params']/j:map/j:string[@key='usage']"
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='controls']/j:map/j:array[@key='params']/j:map/j:[@key='usage']"
                  mode="get-value-property"
                  priority="7">
-      <value as-type="markup-multiline" in-json="string">
+      <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']//j:array[@key='controls']/j:map/j:array[@key='params']/j:map/j:array[@key='constraints']/j:map/j:string[@key='description']"
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='controls']/j:map/j:array[@key='params']/j:map/j:array[@key='constraints']/j:map/j:[@key='description']"
                  priority="9">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog//control/param/constraint/description" -->
-      <field name="description"
-             gi="description"
+      <field _step="description"
+             _key="description"
+             _metaschema-xml-id="/assembly/oscal-catalog-common/parameter-constraint/description"
+             _metaschema-json-id="/assembly/oscal-catalog-common/parameter-constraint/description"
+             in-xml="WITH_WRAPPER"
+             collapsible="no"
              as-type="markup-multiline"
-             formal-name="Constraint Description"
+             name="description"
+             key="description"
+             _using-name="description"
+             _in-xml-name="description"
+             _in-json-name="description"
+             gi="description"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']//j:array[@key='controls']/j:map/j:array[@key='params']/j:map/j:array[@key='constraints']/j:map/j:string[@key='description']"
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='controls']/j:map/j:array[@key='params']/j:map/j:array[@key='constraints']/j:map/j:[@key='description']"
                  mode="get-value-property"
                  priority="9">
-      <value as-type="markup-multiline" in-json="string">
+      <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
@@ -1756,251 +2933,361 @@
                  priority="10">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog//control/param/constraint/test" -->
-      <assembly name="test" gi="test" formal-name="Constraint Test">
+      <assembly _step="test"
+                _key="tests"
+                _metaschema-xml-id="/assembly/oscal-catalog-common/parameter-constraint/test"
+                _metaschema-json-id="/assembly/oscal-catalog-common/parameter-constraint/tests"
+                name="test"
+                _using-name="test"
+                _in-xml-name="test"
+                _in-json-name="tests"
+                gi="test">
          <xsl:apply-templates select="*[@key='expression']"/>
          <xsl:apply-templates select="*[@key='remarks']"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']//j:array[@key='controls']/j:map/j:array[@key='params']/j:map/j:array[@key='constraints']/j:map/j:array[@key='tests']/j:map/j:string[@key='expression']"
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='controls']/j:map/j:array[@key='params']/j:map/j:array[@key='constraints']/j:map/j:array[@key='tests']/j:map/j:[@key='expression']"
                  priority="11">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog//control/param/constraint/test/expression" -->
-      <field name="expression"
-             gi="expression"
+      <field _step="expression"
+             _key="expression"
+             _metaschema-xml-id="/assembly/oscal-catalog-common/parameter-constraint/test/expression"
+             _metaschema-json-id="/assembly/oscal-catalog-common/parameter-constraint/tests/expression"
+             collapsible="no"
              as-type="string"
-             formal-name="Constraint test"
+             name="expression"
+             key="expression"
+             _using-name="expression"
+             _in-xml-name="expression"
+             _in-json-name="expression"
+             gi="expression"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">expression</xsl:attribute>
          </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']//j:array[@key='controls']/j:map/j:array[@key='params']/j:map/j:array[@key='constraints']/j:map/j:array[@key='tests']/j:map/j:string[@key='expression']"
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='controls']/j:map/j:array[@key='params']/j:map/j:array[@key='constraints']/j:map/j:array[@key='tests']/j:map/j:[@key='expression']"
                  mode="get-value-property"
                  priority="11">
-      <value as-type="string" in-json="string">
+      <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <!-- matching markup-multiline value for catalog//control/param/guideline-->
-   <xsl:template priority="4"
-                 match="j:map[@key='catalog']//j:array[@key='controls']/j:map/j:array[@key='params']/j:map/j:array[@key='guidelines']/j:map/j:string[@key='prose']">
-      <field scope="local"
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='controls']/j:map/j:array[@key='params']/j:map/j:array[@key='guidelines']/j:map"
+                 priority="9">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="catalog//control/param/guideline" -->
+      <field _step="p ul ol pre table h1 h2 h3 h4 h5 h6"
+             _key="prose"
+             _metaschema-xml-id="/assembly/oscal-catalog-common/parameter-guideline/p ul ol pre table h1 h2 h3 h4 h5 h6"
+             _metaschema-json-id="/assembly/oscal-catalog-common/parameter-guideline/prose"
+             in-xml="UNWRAPPED"
+             collapsible="no"
+             as-type="markup-multiline"
              name="prose"
              key="prose"
-             as-type="markup-multiline"
-             formal-name="Guideline Text">
-         <value as-type="markup-multiline" in-json="string">
-            <xsl:value-of select="."/>
-         </value>
+             _using-name="prose"
+             _in-xml-name="p ul ol pre table h1 h2 h3 h4 h5 h6"
+             _in-json-name="prose"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">prose</xsl:attribute>
+         </xsl:if>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']//j:array[@key='controls']/j:map/j:array[@key='params']/j:map/j:map[@key='select']/j:array[@key='choice']/j:string"
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='controls']/j:map/j:array[@key='params']/j:map/j:array[@key='guidelines']/j:map"
+                 mode="get-value-property"
+                 priority="9">
+      <value>
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='controls']/j:map/j:array[@key='params']/j:map/j:map[@key='select']/j:array[@key='choice']/j:"
                  priority="10">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog//control/param/select/choice" -->
-      <field name="parameter-choice"
-             gi="choice"
+      <field _step="choice"
+             _key="choice"
+             _metaschema-xml-id="/assembly/oscal-catalog-common/parameter-selection/choice"
+             _metaschema-json-id="/assembly/oscal-catalog-common/parameter-selection/choice"
+             collapsible="no"
              as-type="markup-line"
-             formal-name="Choice"
-             in-json="SCALAR">
-         <xsl:apply-templates select="." mode="get-value-property"/>
-      </field>
+             name="parameter-choice"
+             _using-name="choice"
+             _in-xml-name="choice"
+             _in-json-name="choice"
+             gi="choice"
+             in-json="SCALAR"/>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']//j:array[@key='controls']/j:map/j:array[@key='params']/j:map/j:map[@key='select']/j:array[@key='choice']/j:string"
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='controls']/j:map/j:array[@key='params']/j:map/j:map[@key='select']/j:array[@key='choice']/j:"
                  mode="get-value-property"
                  priority="10">
-      <value as-type="markup-line" in-json="string">
+      <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']//j:array[@key='controls']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='controls']/j:map/j:array[@key='links']/j:map/j:[@key='text']"
                  priority="7">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog//control/link/text" -->
-      <field name="text"
-             gi="text"
+      <field _step="text"
+             _key="text"
+             _metaschema-xml-id="/assembly/oscal-metadata/link/text"
+             _metaschema-json-id="/assembly/oscal-metadata/link/text"
+             collapsible="no"
              as-type="markup-line"
-             formal-name="Link Text"
+             name="text"
+             key="text"
+             _using-name="text"
+             _in-xml-name="text"
+             _in-json-name="text"
+             gi="text"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']//j:array[@key='controls']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='controls']/j:map/j:array[@key='links']/j:map/j:[@key='text']"
                  mode="get-value-property"
                  priority="7">
-      <value as-type="markup-line" in-json="string">
+      <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']//j:array[@key='controls']/j:map//j:array[@key='parts']/j:map/j:string[@key='title']"
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='controls']/j:map//j:array[@key='parts']/j:map/j:[@key='title']"
                  priority="7">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog//control//part/title" -->
-      <field name="title"
-             gi="title"
+      <field _step="title"
+             _key="title"
+             _metaschema-xml-id="/assembly/oscal-catalog-common/part/title"
+             _metaschema-json-id="/assembly/oscal-catalog-common/part/title"
+             collapsible="no"
              as-type="markup-line"
-             formal-name="Part Title"
+             name="title"
+             key="title"
+             _using-name="title"
+             _in-xml-name="title"
+             _in-json-name="title"
+             gi="title"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']//j:array[@key='controls']/j:map//j:array[@key='parts']/j:map/j:string[@key='title']"
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='controls']/j:map//j:array[@key='parts']/j:map/j:[@key='title']"
                  mode="get-value-property"
                  priority="7">
-      <value as-type="markup-line" in-json="string">
+      <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <!-- matching markup-multiline value for catalog//control//part-->
-   <xsl:template priority="3"
-                 match="j:map[@key='catalog']//j:array[@key='controls']/j:map//j:array[@key='parts']/j:map/j:string[@key='prose']">
-      <field scope="local"
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='controls']/j:map//j:array[@key='parts']/j:map"
+                 priority="7">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="catalog//control//part" -->
+      <field _step="p ul ol pre table h1 h2 h3 h4 h5 h6"
+             _key="prose"
+             _metaschema-xml-id="/assembly/oscal-catalog-common/part/p ul ol pre table h1 h2 h3 h4 h5 h6"
+             _metaschema-json-id="/assembly/oscal-catalog-common/part/prose"
+             in-xml="UNWRAPPED"
+             collapsible="no"
+             as-type="markup-multiline"
              name="prose"
              key="prose"
-             as-type="markup-multiline"
-             formal-name="Part Text">
-         <value as-type="markup-multiline" in-json="string">
-            <xsl:value-of select="."/>
-         </value>
+             _using-name="prose"
+             _in-xml-name="p ul ol pre table h1 h2 h3 h4 h5 h6"
+             _in-json-name="prose"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">prose</xsl:attribute>
+         </xsl:if>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']//j:array[@key='controls']/j:map//j:array[@key='parts']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='controls']/j:map//j:array[@key='parts']/j:map"
+                 mode="get-value-property"
+                 priority="7">
+      <value>
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='controls']/j:map//j:array[@key='parts']/j:map/j:array[@key='links']/j:map/j:[@key='text']"
                  priority="9">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog//control//part/link/text" -->
-      <field name="text"
-             gi="text"
+      <field _step="text"
+             _key="text"
+             _metaschema-xml-id="/assembly/oscal-metadata/link/text"
+             _metaschema-json-id="/assembly/oscal-metadata/link/text"
+             collapsible="no"
              as-type="markup-line"
-             formal-name="Link Text"
+             name="text"
+             key="text"
+             _using-name="text"
+             _in-xml-name="text"
+             _in-json-name="text"
+             gi="text"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']//j:array[@key='controls']/j:map//j:array[@key='parts']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='controls']/j:map//j:array[@key='parts']/j:map/j:array[@key='links']/j:map/j:[@key='text']"
                  mode="get-value-property"
                  priority="9">
-      <value as-type="markup-line" in-json="string">
+      <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map/j:string[@key='title']"
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map/j:[@key='title']"
                  priority="5">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog//group/title" -->
-      <field name="title"
-             gi="title"
+      <field _step="title"
+             _key="title"
+             _metaschema-xml-id="/assembly/oscal-catalog/group/title"
+             _metaschema-json-id="/assembly/oscal-catalog/group/title"
+             collapsible="no"
              as-type="markup-line"
-             formal-name="Group Title"
+             name="title"
+             key="title"
+             _using-name="title"
+             _in-xml-name="title"
+             _in-json-name="title"
+             gi="title"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map/j:string[@key='title']"
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map/j:[@key='title']"
                  mode="get-value-property"
                  priority="5">
-      <value as-type="markup-line" in-json="string">
+      <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map/j:array[@key='params']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map/j:array[@key='params']/j:map/j:array[@key='links']/j:map/j:[@key='text']"
                  priority="9">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog//group/param/link/text" -->
-      <field name="text"
-             gi="text"
+      <field _step="text"
+             _key="text"
+             _metaschema-xml-id="/assembly/oscal-metadata/link/text"
+             _metaschema-json-id="/assembly/oscal-metadata/link/text"
+             collapsible="no"
              as-type="markup-line"
-             formal-name="Link Text"
+             name="text"
+             key="text"
+             _using-name="text"
+             _in-xml-name="text"
+             _in-json-name="text"
+             gi="text"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map/j:array[@key='params']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map/j:array[@key='params']/j:map/j:array[@key='links']/j:map/j:[@key='text']"
                  mode="get-value-property"
                  priority="9">
-      <value as-type="markup-line" in-json="string">
+      <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map/j:array[@key='params']/j:map/j:string[@key='label']"
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map/j:array[@key='params']/j:map/j:[@key='label']"
                  priority="7">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog//group/param/label" -->
-      <field name="label"
-             gi="label"
+      <field _step="label"
+             _key="label"
+             _metaschema-xml-id="/assembly/oscal-catalog-common/parameter/label"
+             _metaschema-json-id="/assembly/oscal-catalog-common/parameter/label"
+             collapsible="no"
              as-type="markup-line"
-             formal-name="Parameter Label"
+             name="label"
+             key="label"
+             _using-name="label"
+             _in-xml-name="label"
+             _in-json-name="label"
+             gi="label"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">label</xsl:attribute>
          </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map/j:array[@key='params']/j:map/j:string[@key='label']"
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map/j:array[@key='params']/j:map/j:[@key='label']"
                  mode="get-value-property"
                  priority="7">
-      <value as-type="markup-line" in-json="string">
+      <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map/j:array[@key='params']/j:map/j:string[@key='usage']"
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map/j:array[@key='params']/j:map/j:[@key='usage']"
                  priority="7">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog//group/param/usage" -->
-      <field name="usage"
-             gi="usage"
+      <field _step="usage"
+             _key="usage"
+             _metaschema-xml-id="/assembly/oscal-catalog-common/parameter/usage"
+             _metaschema-json-id="/assembly/oscal-catalog-common/parameter/usage"
+             in-xml="WITH_WRAPPER"
+             collapsible="no"
              as-type="markup-multiline"
-             formal-name="Parameter Usage Description"
+             name="usage"
+             key="usage"
+             _using-name="usage"
+             _in-xml-name="usage"
+             _in-json-name="usage"
+             gi="usage"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">usage</xsl:attribute>
          </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map/j:array[@key='params']/j:map/j:string[@key='usage']"
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map/j:array[@key='params']/j:map/j:[@key='usage']"
                  mode="get-value-property"
                  priority="7">
-      <value as-type="markup-multiline" in-json="string">
+      <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map/j:array[@key='params']/j:map/j:array[@key='constraints']/j:map/j:string[@key='description']"
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map/j:array[@key='params']/j:map/j:array[@key='constraints']/j:map/j:[@key='description']"
                  priority="9">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog//group/param/constraint/description" -->
-      <field name="description"
-             gi="description"
+      <field _step="description"
+             _key="description"
+             _metaschema-xml-id="/assembly/oscal-catalog-common/parameter-constraint/description"
+             _metaschema-json-id="/assembly/oscal-catalog-common/parameter-constraint/description"
+             in-xml="WITH_WRAPPER"
+             collapsible="no"
              as-type="markup-multiline"
-             formal-name="Constraint Description"
+             name="description"
+             key="description"
+             _using-name="description"
+             _in-xml-name="description"
+             _in-json-name="description"
+             gi="description"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map/j:array[@key='params']/j:map/j:array[@key='constraints']/j:map/j:string[@key='description']"
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map/j:array[@key='params']/j:map/j:array[@key='constraints']/j:map/j:[@key='description']"
                  mode="get-value-property"
                  priority="9">
-      <value as-type="markup-multiline" in-json="string">
+      <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
@@ -2008,251 +3295,361 @@
                  priority="10">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog//group/param/constraint/test" -->
-      <assembly name="test" gi="test" formal-name="Constraint Test">
+      <assembly _step="test"
+                _key="tests"
+                _metaschema-xml-id="/assembly/oscal-catalog-common/parameter-constraint/test"
+                _metaschema-json-id="/assembly/oscal-catalog-common/parameter-constraint/tests"
+                name="test"
+                _using-name="test"
+                _in-xml-name="test"
+                _in-json-name="tests"
+                gi="test">
          <xsl:apply-templates select="*[@key='expression']"/>
          <xsl:apply-templates select="*[@key='remarks']"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map/j:array[@key='params']/j:map/j:array[@key='constraints']/j:map/j:array[@key='tests']/j:map/j:string[@key='expression']"
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map/j:array[@key='params']/j:map/j:array[@key='constraints']/j:map/j:array[@key='tests']/j:map/j:[@key='expression']"
                  priority="11">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog//group/param/constraint/test/expression" -->
-      <field name="expression"
-             gi="expression"
+      <field _step="expression"
+             _key="expression"
+             _metaschema-xml-id="/assembly/oscal-catalog-common/parameter-constraint/test/expression"
+             _metaschema-json-id="/assembly/oscal-catalog-common/parameter-constraint/tests/expression"
+             collapsible="no"
              as-type="string"
-             formal-name="Constraint test"
+             name="expression"
+             key="expression"
+             _using-name="expression"
+             _in-xml-name="expression"
+             _in-json-name="expression"
+             gi="expression"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">expression</xsl:attribute>
          </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map/j:array[@key='params']/j:map/j:array[@key='constraints']/j:map/j:array[@key='tests']/j:map/j:string[@key='expression']"
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map/j:array[@key='params']/j:map/j:array[@key='constraints']/j:map/j:array[@key='tests']/j:map/j:[@key='expression']"
                  mode="get-value-property"
                  priority="11">
-      <value as-type="string" in-json="string">
+      <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <!-- matching markup-multiline value for catalog//group/param/guideline-->
-   <xsl:template priority="4"
-                 match="j:map[@key='catalog']//j:array[@key='groups']/j:map/j:array[@key='params']/j:map/j:array[@key='guidelines']/j:map/j:string[@key='prose']">
-      <field scope="local"
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map/j:array[@key='params']/j:map/j:array[@key='guidelines']/j:map"
+                 priority="9">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="catalog//group/param/guideline" -->
+      <field _step="p ul ol pre table h1 h2 h3 h4 h5 h6"
+             _key="prose"
+             _metaschema-xml-id="/assembly/oscal-catalog-common/parameter-guideline/p ul ol pre table h1 h2 h3 h4 h5 h6"
+             _metaschema-json-id="/assembly/oscal-catalog-common/parameter-guideline/prose"
+             in-xml="UNWRAPPED"
+             collapsible="no"
+             as-type="markup-multiline"
              name="prose"
              key="prose"
-             as-type="markup-multiline"
-             formal-name="Guideline Text">
-         <value as-type="markup-multiline" in-json="string">
-            <xsl:value-of select="."/>
-         </value>
+             _using-name="prose"
+             _in-xml-name="p ul ol pre table h1 h2 h3 h4 h5 h6"
+             _in-json-name="prose"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">prose</xsl:attribute>
+         </xsl:if>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map/j:array[@key='params']/j:map/j:map[@key='select']/j:array[@key='choice']/j:string"
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map/j:array[@key='params']/j:map/j:array[@key='guidelines']/j:map"
+                 mode="get-value-property"
+                 priority="9">
+      <value>
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map/j:array[@key='params']/j:map/j:map[@key='select']/j:array[@key='choice']/j:"
                  priority="10">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog//group/param/select/choice" -->
-      <field name="parameter-choice"
-             gi="choice"
+      <field _step="choice"
+             _key="choice"
+             _metaschema-xml-id="/assembly/oscal-catalog-common/parameter-selection/choice"
+             _metaschema-json-id="/assembly/oscal-catalog-common/parameter-selection/choice"
+             collapsible="no"
              as-type="markup-line"
-             formal-name="Choice"
-             in-json="SCALAR">
-         <xsl:apply-templates select="." mode="get-value-property"/>
-      </field>
+             name="parameter-choice"
+             _using-name="choice"
+             _in-xml-name="choice"
+             _in-json-name="choice"
+             gi="choice"
+             in-json="SCALAR"/>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map/j:array[@key='params']/j:map/j:map[@key='select']/j:array[@key='choice']/j:string"
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map/j:array[@key='params']/j:map/j:map[@key='select']/j:array[@key='choice']/j:"
                  mode="get-value-property"
                  priority="10">
-      <value as-type="markup-line" in-json="string">
+      <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map/j:array[@key='links']/j:map/j:[@key='text']"
                  priority="7">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog//group/link/text" -->
-      <field name="text"
-             gi="text"
+      <field _step="text"
+             _key="text"
+             _metaschema-xml-id="/assembly/oscal-metadata/link/text"
+             _metaschema-json-id="/assembly/oscal-metadata/link/text"
+             collapsible="no"
              as-type="markup-line"
-             formal-name="Link Text"
+             name="text"
+             key="text"
+             _using-name="text"
+             _in-xml-name="text"
+             _in-json-name="text"
+             gi="text"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map/j:array[@key='links']/j:map/j:[@key='text']"
                  mode="get-value-property"
                  priority="7">
-      <value as-type="markup-line" in-json="string">
+      <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map//j:array[@key='parts']/j:map/j:string[@key='title']"
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map//j:array[@key='parts']/j:map/j:[@key='title']"
                  priority="7">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog//group//part/title" -->
-      <field name="title"
-             gi="title"
+      <field _step="title"
+             _key="title"
+             _metaschema-xml-id="/assembly/oscal-catalog-common/part/title"
+             _metaschema-json-id="/assembly/oscal-catalog-common/part/title"
+             collapsible="no"
              as-type="markup-line"
-             formal-name="Part Title"
+             name="title"
+             key="title"
+             _using-name="title"
+             _in-xml-name="title"
+             _in-json-name="title"
+             gi="title"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map//j:array[@key='parts']/j:map/j:string[@key='title']"
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map//j:array[@key='parts']/j:map/j:[@key='title']"
                  mode="get-value-property"
                  priority="7">
-      <value as-type="markup-line" in-json="string">
+      <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <!-- matching markup-multiline value for catalog//group//part-->
-   <xsl:template priority="3"
-                 match="j:map[@key='catalog']//j:array[@key='groups']/j:map//j:array[@key='parts']/j:map/j:string[@key='prose']">
-      <field scope="local"
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map//j:array[@key='parts']/j:map"
+                 priority="7">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="catalog//group//part" -->
+      <field _step="p ul ol pre table h1 h2 h3 h4 h5 h6"
+             _key="prose"
+             _metaschema-xml-id="/assembly/oscal-catalog-common/part/p ul ol pre table h1 h2 h3 h4 h5 h6"
+             _metaschema-json-id="/assembly/oscal-catalog-common/part/prose"
+             in-xml="UNWRAPPED"
+             collapsible="no"
+             as-type="markup-multiline"
              name="prose"
              key="prose"
-             as-type="markup-multiline"
-             formal-name="Part Text">
-         <value as-type="markup-multiline" in-json="string">
-            <xsl:value-of select="."/>
-         </value>
+             _using-name="prose"
+             _in-xml-name="p ul ol pre table h1 h2 h3 h4 h5 h6"
+             _in-json-name="prose"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">prose</xsl:attribute>
+         </xsl:if>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map//j:array[@key='parts']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map//j:array[@key='parts']/j:map"
+                 mode="get-value-property"
+                 priority="7">
+      <value>
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map//j:array[@key='parts']/j:map/j:array[@key='links']/j:map/j:[@key='text']"
                  priority="9">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog//group//part/link/text" -->
-      <field name="text"
-             gi="text"
+      <field _step="text"
+             _key="text"
+             _metaschema-xml-id="/assembly/oscal-metadata/link/text"
+             _metaschema-json-id="/assembly/oscal-metadata/link/text"
+             collapsible="no"
              as-type="markup-line"
-             formal-name="Link Text"
+             name="text"
+             key="text"
+             _using-name="text"
+             _in-xml-name="text"
+             _in-json-name="text"
+             gi="text"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map//j:array[@key='parts']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map//j:array[@key='parts']/j:map/j:array[@key='links']/j:map/j:[@key='text']"
                  mode="get-value-property"
                  priority="9">
-      <value as-type="markup-line" in-json="string">
+      <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map//j:array[@key='controls']/j:map/j:string[@key='title']"
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map//j:array[@key='controls']/j:map/j:[@key='title']"
                  priority="8">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog//group//control/title" -->
-      <field name="title"
-             gi="title"
+      <field _step="title"
+             _key="title"
+             _metaschema-xml-id="/assembly/oscal-catalog/control/title"
+             _metaschema-json-id="/assembly/oscal-catalog/control/title"
+             collapsible="no"
              as-type="markup-line"
-             formal-name="Control Title"
+             name="title"
+             key="title"
+             _using-name="title"
+             _in-xml-name="title"
+             _in-json-name="title"
+             gi="title"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map//j:array[@key='controls']/j:map/j:string[@key='title']"
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map//j:array[@key='controls']/j:map/j:[@key='title']"
                  mode="get-value-property"
                  priority="8">
-      <value as-type="markup-line" in-json="string">
+      <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map//j:array[@key='controls']/j:map/j:array[@key='params']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map//j:array[@key='controls']/j:map/j:array[@key='params']/j:map/j:array[@key='links']/j:map/j:[@key='text']"
                  priority="12">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog//group//control/param/link/text" -->
-      <field name="text"
-             gi="text"
+      <field _step="text"
+             _key="text"
+             _metaschema-xml-id="/assembly/oscal-metadata/link/text"
+             _metaschema-json-id="/assembly/oscal-metadata/link/text"
+             collapsible="no"
              as-type="markup-line"
-             formal-name="Link Text"
+             name="text"
+             key="text"
+             _using-name="text"
+             _in-xml-name="text"
+             _in-json-name="text"
+             gi="text"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map//j:array[@key='controls']/j:map/j:array[@key='params']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map//j:array[@key='controls']/j:map/j:array[@key='params']/j:map/j:array[@key='links']/j:map/j:[@key='text']"
                  mode="get-value-property"
                  priority="12">
-      <value as-type="markup-line" in-json="string">
+      <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map//j:array[@key='controls']/j:map/j:array[@key='params']/j:map/j:string[@key='label']"
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map//j:array[@key='controls']/j:map/j:array[@key='params']/j:map/j:[@key='label']"
                  priority="10">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog//group//control/param/label" -->
-      <field name="label"
-             gi="label"
+      <field _step="label"
+             _key="label"
+             _metaschema-xml-id="/assembly/oscal-catalog-common/parameter/label"
+             _metaschema-json-id="/assembly/oscal-catalog-common/parameter/label"
+             collapsible="no"
              as-type="markup-line"
-             formal-name="Parameter Label"
+             name="label"
+             key="label"
+             _using-name="label"
+             _in-xml-name="label"
+             _in-json-name="label"
+             gi="label"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">label</xsl:attribute>
          </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map//j:array[@key='controls']/j:map/j:array[@key='params']/j:map/j:string[@key='label']"
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map//j:array[@key='controls']/j:map/j:array[@key='params']/j:map/j:[@key='label']"
                  mode="get-value-property"
                  priority="10">
-      <value as-type="markup-line" in-json="string">
+      <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map//j:array[@key='controls']/j:map/j:array[@key='params']/j:map/j:string[@key='usage']"
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map//j:array[@key='controls']/j:map/j:array[@key='params']/j:map/j:[@key='usage']"
                  priority="10">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog//group//control/param/usage" -->
-      <field name="usage"
-             gi="usage"
+      <field _step="usage"
+             _key="usage"
+             _metaschema-xml-id="/assembly/oscal-catalog-common/parameter/usage"
+             _metaschema-json-id="/assembly/oscal-catalog-common/parameter/usage"
+             in-xml="WITH_WRAPPER"
+             collapsible="no"
              as-type="markup-multiline"
-             formal-name="Parameter Usage Description"
+             name="usage"
+             key="usage"
+             _using-name="usage"
+             _in-xml-name="usage"
+             _in-json-name="usage"
+             gi="usage"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">usage</xsl:attribute>
          </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map//j:array[@key='controls']/j:map/j:array[@key='params']/j:map/j:string[@key='usage']"
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map//j:array[@key='controls']/j:map/j:array[@key='params']/j:map/j:[@key='usage']"
                  mode="get-value-property"
                  priority="10">
-      <value as-type="markup-multiline" in-json="string">
+      <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map//j:array[@key='controls']/j:map/j:array[@key='params']/j:map/j:array[@key='constraints']/j:map/j:string[@key='description']"
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map//j:array[@key='controls']/j:map/j:array[@key='params']/j:map/j:array[@key='constraints']/j:map/j:[@key='description']"
                  priority="12">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog//group//control/param/constraint/description" -->
-      <field name="description"
-             gi="description"
+      <field _step="description"
+             _key="description"
+             _metaschema-xml-id="/assembly/oscal-catalog-common/parameter-constraint/description"
+             _metaschema-json-id="/assembly/oscal-catalog-common/parameter-constraint/description"
+             in-xml="WITH_WRAPPER"
+             collapsible="no"
              as-type="markup-multiline"
-             formal-name="Constraint Description"
+             name="description"
+             key="description"
+             _using-name="description"
+             _in-xml-name="description"
+             _in-json-name="description"
+             gi="description"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map//j:array[@key='controls']/j:map/j:array[@key='params']/j:map/j:array[@key='constraints']/j:map/j:string[@key='description']"
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map//j:array[@key='controls']/j:map/j:array[@key='params']/j:map/j:array[@key='constraints']/j:map/j:[@key='description']"
                  mode="get-value-property"
                  priority="12">
-      <value as-type="markup-multiline" in-json="string">
+      <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
@@ -2260,141 +3657,214 @@
                  priority="13">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog//group//control/param/constraint/test" -->
-      <assembly name="test" gi="test" formal-name="Constraint Test">
+      <assembly _step="test"
+                _key="tests"
+                _metaschema-xml-id="/assembly/oscal-catalog-common/parameter-constraint/test"
+                _metaschema-json-id="/assembly/oscal-catalog-common/parameter-constraint/tests"
+                name="test"
+                _using-name="test"
+                _in-xml-name="test"
+                _in-json-name="tests"
+                gi="test">
          <xsl:apply-templates select="*[@key='expression']"/>
          <xsl:apply-templates select="*[@key='remarks']"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map//j:array[@key='controls']/j:map/j:array[@key='params']/j:map/j:array[@key='constraints']/j:map/j:array[@key='tests']/j:map/j:string[@key='expression']"
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map//j:array[@key='controls']/j:map/j:array[@key='params']/j:map/j:array[@key='constraints']/j:map/j:array[@key='tests']/j:map/j:[@key='expression']"
                  priority="14">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog//group//control/param/constraint/test/expression" -->
-      <field name="expression"
-             gi="expression"
+      <field _step="expression"
+             _key="expression"
+             _metaschema-xml-id="/assembly/oscal-catalog-common/parameter-constraint/test/expression"
+             _metaschema-json-id="/assembly/oscal-catalog-common/parameter-constraint/tests/expression"
+             collapsible="no"
              as-type="string"
-             formal-name="Constraint test"
+             name="expression"
+             key="expression"
+             _using-name="expression"
+             _in-xml-name="expression"
+             _in-json-name="expression"
+             gi="expression"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">expression</xsl:attribute>
          </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map//j:array[@key='controls']/j:map/j:array[@key='params']/j:map/j:array[@key='constraints']/j:map/j:array[@key='tests']/j:map/j:string[@key='expression']"
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map//j:array[@key='controls']/j:map/j:array[@key='params']/j:map/j:array[@key='constraints']/j:map/j:array[@key='tests']/j:map/j:[@key='expression']"
                  mode="get-value-property"
                  priority="14">
-      <value as-type="string" in-json="string">
+      <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <!-- matching markup-multiline value for catalog//group//control/param/guideline-->
-   <xsl:template priority="5"
-                 match="j:map[@key='catalog']//j:array[@key='groups']/j:map//j:array[@key='controls']/j:map/j:array[@key='params']/j:map/j:array[@key='guidelines']/j:map/j:string[@key='prose']">
-      <field scope="local"
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map//j:array[@key='controls']/j:map/j:array[@key='params']/j:map/j:array[@key='guidelines']/j:map"
+                 priority="12">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="catalog//group//control/param/guideline" -->
+      <field _step="p ul ol pre table h1 h2 h3 h4 h5 h6"
+             _key="prose"
+             _metaschema-xml-id="/assembly/oscal-catalog-common/parameter-guideline/p ul ol pre table h1 h2 h3 h4 h5 h6"
+             _metaschema-json-id="/assembly/oscal-catalog-common/parameter-guideline/prose"
+             in-xml="UNWRAPPED"
+             collapsible="no"
+             as-type="markup-multiline"
              name="prose"
              key="prose"
-             as-type="markup-multiline"
-             formal-name="Guideline Text">
-         <value as-type="markup-multiline" in-json="string">
-            <xsl:value-of select="."/>
-         </value>
+             _using-name="prose"
+             _in-xml-name="p ul ol pre table h1 h2 h3 h4 h5 h6"
+             _in-json-name="prose"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">prose</xsl:attribute>
+         </xsl:if>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map//j:array[@key='controls']/j:map/j:array[@key='params']/j:map/j:map[@key='select']/j:array[@key='choice']/j:string"
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map//j:array[@key='controls']/j:map/j:array[@key='params']/j:map/j:array[@key='guidelines']/j:map"
+                 mode="get-value-property"
+                 priority="12">
+      <value>
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map//j:array[@key='controls']/j:map/j:array[@key='params']/j:map/j:map[@key='select']/j:array[@key='choice']/j:"
                  priority="13">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog//group//control/param/select/choice" -->
-      <field name="parameter-choice"
-             gi="choice"
+      <field _step="choice"
+             _key="choice"
+             _metaschema-xml-id="/assembly/oscal-catalog-common/parameter-selection/choice"
+             _metaschema-json-id="/assembly/oscal-catalog-common/parameter-selection/choice"
+             collapsible="no"
              as-type="markup-line"
-             formal-name="Choice"
-             in-json="SCALAR">
-         <xsl:apply-templates select="." mode="get-value-property"/>
-      </field>
+             name="parameter-choice"
+             _using-name="choice"
+             _in-xml-name="choice"
+             _in-json-name="choice"
+             gi="choice"
+             in-json="SCALAR"/>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map//j:array[@key='controls']/j:map/j:array[@key='params']/j:map/j:map[@key='select']/j:array[@key='choice']/j:string"
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map//j:array[@key='controls']/j:map/j:array[@key='params']/j:map/j:map[@key='select']/j:array[@key='choice']/j:"
                  mode="get-value-property"
                  priority="13">
-      <value as-type="markup-line" in-json="string">
+      <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map//j:array[@key='controls']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map//j:array[@key='controls']/j:map/j:array[@key='links']/j:map/j:[@key='text']"
                  priority="10">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog//group//control/link/text" -->
-      <field name="text"
-             gi="text"
+      <field _step="text"
+             _key="text"
+             _metaschema-xml-id="/assembly/oscal-metadata/link/text"
+             _metaschema-json-id="/assembly/oscal-metadata/link/text"
+             collapsible="no"
              as-type="markup-line"
-             formal-name="Link Text"
+             name="text"
+             key="text"
+             _using-name="text"
+             _in-xml-name="text"
+             _in-json-name="text"
+             gi="text"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map//j:array[@key='controls']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map//j:array[@key='controls']/j:map/j:array[@key='links']/j:map/j:[@key='text']"
                  mode="get-value-property"
                  priority="10">
-      <value as-type="markup-line" in-json="string">
+      <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map//j:array[@key='controls']/j:map//j:array[@key='parts']/j:map/j:string[@key='title']"
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map//j:array[@key='controls']/j:map//j:array[@key='parts']/j:map/j:[@key='title']"
                  priority="10">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog//group//control//part/title" -->
-      <field name="title"
-             gi="title"
+      <field _step="title"
+             _key="title"
+             _metaschema-xml-id="/assembly/oscal-catalog-common/part/title"
+             _metaschema-json-id="/assembly/oscal-catalog-common/part/title"
+             collapsible="no"
              as-type="markup-line"
-             formal-name="Part Title"
+             name="title"
+             key="title"
+             _using-name="title"
+             _in-xml-name="title"
+             _in-json-name="title"
+             gi="title"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map//j:array[@key='controls']/j:map//j:array[@key='parts']/j:map/j:string[@key='title']"
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map//j:array[@key='controls']/j:map//j:array[@key='parts']/j:map/j:[@key='title']"
                  mode="get-value-property"
                  priority="10">
-      <value as-type="markup-line" in-json="string">
+      <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <!-- matching markup-multiline value for catalog//group//control//part-->
-   <xsl:template priority="4"
-                 match="j:map[@key='catalog']//j:array[@key='groups']/j:map//j:array[@key='controls']/j:map//j:array[@key='parts']/j:map/j:string[@key='prose']">
-      <field scope="local"
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map//j:array[@key='controls']/j:map//j:array[@key='parts']/j:map"
+                 priority="10">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="catalog//group//control//part" -->
+      <field _step="p ul ol pre table h1 h2 h3 h4 h5 h6"
+             _key="prose"
+             _metaschema-xml-id="/assembly/oscal-catalog-common/part/p ul ol pre table h1 h2 h3 h4 h5 h6"
+             _metaschema-json-id="/assembly/oscal-catalog-common/part/prose"
+             in-xml="UNWRAPPED"
+             collapsible="no"
+             as-type="markup-multiline"
              name="prose"
              key="prose"
-             as-type="markup-multiline"
-             formal-name="Part Text">
-         <value as-type="markup-multiline" in-json="string">
-            <xsl:value-of select="."/>
-         </value>
+             _using-name="prose"
+             _in-xml-name="p ul ol pre table h1 h2 h3 h4 h5 h6"
+             _in-json-name="prose"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">prose</xsl:attribute>
+         </xsl:if>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map//j:array[@key='controls']/j:map//j:array[@key='parts']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map//j:array[@key='controls']/j:map//j:array[@key='parts']/j:map"
+                 mode="get-value-property"
+                 priority="10">
+      <value>
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map//j:array[@key='controls']/j:map//j:array[@key='parts']/j:map/j:array[@key='links']/j:map/j:[@key='text']"
                  priority="12">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog//group//control//part/link/text" -->
-      <field name="text"
-             gi="text"
+      <field _step="text"
+             _key="text"
+             _metaschema-xml-id="/assembly/oscal-metadata/link/text"
+             _metaschema-json-id="/assembly/oscal-metadata/link/text"
+             collapsible="no"
              as-type="markup-line"
-             formal-name="Link Text"
+             name="text"
+             key="text"
+             _using-name="text"
+             _in-xml-name="text"
+             _in-json-name="text"
+             gi="text"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map//j:array[@key='controls']/j:map//j:array[@key='parts']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map//j:array[@key='controls']/j:map//j:array[@key='parts']/j:map/j:array[@key='links']/j:map/j:[@key='text']"
                  mode="get-value-property"
                  priority="12">
-      <value as-type="markup-line" in-json="string">
+      <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
@@ -2402,7 +3872,15 @@
                  priority="5">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog/back-matter/resource" -->
-      <assembly name="resource" gi="resource" formal-name="Resource">
+      <assembly _step="resource"
+                _key="resources"
+                _metaschema-xml-id="/assembly/oscal-metadata/back-matter/resource"
+                _metaschema-json-id="/assembly/oscal-metadata/back-matter/resources"
+                name="resource"
+                _using-name="resource"
+                _in-xml-name="resource"
+                _in-json-name="resources"
+                gi="resource">
          <xsl:apply-templates select="*[@key='uuid']"/>
          <xsl:apply-templates select="*[@key='title']"/>
          <xsl:apply-templates select="*[@key='description']"/>
@@ -2414,47 +3892,62 @@
          <xsl:apply-templates select="*[@key='remarks']"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:string[@key='title']"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:[@key='title']"
                  priority="6">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog/back-matter/resource/title" -->
-      <field name="title"
-             gi="title"
+      <field _step="title"
+             _key="title"
+             _metaschema-xml-id="/assembly/oscal-metadata/back-matter/resource/title"
+             _metaschema-json-id="/assembly/oscal-metadata/back-matter/resources/title"
+             collapsible="no"
              as-type="markup-line"
-             formal-name="Resource Title"
+             name="title"
+             key="title"
+             _using-name="title"
+             _in-xml-name="title"
+             _in-json-name="title"
+             gi="title"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:string[@key='title']"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:[@key='title']"
                  mode="get-value-property"
                  priority="6">
-      <value as-type="markup-line" in-json="string">
+      <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:string[@key='description']"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:[@key='description']"
                  priority="6">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog/back-matter/resource/description" -->
-      <field name="description"
-             gi="description"
+      <field _step="description"
+             _key="description"
+             _metaschema-xml-id="/assembly/oscal-metadata/back-matter/resource/description"
+             _metaschema-json-id="/assembly/oscal-metadata/back-matter/resources/description"
+             in-xml="WITH_WRAPPER"
+             collapsible="no"
              as-type="markup-multiline"
-             formal-name="Resource Description"
+             name="description"
+             key="description"
+             _using-name="description"
+             _in-xml-name="description"
+             _in-json-name="description"
+             gi="description"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:string[@key='description']"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:[@key='description']"
                  mode="get-value-property"
                  priority="6">
-      <value as-type="markup-multiline" in-json="string">
+      <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
@@ -2462,9 +3955,20 @@
                  priority="7">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog/back-matter/resource/document-id" -->
-      <field name="oscal-metadata-document-id"
-             gi="document-id"
-             formal-name="Document Identifier">
+      <field _metaschema-xml-id="/assembly/oscal-metadata/back-matter/resource/document-id"
+             _metaschema-json-id="/assembly/oscal-metadata/back-matter/resources/document-ids"
+             collapsible="no"
+             as-type="string"
+             name="document-id"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _key-name="oscal-metadata:document-id"
+             _step="document-id"
+             _key="document-ids"
+             _key-ref="oscal-metadata:document-id"
+             _using-name="document-id"
+             _in-xml-name="document-id"
+             _in-json-name="document-ids"
+             gi="document-id">
          <xsl:apply-templates select="*[@key='scheme']"/>
          <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
@@ -2480,52 +3984,95 @@
                  priority="6">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog/back-matter/resource/citation" -->
-      <assembly name="citation" gi="citation" formal-name="Citation">
+      <assembly _step="citation"
+                _key="citation"
+                _metaschema-xml-id="/assembly/oscal-metadata/back-matter/resource/citation"
+                _metaschema-json-id="/assembly/oscal-metadata/back-matter/resources/citation"
+                name="citation"
+                key="citation"
+                _using-name="citation"
+                _in-xml-name="citation"
+                _in-json-name="citation"
+                gi="citation">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">citation</xsl:attribute>
          </xsl:if>
          <xsl:apply-templates select="*[@key='text']"/>
          <xsl:apply-templates select="*[@key='props']"/>
-         <xsl:apply-templates select="*[@key='biblio']"/>
+         <xsl:apply-templates select="*[@key='links']"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:map[@key='citation']/j:string[@key='text']"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:map[@key='citation']/j:[@key='text']"
                  priority="7">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog/back-matter/resource/citation/text" -->
-      <field name="text"
-             gi="text"
+      <field _step="text"
+             _key="text"
+             _metaschema-xml-id="/assembly/oscal-metadata/back-matter/resource/citation/text"
+             _metaschema-json-id="/assembly/oscal-metadata/back-matter/resources/citation/text"
+             collapsible="no"
              as-type="markup-line"
-             formal-name="Citation Text"
+             name="text"
+             key="text"
+             _using-name="text"
+             _in-xml-name="text"
+             _in-json-name="text"
+             gi="text"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:map[@key='citation']/j:string[@key='text']"
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:map[@key='citation']/j:[@key='text']"
                  mode="get-value-property"
                  priority="7">
-      <value as-type="markup-line" in-json="string">
+      <value>
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='catalog']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:map[@key='citation']/j:map[@key='biblio']"
-                 priority="7">
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:map[@key='citation']/j:array[@key='links']/j:map/j:[@key='text']"
+                 priority="9">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="catalog/back-matter/resource/citation/biblio" -->
-      <assembly name="biblio" gi="biblio" formal-name="Bibliographic Definition">
+      <!-- XML match="catalog/back-matter/resource/citation/link/text" -->
+      <field _step="text"
+             _key="text"
+             _metaschema-xml-id="/assembly/oscal-metadata/link/text"
+             _metaschema-json-id="/assembly/oscal-metadata/link/text"
+             collapsible="no"
+             as-type="markup-line"
+             name="text"
+             key="text"
+             _using-name="text"
+             _in-xml-name="text"
+             _in-json-name="text"
+             gi="text"
+             in-json="SCALAR">
          <xsl:if test="$with-key">
-            <xsl:attribute name="key">biblio</xsl:attribute>
+            <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
-      </assembly>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='catalog']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:map[@key='citation']/j:array[@key='links']/j:map/j:[@key='text']"
+                 mode="get-value-property"
+                 priority="9">
+      <value>
+         <xsl:value-of select="."/>
+      </value>
    </xsl:template>
    <xsl:template match="j:map[@key='catalog']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:array[@key='rlinks']/j:map"
                  priority="7">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog/back-matter/resource/rlink" -->
-      <assembly name="rlink" gi="rlink" formal-name="Resource link">
+      <assembly _step="rlink"
+                _key="rlinks"
+                _metaschema-xml-id="/assembly/oscal-metadata/back-matter/resource/rlink"
+                _metaschema-json-id="/assembly/oscal-metadata/back-matter/resources/rlinks"
+                name="rlink"
+                _using-name="rlink"
+                _in-xml-name="rlink"
+                _in-json-name="rlinks"
+                gi="rlink">
          <xsl:apply-templates select="*[@key='href']"/>
          <xsl:apply-templates select="*[@key='media-type']"/>
          <xsl:apply-templates select="*[@key='hashes']"/>
@@ -2535,10 +4082,18 @@
                  priority="6">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="catalog/back-matter/resource/base64" -->
-      <field name="base64"
-             gi="base64"
+      <field _step="base64"
+             _key="base64"
+             _metaschema-xml-id="/assembly/oscal-metadata/back-matter/resource/base64"
+             _metaschema-json-id="/assembly/oscal-metadata/back-matter/resources/base64"
+             collapsible="no"
              as-type="base64Binary"
-             formal-name="Base64">
+             name="base64"
+             key="base64"
+             _using-name="base64"
+             _in-xml-name="base64"
+             _in-json-name="base64"
+             gi="base64">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">base64</xsl:attribute>
          </xsl:if>
@@ -2591,11 +4146,11 @@
       <xsl:apply-templates select="$str-as-textnode" mode="infer-inlines"/>
    </xsl:template>
    <xsl:template name="parse-markdown">
-        
+
 <!-- First, group according to ``` delimiters btw codeblocks and not
         within codeblock, escape & and < (only)
         within not-codeblock split lines at \n\s*\n
-        
+
         -->
         <!-- $str may be passed in, or we can process the current node -->
       <xsl:param name="markdown-str" as="xs:string" required="yes"/>

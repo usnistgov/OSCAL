@@ -5,9 +5,10 @@
 <METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/toolchains/xslt-M4/validate/metaschema.xsd" abstract="yes">
     <schema-name>OSCAL Document Metadata Description</schema-name>
-    <schema-version>1.0.0-rc2</schema-version>
+    <schema-version>1.0.0</schema-version>
     <short-name>oscal-metadata</short-name>
     <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
+    <json-base-uri>http://csrc.nist.gov/ns/oscal</json-base-uri>
 
     <!-- ############################################### -->
     <!-- # Metadata Assembly and supporting constructs # -->
@@ -49,7 +50,7 @@
                 <group-as name="parties" in-json="ARRAY"/>
             </assembly>
             <assembly ref="responsible-party" max-occurs="unbounded">
-                <group-as name="responsible-parties" in-json="BY_KEY"/>
+                <group-as name="responsible-parties" in-json="ARRAY"/>
             </assembly>
             <field ref="remarks" in-xml="WITH_WRAPPER"/>
         </model>
@@ -93,20 +94,23 @@
             <index id="index-metadata-party-organizations-uuid" name="index-metadata-party-organizations-uuid" target="party[@type='organization']">
                 <key-field target="@uuid"/>
             </index>
+            <is-unique name="unique-metadata-responsible-party" target="responsible-party">
+                <key-field target="@role-id"/>
+                <remarks>
+                    <p>Since <code>responsible-party</code> associates multiple <code>party-uuid</code> entries with a single <code>role-id</code>, each role-id must be referenced only once.</p>
+                </remarks>
+            </is-unique>
             <allowed-values id="allowed-metadata-responsibe-party-role-ids" target="responsible-party/@role-id" allow-other="yes">
                 <enum value="prepared-by">Indicates the organization that created this content.</enum>
                 <enum value="prepared-for">Indicates the organization for which this content was created.</enum>
                 <enum value="content-approver">Indicates the organization responsible for all content represented in the "document".</enum>
             </allowed-values>
             <allowed-values target="link/@rel" allow-other="yes">
-                <enum value="canonical">The link identifies the authoritative location for this file.</enum>
-                <enum value="alternate">The link identifies an alternative location or format for this file.</enum>
-                <enum value="latest-version">This link identifies a resource containing the latest version in the version history. Defined by <a href="https://tools.ietf.org/html/rfc5829">RFC 5829</a>.
-                </enum>
-                <enum value="predecessor-version">This link identifies a resource containing the predecessor version in the version history. <a href="https://tools.ietf.org/html/rfc5829">RFC 5829</a>.
-                </enum>
-                <enum value="successor-version">This link identifies a resource containing the predecessor version in the version history. <a href="https://tools.ietf.org/html/rfc5829">RFC 5829</a>.
-                </enum>
+                <enum value="canonical">The link identifies the authoritative location for this file. Defined by <a href="https://tools.ietf.org/html/rfc6596">RFC 6596</a>.</enum>
+                <enum value="alternate">The link identifies an alternative location or format for this file. Defined by <a href="https://html.spec.whatwg.org/multipage/links.html#linkTypes">the HTML Living Standard</a></enum>
+                <enum value="latest-version">This link identifies a resource containing the latest version in the version history. Defined by <a href="https://tools.ietf.org/html/rfc5829">RFC 5829</a>.</enum>
+                <enum value="predecessor-version">This link identifies a resource containing the predecessor version in the version history. Defined by  <a href="https://tools.ietf.org/html/rfc5829">RFC 5829</a>.</enum>
+                <enum value="successor-version">This link identifies a resource containing the predecessor version in the version history. Defined by <a href="https://tools.ietf.org/html/rfc5829">RFC 5829</a>.</enum>
             </allowed-values>
         </constraint>
     </define-assembly>
@@ -132,9 +136,12 @@
             <field ref="remarks" in-xml="WITH_WRAPPER"/>
         </model>
         <constraint>
-            <has-cardinality target="published|last-modified|version|link[@rel='source']" min-occurs="1"/>
+            <has-cardinality target="published|last-modified|version|link[@rel='canonical']" min-occurs="1"/>
             <allowed-values target="link/@rel" allow-other="yes">
-                <enum value="source">Indicates that the href points to the source resource for the revision entry.</enum>
+                <enum value="canonical">The link identifies the authoritative location for this file. Defined by <a href="https://tools.ietf.org/html/rfc6596">RFC 6596</a>.</enum>
+                <enum value="alternate">The link identifies an alternative location or format for this file. Defined by <a href="https://html.spec.whatwg.org/multipage/links.html#linkTypes">the HTML Living Standard</a></enum>
+                <enum value="predecessor-version">This link identifies a resource containing the predecessor version in the version history. Defined by  <a href="https://tools.ietf.org/html/rfc5829">RFC 5829</a>.</enum>
+                <enum value="successor-version">This link identifies a resource containing the predecessor version in the version history. Defined by <a href="https://tools.ietf.org/html/rfc5829">RFC 5829</a>.</enum>
             </allowed-values>
         </constraint>
         <remarks>
@@ -339,7 +346,7 @@
     <define-assembly name="role">
         <formal-name>Role</formal-name>
         <description>Defines a function assumed or expected to be assumed by a party in a specific situation.</description>
-        <define-flag name="id" as-type="NCName" required="yes">
+        <define-flag name="id" as-type="token" required="yes">
             <!-- This is an id because the idenfier is assigned and managed by humans. -->
             <formal-name>Role Identifier</formal-name>
             <description>A unique identifier for a specific role instance. This identifier's uniqueness is document scoped and is intended to be consistent for the same role across minor revisions of the document.</description>
@@ -374,7 +381,7 @@
         </remarks>
     </define-assembly>
 
-    <define-field name="role-id" as-type="NCName">
+    <define-field name="role-id" as-type="token">
         <formal-name>Role Identifier Reference</formal-name>
         <description>A reference to the roles served by the user.</description>
         <constraint>
@@ -428,14 +435,18 @@
                             <assembly ref="property" max-occurs="unbounded">
                                 <group-as name="props" in-json="ARRAY"/>
                             </assembly>
-                            <define-assembly name="biblio">
+                            <assembly ref="link" max-occurs="unbounded">
+                                <group-as name="links" in-json="ARRAY"/>
+                            </assembly>
+                            
+<!--                            <define-assembly name="biblio">
                                 <formal-name>Bibliographic Definition</formal-name>
                                 <description>A container for structured bibliographic information. The model of this information is undefined by OSCAL.</description>
                                 <model>
                                     <any/>
                                 </model>
                             </define-assembly>
-                        </model>
+-->                        </model>
                         <remarks>
                             <p>The <code>text</code> is used to define the endnote text, without any required bibliographic structure. If structured bibliographic data is needed, then the <code>biblio</code> can be used for this purpose.</p>
                             <p>A <code>biblio</code> can be used to capture a structured bibliographical citation in an appropriate format.</p>
@@ -578,7 +589,7 @@
         <formal-name>Property</formal-name>
         <description>An attribute, characteristic, or quality of the containing object expressed as a namespace qualified name/value pair. The value of a property is a simple scalar value, which may be expressed as a list of values.</description>
         <use-name>prop</use-name>
-        <define-flag name="name" as-type="NCName" required="yes">
+        <define-flag name="name" as-type="token" required="yes">
             <formal-name>Property Name</formal-name>
             <description>A textual label that uniquely identifies a specific attribute, characteristic, or quality of the property's containing object.</description>
             <constraint>
@@ -606,7 +617,7 @@
             <formal-name>Property Value</formal-name>
             <description>Indicates the value of the attribute, characteristic, or quality.</description>
         </define-flag>
-        <define-flag name="class" as-type="NCName">
+        <define-flag name="class" as-type="token">
             <formal-name>Property Class</formal-name>
             <description>A textual label that provides a sub-type or characterization of the property's <code>name</code>. This can be used to further distinguish or discriminate between the semantics of multiple properties of the same object with the same <code>name</code> and <code>ns</code>.
             </description>
@@ -637,7 +648,7 @@
                 <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced resource. A relative URI will be resolved relative to the location of the document containing the link.</p>
             </remarks>
         </define-flag>
-        <define-flag name="rel" as-type="NCName">
+        <define-flag name="rel" as-type="token">
             <formal-name>Relation</formal-name>
             <description>Describes the type of relationship provided by the link. This can be an indicator of the link's purpose.</description>
             <constraint>
@@ -697,8 +708,7 @@
     <define-assembly name="responsible-party">
         <formal-name>Responsible Party</formal-name>
         <description>A reference to a set of organizations or persons that have responsibility for performing a referenced role in the context of the containing object.</description>
-        <json-key flag-name="role-id"/>
-        <define-flag required="yes" name="role-id" as-type="NCName">
+        <define-flag required="yes" name="role-id" as-type="token">
             <formal-name>Responsible Role</formal-name>
             <description>The role that the party is responsible for.</description>
         </define-flag>
@@ -730,8 +740,7 @@
     <define-assembly name="responsible-role">
         <formal-name>Responsible Role</formal-name>
         <description>A reference to one or more roles with responsibility for performing a function relative to the containing object.</description>
-        <json-key flag-name="role-id"/>
-        <define-flag name="role-id" as-type="NCName" required="yes">
+        <define-flag name="role-id" as-type="token" required="yes">
             <formal-name>Responsible Role ID</formal-name>
             <description>The role that is responsible for the business function.</description>
         </define-flag>
@@ -897,7 +906,7 @@
         <description>A single line of an address.</description>
     </define-field>
 
-    <define-flag name="location-type" as-type="NCName" scope="local">
+    <define-flag name="location-type" as-type="token" scope="local">
         <formal-name>Address Type</formal-name>
         <description>Indicates the type of address.</description>
         <constraint>

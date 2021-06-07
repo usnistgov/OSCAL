@@ -1,17 +1,17 @@
 on:
   push:
     branches:
-      - master
+      - main
   pull_request:
     types: [opened, synchronize, reopened]
   workflow_dispatch:
     branches:
-      - master
+      - main
 name: Build Artifacts and Documentation
 env:
   # the name of the repo
   HOME_REPO: usnistgov/OSCAL
-  HOME_BRANCH: master
+  HOME_BRANCH: main
   # dependency versions
   SAXON_VERSION: 9.9.0-1
   HUGO_VERSION: 0.69.2
@@ -219,23 +219,39 @@ jobs:
       # ---------------
       - name: Generate specification documentation
         run: |
-          bash "${OSCAL_CICD_PATH}/generate-specification-documentation.sh" -w "${OSCAL_WORKING_PATH}"
+          bash "${OSCAL_CICD_PATH}/generate-specification-documentation.sh"
       - uses: actions/upload-artifact@v2
         with:
           name: specification-docs
           path: |
-            ${{ env.OSCAL_WORKING_PATH }}/docs/content/documentation/processing/profile-resolution.html
+            ${{ env.OSCAL_HOME }}/docs/content/documentation/processing/profile-resolution.html
           retention-days: 5
       # job-generate-docs
       - name: Generate Model Documentation
         run: |
-          bash "${OSCAL_CICD_PATH}/generate-model-documentation.sh" -w "${OSCAL_WORKING_PATH}"
-      - uses: actions/upload-artifact@v2
-        with:
-          name: model-docs
-          path: |
-            ${{ env.OSCAL_WORKING_PATH }}/docs/layouts/partials/generated
-          retention-days: 5
+          echo "PWD: ${PWD}"
+          echo "OSCAL_HOME: ${OSCAL_HOME}"
+          echo "Github Workspace: ${{ github.workspace }}"
+          echo "Branch: $(git branch --show-current)"
+
+          BRANCH="${GITHUB_REF}"
+          echo "Branch(1): ${BRANCH}"
+          if [[ "$BRANCH" =~ ^refs/pull/.* ]]; then
+            BRANCH="${GITHUB_HEAD_REF}"
+            echo "Branch(2): ${BRANCH}"
+          elif [[ "$BRANCH" =~ ^refs/heads/.* ]]; then
+            BRANCH="${GITHUB_REF#refs/heads/}"
+            echo "Branch(3): ${BRANCH}"
+          fi
+          echo "Branch(4): ${BRANCH}"
+          bash "../build/ci-cd/generate-model-documentation.sh" -b "${BRANCH}"
+        working-directory: ${{ github.workspace }}/${{ env.OSCAL_HOME }}/docs
+#      - uses: actions/upload-artifact@v2
+#        with:
+#          name: model-docs
+#          path: |
+#            ${{ env.OSCAL_HOME }}/docs/layouts/partials/generated
+#          retention-days: 5
       - name: Run Hugo
         run: |
             cd "${OSCAL_WEBSITE_PATH}"
@@ -246,9 +262,14 @@ jobs:
           path: |
             ${{ env.OSCAL_WEBSITE_PATH }}/public
           retention-days: 5
-      - name: Run deploy script
-        if: ${{ github.repository == env.HOME_REPO && github.ref == format('refs/heads/{0}',env.HOME_BRANCH) }}
-        run: |
-            cd "$OSCAL_WEBSITE_PATH"
-            git config user.name "Deployment Bot"
-            bash ./deploy.sh --push-only -v -m "Deploying website [ci deploy skip]"
+#      - name: Run HTMLProofer
+#        run: |
+#          cd "${OSCAL_WEBSITE_PATH}"
+#          #--allow-hash-href
+#          bundle exec htmlproofer --check-external-hash public/ --url-swap "https\://pages.nist.gov/OSCAL/:/" --assume-extension --log-level :debug --url-ignore "/\/OSCAL\/docs\/\/reference\/[^/]+\/[^/]+\/(?:json|xml)-(?:outline|reference|index|definitions)/,/#/,/pages.nist.gov\/(?:nist-header-footer|leaveNotice)\/.+/"
+#      - name: Run deploy script
+#        if: ${{ github.repository == env.HOME_REPO && github.ref == format('refs/heads/{0}',env.HOME_BRANCH) }}
+#        run: |
+#            cd "$OSCAL_WEBSITE_PATH"
+#            git config user.name "Deployment Bot"
+#            bash ./deploy.sh --push-only -v -m "Deploying website [ci deploy skip]"

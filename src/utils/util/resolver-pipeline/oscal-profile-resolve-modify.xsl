@@ -11,7 +11,7 @@
 <!-- XSLT 2.0 so as to validate against XSLT 3.0 constructs -->
 
     <xsl:key name="alteration-for-control-id" match="alter"         use="@control-id"/>
-    <xsl:key name="addition-by-id-ref"        match="add"           use="@id-ref"/>
+    <xsl:key name="addition-by-id-ref"        match="add"           use="@by-id"/>
     <xsl:key name="parameter-setting-for-id"  match="set-parameter" use="@param-id"/>
 
     <xsl:variable name="oscal-ns" select="'http://csrc.nist.gov/ns/oscal'"/>
@@ -60,13 +60,13 @@
         <xsl:copy>
             <xsl:copy-of select="@*"/>
             <xsl:apply-templates select="title" mode="#current"/>
-            <!-- condition not(@id-ref != $id) includes any addition without an @id-ref, or whose @id-ref is the control id -->
-            <xsl:copy-of select="$modifications/key('alteration-for-control-id',$id,.)/add[not(@id-ref != $id)][@position=('before','starting')]/*"/>
+            <!-- condition not(@by-id != $id) includes any addition without an @by-id, or whose @by-id is the control id -->
+            <xsl:copy-of select="$modifications/key('alteration-for-control-id',$id,.)/add[not(@by-id != $id)][@position=('before','starting')]/*"/>
 
             <xsl:apply-templates select="* except title" mode="#current"/>
             <!--<xsl:message expand-text="true">{ string-join((* except title)/(name() || '#' || @id), ', ') }</xsl:message>-->
 
-            <xsl:copy-of select="$modifications/key('alteration-for-control-id',$id,.)/add[not(@id-ref != $id)][not(@position = ('before','starting'))]/*"/>
+            <xsl:copy-of select="$modifications/key('alteration-for-control-id',$id,.)/add[not(@by-id != $id)][not(@position = ('before','starting'))]/*"/>
         </xsl:copy>
     </xsl:template>
 
@@ -121,20 +121,20 @@
         <xsl:sequence select="some $r in $removals satisfies oscal:remove-match($who,$r)"/>
     </xsl:function>
 
-    <!-- <remove item-name="" id-ref="" class-ref="" name-ref="" ns-ref=""/>-->
+    <!-- <remove by-item-name="" by-id="" by-class="" by-name="" by-ns=""/>-->
 
     <xsl:function name="oscal:remove-match">
         <xsl:param name="who" as="node()"/>
         <xsl:param name="removal" as="element(remove)"/>
-        <xsl:variable name="item-okay"  select="empty($removal/@item-name) or ($removal/@item-name = local-name($who))"/>
-        <xsl:variable name="id-okay"    select="empty($removal/@id-ref)    or ($removal/@id-ref = $who/@id)"/>
-        <xsl:variable name="name-okay"  select="empty($removal/@name-ref)  or ($removal/@name-ref/normalize-space(.) = $who/@name/normalize-space(.))"/>
-        <xsl:variable name="ns-okay"    select="empty($removal/@ns-ref[not(normalize-space(.) = $oscal-ns)])
-            or ($removal/@ns-ref/normalize-space(.) = $who/@ns/normalize-space(.))"/>
-        <xsl:variable name="oscal-ns-okay"    select="empty($removal/@ns-ref[normalize-space(.) = $oscal-ns])
+        <xsl:variable name="item-okay"  select="empty($removal/@by-item-name) or ($removal/@by-item-name = local-name($who))"/>
+        <xsl:variable name="id-okay"    select="empty($removal/@by-id)    or ($removal/@by-id = $who/@id)"/>
+        <xsl:variable name="name-okay"  select="empty($removal/@by-name)  or ($removal/@by-name/normalize-space(.) = $who/@name/normalize-space(.))"/>
+        <xsl:variable name="ns-okay"    select="empty($removal/@by-ns[not(normalize-space(.) = $oscal-ns)])
+            or ($removal/@by-ns/normalize-space(.) = $who/@ns/normalize-space(.))"/>
+        <xsl:variable name="oscal-ns-okay"    select="empty($removal/@by-ns[normalize-space(.) = $oscal-ns])
             or (($who/@ns/normalize-space(.) = $oscal-ns) or empty($who/@ns))"/>
-        <xsl:variable name="class-okay" select="empty($removal/@class-ref) or ($removal/@class-ref = oscal:classes($who))"/>
-        <xsl:sequence select="exists($removal/(@item-name|@id-ref|@name-ref|@ns-ref|@class-ref)) and ($item-okay and $id-okay and $name-okay and $ns-okay and $oscal-ns-okay and $class-okay)"/>
+        <xsl:variable name="class-okay" select="empty($removal/@by-class) or ($removal/@by-class = oscal:classes($who))"/>
+        <xsl:sequence select="exists($removal/(@by-item-name|@by-id|@by-name|@by-ns|@by-class)) and ($item-okay and $id-okay and $name-okay and $ns-okay and $oscal-ns-okay and $class-okay)"/>
     </xsl:function>
 
 </xsl:stylesheet>
