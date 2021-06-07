@@ -63,7 +63,7 @@ jobs:
       - name: Check internal links
         uses: untitaker/hyperlink@0.1.15
         with:
-          args: ${{ env.OSCAL_WEBSITE_PATH }}/public/ --sources ${{ env.OSCAL_WEBSITE_PATH }}/content --check-anchors
+          args: ${{ env.OSCAL_WEBSITE_PATH }}/public/ --sources ${{ env.OSCAL_WEBSITE_PATH }}/content --github-actions --check-anchors
       - uses: actions/upload-artifact@v2
         with:
           name: website
