@@ -97,7 +97,7 @@ _Example #2_: If a component represents a database, and the software version is 
 Identifiers may be referenced from other locations within OSCAL content using one of the following:
 1. <code>[<em>name</em>]-id</code> or <code>[<em>name</em>]-uuid</code>, where _name_ is a prefix indicating the type of referenced element or object;
 2. `id-ref` or `uuid-ref`, where the referenced element or object is not always the same type; or
-3. Uniform Resource Identifier (URI) Fragment: A value in a flag or field with a [URI data type](../datatypes/#uri). A [URI fragment](https://tools.ietf.org/html/rfc3986#section-3.5) starts with a hashtag (#) followed by a unique ID value. When used in an OSCAL file, this must be an ID or UUID.
+3. Uniform Resource Identifier (URI) Fragment: A value in a flag or field with a [URI data type](/reference/datatypes/#uri). A [URI fragment](https://tools.ietf.org/html/rfc3986#section-3.5) starts with a hashtag (#) followed by a unique ID value. When used in an OSCAL file, this must be an ID or UUID.
 
 ## Metadata Overview
 
@@ -179,7 +179,7 @@ OSCAL models are designed to be broadly applicable to a variety of security comp
 
 Models in OSCAL are organized hierarchically. At each level of this hierarchy, OSCAL syntax provides property (JSON: `property` / XML: `prop`) and annotation (`annotation`) objects. While these are sometimes used for core OSCAL syntax, they can also be assigned an organizational namespace (`ns`) value, which uniquely identifies the organization creating the extension.
 
-For any property or annotation identified with the organization's namespace, the organization may use any [NCName](../datatypes/#ncname) value in the property/annotation's `name`. This allows the organization to define the containing content as required. Organizations are strongly encouraged to publish these extensions to their community of OSCAL tool developers.
+For any property or annotation identified with the organization's namespace, the organization may use any [NCName](/reference/datatypes/#ncname) value in the property/annotation's `name`. This allows the organization to define the containing content as required. Organizations are strongly encouraged to publish these extensions to their community of OSCAL tool developers.
 
 {{% callout %}}
 **IMPORTANT NOTE TO DEVELOPERS**

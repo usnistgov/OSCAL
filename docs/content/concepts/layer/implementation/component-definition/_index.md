@@ -18,7 +18,7 @@ aliases:
 
 ## Purpose
 
-The OSCAL component definition model represents a description of the [controls](../../../concepts/#control) that are supported in a given implementation of a hardware, software, service, policy, process, procedure, or compliance artifact (e.g., FIPS 140-2 validation). The component definition model is part of the OSCAL [implementation](../) layer.
+The OSCAL component definition model represents a description of the [controls](/concepts/terminology/#control) that are supported in a given implementation of a hardware, software, service, policy, process, procedure, or compliance artifact (e.g., FIPS 140-2 validation). The component definition model is part of the OSCAL [implementation](../) layer.
 
 The component definition model allows grouping related components into capabilities, and documenting how the combination of components in a capability together can satisfy specific controls that are not fully satisfied by a single component on its own.
 

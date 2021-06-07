@@ -43,13 +43,13 @@ jobs:
       - name: Update APT package metadata
         run: |
           sudo rm -rf /var/lib/apt/lists/* && sudo apt-get update
-      # Ruby and Bundler
-      - name: Install Ruby and Bundler
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: 2.6 # Not needed with a .ruby-version file
-          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
-          working-directory: ${{ env.OSCAL_WEBSITE_PATH }}
+#      # Ruby and Bundler
+#      - name: Install Ruby and Bundler
+#        uses: ruby/setup-ruby@v1
+#        with:
+#          ruby-version: 2.6 # Not needed with a .ruby-version file
+#          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+#          working-directory: ${{ env.OSCAL_WEBSITE_PATH }}
       # Install Hugo
       - name: Install Hugo
         run: |
@@ -59,17 +59,16 @@ jobs:
         run: |
             cd "${OSCAL_WEBSITE_PATH}"
             hugo -v --debug --minify
+      - name: Check internal links
+        uses: untitaker/hyperlink@0.1.15
+        with:
+          args: ${{ env.OSCAL_WEBSITE_PATH }}/public/ --sources ${{ env.OSCAL_WEBSITE_PATH }}/content --check-anchors
       - uses: actions/upload-artifact@v2
         with:
           name: website
           path: |
             ${{ env.OSCAL_WEBSITE_PATH }}/public
           retention-days: 5
-      - name: Check internal links
-        uses: untitaker/hyperlink@0.1.15
-        with:
-          args: ${{ env.OSCAL_WEBSITE_PATH }}/public/ --sources ${{ env.OSCAL_WEBSITE_PATH }}/content --check-anchors
-          working-directory: ${{ env.OSCAL_WEBSITE_PATH }}
 #      - name: Run HTMLProofer
 #        run: |
 #          cd "${OSCAL_WEBSITE_PATH}"

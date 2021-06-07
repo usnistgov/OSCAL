@@ -17,7 +17,7 @@ aliases:
 
 ## Purpose
 
-The OSCAL assessment plan model represents the information contained within an assessment plan, and is typically used by anyone planning to perform an assessment or continuous monitoring activities on an information system to determine the degree to which that system complies with a given control [baseline](../../../concepts/#baseline) used by the system.
+The OSCAL assessment plan model represents the information contained within an assessment plan, and is typically used by anyone planning to perform an assessment or continuous monitoring activities on an information system to determine the degree to which that system complies with a given control [baseline](/concepts/terminology/#baseline) used by the system.
 
 It was designed to use identical syntax to the [assessment results model](../assessment-results/), for overlapping assemblies (Objectives, Assessment Subject, Assets, and Assessment Activities).
 

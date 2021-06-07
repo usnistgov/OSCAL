@@ -20,7 +20,7 @@ aliases:
 
 ## Purpose
 
-The OSCAL catalog model represents a collection of [controls](../../../concepts/#control), represented as a control [catalog](../../../concepts/#catalog).
+The OSCAL catalog model represents a collection of [controls](/concepts/terminology/#control), represented as a control [catalog](/concepts/terminology/#catalog).
 
 The OSCAL catalog model was designed to represent security and privacy controls in standardized, machine readable formats. The OSCAL catalog model standardizes the representation of control definitions from different sources (e.g., SP 800-53, ISO/IEC 27002, COBIT 5) allowing control information to be easily searched, imported, and exported by applications using a common format.
 
@@ -47,7 +47,7 @@ As the catalog forms the foundation of OSCAL, the authors and consumers of all o
 {{% usa-grid-container class="padding-x-0" %}}
 {{% usa-grid-row %}}
 {{% usa-grid-column class="grid-col-fill" %}}
-An OSCAL catalog is organized as follows, which is based on the standard OSCAL [document structure](../../#oscal-file-organization):
+An OSCAL catalog is organized as follows, which is based on the standard OSCAL [document structure](/concepts/layer/overview/#general-model-organization):
 - **Metadata**: Metadata syntax is identical and required in all OSCAL models. It includes information such as the file's title, publication version, publication date, and OSCAL version. Metadata is also used to define roles, parties (people, teams and organizations), and locations.
 - **Parameter**: Any parameter applicable to more than one control requirement statement in the catalog may be defined here.
 - **Control**: Each control may contain control-specific parameters, control requirement statements, control objectives, assessment methods, references, and subordinate controls.
