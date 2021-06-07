@@ -8,7 +8,7 @@ sidenav:
   title: XML Outline
 ---
 
-The following outline is a representation of the [XML format](https://github.com/usnistgov/OSCAL/blob/feature-documentation-redesign-2021-05/xml/schema/oscal_complete_schema.xsd) for the combination of all OSCAL models. For each element or attribute, the name links to the corresponding entry in the [XML Format Reference](../xml-reference/). The cardinality and data type are also provided for each element or attribute where appropriate.
+The following outline is a representation of the [XML format](https://github.com/usnistgov/OSCAL/blob/develop/xml/schema/oscal_complete_schema.xsd) for the combination of all OSCAL models. For each element or attribute, the name links to the corresponding entry in the [XML Format Reference](../xml-reference/). The cardinality and data type are also provided for each element or attribute where appropriate.
 
 <!-- DO NOT REMOVE. Generated text below -->{{< rawhtml >}}
 <div xmlns="http://www.w3.org/1999/xhtml" class="xml-outline">
@@ -12678,7 +12678,7 @@ The following outline is a representation of the [XML format](https://github.com
                            <p class="close-tag nobr">&lt;/origin&gt;</p>
                         </details>
                         <details class="OM-entry">
-                           <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/assessment-results/result/finding/target">target</a></span> <span class="nobr" id="/assessment-results/result/finding/target/@type"><a class="OM-name" href="../xml-reference/#/assessment-results/result/finding/target/@type">type</a>="<span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span>"</span> <span class="nobr" id="/assessment-results/result/finding/target/@target-id"><a class="OM-name" href="../xml-reference/#/assessment-results/result/finding/target/@target-id">target-id</a>="<span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span>"</span>&gt;<span class="show-closed"> … <span class="nobr">&lt;/target&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 or 1]</span></span></summary>
+                           <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/assessment-results/result/finding/target">target</a></span> <span class="nobr" id="/assessment-results/result/finding/target/@type"><a class="OM-name" href="../xml-reference/#/assessment-results/result/finding/target/@type">type</a>="<span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span>"</span> <span class="nobr" id="/assessment-results/result/finding/target/@target-id"><a class="OM-name" href="../xml-reference/#/assessment-results/result/finding/target/@target-id">target-id</a>="<span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span>"</span>&gt;<span class="show-closed"> … <span class="nobr">&lt;/target&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[1]</span></span></summary>
                            <div class="model-container">
                               <details class="OM-entry">
                                  <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/assessment-results/result/finding/target/title">title</a></span>/&gt;</span><span class="sq cardinality"> <span class="OM-cardinality">[0 or 1]</span></span></summary>
@@ -12710,6 +12710,10 @@ The following outline is a representation of the [XML format](https://github.com
                               </details>
                               <details class="OM-entry">
                                  <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/assessment-results/result/finding/target/status">status</a></span>/&gt;</span><span class="sq cardinality"> <span class="OM-cardinality">[1]</span></span></summary>
+                                 <p class="OM-map-name">[Empty]</p>
+                              </details>
+                              <details class="OM-entry">
+                                 <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/assessment-results/result/finding/target/reason">reason</a></span>/&gt;</span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
                                  <p class="OM-map-name">[Empty]</p>
                               </details>
                               <details class="OM-entry">

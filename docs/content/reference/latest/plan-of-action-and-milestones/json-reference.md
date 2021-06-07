@@ -7043,7 +7043,6 @@ The following is the JSON format reference for this model, which is organized hi
                                                    <p>The value <b>must</b> be one of the following:</p>
                                                    <ul>
                                                       
-                                                      
                                                       <li><strong>tool</strong>: A reference to a tool component defined with the assessment assets.</li>
                                                       
                                                       <li><strong>assessment-platform</strong>: A reference to an assessment-platform defined with the assessment assets.</li>
@@ -11373,7 +11372,8 @@ The following is the JSON format reference for this model, which is organized hi
                            <p class="formal-name">Risk Description</p>
                         </div>
                         <div class="body">
-                           <p class="description"><span class="usa-tag">Description</span> A human-readable summary of what was identified regarding the risk.</p>
+                           <p class="description"><span class="usa-tag">Description</span> A human-readable summary of the identified risk, to include a statement of how the
+                              risk impacts the system.</p>
                         </div>
                      </div>
                      <div class="model-entry definition assembly">
@@ -11781,7 +11781,6 @@ The following is the JSON format reference for this model, which is organized hi
                                                    <p><span class="usa-tag">allowed values</span></p>
                                                    <p>The value <b>must</b> be one of the following:</p>
                                                    <ul>
-                                                      
                                                       
                                                       <li><strong>tool</strong>: A reference to a tool component defined with the assessment assets.</li>
                                                       
@@ -15652,7 +15651,6 @@ The following is the JSON format reference for this model, which is organized hi
                                                             <p>The value <b>must</b> be one of the following:</p>
                                                             <ul>
                                                                
-                                                               
                                                                <li><strong>tool</strong>: A reference to a tool component defined with the assessment assets.</li>
                                                                
                                                                <li><strong>assessment-platform</strong>: A reference to an assessment-platform defined with the assessment assets.</li>
@@ -19122,7 +19120,6 @@ The following is the JSON format reference for this model, which is organized hi
                                              
                                              <li><strong>initial</strong>: As first identified.</li>
                                              
-                                             
                                              <li><strong>adjusted</strong>: Indicates that residual risk remains after some adjustments have been made.</li>
                                              </ul>
                                        </div>
@@ -19144,7 +19141,6 @@ The following is the JSON format reference for this model, which is organized hi
                                           <p><span class="usa-tag">allowed values</span>  for <code class="path">(.)[@system='http://fedramp.gov']/@name</code></p>
                                           <p>The value <b>may be locally defined</b>, or one of the following:</p>
                                           <ul>
-                                             
                                              
                                              <li><strong>likelihood</strong>: Likelihood as defined by FedRAMP. The class can be used to specify 'initial' and
                                                 'adjusted' risk states.</li>
@@ -19168,7 +19164,6 @@ The following is the JSON format reference for this model, which is organized hi
                                           <p><span class="usa-tag">allowed values</span>  for <code class="path">(.)[@system='http://www.first.org/cvss/v2.0']/@name</code></p>
                                           <p>The value <b>must</b> be one of the following:</p>
                                           <ul>
-                                             
                                              
                                              <li><strong>access-vector</strong>: Base: Access Vector</li>
                                              
@@ -19333,7 +19328,6 @@ The following is the JSON format reference for this model, which is organized hi
                                           <p><span class="usa-tag">allowed values</span>  for <code class="path">(.)[@system=('http://www.first.org/cvss/v3.0', 'http://www.first.org/cvss/v3.1')]/@name</code></p>
                                           <p>The value <b>must</b> be one of the following:</p>
                                           <ul>
-                                             
                                              
                                              <li><strong>attack-vector</strong>: Base: Attack Vector</li>
                                              
@@ -21209,7 +21203,6 @@ The following is the JSON format reference for this model, which is organized hi
                                                             <p><span class="usa-tag">allowed values</span></p>
                                                             <p>The value <b>must</b> be one of the following:</p>
                                                             <ul>
-                                                               
                                                                
                                                                <li><strong>tool</strong>: A reference to a tool component defined with the assessment assets.</li>
                                                                
@@ -33903,7 +33896,6 @@ The following is the JSON format reference for this model, which is organized hi
                                                    <p><span class="usa-tag">allowed values</span></p>
                                                    <p>The value <b>must</b> be one of the following:</p>
                                                    <ul>
-                                                      
                                                       
                                                       <li><strong>tool</strong>: A reference to a tool component defined with the assessment assets.</li>
                                                       

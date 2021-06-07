@@ -1,6 +1,8 @@
 ---
-title: "Development Snapshot Reference"
-layout: reference-index
+title: "Latest Release"
+summary: "Latest Release"
+layout: reference-release
+weight: 10
 sidenav:
   focusrenderdepth: 2
   activerenderdepth: 2
@@ -8,7 +10,7 @@ sidenav:
   debug: false
 oscal:
     type: "branch"
-    branch: "feature-documentation-redesign-2021-05"
-    revision: "feature-documentation-redesign-2021-05"
+    branch: "develop"
+    revision: "latest"
     version: "develop"
 ---

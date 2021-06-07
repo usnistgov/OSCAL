@@ -9,7 +9,7 @@ toc:
   headingselectors: "h1.toc1"
 ---
 
-The following is an index of each XML element and attribute used in the [XML format](https://github.com/usnistgov/OSCAL/blob/feature-documentation-redesign-2021-05/xml/schema/oscal_assessment-results_schema.xsd) for this model. Each entry in the index lists all uses of the given element or attribute in the format, which is linked to the corresponding entry in the [XML Format Reference](../xml-reference/). Each entry also lists the formal name for the given element or attribute which is linked to the corresponding XML type in the [XML Format Metaschema Reference](../xml-definitions/).
+The following is an index of each XML element and attribute used in the [XML format](https://github.com/usnistgov/OSCAL/blob/develop/xml/schema/oscal_assessment-results_schema.xsd) for this model. Each entry in the index lists all uses of the given element or attribute in the format, which is linked to the corresponding entry in the [XML Format Reference](../xml-reference/). Each entry also lists the formal name for the given element or attribute which is linked to the corresponding XML type in the [XML Format Metaschema Reference](../xml-definitions/).
 
 <!-- DO NOT REMOVE. Generated text below -->
 {{< rawhtml >}}
@@ -1734,6 +1734,12 @@ The following is an index of each XML element and attribute used in the [XML for
       <ul>
          <li><span class="pathlink">/<a href="../xml-reference/#/assessment-results">assessment-results</a>/<a href="../xml-reference/#/assessment-results/result">result</a>/<a href="../xml-reference/#/assessment-results/result/local-definitions">local-definitions</a>/<a href="../xml-reference/#/assessment-results/result/local-definitions/component">component</a>/<a href="../xml-reference/#/assessment-results/result/local-definitions/component/purpose">purpose</a></span> - <span class="formal-name"><a href="../xml-definitions/#/assembly/oscal-implementation-common/system-component/purpose">Purpose</a></span></li>
          <li><span class="pathlink">/<a href="../xml-reference/#/assessment-results">assessment-results</a>/<a href="../xml-reference/#/assessment-results/result">result</a>/<a href="../xml-reference/#/assessment-results/result/local-definitions">local-definitions</a>/<a href="../xml-reference/#/assessment-results/result/local-definitions/assessment-assets">assessment-assets</a>/<a href="../xml-reference/#/assessment-results/result/local-definitions/assessment-assets/component">component</a>/<a href="../xml-reference/#/assessment-results/result/local-definitions/assessment-assets/component/purpose">purpose</a></span> - <span class="formal-name"><a href="../xml-definitions/#/assembly/oscal-implementation-common/system-component/purpose">Purpose</a></span></li>
+      </ul>
+   </section>
+   <section class="named-object-group">
+      <h1 class="toc1" id="/reason">reason</h1>
+      <ul>
+         <li><span class="pathlink">/<a href="../xml-reference/#/assessment-results">assessment-results</a>/<a href="../xml-reference/#/assessment-results/result">result</a>/<a href="../xml-reference/#/assessment-results/result/finding">finding</a>/<a href="../xml-reference/#/assessment-results/result/finding/target">target</a>/<a href="../xml-reference/#/assessment-results/result/finding/target/reason">reason</a></span> - <span class="formal-name"><a href="../xml-definitions/#/assembly/oscal-assessment-common/finding-target/reason">Objective Status Reason</a></span></li>
       </ul>
    </section>
    <section class="named-object-group">

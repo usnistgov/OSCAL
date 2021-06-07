@@ -9,7 +9,7 @@ toc:
   headingselectors: "h1.toc1"
 ---
 
-The following is an index of each JSON property used in the [JSON format](https://github.com/usnistgov/OSCAL/blob/feature-documentation-redesign-2021-05/json/schema/oscal_assessment-results_schema.json) for this model. Each entry in the index lists all uses of the given property in the format, which is linked to the corresponding entry in the [JSON Format Reference](../json-reference/). Each entry also lists the formal name for the definition which is linked to the corresponding JSON definition in the [JSON Format Metaschema Reference](../json-definitions/).
+The following is an index of each JSON property used in the [JSON format](https://github.com/usnistgov/OSCAL/blob/develop/json/schema/oscal_assessment-results_schema.json) for this model. Each entry in the index lists all uses of the given property in the format, which is linked to the corresponding entry in the [JSON Format Reference](../json-reference/). Each entry also lists the formal name for the definition which is linked to the corresponding JSON definition in the [JSON Format Metaschema Reference](../json-definitions/).
 
 <!-- DO NOT REMOVE. Generated text below -->
 {{< rawhtml >}}
@@ -1750,6 +1750,12 @@ The following is an index of each JSON property used in the [JSON format](https:
       <ul>
          <li><span class="pathlink">/<a href="../json-reference/#/assessment-results">assessment-results</a>/<a href="../json-reference/#/assessment-results/results">results</a>/<a href="../json-reference/#/assessment-results/results/local-definitions">local-definitions</a>/<a href="../json-reference/#/assessment-results/results/local-definitions/components">components</a>/<a href="../json-reference/#/assessment-results/results/local-definitions/components/purpose">purpose</a></span> - <span class="formal-name"><a href="../json-definitions/#/assembly/oscal-implementation-common/system-component/purpose">Purpose</a></span></li>
          <li><span class="pathlink">/<a href="../json-reference/#/assessment-results">assessment-results</a>/<a href="../json-reference/#/assessment-results/results">results</a>/<a href="../json-reference/#/assessment-results/results/local-definitions">local-definitions</a>/<a href="../json-reference/#/assessment-results/results/local-definitions/assessment-assets">assessment-assets</a>/<a href="../json-reference/#/assessment-results/results/local-definitions/assessment-assets/components">components</a>/<a href="../json-reference/#/assessment-results/results/local-definitions/assessment-assets/components/purpose">purpose</a></span> - <span class="formal-name"><a href="../json-definitions/#/assembly/oscal-implementation-common/system-component/purpose">Purpose</a></span></li>
+      </ul>
+   </section>
+   <section class="named-object-group">
+      <h1 class="toc1" id="/reason">reason</h1>
+      <ul>
+         <li><span class="pathlink">/<a href="../json-reference/#/assessment-results">assessment-results</a>/<a href="../json-reference/#/assessment-results/results">results</a>/<a href="../json-reference/#/assessment-results/results/findings">findings</a>/<a href="../json-reference/#/assessment-results/results/findings/target">target</a>/<a href="../json-reference/#/assessment-results/results/findings/target/reason">reason</a></span> - <span class="formal-name"><a href="../json-definitions/#/assembly/oscal-assessment-common/finding-target/reason">Objective Status Reason</a></span></li>
       </ul>
    </section>
    <section class="named-object-group">

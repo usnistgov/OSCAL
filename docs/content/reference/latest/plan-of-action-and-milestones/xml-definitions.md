@@ -9,7 +9,7 @@ toc:
   headingselectors: "h1.toc1, h2.toc2, h3.toc3, h4.toc4, h5.toc5, h6.toc6"
 ---
 
-The following is a reference for the XML element and attribute types derived from this model's [metaschema](https://github.com/usnistgov/OSCAL/blob/feature-documentation-redesign-2021-05//src/metaschema/oscal_poam_metaschema.xml).
+The following is a reference for the XML element and attribute types derived from this model's [metaschema](https://github.com/usnistgov/OSCAL/blob/develop//src/metaschema/oscal_poam_metaschema.xml).
 
 <!-- DO NOT REMOVE. Generated text below -->{{< rawhtml >}}
 <div xmlns="http://www.w3.org/1999/xhtml" class="xml-definition">
@@ -9052,7 +9052,7 @@ The following is a reference for the XML element and attribute types derived fro
             </div>
          </details>
          <details open="open">
-            <summary>Elements (7):</summary>
+            <summary>Elements (8):</summary>
             <div class="model assembly-model">
                <div class="model-entry definition define-field">
                   <div class="instance-header">
@@ -9152,8 +9152,48 @@ The following is a reference for the XML element and attribute types derived fro
                               
                               <li><strong>satisfied</strong>: The objective has been completely satisfied.</li>
                               
-                              
                               <li><strong>not-satisfied</strong>: The objective has not been completely satisfied, but may be partially satisfied.</li>
+                              </ul>
+                        </div>
+                        </details>
+                  </div>
+               </div>
+               <div class="model-entry definition define-field">
+                  <div class="instance-header">
+                     <h2 id="/assembly/oscal-assessment-common/finding-target/reason" class="toc2 name">reason</h2>
+                     <p class="type"><a href="/reference/datatypes/#ncname">NCName</a></p>
+                     <p class="occurrence">[0 to ∞]</p>
+                     <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-assessment-common/finding-target/reason">Switch to JSON</a></div>
+                     <p class="formal-name">Objective Status Reason</p>
+                  </div>
+                  <div class="body">
+                     <p class="description"><span class="usa-tag">description</span> The reason the objective was given it's status.</p>
+                     <div class="remarks-group usa-prose">
+                        <details open="open">
+                           <summary class="subhead">Remarks</summary>
+                           <div class="remarks">
+                              <p>Reason may contain any value, and should be used to communicate additional information
+                                 regarding the status.</p>
+                           </div>
+                           <div class="remarks">
+                              <p>Reason may contain any value, and should be used to communicate additional information
+                                 regarding the status.</p>
+                           </div>
+                        </details>
+                     </div>
+                     <details>
+                        <summary>Constraint (1)</summary>
+                        
+                        <div class="constraint">
+                           <p><span class="usa-tag">allowed values</span></p>
+                           <p>The value <b>may be locally defined</b>, or one of the following:</p>
+                           <ul>
+                              
+                              <li><strong>pass</strong>: The target system or system component satisfied all the conditions.</li>
+                              
+                              <li><strong>fail</strong>: The target system or system component did not satisfy all the conditions.</li>
+                              
+                              <li><strong>other</strong>: Some other event took place that is not a pass or a fail. </li>
                               </ul>
                         </div>
                         </details>
@@ -9661,7 +9701,6 @@ The following is a reference for the XML element and attribute types derived fro
                            <p>The value <b>must</b> be one of the following:</p>
                            <ul>
                               
-                              
                               <li><strong>tool</strong>: A reference to a tool component defined with the assessment assets.</li>
                               
                               <li><strong>assessment-platform</strong>: A reference to an assessment-platform defined with the assessment assets.</li>
@@ -10088,7 +10127,8 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="formal-name">Risk Description</p>
                   </div>
                   <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> A human-readable summary of what was identified regarding the risk.</p>
+                     <p class="description"><span class="usa-tag">description</span> A human-readable summary of the identified risk, to include a statement of how the
+                        risk impacts the system.</p>
                   </div>
                </div>
                <div class="model-entry definition define-field">
@@ -10980,7 +11020,6 @@ The following is a reference for the XML element and attribute types derived fro
                               
                               <li><strong>initial</strong>: As first identified.</li>
                               
-                              
                               <li><strong>adjusted</strong>: Indicates that residual risk remains after some adjustments have been made.</li>
                               </ul>
                         </div>
@@ -11006,7 +11045,6 @@ The following is a reference for the XML element and attribute types derived fro
                            <p>The value <b>may be locally defined</b>, or one of the following:</p>
                            <ul>
                               
-                              
                               <li><strong>likelihood</strong>: Likelihood as defined by FedRAMP. The class can be used to specify 'initial' and
                                  'adjusted' risk states.</li>
                               
@@ -11031,7 +11069,6 @@ The following is a reference for the XML element and attribute types derived fro
                            <p><span class="usa-tag">allowed values</span> for <code class="path">(.)[@system='http://www.first.org/cvss/v2.0']/@name</code></p>
                            <p>The value <b>must</b> be one of the following:</p>
                            <ul>
-                              
                               
                               <li><strong>access-vector</strong>: Base: Access Vector</li>
                               
@@ -11207,7 +11244,6 @@ The following is a reference for the XML element and attribute types derived fro
                            <p><span class="usa-tag">allowed values</span> for <code class="path">(.)[@system=('http://www.first.org/cvss/v3.0', 'http://www.first.org/cvss/v3.1')]/@name</code></p>
                            <p>The value <b>must</b> be one of the following:</p>
                            <ul>
-                              
                               
                               <li><strong>attack-vector</strong>: Base: Attack Vector</li>
                               

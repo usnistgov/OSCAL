@@ -1,6 +1,8 @@
 ---
 title: "Development Snapshot Reference"
-layout: reference-index
+summary: "Development Snapshot"
+layout: reference-release
+weight: 5
 sidenav:
   focusrenderdepth: 2
   activerenderdepth: 2
