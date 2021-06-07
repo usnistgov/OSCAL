@@ -2664,6 +2664,19 @@
                <xs:restriction base="oscal-ap:token"/>
             </xs:simpleType>
          </xs:element>
+         <xs:element name="reason" minOccurs="0" maxOccurs="unbounded">
+            <xs:simpleType>
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Objective Status Reason</m:formal-name>
+                     <m:description>The reason the objective was given it's status.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Objective Status Reason</b>: The reason the objective was given it's status.</xs:documentation>
+               </xs:annotation>
+               <xs:restriction base="xs:NCName"/>
+            </xs:simpleType>
+         </xs:element>
          <xs:element name="implementation-status"
                      type="oscal-ap:oscal-implementation-common-implementation-status-ASSEMBLY"
                      minOccurs="0"
@@ -3117,10 +3130,10 @@
                <xs:annotation>
                   <xs:appinfo>
                      <m:formal-name>Risk Description</m:formal-name>
-                     <m:description>A human-readable summary of what was identified regarding the risk.</m:description>
+                     <m:description>A human-readable summary of the identified risk, to include a statement of how the risk impacts the system.</m:description>
                   </xs:appinfo>
                   <xs:documentation>
-                     <b>Risk Description</b>: A human-readable summary of what was identified regarding the risk.</xs:documentation>
+                     <b>Risk Description</b>: A human-readable summary of the identified risk, to include a statement of how the risk impacts the system.</xs:documentation>
                </xs:annotation>
                <xs:complexContent>
                   <xs:extension base="oscal-ap:markupMultilineType"/>
