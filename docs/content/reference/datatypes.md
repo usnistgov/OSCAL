@@ -2,7 +2,7 @@
 title: OSCAL Data Types
 heading: Data Types Used in OSCAL
 description: A description of the data types used in the OSCAL formats.
-weight: 90
+weight: 10
 suppressintopiclist: true
 toc:
   enabled: true
