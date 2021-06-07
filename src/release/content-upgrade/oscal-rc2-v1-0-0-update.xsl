@@ -35,6 +35,13 @@
         <last-modified>{ current-dateTime() }</last-modified>
     </xsl:template>
 
+
+<!-- Usage change: we no longer permit spaces in values of select/@how-many -->
+    <xsl:template match="select/@how-many" expand-text="true">
+        <!-- trims and replaces remaining spaces with hyphens -->
+        <xsl:attribute name="how-many" select="normalize-space() ! replace(.,' ','-')"/>
+    </xsl:template>
+
     <!-- METASCHEMA MODULE oscal_catalog_metaschema.xml-->
     <!-- Catalog format changes only 'NCName' values to 'token'  -->
     
