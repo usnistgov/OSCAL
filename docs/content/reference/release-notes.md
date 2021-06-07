@@ -59,7 +59,7 @@ In /system-security-plan/control-implementation/implemented-requirement ([JSON/Y
 
 ### Changes to Assessment Results Model
 
-- The item findings ([JSON/YAML](/reference/latest/assessment-results/json-reference/#/assessment-results/results/findings), [XML](/reference/latest/assessment-results/xml-reference/#/assessment-results/results/findings)) is now optional. See issue [usnistgov/OSCAL#918](https://github.com/usnistgov/OSCAL/issues/918).
+- The item findings ([JSON/YAML](/reference/latest/assessment-results/json-reference/#/assessment-results/results/findings), [XML](/reference/latest/assessment-results/xml-reference/#/assessment-results/result/finding)) is now optional. See issue [usnistgov/OSCAL#918](https://github.com/usnistgov/OSCAL/issues/918).
 
 ## OSCAL 1.0.0 Release Candidate 2
 

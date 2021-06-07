@@ -19,7 +19,7 @@ The following is the XML format reference for this model, which is organized hie
    <p><span class="usa-tag">Schema version:</span> 1.0.0</p>
    <p><span class="usa-tag">XML namespace</span> <code>http://csrc.nist.gov/ns/oscal/1.0</code></p>
    <p><span class="usa-tag">XML Schema</span> <a href="/artifacts/xml/schema/oscal_component_schema.xsd">oscal_component_schema.xsd</a></p>
-   <p><span class="usa-tag">JSON to XML converter</span> <a href="/artifacts/xml/convert/oscal_component_json-to-xml-converter.xsl">oscal_component_json-to-xml-converter.xsl</a><a href="https://github.com/usnistgov/OSCAL/tree/main/xml#converting-oscal-json-content-to-xml">(How do I use the converter to convert OSCAL JSON to XML?)</a></p>
+   <p><span class="usa-tag">JSON to XML converter</span> <a href="/artifacts/xml/convert/oscal_component_json-to-xml-converter.xsl">oscal_component_json-to-xml-converter.xsl</a> <a href="https://github.com/usnistgov/OSCAL/tree/main/xml#converting-oscal-json-content-to-xml">(How do I use the converter to convert OSCAL JSON to XML?)</a></p>
    <div class="remarks">The OSCAL Component Definition Model can be used to describe the implementation of
       controls in a component or a set of components grouped as a capability. A component
       can be either a technical component, or a documentary component. A technical component

@@ -18,7 +18,7 @@ The following is a reference for the XML element and attribute types derived fro
    <p><span class="usa-tag">Short name</span> oscal-component-definition</p>
    <p><span class="usa-tag">XML namespace</span> <code>http://csrc.nist.gov/ns/oscal/1.0</code></p>
    <p><span class="usa-tag">XML Schema</span> <a href="/artifacts/xml/schema/oscal_component_schema.xsd">oscal_component_schema.xsd</a></p>
-   <p><span class="usa-tag">JSON to XML converter</span> <a href="/artifacts/xml/convert/oscal_component_json-to-xml-converter.xsl">oscal_component_json-to-xml-converter.xsl</a><a href="https://github.com/usnistgov/OSCAL/tree/main/xml#converting-oscal-json-content-to-xml">(How do I use the converter to convert OSCAL JSON to XML?)</a></p>
+   <p><span class="usa-tag">JSON to XML converter</span> <a href="/artifacts/xml/convert/oscal_component_json-to-xml-converter.xsl">oscal_component_json-to-xml-converter.xsl</a> <a href="https://github.com/usnistgov/OSCAL/tree/main/xml#converting-oscal-json-content-to-xml">(How do I use the converter to convert OSCAL JSON to XML?)</a></p>
    <details class="remarks" open="open">
       <summary>Remarks</summary>
       <p class="p">The OSCAL Component Definition Model can be used to describe the implementation of
