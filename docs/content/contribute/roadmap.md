@@ -27,80 +27,27 @@ OSCAL release history:
 - [OSCAL 1.0.0 Milestone 3](/contribute/roadmap/#oscal-100-milestone-3) - June 3, 2020
 - [OSCAL 1.0.0 Release Candidate 1](/contribute/roadmap/#oscal-100-release-candidate-1) - December 21, 2020
 - [OSCAL 1.0.0 Release Candidate 2](/contribute/roadmap/#oscal-100-release-candidate-2) - April 12, 2021
+- [OSCAL 1.0.0 Full Release](/contribute/roadmap/#oscal-100-full-release) - TBD
 
-### OSCAL 1.0.0 Milestone 1
+These releases are listed below in reverse chronological order.
 
-{{<usa-tag>}}Development Milestone{{</usa-tag>}} OSCAL 1.0.0 [Milestone 1](https://github.com/usnistgov/OSCAL/milestone/1)
+### OSCAL 1.0.0 Full Release
 
-{{<usa-tag>}}Status{{</usa-tag>}} [Released](https://github.com/usnistgov/OSCAL/releases/tag/v1.0.0-milestone1) (June 15, 2019)
+{{<usa-tag>}}Development Milestone{{</usa-tag>}} OSCAL 1.0.0 [Full Release](https://github.com/usnistgov/OSCAL/milestone/4)
 
-{{<usa-tag>}}Focus{{</usa-tag>}} Development of the OSCAL Catalog and Profile Models.
+{{<usa-tag>}}Status{{</usa-tag>}} Planned
 
-This initial OSCAL work encompasses the [catalog](/concepts/layer/control/catalog/) and [profile](/concepts/layer/control/profile/) concepts of the OSCAL architecture.
+{{<usa-tag>}}Focus{{</usa-tag>}} Publish an OSCAL 1.0.0 Specification
 
-The following stakeholders can benefit from control catalogs and control baselines defined using the OSCAL catalog and profile models respectively.
+{{<usa-tag>}}Release Notes{{</usa-tag>}} [OSCAL 1.0.0 Release Notes](/reference/release-notes/#oscal-100-release)
 
-- **Catalog maintainers:** Publishing control catalogs in OSCAL using OSCAL catalog XML, JSON, or YAML formats (e.g., NIST, ISO, ISACA)
-- **Standard baseline maintainers:** Publishing control baselines using OSCAL profile XML, JSON, or YAML formats (e.g., NIST, FedRAMP), which can be used by many organizations consuming OSCAL formatted catalogs and baselines
-- **Custom profile maintainers:** Developing new control baselines or customizing existing control baselines for organization-specific use (e.g., cloud service providers, integrators, agencies, businesses) using OSCAL profile XML, JSON, or YAML formats
-- **Security and privacy personnel:** That need to select controls and implement security and privacy baselines to address security and privacy risks.
-- **Tool vendors:** Creating tools that import and produce information in OSCAL formats to support risk assessment, continuous monitoring, compliance reporting, and other purposes
+The NIST Open Security Controls Assessment Language (OSCAL) team is pleased to announce the release of OSCAL 1.0.0. As the first official, major release of OSCAL, this release marks an important milestone for the OSCAL project and for the earlier adopters and implementers of security automation with OSCAL.
 
-### OSCAL 1.0.0 Milestone 2
+This release [incorporates changes](/reference/release-notes/#oscal-100-release) based on feedback from the OSCAL community. The NIST OSCAL team is very thankful for all of the great ideas and feedback we have received to date.
 
-{{<usa-tag>}}Development Milestone{{</usa-tag>}} OSCAL 1.0.0 [Milestone 1](https://github.com/usnistgov/OSCAL/milestone/2)
+Looking forward, the NIST OSCAL team is excited to work with the [OSCAL community](/contribute/) to continue to enhance OSCAL through [additional minor releases](#beyond-the-oscal-100-full-release).
 
-{{<usa-tag>}}Status{{</usa-tag>}} [Released](https://github.com/usnistgov/OSCAL/releases/tag/v1.0.0-milestone2) (October 1, 2019)
-
-{{<usa-tag>}}Focus{{</usa-tag>}} Development of the OSCAL System Security Plan (SSP) Model.
-
-In this development phase the system security plan (SSP) model was developed as part of the [implementation layer](/concepts/layer/implementation/) of the OSCAL architecture. Updates to the [catalog](/concepts/layer/control/catalog/) and [profile](/concepts/layer/control/profile/) models are also provided with this release.
-
-The following additional stakeholders can benefit from SSPs formatted based on the OSCAL SSP model.
-
-- **Security and privacy personnel:** Documenting system implementations, and automatically identifying and addressing security and privacy implementation gaps before loss or damage occur
-- **Operations personnel:** Rapidly verifying that systems comply with organizational security requirements
-- **Auditors/assessors:** Performing audits/assessments on demand with minimal effort based on rich OSCAL formatted system implementation information.
-- **Policy personnel:** Identifying systemic problems that necessitate changes to organizational security policies
-- **Tool vendors:** Creating tools that help organizations document and assess security and privacy control implementations using OSCAL formatted system implementation information to support risk assessment, continuous monitoring, compliance reporting, and other purposes
-
-### OSCAL 1.0.0 Milestone 3
-
-{{<usa-tag>}}Development Milestone{{</usa-tag>}} OSCAL 1.0.0 [Milestone 3](https://github.com/usnistgov/OSCAL/milestone/3)
-
-{{<usa-tag>}}Status{{</usa-tag>}} [Released](https://github.com/usnistgov/OSCAL/releases/tag/v1.0.0-milestone3) (June 3, 2020)
-
-{{<usa-tag>}}Focus{{</usa-tag>}} Development of the OSCAL Component Definition model and drafts of the assessment and assessment result layer models.
-
-This development phase focused on three major areas:
-
-1. The OSCAL [component definition model](/concepts/layer/implementation/component-definition/), which is part of the [implementation layer](/concepts/layer/implementation/) of the OSCAL architecture.
-1. Creation of draft models for the [assessment](/concepts/layer/assessment/) layer. Drafts of the [assessment plan](/concepts/layer/assessment/assessment-plan/), [assessment results](/concepts/layer/assessment/assessment-results/), and [plan of action and milestones](/concepts/layer/assessment/poam/) (POA&M) models were created.
-1. Updates to the [catalog](/concepts/layer/control/catalog/), [profile](/concepts/layer/control/profile/), and [SSP](/concepts/layer/implementation/ssp/) models are also provided with this release.
-
-The following additional stakeholders can benefit from component definitions formatted based on the OSCAL component definitions model. They include the following producers of OSCAL catalogs, profiles, and/or tools:
-
-- **Security and privacy personnel:** Documenting system implementations can import component information related to hardware, software, services, policies, and procedures used to implement their systems saving time and effort
-- **Policy personnel:** Can publish information about their policies as a component formatted using the OSCAL component definition model.
-- **Tool vendors:** Creating tools that help organizations document and assess security and privacy control implementations using OSCAL formatted component and system implementation information to support risk assessment, continuous monitoring, compliance reporting, and other purposes
-
-### OSCAL 1.0.0 Release Candidate 1
-
-{{<usa-tag>}}Development Milestone{{</usa-tag>}} OSCAL 1.0.0 [Release Candidate 1](https://github.com/usnistgov/OSCAL/milestone/8)
-
-{{<usa-tag>}}Status{{</usa-tag>}} [Released](https://github.com/usnistgov/OSCAL/releases/tag/v1.0.0-rc1) (December 21, 2020)
-
-{{<usa-tag>}}Focus{{</usa-tag>}} Promote review of draft OSCAL 1.0.0 documentation and formats ahead of finalizing OSCAL 1.0.0
-
-This development phase focused on producing:
-
-- Updated stable versions of [catalog](/concepts/layer/control/catalog/) and [profile](/concepts/layer/control/profile/) models which provide a structured representation of control catalogs and baselines or overlays.
-- Updated stable version of the [system security plan](/concepts/layer/implementation/ssp/) model which provides a structured representations of a system&#39;s control-based implementation. This model has been enhanced to support documenting how controls from an existing authorized system can be leveraged in another information system, which supports common control provider and platform as a service (PaaS) use cases.
-- Updated stable version of the [component definition](/concepts/layer/implementation/component-definition/) model which provides a structured representation of the controls that are supported in a given implementation of a hardware, software, service, policy, process, procedure, or compliance artifact (e.g., FIPS 140-2 validation).
-- Revised drafts of the [assessment plan](/concepts/layer/assessment/assessment-plan/), [assessment results](/concepts/layer/assessment/assessment-results/), [plan of action and milestones](/concepts/layer/assessment/poam/) (POA&amp;M) models, which support the structured representation of information used for planning and documenting the results of an information system assessment or continuous monitoring activity. These models have been enhanced to better support continuous assessment; to provide more traceability between the assessment schedule, specific assessment activities, collected data, and resulting findings and identified risks; and to improve the extensibility of these models.
-- Updated tools to convert between OSCAL [XML](https://github.com/usnistgov/OSCAL/tree/main/xml) and [JSON](https://github.com/usnistgov/OSCAL/tree/main/json) formats, and to [up convert](https://github.com/usnistgov/OSCAL/tree/main/src/release/content-upgrade) content from milestone 3 to RC1.
-
-These changes were made based on all the excellent feedback we received from the OSCAL community. The NIST OSCAL team is very thankful for all of the great feedback we have received.
+For additional information on the OSCAL project, please see the NIST’s Cybersecurity Insights blog: [*“The Foundation for Interoperable and Portable Security Automation is Revealed in NIST’s OSCAL Project”*](https://www.nist.gov/blogs/cybersecurity-insights/foundation-interoperable-and-portable-security-automation-revealed) and the [OSCAL website](/).
 
 ### OSCAL 1.0.0 Release Candidate 2
 
@@ -109,6 +56,8 @@ These changes were made based on all the excellent feedback we received from the
 {{<usa-tag>}}Status{{</usa-tag>}} [Released](https://github.com/usnistgov/OSCAL/releases/tag/v1.0.0-rc2) (April 12, 2021)
 
 {{<usa-tag>}}Focus{{</usa-tag>}} Promote review of draft OSCAL 1.0.0 documentation and formats ahead of finalizing OSCAL 1.0.0
+
+{{<usa-tag>}}Release Notes{{</usa-tag>}} [OSCAL 1.0.0 Release Notes](/reference/release-notes/#oscal-100-release-candidate-2)
 
 This development phase provided updated stable versions of all OSCAL models, with a focus on the following areas of change:
 
@@ -131,15 +80,87 @@ Updated tools to convert between OSCAL [XML](https://github.com/usnistgov/OSCAL/
 
 This will be the final release candidate before the full release of OSCAL 1.0.0.
 
-### OSCAL 1.0.0 Full Release
+### OSCAL 1.0.0 Release Candidate 1
 
-{{<usa-tag>}}Development Milestone{{</usa-tag>}} OSCAL 1.0.0 [Full Release](https://github.com/usnistgov/OSCAL/milestone/4)
+{{<usa-tag>}}Development Milestone{{</usa-tag>}} OSCAL 1.0.0 [Release Candidate 1](https://github.com/usnistgov/OSCAL/milestone/8)
 
-{{<usa-tag>}}Status{{</usa-tag>}} Planned
+{{<usa-tag>}}Status{{</usa-tag>}} [Released](https://github.com/usnistgov/OSCAL/releases/tag/v1.0.0-rc1) (December 21, 2020)
 
-{{<usa-tag>}}Focus{{</usa-tag>}} Publish an OSCAL 1.0.0 Specification
+{{<usa-tag>}}Focus{{</usa-tag>}} Promote review of draft OSCAL 1.0.0 documentation and formats ahead of finalizing OSCAL 1.0.0
 
-To accelerate the development of OSCAL, we are not focused on developing a formal specification for OSCAL until the final OSCAL 1.0.0 milestone. Until then, the OSCAL models are [documented](/concepts/layer) on this site. This will allow us to work on a formal specification once most of the major development of OSCAL is completed. For now, adopters of OSCAL will find all of the resources they need to develop content and tools on this site.
+{{<usa-tag>}}Release Notes{{</usa-tag>}} [OSCAL 1.0.0 Release Notes](/reference/release-notes/#oscal-100-release-candidate-1)
+
+This development phase focused on producing:
+
+- Updated stable versions of [catalog](/concepts/layer/control/catalog/) and [profile](/concepts/layer/control/profile/) models which provide a structured representation of control catalogs and baselines or overlays.
+- Updated stable version of the [system security plan](/concepts/layer/implementation/ssp/) model which provides a structured representations of a system&#39;s control-based implementation. This model has been enhanced to support documenting how controls from an existing authorized system can be leveraged in another information system, which supports common control provider and platform as a service (PaaS) use cases.
+- Updated stable version of the [component definition](/concepts/layer/implementation/component-definition/) model which provides a structured representation of the controls that are supported in a given implementation of a hardware, software, service, policy, process, procedure, or compliance artifact (e.g., FIPS 140-2 validation).
+- Revised drafts of the [assessment plan](/concepts/layer/assessment/assessment-plan/), [assessment results](/concepts/layer/assessment/assessment-results/), [plan of action and milestones](/concepts/layer/assessment/poam/) (POA&amp;M) models, which support the structured representation of information used for planning and documenting the results of an information system assessment or continuous monitoring activity. These models have been enhanced to better support continuous assessment; to provide more traceability between the assessment schedule, specific assessment activities, collected data, and resulting findings and identified risks; and to improve the extensibility of these models.
+- Updated tools to convert between OSCAL [XML](https://github.com/usnistgov/OSCAL/tree/main/xml) and [JSON](https://github.com/usnistgov/OSCAL/tree/main/json) formats, and to [up convert](https://github.com/usnistgov/OSCAL/tree/main/src/release/content-upgrade) content from milestone 3 to RC1.
+
+These changes were made based on all the excellent feedback we received from the OSCAL community. The NIST OSCAL team is very thankful for all of the great feedback we have received.
+
+### OSCAL 1.0.0 Milestone 3
+
+{{<usa-tag>}}Development Milestone{{</usa-tag>}} OSCAL 1.0.0 [Milestone 3](https://github.com/usnistgov/OSCAL/milestone/3)
+
+{{<usa-tag>}}Status{{</usa-tag>}} [Released](https://github.com/usnistgov/OSCAL/releases/tag/v1.0.0-milestone3) (June 3, 2020)
+
+{{<usa-tag>}}Focus{{</usa-tag>}} Development of the OSCAL Component Definition model and drafts of the assessment and assessment result layer models.
+
+{{<usa-tag>}}Release Notes{{</usa-tag>}} [OSCAL 1.0.0 Release Notes](/reference/release-notes/#oscal-100-milestone-3)
+
+This development phase focused on three major areas:
+
+1. The OSCAL [component definition model](/concepts/layer/implementation/component-definition/), which is part of the [implementation layer](/concepts/layer/implementation/) of the OSCAL architecture.
+1. Creation of draft models for the [assessment](/concepts/layer/assessment/) layer. Drafts of the [assessment plan](/concepts/layer/assessment/assessment-plan/), [assessment results](/concepts/layer/assessment/assessment-results/), and [plan of action and milestones](/concepts/layer/assessment/poam/) (POA&M) models were created.
+1. Updates to the [catalog](/concepts/layer/control/catalog/), [profile](/concepts/layer/control/profile/), and [SSP](/concepts/layer/implementation/ssp/) models are also provided with this release.
+
+The following additional stakeholders can benefit from component definitions formatted based on the OSCAL component definitions model. They include the following producers of OSCAL catalogs, profiles, and/or tools:
+
+- **Security and privacy personnel:** Documenting system implementations can import component information related to hardware, software, services, policies, and procedures used to implement their systems saving time and effort
+- **Policy personnel:** Can publish information about their policies as a component formatted using the OSCAL component definition model.
+- **Tool vendors:** Creating tools that help organizations document and assess security and privacy control implementations using OSCAL formatted component and system implementation information to support risk assessment, continuous monitoring, compliance reporting, and other purposes
+
+### OSCAL 1.0.0 Milestone 2
+
+{{<usa-tag>}}Development Milestone{{</usa-tag>}} OSCAL 1.0.0 [Milestone 1](https://github.com/usnistgov/OSCAL/milestone/2)
+
+{{<usa-tag>}}Status{{</usa-tag>}} [Released](https://github.com/usnistgov/OSCAL/releases/tag/v1.0.0-milestone2) (October 1, 2019)
+
+{{<usa-tag>}}Focus{{</usa-tag>}} Development of the OSCAL System Security Plan (SSP) Model.
+
+{{<usa-tag>}}Release Notes{{</usa-tag>}} [OSCAL 1.0.0 Release Notes](/reference/release-notes/#oscal-100-milestone-2)
+
+In this development phase the system security plan (SSP) model was developed as part of the [implementation layer](/concepts/layer/implementation/) of the OSCAL architecture. Updates to the [catalog](/concepts/layer/control/catalog/) and [profile](/concepts/layer/control/profile/) models are also provided with this release.
+
+The following additional stakeholders can benefit from SSPs formatted based on the OSCAL SSP model.
+
+- **Security and privacy personnel:** Documenting system implementations, and automatically identifying and addressing security and privacy implementation gaps before loss or damage occur
+- **Operations personnel:** Rapidly verifying that systems comply with organizational security requirements
+- **Auditors/assessors:** Performing audits/assessments on demand with minimal effort based on rich OSCAL formatted system implementation information.
+- **Policy personnel:** Identifying systemic problems that necessitate changes to organizational security policies
+- **Tool vendors:** Creating tools that help organizations document and assess security and privacy control implementations using OSCAL formatted system implementation information to support risk assessment, continuous monitoring, compliance reporting, and other purposes
+
+### OSCAL 1.0.0 Milestone 1
+
+{{<usa-tag>}}Development Milestone{{</usa-tag>}} OSCAL 1.0.0 [Milestone 1](https://github.com/usnistgov/OSCAL/milestone/1)
+
+{{<usa-tag>}}Status{{</usa-tag>}} [Released](https://github.com/usnistgov/OSCAL/releases/tag/v1.0.0-milestone1) (June 15, 2019)
+
+{{<usa-tag>}}Focus{{</usa-tag>}} Development of the OSCAL Catalog and Profile Models.
+
+{{<usa-tag>}}Release Notes{{</usa-tag>}} [OSCAL 1.0.0 Release Notes](/reference/release-notes/#oscal-100-milestone-1)
+
+This initial OSCAL work encompasses the [catalog](/concepts/layer/control/catalog/) and [profile](/concepts/layer/control/profile/) concepts of the OSCAL architecture.
+
+The following stakeholders can benefit from control catalogs and control baselines defined using the OSCAL catalog and profile models respectively.
+
+- **Catalog maintainers:** Publishing control catalogs in OSCAL using OSCAL catalog XML, JSON, or YAML formats (e.g., NIST, ISO, ISACA)
+- **Standard baseline maintainers:** Publishing control baselines using OSCAL profile XML, JSON, or YAML formats (e.g., NIST, FedRAMP), which can be used by many organizations consuming OSCAL formatted catalogs and baselines
+- **Custom profile maintainers:** Developing new control baselines or customizing existing control baselines for organization-specific use (e.g., cloud service providers, integrators, agencies, businesses) using OSCAL profile XML, JSON, or YAML formats
+- **Security and privacy personnel:** That need to select controls and implement security and privacy baselines to address security and privacy risks.
+- **Tool vendors:** Creating tools that import and produce information in OSCAL formats to support risk assessment, continuous monitoring, compliance reporting, and other purposes
 
 ### Beyond the OSCAL 1.0.0 Full Release
 

@@ -2,7 +2,7 @@
 title: "Development Snapshot Reference"
 summary: "Development Snapshot"
 layout: reference-release
-weight: 5
+weight: 20
 sidenav:
   focusrenderdepth: 2
   activerenderdepth: 2

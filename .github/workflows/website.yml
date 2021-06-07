@@ -9,6 +9,7 @@ on:
   workflow_dispatch:
     branches:
       - main
+      - develop
 name: Build and Publish Website
 env:
   # the name of the repo

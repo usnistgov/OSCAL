@@ -2,7 +2,7 @@
 title: "Latest Release"
 summary: "Latest Release"
 layout: reference-release
-weight: 10
+weight: 50
 sidenav:
   focusrenderdepth: 2
   activerenderdepth: 2
