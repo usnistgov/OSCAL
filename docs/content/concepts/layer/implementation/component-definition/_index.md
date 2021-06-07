@@ -53,7 +53,7 @@ As system owners identify components for use in their system, they consume compo
 {{% usa-grid-container class="padding-x-0" %}}
 {{% usa-grid-row %}}
 {{% usa-grid-column class="grid-col-fill" %}}
-An OSCAL profile is organized as follows:
+An OSCAL component definition model is organized as follows:
 - **Metadata**: Metadata syntax is identical and required in all OSCAL models. It includes information such as the document's title, publication version, publication date, and OSCAL version. Metadata is also used to define roles, parties (people, teams and organizations), and locations.
 - **Import**: Identifies a component definition from another resource, from which related information is referenced.
 - **Component**: Provides information about a defined component that can be part of an implemented system.
