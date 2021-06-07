@@ -751,7 +751,6 @@
       <!-- RENAME: objective-status to finding-target -->
       <formal-name>Objective Status</formal-name>
       <description>Captures an assessor's conclusions regarding the degree to which an objective is satisfied.</description>
-
       <define-flag name="type" as-type="string" required="yes">
          <formal-name>Finding Target Type</formal-name>
          <description>Identifies the type of the target.</description>
@@ -796,6 +795,20 @@
                   <enum value="not-satisfied">The objective has not been completely satisfied, but may be partially satisfied.</enum>
                </allowed-values>
             </constraint>
+         </define-field>
+         <define-field name="reason" as-type="NCName" max-occurs="unbounded">
+            <formal-name>Objective Status Reason</formal-name>
+            <description>The reason the objective was given it's status.</description>
+            <constraint>
+               <allowed-values target="." allow-other="yes">
+                  <enum value="pass">The target system or system component satisfied all the conditions.</enum>
+                  <enum value="fail">The target system or system component did not satisfy all the conditions.</enum>
+                  <enum value="other">Some other event took place that is not a pass or a fail. </enum>
+               </allowed-values>
+            </constraint>
+         <remarks>
+            <p>Reason may contain any value, and should be used to communicate additional information regarding the status.</p>
+         </remarks>
          </define-field>
          <assembly ref="implementation-status">
             <remarks>
