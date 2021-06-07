@@ -20,14 +20,14 @@ Each [milestone](https://github.com/usnistgov/OSCAL/milestones) will result in a
 
 The first major version of OSCAL, OSCAL v1, will be developed over a series of milestone releases, culminating in a a [full release](#oscal-100-full-release) of OSCAL v1.
 
-OSCAL release history:
+OSCAL release history, in reverse chronological order:
 
-- [OSCAL 1.0.0 Milestone 1](/contribute/roadmap/#oscal-100-milestone-1) - June 15, 2019
-- [OSCAL 1.0.0 Milestone 2](/contribute/roadmap/#oscal-100-milestone-2) - October 1, 2019
-- [OSCAL 1.0.0 Milestone 3](/contribute/roadmap/#oscal-100-milestone-3) - June 3, 2020
-- [OSCAL 1.0.0 Release Candidate 1](/contribute/roadmap/#oscal-100-release-candidate-1) - December 21, 2020
+- [OSCAL 1.0.0 Full Release](/contribute/roadmap/#oscal-100-full-release) - June 7, 2021
 - [OSCAL 1.0.0 Release Candidate 2](/contribute/roadmap/#oscal-100-release-candidate-2) - April 12, 2021
-- [OSCAL 1.0.0 Full Release](/contribute/roadmap/#oscal-100-full-release) - TBD
+- [OSCAL 1.0.0 Release Candidate 1](/contribute/roadmap/#oscal-100-release-candidate-1) - December 21, 2020
+- [OSCAL 1.0.0 Milestone 3](/contribute/roadmap/#oscal-100-milestone-3) - June 3, 2020
+- [OSCAL 1.0.0 Milestone 2](/contribute/roadmap/#oscal-100-milestone-2) - October 1, 2019
+- [OSCAL 1.0.0 Milestone 1](/contribute/roadmap/#oscal-100-milestone-1) - June 15, 2019
 
 These releases are listed below in reverse chronological order.
 
@@ -35,13 +35,13 @@ These releases are listed below in reverse chronological order.
 
 {{<usa-tag>}}Development Milestone{{</usa-tag>}} OSCAL 1.0.0 [Full Release](https://github.com/usnistgov/OSCAL/milestone/4)
 
-{{<usa-tag>}}Status{{</usa-tag>}} Planned
+{{<usa-tag>}}Status{{</usa-tag>}} [Released](https://github.com/usnistgov/OSCAL/releases/tag/v1.0.0) (June 7, 2021)
 
-{{<usa-tag>}}Focus{{</usa-tag>}} Publish an OSCAL 1.0.0 Specification
+{{<usa-tag>}}Focus{{</usa-tag>}} Provide a stable OSCAL 1.0.0 for wide-scale implementation.
 
 {{<usa-tag>}}Release Notes{{</usa-tag>}} [OSCAL 1.0.0 Release Notes](/reference/release-notes/#oscal-100-release)
 
-The NIST Open Security Controls Assessment Language (OSCAL) team is pleased to announce the release of OSCAL 1.0.0. As the first official, major release of OSCAL, this release marks an important milestone for the OSCAL project and for the earlier adopters and implementers of security automation with OSCAL.
+The NIST Open Security Controls Assessment Language (OSCAL) team is pleased to announce the release of OSCAL 1.0.0. This first official, major release of OSCAL provides a stable OSCAL 1.0.0 for wide-scale implementation. This release marks an important milestone for the OSCAL project and for the earlier adopters and implementers of security automation with OSCAL.
 
 This release [incorporates changes](/reference/release-notes/#oscal-100-release) based on feedback from the OSCAL community. The NIST OSCAL team is very thankful for all of the great ideas and feedback we have received to date.
 
