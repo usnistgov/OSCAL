@@ -14,16 +14,19 @@
 <METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/toolchains/xslt-M4/validate/metaschema.xsd">
   <schema-name>OSCAL Component Definition Model</schema-name>
-  <schema-version>1.0.0-rc1</schema-version>
+  <schema-version>1.0.0</schema-version>
   <short-name>oscal-component-definition</short-name>
   <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
+  <json-base-uri>http://csrc.nist.gov/ns/oscal</json-base-uri>
   <remarks>
     <p>The OSCAL Component Definition Model can be used to describe the implementation of controls in a <code>component</code> or a set of components grouped as a <code>capability</code>. A component can be either a <em>technical component</em>, or a <em>documentary component</em>. A technical component is a component that is implemented in hardware (physical or virtual) or software. A documentary component is a component implemented in a document, such as a process, procedure, or policy.</p>
     <p>The root of the OSCAL Implementation Component format is <code>component-definition</code>.
     </p>
     <p>NOTE: This documentation is a work in progress. As a result, documentation for many of the information elements is missing or incomplete.</p>
   </remarks>
+
   <import href="oscal_implementation-common_metaschema.xml"/>
+
   <define-assembly name="component-definition">
     <formal-name>Component Definition</formal-name>
     <description>A collection of component descriptions, which may optionally be grouped by capability.</description>
@@ -39,17 +42,26 @@
       </assembly>
       <assembly ref="defined-component" max-occurs="unbounded">
         <use-name>component</use-name>
-        <group-as name="components" in-json="BY_KEY"/>
+        <group-as name="components" in-json="ARRAY"/>
       </assembly>
       <assembly ref="capability" max-occurs="unbounded">
-        <group-as name="capabilities" in-json="BY_KEY"/>
+        <group-as name="capabilities" in-json="ARRAY"/>
       </assembly>
       <assembly ref="back-matter"/>
     </model>
     <constraint>
       <index name="index-system-component-uuid" target="component">
         <key-field target="@uuid"/>
+        <remarks>
+          <p>Since multiple <code>component</code> entries can be provided, each component must have a unique <code>uuid</code>.</p>
+        </remarks>
       </index>
+      <is-unique name="unique-component-definition-capability" target="capability">
+        <key-field target="@uuid"/>
+        <remarks>
+          <p>A given <code>component</code> must not be referenced more than once within the same <code>capability</code>.</p>
+        </remarks>
+      </is-unique>
     </constraint>
   </define-assembly>
 
@@ -65,13 +77,12 @@
   <define-assembly name="defined-component">
     <formal-name>Component</formal-name>
     <description>A defined component that can be part of an implemented system.</description>
-    <json-key flag-name="uuid"/>
     <define-flag name="uuid" as-type="uuid" required="yes">
       <formal-name>Component Identifier</formal-name>
       <description>The unique identifier for the component.</description>
     </define-flag>
     <!-- CHANGE: removed "name" -->
-    <flag ref="component-type" required="yes">
+    <flag ref="defined-component-type" required="yes">
       <!-- CHANGED: "component-type" to "type" -->
       <use-name>type</use-name>
     </flag>
@@ -96,7 +107,7 @@
       </assembly>
       <assembly ref="responsible-role" max-occurs="unbounded">
         <!-- CHANGE: from responsible-party to responsible-role -->
-        <group-as name="responsible-roles" in-json="BY_KEY"/>
+        <group-as name="responsible-roles" in-json="ARRAY"/>
       </assembly>
       <assembly ref="protocol" max-occurs="unbounded">
         <!-- TODO: protocol (tcp/UDP), port range, service name, purpose, used by -->
@@ -223,7 +234,12 @@
       <!-- =       If interconnection is not appropriate for component-defintion, we'll need different = -->
       <!-- =           component-type lists for the two models.                                        = -->
       <!-- ========================================================================================================== -->
-
+      <is-unique name="unique-defined-component-responsible-role" target="responsible-role">
+        <key-field target="@role-id"/>
+        <remarks>
+          <p>Since <code>responsible-role</code> associates multiple <code>party-uuid</code> entries with a single <code>role-id</code>, each role-id must be referenced only once.</p>
+        </remarks>
+      </is-unique>
     </constraint>
     <remarks>
       <p>Components may be products, services, APIs, policies, processes, plans, guidance, standards, or other tangible items that enable security and/or privacy.</p>
@@ -233,7 +249,7 @@
     </remarks>
   </define-assembly>
 
-  <define-flag name="component-type" as-type="string">
+  <define-flag name="defined-component-type" as-type="string">
     <formal-name>Component Type</formal-name>
     <description>A category describing the purpose of the component.</description>
     <constraint>
@@ -246,7 +262,6 @@
   <define-assembly name="capability">
     <formal-name>Capability</formal-name>
     <description>A grouping of other components and/or capabilities.</description>
-    <json-key flag-name="uuid"/>
     <define-flag required="yes" name="uuid" as-type="uuid">
       <formal-name>Capability Identifier</formal-name>
       <description>A unique identifier for a capability.</description>
@@ -271,7 +286,7 @@
         -->
       </assembly>
       <assembly ref="incorporates-component" max-occurs="unbounded">
-        <group-as name="incorporates-components" in-json="BY_KEY"/>
+        <group-as name="incorporates-components" in-json="ARRAY"/>
       </assembly>
       <assembly ref="control-implementation" max-occurs="unbounded">
         <group-as name="control-implementations" in-json="ARRAY"/>
@@ -282,11 +297,19 @@
 -->
       <field ref="remarks" in-xml="WITH_WRAPPER"/>
     </model>
+    <constraint>
+      <is-unique name="unique-component-definition-capability-incorporates-component" target="incorporates-component">
+        <key-field target="@component-uuid"></key-field>
+        <remarks>
+          <p>A given <code>component</code> must not be referenced more than once within the same <code>capability</code>.</p>
+        </remarks>
+      </is-unique>
+    </constraint>
   </define-assembly>
   <define-assembly name="incorporates-component">
     <formal-name>Incorporates Component</formal-name>
+    <!-- TODO: needs a description -->
     <description>TBD</description>
-    <json-key flag-name="component-uuid"/>
     <define-flag required="yes" name="component-uuid" as-type="uuid">
       <formal-name>Component Reference</formal-name>
       <description>A reference to a component by its identifier</description>
@@ -299,7 +322,7 @@
     </model>
   </define-assembly>
 
-  <define-assembly name="control-implementation">
+  <define-assembly name="control-implementation" scope="local">
     <formal-name>Control Implementation Set</formal-name>
     <description>Defines how the component or capability supports a set of controls.</description>
     <define-flag name="uuid" as-type="uuid" required="yes">
@@ -324,24 +347,32 @@
         <!-- TODO: Model specific link relationships -->
       </assembly>
       <assembly ref="set-parameter" max-occurs="unbounded">
-        <group-as name="set-parameters" in-json="BY_KEY"/>
+        <group-as name="set-parameters" in-json="ARRAY"/>
       </assembly>
       <assembly ref="implemented-requirement" min-occurs="1" max-occurs="unbounded">
         <group-as name="implemented-requirements" in-json="ARRAY"/>
       </assembly>
     </model>
+    <constraint>
+      <is-unique name="unique-component-definition-control-implementation-set-parameter" target="set-parameter">
+        <key-field target="@param-id"/>
+        <remarks>
+          <p>Since multiple <code>set-parameter</code> entries can be provided, each parameter must be set only once.</p>
+        </remarks>
+      </is-unique>
+    </constraint>
     <remarks>
       <p>Use of <code>set-parameter</code> in this context, sets the parameter for all related controls referenced in an <code>implemented-requirement</code>. If the same parameter is also set in a specific <code>implemented-requirement</code>, then the new value will override this value.</p>
     </remarks>
   </define-assembly>
-  <define-assembly name="implemented-requirement">
+  <define-assembly name="implemented-requirement" scope="local">
     <formal-name>Control Implementation</formal-name>
     <description>Describes how the containing component or capability implements an individual control.</description>
     <define-flag name="uuid" as-type="uuid" required="yes">
       <formal-name>Control Implementation Identifier</formal-name>
       <description>A unique identifier for a specific control implementation.</description>
     </define-flag>
-    <flag ref="control-id"/>
+    <flag ref="control-id" required="yes"/>
     <model>
       <define-field name="description" as-type="markup-multiline" min-occurs="1" in-xml="WITH_WRAPPER">
         <formal-name>Control Implementation Description</formal-name>
@@ -352,36 +383,50 @@
       </assembly>
       <assembly ref="link" max-occurs="unbounded">
         <group-as name="links" in-json="ARRAY"/>
-        <!-- TODO: Model specific link relationships -->
-      </assembly>
-      <!--
-         <assembly ref="using"/>
--->
-      <!-- TODO: Implement parameters -->
-      <assembly ref="responsible-role" max-occurs="unbounded">
-        <group-as name="responsible-roles" in-json="BY_KEY"/>
       </assembly>
       <assembly ref="set-parameter" max-occurs="unbounded">
-        <group-as name="set-parameters" in-json="BY_KEY"/>
+        <group-as name="set-parameters" in-json="ARRAY"/>
+      </assembly>
+      <assembly ref="responsible-role" max-occurs="unbounded">
+        <group-as name="responsible-roles" in-json="ARRAY"/>
       </assembly>
       <assembly ref="statement" max-occurs="unbounded">
-        <group-as name="statements" in-json="BY_KEY"/>
+        <group-as name="statements" in-json="ARRAY"/>
       </assembly>
       <field ref="remarks" in-xml="WITH_WRAPPER"/>
     </model>
+    <constraint>
+      <is-unique name="unique-component-definition-implemented-requirement-set-parameter" target="set-parameter">
+        <key-field target="@param-id"/>
+        <remarks>
+          <p>Since multiple <code>set-parameter</code> entries can be provided, each parameter must be set only once.</p>
+        </remarks>
+      </is-unique>
+      <is-unique name="unique-component-definition-implemented-requirement-responsible-role" target="responsible-role">
+        <key-field target="@role-id"/>
+        <remarks>
+          <p>Since <code>responsible-role</code> associates multiple <code>party-uuid</code> entries with a single <code>role-id</code>, each role-id must be referenced only once.</p>
+        </remarks>
+      </is-unique>
+      <is-unique name="unique-component-definition-implemented-requirement-statement" target="statement">
+        <key-field target="@statement-id"/>
+        <remarks>
+          <p>Since <code>statement</code> entries can be referenced using the statement's statement-id, each statement must be referenced only once.</p>
+        </remarks>
+      </is-unique>
+    </constraint>
   </define-assembly>
-  <define-assembly name="statement">
+  <define-assembly name="statement" scope="local">
     <formal-name>Control Statement Implementation</formal-name>
     <description>Identifies which statements within a control are addressed.</description>
-    <json-key flag-name="statement-id"/>
     <flag ref="statement-id" required="yes">
       <remarks>
         <p>A reference to the specific implemented statement associated with a control.</p>
       </remarks>
     </flag>
     <define-flag name="uuid" as-type="uuid" required="yes">
-      <formal-name>Control Statement Implementation Identifier</formal-name>
-      <description>A unique identifier for a specific control implementation.</description>
+      <formal-name>Control Statement Reference Universally Unique Identifier</formal-name>
+      <description>A globally unique identifier that can be used to reference this control statement entry elsewhere in an OSCAL document. A UUID should be consistently used for a given resource across revisions of the document.</description>
     </define-flag>
     <model>
       <define-field name="description" as-type="markup-multiline" min-occurs="1" in-xml="WITH_WRAPPER">
@@ -393,20 +438,20 @@
       </assembly>
       <assembly ref="link" max-occurs="unbounded">
         <group-as name="links" in-json="ARRAY"/>
-        <!-- TODO: Model specific link relationships -->
       </assembly>
-      <!--            <assembly ref="using"/>
--->
-      <!-- TODO: Implement parameters -->
       <assembly ref="responsible-role" max-occurs="unbounded">
-        <group-as name="responsible-roles" in-json="BY_KEY"/>
+        <group-as name="responsible-roles" in-json="ARRAY"/>
       </assembly>
-      <!--         <assembly ref="by-capability" max-occurs="unbounded">
-            <group-as name="by-capabilities" in-json="BY_KEY"/>
-         </assembly>
--->
       <field ref="remarks" in-xml="WITH_WRAPPER"/>
     </model>
+    <constraint>
+      <is-unique name="unique-component-definition-statement-responsible-role" target="responsible-role">
+        <key-field target="@role-id"/>
+        <remarks>
+          <p>Since <code>responsible-role</code> associates multiple <code>party-uuid</code> entries with a single <code>role-id</code>, each role-id must be referenced only once.</p>
+        </remarks>
+      </is-unique>
+    </constraint>
   </define-assembly>
   <!--
   <define-assembly name="supported-profile">
