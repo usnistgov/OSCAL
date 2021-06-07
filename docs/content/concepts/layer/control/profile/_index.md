@@ -19,7 +19,7 @@ aliases:
 
 ## Purpose
 
-The OSCAL Profile model represents a [baseline](../../../concepts/#baseline) of selected [controls](../../../concepts/#control) from one or more control [catalogs](../../../concepts/#catalog), which is referred to as a "profile" in OSCAL. The Profile model is the sole model in the OSCAL [Control](../) layer.
+The OSCAL Profile model represents a [baseline](/concepts/terminology/#baseline) of selected [controls](/concepts/terminology/#control) from one or more control [catalogs](/concepts/terminology/#catalog), which is referred to as a "profile" in OSCAL. The Profile model is the sole model in the OSCAL [Control](../) layer.
 
 ## Authors and Consumers
 

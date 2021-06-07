@@ -1,7 +1,6 @@
 ---
-title: "Profile Model XML Format Index"
-heading: OSCAL Profile Model XML Format Index
-description: An index of the attributes and elements used within the OSCAL Profile model XML format.
+title: "OSCAL Catalog Model Development Snapshot XML Format Index"
+heading: Catalog Model Development Snapshot XML Format Index
 weight: 70
 sidenav:
   title: XML Index
@@ -10,9 +9,10 @@ toc:
   headingselectors: "h1.toc1"
 ---
 
-The following is an index of each XML element and attribute used in this format. Each entry in the index lists all uses of the element in the XML format linked to the corresponding entry in the XML reference. Each entry also lists the formal name for the definition which is linked to the corresponding metaschema XML definition reference.
+The following is an index of each XML element and attribute used in the [XML format](https://github.com/usnistgov/OSCAL/blob/feature-documentation-redesign-2021-05/xml/schema/oscal_catalog_schema.xsd) for this model. Each entry in the index lists all uses of the given element or attribute in the format, which is linked to the corresponding entry in the [XML Format Reference](../xml-reference/). Each entry also lists the formal name for the given element or attribute which is linked to the corresponding XML type in the [XML Format Metaschema Reference](../xml-definitions/).
 
 <!-- DO NOT REMOVE. Generated text below -->
+{{< rawhtml >}}
 <div xmlns="http://www.w3.org/1999/xhtml" class="xml-index">
    <section class="named-object-group">
       <h1 class="toc1" id="/addr-line">addr-line</h1>
@@ -44,12 +44,6 @@ The following is an index of each XML element and attribute used in this format.
       <h1 class="toc1" id="/base64">base64</h1>
       <ul>
          <li><span class="pathlink">/<a href="../xml-reference/#/catalog">catalog</a>/<a href="../xml-reference/#/catalog/back-matter">back-matter</a>/<a href="../xml-reference/#/catalog/back-matter/resource">resource</a>/<a href="../xml-reference/#/catalog/back-matter/resource/base64">base64</a></span> - <span class="formal-name"><a href="../xml-definitions/#/assembly/oscal-metadata/back-matter/resource/base64">Base64</a></span></li>
-      </ul>
-   </section>
-   <section class="named-object-group">
-      <h1 class="toc1" id="/biblio">biblio</h1>
-      <ul>
-         <li><span class="pathlink">/<a href="../xml-reference/#/catalog">catalog</a>/<a href="../xml-reference/#/catalog/back-matter">back-matter</a>/<a href="../xml-reference/#/catalog/back-matter/resource">resource</a>/<a href="../xml-reference/#/catalog/back-matter/resource/citation">citation</a>/<a href="../xml-reference/#/catalog/back-matter/resource/citation/biblio">biblio</a></span> - <span class="formal-name"><a href="../xml-definitions/#/assembly/oscal-metadata/back-matter/resource/citation/biblio">Bibliographic Definition</a></span></li>
       </ul>
    </section>
    <section class="named-object-group">
@@ -243,6 +237,7 @@ The following is an index of each XML element and attribute used in this format.
          <li><span class="pathlink">/<a href="../xml-reference/#/catalog">catalog</a>/<a href="../xml-reference/#/catalog/group">group</a>/<a href="../xml-reference/#/catalog/group/control">control</a>/<a href="../xml-reference/#/catalog/group/control/param">param</a>/<a href="../xml-reference/#/catalog/group/control/param/link">link</a>/<a href="../xml-reference/#/catalog/group/control/param/link/@href">@href</a></span> - <span class="formal-name"><a href="../xml-definitions/#/assembly/oscal-metadata/link/href">Hypertext Reference</a></span></li>
          <li><span class="pathlink">/<a href="../xml-reference/#/catalog">catalog</a>/<a href="../xml-reference/#/catalog/group">group</a>/<a href="../xml-reference/#/catalog/group/control">control</a>/<a href="../xml-reference/#/catalog/group/control/link">link</a>/<a href="../xml-reference/#/catalog/group/control/link/@href">@href</a></span> - <span class="formal-name"><a href="../xml-definitions/#/assembly/oscal-metadata/link/href">Hypertext Reference</a></span></li>
          <li><span class="pathlink">/<a href="../xml-reference/#/catalog">catalog</a>/<a href="../xml-reference/#/catalog/group">group</a>/<a href="../xml-reference/#/catalog/group/control">control</a>/<a href="../xml-reference/#/catalog/group/control/part">part</a>/<a href="../xml-reference/#/catalog/group/control/part/link">link</a>/<a href="../xml-reference/#/catalog/group/control/part/link/@href">@href</a></span> - <span class="formal-name"><a href="../xml-definitions/#/assembly/oscal-metadata/link/href">Hypertext Reference</a></span></li>
+         <li><span class="pathlink">/<a href="../xml-reference/#/catalog">catalog</a>/<a href="../xml-reference/#/catalog/back-matter">back-matter</a>/<a href="../xml-reference/#/catalog/back-matter/resource">resource</a>/<a href="../xml-reference/#/catalog/back-matter/resource/citation">citation</a>/<a href="../xml-reference/#/catalog/back-matter/resource/citation/link">link</a>/<a href="../xml-reference/#/catalog/back-matter/resource/citation/link/@href">@href</a></span> - <span class="formal-name"><a href="../xml-definitions/#/assembly/oscal-metadata/link/href">Hypertext Reference</a></span></li>
          <li><span class="pathlink">/<a href="../xml-reference/#/catalog">catalog</a>/<a href="../xml-reference/#/catalog/back-matter">back-matter</a>/<a href="../xml-reference/#/catalog/back-matter/resource">resource</a>/<a href="../xml-reference/#/catalog/back-matter/resource/rlink">rlink</a>/<a href="../xml-reference/#/catalog/back-matter/resource/rlink/@href">@href</a></span> - <span class="formal-name"><a href="../xml-definitions/#/assembly/oscal-metadata/back-matter/resource/rlink/href">Hypertext Reference</a></span></li>
       </ul>
    </section>
@@ -297,6 +292,7 @@ The following is an index of each XML element and attribute used in this format.
          <li><span class="pathlink">/<a href="../xml-reference/#/catalog">catalog</a>/<a href="../xml-reference/#/catalog/group">group</a>/<a href="../xml-reference/#/catalog/group/control">control</a>/<a href="../xml-reference/#/catalog/group/control/param">param</a>/<a href="../xml-reference/#/catalog/group/control/param/link">link</a></span> - <span class="formal-name"><a href="../xml-definitions/#/assembly/oscal-catalog-common/parameter/link">Link</a></span></li>
          <li><span class="pathlink">/<a href="../xml-reference/#/catalog">catalog</a>/<a href="../xml-reference/#/catalog/group">group</a>/<a href="../xml-reference/#/catalog/group/control">control</a>/<a href="../xml-reference/#/catalog/group/control/link">link</a></span> - <span class="formal-name"><a href="../xml-definitions/#/assembly/oscal-catalog/control/link">Link</a></span></li>
          <li><span class="pathlink">/<a href="../xml-reference/#/catalog">catalog</a>/<a href="../xml-reference/#/catalog/group">group</a>/<a href="../xml-reference/#/catalog/group/control">control</a>/<a href="../xml-reference/#/catalog/group/control/part">part</a>/<a href="../xml-reference/#/catalog/group/control/part/link">link</a></span> - <span class="formal-name"><a href="../xml-definitions/#/assembly/oscal-catalog-common/part/link">Link</a></span></li>
+         <li><span class="pathlink">/<a href="../xml-reference/#/catalog">catalog</a>/<a href="../xml-reference/#/catalog/back-matter">back-matter</a>/<a href="../xml-reference/#/catalog/back-matter/resource">resource</a>/<a href="../xml-reference/#/catalog/back-matter/resource/citation">citation</a>/<a href="../xml-reference/#/catalog/back-matter/resource/citation/link">link</a></span> - <span class="formal-name"><a href="../xml-definitions/#/assembly/oscal-metadata/back-matter/resource/citation/link">Link</a></span></li>
       </ul>
    </section>
    <section class="named-object-group">
@@ -330,6 +326,7 @@ The following is an index of each XML element and attribute used in this format.
          <li><span class="pathlink">/<a href="../xml-reference/#/catalog">catalog</a>/<a href="../xml-reference/#/catalog/group">group</a>/<a href="../xml-reference/#/catalog/group/control">control</a>/<a href="../xml-reference/#/catalog/group/control/param">param</a>/<a href="../xml-reference/#/catalog/group/control/param/link">link</a>/<a href="../xml-reference/#/catalog/group/control/param/link/@media-type">@media-type</a></span> - <span class="formal-name"><a href="../xml-definitions/#/assembly/oscal-metadata/link/media-type">Media Type</a></span></li>
          <li><span class="pathlink">/<a href="../xml-reference/#/catalog">catalog</a>/<a href="../xml-reference/#/catalog/group">group</a>/<a href="../xml-reference/#/catalog/group/control">control</a>/<a href="../xml-reference/#/catalog/group/control/link">link</a>/<a href="../xml-reference/#/catalog/group/control/link/@media-type">@media-type</a></span> - <span class="formal-name"><a href="../xml-definitions/#/assembly/oscal-metadata/link/media-type">Media Type</a></span></li>
          <li><span class="pathlink">/<a href="../xml-reference/#/catalog">catalog</a>/<a href="../xml-reference/#/catalog/group">group</a>/<a href="../xml-reference/#/catalog/group/control">control</a>/<a href="../xml-reference/#/catalog/group/control/part">part</a>/<a href="../xml-reference/#/catalog/group/control/part/link">link</a>/<a href="../xml-reference/#/catalog/group/control/part/link/@media-type">@media-type</a></span> - <span class="formal-name"><a href="../xml-definitions/#/assembly/oscal-metadata/link/media-type">Media Type</a></span></li>
+         <li><span class="pathlink">/<a href="../xml-reference/#/catalog">catalog</a>/<a href="../xml-reference/#/catalog/back-matter">back-matter</a>/<a href="../xml-reference/#/catalog/back-matter/resource">resource</a>/<a href="../xml-reference/#/catalog/back-matter/resource/citation">citation</a>/<a href="../xml-reference/#/catalog/back-matter/resource/citation/link">link</a>/<a href="../xml-reference/#/catalog/back-matter/resource/citation/link/@media-type">@media-type</a></span> - <span class="formal-name"><a href="../xml-definitions/#/assembly/oscal-metadata/link/media-type">Media Type</a></span></li>
          <li><span class="pathlink">/<a href="../xml-reference/#/catalog">catalog</a>/<a href="../xml-reference/#/catalog/back-matter">back-matter</a>/<a href="../xml-reference/#/catalog/back-matter/resource">resource</a>/<a href="../xml-reference/#/catalog/back-matter/resource/rlink">rlink</a>/<a href="../xml-reference/#/catalog/back-matter/resource/rlink/@media-type">@media-type</a></span> - <span class="formal-name"><a href="../xml-definitions/#/assembly/oscal-metadata/back-matter/resource/rlink/media-type">Media Type</a></span></li>
          <li><span class="pathlink">/<a href="../xml-reference/#/catalog">catalog</a>/<a href="../xml-reference/#/catalog/back-matter">back-matter</a>/<a href="../xml-reference/#/catalog/back-matter/resource">resource</a>/<a href="../xml-reference/#/catalog/back-matter/resource/base64">base64</a>/<a href="../xml-reference/#/catalog/back-matter/resource/base64/@media-type">@media-type</a></span> - <span class="formal-name"><a href="../xml-definitions/#/assembly/oscal-metadata/back-matter/resource/base64/media-type">Media Type</a></span></li>
       </ul>
@@ -499,6 +496,7 @@ The following is an index of each XML element and attribute used in this format.
          <li><span class="pathlink">/<a href="../xml-reference/#/catalog">catalog</a>/<a href="../xml-reference/#/catalog/group">group</a>/<a href="../xml-reference/#/catalog/group/control">control</a>/<a href="../xml-reference/#/catalog/group/control/param">param</a>/<a href="../xml-reference/#/catalog/group/control/param/link">link</a>/<a href="../xml-reference/#/catalog/group/control/param/link/@rel">@rel</a></span> - <span class="formal-name"><a href="../xml-definitions/#/assembly/oscal-metadata/link/rel">Relation</a></span></li>
          <li><span class="pathlink">/<a href="../xml-reference/#/catalog">catalog</a>/<a href="../xml-reference/#/catalog/group">group</a>/<a href="../xml-reference/#/catalog/group/control">control</a>/<a href="../xml-reference/#/catalog/group/control/link">link</a>/<a href="../xml-reference/#/catalog/group/control/link/@rel">@rel</a></span> - <span class="formal-name"><a href="../xml-definitions/#/assembly/oscal-metadata/link/rel">Relation</a></span></li>
          <li><span class="pathlink">/<a href="../xml-reference/#/catalog">catalog</a>/<a href="../xml-reference/#/catalog/group">group</a>/<a href="../xml-reference/#/catalog/group/control">control</a>/<a href="../xml-reference/#/catalog/group/control/part">part</a>/<a href="../xml-reference/#/catalog/group/control/part/link">link</a>/<a href="../xml-reference/#/catalog/group/control/part/link/@rel">@rel</a></span> - <span class="formal-name"><a href="../xml-definitions/#/assembly/oscal-metadata/link/rel">Relation</a></span></li>
+         <li><span class="pathlink">/<a href="../xml-reference/#/catalog">catalog</a>/<a href="../xml-reference/#/catalog/back-matter">back-matter</a>/<a href="../xml-reference/#/catalog/back-matter/resource">resource</a>/<a href="../xml-reference/#/catalog/back-matter/resource/citation">citation</a>/<a href="../xml-reference/#/catalog/back-matter/resource/citation/link">link</a>/<a href="../xml-reference/#/catalog/back-matter/resource/citation/link/@rel">@rel</a></span> - <span class="formal-name"><a href="../xml-definitions/#/assembly/oscal-metadata/link/rel">Relation</a></span></li>
       </ul>
    </section>
    <section class="named-object-group">
@@ -560,7 +558,7 @@ The following is an index of each XML element and attribute used in this format.
    <section class="named-object-group">
       <h1 class="toc1" id="/revisions">revisions</h1>
       <ul>
-         <li><span class="pathlink">/<a href="../xml-reference/#/catalog">catalog</a>/<a href="../xml-reference/#/catalog/metadata">metadata</a>/<a href="../xml-reference/#/catalog/metadata/revisions">revisions</a></span> - <span class="formal-name"><a href="../xml-definitions.md#">element</a></span></li>
+         <li><span class="pathlink">/<a href="../xml-reference/#/catalog">catalog</a>/<a href="../xml-reference/#/catalog/metadata">metadata</a>/<a href="../xml-reference/#/catalog/metadata/revisions">revisions</a></span> - <span class="formal-name"><a href="../xml-definitions/#/assembly/oscal-metadata/metadata/revisions/revision">revision</a></span></li>
       </ul>
    </section>
    <section class="named-object-group">
@@ -648,6 +646,7 @@ The following is an index of each XML element and attribute used in this format.
          <li><span class="pathlink">/<a href="../xml-reference/#/catalog">catalog</a>/<a href="../xml-reference/#/catalog/group">group</a>/<a href="../xml-reference/#/catalog/group/control">control</a>/<a href="../xml-reference/#/catalog/group/control/link">link</a>/<a href="../xml-reference/#/catalog/group/control/link/text">text</a></span> - <span class="formal-name"><a href="../xml-definitions/#/assembly/oscal-metadata/link/text">Link Text</a></span></li>
          <li><span class="pathlink">/<a href="../xml-reference/#/catalog">catalog</a>/<a href="../xml-reference/#/catalog/group">group</a>/<a href="../xml-reference/#/catalog/group/control">control</a>/<a href="../xml-reference/#/catalog/group/control/part">part</a>/<a href="../xml-reference/#/catalog/group/control/part/link">link</a>/<a href="../xml-reference/#/catalog/group/control/part/link/text">text</a></span> - <span class="formal-name"><a href="../xml-definitions/#/assembly/oscal-metadata/link/text">Link Text</a></span></li>
          <li><span class="pathlink">/<a href="../xml-reference/#/catalog">catalog</a>/<a href="../xml-reference/#/catalog/back-matter">back-matter</a>/<a href="../xml-reference/#/catalog/back-matter/resource">resource</a>/<a href="../xml-reference/#/catalog/back-matter/resource/citation">citation</a>/<a href="../xml-reference/#/catalog/back-matter/resource/citation/text">text</a></span> - <span class="formal-name"><a href="../xml-definitions/#/assembly/oscal-metadata/back-matter/resource/citation/text">Citation Text</a></span></li>
+         <li><span class="pathlink">/<a href="../xml-reference/#/catalog">catalog</a>/<a href="../xml-reference/#/catalog/back-matter">back-matter</a>/<a href="../xml-reference/#/catalog/back-matter/resource">resource</a>/<a href="../xml-reference/#/catalog/back-matter/resource/citation">citation</a>/<a href="../xml-reference/#/catalog/back-matter/resource/citation/link">link</a>/<a href="../xml-reference/#/catalog/back-matter/resource/citation/link/text">text</a></span> - <span class="formal-name"><a href="../xml-definitions/#/assembly/oscal-metadata/link/text">Link Text</a></span></li>
       </ul>
    </section>
    <section class="named-object-group">
@@ -757,4 +756,4 @@ The following is an index of each XML element and attribute used in this format.
          <li><span class="pathlink">/<a href="../xml-reference/#/catalog">catalog</a>/<a href="../xml-reference/#/catalog/metadata">metadata</a>/<a href="../xml-reference/#/catalog/metadata/revisions">revisions</a>/<a href="../xml-reference/#/catalog/metadata/revisions/revision">revision</a>/<a href="../xml-reference/#/catalog/metadata/revisions/revision/version">version</a></span> - <span class="formal-name"><a href="../xml-definitions/#/assembly/oscal-metadata/revision/version">Document Version</a></span></li>
       </ul>
    </section>
-</div>
+</div>{{< /rawhtml >}}

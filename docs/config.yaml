@@ -1,7 +1,7 @@
 title: "OSCAL"
-baseURL: https://pages.nist.gov/OSCAL/
+baseURL: https://pages.nist.gov/OSCAL
 relativeURLs: true
-canonifyURLs: false
+canonifyURLs: true
 defaultContentLanguage: en
 disableAliases: false
 languages:

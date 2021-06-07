@@ -262,11 +262,11 @@ jobs:
           path: |
             ${{ env.OSCAL_WEBSITE_PATH }}/public
           retention-days: 5
-      - name: Run HTMLProofer
-        run: |
-          cd "${OSCAL_WEBSITE_PATH}"
-          #--allow-hash-href
-          bundle exec htmlproofer --check-external-hash public/ --url-swap "https\://pages.nist.gov/OSCAL/:/" --assume-extension --log-level :debug --url-ignore "/\/OSCAL\/docs\/\/reference\/[^/]+\/[^/]+\/(?:json|xml)-(?:outline|reference|index|definitions)/,/#/,/pages.nist.gov\/(?:nist-header-footer|leaveNotice)\/.+/"
+#      - name: Run HTMLProofer
+#        run: |
+#          cd "${OSCAL_WEBSITE_PATH}"
+#          #--allow-hash-href
+#          bundle exec htmlproofer --check-external-hash public/ --url-swap "https\://pages.nist.gov/OSCAL/:/" --assume-extension --log-level :debug --url-ignore "/\/OSCAL\/docs\/\/reference\/[^/]+\/[^/]+\/(?:json|xml)-(?:outline|reference|index|definitions)/,/#/,/pages.nist.gov\/(?:nist-header-footer|leaveNotice)\/.+/"
       - name: Run deploy script
         if: ${{ github.repository == env.HOME_REPO && github.ref == format('refs/heads/{0}',env.HOME_BRANCH) }}
         run: |

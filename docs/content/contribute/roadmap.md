@@ -18,7 +18,7 @@ Each [milestone](https://github.com/usnistgov/OSCAL/milestones) will result in a
 
 ## OSCAL v1
 
-The first major version of OSCAL, OSCAL v1, will be developed over a series of milestone releases, culminating in a a [full release](#oscal-1-0-0-full-release) of OSCAL v1.
+The first major version of OSCAL, OSCAL v1, will be developed over a series of milestone releases, culminating in a a [full release](#oscal-100-full-release) of OSCAL v1.
 
 OSCAL release history:
 
@@ -147,7 +147,7 @@ We will continue to address any defects, improve documentation, and add features
 
 ## OSCAL v2
 
-Similar to OSCAL v1, the second major version of OSCAL, OSCAL v2, will be developed over a series of milestone releases. We have not yet planned a specific number of milestones in the OSCAL v2 epic. We will start planning OSCAL v2 as are near wrapping up the [final development milestone](#oscal-1-0-0-full-release) of OSCAL v1.
+Similar to OSCAL v1, the second major version of OSCAL, OSCAL v2, will be developed over a series of milestone releases. We have not yet planned a specific number of milestones in the OSCAL v2 epic. We will start planning OSCAL v2 as are near wrapping up the [final development milestone](#oscal-100-full-release) of OSCAL v1.
 
 ### OSCAL 2.0.0 Milestone 1
 
