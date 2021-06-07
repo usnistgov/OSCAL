@@ -1,7 +1,9 @@
 title: "OSCAL"
 baseURL: https://pages.nist.gov/OSCAL/
+relativeURLs: true
+canonifyURLs: false
 defaultContentLanguage: en
-# disableAliases: false
+disableAliases: false
 languages:
   en:
     lang: en
@@ -10,7 +12,6 @@ languages:
 MetaDataFormat: "yaml"
 theme: "uswds"
 googleAnalytics: UA-42404149-54
-canonifyurls: true
 enableGitInfo: true
 pygmentsCodeFences: true
 pygmentsCodefencesGuessSyntax: true
