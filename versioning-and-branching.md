@@ -59,7 +59,7 @@ git push --set-upstream upstream release-1.2
 Once the release is ready, the release can be made using the following Git commands:
 
 ```
-git checkout master
+git checkout main
 git merge --no-ff release-1.2
 git tag -a 1.2.0
 git push --follow-tags
@@ -72,7 +72,7 @@ Patch releases for a given MAJOR.MINOR version will be marked by annotated tags.
 Once a patch release is ready, the release can be made using the following Git commands:
 
 ```
-git checkout master
+git checkout main
 git merge --no-ff release-1.2
 git tag -a 1.2.1
 git push --follow-tags

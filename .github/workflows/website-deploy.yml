@@ -2,19 +2,17 @@ on:
   push:
     branches:
       - main
-      - develop
     paths:
       - 'docs/**'
-      - '.github/workflows/website.yml'
+      - '.github/workflows/website-deploy.yml'
   workflow_dispatch:
     branches:
       - main
-      - develop
 name: Build and Publish Website
 env:
   # the name of the repo
   HOME_REPO: usnistgov/OSCAL
-  HOME_BRANCH: develop
+  HOME_BRANCH: main
   # dependency versions
   HUGO_VERSION: 0.83.1
   # build-specific environment
@@ -75,9 +73,9 @@ jobs:
 #        run: |
 #          cd "${OSCAL_WEBSITE_PATH}"
 #          bundle exec htmlproofer public/ --check-external-hash --url-swap "https\://pages.nist.gov/OSCAL/:/" --assume-extension --log-level :debug --url-ignore "\/reference\//,/pages.nist.gov\/(?:nist-header-footer|leaveNotice)\/.+/"
-#      - name: Run deploy script
-#        if: ${{ github.repository == env.HOME_REPO && github.ref == format('refs/heads/{0}',env.HOME_BRANCH) }}
-#        run: |
-#            cd "$OSCAL_WEBSITE_PATH"
-#            git config user.name "Deployment Bot"
-#            bash ./deploy.sh --push-only -v -m "Deploying website [ci deploy skip]"
+      - name: Run deploy script
+        if: ${{ github.repository == env.HOME_REPO && github.ref == format('refs/heads/{0}',env.HOME_BRANCH) }}
+        run: |
+            cd "$OSCAL_WEBSITE_PATH"
+            git config user.name "Deployment Bot"
+            bash ./deploy.sh --push-only -v -m "Deploying website [ci deploy skip]"
