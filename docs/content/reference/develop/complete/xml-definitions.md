@@ -6776,7 +6776,7 @@ The following is a reference for the XML element and attribute types derived fro
             </div>
          </details>
          <details open="open">
-            <summary>Elements (8):</summary>
+            <summary>Elements (7):</summary>
             <div class="model assembly-model">
                <div class="model-entry definition define-field">
                   <div class="instance-header">
@@ -6855,68 +6855,101 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="definition-link"><a href="#/assembly/oscal-metadata/link">See definition</a></p>
                   </div>
                </div>
-               <div class="model-entry definition define-field">
+               <div class="model-entry definition define-assembly">
                   <div class="instance-header">
                      <h2 id="/assembly/oscal-assessment-common/finding-target/status" class="toc2 name">status</h2>
-                     <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                     <p class="type">assembly<br class="br" /> </p>
                      <p class="occurrence">[1]</p>
                      <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-assessment-common/finding-target/status">Switch to JSON</a></div>
                      <p class="formal-name">Objective Status</p>
                   </div>
                   <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> A brief indication as to whether the objective is satisfied or not within a given
-                        system.</p>
-                     <details>
-                        <summary>Constraint (1)</summary>
-                        
-                        <div class="constraint">
-                           <p><span class="usa-tag">allowed values</span></p>
-                           <p>The value <b>must</b> be one of the following:</p>
-                           <ul>
-                              
-                              <li><strong>satisfied</strong>: The objective has been completely satisfied.</li>
-                              
-                              <li><strong>not-satisfied</strong>: The objective has not been completely satisfied, but may be partially satisfied.</li>
-                              </ul>
-                        </div>
-                        </details>
-                  </div>
-               </div>
-               <div class="model-entry definition define-field">
-                  <div class="instance-header">
-                     <h2 id="/assembly/oscal-assessment-common/finding-target/reason" class="toc2 name">reason</h2>
-                     <p class="type"><a href="/reference/datatypes/#ncname">NCName</a></p>
-                     <p class="occurrence">[0 to ∞]</p>
-                     <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-assessment-common/finding-target/reason">Switch to JSON</a></div>
-                     <p class="formal-name">Objective Status Reason</p>
-                  </div>
-                  <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> The reason the objective was given it's status.</p>
-                     <div class="remarks-group usa-prose">
-                        <details open="open">
-                           <summary class="subhead">Remarks</summary>
-                           <div class="remarks">
-                              <p>Reason may contain any value, and should be used to communicate additional information
-                                 regarding the status.</p>
+                     <p class="description"><span class="usa-tag">description</span> A determination of if the objective is satisfied or not within a given system.</p>
+                     <details open="open">
+                        <summary>Attributes (2):</summary>
+                        <div class="model assembly-model">
+                           <div class="model-entry definition define-flag">
+                              <div class="instance-header">
+                                 <h3 id="/assembly/oscal-assessment-common/finding-target/status/state" class="toc3 name">state</h3>
+                                 <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                 <p class="occurrence">[0 or 1]</p>
+                                 <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-assessment-common/finding-target/status/state">Switch to JSON</a></div>
+                                 <p class="formal-name">Objective Status State</p>
+                              </div>
+                              <div class="body">
+                                 <p class="description"><span class="usa-tag">description</span> An indication as to whether the objective is satisfied or not.</p>
+                                 <details>
+                                    <summary>Constraint (1)</summary>
+                                    
+                                    <div class="constraint">
+                                       <p><span class="usa-tag">allowed values</span></p>
+                                       <p>The value <b>must</b> be one of the following:</p>
+                                       <ul>
+                                          
+                                          <li><strong>satisfied</strong>: The objective has been completely satisfied.</li>
+                                          
+                                          <li><strong>not-satisfied</strong>: The objective has not been completely satisfied, but may be partially satisfied.</li>
+                                          </ul>
+                                    </div>
+                                    </details>
+                              </div>
                            </div>
-                        </details>
-                     </div>
-                     <details>
-                        <summary>Constraint (1)</summary>
-                        
-                        <div class="constraint">
-                           <p><span class="usa-tag">allowed values</span></p>
-                           <p>The value <b>may be locally defined</b>, or one of the following:</p>
-                           <ul>
-                              
-                              <li><strong>pass</strong>: The target system or system component satisfied all the conditions.</li>
-                              
-                              <li><strong>fail</strong>: The target system or system component did not satisfy all the conditions.</li>
-                              
-                              <li><strong>other</strong>: Some other event took place that is not a pass or a fail. </li>
-                              </ul>
+                           <div class="model-entry definition define-flag">
+                              <div class="instance-header">
+                                 <h3 id="/assembly/oscal-assessment-common/finding-target/status/reason" class="toc3 name">reason</h3>
+                                 <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                 <p class="occurrence">[0 or 1]</p>
+                                 <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-assessment-common/finding-target/status/reason">Switch to JSON</a></div>
+                                 <p class="formal-name">Objective Status Reason</p>
+                              </div>
+                              <div class="body">
+                                 <p class="description"><span class="usa-tag">description</span> The reason the objective was given it's status.</p>
+                                 <div class="remarks-group usa-prose">
+                                    <details open="open">
+                                       <summary class="subhead">Remarks</summary>
+                                       <div class="remarks">
+                                          <p>Reason may contain any value, and should be used to communicate additional information
+                                             regarding the status.</p>
+                                       </div>
+                                    </details>
+                                 </div>
+                                 <details>
+                                    <summary>Constraint (1)</summary>
+                                    
+                                    <div class="constraint">
+                                       <p><span class="usa-tag">allowed values</span></p>
+                                       <p>The value <b>may be locally defined</b>, or one of the following:</p>
+                                       <ul>
+                                          
+                                          <li><strong>pass</strong>: The target system or system component satisfied all the conditions.</li>
+                                          
+                                          <li><strong>fail</strong>: The target system or system component did not satisfy all the conditions.</li>
+                                          
+                                          <li><strong>other</strong>: Some other event took place that is not a pass or a fail. </li>
+                                          </ul>
+                                    </div>
+                                    </details>
+                              </div>
+                           </div>
                         </div>
-                        </details>
+                     </details>
+                     <details open="open">
+                        <summary>Elements (1):</summary>
+                        <div class="model assembly-model">
+                           <div class="model-entry definition field">
+                              <div class="instance-header">
+                                 <h3 id="/assembly/oscal-assessment-common/finding-target/status/remarks" class="toc3 name">remarks</h3>
+                                 <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                 <p class="occurrence">[0 or 1]</p>
+                                 <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-assessment-common/finding-target/status/remarks">Switch to JSON</a></div>
+                                 <p class="formal-name">Remarks</p>
+                              </div>
+                              <div class="body">
+                                 <p class="definition-link"><a href="#/field/oscal-metadata/remarks">See definition</a></p>
+                              </div>
+                           </div>
+                        </div>
+                     </details>
                   </div>
                </div>
                <div class="model-entry definition assembly">

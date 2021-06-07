@@ -11426,12 +11426,21 @@ The following outline is a representation of the [JSON format](https://github.co
                                              </div>
                                              <p><span class="OM-lit">], </span></p>
                                           </details>
-                                          <div class="OM-entry">
-                                             <p class="OM-line"><a class="OM-name" href="../json-reference/#/assessment-results/results/findings/target/status">status</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
-                                          </div>
-                                          <div class="OM-entry">
-                                             <p class="OM-line"><a class="OM-name" href="../json-reference/#/assessment-results/results/findings/target/reason">reason</a> <span class="OM-cardinality">[0 to ∞]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#ncname">NCName</a></span><span class="OM-lit">,</span></p>
-                                          </div>
+                                          <details class="OM-entry">
+                                             <summary><a class="OM-name" href="../json-reference/#/assessment-results/results/findings/target/status">status</a> <span class="OM-cardinality">[1]</span>: <span class="OM-lit">{<span class="show-closed"> … }, </span></span></summary>
+                                             <div class="model-container object">
+                                                <div class="OM-entry">
+                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/assessment-results/results/findings/target/status/state">state</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                </div>
+                                                <div class="OM-entry">
+                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/assessment-results/results/findings/target/status/reason">reason</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                </div>
+                                                <div class="OM-entry">
+                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/assessment-results/results/findings/target/status/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span></p>
+                                                </div>
+                                             </div>
+                                             <p><span class="OM-lit"> }, </span></p>
+                                          </details>
                                           <details class="OM-entry">
                                              <summary><a class="OM-name" href="../json-reference/#/assessment-results/results/findings/target/implementation-status">implementation-status</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit">{<span class="show-closed"> … }, </span></span></summary>
                                              <div class="model-container object">
