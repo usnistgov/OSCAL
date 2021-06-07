@@ -13,7 +13,7 @@ name: Build and Publish Website
 env:
   # the name of the repo
   HOME_REPO: usnistgov/OSCAL
-  HOME_BRANCH: main
+  HOME_BRANCH: develop
   # dependency versions
   HUGO_VERSION: 0.83.1
   # build-specific environment
