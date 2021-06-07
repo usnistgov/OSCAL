@@ -1,7 +1,8 @@
 on:
   push:
     branches:
-      - feature-documentation-redesign-2021-05
+      - main
+      - develop
     paths:
       - 'docs/**'
       - '.github/workflows/website.yml'
@@ -12,7 +13,7 @@ name: Build and Publish Website
 env:
   # the name of the repo
   HOME_REPO: usnistgov/OSCAL
-  HOME_BRANCH: feature-documentation-redesign-2021-05
+  HOME_BRANCH: main
   # dependency versions
   HUGO_VERSION: 0.83.1
   # build-specific environment
