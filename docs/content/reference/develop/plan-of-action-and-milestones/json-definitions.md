@@ -18,8 +18,8 @@ The following is a reference for the JSON object definitions derived from this m
    <p><span class="usa-tag">Version</span> 1.0.0</p>
    <p><span class="usa-tag">Short name</span> oscal-poam</p>
    <p><span class="usa-tag">JSON Base URI</span> <code>http://csrc.nist.gov/ns/oscal</code></p>
-   <p><span class="usa-tag">JSON Schema</span> <a href="/artifacts/json/schema/oscal_poam_schema.json">oscal_poam_schema.json</a></p>
-   <p><span class="usa-tag">XML to JSON converter</span> <a href="/artifacts/json/convert/oscal_poam_xml-to-json-converter.xsl">oscal_poam_xml-to-json-converter.xsl</a> <a href="https://github.com/usnistgov/OSCAL/tree/main/json#converting-oscal-xml-content-to-json">(How do I use the converter to convert OSCAL XML to JSON)</a></p>
+   <p><span class="usa-tag">JSON Schema</span> <a href="https://pages.nist.gov/OSCAL/artifacts/json/schema/oscal_poam_schema.json">oscal_poam_schema.json</a></p>
+   <p><span class="usa-tag">XML to JSON converter</span> <a href="https://pages.nist.gov/OSCAL/artifacts/xml/convert/oscal_poam_xml-to-json-converter.xsl">oscal_poam_xml-to-json-converter.xsl</a> <a href="https://github.com/usnistgov/OSCAL/tree/master/xml#converting-oscal-xml-content-to-json">(How do I use the converter to convert OSCAL XML to JSON)</a></p>
    <details class="remarks" open="open">
       <summary>Remarks</summary>
       <p class="p">The OSCAL Plan of Action and Milestones (POA&amp;M) format is used to describe the information

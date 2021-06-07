@@ -50,7 +50,7 @@ The following is the XML format reference for this model, which is organized hie
             <summary>Attribute (1)</summary>
             <div class="model-entry definition assembly">
                <div class="instance-header">
-                  <h2 id="/component-definition/uuid" class="toc2 name">uuid</h2>
+                  <h2 id="/component-definition/@uuid" class="toc2 name">uuid</h2>
                   <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                   <p class="occurrence">[1]</p>
                   <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/uuid">Switch to JSON</a></div>
@@ -270,7 +270,7 @@ The following is the XML format reference for this model, which is organized hie
                               <summary>Element (1)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/metadata/revisions" class="toc4 name">revision</h4>
+                                    <h4 id="/component-definition/metadata/revisions/revision" class="toc4 name">revision</h4>
                                     <p class="type">element<br /></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/revisions">Switch to JSON</a></div>
@@ -316,7 +316,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Elements (8)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/metadata/revisions/title" class="toc5 name">title</h5>
+                                             <h5 id="/component-definition/metadata/revisions/revision/title" class="toc5 name">title</h5>
                                              <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/revisions/title">Switch to JSON</a></div>
@@ -329,7 +329,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/metadata/revisions/published" class="toc5 name">published</h5>
+                                             <h5 id="/component-definition/metadata/revisions/revision/published" class="toc5 name">published</h5>
                                              <p class="type"><a href="/reference/datatypes/#datetime-with-timezone">dateTime-with-timezone</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/revisions/published">Switch to JSON</a></div>
@@ -357,7 +357,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/metadata/revisions/last-modified" class="toc5 name">last-modified</h5>
+                                             <h5 id="/component-definition/metadata/revisions/revision/last-modified" class="toc5 name">last-modified</h5>
                                              <p class="type"><a href="/reference/datatypes/#datetime-with-timezone">dateTime-with-timezone</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/revisions/last-modified">Switch to JSON</a></div>
@@ -385,7 +385,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/metadata/revisions/version" class="toc5 name">version</h5>
+                                             <h5 id="/component-definition/metadata/revisions/revision/version" class="toc5 name">version</h5>
                                              <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/revisions/version">Switch to JSON</a></div>
@@ -412,7 +412,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/metadata/revisions/oscal-version" class="toc5 name">oscal-version</h5>
+                                             <h5 id="/component-definition/metadata/revisions/revision/oscal-version" class="toc5 name">oscal-version</h5>
                                              <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/revisions/oscal-version">Switch to JSON</a></div>
@@ -434,8 +434,8 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/metadata/revisions/props" class="toc5 name">prop</h5>
-                                             <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/revision/props">(global definition)</a></p>
+                                             <h5 id="/component-definition/metadata/revisions/revision/prop" class="toc5 name">prop</h5>
+                                             <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/revision/prop">(global definition)</a></p>
                                              <p class="occurrence">[0 to ∞]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/revisions/props">Switch to JSON</a></div>
                                              <p class="formal-name">Property</p>
@@ -465,7 +465,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 <summary>Attributes (5)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/component-definition/metadata/revisions/props/name" class="toc6 name">name</h6>
+                                                      <h6 id="/component-definition/metadata/revisions/revision/prop/@name" class="toc6 name">name</h6>
                                                       <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                       <p class="occurrence">[1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/revisions/props/name">Switch to JSON</a></div>
@@ -491,7 +491,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/component-definition/metadata/revisions/props/uuid" class="toc6 name">uuid</h6>
+                                                      <h6 id="/component-definition/metadata/revisions/revision/prop/@uuid" class="toc6 name">uuid</h6>
                                                       <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/revisions/props/uuid">Switch to JSON</a></div>
@@ -505,7 +505,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/component-definition/metadata/revisions/props/ns" class="toc6 name">ns</h6>
+                                                      <h6 id="/component-definition/metadata/revisions/revision/prop/@ns" class="toc6 name">ns</h6>
                                                       <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/revisions/props/ns">Switch to JSON</a></div>
@@ -539,7 +539,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/component-definition/metadata/revisions/props/value" class="toc6 name">value</h6>
+                                                      <h6 id="/component-definition/metadata/revisions/revision/prop/@value" class="toc6 name">value</h6>
                                                       <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                                       <p class="occurrence">[1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/revisions/props/value">Switch to JSON</a></div>
@@ -551,7 +551,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/component-definition/metadata/revisions/props/class" class="toc6 name">class</h6>
+                                                      <h6 id="/component-definition/metadata/revisions/revision/prop/@class" class="toc6 name">class</h6>
                                                       <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/revisions/props/class">Switch to JSON</a></div>
@@ -580,7 +580,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 <summary>Element (1)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/component-definition/metadata/revisions/props/remarks" class="toc6 name">remarks</h6>
+                                                      <h6 id="/component-definition/metadata/revisions/revision/prop/remarks" class="toc6 name">remarks</h6>
                                                       <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/revisions/props/remarks">Switch to JSON</a></div>
@@ -595,8 +595,8 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/metadata/revisions/links" class="toc5 name">link</h5>
-                                             <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/revision/links">(global definition)</a></p>
+                                             <h5 id="/component-definition/metadata/revisions/revision/link" class="toc5 name">link</h5>
+                                             <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/revision/link">(global definition)</a></p>
                                              <p class="occurrence">[0 to ∞]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/revisions/links">Switch to JSON</a></div>
                                              <p class="formal-name">Link</p>
@@ -629,7 +629,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 <summary>Attributes (3)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/component-definition/metadata/revisions/links/href" class="toc6 name">href</h6>
+                                                      <h6 id="/component-definition/metadata/revisions/revision/link/@href" class="toc6 name">href</h6>
                                                       <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
                                                       <p class="occurrence">[1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/revisions/links/href">Switch to JSON</a></div>
@@ -664,7 +664,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/component-definition/metadata/revisions/links/rel" class="toc6 name">rel</h6>
+                                                      <h6 id="/component-definition/metadata/revisions/revision/link/@rel" class="toc6 name">rel</h6>
                                                       <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/revisions/links/rel">Switch to JSON</a></div>
@@ -688,7 +688,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/component-definition/metadata/revisions/links/media-type" class="toc6 name">media-type</h6>
+                                                      <h6 id="/component-definition/metadata/revisions/revision/link/@media-type" class="toc6 name">media-type</h6>
                                                       <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/revisions/links/media-type">Switch to JSON</a></div>
@@ -713,7 +713,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 <summary>Element (1)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/component-definition/metadata/revisions/links/text" class="toc6 name">text</h6>
+                                                      <h6 id="/component-definition/metadata/revisions/revision/link/text" class="toc6 name">text</h6>
                                                       <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/revisions/links/text">Switch to JSON</a></div>
@@ -729,7 +729,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/metadata/revisions/remarks" class="toc5 name">remarks</h5>
+                                             <h5 id="/component-definition/metadata/revisions/revision/remarks" class="toc5 name">remarks</h5>
                                              <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/revisions/remarks">Switch to JSON</a></div>
@@ -747,7 +747,7 @@ The following is the XML format reference for this model, which is organized hie
                      </div>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
-                           <h3 id="/component-definition/metadata/document-ids" class="toc3 name">document-id</h3>
+                           <h3 id="/component-definition/metadata/document-id" class="toc3 name">document-id</h3>
                            <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                            <p class="occurrence">[0 to ∞]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/document-ids">Switch to JSON</a></div>
@@ -777,7 +777,7 @@ The following is the XML format reference for this model, which is organized hie
                               <summary>Attribute (1)</summary>
                               <div class="model-entry definition field">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/metadata/document-ids/scheme" class="toc4 name">scheme</h4>
+                                    <h4 id="/component-definition/metadata/document-id/@scheme" class="toc4 name">scheme</h4>
                                     <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/document-ids/scheme">Switch to JSON</a></div>
@@ -805,8 +805,8 @@ The following is the XML format reference for this model, which is organized hie
                      </div>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
-                           <h3 id="/component-definition/metadata/props" class="toc3 name">prop</h3>
-                           <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/metadata/props">(global definition)</a></p>
+                           <h3 id="/component-definition/metadata/prop" class="toc3 name">prop</h3>
+                           <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/metadata/prop">(global definition)</a></p>
                            <p class="occurrence">[0 to ∞]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/props">Switch to JSON</a></div>
                            <p class="formal-name">Property</p>
@@ -836,7 +836,7 @@ The following is the XML format reference for this model, which is organized hie
                               <summary>Attributes (5)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/metadata/props/name" class="toc4 name">name</h4>
+                                    <h4 id="/component-definition/metadata/prop/@name" class="toc4 name">name</h4>
                                     <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                     <p class="occurrence">[1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/props/name">Switch to JSON</a></div>
@@ -862,7 +862,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/metadata/props/uuid" class="toc4 name">uuid</h4>
+                                    <h4 id="/component-definition/metadata/prop/@uuid" class="toc4 name">uuid</h4>
                                     <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/props/uuid">Switch to JSON</a></div>
@@ -876,7 +876,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/metadata/props/ns" class="toc4 name">ns</h4>
+                                    <h4 id="/component-definition/metadata/prop/@ns" class="toc4 name">ns</h4>
                                     <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/props/ns">Switch to JSON</a></div>
@@ -910,7 +910,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/metadata/props/value" class="toc4 name">value</h4>
+                                    <h4 id="/component-definition/metadata/prop/@value" class="toc4 name">value</h4>
                                     <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                     <p class="occurrence">[1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/props/value">Switch to JSON</a></div>
@@ -922,7 +922,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/metadata/props/class" class="toc4 name">class</h4>
+                                    <h4 id="/component-definition/metadata/prop/@class" class="toc4 name">class</h4>
                                     <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/props/class">Switch to JSON</a></div>
@@ -951,7 +951,7 @@ The following is the XML format reference for this model, which is organized hie
                               <summary>Element (1)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/metadata/props/remarks" class="toc4 name">remarks</h4>
+                                    <h4 id="/component-definition/metadata/prop/remarks" class="toc4 name">remarks</h4>
                                     <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/props/remarks">Switch to JSON</a></div>
@@ -966,8 +966,8 @@ The following is the XML format reference for this model, which is organized hie
                      </div>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
-                           <h3 id="/component-definition/metadata/links" class="toc3 name">link</h3>
-                           <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/metadata/links">(global definition)</a></p>
+                           <h3 id="/component-definition/metadata/link" class="toc3 name">link</h3>
+                           <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/metadata/link">(global definition)</a></p>
                            <p class="occurrence">[0 to ∞]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/links">Switch to JSON</a></div>
                            <p class="formal-name">Link</p>
@@ -1000,7 +1000,7 @@ The following is the XML format reference for this model, which is organized hie
                               <summary>Attributes (3)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/metadata/links/href" class="toc4 name">href</h4>
+                                    <h4 id="/component-definition/metadata/link/@href" class="toc4 name">href</h4>
                                     <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
                                     <p class="occurrence">[1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/links/href">Switch to JSON</a></div>
@@ -1035,7 +1035,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/metadata/links/rel" class="toc4 name">rel</h4>
+                                    <h4 id="/component-definition/metadata/link/@rel" class="toc4 name">rel</h4>
                                     <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/links/rel">Switch to JSON</a></div>
@@ -1059,7 +1059,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/metadata/links/media-type" class="toc4 name">media-type</h4>
+                                    <h4 id="/component-definition/metadata/link/@media-type" class="toc4 name">media-type</h4>
                                     <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/links/media-type">Switch to JSON</a></div>
@@ -1084,7 +1084,7 @@ The following is the XML format reference for this model, which is organized hie
                               <summary>Element (1)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/metadata/links/text" class="toc4 name">text</h4>
+                                    <h4 id="/component-definition/metadata/link/text" class="toc4 name">text</h4>
                                     <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/links/text">Switch to JSON</a></div>
@@ -1100,8 +1100,8 @@ The following is the XML format reference for this model, which is organized hie
                      </div>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
-                           <h3 id="/component-definition/metadata/roles" class="toc3 name">role</h3>
-                           <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/metadata/roles">(global definition)</a></p>
+                           <h3 id="/component-definition/metadata/role" class="toc3 name">role</h3>
+                           <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/metadata/role">(global definition)</a></p>
                            <p class="occurrence">[0 to ∞]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/roles">Switch to JSON</a></div>
                            <p class="formal-name">Role</p>
@@ -1121,7 +1121,7 @@ The following is the XML format reference for this model, which is organized hie
                               <summary>Attribute (1)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/metadata/roles/id" class="toc4 name">id</h4>
+                                    <h4 id="/component-definition/metadata/role/@id" class="toc4 name">id</h4>
                                     <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                     <p class="occurrence">[1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/roles/id">Switch to JSON</a></div>
@@ -1157,7 +1157,7 @@ The following is the XML format reference for this model, which is organized hie
                               <summary>Elements (6)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/metadata/roles/title" class="toc4 name">title</h4>
+                                    <h4 id="/component-definition/metadata/role/title" class="toc4 name">title</h4>
                                     <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                     <p class="occurrence">[1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/roles/title">Switch to JSON</a></div>
@@ -1169,7 +1169,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/metadata/roles/short-name" class="toc4 name">short-name</h4>
+                                    <h4 id="/component-definition/metadata/role/short-name" class="toc4 name">short-name</h4>
                                     <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/roles/short-name">Switch to JSON</a></div>
@@ -1181,7 +1181,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/metadata/roles/description" class="toc4 name">description</h4>
+                                    <h4 id="/component-definition/metadata/role/description" class="toc4 name">description</h4>
                                     <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/roles/description">Switch to JSON</a></div>
@@ -1193,8 +1193,8 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/metadata/roles/props" class="toc4 name">prop</h4>
-                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/role/props">(global definition)</a></p>
+                                    <h4 id="/component-definition/metadata/role/prop" class="toc4 name">prop</h4>
+                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/role/prop">(global definition)</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/roles/props">Switch to JSON</a></div>
                                     <p class="formal-name">Property</p>
@@ -1224,7 +1224,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Attributes (5)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/metadata/roles/props/name" class="toc5 name">name</h5>
+                                             <h5 id="/component-definition/metadata/role/prop/@name" class="toc5 name">name</h5>
                                              <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/roles/props/name">Switch to JSON</a></div>
@@ -1250,7 +1250,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/metadata/roles/props/uuid" class="toc5 name">uuid</h5>
+                                             <h5 id="/component-definition/metadata/role/prop/@uuid" class="toc5 name">uuid</h5>
                                              <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/roles/props/uuid">Switch to JSON</a></div>
@@ -1264,7 +1264,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/metadata/roles/props/ns" class="toc5 name">ns</h5>
+                                             <h5 id="/component-definition/metadata/role/prop/@ns" class="toc5 name">ns</h5>
                                              <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/roles/props/ns">Switch to JSON</a></div>
@@ -1298,7 +1298,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/metadata/roles/props/value" class="toc5 name">value</h5>
+                                             <h5 id="/component-definition/metadata/role/prop/@value" class="toc5 name">value</h5>
                                              <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/roles/props/value">Switch to JSON</a></div>
@@ -1310,7 +1310,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/metadata/roles/props/class" class="toc5 name">class</h5>
+                                             <h5 id="/component-definition/metadata/role/prop/@class" class="toc5 name">class</h5>
                                              <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/roles/props/class">Switch to JSON</a></div>
@@ -1339,7 +1339,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Element (1)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/metadata/roles/props/remarks" class="toc5 name">remarks</h5>
+                                             <h5 id="/component-definition/metadata/role/prop/remarks" class="toc5 name">remarks</h5>
                                              <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/roles/props/remarks">Switch to JSON</a></div>
@@ -1354,8 +1354,8 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/metadata/roles/links" class="toc4 name">link</h4>
-                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/role/links">(global definition)</a></p>
+                                    <h4 id="/component-definition/metadata/role/link" class="toc4 name">link</h4>
+                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/role/link">(global definition)</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/roles/links">Switch to JSON</a></div>
                                     <p class="formal-name">Link</p>
@@ -1388,7 +1388,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Attributes (3)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/metadata/roles/links/href" class="toc5 name">href</h5>
+                                             <h5 id="/component-definition/metadata/role/link/@href" class="toc5 name">href</h5>
                                              <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/roles/links/href">Switch to JSON</a></div>
@@ -1423,7 +1423,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/metadata/roles/links/rel" class="toc5 name">rel</h5>
+                                             <h5 id="/component-definition/metadata/role/link/@rel" class="toc5 name">rel</h5>
                                              <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/roles/links/rel">Switch to JSON</a></div>
@@ -1447,7 +1447,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/metadata/roles/links/media-type" class="toc5 name">media-type</h5>
+                                             <h5 id="/component-definition/metadata/role/link/@media-type" class="toc5 name">media-type</h5>
                                              <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/roles/links/media-type">Switch to JSON</a></div>
@@ -1472,7 +1472,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Element (1)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/metadata/roles/links/text" class="toc5 name">text</h5>
+                                             <h5 id="/component-definition/metadata/role/link/text" class="toc5 name">text</h5>
                                              <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/roles/links/text">Switch to JSON</a></div>
@@ -1488,7 +1488,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/metadata/roles/remarks" class="toc4 name">remarks</h4>
+                                    <h4 id="/component-definition/metadata/role/remarks" class="toc4 name">remarks</h4>
                                     <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/roles/remarks">Switch to JSON</a></div>
@@ -1503,8 +1503,8 @@ The following is the XML format reference for this model, which is organized hie
                      </div>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
-                           <h3 id="/component-definition/metadata/locations" class="toc3 name">location</h3>
-                           <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/metadata/locations">(global definition)</a></p>
+                           <h3 id="/component-definition/metadata/location" class="toc3 name">location</h3>
+                           <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/metadata/location">(global definition)</a></p>
                            <p class="occurrence">[0 to ∞]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/locations">Switch to JSON</a></div>
                            <p class="formal-name">Location</p>
@@ -1545,7 +1545,7 @@ The following is the XML format reference for this model, which is organized hie
                               <summary>Attribute (1)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/metadata/locations/uuid" class="toc4 name">uuid</h4>
+                                    <h4 id="/component-definition/metadata/location/@uuid" class="toc4 name">uuid</h4>
                                     <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                     <p class="occurrence">[1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/locations/uuid">Switch to JSON</a></div>
@@ -1562,7 +1562,7 @@ The following is the XML format reference for this model, which is organized hie
                               <summary>Elements (8)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/metadata/locations/title" class="toc4 name">title</h4>
+                                    <h4 id="/component-definition/metadata/location/title" class="toc4 name">title</h4>
                                     <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/locations/title">Switch to JSON</a></div>
@@ -1574,7 +1574,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/metadata/locations/address" class="toc4 name">address</h4>
+                                    <h4 id="/component-definition/metadata/location/address" class="toc4 name">address</h4>
                                     <p class="type">element<br /></p>
                                     <p class="occurrence">[1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/locations/address">Switch to JSON</a></div>
@@ -1595,7 +1595,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Attribute (1)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/metadata/locations/address/type" class="toc5 name">type</h5>
+                                             <h5 id="/component-definition/metadata/location/address/@type" class="toc5 name">type</h5>
                                              <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/locations/address/type">Switch to JSON</a></div>
@@ -1623,7 +1623,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Elements (5)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/metadata/locations/address/addr-lines" class="toc5 name">addr-line</h5>
+                                             <h5 id="/component-definition/metadata/location/address/addr-line" class="toc5 name">addr-line</h5>
                                              <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[0 to ∞]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/locations/address/addr-lines">Switch to JSON</a></div>
@@ -1635,7 +1635,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/metadata/locations/address/city" class="toc5 name">city</h5>
+                                             <h5 id="/component-definition/metadata/location/address/city" class="toc5 name">city</h5>
                                              <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/locations/address/city">Switch to JSON</a></div>
@@ -1647,7 +1647,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/metadata/locations/address/state" class="toc5 name">state</h5>
+                                             <h5 id="/component-definition/metadata/location/address/state" class="toc5 name">state</h5>
                                              <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/locations/address/state">Switch to JSON</a></div>
@@ -1659,7 +1659,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/metadata/locations/address/postal-code" class="toc5 name">postal-code</h5>
+                                             <h5 id="/component-definition/metadata/location/address/postal-code" class="toc5 name">postal-code</h5>
                                              <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/locations/address/postal-code">Switch to JSON</a></div>
@@ -1671,7 +1671,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/metadata/locations/address/country" class="toc5 name">country</h5>
+                                             <h5 id="/component-definition/metadata/location/address/country" class="toc5 name">country</h5>
                                              <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/locations/address/country">Switch to JSON</a></div>
@@ -1692,7 +1692,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/metadata/locations/email-addresses" class="toc4 name">email-address</h4>
+                                    <h4 id="/component-definition/metadata/location/email-address" class="toc4 name">email-address</h4>
                                     <p class="type"><a href="/reference/datatypes/#email">email</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/locations/email-addresses">Switch to JSON</a></div>
@@ -1712,7 +1712,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/metadata/locations/telephone-numbers" class="toc4 name">telephone-number</h4>
+                                    <h4 id="/component-definition/metadata/location/telephone-number" class="toc4 name">telephone-number</h4>
                                     <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/locations/telephone-numbers">Switch to JSON</a></div>
@@ -1735,7 +1735,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Attribute (1)</summary>
                                        <div class="model-entry definition field">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/metadata/locations/telephone-numbers/type" class="toc5 name">type</h5>
+                                             <h5 id="/component-definition/metadata/location/telephone-number/@type" class="toc5 name">type</h5>
                                              <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/locations/telephone-numbers/type">Switch to JSON</a></div>
@@ -1765,7 +1765,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/metadata/locations/urls" class="toc4 name">url</h4>
+                                    <h4 id="/component-definition/metadata/location/url" class="toc4 name">url</h4>
                                     <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/locations/urls">Switch to JSON</a></div>
@@ -1778,8 +1778,8 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/metadata/locations/props" class="toc4 name">prop</h4>
-                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/location/props">(global definition)</a></p>
+                                    <h4 id="/component-definition/metadata/location/prop" class="toc4 name">prop</h4>
+                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/location/prop">(global definition)</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/locations/props">Switch to JSON</a></div>
                                     <p class="formal-name">Property</p>
@@ -1809,7 +1809,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Attributes (5)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/metadata/locations/props/name" class="toc5 name">name</h5>
+                                             <h5 id="/component-definition/metadata/location/prop/@name" class="toc5 name">name</h5>
                                              <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/locations/props/name">Switch to JSON</a></div>
@@ -1835,7 +1835,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/metadata/locations/props/uuid" class="toc5 name">uuid</h5>
+                                             <h5 id="/component-definition/metadata/location/prop/@uuid" class="toc5 name">uuid</h5>
                                              <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/locations/props/uuid">Switch to JSON</a></div>
@@ -1849,7 +1849,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/metadata/locations/props/ns" class="toc5 name">ns</h5>
+                                             <h5 id="/component-definition/metadata/location/prop/@ns" class="toc5 name">ns</h5>
                                              <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/locations/props/ns">Switch to JSON</a></div>
@@ -1883,7 +1883,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/metadata/locations/props/value" class="toc5 name">value</h5>
+                                             <h5 id="/component-definition/metadata/location/prop/@value" class="toc5 name">value</h5>
                                              <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/locations/props/value">Switch to JSON</a></div>
@@ -1895,7 +1895,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/metadata/locations/props/class" class="toc5 name">class</h5>
+                                             <h5 id="/component-definition/metadata/location/prop/@class" class="toc5 name">class</h5>
                                              <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/locations/props/class">Switch to JSON</a></div>
@@ -1924,7 +1924,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Element (1)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/metadata/locations/props/remarks" class="toc5 name">remarks</h5>
+                                             <h5 id="/component-definition/metadata/location/prop/remarks" class="toc5 name">remarks</h5>
                                              <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/locations/props/remarks">Switch to JSON</a></div>
@@ -1939,8 +1939,8 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/metadata/locations/links" class="toc4 name">link</h4>
-                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/location/links">(global definition)</a></p>
+                                    <h4 id="/component-definition/metadata/location/link" class="toc4 name">link</h4>
+                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/location/link">(global definition)</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/locations/links">Switch to JSON</a></div>
                                     <p class="formal-name">Link</p>
@@ -1973,7 +1973,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Attributes (3)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/metadata/locations/links/href" class="toc5 name">href</h5>
+                                             <h5 id="/component-definition/metadata/location/link/@href" class="toc5 name">href</h5>
                                              <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/locations/links/href">Switch to JSON</a></div>
@@ -2008,7 +2008,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/metadata/locations/links/rel" class="toc5 name">rel</h5>
+                                             <h5 id="/component-definition/metadata/location/link/@rel" class="toc5 name">rel</h5>
                                              <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/locations/links/rel">Switch to JSON</a></div>
@@ -2032,7 +2032,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/metadata/locations/links/media-type" class="toc5 name">media-type</h5>
+                                             <h5 id="/component-definition/metadata/location/link/@media-type" class="toc5 name">media-type</h5>
                                              <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/locations/links/media-type">Switch to JSON</a></div>
@@ -2057,7 +2057,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Element (1)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/metadata/locations/links/text" class="toc5 name">text</h5>
+                                             <h5 id="/component-definition/metadata/location/link/text" class="toc5 name">text</h5>
                                              <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/locations/links/text">Switch to JSON</a></div>
@@ -2073,7 +2073,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/metadata/locations/remarks" class="toc4 name">remarks</h4>
+                                    <h4 id="/component-definition/metadata/location/remarks" class="toc4 name">remarks</h4>
                                     <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/locations/remarks">Switch to JSON</a></div>
@@ -2088,8 +2088,8 @@ The following is the XML format reference for this model, which is organized hie
                      </div>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
-                           <h3 id="/component-definition/metadata/parties" class="toc3 name">party</h3>
-                           <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/metadata/parties">(global definition)</a></p>
+                           <h3 id="/component-definition/metadata/party" class="toc3 name">party</h3>
+                           <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/metadata/party">(global definition)</a></p>
                            <p class="occurrence">[0 to ∞]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/parties">Switch to JSON</a></div>
                            <p class="formal-name">Party (organization or person)</p>
@@ -2115,7 +2115,7 @@ The following is the XML format reference for this model, which is organized hie
                               <summary>Attributes (2)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/metadata/parties/uuid" class="toc4 name">uuid</h4>
+                                    <h4 id="/component-definition/metadata/party/@uuid" class="toc4 name">uuid</h4>
                                     <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                     <p class="occurrence">[1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/parties/uuid">Switch to JSON</a></div>
@@ -2129,7 +2129,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/metadata/parties/type" class="toc4 name">type</h4>
+                                    <h4 id="/component-definition/metadata/party/@type" class="toc4 name">type</h4>
                                     <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                     <p class="occurrence">[1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/parties/type">Switch to JSON</a></div>
@@ -2157,7 +2157,7 @@ The following is the XML format reference for this model, which is organized hie
                               <summary>Elements (9)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/metadata/parties/name" class="toc4 name">name</h4>
+                                    <h4 id="/component-definition/metadata/party/name" class="toc4 name">name</h4>
                                     <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/parties/name">Switch to JSON</a></div>
@@ -2170,7 +2170,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/metadata/parties/short-name" class="toc4 name">short-name</h4>
+                                    <h4 id="/component-definition/metadata/party/short-name" class="toc4 name">short-name</h4>
                                     <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/parties/short-name">Switch to JSON</a></div>
@@ -2182,7 +2182,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/metadata/parties/external-ids" class="toc4 name">external-id</h4>
+                                    <h4 id="/component-definition/metadata/party/external-id" class="toc4 name">external-id</h4>
                                     <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/parties/external-ids">Switch to JSON</a></div>
@@ -2198,7 +2198,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Attribute (1)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/metadata/parties/external-ids/scheme" class="toc5 name">scheme</h5>
+                                             <h5 id="/component-definition/metadata/party/external-id/@scheme" class="toc5 name">scheme</h5>
                                              <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/parties/external-ids/scheme">Switch to JSON</a></div>
@@ -2224,8 +2224,8 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/metadata/parties/props" class="toc4 name">prop</h4>
-                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/party/props">(global definition)</a></p>
+                                    <h4 id="/component-definition/metadata/party/prop" class="toc4 name">prop</h4>
+                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/party/prop">(global definition)</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/parties/props">Switch to JSON</a></div>
                                     <p class="formal-name">Property</p>
@@ -2255,7 +2255,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Attributes (5)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/metadata/parties/props/name" class="toc5 name">name</h5>
+                                             <h5 id="/component-definition/metadata/party/prop/@name" class="toc5 name">name</h5>
                                              <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/parties/props/name">Switch to JSON</a></div>
@@ -2281,7 +2281,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/metadata/parties/props/uuid" class="toc5 name">uuid</h5>
+                                             <h5 id="/component-definition/metadata/party/prop/@uuid" class="toc5 name">uuid</h5>
                                              <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/parties/props/uuid">Switch to JSON</a></div>
@@ -2295,7 +2295,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/metadata/parties/props/ns" class="toc5 name">ns</h5>
+                                             <h5 id="/component-definition/metadata/party/prop/@ns" class="toc5 name">ns</h5>
                                              <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/parties/props/ns">Switch to JSON</a></div>
@@ -2329,7 +2329,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/metadata/parties/props/value" class="toc5 name">value</h5>
+                                             <h5 id="/component-definition/metadata/party/prop/@value" class="toc5 name">value</h5>
                                              <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/parties/props/value">Switch to JSON</a></div>
@@ -2341,7 +2341,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/metadata/parties/props/class" class="toc5 name">class</h5>
+                                             <h5 id="/component-definition/metadata/party/prop/@class" class="toc5 name">class</h5>
                                              <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/parties/props/class">Switch to JSON</a></div>
@@ -2370,7 +2370,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Element (1)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/metadata/parties/props/remarks" class="toc5 name">remarks</h5>
+                                             <h5 id="/component-definition/metadata/party/prop/remarks" class="toc5 name">remarks</h5>
                                              <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/parties/props/remarks">Switch to JSON</a></div>
@@ -2385,8 +2385,8 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/metadata/parties/links" class="toc4 name">link</h4>
-                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/party/links">(global definition)</a></p>
+                                    <h4 id="/component-definition/metadata/party/link" class="toc4 name">link</h4>
+                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/party/link">(global definition)</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/parties/links">Switch to JSON</a></div>
                                     <p class="formal-name">Link</p>
@@ -2419,7 +2419,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Attributes (3)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/metadata/parties/links/href" class="toc5 name">href</h5>
+                                             <h5 id="/component-definition/metadata/party/link/@href" class="toc5 name">href</h5>
                                              <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/parties/links/href">Switch to JSON</a></div>
@@ -2454,7 +2454,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/metadata/parties/links/rel" class="toc5 name">rel</h5>
+                                             <h5 id="/component-definition/metadata/party/link/@rel" class="toc5 name">rel</h5>
                                              <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/parties/links/rel">Switch to JSON</a></div>
@@ -2478,7 +2478,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/metadata/parties/links/media-type" class="toc5 name">media-type</h5>
+                                             <h5 id="/component-definition/metadata/party/link/@media-type" class="toc5 name">media-type</h5>
                                              <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/parties/links/media-type">Switch to JSON</a></div>
@@ -2503,7 +2503,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Element (1)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/metadata/parties/links/text" class="toc5 name">text</h5>
+                                             <h5 id="/component-definition/metadata/party/link/text" class="toc5 name">text</h5>
                                              <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/parties/links/text">Switch to JSON</a></div>
@@ -2519,7 +2519,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/metadata/parties/email-addresses" class="toc4 name">email-address</h4>
+                                    <h4 id="/component-definition/metadata/party/email-address" class="toc4 name">email-address</h4>
                                     <p class="type"><a href="/reference/datatypes/#email">email</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/parties/email-addresses">Switch to JSON</a></div>
@@ -2539,7 +2539,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/metadata/parties/telephone-numbers" class="toc4 name">telephone-number</h4>
+                                    <h4 id="/component-definition/metadata/party/telephone-number" class="toc4 name">telephone-number</h4>
                                     <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/parties/telephone-numbers">Switch to JSON</a></div>
@@ -2562,7 +2562,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Attribute (1)</summary>
                                        <div class="model-entry definition field">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/metadata/parties/telephone-numbers/type" class="toc5 name">type</h5>
+                                             <h5 id="/component-definition/metadata/party/telephone-number/@type" class="toc5 name">type</h5>
                                              <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/parties/telephone-numbers/type">Switch to JSON</a></div>
@@ -2592,7 +2592,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/metadata/parties/member-of-organizations" class="toc4 name">member-of-organization</h4>
+                                    <h4 id="/component-definition/metadata/party/member-of-organization" class="toc4 name">member-of-organization</h4>
                                     <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/parties/member-of-organizations">Switch to JSON</a></div>
@@ -2622,7 +2622,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/metadata/parties/remarks" class="toc4 name">remarks</h4>
+                                    <h4 id="/component-definition/metadata/party/remarks" class="toc4 name">remarks</h4>
                                     <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/parties/remarks">Switch to JSON</a></div>
@@ -2637,8 +2637,8 @@ The following is the XML format reference for this model, which is organized hie
                      </div>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
-                           <h3 id="/component-definition/metadata/responsible-parties" class="toc3 name">responsible-party</h3>
-                           <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/metadata/responsible-parties">(global definition)</a></p>
+                           <h3 id="/component-definition/metadata/responsible-party" class="toc3 name">responsible-party</h3>
+                           <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/metadata/responsible-party">(global definition)</a></p>
                            <p class="occurrence">[0 to ∞]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/responsible-parties">Switch to JSON</a></div>
                            <p class="formal-name">Responsible Party</p>
@@ -2659,7 +2659,7 @@ The following is the XML format reference for this model, which is organized hie
                               <summary>Attribute (1)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/metadata/responsible-parties/role-id" class="toc4 name">role-id</h4>
+                                    <h4 id="/component-definition/metadata/responsible-party/@role-id" class="toc4 name">role-id</h4>
                                     <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                     <p class="occurrence">[1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/responsible-parties/role-id">Switch to JSON</a></div>
@@ -2674,7 +2674,7 @@ The following is the XML format reference for this model, which is organized hie
                               <summary>Elements (4)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/metadata/responsible-parties/party-uuids" class="toc4 name">party-uuid</h4>
+                                    <h4 id="/component-definition/metadata/responsible-party/party-uuid" class="toc4 name">party-uuid</h4>
                                     <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                     <p class="occurrence">[1 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/responsible-parties/party-uuids">Switch to JSON</a></div>
@@ -2700,8 +2700,8 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/metadata/responsible-parties/props" class="toc4 name">prop</h4>
-                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/responsible-party/props">(global definition)</a></p>
+                                    <h4 id="/component-definition/metadata/responsible-party/prop" class="toc4 name">prop</h4>
+                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/responsible-party/prop">(global definition)</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/responsible-parties/props">Switch to JSON</a></div>
                                     <p class="formal-name">Property</p>
@@ -2731,7 +2731,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Attributes (5)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/metadata/responsible-parties/props/name" class="toc5 name">name</h5>
+                                             <h5 id="/component-definition/metadata/responsible-party/prop/@name" class="toc5 name">name</h5>
                                              <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/responsible-parties/props/name">Switch to JSON</a></div>
@@ -2757,7 +2757,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/metadata/responsible-parties/props/uuid" class="toc5 name">uuid</h5>
+                                             <h5 id="/component-definition/metadata/responsible-party/prop/@uuid" class="toc5 name">uuid</h5>
                                              <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/responsible-parties/props/uuid">Switch to JSON</a></div>
@@ -2771,7 +2771,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/metadata/responsible-parties/props/ns" class="toc5 name">ns</h5>
+                                             <h5 id="/component-definition/metadata/responsible-party/prop/@ns" class="toc5 name">ns</h5>
                                              <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/responsible-parties/props/ns">Switch to JSON</a></div>
@@ -2805,7 +2805,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/metadata/responsible-parties/props/value" class="toc5 name">value</h5>
+                                             <h5 id="/component-definition/metadata/responsible-party/prop/@value" class="toc5 name">value</h5>
                                              <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/responsible-parties/props/value">Switch to JSON</a></div>
@@ -2817,7 +2817,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/metadata/responsible-parties/props/class" class="toc5 name">class</h5>
+                                             <h5 id="/component-definition/metadata/responsible-party/prop/@class" class="toc5 name">class</h5>
                                              <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/responsible-parties/props/class">Switch to JSON</a></div>
@@ -2846,7 +2846,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Element (1)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/metadata/responsible-parties/props/remarks" class="toc5 name">remarks</h5>
+                                             <h5 id="/component-definition/metadata/responsible-party/prop/remarks" class="toc5 name">remarks</h5>
                                              <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/responsible-parties/props/remarks">Switch to JSON</a></div>
@@ -2861,8 +2861,8 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/metadata/responsible-parties/links" class="toc4 name">link</h4>
-                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/responsible-party/links">(global definition)</a></p>
+                                    <h4 id="/component-definition/metadata/responsible-party/link" class="toc4 name">link</h4>
+                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/responsible-party/link">(global definition)</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/responsible-parties/links">Switch to JSON</a></div>
                                     <p class="formal-name">Link</p>
@@ -2895,7 +2895,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Attributes (3)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/metadata/responsible-parties/links/href" class="toc5 name">href</h5>
+                                             <h5 id="/component-definition/metadata/responsible-party/link/@href" class="toc5 name">href</h5>
                                              <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/responsible-parties/links/href">Switch to JSON</a></div>
@@ -2930,7 +2930,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/metadata/responsible-parties/links/rel" class="toc5 name">rel</h5>
+                                             <h5 id="/component-definition/metadata/responsible-party/link/@rel" class="toc5 name">rel</h5>
                                              <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/responsible-parties/links/rel">Switch to JSON</a></div>
@@ -2954,7 +2954,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/metadata/responsible-parties/links/media-type" class="toc5 name">media-type</h5>
+                                             <h5 id="/component-definition/metadata/responsible-party/link/@media-type" class="toc5 name">media-type</h5>
                                              <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/responsible-parties/links/media-type">Switch to JSON</a></div>
@@ -2979,7 +2979,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Element (1)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/metadata/responsible-parties/links/text" class="toc5 name">text</h5>
+                                             <h5 id="/component-definition/metadata/responsible-party/link/text" class="toc5 name">text</h5>
                                              <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/responsible-parties/links/text">Switch to JSON</a></div>
@@ -2995,7 +2995,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/metadata/responsible-parties/remarks" class="toc4 name">remarks</h4>
+                                    <h4 id="/component-definition/metadata/responsible-party/remarks" class="toc4 name">remarks</h4>
                                     <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/responsible-parties/remarks">Switch to JSON</a></div>
@@ -3025,7 +3025,7 @@ The following is the XML format reference for this model, which is organized hie
             </div>
             <div class="model-entry definition assembly">
                <div class="instance-header">
-                  <h2 id="/component-definition/import-component-definitions" class="toc2 name">import-component-definition</h2>
+                  <h2 id="/component-definition/import-component-definition" class="toc2 name">import-component-definition</h2>
                   <p class="type"><a href="/reference/datatypes/#empty">empty</a></p>
                   <p class="occurrence">[0 to ∞]</p>
                   <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/import-component-definitions">Switch to JSON</a></div>
@@ -3037,7 +3037,7 @@ The following is the XML format reference for this model, which is organized hie
                      <summary>Attribute (1)</summary>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
-                           <h3 id="/component-definition/import-component-definitions/href" class="toc3 name">href</h3>
+                           <h3 id="/component-definition/import-component-definition/@href" class="toc3 name">href</h3>
                            <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
                            <p class="occurrence">[1]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/import-component-definitions/href">Switch to JSON</a></div>
@@ -3053,8 +3053,8 @@ The following is the XML format reference for this model, which is organized hie
             </div>
             <div class="model-entry definition assembly">
                <div class="instance-header">
-                  <h2 id="/component-definition/components" class="toc2 name">component</h2>
-                  <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-component-definition/component-definition/components">(global definition)</a></p>
+                  <h2 id="/component-definition/component" class="toc2 name">component</h2>
+                  <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-component-definition/component-definition/component">(global definition)</a></p>
                   <p class="occurrence">[0 to ∞]</p>
                   <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components">Switch to JSON</a></div>
                   <p class="formal-name">Component</p>
@@ -3320,7 +3320,7 @@ The following is the XML format reference for this model, which is organized hie
                      <summary>Attributes (2)</summary>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
-                           <h3 id="/component-definition/components/uuid" class="toc3 name">uuid</h3>
+                           <h3 id="/component-definition/component/@uuid" class="toc3 name">uuid</h3>
                            <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                            <p class="occurrence">[1]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/uuid">Switch to JSON</a></div>
@@ -3332,7 +3332,7 @@ The following is the XML format reference for this model, which is organized hie
                      </div>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
-                           <h3 id="/component-definition/components/type" class="toc3 name">type</h3>
+                           <h3 id="/component-definition/component/@type" class="toc3 name">type</h3>
                            <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                            <p class="occurrence">[1]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/type">Switch to JSON</a></div>
@@ -3381,7 +3381,7 @@ The following is the XML format reference for this model, which is organized hie
                      <summary>Elements (9)</summary>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
-                           <h3 id="/component-definition/components/title" class="toc3 name">title</h3>
+                           <h3 id="/component-definition/component/title" class="toc3 name">title</h3>
                            <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                            <p class="occurrence">[1]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/title">Switch to JSON</a></div>
@@ -3393,7 +3393,7 @@ The following is the XML format reference for this model, which is organized hie
                      </div>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
-                           <h3 id="/component-definition/components/description" class="toc3 name">description</h3>
+                           <h3 id="/component-definition/component/description" class="toc3 name">description</h3>
                            <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                            <p class="occurrence">[1]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/description">Switch to JSON</a></div>
@@ -3405,7 +3405,7 @@ The following is the XML format reference for this model, which is organized hie
                      </div>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
-                           <h3 id="/component-definition/components/purpose" class="toc3 name">purpose</h3>
+                           <h3 id="/component-definition/component/purpose" class="toc3 name">purpose</h3>
                            <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                            <p class="occurrence">[0 or 1]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/purpose">Switch to JSON</a></div>
@@ -3417,8 +3417,8 @@ The following is the XML format reference for this model, which is organized hie
                      </div>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
-                           <h3 id="/component-definition/components/props" class="toc3 name">prop</h3>
-                           <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-component-definition/defined-component/props">(global definition)</a></p>
+                           <h3 id="/component-definition/component/prop" class="toc3 name">prop</h3>
+                           <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-component-definition/defined-component/prop">(global definition)</a></p>
                            <p class="occurrence">[0 to ∞]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/props">Switch to JSON</a></div>
                            <p class="formal-name">Property</p>
@@ -3448,7 +3448,7 @@ The following is the XML format reference for this model, which is organized hie
                               <summary>Attributes (5)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/components/props/name" class="toc4 name">name</h4>
+                                    <h4 id="/component-definition/component/prop/@name" class="toc4 name">name</h4>
                                     <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                     <p class="occurrence">[1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/props/name">Switch to JSON</a></div>
@@ -3474,7 +3474,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/components/props/uuid" class="toc4 name">uuid</h4>
+                                    <h4 id="/component-definition/component/prop/@uuid" class="toc4 name">uuid</h4>
                                     <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/props/uuid">Switch to JSON</a></div>
@@ -3488,7 +3488,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/components/props/ns" class="toc4 name">ns</h4>
+                                    <h4 id="/component-definition/component/prop/@ns" class="toc4 name">ns</h4>
                                     <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/props/ns">Switch to JSON</a></div>
@@ -3522,7 +3522,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/components/props/value" class="toc4 name">value</h4>
+                                    <h4 id="/component-definition/component/prop/@value" class="toc4 name">value</h4>
                                     <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                     <p class="occurrence">[1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/props/value">Switch to JSON</a></div>
@@ -3534,7 +3534,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/components/props/class" class="toc4 name">class</h4>
+                                    <h4 id="/component-definition/component/prop/@class" class="toc4 name">class</h4>
                                     <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/props/class">Switch to JSON</a></div>
@@ -3563,7 +3563,7 @@ The following is the XML format reference for this model, which is organized hie
                               <summary>Element (1)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/components/props/remarks" class="toc4 name">remarks</h4>
+                                    <h4 id="/component-definition/component/prop/remarks" class="toc4 name">remarks</h4>
                                     <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/props/remarks">Switch to JSON</a></div>
@@ -3578,8 +3578,8 @@ The following is the XML format reference for this model, which is organized hie
                      </div>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
-                           <h3 id="/component-definition/components/links" class="toc3 name">link</h3>
-                           <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-component-definition/defined-component/links">(global definition)</a></p>
+                           <h3 id="/component-definition/component/link" class="toc3 name">link</h3>
+                           <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-component-definition/defined-component/link">(global definition)</a></p>
                            <p class="occurrence">[0 to ∞]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/links">Switch to JSON</a></div>
                            <p class="formal-name">Link</p>
@@ -3612,7 +3612,7 @@ The following is the XML format reference for this model, which is organized hie
                               <summary>Attributes (3)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/components/links/href" class="toc4 name">href</h4>
+                                    <h4 id="/component-definition/component/link/@href" class="toc4 name">href</h4>
                                     <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
                                     <p class="occurrence">[1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/links/href">Switch to JSON</a></div>
@@ -3647,7 +3647,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/components/links/rel" class="toc4 name">rel</h4>
+                                    <h4 id="/component-definition/component/link/@rel" class="toc4 name">rel</h4>
                                     <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/links/rel">Switch to JSON</a></div>
@@ -3671,7 +3671,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/components/links/media-type" class="toc4 name">media-type</h4>
+                                    <h4 id="/component-definition/component/link/@media-type" class="toc4 name">media-type</h4>
                                     <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/links/media-type">Switch to JSON</a></div>
@@ -3696,7 +3696,7 @@ The following is the XML format reference for this model, which is organized hie
                               <summary>Element (1)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/components/links/text" class="toc4 name">text</h4>
+                                    <h4 id="/component-definition/component/link/text" class="toc4 name">text</h4>
                                     <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/links/text">Switch to JSON</a></div>
@@ -3712,8 +3712,8 @@ The following is the XML format reference for this model, which is organized hie
                      </div>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
-                           <h3 id="/component-definition/components/responsible-roles" class="toc3 name">responsible-role</h3>
-                           <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-component-definition/defined-component/responsible-roles">(global definition)</a></p>
+                           <h3 id="/component-definition/component/responsible-role" class="toc3 name">responsible-role</h3>
+                           <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-component-definition/defined-component/responsible-role">(global definition)</a></p>
                            <p class="occurrence">[0 to ∞]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/responsible-roles">Switch to JSON</a></div>
                            <p class="formal-name">Responsible Role</p>
@@ -3725,7 +3725,7 @@ The following is the XML format reference for this model, which is organized hie
                               <summary>Attribute (1)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/components/responsible-roles/role-id" class="toc4 name">role-id</h4>
+                                    <h4 id="/component-definition/component/responsible-role/@role-id" class="toc4 name">role-id</h4>
                                     <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                     <p class="occurrence">[1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/responsible-roles/role-id">Switch to JSON</a></div>
@@ -3740,8 +3740,8 @@ The following is the XML format reference for this model, which is organized hie
                               <summary>Elements (4)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/components/responsible-roles/props" class="toc4 name">prop</h4>
-                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/responsible-role/props">(global definition)</a></p>
+                                    <h4 id="/component-definition/component/responsible-role/prop" class="toc4 name">prop</h4>
+                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/responsible-role/prop">(global definition)</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/responsible-roles/props">Switch to JSON</a></div>
                                     <p class="formal-name">Property</p>
@@ -3771,7 +3771,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Attributes (5)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/components/responsible-roles/props/name" class="toc5 name">name</h5>
+                                             <h5 id="/component-definition/component/responsible-role/prop/@name" class="toc5 name">name</h5>
                                              <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/responsible-roles/props/name">Switch to JSON</a></div>
@@ -3797,7 +3797,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/components/responsible-roles/props/uuid" class="toc5 name">uuid</h5>
+                                             <h5 id="/component-definition/component/responsible-role/prop/@uuid" class="toc5 name">uuid</h5>
                                              <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/responsible-roles/props/uuid">Switch to JSON</a></div>
@@ -3811,7 +3811,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/components/responsible-roles/props/ns" class="toc5 name">ns</h5>
+                                             <h5 id="/component-definition/component/responsible-role/prop/@ns" class="toc5 name">ns</h5>
                                              <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/responsible-roles/props/ns">Switch to JSON</a></div>
@@ -3845,7 +3845,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/components/responsible-roles/props/value" class="toc5 name">value</h5>
+                                             <h5 id="/component-definition/component/responsible-role/prop/@value" class="toc5 name">value</h5>
                                              <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/responsible-roles/props/value">Switch to JSON</a></div>
@@ -3857,7 +3857,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/components/responsible-roles/props/class" class="toc5 name">class</h5>
+                                             <h5 id="/component-definition/component/responsible-role/prop/@class" class="toc5 name">class</h5>
                                              <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/responsible-roles/props/class">Switch to JSON</a></div>
@@ -3886,7 +3886,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Element (1)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/components/responsible-roles/props/remarks" class="toc5 name">remarks</h5>
+                                             <h5 id="/component-definition/component/responsible-role/prop/remarks" class="toc5 name">remarks</h5>
                                              <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/responsible-roles/props/remarks">Switch to JSON</a></div>
@@ -3901,8 +3901,8 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/components/responsible-roles/links" class="toc4 name">link</h4>
-                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/responsible-role/links">(global definition)</a></p>
+                                    <h4 id="/component-definition/component/responsible-role/link" class="toc4 name">link</h4>
+                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/responsible-role/link">(global definition)</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/responsible-roles/links">Switch to JSON</a></div>
                                     <p class="formal-name">Link</p>
@@ -3935,7 +3935,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Attributes (3)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/components/responsible-roles/links/href" class="toc5 name">href</h5>
+                                             <h5 id="/component-definition/component/responsible-role/link/@href" class="toc5 name">href</h5>
                                              <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/responsible-roles/links/href">Switch to JSON</a></div>
@@ -3970,7 +3970,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/components/responsible-roles/links/rel" class="toc5 name">rel</h5>
+                                             <h5 id="/component-definition/component/responsible-role/link/@rel" class="toc5 name">rel</h5>
                                              <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/responsible-roles/links/rel">Switch to JSON</a></div>
@@ -3994,7 +3994,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/components/responsible-roles/links/media-type" class="toc5 name">media-type</h5>
+                                             <h5 id="/component-definition/component/responsible-role/link/@media-type" class="toc5 name">media-type</h5>
                                              <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/responsible-roles/links/media-type">Switch to JSON</a></div>
@@ -4019,7 +4019,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Element (1)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/components/responsible-roles/links/text" class="toc5 name">text</h5>
+                                             <h5 id="/component-definition/component/responsible-role/link/text" class="toc5 name">text</h5>
                                              <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/responsible-roles/links/text">Switch to JSON</a></div>
@@ -4035,7 +4035,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/components/responsible-roles/party-uuids" class="toc4 name">party-uuid</h4>
+                                    <h4 id="/component-definition/component/responsible-role/party-uuid" class="toc4 name">party-uuid</h4>
                                     <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/responsible-roles/party-uuids">Switch to JSON</a></div>
@@ -4053,7 +4053,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/components/responsible-roles/remarks" class="toc4 name">remarks</h4>
+                                    <h4 id="/component-definition/component/responsible-role/remarks" class="toc4 name">remarks</h4>
                                     <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/responsible-roles/remarks">Switch to JSON</a></div>
@@ -4068,8 +4068,8 @@ The following is the XML format reference for this model, which is organized hie
                      </div>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
-                           <h3 id="/component-definition/components/protocols" class="toc3 name">protocol</h3>
-                           <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-component-definition/defined-component/protocols">(global definition)</a></p>
+                           <h3 id="/component-definition/component/protocol" class="toc3 name">protocol</h3>
+                           <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-component-definition/defined-component/protocol">(global definition)</a></p>
                            <p class="occurrence">[0 to ∞]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/protocols">Switch to JSON</a></div>
                            <p class="formal-name">Service Protocol Information</p>
@@ -4088,7 +4088,7 @@ The following is the XML format reference for this model, which is organized hie
                               <summary>Attributes (2)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/components/protocols/uuid" class="toc4 name">uuid</h4>
+                                    <h4 id="/component-definition/component/protocol/@uuid" class="toc4 name">uuid</h4>
                                     <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/protocols/uuid">Switch to JSON</a></div>
@@ -4102,7 +4102,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/components/protocols/name" class="toc4 name">name</h4>
+                                    <h4 id="/component-definition/component/protocol/@name" class="toc4 name">name</h4>
                                     <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                     <p class="occurrence">[1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/protocols/name">Switch to JSON</a></div>
@@ -4129,7 +4129,7 @@ The following is the XML format reference for this model, which is organized hie
                               <summary>Elements (2)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/components/protocols/title" class="toc4 name">title</h4>
+                                    <h4 id="/component-definition/component/protocol/title" class="toc4 name">title</h4>
                                     <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/protocols/title">Switch to JSON</a></div>
@@ -4141,7 +4141,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/components/protocols/port-ranges" class="toc4 name">port-range</h4>
+                                    <h4 id="/component-definition/component/protocol/port-range" class="toc4 name">port-range</h4>
                                     <p class="type"><a href="/reference/datatypes/#empty">empty</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/protocols/port-ranges">Switch to JSON</a></div>
@@ -4162,7 +4162,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Attributes (3)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/components/protocols/port-ranges/start" class="toc5 name">start</h5>
+                                             <h5 id="/component-definition/component/protocol/port-range/@start" class="toc5 name">start</h5>
                                              <p class="type"><a href="/reference/datatypes/#nonnegativeinteger">nonNegativeInteger</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/protocols/port-ranges/start">Switch to JSON</a></div>
@@ -4185,7 +4185,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/components/protocols/port-ranges/end" class="toc5 name">end</h5>
+                                             <h5 id="/component-definition/component/protocol/port-range/@end" class="toc5 name">end</h5>
                                              <p class="type"><a href="/reference/datatypes/#nonnegativeinteger">nonNegativeInteger</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/protocols/port-ranges/end">Switch to JSON</a></div>
@@ -4208,7 +4208,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/components/protocols/port-ranges/transport" class="toc5 name">transport</h5>
+                                             <h5 id="/component-definition/component/protocol/port-range/@transport" class="toc5 name">transport</h5>
                                              <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/protocols/port-ranges/transport">Switch to JSON</a></div>
@@ -4239,7 +4239,7 @@ The following is the XML format reference for this model, which is organized hie
                      </div>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
-                           <h3 id="/component-definition/components/control-implementations" class="toc3 name">control-implementation</h3>
+                           <h3 id="/component-definition/component/control-implementation" class="toc3 name">control-implementation</h3>
                            <p class="type">element<br /></p>
                            <p class="occurrence">[0 to ∞]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations">Switch to JSON</a></div>
@@ -4265,7 +4265,7 @@ The following is the XML format reference for this model, which is organized hie
                               <summary>Attributes (2)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/components/control-implementations/uuid" class="toc4 name">uuid</h4>
+                                    <h4 id="/component-definition/component/control-implementation/@uuid" class="toc4 name">uuid</h4>
                                     <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                     <p class="occurrence">[1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/uuid">Switch to JSON</a></div>
@@ -4277,7 +4277,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/components/control-implementations/source" class="toc4 name">source</h4>
+                                    <h4 id="/component-definition/component/control-implementation/@source" class="toc4 name">source</h4>
                                     <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
                                     <p class="occurrence">[1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/source">Switch to JSON</a></div>
@@ -4302,7 +4302,7 @@ The following is the XML format reference for this model, which is organized hie
                               <summary>Elements (5)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/components/control-implementations/description" class="toc4 name">description</h4>
+                                    <h4 id="/component-definition/component/control-implementation/description" class="toc4 name">description</h4>
                                     <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                     <p class="occurrence">[1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/description">Switch to JSON</a></div>
@@ -4315,8 +4315,8 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/components/control-implementations/props" class="toc4 name">prop</h4>
-                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-component-definition/control-implementation/props">(global definition)</a></p>
+                                    <h4 id="/component-definition/component/control-implementation/prop" class="toc4 name">prop</h4>
+                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-component-definition/control-implementation/prop">(global definition)</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/props">Switch to JSON</a></div>
                                     <p class="formal-name">Property</p>
@@ -4346,7 +4346,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Attributes (5)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/components/control-implementations/props/name" class="toc5 name">name</h5>
+                                             <h5 id="/component-definition/component/control-implementation/prop/@name" class="toc5 name">name</h5>
                                              <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/props/name">Switch to JSON</a></div>
@@ -4372,7 +4372,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/components/control-implementations/props/uuid" class="toc5 name">uuid</h5>
+                                             <h5 id="/component-definition/component/control-implementation/prop/@uuid" class="toc5 name">uuid</h5>
                                              <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/props/uuid">Switch to JSON</a></div>
@@ -4386,7 +4386,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/components/control-implementations/props/ns" class="toc5 name">ns</h5>
+                                             <h5 id="/component-definition/component/control-implementation/prop/@ns" class="toc5 name">ns</h5>
                                              <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/props/ns">Switch to JSON</a></div>
@@ -4420,7 +4420,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/components/control-implementations/props/value" class="toc5 name">value</h5>
+                                             <h5 id="/component-definition/component/control-implementation/prop/@value" class="toc5 name">value</h5>
                                              <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/props/value">Switch to JSON</a></div>
@@ -4432,7 +4432,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/components/control-implementations/props/class" class="toc5 name">class</h5>
+                                             <h5 id="/component-definition/component/control-implementation/prop/@class" class="toc5 name">class</h5>
                                              <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/props/class">Switch to JSON</a></div>
@@ -4461,7 +4461,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Element (1)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/components/control-implementations/props/remarks" class="toc5 name">remarks</h5>
+                                             <h5 id="/component-definition/component/control-implementation/prop/remarks" class="toc5 name">remarks</h5>
                                              <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/props/remarks">Switch to JSON</a></div>
@@ -4476,8 +4476,8 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/components/control-implementations/links" class="toc4 name">link</h4>
-                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-component-definition/control-implementation/links">(global definition)</a></p>
+                                    <h4 id="/component-definition/component/control-implementation/link" class="toc4 name">link</h4>
+                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-component-definition/control-implementation/link">(global definition)</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/links">Switch to JSON</a></div>
                                     <p class="formal-name">Link</p>
@@ -4510,7 +4510,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Attributes (3)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/components/control-implementations/links/href" class="toc5 name">href</h5>
+                                             <h5 id="/component-definition/component/control-implementation/link/@href" class="toc5 name">href</h5>
                                              <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/links/href">Switch to JSON</a></div>
@@ -4545,7 +4545,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/components/control-implementations/links/rel" class="toc5 name">rel</h5>
+                                             <h5 id="/component-definition/component/control-implementation/link/@rel" class="toc5 name">rel</h5>
                                              <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/links/rel">Switch to JSON</a></div>
@@ -4569,7 +4569,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/components/control-implementations/links/media-type" class="toc5 name">media-type</h5>
+                                             <h5 id="/component-definition/component/control-implementation/link/@media-type" class="toc5 name">media-type</h5>
                                              <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/links/media-type">Switch to JSON</a></div>
@@ -4594,7 +4594,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Element (1)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/components/control-implementations/links/text" class="toc5 name">text</h5>
+                                             <h5 id="/component-definition/component/control-implementation/link/text" class="toc5 name">text</h5>
                                              <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/links/text">Switch to JSON</a></div>
@@ -4610,8 +4610,8 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/components/control-implementations/set-parameters" class="toc4 name">set-parameter</h4>
-                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-component-definition/control-implementation/set-parameters">(global definition)</a></p>
+                                    <h4 id="/component-definition/component/control-implementation/set-parameter" class="toc4 name">set-parameter</h4>
+                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-component-definition/control-implementation/set-parameter">(global definition)</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/set-parameters">Switch to JSON</a></div>
                                     <p class="formal-name">Set Parameter Value</p>
@@ -4622,7 +4622,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Attribute (1)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/components/control-implementations/set-parameters/param-id" class="toc5 name">param-id</h5>
+                                             <h5 id="/component-definition/component/control-implementation/set-parameter/@param-id" class="toc5 name">param-id</h5>
                                              <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/set-parameters/param-id">Switch to JSON</a></div>
@@ -4638,7 +4638,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Elements (2)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/components/control-implementations/set-parameters/values" class="toc5 name">value</h5>
+                                             <h5 id="/component-definition/component/control-implementation/set-parameter/value" class="toc5 name">value</h5>
                                              <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[1 to ∞]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/set-parameters/values">Switch to JSON</a></div>
@@ -4650,7 +4650,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/components/control-implementations/set-parameters/remarks" class="toc5 name">remarks</h5>
+                                             <h5 id="/component-definition/component/control-implementation/set-parameter/remarks" class="toc5 name">remarks</h5>
                                              <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/set-parameters/remarks">Switch to JSON</a></div>
@@ -4665,7 +4665,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/components/control-implementations/implemented-requirements" class="toc4 name">implemented-requirement</h4>
+                                    <h4 id="/component-definition/component/control-implementation/implemented-requirement" class="toc4 name">implemented-requirement</h4>
                                     <p class="type">element<br /></p>
                                     <p class="occurrence">[1 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements">Switch to JSON</a></div>
@@ -4689,7 +4689,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Attributes (2)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/components/control-implementations/implemented-requirements/uuid" class="toc5 name">uuid</h5>
+                                             <h5 id="/component-definition/component/control-implementation/implemented-requirement/@uuid" class="toc5 name">uuid</h5>
                                              <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/uuid">Switch to JSON</a></div>
@@ -4701,7 +4701,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/components/control-implementations/implemented-requirements/control-id" class="toc5 name">control-id</h5>
+                                             <h5 id="/component-definition/component/control-implementation/implemented-requirement/@control-id" class="toc5 name">control-id</h5>
                                              <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/control-id">Switch to JSON</a></div>
@@ -4716,7 +4716,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Elements (7)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/components/control-implementations/implemented-requirements/description" class="toc5 name">description</h5>
+                                             <h5 id="/component-definition/component/control-implementation/implemented-requirement/description" class="toc5 name">description</h5>
                                              <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/description">Switch to JSON</a></div>
@@ -4729,8 +4729,8 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/components/control-implementations/implemented-requirements/props" class="toc5 name">prop</h5>
-                                             <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-component-definition/implemented-requirement/props">(global definition)</a></p>
+                                             <h5 id="/component-definition/component/control-implementation/implemented-requirement/prop" class="toc5 name">prop</h5>
+                                             <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-component-definition/implemented-requirement/prop">(global definition)</a></p>
                                              <p class="occurrence">[0 to ∞]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/props">Switch to JSON</a></div>
                                              <p class="formal-name">Property</p>
@@ -4760,7 +4760,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 <summary>Attributes (5)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/component-definition/components/control-implementations/implemented-requirements/props/name" class="toc6 name">name</h6>
+                                                      <h6 id="/component-definition/component/control-implementation/implemented-requirement/prop/@name" class="toc6 name">name</h6>
                                                       <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                       <p class="occurrence">[1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/props/name">Switch to JSON</a></div>
@@ -4786,7 +4786,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/component-definition/components/control-implementations/implemented-requirements/props/uuid" class="toc6 name">uuid</h6>
+                                                      <h6 id="/component-definition/component/control-implementation/implemented-requirement/prop/@uuid" class="toc6 name">uuid</h6>
                                                       <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/props/uuid">Switch to JSON</a></div>
@@ -4800,7 +4800,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/component-definition/components/control-implementations/implemented-requirements/props/ns" class="toc6 name">ns</h6>
+                                                      <h6 id="/component-definition/component/control-implementation/implemented-requirement/prop/@ns" class="toc6 name">ns</h6>
                                                       <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/props/ns">Switch to JSON</a></div>
@@ -4834,7 +4834,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/component-definition/components/control-implementations/implemented-requirements/props/value" class="toc6 name">value</h6>
+                                                      <h6 id="/component-definition/component/control-implementation/implemented-requirement/prop/@value" class="toc6 name">value</h6>
                                                       <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                                       <p class="occurrence">[1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/props/value">Switch to JSON</a></div>
@@ -4846,7 +4846,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/component-definition/components/control-implementations/implemented-requirements/props/class" class="toc6 name">class</h6>
+                                                      <h6 id="/component-definition/component/control-implementation/implemented-requirement/prop/@class" class="toc6 name">class</h6>
                                                       <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/props/class">Switch to JSON</a></div>
@@ -4875,7 +4875,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 <summary>Element (1)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/component-definition/components/control-implementations/implemented-requirements/props/remarks" class="toc6 name">remarks</h6>
+                                                      <h6 id="/component-definition/component/control-implementation/implemented-requirement/prop/remarks" class="toc6 name">remarks</h6>
                                                       <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/props/remarks">Switch to JSON</a></div>
@@ -4890,8 +4890,8 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/components/control-implementations/implemented-requirements/links" class="toc5 name">link</h5>
-                                             <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-component-definition/implemented-requirement/links">(global definition)</a></p>
+                                             <h5 id="/component-definition/component/control-implementation/implemented-requirement/link" class="toc5 name">link</h5>
+                                             <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-component-definition/implemented-requirement/link">(global definition)</a></p>
                                              <p class="occurrence">[0 to ∞]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/links">Switch to JSON</a></div>
                                              <p class="formal-name">Link</p>
@@ -4924,7 +4924,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 <summary>Attributes (3)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/component-definition/components/control-implementations/implemented-requirements/links/href" class="toc6 name">href</h6>
+                                                      <h6 id="/component-definition/component/control-implementation/implemented-requirement/link/@href" class="toc6 name">href</h6>
                                                       <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
                                                       <p class="occurrence">[1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/links/href">Switch to JSON</a></div>
@@ -4959,7 +4959,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/component-definition/components/control-implementations/implemented-requirements/links/rel" class="toc6 name">rel</h6>
+                                                      <h6 id="/component-definition/component/control-implementation/implemented-requirement/link/@rel" class="toc6 name">rel</h6>
                                                       <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/links/rel">Switch to JSON</a></div>
@@ -4983,7 +4983,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/component-definition/components/control-implementations/implemented-requirements/links/media-type" class="toc6 name">media-type</h6>
+                                                      <h6 id="/component-definition/component/control-implementation/implemented-requirement/link/@media-type" class="toc6 name">media-type</h6>
                                                       <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/links/media-type">Switch to JSON</a></div>
@@ -5008,7 +5008,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 <summary>Element (1)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/component-definition/components/control-implementations/implemented-requirements/links/text" class="toc6 name">text</h6>
+                                                      <h6 id="/component-definition/component/control-implementation/implemented-requirement/link/text" class="toc6 name">text</h6>
                                                       <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/links/text">Switch to JSON</a></div>
@@ -5024,8 +5024,8 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/components/control-implementations/implemented-requirements/set-parameters" class="toc5 name">set-parameter</h5>
-                                             <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-component-definition/implemented-requirement/set-parameters">(global definition)</a></p>
+                                             <h5 id="/component-definition/component/control-implementation/implemented-requirement/set-parameter" class="toc5 name">set-parameter</h5>
+                                             <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-component-definition/implemented-requirement/set-parameter">(global definition)</a></p>
                                              <p class="occurrence">[0 to ∞]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/set-parameters">Switch to JSON</a></div>
                                              <p class="formal-name">Set Parameter Value</p>
@@ -5036,7 +5036,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 <summary>Attribute (1)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/component-definition/components/control-implementations/implemented-requirements/set-parameters/param-id" class="toc6 name">param-id</h6>
+                                                      <h6 id="/component-definition/component/control-implementation/implemented-requirement/set-parameter/@param-id" class="toc6 name">param-id</h6>
                                                       <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                       <p class="occurrence">[1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/set-parameters/param-id">Switch to JSON</a></div>
@@ -5052,7 +5052,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 <summary>Elements (2)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/component-definition/components/control-implementations/implemented-requirements/set-parameters/values" class="toc6 name">value</h6>
+                                                      <h6 id="/component-definition/component/control-implementation/implemented-requirement/set-parameter/value" class="toc6 name">value</h6>
                                                       <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                                       <p class="occurrence">[1 to ∞]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/set-parameters/values">Switch to JSON</a></div>
@@ -5064,7 +5064,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/component-definition/components/control-implementations/implemented-requirements/set-parameters/remarks" class="toc6 name">remarks</h6>
+                                                      <h6 id="/component-definition/component/control-implementation/implemented-requirement/set-parameter/remarks" class="toc6 name">remarks</h6>
                                                       <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/set-parameters/remarks">Switch to JSON</a></div>
@@ -5079,8 +5079,8 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/components/control-implementations/implemented-requirements/responsible-roles" class="toc5 name">responsible-role</h5>
-                                             <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-component-definition/implemented-requirement/responsible-roles">(global definition)</a></p>
+                                             <h5 id="/component-definition/component/control-implementation/implemented-requirement/responsible-role" class="toc5 name">responsible-role</h5>
+                                             <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-component-definition/implemented-requirement/responsible-role">(global definition)</a></p>
                                              <p class="occurrence">[0 to ∞]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/responsible-roles">Switch to JSON</a></div>
                                              <p class="formal-name">Responsible Role</p>
@@ -5092,7 +5092,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 <summary>Attribute (1)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/component-definition/components/control-implementations/implemented-requirements/responsible-roles/role-id" class="toc6 name">role-id</h6>
+                                                      <h6 id="/component-definition/component/control-implementation/implemented-requirement/responsible-role/@role-id" class="toc6 name">role-id</h6>
                                                       <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                       <p class="occurrence">[1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/responsible-roles/role-id">Switch to JSON</a></div>
@@ -5107,8 +5107,8 @@ The following is the XML format reference for this model, which is organized hie
                                                 <summary>Elements (4)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/component-definition/components/control-implementations/implemented-requirements/responsible-roles/props" class="toc6 name">prop</h6>
-                                                      <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/responsible-role/props">(global definition)</a></p>
+                                                      <h6 id="/component-definition/component/control-implementation/implemented-requirement/responsible-role/prop" class="toc6 name">prop</h6>
+                                                      <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/responsible-role/prop">(global definition)</a></p>
                                                       <p class="occurrence">[0 to ∞]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/responsible-roles/props">Switch to JSON</a></div>
                                                       <p class="formal-name">Property</p>
@@ -5138,7 +5138,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          <summary>Attributes (5)</summary>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
-                                                               <p id="/component-definition/components/control-implementations/implemented-requirements/responsible-roles/props/name" class="toc7 name">name</p>
+                                                               <p id="/component-definition/component/control-implementation/implemented-requirement/responsible-role/prop/@name" class="toc7 name">name</p>
                                                                <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                                <p class="occurrence">[1]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/responsible-roles/props/name">Switch to JSON</a></div>
@@ -5164,7 +5164,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          </div>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
-                                                               <p id="/component-definition/components/control-implementations/implemented-requirements/responsible-roles/props/uuid" class="toc7 name">uuid</p>
+                                                               <p id="/component-definition/component/control-implementation/implemented-requirement/responsible-role/prop/@uuid" class="toc7 name">uuid</p>
                                                                <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                                                <p class="occurrence">[0 or 1]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/responsible-roles/props/uuid">Switch to JSON</a></div>
@@ -5178,7 +5178,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          </div>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
-                                                               <p id="/component-definition/components/control-implementations/implemented-requirements/responsible-roles/props/ns" class="toc7 name">ns</p>
+                                                               <p id="/component-definition/component/control-implementation/implemented-requirement/responsible-role/prop/@ns" class="toc7 name">ns</p>
                                                                <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
                                                                <p class="occurrence">[0 or 1]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/responsible-roles/props/ns">Switch to JSON</a></div>
@@ -5212,7 +5212,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          </div>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
-                                                               <p id="/component-definition/components/control-implementations/implemented-requirements/responsible-roles/props/value" class="toc7 name">value</p>
+                                                               <p id="/component-definition/component/control-implementation/implemented-requirement/responsible-role/prop/@value" class="toc7 name">value</p>
                                                                <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                                                <p class="occurrence">[1]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/responsible-roles/props/value">Switch to JSON</a></div>
@@ -5224,7 +5224,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          </div>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
-                                                               <p id="/component-definition/components/control-implementations/implemented-requirements/responsible-roles/props/class" class="toc7 name">class</p>
+                                                               <p id="/component-definition/component/control-implementation/implemented-requirement/responsible-role/prop/@class" class="toc7 name">class</p>
                                                                <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                                <p class="occurrence">[0 or 1]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/responsible-roles/props/class">Switch to JSON</a></div>
@@ -5253,7 +5253,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          <summary>Element (1)</summary>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
-                                                               <p id="/component-definition/components/control-implementations/implemented-requirements/responsible-roles/props/remarks" class="toc7 name">remarks</p>
+                                                               <p id="/component-definition/component/control-implementation/implemented-requirement/responsible-role/prop/remarks" class="toc7 name">remarks</p>
                                                                <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                                                <p class="occurrence">[0 or 1]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/responsible-roles/props/remarks">Switch to JSON</a></div>
@@ -5268,8 +5268,8 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/component-definition/components/control-implementations/implemented-requirements/responsible-roles/links" class="toc6 name">link</h6>
-                                                      <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/responsible-role/links">(global definition)</a></p>
+                                                      <h6 id="/component-definition/component/control-implementation/implemented-requirement/responsible-role/link" class="toc6 name">link</h6>
+                                                      <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/responsible-role/link">(global definition)</a></p>
                                                       <p class="occurrence">[0 to ∞]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/responsible-roles/links">Switch to JSON</a></div>
                                                       <p class="formal-name">Link</p>
@@ -5302,7 +5302,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          <summary>Attributes (3)</summary>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
-                                                               <p id="/component-definition/components/control-implementations/implemented-requirements/responsible-roles/links/href" class="toc7 name">href</p>
+                                                               <p id="/component-definition/component/control-implementation/implemented-requirement/responsible-role/link/@href" class="toc7 name">href</p>
                                                                <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
                                                                <p class="occurrence">[1]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/responsible-roles/links/href">Switch to JSON</a></div>
@@ -5337,7 +5337,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          </div>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
-                                                               <p id="/component-definition/components/control-implementations/implemented-requirements/responsible-roles/links/rel" class="toc7 name">rel</p>
+                                                               <p id="/component-definition/component/control-implementation/implemented-requirement/responsible-role/link/@rel" class="toc7 name">rel</p>
                                                                <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                                <p class="occurrence">[0 or 1]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/responsible-roles/links/rel">Switch to JSON</a></div>
@@ -5361,7 +5361,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          </div>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
-                                                               <p id="/component-definition/components/control-implementations/implemented-requirements/responsible-roles/links/media-type" class="toc7 name">media-type</p>
+                                                               <p id="/component-definition/component/control-implementation/implemented-requirement/responsible-role/link/@media-type" class="toc7 name">media-type</p>
                                                                <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                                                <p class="occurrence">[0 or 1]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/responsible-roles/links/media-type">Switch to JSON</a></div>
@@ -5386,7 +5386,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          <summary>Element (1)</summary>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
-                                                               <p id="/component-definition/components/control-implementations/implemented-requirements/responsible-roles/links/text" class="toc7 name">text</p>
+                                                               <p id="/component-definition/component/control-implementation/implemented-requirement/responsible-role/link/text" class="toc7 name">text</p>
                                                                <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                                                <p class="occurrence">[0 or 1]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/responsible-roles/links/text">Switch to JSON</a></div>
@@ -5402,7 +5402,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/component-definition/components/control-implementations/implemented-requirements/responsible-roles/party-uuids" class="toc6 name">party-uuid</h6>
+                                                      <h6 id="/component-definition/component/control-implementation/implemented-requirement/responsible-role/party-uuid" class="toc6 name">party-uuid</h6>
                                                       <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                                       <p class="occurrence">[0 to ∞]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/responsible-roles/party-uuids">Switch to JSON</a></div>
@@ -5420,7 +5420,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/component-definition/components/control-implementations/implemented-requirements/responsible-roles/remarks" class="toc6 name">remarks</h6>
+                                                      <h6 id="/component-definition/component/control-implementation/implemented-requirement/responsible-role/remarks" class="toc6 name">remarks</h6>
                                                       <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/responsible-roles/remarks">Switch to JSON</a></div>
@@ -5435,7 +5435,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/components/control-implementations/implemented-requirements/statements" class="toc5 name">statement</h5>
+                                             <h5 id="/component-definition/component/control-implementation/implemented-requirement/statement" class="toc5 name">statement</h5>
                                              <p class="type">element<br /></p>
                                              <p class="occurrence">[0 to ∞]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements">Switch to JSON</a></div>
@@ -5453,7 +5453,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 <summary>Attributes (2)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/component-definition/components/control-implementations/implemented-requirements/statements/statement-id" class="toc6 name">statement-id</h6>
+                                                      <h6 id="/component-definition/component/control-implementation/implemented-requirement/statement/@statement-id" class="toc6 name">statement-id</h6>
                                                       <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                       <p class="occurrence">[1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/statement-id">Switch to JSON</a></div>
@@ -5473,7 +5473,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/component-definition/components/control-implementations/implemented-requirements/statements/uuid" class="toc6 name">uuid</h6>
+                                                      <h6 id="/component-definition/component/control-implementation/implemented-requirement/statement/@uuid" class="toc6 name">uuid</h6>
                                                       <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                                       <p class="occurrence">[1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/uuid">Switch to JSON</a></div>
@@ -5490,7 +5490,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 <summary>Elements (5)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/component-definition/components/control-implementations/implemented-requirements/statements/description" class="toc6 name">description</h6>
+                                                      <h6 id="/component-definition/component/control-implementation/implemented-requirement/statement/description" class="toc6 name">description</h6>
                                                       <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                                       <p class="occurrence">[1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/description">Switch to JSON</a></div>
@@ -5503,8 +5503,8 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/component-definition/components/control-implementations/implemented-requirements/statements/props" class="toc6 name">prop</h6>
-                                                      <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-component-definition/statement/props">(global definition)</a></p>
+                                                      <h6 id="/component-definition/component/control-implementation/implemented-requirement/statement/prop" class="toc6 name">prop</h6>
+                                                      <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-component-definition/statement/prop">(global definition)</a></p>
                                                       <p class="occurrence">[0 to ∞]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/props">Switch to JSON</a></div>
                                                       <p class="formal-name">Property</p>
@@ -5534,7 +5534,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          <summary>Attributes (5)</summary>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
-                                                               <p id="/component-definition/components/control-implementations/implemented-requirements/statements/props/name" class="toc7 name">name</p>
+                                                               <p id="/component-definition/component/control-implementation/implemented-requirement/statement/prop/@name" class="toc7 name">name</p>
                                                                <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                                <p class="occurrence">[1]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/props/name">Switch to JSON</a></div>
@@ -5560,7 +5560,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          </div>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
-                                                               <p id="/component-definition/components/control-implementations/implemented-requirements/statements/props/uuid" class="toc7 name">uuid</p>
+                                                               <p id="/component-definition/component/control-implementation/implemented-requirement/statement/prop/@uuid" class="toc7 name">uuid</p>
                                                                <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                                                <p class="occurrence">[0 or 1]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/props/uuid">Switch to JSON</a></div>
@@ -5574,7 +5574,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          </div>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
-                                                               <p id="/component-definition/components/control-implementations/implemented-requirements/statements/props/ns" class="toc7 name">ns</p>
+                                                               <p id="/component-definition/component/control-implementation/implemented-requirement/statement/prop/@ns" class="toc7 name">ns</p>
                                                                <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
                                                                <p class="occurrence">[0 or 1]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/props/ns">Switch to JSON</a></div>
@@ -5608,7 +5608,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          </div>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
-                                                               <p id="/component-definition/components/control-implementations/implemented-requirements/statements/props/value" class="toc7 name">value</p>
+                                                               <p id="/component-definition/component/control-implementation/implemented-requirement/statement/prop/@value" class="toc7 name">value</p>
                                                                <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                                                <p class="occurrence">[1]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/props/value">Switch to JSON</a></div>
@@ -5620,7 +5620,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          </div>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
-                                                               <p id="/component-definition/components/control-implementations/implemented-requirements/statements/props/class" class="toc7 name">class</p>
+                                                               <p id="/component-definition/component/control-implementation/implemented-requirement/statement/prop/@class" class="toc7 name">class</p>
                                                                <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                                <p class="occurrence">[0 or 1]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/props/class">Switch to JSON</a></div>
@@ -5649,7 +5649,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          <summary>Element (1)</summary>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
-                                                               <p id="/component-definition/components/control-implementations/implemented-requirements/statements/props/remarks" class="toc7 name">remarks</p>
+                                                               <p id="/component-definition/component/control-implementation/implemented-requirement/statement/prop/remarks" class="toc7 name">remarks</p>
                                                                <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                                                <p class="occurrence">[0 or 1]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/props/remarks">Switch to JSON</a></div>
@@ -5664,8 +5664,8 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/component-definition/components/control-implementations/implemented-requirements/statements/links" class="toc6 name">link</h6>
-                                                      <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-component-definition/statement/links">(global definition)</a></p>
+                                                      <h6 id="/component-definition/component/control-implementation/implemented-requirement/statement/link" class="toc6 name">link</h6>
+                                                      <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-component-definition/statement/link">(global definition)</a></p>
                                                       <p class="occurrence">[0 to ∞]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/links">Switch to JSON</a></div>
                                                       <p class="formal-name">Link</p>
@@ -5698,7 +5698,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          <summary>Attributes (3)</summary>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
-                                                               <p id="/component-definition/components/control-implementations/implemented-requirements/statements/links/href" class="toc7 name">href</p>
+                                                               <p id="/component-definition/component/control-implementation/implemented-requirement/statement/link/@href" class="toc7 name">href</p>
                                                                <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
                                                                <p class="occurrence">[1]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/links/href">Switch to JSON</a></div>
@@ -5733,7 +5733,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          </div>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
-                                                               <p id="/component-definition/components/control-implementations/implemented-requirements/statements/links/rel" class="toc7 name">rel</p>
+                                                               <p id="/component-definition/component/control-implementation/implemented-requirement/statement/link/@rel" class="toc7 name">rel</p>
                                                                <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                                <p class="occurrence">[0 or 1]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/links/rel">Switch to JSON</a></div>
@@ -5757,7 +5757,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          </div>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
-                                                               <p id="/component-definition/components/control-implementations/implemented-requirements/statements/links/media-type" class="toc7 name">media-type</p>
+                                                               <p id="/component-definition/component/control-implementation/implemented-requirement/statement/link/@media-type" class="toc7 name">media-type</p>
                                                                <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                                                <p class="occurrence">[0 or 1]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/links/media-type">Switch to JSON</a></div>
@@ -5782,7 +5782,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          <summary>Element (1)</summary>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
-                                                               <p id="/component-definition/components/control-implementations/implemented-requirements/statements/links/text" class="toc7 name">text</p>
+                                                               <p id="/component-definition/component/control-implementation/implemented-requirement/statement/link/text" class="toc7 name">text</p>
                                                                <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                                                <p class="occurrence">[0 or 1]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/links/text">Switch to JSON</a></div>
@@ -5798,8 +5798,8 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/component-definition/components/control-implementations/implemented-requirements/statements/responsible-roles" class="toc6 name">responsible-role</h6>
-                                                      <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-component-definition/statement/responsible-roles">(global definition)</a></p>
+                                                      <h6 id="/component-definition/component/control-implementation/implemented-requirement/statement/responsible-role" class="toc6 name">responsible-role</h6>
+                                                      <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-component-definition/statement/responsible-role">(global definition)</a></p>
                                                       <p class="occurrence">[0 to ∞]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/responsible-roles">Switch to JSON</a></div>
                                                       <p class="formal-name">Responsible Role</p>
@@ -5811,7 +5811,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          <summary>Attribute (1)</summary>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
-                                                               <p id="/component-definition/components/control-implementations/implemented-requirements/statements/responsible-roles/role-id" class="toc7 name">role-id</p>
+                                                               <p id="/component-definition/component/control-implementation/implemented-requirement/statement/responsible-role/@role-id" class="toc7 name">role-id</p>
                                                                <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                                <p class="occurrence">[1]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/responsible-roles/role-id">Switch to JSON</a></div>
@@ -5826,8 +5826,8 @@ The following is the XML format reference for this model, which is organized hie
                                                          <summary>Elements (4)</summary>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
-                                                               <p id="/component-definition/components/control-implementations/implemented-requirements/statements/responsible-roles/props" class="toc7 name">prop</p>
-                                                               <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/responsible-role/props">(global definition)</a></p>
+                                                               <p id="/component-definition/component/control-implementation/implemented-requirement/statement/responsible-role/prop" class="toc7 name">prop</p>
+                                                               <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/responsible-role/prop">(global definition)</a></p>
                                                                <p class="occurrence">[0 to ∞]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/responsible-roles/props">Switch to JSON</a></div>
                                                                <p class="formal-name">Property</p>
@@ -5857,7 +5857,7 @@ The following is the XML format reference for this model, which is organized hie
                                                                   <summary>Attributes (5)</summary>
                                                                   <div class="model-entry definition assembly">
                                                                      <div class="instance-header">
-                                                                        <p id="/component-definition/components/control-implementations/implemented-requirements/statements/responsible-roles/props/name" class="toc8 name">name</p>
+                                                                        <p id="/component-definition/component/control-implementation/implemented-requirement/statement/responsible-role/prop/@name" class="toc8 name">name</p>
                                                                         <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                                         <p class="occurrence">[1]</p>
                                                                         <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/responsible-roles/props/name">Switch to JSON</a></div>
@@ -5883,7 +5883,7 @@ The following is the XML format reference for this model, which is organized hie
                                                                   </div>
                                                                   <div class="model-entry definition assembly">
                                                                      <div class="instance-header">
-                                                                        <p id="/component-definition/components/control-implementations/implemented-requirements/statements/responsible-roles/props/uuid" class="toc8 name">uuid</p>
+                                                                        <p id="/component-definition/component/control-implementation/implemented-requirement/statement/responsible-role/prop/@uuid" class="toc8 name">uuid</p>
                                                                         <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                                                         <p class="occurrence">[0 or 1]</p>
                                                                         <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/responsible-roles/props/uuid">Switch to JSON</a></div>
@@ -5897,7 +5897,7 @@ The following is the XML format reference for this model, which is organized hie
                                                                   </div>
                                                                   <div class="model-entry definition assembly">
                                                                      <div class="instance-header">
-                                                                        <p id="/component-definition/components/control-implementations/implemented-requirements/statements/responsible-roles/props/ns" class="toc8 name">ns</p>
+                                                                        <p id="/component-definition/component/control-implementation/implemented-requirement/statement/responsible-role/prop/@ns" class="toc8 name">ns</p>
                                                                         <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
                                                                         <p class="occurrence">[0 or 1]</p>
                                                                         <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/responsible-roles/props/ns">Switch to JSON</a></div>
@@ -5931,7 +5931,7 @@ The following is the XML format reference for this model, which is organized hie
                                                                   </div>
                                                                   <div class="model-entry definition assembly">
                                                                      <div class="instance-header">
-                                                                        <p id="/component-definition/components/control-implementations/implemented-requirements/statements/responsible-roles/props/value" class="toc8 name">value</p>
+                                                                        <p id="/component-definition/component/control-implementation/implemented-requirement/statement/responsible-role/prop/@value" class="toc8 name">value</p>
                                                                         <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                                                         <p class="occurrence">[1]</p>
                                                                         <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/responsible-roles/props/value">Switch to JSON</a></div>
@@ -5943,7 +5943,7 @@ The following is the XML format reference for this model, which is organized hie
                                                                   </div>
                                                                   <div class="model-entry definition assembly">
                                                                      <div class="instance-header">
-                                                                        <p id="/component-definition/components/control-implementations/implemented-requirements/statements/responsible-roles/props/class" class="toc8 name">class</p>
+                                                                        <p id="/component-definition/component/control-implementation/implemented-requirement/statement/responsible-role/prop/@class" class="toc8 name">class</p>
                                                                         <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                                         <p class="occurrence">[0 or 1]</p>
                                                                         <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/responsible-roles/props/class">Switch to JSON</a></div>
@@ -5972,7 +5972,7 @@ The following is the XML format reference for this model, which is organized hie
                                                                   <summary>Element (1)</summary>
                                                                   <div class="model-entry definition assembly">
                                                                      <div class="instance-header">
-                                                                        <p id="/component-definition/components/control-implementations/implemented-requirements/statements/responsible-roles/props/remarks" class="toc8 name">remarks</p>
+                                                                        <p id="/component-definition/component/control-implementation/implemented-requirement/statement/responsible-role/prop/remarks" class="toc8 name">remarks</p>
                                                                         <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                                                         <p class="occurrence">[0 or 1]</p>
                                                                         <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/responsible-roles/props/remarks">Switch to JSON</a></div>
@@ -5987,8 +5987,8 @@ The following is the XML format reference for this model, which is organized hie
                                                          </div>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
-                                                               <p id="/component-definition/components/control-implementations/implemented-requirements/statements/responsible-roles/links" class="toc7 name">link</p>
-                                                               <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/responsible-role/links">(global definition)</a></p>
+                                                               <p id="/component-definition/component/control-implementation/implemented-requirement/statement/responsible-role/link" class="toc7 name">link</p>
+                                                               <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/responsible-role/link">(global definition)</a></p>
                                                                <p class="occurrence">[0 to ∞]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/responsible-roles/links">Switch to JSON</a></div>
                                                                <p class="formal-name">Link</p>
@@ -6021,7 +6021,7 @@ The following is the XML format reference for this model, which is organized hie
                                                                   <summary>Attributes (3)</summary>
                                                                   <div class="model-entry definition assembly">
                                                                      <div class="instance-header">
-                                                                        <p id="/component-definition/components/control-implementations/implemented-requirements/statements/responsible-roles/links/href" class="toc8 name">href</p>
+                                                                        <p id="/component-definition/component/control-implementation/implemented-requirement/statement/responsible-role/link/@href" class="toc8 name">href</p>
                                                                         <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
                                                                         <p class="occurrence">[1]</p>
                                                                         <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/responsible-roles/links/href">Switch to JSON</a></div>
@@ -6056,7 +6056,7 @@ The following is the XML format reference for this model, which is organized hie
                                                                   </div>
                                                                   <div class="model-entry definition assembly">
                                                                      <div class="instance-header">
-                                                                        <p id="/component-definition/components/control-implementations/implemented-requirements/statements/responsible-roles/links/rel" class="toc8 name">rel</p>
+                                                                        <p id="/component-definition/component/control-implementation/implemented-requirement/statement/responsible-role/link/@rel" class="toc8 name">rel</p>
                                                                         <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                                         <p class="occurrence">[0 or 1]</p>
                                                                         <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/responsible-roles/links/rel">Switch to JSON</a></div>
@@ -6080,7 +6080,7 @@ The following is the XML format reference for this model, which is organized hie
                                                                   </div>
                                                                   <div class="model-entry definition assembly">
                                                                      <div class="instance-header">
-                                                                        <p id="/component-definition/components/control-implementations/implemented-requirements/statements/responsible-roles/links/media-type" class="toc8 name">media-type</p>
+                                                                        <p id="/component-definition/component/control-implementation/implemented-requirement/statement/responsible-role/link/@media-type" class="toc8 name">media-type</p>
                                                                         <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                                                         <p class="occurrence">[0 or 1]</p>
                                                                         <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/responsible-roles/links/media-type">Switch to JSON</a></div>
@@ -6105,7 +6105,7 @@ The following is the XML format reference for this model, which is organized hie
                                                                   <summary>Element (1)</summary>
                                                                   <div class="model-entry definition assembly">
                                                                      <div class="instance-header">
-                                                                        <p id="/component-definition/components/control-implementations/implemented-requirements/statements/responsible-roles/links/text" class="toc8 name">text</p>
+                                                                        <p id="/component-definition/component/control-implementation/implemented-requirement/statement/responsible-role/link/text" class="toc8 name">text</p>
                                                                         <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                                                         <p class="occurrence">[0 or 1]</p>
                                                                         <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/responsible-roles/links/text">Switch to JSON</a></div>
@@ -6121,7 +6121,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          </div>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
-                                                               <p id="/component-definition/components/control-implementations/implemented-requirements/statements/responsible-roles/party-uuids" class="toc7 name">party-uuid</p>
+                                                               <p id="/component-definition/component/control-implementation/implemented-requirement/statement/responsible-role/party-uuid" class="toc7 name">party-uuid</p>
                                                                <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                                                <p class="occurrence">[0 to ∞]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/responsible-roles/party-uuids">Switch to JSON</a></div>
@@ -6139,7 +6139,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          </div>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
-                                                               <p id="/component-definition/components/control-implementations/implemented-requirements/statements/responsible-roles/remarks" class="toc7 name">remarks</p>
+                                                               <p id="/component-definition/component/control-implementation/implemented-requirement/statement/responsible-role/remarks" class="toc7 name">remarks</p>
                                                                <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                                                <p class="occurrence">[0 or 1]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/responsible-roles/remarks">Switch to JSON</a></div>
@@ -6154,7 +6154,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/component-definition/components/control-implementations/implemented-requirements/statements/remarks" class="toc6 name">remarks</h6>
+                                                      <h6 id="/component-definition/component/control-implementation/implemented-requirement/statement/remarks" class="toc6 name">remarks</h6>
                                                       <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements/remarks">Switch to JSON</a></div>
@@ -6169,7 +6169,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/components/control-implementations/implemented-requirements/remarks" class="toc5 name">remarks</h5>
+                                             <h5 id="/component-definition/component/control-implementation/implemented-requirement/remarks" class="toc5 name">remarks</h5>
                                              <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/control-implementations/implemented-requirements/remarks">Switch to JSON</a></div>
@@ -6187,7 +6187,7 @@ The following is the XML format reference for this model, which is organized hie
                      </div>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
-                           <h3 id="/component-definition/components/remarks" class="toc3 name">remarks</h3>
+                           <h3 id="/component-definition/component/remarks" class="toc3 name">remarks</h3>
                            <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                            <p class="occurrence">[0 or 1]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/remarks">Switch to JSON</a></div>
@@ -6202,8 +6202,8 @@ The following is the XML format reference for this model, which is organized hie
             </div>
             <div class="model-entry definition assembly">
                <div class="instance-header">
-                  <h2 id="/component-definition/capabilities" class="toc2 name">capability</h2>
-                  <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-component-definition/component-definition/capabilities">(global definition)</a></p>
+                  <h2 id="/component-definition/capability" class="toc2 name">capability</h2>
+                  <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-component-definition/component-definition/capability">(global definition)</a></p>
                   <p class="occurrence">[0 to ∞]</p>
                   <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities">Switch to JSON</a></div>
                   <p class="formal-name">Capability</p>
@@ -6220,7 +6220,7 @@ The following is the XML format reference for this model, which is organized hie
                      <summary>Attributes (2)</summary>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
-                           <h3 id="/component-definition/capabilities/uuid" class="toc3 name">uuid</h3>
+                           <h3 id="/component-definition/capability/@uuid" class="toc3 name">uuid</h3>
                            <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                            <p class="occurrence">[1]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/uuid">Switch to JSON</a></div>
@@ -6232,7 +6232,7 @@ The following is the XML format reference for this model, which is organized hie
                      </div>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
-                           <h3 id="/component-definition/capabilities/name" class="toc3 name">name</h3>
+                           <h3 id="/component-definition/capability/@name" class="toc3 name">name</h3>
                            <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                            <p class="occurrence">[1]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/name">Switch to JSON</a></div>
@@ -6247,7 +6247,7 @@ The following is the XML format reference for this model, which is organized hie
                      <summary>Elements (6)</summary>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
-                           <h3 id="/component-definition/capabilities/description" class="toc3 name">description</h3>
+                           <h3 id="/component-definition/capability/description" class="toc3 name">description</h3>
                            <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                            <p class="occurrence">[1]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/description">Switch to JSON</a></div>
@@ -6259,8 +6259,8 @@ The following is the XML format reference for this model, which is organized hie
                      </div>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
-                           <h3 id="/component-definition/capabilities/props" class="toc3 name">prop</h3>
-                           <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-component-definition/capability/props">(global definition)</a></p>
+                           <h3 id="/component-definition/capability/prop" class="toc3 name">prop</h3>
+                           <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-component-definition/capability/prop">(global definition)</a></p>
                            <p class="occurrence">[0 to ∞]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/props">Switch to JSON</a></div>
                            <p class="formal-name">Property</p>
@@ -6290,7 +6290,7 @@ The following is the XML format reference for this model, which is organized hie
                               <summary>Attributes (5)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/capabilities/props/name" class="toc4 name">name</h4>
+                                    <h4 id="/component-definition/capability/prop/@name" class="toc4 name">name</h4>
                                     <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                     <p class="occurrence">[1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/props/name">Switch to JSON</a></div>
@@ -6316,7 +6316,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/capabilities/props/uuid" class="toc4 name">uuid</h4>
+                                    <h4 id="/component-definition/capability/prop/@uuid" class="toc4 name">uuid</h4>
                                     <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/props/uuid">Switch to JSON</a></div>
@@ -6330,7 +6330,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/capabilities/props/ns" class="toc4 name">ns</h4>
+                                    <h4 id="/component-definition/capability/prop/@ns" class="toc4 name">ns</h4>
                                     <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/props/ns">Switch to JSON</a></div>
@@ -6364,7 +6364,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/capabilities/props/value" class="toc4 name">value</h4>
+                                    <h4 id="/component-definition/capability/prop/@value" class="toc4 name">value</h4>
                                     <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                     <p class="occurrence">[1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/props/value">Switch to JSON</a></div>
@@ -6376,7 +6376,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/capabilities/props/class" class="toc4 name">class</h4>
+                                    <h4 id="/component-definition/capability/prop/@class" class="toc4 name">class</h4>
                                     <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/props/class">Switch to JSON</a></div>
@@ -6405,7 +6405,7 @@ The following is the XML format reference for this model, which is organized hie
                               <summary>Element (1)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/capabilities/props/remarks" class="toc4 name">remarks</h4>
+                                    <h4 id="/component-definition/capability/prop/remarks" class="toc4 name">remarks</h4>
                                     <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/props/remarks">Switch to JSON</a></div>
@@ -6420,8 +6420,8 @@ The following is the XML format reference for this model, which is organized hie
                      </div>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
-                           <h3 id="/component-definition/capabilities/links" class="toc3 name">link</h3>
-                           <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-component-definition/capability/links">(global definition)</a></p>
+                           <h3 id="/component-definition/capability/link" class="toc3 name">link</h3>
+                           <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-component-definition/capability/link">(global definition)</a></p>
                            <p class="occurrence">[0 to ∞]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/links">Switch to JSON</a></div>
                            <p class="formal-name">Link</p>
@@ -6454,7 +6454,7 @@ The following is the XML format reference for this model, which is organized hie
                               <summary>Attributes (3)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/capabilities/links/href" class="toc4 name">href</h4>
+                                    <h4 id="/component-definition/capability/link/@href" class="toc4 name">href</h4>
                                     <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
                                     <p class="occurrence">[1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/links/href">Switch to JSON</a></div>
@@ -6489,7 +6489,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/capabilities/links/rel" class="toc4 name">rel</h4>
+                                    <h4 id="/component-definition/capability/link/@rel" class="toc4 name">rel</h4>
                                     <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/links/rel">Switch to JSON</a></div>
@@ -6513,7 +6513,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/capabilities/links/media-type" class="toc4 name">media-type</h4>
+                                    <h4 id="/component-definition/capability/link/@media-type" class="toc4 name">media-type</h4>
                                     <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/links/media-type">Switch to JSON</a></div>
@@ -6538,7 +6538,7 @@ The following is the XML format reference for this model, which is organized hie
                               <summary>Element (1)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/capabilities/links/text" class="toc4 name">text</h4>
+                                    <h4 id="/component-definition/capability/link/text" class="toc4 name">text</h4>
                                     <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/links/text">Switch to JSON</a></div>
@@ -6554,8 +6554,8 @@ The following is the XML format reference for this model, which is organized hie
                      </div>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
-                           <h3 id="/component-definition/capabilities/incorporates-components" class="toc3 name">incorporates-component</h3>
-                           <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-component-definition/capability/incorporates-components">(global definition)</a></p>
+                           <h3 id="/component-definition/capability/incorporates-component" class="toc3 name">incorporates-component</h3>
+                           <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-component-definition/capability/incorporates-component">(global definition)</a></p>
                            <p class="occurrence">[0 to ∞]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/incorporates-components">Switch to JSON</a></div>
                            <p class="formal-name">Incorporates Component</p>
@@ -6566,7 +6566,7 @@ The following is the XML format reference for this model, which is organized hie
                               <summary>Attribute (1)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/capabilities/incorporates-components/component-uuid" class="toc4 name">component-uuid</h4>
+                                    <h4 id="/component-definition/capability/incorporates-component/@component-uuid" class="toc4 name">component-uuid</h4>
                                     <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                     <p class="occurrence">[1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/incorporates-components/component-uuid">Switch to JSON</a></div>
@@ -6581,7 +6581,7 @@ The following is the XML format reference for this model, which is organized hie
                               <summary>Element (1)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/capabilities/incorporates-components/description" class="toc4 name">description</h4>
+                                    <h4 id="/component-definition/capability/incorporates-component/description" class="toc4 name">description</h4>
                                     <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                     <p class="occurrence">[1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/incorporates-components/description">Switch to JSON</a></div>
@@ -6596,7 +6596,7 @@ The following is the XML format reference for this model, which is organized hie
                      </div>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
-                           <h3 id="/component-definition/capabilities/control-implementations" class="toc3 name">control-implementation</h3>
+                           <h3 id="/component-definition/capability/control-implementation" class="toc3 name">control-implementation</h3>
                            <p class="type">element<br /></p>
                            <p class="occurrence">[0 to ∞]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations">Switch to JSON</a></div>
@@ -6622,7 +6622,7 @@ The following is the XML format reference for this model, which is organized hie
                               <summary>Attributes (2)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/capabilities/control-implementations/uuid" class="toc4 name">uuid</h4>
+                                    <h4 id="/component-definition/capability/control-implementation/@uuid" class="toc4 name">uuid</h4>
                                     <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                     <p class="occurrence">[1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/uuid">Switch to JSON</a></div>
@@ -6634,7 +6634,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/capabilities/control-implementations/source" class="toc4 name">source</h4>
+                                    <h4 id="/component-definition/capability/control-implementation/@source" class="toc4 name">source</h4>
                                     <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
                                     <p class="occurrence">[1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/source">Switch to JSON</a></div>
@@ -6659,7 +6659,7 @@ The following is the XML format reference for this model, which is organized hie
                               <summary>Elements (5)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/capabilities/control-implementations/description" class="toc4 name">description</h4>
+                                    <h4 id="/component-definition/capability/control-implementation/description" class="toc4 name">description</h4>
                                     <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                     <p class="occurrence">[1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/description">Switch to JSON</a></div>
@@ -6672,8 +6672,8 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/capabilities/control-implementations/props" class="toc4 name">prop</h4>
-                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-component-definition/control-implementation/props">(global definition)</a></p>
+                                    <h4 id="/component-definition/capability/control-implementation/prop" class="toc4 name">prop</h4>
+                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-component-definition/control-implementation/prop">(global definition)</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/props">Switch to JSON</a></div>
                                     <p class="formal-name">Property</p>
@@ -6703,7 +6703,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Attributes (5)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/capabilities/control-implementations/props/name" class="toc5 name">name</h5>
+                                             <h5 id="/component-definition/capability/control-implementation/prop/@name" class="toc5 name">name</h5>
                                              <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/props/name">Switch to JSON</a></div>
@@ -6729,7 +6729,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/capabilities/control-implementations/props/uuid" class="toc5 name">uuid</h5>
+                                             <h5 id="/component-definition/capability/control-implementation/prop/@uuid" class="toc5 name">uuid</h5>
                                              <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/props/uuid">Switch to JSON</a></div>
@@ -6743,7 +6743,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/capabilities/control-implementations/props/ns" class="toc5 name">ns</h5>
+                                             <h5 id="/component-definition/capability/control-implementation/prop/@ns" class="toc5 name">ns</h5>
                                              <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/props/ns">Switch to JSON</a></div>
@@ -6777,7 +6777,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/capabilities/control-implementations/props/value" class="toc5 name">value</h5>
+                                             <h5 id="/component-definition/capability/control-implementation/prop/@value" class="toc5 name">value</h5>
                                              <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/props/value">Switch to JSON</a></div>
@@ -6789,7 +6789,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/capabilities/control-implementations/props/class" class="toc5 name">class</h5>
+                                             <h5 id="/component-definition/capability/control-implementation/prop/@class" class="toc5 name">class</h5>
                                              <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/props/class">Switch to JSON</a></div>
@@ -6818,7 +6818,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Element (1)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/capabilities/control-implementations/props/remarks" class="toc5 name">remarks</h5>
+                                             <h5 id="/component-definition/capability/control-implementation/prop/remarks" class="toc5 name">remarks</h5>
                                              <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/props/remarks">Switch to JSON</a></div>
@@ -6833,8 +6833,8 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/capabilities/control-implementations/links" class="toc4 name">link</h4>
-                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-component-definition/control-implementation/links">(global definition)</a></p>
+                                    <h4 id="/component-definition/capability/control-implementation/link" class="toc4 name">link</h4>
+                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-component-definition/control-implementation/link">(global definition)</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/links">Switch to JSON</a></div>
                                     <p class="formal-name">Link</p>
@@ -6867,7 +6867,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Attributes (3)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/capabilities/control-implementations/links/href" class="toc5 name">href</h5>
+                                             <h5 id="/component-definition/capability/control-implementation/link/@href" class="toc5 name">href</h5>
                                              <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/links/href">Switch to JSON</a></div>
@@ -6902,7 +6902,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/capabilities/control-implementations/links/rel" class="toc5 name">rel</h5>
+                                             <h5 id="/component-definition/capability/control-implementation/link/@rel" class="toc5 name">rel</h5>
                                              <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/links/rel">Switch to JSON</a></div>
@@ -6926,7 +6926,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/capabilities/control-implementations/links/media-type" class="toc5 name">media-type</h5>
+                                             <h5 id="/component-definition/capability/control-implementation/link/@media-type" class="toc5 name">media-type</h5>
                                              <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/links/media-type">Switch to JSON</a></div>
@@ -6951,7 +6951,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Element (1)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/capabilities/control-implementations/links/text" class="toc5 name">text</h5>
+                                             <h5 id="/component-definition/capability/control-implementation/link/text" class="toc5 name">text</h5>
                                              <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/links/text">Switch to JSON</a></div>
@@ -6967,8 +6967,8 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/capabilities/control-implementations/set-parameters" class="toc4 name">set-parameter</h4>
-                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-component-definition/control-implementation/set-parameters">(global definition)</a></p>
+                                    <h4 id="/component-definition/capability/control-implementation/set-parameter" class="toc4 name">set-parameter</h4>
+                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-component-definition/control-implementation/set-parameter">(global definition)</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/set-parameters">Switch to JSON</a></div>
                                     <p class="formal-name">Set Parameter Value</p>
@@ -6979,7 +6979,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Attribute (1)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/capabilities/control-implementations/set-parameters/param-id" class="toc5 name">param-id</h5>
+                                             <h5 id="/component-definition/capability/control-implementation/set-parameter/@param-id" class="toc5 name">param-id</h5>
                                              <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/set-parameters/param-id">Switch to JSON</a></div>
@@ -6995,7 +6995,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Elements (2)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/capabilities/control-implementations/set-parameters/values" class="toc5 name">value</h5>
+                                             <h5 id="/component-definition/capability/control-implementation/set-parameter/value" class="toc5 name">value</h5>
                                              <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[1 to ∞]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/set-parameters/values">Switch to JSON</a></div>
@@ -7007,7 +7007,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/capabilities/control-implementations/set-parameters/remarks" class="toc5 name">remarks</h5>
+                                             <h5 id="/component-definition/capability/control-implementation/set-parameter/remarks" class="toc5 name">remarks</h5>
                                              <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/set-parameters/remarks">Switch to JSON</a></div>
@@ -7022,7 +7022,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/capabilities/control-implementations/implemented-requirements" class="toc4 name">implemented-requirement</h4>
+                                    <h4 id="/component-definition/capability/control-implementation/implemented-requirement" class="toc4 name">implemented-requirement</h4>
                                     <p class="type">element<br /></p>
                                     <p class="occurrence">[1 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements">Switch to JSON</a></div>
@@ -7046,7 +7046,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Attributes (2)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/capabilities/control-implementations/implemented-requirements/uuid" class="toc5 name">uuid</h5>
+                                             <h5 id="/component-definition/capability/control-implementation/implemented-requirement/@uuid" class="toc5 name">uuid</h5>
                                              <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/uuid">Switch to JSON</a></div>
@@ -7058,7 +7058,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/capabilities/control-implementations/implemented-requirements/control-id" class="toc5 name">control-id</h5>
+                                             <h5 id="/component-definition/capability/control-implementation/implemented-requirement/@control-id" class="toc5 name">control-id</h5>
                                              <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/control-id">Switch to JSON</a></div>
@@ -7073,7 +7073,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Elements (7)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/capabilities/control-implementations/implemented-requirements/description" class="toc5 name">description</h5>
+                                             <h5 id="/component-definition/capability/control-implementation/implemented-requirement/description" class="toc5 name">description</h5>
                                              <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/description">Switch to JSON</a></div>
@@ -7086,8 +7086,8 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/capabilities/control-implementations/implemented-requirements/props" class="toc5 name">prop</h5>
-                                             <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-component-definition/implemented-requirement/props">(global definition)</a></p>
+                                             <h5 id="/component-definition/capability/control-implementation/implemented-requirement/prop" class="toc5 name">prop</h5>
+                                             <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-component-definition/implemented-requirement/prop">(global definition)</a></p>
                                              <p class="occurrence">[0 to ∞]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/props">Switch to JSON</a></div>
                                              <p class="formal-name">Property</p>
@@ -7117,7 +7117,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 <summary>Attributes (5)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/component-definition/capabilities/control-implementations/implemented-requirements/props/name" class="toc6 name">name</h6>
+                                                      <h6 id="/component-definition/capability/control-implementation/implemented-requirement/prop/@name" class="toc6 name">name</h6>
                                                       <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                       <p class="occurrence">[1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/props/name">Switch to JSON</a></div>
@@ -7143,7 +7143,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/component-definition/capabilities/control-implementations/implemented-requirements/props/uuid" class="toc6 name">uuid</h6>
+                                                      <h6 id="/component-definition/capability/control-implementation/implemented-requirement/prop/@uuid" class="toc6 name">uuid</h6>
                                                       <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/props/uuid">Switch to JSON</a></div>
@@ -7157,7 +7157,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/component-definition/capabilities/control-implementations/implemented-requirements/props/ns" class="toc6 name">ns</h6>
+                                                      <h6 id="/component-definition/capability/control-implementation/implemented-requirement/prop/@ns" class="toc6 name">ns</h6>
                                                       <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/props/ns">Switch to JSON</a></div>
@@ -7191,7 +7191,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/component-definition/capabilities/control-implementations/implemented-requirements/props/value" class="toc6 name">value</h6>
+                                                      <h6 id="/component-definition/capability/control-implementation/implemented-requirement/prop/@value" class="toc6 name">value</h6>
                                                       <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                                       <p class="occurrence">[1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/props/value">Switch to JSON</a></div>
@@ -7203,7 +7203,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/component-definition/capabilities/control-implementations/implemented-requirements/props/class" class="toc6 name">class</h6>
+                                                      <h6 id="/component-definition/capability/control-implementation/implemented-requirement/prop/@class" class="toc6 name">class</h6>
                                                       <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/props/class">Switch to JSON</a></div>
@@ -7232,7 +7232,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 <summary>Element (1)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/component-definition/capabilities/control-implementations/implemented-requirements/props/remarks" class="toc6 name">remarks</h6>
+                                                      <h6 id="/component-definition/capability/control-implementation/implemented-requirement/prop/remarks" class="toc6 name">remarks</h6>
                                                       <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/props/remarks">Switch to JSON</a></div>
@@ -7247,8 +7247,8 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/capabilities/control-implementations/implemented-requirements/links" class="toc5 name">link</h5>
-                                             <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-component-definition/implemented-requirement/links">(global definition)</a></p>
+                                             <h5 id="/component-definition/capability/control-implementation/implemented-requirement/link" class="toc5 name">link</h5>
+                                             <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-component-definition/implemented-requirement/link">(global definition)</a></p>
                                              <p class="occurrence">[0 to ∞]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/links">Switch to JSON</a></div>
                                              <p class="formal-name">Link</p>
@@ -7281,7 +7281,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 <summary>Attributes (3)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/component-definition/capabilities/control-implementations/implemented-requirements/links/href" class="toc6 name">href</h6>
+                                                      <h6 id="/component-definition/capability/control-implementation/implemented-requirement/link/@href" class="toc6 name">href</h6>
                                                       <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
                                                       <p class="occurrence">[1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/links/href">Switch to JSON</a></div>
@@ -7316,7 +7316,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/component-definition/capabilities/control-implementations/implemented-requirements/links/rel" class="toc6 name">rel</h6>
+                                                      <h6 id="/component-definition/capability/control-implementation/implemented-requirement/link/@rel" class="toc6 name">rel</h6>
                                                       <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/links/rel">Switch to JSON</a></div>
@@ -7340,7 +7340,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/component-definition/capabilities/control-implementations/implemented-requirements/links/media-type" class="toc6 name">media-type</h6>
+                                                      <h6 id="/component-definition/capability/control-implementation/implemented-requirement/link/@media-type" class="toc6 name">media-type</h6>
                                                       <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/links/media-type">Switch to JSON</a></div>
@@ -7365,7 +7365,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 <summary>Element (1)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/component-definition/capabilities/control-implementations/implemented-requirements/links/text" class="toc6 name">text</h6>
+                                                      <h6 id="/component-definition/capability/control-implementation/implemented-requirement/link/text" class="toc6 name">text</h6>
                                                       <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/links/text">Switch to JSON</a></div>
@@ -7381,8 +7381,8 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/capabilities/control-implementations/implemented-requirements/set-parameters" class="toc5 name">set-parameter</h5>
-                                             <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-component-definition/implemented-requirement/set-parameters">(global definition)</a></p>
+                                             <h5 id="/component-definition/capability/control-implementation/implemented-requirement/set-parameter" class="toc5 name">set-parameter</h5>
+                                             <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-component-definition/implemented-requirement/set-parameter">(global definition)</a></p>
                                              <p class="occurrence">[0 to ∞]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/set-parameters">Switch to JSON</a></div>
                                              <p class="formal-name">Set Parameter Value</p>
@@ -7393,7 +7393,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 <summary>Attribute (1)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/component-definition/capabilities/control-implementations/implemented-requirements/set-parameters/param-id" class="toc6 name">param-id</h6>
+                                                      <h6 id="/component-definition/capability/control-implementation/implemented-requirement/set-parameter/@param-id" class="toc6 name">param-id</h6>
                                                       <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                       <p class="occurrence">[1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/set-parameters/param-id">Switch to JSON</a></div>
@@ -7409,7 +7409,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 <summary>Elements (2)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/component-definition/capabilities/control-implementations/implemented-requirements/set-parameters/values" class="toc6 name">value</h6>
+                                                      <h6 id="/component-definition/capability/control-implementation/implemented-requirement/set-parameter/value" class="toc6 name">value</h6>
                                                       <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                                       <p class="occurrence">[1 to ∞]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/set-parameters/values">Switch to JSON</a></div>
@@ -7421,7 +7421,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/component-definition/capabilities/control-implementations/implemented-requirements/set-parameters/remarks" class="toc6 name">remarks</h6>
+                                                      <h6 id="/component-definition/capability/control-implementation/implemented-requirement/set-parameter/remarks" class="toc6 name">remarks</h6>
                                                       <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/set-parameters/remarks">Switch to JSON</a></div>
@@ -7436,8 +7436,8 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/capabilities/control-implementations/implemented-requirements/responsible-roles" class="toc5 name">responsible-role</h5>
-                                             <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-component-definition/implemented-requirement/responsible-roles">(global definition)</a></p>
+                                             <h5 id="/component-definition/capability/control-implementation/implemented-requirement/responsible-role" class="toc5 name">responsible-role</h5>
+                                             <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-component-definition/implemented-requirement/responsible-role">(global definition)</a></p>
                                              <p class="occurrence">[0 to ∞]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/responsible-roles">Switch to JSON</a></div>
                                              <p class="formal-name">Responsible Role</p>
@@ -7449,7 +7449,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 <summary>Attribute (1)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/component-definition/capabilities/control-implementations/implemented-requirements/responsible-roles/role-id" class="toc6 name">role-id</h6>
+                                                      <h6 id="/component-definition/capability/control-implementation/implemented-requirement/responsible-role/@role-id" class="toc6 name">role-id</h6>
                                                       <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                       <p class="occurrence">[1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/responsible-roles/role-id">Switch to JSON</a></div>
@@ -7464,8 +7464,8 @@ The following is the XML format reference for this model, which is organized hie
                                                 <summary>Elements (4)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/component-definition/capabilities/control-implementations/implemented-requirements/responsible-roles/props" class="toc6 name">prop</h6>
-                                                      <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/responsible-role/props">(global definition)</a></p>
+                                                      <h6 id="/component-definition/capability/control-implementation/implemented-requirement/responsible-role/prop" class="toc6 name">prop</h6>
+                                                      <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/responsible-role/prop">(global definition)</a></p>
                                                       <p class="occurrence">[0 to ∞]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/responsible-roles/props">Switch to JSON</a></div>
                                                       <p class="formal-name">Property</p>
@@ -7495,7 +7495,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          <summary>Attributes (5)</summary>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
-                                                               <p id="/component-definition/capabilities/control-implementations/implemented-requirements/responsible-roles/props/name" class="toc7 name">name</p>
+                                                               <p id="/component-definition/capability/control-implementation/implemented-requirement/responsible-role/prop/@name" class="toc7 name">name</p>
                                                                <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                                <p class="occurrence">[1]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/responsible-roles/props/name">Switch to JSON</a></div>
@@ -7521,7 +7521,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          </div>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
-                                                               <p id="/component-definition/capabilities/control-implementations/implemented-requirements/responsible-roles/props/uuid" class="toc7 name">uuid</p>
+                                                               <p id="/component-definition/capability/control-implementation/implemented-requirement/responsible-role/prop/@uuid" class="toc7 name">uuid</p>
                                                                <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                                                <p class="occurrence">[0 or 1]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/responsible-roles/props/uuid">Switch to JSON</a></div>
@@ -7535,7 +7535,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          </div>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
-                                                               <p id="/component-definition/capabilities/control-implementations/implemented-requirements/responsible-roles/props/ns" class="toc7 name">ns</p>
+                                                               <p id="/component-definition/capability/control-implementation/implemented-requirement/responsible-role/prop/@ns" class="toc7 name">ns</p>
                                                                <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
                                                                <p class="occurrence">[0 or 1]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/responsible-roles/props/ns">Switch to JSON</a></div>
@@ -7569,7 +7569,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          </div>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
-                                                               <p id="/component-definition/capabilities/control-implementations/implemented-requirements/responsible-roles/props/value" class="toc7 name">value</p>
+                                                               <p id="/component-definition/capability/control-implementation/implemented-requirement/responsible-role/prop/@value" class="toc7 name">value</p>
                                                                <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                                                <p class="occurrence">[1]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/responsible-roles/props/value">Switch to JSON</a></div>
@@ -7581,7 +7581,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          </div>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
-                                                               <p id="/component-definition/capabilities/control-implementations/implemented-requirements/responsible-roles/props/class" class="toc7 name">class</p>
+                                                               <p id="/component-definition/capability/control-implementation/implemented-requirement/responsible-role/prop/@class" class="toc7 name">class</p>
                                                                <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                                <p class="occurrence">[0 or 1]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/responsible-roles/props/class">Switch to JSON</a></div>
@@ -7610,7 +7610,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          <summary>Element (1)</summary>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
-                                                               <p id="/component-definition/capabilities/control-implementations/implemented-requirements/responsible-roles/props/remarks" class="toc7 name">remarks</p>
+                                                               <p id="/component-definition/capability/control-implementation/implemented-requirement/responsible-role/prop/remarks" class="toc7 name">remarks</p>
                                                                <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                                                <p class="occurrence">[0 or 1]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/responsible-roles/props/remarks">Switch to JSON</a></div>
@@ -7625,8 +7625,8 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/component-definition/capabilities/control-implementations/implemented-requirements/responsible-roles/links" class="toc6 name">link</h6>
-                                                      <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/responsible-role/links">(global definition)</a></p>
+                                                      <h6 id="/component-definition/capability/control-implementation/implemented-requirement/responsible-role/link" class="toc6 name">link</h6>
+                                                      <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/responsible-role/link">(global definition)</a></p>
                                                       <p class="occurrence">[0 to ∞]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/responsible-roles/links">Switch to JSON</a></div>
                                                       <p class="formal-name">Link</p>
@@ -7659,7 +7659,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          <summary>Attributes (3)</summary>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
-                                                               <p id="/component-definition/capabilities/control-implementations/implemented-requirements/responsible-roles/links/href" class="toc7 name">href</p>
+                                                               <p id="/component-definition/capability/control-implementation/implemented-requirement/responsible-role/link/@href" class="toc7 name">href</p>
                                                                <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
                                                                <p class="occurrence">[1]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/responsible-roles/links/href">Switch to JSON</a></div>
@@ -7694,7 +7694,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          </div>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
-                                                               <p id="/component-definition/capabilities/control-implementations/implemented-requirements/responsible-roles/links/rel" class="toc7 name">rel</p>
+                                                               <p id="/component-definition/capability/control-implementation/implemented-requirement/responsible-role/link/@rel" class="toc7 name">rel</p>
                                                                <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                                <p class="occurrence">[0 or 1]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/responsible-roles/links/rel">Switch to JSON</a></div>
@@ -7718,7 +7718,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          </div>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
-                                                               <p id="/component-definition/capabilities/control-implementations/implemented-requirements/responsible-roles/links/media-type" class="toc7 name">media-type</p>
+                                                               <p id="/component-definition/capability/control-implementation/implemented-requirement/responsible-role/link/@media-type" class="toc7 name">media-type</p>
                                                                <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                                                <p class="occurrence">[0 or 1]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/responsible-roles/links/media-type">Switch to JSON</a></div>
@@ -7743,7 +7743,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          <summary>Element (1)</summary>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
-                                                               <p id="/component-definition/capabilities/control-implementations/implemented-requirements/responsible-roles/links/text" class="toc7 name">text</p>
+                                                               <p id="/component-definition/capability/control-implementation/implemented-requirement/responsible-role/link/text" class="toc7 name">text</p>
                                                                <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                                                <p class="occurrence">[0 or 1]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/responsible-roles/links/text">Switch to JSON</a></div>
@@ -7759,7 +7759,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/component-definition/capabilities/control-implementations/implemented-requirements/responsible-roles/party-uuids" class="toc6 name">party-uuid</h6>
+                                                      <h6 id="/component-definition/capability/control-implementation/implemented-requirement/responsible-role/party-uuid" class="toc6 name">party-uuid</h6>
                                                       <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                                       <p class="occurrence">[0 to ∞]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/responsible-roles/party-uuids">Switch to JSON</a></div>
@@ -7777,7 +7777,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/component-definition/capabilities/control-implementations/implemented-requirements/responsible-roles/remarks" class="toc6 name">remarks</h6>
+                                                      <h6 id="/component-definition/capability/control-implementation/implemented-requirement/responsible-role/remarks" class="toc6 name">remarks</h6>
                                                       <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/responsible-roles/remarks">Switch to JSON</a></div>
@@ -7792,7 +7792,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/capabilities/control-implementations/implemented-requirements/statements" class="toc5 name">statement</h5>
+                                             <h5 id="/component-definition/capability/control-implementation/implemented-requirement/statement" class="toc5 name">statement</h5>
                                              <p class="type">element<br /></p>
                                              <p class="occurrence">[0 to ∞]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements">Switch to JSON</a></div>
@@ -7810,7 +7810,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 <summary>Attributes (2)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/component-definition/capabilities/control-implementations/implemented-requirements/statements/statement-id" class="toc6 name">statement-id</h6>
+                                                      <h6 id="/component-definition/capability/control-implementation/implemented-requirement/statement/@statement-id" class="toc6 name">statement-id</h6>
                                                       <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                       <p class="occurrence">[1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/statement-id">Switch to JSON</a></div>
@@ -7830,7 +7830,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/component-definition/capabilities/control-implementations/implemented-requirements/statements/uuid" class="toc6 name">uuid</h6>
+                                                      <h6 id="/component-definition/capability/control-implementation/implemented-requirement/statement/@uuid" class="toc6 name">uuid</h6>
                                                       <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                                       <p class="occurrence">[1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/uuid">Switch to JSON</a></div>
@@ -7847,7 +7847,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 <summary>Elements (5)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/component-definition/capabilities/control-implementations/implemented-requirements/statements/description" class="toc6 name">description</h6>
+                                                      <h6 id="/component-definition/capability/control-implementation/implemented-requirement/statement/description" class="toc6 name">description</h6>
                                                       <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                                       <p class="occurrence">[1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/description">Switch to JSON</a></div>
@@ -7860,8 +7860,8 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/component-definition/capabilities/control-implementations/implemented-requirements/statements/props" class="toc6 name">prop</h6>
-                                                      <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-component-definition/statement/props">(global definition)</a></p>
+                                                      <h6 id="/component-definition/capability/control-implementation/implemented-requirement/statement/prop" class="toc6 name">prop</h6>
+                                                      <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-component-definition/statement/prop">(global definition)</a></p>
                                                       <p class="occurrence">[0 to ∞]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/props">Switch to JSON</a></div>
                                                       <p class="formal-name">Property</p>
@@ -7891,7 +7891,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          <summary>Attributes (5)</summary>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
-                                                               <p id="/component-definition/capabilities/control-implementations/implemented-requirements/statements/props/name" class="toc7 name">name</p>
+                                                               <p id="/component-definition/capability/control-implementation/implemented-requirement/statement/prop/@name" class="toc7 name">name</p>
                                                                <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                                <p class="occurrence">[1]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/props/name">Switch to JSON</a></div>
@@ -7917,7 +7917,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          </div>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
-                                                               <p id="/component-definition/capabilities/control-implementations/implemented-requirements/statements/props/uuid" class="toc7 name">uuid</p>
+                                                               <p id="/component-definition/capability/control-implementation/implemented-requirement/statement/prop/@uuid" class="toc7 name">uuid</p>
                                                                <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                                                <p class="occurrence">[0 or 1]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/props/uuid">Switch to JSON</a></div>
@@ -7931,7 +7931,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          </div>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
-                                                               <p id="/component-definition/capabilities/control-implementations/implemented-requirements/statements/props/ns" class="toc7 name">ns</p>
+                                                               <p id="/component-definition/capability/control-implementation/implemented-requirement/statement/prop/@ns" class="toc7 name">ns</p>
                                                                <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
                                                                <p class="occurrence">[0 or 1]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/props/ns">Switch to JSON</a></div>
@@ -7965,7 +7965,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          </div>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
-                                                               <p id="/component-definition/capabilities/control-implementations/implemented-requirements/statements/props/value" class="toc7 name">value</p>
+                                                               <p id="/component-definition/capability/control-implementation/implemented-requirement/statement/prop/@value" class="toc7 name">value</p>
                                                                <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                                                <p class="occurrence">[1]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/props/value">Switch to JSON</a></div>
@@ -7977,7 +7977,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          </div>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
-                                                               <p id="/component-definition/capabilities/control-implementations/implemented-requirements/statements/props/class" class="toc7 name">class</p>
+                                                               <p id="/component-definition/capability/control-implementation/implemented-requirement/statement/prop/@class" class="toc7 name">class</p>
                                                                <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                                <p class="occurrence">[0 or 1]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/props/class">Switch to JSON</a></div>
@@ -8006,7 +8006,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          <summary>Element (1)</summary>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
-                                                               <p id="/component-definition/capabilities/control-implementations/implemented-requirements/statements/props/remarks" class="toc7 name">remarks</p>
+                                                               <p id="/component-definition/capability/control-implementation/implemented-requirement/statement/prop/remarks" class="toc7 name">remarks</p>
                                                                <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                                                <p class="occurrence">[0 or 1]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/props/remarks">Switch to JSON</a></div>
@@ -8021,8 +8021,8 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/component-definition/capabilities/control-implementations/implemented-requirements/statements/links" class="toc6 name">link</h6>
-                                                      <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-component-definition/statement/links">(global definition)</a></p>
+                                                      <h6 id="/component-definition/capability/control-implementation/implemented-requirement/statement/link" class="toc6 name">link</h6>
+                                                      <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-component-definition/statement/link">(global definition)</a></p>
                                                       <p class="occurrence">[0 to ∞]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/links">Switch to JSON</a></div>
                                                       <p class="formal-name">Link</p>
@@ -8055,7 +8055,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          <summary>Attributes (3)</summary>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
-                                                               <p id="/component-definition/capabilities/control-implementations/implemented-requirements/statements/links/href" class="toc7 name">href</p>
+                                                               <p id="/component-definition/capability/control-implementation/implemented-requirement/statement/link/@href" class="toc7 name">href</p>
                                                                <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
                                                                <p class="occurrence">[1]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/links/href">Switch to JSON</a></div>
@@ -8090,7 +8090,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          </div>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
-                                                               <p id="/component-definition/capabilities/control-implementations/implemented-requirements/statements/links/rel" class="toc7 name">rel</p>
+                                                               <p id="/component-definition/capability/control-implementation/implemented-requirement/statement/link/@rel" class="toc7 name">rel</p>
                                                                <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                                <p class="occurrence">[0 or 1]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/links/rel">Switch to JSON</a></div>
@@ -8114,7 +8114,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          </div>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
-                                                               <p id="/component-definition/capabilities/control-implementations/implemented-requirements/statements/links/media-type" class="toc7 name">media-type</p>
+                                                               <p id="/component-definition/capability/control-implementation/implemented-requirement/statement/link/@media-type" class="toc7 name">media-type</p>
                                                                <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                                                <p class="occurrence">[0 or 1]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/links/media-type">Switch to JSON</a></div>
@@ -8139,7 +8139,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          <summary>Element (1)</summary>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
-                                                               <p id="/component-definition/capabilities/control-implementations/implemented-requirements/statements/links/text" class="toc7 name">text</p>
+                                                               <p id="/component-definition/capability/control-implementation/implemented-requirement/statement/link/text" class="toc7 name">text</p>
                                                                <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                                                <p class="occurrence">[0 or 1]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/links/text">Switch to JSON</a></div>
@@ -8155,8 +8155,8 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/component-definition/capabilities/control-implementations/implemented-requirements/statements/responsible-roles" class="toc6 name">responsible-role</h6>
-                                                      <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-component-definition/statement/responsible-roles">(global definition)</a></p>
+                                                      <h6 id="/component-definition/capability/control-implementation/implemented-requirement/statement/responsible-role" class="toc6 name">responsible-role</h6>
+                                                      <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-component-definition/statement/responsible-role">(global definition)</a></p>
                                                       <p class="occurrence">[0 to ∞]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/responsible-roles">Switch to JSON</a></div>
                                                       <p class="formal-name">Responsible Role</p>
@@ -8168,7 +8168,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          <summary>Attribute (1)</summary>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
-                                                               <p id="/component-definition/capabilities/control-implementations/implemented-requirements/statements/responsible-roles/role-id" class="toc7 name">role-id</p>
+                                                               <p id="/component-definition/capability/control-implementation/implemented-requirement/statement/responsible-role/@role-id" class="toc7 name">role-id</p>
                                                                <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                                <p class="occurrence">[1]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/responsible-roles/role-id">Switch to JSON</a></div>
@@ -8183,8 +8183,8 @@ The following is the XML format reference for this model, which is organized hie
                                                          <summary>Elements (4)</summary>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
-                                                               <p id="/component-definition/capabilities/control-implementations/implemented-requirements/statements/responsible-roles/props" class="toc7 name">prop</p>
-                                                               <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/responsible-role/props">(global definition)</a></p>
+                                                               <p id="/component-definition/capability/control-implementation/implemented-requirement/statement/responsible-role/prop" class="toc7 name">prop</p>
+                                                               <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/responsible-role/prop">(global definition)</a></p>
                                                                <p class="occurrence">[0 to ∞]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/responsible-roles/props">Switch to JSON</a></div>
                                                                <p class="formal-name">Property</p>
@@ -8214,7 +8214,7 @@ The following is the XML format reference for this model, which is organized hie
                                                                   <summary>Attributes (5)</summary>
                                                                   <div class="model-entry definition assembly">
                                                                      <div class="instance-header">
-                                                                        <p id="/component-definition/capabilities/control-implementations/implemented-requirements/statements/responsible-roles/props/name" class="toc8 name">name</p>
+                                                                        <p id="/component-definition/capability/control-implementation/implemented-requirement/statement/responsible-role/prop/@name" class="toc8 name">name</p>
                                                                         <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                                         <p class="occurrence">[1]</p>
                                                                         <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/responsible-roles/props/name">Switch to JSON</a></div>
@@ -8240,7 +8240,7 @@ The following is the XML format reference for this model, which is organized hie
                                                                   </div>
                                                                   <div class="model-entry definition assembly">
                                                                      <div class="instance-header">
-                                                                        <p id="/component-definition/capabilities/control-implementations/implemented-requirements/statements/responsible-roles/props/uuid" class="toc8 name">uuid</p>
+                                                                        <p id="/component-definition/capability/control-implementation/implemented-requirement/statement/responsible-role/prop/@uuid" class="toc8 name">uuid</p>
                                                                         <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                                                         <p class="occurrence">[0 or 1]</p>
                                                                         <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/responsible-roles/props/uuid">Switch to JSON</a></div>
@@ -8254,7 +8254,7 @@ The following is the XML format reference for this model, which is organized hie
                                                                   </div>
                                                                   <div class="model-entry definition assembly">
                                                                      <div class="instance-header">
-                                                                        <p id="/component-definition/capabilities/control-implementations/implemented-requirements/statements/responsible-roles/props/ns" class="toc8 name">ns</p>
+                                                                        <p id="/component-definition/capability/control-implementation/implemented-requirement/statement/responsible-role/prop/@ns" class="toc8 name">ns</p>
                                                                         <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
                                                                         <p class="occurrence">[0 or 1]</p>
                                                                         <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/responsible-roles/props/ns">Switch to JSON</a></div>
@@ -8288,7 +8288,7 @@ The following is the XML format reference for this model, which is organized hie
                                                                   </div>
                                                                   <div class="model-entry definition assembly">
                                                                      <div class="instance-header">
-                                                                        <p id="/component-definition/capabilities/control-implementations/implemented-requirements/statements/responsible-roles/props/value" class="toc8 name">value</p>
+                                                                        <p id="/component-definition/capability/control-implementation/implemented-requirement/statement/responsible-role/prop/@value" class="toc8 name">value</p>
                                                                         <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                                                         <p class="occurrence">[1]</p>
                                                                         <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/responsible-roles/props/value">Switch to JSON</a></div>
@@ -8300,7 +8300,7 @@ The following is the XML format reference for this model, which is organized hie
                                                                   </div>
                                                                   <div class="model-entry definition assembly">
                                                                      <div class="instance-header">
-                                                                        <p id="/component-definition/capabilities/control-implementations/implemented-requirements/statements/responsible-roles/props/class" class="toc8 name">class</p>
+                                                                        <p id="/component-definition/capability/control-implementation/implemented-requirement/statement/responsible-role/prop/@class" class="toc8 name">class</p>
                                                                         <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                                         <p class="occurrence">[0 or 1]</p>
                                                                         <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/responsible-roles/props/class">Switch to JSON</a></div>
@@ -8329,7 +8329,7 @@ The following is the XML format reference for this model, which is organized hie
                                                                   <summary>Element (1)</summary>
                                                                   <div class="model-entry definition assembly">
                                                                      <div class="instance-header">
-                                                                        <p id="/component-definition/capabilities/control-implementations/implemented-requirements/statements/responsible-roles/props/remarks" class="toc8 name">remarks</p>
+                                                                        <p id="/component-definition/capability/control-implementation/implemented-requirement/statement/responsible-role/prop/remarks" class="toc8 name">remarks</p>
                                                                         <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                                                         <p class="occurrence">[0 or 1]</p>
                                                                         <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/responsible-roles/props/remarks">Switch to JSON</a></div>
@@ -8344,8 +8344,8 @@ The following is the XML format reference for this model, which is organized hie
                                                          </div>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
-                                                               <p id="/component-definition/capabilities/control-implementations/implemented-requirements/statements/responsible-roles/links" class="toc7 name">link</p>
-                                                               <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/responsible-role/links">(global definition)</a></p>
+                                                               <p id="/component-definition/capability/control-implementation/implemented-requirement/statement/responsible-role/link" class="toc7 name">link</p>
+                                                               <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/responsible-role/link">(global definition)</a></p>
                                                                <p class="occurrence">[0 to ∞]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/responsible-roles/links">Switch to JSON</a></div>
                                                                <p class="formal-name">Link</p>
@@ -8378,7 +8378,7 @@ The following is the XML format reference for this model, which is organized hie
                                                                   <summary>Attributes (3)</summary>
                                                                   <div class="model-entry definition assembly">
                                                                      <div class="instance-header">
-                                                                        <p id="/component-definition/capabilities/control-implementations/implemented-requirements/statements/responsible-roles/links/href" class="toc8 name">href</p>
+                                                                        <p id="/component-definition/capability/control-implementation/implemented-requirement/statement/responsible-role/link/@href" class="toc8 name">href</p>
                                                                         <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
                                                                         <p class="occurrence">[1]</p>
                                                                         <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/responsible-roles/links/href">Switch to JSON</a></div>
@@ -8413,7 +8413,7 @@ The following is the XML format reference for this model, which is organized hie
                                                                   </div>
                                                                   <div class="model-entry definition assembly">
                                                                      <div class="instance-header">
-                                                                        <p id="/component-definition/capabilities/control-implementations/implemented-requirements/statements/responsible-roles/links/rel" class="toc8 name">rel</p>
+                                                                        <p id="/component-definition/capability/control-implementation/implemented-requirement/statement/responsible-role/link/@rel" class="toc8 name">rel</p>
                                                                         <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                                         <p class="occurrence">[0 or 1]</p>
                                                                         <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/responsible-roles/links/rel">Switch to JSON</a></div>
@@ -8437,7 +8437,7 @@ The following is the XML format reference for this model, which is organized hie
                                                                   </div>
                                                                   <div class="model-entry definition assembly">
                                                                      <div class="instance-header">
-                                                                        <p id="/component-definition/capabilities/control-implementations/implemented-requirements/statements/responsible-roles/links/media-type" class="toc8 name">media-type</p>
+                                                                        <p id="/component-definition/capability/control-implementation/implemented-requirement/statement/responsible-role/link/@media-type" class="toc8 name">media-type</p>
                                                                         <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                                                         <p class="occurrence">[0 or 1]</p>
                                                                         <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/responsible-roles/links/media-type">Switch to JSON</a></div>
@@ -8462,7 +8462,7 @@ The following is the XML format reference for this model, which is organized hie
                                                                   <summary>Element (1)</summary>
                                                                   <div class="model-entry definition assembly">
                                                                      <div class="instance-header">
-                                                                        <p id="/component-definition/capabilities/control-implementations/implemented-requirements/statements/responsible-roles/links/text" class="toc8 name">text</p>
+                                                                        <p id="/component-definition/capability/control-implementation/implemented-requirement/statement/responsible-role/link/text" class="toc8 name">text</p>
                                                                         <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                                                         <p class="occurrence">[0 or 1]</p>
                                                                         <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/responsible-roles/links/text">Switch to JSON</a></div>
@@ -8478,7 +8478,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          </div>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
-                                                               <p id="/component-definition/capabilities/control-implementations/implemented-requirements/statements/responsible-roles/party-uuids" class="toc7 name">party-uuid</p>
+                                                               <p id="/component-definition/capability/control-implementation/implemented-requirement/statement/responsible-role/party-uuid" class="toc7 name">party-uuid</p>
                                                                <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                                                <p class="occurrence">[0 to ∞]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/responsible-roles/party-uuids">Switch to JSON</a></div>
@@ -8496,7 +8496,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          </div>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
-                                                               <p id="/component-definition/capabilities/control-implementations/implemented-requirements/statements/responsible-roles/remarks" class="toc7 name">remarks</p>
+                                                               <p id="/component-definition/capability/control-implementation/implemented-requirement/statement/responsible-role/remarks" class="toc7 name">remarks</p>
                                                                <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                                                <p class="occurrence">[0 or 1]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/responsible-roles/remarks">Switch to JSON</a></div>
@@ -8511,7 +8511,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/component-definition/capabilities/control-implementations/implemented-requirements/statements/remarks" class="toc6 name">remarks</h6>
+                                                      <h6 id="/component-definition/capability/control-implementation/implemented-requirement/statement/remarks" class="toc6 name">remarks</h6>
                                                       <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/statements/remarks">Switch to JSON</a></div>
@@ -8526,7 +8526,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/capabilities/control-implementations/implemented-requirements/remarks" class="toc5 name">remarks</h5>
+                                             <h5 id="/component-definition/capability/control-implementation/implemented-requirement/remarks" class="toc5 name">remarks</h5>
                                              <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/control-implementations/implemented-requirements/remarks">Switch to JSON</a></div>
@@ -8544,7 +8544,7 @@ The following is the XML format reference for this model, which is organized hie
                      </div>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
-                           <h3 id="/component-definition/capabilities/remarks" class="toc3 name">remarks</h3>
+                           <h3 id="/component-definition/capability/remarks" class="toc3 name">remarks</h3>
                            <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                            <p class="occurrence">[0 or 1]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/remarks">Switch to JSON</a></div>
@@ -8587,7 +8587,7 @@ The following is the XML format reference for this model, which is organized hie
                      <summary>Element (1)</summary>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
-                           <h3 id="/component-definition/back-matter/resources" class="toc3 name">resource</h3>
+                           <h3 id="/component-definition/back-matter/resource" class="toc3 name">resource</h3>
                            <p class="type">element<br /></p>
                            <p class="occurrence">[0 to ∞]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/back-matter/resources">Switch to JSON</a></div>
@@ -8720,7 +8720,7 @@ The following is the XML format reference for this model, which is organized hie
                               <summary>Attribute (1)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/back-matter/resources/uuid" class="toc4 name">uuid</h4>
+                                    <h4 id="/component-definition/back-matter/resource/@uuid" class="toc4 name">uuid</h4>
                                     <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                     <p class="occurrence">[1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/back-matter/resources/uuid">Switch to JSON</a></div>
@@ -8737,7 +8737,7 @@ The following is the XML format reference for this model, which is organized hie
                               <summary>Elements (8)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/back-matter/resources/title" class="toc4 name">title</h4>
+                                    <h4 id="/component-definition/back-matter/resource/title" class="toc4 name">title</h4>
                                     <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/back-matter/resources/title">Switch to JSON</a></div>
@@ -8749,7 +8749,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/back-matter/resources/description" class="toc4 name">description</h4>
+                                    <h4 id="/component-definition/back-matter/resource/description" class="toc4 name">description</h4>
                                     <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/back-matter/resources/description">Switch to JSON</a></div>
@@ -8761,8 +8761,8 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/back-matter/resources/props" class="toc4 name">prop</h4>
-                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/back-matter/resources/props">(global definition)</a></p>
+                                    <h4 id="/component-definition/back-matter/resource/prop" class="toc4 name">prop</h4>
+                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/back-matter/resource/prop">(global definition)</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/back-matter/resources/props">Switch to JSON</a></div>
                                     <p class="formal-name">Property</p>
@@ -8792,7 +8792,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Attributes (5)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/back-matter/resources/props/name" class="toc5 name">name</h5>
+                                             <h5 id="/component-definition/back-matter/resource/prop/@name" class="toc5 name">name</h5>
                                              <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/back-matter/resources/props/name">Switch to JSON</a></div>
@@ -8818,7 +8818,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/back-matter/resources/props/uuid" class="toc5 name">uuid</h5>
+                                             <h5 id="/component-definition/back-matter/resource/prop/@uuid" class="toc5 name">uuid</h5>
                                              <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/back-matter/resources/props/uuid">Switch to JSON</a></div>
@@ -8832,7 +8832,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/back-matter/resources/props/ns" class="toc5 name">ns</h5>
+                                             <h5 id="/component-definition/back-matter/resource/prop/@ns" class="toc5 name">ns</h5>
                                              <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/back-matter/resources/props/ns">Switch to JSON</a></div>
@@ -8866,7 +8866,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/back-matter/resources/props/value" class="toc5 name">value</h5>
+                                             <h5 id="/component-definition/back-matter/resource/prop/@value" class="toc5 name">value</h5>
                                              <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/back-matter/resources/props/value">Switch to JSON</a></div>
@@ -8878,7 +8878,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/back-matter/resources/props/class" class="toc5 name">class</h5>
+                                             <h5 id="/component-definition/back-matter/resource/prop/@class" class="toc5 name">class</h5>
                                              <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/back-matter/resources/props/class">Switch to JSON</a></div>
@@ -8907,7 +8907,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Element (1)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/back-matter/resources/props/remarks" class="toc5 name">remarks</h5>
+                                             <h5 id="/component-definition/back-matter/resource/prop/remarks" class="toc5 name">remarks</h5>
                                              <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/back-matter/resources/props/remarks">Switch to JSON</a></div>
@@ -8922,7 +8922,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/back-matter/resources/document-ids" class="toc4 name">document-id</h4>
+                                    <h4 id="/component-definition/back-matter/resource/document-id" class="toc4 name">document-id</h4>
                                     <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/back-matter/resources/document-ids">Switch to JSON</a></div>
@@ -8952,7 +8952,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Attribute (1)</summary>
                                        <div class="model-entry definition field">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/back-matter/resources/document-ids/scheme" class="toc5 name">scheme</h5>
+                                             <h5 id="/component-definition/back-matter/resource/document-id/@scheme" class="toc5 name">scheme</h5>
                                              <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/back-matter/resources/document-ids/scheme">Switch to JSON</a></div>
@@ -8980,7 +8980,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/back-matter/resources/citation" class="toc4 name">citation</h4>
+                                    <h4 id="/component-definition/back-matter/resource/citation" class="toc4 name">citation</h4>
                                     <p class="type">element<br /></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/back-matter/resources/citation">Switch to JSON</a></div>
@@ -9007,7 +9007,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Elements (3)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/back-matter/resources/citation/text" class="toc5 name">text</h5>
+                                             <h5 id="/component-definition/back-matter/resource/citation/text" class="toc5 name">text</h5>
                                              <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/back-matter/resources/citation/text">Switch to JSON</a></div>
@@ -9019,8 +9019,8 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/back-matter/resources/citation/props" class="toc5 name">prop</h5>
-                                             <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/back-matter/resources/citation/props">(global definition)</a></p>
+                                             <h5 id="/component-definition/back-matter/resource/citation/prop" class="toc5 name">prop</h5>
+                                             <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/back-matter/resource/citation/prop">(global definition)</a></p>
                                              <p class="occurrence">[0 to ∞]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/back-matter/resources/citation/props">Switch to JSON</a></div>
                                              <p class="formal-name">Property</p>
@@ -9050,7 +9050,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 <summary>Attributes (5)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/component-definition/back-matter/resources/citation/props/name" class="toc6 name">name</h6>
+                                                      <h6 id="/component-definition/back-matter/resource/citation/prop/@name" class="toc6 name">name</h6>
                                                       <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                       <p class="occurrence">[1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/back-matter/resources/citation/props/name">Switch to JSON</a></div>
@@ -9076,7 +9076,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/component-definition/back-matter/resources/citation/props/uuid" class="toc6 name">uuid</h6>
+                                                      <h6 id="/component-definition/back-matter/resource/citation/prop/@uuid" class="toc6 name">uuid</h6>
                                                       <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/back-matter/resources/citation/props/uuid">Switch to JSON</a></div>
@@ -9090,7 +9090,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/component-definition/back-matter/resources/citation/props/ns" class="toc6 name">ns</h6>
+                                                      <h6 id="/component-definition/back-matter/resource/citation/prop/@ns" class="toc6 name">ns</h6>
                                                       <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/back-matter/resources/citation/props/ns">Switch to JSON</a></div>
@@ -9124,7 +9124,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/component-definition/back-matter/resources/citation/props/value" class="toc6 name">value</h6>
+                                                      <h6 id="/component-definition/back-matter/resource/citation/prop/@value" class="toc6 name">value</h6>
                                                       <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                                       <p class="occurrence">[1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/back-matter/resources/citation/props/value">Switch to JSON</a></div>
@@ -9136,7 +9136,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/component-definition/back-matter/resources/citation/props/class" class="toc6 name">class</h6>
+                                                      <h6 id="/component-definition/back-matter/resource/citation/prop/@class" class="toc6 name">class</h6>
                                                       <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/back-matter/resources/citation/props/class">Switch to JSON</a></div>
@@ -9165,7 +9165,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 <summary>Element (1)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/component-definition/back-matter/resources/citation/props/remarks" class="toc6 name">remarks</h6>
+                                                      <h6 id="/component-definition/back-matter/resource/citation/prop/remarks" class="toc6 name">remarks</h6>
                                                       <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/back-matter/resources/citation/props/remarks">Switch to JSON</a></div>
@@ -9180,8 +9180,8 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/back-matter/resources/citation/links" class="toc5 name">link</h5>
-                                             <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/back-matter/resources/citation/links">(global definition)</a></p>
+                                             <h5 id="/component-definition/back-matter/resource/citation/link" class="toc5 name">link</h5>
+                                             <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/back-matter/resource/citation/link">(global definition)</a></p>
                                              <p class="occurrence">[0 to ∞]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/back-matter/resources/citation/links">Switch to JSON</a></div>
                                              <p class="formal-name">Link</p>
@@ -9214,7 +9214,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 <summary>Attributes (3)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/component-definition/back-matter/resources/citation/links/href" class="toc6 name">href</h6>
+                                                      <h6 id="/component-definition/back-matter/resource/citation/link/@href" class="toc6 name">href</h6>
                                                       <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
                                                       <p class="occurrence">[1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/back-matter/resources/citation/links/href">Switch to JSON</a></div>
@@ -9249,7 +9249,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/component-definition/back-matter/resources/citation/links/rel" class="toc6 name">rel</h6>
+                                                      <h6 id="/component-definition/back-matter/resource/citation/link/@rel" class="toc6 name">rel</h6>
                                                       <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/back-matter/resources/citation/links/rel">Switch to JSON</a></div>
@@ -9273,7 +9273,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/component-definition/back-matter/resources/citation/links/media-type" class="toc6 name">media-type</h6>
+                                                      <h6 id="/component-definition/back-matter/resource/citation/link/@media-type" class="toc6 name">media-type</h6>
                                                       <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/back-matter/resources/citation/links/media-type">Switch to JSON</a></div>
@@ -9298,7 +9298,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 <summary>Element (1)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/component-definition/back-matter/resources/citation/links/text" class="toc6 name">text</h6>
+                                                      <h6 id="/component-definition/back-matter/resource/citation/link/text" class="toc6 name">text</h6>
                                                       <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/back-matter/resources/citation/links/text">Switch to JSON</a></div>
@@ -9317,7 +9317,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/back-matter/resources/rlinks" class="toc4 name">rlink</h4>
+                                    <h4 id="/component-definition/back-matter/resource/rlink" class="toc4 name">rlink</h4>
                                     <p class="type">element<br /></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/back-matter/resources/rlinks">Switch to JSON</a></div>
@@ -9347,7 +9347,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Attributes (2)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/back-matter/resources/rlinks/href" class="toc5 name">href</h5>
+                                             <h5 id="/component-definition/back-matter/resource/rlink/@href" class="toc5 name">href</h5>
                                              <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/back-matter/resources/rlinks/href">Switch to JSON</a></div>
@@ -9359,7 +9359,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/back-matter/resources/rlinks/media-type" class="toc5 name">media-type</h5>
+                                             <h5 id="/component-definition/back-matter/resource/rlink/@media-type" class="toc5 name">media-type</h5>
                                              <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/back-matter/resources/rlinks/media-type">Switch to JSON</a></div>
@@ -9375,7 +9375,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Element (1)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/back-matter/resources/rlinks/hashes" class="toc5 name">hash</h5>
+                                             <h5 id="/component-definition/back-matter/resource/rlink/hash" class="toc5 name">hash</h5>
                                              <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[0 to ∞]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/back-matter/resources/rlinks/hashes">Switch to JSON</a></div>
@@ -9403,7 +9403,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 <summary>Attribute (1)</summary>
                                                 <div class="model-entry definition field">
                                                    <div class="instance-header">
-                                                      <h6 id="/component-definition/back-matter/resources/rlinks/hashes/algorithm" class="toc6 name">algorithm</h6>
+                                                      <h6 id="/component-definition/back-matter/resource/rlink/hash/@algorithm" class="toc6 name">algorithm</h6>
                                                       <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                                       <p class="occurrence">[1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/back-matter/resources/rlinks/hashes/algorithm">Switch to JSON</a></div>
@@ -9465,7 +9465,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/back-matter/resources/base64" class="toc4 name">base64</h4>
+                                    <h4 id="/component-definition/back-matter/resource/base64" class="toc4 name">base64</h4>
                                     <p class="type"><a href="/reference/datatypes/#base64binary">base64Binary</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/back-matter/resources/base64">Switch to JSON</a></div>
@@ -9480,7 +9480,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Attributes (2)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/back-matter/resources/base64/filename" class="toc5 name">filename</h5>
+                                             <h5 id="/component-definition/back-matter/resource/base64/@filename" class="toc5 name">filename</h5>
                                              <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/back-matter/resources/base64/filename">Switch to JSON</a></div>
@@ -9492,7 +9492,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/component-definition/back-matter/resources/base64/media-type" class="toc5 name">media-type</h5>
+                                             <h5 id="/component-definition/back-matter/resource/base64/@media-type" class="toc5 name">media-type</h5>
                                              <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/back-matter/resources/base64/media-type">Switch to JSON</a></div>
@@ -9508,7 +9508,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/component-definition/back-matter/resources/remarks" class="toc4 name">remarks</h4>
+                                    <h4 id="/component-definition/back-matter/resource/remarks" class="toc4 name">remarks</h4>
                                     <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/back-matter/resources/remarks">Switch to JSON</a></div>

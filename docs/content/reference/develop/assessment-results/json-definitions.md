@@ -18,8 +18,8 @@ The following is a reference for the JSON object definitions derived from this m
    <p><span class="usa-tag">Version</span> 1.0.0</p>
    <p><span class="usa-tag">Short name</span> oscal-ar</p>
    <p><span class="usa-tag">JSON Base URI</span> <code>http://csrc.nist.gov/ns/oscal</code></p>
-   <p><span class="usa-tag">JSON Schema</span> <a href="/artifacts/json/schema/oscal_assessment-results_schema.json">oscal_assessment-results_schema.json</a></p>
-   <p><span class="usa-tag">XML to JSON converter</span> <a href="/artifacts/json/convert/oscal_assessment-results_xml-to-json-converter.xsl">oscal_assessment-results_xml-to-json-converter.xsl</a> <a href="https://github.com/usnistgov/OSCAL/tree/main/json#converting-oscal-xml-content-to-json">(How do I use the converter to convert OSCAL XML to JSON)</a></p>
+   <p><span class="usa-tag">JSON Schema</span> <a href="https://pages.nist.gov/OSCAL/artifacts/json/schema/oscal_assessment-results_schema.json">oscal_assessment-results_schema.json</a></p>
+   <p><span class="usa-tag">XML to JSON converter</span> <a href="https://pages.nist.gov/OSCAL/artifacts/xml/convert/oscal_assessment-results_xml-to-json-converter.xsl">oscal_assessment-results_xml-to-json-converter.xsl</a> <a href="https://github.com/usnistgov/OSCAL/tree/master/xml#converting-oscal-xml-content-to-json">(How do I use the converter to convert OSCAL XML to JSON)</a></p>
    <details class="remarks" open="open">
       <summary>Remarks</summary>
       <p class="p">The OSCAL assessment results format is used to describe the information typically

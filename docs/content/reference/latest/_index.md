@@ -1,5 +1,5 @@
 ---
-title: "Latest Release"
+title: "Latest Release Reference"
 summary: "Latest Release"
 layout: reference-release
 weight: 50

@@ -57,7 +57,7 @@ The following is the XML format reference for this model, which is organized hie
             <summary>Attribute (1)</summary>
             <div class="model-entry definition assembly">
                <div class="instance-header">
-                  <h2 id="/profile/uuid" class="toc2 name">uuid</h2>
+                  <h2 id="/profile/@uuid" class="toc2 name">uuid</h2>
                   <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                   <p class="occurrence">[1]</p>
                   <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/uuid">Switch to JSON</a></div>
@@ -277,7 +277,7 @@ The following is the XML format reference for this model, which is organized hie
                               <summary>Element (1)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/profile/metadata/revisions" class="toc4 name">revision</h4>
+                                    <h4 id="/profile/metadata/revisions/revision" class="toc4 name">revision</h4>
                                     <p class="type">element<br /></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/revisions">Switch to JSON</a></div>
@@ -323,7 +323,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Elements (8)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/metadata/revisions/title" class="toc5 name">title</h5>
+                                             <h5 id="/profile/metadata/revisions/revision/title" class="toc5 name">title</h5>
                                              <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/revisions/title">Switch to JSON</a></div>
@@ -336,7 +336,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/metadata/revisions/published" class="toc5 name">published</h5>
+                                             <h5 id="/profile/metadata/revisions/revision/published" class="toc5 name">published</h5>
                                              <p class="type"><a href="/reference/datatypes/#datetime-with-timezone">dateTime-with-timezone</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/revisions/published">Switch to JSON</a></div>
@@ -364,7 +364,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/metadata/revisions/last-modified" class="toc5 name">last-modified</h5>
+                                             <h5 id="/profile/metadata/revisions/revision/last-modified" class="toc5 name">last-modified</h5>
                                              <p class="type"><a href="/reference/datatypes/#datetime-with-timezone">dateTime-with-timezone</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/revisions/last-modified">Switch to JSON</a></div>
@@ -392,7 +392,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/metadata/revisions/version" class="toc5 name">version</h5>
+                                             <h5 id="/profile/metadata/revisions/revision/version" class="toc5 name">version</h5>
                                              <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/revisions/version">Switch to JSON</a></div>
@@ -419,7 +419,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/metadata/revisions/oscal-version" class="toc5 name">oscal-version</h5>
+                                             <h5 id="/profile/metadata/revisions/revision/oscal-version" class="toc5 name">oscal-version</h5>
                                              <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/revisions/oscal-version">Switch to JSON</a></div>
@@ -441,8 +441,8 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/metadata/revisions/props" class="toc5 name">prop</h5>
-                                             <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/revision/props">(global definition)</a></p>
+                                             <h5 id="/profile/metadata/revisions/revision/prop" class="toc5 name">prop</h5>
+                                             <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/revision/prop">(global definition)</a></p>
                                              <p class="occurrence">[0 to ∞]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/revisions/props">Switch to JSON</a></div>
                                              <p class="formal-name">Property</p>
@@ -472,7 +472,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 <summary>Attributes (5)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/profile/metadata/revisions/props/name" class="toc6 name">name</h6>
+                                                      <h6 id="/profile/metadata/revisions/revision/prop/@name" class="toc6 name">name</h6>
                                                       <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                       <p class="occurrence">[1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/revisions/props/name">Switch to JSON</a></div>
@@ -498,7 +498,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/profile/metadata/revisions/props/uuid" class="toc6 name">uuid</h6>
+                                                      <h6 id="/profile/metadata/revisions/revision/prop/@uuid" class="toc6 name">uuid</h6>
                                                       <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/revisions/props/uuid">Switch to JSON</a></div>
@@ -512,7 +512,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/profile/metadata/revisions/props/ns" class="toc6 name">ns</h6>
+                                                      <h6 id="/profile/metadata/revisions/revision/prop/@ns" class="toc6 name">ns</h6>
                                                       <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/revisions/props/ns">Switch to JSON</a></div>
@@ -546,7 +546,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/profile/metadata/revisions/props/value" class="toc6 name">value</h6>
+                                                      <h6 id="/profile/metadata/revisions/revision/prop/@value" class="toc6 name">value</h6>
                                                       <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                                       <p class="occurrence">[1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/revisions/props/value">Switch to JSON</a></div>
@@ -558,7 +558,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/profile/metadata/revisions/props/class" class="toc6 name">class</h6>
+                                                      <h6 id="/profile/metadata/revisions/revision/prop/@class" class="toc6 name">class</h6>
                                                       <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/revisions/props/class">Switch to JSON</a></div>
@@ -587,7 +587,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 <summary>Element (1)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/profile/metadata/revisions/props/remarks" class="toc6 name">remarks</h6>
+                                                      <h6 id="/profile/metadata/revisions/revision/prop/remarks" class="toc6 name">remarks</h6>
                                                       <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/revisions/props/remarks">Switch to JSON</a></div>
@@ -602,8 +602,8 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/metadata/revisions/links" class="toc5 name">link</h5>
-                                             <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/revision/links">(global definition)</a></p>
+                                             <h5 id="/profile/metadata/revisions/revision/link" class="toc5 name">link</h5>
+                                             <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/revision/link">(global definition)</a></p>
                                              <p class="occurrence">[0 to ∞]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/revisions/links">Switch to JSON</a></div>
                                              <p class="formal-name">Link</p>
@@ -636,7 +636,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 <summary>Attributes (3)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/profile/metadata/revisions/links/href" class="toc6 name">href</h6>
+                                                      <h6 id="/profile/metadata/revisions/revision/link/@href" class="toc6 name">href</h6>
                                                       <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
                                                       <p class="occurrence">[1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/revisions/links/href">Switch to JSON</a></div>
@@ -671,7 +671,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/profile/metadata/revisions/links/rel" class="toc6 name">rel</h6>
+                                                      <h6 id="/profile/metadata/revisions/revision/link/@rel" class="toc6 name">rel</h6>
                                                       <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/revisions/links/rel">Switch to JSON</a></div>
@@ -695,7 +695,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/profile/metadata/revisions/links/media-type" class="toc6 name">media-type</h6>
+                                                      <h6 id="/profile/metadata/revisions/revision/link/@media-type" class="toc6 name">media-type</h6>
                                                       <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/revisions/links/media-type">Switch to JSON</a></div>
@@ -720,7 +720,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 <summary>Element (1)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/profile/metadata/revisions/links/text" class="toc6 name">text</h6>
+                                                      <h6 id="/profile/metadata/revisions/revision/link/text" class="toc6 name">text</h6>
                                                       <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/revisions/links/text">Switch to JSON</a></div>
@@ -736,7 +736,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/metadata/revisions/remarks" class="toc5 name">remarks</h5>
+                                             <h5 id="/profile/metadata/revisions/revision/remarks" class="toc5 name">remarks</h5>
                                              <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/revisions/remarks">Switch to JSON</a></div>
@@ -754,7 +754,7 @@ The following is the XML format reference for this model, which is organized hie
                      </div>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
-                           <h3 id="/profile/metadata/document-ids" class="toc3 name">document-id</h3>
+                           <h3 id="/profile/metadata/document-id" class="toc3 name">document-id</h3>
                            <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                            <p class="occurrence">[0 to ∞]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/document-ids">Switch to JSON</a></div>
@@ -784,7 +784,7 @@ The following is the XML format reference for this model, which is organized hie
                               <summary>Attribute (1)</summary>
                               <div class="model-entry definition field">
                                  <div class="instance-header">
-                                    <h4 id="/profile/metadata/document-ids/scheme" class="toc4 name">scheme</h4>
+                                    <h4 id="/profile/metadata/document-id/@scheme" class="toc4 name">scheme</h4>
                                     <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/document-ids/scheme">Switch to JSON</a></div>
@@ -812,8 +812,8 @@ The following is the XML format reference for this model, which is organized hie
                      </div>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
-                           <h3 id="/profile/metadata/props" class="toc3 name">prop</h3>
-                           <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/metadata/props">(global definition)</a></p>
+                           <h3 id="/profile/metadata/prop" class="toc3 name">prop</h3>
+                           <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/metadata/prop">(global definition)</a></p>
                            <p class="occurrence">[0 to ∞]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/props">Switch to JSON</a></div>
                            <p class="formal-name">Property</p>
@@ -843,7 +843,7 @@ The following is the XML format reference for this model, which is organized hie
                               <summary>Attributes (5)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/profile/metadata/props/name" class="toc4 name">name</h4>
+                                    <h4 id="/profile/metadata/prop/@name" class="toc4 name">name</h4>
                                     <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                     <p class="occurrence">[1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/props/name">Switch to JSON</a></div>
@@ -869,7 +869,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/profile/metadata/props/uuid" class="toc4 name">uuid</h4>
+                                    <h4 id="/profile/metadata/prop/@uuid" class="toc4 name">uuid</h4>
                                     <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/props/uuid">Switch to JSON</a></div>
@@ -883,7 +883,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/profile/metadata/props/ns" class="toc4 name">ns</h4>
+                                    <h4 id="/profile/metadata/prop/@ns" class="toc4 name">ns</h4>
                                     <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/props/ns">Switch to JSON</a></div>
@@ -917,7 +917,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/profile/metadata/props/value" class="toc4 name">value</h4>
+                                    <h4 id="/profile/metadata/prop/@value" class="toc4 name">value</h4>
                                     <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                     <p class="occurrence">[1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/props/value">Switch to JSON</a></div>
@@ -929,7 +929,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/profile/metadata/props/class" class="toc4 name">class</h4>
+                                    <h4 id="/profile/metadata/prop/@class" class="toc4 name">class</h4>
                                     <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/props/class">Switch to JSON</a></div>
@@ -958,7 +958,7 @@ The following is the XML format reference for this model, which is organized hie
                               <summary>Element (1)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/profile/metadata/props/remarks" class="toc4 name">remarks</h4>
+                                    <h4 id="/profile/metadata/prop/remarks" class="toc4 name">remarks</h4>
                                     <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/props/remarks">Switch to JSON</a></div>
@@ -973,8 +973,8 @@ The following is the XML format reference for this model, which is organized hie
                      </div>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
-                           <h3 id="/profile/metadata/links" class="toc3 name">link</h3>
-                           <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/metadata/links">(global definition)</a></p>
+                           <h3 id="/profile/metadata/link" class="toc3 name">link</h3>
+                           <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/metadata/link">(global definition)</a></p>
                            <p class="occurrence">[0 to ∞]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/links">Switch to JSON</a></div>
                            <p class="formal-name">Link</p>
@@ -1007,7 +1007,7 @@ The following is the XML format reference for this model, which is organized hie
                               <summary>Attributes (3)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/profile/metadata/links/href" class="toc4 name">href</h4>
+                                    <h4 id="/profile/metadata/link/@href" class="toc4 name">href</h4>
                                     <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
                                     <p class="occurrence">[1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/links/href">Switch to JSON</a></div>
@@ -1042,7 +1042,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/profile/metadata/links/rel" class="toc4 name">rel</h4>
+                                    <h4 id="/profile/metadata/link/@rel" class="toc4 name">rel</h4>
                                     <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/links/rel">Switch to JSON</a></div>
@@ -1066,7 +1066,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/profile/metadata/links/media-type" class="toc4 name">media-type</h4>
+                                    <h4 id="/profile/metadata/link/@media-type" class="toc4 name">media-type</h4>
                                     <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/links/media-type">Switch to JSON</a></div>
@@ -1091,7 +1091,7 @@ The following is the XML format reference for this model, which is organized hie
                               <summary>Element (1)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/profile/metadata/links/text" class="toc4 name">text</h4>
+                                    <h4 id="/profile/metadata/link/text" class="toc4 name">text</h4>
                                     <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/links/text">Switch to JSON</a></div>
@@ -1107,8 +1107,8 @@ The following is the XML format reference for this model, which is organized hie
                      </div>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
-                           <h3 id="/profile/metadata/roles" class="toc3 name">role</h3>
-                           <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/metadata/roles">(global definition)</a></p>
+                           <h3 id="/profile/metadata/role" class="toc3 name">role</h3>
+                           <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/metadata/role">(global definition)</a></p>
                            <p class="occurrence">[0 to ∞]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/roles">Switch to JSON</a></div>
                            <p class="formal-name">Role</p>
@@ -1128,7 +1128,7 @@ The following is the XML format reference for this model, which is organized hie
                               <summary>Attribute (1)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/profile/metadata/roles/id" class="toc4 name">id</h4>
+                                    <h4 id="/profile/metadata/role/@id" class="toc4 name">id</h4>
                                     <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                     <p class="occurrence">[1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/roles/id">Switch to JSON</a></div>
@@ -1164,7 +1164,7 @@ The following is the XML format reference for this model, which is organized hie
                               <summary>Elements (6)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/profile/metadata/roles/title" class="toc4 name">title</h4>
+                                    <h4 id="/profile/metadata/role/title" class="toc4 name">title</h4>
                                     <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                     <p class="occurrence">[1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/roles/title">Switch to JSON</a></div>
@@ -1176,7 +1176,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/profile/metadata/roles/short-name" class="toc4 name">short-name</h4>
+                                    <h4 id="/profile/metadata/role/short-name" class="toc4 name">short-name</h4>
                                     <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/roles/short-name">Switch to JSON</a></div>
@@ -1188,7 +1188,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/profile/metadata/roles/description" class="toc4 name">description</h4>
+                                    <h4 id="/profile/metadata/role/description" class="toc4 name">description</h4>
                                     <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/roles/description">Switch to JSON</a></div>
@@ -1200,8 +1200,8 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/profile/metadata/roles/props" class="toc4 name">prop</h4>
-                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/role/props">(global definition)</a></p>
+                                    <h4 id="/profile/metadata/role/prop" class="toc4 name">prop</h4>
+                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/role/prop">(global definition)</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/roles/props">Switch to JSON</a></div>
                                     <p class="formal-name">Property</p>
@@ -1231,7 +1231,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Attributes (5)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/metadata/roles/props/name" class="toc5 name">name</h5>
+                                             <h5 id="/profile/metadata/role/prop/@name" class="toc5 name">name</h5>
                                              <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/roles/props/name">Switch to JSON</a></div>
@@ -1257,7 +1257,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/metadata/roles/props/uuid" class="toc5 name">uuid</h5>
+                                             <h5 id="/profile/metadata/role/prop/@uuid" class="toc5 name">uuid</h5>
                                              <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/roles/props/uuid">Switch to JSON</a></div>
@@ -1271,7 +1271,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/metadata/roles/props/ns" class="toc5 name">ns</h5>
+                                             <h5 id="/profile/metadata/role/prop/@ns" class="toc5 name">ns</h5>
                                              <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/roles/props/ns">Switch to JSON</a></div>
@@ -1305,7 +1305,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/metadata/roles/props/value" class="toc5 name">value</h5>
+                                             <h5 id="/profile/metadata/role/prop/@value" class="toc5 name">value</h5>
                                              <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/roles/props/value">Switch to JSON</a></div>
@@ -1317,7 +1317,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/metadata/roles/props/class" class="toc5 name">class</h5>
+                                             <h5 id="/profile/metadata/role/prop/@class" class="toc5 name">class</h5>
                                              <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/roles/props/class">Switch to JSON</a></div>
@@ -1346,7 +1346,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Element (1)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/metadata/roles/props/remarks" class="toc5 name">remarks</h5>
+                                             <h5 id="/profile/metadata/role/prop/remarks" class="toc5 name">remarks</h5>
                                              <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/roles/props/remarks">Switch to JSON</a></div>
@@ -1361,8 +1361,8 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/profile/metadata/roles/links" class="toc4 name">link</h4>
-                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/role/links">(global definition)</a></p>
+                                    <h4 id="/profile/metadata/role/link" class="toc4 name">link</h4>
+                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/role/link">(global definition)</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/roles/links">Switch to JSON</a></div>
                                     <p class="formal-name">Link</p>
@@ -1395,7 +1395,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Attributes (3)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/metadata/roles/links/href" class="toc5 name">href</h5>
+                                             <h5 id="/profile/metadata/role/link/@href" class="toc5 name">href</h5>
                                              <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/roles/links/href">Switch to JSON</a></div>
@@ -1430,7 +1430,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/metadata/roles/links/rel" class="toc5 name">rel</h5>
+                                             <h5 id="/profile/metadata/role/link/@rel" class="toc5 name">rel</h5>
                                              <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/roles/links/rel">Switch to JSON</a></div>
@@ -1454,7 +1454,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/metadata/roles/links/media-type" class="toc5 name">media-type</h5>
+                                             <h5 id="/profile/metadata/role/link/@media-type" class="toc5 name">media-type</h5>
                                              <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/roles/links/media-type">Switch to JSON</a></div>
@@ -1479,7 +1479,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Element (1)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/metadata/roles/links/text" class="toc5 name">text</h5>
+                                             <h5 id="/profile/metadata/role/link/text" class="toc5 name">text</h5>
                                              <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/roles/links/text">Switch to JSON</a></div>
@@ -1495,7 +1495,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/profile/metadata/roles/remarks" class="toc4 name">remarks</h4>
+                                    <h4 id="/profile/metadata/role/remarks" class="toc4 name">remarks</h4>
                                     <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/roles/remarks">Switch to JSON</a></div>
@@ -1510,8 +1510,8 @@ The following is the XML format reference for this model, which is organized hie
                      </div>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
-                           <h3 id="/profile/metadata/locations" class="toc3 name">location</h3>
-                           <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/metadata/locations">(global definition)</a></p>
+                           <h3 id="/profile/metadata/location" class="toc3 name">location</h3>
+                           <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/metadata/location">(global definition)</a></p>
                            <p class="occurrence">[0 to ∞]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/locations">Switch to JSON</a></div>
                            <p class="formal-name">Location</p>
@@ -1552,7 +1552,7 @@ The following is the XML format reference for this model, which is organized hie
                               <summary>Attribute (1)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/profile/metadata/locations/uuid" class="toc4 name">uuid</h4>
+                                    <h4 id="/profile/metadata/location/@uuid" class="toc4 name">uuid</h4>
                                     <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                     <p class="occurrence">[1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/locations/uuid">Switch to JSON</a></div>
@@ -1569,7 +1569,7 @@ The following is the XML format reference for this model, which is organized hie
                               <summary>Elements (8)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/profile/metadata/locations/title" class="toc4 name">title</h4>
+                                    <h4 id="/profile/metadata/location/title" class="toc4 name">title</h4>
                                     <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/locations/title">Switch to JSON</a></div>
@@ -1581,7 +1581,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/profile/metadata/locations/address" class="toc4 name">address</h4>
+                                    <h4 id="/profile/metadata/location/address" class="toc4 name">address</h4>
                                     <p class="type">element<br /></p>
                                     <p class="occurrence">[1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/locations/address">Switch to JSON</a></div>
@@ -1602,7 +1602,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Attribute (1)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/metadata/locations/address/type" class="toc5 name">type</h5>
+                                             <h5 id="/profile/metadata/location/address/@type" class="toc5 name">type</h5>
                                              <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/locations/address/type">Switch to JSON</a></div>
@@ -1630,7 +1630,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Elements (5)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/metadata/locations/address/addr-lines" class="toc5 name">addr-line</h5>
+                                             <h5 id="/profile/metadata/location/address/addr-line" class="toc5 name">addr-line</h5>
                                              <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[0 to ∞]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/locations/address/addr-lines">Switch to JSON</a></div>
@@ -1642,7 +1642,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/metadata/locations/address/city" class="toc5 name">city</h5>
+                                             <h5 id="/profile/metadata/location/address/city" class="toc5 name">city</h5>
                                              <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/locations/address/city">Switch to JSON</a></div>
@@ -1654,7 +1654,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/metadata/locations/address/state" class="toc5 name">state</h5>
+                                             <h5 id="/profile/metadata/location/address/state" class="toc5 name">state</h5>
                                              <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/locations/address/state">Switch to JSON</a></div>
@@ -1666,7 +1666,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/metadata/locations/address/postal-code" class="toc5 name">postal-code</h5>
+                                             <h5 id="/profile/metadata/location/address/postal-code" class="toc5 name">postal-code</h5>
                                              <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/locations/address/postal-code">Switch to JSON</a></div>
@@ -1678,7 +1678,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/metadata/locations/address/country" class="toc5 name">country</h5>
+                                             <h5 id="/profile/metadata/location/address/country" class="toc5 name">country</h5>
                                              <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/locations/address/country">Switch to JSON</a></div>
@@ -1699,7 +1699,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/profile/metadata/locations/email-addresses" class="toc4 name">email-address</h4>
+                                    <h4 id="/profile/metadata/location/email-address" class="toc4 name">email-address</h4>
                                     <p class="type"><a href="/reference/datatypes/#email">email</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/locations/email-addresses">Switch to JSON</a></div>
@@ -1719,7 +1719,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/profile/metadata/locations/telephone-numbers" class="toc4 name">telephone-number</h4>
+                                    <h4 id="/profile/metadata/location/telephone-number" class="toc4 name">telephone-number</h4>
                                     <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/locations/telephone-numbers">Switch to JSON</a></div>
@@ -1742,7 +1742,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Attribute (1)</summary>
                                        <div class="model-entry definition field">
                                           <div class="instance-header">
-                                             <h5 id="/profile/metadata/locations/telephone-numbers/type" class="toc5 name">type</h5>
+                                             <h5 id="/profile/metadata/location/telephone-number/@type" class="toc5 name">type</h5>
                                              <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/locations/telephone-numbers/type">Switch to JSON</a></div>
@@ -1772,7 +1772,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/profile/metadata/locations/urls" class="toc4 name">url</h4>
+                                    <h4 id="/profile/metadata/location/url" class="toc4 name">url</h4>
                                     <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/locations/urls">Switch to JSON</a></div>
@@ -1785,8 +1785,8 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/profile/metadata/locations/props" class="toc4 name">prop</h4>
-                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/location/props">(global definition)</a></p>
+                                    <h4 id="/profile/metadata/location/prop" class="toc4 name">prop</h4>
+                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/location/prop">(global definition)</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/locations/props">Switch to JSON</a></div>
                                     <p class="formal-name">Property</p>
@@ -1816,7 +1816,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Attributes (5)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/metadata/locations/props/name" class="toc5 name">name</h5>
+                                             <h5 id="/profile/metadata/location/prop/@name" class="toc5 name">name</h5>
                                              <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/locations/props/name">Switch to JSON</a></div>
@@ -1842,7 +1842,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/metadata/locations/props/uuid" class="toc5 name">uuid</h5>
+                                             <h5 id="/profile/metadata/location/prop/@uuid" class="toc5 name">uuid</h5>
                                              <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/locations/props/uuid">Switch to JSON</a></div>
@@ -1856,7 +1856,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/metadata/locations/props/ns" class="toc5 name">ns</h5>
+                                             <h5 id="/profile/metadata/location/prop/@ns" class="toc5 name">ns</h5>
                                              <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/locations/props/ns">Switch to JSON</a></div>
@@ -1890,7 +1890,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/metadata/locations/props/value" class="toc5 name">value</h5>
+                                             <h5 id="/profile/metadata/location/prop/@value" class="toc5 name">value</h5>
                                              <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/locations/props/value">Switch to JSON</a></div>
@@ -1902,7 +1902,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/metadata/locations/props/class" class="toc5 name">class</h5>
+                                             <h5 id="/profile/metadata/location/prop/@class" class="toc5 name">class</h5>
                                              <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/locations/props/class">Switch to JSON</a></div>
@@ -1931,7 +1931,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Element (1)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/metadata/locations/props/remarks" class="toc5 name">remarks</h5>
+                                             <h5 id="/profile/metadata/location/prop/remarks" class="toc5 name">remarks</h5>
                                              <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/locations/props/remarks">Switch to JSON</a></div>
@@ -1946,8 +1946,8 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/profile/metadata/locations/links" class="toc4 name">link</h4>
-                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/location/links">(global definition)</a></p>
+                                    <h4 id="/profile/metadata/location/link" class="toc4 name">link</h4>
+                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/location/link">(global definition)</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/locations/links">Switch to JSON</a></div>
                                     <p class="formal-name">Link</p>
@@ -1980,7 +1980,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Attributes (3)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/metadata/locations/links/href" class="toc5 name">href</h5>
+                                             <h5 id="/profile/metadata/location/link/@href" class="toc5 name">href</h5>
                                              <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/locations/links/href">Switch to JSON</a></div>
@@ -2015,7 +2015,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/metadata/locations/links/rel" class="toc5 name">rel</h5>
+                                             <h5 id="/profile/metadata/location/link/@rel" class="toc5 name">rel</h5>
                                              <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/locations/links/rel">Switch to JSON</a></div>
@@ -2039,7 +2039,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/metadata/locations/links/media-type" class="toc5 name">media-type</h5>
+                                             <h5 id="/profile/metadata/location/link/@media-type" class="toc5 name">media-type</h5>
                                              <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/locations/links/media-type">Switch to JSON</a></div>
@@ -2064,7 +2064,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Element (1)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/metadata/locations/links/text" class="toc5 name">text</h5>
+                                             <h5 id="/profile/metadata/location/link/text" class="toc5 name">text</h5>
                                              <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/locations/links/text">Switch to JSON</a></div>
@@ -2080,7 +2080,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/profile/metadata/locations/remarks" class="toc4 name">remarks</h4>
+                                    <h4 id="/profile/metadata/location/remarks" class="toc4 name">remarks</h4>
                                     <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/locations/remarks">Switch to JSON</a></div>
@@ -2095,8 +2095,8 @@ The following is the XML format reference for this model, which is organized hie
                      </div>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
-                           <h3 id="/profile/metadata/parties" class="toc3 name">party</h3>
-                           <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/metadata/parties">(global definition)</a></p>
+                           <h3 id="/profile/metadata/party" class="toc3 name">party</h3>
+                           <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/metadata/party">(global definition)</a></p>
                            <p class="occurrence">[0 to ∞]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/parties">Switch to JSON</a></div>
                            <p class="formal-name">Party (organization or person)</p>
@@ -2122,7 +2122,7 @@ The following is the XML format reference for this model, which is organized hie
                               <summary>Attributes (2)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/profile/metadata/parties/uuid" class="toc4 name">uuid</h4>
+                                    <h4 id="/profile/metadata/party/@uuid" class="toc4 name">uuid</h4>
                                     <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                     <p class="occurrence">[1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/parties/uuid">Switch to JSON</a></div>
@@ -2136,7 +2136,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/profile/metadata/parties/type" class="toc4 name">type</h4>
+                                    <h4 id="/profile/metadata/party/@type" class="toc4 name">type</h4>
                                     <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                     <p class="occurrence">[1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/parties/type">Switch to JSON</a></div>
@@ -2164,7 +2164,7 @@ The following is the XML format reference for this model, which is organized hie
                               <summary>Elements (9)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/profile/metadata/parties/name" class="toc4 name">name</h4>
+                                    <h4 id="/profile/metadata/party/name" class="toc4 name">name</h4>
                                     <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/parties/name">Switch to JSON</a></div>
@@ -2177,7 +2177,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/profile/metadata/parties/short-name" class="toc4 name">short-name</h4>
+                                    <h4 id="/profile/metadata/party/short-name" class="toc4 name">short-name</h4>
                                     <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/parties/short-name">Switch to JSON</a></div>
@@ -2189,7 +2189,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/profile/metadata/parties/external-ids" class="toc4 name">external-id</h4>
+                                    <h4 id="/profile/metadata/party/external-id" class="toc4 name">external-id</h4>
                                     <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/parties/external-ids">Switch to JSON</a></div>
@@ -2205,7 +2205,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Attribute (1)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/metadata/parties/external-ids/scheme" class="toc5 name">scheme</h5>
+                                             <h5 id="/profile/metadata/party/external-id/@scheme" class="toc5 name">scheme</h5>
                                              <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/parties/external-ids/scheme">Switch to JSON</a></div>
@@ -2231,8 +2231,8 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/profile/metadata/parties/props" class="toc4 name">prop</h4>
-                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/party/props">(global definition)</a></p>
+                                    <h4 id="/profile/metadata/party/prop" class="toc4 name">prop</h4>
+                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/party/prop">(global definition)</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/parties/props">Switch to JSON</a></div>
                                     <p class="formal-name">Property</p>
@@ -2262,7 +2262,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Attributes (5)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/metadata/parties/props/name" class="toc5 name">name</h5>
+                                             <h5 id="/profile/metadata/party/prop/@name" class="toc5 name">name</h5>
                                              <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/parties/props/name">Switch to JSON</a></div>
@@ -2288,7 +2288,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/metadata/parties/props/uuid" class="toc5 name">uuid</h5>
+                                             <h5 id="/profile/metadata/party/prop/@uuid" class="toc5 name">uuid</h5>
                                              <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/parties/props/uuid">Switch to JSON</a></div>
@@ -2302,7 +2302,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/metadata/parties/props/ns" class="toc5 name">ns</h5>
+                                             <h5 id="/profile/metadata/party/prop/@ns" class="toc5 name">ns</h5>
                                              <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/parties/props/ns">Switch to JSON</a></div>
@@ -2336,7 +2336,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/metadata/parties/props/value" class="toc5 name">value</h5>
+                                             <h5 id="/profile/metadata/party/prop/@value" class="toc5 name">value</h5>
                                              <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/parties/props/value">Switch to JSON</a></div>
@@ -2348,7 +2348,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/metadata/parties/props/class" class="toc5 name">class</h5>
+                                             <h5 id="/profile/metadata/party/prop/@class" class="toc5 name">class</h5>
                                              <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/parties/props/class">Switch to JSON</a></div>
@@ -2377,7 +2377,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Element (1)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/metadata/parties/props/remarks" class="toc5 name">remarks</h5>
+                                             <h5 id="/profile/metadata/party/prop/remarks" class="toc5 name">remarks</h5>
                                              <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/parties/props/remarks">Switch to JSON</a></div>
@@ -2392,8 +2392,8 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/profile/metadata/parties/links" class="toc4 name">link</h4>
-                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/party/links">(global definition)</a></p>
+                                    <h4 id="/profile/metadata/party/link" class="toc4 name">link</h4>
+                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/party/link">(global definition)</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/parties/links">Switch to JSON</a></div>
                                     <p class="formal-name">Link</p>
@@ -2426,7 +2426,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Attributes (3)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/metadata/parties/links/href" class="toc5 name">href</h5>
+                                             <h5 id="/profile/metadata/party/link/@href" class="toc5 name">href</h5>
                                              <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/parties/links/href">Switch to JSON</a></div>
@@ -2461,7 +2461,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/metadata/parties/links/rel" class="toc5 name">rel</h5>
+                                             <h5 id="/profile/metadata/party/link/@rel" class="toc5 name">rel</h5>
                                              <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/parties/links/rel">Switch to JSON</a></div>
@@ -2485,7 +2485,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/metadata/parties/links/media-type" class="toc5 name">media-type</h5>
+                                             <h5 id="/profile/metadata/party/link/@media-type" class="toc5 name">media-type</h5>
                                              <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/parties/links/media-type">Switch to JSON</a></div>
@@ -2510,7 +2510,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Element (1)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/metadata/parties/links/text" class="toc5 name">text</h5>
+                                             <h5 id="/profile/metadata/party/link/text" class="toc5 name">text</h5>
                                              <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/parties/links/text">Switch to JSON</a></div>
@@ -2526,7 +2526,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/profile/metadata/parties/email-addresses" class="toc4 name">email-address</h4>
+                                    <h4 id="/profile/metadata/party/email-address" class="toc4 name">email-address</h4>
                                     <p class="type"><a href="/reference/datatypes/#email">email</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/parties/email-addresses">Switch to JSON</a></div>
@@ -2546,7 +2546,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/profile/metadata/parties/telephone-numbers" class="toc4 name">telephone-number</h4>
+                                    <h4 id="/profile/metadata/party/telephone-number" class="toc4 name">telephone-number</h4>
                                     <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/parties/telephone-numbers">Switch to JSON</a></div>
@@ -2569,7 +2569,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Attribute (1)</summary>
                                        <div class="model-entry definition field">
                                           <div class="instance-header">
-                                             <h5 id="/profile/metadata/parties/telephone-numbers/type" class="toc5 name">type</h5>
+                                             <h5 id="/profile/metadata/party/telephone-number/@type" class="toc5 name">type</h5>
                                              <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/parties/telephone-numbers/type">Switch to JSON</a></div>
@@ -2599,7 +2599,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/profile/metadata/parties/member-of-organizations" class="toc4 name">member-of-organization</h4>
+                                    <h4 id="/profile/metadata/party/member-of-organization" class="toc4 name">member-of-organization</h4>
                                     <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/parties/member-of-organizations">Switch to JSON</a></div>
@@ -2629,7 +2629,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/profile/metadata/parties/remarks" class="toc4 name">remarks</h4>
+                                    <h4 id="/profile/metadata/party/remarks" class="toc4 name">remarks</h4>
                                     <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/parties/remarks">Switch to JSON</a></div>
@@ -2644,8 +2644,8 @@ The following is the XML format reference for this model, which is organized hie
                      </div>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
-                           <h3 id="/profile/metadata/responsible-parties" class="toc3 name">responsible-party</h3>
-                           <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/metadata/responsible-parties">(global definition)</a></p>
+                           <h3 id="/profile/metadata/responsible-party" class="toc3 name">responsible-party</h3>
+                           <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/metadata/responsible-party">(global definition)</a></p>
                            <p class="occurrence">[0 to ∞]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/responsible-parties">Switch to JSON</a></div>
                            <p class="formal-name">Responsible Party</p>
@@ -2666,7 +2666,7 @@ The following is the XML format reference for this model, which is organized hie
                               <summary>Attribute (1)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/profile/metadata/responsible-parties/role-id" class="toc4 name">role-id</h4>
+                                    <h4 id="/profile/metadata/responsible-party/@role-id" class="toc4 name">role-id</h4>
                                     <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                     <p class="occurrence">[1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/responsible-parties/role-id">Switch to JSON</a></div>
@@ -2681,7 +2681,7 @@ The following is the XML format reference for this model, which is organized hie
                               <summary>Elements (4)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/profile/metadata/responsible-parties/party-uuids" class="toc4 name">party-uuid</h4>
+                                    <h4 id="/profile/metadata/responsible-party/party-uuid" class="toc4 name">party-uuid</h4>
                                     <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                     <p class="occurrence">[1 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/responsible-parties/party-uuids">Switch to JSON</a></div>
@@ -2707,8 +2707,8 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/profile/metadata/responsible-parties/props" class="toc4 name">prop</h4>
-                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/responsible-party/props">(global definition)</a></p>
+                                    <h4 id="/profile/metadata/responsible-party/prop" class="toc4 name">prop</h4>
+                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/responsible-party/prop">(global definition)</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/responsible-parties/props">Switch to JSON</a></div>
                                     <p class="formal-name">Property</p>
@@ -2738,7 +2738,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Attributes (5)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/metadata/responsible-parties/props/name" class="toc5 name">name</h5>
+                                             <h5 id="/profile/metadata/responsible-party/prop/@name" class="toc5 name">name</h5>
                                              <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/responsible-parties/props/name">Switch to JSON</a></div>
@@ -2764,7 +2764,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/metadata/responsible-parties/props/uuid" class="toc5 name">uuid</h5>
+                                             <h5 id="/profile/metadata/responsible-party/prop/@uuid" class="toc5 name">uuid</h5>
                                              <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/responsible-parties/props/uuid">Switch to JSON</a></div>
@@ -2778,7 +2778,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/metadata/responsible-parties/props/ns" class="toc5 name">ns</h5>
+                                             <h5 id="/profile/metadata/responsible-party/prop/@ns" class="toc5 name">ns</h5>
                                              <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/responsible-parties/props/ns">Switch to JSON</a></div>
@@ -2812,7 +2812,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/metadata/responsible-parties/props/value" class="toc5 name">value</h5>
+                                             <h5 id="/profile/metadata/responsible-party/prop/@value" class="toc5 name">value</h5>
                                              <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/responsible-parties/props/value">Switch to JSON</a></div>
@@ -2824,7 +2824,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/metadata/responsible-parties/props/class" class="toc5 name">class</h5>
+                                             <h5 id="/profile/metadata/responsible-party/prop/@class" class="toc5 name">class</h5>
                                              <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/responsible-parties/props/class">Switch to JSON</a></div>
@@ -2853,7 +2853,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Element (1)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/metadata/responsible-parties/props/remarks" class="toc5 name">remarks</h5>
+                                             <h5 id="/profile/metadata/responsible-party/prop/remarks" class="toc5 name">remarks</h5>
                                              <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/responsible-parties/props/remarks">Switch to JSON</a></div>
@@ -2868,8 +2868,8 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/profile/metadata/responsible-parties/links" class="toc4 name">link</h4>
-                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/responsible-party/links">(global definition)</a></p>
+                                    <h4 id="/profile/metadata/responsible-party/link" class="toc4 name">link</h4>
+                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/responsible-party/link">(global definition)</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/responsible-parties/links">Switch to JSON</a></div>
                                     <p class="formal-name">Link</p>
@@ -2902,7 +2902,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Attributes (3)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/metadata/responsible-parties/links/href" class="toc5 name">href</h5>
+                                             <h5 id="/profile/metadata/responsible-party/link/@href" class="toc5 name">href</h5>
                                              <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/responsible-parties/links/href">Switch to JSON</a></div>
@@ -2937,7 +2937,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/metadata/responsible-parties/links/rel" class="toc5 name">rel</h5>
+                                             <h5 id="/profile/metadata/responsible-party/link/@rel" class="toc5 name">rel</h5>
                                              <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/responsible-parties/links/rel">Switch to JSON</a></div>
@@ -2961,7 +2961,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/metadata/responsible-parties/links/media-type" class="toc5 name">media-type</h5>
+                                             <h5 id="/profile/metadata/responsible-party/link/@media-type" class="toc5 name">media-type</h5>
                                              <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/responsible-parties/links/media-type">Switch to JSON</a></div>
@@ -2986,7 +2986,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Element (1)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/metadata/responsible-parties/links/text" class="toc5 name">text</h5>
+                                             <h5 id="/profile/metadata/responsible-party/link/text" class="toc5 name">text</h5>
                                              <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/responsible-parties/links/text">Switch to JSON</a></div>
@@ -3002,7 +3002,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/profile/metadata/responsible-parties/remarks" class="toc4 name">remarks</h4>
+                                    <h4 id="/profile/metadata/responsible-party/remarks" class="toc4 name">remarks</h4>
                                     <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/metadata/responsible-parties/remarks">Switch to JSON</a></div>
@@ -3032,8 +3032,8 @@ The following is the XML format reference for this model, which is organized hie
             </div>
             <div class="model-entry definition assembly">
                <div class="instance-header">
-                  <h2 id="/profile/imports" class="toc2 name">import</h2>
-                  <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-profile/profile/imports">(global definition)</a></p>
+                  <h2 id="/profile/import" class="toc2 name">import</h2>
+                  <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-profile/profile/import">(global definition)</a></p>
                   <p class="occurrence">[1 to ∞]</p>
                   <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/imports">Switch to JSON</a></div>
                   <p class="formal-name">Import resource</p>
@@ -3058,7 +3058,7 @@ The following is the XML format reference for this model, which is organized hie
                      <summary>Attribute (1)</summary>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
-                           <h3 id="/profile/imports/href" class="toc3 name">href</h3>
+                           <h3 id="/profile/import/@href" class="toc3 name">href</h3>
                            <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
                            <p class="occurrence">[1]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/imports/href">Switch to JSON</a></div>
@@ -3096,7 +3096,7 @@ The following is the XML format reference for this model, which is organized hie
                      <summary>Element (1)</summary>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
-                           <h3 id="/profile/imports/exclude-controls" class="toc3 name">exclude-controls</h3>
+                           <h3 id="/profile/import/exclude-controls" class="toc3 name">exclude-controls</h3>
                            <p class="type">element<br /></p>
                            <p class="occurrence">[0 to ∞]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/imports/exclude-controls">Switch to JSON</a></div>
@@ -3123,7 +3123,7 @@ The following is the XML format reference for this model, which is organized hie
                               <summary>Attribute (1)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/profile/imports/exclude-controls/with-child-controls" class="toc4 name">with-child-controls</h4>
+                                    <h4 id="/profile/import/exclude-controls/@with-child-controls" class="toc4 name">with-child-controls</h4>
                                     <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/imports/exclude-controls/with-child-controls">Switch to JSON</a></div>
@@ -3151,7 +3151,7 @@ The following is the XML format reference for this model, which is organized hie
                               <summary>Elements (2)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/profile/imports/exclude-controls/with-ids" class="toc4 name">with-id</h4>
+                                    <h4 id="/profile/import/exclude-controls/with-id" class="toc4 name">with-id</h4>
                                     <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/imports/exclude-controls/with-ids">Switch to JSON</a></div>
@@ -3163,7 +3163,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/profile/imports/exclude-controls/matching" class="toc4 name">matching</h4>
+                                    <h4 id="/profile/import/exclude-controls/matching" class="toc4 name">matching</h4>
                                     <p class="type"><a href="/reference/datatypes/#empty">empty</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/imports/exclude-controls/matching">Switch to JSON</a></div>
@@ -3175,7 +3175,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Attribute (1)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/imports/exclude-controls/matching/pattern" class="toc5 name">pattern</h5>
+                                             <h5 id="/profile/import/exclude-controls/matching/@pattern" class="toc5 name">pattern</h5>
                                              <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/imports/exclude-controls/matching/pattern">Switch to JSON</a></div>
@@ -3243,7 +3243,7 @@ The following is the XML format reference for this model, which is organized hie
                               <summary>Attribute (1)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/profile/merge/combine/method" class="toc4 name">method</h4>
+                                    <h4 id="/profile/merge/combine/@method" class="toc4 name">method</h4>
                                     <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/merge/combine/method">Switch to JSON</a></div>
@@ -3289,7 +3289,7 @@ The following is the XML format reference for this model, which is organized hie
                      <summary>Elements (2)</summary>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
-                           <h3 id="/profile/modify/set-parameters" class="toc3 name">set-parameter</h3>
+                           <h3 id="/profile/modify/set-parameter" class="toc3 name">set-parameter</h3>
                            <p class="type">element<br /></p>
                            <p class="occurrence">[0 to ∞]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/set-parameters">Switch to JSON</a></div>
@@ -3307,7 +3307,7 @@ The following is the XML format reference for this model, which is organized hie
                               <summary>Attributes (3)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/profile/modify/set-parameters/param-id" class="toc4 name">param-id</h4>
+                                    <h4 id="/profile/modify/set-parameter/@param-id" class="toc4 name">param-id</h4>
                                     <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                     <p class="occurrence">[1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/set-parameters/param-id">Switch to JSON</a></div>
@@ -3320,7 +3320,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/profile/modify/set-parameters/class" class="toc4 name">class</h4>
+                                    <h4 id="/profile/modify/set-parameter/@class" class="toc4 name">class</h4>
                                     <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/set-parameters/class">Switch to JSON</a></div>
@@ -3345,7 +3345,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/profile/modify/set-parameters/depends-on" class="toc4 name">depends-on</h4>
+                                    <h4 id="/profile/modify/set-parameter/@depends-on" class="toc4 name">depends-on</h4>
                                     <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/set-parameters/depends-on">Switch to JSON</a></div>
@@ -3360,8 +3360,8 @@ The following is the XML format reference for this model, which is organized hie
                               <summary>Elements (6)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/profile/modify/set-parameters/props" class="toc4 name">prop</h4>
-                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-profile/modify/set-parameters/props">(global definition)</a></p>
+                                    <h4 id="/profile/modify/set-parameter/prop" class="toc4 name">prop</h4>
+                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-profile/modify/set-parameter/prop">(global definition)</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/set-parameters/props">Switch to JSON</a></div>
                                     <p class="formal-name">Property</p>
@@ -3391,7 +3391,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Attributes (5)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/modify/set-parameters/props/name" class="toc5 name">name</h5>
+                                             <h5 id="/profile/modify/set-parameter/prop/@name" class="toc5 name">name</h5>
                                              <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/set-parameters/props/name">Switch to JSON</a></div>
@@ -3417,7 +3417,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/modify/set-parameters/props/uuid" class="toc5 name">uuid</h5>
+                                             <h5 id="/profile/modify/set-parameter/prop/@uuid" class="toc5 name">uuid</h5>
                                              <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/set-parameters/props/uuid">Switch to JSON</a></div>
@@ -3431,7 +3431,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/modify/set-parameters/props/ns" class="toc5 name">ns</h5>
+                                             <h5 id="/profile/modify/set-parameter/prop/@ns" class="toc5 name">ns</h5>
                                              <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/set-parameters/props/ns">Switch to JSON</a></div>
@@ -3465,7 +3465,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/modify/set-parameters/props/value" class="toc5 name">value</h5>
+                                             <h5 id="/profile/modify/set-parameter/prop/@value" class="toc5 name">value</h5>
                                              <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/set-parameters/props/value">Switch to JSON</a></div>
@@ -3477,7 +3477,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/modify/set-parameters/props/class" class="toc5 name">class</h5>
+                                             <h5 id="/profile/modify/set-parameter/prop/@class" class="toc5 name">class</h5>
                                              <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/set-parameters/props/class">Switch to JSON</a></div>
@@ -3506,7 +3506,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Element (1)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/modify/set-parameters/props/remarks" class="toc5 name">remarks</h5>
+                                             <h5 id="/profile/modify/set-parameter/prop/remarks" class="toc5 name">remarks</h5>
                                              <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/set-parameters/props/remarks">Switch to JSON</a></div>
@@ -3521,8 +3521,8 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/profile/modify/set-parameters/links" class="toc4 name">link</h4>
-                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-profile/modify/set-parameters/links">(global definition)</a></p>
+                                    <h4 id="/profile/modify/set-parameter/link" class="toc4 name">link</h4>
+                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-profile/modify/set-parameter/link">(global definition)</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/set-parameters/links">Switch to JSON</a></div>
                                     <p class="formal-name">Link</p>
@@ -3555,7 +3555,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Attributes (3)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/modify/set-parameters/links/href" class="toc5 name">href</h5>
+                                             <h5 id="/profile/modify/set-parameter/link/@href" class="toc5 name">href</h5>
                                              <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/set-parameters/links/href">Switch to JSON</a></div>
@@ -3590,7 +3590,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/modify/set-parameters/links/rel" class="toc5 name">rel</h5>
+                                             <h5 id="/profile/modify/set-parameter/link/@rel" class="toc5 name">rel</h5>
                                              <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/set-parameters/links/rel">Switch to JSON</a></div>
@@ -3614,7 +3614,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/modify/set-parameters/links/media-type" class="toc5 name">media-type</h5>
+                                             <h5 id="/profile/modify/set-parameter/link/@media-type" class="toc5 name">media-type</h5>
                                              <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/set-parameters/links/media-type">Switch to JSON</a></div>
@@ -3639,7 +3639,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Element (1)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/modify/set-parameters/links/text" class="toc5 name">text</h5>
+                                             <h5 id="/profile/modify/set-parameter/link/text" class="toc5 name">text</h5>
                                              <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/set-parameters/links/text">Switch to JSON</a></div>
@@ -3655,7 +3655,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/profile/modify/set-parameters/label" class="toc4 name">label</h4>
+                                    <h4 id="/profile/modify/set-parameter/label" class="toc4 name">label</h4>
                                     <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/set-parameters/label">Switch to JSON</a></div>
@@ -3679,7 +3679,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/profile/modify/set-parameters/usage" class="toc4 name">usage</h4>
+                                    <h4 id="/profile/modify/set-parameter/usage" class="toc4 name">usage</h4>
                                     <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/set-parameters/usage">Switch to JSON</a></div>
@@ -3691,8 +3691,8 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/profile/modify/set-parameters/constraints" class="toc4 name">constraint</h4>
-                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-profile/modify/set-parameters/constraints">(global definition)</a></p>
+                                    <h4 id="/profile/modify/set-parameter/constraint" class="toc4 name">constraint</h4>
+                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-profile/modify/set-parameter/constraint">(global definition)</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/set-parameters/constraints">Switch to JSON</a></div>
                                     <p class="formal-name">Constraint</p>
@@ -3703,7 +3703,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Elements (2)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/modify/set-parameters/constraints/description" class="toc5 name">description</h5>
+                                             <h5 id="/profile/modify/set-parameter/constraint/description" class="toc5 name">description</h5>
                                              <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/set-parameters/constraints/description">Switch to JSON</a></div>
@@ -3715,7 +3715,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/modify/set-parameters/constraints/tests" class="toc5 name">test</h5>
+                                             <h5 id="/profile/modify/set-parameter/constraint/test" class="toc5 name">test</h5>
                                              <p class="type">element<br /></p>
                                              <p class="occurrence">[0 to ∞]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/set-parameters/constraints/tests">Switch to JSON</a></div>
@@ -3727,7 +3727,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 <summary>Elements (2)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/profile/modify/set-parameters/constraints/tests/expression" class="toc6 name">expression</h6>
+                                                      <h6 id="/profile/modify/set-parameter/constraint/test/expression" class="toc6 name">expression</h6>
                                                       <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                                       <p class="occurrence">[1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/set-parameters/constraints/tests/expression">Switch to JSON</a></div>
@@ -3739,7 +3739,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/profile/modify/set-parameters/constraints/tests/remarks" class="toc6 name">remarks</h6>
+                                                      <h6 id="/profile/modify/set-parameter/constraint/test/remarks" class="toc6 name">remarks</h6>
                                                       <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/set-parameters/constraints/tests/remarks">Switch to JSON</a></div>
@@ -3757,8 +3757,8 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/profile/modify/set-parameters/guidelines" class="toc4 name">guideline</h4>
-                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-profile/modify/set-parameters/guidelines">(global definition)</a></p>
+                                    <h4 id="/profile/modify/set-parameter/guideline" class="toc4 name">guideline</h4>
+                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-profile/modify/set-parameter/guideline">(global definition)</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/set-parameters/guidelines">Switch to JSON</a></div>
                                     <p class="formal-name">Guideline</p>
@@ -3775,8 +3775,8 @@ The following is the XML format reference for this model, which is organized hie
                      </div>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
-                           <h3 id="/profile/modify/alters" class="toc3 name">alter</h3>
-                           <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-profile/modify/alters">(global definition)</a></p>
+                           <h3 id="/profile/modify/alter" class="toc3 name">alter</h3>
+                           <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-profile/modify/alter">(global definition)</a></p>
                            <p class="occurrence">[0 to ∞]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters">Switch to JSON</a></div>
                            <p class="formal-name">Alteration</p>
@@ -3801,7 +3801,7 @@ The following is the XML format reference for this model, which is organized hie
                               <summary>Attribute (1)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/profile/modify/alters/control-id" class="toc4 name">control-id</h4>
+                                    <h4 id="/profile/modify/alter/@control-id" class="toc4 name">control-id</h4>
                                     <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/control-id">Switch to JSON</a></div>
@@ -3816,7 +3816,7 @@ The following is the XML format reference for this model, which is organized hie
                               <summary>Elements (2)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/profile/modify/alters/removes" class="toc4 name">remove</h4>
+                                    <h4 id="/profile/modify/alter/remove" class="toc4 name">remove</h4>
                                     <p class="type"><a href="/reference/datatypes/#empty">empty</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/removes">Switch to JSON</a></div>
@@ -3840,7 +3840,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Attributes (5)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/modify/alters/removes/by-name" class="toc5 name">by-name</h5>
+                                             <h5 id="/profile/modify/alter/remove/@by-name" class="toc5 name">by-name</h5>
                                              <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/removes/by-name">Switch to JSON</a></div>
@@ -3852,7 +3852,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/modify/alters/removes/by-class" class="toc5 name">by-class</h5>
+                                             <h5 id="/profile/modify/alter/remove/@by-class" class="toc5 name">by-class</h5>
                                              <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/removes/by-class">Switch to JSON</a></div>
@@ -3864,7 +3864,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/modify/alters/removes/by-id" class="toc5 name">by-id</h5>
+                                             <h5 id="/profile/modify/alter/remove/@by-id" class="toc5 name">by-id</h5>
                                              <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/removes/by-id">Switch to JSON</a></div>
@@ -3876,7 +3876,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/modify/alters/removes/by-item-name" class="toc5 name">by-item-name</h5>
+                                             <h5 id="/profile/modify/alter/remove/@by-item-name" class="toc5 name">by-item-name</h5>
                                              <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/removes/by-item-name">Switch to JSON</a></div>
@@ -3889,7 +3889,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/modify/alters/removes/by-ns" class="toc5 name">by-ns</h5>
+                                             <h5 id="/profile/modify/alter/remove/@by-ns" class="toc5 name">by-ns</h5>
                                              <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/removes/by-ns">Switch to JSON</a></div>
@@ -3904,8 +3904,8 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/profile/modify/alters/adds" class="toc4 name">add</h4>
-                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-profile/alter/adds">(global definition)</a></p>
+                                    <h4 id="/profile/modify/alter/add" class="toc4 name">add</h4>
+                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-profile/alter/add">(global definition)</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds">Switch to JSON</a></div>
                                     <p class="formal-name">Addition</p>
@@ -3942,7 +3942,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Attributes (2)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/modify/alters/adds/position" class="toc5 name">position</h5>
+                                             <h5 id="/profile/modify/alter/add/@position" class="toc5 name">position</h5>
                                              <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/position">Switch to JSON</a></div>
@@ -3972,7 +3972,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/modify/alters/adds/by-id" class="toc5 name">by-id</h5>
+                                             <h5 id="/profile/modify/alter/add/@by-id" class="toc5 name">by-id</h5>
                                              <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/by-id">Switch to JSON</a></div>
@@ -3987,7 +3987,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Elements (5)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/modify/alters/adds/title" class="toc5 name">title</h5>
+                                             <h5 id="/profile/modify/alter/add/title" class="toc5 name">title</h5>
                                              <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/title">Switch to JSON</a></div>
@@ -3999,8 +3999,8 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/modify/alters/adds/params" class="toc5 name">param</h5>
-                                             <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-profile/add/params">(global definition)</a></p>
+                                             <h5 id="/profile/modify/alter/add/param" class="toc5 name">param</h5>
+                                             <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-profile/add/param">(global definition)</a></p>
                                              <p class="occurrence">[0 to ∞]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/params">Switch to JSON</a></div>
                                              <p class="formal-name">Parameter</p>
@@ -4026,7 +4026,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 <summary>Attributes (3)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/profile/modify/alters/adds/params/id" class="toc6 name">id</h6>
+                                                      <h6 id="/profile/modify/alter/add/param/@id" class="toc6 name">id</h6>
                                                       <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                       <p class="occurrence">[1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/params/id">Switch to JSON</a></div>
@@ -4040,7 +4040,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/profile/modify/alters/adds/params/class" class="toc6 name">class</h6>
+                                                      <h6 id="/profile/modify/alter/add/param/@class" class="toc6 name">class</h6>
                                                       <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/params/class">Switch to JSON</a></div>
@@ -4065,7 +4065,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/profile/modify/alters/adds/params/depends-on" class="toc6 name">depends-on</h6>
+                                                      <h6 id="/profile/modify/alter/add/param/@depends-on" class="toc6 name">depends-on</h6>
                                                       <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/params/depends-on">Switch to JSON</a></div>
@@ -4080,8 +4080,8 @@ The following is the XML format reference for this model, which is organized hie
                                                 <summary>Elements (7)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/profile/modify/alters/adds/params/props" class="toc6 name">prop</h6>
-                                                      <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/parameter/props">(global definition)</a></p>
+                                                      <h6 id="/profile/modify/alter/add/param/prop" class="toc6 name">prop</h6>
+                                                      <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/parameter/prop">(global definition)</a></p>
                                                       <p class="occurrence">[0 to ∞]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/params/props">Switch to JSON</a></div>
                                                       <p class="formal-name">Property</p>
@@ -4111,7 +4111,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          <summary>Attributes (5)</summary>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
-                                                               <p id="/profile/modify/alters/adds/params/props/name" class="toc7 name">name</p>
+                                                               <p id="/profile/modify/alter/add/param/prop/@name" class="toc7 name">name</p>
                                                                <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                                <p class="occurrence">[1]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/params/props/name">Switch to JSON</a></div>
@@ -4137,7 +4137,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          </div>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
-                                                               <p id="/profile/modify/alters/adds/params/props/uuid" class="toc7 name">uuid</p>
+                                                               <p id="/profile/modify/alter/add/param/prop/@uuid" class="toc7 name">uuid</p>
                                                                <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                                                <p class="occurrence">[0 or 1]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/params/props/uuid">Switch to JSON</a></div>
@@ -4151,7 +4151,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          </div>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
-                                                               <p id="/profile/modify/alters/adds/params/props/ns" class="toc7 name">ns</p>
+                                                               <p id="/profile/modify/alter/add/param/prop/@ns" class="toc7 name">ns</p>
                                                                <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
                                                                <p class="occurrence">[0 or 1]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/params/props/ns">Switch to JSON</a></div>
@@ -4185,7 +4185,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          </div>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
-                                                               <p id="/profile/modify/alters/adds/params/props/value" class="toc7 name">value</p>
+                                                               <p id="/profile/modify/alter/add/param/prop/@value" class="toc7 name">value</p>
                                                                <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                                                <p class="occurrence">[1]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/params/props/value">Switch to JSON</a></div>
@@ -4197,7 +4197,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          </div>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
-                                                               <p id="/profile/modify/alters/adds/params/props/class" class="toc7 name">class</p>
+                                                               <p id="/profile/modify/alter/add/param/prop/@class" class="toc7 name">class</p>
                                                                <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                                <p class="occurrence">[0 or 1]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/params/props/class">Switch to JSON</a></div>
@@ -4226,7 +4226,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          <summary>Element (1)</summary>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
-                                                               <p id="/profile/modify/alters/adds/params/props/remarks" class="toc7 name">remarks</p>
+                                                               <p id="/profile/modify/alter/add/param/prop/remarks" class="toc7 name">remarks</p>
                                                                <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                                                <p class="occurrence">[0 or 1]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/params/props/remarks">Switch to JSON</a></div>
@@ -4241,8 +4241,8 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/profile/modify/alters/adds/params/links" class="toc6 name">link</h6>
-                                                      <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/parameter/links">(global definition)</a></p>
+                                                      <h6 id="/profile/modify/alter/add/param/link" class="toc6 name">link</h6>
+                                                      <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/parameter/link">(global definition)</a></p>
                                                       <p class="occurrence">[0 to ∞]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/params/links">Switch to JSON</a></div>
                                                       <p class="formal-name">Link</p>
@@ -4275,7 +4275,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          <summary>Attributes (3)</summary>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
-                                                               <p id="/profile/modify/alters/adds/params/links/href" class="toc7 name">href</p>
+                                                               <p id="/profile/modify/alter/add/param/link/@href" class="toc7 name">href</p>
                                                                <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
                                                                <p class="occurrence">[1]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/params/links/href">Switch to JSON</a></div>
@@ -4310,7 +4310,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          </div>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
-                                                               <p id="/profile/modify/alters/adds/params/links/rel" class="toc7 name">rel</p>
+                                                               <p id="/profile/modify/alter/add/param/link/@rel" class="toc7 name">rel</p>
                                                                <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                                <p class="occurrence">[0 or 1]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/params/links/rel">Switch to JSON</a></div>
@@ -4334,7 +4334,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          </div>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
-                                                               <p id="/profile/modify/alters/adds/params/links/media-type" class="toc7 name">media-type</p>
+                                                               <p id="/profile/modify/alter/add/param/link/@media-type" class="toc7 name">media-type</p>
                                                                <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                                                <p class="occurrence">[0 or 1]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/params/links/media-type">Switch to JSON</a></div>
@@ -4359,7 +4359,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          <summary>Element (1)</summary>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
-                                                               <p id="/profile/modify/alters/adds/params/links/text" class="toc7 name">text</p>
+                                                               <p id="/profile/modify/alter/add/param/link/text" class="toc7 name">text</p>
                                                                <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                                                <p class="occurrence">[0 or 1]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/params/links/text">Switch to JSON</a></div>
@@ -4375,7 +4375,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/profile/modify/alters/adds/params/label" class="toc6 name">label</h6>
+                                                      <h6 id="/profile/modify/alter/add/param/label" class="toc6 name">label</h6>
                                                       <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/params/label">Switch to JSON</a></div>
@@ -4399,7 +4399,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/profile/modify/alters/adds/params/usage" class="toc6 name">usage</h6>
+                                                      <h6 id="/profile/modify/alter/add/param/usage" class="toc6 name">usage</h6>
                                                       <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/params/usage">Switch to JSON</a></div>
@@ -4411,8 +4411,8 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/profile/modify/alters/adds/params/constraints" class="toc6 name">constraint</h6>
-                                                      <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/parameter/constraints">(global definition)</a></p>
+                                                      <h6 id="/profile/modify/alter/add/param/constraint" class="toc6 name">constraint</h6>
+                                                      <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/parameter/constraint">(global definition)</a></p>
                                                       <p class="occurrence">[0 to ∞]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/params/constraints">Switch to JSON</a></div>
                                                       <p class="formal-name">Constraint</p>
@@ -4423,7 +4423,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          <summary>Elements (2)</summary>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
-                                                               <p id="/profile/modify/alters/adds/params/constraints/description" class="toc7 name">description</p>
+                                                               <p id="/profile/modify/alter/add/param/constraint/description" class="toc7 name">description</p>
                                                                <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                                                <p class="occurrence">[0 or 1]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/params/constraints/description">Switch to JSON</a></div>
@@ -4435,7 +4435,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          </div>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
-                                                               <p id="/profile/modify/alters/adds/params/constraints/tests" class="toc7 name">test</p>
+                                                               <p id="/profile/modify/alter/add/param/constraint/test" class="toc7 name">test</p>
                                                                <p class="type">element<br /></p>
                                                                <p class="occurrence">[0 to ∞]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/params/constraints/tests">Switch to JSON</a></div>
@@ -4447,7 +4447,7 @@ The following is the XML format reference for this model, which is organized hie
                                                                   <summary>Elements (2)</summary>
                                                                   <div class="model-entry definition assembly">
                                                                      <div class="instance-header">
-                                                                        <p id="/profile/modify/alters/adds/params/constraints/tests/expression" class="toc8 name">expression</p>
+                                                                        <p id="/profile/modify/alter/add/param/constraint/test/expression" class="toc8 name">expression</p>
                                                                         <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                                                         <p class="occurrence">[1]</p>
                                                                         <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/params/constraints/tests/expression">Switch to JSON</a></div>
@@ -4459,7 +4459,7 @@ The following is the XML format reference for this model, which is organized hie
                                                                   </div>
                                                                   <div class="model-entry definition assembly">
                                                                      <div class="instance-header">
-                                                                        <p id="/profile/modify/alters/adds/params/constraints/tests/remarks" class="toc8 name">remarks</p>
+                                                                        <p id="/profile/modify/alter/add/param/constraint/test/remarks" class="toc8 name">remarks</p>
                                                                         <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                                                         <p class="occurrence">[0 or 1]</p>
                                                                         <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/params/constraints/tests/remarks">Switch to JSON</a></div>
@@ -4477,8 +4477,8 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/profile/modify/alters/adds/params/guidelines" class="toc6 name">guideline</h6>
-                                                      <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/parameter/guidelines">(global definition)</a></p>
+                                                      <h6 id="/profile/modify/alter/add/param/guideline" class="toc6 name">guideline</h6>
+                                                      <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/parameter/guideline">(global definition)</a></p>
                                                       <p class="occurrence">[0 to ∞]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/params/guidelines">Switch to JSON</a></div>
                                                       <p class="formal-name">Guideline</p>
@@ -4492,7 +4492,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/profile/modify/alters/adds/params/remarks" class="toc6 name">remarks</h6>
+                                                      <h6 id="/profile/modify/alter/add/param/remarks" class="toc6 name">remarks</h6>
                                                       <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/params/remarks">Switch to JSON</a></div>
@@ -4507,8 +4507,8 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/modify/alters/adds/props" class="toc5 name">prop</h5>
-                                             <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-profile/add/props">(global definition)</a></p>
+                                             <h5 id="/profile/modify/alter/add/prop" class="toc5 name">prop</h5>
+                                             <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-profile/add/prop">(global definition)</a></p>
                                              <p class="occurrence">[0 to ∞]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/props">Switch to JSON</a></div>
                                              <p class="formal-name">Property</p>
@@ -4538,7 +4538,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 <summary>Attributes (5)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/profile/modify/alters/adds/props/name" class="toc6 name">name</h6>
+                                                      <h6 id="/profile/modify/alter/add/prop/@name" class="toc6 name">name</h6>
                                                       <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                       <p class="occurrence">[1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/props/name">Switch to JSON</a></div>
@@ -4564,7 +4564,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/profile/modify/alters/adds/props/uuid" class="toc6 name">uuid</h6>
+                                                      <h6 id="/profile/modify/alter/add/prop/@uuid" class="toc6 name">uuid</h6>
                                                       <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/props/uuid">Switch to JSON</a></div>
@@ -4578,7 +4578,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/profile/modify/alters/adds/props/ns" class="toc6 name">ns</h6>
+                                                      <h6 id="/profile/modify/alter/add/prop/@ns" class="toc6 name">ns</h6>
                                                       <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/props/ns">Switch to JSON</a></div>
@@ -4612,7 +4612,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/profile/modify/alters/adds/props/value" class="toc6 name">value</h6>
+                                                      <h6 id="/profile/modify/alter/add/prop/@value" class="toc6 name">value</h6>
                                                       <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                                       <p class="occurrence">[1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/props/value">Switch to JSON</a></div>
@@ -4624,7 +4624,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/profile/modify/alters/adds/props/class" class="toc6 name">class</h6>
+                                                      <h6 id="/profile/modify/alter/add/prop/@class" class="toc6 name">class</h6>
                                                       <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/props/class">Switch to JSON</a></div>
@@ -4653,7 +4653,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 <summary>Element (1)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/profile/modify/alters/adds/props/remarks" class="toc6 name">remarks</h6>
+                                                      <h6 id="/profile/modify/alter/add/prop/remarks" class="toc6 name">remarks</h6>
                                                       <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/props/remarks">Switch to JSON</a></div>
@@ -4668,8 +4668,8 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/modify/alters/adds/links" class="toc5 name">link</h5>
-                                             <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-profile/add/links">(global definition)</a></p>
+                                             <h5 id="/profile/modify/alter/add/link" class="toc5 name">link</h5>
+                                             <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-profile/add/link">(global definition)</a></p>
                                              <p class="occurrence">[0 to ∞]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/links">Switch to JSON</a></div>
                                              <p class="formal-name">Link</p>
@@ -4702,7 +4702,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 <summary>Attributes (3)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/profile/modify/alters/adds/links/href" class="toc6 name">href</h6>
+                                                      <h6 id="/profile/modify/alter/add/link/@href" class="toc6 name">href</h6>
                                                       <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
                                                       <p class="occurrence">[1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/links/href">Switch to JSON</a></div>
@@ -4737,7 +4737,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/profile/modify/alters/adds/links/rel" class="toc6 name">rel</h6>
+                                                      <h6 id="/profile/modify/alter/add/link/@rel" class="toc6 name">rel</h6>
                                                       <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/links/rel">Switch to JSON</a></div>
@@ -4761,7 +4761,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/profile/modify/alters/adds/links/media-type" class="toc6 name">media-type</h6>
+                                                      <h6 id="/profile/modify/alter/add/link/@media-type" class="toc6 name">media-type</h6>
                                                       <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/links/media-type">Switch to JSON</a></div>
@@ -4786,7 +4786,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 <summary>Element (1)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/profile/modify/alters/adds/links/text" class="toc6 name">text</h6>
+                                                      <h6 id="/profile/modify/alter/add/link/text" class="toc6 name">text</h6>
                                                       <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/links/text">Switch to JSON</a></div>
@@ -4802,8 +4802,8 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/modify/alters/adds/parts" class="toc5 name">part</h5>
-                                             <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-profile/add/parts">(global definition)</a></p>
+                                             <h5 id="/profile/modify/alter/add/part" class="toc5 name">part</h5>
+                                             <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-profile/add/part">(global definition)</a></p>
                                              <p class="occurrence">[0 to ∞]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/parts">Switch to JSON</a></div>
                                              <p class="formal-name">Part</p>
@@ -4881,7 +4881,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 <summary>Attributes (4)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/profile/modify/alters/adds/parts/id" class="toc6 name">id</h6>
+                                                      <h6 id="/profile/modify/alter/add/part/@id" class="toc6 name">id</h6>
                                                       <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/parts/id">Switch to JSON</a></div>
@@ -4895,7 +4895,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/profile/modify/alters/adds/parts/name" class="toc6 name">name</h6>
+                                                      <h6 id="/profile/modify/alter/add/part/@name" class="toc6 name">name</h6>
                                                       <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                       <p class="occurrence">[1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/parts/name">Switch to JSON</a></div>
@@ -4932,7 +4932,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/profile/modify/alters/adds/parts/ns" class="toc6 name">ns</h6>
+                                                      <h6 id="/profile/modify/alter/add/part/@ns" class="toc6 name">ns</h6>
                                                       <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/parts/ns">Switch to JSON</a></div>
@@ -4966,7 +4966,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/profile/modify/alters/adds/parts/class" class="toc6 name">class</h6>
+                                                      <h6 id="/profile/modify/alter/add/part/@class" class="toc6 name">class</h6>
                                                       <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/parts/class">Switch to JSON</a></div>
@@ -4999,7 +4999,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 <summary>Elements (5)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/profile/modify/alters/adds/parts/title" class="toc6 name">title</h6>
+                                                      <h6 id="/profile/modify/alter/add/part/title" class="toc6 name">title</h6>
                                                       <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/parts/title">Switch to JSON</a></div>
@@ -5011,8 +5011,8 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/profile/modify/alters/adds/parts/props" class="toc6 name">prop</h6>
-                                                      <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/part/props">(global definition)</a></p>
+                                                      <h6 id="/profile/modify/alter/add/part/prop" class="toc6 name">prop</h6>
+                                                      <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/part/prop">(global definition)</a></p>
                                                       <p class="occurrence">[0 to ∞]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/parts/props">Switch to JSON</a></div>
                                                       <p class="formal-name">Property</p>
@@ -5042,7 +5042,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          <summary>Attributes (5)</summary>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
-                                                               <p id="/profile/modify/alters/adds/parts/props/name" class="toc7 name">name</p>
+                                                               <p id="/profile/modify/alter/add/part/prop/@name" class="toc7 name">name</p>
                                                                <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                                <p class="occurrence">[1]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/parts/props/name">Switch to JSON</a></div>
@@ -5068,7 +5068,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          </div>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
-                                                               <p id="/profile/modify/alters/adds/parts/props/uuid" class="toc7 name">uuid</p>
+                                                               <p id="/profile/modify/alter/add/part/prop/@uuid" class="toc7 name">uuid</p>
                                                                <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                                                <p class="occurrence">[0 or 1]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/parts/props/uuid">Switch to JSON</a></div>
@@ -5082,7 +5082,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          </div>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
-                                                               <p id="/profile/modify/alters/adds/parts/props/ns" class="toc7 name">ns</p>
+                                                               <p id="/profile/modify/alter/add/part/prop/@ns" class="toc7 name">ns</p>
                                                                <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
                                                                <p class="occurrence">[0 or 1]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/parts/props/ns">Switch to JSON</a></div>
@@ -5116,7 +5116,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          </div>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
-                                                               <p id="/profile/modify/alters/adds/parts/props/value" class="toc7 name">value</p>
+                                                               <p id="/profile/modify/alter/add/part/prop/@value" class="toc7 name">value</p>
                                                                <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                                                <p class="occurrence">[1]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/parts/props/value">Switch to JSON</a></div>
@@ -5128,7 +5128,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          </div>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
-                                                               <p id="/profile/modify/alters/adds/parts/props/class" class="toc7 name">class</p>
+                                                               <p id="/profile/modify/alter/add/part/prop/@class" class="toc7 name">class</p>
                                                                <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                                <p class="occurrence">[0 or 1]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/parts/props/class">Switch to JSON</a></div>
@@ -5157,7 +5157,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          <summary>Element (1)</summary>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
-                                                               <p id="/profile/modify/alters/adds/parts/props/remarks" class="toc7 name">remarks</p>
+                                                               <p id="/profile/modify/alter/add/part/prop/remarks" class="toc7 name">remarks</p>
                                                                <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                                                <p class="occurrence">[0 or 1]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/parts/props/remarks">Switch to JSON</a></div>
@@ -5172,8 +5172,8 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/profile/modify/alters/adds/parts/parts" class="toc6 name">part</h6>
-                                                      <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/part/parts">(global definition)</a></p>
+                                                      <h6 id="/profile/modify/alter/add/part/part" class="toc6 name">part</h6>
+                                                      <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/part/part">(global definition)</a></p>
                                                       <p class="occurrence">[0 to ∞]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/parts/parts">Switch to JSON</a></div>
                                                       <p class="formal-name">Part</p>
@@ -5251,8 +5251,8 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/profile/modify/alters/adds/parts/links" class="toc6 name">link</h6>
-                                                      <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/part/links">(global definition)</a></p>
+                                                      <h6 id="/profile/modify/alter/add/part/link" class="toc6 name">link</h6>
+                                                      <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-catalog-common/part/link">(global definition)</a></p>
                                                       <p class="occurrence">[0 to ∞]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/parts/links">Switch to JSON</a></div>
                                                       <p class="formal-name">Link</p>
@@ -5285,7 +5285,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          <summary>Attributes (3)</summary>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
-                                                               <p id="/profile/modify/alters/adds/parts/links/href" class="toc7 name">href</p>
+                                                               <p id="/profile/modify/alter/add/part/link/@href" class="toc7 name">href</p>
                                                                <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
                                                                <p class="occurrence">[1]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/parts/links/href">Switch to JSON</a></div>
@@ -5320,7 +5320,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          </div>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
-                                                               <p id="/profile/modify/alters/adds/parts/links/rel" class="toc7 name">rel</p>
+                                                               <p id="/profile/modify/alter/add/part/link/@rel" class="toc7 name">rel</p>
                                                                <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                                <p class="occurrence">[0 or 1]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/parts/links/rel">Switch to JSON</a></div>
@@ -5344,7 +5344,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          </div>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
-                                                               <p id="/profile/modify/alters/adds/parts/links/media-type" class="toc7 name">media-type</p>
+                                                               <p id="/profile/modify/alter/add/part/link/@media-type" class="toc7 name">media-type</p>
                                                                <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                                                <p class="occurrence">[0 or 1]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/parts/links/media-type">Switch to JSON</a></div>
@@ -5369,7 +5369,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          <summary>Element (1)</summary>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
-                                                               <p id="/profile/modify/alters/adds/parts/links/text" class="toc7 name">text</p>
+                                                               <p id="/profile/modify/alter/add/part/link/text" class="toc7 name">text</p>
                                                                <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                                                <p class="occurrence">[0 or 1]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/modify/alters/adds/parts/links/text">Switch to JSON</a></div>
@@ -5425,7 +5425,7 @@ The following is the XML format reference for this model, which is organized hie
                      <summary>Element (1)</summary>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
-                           <h3 id="/profile/back-matter/resources" class="toc3 name">resource</h3>
+                           <h3 id="/profile/back-matter/resource" class="toc3 name">resource</h3>
                            <p class="type">element<br /></p>
                            <p class="occurrence">[0 to ∞]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/back-matter/resources">Switch to JSON</a></div>
@@ -5558,7 +5558,7 @@ The following is the XML format reference for this model, which is organized hie
                               <summary>Attribute (1)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/profile/back-matter/resources/uuid" class="toc4 name">uuid</h4>
+                                    <h4 id="/profile/back-matter/resource/@uuid" class="toc4 name">uuid</h4>
                                     <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                     <p class="occurrence">[1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/back-matter/resources/uuid">Switch to JSON</a></div>
@@ -5575,7 +5575,7 @@ The following is the XML format reference for this model, which is organized hie
                               <summary>Elements (8)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/profile/back-matter/resources/title" class="toc4 name">title</h4>
+                                    <h4 id="/profile/back-matter/resource/title" class="toc4 name">title</h4>
                                     <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/back-matter/resources/title">Switch to JSON</a></div>
@@ -5587,7 +5587,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/profile/back-matter/resources/description" class="toc4 name">description</h4>
+                                    <h4 id="/profile/back-matter/resource/description" class="toc4 name">description</h4>
                                     <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/back-matter/resources/description">Switch to JSON</a></div>
@@ -5599,8 +5599,8 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/profile/back-matter/resources/props" class="toc4 name">prop</h4>
-                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/back-matter/resources/props">(global definition)</a></p>
+                                    <h4 id="/profile/back-matter/resource/prop" class="toc4 name">prop</h4>
+                                    <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/back-matter/resource/prop">(global definition)</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/back-matter/resources/props">Switch to JSON</a></div>
                                     <p class="formal-name">Property</p>
@@ -5630,7 +5630,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Attributes (5)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/back-matter/resources/props/name" class="toc5 name">name</h5>
+                                             <h5 id="/profile/back-matter/resource/prop/@name" class="toc5 name">name</h5>
                                              <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/back-matter/resources/props/name">Switch to JSON</a></div>
@@ -5656,7 +5656,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/back-matter/resources/props/uuid" class="toc5 name">uuid</h5>
+                                             <h5 id="/profile/back-matter/resource/prop/@uuid" class="toc5 name">uuid</h5>
                                              <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/back-matter/resources/props/uuid">Switch to JSON</a></div>
@@ -5670,7 +5670,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/back-matter/resources/props/ns" class="toc5 name">ns</h5>
+                                             <h5 id="/profile/back-matter/resource/prop/@ns" class="toc5 name">ns</h5>
                                              <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/back-matter/resources/props/ns">Switch to JSON</a></div>
@@ -5704,7 +5704,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/back-matter/resources/props/value" class="toc5 name">value</h5>
+                                             <h5 id="/profile/back-matter/resource/prop/@value" class="toc5 name">value</h5>
                                              <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/back-matter/resources/props/value">Switch to JSON</a></div>
@@ -5716,7 +5716,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/back-matter/resources/props/class" class="toc5 name">class</h5>
+                                             <h5 id="/profile/back-matter/resource/prop/@class" class="toc5 name">class</h5>
                                              <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/back-matter/resources/props/class">Switch to JSON</a></div>
@@ -5745,7 +5745,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Element (1)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/back-matter/resources/props/remarks" class="toc5 name">remarks</h5>
+                                             <h5 id="/profile/back-matter/resource/prop/remarks" class="toc5 name">remarks</h5>
                                              <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/back-matter/resources/props/remarks">Switch to JSON</a></div>
@@ -5760,7 +5760,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/profile/back-matter/resources/document-ids" class="toc4 name">document-id</h4>
+                                    <h4 id="/profile/back-matter/resource/document-id" class="toc4 name">document-id</h4>
                                     <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/back-matter/resources/document-ids">Switch to JSON</a></div>
@@ -5790,7 +5790,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Attribute (1)</summary>
                                        <div class="model-entry definition field">
                                           <div class="instance-header">
-                                             <h5 id="/profile/back-matter/resources/document-ids/scheme" class="toc5 name">scheme</h5>
+                                             <h5 id="/profile/back-matter/resource/document-id/@scheme" class="toc5 name">scheme</h5>
                                              <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/back-matter/resources/document-ids/scheme">Switch to JSON</a></div>
@@ -5818,7 +5818,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/profile/back-matter/resources/citation" class="toc4 name">citation</h4>
+                                    <h4 id="/profile/back-matter/resource/citation" class="toc4 name">citation</h4>
                                     <p class="type">element<br /></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/back-matter/resources/citation">Switch to JSON</a></div>
@@ -5845,7 +5845,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Elements (3)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/back-matter/resources/citation/text" class="toc5 name">text</h5>
+                                             <h5 id="/profile/back-matter/resource/citation/text" class="toc5 name">text</h5>
                                              <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/back-matter/resources/citation/text">Switch to JSON</a></div>
@@ -5857,8 +5857,8 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/back-matter/resources/citation/props" class="toc5 name">prop</h5>
-                                             <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/back-matter/resources/citation/props">(global definition)</a></p>
+                                             <h5 id="/profile/back-matter/resource/citation/prop" class="toc5 name">prop</h5>
+                                             <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/back-matter/resource/citation/prop">(global definition)</a></p>
                                              <p class="occurrence">[0 to ∞]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/back-matter/resources/citation/props">Switch to JSON</a></div>
                                              <p class="formal-name">Property</p>
@@ -5888,7 +5888,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 <summary>Attributes (5)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/profile/back-matter/resources/citation/props/name" class="toc6 name">name</h6>
+                                                      <h6 id="/profile/back-matter/resource/citation/prop/@name" class="toc6 name">name</h6>
                                                       <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                       <p class="occurrence">[1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/back-matter/resources/citation/props/name">Switch to JSON</a></div>
@@ -5914,7 +5914,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/profile/back-matter/resources/citation/props/uuid" class="toc6 name">uuid</h6>
+                                                      <h6 id="/profile/back-matter/resource/citation/prop/@uuid" class="toc6 name">uuid</h6>
                                                       <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/back-matter/resources/citation/props/uuid">Switch to JSON</a></div>
@@ -5928,7 +5928,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/profile/back-matter/resources/citation/props/ns" class="toc6 name">ns</h6>
+                                                      <h6 id="/profile/back-matter/resource/citation/prop/@ns" class="toc6 name">ns</h6>
                                                       <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/back-matter/resources/citation/props/ns">Switch to JSON</a></div>
@@ -5962,7 +5962,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/profile/back-matter/resources/citation/props/value" class="toc6 name">value</h6>
+                                                      <h6 id="/profile/back-matter/resource/citation/prop/@value" class="toc6 name">value</h6>
                                                       <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                                       <p class="occurrence">[1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/back-matter/resources/citation/props/value">Switch to JSON</a></div>
@@ -5974,7 +5974,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/profile/back-matter/resources/citation/props/class" class="toc6 name">class</h6>
+                                                      <h6 id="/profile/back-matter/resource/citation/prop/@class" class="toc6 name">class</h6>
                                                       <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/back-matter/resources/citation/props/class">Switch to JSON</a></div>
@@ -6003,7 +6003,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 <summary>Element (1)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/profile/back-matter/resources/citation/props/remarks" class="toc6 name">remarks</h6>
+                                                      <h6 id="/profile/back-matter/resource/citation/prop/remarks" class="toc6 name">remarks</h6>
                                                       <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/back-matter/resources/citation/props/remarks">Switch to JSON</a></div>
@@ -6018,8 +6018,8 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/back-matter/resources/citation/links" class="toc5 name">link</h5>
-                                             <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/back-matter/resources/citation/links">(global definition)</a></p>
+                                             <h5 id="/profile/back-matter/resource/citation/link" class="toc5 name">link</h5>
+                                             <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/back-matter/resource/citation/link">(global definition)</a></p>
                                              <p class="occurrence">[0 to ∞]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/back-matter/resources/citation/links">Switch to JSON</a></div>
                                              <p class="formal-name">Link</p>
@@ -6052,7 +6052,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 <summary>Attributes (3)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/profile/back-matter/resources/citation/links/href" class="toc6 name">href</h6>
+                                                      <h6 id="/profile/back-matter/resource/citation/link/@href" class="toc6 name">href</h6>
                                                       <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
                                                       <p class="occurrence">[1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/back-matter/resources/citation/links/href">Switch to JSON</a></div>
@@ -6087,7 +6087,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/profile/back-matter/resources/citation/links/rel" class="toc6 name">rel</h6>
+                                                      <h6 id="/profile/back-matter/resource/citation/link/@rel" class="toc6 name">rel</h6>
                                                       <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/back-matter/resources/citation/links/rel">Switch to JSON</a></div>
@@ -6111,7 +6111,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/profile/back-matter/resources/citation/links/media-type" class="toc6 name">media-type</h6>
+                                                      <h6 id="/profile/back-matter/resource/citation/link/@media-type" class="toc6 name">media-type</h6>
                                                       <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/back-matter/resources/citation/links/media-type">Switch to JSON</a></div>
@@ -6136,7 +6136,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 <summary>Element (1)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/profile/back-matter/resources/citation/links/text" class="toc6 name">text</h6>
+                                                      <h6 id="/profile/back-matter/resource/citation/link/text" class="toc6 name">text</h6>
                                                       <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/back-matter/resources/citation/links/text">Switch to JSON</a></div>
@@ -6155,7 +6155,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/profile/back-matter/resources/rlinks" class="toc4 name">rlink</h4>
+                                    <h4 id="/profile/back-matter/resource/rlink" class="toc4 name">rlink</h4>
                                     <p class="type">element<br /></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/back-matter/resources/rlinks">Switch to JSON</a></div>
@@ -6185,7 +6185,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Attributes (2)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/back-matter/resources/rlinks/href" class="toc5 name">href</h5>
+                                             <h5 id="/profile/back-matter/resource/rlink/@href" class="toc5 name">href</h5>
                                              <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/back-matter/resources/rlinks/href">Switch to JSON</a></div>
@@ -6197,7 +6197,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/back-matter/resources/rlinks/media-type" class="toc5 name">media-type</h5>
+                                             <h5 id="/profile/back-matter/resource/rlink/@media-type" class="toc5 name">media-type</h5>
                                              <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/back-matter/resources/rlinks/media-type">Switch to JSON</a></div>
@@ -6213,7 +6213,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Element (1)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/back-matter/resources/rlinks/hashes" class="toc5 name">hash</h5>
+                                             <h5 id="/profile/back-matter/resource/rlink/hash" class="toc5 name">hash</h5>
                                              <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[0 to ∞]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/back-matter/resources/rlinks/hashes">Switch to JSON</a></div>
@@ -6241,7 +6241,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 <summary>Attribute (1)</summary>
                                                 <div class="model-entry definition field">
                                                    <div class="instance-header">
-                                                      <h6 id="/profile/back-matter/resources/rlinks/hashes/algorithm" class="toc6 name">algorithm</h6>
+                                                      <h6 id="/profile/back-matter/resource/rlink/hash/@algorithm" class="toc6 name">algorithm</h6>
                                                       <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                                       <p class="occurrence">[1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/back-matter/resources/rlinks/hashes/algorithm">Switch to JSON</a></div>
@@ -6303,7 +6303,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/profile/back-matter/resources/base64" class="toc4 name">base64</h4>
+                                    <h4 id="/profile/back-matter/resource/base64" class="toc4 name">base64</h4>
                                     <p class="type"><a href="/reference/datatypes/#base64binary">base64Binary</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/back-matter/resources/base64">Switch to JSON</a></div>
@@ -6318,7 +6318,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <summary>Attributes (2)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/back-matter/resources/base64/filename" class="toc5 name">filename</h5>
+                                             <h5 id="/profile/back-matter/resource/base64/@filename" class="toc5 name">filename</h5>
                                              <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/back-matter/resources/base64/filename">Switch to JSON</a></div>
@@ -6330,7 +6330,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/profile/back-matter/resources/base64/media-type" class="toc5 name">media-type</h5>
+                                             <h5 id="/profile/back-matter/resource/base64/@media-type" class="toc5 name">media-type</h5>
                                              <p class="type"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/back-matter/resources/base64/media-type">Switch to JSON</a></div>
@@ -6346,7 +6346,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/profile/back-matter/resources/remarks" class="toc4 name">remarks</h4>
+                                    <h4 id="/profile/back-matter/resource/remarks" class="toc4 name">remarks</h4>
                                     <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/back-matter/resources/remarks">Switch to JSON</a></div>
