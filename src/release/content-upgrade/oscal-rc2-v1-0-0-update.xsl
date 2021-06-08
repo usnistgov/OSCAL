@@ -5,8 +5,7 @@
                 xmlns:uuid="java:java.util.UUID"
                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0"
                 exclude-result-prefixes="#all"
-                version="3.0"
-                uuid="00f7bf7e-6de0-444f-9d6c-1017b2b7bc8f">
+                version="3.0">
 
 <!-- This XSLT, applied to an XML document valid to the Milestone 3 OSCAL schema version for Catalog, Profile, SSP or Component,
      will produce a similar XML document, valid or closer to valid to the Release Candidate 1 OSCAL schema. -->
