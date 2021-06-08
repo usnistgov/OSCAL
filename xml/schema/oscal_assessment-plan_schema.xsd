@@ -2652,30 +2652,53 @@
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="status" minOccurs="1" maxOccurs="1">
-            <xs:simpleType>
+            <xs:complexType>
                <xs:annotation>
                   <xs:appinfo>
                      <m:formal-name>Objective Status</m:formal-name>
-                     <m:description>A brief indication as to whether the objective is satisfied or not within a given system.</m:description>
+                     <m:description>A determination of if the objective is satisfied or not within a given system.</m:description>
                   </xs:appinfo>
                   <xs:documentation>
-                     <b>Objective Status</b>: A brief indication as to whether the objective is satisfied or not within a given system.</xs:documentation>
+                     <b>Objective Status</b>: A determination of if the objective is satisfied or not within a given system.</xs:documentation>
                </xs:annotation>
-               <xs:restriction base="oscal-ap:token"/>
-            </xs:simpleType>
-         </xs:element>
-         <xs:element name="reason" minOccurs="0" maxOccurs="unbounded">
-            <xs:simpleType>
-               <xs:annotation>
-                  <xs:appinfo>
-                     <m:formal-name>Objective Status Reason</m:formal-name>
-                     <m:description>The reason the objective was given it's status.</m:description>
-                  </xs:appinfo>
-                  <xs:documentation>
-                     <b>Objective Status Reason</b>: The reason the objective was given it's status.</xs:documentation>
-               </xs:annotation>
-               <xs:restriction base="xs:NCName"/>
-            </xs:simpleType>
+               <xs:sequence>
+                  <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+                     <xs:annotation>
+                        <xs:appinfo>
+                           <m:formal-name>Remarks</m:formal-name>
+                           <m:description>Additional commentary on the containing object.</m:description>
+                        </xs:appinfo>
+                        <xs:documentation>
+                           <b>Remarks</b>: Additional commentary on the containing object.</xs:documentation>
+                     </xs:annotation>
+                     <xs:complexType>
+                        <xs:group ref="oscal-ap:blockElementGroup"
+                                  maxOccurs="unbounded"
+                                  minOccurs="0"/>
+                     </xs:complexType>
+                  </xs:element>
+               </xs:sequence>
+               <xs:attribute name="state" use="required" type="oscal-ap:token">
+                  <xs:annotation>
+                     <xs:appinfo>
+                        <m:formal-name>Objective Status State</m:formal-name>
+                        <m:description>An indication as to whether the objective is satisfied or not.</m:description>
+                     </xs:appinfo>
+                     <xs:documentation>
+                        <b>Objective Status State</b>: An indication as to whether the objective is satisfied or not.</xs:documentation>
+                  </xs:annotation>
+               </xs:attribute>
+               <xs:attribute name="reason" type="oscal-ap:token">
+                  <xs:annotation>
+                     <xs:appinfo>
+                        <m:formal-name>Objective Status Reason</m:formal-name>
+                        <m:description>The reason the objective was given it's status.</m:description>
+                     </xs:appinfo>
+                     <xs:documentation>
+                        <b>Objective Status Reason</b>: The reason the objective was given it's status.</xs:documentation>
+                  </xs:annotation>
+               </xs:attribute>
+            </xs:complexType>
          </xs:element>
          <xs:element name="implementation-status"
                      type="oscal-ap:oscal-implementation-common-implementation-status-ASSEMBLY"
