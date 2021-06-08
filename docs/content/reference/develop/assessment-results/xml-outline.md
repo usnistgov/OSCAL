@@ -5193,12 +5193,14 @@ The following outline is a representation of the [XML format](https://github.com
                                  <p class="close-tag nobr">&lt;/link&gt;</p>
                               </details>
                               <details class="OM-entry">
-                                 <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/assessment-results/result/finding/target/status">status</a></span>/&gt;</span><span class="sq cardinality"> <span class="OM-cardinality">[1]</span></span></summary>
-                                 <p class="OM-map-name">[Empty]</p>
-                              </details>
-                              <details class="OM-entry">
-                                 <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/assessment-results/result/finding/target/reason">reason</a></span>/&gt;</span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
-                                 <p class="OM-map-name">[Empty]</p>
+                                 <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/assessment-results/result/finding/target/status">status</a></span> <span class="nobr" id="/assessment-results/result/finding/target/status/@state"><a class="OM-name" href="../xml-reference/#/assessment-results/result/finding/target/status/@state">state</a>="<span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span>"</span> <span class="nobr" id="/assessment-results/result/finding/target/status/@reason"><a class="OM-name" href="../xml-reference/#/assessment-results/result/finding/target/status/@reason">reason</a>="<span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span>"</span>&gt;<span class="show-closed"> … <span class="nobr">&lt;/status&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[1]</span></span></summary>
+                                 <div class="model-container">
+                                    <details class="OM-entry">
+                                       <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/assessment-results/result/finding/target/status/remarks">remarks</a></span>/&gt;</span><span class="sq cardinality"> <span class="OM-cardinality">[0 or 1]</span></span></summary>
+                                       <p class="OM-map-name">[Empty]</p>
+                                    </details>
+                                 </div>
+                                 <p class="close-tag nobr">&lt;/status&gt;</p>
                               </details>
                               <details class="OM-entry">
                                  <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/assessment-results/result/finding/target/implementation-status">implementation-status</a></span> <span class="nobr" id="/assessment-results/result/finding/target/implementation-status/@state"><a class="OM-name" href="../xml-reference/#/assessment-results/result/finding/target/implementation-status/@state">state</a>="<span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span>"</span>&gt;<span class="show-closed"> … <span class="nobr">&lt;/implementation-status&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 or 1]</span></span></summary>

@@ -745,21 +745,24 @@
          <assembly ref="link" max-occurs="unbounded">
             <group-as name="links" in-json="ARRAY"/>
          </assembly>
-         <define-field name="status" as-type="token" min-occurs="1" max-occurs="1">
+         <define-assembly name="status" min-occurs="1">
             <formal-name>Objective Status</formal-name>
-            <description>A brief indication as to whether the objective is satisfied or not within a given system.</description>
+            <description>A determination of if the objective is satisfied or not within a given system.</description>
+            <define-flag name="state" as-type="token" required="yes">
+               <formal-name>Objective Status State</formal-name>
+               <description>An indication as to whether the objective is satisfied or not.</description>
             <constraint>
-               <allowed-values target=".">
+                  <allowed-values>
                   <enum value="satisfied">The objective has been completely satisfied.</enum>
                   <enum value="not-satisfied">The objective has not been completely satisfied, but may be partially satisfied.</enum>
                </allowed-values>
             </constraint>
-         </define-field>
-         <define-field name="reason" as-type="NCName" max-occurs="unbounded">
+            </define-flag>
+            <define-flag name="reason" as-type="token">
             <formal-name>Objective Status Reason</formal-name>
             <description>The reason the objective was given it's status.</description>
             <constraint>
-               <allowed-values target="." allow-other="yes">
+                  <allowed-values allow-other="yes">
                   <enum value="pass">The target system or system component satisfied all the conditions.</enum>
                   <enum value="fail">The target system or system component did not satisfy all the conditions.</enum>
                   <enum value="other">Some other event took place that is not a pass or a fail. </enum>
@@ -768,7 +771,11 @@
          <remarks>
             <p>Reason may contain any value, and should be used to communicate additional information regarding the status.</p>
          </remarks>
-         </define-field>
+            </define-flag>
+            <model>
+               <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
+            </model>
+         </define-assembly>
          <assembly ref="implementation-status">
             <remarks>
                <p>The <code>implementation-status</code> is used to qualify the <code>status</code> value to indicate the degree to which the control was found to be implemented.</p>

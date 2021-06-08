@@ -1,7 +1,7 @@
 ---
 title: "OSCAL"
 ---
-{{% usa-hero image="automation-hero.png" calloutText="Automated" calloutAltText="Control-Based Assessment" buttonURL="/about/" buttonText="Learn More" %}}
+{{% usa-hero image="/automation-hero.png" calloutText="Automated" calloutAltText="Control-Based Assessment" buttonURL="/about/" buttonText="Learn More" %}}
 Supporting Control-Based<br/>
 Risk Management with<br/>
 Standardized Formats
