@@ -105,7 +105,7 @@ A baseline, or overlay in other terminology, defines a specific set of selected 
 
 {{<callout>}}NIST Special Publication (SP) [800-37 Revision 2](https://csrc.nist.gov/publications/detail/sp/800-37/rev-2/final) defines a baseline as "the set of controls that are applicable to information or an information system to meet legal, regulatory, or policy requirements, as well as address protection needs for the purpose of managing risk."{{</callout>}}
 
-Using the OSCAL profile model to express a baselines makes the mappings between the control catalog and the profile explicit and machine readable. A single OSCAL profile can reference controls in multiple catalogs. OSCAL permits profiles to use the same interoperable format irrespective of which catalogs are being used.
+Using the OSCAL profile model to express a baseline makes the mappings between the control catalog and the profile explicit and machine-readable. A single OSCAL profile can reference controls in multiple catalogs. OSCAL permits profiles to use the same interoperable format irrespective of which catalogs are being used.
 
 The figure below uses the NIST SP 800-53 low baseline as an example to sketch how a baseline relates to a catalog. The low baseline indicates which controls from the NIST SP 800-53 catalog are required for compliance with this baseline.
 
