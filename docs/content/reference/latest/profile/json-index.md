@@ -1,6 +1,6 @@
 ---
-title: "OSCAL Profile Model Development Snapshot JSON Format Index"
-heading: Profile Model Development Snapshot JSON Format Index
+title: "OSCAL Profile Model v1.0.0 JSON Format Index"
+heading: Profile Model v1.0.0 JSON Format Index
 weight: 30
 sidenav:
   title: JSON Index
@@ -9,7 +9,7 @@ toc:
   headingselectors: "h1.toc1"
 ---
 
-The following is an index of each JSON property used in the [JSON format](https://github.com/usnistgov/OSCAL/blob/develop/json/schema/oscal_profile_schema.json) for this model. Each entry in the index lists all uses of the given property in the format, which is linked to the corresponding entry in the [JSON Format Reference](../json-reference/). Each entry also lists the formal name for the definition which is linked to the corresponding JSON definition in the [JSON Format Metaschema Reference](../json-definitions/).
+The following is an index of each JSON property used in the [JSON format](https://github.com/usnistgov/OSCAL/blob/main/json/schema/oscal_profile_schema.json) for this model. Each entry in the index lists all uses of the given property in the format, which is linked to the corresponding entry in the [JSON Format Reference](../json-reference/). Each entry also lists the formal name for the definition which is linked to the corresponding JSON definition in the [JSON Format Metaschema Reference](../json-definitions/).
 
 <!-- DO NOT REMOVE. Generated text below -->
 {{< rawhtml >}}

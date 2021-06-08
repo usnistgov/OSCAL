@@ -1,13 +1,16 @@
 ---
-title: "OSCAL Plan of Action and Milestones Model Development Snapshot JSON Format Reference"
-heading: "Plan of Action and Milestones Model Development Snapshot JSON Format Reference"
+title: "OSCAL Plan of Action and Milestones Model v1.0.0 JSON Format Reference"
+heading: "Plan of Action and Milestones Model v1.0.0 JSON Format Reference"
 weight: 20
 sidenav:
   title: JSON Reference
 toc:
   enabled: true
   headingselectors: "h1.toc1, h2.toc2, h3.toc3, h4.toc4, h5.toc5, h6.toc6"
+aliases:
 
+  - /documentation/schema/poam/json-schema/
+  - /documentation/schema/assessment-results-layer/poam/json-schema/
 ---
 
 The following is the JSON format reference for this model, which is organized hierarchically. Each entry represents the corresponding JSON property in the model's JSON format, and provides details about the semantics and use of the property. The [JSON Format Outline](../json-outline/) provides a streamlined, hierarchical representation of this model's JSON format which can be used along with this reference to better understand the JSON representation of this model.
@@ -19,7 +22,7 @@ The following is the JSON format reference for this model, which is organized hi
    <p><span class="usa-tag">Schema version:</span> 1.0.0</p>
    <p><span class="usa-tag">JSON Base URI</span> <code>http://csrc.nist.gov/ns/oscal</code></p>
    <p><span class="usa-tag">JSON Schema</span> <a href="/artifacts/json/schema/oscal_poam_schema.json">oscal_poam_schema.json</a></p>
-   <p><span class="usa-tag">XML to JSON converter</span> <a href="/artifacts/json/convert/oscal_poam_xml-to-json-converter.xsl">oscal_poam_xml-to-json-converter.xsl</a><a href="https://github.com/usnistgov/OSCAL/tree/main/json#converting-oscal-xml-content-to-json">(How do I use the converter to convert OSCAL XML to JSON?)</a></p>
+   <p><span class="usa-tag">XML to JSON converter</span> <a href="/artifacts/json/convert/oscal_poam_xml-to-json-converter.xsl">oscal_poam_xml-to-json-converter.xsl</a> <a href="https://github.com/usnistgov/OSCAL/tree/main/json#converting-oscal-xml-content-to-json">(How do I use the converter to convert OSCAL XML to JSON?)</a></p>
    <div class="remarks">The OSCAL Plan of Action and Milestones (POA&amp;M) format is used to describe the information
       typically provided by an assessor during the preparation for an assessment.The root
       of the OSCAL Plan of Action and Milestones (POA&amp;M) format is plan-action-milestones.

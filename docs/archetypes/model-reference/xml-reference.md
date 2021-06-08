@@ -9,34 +9,34 @@ toc:
   headingselectors: "h1.toc1, h2.toc2, h3.toc3, h4.toc4, h5.toc5, h6.toc6"
 {{ if eq (getenv "HUGO_REF_REVISION") "latest" -}}
 aliases:
-{{- if eq (getenv "HUGO_MODEL_ID") "assessment-plan" -}}
+{{- if eq (getenv "HUGO_MODEL_ID") "assessment-plan" }}
   - /documentation/schema/assessment-plan/xml-schema/
   - /documentation/schema/assessment-layer/assessment-plan/xml-schema/
 {{- end -}}
-{{- if eq (getenv "HUGO_MODEL_ID") "assessment-results" -}}
+{{- if eq (getenv "HUGO_MODEL_ID") "assessment-results" }}
   - /documentation/schema/assessment-results/xml-schema/
   - /documentation/schema/assessment-results-layer/assessment-results/xml-schema/
 {{- end -}}
-{{- if eq (getenv "HUGO_MODEL_ID") "catalog" -}}
+{{- if eq (getenv "HUGO_MODEL_ID") "catalog" }}
   - /docs/schemas/oscal-catalog-xml/
   - /documentation/schema/catalog/xml-schema/
   - /documentation/schema/catalog-layer/catalog/xml-schema/
 {{- end -}}
-{{- if eq (getenv "HUGO_MODEL_ID") "component-definition" -}}
+{{- if eq (getenv "HUGO_MODEL_ID") "component-definition" }}
   - /docs/schemas/oscal-component-xml/
   - /documentation/schema/component/xml-schema/
   - /documentation/schema/implementation-layer/component/xml-schema/
 {{- end -}}
-{{- if eq (getenv "HUGO_MODEL_ID") "plan-of-action-and-milestones" -}}
+{{- if eq (getenv "HUGO_MODEL_ID") "plan-of-action-and-milestones" }}
   - /documentation/schema/poam/xml-schema/
   - /documentation/schema/assessment-results-layer/poam/xml-schema/
 {{- end -}}
-{{- if eq (getenv "HUGO_MODEL_ID") "profile" -}}
+{{- if eq (getenv "HUGO_MODEL_ID") "profile" }}
   - /docs/schemas/oscal-profile-xml/
   - /documentation/schema/profile/xml-schema/
   - /documentation/schema/profile-layer/profile/xml-schema/
 {{- end -}}
-{{- if eq (getenv "HUGO_MODEL_ID") "system-security-plan" -}}
+{{- if eq (getenv "HUGO_MODEL_ID") "system-security-plan" }}
   - /docs/schemas/oscal-ssp-xml/
   - /documentation/schema/ssp/xml-schema/
   - /documentation/schema/implementation-layer/ssp/xml-schema/

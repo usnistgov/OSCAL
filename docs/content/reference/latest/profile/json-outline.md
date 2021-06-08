@@ -1,15 +1,18 @@
 ---
-title: "OSCAL Profile Model Development Snapshot JSON Format Outline"
-heading: Profile Model Development Snapshot JSON Format Outline
+title: "OSCAL Profile Model v1.0.0 JSON Format Outline"
+heading: Profile Model v1.0.0 JSON Format Outline
 custom_js:
   - "/js/oscal-metaschema-map-expander.js"
 weight: 10
 sidenav:
   title: JSON Outline
-
+aliases:
+  - /docs/maps/oscal-profile-json/
+  - /documentation/schema/profile/json-model-map/
+  - /documentation/schema/profile-layer/profile/json-model-map/
 ---
 
-The following outline is a representation of the [JSON format](https://github.com/usnistgov/OSCAL/blob/develop/json/schema/oscal_profile_schema.json) for this model. For each property, the name links to the corresponding entry in the [JSON Format Reference](../json-reference/). The cardinality and data type are also provided for each property where appropriate.
+The following outline is a representation of the [JSON format](https://github.com/usnistgov/OSCAL/blob/main/json/schema/oscal_profile_schema.json) for this model. For each property, the name links to the corresponding entry in the [JSON Format Reference](../json-reference/). The cardinality and data type are also provided for each property where appropriate.
 
 <!-- DO NOT REMOVE. Generated text below -->
 {{< rawhtml >}}

@@ -17,7 +17,7 @@ json_reference_filename="json-reference.md"
 json_index_filename="json-index.md"
 json_definitions_filename="json-definitions.md"
 doc_path_base="/docs/content/reference/"
-BRANCH="$(git branch --show-current)"
+BRANCH=""
 DISABLE_ARCHETYPE_CREATION=false
 OSCAL_DIR="${OSCALDIR}"
 WORKING_DIR="${OSCALDIR}"
@@ -131,13 +131,21 @@ if [ "$#" -ne 0 ]; then
 fi
 
 # generate reference documentation
-DOCS_DIR="${OSCAL_DIR}/docs";
+DOCS_DIR="${WORKING_DIR}/docs";
+if [ -z "$BRANCH" ]; then
+  BRANCH="$(cd "${OSCAL_DIR}";git symbolic-ref -q --short HEAD || git describe --tags --exact-match)"
+fi
+
+echo "BRANCH(initial)='${BRANCH}'"
+echo "OSCAL_DIR(initial)='${OSCAL_DIR}'"
+
 if [[ "$BRANCH" =~ ^v.* ]]; then
   VERSION="${BRANCH/#"v"}"
   REVISION="${VERSION}"
   TYPE="tag"
 elif [ "$BRANCH" = "main" ]; then
-  VERSION="$(git describe --abbrev=0)"
+  VERSION="$(cd "${OSCAL_DIR}";git describe --abbrev=0)"
+  VERSION="${VERSION/#"v"}"
   REVISION="latest"
   TYPE="branch"
 elif [ "$BRANCH" = "develop" ]; then
@@ -153,17 +161,18 @@ fi
 
 doc_path="${WORKING_DIR}${doc_path_base}${REVISION}"
 
-#echo "BRANCH='${BRANCH}'"
-#echo "VERSION='${VERSION}'"
-#echo "REVISION='${REVISION}'"
-#echo "TYPE='${TYPE}'"
+echo "BRANCH='${BRANCH}'"
+echo "VERSION='${VERSION}'"
+echo "REVISION='${REVISION}'"
+echo "TYPE='${TYPE}'"
 #echo "doc_path='${doc_path}'"
 
 # build the version folder
 if [ ! -d "${doc_path}" ] || [ "$DISABLE_ARCHETYPE_CREATION" = "false" ]; then
-  [ -d "${doc_path}" ] && rm -rf "${doc_path}"
+  rm -rf "${doc_path}"
+  #mkdir -p "${doc_path}"
 
-  result=$(cd ${DOCS_DIR};HUGO_REF_TYPE="${TYPE}" HUGO_REF_BRANCH="${BRANCH}" HUGO_REF_VERSION="${VERSION}" HUGO_REF_REVISION="${REVISION}" hugo new --config "${OSCAL_DIR}/docs/config.yaml" --kind reference "${doc_path}" 2>&1)
+  result=$(cd ${DOCS_DIR};HUGO_REF_TYPE="${TYPE}" HUGO_REF_BRANCH="${BRANCH}" HUGO_REF_VERSION="${VERSION}" HUGO_REF_REVISION="${REVISION}" hugo new --kind reference-index "${doc_path}/_index.md" 2>&1)
   cmd_exitcode=$?
   if [ $cmd_exitcode -ne 0 ]; then
     echo -e "${P_ERROR}Generating index page failed for revision '${P_END}${REVISION}${P_ERROR}' on branch '${P_END}${BRANCH}${P_ERROR}'.${P_END}"

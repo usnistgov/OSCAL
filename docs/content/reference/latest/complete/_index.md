@@ -1,16 +1,17 @@
 ---
-title: " Model Development Snapshot Reference"
+title: " Model v1.0.0 Reference"
 summary: "All Models Combined"
 weight: 20
 suppresstopiclist: true
 sidenav:
   title: All Models
-  activerenderdepth: 2
+  focusrenderdepth: 2
+  activerenderdepth: -1
   inactiverenderdepth: 1
 ---
 
-<p><span class="usa-tag">Release Version</span> Latest Development Snapshot</p>
-<p><span class="usa-tag">Github</span> <a href="https://github.com/usnistgov/OSCAL">usnistgov/OSCAL</a> <span class="usa-tag">Branch</span> <a href="https://github.com/usnistgov/OSCAL/tree/develop">develop</a></p>
+<p><span class="usa-tag">Release Version</span> OSCAL v1.0.0</p>
+<p><span class="usa-tag">Github</span> <a href="https://github.com/usnistgov/OSCAL">usnistgov/OSCAL</a> <span class="usa-tag">Branch</span> <a href="https://github.com/usnistgov/OSCAL/tree/main">main</a></p>
 
 This reference combines the information items used in all the OSCAL models into a single, comprehensive view. The following reference documentation is available.
 

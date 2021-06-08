@@ -3,6 +3,8 @@ title: OSCAL Release Notes
 heading: Release Notes
 weight: 15
 suppressintopiclist: true
+sidenav:
+  title: Release Notes
 toc:
   enabled: true
   headingselectors: "h2, h3, h4, h5, h6"
