@@ -87,7 +87,7 @@
                 _metaschema-json-id="/assembly/oscal-component-definition/component-definition"
                 name="component-definition"
                 key="component-definition"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_component_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_component_metaschema.xml"
                 _key-name="oscal-component-definition:component-definition"
                 _using-root-name="component-definition"
                 gi="component-definition">
@@ -130,7 +130,7 @@
                 _metaschema-json-id="/assembly/oscal-component-definition/component-definition/metadata"
                 name="metadata"
                 key="metadata"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
                 _key-name="oscal-metadata:metadata"
                 _step="metadata"
                 _key="metadata"
@@ -206,7 +206,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-metadata/revision/prop"
                 _metaschema-json-id="/assembly/oscal-metadata/revision/props"
                 name="property"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
                 _key-name="oscal-metadata:property"
                 _step="prop"
                 _key="props"
@@ -229,7 +229,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-metadata/revision/link"
                 _metaschema-json-id="/assembly/oscal-metadata/revision/links"
                 name="link"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
                 _key-name="oscal-metadata:link"
                 _step="link"
                 _key="links"
@@ -250,7 +250,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-metadata/metadata/role"
                 _metaschema-json-id="/assembly/oscal-metadata/metadata/roles"
                 name="role"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
                 _key-name="oscal-metadata:role"
                 _step="role"
                 _key="roles"
@@ -286,7 +286,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-metadata/metadata/location"
                 _metaschema-json-id="/assembly/oscal-metadata/metadata/locations"
                 name="location"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
                 _key-name="oscal-metadata:location"
                 _step="location"
                 _key="locations"
@@ -342,7 +342,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-metadata/metadata/party"
                 _metaschema-json-id="/assembly/oscal-metadata/metadata/parties"
                 name="party"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
                 _key-name="oscal-metadata:party"
                 _step="party"
                 _key="parties"
@@ -420,7 +420,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-metadata/metadata/responsible-party"
                 _metaschema-json-id="/assembly/oscal-metadata/metadata/responsible-parties"
                 name="responsible-party"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
                 _key-name="oscal-metadata:responsible-party"
                 _step="responsible-party"
                 _key="responsible-parties"
@@ -461,7 +461,7 @@
                 _metaschema-xml-id="/assembly/oscal-component-definition/component-definition/import-component-definition"
                 _metaschema-json-id="/assembly/oscal-component-definition/component-definition/import-component-definitions"
                 name="import-component-definition"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_component_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_component_metaschema.xml"
                 _key-name="oscal-component-definition:import-component-definition"
                 _step="import-component-definition"
                 _key="import-component-definitions"
@@ -479,7 +479,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-component-definition/component-definition/component"
                 _metaschema-json-id="/assembly/oscal-component-definition/component-definition/components"
                 name="defined-component"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_component_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_component_metaschema.xml"
                 _key-name="oscal-component-definition:defined-component"
                 _step="component"
                 _key="components"
@@ -537,7 +537,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-component-definition/defined-component/responsible-role"
                 _metaschema-json-id="/assembly/oscal-component-definition/defined-component/responsible-roles"
                 name="responsible-role"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
                 _key-name="oscal-metadata:responsible-role"
                 _step="responsible-role"
                 _key="responsible-roles"
@@ -577,7 +577,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-component-definition/defined-component/protocol"
                 _metaschema-json-id="/assembly/oscal-component-definition/defined-component/protocols"
                 name="protocol"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_implementation-common_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_implementation-common_metaschema.xml"
                 _key-name="oscal-implementation-common:protocol"
                 _step="protocol"
                 _key="protocols"
@@ -605,7 +605,7 @@
                 _metaschema-xml-id="/assembly/oscal-implementation-common/protocol/port-range"
                 _metaschema-json-id="/assembly/oscal-implementation-common/protocol/port-ranges"
                 name="port-range"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_implementation-common_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_implementation-common_metaschema.xml"
                 _key-name="oscal-implementation-common:port-range"
                 _step="port-range"
                 _key="port-ranges"
@@ -625,7 +625,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-component-definition/control-implementation/set-parameter"
                 _metaschema-json-id="/assembly/oscal-component-definition/control-implementation/set-parameters"
                 name="set-parameter"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_implementation-common_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_implementation-common_metaschema.xml"
                 _key-name="oscal-implementation-common:set-parameter"
                 _step="set-parameter"
                 _key="set-parameters"
@@ -651,7 +651,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-component-definition/component-definition/capability"
                 _metaschema-json-id="/assembly/oscal-component-definition/component-definition/capabilities"
                 name="capability"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_component_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_component_metaschema.xml"
                 _key-name="oscal-component-definition:capability"
                 _step="capability"
                 _key="capabilities"
@@ -700,7 +700,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-component-definition/capability/incorporates-component"
                 _metaschema-json-id="/assembly/oscal-component-definition/capability/incorporates-components"
                 name="incorporates-component"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_component_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_component_metaschema.xml"
                 _key-name="oscal-component-definition:incorporates-component"
                 _step="incorporates-component"
                 _key="incorporates-components"
@@ -720,7 +720,7 @@
                 _metaschema-json-id="/assembly/oscal-component-definition/component-definition/back-matter"
                 name="back-matter"
                 key="back-matter"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
                 _key-name="oscal-metadata:back-matter"
                 _step="back-matter"
                 _key="back-matter"
@@ -751,7 +751,7 @@
              as-type="markup-multiline"
              name="remarks"
              key="remarks"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:remarks"
              _step="remarks"
              _key="remarks"
@@ -764,6 +764,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">remarks</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="location-uuid"
@@ -774,7 +780,7 @@
              collapsible="no"
              as-type="uuid"
              name="location-uuid"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:location-uuid"
              _step="location-uuid"
              _key="location-uuids"
@@ -783,7 +789,11 @@
              _in-xml-name="location-uuid"
              _in-json-name="location-uuids"
              gi="location-uuid"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="uuid" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="party-uuid"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -793,7 +803,7 @@
              collapsible="no"
              as-type="uuid"
              name="party-uuid"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:party-uuid"
              _step="party-uuid"
              _key="party-uuids"
@@ -802,7 +812,11 @@
              _in-xml-name="party-uuid"
              _in-json-name="party-uuids"
              gi="party-uuid"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="uuid" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="hash"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -812,7 +826,7 @@
              collapsible="no"
              as-type="string"
              name="hash"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:hash"
              _step="hash"
              _key="hashes"
@@ -971,7 +985,7 @@
             _metaschema-json-id="/assembly/oscal-metadata/link/media-type"
             name="media-type"
             key="media-type"
-            _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+            _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
             _key-name="oscal-metadata:media-type"
             _step="media-type"
             _key="media-type"
@@ -1043,7 +1057,7 @@
             _metaschema-json-id="/assembly/oscal-metadata/address/type"
             name="location-type"
             key="type"
-            _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+            _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
             _key-name="oscal-metadata:location-type"
             _step="type"
             _key="type"
@@ -1184,7 +1198,7 @@
             _metaschema-json-id="/assembly/oscal-component-definition/defined-component/type"
             name="defined-component-type"
             key="type"
-            _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_component_metaschema.xml"
+            _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_component_metaschema.xml"
             _key-name="oscal-component-definition:defined-component-type"
             _step="type"
             _key="type"
@@ -1324,7 +1338,7 @@
             _metaschema-json-id="/assembly/oscal-component-definition/control-implementation/source"
             name="source"
             key="source"
-            _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_implementation-common_metaschema.xml"
+            _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_implementation-common_metaschema.xml"
             _key-name="oscal-implementation-common:source"
             _step="source"
             _key="source"
@@ -1344,7 +1358,7 @@
             _metaschema-json-id="/assembly/oscal-implementation-common/set-parameter/param-id"
             name="param-id"
             key="param-id"
-            _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_implementation-common_metaschema.xml"
+            _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_implementation-common_metaschema.xml"
             _key-name="oscal-implementation-common:param-id"
             _step="param-id"
             _key="param-id"
@@ -1382,7 +1396,7 @@
             _metaschema-json-id="/assembly/oscal-component-definition/implemented-requirement/control-id"
             name="control-id"
             key="control-id"
-            _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_control-common_metaschema.xml"
+            _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_control-common_metaschema.xml"
             _key-name="oscal-catalog-common:control-id"
             _step="control-id"
             _key="control-id"
@@ -1402,7 +1416,7 @@
             _metaschema-json-id="/assembly/oscal-component-definition/statement/statement-id"
             name="statement-id"
             key="statement-id"
-            _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_implementation-common_metaschema.xml"
+            _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_implementation-common_metaschema.xml"
             _key-name="oscal-implementation-common:statement-id"
             _step="statement-id"
             _key="statement-id"
@@ -1527,7 +1541,7 @@
             _metaschema-json-id="/assembly/oscal-metadata/back-matter/resources/rlinks/media-type"
             name="media-type"
             key="media-type"
-            _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+            _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
             _key-name="oscal-metadata:media-type"
             _step="media-type"
             _key="media-type"
@@ -1582,7 +1596,7 @@
             _metaschema-json-id="/assembly/oscal-metadata/back-matter/resources/base64/media-type"
             name="media-type"
             key="media-type"
-            _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+            _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
             _key-name="oscal-metadata:media-type"
             _step="media-type"
             _key="media-type"
@@ -1614,6 +1628,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/metadata/published"
@@ -1626,7 +1643,7 @@
              as-type="dateTime-with-timezone"
              name="published"
              key="published"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:published"
              _step="published"
              _key="published"
@@ -1639,6 +1656,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">published</xsl:attribute>
          </xsl:if>
+         <value as-type="dateTime-with-timezone" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/metadata/last-modified"
@@ -1651,7 +1671,7 @@
              as-type="dateTime-with-timezone"
              name="last-modified"
              key="last-modified"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:last-modified"
              _step="last-modified"
              _key="last-modified"
@@ -1664,6 +1684,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">last-modified</xsl:attribute>
          </xsl:if>
+         <value as-type="dateTime-with-timezone" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/metadata/version"
@@ -1676,7 +1699,7 @@
              as-type="string"
              name="version"
              key="version"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:version"
              _step="version"
              _key="version"
@@ -1689,6 +1712,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">version</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/metadata/oscal-version"
@@ -1701,7 +1727,7 @@
              as-type="string"
              name="oscal-version"
              key="oscal-version"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:oscal-version"
              _step="oscal-version"
              _key="oscal-version"
@@ -1714,6 +1740,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">oscal-version</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/metadata/revisions/revision"
@@ -1723,7 +1752,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-metadata/metadata/revisions/revision"
                 _metaschema-json-id="/assembly/oscal-metadata/metadata/revisions"
                 name="revision"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
                 _key-name="oscal-metadata:revision"
                 _step="revisions/revision"
                 _key="revisions"
@@ -1763,7 +1792,7 @@
              group-json="ARRAY"
              name="revision"
              key="revisions"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:revision"
              _key-ref="oscal-metadata:revision">
          <xsl:if test="$with-key">
@@ -1792,6 +1821,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/metadata/revisions/revision/published"
@@ -1804,7 +1836,7 @@
              as-type="dateTime-with-timezone"
              name="published"
              key="published"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:published"
              _step="published"
              _key="published"
@@ -1817,6 +1849,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">published</xsl:attribute>
          </xsl:if>
+         <value as-type="dateTime-with-timezone" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/metadata/revisions/revision/last-modified"
@@ -1829,7 +1864,7 @@
              as-type="dateTime-with-timezone"
              name="last-modified"
              key="last-modified"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:last-modified"
              _step="last-modified"
              _key="last-modified"
@@ -1842,6 +1877,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">last-modified</xsl:attribute>
          </xsl:if>
+         <value as-type="dateTime-with-timezone" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/metadata/revisions/revision/version"
@@ -1854,7 +1892,7 @@
              as-type="string"
              name="version"
              key="version"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:version"
              _step="version"
              _key="version"
@@ -1867,6 +1905,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">version</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/metadata/revisions/revision/oscal-version"
@@ -1879,7 +1920,7 @@
              as-type="string"
              name="oscal-version"
              key="oscal-version"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:oscal-version"
              _step="oscal-version"
              _key="oscal-version"
@@ -1892,6 +1933,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">oscal-version</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/metadata/revisions/revision/link/text"
@@ -1914,6 +1958,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/metadata/document-id"
@@ -1925,7 +1972,7 @@
              collapsible="no"
              as-type="string"
              name="document-id"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:document-id"
              _step="document-id"
              _key="document-ids"
@@ -1960,6 +2007,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/metadata/role/title"
@@ -1982,6 +2032,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/metadata/role/short-name"
@@ -2004,6 +2057,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">short-name</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/metadata/role/description"
@@ -2027,6 +2083,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/metadata/role/link/text"
@@ -2049,6 +2111,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/metadata/location/title"
@@ -2071,6 +2136,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/metadata/location/address"
@@ -2081,7 +2149,7 @@
                 _metaschema-json-id="/assembly/oscal-metadata/location/address"
                 name="address"
                 key="address"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
                 _key-name="oscal-metadata:address"
                 _step="address"
                 _key="address"
@@ -2116,7 +2184,7 @@
              collapsible="no"
              as-type="string"
              name="addr-line"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:addr-line"
              _step="addr-line"
              _key="addr-lines"
@@ -2125,7 +2193,11 @@
              _in-xml-name="addr-line"
              _in-json-name="addr-lines"
              gi="addr-line"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="component-definition/metadata/location/address/city"
                  priority="7"
@@ -2147,6 +2219,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">city</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/metadata/location/address/state"
@@ -2169,6 +2244,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">state</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/metadata/location/address/postal-code"
@@ -2191,6 +2269,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">postal-code</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/metadata/location/address/country"
@@ -2213,6 +2294,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">country</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/metadata/location/email-address"
@@ -2224,7 +2308,7 @@
              collapsible="no"
              as-type="email"
              name="email-address"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:email-address"
              _step="email-address"
              _key="email-addresses"
@@ -2233,7 +2317,11 @@
              _in-xml-name="email-address"
              _in-json-name="email-addresses"
              gi="email-address"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="email" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="component-definition/metadata/location/telephone-number"
                  priority="7"
@@ -2244,7 +2332,7 @@
              collapsible="no"
              as-type="string"
              name="telephone-number"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:telephone-number"
              _step="telephone-number"
              _key="telephone-numbers"
@@ -2274,7 +2362,11 @@
              _in-xml-name="url"
              _in-json-name="urls"
              gi="url"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="uri" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="component-definition/metadata/location/link/text"
                  priority="8"
@@ -2296,6 +2388,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/metadata/party/name"
@@ -2318,6 +2413,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">name</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/metadata/party/short-name"
@@ -2340,6 +2438,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">short-name</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/metadata/party/external-id"
@@ -2383,6 +2484,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/metadata/party/email-address"
@@ -2394,7 +2498,7 @@
              collapsible="no"
              as-type="email"
              name="email-address"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:email-address"
              _step="email-address"
              _key="email-addresses"
@@ -2403,7 +2507,11 @@
              _in-xml-name="email-address"
              _in-json-name="email-addresses"
              gi="email-address"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="email" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="component-definition/metadata/party/telephone-number"
                  priority="7"
@@ -2414,7 +2522,7 @@
              collapsible="no"
              as-type="string"
              name="telephone-number"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:telephone-number"
              _step="telephone-number"
              _key="telephone-numbers"
@@ -2436,7 +2544,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-metadata/party/address"
                 _metaschema-json-id="/assembly/oscal-metadata/party/addresses"
                 name="address"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
                 _key-name="oscal-metadata:address"
                 _step="address"
                 _key="addresses"
@@ -2468,7 +2576,7 @@
              collapsible="no"
              as-type="string"
              name="addr-line"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:addr-line"
              _step="addr-line"
              _key="addr-lines"
@@ -2477,7 +2585,11 @@
              _in-xml-name="addr-line"
              _in-json-name="addr-lines"
              gi="addr-line"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="component-definition/metadata/party/address/city"
                  priority="9"
@@ -2499,6 +2611,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">city</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/metadata/party/address/state"
@@ -2521,6 +2636,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">state</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/metadata/party/address/postal-code"
@@ -2543,6 +2661,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">postal-code</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/metadata/party/address/country"
@@ -2565,6 +2686,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">country</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/metadata/party/member-of-organization"
@@ -2582,7 +2706,11 @@
              _in-xml-name="member-of-organization"
              _in-json-name="member-of-organizations"
              gi="member-of-organization"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="uuid" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="component-definition/metadata/responsible-party/link/text"
                  priority="8"
@@ -2604,6 +2732,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/component/title"
@@ -2626,6 +2757,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/component/description"
@@ -2649,6 +2783,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/component/purpose"
@@ -2671,6 +2811,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">purpose</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/component/link/text"
@@ -2693,6 +2836,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/component/responsible-role/link/text"
@@ -2715,6 +2861,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/component/protocol/title"
@@ -2737,6 +2886,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/component/control-implementation"
@@ -2746,7 +2898,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-component-definition/defined-component/control-implementation"
                 _metaschema-json-id="/assembly/oscal-component-definition/defined-component/control-implementations"
                 name="control-implementation"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_component_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_component_metaschema.xml"
                 _key-name="oscal-component-definition:control-implementation"
                 _step="control-implementation"
                 _key="control-implementations"
@@ -2809,6 +2961,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/component/control-implementation/link/text"
@@ -2831,6 +2989,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/component/control-implementation/set-parameter/value"
@@ -2848,7 +3009,11 @@
              _in-xml-name="value"
              _in-json-name="values"
              gi="value"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="component-definition/component/control-implementation/implemented-requirement"
                  priority="8"
@@ -2857,7 +3022,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-component-definition/control-implementation/implemented-requirement"
                 _metaschema-json-id="/assembly/oscal-component-definition/control-implementation/implemented-requirements"
                 name="implemented-requirement"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_component_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_component_metaschema.xml"
                 _key-name="oscal-component-definition:implemented-requirement"
                 _step="implemented-requirement"
                 _key="implemented-requirements"
@@ -2928,6 +3093,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/component/control-implementation/implemented-requirement/link/text"
@@ -2950,6 +3121,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/component/control-implementation/implemented-requirement/set-parameter/value"
@@ -2967,7 +3141,11 @@
              _in-xml-name="value"
              _in-json-name="values"
              gi="value"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="component-definition/component/control-implementation/implemented-requirement/responsible-role/link/text"
                  priority="13"
@@ -2989,6 +3167,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/component/control-implementation/implemented-requirement/statement"
@@ -2998,7 +3179,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-component-definition/implemented-requirement/statement"
                 _metaschema-json-id="/assembly/oscal-component-definition/implemented-requirement/statements"
                 name="statement"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_component_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_component_metaschema.xml"
                 _key-name="oscal-component-definition:statement"
                 _step="statement"
                 _key="statements"
@@ -3055,6 +3236,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/component/control-implementation/implemented-requirement/statement/link/text"
@@ -3077,6 +3264,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/component/control-implementation/implemented-requirement/statement/responsible-role/link/text"
@@ -3099,6 +3289,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/capability/description"
@@ -3122,6 +3315,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/capability/link/text"
@@ -3144,6 +3343,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/capability/incorporates-component/description"
@@ -3167,6 +3369,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/capability/control-implementation"
@@ -3176,7 +3384,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-component-definition/capability/control-implementation"
                 _metaschema-json-id="/assembly/oscal-component-definition/capability/control-implementations"
                 name="control-implementation"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_component_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_component_metaschema.xml"
                 _key-name="oscal-component-definition:control-implementation"
                 _step="control-implementation"
                 _key="control-implementations"
@@ -3239,6 +3447,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/capability/control-implementation/link/text"
@@ -3261,6 +3475,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/capability/control-implementation/set-parameter/value"
@@ -3278,7 +3495,11 @@
              _in-xml-name="value"
              _in-json-name="values"
              gi="value"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="component-definition/capability/control-implementation/implemented-requirement"
                  priority="8"
@@ -3287,7 +3508,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-component-definition/control-implementation/implemented-requirement"
                 _metaschema-json-id="/assembly/oscal-component-definition/control-implementation/implemented-requirements"
                 name="implemented-requirement"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_component_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_component_metaschema.xml"
                 _key-name="oscal-component-definition:implemented-requirement"
                 _step="implemented-requirement"
                 _key="implemented-requirements"
@@ -3358,6 +3579,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/capability/control-implementation/implemented-requirement/link/text"
@@ -3380,6 +3607,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/capability/control-implementation/implemented-requirement/set-parameter/value"
@@ -3397,7 +3627,11 @@
              _in-xml-name="value"
              _in-json-name="values"
              gi="value"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="component-definition/capability/control-implementation/implemented-requirement/responsible-role/link/text"
                  priority="13"
@@ -3419,6 +3653,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/capability/control-implementation/implemented-requirement/statement"
@@ -3428,7 +3665,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-component-definition/implemented-requirement/statement"
                 _metaschema-json-id="/assembly/oscal-component-definition/implemented-requirement/statements"
                 name="statement"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_component_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_component_metaschema.xml"
                 _key-name="oscal-component-definition:statement"
                 _step="statement"
                 _key="statements"
@@ -3485,6 +3722,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/capability/control-implementation/implemented-requirement/statement/link/text"
@@ -3507,6 +3750,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/capability/control-implementation/implemented-requirement/statement/responsible-role/link/text"
@@ -3529,6 +3775,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/back-matter/resource"
@@ -3593,6 +3842,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/back-matter/resource/description"
@@ -3616,6 +3868,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/back-matter/resource/document-id"
@@ -3627,7 +3885,7 @@
              collapsible="no"
              as-type="string"
              name="document-id"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:document-id"
              _step="document-id"
              _key="document-ids"
@@ -3696,6 +3954,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/back-matter/resource/citation/link/text"
@@ -3718,6 +3979,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/back-matter/resource/rlink"
@@ -3769,6 +4033,15 @@
             <xsl:value-of select="."/>
          </value>
       </field>
+   </xsl:template>
+   <xsl:template match="*"
+                 mode="cast-prose"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:element name="{ local-name() }"
+                   namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
+         <xsl:copy-of select="@*"/>
+         <xsl:apply-templates mode="#current"/>
+      </xsl:element>
    </xsl:template>
    <!-- XML to JSON conversion: Supermodel serialization as JSON
         including markdown production -->

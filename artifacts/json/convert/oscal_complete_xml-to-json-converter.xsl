@@ -87,7 +87,7 @@
                 _metaschema-json-id="/assembly/oscal-catalog/catalog"
                 name="catalog"
                 key="catalog"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_catalog_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_catalog_metaschema.xml"
                 _key-name="oscal-catalog:catalog"
                 _using-root-name="catalog"
                 gi="catalog">
@@ -130,7 +130,7 @@
                 _metaschema-json-id="/assembly/oscal-catalog/catalog/metadata"
                 name="metadata"
                 key="metadata"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
                 _key-name="oscal-metadata:metadata"
                 _step="metadata"
                 _key="metadata"
@@ -206,7 +206,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-metadata/revision/prop"
                 _metaschema-json-id="/assembly/oscal-metadata/revision/props"
                 name="property"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
                 _key-name="oscal-metadata:property"
                 _step="prop"
                 _key="props"
@@ -229,7 +229,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-metadata/revision/link"
                 _metaschema-json-id="/assembly/oscal-metadata/revision/links"
                 name="link"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
                 _key-name="oscal-metadata:link"
                 _step="link"
                 _key="links"
@@ -250,7 +250,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-metadata/metadata/role"
                 _metaschema-json-id="/assembly/oscal-metadata/metadata/roles"
                 name="role"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
                 _key-name="oscal-metadata:role"
                 _step="role"
                 _key="roles"
@@ -286,7 +286,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-metadata/metadata/location"
                 _metaschema-json-id="/assembly/oscal-metadata/metadata/locations"
                 name="location"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
                 _key-name="oscal-metadata:location"
                 _step="location"
                 _key="locations"
@@ -342,7 +342,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-metadata/metadata/party"
                 _metaschema-json-id="/assembly/oscal-metadata/metadata/parties"
                 name="party"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
                 _key-name="oscal-metadata:party"
                 _step="party"
                 _key="parties"
@@ -420,7 +420,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-metadata/metadata/responsible-party"
                 _metaschema-json-id="/assembly/oscal-metadata/metadata/responsible-parties"
                 name="responsible-party"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
                 _key-name="oscal-metadata:responsible-party"
                 _step="responsible-party"
                 _key="responsible-parties"
@@ -460,7 +460,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-catalog/catalog/param"
                 _metaschema-json-id="/assembly/oscal-catalog/catalog/params"
                 name="parameter"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_control-common_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_control-common_metaschema.xml"
                 _key-name="oscal-catalog-common:parameter"
                 _step="param"
                 _key="params"
@@ -519,7 +519,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-catalog-common/parameter/constraint"
                 _metaschema-json-id="/assembly/oscal-catalog-common/parameter/constraints"
                 name="parameter-constraint"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_control-common_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_control-common_metaschema.xml"
                 _key-name="oscal-catalog-common:parameter-constraint"
                 _step="constraint"
                 _key="constraints"
@@ -544,7 +544,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-catalog-common/parameter/guideline"
                 _metaschema-json-id="/assembly/oscal-catalog-common/parameter/guidelines"
                 name="parameter-guideline"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_control-common_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_control-common_metaschema.xml"
                 _key-name="oscal-catalog-common:parameter-guideline"
                 _step="guideline"
                 _key="guidelines"
@@ -553,7 +553,29 @@
                 _in-xml-name="guideline"
                 _in-json-name="guidelines"
                 gi="guideline">
-         <xsl:apply-templates select=""/>
+         <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                             group-by="true()">
+            <field in-json="SCALAR"
+                   _step="p ul ol pre table h1 h2 h3 h4 h5 h6"
+                   _key="prose"
+                   _metaschema-xml-id="/assembly/oscal-catalog-common/parameter-guideline/p ul ol pre table h1 h2 h3 h4 h5 h6"
+                   _metaschema-json-id="/assembly/oscal-catalog-common/parameter-guideline/prose"
+                   in-xml="UNWRAPPED"
+                   collapsible="no"
+                   as-type="markup-multiline"
+                   name="prose"
+                   key="prose"
+                   _using-name="prose"
+                   _in-xml-name="p ul ol pre table h1 h2 h3 h4 h5 h6"
+                   _in-json-name="prose">
+               <value in-json="string"
+                      as-type="markup-multiline"
+                      _metaschema-xml-id="/assembly/oscal-catalog-common/parameter-guideline/p ul ol pre table h1 h2 h3 h4 h5 h6/PROSE"
+                      _metaschema-json-id="/assembly/oscal-catalog-common/parameter-guideline/prose/PROSE">
+                  <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+               </value>
+            </field>
+         </xsl:for-each-group>
       </assembly>
    </xsl:template>
    <xsl:template match="select"
@@ -563,7 +585,7 @@
                 _metaschema-json-id="/assembly/oscal-catalog-common/parameter/select"
                 name="parameter-selection"
                 key="select"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_control-common_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_control-common_metaschema.xml"
                 _key-name="oscal-catalog-common:parameter-selection"
                 _step="select"
                 _key="select"
@@ -591,7 +613,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-catalog/catalog/control"
                 _metaschema-json-id="/assembly/oscal-catalog/catalog/controls"
                 name="control"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_catalog_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_catalog_metaschema.xml"
                 _key-name="oscal-catalog:control"
                 _step="control"
                 _key="controls"
@@ -646,7 +668,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-catalog/control/part"
                 _metaschema-json-id="/assembly/oscal-catalog/control/parts"
                 name="part"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_control-common_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_control-common_metaschema.xml"
                 _key-name="oscal-catalog-common:part"
                 _step="part"
                 _key="parts"
@@ -667,7 +689,29 @@
                </xsl:apply-templates>
             </group>
          </xsl:for-each-group>
-         <xsl:apply-templates select=""/>
+         <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                             group-by="true()">
+            <field in-json="SCALAR"
+                   _step="p ul ol pre table h1 h2 h3 h4 h5 h6"
+                   _key="prose"
+                   _metaschema-xml-id="/assembly/oscal-catalog-common/part/p ul ol pre table h1 h2 h3 h4 h5 h6"
+                   _metaschema-json-id="/assembly/oscal-catalog-common/part/prose"
+                   in-xml="UNWRAPPED"
+                   collapsible="no"
+                   as-type="markup-multiline"
+                   name="prose"
+                   key="prose"
+                   _using-name="prose"
+                   _in-xml-name="p ul ol pre table h1 h2 h3 h4 h5 h6"
+                   _in-json-name="prose">
+               <value in-json="string"
+                      as-type="markup-multiline"
+                      _metaschema-xml-id="/assembly/oscal-catalog-common/part/p ul ol pre table h1 h2 h3 h4 h5 h6/PROSE"
+                      _metaschema-json-id="/assembly/oscal-catalog-common/part/prose/PROSE">
+                  <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+               </value>
+            </field>
+         </xsl:for-each-group>
          <xsl:for-each-group select="part" group-by="true()">
             <group in-json="ARRAY" key="parts">
                <xsl:apply-templates select="current-group()">
@@ -690,7 +734,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-ap/assessment-plan/terms-and-conditions/part"
                 _metaschema-json-id="/assembly/oscal-ap/assessment-plan/terms-and-conditions/parts"
                 name="assessment-part"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_assessment-common_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_assessment-common_metaschema.xml"
                 _key-name="oscal-assessment-common:assessment-part"
                 _step="part"
                 _key="parts"
@@ -711,7 +755,29 @@
                </xsl:apply-templates>
             </group>
          </xsl:for-each-group>
-         <xsl:apply-templates select=""/>
+         <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                             group-by="true()">
+            <field in-json="SCALAR"
+                   _step="p ul ol pre table h1 h2 h3 h4 h5 h6"
+                   _key="prose"
+                   _metaschema-xml-id="/assembly/oscal-assessment-common/assessment-part/p ul ol pre table h1 h2 h3 h4 h5 h6"
+                   _metaschema-json-id="/assembly/oscal-assessment-common/assessment-part/prose"
+                   in-xml="UNWRAPPED"
+                   collapsible="no"
+                   as-type="markup-multiline"
+                   name="prose"
+                   key="prose"
+                   _using-name="prose"
+                   _in-xml-name="p ul ol pre table h1 h2 h3 h4 h5 h6"
+                   _in-json-name="prose">
+               <value in-json="string"
+                      as-type="markup-multiline"
+                      _metaschema-xml-id="/assembly/oscal-assessment-common/assessment-part/p ul ol pre table h1 h2 h3 h4 h5 h6/PROSE"
+                      _metaschema-json-id="/assembly/oscal-assessment-common/assessment-part/prose/PROSE">
+                  <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+               </value>
+            </field>
+         </xsl:for-each-group>
          <xsl:for-each-group select="part" group-by="true()">
             <group in-json="ARRAY" key="parts">
                <xsl:apply-templates select="current-group()">
@@ -734,7 +800,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-catalog/catalog/group"
                 _metaschema-json-id="/assembly/oscal-catalog/catalog/groups"
                 name="group"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_catalog_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_catalog_metaschema.xml"
                 _key-name="oscal-catalog:group"
                 _step="group"
                 _key="groups"
@@ -796,7 +862,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-profile/custom/group"
                 _metaschema-json-id="/assembly/oscal-profile/custom/groups"
                 name="group"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_profile_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_profile_metaschema.xml"
                 _key-name="oscal-profile:group"
                 _step="group"
                 _key="groups"
@@ -859,7 +925,7 @@
                 _metaschema-json-id="/assembly/oscal-catalog/catalog/back-matter"
                 name="back-matter"
                 key="back-matter"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
                 _key-name="oscal-metadata:back-matter"
                 _step="back-matter"
                 _key="back-matter"
@@ -887,7 +953,7 @@
                 _metaschema-json-id="/assembly/oscal-profile/profile"
                 name="profile"
                 key="profile"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_profile_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_profile_metaschema.xml"
                 _key-name="oscal-profile:profile"
                 _using-root-name="profile"
                 gi="profile">
@@ -917,7 +983,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-profile/profile/import"
                 _metaschema-json-id="/assembly/oscal-profile/profile/imports"
                 name="import"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_profile_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_profile_metaschema.xml"
                 _key-name="oscal-profile:import"
                 _step="import"
                 _key="imports"
@@ -952,7 +1018,7 @@
                 _metaschema-json-id="/assembly/oscal-profile/import/include-all"
                 name="include-all"
                 key="include-all"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_profile_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_profile_metaschema.xml"
                 _key-name="oscal-profile:include-all"
                 _step="include-all"
                 _key="include-all"
@@ -973,7 +1039,7 @@
                 _metaschema-json-id="/assembly/oscal-profile/profile/merge"
                 name="merge"
                 key="merge"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_profile_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_profile_metaschema.xml"
                 _key-name="oscal-profile:merge"
                 _step="merge"
                 _key="merge"
@@ -998,7 +1064,7 @@
                 _metaschema-json-id="/assembly/oscal-profile/merge/combine"
                 name="combine"
                 key="combine"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_profile_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_profile_metaschema.xml"
                 _key-name="oscal-profile:combine"
                 _step="combine"
                 _key="combine"
@@ -1020,7 +1086,7 @@
                 _metaschema-json-id="/assembly/oscal-profile/merge/custom"
                 name="custom"
                 key="custom"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_profile_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_profile_metaschema.xml"
                 _key-name="oscal-profile:custom"
                 _step="custom"
                 _key="custom"
@@ -1054,7 +1120,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-profile/group/insert-controls"
                 _metaschema-json-id="/assembly/oscal-profile/group/insert-controls"
                 name="insert-controls"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_profile_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_profile_metaschema.xml"
                 _key-name="oscal-profile:insert-controls"
                 _step="insert-controls"
                 _key="insert-controls"
@@ -1088,7 +1154,7 @@
                 _metaschema-json-id="/assembly/oscal-profile/profile/modify"
                 name="modify"
                 key="modify"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_profile_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_profile_metaschema.xml"
                 _key-name="oscal-profile:modify"
                 _step="modify"
                 _key="modify"
@@ -1122,7 +1188,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-profile/modify/alter"
                 _metaschema-json-id="/assembly/oscal-profile/modify/alters"
                 name="alter"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_profile_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_profile_metaschema.xml"
                 _key-name="oscal-profile:alter"
                 _step="alter"
                 _key="alters"
@@ -1155,7 +1221,7 @@
                 _metaschema-xml-id="/assembly/oscal-profile/alter/remove"
                 _metaschema-json-id="/assembly/oscal-profile/alter/removes"
                 name="remove"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_profile_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_profile_metaschema.xml"
                 _key-name="oscal-profile:remove"
                 _step="remove"
                 _key="removes"
@@ -1176,7 +1242,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-profile/alter/add"
                 _metaschema-json-id="/assembly/oscal-profile/alter/adds"
                 name="add"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_profile_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_profile_metaschema.xml"
                 _key-name="oscal-profile:add"
                 _step="add"
                 _key="adds"
@@ -1225,7 +1291,7 @@
                 _metaschema-json-id="/assembly/oscal-component-definition/component-definition"
                 name="component-definition"
                 key="component-definition"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_component_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_component_metaschema.xml"
                 _key-name="oscal-component-definition:component-definition"
                 _using-root-name="component-definition"
                 gi="component-definition">
@@ -1268,7 +1334,7 @@
                 _metaschema-xml-id="/assembly/oscal-component-definition/component-definition/import-component-definition"
                 _metaschema-json-id="/assembly/oscal-component-definition/component-definition/import-component-definitions"
                 name="import-component-definition"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_component_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_component_metaschema.xml"
                 _key-name="oscal-component-definition:import-component-definition"
                 _step="import-component-definition"
                 _key="import-component-definitions"
@@ -1286,7 +1352,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-component-definition/component-definition/component"
                 _metaschema-json-id="/assembly/oscal-component-definition/component-definition/components"
                 name="defined-component"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_component_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_component_metaschema.xml"
                 _key-name="oscal-component-definition:defined-component"
                 _step="component"
                 _key="components"
@@ -1344,7 +1410,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-ssp/system-implementation/component"
                 _metaschema-json-id="/assembly/oscal-ssp/system-implementation/components"
                 name="system-component"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_implementation-common_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_implementation-common_metaschema.xml"
                 _key-name="oscal-implementation-common:system-component"
                 _step="component"
                 _key="components"
@@ -1396,7 +1462,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-component-definition/defined-component/responsible-role"
                 _metaschema-json-id="/assembly/oscal-component-definition/defined-component/responsible-roles"
                 name="responsible-role"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
                 _key-name="oscal-metadata:responsible-role"
                 _step="responsible-role"
                 _key="responsible-roles"
@@ -1436,7 +1502,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-component-definition/defined-component/protocol"
                 _metaschema-json-id="/assembly/oscal-component-definition/defined-component/protocols"
                 name="protocol"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_implementation-common_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_implementation-common_metaschema.xml"
                 _key-name="oscal-implementation-common:protocol"
                 _step="protocol"
                 _key="protocols"
@@ -1464,7 +1530,7 @@
                 _metaschema-xml-id="/assembly/oscal-implementation-common/protocol/port-range"
                 _metaschema-json-id="/assembly/oscal-implementation-common/protocol/port-ranges"
                 name="port-range"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_implementation-common_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_implementation-common_metaschema.xml"
                 _key-name="oscal-implementation-common:port-range"
                 _step="port-range"
                 _key="port-ranges"
@@ -1484,7 +1550,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-component-definition/control-implementation/set-parameter"
                 _metaschema-json-id="/assembly/oscal-component-definition/control-implementation/set-parameters"
                 name="set-parameter"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_implementation-common_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_implementation-common_metaschema.xml"
                 _key-name="oscal-implementation-common:set-parameter"
                 _step="set-parameter"
                 _key="set-parameters"
@@ -1510,7 +1576,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-component-definition/component-definition/capability"
                 _metaschema-json-id="/assembly/oscal-component-definition/component-definition/capabilities"
                 name="capability"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_component_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_component_metaschema.xml"
                 _key-name="oscal-component-definition:capability"
                 _step="capability"
                 _key="capabilities"
@@ -1559,7 +1625,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-component-definition/capability/incorporates-component"
                 _metaschema-json-id="/assembly/oscal-component-definition/capability/incorporates-components"
                 name="incorporates-component"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_component_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_component_metaschema.xml"
                 _key-name="oscal-component-definition:incorporates-component"
                 _step="incorporates-component"
                 _key="incorporates-components"
@@ -1579,7 +1645,7 @@
                 _metaschema-json-id="/assembly/oscal-ssp/system-security-plan"
                 name="system-security-plan"
                 key="system-security-plan"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_ssp_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_ssp_metaschema.xml"
                 _key-name="oscal-ssp:system-security-plan"
                 _using-root-name="system-security-plan"
                 gi="system-security-plan">
@@ -1605,7 +1671,7 @@
                 _metaschema-json-id="/assembly/oscal-ssp/system-security-plan/import-profile"
                 name="import-profile"
                 key="import-profile"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_ssp_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_ssp_metaschema.xml"
                 _key-name="oscal-ssp:import-profile"
                 _step="import-profile"
                 _key="import-profile"
@@ -1628,7 +1694,7 @@
                 _metaschema-json-id="/assembly/oscal-ssp/system-security-plan/system-characteristics"
                 name="system-characteristics"
                 key="system-characteristics"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_ssp_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_ssp_metaschema.xml"
                 _key-name="oscal-ssp:system-characteristics"
                 _step="system-characteristics"
                 _key="system-characteristics"
@@ -1689,7 +1755,7 @@
                 _metaschema-json-id="/assembly/oscal-ssp/system-characteristics/system-information"
                 name="system-information"
                 key="system-information"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_ssp_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_ssp_metaschema.xml"
                 _key-name="oscal-ssp:system-information"
                 _step="system-information"
                 _key="system-information"
@@ -1731,7 +1797,7 @@
                 _metaschema-json-id="/assembly/oscal-ssp/system-characteristics/security-impact-level"
                 name="security-impact-level"
                 key="security-impact-level"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_ssp_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_ssp_metaschema.xml"
                 _key-name="oscal-ssp:security-impact-level"
                 _step="security-impact-level"
                 _key="security-impact-level"
@@ -1755,7 +1821,7 @@
                 _metaschema-json-id="/assembly/oscal-ssp/system-characteristics/authorization-boundary"
                 name="authorization-boundary"
                 key="authorization-boundary"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_ssp_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_ssp_metaschema.xml"
                 _key-name="oscal-ssp:authorization-boundary"
                 _step="authorization-boundary"
                 _key="authorization-boundary"
@@ -1798,7 +1864,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-ssp/authorization-boundary/diagram"
                 _metaschema-json-id="/assembly/oscal-ssp/authorization-boundary/diagrams"
                 name="diagram"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_ssp_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_ssp_metaschema.xml"
                 _key-name="oscal-ssp:diagram"
                 _step="diagram"
                 _key="diagrams"
@@ -1834,7 +1900,7 @@
                 _metaschema-json-id="/assembly/oscal-ssp/system-characteristics/network-architecture"
                 name="network-architecture"
                 key="network-architecture"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_ssp_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_ssp_metaschema.xml"
                 _key-name="oscal-ssp:network-architecture"
                 _step="network-architecture"
                 _key="network-architecture"
@@ -1878,7 +1944,7 @@
                 _metaschema-json-id="/assembly/oscal-ssp/system-characteristics/data-flow"
                 name="data-flow"
                 key="data-flow"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_ssp_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_ssp_metaschema.xml"
                 _key-name="oscal-ssp:data-flow"
                 _step="data-flow"
                 _key="data-flow"
@@ -1922,7 +1988,7 @@
                 _metaschema-json-id="/assembly/oscal-ssp/system-security-plan/system-implementation"
                 name="system-implementation"
                 key="system-implementation"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_ssp_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_ssp_metaschema.xml"
                 _key-name="oscal-ssp:system-implementation"
                 _step="system-implementation"
                 _key="system-implementation"
@@ -1985,7 +2051,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-ssp/system-implementation/user"
                 _metaschema-json-id="/assembly/oscal-ssp/system-implementation/users"
                 name="system-user"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_implementation-common_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_implementation-common_metaschema.xml"
                 _key-name="oscal-implementation-common:system-user"
                 _step="user"
                 _key="users"
@@ -2035,7 +2101,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-implementation-common/system-user/authorized-privilege"
                 _metaschema-json-id="/assembly/oscal-implementation-common/system-user/authorized-privileges"
                 name="authorized-privilege"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_implementation-common_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_implementation-common_metaschema.xml"
                 _key-name="oscal-implementation-common:authorized-privilege"
                 _step="authorized-privilege"
                 _key="authorized-privileges"
@@ -2061,7 +2127,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-ssp/system-implementation/inventory-item"
                 _metaschema-json-id="/assembly/oscal-ssp/system-implementation/inventory-items"
                 name="inventory-item"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_implementation-common_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_implementation-common_metaschema.xml"
                 _key-name="oscal-implementation-common:inventory-item"
                 _step="inventory-item"
                 _key="inventory-items"
@@ -2109,7 +2175,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-ssp/statement/by-component"
                 _metaschema-json-id="/assembly/oscal-ssp/statement/by-components"
                 name="by-component"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_ssp_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_ssp_metaschema.xml"
                 _key-name="oscal-ssp:by-component"
                 _step="by-component"
                 _key="by-components"
@@ -2175,7 +2241,7 @@
                 _metaschema-json-id="/assembly/oscal-ssp/by-component/implementation-status"
                 name="implementation-status"
                 key="implementation-status"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_implementation-common_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_implementation-common_metaschema.xml"
                 _key-name="oscal-implementation-common:implementation-status"
                 _step="implementation-status"
                 _key="implementation-status"
@@ -2198,7 +2264,7 @@
                 _metaschema-json-id="/assembly/oscal-ap/assessment-plan"
                 name="assessment-plan"
                 key="assessment-plan"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_assessment-plan_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_assessment-plan_metaschema.xml"
                 _key-name="oscal-ap:assessment-plan"
                 _using-root-name="assessment-plan"
                 gi="assessment-plan">
@@ -2239,7 +2305,7 @@
                 _metaschema-json-id="/assembly/oscal-ap/assessment-plan/import-ssp"
                 name="import-ssp"
                 key="import-ssp"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_assessment-common_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_assessment-common_metaschema.xml"
                 _key-name="oscal-assessment-common:import-ssp"
                 _step="import-ssp"
                 _key="import-ssp"
@@ -2261,7 +2327,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-ap/assessment-plan/local-definitions/objectives-and-methods"
                 _metaschema-json-id="/assembly/oscal-ap/assessment-plan/local-definitions/objectives-and-methods"
                 name="local-objective"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_assessment-common_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_assessment-common_metaschema.xml"
                 _key-name="oscal-assessment-common:local-objective"
                 _step="objectives-and-methods"
                 _key="objectives-and-methods"
@@ -2302,7 +2368,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-ap/assessment-plan/local-definitions/activity"
                 _metaschema-json-id="/assembly/oscal-ap/assessment-plan/local-definitions/activities"
                 name="activity"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_assessment-common_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_assessment-common_metaschema.xml"
                 _key-name="oscal-assessment-common:activity"
                 _step="activity"
                 _key="activities"
@@ -2353,7 +2419,7 @@
                 _metaschema-json-id="/assembly/oscal-assessment-common/activity/steps/reviewed-controls"
                 name="reviewed-controls"
                 key="reviewed-controls"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_assessment-common_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_assessment-common_metaschema.xml"
                 _key-name="oscal-assessment-common:reviewed-controls"
                 _step="reviewed-controls"
                 _key="reviewed-controls"
@@ -2404,7 +2470,7 @@
                 _metaschema-xml-id="/assembly/oscal-assessment-common/reviewed-controls/control-objective-selection/include-objective"
                 _metaschema-json-id="/assembly/oscal-assessment-common/reviewed-controls/control-objective-selections/include-objectives"
                 name="select-objective-by-id"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_assessment-common_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_assessment-common_metaschema.xml"
                 _key-name="oscal-assessment-common:select-objective-by-id"
                 _step="include-objective"
                 _key="include-objectives"
@@ -2423,7 +2489,7 @@
                 _metaschema-xml-id="/assembly/oscal-assessment-common/reviewed-controls/control-objective-selection/exclude-objective"
                 _metaschema-json-id="/assembly/oscal-assessment-common/reviewed-controls/control-objective-selections/exclude-objectives"
                 name="select-objective-by-id"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_assessment-common_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_assessment-common_metaschema.xml"
                 _key-name="oscal-assessment-common:select-objective-by-id"
                 _step="exclude-objective"
                 _key="exclude-objectives"
@@ -2442,7 +2508,7 @@
                 _metaschema-json-id="/assembly/oscal-assessment-common/activity/related-controls"
                 name="reviewed-controls"
                 key="related-controls"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_assessment-common_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_assessment-common_metaschema.xml"
                 _key-name="oscal-assessment-common:reviewed-controls"
                 _step="related-controls"
                 _key="related-controls"
@@ -2492,7 +2558,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-ap/assessment-plan/assessment-subject"
                 _metaschema-json-id="/assembly/oscal-ap/assessment-plan/assessment-subjects"
                 name="assessment-subject"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_assessment-common_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_assessment-common_metaschema.xml"
                 _key-name="oscal-assessment-common:assessment-subject"
                 _step="assessment-subject"
                 _key="assessment-subjects"
@@ -2541,7 +2607,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-assessment-common/assessment-subject/include-subject"
                 _metaschema-json-id="/assembly/oscal-assessment-common/assessment-subject/include-subjects"
                 name="select-subject-by-id"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_assessment-common_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_assessment-common_metaschema.xml"
                 _key-name="oscal-assessment-common:select-subject-by-id"
                 _step="include-subject"
                 _key="include-subjects"
@@ -2575,7 +2641,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-assessment-common/assessment-subject/exclude-subject"
                 _metaschema-json-id="/assembly/oscal-assessment-common/assessment-subject/exclude-subjects"
                 name="select-subject-by-id"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_assessment-common_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_assessment-common_metaschema.xml"
                 _key-name="oscal-assessment-common:select-subject-by-id"
                 _step="exclude-subject"
                 _key="exclude-subjects"
@@ -2610,7 +2676,7 @@
                 _metaschema-json-id="/assembly/oscal-ap/assessment-plan/assessment-assets"
                 name="assessment-assets"
                 key="assessment-assets"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_assessment-common_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_assessment-common_metaschema.xml"
                 _key-name="oscal-assessment-common:assessment-assets"
                 _step="assessment-assets"
                 _key="assessment-assets"
@@ -2644,7 +2710,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-ap/assessment-plan/task"
                 _metaschema-json-id="/assembly/oscal-ap/assessment-plan/tasks"
                 name="task"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_assessment-common_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_assessment-common_metaschema.xml"
                 _key-name="oscal-assessment-common:task"
                 _step="task"
                 _key="tasks"
@@ -2716,7 +2782,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-assessment-common/task/associated-activity/subject"
                 _metaschema-json-id="/assembly/oscal-assessment-common/task/associated-activities/subjects"
                 name="assessment-subject"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_assessment-common_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_assessment-common_metaschema.xml"
                 _key-name="oscal-assessment-common:assessment-subject"
                 _step="subject"
                 _key="subjects"
@@ -2766,7 +2832,7 @@
                 _metaschema-json-id="/assembly/oscal-ar/assessment-results"
                 name="assessment-results"
                 key="assessment-results"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_assessment-results_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_assessment-results_metaschema.xml"
                 _key-name="oscal-ar:assessment-results"
                 _using-root-name="assessment-results"
                 gi="assessment-results">
@@ -2797,7 +2863,7 @@
                 _metaschema-json-id="/assembly/oscal-ar/assessment-results/import-ap"
                 name="import-ap"
                 key="import-ap"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_assessment-results_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_assessment-results_metaschema.xml"
                 _key-name="oscal-ar:import-ap"
                 _step="import-ap"
                 _key="import-ap"
@@ -2819,7 +2885,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-ar/assessment-results/result"
                 _metaschema-json-id="/assembly/oscal-ar/assessment-results/results"
                 name="result"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_assessment-results_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_assessment-results_metaschema.xml"
                 _key-name="oscal-ar:result"
                 _step="result"
                 _key="results"
@@ -2887,7 +2953,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-ar/result/local-definitions/assessment-task"
                 _metaschema-json-id="/assembly/oscal-ar/result/local-definitions/tasks"
                 name="task"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_assessment-common_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_assessment-common_metaschema.xml"
                 _key-name="oscal-assessment-common:task"
                 _step="assessment-task"
                 _key="tasks"
@@ -2960,7 +3026,7 @@
                 _metaschema-xml-id="/assembly/oscal-ar/result/assessment-log/entry/logged-by"
                 _metaschema-json-id="/assembly/oscal-ar/result/assessment-log/entries/logged-by"
                 name="logged-by"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_assessment-common_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_assessment-common_metaschema.xml"
                 _key-name="oscal-assessment-common:logged-by"
                 _step="logged-by"
                 _key="logged-by"
@@ -2979,7 +3045,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-ar/result/assessment-log/entry/related-task"
                 _metaschema-json-id="/assembly/oscal-ar/result/assessment-log/entries/related-tasks"
                 name="related-task"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_assessment-common_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_assessment-common_metaschema.xml"
                 _key-name="oscal-assessment-common:related-task"
                 _step="related-task"
                 _key="related-tasks"
@@ -3027,7 +3093,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-ar/result/observation"
                 _metaschema-json-id="/assembly/oscal-ar/result/observations"
                 name="observation"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_assessment-common_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_assessment-common_metaschema.xml"
                 _key-name="oscal-assessment-common:observation"
                 _step="observation"
                 _key="observations"
@@ -3099,7 +3165,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-assessment-common/observation/origin"
                 _metaschema-json-id="/assembly/oscal-assessment-common/observation/origins"
                 name="origin"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_assessment-common_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_assessment-common_metaschema.xml"
                 _key-name="oscal-assessment-common:origin"
                 _step="origin"
                 _key="origins"
@@ -3133,7 +3199,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-assessment-common/origin/actor"
                 _metaschema-json-id="/assembly/oscal-assessment-common/origin/actors"
                 name="origin-actor"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_assessment-common_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_assessment-common_metaschema.xml"
                 _key-name="oscal-assessment-common:origin-actor"
                 _step="actor"
                 _key="actors"
@@ -3167,7 +3233,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-ar/result/risk"
                 _metaschema-json-id="/assembly/oscal-ar/result/risks"
                 name="risk"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_assessment-common_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_assessment-common_metaschema.xml"
                 _key-name="oscal-assessment-common:risk"
                 _step="risk"
                 _key="risks"
@@ -3247,7 +3313,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-assessment-common/risk/characterization"
                 _metaschema-json-id="/assembly/oscal-assessment-common/risk/characterizations"
                 name="characterization"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_assessment-common_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_assessment-common_metaschema.xml"
                 _key-name="oscal-assessment-common:characterization"
                 _step="characterization"
                 _key="characterizations"
@@ -3286,7 +3352,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-ar/result/finding"
                 _metaschema-json-id="/assembly/oscal-ar/result/findings"
                 name="finding"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_assessment-results_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_assessment-results_metaschema.xml"
                 _key-name="oscal-ar:finding"
                 _step="finding"
                 _key="findings"
@@ -3345,7 +3411,7 @@
                 _metaschema-json-id="/assembly/oscal-ar/finding/target"
                 name="finding-target"
                 key="target"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_assessment-common_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_assessment-common_metaschema.xml"
                 _key-name="oscal-assessment-common:finding-target"
                 _step="target"
                 _key="target"
@@ -3376,7 +3442,6 @@
             </group>
          </xsl:for-each-group>
          <xsl:apply-templates select="status"/>
-         <xsl:apply-templates select="reason"/>
          <xsl:apply-templates select="implementation-status"/>
          <xsl:apply-templates select="remarks"/>
       </assembly>
@@ -3388,7 +3453,7 @@
                 _metaschema-json-id="/assembly/oscal-poam/plan-of-action-and-milestones"
                 name="plan-of-action-and-milestones"
                 key="plan-of-action-and-milestones"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_poam_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_poam_metaschema.xml"
                 _key-name="oscal-poam:plan-of-action-and-milestones"
                 _using-root-name="plan-of-action-and-milestones"
                 gi="plan-of-action-and-milestones">
@@ -3434,7 +3499,7 @@
                 _metaschema-json-id="/assembly/oscal-poam/plan-of-action-and-milestones/local-definitions"
                 name="local-definitions"
                 key="local-definitions"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_poam_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_poam_metaschema.xml"
                 _key-name="oscal-poam:local-definitions"
                 _step="local-definitions"
                 _key="local-definitions"
@@ -3469,7 +3534,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-poam/plan-of-action-and-milestones/poam-item"
                 _metaschema-json-id="/assembly/oscal-poam/plan-of-action-and-milestones/poam-items"
                 name="poam-item"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_poam_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_poam_metaschema.xml"
                 _key-name="oscal-poam:poam-item"
                 _step="poam-item"
                 _key="poam-items"
@@ -3529,7 +3594,7 @@
              as-type="markup-multiline"
              name="remarks"
              key="remarks"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:remarks"
              _step="remarks"
              _key="remarks"
@@ -3542,6 +3607,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">remarks</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="location-uuid"
@@ -3552,7 +3623,7 @@
              collapsible="no"
              as-type="uuid"
              name="location-uuid"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:location-uuid"
              _step="location-uuid"
              _key="location-uuids"
@@ -3561,7 +3632,11 @@
              _in-xml-name="location-uuid"
              _in-json-name="location-uuids"
              gi="location-uuid"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="uuid" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="party-uuid"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -3571,7 +3646,7 @@
              collapsible="no"
              as-type="uuid"
              name="party-uuid"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:party-uuid"
              _step="party-uuid"
              _key="party-uuids"
@@ -3580,7 +3655,11 @@
              _in-xml-name="party-uuid"
              _in-json-name="party-uuids"
              gi="party-uuid"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="uuid" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="value"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -3590,7 +3669,7 @@
              collapsible="no"
              as-type="string"
              name="parameter-value"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_control-common_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_control-common_metaschema.xml"
              _key-name="oscal-catalog-common:parameter-value"
              _step="value"
              _key="values"
@@ -3599,7 +3678,11 @@
              _in-xml-name="value"
              _in-json-name="values"
              gi="value"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="hash"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -3609,7 +3692,7 @@
              collapsible="no"
              as-type="string"
              name="hash"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:hash"
              _step="hash"
              _key="hashes"
@@ -3633,7 +3716,7 @@
              as-type="boolean"
              name="as-is"
              key="as-is"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_profile_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_profile_metaschema.xml"
              _key-name="oscal-profile:as-is"
              _step="as-is"
              _key="as-is"
@@ -3646,6 +3729,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">as-is</xsl:attribute>
          </xsl:if>
+         <value as-type="boolean" in-json="boolean">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-id"
@@ -3656,7 +3742,7 @@
              collapsible="no"
              as-type="string"
              name="system-id"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_implementation-common_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_implementation-common_metaschema.xml"
              _key-name="oscal-implementation-common:system-id"
              _step="system-id"
              _key="system-ids"
@@ -3682,7 +3768,7 @@
              collapsible="no"
              as-type="token"
              name="role-id"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:role-id"
              _step="role-id"
              _key="role-ids"
@@ -3691,7 +3777,11 @@
              _in-xml-name="role-id"
              _in-json-name="role-ids"
              gi="role-id"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="token" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="function-performed"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -3701,7 +3791,7 @@
              collapsible="no"
              as-type="string"
              name="function-performed"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_implementation-common_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_implementation-common_metaschema.xml"
              _key-name="oscal-implementation-common:function-performed"
              _step="function-performed"
              _key="functions-performed"
@@ -3710,7 +3800,11 @@
              _in-xml-name="function-performed"
              _in-json-name="functions-performed"
              gi="function-performed"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="threat-id"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -3720,7 +3814,7 @@
              collapsible="no"
              as-type="uri"
              name="threat-id"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_assessment-common_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_assessment-common_metaschema.xml"
              _key-name="oscal-assessment-common:threat-id"
              _step="threat-id"
              _key="threat-ids"
@@ -3745,7 +3839,7 @@
              as-type="token"
              name="risk-status"
              key="status-change"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_assessment-common_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_assessment-common_metaschema.xml"
              _key-name="oscal-assessment-common:risk-status"
              _step="status-change"
              _key="status-change"
@@ -3758,6 +3852,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">status-change</xsl:attribute>
          </xsl:if>
+         <value as-type="token" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog/@uuid"
@@ -3904,7 +4001,7 @@
             _metaschema-json-id="/assembly/oscal-metadata/link/media-type"
             name="media-type"
             key="media-type"
-            _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+            _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
             _key-name="oscal-metadata:media-type"
             _step="media-type"
             _key="media-type"
@@ -3976,7 +4073,7 @@
             _metaschema-json-id="/assembly/oscal-metadata/address/type"
             name="location-type"
             key="type"
-            _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+            _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
             _key-name="oscal-metadata:location-type"
             _step="type"
             _key="type"
@@ -4117,7 +4214,7 @@
             _metaschema-json-id="/assembly/oscal-catalog-common/parameter/depends-on"
             name="depends-on"
             key="depends-on"
-            _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_control-common_metaschema.xml"
+            _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_control-common_metaschema.xml"
             _key-name="oscal-catalog-common:depends-on"
             _step="depends-on"
             _key="depends-on"
@@ -4326,7 +4423,7 @@
             _metaschema-json-id="/assembly/oscal-metadata/back-matter/resources/rlinks/media-type"
             name="media-type"
             key="media-type"
-            _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+            _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
             _key-name="oscal-metadata:media-type"
             _step="media-type"
             _key="media-type"
@@ -4381,7 +4478,7 @@
             _metaschema-json-id="/assembly/oscal-metadata/back-matter/resources/base64/media-type"
             name="media-type"
             key="media-type"
-            _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+            _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
             _key-name="oscal-metadata:media-type"
             _step="media-type"
             _key="media-type"
@@ -4435,7 +4532,7 @@
             _metaschema-json-id="/assembly/oscal-profile/select-control-by-id/with-child-controls"
             name="with-child-controls"
             key="with-child-controls"
-            _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_profile_metaschema.xml"
+            _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_profile_metaschema.xml"
             _key-name="oscal-profile:with-child-controls"
             _step="with-child-controls"
             _key="with-child-controls"
@@ -4455,7 +4552,7 @@
             _metaschema-json-id="/assembly/oscal-profile/select-control-by-id/matching/pattern"
             name="pattern"
             key="pattern"
-            _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_profile_metaschema.xml"
+            _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_profile_metaschema.xml"
             _key-name="oscal-profile:pattern"
             _step="pattern"
             _key="pattern"
@@ -4475,7 +4572,7 @@
             _metaschema-json-id="/assembly/oscal-profile/combine/method"
             name="method"
             key="method"
-            _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_profile_metaschema.xml"
+            _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_profile_metaschema.xml"
             _key-name="oscal-profile:method"
             _step="method"
             _key="method"
@@ -4582,7 +4679,7 @@
             _metaschema-json-id="/assembly/oscal-profile/modify/set-parameters/depends-on"
             name="depends-on"
             key="depends-on"
-            _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_control-common_metaschema.xml"
+            _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_control-common_metaschema.xml"
             _key-name="oscal-catalog-common:depends-on"
             _step="depends-on"
             _key="depends-on"
@@ -4602,7 +4699,7 @@
             _metaschema-json-id="/assembly/oscal-profile/alter/control-id"
             name="control-id"
             key="control-id"
-            _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_control-common_metaschema.xml"
+            _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_control-common_metaschema.xml"
             _key-name="oscal-catalog-common:control-id"
             _step="control-id"
             _key="control-id"
@@ -4792,7 +4889,7 @@
             _metaschema-json-id="/assembly/oscal-component-definition/defined-component/type"
             name="defined-component-type"
             key="type"
-            _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_component_metaschema.xml"
+            _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_component_metaschema.xml"
             _key-name="oscal-component-definition:defined-component-type"
             _step="type"
             _key="type"
@@ -4932,7 +5029,7 @@
             _metaschema-json-id="/assembly/oscal-component-definition/control-implementation/source"
             name="source"
             key="source"
-            _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_implementation-common_metaschema.xml"
+            _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_implementation-common_metaschema.xml"
             _key-name="oscal-implementation-common:source"
             _step="source"
             _key="source"
@@ -4952,7 +5049,7 @@
             _metaschema-json-id="/assembly/oscal-implementation-common/set-parameter/param-id"
             name="param-id"
             key="param-id"
-            _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_implementation-common_metaschema.xml"
+            _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_implementation-common_metaschema.xml"
             _key-name="oscal-implementation-common:param-id"
             _step="param-id"
             _key="param-id"
@@ -4990,7 +5087,7 @@
             _metaschema-json-id="/assembly/oscal-component-definition/implemented-requirement/control-id"
             name="control-id"
             key="control-id"
-            _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_control-common_metaschema.xml"
+            _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_control-common_metaschema.xml"
             _key-name="oscal-catalog-common:control-id"
             _step="control-id"
             _key="control-id"
@@ -5010,7 +5107,7 @@
             _metaschema-json-id="/assembly/oscal-component-definition/statement/statement-id"
             name="statement-id"
             key="statement-id"
-            _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_implementation-common_metaschema.xml"
+            _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_implementation-common_metaschema.xml"
             _key-name="oscal-implementation-common:statement-id"
             _step="statement-id"
             _key="statement-id"
@@ -5273,7 +5370,7 @@
             _metaschema-json-id="/assembly/oscal-implementation-common/system-component/type"
             name="system-component-type"
             key="type"
-            _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_implementation-common_metaschema.xml"
+            _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_implementation-common_metaschema.xml"
             _key-name="oscal-implementation-common:system-component-type"
             _step="type"
             _key="type"
@@ -5364,7 +5461,7 @@
             _metaschema-json-id="/assembly/oscal-ssp/implemented-requirement/control-id"
             name="control-id"
             key="control-id"
-            _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_control-common_metaschema.xml"
+            _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_control-common_metaschema.xml"
             _key-name="oscal-catalog-common:control-id"
             _step="control-id"
             _key="control-id"
@@ -5384,7 +5481,7 @@
             _metaschema-json-id="/assembly/oscal-ssp/statement/statement-id"
             name="statement-id"
             key="statement-id"
-            _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_implementation-common_metaschema.xml"
+            _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_implementation-common_metaschema.xml"
             _key-name="oscal-implementation-common:statement-id"
             _step="statement-id"
             _key="statement-id"
@@ -5509,7 +5606,7 @@
             _metaschema-json-id="/assembly/oscal-ssp/by-component/export/responsibilities/provided-uuid"
             name="provided-uuid"
             key="provided-uuid"
-            _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_ssp_metaschema.xml"
+            _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_ssp_metaschema.xml"
             _key-name="oscal-ssp:provided-uuid"
             _step="provided-uuid"
             _key="provided-uuid"
@@ -5547,7 +5644,7 @@
             _metaschema-json-id="/assembly/oscal-ssp/by-component/inherited/provided-uuid"
             name="provided-uuid"
             key="provided-uuid"
-            _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_ssp_metaschema.xml"
+            _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_ssp_metaschema.xml"
             _key-name="oscal-ssp:provided-uuid"
             _step="provided-uuid"
             _key="provided-uuid"
@@ -5585,7 +5682,7 @@
             _metaschema-json-id="/assembly/oscal-ssp/by-component/satisfied/responsibility-uuid"
             name="responsibility-uuid"
             key="responsibility-uuid"
-            _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_ssp_metaschema.xml"
+            _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_ssp_metaschema.xml"
             _key-name="oscal-ssp:responsibility-uuid"
             _step="responsibility-uuid"
             _key="responsibility-uuid"
@@ -5639,7 +5736,7 @@
             _metaschema-json-id="/assembly/oscal-assessment-common/local-objective/control-id"
             name="control-id"
             key="control-id"
-            _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_control-common_metaschema.xml"
+            _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_control-common_metaschema.xml"
             _key-name="oscal-catalog-common:control-id"
             _step="control-id"
             _key="control-id"
@@ -5694,7 +5791,7 @@
             _metaschema-json-id="/assembly/oscal-assessment-common/select-control-by-id/control-id"
             name="control-id"
             key="control-id"
-            _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_control-common_metaschema.xml"
+            _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_control-common_metaschema.xml"
             _key-name="oscal-catalog-common:control-id"
             _step="control-id"
             _key="control-id"
@@ -5714,7 +5811,7 @@
             _metaschema-json-id="/assembly/oscal-assessment-common/select-objective-by-id/objective-id"
             name="objective-id"
             key="objective-id"
-            _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_assessment-common_metaschema.xml"
+            _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_assessment-common_metaschema.xml"
             _key-name="oscal-assessment-common:objective-id"
             _step="objective-id"
             _key="objective-id"
@@ -5819,7 +5916,7 @@
             _metaschema-json-id="/assembly/oscal-assessment-common/select-subject-by-id/subject-uuid"
             name="subject-uuid"
             key="subject-uuid"
-            _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_assessment-common_metaschema.xml"
+            _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_assessment-common_metaschema.xml"
             _key-name="oscal-assessment-common:subject-uuid"
             _step="subject-uuid"
             _key="subject-uuid"
@@ -5839,7 +5936,7 @@
             _metaschema-json-id="/assembly/oscal-assessment-common/select-subject-by-id/type"
             name="subject-type"
             key="type"
-            _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_assessment-common_metaschema.xml"
+            _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_assessment-common_metaschema.xml"
             _key-name="oscal-assessment-common:subject-type"
             _step="type"
             _key="type"
@@ -6261,7 +6358,7 @@
             _metaschema-json-id="/assembly/oscal-assessment-common/subject-reference/subject-uuid"
             name="subject-uuid"
             key="subject-uuid"
-            _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_assessment-common_metaschema.xml"
+            _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_assessment-common_metaschema.xml"
             _key-name="oscal-assessment-common:subject-uuid"
             _step="subject-uuid"
             _key="subject-uuid"
@@ -6281,7 +6378,7 @@
             _metaschema-json-id="/assembly/oscal-assessment-common/subject-reference/type"
             name="subject-type"
             key="type"
-            _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_assessment-common_metaschema.xml"
+            _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_assessment-common_metaschema.xml"
             _key-name="oscal-assessment-common:subject-type"
             _step="type"
             _key="type"
@@ -6611,6 +6708,42 @@
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
+   <xsl:template match="assessment-results/result/finding/target/status/@state"
+                 priority="9"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <flag in-json="string"
+            as-type="token"
+            _step="state"
+            _key="state"
+            _metaschema-xml-id="/assembly/oscal-assessment-common/finding-target/status/state"
+            _metaschema-json-id="/assembly/oscal-assessment-common/finding-target/status/state"
+            name="state"
+            key="state"
+            _using-name="state"
+            _in-xml-name="state"
+            _in-json-name="state"
+            gi="state">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="assessment-results/result/finding/target/status/@reason"
+                 priority="9"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <flag in-json="string"
+            as-type="token"
+            _step="reason"
+            _key="reason"
+            _metaschema-xml-id="/assembly/oscal-assessment-common/finding-target/status/reason"
+            _metaschema-json-id="/assembly/oscal-assessment-common/finding-target/status/reason"
+            name="reason"
+            key="reason"
+            _using-name="reason"
+            _in-xml-name="reason"
+            _in-json-name="reason"
+            gi="reason">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
    <xsl:template match="assessment-results/result/finding/related-observation/@observation-uuid"
                  priority="9"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -6737,6 +6870,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog/metadata/published"
@@ -6749,7 +6885,7 @@
              as-type="dateTime-with-timezone"
              name="published"
              key="published"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:published"
              _step="published"
              _key="published"
@@ -6762,6 +6898,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">published</xsl:attribute>
          </xsl:if>
+         <value as-type="dateTime-with-timezone" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog/metadata/last-modified"
@@ -6774,7 +6913,7 @@
              as-type="dateTime-with-timezone"
              name="last-modified"
              key="last-modified"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:last-modified"
              _step="last-modified"
              _key="last-modified"
@@ -6787,6 +6926,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">last-modified</xsl:attribute>
          </xsl:if>
+         <value as-type="dateTime-with-timezone" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog/metadata/version"
@@ -6799,7 +6941,7 @@
              as-type="string"
              name="version"
              key="version"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:version"
              _step="version"
              _key="version"
@@ -6812,6 +6954,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">version</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog/metadata/oscal-version"
@@ -6824,7 +6969,7 @@
              as-type="string"
              name="oscal-version"
              key="oscal-version"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:oscal-version"
              _step="oscal-version"
              _key="oscal-version"
@@ -6837,6 +6982,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">oscal-version</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog/metadata/revisions/revision"
@@ -6846,7 +6994,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-metadata/metadata/revisions/revision"
                 _metaschema-json-id="/assembly/oscal-metadata/metadata/revisions"
                 name="revision"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
                 _key-name="oscal-metadata:revision"
                 _step="revisions/revision"
                 _key="revisions"
@@ -6886,7 +7034,7 @@
              group-json="ARRAY"
              name="revision"
              key="revisions"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:revision"
              _key-ref="oscal-metadata:revision">
          <xsl:if test="$with-key">
@@ -6915,6 +7063,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog/metadata/revisions/revision/published"
@@ -6927,7 +7078,7 @@
              as-type="dateTime-with-timezone"
              name="published"
              key="published"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:published"
              _step="published"
              _key="published"
@@ -6940,6 +7091,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">published</xsl:attribute>
          </xsl:if>
+         <value as-type="dateTime-with-timezone" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog/metadata/revisions/revision/last-modified"
@@ -6952,7 +7106,7 @@
              as-type="dateTime-with-timezone"
              name="last-modified"
              key="last-modified"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:last-modified"
              _step="last-modified"
              _key="last-modified"
@@ -6965,6 +7119,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">last-modified</xsl:attribute>
          </xsl:if>
+         <value as-type="dateTime-with-timezone" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog/metadata/revisions/revision/version"
@@ -6977,7 +7134,7 @@
              as-type="string"
              name="version"
              key="version"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:version"
              _step="version"
              _key="version"
@@ -6990,6 +7147,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">version</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog/metadata/revisions/revision/oscal-version"
@@ -7002,7 +7162,7 @@
              as-type="string"
              name="oscal-version"
              key="oscal-version"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:oscal-version"
              _step="oscal-version"
              _key="oscal-version"
@@ -7015,6 +7175,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">oscal-version</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog/metadata/revisions/revision/link/text"
@@ -7037,6 +7200,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog/metadata/document-id"
@@ -7048,7 +7214,7 @@
              collapsible="no"
              as-type="string"
              name="document-id"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:document-id"
              _step="document-id"
              _key="document-ids"
@@ -7083,6 +7249,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog/metadata/role/title"
@@ -7105,6 +7274,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog/metadata/role/short-name"
@@ -7127,6 +7299,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">short-name</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog/metadata/role/description"
@@ -7150,6 +7325,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog/metadata/role/link/text"
@@ -7172,6 +7353,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog/metadata/location/title"
@@ -7194,6 +7378,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog/metadata/location/address"
@@ -7204,7 +7391,7 @@
                 _metaschema-json-id="/assembly/oscal-metadata/location/address"
                 name="address"
                 key="address"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
                 _key-name="oscal-metadata:address"
                 _step="address"
                 _key="address"
@@ -7239,7 +7426,7 @@
              collapsible="no"
              as-type="string"
              name="addr-line"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:addr-line"
              _step="addr-line"
              _key="addr-lines"
@@ -7248,7 +7435,11 @@
              _in-xml-name="addr-line"
              _in-json-name="addr-lines"
              gi="addr-line"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="catalog/metadata/location/address/city"
                  priority="7"
@@ -7270,6 +7461,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">city</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog/metadata/location/address/state"
@@ -7292,6 +7486,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">state</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog/metadata/location/address/postal-code"
@@ -7314,6 +7511,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">postal-code</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog/metadata/location/address/country"
@@ -7336,6 +7536,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">country</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog/metadata/location/email-address"
@@ -7347,7 +7550,7 @@
              collapsible="no"
              as-type="email"
              name="email-address"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:email-address"
              _step="email-address"
              _key="email-addresses"
@@ -7356,7 +7559,11 @@
              _in-xml-name="email-address"
              _in-json-name="email-addresses"
              gi="email-address"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="email" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="catalog/metadata/location/telephone-number"
                  priority="7"
@@ -7367,7 +7574,7 @@
              collapsible="no"
              as-type="string"
              name="telephone-number"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:telephone-number"
              _step="telephone-number"
              _key="telephone-numbers"
@@ -7397,7 +7604,11 @@
              _in-xml-name="url"
              _in-json-name="urls"
              gi="url"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="uri" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="catalog/metadata/location/link/text"
                  priority="8"
@@ -7419,6 +7630,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog/metadata/party/name"
@@ -7441,6 +7655,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">name</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog/metadata/party/short-name"
@@ -7463,6 +7680,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">short-name</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog/metadata/party/external-id"
@@ -7506,6 +7726,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog/metadata/party/email-address"
@@ -7517,7 +7740,7 @@
              collapsible="no"
              as-type="email"
              name="email-address"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:email-address"
              _step="email-address"
              _key="email-addresses"
@@ -7526,7 +7749,11 @@
              _in-xml-name="email-address"
              _in-json-name="email-addresses"
              gi="email-address"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="email" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="catalog/metadata/party/telephone-number"
                  priority="7"
@@ -7537,7 +7764,7 @@
              collapsible="no"
              as-type="string"
              name="telephone-number"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:telephone-number"
              _step="telephone-number"
              _key="telephone-numbers"
@@ -7559,7 +7786,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-metadata/party/address"
                 _metaschema-json-id="/assembly/oscal-metadata/party/addresses"
                 name="address"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
                 _key-name="oscal-metadata:address"
                 _step="address"
                 _key="addresses"
@@ -7591,7 +7818,7 @@
              collapsible="no"
              as-type="string"
              name="addr-line"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:addr-line"
              _step="addr-line"
              _key="addr-lines"
@@ -7600,7 +7827,11 @@
              _in-xml-name="addr-line"
              _in-json-name="addr-lines"
              gi="addr-line"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="catalog/metadata/party/address/city"
                  priority="9"
@@ -7622,6 +7853,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">city</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog/metadata/party/address/state"
@@ -7644,6 +7878,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">state</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog/metadata/party/address/postal-code"
@@ -7666,6 +7903,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">postal-code</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog/metadata/party/address/country"
@@ -7688,6 +7928,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">country</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog/metadata/party/member-of-organization"
@@ -7705,7 +7948,11 @@
              _in-xml-name="member-of-organization"
              _in-json-name="member-of-organizations"
              gi="member-of-organization"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="uuid" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="catalog/metadata/responsible-party/link/text"
                  priority="8"
@@ -7727,6 +7974,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog/param/link/text"
@@ -7749,6 +7999,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog/param/label"
@@ -7771,6 +8024,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">label</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog/param/usage"
@@ -7794,6 +8050,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">usage</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog/param/constraint/description"
@@ -7817,6 +8079,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog/param/constraint/test"
@@ -7856,28 +8124,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">expression</xsl:attribute>
          </xsl:if>
-      </field>
-   </xsl:template>
-   <xsl:template match="catalog/param/guideline"
-                 priority="7"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field _step="p ul ol pre table h1 h2 h3 h4 h5 h6"
-             _key="prose"
-             _metaschema-xml-id="/assembly/oscal-catalog-common/parameter-guideline/p ul ol pre table h1 h2 h3 h4 h5 h6"
-             _metaschema-json-id="/assembly/oscal-catalog-common/parameter-guideline/prose"
-             in-xml="UNWRAPPED"
-             collapsible="no"
-             as-type="markup-multiline"
-             name="prose"
-             key="prose"
-             _using-name="prose"
-             _in-xml-name="p ul ol pre table h1 h2 h3 h4 h5 h6"
-             _in-json-name="prose"
-             in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">prose</xsl:attribute>
-         </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog/param/select/choice"
@@ -7895,7 +8144,11 @@
              _in-xml-name="choice"
              _in-json-name="choice"
              gi="choice"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="catalog//control/title"
                  priority="5"
@@ -7917,6 +8170,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog//control/param/link/text"
@@ -7939,6 +8195,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog//control/param/label"
@@ -7961,6 +8220,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">label</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog//control/param/usage"
@@ -7984,6 +8246,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">usage</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog//control/param/constraint/description"
@@ -8007,6 +8275,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog//control/param/constraint/test"
@@ -8046,28 +8320,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">expression</xsl:attribute>
          </xsl:if>
-      </field>
-   </xsl:template>
-   <xsl:template match="catalog//control/param/guideline"
-                 priority="9"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field _step="p ul ol pre table h1 h2 h3 h4 h5 h6"
-             _key="prose"
-             _metaschema-xml-id="/assembly/oscal-catalog-common/parameter-guideline/p ul ol pre table h1 h2 h3 h4 h5 h6"
-             _metaschema-json-id="/assembly/oscal-catalog-common/parameter-guideline/prose"
-             in-xml="UNWRAPPED"
-             collapsible="no"
-             as-type="markup-multiline"
-             name="prose"
-             key="prose"
-             _using-name="prose"
-             _in-xml-name="p ul ol pre table h1 h2 h3 h4 h5 h6"
-             _in-json-name="prose"
-             in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">prose</xsl:attribute>
-         </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog//control/param/select/choice"
@@ -8085,7 +8340,11 @@
              _in-xml-name="choice"
              _in-json-name="choice"
              gi="choice"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="catalog//control/link/text"
                  priority="7"
@@ -8107,6 +8366,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog//control//part/title"
@@ -8129,28 +8391,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
-      </field>
-   </xsl:template>
-   <xsl:template match="catalog//control//part"
-                 priority="7"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field _step="p ul ol pre table h1 h2 h3 h4 h5 h6"
-             _key="prose"
-             _metaschema-xml-id="/assembly/oscal-catalog-common/part/p ul ol pre table h1 h2 h3 h4 h5 h6"
-             _metaschema-json-id="/assembly/oscal-catalog-common/part/prose"
-             in-xml="UNWRAPPED"
-             collapsible="no"
-             as-type="markup-multiline"
-             name="prose"
-             key="prose"
-             _using-name="prose"
-             _in-xml-name="p ul ol pre table h1 h2 h3 h4 h5 h6"
-             _in-json-name="prose"
-             in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">prose</xsl:attribute>
-         </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog//control//part/link/text"
@@ -8173,6 +8416,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog//group/title"
@@ -8195,6 +8441,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog//group/param/link/text"
@@ -8217,6 +8466,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog//group/param/label"
@@ -8239,6 +8491,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">label</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog//group/param/usage"
@@ -8262,6 +8517,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">usage</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog//group/param/constraint/description"
@@ -8285,6 +8546,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog//group/param/constraint/test"
@@ -8324,28 +8591,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">expression</xsl:attribute>
          </xsl:if>
-      </field>
-   </xsl:template>
-   <xsl:template match="catalog//group/param/guideline"
-                 priority="9"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field _step="p ul ol pre table h1 h2 h3 h4 h5 h6"
-             _key="prose"
-             _metaschema-xml-id="/assembly/oscal-catalog-common/parameter-guideline/p ul ol pre table h1 h2 h3 h4 h5 h6"
-             _metaschema-json-id="/assembly/oscal-catalog-common/parameter-guideline/prose"
-             in-xml="UNWRAPPED"
-             collapsible="no"
-             as-type="markup-multiline"
-             name="prose"
-             key="prose"
-             _using-name="prose"
-             _in-xml-name="p ul ol pre table h1 h2 h3 h4 h5 h6"
-             _in-json-name="prose"
-             in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">prose</xsl:attribute>
-         </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog//group/param/select/choice"
@@ -8363,7 +8611,11 @@
              _in-xml-name="choice"
              _in-json-name="choice"
              gi="choice"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="catalog//group/link/text"
                  priority="7"
@@ -8385,6 +8637,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog//group//part/title"
@@ -8407,28 +8662,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
-      </field>
-   </xsl:template>
-   <xsl:template match="catalog//group//part"
-                 priority="7"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field _step="p ul ol pre table h1 h2 h3 h4 h5 h6"
-             _key="prose"
-             _metaschema-xml-id="/assembly/oscal-catalog-common/part/p ul ol pre table h1 h2 h3 h4 h5 h6"
-             _metaschema-json-id="/assembly/oscal-catalog-common/part/prose"
-             in-xml="UNWRAPPED"
-             collapsible="no"
-             as-type="markup-multiline"
-             name="prose"
-             key="prose"
-             _using-name="prose"
-             _in-xml-name="p ul ol pre table h1 h2 h3 h4 h5 h6"
-             _in-json-name="prose"
-             in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">prose</xsl:attribute>
-         </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog//group//part/link/text"
@@ -8451,6 +8687,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog//group//control/title"
@@ -8473,6 +8712,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog//group//control/param/link/text"
@@ -8495,6 +8737,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog//group//control/param/label"
@@ -8517,6 +8762,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">label</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog//group//control/param/usage"
@@ -8540,6 +8788,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">usage</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog//group//control/param/constraint/description"
@@ -8563,6 +8817,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog//group//control/param/constraint/test"
@@ -8602,28 +8862,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">expression</xsl:attribute>
          </xsl:if>
-      </field>
-   </xsl:template>
-   <xsl:template match="catalog//group//control/param/guideline"
-                 priority="12"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field _step="p ul ol pre table h1 h2 h3 h4 h5 h6"
-             _key="prose"
-             _metaschema-xml-id="/assembly/oscal-catalog-common/parameter-guideline/p ul ol pre table h1 h2 h3 h4 h5 h6"
-             _metaschema-json-id="/assembly/oscal-catalog-common/parameter-guideline/prose"
-             in-xml="UNWRAPPED"
-             collapsible="no"
-             as-type="markup-multiline"
-             name="prose"
-             key="prose"
-             _using-name="prose"
-             _in-xml-name="p ul ol pre table h1 h2 h3 h4 h5 h6"
-             _in-json-name="prose"
-             in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">prose</xsl:attribute>
-         </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog//group//control/param/select/choice"
@@ -8641,7 +8882,11 @@
              _in-xml-name="choice"
              _in-json-name="choice"
              gi="choice"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="catalog//group//control/link/text"
                  priority="10"
@@ -8663,6 +8908,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog//group//control//part/title"
@@ -8685,28 +8933,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
-      </field>
-   </xsl:template>
-   <xsl:template match="catalog//group//control//part"
-                 priority="10"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field _step="p ul ol pre table h1 h2 h3 h4 h5 h6"
-             _key="prose"
-             _metaschema-xml-id="/assembly/oscal-catalog-common/part/p ul ol pre table h1 h2 h3 h4 h5 h6"
-             _metaschema-json-id="/assembly/oscal-catalog-common/part/prose"
-             in-xml="UNWRAPPED"
-             collapsible="no"
-             as-type="markup-multiline"
-             name="prose"
-             key="prose"
-             _using-name="prose"
-             _in-xml-name="p ul ol pre table h1 h2 h3 h4 h5 h6"
-             _in-json-name="prose"
-             in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">prose</xsl:attribute>
-         </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog//group//control//part/link/text"
@@ -8729,6 +8958,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog/back-matter/resource"
@@ -8793,6 +9025,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog/back-matter/resource/description"
@@ -8816,6 +9051,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog/back-matter/resource/document-id"
@@ -8827,7 +9068,7 @@
              collapsible="no"
              as-type="string"
              name="document-id"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:document-id"
              _step="document-id"
              _key="document-ids"
@@ -8896,6 +9137,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog/back-matter/resource/citation/link/text"
@@ -8918,6 +9162,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="catalog/back-matter/resource/rlink"
@@ -8990,6 +9237,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="profile/metadata/published"
@@ -9002,7 +9252,7 @@
              as-type="dateTime-with-timezone"
              name="published"
              key="published"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:published"
              _step="published"
              _key="published"
@@ -9015,6 +9265,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">published</xsl:attribute>
          </xsl:if>
+         <value as-type="dateTime-with-timezone" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="profile/metadata/last-modified"
@@ -9027,7 +9280,7 @@
              as-type="dateTime-with-timezone"
              name="last-modified"
              key="last-modified"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:last-modified"
              _step="last-modified"
              _key="last-modified"
@@ -9040,6 +9293,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">last-modified</xsl:attribute>
          </xsl:if>
+         <value as-type="dateTime-with-timezone" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="profile/metadata/version"
@@ -9052,7 +9308,7 @@
              as-type="string"
              name="version"
              key="version"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:version"
              _step="version"
              _key="version"
@@ -9065,6 +9321,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">version</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="profile/metadata/oscal-version"
@@ -9077,7 +9336,7 @@
              as-type="string"
              name="oscal-version"
              key="oscal-version"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:oscal-version"
              _step="oscal-version"
              _key="oscal-version"
@@ -9090,6 +9349,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">oscal-version</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="profile/metadata/revisions/revision"
@@ -9099,7 +9361,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-metadata/metadata/revisions/revision"
                 _metaschema-json-id="/assembly/oscal-metadata/metadata/revisions"
                 name="revision"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
                 _key-name="oscal-metadata:revision"
                 _step="revisions/revision"
                 _key="revisions"
@@ -9139,7 +9401,7 @@
              group-json="ARRAY"
              name="revision"
              key="revisions"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:revision"
              _key-ref="oscal-metadata:revision">
          <xsl:if test="$with-key">
@@ -9168,6 +9430,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="profile/metadata/revisions/revision/published"
@@ -9180,7 +9445,7 @@
              as-type="dateTime-with-timezone"
              name="published"
              key="published"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:published"
              _step="published"
              _key="published"
@@ -9193,6 +9458,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">published</xsl:attribute>
          </xsl:if>
+         <value as-type="dateTime-with-timezone" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="profile/metadata/revisions/revision/last-modified"
@@ -9205,7 +9473,7 @@
              as-type="dateTime-with-timezone"
              name="last-modified"
              key="last-modified"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:last-modified"
              _step="last-modified"
              _key="last-modified"
@@ -9218,6 +9486,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">last-modified</xsl:attribute>
          </xsl:if>
+         <value as-type="dateTime-with-timezone" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="profile/metadata/revisions/revision/version"
@@ -9230,7 +9501,7 @@
              as-type="string"
              name="version"
              key="version"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:version"
              _step="version"
              _key="version"
@@ -9243,6 +9514,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">version</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="profile/metadata/revisions/revision/oscal-version"
@@ -9255,7 +9529,7 @@
              as-type="string"
              name="oscal-version"
              key="oscal-version"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:oscal-version"
              _step="oscal-version"
              _key="oscal-version"
@@ -9268,6 +9542,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">oscal-version</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="profile/metadata/revisions/revision/link/text"
@@ -9290,6 +9567,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="profile/metadata/document-id"
@@ -9301,7 +9581,7 @@
              collapsible="no"
              as-type="string"
              name="document-id"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:document-id"
              _step="document-id"
              _key="document-ids"
@@ -9336,6 +9616,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="profile/metadata/role/title"
@@ -9358,6 +9641,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="profile/metadata/role/short-name"
@@ -9380,6 +9666,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">short-name</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="profile/metadata/role/description"
@@ -9403,6 +9692,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="profile/metadata/role/link/text"
@@ -9425,6 +9720,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="profile/metadata/location/title"
@@ -9447,6 +9745,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="profile/metadata/location/address"
@@ -9457,7 +9758,7 @@
                 _metaschema-json-id="/assembly/oscal-metadata/location/address"
                 name="address"
                 key="address"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
                 _key-name="oscal-metadata:address"
                 _step="address"
                 _key="address"
@@ -9492,7 +9793,7 @@
              collapsible="no"
              as-type="string"
              name="addr-line"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:addr-line"
              _step="addr-line"
              _key="addr-lines"
@@ -9501,7 +9802,11 @@
              _in-xml-name="addr-line"
              _in-json-name="addr-lines"
              gi="addr-line"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="profile/metadata/location/address/city"
                  priority="7"
@@ -9523,6 +9828,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">city</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="profile/metadata/location/address/state"
@@ -9545,6 +9853,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">state</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="profile/metadata/location/address/postal-code"
@@ -9567,6 +9878,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">postal-code</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="profile/metadata/location/address/country"
@@ -9589,6 +9903,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">country</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="profile/metadata/location/email-address"
@@ -9600,7 +9917,7 @@
              collapsible="no"
              as-type="email"
              name="email-address"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:email-address"
              _step="email-address"
              _key="email-addresses"
@@ -9609,7 +9926,11 @@
              _in-xml-name="email-address"
              _in-json-name="email-addresses"
              gi="email-address"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="email" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="profile/metadata/location/telephone-number"
                  priority="7"
@@ -9620,7 +9941,7 @@
              collapsible="no"
              as-type="string"
              name="telephone-number"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:telephone-number"
              _step="telephone-number"
              _key="telephone-numbers"
@@ -9650,7 +9971,11 @@
              _in-xml-name="url"
              _in-json-name="urls"
              gi="url"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="uri" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="profile/metadata/location/link/text"
                  priority="8"
@@ -9672,6 +9997,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="profile/metadata/party/name"
@@ -9694,6 +10022,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">name</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="profile/metadata/party/short-name"
@@ -9716,6 +10047,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">short-name</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="profile/metadata/party/external-id"
@@ -9759,6 +10093,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="profile/metadata/party/email-address"
@@ -9770,7 +10107,7 @@
              collapsible="no"
              as-type="email"
              name="email-address"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:email-address"
              _step="email-address"
              _key="email-addresses"
@@ -9779,7 +10116,11 @@
              _in-xml-name="email-address"
              _in-json-name="email-addresses"
              gi="email-address"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="email" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="profile/metadata/party/telephone-number"
                  priority="7"
@@ -9790,7 +10131,7 @@
              collapsible="no"
              as-type="string"
              name="telephone-number"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:telephone-number"
              _step="telephone-number"
              _key="telephone-numbers"
@@ -9812,7 +10153,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-metadata/party/address"
                 _metaschema-json-id="/assembly/oscal-metadata/party/addresses"
                 name="address"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
                 _key-name="oscal-metadata:address"
                 _step="address"
                 _key="addresses"
@@ -9844,7 +10185,7 @@
              collapsible="no"
              as-type="string"
              name="addr-line"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:addr-line"
              _step="addr-line"
              _key="addr-lines"
@@ -9853,7 +10194,11 @@
              _in-xml-name="addr-line"
              _in-json-name="addr-lines"
              gi="addr-line"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="profile/metadata/party/address/city"
                  priority="9"
@@ -9875,6 +10220,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">city</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="profile/metadata/party/address/state"
@@ -9897,6 +10245,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">state</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="profile/metadata/party/address/postal-code"
@@ -9919,6 +10270,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">postal-code</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="profile/metadata/party/address/country"
@@ -9941,6 +10295,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">country</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="profile/metadata/party/member-of-organization"
@@ -9958,7 +10315,11 @@
              _in-xml-name="member-of-organization"
              _in-json-name="member-of-organizations"
              gi="member-of-organization"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="uuid" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="profile/metadata/responsible-party/link/text"
                  priority="8"
@@ -9980,6 +10341,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="profile/import/include-controls"
@@ -9989,7 +10353,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-profile/import/include-controls"
                 _metaschema-json-id="/assembly/oscal-profile/import/include-controls"
                 name="select-control-by-id"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_profile_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_profile_metaschema.xml"
                 _key-name="oscal-profile:select-control-by-id"
                 _step="include-controls"
                 _key="include-controls"
@@ -10030,7 +10394,11 @@
              _in-xml-name="with-id"
              _in-json-name="with-ids"
              gi="with-id"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="token" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="profile/import/include-controls/matching"
                  priority="9"
@@ -10056,7 +10424,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-profile/import/exclude-controls"
                 _metaschema-json-id="/assembly/oscal-profile/import/exclude-controls"
                 name="select-control-by-id"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_profile_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_profile_metaschema.xml"
                 _key-name="oscal-profile:select-control-by-id"
                 _step="exclude-controls"
                 _key="exclude-controls"
@@ -10097,7 +10465,11 @@
              _in-xml-name="with-id"
              _in-json-name="with-ids"
              gi="with-id"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="token" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="profile/import/exclude-controls/matching"
                  priority="8"
@@ -10136,6 +10508,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="profile/merge/custom//group/param/link/text"
@@ -10158,6 +10533,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="profile/merge/custom//group/param/label"
@@ -10180,6 +10558,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">label</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="profile/merge/custom//group/param/usage"
@@ -10203,6 +10584,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">usage</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="profile/merge/custom//group/param/constraint/description"
@@ -10226,6 +10613,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="profile/merge/custom//group/param/constraint/test"
@@ -10265,28 +10658,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">expression</xsl:attribute>
          </xsl:if>
-      </field>
-   </xsl:template>
-   <xsl:template match="profile/merge/custom//group/param/guideline"
-                 priority="12"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field _step="p ul ol pre table h1 h2 h3 h4 h5 h6"
-             _key="prose"
-             _metaschema-xml-id="/assembly/oscal-catalog-common/parameter-guideline/p ul ol pre table h1 h2 h3 h4 h5 h6"
-             _metaschema-json-id="/assembly/oscal-catalog-common/parameter-guideline/prose"
-             in-xml="UNWRAPPED"
-             collapsible="no"
-             as-type="markup-multiline"
-             name="prose"
-             key="prose"
-             _using-name="prose"
-             _in-xml-name="p ul ol pre table h1 h2 h3 h4 h5 h6"
-             _in-json-name="prose"
-             in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">prose</xsl:attribute>
-         </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="profile/merge/custom//group/param/select/choice"
@@ -10304,7 +10678,11 @@
              _in-xml-name="choice"
              _in-json-name="choice"
              gi="choice"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="profile/merge/custom//group/link/text"
                  priority="10"
@@ -10326,6 +10704,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="profile/merge/custom//group//part/title"
@@ -10348,28 +10729,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
-      </field>
-   </xsl:template>
-   <xsl:template match="profile/merge/custom//group//part"
-                 priority="10"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field _step="p ul ol pre table h1 h2 h3 h4 h5 h6"
-             _key="prose"
-             _metaschema-xml-id="/assembly/oscal-catalog-common/part/p ul ol pre table h1 h2 h3 h4 h5 h6"
-             _metaschema-json-id="/assembly/oscal-catalog-common/part/prose"
-             in-xml="UNWRAPPED"
-             collapsible="no"
-             as-type="markup-multiline"
-             name="prose"
-             key="prose"
-             _using-name="prose"
-             _in-xml-name="p ul ol pre table h1 h2 h3 h4 h5 h6"
-             _in-json-name="prose"
-             in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">prose</xsl:attribute>
-         </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="profile/merge/custom//group//part/link/text"
@@ -10392,6 +10754,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="profile/merge/custom//group/insert-controls/include-controls"
@@ -10401,7 +10766,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-profile/insert-controls/include-controls"
                 _metaschema-json-id="/assembly/oscal-profile/insert-controls/include-controls"
                 name="select-control-by-id"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_profile_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_profile_metaschema.xml"
                 _key-name="oscal-profile:select-control-by-id"
                 _step="include-controls"
                 _key="include-controls"
@@ -10442,7 +10807,11 @@
              _in-xml-name="with-id"
              _in-json-name="with-ids"
              gi="with-id"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="token" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="profile/merge/custom//group/insert-controls/include-controls/matching"
                  priority="15"
@@ -10468,7 +10837,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-profile/insert-controls/exclude-controls"
                 _metaschema-json-id="/assembly/oscal-profile/insert-controls/exclude-controls"
                 name="select-control-by-id"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_profile_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_profile_metaschema.xml"
                 _key-name="oscal-profile:select-control-by-id"
                 _step="exclude-controls"
                 _key="exclude-controls"
@@ -10509,7 +10878,11 @@
              _in-xml-name="with-id"
              _in-json-name="with-ids"
              gi="with-id"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="token" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="profile/merge/custom//group/insert-controls/exclude-controls/matching"
                  priority="14"
@@ -10535,7 +10908,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-profile/insert-controls/include-controls"
                 _metaschema-json-id="/assembly/oscal-profile/insert-controls/include-controls"
                 name="select-control-by-id"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_profile_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_profile_metaschema.xml"
                 _key-name="oscal-profile:select-control-by-id"
                 _step="include-controls"
                 _key="include-controls"
@@ -10576,7 +10949,11 @@
              _in-xml-name="with-id"
              _in-json-name="with-ids"
              gi="with-id"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="token" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="profile/merge/custom/insert-controls/include-controls/matching"
                  priority="12"
@@ -10602,7 +10979,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-profile/insert-controls/exclude-controls"
                 _metaschema-json-id="/assembly/oscal-profile/insert-controls/exclude-controls"
                 name="select-control-by-id"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_profile_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_profile_metaschema.xml"
                 _key-name="oscal-profile:select-control-by-id"
                 _step="exclude-controls"
                 _key="exclude-controls"
@@ -10643,7 +11020,11 @@
              _in-xml-name="with-id"
              _in-json-name="with-ids"
              gi="with-id"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="token" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="profile/merge/custom/insert-controls/exclude-controls/matching"
                  priority="11"
@@ -10738,6 +11119,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="profile/modify/set-parameter/label"
@@ -10760,6 +11144,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">label</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="profile/modify/set-parameter/usage"
@@ -10783,6 +11170,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">usage</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="profile/modify/set-parameter/constraint/description"
@@ -10806,6 +11199,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="profile/modify/set-parameter/constraint/test"
@@ -10845,28 +11244,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">expression</xsl:attribute>
          </xsl:if>
-      </field>
-   </xsl:template>
-   <xsl:template match="profile/modify/set-parameter/guideline"
-                 priority="8"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field _step="p ul ol pre table h1 h2 h3 h4 h5 h6"
-             _key="prose"
-             _metaschema-xml-id="/assembly/oscal-catalog-common/parameter-guideline/p ul ol pre table h1 h2 h3 h4 h5 h6"
-             _metaschema-json-id="/assembly/oscal-catalog-common/parameter-guideline/prose"
-             in-xml="UNWRAPPED"
-             collapsible="no"
-             as-type="markup-multiline"
-             name="prose"
-             key="prose"
-             _using-name="prose"
-             _in-xml-name="p ul ol pre table h1 h2 h3 h4 h5 h6"
-             _in-json-name="prose"
-             in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">prose</xsl:attribute>
-         </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="profile/modify/set-parameter/select/choice"
@@ -10884,7 +11264,11 @@
              _in-xml-name="choice"
              _in-json-name="choice"
              gi="choice"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="profile/modify/alter/add/title"
                  priority="8"
@@ -10906,6 +11290,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="profile/modify/alter/add/param/link/text"
@@ -10928,6 +11315,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="profile/modify/alter/add/param/label"
@@ -10950,6 +11340,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">label</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="profile/modify/alter/add/param/usage"
@@ -10973,6 +11366,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">usage</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="profile/modify/alter/add/param/constraint/description"
@@ -10996,6 +11395,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="profile/modify/alter/add/param/constraint/test"
@@ -11035,28 +11440,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">expression</xsl:attribute>
          </xsl:if>
-      </field>
-   </xsl:template>
-   <xsl:template match="profile/modify/alter/add/param/guideline"
-                 priority="12"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field _step="p ul ol pre table h1 h2 h3 h4 h5 h6"
-             _key="prose"
-             _metaschema-xml-id="/assembly/oscal-catalog-common/parameter-guideline/p ul ol pre table h1 h2 h3 h4 h5 h6"
-             _metaschema-json-id="/assembly/oscal-catalog-common/parameter-guideline/prose"
-             in-xml="UNWRAPPED"
-             collapsible="no"
-             as-type="markup-multiline"
-             name="prose"
-             key="prose"
-             _using-name="prose"
-             _in-xml-name="p ul ol pre table h1 h2 h3 h4 h5 h6"
-             _in-json-name="prose"
-             in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">prose</xsl:attribute>
-         </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="profile/modify/alter/add/param/select/choice"
@@ -11074,7 +11460,11 @@
              _in-xml-name="choice"
              _in-json-name="choice"
              gi="choice"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="profile/modify/alter/add/link/text"
                  priority="10"
@@ -11096,6 +11486,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="profile/modify/alter/add//part/title"
@@ -11118,28 +11511,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
-      </field>
-   </xsl:template>
-   <xsl:template match="profile/modify/alter/add//part"
-                 priority="10"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field _step="p ul ol pre table h1 h2 h3 h4 h5 h6"
-             _key="prose"
-             _metaschema-xml-id="/assembly/oscal-catalog-common/part/p ul ol pre table h1 h2 h3 h4 h5 h6"
-             _metaschema-json-id="/assembly/oscal-catalog-common/part/prose"
-             in-xml="UNWRAPPED"
-             collapsible="no"
-             as-type="markup-multiline"
-             name="prose"
-             key="prose"
-             _using-name="prose"
-             _in-xml-name="p ul ol pre table h1 h2 h3 h4 h5 h6"
-             _in-json-name="prose"
-             in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">prose</xsl:attribute>
-         </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="profile/modify/alter/add//part/link/text"
@@ -11162,6 +11536,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="profile/back-matter/resource"
@@ -11226,6 +11603,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="profile/back-matter/resource/description"
@@ -11249,6 +11629,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="profile/back-matter/resource/document-id"
@@ -11260,7 +11646,7 @@
              collapsible="no"
              as-type="string"
              name="document-id"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:document-id"
              _step="document-id"
              _key="document-ids"
@@ -11329,6 +11715,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="profile/back-matter/resource/citation/link/text"
@@ -11351,6 +11740,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="profile/back-matter/resource/rlink"
@@ -11423,6 +11815,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/metadata/published"
@@ -11435,7 +11830,7 @@
              as-type="dateTime-with-timezone"
              name="published"
              key="published"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:published"
              _step="published"
              _key="published"
@@ -11448,6 +11843,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">published</xsl:attribute>
          </xsl:if>
+         <value as-type="dateTime-with-timezone" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/metadata/last-modified"
@@ -11460,7 +11858,7 @@
              as-type="dateTime-with-timezone"
              name="last-modified"
              key="last-modified"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:last-modified"
              _step="last-modified"
              _key="last-modified"
@@ -11473,6 +11871,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">last-modified</xsl:attribute>
          </xsl:if>
+         <value as-type="dateTime-with-timezone" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/metadata/version"
@@ -11485,7 +11886,7 @@
              as-type="string"
              name="version"
              key="version"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:version"
              _step="version"
              _key="version"
@@ -11498,6 +11899,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">version</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/metadata/oscal-version"
@@ -11510,7 +11914,7 @@
              as-type="string"
              name="oscal-version"
              key="oscal-version"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:oscal-version"
              _step="oscal-version"
              _key="oscal-version"
@@ -11523,6 +11927,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">oscal-version</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/metadata/revisions/revision"
@@ -11532,7 +11939,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-metadata/metadata/revisions/revision"
                 _metaschema-json-id="/assembly/oscal-metadata/metadata/revisions"
                 name="revision"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
                 _key-name="oscal-metadata:revision"
                 _step="revisions/revision"
                 _key="revisions"
@@ -11572,7 +11979,7 @@
              group-json="ARRAY"
              name="revision"
              key="revisions"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:revision"
              _key-ref="oscal-metadata:revision">
          <xsl:if test="$with-key">
@@ -11601,6 +12008,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/metadata/revisions/revision/published"
@@ -11613,7 +12023,7 @@
              as-type="dateTime-with-timezone"
              name="published"
              key="published"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:published"
              _step="published"
              _key="published"
@@ -11626,6 +12036,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">published</xsl:attribute>
          </xsl:if>
+         <value as-type="dateTime-with-timezone" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/metadata/revisions/revision/last-modified"
@@ -11638,7 +12051,7 @@
              as-type="dateTime-with-timezone"
              name="last-modified"
              key="last-modified"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:last-modified"
              _step="last-modified"
              _key="last-modified"
@@ -11651,6 +12064,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">last-modified</xsl:attribute>
          </xsl:if>
+         <value as-type="dateTime-with-timezone" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/metadata/revisions/revision/version"
@@ -11663,7 +12079,7 @@
              as-type="string"
              name="version"
              key="version"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:version"
              _step="version"
              _key="version"
@@ -11676,6 +12092,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">version</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/metadata/revisions/revision/oscal-version"
@@ -11688,7 +12107,7 @@
              as-type="string"
              name="oscal-version"
              key="oscal-version"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:oscal-version"
              _step="oscal-version"
              _key="oscal-version"
@@ -11701,6 +12120,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">oscal-version</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/metadata/revisions/revision/link/text"
@@ -11723,6 +12145,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/metadata/document-id"
@@ -11734,7 +12159,7 @@
              collapsible="no"
              as-type="string"
              name="document-id"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:document-id"
              _step="document-id"
              _key="document-ids"
@@ -11769,6 +12194,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/metadata/role/title"
@@ -11791,6 +12219,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/metadata/role/short-name"
@@ -11813,6 +12244,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">short-name</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/metadata/role/description"
@@ -11836,6 +12270,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/metadata/role/link/text"
@@ -11858,6 +12298,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/metadata/location/title"
@@ -11880,6 +12323,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/metadata/location/address"
@@ -11890,7 +12336,7 @@
                 _metaschema-json-id="/assembly/oscal-metadata/location/address"
                 name="address"
                 key="address"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
                 _key-name="oscal-metadata:address"
                 _step="address"
                 _key="address"
@@ -11925,7 +12371,7 @@
              collapsible="no"
              as-type="string"
              name="addr-line"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:addr-line"
              _step="addr-line"
              _key="addr-lines"
@@ -11934,7 +12380,11 @@
              _in-xml-name="addr-line"
              _in-json-name="addr-lines"
              gi="addr-line"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="component-definition/metadata/location/address/city"
                  priority="7"
@@ -11956,6 +12406,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">city</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/metadata/location/address/state"
@@ -11978,6 +12431,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">state</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/metadata/location/address/postal-code"
@@ -12000,6 +12456,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">postal-code</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/metadata/location/address/country"
@@ -12022,6 +12481,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">country</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/metadata/location/email-address"
@@ -12033,7 +12495,7 @@
              collapsible="no"
              as-type="email"
              name="email-address"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:email-address"
              _step="email-address"
              _key="email-addresses"
@@ -12042,7 +12504,11 @@
              _in-xml-name="email-address"
              _in-json-name="email-addresses"
              gi="email-address"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="email" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="component-definition/metadata/location/telephone-number"
                  priority="7"
@@ -12053,7 +12519,7 @@
              collapsible="no"
              as-type="string"
              name="telephone-number"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:telephone-number"
              _step="telephone-number"
              _key="telephone-numbers"
@@ -12083,7 +12549,11 @@
              _in-xml-name="url"
              _in-json-name="urls"
              gi="url"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="uri" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="component-definition/metadata/location/link/text"
                  priority="8"
@@ -12105,6 +12575,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/metadata/party/name"
@@ -12127,6 +12600,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">name</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/metadata/party/short-name"
@@ -12149,6 +12625,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">short-name</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/metadata/party/external-id"
@@ -12192,6 +12671,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/metadata/party/email-address"
@@ -12203,7 +12685,7 @@
              collapsible="no"
              as-type="email"
              name="email-address"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:email-address"
              _step="email-address"
              _key="email-addresses"
@@ -12212,7 +12694,11 @@
              _in-xml-name="email-address"
              _in-json-name="email-addresses"
              gi="email-address"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="email" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="component-definition/metadata/party/telephone-number"
                  priority="7"
@@ -12223,7 +12709,7 @@
              collapsible="no"
              as-type="string"
              name="telephone-number"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:telephone-number"
              _step="telephone-number"
              _key="telephone-numbers"
@@ -12245,7 +12731,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-metadata/party/address"
                 _metaschema-json-id="/assembly/oscal-metadata/party/addresses"
                 name="address"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
                 _key-name="oscal-metadata:address"
                 _step="address"
                 _key="addresses"
@@ -12277,7 +12763,7 @@
              collapsible="no"
              as-type="string"
              name="addr-line"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:addr-line"
              _step="addr-line"
              _key="addr-lines"
@@ -12286,7 +12772,11 @@
              _in-xml-name="addr-line"
              _in-json-name="addr-lines"
              gi="addr-line"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="component-definition/metadata/party/address/city"
                  priority="9"
@@ -12308,6 +12798,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">city</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/metadata/party/address/state"
@@ -12330,6 +12823,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">state</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/metadata/party/address/postal-code"
@@ -12352,6 +12848,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">postal-code</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/metadata/party/address/country"
@@ -12374,6 +12873,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">country</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/metadata/party/member-of-organization"
@@ -12391,7 +12893,11 @@
              _in-xml-name="member-of-organization"
              _in-json-name="member-of-organizations"
              gi="member-of-organization"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="uuid" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="component-definition/metadata/responsible-party/link/text"
                  priority="8"
@@ -12413,6 +12919,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/component/title"
@@ -12435,6 +12944,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/component/description"
@@ -12458,6 +12970,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/component/purpose"
@@ -12480,6 +12998,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">purpose</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/component/link/text"
@@ -12502,6 +13023,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/component/responsible-role/link/text"
@@ -12524,6 +13048,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/component/protocol/title"
@@ -12546,6 +13073,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/component/control-implementation"
@@ -12555,7 +13085,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-component-definition/defined-component/control-implementation"
                 _metaschema-json-id="/assembly/oscal-component-definition/defined-component/control-implementations"
                 name="control-implementation"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_component_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_component_metaschema.xml"
                 _key-name="oscal-component-definition:control-implementation"
                 _step="control-implementation"
                 _key="control-implementations"
@@ -12618,6 +13148,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/component/control-implementation/link/text"
@@ -12640,6 +13176,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/component/control-implementation/set-parameter/value"
@@ -12657,7 +13196,11 @@
              _in-xml-name="value"
              _in-json-name="values"
              gi="value"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="component-definition/component/control-implementation/implemented-requirement"
                  priority="8"
@@ -12666,7 +13209,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-component-definition/control-implementation/implemented-requirement"
                 _metaschema-json-id="/assembly/oscal-component-definition/control-implementation/implemented-requirements"
                 name="implemented-requirement"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_component_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_component_metaschema.xml"
                 _key-name="oscal-component-definition:implemented-requirement"
                 _step="implemented-requirement"
                 _key="implemented-requirements"
@@ -12737,6 +13280,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/component/control-implementation/implemented-requirement/link/text"
@@ -12759,6 +13308,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/component/control-implementation/implemented-requirement/set-parameter/value"
@@ -12776,7 +13328,11 @@
              _in-xml-name="value"
              _in-json-name="values"
              gi="value"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="component-definition/component/control-implementation/implemented-requirement/responsible-role/link/text"
                  priority="13"
@@ -12798,6 +13354,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/component/control-implementation/implemented-requirement/statement"
@@ -12807,7 +13366,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-component-definition/implemented-requirement/statement"
                 _metaschema-json-id="/assembly/oscal-component-definition/implemented-requirement/statements"
                 name="statement"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_component_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_component_metaschema.xml"
                 _key-name="oscal-component-definition:statement"
                 _step="statement"
                 _key="statements"
@@ -12864,6 +13423,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/component/control-implementation/implemented-requirement/statement/link/text"
@@ -12886,6 +13451,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/component/control-implementation/implemented-requirement/statement/responsible-role/link/text"
@@ -12908,6 +13476,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/capability/description"
@@ -12931,6 +13502,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/capability/link/text"
@@ -12953,6 +13530,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/capability/incorporates-component/description"
@@ -12976,6 +13556,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/capability/control-implementation"
@@ -12985,7 +13571,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-component-definition/capability/control-implementation"
                 _metaschema-json-id="/assembly/oscal-component-definition/capability/control-implementations"
                 name="control-implementation"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_component_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_component_metaschema.xml"
                 _key-name="oscal-component-definition:control-implementation"
                 _step="control-implementation"
                 _key="control-implementations"
@@ -13048,6 +13634,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/capability/control-implementation/link/text"
@@ -13070,6 +13662,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/capability/control-implementation/set-parameter/value"
@@ -13087,7 +13682,11 @@
              _in-xml-name="value"
              _in-json-name="values"
              gi="value"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="component-definition/capability/control-implementation/implemented-requirement"
                  priority="8"
@@ -13096,7 +13695,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-component-definition/control-implementation/implemented-requirement"
                 _metaschema-json-id="/assembly/oscal-component-definition/control-implementation/implemented-requirements"
                 name="implemented-requirement"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_component_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_component_metaschema.xml"
                 _key-name="oscal-component-definition:implemented-requirement"
                 _step="implemented-requirement"
                 _key="implemented-requirements"
@@ -13167,6 +13766,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/capability/control-implementation/implemented-requirement/link/text"
@@ -13189,6 +13794,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/capability/control-implementation/implemented-requirement/set-parameter/value"
@@ -13206,7 +13814,11 @@
              _in-xml-name="value"
              _in-json-name="values"
              gi="value"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="component-definition/capability/control-implementation/implemented-requirement/responsible-role/link/text"
                  priority="13"
@@ -13228,6 +13840,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/capability/control-implementation/implemented-requirement/statement"
@@ -13237,7 +13852,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-component-definition/implemented-requirement/statement"
                 _metaschema-json-id="/assembly/oscal-component-definition/implemented-requirement/statements"
                 name="statement"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_component_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_component_metaschema.xml"
                 _key-name="oscal-component-definition:statement"
                 _step="statement"
                 _key="statements"
@@ -13294,6 +13909,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/capability/control-implementation/implemented-requirement/statement/link/text"
@@ -13316,6 +13937,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/capability/control-implementation/implemented-requirement/statement/responsible-role/link/text"
@@ -13338,6 +13962,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/back-matter/resource"
@@ -13402,6 +14029,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/back-matter/resource/description"
@@ -13425,6 +14055,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/back-matter/resource/document-id"
@@ -13436,7 +14072,7 @@
              collapsible="no"
              as-type="string"
              name="document-id"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:document-id"
              _step="document-id"
              _key="document-ids"
@@ -13505,6 +14141,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/back-matter/resource/citation/link/text"
@@ -13527,6 +14166,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="component-definition/back-matter/resource/rlink"
@@ -13599,6 +14241,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/metadata/published"
@@ -13611,7 +14256,7 @@
              as-type="dateTime-with-timezone"
              name="published"
              key="published"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:published"
              _step="published"
              _key="published"
@@ -13624,6 +14269,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">published</xsl:attribute>
          </xsl:if>
+         <value as-type="dateTime-with-timezone" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/metadata/last-modified"
@@ -13636,7 +14284,7 @@
              as-type="dateTime-with-timezone"
              name="last-modified"
              key="last-modified"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:last-modified"
              _step="last-modified"
              _key="last-modified"
@@ -13649,6 +14297,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">last-modified</xsl:attribute>
          </xsl:if>
+         <value as-type="dateTime-with-timezone" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/metadata/version"
@@ -13661,7 +14312,7 @@
              as-type="string"
              name="version"
              key="version"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:version"
              _step="version"
              _key="version"
@@ -13674,6 +14325,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">version</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/metadata/oscal-version"
@@ -13686,7 +14340,7 @@
              as-type="string"
              name="oscal-version"
              key="oscal-version"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:oscal-version"
              _step="oscal-version"
              _key="oscal-version"
@@ -13699,6 +14353,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">oscal-version</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/metadata/revisions/revision"
@@ -13708,7 +14365,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-metadata/metadata/revisions/revision"
                 _metaschema-json-id="/assembly/oscal-metadata/metadata/revisions"
                 name="revision"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
                 _key-name="oscal-metadata:revision"
                 _step="revisions/revision"
                 _key="revisions"
@@ -13748,7 +14405,7 @@
              group-json="ARRAY"
              name="revision"
              key="revisions"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:revision"
              _key-ref="oscal-metadata:revision">
          <xsl:if test="$with-key">
@@ -13777,6 +14434,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/metadata/revisions/revision/published"
@@ -13789,7 +14449,7 @@
              as-type="dateTime-with-timezone"
              name="published"
              key="published"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:published"
              _step="published"
              _key="published"
@@ -13802,6 +14462,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">published</xsl:attribute>
          </xsl:if>
+         <value as-type="dateTime-with-timezone" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/metadata/revisions/revision/last-modified"
@@ -13814,7 +14477,7 @@
              as-type="dateTime-with-timezone"
              name="last-modified"
              key="last-modified"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:last-modified"
              _step="last-modified"
              _key="last-modified"
@@ -13827,6 +14490,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">last-modified</xsl:attribute>
          </xsl:if>
+         <value as-type="dateTime-with-timezone" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/metadata/revisions/revision/version"
@@ -13839,7 +14505,7 @@
              as-type="string"
              name="version"
              key="version"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:version"
              _step="version"
              _key="version"
@@ -13852,6 +14518,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">version</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/metadata/revisions/revision/oscal-version"
@@ -13864,7 +14533,7 @@
              as-type="string"
              name="oscal-version"
              key="oscal-version"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:oscal-version"
              _step="oscal-version"
              _key="oscal-version"
@@ -13877,6 +14546,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">oscal-version</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/metadata/revisions/revision/link/text"
@@ -13899,6 +14571,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/metadata/document-id"
@@ -13910,7 +14585,7 @@
              collapsible="no"
              as-type="string"
              name="document-id"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:document-id"
              _step="document-id"
              _key="document-ids"
@@ -13945,6 +14620,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/metadata/role/title"
@@ -13967,6 +14645,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/metadata/role/short-name"
@@ -13989,6 +14670,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">short-name</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/metadata/role/description"
@@ -14012,6 +14696,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/metadata/role/link/text"
@@ -14034,6 +14724,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/metadata/location/title"
@@ -14056,6 +14749,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/metadata/location/address"
@@ -14066,7 +14762,7 @@
                 _metaschema-json-id="/assembly/oscal-metadata/location/address"
                 name="address"
                 key="address"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
                 _key-name="oscal-metadata:address"
                 _step="address"
                 _key="address"
@@ -14101,7 +14797,7 @@
              collapsible="no"
              as-type="string"
              name="addr-line"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:addr-line"
              _step="addr-line"
              _key="addr-lines"
@@ -14110,7 +14806,11 @@
              _in-xml-name="addr-line"
              _in-json-name="addr-lines"
              gi="addr-line"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="system-security-plan/metadata/location/address/city"
                  priority="7"
@@ -14132,6 +14832,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">city</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/metadata/location/address/state"
@@ -14154,6 +14857,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">state</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/metadata/location/address/postal-code"
@@ -14176,6 +14882,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">postal-code</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/metadata/location/address/country"
@@ -14198,6 +14907,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">country</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/metadata/location/email-address"
@@ -14209,7 +14921,7 @@
              collapsible="no"
              as-type="email"
              name="email-address"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:email-address"
              _step="email-address"
              _key="email-addresses"
@@ -14218,7 +14930,11 @@
              _in-xml-name="email-address"
              _in-json-name="email-addresses"
              gi="email-address"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="email" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="system-security-plan/metadata/location/telephone-number"
                  priority="7"
@@ -14229,7 +14945,7 @@
              collapsible="no"
              as-type="string"
              name="telephone-number"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:telephone-number"
              _step="telephone-number"
              _key="telephone-numbers"
@@ -14259,7 +14975,11 @@
              _in-xml-name="url"
              _in-json-name="urls"
              gi="url"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="uri" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="system-security-plan/metadata/location/link/text"
                  priority="8"
@@ -14281,6 +15001,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/metadata/party/name"
@@ -14303,6 +15026,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">name</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/metadata/party/short-name"
@@ -14325,6 +15051,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">short-name</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/metadata/party/external-id"
@@ -14368,6 +15097,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/metadata/party/email-address"
@@ -14379,7 +15111,7 @@
              collapsible="no"
              as-type="email"
              name="email-address"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:email-address"
              _step="email-address"
              _key="email-addresses"
@@ -14388,7 +15120,11 @@
              _in-xml-name="email-address"
              _in-json-name="email-addresses"
              gi="email-address"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="email" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="system-security-plan/metadata/party/telephone-number"
                  priority="7"
@@ -14399,7 +15135,7 @@
              collapsible="no"
              as-type="string"
              name="telephone-number"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:telephone-number"
              _step="telephone-number"
              _key="telephone-numbers"
@@ -14421,7 +15157,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-metadata/party/address"
                 _metaschema-json-id="/assembly/oscal-metadata/party/addresses"
                 name="address"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
                 _key-name="oscal-metadata:address"
                 _step="address"
                 _key="addresses"
@@ -14453,7 +15189,7 @@
              collapsible="no"
              as-type="string"
              name="addr-line"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:addr-line"
              _step="addr-line"
              _key="addr-lines"
@@ -14462,7 +15198,11 @@
              _in-xml-name="addr-line"
              _in-json-name="addr-lines"
              gi="addr-line"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="system-security-plan/metadata/party/address/city"
                  priority="9"
@@ -14484,6 +15224,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">city</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/metadata/party/address/state"
@@ -14506,6 +15249,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">state</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/metadata/party/address/postal-code"
@@ -14528,6 +15274,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">postal-code</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/metadata/party/address/country"
@@ -14550,6 +15299,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">country</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/metadata/party/member-of-organization"
@@ -14567,7 +15319,11 @@
              _in-xml-name="member-of-organization"
              _in-json-name="member-of-organizations"
              gi="member-of-organization"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="uuid" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="system-security-plan/metadata/responsible-party/link/text"
                  priority="8"
@@ -14589,6 +15345,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/system-characteristics/system-name"
@@ -14611,6 +15370,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">system-name</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/system-characteristics/system-name-short"
@@ -14633,6 +15395,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">system-name-short</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/system-characteristics/description"
@@ -14656,6 +15421,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/system-characteristics/link/text"
@@ -14678,6 +15449,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/system-characteristics/date-authorized"
@@ -14690,7 +15464,7 @@
              as-type="date"
              name="date-authorized"
              key="date-authorized"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_ssp_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_ssp_metaschema.xml"
              _key-name="oscal-ssp:date-authorized"
              _step="date-authorized"
              _key="date-authorized"
@@ -14703,6 +15477,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">date-authorized</xsl:attribute>
          </xsl:if>
+         <value as-type="date" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/system-characteristics/security-sensitivity-level"
@@ -14725,6 +15502,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">security-sensitivity-level</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/system-characteristics/system-information/link/text"
@@ -14747,6 +15527,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/system-characteristics/system-information/information-type"
@@ -14811,6 +15594,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/system-characteristics/system-information/information-type/description"
@@ -14834,6 +15620,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/system-characteristics/system-information/information-type/categorization"
@@ -14874,7 +15666,11 @@
              _in-xml-name="information-type-id"
              _in-json-name="information-type-ids"
              gi="information-type-id"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="system-security-plan/system-characteristics/system-information/information-type/link/text"
                  priority="9"
@@ -14896,6 +15692,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/system-characteristics/system-information/information-type/confidentiality-impact"
@@ -14954,6 +15753,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/system-characteristics/system-information/information-type/confidentiality-impact/base"
@@ -14966,7 +15768,7 @@
              as-type="string"
              name="base"
              key="base"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_ssp_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_ssp_metaschema.xml"
              _key-name="oscal-ssp:base"
              _step="base"
              _key="base"
@@ -14979,6 +15781,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">base</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/system-characteristics/system-information/information-type/confidentiality-impact/selected"
@@ -14991,7 +15796,7 @@
              as-type="string"
              name="selected"
              key="selected"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_ssp_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_ssp_metaschema.xml"
              _key-name="oscal-ssp:selected"
              _step="selected"
              _key="selected"
@@ -15004,6 +15809,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">selected</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/system-characteristics/system-information/information-type/confidentiality-impact/adjustment-justification"
@@ -15017,7 +15825,7 @@
              as-type="markup-multiline"
              name="adjustment-justification"
              key="adjustment-justification"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_ssp_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_ssp_metaschema.xml"
              _key-name="oscal-ssp:adjustment-justification"
              _step="adjustment-justification"
              _key="adjustment-justification"
@@ -15030,6 +15838,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">adjustment-justification</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/system-characteristics/system-information/information-type/integrity-impact"
@@ -15088,6 +15902,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/system-characteristics/system-information/information-type/integrity-impact/base"
@@ -15100,7 +15917,7 @@
              as-type="string"
              name="base"
              key="base"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_ssp_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_ssp_metaschema.xml"
              _key-name="oscal-ssp:base"
              _step="base"
              _key="base"
@@ -15113,6 +15930,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">base</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/system-characteristics/system-information/information-type/integrity-impact/selected"
@@ -15125,7 +15945,7 @@
              as-type="string"
              name="selected"
              key="selected"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_ssp_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_ssp_metaschema.xml"
              _key-name="oscal-ssp:selected"
              _step="selected"
              _key="selected"
@@ -15138,6 +15958,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">selected</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/system-characteristics/system-information/information-type/integrity-impact/adjustment-justification"
@@ -15151,7 +15974,7 @@
              as-type="markup-multiline"
              name="adjustment-justification"
              key="adjustment-justification"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_ssp_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_ssp_metaschema.xml"
              _key-name="oscal-ssp:adjustment-justification"
              _step="adjustment-justification"
              _key="adjustment-justification"
@@ -15164,6 +15987,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">adjustment-justification</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/system-characteristics/system-information/information-type/availability-impact"
@@ -15222,6 +16051,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/system-characteristics/system-information/information-type/availability-impact/base"
@@ -15234,7 +16066,7 @@
              as-type="string"
              name="base"
              key="base"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_ssp_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_ssp_metaschema.xml"
              _key-name="oscal-ssp:base"
              _step="base"
              _key="base"
@@ -15247,6 +16079,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">base</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/system-characteristics/system-information/information-type/availability-impact/selected"
@@ -15259,7 +16094,7 @@
              as-type="string"
              name="selected"
              key="selected"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_ssp_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_ssp_metaschema.xml"
              _key-name="oscal-ssp:selected"
              _step="selected"
              _key="selected"
@@ -15272,6 +16107,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">selected</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/system-characteristics/system-information/information-type/availability-impact/adjustment-justification"
@@ -15285,7 +16123,7 @@
              as-type="markup-multiline"
              name="adjustment-justification"
              key="adjustment-justification"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_ssp_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_ssp_metaschema.xml"
              _key-name="oscal-ssp:adjustment-justification"
              _step="adjustment-justification"
              _key="adjustment-justification"
@@ -15298,6 +16136,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">adjustment-justification</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/system-characteristics/security-impact-level/security-objective-confidentiality"
@@ -15320,6 +16164,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">security-objective-confidentiality</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/system-characteristics/security-impact-level/security-objective-integrity"
@@ -15342,6 +16189,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">security-objective-integrity</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/system-characteristics/security-impact-level/security-objective-availability"
@@ -15364,6 +16214,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">security-objective-availability</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/system-characteristics/status"
@@ -15374,7 +16227,7 @@
                 _metaschema-json-id="/assembly/oscal-ssp/system-characteristics/status"
                 name="status"
                 key="status"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_ssp_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_ssp_metaschema.xml"
                 _key-name="oscal-ssp:status"
                 _step="status"
                 _key="status"
@@ -15411,6 +16264,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/system-characteristics/authorization-boundary/link/text"
@@ -15433,6 +16292,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/system-characteristics/authorization-boundary/diagram/description"
@@ -15456,6 +16318,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/system-characteristics/authorization-boundary/diagram/link/text"
@@ -15478,6 +16346,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/system-characteristics/authorization-boundary/diagram/caption"
@@ -15500,6 +16371,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">caption</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/system-characteristics/authorization-boundary/diagram/remarks"
@@ -15523,6 +16397,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">remarks</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/system-characteristics/authorization-boundary/remarks"
@@ -15546,6 +16426,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">remarks</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/system-characteristics/network-architecture/description"
@@ -15569,6 +16455,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/system-characteristics/network-architecture/link/text"
@@ -15591,6 +16483,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/system-characteristics/network-architecture/diagram/description"
@@ -15614,6 +16509,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/system-characteristics/network-architecture/diagram/link/text"
@@ -15636,6 +16537,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/system-characteristics/network-architecture/diagram/caption"
@@ -15658,6 +16562,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">caption</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/system-characteristics/network-architecture/diagram/remarks"
@@ -15681,6 +16588,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">remarks</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/system-characteristics/data-flow/description"
@@ -15704,6 +16617,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/system-characteristics/data-flow/link/text"
@@ -15726,6 +16645,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/system-characteristics/data-flow/diagram/description"
@@ -15749,6 +16671,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/system-characteristics/data-flow/diagram/link/text"
@@ -15771,6 +16699,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/system-characteristics/data-flow/diagram/caption"
@@ -15793,6 +16724,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">caption</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/system-characteristics/data-flow/diagram/remarks"
@@ -15816,6 +16750,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">remarks</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/system-characteristics/responsible-party/link/text"
@@ -15838,6 +16778,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/system-implementation/link/text"
@@ -15860,6 +16803,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/system-implementation/leveraged-authorization"
@@ -15916,6 +16862,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/system-implementation/leveraged-authorization/link/text"
@@ -15938,6 +16887,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/system-implementation/leveraged-authorization/party-uuid"
@@ -15960,6 +16912,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">party-uuid</xsl:attribute>
          </xsl:if>
+         <value as-type="uuid" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/system-implementation/leveraged-authorization/date-authorized"
@@ -15972,7 +16927,7 @@
              as-type="date"
              name="date-authorized"
              key="date-authorized"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_ssp_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_ssp_metaschema.xml"
              _key-name="oscal-ssp:date-authorized"
              _step="date-authorized"
              _key="date-authorized"
@@ -15985,6 +16940,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">date-authorized</xsl:attribute>
          </xsl:if>
+         <value as-type="date" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/system-implementation/user/title"
@@ -16007,6 +16965,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/system-implementation/user/short-name"
@@ -16029,6 +16990,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">short-name</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/system-implementation/user/description"
@@ -16052,6 +17016,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/system-implementation/user/link/text"
@@ -16074,6 +17044,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/system-implementation/user/authorized-privilege/title"
@@ -16096,6 +17069,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/system-implementation/user/authorized-privilege/description"
@@ -16119,6 +17095,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/system-implementation/component/title"
@@ -16141,6 +17123,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/system-implementation/component/description"
@@ -16164,6 +17149,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/system-implementation/component/purpose"
@@ -16186,6 +17177,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">purpose</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/system-implementation/component/link/text"
@@ -16208,6 +17202,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/system-implementation/component/status"
@@ -16251,6 +17248,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/system-implementation/component/protocol/title"
@@ -16273,6 +17273,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/system-implementation/inventory-item/description"
@@ -16296,6 +17299,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/system-implementation/inventory-item/link/text"
@@ -16318,6 +17327,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/system-implementation/inventory-item/responsible-party/link/text"
@@ -16340,6 +17352,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/system-implementation/inventory-item/implemented-component"
@@ -16400,6 +17415,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/system-implementation/inventory-item/implemented-component/responsible-party/link/text"
@@ -16422,6 +17440,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/control-implementation"
@@ -16432,7 +17453,7 @@
                 _metaschema-json-id="/assembly/oscal-ssp/system-security-plan/control-implementation"
                 name="control-implementation"
                 key="control-implementation"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_ssp_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_ssp_metaschema.xml"
                 _key-name="oscal-ssp:control-implementation"
                 _step="control-implementation"
                 _key="control-implementation"
@@ -16482,6 +17503,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/control-implementation/set-parameter/value"
@@ -16499,7 +17526,11 @@
              _in-xml-name="value"
              _in-json-name="values"
              gi="value"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="system-security-plan/control-implementation/implemented-requirement"
                  priority="5"
@@ -16508,7 +17539,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-ssp/control-implementation/implemented-requirement"
                 _metaschema-json-id="/assembly/oscal-ssp/control-implementation/implemented-requirements"
                 name="implemented-requirement"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_ssp_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_ssp_metaschema.xml"
                 _key-name="oscal-ssp:implemented-requirement"
                 _step="implemented-requirement"
                 _key="implemented-requirements"
@@ -16584,6 +17615,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/control-implementation/implemented-requirement/set-parameter/value"
@@ -16601,7 +17635,11 @@
              _in-xml-name="value"
              _in-json-name="values"
              gi="value"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="system-security-plan/control-implementation/implemented-requirement/responsible-role/link/text"
                  priority="10"
@@ -16623,6 +17661,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/control-implementation/implemented-requirement/statement"
@@ -16632,7 +17673,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-ssp/implemented-requirement/statement"
                 _metaschema-json-id="/assembly/oscal-ssp/implemented-requirement/statements"
                 name="statement"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_ssp_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_ssp_metaschema.xml"
                 _key-name="oscal-ssp:statement"
                 _step="statement"
                 _key="statements"
@@ -16694,6 +17735,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/control-implementation/implemented-requirement/statement/responsible-role/link/text"
@@ -16716,6 +17760,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/control-implementation/implemented-requirement/statement/by-component/description"
@@ -16739,6 +17786,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/control-implementation/implemented-requirement/statement/by-component/link/text"
@@ -16761,6 +17814,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/control-implementation/implemented-requirement/statement/by-component/set-parameter/value"
@@ -16778,7 +17834,11 @@
              _in-xml-name="value"
              _in-json-name="values"
              gi="value"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="system-security-plan/control-implementation/implemented-requirement/statement/by-component/export"
                  priority="10"
@@ -16850,6 +17910,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/control-implementation/implemented-requirement/statement/by-component/export/link/text"
@@ -16872,6 +17938,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/control-implementation/implemented-requirement/statement/by-component/export/provided"
@@ -16934,6 +18003,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/control-implementation/implemented-requirement/statement/by-component/export/provided/link/text"
@@ -16956,6 +18031,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/control-implementation/implemented-requirement/statement/by-component/export/provided/responsible-role/link/text"
@@ -16978,6 +18056,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/control-implementation/implemented-requirement/statement/by-component/export/responsibility"
@@ -17041,6 +18122,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/control-implementation/implemented-requirement/statement/by-component/export/responsibility/link/text"
@@ -17063,6 +18150,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/control-implementation/implemented-requirement/statement/by-component/export/responsibility/responsible-role/link/text"
@@ -17085,6 +18175,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/control-implementation/implemented-requirement/statement/by-component/inherited"
@@ -17147,6 +18240,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/control-implementation/implemented-requirement/statement/by-component/inherited/link/text"
@@ -17169,6 +18268,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/control-implementation/implemented-requirement/statement/by-component/inherited/responsible-role/link/text"
@@ -17191,6 +18293,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/control-implementation/implemented-requirement/statement/by-component/satisfied"
@@ -17254,6 +18359,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/control-implementation/implemented-requirement/statement/by-component/satisfied/link/text"
@@ -17276,6 +18387,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/control-implementation/implemented-requirement/statement/by-component/satisfied/responsible-role/link/text"
@@ -17298,6 +18412,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/control-implementation/implemented-requirement/statement/by-component/responsible-role/link/text"
@@ -17320,6 +18437,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/control-implementation/implemented-requirement/by-component/description"
@@ -17343,6 +18463,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/control-implementation/implemented-requirement/by-component/link/text"
@@ -17365,6 +18491,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/control-implementation/implemented-requirement/by-component/set-parameter/value"
@@ -17382,7 +18511,11 @@
              _in-xml-name="value"
              _in-json-name="values"
              gi="value"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="system-security-plan/control-implementation/implemented-requirement/by-component/export"
                  priority="8"
@@ -17454,6 +18587,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/control-implementation/implemented-requirement/by-component/export/link/text"
@@ -17476,6 +18615,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/control-implementation/implemented-requirement/by-component/export/provided"
@@ -17538,6 +18680,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/control-implementation/implemented-requirement/by-component/export/provided/link/text"
@@ -17560,6 +18708,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/control-implementation/implemented-requirement/by-component/export/provided/responsible-role/link/text"
@@ -17582,6 +18733,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/control-implementation/implemented-requirement/by-component/export/responsibility"
@@ -17645,6 +18799,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/control-implementation/implemented-requirement/by-component/export/responsibility/link/text"
@@ -17667,6 +18827,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/control-implementation/implemented-requirement/by-component/export/responsibility/responsible-role/link/text"
@@ -17689,6 +18852,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/control-implementation/implemented-requirement/by-component/inherited"
@@ -17751,6 +18917,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/control-implementation/implemented-requirement/by-component/inherited/link/text"
@@ -17773,6 +18945,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/control-implementation/implemented-requirement/by-component/inherited/responsible-role/link/text"
@@ -17795,6 +18970,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/control-implementation/implemented-requirement/by-component/satisfied"
@@ -17858,6 +19036,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/control-implementation/implemented-requirement/by-component/satisfied/link/text"
@@ -17880,6 +19064,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/control-implementation/implemented-requirement/by-component/satisfied/responsible-role/link/text"
@@ -17902,6 +19089,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/control-implementation/implemented-requirement/by-component/responsible-role/link/text"
@@ -17924,6 +19114,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/back-matter/resource"
@@ -17988,6 +19181,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/back-matter/resource/description"
@@ -18011,6 +19207,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/back-matter/resource/document-id"
@@ -18022,7 +19224,7 @@
              collapsible="no"
              as-type="string"
              name="document-id"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:document-id"
              _step="document-id"
              _key="document-ids"
@@ -18091,6 +19293,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/back-matter/resource/citation/link/text"
@@ -18113,6 +19318,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="system-security-plan/back-matter/resource/rlink"
@@ -18185,6 +19393,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/metadata/published"
@@ -18197,7 +19408,7 @@
              as-type="dateTime-with-timezone"
              name="published"
              key="published"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:published"
              _step="published"
              _key="published"
@@ -18210,6 +19421,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">published</xsl:attribute>
          </xsl:if>
+         <value as-type="dateTime-with-timezone" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/metadata/last-modified"
@@ -18222,7 +19436,7 @@
              as-type="dateTime-with-timezone"
              name="last-modified"
              key="last-modified"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:last-modified"
              _step="last-modified"
              _key="last-modified"
@@ -18235,6 +19449,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">last-modified</xsl:attribute>
          </xsl:if>
+         <value as-type="dateTime-with-timezone" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/metadata/version"
@@ -18247,7 +19464,7 @@
              as-type="string"
              name="version"
              key="version"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:version"
              _step="version"
              _key="version"
@@ -18260,6 +19477,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">version</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/metadata/oscal-version"
@@ -18272,7 +19492,7 @@
              as-type="string"
              name="oscal-version"
              key="oscal-version"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:oscal-version"
              _step="oscal-version"
              _key="oscal-version"
@@ -18285,6 +19505,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">oscal-version</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/metadata/revisions/revision"
@@ -18294,7 +19517,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-metadata/metadata/revisions/revision"
                 _metaschema-json-id="/assembly/oscal-metadata/metadata/revisions"
                 name="revision"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
                 _key-name="oscal-metadata:revision"
                 _step="revisions/revision"
                 _key="revisions"
@@ -18334,7 +19557,7 @@
              group-json="ARRAY"
              name="revision"
              key="revisions"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:revision"
              _key-ref="oscal-metadata:revision">
          <xsl:if test="$with-key">
@@ -18363,6 +19586,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/metadata/revisions/revision/published"
@@ -18375,7 +19601,7 @@
              as-type="dateTime-with-timezone"
              name="published"
              key="published"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:published"
              _step="published"
              _key="published"
@@ -18388,6 +19614,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">published</xsl:attribute>
          </xsl:if>
+         <value as-type="dateTime-with-timezone" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/metadata/revisions/revision/last-modified"
@@ -18400,7 +19629,7 @@
              as-type="dateTime-with-timezone"
              name="last-modified"
              key="last-modified"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:last-modified"
              _step="last-modified"
              _key="last-modified"
@@ -18413,6 +19642,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">last-modified</xsl:attribute>
          </xsl:if>
+         <value as-type="dateTime-with-timezone" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/metadata/revisions/revision/version"
@@ -18425,7 +19657,7 @@
              as-type="string"
              name="version"
              key="version"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:version"
              _step="version"
              _key="version"
@@ -18438,6 +19670,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">version</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/metadata/revisions/revision/oscal-version"
@@ -18450,7 +19685,7 @@
              as-type="string"
              name="oscal-version"
              key="oscal-version"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:oscal-version"
              _step="oscal-version"
              _key="oscal-version"
@@ -18463,6 +19698,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">oscal-version</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/metadata/revisions/revision/link/text"
@@ -18485,6 +19723,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/metadata/document-id"
@@ -18496,7 +19737,7 @@
              collapsible="no"
              as-type="string"
              name="document-id"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:document-id"
              _step="document-id"
              _key="document-ids"
@@ -18531,6 +19772,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/metadata/role/title"
@@ -18553,6 +19797,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/metadata/role/short-name"
@@ -18575,6 +19822,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">short-name</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/metadata/role/description"
@@ -18598,6 +19848,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/metadata/role/link/text"
@@ -18620,6 +19876,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/metadata/location/title"
@@ -18642,6 +19901,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/metadata/location/address"
@@ -18652,7 +19914,7 @@
                 _metaschema-json-id="/assembly/oscal-metadata/location/address"
                 name="address"
                 key="address"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
                 _key-name="oscal-metadata:address"
                 _step="address"
                 _key="address"
@@ -18687,7 +19949,7 @@
              collapsible="no"
              as-type="string"
              name="addr-line"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:addr-line"
              _step="addr-line"
              _key="addr-lines"
@@ -18696,7 +19958,11 @@
              _in-xml-name="addr-line"
              _in-json-name="addr-lines"
              gi="addr-line"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="assessment-plan/metadata/location/address/city"
                  priority="7"
@@ -18718,6 +19984,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">city</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/metadata/location/address/state"
@@ -18740,6 +20009,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">state</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/metadata/location/address/postal-code"
@@ -18762,6 +20034,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">postal-code</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/metadata/location/address/country"
@@ -18784,6 +20059,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">country</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/metadata/location/email-address"
@@ -18795,7 +20073,7 @@
              collapsible="no"
              as-type="email"
              name="email-address"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:email-address"
              _step="email-address"
              _key="email-addresses"
@@ -18804,7 +20082,11 @@
              _in-xml-name="email-address"
              _in-json-name="email-addresses"
              gi="email-address"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="email" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="assessment-plan/metadata/location/telephone-number"
                  priority="7"
@@ -18815,7 +20097,7 @@
              collapsible="no"
              as-type="string"
              name="telephone-number"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:telephone-number"
              _step="telephone-number"
              _key="telephone-numbers"
@@ -18845,7 +20127,11 @@
              _in-xml-name="url"
              _in-json-name="urls"
              gi="url"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="uri" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="assessment-plan/metadata/location/link/text"
                  priority="8"
@@ -18867,6 +20153,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/metadata/party/name"
@@ -18889,6 +20178,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">name</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/metadata/party/short-name"
@@ -18911,6 +20203,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">short-name</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/metadata/party/external-id"
@@ -18954,6 +20249,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/metadata/party/email-address"
@@ -18965,7 +20263,7 @@
              collapsible="no"
              as-type="email"
              name="email-address"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:email-address"
              _step="email-address"
              _key="email-addresses"
@@ -18974,7 +20272,11 @@
              _in-xml-name="email-address"
              _in-json-name="email-addresses"
              gi="email-address"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="email" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="assessment-plan/metadata/party/telephone-number"
                  priority="7"
@@ -18985,7 +20287,7 @@
              collapsible="no"
              as-type="string"
              name="telephone-number"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:telephone-number"
              _step="telephone-number"
              _key="telephone-numbers"
@@ -19007,7 +20309,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-metadata/party/address"
                 _metaschema-json-id="/assembly/oscal-metadata/party/addresses"
                 name="address"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
                 _key-name="oscal-metadata:address"
                 _step="address"
                 _key="addresses"
@@ -19039,7 +20341,7 @@
              collapsible="no"
              as-type="string"
              name="addr-line"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:addr-line"
              _step="addr-line"
              _key="addr-lines"
@@ -19048,7 +20350,11 @@
              _in-xml-name="addr-line"
              _in-json-name="addr-lines"
              gi="addr-line"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="assessment-plan/metadata/party/address/city"
                  priority="9"
@@ -19070,6 +20376,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">city</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/metadata/party/address/state"
@@ -19092,6 +20401,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">state</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/metadata/party/address/postal-code"
@@ -19114,6 +20426,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">postal-code</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/metadata/party/address/country"
@@ -19136,6 +20451,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">country</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/metadata/party/member-of-organization"
@@ -19153,7 +20471,11 @@
              _in-xml-name="member-of-organization"
              _in-json-name="member-of-organizations"
              gi="member-of-organization"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="uuid" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="assessment-plan/metadata/responsible-party/link/text"
                  priority="8"
@@ -19175,6 +20497,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/local-definitions"
@@ -19252,6 +20577,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/local-definitions/component/description"
@@ -19275,6 +20603,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/local-definitions/component/purpose"
@@ -19297,6 +20631,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">purpose</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/local-definitions/component/link/text"
@@ -19319,6 +20656,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/local-definitions/component/status"
@@ -19362,6 +20702,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/local-definitions/component/protocol/title"
@@ -19384,6 +20727,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/local-definitions/inventory-item/description"
@@ -19407,6 +20753,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/local-definitions/inventory-item/link/text"
@@ -19429,6 +20781,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/local-definitions/inventory-item/responsible-party/link/text"
@@ -19451,6 +20806,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/local-definitions/inventory-item/implemented-component"
@@ -19511,6 +20869,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/local-definitions/inventory-item/implemented-component/responsible-party/link/text"
@@ -19533,6 +20894,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/local-definitions/user/title"
@@ -19555,6 +20919,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/local-definitions/user/short-name"
@@ -19577,6 +20944,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">short-name</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/local-definitions/user/description"
@@ -19600,6 +20970,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/local-definitions/user/link/text"
@@ -19622,6 +20998,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/local-definitions/user/authorized-privilege/title"
@@ -19644,6 +21023,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/local-definitions/user/authorized-privilege/description"
@@ -19667,6 +21049,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/local-definitions/objectives-and-methods/description"
@@ -19690,6 +21078,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/local-definitions/objectives-and-methods/link/text"
@@ -19712,6 +21106,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/local-definitions/objectives-and-methods//part/title"
@@ -19734,28 +21131,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
-      </field>
-   </xsl:template>
-   <xsl:template match="assessment-plan/local-definitions/objectives-and-methods//part"
-                 priority="8"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field _step="p ul ol pre table h1 h2 h3 h4 h5 h6"
-             _key="prose"
-             _metaschema-xml-id="/assembly/oscal-catalog-common/part/p ul ol pre table h1 h2 h3 h4 h5 h6"
-             _metaschema-json-id="/assembly/oscal-catalog-common/part/prose"
-             in-xml="UNWRAPPED"
-             collapsible="no"
-             as-type="markup-multiline"
-             name="prose"
-             key="prose"
-             _using-name="prose"
-             _in-xml-name="p ul ol pre table h1 h2 h3 h4 h5 h6"
-             _in-json-name="prose"
-             in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">prose</xsl:attribute>
-         </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/local-definitions/objectives-and-methods//part/link/text"
@@ -19778,6 +21156,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/local-definitions/activity/title"
@@ -19800,6 +21181,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/local-definitions/activity/description"
@@ -19823,6 +21207,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/local-definitions/activity/link/text"
@@ -19845,6 +21235,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/local-definitions/activity/step"
@@ -19908,6 +21301,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/local-definitions/activity/step/description"
@@ -19931,6 +21327,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/local-definitions/activity/step/link/text"
@@ -19953,6 +21355,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/local-definitions/activity/step/reviewed-controls/description"
@@ -19976,6 +21381,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/local-definitions/activity/step/reviewed-controls/link/text"
@@ -19998,6 +21409,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/local-definitions/activity/step/reviewed-controls/control-selection"
@@ -20067,6 +21481,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/local-definitions/activity/step/reviewed-controls/control-selection/link/text"
@@ -20089,6 +21509,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/local-definitions/activity/step/reviewed-controls/control-selection/include-all"
@@ -20118,7 +21541,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-assessment-common/reviewed-controls/control-selection/include-control"
                 _metaschema-json-id="/assembly/oscal-assessment-common/reviewed-controls/control-selections/include-controls"
                 name="select-control-by-id"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_assessment-common_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_assessment-common_metaschema.xml"
                 _key-name="oscal-assessment-common:select-control-by-id"
                 _step="include-control"
                 _key="include-controls"
@@ -20152,7 +21575,11 @@
              _in-xml-name="statement-id"
              _in-json-name="statement-ids"
              gi="statement-id"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="token" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="assessment-plan/local-definitions/activity/step/reviewed-controls/control-selection/exclude-control"
                  priority="12"
@@ -20161,7 +21588,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-assessment-common/reviewed-controls/control-selection/exclude-control"
                 _metaschema-json-id="/assembly/oscal-assessment-common/reviewed-controls/control-selections/exclude-controls"
                 name="select-control-by-id"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_assessment-common_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_assessment-common_metaschema.xml"
                 _key-name="oscal-assessment-common:select-control-by-id"
                 _step="exclude-control"
                 _key="exclude-controls"
@@ -20195,7 +21622,11 @@
              _in-xml-name="statement-id"
              _in-json-name="statement-ids"
              gi="statement-id"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="token" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="assessment-plan/local-definitions/activity/step/reviewed-controls/control-objective-selection"
                  priority="10"
@@ -20264,6 +21695,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/local-definitions/activity/step/reviewed-controls/control-objective-selection/link/text"
@@ -20286,6 +21723,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/local-definitions/activity/step/reviewed-controls/control-objective-selection/include-all"
@@ -20328,6 +21768,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/local-definitions/activity/related-controls/description"
@@ -20351,6 +21794,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/local-definitions/activity/related-controls/link/text"
@@ -20373,6 +21822,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/local-definitions/activity/related-controls/control-selection"
@@ -20442,6 +21894,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/local-definitions/activity/related-controls/control-selection/link/text"
@@ -20464,6 +21922,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/local-definitions/activity/related-controls/control-selection/include-all"
@@ -20493,7 +21954,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-assessment-common/reviewed-controls/control-selection/include-control"
                 _metaschema-json-id="/assembly/oscal-assessment-common/reviewed-controls/control-selections/include-controls"
                 name="select-control-by-id"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_assessment-common_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_assessment-common_metaschema.xml"
                 _key-name="oscal-assessment-common:select-control-by-id"
                 _step="include-control"
                 _key="include-controls"
@@ -20527,7 +21988,11 @@
              _in-xml-name="statement-id"
              _in-json-name="statement-ids"
              gi="statement-id"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="token" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="assessment-plan/local-definitions/activity/related-controls/control-selection/exclude-control"
                  priority="10"
@@ -20536,7 +22001,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-assessment-common/reviewed-controls/control-selection/exclude-control"
                 _metaschema-json-id="/assembly/oscal-assessment-common/reviewed-controls/control-selections/exclude-controls"
                 name="select-control-by-id"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_assessment-common_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_assessment-common_metaschema.xml"
                 _key-name="oscal-assessment-common:select-control-by-id"
                 _step="exclude-control"
                 _key="exclude-controls"
@@ -20570,7 +22035,11 @@
              _in-xml-name="statement-id"
              _in-json-name="statement-ids"
              gi="statement-id"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="token" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="assessment-plan/local-definitions/activity/related-controls/control-objective-selection"
                  priority="8"
@@ -20639,6 +22108,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/local-definitions/activity/related-controls/control-objective-selection/link/text"
@@ -20661,6 +22136,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/local-definitions/activity/related-controls/control-objective-selection/include-all"
@@ -20703,6 +22181,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/terms-and-conditions"
@@ -20751,28 +22232,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
-      </field>
-   </xsl:template>
-   <xsl:template match="assessment-plan/terms-and-conditions//part"
-                 priority="6"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field _step="p ul ol pre table h1 h2 h3 h4 h5 h6"
-             _key="prose"
-             _metaschema-xml-id="/assembly/oscal-assessment-common/assessment-part/p ul ol pre table h1 h2 h3 h4 h5 h6"
-             _metaschema-json-id="/assembly/oscal-assessment-common/assessment-part/prose"
-             in-xml="UNWRAPPED"
-             collapsible="no"
-             as-type="markup-multiline"
-             name="prose"
-             key="prose"
-             _using-name="prose"
-             _in-xml-name="p ul ol pre table h1 h2 h3 h4 h5 h6"
-             _in-json-name="prose"
-             in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">prose</xsl:attribute>
-         </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/terms-and-conditions//part/link/text"
@@ -20795,6 +22257,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/reviewed-controls/description"
@@ -20818,6 +22283,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/reviewed-controls/link/text"
@@ -20840,6 +22311,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/reviewed-controls/control-selection"
@@ -20909,6 +22383,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/reviewed-controls/control-selection/link/text"
@@ -20931,6 +22411,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/reviewed-controls/control-selection/include-all"
@@ -20960,7 +22443,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-assessment-common/reviewed-controls/control-selection/include-control"
                 _metaschema-json-id="/assembly/oscal-assessment-common/reviewed-controls/control-selections/include-controls"
                 name="select-control-by-id"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_assessment-common_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_assessment-common_metaschema.xml"
                 _key-name="oscal-assessment-common:select-control-by-id"
                 _step="include-control"
                 _key="include-controls"
@@ -20994,7 +22477,11 @@
              _in-xml-name="statement-id"
              _in-json-name="statement-ids"
              gi="statement-id"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="token" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="assessment-plan/reviewed-controls/control-selection/exclude-control"
                  priority="7"
@@ -21003,7 +22490,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-assessment-common/reviewed-controls/control-selection/exclude-control"
                 _metaschema-json-id="/assembly/oscal-assessment-common/reviewed-controls/control-selections/exclude-controls"
                 name="select-control-by-id"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_assessment-common_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_assessment-common_metaschema.xml"
                 _key-name="oscal-assessment-common:select-control-by-id"
                 _step="exclude-control"
                 _key="exclude-controls"
@@ -21037,7 +22524,11 @@
              _in-xml-name="statement-id"
              _in-json-name="statement-ids"
              gi="statement-id"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="token" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="assessment-plan/reviewed-controls/control-objective-selection"
                  priority="5"
@@ -21106,6 +22597,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/reviewed-controls/control-objective-selection/link/text"
@@ -21128,6 +22625,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/reviewed-controls/control-objective-selection/include-all"
@@ -21171,6 +22671,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/assessment-subject/link/text"
@@ -21193,6 +22699,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/assessment-subject/include-all"
@@ -21235,6 +22744,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/assessment-subject/exclude-subject/link/text"
@@ -21257,6 +22769,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/assessment-assets/component/title"
@@ -21279,6 +22794,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/assessment-assets/component/description"
@@ -21302,6 +22820,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/assessment-assets/component/purpose"
@@ -21324,6 +22848,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">purpose</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/assessment-assets/component/link/text"
@@ -21346,6 +22873,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/assessment-assets/component/status"
@@ -21389,6 +22919,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/assessment-assets/component/protocol/title"
@@ -21411,6 +22944,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/assessment-assets/assessment-platform"
@@ -21472,6 +23008,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/assessment-assets/assessment-platform/link/text"
@@ -21494,6 +23033,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/assessment-assets/assessment-platform/uses-component"
@@ -21554,6 +23096,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/assessment-assets/assessment-platform/uses-component/responsible-party/link/text"
@@ -21576,6 +23121,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan//task/title"
@@ -21598,6 +23146,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan//task/description"
@@ -21621,6 +23172,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan//task/link/text"
@@ -21643,6 +23200,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan//task/timing"
@@ -21814,6 +23374,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan//task/associated-activity/responsible-role/link/text"
@@ -21836,6 +23399,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan//task/associated-activity/subject/description"
@@ -21859,6 +23425,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan//task/associated-activity/subject/link/text"
@@ -21881,6 +23453,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan//task/associated-activity/subject/include-all"
@@ -21923,6 +23498,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan//task/associated-activity/subject/exclude-subject/link/text"
@@ -21945,6 +23523,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan//task/subject/description"
@@ -21968,6 +23549,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan//task/subject/link/text"
@@ -21990,6 +23577,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan//task/subject/include-all"
@@ -22032,6 +23622,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan//task/subject/exclude-subject/link/text"
@@ -22054,6 +23647,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan//task/responsible-role/link/text"
@@ -22076,6 +23672,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/back-matter/resource"
@@ -22140,6 +23739,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/back-matter/resource/description"
@@ -22163,6 +23765,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/back-matter/resource/document-id"
@@ -22174,7 +23782,7 @@
              collapsible="no"
              as-type="string"
              name="document-id"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:document-id"
              _step="document-id"
              _key="document-ids"
@@ -22243,6 +23851,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/back-matter/resource/citation/link/text"
@@ -22265,6 +23876,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-plan/back-matter/resource/rlink"
@@ -22337,6 +23951,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/metadata/published"
@@ -22349,7 +23966,7 @@
              as-type="dateTime-with-timezone"
              name="published"
              key="published"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:published"
              _step="published"
              _key="published"
@@ -22362,6 +23979,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">published</xsl:attribute>
          </xsl:if>
+         <value as-type="dateTime-with-timezone" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/metadata/last-modified"
@@ -22374,7 +23994,7 @@
              as-type="dateTime-with-timezone"
              name="last-modified"
              key="last-modified"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:last-modified"
              _step="last-modified"
              _key="last-modified"
@@ -22387,6 +24007,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">last-modified</xsl:attribute>
          </xsl:if>
+         <value as-type="dateTime-with-timezone" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/metadata/version"
@@ -22399,7 +24022,7 @@
              as-type="string"
              name="version"
              key="version"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:version"
              _step="version"
              _key="version"
@@ -22412,6 +24035,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">version</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/metadata/oscal-version"
@@ -22424,7 +24050,7 @@
              as-type="string"
              name="oscal-version"
              key="oscal-version"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:oscal-version"
              _step="oscal-version"
              _key="oscal-version"
@@ -22437,6 +24063,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">oscal-version</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/metadata/revisions/revision"
@@ -22446,7 +24075,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-metadata/metadata/revisions/revision"
                 _metaschema-json-id="/assembly/oscal-metadata/metadata/revisions"
                 name="revision"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
                 _key-name="oscal-metadata:revision"
                 _step="revisions/revision"
                 _key="revisions"
@@ -22486,7 +24115,7 @@
              group-json="ARRAY"
              name="revision"
              key="revisions"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:revision"
              _key-ref="oscal-metadata:revision">
          <xsl:if test="$with-key">
@@ -22515,6 +24144,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/metadata/revisions/revision/published"
@@ -22527,7 +24159,7 @@
              as-type="dateTime-with-timezone"
              name="published"
              key="published"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:published"
              _step="published"
              _key="published"
@@ -22540,6 +24172,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">published</xsl:attribute>
          </xsl:if>
+         <value as-type="dateTime-with-timezone" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/metadata/revisions/revision/last-modified"
@@ -22552,7 +24187,7 @@
              as-type="dateTime-with-timezone"
              name="last-modified"
              key="last-modified"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:last-modified"
              _step="last-modified"
              _key="last-modified"
@@ -22565,6 +24200,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">last-modified</xsl:attribute>
          </xsl:if>
+         <value as-type="dateTime-with-timezone" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/metadata/revisions/revision/version"
@@ -22577,7 +24215,7 @@
              as-type="string"
              name="version"
              key="version"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:version"
              _step="version"
              _key="version"
@@ -22590,6 +24228,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">version</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/metadata/revisions/revision/oscal-version"
@@ -22602,7 +24243,7 @@
              as-type="string"
              name="oscal-version"
              key="oscal-version"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:oscal-version"
              _step="oscal-version"
              _key="oscal-version"
@@ -22615,6 +24256,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">oscal-version</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/metadata/revisions/revision/link/text"
@@ -22637,6 +24281,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/metadata/document-id"
@@ -22648,7 +24295,7 @@
              collapsible="no"
              as-type="string"
              name="document-id"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:document-id"
              _step="document-id"
              _key="document-ids"
@@ -22683,6 +24330,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/metadata/role/title"
@@ -22705,6 +24355,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/metadata/role/short-name"
@@ -22727,6 +24380,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">short-name</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/metadata/role/description"
@@ -22750,6 +24406,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/metadata/role/link/text"
@@ -22772,6 +24434,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/metadata/location/title"
@@ -22794,6 +24459,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/metadata/location/address"
@@ -22804,7 +24472,7 @@
                 _metaschema-json-id="/assembly/oscal-metadata/location/address"
                 name="address"
                 key="address"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
                 _key-name="oscal-metadata:address"
                 _step="address"
                 _key="address"
@@ -22839,7 +24507,7 @@
              collapsible="no"
              as-type="string"
              name="addr-line"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:addr-line"
              _step="addr-line"
              _key="addr-lines"
@@ -22848,7 +24516,11 @@
              _in-xml-name="addr-line"
              _in-json-name="addr-lines"
              gi="addr-line"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="assessment-results/metadata/location/address/city"
                  priority="7"
@@ -22870,6 +24542,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">city</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/metadata/location/address/state"
@@ -22892,6 +24567,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">state</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/metadata/location/address/postal-code"
@@ -22914,6 +24592,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">postal-code</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/metadata/location/address/country"
@@ -22936,6 +24617,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">country</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/metadata/location/email-address"
@@ -22947,7 +24631,7 @@
              collapsible="no"
              as-type="email"
              name="email-address"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:email-address"
              _step="email-address"
              _key="email-addresses"
@@ -22956,7 +24640,11 @@
              _in-xml-name="email-address"
              _in-json-name="email-addresses"
              gi="email-address"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="email" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="assessment-results/metadata/location/telephone-number"
                  priority="7"
@@ -22967,7 +24655,7 @@
              collapsible="no"
              as-type="string"
              name="telephone-number"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:telephone-number"
              _step="telephone-number"
              _key="telephone-numbers"
@@ -22997,7 +24685,11 @@
              _in-xml-name="url"
              _in-json-name="urls"
              gi="url"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="uri" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="assessment-results/metadata/location/link/text"
                  priority="8"
@@ -23019,6 +24711,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/metadata/party/name"
@@ -23041,6 +24736,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">name</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/metadata/party/short-name"
@@ -23063,6 +24761,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">short-name</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/metadata/party/external-id"
@@ -23106,6 +24807,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/metadata/party/email-address"
@@ -23117,7 +24821,7 @@
              collapsible="no"
              as-type="email"
              name="email-address"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:email-address"
              _step="email-address"
              _key="email-addresses"
@@ -23126,7 +24830,11 @@
              _in-xml-name="email-address"
              _in-json-name="email-addresses"
              gi="email-address"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="email" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="assessment-results/metadata/party/telephone-number"
                  priority="7"
@@ -23137,7 +24845,7 @@
              collapsible="no"
              as-type="string"
              name="telephone-number"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:telephone-number"
              _step="telephone-number"
              _key="telephone-numbers"
@@ -23159,7 +24867,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-metadata/party/address"
                 _metaschema-json-id="/assembly/oscal-metadata/party/addresses"
                 name="address"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
                 _key-name="oscal-metadata:address"
                 _step="address"
                 _key="addresses"
@@ -23191,7 +24899,7 @@
              collapsible="no"
              as-type="string"
              name="addr-line"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:addr-line"
              _step="addr-line"
              _key="addr-lines"
@@ -23200,7 +24908,11 @@
              _in-xml-name="addr-line"
              _in-json-name="addr-lines"
              gi="addr-line"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="assessment-results/metadata/party/address/city"
                  priority="9"
@@ -23222,6 +24934,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">city</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/metadata/party/address/state"
@@ -23244,6 +24959,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">state</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/metadata/party/address/postal-code"
@@ -23266,6 +24984,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">postal-code</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/metadata/party/address/country"
@@ -23288,6 +25009,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">country</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/metadata/party/member-of-organization"
@@ -23305,7 +25029,11 @@
              _in-xml-name="member-of-organization"
              _in-json-name="member-of-organizations"
              gi="member-of-organization"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="uuid" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="assessment-results/metadata/responsible-party/link/text"
                  priority="8"
@@ -23327,6 +25055,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/local-definitions"
@@ -23384,6 +25115,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/local-definitions/objectives-and-methods/link/text"
@@ -23406,6 +25143,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/local-definitions/objectives-and-methods//part/title"
@@ -23428,28 +25168,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
-      </field>
-   </xsl:template>
-   <xsl:template match="assessment-results/local-definitions/objectives-and-methods//part"
-                 priority="8"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field _step="p ul ol pre table h1 h2 h3 h4 h5 h6"
-             _key="prose"
-             _metaschema-xml-id="/assembly/oscal-catalog-common/part/p ul ol pre table h1 h2 h3 h4 h5 h6"
-             _metaschema-json-id="/assembly/oscal-catalog-common/part/prose"
-             in-xml="UNWRAPPED"
-             collapsible="no"
-             as-type="markup-multiline"
-             name="prose"
-             key="prose"
-             _using-name="prose"
-             _in-xml-name="p ul ol pre table h1 h2 h3 h4 h5 h6"
-             _in-json-name="prose"
-             in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">prose</xsl:attribute>
-         </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/local-definitions/objectives-and-methods//part/link/text"
@@ -23472,6 +25193,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/local-definitions/activity/title"
@@ -23494,6 +25218,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/local-definitions/activity/description"
@@ -23517,6 +25244,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/local-definitions/activity/link/text"
@@ -23539,6 +25272,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/local-definitions/activity/step"
@@ -23602,6 +25338,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/local-definitions/activity/step/description"
@@ -23625,6 +25364,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/local-definitions/activity/step/link/text"
@@ -23647,6 +25392,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/local-definitions/activity/step/reviewed-controls/description"
@@ -23670,6 +25418,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/local-definitions/activity/step/reviewed-controls/link/text"
@@ -23692,6 +25446,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/local-definitions/activity/step/reviewed-controls/control-selection"
@@ -23761,6 +25518,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/local-definitions/activity/step/reviewed-controls/control-selection/link/text"
@@ -23783,6 +25546,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/local-definitions/activity/step/reviewed-controls/control-selection/include-all"
@@ -23812,7 +25578,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-assessment-common/reviewed-controls/control-selection/include-control"
                 _metaschema-json-id="/assembly/oscal-assessment-common/reviewed-controls/control-selections/include-controls"
                 name="select-control-by-id"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_assessment-common_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_assessment-common_metaschema.xml"
                 _key-name="oscal-assessment-common:select-control-by-id"
                 _step="include-control"
                 _key="include-controls"
@@ -23846,7 +25612,11 @@
              _in-xml-name="statement-id"
              _in-json-name="statement-ids"
              gi="statement-id"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="token" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="assessment-results/local-definitions/activity/step/reviewed-controls/control-selection/exclude-control"
                  priority="12"
@@ -23855,7 +25625,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-assessment-common/reviewed-controls/control-selection/exclude-control"
                 _metaschema-json-id="/assembly/oscal-assessment-common/reviewed-controls/control-selections/exclude-controls"
                 name="select-control-by-id"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_assessment-common_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_assessment-common_metaschema.xml"
                 _key-name="oscal-assessment-common:select-control-by-id"
                 _step="exclude-control"
                 _key="exclude-controls"
@@ -23889,7 +25659,11 @@
              _in-xml-name="statement-id"
              _in-json-name="statement-ids"
              gi="statement-id"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="token" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="assessment-results/local-definitions/activity/step/reviewed-controls/control-objective-selection"
                  priority="10"
@@ -23958,6 +25732,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/local-definitions/activity/step/reviewed-controls/control-objective-selection/link/text"
@@ -23980,6 +25760,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/local-definitions/activity/step/reviewed-controls/control-objective-selection/include-all"
@@ -24022,6 +25805,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/local-definitions/activity/related-controls/description"
@@ -24045,6 +25831,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/local-definitions/activity/related-controls/link/text"
@@ -24067,6 +25859,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/local-definitions/activity/related-controls/control-selection"
@@ -24136,6 +25931,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/local-definitions/activity/related-controls/control-selection/link/text"
@@ -24158,6 +25959,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/local-definitions/activity/related-controls/control-selection/include-all"
@@ -24187,7 +25991,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-assessment-common/reviewed-controls/control-selection/include-control"
                 _metaschema-json-id="/assembly/oscal-assessment-common/reviewed-controls/control-selections/include-controls"
                 name="select-control-by-id"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_assessment-common_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_assessment-common_metaschema.xml"
                 _key-name="oscal-assessment-common:select-control-by-id"
                 _step="include-control"
                 _key="include-controls"
@@ -24221,7 +26025,11 @@
              _in-xml-name="statement-id"
              _in-json-name="statement-ids"
              gi="statement-id"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="token" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="assessment-results/local-definitions/activity/related-controls/control-selection/exclude-control"
                  priority="10"
@@ -24230,7 +26038,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-assessment-common/reviewed-controls/control-selection/exclude-control"
                 _metaschema-json-id="/assembly/oscal-assessment-common/reviewed-controls/control-selections/exclude-controls"
                 name="select-control-by-id"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_assessment-common_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_assessment-common_metaschema.xml"
                 _key-name="oscal-assessment-common:select-control-by-id"
                 _step="exclude-control"
                 _key="exclude-controls"
@@ -24264,7 +26072,11 @@
              _in-xml-name="statement-id"
              _in-json-name="statement-ids"
              gi="statement-id"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="token" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="assessment-results/local-definitions/activity/related-controls/control-objective-selection"
                  priority="8"
@@ -24333,6 +26145,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/local-definitions/activity/related-controls/control-objective-selection/link/text"
@@ -24355,6 +26173,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/local-definitions/activity/related-controls/control-objective-selection/include-all"
@@ -24397,6 +26218,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/title"
@@ -24419,6 +26243,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/description"
@@ -24442,6 +26269,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/start"
@@ -24464,6 +26297,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">start</xsl:attribute>
          </xsl:if>
+         <value as-type="dateTime-with-timezone" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/end"
@@ -24486,6 +26322,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">end</xsl:attribute>
          </xsl:if>
+         <value as-type="dateTime-with-timezone" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/link/text"
@@ -24508,6 +26347,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/local-definitions"
@@ -24578,6 +26420,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/local-definitions/component/description"
@@ -24601,6 +26446,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/local-definitions/component/purpose"
@@ -24623,6 +26474,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">purpose</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/local-definitions/component/link/text"
@@ -24645,6 +26499,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/local-definitions/component/status"
@@ -24688,6 +26545,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/local-definitions/component/protocol/title"
@@ -24710,6 +26570,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/local-definitions/inventory-item/description"
@@ -24733,6 +26596,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/local-definitions/inventory-item/link/text"
@@ -24755,6 +26624,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/local-definitions/inventory-item/responsible-party/link/text"
@@ -24777,6 +26649,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/local-definitions/inventory-item/implemented-component"
@@ -24837,6 +26712,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/local-definitions/inventory-item/implemented-component/responsible-party/link/text"
@@ -24859,6 +26737,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/local-definitions/user/title"
@@ -24881,6 +26762,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/local-definitions/user/short-name"
@@ -24903,6 +26787,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">short-name</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/local-definitions/user/description"
@@ -24926,6 +26813,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/local-definitions/user/link/text"
@@ -24948,6 +26841,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/local-definitions/user/authorized-privilege/title"
@@ -24970,6 +26866,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/local-definitions/user/authorized-privilege/description"
@@ -24993,6 +26892,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/local-definitions/assessment-assets/component/title"
@@ -25015,6 +26920,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/local-definitions/assessment-assets/component/description"
@@ -25038,6 +26946,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/local-definitions/assessment-assets/component/purpose"
@@ -25060,6 +26974,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">purpose</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/local-definitions/assessment-assets/component/link/text"
@@ -25082,6 +26999,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/local-definitions/assessment-assets/component/status"
@@ -25125,6 +27045,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/local-definitions/assessment-assets/component/protocol/title"
@@ -25147,6 +27070,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/local-definitions/assessment-assets/assessment-platform"
@@ -25208,6 +27134,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/local-definitions/assessment-assets/assessment-platform/link/text"
@@ -25230,6 +27159,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/local-definitions/assessment-assets/assessment-platform/uses-component"
@@ -25290,6 +27222,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/local-definitions/assessment-assets/assessment-platform/uses-component/responsible-party/link/text"
@@ -25312,6 +27247,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/local-definitions//assessment-task/title"
@@ -25334,6 +27272,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/local-definitions//assessment-task/description"
@@ -25357,6 +27298,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/local-definitions//assessment-task/link/text"
@@ -25379,6 +27326,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/local-definitions//assessment-task/timing"
@@ -25550,6 +27500,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/local-definitions//assessment-task/associated-activity/responsible-role/link/text"
@@ -25572,6 +27525,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/local-definitions//assessment-task/associated-activity/subject/description"
@@ -25595,6 +27551,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/local-definitions//assessment-task/associated-activity/subject/link/text"
@@ -25617,6 +27579,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/local-definitions//assessment-task/associated-activity/subject/include-all"
@@ -25659,6 +27624,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/local-definitions//assessment-task/associated-activity/subject/exclude-subject/link/text"
@@ -25681,6 +27649,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/local-definitions//assessment-task/subject/description"
@@ -25704,6 +27675,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/local-definitions//assessment-task/subject/link/text"
@@ -25726,6 +27703,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/local-definitions//assessment-task/subject/include-all"
@@ -25768,6 +27748,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/local-definitions//assessment-task/subject/exclude-subject/link/text"
@@ -25790,6 +27773,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/local-definitions//assessment-task/responsible-role/link/text"
@@ -25812,6 +27798,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/reviewed-controls/description"
@@ -25835,6 +27824,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/reviewed-controls/link/text"
@@ -25857,6 +27852,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/reviewed-controls/control-selection"
@@ -25926,6 +27924,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/reviewed-controls/control-selection/link/text"
@@ -25948,6 +27952,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/reviewed-controls/control-selection/include-all"
@@ -25977,7 +27984,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-assessment-common/reviewed-controls/control-selection/include-control"
                 _metaschema-json-id="/assembly/oscal-assessment-common/reviewed-controls/control-selections/include-controls"
                 name="select-control-by-id"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_assessment-common_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_assessment-common_metaschema.xml"
                 _key-name="oscal-assessment-common:select-control-by-id"
                 _step="include-control"
                 _key="include-controls"
@@ -26011,7 +28018,11 @@
              _in-xml-name="statement-id"
              _in-json-name="statement-ids"
              gi="statement-id"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="token" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/reviewed-controls/control-selection/exclude-control"
                  priority="9"
@@ -26020,7 +28031,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-assessment-common/reviewed-controls/control-selection/exclude-control"
                 _metaschema-json-id="/assembly/oscal-assessment-common/reviewed-controls/control-selections/exclude-controls"
                 name="select-control-by-id"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_assessment-common_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_assessment-common_metaschema.xml"
                 _key-name="oscal-assessment-common:select-control-by-id"
                 _step="exclude-control"
                 _key="exclude-controls"
@@ -26054,7 +28065,11 @@
              _in-xml-name="statement-id"
              _in-json-name="statement-ids"
              gi="statement-id"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="token" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/reviewed-controls/control-objective-selection"
                  priority="7"
@@ -26123,6 +28138,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/reviewed-controls/control-objective-selection/link/text"
@@ -26145,6 +28166,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/reviewed-controls/control-objective-selection/include-all"
@@ -26216,6 +28240,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/attestation//part/title"
@@ -26238,28 +28265,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
-      </field>
-   </xsl:template>
-   <xsl:template match="assessment-results/result/attestation//part"
-                 priority="9"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field _step="p ul ol pre table h1 h2 h3 h4 h5 h6"
-             _key="prose"
-             _metaschema-xml-id="/assembly/oscal-assessment-common/assessment-part/p ul ol pre table h1 h2 h3 h4 h5 h6"
-             _metaschema-json-id="/assembly/oscal-assessment-common/assessment-part/prose"
-             in-xml="UNWRAPPED"
-             collapsible="no"
-             as-type="markup-multiline"
-             name="prose"
-             key="prose"
-             _using-name="prose"
-             _in-xml-name="p ul ol pre table h1 h2 h3 h4 h5 h6"
-             _in-json-name="prose"
-             in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">prose</xsl:attribute>
-         </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/attestation//part/link/text"
@@ -26282,6 +28290,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/assessment-log"
@@ -26379,6 +28390,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/assessment-log/entry/description"
@@ -26402,6 +28416,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/assessment-log/entry/start"
@@ -26424,6 +28444,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">start</xsl:attribute>
          </xsl:if>
+         <value as-type="dateTime-with-timezone" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/assessment-log/entry/end"
@@ -26446,6 +28469,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">end</xsl:attribute>
          </xsl:if>
+         <value as-type="dateTime-with-timezone" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/assessment-log/entry/link/text"
@@ -26468,6 +28494,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/assessment-log/entry/related-task/link/text"
@@ -26490,6 +28519,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/assessment-log/entry/related-task/responsible-party/link/text"
@@ -26512,6 +28544,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/assessment-log/entry/related-task/subject/description"
@@ -26535,6 +28570,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/assessment-log/entry/related-task/subject/link/text"
@@ -26557,6 +28598,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/assessment-log/entry/related-task/subject/include-all"
@@ -26599,6 +28643,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/assessment-log/entry/related-task/subject/exclude-subject/link/text"
@@ -26621,6 +28668,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/assessment-log/entry/related-task/identified-subject"
@@ -26671,6 +28721,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/assessment-log/entry/related-task/identified-subject/subject/link/text"
@@ -26693,6 +28749,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/assessment-log/entry/related-task/identified-subject/subject/include-all"
@@ -26735,6 +28794,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/assessment-log/entry/related-task/identified-subject/subject/exclude-subject/link/text"
@@ -26757,6 +28819,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/observation/title"
@@ -26779,6 +28844,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/observation/description"
@@ -26802,6 +28870,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/observation/link/text"
@@ -26824,6 +28898,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/observation/method"
@@ -26841,7 +28918,11 @@
              _in-xml-name="method"
              _in-json-name="methods"
              gi="method"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/observation/type"
                  priority="8"
@@ -26858,7 +28939,11 @@
              _in-xml-name="type"
              _in-json-name="types"
              gi="type"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="token" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/observation/origin/actor/link/text"
                  priority="13"
@@ -26880,6 +28965,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/observation/origin/related-task/link/text"
@@ -26902,6 +28990,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/observation/origin/related-task/responsible-party/link/text"
@@ -26924,6 +29015,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/observation/origin/related-task/subject/description"
@@ -26947,6 +29041,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/observation/origin/related-task/subject/link/text"
@@ -26969,6 +29069,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/observation/origin/related-task/subject/include-all"
@@ -27011,6 +29114,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/observation/origin/related-task/subject/exclude-subject/link/text"
@@ -27033,6 +29139,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/observation/origin/related-task/identified-subject"
@@ -27083,6 +29192,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/observation/origin/related-task/identified-subject/subject/link/text"
@@ -27105,6 +29220,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/observation/origin/related-task/identified-subject/subject/include-all"
@@ -27147,6 +29265,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/observation/origin/related-task/identified-subject/subject/exclude-subject/link/text"
@@ -27169,6 +29290,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/observation/subject"
@@ -27178,7 +29302,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-assessment-common/observation/subject"
                 _metaschema-json-id="/assembly/oscal-assessment-common/observation/subjects"
                 name="subject-reference"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_assessment-common_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_assessment-common_metaschema.xml"
                 _key-name="oscal-assessment-common:subject-reference"
                 _step="subject"
                 _key="subjects"
@@ -27227,6 +29351,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/observation/subject/link/text"
@@ -27249,6 +29376,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/observation/relevant-evidence"
@@ -27304,6 +29434,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/observation/relevant-evidence/link/text"
@@ -27326,6 +29462,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/observation/collected"
@@ -27348,6 +29487,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">collected</xsl:attribute>
          </xsl:if>
+         <value as-type="dateTime-with-timezone" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/observation/expires"
@@ -27370,6 +29512,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">expires</xsl:attribute>
          </xsl:if>
+         <value as-type="dateTime-with-timezone" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/title"
@@ -27392,6 +29537,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/description"
@@ -27415,6 +29563,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/statement"
@@ -27438,6 +29592,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">statement</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/link/text"
@@ -27460,6 +29620,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/status"
@@ -27482,6 +29645,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">status</xsl:attribute>
          </xsl:if>
+         <value as-type="token" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/origin/actor/link/text"
@@ -27504,6 +29670,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/origin/related-task/link/text"
@@ -27526,6 +29695,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/origin/related-task/responsible-party/link/text"
@@ -27548,6 +29720,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/origin/related-task/subject/description"
@@ -27571,6 +29746,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/origin/related-task/subject/link/text"
@@ -27593,6 +29774,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/origin/related-task/subject/include-all"
@@ -27635,6 +29819,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/origin/related-task/subject/exclude-subject/link/text"
@@ -27657,6 +29844,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/origin/related-task/identified-subject"
@@ -27707,6 +29897,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/origin/related-task/identified-subject/subject/link/text"
@@ -27729,6 +29925,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/origin/related-task/identified-subject/subject/include-all"
@@ -27771,6 +29970,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/origin/related-task/identified-subject/subject/exclude-subject/link/text"
@@ -27793,6 +29995,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/characterization/link/text"
@@ -27815,6 +30020,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/characterization/origin/actor/link/text"
@@ -27837,6 +30045,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/characterization/origin/related-task/link/text"
@@ -27859,6 +30070,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/characterization/origin/related-task/responsible-party/link/text"
@@ -27881,6 +30095,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/characterization/origin/related-task/subject/description"
@@ -27904,6 +30121,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/characterization/origin/related-task/subject/link/text"
@@ -27926,6 +30149,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/characterization/origin/related-task/subject/include-all"
@@ -27968,6 +30194,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/characterization/origin/related-task/subject/exclude-subject/link/text"
@@ -27990,6 +30219,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/characterization/origin/related-task/identified-subject"
@@ -28040,6 +30272,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/characterization/origin/related-task/identified-subject/subject/link/text"
@@ -28062,6 +30300,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/characterization/origin/related-task/identified-subject/subject/include-all"
@@ -28104,6 +30345,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/characterization/origin/related-task/identified-subject/subject/exclude-subject/link/text"
@@ -28126,6 +30370,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/characterization/facet"
@@ -28181,6 +30428,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/mitigating-factor"
@@ -28243,6 +30493,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/mitigating-factor/link/text"
@@ -28265,6 +30521,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/mitigating-factor/subject"
@@ -28274,7 +30533,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-assessment-common/risk/mitigating-factor/subject"
                 _metaschema-json-id="/assembly/oscal-assessment-common/risk/mitigating-factors/subjects"
                 name="subject-reference"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_assessment-common_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_assessment-common_metaschema.xml"
                 _key-name="oscal-assessment-common:subject-reference"
                 _step="subject"
                 _key="subjects"
@@ -28323,6 +30582,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/mitigating-factor/subject/link/text"
@@ -28345,6 +30607,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/deadline"
@@ -28367,6 +30632,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">deadline</xsl:attribute>
          </xsl:if>
+         <value as-type="dateTime-with-timezone" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/response"
@@ -28376,7 +30644,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-assessment-common/risk/response"
                 _metaschema-json-id="/assembly/oscal-assessment-common/risk/remediations"
                 name="response"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_assessment-common_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_assessment-common_metaschema.xml"
                 _key-name="oscal-assessment-common:response"
                 _step="response"
                 _key="remediations"
@@ -28447,6 +30715,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/response/description"
@@ -28470,6 +30741,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/response/link/text"
@@ -28492,6 +30769,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/response/origin/actor/link/text"
@@ -28514,6 +30794,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/response/origin/related-task/link/text"
@@ -28536,6 +30819,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/response/origin/related-task/responsible-party/link/text"
@@ -28558,6 +30844,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/response/origin/related-task/subject/description"
@@ -28581,6 +30870,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/response/origin/related-task/subject/link/text"
@@ -28603,6 +30898,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/response/origin/related-task/subject/include-all"
@@ -28645,6 +30943,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/response/origin/related-task/subject/exclude-subject/link/text"
@@ -28667,6 +30968,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/response/origin/related-task/identified-subject"
@@ -28717,6 +31021,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/response/origin/related-task/identified-subject/subject/link/text"
@@ -28739,6 +31049,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/response/origin/related-task/identified-subject/subject/include-all"
@@ -28781,6 +31094,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/response/origin/related-task/identified-subject/subject/exclude-subject/link/text"
@@ -28803,6 +31119,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/response/required-asset"
@@ -28852,7 +31171,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-assessment-common/response/required-asset/subject"
                 _metaschema-json-id="/assembly/oscal-assessment-common/response/required-assets/subjects"
                 name="subject-reference"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_assessment-common_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_assessment-common_metaschema.xml"
                 _key-name="oscal-assessment-common:subject-reference"
                 _step="subject"
                 _key="subjects"
@@ -28901,6 +31220,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/response/required-asset/subject/link/text"
@@ -28923,6 +31245,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/response/required-asset/title"
@@ -28945,6 +31270,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/response/required-asset/description"
@@ -28968,6 +31296,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/response/required-asset/link/text"
@@ -28990,6 +31324,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/response//task/title"
@@ -29012,6 +31349,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/response//task/description"
@@ -29035,6 +31375,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/response//task/link/text"
@@ -29057,6 +31403,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/response//task/timing"
@@ -29228,6 +31577,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/response//task/associated-activity/responsible-role/link/text"
@@ -29250,6 +31602,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/response//task/associated-activity/subject/description"
@@ -29273,6 +31628,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/response//task/associated-activity/subject/link/text"
@@ -29295,6 +31656,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/response//task/associated-activity/subject/include-all"
@@ -29337,6 +31701,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/response//task/associated-activity/subject/exclude-subject/link/text"
@@ -29359,6 +31726,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/response//task/subject/description"
@@ -29382,6 +31752,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/response//task/subject/link/text"
@@ -29404,6 +31780,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/response//task/subject/include-all"
@@ -29446,6 +31825,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/response//task/subject/exclude-subject/link/text"
@@ -29468,6 +31850,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/response//task/responsible-role/link/text"
@@ -29490,6 +31875,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/risk-log"
@@ -29588,6 +31976,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/risk-log/entry/description"
@@ -29611,6 +32002,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/risk-log/entry/start"
@@ -29633,6 +32030,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">start</xsl:attribute>
          </xsl:if>
+         <value as-type="dateTime-with-timezone" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/risk-log/entry/end"
@@ -29655,6 +32055,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">end</xsl:attribute>
          </xsl:if>
+         <value as-type="dateTime-with-timezone" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/risk-log/entry/link/text"
@@ -29677,6 +32080,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/risk-log/entry/related-response"
@@ -29737,6 +32143,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/risk-log/entry/related-response/related-task/link/text"
@@ -29759,6 +32168,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/risk-log/entry/related-response/related-task/responsible-party/link/text"
@@ -29781,6 +32193,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/risk-log/entry/related-response/related-task/subject/description"
@@ -29804,6 +32219,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/risk-log/entry/related-response/related-task/subject/link/text"
@@ -29826,6 +32247,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/risk-log/entry/related-response/related-task/subject/include-all"
@@ -29868,6 +32292,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/risk-log/entry/related-response/related-task/subject/exclude-subject/link/text"
@@ -29890,6 +32317,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/risk-log/entry/related-response/related-task/identified-subject"
@@ -29940,6 +32370,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/risk-log/entry/related-response/related-task/identified-subject/subject/link/text"
@@ -29962,6 +32398,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/risk-log/entry/related-response/related-task/identified-subject/subject/include-all"
@@ -30004,6 +32443,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/risk-log/entry/related-response/related-task/identified-subject/subject/exclude-subject/link/text"
@@ -30026,6 +32468,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/related-observation"
@@ -30065,6 +32510,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/finding/description"
@@ -30088,6 +32536,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/finding/link/text"
@@ -30110,6 +32564,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/finding/origin/actor/link/text"
@@ -30132,6 +32589,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/finding/origin/related-task/link/text"
@@ -30154,6 +32614,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/finding/origin/related-task/responsible-party/link/text"
@@ -30176,6 +32639,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/finding/origin/related-task/subject/description"
@@ -30199,6 +32665,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/finding/origin/related-task/subject/link/text"
@@ -30221,6 +32693,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/finding/origin/related-task/subject/include-all"
@@ -30263,6 +32738,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/finding/origin/related-task/subject/exclude-subject/link/text"
@@ -30285,6 +32763,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/finding/origin/related-task/identified-subject"
@@ -30335,6 +32816,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/finding/origin/related-task/identified-subject/subject/link/text"
@@ -30357,6 +32844,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/finding/origin/related-task/identified-subject/subject/include-all"
@@ -30399,6 +32889,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/finding/origin/related-task/identified-subject/subject/exclude-subject/link/text"
@@ -30421,6 +32914,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/finding/target/title"
@@ -30443,6 +32939,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/finding/target/description"
@@ -30466,6 +32965,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/finding/target/link/text"
@@ -30488,51 +32993,32 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/finding/target/status"
                  priority="8"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
-      <field _step="status"
-             _key="status"
-             _metaschema-xml-id="/assembly/oscal-assessment-common/finding-target/status"
-             _metaschema-json-id="/assembly/oscal-assessment-common/finding-target/status"
-             collapsible="no"
-             as-type="token"
-             name="status"
-             key="status"
-             _using-name="status"
-             _in-xml-name="status"
-             _in-json-name="status"
-             gi="status"
-             in-json="SCALAR">
+      <assembly _step="status"
+                _key="status"
+                _metaschema-xml-id="/assembly/oscal-assessment-common/finding-target/status"
+                _metaschema-json-id="/assembly/oscal-assessment-common/finding-target/status"
+                name="status"
+                key="status"
+                _using-name="status"
+                _in-xml-name="status"
+                _in-json-name="status"
+                gi="status">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">status</xsl:attribute>
          </xsl:if>
-      </field>
-   </xsl:template>
-   <xsl:template match="assessment-results/result/finding/target/reason"
-                 priority="8"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field _step="reason"
-             _key="reason"
-             _metaschema-xml-id="/assembly/oscal-assessment-common/finding-target/reason"
-             _metaschema-json-id="/assembly/oscal-assessment-common/finding-target/reason"
-             collapsible="no"
-             as-type="NCName"
-             name="reason"
-             key="reason"
-             _using-name="reason"
-             _in-xml-name="reason"
-             _in-json-name="reason"
-             gi="reason"
-             in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">reason</xsl:attribute>
-         </xsl:if>
-      </field>
+         <xsl:apply-templates select="@state"/>
+         <xsl:apply-templates select="@reason"/>
+         <xsl:apply-templates select="remarks"/>
+      </assembly>
    </xsl:template>
    <xsl:template match="assessment-results/result/finding/implementation-statement-uuid"
                  priority="7"
@@ -30554,6 +33040,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">implementation-statement-uuid</xsl:attribute>
          </xsl:if>
+         <value as-type="uuid" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/result/finding/related-observation"
@@ -30652,6 +33141,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/back-matter/resource/description"
@@ -30675,6 +33167,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/back-matter/resource/document-id"
@@ -30686,7 +33184,7 @@
              collapsible="no"
              as-type="string"
              name="document-id"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:document-id"
              _step="document-id"
              _key="document-ids"
@@ -30755,6 +33253,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/back-matter/resource/citation/link/text"
@@ -30777,6 +33278,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="assessment-results/back-matter/resource/rlink"
@@ -30849,6 +33353,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/metadata/published"
@@ -30861,7 +33368,7 @@
              as-type="dateTime-with-timezone"
              name="published"
              key="published"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:published"
              _step="published"
              _key="published"
@@ -30874,6 +33381,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">published</xsl:attribute>
          </xsl:if>
+         <value as-type="dateTime-with-timezone" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/metadata/last-modified"
@@ -30886,7 +33396,7 @@
              as-type="dateTime-with-timezone"
              name="last-modified"
              key="last-modified"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:last-modified"
              _step="last-modified"
              _key="last-modified"
@@ -30899,6 +33409,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">last-modified</xsl:attribute>
          </xsl:if>
+         <value as-type="dateTime-with-timezone" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/metadata/version"
@@ -30911,7 +33424,7 @@
              as-type="string"
              name="version"
              key="version"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:version"
              _step="version"
              _key="version"
@@ -30924,6 +33437,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">version</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/metadata/oscal-version"
@@ -30936,7 +33452,7 @@
              as-type="string"
              name="oscal-version"
              key="oscal-version"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:oscal-version"
              _step="oscal-version"
              _key="oscal-version"
@@ -30949,6 +33465,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">oscal-version</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/metadata/revisions/revision"
@@ -30958,7 +33477,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-metadata/metadata/revisions/revision"
                 _metaschema-json-id="/assembly/oscal-metadata/metadata/revisions"
                 name="revision"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
                 _key-name="oscal-metadata:revision"
                 _step="revisions/revision"
                 _key="revisions"
@@ -30998,7 +33517,7 @@
              group-json="ARRAY"
              name="revision"
              key="revisions"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:revision"
              _key-ref="oscal-metadata:revision">
          <xsl:if test="$with-key">
@@ -31027,6 +33546,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/metadata/revisions/revision/published"
@@ -31039,7 +33561,7 @@
              as-type="dateTime-with-timezone"
              name="published"
              key="published"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:published"
              _step="published"
              _key="published"
@@ -31052,6 +33574,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">published</xsl:attribute>
          </xsl:if>
+         <value as-type="dateTime-with-timezone" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/metadata/revisions/revision/last-modified"
@@ -31064,7 +33589,7 @@
              as-type="dateTime-with-timezone"
              name="last-modified"
              key="last-modified"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:last-modified"
              _step="last-modified"
              _key="last-modified"
@@ -31077,6 +33602,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">last-modified</xsl:attribute>
          </xsl:if>
+         <value as-type="dateTime-with-timezone" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/metadata/revisions/revision/version"
@@ -31089,7 +33617,7 @@
              as-type="string"
              name="version"
              key="version"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:version"
              _step="version"
              _key="version"
@@ -31102,6 +33630,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">version</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/metadata/revisions/revision/oscal-version"
@@ -31114,7 +33645,7 @@
              as-type="string"
              name="oscal-version"
              key="oscal-version"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:oscal-version"
              _step="oscal-version"
              _key="oscal-version"
@@ -31127,6 +33658,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">oscal-version</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/metadata/revisions/revision/link/text"
@@ -31149,6 +33683,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/metadata/document-id"
@@ -31160,7 +33697,7 @@
              collapsible="no"
              as-type="string"
              name="document-id"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:document-id"
              _step="document-id"
              _key="document-ids"
@@ -31195,6 +33732,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/metadata/role/title"
@@ -31217,6 +33757,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/metadata/role/short-name"
@@ -31239,6 +33782,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">short-name</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/metadata/role/description"
@@ -31262,6 +33808,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/metadata/role/link/text"
@@ -31284,6 +33836,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/metadata/location/title"
@@ -31306,6 +33861,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/metadata/location/address"
@@ -31316,7 +33874,7 @@
                 _metaschema-json-id="/assembly/oscal-metadata/location/address"
                 name="address"
                 key="address"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
                 _key-name="oscal-metadata:address"
                 _step="address"
                 _key="address"
@@ -31351,7 +33909,7 @@
              collapsible="no"
              as-type="string"
              name="addr-line"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:addr-line"
              _step="addr-line"
              _key="addr-lines"
@@ -31360,7 +33918,11 @@
              _in-xml-name="addr-line"
              _in-json-name="addr-lines"
              gi="addr-line"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/metadata/location/address/city"
                  priority="7"
@@ -31382,6 +33944,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">city</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/metadata/location/address/state"
@@ -31404,6 +33969,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">state</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/metadata/location/address/postal-code"
@@ -31426,6 +33994,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">postal-code</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/metadata/location/address/country"
@@ -31448,6 +34019,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">country</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/metadata/location/email-address"
@@ -31459,7 +34033,7 @@
              collapsible="no"
              as-type="email"
              name="email-address"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:email-address"
              _step="email-address"
              _key="email-addresses"
@@ -31468,7 +34042,11 @@
              _in-xml-name="email-address"
              _in-json-name="email-addresses"
              gi="email-address"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="email" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/metadata/location/telephone-number"
                  priority="7"
@@ -31479,7 +34057,7 @@
              collapsible="no"
              as-type="string"
              name="telephone-number"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:telephone-number"
              _step="telephone-number"
              _key="telephone-numbers"
@@ -31509,7 +34087,11 @@
              _in-xml-name="url"
              _in-json-name="urls"
              gi="url"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="uri" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/metadata/location/link/text"
                  priority="8"
@@ -31531,6 +34113,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/metadata/party/name"
@@ -31553,6 +34138,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">name</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/metadata/party/short-name"
@@ -31575,6 +34163,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">short-name</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/metadata/party/external-id"
@@ -31618,6 +34209,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/metadata/party/email-address"
@@ -31629,7 +34223,7 @@
              collapsible="no"
              as-type="email"
              name="email-address"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:email-address"
              _step="email-address"
              _key="email-addresses"
@@ -31638,7 +34232,11 @@
              _in-xml-name="email-address"
              _in-json-name="email-addresses"
              gi="email-address"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="email" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/metadata/party/telephone-number"
                  priority="7"
@@ -31649,7 +34247,7 @@
              collapsible="no"
              as-type="string"
              name="telephone-number"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:telephone-number"
              _step="telephone-number"
              _key="telephone-numbers"
@@ -31671,7 +34269,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-metadata/party/address"
                 _metaschema-json-id="/assembly/oscal-metadata/party/addresses"
                 name="address"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
                 _key-name="oscal-metadata:address"
                 _step="address"
                 _key="addresses"
@@ -31703,7 +34301,7 @@
              collapsible="no"
              as-type="string"
              name="addr-line"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:addr-line"
              _step="addr-line"
              _key="addr-lines"
@@ -31712,7 +34310,11 @@
              _in-xml-name="addr-line"
              _in-json-name="addr-lines"
              gi="addr-line"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/metadata/party/address/city"
                  priority="9"
@@ -31734,6 +34336,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">city</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/metadata/party/address/state"
@@ -31756,6 +34361,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">state</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/metadata/party/address/postal-code"
@@ -31778,6 +34386,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">postal-code</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/metadata/party/address/country"
@@ -31800,6 +34411,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">country</xsl:attribute>
          </xsl:if>
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/metadata/party/member-of-organization"
@@ -31817,7 +34431,11 @@
              _in-xml-name="member-of-organization"
              _in-json-name="member-of-organizations"
              gi="member-of-organization"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="uuid" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/metadata/responsible-party/link/text"
                  priority="8"
@@ -31839,6 +34457,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/local-definitions/component/title"
@@ -31861,6 +34482,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/local-definitions/component/description"
@@ -31884,6 +34508,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/local-definitions/component/purpose"
@@ -31906,6 +34536,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">purpose</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/local-definitions/component/link/text"
@@ -31928,6 +34561,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/local-definitions/component/status"
@@ -31971,6 +34607,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/local-definitions/component/protocol/title"
@@ -31993,6 +34632,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/local-definitions/inventory-item/description"
@@ -32016,6 +34658,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/local-definitions/inventory-item/link/text"
@@ -32038,6 +34686,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/local-definitions/inventory-item/responsible-party/link/text"
@@ -32060,6 +34711,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/local-definitions/inventory-item/implemented-component"
@@ -32120,6 +34774,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/local-definitions/inventory-item/implemented-component/responsible-party/link/text"
@@ -32142,6 +34799,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/observation/title"
@@ -32164,6 +34824,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/observation/description"
@@ -32187,6 +34850,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/observation/link/text"
@@ -32209,6 +34878,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/observation/method"
@@ -32226,7 +34898,11 @@
              _in-xml-name="method"
              _in-json-name="methods"
              gi="method"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/observation/type"
                  priority="6"
@@ -32243,7 +34919,11 @@
              _in-xml-name="type"
              _in-json-name="types"
              gi="type"
-             in-json="SCALAR"/>
+             in-json="SCALAR">
+         <value as-type="token" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/observation/origin/actor/link/text"
                  priority="11"
@@ -32265,6 +34945,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/observation/origin/related-task/link/text"
@@ -32287,6 +34970,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/observation/origin/related-task/responsible-party/link/text"
@@ -32309,6 +34995,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/observation/origin/related-task/subject/description"
@@ -32332,6 +35021,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/observation/origin/related-task/subject/link/text"
@@ -32354,6 +35049,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/observation/origin/related-task/subject/include-all"
@@ -32396,6 +35094,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/observation/origin/related-task/subject/exclude-subject/link/text"
@@ -32418,6 +35119,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/observation/origin/related-task/identified-subject"
@@ -32468,6 +35172,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/observation/origin/related-task/identified-subject/subject/link/text"
@@ -32490,6 +35200,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/observation/origin/related-task/identified-subject/subject/include-all"
@@ -32532,6 +35245,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/observation/origin/related-task/identified-subject/subject/exclude-subject/link/text"
@@ -32554,6 +35270,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/observation/subject"
@@ -32563,7 +35282,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-assessment-common/observation/subject"
                 _metaschema-json-id="/assembly/oscal-assessment-common/observation/subjects"
                 name="subject-reference"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_assessment-common_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_assessment-common_metaschema.xml"
                 _key-name="oscal-assessment-common:subject-reference"
                 _step="subject"
                 _key="subjects"
@@ -32612,6 +35331,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/observation/subject/link/text"
@@ -32634,6 +35356,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/observation/relevant-evidence"
@@ -32689,6 +35414,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/observation/relevant-evidence/link/text"
@@ -32711,6 +35442,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/observation/collected"
@@ -32733,6 +35467,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">collected</xsl:attribute>
          </xsl:if>
+         <value as-type="dateTime-with-timezone" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/observation/expires"
@@ -32755,6 +35492,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">expires</xsl:attribute>
          </xsl:if>
+         <value as-type="dateTime-with-timezone" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/title"
@@ -32777,6 +35517,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/description"
@@ -32800,6 +35543,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/statement"
@@ -32823,6 +35572,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">statement</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/link/text"
@@ -32845,6 +35600,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/status"
@@ -32867,6 +35625,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">status</xsl:attribute>
          </xsl:if>
+         <value as-type="token" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/origin/actor/link/text"
@@ -32889,6 +35650,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/origin/related-task/link/text"
@@ -32911,6 +35675,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/origin/related-task/responsible-party/link/text"
@@ -32933,6 +35700,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/origin/related-task/subject/description"
@@ -32956,6 +35726,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/origin/related-task/subject/link/text"
@@ -32978,6 +35754,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/origin/related-task/subject/include-all"
@@ -33020,6 +35799,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/origin/related-task/subject/exclude-subject/link/text"
@@ -33042,6 +35824,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/origin/related-task/identified-subject"
@@ -33092,6 +35877,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/origin/related-task/identified-subject/subject/link/text"
@@ -33114,6 +35905,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/origin/related-task/identified-subject/subject/include-all"
@@ -33156,6 +35950,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/origin/related-task/identified-subject/subject/exclude-subject/link/text"
@@ -33178,6 +35975,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/characterization/link/text"
@@ -33200,6 +36000,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/characterization/origin/actor/link/text"
@@ -33222,6 +36025,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/characterization/origin/related-task/link/text"
@@ -33244,6 +36050,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/characterization/origin/related-task/responsible-party/link/text"
@@ -33266,6 +36075,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/characterization/origin/related-task/subject/description"
@@ -33289,6 +36101,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/characterization/origin/related-task/subject/link/text"
@@ -33311,6 +36129,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/characterization/origin/related-task/subject/include-all"
@@ -33353,6 +36174,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/characterization/origin/related-task/subject/exclude-subject/link/text"
@@ -33375,6 +36199,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/characterization/origin/related-task/identified-subject"
@@ -33425,6 +36252,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/characterization/origin/related-task/identified-subject/subject/link/text"
@@ -33447,6 +36280,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/characterization/origin/related-task/identified-subject/subject/include-all"
@@ -33489,6 +36325,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/characterization/origin/related-task/identified-subject/subject/exclude-subject/link/text"
@@ -33511,6 +36350,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/characterization/facet"
@@ -33566,6 +36408,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/mitigating-factor"
@@ -33628,6 +36473,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/mitigating-factor/link/text"
@@ -33650,6 +36501,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/mitigating-factor/subject"
@@ -33659,7 +36513,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-assessment-common/risk/mitigating-factor/subject"
                 _metaschema-json-id="/assembly/oscal-assessment-common/risk/mitigating-factors/subjects"
                 name="subject-reference"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_assessment-common_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_assessment-common_metaschema.xml"
                 _key-name="oscal-assessment-common:subject-reference"
                 _step="subject"
                 _key="subjects"
@@ -33708,6 +36562,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/mitigating-factor/subject/link/text"
@@ -33730,6 +36587,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/deadline"
@@ -33752,6 +36612,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">deadline</xsl:attribute>
          </xsl:if>
+         <value as-type="dateTime-with-timezone" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/response"
@@ -33761,7 +36624,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-assessment-common/risk/response"
                 _metaschema-json-id="/assembly/oscal-assessment-common/risk/remediations"
                 name="response"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_assessment-common_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_assessment-common_metaschema.xml"
                 _key-name="oscal-assessment-common:response"
                 _step="response"
                 _key="remediations"
@@ -33832,6 +36695,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/response/description"
@@ -33855,6 +36721,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/response/link/text"
@@ -33877,6 +36749,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/response/origin/actor/link/text"
@@ -33899,6 +36774,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/response/origin/related-task/link/text"
@@ -33921,6 +36799,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/response/origin/related-task/responsible-party/link/text"
@@ -33943,6 +36824,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/response/origin/related-task/subject/description"
@@ -33966,6 +36850,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/response/origin/related-task/subject/link/text"
@@ -33988,6 +36878,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/response/origin/related-task/subject/include-all"
@@ -34030,6 +36923,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/response/origin/related-task/subject/exclude-subject/link/text"
@@ -34052,6 +36948,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/response/origin/related-task/identified-subject"
@@ -34102,6 +37001,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/response/origin/related-task/identified-subject/subject/link/text"
@@ -34124,6 +37029,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/response/origin/related-task/identified-subject/subject/include-all"
@@ -34166,6 +37074,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/response/origin/related-task/identified-subject/subject/exclude-subject/link/text"
@@ -34188,6 +37099,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/response/required-asset"
@@ -34237,7 +37151,7 @@
       <assembly _metaschema-xml-id="/assembly/oscal-assessment-common/response/required-asset/subject"
                 _metaschema-json-id="/assembly/oscal-assessment-common/response/required-assets/subjects"
                 name="subject-reference"
-                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_assessment-common_metaschema.xml"
+                _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_assessment-common_metaschema.xml"
                 _key-name="oscal-assessment-common:subject-reference"
                 _step="subject"
                 _key="subjects"
@@ -34286,6 +37200,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/response/required-asset/subject/link/text"
@@ -34308,6 +37225,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/response/required-asset/title"
@@ -34330,6 +37250,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/response/required-asset/description"
@@ -34353,6 +37276,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/response/required-asset/link/text"
@@ -34375,6 +37304,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/response//task/title"
@@ -34397,6 +37329,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/response//task/description"
@@ -34420,6 +37355,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/response//task/link/text"
@@ -34442,6 +37383,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/response//task/timing"
@@ -34613,6 +37557,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/response//task/associated-activity/responsible-role/link/text"
@@ -34635,6 +37582,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/response//task/associated-activity/subject/description"
@@ -34658,6 +37608,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/response//task/associated-activity/subject/link/text"
@@ -34680,6 +37636,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/response//task/associated-activity/subject/include-all"
@@ -34722,6 +37681,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/response//task/associated-activity/subject/exclude-subject/link/text"
@@ -34744,6 +37706,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/response//task/subject/description"
@@ -34767,6 +37732,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/response//task/subject/link/text"
@@ -34789,6 +37760,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/response//task/subject/include-all"
@@ -34831,6 +37805,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/response//task/subject/exclude-subject/link/text"
@@ -34853,6 +37830,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/response//task/responsible-role/link/text"
@@ -34875,6 +37855,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/risk-log"
@@ -34973,6 +37956,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/risk-log/entry/description"
@@ -34996,6 +37982,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/risk-log/entry/start"
@@ -35018,6 +38010,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">start</xsl:attribute>
          </xsl:if>
+         <value as-type="dateTime-with-timezone" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/risk-log/entry/end"
@@ -35040,6 +38035,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">end</xsl:attribute>
          </xsl:if>
+         <value as-type="dateTime-with-timezone" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/risk-log/entry/link/text"
@@ -35062,6 +38060,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/risk-log/entry/related-response"
@@ -35122,6 +38123,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/risk-log/entry/related-response/related-task/link/text"
@@ -35144,6 +38148,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/risk-log/entry/related-response/related-task/responsible-party/link/text"
@@ -35166,6 +38173,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/risk-log/entry/related-response/related-task/subject/description"
@@ -35189,6 +38199,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/risk-log/entry/related-response/related-task/subject/link/text"
@@ -35211,6 +38227,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/risk-log/entry/related-response/related-task/subject/include-all"
@@ -35253,6 +38272,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/risk-log/entry/related-response/related-task/subject/exclude-subject/link/text"
@@ -35275,6 +38297,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/risk-log/entry/related-response/related-task/identified-subject"
@@ -35325,6 +38350,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/risk-log/entry/related-response/related-task/identified-subject/subject/link/text"
@@ -35347,6 +38378,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/risk-log/entry/related-response/related-task/identified-subject/subject/include-all"
@@ -35389,6 +38423,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/risk-log/entry/related-response/related-task/identified-subject/subject/exclude-subject/link/text"
@@ -35411,6 +38448,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/related-observation"
@@ -35450,6 +38490,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/poam-item/description"
@@ -35473,6 +38516,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/poam-item/link/text"
@@ -35495,6 +38544,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/poam-item/origin"
@@ -35539,6 +38591,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/poam-item/related-observation"
@@ -35637,6 +38692,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/back-matter/resource/description"
@@ -35660,6 +38718,12 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-multiline" in-json="string">
+            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                                group-by="true()">
+               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
+            </xsl:for-each-group>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/back-matter/resource/document-id"
@@ -35671,7 +38735,7 @@
              collapsible="no"
              as-type="string"
              name="document-id"
-             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/oscal-content/oscal/src/metaschema/oscal_metadata_metaschema.xml"
+             _base-uri="file:/mnt/c/Users/davidwal/git/github/david-waltermire-nist/OSCAL/src/metaschema/oscal_metadata_metaschema.xml"
              _key-name="oscal-metadata:document-id"
              _step="document-id"
              _key="document-ids"
@@ -35740,6 +38804,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/back-matter/resource/citation/link/text"
@@ -35762,6 +38829,9 @@
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
          </xsl:if>
+         <value as-type="markup-line" in-json="string">
+            <xsl:apply-templates mode="cast-prose"/>
+         </value>
       </field>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/back-matter/resource/rlink"
@@ -35813,6 +38883,15 @@
             <xsl:value-of select="."/>
          </value>
       </field>
+   </xsl:template>
+   <xsl:template match="*"
+                 mode="cast-prose"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:element name="{ local-name() }"
+                   namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
+         <xsl:copy-of select="@*"/>
+         <xsl:apply-templates mode="#current"/>
+      </xsl:element>
    </xsl:template>
    <!-- XML to JSON conversion: Supermodel serialization as JSON
         including markdown production -->
