@@ -37,7 +37,7 @@ The following image depicts each layer and the corresponding model(s) for each l
   {{<area alt="Control Layer" title="Control Layer" href="control/" coords="0,300,896,400" shape="rect">}}
 {{</imagemap>}}
 
-Each OSCAL model is represented in multiple, machine readable *formats* (e.g., XML, JSON, YAML), which provide a serialization and encoding mechanism for representing and exchanging OSCAL data, also referred to as *OSCAL content*.
+Each OSCAL model is represented in multiple, machine-readable *formats* (e.g., XML, JSON, YAML), which provide a serialization and encoding mechanism for representing and exchanging OSCAL data, also referred to as *OSCAL content*.
 
 Individual layers are summarized below, with links to additional layer and model information. There is also an [introduction to the OSCAL models](overview/), as well as information related to the [terminology](../terminology/) used in describing each model.
 

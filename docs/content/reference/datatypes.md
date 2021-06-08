@@ -337,11 +337,11 @@ Note that elements such as `div`, `blockquote`, `section` or `aside`, used in HT
 
 In addition, there are contexts in OSCAL where prose usage may be further constrained. For example, at a higher level (outside the base schema) an OSCAL application could forbid the use of prose headers `h1-h6` in favor of nested OSCAL `part` elements with their own titles.
 
-The OSCAL Markdown syntax is loosely based on CommonMark. When in doubt about Markdown features and syntax, we look to CommonMark for guidance, largely because it is more rigorously tested than many others forms of Markdown.
+The OSCAL Markdown syntax is loosely based on CommonMark. When in doubt about Markdown features and syntax, we look to CommonMark for guidance, largely because it is more rigorously tested than many other forms of Markdown.
 
 ### markup-line
 
-The following table describes the equavalent constructs in HTML and Markdown used in OSCAL within the `markup-line` data type.
+The following table describes the equivalent constructs in HTML and Markdown used in OSCAL within the `markup-line` data type.
 
 | Markup Type | HTML | Markdown |
 |:--- |:--- |:--- |

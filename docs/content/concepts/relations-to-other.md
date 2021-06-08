@@ -23,7 +23,7 @@ OSCAL seeks to complement HTML and other web technologies such as Markdown, by f
 
 ### MS Word/Excel formats <code>.docx .xlsx</code> (word processor and spreadsheet)
 
-Microsoft's Office Open XML is the format underlying its Word and Excel applications; it is documented as ISO. Ubiquitous as an application format, these formats are tractable using tools built to the applications' APIs and data models, but they are not designed to support application-independepent data exchange. OSCAL enables greater data interoperability among disparate systems by capturing the semantics of controls, independent of how they may be displayed using various representations (such as word processors). However, we expect that word processors and spreadsheets will continue to be used in workflows supporting OSCAL, supported where necessary by data conversion utilities.
+Microsoft's Office Open XML is the format underlying its Word and Excel applications; it is documented as ISO. Ubiquitous as an application format, these formats are tractable using tools built to the applications' APIs and data models, but they are not designed to support application-independent data exchange. OSCAL enables greater data interoperability among disparate systems by capturing the semantics of controls, independent of how they may be displayed using various representations (such as word processors). However, we expect that word processors and spreadsheets will continue to be used in workflows supporting OSCAL, supported where necessary by data conversion utilities.
 
 ### OpenOffice formats <code>.odt .ods</code> (word processor and spreadsheet formats)
 

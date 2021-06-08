@@ -27,7 +27,7 @@ There are a number of complicating factors contributing to the challenges faced 
 * Regulatory standards and frameworks overlap in scope and can often conflict or be difficult to manage together; and
 * Information systems are increasing in size and complexity.
 
-To address information security and privacy risks, the implementation of selected controls need to be verified and shown to be effective. To provide assurance of a system's security and privacy posture, the control implementation of a system must be both correctly described, assessed, and authorized. These tasks are resource-intensive, and often challenging to perform within budget constraints given the complexity of the problem.
+To address information security and privacy risks, the implementation of selected controls needs to be verified and shown to be effective. To provide assurance of a system's security and privacy posture, the control implementation of a system must be both correctly described, assessed, and authorized. These tasks are resource-intensive, and often challenging to perform within budget constraints given the complexity of the problem.
 
 The standardized formats provided by the OSCAL project help to streamline and standardize the processes of documenting, implementing and assessing security controls. The automation enabled by the OSCAL formats will reduce complexity, decrease implementation costs, and enable the simultaneous, continuous assessment of a system's security against multiple sets of requirements. Additionally, paperwork will be significantly reduced.
 
@@ -59,7 +59,7 @@ The OSCAL project is working to address the following goals.
 
 Drive a large decrease in the paperwork burden for both information security professionals and vendors.
 
-- Normalize the representation of security control catalogs, regulatory frameworks, and system information using precise, machine readable formats.
+- Normalize the representation of security control catalogs, regulatory frameworks, and system information using precise, machine-readable formats.
 - Allow the sharing of control implementation information across communities.
 
 ### Improve System Security Assessments

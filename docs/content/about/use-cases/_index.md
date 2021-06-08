@@ -29,9 +29,9 @@ To meet the requirements of different regulatory frameworks and to perform good 
 
 OSCAL is designed to provide a standardized format that reduces or eliminates this paper-based process, by transitioning documentation to a highly normalized, machine-readable format. This approach has multiple benefits:
 
-1. data between plans is consistent in both format and mapping to requirements and controls from multiple regulatory frameworks, when applicable,
-1. data is machine readable and can be exposed to other security tools to provide additional automation, and
-1. data consistency and standardization allows for innovation in the commercial tooling to provide further automation of assessment and accreditation processes.
+1. Data between plans is consistent in both format and mapping to requirements and controls from multiple regulatory frameworks, when applicable,
+1. Data is machine-readable and can be exposed to other security tools to provide additional automation, and
+1. Data consistency and standardization support innovation in commercial and open-source tooling to provide further automation of assessment and accreditation processes.
 
 By representing system information using the OSCAL [system security plan model](/concepts/layer/implementation/ssp/), this data can be analyzed using automated processes, streamlining the review and assessment process. The management systems that are used to manage the security and privacy controls implemented in the system can be integrated to provide up-to-date system information using this model. Human-oriented documentation can be easily generated from the OSCAL data. This results in a more usable information set over what is provided using Word and Excel files alone.
 
