@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Modified by the OSCAL 1.0.0 RC1 to OSCAL 1.0.0 conversion XSLT on 2021-06-07T17:10:53.691509-04:00 -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns="http://csrc.nist.gov/ns/oscal/1.0"
                 xmlns:uuid="java:java.util.UUID"
                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0"
                 exclude-result-prefixes="#all"
-                version="3.0"
-                uuid="00f7bf7e-6de0-444f-9d6c-1017b2b7bc8f">
+                version="3.0">
 
 <!-- This XSLT, applied to an XML document valid to the Milestone 3 OSCAL schema version for Catalog, Profile, SSP or Component,
      will produce a similar XML document, valid or closer to valid to the Release Candidate 1 OSCAL schema. -->
@@ -16,7 +14,7 @@
    <xsl:variable select="uuid:randomUUID()" name="new-document-uuid"/>
    <xsl:template match="/comment()"/>
    <xsl:template match="/*">
-      <xsl:comment expand-text="true"> Modified by the OSCAL 1.0.0 RC1 to OSCAL 1.0.0 conversion XSLT on { current-dateTime() } </xsl:comment>
+      <xsl:comment expand-text="true"> Modified by the OSCAL 1.0.0 RC2 to OSCAL 1.0.0 conversion XSLT on { current-dateTime() } </xsl:comment>
       <xsl:copy>
          <xsl:apply-templates select="@* except @id"/>
          <xsl:attribute name="uuid" select="$new-document-uuid"/>
@@ -27,7 +25,7 @@
       <oscal-version>1.0.0</oscal-version>
    </xsl:template>
    <xsl:template match="last-modified" expand-text="true">
-      <last-modified>2021-06-07T17:10:53.691509-04:00</last-modified>
+      <last-modified>{ current-dateTime() }</last-modified>
    </xsl:template>
    <!-- Usage change: we no longer permit spaces in values of select/@how-many -->
    <xsl:template match="select/@how-many" expand-text="true">
