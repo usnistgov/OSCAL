@@ -1,15 +1,18 @@
 ---
-title: "OSCAL Catalog Model Development Snapshot JSON Format Outline"
-heading: Catalog Model Development Snapshot JSON Format Outline
+title: "OSCAL Catalog Model v1.0.0 JSON Format Outline"
+heading: Catalog Model v1.0.0 JSON Format Outline
 custom_js:
   - "/js/oscal-metaschema-map-expander.js"
 weight: 10
 sidenav:
   title: JSON Outline
-
+aliases:
+  - /docs/maps/oscal-catalog-json/
+  - /documentation/schema/catalog/json-model-map/
+  - /documentation/schema/catalog-layer/catalog/json-model-map/
 ---
 
-The following outline is a representation of the [JSON format](https://github.com/usnistgov/OSCAL/blob/develop/json/schema/oscal_catalog_schema.json) for this model. For each property, the name links to the corresponding entry in the [JSON Format Reference](../json-reference/). The cardinality and data type are also provided for each property where appropriate.
+The following outline is a representation of the [JSON format](https://github.com/usnistgov/OSCAL/blob/main/json/schema/oscal_catalog_schema.json) for this model. For each property, the name links to the corresponding entry in the [JSON Format Reference](../json-reference/). The cardinality and data type are also provided for each property where appropriate.
 
 <!-- DO NOT REMOVE. Generated text below -->
 {{< rawhtml >}}

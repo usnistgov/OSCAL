@@ -36,7 +36,7 @@
         processor's result corresponds to the target as described here, given a particular
         source.</p>
       <p>The term <term>directive</term> is used in these specifications to refer to an element or
-        combination of elements in source data, which is designed to effect a particular outcome in
+        combination of elements in source data, which is designed to affect a particular outcome in
         the target catalog. For the most part, directives are in the source profile document – for
         example, a <src>set-parameter</src> element in a profile is a directive to set a parameter
         value in the target catalog.</p>

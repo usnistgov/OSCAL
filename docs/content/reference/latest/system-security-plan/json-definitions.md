@@ -1,6 +1,6 @@
 ---
-title: "OSCAL System Security Plan Model Development Snapshot JSON Format Metaschema Reference"
-heading: System Security Plan Model Development Snapshot Model JSON Metaschema Reference
+title: "OSCAL System Security Plan Model v1.0.0 JSON Format Metaschema Reference"
+heading: System Security Plan Model v1.0.0 Model JSON Metaschema Reference
 weight: 40
 sidenav:
   title: JSON Metaschema Reference
@@ -9,7 +9,7 @@ toc:
   headingselectors: "h1.toc1, h2.toc2, h3.toc3, h4.toc4, h5.toc5, h6.toc6"
 ---
 
-The following is a reference for the JSON object definitions derived from this model's [metaschema](https://github.com/usnistgov/OSCAL/blob/develop//src/metaschema/oscal_ssp_metaschema.xml).
+The following is a reference for the JSON object definitions derived from this model's [metaschema](https://github.com/usnistgov/OSCAL/blob/main//src/metaschema/oscal_ssp_metaschema.xml).
 
 <!-- DO NOT REMOVE. Generated text below -->
 {{< rawhtml >}}

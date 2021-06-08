@@ -8,34 +8,34 @@ sidenav:
   title: XML Outline
 {{ if eq (getenv "HUGO_REF_REVISION") "latest" -}}
 aliases:
-{{- if eq (getenv "HUGO_MODEL_ID") "assessment-plan" -}}
+{{- if eq (getenv "HUGO_MODEL_ID") "assessment-plan" }}
   - /documentation/schema/assessment-plan/xml-model-map/
   - /documentation/schema/assessment-layer/assessment-plan/xml-model-map/
 {{- end -}}
-{{- if eq (getenv "HUGO_MODEL_ID") "assessment-results" -}}
+{{- if eq (getenv "HUGO_MODEL_ID") "assessment-results" }}
   - /documentation/schema/assessment-results/xml-model-map/
   - /documentation/schema/assessment-results-layer/assessment-results/xml-model-map/
 {{- end -}}
-{{- if eq (getenv "HUGO_MODEL_ID") "catalog" -}}
+{{- if eq (getenv "HUGO_MODEL_ID") "catalog" }}
   - /docs/maps/oscal-catalog-xml/
   - /documentation/schema/catalog/xml-model-map/
   - /documentation/schema/catalog-layer/catalog/xml-model-map/
 {{- end -}}
-{{- if eq (getenv "HUGO_MODEL_ID") "component-definition" -}}
+{{- if eq (getenv "HUGO_MODEL_ID") "component-definition" }}
   - /docs/maps/oscal-component-xml/
   - /documentation/schema/component/xml-model-map/
   - /documentation/schema/implementation-layer/component/xml-model-map/
 {{- end -}}
-{{- if eq (getenv "HUGO_MODEL_ID") "plan-of-action-and-milestones" -}}
+{{- if eq (getenv "HUGO_MODEL_ID") "plan-of-action-and-milestones" }}
   - /documentation/schema/poam/xml-model-map/
   - /documentation/schema/assessment-results-layer/poam/xml-model-map/
 {{- end -}}
-{{- if eq (getenv "HUGO_MODEL_ID") "profile" -}}
+{{- if eq (getenv "HUGO_MODEL_ID") "profile" }}
   - /docs/maps/oscal-profile-xml/
   - /documentation/schema/profile/xml-model-map/
   - /documentation/schema/profile-layer/profile/xml-model-map/
 {{- end -}}
-{{- if eq (getenv "HUGO_MODEL_ID") "system-security-plan" -}}
+{{- if eq (getenv "HUGO_MODEL_ID") "system-security-plan" }}
   - /docs/maps/oscal-ssp-xml/
   - /documentation/schema/ssp/xml-model-map/
   - /documentation/schema/implementation-layer/ssp/xml-model-map/

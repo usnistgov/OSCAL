@@ -5,7 +5,8 @@ weight: 20
 suppresstopiclist: true
 sidenav:
   title: All Models
-  activerenderdepth: 2
+  focusrenderdepth: 2
+  activerenderdepth: -1
   inactiverenderdepth: 1
 ---
 
