@@ -608,7 +608,7 @@ The following outline is a representation of the [JSON format](https://github.co
                      <summary><span class="OM-lit"><a class="OM-name" href="../json-reference/#/profile/metadata/responsible-parties">responsible-parties</a> objects , keyed by their <span class="OM-name">role-id</span> values:</span> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit">{<span class="show-closed"> … }, </span></span></summary>
                      <div class="model-container object">
                         <details class="OM-entry">
-                           <summary><span class="OM-lit"><a class="OM-name" href="../json-reference/#/profile/metadata/responsible-parties/responsible-party">{role-id}</a> objects , keyed by their <span class="OM-name">role-id</span> values:</span> <span class="OM-cardinality">[0 to ∞]</span>: <span class="OM-lit">{<span class="show-closed"> … }</span></span></summary>
+                           <summary><span class="OM-lit"><a class="OM-name" href="../json-reference/#/profile/metadata/responsible-parties/responsible-party/role-id">{role-id}</a> objects , keyed by their <span class="OM-name">role-id</span> values:</span> <span class="OM-cardinality">[0 to ∞]</span>: <span class="OM-lit">{<span class="show-closed"> … }</span></span></summary>
                            <div class="model-container object">
                               <details class="OM-entry">
                                  <summary><span class="sq"><a class="OM-name" href="../json-reference/#/profile/metadata/responsible-parties/responsible-party/party-uuids">party-uuids</a> <span class="OM-cardinality">[1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
@@ -1390,7 +1390,7 @@ The following outline is a representation of the [JSON format](https://github.co
                      <summary><span class="OM-lit"><a class="OM-name" href="../json-reference/#/profile/modify/set-parameters">set-parameters</a> objects , keyed by their <span class="OM-name">param-id</span> values:</span> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit">{<span class="show-closed"> … }, </span></span></summary>
                      <div class="model-container object">
                         <details class="OM-entry">
-                           <summary><span class="OM-lit"><a class="OM-name" href="../json-reference/#/profile/modify/set-parameters/set-parameter">{param-id}</a> objects , keyed by their <span class="OM-name">param-id</span> values:</span> <span class="OM-cardinality">[0 to ∞]</span>: <span class="OM-lit">{<span class="show-closed"> … }</span></span></summary>
+                           <summary><span class="OM-lit"><a class="OM-name" href="../json-reference/#/profile/modify/set-parameters/set-parameter/param-id">{param-id}</a> objects , keyed by their <span class="OM-name">param-id</span> values:</span> <span class="OM-cardinality">[0 to ∞]</span>: <span class="OM-lit">{<span class="show-closed"> … }</span></span></summary>
                            <div class="model-container object">
                               <div class="OM-entry">
                                  <p class="OM-line"><a class="OM-name" href="../json-reference/#/profile/modify/set-parameters/set-parameter/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#ncname">NCName</a></span><span class="OM-lit">,</span></p>

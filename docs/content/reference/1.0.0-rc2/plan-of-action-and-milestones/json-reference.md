@@ -2856,10 +2856,10 @@ The following is the JSON format reference for this model, which is organized hi
                               <summary>Property (1)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/plan-of-action-and-milestones/metadata/responsible-parties/responsible-party" class="toc4 name">{role-id}</h4>
+                                    <h4 id="/plan-of-action-and-milestones/metadata/responsible-parties/responsible-party/role-id" class="toc4 name">{role-id}</h4>
                                     <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-metadata/metadata/responsible-parties">(global definition)</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
-                                    <div class="crosslink"><a class="usa-button" href="../xml-reference/#/plan-of-action-and-milestones/metadata/responsible-party">Switch to XML</a></div>
+                                    <div class="crosslink"><a class="usa-button" href="../xml-reference/#/plan-of-action-and-milestones/metadata/responsible-party/role-id">Switch to XML</a></div>
                                     <p class="formal-name">Responsible Party</p>
                                  </div>
                                  <div class="body">
@@ -3382,10 +3382,10 @@ The following is the JSON format reference for this model, which is organized hi
                               <summary>Property (1)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/plan-of-action-and-milestones/local-definitions/components/component" class="toc4 name">{uuid}</h4>
+                                    <h4 id="/plan-of-action-and-milestones/local-definitions/components/component/uuid" class="toc4 name">{uuid}</h4>
                                     <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-poam/local-definitions/components">(global definition)</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
-                                    <div class="crosslink"><a class="usa-button" href="../xml-reference/#/plan-of-action-and-milestones/local-definitions/component">Switch to XML</a></div>
+                                    <div class="crosslink"><a class="usa-button" href="../xml-reference/#/plan-of-action-and-milestones/local-definitions/component/uuid">Switch to XML</a></div>
                                     <p class="formal-name">Component</p>
                                  </div>
                                  <div class="body">
@@ -4194,10 +4194,10 @@ The following is the JSON format reference for this model, which is organized hi
                                                 <summary>Property (1)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/plan-of-action-and-milestones/local-definitions/components/component/responsible-roles/responsible-role" class="toc6 name">{role-id}</h6>
+                                                      <h6 id="/plan-of-action-and-milestones/local-definitions/components/component/responsible-roles/responsible-role/role-id" class="toc6 name">{role-id}</h6>
                                                       <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-implementation-common/system-component/responsible-roles">(global definition)</a></p>
                                                       <p class="occurrence">[0 to ∞]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../xml-reference/#/plan-of-action-and-milestones/local-definitions/component/responsible-role">Switch to XML</a></div>
+                                                      <div class="crosslink"><a class="usa-button" href="../xml-reference/#/plan-of-action-and-milestones/local-definitions/component/responsible-role/role-id">Switch to XML</a></div>
                                                       <p class="formal-name">Responsible Role</p>
                                                    </div>
                                                    <div class="body">
@@ -5291,10 +5291,10 @@ The following is the JSON format reference for this model, which is organized hi
                                        <summary>Property (1)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
-                                             <h5 id="/plan-of-action-and-milestones/local-definitions/inventory-items/responsible-parties/responsible-party" class="toc5 name">{role-id}</h5>
+                                             <h5 id="/plan-of-action-and-milestones/local-definitions/inventory-items/responsible-parties/responsible-party/role-id" class="toc5 name">{role-id}</h5>
                                              <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-implementation-common/inventory-item/responsible-parties">(global definition)</a></p>
                                              <p class="occurrence">[0 to ∞]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/plan-of-action-and-milestones/local-definitions/inventory-item/responsible-party">Switch to XML</a></div>
+                                             <div class="crosslink"><a class="usa-button" href="../xml-reference/#/plan-of-action-and-milestones/local-definitions/inventory-item/responsible-party/role-id">Switch to XML</a></div>
                                              <p class="formal-name">Responsible Party</p>
                                           </div>
                                           <div class="body">
@@ -6085,10 +6085,10 @@ The following is the JSON format reference for this model, which is organized hi
                                                 <summary>Property (1)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/plan-of-action-and-milestones/local-definitions/inventory-items/implemented-components/responsible-parties/responsible-party" class="toc6 name">{role-id}</h6>
+                                                      <h6 id="/plan-of-action-and-milestones/local-definitions/inventory-items/implemented-components/responsible-parties/responsible-party/role-id" class="toc6 name">{role-id}</h6>
                                                       <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-implementation-common/inventory-item/implemented-components/responsible-parties">(global definition)</a></p>
                                                       <p class="occurrence">[0 to ∞]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../xml-reference/#/plan-of-action-and-milestones/local-definitions/inventory-item/implemented-component/responsible-party">Switch to XML</a></div>
+                                                      <div class="crosslink"><a class="usa-button" href="../xml-reference/#/plan-of-action-and-milestones/local-definitions/inventory-item/implemented-component/responsible-party/role-id">Switch to XML</a></div>
                                                       <p class="formal-name">Responsible Party</p>
                                                    </div>
                                                    <div class="body">
@@ -7673,10 +7673,10 @@ The following is the JSON format reference for this model, which is organized hi
                                                 <summary>Property (1)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/plan-of-action-and-milestones/observations/origins/related-tasks/responsible-parties/responsible-party" class="toc6 name">{role-id}</h6>
+                                                      <h6 id="/plan-of-action-and-milestones/observations/origins/related-tasks/responsible-parties/responsible-party/role-id" class="toc6 name">{role-id}</h6>
                                                       <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-assessment-common/related-task/responsible-parties">(global definition)</a></p>
                                                       <p class="occurrence">[0 to ∞]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../xml-reference/#/plan-of-action-and-milestones/observation/origin/related-task/responsible-party">Switch to XML</a></div>
+                                                      <div class="crosslink"><a class="usa-button" href="../xml-reference/#/plan-of-action-and-milestones/observation/origin/related-task/responsible-party/role-id">Switch to XML</a></div>
                                                       <p class="formal-name">Responsible Party</p>
                                                    </div>
                                                    <div class="body">
@@ -12276,10 +12276,10 @@ The following is the JSON format reference for this model, which is organized hi
                                                 <summary>Property (1)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/plan-of-action-and-milestones/risks/origins/related-tasks/responsible-parties/responsible-party" class="toc6 name">{role-id}</h6>
+                                                      <h6 id="/plan-of-action-and-milestones/risks/origins/related-tasks/responsible-parties/responsible-party/role-id" class="toc6 name">{role-id}</h6>
                                                       <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-assessment-common/related-task/responsible-parties">(global definition)</a></p>
                                                       <p class="occurrence">[0 to ∞]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../xml-reference/#/plan-of-action-and-milestones/risk/origin/related-task/responsible-party">Switch to XML</a></div>
+                                                      <div class="crosslink"><a class="usa-button" href="../xml-reference/#/plan-of-action-and-milestones/risk/origin/related-task/responsible-party/role-id">Switch to XML</a></div>
                                                       <p class="formal-name">Responsible Party</p>
                                                    </div>
                                                    <div class="body">
@@ -16010,10 +16010,10 @@ The following is the JSON format reference for this model, which is organized hi
                                                          <summary>Property (1)</summary>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
-                                                               <p id="/plan-of-action-and-milestones/risks/characterizations/origin/related-tasks/responsible-parties/responsible-party" class="toc7 name">{role-id}</p>
+                                                               <p id="/plan-of-action-and-milestones/risks/characterizations/origin/related-tasks/responsible-parties/responsible-party/role-id" class="toc7 name">{role-id}</p>
                                                                <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-assessment-common/related-task/responsible-parties">(global definition)</a></p>
                                                                <p class="occurrence">[0 to ∞]</p>
-                                                               <div class="crosslink"><a class="usa-button" href="../xml-reference/#/plan-of-action-and-milestones/risk/characterization/origin/related-task/responsible-party">Switch to XML</a></div>
+                                                               <div class="crosslink"><a class="usa-button" href="../xml-reference/#/plan-of-action-and-milestones/risk/characterization/origin/related-task/responsible-party/role-id">Switch to XML</a></div>
                                                                <p class="formal-name">Responsible Party</p>
                                                             </div>
                                                             <div class="body">
@@ -21432,10 +21432,10 @@ The following is the JSON format reference for this model, which is organized hi
                                                          <summary>Property (1)</summary>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
-                                                               <p id="/plan-of-action-and-milestones/risks/remediations/origins/related-tasks/responsible-parties/responsible-party" class="toc7 name">{role-id}</p>
+                                                               <p id="/plan-of-action-and-milestones/risks/remediations/origins/related-tasks/responsible-parties/responsible-party/role-id" class="toc7 name">{role-id}</p>
                                                                <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-assessment-common/related-task/responsible-parties">(global definition)</a></p>
                                                                <p class="occurrence">[0 to ∞]</p>
-                                                               <div class="crosslink"><a class="usa-button" href="../xml-reference/#/plan-of-action-and-milestones/risk/response/origin/related-task/responsible-party">Switch to XML</a></div>
+                                                               <div class="crosslink"><a class="usa-button" href="../xml-reference/#/plan-of-action-and-milestones/risk/response/origin/related-task/responsible-party/role-id">Switch to XML</a></div>
                                                                <p class="formal-name">Responsible Party</p>
                                                             </div>
                                                             <div class="body">
@@ -25765,10 +25765,10 @@ The following is the JSON format reference for this model, which is organized hi
                                                          <summary>Property (1)</summary>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
-                                                               <p id="/plan-of-action-and-milestones/risks/remediations/tasks/associated-activities/responsible-roles/responsible-role" class="toc7 name">{role-id}</p>
+                                                               <p id="/plan-of-action-and-milestones/risks/remediations/tasks/associated-activities/responsible-roles/responsible-role/role-id" class="toc7 name">{role-id}</p>
                                                                <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-assessment-common/task/associated-activities/responsible-roles">(global definition)</a></p>
                                                                <p class="occurrence">[0 to ∞]</p>
-                                                               <div class="crosslink"><a class="usa-button" href="../xml-reference/#/plan-of-action-and-milestones/risk/response/task/associated-activity/responsible-role">Switch to XML</a></div>
+                                                               <div class="crosslink"><a class="usa-button" href="../xml-reference/#/plan-of-action-and-milestones/risk/response/task/associated-activity/responsible-role/role-id">Switch to XML</a></div>
                                                                <p class="formal-name">Responsible Role</p>
                                                             </div>
                                                             <div class="body">
@@ -28740,10 +28740,10 @@ The following is the JSON format reference for this model, which is organized hi
                                                 <summary>Property (1)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
-                                                      <h6 id="/plan-of-action-and-milestones/risks/remediations/tasks/responsible-roles/responsible-role" class="toc6 name">{role-id}</h6>
+                                                      <h6 id="/plan-of-action-and-milestones/risks/remediations/tasks/responsible-roles/responsible-role/role-id" class="toc6 name">{role-id}</h6>
                                                       <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-assessment-common/task/responsible-roles">(global definition)</a></p>
                                                       <p class="occurrence">[0 to ∞]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../xml-reference/#/plan-of-action-and-milestones/risk/response/task/responsible-role">Switch to XML</a></div>
+                                                      <div class="crosslink"><a class="usa-button" href="../xml-reference/#/plan-of-action-and-milestones/risk/response/task/responsible-role/role-id">Switch to XML</a></div>
                                                       <p class="formal-name">Responsible Role</p>
                                                    </div>
                                                    <div class="body">
@@ -30325,10 +30325,10 @@ The following is the JSON format reference for this model, which is organized hi
                                                                   <summary>Property (1)</summary>
                                                                   <div class="model-entry definition assembly">
                                                                      <div class="instance-header">
-                                                                        <p id="/plan-of-action-and-milestones/risks/risk-log/entries/related-responses/related-tasks/responsible-parties/responsible-party" class="toc8 name">{role-id}</p>
+                                                                        <p id="/plan-of-action-and-milestones/risks/risk-log/entries/related-responses/related-tasks/responsible-parties/responsible-party/role-id" class="toc8 name">{role-id}</p>
                                                                         <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-assessment-common/related-task/responsible-parties">(global definition)</a></p>
                                                                         <p class="occurrence">[0 to ∞]</p>
-                                                                        <div class="crosslink"><a class="usa-button" href="../xml-reference/#/plan-of-action-and-milestones/risk/risk-log/entry/related-response/related-task/responsible-party">Switch to XML</a></div>
+                                                                        <div class="crosslink"><a class="usa-button" href="../xml-reference/#/plan-of-action-and-milestones/risk/risk-log/entry/related-response/related-task/responsible-party/role-id">Switch to XML</a></div>
                                                                         <p class="formal-name">Responsible Party</p>
                                                                      </div>
                                                                      <div class="body">

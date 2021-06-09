@@ -60,7 +60,7 @@ The following is the XML format reference for this model, which is organized hie
             </div>
          </details>
          <details class="properties elements" open="open">
-            <summary>Elements (35)</summary>
+            <summary>Elements (5)</summary>
             <div class="model-entry definition assembly">
                <div class="instance-header">
                   <h2 id="/component-definition/metadata" class="toc2 name">metadata</h2>
@@ -136,7 +136,7 @@ The following is the XML format reference for this model, which is organized hie
                      </div>
                   </details>
                   <details class="properties elements" open="open">
-                     <summary>Elements (44)</summary>
+                     <summary>Elements (14)</summary>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
                            <h3 id="/component-definition/metadata/title" class="toc3 name">title</h3>
@@ -147,9 +147,6 @@ The following is the XML format reference for this model, which is organized hie
                         </div>
                         <div class="body">
                            <p class="description"><span class="usa-tag">Description</span> A name given to the document, which may be used by a tool for display and navigation.</p>
-                           <details class="properties elements" open="open">
-                              <summary>Element (0)</summary>
-                           </details>
                         </div>
                      </div>
                      <div class="model-entry definition assembly">
@@ -178,9 +175,6 @@ The following is the XML format reference for this model, which is organized hie
                                  </div>
                               </details>
                            </div>
-                           <details class="properties elements" open="open">
-                              <summary>Element (0)</summary>
-                           </details>
                         </div>
                      </div>
                      <div class="model-entry definition assembly">
@@ -209,9 +203,6 @@ The following is the XML format reference for this model, which is organized hie
                                  </div>
                               </details>
                            </div>
-                           <details class="properties elements" open="open">
-                              <summary>Element (0)</summary>
-                           </details>
                         </div>
                      </div>
                      <div class="model-entry definition assembly">
@@ -239,9 +230,6 @@ The following is the XML format reference for this model, which is organized hie
                                  </div>
                               </details>
                            </div>
-                           <details class="properties elements" open="open">
-                              <summary>Element (0)</summary>
-                           </details>
                         </div>
                      </div>
                      <div class="model-entry definition assembly">
@@ -264,9 +252,6 @@ The following is the XML format reference for this model, which is organized hie
                                  </div>
                               </details>
                            </div>
-                           <details class="properties elements" open="open">
-                              <summary>Element (0)</summary>
-                           </details>
                         </div>
                      </div>
                      <div class="model-entry definition ">
@@ -278,7 +263,7 @@ The following is the XML format reference for this model, which is organized hie
                         </div>
                         <div class="body">
                            <details class="properties elements" open="open">
-                              <summary>Elements (9)</summary>
+                              <summary>Element (1)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/component-definition/metadata/revisions/revision" class="toc4 name">revision</h4>
@@ -315,7 +300,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                     </details>
                                     <details class="properties elements" open="open">
-                                       <summary>Elements (10)</summary>
+                                       <summary>Elements (8)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/component-definition/metadata/revisions/revision/title" class="toc5 name">title</h5>
@@ -327,9 +312,6 @@ The following is the XML format reference for this model, which is organized hie
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> A name given to the document revision, which may be used by a tool for display and
                                                 navigation.</p>
-                                             <details class="properties elements" open="open">
-                                                <summary>Element (0)</summary>
-                                             </details>
                                           </div>
                                        </div>
                                        <div class="model-entry definition assembly">
@@ -358,9 +340,6 @@ The following is the XML format reference for this model, which is organized hie
                                                    </div>
                                                 </details>
                                              </div>
-                                             <details class="properties elements" open="open">
-                                                <summary>Element (0)</summary>
-                                             </details>
                                           </div>
                                        </div>
                                        <div class="model-entry definition assembly">
@@ -389,9 +368,6 @@ The following is the XML format reference for this model, which is organized hie
                                                    </div>
                                                 </details>
                                              </div>
-                                             <details class="properties elements" open="open">
-                                                <summary>Element (0)</summary>
-                                             </details>
                                           </div>
                                        </div>
                                        <div class="model-entry definition assembly">
@@ -419,9 +395,6 @@ The following is the XML format reference for this model, which is organized hie
                                                    </div>
                                                 </details>
                                              </div>
-                                             <details class="properties elements" open="open">
-                                                <summary>Element (0)</summary>
-                                             </details>
                                           </div>
                                        </div>
                                        <div class="model-entry definition assembly">
@@ -444,9 +417,6 @@ The following is the XML format reference for this model, which is organized hie
                                                    </div>
                                                 </details>
                                              </div>
-                                             <details class="properties elements" open="open">
-                                                <summary>Element (0)</summary>
-                                             </details>
                                           </div>
                                        </div>
                                        <div class="model-entry definition assembly">
@@ -605,17 +575,6 @@ The following is the XML format reference for this model, which is organized hie
                                                    </div>
                                                    <div class="body">
                                                       <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
-                                                      <details class="properties elements" open="open">
-                                                         <summary>Element (0)</summary>
-                                                         <div class="model-entry definition field">
-                                                            <div class="instance-header">
-                                                               <h6 id="/component-definition/metadata/revisions/revision/prop/remarks" class="toc6 name">(unwrapped)</h6>
-                                                               <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
-                                                               <p class="occurrence">[0 to ∞]</p>
-                                                               <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/revisions/props/remarks/">Switch to JSON</a></div>
-                                                            </div>
-                                                         </div>
-                                                      </details>
                                                    </div>
                                                 </div>
                                              </details>
@@ -750,9 +709,6 @@ The following is the XML format reference for this model, which is organized hie
                                                    <div class="body">
                                                       <p class="description"><span class="usa-tag">Description</span> A textual label to associate with the link, which may be used for presentation in
                                                          a tool.</p>
-                                                      <details class="properties elements" open="open">
-                                                         <summary>Element (0)</summary>
-                                                      </details>
                                                    </div>
                                                 </div>
                                              </details>
@@ -768,17 +724,6 @@ The following is the XML format reference for this model, which is organized hie
                                           </div>
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
-                                             <details class="properties elements" open="open">
-                                                <summary>Element (0)</summary>
-                                                <div class="model-entry definition field">
-                                                   <div class="instance-header">
-                                                      <h5 id="/component-definition/metadata/revisions/revision/remarks" class="toc5 name">(unwrapped)</h5>
-                                                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
-                                                      <p class="occurrence">[0 to ∞]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/revisions/remarks/">Switch to JSON</a></div>
-                                                   </div>
-                                                </div>
-                                             </details>
                                           </div>
                                        </div>
                                     </details>
@@ -800,6 +745,9 @@ The following is the XML format reference for this model, which is organized hie
                               that are to be treated as different versions of the same document. If this element
                               does not appear, or if the value of this element is empty, the value of "document-id"
                               is equal to the value of the "uuid" flag of the top-level root element.</p>
+                           <div class="value">
+                              <p>Value: A string value.</p>
+                           </div>
                            <div class="remarks-group usa-prose">
                               <details open="open">
                                  <summary class="subhead">Remarks</summary>
@@ -839,9 +787,6 @@ The following is the XML format reference for this model, which is organized hie
                                     </details>
                                  </div>
                               </div>
-                           </details>
-                           <details class="properties elements" open="open">
-                              <summary>Element (0)</summary>
                            </details>
                         </div>
                      </div>
@@ -1001,17 +946,6 @@ The following is the XML format reference for this model, which is organized hie
                                  </div>
                                  <div class="body">
                                     <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
-                                    <details class="properties elements" open="open">
-                                       <summary>Element (0)</summary>
-                                       <div class="model-entry definition field">
-                                          <div class="instance-header">
-                                             <h4 id="/component-definition/metadata/prop/remarks" class="toc4 name">(unwrapped)</h4>
-                                             <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
-                                             <p class="occurrence">[0 to ∞]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/props/remarks/">Switch to JSON</a></div>
-                                          </div>
-                                       </div>
-                                    </details>
                                  </div>
                               </div>
                            </details>
@@ -1146,9 +1080,6 @@ The following is the XML format reference for this model, which is organized hie
                                  <div class="body">
                                     <p class="description"><span class="usa-tag">Description</span> A textual label to associate with the link, which may be used for presentation in
                                        a tool.</p>
-                                    <details class="properties elements" open="open">
-                                       <summary>Element (0)</summary>
-                                    </details>
                                  </div>
                               </div>
                            </details>
@@ -1210,7 +1141,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                            </details>
                            <details class="properties elements" open="open">
-                              <summary>Elements (8)</summary>
+                              <summary>Elements (6)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/component-definition/metadata/role/title" class="toc4 name">title</h4>
@@ -1221,9 +1152,6 @@ The following is the XML format reference for this model, which is organized hie
                                  </div>
                                  <div class="body">
                                     <p class="description"><span class="usa-tag">Description</span> A name given to the role, which may be used by a tool for display and navigation.</p>
-                                    <details class="properties elements" open="open">
-                                       <summary>Element (0)</summary>
-                                    </details>
                                  </div>
                               </div>
                               <div class="model-entry definition assembly">
@@ -1236,9 +1164,6 @@ The following is the XML format reference for this model, which is organized hie
                                  </div>
                                  <div class="body">
                                     <p class="description"><span class="usa-tag">Description</span> A short common name, abbreviation, or acronym for the role.</p>
-                                    <details class="properties elements" open="open">
-                                       <summary>Element (0)</summary>
-                                    </details>
                                  </div>
                               </div>
                               <div class="model-entry definition assembly">
@@ -1251,17 +1176,6 @@ The following is the XML format reference for this model, which is organized hie
                                  </div>
                                  <div class="body">
                                     <p class="description"><span class="usa-tag">Description</span> A summary of the role's purpose and associated responsibilities.</p>
-                                    <details class="properties elements" open="open">
-                                       <summary>Element (0)</summary>
-                                       <div class="model-entry definition assembly">
-                                          <div class="instance-header">
-                                             <h4 id="/component-definition/metadata/role/description" class="toc4 name">(unwrapped)</h4>
-                                             <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
-                                             <p class="occurrence">[0 to ∞]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/roles/description/">Switch to JSON</a></div>
-                                          </div>
-                                       </div>
-                                    </details>
                                  </div>
                               </div>
                               <div class="model-entry definition assembly">
@@ -1420,17 +1334,6 @@ The following is the XML format reference for this model, which is organized hie
                                           </div>
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
-                                             <details class="properties elements" open="open">
-                                                <summary>Element (0)</summary>
-                                                <div class="model-entry definition field">
-                                                   <div class="instance-header">
-                                                      <h5 id="/component-definition/metadata/role/prop/remarks" class="toc5 name">(unwrapped)</h5>
-                                                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
-                                                      <p class="occurrence">[0 to ∞]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/roles/props/remarks/">Switch to JSON</a></div>
-                                                   </div>
-                                                </div>
-                                             </details>
                                           </div>
                                        </div>
                                     </details>
@@ -1565,9 +1468,6 @@ The following is the XML format reference for this model, which is organized hie
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> A textual label to associate with the link, which may be used for presentation in
                                                 a tool.</p>
-                                             <details class="properties elements" open="open">
-                                                <summary>Element (0)</summary>
-                                             </details>
                                           </div>
                                        </div>
                                     </details>
@@ -1583,17 +1483,6 @@ The following is the XML format reference for this model, which is organized hie
                                  </div>
                                  <div class="body">
                                     <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
-                                    <details class="properties elements" open="open">
-                                       <summary>Element (0)</summary>
-                                       <div class="model-entry definition field">
-                                          <div class="instance-header">
-                                             <h4 id="/component-definition/metadata/role/remarks" class="toc4 name">(unwrapped)</h4>
-                                             <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
-                                             <p class="occurrence">[0 to ∞]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/roles/remarks/">Switch to JSON</a></div>
-                                          </div>
-                                       </div>
-                                    </details>
                                  </div>
                               </div>
                            </details>
@@ -1657,7 +1546,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                            </details>
                            <details class="properties elements" open="open">
-                              <summary>Elements (15)</summary>
+                              <summary>Elements (8)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/component-definition/metadata/location/title" class="toc4 name">title</h4>
@@ -1668,9 +1557,6 @@ The following is the XML format reference for this model, which is organized hie
                                  </div>
                                  <div class="body">
                                     <p class="description"><span class="usa-tag">Description</span> A name given to the location, which may be used by a tool for display and navigation.</p>
-                                    <details class="properties elements" open="open">
-                                       <summary>Element (0)</summary>
-                                    </details>
                                  </div>
                               </div>
                               <div class="model-entry definition assembly">
@@ -1732,9 +1618,6 @@ The following is the XML format reference for this model, which is organized hie
                                           </div>
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> A single line of an address.</p>
-                                             <details class="properties elements" open="open">
-                                                <summary>Element (0)</summary>
-                                             </details>
                                           </div>
                                        </div>
                                        <div class="model-entry definition assembly">
@@ -1747,9 +1630,6 @@ The following is the XML format reference for this model, which is organized hie
                                           </div>
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> City, town or geographical region for the mailing address.</p>
-                                             <details class="properties elements" open="open">
-                                                <summary>Element (0)</summary>
-                                             </details>
                                           </div>
                                        </div>
                                        <div class="model-entry definition assembly">
@@ -1762,9 +1642,6 @@ The following is the XML format reference for this model, which is organized hie
                                           </div>
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> State, province or analogous geographical region for mailing address</p>
-                                             <details class="properties elements" open="open">
-                                                <summary>Element (0)</summary>
-                                             </details>
                                           </div>
                                        </div>
                                        <div class="model-entry definition assembly">
@@ -1777,9 +1654,6 @@ The following is the XML format reference for this model, which is organized hie
                                           </div>
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> Postal or ZIP code for mailing address</p>
-                                             <details class="properties elements" open="open">
-                                                <summary>Element (0)</summary>
-                                             </details>
                                           </div>
                                        </div>
                                        <div class="model-entry definition assembly">
@@ -1797,9 +1671,6 @@ The following is the XML format reference for this model, which is organized hie
                                                 <div class="constraint">
                                                    <p><span class="usa-tag">matches</span>: a target (value) must match the regular expression '[A-Z](2)'.</p>
                                                 </div>
-                                             </details>
-                                             <details class="properties elements" open="open">
-                                                <summary>Element (0)</summary>
                                              </details>
                                           </div>
                                        </div>
@@ -1824,9 +1695,6 @@ The following is the XML format reference for this model, which is organized hie
                                           </div>
                                        </details>
                                     </div>
-                                    <details class="properties elements" open="open">
-                                       <summary>Element (0)</summary>
-                                    </details>
                                  </div>
                               </div>
                               <div class="model-entry definition assembly">
@@ -1839,6 +1707,9 @@ The following is the XML format reference for this model, which is organized hie
                                  </div>
                                  <div class="body">
                                     <p class="description"><span class="usa-tag">Description</span> Contact number by telephone.</p>
+                                    <div class="value">
+                                       <p>Value: A string value.</p>
+                                    </div>
                                     <div class="remarks-group usa-prose">
                                        <details open="open">
                                           <summary class="subhead">Remarks</summary>
@@ -1877,9 +1748,6 @@ The following is the XML format reference for this model, which is organized hie
                                           </div>
                                        </div>
                                     </details>
-                                    <details class="properties elements" open="open">
-                                       <summary>Element (0)</summary>
-                                    </details>
                                  </div>
                               </div>
                               <div class="model-entry definition assembly">
@@ -1893,9 +1761,6 @@ The following is the XML format reference for this model, which is organized hie
                                  <div class="body">
                                     <p class="description"><span class="usa-tag">Description</span> The uniform resource locator (URL) for a web site or Internet presence associated
                                        with the location.</p>
-                                    <details class="properties elements" open="open">
-                                       <summary>Element (0)</summary>
-                                    </details>
                                  </div>
                               </div>
                               <div class="model-entry definition assembly">
@@ -2054,17 +1919,6 @@ The following is the XML format reference for this model, which is organized hie
                                           </div>
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
-                                             <details class="properties elements" open="open">
-                                                <summary>Element (0)</summary>
-                                                <div class="model-entry definition field">
-                                                   <div class="instance-header">
-                                                      <h5 id="/component-definition/metadata/location/prop/remarks" class="toc5 name">(unwrapped)</h5>
-                                                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
-                                                      <p class="occurrence">[0 to ∞]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/locations/props/remarks/">Switch to JSON</a></div>
-                                                   </div>
-                                                </div>
-                                             </details>
                                           </div>
                                        </div>
                                     </details>
@@ -2199,9 +2053,6 @@ The following is the XML format reference for this model, which is organized hie
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> A textual label to associate with the link, which may be used for presentation in
                                                 a tool.</p>
-                                             <details class="properties elements" open="open">
-                                                <summary>Element (0)</summary>
-                                             </details>
                                           </div>
                                        </div>
                                     </details>
@@ -2217,17 +2068,6 @@ The following is the XML format reference for this model, which is organized hie
                                  </div>
                                  <div class="body">
                                     <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
-                                    <details class="properties elements" open="open">
-                                       <summary>Element (0)</summary>
-                                       <div class="model-entry definition field">
-                                          <div class="instance-header">
-                                             <h4 id="/component-definition/metadata/location/remarks" class="toc4 name">(unwrapped)</h4>
-                                             <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
-                                             <p class="occurrence">[0 to ∞]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/locations/remarks/">Switch to JSON</a></div>
-                                          </div>
-                                       </div>
-                                    </details>
                                  </div>
                               </div>
                            </details>
@@ -2301,7 +2141,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                            </details>
                            <details class="properties elements" open="open">
-                              <summary>Elements (13)</summary>
+                              <summary>Elements (11)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/component-definition/metadata/party/name" class="toc4 name">name</h4>
@@ -2313,9 +2153,6 @@ The following is the XML format reference for this model, which is organized hie
                                  <div class="body">
                                     <p class="description"><span class="usa-tag">Description</span> The full name of the party. This is typically the legal name associated with the
                                        party.</p>
-                                    <details class="properties elements" open="open">
-                                       <summary>Element (0)</summary>
-                                    </details>
                                  </div>
                               </div>
                               <div class="model-entry definition assembly">
@@ -2328,9 +2165,6 @@ The following is the XML format reference for this model, which is organized hie
                                  </div>
                                  <div class="body">
                                     <p class="description"><span class="usa-tag">Description</span> A short common name, abbreviation, or acronym for the party.</p>
-                                    <details class="properties elements" open="open">
-                                       <summary>Element (0)</summary>
-                                    </details>
                                  </div>
                               </div>
                               <div class="model-entry definition assembly">
@@ -2344,6 +2178,9 @@ The following is the XML format reference for this model, which is organized hie
                                  <div class="body">
                                     <p class="description"><span class="usa-tag">Description</span> An identifier for a person or organization using a designated scheme. e.g. an Open
                                        Researcher and Contributor ID (ORCID)</p>
+                                    <div class="value">
+                                       <p>Value: A string value.</p>
+                                    </div>
                                     <details class="properties attributes" open="open">
                                        <summary>Attribute (1)</summary>
                                        <div class="model-entry definition assembly">
@@ -2369,9 +2206,6 @@ The following is the XML format reference for this model, which is organized hie
                                              </details>
                                           </div>
                                        </div>
-                                    </details>
-                                    <details class="properties elements" open="open">
-                                       <summary>Element (0)</summary>
                                     </details>
                                  </div>
                               </div>
@@ -2531,17 +2365,6 @@ The following is the XML format reference for this model, which is organized hie
                                           </div>
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
-                                             <details class="properties elements" open="open">
-                                                <summary>Element (0)</summary>
-                                                <div class="model-entry definition field">
-                                                   <div class="instance-header">
-                                                      <h5 id="/component-definition/metadata/party/prop/remarks" class="toc5 name">(unwrapped)</h5>
-                                                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
-                                                      <p class="occurrence">[0 to ∞]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/parties/props/remarks/">Switch to JSON</a></div>
-                                                   </div>
-                                                </div>
-                                             </details>
                                           </div>
                                        </div>
                                     </details>
@@ -2676,9 +2499,6 @@ The following is the XML format reference for this model, which is organized hie
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> A textual label to associate with the link, which may be used for presentation in
                                                 a tool.</p>
-                                             <details class="properties elements" open="open">
-                                                <summary>Element (0)</summary>
-                                             </details>
                                           </div>
                                        </div>
                                     </details>
@@ -2702,9 +2522,6 @@ The following is the XML format reference for this model, which is organized hie
                                           </div>
                                        </details>
                                     </div>
-                                    <details class="properties elements" open="open">
-                                       <summary>Element (0)</summary>
-                                    </details>
                                  </div>
                               </div>
                               <div class="model-entry definition assembly">
@@ -2717,6 +2534,9 @@ The following is the XML format reference for this model, which is organized hie
                                  </div>
                                  <div class="body">
                                     <p class="description"><span class="usa-tag">Description</span> Contact number by telephone.</p>
+                                    <div class="value">
+                                       <p>Value: A string value.</p>
+                                    </div>
                                     <div class="remarks-group usa-prose">
                                        <details open="open">
                                           <summary class="subhead">Remarks</summary>
@@ -2754,9 +2574,6 @@ The following is the XML format reference for this model, which is organized hie
                                              </details>
                                           </div>
                                        </div>
-                                    </details>
-                                    <details class="properties elements" open="open">
-                                       <summary>Element (0)</summary>
                                     </details>
                                  </div>
                               </div>
@@ -2812,9 +2629,6 @@ The following is the XML format reference for this model, which is organized hie
                                              </div>
                                              <div class="body">
                                                 <p class="description"><span class="usa-tag">Description</span> A single line of an address.</p>
-                                                <details class="properties elements" open="open">
-                                                   <summary>Element (0)</summary>
-                                                </details>
                                              </div>
                                           </div>
                                           <div class="model-entry definition assembly">
@@ -2827,9 +2641,6 @@ The following is the XML format reference for this model, which is organized hie
                                              </div>
                                              <div class="body">
                                                 <p class="description"><span class="usa-tag">Description</span> City, town or geographical region for the mailing address.</p>
-                                                <details class="properties elements" open="open">
-                                                   <summary>Element (0)</summary>
-                                                </details>
                                              </div>
                                           </div>
                                           <div class="model-entry definition assembly">
@@ -2842,9 +2653,6 @@ The following is the XML format reference for this model, which is organized hie
                                              </div>
                                              <div class="body">
                                                 <p class="description"><span class="usa-tag">Description</span> State, province or analogous geographical region for mailing address</p>
-                                                <details class="properties elements" open="open">
-                                                   <summary>Element (0)</summary>
-                                                </details>
                                              </div>
                                           </div>
                                           <div class="model-entry definition assembly">
@@ -2857,9 +2665,6 @@ The following is the XML format reference for this model, which is organized hie
                                              </div>
                                              <div class="body">
                                                 <p class="description"><span class="usa-tag">Description</span> Postal or ZIP code for mailing address</p>
-                                                <details class="properties elements" open="open">
-                                                   <summary>Element (0)</summary>
-                                                </details>
                                              </div>
                                           </div>
                                           <div class="model-entry definition assembly">
@@ -2877,9 +2682,6 @@ The following is the XML format reference for this model, which is organized hie
                                                    <div class="constraint">
                                                       <p><span class="usa-tag">matches</span>: a target (value) must match the regular expression '[A-Z](2)'.</p>
                                                    </div>
-                                                </details>
-                                                <details class="properties elements" open="open">
-                                                   <summary>Element (0)</summary>
                                                 </details>
                                              </div>
                                           </div>
@@ -2901,9 +2703,6 @@ The following is the XML format reference for this model, which is organized hie
                                           <div class="constraint">
                                              <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-location-uuid</code> using a key constructed of key field(s) <code>value()</code></p>
                                           </div>
-                                       </details>
-                                       <details class="properties elements" open="open">
-                                          <summary>Element (0)</summary>
                                        </details>
                                     </div>
                                  </div>
@@ -2936,9 +2735,6 @@ The following is the XML format reference for this model, which is organized hie
                                           <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-party-organizations-uuid</code> using a key constructed of key field(s) <code>value()</code></p>
                                        </div>
                                     </details>
-                                    <details class="properties elements" open="open">
-                                       <summary>Element (0)</summary>
-                                    </details>
                                  </div>
                               </div>
                               <div class="model-entry definition assembly">
@@ -2951,17 +2747,6 @@ The following is the XML format reference for this model, which is organized hie
                                  </div>
                                  <div class="body">
                                     <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
-                                    <details class="properties elements" open="open">
-                                       <summary>Element (0)</summary>
-                                       <div class="model-entry definition field">
-                                          <div class="instance-header">
-                                             <h4 id="/component-definition/metadata/party/remarks" class="toc4 name">(unwrapped)</h4>
-                                             <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
-                                             <p class="occurrence">[0 to ∞]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/parties/remarks/">Switch to JSON</a></div>
-                                          </div>
-                                       </div>
-                                    </details>
                                  </div>
                               </div>
                            </details>
@@ -3003,7 +2788,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                            </details>
                            <details class="properties elements" open="open">
-                              <summary>Elements (6)</summary>
+                              <summary>Elements (4)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/component-definition/metadata/responsible-party/party-uuid" class="toc4 name">party-uuid</h4>
@@ -3027,9 +2812,6 @@ The following is the XML format reference for this model, which is organized hie
                                        <div class="constraint">
                                           <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-party-uuid</code> using a key constructed of key field(s) <code>value()</code></p>
                                        </div>
-                                    </details>
-                                    <details class="properties elements" open="open">
-                                       <summary>Element (0)</summary>
                                     </details>
                                  </div>
                               </div>
@@ -3189,17 +2971,6 @@ The following is the XML format reference for this model, which is organized hie
                                           </div>
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
-                                             <details class="properties elements" open="open">
-                                                <summary>Element (0)</summary>
-                                                <div class="model-entry definition field">
-                                                   <div class="instance-header">
-                                                      <h5 id="/component-definition/metadata/responsible-party/prop/remarks" class="toc5 name">(unwrapped)</h5>
-                                                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
-                                                      <p class="occurrence">[0 to ∞]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/responsible-parties/responsible-party/props/remarks/">Switch to JSON</a></div>
-                                                   </div>
-                                                </div>
-                                             </details>
                                           </div>
                                        </div>
                                     </details>
@@ -3334,9 +3105,6 @@ The following is the XML format reference for this model, which is organized hie
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> A textual label to associate with the link, which may be used for presentation in
                                                 a tool.</p>
-                                             <details class="properties elements" open="open">
-                                                <summary>Element (0)</summary>
-                                             </details>
                                           </div>
                                        </div>
                                     </details>
@@ -3352,17 +3120,6 @@ The following is the XML format reference for this model, which is organized hie
                                  </div>
                                  <div class="body">
                                     <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
-                                    <details class="properties elements" open="open">
-                                       <summary>Element (0)</summary>
-                                       <div class="model-entry definition field">
-                                          <div class="instance-header">
-                                             <h4 id="/component-definition/metadata/responsible-party/remarks" class="toc4 name">(unwrapped)</h4>
-                                             <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
-                                             <p class="occurrence">[0 to ∞]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/responsible-parties/responsible-party/remarks/">Switch to JSON</a></div>
-                                          </div>
-                                       </div>
-                                    </details>
                                  </div>
                               </div>
                            </details>
@@ -3378,17 +3135,6 @@ The following is the XML format reference for this model, which is organized hie
                         </div>
                         <div class="body">
                            <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
-                           <details class="properties elements" open="open">
-                              <summary>Element (0)</summary>
-                              <div class="model-entry definition field">
-                                 <div class="instance-header">
-                                    <h3 id="/component-definition/metadata/remarks" class="toc3 name">(unwrapped)</h3>
-                                    <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
-                                    <p class="occurrence">[0 to ∞]</p>
-                                    <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/metadata/remarks/">Switch to JSON</a></div>
-                                 </div>
-                              </div>
-                           </details>
                         </div>
                      </div>
                   </details>
@@ -3744,7 +3490,7 @@ The following is the XML format reference for this model, which is organized hie
                      </div>
                   </details>
                   <details class="properties elements" open="open">
-                     <summary>Elements (22)</summary>
+                     <summary>Elements (9)</summary>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
                            <h3 id="/component-definition/component/title" class="toc3 name">title</h3>
@@ -3755,9 +3501,6 @@ The following is the XML format reference for this model, which is organized hie
                         </div>
                         <div class="body">
                            <p class="description"><span class="usa-tag">Description</span> A human readable name for the component.</p>
-                           <details class="properties elements" open="open">
-                              <summary>Element (0)</summary>
-                           </details>
                         </div>
                      </div>
                      <div class="model-entry definition assembly">
@@ -3770,17 +3513,6 @@ The following is the XML format reference for this model, which is organized hie
                         </div>
                         <div class="body">
                            <p class="description"><span class="usa-tag">Description</span> A description of the component, including information about its function.</p>
-                           <details class="properties elements" open="open">
-                              <summary>Element (0)</summary>
-                              <div class="model-entry definition assembly">
-                                 <div class="instance-header">
-                                    <h3 id="/component-definition/component/description" class="toc3 name">(unwrapped)</h3>
-                                    <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
-                                    <p class="occurrence">[0 to ∞]</p>
-                                    <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/component/description/">Switch to JSON</a></div>
-                                 </div>
-                              </div>
-                           </details>
                         </div>
                      </div>
                      <div class="model-entry definition assembly">
@@ -3793,9 +3525,6 @@ The following is the XML format reference for this model, which is organized hie
                         </div>
                         <div class="body">
                            <p class="description"><span class="usa-tag">Description</span> A summary of the technological or business purpose of the component.</p>
-                           <details class="properties elements" open="open">
-                              <summary>Element (0)</summary>
-                           </details>
                         </div>
                      </div>
                      <div class="model-entry definition assembly">
@@ -3954,17 +3683,6 @@ The following is the XML format reference for this model, which is organized hie
                                  </div>
                                  <div class="body">
                                     <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
-                                    <details class="properties elements" open="open">
-                                       <summary>Element (0)</summary>
-                                       <div class="model-entry definition field">
-                                          <div class="instance-header">
-                                             <h4 id="/component-definition/component/prop/remarks" class="toc4 name">(unwrapped)</h4>
-                                             <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
-                                             <p class="occurrence">[0 to ∞]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/component/props/remarks/">Switch to JSON</a></div>
-                                          </div>
-                                       </div>
-                                    </details>
                                  </div>
                               </div>
                            </details>
@@ -4099,9 +3817,6 @@ The following is the XML format reference for this model, which is organized hie
                                  <div class="body">
                                     <p class="description"><span class="usa-tag">Description</span> A textual label to associate with the link, which may be used for presentation in
                                        a tool.</p>
-                                    <details class="properties elements" open="open">
-                                       <summary>Element (0)</summary>
-                                    </details>
                                  </div>
                               </div>
                            </details>
@@ -4134,7 +3849,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                            </details>
                            <details class="properties elements" open="open">
-                              <summary>Elements (6)</summary>
+                              <summary>Elements (4)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/component-definition/component/responsible-role/prop" class="toc4 name">prop</h4>
@@ -4291,17 +4006,6 @@ The following is the XML format reference for this model, which is organized hie
                                           </div>
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
-                                             <details class="properties elements" open="open">
-                                                <summary>Element (0)</summary>
-                                                <div class="model-entry definition field">
-                                                   <div class="instance-header">
-                                                      <h5 id="/component-definition/component/responsible-role/prop/remarks" class="toc5 name">(unwrapped)</h5>
-                                                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
-                                                      <p class="occurrence">[0 to ∞]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/component/responsible-roles/responsible-role/props/remarks/">Switch to JSON</a></div>
-                                                   </div>
-                                                </div>
-                                             </details>
                                           </div>
                                        </div>
                                     </details>
@@ -4436,9 +4140,6 @@ The following is the XML format reference for this model, which is organized hie
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> A textual label to associate with the link, which may be used for presentation in
                                                 a tool.</p>
-                                             <details class="properties elements" open="open">
-                                                <summary>Element (0)</summary>
-                                             </details>
                                           </div>
                                        </div>
                                     </details>
@@ -4460,9 +4161,6 @@ The following is the XML format reference for this model, which is organized hie
                                           <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-party-uuid</code> using a key constructed of key field(s) <code>value()</code></p>
                                        </div>
                                     </details>
-                                    <details class="properties elements" open="open">
-                                       <summary>Element (0)</summary>
-                                    </details>
                                  </div>
                               </div>
                               <div class="model-entry definition assembly">
@@ -4475,17 +4173,6 @@ The following is the XML format reference for this model, which is organized hie
                                  </div>
                                  <div class="body">
                                     <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
-                                    <details class="properties elements" open="open">
-                                       <summary>Element (0)</summary>
-                                       <div class="model-entry definition field">
-                                          <div class="instance-header">
-                                             <h4 id="/component-definition/component/responsible-role/remarks" class="toc4 name">(unwrapped)</h4>
-                                             <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
-                                             <p class="occurrence">[0 to ∞]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/component/responsible-roles/responsible-role/remarks/">Switch to JSON</a></div>
-                                          </div>
-                                       </div>
-                                    </details>
                                  </div>
                               </div>
                            </details>
@@ -4562,9 +4249,6 @@ The following is the XML format reference for this model, which is organized hie
                                  </div>
                                  <div class="body">
                                     <p class="description"><span class="usa-tag">Description</span> A human readable name for the protocol (e.g., Transport Layer Security).</p>
-                                    <details class="properties elements" open="open">
-                                       <summary>Element (0)</summary>
-                                    </details>
                                  </div>
                               </div>
                               <div class="model-entry definition assembly">
@@ -4721,7 +4405,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                            </details>
                            <details class="properties elements" open="open">
-                              <summary>Elements (16)</summary>
+                              <summary>Elements (5)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/component-definition/component/control-implementation/description" class="toc4 name">description</h4>
@@ -4733,17 +4417,6 @@ The following is the XML format reference for this model, which is organized hie
                                  <div class="body">
                                     <p class="description"><span class="usa-tag">Description</span> A description of how the specified set of controls are implemented for the containing
                                        component or capability.</p>
-                                    <details class="properties elements" open="open">
-                                       <summary>Element (0)</summary>
-                                       <div class="model-entry definition assembly">
-                                          <div class="instance-header">
-                                             <h4 id="/component-definition/component/control-implementation/description" class="toc4 name">(unwrapped)</h4>
-                                             <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
-                                             <p class="occurrence">[0 to ∞]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/component/control-implementations/description/">Switch to JSON</a></div>
-                                          </div>
-                                       </div>
-                                    </details>
                                  </div>
                               </div>
                               <div class="model-entry definition assembly">
@@ -4902,17 +4575,6 @@ The following is the XML format reference for this model, which is organized hie
                                           </div>
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
-                                             <details class="properties elements" open="open">
-                                                <summary>Element (0)</summary>
-                                                <div class="model-entry definition field">
-                                                   <div class="instance-header">
-                                                      <h5 id="/component-definition/component/control-implementation/prop/remarks" class="toc5 name">(unwrapped)</h5>
-                                                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
-                                                      <p class="occurrence">[0 to ∞]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/component/control-implementations/props/remarks/">Switch to JSON</a></div>
-                                                   </div>
-                                                </div>
-                                             </details>
                                           </div>
                                        </div>
                                     </details>
@@ -5047,9 +4709,6 @@ The following is the XML format reference for this model, which is organized hie
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> A textual label to associate with the link, which may be used for presentation in
                                                 a tool.</p>
-                                             <details class="properties elements" open="open">
-                                                <summary>Element (0)</summary>
-                                             </details>
                                           </div>
                                        </div>
                                     </details>
@@ -5093,9 +4752,6 @@ The following is the XML format reference for this model, which is organized hie
                                           </div>
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> A parameter value or set of values.</p>
-                                             <details class="properties elements" open="open">
-                                                <summary>Element (0)</summary>
-                                             </details>
                                           </div>
                                        </div>
                                        <div class="model-entry definition assembly">
@@ -5108,17 +4764,6 @@ The following is the XML format reference for this model, which is organized hie
                                           </div>
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
-                                             <details class="properties elements" open="open">
-                                                <summary>Element (0)</summary>
-                                                <div class="model-entry definition field">
-                                                   <div class="instance-header">
-                                                      <h5 id="/component-definition/component/control-implementation/set-parameter/remarks" class="toc5 name">(unwrapped)</h5>
-                                                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
-                                                      <p class="occurrence">[0 to ∞]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/component/control-implementations/set-parameters/set-parameter/remarks/">Switch to JSON</a></div>
-                                                   </div>
-                                                </div>
-                                             </details>
                                           </div>
                                        </div>
                                     </details>
@@ -5162,7 +4807,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                     </details>
                                     <details class="properties elements" open="open">
-                                       <summary>Elements (20)</summary>
+                                       <summary>Elements (7)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/component-definition/component/control-implementation/implemented-requirement/description" class="toc5 name">description</h5>
@@ -5174,17 +4819,6 @@ The following is the XML format reference for this model, which is organized hie
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> A description of how the specified control is implemented for the containing component
                                                 or capability.</p>
-                                             <details class="properties elements" open="open">
-                                                <summary>Element (0)</summary>
-                                                <div class="model-entry definition assembly">
-                                                   <div class="instance-header">
-                                                      <h5 id="/component-definition/component/control-implementation/implemented-requirement/description" class="toc5 name">(unwrapped)</h5>
-                                                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
-                                                      <p class="occurrence">[0 to ∞]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/component/control-implementations/implemented-requirements/description/">Switch to JSON</a></div>
-                                                   </div>
-                                                </div>
-                                             </details>
                                           </div>
                                        </div>
                                        <div class="model-entry definition assembly">
@@ -5343,17 +4977,6 @@ The following is the XML format reference for this model, which is organized hie
                                                    </div>
                                                    <div class="body">
                                                       <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
-                                                      <details class="properties elements" open="open">
-                                                         <summary>Element (0)</summary>
-                                                         <div class="model-entry definition field">
-                                                            <div class="instance-header">
-                                                               <h6 id="/component-definition/component/control-implementation/implemented-requirement/prop/remarks" class="toc6 name">(unwrapped)</h6>
-                                                               <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
-                                                               <p class="occurrence">[0 to ∞]</p>
-                                                               <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/component/control-implementations/implemented-requirements/props/remarks/">Switch to JSON</a></div>
-                                                            </div>
-                                                         </div>
-                                                      </details>
                                                    </div>
                                                 </div>
                                              </details>
@@ -5488,9 +5111,6 @@ The following is the XML format reference for this model, which is organized hie
                                                    <div class="body">
                                                       <p class="description"><span class="usa-tag">Description</span> A textual label to associate with the link, which may be used for presentation in
                                                          a tool.</p>
-                                                      <details class="properties elements" open="open">
-                                                         <summary>Element (0)</summary>
-                                                      </details>
                                                    </div>
                                                 </div>
                                              </details>
@@ -5523,7 +5143,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                              </details>
                                              <details class="properties elements" open="open">
-                                                <summary>Elements (6)</summary>
+                                                <summary>Elements (4)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/component-definition/component/control-implementation/implemented-requirement/responsible-role/prop" class="toc6 name">prop</h6>
@@ -5680,17 +5300,6 @@ The following is the XML format reference for this model, which is organized hie
                                                             </div>
                                                             <div class="body">
                                                                <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
-                                                               <details class="properties elements" open="open">
-                                                                  <summary>Element (0)</summary>
-                                                                  <div class="model-entry definition field">
-                                                                     <div class="instance-header">
-                                                                        <p id="/component-definition/component/control-implementation/implemented-requirement/responsible-role/prop/remarks" class="toc7 name">(unwrapped)</p>
-                                                                        <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
-                                                                        <p class="occurrence">[0 to ∞]</p>
-                                                                        <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/component/control-implementations/implemented-requirements/responsible-roles/responsible-role/props/remarks/">Switch to JSON</a></div>
-                                                                     </div>
-                                                                  </div>
-                                                               </details>
                                                             </div>
                                                          </div>
                                                       </details>
@@ -5825,9 +5434,6 @@ The following is the XML format reference for this model, which is organized hie
                                                             <div class="body">
                                                                <p class="description"><span class="usa-tag">Description</span> A textual label to associate with the link, which may be used for presentation in
                                                                   a tool.</p>
-                                                               <details class="properties elements" open="open">
-                                                                  <summary>Element (0)</summary>
-                                                               </details>
                                                             </div>
                                                          </div>
                                                       </details>
@@ -5849,9 +5455,6 @@ The following is the XML format reference for this model, which is organized hie
                                                             <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-party-uuid</code> using a key constructed of key field(s) <code>value()</code></p>
                                                          </div>
                                                       </details>
-                                                      <details class="properties elements" open="open">
-                                                         <summary>Element (0)</summary>
-                                                      </details>
                                                    </div>
                                                 </div>
                                                 <div class="model-entry definition assembly">
@@ -5864,17 +5467,6 @@ The following is the XML format reference for this model, which is organized hie
                                                    </div>
                                                    <div class="body">
                                                       <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
-                                                      <details class="properties elements" open="open">
-                                                         <summary>Element (0)</summary>
-                                                         <div class="model-entry definition field">
-                                                            <div class="instance-header">
-                                                               <h6 id="/component-definition/component/control-implementation/implemented-requirement/responsible-role/remarks" class="toc6 name">(unwrapped)</h6>
-                                                               <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
-                                                               <p class="occurrence">[0 to ∞]</p>
-                                                               <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/component/control-implementations/implemented-requirements/responsible-roles/responsible-role/remarks/">Switch to JSON</a></div>
-                                                            </div>
-                                                         </div>
-                                                      </details>
                                                    </div>
                                                 </div>
                                              </details>
@@ -5918,9 +5510,6 @@ The following is the XML format reference for this model, which is organized hie
                                                    </div>
                                                    <div class="body">
                                                       <p class="description"><span class="usa-tag">Description</span> A parameter value or set of values.</p>
-                                                      <details class="properties elements" open="open">
-                                                         <summary>Element (0)</summary>
-                                                      </details>
                                                    </div>
                                                 </div>
                                                 <div class="model-entry definition assembly">
@@ -5933,17 +5522,6 @@ The following is the XML format reference for this model, which is organized hie
                                                    </div>
                                                    <div class="body">
                                                       <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
-                                                      <details class="properties elements" open="open">
-                                                         <summary>Element (0)</summary>
-                                                         <div class="model-entry definition field">
-                                                            <div class="instance-header">
-                                                               <h6 id="/component-definition/component/control-implementation/implemented-requirement/set-parameter/remarks" class="toc6 name">(unwrapped)</h6>
-                                                               <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
-                                                               <p class="occurrence">[0 to ∞]</p>
-                                                               <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/component/control-implementations/implemented-requirements/set-parameters/set-parameter/remarks/">Switch to JSON</a></div>
-                                                            </div>
-                                                         </div>
-                                                      </details>
                                                    </div>
                                                 </div>
                                              </details>
@@ -5995,7 +5573,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                              </details>
                                              <details class="properties elements" open="open">
-                                                <summary>Elements (11)</summary>
+                                                <summary>Elements (5)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/component-definition/component/control-implementation/implemented-requirement/statement/description" class="toc6 name">description</h6>
@@ -6007,17 +5585,6 @@ The following is the XML format reference for this model, which is organized hie
                                                    <div class="body">
                                                       <p class="description"><span class="usa-tag">Description</span> A summary of how the containing control statement is implemented by the component
                                                          or capability.</p>
-                                                      <details class="properties elements" open="open">
-                                                         <summary>Element (0)</summary>
-                                                         <div class="model-entry definition assembly">
-                                                            <div class="instance-header">
-                                                               <h6 id="/component-definition/component/control-implementation/implemented-requirement/statement/description" class="toc6 name">(unwrapped)</h6>
-                                                               <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
-                                                               <p class="occurrence">[0 to ∞]</p>
-                                                               <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/component/control-implementations/implemented-requirements/statements/statement/description/">Switch to JSON</a></div>
-                                                            </div>
-                                                         </div>
-                                                      </details>
                                                    </div>
                                                 </div>
                                                 <div class="model-entry definition assembly">
@@ -6176,17 +5743,6 @@ The following is the XML format reference for this model, which is organized hie
                                                             </div>
                                                             <div class="body">
                                                                <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
-                                                               <details class="properties elements" open="open">
-                                                                  <summary>Element (0)</summary>
-                                                                  <div class="model-entry definition field">
-                                                                     <div class="instance-header">
-                                                                        <p id="/component-definition/component/control-implementation/implemented-requirement/statement/prop/remarks" class="toc7 name">(unwrapped)</p>
-                                                                        <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
-                                                                        <p class="occurrence">[0 to ∞]</p>
-                                                                        <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/component/control-implementations/implemented-requirements/statements/statement/props/remarks/">Switch to JSON</a></div>
-                                                                     </div>
-                                                                  </div>
-                                                               </details>
                                                             </div>
                                                          </div>
                                                       </details>
@@ -6321,9 +5877,6 @@ The following is the XML format reference for this model, which is organized hie
                                                             <div class="body">
                                                                <p class="description"><span class="usa-tag">Description</span> A textual label to associate with the link, which may be used for presentation in
                                                                   a tool.</p>
-                                                               <details class="properties elements" open="open">
-                                                                  <summary>Element (0)</summary>
-                                                               </details>
                                                             </div>
                                                          </div>
                                                       </details>
@@ -6356,7 +5909,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          </div>
                                                       </details>
                                                       <details class="properties elements" open="open">
-                                                         <summary>Elements (6)</summary>
+                                                         <summary>Elements (4)</summary>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
                                                                <p id="/component-definition/component/control-implementation/implemented-requirement/statement/responsible-role/prop" class="toc7 name">prop</p>
@@ -6513,17 +6066,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                      </div>
                                                                      <div class="body">
                                                                         <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
-                                                                        <details class="properties elements" open="open">
-                                                                           <summary>Element (0)</summary>
-                                                                           <div class="model-entry definition field">
-                                                                              <div class="instance-header">
-                                                                                 <p id="/component-definition/component/control-implementation/implemented-requirement/statement/responsible-role/prop/remarks" class="toc8 name">(unwrapped)</p>
-                                                                                 <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
-                                                                                 <p class="occurrence">[0 to ∞]</p>
-                                                                                 <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/component/control-implementations/implemented-requirements/statements/statement/responsible-roles/responsible-role/props/remarks/">Switch to JSON</a></div>
-                                                                              </div>
-                                                                           </div>
-                                                                        </details>
                                                                      </div>
                                                                   </div>
                                                                </details>
@@ -6658,9 +6200,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                      <div class="body">
                                                                         <p class="description"><span class="usa-tag">Description</span> A textual label to associate with the link, which may be used for presentation in
                                                                            a tool.</p>
-                                                                        <details class="properties elements" open="open">
-                                                                           <summary>Element (0)</summary>
-                                                                        </details>
                                                                      </div>
                                                                   </div>
                                                                </details>
@@ -6682,9 +6221,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                      <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-party-uuid</code> using a key constructed of key field(s) <code>value()</code></p>
                                                                   </div>
                                                                </details>
-                                                               <details class="properties elements" open="open">
-                                                                  <summary>Element (0)</summary>
-                                                               </details>
                                                             </div>
                                                          </div>
                                                          <div class="model-entry definition assembly">
@@ -6697,17 +6233,6 @@ The following is the XML format reference for this model, which is organized hie
                                                             </div>
                                                             <div class="body">
                                                                <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
-                                                               <details class="properties elements" open="open">
-                                                                  <summary>Element (0)</summary>
-                                                                  <div class="model-entry definition field">
-                                                                     <div class="instance-header">
-                                                                        <p id="/component-definition/component/control-implementation/implemented-requirement/statement/responsible-role/remarks" class="toc7 name">(unwrapped)</p>
-                                                                        <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
-                                                                        <p class="occurrence">[0 to ∞]</p>
-                                                                        <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/component/control-implementations/implemented-requirements/statements/statement/responsible-roles/responsible-role/remarks/">Switch to JSON</a></div>
-                                                                     </div>
-                                                                  </div>
-                                                               </details>
                                                             </div>
                                                          </div>
                                                       </details>
@@ -6723,17 +6248,6 @@ The following is the XML format reference for this model, which is organized hie
                                                    </div>
                                                    <div class="body">
                                                       <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
-                                                      <details class="properties elements" open="open">
-                                                         <summary>Element (0)</summary>
-                                                         <div class="model-entry definition field">
-                                                            <div class="instance-header">
-                                                               <h6 id="/component-definition/component/control-implementation/implemented-requirement/statement/remarks" class="toc6 name">(unwrapped)</h6>
-                                                               <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
-                                                               <p class="occurrence">[0 to ∞]</p>
-                                                               <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/component/control-implementations/implemented-requirements/statements/statement/remarks/">Switch to JSON</a></div>
-                                                            </div>
-                                                         </div>
-                                                      </details>
                                                    </div>
                                                 </div>
                                              </details>
@@ -6749,17 +6263,6 @@ The following is the XML format reference for this model, which is organized hie
                                           </div>
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
-                                             <details class="properties elements" open="open">
-                                                <summary>Element (0)</summary>
-                                                <div class="model-entry definition field">
-                                                   <div class="instance-header">
-                                                      <h5 id="/component-definition/component/control-implementation/implemented-requirement/remarks" class="toc5 name">(unwrapped)</h5>
-                                                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
-                                                      <p class="occurrence">[0 to ∞]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/component/control-implementations/implemented-requirements/remarks/">Switch to JSON</a></div>
-                                                   </div>
-                                                </div>
-                                             </details>
                                           </div>
                                        </div>
                                     </details>
@@ -6778,17 +6281,6 @@ The following is the XML format reference for this model, which is organized hie
                         </div>
                         <div class="body">
                            <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
-                           <details class="properties elements" open="open">
-                              <summary>Element (0)</summary>
-                              <div class="model-entry definition field">
-                                 <div class="instance-header">
-                                    <h3 id="/component-definition/component/remarks" class="toc3 name">(unwrapped)</h3>
-                                    <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
-                                    <p class="occurrence">[0 to ∞]</p>
-                                    <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/components/component/remarks/">Switch to JSON</a></div>
-                                 </div>
-                              </div>
-                           </details>
                         </div>
                      </div>
                   </details>
@@ -6832,7 +6324,7 @@ The following is the XML format reference for this model, which is organized hie
                      </div>
                   </details>
                   <details class="properties elements" open="open">
-                     <summary>Elements (14)</summary>
+                     <summary>Elements (6)</summary>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
                            <h3 id="/component-definition/capability/description" class="toc3 name">description</h3>
@@ -6843,17 +6335,6 @@ The following is the XML format reference for this model, which is organized hie
                         </div>
                         <div class="body">
                            <p class="description"><span class="usa-tag">Description</span> A summary of the capability.</p>
-                           <details class="properties elements" open="open">
-                              <summary>Element (0)</summary>
-                              <div class="model-entry definition assembly">
-                                 <div class="instance-header">
-                                    <h3 id="/component-definition/capability/description" class="toc3 name">(unwrapped)</h3>
-                                    <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
-                                    <p class="occurrence">[0 to ∞]</p>
-                                    <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/capability/description/">Switch to JSON</a></div>
-                                 </div>
-                              </div>
-                           </details>
                         </div>
                      </div>
                      <div class="model-entry definition assembly">
@@ -7012,17 +6493,6 @@ The following is the XML format reference for this model, which is organized hie
                                  </div>
                                  <div class="body">
                                     <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
-                                    <details class="properties elements" open="open">
-                                       <summary>Element (0)</summary>
-                                       <div class="model-entry definition field">
-                                          <div class="instance-header">
-                                             <h4 id="/component-definition/capability/prop/remarks" class="toc4 name">(unwrapped)</h4>
-                                             <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
-                                             <p class="occurrence">[0 to ∞]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/capability/props/remarks/">Switch to JSON</a></div>
-                                          </div>
-                                       </div>
-                                    </details>
                                  </div>
                               </div>
                            </details>
@@ -7157,9 +6627,6 @@ The following is the XML format reference for this model, which is organized hie
                                  <div class="body">
                                     <p class="description"><span class="usa-tag">Description</span> A textual label to associate with the link, which may be used for presentation in
                                        a tool.</p>
-                                    <details class="properties elements" open="open">
-                                       <summary>Element (0)</summary>
-                                    </details>
                                  </div>
                               </div>
                            </details>
@@ -7202,17 +6669,6 @@ The following is the XML format reference for this model, which is organized hie
                                  </div>
                                  <div class="body">
                                     <p class="description"><span class="usa-tag">Description</span> A description of the component, including information about its function.</p>
-                                    <details class="properties elements" open="open">
-                                       <summary>Element (0)</summary>
-                                       <div class="model-entry definition assembly">
-                                          <div class="instance-header">
-                                             <h4 id="/component-definition/capability/incorporates-component/description" class="toc4 name">(unwrapped)</h4>
-                                             <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
-                                             <p class="occurrence">[0 to ∞]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/capability/incorporates-components/incorporates-component/description/">Switch to JSON</a></div>
-                                          </div>
-                                       </div>
-                                    </details>
                                  </div>
                               </div>
                            </details>
@@ -7274,7 +6730,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                            </details>
                            <details class="properties elements" open="open">
-                              <summary>Elements (16)</summary>
+                              <summary>Elements (5)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/component-definition/capability/control-implementation/description" class="toc4 name">description</h4>
@@ -7286,17 +6742,6 @@ The following is the XML format reference for this model, which is organized hie
                                  <div class="body">
                                     <p class="description"><span class="usa-tag">Description</span> A description of how the specified set of controls are implemented for the containing
                                        component or capability.</p>
-                                    <details class="properties elements" open="open">
-                                       <summary>Element (0)</summary>
-                                       <div class="model-entry definition assembly">
-                                          <div class="instance-header">
-                                             <h4 id="/component-definition/capability/control-implementation/description" class="toc4 name">(unwrapped)</h4>
-                                             <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
-                                             <p class="occurrence">[0 to ∞]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/capability/control-implementations/description/">Switch to JSON</a></div>
-                                          </div>
-                                       </div>
-                                    </details>
                                  </div>
                               </div>
                               <div class="model-entry definition assembly">
@@ -7455,17 +6900,6 @@ The following is the XML format reference for this model, which is organized hie
                                           </div>
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
-                                             <details class="properties elements" open="open">
-                                                <summary>Element (0)</summary>
-                                                <div class="model-entry definition field">
-                                                   <div class="instance-header">
-                                                      <h5 id="/component-definition/capability/control-implementation/prop/remarks" class="toc5 name">(unwrapped)</h5>
-                                                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
-                                                      <p class="occurrence">[0 to ∞]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/capability/control-implementations/props/remarks/">Switch to JSON</a></div>
-                                                   </div>
-                                                </div>
-                                             </details>
                                           </div>
                                        </div>
                                     </details>
@@ -7600,9 +7034,6 @@ The following is the XML format reference for this model, which is organized hie
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> A textual label to associate with the link, which may be used for presentation in
                                                 a tool.</p>
-                                             <details class="properties elements" open="open">
-                                                <summary>Element (0)</summary>
-                                             </details>
                                           </div>
                                        </div>
                                     </details>
@@ -7646,9 +7077,6 @@ The following is the XML format reference for this model, which is organized hie
                                           </div>
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> A parameter value or set of values.</p>
-                                             <details class="properties elements" open="open">
-                                                <summary>Element (0)</summary>
-                                             </details>
                                           </div>
                                        </div>
                                        <div class="model-entry definition assembly">
@@ -7661,17 +7089,6 @@ The following is the XML format reference for this model, which is organized hie
                                           </div>
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
-                                             <details class="properties elements" open="open">
-                                                <summary>Element (0)</summary>
-                                                <div class="model-entry definition field">
-                                                   <div class="instance-header">
-                                                      <h5 id="/component-definition/capability/control-implementation/set-parameter/remarks" class="toc5 name">(unwrapped)</h5>
-                                                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
-                                                      <p class="occurrence">[0 to ∞]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/capability/control-implementations/set-parameters/set-parameter/remarks/">Switch to JSON</a></div>
-                                                   </div>
-                                                </div>
-                                             </details>
                                           </div>
                                        </div>
                                     </details>
@@ -7715,7 +7132,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </div>
                                     </details>
                                     <details class="properties elements" open="open">
-                                       <summary>Elements (20)</summary>
+                                       <summary>Elements (7)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/component-definition/capability/control-implementation/implemented-requirement/description" class="toc5 name">description</h5>
@@ -7727,17 +7144,6 @@ The following is the XML format reference for this model, which is organized hie
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> A description of how the specified control is implemented for the containing component
                                                 or capability.</p>
-                                             <details class="properties elements" open="open">
-                                                <summary>Element (0)</summary>
-                                                <div class="model-entry definition assembly">
-                                                   <div class="instance-header">
-                                                      <h5 id="/component-definition/capability/control-implementation/implemented-requirement/description" class="toc5 name">(unwrapped)</h5>
-                                                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
-                                                      <p class="occurrence">[0 to ∞]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/capability/control-implementations/implemented-requirements/description/">Switch to JSON</a></div>
-                                                   </div>
-                                                </div>
-                                             </details>
                                           </div>
                                        </div>
                                        <div class="model-entry definition assembly">
@@ -7896,17 +7302,6 @@ The following is the XML format reference for this model, which is organized hie
                                                    </div>
                                                    <div class="body">
                                                       <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
-                                                      <details class="properties elements" open="open">
-                                                         <summary>Element (0)</summary>
-                                                         <div class="model-entry definition field">
-                                                            <div class="instance-header">
-                                                               <h6 id="/component-definition/capability/control-implementation/implemented-requirement/prop/remarks" class="toc6 name">(unwrapped)</h6>
-                                                               <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
-                                                               <p class="occurrence">[0 to ∞]</p>
-                                                               <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/capability/control-implementations/implemented-requirements/props/remarks/">Switch to JSON</a></div>
-                                                            </div>
-                                                         </div>
-                                                      </details>
                                                    </div>
                                                 </div>
                                              </details>
@@ -8041,9 +7436,6 @@ The following is the XML format reference for this model, which is organized hie
                                                    <div class="body">
                                                       <p class="description"><span class="usa-tag">Description</span> A textual label to associate with the link, which may be used for presentation in
                                                          a tool.</p>
-                                                      <details class="properties elements" open="open">
-                                                         <summary>Element (0)</summary>
-                                                      </details>
                                                    </div>
                                                 </div>
                                              </details>
@@ -8076,7 +7468,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                              </details>
                                              <details class="properties elements" open="open">
-                                                <summary>Elements (6)</summary>
+                                                <summary>Elements (4)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/component-definition/capability/control-implementation/implemented-requirement/responsible-role/prop" class="toc6 name">prop</h6>
@@ -8233,17 +7625,6 @@ The following is the XML format reference for this model, which is organized hie
                                                             </div>
                                                             <div class="body">
                                                                <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
-                                                               <details class="properties elements" open="open">
-                                                                  <summary>Element (0)</summary>
-                                                                  <div class="model-entry definition field">
-                                                                     <div class="instance-header">
-                                                                        <p id="/component-definition/capability/control-implementation/implemented-requirement/responsible-role/prop/remarks" class="toc7 name">(unwrapped)</p>
-                                                                        <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
-                                                                        <p class="occurrence">[0 to ∞]</p>
-                                                                        <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/capability/control-implementations/implemented-requirements/responsible-roles/responsible-role/props/remarks/">Switch to JSON</a></div>
-                                                                     </div>
-                                                                  </div>
-                                                               </details>
                                                             </div>
                                                          </div>
                                                       </details>
@@ -8378,9 +7759,6 @@ The following is the XML format reference for this model, which is organized hie
                                                             <div class="body">
                                                                <p class="description"><span class="usa-tag">Description</span> A textual label to associate with the link, which may be used for presentation in
                                                                   a tool.</p>
-                                                               <details class="properties elements" open="open">
-                                                                  <summary>Element (0)</summary>
-                                                               </details>
                                                             </div>
                                                          </div>
                                                       </details>
@@ -8402,9 +7780,6 @@ The following is the XML format reference for this model, which is organized hie
                                                             <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-party-uuid</code> using a key constructed of key field(s) <code>value()</code></p>
                                                          </div>
                                                       </details>
-                                                      <details class="properties elements" open="open">
-                                                         <summary>Element (0)</summary>
-                                                      </details>
                                                    </div>
                                                 </div>
                                                 <div class="model-entry definition assembly">
@@ -8417,17 +7792,6 @@ The following is the XML format reference for this model, which is organized hie
                                                    </div>
                                                    <div class="body">
                                                       <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
-                                                      <details class="properties elements" open="open">
-                                                         <summary>Element (0)</summary>
-                                                         <div class="model-entry definition field">
-                                                            <div class="instance-header">
-                                                               <h6 id="/component-definition/capability/control-implementation/implemented-requirement/responsible-role/remarks" class="toc6 name">(unwrapped)</h6>
-                                                               <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
-                                                               <p class="occurrence">[0 to ∞]</p>
-                                                               <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/capability/control-implementations/implemented-requirements/responsible-roles/responsible-role/remarks/">Switch to JSON</a></div>
-                                                            </div>
-                                                         </div>
-                                                      </details>
                                                    </div>
                                                 </div>
                                              </details>
@@ -8471,9 +7835,6 @@ The following is the XML format reference for this model, which is organized hie
                                                    </div>
                                                    <div class="body">
                                                       <p class="description"><span class="usa-tag">Description</span> A parameter value or set of values.</p>
-                                                      <details class="properties elements" open="open">
-                                                         <summary>Element (0)</summary>
-                                                      </details>
                                                    </div>
                                                 </div>
                                                 <div class="model-entry definition assembly">
@@ -8486,17 +7847,6 @@ The following is the XML format reference for this model, which is organized hie
                                                    </div>
                                                    <div class="body">
                                                       <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
-                                                      <details class="properties elements" open="open">
-                                                         <summary>Element (0)</summary>
-                                                         <div class="model-entry definition field">
-                                                            <div class="instance-header">
-                                                               <h6 id="/component-definition/capability/control-implementation/implemented-requirement/set-parameter/remarks" class="toc6 name">(unwrapped)</h6>
-                                                               <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
-                                                               <p class="occurrence">[0 to ∞]</p>
-                                                               <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/capability/control-implementations/implemented-requirements/set-parameters/set-parameter/remarks/">Switch to JSON</a></div>
-                                                            </div>
-                                                         </div>
-                                                      </details>
                                                    </div>
                                                 </div>
                                              </details>
@@ -8548,7 +7898,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 </div>
                                              </details>
                                              <details class="properties elements" open="open">
-                                                <summary>Elements (11)</summary>
+                                                <summary>Elements (5)</summary>
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/component-definition/capability/control-implementation/implemented-requirement/statement/description" class="toc6 name">description</h6>
@@ -8560,17 +7910,6 @@ The following is the XML format reference for this model, which is organized hie
                                                    <div class="body">
                                                       <p class="description"><span class="usa-tag">Description</span> A summary of how the containing control statement is implemented by the component
                                                          or capability.</p>
-                                                      <details class="properties elements" open="open">
-                                                         <summary>Element (0)</summary>
-                                                         <div class="model-entry definition assembly">
-                                                            <div class="instance-header">
-                                                               <h6 id="/component-definition/capability/control-implementation/implemented-requirement/statement/description" class="toc6 name">(unwrapped)</h6>
-                                                               <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
-                                                               <p class="occurrence">[0 to ∞]</p>
-                                                               <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/capability/control-implementations/implemented-requirements/statements/statement/description/">Switch to JSON</a></div>
-                                                            </div>
-                                                         </div>
-                                                      </details>
                                                    </div>
                                                 </div>
                                                 <div class="model-entry definition assembly">
@@ -8729,17 +8068,6 @@ The following is the XML format reference for this model, which is organized hie
                                                             </div>
                                                             <div class="body">
                                                                <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
-                                                               <details class="properties elements" open="open">
-                                                                  <summary>Element (0)</summary>
-                                                                  <div class="model-entry definition field">
-                                                                     <div class="instance-header">
-                                                                        <p id="/component-definition/capability/control-implementation/implemented-requirement/statement/prop/remarks" class="toc7 name">(unwrapped)</p>
-                                                                        <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
-                                                                        <p class="occurrence">[0 to ∞]</p>
-                                                                        <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/capability/control-implementations/implemented-requirements/statements/statement/props/remarks/">Switch to JSON</a></div>
-                                                                     </div>
-                                                                  </div>
-                                                               </details>
                                                             </div>
                                                          </div>
                                                       </details>
@@ -8874,9 +8202,6 @@ The following is the XML format reference for this model, which is organized hie
                                                             <div class="body">
                                                                <p class="description"><span class="usa-tag">Description</span> A textual label to associate with the link, which may be used for presentation in
                                                                   a tool.</p>
-                                                               <details class="properties elements" open="open">
-                                                                  <summary>Element (0)</summary>
-                                                               </details>
                                                             </div>
                                                          </div>
                                                       </details>
@@ -8909,7 +8234,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          </div>
                                                       </details>
                                                       <details class="properties elements" open="open">
-                                                         <summary>Elements (6)</summary>
+                                                         <summary>Elements (4)</summary>
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
                                                                <p id="/component-definition/capability/control-implementation/implemented-requirement/statement/responsible-role/prop" class="toc7 name">prop</p>
@@ -9066,17 +8391,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                      </div>
                                                                      <div class="body">
                                                                         <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
-                                                                        <details class="properties elements" open="open">
-                                                                           <summary>Element (0)</summary>
-                                                                           <div class="model-entry definition field">
-                                                                              <div class="instance-header">
-                                                                                 <p id="/component-definition/capability/control-implementation/implemented-requirement/statement/responsible-role/prop/remarks" class="toc8 name">(unwrapped)</p>
-                                                                                 <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
-                                                                                 <p class="occurrence">[0 to ∞]</p>
-                                                                                 <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/capability/control-implementations/implemented-requirements/statements/statement/responsible-roles/responsible-role/props/remarks/">Switch to JSON</a></div>
-                                                                              </div>
-                                                                           </div>
-                                                                        </details>
                                                                      </div>
                                                                   </div>
                                                                </details>
@@ -9211,9 +8525,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                      <div class="body">
                                                                         <p class="description"><span class="usa-tag">Description</span> A textual label to associate with the link, which may be used for presentation in
                                                                            a tool.</p>
-                                                                        <details class="properties elements" open="open">
-                                                                           <summary>Element (0)</summary>
-                                                                        </details>
                                                                      </div>
                                                                   </div>
                                                                </details>
@@ -9235,9 +8546,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                      <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-party-uuid</code> using a key constructed of key field(s) <code>value()</code></p>
                                                                   </div>
                                                                </details>
-                                                               <details class="properties elements" open="open">
-                                                                  <summary>Element (0)</summary>
-                                                               </details>
                                                             </div>
                                                          </div>
                                                          <div class="model-entry definition assembly">
@@ -9250,17 +8558,6 @@ The following is the XML format reference for this model, which is organized hie
                                                             </div>
                                                             <div class="body">
                                                                <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
-                                                               <details class="properties elements" open="open">
-                                                                  <summary>Element (0)</summary>
-                                                                  <div class="model-entry definition field">
-                                                                     <div class="instance-header">
-                                                                        <p id="/component-definition/capability/control-implementation/implemented-requirement/statement/responsible-role/remarks" class="toc7 name">(unwrapped)</p>
-                                                                        <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
-                                                                        <p class="occurrence">[0 to ∞]</p>
-                                                                        <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/capability/control-implementations/implemented-requirements/statements/statement/responsible-roles/responsible-role/remarks/">Switch to JSON</a></div>
-                                                                     </div>
-                                                                  </div>
-                                                               </details>
                                                             </div>
                                                          </div>
                                                       </details>
@@ -9276,17 +8573,6 @@ The following is the XML format reference for this model, which is organized hie
                                                    </div>
                                                    <div class="body">
                                                       <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
-                                                      <details class="properties elements" open="open">
-                                                         <summary>Element (0)</summary>
-                                                         <div class="model-entry definition field">
-                                                            <div class="instance-header">
-                                                               <h6 id="/component-definition/capability/control-implementation/implemented-requirement/statement/remarks" class="toc6 name">(unwrapped)</h6>
-                                                               <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
-                                                               <p class="occurrence">[0 to ∞]</p>
-                                                               <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/capability/control-implementations/implemented-requirements/statements/statement/remarks/">Switch to JSON</a></div>
-                                                            </div>
-                                                         </div>
-                                                      </details>
                                                    </div>
                                                 </div>
                                              </details>
@@ -9302,17 +8588,6 @@ The following is the XML format reference for this model, which is organized hie
                                           </div>
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
-                                             <details class="properties elements" open="open">
-                                                <summary>Element (0)</summary>
-                                                <div class="model-entry definition field">
-                                                   <div class="instance-header">
-                                                      <h5 id="/component-definition/capability/control-implementation/implemented-requirement/remarks" class="toc5 name">(unwrapped)</h5>
-                                                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
-                                                      <p class="occurrence">[0 to ∞]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/capability/control-implementations/implemented-requirements/remarks/">Switch to JSON</a></div>
-                                                   </div>
-                                                </div>
-                                             </details>
                                           </div>
                                        </div>
                                     </details>
@@ -9331,17 +8606,6 @@ The following is the XML format reference for this model, which is organized hie
                         </div>
                         <div class="body">
                            <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
-                           <details class="properties elements" open="open">
-                              <summary>Element (0)</summary>
-                              <div class="model-entry definition field">
-                                 <div class="instance-header">
-                                    <h3 id="/component-definition/capability/remarks" class="toc3 name">(unwrapped)</h3>
-                                    <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
-                                    <p class="occurrence">[0 to ∞]</p>
-                                    <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/capabilities/capability/remarks/">Switch to JSON</a></div>
-                                 </div>
-                              </div>
-                           </details>
                         </div>
                      </div>
                   </details>
@@ -9374,7 +8638,7 @@ The following is the XML format reference for this model, which is organized hie
                      </div>
                   </details>
                   <details class="properties elements" open="open">
-                     <summary>Elements (9)</summary>
+                     <summary>Element (1)</summary>
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
                            <h3 id="/component-definition/back-matter/resource" class="toc3 name">resource</h3>
@@ -9524,7 +8788,7 @@ The following is the XML format reference for this model, which is organized hie
                               </div>
                            </details>
                            <details class="properties elements" open="open">
-                              <summary>Elements (13)</summary>
+                              <summary>Elements (8)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/component-definition/back-matter/resource/title" class="toc4 name">title</h4>
@@ -9535,9 +8799,6 @@ The following is the XML format reference for this model, which is organized hie
                                  </div>
                                  <div class="body">
                                     <p class="description"><span class="usa-tag">Description</span> A name given to the resource, which may be used by a tool for display and navigation.</p>
-                                    <details class="properties elements" open="open">
-                                       <summary>Element (0)</summary>
-                                    </details>
                                  </div>
                               </div>
                               <div class="model-entry definition assembly">
@@ -9550,17 +8811,6 @@ The following is the XML format reference for this model, which is organized hie
                                  </div>
                                  <div class="body">
                                     <p class="description"><span class="usa-tag">Description</span> A short summary of the resource used to indicate the purpose of the resource.</p>
-                                    <details class="properties elements" open="open">
-                                       <summary>Element (0)</summary>
-                                       <div class="model-entry definition assembly">
-                                          <div class="instance-header">
-                                             <h4 id="/component-definition/back-matter/resource/description" class="toc4 name">(unwrapped)</h4>
-                                             <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
-                                             <p class="occurrence">[0 to ∞]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/back-matter/resources/description/">Switch to JSON</a></div>
-                                          </div>
-                                       </div>
-                                    </details>
                                  </div>
                               </div>
                               <div class="model-entry definition assembly">
@@ -9719,17 +8969,6 @@ The following is the XML format reference for this model, which is organized hie
                                           </div>
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
-                                             <details class="properties elements" open="open">
-                                                <summary>Element (0)</summary>
-                                                <div class="model-entry definition field">
-                                                   <div class="instance-header">
-                                                      <h5 id="/component-definition/back-matter/resource/prop/remarks" class="toc5 name">(unwrapped)</h5>
-                                                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
-                                                      <p class="occurrence">[0 to ∞]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/back-matter/resources/props/remarks/">Switch to JSON</a></div>
-                                                   </div>
-                                                </div>
-                                             </details>
                                           </div>
                                        </div>
                                     </details>
@@ -9748,6 +8987,9 @@ The following is the XML format reference for this model, which is organized hie
                                        that are to be treated as different versions of the same document. If this element
                                        does not appear, or if the value of this element is empty, the value of "document-id"
                                        is equal to the value of the "uuid" flag of the top-level root element.</p>
+                                    <div class="value">
+                                       <p>Value: A string value.</p>
+                                    </div>
                                     <div class="remarks-group usa-prose">
                                        <details open="open">
                                           <summary class="subhead">Remarks</summary>
@@ -9788,9 +9030,6 @@ The following is the XML format reference for this model, which is organized hie
                                           </div>
                                        </div>
                                     </details>
-                                    <details class="properties elements" open="open">
-                                       <summary>Element (0)</summary>
-                                    </details>
                                  </div>
                               </div>
                               <div class="model-entry definition assembly">
@@ -9819,7 +9058,7 @@ The following is the XML format reference for this model, which is organized hie
                                        </details>
                                     </div>
                                     <details class="properties elements" open="open">
-                                       <summary>Elements (4)</summary>
+                                       <summary>Elements (3)</summary>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/component-definition/back-matter/resource/citation/text" class="toc5 name">text</h5>
@@ -9830,9 +9069,6 @@ The following is the XML format reference for this model, which is organized hie
                                           </div>
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> A line of citation text.</p>
-                                             <details class="properties elements" open="open">
-                                                <summary>Element (0)</summary>
-                                             </details>
                                           </div>
                                        </div>
                                        <div class="model-entry definition assembly">
@@ -9991,17 +9227,6 @@ The following is the XML format reference for this model, which is organized hie
                                                    </div>
                                                    <div class="body">
                                                       <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
-                                                      <details class="properties elements" open="open">
-                                                         <summary>Element (0)</summary>
-                                                         <div class="model-entry definition field">
-                                                            <div class="instance-header">
-                                                               <h6 id="/component-definition/back-matter/resource/citation/prop/remarks" class="toc6 name">(unwrapped)</h6>
-                                                               <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
-                                                               <p class="occurrence">[0 to ∞]</p>
-                                                               <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/back-matter/resources/citation/props/remarks/">Switch to JSON</a></div>
-                                                            </div>
-                                                         </div>
-                                                      </details>
                                                    </div>
                                                 </div>
                                              </details>
@@ -10092,6 +9317,9 @@ The following is the XML format reference for this model, which is organized hie
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> A representation of a cryptographic digest generated over a resource using a specified
                                                 hash algorithm.</p>
+                                             <div class="value">
+                                                <p>Value: A string value.</p>
+                                             </div>
                                              <div class="remarks-group usa-prose">
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
@@ -10163,9 +9391,6 @@ The following is the XML format reference for this model, which is organized hie
                                                    </div>
                                                 </div>
                                              </details>
-                                             <details class="properties elements" open="open">
-                                                <summary>Element (0)</summary>
-                                             </details>
                                           </div>
                                        </div>
                                     </details>
@@ -10181,6 +9406,9 @@ The following is the XML format reference for this model, which is organized hie
                                  </div>
                                  <div class="body">
                                     <p class="description"><span class="usa-tag">Description</span> The Base64 alphabet in RFC 2045 - aligned with XSD.</p>
+                                    <div class="value">
+                                       <p>Value: A base64Binary value.</p>
+                                    </div>
                                     <details class="properties attributes" open="open">
                                        <summary>Attributes (2)</summary>
                                        <div class="model-entry definition assembly">
@@ -10209,9 +9437,6 @@ The following is the XML format reference for this model, which is organized hie
                                           </div>
                                        </div>
                                     </details>
-                                    <details class="properties elements" open="open">
-                                       <summary>Element (0)</summary>
-                                    </details>
                                  </div>
                               </div>
                               <div class="model-entry definition assembly">
@@ -10224,17 +9449,6 @@ The following is the XML format reference for this model, which is organized hie
                                  </div>
                                  <div class="body">
                                     <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
-                                    <details class="properties elements" open="open">
-                                       <summary>Element (0)</summary>
-                                       <div class="model-entry definition field">
-                                          <div class="instance-header">
-                                             <h4 id="/component-definition/back-matter/resource/remarks" class="toc4 name">(unwrapped)</h4>
-                                             <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
-                                             <p class="occurrence">[0 to ∞]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/component-definition/back-matter/resources/remarks/">Switch to JSON</a></div>
-                                          </div>
-                                       </div>
-                                    </details>
                                  </div>
                               </div>
                            </details>

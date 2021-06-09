@@ -2862,10 +2862,10 @@ The following is the JSON format reference for this model, which is organized hi
                               <summary>Property (1)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/profile/metadata/responsible-parties/responsible-party" class="toc4 name">{role-id}</h4>
+                                    <h4 id="/profile/metadata/responsible-parties/responsible-party/role-id" class="toc4 name">{role-id}</h4>
                                     <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-metadata/metadata/responsible-parties">(global definition)</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
-                                    <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/metadata/responsible-party">Switch to XML</a></div>
+                                    <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/metadata/responsible-party/role-id">Switch to XML</a></div>
                                     <p class="formal-name">Responsible Party</p>
                                  </div>
                                  <div class="body">
@@ -5940,10 +5940,10 @@ The following is the JSON format reference for this model, which is organized hi
                               <summary>Property (1)</summary>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
-                                    <h4 id="/profile/modify/set-parameters/set-parameter" class="toc4 name">{param-id}</h4>
+                                    <h4 id="/profile/modify/set-parameters/set-parameter/param-id" class="toc4 name">{param-id}</h4>
                                     <p class="type">object<br /> <a class="definition-link" href="../json-definitions/#/assembly/oscal-profile/modify/set-parameters">(global definition)</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
-                                    <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/modify/set-parameter">Switch to XML</a></div>
+                                    <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/modify/set-parameter/param-id">Switch to XML</a></div>
                                     <p class="formal-name">Parameter Setting</p>
                                  </div>
                                  <div class="body">
