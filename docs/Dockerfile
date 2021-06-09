@@ -1,5 +1,5 @@
-FROM ubuntu:18.04
-ARG HUGO_VERSION=0.69.2
+FROM ubuntu:20.04
+ARG HUGO_VERSION=0.83.1
 
 RUN mkdir /hugo && \
   cd /hugo && \

@@ -7,9 +7,11 @@ menu:
     weight: 50
 toc:
   enabled: true
+toc:
+  enabled: true
 ---
 
-The [OSCAL models](/documentation/schema/) provide standardized formats for exchanging control, control implementation, and control assessment information in XML, JSON, and YAML. These formats allow this information to be exchanged between tools and for individual tools to process exchanged data, supporting analytics, user interaction, and increased automation.
+The [OSCAL models](/concepts/layer/) provide standardized formats for exchanging control, control implementation, and control assessment information in XML, JSON, and YAML. These formats allow this information to be exchanged between tools and for individual tools to process exchanged data, supporting analytics, user interaction, and increased automation.
 
 Tools exist that support the use of the OSCAL models. These tools are listed below in the following categories:
 
@@ -26,7 +28,7 @@ See the [NIST Software Disclaimer](https://www.nist.gov/disclaimer) for more inf
 
 ## OSCAL Project: Open Source Tools and Libraries
 
-- **[OSCAL Java Library:](https://github.com/usnistgov/liboscal-java)** Provides a Java-based programming API for reading and writing content conformant to the OSCAL XML, JSON, and YAML based models. This library is kept up-to-date with the [latest formats](/documentation/schema/) provided by the OSCAL project.
+- **[OSCAL Java Library:](https://github.com/usnistgov/liboscal-java)** Provides a Java-based programming API for reading and writing content conformant to the OSCAL XML, JSON, and YAML based models. This library is kept up-to-date with the [latest formats](/concepts/layer/) provided by the OSCAL project.
 - **[XSLT Tooling:](https://github.com/usnistgov/oscal-tools/tree/master/xslt)** A variety of Extensible Stylesheet Language (XSL) Transformations (XSLT), Cascading Style Sheets (CSS), and related utilities for authoring, converting, and publishing OSCAL content in various forms.
 
 ## Community: Open Source Tools and Libraries
