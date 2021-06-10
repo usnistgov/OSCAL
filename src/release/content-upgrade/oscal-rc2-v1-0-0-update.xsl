@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Modified by the OSCAL 1.0.0 RC1 to OSCAL 1.0.0 conversion XSLT on 2021-06-07T17:10:53.691509-04:00 -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns="http://csrc.nist.gov/ns/oscal/1.0"
                 xmlns:uuid="java:java.util.UUID"
@@ -20,7 +19,7 @@
    <xsl:template match="/comment()"/>
    
    <xsl:template match="/*">
-      <xsl:comment expand-text="true"> Modified by the OSCAL 1.0.0 RC1 to OSCAL 1.0.0 conversion XSLT on { current-dateTime() } </xsl:comment>
+      <xsl:comment expand-text="true"> Modified by the OSCAL 1.0.0 RC2 to OSCAL 1.0.0 conversion XSLT on { current-dateTime() } </xsl:comment>
       <xsl:copy>
          <xsl:apply-templates select="@* except @id"/>
          <xsl:attribute name="uuid" select="$new-document-uuid"/>
@@ -33,7 +32,7 @@
    </xsl:template>
    
    <xsl:template match="last-modified" expand-text="true">
-      <last-modified>2021-06-07T17:10:53.691509-04:00</last-modified>
+      <last-modified>{ current-dateTime() }</last-modified>
    </xsl:template>
    
    <!-- Usage change: we no longer permit spaces in values of select/@how-many -->

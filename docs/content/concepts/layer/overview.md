@@ -83,7 +83,7 @@ UUIDs in OSCAL are intended to uniquely identify information and link informatio
 
 Version 4 Universally Unique Identifier (UUID) as defined by [RFC 4122](https://tools.ietf.org/html/rfc4122) are a good fit for this use case and have been selected for use in OSCAL for this purpose.
 
-Fields containing UUIDs tend to be named `uuid` in OSCAL. When an associated subject is created that has a `uuid` field, then a tool should automatically generate a UUId for this field.
+Fields containing UUIDs tend to be named `uuid` or `xyz-uuid` (where `xyz` refers to the referenced subject with the assigned UUID) in OSCAL. When an associated subject is created that has a `uuid` field, then a tool should automatically generate a UUID for this field.
 
 UUIDs are intended to be consistently used to represent the same concept over multiple major and minor revisions of the same document; thus, they should only be changed if the underlying identified subject has changed in a significant way that no longer represents the same identified subject.
 
@@ -101,7 +101,7 @@ Identifiers may be referenced from other locations within OSCAL content using on
 
 ## Metadata Overview
 
-Every OSCAL document has a <code>metadata</code> section that shares the same structure. The required fields in <code>metadata</code> as as follows:
+Every OSCAL document has a <code>metadata</code> section that shares the same structure. The required fields in <code>metadata</code> are as follows:
 
 1. title: A human readable title for the document, represented in markdown.
 2. last-modified: The date and time that the document was last modified.
@@ -123,7 +123,7 @@ When used this way, <code>document-id</code> allows for consumers of OSCAL docum
 
 OSCAL recommends the use of <code>link</code> to establish resolvable version graphs of OSCAL documents. [RFC5829](https://tools.ietf.org/html/rfc5829) defines a set of values for the <code>rel</code> flag of <code>link</code> that allow for a document to provides resolvable links to the latest version, the next version, and the previous version. With this combination of links, a human or machine consumer of an OSCAL document can understand the version history of a document, and automatically update itself to the latest version.
 
-Note that successful deployment of version control through <code>link</code> requires the document creator to maintain a well-structured static set of ersolvable resources that are reachable from where ever the document is to be consumed (usually on the public web).
+Note that successful deployment of version control through <code>link</code> requires the document creator to maintain a well-structured static set of resolvable resources that are reachable from wherever the document is consumed (usually on the public web).
 
 As an example of such a system, let us assume that "Author" has just released OSCAL document "Example 1.0". They can now setup a redirect system based on the document-id:
 
@@ -177,15 +177,15 @@ In addition to providing improved control over modeling and documentation, the f
 
 OSCAL models are designed to be broadly applicable to a variety of security compliance frameworks and organizational needs. Where an organization has unique modeling needs not supported by the core OSCAL syntax, it is possible to extend the syntax to address these requirements.
 
-Models in OSCAL are organized hierarchically. At each level of this hierarchy, OSCAL syntax provides property (JSON: `property` / XML: `prop`) and annotation (`annotation`) objects. While these are sometimes used for core OSCAL syntax, they can also be assigned an organizational namespace (`ns`) value, which uniquely identifies the organization creating the extension.
+Models in OSCAL are organized hierarchically. At each level of this hierarchy, OSCAL syntax provides property (JSON: `property` / XML: `prop`) objects. While these properties are sometimes used for core OSCAL syntax, they can also be assigned an organizational namespace (`ns`) value, which uniquely identifies the organization creating the extension.
 
-For any property or annotation identified with the organization's namespace, the organization may use any [NCName](/reference/datatypes/#ncname) value in the property/annotation's `name`. This allows the organization to define the containing content as required. Organizations are strongly encouraged to publish these extensions to their community of OSCAL tool developers.
+For any property identified with the organization's namespace, the organization may use any [token](/reference/datatypes/#token) value in the property's `name`. This allows the organization to define the containing content as required. Organizations are strongly encouraged to publish these extensions to their community of OSCAL tool developers.
 
 {{% callout %}}
 **IMPORTANT NOTE TO DEVELOPERS**
 
 Tools should always check for the `ns` assignment within properties and annotations.
-When no `ns` is provided, the default is `http://csrc.nist.gov/ns/oscal`, which means the annotation or property is assumed to be part of the core OSCAL syntax.
+When no `ns` is provided, the default is `http://csrc.nist.gov/ns/oscal`, which means the property is assumed to be part of the core OSCAL syntax.
 
 This is especially important as organizations extending OSCAL may use the same `name` value, but in a different namespace as compared to core OSCAL.
 

@@ -22,7 +22,7 @@ aliases:
 
 The OSCAL catalog model represents a collection of [controls](/concepts/terminology/#control), represented as a control [catalog](/concepts/terminology/#catalog).
 
-The OSCAL catalog model was designed to represent security and privacy controls in standardized, machine readable formats. The OSCAL catalog model standardizes the representation of control definitions from different sources (e.g., SP 800-53, ISO/IEC 27002, COBIT 5) allowing control information to be easily searched, imported, and exported by applications using a common format.
+The OSCAL catalog model was designed to represent security and privacy controls in standardized, machine-readable formats. The OSCAL catalog model standardizes the representation of control definitions from different sources (e.g., SP 800-53, ISO/IEC 27002, COBIT 5) allowing control information to be easily searched, imported, and exported by applications using a common format.
 
 The OSCAL catalog model was designed to represent security and privacy controls; however, it may be possible to apply OSCAL to other applications related to safety, health, or other purposes. These other applications have not been explored so far.
 

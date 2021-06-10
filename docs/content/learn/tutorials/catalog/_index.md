@@ -530,7 +530,7 @@ Another required piece of information for a control is the control's title provi
 
 While optional in the OSCAL model, the need often exists to provide a section or control label that is used to identify the control within its source document. Using the `<prop>` element, an OSCAL property with the name `label` is used to provide the section number label value. This is illustrated on line 3.
 
-Finally, a control must have a set of control statements. Shown on lines 4 thru 6, a `<part>` element with the name `statement` provides the required statement text using [HTML markup](/reference/datatypes/#markup-multiline). This uses the same part structure we reviewed earlier in this tutorial for defining text within a group. This part is also assigns the identifier `s1.1.1_stm` using the `@id` attribute. This identifier can be used to reference the specific statement in the OSCAL catalog.
+Finally, a control must have a set of control statements. Shown on lines 4 thru 6, a `<part>` element with the name `statement` provides the required statement text using [HTML markup](/reference/datatypes/#markup-multiline). This uses the same part structure we reviewed earlier in this tutorial for defining text within a group. This part is also assigning the identifier `s1.1.1_stm` using the `@id` attribute. This identifier can be used to reference the specific statement in the OSCAL catalog.
 {{% /tab %}}
 {{% tab %}}
 {{< highlight json "linenos=table" >}}
@@ -557,7 +557,7 @@ Another required piece of information for a control is the control's title provi
 
 While optional in the OSCAL model, the need often exists to provide a section or control label that is used to identify the control within its source document. The `properties` JSON property provides an array of OSCAL property objects. An OSCAL property with the name `label` is used to provide the section number label value. This is illustrated on lines 5 thru 8.
 
-Finally, a control must have a set of control statements. Shown on lines 9 thru 13, the `parts` property allows an array of part JSON objects to be provided. a part object with the name `statement` provides the required statement text using [Markdown text](/reference/datatypes/#markup-multiline). This uses the same part structure we reviewed earlier in this tutorial for defining text within a group. This part is also assigns the identifier `s1.1.1_stm` using the `id` property. This identifier can be used to reference the specific statement in the OSCAL catalog.
+Finally, a control must have a set of control statements. Shown on lines 9 thru 13, the `parts` property allows an array of part JSON objects to be provided. a part object with the name `statement` provides the required statement text using [Markdown text](/reference/datatypes/#markup-multiline). This uses the same part structure we reviewed earlier in this tutorial for defining text within a group. This part is also assigning the identifier `s1.1.1_stm` using the `id` property. This identifier can be used to reference the specific statement in the OSCAL catalog.
 {{% /tab %}}
 {{% tab %}}
 {{< highlight yaml "linenos=table" >}}
@@ -580,11 +580,11 @@ Another required piece of information for a control is the control's title provi
 
 While optional in the OSCAL model, the need often exists to provide a section or control label that is used to identify the control within its source document. The `properties` key provides an array of OSCAL property items. An OSCAL property is defined on lines 5 thru 6, with a name `label` and the value `1.1.1` to provide the section number label value.
 
-Finally, a control must have a set of control statements. Shown on lines 8 thru 10, a list of parts identified using the `parts` key allows a list of part YAML items to be provided. a part object with the name `statement` provides the required statement text using [Markdown text](/reference/datatypes/#markup-multiline). This uses the same part structure we reviewed earlier in this tutorial for defining text within a group. This part is also assigns the identifier `s1.1.1_stm` using the `id` property. This identifier can be used to reference the specific statement in the OSCAL catalog.
+Finally, a control must have a set of control statements. Shown on lines 8 thru 10, a list of parts identified using the `parts` key allows a list of part YAML items to be provided. a part object with the name `statement` provides the required statement text using [Markdown text](/reference/datatypes/#markup-multiline). This uses the same part structure we reviewed earlier in this tutorial for defining text within a group. This part is also assigning the identifier `s1.1.1_stm` using the `id` property. This identifier can be used to reference the specific statement in the OSCAL catalog.
 {{% /tab %}}
 {{< /tabs >}}
 
-This represents the minimum information for defining a control. The next section discuss how to provide additional control-related information.
+This represents the minimum information for defining a control. The next section discusses how to provide additional control-related information.
 
 ### Including Implementation Guidance and Other Supplemental Information
 

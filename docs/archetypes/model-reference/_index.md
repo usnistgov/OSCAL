@@ -5,7 +5,8 @@ weight: 20
 suppresstopiclist: true
 sidenav:
   title: {{ getenv "HUGO_MODEL_NAME" }} Model
-  activerenderdepth: 2
+  focusrenderdepth: 1
+  activerenderdepth: -1
   inactiverenderdepth: 1
 ---
 

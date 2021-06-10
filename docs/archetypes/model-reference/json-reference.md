@@ -9,34 +9,34 @@ toc:
   headingselectors: "h1.toc1, h2.toc2, h3.toc3, h4.toc4, h5.toc5, h6.toc6"
 {{ if eq (getenv "HUGO_REF_REVISION") "latest" -}}
 aliases:
-{{- if eq (getenv "HUGO_MODEL_ID") "assessment-plan" -}}
+{{ if eq (getenv "HUGO_MODEL_ID") "assessment-plan" }}
   - /documentation/schema/assessment-plan/json-schema/
   - /documentation/schema/assessment-layer/assessment-plan/json-schema/
 {{- end -}}
-{{- if eq (getenv "HUGO_MODEL_ID") "assessment-results" -}}
+{{- if eq (getenv "HUGO_MODEL_ID") "assessment-results" }}
   - /documentation/schema/assessment-results/json-schema/
   - /documentation/schema/assessment-results-layer/assessment-results/json-schema/
 {{- end -}}
-{{- if eq (getenv "HUGO_MODEL_ID") "catalog" -}}
+{{- if eq (getenv "HUGO_MODEL_ID") "catalog" }}
   - /docs/schemas/oscal-catalog-json/
   - /documentation/schema/catalog/json-schema/
   - /documentation/schema/catalog-layer/catalog/json-schema/
 {{- end -}}
-{{- if eq (getenv "HUGO_MODEL_ID") "component-definition" -}}
+{{- if eq (getenv "HUGO_MODEL_ID") "component-definition" }}
   - /docs/schemas/oscal-component-json/
   - /documentation/schema/component/json-schema/
   - /documentation/schema/implementation-layer/component/json-schema/
 {{- end -}}
-{{- if eq (getenv "HUGO_MODEL_ID") "plan-of-action-and-milestones" -}}
+{{- if eq (getenv "HUGO_MODEL_ID") "plan-of-action-and-milestones" }}
   - /documentation/schema/poam/json-schema/
   - /documentation/schema/assessment-results-layer/poam/json-schema/
 {{- end -}}
-{{- if eq (getenv "HUGO_MODEL_ID") "profile" -}}
+{{- if eq (getenv "HUGO_MODEL_ID") "profile" }}
   - /docs/schemas/oscal-profile-json/
   - /documentation/schema/profile/json-schema/
   - /documentation/schema/profile-layer/profile/json-schema/
 {{- end -}}
-{{- if eq (getenv "HUGO_MODEL_ID") "system-security-plan" -}}
+{{- if eq (getenv "HUGO_MODEL_ID") "system-security-plan" }}
   - /docs/schemas/oscal-ssp-json/
   - /documentation/schema/ssp/json-schema/
   - /documentation/schema/implementation-layer/ssp/json-schema/
