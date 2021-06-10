@@ -249,7 +249,7 @@ process_paths() {
 
         case $source_format in
         xml)
-          result=$(python ${OSCALDIR}/build/ci-cd/python/xmlComparison.py "$roundtrip_file" "$source_file" 2>&1)
+          result=$(python3 ${OSCALDIR}/build/ci-cd/python/xmlComparison.py "$roundtrip_file" "$source_file" 2>&1)
           ;;
         json)
           result=$(json-diff "$source_file" "$roundtrip_file" 2>&1)
