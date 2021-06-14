@@ -4,6 +4,7 @@ heading: {{ getenv "HUGO_MODEL_NAME" }} Model {{ if eq (getenv "HUGO_REF_VERSION
 custom_js:
   - "/js/oscal-metaschema-map-expander.js"
 weight: 50
+generateanchors: false
 sidenav:
   title: XML Outline
 {{ if eq (getenv "HUGO_REF_REVISION") "latest" -}}
