@@ -4,6 +4,7 @@ heading: Complete {{ if eq (getenv "HUGO_REF_VERSION") "develop" }}Development S
 custom_js:
   - "/js/oscal-metaschema-map-expander.js"
 weight: 50
+generateanchors: false
 sidenav:
   title: XML Outline
 ---

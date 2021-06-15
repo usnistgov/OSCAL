@@ -49,7 +49,7 @@ In /profile/modify/alter ([JSON/YAML](/reference/latest/profile/json-reference/#
   - item-name -> by-item-name
   - ns-ref -> by-ns
 
-- The item remove ([JSON/YAML](/reference/latest/profile/json-reference/#/profile/modify/alters/adds), [XML](/reference/latest/profile/xml-reference/#/profile/modify/alter/add)) has had its child properties/attributes renamed as follows:
+- The item add ([JSON/YAML](/reference/latest/profile/json-reference/#/profile/modify/alters/adds), [XML](/reference/latest/profile/xml-reference/#/profile/modify/alter/add)) has had its child properties/attributes renamed as follows:
   - id-ref -> by-id
 
 ### Changes to System Security Plan Model

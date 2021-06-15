@@ -67,7 +67,7 @@ The figure below expresses represents the portion of the OSCAL stack as it relat
 {{<partialCached "note-to-developers-uuid.html" >}}
 
 ### Modeling Validation Information
-OSCAL is designed to allow capture relevant details related to independent validation of components. See [Validation Modeling](../validation-modeling) for details.
+OSCAL is designed to allow capture relevant details related to independent validation of components. See the [Validation Modeling](/learn/tutorials/validation-modeling/) tutorial for details.
 
 ## Content Examples
 
