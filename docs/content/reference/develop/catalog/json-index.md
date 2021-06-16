@@ -1,7 +1,8 @@
 ---
 title: "OSCAL Catalog Model Development Snapshot JSON Format Index"
-heading: Catalog Model Development Snapshot JSON Format Index
+heading: "Catalog Model Development Snapshot JSON Format Index"
 weight: 30
+generateanchors: false
 sidenav:
   title: JSON Index
 toc:

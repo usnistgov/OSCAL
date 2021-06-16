@@ -1,7 +1,8 @@
 ---
 title: "OSCAL Assessment Plan Model v1.0.0 JSON Format Metaschema Reference"
-heading: Assessment Plan Model v1.0.0 Model JSON Metaschema Reference
+heading: "Assessment Plan Model v1.0.0 Model JSON Metaschema Reference"
 weight: 40
+generateanchors: false
 sidenav:
   title: JSON Metaschema Reference
 toc:
@@ -6120,7 +6121,7 @@ The following is a reference for the JSON object definitions derived from this m
                      <h2 id="/assembly/oscal-catalog-common/parameter-guideline/prose" class="toc2 name">prose</h2>
                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                      <p class="occurrence">[1]</p>
-                     <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-catalog-common/parameter-guideline/p ul ol pre table h1 h2 h3 h4 h5 h6">Switch to XML</a></div>
+                     <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-catalog-common/parameter-guideline/prose">Switch to XML</a></div>
                      <p class="formal-name">Guideline Text</p>
                   </div>
                   <div class="body">
@@ -6422,7 +6423,7 @@ The following is a reference for the JSON object definitions derived from this m
                      <h2 id="/assembly/oscal-assessment-common/assessment-part/prose" class="toc2 name">prose</h2>
                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                      <p class="occurrence">[0 or 1]</p>
-                     <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-assessment-common/assessment-part/p ul ol pre table h1 h2 h3 h4 h5 h6">Switch to XML</a></div>
+                     <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-assessment-common/assessment-part/prose">Switch to XML</a></div>
                      <p class="formal-name">Part Text</p>
                   </div>
                   <div class="body">
@@ -6731,7 +6732,7 @@ The following is a reference for the JSON object definitions derived from this m
                      <h2 id="/assembly/oscal-catalog-common/part/prose" class="toc2 name">prose</h2>
                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                      <p class="occurrence">[0 or 1]</p>
-                     <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-catalog-common/part/p ul ol pre table h1 h2 h3 h4 h5 h6">Switch to XML</a></div>
+                     <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-catalog-common/part/prose">Switch to XML</a></div>
                      <p class="formal-name">Part Text</p>
                   </div>
                   <div class="body">

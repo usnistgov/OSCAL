@@ -1,7 +1,8 @@
 ---
 title: "OSCAL Assessment Results Model v1.0.0 XML Format Metaschema Reference"
-heading: Assessment Results Model v1.0.0 XML Metaschema Reference
+heading: "Assessment Results Model v1.0.0 XML Metaschema Reference"
 weight: 80
+generateanchors: false
 sidenav:
   title: XML Metaschema Reference
 toc:
@@ -6166,7 +6167,7 @@ The following is a reference for the XML element and attribute types derived fro
             <div class="model assembly-model">
                <div class="model-entry definition define-field">
                   <div class="instance-header">
-                     <h2 id="/assembly/oscal-catalog-common/parameter-guideline/p ul ol pre table h1 h2 h3 h4 h5 h6" class="toc2 name">(unwrapped)</h2>
+                     <h2 id="/assembly/oscal-catalog-common/parameter-guideline/prose" class="toc2 name">(unwrapped)</h2>
                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                      <p class="occurrence">[1]</p>
                      <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-catalog-common/parameter-guideline/prose">Switch to JSON</a></div>
@@ -6475,7 +6476,7 @@ The following is a reference for the XML element and attribute types derived fro
                </div>
                <div class="model-entry definition define-field">
                   <div class="instance-header">
-                     <h2 id="/assembly/oscal-assessment-common/assessment-part/p ul ol pre table h1 h2 h3 h4 h5 h6" class="toc2 name">(unwrapped)</h2>
+                     <h2 id="/assembly/oscal-assessment-common/assessment-part/prose" class="toc2 name">(unwrapped)</h2>
                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                      <p class="occurrence">[0 or 1]</p>
                      <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-assessment-common/assessment-part/prose">Switch to JSON</a></div>
@@ -6786,7 +6787,7 @@ The following is a reference for the XML element and attribute types derived fro
                </div>
                <div class="model-entry definition define-field">
                   <div class="instance-header">
-                     <h2 id="/assembly/oscal-catalog-common/part/p ul ol pre table h1 h2 h3 h4 h5 h6" class="toc2 name">(unwrapped)</h2>
+                     <h2 id="/assembly/oscal-catalog-common/part/prose" class="toc2 name">(unwrapped)</h2>
                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                      <p class="occurrence">[0 or 1]</p>
                      <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-catalog-common/part/prose">Switch to JSON</a></div>

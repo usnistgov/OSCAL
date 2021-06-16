@@ -1,9 +1,10 @@
 ---
 title: "OSCAL Catalog Model v1.0.0 XML Format Outline"
-heading: Catalog Model v1.0.0 XML Format Outline
+heading: "Catalog Model v1.0.0 XML Format Outline"
 custom_js:
   - "/js/oscal-metaschema-map-expander.js"
 weight: 50
+generateanchors: false
 sidenav:
   title: XML Outline
 
@@ -375,7 +376,7 @@ The following outline is a representation of the [XML format](https://github.com
                            <p class="close-tag nobr">&lt;/telephone-number&gt;</p>
                         </details>
                         <div class="OM-choices">
-                           <p class="OM-lit">A choice:</p>
+                           <p class="OM-lit">A choice of:</p>
                            <div class="OM-choice">
                               <details class="OM-entry">
                                  <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/catalog/metadata/party/address">address</a></span> <span class="nobr" id="/catalog/metadata/party/address/@type"><a class="OM-name" href="../xml-reference/#/catalog/metadata/party/address/@type">type</a>="<span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span>"</span>&gt;<span class="show-closed"> … <span class="nobr">&lt;/address&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
@@ -596,7 +597,7 @@ The following outline is a representation of the [XML format](https://github.com
                      <p class="close-tag nobr">&lt;/guideline&gt;</p>
                   </details>
                   <div class="OM-choices">
-                     <p class="OM-lit">A choice:</p>
+                     <p class="OM-lit">A choice of:</p>
                      <div class="OM-choice">
                         <details class="OM-entry">
                            <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/catalog/param/value">value</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="nobr">&lt;/value&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
@@ -732,7 +733,7 @@ The following outline is a representation of the [XML format](https://github.com
                            <p class="close-tag nobr">&lt;/guideline&gt;</p>
                         </details>
                         <div class="OM-choices">
-                           <p class="OM-lit">A choice:</p>
+                           <p class="OM-lit">A choice of:</p>
                            <div class="OM-choice">
                               <details class="OM-entry">
                                  <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/catalog/control/param/value">value</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="nobr">&lt;/value&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
@@ -952,7 +953,7 @@ The following outline is a representation of the [XML format](https://github.com
                            <p class="close-tag nobr">&lt;/guideline&gt;</p>
                         </details>
                         <div class="OM-choices">
-                           <p class="OM-lit">A choice:</p>
+                           <p class="OM-lit">A choice of:</p>
                            <div class="OM-choice">
                               <details class="OM-entry">
                                  <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/catalog/group/param/value">value</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="nobr">&lt;/value&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
@@ -1066,7 +1067,7 @@ The following outline is a representation of the [XML format](https://github.com
                      <p class="close-tag nobr">&lt;/part&gt;</p>
                   </details>
                   <div class="OM-choices">
-                     <p class="OM-lit">A choice:</p>
+                     <p class="OM-lit">A choice of:</p>
                      <div class="OM-choice">
                         <details class="OM-entry">
                            <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/catalog/group/group">group</a></span>&gt;<span class="show-closed"><span class="OM-lit OM-gloss"> (recursive: model like ancestor <span class="OM-ref">group</span>) </span><span class="nobr">&lt;/group&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
@@ -1174,7 +1175,7 @@ The following outline is a representation of the [XML format](https://github.com
                                        <p class="close-tag nobr">&lt;/guideline&gt;</p>
                                     </details>
                                     <div class="OM-choices">
-                                       <p class="OM-lit">A choice:</p>
+                                       <p class="OM-lit">A choice of:</p>
                                        <div class="OM-choice">
                                           <details class="OM-entry">
                                              <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/catalog/group/control/param/value">value</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="nobr">&lt;/value&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>

@@ -1,7 +1,8 @@
 ---
 title: "OSCAL Assessment Results Model v1.0.0-rc2 JSON Format Metaschema Reference"
-heading: Assessment Results Model v1.0.0-rc2 Model JSON Metaschema Reference
+heading: "Assessment Results Model v1.0.0-rc2 Model JSON Metaschema Reference"
 weight: 40
+generateanchors: false
 sidenav:
   title: JSON Metaschema Reference
 toc:
@@ -3582,7 +3583,7 @@ The following is a reference for the JSON object definitions derived from this m
                               <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
                                  that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
                               <p>If a local reference using a fragment is used, this will be indicated by a fragment
-                                 "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is <a href="/concepts/layer/assessment/#key-concepts">within the scope of the containing OSCAL document</a>.</p>
+                                 "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
                               <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
                                  resource. A relative URI will be resolved relative to the location of the document
                                  containing the link.</p>
@@ -5470,7 +5471,7 @@ The following is a reference for the JSON object definitions derived from this m
                                           <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
                                              that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
                                           <p>If a local reference using a fragment is used, this will be indicated by a fragment
-                                             "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is <a href="../../../assessment-layer/assessment-plan/#key-concepts">within the scope of the containing OSCAL document</a>.</p>
+                                             "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
                                           <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
                                              resource. A relative URI will be resolved relative to the location of the document
                                              containing the link.</p>
@@ -6142,7 +6143,7 @@ The following is a reference for the JSON object definitions derived from this m
                      <h2 id="/assembly/oscal-catalog-common/parameter-guideline/prose" class="toc2 name">prose</h2>
                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                      <p class="occurrence">[1]</p>
-                     <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-catalog-common/parameter-guideline/p ul ol pre table h1 h2 h3 h4 h5 h6">Switch to XML</a></div>
+                     <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-catalog-common/parameter-guideline/prose">Switch to XML</a></div>
                      <p class="formal-name">Guideline Text</p>
                   </div>
                   <div class="body">
@@ -6429,7 +6430,7 @@ The following is a reference for the JSON object definitions derived from this m
                      <h2 id="/assembly/oscal-assessment-common/assessment-part/prose" class="toc2 name">prose</h2>
                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                      <p class="occurrence">[0 or 1]</p>
-                     <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-assessment-common/assessment-part/p ul ol pre table h1 h2 h3 h4 h5 h6">Switch to XML</a></div>
+                     <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-assessment-common/assessment-part/prose">Switch to XML</a></div>
                      <p class="formal-name">Part Text</p>
                   </div>
                   <div class="body">
@@ -6738,7 +6739,7 @@ The following is a reference for the JSON object definitions derived from this m
                      <h2 id="/assembly/oscal-catalog-common/part/prose" class="toc2 name">prose</h2>
                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                      <p class="occurrence">[0 or 1]</p>
-                     <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-catalog-common/part/p ul ol pre table h1 h2 h3 h4 h5 h6">Switch to XML</a></div>
+                     <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-catalog-common/part/prose">Switch to XML</a></div>
                      <p class="formal-name">Part Text</p>
                   </div>
                   <div class="body">

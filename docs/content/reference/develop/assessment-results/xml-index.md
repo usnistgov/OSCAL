@@ -1,7 +1,8 @@
 ---
 title: "OSCAL Assessment Results Model Development Snapshot XML Format Index"
-heading: Assessment Results Model Development Snapshot XML Format Index
+heading: "Assessment Results Model Development Snapshot XML Format Index"
 weight: 70
+generateanchors: false
 sidenav:
   title: XML Index
 toc:

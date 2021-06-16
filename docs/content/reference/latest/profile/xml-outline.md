@@ -1,9 +1,10 @@
 ---
 title: "OSCAL Profile Model v1.0.0 XML Format Outline"
-heading: Profile Model v1.0.0 XML Format Outline
+heading: "Profile Model v1.0.0 XML Format Outline"
 custom_js:
   - "/js/oscal-metaschema-map-expander.js"
 weight: 50
+generateanchors: false
 sidenav:
   title: XML Outline
 aliases:
@@ -378,7 +379,7 @@ The following outline is a representation of the [XML format](https://github.com
                            <p class="close-tag nobr">&lt;/telephone-number&gt;</p>
                         </details>
                         <div class="OM-choices">
-                           <p class="OM-lit">A choice:</p>
+                           <p class="OM-lit">A choice of:</p>
                            <div class="OM-choice">
                               <details class="OM-entry">
                                  <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/profile/metadata/party/address">address</a></span> <span class="nobr" id="/profile/metadata/party/address/@type"><a class="OM-name" href="../xml-reference/#/profile/metadata/party/address/@type">type</a>="<span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span>"</span>&gt;<span class="show-closed"> … <span class="nobr">&lt;/address&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
@@ -514,7 +515,7 @@ The following outline is a representation of the [XML format](https://github.com
                <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/profile/import">import</a></span> <span class="nobr" id="/profile/import/@href"><a class="OM-name" href="../xml-reference/#/profile/import/@href">href</a>="<span class="OM-datatype"><a href="/reference/datatypes/#uri-reference">uri-reference</a></span>"</span>&gt;<span class="show-closed"> … <span class="nobr">&lt;/import&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[1 to ∞]</span></span></summary>
                <div class="model-container">
                   <div class="OM-choices">
-                     <p class="OM-lit">A choice:</p>
+                     <p class="OM-lit">A choice of:</p>
                      <div class="OM-choice">
                         <details class="OM-entry">
                            <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/profile/import/include-all">include-all</a></span>/&gt;</span><span class="sq cardinality"> <span class="OM-cardinality">[1]</span></span></summary>
@@ -565,7 +566,7 @@ The following outline is a representation of the [XML format](https://github.com
                      <p class="OM-map-name">[Empty]</p>
                   </details>
                   <div class="OM-choices">
-                     <p class="OM-lit">A choice:</p>
+                     <p class="OM-lit">A choice of:</p>
                      <div class="OM-choice">
                         <details class="OM-entry">
                            <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/profile/merge/as-is">as-is</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#boolean">boolean</a></span><span class="nobr">&lt;/as-is&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 or 1]</span></span></summary>
@@ -677,7 +678,7 @@ The following outline is a representation of the [XML format](https://github.com
                                              <p class="close-tag nobr">&lt;/guideline&gt;</p>
                                           </details>
                                           <div class="OM-choices">
-                                             <p class="OM-lit">A choice:</p>
+                                             <p class="OM-lit">A choice of:</p>
                                              <div class="OM-choice">
                                                 <details class="OM-entry">
                                                    <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/profile/merge/custom/group/param/value">value</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="nobr">&lt;/value&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
@@ -791,7 +792,7 @@ The following outline is a representation of the [XML format](https://github.com
                                        <p class="close-tag nobr">&lt;/part&gt;</p>
                                     </details>
                                     <div class="OM-choices">
-                                       <p class="OM-lit">A choice:</p>
+                                       <p class="OM-lit">A choice of:</p>
                                        <div class="OM-choice">
                                           <details class="OM-entry">
                                              <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/profile/merge/custom/group/group">group</a></span>&gt;<span class="show-closed"><span class="OM-lit OM-gloss"> (recursive: model like ancestor <span class="OM-ref">group</span>) </span><span class="nobr">&lt;/group&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
@@ -803,7 +804,7 @@ The following outline is a representation of the [XML format](https://github.com
                                              <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/profile/merge/custom/group/insert-controls">insert-controls</a></span> <span class="nobr" id="/profile/merge/custom/group/insert-controls/@order"><a class="OM-name" href="../xml-reference/#/profile/merge/custom/group/insert-controls/@order">order</a>="<span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span>"</span>&gt;<span class="show-closed"> … <span class="nobr">&lt;/insert-controls&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
                                              <div class="model-container">
                                                 <div class="OM-choices">
-                                                   <p class="OM-lit">A choice:</p>
+                                                   <p class="OM-lit">A choice of:</p>
                                                    <div class="OM-choice">
                                                       <details class="OM-entry">
                                                          <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/profile/merge/custom/group/insert-controls/include-all">include-all</a></span>/&gt;</span><span class="sq cardinality"> <span class="OM-cardinality">[1]</span></span></summary>
@@ -855,7 +856,7 @@ The following outline is a representation of the [XML format](https://github.com
                                  <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/profile/merge/custom/insert-controls">insert-controls</a></span> <span class="nobr" id="/profile/merge/custom/insert-controls/@order"><a class="OM-name" href="../xml-reference/#/profile/merge/custom/insert-controls/@order">order</a>="<span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span>"</span>&gt;<span class="show-closed"> … <span class="nobr">&lt;/insert-controls&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
                                  <div class="model-container">
                                     <div class="OM-choices">
-                                       <p class="OM-lit">A choice:</p>
+                                       <p class="OM-lit">A choice of:</p>
                                        <div class="OM-choice">
                                           <details class="OM-entry">
                                              <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/profile/merge/custom/insert-controls/include-all">include-all</a></span>/&gt;</span><span class="sq cardinality"> <span class="OM-cardinality">[1]</span></span></summary>
@@ -998,7 +999,7 @@ The following outline is a representation of the [XML format](https://github.com
                            <p class="close-tag nobr">&lt;/guideline&gt;</p>
                         </details>
                         <div class="OM-choices">
-                           <p class="OM-lit">A choice:</p>
+                           <p class="OM-lit">A choice of:</p>
                            <div class="OM-choice">
                               <details class="OM-entry">
                                  <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/profile/modify/set-parameter/value">value</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="nobr">&lt;/value&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
@@ -1133,7 +1134,7 @@ The following outline is a representation of the [XML format](https://github.com
                                        <p class="close-tag nobr">&lt;/guideline&gt;</p>
                                     </details>
                                     <div class="OM-choices">
-                                       <p class="OM-lit">A choice:</p>
+                                       <p class="OM-lit">A choice of:</p>
                                        <div class="OM-choice">
                                           <details class="OM-entry">
                                              <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/profile/modify/alter/add/param/value">value</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="nobr">&lt;/value&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>

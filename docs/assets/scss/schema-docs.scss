@@ -134,6 +134,10 @@
   a, a:visited {
     text-decoration: none;
   }
+
+  div.OM-choice {
+    @include u-padding-left(2);
+  }
 }
 
 @mixin reference-header($definition-header-bg,$instance-header-bg,$header-fg) {
@@ -229,7 +233,7 @@
         align-self: right;
     }
   }
-  div.model-entry div.body {
+  div.body {
     @include u-padding-left('105');
     @include u-border-left(2px,'base-lightest');
     @include u-margin-bottom('105');
