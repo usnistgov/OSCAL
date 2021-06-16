@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="us-ascii"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
            xmlns:m="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
            xmlns:oscal-poam="http://csrc.nist.gov/ns/oscal/1.0"
@@ -5176,7 +5176,7 @@
       </xs:annotation>
       <xs:restriction base="xs:string">
          <xs:whiteSpace value="preserve"/>
-         <xs:pattern value="[\i-[:𐀀-󯿿]][\c-[:𐀀-󯿿]]*">
+         <xs:pattern value="[\i-[:&#x10000;-&#xeffff;]][\c-[:&#x10000;-&#xeffff;]]*">
             <xs:annotation><!--<xs:documentation>An XML initial character (but not colon), followed by any XML name character (but not colon).</xs:documentation>-->
                <xs:documentation>A single token may not contain whitespace.</xs:documentation>
             </xs:annotation>
