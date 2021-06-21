@@ -1,9 +1,10 @@
 ---
 title: "OSCAL Plan of Action and Milestones Model Development Snapshot XML Format Outline"
-heading: Plan of Action and Milestones Model Development Snapshot XML Format Outline
+heading: "Plan of Action and Milestones Model Development Snapshot XML Format Outline"
 custom_js:
   - "/js/oscal-metaschema-map-expander.js"
 weight: 50
+generateanchors: false
 sidenav:
   title: XML Outline
 
@@ -375,7 +376,7 @@ The following outline is a representation of the [XML format](https://github.com
                            <p class="close-tag nobr">&lt;/telephone-number&gt;</p>
                         </details>
                         <div class="OM-choices">
-                           <p class="OM-lit">A choice:</p>
+                           <p class="OM-lit">A choice of:</p>
                            <div class="OM-choice">
                               <details class="OM-entry">
                                  <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/plan-of-action-and-milestones/metadata/party/address">address</a></span> <span class="nobr" id="/plan-of-action-and-milestones/metadata/party/address/@type"><a class="OM-name" href="../xml-reference/#/plan-of-action-and-milestones/metadata/party/address/@type">type</a>="<span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span>"</span>&gt;<span class="show-closed"> … <span class="nobr">&lt;/address&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
@@ -1120,7 +1121,7 @@ The following outline is a representation of the [XML format](https://github.com
                                        <p class="close-tag nobr">&lt;/link&gt;</p>
                                     </details>
                                     <div class="OM-choices">
-                                       <p class="OM-lit">A choice:</p>
+                                       <p class="OM-lit">A choice of:</p>
                                        <div class="OM-choice">
                                           <details class="OM-entry">
                                              <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/plan-of-action-and-milestones/observation/origin/related-task/subject/include-all">include-all</a></span>/&gt;</span><span class="sq cardinality"> <span class="OM-cardinality">[1]</span></span></summary>
@@ -1268,7 +1269,7 @@ The following outline is a representation of the [XML format](https://github.com
                                              <p class="close-tag nobr">&lt;/link&gt;</p>
                                           </details>
                                           <div class="OM-choices">
-                                             <p class="OM-lit">A choice:</p>
+                                             <p class="OM-lit">A choice of:</p>
                                              <div class="OM-choice">
                                                 <details class="OM-entry">
                                                    <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/plan-of-action-and-milestones/observation/origin/related-task/identified-subject/subject/include-all">include-all</a></span>/&gt;</span><span class="sq cardinality"> <span class="OM-cardinality">[1]</span></span></summary>
@@ -1742,7 +1743,7 @@ The following outline is a representation of the [XML format](https://github.com
                                        <p class="close-tag nobr">&lt;/link&gt;</p>
                                     </details>
                                     <div class="OM-choices">
-                                       <p class="OM-lit">A choice:</p>
+                                       <p class="OM-lit">A choice of:</p>
                                        <div class="OM-choice">
                                           <details class="OM-entry">
                                              <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/plan-of-action-and-milestones/risk/origin/related-task/subject/include-all">include-all</a></span>/&gt;</span><span class="sq cardinality"> <span class="OM-cardinality">[1]</span></span></summary>
@@ -1890,7 +1891,7 @@ The following outline is a representation of the [XML format](https://github.com
                                              <p class="close-tag nobr">&lt;/link&gt;</p>
                                           </details>
                                           <div class="OM-choices">
-                                             <p class="OM-lit">A choice:</p>
+                                             <p class="OM-lit">A choice of:</p>
                                              <div class="OM-choice">
                                                 <details class="OM-entry">
                                                    <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/plan-of-action-and-milestones/risk/origin/related-task/identified-subject/subject/include-all">include-all</a></span>/&gt;</span><span class="sq cardinality"> <span class="OM-cardinality">[1]</span></span></summary>
@@ -2208,7 +2209,7 @@ The following outline is a representation of the [XML format](https://github.com
                                              <p class="close-tag nobr">&lt;/link&gt;</p>
                                           </details>
                                           <div class="OM-choices">
-                                             <p class="OM-lit">A choice:</p>
+                                             <p class="OM-lit">A choice of:</p>
                                              <div class="OM-choice">
                                                 <details class="OM-entry">
                                                    <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/plan-of-action-and-milestones/risk/characterization/origin/related-task/subject/include-all">include-all</a></span>/&gt;</span><span class="sq cardinality"> <span class="OM-cardinality">[1]</span></span></summary>
@@ -2356,7 +2357,7 @@ The following outline is a representation of the [XML format](https://github.com
                                                    <p class="close-tag nobr">&lt;/link&gt;</p>
                                                 </details>
                                                 <div class="OM-choices">
-                                                   <p class="OM-lit">A choice:</p>
+                                                   <p class="OM-lit">A choice of:</p>
                                                    <div class="OM-choice">
                                                       <details class="OM-entry">
                                                          <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/plan-of-action-and-milestones/risk/characterization/origin/related-task/identified-subject/subject/include-all">include-all</a></span>/&gt;</span><span class="sq cardinality"> <span class="OM-cardinality">[1]</span></span></summary>
@@ -2827,7 +2828,7 @@ The following outline is a representation of the [XML format](https://github.com
                                              <p class="close-tag nobr">&lt;/link&gt;</p>
                                           </details>
                                           <div class="OM-choices">
-                                             <p class="OM-lit">A choice:</p>
+                                             <p class="OM-lit">A choice of:</p>
                                              <div class="OM-choice">
                                                 <details class="OM-entry">
                                                    <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/plan-of-action-and-milestones/risk/response/origin/related-task/subject/include-all">include-all</a></span>/&gt;</span><span class="sq cardinality"> <span class="OM-cardinality">[1]</span></span></summary>
@@ -2975,7 +2976,7 @@ The following outline is a representation of the [XML format](https://github.com
                                                    <p class="close-tag nobr">&lt;/link&gt;</p>
                                                 </details>
                                                 <div class="OM-choices">
-                                                   <p class="OM-lit">A choice:</p>
+                                                   <p class="OM-lit">A choice of:</p>
                                                    <div class="OM-choice">
                                                       <details class="OM-entry">
                                                          <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/plan-of-action-and-milestones/risk/response/origin/related-task/identified-subject/subject/include-all">include-all</a></span>/&gt;</span><span class="sq cardinality"> <span class="OM-cardinality">[1]</span></span></summary>
@@ -3256,7 +3257,7 @@ The following outline is a representation of the [XML format](https://github.com
                                  <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/plan-of-action-and-milestones/risk/response/task/timing">timing</a></span>/&gt;</span><span class="sq cardinality"> <span class="OM-cardinality">[0 or 1]</span></span></summary>
                                  <div class="model-container">
                                     <div class="OM-choices">
-                                       <p class="OM-lit">A choice:</p>
+                                       <p class="OM-lit">A choice of:</p>
                                        <div class="OM-choice">
                                           <details class="OM-entry">
                                              <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/plan-of-action-and-milestones/risk/response/task/timing/on-date">on-date</a></span> <span class="nobr" id="/plan-of-action-and-milestones/risk/response/task/timing/on-date/@date"><a class="OM-name" href="../xml-reference/#/plan-of-action-and-milestones/risk/response/task/timing/on-date/@date">date</a>="<span class="OM-datatype"><a href="/reference/datatypes/#datetime-with-timezone">datetime-with-timezone</a></span>"</span>/&gt;</span><span class="sq cardinality"> <span class="OM-cardinality">[1]</span></span></summary>
@@ -3419,7 +3420,7 @@ The following outline is a representation of the [XML format](https://github.com
                                              <p class="close-tag nobr">&lt;/link&gt;</p>
                                           </details>
                                           <div class="OM-choices">
-                                             <p class="OM-lit">A choice:</p>
+                                             <p class="OM-lit">A choice of:</p>
                                              <div class="OM-choice">
                                                 <details class="OM-entry">
                                                    <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/plan-of-action-and-milestones/risk/response/task/associated-activity/subject/include-all">include-all</a></span>/&gt;</span><span class="sq cardinality"> <span class="OM-cardinality">[1]</span></span></summary>
@@ -3575,7 +3576,7 @@ The following outline is a representation of the [XML format](https://github.com
                                        <p class="close-tag nobr">&lt;/link&gt;</p>
                                     </details>
                                     <div class="OM-choices">
-                                       <p class="OM-lit">A choice:</p>
+                                       <p class="OM-lit">A choice of:</p>
                                        <div class="OM-choice">
                                           <details class="OM-entry">
                                              <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/plan-of-action-and-milestones/risk/response/task/subject/include-all">include-all</a></span>/&gt;</span><span class="sq cardinality"> <span class="OM-cardinality">[1]</span></span></summary>
@@ -3988,7 +3989,7 @@ The following outline is a representation of the [XML format](https://github.com
                                                    <p class="close-tag nobr">&lt;/link&gt;</p>
                                                 </details>
                                                 <div class="OM-choices">
-                                                   <p class="OM-lit">A choice:</p>
+                                                   <p class="OM-lit">A choice of:</p>
                                                    <div class="OM-choice">
                                                       <details class="OM-entry">
                                                          <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/plan-of-action-and-milestones/risk/risk-log/entry/related-response/related-task/subject/include-all">include-all</a></span>/&gt;</span><span class="sq cardinality"> <span class="OM-cardinality">[1]</span></span></summary>
@@ -4136,7 +4137,7 @@ The following outline is a representation of the [XML format](https://github.com
                                                          <p class="close-tag nobr">&lt;/link&gt;</p>
                                                       </details>
                                                       <div class="OM-choices">
-                                                         <p class="OM-lit">A choice:</p>
+                                                         <p class="OM-lit">A choice of:</p>
                                                          <div class="OM-choice">
                                                             <details class="OM-entry">
                                                                <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/plan-of-action-and-milestones/risk/risk-log/entry/related-response/related-task/identified-subject/subject/include-all">include-all</a></span>/&gt;</span><span class="sq cardinality"> <span class="OM-cardinality">[1]</span></span></summary>

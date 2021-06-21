@@ -1,7 +1,8 @@
 ---
 title: "OSCAL Component Definition Model Development Snapshot XML Format Index"
-heading: Component Definition Model Development Snapshot XML Format Index
+heading: "Component Definition Model Development Snapshot XML Format Index"
 weight: 70
+generateanchors: false
 sidenav:
   title: XML Index
 toc:

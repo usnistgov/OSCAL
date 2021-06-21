@@ -28856,11 +28856,11 @@
       <xsl:apply-templates select="$str-as-textnode" mode="infer-inlines"/>
    </xsl:template>
    <xsl:template name="parse-markdown">
-
+        
 <!-- First, group according to ``` delimiters btw codeblocks and not
         within codeblock, escape & and < (only)
         within not-codeblock split lines at \n\s*\n
-
+        
         -->
         <!-- $str may be passed in, or we can process the current node -->
       <xsl:param name="markdown-str" as="xs:string" required="yes"/>

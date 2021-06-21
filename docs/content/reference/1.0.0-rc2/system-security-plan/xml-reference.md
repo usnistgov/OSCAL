@@ -2,6 +2,7 @@
 title: "OSCAL System Security Plan Model v1.0.0-rc2 XML Format Reference"
 heading: "System Security Plan Model v1.0.0-rc2 XML Format Reference"
 weight: 60
+generateanchors: false
 sidenav:
   title: XML Reference
 toc:
@@ -129,7 +130,7 @@ The following is the XML format reference for this model, which is organized hie
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
                            <h3 id="/system-security-plan/metadata/title" class="toc3 name">title</h3>
-                           <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                           <p class="type" id="/system-security-plan/metadata/title/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                            <p class="occurrence">[1]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/metadata/title">Switch to JSON</a></div>
                            <p class="formal-name">Document Title</p>
@@ -141,7 +142,7 @@ The following is the XML format reference for this model, which is organized hie
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
                            <h3 id="/system-security-plan/metadata/published" class="toc3 name">published</h3>
-                           <p class="type"><a href="/reference/datatypes/#datetime-with-timezone">dateTime-with-timezone</a></p>
+                           <p class="type" id="/system-security-plan/metadata/published/_VALUE"><a href="/reference/datatypes/#datetime-with-timezone">dateTime-with-timezone</a></p>
                            <p class="occurrence">[0 or 1]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/metadata/published">Switch to JSON</a></div>
                            <p class="formal-name">Publication Timestamp</p>
@@ -169,7 +170,7 @@ The following is the XML format reference for this model, which is organized hie
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
                            <h3 id="/system-security-plan/metadata/last-modified" class="toc3 name">last-modified</h3>
-                           <p class="type"><a href="/reference/datatypes/#datetime-with-timezone">dateTime-with-timezone</a></p>
+                           <p class="type" id="/system-security-plan/metadata/last-modified/_VALUE"><a href="/reference/datatypes/#datetime-with-timezone">dateTime-with-timezone</a></p>
                            <p class="occurrence">[1]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/metadata/last-modified">Switch to JSON</a></div>
                            <p class="formal-name">Last Modified Timestamp</p>
@@ -197,7 +198,7 @@ The following is the XML format reference for this model, which is organized hie
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
                            <h3 id="/system-security-plan/metadata/version" class="toc3 name">version</h3>
-                           <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                           <p class="type" id="/system-security-plan/metadata/version/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
                            <p class="occurrence">[1]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/metadata/version">Switch to JSON</a></div>
                            <p class="formal-name">Document Version</p>
@@ -224,7 +225,7 @@ The following is the XML format reference for this model, which is organized hie
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
                            <h3 id="/system-security-plan/metadata/oscal-version" class="toc3 name">oscal-version</h3>
-                           <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                           <p class="type" id="/system-security-plan/metadata/oscal-version/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
                            <p class="occurrence">[1]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/metadata/oscal-version">Switch to JSON</a></div>
                            <p class="formal-name">OSCAL version</p>
@@ -293,7 +294,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/metadata/revisions/revision/title" class="toc5 name">title</h5>
-                                             <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                             <p class="type" id="/system-security-plan/metadata/revisions/revision/title/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/metadata/revisions/title">Switch to JSON</a></div>
                                              <p class="formal-name">Document Title</p>
@@ -306,7 +307,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/metadata/revisions/revision/published" class="toc5 name">published</h5>
-                                             <p class="type"><a href="/reference/datatypes/#datetime-with-timezone">dateTime-with-timezone</a></p>
+                                             <p class="type" id="/system-security-plan/metadata/revisions/revision/published/_VALUE"><a href="/reference/datatypes/#datetime-with-timezone">dateTime-with-timezone</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/metadata/revisions/published">Switch to JSON</a></div>
                                              <p class="formal-name">Publication Timestamp</p>
@@ -334,7 +335,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/metadata/revisions/revision/last-modified" class="toc5 name">last-modified</h5>
-                                             <p class="type"><a href="/reference/datatypes/#datetime-with-timezone">dateTime-with-timezone</a></p>
+                                             <p class="type" id="/system-security-plan/metadata/revisions/revision/last-modified/_VALUE"><a href="/reference/datatypes/#datetime-with-timezone">dateTime-with-timezone</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/metadata/revisions/last-modified">Switch to JSON</a></div>
                                              <p class="formal-name">Last Modified Timestamp</p>
@@ -362,7 +363,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/metadata/revisions/revision/version" class="toc5 name">version</h5>
-                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                             <p class="type" id="/system-security-plan/metadata/revisions/revision/version/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/metadata/revisions/version">Switch to JSON</a></div>
                                              <p class="formal-name">Document Version</p>
@@ -389,7 +390,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/metadata/revisions/revision/oscal-version" class="toc5 name">oscal-version</h5>
-                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                             <p class="type" id="/system-security-plan/metadata/revisions/revision/oscal-version/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/metadata/revisions/oscal-version">Switch to JSON</a></div>
                                              <p class="formal-name">OSCAL version</p>
@@ -501,14 +502,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                   to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
                                                                <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                             </div>
-                                                            <div class="remarks">
-                                                               <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
-                                                                  names and associated values used in a property. This allows the semantics associated
-                                                                  with a given name/value pair to be defined on an organization-by-organization basis.</p>
-                                                               <p>An organization MUST use a URI that they have control over. e.g., a domain registered
-                                                                  to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
-                                                               <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
-                                                            </div>
                                                          </details>
                                                       </div>
                                                    </div>
@@ -543,10 +536,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                   a specific <code>class</code> value.</p>
                                                             </div>
-                                                            <div class="remarks">
-                                                               <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                                  a specific <code>class</code> value.</p>
-                                                            </div>
                                                          </details>
                                                       </div>
                                                    </div>
@@ -564,6 +553,19 @@ The following is the XML format reference for this model, which is organized hie
                                                    </div>
                                                    <div class="body">
                                                       <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                                      <details class="properties elements" open="open">
+                                                         <summary>Element (0+)</summary>
+                                                         <div class="model-entry definition field">
+                                                            <div class="instance-header">
+                                                               <h6 id="/system-security-plan/metadata/revisions/revision/prop/remarks/_VALUE" class="toc6 name">(unwrapped)</h6>
+                                                               <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                               <p class="occurrence">[0 to ∞]</p>
+                                                            </div>
+                                                            <div class="body">
+                                                               <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                            </div>
+                                                         </div>
+                                                      </details>
                                                    </div>
                                                 </div>
                                              </details>
@@ -616,15 +618,6 @@ The following is the XML format reference for this model, which is organized hie
                                                       <div class="remarks-group usa-prose">
                                                          <details open="open">
                                                             <summary class="subhead">Remarks</summary>
-                                                            <div class="remarks">
-                                                               <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
-                                                                  that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
-                                                               <p>If a local reference using a fragment is used, this will be indicated by a fragment
-                                                                  "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
-                                                               <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
-                                                                  resource. A relative URI will be resolved relative to the location of the document
-                                                                  containing the link.</p>
-                                                            </div>
                                                             <div class="remarks">
                                                                <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
                                                                   that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
@@ -690,7 +683,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/system-security-plan/metadata/revisions/revision/link/text" class="toc6 name">text</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                                      <p class="type" id="/system-security-plan/metadata/revisions/revision/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/metadata/revisions/links/text">Switch to JSON</a></div>
                                                       <p class="formal-name">Link Text</p>
@@ -713,6 +706,19 @@ The following is the XML format reference for this model, which is organized hie
                                           </div>
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                             <details class="properties elements" open="open">
+                                                <summary>Element (0+)</summary>
+                                                <div class="model-entry definition field">
+                                                   <div class="instance-header">
+                                                      <h5 id="/system-security-plan/metadata/revisions/revision/remarks/_VALUE" class="toc5 name">(unwrapped)</h5>
+                                                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                      <p class="occurrence">[0 to ∞]</p>
+                                                   </div>
+                                                   <div class="body">
+                                                      <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                   </div>
+                                                </div>
+                                             </details>
                                           </div>
                                        </div>
                                     </details>
@@ -724,7 +730,7 @@ The following is the XML format reference for this model, which is organized hie
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
                            <h3 id="/system-security-plan/metadata/document-id" class="toc3 name">document-id</h3>
-                           <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                           <p class="type" id="/system-security-plan/metadata/document-id/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
                            <p class="occurrence">[0 to ∞]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/metadata/document-ids">Switch to JSON</a></div>
                            <p class="formal-name">Document Identifier</p>
@@ -734,9 +740,6 @@ The following is the XML format reference for this model, which is organized hie
                               that are to be treated as different versions of the same document. If this element
                               does not appear, or if the value of this element is empty, the value of "document-id"
                               is equal to the value of the "uuid" flag of the top-level root element.</p>
-                           <div class="value">
-                              <p>Value: A string value.</p>
-                           </div>
                            <div class="remarks-group usa-prose">
                               <details open="open">
                                  <summary class="subhead">Remarks</summary>
@@ -872,14 +875,6 @@ The following is the XML format reference for this model, which is organized hie
                                                 to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
                                              <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                           </div>
-                                          <div class="remarks">
-                                             <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
-                                                names and associated values used in a property. This allows the semantics associated
-                                                with a given name/value pair to be defined on an organization-by-organization basis.</p>
-                                             <p>An organization MUST use a URI that they have control over. e.g., a domain registered
-                                                to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
-                                             <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
-                                          </div>
                                        </details>
                                     </div>
                                  </div>
@@ -914,10 +909,6 @@ The following is the XML format reference for this model, which is organized hie
                                              <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                 a specific <code>class</code> value.</p>
                                           </div>
-                                          <div class="remarks">
-                                             <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                a specific <code>class</code> value.</p>
-                                          </div>
                                        </details>
                                     </div>
                                  </div>
@@ -935,6 +926,19 @@ The following is the XML format reference for this model, which is organized hie
                                  </div>
                                  <div class="body">
                                     <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                    <details class="properties elements" open="open">
+                                       <summary>Element (0+)</summary>
+                                       <div class="model-entry definition field">
+                                          <div class="instance-header">
+                                             <h4 id="/system-security-plan/metadata/prop/remarks/_VALUE" class="toc4 name">(unwrapped)</h4>
+                                             <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                             <p class="occurrence">[0 to ∞]</p>
+                                          </div>
+                                          <div class="body">
+                                             <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                          </div>
+                                       </div>
+                                    </details>
                                  </div>
                               </div>
                            </details>
@@ -987,15 +991,6 @@ The following is the XML format reference for this model, which is organized hie
                                     <div class="remarks-group usa-prose">
                                        <details open="open">
                                           <summary class="subhead">Remarks</summary>
-                                          <div class="remarks">
-                                             <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
-                                                that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
-                                             <p>If a local reference using a fragment is used, this will be indicated by a fragment
-                                                "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
-                                             <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
-                                                resource. A relative URI will be resolved relative to the location of the document
-                                                containing the link.</p>
-                                          </div>
                                           <div class="remarks">
                                              <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
                                                 that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
@@ -1061,7 +1056,7 @@ The following is the XML format reference for this model, which is organized hie
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/system-security-plan/metadata/link/text" class="toc4 name">text</h4>
-                                    <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                    <p class="type" id="/system-security-plan/metadata/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/metadata/links/text">Switch to JSON</a></div>
                                     <p class="formal-name">Link Text</p>
@@ -1117,13 +1112,6 @@ The following is the XML format reference for this model, which is organized hie
                                                 responsible-party, responsible-role). When using such a role, it is necessary to define
                                                 these roles in this list, which will then allow such a role to be referenced.</p>
                                           </div>
-                                          <div class="remarks">
-                                             <p>OSCAL has defined a set of standardized roles for consistent use in OSCAL documents.
-                                                This allows tools consuming OSCAL content to infer specific semantics when these roles
-                                                are used. These roles are documented in the specific contexts of their use (e.g.,
-                                                responsible-party, responsible-role). When using such a role, it is necessary to define
-                                                these roles in this list, which will then allow such a role to be referenced.</p>
-                                          </div>
                                        </details>
                                     </div>
                                  </div>
@@ -1134,7 +1122,7 @@ The following is the XML format reference for this model, which is organized hie
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/system-security-plan/metadata/role/title" class="toc4 name">title</h4>
-                                    <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                    <p class="type" id="/system-security-plan/metadata/role/title/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                     <p class="occurrence">[1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/metadata/roles/title">Switch to JSON</a></div>
                                     <p class="formal-name">Role Title</p>
@@ -1146,7 +1134,7 @@ The following is the XML format reference for this model, which is organized hie
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/system-security-plan/metadata/role/short-name" class="toc4 name">short-name</h4>
-                                    <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                    <p class="type" id="/system-security-plan/metadata/role/short-name/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/metadata/roles/short-name">Switch to JSON</a></div>
                                     <p class="formal-name">Role Short Name</p>
@@ -1165,6 +1153,19 @@ The following is the XML format reference for this model, which is organized hie
                                  </div>
                                  <div class="body">
                                     <p class="description"><span class="usa-tag">Description</span> A summary of the role's purpose and associated responsibilities.</p>
+                                    <details class="properties elements" open="open">
+                                       <summary>Element (0+)</summary>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h4 id="/system-security-plan/metadata/role/description/_VALUE" class="toc4 name">(unwrapped)</h4>
+                                             <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                             <p class="occurrence">[0 to ∞]</p>
+                                          </div>
+                                          <div class="body">
+                                             <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                          </div>
+                                       </div>
+                                    </details>
                                  </div>
                               </div>
                               <div class="model-entry definition assembly">
@@ -1260,14 +1261,6 @@ The following is the XML format reference for this model, which is organized hie
                                                          to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
                                                       <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                    </div>
-                                                   <div class="remarks">
-                                                      <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
-                                                         names and associated values used in a property. This allows the semantics associated
-                                                         with a given name/value pair to be defined on an organization-by-organization basis.</p>
-                                                      <p>An organization MUST use a URI that they have control over. e.g., a domain registered
-                                                         to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
-                                                      <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
-                                                   </div>
                                                 </details>
                                              </div>
                                           </div>
@@ -1302,10 +1295,6 @@ The following is the XML format reference for this model, which is organized hie
                                                       <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                          a specific <code>class</code> value.</p>
                                                    </div>
-                                                   <div class="remarks">
-                                                      <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                         a specific <code>class</code> value.</p>
-                                                   </div>
                                                 </details>
                                              </div>
                                           </div>
@@ -1323,6 +1312,19 @@ The following is the XML format reference for this model, which is organized hie
                                           </div>
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                             <details class="properties elements" open="open">
+                                                <summary>Element (0+)</summary>
+                                                <div class="model-entry definition field">
+                                                   <div class="instance-header">
+                                                      <h5 id="/system-security-plan/metadata/role/prop/remarks/_VALUE" class="toc5 name">(unwrapped)</h5>
+                                                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                      <p class="occurrence">[0 to ∞]</p>
+                                                   </div>
+                                                   <div class="body">
+                                                      <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                   </div>
+                                                </div>
+                                             </details>
                                           </div>
                                        </div>
                                     </details>
@@ -1375,15 +1377,6 @@ The following is the XML format reference for this model, which is organized hie
                                              <div class="remarks-group usa-prose">
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
-                                                   <div class="remarks">
-                                                      <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
-                                                         that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
-                                                      <p>If a local reference using a fragment is used, this will be indicated by a fragment
-                                                         "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
-                                                      <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
-                                                         resource. A relative URI will be resolved relative to the location of the document
-                                                         containing the link.</p>
-                                                   </div>
                                                    <div class="remarks">
                                                       <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
                                                          that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
@@ -1449,7 +1442,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/metadata/role/link/text" class="toc5 name">text</h5>
-                                             <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                             <p class="type" id="/system-security-plan/metadata/role/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/metadata/roles/links/text">Switch to JSON</a></div>
                                              <p class="formal-name">Link Text</p>
@@ -1472,6 +1465,19 @@ The following is the XML format reference for this model, which is organized hie
                                  </div>
                                  <div class="body">
                                     <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                    <details class="properties elements" open="open">
+                                       <summary>Element (0+)</summary>
+                                       <div class="model-entry definition field">
+                                          <div class="instance-header">
+                                             <h4 id="/system-security-plan/metadata/role/remarks/_VALUE" class="toc4 name">(unwrapped)</h4>
+                                             <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                             <p class="occurrence">[0 to ∞]</p>
+                                          </div>
+                                          <div class="body">
+                                             <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                          </div>
+                                       </div>
+                                    </details>
                                  </div>
                               </div>
                            </details>
@@ -1539,7 +1545,7 @@ The following is the XML format reference for this model, which is organized hie
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/system-security-plan/metadata/location/title" class="toc4 name">title</h4>
-                                    <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                    <p class="type" id="/system-security-plan/metadata/location/title/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/metadata/locations/title">Switch to JSON</a></div>
                                     <p class="formal-name">Location Title</p>
@@ -1561,7 +1567,7 @@ The following is the XML format reference for this model, which is organized hie
                                     <div class="remarks-group usa-prose">
                                        <details open="open">
                                           <summary class="subhead">Remarks</summary>
-                                          <div class="remarks in-use">
+                                          <div class="remarks">
                                              <p>Typically, the physical address of the location will be used here. If this information
                                                 is sensitive, then a mailing address can be used instead.</p>
                                           </div>
@@ -1600,7 +1606,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/metadata/location/address/addr-line" class="toc5 name">addr-line</h5>
-                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                             <p class="type" id="/system-security-plan/metadata/location/address/addr-line/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[0 to ∞]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/metadata/locations/address/addr-lines">Switch to JSON</a></div>
                                              <p class="formal-name">Address line</p>
@@ -1612,7 +1618,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/metadata/location/address/city" class="toc5 name">city</h5>
-                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                             <p class="type" id="/system-security-plan/metadata/location/address/city/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/metadata/locations/address/city">Switch to JSON</a></div>
                                              <p class="formal-name">City</p>
@@ -1624,7 +1630,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/metadata/location/address/state" class="toc5 name">state</h5>
-                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                             <p class="type" id="/system-security-plan/metadata/location/address/state/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/metadata/locations/address/state">Switch to JSON</a></div>
                                              <p class="formal-name">State</p>
@@ -1636,7 +1642,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/metadata/location/address/postal-code" class="toc5 name">postal-code</h5>
-                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                             <p class="type" id="/system-security-plan/metadata/location/address/postal-code/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/metadata/locations/address/postal-code">Switch to JSON</a></div>
                                              <p class="formal-name">Postal Code</p>
@@ -1648,7 +1654,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/metadata/location/address/country" class="toc5 name">country</h5>
-                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                             <p class="type" id="/system-security-plan/metadata/location/address/country/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/metadata/locations/address/country">Switch to JSON</a></div>
                                              <p class="formal-name">Country Code</p>
@@ -1669,7 +1675,7 @@ The following is the XML format reference for this model, which is organized hie
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/system-security-plan/metadata/location/email-address" class="toc4 name">email-address</h4>
-                                    <p class="type"><a href="/reference/datatypes/#email">email</a></p>
+                                    <p class="type" id="/system-security-plan/metadata/location/email-address/_VALUE"><a href="/reference/datatypes/#email">email</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/metadata/locations/email-addresses">Switch to JSON</a></div>
                                     <p class="formal-name">Email Address</p>
@@ -1679,7 +1685,7 @@ The following is the XML format reference for this model, which is organized hie
                                     <div class="remarks-group usa-prose">
                                        <details open="open">
                                           <summary class="subhead">Remarks</summary>
-                                          <div class="remarks in-use">
+                                          <div class="remarks">
                                              <p>This is a contact email associated with the location.</p>
                                           </div>
                                        </details>
@@ -1689,20 +1695,17 @@ The following is the XML format reference for this model, which is organized hie
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/system-security-plan/metadata/location/telephone-number" class="toc4 name">telephone-number</h4>
-                                    <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                    <p class="type" id="/system-security-plan/metadata/location/telephone-number/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/metadata/locations/telephone-numbers">Switch to JSON</a></div>
                                     <p class="formal-name">Telephone Number</p>
                                  </div>
                                  <div class="body">
                                     <p class="description"><span class="usa-tag">Description</span> Contact number by telephone.</p>
-                                    <div class="value">
-                                       <p>Value: A string value.</p>
-                                    </div>
                                     <div class="remarks-group usa-prose">
                                        <details open="open">
                                           <summary class="subhead">Remarks</summary>
-                                          <div class="remarks in-use">
+                                          <div class="remarks">
                                              <p>A phone number used to contact the location.</p>
                                           </div>
                                        </details>
@@ -1742,7 +1745,7 @@ The following is the XML format reference for this model, which is organized hie
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/system-security-plan/metadata/location/url" class="toc4 name">url</h4>
-                                    <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
+                                    <p class="type" id="/system-security-plan/metadata/location/url/_VALUE"><a href="/reference/datatypes/#uri">uri</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/metadata/locations/urls">Switch to JSON</a></div>
                                     <p class="formal-name">Location URL</p>
@@ -1845,14 +1848,6 @@ The following is the XML format reference for this model, which is organized hie
                                                          to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
                                                       <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                    </div>
-                                                   <div class="remarks">
-                                                      <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
-                                                         names and associated values used in a property. This allows the semantics associated
-                                                         with a given name/value pair to be defined on an organization-by-organization basis.</p>
-                                                      <p>An organization MUST use a URI that they have control over. e.g., a domain registered
-                                                         to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
-                                                      <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
-                                                   </div>
                                                 </details>
                                              </div>
                                           </div>
@@ -1887,10 +1882,6 @@ The following is the XML format reference for this model, which is organized hie
                                                       <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                          a specific <code>class</code> value.</p>
                                                    </div>
-                                                   <div class="remarks">
-                                                      <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                         a specific <code>class</code> value.</p>
-                                                   </div>
                                                 </details>
                                              </div>
                                           </div>
@@ -1908,6 +1899,19 @@ The following is the XML format reference for this model, which is organized hie
                                           </div>
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                             <details class="properties elements" open="open">
+                                                <summary>Element (0+)</summary>
+                                                <div class="model-entry definition field">
+                                                   <div class="instance-header">
+                                                      <h5 id="/system-security-plan/metadata/location/prop/remarks/_VALUE" class="toc5 name">(unwrapped)</h5>
+                                                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                      <p class="occurrence">[0 to ∞]</p>
+                                                   </div>
+                                                   <div class="body">
+                                                      <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                   </div>
+                                                </div>
+                                             </details>
                                           </div>
                                        </div>
                                     </details>
@@ -1960,15 +1964,6 @@ The following is the XML format reference for this model, which is organized hie
                                              <div class="remarks-group usa-prose">
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
-                                                   <div class="remarks">
-                                                      <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
-                                                         that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
-                                                      <p>If a local reference using a fragment is used, this will be indicated by a fragment
-                                                         "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
-                                                      <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
-                                                         resource. A relative URI will be resolved relative to the location of the document
-                                                         containing the link.</p>
-                                                   </div>
                                                    <div class="remarks">
                                                       <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
                                                          that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
@@ -2034,7 +2029,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/metadata/location/link/text" class="toc5 name">text</h5>
-                                             <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                             <p class="type" id="/system-security-plan/metadata/location/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/metadata/locations/links/text">Switch to JSON</a></div>
                                              <p class="formal-name">Link Text</p>
@@ -2057,6 +2052,19 @@ The following is the XML format reference for this model, which is organized hie
                                  </div>
                                  <div class="body">
                                     <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                    <details class="properties elements" open="open">
+                                       <summary>Element (0+)</summary>
+                                       <div class="model-entry definition field">
+                                          <div class="instance-header">
+                                             <h4 id="/system-security-plan/metadata/location/remarks/_VALUE" class="toc4 name">(unwrapped)</h4>
+                                             <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                             <p class="occurrence">[0 to ∞]</p>
+                                          </div>
+                                          <div class="body">
+                                             <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                          </div>
+                                       </div>
+                                    </details>
                                  </div>
                               </div>
                            </details>
@@ -2134,7 +2142,7 @@ The following is the XML format reference for this model, which is organized hie
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/system-security-plan/metadata/party/name" class="toc4 name">name</h4>
-                                    <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                    <p class="type" id="/system-security-plan/metadata/party/name/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/metadata/parties/name">Switch to JSON</a></div>
                                     <p class="formal-name">Party Name</p>
@@ -2147,7 +2155,7 @@ The following is the XML format reference for this model, which is organized hie
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/system-security-plan/metadata/party/short-name" class="toc4 name">short-name</h4>
-                                    <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                    <p class="type" id="/system-security-plan/metadata/party/short-name/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/metadata/parties/short-name">Switch to JSON</a></div>
                                     <p class="formal-name">Party Short Name</p>
@@ -2159,7 +2167,7 @@ The following is the XML format reference for this model, which is organized hie
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/system-security-plan/metadata/party/external-id" class="toc4 name">external-id</h4>
-                                    <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                    <p class="type" id="/system-security-plan/metadata/party/external-id/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/metadata/parties/external-ids">Switch to JSON</a></div>
                                     <p class="formal-name">Party External Identifier</p>
@@ -2167,9 +2175,6 @@ The following is the XML format reference for this model, which is organized hie
                                  <div class="body">
                                     <p class="description"><span class="usa-tag">Description</span> An identifier for a person or organization using a designated scheme. e.g. an Open
                                        Researcher and Contributor ID (ORCID)</p>
-                                    <div class="value">
-                                       <p>Value: A string value.</p>
-                                    </div>
                                     <details class="properties attributes" open="open">
                                        <summary>Attribute (1)</summary>
                                        <div class="model-entry definition assembly">
@@ -2291,14 +2296,6 @@ The following is the XML format reference for this model, which is organized hie
                                                          to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
                                                       <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                    </div>
-                                                   <div class="remarks">
-                                                      <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
-                                                         names and associated values used in a property. This allows the semantics associated
-                                                         with a given name/value pair to be defined on an organization-by-organization basis.</p>
-                                                      <p>An organization MUST use a URI that they have control over. e.g., a domain registered
-                                                         to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
-                                                      <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
-                                                   </div>
                                                 </details>
                                              </div>
                                           </div>
@@ -2333,10 +2330,6 @@ The following is the XML format reference for this model, which is organized hie
                                                       <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                          a specific <code>class</code> value.</p>
                                                    </div>
-                                                   <div class="remarks">
-                                                      <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                         a specific <code>class</code> value.</p>
-                                                   </div>
                                                 </details>
                                              </div>
                                           </div>
@@ -2354,6 +2347,19 @@ The following is the XML format reference for this model, which is organized hie
                                           </div>
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                             <details class="properties elements" open="open">
+                                                <summary>Element (0+)</summary>
+                                                <div class="model-entry definition field">
+                                                   <div class="instance-header">
+                                                      <h5 id="/system-security-plan/metadata/party/prop/remarks/_VALUE" class="toc5 name">(unwrapped)</h5>
+                                                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                      <p class="occurrence">[0 to ∞]</p>
+                                                   </div>
+                                                   <div class="body">
+                                                      <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                   </div>
+                                                </div>
+                                             </details>
                                           </div>
                                        </div>
                                     </details>
@@ -2406,15 +2412,6 @@ The following is the XML format reference for this model, which is organized hie
                                              <div class="remarks-group usa-prose">
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
-                                                   <div class="remarks">
-                                                      <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
-                                                         that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
-                                                      <p>If a local reference using a fragment is used, this will be indicated by a fragment
-                                                         "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
-                                                      <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
-                                                         resource. A relative URI will be resolved relative to the location of the document
-                                                         containing the link.</p>
-                                                   </div>
                                                    <div class="remarks">
                                                       <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
                                                          that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
@@ -2480,7 +2477,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/metadata/party/link/text" class="toc5 name">text</h5>
-                                             <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                             <p class="type" id="/system-security-plan/metadata/party/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/metadata/parties/links/text">Switch to JSON</a></div>
                                              <p class="formal-name">Link Text</p>
@@ -2496,7 +2493,7 @@ The following is the XML format reference for this model, which is organized hie
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/system-security-plan/metadata/party/email-address" class="toc4 name">email-address</h4>
-                                    <p class="type"><a href="/reference/datatypes/#email">email</a></p>
+                                    <p class="type" id="/system-security-plan/metadata/party/email-address/_VALUE"><a href="/reference/datatypes/#email">email</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/metadata/parties/email-addresses">Switch to JSON</a></div>
                                     <p class="formal-name">Email Address</p>
@@ -2506,7 +2503,7 @@ The following is the XML format reference for this model, which is organized hie
                                     <div class="remarks-group usa-prose">
                                        <details open="open">
                                           <summary class="subhead">Remarks</summary>
-                                          <div class="remarks in-use">
+                                          <div class="remarks">
                                              <p>This is a contact email associated with the party.</p>
                                           </div>
                                        </details>
@@ -2516,20 +2513,17 @@ The following is the XML format reference for this model, which is organized hie
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/system-security-plan/metadata/party/telephone-number" class="toc4 name">telephone-number</h4>
-                                    <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                    <p class="type" id="/system-security-plan/metadata/party/telephone-number/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/metadata/parties/telephone-numbers">Switch to JSON</a></div>
                                     <p class="formal-name">Telephone Number</p>
                                  </div>
                                  <div class="body">
                                     <p class="description"><span class="usa-tag">Description</span> Contact number by telephone.</p>
-                                    <div class="value">
-                                       <p>Value: A string value.</p>
-                                    </div>
                                     <div class="remarks-group usa-prose">
                                        <details open="open">
                                           <summary class="subhead">Remarks</summary>
-                                          <div class="remarks in-use">
+                                          <div class="remarks">
                                              <p>A phone number used to contact the party.</p>
                                           </div>
                                        </details>
@@ -2611,7 +2605,7 @@ The following is the XML format reference for this model, which is organized hie
                                           <div class="model-entry definition assembly">
                                              <div class="instance-header">
                                                 <h5 id="/system-security-plan/metadata/party/address/addr-line" class="toc5 name">addr-line</h5>
-                                                <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                <p class="type" id="/system-security-plan/metadata/party/address/addr-line/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
                                                 <p class="occurrence">[0 to ∞]</p>
                                                 <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/metadata/parties/addresses/addr-lines">Switch to JSON</a></div>
                                                 <p class="formal-name">Address line</p>
@@ -2623,7 +2617,7 @@ The following is the XML format reference for this model, which is organized hie
                                           <div class="model-entry definition assembly">
                                              <div class="instance-header">
                                                 <h5 id="/system-security-plan/metadata/party/address/city" class="toc5 name">city</h5>
-                                                <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                <p class="type" id="/system-security-plan/metadata/party/address/city/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
                                                 <p class="occurrence">[0 or 1]</p>
                                                 <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/metadata/parties/addresses/city">Switch to JSON</a></div>
                                                 <p class="formal-name">City</p>
@@ -2635,7 +2629,7 @@ The following is the XML format reference for this model, which is organized hie
                                           <div class="model-entry definition assembly">
                                              <div class="instance-header">
                                                 <h5 id="/system-security-plan/metadata/party/address/state" class="toc5 name">state</h5>
-                                                <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                <p class="type" id="/system-security-plan/metadata/party/address/state/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
                                                 <p class="occurrence">[0 or 1]</p>
                                                 <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/metadata/parties/addresses/state">Switch to JSON</a></div>
                                                 <p class="formal-name">State</p>
@@ -2647,7 +2641,7 @@ The following is the XML format reference for this model, which is organized hie
                                           <div class="model-entry definition assembly">
                                              <div class="instance-header">
                                                 <h5 id="/system-security-plan/metadata/party/address/postal-code" class="toc5 name">postal-code</h5>
-                                                <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                <p class="type" id="/system-security-plan/metadata/party/address/postal-code/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
                                                 <p class="occurrence">[0 or 1]</p>
                                                 <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/metadata/parties/addresses/postal-code">Switch to JSON</a></div>
                                                 <p class="formal-name">Postal Code</p>
@@ -2659,7 +2653,7 @@ The following is the XML format reference for this model, which is organized hie
                                           <div class="model-entry definition assembly">
                                              <div class="instance-header">
                                                 <h5 id="/system-security-plan/metadata/party/address/country" class="toc5 name">country</h5>
-                                                <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                <p class="type" id="/system-security-plan/metadata/party/address/country/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
                                                 <p class="occurrence">[0 or 1]</p>
                                                 <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/metadata/parties/addresses/country">Switch to JSON</a></div>
                                                 <p class="formal-name">Country Code</p>
@@ -2680,7 +2674,7 @@ The following is the XML format reference for this model, which is organized hie
                                  <div class="model-entry definition assembly">
                                     <div class="instance-header">
                                        <h4 id="/system-security-plan/metadata/party/location-uuid" class="toc4 name">location-uuid</h4>
-                                       <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                       <p class="type" id="/system-security-plan/metadata/party/location-uuid/_VALUE"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                        <p class="occurrence">[0 to ∞]</p>
                                        <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/metadata/parties/location-uuids">Switch to JSON</a></div>
                                        <p class="formal-name">Location Reference</p>
@@ -2699,7 +2693,7 @@ The following is the XML format reference for this model, which is organized hie
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/system-security-plan/metadata/party/member-of-organization" class="toc4 name">member-of-organization</h4>
-                                    <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                    <p class="type" id="/system-security-plan/metadata/party/member-of-organization/_VALUE"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/metadata/parties/member-of-organizations">Switch to JSON</a></div>
                                     <p class="formal-name">Organizational Affiliation</p>
@@ -2710,9 +2704,6 @@ The following is the XML format reference for this model, which is organized hie
                                     <div class="remarks-group usa-prose">
                                        <details open="open">
                                           <summary class="subhead">Remarks</summary>
-                                          <div class="remarks">
-                                             <p>Parties of both the <code>person</code> or <code>organization</code> type can be associated with an organization using the <code>member-of-organization</code>. </p>
-                                          </div>
                                           <div class="remarks">
                                              <p>Parties of both the <code>person</code> or <code>organization</code> type can be associated with an organization using the <code>member-of-organization</code>. </p>
                                           </div>
@@ -2736,6 +2727,19 @@ The following is the XML format reference for this model, which is organized hie
                                  </div>
                                  <div class="body">
                                     <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                    <details class="properties elements" open="open">
+                                       <summary>Element (0+)</summary>
+                                       <div class="model-entry definition field">
+                                          <div class="instance-header">
+                                             <h4 id="/system-security-plan/metadata/party/remarks/_VALUE" class="toc4 name">(unwrapped)</h4>
+                                             <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                             <p class="occurrence">[0 to ∞]</p>
+                                          </div>
+                                          <div class="body">
+                                             <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                          </div>
+                                       </div>
+                                    </details>
                                  </div>
                               </div>
                            </details>
@@ -2746,7 +2750,7 @@ The following is the XML format reference for this model, which is organized hie
                            <h3 id="/system-security-plan/metadata/responsible-party" class="toc3 name">responsible-party</h3>
                            <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-metadata/metadata/responsible-party">(global definition)</a></p>
                            <p class="occurrence">[0 to ∞]</p>
-                           <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/metadata/responsible-parties/responsible-party">Switch to JSON</a></div>
+                           <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/metadata/responsible-parties">Switch to JSON</a></div>
                            <p class="formal-name">Responsible Party</p>
                         </div>
                         <div class="body">
@@ -2781,7 +2785,7 @@ The following is the XML format reference for this model, which is organized hie
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/system-security-plan/metadata/responsible-party/party-uuid" class="toc4 name">party-uuid</h4>
-                                    <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                    <p class="type" id="/system-security-plan/metadata/responsible-party/party-uuid/_VALUE"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                     <p class="occurrence">[1 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/metadata/responsible-parties/responsible-party/party-uuids">Switch to JSON</a></div>
                                     <p class="formal-name">Party Reference</p>
@@ -2791,7 +2795,7 @@ The following is the XML format reference for this model, which is organized hie
                                     <div class="remarks-group usa-prose">
                                        <details open="open">
                                           <summary class="subhead">Remarks</summary>
-                                          <div class="remarks in-use">
+                                          <div class="remarks">
                                              <p>Specifies one or more parties that are responsible for performing the associated <code>role</code>. </p>
                                           </div>
                                        </details>
@@ -2897,14 +2901,6 @@ The following is the XML format reference for this model, which is organized hie
                                                          to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
                                                       <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                    </div>
-                                                   <div class="remarks">
-                                                      <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
-                                                         names and associated values used in a property. This allows the semantics associated
-                                                         with a given name/value pair to be defined on an organization-by-organization basis.</p>
-                                                      <p>An organization MUST use a URI that they have control over. e.g., a domain registered
-                                                         to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
-                                                      <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
-                                                   </div>
                                                 </details>
                                              </div>
                                           </div>
@@ -2939,10 +2935,6 @@ The following is the XML format reference for this model, which is organized hie
                                                       <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                          a specific <code>class</code> value.</p>
                                                    </div>
-                                                   <div class="remarks">
-                                                      <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                         a specific <code>class</code> value.</p>
-                                                   </div>
                                                 </details>
                                              </div>
                                           </div>
@@ -2960,6 +2952,19 @@ The following is the XML format reference for this model, which is organized hie
                                           </div>
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                             <details class="properties elements" open="open">
+                                                <summary>Element (0+)</summary>
+                                                <div class="model-entry definition field">
+                                                   <div class="instance-header">
+                                                      <h5 id="/system-security-plan/metadata/responsible-party/prop/remarks/_VALUE" class="toc5 name">(unwrapped)</h5>
+                                                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                      <p class="occurrence">[0 to ∞]</p>
+                                                   </div>
+                                                   <div class="body">
+                                                      <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                   </div>
+                                                </div>
+                                             </details>
                                           </div>
                                        </div>
                                     </details>
@@ -3012,15 +3017,6 @@ The following is the XML format reference for this model, which is organized hie
                                              <div class="remarks-group usa-prose">
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
-                                                   <div class="remarks">
-                                                      <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
-                                                         that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
-                                                      <p>If a local reference using a fragment is used, this will be indicated by a fragment
-                                                         "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
-                                                      <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
-                                                         resource. A relative URI will be resolved relative to the location of the document
-                                                         containing the link.</p>
-                                                   </div>
                                                    <div class="remarks">
                                                       <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
                                                          that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
@@ -3086,7 +3082,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/metadata/responsible-party/link/text" class="toc5 name">text</h5>
-                                             <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                             <p class="type" id="/system-security-plan/metadata/responsible-party/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/metadata/responsible-parties/responsible-party/links/text">Switch to JSON</a></div>
                                              <p class="formal-name">Link Text</p>
@@ -3109,6 +3105,19 @@ The following is the XML format reference for this model, which is organized hie
                                  </div>
                                  <div class="body">
                                     <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                    <details class="properties elements" open="open">
+                                       <summary>Element (0+)</summary>
+                                       <div class="model-entry definition field">
+                                          <div class="instance-header">
+                                             <h4 id="/system-security-plan/metadata/responsible-party/remarks/_VALUE" class="toc4 name">(unwrapped)</h4>
+                                             <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                             <p class="occurrence">[0 to ∞]</p>
+                                          </div>
+                                          <div class="body">
+                                             <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                          </div>
+                                       </div>
+                                    </details>
                                  </div>
                               </div>
                            </details>
@@ -3124,6 +3133,19 @@ The following is the XML format reference for this model, which is organized hie
                         </div>
                         <div class="body">
                            <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                           <details class="properties elements" open="open">
+                              <summary>Element (0+)</summary>
+                              <div class="model-entry definition field">
+                                 <div class="instance-header">
+                                    <h3 id="/system-security-plan/metadata/remarks/_VALUE" class="toc3 name">(unwrapped)</h3>
+                                    <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                    <p class="occurrence">[0 to ∞]</p>
+                                 </div>
+                                 <div class="body">
+                                    <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                 </div>
+                              </div>
+                           </details>
                         </div>
                      </div>
                   </details>
@@ -3163,15 +3185,6 @@ The following is the XML format reference for this model, which is organized hie
                                        resource. A relative URI will be resolved relative to the location of the document
                                        containing the link.</p>
                                  </div>
-                                 <div class="remarks">
-                                    <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
-                                       that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
-                                    <p>If a local reference using a fragment is used, this will be indicated by a fragment
-                                       "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
-                                    <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
-                                       resource. A relative URI will be resolved relative to the location of the document
-                                       containing the link.</p>
-                                 </div>
                               </details>
                            </div>
                         </div>
@@ -3189,6 +3202,19 @@ The following is the XML format reference for this model, which is organized hie
                         </div>
                         <div class="body">
                            <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                           <details class="properties elements" open="open">
+                              <summary>Element (0+)</summary>
+                              <div class="model-entry definition field">
+                                 <div class="instance-header">
+                                    <h3 id="/system-security-plan/import-profile/remarks/_VALUE" class="toc3 name">(unwrapped)</h3>
+                                    <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                    <p class="occurrence">[0 to ∞]</p>
+                                 </div>
+                                 <div class="body">
+                                    <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                 </div>
+                              </div>
+                           </details>
                         </div>
                      </div>
                   </details>
@@ -3322,16 +3348,13 @@ The following is the XML format reference for this model, which is organized hie
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
                            <h3 id="/system-security-plan/system-characteristics/system-id" class="toc3 name">system-id</h3>
-                           <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                           <p class="type" id="/system-security-plan/system-characteristics/system-id/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
                            <p class="occurrence">[1 to ∞]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-characteristics/system-ids">Switch to JSON</a></div>
                            <p class="formal-name">System Identification</p>
                         </div>
                         <div class="body">
                            <p class="description"><span class="usa-tag">Description</span> A unique identifier for the system described by this system security plan.</p>
-                           <div class="value">
-                              <p>Value: A string value.</p>
-                           </div>
                            <details class="properties attributes" open="open">
                               <summary>Attribute (1)</summary>
                               <div class="model-entry definition field">
@@ -3365,7 +3388,7 @@ The following is the XML format reference for this model, which is organized hie
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
                            <h3 id="/system-security-plan/system-characteristics/system-name" class="toc3 name">system-name</h3>
-                           <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                           <p class="type" id="/system-security-plan/system-characteristics/system-name/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
                            <p class="occurrence">[1]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-characteristics/system-name">Switch to JSON</a></div>
                            <p class="formal-name">System Name - Full</p>
@@ -3377,7 +3400,7 @@ The following is the XML format reference for this model, which is organized hie
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
                            <h3 id="/system-security-plan/system-characteristics/system-name-short" class="toc3 name">system-name-short</h3>
-                           <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                           <p class="type" id="/system-security-plan/system-characteristics/system-name-short/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
                            <p class="occurrence">[0 or 1]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-characteristics/system-name-short">Switch to JSON</a></div>
                            <p class="formal-name">System Name - Short</p>
@@ -3397,6 +3420,19 @@ The following is the XML format reference for this model, which is organized hie
                         </div>
                         <div class="body">
                            <p class="description"><span class="usa-tag">Description</span> A summary of the system.</p>
+                           <details class="properties elements" open="open">
+                              <summary>Element (0+)</summary>
+                              <div class="model-entry definition assembly">
+                                 <div class="instance-header">
+                                    <h3 id="/system-security-plan/system-characteristics/description/_VALUE" class="toc3 name">(unwrapped)</h3>
+                                    <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                    <p class="occurrence">[0 to ∞]</p>
+                                 </div>
+                                 <div class="body">
+                                    <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                 </div>
+                              </div>
+                           </details>
                         </div>
                      </div>
                      <div class="model-entry definition assembly">
@@ -3492,14 +3528,6 @@ The following is the XML format reference for this model, which is organized hie
                                                 to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
                                              <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                           </div>
-                                          <div class="remarks">
-                                             <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
-                                                names and associated values used in a property. This allows the semantics associated
-                                                with a given name/value pair to be defined on an organization-by-organization basis.</p>
-                                             <p>An organization MUST use a URI that they have control over. e.g., a domain registered
-                                                to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
-                                             <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
-                                          </div>
                                        </details>
                                     </div>
                                  </div>
@@ -3534,10 +3562,6 @@ The following is the XML format reference for this model, which is organized hie
                                              <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                 a specific <code>class</code> value.</p>
                                           </div>
-                                          <div class="remarks">
-                                             <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                a specific <code>class</code> value.</p>
-                                          </div>
                                        </details>
                                     </div>
                                  </div>
@@ -3555,6 +3579,19 @@ The following is the XML format reference for this model, which is organized hie
                                  </div>
                                  <div class="body">
                                     <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                    <details class="properties elements" open="open">
+                                       <summary>Element (0+)</summary>
+                                       <div class="model-entry definition field">
+                                          <div class="instance-header">
+                                             <h4 id="/system-security-plan/system-characteristics/prop/remarks/_VALUE" class="toc4 name">(unwrapped)</h4>
+                                             <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                             <p class="occurrence">[0 to ∞]</p>
+                                          </div>
+                                          <div class="body">
+                                             <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                          </div>
+                                       </div>
+                                    </details>
                                  </div>
                               </div>
                            </details>
@@ -3607,15 +3644,6 @@ The following is the XML format reference for this model, which is organized hie
                                     <div class="remarks-group usa-prose">
                                        <details open="open">
                                           <summary class="subhead">Remarks</summary>
-                                          <div class="remarks">
-                                             <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
-                                                that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
-                                             <p>If a local reference using a fragment is used, this will be indicated by a fragment
-                                                "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
-                                             <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
-                                                resource. A relative URI will be resolved relative to the location of the document
-                                                containing the link.</p>
-                                          </div>
                                           <div class="remarks">
                                              <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
                                                 that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
@@ -3681,7 +3709,7 @@ The following is the XML format reference for this model, which is organized hie
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/system-security-plan/system-characteristics/link/text" class="toc4 name">text</h4>
-                                    <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                    <p class="type" id="/system-security-plan/system-characteristics/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-characteristics/links/text">Switch to JSON</a></div>
                                     <p class="formal-name">Link Text</p>
@@ -3697,7 +3725,7 @@ The following is the XML format reference for this model, which is organized hie
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
                            <h3 id="/system-security-plan/system-characteristics/date-authorized" class="toc3 name">date-authorized</h3>
-                           <p class="type"><a href="/reference/datatypes/#date">date</a></p>
+                           <p class="type" id="/system-security-plan/system-characteristics/date-authorized/_VALUE"><a href="/reference/datatypes/#date">date</a></p>
                            <p class="occurrence">[0 or 1]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-characteristics/date-authorized">Switch to JSON</a></div>
                            <p class="formal-name">System Authorization Date</p>
@@ -3709,7 +3737,7 @@ The following is the XML format reference for this model, which is organized hie
                      <div class="model-entry definition assembly">
                         <div class="instance-header">
                            <h3 id="/system-security-plan/system-characteristics/security-sensitivity-level" class="toc3 name">security-sensitivity-level</h3>
-                           <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                           <p class="type" id="/system-security-plan/system-characteristics/security-sensitivity-level/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
                            <p class="occurrence">[1]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-characteristics/security-sensitivity-level">Switch to JSON</a></div>
                            <p class="formal-name">Security Sensitivity Level</p>
@@ -3719,10 +3747,6 @@ The following is the XML format reference for this model, which is organized hie
                            <div class="remarks-group usa-prose">
                               <details open="open">
                                  <summary class="subhead">Remarks</summary>
-                                 <div class="remarks">
-                                    <p>Often, organizations require the security sensitivity level to correspond with the
-                                       highest confidentiality, integrity, or availability level identified by <code>security-impact-level</code>. </p>
-                                 </div>
                                  <div class="remarks">
                                     <p>Often, organizations require the security sensitivity level to correspond with the
                                        highest confidentiality, integrity, or availability level identified by <code>security-impact-level</code>. </p>
@@ -3892,14 +3916,6 @@ The following is the XML format reference for this model, which is organized hie
                                                          to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
                                                       <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                    </div>
-                                                   <div class="remarks">
-                                                      <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
-                                                         names and associated values used in a property. This allows the semantics associated
-                                                         with a given name/value pair to be defined on an organization-by-organization basis.</p>
-                                                      <p>An organization MUST use a URI that they have control over. e.g., a domain registered
-                                                         to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
-                                                      <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
-                                                   </div>
                                                 </details>
                                              </div>
                                           </div>
@@ -3934,10 +3950,6 @@ The following is the XML format reference for this model, which is organized hie
                                                       <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                          a specific <code>class</code> value.</p>
                                                    </div>
-                                                   <div class="remarks">
-                                                      <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                         a specific <code>class</code> value.</p>
-                                                   </div>
                                                 </details>
                                              </div>
                                           </div>
@@ -3955,6 +3967,19 @@ The following is the XML format reference for this model, which is organized hie
                                           </div>
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                             <details class="properties elements" open="open">
+                                                <summary>Element (0+)</summary>
+                                                <div class="model-entry definition field">
+                                                   <div class="instance-header">
+                                                      <h5 id="/system-security-plan/system-characteristics/system-information/prop/remarks/_VALUE" class="toc5 name">(unwrapped)</h5>
+                                                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                      <p class="occurrence">[0 to ∞]</p>
+                                                   </div>
+                                                   <div class="body">
+                                                      <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                   </div>
+                                                </div>
+                                             </details>
                                           </div>
                                        </div>
                                     </details>
@@ -4007,15 +4032,6 @@ The following is the XML format reference for this model, which is organized hie
                                              <div class="remarks-group usa-prose">
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
-                                                   <div class="remarks">
-                                                      <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
-                                                         that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
-                                                      <p>If a local reference using a fragment is used, this will be indicated by a fragment
-                                                         "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
-                                                      <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
-                                                         resource. A relative URI will be resolved relative to the location of the document
-                                                         containing the link.</p>
-                                                   </div>
                                                    <div class="remarks">
                                                       <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
                                                          that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
@@ -4081,7 +4097,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/system-characteristics/system-information/link/text" class="toc5 name">text</h5>
-                                             <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                             <p class="type" id="/system-security-plan/system-characteristics/system-information/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-characteristics/system-information/links/text">Switch to JSON</a></div>
                                              <p class="formal-name">Link Text</p>
@@ -4127,7 +4143,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/system-characteristics/system-information/information-type/title" class="toc5 name">title</h5>
-                                             <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                             <p class="type" id="/system-security-plan/system-characteristics/system-information/information-type/title/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-characteristics/system-information/information-types/title">Switch to JSON</a></div>
                                              <p class="formal-name">title field</p>
@@ -4147,6 +4163,19 @@ The following is the XML format reference for this model, which is organized hie
                                           </div>
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> A summary of how this information type is used within the system.</p>
+                                             <details class="properties elements" open="open">
+                                                <summary>Element (0+)</summary>
+                                                <div class="model-entry definition assembly">
+                                                   <div class="instance-header">
+                                                      <h5 id="/system-security-plan/system-characteristics/system-information/information-type/description/_VALUE" class="toc5 name">(unwrapped)</h5>
+                                                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                      <p class="occurrence">[0 to ∞]</p>
+                                                   </div>
+                                                   <div class="body">
+                                                      <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                   </div>
+                                                </div>
+                                             </details>
                                           </div>
                                        </div>
                                        <div class="model-entry definition assembly">
@@ -4192,7 +4221,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/system-security-plan/system-characteristics/system-information/information-type/categorization/information-type-id" class="toc6 name">information-type-id</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                      <p class="type" id="/system-security-plan/system-characteristics/system-information/information-type/categorization/information-type-id/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
                                                       <p class="occurrence">[0 to ∞]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-characteristics/system-information/information-types/categorizations/information-type-ids">Switch to JSON</a></div>
                                                       <p class="formal-name">Information Type Systemized Identifier</p>
@@ -4297,14 +4326,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                   to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
                                                                <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                             </div>
-                                                            <div class="remarks">
-                                                               <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
-                                                                  names and associated values used in a property. This allows the semantics associated
-                                                                  with a given name/value pair to be defined on an organization-by-organization basis.</p>
-                                                               <p>An organization MUST use a URI that they have control over. e.g., a domain registered
-                                                                  to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
-                                                               <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
-                                                            </div>
                                                          </details>
                                                       </div>
                                                    </div>
@@ -4339,10 +4360,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                   a specific <code>class</code> value.</p>
                                                             </div>
-                                                            <div class="remarks">
-                                                               <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                                  a specific <code>class</code> value.</p>
-                                                            </div>
                                                          </details>
                                                       </div>
                                                    </div>
@@ -4360,6 +4377,19 @@ The following is the XML format reference for this model, which is organized hie
                                                    </div>
                                                    <div class="body">
                                                       <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                                      <details class="properties elements" open="open">
+                                                         <summary>Element (0+)</summary>
+                                                         <div class="model-entry definition field">
+                                                            <div class="instance-header">
+                                                               <h6 id="/system-security-plan/system-characteristics/system-information/information-type/prop/remarks/_VALUE" class="toc6 name">(unwrapped)</h6>
+                                                               <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                               <p class="occurrence">[0 to ∞]</p>
+                                                            </div>
+                                                            <div class="body">
+                                                               <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                            </div>
+                                                         </div>
+                                                      </details>
                                                    </div>
                                                 </div>
                                              </details>
@@ -4412,15 +4442,6 @@ The following is the XML format reference for this model, which is organized hie
                                                       <div class="remarks-group usa-prose">
                                                          <details open="open">
                                                             <summary class="subhead">Remarks</summary>
-                                                            <div class="remarks">
-                                                               <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
-                                                                  that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
-                                                               <p>If a local reference using a fragment is used, this will be indicated by a fragment
-                                                                  "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
-                                                               <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
-                                                                  resource. A relative URI will be resolved relative to the location of the document
-                                                                  containing the link.</p>
-                                                            </div>
                                                             <div class="remarks">
                                                                <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
                                                                   that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
@@ -4486,7 +4507,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/system-security-plan/system-characteristics/system-information/information-type/link/text" class="toc6 name">text</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                                      <p class="type" id="/system-security-plan/system-characteristics/system-information/information-type/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-characteristics/system-information/information-types/links/text">Switch to JSON</a></div>
                                                       <p class="formal-name">Link Text</p>
@@ -4605,14 +4626,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                            to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
                                                                         <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                                      </div>
-                                                                     <div class="remarks">
-                                                                        <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
-                                                                           names and associated values used in a property. This allows the semantics associated
-                                                                           with a given name/value pair to be defined on an organization-by-organization basis.</p>
-                                                                        <p>An organization MUST use a URI that they have control over. e.g., a domain registered
-                                                                           to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
-                                                                        <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
-                                                                     </div>
                                                                   </details>
                                                                </div>
                                                             </div>
@@ -4647,10 +4660,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                         <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                            a specific <code>class</code> value.</p>
                                                                      </div>
-                                                                     <div class="remarks">
-                                                                        <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                                           a specific <code>class</code> value.</p>
-                                                                     </div>
                                                                   </details>
                                                                </div>
                                                             </div>
@@ -4668,6 +4677,19 @@ The following is the XML format reference for this model, which is organized hie
                                                             </div>
                                                             <div class="body">
                                                                <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                                               <details class="properties elements" open="open">
+                                                                  <summary>Element (0+)</summary>
+                                                                  <div class="model-entry definition field">
+                                                                     <div class="instance-header">
+                                                                        <p id="/system-security-plan/system-characteristics/system-information/information-type/confidentiality-impact/prop/remarks/_VALUE" class="toc7 name">(unwrapped)</p>
+                                                                        <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                                        <p class="occurrence">[0 to ∞]</p>
+                                                                     </div>
+                                                                     <div class="body">
+                                                                        <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                                     </div>
+                                                                  </div>
+                                                               </details>
                                                             </div>
                                                          </div>
                                                       </details>
@@ -4720,15 +4742,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                <div class="remarks-group usa-prose">
                                                                   <details open="open">
                                                                      <summary class="subhead">Remarks</summary>
-                                                                     <div class="remarks">
-                                                                        <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
-                                                                           that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
-                                                                        <p>If a local reference using a fragment is used, this will be indicated by a fragment
-                                                                           "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
-                                                                        <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
-                                                                           resource. A relative URI will be resolved relative to the location of the document
-                                                                           containing the link.</p>
-                                                                     </div>
                                                                      <div class="remarks">
                                                                         <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
                                                                            that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
@@ -4794,7 +4807,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
                                                                <p id="/system-security-plan/system-characteristics/system-information/information-type/confidentiality-impact/link/text" class="toc7 name">text</p>
-                                                               <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                                               <p class="type" id="/system-security-plan/system-characteristics/system-information/information-type/confidentiality-impact/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                                                <p class="occurrence">[0 or 1]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-characteristics/system-information/information-types/confidentiality-impact/links/text">Switch to JSON</a></div>
                                                                <p class="formal-name">Link Text</p>
@@ -4810,7 +4823,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/system-security-plan/system-characteristics/system-information/information-type/confidentiality-impact/base" class="toc6 name">base</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                      <p class="type" id="/system-security-plan/system-characteristics/system-information/information-type/confidentiality-impact/base/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
                                                       <p class="occurrence">[1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-characteristics/system-information/information-types/confidentiality-impact/base">Switch to JSON</a></div>
                                                       <p class="formal-name">Base Level (Confidentiality, Integrity, or Availability)</p>
@@ -4823,7 +4836,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/system-security-plan/system-characteristics/system-information/information-type/confidentiality-impact/selected" class="toc6 name">selected</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                      <p class="type" id="/system-security-plan/system-characteristics/system-information/information-type/confidentiality-impact/selected/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-characteristics/system-information/information-types/confidentiality-impact/selected">Switch to JSON</a></div>
                                                       <p class="formal-name">Selected Level (Confidentiality, Integrity, or Availability)</p>
@@ -4843,6 +4856,19 @@ The following is the XML format reference for this model, which is organized hie
                                                    <div class="body">
                                                       <p class="description"><span class="usa-tag">Description</span> If the selected security level is different from the base security level, this contains
                                                          the justification for the change.</p>
+                                                      <details class="properties elements" open="open">
+                                                         <summary>Element (0+)</summary>
+                                                         <div class="model-entry definition field">
+                                                            <div class="instance-header">
+                                                               <h6 id="/system-security-plan/system-characteristics/system-information/information-type/confidentiality-impact/adjustment-justification/_VALUE" class="toc6 name">(unwrapped)</h6>
+                                                               <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                               <p class="occurrence">[0 to ∞]</p>
+                                                            </div>
+                                                            <div class="body">
+                                                               <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                            </div>
+                                                         </div>
+                                                      </details>
                                                    </div>
                                                 </div>
                                              </details>
@@ -4954,14 +4980,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                            to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
                                                                         <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                                      </div>
-                                                                     <div class="remarks">
-                                                                        <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
-                                                                           names and associated values used in a property. This allows the semantics associated
-                                                                           with a given name/value pair to be defined on an organization-by-organization basis.</p>
-                                                                        <p>An organization MUST use a URI that they have control over. e.g., a domain registered
-                                                                           to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
-                                                                        <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
-                                                                     </div>
                                                                   </details>
                                                                </div>
                                                             </div>
@@ -4996,10 +5014,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                         <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                            a specific <code>class</code> value.</p>
                                                                      </div>
-                                                                     <div class="remarks">
-                                                                        <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                                           a specific <code>class</code> value.</p>
-                                                                     </div>
                                                                   </details>
                                                                </div>
                                                             </div>
@@ -5017,6 +5031,19 @@ The following is the XML format reference for this model, which is organized hie
                                                             </div>
                                                             <div class="body">
                                                                <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                                               <details class="properties elements" open="open">
+                                                                  <summary>Element (0+)</summary>
+                                                                  <div class="model-entry definition field">
+                                                                     <div class="instance-header">
+                                                                        <p id="/system-security-plan/system-characteristics/system-information/information-type/integrity-impact/prop/remarks/_VALUE" class="toc7 name">(unwrapped)</p>
+                                                                        <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                                        <p class="occurrence">[0 to ∞]</p>
+                                                                     </div>
+                                                                     <div class="body">
+                                                                        <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                                     </div>
+                                                                  </div>
+                                                               </details>
                                                             </div>
                                                          </div>
                                                       </details>
@@ -5069,15 +5096,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                <div class="remarks-group usa-prose">
                                                                   <details open="open">
                                                                      <summary class="subhead">Remarks</summary>
-                                                                     <div class="remarks">
-                                                                        <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
-                                                                           that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
-                                                                        <p>If a local reference using a fragment is used, this will be indicated by a fragment
-                                                                           "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
-                                                                        <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
-                                                                           resource. A relative URI will be resolved relative to the location of the document
-                                                                           containing the link.</p>
-                                                                     </div>
                                                                      <div class="remarks">
                                                                         <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
                                                                            that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
@@ -5143,7 +5161,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
                                                                <p id="/system-security-plan/system-characteristics/system-information/information-type/integrity-impact/link/text" class="toc7 name">text</p>
-                                                               <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                                               <p class="type" id="/system-security-plan/system-characteristics/system-information/information-type/integrity-impact/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                                                <p class="occurrence">[0 or 1]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-characteristics/system-information/information-types/integrity-impact/links/text">Switch to JSON</a></div>
                                                                <p class="formal-name">Link Text</p>
@@ -5159,7 +5177,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/system-security-plan/system-characteristics/system-information/information-type/integrity-impact/base" class="toc6 name">base</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                      <p class="type" id="/system-security-plan/system-characteristics/system-information/information-type/integrity-impact/base/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
                                                       <p class="occurrence">[1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-characteristics/system-information/information-types/integrity-impact/base">Switch to JSON</a></div>
                                                       <p class="formal-name">Base Level (Confidentiality, Integrity, or Availability)</p>
@@ -5172,7 +5190,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/system-security-plan/system-characteristics/system-information/information-type/integrity-impact/selected" class="toc6 name">selected</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                      <p class="type" id="/system-security-plan/system-characteristics/system-information/information-type/integrity-impact/selected/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-characteristics/system-information/information-types/integrity-impact/selected">Switch to JSON</a></div>
                                                       <p class="formal-name">Selected Level (Confidentiality, Integrity, or Availability)</p>
@@ -5192,6 +5210,19 @@ The following is the XML format reference for this model, which is organized hie
                                                    <div class="body">
                                                       <p class="description"><span class="usa-tag">Description</span> If the selected security level is different from the base security level, this contains
                                                          the justification for the change.</p>
+                                                      <details class="properties elements" open="open">
+                                                         <summary>Element (0+)</summary>
+                                                         <div class="model-entry definition field">
+                                                            <div class="instance-header">
+                                                               <h6 id="/system-security-plan/system-characteristics/system-information/information-type/integrity-impact/adjustment-justification/_VALUE" class="toc6 name">(unwrapped)</h6>
+                                                               <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                               <p class="occurrence">[0 to ∞]</p>
+                                                            </div>
+                                                            <div class="body">
+                                                               <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                            </div>
+                                                         </div>
+                                                      </details>
                                                    </div>
                                                 </div>
                                              </details>
@@ -5303,14 +5334,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                            to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
                                                                         <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                                      </div>
-                                                                     <div class="remarks">
-                                                                        <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
-                                                                           names and associated values used in a property. This allows the semantics associated
-                                                                           with a given name/value pair to be defined on an organization-by-organization basis.</p>
-                                                                        <p>An organization MUST use a URI that they have control over. e.g., a domain registered
-                                                                           to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
-                                                                        <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
-                                                                     </div>
                                                                   </details>
                                                                </div>
                                                             </div>
@@ -5345,10 +5368,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                         <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                            a specific <code>class</code> value.</p>
                                                                      </div>
-                                                                     <div class="remarks">
-                                                                        <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                                           a specific <code>class</code> value.</p>
-                                                                     </div>
                                                                   </details>
                                                                </div>
                                                             </div>
@@ -5366,6 +5385,19 @@ The following is the XML format reference for this model, which is organized hie
                                                             </div>
                                                             <div class="body">
                                                                <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                                               <details class="properties elements" open="open">
+                                                                  <summary>Element (0+)</summary>
+                                                                  <div class="model-entry definition field">
+                                                                     <div class="instance-header">
+                                                                        <p id="/system-security-plan/system-characteristics/system-information/information-type/availability-impact/prop/remarks/_VALUE" class="toc7 name">(unwrapped)</p>
+                                                                        <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                                        <p class="occurrence">[0 to ∞]</p>
+                                                                     </div>
+                                                                     <div class="body">
+                                                                        <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                                     </div>
+                                                                  </div>
+                                                               </details>
                                                             </div>
                                                          </div>
                                                       </details>
@@ -5418,15 +5450,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                <div class="remarks-group usa-prose">
                                                                   <details open="open">
                                                                      <summary class="subhead">Remarks</summary>
-                                                                     <div class="remarks">
-                                                                        <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
-                                                                           that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
-                                                                        <p>If a local reference using a fragment is used, this will be indicated by a fragment
-                                                                           "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
-                                                                        <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
-                                                                           resource. A relative URI will be resolved relative to the location of the document
-                                                                           containing the link.</p>
-                                                                     </div>
                                                                      <div class="remarks">
                                                                         <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
                                                                            that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
@@ -5492,7 +5515,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
                                                                <p id="/system-security-plan/system-characteristics/system-information/information-type/availability-impact/link/text" class="toc7 name">text</p>
-                                                               <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                                               <p class="type" id="/system-security-plan/system-characteristics/system-information/information-type/availability-impact/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                                                <p class="occurrence">[0 or 1]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-characteristics/system-information/information-types/availability-impact/links/text">Switch to JSON</a></div>
                                                                <p class="formal-name">Link Text</p>
@@ -5508,7 +5531,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/system-security-plan/system-characteristics/system-information/information-type/availability-impact/base" class="toc6 name">base</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                      <p class="type" id="/system-security-plan/system-characteristics/system-information/information-type/availability-impact/base/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
                                                       <p class="occurrence">[1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-characteristics/system-information/information-types/availability-impact/base">Switch to JSON</a></div>
                                                       <p class="formal-name">Base Level (Confidentiality, Integrity, or Availability)</p>
@@ -5521,7 +5544,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/system-security-plan/system-characteristics/system-information/information-type/availability-impact/selected" class="toc6 name">selected</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                      <p class="type" id="/system-security-plan/system-characteristics/system-information/information-type/availability-impact/selected/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-characteristics/system-information/information-types/availability-impact/selected">Switch to JSON</a></div>
                                                       <p class="formal-name">Selected Level (Confidentiality, Integrity, or Availability)</p>
@@ -5541,6 +5564,19 @@ The following is the XML format reference for this model, which is organized hie
                                                    <div class="body">
                                                       <p class="description"><span class="usa-tag">Description</span> If the selected security level is different from the base security level, this contains
                                                          the justification for the change.</p>
+                                                      <details class="properties elements" open="open">
+                                                         <summary>Element (0+)</summary>
+                                                         <div class="model-entry definition field">
+                                                            <div class="instance-header">
+                                                               <h6 id="/system-security-plan/system-characteristics/system-information/information-type/availability-impact/adjustment-justification/_VALUE" class="toc6 name">(unwrapped)</h6>
+                                                               <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                               <p class="occurrence">[0 to ∞]</p>
+                                                            </div>
+                                                            <div class="body">
+                                                               <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                            </div>
+                                                         </div>
+                                                      </details>
                                                    </div>
                                                 </div>
                                              </details>
@@ -5568,7 +5604,7 @@ The following is the XML format reference for this model, which is organized hie
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/system-security-plan/system-characteristics/security-impact-level/security-objective-confidentiality" class="toc4 name">security-objective-confidentiality</h4>
-                                    <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                    <p class="type" id="/system-security-plan/system-characteristics/security-impact-level/security-objective-confidentiality/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
                                     <p class="occurrence">[1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-characteristics/security-impact-level/security-objective-confidentiality">Switch to JSON</a></div>
                                     <p class="formal-name">Security Objective: Confidentiality</p>
@@ -5581,7 +5617,7 @@ The following is the XML format reference for this model, which is organized hie
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/system-security-plan/system-characteristics/security-impact-level/security-objective-integrity" class="toc4 name">security-objective-integrity</h4>
-                                    <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                    <p class="type" id="/system-security-plan/system-characteristics/security-impact-level/security-objective-integrity/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
                                     <p class="occurrence">[1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-characteristics/security-impact-level/security-objective-integrity">Switch to JSON</a></div>
                                     <p class="formal-name">Security Objective: Integrity</p>
@@ -5594,7 +5630,7 @@ The following is the XML format reference for this model, which is organized hie
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/system-security-plan/system-characteristics/security-impact-level/security-objective-availability" class="toc4 name">security-objective-availability</h4>
-                                    <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                    <p class="type" id="/system-security-plan/system-characteristics/security-impact-level/security-objective-availability/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
                                     <p class="occurrence">[1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-characteristics/security-impact-level/security-objective-availability">Switch to JSON</a></div>
                                     <p class="formal-name">Security Objective: Availability</p>
@@ -5671,6 +5707,19 @@ The following is the XML format reference for this model, which is organized hie
                                  </div>
                                  <div class="body">
                                     <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                    <details class="properties elements" open="open">
+                                       <summary>Element (0+)</summary>
+                                       <div class="model-entry definition field">
+                                          <div class="instance-header">
+                                             <h4 id="/system-security-plan/system-characteristics/status/remarks/_VALUE" class="toc4 name">(unwrapped)</h4>
+                                             <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                             <p class="occurrence">[0 to ∞]</p>
+                                          </div>
+                                          <div class="body">
+                                             <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                          </div>
+                                       </div>
+                                    </details>
                                  </div>
                               </div>
                            </details>
@@ -5699,6 +5748,19 @@ The following is the XML format reference for this model, which is organized hie
                                  </div>
                                  <div class="body">
                                     <p class="description"><span class="usa-tag">Description</span> A summary of the system's authorization boundary.</p>
+                                    <details class="properties elements" open="open">
+                                       <summary>Element (0+)</summary>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h4 id="/system-security-plan/system-characteristics/authorization-boundary/description/_VALUE" class="toc4 name">(unwrapped)</h4>
+                                             <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                             <p class="occurrence">[0 to ∞]</p>
+                                          </div>
+                                          <div class="body">
+                                             <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                          </div>
+                                       </div>
+                                    </details>
                                  </div>
                               </div>
                               <div class="model-entry definition assembly">
@@ -5794,14 +5856,6 @@ The following is the XML format reference for this model, which is organized hie
                                                          to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
                                                       <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                    </div>
-                                                   <div class="remarks">
-                                                      <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
-                                                         names and associated values used in a property. This allows the semantics associated
-                                                         with a given name/value pair to be defined on an organization-by-organization basis.</p>
-                                                      <p>An organization MUST use a URI that they have control over. e.g., a domain registered
-                                                         to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
-                                                      <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
-                                                   </div>
                                                 </details>
                                              </div>
                                           </div>
@@ -5836,10 +5890,6 @@ The following is the XML format reference for this model, which is organized hie
                                                       <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                          a specific <code>class</code> value.</p>
                                                    </div>
-                                                   <div class="remarks">
-                                                      <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                         a specific <code>class</code> value.</p>
-                                                   </div>
                                                 </details>
                                              </div>
                                           </div>
@@ -5857,6 +5907,19 @@ The following is the XML format reference for this model, which is organized hie
                                           </div>
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                             <details class="properties elements" open="open">
+                                                <summary>Element (0+)</summary>
+                                                <div class="model-entry definition field">
+                                                   <div class="instance-header">
+                                                      <h5 id="/system-security-plan/system-characteristics/authorization-boundary/prop/remarks/_VALUE" class="toc5 name">(unwrapped)</h5>
+                                                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                      <p class="occurrence">[0 to ∞]</p>
+                                                   </div>
+                                                   <div class="body">
+                                                      <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                   </div>
+                                                </div>
+                                             </details>
                                           </div>
                                        </div>
                                     </details>
@@ -5909,15 +5972,6 @@ The following is the XML format reference for this model, which is organized hie
                                              <div class="remarks-group usa-prose">
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
-                                                   <div class="remarks">
-                                                      <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
-                                                         that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
-                                                      <p>If a local reference using a fragment is used, this will be indicated by a fragment
-                                                         "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
-                                                      <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
-                                                         resource. A relative URI will be resolved relative to the location of the document
-                                                         containing the link.</p>
-                                                   </div>
                                                    <div class="remarks">
                                                       <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
                                                          that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
@@ -5983,7 +6037,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/system-characteristics/authorization-boundary/link/text" class="toc5 name">text</h5>
-                                             <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                             <p class="type" id="/system-security-plan/system-characteristics/authorization-boundary/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-characteristics/authorization-boundary/links/text">Switch to JSON</a></div>
                                              <p class="formal-name">Link Text</p>
@@ -6001,7 +6055,7 @@ The following is the XML format reference for this model, which is organized hie
                                     <h4 id="/system-security-plan/system-characteristics/authorization-boundary/diagram" class="toc4 name">diagram</h4>
                                     <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-ssp/authorization-boundary/diagram">(global definition)</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
-                                    <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-characteristics/authorization-boundary/diagrams/diagram">Switch to JSON</a></div>
+                                    <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-characteristics/authorization-boundary/diagrams">Switch to JSON</a></div>
                                     <p class="formal-name">Diagram</p>
                                  </div>
                                  <div class="body">
@@ -6013,7 +6067,7 @@ The following is the XML format reference for this model, which is organized hie
                                              <p>A diagram must include a <code>link</code> with a rel value of "diagram", who's href references a remote URI or an internal
                                                 reference within this document containing the diagram.</p>
                                           </div>
-                                          <div class="remarks in-use">
+                                          <div class="remarks">
                                              <p>A visual depiction of the system's authorization boundary.</p>
                                           </div>
                                        </details>
@@ -6072,12 +6126,21 @@ The following is the XML format reference for this model, which is organized hie
                                                       <p>This description is intended to be used as alternate text to support compliance with
                                                          requirements from <a href="https://www.section508.gov/manage/laws-and-policies">Section 508 of the United States Workforce Rehabilitation Act of 1973</a>. </p>
                                                    </div>
-                                                   <div class="remarks">
-                                                      <p>This description is intended to be used as alternate text to support compliance with
-                                                         requirements from <a href="https://www.section508.gov/manage/laws-and-policies">Section 508 of the United States Workforce Rehabilitation Act of 1973</a>. </p>
-                                                   </div>
                                                 </details>
                                              </div>
+                                             <details class="properties elements" open="open">
+                                                <summary>Element (0+)</summary>
+                                                <div class="model-entry definition assembly">
+                                                   <div class="instance-header">
+                                                      <h5 id="/system-security-plan/system-characteristics/authorization-boundary/diagram/description/_VALUE" class="toc5 name">(unwrapped)</h5>
+                                                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                      <p class="occurrence">[0 to ∞]</p>
+                                                   </div>
+                                                   <div class="body">
+                                                      <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                   </div>
+                                                </div>
+                                             </details>
                                           </div>
                                        </div>
                                        <div class="model-entry definition assembly">
@@ -6173,14 +6236,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                   to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
                                                                <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                             </div>
-                                                            <div class="remarks">
-                                                               <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
-                                                                  names and associated values used in a property. This allows the semantics associated
-                                                                  with a given name/value pair to be defined on an organization-by-organization basis.</p>
-                                                               <p>An organization MUST use a URI that they have control over. e.g., a domain registered
-                                                                  to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
-                                                               <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
-                                                            </div>
                                                          </details>
                                                       </div>
                                                    </div>
@@ -6215,10 +6270,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                   a specific <code>class</code> value.</p>
                                                             </div>
-                                                            <div class="remarks">
-                                                               <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                                  a specific <code>class</code> value.</p>
-                                                            </div>
                                                          </details>
                                                       </div>
                                                    </div>
@@ -6236,6 +6287,19 @@ The following is the XML format reference for this model, which is organized hie
                                                    </div>
                                                    <div class="body">
                                                       <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                                      <details class="properties elements" open="open">
+                                                         <summary>Element (0+)</summary>
+                                                         <div class="model-entry definition field">
+                                                            <div class="instance-header">
+                                                               <h6 id="/system-security-plan/system-characteristics/authorization-boundary/diagram/prop/remarks/_VALUE" class="toc6 name">(unwrapped)</h6>
+                                                               <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                               <p class="occurrence">[0 to ∞]</p>
+                                                            </div>
+                                                            <div class="body">
+                                                               <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                            </div>
+                                                         </div>
+                                                      </details>
                                                    </div>
                                                 </div>
                                              </details>
@@ -6288,15 +6352,6 @@ The following is the XML format reference for this model, which is organized hie
                                                       <div class="remarks-group usa-prose">
                                                          <details open="open">
                                                             <summary class="subhead">Remarks</summary>
-                                                            <div class="remarks">
-                                                               <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
-                                                                  that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
-                                                               <p>If a local reference using a fragment is used, this will be indicated by a fragment
-                                                                  "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
-                                                               <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
-                                                                  resource. A relative URI will be resolved relative to the location of the document
-                                                                  containing the link.</p>
-                                                            </div>
                                                             <div class="remarks">
                                                                <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
                                                                   that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
@@ -6362,7 +6417,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/system-security-plan/system-characteristics/authorization-boundary/diagram/link/text" class="toc6 name">text</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                                      <p class="type" id="/system-security-plan/system-characteristics/authorization-boundary/diagram/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-characteristics/authorization-boundary/diagrams/diagram/links/text">Switch to JSON</a></div>
                                                       <p class="formal-name">Link Text</p>
@@ -6378,7 +6433,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/system-characteristics/authorization-boundary/diagram/caption" class="toc5 name">caption</h5>
-                                             <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                             <p class="type" id="/system-security-plan/system-characteristics/authorization-boundary/diagram/caption/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-characteristics/authorization-boundary/diagrams/diagram/caption">Switch to JSON</a></div>
                                              <p class="formal-name">Caption</p>
@@ -6397,6 +6452,19 @@ The following is the XML format reference for this model, which is organized hie
                                           </div>
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> Commentary about the diagram that enhances it.</p>
+                                             <details class="properties elements" open="open">
+                                                <summary>Element (0+)</summary>
+                                                <div class="model-entry definition assembly">
+                                                   <div class="instance-header">
+                                                      <h5 id="/system-security-plan/system-characteristics/authorization-boundary/diagram/remarks/_VALUE" class="toc5 name">(unwrapped)</h5>
+                                                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                      <p class="occurrence">[0 to ∞]</p>
+                                                   </div>
+                                                   <div class="body">
+                                                      <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                   </div>
+                                                </div>
+                                             </details>
                                           </div>
                                        </div>
                                     </details>
@@ -6412,6 +6480,19 @@ The following is the XML format reference for this model, which is organized hie
                                  </div>
                                  <div class="body">
                                     <p class="description"><span class="usa-tag">Description</span> Commentary about the system's authorization boundary that enhances the diagram.</p>
+                                    <details class="properties elements" open="open">
+                                       <summary>Element (0+)</summary>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h4 id="/system-security-plan/system-characteristics/authorization-boundary/remarks/_VALUE" class="toc4 name">(unwrapped)</h4>
+                                             <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                             <p class="occurrence">[0 to ∞]</p>
+                                          </div>
+                                          <div class="body">
+                                             <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                          </div>
+                                       </div>
+                                    </details>
                                  </div>
                               </div>
                            </details>
@@ -6440,6 +6521,19 @@ The following is the XML format reference for this model, which is organized hie
                                  </div>
                                  <div class="body">
                                     <p class="description"><span class="usa-tag">Description</span> A summary of the system's network architecture.</p>
+                                    <details class="properties elements" open="open">
+                                       <summary>Element (0+)</summary>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h4 id="/system-security-plan/system-characteristics/network-architecture/description/_VALUE" class="toc4 name">(unwrapped)</h4>
+                                             <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                             <p class="occurrence">[0 to ∞]</p>
+                                          </div>
+                                          <div class="body">
+                                             <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                          </div>
+                                       </div>
+                                    </details>
                                  </div>
                               </div>
                               <div class="model-entry definition assembly">
@@ -6535,14 +6629,6 @@ The following is the XML format reference for this model, which is organized hie
                                                          to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
                                                       <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                    </div>
-                                                   <div class="remarks">
-                                                      <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
-                                                         names and associated values used in a property. This allows the semantics associated
-                                                         with a given name/value pair to be defined on an organization-by-organization basis.</p>
-                                                      <p>An organization MUST use a URI that they have control over. e.g., a domain registered
-                                                         to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
-                                                      <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
-                                                   </div>
                                                 </details>
                                              </div>
                                           </div>
@@ -6577,10 +6663,6 @@ The following is the XML format reference for this model, which is organized hie
                                                       <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                          a specific <code>class</code> value.</p>
                                                    </div>
-                                                   <div class="remarks">
-                                                      <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                         a specific <code>class</code> value.</p>
-                                                   </div>
                                                 </details>
                                              </div>
                                           </div>
@@ -6598,6 +6680,19 @@ The following is the XML format reference for this model, which is organized hie
                                           </div>
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                             <details class="properties elements" open="open">
+                                                <summary>Element (0+)</summary>
+                                                <div class="model-entry definition field">
+                                                   <div class="instance-header">
+                                                      <h5 id="/system-security-plan/system-characteristics/network-architecture/prop/remarks/_VALUE" class="toc5 name">(unwrapped)</h5>
+                                                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                      <p class="occurrence">[0 to ∞]</p>
+                                                   </div>
+                                                   <div class="body">
+                                                      <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                   </div>
+                                                </div>
+                                             </details>
                                           </div>
                                        </div>
                                     </details>
@@ -6650,15 +6745,6 @@ The following is the XML format reference for this model, which is organized hie
                                              <div class="remarks-group usa-prose">
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
-                                                   <div class="remarks">
-                                                      <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
-                                                         that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
-                                                      <p>If a local reference using a fragment is used, this will be indicated by a fragment
-                                                         "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
-                                                      <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
-                                                         resource. A relative URI will be resolved relative to the location of the document
-                                                         containing the link.</p>
-                                                   </div>
                                                    <div class="remarks">
                                                       <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
                                                          that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
@@ -6724,7 +6810,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/system-characteristics/network-architecture/link/text" class="toc5 name">text</h5>
-                                             <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                             <p class="type" id="/system-security-plan/system-characteristics/network-architecture/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-characteristics/network-architecture/links/text">Switch to JSON</a></div>
                                              <p class="formal-name">Link Text</p>
@@ -6742,7 +6828,7 @@ The following is the XML format reference for this model, which is organized hie
                                     <h4 id="/system-security-plan/system-characteristics/network-architecture/diagram" class="toc4 name">diagram</h4>
                                     <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-ssp/network-architecture/diagram">(global definition)</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
-                                    <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-characteristics/network-architecture/diagrams/diagram">Switch to JSON</a></div>
+                                    <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-characteristics/network-architecture/diagrams">Switch to JSON</a></div>
                                     <p class="formal-name">Diagram</p>
                                  </div>
                                  <div class="body">
@@ -6810,12 +6896,21 @@ The following is the XML format reference for this model, which is organized hie
                                                       <p>This description is intended to be used as alternate text to support compliance with
                                                          requirements from <a href="https://www.section508.gov/manage/laws-and-policies">Section 508 of the United States Workforce Rehabilitation Act of 1973</a>. </p>
                                                    </div>
-                                                   <div class="remarks">
-                                                      <p>This description is intended to be used as alternate text to support compliance with
-                                                         requirements from <a href="https://www.section508.gov/manage/laws-and-policies">Section 508 of the United States Workforce Rehabilitation Act of 1973</a>. </p>
-                                                   </div>
                                                 </details>
                                              </div>
+                                             <details class="properties elements" open="open">
+                                                <summary>Element (0+)</summary>
+                                                <div class="model-entry definition assembly">
+                                                   <div class="instance-header">
+                                                      <h5 id="/system-security-plan/system-characteristics/network-architecture/diagram/description/_VALUE" class="toc5 name">(unwrapped)</h5>
+                                                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                      <p class="occurrence">[0 to ∞]</p>
+                                                   </div>
+                                                   <div class="body">
+                                                      <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                   </div>
+                                                </div>
+                                             </details>
                                           </div>
                                        </div>
                                        <div class="model-entry definition assembly">
@@ -6911,14 +7006,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                   to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
                                                                <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                             </div>
-                                                            <div class="remarks">
-                                                               <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
-                                                                  names and associated values used in a property. This allows the semantics associated
-                                                                  with a given name/value pair to be defined on an organization-by-organization basis.</p>
-                                                               <p>An organization MUST use a URI that they have control over. e.g., a domain registered
-                                                                  to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
-                                                               <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
-                                                            </div>
                                                          </details>
                                                       </div>
                                                    </div>
@@ -6953,10 +7040,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                   a specific <code>class</code> value.</p>
                                                             </div>
-                                                            <div class="remarks">
-                                                               <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                                  a specific <code>class</code> value.</p>
-                                                            </div>
                                                          </details>
                                                       </div>
                                                    </div>
@@ -6974,6 +7057,19 @@ The following is the XML format reference for this model, which is organized hie
                                                    </div>
                                                    <div class="body">
                                                       <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                                      <details class="properties elements" open="open">
+                                                         <summary>Element (0+)</summary>
+                                                         <div class="model-entry definition field">
+                                                            <div class="instance-header">
+                                                               <h6 id="/system-security-plan/system-characteristics/network-architecture/diagram/prop/remarks/_VALUE" class="toc6 name">(unwrapped)</h6>
+                                                               <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                               <p class="occurrence">[0 to ∞]</p>
+                                                            </div>
+                                                            <div class="body">
+                                                               <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                            </div>
+                                                         </div>
+                                                      </details>
                                                    </div>
                                                 </div>
                                              </details>
@@ -7026,15 +7122,6 @@ The following is the XML format reference for this model, which is organized hie
                                                       <div class="remarks-group usa-prose">
                                                          <details open="open">
                                                             <summary class="subhead">Remarks</summary>
-                                                            <div class="remarks">
-                                                               <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
-                                                                  that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
-                                                               <p>If a local reference using a fragment is used, this will be indicated by a fragment
-                                                                  "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
-                                                               <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
-                                                                  resource. A relative URI will be resolved relative to the location of the document
-                                                                  containing the link.</p>
-                                                            </div>
                                                             <div class="remarks">
                                                                <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
                                                                   that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
@@ -7100,7 +7187,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/system-security-plan/system-characteristics/network-architecture/diagram/link/text" class="toc6 name">text</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                                      <p class="type" id="/system-security-plan/system-characteristics/network-architecture/diagram/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-characteristics/network-architecture/diagrams/diagram/links/text">Switch to JSON</a></div>
                                                       <p class="formal-name">Link Text</p>
@@ -7116,7 +7203,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/system-characteristics/network-architecture/diagram/caption" class="toc5 name">caption</h5>
-                                             <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                             <p class="type" id="/system-security-plan/system-characteristics/network-architecture/diagram/caption/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-characteristics/network-architecture/diagrams/diagram/caption">Switch to JSON</a></div>
                                              <p class="formal-name">Caption</p>
@@ -7135,6 +7222,19 @@ The following is the XML format reference for this model, which is organized hie
                                           </div>
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> Commentary about the diagram that enhances it.</p>
+                                             <details class="properties elements" open="open">
+                                                <summary>Element (0+)</summary>
+                                                <div class="model-entry definition assembly">
+                                                   <div class="instance-header">
+                                                      <h5 id="/system-security-plan/system-characteristics/network-architecture/diagram/remarks/_VALUE" class="toc5 name">(unwrapped)</h5>
+                                                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                      <p class="occurrence">[0 to ∞]</p>
+                                                   </div>
+                                                   <div class="body">
+                                                      <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                   </div>
+                                                </div>
+                                             </details>
                                           </div>
                                        </div>
                                     </details>
@@ -7150,6 +7250,19 @@ The following is the XML format reference for this model, which is organized hie
                                  </div>
                                  <div class="body">
                                     <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                    <details class="properties elements" open="open">
+                                       <summary>Element (0+)</summary>
+                                       <div class="model-entry definition field">
+                                          <div class="instance-header">
+                                             <h4 id="/system-security-plan/system-characteristics/network-architecture/remarks/_VALUE" class="toc4 name">(unwrapped)</h4>
+                                             <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                             <p class="occurrence">[0 to ∞]</p>
+                                          </div>
+                                          <div class="body">
+                                             <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                          </div>
+                                       </div>
+                                    </details>
                                  </div>
                               </div>
                            </details>
@@ -7178,6 +7291,19 @@ The following is the XML format reference for this model, which is organized hie
                                  </div>
                                  <div class="body">
                                     <p class="description"><span class="usa-tag">Description</span> A summary of the system's data flow.</p>
+                                    <details class="properties elements" open="open">
+                                       <summary>Element (0+)</summary>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h4 id="/system-security-plan/system-characteristics/data-flow/description/_VALUE" class="toc4 name">(unwrapped)</h4>
+                                             <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                             <p class="occurrence">[0 to ∞]</p>
+                                          </div>
+                                          <div class="body">
+                                             <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                          </div>
+                                       </div>
+                                    </details>
                                  </div>
                               </div>
                               <div class="model-entry definition assembly">
@@ -7273,14 +7399,6 @@ The following is the XML format reference for this model, which is organized hie
                                                          to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
                                                       <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                    </div>
-                                                   <div class="remarks">
-                                                      <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
-                                                         names and associated values used in a property. This allows the semantics associated
-                                                         with a given name/value pair to be defined on an organization-by-organization basis.</p>
-                                                      <p>An organization MUST use a URI that they have control over. e.g., a domain registered
-                                                         to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
-                                                      <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
-                                                   </div>
                                                 </details>
                                              </div>
                                           </div>
@@ -7315,10 +7433,6 @@ The following is the XML format reference for this model, which is organized hie
                                                       <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                          a specific <code>class</code> value.</p>
                                                    </div>
-                                                   <div class="remarks">
-                                                      <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                         a specific <code>class</code> value.</p>
-                                                   </div>
                                                 </details>
                                              </div>
                                           </div>
@@ -7336,6 +7450,19 @@ The following is the XML format reference for this model, which is organized hie
                                           </div>
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                             <details class="properties elements" open="open">
+                                                <summary>Element (0+)</summary>
+                                                <div class="model-entry definition field">
+                                                   <div class="instance-header">
+                                                      <h5 id="/system-security-plan/system-characteristics/data-flow/prop/remarks/_VALUE" class="toc5 name">(unwrapped)</h5>
+                                                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                      <p class="occurrence">[0 to ∞]</p>
+                                                   </div>
+                                                   <div class="body">
+                                                      <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                   </div>
+                                                </div>
+                                             </details>
                                           </div>
                                        </div>
                                     </details>
@@ -7388,15 +7515,6 @@ The following is the XML format reference for this model, which is organized hie
                                              <div class="remarks-group usa-prose">
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
-                                                   <div class="remarks">
-                                                      <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
-                                                         that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
-                                                      <p>If a local reference using a fragment is used, this will be indicated by a fragment
-                                                         "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
-                                                      <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
-                                                         resource. A relative URI will be resolved relative to the location of the document
-                                                         containing the link.</p>
-                                                   </div>
                                                    <div class="remarks">
                                                       <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
                                                          that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
@@ -7462,7 +7580,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/system-characteristics/data-flow/link/text" class="toc5 name">text</h5>
-                                             <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                             <p class="type" id="/system-security-plan/system-characteristics/data-flow/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-characteristics/data-flow/links/text">Switch to JSON</a></div>
                                              <p class="formal-name">Link Text</p>
@@ -7480,7 +7598,7 @@ The following is the XML format reference for this model, which is organized hie
                                     <h4 id="/system-security-plan/system-characteristics/data-flow/diagram" class="toc4 name">diagram</h4>
                                     <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-ssp/data-flow/diagram">(global definition)</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
-                                    <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-characteristics/data-flow/diagrams/diagram">Switch to JSON</a></div>
+                                    <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-characteristics/data-flow/diagrams">Switch to JSON</a></div>
                                     <p class="formal-name">Diagram</p>
                                  </div>
                                  <div class="body">
@@ -7548,12 +7666,21 @@ The following is the XML format reference for this model, which is organized hie
                                                       <p>This description is intended to be used as alternate text to support compliance with
                                                          requirements from <a href="https://www.section508.gov/manage/laws-and-policies">Section 508 of the United States Workforce Rehabilitation Act of 1973</a>. </p>
                                                    </div>
-                                                   <div class="remarks">
-                                                      <p>This description is intended to be used as alternate text to support compliance with
-                                                         requirements from <a href="https://www.section508.gov/manage/laws-and-policies">Section 508 of the United States Workforce Rehabilitation Act of 1973</a>. </p>
-                                                   </div>
                                                 </details>
                                              </div>
+                                             <details class="properties elements" open="open">
+                                                <summary>Element (0+)</summary>
+                                                <div class="model-entry definition assembly">
+                                                   <div class="instance-header">
+                                                      <h5 id="/system-security-plan/system-characteristics/data-flow/diagram/description/_VALUE" class="toc5 name">(unwrapped)</h5>
+                                                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                      <p class="occurrence">[0 to ∞]</p>
+                                                   </div>
+                                                   <div class="body">
+                                                      <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                   </div>
+                                                </div>
+                                             </details>
                                           </div>
                                        </div>
                                        <div class="model-entry definition assembly">
@@ -7649,14 +7776,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                   to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
                                                                <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                             </div>
-                                                            <div class="remarks">
-                                                               <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
-                                                                  names and associated values used in a property. This allows the semantics associated
-                                                                  with a given name/value pair to be defined on an organization-by-organization basis.</p>
-                                                               <p>An organization MUST use a URI that they have control over. e.g., a domain registered
-                                                                  to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
-                                                               <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
-                                                            </div>
                                                          </details>
                                                       </div>
                                                    </div>
@@ -7691,10 +7810,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                   a specific <code>class</code> value.</p>
                                                             </div>
-                                                            <div class="remarks">
-                                                               <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                                  a specific <code>class</code> value.</p>
-                                                            </div>
                                                          </details>
                                                       </div>
                                                    </div>
@@ -7712,6 +7827,19 @@ The following is the XML format reference for this model, which is organized hie
                                                    </div>
                                                    <div class="body">
                                                       <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                                      <details class="properties elements" open="open">
+                                                         <summary>Element (0+)</summary>
+                                                         <div class="model-entry definition field">
+                                                            <div class="instance-header">
+                                                               <h6 id="/system-security-plan/system-characteristics/data-flow/diagram/prop/remarks/_VALUE" class="toc6 name">(unwrapped)</h6>
+                                                               <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                               <p class="occurrence">[0 to ∞]</p>
+                                                            </div>
+                                                            <div class="body">
+                                                               <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                            </div>
+                                                         </div>
+                                                      </details>
                                                    </div>
                                                 </div>
                                              </details>
@@ -7764,15 +7892,6 @@ The following is the XML format reference for this model, which is organized hie
                                                       <div class="remarks-group usa-prose">
                                                          <details open="open">
                                                             <summary class="subhead">Remarks</summary>
-                                                            <div class="remarks">
-                                                               <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
-                                                                  that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
-                                                               <p>If a local reference using a fragment is used, this will be indicated by a fragment
-                                                                  "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
-                                                               <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
-                                                                  resource. A relative URI will be resolved relative to the location of the document
-                                                                  containing the link.</p>
-                                                            </div>
                                                             <div class="remarks">
                                                                <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
                                                                   that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
@@ -7838,7 +7957,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/system-security-plan/system-characteristics/data-flow/diagram/link/text" class="toc6 name">text</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                                      <p class="type" id="/system-security-plan/system-characteristics/data-flow/diagram/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-characteristics/data-flow/diagrams/diagram/links/text">Switch to JSON</a></div>
                                                       <p class="formal-name">Link Text</p>
@@ -7854,7 +7973,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/system-characteristics/data-flow/diagram/caption" class="toc5 name">caption</h5>
-                                             <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                             <p class="type" id="/system-security-plan/system-characteristics/data-flow/diagram/caption/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-characteristics/data-flow/diagrams/diagram/caption">Switch to JSON</a></div>
                                              <p class="formal-name">Caption</p>
@@ -7873,6 +7992,19 @@ The following is the XML format reference for this model, which is organized hie
                                           </div>
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> Commentary about the diagram that enhances it.</p>
+                                             <details class="properties elements" open="open">
+                                                <summary>Element (0+)</summary>
+                                                <div class="model-entry definition assembly">
+                                                   <div class="instance-header">
+                                                      <h5 id="/system-security-plan/system-characteristics/data-flow/diagram/remarks/_VALUE" class="toc5 name">(unwrapped)</h5>
+                                                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                      <p class="occurrence">[0 to ∞]</p>
+                                                   </div>
+                                                   <div class="body">
+                                                      <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                   </div>
+                                                </div>
+                                             </details>
                                           </div>
                                        </div>
                                     </details>
@@ -7888,6 +8020,19 @@ The following is the XML format reference for this model, which is organized hie
                                  </div>
                                  <div class="body">
                                     <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                    <details class="properties elements" open="open">
+                                       <summary>Element (0+)</summary>
+                                       <div class="model-entry definition field">
+                                          <div class="instance-header">
+                                             <h4 id="/system-security-plan/system-characteristics/data-flow/remarks/_VALUE" class="toc4 name">(unwrapped)</h4>
+                                             <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                             <p class="occurrence">[0 to ∞]</p>
+                                          </div>
+                                          <div class="body">
+                                             <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                          </div>
+                                       </div>
+                                    </details>
                                  </div>
                               </div>
                            </details>
@@ -7898,7 +8043,7 @@ The following is the XML format reference for this model, which is organized hie
                            <h3 id="/system-security-plan/system-characteristics/responsible-party" class="toc3 name">responsible-party</h3>
                            <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-ssp/system-characteristics/responsible-party">(global definition)</a></p>
                            <p class="occurrence">[0 to ∞]</p>
-                           <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-characteristics/responsible-parties/responsible-party">Switch to JSON</a></div>
+                           <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-characteristics/responsible-parties">Switch to JSON</a></div>
                            <p class="formal-name">Responsible Party</p>
                         </div>
                         <div class="body">
@@ -7933,7 +8078,7 @@ The following is the XML format reference for this model, which is organized hie
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/system-security-plan/system-characteristics/responsible-party/party-uuid" class="toc4 name">party-uuid</h4>
-                                    <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                    <p class="type" id="/system-security-plan/system-characteristics/responsible-party/party-uuid/_VALUE"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                     <p class="occurrence">[1 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-characteristics/responsible-parties/responsible-party/party-uuids">Switch to JSON</a></div>
                                     <p class="formal-name">Party Reference</p>
@@ -7943,7 +8088,7 @@ The following is the XML format reference for this model, which is organized hie
                                     <div class="remarks-group usa-prose">
                                        <details open="open">
                                           <summary class="subhead">Remarks</summary>
-                                          <div class="remarks in-use">
+                                          <div class="remarks">
                                              <p>Specifies one or more parties that are responsible for performing the associated <code>role</code>. </p>
                                           </div>
                                        </details>
@@ -8049,14 +8194,6 @@ The following is the XML format reference for this model, which is organized hie
                                                          to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
                                                       <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                    </div>
-                                                   <div class="remarks">
-                                                      <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
-                                                         names and associated values used in a property. This allows the semantics associated
-                                                         with a given name/value pair to be defined on an organization-by-organization basis.</p>
-                                                      <p>An organization MUST use a URI that they have control over. e.g., a domain registered
-                                                         to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
-                                                      <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
-                                                   </div>
                                                 </details>
                                              </div>
                                           </div>
@@ -8091,10 +8228,6 @@ The following is the XML format reference for this model, which is organized hie
                                                       <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                          a specific <code>class</code> value.</p>
                                                    </div>
-                                                   <div class="remarks">
-                                                      <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                         a specific <code>class</code> value.</p>
-                                                   </div>
                                                 </details>
                                              </div>
                                           </div>
@@ -8112,6 +8245,19 @@ The following is the XML format reference for this model, which is organized hie
                                           </div>
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                             <details class="properties elements" open="open">
+                                                <summary>Element (0+)</summary>
+                                                <div class="model-entry definition field">
+                                                   <div class="instance-header">
+                                                      <h5 id="/system-security-plan/system-characteristics/responsible-party/prop/remarks/_VALUE" class="toc5 name">(unwrapped)</h5>
+                                                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                      <p class="occurrence">[0 to ∞]</p>
+                                                   </div>
+                                                   <div class="body">
+                                                      <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                   </div>
+                                                </div>
+                                             </details>
                                           </div>
                                        </div>
                                     </details>
@@ -8164,15 +8310,6 @@ The following is the XML format reference for this model, which is organized hie
                                              <div class="remarks-group usa-prose">
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
-                                                   <div class="remarks">
-                                                      <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
-                                                         that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
-                                                      <p>If a local reference using a fragment is used, this will be indicated by a fragment
-                                                         "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
-                                                      <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
-                                                         resource. A relative URI will be resolved relative to the location of the document
-                                                         containing the link.</p>
-                                                   </div>
                                                    <div class="remarks">
                                                       <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
                                                          that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
@@ -8238,7 +8375,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/system-characteristics/responsible-party/link/text" class="toc5 name">text</h5>
-                                             <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                             <p class="type" id="/system-security-plan/system-characteristics/responsible-party/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-characteristics/responsible-parties/responsible-party/links/text">Switch to JSON</a></div>
                                              <p class="formal-name">Link Text</p>
@@ -8261,6 +8398,19 @@ The following is the XML format reference for this model, which is organized hie
                                  </div>
                                  <div class="body">
                                     <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                    <details class="properties elements" open="open">
+                                       <summary>Element (0+)</summary>
+                                       <div class="model-entry definition field">
+                                          <div class="instance-header">
+                                             <h4 id="/system-security-plan/system-characteristics/responsible-party/remarks/_VALUE" class="toc4 name">(unwrapped)</h4>
+                                             <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                             <p class="occurrence">[0 to ∞]</p>
+                                          </div>
+                                          <div class="body">
+                                             <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                          </div>
+                                       </div>
+                                    </details>
                                  </div>
                               </div>
                            </details>
@@ -8276,6 +8426,19 @@ The following is the XML format reference for this model, which is organized hie
                         </div>
                         <div class="body">
                            <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                           <details class="properties elements" open="open">
+                              <summary>Element (0+)</summary>
+                              <div class="model-entry definition field">
+                                 <div class="instance-header">
+                                    <h3 id="/system-security-plan/system-characteristics/remarks/_VALUE" class="toc3 name">(unwrapped)</h3>
+                                    <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                    <p class="occurrence">[0 to ∞]</p>
+                                 </div>
+                                 <div class="body">
+                                    <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                 </div>
+                              </div>
+                           </details>
                         </div>
                      </div>
                   </details>
@@ -8432,14 +8595,6 @@ The following is the XML format reference for this model, which is organized hie
                                                 to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
                                              <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                           </div>
-                                          <div class="remarks">
-                                             <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
-                                                names and associated values used in a property. This allows the semantics associated
-                                                with a given name/value pair to be defined on an organization-by-organization basis.</p>
-                                             <p>An organization MUST use a URI that they have control over. e.g., a domain registered
-                                                to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
-                                             <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
-                                          </div>
                                        </details>
                                     </div>
                                  </div>
@@ -8474,10 +8629,6 @@ The following is the XML format reference for this model, which is organized hie
                                              <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                 a specific <code>class</code> value.</p>
                                           </div>
-                                          <div class="remarks">
-                                             <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                a specific <code>class</code> value.</p>
-                                          </div>
                                        </details>
                                     </div>
                                  </div>
@@ -8495,6 +8646,19 @@ The following is the XML format reference for this model, which is organized hie
                                  </div>
                                  <div class="body">
                                     <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                    <details class="properties elements" open="open">
+                                       <summary>Element (0+)</summary>
+                                       <div class="model-entry definition field">
+                                          <div class="instance-header">
+                                             <h4 id="/system-security-plan/system-implementation/prop/remarks/_VALUE" class="toc4 name">(unwrapped)</h4>
+                                             <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                             <p class="occurrence">[0 to ∞]</p>
+                                          </div>
+                                          <div class="body">
+                                             <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                          </div>
+                                       </div>
+                                    </details>
                                  </div>
                               </div>
                            </details>
@@ -8547,15 +8711,6 @@ The following is the XML format reference for this model, which is organized hie
                                     <div class="remarks-group usa-prose">
                                        <details open="open">
                                           <summary class="subhead">Remarks</summary>
-                                          <div class="remarks">
-                                             <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
-                                                that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
-                                             <p>If a local reference using a fragment is used, this will be indicated by a fragment
-                                                "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
-                                             <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
-                                                resource. A relative URI will be resolved relative to the location of the document
-                                                containing the link.</p>
-                                          </div>
                                           <div class="remarks">
                                              <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
                                                 that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
@@ -8621,7 +8776,7 @@ The following is the XML format reference for this model, which is organized hie
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/system-security-plan/system-implementation/link/text" class="toc4 name">text</h4>
-                                    <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                    <p class="type" id="/system-security-plan/system-implementation/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-implementation/links/text">Switch to JSON</a></div>
                                     <p class="formal-name">Link Text</p>
@@ -8687,7 +8842,7 @@ The following is the XML format reference for this model, which is organized hie
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/system-security-plan/system-implementation/leveraged-authorization/title" class="toc4 name">title</h4>
-                                    <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                    <p class="type" id="/system-security-plan/system-implementation/leveraged-authorization/title/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                     <p class="occurrence">[1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-implementation/leveraged-authorizations/title">Switch to JSON</a></div>
                                     <p class="formal-name">title field</p>
@@ -8789,14 +8944,6 @@ The following is the XML format reference for this model, which is organized hie
                                                          to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
                                                       <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                    </div>
-                                                   <div class="remarks">
-                                                      <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
-                                                         names and associated values used in a property. This allows the semantics associated
-                                                         with a given name/value pair to be defined on an organization-by-organization basis.</p>
-                                                      <p>An organization MUST use a URI that they have control over. e.g., a domain registered
-                                                         to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
-                                                      <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
-                                                   </div>
                                                 </details>
                                              </div>
                                           </div>
@@ -8831,10 +8978,6 @@ The following is the XML format reference for this model, which is organized hie
                                                       <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                          a specific <code>class</code> value.</p>
                                                    </div>
-                                                   <div class="remarks">
-                                                      <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                         a specific <code>class</code> value.</p>
-                                                   </div>
                                                 </details>
                                              </div>
                                           </div>
@@ -8852,6 +8995,19 @@ The following is the XML format reference for this model, which is organized hie
                                           </div>
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                             <details class="properties elements" open="open">
+                                                <summary>Element (0+)</summary>
+                                                <div class="model-entry definition field">
+                                                   <div class="instance-header">
+                                                      <h5 id="/system-security-plan/system-implementation/leveraged-authorization/prop/remarks/_VALUE" class="toc5 name">(unwrapped)</h5>
+                                                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                      <p class="occurrence">[0 to ∞]</p>
+                                                   </div>
+                                                   <div class="body">
+                                                      <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                   </div>
+                                                </div>
+                                             </details>
                                           </div>
                                        </div>
                                     </details>
@@ -8904,15 +9060,6 @@ The following is the XML format reference for this model, which is organized hie
                                              <div class="remarks-group usa-prose">
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
-                                                   <div class="remarks">
-                                                      <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
-                                                         that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
-                                                      <p>If a local reference using a fragment is used, this will be indicated by a fragment
-                                                         "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
-                                                      <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
-                                                         resource. A relative URI will be resolved relative to the location of the document
-                                                         containing the link.</p>
-                                                   </div>
                                                    <div class="remarks">
                                                       <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
                                                          that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
@@ -8978,7 +9125,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/system-implementation/leveraged-authorization/link/text" class="toc5 name">text</h5>
-                                             <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                             <p class="type" id="/system-security-plan/system-implementation/leveraged-authorization/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-implementation/leveraged-authorizations/links/text">Switch to JSON</a></div>
                                              <p class="formal-name">Link Text</p>
@@ -8994,7 +9141,7 @@ The following is the XML format reference for this model, which is organized hie
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/system-security-plan/system-implementation/leveraged-authorization/party-uuid" class="toc4 name">party-uuid</h4>
-                                    <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                    <p class="type" id="/system-security-plan/system-implementation/leveraged-authorization/party-uuid/_VALUE"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                     <p class="occurrence">[1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-implementation/leveraged-authorizations/party-uuid">Switch to JSON</a></div>
                                     <p class="formal-name">party-uuid field</p>
@@ -9006,7 +9153,7 @@ The following is the XML format reference for this model, which is organized hie
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/system-security-plan/system-implementation/leveraged-authorization/date-authorized" class="toc4 name">date-authorized</h4>
-                                    <p class="type"><a href="/reference/datatypes/#date">date</a></p>
+                                    <p class="type" id="/system-security-plan/system-implementation/leveraged-authorization/date-authorized/_VALUE"><a href="/reference/datatypes/#date">date</a></p>
                                     <p class="occurrence">[1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-implementation/leveraged-authorizations/date-authorized">Switch to JSON</a></div>
                                     <p class="formal-name">System Authorization Date</p>
@@ -9025,6 +9172,19 @@ The following is the XML format reference for this model, which is organized hie
                                  </div>
                                  <div class="body">
                                     <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                    <details class="properties elements" open="open">
+                                       <summary>Element (0+)</summary>
+                                       <div class="model-entry definition field">
+                                          <div class="instance-header">
+                                             <h4 id="/system-security-plan/system-implementation/leveraged-authorization/remarks/_VALUE" class="toc4 name">(unwrapped)</h4>
+                                             <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                             <p class="occurrence">[0 to ∞]</p>
+                                          </div>
+                                          <div class="body">
+                                             <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                          </div>
+                                       </div>
+                                    </details>
                                  </div>
                               </div>
                            </details>
@@ -9035,7 +9195,7 @@ The following is the XML format reference for this model, which is organized hie
                            <h3 id="/system-security-plan/system-implementation/user" class="toc3 name">user</h3>
                            <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-ssp/system-implementation/user">(global definition)</a></p>
                            <p class="occurrence">[1 to ∞]</p>
-                           <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-implementation/users/user">Switch to JSON</a></div>
+                           <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-implementation/users">Switch to JSON</a></div>
                            <p class="formal-name">System User</p>
                         </div>
                         <div class="body">
@@ -9137,7 +9297,7 @@ The following is the XML format reference for this model, which is organized hie
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/system-security-plan/system-implementation/user/title" class="toc4 name">title</h4>
-                                    <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                    <p class="type" id="/system-security-plan/system-implementation/user/title/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-implementation/users/user/title">Switch to JSON</a></div>
                                     <p class="formal-name">User Title</p>
@@ -9149,7 +9309,7 @@ The following is the XML format reference for this model, which is organized hie
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/system-security-plan/system-implementation/user/short-name" class="toc4 name">short-name</h4>
-                                    <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                    <p class="type" id="/system-security-plan/system-implementation/user/short-name/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-implementation/users/user/short-name">Switch to JSON</a></div>
                                     <p class="formal-name">User Short Name</p>
@@ -9168,6 +9328,19 @@ The following is the XML format reference for this model, which is organized hie
                                  </div>
                                  <div class="body">
                                     <p class="description"><span class="usa-tag">Description</span> A summary of the user's purpose within the system.</p>
+                                    <details class="properties elements" open="open">
+                                       <summary>Element (0+)</summary>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h4 id="/system-security-plan/system-implementation/user/description/_VALUE" class="toc4 name">(unwrapped)</h4>
+                                             <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                             <p class="occurrence">[0 to ∞]</p>
+                                          </div>
+                                          <div class="body">
+                                             <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                          </div>
+                                       </div>
+                                    </details>
                                  </div>
                               </div>
                               <div class="model-entry definition assembly">
@@ -9263,14 +9436,6 @@ The following is the XML format reference for this model, which is organized hie
                                                          to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
                                                       <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                    </div>
-                                                   <div class="remarks">
-                                                      <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
-                                                         names and associated values used in a property. This allows the semantics associated
-                                                         with a given name/value pair to be defined on an organization-by-organization basis.</p>
-                                                      <p>An organization MUST use a URI that they have control over. e.g., a domain registered
-                                                         to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
-                                                      <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
-                                                   </div>
                                                 </details>
                                              </div>
                                           </div>
@@ -9305,10 +9470,6 @@ The following is the XML format reference for this model, which is organized hie
                                                       <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                          a specific <code>class</code> value.</p>
                                                    </div>
-                                                   <div class="remarks">
-                                                      <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                         a specific <code>class</code> value.</p>
-                                                   </div>
                                                 </details>
                                              </div>
                                           </div>
@@ -9326,6 +9487,19 @@ The following is the XML format reference for this model, which is organized hie
                                           </div>
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                             <details class="properties elements" open="open">
+                                                <summary>Element (0+)</summary>
+                                                <div class="model-entry definition field">
+                                                   <div class="instance-header">
+                                                      <h5 id="/system-security-plan/system-implementation/user/prop/remarks/_VALUE" class="toc5 name">(unwrapped)</h5>
+                                                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                      <p class="occurrence">[0 to ∞]</p>
+                                                   </div>
+                                                   <div class="body">
+                                                      <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                   </div>
+                                                </div>
+                                             </details>
                                           </div>
                                        </div>
                                     </details>
@@ -9378,15 +9552,6 @@ The following is the XML format reference for this model, which is organized hie
                                              <div class="remarks-group usa-prose">
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
-                                                   <div class="remarks">
-                                                      <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
-                                                         that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
-                                                      <p>If a local reference using a fragment is used, this will be indicated by a fragment
-                                                         "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
-                                                      <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
-                                                         resource. A relative URI will be resolved relative to the location of the document
-                                                         containing the link.</p>
-                                                   </div>
                                                    <div class="remarks">
                                                       <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
                                                          that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
@@ -9452,7 +9617,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/system-implementation/user/link/text" class="toc5 name">text</h5>
-                                             <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                             <p class="type" id="/system-security-plan/system-implementation/user/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-implementation/users/user/links/text">Switch to JSON</a></div>
                                              <p class="formal-name">Link Text</p>
@@ -9468,7 +9633,7 @@ The following is the XML format reference for this model, which is organized hie
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/system-security-plan/system-implementation/user/role-id" class="toc4 name">role-id</h4>
-                                    <p class="type"><a href="/reference/datatypes/#ncname">NCName</a></p>
+                                    <p class="type" id="/system-security-plan/system-implementation/user/role-id/_VALUE"><a href="/reference/datatypes/#ncname">NCName</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-implementation/users/user/role-ids">Switch to JSON</a></div>
                                     <p class="formal-name">Role Identifier Reference</p>
@@ -9499,7 +9664,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/system-implementation/user/authorized-privilege/title" class="toc5 name">title</h5>
-                                             <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                             <p class="type" id="/system-security-plan/system-implementation/user/authorized-privilege/title/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-implementation/users/user/authorized-privileges/title">Switch to JSON</a></div>
                                              <p class="formal-name">Privilege Title</p>
@@ -9518,12 +9683,25 @@ The following is the XML format reference for this model, which is organized hie
                                           </div>
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> A summary of the privilege's purpose within the system.</p>
+                                             <details class="properties elements" open="open">
+                                                <summary>Element (0+)</summary>
+                                                <div class="model-entry definition assembly">
+                                                   <div class="instance-header">
+                                                      <h5 id="/system-security-plan/system-implementation/user/authorized-privilege/description/_VALUE" class="toc5 name">(unwrapped)</h5>
+                                                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                      <p class="occurrence">[0 to ∞]</p>
+                                                   </div>
+                                                   <div class="body">
+                                                      <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                   </div>
+                                                </div>
+                                             </details>
                                           </div>
                                        </div>
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/system-implementation/user/authorized-privilege/function-performed" class="toc5 name">function-performed</h5>
-                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                             <p class="type" id="/system-security-plan/system-implementation/user/authorized-privilege/function-performed/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[1 to ∞]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-implementation/users/user/authorized-privileges/functions-performed">Switch to JSON</a></div>
                                              <p class="formal-name">Functions Performed</p>
@@ -9545,6 +9723,19 @@ The following is the XML format reference for this model, which is organized hie
                                  </div>
                                  <div class="body">
                                     <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                    <details class="properties elements" open="open">
+                                       <summary>Element (0+)</summary>
+                                       <div class="model-entry definition field">
+                                          <div class="instance-header">
+                                             <h4 id="/system-security-plan/system-implementation/user/remarks/_VALUE" class="toc4 name">(unwrapped)</h4>
+                                             <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                             <p class="occurrence">[0 to ∞]</p>
+                                          </div>
+                                          <div class="body">
+                                             <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                          </div>
+                                       </div>
+                                    </details>
                                  </div>
                               </div>
                            </details>
@@ -9555,7 +9746,7 @@ The following is the XML format reference for this model, which is organized hie
                            <h3 id="/system-security-plan/system-implementation/component" class="toc3 name">component</h3>
                            <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-ssp/system-implementation/component">(global definition)</a></p>
                            <p class="occurrence">[1 to ∞]</p>
-                           <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-implementation/components/component">Switch to JSON</a></div>
+                           <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-implementation/components">Switch to JSON</a></div>
                            <p class="formal-name">Component</p>
                         </div>
                         <div class="body">
@@ -9976,7 +10167,7 @@ The following is the XML format reference for this model, which is organized hie
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/system-security-plan/system-implementation/component/title" class="toc4 name">title</h4>
-                                    <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                    <p class="type" id="/system-security-plan/system-implementation/component/title/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                     <p class="occurrence">[1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-implementation/components/component/title">Switch to JSON</a></div>
                                     <p class="formal-name">Component Title</p>
@@ -9995,12 +10186,25 @@ The following is the XML format reference for this model, which is organized hie
                                  </div>
                                  <div class="body">
                                     <p class="description"><span class="usa-tag">Description</span> A description of the component, including information about its function.</p>
+                                    <details class="properties elements" open="open">
+                                       <summary>Element (0+)</summary>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h4 id="/system-security-plan/system-implementation/component/description/_VALUE" class="toc4 name">(unwrapped)</h4>
+                                             <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                             <p class="occurrence">[0 to ∞]</p>
+                                          </div>
+                                          <div class="body">
+                                             <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                          </div>
+                                       </div>
+                                    </details>
                                  </div>
                               </div>
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/system-security-plan/system-implementation/component/purpose" class="toc4 name">purpose</h4>
-                                    <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                    <p class="type" id="/system-security-plan/system-implementation/component/purpose/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-implementation/components/component/purpose">Switch to JSON</a></div>
                                     <p class="formal-name">Purpose</p>
@@ -10102,14 +10306,6 @@ The following is the XML format reference for this model, which is organized hie
                                                          to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
                                                       <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                    </div>
-                                                   <div class="remarks">
-                                                      <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
-                                                         names and associated values used in a property. This allows the semantics associated
-                                                         with a given name/value pair to be defined on an organization-by-organization basis.</p>
-                                                      <p>An organization MUST use a URI that they have control over. e.g., a domain registered
-                                                         to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
-                                                      <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
-                                                   </div>
                                                 </details>
                                              </div>
                                           </div>
@@ -10144,10 +10340,6 @@ The following is the XML format reference for this model, which is organized hie
                                                       <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                          a specific <code>class</code> value.</p>
                                                    </div>
-                                                   <div class="remarks">
-                                                      <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                         a specific <code>class</code> value.</p>
-                                                   </div>
                                                 </details>
                                              </div>
                                           </div>
@@ -10165,6 +10357,19 @@ The following is the XML format reference for this model, which is organized hie
                                           </div>
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                             <details class="properties elements" open="open">
+                                                <summary>Element (0+)</summary>
+                                                <div class="model-entry definition field">
+                                                   <div class="instance-header">
+                                                      <h5 id="/system-security-plan/system-implementation/component/prop/remarks/_VALUE" class="toc5 name">(unwrapped)</h5>
+                                                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                      <p class="occurrence">[0 to ∞]</p>
+                                                   </div>
+                                                   <div class="body">
+                                                      <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                   </div>
+                                                </div>
+                                             </details>
                                           </div>
                                        </div>
                                     </details>
@@ -10217,15 +10422,6 @@ The following is the XML format reference for this model, which is organized hie
                                              <div class="remarks-group usa-prose">
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
-                                                   <div class="remarks">
-                                                      <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
-                                                         that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
-                                                      <p>If a local reference using a fragment is used, this will be indicated by a fragment
-                                                         "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
-                                                      <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
-                                                         resource. A relative URI will be resolved relative to the location of the document
-                                                         containing the link.</p>
-                                                   </div>
                                                    <div class="remarks">
                                                       <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
                                                          that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
@@ -10291,7 +10487,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/system-implementation/component/link/text" class="toc5 name">text</h5>
-                                             <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                             <p class="type" id="/system-security-plan/system-implementation/component/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-implementation/components/component/links/text">Switch to JSON</a></div>
                                              <p class="formal-name">Link Text</p>
@@ -10358,6 +10554,19 @@ The following is the XML format reference for this model, which is organized hie
                                           </div>
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                             <details class="properties elements" open="open">
+                                                <summary>Element (0+)</summary>
+                                                <div class="model-entry definition field">
+                                                   <div class="instance-header">
+                                                      <h5 id="/system-security-plan/system-implementation/component/status/remarks/_VALUE" class="toc5 name">(unwrapped)</h5>
+                                                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                      <p class="occurrence">[0 to ∞]</p>
+                                                   </div>
+                                                   <div class="body">
+                                                      <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                   </div>
+                                                </div>
+                                             </details>
                                           </div>
                                        </div>
                                     </details>
@@ -10368,7 +10577,7 @@ The following is the XML format reference for this model, which is organized hie
                                     <h4 id="/system-security-plan/system-implementation/component/responsible-role" class="toc4 name">responsible-role</h4>
                                     <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-implementation-common/system-component/responsible-role">(global definition)</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
-                                    <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-implementation/components/component/responsible-roles/responsible-role">Switch to JSON</a></div>
+                                    <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-implementation/components/component/responsible-roles">Switch to JSON</a></div>
                                     <p class="formal-name">Responsible Role</p>
                                  </div>
                                  <div class="body">
@@ -10484,14 +10693,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                   to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
                                                                <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                             </div>
-                                                            <div class="remarks">
-                                                               <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
-                                                                  names and associated values used in a property. This allows the semantics associated
-                                                                  with a given name/value pair to be defined on an organization-by-organization basis.</p>
-                                                               <p>An organization MUST use a URI that they have control over. e.g., a domain registered
-                                                                  to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
-                                                               <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
-                                                            </div>
                                                          </details>
                                                       </div>
                                                    </div>
@@ -10526,10 +10727,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                   a specific <code>class</code> value.</p>
                                                             </div>
-                                                            <div class="remarks">
-                                                               <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                                  a specific <code>class</code> value.</p>
-                                                            </div>
                                                          </details>
                                                       </div>
                                                    </div>
@@ -10547,6 +10744,19 @@ The following is the XML format reference for this model, which is organized hie
                                                    </div>
                                                    <div class="body">
                                                       <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                                      <details class="properties elements" open="open">
+                                                         <summary>Element (0+)</summary>
+                                                         <div class="model-entry definition field">
+                                                            <div class="instance-header">
+                                                               <h6 id="/system-security-plan/system-implementation/component/responsible-role/prop/remarks/_VALUE" class="toc6 name">(unwrapped)</h6>
+                                                               <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                               <p class="occurrence">[0 to ∞]</p>
+                                                            </div>
+                                                            <div class="body">
+                                                               <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                            </div>
+                                                         </div>
+                                                      </details>
                                                    </div>
                                                 </div>
                                              </details>
@@ -10599,15 +10809,6 @@ The following is the XML format reference for this model, which is organized hie
                                                       <div class="remarks-group usa-prose">
                                                          <details open="open">
                                                             <summary class="subhead">Remarks</summary>
-                                                            <div class="remarks">
-                                                               <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
-                                                                  that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
-                                                               <p>If a local reference using a fragment is used, this will be indicated by a fragment
-                                                                  "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
-                                                               <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
-                                                                  resource. A relative URI will be resolved relative to the location of the document
-                                                                  containing the link.</p>
-                                                            </div>
                                                             <div class="remarks">
                                                                <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
                                                                   that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
@@ -10673,7 +10874,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/system-security-plan/system-implementation/component/responsible-role/link/text" class="toc6 name">text</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                                      <p class="type" id="/system-security-plan/system-implementation/component/responsible-role/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-implementation/components/component/responsible-roles/responsible-role/links/text">Switch to JSON</a></div>
                                                       <p class="formal-name">Link Text</p>
@@ -10689,7 +10890,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/system-implementation/component/responsible-role/party-uuid" class="toc5 name">party-uuid</h5>
-                                             <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                             <p class="type" id="/system-security-plan/system-implementation/component/responsible-role/party-uuid/_VALUE"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                              <p class="occurrence">[0 to ∞]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-implementation/components/component/responsible-roles/responsible-role/party-uuids">Switch to JSON</a></div>
                                              <p class="formal-name">Party Reference</p>
@@ -10714,6 +10915,19 @@ The following is the XML format reference for this model, which is organized hie
                                           </div>
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                             <details class="properties elements" open="open">
+                                                <summary>Element (0+)</summary>
+                                                <div class="model-entry definition field">
+                                                   <div class="instance-header">
+                                                      <h5 id="/system-security-plan/system-implementation/component/responsible-role/remarks/_VALUE" class="toc5 name">(unwrapped)</h5>
+                                                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                      <p class="occurrence">[0 to ∞]</p>
+                                                   </div>
+                                                   <div class="body">
+                                                      <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                   </div>
+                                                </div>
+                                             </details>
                                           </div>
                                        </div>
                                     </details>
@@ -10732,7 +10946,7 @@ The following is the XML format reference for this model, which is organized hie
                                     <div class="remarks-group usa-prose">
                                        <details open="open">
                                           <summary class="subhead">Remarks</summary>
-                                          <div class="remarks in-use">
+                                          <div class="remarks">
                                              <p>Used for <code>service</code> components to define the protocols supported by the service.</p>
                                           </div>
                                        </details>
@@ -10770,9 +10984,6 @@ The following is the XML format reference for this model, which is organized hie
                                                    <div class="remarks">
                                                       <p>The short name of the protocol (e.g., https).</p>
                                                    </div>
-                                                   <div class="remarks">
-                                                      <p>The short name of the protocol (e.g., https).</p>
-                                                   </div>
                                                 </details>
                                              </div>
                                           </div>
@@ -10783,7 +10994,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/system-implementation/component/protocol/title" class="toc5 name">title</h5>
-                                             <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                             <p class="type" id="/system-security-plan/system-implementation/component/protocol/title/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-implementation/components/component/protocols/title">Switch to JSON</a></div>
                                              <p class="formal-name">Protocol Title</p>
@@ -10829,9 +11040,6 @@ The following is the XML format reference for this model, which is organized hie
                                                             <div class="remarks">
                                                                <p>Should be a number within a permitted range</p>
                                                             </div>
-                                                            <div class="remarks">
-                                                               <p>Should be a number within a permitted range</p>
-                                                            </div>
                                                          </details>
                                                       </div>
                                                    </div>
@@ -10849,9 +11057,6 @@ The following is the XML format reference for this model, which is organized hie
                                                       <div class="remarks-group usa-prose">
                                                          <details open="open">
                                                             <summary class="subhead">Remarks</summary>
-                                                            <div class="remarks">
-                                                               <p>Should be a number within a permitted range</p>
-                                                            </div>
                                                             <div class="remarks">
                                                                <p>Should be a number within a permitted range</p>
                                                             </div>
@@ -10900,6 +11105,19 @@ The following is the XML format reference for this model, which is organized hie
                                  </div>
                                  <div class="body">
                                     <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                    <details class="properties elements" open="open">
+                                       <summary>Element (0+)</summary>
+                                       <div class="model-entry definition field">
+                                          <div class="instance-header">
+                                             <h4 id="/system-security-plan/system-implementation/component/remarks/_VALUE" class="toc4 name">(unwrapped)</h4>
+                                             <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                             <p class="occurrence">[0 to ∞]</p>
+                                          </div>
+                                          <div class="body">
+                                             <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                          </div>
+                                       </div>
+                                    </details>
                                  </div>
                               </div>
                            </details>
@@ -10918,7 +11136,7 @@ The following is the XML format reference for this model, which is organized hie
                            <div class="remarks-group usa-prose">
                               <details open="open">
                                  <summary class="subhead">Remarks</summary>
-                                 <div class="remarks in-use">
+                                 <div class="remarks">
                                     <p>A set of <code>inventory-item</code> entries that represent the managed inventory instances of the system.</p>
                                  </div>
                               </details>
@@ -11140,6 +11358,19 @@ The following is the XML format reference for this model, which is organized hie
                                  </div>
                                  <div class="body">
                                     <p class="description"><span class="usa-tag">Description</span> A summary of the inventory item stating its purpose within the system.</p>
+                                    <details class="properties elements" open="open">
+                                       <summary>Element (0+)</summary>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h4 id="/system-security-plan/system-implementation/inventory-item/description/_VALUE" class="toc4 name">(unwrapped)</h4>
+                                             <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                             <p class="occurrence">[0 to ∞]</p>
+                                          </div>
+                                          <div class="body">
+                                             <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                          </div>
+                                       </div>
+                                    </details>
                                  </div>
                               </div>
                               <div class="model-entry definition assembly">
@@ -11235,14 +11466,6 @@ The following is the XML format reference for this model, which is organized hie
                                                          to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
                                                       <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                    </div>
-                                                   <div class="remarks">
-                                                      <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
-                                                         names and associated values used in a property. This allows the semantics associated
-                                                         with a given name/value pair to be defined on an organization-by-organization basis.</p>
-                                                      <p>An organization MUST use a URI that they have control over. e.g., a domain registered
-                                                         to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
-                                                      <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
-                                                   </div>
                                                 </details>
                                              </div>
                                           </div>
@@ -11277,10 +11500,6 @@ The following is the XML format reference for this model, which is organized hie
                                                       <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                          a specific <code>class</code> value.</p>
                                                    </div>
-                                                   <div class="remarks">
-                                                      <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                         a specific <code>class</code> value.</p>
-                                                   </div>
                                                 </details>
                                              </div>
                                           </div>
@@ -11298,6 +11517,19 @@ The following is the XML format reference for this model, which is organized hie
                                           </div>
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                             <details class="properties elements" open="open">
+                                                <summary>Element (0+)</summary>
+                                                <div class="model-entry definition field">
+                                                   <div class="instance-header">
+                                                      <h5 id="/system-security-plan/system-implementation/inventory-item/prop/remarks/_VALUE" class="toc5 name">(unwrapped)</h5>
+                                                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                      <p class="occurrence">[0 to ∞]</p>
+                                                   </div>
+                                                   <div class="body">
+                                                      <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                   </div>
+                                                </div>
+                                             </details>
                                           </div>
                                        </div>
                                     </details>
@@ -11350,15 +11582,6 @@ The following is the XML format reference for this model, which is organized hie
                                              <div class="remarks-group usa-prose">
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
-                                                   <div class="remarks">
-                                                      <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
-                                                         that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
-                                                      <p>If a local reference using a fragment is used, this will be indicated by a fragment
-                                                         "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
-                                                      <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
-                                                         resource. A relative URI will be resolved relative to the location of the document
-                                                         containing the link.</p>
-                                                   </div>
                                                    <div class="remarks">
                                                       <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
                                                          that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
@@ -11424,7 +11647,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/system-implementation/inventory-item/link/text" class="toc5 name">text</h5>
-                                             <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                             <p class="type" id="/system-security-plan/system-implementation/inventory-item/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-implementation/inventory-items/links/text">Switch to JSON</a></div>
                                              <p class="formal-name">Link Text</p>
@@ -11442,7 +11665,7 @@ The following is the XML format reference for this model, which is organized hie
                                     <h4 id="/system-security-plan/system-implementation/inventory-item/responsible-party" class="toc4 name">responsible-party</h4>
                                     <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-implementation-common/inventory-item/responsible-party">(global definition)</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
-                                    <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-implementation/inventory-items/responsible-parties/responsible-party">Switch to JSON</a></div>
+                                    <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-implementation/inventory-items/responsible-parties">Switch to JSON</a></div>
                                     <p class="formal-name">Responsible Party</p>
                                  </div>
                                  <div class="body">
@@ -11477,7 +11700,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/system-implementation/inventory-item/responsible-party/party-uuid" class="toc5 name">party-uuid</h5>
-                                             <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                             <p class="type" id="/system-security-plan/system-implementation/inventory-item/responsible-party/party-uuid/_VALUE"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                              <p class="occurrence">[1 to ∞]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-implementation/inventory-items/responsible-parties/responsible-party/party-uuids">Switch to JSON</a></div>
                                              <p class="formal-name">Party Reference</p>
@@ -11487,7 +11710,7 @@ The following is the XML format reference for this model, which is organized hie
                                              <div class="remarks-group usa-prose">
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
-                                                   <div class="remarks in-use">
+                                                   <div class="remarks">
                                                       <p>Specifies one or more parties that are responsible for performing the associated <code>role</code>. </p>
                                                    </div>
                                                 </details>
@@ -11593,14 +11816,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                   to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
                                                                <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                             </div>
-                                                            <div class="remarks">
-                                                               <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
-                                                                  names and associated values used in a property. This allows the semantics associated
-                                                                  with a given name/value pair to be defined on an organization-by-organization basis.</p>
-                                                               <p>An organization MUST use a URI that they have control over. e.g., a domain registered
-                                                                  to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
-                                                               <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
-                                                            </div>
                                                          </details>
                                                       </div>
                                                    </div>
@@ -11635,10 +11850,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                   a specific <code>class</code> value.</p>
                                                             </div>
-                                                            <div class="remarks">
-                                                               <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                                  a specific <code>class</code> value.</p>
-                                                            </div>
                                                          </details>
                                                       </div>
                                                    </div>
@@ -11656,6 +11867,19 @@ The following is the XML format reference for this model, which is organized hie
                                                    </div>
                                                    <div class="body">
                                                       <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                                      <details class="properties elements" open="open">
+                                                         <summary>Element (0+)</summary>
+                                                         <div class="model-entry definition field">
+                                                            <div class="instance-header">
+                                                               <h6 id="/system-security-plan/system-implementation/inventory-item/responsible-party/prop/remarks/_VALUE" class="toc6 name">(unwrapped)</h6>
+                                                               <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                               <p class="occurrence">[0 to ∞]</p>
+                                                            </div>
+                                                            <div class="body">
+                                                               <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                            </div>
+                                                         </div>
+                                                      </details>
                                                    </div>
                                                 </div>
                                              </details>
@@ -11708,15 +11932,6 @@ The following is the XML format reference for this model, which is organized hie
                                                       <div class="remarks-group usa-prose">
                                                          <details open="open">
                                                             <summary class="subhead">Remarks</summary>
-                                                            <div class="remarks">
-                                                               <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
-                                                                  that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
-                                                               <p>If a local reference using a fragment is used, this will be indicated by a fragment
-                                                                  "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
-                                                               <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
-                                                                  resource. A relative URI will be resolved relative to the location of the document
-                                                                  containing the link.</p>
-                                                            </div>
                                                             <div class="remarks">
                                                                <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
                                                                   that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
@@ -11782,7 +11997,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/system-security-plan/system-implementation/inventory-item/responsible-party/link/text" class="toc6 name">text</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                                      <p class="type" id="/system-security-plan/system-implementation/inventory-item/responsible-party/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-implementation/inventory-items/responsible-parties/responsible-party/links/text">Switch to JSON</a></div>
                                                       <p class="formal-name">Link Text</p>
@@ -11805,6 +12020,19 @@ The following is the XML format reference for this model, which is organized hie
                                           </div>
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                             <details class="properties elements" open="open">
+                                                <summary>Element (0+)</summary>
+                                                <div class="model-entry definition field">
+                                                   <div class="instance-header">
+                                                      <h5 id="/system-security-plan/system-implementation/inventory-item/responsible-party/remarks/_VALUE" class="toc5 name">(unwrapped)</h5>
+                                                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                      <p class="occurrence">[0 to ∞]</p>
+                                                   </div>
+                                                   <div class="body">
+                                                      <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                   </div>
+                                                </div>
+                                             </details>
                                           </div>
                                        </div>
                                     </details>
@@ -12016,14 +12244,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                   to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
                                                                <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                             </div>
-                                                            <div class="remarks">
-                                                               <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
-                                                                  names and associated values used in a property. This allows the semantics associated
-                                                                  with a given name/value pair to be defined on an organization-by-organization basis.</p>
-                                                               <p>An organization MUST use a URI that they have control over. e.g., a domain registered
-                                                                  to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
-                                                               <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
-                                                            </div>
                                                          </details>
                                                       </div>
                                                    </div>
@@ -12058,10 +12278,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                   a specific <code>class</code> value.</p>
                                                             </div>
-                                                            <div class="remarks">
-                                                               <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                                  a specific <code>class</code> value.</p>
-                                                            </div>
                                                          </details>
                                                       </div>
                                                    </div>
@@ -12079,6 +12295,19 @@ The following is the XML format reference for this model, which is organized hie
                                                    </div>
                                                    <div class="body">
                                                       <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                                      <details class="properties elements" open="open">
+                                                         <summary>Element (0+)</summary>
+                                                         <div class="model-entry definition field">
+                                                            <div class="instance-header">
+                                                               <h6 id="/system-security-plan/system-implementation/inventory-item/implemented-component/prop/remarks/_VALUE" class="toc6 name">(unwrapped)</h6>
+                                                               <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                               <p class="occurrence">[0 to ∞]</p>
+                                                            </div>
+                                                            <div class="body">
+                                                               <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                            </div>
+                                                         </div>
+                                                      </details>
                                                    </div>
                                                 </div>
                                              </details>
@@ -12131,15 +12360,6 @@ The following is the XML format reference for this model, which is organized hie
                                                       <div class="remarks-group usa-prose">
                                                          <details open="open">
                                                             <summary class="subhead">Remarks</summary>
-                                                            <div class="remarks">
-                                                               <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
-                                                                  that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
-                                                               <p>If a local reference using a fragment is used, this will be indicated by a fragment
-                                                                  "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
-                                                               <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
-                                                                  resource. A relative URI will be resolved relative to the location of the document
-                                                                  containing the link.</p>
-                                                            </div>
                                                             <div class="remarks">
                                                                <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
                                                                   that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
@@ -12205,7 +12425,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/system-security-plan/system-implementation/inventory-item/implemented-component/link/text" class="toc6 name">text</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                                      <p class="type" id="/system-security-plan/system-implementation/inventory-item/implemented-component/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-implementation/inventory-items/implemented-components/links/text">Switch to JSON</a></div>
                                                       <p class="formal-name">Link Text</p>
@@ -12223,7 +12443,7 @@ The following is the XML format reference for this model, which is organized hie
                                              <h5 id="/system-security-plan/system-implementation/inventory-item/implemented-component/responsible-party" class="toc5 name">responsible-party</h5>
                                              <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-implementation-common/inventory-item/implemented-component/responsible-party">(global definition)</a></p>
                                              <p class="occurrence">[0 to ∞]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-implementation/inventory-items/implemented-components/responsible-parties/responsible-party">Switch to JSON</a></div>
+                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-implementation/inventory-items/implemented-components/responsible-parties">Switch to JSON</a></div>
                                              <p class="formal-name">Responsible Party</p>
                                           </div>
                                           <div class="body">
@@ -12232,7 +12452,7 @@ The following is the XML format reference for this model, which is organized hie
                                              <div class="remarks-group usa-prose">
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
-                                                   <div class="remarks in-use">
+                                                   <div class="remarks">
                                                       <p>This construct is used to either: 1) associate a party or parties to a role defined
                                                          on the component using the <code>responsible-role</code> construct, or 2) to define a party or parties that are responsible for a role defined
                                                          within the context of the containing <code>inventory-item</code>. </p>
@@ -12268,7 +12488,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/system-security-plan/system-implementation/inventory-item/implemented-component/responsible-party/party-uuid" class="toc6 name">party-uuid</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                                      <p class="type" id="/system-security-plan/system-implementation/inventory-item/implemented-component/responsible-party/party-uuid/_VALUE"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                                       <p class="occurrence">[1 to ∞]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-implementation/inventory-items/implemented-components/responsible-parties/responsible-party/party-uuids">Switch to JSON</a></div>
                                                       <p class="formal-name">Party Reference</p>
@@ -12278,7 +12498,7 @@ The following is the XML format reference for this model, which is organized hie
                                                       <div class="remarks-group usa-prose">
                                                          <details open="open">
                                                             <summary class="subhead">Remarks</summary>
-                                                            <div class="remarks in-use">
+                                                            <div class="remarks">
                                                                <p>Specifies one or more parties that are responsible for performing the associated <code>role</code>. </p>
                                                             </div>
                                                          </details>
@@ -12384,14 +12604,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                            to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
                                                                         <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                                      </div>
-                                                                     <div class="remarks">
-                                                                        <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
-                                                                           names and associated values used in a property. This allows the semantics associated
-                                                                           with a given name/value pair to be defined on an organization-by-organization basis.</p>
-                                                                        <p>An organization MUST use a URI that they have control over. e.g., a domain registered
-                                                                           to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
-                                                                        <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
-                                                                     </div>
                                                                   </details>
                                                                </div>
                                                             </div>
@@ -12426,10 +12638,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                         <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                            a specific <code>class</code> value.</p>
                                                                      </div>
-                                                                     <div class="remarks">
-                                                                        <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                                           a specific <code>class</code> value.</p>
-                                                                     </div>
                                                                   </details>
                                                                </div>
                                                             </div>
@@ -12447,6 +12655,19 @@ The following is the XML format reference for this model, which is organized hie
                                                             </div>
                                                             <div class="body">
                                                                <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                                               <details class="properties elements" open="open">
+                                                                  <summary>Element (0+)</summary>
+                                                                  <div class="model-entry definition field">
+                                                                     <div class="instance-header">
+                                                                        <p id="/system-security-plan/system-implementation/inventory-item/implemented-component/responsible-party/prop/remarks/_VALUE" class="toc7 name">(unwrapped)</p>
+                                                                        <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                                        <p class="occurrence">[0 to ∞]</p>
+                                                                     </div>
+                                                                     <div class="body">
+                                                                        <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                                     </div>
+                                                                  </div>
+                                                               </details>
                                                             </div>
                                                          </div>
                                                       </details>
@@ -12499,15 +12720,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                <div class="remarks-group usa-prose">
                                                                   <details open="open">
                                                                      <summary class="subhead">Remarks</summary>
-                                                                     <div class="remarks">
-                                                                        <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
-                                                                           that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
-                                                                        <p>If a local reference using a fragment is used, this will be indicated by a fragment
-                                                                           "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
-                                                                        <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
-                                                                           resource. A relative URI will be resolved relative to the location of the document
-                                                                           containing the link.</p>
-                                                                     </div>
                                                                      <div class="remarks">
                                                                         <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
                                                                            that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
@@ -12573,7 +12785,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
                                                                <p id="/system-security-plan/system-implementation/inventory-item/implemented-component/responsible-party/link/text" class="toc7 name">text</p>
-                                                               <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                                               <p class="type" id="/system-security-plan/system-implementation/inventory-item/implemented-component/responsible-party/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                                                <p class="occurrence">[0 or 1]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-implementation/inventory-items/implemented-components/responsible-parties/responsible-party/links/text">Switch to JSON</a></div>
                                                                <p class="formal-name">Link Text</p>
@@ -12596,6 +12808,19 @@ The following is the XML format reference for this model, which is organized hie
                                                    </div>
                                                    <div class="body">
                                                       <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                                      <details class="properties elements" open="open">
+                                                         <summary>Element (0+)</summary>
+                                                         <div class="model-entry definition field">
+                                                            <div class="instance-header">
+                                                               <h6 id="/system-security-plan/system-implementation/inventory-item/implemented-component/responsible-party/remarks/_VALUE" class="toc6 name">(unwrapped)</h6>
+                                                               <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                               <p class="occurrence">[0 to ∞]</p>
+                                                            </div>
+                                                            <div class="body">
+                                                               <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                            </div>
+                                                         </div>
+                                                      </details>
                                                    </div>
                                                 </div>
                                              </details>
@@ -12611,6 +12836,19 @@ The following is the XML format reference for this model, which is organized hie
                                           </div>
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                             <details class="properties elements" open="open">
+                                                <summary>Element (0+)</summary>
+                                                <div class="model-entry definition field">
+                                                   <div class="instance-header">
+                                                      <h5 id="/system-security-plan/system-implementation/inventory-item/implemented-component/remarks/_VALUE" class="toc5 name">(unwrapped)</h5>
+                                                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                      <p class="occurrence">[0 to ∞]</p>
+                                                   </div>
+                                                   <div class="body">
+                                                      <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                   </div>
+                                                </div>
+                                             </details>
                                           </div>
                                        </div>
                                     </details>
@@ -12626,6 +12864,19 @@ The following is the XML format reference for this model, which is organized hie
                                  </div>
                                  <div class="body">
                                     <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                    <details class="properties elements" open="open">
+                                       <summary>Element (0+)</summary>
+                                       <div class="model-entry definition field">
+                                          <div class="instance-header">
+                                             <h4 id="/system-security-plan/system-implementation/inventory-item/remarks/_VALUE" class="toc4 name">(unwrapped)</h4>
+                                             <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                             <p class="occurrence">[0 to ∞]</p>
+                                          </div>
+                                          <div class="body">
+                                             <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                          </div>
+                                       </div>
+                                    </details>
                                  </div>
                               </div>
                            </details>
@@ -12641,6 +12892,19 @@ The following is the XML format reference for this model, which is organized hie
                         </div>
                         <div class="body">
                            <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                           <details class="properties elements" open="open">
+                              <summary>Element (0+)</summary>
+                              <div class="model-entry definition field">
+                                 <div class="instance-header">
+                                    <h3 id="/system-security-plan/system-implementation/remarks/_VALUE" class="toc3 name">(unwrapped)</h3>
+                                    <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                    <p class="occurrence">[0 to ∞]</p>
+                                 </div>
+                                 <div class="body">
+                                    <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                 </div>
+                              </div>
+                           </details>
                         </div>
                      </div>
                   </details>
@@ -12677,6 +12941,19 @@ The following is the XML format reference for this model, which is organized hie
                         <div class="body">
                            <p class="description"><span class="usa-tag">Description</span> A statement describing important things to know about how this set of control satisfaction
                               documentation is approached.</p>
+                           <details class="properties elements" open="open">
+                              <summary>Element (0+)</summary>
+                              <div class="model-entry definition assembly">
+                                 <div class="instance-header">
+                                    <h3 id="/system-security-plan/control-implementation/description/_VALUE" class="toc3 name">(unwrapped)</h3>
+                                    <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                    <p class="occurrence">[0 to ∞]</p>
+                                 </div>
+                                 <div class="body">
+                                    <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                 </div>
+                              </div>
+                           </details>
                         </div>
                      </div>
                      <div class="model-entry definition assembly">
@@ -12684,7 +12961,7 @@ The following is the XML format reference for this model, which is organized hie
                            <h3 id="/system-security-plan/control-implementation/set-parameter" class="toc3 name">set-parameter</h3>
                            <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-ssp/control-implementation/set-parameter">(global definition)</a></p>
                            <p class="occurrence">[0 to ∞]</p>
-                           <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/set-parameters/set-parameter">Switch to JSON</a></div>
+                           <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/set-parameters">Switch to JSON</a></div>
                            <p class="formal-name">Set Parameter Value</p>
                         </div>
                         <div class="body">
@@ -12710,7 +12987,7 @@ The following is the XML format reference for this model, which is organized hie
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/system-security-plan/control-implementation/set-parameter/value" class="toc4 name">value</h4>
-                                    <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                    <p class="type" id="/system-security-plan/control-implementation/set-parameter/value/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
                                     <p class="occurrence">[1 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/set-parameters/set-parameter/values">Switch to JSON</a></div>
                                     <p class="formal-name">Parameter Value</p>
@@ -12729,6 +13006,19 @@ The following is the XML format reference for this model, which is organized hie
                                  </div>
                                  <div class="body">
                                     <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                    <details class="properties elements" open="open">
+                                       <summary>Element (0+)</summary>
+                                       <div class="model-entry definition field">
+                                          <div class="instance-header">
+                                             <h4 id="/system-security-plan/control-implementation/set-parameter/remarks/_VALUE" class="toc4 name">(unwrapped)</h4>
+                                             <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                             <p class="occurrence">[0 to ∞]</p>
+                                          </div>
+                                          <div class="body">
+                                             <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                          </div>
+                                       </div>
+                                    </details>
                                  </div>
                               </div>
                            </details>
@@ -12941,14 +13231,6 @@ The following is the XML format reference for this model, which is organized hie
                                                          to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
                                                       <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                    </div>
-                                                   <div class="remarks">
-                                                      <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
-                                                         names and associated values used in a property. This allows the semantics associated
-                                                         with a given name/value pair to be defined on an organization-by-organization basis.</p>
-                                                      <p>An organization MUST use a URI that they have control over. e.g., a domain registered
-                                                         to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
-                                                      <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
-                                                   </div>
                                                 </details>
                                              </div>
                                           </div>
@@ -12983,10 +13265,6 @@ The following is the XML format reference for this model, which is organized hie
                                                       <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                          a specific <code>class</code> value.</p>
                                                    </div>
-                                                   <div class="remarks">
-                                                      <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                         a specific <code>class</code> value.</p>
-                                                   </div>
                                                 </details>
                                              </div>
                                           </div>
@@ -13004,6 +13282,19 @@ The following is the XML format reference for this model, which is organized hie
                                           </div>
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                             <details class="properties elements" open="open">
+                                                <summary>Element (0+)</summary>
+                                                <div class="model-entry definition field">
+                                                   <div class="instance-header">
+                                                      <h5 id="/system-security-plan/control-implementation/implemented-requirement/prop/remarks/_VALUE" class="toc5 name">(unwrapped)</h5>
+                                                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                      <p class="occurrence">[0 to ∞]</p>
+                                                   </div>
+                                                   <div class="body">
+                                                      <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                   </div>
+                                                </div>
+                                             </details>
                                           </div>
                                        </div>
                                     </details>
@@ -13056,15 +13347,6 @@ The following is the XML format reference for this model, which is organized hie
                                              <div class="remarks-group usa-prose">
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
-                                                   <div class="remarks">
-                                                      <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
-                                                         that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
-                                                      <p>If a local reference using a fragment is used, this will be indicated by a fragment
-                                                         "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
-                                                      <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
-                                                         resource. A relative URI will be resolved relative to the location of the document
-                                                         containing the link.</p>
-                                                   </div>
                                                    <div class="remarks">
                                                       <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
                                                          that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
@@ -13130,7 +13412,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/control-implementation/implemented-requirement/link/text" class="toc5 name">text</h5>
-                                             <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                             <p class="type" id="/system-security-plan/control-implementation/implemented-requirement/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/links/text">Switch to JSON</a></div>
                                              <p class="formal-name">Link Text</p>
@@ -13148,7 +13430,7 @@ The following is the XML format reference for this model, which is organized hie
                                     <h4 id="/system-security-plan/control-implementation/implemented-requirement/set-parameter" class="toc4 name">set-parameter</h4>
                                     <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-ssp/implemented-requirement/set-parameter">(global definition)</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
-                                    <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/parameter-settings/set-parameter">Switch to JSON</a></div>
+                                    <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/parameter-settings">Switch to JSON</a></div>
                                     <p class="formal-name">Set Parameter Value</p>
                                  </div>
                                  <div class="body">
@@ -13174,7 +13456,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/control-implementation/implemented-requirement/set-parameter/value" class="toc5 name">value</h5>
-                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                             <p class="type" id="/system-security-plan/control-implementation/implemented-requirement/set-parameter/value/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[1 to ∞]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/parameter-settings/set-parameter/values">Switch to JSON</a></div>
                                              <p class="formal-name">Parameter Value</p>
@@ -13193,6 +13475,19 @@ The following is the XML format reference for this model, which is organized hie
                                           </div>
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                             <details class="properties elements" open="open">
+                                                <summary>Element (0+)</summary>
+                                                <div class="model-entry definition field">
+                                                   <div class="instance-header">
+                                                      <h5 id="/system-security-plan/control-implementation/implemented-requirement/set-parameter/remarks/_VALUE" class="toc5 name">(unwrapped)</h5>
+                                                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                      <p class="occurrence">[0 to ∞]</p>
+                                                   </div>
+                                                   <div class="body">
+                                                      <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                   </div>
+                                                </div>
+                                             </details>
                                           </div>
                                        </div>
                                     </details>
@@ -13203,7 +13498,7 @@ The following is the XML format reference for this model, which is organized hie
                                     <h4 id="/system-security-plan/control-implementation/implemented-requirement/responsible-role" class="toc4 name">responsible-role</h4>
                                     <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-ssp/implemented-requirement/responsible-role">(global definition)</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
-                                    <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/responsible-roles/responsible-role">Switch to JSON</a></div>
+                                    <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/responsible-roles">Switch to JSON</a></div>
                                     <p class="formal-name">Responsible Role</p>
                                  </div>
                                  <div class="body">
@@ -13319,14 +13614,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                   to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
                                                                <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                             </div>
-                                                            <div class="remarks">
-                                                               <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
-                                                                  names and associated values used in a property. This allows the semantics associated
-                                                                  with a given name/value pair to be defined on an organization-by-organization basis.</p>
-                                                               <p>An organization MUST use a URI that they have control over. e.g., a domain registered
-                                                                  to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
-                                                               <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
-                                                            </div>
                                                          </details>
                                                       </div>
                                                    </div>
@@ -13361,10 +13648,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                   a specific <code>class</code> value.</p>
                                                             </div>
-                                                            <div class="remarks">
-                                                               <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                                  a specific <code>class</code> value.</p>
-                                                            </div>
                                                          </details>
                                                       </div>
                                                    </div>
@@ -13382,6 +13665,19 @@ The following is the XML format reference for this model, which is organized hie
                                                    </div>
                                                    <div class="body">
                                                       <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                                      <details class="properties elements" open="open">
+                                                         <summary>Element (0+)</summary>
+                                                         <div class="model-entry definition field">
+                                                            <div class="instance-header">
+                                                               <h6 id="/system-security-plan/control-implementation/implemented-requirement/responsible-role/prop/remarks/_VALUE" class="toc6 name">(unwrapped)</h6>
+                                                               <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                               <p class="occurrence">[0 to ∞]</p>
+                                                            </div>
+                                                            <div class="body">
+                                                               <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                            </div>
+                                                         </div>
+                                                      </details>
                                                    </div>
                                                 </div>
                                              </details>
@@ -13434,15 +13730,6 @@ The following is the XML format reference for this model, which is organized hie
                                                       <div class="remarks-group usa-prose">
                                                          <details open="open">
                                                             <summary class="subhead">Remarks</summary>
-                                                            <div class="remarks">
-                                                               <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
-                                                                  that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
-                                                               <p>If a local reference using a fragment is used, this will be indicated by a fragment
-                                                                  "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
-                                                               <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
-                                                                  resource. A relative URI will be resolved relative to the location of the document
-                                                                  containing the link.</p>
-                                                            </div>
                                                             <div class="remarks">
                                                                <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
                                                                   that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
@@ -13508,7 +13795,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/system-security-plan/control-implementation/implemented-requirement/responsible-role/link/text" class="toc6 name">text</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                                      <p class="type" id="/system-security-plan/control-implementation/implemented-requirement/responsible-role/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/responsible-roles/responsible-role/links/text">Switch to JSON</a></div>
                                                       <p class="formal-name">Link Text</p>
@@ -13524,7 +13811,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/control-implementation/implemented-requirement/responsible-role/party-uuid" class="toc5 name">party-uuid</h5>
-                                             <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                             <p class="type" id="/system-security-plan/control-implementation/implemented-requirement/responsible-role/party-uuid/_VALUE"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                              <p class="occurrence">[0 to ∞]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/responsible-roles/responsible-role/party-uuids">Switch to JSON</a></div>
                                              <p class="formal-name">Party Reference</p>
@@ -13549,6 +13836,19 @@ The following is the XML format reference for this model, which is organized hie
                                           </div>
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                             <details class="properties elements" open="open">
+                                                <summary>Element (0+)</summary>
+                                                <div class="model-entry definition field">
+                                                   <div class="instance-header">
+                                                      <h5 id="/system-security-plan/control-implementation/implemented-requirement/responsible-role/remarks/_VALUE" class="toc5 name">(unwrapped)</h5>
+                                                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                      <p class="occurrence">[0 to ∞]</p>
+                                                   </div>
+                                                   <div class="body">
+                                                      <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                   </div>
+                                                </div>
+                                             </details>
                                           </div>
                                        </div>
                                     </details>
@@ -13559,7 +13859,7 @@ The following is the XML format reference for this model, which is organized hie
                                     <h4 id="/system-security-plan/control-implementation/implemented-requirement/by-component" class="toc4 name">by-component</h4>
                                     <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-ssp/implemented-requirement/by-component">(global definition)</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
-                                    <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/by-component">Switch to JSON</a></div>
+                                    <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components">Switch to JSON</a></div>
                                     <p class="formal-name">Component Control Implementation</p>
                                  </div>
                                  <div class="body">
@@ -13642,6 +13942,19 @@ The following is the XML format reference for this model, which is organized hie
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> An implementation statement that describes how a control or a control statement is
                                                 implemented within the referenced system component.</p>
+                                             <details class="properties elements" open="open">
+                                                <summary>Element (0+)</summary>
+                                                <div class="model-entry definition assembly">
+                                                   <div class="instance-header">
+                                                      <h5 id="/system-security-plan/control-implementation/implemented-requirement/by-component/description/_VALUE" class="toc5 name">(unwrapped)</h5>
+                                                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                      <p class="occurrence">[0 to ∞]</p>
+                                                   </div>
+                                                   <div class="body">
+                                                      <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                   </div>
+                                                </div>
+                                             </details>
                                           </div>
                                        </div>
                                        <div class="model-entry definition assembly">
@@ -13737,14 +14050,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                   to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
                                                                <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                             </div>
-                                                            <div class="remarks">
-                                                               <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
-                                                                  names and associated values used in a property. This allows the semantics associated
-                                                                  with a given name/value pair to be defined on an organization-by-organization basis.</p>
-                                                               <p>An organization MUST use a URI that they have control over. e.g., a domain registered
-                                                                  to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
-                                                               <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
-                                                            </div>
                                                          </details>
                                                       </div>
                                                    </div>
@@ -13779,10 +14084,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                   a specific <code>class</code> value.</p>
                                                             </div>
-                                                            <div class="remarks">
-                                                               <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                                  a specific <code>class</code> value.</p>
-                                                            </div>
                                                          </details>
                                                       </div>
                                                    </div>
@@ -13800,6 +14101,19 @@ The following is the XML format reference for this model, which is organized hie
                                                    </div>
                                                    <div class="body">
                                                       <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                                      <details class="properties elements" open="open">
+                                                         <summary>Element (0+)</summary>
+                                                         <div class="model-entry definition field">
+                                                            <div class="instance-header">
+                                                               <h6 id="/system-security-plan/control-implementation/implemented-requirement/by-component/prop/remarks/_VALUE" class="toc6 name">(unwrapped)</h6>
+                                                               <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                               <p class="occurrence">[0 to ∞]</p>
+                                                            </div>
+                                                            <div class="body">
+                                                               <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                            </div>
+                                                         </div>
+                                                      </details>
                                                    </div>
                                                 </div>
                                              </details>
@@ -13852,15 +14166,6 @@ The following is the XML format reference for this model, which is organized hie
                                                       <div class="remarks-group usa-prose">
                                                          <details open="open">
                                                             <summary class="subhead">Remarks</summary>
-                                                            <div class="remarks">
-                                                               <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
-                                                                  that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
-                                                               <p>If a local reference using a fragment is used, this will be indicated by a fragment
-                                                                  "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
-                                                               <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
-                                                                  resource. A relative URI will be resolved relative to the location of the document
-                                                                  containing the link.</p>
-                                                            </div>
                                                             <div class="remarks">
                                                                <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
                                                                   that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
@@ -13926,7 +14231,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/system-security-plan/control-implementation/implemented-requirement/by-component/link/text" class="toc6 name">text</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                                      <p class="type" id="/system-security-plan/control-implementation/implemented-requirement/by-component/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/by-component/links/text">Switch to JSON</a></div>
                                                       <p class="formal-name">Link Text</p>
@@ -13944,7 +14249,7 @@ The following is the XML format reference for this model, which is organized hie
                                              <h5 id="/system-security-plan/control-implementation/implemented-requirement/by-component/set-parameter" class="toc5 name">set-parameter</h5>
                                              <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-ssp/by-component/set-parameter">(global definition)</a></p>
                                              <p class="occurrence">[0 to ∞]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/by-component/parameter-settings/set-parameter">Switch to JSON</a></div>
+                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/by-component/parameter-settings">Switch to JSON</a></div>
                                              <p class="formal-name">Set Parameter Value</p>
                                           </div>
                                           <div class="body">
@@ -13970,7 +14275,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/system-security-plan/control-implementation/implemented-requirement/by-component/set-parameter/value" class="toc6 name">value</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                      <p class="type" id="/system-security-plan/control-implementation/implemented-requirement/by-component/set-parameter/value/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
                                                       <p class="occurrence">[1 to ∞]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/by-component/parameter-settings/set-parameter/values">Switch to JSON</a></div>
                                                       <p class="formal-name">Parameter Value</p>
@@ -13989,6 +14294,19 @@ The following is the XML format reference for this model, which is organized hie
                                                    </div>
                                                    <div class="body">
                                                       <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                                      <details class="properties elements" open="open">
+                                                         <summary>Element (0+)</summary>
+                                                         <div class="model-entry definition field">
+                                                            <div class="instance-header">
+                                                               <h6 id="/system-security-plan/control-implementation/implemented-requirement/by-component/set-parameter/remarks/_VALUE" class="toc6 name">(unwrapped)</h6>
+                                                               <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                               <p class="occurrence">[0 to ∞]</p>
+                                                            </div>
+                                                            <div class="body">
+                                                               <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                            </div>
+                                                         </div>
+                                                      </details>
                                                    </div>
                                                 </div>
                                              </details>
@@ -14007,7 +14325,7 @@ The following is the XML format reference for this model, which is organized hie
                                              <div class="remarks-group usa-prose">
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
-                                                   <div class="remarks in-use">
+                                                   <div class="remarks">
                                                       <p>The <code>implementation-status</code> is used to qualify the <code>status</code> value to indicate the degree to which the control is implemented.</p>
                                                    </div>
                                                 </details>
@@ -14058,6 +14376,19 @@ The following is the XML format reference for this model, which is organized hie
                                                    </div>
                                                    <div class="body">
                                                       <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                                      <details class="properties elements" open="open">
+                                                         <summary>Element (0+)</summary>
+                                                         <div class="model-entry definition field">
+                                                            <div class="instance-header">
+                                                               <h6 id="/system-security-plan/control-implementation/implemented-requirement/by-component/implementation-status/remarks/_VALUE" class="toc6 name">(unwrapped)</h6>
+                                                               <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                               <p class="occurrence">[0 to ∞]</p>
+                                                            </div>
+                                                            <div class="body">
+                                                               <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                            </div>
+                                                         </div>
+                                                      </details>
                                                    </div>
                                                 </div>
                                              </details>
@@ -14098,6 +14429,19 @@ The following is the XML format reference for this model, which is organized hie
                                                    <div class="body">
                                                       <p class="description"><span class="usa-tag">Description</span> An implementation statement that describes the aspects of the control or control
                                                          statement implementation that can be available to another system leveraging this system.</p>
+                                                      <details class="properties elements" open="open">
+                                                         <summary>Element (0+)</summary>
+                                                         <div class="model-entry definition assembly">
+                                                            <div class="instance-header">
+                                                               <h6 id="/system-security-plan/control-implementation/implemented-requirement/by-component/export/description/_VALUE" class="toc6 name">(unwrapped)</h6>
+                                                               <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                               <p class="occurrence">[0 to ∞]</p>
+                                                            </div>
+                                                            <div class="body">
+                                                               <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                            </div>
+                                                         </div>
+                                                      </details>
                                                    </div>
                                                 </div>
                                                 <div class="model-entry definition assembly">
@@ -14193,14 +14537,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                            to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
                                                                         <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                                      </div>
-                                                                     <div class="remarks">
-                                                                        <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
-                                                                           names and associated values used in a property. This allows the semantics associated
-                                                                           with a given name/value pair to be defined on an organization-by-organization basis.</p>
-                                                                        <p>An organization MUST use a URI that they have control over. e.g., a domain registered
-                                                                           to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
-                                                                        <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
-                                                                     </div>
                                                                   </details>
                                                                </div>
                                                             </div>
@@ -14235,10 +14571,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                         <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                            a specific <code>class</code> value.</p>
                                                                      </div>
-                                                                     <div class="remarks">
-                                                                        <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                                           a specific <code>class</code> value.</p>
-                                                                     </div>
                                                                   </details>
                                                                </div>
                                                             </div>
@@ -14256,6 +14588,19 @@ The following is the XML format reference for this model, which is organized hie
                                                             </div>
                                                             <div class="body">
                                                                <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                                               <details class="properties elements" open="open">
+                                                                  <summary>Element (0+)</summary>
+                                                                  <div class="model-entry definition field">
+                                                                     <div class="instance-header">
+                                                                        <p id="/system-security-plan/control-implementation/implemented-requirement/by-component/export/prop/remarks/_VALUE" class="toc7 name">(unwrapped)</p>
+                                                                        <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                                        <p class="occurrence">[0 to ∞]</p>
+                                                                     </div>
+                                                                     <div class="body">
+                                                                        <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                                     </div>
+                                                                  </div>
+                                                               </details>
                                                             </div>
                                                          </div>
                                                       </details>
@@ -14308,15 +14653,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                <div class="remarks-group usa-prose">
                                                                   <details open="open">
                                                                      <summary class="subhead">Remarks</summary>
-                                                                     <div class="remarks">
-                                                                        <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
-                                                                           that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
-                                                                        <p>If a local reference using a fragment is used, this will be indicated by a fragment
-                                                                           "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
-                                                                        <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
-                                                                           resource. A relative URI will be resolved relative to the location of the document
-                                                                           containing the link.</p>
-                                                                     </div>
                                                                      <div class="remarks">
                                                                         <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
                                                                            that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
@@ -14382,7 +14718,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
                                                                <p id="/system-security-plan/control-implementation/implemented-requirement/by-component/export/link/text" class="toc7 name">text</p>
-                                                               <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                                               <p class="type" id="/system-security-plan/control-implementation/implemented-requirement/by-component/export/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                                                <p class="occurrence">[0 or 1]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/by-component/export/links/text">Switch to JSON</a></div>
                                                                <p class="formal-name">Link Text</p>
@@ -14435,6 +14771,19 @@ The following is the XML format reference for this model, which is organized hie
                                                             <div class="body">
                                                                <p class="description"><span class="usa-tag">Description</span> An implementation statement that describes the aspects of the control or control
                                                                   statement implementation that can be provided to another system leveraging this system.</p>
+                                                               <details class="properties elements" open="open">
+                                                                  <summary>Element (0+)</summary>
+                                                                  <div class="model-entry definition assembly">
+                                                                     <div class="instance-header">
+                                                                        <p id="/system-security-plan/control-implementation/implemented-requirement/by-component/export/provided/description/_VALUE" class="toc7 name">(unwrapped)</p>
+                                                                        <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                                        <p class="occurrence">[0 to ∞]</p>
+                                                                     </div>
+                                                                     <div class="body">
+                                                                        <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                                     </div>
+                                                                  </div>
+                                                               </details>
                                                             </div>
                                                          </div>
                                                          <div class="model-entry definition assembly">
@@ -14530,14 +14879,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                                     to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
                                                                                  <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                                               </div>
-                                                                              <div class="remarks">
-                                                                                 <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
-                                                                                    names and associated values used in a property. This allows the semantics associated
-                                                                                    with a given name/value pair to be defined on an organization-by-organization basis.</p>
-                                                                                 <p>An organization MUST use a URI that they have control over. e.g., a domain registered
-                                                                                    to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
-                                                                                 <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
-                                                                              </div>
                                                                            </details>
                                                                         </div>
                                                                      </div>
@@ -14572,10 +14913,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                                  <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                                     a specific <code>class</code> value.</p>
                                                                               </div>
-                                                                              <div class="remarks">
-                                                                                 <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                                                    a specific <code>class</code> value.</p>
-                                                                              </div>
                                                                            </details>
                                                                         </div>
                                                                      </div>
@@ -14593,6 +14930,19 @@ The following is the XML format reference for this model, which is organized hie
                                                                      </div>
                                                                      <div class="body">
                                                                         <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                                                        <details class="properties elements" open="open">
+                                                                           <summary>Element (0+)</summary>
+                                                                           <div class="model-entry definition field">
+                                                                              <div class="instance-header">
+                                                                                 <p id="/system-security-plan/control-implementation/implemented-requirement/by-component/export/provided/prop/remarks/_VALUE" class="toc8 name">(unwrapped)</p>
+                                                                                 <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                                                 <p class="occurrence">[0 to ∞]</p>
+                                                                              </div>
+                                                                              <div class="body">
+                                                                                 <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                                              </div>
+                                                                           </div>
+                                                                        </details>
                                                                      </div>
                                                                   </div>
                                                                </details>
@@ -14645,15 +14995,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                         <div class="remarks-group usa-prose">
                                                                            <details open="open">
                                                                               <summary class="subhead">Remarks</summary>
-                                                                              <div class="remarks">
-                                                                                 <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
-                                                                                    that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
-                                                                                 <p>If a local reference using a fragment is used, this will be indicated by a fragment
-                                                                                    "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
-                                                                                 <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
-                                                                                    resource. A relative URI will be resolved relative to the location of the document
-                                                                                    containing the link.</p>
-                                                                              </div>
                                                                               <div class="remarks">
                                                                                  <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
                                                                                     that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
@@ -14719,7 +15060,7 @@ The following is the XML format reference for this model, which is organized hie
                                                                   <div class="model-entry definition assembly">
                                                                      <div class="instance-header">
                                                                         <p id="/system-security-plan/control-implementation/implemented-requirement/by-component/export/provided/link/text" class="toc8 name">text</p>
-                                                                        <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                                                        <p class="type" id="/system-security-plan/control-implementation/implemented-requirement/by-component/export/provided/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                                                         <p class="occurrence">[0 or 1]</p>
                                                                         <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/by-component/export/provided/links/text">Switch to JSON</a></div>
                                                                         <p class="formal-name">Link Text</p>
@@ -14737,7 +15078,7 @@ The following is the XML format reference for this model, which is organized hie
                                                                <p id="/system-security-plan/control-implementation/implemented-requirement/by-component/export/provided/responsible-role" class="toc7 name">responsible-role</p>
                                                                <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-ssp/by-component/export/provided/responsible-role">(global definition)</a></p>
                                                                <p class="occurrence">[0 to ∞]</p>
-                                                               <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/by-component/export/provided/responsible-roles/responsible-role">Switch to JSON</a></div>
+                                                               <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/by-component/export/provided/responsible-roles">Switch to JSON</a></div>
                                                                <p class="formal-name">Responsible Role</p>
                                                             </div>
                                                             <div class="body">
@@ -14853,14 +15194,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                                              to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
                                                                                           <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                                                        </div>
-                                                                                       <div class="remarks">
-                                                                                          <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
-                                                                                             names and associated values used in a property. This allows the semantics associated
-                                                                                             with a given name/value pair to be defined on an organization-by-organization basis.</p>
-                                                                                          <p>An organization MUST use a URI that they have control over. e.g., a domain registered
-                                                                                             to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
-                                                                                          <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
-                                                                                       </div>
                                                                                     </details>
                                                                                  </div>
                                                                               </div>
@@ -14895,10 +15228,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                                           <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                                              a specific <code>class</code> value.</p>
                                                                                        </div>
-                                                                                       <div class="remarks">
-                                                                                          <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                                                             a specific <code>class</code> value.</p>
-                                                                                       </div>
                                                                                     </details>
                                                                                  </div>
                                                                               </div>
@@ -14916,6 +15245,19 @@ The following is the XML format reference for this model, which is organized hie
                                                                               </div>
                                                                               <div class="body">
                                                                                  <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                                                                 <details class="properties elements" open="open">
+                                                                                    <summary>Element (0+)</summary>
+                                                                                    <div class="model-entry definition field">
+                                                                                       <div class="instance-header">
+                                                                                          <p id="/system-security-plan/control-implementation/implemented-requirement/by-component/export/provided/responsible-role/prop/remarks/_VALUE" class="toc9 name">(unwrapped)</p>
+                                                                                          <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                                                          <p class="occurrence">[0 to ∞]</p>
+                                                                                       </div>
+                                                                                       <div class="body">
+                                                                                          <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                                                       </div>
+                                                                                    </div>
+                                                                                 </details>
                                                                               </div>
                                                                            </div>
                                                                         </details>
@@ -14968,15 +15310,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                                  <div class="remarks-group usa-prose">
                                                                                     <details open="open">
                                                                                        <summary class="subhead">Remarks</summary>
-                                                                                       <div class="remarks">
-                                                                                          <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
-                                                                                             that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
-                                                                                          <p>If a local reference using a fragment is used, this will be indicated by a fragment
-                                                                                             "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
-                                                                                          <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
-                                                                                             resource. A relative URI will be resolved relative to the location of the document
-                                                                                             containing the link.</p>
-                                                                                       </div>
                                                                                        <div class="remarks">
                                                                                           <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
                                                                                              that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
@@ -15042,7 +15375,7 @@ The following is the XML format reference for this model, which is organized hie
                                                                            <div class="model-entry definition assembly">
                                                                               <div class="instance-header">
                                                                                  <p id="/system-security-plan/control-implementation/implemented-requirement/by-component/export/provided/responsible-role/link/text" class="toc9 name">text</p>
-                                                                                 <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                                                                 <p class="type" id="/system-security-plan/control-implementation/implemented-requirement/by-component/export/provided/responsible-role/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                                                                  <p class="occurrence">[0 or 1]</p>
                                                                                  <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/by-component/export/provided/responsible-roles/responsible-role/links/text">Switch to JSON</a></div>
                                                                                  <p class="formal-name">Link Text</p>
@@ -15058,7 +15391,7 @@ The following is the XML format reference for this model, which is organized hie
                                                                   <div class="model-entry definition assembly">
                                                                      <div class="instance-header">
                                                                         <p id="/system-security-plan/control-implementation/implemented-requirement/by-component/export/provided/responsible-role/party-uuid" class="toc8 name">party-uuid</p>
-                                                                        <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                                                        <p class="type" id="/system-security-plan/control-implementation/implemented-requirement/by-component/export/provided/responsible-role/party-uuid/_VALUE"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                                                         <p class="occurrence">[0 to ∞]</p>
                                                                         <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/by-component/export/provided/responsible-roles/responsible-role/party-uuids">Switch to JSON</a></div>
                                                                         <p class="formal-name">Party Reference</p>
@@ -15083,6 +15416,19 @@ The following is the XML format reference for this model, which is organized hie
                                                                      </div>
                                                                      <div class="body">
                                                                         <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                                                        <details class="properties elements" open="open">
+                                                                           <summary>Element (0+)</summary>
+                                                                           <div class="model-entry definition field">
+                                                                              <div class="instance-header">
+                                                                                 <p id="/system-security-plan/control-implementation/implemented-requirement/by-component/export/provided/responsible-role/remarks/_VALUE" class="toc8 name">(unwrapped)</p>
+                                                                                 <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                                                 <p class="occurrence">[0 to ∞]</p>
+                                                                              </div>
+                                                                              <div class="body">
+                                                                                 <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                                              </div>
+                                                                           </div>
+                                                                        </details>
                                                                      </div>
                                                                   </div>
                                                                </details>
@@ -15098,6 +15444,19 @@ The following is the XML format reference for this model, which is organized hie
                                                             </div>
                                                             <div class="body">
                                                                <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                                               <details class="properties elements" open="open">
+                                                                  <summary>Element (0+)</summary>
+                                                                  <div class="model-entry definition field">
+                                                                     <div class="instance-header">
+                                                                        <p id="/system-security-plan/control-implementation/implemented-requirement/by-component/export/provided/remarks/_VALUE" class="toc7 name">(unwrapped)</p>
+                                                                        <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                                        <p class="occurrence">[0 to ∞]</p>
+                                                                     </div>
+                                                                     <div class="body">
+                                                                        <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                                     </div>
+                                                                  </div>
+                                                               </details>
                                                             </div>
                                                          </div>
                                                       </details>
@@ -15156,6 +15515,19 @@ The following is the XML format reference for this model, which is organized hie
                                                                <p class="description"><span class="usa-tag">Description</span> An implementation statement that describes the aspects of the control or control
                                                                   statement implementation that a leveraging system must implement to satisfy the control
                                                                   provided by a leveraged system.</p>
+                                                               <details class="properties elements" open="open">
+                                                                  <summary>Element (0+)</summary>
+                                                                  <div class="model-entry definition assembly">
+                                                                     <div class="instance-header">
+                                                                        <p id="/system-security-plan/control-implementation/implemented-requirement/by-component/export/responsibility/description/_VALUE" class="toc7 name">(unwrapped)</p>
+                                                                        <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                                        <p class="occurrence">[0 to ∞]</p>
+                                                                     </div>
+                                                                     <div class="body">
+                                                                        <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                                     </div>
+                                                                  </div>
+                                                               </details>
                                                             </div>
                                                          </div>
                                                          <div class="model-entry definition assembly">
@@ -15251,14 +15623,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                                     to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
                                                                                  <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                                               </div>
-                                                                              <div class="remarks">
-                                                                                 <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
-                                                                                    names and associated values used in a property. This allows the semantics associated
-                                                                                    with a given name/value pair to be defined on an organization-by-organization basis.</p>
-                                                                                 <p>An organization MUST use a URI that they have control over. e.g., a domain registered
-                                                                                    to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
-                                                                                 <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
-                                                                              </div>
                                                                            </details>
                                                                         </div>
                                                                      </div>
@@ -15293,10 +15657,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                                  <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                                     a specific <code>class</code> value.</p>
                                                                               </div>
-                                                                              <div class="remarks">
-                                                                                 <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                                                    a specific <code>class</code> value.</p>
-                                                                              </div>
                                                                            </details>
                                                                         </div>
                                                                      </div>
@@ -15314,6 +15674,19 @@ The following is the XML format reference for this model, which is organized hie
                                                                      </div>
                                                                      <div class="body">
                                                                         <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                                                        <details class="properties elements" open="open">
+                                                                           <summary>Element (0+)</summary>
+                                                                           <div class="model-entry definition field">
+                                                                              <div class="instance-header">
+                                                                                 <p id="/system-security-plan/control-implementation/implemented-requirement/by-component/export/responsibility/prop/remarks/_VALUE" class="toc8 name">(unwrapped)</p>
+                                                                                 <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                                                 <p class="occurrence">[0 to ∞]</p>
+                                                                              </div>
+                                                                              <div class="body">
+                                                                                 <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                                              </div>
+                                                                           </div>
+                                                                        </details>
                                                                      </div>
                                                                   </div>
                                                                </details>
@@ -15366,15 +15739,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                         <div class="remarks-group usa-prose">
                                                                            <details open="open">
                                                                               <summary class="subhead">Remarks</summary>
-                                                                              <div class="remarks">
-                                                                                 <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
-                                                                                    that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
-                                                                                 <p>If a local reference using a fragment is used, this will be indicated by a fragment
-                                                                                    "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
-                                                                                 <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
-                                                                                    resource. A relative URI will be resolved relative to the location of the document
-                                                                                    containing the link.</p>
-                                                                              </div>
                                                                               <div class="remarks">
                                                                                  <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
                                                                                     that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
@@ -15440,7 +15804,7 @@ The following is the XML format reference for this model, which is organized hie
                                                                   <div class="model-entry definition assembly">
                                                                      <div class="instance-header">
                                                                         <p id="/system-security-plan/control-implementation/implemented-requirement/by-component/export/responsibility/link/text" class="toc8 name">text</p>
-                                                                        <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                                                        <p class="type" id="/system-security-plan/control-implementation/implemented-requirement/by-component/export/responsibility/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                                                         <p class="occurrence">[0 or 1]</p>
                                                                         <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/by-component/export/responsibilities/links/text">Switch to JSON</a></div>
                                                                         <p class="formal-name">Link Text</p>
@@ -15458,7 +15822,7 @@ The following is the XML format reference for this model, which is organized hie
                                                                <p id="/system-security-plan/control-implementation/implemented-requirement/by-component/export/responsibility/responsible-role" class="toc7 name">responsible-role</p>
                                                                <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-ssp/by-component/export/responsibility/responsible-role">(global definition)</a></p>
                                                                <p class="occurrence">[0 to ∞]</p>
-                                                               <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/by-component/export/responsibilities/responsible-roles/responsible-role">Switch to JSON</a></div>
+                                                               <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/by-component/export/responsibilities/responsible-roles">Switch to JSON</a></div>
                                                                <p class="formal-name">Responsible Role</p>
                                                             </div>
                                                             <div class="body">
@@ -15467,7 +15831,7 @@ The following is the XML format reference for this model, which is organized hie
                                                                <div class="remarks-group usa-prose">
                                                                   <details open="open">
                                                                      <summary class="subhead">Remarks</summary>
-                                                                     <div class="remarks in-use">
+                                                                     <div class="remarks">
                                                                         <p>A role defined at the by-component level takes precedence over the same role defined
                                                                            on the parent implemented-requirement or on the referenced component. </p>
                                                                      </div>
@@ -15583,14 +15947,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                                              to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
                                                                                           <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                                                        </div>
-                                                                                       <div class="remarks">
-                                                                                          <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
-                                                                                             names and associated values used in a property. This allows the semantics associated
-                                                                                             with a given name/value pair to be defined on an organization-by-organization basis.</p>
-                                                                                          <p>An organization MUST use a URI that they have control over. e.g., a domain registered
-                                                                                             to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
-                                                                                          <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
-                                                                                       </div>
                                                                                     </details>
                                                                                  </div>
                                                                               </div>
@@ -15625,10 +15981,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                                           <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                                              a specific <code>class</code> value.</p>
                                                                                        </div>
-                                                                                       <div class="remarks">
-                                                                                          <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                                                             a specific <code>class</code> value.</p>
-                                                                                       </div>
                                                                                     </details>
                                                                                  </div>
                                                                               </div>
@@ -15646,6 +15998,19 @@ The following is the XML format reference for this model, which is organized hie
                                                                               </div>
                                                                               <div class="body">
                                                                                  <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                                                                 <details class="properties elements" open="open">
+                                                                                    <summary>Element (0+)</summary>
+                                                                                    <div class="model-entry definition field">
+                                                                                       <div class="instance-header">
+                                                                                          <p id="/system-security-plan/control-implementation/implemented-requirement/by-component/export/responsibility/responsible-role/prop/remarks/_VALUE" class="toc9 name">(unwrapped)</p>
+                                                                                          <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                                                          <p class="occurrence">[0 to ∞]</p>
+                                                                                       </div>
+                                                                                       <div class="body">
+                                                                                          <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                                                       </div>
+                                                                                    </div>
+                                                                                 </details>
                                                                               </div>
                                                                            </div>
                                                                         </details>
@@ -15698,15 +16063,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                                  <div class="remarks-group usa-prose">
                                                                                     <details open="open">
                                                                                        <summary class="subhead">Remarks</summary>
-                                                                                       <div class="remarks">
-                                                                                          <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
-                                                                                             that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
-                                                                                          <p>If a local reference using a fragment is used, this will be indicated by a fragment
-                                                                                             "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
-                                                                                          <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
-                                                                                             resource. A relative URI will be resolved relative to the location of the document
-                                                                                             containing the link.</p>
-                                                                                       </div>
                                                                                        <div class="remarks">
                                                                                           <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
                                                                                              that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
@@ -15772,7 +16128,7 @@ The following is the XML format reference for this model, which is organized hie
                                                                            <div class="model-entry definition assembly">
                                                                               <div class="instance-header">
                                                                                  <p id="/system-security-plan/control-implementation/implemented-requirement/by-component/export/responsibility/responsible-role/link/text" class="toc9 name">text</p>
-                                                                                 <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                                                                 <p class="type" id="/system-security-plan/control-implementation/implemented-requirement/by-component/export/responsibility/responsible-role/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                                                                  <p class="occurrence">[0 or 1]</p>
                                                                                  <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/by-component/export/responsibilities/responsible-roles/responsible-role/links/text">Switch to JSON</a></div>
                                                                                  <p class="formal-name">Link Text</p>
@@ -15788,7 +16144,7 @@ The following is the XML format reference for this model, which is organized hie
                                                                   <div class="model-entry definition assembly">
                                                                      <div class="instance-header">
                                                                         <p id="/system-security-plan/control-implementation/implemented-requirement/by-component/export/responsibility/responsible-role/party-uuid" class="toc8 name">party-uuid</p>
-                                                                        <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                                                        <p class="type" id="/system-security-plan/control-implementation/implemented-requirement/by-component/export/responsibility/responsible-role/party-uuid/_VALUE"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                                                         <p class="occurrence">[0 to ∞]</p>
                                                                         <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/by-component/export/responsibilities/responsible-roles/responsible-role/party-uuids">Switch to JSON</a></div>
                                                                         <p class="formal-name">Party Reference</p>
@@ -15813,6 +16169,19 @@ The following is the XML format reference for this model, which is organized hie
                                                                      </div>
                                                                      <div class="body">
                                                                         <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                                                        <details class="properties elements" open="open">
+                                                                           <summary>Element (0+)</summary>
+                                                                           <div class="model-entry definition field">
+                                                                              <div class="instance-header">
+                                                                                 <p id="/system-security-plan/control-implementation/implemented-requirement/by-component/export/responsibility/responsible-role/remarks/_VALUE" class="toc8 name">(unwrapped)</p>
+                                                                                 <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                                                 <p class="occurrence">[0 to ∞]</p>
+                                                                              </div>
+                                                                              <div class="body">
+                                                                                 <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                                              </div>
+                                                                           </div>
+                                                                        </details>
                                                                      </div>
                                                                   </div>
                                                                </details>
@@ -15828,6 +16197,19 @@ The following is the XML format reference for this model, which is organized hie
                                                             </div>
                                                             <div class="body">
                                                                <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                                               <details class="properties elements" open="open">
+                                                                  <summary>Element (0+)</summary>
+                                                                  <div class="model-entry definition field">
+                                                                     <div class="instance-header">
+                                                                        <p id="/system-security-plan/control-implementation/implemented-requirement/by-component/export/responsibility/remarks/_VALUE" class="toc7 name">(unwrapped)</p>
+                                                                        <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                                        <p class="occurrence">[0 to ∞]</p>
+                                                                     </div>
+                                                                     <div class="body">
+                                                                        <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                                     </div>
+                                                                  </div>
+                                                               </details>
                                                             </div>
                                                          </div>
                                                       </details>
@@ -15843,6 +16225,19 @@ The following is the XML format reference for this model, which is organized hie
                                                    </div>
                                                    <div class="body">
                                                       <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                                      <details class="properties elements" open="open">
+                                                         <summary>Element (0+)</summary>
+                                                         <div class="model-entry definition field">
+                                                            <div class="instance-header">
+                                                               <h6 id="/system-security-plan/control-implementation/implemented-requirement/by-component/export/remarks/_VALUE" class="toc6 name">(unwrapped)</h6>
+                                                               <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                               <p class="occurrence">[0 to ∞]</p>
+                                                            </div>
+                                                            <div class="body">
+                                                               <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                            </div>
+                                                         </div>
+                                                      </details>
                                                    </div>
                                                 </div>
                                              </details>
@@ -15900,6 +16295,19 @@ The following is the XML format reference for this model, which is organized hie
                                                    <div class="body">
                                                       <p class="description"><span class="usa-tag">Description</span> An implementation statement that describes the aspects of a control or control statement
                                                          implementation that a leveraging system is inheriting from a leveraged system.</p>
+                                                      <details class="properties elements" open="open">
+                                                         <summary>Element (0+)</summary>
+                                                         <div class="model-entry definition assembly">
+                                                            <div class="instance-header">
+                                                               <h6 id="/system-security-plan/control-implementation/implemented-requirement/by-component/inherited/description/_VALUE" class="toc6 name">(unwrapped)</h6>
+                                                               <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                               <p class="occurrence">[0 to ∞]</p>
+                                                            </div>
+                                                            <div class="body">
+                                                               <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                            </div>
+                                                         </div>
+                                                      </details>
                                                    </div>
                                                 </div>
                                                 <div class="model-entry definition assembly">
@@ -15995,14 +16403,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                            to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
                                                                         <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                                      </div>
-                                                                     <div class="remarks">
-                                                                        <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
-                                                                           names and associated values used in a property. This allows the semantics associated
-                                                                           with a given name/value pair to be defined on an organization-by-organization basis.</p>
-                                                                        <p>An organization MUST use a URI that they have control over. e.g., a domain registered
-                                                                           to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
-                                                                        <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
-                                                                     </div>
                                                                   </details>
                                                                </div>
                                                             </div>
@@ -16037,10 +16437,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                         <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                            a specific <code>class</code> value.</p>
                                                                      </div>
-                                                                     <div class="remarks">
-                                                                        <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                                           a specific <code>class</code> value.</p>
-                                                                     </div>
                                                                   </details>
                                                                </div>
                                                             </div>
@@ -16058,6 +16454,19 @@ The following is the XML format reference for this model, which is organized hie
                                                             </div>
                                                             <div class="body">
                                                                <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                                               <details class="properties elements" open="open">
+                                                                  <summary>Element (0+)</summary>
+                                                                  <div class="model-entry definition field">
+                                                                     <div class="instance-header">
+                                                                        <p id="/system-security-plan/control-implementation/implemented-requirement/by-component/inherited/prop/remarks/_VALUE" class="toc7 name">(unwrapped)</p>
+                                                                        <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                                        <p class="occurrence">[0 to ∞]</p>
+                                                                     </div>
+                                                                     <div class="body">
+                                                                        <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                                     </div>
+                                                                  </div>
+                                                               </details>
                                                             </div>
                                                          </div>
                                                       </details>
@@ -16110,15 +16519,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                <div class="remarks-group usa-prose">
                                                                   <details open="open">
                                                                      <summary class="subhead">Remarks</summary>
-                                                                     <div class="remarks">
-                                                                        <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
-                                                                           that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
-                                                                        <p>If a local reference using a fragment is used, this will be indicated by a fragment
-                                                                           "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
-                                                                        <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
-                                                                           resource. A relative URI will be resolved relative to the location of the document
-                                                                           containing the link.</p>
-                                                                     </div>
                                                                      <div class="remarks">
                                                                         <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
                                                                            that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
@@ -16184,7 +16584,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
                                                                <p id="/system-security-plan/control-implementation/implemented-requirement/by-component/inherited/link/text" class="toc7 name">text</p>
-                                                               <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                                               <p class="type" id="/system-security-plan/control-implementation/implemented-requirement/by-component/inherited/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                                                <p class="occurrence">[0 or 1]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/by-component/inherited/links/text">Switch to JSON</a></div>
                                                                <p class="formal-name">Link Text</p>
@@ -16202,7 +16602,7 @@ The following is the XML format reference for this model, which is organized hie
                                                       <h6 id="/system-security-plan/control-implementation/implemented-requirement/by-component/inherited/responsible-role" class="toc6 name">responsible-role</h6>
                                                       <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-ssp/by-component/inherited/responsible-role">(global definition)</a></p>
                                                       <p class="occurrence">[0 to ∞]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/by-component/inherited/responsible-roles/responsible-role">Switch to JSON</a></div>
+                                                      <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/by-component/inherited/responsible-roles">Switch to JSON</a></div>
                                                       <p class="formal-name">Responsible Role</p>
                                                    </div>
                                                    <div class="body">
@@ -16318,14 +16718,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                                     to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
                                                                                  <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                                               </div>
-                                                                              <div class="remarks">
-                                                                                 <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
-                                                                                    names and associated values used in a property. This allows the semantics associated
-                                                                                    with a given name/value pair to be defined on an organization-by-organization basis.</p>
-                                                                                 <p>An organization MUST use a URI that they have control over. e.g., a domain registered
-                                                                                    to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
-                                                                                 <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
-                                                                              </div>
                                                                            </details>
                                                                         </div>
                                                                      </div>
@@ -16360,10 +16752,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                                  <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                                     a specific <code>class</code> value.</p>
                                                                               </div>
-                                                                              <div class="remarks">
-                                                                                 <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                                                    a specific <code>class</code> value.</p>
-                                                                              </div>
                                                                            </details>
                                                                         </div>
                                                                      </div>
@@ -16381,6 +16769,19 @@ The following is the XML format reference for this model, which is organized hie
                                                                      </div>
                                                                      <div class="body">
                                                                         <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                                                        <details class="properties elements" open="open">
+                                                                           <summary>Element (0+)</summary>
+                                                                           <div class="model-entry definition field">
+                                                                              <div class="instance-header">
+                                                                                 <p id="/system-security-plan/control-implementation/implemented-requirement/by-component/inherited/responsible-role/prop/remarks/_VALUE" class="toc8 name">(unwrapped)</p>
+                                                                                 <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                                                 <p class="occurrence">[0 to ∞]</p>
+                                                                              </div>
+                                                                              <div class="body">
+                                                                                 <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                                              </div>
+                                                                           </div>
+                                                                        </details>
                                                                      </div>
                                                                   </div>
                                                                </details>
@@ -16433,15 +16834,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                         <div class="remarks-group usa-prose">
                                                                            <details open="open">
                                                                               <summary class="subhead">Remarks</summary>
-                                                                              <div class="remarks">
-                                                                                 <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
-                                                                                    that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
-                                                                                 <p>If a local reference using a fragment is used, this will be indicated by a fragment
-                                                                                    "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
-                                                                                 <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
-                                                                                    resource. A relative URI will be resolved relative to the location of the document
-                                                                                    containing the link.</p>
-                                                                              </div>
                                                                               <div class="remarks">
                                                                                  <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
                                                                                     that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
@@ -16507,7 +16899,7 @@ The following is the XML format reference for this model, which is organized hie
                                                                   <div class="model-entry definition assembly">
                                                                      <div class="instance-header">
                                                                         <p id="/system-security-plan/control-implementation/implemented-requirement/by-component/inherited/responsible-role/link/text" class="toc8 name">text</p>
-                                                                        <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                                                        <p class="type" id="/system-security-plan/control-implementation/implemented-requirement/by-component/inherited/responsible-role/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                                                         <p class="occurrence">[0 or 1]</p>
                                                                         <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/by-component/inherited/responsible-roles/responsible-role/links/text">Switch to JSON</a></div>
                                                                         <p class="formal-name">Link Text</p>
@@ -16523,7 +16915,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
                                                                <p id="/system-security-plan/control-implementation/implemented-requirement/by-component/inherited/responsible-role/party-uuid" class="toc7 name">party-uuid</p>
-                                                               <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                                               <p class="type" id="/system-security-plan/control-implementation/implemented-requirement/by-component/inherited/responsible-role/party-uuid/_VALUE"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                                                <p class="occurrence">[0 to ∞]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/by-component/inherited/responsible-roles/responsible-role/party-uuids">Switch to JSON</a></div>
                                                                <p class="formal-name">Party Reference</p>
@@ -16548,6 +16940,19 @@ The following is the XML format reference for this model, which is organized hie
                                                             </div>
                                                             <div class="body">
                                                                <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                                               <details class="properties elements" open="open">
+                                                                  <summary>Element (0+)</summary>
+                                                                  <div class="model-entry definition field">
+                                                                     <div class="instance-header">
+                                                                        <p id="/system-security-plan/control-implementation/implemented-requirement/by-component/inherited/responsible-role/remarks/_VALUE" class="toc7 name">(unwrapped)</p>
+                                                                        <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                                        <p class="occurrence">[0 to ∞]</p>
+                                                                     </div>
+                                                                     <div class="body">
+                                                                        <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                                     </div>
+                                                                  </div>
+                                                               </details>
                                                             </div>
                                                          </div>
                                                       </details>
@@ -16609,6 +17014,19 @@ The following is the XML format reference for this model, which is organized hie
                                                       <p class="description"><span class="usa-tag">Description</span> An implementation statement that describes the aspects of a control or control statement
                                                          implementation that a leveraging system is implementing based on a requirement from
                                                          a leveraged system.</p>
+                                                      <details class="properties elements" open="open">
+                                                         <summary>Element (0+)</summary>
+                                                         <div class="model-entry definition assembly">
+                                                            <div class="instance-header">
+                                                               <h6 id="/system-security-plan/control-implementation/implemented-requirement/by-component/satisfied/description/_VALUE" class="toc6 name">(unwrapped)</h6>
+                                                               <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                               <p class="occurrence">[0 to ∞]</p>
+                                                            </div>
+                                                            <div class="body">
+                                                               <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                            </div>
+                                                         </div>
+                                                      </details>
                                                    </div>
                                                 </div>
                                                 <div class="model-entry definition assembly">
@@ -16704,14 +17122,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                            to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
                                                                         <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                                      </div>
-                                                                     <div class="remarks">
-                                                                        <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
-                                                                           names and associated values used in a property. This allows the semantics associated
-                                                                           with a given name/value pair to be defined on an organization-by-organization basis.</p>
-                                                                        <p>An organization MUST use a URI that they have control over. e.g., a domain registered
-                                                                           to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
-                                                                        <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
-                                                                     </div>
                                                                   </details>
                                                                </div>
                                                             </div>
@@ -16746,10 +17156,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                         <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                            a specific <code>class</code> value.</p>
                                                                      </div>
-                                                                     <div class="remarks">
-                                                                        <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                                           a specific <code>class</code> value.</p>
-                                                                     </div>
                                                                   </details>
                                                                </div>
                                                             </div>
@@ -16767,6 +17173,19 @@ The following is the XML format reference for this model, which is organized hie
                                                             </div>
                                                             <div class="body">
                                                                <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                                               <details class="properties elements" open="open">
+                                                                  <summary>Element (0+)</summary>
+                                                                  <div class="model-entry definition field">
+                                                                     <div class="instance-header">
+                                                                        <p id="/system-security-plan/control-implementation/implemented-requirement/by-component/satisfied/prop/remarks/_VALUE" class="toc7 name">(unwrapped)</p>
+                                                                        <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                                        <p class="occurrence">[0 to ∞]</p>
+                                                                     </div>
+                                                                     <div class="body">
+                                                                        <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                                     </div>
+                                                                  </div>
+                                                               </details>
                                                             </div>
                                                          </div>
                                                       </details>
@@ -16819,15 +17238,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                <div class="remarks-group usa-prose">
                                                                   <details open="open">
                                                                      <summary class="subhead">Remarks</summary>
-                                                                     <div class="remarks">
-                                                                        <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
-                                                                           that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
-                                                                        <p>If a local reference using a fragment is used, this will be indicated by a fragment
-                                                                           "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
-                                                                        <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
-                                                                           resource. A relative URI will be resolved relative to the location of the document
-                                                                           containing the link.</p>
-                                                                     </div>
                                                                      <div class="remarks">
                                                                         <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
                                                                            that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
@@ -16893,7 +17303,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
                                                                <p id="/system-security-plan/control-implementation/implemented-requirement/by-component/satisfied/link/text" class="toc7 name">text</p>
-                                                               <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                                               <p class="type" id="/system-security-plan/control-implementation/implemented-requirement/by-component/satisfied/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                                                <p class="occurrence">[0 or 1]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/by-component/satisfied/links/text">Switch to JSON</a></div>
                                                                <p class="formal-name">Link Text</p>
@@ -16911,7 +17321,7 @@ The following is the XML format reference for this model, which is organized hie
                                                       <h6 id="/system-security-plan/control-implementation/implemented-requirement/by-component/satisfied/responsible-role" class="toc6 name">responsible-role</h6>
                                                       <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-ssp/by-component/satisfied/responsible-role">(global definition)</a></p>
                                                       <p class="occurrence">[0 to ∞]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/by-component/satisfied/responsible-roles/responsible-role">Switch to JSON</a></div>
+                                                      <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/by-component/satisfied/responsible-roles">Switch to JSON</a></div>
                                                       <p class="formal-name">Responsible Role</p>
                                                    </div>
                                                    <div class="body">
@@ -17027,14 +17437,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                                     to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
                                                                                  <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                                               </div>
-                                                                              <div class="remarks">
-                                                                                 <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
-                                                                                    names and associated values used in a property. This allows the semantics associated
-                                                                                    with a given name/value pair to be defined on an organization-by-organization basis.</p>
-                                                                                 <p>An organization MUST use a URI that they have control over. e.g., a domain registered
-                                                                                    to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
-                                                                                 <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
-                                                                              </div>
                                                                            </details>
                                                                         </div>
                                                                      </div>
@@ -17069,10 +17471,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                                  <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                                     a specific <code>class</code> value.</p>
                                                                               </div>
-                                                                              <div class="remarks">
-                                                                                 <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                                                    a specific <code>class</code> value.</p>
-                                                                              </div>
                                                                            </details>
                                                                         </div>
                                                                      </div>
@@ -17090,6 +17488,19 @@ The following is the XML format reference for this model, which is organized hie
                                                                      </div>
                                                                      <div class="body">
                                                                         <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                                                        <details class="properties elements" open="open">
+                                                                           <summary>Element (0+)</summary>
+                                                                           <div class="model-entry definition field">
+                                                                              <div class="instance-header">
+                                                                                 <p id="/system-security-plan/control-implementation/implemented-requirement/by-component/satisfied/responsible-role/prop/remarks/_VALUE" class="toc8 name">(unwrapped)</p>
+                                                                                 <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                                                 <p class="occurrence">[0 to ∞]</p>
+                                                                              </div>
+                                                                              <div class="body">
+                                                                                 <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                                              </div>
+                                                                           </div>
+                                                                        </details>
                                                                      </div>
                                                                   </div>
                                                                </details>
@@ -17142,15 +17553,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                         <div class="remarks-group usa-prose">
                                                                            <details open="open">
                                                                               <summary class="subhead">Remarks</summary>
-                                                                              <div class="remarks">
-                                                                                 <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
-                                                                                    that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
-                                                                                 <p>If a local reference using a fragment is used, this will be indicated by a fragment
-                                                                                    "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
-                                                                                 <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
-                                                                                    resource. A relative URI will be resolved relative to the location of the document
-                                                                                    containing the link.</p>
-                                                                              </div>
                                                                               <div class="remarks">
                                                                                  <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
                                                                                     that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
@@ -17216,7 +17618,7 @@ The following is the XML format reference for this model, which is organized hie
                                                                   <div class="model-entry definition assembly">
                                                                      <div class="instance-header">
                                                                         <p id="/system-security-plan/control-implementation/implemented-requirement/by-component/satisfied/responsible-role/link/text" class="toc8 name">text</p>
-                                                                        <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                                                        <p class="type" id="/system-security-plan/control-implementation/implemented-requirement/by-component/satisfied/responsible-role/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                                                         <p class="occurrence">[0 or 1]</p>
                                                                         <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/by-component/satisfied/responsible-roles/responsible-role/links/text">Switch to JSON</a></div>
                                                                         <p class="formal-name">Link Text</p>
@@ -17232,7 +17634,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
                                                                <p id="/system-security-plan/control-implementation/implemented-requirement/by-component/satisfied/responsible-role/party-uuid" class="toc7 name">party-uuid</p>
-                                                               <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                                               <p class="type" id="/system-security-plan/control-implementation/implemented-requirement/by-component/satisfied/responsible-role/party-uuid/_VALUE"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                                                <p class="occurrence">[0 to ∞]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/by-component/satisfied/responsible-roles/responsible-role/party-uuids">Switch to JSON</a></div>
                                                                <p class="formal-name">Party Reference</p>
@@ -17257,6 +17659,19 @@ The following is the XML format reference for this model, which is organized hie
                                                             </div>
                                                             <div class="body">
                                                                <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                                               <details class="properties elements" open="open">
+                                                                  <summary>Element (0+)</summary>
+                                                                  <div class="model-entry definition field">
+                                                                     <div class="instance-header">
+                                                                        <p id="/system-security-plan/control-implementation/implemented-requirement/by-component/satisfied/responsible-role/remarks/_VALUE" class="toc7 name">(unwrapped)</p>
+                                                                        <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                                        <p class="occurrence">[0 to ∞]</p>
+                                                                     </div>
+                                                                     <div class="body">
+                                                                        <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                                     </div>
+                                                                  </div>
+                                                               </details>
                                                             </div>
                                                          </div>
                                                       </details>
@@ -17272,6 +17687,19 @@ The following is the XML format reference for this model, which is organized hie
                                                    </div>
                                                    <div class="body">
                                                       <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                                      <details class="properties elements" open="open">
+                                                         <summary>Element (0+)</summary>
+                                                         <div class="model-entry definition field">
+                                                            <div class="instance-header">
+                                                               <h6 id="/system-security-plan/control-implementation/implemented-requirement/by-component/satisfied/remarks/_VALUE" class="toc6 name">(unwrapped)</h6>
+                                                               <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                               <p class="occurrence">[0 to ∞]</p>
+                                                            </div>
+                                                            <div class="body">
+                                                               <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                            </div>
+                                                         </div>
+                                                      </details>
                                                    </div>
                                                 </div>
                                              </details>
@@ -17282,7 +17710,7 @@ The following is the XML format reference for this model, which is organized hie
                                              <h5 id="/system-security-plan/control-implementation/implemented-requirement/by-component/responsible-role" class="toc5 name">responsible-role</h5>
                                              <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-ssp/by-component/responsible-role">(global definition)</a></p>
                                              <p class="occurrence">[0 to ∞]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/by-component/responsible-roles/responsible-role">Switch to JSON</a></div>
+                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/by-component/responsible-roles">Switch to JSON</a></div>
                                              <p class="formal-name">Responsible Role</p>
                                           </div>
                                           <div class="body">
@@ -17398,14 +17826,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                            to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
                                                                         <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                                      </div>
-                                                                     <div class="remarks">
-                                                                        <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
-                                                                           names and associated values used in a property. This allows the semantics associated
-                                                                           with a given name/value pair to be defined on an organization-by-organization basis.</p>
-                                                                        <p>An organization MUST use a URI that they have control over. e.g., a domain registered
-                                                                           to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
-                                                                        <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
-                                                                     </div>
                                                                   </details>
                                                                </div>
                                                             </div>
@@ -17440,10 +17860,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                         <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                            a specific <code>class</code> value.</p>
                                                                      </div>
-                                                                     <div class="remarks">
-                                                                        <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                                           a specific <code>class</code> value.</p>
-                                                                     </div>
                                                                   </details>
                                                                </div>
                                                             </div>
@@ -17461,6 +17877,19 @@ The following is the XML format reference for this model, which is organized hie
                                                             </div>
                                                             <div class="body">
                                                                <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                                               <details class="properties elements" open="open">
+                                                                  <summary>Element (0+)</summary>
+                                                                  <div class="model-entry definition field">
+                                                                     <div class="instance-header">
+                                                                        <p id="/system-security-plan/control-implementation/implemented-requirement/by-component/responsible-role/prop/remarks/_VALUE" class="toc7 name">(unwrapped)</p>
+                                                                        <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                                        <p class="occurrence">[0 to ∞]</p>
+                                                                     </div>
+                                                                     <div class="body">
+                                                                        <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                                     </div>
+                                                                  </div>
+                                                               </details>
                                                             </div>
                                                          </div>
                                                       </details>
@@ -17513,15 +17942,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                <div class="remarks-group usa-prose">
                                                                   <details open="open">
                                                                      <summary class="subhead">Remarks</summary>
-                                                                     <div class="remarks">
-                                                                        <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
-                                                                           that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
-                                                                        <p>If a local reference using a fragment is used, this will be indicated by a fragment
-                                                                           "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
-                                                                        <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
-                                                                           resource. A relative URI will be resolved relative to the location of the document
-                                                                           containing the link.</p>
-                                                                     </div>
                                                                      <div class="remarks">
                                                                         <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
                                                                            that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
@@ -17587,7 +18007,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
                                                                <p id="/system-security-plan/control-implementation/implemented-requirement/by-component/responsible-role/link/text" class="toc7 name">text</p>
-                                                               <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                                               <p class="type" id="/system-security-plan/control-implementation/implemented-requirement/by-component/responsible-role/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                                                <p class="occurrence">[0 or 1]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/by-component/responsible-roles/responsible-role/links/text">Switch to JSON</a></div>
                                                                <p class="formal-name">Link Text</p>
@@ -17603,7 +18023,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/system-security-plan/control-implementation/implemented-requirement/by-component/responsible-role/party-uuid" class="toc6 name">party-uuid</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                                      <p class="type" id="/system-security-plan/control-implementation/implemented-requirement/by-component/responsible-role/party-uuid/_VALUE"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                                       <p class="occurrence">[0 to ∞]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/by-components/by-component/responsible-roles/responsible-role/party-uuids">Switch to JSON</a></div>
                                                       <p class="formal-name">Party Reference</p>
@@ -17628,6 +18048,19 @@ The following is the XML format reference for this model, which is organized hie
                                                    </div>
                                                    <div class="body">
                                                       <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                                      <details class="properties elements" open="open">
+                                                         <summary>Element (0+)</summary>
+                                                         <div class="model-entry definition field">
+                                                            <div class="instance-header">
+                                                               <h6 id="/system-security-plan/control-implementation/implemented-requirement/by-component/responsible-role/remarks/_VALUE" class="toc6 name">(unwrapped)</h6>
+                                                               <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                               <p class="occurrence">[0 to ∞]</p>
+                                                            </div>
+                                                            <div class="body">
+                                                               <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                            </div>
+                                                         </div>
+                                                      </details>
                                                    </div>
                                                 </div>
                                              </details>
@@ -17643,6 +18076,19 @@ The following is the XML format reference for this model, which is organized hie
                                           </div>
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                             <details class="properties elements" open="open">
+                                                <summary>Element (0+)</summary>
+                                                <div class="model-entry definition field">
+                                                   <div class="instance-header">
+                                                      <h5 id="/system-security-plan/control-implementation/implemented-requirement/by-component/remarks/_VALUE" class="toc5 name">(unwrapped)</h5>
+                                                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                      <p class="occurrence">[0 to ∞]</p>
+                                                   </div>
+                                                   <div class="body">
+                                                      <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                   </div>
+                                                </div>
+                                             </details>
                                           </div>
                                        </div>
                                     </details>
@@ -17653,7 +18099,7 @@ The following is the XML format reference for this model, which is organized hie
                                     <h4 id="/system-security-plan/control-implementation/implemented-requirement/statement" class="toc4 name">statement</h4>
                                     <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-ssp/implemented-requirement/statement">(global definition)</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
-                                    <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/statement">Switch to JSON</a></div>
+                                    <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements">Switch to JSON</a></div>
                                     <p class="formal-name">Specific Control Statement</p>
                                  </div>
                                  <div class="body">
@@ -17820,14 +18266,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                   to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
                                                                <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                             </div>
-                                                            <div class="remarks">
-                                                               <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
-                                                                  names and associated values used in a property. This allows the semantics associated
-                                                                  with a given name/value pair to be defined on an organization-by-organization basis.</p>
-                                                               <p>An organization MUST use a URI that they have control over. e.g., a domain registered
-                                                                  to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
-                                                               <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
-                                                            </div>
                                                          </details>
                                                       </div>
                                                    </div>
@@ -17862,10 +18300,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                   a specific <code>class</code> value.</p>
                                                             </div>
-                                                            <div class="remarks">
-                                                               <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                                  a specific <code>class</code> value.</p>
-                                                            </div>
                                                          </details>
                                                       </div>
                                                    </div>
@@ -17883,6 +18317,19 @@ The following is the XML format reference for this model, which is organized hie
                                                    </div>
                                                    <div class="body">
                                                       <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                                      <details class="properties elements" open="open">
+                                                         <summary>Element (0+)</summary>
+                                                         <div class="model-entry definition field">
+                                                            <div class="instance-header">
+                                                               <h6 id="/system-security-plan/control-implementation/implemented-requirement/statement/prop/remarks/_VALUE" class="toc6 name">(unwrapped)</h6>
+                                                               <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                               <p class="occurrence">[0 to ∞]</p>
+                                                            </div>
+                                                            <div class="body">
+                                                               <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                            </div>
+                                                         </div>
+                                                      </details>
                                                    </div>
                                                 </div>
                                              </details>
@@ -17935,15 +18382,6 @@ The following is the XML format reference for this model, which is organized hie
                                                       <div class="remarks-group usa-prose">
                                                          <details open="open">
                                                             <summary class="subhead">Remarks</summary>
-                                                            <div class="remarks">
-                                                               <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
-                                                                  that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
-                                                               <p>If a local reference using a fragment is used, this will be indicated by a fragment
-                                                                  "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
-                                                               <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
-                                                                  resource. A relative URI will be resolved relative to the location of the document
-                                                                  containing the link.</p>
-                                                            </div>
                                                             <div class="remarks">
                                                                <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
                                                                   that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
@@ -18009,7 +18447,7 @@ The following is the XML format reference for this model, which is organized hie
                                                 <div class="model-entry definition assembly">
                                                    <div class="instance-header">
                                                       <h6 id="/system-security-plan/control-implementation/implemented-requirement/statement/link/text" class="toc6 name">text</h6>
-                                                      <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                                      <p class="type" id="/system-security-plan/control-implementation/implemented-requirement/statement/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                                       <p class="occurrence">[0 or 1]</p>
                                                       <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/statement/links/text">Switch to JSON</a></div>
                                                       <p class="formal-name">Link Text</p>
@@ -18027,7 +18465,7 @@ The following is the XML format reference for this model, which is organized hie
                                              <h5 id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component" class="toc5 name">by-component</h5>
                                              <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-ssp/statement/by-component">(global definition)</a></p>
                                              <p class="occurrence">[0 to ∞]</p>
-                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/statement/by-components/by-component">Switch to JSON</a></div>
+                                             <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/statement/by-components">Switch to JSON</a></div>
                                              <p class="formal-name">Component Control Implementation</p>
                                           </div>
                                           <div class="body">
@@ -18110,6 +18548,19 @@ The following is the XML format reference for this model, which is organized hie
                                                    <div class="body">
                                                       <p class="description"><span class="usa-tag">Description</span> An implementation statement that describes how a control or a control statement is
                                                          implemented within the referenced system component.</p>
+                                                      <details class="properties elements" open="open">
+                                                         <summary>Element (0+)</summary>
+                                                         <div class="model-entry definition assembly">
+                                                            <div class="instance-header">
+                                                               <h6 id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/description/_VALUE" class="toc6 name">(unwrapped)</h6>
+                                                               <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                               <p class="occurrence">[0 to ∞]</p>
+                                                            </div>
+                                                            <div class="body">
+                                                               <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                            </div>
+                                                         </div>
+                                                      </details>
                                                    </div>
                                                 </div>
                                                 <div class="model-entry definition assembly">
@@ -18205,14 +18656,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                            to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
                                                                         <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                                      </div>
-                                                                     <div class="remarks">
-                                                                        <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
-                                                                           names and associated values used in a property. This allows the semantics associated
-                                                                           with a given name/value pair to be defined on an organization-by-organization basis.</p>
-                                                                        <p>An organization MUST use a URI that they have control over. e.g., a domain registered
-                                                                           to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
-                                                                        <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
-                                                                     </div>
                                                                   </details>
                                                                </div>
                                                             </div>
@@ -18247,10 +18690,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                         <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                            a specific <code>class</code> value.</p>
                                                                      </div>
-                                                                     <div class="remarks">
-                                                                        <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                                           a specific <code>class</code> value.</p>
-                                                                     </div>
                                                                   </details>
                                                                </div>
                                                             </div>
@@ -18268,6 +18707,19 @@ The following is the XML format reference for this model, which is organized hie
                                                             </div>
                                                             <div class="body">
                                                                <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                                               <details class="properties elements" open="open">
+                                                                  <summary>Element (0+)</summary>
+                                                                  <div class="model-entry definition field">
+                                                                     <div class="instance-header">
+                                                                        <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/prop/remarks/_VALUE" class="toc7 name">(unwrapped)</p>
+                                                                        <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                                        <p class="occurrence">[0 to ∞]</p>
+                                                                     </div>
+                                                                     <div class="body">
+                                                                        <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                                     </div>
+                                                                  </div>
+                                                               </details>
                                                             </div>
                                                          </div>
                                                       </details>
@@ -18320,15 +18772,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                <div class="remarks-group usa-prose">
                                                                   <details open="open">
                                                                      <summary class="subhead">Remarks</summary>
-                                                                     <div class="remarks">
-                                                                        <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
-                                                                           that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
-                                                                        <p>If a local reference using a fragment is used, this will be indicated by a fragment
-                                                                           "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
-                                                                        <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
-                                                                           resource. A relative URI will be resolved relative to the location of the document
-                                                                           containing the link.</p>
-                                                                     </div>
                                                                      <div class="remarks">
                                                                         <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
                                                                            that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
@@ -18394,7 +18837,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
                                                                <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/link/text" class="toc7 name">text</p>
-                                                               <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                                               <p class="type" id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                                                <p class="occurrence">[0 or 1]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/statement/by-components/by-component/links/text">Switch to JSON</a></div>
                                                                <p class="formal-name">Link Text</p>
@@ -18412,7 +18855,7 @@ The following is the XML format reference for this model, which is organized hie
                                                       <h6 id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/set-parameter" class="toc6 name">set-parameter</h6>
                                                       <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-ssp/by-component/set-parameter">(global definition)</a></p>
                                                       <p class="occurrence">[0 to ∞]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/statement/by-components/by-component/parameter-settings/set-parameter">Switch to JSON</a></div>
+                                                      <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/statement/by-components/by-component/parameter-settings">Switch to JSON</a></div>
                                                       <p class="formal-name">Set Parameter Value</p>
                                                    </div>
                                                    <div class="body">
@@ -18438,7 +18881,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
                                                                <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/set-parameter/value" class="toc7 name">value</p>
-                                                               <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                                               <p class="type" id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/set-parameter/value/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
                                                                <p class="occurrence">[1 to ∞]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/statement/by-components/by-component/parameter-settings/set-parameter/values">Switch to JSON</a></div>
                                                                <p class="formal-name">Parameter Value</p>
@@ -18457,6 +18900,19 @@ The following is the XML format reference for this model, which is organized hie
                                                             </div>
                                                             <div class="body">
                                                                <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                                               <details class="properties elements" open="open">
+                                                                  <summary>Element (0+)</summary>
+                                                                  <div class="model-entry definition field">
+                                                                     <div class="instance-header">
+                                                                        <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/set-parameter/remarks/_VALUE" class="toc7 name">(unwrapped)</p>
+                                                                        <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                                        <p class="occurrence">[0 to ∞]</p>
+                                                                     </div>
+                                                                     <div class="body">
+                                                                        <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                                     </div>
+                                                                  </div>
+                                                               </details>
                                                             </div>
                                                          </div>
                                                       </details>
@@ -18475,7 +18931,7 @@ The following is the XML format reference for this model, which is organized hie
                                                       <div class="remarks-group usa-prose">
                                                          <details open="open">
                                                             <summary class="subhead">Remarks</summary>
-                                                            <div class="remarks in-use">
+                                                            <div class="remarks">
                                                                <p>The <code>implementation-status</code> is used to qualify the <code>status</code> value to indicate the degree to which the control is implemented.</p>
                                                             </div>
                                                          </details>
@@ -18526,6 +18982,19 @@ The following is the XML format reference for this model, which is organized hie
                                                             </div>
                                                             <div class="body">
                                                                <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                                               <details class="properties elements" open="open">
+                                                                  <summary>Element (0+)</summary>
+                                                                  <div class="model-entry definition field">
+                                                                     <div class="instance-header">
+                                                                        <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/implementation-status/remarks/_VALUE" class="toc7 name">(unwrapped)</p>
+                                                                        <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                                        <p class="occurrence">[0 to ∞]</p>
+                                                                     </div>
+                                                                     <div class="body">
+                                                                        <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                                     </div>
+                                                                  </div>
+                                                               </details>
                                                             </div>
                                                          </div>
                                                       </details>
@@ -18566,6 +19035,19 @@ The following is the XML format reference for this model, which is organized hie
                                                             <div class="body">
                                                                <p class="description"><span class="usa-tag">Description</span> An implementation statement that describes the aspects of the control or control
                                                                   statement implementation that can be available to another system leveraging this system.</p>
+                                                               <details class="properties elements" open="open">
+                                                                  <summary>Element (0+)</summary>
+                                                                  <div class="model-entry definition assembly">
+                                                                     <div class="instance-header">
+                                                                        <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/export/description/_VALUE" class="toc7 name">(unwrapped)</p>
+                                                                        <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                                        <p class="occurrence">[0 to ∞]</p>
+                                                                     </div>
+                                                                     <div class="body">
+                                                                        <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                                     </div>
+                                                                  </div>
+                                                               </details>
                                                             </div>
                                                          </div>
                                                          <div class="model-entry definition assembly">
@@ -18661,14 +19143,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                                     to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
                                                                                  <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                                               </div>
-                                                                              <div class="remarks">
-                                                                                 <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
-                                                                                    names and associated values used in a property. This allows the semantics associated
-                                                                                    with a given name/value pair to be defined on an organization-by-organization basis.</p>
-                                                                                 <p>An organization MUST use a URI that they have control over. e.g., a domain registered
-                                                                                    to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
-                                                                                 <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
-                                                                              </div>
                                                                            </details>
                                                                         </div>
                                                                      </div>
@@ -18703,10 +19177,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                                  <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                                     a specific <code>class</code> value.</p>
                                                                               </div>
-                                                                              <div class="remarks">
-                                                                                 <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                                                    a specific <code>class</code> value.</p>
-                                                                              </div>
                                                                            </details>
                                                                         </div>
                                                                      </div>
@@ -18724,6 +19194,19 @@ The following is the XML format reference for this model, which is organized hie
                                                                      </div>
                                                                      <div class="body">
                                                                         <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                                                        <details class="properties elements" open="open">
+                                                                           <summary>Element (0+)</summary>
+                                                                           <div class="model-entry definition field">
+                                                                              <div class="instance-header">
+                                                                                 <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/export/prop/remarks/_VALUE" class="toc8 name">(unwrapped)</p>
+                                                                                 <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                                                 <p class="occurrence">[0 to ∞]</p>
+                                                                              </div>
+                                                                              <div class="body">
+                                                                                 <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                                              </div>
+                                                                           </div>
+                                                                        </details>
                                                                      </div>
                                                                   </div>
                                                                </details>
@@ -18776,15 +19259,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                         <div class="remarks-group usa-prose">
                                                                            <details open="open">
                                                                               <summary class="subhead">Remarks</summary>
-                                                                              <div class="remarks">
-                                                                                 <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
-                                                                                    that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
-                                                                                 <p>If a local reference using a fragment is used, this will be indicated by a fragment
-                                                                                    "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
-                                                                                 <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
-                                                                                    resource. A relative URI will be resolved relative to the location of the document
-                                                                                    containing the link.</p>
-                                                                              </div>
                                                                               <div class="remarks">
                                                                                  <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
                                                                                     that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
@@ -18850,7 +19324,7 @@ The following is the XML format reference for this model, which is organized hie
                                                                   <div class="model-entry definition assembly">
                                                                      <div class="instance-header">
                                                                         <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/export/link/text" class="toc8 name">text</p>
-                                                                        <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                                                        <p class="type" id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/export/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                                                         <p class="occurrence">[0 or 1]</p>
                                                                         <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/statement/by-components/by-component/export/links/text">Switch to JSON</a></div>
                                                                         <p class="formal-name">Link Text</p>
@@ -18903,6 +19377,19 @@ The following is the XML format reference for this model, which is organized hie
                                                                      <div class="body">
                                                                         <p class="description"><span class="usa-tag">Description</span> An implementation statement that describes the aspects of the control or control
                                                                            statement implementation that can be provided to another system leveraging this system.</p>
+                                                                        <details class="properties elements" open="open">
+                                                                           <summary>Element (0+)</summary>
+                                                                           <div class="model-entry definition assembly">
+                                                                              <div class="instance-header">
+                                                                                 <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/export/provided/description/_VALUE" class="toc8 name">(unwrapped)</p>
+                                                                                 <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                                                 <p class="occurrence">[0 to ∞]</p>
+                                                                              </div>
+                                                                              <div class="body">
+                                                                                 <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                                              </div>
+                                                                           </div>
+                                                                        </details>
                                                                      </div>
                                                                   </div>
                                                                   <div class="model-entry definition assembly">
@@ -18998,14 +19485,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                                              to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
                                                                                           <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                                                        </div>
-                                                                                       <div class="remarks">
-                                                                                          <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
-                                                                                             names and associated values used in a property. This allows the semantics associated
-                                                                                             with a given name/value pair to be defined on an organization-by-organization basis.</p>
-                                                                                          <p>An organization MUST use a URI that they have control over. e.g., a domain registered
-                                                                                             to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
-                                                                                          <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
-                                                                                       </div>
                                                                                     </details>
                                                                                  </div>
                                                                               </div>
@@ -19040,10 +19519,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                                           <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                                              a specific <code>class</code> value.</p>
                                                                                        </div>
-                                                                                       <div class="remarks">
-                                                                                          <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                                                             a specific <code>class</code> value.</p>
-                                                                                       </div>
                                                                                     </details>
                                                                                  </div>
                                                                               </div>
@@ -19061,6 +19536,19 @@ The following is the XML format reference for this model, which is organized hie
                                                                               </div>
                                                                               <div class="body">
                                                                                  <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                                                                 <details class="properties elements" open="open">
+                                                                                    <summary>Element (0+)</summary>
+                                                                                    <div class="model-entry definition field">
+                                                                                       <div class="instance-header">
+                                                                                          <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/export/provided/prop/remarks/_VALUE" class="toc9 name">(unwrapped)</p>
+                                                                                          <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                                                          <p class="occurrence">[0 to ∞]</p>
+                                                                                       </div>
+                                                                                       <div class="body">
+                                                                                          <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                                                       </div>
+                                                                                    </div>
+                                                                                 </details>
                                                                               </div>
                                                                            </div>
                                                                         </details>
@@ -19113,15 +19601,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                                  <div class="remarks-group usa-prose">
                                                                                     <details open="open">
                                                                                        <summary class="subhead">Remarks</summary>
-                                                                                       <div class="remarks">
-                                                                                          <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
-                                                                                             that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
-                                                                                          <p>If a local reference using a fragment is used, this will be indicated by a fragment
-                                                                                             "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
-                                                                                          <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
-                                                                                             resource. A relative URI will be resolved relative to the location of the document
-                                                                                             containing the link.</p>
-                                                                                       </div>
                                                                                        <div class="remarks">
                                                                                           <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
                                                                                              that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
@@ -19187,7 +19666,7 @@ The following is the XML format reference for this model, which is organized hie
                                                                            <div class="model-entry definition assembly">
                                                                               <div class="instance-header">
                                                                                  <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/export/provided/link/text" class="toc9 name">text</p>
-                                                                                 <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                                                                 <p class="type" id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/export/provided/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                                                                  <p class="occurrence">[0 or 1]</p>
                                                                                  <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/statement/by-components/by-component/export/provided/links/text">Switch to JSON</a></div>
                                                                                  <p class="formal-name">Link Text</p>
@@ -19205,7 +19684,7 @@ The following is the XML format reference for this model, which is organized hie
                                                                         <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/export/provided/responsible-role" class="toc8 name">responsible-role</p>
                                                                         <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-ssp/by-component/export/provided/responsible-role">(global definition)</a></p>
                                                                         <p class="occurrence">[0 to ∞]</p>
-                                                                        <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/statement/by-components/by-component/export/provided/responsible-roles/responsible-role">Switch to JSON</a></div>
+                                                                        <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/statement/by-components/by-component/export/provided/responsible-roles">Switch to JSON</a></div>
                                                                         <p class="formal-name">Responsible Role</p>
                                                                      </div>
                                                                      <div class="body">
@@ -19321,14 +19800,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                                                       to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
                                                                                                    <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                                                                 </div>
-                                                                                                <div class="remarks">
-                                                                                                   <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
-                                                                                                      names and associated values used in a property. This allows the semantics associated
-                                                                                                      with a given name/value pair to be defined on an organization-by-organization basis.</p>
-                                                                                                   <p>An organization MUST use a URI that they have control over. e.g., a domain registered
-                                                                                                      to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
-                                                                                                   <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
-                                                                                                </div>
                                                                                              </details>
                                                                                           </div>
                                                                                        </div>
@@ -19363,10 +19834,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                                                    <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                                                       a specific <code>class</code> value.</p>
                                                                                                 </div>
-                                                                                                <div class="remarks">
-                                                                                                   <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                                                                      a specific <code>class</code> value.</p>
-                                                                                                </div>
                                                                                              </details>
                                                                                           </div>
                                                                                        </div>
@@ -19384,6 +19851,19 @@ The following is the XML format reference for this model, which is organized hie
                                                                                        </div>
                                                                                        <div class="body">
                                                                                           <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                                                                          <details class="properties elements" open="open">
+                                                                                             <summary>Element (0+)</summary>
+                                                                                             <div class="model-entry definition field">
+                                                                                                <div class="instance-header">
+                                                                                                   <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/export/provided/responsible-role/prop/remarks/_VALUE" class="toc10 name">(unwrapped)</p>
+                                                                                                   <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                                                                   <p class="occurrence">[0 to ∞]</p>
+                                                                                                </div>
+                                                                                                <div class="body">
+                                                                                                   <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                                                                </div>
+                                                                                             </div>
+                                                                                          </details>
                                                                                        </div>
                                                                                     </div>
                                                                                  </details>
@@ -19436,15 +19916,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                                           <div class="remarks-group usa-prose">
                                                                                              <details open="open">
                                                                                                 <summary class="subhead">Remarks</summary>
-                                                                                                <div class="remarks">
-                                                                                                   <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
-                                                                                                      that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
-                                                                                                   <p>If a local reference using a fragment is used, this will be indicated by a fragment
-                                                                                                      "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
-                                                                                                   <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
-                                                                                                      resource. A relative URI will be resolved relative to the location of the document
-                                                                                                      containing the link.</p>
-                                                                                                </div>
                                                                                                 <div class="remarks">
                                                                                                    <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
                                                                                                       that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
@@ -19510,7 +19981,7 @@ The following is the XML format reference for this model, which is organized hie
                                                                                     <div class="model-entry definition assembly">
                                                                                        <div class="instance-header">
                                                                                           <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/export/provided/responsible-role/link/text" class="toc10 name">text</p>
-                                                                                          <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                                                                          <p class="type" id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/export/provided/responsible-role/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                                                                           <p class="occurrence">[0 or 1]</p>
                                                                                           <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/statement/by-components/by-component/export/provided/responsible-roles/responsible-role/links/text">Switch to JSON</a></div>
                                                                                           <p class="formal-name">Link Text</p>
@@ -19526,7 +19997,7 @@ The following is the XML format reference for this model, which is organized hie
                                                                            <div class="model-entry definition assembly">
                                                                               <div class="instance-header">
                                                                                  <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/export/provided/responsible-role/party-uuid" class="toc9 name">party-uuid</p>
-                                                                                 <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                                                                 <p class="type" id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/export/provided/responsible-role/party-uuid/_VALUE"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                                                                  <p class="occurrence">[0 to ∞]</p>
                                                                                  <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/statement/by-components/by-component/export/provided/responsible-roles/responsible-role/party-uuids">Switch to JSON</a></div>
                                                                                  <p class="formal-name">Party Reference</p>
@@ -19551,6 +20022,19 @@ The following is the XML format reference for this model, which is organized hie
                                                                               </div>
                                                                               <div class="body">
                                                                                  <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                                                                 <details class="properties elements" open="open">
+                                                                                    <summary>Element (0+)</summary>
+                                                                                    <div class="model-entry definition field">
+                                                                                       <div class="instance-header">
+                                                                                          <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/export/provided/responsible-role/remarks/_VALUE" class="toc9 name">(unwrapped)</p>
+                                                                                          <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                                                          <p class="occurrence">[0 to ∞]</p>
+                                                                                       </div>
+                                                                                       <div class="body">
+                                                                                          <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                                                       </div>
+                                                                                    </div>
+                                                                                 </details>
                                                                               </div>
                                                                            </div>
                                                                         </details>
@@ -19566,6 +20050,19 @@ The following is the XML format reference for this model, which is organized hie
                                                                      </div>
                                                                      <div class="body">
                                                                         <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                                                        <details class="properties elements" open="open">
+                                                                           <summary>Element (0+)</summary>
+                                                                           <div class="model-entry definition field">
+                                                                              <div class="instance-header">
+                                                                                 <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/export/provided/remarks/_VALUE" class="toc8 name">(unwrapped)</p>
+                                                                                 <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                                                 <p class="occurrence">[0 to ∞]</p>
+                                                                              </div>
+                                                                              <div class="body">
+                                                                                 <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                                              </div>
+                                                                           </div>
+                                                                        </details>
                                                                      </div>
                                                                   </div>
                                                                </details>
@@ -19624,6 +20121,19 @@ The following is the XML format reference for this model, which is organized hie
                                                                         <p class="description"><span class="usa-tag">Description</span> An implementation statement that describes the aspects of the control or control
                                                                            statement implementation that a leveraging system must implement to satisfy the control
                                                                            provided by a leveraged system.</p>
+                                                                        <details class="properties elements" open="open">
+                                                                           <summary>Element (0+)</summary>
+                                                                           <div class="model-entry definition assembly">
+                                                                              <div class="instance-header">
+                                                                                 <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/export/responsibility/description/_VALUE" class="toc8 name">(unwrapped)</p>
+                                                                                 <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                                                 <p class="occurrence">[0 to ∞]</p>
+                                                                              </div>
+                                                                              <div class="body">
+                                                                                 <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                                              </div>
+                                                                           </div>
+                                                                        </details>
                                                                      </div>
                                                                   </div>
                                                                   <div class="model-entry definition assembly">
@@ -19719,14 +20229,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                                              to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
                                                                                           <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                                                        </div>
-                                                                                       <div class="remarks">
-                                                                                          <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
-                                                                                             names and associated values used in a property. This allows the semantics associated
-                                                                                             with a given name/value pair to be defined on an organization-by-organization basis.</p>
-                                                                                          <p>An organization MUST use a URI that they have control over. e.g., a domain registered
-                                                                                             to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
-                                                                                          <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
-                                                                                       </div>
                                                                                     </details>
                                                                                  </div>
                                                                               </div>
@@ -19761,10 +20263,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                                           <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                                              a specific <code>class</code> value.</p>
                                                                                        </div>
-                                                                                       <div class="remarks">
-                                                                                          <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                                                             a specific <code>class</code> value.</p>
-                                                                                       </div>
                                                                                     </details>
                                                                                  </div>
                                                                               </div>
@@ -19782,6 +20280,19 @@ The following is the XML format reference for this model, which is organized hie
                                                                               </div>
                                                                               <div class="body">
                                                                                  <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                                                                 <details class="properties elements" open="open">
+                                                                                    <summary>Element (0+)</summary>
+                                                                                    <div class="model-entry definition field">
+                                                                                       <div class="instance-header">
+                                                                                          <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/export/responsibility/prop/remarks/_VALUE" class="toc9 name">(unwrapped)</p>
+                                                                                          <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                                                          <p class="occurrence">[0 to ∞]</p>
+                                                                                       </div>
+                                                                                       <div class="body">
+                                                                                          <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                                                       </div>
+                                                                                    </div>
+                                                                                 </details>
                                                                               </div>
                                                                            </div>
                                                                         </details>
@@ -19834,15 +20345,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                                  <div class="remarks-group usa-prose">
                                                                                     <details open="open">
                                                                                        <summary class="subhead">Remarks</summary>
-                                                                                       <div class="remarks">
-                                                                                          <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
-                                                                                             that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
-                                                                                          <p>If a local reference using a fragment is used, this will be indicated by a fragment
-                                                                                             "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
-                                                                                          <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
-                                                                                             resource. A relative URI will be resolved relative to the location of the document
-                                                                                             containing the link.</p>
-                                                                                       </div>
                                                                                        <div class="remarks">
                                                                                           <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
                                                                                              that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
@@ -19908,7 +20410,7 @@ The following is the XML format reference for this model, which is organized hie
                                                                            <div class="model-entry definition assembly">
                                                                               <div class="instance-header">
                                                                                  <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/export/responsibility/link/text" class="toc9 name">text</p>
-                                                                                 <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                                                                 <p class="type" id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/export/responsibility/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                                                                  <p class="occurrence">[0 or 1]</p>
                                                                                  <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/statement/by-components/by-component/export/responsibilities/links/text">Switch to JSON</a></div>
                                                                                  <p class="formal-name">Link Text</p>
@@ -19926,7 +20428,7 @@ The following is the XML format reference for this model, which is organized hie
                                                                         <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/export/responsibility/responsible-role" class="toc8 name">responsible-role</p>
                                                                         <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-ssp/by-component/export/responsibility/responsible-role">(global definition)</a></p>
                                                                         <p class="occurrence">[0 to ∞]</p>
-                                                                        <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/statement/by-components/by-component/export/responsibilities/responsible-roles/responsible-role">Switch to JSON</a></div>
+                                                                        <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/statement/by-components/by-component/export/responsibilities/responsible-roles">Switch to JSON</a></div>
                                                                         <p class="formal-name">Responsible Role</p>
                                                                      </div>
                                                                      <div class="body">
@@ -19935,7 +20437,7 @@ The following is the XML format reference for this model, which is organized hie
                                                                         <div class="remarks-group usa-prose">
                                                                            <details open="open">
                                                                               <summary class="subhead">Remarks</summary>
-                                                                              <div class="remarks in-use">
+                                                                              <div class="remarks">
                                                                                  <p>A role defined at the by-component level takes precedence over the same role defined
                                                                                     on the parent implemented-requirement or on the referenced component. </p>
                                                                               </div>
@@ -20051,14 +20553,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                                                       to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
                                                                                                    <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                                                                 </div>
-                                                                                                <div class="remarks">
-                                                                                                   <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
-                                                                                                      names and associated values used in a property. This allows the semantics associated
-                                                                                                      with a given name/value pair to be defined on an organization-by-organization basis.</p>
-                                                                                                   <p>An organization MUST use a URI that they have control over. e.g., a domain registered
-                                                                                                      to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
-                                                                                                   <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
-                                                                                                </div>
                                                                                              </details>
                                                                                           </div>
                                                                                        </div>
@@ -20093,10 +20587,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                                                    <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                                                       a specific <code>class</code> value.</p>
                                                                                                 </div>
-                                                                                                <div class="remarks">
-                                                                                                   <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                                                                      a specific <code>class</code> value.</p>
-                                                                                                </div>
                                                                                              </details>
                                                                                           </div>
                                                                                        </div>
@@ -20114,6 +20604,19 @@ The following is the XML format reference for this model, which is organized hie
                                                                                        </div>
                                                                                        <div class="body">
                                                                                           <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                                                                          <details class="properties elements" open="open">
+                                                                                             <summary>Element (0+)</summary>
+                                                                                             <div class="model-entry definition field">
+                                                                                                <div class="instance-header">
+                                                                                                   <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/export/responsibility/responsible-role/prop/remarks/_VALUE" class="toc10 name">(unwrapped)</p>
+                                                                                                   <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                                                                   <p class="occurrence">[0 to ∞]</p>
+                                                                                                </div>
+                                                                                                <div class="body">
+                                                                                                   <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                                                                </div>
+                                                                                             </div>
+                                                                                          </details>
                                                                                        </div>
                                                                                     </div>
                                                                                  </details>
@@ -20166,15 +20669,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                                           <div class="remarks-group usa-prose">
                                                                                              <details open="open">
                                                                                                 <summary class="subhead">Remarks</summary>
-                                                                                                <div class="remarks">
-                                                                                                   <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
-                                                                                                      that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
-                                                                                                   <p>If a local reference using a fragment is used, this will be indicated by a fragment
-                                                                                                      "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
-                                                                                                   <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
-                                                                                                      resource. A relative URI will be resolved relative to the location of the document
-                                                                                                      containing the link.</p>
-                                                                                                </div>
                                                                                                 <div class="remarks">
                                                                                                    <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
                                                                                                       that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
@@ -20240,7 +20734,7 @@ The following is the XML format reference for this model, which is organized hie
                                                                                     <div class="model-entry definition assembly">
                                                                                        <div class="instance-header">
                                                                                           <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/export/responsibility/responsible-role/link/text" class="toc10 name">text</p>
-                                                                                          <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                                                                          <p class="type" id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/export/responsibility/responsible-role/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                                                                           <p class="occurrence">[0 or 1]</p>
                                                                                           <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/statement/by-components/by-component/export/responsibilities/responsible-roles/responsible-role/links/text">Switch to JSON</a></div>
                                                                                           <p class="formal-name">Link Text</p>
@@ -20256,7 +20750,7 @@ The following is the XML format reference for this model, which is organized hie
                                                                            <div class="model-entry definition assembly">
                                                                               <div class="instance-header">
                                                                                  <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/export/responsibility/responsible-role/party-uuid" class="toc9 name">party-uuid</p>
-                                                                                 <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                                                                 <p class="type" id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/export/responsibility/responsible-role/party-uuid/_VALUE"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                                                                  <p class="occurrence">[0 to ∞]</p>
                                                                                  <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/statement/by-components/by-component/export/responsibilities/responsible-roles/responsible-role/party-uuids">Switch to JSON</a></div>
                                                                                  <p class="formal-name">Party Reference</p>
@@ -20281,6 +20775,19 @@ The following is the XML format reference for this model, which is organized hie
                                                                               </div>
                                                                               <div class="body">
                                                                                  <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                                                                 <details class="properties elements" open="open">
+                                                                                    <summary>Element (0+)</summary>
+                                                                                    <div class="model-entry definition field">
+                                                                                       <div class="instance-header">
+                                                                                          <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/export/responsibility/responsible-role/remarks/_VALUE" class="toc9 name">(unwrapped)</p>
+                                                                                          <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                                                          <p class="occurrence">[0 to ∞]</p>
+                                                                                       </div>
+                                                                                       <div class="body">
+                                                                                          <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                                                       </div>
+                                                                                    </div>
+                                                                                 </details>
                                                                               </div>
                                                                            </div>
                                                                         </details>
@@ -20296,6 +20803,19 @@ The following is the XML format reference for this model, which is organized hie
                                                                      </div>
                                                                      <div class="body">
                                                                         <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                                                        <details class="properties elements" open="open">
+                                                                           <summary>Element (0+)</summary>
+                                                                           <div class="model-entry definition field">
+                                                                              <div class="instance-header">
+                                                                                 <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/export/responsibility/remarks/_VALUE" class="toc8 name">(unwrapped)</p>
+                                                                                 <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                                                 <p class="occurrence">[0 to ∞]</p>
+                                                                              </div>
+                                                                              <div class="body">
+                                                                                 <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                                              </div>
+                                                                           </div>
+                                                                        </details>
                                                                      </div>
                                                                   </div>
                                                                </details>
@@ -20311,6 +20831,19 @@ The following is the XML format reference for this model, which is organized hie
                                                             </div>
                                                             <div class="body">
                                                                <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                                               <details class="properties elements" open="open">
+                                                                  <summary>Element (0+)</summary>
+                                                                  <div class="model-entry definition field">
+                                                                     <div class="instance-header">
+                                                                        <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/export/remarks/_VALUE" class="toc7 name">(unwrapped)</p>
+                                                                        <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                                        <p class="occurrence">[0 to ∞]</p>
+                                                                     </div>
+                                                                     <div class="body">
+                                                                        <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                                     </div>
+                                                                  </div>
+                                                               </details>
                                                             </div>
                                                          </div>
                                                       </details>
@@ -20368,6 +20901,19 @@ The following is the XML format reference for this model, which is organized hie
                                                             <div class="body">
                                                                <p class="description"><span class="usa-tag">Description</span> An implementation statement that describes the aspects of a control or control statement
                                                                   implementation that a leveraging system is inheriting from a leveraged system.</p>
+                                                               <details class="properties elements" open="open">
+                                                                  <summary>Element (0+)</summary>
+                                                                  <div class="model-entry definition assembly">
+                                                                     <div class="instance-header">
+                                                                        <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/inherited/description/_VALUE" class="toc7 name">(unwrapped)</p>
+                                                                        <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                                        <p class="occurrence">[0 to ∞]</p>
+                                                                     </div>
+                                                                     <div class="body">
+                                                                        <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                                     </div>
+                                                                  </div>
+                                                               </details>
                                                             </div>
                                                          </div>
                                                          <div class="model-entry definition assembly">
@@ -20463,14 +21009,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                                     to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
                                                                                  <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                                               </div>
-                                                                              <div class="remarks">
-                                                                                 <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
-                                                                                    names and associated values used in a property. This allows the semantics associated
-                                                                                    with a given name/value pair to be defined on an organization-by-organization basis.</p>
-                                                                                 <p>An organization MUST use a URI that they have control over. e.g., a domain registered
-                                                                                    to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
-                                                                                 <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
-                                                                              </div>
                                                                            </details>
                                                                         </div>
                                                                      </div>
@@ -20505,10 +21043,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                                  <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                                     a specific <code>class</code> value.</p>
                                                                               </div>
-                                                                              <div class="remarks">
-                                                                                 <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                                                    a specific <code>class</code> value.</p>
-                                                                              </div>
                                                                            </details>
                                                                         </div>
                                                                      </div>
@@ -20526,6 +21060,19 @@ The following is the XML format reference for this model, which is organized hie
                                                                      </div>
                                                                      <div class="body">
                                                                         <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                                                        <details class="properties elements" open="open">
+                                                                           <summary>Element (0+)</summary>
+                                                                           <div class="model-entry definition field">
+                                                                              <div class="instance-header">
+                                                                                 <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/inherited/prop/remarks/_VALUE" class="toc8 name">(unwrapped)</p>
+                                                                                 <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                                                 <p class="occurrence">[0 to ∞]</p>
+                                                                              </div>
+                                                                              <div class="body">
+                                                                                 <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                                              </div>
+                                                                           </div>
+                                                                        </details>
                                                                      </div>
                                                                   </div>
                                                                </details>
@@ -20578,15 +21125,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                         <div class="remarks-group usa-prose">
                                                                            <details open="open">
                                                                               <summary class="subhead">Remarks</summary>
-                                                                              <div class="remarks">
-                                                                                 <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
-                                                                                    that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
-                                                                                 <p>If a local reference using a fragment is used, this will be indicated by a fragment
-                                                                                    "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
-                                                                                 <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
-                                                                                    resource. A relative URI will be resolved relative to the location of the document
-                                                                                    containing the link.</p>
-                                                                              </div>
                                                                               <div class="remarks">
                                                                                  <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
                                                                                     that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
@@ -20652,7 +21190,7 @@ The following is the XML format reference for this model, which is organized hie
                                                                   <div class="model-entry definition assembly">
                                                                      <div class="instance-header">
                                                                         <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/inherited/link/text" class="toc8 name">text</p>
-                                                                        <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                                                        <p class="type" id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/inherited/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                                                         <p class="occurrence">[0 or 1]</p>
                                                                         <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/statement/by-components/by-component/inherited/links/text">Switch to JSON</a></div>
                                                                         <p class="formal-name">Link Text</p>
@@ -20670,7 +21208,7 @@ The following is the XML format reference for this model, which is organized hie
                                                                <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/inherited/responsible-role" class="toc7 name">responsible-role</p>
                                                                <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-ssp/by-component/inherited/responsible-role">(global definition)</a></p>
                                                                <p class="occurrence">[0 to ∞]</p>
-                                                               <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/statement/by-components/by-component/inherited/responsible-roles/responsible-role">Switch to JSON</a></div>
+                                                               <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/statement/by-components/by-component/inherited/responsible-roles">Switch to JSON</a></div>
                                                                <p class="formal-name">Responsible Role</p>
                                                             </div>
                                                             <div class="body">
@@ -20786,14 +21324,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                                              to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
                                                                                           <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                                                        </div>
-                                                                                       <div class="remarks">
-                                                                                          <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
-                                                                                             names and associated values used in a property. This allows the semantics associated
-                                                                                             with a given name/value pair to be defined on an organization-by-organization basis.</p>
-                                                                                          <p>An organization MUST use a URI that they have control over. e.g., a domain registered
-                                                                                             to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
-                                                                                          <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
-                                                                                       </div>
                                                                                     </details>
                                                                                  </div>
                                                                               </div>
@@ -20828,10 +21358,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                                           <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                                              a specific <code>class</code> value.</p>
                                                                                        </div>
-                                                                                       <div class="remarks">
-                                                                                          <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                                                             a specific <code>class</code> value.</p>
-                                                                                       </div>
                                                                                     </details>
                                                                                  </div>
                                                                               </div>
@@ -20849,6 +21375,19 @@ The following is the XML format reference for this model, which is organized hie
                                                                               </div>
                                                                               <div class="body">
                                                                                  <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                                                                 <details class="properties elements" open="open">
+                                                                                    <summary>Element (0+)</summary>
+                                                                                    <div class="model-entry definition field">
+                                                                                       <div class="instance-header">
+                                                                                          <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/inherited/responsible-role/prop/remarks/_VALUE" class="toc9 name">(unwrapped)</p>
+                                                                                          <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                                                          <p class="occurrence">[0 to ∞]</p>
+                                                                                       </div>
+                                                                                       <div class="body">
+                                                                                          <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                                                       </div>
+                                                                                    </div>
+                                                                                 </details>
                                                                               </div>
                                                                            </div>
                                                                         </details>
@@ -20901,15 +21440,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                                  <div class="remarks-group usa-prose">
                                                                                     <details open="open">
                                                                                        <summary class="subhead">Remarks</summary>
-                                                                                       <div class="remarks">
-                                                                                          <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
-                                                                                             that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
-                                                                                          <p>If a local reference using a fragment is used, this will be indicated by a fragment
-                                                                                             "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
-                                                                                          <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
-                                                                                             resource. A relative URI will be resolved relative to the location of the document
-                                                                                             containing the link.</p>
-                                                                                       </div>
                                                                                        <div class="remarks">
                                                                                           <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
                                                                                              that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
@@ -20975,7 +21505,7 @@ The following is the XML format reference for this model, which is organized hie
                                                                            <div class="model-entry definition assembly">
                                                                               <div class="instance-header">
                                                                                  <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/inherited/responsible-role/link/text" class="toc9 name">text</p>
-                                                                                 <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                                                                 <p class="type" id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/inherited/responsible-role/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                                                                  <p class="occurrence">[0 or 1]</p>
                                                                                  <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/statement/by-components/by-component/inherited/responsible-roles/responsible-role/links/text">Switch to JSON</a></div>
                                                                                  <p class="formal-name">Link Text</p>
@@ -20991,7 +21521,7 @@ The following is the XML format reference for this model, which is organized hie
                                                                   <div class="model-entry definition assembly">
                                                                      <div class="instance-header">
                                                                         <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/inherited/responsible-role/party-uuid" class="toc8 name">party-uuid</p>
-                                                                        <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                                                        <p class="type" id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/inherited/responsible-role/party-uuid/_VALUE"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                                                         <p class="occurrence">[0 to ∞]</p>
                                                                         <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/statement/by-components/by-component/inherited/responsible-roles/responsible-role/party-uuids">Switch to JSON</a></div>
                                                                         <p class="formal-name">Party Reference</p>
@@ -21016,6 +21546,19 @@ The following is the XML format reference for this model, which is organized hie
                                                                      </div>
                                                                      <div class="body">
                                                                         <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                                                        <details class="properties elements" open="open">
+                                                                           <summary>Element (0+)</summary>
+                                                                           <div class="model-entry definition field">
+                                                                              <div class="instance-header">
+                                                                                 <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/inherited/responsible-role/remarks/_VALUE" class="toc8 name">(unwrapped)</p>
+                                                                                 <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                                                 <p class="occurrence">[0 to ∞]</p>
+                                                                              </div>
+                                                                              <div class="body">
+                                                                                 <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                                              </div>
+                                                                           </div>
+                                                                        </details>
                                                                      </div>
                                                                   </div>
                                                                </details>
@@ -21077,6 +21620,19 @@ The following is the XML format reference for this model, which is organized hie
                                                                <p class="description"><span class="usa-tag">Description</span> An implementation statement that describes the aspects of a control or control statement
                                                                   implementation that a leveraging system is implementing based on a requirement from
                                                                   a leveraged system.</p>
+                                                               <details class="properties elements" open="open">
+                                                                  <summary>Element (0+)</summary>
+                                                                  <div class="model-entry definition assembly">
+                                                                     <div class="instance-header">
+                                                                        <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/satisfied/description/_VALUE" class="toc7 name">(unwrapped)</p>
+                                                                        <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                                        <p class="occurrence">[0 to ∞]</p>
+                                                                     </div>
+                                                                     <div class="body">
+                                                                        <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                                     </div>
+                                                                  </div>
+                                                               </details>
                                                             </div>
                                                          </div>
                                                          <div class="model-entry definition assembly">
@@ -21172,14 +21728,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                                     to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
                                                                                  <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                                               </div>
-                                                                              <div class="remarks">
-                                                                                 <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
-                                                                                    names and associated values used in a property. This allows the semantics associated
-                                                                                    with a given name/value pair to be defined on an organization-by-organization basis.</p>
-                                                                                 <p>An organization MUST use a URI that they have control over. e.g., a domain registered
-                                                                                    to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
-                                                                                 <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
-                                                                              </div>
                                                                            </details>
                                                                         </div>
                                                                      </div>
@@ -21214,10 +21762,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                                  <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                                     a specific <code>class</code> value.</p>
                                                                               </div>
-                                                                              <div class="remarks">
-                                                                                 <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                                                    a specific <code>class</code> value.</p>
-                                                                              </div>
                                                                            </details>
                                                                         </div>
                                                                      </div>
@@ -21235,6 +21779,19 @@ The following is the XML format reference for this model, which is organized hie
                                                                      </div>
                                                                      <div class="body">
                                                                         <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                                                        <details class="properties elements" open="open">
+                                                                           <summary>Element (0+)</summary>
+                                                                           <div class="model-entry definition field">
+                                                                              <div class="instance-header">
+                                                                                 <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/satisfied/prop/remarks/_VALUE" class="toc8 name">(unwrapped)</p>
+                                                                                 <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                                                 <p class="occurrence">[0 to ∞]</p>
+                                                                              </div>
+                                                                              <div class="body">
+                                                                                 <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                                              </div>
+                                                                           </div>
+                                                                        </details>
                                                                      </div>
                                                                   </div>
                                                                </details>
@@ -21287,15 +21844,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                         <div class="remarks-group usa-prose">
                                                                            <details open="open">
                                                                               <summary class="subhead">Remarks</summary>
-                                                                              <div class="remarks">
-                                                                                 <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
-                                                                                    that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
-                                                                                 <p>If a local reference using a fragment is used, this will be indicated by a fragment
-                                                                                    "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
-                                                                                 <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
-                                                                                    resource. A relative URI will be resolved relative to the location of the document
-                                                                                    containing the link.</p>
-                                                                              </div>
                                                                               <div class="remarks">
                                                                                  <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
                                                                                     that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
@@ -21361,7 +21909,7 @@ The following is the XML format reference for this model, which is organized hie
                                                                   <div class="model-entry definition assembly">
                                                                      <div class="instance-header">
                                                                         <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/satisfied/link/text" class="toc8 name">text</p>
-                                                                        <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                                                        <p class="type" id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/satisfied/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                                                         <p class="occurrence">[0 or 1]</p>
                                                                         <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/statement/by-components/by-component/satisfied/links/text">Switch to JSON</a></div>
                                                                         <p class="formal-name">Link Text</p>
@@ -21379,7 +21927,7 @@ The following is the XML format reference for this model, which is organized hie
                                                                <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/satisfied/responsible-role" class="toc7 name">responsible-role</p>
                                                                <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-ssp/by-component/satisfied/responsible-role">(global definition)</a></p>
                                                                <p class="occurrence">[0 to ∞]</p>
-                                                               <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/statement/by-components/by-component/satisfied/responsible-roles/responsible-role">Switch to JSON</a></div>
+                                                               <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/statement/by-components/by-component/satisfied/responsible-roles">Switch to JSON</a></div>
                                                                <p class="formal-name">Responsible Role</p>
                                                             </div>
                                                             <div class="body">
@@ -21495,14 +22043,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                                              to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
                                                                                           <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                                                        </div>
-                                                                                       <div class="remarks">
-                                                                                          <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
-                                                                                             names and associated values used in a property. This allows the semantics associated
-                                                                                             with a given name/value pair to be defined on an organization-by-organization basis.</p>
-                                                                                          <p>An organization MUST use a URI that they have control over. e.g., a domain registered
-                                                                                             to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
-                                                                                          <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
-                                                                                       </div>
                                                                                     </details>
                                                                                  </div>
                                                                               </div>
@@ -21537,10 +22077,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                                           <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                                              a specific <code>class</code> value.</p>
                                                                                        </div>
-                                                                                       <div class="remarks">
-                                                                                          <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                                                             a specific <code>class</code> value.</p>
-                                                                                       </div>
                                                                                     </details>
                                                                                  </div>
                                                                               </div>
@@ -21558,6 +22094,19 @@ The following is the XML format reference for this model, which is organized hie
                                                                               </div>
                                                                               <div class="body">
                                                                                  <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                                                                 <details class="properties elements" open="open">
+                                                                                    <summary>Element (0+)</summary>
+                                                                                    <div class="model-entry definition field">
+                                                                                       <div class="instance-header">
+                                                                                          <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/satisfied/responsible-role/prop/remarks/_VALUE" class="toc9 name">(unwrapped)</p>
+                                                                                          <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                                                          <p class="occurrence">[0 to ∞]</p>
+                                                                                       </div>
+                                                                                       <div class="body">
+                                                                                          <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                                                       </div>
+                                                                                    </div>
+                                                                                 </details>
                                                                               </div>
                                                                            </div>
                                                                         </details>
@@ -21610,15 +22159,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                                  <div class="remarks-group usa-prose">
                                                                                     <details open="open">
                                                                                        <summary class="subhead">Remarks</summary>
-                                                                                       <div class="remarks">
-                                                                                          <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
-                                                                                             that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
-                                                                                          <p>If a local reference using a fragment is used, this will be indicated by a fragment
-                                                                                             "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
-                                                                                          <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
-                                                                                             resource. A relative URI will be resolved relative to the location of the document
-                                                                                             containing the link.</p>
-                                                                                       </div>
                                                                                        <div class="remarks">
                                                                                           <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
                                                                                              that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
@@ -21684,7 +22224,7 @@ The following is the XML format reference for this model, which is organized hie
                                                                            <div class="model-entry definition assembly">
                                                                               <div class="instance-header">
                                                                                  <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/satisfied/responsible-role/link/text" class="toc9 name">text</p>
-                                                                                 <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                                                                 <p class="type" id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/satisfied/responsible-role/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                                                                  <p class="occurrence">[0 or 1]</p>
                                                                                  <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/statement/by-components/by-component/satisfied/responsible-roles/responsible-role/links/text">Switch to JSON</a></div>
                                                                                  <p class="formal-name">Link Text</p>
@@ -21700,7 +22240,7 @@ The following is the XML format reference for this model, which is organized hie
                                                                   <div class="model-entry definition assembly">
                                                                      <div class="instance-header">
                                                                         <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/satisfied/responsible-role/party-uuid" class="toc8 name">party-uuid</p>
-                                                                        <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                                                        <p class="type" id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/satisfied/responsible-role/party-uuid/_VALUE"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                                                         <p class="occurrence">[0 to ∞]</p>
                                                                         <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/statement/by-components/by-component/satisfied/responsible-roles/responsible-role/party-uuids">Switch to JSON</a></div>
                                                                         <p class="formal-name">Party Reference</p>
@@ -21725,6 +22265,19 @@ The following is the XML format reference for this model, which is organized hie
                                                                      </div>
                                                                      <div class="body">
                                                                         <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                                                        <details class="properties elements" open="open">
+                                                                           <summary>Element (0+)</summary>
+                                                                           <div class="model-entry definition field">
+                                                                              <div class="instance-header">
+                                                                                 <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/satisfied/responsible-role/remarks/_VALUE" class="toc8 name">(unwrapped)</p>
+                                                                                 <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                                                 <p class="occurrence">[0 to ∞]</p>
+                                                                              </div>
+                                                                              <div class="body">
+                                                                                 <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                                              </div>
+                                                                           </div>
+                                                                        </details>
                                                                      </div>
                                                                   </div>
                                                                </details>
@@ -21740,6 +22293,19 @@ The following is the XML format reference for this model, which is organized hie
                                                             </div>
                                                             <div class="body">
                                                                <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                                               <details class="properties elements" open="open">
+                                                                  <summary>Element (0+)</summary>
+                                                                  <div class="model-entry definition field">
+                                                                     <div class="instance-header">
+                                                                        <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/satisfied/remarks/_VALUE" class="toc7 name">(unwrapped)</p>
+                                                                        <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                                        <p class="occurrence">[0 to ∞]</p>
+                                                                     </div>
+                                                                     <div class="body">
+                                                                        <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                                     </div>
+                                                                  </div>
+                                                               </details>
                                                             </div>
                                                          </div>
                                                       </details>
@@ -21750,7 +22316,7 @@ The following is the XML format reference for this model, which is organized hie
                                                       <h6 id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/responsible-role" class="toc6 name">responsible-role</h6>
                                                       <p class="type">element<br /> <a class="definition-link" href="../xml-definitions/#/assembly/oscal-ssp/by-component/responsible-role">(global definition)</a></p>
                                                       <p class="occurrence">[0 to ∞]</p>
-                                                      <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/statement/by-components/by-component/responsible-roles/responsible-role">Switch to JSON</a></div>
+                                                      <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/statement/by-components/by-component/responsible-roles">Switch to JSON</a></div>
                                                       <p class="formal-name">Responsible Role</p>
                                                    </div>
                                                    <div class="body">
@@ -21866,14 +22432,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                                     to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
                                                                                  <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                                               </div>
-                                                                              <div class="remarks">
-                                                                                 <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
-                                                                                    names and associated values used in a property. This allows the semantics associated
-                                                                                    with a given name/value pair to be defined on an organization-by-organization basis.</p>
-                                                                                 <p>An organization MUST use a URI that they have control over. e.g., a domain registered
-                                                                                    to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
-                                                                                 <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
-                                                                              </div>
                                                                            </details>
                                                                         </div>
                                                                      </div>
@@ -21908,10 +22466,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                                  <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                                     a specific <code>class</code> value.</p>
                                                                               </div>
-                                                                              <div class="remarks">
-                                                                                 <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                                                    a specific <code>class</code> value.</p>
-                                                                              </div>
                                                                            </details>
                                                                         </div>
                                                                      </div>
@@ -21929,6 +22483,19 @@ The following is the XML format reference for this model, which is organized hie
                                                                      </div>
                                                                      <div class="body">
                                                                         <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                                                        <details class="properties elements" open="open">
+                                                                           <summary>Element (0+)</summary>
+                                                                           <div class="model-entry definition field">
+                                                                              <div class="instance-header">
+                                                                                 <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/responsible-role/prop/remarks/_VALUE" class="toc8 name">(unwrapped)</p>
+                                                                                 <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                                                 <p class="occurrence">[0 to ∞]</p>
+                                                                              </div>
+                                                                              <div class="body">
+                                                                                 <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                                              </div>
+                                                                           </div>
+                                                                        </details>
                                                                      </div>
                                                                   </div>
                                                                </details>
@@ -21981,15 +22548,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                         <div class="remarks-group usa-prose">
                                                                            <details open="open">
                                                                               <summary class="subhead">Remarks</summary>
-                                                                              <div class="remarks">
-                                                                                 <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
-                                                                                    that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
-                                                                                 <p>If a local reference using a fragment is used, this will be indicated by a fragment
-                                                                                    "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
-                                                                                 <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
-                                                                                    resource. A relative URI will be resolved relative to the location of the document
-                                                                                    containing the link.</p>
-                                                                              </div>
                                                                               <div class="remarks">
                                                                                  <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
                                                                                     that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
@@ -22055,7 +22613,7 @@ The following is the XML format reference for this model, which is organized hie
                                                                   <div class="model-entry definition assembly">
                                                                      <div class="instance-header">
                                                                         <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/responsible-role/link/text" class="toc8 name">text</p>
-                                                                        <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                                                        <p class="type" id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/responsible-role/link/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                                                         <p class="occurrence">[0 or 1]</p>
                                                                         <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/statement/by-components/by-component/responsible-roles/responsible-role/links/text">Switch to JSON</a></div>
                                                                         <p class="formal-name">Link Text</p>
@@ -22071,7 +22629,7 @@ The following is the XML format reference for this model, which is organized hie
                                                          <div class="model-entry definition assembly">
                                                             <div class="instance-header">
                                                                <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/responsible-role/party-uuid" class="toc7 name">party-uuid</p>
-                                                               <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                                               <p class="type" id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/responsible-role/party-uuid/_VALUE"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                                                <p class="occurrence">[0 to ∞]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/control-implementation/implemented-requirements/statements/statement/by-components/by-component/responsible-roles/responsible-role/party-uuids">Switch to JSON</a></div>
                                                                <p class="formal-name">Party Reference</p>
@@ -22096,6 +22654,19 @@ The following is the XML format reference for this model, which is organized hie
                                                             </div>
                                                             <div class="body">
                                                                <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                                               <details class="properties elements" open="open">
+                                                                  <summary>Element (0+)</summary>
+                                                                  <div class="model-entry definition field">
+                                                                     <div class="instance-header">
+                                                                        <p id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/responsible-role/remarks/_VALUE" class="toc7 name">(unwrapped)</p>
+                                                                        <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                                        <p class="occurrence">[0 to ∞]</p>
+                                                                     </div>
+                                                                     <div class="body">
+                                                                        <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                                     </div>
+                                                                  </div>
+                                                               </details>
                                                             </div>
                                                          </div>
                                                       </details>
@@ -22111,6 +22682,19 @@ The following is the XML format reference for this model, which is organized hie
                                                    </div>
                                                    <div class="body">
                                                       <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                                      <details class="properties elements" open="open">
+                                                         <summary>Element (0+)</summary>
+                                                         <div class="model-entry definition field">
+                                                            <div class="instance-header">
+                                                               <h6 id="/system-security-plan/control-implementation/implemented-requirement/statement/by-component/remarks/_VALUE" class="toc6 name">(unwrapped)</h6>
+                                                               <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                               <p class="occurrence">[0 to ∞]</p>
+                                                            </div>
+                                                            <div class="body">
+                                                               <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                            </div>
+                                                         </div>
+                                                      </details>
                                                    </div>
                                                 </div>
                                              </details>
@@ -22126,6 +22710,19 @@ The following is the XML format reference for this model, which is organized hie
                                           </div>
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                             <details class="properties elements" open="open">
+                                                <summary>Element (0+)</summary>
+                                                <div class="model-entry definition field">
+                                                   <div class="instance-header">
+                                                      <h5 id="/system-security-plan/control-implementation/implemented-requirement/statement/remarks/_VALUE" class="toc5 name">(unwrapped)</h5>
+                                                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                      <p class="occurrence">[0 to ∞]</p>
+                                                   </div>
+                                                   <div class="body">
+                                                      <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                   </div>
+                                                </div>
+                                             </details>
                                           </div>
                                        </div>
                                     </details>
@@ -22141,6 +22738,19 @@ The following is the XML format reference for this model, which is organized hie
                                  </div>
                                  <div class="body">
                                     <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                    <details class="properties elements" open="open">
+                                       <summary>Element (0+)</summary>
+                                       <div class="model-entry definition field">
+                                          <div class="instance-header">
+                                             <h4 id="/system-security-plan/control-implementation/implemented-requirement/remarks/_VALUE" class="toc4 name">(unwrapped)</h4>
+                                             <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                             <p class="occurrence">[0 to ∞]</p>
+                                          </div>
+                                          <div class="body">
+                                             <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                          </div>
+                                       </div>
+                                    </details>
                                  </div>
                               </div>
                            </details>
@@ -22192,17 +22802,6 @@ The following is the XML format reference for this model, which is organized hie
                            <div class="remarks-group usa-prose">
                               <details open="open">
                                  <summary class="subhead">Remarks</summary>
-                                 <div class="remarks">
-                                    <p>A resource can be used in two ways. 1) it may point to an specific retrievable network
-                                       resource using a <code>rlink</code>, or 2) it may be included as an attachment using a <code>base64</code>. A resource may contain multiple <code>rlink</code> and <code>base64</code> entries that represent alternative download locations (rlink) and attachments (base64)
-                                       for the same resource. Both rlink and base64 allow for a <code>media-type</code> to be specified, which is used to distiguish between different representations of
-                                       the same resource (e.g., Microsoft Word, PDF). When multiple <code>rlink</code> and <code>base64</code> items are included for a given resource, all items must contain equivalent information.
-                                       This allows the document consumer to choose a preferred item to process based on a
-                                       the selected item's <code>media-type</code>. This is extremely important when the items represent OSCAL content that is represented
-                                       in alternate formats (i.e., XML, JSON, YAML), allowing the same OSCAL data to be processed
-                                       from any of the available formats indicated by the items.</p>
-                                    <p>When a resource includes a citation, then the <code>title</code> and <code>citation</code> properties must both be included.</p>
-                                 </div>
                                  <div class="remarks">
                                     <p>A resource can be used in two ways. 1) it may point to an specific retrievable network
                                        resource using a <code>rlink</code>, or 2) it may be included as an attachment using a <code>base64</code>. A resource may contain multiple <code>rlink</code> and <code>base64</code> entries that represent alternative download locations (rlink) and attachments (base64)
@@ -22330,7 +22929,7 @@ The following is the XML format reference for this model, which is organized hie
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/system-security-plan/back-matter/resource/title" class="toc4 name">title</h4>
-                                    <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                    <p class="type" id="/system-security-plan/back-matter/resource/title/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/back-matter/resources/title">Switch to JSON</a></div>
                                     <p class="formal-name">Resource Title</p>
@@ -22349,6 +22948,19 @@ The following is the XML format reference for this model, which is organized hie
                                  </div>
                                  <div class="body">
                                     <p class="description"><span class="usa-tag">Description</span> A short summary of the resource used to indicate the purpose of the resource.</p>
+                                    <details class="properties elements" open="open">
+                                       <summary>Element (0+)</summary>
+                                       <div class="model-entry definition assembly">
+                                          <div class="instance-header">
+                                             <h4 id="/system-security-plan/back-matter/resource/description/_VALUE" class="toc4 name">(unwrapped)</h4>
+                                             <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                             <p class="occurrence">[0 to ∞]</p>
+                                          </div>
+                                          <div class="body">
+                                             <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                          </div>
+                                       </div>
+                                    </details>
                                  </div>
                               </div>
                               <div class="model-entry definition assembly">
@@ -22444,14 +23056,6 @@ The following is the XML format reference for this model, which is organized hie
                                                          to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
                                                       <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                    </div>
-                                                   <div class="remarks">
-                                                      <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
-                                                         names and associated values used in a property. This allows the semantics associated
-                                                         with a given name/value pair to be defined on an organization-by-organization basis.</p>
-                                                      <p>An organization MUST use a URI that they have control over. e.g., a domain registered
-                                                         to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
-                                                      <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
-                                                   </div>
                                                 </details>
                                              </div>
                                           </div>
@@ -22486,10 +23090,6 @@ The following is the XML format reference for this model, which is organized hie
                                                       <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                          a specific <code>class</code> value.</p>
                                                    </div>
-                                                   <div class="remarks">
-                                                      <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                         a specific <code>class</code> value.</p>
-                                                   </div>
                                                 </details>
                                              </div>
                                           </div>
@@ -22507,6 +23107,19 @@ The following is the XML format reference for this model, which is organized hie
                                           </div>
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                             <details class="properties elements" open="open">
+                                                <summary>Element (0+)</summary>
+                                                <div class="model-entry definition field">
+                                                   <div class="instance-header">
+                                                      <h5 id="/system-security-plan/back-matter/resource/prop/remarks/_VALUE" class="toc5 name">(unwrapped)</h5>
+                                                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                      <p class="occurrence">[0 to ∞]</p>
+                                                   </div>
+                                                   <div class="body">
+                                                      <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                   </div>
+                                                </div>
+                                             </details>
                                           </div>
                                        </div>
                                     </details>
@@ -22515,7 +23128,7 @@ The following is the XML format reference for this model, which is organized hie
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/system-security-plan/back-matter/resource/document-id" class="toc4 name">document-id</h4>
-                                    <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                    <p class="type" id="/system-security-plan/back-matter/resource/document-id/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
                                     <p class="occurrence">[0 to ∞]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/back-matter/resources/document-ids">Switch to JSON</a></div>
                                     <p class="formal-name">Document Identifier</p>
@@ -22525,9 +23138,6 @@ The following is the XML format reference for this model, which is organized hie
                                        that are to be treated as different versions of the same document. If this element
                                        does not appear, or if the value of this element is empty, the value of "document-id"
                                        is equal to the value of the "uuid" flag of the top-level root element.</p>
-                                    <div class="value">
-                                       <p>Value: A string value.</p>
-                                    </div>
                                     <div class="remarks-group usa-prose">
                                        <details open="open">
                                           <summary class="subhead">Remarks</summary>
@@ -22588,11 +23198,6 @@ The following is the XML format reference for this model, which is organized hie
                                                 If structured bibliographic data is needed, then the <code>biblio</code> can be used for this purpose.</p>
                                              <p>A <code>biblio</code> can be used to capture a structured bibliographical citation in an appropriate format.</p>
                                           </div>
-                                          <div class="remarks">
-                                             <p>The <code>text</code> is used to define the endnote text, without any required bibliographic structure.
-                                                If structured bibliographic data is needed, then the <code>biblio</code> can be used for this purpose.</p>
-                                             <p>A <code>biblio</code> can be used to capture a structured bibliographical citation in an appropriate format.</p>
-                                          </div>
                                        </details>
                                     </div>
                                     <details class="properties elements" open="open">
@@ -22600,7 +23205,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/back-matter/resource/citation/text" class="toc5 name">text</h5>
-                                             <p class="type"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
+                                             <p class="type" id="/system-security-plan/back-matter/resource/citation/text/_VALUE"><a href="/reference/datatypes/#markup-line">markup-line</a></p>
                                              <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/back-matter/resources/citation/text">Switch to JSON</a></div>
                                              <p class="formal-name">Citation Text</p>
@@ -22702,14 +23307,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                   to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
                                                                <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
                                                             </div>
-                                                            <div class="remarks">
-                                                               <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed
-                                                                  names and associated values used in a property. This allows the semantics associated
-                                                                  with a given name/value pair to be defined on an organization-by-organization basis.</p>
-                                                               <p>An organization MUST use a URI that they have control over. e.g., a domain registered
-                                                                  to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
-                                                               <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
-                                                            </div>
                                                          </details>
                                                       </div>
                                                    </div>
@@ -22744,10 +23341,6 @@ The following is the XML format reference for this model, which is organized hie
                                                                <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
                                                                   a specific <code>class</code> value.</p>
                                                             </div>
-                                                            <div class="remarks">
-                                                               <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of
-                                                                  a specific <code>class</code> value.</p>
-                                                            </div>
                                                          </details>
                                                       </div>
                                                    </div>
@@ -22765,6 +23358,19 @@ The following is the XML format reference for this model, which is organized hie
                                                    </div>
                                                    <div class="body">
                                                       <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                                      <details class="properties elements" open="open">
+                                                         <summary>Element (0+)</summary>
+                                                         <div class="model-entry definition field">
+                                                            <div class="instance-header">
+                                                               <h6 id="/system-security-plan/back-matter/resource/citation/prop/remarks/_VALUE" class="toc6 name">(unwrapped)</h6>
+                                                               <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                                               <p class="occurrence">[0 to ∞]</p>
+                                                            </div>
+                                                            <div class="body">
+                                                               <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                                            </div>
+                                                         </div>
+                                                      </details>
                                                    </div>
                                                 </div>
                                              </details>
@@ -22806,12 +23412,6 @@ The following is the XML format reference for this model, which is organized hie
                                                 a items in a collection of rlinks. The <code>media-type</code> also provides a hint to the OSCAL document consumer about the structure of the resource
                                                 referenced by the <code>rlink</code>. </p>
                                           </div>
-                                          <div class="remarks">
-                                             <p>This construct is different from <code>link</code>, which makes no provision for a hash or formal title.</p>
-                                             <p>Multiple <code>rlink</code> can be included for a resource. In such a case, all provided <code>rlink</code> items are intended to be equivalent in content, but may differ in structure. A <code>media-type</code> is used to identify the format of a given rlink, and can be used to differentiate
-                                                a items in a collection of rlinks. The <code>media-type</code> also provides a hint to the OSCAL document consumer about the structure of the resource
-                                                referenced by the <code>rlink</code>. </p>
-                                          </div>
                                        </details>
                                     </div>
                                     <details class="properties attributes" open="open">
@@ -22847,7 +23447,7 @@ The following is the XML format reference for this model, which is organized hie
                                        <div class="model-entry definition assembly">
                                           <div class="instance-header">
                                              <h5 id="/system-security-plan/back-matter/resource/rlink/hash" class="toc5 name">hash</h5>
-                                             <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                                             <p class="type" id="/system-security-plan/back-matter/resource/rlink/hash/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
                                              <p class="occurrence">[0 to ∞]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/back-matter/resources/rlinks/hashes">Switch to JSON</a></div>
                                              <p class="formal-name">Hash</p>
@@ -22855,9 +23455,6 @@ The following is the XML format reference for this model, which is organized hie
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> A representation of a cryptographic digest generated over a resource using a specified
                                                 hash algorithm.</p>
-                                             <div class="value">
-                                                <p>Value: A string value.</p>
-                                             </div>
                                              <div class="remarks-group usa-prose">
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
@@ -22865,7 +23462,7 @@ The following is the XML format reference for this model, which is organized hie
                                                       <p>A hash value can be used to authenticate that a referenced resource is the same resources
                                                          as was pointed to by the author of the reference.</p>
                                                    </div>
-                                                   <div class="remarks in-use">
+                                                   <div class="remarks">
                                                       <p>When appearing as part of a <code>resource/rlink</code>, the hash applies to the resource referenced by the <code>href</code>. </p>
                                                    </div>
                                                 </details>
@@ -22885,9 +23482,6 @@ The following is the XML format reference for this model, which is organized hie
                                                       <div class="remarks-group usa-prose">
                                                          <details open="open">
                                                             <summary class="subhead">Remarks</summary>
-                                                            <div class="remarks">
-                                                               <p>Any other value used MUST be a value defined in the W3C <a href="http://www.w3.org/TR/xmlsec-algorithms/#digest-method">XML Security Algorithm Cross-Reference</a> Digest Methods (W3C, April 2013) or <a href="https://tools.ietf.org/html/rfc6931#section-2.1.5">RFC 6931 Section 2.1.5</a> New SHA Functions.</p>
-                                                            </div>
                                                             <div class="remarks">
                                                                <p>Any other value used MUST be a value defined in the W3C <a href="http://www.w3.org/TR/xmlsec-algorithms/#digest-method">XML Security Algorithm Cross-Reference</a> Digest Methods (W3C, April 2013) or <a href="https://tools.ietf.org/html/rfc6931#section-2.1.5">RFC 6931 Section 2.1.5</a> New SHA Functions.</p>
                                                             </div>
@@ -22937,16 +23531,13 @@ The following is the XML format reference for this model, which is organized hie
                               <div class="model-entry definition assembly">
                                  <div class="instance-header">
                                     <h4 id="/system-security-plan/back-matter/resource/base64" class="toc4 name">base64</h4>
-                                    <p class="type"><a href="/reference/datatypes/#base64binary">base64Binary</a></p>
+                                    <p class="type" id="/system-security-plan/back-matter/resource/base64/_VALUE"><a href="/reference/datatypes/#base64binary">base64Binary</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/back-matter/resources/base64">Switch to JSON</a></div>
                                     <p class="formal-name">Base64</p>
                                  </div>
                                  <div class="body">
                                     <p class="description"><span class="usa-tag">Description</span> The Base64 alphabet in RFC 2045 - aligned with XSD.</p>
-                                    <div class="value">
-                                       <p>Value: A base64Binary value.</p>
-                                    </div>
                                     <details class="properties attributes" open="open">
                                        <summary>Attributes (2)</summary>
                                        <div class="model-entry definition assembly">
@@ -22987,6 +23578,19 @@ The following is the XML format reference for this model, which is organized hie
                                  </div>
                                  <div class="body">
                                     <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
+                                    <details class="properties elements" open="open">
+                                       <summary>Element (0+)</summary>
+                                       <div class="model-entry definition field">
+                                          <div class="instance-header">
+                                             <h4 id="/system-security-plan/back-matter/resource/remarks/_VALUE" class="toc4 name">(unwrapped)</h4>
+                                             <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                                             <p class="occurrence">[0 to ∞]</p>
+                                          </div>
+                                          <div class="body">
+                                             <p>This use of the <a href="/reference/datatypes/#markup-multiline">markup-multiline</a> type permits unwrapped block-level markup.</p>
+                                          </div>
+                                       </div>
+                                    </details>
                                  </div>
                               </div>
                            </details>

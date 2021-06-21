@@ -1,7 +1,8 @@
 ---
 title: "OSCAL System Security Plan Model Development Snapshot JSON Format Index"
-heading: System Security Plan Model Development Snapshot JSON Format Index
+heading: "System Security Plan Model Development Snapshot JSON Format Index"
 weight: 30
+generateanchors: false
 sidenav:
   title: JSON Index
 toc:

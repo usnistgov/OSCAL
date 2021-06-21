@@ -1,7 +1,8 @@
 ---
 title: "OSCAL Component Definition Model v1.0.0-rc2 XML Format Metaschema Reference"
-heading: Component Definition Model v1.0.0-rc2 XML Metaschema Reference
+heading: "Component Definition Model v1.0.0-rc2 XML Metaschema Reference"
 weight: 80
+generateanchors: false
 sidenav:
   title: XML Metaschema Reference
 toc:

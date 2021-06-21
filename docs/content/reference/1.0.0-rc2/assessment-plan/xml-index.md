@@ -1,7 +1,8 @@
 ---
 title: "OSCAL Assessment Plan Model v1.0.0-rc2 XML Format Index"
-heading: Assessment Plan Model v1.0.0-rc2 XML Format Index
+heading: "Assessment Plan Model v1.0.0-rc2 XML Format Index"
 weight: 70
+generateanchors: false
 sidenav:
   title: XML Index
 toc:

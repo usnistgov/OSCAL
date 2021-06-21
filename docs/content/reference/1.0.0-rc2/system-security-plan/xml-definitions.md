@@ -1,7 +1,8 @@
 ---
 title: "OSCAL System Security Plan Model v1.0.0-rc2 XML Format Metaschema Reference"
-heading: System Security Plan Model v1.0.0-rc2 XML Metaschema Reference
+heading: "System Security Plan Model v1.0.0-rc2 XML Metaschema Reference"
 weight: 80
+generateanchors: false
 sidenav:
   title: XML Metaschema Reference
 toc:

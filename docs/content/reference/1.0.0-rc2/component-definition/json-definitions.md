@@ -1,7 +1,8 @@
 ---
 title: "OSCAL Component Definition Model v1.0.0-rc2 JSON Format Metaschema Reference"
-heading: Component Definition Model v1.0.0-rc2 Model JSON Metaschema Reference
+heading: "Component Definition Model v1.0.0-rc2 Model JSON Metaschema Reference"
 weight: 40
+generateanchors: false
 sidenav:
   title: JSON Metaschema Reference
 toc:

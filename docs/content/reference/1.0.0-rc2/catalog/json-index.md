@@ -1,7 +1,8 @@
 ---
 title: "OSCAL Catalog Model v1.0.0-rc2 JSON Format Index"
-heading: Catalog Model v1.0.0-rc2 JSON Format Index
+heading: "Catalog Model v1.0.0-rc2 JSON Format Index"
 weight: 30
+generateanchors: false
 sidenav:
   title: JSON Index
 toc:

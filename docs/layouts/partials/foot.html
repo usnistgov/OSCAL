@@ -9,8 +9,8 @@ $(document).ready(function () {
 {{ end }}
 
 {{ $generateAnchors := true }}
-{{- with .Page.Params.generateanchors -}}
-  {{ $generateAnchors = . }}
+{{- if isset .Page.Params "generateanchors" -}}
+  {{ $generateAnchors = .Page.Params.generateanchors }}
 {{- end -}}
 {{ if $generateAnchors -}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.3.0/anchor.min.js" integrity="sha512-G2OGlm41XXw+fcgDcRPjVYEn7qCY6qiKWNqDGT37SnKh0qtRXTuKZ5/UQR0kDN0PZRNWcGExd3lAeqEH0I36bQ==" crossorigin="anonymous"></script>

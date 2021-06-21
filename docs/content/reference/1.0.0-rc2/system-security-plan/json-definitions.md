@@ -1,7 +1,8 @@
 ---
 title: "OSCAL System Security Plan Model v1.0.0-rc2 JSON Format Metaschema Reference"
-heading: System Security Plan Model v1.0.0-rc2 Model JSON Metaschema Reference
+heading: "System Security Plan Model v1.0.0-rc2 Model JSON Metaschema Reference"
 weight: 40
+generateanchors: false
 sidenav:
   title: JSON Metaschema Reference
 toc:
