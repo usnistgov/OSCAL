@@ -369,7 +369,6 @@
          </xsl:if>
          <xsl:apply-templates select="*[@key='combine']"/>
          <xsl:apply-templates select="*[@key='as-is']"/>
-         <xsl:apply-templates select="*[@key='flat']"/>
          <xsl:apply-templates select="*[@key='custom']"/>
       </assembly>
    </xsl:template>
@@ -381,15 +380,6 @@
             <xsl:attribute name="key">combine</xsl:attribute>
          </xsl:if>
          <xsl:apply-templates select="*[@key='method']"/>
-      </assembly>
-   </xsl:template>
-   <xsl:template match="j:map[@key='flat']">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="flat" -->
-      <assembly as-type="empty" name="flat" key="flat" gi="flat">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">flat</xsl:attribute>
-         </xsl:if>
       </assembly>
    </xsl:template>
    <xsl:template match="j:map[@key='custom']">

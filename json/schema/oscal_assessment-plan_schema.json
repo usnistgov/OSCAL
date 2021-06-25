@@ -931,7 +931,7 @@
         "properties" : 
         { "uuid" : 
           { "title" : "Task Universally Unique Identifier",
-            "description" : "Uniquely identifies this assessment task. This identifier's uniqueness is document scoped and is intended to be consistent for the same task across minor revisions of the document.",
+            "description" : "Uniquely identifies this assessment task.",
             "type" : "string",
             "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
           "type" : 
@@ -1253,7 +1253,7 @@
         "properties" : 
         { "uuid" : 
           { "title" : "Assessment Subject Placeholder Universally Unique Identifier",
-            "description" : "Uniquely identifies a set of assessment subjects that will be identified by a task or an activity that is part of a task. This identifier's uniqueness is document scoped and is intended to be consistent for the same assessment subject across minor revisions of the document.",
+            "description" : "Uniquely identifies a set of assessment subjects that will be identified by a task or an activity that is part of a task.",
             "type" : "string",
             "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
           "description" : 
@@ -1426,7 +1426,7 @@
               "properties" : 
               { "uuid" : 
                 { "title" : "Assessment Platform Universally Unique Identifier",
-                  "description" : "Uniquely identifies this assessment Platform. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. Once assigned, a UUID should be consistantly used for a given observation across revisions.",
+                  "description" : "Uniquely identifies this assessment Platform.",
                   "type" : "string",
                   "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
                 "title" : 

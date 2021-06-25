@@ -1080,7 +1080,7 @@
               "properties" : 
               { "component-uuid" : 
                 { "title" : "Component Universally Unique Identifier Reference",
-                  "description" : "A reference to a component that is implemented as part of an inventory item. This identifier's uniqueness is document scoped and is intended to be consistent for the same component across minor revisions of the document.",
+                  "description" : "A reference to a component that is implemented as part of an inventory item.",
                   "type" : "string",
                   "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
                 "props" : 
@@ -1142,7 +1142,7 @@
         "properties" : 
         { "identifier-type" : 
           { "title" : "Identification System Type",
-            "description" : "Identifies the identification system from which the provided identifier was assigned. This is a globally unique identifier and should be consistently used for a given system across revisions of the document.",
+            "description" : "Identifies the identification system from which the provided identifier was assigned.",
             "type" : "string",
             "format" : "uri" },
           "id" : 
@@ -1512,7 +1512,7 @@
         "properties" : 
         { "uuid" : 
           { "title" : "Task Universally Unique Identifier",
-            "description" : "Uniquely identifies this assessment task. This identifier's uniqueness is document scoped and is intended to be consistent for the same task across minor revisions of the document.",
+            "description" : "Uniquely identifies this assessment task.",
             "type" : "string",
             "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
           "type" : 
@@ -1834,7 +1834,7 @@
         "properties" : 
         { "uuid" : 
           { "title" : "Assessment Subject Placeholder Universally Unique Identifier",
-            "description" : "Uniquely identifies a set of assessment subjects that will be identified by a task or an activity that is part of a task. This identifier's uniqueness is document scoped and is intended to be consistent for the same assessment subject across minor revisions of the document.",
+            "description" : "Uniquely identifies a set of assessment subjects that will be identified by a task or an activity that is part of a task.",
             "type" : "string",
             "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
           "description" : 
