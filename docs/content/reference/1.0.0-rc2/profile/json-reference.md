@@ -11,15 +11,11 @@ toc:
 
 ---
 
-The following is the JSON format reference for this model, which is organized hierarchically. Each entry represents the corresponding JSON property in the model's JSON format, and provides details about the semantics and use of the property. The [JSON Format Outline](../json-outline/) provides a streamlined, hierarchical representation of this model's JSON format which can be used along with this reference to better understand the JSON representation of this model.
+The following is the JSON format reference for this [model](/concepts/layer/control/profile/), which is organized hierarchically. Each entry represents the corresponding JSON property in the model's JSON format, and provides details about the semantics and use of the property. The [JSON Format Outline](../json-outline/) provides a streamlined, hierarchical representation of this model's JSON format which can be used along with this reference to better understand the JSON representation of this model.
 
 <!-- DO NOT REMOVE. Generated text below -->
 {{< rawhtml >}}
 <div xmlns="http://www.w3.org/1999/xhtml" class="json-reference">
-   <p><span class="usa-tag">OSCAL model</span> OSCAL Profile Model</p>
-   <p><span class="usa-tag">Schema version:</span> 1.0.0-rc2</p>
-   <p><span class="usa-tag">JSON Schema</span> <a href="/artifacts/json/schema/oscal_profile_schema.json">oscal_profile_schema.json</a></p>
-   <p><span class="usa-tag">XML to JSON converter</span> <a href="/artifacts/json/convert/oscal_profile_xml-to-json-converter.xsl">oscal_profile_xml-to-json-converter.xsl</a> <a href="https://github.com/usnistgov/OSCAL/tree/main/json#converting-oscal-xml-content-to-json">(How do I use the converter to convert OSCAL XML to JSON?)</a></p>
    <div class="remarks">A profile designates a selection and configuration of controls from one or more catalogs,
       along with a series of operations over them. The topmost element in the OSCAL profile
       XML schema is profile.</div>

@@ -10,17 +10,13 @@ toc:
   headingselectors: "h1.toc1, h2.toc2, h3.toc3, h4.toc4, h5.toc5, h6.toc6"
 ---
 
-The following is a reference for the JSON object definitions derived from this model's [metaschema](https://github.com/usnistgov/OSCAL/blob/v1.0.0//src/metaschema/oscal_ssp_metaschema.xml).
+The following is a reference for the JSON object definitions derived from the [metaschema](https://github.com/usnistgov/OSCAL/blob/v1.0.0//src/metaschema/oscal_ssp_metaschema.xml) for this [model](/concepts/layer/implementation/ssp/).
 
 <!-- DO NOT REMOVE. Generated text below -->
 {{< rawhtml >}}
 <div xmlns="http://www.w3.org/1999/xhtml" class="json-definition">
-   <p><span class="usa-tag">OSCAL model</span> OSCAL System Security Plan (SSP) Model</p>
-   <p><span class="usa-tag">Version</span> 1.0.0</p>
    <p><span class="usa-tag">Short name</span> oscal-ssp</p>
    <p><span class="usa-tag">JSON Base URI</span> <code>http://csrc.nist.gov/ns/oscal</code></p>
-   <p><span class="usa-tag">JSON Schema</span> <a href="https://pages.nist.gov/OSCAL/artifacts/json/schema/oscal_ssp_schema.json">oscal_ssp_schema.json</a></p>
-   <p><span class="usa-tag">XML to JSON converter</span> <a href="https://pages.nist.gov/OSCAL/artifacts/xml/convert/oscal_ssp_xml-to-json-converter.xsl">oscal_ssp_xml-to-json-converter.xsl</a> <a href="https://github.com/usnistgov/OSCAL/tree/master/xml#converting-oscal-xml-content-to-json">(How do I use the converter to convert OSCAL XML to JSON)</a></p>
    <details class="remarks" open="open">
       <summary>Remarks</summary>
       <p class="p">The OSCAL Control SSP format can be used to describe the information typically specified
