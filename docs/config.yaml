@@ -47,12 +47,12 @@ module:
 #    target: content
   - source: static
     target: static
-  - source: ../xml
-    target: static/artifacts/xml
-  - source: ../json
-    target: static/artifacts/json
-  - source: ../content
-    target: static/artifacts/content
+#  - source: ../xml
+#    target: static/artifacts/xml
+#  - source: ../json
+#    target: static/artifacts/json
+#  - source: ../content
+#    target: static/artifacts/content
 #  - source: layouts
 #    target: layouts
 #  - source: data
