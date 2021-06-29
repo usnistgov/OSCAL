@@ -184,7 +184,7 @@ if [ ! -d "${doc_path}" ] || [ "$DISABLE_ARCHETYPE_CREATION" = "false" ]; then
 fi
 
 exitcode=0
-while IFS="|" read metaschema_path archetype model_id model_name schema_id || [[ -n "$metaschema_path" ]]; do
+while IFS="|" read metaschema_path archetype model_id model_name layer_id schema_id || [[ -n "$metaschema_path" ]]; do
   [[ "$metaschema_path" =~ ^[[:space:]]*# ]] && continue
   # remove leading space
   metaschema_path="${metaschema_path##+([[:space:]])}"
@@ -194,9 +194,14 @@ while IFS="|" read metaschema_path archetype model_id model_name schema_id || [[
   archetype="${archetype##+([[:space:]])}"
   model_id="${model_id##+([[:space:]])}"
   model_name="${model_name##+([[:space:]])}"
+  layer_id="${layer_id##+([[:space:]])}"
   schema_id="${schema_id##+([[:space:]])}"
 
   metaschema="$OSCAL_DIR"/"$metaschema_path"
+
+  # echo "metaschema: ${metaschema}"
+  [ ! -f "$metaschema" ] && continue;
+
   metaschema_relative=$(realpath --relative-to="$WORKING_DIR" "$metaschema")
 
   filename=$(basename -- "$metaschema")
@@ -213,6 +218,7 @@ while IFS="|" read metaschema_path archetype model_id model_name schema_id || [[
   #echo "model_id='${model_id}'"
   #echo "model_name='${model_name}'"
   #echo "schema_id='${schema_id}'"
+  #echo "layer_id='${layer_id}'"
   #echo "model_path='${model_path}'"
 
   # generate reference documentation
@@ -220,7 +226,7 @@ while IFS="|" read metaschema_path archetype model_id model_name schema_id || [[
     # build the version folder
     #if [ -d "${model_path}" ] && rm -rf "${doc_path}"
 
-    result=$(cd ${DOCS_DIR};HUGO_REF_TYPE="${TYPE}" HUGO_REF_BRANCH="${BRANCH}" HUGO_REF_VERSION="${VERSION}" HUGO_REF_REVISION="${REVISION}" HUGO_MODEL_NAME="${model_name}" HUGO_MODEL_ID="${model_id}" HUGO_SCHEMA_ID="${schema_id}" hugo new --kind ${archetype} "${model_path}" 2>&1)
+    result=$(cd ${DOCS_DIR};HUGO_REF_TYPE="${TYPE}" HUGO_REF_BRANCH="${BRANCH}" HUGO_REF_VERSION="${VERSION}" HUGO_REF_REVISION="${REVISION}" HUGO_MODEL_NAME="${model_name}" HUGO_MODEL_ID="${model_id}" HUGO_SCHEMA_ID="${schema_id}" HUGO_MODEL_CONCEPTS_URL="/concepts/layer/${layer_id}/${schema_id}/" hugo new --kind ${archetype} "${model_path}" 2>&1)
     cmd_exitcode=$?
     if [ $cmd_exitcode -ne 0 ]; then
       echo -e "${P_ERROR}Generating '${P_END}${model_id}${P_OK}' model page failed for revision '${P_END}${REVISION}${P_ERROR}' on branch '${P_END}${BRANCH}${P_ERROR}'.${P_END}"
@@ -266,6 +272,6 @@ while IFS="|" read metaschema_path archetype model_id model_name schema_id || [[
 
   echo -e "${P_OK}Generated docs for '${P_END}${metaschema_relative}${P_OK}' in '${P_END}${model_path}${P_OK}'.${P_END}"
 
-done <"$OSCAL_DIR/build/ci-cd/config/metaschema-docs"
+done <"${WORKING_DIR}/build/ci-cd/config/metaschema-docs"
 
 exit $exitcode

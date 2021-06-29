@@ -14,12 +14,8 @@ The following is a reference for the XML element and attribute types derived fro
 
 <!-- DO NOT REMOVE. Generated text below -->{{< rawhtml >}}
 <div xmlns="http://www.w3.org/1999/xhtml" class="xml-definition">
-   <p><span class="usa-tag">OSCAL model</span> OSCAL Unified Model of Models</p>
-   <p><span class="usa-tag">Version</span> 1.0.0</p>
    <p><span class="usa-tag">Short name</span> oscal-complete</p>
    <p><span class="usa-tag">XML namespace</span> <code>http://csrc.nist.gov/ns/oscal/1.0</code></p>
-   <p><span class="usa-tag">XML Schema</span> <a href="/artifacts/xml/schema/oscal_complete_schema.xsd">oscal_complete_schema.xsd</a></p>
-   <p><span class="usa-tag">JSON to XML converter</span> <a href="/artifacts/xml/convert/oscal_complete_json-to-xml-converter.xsl">oscal_complete_json-to-xml-converter.xsl</a> <a href="https://github.com/usnistgov/OSCAL/tree/main/xml#converting-oscal-json-content-to-xml">(How do I use the converter to convert OSCAL JSON to XML?)</a></p>
    <details class="remarks" open="open">
       <summary>Remarks</summary>
       <p class="p">This format represents a combination of all of the OSCAL models.</p>
