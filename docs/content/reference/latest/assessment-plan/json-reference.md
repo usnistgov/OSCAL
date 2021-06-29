@@ -14,16 +14,12 @@ aliases:
   - /documentation/schema/assessment-layer/assessment-plan/json-schema/
 ---
 
-The following is the JSON format reference for this model, which is organized hierarchically. Each entry represents the corresponding JSON property in the model's JSON format, and provides details about the semantics and use of the property. The [JSON Format Outline](../json-outline/) provides a streamlined, hierarchical representation of this model's JSON format which can be used along with this reference to better understand the JSON representation of this model.
+The following is the JSON format reference for this [model](/concepts/layer/assessment/assessment-plan/), which is organized hierarchically. Each entry represents the corresponding JSON property in the model's JSON format, and provides details about the semantics and use of the property. The [JSON Format Outline](../json-outline/) provides a streamlined, hierarchical representation of this model's JSON format which can be used along with this reference to better understand the JSON representation of this model.
 
 <!-- DO NOT REMOVE. Generated text below -->
 {{< rawhtml >}}
 <div xmlns="http://www.w3.org/1999/xhtml" class="json-reference">
-   <p><span class="usa-tag">OSCAL model</span> OSCAL Assessment Plan Model</p>
-   <p><span class="usa-tag">Schema version:</span> 1.0.0</p>
    <p><span class="usa-tag">JSON Base URI</span> <code>http://csrc.nist.gov/ns/oscal</code></p>
-   <p><span class="usa-tag">JSON Schema</span> <a href="/artifacts/json/schema/oscal_assessment-plan_schema.json">oscal_assessment-plan_schema.json</a></p>
-   <p><span class="usa-tag">XML to JSON converter</span> <a href="/artifacts/json/convert/oscal_assessment-plan_xml-to-json-converter.xsl">oscal_assessment-plan_xml-to-json-converter.xsl</a> <a href="https://github.com/usnistgov/OSCAL/tree/main/json#converting-oscal-xml-content-to-json">(How do I use the converter to convert OSCAL XML to JSON?)</a></p>
    <div class="remarks">The OSCAL assessment plan format is used to describe the information typically provided
       by an assessor during the preparation for an assessment.The root of the OSCAL assessment
       plan format is assessment-plan. </div>

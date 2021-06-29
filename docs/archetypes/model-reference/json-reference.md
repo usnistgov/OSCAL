@@ -45,6 +45,6 @@ aliases:
 {{- end }}
 ---
 
-The following is the JSON format reference for this model, which is organized hierarchically. Each entry represents the corresponding JSON property in the model's JSON format, and provides details about the semantics and use of the property. The [JSON Format Outline](../json-outline/) provides a streamlined, hierarchical representation of this model's JSON format which can be used along with this reference to better understand the JSON representation of this model.
+The following is the JSON format reference for this [model]({{ getenv "HUGO_MODEL_CONCEPTS_URL" }}), which is organized hierarchically. Each entry represents the corresponding JSON property in the model's JSON format, and provides details about the semantics and use of the property. The [JSON Format Outline](../json-outline/) provides a streamlined, hierarchical representation of this model's JSON format which can be used along with this reference to better understand the JSON representation of this model.
 
 <!-- DO NOT REMOVE. Generated text below -->
