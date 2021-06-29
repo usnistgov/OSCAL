@@ -14,7 +14,7 @@ This tutorial covers creating a basic OSCAL component definition. Before reading
 - Have some familiarity with the [XML](https://www.w3.org/standards/xml/core), [JSON](https://www.json.org/), or [YAML](https://yaml.org/spec/) formats.
 - Read the OSCAL implementation layer [overview](/concepts/layer/implementation/).
 - Review the OSCAL [component definition](/concepts/layer/implementation/component-definition/) model overview.
-- Be familiar with OSCAL properties and links.
+- Be familiar with the use of OSCAL properties and links.
 
 ## What is an OSCAL Component Definition?
 
