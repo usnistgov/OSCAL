@@ -5,8 +5,6 @@ weight: 6
 suppresstopiclist: true
 toc:
   enabled: true
-aliases:
-  - /tutorials/component/
 ---
 
 This tutorial covers creating a basic OSCAL component definition. Before reading this tutorial you should:
@@ -29,7 +27,7 @@ For the purposes of this tutorial we'll presume the MongoDB component can partia
 | SA-4(9) | Acquisition Process - Functions, Ports, Protocols, and Services in Use |
 | SC-8(1) | Transmission Confidentiality and Integrity |
 
-In this tutorial, we’ll demonstrate how to use the `<implemented-requirement>` element’s `@control-id` attribute for traceability between the component definition model, its components, the component’s control implementations and associated implemented requirements.
+In this tutorial, we’ll demonstrate how to use implemented requirements and control IDs for traceability between the component definition model, its components, the component’s control implementations and associated implemented requirements.
 
 ## Creating an OSCAL Component Definition Model
 
