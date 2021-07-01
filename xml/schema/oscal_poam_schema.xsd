@@ -67,10 +67,10 @@
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>POA&amp;M Universally Unique Identifier</m:formal-name>
-               <m:description>Uniquely identifies this POA&amp;M. This UUID must be changed each time the content of the POA&amp;M changes.</m:description>
+               <m:description>Uniquely identifies this POA&amp;M. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. This UUID must be changed each time the content of the POA&amp;M changes.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>POA&amp;M Universally Unique Identifier</b>: Uniquely identifies this POA&amp;M. This UUID must be changed each time the content of the POA&amp;M changes.</xs:documentation>
+               <b>POA&amp;M Universally Unique Identifier</b>: Uniquely identifies this POA&amp;M. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. This UUID must be changed each time the content of the POA&amp;M changes.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
@@ -1543,10 +1543,10 @@
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Component Identifier</m:formal-name>
-               <m:description>The unique identifier for the component.</m:description>
+               <m:description>The unique identifier for the component. This identifier's uniqueness is document scoped and is intended to be consistent for the same component across minor revisions of the document.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>Component Identifier</b>: The unique identifier for the component.</xs:documentation>
+               <b>Component Identifier</b>: The unique identifier for the component. This identifier's uniqueness is document scoped and is intended to be consistent for the same component across minor revisions of the document.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
       <xs:attribute name="type" use="required" type="oscal-poam:string">
@@ -1777,10 +1777,10 @@
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>User Universally Unique Identifier</m:formal-name>
-               <m:description>The unique identifier for the user class.</m:description>
+               <m:description>The unique identifier for the user class. This identifier's uniqueness is document scoped and is intended to be consistent for the same user universally unique idenfier across minor revisions of the document.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>User Universally Unique Identifier</b>: The unique identifier for the user class.</xs:documentation>
+               <b>User Universally Unique Identifier</b>: The unique identifier for the user class. This identifier's uniqueness is document scoped and is intended to be consistent for the same user universally unique idenfier across minor revisions of the document.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
@@ -1921,10 +1921,10 @@
                   <xs:annotation>
                      <xs:appinfo>
                         <m:formal-name>Component Universally Unique Identifier Reference</m:formal-name>
-                        <m:description>A reference to a component that is implemented as part of an inventory item.</m:description>
+                        <m:description>A reference to a component that is implemented as part of an inventory item. This identifier's uniqueness is document scoped and is intended to be consistent for the same component across minor revisions of the document.</m:description>
                      </xs:appinfo>
                      <xs:documentation>
-                        <b>Component Universally Unique Identifier Reference</b>: A reference to a component that is implemented as part of an inventory item.</xs:documentation>
+                        <b>Component Universally Unique Identifier Reference</b>: A reference to a component that is implemented as part of an inventory item. This identifier's uniqueness is document scoped and is intended to be consistent for the same component across minor revisions of the document.</xs:documentation>
                   </xs:annotation>
                </xs:attribute>
             </xs:complexType>
@@ -1999,10 +1999,10 @@
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Parameter ID</m:formal-name>
-               <m:description>A reference to a parameter within a control, who's catalog has been imported into the current implementation context.</m:description>
+               <m:description>A reference to a parameter within a control, who's catalog has been imported into the current implementation context. This identifier's uniqueness is document scoped and is intended to be consistent for the same param across minor revisions of the document.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>Parameter ID</b>: A reference to a parameter within a control, who's catalog has been imported into the current implementation context.</xs:documentation>
+               <b>Parameter ID</b>: A reference to a parameter within a control, who's catalog has been imported into the current implementation context. This identifier's uniqueness is document scoped and is intended to be consistent for the same param across minor revisions of the document.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
@@ -2021,10 +2021,10 @@
                <xs:annotation>
                   <xs:appinfo>
                      <m:formal-name>Identification System Type</m:formal-name>
-                     <m:description>Identifies the identification system from which the provided identifier was assigned.</m:description>
+                     <m:description>Identifies the identification system from which the provided identifier was assigned. This is a globally unique identifier and should be consistently used for a given system across revisions of the document.</m:description>
                   </xs:appinfo>
                   <xs:documentation>
-                     <b>Identification System Type</b>: Identifies the identification system from which the provided identifier was assigned.</xs:documentation>
+                     <b>Identification System Type</b>: Identifies the identification system from which the provided identifier was assigned. This is a globally unique identifier and should be consistently used for a given system across revisions of the document.</xs:documentation>
                </xs:annotation>
             </xs:attribute>
          </xs:extension>
@@ -2968,10 +2968,10 @@
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Task Universally Unique Identifier</m:formal-name>
-               <m:description>Uniquely identifies this assessment task. </m:description>
+               <m:description>Uniquely identifies this assessment task. This identifier's uniqueness is document scoped and is intended to be consistent for the same task across minor revisions of the document.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>Task Universally Unique Identifier</b>: Uniquely identifies this assessment task. </xs:documentation>
+               <b>Task Universally Unique Identifier</b>: Uniquely identifies this assessment task. This identifier's uniqueness is document scoped and is intended to be consistent for the same task across minor revisions of the document.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
       <xs:attribute name="type" use="required" type="oscal-poam:token">
@@ -3315,10 +3315,10 @@
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Assessment Subject Placeholder Universally Unique Identifier</m:formal-name>
-               <m:description>Uniquely identifies a set of assessment subjects that will be identified by a task or an activity that is part of a task.</m:description>
+               <m:description>Uniquely identifies a set of assessment subjects that will be identified by a task or an activity that is part of a task. This identifier's uniqueness is document scoped and is intended to be consistent for the same assessment subject across minor revisions of the document.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>Assessment Subject Placeholder Universally Unique Identifier</b>: Uniquely identifies a set of assessment subjects that will be identified by a task or an activity that is part of a task.</xs:documentation>
+               <b>Assessment Subject Placeholder Universally Unique Identifier</b>: Uniquely identifies a set of assessment subjects that will be identified by a task or an activity that is part of a task. This identifier's uniqueness is document scoped and is intended to be consistent for the same assessment subject across minor revisions of the document.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
@@ -3648,10 +3648,10 @@
                   <xs:annotation>
                      <xs:appinfo>
                         <m:formal-name>Assessment Platform Universally Unique Identifier</m:formal-name>
-                        <m:description>Uniquely identifies this assessment Platform.</m:description>
+                        <m:description>Uniquely identifies this assessment Platform. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. Once assigned, a UUID should be consistantly used for a given observation across revisions.</m:description>
                      </xs:appinfo>
                      <xs:documentation>
-                        <b>Assessment Platform Universally Unique Identifier</b>: Uniquely identifies this assessment Platform.</xs:documentation>
+                        <b>Assessment Platform Universally Unique Identifier</b>: Uniquely identifies this assessment Platform. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. Once assigned, a UUID should be consistantly used for a given observation across revisions.</xs:documentation>
                   </xs:annotation>
                </xs:attribute>
             </xs:complexType>

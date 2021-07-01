@@ -23,7 +23,7 @@
         <root-name>plan-of-action-and-milestones</root-name>
         <define-flag name="uuid" required="yes" as-type="uuid">
             <formal-name>POA&amp;M Universally Unique Identifier</formal-name>
-            <description>Uniquely identifies this POA&amp;M. This UUID must be changed each time the content of the POA&amp;M changes.</description>
+            <description>Uniquely identifies this POA&amp;M. This UUID may be referenced elsewhere in an OSCAL document when refering to this information. This UUID must be changed each time the content of the POA&amp;M changes.</description>
         </define-flag>
         <model>
             <assembly ref="metadata" min-occurs="1" max-occurs="1"/>

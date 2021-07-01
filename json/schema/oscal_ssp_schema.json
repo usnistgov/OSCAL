@@ -679,7 +679,7 @@
         "properties" : 
         { "component-uuid" : 
           { "title" : "Component Universally Unique Identifier Reference",
-            "description" : "A reference to the component that is implementing a given control or control statement.",
+            "description" : "A reference to the component that is implementing a given control or control statement. A UUID should be consistantly used for a given resource across revisions of the document.",
             "type" : "string",
             "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
           "uuid" : 
@@ -1582,7 +1582,7 @@
         "properties" : 
         { "uuid" : 
           { "title" : "Component Identifier",
-            "description" : "The unique identifier for the component.",
+            "description" : "The unique identifier for the component. This identifier's uniqueness is document scoped and is intended to be consistent for the same component across minor revisions of the document.",
             "type" : "string",
             "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
           "type" : 
@@ -1730,7 +1730,7 @@
         "properties" : 
         { "uuid" : 
           { "title" : "User Universally Unique Identifier",
-            "description" : "The unique identifier for the user class.",
+            "description" : "The unique identifier for the user class. This identifier's uniqueness is document scoped and is intended to be consistent for the same user universally unique idenfier across minor revisions of the document.",
             "type" : "string",
             "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
           "title" : 
@@ -1840,7 +1840,7 @@
               "properties" : 
               { "component-uuid" : 
                 { "title" : "Component Universally Unique Identifier Reference",
-                  "description" : "A reference to a component that is implemented as part of an inventory item.",
+                  "description" : "A reference to a component that is implemented as part of an inventory item. This identifier's uniqueness is document scoped and is intended to be consistent for the same component across minor revisions of the document.",
                   "type" : "string",
                   "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
                 "props" : 
@@ -1877,7 +1877,7 @@
         "properties" : 
         { "param-id" : 
           { "title" : "Parameter ID",
-            "description" : "A reference to a parameter within a control, who's catalog has been imported into the current implementation context.",
+            "description" : "A reference to a parameter within a control, who's catalog has been imported into the current implementation context. This identifier's uniqueness is document scoped and is intended to be consistent for the same param across minor revisions of the document.",
             "type" : "string",
             "pattern" : "^[_A-Za-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD][_A-Za-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD\\-\\.0-9\\u00B7\\u0300-\\u036F\\u203F-\\u2040]*$" },
           "values" : 
@@ -1902,7 +1902,7 @@
         "properties" : 
         { "identifier-type" : 
           { "title" : "Identification System Type",
-            "description" : "Identifies the identification system from which the provided identifier was assigned.",
+            "description" : "Identifies the identification system from which the provided identifier was assigned. This is a globally unique identifier and should be consistently used for a given system across revisions of the document.",
             "type" : "string",
             "format" : "uri" },
           "id" : 

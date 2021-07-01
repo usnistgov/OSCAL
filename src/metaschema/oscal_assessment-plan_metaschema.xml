@@ -20,7 +20,7 @@
         <root-name>assessment-plan</root-name>
         <define-flag name="uuid" required="yes" as-type="uuid">
             <formal-name>Assessment Plan Universally Unique Identifier</formal-name>
-            <description>Uniquely identifies this assessment plan. This UUID must be changed each time the content of the plan changes.</description>
+            <description>Uniquely identifies this assessment plan. This identifier's uniqueness is document scoped and must be changed each time the content of the plan changes.</description>
         </define-flag>
         <model>
             <assembly ref="metadata" min-occurs="1" max-occurs="1"/>

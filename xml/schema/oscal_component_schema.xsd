@@ -180,10 +180,10 @@
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Component Identifier</m:formal-name>
-               <m:description>The unique identifier for the component.</m:description>
+               <m:description>The unique identifier for the component. This identifier's uniqueness is document scoped and is intended to be consistent for the same component across minor revisions of the document.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>Component Identifier</b>: The unique identifier for the component.</xs:documentation>
+               <b>Component Identifier</b>: The unique identifier for the component. This identifier's uniqueness is document scoped and is intended to be consistent for the same component across minor revisions of the document.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
       <xs:attribute name="type" use="required" type="oscal-component-definition:string">
@@ -258,10 +258,10 @@
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Capability Identifier</m:formal-name>
-               <m:description>A unique identifier for a capability.</m:description>
+               <m:description>A unique identifier for a capability. This identifier's uniqueness is document scoped and is intended to be consistent for the same capability across minor revisions of the document.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>Capability Identifier</b>: A unique identifier for a capability.</xs:documentation>
+               <b>Capability Identifier</b>: A unique identifier for a capability. This identifier's uniqueness is document scoped and is intended to be consistent for the same capability across minor revisions of the document.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
       <xs:attribute name="name" use="required" type="oscal-component-definition:string">
@@ -360,10 +360,10 @@
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Control Implementation Set Identifier</m:formal-name>
-               <m:description>A unique identifier for the set of implemented controls.</m:description>
+               <m:description>A unique identifier for the set of implemented controls. This identifier's uniqueness is document scoped and is intended to be consistent for the same control implementation set across minor revisions of the document.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>Control Implementation Set Identifier</b>: A unique identifier for the set of implemented controls.</xs:documentation>
+               <b>Control Implementation Set Identifier</b>: A unique identifier for the set of implemented controls. This identifier's uniqueness is document scoped and is intended to be consistent for the same control implementation set across minor revisions of the document.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
       <xs:attribute name="source"
@@ -444,10 +444,10 @@
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Control Implementation Identifier</m:formal-name>
-               <m:description>A unique identifier for a specific control implementation.</m:description>
+               <m:description>A unique identifier for a specific control implementation. This identifier's uniqueness is document scoped and is intended to be consistent for the same control implementation across minor revisions of the document.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>Control Implementation Identifier</b>: A unique identifier for a specific control implementation.</xs:documentation>
+               <b>Control Implementation Identifier</b>: A unique identifier for a specific control implementation. This identifier's uniqueness is document scoped and is intended to be consistent for the same control implementation across minor revisions of the document.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
       <xs:attribute name="control-id"
@@ -669,10 +669,10 @@
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Component Identifier</m:formal-name>
-               <m:description>The unique identifier for the component.</m:description>
+               <m:description>The unique identifier for the component. This identifier's uniqueness is document scoped and is intended to be consistent for the same component across minor revisions of the document.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>Component Identifier</b>: The unique identifier for the component.</xs:documentation>
+               <b>Component Identifier</b>: The unique identifier for the component. This identifier's uniqueness is document scoped and is intended to be consistent for the same component across minor revisions of the document.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
       <xs:attribute name="type" use="required" type="oscal-component-definition:string">
@@ -903,10 +903,10 @@
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>User Universally Unique Identifier</m:formal-name>
-               <m:description>The unique identifier for the user class.</m:description>
+               <m:description>The unique identifier for the user class. This identifier's uniqueness is document scoped and is intended to be consistent for the same user universally unique idenfier across minor revisions of the document.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>User Universally Unique Identifier</b>: The unique identifier for the user class.</xs:documentation>
+               <b>User Universally Unique Identifier</b>: The unique identifier for the user class. This identifier's uniqueness is document scoped and is intended to be consistent for the same user universally unique idenfier across minor revisions of the document.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
@@ -1049,10 +1049,10 @@
                   <xs:annotation>
                      <xs:appinfo>
                         <m:formal-name>Component Universally Unique Identifier Reference</m:formal-name>
-                        <m:description>A reference to a component that is implemented as part of an inventory item.</m:description>
+                        <m:description>A reference to a component that is implemented as part of an inventory item. This identifier's uniqueness is document scoped and is intended to be consistent for the same component across minor revisions of the document.</m:description>
                      </xs:appinfo>
                      <xs:documentation>
-                        <b>Component Universally Unique Identifier Reference</b>: A reference to a component that is implemented as part of an inventory item.</xs:documentation>
+                        <b>Component Universally Unique Identifier Reference</b>: A reference to a component that is implemented as part of an inventory item. This identifier's uniqueness is document scoped and is intended to be consistent for the same component across minor revisions of the document.</xs:documentation>
                   </xs:annotation>
                </xs:attribute>
             </xs:complexType>
@@ -1129,10 +1129,10 @@
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Parameter ID</m:formal-name>
-               <m:description>A reference to a parameter within a control, who's catalog has been imported into the current implementation context.</m:description>
+               <m:description>A reference to a parameter within a control, who's catalog has been imported into the current implementation context. This identifier's uniqueness is document scoped and is intended to be consistent for the same param across minor revisions of the document.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>Parameter ID</b>: A reference to a parameter within a control, who's catalog has been imported into the current implementation context.</xs:documentation>
+               <b>Parameter ID</b>: A reference to a parameter within a control, who's catalog has been imported into the current implementation context. This identifier's uniqueness is document scoped and is intended to be consistent for the same param across minor revisions of the document.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
@@ -1151,10 +1151,10 @@
                <xs:annotation>
                   <xs:appinfo>
                      <m:formal-name>Identification System Type</m:formal-name>
-                     <m:description>Identifies the identification system from which the provided identifier was assigned.</m:description>
+                     <m:description>Identifies the identification system from which the provided identifier was assigned. This is a globally unique identifier and should be consistently used for a given system across revisions of the document.</m:description>
                   </xs:appinfo>
                   <xs:documentation>
-                     <b>Identification System Type</b>: Identifies the identification system from which the provided identifier was assigned.</xs:documentation>
+                     <b>Identification System Type</b>: Identifies the identification system from which the provided identifier was assigned. This is a globally unique identifier and should be consistently used for a given system across revisions of the document.</xs:documentation>
                </xs:annotation>
             </xs:attribute>
          </xs:extension>
