@@ -70,15 +70,15 @@
    <xsl:strip-space elements="j:map j:array"/>
    <!-- METASCHEMA conversion stylesheet supports JSON -> METASCHEMA/SUPERMODEL conversion -->
    <!-- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ -->
-   <!-- METASCHEMA: OSCAL Profile Model (version 1.0.0) in namespace "http://csrc.nist.gov/ns/oscal/1.0"-->
+   <!-- METASCHEMA:  in namespace "http://csrc.nist.gov/ns/oscal/1.0"-->
    <xsl:template match="j:map[@key='profile']">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="  profile" -->
-      <assembly name="profile" gi="profile" formal-name="Profile">
+      <!-- XML match="profile" -->
+      <assembly name="profile" key="profile" gi="profile">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">profile</xsl:attribute>
          </xsl:if>
-         <xsl:if test=". is /*">
+         <xsl:if test=".. is /j:map">
             <xsl:attribute name="namespace">http://csrc.nist.gov/ns/oscal/1.0</xsl:attribute>
          </xsl:if>
          <xsl:apply-templates select="*[@key='uuid']"/>
@@ -91,8 +91,8 @@
    </xsl:template>
    <xsl:template match="j:map[@key='metadata']">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="  metadata" -->
-      <assembly name="metadata" gi="metadata" formal-name="Publication metadata">
+      <!-- XML match="metadata" -->
+      <assembly name="metadata" key="metadata" gi="metadata">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">metadata</xsl:attribute>
          </xsl:if>
@@ -114,8 +114,8 @@
    </xsl:template>
    <xsl:template match="j:array[@key='props']/j:map">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="  prop" -->
-      <assembly name="property" gi="prop" formal-name="Property">
+      <!-- XML match="prop" -->
+      <assembly name="property" gi="prop">
          <xsl:apply-templates select="*[@key='name']"/>
          <xsl:apply-templates select="*[@key='uuid']"/>
          <xsl:apply-templates select="*[@key='ns']"/>
@@ -126,8 +126,8 @@
    </xsl:template>
    <xsl:template match="j:array[@key='links']/j:map">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="  link" -->
-      <assembly name="link" gi="link" formal-name="Link">
+      <!-- XML match="link" -->
+      <assembly name="link" gi="link">
          <xsl:apply-templates select="*[@key='href']"/>
          <xsl:apply-templates select="*[@key='rel']"/>
          <xsl:apply-templates select="*[@key='media-type']"/>
@@ -136,8 +136,8 @@
    </xsl:template>
    <xsl:template match="j:array[@key='roles']/j:map">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="  role" -->
-      <assembly name="role" gi="role" formal-name="Role">
+      <!-- XML match="role" -->
+      <assembly name="role" gi="role">
          <xsl:apply-templates select="*[@key='id']"/>
          <xsl:apply-templates select="*[@key='title']"/>
          <xsl:apply-templates select="*[@key='short-name']"/>
@@ -149,8 +149,8 @@
    </xsl:template>
    <xsl:template match="j:array[@key='locations']/j:map">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="  location" -->
-      <assembly name="location" gi="location" formal-name="Location">
+      <!-- XML match="location" -->
+      <assembly name="location" gi="location">
          <xsl:apply-templates select="*[@key='uuid']"/>
          <xsl:apply-templates select="*[@key='title']"/>
          <xsl:apply-templates select="*[@key='address']"/>
@@ -164,10 +164,8 @@
    </xsl:template>
    <xsl:template match="j:array[@key='parties']/j:map">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="  party" -->
-      <assembly name="party"
-                gi="party"
-                formal-name="Party (organization or person)">
+      <!-- XML match="party" -->
+      <assembly name="party" gi="party">
          <xsl:apply-templates select="*[@key='uuid']"/>
          <xsl:apply-templates select="*[@key='type']"/>
          <xsl:apply-templates select="*[@key='name']"/>
@@ -185,10 +183,8 @@
    </xsl:template>
    <xsl:template match="j:array[@key='responsible-parties']/j:map">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="  responsible-party" -->
-      <assembly name="responsible-party"
-                gi="responsible-party"
-                formal-name="Responsible Party">
+      <!-- XML match="responsible-party" -->
+      <assembly name="responsible-party" gi="responsible-party">
          <xsl:apply-templates select="*[@key='role-id']"/>
          <xsl:apply-templates select="*[@key='party-uuids']"/>
          <xsl:apply-templates select="*[@key='props']"/>
@@ -198,8 +194,8 @@
    </xsl:template>
    <xsl:template match="j:array[@key='imports']/j:map">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="  import" -->
-      <assembly name="import" gi="import" formal-name="Import resource">
+      <!-- XML match="import" -->
+      <assembly name="import" gi="import">
          <xsl:apply-templates select="*[@key='href']"/>
          <xsl:apply-templates select="*[@key='include-all']"/>
          <xsl:apply-templates select="*[@key='include-controls']"/>
@@ -208,11 +204,11 @@
    </xsl:template>
    <xsl:template match="j:map[@key='include-all']">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="  include-all" -->
+      <!-- XML match="include-all" -->
       <assembly as-type="empty"
                 name="include-all"
-                gi="include-all"
-                formal-name="Insert All">
+                key="include-all"
+                gi="include-all">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">include-all</xsl:attribute>
          </xsl:if>
@@ -220,8 +216,8 @@
    </xsl:template>
    <xsl:template match="j:map[@key='merge']">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="  merge" -->
-      <assembly name="merge" gi="merge" formal-name="Merge controls">
+      <!-- XML match="merge" -->
+      <assembly name="merge" key="merge" gi="merge">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">merge</xsl:attribute>
          </xsl:if>
@@ -232,11 +228,8 @@
    </xsl:template>
    <xsl:template match="j:map[@key='combine']">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="  combine" -->
-      <assembly as-type="empty"
-                name="combine"
-                gi="combine"
-                formal-name="Combination rule">
+      <!-- XML match="combine" -->
+      <assembly as-type="empty" name="combine" key="combine" gi="combine">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">combine</xsl:attribute>
          </xsl:if>
@@ -245,8 +238,8 @@
    </xsl:template>
    <xsl:template match="j:map[@key='custom']">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="  custom" -->
-      <assembly name="custom" gi="custom" formal-name="Custom grouping">
+      <!-- XML match="custom" -->
+      <assembly name="custom" key="custom" gi="custom">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">custom</xsl:attribute>
          </xsl:if>
@@ -254,10 +247,10 @@
          <xsl:apply-templates select="*[@key='insert-controls']"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="j:array[@key='groups']/j:map | j:array[@key='groups']/j:map//j:array[@key='groups']/j:map">
+   <xsl:template match="j:array[@key='groups']/j:map">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="  group |   group//group" -->
-      <assembly name="group" gi="group" formal-name="Control group">
+      <!-- XML match="group" -->
+      <assembly name="group" gi="group">
          <xsl:apply-templates select="*[@key='id']"/>
          <xsl:apply-templates select="*[@key='class']"/>
          <xsl:apply-templates select="*[@key='title']"/>
@@ -271,8 +264,8 @@
    </xsl:template>
    <xsl:template match="j:array[@key='params']/j:map">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="  param" -->
-      <assembly name="parameter" gi="param" formal-name="Parameter">
+      <!-- XML match="param" -->
+      <assembly name="parameter" gi="param">
          <xsl:apply-templates select="*[@key='id']"/>
          <xsl:apply-templates select="*[@key='class']"/>
          <xsl:apply-templates select="*[@key='depends-on']"/>
@@ -289,25 +282,23 @@
    </xsl:template>
    <xsl:template match="j:array[@key='constraints']/j:map">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="  constraint" -->
-      <assembly name="parameter-constraint"
-                gi="constraint"
-                formal-name="Constraint">
+      <!-- XML match="constraint" -->
+      <assembly name="parameter-constraint" gi="constraint">
          <xsl:apply-templates select="*[@key='description']"/>
          <xsl:apply-templates select="*[@key='tests']"/>
       </assembly>
    </xsl:template>
    <xsl:template match="j:array[@key='guidelines']/j:map">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="  guideline" -->
-      <assembly name="parameter-guideline" gi="guideline" formal-name="Guideline">
+      <!-- XML match="guideline" -->
+      <assembly name="parameter-guideline" gi="guideline">
          <xsl:apply-templates select="*[@key='prose']"/>
       </assembly>
    </xsl:template>
    <xsl:template match="j:map[@key='select']">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="  select" -->
-      <assembly name="parameter-selection" gi="select" formal-name="Selection">
+      <!-- XML match="select" -->
+      <assembly name="parameter-selection" key="select" gi="select">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">select</xsl:attribute>
          </xsl:if>
@@ -315,10 +306,10 @@
          <xsl:apply-templates select="*[@key='choice']"/>
       </assembly>
    </xsl:template>
-   <xsl:template match="j:array[@key='parts']/j:map | j:array[@key='parts']/j:map//j:array[@key='parts']/j:map">
+   <xsl:template match="j:array[@key='parts']/j:map">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="  part |   part//part" -->
-      <assembly name="part" gi="part" formal-name="Part">
+      <!-- XML match="part" -->
+      <assembly name="part" gi="part">
          <xsl:apply-templates select="*[@key='id']"/>
          <xsl:apply-templates select="*[@key='name']"/>
          <xsl:apply-templates select="*[@key='ns']"/>
@@ -332,10 +323,8 @@
    </xsl:template>
    <xsl:template match="j:array[@key='insert-controls']/j:map">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="  insert-controls" -->
-      <assembly name="insert-controls"
-                gi="insert-controls"
-                formal-name="Select controls">
+      <!-- XML match="insert-controls" -->
+      <assembly name="insert-controls" gi="insert-controls">
          <xsl:apply-templates select="*[@key='order']"/>
          <xsl:apply-templates select="*[@key='include-all']"/>
          <xsl:apply-templates select="*[@key='include-controls']"/>
@@ -344,8 +333,8 @@
    </xsl:template>
    <xsl:template match="j:map[@key='modify']">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="  modify" -->
-      <assembly name="modify" gi="modify" formal-name="Modify controls">
+      <!-- XML match="modify" -->
+      <assembly name="modify" key="modify" gi="modify">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">modify</xsl:attribute>
          </xsl:if>
@@ -355,8 +344,8 @@
    </xsl:template>
    <xsl:template match="j:array[@key='alters']/j:map">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="  alter" -->
-      <assembly name="alter" gi="alter" formal-name="Alteration">
+      <!-- XML match="alter" -->
+      <assembly name="alter" gi="alter">
          <xsl:apply-templates select="*[@key='control-id']"/>
          <xsl:apply-templates select="*[@key='removes']"/>
          <xsl:apply-templates select="*[@key='adds']"/>
@@ -364,8 +353,8 @@
    </xsl:template>
    <xsl:template match="j:array[@key='removes']/j:map">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="  remove" -->
-      <assembly as-type="empty" name="remove" gi="remove" formal-name="Removal">
+      <!-- XML match="remove" -->
+      <assembly as-type="empty" name="remove" gi="remove">
          <xsl:apply-templates select="*[@key='by-name']"/>
          <xsl:apply-templates select="*[@key='by-class']"/>
          <xsl:apply-templates select="*[@key='by-id']"/>
@@ -375,8 +364,8 @@
    </xsl:template>
    <xsl:template match="j:array[@key='adds']/j:map">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="  add" -->
-      <assembly name="add" gi="add" formal-name="Addition">
+      <!-- XML match="add" -->
+      <assembly name="add" gi="add">
          <xsl:apply-templates select="*[@key='position']"/>
          <xsl:apply-templates select="*[@key='by-id']"/>
          <xsl:apply-templates select="*[@key='title']"/>
@@ -388,8 +377,8 @@
    </xsl:template>
    <xsl:template match="j:map[@key='back-matter']">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="  back-matter" -->
-      <assembly name="back-matter" gi="back-matter" formal-name="Back matter">
+      <!-- XML match="back-matter" -->
+      <assembly name="back-matter" key="back-matter" gi="back-matter">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">back-matter</xsl:attribute>
          </xsl:if>
@@ -398,11 +387,13 @@
    </xsl:template>
    <xsl:template match="j:string[@key='remarks']">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="  remarks" -->
-      <field name="remarks"
-             gi="remarks"
+      <!-- XML match="remarks" -->
+      <field in-xml="WITH_WRAPPER"
+             collapsible="no"
              as-type="markup-multiline"
-             formal-name="Remarks"
+             name="remarks"
+             key="remarks"
+             gi="remarks"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">remarks</xsl:attribute>
@@ -419,11 +410,11 @@
    </xsl:template>
    <xsl:template match="j:array[@key='location-uuids']/j:string">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="  location-uuid" -->
-      <field name="location-uuid"
-             gi="location-uuid"
+      <!-- XML match="location-uuid" -->
+      <field collapsible="no"
              as-type="uuid"
-             formal-name="Location Reference"
+             name="location-uuid"
+             gi="location-uuid"
              in-json="SCALAR">
          <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
@@ -437,11 +428,11 @@
    </xsl:template>
    <xsl:template match="j:array[@key='party-uuids']/j:string">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="  party-uuid" -->
-      <field name="party-uuid"
-             gi="party-uuid"
+      <!-- XML match="party-uuid" -->
+      <field collapsible="no"
              as-type="uuid"
-             formal-name="Party Reference"
+             name="party-uuid"
+             gi="party-uuid"
              in-json="SCALAR">
          <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
@@ -455,11 +446,12 @@
    </xsl:template>
    <xsl:template match="j:boolean[@key='as-is']">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="  as-is" -->
-      <field name="as-is"
-             gi="as-is"
+      <!-- XML match="as-is" -->
+      <field collapsible="no"
              as-type="boolean"
-             formal-name="As is"
+             name="as-is"
+             key="as-is"
+             gi="as-is"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">as-is</xsl:attribute>
@@ -476,10 +468,11 @@
    </xsl:template>
    <xsl:template match="(j:string[@key='value'] | j:string[@key='value'] | j:string[@key='value'] | j:string[@key='value'] | j:string[@key='value'] | j:string[@key='value'] | j:string[@key='value'] | j:array[@key='values']/j:string | j:string[@key='value'] | j:string[@key='value'] | j:string[@key='value'] | j:array[@key='values']/j:string | j:string[@key='value'] | j:array[@key='values']/j:string | j:string[@key='value'] | j:string[@key='value'] | j:string[@key='value'] | j:string[@key='value'])">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="  value" -->
-      <field name="parameter-value"
+      <!-- XML match="value" -->
+      <field collapsible="no"
+             as-type="string"
+             name="parameter-value"
              gi="value"
-             formal-name="Parameter Value"
              in-json="SCALAR">
          <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
@@ -493,55 +486,60 @@
    </xsl:template>
    <xsl:template match="j:array[@key='hashes']/j:map">
       <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="  hash" -->
-      <field name="hash" gi="hash" formal-name="Hash">
+      <!-- XML match="hash" -->
+      <field collapsible="no" as-type="string" name="hash" gi="hash">
          <xsl:apply-templates select="*[@key='algorithm']"/>
          <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
    </xsl:template>
-   <!-- matching   hash-->
+   <!-- matching hash-->
    <xsl:template match="j:array[@key='hashes']/j:map" mode="get-value-property">
       <value as-type="string" key="value" in-json="string">
          <xsl:apply-templates mode="keep-value-property"/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='profile']/j:string[@key='uuid'] | j:array[@key='props']/j:map/j:string[@key='uuid'] | j:array[@key='locations']/j:map/j:string[@key='uuid'] | j:array[@key='parties']/j:map/j:string[@key='uuid'] | j:map[@key='profile']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:string[@key='uuid']"><!-- XML match="profile/@uuid | prop/@uuid | location/@uuid | party/@uuid | profile/back-matter/resource/@uuid" -->
+   <xsl:template match="j:map[@key='profile']/j:string[@key='uuid']"><!-- XML match="profile/@uuid" -->
       <flag in-json="string"
             as-type="uuid"
             name="uuid"
             key="uuid"
-            gi="uuid"
-            formal-name="Catalog Universally Unique Identifier">
+            gi="uuid">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
-   <xsl:template match="j:map[@key='profile']/j:string[@key='uuid'] | j:array[@key='props']/j:map/j:string[@key='uuid'] | j:array[@key='locations']/j:map/j:string[@key='uuid'] | j:array[@key='parties']/j:map/j:string[@key='uuid'] | j:map[@key='profile']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:string[@key='uuid']"
+   <xsl:template match="j:map[@key='profile']/j:string[@key='uuid']"
                  mode="keep-value-property"
                  priority="3"><!-- Not keeping the flag here. --></xsl:template>
-   <xsl:template match="j:array[@key='props']/j:map/j:string[@key='name'] | j:array[@key='parts']/j:map/j:string[@key='name'] | j:array[@key='parts']/j:map//j:array[@key='parts']/j:map/()"><!-- XML match="prop/@name | part/@name | part//part/@name" -->
+   <xsl:template match="j:array[@key='props']/j:map/j:string[@key='name']"><!-- XML match="prop/@name" -->
       <flag in-json="string"
             as-type="token"
             name="name"
             key="name"
-            gi="name"
-            formal-name="Property Name">
+            gi="name">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
-   <xsl:template match="j:array[@key='props']/j:map/j:string[@key='name'] | j:array[@key='parts']/j:map/j:string[@key='name'] | j:array[@key='parts']/j:map//j:array[@key='parts']/j:map/()"
+   <xsl:template match="j:array[@key='props']/j:map/j:string[@key='name']"
                  mode="keep-value-property"
                  priority="8"><!-- Not keeping the flag here. --></xsl:template>
-   <xsl:template match="j:array[@key='props']/j:map/j:string[@key='ns'] | j:array[@key='parts']/j:map/j:string[@key='ns'] | j:array[@key='parts']/j:map//j:array[@key='parts']/j:map/()"><!-- XML match="prop/@ns | part/@ns | part//part/@ns" -->
+   <xsl:template match="j:array[@key='props']/j:map/j:string[@key='uuid']"><!-- XML match="prop/@uuid" -->
       <flag in-json="string"
-            as-type="uri"
-            name="ns"
-            key="ns"
-            gi="ns"
-            formal-name="Property Namespace">
+            as-type="uuid"
+            name="uuid"
+            key="uuid"
+            gi="uuid">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
-   <xsl:template match="j:array[@key='props']/j:map/j:string[@key='ns'] | j:array[@key='parts']/j:map/j:string[@key='ns'] | j:array[@key='parts']/j:map//j:array[@key='parts']/j:map/()"
+   <xsl:template match="j:array[@key='props']/j:map/j:string[@key='uuid']"
+                 mode="keep-value-property"
+                 priority="8"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:array[@key='props']/j:map/j:string[@key='ns']"><!-- XML match="prop/@ns" -->
+      <flag in-json="string" as-type="uri" name="ns" key="ns" gi="ns">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:array[@key='props']/j:map/j:string[@key='ns']"
                  mode="keep-value-property"
                  priority="8"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:array[@key='props']/j:map/j:string[@key='value']"><!-- XML match="prop/@value" -->
@@ -549,38 +547,35 @@
             as-type="string"
             name="value"
             key="value"
-            gi="value"
-            formal-name="Property Value">
+            gi="value">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
    <xsl:template match="j:array[@key='props']/j:map/j:string[@key='value']"
                  mode="keep-value-property"
                  priority="8"><!-- Not keeping the flag here. --></xsl:template>
-   <xsl:template match="j:array[@key='props']/j:map/j:string[@key='class'] | j:array[@key='groups']/j:map/j:string[@key='class'] | j:array[@key='groups']/j:map//j:array[@key='groups']/j:map/()| j:array[@key='params']/j:map/j:string[@key='class'] | j:array[@key='parts']/j:map/j:string[@key='class'] | j:array[@key='parts']/j:map//j:array[@key='parts']/j:map/()| j:map[@key='profile']/j:map[@key='modify']/j:array[@key='set-parameters']/j:map/j:string[@key='class']"><!-- XML match="prop/@class | group/@class | group//group/@class | param/@class | part/@class | part//part/@class | profile/modify/set-parameter/@class" -->
+   <xsl:template match="j:array[@key='props']/j:map/j:string[@key='class']"><!-- XML match="prop/@class" -->
       <flag in-json="string"
             as-type="token"
             name="class"
             key="class"
-            gi="class"
-            formal-name="Property Class">
+            gi="class">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
-   <xsl:template match="j:array[@key='props']/j:map/j:string[@key='class'] | j:array[@key='groups']/j:map/j:string[@key='class'] | j:array[@key='groups']/j:map//j:array[@key='groups']/j:map/()| j:array[@key='params']/j:map/j:string[@key='class'] | j:array[@key='parts']/j:map/j:string[@key='class'] | j:array[@key='parts']/j:map//j:array[@key='parts']/j:map/()| j:map[@key='profile']/j:map[@key='modify']/j:array[@key='set-parameters']/j:map/j:string[@key='class']"
+   <xsl:template match="j:array[@key='props']/j:map/j:string[@key='class']"
                  mode="keep-value-property"
                  priority="8"><!-- Not keeping the flag here. --></xsl:template>
-   <xsl:template match="j:array[@key='links']/j:map/j:string[@key='href'] | j:array[@key='imports']/j:map/j:string[@key='href'] | j:map[@key='profile']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:array[@key='rlinks']/j:map/j:string[@key='href']"><!-- XML match="link/@href | import/@href | profile/back-matter/resource/rlink/@href" -->
+   <xsl:template match="j:array[@key='links']/j:map/j:string[@key='href']"><!-- XML match="link/@href" -->
       <flag in-json="string"
             as-type="uri-reference"
             name="href"
             key="href"
-            gi="href"
-            formal-name="Hypertext Reference">
+            gi="href">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
-   <xsl:template match="j:array[@key='links']/j:map/j:string[@key='href'] | j:array[@key='imports']/j:map/j:string[@key='href'] | j:map[@key='profile']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:array[@key='rlinks']/j:map/j:string[@key='href']"
+   <xsl:template match="j:array[@key='links']/j:map/j:string[@key='href']"
                  mode="keep-value-property"
                  priority="8"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:array[@key='links']/j:map/j:string[@key='rel']"><!-- XML match="link/@rel" -->
@@ -588,79 +583,118 @@
             as-type="token"
             name="rel"
             key="rel"
-            gi="rel"
-            formal-name="Relation">
+            gi="rel">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
    <xsl:template match="j:array[@key='links']/j:map/j:string[@key='rel']"
                  mode="keep-value-property"
                  priority="8"><!-- Not keeping the flag here. --></xsl:template>
-   <xsl:template match="j:array[@key='links']/j:map/j:string[@key='media-type'] | j:map[@key='profile']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:array[@key='rlinks']/j:map/j:string[@key='media-type'] | j:map[@key='profile']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:map[@key='base64']/j:string[@key='media-type']"><!-- XML match="link/@media-type | profile/back-matter/resource/rlink/@media-type | profile/back-matter/resource/base64/@media-type" -->
+   <xsl:template match="j:array[@key='links']/j:map/j:string[@key='media-type']"><!-- XML match="link/@media-type" -->
       <flag in-json="string"
             as-type="string"
             name="media-type"
             key="media-type"
-            gi="media-type"
-            formal-name="Media Type">
+            gi="media-type">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
-   <xsl:template match="j:array[@key='links']/j:map/j:string[@key='media-type'] | j:map[@key='profile']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:array[@key='rlinks']/j:map/j:string[@key='media-type'] | j:map[@key='profile']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:map[@key='base64']/j:string[@key='media-type']"
+   <xsl:template match="j:array[@key='links']/j:map/j:string[@key='media-type']"
                  mode="keep-value-property"
                  priority="8"><!-- Not keeping the flag here. --></xsl:template>
-   <xsl:template match="j:map[@key='profile']/j:map[@key='metadata']/j:array[@key='document-ids']/j:map/j:string[@key='scheme'] | j:map[@key='profile']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='external-ids']/j:map/j:string[@key='scheme'] | j:map[@key='profile']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:array[@key='document-ids']/j:map/j:string[@key='scheme']"
-                 priority="6"><!-- XML match="profile/metadata/document-id/@scheme | profile/metadata/party/external-id/@scheme | profile/back-matter/resource/document-id/@scheme" -->
+   <xsl:template match="j:map[@key='profile']/j:map[@key='metadata']/j:array[@key='document-ids']/j:map/j:string[@key='scheme'] | j:map[@key='profile']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:array[@key='document-ids']/j:map/j:string[@key='scheme']"
+                 priority="6"><!-- XML match="profile/metadata/document-id/@scheme | profile/back-matter/resource/document-id/@scheme" -->
       <flag in-json="string"
             as-type="uri"
             name="scheme"
             key="scheme"
-            gi="scheme"
-            formal-name="Document Identification Scheme">
+            gi="scheme">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
-   <xsl:template match="j:map[@key='profile']/j:map[@key='metadata']/j:array[@key='document-ids']/j:map/j:string[@key='scheme'] | j:map[@key='profile']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='external-ids']/j:map/j:string[@key='scheme'] | j:map[@key='profile']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:array[@key='document-ids']/j:map/j:string[@key='scheme']"
+   <xsl:template match="j:map[@key='profile']/j:map[@key='metadata']/j:array[@key='document-ids']/j:map/j:string[@key='scheme'] | j:map[@key='profile']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:array[@key='document-ids']/j:map/j:string[@key='scheme']"
                  mode="keep-value-property"
                  priority="6"><!-- Not keeping the flag here. --></xsl:template>
-   <xsl:template match="j:array[@key='roles']/j:map/j:string[@key='id'] | j:array[@key='groups']/j:map/j:string[@key='id'] | j:array[@key='groups']/j:map//j:array[@key='groups']/j:map/()| j:array[@key='params']/j:map/j:string[@key='id'] | j:array[@key='parts']/j:map/j:string[@key='id'] | j:array[@key='parts']/j:map//j:array[@key='parts']/j:map/()"><!-- XML match="role/@id | group/@id | group//group/@id | param/@id | part/@id | part//part/@id" -->
-      <flag in-json="string"
-            as-type="token"
-            name="id"
-            key="id"
-            gi="id"
-            formal-name="Role Identifier">
+   <xsl:template match="j:array[@key='roles']/j:map/j:string[@key='id']"><!-- XML match="role/@id" -->
+      <flag in-json="string" as-type="token" name="id" key="id" gi="id">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
-   <xsl:template match="j:array[@key='roles']/j:map/j:string[@key='id'] | j:array[@key='groups']/j:map/j:string[@key='id'] | j:array[@key='groups']/j:map//j:array[@key='groups']/j:map/()| j:array[@key='params']/j:map/j:string[@key='id'] | j:array[@key='parts']/j:map/j:string[@key='id'] | j:array[@key='parts']/j:map//j:array[@key='parts']/j:map/()"
+   <xsl:template match="j:array[@key='roles']/j:map/j:string[@key='id']"
+                 mode="keep-value-property"
+                 priority="6"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:array[@key='locations']/j:map/j:string[@key='uuid']"><!-- XML match="location/@uuid" -->
+      <flag in-json="string"
+            as-type="uuid"
+            name="uuid"
+            key="uuid"
+            gi="uuid">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:array[@key='locations']/j:map/j:string[@key='uuid']"
                  mode="keep-value-property"
                  priority="6"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:map[@key='profile']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:map[@key='address']/j:string[@key='type'] | j:map[@key='profile']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='addresses']/j:map/j:string[@key='type']"><!-- XML match="profile/metadata/location/address/@type | profile/metadata/party/address/@type" -->
       <flag in-json="string"
             as-type="token"
-            name="oscal-metadata-location-type"
+            name="location-type"
             key="type"
-            gi="type"
-            formal-name="Address Type">
+            gi="type">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
    <xsl:template match="j:map[@key='profile']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:map[@key='address']/j:string[@key='type'] | j:map[@key='profile']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='addresses']/j:map/j:string[@key='type']"
                  mode="keep-value-property"
                  priority="7"><!-- Not keeping the flag here. --></xsl:template>
-   <xsl:template match="j:map[@key='profile']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:array[@key='telephone-numbers']/j:map/j:string[@key='type'] | j:array[@key='parties']/j:map/j:string[@key='type'] | j:map[@key='profile']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='telephone-numbers']/j:map/j:string[@key='type']"
-                 priority="8"><!-- XML match="profile/metadata/location/telephone-number/@type | party/@type | profile/metadata/party/telephone-number/@type" -->
+   <xsl:template match="j:map[@key='profile']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:array[@key='telephone-numbers']/j:map/j:string[@key='type'] | j:map[@key='profile']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='telephone-numbers']/j:map/j:string[@key='type']"
+                 priority="8"><!-- XML match="profile/metadata/location/telephone-number/@type | profile/metadata/party/telephone-number/@type" -->
       <flag in-json="string"
             as-type="string"
             name="type"
             key="type"
-            gi="type"
-            formal-name="type flag">
+            gi="type">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
-   <xsl:template match="j:map[@key='profile']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:array[@key='telephone-numbers']/j:map/j:string[@key='type'] | j:array[@key='parties']/j:map/j:string[@key='type'] | j:map[@key='profile']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='telephone-numbers']/j:map/j:string[@key='type']"
+   <xsl:template match="j:map[@key='profile']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:array[@key='telephone-numbers']/j:map/j:string[@key='type'] | j:map[@key='profile']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='telephone-numbers']/j:map/j:string[@key='type']"
+                 mode="keep-value-property"
+                 priority="8"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:array[@key='parties']/j:map/j:string[@key='uuid']"><!-- XML match="party/@uuid" -->
+      <flag in-json="string"
+            as-type="uuid"
+            name="uuid"
+            key="uuid"
+            gi="uuid">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:array[@key='parties']/j:map/j:string[@key='uuid']"
+                 mode="keep-value-property"
+                 priority="6"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:array[@key='parties']/j:map/j:string[@key='type']"><!-- XML match="party/@type" -->
+      <flag in-json="string"
+            as-type="string"
+            name="type"
+            key="type"
+            gi="type">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:array[@key='parties']/j:map/j:string[@key='type']"
+                 mode="keep-value-property"
+                 priority="6"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:map[@key='profile']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='external-ids']/j:map/j:string[@key='scheme']"
+                 priority="8"><!-- XML match="profile/metadata/party/external-id/@scheme" -->
+      <flag in-json="string"
+            as-type="uri"
+            name="scheme"
+            key="scheme"
+            gi="scheme">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:map[@key='profile']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='external-ids']/j:map/j:string[@key='scheme']"
                  mode="keep-value-property"
                  priority="8"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:array[@key='responsible-parties']/j:map/j:string[@key='role-id']"><!-- XML match="responsible-party/@role-id" -->
@@ -668,21 +702,31 @@
             as-type="token"
             name="role-id"
             key="role-id"
-            gi="role-id"
-            formal-name="Responsible Role">
+            gi="role-id">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
    <xsl:template match="j:array[@key='responsible-parties']/j:map/j:string[@key='role-id']"
                  mode="keep-value-property"
                  priority="6"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:array[@key='imports']/j:map/j:string[@key='href']"><!-- XML match="import/@href" -->
+      <flag in-json="string"
+            as-type="uri-reference"
+            name="href"
+            key="href"
+            gi="href">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:array[@key='imports']/j:map/j:string[@key='href']"
+                 mode="keep-value-property"
+                 priority="5"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:map[@key='profile']/j:array[@key='imports']/j:map/j:array[@key='include-controls']/j:map/j:string[@key='with-child-controls'] | j:map[@key='profile']/j:array[@key='imports']/j:map/j:array[@key='exclude-controls']/j:map/j:string[@key='with-child-controls'] | j:map[@key='profile']/j:map[@key='merge']/j:map[@key='custom']//j:array[@key='groups']/j:map/j:array[@key='insert-controls']/j:map/j:array[@key='include-controls']/j:map/j:string[@key='with-child-controls'] | j:map[@key='profile']/j:map[@key='merge']/j:map[@key='custom']//j:array[@key='groups']/j:map/j:array[@key='insert-controls']/j:map/j:array[@key='exclude-controls']/j:map/j:string[@key='with-child-controls'] | j:map[@key='profile']/j:map[@key='merge']/j:map[@key='custom']/j:array[@key='insert-controls']/j:map/j:array[@key='include-controls']/j:map/j:string[@key='with-child-controls'] | j:map[@key='profile']/j:map[@key='merge']/j:map[@key='custom']/j:array[@key='insert-controls']/j:map/j:array[@key='exclude-controls']/j:map/j:string[@key='with-child-controls']"><!-- XML match="profile/import/include-controls/@with-child-controls | profile/import/exclude-controls/@with-child-controls | profile/merge/custom//group/insert-controls/include-controls/@with-child-controls | profile/merge/custom//group/insert-controls/exclude-controls/@with-child-controls | profile/merge/custom/insert-controls/include-controls/@with-child-controls | profile/merge/custom/insert-controls/exclude-controls/@with-child-controls" -->
       <flag in-json="string"
             as-type="token"
             name="with-child-controls"
             key="with-child-controls"
-            gi="with-child-controls"
-            formal-name="Include contained controls with control">
+            gi="with-child-controls">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
@@ -694,8 +738,7 @@
             as-type="string"
             name="pattern"
             key="pattern"
-            gi="pattern"
-            formal-name="Pattern">
+            gi="pattern">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
@@ -707,25 +750,63 @@
             as-type="string"
             name="method"
             key="method"
-            gi="method"
-            formal-name="Combination method">
+            gi="method">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
    <xsl:template match="j:map[@key='combine']/j:string[@key='method']"
                  mode="keep-value-property"
                  priority="5"><!-- Not keeping the flag here. --></xsl:template>
-   <xsl:template match="j:array[@key='params']/j:map/j:string[@key='depends-on'] | j:map[@key='profile']/j:map[@key='modify']/j:array[@key='set-parameters']/j:map/j:string[@key='depends-on']"><!-- XML match="param/@depends-on | profile/modify/set-parameter/@depends-on" -->
+   <xsl:template match="j:array[@key='groups']/j:map/j:string[@key='id']"><!-- XML match="group/@id" -->
+      <flag in-json="string" as-type="token" name="id" key="id" gi="id">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:array[@key='groups']/j:map/j:string[@key='id']"
+                 mode="keep-value-property"
+                 priority="8"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:array[@key='groups']/j:map/j:string[@key='class']"><!-- XML match="group/@class" -->
+      <flag in-json="string"
+            as-type="token"
+            name="class"
+            key="class"
+            gi="class">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:array[@key='groups']/j:map/j:string[@key='class']"
+                 mode="keep-value-property"
+                 priority="8"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:array[@key='params']/j:map/j:string[@key='id']"><!-- XML match="param/@id" -->
+      <flag in-json="string" as-type="token" name="id" key="id" gi="id">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:array[@key='params']/j:map/j:string[@key='id']"
+                 mode="keep-value-property"
+                 priority="10"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:array[@key='params']/j:map/j:string[@key='class']"><!-- XML match="param/@class" -->
+      <flag in-json="string"
+            as-type="token"
+            name="class"
+            key="class"
+            gi="class">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:array[@key='params']/j:map/j:string[@key='class']"
+                 mode="keep-value-property"
+                 priority="10"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:array[@key='params']/j:map/j:string[@key='depends-on']"><!-- XML match="param/@depends-on" -->
       <flag in-json="string"
             as-type="token"
             name="depends-on"
             key="depends-on"
-            gi="depends-on"
-            formal-name="Depends on">
+            gi="depends-on">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
-   <xsl:template match="j:array[@key='params']/j:map/j:string[@key='depends-on'] | j:map[@key='profile']/j:map[@key='modify']/j:array[@key='set-parameters']/j:map/j:string[@key='depends-on']"
+   <xsl:template match="j:array[@key='params']/j:map/j:string[@key='depends-on']"
                  mode="keep-value-property"
                  priority="10"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:map[@key='select']/j:string[@key='how-many']"><!-- XML match="select/@how-many" -->
@@ -733,21 +814,59 @@
             as-type="token"
             name="how-many"
             key="how-many"
-            gi="how-many"
-            formal-name="Parameter Cardinality">
+            gi="how-many">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
    <xsl:template match="j:map[@key='select']/j:string[@key='how-many']"
                  mode="keep-value-property"
                  priority="12"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:array[@key='parts']/j:map/j:string[@key='id']"><!-- XML match="part/@id" -->
+      <flag in-json="string" as-type="token" name="id" key="id" gi="id">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:array[@key='parts']/j:map/j:string[@key='id']"
+                 mode="keep-value-property"
+                 priority="10"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:array[@key='parts']/j:map/j:string[@key='name']"><!-- XML match="part/@name" -->
+      <flag in-json="string"
+            as-type="token"
+            name="name"
+            key="name"
+            gi="name">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:array[@key='parts']/j:map/j:string[@key='name']"
+                 mode="keep-value-property"
+                 priority="10"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:array[@key='parts']/j:map/j:string[@key='ns']"><!-- XML match="part/@ns" -->
+      <flag in-json="string" as-type="uri" name="ns" key="ns" gi="ns">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:array[@key='parts']/j:map/j:string[@key='ns']"
+                 mode="keep-value-property"
+                 priority="10"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:array[@key='parts']/j:map/j:string[@key='class']"><!-- XML match="part/@class" -->
+      <flag in-json="string"
+            as-type="token"
+            name="class"
+            key="class"
+            gi="class">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:array[@key='parts']/j:map/j:string[@key='class']"
+                 mode="keep-value-property"
+                 priority="10"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:array[@key='insert-controls']/j:map/j:string[@key='order']"><!-- XML match="insert-controls/@order" -->
       <flag in-json="string"
             as-type="token"
             name="order"
             key="order"
-            gi="order"
-            formal-name="Order">
+            gi="order">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
@@ -760,12 +879,36 @@
             as-type="token"
             name="param-id"
             key="param-id"
-            gi="param-id"
-            formal-name="Parameter ID">
+            gi="param-id">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
    <xsl:template match="j:map[@key='profile']/j:map[@key='modify']/j:array[@key='set-parameters']/j:map/j:string[@key='param-id']"
+                 mode="keep-value-property"
+                 priority="6"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:map[@key='profile']/j:map[@key='modify']/j:array[@key='set-parameters']/j:map/j:string[@key='class']"
+                 priority="6"><!-- XML match="profile/modify/set-parameter/@class" -->
+      <flag in-json="string"
+            as-type="token"
+            name="class"
+            key="class"
+            gi="class">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:map[@key='profile']/j:map[@key='modify']/j:array[@key='set-parameters']/j:map/j:string[@key='class']"
+                 mode="keep-value-property"
+                 priority="6"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:map[@key='profile']/j:map[@key='modify']/j:array[@key='set-parameters']/j:map/j:string[@key='depends-on']"><!-- XML match="profile/modify/set-parameter/@depends-on" -->
+      <flag in-json="string"
+            as-type="token"
+            name="depends-on"
+            key="depends-on"
+            gi="depends-on">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:map[@key='profile']/j:map[@key='modify']/j:array[@key='set-parameters']/j:map/j:string[@key='depends-on']"
                  mode="keep-value-property"
                  priority="6"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:array[@key='alters']/j:map/j:string[@key='control-id']"><!-- XML match="alter/@control-id" -->
@@ -773,8 +916,7 @@
             as-type="token"
             name="control-id"
             key="control-id"
-            gi="control-id"
-            formal-name="Control Identifier Reference">
+            gi="control-id">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
@@ -786,8 +928,7 @@
             as-type="token"
             name="by-name"
             key="by-name"
-            gi="by-name"
-            formal-name="Reference by (assigned) name">
+            gi="by-name">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
@@ -799,25 +940,23 @@
             as-type="token"
             name="by-class"
             key="by-class"
-            gi="by-class"
-            formal-name="Reference by class">
+            gi="by-class">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
    <xsl:template match="j:array[@key='removes']/j:map/j:string[@key='by-class']"
                  mode="keep-value-property"
                  priority="8"><!-- Not keeping the flag here. --></xsl:template>
-   <xsl:template match="j:array[@key='removes']/j:map/j:string[@key='by-id'] | j:array[@key='adds']/j:map/j:string[@key='by-id']"><!-- XML match="remove/@by-id | add/@by-id" -->
+   <xsl:template match="j:array[@key='removes']/j:map/j:string[@key='by-id']"><!-- XML match="remove/@by-id" -->
       <flag in-json="string"
             as-type="token"
             name="by-id"
             key="by-id"
-            gi="by-id"
-            formal-name="Reference by ID">
+            gi="by-id">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
-   <xsl:template match="j:array[@key='removes']/j:map/j:string[@key='by-id'] | j:array[@key='adds']/j:map/j:string[@key='by-id']"
+   <xsl:template match="j:array[@key='removes']/j:map/j:string[@key='by-id']"
                  mode="keep-value-property"
                  priority="8"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:array[@key='removes']/j:map/j:string[@key='by-item-name']"><!-- XML match="remove/@by-item-name" -->
@@ -825,8 +964,7 @@
             as-type="token"
             name="by-item-name"
             key="by-item-name"
-            gi="by-item-name"
-            formal-name="Item Name Reference">
+            gi="by-item-name">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
@@ -838,8 +976,7 @@
             as-type="token"
             name="by-ns"
             key="by-ns"
-            gi="by-ns"
-            formal-name="Item Namespace Reference">
+            gi="by-ns">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
@@ -851,12 +988,61 @@
             as-type="token"
             name="position"
             key="position"
-            gi="position"
-            formal-name="Position">
+            gi="position">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
    <xsl:template match="j:array[@key='adds']/j:map/j:string[@key='position']"
+                 mode="keep-value-property"
+                 priority="8"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:array[@key='adds']/j:map/j:string[@key='by-id']"><!-- XML match="add/@by-id" -->
+      <flag in-json="string"
+            as-type="token"
+            name="by-id"
+            key="by-id"
+            gi="by-id">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:array[@key='adds']/j:map/j:string[@key='by-id']"
+                 mode="keep-value-property"
+                 priority="8"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:map[@key='profile']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:string[@key='uuid']"
+                 priority="6"><!-- XML match="profile/back-matter/resource/@uuid" -->
+      <flag in-json="string"
+            as-type="uuid"
+            name="uuid"
+            key="uuid"
+            gi="uuid">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:map[@key='profile']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:string[@key='uuid']"
+                 mode="keep-value-property"
+                 priority="6"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:map[@key='profile']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:array[@key='rlinks']/j:map/j:string[@key='href']"
+                 priority="8"><!-- XML match="profile/back-matter/resource/rlink/@href" -->
+      <flag in-json="string"
+            as-type="uri-reference"
+            name="href"
+            key="href"
+            gi="href">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:map[@key='profile']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:array[@key='rlinks']/j:map/j:string[@key='href']"
+                 mode="keep-value-property"
+                 priority="8"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:map[@key='profile']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:array[@key='rlinks']/j:map/j:string[@key='media-type']"><!-- XML match="profile/back-matter/resource/rlink/@media-type" -->
+      <flag in-json="string"
+            as-type="string"
+            name="media-type"
+            key="media-type"
+            gi="media-type">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:map[@key='profile']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:array[@key='rlinks']/j:map/j:string[@key='media-type']"
                  mode="keep-value-property"
                  priority="8"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:array[@key='hashes']/j:map/j:string[@key='algorithm']"><!-- XML match="hash/@algorithm" -->
@@ -864,8 +1050,7 @@
             as-type="string"
             name="algorithm"
             key="algorithm"
-            gi="algorithm"
-            formal-name="Hash algorithm">
+            gi="algorithm">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
@@ -878,22 +1063,34 @@
             as-type="uri-reference"
             name="filename"
             key="filename"
-            gi="filename"
-            formal-name="File Name">
+            gi="filename">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
    <xsl:template match="j:map[@key='profile']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:map[@key='base64']/j:string[@key='filename']"
                  mode="keep-value-property"
                  priority="7"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:map[@key='profile']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:map[@key='base64']/j:string[@key='media-type']"><!-- XML match="profile/back-matter/resource/base64/@media-type" -->
+      <flag in-json="string"
+            as-type="string"
+            name="media-type"
+            key="media-type"
+            gi="media-type">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:map[@key='profile']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:map[@key='base64']/j:string[@key='media-type']"
+                 mode="keep-value-property"
+                 priority="7"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:map[@key='profile']/j:map[@key='metadata']/j:string[@key='title']"
                  priority="4">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/metadata/title" -->
-      <field name="title"
-             gi="title"
+      <field collapsible="no"
              as-type="markup-line"
-             formal-name="Document Title"
+             name="title"
+             key="title"
+             gi="title"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
@@ -912,10 +1109,11 @@
                  priority="4">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/metadata/published" -->
-      <field name="oscal-metadata-published"
-             gi="published"
+      <field collapsible="no"
              as-type="dateTime-with-timezone"
-             formal-name="Publication Timestamp"
+             name="published"
+             key="published"
+             gi="published"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">published</xsl:attribute>
@@ -934,10 +1132,11 @@
                  priority="4">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/metadata/last-modified" -->
-      <field name="oscal-metadata-last-modified"
-             gi="last-modified"
+      <field collapsible="no"
              as-type="dateTime-with-timezone"
-             formal-name="Last Modified Timestamp"
+             name="last-modified"
+             key="last-modified"
+             gi="last-modified"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">last-modified</xsl:attribute>
@@ -956,9 +1155,11 @@
                  priority="4">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/metadata/version" -->
-      <field name="oscal-metadata-version"
+      <field collapsible="no"
+             as-type="string"
+             name="version"
+             key="version"
              gi="version"
-             formal-name="Document Version"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">version</xsl:attribute>
@@ -977,9 +1178,11 @@
                  priority="4">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/metadata/oscal-version" -->
-      <field name="oscal-metadata-oscal-version"
+      <field collapsible="no"
+             as-type="string"
+             name="oscal-version"
+             key="oscal-version"
              gi="oscal-version"
-             formal-name="OSCAL version"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">oscal-version</xsl:attribute>
@@ -998,9 +1201,7 @@
                  priority="5">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/metadata/revisions/revision" -->
-      <assembly name="oscal-metadata-revision"
-                gi="revision"
-                formal-name="Revision History Entry">
+      <assembly name="revision" gi="revision">
          <xsl:apply-templates select="*[@key='title']"/>
          <xsl:apply-templates select="*[@key='published']"/>
          <xsl:apply-templates select="*[@key='last-modified']"/>
@@ -1015,7 +1216,11 @@
                  priority="4">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/metadata/revisions" -->
-      <group name="revisions" gi="revisions" group-json="ARRAY">
+      <group in-xml="SHOWN"
+             gi="revisions"
+             group-json="ARRAY"
+             name="revision"
+             key="revisions">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">revisions</xsl:attribute>
          </xsl:if>
@@ -1026,10 +1231,11 @@
                  priority="6">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/metadata/revisions/revision/title" -->
-      <field name="title"
-             gi="title"
+      <field collapsible="no"
              as-type="markup-line"
-             formal-name="Document Title"
+             name="title"
+             key="title"
+             gi="title"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
@@ -1048,10 +1254,11 @@
                  priority="6">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/metadata/revisions/revision/published" -->
-      <field name="oscal-metadata-published"
-             gi="published"
+      <field collapsible="no"
              as-type="dateTime-with-timezone"
-             formal-name="Publication Timestamp"
+             name="published"
+             key="published"
+             gi="published"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">published</xsl:attribute>
@@ -1070,10 +1277,11 @@
                  priority="6">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/metadata/revisions/revision/last-modified" -->
-      <field name="oscal-metadata-last-modified"
-             gi="last-modified"
+      <field collapsible="no"
              as-type="dateTime-with-timezone"
-             formal-name="Last Modified Timestamp"
+             name="last-modified"
+             key="last-modified"
+             gi="last-modified"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">last-modified</xsl:attribute>
@@ -1092,9 +1300,11 @@
                  priority="6">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/metadata/revisions/revision/version" -->
-      <field name="oscal-metadata-version"
+      <field collapsible="no"
+             as-type="string"
+             name="version"
+             key="version"
              gi="version"
-             formal-name="Document Version"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">version</xsl:attribute>
@@ -1113,9 +1323,11 @@
                  priority="6">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/metadata/revisions/revision/oscal-version" -->
-      <field name="oscal-metadata-oscal-version"
+      <field collapsible="no"
+             as-type="string"
+             name="oscal-version"
+             key="oscal-version"
              gi="oscal-version"
-             formal-name="OSCAL version"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">oscal-version</xsl:attribute>
@@ -1134,10 +1346,11 @@
                  priority="8">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/metadata/revisions/revision/link/text" -->
-      <field name="text"
-             gi="text"
+      <field collapsible="no"
              as-type="markup-line"
-             formal-name="Link Text"
+             name="text"
+             key="text"
+             gi="text"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
@@ -1156,9 +1369,10 @@
                  priority="5">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/metadata/document-id" -->
-      <field name="oscal-metadata-document-id"
-             gi="document-id"
-             formal-name="Document Identifier">
+      <field collapsible="no"
+             as-type="string"
+             name="document-id"
+             gi="document-id">
          <xsl:apply-templates select="*[@key='scheme']"/>
          <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
@@ -1174,10 +1388,11 @@
                  priority="6">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/metadata/link/text" -->
-      <field name="text"
-             gi="text"
+      <field collapsible="no"
              as-type="markup-line"
-             formal-name="Link Text"
+             name="text"
+             key="text"
+             gi="text"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
@@ -1196,10 +1411,11 @@
                  priority="6">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/metadata/role/title" -->
-      <field name="title"
-             gi="title"
+      <field collapsible="no"
              as-type="markup-line"
-             formal-name="Role Title"
+             name="title"
+             key="title"
+             gi="title"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
@@ -1218,9 +1434,11 @@
                  priority="6">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/metadata/role/short-name" -->
-      <field name="short-name"
+      <field collapsible="no"
+             as-type="string"
+             name="short-name"
+             key="short-name"
              gi="short-name"
-             formal-name="Role Short Name"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">short-name</xsl:attribute>
@@ -1239,10 +1457,12 @@
                  priority="6">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/metadata/role/description" -->
-      <field name="description"
-             gi="description"
+      <field in-xml="WITH_WRAPPER"
+             collapsible="no"
              as-type="markup-multiline"
-             formal-name="Role Description"
+             name="description"
+             key="description"
+             gi="description"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
@@ -1261,10 +1481,11 @@
                  priority="8">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/metadata/role/link/text" -->
-      <field name="text"
-             gi="text"
+      <field collapsible="no"
              as-type="markup-line"
-             formal-name="Link Text"
+             name="text"
+             key="text"
+             gi="text"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
@@ -1283,10 +1504,11 @@
                  priority="6">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/metadata/location/title" -->
-      <field name="title"
-             gi="title"
+      <field collapsible="no"
              as-type="markup-line"
-             formal-name="Location Title"
+             name="title"
+             key="title"
+             gi="title"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
@@ -1305,7 +1527,7 @@
                  priority="6">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/metadata/location/address" -->
-      <assembly name="oscal-metadata-address" gi="address" formal-name="Address">
+      <assembly name="address" key="address" gi="address">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">address</xsl:attribute>
          </xsl:if>
@@ -1321,9 +1543,10 @@
                  priority="8">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/metadata/location/address/addr-line" -->
-      <field name="oscal-metadata-addr-line"
+      <field collapsible="no"
+             as-type="string"
+             name="addr-line"
              gi="addr-line"
-             formal-name="Address line"
              in-json="SCALAR">
          <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
@@ -1339,7 +1562,12 @@
                  priority="7">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/metadata/location/address/city" -->
-      <field name="city" gi="city" formal-name="City" in-json="SCALAR">
+      <field collapsible="no"
+             as-type="string"
+             name="city"
+             key="city"
+             gi="city"
+             in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">city</xsl:attribute>
          </xsl:if>
@@ -1357,7 +1585,12 @@
                  priority="7">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/metadata/location/address/state" -->
-      <field name="state" gi="state" formal-name="State" in-json="SCALAR">
+      <field collapsible="no"
+             as-type="string"
+             name="state"
+             key="state"
+             gi="state"
+             in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">state</xsl:attribute>
          </xsl:if>
@@ -1375,9 +1608,11 @@
                  priority="7">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/metadata/location/address/postal-code" -->
-      <field name="postal-code"
+      <field collapsible="no"
+             as-type="string"
+             name="postal-code"
+             key="postal-code"
              gi="postal-code"
-             formal-name="Postal Code"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">postal-code</xsl:attribute>
@@ -1396,9 +1631,11 @@
                  priority="7">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/metadata/location/address/country" -->
-      <field name="country"
+      <field collapsible="no"
+             as-type="string"
+             name="country"
+             key="country"
              gi="country"
-             formal-name="Country Code"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">country</xsl:attribute>
@@ -1417,10 +1654,10 @@
                  priority="7">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/metadata/location/email-address" -->
-      <field name="oscal-metadata-email-address"
-             gi="email-address"
+      <field collapsible="no"
              as-type="email"
-             formal-name="Email Address"
+             name="email-address"
+             gi="email-address"
              in-json="SCALAR">
          <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
@@ -1436,9 +1673,10 @@
                  priority="7">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/metadata/location/telephone-number" -->
-      <field name="oscal-metadata-telephone-number"
-             gi="telephone-number"
-             formal-name="Telephone Number">
+      <field collapsible="no"
+             as-type="string"
+             name="telephone-number"
+             gi="telephone-number">
          <xsl:apply-templates select="*[@key='type']"/>
          <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
@@ -1454,10 +1692,10 @@
                  priority="7">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/metadata/location/url" -->
-      <field name="url"
-             gi="url"
+      <field collapsible="no"
              as-type="uri"
-             formal-name="Location URL"
+             name="url"
+             gi="url"
              in-json="SCALAR">
          <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
@@ -1473,10 +1711,11 @@
                  priority="8">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/metadata/location/link/text" -->
-      <field name="text"
-             gi="text"
+      <field collapsible="no"
              as-type="markup-line"
-             formal-name="Link Text"
+             name="text"
+             key="text"
+             gi="text"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
@@ -1495,7 +1734,12 @@
                  priority="6">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/metadata/party/name" -->
-      <field name="name" gi="name" formal-name="Party Name" in-json="SCALAR">
+      <field collapsible="no"
+             as-type="string"
+             name="name"
+             key="name"
+             gi="name"
+             in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">name</xsl:attribute>
          </xsl:if>
@@ -1513,9 +1757,11 @@
                  priority="6">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/metadata/party/short-name" -->
-      <field name="short-name"
+      <field collapsible="no"
+             as-type="string"
+             name="short-name"
+             key="short-name"
              gi="short-name"
-             formal-name="Party Short Name"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">short-name</xsl:attribute>
@@ -1534,9 +1780,10 @@
                  priority="7">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/metadata/party/external-id" -->
-      <field name="external-id"
-             gi="external-id"
-             formal-name="Party External Identifier">
+      <field collapsible="no"
+             as-type="string"
+             name="external-id"
+             gi="external-id">
          <xsl:apply-templates select="*[@key='scheme']"/>
          <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
@@ -1552,10 +1799,11 @@
                  priority="8">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/metadata/party/link/text" -->
-      <field name="text"
-             gi="text"
+      <field collapsible="no"
              as-type="markup-line"
-             formal-name="Link Text"
+             name="text"
+             key="text"
+             gi="text"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
@@ -1574,10 +1822,10 @@
                  priority="7">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/metadata/party/email-address" -->
-      <field name="oscal-metadata-email-address"
-             gi="email-address"
+      <field collapsible="no"
              as-type="email"
-             formal-name="Email Address"
+             name="email-address"
+             gi="email-address"
              in-json="SCALAR">
          <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
@@ -1593,9 +1841,10 @@
                  priority="7">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/metadata/party/telephone-number" -->
-      <field name="oscal-metadata-telephone-number"
-             gi="telephone-number"
-             formal-name="Telephone Number">
+      <field collapsible="no"
+             as-type="string"
+             name="telephone-number"
+             gi="telephone-number">
          <xsl:apply-templates select="*[@key='type']"/>
          <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
@@ -1611,7 +1860,7 @@
                  priority="8">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/metadata/party/address" -->
-      <assembly name="oscal-metadata-address" gi="address" formal-name="Address">
+      <assembly name="address" gi="address">
          <xsl:apply-templates select="*[@key='type']"/>
          <xsl:apply-templates select="*[@key='addr-lines']"/>
          <xsl:apply-templates select="*[@key='city']"/>
@@ -1624,9 +1873,10 @@
                  priority="10">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/metadata/party/address/addr-line" -->
-      <field name="oscal-metadata-addr-line"
+      <field collapsible="no"
+             as-type="string"
+             name="addr-line"
              gi="addr-line"
-             formal-name="Address line"
              in-json="SCALAR">
          <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
@@ -1642,7 +1892,12 @@
                  priority="9">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/metadata/party/address/city" -->
-      <field name="city" gi="city" formal-name="City" in-json="SCALAR">
+      <field collapsible="no"
+             as-type="string"
+             name="city"
+             key="city"
+             gi="city"
+             in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">city</xsl:attribute>
          </xsl:if>
@@ -1660,7 +1915,12 @@
                  priority="9">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/metadata/party/address/state" -->
-      <field name="state" gi="state" formal-name="State" in-json="SCALAR">
+      <field collapsible="no"
+             as-type="string"
+             name="state"
+             key="state"
+             gi="state"
+             in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">state</xsl:attribute>
          </xsl:if>
@@ -1678,9 +1938,11 @@
                  priority="9">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/metadata/party/address/postal-code" -->
-      <field name="postal-code"
+      <field collapsible="no"
+             as-type="string"
+             name="postal-code"
+             key="postal-code"
              gi="postal-code"
-             formal-name="Postal Code"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">postal-code</xsl:attribute>
@@ -1699,9 +1961,11 @@
                  priority="9">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/metadata/party/address/country" -->
-      <field name="country"
+      <field collapsible="no"
+             as-type="string"
+             name="country"
+             key="country"
              gi="country"
-             formal-name="Country Code"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">country</xsl:attribute>
@@ -1720,10 +1984,10 @@
                  priority="7">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/metadata/party/member-of-organization" -->
-      <field name="member-of-organization"
-             gi="member-of-organization"
+      <field collapsible="no"
              as-type="uuid"
-             formal-name="Organizational Affiliation"
+             name="member-of-organization"
+             gi="member-of-organization"
              in-json="SCALAR">
          <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
@@ -1739,10 +2003,11 @@
                  priority="8">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/metadata/responsible-party/link/text" -->
-      <field name="text"
-             gi="text"
+      <field collapsible="no"
              as-type="markup-line"
-             formal-name="Link Text"
+             name="text"
+             key="text"
+             gi="text"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
@@ -1761,9 +2026,7 @@
                  priority="7">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/import/include-controls" -->
-      <assembly name="oscal-profile-select-control-by-id"
-                gi="include-controls"
-                formal-name="Call">
+      <assembly name="select-control-by-id" gi="include-controls">
          <xsl:apply-templates select="*[@key='with-child-controls']"/>
          <xsl:apply-templates select="*[@key='with-ids']"/>
          <xsl:apply-templates select="*[@key='matching']"/>
@@ -1773,10 +2036,10 @@
                  priority="9">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/import/include-controls/with-id" -->
-      <field name="with-id"
-             gi="with-id"
+      <field collapsible="no"
              as-type="token"
-             formal-name="Match Controls by Identifier"
+             name="with-id"
+             gi="with-id"
              in-json="SCALAR">
          <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
@@ -1792,10 +2055,7 @@
                  priority="9">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/import/include-controls/matching" -->
-      <assembly as-type="empty"
-                name="matching"
-                gi="matching"
-                formal-name="Match Controls by Pattern">
+      <assembly as-type="empty" name="matching" gi="matching">
          <xsl:apply-templates select="*[@key='pattern']"/>
       </assembly>
    </xsl:template>
@@ -1803,9 +2063,7 @@
                  priority="6">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/import/exclude-controls" -->
-      <assembly name="oscal-profile-select-control-by-id"
-                gi="exclude-controls"
-                formal-name="Call">
+      <assembly name="select-control-by-id" gi="exclude-controls">
          <xsl:apply-templates select="*[@key='with-child-controls']"/>
          <xsl:apply-templates select="*[@key='with-ids']"/>
          <xsl:apply-templates select="*[@key='matching']"/>
@@ -1815,10 +2073,10 @@
                  priority="8">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/import/exclude-controls/with-id" -->
-      <field name="with-id"
-             gi="with-id"
+      <field collapsible="no"
              as-type="token"
-             formal-name="Match Controls by Identifier"
+             name="with-id"
+             gi="with-id"
              in-json="SCALAR">
          <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
@@ -1834,10 +2092,7 @@
                  priority="8">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/import/exclude-controls/matching" -->
-      <assembly as-type="empty"
-                name="matching"
-                gi="matching"
-                formal-name="Match Controls by Pattern">
+      <assembly as-type="empty" name="matching" gi="matching">
          <xsl:apply-templates select="*[@key='pattern']"/>
       </assembly>
    </xsl:template>
@@ -1845,10 +2100,11 @@
                  priority="8">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/merge/custom//group/title" -->
-      <field name="title"
-             gi="title"
+      <field collapsible="no"
              as-type="markup-line"
-             formal-name="Group Title"
+             name="title"
+             key="title"
+             gi="title"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
@@ -1867,10 +2123,11 @@
                  priority="12">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/merge/custom//group/param/link/text" -->
-      <field name="text"
-             gi="text"
+      <field collapsible="no"
              as-type="markup-line"
-             formal-name="Link Text"
+             name="text"
+             key="text"
+             gi="text"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
@@ -1889,10 +2146,11 @@
                  priority="10">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/merge/custom//group/param/label" -->
-      <field name="label"
-             gi="label"
+      <field collapsible="no"
              as-type="markup-line"
-             formal-name="Parameter Label"
+             name="label"
+             key="label"
+             gi="label"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">label</xsl:attribute>
@@ -1911,10 +2169,12 @@
                  priority="10">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/merge/custom//group/param/usage" -->
-      <field name="usage"
-             gi="usage"
+      <field in-xml="WITH_WRAPPER"
+             collapsible="no"
              as-type="markup-multiline"
-             formal-name="Parameter Usage Description"
+             name="usage"
+             key="usage"
+             gi="usage"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">usage</xsl:attribute>
@@ -1933,10 +2193,12 @@
                  priority="12">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/merge/custom//group/param/constraint/description" -->
-      <field name="description"
-             gi="description"
+      <field in-xml="WITH_WRAPPER"
+             collapsible="no"
              as-type="markup-multiline"
-             formal-name="Constraint Description"
+             name="description"
+             key="description"
+             gi="description"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
@@ -1955,7 +2217,7 @@
                  priority="13">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/merge/custom//group/param/constraint/test" -->
-      <assembly name="test" gi="test" formal-name="Constraint Test">
+      <assembly name="test" gi="test">
          <xsl:apply-templates select="*[@key='expression']"/>
          <xsl:apply-templates select="*[@key='remarks']"/>
       </assembly>
@@ -1964,10 +2226,11 @@
                  priority="14">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/merge/custom//group/param/constraint/test/expression" -->
-      <field name="expression"
-             gi="expression"
+      <field collapsible="no"
              as-type="string"
-             formal-name="Constraint test"
+             name="expression"
+             key="expression"
+             gi="expression"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">expression</xsl:attribute>
@@ -1986,11 +2249,22 @@
    <xsl:template priority="6"
                  match="j:map[@key='profile']/j:map[@key='merge']/j:map[@key='custom']//j:array[@key='groups']/j:map/j:array[@key='params']/j:map/j:array[@key='guidelines']/j:map/j:string[@key='prose']">
       <field scope="local"
+             _step="prose"
+             _key="prose"
+             _metaschema-xml-id="/assembly/oscal-catalog-common/parameter-guideline/prose"
+             _metaschema-json-id="/assembly/oscal-catalog-common/parameter-guideline/prose"
+             in-xml="UNWRAPPED"
+             collapsible="no"
+             as-type="markup-multiline"
              name="prose"
              key="prose"
-             as-type="markup-multiline"
-             formal-name="Guideline Text">
-         <value as-type="markup-multiline" in-json="string">
+             _using-name="prose"
+             _in-xml-name="p ul ol pre table h1 h2 h3 h4 h5 h6"
+             _in-json-name="prose">
+         <value as-type="markup-multiline"
+                _metaschema-xml-id="/assembly/oscal-catalog-common/parameter-guideline/prose/PROSE"
+                _metaschema-json-id="/assembly/oscal-catalog-common/parameter-guideline/prose/PROSE"
+                in-json="string">
             <xsl:value-of select="."/>
          </value>
       </field>
@@ -1999,10 +2273,10 @@
                  priority="13">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/merge/custom//group/param/select/choice" -->
-      <field name="parameter-choice"
-             gi="choice"
+      <field collapsible="no"
              as-type="markup-line"
-             formal-name="Choice"
+             name="parameter-choice"
+             gi="choice"
              in-json="SCALAR">
          <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
@@ -2018,10 +2292,11 @@
                  priority="10">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/merge/custom//group/link/text" -->
-      <field name="text"
-             gi="text"
+      <field collapsible="no"
              as-type="markup-line"
-             formal-name="Link Text"
+             name="text"
+             key="text"
+             gi="text"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
@@ -2040,10 +2315,11 @@
                  priority="10">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/merge/custom//group//part/title" -->
-      <field name="title"
-             gi="title"
+      <field collapsible="no"
              as-type="markup-line"
-             formal-name="Part Title"
+             name="title"
+             key="title"
+             gi="title"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
@@ -2062,11 +2338,22 @@
    <xsl:template priority="5"
                  match="j:map[@key='profile']/j:map[@key='merge']/j:map[@key='custom']//j:array[@key='groups']/j:map//j:array[@key='parts']/j:map/j:string[@key='prose']">
       <field scope="local"
+             _step="prose"
+             _key="prose"
+             _metaschema-xml-id="/assembly/oscal-catalog-common/part/prose"
+             _metaschema-json-id="/assembly/oscal-catalog-common/part/prose"
+             in-xml="UNWRAPPED"
+             collapsible="no"
+             as-type="markup-multiline"
              name="prose"
              key="prose"
-             as-type="markup-multiline"
-             formal-name="Part Text">
-         <value as-type="markup-multiline" in-json="string">
+             _using-name="prose"
+             _in-xml-name="p ul ol pre table h1 h2 h3 h4 h5 h6"
+             _in-json-name="prose">
+         <value as-type="markup-multiline"
+                _metaschema-xml-id="/assembly/oscal-catalog-common/part/prose/PROSE"
+                _metaschema-json-id="/assembly/oscal-catalog-common/part/prose/PROSE"
+                in-json="string">
             <xsl:value-of select="."/>
          </value>
       </field>
@@ -2075,10 +2362,11 @@
                  priority="12">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/merge/custom//group//part/link/text" -->
-      <field name="text"
-             gi="text"
+      <field collapsible="no"
              as-type="markup-line"
-             formal-name="Link Text"
+             name="text"
+             key="text"
+             gi="text"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
@@ -2097,9 +2385,7 @@
                  priority="13">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/merge/custom//group/insert-controls/include-controls" -->
-      <assembly name="oscal-profile-select-control-by-id"
-                gi="include-controls"
-                formal-name="Call">
+      <assembly name="select-control-by-id" gi="include-controls">
          <xsl:apply-templates select="*[@key='with-child-controls']"/>
          <xsl:apply-templates select="*[@key='with-ids']"/>
          <xsl:apply-templates select="*[@key='matching']"/>
@@ -2109,10 +2395,10 @@
                  priority="15">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/merge/custom//group/insert-controls/include-controls/with-id" -->
-      <field name="with-id"
-             gi="with-id"
+      <field collapsible="no"
              as-type="token"
-             formal-name="Match Controls by Identifier"
+             name="with-id"
+             gi="with-id"
              in-json="SCALAR">
          <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
@@ -2128,10 +2414,7 @@
                  priority="15">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/merge/custom//group/insert-controls/include-controls/matching" -->
-      <assembly as-type="empty"
-                name="matching"
-                gi="matching"
-                formal-name="Match Controls by Pattern">
+      <assembly as-type="empty" name="matching" gi="matching">
          <xsl:apply-templates select="*[@key='pattern']"/>
       </assembly>
    </xsl:template>
@@ -2139,9 +2422,7 @@
                  priority="12">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/merge/custom//group/insert-controls/exclude-controls" -->
-      <assembly name="oscal-profile-select-control-by-id"
-                gi="exclude-controls"
-                formal-name="Call">
+      <assembly name="select-control-by-id" gi="exclude-controls">
          <xsl:apply-templates select="*[@key='with-child-controls']"/>
          <xsl:apply-templates select="*[@key='with-ids']"/>
          <xsl:apply-templates select="*[@key='matching']"/>
@@ -2151,10 +2432,10 @@
                  priority="14">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/merge/custom//group/insert-controls/exclude-controls/with-id" -->
-      <field name="with-id"
-             gi="with-id"
+      <field collapsible="no"
              as-type="token"
-             formal-name="Match Controls by Identifier"
+             name="with-id"
+             gi="with-id"
              in-json="SCALAR">
          <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
@@ -2170,10 +2451,7 @@
                  priority="14">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/merge/custom//group/insert-controls/exclude-controls/matching" -->
-      <assembly as-type="empty"
-                name="matching"
-                gi="matching"
-                formal-name="Match Controls by Pattern">
+      <assembly as-type="empty" name="matching" gi="matching">
          <xsl:apply-templates select="*[@key='pattern']"/>
       </assembly>
    </xsl:template>
@@ -2181,9 +2459,7 @@
                  priority="10">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/merge/custom/insert-controls/include-controls" -->
-      <assembly name="oscal-profile-select-control-by-id"
-                gi="include-controls"
-                formal-name="Call">
+      <assembly name="select-control-by-id" gi="include-controls">
          <xsl:apply-templates select="*[@key='with-child-controls']"/>
          <xsl:apply-templates select="*[@key='with-ids']"/>
          <xsl:apply-templates select="*[@key='matching']"/>
@@ -2193,10 +2469,10 @@
                  priority="12">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/merge/custom/insert-controls/include-controls/with-id" -->
-      <field name="with-id"
-             gi="with-id"
+      <field collapsible="no"
              as-type="token"
-             formal-name="Match Controls by Identifier"
+             name="with-id"
+             gi="with-id"
              in-json="SCALAR">
          <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
@@ -2212,10 +2488,7 @@
                  priority="12">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/merge/custom/insert-controls/include-controls/matching" -->
-      <assembly as-type="empty"
-                name="matching"
-                gi="matching"
-                formal-name="Match Controls by Pattern">
+      <assembly as-type="empty" name="matching" gi="matching">
          <xsl:apply-templates select="*[@key='pattern']"/>
       </assembly>
    </xsl:template>
@@ -2223,9 +2496,7 @@
                  priority="9">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/merge/custom/insert-controls/exclude-controls" -->
-      <assembly name="oscal-profile-select-control-by-id"
-                gi="exclude-controls"
-                formal-name="Call">
+      <assembly name="select-control-by-id" gi="exclude-controls">
          <xsl:apply-templates select="*[@key='with-child-controls']"/>
          <xsl:apply-templates select="*[@key='with-ids']"/>
          <xsl:apply-templates select="*[@key='matching']"/>
@@ -2235,10 +2506,10 @@
                  priority="11">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/merge/custom/insert-controls/exclude-controls/with-id" -->
-      <field name="with-id"
-             gi="with-id"
+      <field collapsible="no"
              as-type="token"
-             formal-name="Match Controls by Identifier"
+             name="with-id"
+             gi="with-id"
              in-json="SCALAR">
          <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
@@ -2254,10 +2525,7 @@
                  priority="11">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/merge/custom/insert-controls/exclude-controls/matching" -->
-      <assembly as-type="empty"
-                name="matching"
-                gi="matching"
-                formal-name="Match Controls by Pattern">
+      <assembly as-type="empty" name="matching" gi="matching">
          <xsl:apply-templates select="*[@key='pattern']"/>
       </assembly>
    </xsl:template>
@@ -2265,9 +2533,7 @@
                  priority="5">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/modify/set-parameter" -->
-      <assembly name="set-parameter"
-                gi="set-parameter"
-                formal-name="Parameter Setting">
+      <assembly name="set-parameter" gi="set-parameter">
          <xsl:apply-templates select="*[@key='param-id']"/>
          <xsl:apply-templates select="*[@key='class']"/>
          <xsl:apply-templates select="*[@key='depends-on']"/>
@@ -2285,10 +2551,11 @@
                  priority="8">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/modify/set-parameter/link/text" -->
-      <field name="text"
-             gi="text"
+      <field collapsible="no"
              as-type="markup-line"
-             formal-name="Link Text"
+             name="text"
+             key="text"
+             gi="text"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
@@ -2307,10 +2574,11 @@
                  priority="6">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/modify/set-parameter/label" -->
-      <field name="label"
-             gi="label"
+      <field collapsible="no"
              as-type="markup-line"
-             formal-name="Parameter Label"
+             name="label"
+             key="label"
+             gi="label"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">label</xsl:attribute>
@@ -2329,10 +2597,12 @@
                  priority="6">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/modify/set-parameter/usage" -->
-      <field name="usage"
-             gi="usage"
+      <field in-xml="WITH_WRAPPER"
+             collapsible="no"
              as-type="markup-multiline"
-             formal-name="Parameter Usage Description"
+             name="usage"
+             key="usage"
+             gi="usage"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">usage</xsl:attribute>
@@ -2351,10 +2621,12 @@
                  priority="8">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/modify/set-parameter/constraint/description" -->
-      <field name="description"
-             gi="description"
+      <field in-xml="WITH_WRAPPER"
+             collapsible="no"
              as-type="markup-multiline"
-             formal-name="Constraint Description"
+             name="description"
+             key="description"
+             gi="description"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
@@ -2373,7 +2645,7 @@
                  priority="9">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/modify/set-parameter/constraint/test" -->
-      <assembly name="test" gi="test" formal-name="Constraint Test">
+      <assembly name="test" gi="test">
          <xsl:apply-templates select="*[@key='expression']"/>
          <xsl:apply-templates select="*[@key='remarks']"/>
       </assembly>
@@ -2382,10 +2654,11 @@
                  priority="10">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/modify/set-parameter/constraint/test/expression" -->
-      <field name="expression"
-             gi="expression"
+      <field collapsible="no"
              as-type="string"
-             formal-name="Constraint test"
+             name="expression"
+             key="expression"
+             gi="expression"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">expression</xsl:attribute>
@@ -2404,11 +2677,22 @@
    <xsl:template priority="4"
                  match="j:map[@key='profile']/j:map[@key='modify']/j:array[@key='set-parameters']/j:map/j:array[@key='guidelines']/j:map/j:string[@key='prose']">
       <field scope="local"
+             _step="prose"
+             _key="prose"
+             _metaschema-xml-id="/assembly/oscal-catalog-common/parameter-guideline/prose"
+             _metaschema-json-id="/assembly/oscal-catalog-common/parameter-guideline/prose"
+             in-xml="UNWRAPPED"
+             collapsible="no"
+             as-type="markup-multiline"
              name="prose"
              key="prose"
-             as-type="markup-multiline"
-             formal-name="Guideline Text">
-         <value as-type="markup-multiline" in-json="string">
+             _using-name="prose"
+             _in-xml-name="p ul ol pre table h1 h2 h3 h4 h5 h6"
+             _in-json-name="prose">
+         <value as-type="markup-multiline"
+                _metaschema-xml-id="/assembly/oscal-catalog-common/parameter-guideline/prose/PROSE"
+                _metaschema-json-id="/assembly/oscal-catalog-common/parameter-guideline/prose/PROSE"
+                in-json="string">
             <xsl:value-of select="."/>
          </value>
       </field>
@@ -2417,10 +2701,10 @@
                  priority="9">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/modify/set-parameter/select/choice" -->
-      <field name="parameter-choice"
-             gi="choice"
+      <field collapsible="no"
              as-type="markup-line"
-             formal-name="Choice"
+             name="parameter-choice"
+             gi="choice"
              in-json="SCALAR">
          <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
@@ -2436,10 +2720,11 @@
                  priority="8">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/modify/alter/add/title" -->
-      <field name="title"
-             gi="title"
+      <field collapsible="no"
              as-type="markup-line"
-             formal-name="Title Change"
+             name="title"
+             key="title"
+             gi="title"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
@@ -2458,10 +2743,11 @@
                  priority="12">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/modify/alter/add/param/link/text" -->
-      <field name="text"
-             gi="text"
+      <field collapsible="no"
              as-type="markup-line"
-             formal-name="Link Text"
+             name="text"
+             key="text"
+             gi="text"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
@@ -2480,10 +2766,11 @@
                  priority="10">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/modify/alter/add/param/label" -->
-      <field name="label"
-             gi="label"
+      <field collapsible="no"
              as-type="markup-line"
-             formal-name="Parameter Label"
+             name="label"
+             key="label"
+             gi="label"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">label</xsl:attribute>
@@ -2502,10 +2789,12 @@
                  priority="10">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/modify/alter/add/param/usage" -->
-      <field name="usage"
-             gi="usage"
+      <field in-xml="WITH_WRAPPER"
+             collapsible="no"
              as-type="markup-multiline"
-             formal-name="Parameter Usage Description"
+             name="usage"
+             key="usage"
+             gi="usage"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">usage</xsl:attribute>
@@ -2524,10 +2813,12 @@
                  priority="12">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/modify/alter/add/param/constraint/description" -->
-      <field name="description"
-             gi="description"
+      <field in-xml="WITH_WRAPPER"
+             collapsible="no"
              as-type="markup-multiline"
-             formal-name="Constraint Description"
+             name="description"
+             key="description"
+             gi="description"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
@@ -2546,7 +2837,7 @@
                  priority="13">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/modify/alter/add/param/constraint/test" -->
-      <assembly name="test" gi="test" formal-name="Constraint Test">
+      <assembly name="test" gi="test">
          <xsl:apply-templates select="*[@key='expression']"/>
          <xsl:apply-templates select="*[@key='remarks']"/>
       </assembly>
@@ -2555,10 +2846,11 @@
                  priority="14">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/modify/alter/add/param/constraint/test/expression" -->
-      <field name="expression"
-             gi="expression"
+      <field collapsible="no"
              as-type="string"
-             formal-name="Constraint test"
+             name="expression"
+             key="expression"
+             gi="expression"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">expression</xsl:attribute>
@@ -2577,11 +2869,22 @@
    <xsl:template priority="6"
                  match="j:map[@key='profile']/j:map[@key='modify']/j:array[@key='alters']/j:map/j:array[@key='adds']/j:map/j:array[@key='params']/j:map/j:array[@key='guidelines']/j:map/j:string[@key='prose']">
       <field scope="local"
+             _step="prose"
+             _key="prose"
+             _metaschema-xml-id="/assembly/oscal-catalog-common/parameter-guideline/prose"
+             _metaschema-json-id="/assembly/oscal-catalog-common/parameter-guideline/prose"
+             in-xml="UNWRAPPED"
+             collapsible="no"
+             as-type="markup-multiline"
              name="prose"
              key="prose"
-             as-type="markup-multiline"
-             formal-name="Guideline Text">
-         <value as-type="markup-multiline" in-json="string">
+             _using-name="prose"
+             _in-xml-name="p ul ol pre table h1 h2 h3 h4 h5 h6"
+             _in-json-name="prose">
+         <value as-type="markup-multiline"
+                _metaschema-xml-id="/assembly/oscal-catalog-common/parameter-guideline/prose/PROSE"
+                _metaschema-json-id="/assembly/oscal-catalog-common/parameter-guideline/prose/PROSE"
+                in-json="string">
             <xsl:value-of select="."/>
          </value>
       </field>
@@ -2590,10 +2893,10 @@
                  priority="13">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/modify/alter/add/param/select/choice" -->
-      <field name="parameter-choice"
-             gi="choice"
+      <field collapsible="no"
              as-type="markup-line"
-             formal-name="Choice"
+             name="parameter-choice"
+             gi="choice"
              in-json="SCALAR">
          <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
@@ -2609,10 +2912,11 @@
                  priority="10">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/modify/alter/add/link/text" -->
-      <field name="text"
-             gi="text"
+      <field collapsible="no"
              as-type="markup-line"
-             formal-name="Link Text"
+             name="text"
+             key="text"
+             gi="text"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
@@ -2631,10 +2935,11 @@
                  priority="10">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/modify/alter/add//part/title" -->
-      <field name="title"
-             gi="title"
+      <field collapsible="no"
              as-type="markup-line"
-             formal-name="Part Title"
+             name="title"
+             key="title"
+             gi="title"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
@@ -2653,11 +2958,22 @@
    <xsl:template priority="5"
                  match="j:map[@key='profile']/j:map[@key='modify']/j:array[@key='alters']/j:map/j:array[@key='adds']/j:map//j:array[@key='parts']/j:map/j:string[@key='prose']">
       <field scope="local"
+             _step="prose"
+             _key="prose"
+             _metaschema-xml-id="/assembly/oscal-catalog-common/part/prose"
+             _metaschema-json-id="/assembly/oscal-catalog-common/part/prose"
+             in-xml="UNWRAPPED"
+             collapsible="no"
+             as-type="markup-multiline"
              name="prose"
              key="prose"
-             as-type="markup-multiline"
-             formal-name="Part Text">
-         <value as-type="markup-multiline" in-json="string">
+             _using-name="prose"
+             _in-xml-name="p ul ol pre table h1 h2 h3 h4 h5 h6"
+             _in-json-name="prose">
+         <value as-type="markup-multiline"
+                _metaschema-xml-id="/assembly/oscal-catalog-common/part/prose/PROSE"
+                _metaschema-json-id="/assembly/oscal-catalog-common/part/prose/PROSE"
+                in-json="string">
             <xsl:value-of select="."/>
          </value>
       </field>
@@ -2666,10 +2982,11 @@
                  priority="12">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/modify/alter/add//part/link/text" -->
-      <field name="text"
-             gi="text"
+      <field collapsible="no"
              as-type="markup-line"
-             formal-name="Link Text"
+             name="text"
+             key="text"
+             gi="text"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
@@ -2688,7 +3005,7 @@
                  priority="5">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/back-matter/resource" -->
-      <assembly name="resource" gi="resource" formal-name="Resource">
+      <assembly name="resource" gi="resource">
          <xsl:apply-templates select="*[@key='uuid']"/>
          <xsl:apply-templates select="*[@key='title']"/>
          <xsl:apply-templates select="*[@key='description']"/>
@@ -2704,10 +3021,11 @@
                  priority="6">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/back-matter/resource/title" -->
-      <field name="title"
-             gi="title"
+      <field collapsible="no"
              as-type="markup-line"
-             formal-name="Resource Title"
+             name="title"
+             key="title"
+             gi="title"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">title</xsl:attribute>
@@ -2726,10 +3044,12 @@
                  priority="6">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/back-matter/resource/description" -->
-      <field name="description"
-             gi="description"
+      <field in-xml="WITH_WRAPPER"
+             collapsible="no"
              as-type="markup-multiline"
-             formal-name="Resource Description"
+             name="description"
+             key="description"
+             gi="description"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">description</xsl:attribute>
@@ -2748,9 +3068,10 @@
                  priority="7">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/back-matter/resource/document-id" -->
-      <field name="oscal-metadata-document-id"
-             gi="document-id"
-             formal-name="Document Identifier">
+      <field collapsible="no"
+             as-type="string"
+             name="document-id"
+             gi="document-id">
          <xsl:apply-templates select="*[@key='scheme']"/>
          <xsl:apply-templates select="." mode="get-value-property"/>
       </field>
@@ -2766,7 +3087,7 @@
                  priority="6">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/back-matter/resource/citation" -->
-      <assembly name="citation" gi="citation" formal-name="Citation">
+      <assembly name="citation" key="citation" gi="citation">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">citation</xsl:attribute>
          </xsl:if>
@@ -2779,10 +3100,11 @@
                  priority="7">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/back-matter/resource/citation/text" -->
-      <field name="text"
-             gi="text"
+      <field collapsible="no"
              as-type="markup-line"
-             formal-name="Citation Text"
+             name="text"
+             key="text"
+             gi="text"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
@@ -2801,10 +3123,11 @@
                  priority="9">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/back-matter/resource/citation/link/text" -->
-      <field name="text"
-             gi="text"
+      <field collapsible="no"
              as-type="markup-line"
-             formal-name="Link Text"
+             name="text"
+             key="text"
+             gi="text"
              in-json="SCALAR">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">text</xsl:attribute>
@@ -2823,7 +3146,7 @@
                  priority="7">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/back-matter/resource/rlink" -->
-      <assembly name="rlink" gi="rlink" formal-name="Resource link">
+      <assembly name="rlink" gi="rlink">
          <xsl:apply-templates select="*[@key='href']"/>
          <xsl:apply-templates select="*[@key='media-type']"/>
          <xsl:apply-templates select="*[@key='hashes']"/>
@@ -2833,10 +3156,11 @@
                  priority="6">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="profile/back-matter/resource/base64" -->
-      <field name="base64"
-             gi="base64"
+      <field collapsible="no"
              as-type="base64Binary"
-             formal-name="Base64">
+             name="base64"
+             key="base64"
+             gi="base64">
          <xsl:if test="$with-key">
             <xsl:attribute name="key">base64</xsl:attribute>
          </xsl:if>
