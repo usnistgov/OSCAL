@@ -25,4 +25,4 @@ RUN dpkg -i hugo_extended_${hugoversion}_Linux-64bit.deb
 VOLUME ["/oscal"]
 WORKDIR /oscal
 
-ENTRYPOINT /bin/bash
+ENTRYPOINT ["/bin/bash"]
