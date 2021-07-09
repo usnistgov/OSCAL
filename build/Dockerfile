@@ -9,7 +9,7 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN apt-get update && apt-get install -y wget apt-utils libxml2-utils jq maven nodejs npm build-essential python3-pip git && apt-get clean
 RUN npm install -g npm n
 RUN n latest
-RUN npm install -g markdown-link-check json-diff ajv-formats@"^1.5.x" ajv-cli@"^4.0.x" yaml-convert@"^1.0.x"
+RUN npm install --loglevel verbose -g ajv-cli@"^4.0.x" ajv-formats@"^1.5.x" json-diff markdown-link-check yaml-convert@"^1.0.x" yargs
 RUN pip3 install lxml
 
 #RUN useradd --create-home --home-dir /home/user user
@@ -22,6 +22,7 @@ RUN dpkg -i hugo_extended_${hugoversion}_Linux-64bit.deb
 
 #RUN chown -R user:user /home/user
 
+ENV SAXON_VERSION ${saxonversion} 
 VOLUME ["/oscal"]
 WORKDIR /oscal
 
