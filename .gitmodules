@@ -6,5 +6,5 @@
 [submodule "build/metaschema"]
 	path = build/metaschema
 	url = https://github.com/usnistgov/metaschema.git
-	branch = metaschema-m4-integration
+	branch = master
 	update = rebase
