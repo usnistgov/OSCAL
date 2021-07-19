@@ -32,7 +32,7 @@ params:
     project_shortname: "OSCAL"
     project_name: "OSCAL: the Open Security Controls Assessment Language"
   # ** Change this on release ***
-  contentRepoPath: https://github.com/usnistgov/oscal-content/tree/master
+  contentRepoPath: https://github.com/usnistgov/OSCAL/tree/main/docs/content
   searchAffiliate: oscal
   sidenav:
 #    debug: true
