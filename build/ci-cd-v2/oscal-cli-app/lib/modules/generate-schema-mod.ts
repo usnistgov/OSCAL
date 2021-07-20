@@ -102,6 +102,7 @@ export const generateSchema = async(argv: any) => {
               const result = await SAXONJS.transform({
                stylesheetFileName: `${sefFile}`,
                stylesheetBaseURI: `${stylesheet}`,
+               //stylesheetBaseURI: encodeURI(stylesheet),
                sourceFileName: `${sourcePath}`,
                destination: "serialized",
                }, "async")
