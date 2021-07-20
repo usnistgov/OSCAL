@@ -39,8 +39,8 @@ export const builder = {
 	},
 }
 export const handler = async () => {
-	const {paths, format, model, WORKING_DIR, VERBOSE} = await variablesProcessor(argv);
+	const {path, format, model, OSCAL_DIR, VERBOSE} = await variablesProcessor(argv);
 
-	validateContent(paths, format, model, WORKING_DIR, VERBOSE);
+	validateContent(path, format, model, OSCAL_DIR, VERBOSE);
 }
 

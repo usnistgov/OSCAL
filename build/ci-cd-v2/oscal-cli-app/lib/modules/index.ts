@@ -24,7 +24,10 @@ export const variablesProcessor = async (argv: any) => {
 
     const OSCAL_DIR = oscalDir ? `${process.cwd()}/${oscalDir}` : projectRootDir;
     const WORKING_DIR = workingDir ? `${process.cwd()}/${workingDir}` : projectRootDir;
-    const ARTIFACT_DIR = artifactDir ? join(__dirname, `../../../../../../${artifactDir}`) : projectRootDir;
+    //Fix This.......
+    //const ARTIFACT_DIR = artifactDir ? join(__dirname, `../../../../../../${artifactDir}`) : projectRootDir;
+    //Files to be validated are located here...
+    const ARTIFACT_DIR = `${OSCAL_DIR}../oscal-content-new`
     const RESOLVE_PROFILES = resolveProfiles;
     const VERBOSE = verbose;
     //setup the log header if verbose is true
@@ -39,21 +42,21 @@ export const variablesProcessor = async (argv: any) => {
 
     const format = fileExtension === 'xml' ? 'xml' : 'json';
     const convertToFormat = format === 'xml' ? 'json' : 'xml';
+    //Path to the file that will be passed from the CLI to be (converted, validated, etc.)
+    const path: string = `${ARTIFACT_DIR}/${configFile}`;
 
-    const paths: string[] = [];
+    // const pathGlobArray = configFile.split('/*');
+    // const [pathStart, pathEnd] = pathGlobArray;
+    // const files = pathEnd ? fs.readdirSync(`${ARTIFACT_DIR}/${pathStart}`).filter(file => file.endsWith(`${pathEnd}`))
+    //   : [`${configFile.replace(/.*\//g, '')}`];
 
-    const pathGlobArray = configFile.split('/*');
-    const [pathStart, pathEnd] = pathGlobArray;
-    const files = pathEnd ? fs.readdirSync(`${ARTIFACT_DIR}/${pathStart}`).filter(file => file.endsWith(`${pathEnd}`))
-      : [`${configFile.replace(/.*\//g, '')}`];
-
-    files.forEach((file: string) => paths.push(`${ARTIFACT_DIR}/${pathStart}/${file}`));
+    // files.forEach((file: string) => paths.push(`${ARTIFACT_DIR}/${pathStart}/${file}`));
 
     return {
-      paths, // ['src/dir/smallFile_catalog.xml', 'src/dir/mediumFile_catalog.xml', 'src/dir/largeFile_catalog.xml']
+      path, // 'src/dir/oscal_catalog.xml'
       format, // 'xml'
       model, // 'catalog'
-      convertToFormat, // []
+      convertToFormat, // json
       OSCAL_DIR,
       WORKING_DIR,
       ARTIFACT_DIR,
