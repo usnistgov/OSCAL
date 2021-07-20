@@ -1,3 +1,4 @@
+/*
 import { post_process_content } from '../modules/post-process-mod'
 import { variablesProcessor } from '../modules';
 import { argv } from 'yargs';
@@ -58,6 +59,5 @@ export const handler = async () => {
     OSCAL_DIR,
     VERBOSE,
   );
-
-}
+}*/
  
