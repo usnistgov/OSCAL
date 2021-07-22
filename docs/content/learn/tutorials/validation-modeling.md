@@ -38,8 +38,8 @@ For example, this approach can be used with a product containing a cryptographic
    <description>
       <p>Describe the validation.</p>
    </description>
-   <prop name="validation-type">fips-140-2</prop>
-   <prop name="validation-reference">xxxx</prop>
+   <prop name="validation-type" value="fips-140-2" />
+   <prop name="validation-reference" value="xxxx" />
    <link rel="validation-details" href="https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/xxxx" />
    <status state="operational" />
 </component>
