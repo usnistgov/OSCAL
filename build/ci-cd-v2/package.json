@@ -22,10 +22,10 @@
   },
   "dependencies": {
     "ajv": "^6.12.6",
-    "json-to-pretty-yaml": "^1.2.2",
     "libxmljs2-xsd": "^0.26.5",
     "saxon-js": "^2.1.0",
     "xslt3": "^2.1.0",
+    "yaml": "^1.10.2",
     "yargs": "^16.2.0"
   },
   "nodemonConfig": {
