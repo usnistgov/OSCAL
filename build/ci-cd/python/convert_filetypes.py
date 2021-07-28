@@ -170,7 +170,7 @@ def process_yaml(file, old='', new='', dry_run=False):
 
 def dry_run_file(file):
     file, file_ext = os.path.splitext(file)
-    return f"{file}_test.{file_ext}"
+    return f"{file}_test{file_ext}"
 
 def process():
     parser = ArgumentParser(description='Convert file extensions in fields with hyperlinks for OSCAL JSON, XML, and YAML document instances.')

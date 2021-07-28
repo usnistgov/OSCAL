@@ -154,13 +154,7 @@ post_process_content() {
       if [ "$VERBOSE" = "true" ]; then
         echo -e "${P_INFO}Translating relative XML paths to JSON paths in '${P_END}${target_file_relative}${P_INFO}'.${P_END}"
       fi
-      # Remove extra slashes
-      perl -pi -e 's,\\/,/,g' "${target_file}"
-      # translate OSCAL mime types
-      perl -pi -e 's,(application/(oscal\.)?[a-z]+\+)xml\",\1json\",g' "${target_file}"
-      # relative content paths
-      # translate path names for local references
-      perl -pi -e 's,((?:\.\./)+(?:(?!xml/)[^\s/"'']+/)+)xml/((?:(?!.xml)[^\s"'']+)+).xml,\1json/\2.json,g' "${target_file}"
+      python "$OSCALDIR/build/ci-cd/python/convert-filetypes.py" --old-extension xml --new-extension json "${target_file}" --dry-run
     fi
 
     # produce pretty JSON
