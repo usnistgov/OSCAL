@@ -3,6 +3,8 @@ FROM ubuntu:20.04
 ARG saxonversion
 ARG hugoversion
 
+ADD ./ci-cd/python/requirements.txt .
+
 ENV TZ=US/Eastern
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
@@ -10,7 +12,7 @@ RUN apt-get update && apt-get install -y wget apt-utils libxml2-utils jq maven n
 RUN npm install -g npm n
 RUN n latest
 RUN npm install --loglevel verbose -g ajv-cli@"^4.0.x" ajv-formats@"^1.5.x" json-diff markdown-link-check yaml-convert@"^1.0.x" yargs
-RUN pip3 install lxml
+RUN pip3 install -r requirements.txt
 
 #RUN useradd --create-home --home-dir /home/user user
 #USER user
