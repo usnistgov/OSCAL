@@ -27,7 +27,7 @@ export const variablesProcessor = async (argv: any) => {
     //Fix This.......
     //const ARTIFACT_DIR = artifactDir ? join(__dirname, `../../../../../../${artifactDir}`) : projectRootDir;
     //Files to be validated are located here...
-    const ARTIFACT_DIR = `${OSCAL_DIR}../oscal-content-new`
+    const ARTIFACT_DIR = `${OSCAL_DIR}../oscal-content`
     const RESOLVE_PROFILES = resolveProfiles;
     const VERBOSE = verbose;
     //setup the log header if verbose is true
