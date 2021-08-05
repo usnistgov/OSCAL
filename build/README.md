@@ -6,7 +6,7 @@ This subdirectory contains a set of build scripts used to create OSCAL-related a
 
 If using Docker:
 
-- [Docker 19.03+](https://docs.docker.com/install/)
+- [Docker 20.10+](https://docs.docker.com/install/)
 
 If not using Docker:
 
@@ -26,7 +26,7 @@ A Docker container configuration is provided that establishes the runtime enviro
     You can build the Docker container for the build environment using Docker Compose as follows from the OSCAL `/build` directory:
 
     ```
-    docker-compose build
+    docker compose build
     ```
 
 3. Run the Docker container
@@ -36,14 +36,14 @@ A Docker container configuration is provided that establishes the runtime enviro
     You can run the Docker container for the build environment using Docker Compose as follows:
 
     ```
-    docker-compose run cli
+    docker compose run cli
     ```
 
     On Windows environments, you may need to execute in a pty that allows for using an interactive shell. In such a case you can run the Docker container as follows:
 
 
     ```
-    winpty docker-compose run cli
+    winpty docker compose run cli
     ```
 
     This should launch an interactive shell.
@@ -58,12 +58,16 @@ The following steps are known to work on [Ubuntu](https://ubuntu.com/) (tested i
 
     - SAXON_VERSION - Defines which version of Saxon-HE to use
     - HUGO_VERSION - Defines which version of Hugo to use
+    - CALABASH_VERSION - Defines which version of XML Calabash to use
+    - CALABASH_HOME - Defines where calabash will be installed
 
     The following is an example of how to configure the environment.
 
     ```bash
     export SAXON_VERSION="9.9.1-3"
-    export HUGO_VERSION="0.74.3"
+    export HUGO_VERSION="0.83.1"
+    export CALABASH_VERSION="1.2.5-100"
+    export CALABASH_HOME="$HOME/calabash"
     ```
 
     You may want to add this export to your `~/.bashrc` to persist the configuration.
@@ -116,6 +120,16 @@ The following steps are known to work on [Ubuntu](https://ubuntu.com/) (tested i
     ```bash
     mvn org.apache.maven.plugins:maven-dependency-plugin:2.10:get -DartifactId=Saxon-HE -DgroupId=net.sf.saxon -Dversion=${SAXON_VERSION}
     ```
+
+1. Install Calabash
+
+    To install Calabash, run the following:
+
+    ```bash
+    wget https://github.com/ndw/xmlcalabash1/releases/download/${CALABASH_VERSION}/xmlcalabash-${CALABASH_VERSION}.zip
+    mkdir -p "${CALABASH_HOME}"
+    unzip -d "${CALABASH_HOME}" "xmlcalabash-${CALABASH_VERSION}.zip"
+    mv "${CALABASH_HOME}"/*/* "${CALABASH_HOME}"
 
 Your environment should be setup.
 
