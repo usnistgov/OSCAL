@@ -108,7 +108,7 @@ For simplicity of this tutorial, we will only discuss certain data structures in
 
 ### Defining the Component Definition’s Metadata
 
-Most OSCAL models have a standard metadata syntax, therefore, this is not covered extensively in this tutorial.  There are a few considerations however when authoring metadata for a component definition, such as the `<role>`, `<location>`, and `<party>` elements illustrated in lines 9-18 below.
+Most OSCAL models have a standard metadata syntax, therefore, this is not covered extensively in this tutorial.  There are a few considerations however when authoring metadata for a component definition, such as the `role`, `location`, and `party` data items illustrated in the example below.
 
 {{< tabs XML JSON YAML >}}
 {{% tab %}}
@@ -124,11 +124,11 @@ Most OSCAL models have a standard metadata syntax, therefore, this is not covere
       <title>Supplier</title>
     </role>
     <location uuid="0db91129-35ed-474f-a25e-c3ff1e2cb9dc">
-      <address />
-      <url>https://www.mongodb.com</url>
+      <address>....</address>
     </location>
-    <party uuid="ef7c799a-c50e-49ab-83e0-515e989e6df1" type="prepared-for">
+    <party uuid="ef7c799a-c50e-49ab-83e0-515e989e6df1" type="organization">
       <name>MongoDB</name>
+      <link rel="website" href="https://www.mongodb.com">
     </party>
   </metadata>
   ...
@@ -154,7 +154,10 @@ The [`<role>`](/reference/latest/component-definition/xml-reference/#/component-
       "locations": [{
         "uuid": "0db91129-35ed-474f-a25e-c3ff1e2cb9dc",
         "address": "",
-        "url": "https://www.mongodb.com"
+        "links": [{
+          "rel": "website",
+          "href": "https://www.mongodb.com"
+        }]
       }],
       "parties": [{
         "uuid": "ef7c799a-c50e-49ab-83e0-515e989e6df1",
@@ -185,7 +188,9 @@ component-definition:
     locations:
       - uuid: 0db91129-35ed-474f-a25e-c3ff1e2cb9dc
         address: ''
-        url: https://www.mongodb.com
+        links:
+        - rel: 'website'
+          href: 'https://www.mongodb.com'
     parties:
       - uuid: ef7c799a-c50e-49ab-83e0-515e989e6df1
         type: prepared-for
@@ -304,7 +309,7 @@ Another optional but valuable sub-element of `<component>` is [`<protocol>`](/re
 | ----- | --------- | --------- | ----------- |
 | 27017 | TCP | Inbound | The default port for mongod and mongos instances. |
 | 27018 | TCP | Inbound | The default port when running with --shardsvr runtime operation. |
-| 27009 | TCP | Inbound-Outbound | The default port when running with --configsvr runtime operation |
+| 27019 | TCP | Inbound-Outbound | The default port when running with --configsvr runtime operation |
 
 This is represented below.
 
@@ -315,21 +320,19 @@ This is represented below.
     uuid="a7ba800c-a432-44cd-9075-0862cd66da6b">
   <component uuid="3e5c92b8-870c-4313-871a-f4307bf2eaf0" type="service">
     ...
-    <protocol name="Transmission Control">
-      <title>MongoDB requires use of TCP.</title>
+    <protocol name="mongod">
+      <title>Primary daemon process for the MongoDB system</title>
       <port-range start="27017" end="27017" transport="TCP" />
+    </protocol>
+    <protocol name="shardsrv">
+      <title>MongoDB instances that host subsets of data</title>
       <port-range start="27018" end="27018" transport="TCP" />
+    </protocol>
+    <protocol name="configsvr">
+      <title>mongod instance that holds metadata about various mongoDB instances</title>
       <port-range start="27019" end="27019" transport="TCP" />
     </protocol>
     <control-implementation />
-  </component>
-      <protocol name="Transmission Control">
-        <title>MongoDB requires use of TCP.</title>
-        <port-range start="27017" end="27017" transport="TCP" />
-        <port-range start="27018" end="27018" transport="TCP" />
-        <port-range start="27019" end="27019" transport="TCP" />
-      </protocol>
-      <control-implementation />
   </component>
 </component-definition>
 {{< /highlight >}}
