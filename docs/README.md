@@ -9,7 +9,7 @@ The website is built using the [Hugo](https://gohugo.io/) static site generator 
 If using Docker:
 
 - [Saxon-HE for Java](http://saxon.sourceforge.net/#F9.9HE)
-- [Docker 19.03+](https://docs.docker.com/install/)
+- [Docker 20.10+](https://docs.docker.com/install/)
 
 If not using Docker:
 
@@ -35,7 +35,7 @@ Instructions for installing the Hugo CLI on your OS can be found [here](https://
 
 The website's visual styling is also backed by the U.S. Web Design System (USWDS) via an open source Hugo theme at https://github.com/usnistgov/hugo-uswds.
 
-The USWDS framework, a Jekyll customization we are using, is documented here: https://designsystem.digital.gov/.
+The USWDS framework is documented here: https://designsystem.digital.gov/.
 
 ### Building the site with LiveReload
 
@@ -86,8 +86,8 @@ The website can also be developed and built using the included Docker resources.
 Assuming you've [installed Docker](https://docs.docker.com/install/) and [Docker Compose](https://docs.docker.com/compose/install/) for your system, you can build and serve the site using Docker Compose as follows:
 
 ```
-docker-compose build
-docker-compose up
+docker compose build
+docker compose up
 ```
 
 Once the site is running, it can be accessed at http://localhost:1313/OSCAL. Whenever you make any changes to the content with the Hugo server running, you'll notice that the site automatically updates itself to reflect those changes.

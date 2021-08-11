@@ -57,7 +57,7 @@ if [ "$VERBOSE" = "true" ]; then
 fi
 
 SPEC_SOURCE="${OSCALDIR}/src/specifications/profile-resolution/profile-resolution-specml.xml"
-SPEC_OUTPUT="$WORKING_DIR/docs/content/documentation/processing/profile-resolution.html"
+SPEC_OUTPUT="$WORKING_DIR/docs/content/concepts/processing/profile-resolution.html"
 
 result=$(xsl_transform "$OSCALDIR/src/specifications/profile-resolution/specml-html-hugo-uswds.xsl" "${SPEC_SOURCE}" "${SPEC_OUTPUT}" 2>&1)
 cmd_exitcode=$?
