@@ -186,7 +186,7 @@ The next section demonstrates how to reference back matter resources with links.
 
 ### Referencing Back-Matter
 
-When referencing `back-matter` `resources`, those resources may have a combination of `citations`, `rlinks`, and `base64` (embedded file resources). `Citations` describe bibliographic data with optional `links` whereas `rlinks` provide pointers to external resources with an optional hash for verification and change detection. Below are examples of `links` and `citations`.
+When referencing `back-matter` `resources`, those back matter resources may have a combination of `citations`, `rlinks`, and `base64` (embedded file resources). `Citations` describe bibliographic data with optional `links` whereas `rlinks` provide pointers to external resources with an optional hash for verification and change detection. Below are examples of `rlinks` and `citations`.
 
 {{< tabs XML >}}
 {{% tab %}}
@@ -220,7 +220,7 @@ When referencing `back-matter` `resources`, those resources may have a combinati
 
 This example demonstrates how an system owner might reference an organization policy document, such as the IT Rules of Behavior, in  their SSP. To reference the organizational IT Rules of Behavior document, this SSP used the uuid (as specified in the `resource` element in the `back-matter`) as a fragment.  In the `back-matter`, the `rlink` element is used a relative path URI in its `href` attribute but could also accept an absolute path URI.
 
-- [ ] _To-do: Provide an example of a citation._
+- [ ] _To-do: Provide an example of a citation.  For example, some of the SSP system characteristic diagrams (e.g., auth boundary, network architecture, and data flow diagrams)_
 - [ ] _To-do: Provide an example of a base64._
 
 ## Summary
