@@ -191,8 +191,7 @@ def process():
         process_yaml(**vars(args))
     else:
         logging.error(f"Cannot convert invalid OSCAL file with extension '{file_ext}'.")
-
-    sys.exit(1)
+        sys.exit(1)
 
 if __name__ == '__main__':
     process()
