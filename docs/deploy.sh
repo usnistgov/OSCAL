@@ -18,6 +18,7 @@ Options:
       --source-only             Only build but not push
       --push-only               Only push but not build
   -b, --deploy-branch BRANCH    Delpoy to specified branch
+  -r, --deploy-repo REPO        Delpoy to specified repository
 "
 
 
@@ -52,7 +53,10 @@ parse_args() {
       GIT_DEPLOY_APPEND_HASH=false
       shift
     elif [[ ( $1 = "-b" || $1 = "--deploy-branch" ) && -n $2 ]]; then
-      deploy-branch=$2
+      deploy_branch=$2
+      shift 2
+    elif [[ ( $1 = "-r" || $1 = "--deploy-repo" ) && -n $2 ]]; then
+      repo=$2
       shift 2
     else
       break
@@ -74,7 +78,9 @@ parse_args() {
   default_email=${GIT_DEPLOY_EMAIL:-}
 
   #repository to deploy to. must be readable and writable.
-  repo=upstream
+  if [[ -z $repo ]]; then
+      repo=origin
+  fi
 
   #append commit hash to the end of message by default
   append_hash=${GIT_DEPLOY_APPEND_HASH:-true}
