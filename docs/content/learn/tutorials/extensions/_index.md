@@ -1,13 +1,13 @@
 ---
-title: Creating Extensions with Props and Links
-description: A tutorial on creating OSCAL extensions using props and links.
+title: Extending OSCAL Models with Props and Links
+description: A tutorial on extending OSCAL models by using props and links.
 weight: 5
 suppresstopiclist: true
 toc:
   enabled: true
 ---
 
-This tutorial describes the mechanisms for creating basic OSCAL extensions. Before reading this tutorial, you should:
+This tutorial describes the mechanisms for extending basic OSCAL models. Before reading this tutorial, you should:
 
 - Have some familiarity with the [XML](https://www.w3.org/standards/xml/core), [JSON](https://www.json.org/), or [YAML](https://yaml.org/spec/) formats.
 - Review the [OSCAL Layers and Models](/concepts/layer/) documentation.
@@ -17,136 +17,137 @@ This tutorial describes the mechanisms for creating basic OSCAL extensions. Befo
 
 OSCAL is designed with the goal of simultaneously supporting multiple cybersecurity frameworks. The core OSCAL syntax achieves this goal by focusing on properties that are universal or have applicability across various frameworks.
 
-In creating OSCAL, NIST anticipated the possibility of divergent or unique requirements when organizations implement their security compliance programs. It was important to establish extension mechanisms from the onset, to allow organizations (and other stakeholders) to tailor OSCAL for their specific needs.
+In creating OSCAL, NIST anticipated the importance of extensibility for unique requirements when organizations implement their security compliance programs. It was important to establish extension mechanisms from the onset, to allow organizations (and other stakeholders) to tailor OSCAL for their specific needs.
 
 Thus, OSCAL is designed with extensibility as one of its key principles, allowing the OSCAL models to be extended wherever there are prop or link properties in the core models. This tutorial describes both extension mechanisms, explaining when to utilize them and illustrating their proper use.
 
 ## Props
 
-The `prop` property in OSCAL is used to extend core models when 1) there is a need to capture information that is not in the core OSCAL model or 2) there is a need to accommodate for property values that are not in core OSCAL.
+The `prop` property in OSCAL is used to extend core models when 1) there is a need to capture information that is not in the core OSCAL model or 2) there is a need to accommodate for property values that are not in core OSCAL. Props are defined by their given `name`, namespace `ns`, `value`, and `class` attributes, although only `name` and `value` are always required.  
 
-To extend a core OSCAL model with additional information, one must specify the `name`, namespace `ns`, and `value` attributes of the `prop` property. The name can be locally defined or through a label / descriptor that is tied to a classification marking system. The `name` should be a [token](/reference/datatypes/#token) data type.
+The `name` attributed is required for every `prop` and should be a [token](/reference/datatypes/#token) data type.  Depending on the OSCAL model data item, a `prop` may have OSCAL pre-defined names.  For example, the OSCAL SSP model's system characteristics data item has a pre-defined `prop` named [`data-center`](/reference/latest/system-security-plan/xml-reference/#/system-security-plan/system-characteristics/prop).  Other data items, such as the OSCAL SSP security sensitivity level data item has its own pre-defined `props` (e.g., [`privacy-designation`](/reference/latest/system-security-plan/xml-reference/#/system-security-plan/system-characteristics/security-sensitivity-level)).  And in other cases, such as the SSP authorization boundary data item, `prop` does not have any pre-defined `name` values. OSCAL content authors need to determine whether to use the OSCAL prescribed prop names or to locally define their own. To view existing `prop` name values or determine if `name` can be defined locally, review the [model reference index](/reference/latest/complete/xml-index/#/prop).  Requests and recommendations to add pre-defined `names` should be sent to the OSCAL NIST team (see the [Contact Us Page](/contact)).
 
-Organizations and other stakeholders have the ability to extend OSCAL with their own properties, which could lead to name collisions. OSCAL accounted for this with the `ns` namespace attribute of the `prop` property. Organizations need to establish unique namespaces when extending OSCAL models with their own properties. By including the `ns` namespace, OSCAL can qualify names separately, thus properties (created by different organizations) that have the same `name` can be supported. The `ns` should be a [universal resource identifier (URI)](/reference/datatypes/#uri) formatted according to RFC3986.
+The optional `ns` attribute is used to specify the namespace for a `prop` and should be a [universal resource identifier (URI)](/reference/datatypes/#uri) formatted according to RFC3986. The default namespace `ns` attribute for OSCAL `props` is `http://csrc.nist.gov/ns/oscal`, and can be omitted when using OSCAL define pre-defined properties (e.g., [`data-center`](/reference/latest/system-security-plan/xml-reference/#/system-security-plan/system-characteristics/prop)). Organizations and other stakeholders have the ability to extend OSCAL with their own properties, which could lead to naming conflicts, however, the namespace `ns` can be specified by OSCAL content authors to prevent name collisions.  
 
-Finally, `prop` properties must have a `value` specified. The value should be used to express the information that is not within the core OSCAL model. This attribute expects a [string](/reference/datatypes/#string) datatype.
+The `value` attribute is required for every `prop` and should be a [string](/reference/datatypes/#string) data type. Generally, OSCAL content authors may specify any `value` for a `prop`.  However, when using props with pre-defined `name` values, there are usually some constraints on acceptable `value`.  For example, the OSCAL SSP [system characteristics](/reference/latest/system-security-plan/xml-reference/#/system-security-plan/system-characteristics) data item pre-defined property named "identity-assurance-level" must have a value of 1, 2, or 3 as defined by NIST SP 800-63-3.  The ability to extend with additional values depends on the `prop` (see the [model reference index](/reference/latest/complete/xml-index/#/prop)). The constraints for these `prop` properties are defined within the [OSCAL Metaschemas](https://github.com/usnistgov/OSCAL/tree/main/src/metaschema).  Where applicable, Metaschema defines the `allowed-values` for the `prop` properties.  The `prop` properties that are extensible are defined with an `allow-other=yes` attribute in Metaschema.  
 
-### Creating a New Prop
+Finally, the optional `class` attribute should be used in cases where a property needs the same `name` and `ns` namespace.  The `class` attribute should be a [token](/reference/datatypes/#token) data type and can be used in those circumstances to enable the &quot;overloading&quot; of the `prop`.
 
-The example below demonstrates how a software vendor may extend their component definition(s) by using the `prop` property. The example focuses on component definitions, but the approach is the same for extending other OSCAL models.  In this example, ACME is a software vendor that provides relational database management system (RDBMS) software.  ACME offers a free, open source version of their RDMBS as well as a commercial (proprietary) version.  ACME's federal government customers have varying security policies regarding the use of free and open source software (FOSS), so they have requested that ACME clearly specify the component's software licensing model in their component definitions. While core OSCAL does not have a pre-defined property for indicating a component's software licensing model, ACME is able to achieve this by creating a new property and specifying the property `name`, `ns`, and `value` attributes as follows on line #19:
+### Using an Existing Prop
 
-{{< tabs XML >}}
-{{% tab %}}
-{{< highlight xml "linenos=table" >}}
-<?xml version="1.0" encoding="UTF-8"?>
-<component-definition
-  xmlns="http://csrc.nist.gov/ns/oscal/1.0"
-  uuid="a7ba800c-a432-44cd-9075-0862cd66da6b"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 https://raw.githubusercontent.com/usnistgov/OSCAL/master/xml/schema/oscal_component_schema.xsd">
-  <metadata>
-    <title>New OSCAL Property Example</title>
-    <last-modified>2001-12-17T09:30:47Z</last-modified>
-    <version>20210707</version>
-    <oscal-version>1.0.0</oscal-version>
-  </metadata>
-  <component uuid="..." type="software">
-    <title>RDBMS</title>
-    <description>
-      <p>ACME RDBMS provides a flexible, scalable, enterprise grade relational database management system (RDBMS).</p>
-    </description>
-    <purpose>Backend database.</purpose>
-    <prop name="software-licensing-model" ns="http://acme-uri.com/ns/oscal" value="open-source" />
-    <responsible-role role-id="supplier">
-      <party-uuid>...</party-uuid>
-    </responsible-role>
-  </component>
-  <control-implementation>...</control-implementation>
-</component-definition>
-{{< /highlight >}}
-{{% /tab %}}
-{{% /tabs %}}
-
-> NOTE: OSCAL has many pre-defined properties. ***OSCAL content authors should review existing properties prior to creating their own.***  To review existing properties and corresponding value constraints, see the [All Models Index Reference](/reference/latest/complete/xml-index/#/prop).  The [OSCAL Model Metaschema Files](https://github.com/usnistgov/OSCAL/tree/main/src/metaschema) define all the existing properties and their corresponding constraints.
-
-The optional `class` attributes should be used in cases where a property needs the same `name` and `ns` namespace.  The `class` attribute can be used in those circumstances to enable the &quot;overloading&quot; of the `prop`.   For example, while an OSCAL component model has an "ip-address" `prop` property, the `class` attribute helps support scenarios where a component may have multiple IP addresses as illustrated below on lines #14-15.
+This sections covers the basic use of a `prop` leveraging all of its attributes.  The OSCAL SSP metadata allows for zero or more `location` data items, each containing zero or more `props`.  In this example, an organization needs to document their primary and alternate data center locations.  This is achieved by specifying the `name`, `value`, and `class` of the properties (on lines #10 and #14) for each location.
 
 {{< tabs XML >}}
 {{% tab %}}
 {{< highlight xml "linenos=table" >}}
 <?xml version="1.0" encoding="UTF-8"?>
-<component-definition ...>
+<system-security-plan ...>
   <metadata>
-    <title>OSCAL Property with Class Attribute Example</title>
+    <title>OSCAL Basic Prop Example</title>
     <last-modified>2001-12-17T09:30:47Z</last-modified>
-    <version>20210707</version>
+    <version>20210812</version>
     <oscal-version>1.0.0</oscal-version>
+    <location uuid="location uuid">
+      <title>....</title>
+      <prop name="type" value="data-center" class="primary">
+    </location>
+    <location uuid="location uuid">
+      <title>....</title>
+      <prop name="type" value="data-center" class="alternate">
+    </location>
   </metadata>
-  <component uuid="..." type="software">
-    <title>RDBMS</title>
-    <description>
-      <p>ACME RDBMS provides a flexible, scalable, enterprise grade relational database management system (RDBMS).</p>
-    </description>
-    <purpose>Backend database.</purpose>
-    <prop name="ip-address" class="local">10.0.0.1</prop>
-    <prop name="ip-address" class="remote">192.168.0.1</prop>
-    <responsible-role role-id="supplier">
-      <party-uuid>...</party-uuid>
-    </responsible-role>
-  </component>
-  <control-implementation>...</control-implementation>
-</component-definition>
+  <import-profile .../>
+  <system-characteristics .../>
+  <system-implementation .../>
+</system-security-plan>
 {{< /highlight >}}
 {{% /tab %}}
 {{% /tabs %}}
 
-The `class` attribute requires a [token](/reference/datatypes/#token) datatype. The namespace `ns` attribute was omitted because "ip-address" is an OSCAL defined `prop` thus the implicit value namespace is `http://csrc.nist.gov/ns/oscal`.
+The `name` is set to "type" which is an OSCAL pre-defined property. The `value` is set to "data-center" which is an OSCAL pre-defined value for location "type" properties. The `class` attribute in this case is used to indicate a subclass of data-center, and is set the the appropriate OSCAL pre-defined values for data center location properties.  Note that in this example, the `ns` attribute is omitted because we are using a standard OSCAL defined `prop`.
 
 ### Extending Existing Prop Values
 
-The other common scenario for extending OSCAL with `prop` is when adding values to an existing OSCAL property. Unlike the previous scenario, the `ns` namespace attribute does not need to be specified when extending `prop` values.  To view a complete listing of existing OSCAL `prop`, see the [All Models Index Reference](/reference/latest/complete/xml-index/#/prop).  The constraints for these `prop` properties are defined within the [OSCAL Metaschemas](https://github.com/usnistgov/OSCAL/tree/main/src/metaschema).  Where applicable, Metaschema defines the `allowed-values` for the `prop` properties.  The `prop` properties that are extensible are defined with an `allow-other=yes` attribute in Metaschema.  
+One of the most common scenarios for extending an OSCAL `prop` is when adding values to an existing OSCAL property. Again, if using an OSCAL defined `prop`, the `ns` namespace attribute does not need to be specified since the default OSCAL namespace applies.  
 
-The following example demonstrates how to extend a component's "asset-type" `prop`.  Currently, the default OSCAL defined values for this `prop` include: operating-system, database, web-server, dns-server, email-server, directory-server, pbx, firewall, router, switch, storage-array, and appliance.  However, because OSCAL defined the "asset-type" `prop` with an `allow-other=yes` attribute in Metaschema, new "asset-type" values can be specified as shown below on line #15.
+The following example demonstrates how to extend a SSP metadata location "type" `prop` with an additional value.  Currently, the only OSCAL defined value for this `prop` is "data-center".  However, because this particular `prop` is defined with an `allow-other=yes` attribute (in Metaschema), additional "type" values can be specified as shown below on line #10.
 
 {{< tabs XML >}}
 {{% tab %}}
 {{< highlight xml "linenos=table" >}}
 <?xml version="1.0" encoding="UTF-8"?>
-<component-definition ...>
+<system-security-plan ...>
   <metadata>
-    <title>OSCAL Property Extended Value Example</title>
+    <title>OSCAL Basic Prop Example</title>
     <last-modified>2001-12-17T09:30:47Z</last-modified>
-    <version>20210707</version>
+    <version>20210812</version>
     <oscal-version>1.0.0</oscal-version>
+    <location uuid="location uuid">
+      <title>....</title>
+      <prop name="type" value="security-operations-center">
+    </location>
   </metadata>
-  <component uuid="..." type="hardware">
-    <title>Mobile Device</title>
-    <description>
-      <p>Organizational Mobile Devices.</p>
-    </description>
-    <purpose>Communication and remote access.</purpose>
-    <prop name="asset-type" value="mobile-device" />
-    <responsible-role role-id="supplier">
-      <party-uuid>...</party-uuid>
-    </responsible-role>
-  </component>
-  <control-implementation>...</control-implementation>
-</component-definition>
+  <import-profile .../>
+  <system-characteristics .../>
+  <system-implementation .../>
+</system-security-plan>
 {{< /highlight >}}
 {{% /tab %}}
 {{% /tabs %}}
 
-Props are prevalent throughout OSCAL appearing not only in `metadata` and `back-matter`, but in the majority of OSCAL properties.  Regardless of which OSCAL property is being extended, the approach is consistent, as described in this section of the tutorial.
+The `class` attribute was not specified but could be added if there was a need for semantic classification of "security operations center" (e.g., regional or global).
+
+### Creating a New Prop
+
+The previous examples leveraged an existing OSCAL `prop` to document location details (e.g., location "type") within an SSP.  But what if there were other pertinent location details that needed to be captured as well? For example, some government organizations with distributed global physical locations may want to use [Geographic Locator Codes (GLC)](https://www.gsa.gov/reference/geographic-locator-codes-glcs-overview) to facilitate interchange of location data with other government agencies.  The example below demonstrates how this could be documented by specifying a new GLC `prop` property (see lines #11-13).
+
+{{< tabs XML >}}
+{{% tab %}}
+{{< highlight xml "linenos=table" >}}
+<?xml version="1.0" encoding="UTF-8"?>
+<system-security-plan ...>
+  <metadata>
+    <title>OSCAL New Prop Example</title>
+    <last-modified>2001-12-17T09:30:47Z</last-modified>
+    <version>20210812</version>
+    <oscal-version>1.0.0</oscal-version>
+    <location uuid="location uuid">
+      <title>....</title>
+      <prop name="type" value="security-operations-center" class="regional">
+      <prop name="glc" ns="http://federal-agency.gov/ns/oscal" value="11" class="state-code">
+      <prop name="glc" ns="http://federal-agency.gov/ns/oscal" value="0010" class="city-code">
+      <prop name="glc" ns="http://federal-agency.gov/ns/oscal" value="840" class="country-code">
+    </location>
+  </metadata>
+  <import-profile .../>
+  <system-characteristics .../>
+  <system-implementation .../>
+</system-security-plan>
+{{< /highlight >}}
+{{% /tab %}}
+{{% /tabs %}}
+
+A new GLC property was created by setting the props `name` attribute to "glc".  The acronym "glc" could be used by other organizations (and have a completely different meaning) so a namespace `ns` was set.  Lastly, GLCs have many data attributes including territory, country codes, state codes, county codes, city codes, and duty station codes, so this example defined a single "glc" `prop` but used `class` to provide more context for the property's set `value`.
+
+Props are prevalent throughout OSCAL models appearing not only in `metadata` and `back-matter`, but in the majority of OSCAL data items.  Regardless of which OSCAL property is being extended, the approach is consistent, as described in this section of the tutorial.
 
 ## Links
 
-Links in OSCAL provide a form of indirection, allowing the referencing of local or remote content. Organizations can limit duplication of content, reduce the size of their OSCAL files, and maintain important content relationships by using links.
+Links in OSCAL provide a form of indirection, allowing the referencing of local or remote content. Link can be particularly useful in referencing (external) information that is not represented in OSCAL format.  This could include references to (cybersecurity) laws and regulations; references to organizational standards and guides; references to system bill of materials (SBOM) and more.  Organizations can limit duplication of content, reduce the size of their OSCAL files, and maintain important content relationships by using links.
 
-The `link` property is made available in specific OSCAL models and supports either URL or back matter resources. The `link` property has the following attributes: `href`, `rel`, `media-type`, and `text`. The `href` attribute is a required, [resolvable URL reference](/reference/datatypes/#uri-reference) to a resource. This can either be an internet resource or a fragment that point to a back matter resource in the same document. The optional `rel` attribute is a [token](/reference/datatypes/#token) datatype that can be used to describe the link&#39;s purpose. The optional `media-type` attribute can be used to provide the consumer of the OSCAL content a hint about the type of data referenced in the link. Supported media types are as defined by the [Internet Assigned Numbers Authority (IANA)](https://www.iana.org/assignments/media-types/media-types.xhtml). The `media-type` attribute accepts [string](/reference/datatypes/#string) values. Finally, the optional `text` sub-element can be used for as a textual label for the `link` and accepts [markup-line](/reference/datatypes/#markup-line) datatype. Below are examples illustrating the use of links.
+The `link` property is made available in specific OSCAL models and supports either URL or back matter resources. The `link` property has the following attributes: `href`, `rel`, `media-type`, and `text`.
+
+The `href` attribute is a required, [resolvable URL reference](/reference/datatypes/#uri-reference) to a resource. This can either be an internet resource or a fragment that point to a back matter resource in the same document.
+
+The optional `rel` attribute is a [token](/reference/datatypes/#token) datatype that can be used to describe the link&#39;s purpose.  Some OSCAL link properties may have pre-defined `rel` values (e.g., reference), but generally, OSCAL content authors can specify any token value for a `rel` attribute.
+
+The optional `media-type` attribute can be used to provide the consumer of the OSCAL content a hint about the type of data referenced in the link. Supported media types are as defined by the [Internet Assigned Numbers Authority (IANA)](https://www.iana.org/assignments/media-types/media-types.xhtml).  The `media-type` attribute accepts [string](/reference/datatypes/#string) values. 
+
+Finally, the optional `text` sub-element can be used for as a textual label for the `link` and accepts [markup-line](/reference/datatypes/#markup-line) datatype. The subsequent sections demonstrate the proper use of links.
 
 ### Link to internet URL
 
-This first example illustrates how a component in a system security plan (SSP) might make use of a link to an internet URL. The component is an operating system and the SSP needs to provide clear documentation indicating whether its encryption modules are FIPS 140-2 validated.
+Organizations may need their documentation (e.g., SSP) to reference external items, such applicable laws and regulations (e.g., HSPD-12) and other organizational items (e.g., official agency logos).  This first example illustrates how an OSCAL SSP might make use of a link to an internet URL.
 
 {{< tabs XML >}}
 {{% tab %}}
@@ -158,59 +159,53 @@ This first example illustrates how a component in a system security plan (SSP) m
     <last-modified>2001-12-17T09:30:47Z</last-modified>
     <version>20210707</version>
     <oscal-version>1.0.0</oscal-version>
+    <link href="https://www.dhs.gov/homeland-security-presidential-directive-12" rel="reference">
+      <text>HSPD-12</text>
+    </link>
+    <link href="http://federal-agency.gov/img/official-agency-logo.png" rel="logo" media-type="image/png" />
   </metadata>
   <import-profile .../>
   <system-characteristics .../>
-  <system-implementation>
-    <component uuid="..." type="software">
-      <title>Ubuntu 18.04</title>
-      <description>
-        <p>Ubuntu operating system.</p>
-      </description>
-      <purpose>Operating System.</purpose>
-      <prop name="asset-type" value="operating-system" />
-      <prop name="validation-reference" value="3980"/>
-      <prop name="asset-type" value="operating-system" />
-      <link rel="cmvp-fips-validation"
-            href="https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/3980"/>
-    </component>
-  </system-implementation>
+  <system-implementation .../>
 </system-security-plan>
 {{< /highlight >}}
 {{% /tab %}}
 {{% /tabs %}}
 
-In this case, the link is to the Cryptographic Module Validation Program (CMVP) which maintains records of FIPS validated cryptographic modules.  We used an absolute URI to point to the location of the referenced content, however, it should be noted that the `href` attribute also permits the use of relative URI paths. If the referenced resource is located is on the same machine or domain, then a relative URI path as shown below could be used.  The `rel` property describes the type of relationship provided by the specified `link`.  
+In this case, the `link` on line #8 provides a reference to HSPD-12 by specifying the URL in the `href` attribute.  The OSCAL pre-defined "reference" value is used  for the `rel`, providing some context for the purpose of this specific `link`. The `text` sub-element provides an associated label for the `link` which may be useful when rendering the SSP in other formats (e.g., html or office document formats).
+
+Line #11 demonstrates the use of link to point to the organization's official logo.  An absolute URI was used to point to the location of the referenced content, however, it should be noted that the `href` attribute also permits the use of relative URI paths.  If the referenced resource is located is on the same machine or domain, then a relative URI path could be used.  The `rel` property was set to "logo" to indicate the type of relationship provided by the specified `link`.  The `media-type` attribute was included to let any rendering tools know that the logo content is a PNG image type.  The optional `text` was excluded for brevity of this example.
 
 The next section demonstrates how to reference back matter resources with links. Specifying a fragment in the href attribute indicates that the `link` is referencing a `back-matter` `resource` in the same OSCAL document.
 
 ### Referencing Back-Matter
 
-When referencing `back-matter` `resources`, those back matter resources may have a combination of `citations`, `rlinks`, and `base64` (embedded file resources). `Citations` describe bibliographic data with optional `links` whereas `rlinks` provide pointers to external resources with an optional hash for verification and change detection. Below are examples of `rlinks` and `citations`.
+When using `link` to reference `back-matter` `resources`, the `link` must use the resource's `uuid` attribute as the pointer. The `resource` property must have an `rlink` property that points to the (external) content via the `href` attribute.  Optionally, the `rlink` property can also include a hash (e.g., to ensure the integrity of the referenced content), however, that is an advanced concept that is not covered in this tutorial.
+
+In the previous section, multiple `links` would need to be created in the SSP metadata for each applicable laws and regulations. However, another approach would be to specify one `link` in the metadata for all applicable laws, regulations, standards, and guides.  Then a single `resource` (for the applicable laws, regulations, standards, and guides) with multiple `rlinks` could be set in the back-matter as illustrated below.
 
 {{< tabs XML >}}
 {{% tab %}}
 {{< highlight xml "linenos=table" >}}
 <?xml version="1.0" encoding="UTF-8"?>
 <system-security-plan ...>
-  <metadata>...</metadata>
-  <import-profile>...</import-profile>
-  <system-characteristics>...</system-characteristics>
-  <system-implementation>
-    <prop .../>
-      <component uuid="..." type="policy">
-        <title>Information System (IT) Rules of Behavior Policy</title>
-        <description>
-          <p>Organizational IT Rules of Behavior policy.</p>
-        </description>
-        <link href="#rules-of-behavior-guid" rel="policy"/>
-        <status state="operational"/>
-      </component>
-  </system-implementation>  
+  <metadata>
+    <title>OSCAL SSP Link to Back Matter Resource Example</title>
+    <last-modified>2001-12-17T09:30:47Z</last-modified>
+    <version>20210707</version>
+    <oscal-version>1.0.0</oscal-version>""
+    <link href="#a7584118-3d2d-46c8-b388-df747309c0fa" rel="reference">
+      <text>Applicable Laws and Regulations, Standards, and Guides</text>
+    </link>
+  </metadata>
+  <import-profile .../>
+  <system-characteristics .../>
   <control-implementation>...</control-implementation>
   <back-matter>
-    <resource uuid="#rules-of-behavior-guid">
-      <rlink href="/ROB/Agency-IT-ROB.pdf">
+    <resource uuid="a7584118-3d2d-46c8-b388-df747309c0fa">
+      <rlink href="https://www.dhs.gov/homeland-security-presidential-directive-12" />
+      <rlink href="https://csrc.nist.gov/csrc/media/publications/fips/199/final/documents/fips-pub-199-final.pdf" media-type="application/pdf" />
+      <rlink href="/security/standards/IT-Rules-of-Behavior.docx" media-type="application/msword">
     </resource>
   </back-matter>
 </system-security-plan>
@@ -218,16 +213,13 @@ When referencing `back-matter` `resources`, those back matter resources may have
 {{% /tab %}}
 {{% /tabs %}}
 
-This example demonstrates how an system owner might reference an organization policy document, such as the IT Rules of Behavior, in  their SSP. To reference the organizational IT Rules of Behavior document, this SSP used the uuid (as specified in the `resource` element in the `back-matter`) as a fragment.  In the `back-matter`, the `rlink` element is used a relative path URI in its `href` attribute but could also accept an absolute path URI.
-
-- [ ] _To-do: Provide an example of a citation.  For example, some of the SSP system characteristic diagrams (e.g., auth boundary, network architecture, and data flow diagrams)_
-- [ ] _To-do: Provide an example of a base64._
+Notice that in this example, the `link` on line #8 only provides a fragment rather than a URL. OSCAL interprets this as a pointer to a back matter resource `uuid` (see line #16).  Within this `resource`, several items are referenced (via `rlinks`). The `rlinks` must have a URI reference (`href`).  The third `rlink` in this example provides a relative path.  All of the other `rlink` attributes (e.g., `mediat-type` and `hash`) are optional.  Unlike `links`, `rlinks` do not have any `rel` attributes to provide additional context, nor do they have `text` sub-elements.  OSCAL content authors should consider these subtle differences when deciding whether to use `links` or `rlinks`.
 
 ## Summary
 
 This concludes the tutorial. You should now be familiar with:
 
-- How to use props to extend OSCAL
-- How to use namespaces to avoid collisions
-- How to use classes to further differentiate prop extension names
+- The basic use of OSCAL props
+- How to use props to extend OSCAL models
+- The basic use of OSCAL links
 - How to specify local and remote links for indirection
