@@ -1,27 +1,37 @@
 import fs from 'fs';
 import {colorCodes} from '../utils/init';
-const {P_END, P_INFO, P_ERROR, P_OK, P_WARN} = colorCodes;
-//*********/
-//this is the path passed from CLI. 
-//ex src/catalog/json/file.name.json 
-//output: src/catalog/json/file.name.min.json
-export const minifyJson = (file: string) => { 
-  const jsonFile = fs.readFileSync(file, 'utf-8');
+const {P_END, P_ERROR, P_OK} = colorCodes;
+
+export const minifyJson = (inputFilePath: string, filename: any, dir: any) => {
+  const jsonFile = fs.readFileSync(inputFilePath, 'utf-8');
   const jsonFileContent = JSON.parse(jsonFile);
-  const minJson = file.replace('.json', '-min.json');
+  let minFile: string;
+  
 
- //********* */
-//  const consoleLog = (format: string) => console.log(`${P_OK}Converted ${file} ' to ${P_END}${minJson}${P_OK}'.${P_END}`);
-//****** *
-  //echo -e "${P_OK}Converted ${file}' to {P_END}${ minJson}${P_OK}'.${P_END}"
-
-  //console.log('File is:', minJson)
-  //**************
-  //fs.mkdirSync(`${file}`, { recursive: true });
-
-  //const min_Dir = `${file}/${minJson}`;
-  //***************
-  //fs.mkdirSync(minJson, { recursive: true });
-  fs.writeFileSync(minJson, JSON.stringify(jsonFileContent, null, 0));
-  console.log(`${P_OK}Converted '${file}' to '${P_END}${minJson}${P_OK}'.${P_END}`);
+  if (!dir) {
+    const inputFile = inputFilePath.replace(/.*\//g, ''); //   file/jsonfiles/file.json
+    if (inputFile === filename) {
+      return console.log(`${P_ERROR}Source file "${inputFile}" and target file "${filename}" cannot be the same.${P_END}`);  
+    }
+    minFile = inputFilePath.replace(inputFile, filename);
+  } else {
+    if (dir === '.' || dir === './') {
+      minFile = `${process.cwd()}/${filename}`;
+    } else {
+      minFile = dir.startsWith('./')
+      ? `${process.cwd()}/${dir.substring(2)}/${filename}`
+      : `${process.cwd()}/${dir}/${filename}`;
+    }
+  }
+  fs.writeFileSync(minFile, JSON.stringify(jsonFileContent, null, 0));
+  console.log(`${P_OK}Converted '${inputFilePath}' to '${P_END}${minFile}${P_OK}'.${P_END}`);
 };
+
+// -d -f
+// oscalcli minifyjson file/jsonfiles/file.json -f file-min.json -d path/tojsonfile
+// oscalcli minifyjson file/jsonfiles/file.json -o path/jsonpath/file.json
+
+//  ./file.json OR ./path/jsonpath/file.json ---> C:/USER/pwd/./file.json  (Try to prevent this)
+
+// ../file.json  -->  C:/USER/pwd/../file.json (valid)
+// file.json  -->  C:/USER/pwd/file.json (valid)
