@@ -5,16 +5,22 @@ import { argv } from 'yargs';
 export const command = 'minify-json'
 exports.desc = 'Usage: oscalcli minify-json [configs]'
 exports.builder = {
-  // outputFormat: {
-  //   type: 'string',
-  //   alias: 'output',
-  //   describe: 'Minified File',
-  //   demand: true,
-  // }
+  outputFile: {
+    type: 'string',
+    alias: 'f',
+    describe: 'Minified File',
+    demand: true,
+  },
+  dir: {
+    type: 'string',
+    alias: 'd',
+    describe: 'Directory for Minified JSON',
+    demand: false,
+  }
 }
 export const handler = async () => {
   //calls the Entry Function
   const {path} = await variablesProcessor(argv);
-  //const {outputFormat} = argv
-  minifyJson (path)
+  const {f, d} = argv
+  minifyJson (path, f, d)
 }
