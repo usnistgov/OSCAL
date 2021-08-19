@@ -246,7 +246,7 @@ The optional `<responsible-role>` element can be used to reference one or more r
 }
 {{< /highlight >}}
 
-A component is represented in the `[components](/reference/latest/component-definition/json-reference/#/component-definition/components)` object array shown in line 4. Each component requires a unique identifier, which is provided using the `uuid` property.
+A component is represented in the [components](/reference/latest/component-definition/json-reference/#/component-definition/components) object array shown in line 4. Each component requires a unique identifier, which is provided using the `uuid` property.
 
 The `type` property is very useful in classifying components.  Some common examples include interconnection, hardware, software, service, policy, process, procedure,  plan, guidance, and standard. In our example, we’ll set the MongoDB component as the "*software*" type, since MongoDB is a software application.
 
@@ -279,7 +279,7 @@ component-definition:
 
 {{< /highlight >}}
 
-A component is represented in the `[components](/reference/latest/component-definition/json-reference/#/component-definition/components)` object array shown in line 4. Each component requires a unique identifier, which is provided using the `uuid` property.
+A component is represented in the [components](/reference/latest/component-definition/json-reference/#/component-definition/components) object array shown in line 4. Each component requires a unique identifier, which is provided using the `uuid` property.
 
 The `type` item is very useful in classifying components.  Some common examples include interconnection, hardware, software, service, policy, process / procedure,  plan, guidance, and standard. In our example, we’ll set the MongoDB component to a "*software*" type.  
 
