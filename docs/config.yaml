@@ -31,6 +31,7 @@ params:
   header:
     project_shortname: "OSCAL"
     project_name: "OSCAL: the Open Security Controls Assessment Language"
+  page_repo_path: https://github.com/usnistgov/OSCAL/tree/main/docs/content
   # ** Change this on release ***
   contentRepoPath: https://github.com/usnistgov/oscal-content/tree/master
   searchAffiliate: oscal
