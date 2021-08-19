@@ -8,19 +8,19 @@ suppresstopiclist: true
 This tutorial covers the basics of the common Metadata Section, and provides a walk-through on creating one for a new document. Before reading this tutorial you should:
 
 - Have some familiarity with the [XML](https://www.w3.org/standards/xml/core), [JSON](https://www.json.org/), or [YAML](https://yaml.org/spec/) formats.
-- Have a basic understanding of the usage and organization of the OSCAL Model and it's layers
+- Have a basic understanding of OSCAL Models and their overall structure. ([OSCAL High-Level Overview](/concepts/layer/overview/))
 
 ## What is the Metadata Section?
 
-All OSCAL documents share some common structure and elements, as discussed in [Common High-Level Structure](/documentation/schema/overview/#common-high-level-structure). The foremost of these is the Metadata section, which includes important identifying and categorizing information. A number of mandatory fields inside of Metadata are vital to the processing of OSCAL documents, and have stricter requirements that help ensure interoperability. A second, larger set of fields are optional, and designed to allow OSCAL content creators great flexibility in expressing additional information. These optional fields could enable extra functionality, utilize proprietary data, contain contact info, and more.
+All OSCAL Models share some common structure and elements, as discussed in [Common High-Level Structure](/concepts/layer/overview/#common-high-level-structure). The foremost of these is the Metadata section, which includes important identifying and categorizing information. A number of mandatory fields inside of Metadata are vital to the processing of OSCAL documents, and have stricter requirements that help ensure interoperability. A second, larger set of fields are optional, and designed to allow OSCAL content creators great flexibility in expressing additional information. These optional fields may enable extra functionality, utilize proprietary data, contain contact info, and more.
 
-The definition of the Metadata Section is the same regardless of where it appears, so this tutorial is not bound to a single Layer of OSCAL.
+The definition of the Metadata Section is the same regardless of where it appears, so this tutorial is not bound to a single OSCAL Model.
 
 As with all parts of OSCAL, the Metadata Section provides machine-readable formats in XML, JSON, and YAML, which support representing an equivalent set of information. Examples in this tutorial are provided for XML, JSON, and YAML to show the equivalent representations.
 
 ## The Fields of Metadata
 
-The widget below shows the high-level structure of the Metadata Section in XML, JSON, and YAML. Below, each field is defined and briefly explained. Selecting a serialization type here will 
+The widget below shows the high-level structure of the Metadata Section in XML, JSON, and YAML. Below, each field is defined and briefly explained.
 
 {{< tabs XML JSON YAML >}}
 {{% tab %}}
@@ -208,7 +208,7 @@ For our example, this would look like:
 {{< /highlight >}}
 
 
-Next we have two date based elements. This uses the OSCAL DataTime data type as defined here: [date-with-timezone](https://pages.nist.gov/OSCAL/documentation/schema/datatypes/#date-with-timezone). `<published>` gives the DateTime of when the document was published for the first time. Since we are publishing this document for the first time today (1/1/2021), the published date will be today, and the time is the moment (or near to it) that this document was published. `<last-modified>` provides the DateTime of the most recent change to this document. As we have never published this particular document before, the DateTime should be identical to the one given by `<published>`. In our example, this will look like:
+Next we have two date-based elements. This uses the OSCAL DataTime data type as defined here: [date-with-timezone](https://pages.nist.gov/OSCAL/documentation/schema/datatypes/#date-with-timezone). `<published>` gives the DateTime of when the document was published for the first time. Since we are publishing this document for the first time today (1/1/2021), the published date will be today, and the time is the moment (or near to it) that this document was published. `<last-modified>` provides the DateTime of the most recent change to this document. As we have never published this particular document before, the DateTime should be identical to the one given by `<published>`. In our example, this will look like:
 
 
 {{< highlight xml "linenos=table" >}}
@@ -375,7 +375,7 @@ However, the Metadata Section has several other optional fields of importance, w
 {{% /tab %}}
 {{% /tabs %}}
 
-## Understanding and using `document-id`
+## Understanding and Using `document-id`
 
 {{< tabs XML JSON YAML >}}
 {{% tab %}}
@@ -551,7 +551,7 @@ Use of the optional `media-type` attribute can provide consumers with processing
 
 
 {{% tab %}}
-Alongside the `"props"` array, the `"links"` array is way of providing additional information in the Metadata section that is not covered by the other fields. Each object inside the `"links"` array must contain a single `"href"` field, which contains a resolvable URI. Each object should also include a `"rel"` field, which describes the type of relationship provided by the `"href"`. Although any string can be used in the `"rel"` field, OSCAL identifies five common link relationships that are frequently useful:
+Alongside the `"props"` array, the `"links"` array is a way of providing additional information in the Metadata section that is not covered by the other fields. Each object inside the `"links"` array must contain a single `"href"` field, which contains a resolvable URI. Each object should also include a `"rel"` field, which describes the type of relationship provided by the `"href"`. Although any string can be used in the `"rel"` field, OSCAL identifies five common link relationships that are frequently useful:
   - canonical: The link identifies the authoritative location for this file.
   - alternate: The link identifies an alternative location or format for this file.
   - latest-version: This link identifies a resource containing the latest version in the version history. Defined by RFC 5829.
