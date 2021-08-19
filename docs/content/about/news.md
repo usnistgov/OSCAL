@@ -6,6 +6,8 @@ toc:
   enabled: true
 ---
 
+- [OSCAL 1.0.0 Full Release](https://github.com/usnistgov/OSCAL/releases/tag/v1.0.0) - June 7, 2021
+- [The Foundation for Interoperable and Portable Security Automation is Revealed in NIST’s OSCAL Project](https://www.nist.gov/blogs/cybersecurity-insights/foundation-interoperable-and-portable-security-automation-revealed) - May 19, 2021
 - [OSCAL 1.0.0 Release Candidate 2 (RC2) Released](https://github.com/usnistgov/OSCAL/releases/tag/v1.0.0-rc2) - April 12, 2021
 - [OSCAL 1.0.0 Release Candidate 1 (RC1) Released](https://pages.nist.gov/OSCAL/contribute/roadmap/#oscal-100-release-candidate-1) - December 21, 2020
 - [NIST ready to test approach to make FedRAMP faster, less burdensome](https://federalnewsnetwork.com/ask-the-cio/2020/10/nist-ready-to-test-approach-to-make-fedramp-faster-less-burdensome/) - October 8, 2020
