@@ -130,6 +130,7 @@ The following steps are known to work on [Ubuntu](https://ubuntu.com/) (tested i
     mkdir -p "${CALABASH_HOME}"
     unzip -d "${CALABASH_HOME}" "xmlcalabash-${CALABASH_VERSION}.zip"
     mv "${CALABASH_HOME}"/*/* "${CALABASH_HOME}"
+    ```
 
 Your environment should be setup.
 
