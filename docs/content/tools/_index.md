@@ -35,3 +35,5 @@ See the [NIST Software Disclaimer](https://www.nist.gov/disclaimer) for more inf
 
 - **[OSCALkit:](https://github.com/docker/oscalkit)** Provides a GoLang SDK for OSCAL. Converts OSCAL XML -> JSON (and vice versa). Converts [OpenControl](https://open-control.org/) projects into OSCAL.
 - **[OSCAL GUI:](https://github.com/brianrufgsa/OSCAL-GUI)** A proof of concept GUI tool for interacting with OSCAL content based on [OSCAL milestone 2](https://github.com/usnistgov/OSCAL/releases/tag/v1.0.0-milestone2).
+- **[OSCAL REST:](https://github.com/EasyDynamics/oscal-rest)** An initial OpenAPI definition of an OSCAL REST API.
+- **[OSCAL React Library:](https://github.com/EasyDynamics/oscal-react-library)** A library of React components and an example user interface application that provides a direct UI into OSCAL.
