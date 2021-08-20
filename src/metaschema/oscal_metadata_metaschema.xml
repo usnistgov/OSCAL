@@ -199,7 +199,7 @@
                 <enum value="type">Characterizes the kind of location.</enum>
             </allowed-values>
             <allowed-values target="prop[@name='type']/@value" allow-other="yes">
-                <enum value="data-center">A location that contains computing assets. A <code>class</code> can be used to indicate a subclass of data-center.</enum>
+                <enum value="data-center">A location that contains computing assets. A <code>class</code> can be used to indicate the sub-type of data-center as <em>primary</em> or <em>alternate</em>.</enum>
             </allowed-values>
             <allowed-values target="prop[@name='type' and @value='data-center']/@class" allow-other="yes">
                 <enum value="primary">The location is a data-center used for normal operations.</enum>
