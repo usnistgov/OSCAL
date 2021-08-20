@@ -1,15 +1,15 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="us-ascii"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
            xmlns:m="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
            xmlns:oscal-poam="http://csrc.nist.gov/ns/oscal/1.0"
            xmlns:oscal-prose="http://csrc.nist.gov/ns/oscal/1.0"
            elementFormDefault="qualified"
            targetNamespace="http://csrc.nist.gov/ns/oscal/1.0"
-           version="1.0.0-rc2">
+           version="1.0.0">
    <xs:annotation>
       <xs:appinfo>
          <m:schema-name>OSCAL Plan of Action and Milestones (POA&amp;M) Model</m:schema-name>
-         <m:schema-version>1.0.0-rc2</m:schema-version>
+         <m:schema-version>1.0.0</m:schema-version>
          <m:short-name>oscal-poam</m:short-name>
          <m:remarks>
             <p>The OSCAL Plan of Action and Milestones (POA&amp;M) format is used to describe the information typically provided by an assessor during the preparation for an assessment.</p>
@@ -18,7 +18,235 @@
          <m:root>plan-of-action-and-milestones</m:root>
       </xs:appinfo>
    </xs:annotation>
-   <xs:complexType name="metadata-ASSEMBLY">
+   <xs:element name="plan-of-action-and-milestones"
+               type="oscal-poam:oscal-poam-plan-of-action-and-milestones-ASSEMBLY"/>
+   <xs:complexType name="oscal-poam-plan-of-action-and-milestones-ASSEMBLY">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Plan of Action and Milestones (POA&amp;M)</m:formal-name>
+            <m:description>A plan of action and milestones which identifies initial and residual risks, deviations, and disposition, such as those required by FedRAMP.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Plan of Action and Milestones (POA&amp;M)</b>: A plan of action and milestones which identifies initial and residual risks, deviations, and disposition, such as those required by FedRAMP.</xs:documentation>
+      </xs:annotation>
+      <xs:sequence>
+         <xs:element name="metadata"
+                     type="oscal-poam:oscal-metadata-metadata-ASSEMBLY"
+                     minOccurs="1"
+                     maxOccurs="1"/>
+         <xs:element name="import-ssp"
+                     type="oscal-poam:oscal-assessment-common-import-ssp-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="1"/>
+         <xs:element name="system-id"
+                     type="oscal-poam:oscal-implementation-common-system-id-FIELD"
+                     minOccurs="0"
+                     maxOccurs="1"/>
+         <xs:element name="local-definitions"
+                     type="oscal-poam:oscal-poam-local-definitions-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="1"/>
+         <xs:element name="observation"
+                     type="oscal-poam:oscal-assessment-common-observation-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:element name="risk"
+                     type="oscal-poam:oscal-assessment-common-risk-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:element name="poam-item"
+                     type="oscal-poam:oscal-poam-poam-item-ASSEMBLY"
+                     minOccurs="1"
+                     maxOccurs="unbounded"/>
+         <xs:element name="back-matter"
+                     type="oscal-poam:oscal-metadata-back-matter-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="1"/>
+      </xs:sequence>
+      <xs:attribute name="uuid" use="required" type="oscal-poam:uuid">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>POA&amp;M Universally Unique Identifier</m:formal-name>
+               <m:description>Uniquely identifies this POA&amp;M. This UUID must be changed each time the content of the POA&amp;M changes.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>POA&amp;M Universally Unique Identifier</b>: Uniquely identifies this POA&amp;M. This UUID must be changed each time the content of the POA&amp;M changes.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+   </xs:complexType>
+   <xs:complexType name="oscal-poam-local-definitions-ASSEMBLY">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Local Definitions</m:formal-name>
+            <m:description>Allows components, and inventory-items to be defined within the POA&amp;M for circumstances where no OSCAL-based SSP exists, or is not delivered with the POA&amp;M.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Local Definitions</b>: Allows components, and inventory-items to be defined within the POA&amp;M for circumstances where no OSCAL-based SSP exists, or is not delivered with the POA&amp;M.</xs:documentation>
+      </xs:annotation>
+      <xs:sequence>
+         <xs:element name="component"
+                     type="oscal-poam:oscal-implementation-common-system-component-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:element name="inventory-item"
+                     type="oscal-poam:oscal-implementation-common-inventory-item-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Remarks</m:formal-name>
+                  <m:description>Additional commentary on the containing object.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Remarks</b>: Additional commentary on the containing object.</xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+               <xs:group ref="oscal-poam:blockElementGroup"
+                         maxOccurs="unbounded"
+                         minOccurs="0"/>
+            </xs:complexType>
+         </xs:element>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="oscal-poam-poam-item-ASSEMBLY">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>POA&amp;M Item</m:formal-name>
+            <m:description>Describes an individual POA&amp;M item.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>POA&amp;M Item</b>: Describes an individual POA&amp;M item.</xs:documentation>
+      </xs:annotation>
+      <xs:sequence>
+         <xs:element name="title" minOccurs="1" maxOccurs="1">
+            <xs:complexType mixed="true">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>POA&amp;M Item Title</m:formal-name>
+                     <m:description>The title or name for this POA&amp;M item .</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>POA&amp;M Item Title</b>: The title or name for this POA&amp;M item .</xs:documentation>
+               </xs:annotation>
+               <xs:complexContent>
+                  <xs:extension base="oscal-poam:markupLineType"/>
+               </xs:complexContent>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="description" minOccurs="1" maxOccurs="1">
+            <xs:complexType>
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>POA&amp;M Item Description</m:formal-name>
+                     <m:description>A human-readable description of POA&amp;M item.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>POA&amp;M Item Description</b>: A human-readable description of POA&amp;M item.</xs:documentation>
+               </xs:annotation>
+               <xs:complexContent>
+                  <xs:extension base="oscal-poam:markupMultilineType"/>
+               </xs:complexContent>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="prop"
+                     type="oscal-poam:oscal-metadata-property-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:element name="link"
+                     type="oscal-poam:oscal-metadata-link-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:element name="origin" minOccurs="0" maxOccurs="unbounded">
+            <xs:complexType>
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Origin</m:formal-name>
+                     <m:description>Identifies the source of the finding, such as a tool or person.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Origin</b>: Identifies the source of the finding, such as a tool or person.</xs:documentation>
+               </xs:annotation>
+               <xs:sequence>
+                  <xs:element name="actor"
+                              type="oscal-poam:oscal-assessment-common-origin-actor-ASSEMBLY"
+                              minOccurs="1"
+                              maxOccurs="unbounded"/>
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="related-observation" minOccurs="0" maxOccurs="unbounded">
+            <xs:complexType>
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Related Observation</m:formal-name>
+                     <m:description>Relates the poam-item to a set of referenced observations that were used to determine the finding.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Related Observation</b>: Relates the poam-item to a set of referenced observations that were used to determine the finding.</xs:documentation>
+               </xs:annotation>
+               <xs:attribute name="observation-uuid" use="required" type="oscal-poam:uuid">
+                  <xs:annotation>
+                     <xs:appinfo>
+                        <m:formal-name>Observation Universally Unique Identifier Reference</m:formal-name>
+                        <m:description>References an observation defined in the list of observations.</m:description>
+                     </xs:appinfo>
+                     <xs:documentation>
+                        <b>Observation Universally Unique Identifier Reference</b>: References an observation defined in the list of observations.</xs:documentation>
+                  </xs:annotation>
+               </xs:attribute>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="associated-risk" minOccurs="0" maxOccurs="unbounded">
+            <xs:complexType>
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Associated Risk</m:formal-name>
+                     <m:description>Relates the finding to a set of referenced risks that were used to determine the finding.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Associated Risk</b>: Relates the finding to a set of referenced risks that were used to determine the finding.</xs:documentation>
+               </xs:annotation>
+               <xs:attribute name="risk-uuid" use="required" type="oscal-poam:uuid">
+                  <xs:annotation>
+                     <xs:appinfo>
+                        <m:formal-name>Risk Universally Unique Identifier Reference</m:formal-name>
+                        <m:description>References an risk defined in the list of risks.</m:description>
+                     </xs:appinfo>
+                     <xs:documentation>
+                        <b>Risk Universally Unique Identifier Reference</b>: References an risk defined in the list of risks.</xs:documentation>
+                  </xs:annotation>
+               </xs:attribute>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Remarks</m:formal-name>
+                  <m:description>Additional commentary on the containing object.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Remarks</b>: Additional commentary on the containing object.</xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+               <xs:group ref="oscal-poam:blockElementGroup"
+                         maxOccurs="unbounded"
+                         minOccurs="0"/>
+            </xs:complexType>
+         </xs:element>
+      </xs:sequence>
+      <xs:attribute name="uuid" type="oscal-poam:uuid">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>POA&amp;M Item Universally Unique Identifier</m:formal-name>
+               <m:description>Uniquely identifies the POA&amp;M entry. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. A UUID should be consistently used for a given POA&amp;M item across revisions of the document.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>POA&amp;M Item Universally Unique Identifier</b>: Uniquely identifies the POA&amp;M entry. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. A UUID should be consistently used for a given POA&amp;M item across revisions of the document.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+   </xs:complexType>
+   <xs:complexType name="oscal-metadata-metadata-ASSEMBLY">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Publication metadata</m:formal-name>
@@ -74,27 +302,27 @@
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="prop"
-                     type="oscal-poam:property-ASSEMBLY"
+                     type="oscal-poam:oscal-metadata-property-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="link"
-                     type="oscal-poam:link-ASSEMBLY"
+                     type="oscal-poam:oscal-metadata-link-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="role"
-                     type="oscal-poam:role-ASSEMBLY"
+                     type="oscal-poam:oscal-metadata-role-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="location"
-                     type="oscal-poam:location-ASSEMBLY"
+                     type="oscal-poam:oscal-metadata-location-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="party"
-                     type="oscal-poam:party-ASSEMBLY"
+                     type="oscal-poam:oscal-metadata-party-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="responsible-party"
-                     type="oscal-poam:responsible-party-ASSEMBLY"
+                     type="oscal-poam:oscal-metadata-responsible-party-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="remarks" minOccurs="0" maxOccurs="1">
@@ -156,11 +384,11 @@
                      minOccurs="0"
                      maxOccurs="1"/>
          <xs:element name="prop"
-                     type="oscal-poam:property-ASSEMBLY"
+                     type="oscal-poam:oscal-metadata-property-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="link"
-                     type="oscal-poam:link-ASSEMBLY"
+                     type="oscal-poam:oscal-metadata-link-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="remarks" minOccurs="0" maxOccurs="1">
@@ -180,7 +408,7 @@
          </xs:element>
       </xs:sequence>
    </xs:complexType>
-   <xs:complexType name="location-ASSEMBLY">
+   <xs:complexType name="oscal-metadata-location-ASSEMBLY">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Location</m:formal-name>
@@ -231,11 +459,11 @@
             </xs:simpleType>
          </xs:element>
          <xs:element name="prop"
-                     type="oscal-poam:property-ASSEMBLY"
+                     type="oscal-poam:oscal-metadata-property-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="link"
-                     type="oscal-poam:link-ASSEMBLY"
+                     type="oscal-poam:oscal-metadata-link-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="remarks" minOccurs="0" maxOccurs="1">
@@ -265,7 +493,7 @@
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
-   <xs:simpleType name="location-uuid-FIELD">
+   <xs:simpleType name="oscal-metadata-location-uuid-FIELD">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Location Reference</m:formal-name>
@@ -276,7 +504,7 @@
       </xs:annotation>
       <xs:restriction base="oscal-poam:uuid"/>
    </xs:simpleType>
-   <xs:complexType name="party-ASSEMBLY">
+   <xs:complexType name="oscal-metadata-party-ASSEMBLY">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Party (organization or person)</m:formal-name>
@@ -296,7 +524,7 @@
                   <xs:documentation>
                      <b>Party Name</b>: The full name of the party. This is typically the legal name associated with the party.</xs:documentation>
                </xs:annotation>
-               <xs:restriction base="xs:string"/>
+               <xs:restriction base="oscal-poam:string"/>
             </xs:simpleType>
          </xs:element>
          <xs:element name="short-name" minOccurs="0" maxOccurs="1">
@@ -309,7 +537,7 @@
                   <xs:documentation>
                      <b>Party Short Name</b>: A short common name, abbreviation, or acronym for the party.</xs:documentation>
                </xs:annotation>
-               <xs:restriction base="xs:string"/>
+               <xs:restriction base="oscal-poam:string"/>
             </xs:simpleType>
          </xs:element>
          <xs:element name="external-id" minOccurs="0" maxOccurs="unbounded">
@@ -323,7 +551,7 @@
                      <b>Party External Identifier</b>: An identifier for a person or organization using a designated scheme. e.g. an Open Researcher and Contributor ID (ORCID)</xs:documentation>
                </xs:annotation>
                <xs:simpleContent>
-                  <xs:extension base="xs:string">
+                  <xs:extension base="oscal-poam:string">
                      <xs:attribute name="scheme" use="required" type="oscal-poam:uri">
                         <xs:annotation>
                            <xs:appinfo>
@@ -339,11 +567,11 @@
             </xs:complexType>
          </xs:element>
          <xs:element name="prop"
-                     type="oscal-poam:property-ASSEMBLY"
+                     type="oscal-poam:oscal-metadata-property-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="link"
-                     type="oscal-poam:link-ASSEMBLY"
+                     type="oscal-poam:oscal-metadata-link-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="email-address"
@@ -360,7 +588,7 @@
                         minOccurs="0"
                         maxOccurs="unbounded"/>
             <xs:element name="location-uuid"
-                        type="oscal-poam:location-uuid-FIELD"
+                        type="oscal-poam:oscal-metadata-location-uuid-FIELD"
                         minOccurs="0"
                         maxOccurs="unbounded"/>
          </xs:choice>
@@ -403,7 +631,7 @@
                <b>Party Universally Unique Identifier</b>: A unique identifier that can be used to reference this defined location elsewhere in an OSCAL document. A UUID should be consistently used for a given party across revisions of the document.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="type" use="required" type="xs:string">
+      <xs:attribute name="type" use="required" type="oscal-poam:string">
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Party Type</m:formal-name>
@@ -414,7 +642,7 @@
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
-   <xs:simpleType name="party-uuid-FIELD">
+   <xs:simpleType name="oscal-metadata-party-uuid-FIELD">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Party Reference</m:formal-name>
@@ -425,7 +653,7 @@
       </xs:annotation>
       <xs:restriction base="oscal-poam:uuid"/>
    </xs:simpleType>
-   <xs:complexType name="role-ASSEMBLY">
+   <xs:complexType name="oscal-metadata-role-ASSEMBLY">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Role</m:formal-name>
@@ -460,7 +688,7 @@
                   <xs:documentation>
                      <b>Role Short Name</b>: A short common name, abbreviation, or acronym for the role.</xs:documentation>
                </xs:annotation>
-               <xs:restriction base="xs:string"/>
+               <xs:restriction base="oscal-poam:string"/>
             </xs:simpleType>
          </xs:element>
          <xs:element name="description" minOccurs="0" maxOccurs="1">
@@ -479,11 +707,11 @@
             </xs:complexType>
          </xs:element>
          <xs:element name="prop"
-                     type="oscal-poam:property-ASSEMBLY"
+                     type="oscal-poam:oscal-metadata-property-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="link"
-                     type="oscal-poam:link-ASSEMBLY"
+                     type="oscal-poam:oscal-metadata-link-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="remarks" minOccurs="0" maxOccurs="1">
@@ -502,7 +730,7 @@
             </xs:complexType>
          </xs:element>
       </xs:sequence>
-      <xs:attribute name="id" use="required" type="xs:NCName">
+      <xs:attribute name="id" use="required" type="oscal-poam:token">
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Role Identifier</m:formal-name>
@@ -513,7 +741,18 @@
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
-   <xs:complexType name="back-matter-ASSEMBLY">
+   <xs:simpleType name="oscal-metadata-role-id-FIELD">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Role Identifier Reference</m:formal-name>
+            <m:description>A reference to the roles served by the user.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Role Identifier Reference</b>: A reference to the roles served by the user.</xs:documentation>
+      </xs:annotation>
+      <xs:restriction base="oscal-poam:token"/>
+   </xs:simpleType>
+   <xs:complexType name="oscal-metadata-back-matter-ASSEMBLY">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Back matter</m:formal-name>
@@ -565,7 +804,7 @@
                      </xs:complexType>
                   </xs:element>
                   <xs:element name="prop"
-                              type="oscal-poam:property-ASSEMBLY"
+                              type="oscal-poam:oscal-metadata-property-ASSEMBLY"
                               minOccurs="0"
                               maxOccurs="unbounded"/>
                   <xs:element name="document-id"
@@ -599,27 +838,13 @@
                               </xs:complexType>
                            </xs:element>
                            <xs:element name="prop"
-                                       type="oscal-poam:property-ASSEMBLY"
+                                       type="oscal-poam:oscal-metadata-property-ASSEMBLY"
                                        minOccurs="0"
                                        maxOccurs="unbounded"/>
-                           <xs:element name="biblio" minOccurs="0" maxOccurs="1">
-                              <xs:complexType>
-                                 <xs:annotation>
-                                    <xs:appinfo>
-                                       <m:formal-name>Bibliographic Definition</m:formal-name>
-                                       <m:description>A container for structured bibliographic information. The model of this information is undefined by OSCAL.</m:description>
-                                    </xs:appinfo>
-                                    <xs:documentation>
-                                       <b>Bibliographic Definition</b>: A container for structured bibliographic information. The model of this information is undefined by OSCAL.</xs:documentation>
-                                 </xs:annotation>
-                                 <xs:sequence>
-                                    <xs:any namespace="##other"
-                                            processContents="lax"
-                                            minOccurs="0"
-                                            maxOccurs="unbounded"/>
-                                 </xs:sequence>
-                              </xs:complexType>
-                           </xs:element>
+                           <xs:element name="link"
+                                       type="oscal-poam:oscal-metadata-link-ASSEMBLY"
+                                       minOccurs="0"
+                                       maxOccurs="unbounded"/>
                         </xs:sequence>
                      </xs:complexType>
                   </xs:element>
@@ -635,7 +860,7 @@
                         </xs:annotation>
                         <xs:sequence>
                            <xs:element name="hash"
-                                       type="oscal-poam:hash-FIELD"
+                                       type="oscal-poam:oscal-metadata-hash-FIELD"
                                        minOccurs="0"
                                        maxOccurs="unbounded"/>
                         </xs:sequence>
@@ -649,7 +874,7 @@
                                  <b>Hypertext Reference</b>: A resolvable URI reference to a resource.</xs:documentation>
                            </xs:annotation>
                         </xs:attribute>
-                        <xs:attribute name="media-type" type="xs:string">
+                        <xs:attribute name="media-type" type="oscal-poam:string">
                            <xs:annotation>
                               <xs:appinfo>
                                  <m:formal-name>Media Type</m:formal-name>
@@ -683,7 +908,7 @@
                                        <b>File Name</b>: Name of the file before it was encoded as Base64 to be embedded in a resource. This is the name that will be assigned to the file when the file is decoded.</xs:documentation>
                                  </xs:annotation>
                               </xs:attribute>
-                              <xs:attribute name="media-type" type="xs:string">
+                              <xs:attribute name="media-type" type="oscal-poam:string">
                                  <xs:annotation>
                                     <xs:appinfo>
                                        <m:formal-name>Media Type</m:formal-name>
@@ -727,7 +952,7 @@
          </xs:element>
       </xs:sequence>
    </xs:complexType>
-   <xs:complexType name="property-ASSEMBLY">
+   <xs:complexType name="oscal-metadata-property-ASSEMBLY">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Property</m:formal-name>
@@ -753,7 +978,7 @@
             </xs:complexType>
          </xs:element>
       </xs:sequence>
-      <xs:attribute name="name" use="required" type="xs:NCName">
+      <xs:attribute name="name" use="required" type="oscal-poam:token">
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Property Name</m:formal-name>
@@ -783,7 +1008,7 @@
                <b>Property Namespace</b>: A namespace qualifying the property's name. This allows different organizations to associate distinct semantics with the same name.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="value" use="required" type="xs:string">
+      <xs:attribute name="value" use="required" type="oscal-poam:string">
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Property Value</m:formal-name>
@@ -793,7 +1018,7 @@
                <b>Property Value</b>: Indicates the value of the attribute, characteristic, or quality.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="class" type="xs:NCName">
+      <xs:attribute name="class" type="oscal-poam:token">
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Property Class</m:formal-name>
@@ -804,7 +1029,7 @@
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
-   <xs:complexType name="link-ASSEMBLY">
+   <xs:complexType name="oscal-metadata-link-ASSEMBLY">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Link</m:formal-name>
@@ -840,7 +1065,7 @@
                <b>Hypertext Reference</b>: A resolvable URL reference to a resource.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="rel" type="xs:NCName">
+      <xs:attribute name="rel" type="oscal-poam:token">
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Relation</m:formal-name>
@@ -850,7 +1075,7 @@
                <b>Relation</b>: Describes the type of relationship provided by the link. This can be an indicator of the link's purpose.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="media-type" type="xs:string">
+      <xs:attribute name="media-type" type="oscal-poam:string">
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Media Type</m:formal-name>
@@ -861,7 +1086,7 @@
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
-   <xs:complexType name="responsible-party-ASSEMBLY">
+   <xs:complexType name="oscal-metadata-responsible-party-ASSEMBLY">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Responsible Party</m:formal-name>
@@ -872,15 +1097,15 @@
       </xs:annotation>
       <xs:sequence>
          <xs:element name="party-uuid"
-                     type="oscal-poam:party-uuid-FIELD"
+                     type="oscal-poam:oscal-metadata-party-uuid-FIELD"
                      minOccurs="1"
                      maxOccurs="unbounded"/>
          <xs:element name="prop"
-                     type="oscal-poam:property-ASSEMBLY"
+                     type="oscal-poam:oscal-metadata-property-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="link"
-                     type="oscal-poam:link-ASSEMBLY"
+                     type="oscal-poam:oscal-metadata-link-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="remarks" minOccurs="0" maxOccurs="1">
@@ -899,7 +1124,7 @@
             </xs:complexType>
          </xs:element>
       </xs:sequence>
-      <xs:attribute name="role-id" use="required" type="xs:NCName">
+      <xs:attribute name="role-id" use="required" type="oscal-poam:token">
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Responsible Role</m:formal-name>
@@ -910,7 +1135,7 @@
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
-   <xs:complexType name="responsible-role-ASSEMBLY">
+   <xs:complexType name="oscal-metadata-responsible-role-ASSEMBLY">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Responsible Role</m:formal-name>
@@ -921,15 +1146,15 @@
       </xs:annotation>
       <xs:sequence>
          <xs:element name="prop"
-                     type="oscal-poam:property-ASSEMBLY"
+                     type="oscal-poam:oscal-metadata-property-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="link"
-                     type="oscal-poam:link-ASSEMBLY"
+                     type="oscal-poam:oscal-metadata-link-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="party-uuid"
-                     type="oscal-poam:party-uuid-FIELD"
+                     type="oscal-poam:oscal-metadata-party-uuid-FIELD"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="remarks" minOccurs="0" maxOccurs="1">
@@ -948,7 +1173,7 @@
             </xs:complexType>
          </xs:element>
       </xs:sequence>
-      <xs:attribute name="role-id" use="required" type="xs:NCName">
+      <xs:attribute name="role-id" use="required" type="oscal-poam:token">
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Responsible Role ID</m:formal-name>
@@ -959,7 +1184,7 @@
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
-   <xs:complexType name="hash-FIELD">
+   <xs:complexType name="oscal-metadata-hash-FIELD">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Hash</m:formal-name>
@@ -969,8 +1194,8 @@
             <b>Hash</b>: A representation of a cryptographic digest generated over a resource using a specified hash algorithm.</xs:documentation>
       </xs:annotation>
       <xs:simpleContent>
-         <xs:extension base="xs:string">
-            <xs:attribute name="algorithm" use="required" type="xs:string">
+         <xs:extension base="oscal-poam:string">
+            <xs:attribute name="algorithm" use="required" type="oscal-poam:string">
                <xs:annotation>
                   <xs:appinfo>
                      <m:formal-name>Hash algorithm</m:formal-name>
@@ -982,6 +1207,19 @@
             </xs:attribute>
          </xs:extension>
       </xs:simpleContent>
+   </xs:complexType>
+   <xs:complexType name="oscal-metadata-remarks-FIELD">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Remarks</m:formal-name>
+            <m:description>Additional commentary on the containing object.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Remarks</b>: Additional commentary on the containing object.</xs:documentation>
+      </xs:annotation>
+      <xs:complexContent>
+         <xs:extension base="oscal-poam:markupMultilineType"/>
+      </xs:complexContent>
    </xs:complexType>
    <xs:simpleType name="oscal-metadata-published-FIELD">
       <xs:annotation>
@@ -1014,7 +1252,7 @@
          <xs:documentation>
             <b>Document Version</b>: A string used to distinguish the current version of the document from other previous (and future) versions.</xs:documentation>
       </xs:annotation>
-      <xs:restriction base="xs:string"/>
+      <xs:restriction base="oscal-poam:string"/>
    </xs:simpleType>
    <xs:simpleType name="oscal-metadata-oscal-version-FIELD">
       <xs:annotation>
@@ -1025,7 +1263,7 @@
          <xs:documentation>
             <b>OSCAL version</b>: The OSCAL model version the document was authored against.</xs:documentation>
       </xs:annotation>
-      <xs:restriction base="xs:string"/>
+      <xs:restriction base="oscal-poam:string"/>
    </xs:simpleType>
    <xs:simpleType name="oscal-metadata-email-address-FIELD">
       <xs:annotation>
@@ -1048,8 +1286,8 @@
             <b>Telephone Number</b>: Contact number by telephone.</xs:documentation>
       </xs:annotation>
       <xs:simpleContent>
-         <xs:extension base="xs:string">
-            <xs:attribute name="type" type="xs:string">
+         <xs:extension base="oscal-poam:string">
+            <xs:attribute name="type" type="oscal-poam:string">
                <xs:annotation>
                   <xs:appinfo>
                      <m:formal-name>type flag</m:formal-name>
@@ -1086,7 +1324,7 @@
                   <xs:documentation>
                      <b>City</b>: City, town or geographical region for the mailing address.</xs:documentation>
                </xs:annotation>
-               <xs:restriction base="xs:string"/>
+               <xs:restriction base="oscal-poam:string"/>
             </xs:simpleType>
          </xs:element>
          <xs:element name="state" minOccurs="0" maxOccurs="1">
@@ -1099,7 +1337,7 @@
                   <xs:documentation>
                      <b>State</b>: State, province or analogous geographical region for mailing address</xs:documentation>
                </xs:annotation>
-               <xs:restriction base="xs:string"/>
+               <xs:restriction base="oscal-poam:string"/>
             </xs:simpleType>
          </xs:element>
          <xs:element name="postal-code" minOccurs="0" maxOccurs="1">
@@ -1112,7 +1350,7 @@
                   <xs:documentation>
                      <b>Postal Code</b>: Postal or ZIP code for mailing address</xs:documentation>
                </xs:annotation>
-               <xs:restriction base="xs:string"/>
+               <xs:restriction base="oscal-poam:string"/>
             </xs:simpleType>
          </xs:element>
          <xs:element name="country" minOccurs="0" maxOccurs="1">
@@ -1125,11 +1363,11 @@
                   <xs:documentation>
                      <b>Country Code</b>: The ISO 3166-1 alpha-2 country code for the mailing address.</xs:documentation>
                </xs:annotation>
-               <xs:restriction base="xs:string"/>
+               <xs:restriction base="oscal-poam:string"/>
             </xs:simpleType>
          </xs:element>
       </xs:sequence>
-      <xs:attribute name="type" type="xs:NCName">
+      <xs:attribute name="type" type="oscal-poam:token">
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Address Type</m:formal-name>
@@ -1149,7 +1387,7 @@
          <xs:documentation>
             <b>Address line</b>: A single line of an address.</xs:documentation>
       </xs:annotation>
-      <xs:restriction base="xs:string"/>
+      <xs:restriction base="oscal-poam:string"/>
    </xs:simpleType>
    <xs:complexType name="oscal-metadata-document-id-FIELD">
       <xs:annotation>
@@ -1161,7 +1399,7 @@
             <b>Document Identifier</b>: A document identifier qualified by an identifier scheme. A document identifier provides a globally unique identifier for a group of documents that are to be treated as different versions of the same document. If this element does not appear, or if the value of this element is empty, the value of "document-id" is equal to the value of the "uuid" flag of the top-level root element.</xs:documentation>
       </xs:annotation>
       <xs:simpleContent>
-         <xs:extension base="xs:string">
+         <xs:extension base="oscal-poam:string">
             <xs:attribute name="scheme" type="oscal-poam:uri">
                <xs:annotation>
                   <xs:appinfo>
@@ -1175,7 +1413,7 @@
          </xs:extension>
       </xs:simpleContent>
    </xs:complexType>
-   <xs:complexType name="system-component-ASSEMBLY">
+   <xs:complexType name="oscal-implementation-common-system-component-ASSEMBLY">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Component</m:formal-name>
@@ -1231,11 +1469,11 @@
             </xs:complexType>
          </xs:element>
          <xs:element name="prop"
-                     type="oscal-poam:property-ASSEMBLY"
+                     type="oscal-poam:oscal-metadata-property-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="link"
-                     type="oscal-poam:link-ASSEMBLY"
+                     type="oscal-poam:oscal-metadata-link-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="status" minOccurs="1" maxOccurs="1">
@@ -1265,7 +1503,7 @@
                      </xs:complexType>
                   </xs:element>
                </xs:sequence>
-               <xs:attribute name="state" use="required" type="xs:NCName">
+               <xs:attribute name="state" use="required" type="oscal-poam:token">
                   <xs:annotation>
                      <xs:appinfo>
                         <m:formal-name>State</m:formal-name>
@@ -1278,11 +1516,11 @@
             </xs:complexType>
          </xs:element>
          <xs:element name="responsible-role"
-                     type="oscal-poam:responsible-role-ASSEMBLY"
+                     type="oscal-poam:oscal-metadata-responsible-role-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="protocol"
-                     type="oscal-poam:protocol-ASSEMBLY"
+                     type="oscal-poam:oscal-implementation-common-protocol-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="remarks" minOccurs="0" maxOccurs="1">
@@ -1311,7 +1549,7 @@
                <b>Component Identifier</b>: The unique identifier for the component.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="type" use="required" type="xs:string">
+      <xs:attribute name="type" use="required" type="oscal-poam:string">
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Component Type</m:formal-name>
@@ -1322,7 +1560,7 @@
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
-   <xs:complexType name="protocol-ASSEMBLY">
+   <xs:complexType name="oscal-implementation-common-protocol-ASSEMBLY">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Service Protocol Information</m:formal-name>
@@ -1348,7 +1586,7 @@
             </xs:complexType>
          </xs:element>
          <xs:element name="port-range"
-                     type="oscal-poam:port-range-ASSEMBLY"
+                     type="oscal-poam:oscal-implementation-common-port-range-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
       </xs:sequence>
@@ -1362,7 +1600,7 @@
                <b>Service Protocol Information Universally Unique Identifier</b>: A globally unique identifier that can be used to reference this service protocol entry elsewhere in an OSCAL document. A UUID should be consistently used for a given resource across revisions of the document.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="name" use="required" type="xs:string">
+      <xs:attribute name="name" use="required" type="oscal-poam:string">
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Protocol Name</m:formal-name>
@@ -1373,7 +1611,7 @@
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
-   <xs:complexType name="port-range-ASSEMBLY">
+   <xs:complexType name="oscal-implementation-common-port-range-ASSEMBLY">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Port Range</m:formal-name>
@@ -1402,7 +1640,7 @@
                <b>End</b>: Indicates the ending port number in a port range</xs:documentation>
          </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="transport" type="xs:NCName">
+      <xs:attribute name="transport" type="oscal-poam:token">
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Transport</m:formal-name>
@@ -1413,7 +1651,197 @@
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
-   <xs:complexType name="inventory-item-ASSEMBLY">
+   <xs:complexType name="oscal-implementation-common-implementation-status-ASSEMBLY">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Implementation Status</m:formal-name>
+            <m:description>Indicates the degree to which the a given control is implemented.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Implementation Status</b>: Indicates the degree to which the a given control is implemented.</xs:documentation>
+      </xs:annotation>
+      <xs:sequence>
+         <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Remarks</m:formal-name>
+                  <m:description>Additional commentary on the containing object.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Remarks</b>: Additional commentary on the containing object.</xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+               <xs:group ref="oscal-poam:blockElementGroup"
+                         maxOccurs="unbounded"
+                         minOccurs="0"/>
+            </xs:complexType>
+         </xs:element>
+      </xs:sequence>
+      <xs:attribute name="state" use="required" type="oscal-poam:token">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Implementation State</m:formal-name>
+               <m:description>Identifies the implementation status of the control or control objective.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Implementation State</b>: Identifies the implementation status of the control or control objective.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+   </xs:complexType>
+   <xs:complexType name="oscal-implementation-common-system-user-ASSEMBLY">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>System User</m:formal-name>
+            <m:description>A type of user that interacts with the system based on an associated role.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>System User</b>: A type of user that interacts with the system based on an associated role.</xs:documentation>
+      </xs:annotation>
+      <xs:sequence>
+         <xs:element name="title" minOccurs="0" maxOccurs="1">
+            <xs:complexType mixed="true">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>User Title</m:formal-name>
+                     <m:description>A name given to the user, which may be used by a tool for display and navigation.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>User Title</b>: A name given to the user, which may be used by a tool for display and navigation.</xs:documentation>
+               </xs:annotation>
+               <xs:complexContent>
+                  <xs:extension base="oscal-poam:markupLineType"/>
+               </xs:complexContent>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="short-name" minOccurs="0" maxOccurs="1">
+            <xs:simpleType>
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>User Short Name</m:formal-name>
+                     <m:description>A short common name, abbreviation, or acronym for the user.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>User Short Name</b>: A short common name, abbreviation, or acronym for the user.</xs:documentation>
+               </xs:annotation>
+               <xs:restriction base="oscal-poam:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="description" minOccurs="0" maxOccurs="1">
+            <xs:complexType>
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>User Description</m:formal-name>
+                     <m:description>A summary of the user's purpose within the system.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>User Description</b>: A summary of the user's purpose within the system.</xs:documentation>
+               </xs:annotation>
+               <xs:complexContent>
+                  <xs:extension base="oscal-poam:markupMultilineType"/>
+               </xs:complexContent>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="prop"
+                     type="oscal-poam:oscal-metadata-property-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:element name="link"
+                     type="oscal-poam:oscal-metadata-link-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:element name="role-id"
+                     type="oscal-poam:oscal-metadata-role-id-FIELD"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:element name="authorized-privilege"
+                     type="oscal-poam:oscal-implementation-common-authorized-privilege-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Remarks</m:formal-name>
+                  <m:description>Additional commentary on the containing object.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Remarks</b>: Additional commentary on the containing object.</xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+               <xs:group ref="oscal-poam:blockElementGroup"
+                         maxOccurs="unbounded"
+                         minOccurs="0"/>
+            </xs:complexType>
+         </xs:element>
+      </xs:sequence>
+      <xs:attribute name="uuid" use="required" type="oscal-poam:uuid">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>User Universally Unique Identifier</m:formal-name>
+               <m:description>The unique identifier for the user class.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>User Universally Unique Identifier</b>: The unique identifier for the user class.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+   </xs:complexType>
+   <xs:complexType name="oscal-implementation-common-authorized-privilege-ASSEMBLY">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Privilege</m:formal-name>
+            <m:description>Identifies a specific system privilege held by the user, along with an associated description and/or rationale for the privilege.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Privilege</b>: Identifies a specific system privilege held by the user, along with an associated description and/or rationale for the privilege.</xs:documentation>
+      </xs:annotation>
+      <xs:sequence>
+         <xs:element name="title" minOccurs="1" maxOccurs="1">
+            <xs:complexType mixed="true">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Privilege Title</m:formal-name>
+                     <m:description>A human readable name for the privilege.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Privilege Title</b>: A human readable name for the privilege.</xs:documentation>
+               </xs:annotation>
+               <xs:complexContent>
+                  <xs:extension base="oscal-poam:markupLineType"/>
+               </xs:complexContent>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="description" minOccurs="0" maxOccurs="1">
+            <xs:complexType>
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Privilege Description</m:formal-name>
+                     <m:description>A summary of the privilege's purpose within the system.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Privilege Description</b>: A summary of the privilege's purpose within the system.</xs:documentation>
+               </xs:annotation>
+               <xs:complexContent>
+                  <xs:extension base="oscal-poam:markupMultilineType"/>
+               </xs:complexContent>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="function-performed"
+                     type="oscal-poam:oscal-implementation-common-function-performed-FIELD"
+                     minOccurs="1"
+                     maxOccurs="unbounded"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:simpleType name="oscal-implementation-common-function-performed-FIELD">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Functions Performed</m:formal-name>
+            <m:description>Describes a function performed for a given authorized privilege by this user class.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Functions Performed</b>: Describes a function performed for a given authorized privilege by this user class.</xs:documentation>
+      </xs:annotation>
+      <xs:restriction base="oscal-poam:string"/>
+   </xs:simpleType>
+   <xs:complexType name="oscal-implementation-common-inventory-item-ASSEMBLY">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Inventory Item</m:formal-name>
@@ -1439,15 +1867,15 @@
             </xs:complexType>
          </xs:element>
          <xs:element name="prop"
-                     type="oscal-poam:property-ASSEMBLY"
+                     type="oscal-poam:oscal-metadata-property-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="link"
-                     type="oscal-poam:link-ASSEMBLY"
+                     type="oscal-poam:oscal-metadata-link-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="responsible-party"
-                     type="oscal-poam:responsible-party-ASSEMBLY"
+                     type="oscal-poam:oscal-metadata-responsible-party-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="implemented-component" minOccurs="0" maxOccurs="unbounded">
@@ -1462,15 +1890,15 @@
                </xs:annotation>
                <xs:sequence>
                   <xs:element name="prop"
-                              type="oscal-poam:property-ASSEMBLY"
+                              type="oscal-poam:oscal-metadata-property-ASSEMBLY"
                               minOccurs="0"
                               maxOccurs="unbounded"/>
                   <xs:element name="link"
-                              type="oscal-poam:link-ASSEMBLY"
+                              type="oscal-poam:oscal-metadata-link-ASSEMBLY"
                               minOccurs="0"
                               maxOccurs="unbounded"/>
                   <xs:element name="responsible-party"
-                              type="oscal-poam:responsible-party-ASSEMBLY"
+                              type="oscal-poam:oscal-metadata-responsible-party-ASSEMBLY"
                               minOccurs="0"
                               maxOccurs="unbounded"/>
                   <xs:element name="remarks" minOccurs="0" maxOccurs="1">
@@ -1528,7 +1956,57 @@
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
-   <xs:complexType name="system-id-FIELD">
+   <xs:complexType name="oscal-implementation-common-set-parameter-ASSEMBLY">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Set Parameter Value</m:formal-name>
+            <m:description>Identifies the parameter that will be set by the enclosed value.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Set Parameter Value</b>: Identifies the parameter that will be set by the enclosed value.</xs:documentation>
+      </xs:annotation>
+      <xs:sequence>
+         <xs:element name="value" minOccurs="1" maxOccurs="unbounded">
+            <xs:simpleType>
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Parameter Value</m:formal-name>
+                     <m:description>A parameter value or set of values.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Parameter Value</b>: A parameter value or set of values.</xs:documentation>
+               </xs:annotation>
+               <xs:restriction base="oscal-poam:string"/>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Remarks</m:formal-name>
+                  <m:description>Additional commentary on the containing object.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Remarks</b>: Additional commentary on the containing object.</xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+               <xs:group ref="oscal-poam:blockElementGroup"
+                         maxOccurs="unbounded"
+                         minOccurs="0"/>
+            </xs:complexType>
+         </xs:element>
+      </xs:sequence>
+      <xs:attribute name="param-id" use="required" type="oscal-poam:token">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Parameter ID</m:formal-name>
+               <m:description>A reference to a parameter within a control, who's catalog has been imported into the current implementation context.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Parameter ID</b>: A reference to a parameter within a control, who's catalog has been imported into the current implementation context.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+   </xs:complexType>
+   <xs:complexType name="oscal-implementation-common-system-id-FIELD">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>System Identification</m:formal-name>
@@ -1538,7 +2016,7 @@
             <b>System Identification</b>: A unique identifier for the system described by this system security plan.</xs:documentation>
       </xs:annotation>
       <xs:simpleContent>
-         <xs:extension base="xs:string">
+         <xs:extension base="oscal-poam:string">
             <xs:attribute name="identifier-type" type="oscal-poam:uri">
                <xs:annotation>
                   <xs:appinfo>
@@ -1552,7 +2030,334 @@
          </xs:extension>
       </xs:simpleContent>
    </xs:complexType>
-   <xs:complexType name="import-ssp-ASSEMBLY">
+   <xs:complexType name="oscal-catalog-common-part-ASSEMBLY">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Part</m:formal-name>
+            <m:description>A partition of a control's definition or a child of another part.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Part</b>: A partition of a control's definition or a child of another part.</xs:documentation>
+      </xs:annotation>
+      <xs:sequence>
+         <xs:element name="title" minOccurs="0" maxOccurs="1">
+            <xs:complexType mixed="true">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Part Title</m:formal-name>
+                     <m:description>A name given to the part, which may be used by a tool for display and navigation.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Part Title</b>: A name given to the part, which may be used by a tool for display and navigation.</xs:documentation>
+               </xs:annotation>
+               <xs:complexContent>
+                  <xs:extension base="oscal-poam:markupLineType"/>
+               </xs:complexContent>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="prop"
+                     type="oscal-poam:oscal-metadata-property-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:group ref="oscal-poam:blockElementGroup"
+                   maxOccurs="unbounded"
+                   minOccurs="0"/>
+         <xs:element name="part"
+                     type="oscal-poam:oscal-catalog-common-part-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:element name="link"
+                     type="oscal-poam:oscal-metadata-link-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="id" type="oscal-poam:token">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Part Identifier</m:formal-name>
+               <m:description>A unique identifier for a specific part instance. This identifier's uniqueness is document scoped and is intended to be consistent for the same part across minor revisions of the document.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Part Identifier</b>: A unique identifier for a specific part instance. This identifier's uniqueness is document scoped and is intended to be consistent for the same part across minor revisions of the document.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="name" use="required" type="oscal-poam:token">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Part Name</m:formal-name>
+               <m:description>A textual label that uniquely identifies the part's semantic type.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Part Name</b>: A textual label that uniquely identifies the part's semantic type.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="ns" type="oscal-poam:uri">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Part Namespace</m:formal-name>
+               <m:description>A namespace qualifying the part's name. This allows different organizations to associate distinct semantics with the same name.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Part Namespace</b>: A namespace qualifying the part's name. This allows different organizations to associate distinct semantics with the same name.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="class" type="oscal-poam:token">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Part Class</m:formal-name>
+               <m:description>A textual label that provides a sub-type or characterization of the part's <m:code>name</m:code>. This can be used to further distinguish or discriminate between the semantics of multiple parts of the same control with the same <m:code>name</m:code> and <m:code>ns</m:code>. </m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Part Class</b>: A textual label that provides a sub-type or characterization of the part's name. This can be used to further distinguish or discriminate between the semantics of multiple parts of the same control with the same name and ns. </xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+   </xs:complexType>
+   <xs:complexType name="oscal-catalog-common-parameter-ASSEMBLY">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Parameter</m:formal-name>
+            <m:description>Parameters provide a mechanism for the dynamic assignment of value(s) in a control.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Parameter</b>: Parameters provide a mechanism for the dynamic assignment of value(s) in a control.</xs:documentation>
+      </xs:annotation>
+      <xs:sequence>
+         <xs:element name="prop"
+                     type="oscal-poam:oscal-metadata-property-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:element name="link"
+                     type="oscal-poam:oscal-metadata-link-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:element name="label" minOccurs="0" maxOccurs="1">
+            <xs:complexType mixed="true">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Parameter Label</m:formal-name>
+                     <m:description>A short, placeholder name for the parameter, which can be used as a substitute for a <m:code>value</m:code> if no value is assigned.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Parameter Label</b>: A short, placeholder name for the parameter, which can be used as a substitute for a value if no value is assigned.</xs:documentation>
+               </xs:annotation>
+               <xs:complexContent>
+                  <xs:extension base="oscal-poam:markupLineType"/>
+               </xs:complexContent>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="usage" minOccurs="0" maxOccurs="1">
+            <xs:complexType>
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Parameter Usage Description</m:formal-name>
+                     <m:description>Describes the purpose and use of a parameter</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Parameter Usage Description</b>: Describes the purpose and use of a parameter</xs:documentation>
+               </xs:annotation>
+               <xs:complexContent>
+                  <xs:extension base="oscal-poam:markupMultilineType"/>
+               </xs:complexContent>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="constraint"
+                     type="oscal-poam:oscal-catalog-common-parameter-constraint-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:element name="guideline"
+                     type="oscal-poam:oscal-catalog-common-parameter-guideline-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:choice>
+            <xs:element name="value"
+                        type="oscal-poam:oscal-catalog-common-parameter-value-FIELD"
+                        minOccurs="0"
+                        maxOccurs="unbounded"/>
+            <xs:element name="select"
+                        type="oscal-poam:oscal-catalog-common-parameter-selection-ASSEMBLY"
+                        minOccurs="0"
+                        maxOccurs="1"/>
+         </xs:choice>
+         <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Remarks</m:formal-name>
+                  <m:description>Additional commentary on the containing object.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Remarks</b>: Additional commentary on the containing object.</xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+               <xs:group ref="oscal-poam:blockElementGroup"
+                         maxOccurs="unbounded"
+                         minOccurs="0"/>
+            </xs:complexType>
+         </xs:element>
+      </xs:sequence>
+      <xs:attribute name="id" use="required" type="oscal-poam:token">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Parameter Identifier</m:formal-name>
+               <m:description>A unique identifier for a specific parameter instance. This identifier's uniqueness is document scoped and is intended to be consistent for the same parameter across minor revisions of the document.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Parameter Identifier</b>: A unique identifier for a specific parameter instance. This identifier's uniqueness is document scoped and is intended to be consistent for the same parameter across minor revisions of the document.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="class" type="oscal-poam:token">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Parameter Class</m:formal-name>
+               <m:description>A textual label that provides a characterization of the parameter.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Parameter Class</b>: A textual label that provides a characterization of the parameter.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="depends-on" type="oscal-poam:token">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Depends on</m:formal-name>
+               <m:description>Another parameter invoking this one</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Depends on</b>: Another parameter invoking this one</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+   </xs:complexType>
+   <xs:complexType name="oscal-catalog-common-parameter-constraint-ASSEMBLY">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Constraint</m:formal-name>
+            <m:description>A formal or informal expression of a constraint or test</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Constraint</b>: A formal or informal expression of a constraint or test</xs:documentation>
+      </xs:annotation>
+      <xs:sequence>
+         <xs:element name="description" minOccurs="0" maxOccurs="1">
+            <xs:complexType>
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Constraint Description</m:formal-name>
+                     <m:description>A textual summary of the constraint to be applied.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Constraint Description</b>: A textual summary of the constraint to be applied.</xs:documentation>
+               </xs:annotation>
+               <xs:complexContent>
+                  <xs:extension base="oscal-poam:markupMultilineType"/>
+               </xs:complexContent>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="test" minOccurs="0" maxOccurs="unbounded">
+            <xs:complexType>
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Constraint Test</m:formal-name>
+                     <m:description>A test expression which is expected to be evaluated by a tool.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Constraint Test</b>: A test expression which is expected to be evaluated by a tool.</xs:documentation>
+               </xs:annotation>
+               <xs:sequence>
+                  <xs:element name="expression" minOccurs="1" maxOccurs="1">
+                     <xs:simpleType>
+                        <xs:annotation>
+                           <xs:appinfo>
+                              <m:formal-name>Constraint test</m:formal-name>
+                              <m:description>A formal (executable) expression of a constraint</m:description>
+                           </xs:appinfo>
+                           <xs:documentation>
+                              <b>Constraint test</b>: A formal (executable) expression of a constraint</xs:documentation>
+                        </xs:annotation>
+                        <xs:restriction base="oscal-poam:string"/>
+                     </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+                     <xs:annotation>
+                        <xs:appinfo>
+                           <m:formal-name>Remarks</m:formal-name>
+                           <m:description>Additional commentary on the containing object.</m:description>
+                        </xs:appinfo>
+                        <xs:documentation>
+                           <b>Remarks</b>: Additional commentary on the containing object.</xs:documentation>
+                     </xs:annotation>
+                     <xs:complexType>
+                        <xs:group ref="oscal-poam:blockElementGroup"
+                                  maxOccurs="unbounded"
+                                  minOccurs="0"/>
+                     </xs:complexType>
+                  </xs:element>
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="oscal-catalog-common-parameter-guideline-ASSEMBLY">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Guideline</m:formal-name>
+            <m:description>A prose statement that provides a recommendation for the use of a parameter.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Guideline</b>: A prose statement that provides a recommendation for the use of a parameter.</xs:documentation>
+      </xs:annotation>
+      <xs:sequence>
+         <xs:group ref="oscal-poam:blockElementGroup"
+                   maxOccurs="unbounded"
+                   minOccurs="0"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:simpleType name="oscal-catalog-common-parameter-value-FIELD">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Parameter Value</m:formal-name>
+            <m:description>A parameter value or set of values.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Parameter Value</b>: A parameter value or set of values.</xs:documentation>
+      </xs:annotation>
+      <xs:restriction base="oscal-poam:string"/>
+   </xs:simpleType>
+   <xs:complexType name="oscal-catalog-common-parameter-selection-ASSEMBLY">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Selection</m:formal-name>
+            <m:description>Presenting a choice among alternatives</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Selection</b>: Presenting a choice among alternatives</xs:documentation>
+      </xs:annotation>
+      <xs:sequence>
+         <xs:element name="choice" minOccurs="0" maxOccurs="unbounded">
+            <xs:complexType mixed="true">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Choice</m:formal-name>
+                     <m:description>A value selection among several such options</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Choice</b>: A value selection among several such options</xs:documentation>
+               </xs:annotation>
+               <xs:complexContent>
+                  <xs:extension base="oscal-poam:markupLineType"/>
+               </xs:complexContent>
+            </xs:complexType>
+         </xs:element>
+      </xs:sequence>
+      <xs:attribute name="how-many" type="oscal-poam:token">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Parameter Cardinality</m:formal-name>
+               <m:description>Describes the number of selections that must occur. Without this setting, only one value should be assumed to be permitted.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Parameter Cardinality</b>: Describes the number of selections that must occur. Without this setting, only one value should be assumed to be permitted.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+   </xs:complexType>
+   <xs:complexType name="oscal-assessment-common-import-ssp-ASSEMBLY">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Import System Security Plan</m:formal-name>
@@ -1589,7 +2394,303 @@
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
-   <xs:complexType name="task-ASSEMBLY">
+   <xs:complexType name="oscal-assessment-common-local-objective-ASSEMBLY">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Assessment-Specific Control Objective</m:formal-name>
+            <m:description>A local definition of a control objective for this assessment. Uses catalog syntax for control objective and assessment actions.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Assessment-Specific Control Objective</b>: A local definition of a control objective for this assessment. Uses catalog syntax for control objective and assessment actions.</xs:documentation>
+      </xs:annotation>
+      <xs:sequence>
+         <xs:element name="description" minOccurs="0" maxOccurs="1">
+            <xs:complexType>
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Objective Description</m:formal-name>
+                     <m:description>A human-readable description of this control objective.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Objective Description</b>: A human-readable description of this control objective.</xs:documentation>
+               </xs:annotation>
+               <xs:complexContent>
+                  <xs:extension base="oscal-poam:markupMultilineType"/>
+               </xs:complexContent>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="prop"
+                     type="oscal-poam:oscal-metadata-property-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:element name="link"
+                     type="oscal-poam:oscal-metadata-link-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:element name="part"
+                     type="oscal-poam:oscal-catalog-common-part-ASSEMBLY"
+                     minOccurs="1"
+                     maxOccurs="unbounded"/>
+         <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Remarks</m:formal-name>
+                  <m:description>Additional commentary on the containing object.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Remarks</b>: Additional commentary on the containing object.</xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+               <xs:group ref="oscal-poam:blockElementGroup"
+                         maxOccurs="unbounded"
+                         minOccurs="0"/>
+            </xs:complexType>
+         </xs:element>
+      </xs:sequence>
+      <xs:attribute name="control-id" use="required" type="oscal-poam:token">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Control Identifier Reference</m:formal-name>
+               <m:description>A reference to a control with a corresponding <m:code>id</m:code> value.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Control Identifier Reference</b>: A reference to a control with a corresponding id value.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+   </xs:complexType>
+   <xs:complexType name="oscal-assessment-common-assessment-method-ASSEMBLY">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Assessment Method</m:formal-name>
+            <m:description>A local definition of a control objective. Uses catalog syntax for control objective and assessment activities.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Assessment Method</b>: A local definition of a control objective. Uses catalog syntax for control objective and assessment activities.</xs:documentation>
+      </xs:annotation>
+      <xs:sequence>
+         <xs:element name="description" minOccurs="0" maxOccurs="1">
+            <xs:complexType>
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Assessment Method Description</m:formal-name>
+                     <m:description>A human-readable description of this assessment method.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Assessment Method Description</b>: A human-readable description of this assessment method.</xs:documentation>
+               </xs:annotation>
+               <xs:complexContent>
+                  <xs:extension base="oscal-poam:markupMultilineType"/>
+               </xs:complexContent>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="prop"
+                     type="oscal-poam:oscal-metadata-property-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:element name="link"
+                     type="oscal-poam:oscal-metadata-link-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:element name="part"
+                     type="oscal-poam:oscal-assessment-common-assessment-part-ASSEMBLY"
+                     minOccurs="1"
+                     maxOccurs="1"/>
+         <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Remarks</m:formal-name>
+                  <m:description>Additional commentary on the containing object.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Remarks</b>: Additional commentary on the containing object.</xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+               <xs:group ref="oscal-poam:blockElementGroup"
+                         maxOccurs="unbounded"
+                         minOccurs="0"/>
+            </xs:complexType>
+         </xs:element>
+      </xs:sequence>
+      <xs:attribute name="uuid" use="required" type="oscal-poam:uuid">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Assessment Method Universally Unique Identifier</m:formal-name>
+               <m:description>Uniquely identifies this defined assessment method. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. A UUID should be consistently used for a given assessment method across revisions of the document.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Assessment Method Universally Unique Identifier</b>: Uniquely identifies this defined assessment method. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. A UUID should be consistently used for a given assessment method across revisions of the document.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+   </xs:complexType>
+   <xs:complexType name="oscal-assessment-common-activity-ASSEMBLY">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Activity</m:formal-name>
+            <m:description>Identifies an assessment or related process that can be performed. In the assessment plan, this is an intended activity which may be associated with an assessment task. In the assessment results, this an activity that was actually performed as part of an assessment.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Activity</b>: Identifies an assessment or related process that can be performed. In the assessment plan, this is an intended activity which may be associated with an assessment task. In the assessment results, this an activity that was actually performed as part of an assessment.</xs:documentation>
+      </xs:annotation>
+      <xs:sequence>
+         <xs:element name="title" minOccurs="0" maxOccurs="1">
+            <xs:complexType mixed="true">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Included Activity Title</m:formal-name>
+                     <m:description>The title for this included activity.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Included Activity Title</b>: The title for this included activity.</xs:documentation>
+               </xs:annotation>
+               <xs:complexContent>
+                  <xs:extension base="oscal-poam:markupLineType"/>
+               </xs:complexContent>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="description" minOccurs="1" maxOccurs="1">
+            <xs:complexType>
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Included Activity Description</m:formal-name>
+                     <m:description>A human-readable description of this included activity.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Included Activity Description</b>: A human-readable description of this included activity.</xs:documentation>
+               </xs:annotation>
+               <xs:complexContent>
+                  <xs:extension base="oscal-poam:markupMultilineType"/>
+               </xs:complexContent>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="prop"
+                     type="oscal-poam:oscal-metadata-property-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:element name="link"
+                     type="oscal-poam:oscal-metadata-link-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:element name="step" minOccurs="0" maxOccurs="unbounded">
+            <xs:complexType>
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Step</m:formal-name>
+                     <m:description>Identifies an individual step in a series of steps related to an activity, such as an assessment test or examination procedure.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Step</b>: Identifies an individual step in a series of steps related to an activity, such as an assessment test or examination procedure.</xs:documentation>
+               </xs:annotation>
+               <xs:sequence>
+                  <xs:element name="title" minOccurs="0" maxOccurs="1">
+                     <xs:complexType mixed="true">
+                        <xs:annotation>
+                           <xs:appinfo>
+                              <m:formal-name>Step Title</m:formal-name>
+                              <m:description>The title for this step.</m:description>
+                           </xs:appinfo>
+                           <xs:documentation>
+                              <b>Step Title</b>: The title for this step.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexContent>
+                           <xs:extension base="oscal-poam:markupLineType"/>
+                        </xs:complexContent>
+                     </xs:complexType>
+                  </xs:element>
+                  <xs:element name="description" minOccurs="1" maxOccurs="1">
+                     <xs:complexType>
+                        <xs:annotation>
+                           <xs:appinfo>
+                              <m:formal-name>Step Description</m:formal-name>
+                              <m:description>A human-readable description of this step.</m:description>
+                           </xs:appinfo>
+                           <xs:documentation>
+                              <b>Step Description</b>: A human-readable description of this step.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexContent>
+                           <xs:extension base="oscal-poam:markupMultilineType"/>
+                        </xs:complexContent>
+                     </xs:complexType>
+                  </xs:element>
+                  <xs:element name="prop"
+                              type="oscal-poam:oscal-metadata-property-ASSEMBLY"
+                              minOccurs="0"
+                              maxOccurs="unbounded"/>
+                  <xs:element name="link"
+                              type="oscal-poam:oscal-metadata-link-ASSEMBLY"
+                              minOccurs="0"
+                              maxOccurs="unbounded"/>
+                  <xs:element name="reviewed-controls"
+                              type="oscal-poam:oscal-assessment-common-reviewed-controls-ASSEMBLY"
+                              minOccurs="0"
+                              maxOccurs="1"/>
+                  <xs:element name="responsible-role"
+                              type="oscal-poam:oscal-metadata-responsible-role-ASSEMBLY"
+                              minOccurs="0"
+                              maxOccurs="unbounded"/>
+                  <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+                     <xs:annotation>
+                        <xs:appinfo>
+                           <m:formal-name>Remarks</m:formal-name>
+                           <m:description>Additional commentary on the containing object.</m:description>
+                        </xs:appinfo>
+                        <xs:documentation>
+                           <b>Remarks</b>: Additional commentary on the containing object.</xs:documentation>
+                     </xs:annotation>
+                     <xs:complexType>
+                        <xs:group ref="oscal-poam:blockElementGroup"
+                                  maxOccurs="unbounded"
+                                  minOccurs="0"/>
+                     </xs:complexType>
+                  </xs:element>
+               </xs:sequence>
+               <xs:attribute name="uuid" use="required" type="oscal-poam:uuid">
+                  <xs:annotation>
+                     <xs:appinfo>
+                        <m:formal-name>Step Universally Unique Identifier</m:formal-name>
+                        <m:description>Uniquely identifies a step. This UUID may be referenced elsewhere in an OSCAL document when referring to this step. A UUID should be consistently used for a given test step across revisions of the document.</m:description>
+                     </xs:appinfo>
+                     <xs:documentation>
+                        <b>Step Universally Unique Identifier</b>: Uniquely identifies a step. This UUID may be referenced elsewhere in an OSCAL document when referring to this step. A UUID should be consistently used for a given test step across revisions of the document.</xs:documentation>
+                  </xs:annotation>
+               </xs:attribute>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="related-controls"
+                     type="oscal-poam:oscal-assessment-common-reviewed-controls-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="1"/>
+         <xs:element name="responsible-role"
+                     type="oscal-poam:oscal-metadata-responsible-role-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Remarks</m:formal-name>
+                  <m:description>Additional commentary on the containing object.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Remarks</b>: Additional commentary on the containing object.</xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+               <xs:group ref="oscal-poam:blockElementGroup"
+                         maxOccurs="unbounded"
+                         minOccurs="0"/>
+            </xs:complexType>
+         </xs:element>
+      </xs:sequence>
+      <xs:attribute name="uuid" use="required" type="oscal-poam:uuid">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Assessment Activity Universally Unique Identifier</m:formal-name>
+               <m:description>Uniquely identifies this assessment activity. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. A UUID should be consistently used for a given included activity across revisions of the document.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Assessment Activity Universally Unique Identifier</b>: Uniquely identifies this assessment activity. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. A UUID should be consistently used for a given included activity across revisions of the document.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+   </xs:complexType>
+   <xs:complexType name="oscal-assessment-common-task-ASSEMBLY">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Task</m:formal-name>
@@ -1630,11 +2731,11 @@
             </xs:complexType>
          </xs:element>
          <xs:element name="prop"
-                     type="oscal-poam:property-ASSEMBLY"
+                     type="oscal-poam:oscal-metadata-property-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="link"
-                     type="oscal-poam:link-ASSEMBLY"
+                     type="oscal-poam:oscal-metadata-link-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="timing" minOccurs="0" maxOccurs="1">
@@ -1725,7 +2826,7 @@
                                     <b>Period</b>: The task must occur after the specified period has elapsed.</xs:documentation>
                               </xs:annotation>
                            </xs:attribute>
-                           <xs:attribute name="unit" use="required" type="xs:string">
+                           <xs:attribute name="unit" use="required" type="oscal-poam:string">
                               <xs:annotation>
                                  <xs:appinfo>
                                     <m:formal-name>Time Unit</m:formal-name>
@@ -1781,7 +2882,7 @@
             </xs:complexType>
          </xs:element>
          <xs:element name="task"
-                     type="oscal-poam:task-ASSEMBLY"
+                     type="oscal-poam:oscal-assessment-common-task-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="associated-activity" minOccurs="0" maxOccurs="unbounded">
@@ -1796,27 +2897,21 @@
                </xs:annotation>
                <xs:sequence>
                   <xs:element name="prop"
-                              type="oscal-poam:property-ASSEMBLY"
+                              type="oscal-poam:oscal-metadata-property-ASSEMBLY"
                               minOccurs="0"
                               maxOccurs="unbounded"/>
                   <xs:element name="link"
-                              type="oscal-poam:link-ASSEMBLY"
+                              type="oscal-poam:oscal-metadata-link-ASSEMBLY"
                               minOccurs="0"
                               maxOccurs="unbounded"/>
                   <xs:element name="responsible-role"
-                              type="oscal-poam:responsible-role-ASSEMBLY"
+                              type="oscal-poam:oscal-metadata-responsible-role-ASSEMBLY"
                               minOccurs="0"
                               maxOccurs="unbounded"/>
-                  <xs:choice>
-                     <xs:element name="subject"
-                                 type="oscal-poam:assessment-subject-ASSEMBLY"
-                                 minOccurs="1"
-                                 maxOccurs="unbounded"/>
-                     <xs:element name="subject-placeholder"
-                                 type="oscal-poam:assessment-subject-placeholder-ASSEMBLY"
-                                 minOccurs="0"
-                                 maxOccurs="1"/>
-                  </xs:choice>
+                  <xs:element name="subject"
+                              type="oscal-poam:oscal-assessment-common-assessment-subject-ASSEMBLY"
+                              minOccurs="1"
+                              maxOccurs="unbounded"/>
                   <xs:element name="remarks" minOccurs="0" maxOccurs="1">
                      <xs:annotation>
                         <xs:appinfo>
@@ -1846,11 +2941,11 @@
             </xs:complexType>
          </xs:element>
          <xs:element name="subject"
-                     type="oscal-poam:assessment-subject-ASSEMBLY"
+                     type="oscal-poam:oscal-assessment-common-assessment-subject-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="responsible-role"
-                     type="oscal-poam:responsible-role-ASSEMBLY"
+                     type="oscal-poam:oscal-metadata-responsible-role-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="remarks" minOccurs="0" maxOccurs="1">
@@ -1879,7 +2974,7 @@
                <b>Task Universally Unique Identifier</b>: Uniquely identifies this assessment task. </xs:documentation>
          </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="type" use="required" type="xs:NCName">
+      <xs:attribute name="type" use="required" type="oscal-poam:token">
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Task Type</m:formal-name>
@@ -1890,7 +2985,262 @@
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
-   <xs:complexType name="assessment-subject-placeholder-ASSEMBLY">
+   <xs:complexType name="oscal-assessment-common-reviewed-controls-ASSEMBLY">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Reviewed Controls and Control Objectives</m:formal-name>
+            <m:description>Identifies the controls being assessed and their control objectives.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Reviewed Controls and Control Objectives</b>: Identifies the controls being assessed and their control objectives.</xs:documentation>
+      </xs:annotation>
+      <xs:sequence>
+         <xs:element name="description" minOccurs="0" maxOccurs="1">
+            <xs:complexType>
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Control Objective Description</m:formal-name>
+                     <m:description>A human-readable description of control objectives.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Control Objective Description</b>: A human-readable description of control objectives.</xs:documentation>
+               </xs:annotation>
+               <xs:complexContent>
+                  <xs:extension base="oscal-poam:markupMultilineType"/>
+               </xs:complexContent>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="prop"
+                     type="oscal-poam:oscal-metadata-property-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:element name="link"
+                     type="oscal-poam:oscal-metadata-link-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:element name="control-selection" minOccurs="1" maxOccurs="unbounded">
+            <xs:complexType>
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Assessed Controls</m:formal-name>
+                     <m:description>Identifies the controls being assessed. In the assessment plan, these are the planned controls. In the assessment results, these are the actual controls, and reflects any changes from the plan.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Assessed Controls</b>: Identifies the controls being assessed. In the assessment plan, these are the planned controls. In the assessment results, these are the actual controls, and reflects any changes from the plan.</xs:documentation>
+               </xs:annotation>
+               <xs:sequence>
+                  <xs:element name="description" minOccurs="0" maxOccurs="1">
+                     <xs:complexType>
+                        <xs:annotation>
+                           <xs:appinfo>
+                              <m:formal-name>Assessed Controls Description</m:formal-name>
+                              <m:description>A human-readable description of in-scope controls specified for assessment.</m:description>
+                           </xs:appinfo>
+                           <xs:documentation>
+                              <b>Assessed Controls Description</b>: A human-readable description of in-scope controls specified for assessment.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexContent>
+                           <xs:extension base="oscal-poam:markupMultilineType"/>
+                        </xs:complexContent>
+                     </xs:complexType>
+                  </xs:element>
+                  <xs:element name="prop"
+                              type="oscal-poam:oscal-metadata-property-ASSEMBLY"
+                              minOccurs="0"
+                              maxOccurs="unbounded"/>
+                  <xs:element name="link"
+                              type="oscal-poam:oscal-metadata-link-ASSEMBLY"
+                              minOccurs="0"
+                              maxOccurs="unbounded"/>
+                  <xs:choice>
+                     <xs:element name="include-all" minOccurs="1" maxOccurs="1">
+                        <xs:complexType>
+                           <xs:annotation>
+                              <xs:appinfo>
+                                 <m:formal-name>All</m:formal-name>
+                                 <m:description>A key word to indicate all.</m:description>
+                              </xs:appinfo>
+                              <xs:documentation>
+                                 <b>All</b>: A key word to indicate all.</xs:documentation>
+                           </xs:annotation>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="include-control"
+                                 type="oscal-poam:oscal-assessment-common-select-control-by-id-ASSEMBLY"
+                                 minOccurs="1"
+                                 maxOccurs="unbounded"/>
+                  </xs:choice>
+                  <xs:element name="exclude-control"
+                              type="oscal-poam:oscal-assessment-common-select-control-by-id-ASSEMBLY"
+                              minOccurs="0"
+                              maxOccurs="unbounded"/>
+                  <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+                     <xs:annotation>
+                        <xs:appinfo>
+                           <m:formal-name>Remarks</m:formal-name>
+                           <m:description>Additional commentary on the containing object.</m:description>
+                        </xs:appinfo>
+                        <xs:documentation>
+                           <b>Remarks</b>: Additional commentary on the containing object.</xs:documentation>
+                     </xs:annotation>
+                     <xs:complexType>
+                        <xs:group ref="oscal-poam:blockElementGroup"
+                                  maxOccurs="unbounded"
+                                  minOccurs="0"/>
+                     </xs:complexType>
+                  </xs:element>
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="control-objective-selection"
+                     minOccurs="0"
+                     maxOccurs="unbounded">
+            <xs:complexType>
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Referenced Control Objectives</m:formal-name>
+                     <m:description>Identifies the control objectives of the assessment. In the assessment plan, these are the planned objectives. In the assessment results, these are the assessed objectives, and reflects any changes from the plan.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Referenced Control Objectives</b>: Identifies the control objectives of the assessment. In the assessment plan, these are the planned objectives. In the assessment results, these are the assessed objectives, and reflects any changes from the plan.</xs:documentation>
+               </xs:annotation>
+               <xs:sequence>
+                  <xs:element name="description" minOccurs="0" maxOccurs="1">
+                     <xs:complexType>
+                        <xs:annotation>
+                           <xs:appinfo>
+                              <m:formal-name>Control Objectives Description</m:formal-name>
+                              <m:description>A human-readable description of this collection of control objectives.</m:description>
+                           </xs:appinfo>
+                           <xs:documentation>
+                              <b>Control Objectives Description</b>: A human-readable description of this collection of control objectives.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexContent>
+                           <xs:extension base="oscal-poam:markupMultilineType"/>
+                        </xs:complexContent>
+                     </xs:complexType>
+                  </xs:element>
+                  <xs:element name="prop"
+                              type="oscal-poam:oscal-metadata-property-ASSEMBLY"
+                              minOccurs="0"
+                              maxOccurs="unbounded"/>
+                  <xs:element name="link"
+                              type="oscal-poam:oscal-metadata-link-ASSEMBLY"
+                              minOccurs="0"
+                              maxOccurs="unbounded"/>
+                  <xs:choice>
+                     <xs:element name="include-all" minOccurs="1" maxOccurs="1">
+                        <xs:complexType>
+                           <xs:annotation>
+                              <xs:appinfo>
+                                 <m:formal-name>All</m:formal-name>
+                                 <m:description>A key word to indicate all.</m:description>
+                              </xs:appinfo>
+                              <xs:documentation>
+                                 <b>All</b>: A key word to indicate all.</xs:documentation>
+                           </xs:annotation>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="include-objective"
+                                 type="oscal-poam:oscal-assessment-common-select-objective-by-id-ASSEMBLY"
+                                 minOccurs="1"
+                                 maxOccurs="unbounded"/>
+                  </xs:choice>
+                  <xs:element name="exclude-objective"
+                              type="oscal-poam:oscal-assessment-common-select-objective-by-id-ASSEMBLY"
+                              minOccurs="0"
+                              maxOccurs="unbounded"/>
+                  <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+                     <xs:annotation>
+                        <xs:appinfo>
+                           <m:formal-name>Remarks</m:formal-name>
+                           <m:description>Additional commentary on the containing object.</m:description>
+                        </xs:appinfo>
+                        <xs:documentation>
+                           <b>Remarks</b>: Additional commentary on the containing object.</xs:documentation>
+                     </xs:annotation>
+                     <xs:complexType>
+                        <xs:group ref="oscal-poam:blockElementGroup"
+                                  maxOccurs="unbounded"
+                                  minOccurs="0"/>
+                     </xs:complexType>
+                  </xs:element>
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Remarks</m:formal-name>
+                  <m:description>Additional commentary on the containing object.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Remarks</b>: Additional commentary on the containing object.</xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+               <xs:group ref="oscal-poam:blockElementGroup"
+                         maxOccurs="unbounded"
+                         minOccurs="0"/>
+            </xs:complexType>
+         </xs:element>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="oscal-assessment-common-select-control-by-id-ASSEMBLY">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Select Control</m:formal-name>
+            <m:description>Used to select a control for inclusion/exclusion based on one or more control identifiers. A set of statement identifiers can be used to target the inclusion/exclusion to only specific control statements providing more granularity over the specific statements that are within the asessment scope.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Select Control</b>: Used to select a control for inclusion/exclusion based on one or more control identifiers. A set of statement identifiers can be used to target the inclusion/exclusion to only specific control statements providing more granularity over the specific statements that are within the asessment scope.</xs:documentation>
+      </xs:annotation>
+      <xs:sequence>
+         <xs:element name="statement-id" minOccurs="0" maxOccurs="unbounded">
+            <xs:simpleType>
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Include Specific Statements</m:formal-name>
+                     <m:description>Used to constrain the selection to only specificity identified statements.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Include Specific Statements</b>: Used to constrain the selection to only specificity identified statements.</xs:documentation>
+               </xs:annotation>
+               <xs:restriction base="oscal-poam:token"/>
+            </xs:simpleType>
+         </xs:element>
+      </xs:sequence>
+      <xs:attribute name="control-id" use="required" type="oscal-poam:token">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Control Identifier Reference</m:formal-name>
+               <m:description>A reference to a control with a corresponding <m:code>id</m:code> value.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Control Identifier Reference</b>: A reference to a control with a corresponding id value.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+   </xs:complexType>
+   <xs:complexType name="oscal-assessment-common-select-objective-by-id-ASSEMBLY">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Select Objective</m:formal-name>
+            <m:description>Used to select a control objective for inclusion/exclusion based on the control objective's identifier.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Select Objective</b>: Used to select a control objective for inclusion/exclusion based on the control objective's identifier.</xs:documentation>
+      </xs:annotation>
+      <xs:attribute name="objective-id" use="required" type="oscal-poam:token">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Objective ID</m:formal-name>
+               <m:description>Points to an assessment objective.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Objective ID</b>: Points to an assessment objective.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+   </xs:complexType>
+   <xs:complexType name="oscal-assessment-common-assessment-subject-placeholder-ASSEMBLY">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Assessment Subject Placeholder</m:formal-name>
@@ -1938,11 +3288,11 @@
             </xs:complexType>
          </xs:element>
          <xs:element name="prop"
-                     type="oscal-poam:property-ASSEMBLY"
+                     type="oscal-poam:oscal-metadata-property-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="link"
-                     type="oscal-poam:link-ASSEMBLY"
+                     type="oscal-poam:oscal-metadata-link-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="remarks" minOccurs="0" maxOccurs="1">
@@ -1972,7 +3322,7 @@
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
-   <xs:complexType name="assessment-subject-ASSEMBLY">
+   <xs:complexType name="oscal-assessment-common-assessment-subject-ASSEMBLY">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Subject of Assessment</m:formal-name>
@@ -1998,11 +3348,11 @@
             </xs:complexType>
          </xs:element>
          <xs:element name="prop"
-                     type="oscal-poam:property-ASSEMBLY"
+                     type="oscal-poam:oscal-metadata-property-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="link"
-                     type="oscal-poam:link-ASSEMBLY"
+                     type="oscal-poam:oscal-metadata-link-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:choice>
@@ -2019,12 +3369,12 @@
                </xs:complexType>
             </xs:element>
             <xs:element name="include-subject"
-                        type="oscal-poam:select-subject-by-id-ASSEMBLY"
+                        type="oscal-poam:oscal-assessment-common-select-subject-by-id-ASSEMBLY"
                         minOccurs="1"
                         maxOccurs="unbounded"/>
          </xs:choice>
          <xs:element name="exclude-subject"
-                     type="oscal-poam:select-subject-by-id-ASSEMBLY"
+                     type="oscal-poam:oscal-assessment-common-select-subject-by-id-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="remarks" minOccurs="0" maxOccurs="1">
@@ -2043,7 +3393,7 @@
             </xs:complexType>
          </xs:element>
       </xs:sequence>
-      <xs:attribute name="type" use="required" type="xs:NCName">
+      <xs:attribute name="type" use="required" type="oscal-poam:token">
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Subject Type</m:formal-name>
@@ -2054,7 +3404,7 @@
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
-   <xs:complexType name="select-subject-by-id-ASSEMBLY">
+   <xs:complexType name="oscal-assessment-common-select-subject-by-id-ASSEMBLY">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Select Assessment Subject</m:formal-name>
@@ -2065,11 +3415,11 @@
       </xs:annotation>
       <xs:sequence>
          <xs:element name="prop"
-                     type="oscal-poam:property-ASSEMBLY"
+                     type="oscal-poam:oscal-metadata-property-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="link"
-                     type="oscal-poam:link-ASSEMBLY"
+                     type="oscal-poam:oscal-metadata-link-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="remarks" minOccurs="0" maxOccurs="1">
@@ -2088,14 +3438,24 @@
             </xs:complexType>
          </xs:element>
       </xs:sequence>
-      <xs:attribute name="uuid-ref" use="required" type="oscal-poam:uuid">
+      <xs:attribute name="subject-uuid" use="required" type="oscal-poam:uuid">
          <xs:annotation>
             <xs:appinfo>
-               <m:formal-name>UUID Reference</m:formal-name>
+               <m:formal-name>Subject Universally Unique Identifier Reference</m:formal-name>
                <m:description>A pointer to a component, inventory-item, location, party, user, or resource using it's UUID.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>UUID Reference</b>: A pointer to a component, inventory-item, location, party, user, or resource using it's UUID.</xs:documentation>
+               <b>Subject Universally Unique Identifier Reference</b>: A pointer to a component, inventory-item, location, party, user, or resource using it's UUID.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="type" use="required" type="oscal-poam:token">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Subject Universally Unique Identifier Reference Type</m:formal-name>
+               <m:description>Used to indicate the type of object pointed to by the <m:code>uuid-ref</m:code> within a subject.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Subject Universally Unique Identifier Reference Type</b>: Used to indicate the type of object pointed to by the uuid-ref within a subject.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
@@ -2125,11 +3485,11 @@
             </xs:complexType>
          </xs:element>
          <xs:element name="prop"
-                     type="oscal-poam:property-ASSEMBLY"
+                     type="oscal-poam:oscal-metadata-property-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="link"
-                     type="oscal-poam:link-ASSEMBLY"
+                     type="oscal-poam:oscal-metadata-link-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="remarks" minOccurs="0" maxOccurs="1">
@@ -2148,28 +3508,295 @@
             </xs:complexType>
          </xs:element>
       </xs:sequence>
-      <xs:attribute name="uuid-ref" use="required" type="oscal-poam:uuid">
+      <xs:attribute name="subject-uuid" use="required" type="oscal-poam:uuid">
          <xs:annotation>
             <xs:appinfo>
-               <m:formal-name>UUID Reference</m:formal-name>
+               <m:formal-name>Subject Universally Unique Identifier Reference</m:formal-name>
                <m:description>A pointer to a component, inventory-item, location, party, user, or resource using it's UUID.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>UUID Reference</b>: A pointer to a component, inventory-item, location, party, user, or resource using it's UUID.</xs:documentation>
+               <b>Subject Universally Unique Identifier Reference</b>: A pointer to a component, inventory-item, location, party, user, or resource using it's UUID.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="type" use="required" type="xs:NCName">
+      <xs:attribute name="type" use="required" type="oscal-poam:token">
          <xs:annotation>
             <xs:appinfo>
-               <m:formal-name>Universally Unique Identifier Reference Type</m:formal-name>
-               <m:description>Used to indicate the type of object pointed to by the <m:code>uuid-ref</m:code>.</m:description>
+               <m:formal-name>Subject Universally Unique Identifier Reference Type</m:formal-name>
+               <m:description>Used to indicate the type of object pointed to by the <m:code>uuid-ref</m:code> within a subject.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>Universally Unique Identifier Reference Type</b>: Used to indicate the type of object pointed to by the uuid-ref.</xs:documentation>
+               <b>Subject Universally Unique Identifier Reference Type</b>: Used to indicate the type of object pointed to by the uuid-ref within a subject.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
-   <xs:complexType name="observation-ASSEMBLY">
+   <xs:complexType name="oscal-assessment-common-assessment-assets-ASSEMBLY">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Assessment Assets</m:formal-name>
+            <m:description>Identifies the assets used to perform this assessment, such as the assessment team, scanning tools, and assumptions.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Assessment Assets</b>: Identifies the assets used to perform this assessment, such as the assessment team, scanning tools, and assumptions.</xs:documentation>
+      </xs:annotation>
+      <xs:sequence>
+         <xs:element name="component"
+                     type="oscal-poam:oscal-implementation-common-system-component-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:element name="assessment-platform" minOccurs="1" maxOccurs="unbounded">
+            <xs:complexType>
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Assessment Platform</m:formal-name>
+                     <m:description>Used to represent the toolset used to perform aspects of the assessment.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Assessment Platform</b>: Used to represent the toolset used to perform aspects of the assessment.</xs:documentation>
+               </xs:annotation>
+               <xs:sequence>
+                  <xs:element name="title" minOccurs="0" maxOccurs="1">
+                     <xs:complexType mixed="true">
+                        <xs:annotation>
+                           <xs:appinfo>
+                              <m:formal-name>Assessment Platform Title</m:formal-name>
+                              <m:description>The title or name for the assessment platform.</m:description>
+                           </xs:appinfo>
+                           <xs:documentation>
+                              <b>Assessment Platform Title</b>: The title or name for the assessment platform.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexContent>
+                           <xs:extension base="oscal-poam:markupLineType"/>
+                        </xs:complexContent>
+                     </xs:complexType>
+                  </xs:element>
+                  <xs:element name="prop"
+                              type="oscal-poam:oscal-metadata-property-ASSEMBLY"
+                              minOccurs="0"
+                              maxOccurs="unbounded"/>
+                  <xs:element name="link"
+                              type="oscal-poam:oscal-metadata-link-ASSEMBLY"
+                              minOccurs="0"
+                              maxOccurs="unbounded"/>
+                  <xs:element name="uses-component" minOccurs="0" maxOccurs="unbounded">
+                     <xs:complexType>
+                        <xs:annotation>
+                           <xs:appinfo>
+                              <m:formal-name>Uses Component</m:formal-name>
+                              <m:description>The set of components that are used by the assessment platform.</m:description>
+                           </xs:appinfo>
+                           <xs:documentation>
+                              <b>Uses Component</b>: The set of components that are used by the assessment platform.</xs:documentation>
+                        </xs:annotation>
+                        <xs:sequence>
+                           <xs:element name="prop"
+                                       type="oscal-poam:oscal-metadata-property-ASSEMBLY"
+                                       minOccurs="0"
+                                       maxOccurs="unbounded"/>
+                           <xs:element name="link"
+                                       type="oscal-poam:oscal-metadata-link-ASSEMBLY"
+                                       minOccurs="0"
+                                       maxOccurs="unbounded"/>
+                           <xs:element name="responsible-party"
+                                       type="oscal-poam:oscal-metadata-responsible-party-ASSEMBLY"
+                                       minOccurs="0"
+                                       maxOccurs="unbounded"/>
+                           <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+                              <xs:annotation>
+                                 <xs:appinfo>
+                                    <m:formal-name>Remarks</m:formal-name>
+                                    <m:description>Additional commentary on the containing object.</m:description>
+                                 </xs:appinfo>
+                                 <xs:documentation>
+                                    <b>Remarks</b>: Additional commentary on the containing object.</xs:documentation>
+                              </xs:annotation>
+                              <xs:complexType>
+                                 <xs:group ref="oscal-poam:blockElementGroup"
+                                           maxOccurs="unbounded"
+                                           minOccurs="0"/>
+                              </xs:complexType>
+                           </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="component-uuid" use="required" type="oscal-poam:uuid">
+                           <xs:annotation>
+                              <xs:appinfo>
+                                 <m:formal-name>Component Universally Unique Identifier Reference</m:formal-name>
+                                 <m:description>A reference to a component that is implemented as part of an inventory item.</m:description>
+                              </xs:appinfo>
+                              <xs:documentation>
+                                 <b>Component Universally Unique Identifier Reference</b>: A reference to a component that is implemented as part of an inventory item.</xs:documentation>
+                           </xs:annotation>
+                        </xs:attribute>
+                     </xs:complexType>
+                  </xs:element>
+                  <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+                     <xs:annotation>
+                        <xs:appinfo>
+                           <m:formal-name>Remarks</m:formal-name>
+                           <m:description>Additional commentary on the containing object.</m:description>
+                        </xs:appinfo>
+                        <xs:documentation>
+                           <b>Remarks</b>: Additional commentary on the containing object.</xs:documentation>
+                     </xs:annotation>
+                     <xs:complexType>
+                        <xs:group ref="oscal-poam:blockElementGroup"
+                                  maxOccurs="unbounded"
+                                  minOccurs="0"/>
+                     </xs:complexType>
+                  </xs:element>
+               </xs:sequence>
+               <xs:attribute name="uuid" use="required" type="oscal-poam:uuid">
+                  <xs:annotation>
+                     <xs:appinfo>
+                        <m:formal-name>Assessment Platform Universally Unique Identifier</m:formal-name>
+                        <m:description>Uniquely identifies this assessment Platform.</m:description>
+                     </xs:appinfo>
+                     <xs:documentation>
+                        <b>Assessment Platform Universally Unique Identifier</b>: Uniquely identifies this assessment Platform.</xs:documentation>
+                  </xs:annotation>
+               </xs:attribute>
+            </xs:complexType>
+         </xs:element>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="oscal-assessment-common-finding-target-ASSEMBLY">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Objective Status</m:formal-name>
+            <m:description>Captures an assessor's conclusions regarding the degree to which an objective is satisfied.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Objective Status</b>: Captures an assessor's conclusions regarding the degree to which an objective is satisfied.</xs:documentation>
+      </xs:annotation>
+      <xs:sequence>
+         <xs:element name="title" minOccurs="0" maxOccurs="1">
+            <xs:complexType mixed="true">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Objective Status Title</m:formal-name>
+                     <m:description>The title for this objective status.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Objective Status Title</b>: The title for this objective status.</xs:documentation>
+               </xs:annotation>
+               <xs:complexContent>
+                  <xs:extension base="oscal-poam:markupLineType"/>
+               </xs:complexContent>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="description" minOccurs="0" maxOccurs="1">
+            <xs:complexType>
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Objective Status Description</m:formal-name>
+                     <m:description>A human-readable description of the assessor's conclusions regarding the degree to which an objective is satisfied.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Objective Status Description</b>: A human-readable description of the assessor's conclusions regarding the degree to which an objective is satisfied.</xs:documentation>
+               </xs:annotation>
+               <xs:complexContent>
+                  <xs:extension base="oscal-poam:markupMultilineType"/>
+               </xs:complexContent>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="prop"
+                     type="oscal-poam:oscal-metadata-property-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:element name="link"
+                     type="oscal-poam:oscal-metadata-link-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:element name="status" minOccurs="1" maxOccurs="1">
+            <xs:complexType>
+               <xs:annotation>
+                  <xs:appinfo>
+                     <m:formal-name>Objective Status</m:formal-name>
+                     <m:description>A determination of if the objective is satisfied or not within a given system.</m:description>
+                  </xs:appinfo>
+                  <xs:documentation>
+                     <b>Objective Status</b>: A determination of if the objective is satisfied or not within a given system.</xs:documentation>
+               </xs:annotation>
+               <xs:sequence>
+                  <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+                     <xs:annotation>
+                        <xs:appinfo>
+                           <m:formal-name>Remarks</m:formal-name>
+                           <m:description>Additional commentary on the containing object.</m:description>
+                        </xs:appinfo>
+                        <xs:documentation>
+                           <b>Remarks</b>: Additional commentary on the containing object.</xs:documentation>
+                     </xs:annotation>
+                     <xs:complexType>
+                        <xs:group ref="oscal-poam:blockElementGroup"
+                                  maxOccurs="unbounded"
+                                  minOccurs="0"/>
+                     </xs:complexType>
+                  </xs:element>
+               </xs:sequence>
+               <xs:attribute name="state" use="required" type="oscal-poam:token">
+                  <xs:annotation>
+                     <xs:appinfo>
+                        <m:formal-name>Objective Status State</m:formal-name>
+                        <m:description>An indication as to whether the objective is satisfied or not.</m:description>
+                     </xs:appinfo>
+                     <xs:documentation>
+                        <b>Objective Status State</b>: An indication as to whether the objective is satisfied or not.</xs:documentation>
+                  </xs:annotation>
+               </xs:attribute>
+               <xs:attribute name="reason" type="oscal-poam:token">
+                  <xs:annotation>
+                     <xs:appinfo>
+                        <m:formal-name>Objective Status Reason</m:formal-name>
+                        <m:description>The reason the objective was given it's status.</m:description>
+                     </xs:appinfo>
+                     <xs:documentation>
+                        <b>Objective Status Reason</b>: The reason the objective was given it's status.</xs:documentation>
+                  </xs:annotation>
+               </xs:attribute>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="implementation-status"
+                     type="oscal-poam:oscal-implementation-common-implementation-status-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="1"/>
+         <xs:element name="remarks" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <m:formal-name>Remarks</m:formal-name>
+                  <m:description>Additional commentary on the containing object.</m:description>
+               </xs:appinfo>
+               <xs:documentation>
+                  <b>Remarks</b>: Additional commentary on the containing object.</xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+               <xs:group ref="oscal-poam:blockElementGroup"
+                         maxOccurs="unbounded"
+                         minOccurs="0"/>
+            </xs:complexType>
+         </xs:element>
+      </xs:sequence>
+      <xs:attribute name="type" use="required" type="oscal-poam:string">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Finding Target Type</m:formal-name>
+               <m:description>Identifies the type of the target.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Finding Target Type</b>: Identifies the type of the target.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="target-id" use="required" type="oscal-poam:token">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Finding Target Identifier Reference</m:formal-name>
+               <m:description>Identifies the specific target qualified by the <m:code>type</m:code>.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Finding Target Identifier Reference</b>: Identifies the specific target qualified by the type.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+   </xs:complexType>
+   <xs:complexType name="oscal-assessment-common-observation-ASSEMBLY">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Observation</m:formal-name>
@@ -2210,11 +3837,11 @@
             </xs:complexType>
          </xs:element>
          <xs:element name="prop"
-                     type="oscal-poam:property-ASSEMBLY"
+                     type="oscal-poam:oscal-metadata-property-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="link"
-                     type="oscal-poam:link-ASSEMBLY"
+                     type="oscal-poam:oscal-metadata-link-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="method" minOccurs="1" maxOccurs="unbounded">
@@ -2227,7 +3854,7 @@
                   <xs:documentation>
                      <b>Observation Method</b>: Identifies how the observation was made.</xs:documentation>
                </xs:annotation>
-               <xs:restriction base="xs:string"/>
+               <xs:restriction base="oscal-poam:string"/>
             </xs:simpleType>
          </xs:element>
          <xs:element name="type" minOccurs="0" maxOccurs="unbounded">
@@ -2240,11 +3867,11 @@
                   <xs:documentation>
                      <b>Observation Type</b>: Identifies the nature of the observation. More than one may be used to further qualify and enable filtering.</xs:documentation>
                </xs:annotation>
-               <xs:restriction base="xs:NCName"/>
+               <xs:restriction base="oscal-poam:token"/>
             </xs:simpleType>
          </xs:element>
          <xs:element name="origin"
-                     type="oscal-poam:origin-ASSEMBLY"
+                     type="oscal-poam:oscal-assessment-common-origin-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="subject"
@@ -2278,11 +3905,11 @@
                      </xs:complexType>
                   </xs:element>
                   <xs:element name="prop"
-                              type="oscal-poam:property-ASSEMBLY"
+                              type="oscal-poam:oscal-metadata-property-ASSEMBLY"
                               minOccurs="0"
                               maxOccurs="unbounded"/>
                   <xs:element name="link"
-                              type="oscal-poam:link-ASSEMBLY"
+                              type="oscal-poam:oscal-metadata-link-ASSEMBLY"
                               minOccurs="0"
                               maxOccurs="unbounded"/>
                   <xs:element name="remarks" minOccurs="0" maxOccurs="1">
@@ -2366,7 +3993,7 @@
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
-   <xs:complexType name="origin-ASSEMBLY">
+   <xs:complexType name="oscal-assessment-common-origin-ASSEMBLY">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Origin</m:formal-name>
@@ -2377,16 +4004,16 @@
       </xs:annotation>
       <xs:sequence>
          <xs:element name="actor"
-                     type="oscal-poam:origin-actor-ASSEMBLY"
+                     type="oscal-poam:oscal-assessment-common-origin-actor-ASSEMBLY"
                      minOccurs="1"
                      maxOccurs="unbounded"/>
          <xs:element name="related-task"
-                     type="oscal-poam:related-task-ASSEMBLY"
+                     type="oscal-poam:oscal-assessment-common-related-task-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
       </xs:sequence>
    </xs:complexType>
-   <xs:complexType name="origin-actor-ASSEMBLY">
+   <xs:complexType name="oscal-assessment-common-origin-actor-ASSEMBLY">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Originating Actor</m:formal-name>
@@ -2397,15 +4024,15 @@
       </xs:annotation>
       <xs:sequence>
          <xs:element name="prop"
-                     type="oscal-poam:property-ASSEMBLY"
+                     type="oscal-poam:oscal-metadata-property-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="link"
-                     type="oscal-poam:link-ASSEMBLY"
+                     type="oscal-poam:oscal-metadata-link-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
       </xs:sequence>
-      <xs:attribute name="type" use="required" type="xs:NCName">
+      <xs:attribute name="type" use="required" type="oscal-poam:token">
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Actor Type</m:formal-name>
@@ -2415,17 +4042,17 @@
                <b>Actor Type</b>: The kind of actor.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="uuid-ref" use="required" type="oscal-poam:uuid">
+      <xs:attribute name="actor-uuid" use="required" type="oscal-poam:uuid">
          <xs:annotation>
             <xs:appinfo>
-               <m:formal-name>Actor UUID Reference</m:formal-name>
+               <m:formal-name>Actor Universally Unique Identifier Reference</m:formal-name>
                <m:description>A pointer to the tool or person based on the associated type.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>Actor UUID Reference</b>: A pointer to the tool or person based on the associated type.</xs:documentation>
+               <b>Actor Universally Unique Identifier Reference</b>: A pointer to the tool or person based on the associated type.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="role-id" type="xs:NCName">
+      <xs:attribute name="role-id" type="oscal-poam:token">
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Actor Role</m:formal-name>
@@ -2436,7 +4063,7 @@
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
-   <xs:complexType name="related-task-ASSEMBLY">
+   <xs:complexType name="oscal-assessment-common-related-task-ASSEMBLY">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Task Reference</m:formal-name>
@@ -2447,19 +4074,19 @@
       </xs:annotation>
       <xs:sequence>
          <xs:element name="prop"
-                     type="oscal-poam:property-ASSEMBLY"
+                     type="oscal-poam:oscal-metadata-property-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="link"
-                     type="oscal-poam:link-ASSEMBLY"
+                     type="oscal-poam:oscal-metadata-link-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="responsible-party"
-                     type="oscal-poam:responsible-party-ASSEMBLY"
+                     type="oscal-poam:oscal-metadata-responsible-party-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="subject"
-                     type="oscal-poam:assessment-subject-ASSEMBLY"
+                     type="oscal-poam:oscal-assessment-common-assessment-subject-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="identified-subject" minOccurs="0" maxOccurs="1">
@@ -2474,7 +4101,7 @@
                </xs:annotation>
                <xs:sequence>
                   <xs:element name="subject"
-                              type="oscal-poam:assessment-subject-ASSEMBLY"
+                              type="oscal-poam:oscal-assessment-common-assessment-subject-ASSEMBLY"
                               minOccurs="1"
                               maxOccurs="unbounded"/>
                </xs:sequence>
@@ -2519,7 +4146,7 @@
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
-   <xs:complexType name="threat-id-FIELD">
+   <xs:complexType name="oscal-assessment-common-threat-id-FIELD">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Threat ID</m:formal-name>
@@ -2553,7 +4180,7 @@
          </xs:extension>
       </xs:simpleContent>
    </xs:complexType>
-   <xs:complexType name="risk-ASSEMBLY">
+   <xs:complexType name="oscal-assessment-common-risk-ASSEMBLY">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Identified Risk</m:formal-name>
@@ -2583,10 +4210,10 @@
                <xs:annotation>
                   <xs:appinfo>
                      <m:formal-name>Risk Description</m:formal-name>
-                     <m:description>A human-readable summary of what was identified regarding the risk.</m:description>
+                     <m:description>A human-readable summary of the identified risk, to include a statement of how the risk impacts the system.</m:description>
                   </xs:appinfo>
                   <xs:documentation>
-                     <b>Risk Description</b>: A human-readable summary of what was identified regarding the risk.</xs:documentation>
+                     <b>Risk Description</b>: A human-readable summary of the identified risk, to include a statement of how the risk impacts the system.</xs:documentation>
                </xs:annotation>
                <xs:complexContent>
                   <xs:extension base="oscal-poam:markupMultilineType"/>
@@ -2609,11 +4236,11 @@
             </xs:complexType>
          </xs:element>
          <xs:element name="prop"
-                     type="oscal-poam:property-ASSEMBLY"
+                     type="oscal-poam:oscal-metadata-property-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="link"
-                     type="oscal-poam:link-ASSEMBLY"
+                     type="oscal-poam:oscal-metadata-link-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="status" minOccurs="1" maxOccurs="1">
@@ -2626,19 +4253,19 @@
                   <xs:documentation>
                      <b>Status</b>: Describes the status of the associated risk.</xs:documentation>
                </xs:annotation>
-               <xs:restriction base="xs:NCName"/>
+               <xs:restriction base="oscal-poam:token"/>
             </xs:simpleType>
          </xs:element>
          <xs:element name="origin"
-                     type="oscal-poam:origin-ASSEMBLY"
+                     type="oscal-poam:oscal-assessment-common-origin-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="threat-id"
-                     type="oscal-poam:threat-id-FIELD"
+                     type="oscal-poam:oscal-assessment-common-threat-id-FIELD"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="characterization"
-                     type="oscal-poam:characterization-ASSEMBLY"
+                     type="oscal-poam:oscal-assessment-common-characterization-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="mitigating-factor" minOccurs="0" maxOccurs="unbounded">
@@ -2668,11 +4295,11 @@
                      </xs:complexType>
                   </xs:element>
                   <xs:element name="prop"
-                              type="oscal-poam:property-ASSEMBLY"
+                              type="oscal-poam:oscal-metadata-property-ASSEMBLY"
                               minOccurs="0"
                               maxOccurs="unbounded"/>
                   <xs:element name="link"
-                              type="oscal-poam:link-ASSEMBLY"
+                              type="oscal-poam:oscal-metadata-link-ASSEMBLY"
                               minOccurs="0"
                               maxOccurs="unbounded"/>
                   <xs:element name="subject"
@@ -2735,21 +4362,21 @@
                         <xs:annotation>
                            <xs:appinfo>
                               <m:formal-name>Risk Log Entry</m:formal-name>
-                              <m:description>Identifies the result of a task that occurred as part of executing an assessment plan or an assessment event that occurred in producing the assessment results.</m:description>
+                              <m:description>Identifies an individual risk response that occurred as part of managing an identified risk.</m:description>
                            </xs:appinfo>
                            <xs:documentation>
-                              <b>Risk Log Entry</b>: Identifies the result of a task that occurred as part of executing an assessment plan or an assessment event that occurred in producing the assessment results.</xs:documentation>
+                              <b>Risk Log Entry</b>: Identifies an individual risk response that occurred as part of managing an identified risk.</xs:documentation>
                         </xs:annotation>
                         <xs:sequence>
                            <xs:element name="title" minOccurs="0" maxOccurs="1">
                               <xs:complexType mixed="true">
                                  <xs:annotation>
                                     <xs:appinfo>
-                                       <m:formal-name>Action Title</m:formal-name>
-                                       <m:description>The title for this event.</m:description>
+                                       <m:formal-name>Title</m:formal-name>
+                                       <m:description>The title for this risk log entry.</m:description>
                                     </xs:appinfo>
                                     <xs:documentation>
-                                       <b>Action Title</b>: The title for this event.</xs:documentation>
+                                       <b>Title</b>: The title for this risk log entry.</xs:documentation>
                                  </xs:annotation>
                                  <xs:complexContent>
                                     <xs:extension base="oscal-poam:markupLineType"/>
@@ -2760,11 +4387,11 @@
                               <xs:complexType>
                                  <xs:annotation>
                                     <xs:appinfo>
-                                       <m:formal-name>Action Description</m:formal-name>
-                                       <m:description>A human-readable description of this event.</m:description>
+                                       <m:formal-name>Risk Task Description</m:formal-name>
+                                       <m:description>A human-readable description of what was done regarding the risk.</m:description>
                                     </xs:appinfo>
                                     <xs:documentation>
-                                       <b>Action Description</b>: A human-readable description of this event.</xs:documentation>
+                                       <b>Risk Task Description</b>: A human-readable description of what was done regarding the risk.</xs:documentation>
                                  </xs:annotation>
                                  <xs:complexContent>
                                     <xs:extension base="oscal-poam:markupMultilineType"/>
@@ -2776,10 +4403,10 @@
                                  <xs:annotation>
                                     <xs:appinfo>
                                        <m:formal-name>Start</m:formal-name>
-                                       <m:description>Identifies the start date and time of an event.</m:description>
+                                       <m:description>Identifies the start date and time of the event.</m:description>
                                     </xs:appinfo>
                                     <xs:documentation>
-                                       <b>Start</b>: Identifies the start date and time of an event.</xs:documentation>
+                                       <b>Start</b>: Identifies the start date and time of the event.</xs:documentation>
                                  </xs:annotation>
                                  <xs:restriction base="oscal-poam:dateTime-with-timezone"/>
                               </xs:simpleType>
@@ -2789,51 +4416,51 @@
                                  <xs:annotation>
                                     <xs:appinfo>
                                        <m:formal-name>End</m:formal-name>
-                                       <m:description>Identifies the end date and time of an event. If the event is a point in time, the start and end will be the same date and time.</m:description>
+                                       <m:description>Identifies the end date and time of the event. If the event is a point in time, the start and end will be the same date and time.</m:description>
                                     </xs:appinfo>
                                     <xs:documentation>
-                                       <b>End</b>: Identifies the end date and time of an event. If the event is a point in time, the start and end will be the same date and time.</xs:documentation>
+                                       <b>End</b>: Identifies the end date and time of the event. If the event is a point in time, the start and end will be the same date and time.</xs:documentation>
                                  </xs:annotation>
                                  <xs:restriction base="oscal-poam:dateTime-with-timezone"/>
                               </xs:simpleType>
                            </xs:element>
                            <xs:element name="prop"
-                                       type="oscal-poam:property-ASSEMBLY"
+                                       type="oscal-poam:oscal-metadata-property-ASSEMBLY"
                                        minOccurs="0"
                                        maxOccurs="unbounded"/>
                            <xs:element name="link"
-                                       type="oscal-poam:link-ASSEMBLY"
+                                       type="oscal-poam:oscal-metadata-link-ASSEMBLY"
                                        minOccurs="0"
                                        maxOccurs="unbounded"/>
                            <xs:element name="logged-by"
-                                       type="oscal-poam:logged-by-ASSEMBLY"
+                                       type="oscal-poam:oscal-assessment-common-logged-by-ASSEMBLY"
                                        minOccurs="0"
                                        maxOccurs="unbounded"/>
                            <xs:element name="status-change"
-                                       type="oscal-poam:risk-status-FIELD"
+                                       type="oscal-poam:oscal-assessment-common-risk-status-FIELD"
                                        minOccurs="0"
                                        maxOccurs="1"/>
                            <xs:element name="related-response" minOccurs="0" maxOccurs="unbounded">
                               <xs:complexType>
                                  <xs:annotation>
                                     <xs:appinfo>
-                                       <m:formal-name>Action Reference</m:formal-name>
+                                       <m:formal-name>Risk Response Reference</m:formal-name>
                                        <m:description>Identifies an individual risk response that this log entry is for.</m:description>
                                     </xs:appinfo>
                                     <xs:documentation>
-                                       <b>Action Reference</b>: Identifies an individual risk response that this log entry is for.</xs:documentation>
+                                       <b>Risk Response Reference</b>: Identifies an individual risk response that this log entry is for.</xs:documentation>
                                  </xs:annotation>
                                  <xs:sequence>
                                     <xs:element name="prop"
-                                                type="oscal-poam:property-ASSEMBLY"
+                                                type="oscal-poam:oscal-metadata-property-ASSEMBLY"
                                                 minOccurs="0"
                                                 maxOccurs="unbounded"/>
                                     <xs:element name="link"
-                                                type="oscal-poam:link-ASSEMBLY"
+                                                type="oscal-poam:oscal-metadata-link-ASSEMBLY"
                                                 minOccurs="0"
                                                 maxOccurs="unbounded"/>
                                     <xs:element name="related-task"
-                                                type="oscal-poam:related-task-ASSEMBLY"
+                                                type="oscal-poam:oscal-assessment-common-related-task-ASSEMBLY"
                                                 minOccurs="0"
                                                 maxOccurs="unbounded"/>
                                     <xs:element name="remarks" minOccurs="0" maxOccurs="1">
@@ -2884,10 +4511,10 @@
                            <xs:annotation>
                               <xs:appinfo>
                                  <m:formal-name>Risk Log Entry Universally Unique Identifier</m:formal-name>
-                                 <m:description>Uniquely identifies an assessment event. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. A UUID should be consistently used for this schedule across revisions of the document.</m:description>
+                                 <m:description>Uniquely identifies a risk log entry. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. A UUID should be consistently used for this schedule across revisions of the document.</m:description>
                               </xs:appinfo>
                               <xs:documentation>
-                                 <b>Risk Log Entry Universally Unique Identifier</b>: Uniquely identifies an assessment event. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. A UUID should be consistently used for this schedule across revisions of the document.</xs:documentation>
+                                 <b>Risk Log Entry Universally Unique Identifier</b>: Uniquely identifies a risk log entry. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. A UUID should be consistently used for this schedule across revisions of the document.</xs:documentation>
                            </xs:annotation>
                         </xs:attribute>
                      </xs:complexType>
@@ -2929,7 +4556,7 @@
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
-   <xs:complexType name="logged-by-ASSEMBLY">
+   <xs:complexType name="oscal-assessment-common-logged-by-ASSEMBLY">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Logged By</m:formal-name>
@@ -2948,7 +4575,7 @@
                <b>Party UUID Reference</b>: A pointer to the party who is making the log entry.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="role-id" type="xs:NCName">
+      <xs:attribute name="role-id" type="oscal-poam:token">
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Actor Role</m:formal-name>
@@ -2959,7 +4586,7 @@
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
-   <xs:simpleType name="risk-status-FIELD">
+   <xs:simpleType name="oscal-assessment-common-risk-status-FIELD">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Risk Status</m:formal-name>
@@ -2968,9 +4595,9 @@
          <xs:documentation>
             <b>Risk Status</b>: Describes the status of the associated risk.</xs:documentation>
       </xs:annotation>
-      <xs:restriction base="xs:NCName"/>
+      <xs:restriction base="oscal-poam:token"/>
    </xs:simpleType>
-   <xs:complexType name="characterization-ASSEMBLY">
+   <xs:complexType name="oscal-assessment-common-characterization-ASSEMBLY">
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Characterization</m:formal-name>
@@ -2981,15 +4608,15 @@
       </xs:annotation>
       <xs:sequence>
          <xs:element name="prop"
-                     type="oscal-poam:property-ASSEMBLY"
+                     type="oscal-poam:oscal-metadata-property-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="link"
-                     type="oscal-poam:link-ASSEMBLY"
+                     type="oscal-poam:oscal-metadata-link-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="origin"
-                     type="oscal-poam:origin-ASSEMBLY"
+                     type="oscal-poam:oscal-assessment-common-origin-ASSEMBLY"
                      minOccurs="1"
                      maxOccurs="1"/>
          <xs:element name="facet" minOccurs="1" maxOccurs="unbounded">
@@ -3004,11 +4631,11 @@
                </xs:annotation>
                <xs:sequence>
                   <xs:element name="prop"
-                              type="oscal-poam:property-ASSEMBLY"
+                              type="oscal-poam:oscal-metadata-property-ASSEMBLY"
                               minOccurs="0"
                               maxOccurs="unbounded"/>
                   <xs:element name="link"
-                              type="oscal-poam:link-ASSEMBLY"
+                              type="oscal-poam:oscal-metadata-link-ASSEMBLY"
                               minOccurs="0"
                               maxOccurs="unbounded"/>
                   <xs:element name="remarks" minOccurs="0" maxOccurs="1">
@@ -3027,7 +4654,7 @@
                      </xs:complexType>
                   </xs:element>
                </xs:sequence>
-               <xs:attribute name="name" use="required" type="xs:NCName">
+               <xs:attribute name="name" use="required" type="oscal-poam:token">
                   <xs:annotation>
                      <xs:appinfo>
                         <m:formal-name>Facet Name</m:formal-name>
@@ -3047,7 +4674,7 @@
                         <b>Naming System</b>: Specifies the naming system under which this risk metric is organized, which allows for the same names to be used in different systems controlled by different parties. This avoids the potential of a name clash.</xs:documentation>
                   </xs:annotation>
                </xs:attribute>
-               <xs:attribute name="value" use="required" type="xs:string">
+               <xs:attribute name="value" use="required" type="oscal-poam:string">
                   <xs:annotation>
                      <xs:appinfo>
                         <m:formal-name>Facet Value</m:formal-name>
@@ -3102,15 +4729,15 @@
             </xs:complexType>
          </xs:element>
          <xs:element name="prop"
-                     type="oscal-poam:property-ASSEMBLY"
+                     type="oscal-poam:oscal-metadata-property-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="link"
-                     type="oscal-poam:link-ASSEMBLY"
+                     type="oscal-poam:oscal-metadata-link-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="origin"
-                     type="oscal-poam:origin-ASSEMBLY"
+                     type="oscal-poam:oscal-assessment-common-origin-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="required-asset" minOccurs="0" maxOccurs="unbounded">
@@ -3159,11 +4786,11 @@
                      </xs:complexType>
                   </xs:element>
                   <xs:element name="prop"
-                              type="oscal-poam:property-ASSEMBLY"
+                              type="oscal-poam:oscal-metadata-property-ASSEMBLY"
                               minOccurs="0"
                               maxOccurs="unbounded"/>
                   <xs:element name="link"
-                              type="oscal-poam:link-ASSEMBLY"
+                              type="oscal-poam:oscal-metadata-link-ASSEMBLY"
                               minOccurs="0"
                               maxOccurs="unbounded"/>
                   <xs:element name="remarks" minOccurs="0" maxOccurs="1">
@@ -3195,7 +4822,7 @@
             </xs:complexType>
          </xs:element>
          <xs:element name="task"
-                     type="oscal-poam:task-ASSEMBLY"
+                     type="oscal-poam:oscal-assessment-common-task-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="remarks" minOccurs="0" maxOccurs="1">
@@ -3224,7 +4851,7 @@
                <b>Remediation Universally Unique Identifier</b>: Uniquely identifies this remediation. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. Once assigned, a UUID should be consistently used for a given remediation across revisions.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
-      <xs:attribute name="lifecycle" use="required" type="xs:NCName">
+      <xs:attribute name="lifecycle" use="required" type="oscal-poam:token">
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Remediation Intent</m:formal-name>
@@ -3235,231 +4862,85 @@
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
-   <xs:element name="plan-of-action-and-milestones"
-               type="oscal-poam:plan-of-action-and-milestones-ASSEMBLY"/>
-   <xs:complexType name="plan-of-action-and-milestones-ASSEMBLY">
+   <xs:complexType name="oscal-assessment-common-assessment-part-ASSEMBLY">
       <xs:annotation>
          <xs:appinfo>
-            <m:formal-name>Plan of Action and Milestones (POA&amp;M)</m:formal-name>
-            <m:description>A plan of action and milestones which identifies initial and residual risks, deviations, and disposition, such as those required by FedRAMP.</m:description>
+            <m:formal-name>Assessment Part</m:formal-name>
+            <m:description>A partition of an assessment plan or results or a child of another part.</m:description>
          </xs:appinfo>
          <xs:documentation>
-            <b>Plan of Action and Milestones (POA&amp;M)</b>: A plan of action and milestones which identifies initial and residual risks, deviations, and disposition, such as those required by FedRAMP.</xs:documentation>
+            <b>Assessment Part</b>: A partition of an assessment plan or results or a child of another part.</xs:documentation>
       </xs:annotation>
       <xs:sequence>
-         <xs:element name="metadata"
-                     type="oscal-poam:metadata-ASSEMBLY"
-                     minOccurs="1"
-                     maxOccurs="1"/>
-         <xs:element name="import-ssp"
-                     type="oscal-poam:import-ssp-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="1"/>
-         <xs:element name="system-id"
-                     type="oscal-poam:system-id-FIELD"
-                     minOccurs="0"
-                     maxOccurs="1"/>
-         <xs:element name="local-definitions"
-                     type="oscal-poam:local-definitions-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="1"/>
-         <xs:element name="observation"
-                     type="oscal-poam:observation-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
-         <xs:element name="risk"
-                     type="oscal-poam:risk-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
-         <xs:element name="poam-item"
-                     type="oscal-poam:poam-item-ASSEMBLY"
-                     minOccurs="1"
-                     maxOccurs="unbounded"/>
-         <xs:element name="back-matter"
-                     type="oscal-poam:back-matter-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="1"/>
-      </xs:sequence>
-      <xs:attribute name="uuid" use="required" type="oscal-poam:uuid">
-         <xs:annotation>
-            <xs:appinfo>
-               <m:formal-name>POA&amp;M Universally Unique Identifier</m:formal-name>
-               <m:description>Uniquely identifies this POA&amp;M. This UUID must be changed each time the content of the POA&amp;M changes.</m:description>
-            </xs:appinfo>
-            <xs:documentation>
-               <b>POA&amp;M Universally Unique Identifier</b>: Uniquely identifies this POA&amp;M. This UUID must be changed each time the content of the POA&amp;M changes.</xs:documentation>
-         </xs:annotation>
-      </xs:attribute>
-   </xs:complexType>
-   <xs:complexType name="local-definitions-ASSEMBLY">
-      <xs:annotation>
-         <xs:appinfo>
-            <m:formal-name>Local Definitions</m:formal-name>
-            <m:description>Allows components, and inventory-items to be defined within the POA&amp;M for circumstances where no OSCAL-based SSP exists, or is not delivered with the POA&amp;M.</m:description>
-         </xs:appinfo>
-         <xs:documentation>
-            <b>Local Definitions</b>: Allows components, and inventory-items to be defined within the POA&amp;M for circumstances where no OSCAL-based SSP exists, or is not delivered with the POA&amp;M.</xs:documentation>
-      </xs:annotation>
-      <xs:sequence>
-         <xs:element name="component"
-                     type="oscal-poam:system-component-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
-         <xs:element name="inventory-item"
-                     type="oscal-poam:inventory-item-ASSEMBLY"
-                     minOccurs="0"
-                     maxOccurs="unbounded"/>
-         <xs:element name="remarks" minOccurs="0" maxOccurs="1">
-            <xs:annotation>
-               <xs:appinfo>
-                  <m:formal-name>Remarks</m:formal-name>
-                  <m:description>Additional commentary on the containing object.</m:description>
-               </xs:appinfo>
-               <xs:documentation>
-                  <b>Remarks</b>: Additional commentary on the containing object.</xs:documentation>
-            </xs:annotation>
-            <xs:complexType>
-               <xs:group ref="oscal-poam:blockElementGroup"
-                         maxOccurs="unbounded"
-                         minOccurs="0"/>
-            </xs:complexType>
-         </xs:element>
-      </xs:sequence>
-   </xs:complexType>
-   <xs:complexType name="poam-item-ASSEMBLY">
-      <xs:annotation>
-         <xs:appinfo>
-            <m:formal-name>POA&amp;M Item</m:formal-name>
-            <m:description>Describes an individual POA&amp;M item.</m:description>
-         </xs:appinfo>
-         <xs:documentation>
-            <b>POA&amp;M Item</b>: Describes an individual POA&amp;M item.</xs:documentation>
-      </xs:annotation>
-      <xs:sequence>
-         <xs:element name="title" minOccurs="1" maxOccurs="1">
+         <xs:element name="title" minOccurs="0" maxOccurs="1">
             <xs:complexType mixed="true">
                <xs:annotation>
                   <xs:appinfo>
-                     <m:formal-name>POA&amp;M Item Title</m:formal-name>
-                     <m:description>The title or name for this POA&amp;M item .</m:description>
+                     <m:formal-name>Part Title</m:formal-name>
+                     <m:description>A name given to the part, which may be used by a tool for display and navigation.</m:description>
                   </xs:appinfo>
                   <xs:documentation>
-                     <b>POA&amp;M Item Title</b>: The title or name for this POA&amp;M item .</xs:documentation>
+                     <b>Part Title</b>: A name given to the part, which may be used by a tool for display and navigation.</xs:documentation>
                </xs:annotation>
                <xs:complexContent>
                   <xs:extension base="oscal-poam:markupLineType"/>
                </xs:complexContent>
             </xs:complexType>
          </xs:element>
-         <xs:element name="description" minOccurs="1" maxOccurs="1">
-            <xs:complexType>
-               <xs:annotation>
-                  <xs:appinfo>
-                     <m:formal-name>POA&amp;M Item Description</m:formal-name>
-                     <m:description>A human-readable description of POA&amp;M item.</m:description>
-                  </xs:appinfo>
-                  <xs:documentation>
-                     <b>POA&amp;M Item Description</b>: A human-readable description of POA&amp;M item.</xs:documentation>
-               </xs:annotation>
-               <xs:complexContent>
-                  <xs:extension base="oscal-poam:markupMultilineType"/>
-               </xs:complexContent>
-            </xs:complexType>
-         </xs:element>
          <xs:element name="prop"
-                     type="oscal-poam:property-ASSEMBLY"
+                     type="oscal-poam:oscal-metadata-property-ASSEMBLY"
+                     minOccurs="0"
+                     maxOccurs="unbounded"/>
+         <xs:group ref="oscal-poam:blockElementGroup"
+                   maxOccurs="unbounded"
+                   minOccurs="0"/>
+         <xs:element name="part"
+                     type="oscal-poam:oscal-assessment-common-assessment-part-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:element name="link"
-                     type="oscal-poam:link-ASSEMBLY"
+                     type="oscal-poam:oscal-metadata-link-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
-         <xs:element name="origin" minOccurs="0" maxOccurs="unbounded">
-            <xs:complexType>
-               <xs:annotation>
-                  <xs:appinfo>
-                     <m:formal-name>Origin</m:formal-name>
-                     <m:description>Identifies the source of the finding, such as a tool or person.</m:description>
-                  </xs:appinfo>
-                  <xs:documentation>
-                     <b>Origin</b>: Identifies the source of the finding, such as a tool or person.</xs:documentation>
-               </xs:annotation>
-               <xs:sequence>
-                  <xs:element name="actor"
-                              type="oscal-poam:origin-actor-ASSEMBLY"
-                              minOccurs="1"
-                              maxOccurs="unbounded"/>
-               </xs:sequence>
-            </xs:complexType>
-         </xs:element>
-         <xs:element name="related-observation" minOccurs="0" maxOccurs="unbounded">
-            <xs:complexType>
-               <xs:annotation>
-                  <xs:appinfo>
-                     <m:formal-name>Related Observation</m:formal-name>
-                     <m:description>Relates the poam-item to a set of referenced observations that were used to determine the finding.</m:description>
-                  </xs:appinfo>
-                  <xs:documentation>
-                     <b>Related Observation</b>: Relates the poam-item to a set of referenced observations that were used to determine the finding.</xs:documentation>
-               </xs:annotation>
-               <xs:attribute name="observation-uuid" use="required" type="oscal-poam:uuid">
-                  <xs:annotation>
-                     <xs:appinfo>
-                        <m:formal-name>Observation Universally Unique Identifier Reference</m:formal-name>
-                        <m:description>References an observation defined in the list of observations.</m:description>
-                     </xs:appinfo>
-                     <xs:documentation>
-                        <b>Observation Universally Unique Identifier Reference</b>: References an observation defined in the list of observations.</xs:documentation>
-                  </xs:annotation>
-               </xs:attribute>
-            </xs:complexType>
-         </xs:element>
-         <xs:element name="associated-risk" minOccurs="0" maxOccurs="unbounded">
-            <xs:complexType>
-               <xs:annotation>
-                  <xs:appinfo>
-                     <m:formal-name>Associated Risk</m:formal-name>
-                     <m:description>Relates the finding to a set of referenced risks that were used to determine the finding.</m:description>
-                  </xs:appinfo>
-                  <xs:documentation>
-                     <b>Associated Risk</b>: Relates the finding to a set of referenced risks that were used to determine the finding.</xs:documentation>
-               </xs:annotation>
-               <xs:attribute name="risk-uuid" use="required" type="oscal-poam:uuid">
-                  <xs:annotation>
-                     <xs:appinfo>
-                        <m:formal-name>Risk Universally Unique Identifier Reference</m:formal-name>
-                        <m:description>References an risk defined in the list of risks.</m:description>
-                     </xs:appinfo>
-                     <xs:documentation>
-                        <b>Risk Universally Unique Identifier Reference</b>: References an risk defined in the list of risks.</xs:documentation>
-                  </xs:annotation>
-               </xs:attribute>
-            </xs:complexType>
-         </xs:element>
-         <xs:element name="remarks" minOccurs="0" maxOccurs="1">
-            <xs:annotation>
-               <xs:appinfo>
-                  <m:formal-name>Remarks</m:formal-name>
-                  <m:description>Additional commentary on the containing object.</m:description>
-               </xs:appinfo>
-               <xs:documentation>
-                  <b>Remarks</b>: Additional commentary on the containing object.</xs:documentation>
-            </xs:annotation>
-            <xs:complexType>
-               <xs:group ref="oscal-poam:blockElementGroup"
-                         maxOccurs="unbounded"
-                         minOccurs="0"/>
-            </xs:complexType>
-         </xs:element>
       </xs:sequence>
       <xs:attribute name="uuid" type="oscal-poam:uuid">
          <xs:annotation>
             <xs:appinfo>
-               <m:formal-name>POA&amp;M Item Universally Unique Identifier</m:formal-name>
-               <m:description>Uniquely identifies the POA&amp;M entry. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. A UUID should be consistently used for a given POA&amp;M item across revisions of the document.</m:description>
+               <m:formal-name>Part Identifier</m:formal-name>
+               <m:description>A unique identifier for a specific part instance. This identifier's uniqueness is document scoped and is intended to be consistent for the same part across minor revisions of the document.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>POA&amp;M Item Universally Unique Identifier</b>: Uniquely identifies the POA&amp;M entry. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. A UUID should be consistently used for a given POA&amp;M item across revisions of the document.</xs:documentation>
+               <b>Part Identifier</b>: A unique identifier for a specific part instance. This identifier's uniqueness is document scoped and is intended to be consistent for the same part across minor revisions of the document.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="name" use="required" type="oscal-poam:token">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Part Name</m:formal-name>
+               <m:description>A textual label that uniquely identifies the part's semantic type.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Part Name</b>: A textual label that uniquely identifies the part's semantic type.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="ns" type="oscal-poam:uri">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Part Namespace</m:formal-name>
+               <m:description>A namespace qualifying the part's name. This allows different organizations to associate distinct semantics with the same name.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Part Namespace</b>: A namespace qualifying the part's name. This allows different organizations to associate distinct semantics with the same name.</xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="class" type="oscal-poam:token">
+         <xs:annotation>
+            <xs:appinfo>
+               <m:formal-name>Part Class</m:formal-name>
+               <m:description>A textual label that provides a sub-type or characterization of the part's <m:code>name</m:code>. This can be used to further distinguish or discriminate between the semantics of multiple parts of the same control with the same <m:code>name</m:code> and <m:code>ns</m:code>.</m:description>
+            </xs:appinfo>
+            <xs:documentation>
+               <b>Part Class</b>: A textual label that provides a sub-type or characterization of the part's name. This can be used to further distinguish or discriminate between the semantics of multiple parts of the same control with the same name and ns.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
@@ -3620,6 +5101,19 @@
     IDs are required everywhere for now
     idAttr      = attribute id { xsd:ID }
   -->
+   <xs:simpleType name="string">
+      <xs:annotation>
+         <xs:documentation>A string, but not empty and not whitespace-only (whitespace is U+9, U+10, U+32 or [ \n\t]+ )</xs:documentation>
+      </xs:annotation>
+      <xs:restriction base="xs:string">
+         <xs:whiteSpace value="preserve"/>
+         <xs:pattern value="\S(.*\S)?">
+            <xs:annotation>
+               <xs:documentation>A trimmed string, at least one character with no leading or trailing whitespace.</xs:documentation>
+            </xs:annotation>
+         </xs:pattern>
+      </xs:restriction>
+   </xs:simpleType>
    <xs:simpleType name="dateTime-with-timezone">
       <xs:annotation>
          <xs:documentation>The xs:dateTime with a required timezone.</xs:documentation>
@@ -3671,6 +5165,20 @@
          <xs:pattern value="[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}">
             <xs:annotation>
                <xs:documentation>A sequence of 8-4-4-4-12 hex digits, with extra constraints in the 13th and 17-18th places for version 4</xs:documentation>
+            </xs:annotation>
+         </xs:pattern>
+      </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name="token">
+      <xs:annotation><!--<xs:documentation>Matching XSD NCName, except whitespace is not collapsed.</xs:documentation>-->
+         <xs:documentation>A string token following the rules of XML "no colon" names, with no whitespace. (XML names are single alphabetic characters
+      followed by alphanumeric characters, periods, underscores or dashes.)</xs:documentation>
+      </xs:annotation>
+      <xs:restriction base="xs:string">
+         <xs:whiteSpace value="preserve"/>
+         <xs:pattern value="[\i-[:&#x10000;-&#xeffff;]][\c-[:&#x10000;-&#xeffff;]]*">
+            <xs:annotation><!--<xs:documentation>An XML initial character (but not colon), followed by any XML name character (but not colon).</xs:documentation>-->
+               <xs:documentation>A single token may not contain whitespace.</xs:documentation>
             </xs:annotation>
          </xs:pattern>
       </xs:restriction>

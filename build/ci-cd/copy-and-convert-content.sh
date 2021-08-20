@@ -157,7 +157,7 @@ post_process_content() {
       # Remove extra slashes
       perl -pi -e 's,\\/,/,g' "${target_file}"
       # translate OSCAL mime types
-      perl -pi -e 's,(application/oscal\.[a-z]+\+)xml\",\1json\",g' "${target_file}"
+      perl -pi -e 's,(application/(oscal\.)?[a-z]+\+)xml\",\1json\",g' "${target_file}"
       # relative content paths
       # translate path names for local references
       perl -pi -e 's,((?:\.\./)+(?:(?!xml/)[^\s/"'']+/)+)xml/((?:(?!.xml)[^\s"'']+)+).xml,\1json/\2.json,g' "${target_file}"

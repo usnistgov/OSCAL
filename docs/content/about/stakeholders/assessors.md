@@ -2,6 +2,8 @@
 title: For Assessors
 heading: How can assessors get involved?
 description: How can assessors get involved?
+toc:
+  enabled: true
 aliases:
   - /learnmore/assessors/
   - /learnmore/stakeholders/assessors/

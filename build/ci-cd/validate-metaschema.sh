@@ -97,8 +97,8 @@ fi
 
 # compile the schematron
 metaschema_toolchain="${OSCALDIR}/build/metaschema/toolchains/xslt-M4"
-schematron="${metaschema_toolchain}/validate/metaschema-check.sch"
-compiled_schematron="${SCRATCH_DIR}/metaschema-schematron-compiled.xsl"
+schematron="${metaschema_toolchain}/validate/metaschema-composition-check.sch"
+compiled_schematron="${metaschema_toolchain}/validate/metaschema-composition-check-compiled.xsl"
 metaschema_xsd="${metaschema_toolchain}/validate/metaschema.xsd"
 
 build_schematron "$schematron" "$compiled_schematron"
@@ -107,14 +107,6 @@ if [ $cmd_exitcode -ne 0 ]; then
   echo -e "${P_ERROR}Compilation of Schematron '${P_END}${schematron}${P_ERROR}' failed.${P_END}"
   exit 1
 fi
-# the following is needed by the compiled template
-cp "${metaschema_toolchain}/validate/metaschema-validation-support.xsl" "${SCRATCH_DIR}"
-cp "${metaschema_toolchain}/validate/oscal-datatypes-check.xsl" "${SCRATCH_DIR}"
-cp "${metaschema_toolchain}/validate/metaschema-metaprocess.xsl" "${SCRATCH_DIR}"
-cp "${metaschema_toolchain}/validate/metaschema-collect.xsl" "${SCRATCH_DIR}"
-cp "${metaschema_toolchain}/validate/metaschema-reduce1.xsl" "${SCRATCH_DIR}"
-cp "${metaschema_toolchain}/validate/metaschema-digest.xsl" "${SCRATCH_DIR}"
-
 
 exitcode=0
 shopt -s nullglob

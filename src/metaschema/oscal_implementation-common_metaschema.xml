@@ -1,36 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="../../build/metaschema/toolchains/xslt-M4/validate/metaschema-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <!DOCTYPE METASCHEMA [
-   <!ENTITY allowed-values-responsible-roles-operations SYSTEM "shared-constraints/allowed-values-responsible-roles-operations.ent">
-<!ENTITY allowed-values-responsible-roles-component-production SYSTEM "shared-constraints/allowed-values-responsible-roles-component-production.ent">
-<!ENTITY allowed-values-property-name-asset-type-values SYSTEM "shared-constraints/allowed-values-property-name-asset-type-values.ent">
-<!ENTITY allowed-values-component_component_property-name SYSTEM "shared-constraints/allowed-values-component_component_property-name.ent">
-<!ENTITY allowed-values-component_component_software SYSTEM "shared-constraints/allowed-values-component_component_software.ent">
-<!ENTITY allowed-values-component_component_service SYSTEM "shared-constraints/allowed-values-component_component_service.ent">
-<!ENTITY allowed-values-component_inventory-item_property-name SYSTEM "shared-constraints/allowed-values-component_inventory-item_property-name.ent">
-<!ENTITY allowed-values-component_component_link-rel SYSTEM "shared-constraints/allowed-values-component_component_link-rel.ent">
-<!ENTITY allowed-values-component-type SYSTEM "shared-constraints/allowed-values-component-type.ent">
+      <!ENTITY allowed-values-responsible-roles-operations SYSTEM "shared-constraints/allowed-values-responsible-roles-operations.ent">
+      <!ENTITY allowed-values-responsible-roles-component-production SYSTEM "shared-constraints/allowed-values-responsible-roles-component-production.ent">
+      <!ENTITY allowed-values-property-name-asset-type-values SYSTEM "shared-constraints/allowed-values-property-name-asset-type-values.ent">
+      <!ENTITY allowed-values-component_component_property-name SYSTEM "shared-constraints/allowed-values-component_component_property-name.ent">
+      <!ENTITY allowed-values-component_component_software SYSTEM "shared-constraints/allowed-values-component_component_software.ent">
+      <!ENTITY allowed-values-component_component_service SYSTEM "shared-constraints/allowed-values-component_component_service.ent">
+      <!ENTITY allowed-values-component_inventory-item_property-name SYSTEM "shared-constraints/allowed-values-component_inventory-item_property-name.ent">
+      <!ENTITY allowed-values-component_component_link-rel SYSTEM "shared-constraints/allowed-values-component_component_link-rel.ent">
+      <!ENTITY allowed-values-component-type SYSTEM "shared-constraints/allowed-values-component-type.ent">
 ]>
 <METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/toolchains/xslt-M4/validate/metaschema.xsd" abstract="yes">
       <schema-name>OSCAL Implementation Common Information</schema-name>
-      <schema-version>1.0.0-rc2</schema-version>
+      <schema-version>1.0.0</schema-version>
       <short-name>oscal-implementation-common</short-name>
       <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
-      <import href="oscal_metadata_metaschema.xml"/>
+      <json-base-uri>http://csrc.nist.gov/ns/oscal</json-base-uri>
 
+      <import href="oscal_metadata_metaschema.xml"/>
+      <import href="oscal_control-common_metaschema.xml"/>
+      
       <!-- ################################################## -->
       <!-- # The System Component and supporting constructs # -->
       <!-- ################################################## -->
       <define-assembly name="system-component">
             <formal-name>Component</formal-name>
             <description>A defined component that can be part of an implemented system.</description>
-            <json-key flag-name="uuid"/>
             <define-flag name="uuid" as-type="uuid" required="yes">
                   <formal-name>Component Identifier</formal-name>
                   <description>The unique identifier for the component.</description>
             </define-flag>
-            <flag ref="component-type" required="yes">
+            <flag ref="system-component-type" required="yes">
                   <!-- CHANGED: "component-type" to "type" -->
                   <use-name>type</use-name>
             </flag>
@@ -56,7 +58,7 @@
                   <define-assembly name="status" min-occurs="1">
                         <formal-name>Status</formal-name>
                         <description>Describes the operational status of the system component.</description>
-                        <define-flag name="state" as-type="NCName" required="yes">
+                        <define-flag name="state" as-type="token" required="yes">
                               <formal-name>State</formal-name>
                               <description>The operational status.</description>
                               <constraint>
@@ -73,7 +75,7 @@
                         </model>
                   </define-assembly>
                   <assembly ref="responsible-role" max-occurs="unbounded">
-                        <group-as name="responsible-roles" in-json="BY_KEY"/>
+                        <group-as name="responsible-roles" in-json="ARRAY"/>
                   </assembly>
                   <assembly ref="protocol" max-occurs="unbounded">
                         <group-as name="protocols" in-json="ARRAY"/>
@@ -213,7 +215,12 @@
                         <enum value="incoming">Data from the remote system flows into this system.</enum>
                         <enum value="outgoing">Data from this system flows to the remote system.</enum>
                   </allowed-values>
-
+                  <is-unique name="unique-system-component-responsible-role" target="responsible-role">
+                        <key-field target="@role-id"/>
+                        <remarks>
+                              <p>Since <code>responsible-role</code> associates multiple <code>party-uuid</code> entries with a single <code>role-id</code>, each role-id must be referenced only once.</p>
+                        </remarks>
+                  </is-unique>
             </constraint>
             <remarks>
                   <p>Components may be products, services, application programming interface (APIs), policies, processes, plans, guidance, standards, or other tangible items that enable security and/or privacy.</p>
@@ -224,7 +231,7 @@
             </remarks>
       </define-assembly>
 
-      <define-flag name="component-type" as-type="string">
+      <define-flag name="system-component-type" as-type="string">
             <formal-name>Component Type</formal-name>
             <description>A category describing the purpose of the component.</description>
             <constraint>
@@ -279,7 +286,7 @@
                         <p>Should be a number within a permitted range</p>
                   </remarks>
             </define-flag>
-            <define-flag name="transport" as-type="NCName">
+            <define-flag name="transport" as-type="token">
                   <formal-name>Transport</formal-name>
                   <description>Indicates the transport type.</description>
                   <constraint>
@@ -304,7 +311,7 @@
       <define-assembly name="implementation-status">
             <formal-name>Implementation Status</formal-name>
             <description>Indicates the degree to which the a given control is implemented.</description>
-            <define-flag name="state" as-type="NCName" required="yes">
+            <define-flag name="state" as-type="token" required="yes">
                   <formal-name>Implementation State</formal-name>
                   <description>Identifies the implementation status of the control or control objective.</description>
                   <constraint>
@@ -328,7 +335,6 @@
       <define-assembly name="system-user">
             <formal-name>System User</formal-name>
             <description>A type of user that interacts with the system based on an associated role.</description>
-            <json-key flag-name="uuid"/>
             <define-flag name="uuid" as-type="uuid" required="yes">
                   <formal-name>User Universally Unique Identifier</formal-name>
                   <description>The unique identifier for the user class.</description>
@@ -436,7 +442,7 @@
                         <group-as name="links" in-json="ARRAY"/>
                   </assembly>
                   <assembly ref="responsible-party" max-occurs="unbounded">
-                        <group-as name="responsible-parties" in-json="BY_KEY"/>
+                        <group-as name="responsible-parties" in-json="ARRAY"/>
                   </assembly>
                   <define-assembly name="implemented-component" max-occurs="unbounded">
                         <!-- TODO: Sync constraints with system-component; maybe remove this? (CHANGED (BJR): Dave-See Gitter for details on this. -->
@@ -476,7 +482,7 @@
                                     <group-as name="links" in-json="ARRAY"/>
                               </assembly>
                               <assembly ref="responsible-party" max-occurs="unbounded">
-                                    <group-as name="responsible-parties" in-json="BY_KEY"/>
+                                    <group-as name="responsible-parties" in-json="ARRAY"/>
                                     <remarks>
                                           <p>This construct is used to either: 1) associate a party or parties to a role defined on the component using the <code>responsible-role</code> construct, or 2) to define a party or parties that are responsible for a role defined within the context of the containing <code>inventory-item</code>.
                                           </p>
@@ -504,6 +510,12 @@
 
                               <!-- TODO: constrain party-id references to parties defined in the document. (BJR Unsure how to do this. )-->
 
+                              <is-unique name="unique-implemented-component-responsible-party" target="responsible-party">
+                                    <key-field target="@role-id"/>
+                                    <remarks>
+                                          <p>Since <code>responsible-party</code> associates multiple <code>party-uuid</code> entries with a single <code>role-id</code>, each role-id must be referenced only once.</p>
+                                    </remarks>
+                              </is-unique>
                         </constraint>
                   </define-assembly>
                   <field ref="remarks" in-xml="WITH_WRAPPER"/>
@@ -571,6 +583,12 @@
                   <index-has-key name="index-metadata-party-uuid" target="responsible-party">
                         <key-field target="@party-uuid"></key-field>
                   </index-has-key>
+                  <is-unique name="unique-inventory-item-responsible-party" target="responsible-party">
+                        <key-field target="@role-id"/>
+                        <remarks>
+                              <p>Since <code>responsible-party</code> associates multiple <code>party-uuid</code> entries with a single <code>role-id</code>, each role-id must be referenced only once.</p>
+                        </remarks>
+                  </is-unique>
             </constraint>
       </define-assembly>
 
@@ -578,10 +596,6 @@
       <define-flag name="source" as-type="uri-reference">
             <formal-name>Source Resource Reference</formal-name>
             <description>A reference to an OSCAL catalog or profile providing the referenced control or subcontrol definition.</description>
-      </define-flag>
-      <define-flag name="control-id" as-type="NCName">
-            <formal-name>Control Identifier Reference</formal-name>
-            <description>A reference to a control identifier.</description>
       </define-flag>
       <!--   <define-assembly name="only-statement">
       <formal-name>Specific Statement</formal-name>
@@ -615,14 +629,13 @@
       </model>
    </define-assembly>
 -->
-      <define-flag name="statement-id" as-type="NCName">
+      <define-flag name="statement-id" as-type="token">
             <formal-name>Control Statement Reference</formal-name>
             <description>A reference to a control statement by its identifier</description>
       </define-flag>
       <define-assembly name="set-parameter">
             <formal-name>Set Parameter Value</formal-name>
             <description>Identifies the parameter that will be set by the enclosed value.</description>
-            <json-key flag-name="param-id"/>
             <flag ref="param-id" required="yes"/>
             <model>
                   <define-field name="parameter-value" as-type="string" min-occurs="1" max-occurs="unbounded">
@@ -655,7 +668,7 @@
       </define-field>
 
       <!-- ===== FLAGS ===== -->
-      <define-flag name="param-id" as-type="NCName">
+      <define-flag name="param-id" as-type="token">
             <!-- This is an id because the idenfier is assigned and managed by humans. -->
             <formal-name>Parameter ID</formal-name>
             <description>A reference to a parameter within a control, who's catalog has been imported into the current implementation context.</description>

@@ -33,7 +33,7 @@ Each bi-weekly teleconference will cover some or all of the following topics:
 
 -	Reviewing one or more of the OSCAL models
 -	Answering questions on model usage
--	Discussing property and annotation values
+-	Discussing property values and other controlled vocabularies
 -	Collecting feedback on how to improve the models and related documentation
 
 We specifically want to hear from community members that are authoring OSCAL content and creating OSCAL tools. ***Your [feedback](/contact/) is important to us***, which is the primary reason we are hosting these teleconferences.
