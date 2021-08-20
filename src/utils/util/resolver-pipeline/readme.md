@@ -2,7 +2,7 @@
 
 Profile resolution is implemented here as a set of XSLT transformations to be performed in sequence, applied to defined inputs (a **source profile** with imported **catalog** sources) to produce defined outputs (a **profile resolution result** in the form of a catalog). The word **baseline** is also used to refer to a particular profile in application, whether in its unprocessed form or its resolved, serialized form.
 
-The sequence reflects and roughly corresponds to the three steps in profile resolution described for OSCAL in the [Profile Resolution Specification](https://pages.nist.gov/OSCAL/documentation/processing/profile-resolution/):
+The sequence reflects and roughly corresponds to the three steps in profile resolution described for OSCAL in the [Profile Resolution Specification](https://pages.nist.gov/OSCAL/concepts/processing/profile-resolution/):
 
 - **selection** (importing catalogs or profiles and selecting controls from them)
 
@@ -29,7 +29,5 @@ The main entry point for the transformation pipeline is the dynamic build XSLT c
 Alternatively, set up the bindings in an IDE or programmed environment that has XSLT 3.1 support.
 
 Note that URIs (addresses) given in a profile document must link correctly as absolute or relative paths to their imported catalogs, as demonstrated in examples.
-
-###
 
 A captured and serialized profile resolution will take the form of an OSCAL catalog, and be valid to the catalog schema for correctly formed inputs.
