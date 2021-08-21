@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="../../build/metaschema/toolchains/xslt-M4/validate/metaschema-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <!DOCTYPE METASCHEMA [
-   <!ENTITY allowed-values-responsible-roles-operations SYSTEM "shared-constraints/allowed-values-responsible-roles-operations.ent">
-<!ENTITY allowed-values-responsible-roles-component-production SYSTEM "shared-constraints/allowed-values-responsible-roles-component-production.ent">
-<!ENTITY allowed-values-property-name-asset-type-values SYSTEM "shared-constraints/allowed-values-property-name-asset-type-values.ent">
-<!ENTITY allowed-values-component_component_property-name SYSTEM "shared-constraints/allowed-values-component_component_property-name.ent">
-<!ENTITY allowed-values-component_component_software SYSTEM "shared-constraints/allowed-values-component_component_software.ent">
-<!ENTITY allowed-values-component_component_service SYSTEM "shared-constraints/allowed-values-component_component_service.ent">
-<!ENTITY allowed-values-component_inventory-item_property-name SYSTEM "shared-constraints/allowed-values-component_inventory-item_property-name.ent">
-<!ENTITY allowed-values-component_component_link-rel SYSTEM "shared-constraints/allowed-values-component_component_link-rel.ent">
-<!ENTITY allowed-values-component-type SYSTEM "shared-constraints/allowed-values-component-type.ent">
+  <!ENTITY allowed-values-responsible-roles-operations SYSTEM "./shared-constraints/allowed-values-responsible-roles-operations.ent">
+  <!ENTITY allowed-values-responsible-roles-component-production SYSTEM "./shared-constraints/allowed-values-responsible-roles-component-production.ent">
+  <!ENTITY allowed-values-property-name-asset-type-values SYSTEM "./shared-constraints/allowed-values-property-name-asset-type-values.ent">
+  <!ENTITY allowed-values-component_component_property-name SYSTEM "./shared-constraints/allowed-values-component_component_property-name.ent">
+  <!ENTITY allowed-values-component_component_software SYSTEM "./shared-constraints/allowed-values-component_component_software.ent">
+  <!ENTITY allowed-values-component_component_service SYSTEM "./shared-constraints/allowed-values-component_component_service.ent">
+  <!ENTITY allowed-values-component_inventory-item_property-name SYSTEM "./shared-constraints/allowed-values-component_inventory-item_property-name.ent">
+  <!ENTITY allowed-values-component_component_link-rel SYSTEM "./shared-constraints/allowed-values-component_component_link-rel.ent">
+  <!ENTITY allowed-values-component-type SYSTEM "./shared-constraints/allowed-values-component-type.ent">
 ]>
 <METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/toolchains/xslt-M4/validate/metaschema.xsd">
@@ -56,7 +56,7 @@
           <p>Since multiple <code>component</code> entries can be provided, each component must have a unique <code>uuid</code>.</p>
         </remarks>
       </index>
-      <is-unique name="unique-component-definition-capability" target="capability">
+      <is-unique id="unique-component-definition-capability" target="capability">
         <key-field target="@uuid"/>
         <remarks>
           <p>A given <code>component</code> must not be referenced more than once within the same <code>capability</code>.</p>
@@ -211,7 +211,7 @@
             &allowed-values-component_component_service;
       </allowed-values>
 
-      <expect test="not(exists((.)[not(@type='service')]/protocol))"/>
+      <expect target="." test="not(exists((.)[not(@type='service')]/protocol))"/>
 
       <!-- ========================================================================================================== -->
       <!-- = TODO: Consider whether INTERCONNECTION constraints are appropriate here.      = -->
@@ -219,7 +219,7 @@
       <!-- =       If interconnection is not appropriate for component-defintion, we'll need different = -->
       <!-- =           component-type lists for the two models.                                        = -->
       <!-- ========================================================================================================== -->
-      <is-unique name="unique-defined-component-responsible-role" target="responsible-role">
+      <is-unique id="unique-defined-component-responsible-role" target="responsible-role">
         <key-field target="@role-id"/>
         <remarks>
           <p>Since <code>responsible-role</code> associates multiple <code>party-uuid</code> entries with a single <code>role-id</code>, each role-id must be referenced only once.</p>
@@ -275,7 +275,7 @@
       <field ref="remarks" in-xml="WITH_WRAPPER"/>
     </model>
     <constraint>
-      <is-unique name="unique-component-definition-capability-incorporates-component" target="incorporates-component">
+      <is-unique id="unique-component-definition-capability-incorporates-component" target="incorporates-component">
         <key-field target="@component-uuid"></key-field>
         <remarks>
           <p>A given <code>component</code> must not be referenced more than once within the same <code>capability</code>.</p>
@@ -330,7 +330,7 @@
       </assembly>
     </model>
     <constraint>
-      <is-unique name="unique-component-definition-control-implementation-set-parameter" target="set-parameter">
+      <is-unique id="unique-component-definition-control-implementation-set-parameter" target="set-parameter">
         <key-field target="@param-id"/>
         <remarks>
           <p>Since multiple <code>set-parameter</code> entries can be provided, each parameter must be set only once.</p>
@@ -372,19 +372,19 @@
       <field ref="remarks" in-xml="WITH_WRAPPER"/>
     </model>
     <constraint>
-      <is-unique name="unique-component-definition-implemented-requirement-set-parameter" target="set-parameter">
+      <is-unique id="unique-component-definition-implemented-requirement-set-parameter" target="set-parameter">
         <key-field target="@param-id"/>
         <remarks>
           <p>Since multiple <code>set-parameter</code> entries can be provided, each parameter must be set only once.</p>
         </remarks>
       </is-unique>
-      <is-unique name="unique-component-definition-implemented-requirement-responsible-role" target="responsible-role">
+      <is-unique id="unique-component-definition-implemented-requirement-responsible-role" target="responsible-role">
         <key-field target="@role-id"/>
         <remarks>
           <p>Since <code>responsible-role</code> associates multiple <code>party-uuid</code> entries with a single <code>role-id</code>, each role-id must be referenced only once.</p>
         </remarks>
       </is-unique>
-      <is-unique name="unique-component-definition-implemented-requirement-statement" target="statement">
+      <is-unique id="unique-component-definition-implemented-requirement-statement" target="statement">
         <key-field target="@statement-id"/>
         <remarks>
           <p>Since <code>statement</code> entries can be referenced using the statement's statement-id, each statement must be referenced only once.</p>
@@ -421,7 +421,7 @@
       <field ref="remarks" in-xml="WITH_WRAPPER"/>
     </model>
     <constraint>
-      <is-unique name="unique-component-definition-statement-responsible-role" target="responsible-role">
+      <is-unique id="unique-component-definition-statement-responsible-role" target="responsible-role">
         <key-field target="@role-id"/>
         <remarks>
           <p>Since <code>responsible-role</code> associates multiple <code>party-uuid</code> entries with a single <code>role-id</code>, each role-id must be referenced only once.</p>
