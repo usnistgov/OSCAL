@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+         uuid="6c303ebb-4a36-4534-8d7f-dd91644b1d53">
+   <metadata>
+      <title>Catalog</title>
+      <last-modified>2021-06-21T15:48:23.851-04:00</last-modified>
+      <version>0/1</version>
+      <oscal-version>1.0.0</oscal-version>
+   </metadata>
+   <param id="p2"/>
+   <control id="a1">
+      <title>Control A1</title>
+   </control>
+   <control id="a2">
+      <title>Control A1</title>
+   </control>
+   <control id="a3">
+      <title>Control A1</title>
+   </control>
+</catalog>
