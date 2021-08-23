@@ -581,7 +581,7 @@
                         <key-field target="@role-id"></key-field>
                   </index-has-key>
                   <index-has-key name="index-metadata-party-uuid" target="responsible-party">
-                        <key-field target="@party-uuid"></key-field>
+                        <key-field target="party-uuid"></key-field>
                   </index-has-key>
                   <is-unique id="unique-inventory-item-responsible-party" target="responsible-party">
                         <key-field target="@role-id"/>

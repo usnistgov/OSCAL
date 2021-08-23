@@ -727,10 +727,10 @@
             &allowed-values-responsible-roles-operations;
       </allowed-values>
       <index-has-key name="index-metadata-role-id" target="responsible-role|statement/responsible-role|.//by-component//responsible-role">
-        <key-field target="@role-id"></key-field>
+        <key-field target="@role-id"/>
       </index-has-key>
       <index-has-key name="index-metadata-party-uuid" target="responsible-role|statement/responsible-role|.//by-component//responsible-role">
-        <key-field target="@party-uuid"></key-field>
+        <key-field target="party-uuid"/>
       </index-has-key>
       <has-cardinality target=".//by-component" min-occurs="1">
         <remarks>

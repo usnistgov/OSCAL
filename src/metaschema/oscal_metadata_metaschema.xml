@@ -69,8 +69,8 @@
                 <key-field target="@class"/>
                 <key-field target="@value"/>
             </is-unique>
-            <index id="index-metadata-property-id" name="index-metadata-property-id" target=".//prop">
-                <key-field target="@id"/>
+            <index id="index-metadata-property-uuid" name="index-metadata-property-uuid" target=".//prop">
+                <key-field target="@uuid"/>
             </index>
             <is-unique id="unique-metadata-link" target="link">
                 <key-field target="@href"/>
