@@ -1587,12 +1587,6 @@
                </assembly>
                <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
             </model>
-            <constraint>
-               <allowed-values target="origin/@type" allow-other="no">
-                  <enum value="party">The UUID of the person or organization who made the recommendation</enum>
-                  <enum value="tool">The UUID of the tool that made the recommendation</enum>
-               </allowed-values>
-            </constraint>
          </define-assembly>
          <assembly ref="task" min-occurs="0" max-occurs="unbounded">
             <group-as name="tasks" in-json="ARRAY"/>

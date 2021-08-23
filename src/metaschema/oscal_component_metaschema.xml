@@ -147,7 +147,7 @@
         <enum value="uses-network">This component uses the network provided by the identified network component.</enum>
       </allowed-values>
 
-      <allowed-values target="responsible-role/@role-id|control-implementation/implemented-requirement/responsible-role/@role-id||control-implementation/implemented-requirement/statement/responsible-role/@role-id" allow-other="yes">
+      <allowed-values target="responsible-role/@role-id|control-implementation/implemented-requirement/responsible-role/@role-id|control-implementation/implemented-requirement/statement/responsible-role/@role-id" allow-other="yes">
         <!-- ========================================================================================================== -->
         <!-- = Changes to the following values need to be synced with component in the SSP and component metaschemas. = -->
         <!-- CHANGED (BJR): Done -->
@@ -164,7 +164,7 @@
       <!-- = TODO: The following was copied from implementation-common as-is and should probably be setup with  = -->
       <!-- =       shared constraints; however, the values are highly static (yes/no, internal/external). -->
       <!-- =       Can be changed later with no breaking impact. -->
-      <allowed-values target="property[@name='allows-authenticated-scan']/@value">
+      <allowed-values target="prop[@name='allows-authenticated-scan']/@value">
         <enum value="yes">The component allows an authenticated scan.</enum>
         <enum value="no">The component does not allow an authenticated scan.</enum>
       </allowed-values>
