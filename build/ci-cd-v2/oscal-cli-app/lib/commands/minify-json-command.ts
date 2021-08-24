@@ -7,7 +7,7 @@ exports.desc = 'Usage: oscalcli minify-json [configs] [options]'
 exports.builder = {
   outputFile: {
     type: 'string',
-    alias: 'f',
+    alias: 'o',
     describe: 'Minified File',
     demand: true,
   },
@@ -21,6 +21,6 @@ exports.builder = {
 export const handler = async () => {
   //calls the Entry Function
   const {path} = await variablesProcessor(argv);
-  const {f, d} = argv
-  minifyJson (path, f, d)
+  const {o, d} = argv
+  minifyJson (path, o, d)
 }
