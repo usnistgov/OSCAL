@@ -3,7 +3,7 @@ import { variablesProcessor } from '../modules';
 import { argv } from 'yargs';
 
 export const command = 'minify-json'
-exports.desc = 'Usage: oscalcli minify-json [configs]'
+exports.desc = 'Usage: oscalcli minify-json [configs] [options]'
 exports.builder = {
   outputFile: {
     type: 'string',
