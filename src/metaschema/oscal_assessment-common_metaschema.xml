@@ -66,7 +66,7 @@
             <enum value="objective"></enum>
             <enum value="assessment"></enum>
          </allowed-values>
-         <has-cardinality target="part[@name='objective']" min-occurs="0" max-occurs="1" />
+         <has-cardinality target="part[@name='objective']" max-occurs="1" />
          <has-cardinality target="part[@name='assessment']/prop[@name='method']" min-occurs="1" max-occurs="1" />
          <has-cardinality target="part[@name='assessment']/part[@name='objects']" min-occurs="1" max-occurs="1" />
          <has-cardinality target="part[@name='objective']/prop[@name='method-id']" min-occurs="1" />
