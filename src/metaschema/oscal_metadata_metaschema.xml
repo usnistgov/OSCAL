@@ -252,7 +252,7 @@
         </define-flag>
         <model>
             <!-- CHANGE: changed from "party-name" to "name" -->
-            <define-field name="name">
+            <define-field name="name" min-occurs="1">
                 <formal-name>Party Name</formal-name>
                 <description>The full name of the party. This is typically the legal name associated with the party.</description>
             </define-field>
