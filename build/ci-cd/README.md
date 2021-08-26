@@ -150,18 +150,15 @@ export SAXON_VERSION=9.9.1-3
 mvn org.apache.maven.plugins:maven-dependency-plugin:2.10:get -DartifactId=Saxon-HE -DgroupId=net.sf.saxon -Dversion=$SAXON_VERSION
 ```
 
-mkdir $HOME/oscal-oss
+You will also need a copy of the ISO Schematron skeleton.
 
+```
+mkdir $HOME/oscal-oss
 export SCHEMATRON_HOME=$HOME/oscal-oss/git-schematron
 git clone --depth 1 --no-checkout https://github.com/Schematron/schematron.git "$SCHEMATRON_HOME"
 cd "$SCHEMATRON_HOME"
 git checkout master -- trunk/schematron/code
-
-
-export OSCAL_TOOLS_DIR=$HOME/oscal-oss/oscal_tools
-git clone --depth 1 https://github.com/usnistgov/oscal-tools.git "${OSCAL_TOOLS_DIR}"
-cd $OSCAL_TOOLS_DIR/json-cli
-mvn clean install
+```
 
 Finally, export instructions in the preceding must also be copied into .bashrc so they persist in your environment.
 
@@ -170,7 +167,6 @@ prettyson
 ```
 sudo npm install -g prettyjson
 ```
-
 
 jq
 
