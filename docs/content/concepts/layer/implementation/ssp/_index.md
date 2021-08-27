@@ -74,3 +74,9 @@ OSCAL is designed to allow capture relevant details related to independent valid
 Multiple examples of SSP expressed using the OSCAL SSP model can be found in the OSCAL GitHub repository in [XML]({{< param "contentRepoPath" >}}/examples/ssp/xml),
 [JSON]({{< param "contentRepoPath" >}}/examples/ssp/json),
 and [YAML]({{< param "contentRepoPath" >}}/examples/ssp/yaml/) formats.
+
+## Related Tutorials
+
+The following tutorial is provided related to the catalog model.
+
+- [Representing Test Validation Information](/learn/tutorials/validation-modeling/): Explains how to represent test validation information (e.g., FIPS-140-2) for a component in an OSCAL SSP.

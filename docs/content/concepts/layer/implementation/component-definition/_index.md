@@ -95,3 +95,16 @@ The figure below expresses represents the portion of the OSCAL stack as it relat
 ### Modeling Validation Information
 
 OSCAL is designed to allow capture relevant details related to independent validation of components. See the [Validation Modeling](/learn/tutorials/validation-modeling/) tutorial for details.
+
+## Related Tutorials
+
+The following tutorials are provided that are related to the component definition model.
+
+- [Creating a Component Definition](/learn/tutorials/component-definition/): Covers creating a basic OSCAL component definition for a software product.
+- [Representing Test Validation Information](/learn/tutorials/validation-modeling/): Explains how to represent test validation information (e.g., FIPS-140-2) for a component in an OSCAL component definition.
+
+## Content Examples
+
+Multiple examples of component definitions expressed using the OSCAL component definitions model can be found in the OSCAL GitHub repository in [XML]({{< param "contentRepoPath" >}}/examples/component-definition/xml),
+[JSON]({{< param "contentRepoPath" >}}/examples/component-definition/json),
+and [YAML]({{< param "contentRepoPath" >}}/examples/component-definition/yaml/) formats.
