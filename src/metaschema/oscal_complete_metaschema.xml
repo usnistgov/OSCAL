@@ -3,7 +3,7 @@
 <!-- OSCAL GRAND UNIFIED MEGALOMETASCHEMA -->
 <!-- validate with XSD and Schematron (linked) -->
 <!DOCTYPE METASCHEMA [
-   <!ENTITY allowed-values-control-group-property-name SYSTEM "shared-constraints/allowed-values-control-group-property-name.ent">
+   <!ENTITY allowed-values-control-group-property-name SYSTEM "./shared-constraints/allowed-values-control-group-property-name.ent">
 ]>
 <METASCHEMA xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0">
       <schema-name>OSCAL Unified Model of Models</schema-name>
