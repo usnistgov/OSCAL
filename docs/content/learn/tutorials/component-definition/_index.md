@@ -425,7 +425,7 @@ The [`protocols`](/reference/latest/component-definition/json-reference/#/compon
 
 ### Defining Control Implementation Details
 
-By providing control implementation details in a component, information is provided about how the given component target can satisfy controls with an associated OSCAL [catalog](/OSCAL/concepts/layer/control/catalog/) in general, or an associated OSCAL [profile](/concepts/layer/control/profile/) to describe how the component subject can satisfy controls from a specific baseline.  In this example, we document how the MongoDB component may satisfy **SC-8(1)** which requires the implementation of cryptographic mechanisms to prevent unauthorized disclosure of information and/or detect changes to information during transmission.
+By providing control implementation details in a component, information is provided about how the given component target can satisfy controls with an associated OSCAL [catalog](/concepts/layer/control/catalog/) in general, or an associated OSCAL [profile](/concepts/layer/control/profile/) to describe how the component subject can satisfy controls from a specific baseline.  In this example, we document how the MongoDB component may satisfy **SC-8(1)** which requires the implementation of cryptographic mechanisms to prevent unauthorized disclosure of information and/or detect changes to information during transmission.
 
 An example of providing control implementation details for SC-8(1) is provided below.
 
