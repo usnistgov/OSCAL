@@ -5,12 +5,10 @@ on:
     paths:
       - 'docs/**'
       - '.github/workflows/website-deploy.yml'
-      - 'xml'
-      - 'json'
   workflow_dispatch:
     branches:
       - main
-name: Build and Publish Website
+name: Publish Website
 env:
   # the name of the repo
   HOME_REPO: usnistgov/OSCAL
