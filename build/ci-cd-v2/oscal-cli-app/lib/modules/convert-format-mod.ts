@@ -70,6 +70,4 @@ export const fileConverter: any = (
   } catch (error) { // destructuring
     console.log(error.message)
   }
-
-
-  }
+ }
