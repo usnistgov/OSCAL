@@ -16,9 +16,15 @@ This tutorial covers creating a basic OSCAL component definition. Before reading
 
 ## What is an OSCAL Component Definition?
 
-An OSCAL component definition describes how a given implementation of a component or a set of components (e.g., hardware, software, service, policy, process, or procedure) can support specific controls.  Product and service vendors, capability owners, policy and process owners, and others can create component definitions that readily serve as inputs for a System Security Plan (SSP), helping describe how components might satisfy controls.  It is important to note that component definitions do not describe actual implementations; rather, component definitions describe possible implementations which can be instantiated within an information system. Thus, component definitions serve as references with content that can be used (e.g., in the SSP OSCAL model) to develop comprehensive and consistent control implementations within an SSP.
+An OSCAL [component definition](/concepts/layer/implementation/component-definition/) contains a collection of components. Each component in a component definition describes how a given implementation of a hardware, software, service, policy, process, or procedure asset can support or provide implementations of specific controls. The asset described by a component in a component definition is called a *component subject*"* in this tutorial.
 
-In this tutorial, we will walk through the process of creating an [OSCAL component definition model](/documentation/schema/implementation-layer/component/) for [MongoDB](https://docs.mongodb.com/).  Our goal is to demonstrate how to provide standard control implementations for the benefit of system owners and SSP authors. As potential components in systems that may need to meet the OMB A-130 Authorization to Operate requirements, the component definition in this tutorial will show proper implementation of a couple [NIST SP 800-53 rev 5 controls](https://github.com/usnistgov/oscal-content/tree/master/nist.gov/SP800-53/rev5/xml) deemed necessary for high, moderate, or low impact systems. While this example focuses on NIST controls, the same approach could be applied to any catalog of controls (e.g., ISO/IEC 27002).
+By publishing a set of components in a component definition, product and service vendors, capability owners, policy and process owners, and [others](/concepts/layer/implementation/component-definition/#component-definition-authors) can share control implementation information for a component subject they maintain. The information about a component subject can then be [used](/concepts/layer/implementation/component-definition/#component-definition-consumers) when implementing that subject in an information system. This allows the control narrative for the subject to be imported into the System Security Plan (SSP).
+
+It is important to note that component definitions do not describe actual implementations; rather, component definitions describe possible implementations which can be instantiated within an information system. Thus, component definitions serve as references with content that can be (re)used (e.g., in the SSP OSCAL model) to develop comprehensive and consistent control implementations within an SSP.
+
+In this tutorial, we will walk through the process of creating an OSCAL component definition model instance for [MongoDB](https://docs.mongodb.com/).  Our goal is to demonstrate how to provide standard control implementations for the benefit of system owners and SSP authors that use a similar software application.
+
+As potential components in information systems that may need to meet the OMB A-130 Authorization to Operate requirements, the component definition in this tutorial will show proper implementation of a couple [NIST SP 800-53 rev 5 controls](https://github.com/usnistgov/oscal-content/tree/master/nist.gov/SP800-53/rev5/xml) deemed necessary for high, moderate, or low impact systems. While this example focuses on NIST controls, the same approach could be applied to any catalog of controls (e.g., ISO/IEC 27002).
 
 For the purposes of this tutorial we'll presume the MongoDB component can partially or fully satisfy the following controls:
 
@@ -27,9 +33,9 @@ For the purposes of this tutorial we'll presume the MongoDB component can partia
 | SA-4(9) | Acquisition Process - Functions, Ports, Protocols, and Services in Use |
 | SC-8(1) | Transmission Confidentiality and Integrity |
 
-In this tutorial, we’ll demonstrate how to use implemented requirements and control IDs for traceability between the component definition model, its components, the component’s control implementations and associated implemented requirements.
+This tutorial demonstrates how to document a set of implemented controls as an OSCAL component definition for these controls.
 
-## Creating an OSCAL Component Definition Model
+## Creating an OSCAL Component Definition Instance
 
 The examples below illustrate the top-level structure of the OSCAL Component Definition Model.
 
@@ -48,13 +54,14 @@ The examples below illustrate the top-level structure of the OSCAL Component Def
 {{< /highlight >}}
 
 The root of the OSCAL component definition model is [`<component-definition>`](/reference/latest/component-definition/xml-reference/#/component-definition). Note that the schema location attribute is omitted for this example. The `@uuid` attribute (on line 3) is the document's universally unique identifier (UUID), a unique 128-bit number displayed as a string of hyphenated hexadecimal digits as defined by RFC 4122. OSCAL documents use a version 4 UUID (randomly generated) to uniquely identify the document.
-A `<component-definition>` contains:
 
-- `<metadata>` (required) - Provides document metadata for the component definition. This is similar to metadata for other OSCAL models, therefor is not described extensively in this tutorial.
+A `<component-definition>` contains the following elements:
+
+- `<metadata>` (required) - Provides document metadata for the component definition. This is covered in the [next section](/learn/tutorials/component-definition/#defining-the-component-definitions-metadata) to a limited extent. The metadata used here is similar to metadata for other OSCAL models, therefor is not described extensively in this tutorial.
 - `<import-component-definition>` (optional) – Identifies a collection of external component definitions from other resources from which related information is referenced within this component definition. Use of `<import-component-definition>` is not covered in this tutorial.
-- `<component>` (optional) - Defines a given component in the component definition. Zero or more `<component>` elements may be used.
+- `<component>` (optional) - Defines a given component in the component definition. Zero or more `<component>` elements may be used. Use of this element is [discussed later](http://localhost:1313/OSCAL/learn/tutorials/component-definition/#defining-the-mongodb-component) in this tutorial.
 - `<capability>` (optional) - Defines a given capability in the component definition. Zero or more `<capability>` elements may be used. Capabilities are not covered in this tutorial.
-- `<back-matter>` (optional) – Contains references which are referenced within the component definition. Use of `<back-matter>` is not covered in this tutorial.
+- `<back-matter>` (optional) – Contains resources which are referenced within the component definition. Use of `<back-matter>` is not covered in this tutorial.
 {{% /tab %}}
 {{% tab %}}
 {{< highlight json "linenos=table" >}}
@@ -72,11 +79,11 @@ A `<component-definition>` contains:
 
 The root of the OSCAL component definition model is [`component-definition`](/reference/latest/component-definition/json-reference/#/component-definition). The `uuid` property (on line 3) is the document's universally unique identifier (UUID), a unique 128-bit number displayed as a string of hyphenated hexadecimal digits as defined by RFC 4122. OSCAL documents use a version 4 UUID (randomly generated) to uniquely identify the document.
 
-A `component-definition` contains the following props:
+A `component-definition` contains the following properties:
 
-- `metadata` (required) - Provides document metadata for the component definition. This is similar to metadata for other OSCAL models, therefor is not described extensively in this tutorial.
+- `metadata` (required) - Provides document metadata for the component definition. This is covered in the [next section](/learn/tutorials/component-definition/#defining-the-component-definitions-metadata) to a limited extent. The metadata used here is similar to metadata for other OSCAL models, therefor is not described extensively in this tutorial.
 - `import-component-definitions` (optional) – Identifies a collection of external component definitions from other resources from which related information is referenced within this component definition.  Use of `import-component-definitions` is not covered in this tutorial.
-- `components` (optional) - Groups `component` objects which each define a given component in the component definition. One or more `component` objects may be provided.
+- `components` (optional) - Groups `component` objects which each define a given component in the component definition. One or more `component` objects may be provided. Use of this property is [discussed later](http://localhost:1313/OSCAL/learn/tutorials/component-definition/#defining-the-mongodb-component) in this tutorial.
 - `capabilities` (optional) - Defines a group of given capabilities in the component definition. One or more `capability` objects may be used. Capabilities are not covered in this tutorial.
 - `back-matter` (optional) – Contains references which are referenced within the component definition. Use of `back-matter` is not covered in this tutorial.
 {{% /tab %}}
@@ -86,20 +93,20 @@ A `component-definition` contains the following props:
 ---
 component-definition:
   uuid: a7ba800c-a432-44cd-9075-0862cd66da6b
-  metadata:
-  import-component-definitions:
-  components:
-  capabilities:
-  back-matter:
+  metadata: ~
+  import-component-definitions: ~
+  components: ~
+  capabilities: ~
+  back-matter: ~
 {{< /highlight >}}
 
-The root of the OSCAL component definition model is `component-definition`. The `uuid` key (on line 3) is the document's universally unique identifier (UUID), a unique 128-bit number displayed as a string of hyphenated hexadecimal digits as defined by RFC 4122. OSCAL documents use a version 4 UUID (randomly generated) to uniquely identify the document.
+The root of the OSCAL component definition model is [`component-definition`](/reference/latest/component-definition/json-reference/#/component-definition). The `uuid` key (on line 3) is the document's universally unique identifier (UUID), a unique 128-bit number displayed as a string of hyphenated hexadecimal digits as defined by RFC 4122. OSCAL documents use a version 4 UUID (randomly generated) to uniquely identify the document.
 
-A `component-definition` contains the following items:
+A `component-definition` contains the following keys:
 
-- `metadata` (required) - Provides document metadata for the component definition. This is similar to metadata for other OSCAL models, therefor is not described extensively in this tutorial.
+- `metadata` (required) - Provides document metadata for the component definition. This is covered in the [next section](/learn/tutorials/component-definition/#defining-the-component-definitions-metadata) to a limited extent. The metadata used here is similar to metadata for other OSCAL models, therefor is not described extensively in this tutorial.
 - `import-component-definitions` (optional) – Identifies a collection of external component definitions from other resources from which related information is referenced within this component definition.  Use of `import-component-definitions` is not covered in this tutorial.
-- `components` (optional) - Groups `component` items which define given component(s) in the component definition. One or more `component` items may be used.
+- `components` (optional) - Groups `component` items which define given component(s) in the component definition. One or more `component` items may be used. Use of this key is [discussed later](http://localhost:1313/OSCAL/learn/tutorials/component-definition/#defining-the-mongodb-component) in this tutorial.
 - `capabilities` (optional) - Defines a group of given capabilities in the component definition. One or more `capability` items may be used. Capabilities are not covered in this tutorial.
 - `back-matter` (optional) – Contains references which are referenced within the component definition. Use of `back-matter` is not covered in this tutorial.
 {{% /tab %}}
@@ -109,7 +116,7 @@ For simplicity of this tutorial, we will only discuss certain data structures in
 
 ### Defining the Component Definition’s Metadata
 
-Most OSCAL models have a standard metadata syntax, therefore, this is not covered extensively in this tutorial.  There are a few considerations however when authoring metadata for a component definition, such as the `role`, `location`, and `party` data items illustrated in the example below.
+Most OSCAL models have a standard metadata syntax, therefore, this is not covered extensively in this tutorial.  There are a few considerations however when authoring metadata for a component definition, such as the `role` and `party` data items illustrated in the example below.
 
 {{< tabs XML JSON YAML >}}
 {{% tab %}}
@@ -118,22 +125,23 @@ Most OSCAL models have a standard metadata syntax, therefore, this is not covere
     uuid="a7ba800c-a432-44cd-9075-0862cd66da6b">
   <metadata>
     <title>MongoDB Component Definition Example</title>
-    <last-modified>2001-12-17T09:30:47Z</last-modified>
-    <version>20210507</version>
+    <last-modified>2001-08-26T23:11:47Z</last-modified>
+    <version>20210826</version>
     <oscal-version>1.0.0</oscal-version>
-    <role id="supplier">
-      <title>Supplier</title>
+    <role id="provider">
+      <title>Provider</title>
     </role>
     <party uuid="ef7c799a-c50e-49ab-83e0-515e989e6df1" type="organization">
       <name>MongoDB</name>
-      <link rel="website" href="https://www.mongodb.com">
+      <link rel="website" href="https://www.mongodb.com"/>
     </party>
   </metadata>
-  ...
 </component-definition>
 {{< /highlight >}}
 
-The [`<role>`](/reference/latest/component-definition/xml-reference/#/component-definition/metadata/role) element defines a function assumed or expected to be assumed by a party in a specific situation.  Common examples include [component definition authors](/concepts/layer/implementation/component-definition/#component-definition-authors) (e.g., Product and Service Vendors, Capability Owners, Policy and Process Owners, Standards Bodies and Validation Bodies) and [component definition consumers](/concepts/layer/implementation/component-definition/#component-definition-consumers) (e.g., System Owners and SSP Authors).  This element has a required `@id` attribute which expects an [NCName data type](/reference/datatypes/#ncname).  Lastly, the `<party>` element represents either a person or organization that serves as the responsible entity.  There are prescribed types, including *"person"*, and *"organization"*.
+The [`<role>`](/reference/latest/component-definition/xml-reference/#/component-definition/metadata/role) element defines a function assumed or expected to be assumed by a party in a specific situation. In this case the role `provider` has been standardized by OSCAL to be used for [component definition authors](/concepts/layer/implementation/component-definition/#component-definition-authors). This element has a required `@id` attribute which expects an [token](/reference/datatypes/#token) data type. A `<title>` is also provided.
+
+The `<party>` element represents either a person or organization that serves as the responsible entity. A party must have an associated `@uuid` which is used to reference this party, a `<name>` which provides a formal label, and a `@type` which defines the nature of the party. There are prescribed types, including *"person"*, and *"organization"*. In this case we are defining the MongoDB project as an organization. A pointer to the organization's website is also included.
 {{% /tab %}}
 {{% tab %}}
 {{< highlight json "linenos=table" >}}
@@ -146,28 +154,33 @@ The [`<role>`](/reference/latest/component-definition/xml-reference/#/component-
       "version": 20210507,
       "oscal-version": "1.0.0",
       "roles": [{
-        "id": "supplier",
-        "title": "Supplier"
+        "id": "provider",
+        "title": "Provider"
       }],
       "parties": [{
         "uuid": "ef7c799a-c50e-49ab-83e0-515e989e6df1",
         "type": "organization",
         "name": "MongoDB",
-        "links": "https://www.mongodb.com"
+        "links": [{
+          "href": "https://www.mongodb.com",
+          "rel": "website"
+        }]
       }]
     }
   }
 }
 {{< /highlight >}}
 
-The [`roles`](/reference/latest/component-definition/json-reference/#/component-definition/metadata/roles) property provides a grouping of `role` objects that each define a function assumed or expected to be assumed by a party in a specific situation.  Common examples include [component definition authors](/concepts/layer/implementation/component-definition/#component-definition-authors) (e.g., Product and Service Vendors, Capability Owners, Policy and Process Owners, Standards Bodies and Validation Bodies) and [component definition consumers](/concepts/layer/implementation/component-definition/#component-definition-consumers) (e.g., System Owners and SSP Authors).  This element has a required `uuid` property which expects an [NCName data type](/reference/datatypes/#ncname).  Lastly, the `parties` grouping property represents either persons or organizations that serves as the responsible entities.  There are prescribed types, including *"person"*, and *"organization"*
+The [`roles`](/reference/latest/component-definition/json-reference/#/component-definition/metadata/role) property provides a grouping of role objects that each defines a function assumed or expected to be assumed by a party in a specific situation. In this case the role `provider` has been standardized by OSCAL to be used for [component definition authors](/concepts/layer/implementation/component-definition/#component-definition-authors). This element has a required `id` attribute which expects an [token](/reference/datatypes/#token) data type. A `title` is also provided.
+
+The [`parties`](/reference/latest/component-definition/json-reference/#/component-definition/metadata/parties) property provides a grouping of party objects that each represent either a person or organization that serves as the responsible entity. A party must have an associated `uuid` which is used to reference this party, a `name` which provides a formal label, and a `type` which defines the nature of the party. There are prescribed types, including *"person"*, and *"organization"*. In this case we are defining the MongoDB project as an organization. A pointer to the organization's website is also included.
+
 {{% /tab %}}
 {{% tab %}}
 {{< highlight yaml "linenos=table" >}}
 ---
 
 component-definition:
-  ...
   uuid: a7ba800c-a432-44cd-9075-0862cd66da6b
   metadata:
     title: MongoDB Component Definition Example
@@ -175,23 +188,26 @@ component-definition:
     version: 20210507
     oscal-version: 1.0.0
     roles:
-      - id: supplier
-        title: Supplier
+    - id: provider
+      title: Provider
     parties:
-      - uuid: ef7c799a-c50e-49ab-83e0-515e989e6df1
-        type: organization
-        name: MongoDB
-        links: <https://www.mongodb.com>
-
+    - uuid: ef7c799a-c50e-49ab-83e0-515e989e6df1
+      type: organization
+      name: MongoDB
+      links:
+      - href: <https://www.mongodb.com>
+        rel: website
 {{< /highlight >}}
 
-The `roles` item provides a grouping of `role` objects that each define a function assumed or expected to be assumed by a party in a specific situation.  Common examples include [component definition authors](/concepts/layer/implementation/component-definition/#component-definition-authors) (e.g., Product and Service Vendors, Capability Owners, Policy and Process Owners, Standards Bodies and Validation Bodies) and [component definition consumers](/concepts/layer/implementation/component-definition/#component-definition-consumers) (e.g., System Owners and SSP Authors).  This element has a required `uuid` property which expects an [NCName data type](/reference/datatypes/#ncname). Lastly, the `parties` grouping item represents either persons or organizations that serves as the responsible entities.  There are prescribed types, including *"person"*, and *"organization"*.
+The [`roles`](/reference/latest/component-definition/json-reference/#/component-definition/metadata/role) key provides a grouping of role items that each defines a function assumed or expected to be assumed by a party in a specific situation. In this case the role `provider` has been standardized by OSCAL to be used for [component definition authors](/concepts/layer/implementation/component-definition/#component-definition-authors). A role item has a required `id` attribute which expects an [token](/reference/datatypes/#token) data type. A `title` is also provided.
+
+The [`parties`](/reference/latest/component-definition/json-reference/#/component-definition/metadata/parties) key provides a grouping of party objects that each represent either a person or organization that serves as the responsible entity. A party must have an associated `uuid` which is used to reference this party, a `name` which provides a formal label, and a `type` which defines the nature of the party. There are prescribed types, including *"person"*, and *"organization"*. In this case we are defining the MongoDB project as an organization. A pointer to the organization's website is also included.
 {{% /tab %}}
 {{% /tabs %}}
 
-### Component
+### Defining the MongoDB Component
 
-Within the component definition model, components provide a way to describe assets which may be used as parts of an information system. A component allows potential control implementations to be described for an asset, which could be used when implementing an information system. While components are optional in a component definition, a typical component definition will include at least one component. In this example, we'll demonstrate how the control implementation of the MongoDB software is represented using the OSCAL component definition model. The snippet below provides an example of the minimum data needed to define a component.
+Within the component definition model, components provide a way to describe subject assets which may be used as parts of an information system. A component allows potential control implementations to be described for an subject asset, which can then be used when implementing an information system. While components are optional in a component definition, a typical component definition will include at least one component. In this example, we'll demonstrate how the control implementation of the MongoDB software is represented using the OSCAL component definition model. The snippet below provides an example of the minimum data needed to define a component.
 
 {{< tabs XML JSON YAML >}}
 {{% tab %}}
@@ -201,27 +217,27 @@ Within the component definition model, components provide a way to describe asse
   <component uuid="91f646c5-b1b6-4786-9ec3-2305a044e217" type="software">
     <title>MongoDB</title>
     <description>
-      <p>MongoDB is a source-available cross-platform document-oriented
+      <p>MongoDB is a source-available, cross-platform document-oriented
         database program. Classified as a NoSQL database program, MongoDB
         uses JSON-like documents with optional schemas.</p>
     </description>
     <purpose>Provides a NoSQL database service</purpose>
-    <responsible-role role-id="supplier">
+    <responsible-role role-id="provider">
       <party-uuid>ef7c799a-c50e-49ab-83e0-515e989e6df1</party-uuid>
     </responsible-role>
-    <protocol name="Transmission Control" />
+    <protocol />
     <control-implementation />
   </component>
 </component-definition>
 {{< /highlight >}}
 
-A component is represented using the [`<component>`](/reference/latest/component-definition/xml-reference/#/component-definition/component) element as shown in line 4.   This element requires a unique identifier, which is provided using the `@uuid` attribute.
+A component is represented using the [`<component>`](/reference/latest/component-definition/xml-reference/#/component-definition/component) element (on line 3). This element requires a unique identifier, which is provided using the `@uuid` attribute.
 
-The `@type` attribute is very useful in classifying components. Some common examples include interconnection, hardware, software, service, policy, process, procedure, plan, guidance, or standard. In our example, we’ll set the MongoDB component as the "*software*" type, since MongoDB is a software application.
+The required `@type` attribute categorizes the component by asset type. Some common examples include interconnection, hardware, software, service, policy, process/procedure, plan, guidance, standard, and validation. In our example, we’ll set the MongoDB component as the "*software*" type, since MongoDB is a software application.
 
-Next, the component needs to have title and description elements.
+Next, the component needs to have title and description elements that help to support human-readability of this information.
 
-The optional `<responsible-role>` element can be used to reference one or more roles with responsibility for performing a function relative to the component.  In this tutorial, will reference the supplier.
+The optional `<responsible-role>` element can be used to reference one or more roles with responsibility for performing a function relative to the component.  In this tutorial, will reference the `provider` and map this role to the mongoDB party.
 {{% /tab %}}
 {{% tab %}}
 {{< highlight json "linenos=table" >}}
@@ -231,15 +247,13 @@ The optional `<responsible-role>` element can be used to reference one or more r
       "uuid": "91f646c5-b1b6-4786-9ec3-2305a044e217",
       "type": "software",
       "title": "MongoDB",
-      "description": "MongoDB is a source-available cross-platform document-oriented database program. Classified as a NoSQL database program, MongoDB uses JSON-like documents with optional schemas.",
+      "description": "MongoDB is a source-available, cross-platform document-oriented database program. Classified as a NoSQL database program, MongoDB uses JSON-like documents with optional schemas.",
       "purpose": "Provides a NoSQL database service",
       "responsible-roles": [{
-        "role-id": "supplier",
+        "role-id": "provider",
         "party-uuid": "ef7c799a-c50e-49ab-83e0-515e989e6df1"
       }],
-      "protocols": [{
-        "name": "Transmission Control"
-      }],
+      "protocols": [{}],
       "control-implementations": [{}]
     }]
   }
@@ -248,50 +262,47 @@ The optional `<responsible-role>` element can be used to reference one or more r
 
 A component is represented in the [components](/reference/latest/component-definition/json-reference/#/component-definition/components) object array shown in line 4. Each component requires a unique identifier, which is provided using the `uuid` property.
 
-The `type` property is very useful in classifying components.  Some common examples include interconnection, hardware, software, service, policy, process, procedure,  plan, guidance, and standard. In our example, we’ll set the MongoDB component as the "*software*" type, since MongoDB is a software application.
+The required `type` property categorizes the component by asset type.  Some common examples include interconnection, hardware, software, service, policy, process/procedure, plan, guidance, standard, and validation. In our example, we’ll set the MongoDB component as the "*software*" type, since MongoDB is a software application.
 
-Next, the component needs to have title and description properties.
+Next, the component needs to have title and description properties that help to support human-readability of this information.
 
-The optional `responsible-roles` object can be used to reference one or more roles with responsibility for performing a function relative to the component.  In this tutorial, will reference the supplier
+The optional `responsible-roles` property can be used to reference one or more roles with responsibility for performing a function relative to the component.  In this tutorial, will reference the `provider` and map this role to the mongoDB party.
+
 {{% /tab %}}
 {{% tab %}}
 {{< highlight yaml "linenos=table" >}}
 ---
 
 component-definition:
-  ...
   components:
-    - uuid: 91f646c5-b1b6-4786-9ec3-2305a044e217
-      type: software
-      title: MongoDB
-      description: >-
-        MongoDB is a source-available cross-platform document-oriented database
-        program. Classified as a NoSQL database program, MongoDB uses JSON-like
-        documents with optional schemas.
-      purpose: Provides a NoSQL database service
-      responsible-roles:
-        - role-id: supplier
-          party-uuid: ef7c799a-c50e-49ab-83e0-515e989e6df1
-      protocols:
-        - name: Transmission Control
-      control-implementations:
-        - Implementation details...
-
+  - uuid: 91f646c5-b1b6-4786-9ec3-2305a044e217
+    type: software
+    title: MongoDB
+    description: >-
+      MongoDB is a source-available, cross-platform document-oriented
+      database program. Classified as a NoSQL database program, MongoDB
+      uses JSON-like documents with optional schemas.
+    purpose: Provides a NoSQL database service
+    responsible-roles:
+    - role-id: provider
+      party-uuid: ef7c799a-c50e-49ab-83e0-515e989e6df1
+    protocols: ~
+    control-implementations: ~
 {{< /highlight >}}
 
 A component is represented in the [components](/reference/latest/component-definition/json-reference/#/component-definition/components) object array shown in line 4. Each component requires a unique identifier, which is provided using the `uuid` property.
 
-The `type` item is very useful in classifying components.  Some common examples include interconnection, hardware, software, service, policy, process / procedure,  plan, guidance, and standard. In our example, we’ll set the MongoDB component to a "*software*" type.  
+The required `type` key categorizes the component by asset type.  Some common examples include interconnection, hardware, software, service, policy, process/procedure, plan, guidance, standard, and validation. In our example, we’ll set the MongoDB component to a "*software*" type.  
 
-Next, the component needs to have title and description.
+Next, the component needs to have title and description keys that help to support human-readability of this information.
 
-The optional `responsible-roles` item can be used to reference one or more roles with responsibility for performing a function relative to the component.  In this tutorial, will reference the supplier.
+The optional `responsible-roles` key can be used to reference one or more roles with responsibility for performing a function relative to the component. In this tutorial, will reference the `provider` and map this role to the mongoDB party.
 {{% /tab %}}
 {{% /tabs %}}
 
-### Protocol
+### Defining Protocols Used in a Component
 
-Another optional but valuable sub-element of `<component>` is [`<protocol>`](/reference/latest/component-definition/xml-reference/#/component-definition/component/protocol).  Generally, `<protocol>` elements are only applicable when dealing with a `<component>` of type *"service"*.  In our example, we'll assume that installations of MongoDB will result in an installation of mongod (Mongo Daemon) which runs the MongoDB database as a process and uses the following protocols:
+Another optional but valuable sub-element of `<component>` is [`<protocol>`](/reference/latest/component-definition/xml-reference/#/component-definition/component/protocol).  Generally, `<protocol>` elements are applicable when dealing with a `<component>` of types *"service"*, but they can also be provided for component types *"software"*, *"hardware"*, or *"interconnection"*.  In our example, we'll assume that installations of MongoDB will result in an installation of mongod (Mongo Daemon) which runs the MongoDB database as a process and uses the following protocols:
 
 | Port| Transport | Direction | Description |
 | ----- | --------- | --------- | ----------- |
@@ -306,17 +317,19 @@ This is represented below.
 {{< highlight xml "linenos=table" >}}
 <component-definition xmlns="http://csrc.nist.gov/ns/oscal/1.0"
     uuid="a7ba800c-a432-44cd-9075-0862cd66da6b">
-  <component uuid="3e5c92b8-870c-4313-871a-f4307bf2eaf0" type="service">
-    ...
+  <component uuid="91f646c5-b1b6-4786-9ec3-2305a044e217" type="service">
+    <title>MongoDB</title>
     <protocol uuid="2b4a1b3a-cbc5-4cc8-bde6-7437c28c4e54" name="mongodb">
       <title>Primary daemon process for the MongoDB system.</title>
       <port-range start="27017" end="27017" transport="TCP" />
     </protocol>
-    <protocol uuid="99d8d4e5-e734-4e05-a2f9-7353097b8b61" name="mongodb shardsrv">
+    <protocol uuid="99d8d4e5-e734-4e05-a2f9-7353097b8b61"
+        name="mongodb-shardsrv">
       <title>MongoDB protocol for sharding with shardsrv option.</title>
       <port-range start="27018" end="27018" transport="TCP" />
     </protocol>
-    <protocol uuid="6fa762f1-09ca-44d5-a94c-cfceb57debd5" name="mongodb configsvr">
+    <protocol uuid="6fa762f1-09ca-44d5-a94c-cfceb57debd5"
+        name="mongodb-configsvr">
       <title>MongoDB protocol for configsrv operation.</title>
       <port-range start="27019" end="27019" transport="TCP" />
     </protocol>
@@ -325,182 +338,198 @@ This is represented below.
 </component-definition>
 {{< /highlight >}}
 
-The [`<protocol>`](/reference/latest/component-definition/xml-reference/#/component-definition/component/protocol) element has a mandatory `@uuid` and mandatory `@name` attribute that should be set to the common name of the protocol, which should be the appropriate "service name" from the [IANA Service Name and Transport Protocol Port Number Registry](https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml?search=27017).  In this example, we set it to "mongodb".  The `@name` attribute accepts [string](/reference/datatypes/#string) data types and can be set to other values when there is no corresponding IANA service name for the port (e.g., lines #9 and #13 ).  A supplier may provide some descriptive text in the `<title>` element.  The `<port-range>` element is where we can specify the port number(s) and transport. If the port numbers are contiguous, a single `<port-range>` element with `start="27017" end="27019"` is sufficient, however, when the component has several protocols, it is acceptable to have multiple port-range elements as shown in the example xml snipped above.
+The [`<protocol>`](/reference/latest/component-definition/xml-reference/#/component-definition/component/protocol) element has a mandatory `@uuid` and mandatory `@name` attribute that should be set to the common name of the protocol, which should be the appropriate "service name" from the [IANA Service Name and Transport Protocol Port Number Registry](https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml?search=27017).  In this example, we set it to "mongodb", which is registered with IANA.  The `@name` attribute accepts [string](/reference/datatypes/#string) data types and can be set to other values when there is no corresponding IANA service name for the port (e.g., lines 10 and 15). Descriptive text for the protocol can be provided using the `title` element.  The `<port-range>` element is where we can specify the port number(s) and associated transport. If the protocol uses multiple contiguous port numbers, a single `<port-range>` element with `start="27017" end="27019"` is sufficient, however; when the component has several protocols, it is acceptable to have multiple `<protocol>` and `<port-range>` elements as shown in the example XML above.
 {{% /tab %}}
 {{% tab %}}
 {{< highlight json "linenos=table" >}}
 {
   "component-definition": {
-    .....
     "components": [{
-      "uuid": "3e5c92b8-870c-4313-871a-f4307bf2eaf0",
+      "uuid": "91f646c5-b1b6-4786-9ec3-2305a044e217",
       "type": "service",
-      "title": "",
+      "title": "MongoDB",
       "protocols": [{
         "uuid": "2b4a1b3a-cbc5-4cc8-bde6-7437c28c4e54",
         "name": "mongodb",
         "title": "Primary daemon process for the MongoDB system.",
         "port-ranges": [{
-          "start": "27017",
-          "end": "201707",
+          "start": 27017,
+          "end": 27017,
           "transport": "TCP"
         }]
       },
       {
         "uuid": "99d8d4e5-e734-4e05-a2f9-7353097b8b61",
-        "name": "mongodb shardsrv",
+        "name": "mongodb-shardsrv",
         "title": "MongoDB protocol for sharding with shardsrv option.",
         "port-ranges": [{
-          "start": "27017",
-          "end": "201707",
+          "start": 27018,
+          "end": 27018,
           "transport": "TCP"
         }]
       },
       {
         "uuid": "6fa762f1-09ca-44d5-a94c-cfceb57debd5",
-        "name": "mongodb configsvr",
+        "name": "mongodb-configsvr",
         "title": "MongoDB protocol for configsrv operation.",
         "port-ranges": [{
-          "start": "27017",
-          "end": "201707",
+          "start": 27019,
+          "end": 27019,
           "transport": "TCP"
         }]
-      }],
-      "control-implementation": ""
+      }]
     }]
-    .....
   }
 }
 {{< /highlight >}}
 
-The [`protocol`](/reference/latest/component-definition/json-reference/#/component-definition/component/protocol) grouping has objects with mandatory `uuid` and mandatory `name` properties that should be set to the common name of the protocol, which should be the appropriate "service name" from the [IANA Service Name and Transport Protocol Port Number Registry](https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml?search=27017).  In this example, we set it to "mongodb".  The `name` property accepts [string](/reference/datatypes/#string) data types and can be set to other values when there is no corresponding IANA service name for the port (e.g., lines #9 and #13 ).  A supplier may provide some descriptive text in the `title` property.  The `port-ranges` object is where we can specify the port number(s) and transport. If the port numbers are contiguous, a single `port-ranges` object with `"start":"27017"` and `"end":"27019"` is sufficient, however, when the component has several protocols, it is acceptable to have multiple port-ranges as shown in the example JSON snipped above
+The [`protocols`](/reference/latest/component-definition/json-reference/#/component-definition/components/protocols) grouping has objects with mandatory `uuid` and mandatory `name` properties that should be set to the common name of the protocol, which should be the appropriate "service name" from the [IANA Service Name and Transport Protocol Port Number Registry](https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml?search=27017).  In this example, we set it to "mongodb", which is registered with IANA.  The `name` property accepts [string](/reference/datatypes/#string) data types and can be set to other values when there is no corresponding IANA service name for the port (e.g., lines 19 and 29).  Descriptive text for the protocol can be provided using the `title` property.  The `port-ranges` object grouping is where you can specify the port number(s) and associated transport. If the protocol uses multiple contiguous port numbers, a single `port-ranges` object with `"start":"27017"` and `"end":"27019"` is sufficient; however, when the component has several protocols, it is acceptable to have multiple `protocols` and `port-ranges` objects as shown in the example XML above.
+
 {{% /tab %}}
 {{% tab %}}
 {{< highlight yaml "linenos=table" >}}
 ---
 
 component-definition:
-  ...
   components:
-    - uuid: 3e5c92b8-870c-4313-871a-f4307bf2eaf0
-      type: service
-      title: ''
-      protocols:
-        - uuid: 2b4a1b3a-cbc5-4cc8-bde6-7437c28c4e54
-          name: mongodb
-          title: Primary daemon process for the MongoDB system.
-          port-ranges:
-            - start: '27017'
-              end: '201707'
-              transport: TCP
-        - uuid: 99d8d4e5-e734-4e05-a2f9-7353097b8b61
-          name: mongodb shardsrv
-          title: MongoDB protocol for sharding with shardsrv option.
-          port-ranges:
-            - start: '27017'
-              end: '201707'
-              transport: TCP
-        - uuid: 6fa762f1-09ca-44d5-a94c-cfceb57debd5
-          name: mongodb configsvr
-          title: MongoDB protocol for configsrv operation.
-          port-ranges:
-            - start: '27017'
-              end: '201707'
-              transport: TCP
-      control-implementation: ''
+  - uuid: 91f646c5-b1b6-4786-9ec3-2305a044e217
+    type: service
+    title: MongoDB
+    protocols:
+    - uuid: 2b4a1b3a-cbc5-4cc8-bde6-7437c28c4e54
+      name: mongodb
+      title: Primary daemon process for the MongoDB system.
+      port-ranges:
+      - start: 27017
+        end: 27017
+        transport: TCP
+    - uuid: 99d8d4e5-e734-4e05-a2f9-7353097b8b61
+      name: mongodb-shardsrv
+      title: MongoDB protocol for sharding with shardsrv option.
+      port-ranges:
+      - start: 27018
+        end: 27018
+        transport: TCP
+    - uuid: 6fa762f1-09ca-44d5-a94c-cfceb57debd5
+      name: mongodb-configsvr
+      title: MongoDB protocol for configsrv operation.
+      port-ranges:
+      - start: 27019
+        end: 27019
+        transport: TCP
 {{< /highlight >}}
 
-The [`protocol`](/reference/latest/component-definition/json-reference/#/component-definition/component/protocol) grouping has objects with mandatory `uuid` and mandatory `name` properties that should be set to the common name of the protocol, which should be the appropriate "service name" from the [IANA Service Name and Transport Protocol Port Number Registry](https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml?search=27017).  In this example, we set it to "mongodb".  The `name` property accepts [string](/reference/datatypes/#string) data types and can be set to other values when there is no corresponding IANA service name for the port (e.g., lines #9 and #13 ).  A supplier may provide some descriptive text in the `title` property.  The `port-ranges` object is where we can specify the port number(s) and transport. If the port numbers are contiguous, a single `port-ranges` object with `"start":"27017"` and `"end":"27019"` is sufficient, however, when the component has several protocols, it is acceptable to have multiple port-ranges as shown in the example JSON snipped above.
+The [`protocols`](/reference/latest/component-definition/json-reference/#/component-definition/components/protocols) key has items with mandatory `uuid` and mandatory `name` keys that should be set to the common name of the protocol, which should be the appropriate "service name" from the [IANA Service Name and Transport Protocol Port Number Registry](https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml?search=27017).  In this example, we set it to "mongodb", which is registered with IANA.  The `name` key accepts [string](/reference/datatypes/#string) data types and can be set to other values when there is no corresponding IANA service name for the port (e.g., lines 17 and 24).  Descriptive text for the protocol can be provided using the `title` key.  The `port-ranges` key can contain items where you can specify the port number(s) and associated transport. If the protocol uses multiple contiguous port numbers, a single `port-ranges` key with `start: 27017` and `end: 27019` is sufficient; however, when the component has several protocols, it is acceptable to have multiple `protocols` and `port-ranges` items as shown in the example XML above.
 {{% /tab %}}
 {{% /tabs %}}
 
-### Control-Implementations
+### Defining Control Implementation Details
 
-The control implementations help define how the component can satisfy controls.  In this example, we document how MongoDB component may satisfy SC-8(1) which requires implementation of cryptographic mechanisms to prevent unauthorized disclosure of information and/or detect changes to information during transmission. To document this, we use the [`<control-implementation>`](/reference/latest/component-definition/xml-reference/#/component-definition/component/control-implementation) element.  This element requires a unique identifier, which is provided using the `@uuid` attribute.  This element also has a `@source` attribute that is used to provide a URI reference to the appropriate OSCAL profile.  The URI reference can be either a URI or a relative reference.  The `<implemented-requirement>` element on line 12 is where we can specify the control (e.g., SC-8(1)) and the implementation description.  The `<implemented-requirement>` element also has its own unique identifier `@uuid`, and the control is specified in the `@control-id` attribute on line 14.  We then use the `<description>` element to describe how this component satisfies the specified control.
+By providing control implementation details in a component, information is provided about how the given component target can satisfy controls with an associated OSCAL [catalog](/OSCAL/concepts/layer/control/catalog/) in general, or an associated OSCAL [profile](/concepts/layer/control/profile/) to describe how the component subject can satisfy controls from a specific baseline.  In this example, we document how the MongoDB component may satisfy **SC-8(1)** which requires the implementation of cryptographic mechanisms to prevent unauthorized disclosure of information and/or detect changes to information during transmission.
+
+An example of providing control implementation details for SC-8(1) is provided below.
 
 {{< tabs XML JSON YAML >}}
 {{% tab %}}
 {{< highlight xml "linenos=table" >}}
 <component-definition xmlns="http://csrc.nist.gov/ns/oscal/1.0"
     uuid="a7ba800c-a432-44cd-9075-0862cd66da6b">
-  ...  
   <component uuid="91f646c5-b1b6-4786-9ec3-2305a044e217" type="software">
-      ...
-      <control-implementation
+    <control-implementation
         uuid="49f0b690-ed9f-4f32-aae0-625b77aa6d27"
-        source="../../../content/nist.gov/SP800-53/rev5/xml/NIST_SP-800-53_rev5_MODERATE-baseline_profile.xml">
-        <description>
-          <p>MongoDB control implementations for NIST SP 800-53rev5.</p>
-        </description>
-        <implemented-requirement
+        source="https://github.com/usnistgov/oscal-content/blob/master/nist.gov/SP800-53/rev5/xml/NIST_SP-800-53_rev5_MODERATE-baseline_profile.xml">
+      <description>
+        <p>MongoDB control implementations for NIST SP 800-53 revision 5.</p>
+      </description>
+      <implemented-requirement
           uuid="cf8338c5-fb6e-4593-a4a8-b3c4946ee2a0"
           control-id="sc-8.1">
-          <description>
-              <p>MongoDB supports TLS 1.x to encrypt data in transit, preventing
-              unauthorized disclosure or changes to information during transmission.
-              To implement TLS, set the PEMKeyFile option in the configuration
-              /etc/mongod.conf to the certificate file's path and restart the the
-              component.</p>
-          </description>
-        </implemented-requirement>
-      </control-implementation>
+        <description>
+          <p>MongoDB supports TLS 1.x to encrypt data in transit,
+          preventing unauthorized disclosure or changes to information
+          during transmission. To implement TLS, set the PEMKeyFile
+          option in the configuration /etc/mongod.conf to the
+          certificate file's path and restart the the component.</p>
+        </description>
+      </implemented-requirement>
+    </control-implementation>
   </component>
-  ...
 </component-definition>
 {{< /highlight >}}
 
-In the example above, we demonstrated how to use OSCAL to document the MongoDB software component's control implementation for NIST control SC-8(1). However, one could document how the same component also satisfies controls from other security risk management frameworks (e.g., FedRAMP, ISO 27002, etc.) by simply adding additional [`<control-implementation>`](/reference/latest/component-definition/xml-reference/#/component-definition/component/control-implementation) elements for each.  Likewise, for each `<control-implementation>`, we can add `<implemented-requirement>` elements for every control that can be implemented by the component.  
+To document this, we use the [`<control-implementation>`](/reference/latest/component-definition/xml-reference/#/component-definition/component/control-implementation) element.  This element requires a unique identifier, which is provided using the `@uuid` attribute.  This element also has a `@source` attribute that is used to provide a URI reference to the appropriate OSCAL catalog or profile.  The URI reference can be a URI, a relative reference, or a fragment that points to a [`<back-matter>`](/reference/latest/component-definition/xml-reference/#/component-definition/back-matter) resource.  The `<implemented-requirement>` element on line 10 is where we can specify the control (e.g., SC-8(1)) and the implementation description.  The `<implemented-requirement>` element also has its own unique identifier `@uuid`, and the control is specified in the `@control-id` attribute on line 12.  We then use the `<description>` element to describe how this component can satisfy the specified control.
+
+In the example above, we demonstrated how to use OSCAL to document the MongoDB software component's control implementation for NIST control SC-8(1). However, one could document how the same component also satisfies controls from other security risk management frameworks (e.g., FedRAMP, ISO 27002, etc.) by simply adding additional [`<control-implementation>`](/reference/latest/component-definition/xml-reference/#/component-definition/component/control-implementation) elements for each catalog or profile.  Likewise, for each `<control-implementation>`, we can add additional `<implemented-requirement>` elements for every control that can be implemented by the component. Additionally, we can address implementations at the control statement-level using the [`<statement>`](/reference/latest/component-definition/xml-reference/#/component-definition/component/control-implementation/implemented-requirement/statement) element, allowing implementation details to be provided in a more fine-grained way.
 {{% /tab %}}
 {{% tab %}}
 {{< highlight json "linenos=table" >}}
 {
   "component-definition": {
-    ...
-    "component": {
-      ...
+    "uuid": "a7ba800c-a432-44cd-9075-0862cd66da6b",
+    "components": [{
+      "uuid": "91f646c5-b1b6-4786-9ec3-2305a044e217",
+      "type": "software",
       "control-implementations": [{
-        "description": "MongoDB control implementations for NIST SP 800-53rev5.",
-        "implemented-requirements": [{
-          "description": "MongoDB supports TLS 1.x to encrypt data in transit, preventing
-          unauthorized disclosure or changes to information during transmission. To implement
-          TLS, set the PEMKeyFile option in the configuration file /etc/mongod.conf to the
-          certificate file's path and restart the the component."
+        "uuid": "49f0b690-ed9f-4f32-aae0-625b77aa6d27",
+        "source": "https://github.com/usnistgov/oscal-content/blob/master/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_MODERATE-baseline_profile.json",
+        "description": "MongoDB control implementations for NIST SP 800-53
+          revision 5.",
+        "implemented-requirements" [{
+          "uuid": "cf8338c5-fb6e-4593-a4a8-b3c4946ee2a0",
+          "control-id": "sc-8.1",
+          "description": "MongoDB supports TLS 1.x to encrypt data in transit,
+            preventing unauthorized disclosure or changes to information
+            during transmission. To implement TLS, set the PEMKeyFile option
+            in the configuration file /etc/mongod.conf to the certificate
+            file's path and restart the the component."
         }]
       }]
-      ...
-    }
-    ...
+    }]
   }
 }
 {{< /highlight >}}
 
-In the example above, we demonstrated how to use OSCAL to document the MongoDB software component's control implementation for NIST control SC-8(1). However, one could document how the same component also satisfies controls from other security risk management frameworks (e.g., FedRAMP, ISO 27002, etc.) by simply adding additional [`control-implementations`](/reference/latest/component-definition/json-reference/#/component-definition/components/control-implementations) objects for each.  Likewise, for each `control-implementation`, we can add `implemented-requirements` objects for every control that can be implemented by the component
+To document this, we use the [`control-implementations`](/reference/latest/component-definition/json-reference/#/component-definition/components/control-implementations) grouping.  Objects within this grouping require a unique identifier, which is provided using the `uuid` property.  This object also has a `source` property that is used to provide a URI reference to the appropriate OSCAL catalog or profile.  The URI reference can be a URI, a relative reference, or a fragment that points to a [`back-matter`](/reference/latest/component-definition/json-reference/#/component-definition/back-matter) resource.  The `implemented-requirements` grouping on line 12 is where we can specify the control (e.g., SC-8(1)) and the implementation description.  Each object in the `implemented-requirements` grouping also has its own unique identifier `uuid`, and the control is specified using the `control-id` property on line 14.  We then use the `description` property to describe how this component can satisfy the specified control.
+
+In the example above, we demonstrated how to use OSCAL to document the MongoDB software component's control implementation for NIST control SC-8(1). However, one could document how the same component also satisfies controls from other security risk management frameworks (e.g., FedRAMP, ISO 27002, etc.) by simply adding additional [`control-implementations`](/reference/latest/component-definition/json-reference/#/component-definition/components/control-implementations) objects for each catalog or profile.  Likewise, for each `control-implementations` object, we can add additional `implemented-requirements` objects for every control that can be implemented by the component. Additionally, we can address implementations at the control statement-level using the [`statements`](/reference/latest/component-definition/json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements) grouping, allowing implementation details to be provided in a more fine-grained way.
+
 {{% /tab %}}
 {{% tab %}}
 {{< highlight yaml "linenos=table" >}}
 ---
 
 component-definition:
-  component:
+  uuid: a7ba800c-a432-44cd-9075-0862cd66da6b,
+  components:
+  - uuid: 91f646c5-b1b6-4786-9ec3-2305a044e217
+    type: software
     control-implementations:
-      - description: MongoDB control implementations for NIST SP 800-53rev5.
-        implemented-requirements:
-          - description: >-
-              MongoDB supports TLS 1.x to encrypt data in transit, preventing
-              unauthorized disclosure or changes to information during
-              transmission. To implement TLS, set the PEMKeyFile option in the
-              configuration file /etc/mongod.conf to the certificate file's path
-              and restart the the component.
-
+    - uuid: 49f0b690-ed9f-4f32-aae0-625b77aa6d27
+      source: <https://github.com/usnistgov/oscal-content/blob/master/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_MODERATE-baseline_profile.json>
+      description: >-
+        MongoDB control implementations for NIST SP 800-53rev5.
+      implemented-requirements:
+      - uuid: cf8338c5-fb6e-4593-a4a8-b3c4946ee2a0
+        control-id: sc-8.1
+        description: >-
+          MongoDB supports TLS 1.x to encrypt data in transit, preventing
+          unauthorized disclosure or changes to information during
+          transmission. To implement TLS, set the PEMKeyFile option in the
+          configuration file /etc/mongod.conf to the certificate file's path
+          and restart the the component.
 {{< /highlight >}}
 
-In the example above, we demonstrated how to use OSCAL to document the MongoDB software component's control implementation for NIST control SC-8(1). However, one could document how the same component also satisfies controls from other security risk management frameworks (e.g., FedRAMP, ISO 27002, etc.) by simply adding additional `control-implementations` items for each.  Likewise, for each `control-implementation`, we can add `implemented-requirements` items for every control that can be implemented by the component.
+To document this, we use the [`control-implementations`](/reference/latest/component-definition/json-reference/#/component-definition/components/control-implementations) key.  Items associated with this key require a unique identifier, which is provided using the `uuid` key.  These items also have a `source` key that is used to provide a URI reference to the appropriate OSCAL catalog or profile.  The URI reference can be a URI, a relative reference, or a fragment that points to a [`back-matter`](/reference/latest/component-definition/json-reference/#/component-definition/back-matter) resource.  The `implemented-requirements` key on line 13 is where we can specify the control (e.g., SC-8(1)) and the implementation description.  Each item under the `implemented-requirements` key also has its own unique identifier `uuid`, and the control is specified using the `control-id` key on line 15.  We then use the `description` key to describe how this component can satisfy the specified control.
+
+In the example above, we demonstrated how to use OSCAL to document the MongoDB software component's control implementation for NIST control SC-8(1). However, one could document how the same component also satisfies controls from other security risk management frameworks (e.g., FedRAMP, ISO 27002, etc.) by simply adding additional [`control-implementations`](/reference/latest/component-definition/json-reference/#/component-definition/components/control-implementations) items for each catalog or profile.  Likewise, for each `control-implementations` item, we can add additional `implemented-requirements` items for every control that can be implemented by the component. Additionally, we can address implementations at the control statement-level using the [`statements`](/reference/latest/component-definition/json-reference/#/component-definition/components/control-implementations/implemented-requirements/statements) key, allowing implementation details to be provided in a more fine-grained way.
 {{% /tab %}}
 {{% /tabs %}}
 
 ## The Final Component Definition
 
-Combining all the content described in this tutorial, we can produce this final component definition model.  Provided below is a well-formed XML example.  Having these implementation details readily available in an OSCAL component definition means they can be used to populate an OSCAL SSP and should give SSP authors helpful content for their control implementation statements.
+Combining all the content described in this tutorial, we can produce a completed component definition instance.  Provided below are well-formed complete examples.  Having these implementation details readily available in an OSCAL component definition means they can be used to populate an OSCAL SSP and should give SSP authors helpful content for their control implementation statements. These examples can also be downloaded in [XML]({{< param "contentRepoPath" >}}/examples/component-definition/xml/example-component-definition.xml),
+[JSON]({{< param "contentRepoPath" >}}/examples/component-definition/json/example-component-definition.json),
+and [YAML]({{< param "contentRepoPath" >}}/examples/component-definition/yaml/example-component-definition.yaml).
 
 {{< tabs XML JSON YAML >}}
 {{% tab %}}
@@ -513,77 +542,67 @@ Combining all the content described in this tutorial, we can produce this final 
     xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 https://raw.githubusercontent.com/usnistgov/OSCAL/master/xml/schema/oscal_component_schema.xsd">
   <metadata>
     <title>MongoDB Component Definition Example</title>
-    <last-modified>2001-12-17T09:30:47Z</last-modified>
-    <version>20210507</version>
+    <last-modified>2001-08-26T23:11:47Z</last-modified>
+    <version>20210826</version>
     <oscal-version>1.0.0</oscal-version>
-    <role id="supplier">
-      <title>Supplier</title>
+    <role id="provider">
+      <title>Provider</title>
     </role>
-    <location uuid="0db91129-35ed-474f-a25e-c3ff1e2cb9dc">
-      <address></address>
-      <url>https://www.mongodb.com</url>
-    </location>
     <party uuid="ef7c799a-c50e-49ab-83e0-515e989e6df1" type="organization">
       <name>MongoDB</name>
-      <link rel="website" href="https://www.mongodb.com">
+      <link rel="website" href="https://www.mongodb.com"/>
     </party>
   </metadata>
   <component uuid="91f646c5-b1b6-4786-9ec3-2305a044e217" type="software">
     <title>MongoDB</title>
     <description>
-      <p>MongoDB is a source-available cross-platform document-oriented database program.
-      Classified as a NoSQL database program, MongoDB uses JSON-like documents with optional
-      schemas.</p>
+      <p>MongoDB is a source-available, cross-platform document-oriented
+        database program. Classified as a NoSQL database program, MongoDB
+        uses JSON-like documents with optional schemas.</p>
     </description>
-    <purpose>Backend NoSQL database</purpose>
-    <responsible-role role-id="supplier">
-      <party-uuid>ef7c799a-c50e-49ab-83e0-515e989e6df1</party-uuid>
-    </responsible-role>
-    <control-implementation uuid="49f0b690-ed9f-4f32-aae0-625b77aa6d27" source="../../../content/nist.gov/SP800-53/rev5/xml/NIST_SP-800-53_rev5_MODERATE-baseline_profile.xml">
-      <description>
-        <p>MongoDB control implementations for NIST SP 800-53rev5.</p>
-      </description>
-      <implemented-requirement uuid="cf8338c5-fb6e-4593-a4a8-b3c4946ee2a0" control-id="sc-8.1">
-        <description>
-          <p>MongoDB supports TLS 1.x to encrypt data in transit, preventing unauthorized disclosure
-          or changes to information during transmission. To implement TLS, set the PEMKeyFile option
-          in the configuration file /etc/mongod.conf to the certificate file's path and restart the
-          component.</p>
-        </description>
-      </implemented-requirement>
-    </control-implementation>
-  </component>
-  <component uuid="3e5c92b8-870c-4313-871a-f4307bf2eaf0" type="service">
-    <title>mongod</title>
-    <description>
-      <p>Mongo Daemon which runs the MongoDB database as a process.</p>
-    </description>
-    <purpose>Backend NoSQL database</purpose>
-    <responsible-role role-id="supplier">
+    <purpose>Provides a NoSQL database service</purpose>
+    <responsible-role role-id="provider">
       <party-uuid>ef7c799a-c50e-49ab-83e0-515e989e6df1</party-uuid>
     </responsible-role>
     <protocol uuid="2b4a1b3a-cbc5-4cc8-bde6-7437c28c4e54" name="mongodb">
       <title>Primary daemon process for the MongoDB system.</title>
       <port-range start="27017" end="27017" transport="TCP" />
     </protocol>
-    <protocol uuid="99d8d4e5-e734-4e05-a2f9-7353097b8b61" name="mongodb shardsrv">
+    <protocol uuid="99d8d4e5-e734-4e05-a2f9-7353097b8b61"
+        name="mongodb-shardsrv">
       <title>MongoDB protocol for sharding with shardsrv option.</title>
       <port-range start="27018" end="27018" transport="TCP" />
     </protocol>
-    <protocol uuid="6fa762f1-09ca-44d5-a94c-cfceb57debd5" name="mongodb configsvr">
+    <protocol uuid="6fa762f1-09ca-44d5-a94c-cfceb57debd5"
+        name="mongodb-configsvr">
       <title>MongoDB protocol for configsrv operation.</title>
       <port-range start="27019" end="27019" transport="TCP" />
     </protocol>
-    <control-implementation uuid="49f0b690-ed9f-4f32-aae0-625b77aa6d27" source="../../../content/nist.gov/SP800-53/rev5/xml/NIST_SP-800-53_rev5_MODERATE-baseline_profile.xml">
+    <control-implementation
+        uuid="49f0b690-ed9f-4f32-aae0-625b77aa6d27"
+        source="https://github.com/usnistgov/oscal-content/blob/master/nist.gov/SP800-53/rev5/xml/NIST_SP-800-53_rev5_MODERATE-baseline_profile.xml">
       <description>
-        <p>The Mongo Daemon control implementations for NIST SP 800-53rev5.</p>
+        <p>MongoDB control implementations for NIST SP 800-53 revision 5.</p>
       </description>
-      <implemented-requirement uuid="cf8338c5-fb6e-4593-a4a8-b3c4946ee2a0" control-id="sa-4.9">
+      <implemented-requirement
+          uuid="cf8338c5-fb6e-4593-a4a8-b3c4946ee2a0"
+          control-id="sc-8.1">
         <description>
-          <p>Acquisition Process | Functions, Ports, Protocols, and Services in Use.
-          Must ensure that MongoDB only listens for network connections on authorized
-          interface by configuring the MongoDB configuration file to limit its exposure
-          to only the network interfaces on which MongoDB instances should listen for
+          <p>MongoDB supports TLS 1.x to encrypt data in transit,
+          preventing unauthorized disclosure or changes to information
+          during transmission. To implement TLS, set the PEMKeyFile
+          option in the configuration /etc/mongod.conf to the
+          certificate file's path and restart the the component.</p>
+        </description>
+      </implemented-requirement>
+      <implemented-requirement
+          uuid="cf8338c5-fb6e-4593-a4a8-b3c4946ee2a0"
+          control-id="sa-4.9">
+        <description>
+          <p>Must ensure that MongoDB only listens for network
+          connections on authorized interfaces by configuring the MongoDB
+          configuration file to limit the services exposure to only the
+          network interfaces on which MongoDB instances should listen for
           incoming connections.</p>
         </description>
       </implemented-requirement>
@@ -595,93 +614,81 @@ Combining all the content described in this tutorial, we can produce this final 
 {{% tab %}}
 {{< highlight json "linenos=table" >}}
 {
- "component-definition": {
-  "uuid": "a7ba800c-a432-44cd-9075-0862cd66da6b",
-  "metadata": {
-   "title": "MongoDB Component Definition Example",
-   "last-modified": "2001-12-17T09:30:47Z",
-   "version": 20210507,
-   "oscal-version": "1.0.0",
-   "roles": [{
-    "id": "supplier",
-    "title": "Supplier"
-   }],
-   "parties": [{
-    "uuid": "ef7c799a-c50e-49ab-83e0-515e989e6df1",
-    "type": "organization",
-    "name": "MongoDB",
-    "links": "https://www.mongodb.com"
-   }]
-  }
- },
- "components": [{
-   "title": "MongoDB",
-   "description": "MongoDB is a source-available cross-platform document-oriented
-    database program. Classified as a NoSQL database program, MongoDB uses JSON-like
-    documents with optional schemas.",
-   "purpose": "Backend NoSQL database",
-   "responsible-roles": [{
-    "party-uuid": "ef7c799a-c50e-49ab-83e0-515e989e6df1"
-   }],
-   "control-implementations": [{
-    "description": "MongoDB control implementations for NIST SP 800-53rev5.",
-    "implemented-requirements": [{
-     "description": "MongoDB supports TLS 1.x to encrypt data in transit, preventing
-     unauthorized disclosure or changes to information during transmission. To implement
-     TLS, set the PEMKeyFile option in the configuration file /etc/mongod.conf to the
-     certificate file's path and restart the the component."
-    }]
-   }]
-  },
-  {
-   "title": "mongod",
-   "description": "Mongo Daemon which runs the MongoDB database as a process.",
-   "purpose": "Backend NoSQL database",
-   "responsible-roles": [{
-    "party-uuid": "ef7c799a-c50e-49ab-83e0-515e989e6df1"
-   }],
-   "protocols": [{
-     "uuid": "2b4a1b3a-cbc5-4cc8-bde6-7437c28c4e54",
-     "name": "mongodb",
-     "title": "Primary daemon process for the MongoDB system.",
-     "port-ranges": [{
-      "start": "27017",
-      "end": "201707",
-      "transport": "TCP"
-     }]
+  "component-definition": {
+    "uuid": "a7ba800c-a432-44cd-9075-0862cd66da6b",
+    "metadata": {
+      "title": "MongoDB Component Definition Example",
+      "last-modified": "2001-12-17T09:30:47Z",
+      "version": 20210507,
+      "oscal-version": "1.0.0",
+      "roles": [{
+      "id": "supplier",
+      "title": "Supplier"
+      }],
+      "parties": [{
+      "uuid": "ef7c799a-c50e-49ab-83e0-515e989e6df1",
+      "type": "organization",
+      "name": "MongoDB",
+      "links": "https://www.mongodb.com"
+      }]
     },
-    {
-     "uuid": "99d8d4e5-e734-4e05-a2f9-7353097b8b61",
-     "name": "mongodb shardsrv",
-     "title": "MongoDB protocol for sharding with shardsrv option.",
-     "port-ranges": [{
-      "start": "27017",
-      "end": "201707",
-      "transport": "TCP"
-     }]
-    },
-    {
-     "uuid": "6fa762f1-09ca-44d5-a94c-cfceb57debd5",
-     "name": "mongodb configsvr",
-     "title": "MongoDB protocol for configsrv operation.",
-     "port-ranges": [{
-      "start": "27017",
-      "end": "201707",
-      "transport": "TCP"
-     }]
-    }
-   ],
-   "control-implementations": [{
-    "description": "The Mongo Daemon control implementations for NIST SP 800-53rev5.",
-    "implemented-requirements": [{
-     "description": "Acquisition Process | Functions, Ports, Protocols, and Services
-     in Use.  Must ensure that MongoDB only listens for network connections on authorized
-     interface by configuring the MongoDB configuration file to limit its exposure to only
-     the network\r\ninterfaces on which MongoDB instances should listen for incoming connections."
+    "components": [{
+      "uuid": "91f646c5-b1b6-4786-9ec3-2305a044e217",
+      "type": "software",
+      "title": "MongoDB",
+      "description": "MongoDB is a source-available, cross-platform document-oriented database program. Classified as a NoSQL database program, MongoDB uses JSON-like documents with optional schemas.",
+      "purpose": "Provides a NoSQL database service",
+      "responsible-roles": [{
+        "role-id": "provider",
+        "party-uuid": "ef7c799a-c50e-49ab-83e0-515e989e6df1"
+      }],
+      "protocols": [{
+        "uuid": "2b4a1b3a-cbc5-4cc8-bde6-7437c28c4e54",
+        "name": "mongodb",
+        "title": "Primary daemon process for the MongoDB system.",
+        "port-ranges": [{
+          "start": 27017,
+          "end": 27017,
+          "transport": "TCP"
+        }]
+      },
+      {
+        "uuid": "99d8d4e5-e734-4e05-a2f9-7353097b8b61",
+        "name": "mongodb-shardsrv",
+        "title": "MongoDB protocol for sharding with shardsrv option.",
+        "port-ranges": [{
+          "start": 27018,
+          "end": 27018,
+          "transport": "TCP"
+        }]
+      },
+      {
+        "uuid": "6fa762f1-09ca-44d5-a94c-cfceb57debd5",
+        "name": "mongodb-configsvr",
+        "title": "MongoDB protocol for configsrv operation.",
+        "port-ranges": [{
+          "start": 27019,
+          "end": 27019,
+          "transport": "TCP"
+        }]
+      }],
+      "control-implementations": [{
+        "uuid": "49f0b690-ed9f-4f32-aae0-625b77aa6d27",
+        "source": "https://github.com/usnistgov/oscal-content/blob/master/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_MODERATE-baseline_profile.json",
+        "description": "MongoDB control implementations for NIST SP 800-53
+          revision 5.",
+        "implemented-requirements" [{
+          "uuid": "cf8338c5-fb6e-4593-a4a8-b3c4946ee2a0",
+          "control-id": "sc-8.1",
+          "description": "MongoDB supports TLS 1.x to encrypt data in transit,
+            preventing unauthorized disclosure or changes to information
+            during transmission. To implement TLS, set the PEMKeyFile option
+            in the configuration file /etc/mongod.conf to the certificate
+            file's path and restart the the component."
+        }]
+      }]
     }]
-   }]
   }
- ]
 }
 {{< /highlight >}}
 {{% /tab %}}
@@ -696,66 +703,63 @@ component-definition:
     version: 20210507
     oscal-version: 1.0.0
     roles:
-      - id: supplier
-        title: Supplier
+    - id: provider
+      title: Provider
     parties:
-      - uuid: ef7c799a-c50e-49ab-83e0-515e989e6df1
-        type: organization
-        name: MongoDB
-        links: https://www.mongodb.com
-components:
-  - title: MongoDB
+    - uuid: ef7c799a-c50e-49ab-83e0-515e989e6df1
+      type: organization
+      name: MongoDB
+      links:
+      - href: <https://www.mongodb.com>
+        rel: website
+  components:
+  - uuid: 91f646c5-b1b6-4786-9ec3-2305a044e217
+    type: software
+    title: MongoDB
     description: >-
-      MongoDB is a source-available cross-platform document-oriented database
-      program. Classified as a NoSQL database program, MongoDB uses JSON-like
-      documents with optional schemas.
-    purpose: Backend NoSQL database
+      MongoDB is a source-available, cross-platform document-oriented
+      database program. Classified as a NoSQL database program, MongoDB
+      uses JSON-like documents with optional schemas.
+    purpose: Provides a NoSQL database service
     responsible-roles:
-      - party-uuid: ef7c799a-c50e-49ab-83e0-515e989e6df1
-    control-implementations:
-      - description: MongoDB control implementations for NIST SP 800-53rev5.
-        implemented-requirements:
-          - description: >-
-              MongoDB supports TLS 1.x to encrypt data in transit, preventing
-              unauthorized disclosure or changes to information during
-              transmission. To implement TLS, set the PEMKeyFile option in the
-              configuration file /etc/mongod.conf to the certificate file's path
-              and restart the the component.
-  - title: mongod
-    description: Mongo Daemon which runs the MongoDB database as a process.
-    purpose: Backend NoSQL database
-    responsible-roles:
-      - party-uuid: ef7c799a-c50e-49ab-83e0-515e989e6df1
+    - role-id: provider
+      party-uuid: ef7c799a-c50e-49ab-83e0-515e989e6df1
     protocols:
-      - uuid: 2b4a1b3a-cbc5-4cc8-bde6-7437c28c4e54
-        name: mongodb
-        title: Primary daemon process for the MongoDB system.
-        port-ranges:
-          - start: '27017'
-            end: '201707'
-            transport: TCP
-      - uuid: 99d8d4e5-e734-4e05-a2f9-7353097b8b61
-        name: mongodb shardsrv
-        title: MongoDB protocol for sharding with shardsrv option.
-        port-ranges:
-          - start: '27017'
-            end: '201707'
-            transport: TCP
-      - uuid: 6fa762f1-09ca-44d5-a94c-cfceb57debd5
-        name: mongodb configsvr
-        title: MongoDB protocol for configsrv operation.
-        port-ranges:
-          - start: '27017'
-            end: '201707'
-            transport: TCP
+    - uuid: 2b4a1b3a-cbc5-4cc8-bde6-7437c28c4e54
+      name: mongodb
+      title: Primary daemon process for the MongoDB system.
+      port-ranges:
+      - start: 27017
+        end: 27017
+        transport: TCP
+    - uuid: 99d8d4e5-e734-4e05-a2f9-7353097b8b61
+      name: mongodb-shardsrv
+      title: MongoDB protocol for sharding with shardsrv option.
+      port-ranges:
+      - start: 27018
+        end: 27018
+        transport: TCP
+    - uuid: 6fa762f1-09ca-44d5-a94c-cfceb57debd5
+      name: mongodb-configsvr
+      title: MongoDB protocol for configsrv operation.
+      port-ranges:
+      - start: 27019
+        end: 27019
+        transport: TCP
     control-implementations:
-      - description: The Mongo Daemon control implementations for NIST SP 800-53rev5.
-        implemented-requirements:
-          - description: "Acquisition Process | Functions, Ports, Protocols, and Services
-          in Use.  Must ensure that MongoDB only listens for network connections on authorized
-          interface by configuring the MongoDB configuration file to limit its exposure to only
-          the network\r\ninterfaces on which MongoDB instances should listen for incoming
-          connections."
+    - uuid: 49f0b690-ed9f-4f32-aae0-625b77aa6d27
+      source: <https://github.com/usnistgov/oscal-content/blob/master/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_MODERATE-baseline_profile.json>
+      description: >-
+        MongoDB control implementations for NIST SP 800-53rev5.
+      implemented-requirements:
+      - uuid: cf8338c5-fb6e-4593-a4a8-b3c4946ee2a0
+        control-id: sc-8.1
+        description: >-
+          MongoDB supports TLS 1.x to encrypt data in transit, preventing
+          unauthorized disclosure or changes to information during
+          transmission. To implement TLS, set the PEMKeyFile option in the
+          configuration file /etc/mongod.conf to the certificate file's path
+          and restart the the component.
 {{< /highlight >}}
 {{% /tab %}}
 {{% /tabs %}}
@@ -766,8 +770,8 @@ This concludes the tutorial.  You should now be familiar with:
 
 - The basic structure of a component definition in OSCAL.
 - How to provide the basic metadata required in an OSCAL component definition.
-- How to use of a component within an OSCAL component definition.
+- How to define a component within an OSCAL component definition.
 - How to use the protocol elements in a component.
-- How to specify the control implementation in a component.
+- How to specify the control implementation for a component.
 
-For more information, you can review the OSCAL component definition model documentation.
+For more information, you can review the OSCAL component definition model [documentation](/concepts/layer/implementation/component-definition/).
