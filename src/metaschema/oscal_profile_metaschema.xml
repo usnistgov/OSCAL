@@ -246,6 +246,14 @@
                                     </assembly>
                               </choice>
                         </model>
+                        <constraint>
+                              <is-unique id="unique-profile-modify-set-parameter" target="set-parameter">
+                                    <key-field target="@param-id"/>
+                                    <remarks>
+                                          <p>Since multiple <code>set-parameter</code> entries can be provided, each parameter must be set only once.</p>
+                                    </remarks>
+                              </is-unique>
+                        </constraint>
                   </define-assembly>
                   <assembly ref="alter" max-occurs="unbounded">
                         <group-as name="alters" in-json="ARRAY"/>
