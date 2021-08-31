@@ -40,7 +40,7 @@
       <sch:let name="importing" value="oscal:get-import(../parent::oscal:import)"/>
       <sch:let name="not-a-catalog" value="empty($importing/oscal:catalog)"/>
       
-      <sch:assert test="$not-a-catalog or (string(.) = $importing//oscal:control/@id)">No control found with @id='<sch:value-of select="@control-id"/>'</sch:assert>
+      <sch:assert test="$not-a-catalog or (string(.) = $importing//oscal:control/@id)">No control found with @id='<sch:value-of select="string(.)"/>'</sch:assert>
       
       <sch:assert test="count(key('control-call-by-id', string())) = 1">Control (<sch:value-of select="string(.)"/>) should not be referenced (either imported or excluded) more than once.</sch:assert>
       <!--<sch:assert test="empty(key('call-by-id', string(), ..) except key('call-by-id', string(), ..) )">Control (<sch:value-of select="."/>) should not be both included and excluded, or invoked more than once.</sch:assert>-->
