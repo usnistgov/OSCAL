@@ -439,7 +439,7 @@
             <constraint>
                   <allowed-values>
                         <enum value="yes">Include child controls with an included control.</enum>
-                        <enum value="no">When importing a control, only include child controls that are also explicitly called.</enum>
+                        <enum value="no">(default) When importing a control, only include child controls that are also explicitly called.</enum>
                   </allowed-values>
             </constraint>
       </define-flag>
