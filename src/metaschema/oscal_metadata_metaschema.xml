@@ -156,7 +156,7 @@
         <description>A location, with associated metadata that can be referenced.</description>
         <define-flag name="uuid" as-type="uuid" required="yes">
             <formal-name>Location Universally Unique Identifier</formal-name>
-            <description>A unique identifier that can be used to reference this defined location elsewhere in an OSCAL document. A UUID should be consistently used for a given location across revisions of the document.</description>
+            <description>A globally unique identifier with cross-instance scope that can be used to reference this defined location elsewhere in an OSCAL instance. A UUID should be consistently used for a given location across revisions of the document.</description>
         </define-flag>
         <model>
             <define-field name="title" as-type="markup-line">
@@ -240,7 +240,7 @@
         <description>A responsible entity which is either a person or an organization.</description>
         <define-flag name="uuid" as-type="uuid" required="yes">
             <formal-name>Party Universally Unique Identifier</formal-name>
-            <description>A unique identifier that can be used to reference this defined location elsewhere in an OSCAL document. A UUID should be consistently used for a given party across revisions of the document.</description>
+            <description>A globally unique identifier with cross-instance scope that can be used to reference this defined party elsewhere in an OSCAL instance. A UUID should be consistently used for a given party across revisions of the document.</description>
         </define-flag>
         <define-flag name="type" as-type="string" required="yes">
             <formal-name>Party Type</formal-name>
@@ -351,7 +351,7 @@
         <define-flag name="id" as-type="token" required="yes">
             <!-- This is an id because the idenfier is assigned and managed by humans. -->
             <formal-name>Role Identifier</formal-name>
-            <description>A unique identifier for a specific role instance. This identifier's uniqueness is document scoped and is intended to be consistent for the same role across minor revisions of the document.</description>
+            <description>A local unique identifier for a specific role instance. This identifier's uniqueness is instance scoped and is intended to be consistent for the same role across minor revisions of the document.</description>
             <remarks>
                 <p>OSCAL has defined a set of standardized roles for consistent use in OSCAL documents. This allows tools consuming OSCAL content to infer specific semantics when these roles are used. These roles are documented in the specific contexts of their use (e.g., responsible-party, responsible-role). When using such a role, it is necessary to define these roles in this list, which will then allow such a role to be referenced.</p>
             </remarks>
@@ -407,7 +407,7 @@
                 <group-as name="resources" in-json="ARRAY"/>
                 <define-flag name="uuid" as-type="uuid" required="yes">
                     <formal-name>Resource Universally Unique Identifier</formal-name>
-                    <description>A globally unique identifier that can be used to reference this defined resource elsewhere in an OSCAL document. A UUID should be consistently used for a given resource across revisions of the document.</description>
+                    <description>A globally unique identifier with instance scope that can be used to reference this defined resource elsewhere in an OSCAL instance. A UUID should be consistently used for a given resource across revisions of the document.</description>
                 </define-flag>
                 <model>
                     <define-field name="title" as-type="markup-line">
@@ -600,7 +600,7 @@
         </define-flag>
         <define-flag name="uuid" as-type="uuid">
             <formal-name>Property Universally Unique Identifier</formal-name>
-            <description>A unique identifier that can be used to reference this property elsewhere in an OSCAL document. A UUID should be consistently used for a given location across revisions of the document.</description>
+            <description>A globally unique identifier with cross-instance scope that can be used to reference this property elsewhere in an OSCAL instance. A UUID should be consistently used for a given property across revisions of the document.</description>
         </define-flag>
         <!-- CHANGED: data type to uri -->
         <define-flag name="ns" as-type="uri">
