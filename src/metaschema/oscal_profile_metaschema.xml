@@ -114,9 +114,13 @@
                         </remarks>
                   </define-assembly>
                   <choice>
-                        <define-field name="as-is" as-type="boolean">
+                        <define-assembly name="flat" min-occurs="1">
+                              <formal-name>Flat</formal-name>
+                              <description>Use the flat structuring method.</description>
+                        </define-assembly>
+                        <define-field name="as-is" as-type="boolean" min-occurs="1">
                               <formal-name>As-Is Structuring Directive</formal-name>
-                              <description>An As-is element indicates that the controls should be structured in resolution as they are structured in their source catalogs. It does not contain any elements or attributes. This method has been deprecated and should not be used. The `source` structuring directive syntax should be used instead.</description>
+                              <description>An As-is element indicates that the controls should be structured in resolution as they are structured in their source catalogs. It does not contain any elements or attributes.</description>
                         </define-field>
                         <define-assembly name="custom">
                               <formal-name>Custom grouping</formal-name>
