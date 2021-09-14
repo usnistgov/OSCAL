@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="../example-checkup.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!-- Modified by conversion XSLT 2021-04-05T11:22:09.71-04:00 - RC2 OSCAL becomes RC3 OSCAL -->
 <profile xmlns="http://csrc.nist.gov/ns/oscal/1.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 ../../../../xml/schema/oscal_profile_schema.xsd"
-    id="include-loose-param-test_profile">
-    <metadata>
-        <title>Test Profile</title>
-        <last-modified>2019-10-13T13:41:58.548-04:00</last-modified>
-        <version>1.0</version>
-        <oscal-version>1.0-MR2</oscal-version>
-    </metadata>
-    <import href="catalogs/abc-full_catalog.xml">
-        <include >
-            <!-- a1 includes an insert[@param-id="A.a"], so that parameter should be propagated. -->
-            <call control-id="a1"/>
-        </include>
-    </import>
+         uuid="041c76ec-9577-4fc4-bd8f-58cdc42b5a11">
+   <metadata>
+      <title>Test Profile</title>
+      <last-modified>2020-05-30T14:39:46.462-04:00</last-modified>
+      <version>1.0</version>
+      <oscal-version>1.0.0-rc2</oscal-version>
+   </metadata>
+   <import href="catalogs/abc-full_catalog.xml">
+      <include-controls><!-- a1 includes an insert[@param-id="A.a"], so that parameter should be propagated. -->
+         <with-id>a1</with-id>
+      </include-controls>
+   </import>
 </profile>

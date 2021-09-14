@@ -1,0 +1,8 @@
+<!-- These are shared between SSP components and component-definition components -->
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="version">The version of the component.</enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="patch-level">The specific patch level of the component.</enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="model">The model of the component.</enum>
+<!-- CHANGE: @name="date-released" changed to @name="release-date" -->
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="release-date">The date the component was released, such as a software release date or policy publication date.</enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="validation-type">Used with component-type='validation' to provide a well-known name for a kind of validation.</enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="validation-reference">Used with component-type='validation' to indicate the validating body's assigned identifier for their validation of this component.</enum>

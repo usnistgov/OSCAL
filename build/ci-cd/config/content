@@ -1,7 +1,0 @@
-# path to source|format of source|model of source|format(s) to convert to
-src/content/ssp-example/json/ssp-example.json|json|ssp|xml
-src/content/fedramp.gov/xml/*profile.xml|xml|profile|json
-src/content/nist.gov/SP800-53/rev4/xml/*catalog.xml|xml|catalog|json
-src/content/nist.gov/SP800-53/rev4/xml/*profile.xml|xml|profile|json
-src/content/nist.gov/SP800-53/rev5/xml/*catalog.xml|xml|catalog|json
-#src/content/fedramp.gov/xml/*_MODERATE-baseline_profile.xml|xml|profile|json

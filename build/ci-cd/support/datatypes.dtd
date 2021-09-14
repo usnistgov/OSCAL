@@ -1,7 +1,7 @@
 <!--
         DTD for XML Schemas: Part 2: Datatypes
-        
-        Id: datatypes.dtd,v 1.1.2.4 2005/01/31 18:40:42 cmsmcq Exp 
+
+        Id: datatypes.dtd,v 1.1.2.4 2005/01/31 18:40:42 cmsmcq Exp
         Note this DTD is NOT normative, or even definitive.
   -->
 
@@ -87,7 +87,7 @@
 <!ENTITY % minBound "(%minInclusive; | %minExclusive;)">
 <!ENTITY % maxBound "(%maxInclusive; | %maxExclusive;)">
 <!ENTITY % bounds "%minBound; | %maxBound;">
-<!ENTITY % numeric "%totalDigits; | %fractionDigits;"> 
+<!ENTITY % numeric "%totalDigits; | %fractionDigits;">
 <!ENTITY % ordered "%bounds; | %numeric;">
 <!ENTITY % unordered
    "%pattern; | %enumeration; | %whiteSpace; | %length; |
@@ -95,7 +95,7 @@
    | %explicitTimezone;">
 <!ENTITY % implementation-defined-facets "">
 <!ENTITY % facet "%ordered; | %unordered; %implementation-defined-facets;">
-<!ENTITY % facetAttr 
+<!ENTITY % facetAttr
         "value CDATA #REQUIRED
         id ID #IMPLIED">
 <!ENTITY % fixedAttr "fixed %boolean; #IMPLIED">

@@ -56,7 +56,7 @@ NIST_SP-800-53_rev4_LOW-baseline_profile.json
 ```
 
 Uses the following fields:
-- **Authority:** ```NIST``` 
+- **Authority:** ```NIST```
 - **Source Name:** ```SP-800-53```
 - **Source Revision:** ```rev4```
 - **Specifier:** ```LOW-baseline```
@@ -75,7 +75,7 @@ FedRAMP_MODERATE-baseline_profile.xml
 ```
 
 Uses the following fields:
-- **Authority:** ```FedRAMP``` 
+- **Authority:** ```FedRAMP```
 - **Source Name:** ```MODERATE-baseline```
 - **Source Revision:** *not used*
 - **Specifier:** *not used*
@@ -123,7 +123,7 @@ Uses the following fields:
 - **File Revision:** *not used*
 - **File Extension:** ```xsd``` (for XML schema)
 
-# Naming OSCAL Conversion XSL Templates 
+# Naming OSCAL Conversion XSL Templates
 
 XML and JSON schema files must be named according to the following convention:
 

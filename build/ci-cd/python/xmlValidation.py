@@ -22,7 +22,7 @@ xmlschema_doc = etree.parse(StringIO(schema_to_check))
 # error checking for schema load
 try:
     xmlschema = etree.XMLSchema(xmlschema_doc)
-except etree.XMLSchemaParseError as e: 
+except etree.XMLSchemaParseError as e:
     print (e)
     exit(1)
 

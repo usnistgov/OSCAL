@@ -6,9 +6,9 @@
     exclude-result-prefixes="xs math"
     xpath-default-namespace="http://csrc.nist.gov/ns/oscal/specml"
     version="3.0">
-    
+
     <xsl:import href="specml-html-xslt1.xsl"/>
-    
+
     <xsl:template match="cf">
         <details style="border: thin solid black; padding: 0.5em">
             <summary>

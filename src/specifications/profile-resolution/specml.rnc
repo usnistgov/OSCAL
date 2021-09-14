@@ -15,7 +15,7 @@ blocks       = (p.elem | ul.elem)*
 p.elem       = element p { inline-mixed }
 
 ul.elem      = element ul { li.elem+ }
-  
+
 li.elem      = element li { blocks+ }
 
 div.elem     = element div { head.elem?, misc }

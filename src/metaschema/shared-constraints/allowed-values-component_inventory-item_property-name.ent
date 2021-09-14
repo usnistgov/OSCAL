@@ -1,0 +1,13 @@
+<!-- These are shared between SSP components, SSP inventory-items, and component-definition components -->
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="asset-type">Simple indication of the asset's function, such as Router, Storage Array, DNS Server.</enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="asset-id">An organizationally specific identifier that is used to uniquely identify a logical or tangible item by the organization that owns the item.</enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="asset-tag">An asset tag assigned by the organization responsible for maintaining the logical or tangible item.</enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="public">Identifies whether the asset is publicly accessible (yes/no)</enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="virtual">Identifies whether the asset is virtualized (yes/no)</enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="vlan-id">Virtual LAN identifier of the asset.</enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="network-id">The network identifier of the asset.</enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="label">A human-readable label for the parent context.</enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="sort-id">An alternative identifier, whose value is easily sortable among other such values in the document.</enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="baseline-configuration-name">The name of the baseline configuration for the asset.</enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="allows-authenticated-scan">Can the asset be check with an authenticated scan? (yes/no)</enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="function">The function provided by the asset for the system.</enum>

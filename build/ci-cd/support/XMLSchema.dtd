@@ -148,7 +148,7 @@
      because at the Infoset level where schemas operate,
      xmlns(:prefix) is NOT an attribute! -->
 <!-- The declaration of xmlns is a convenience for schema authors -->
- 
+
 <!-- The id attribute here and below is for use in external references
      from non-schemas using simple fragment identifiers.
      It is NOT used for schema-to-schema reference, internal or
@@ -205,14 +205,14 @@
           id    ID           #IMPLIED
           %simpleContentAttrs;>
 
-<!-- restriction should use the simple branch from part2, not the 
+<!-- restriction should use the simple branch from part2, not the
      one defined above; extension should have no particle  -->
 
 <!ELEMENT %extension; ((%annotation;)?, (%particleAndAttrs;))>
 <!ATTLIST %extension;
           base  %QName;               #REQUIRED
           id    ID                    #IMPLIED
-          
+
           %extensionAttrs;>
 
 <!-- an element is declared by either:
@@ -247,9 +247,9 @@
      substitutionGroup, if any, else xs:anyType, i.e. unconstrained -->
 <!-- default and fixed are mutually exclusive -->
 
-<!ELEMENT %alternative; ((%annotation;)?, 
+<!ELEMENT %alternative; ((%annotation;)?,
             (%simpleType; | %complexType;)?) >
-<!ATTLIST %alternative; 
+<!ATTLIST %alternative;
             test                     CDATA     #IMPLIED
             type                     %QName;   #IMPLIED
             xpathDefaultNamespace    CDATA     #IMPLIED
@@ -257,7 +257,7 @@
 
 
 <!ELEMENT %group; ((%annotation;)?,(%mgs;)?)>
-<!ATTLIST %group; 
+<!ATTLIST %group;
           name        %NCName;               #IMPLIED
           ref         %QName;                #IMPLIED
           minOccurs   %nonNegativeInteger;   #IMPLIED
@@ -476,20 +476,20 @@
 <!NOTATION XML PUBLIC
            'REC-xml-1998-0210' 'http://www.w3.org/TR/1998/REC-xml-19980210' >
 
-<!-- 
-      In keeping with the XML Schema WG's standard versioning policy, 
+<!--
+      In keeping with the XML Schema WG's standard versioning policy,
       this DTD will persist at the URI
       http://www.w3.org/2012/04/XMLSchema.dtd.
 
       At the date of issue it can also be found at the URI
       http://www.w3.org/2009/XMLSchema/XMLSchema.dtd.
 
-      The schema document at that URI may however change in the future, 
-      in order to remain compatible with the latest version of XSD 
-      and its namespace.  In other words, if XSD or the XML Schema 
-      namespace change, the version of this document at 
-      http://www.w3.org/2009/XMLSchema/XMLSchema.dtd will change accordingly; 
-      the version at http://www.w3.org/2012/04/XMLSchema.dtd 
+      The schema document at that URI may however change in the future,
+      in order to remain compatible with the latest version of XSD
+      and its namespace.  In other words, if XSD or the XML Schema
+      namespace change, the version of this document at
+      http://www.w3.org/2009/XMLSchema/XMLSchema.dtd will change accordingly;
+      the version at http://www.w3.org/2012/04/XMLSchema.dtd
       will not change.
 
       Previous dated (and unchanging) versions of this DTD include:
@@ -501,7 +501,7 @@
         http://www.w3.org/2011/07/XMLSchema.dtd
           (XSD 1.1 Candidate Recommendation)
 
-        http://www.w3.org/2009/04/XMLSchema.dtd 
+        http://www.w3.org/2009/04/XMLSchema.dtd
           (XSD 1.1 Candidate Recommendation)
 
         http://www.w3.org/2004/10/XMLSchema.dtd

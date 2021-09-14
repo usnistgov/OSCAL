@@ -1,9 +1,33 @@
 # default
 * text=auto
 
+# structured formats
+*.css   text eol=lf
+*.dtd   text eol=lf
+*.ent   text eol=lf
+*.html  text eol=lf
+*.js    text eol=lf
+*.json  text eol=lf
+*.sch	text eol=lf
+*.scss	text eol=lf
+*.xml   text eol=lf
+*.xpl   text eol=lf
+*.xsd   text eol=lf
+*.xsl   text eol=lf
+*.xspec text eol=lf
+*.yaml  text eol=lf
+*.yml   text eol=lf
+
+# markdown
+*.md text eol=lf
+
 # script files
 *.sh text eol=lf
 /build/ci-cd/config/* text eol=lf
+
+# programming language files
+*.py    text eol=lf
+*.ts    text eol=lf
 
 # other binary files
 *.png binary

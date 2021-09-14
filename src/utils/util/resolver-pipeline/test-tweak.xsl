@@ -7,14 +7,14 @@
     version="3.0"
     xmlns="http://csrc.nist.gov/ns/oscal/1.0" xmlns:x="http://www.jenitennison.com/xslt/xspec"
     xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-    
+
     <xsl:template match="node() | @*">
         <xsl:copy>
             <xsl:namespace name="opr">http://csrc.nist.gov/ns/oscal/profile-resolution</xsl:namespace>
             <xsl:apply-templates select="node() | @*"/>
         </xsl:copy>
     </xsl:template>
-    
+
     <xsl:template match="x:expect//control | x:expect//param">
         <xsl:copy>
             <xsl:copy-of select="@*"/>
@@ -22,5 +22,5 @@
             <xsl:apply-templates/>
         </xsl:copy>
     </xsl:template>
-    
+
 </xsl:stylesheet>

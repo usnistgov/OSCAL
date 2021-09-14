@@ -1,30 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="../example-checkup.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!-- Modified by conversion XSLT 2021-04-05T11:22:10.057-04:00 - RC2 OSCAL becomes RC3 OSCAL -->
 <profile xmlns="http://csrc.nist.gov/ns/oscal/1.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 ../../../../xml/schema/oscal_profile_schema.xsd"
-    id="merge-implicit-keep_profile">
-    <metadata>
-        <title>Test Profile</title>
-        <last-modified>2019-10-13T13:41:58.548-04:00</last-modified>
-        <version>1.0</version>
-        <oscal-version>1.0-MR2</oscal-version>
-    </metadata>
-    <import href="#catalog">
-        <include>
-            <call control-id="a1"/>
-            <call control-id="b1"/>
-        </include>
-    </import>
-    <import href="#catalog">
-        <include>
-            <call control-id="a1"/>
-            <call control-id="b1"/>
-        </include>
-    </import>
-    <back-matter>
-        <resource id="catalog">
-            <rlink href="catalogs/abc-simple_catalog.xml"/>
-        </resource>
-    </back-matter>
+         uuid="b5b1aa2d-4355-4da4-b5b2-c8222853ef66">
+   <metadata>
+      <title>Test Profile</title>
+      <last-modified>2020-05-30T14:39:47.95-04:00</last-modified>
+      <version>1.0</version>
+      <oscal-version>1.0.0-rc2</oscal-version>
+   </metadata>
+   <import href="#9c745ccc-6a85-4172-a752-11c786910e3c">
+      <include-controls>
+         <with-id>a1</with-id>
+         <with-id>b1</with-id>
+      </include-controls>
+   </import>
+   <import href="#9c745ccc-6a85-4172-a752-11c786910e3c">
+      <include-controls>
+         <with-id>a1</with-id>
+         <with-id>b1</with-id>
+      </include-controls>
+   </import>
+   <back-matter>
+      <resource uuid="9c745ccc-6a85-4172-a752-11c786910e3c">
+         <rlink href="catalogs/abc-simple_catalog.xml"/>
+      </resource>
+   </back-matter>
 </profile>

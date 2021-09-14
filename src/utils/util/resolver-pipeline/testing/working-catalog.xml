@@ -16,7 +16,7 @@
         <control id="control_A">
             <title>Control A</title>
             <prop name="somewhat">property</prop>
-            <link href="file.xml">A link</link>
+            <link href="file.xml"><text>A link</text></link>
         </control>
     </group>
 </catalog>

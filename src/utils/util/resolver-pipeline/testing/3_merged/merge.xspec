@@ -3,7 +3,7 @@
         <x:context>
             <catalog/>
         </x:context>
-        
+
         <x:expect label="profile becomes catalog">
             <catalog/>
         </x:expect>
@@ -11,7 +11,7 @@
     <x:scenario label="Single import, no merge (flat)">
         <x:context>
             <catalog>
-                <selection id="xyz-tiny_catalog">
+                <selection uuid="xyz-tiny_catalog">
                         <group id="x">
                             <title>Group X of XYZ</title>
                             <control id="x1" opr:id="xyz-tiny_catalog#x1"><title>Control X1</title></control>
@@ -57,11 +57,11 @@
             </catalog>
         </x:expect>
     </x:scenario>
-    
+
     <x:scenario label="Parallel imports, no merge, keeping all">
         <x:context>
             <catalog>
-                <selection id="xyz-tiny_catalog">
+                <selection uuid="xyz-tiny_catalog">
                     <group id="x">
                         <title>Group X of XYZ</title>
                         <control id="x1" opr:id="xyz-tiny_catalog#x1"><title>Control X1</title></control>
@@ -76,12 +76,12 @@
                         </control>
                     </group>
                 </selection>
-                <selection id="xyz-tiny_catalog">
+                <selection uuid="xyz-tiny_catalog">
                     <group id="x">
                         <title>Group X of XYZ</title>
                         <control id="x1" opr:id="xyz-tiny_catalog#x1">
                             <title>Control X1</title>
-                            <prop name="mod">modified property</prop>
+                            <prop value="modified property" name="mod"/>
                         </control>
                         <control id="x2" opr:id="xyz-tiny_catalog#x2"><title>Control X2</title></control>
                     </group>
@@ -113,7 +113,7 @@
                 </control>
                 <control id="x1">
                     <title>Control X1</title>
-                    <prop name="mod">modified property</prop>
+                    <prop value="modified property" name="mod"/>
                 </control>
                 <control id="x2"><title>Control X2</title></control>
                 <control id="y1"><title>Control Y1</title></control>

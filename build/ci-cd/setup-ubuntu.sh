@@ -7,7 +7,7 @@ sudo apt-get -y install libxml2-utils nodejs npm python-pip jq
 
 sudo apt-get -y install openjdk-11-jre-headless maven
 
-sudo npm install -g ajv-cli prettyjson 
+sudo npm install -g ajv-cli prettyjson
 
 pip install --user lxml
 
@@ -26,4 +26,3 @@ git checkout master -- trunk/schematron/code
 git clone --depth 1 https://github.com/usnistgov/oscal-tools.git "${OSCAL_TOOLS_DIR}"
 cd "$OSCAL_TOOLS_DIR/json-cli"
 mvn clean install
-

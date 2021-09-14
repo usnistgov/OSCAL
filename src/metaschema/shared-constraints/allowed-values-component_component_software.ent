@@ -1,0 +1,1 @@
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="software-identifier">If a "software" component-type, the identifier, such as a SWID tag, for the software component.</enum>

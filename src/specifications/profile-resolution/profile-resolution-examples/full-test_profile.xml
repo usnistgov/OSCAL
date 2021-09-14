@@ -1,23 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/css" href="../author/CSS/oscal.css"?>
 <?xml-model href="../example-checkup.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!-- Modified by conversion XSLT 2021-04-05T11:22:08.783-04:00 - RC2 OSCAL becomes RC3 OSCAL -->
 <profile xmlns="http://csrc.nist.gov/ns/oscal/1.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 ../../../../xml/schema/oscal_profile_schema.xsd"
-    id="full-test_profile">
-    <!-- Same as base-text, except the 'full' catalog has parameters and subcontrols  -->
-    <metadata>
-        <title>Full test Profile</title>
-        <last-modified>2019-10-13T13:41:58.548-04:00</last-modified>
-        <version>1.0</version>
-        <oscal-version>1.0-MR2</oscal-version>
-    </metadata>
-    <import href="catalogs/abc-full_catalog.xml">
-        <include>
-            <call control-id="a1"/>
-            <call control-id="b1"/>
-            <call control-id="c1"/>
-            <call control-id="c3"/>
-        </include>
-    </import>
+         uuid="01a4b0a1-a424-4e72-9681-04e23cf3ecbf"><!-- Same as base-text, except the 'full' catalog has parameters and subcontrols  -->
+   <metadata>
+      <title>Full test Profile</title>
+      <last-modified>2020-05-30T14:39:41.149-04:00</last-modified>
+      <version>1.0</version>
+      <oscal-version>1.0.0-rc2</oscal-version>
+   </metadata>
+   <import href="catalogs/abc-full_catalog.xml">
+      <include-controls>
+         <with-id>a1</with-id>
+         <with-id>b1</with-id>
+         <with-id>c1</with-id>
+         <with-id>c3</with-id>
+      </include-controls>
+   </import>
 </profile>

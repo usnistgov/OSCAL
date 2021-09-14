@@ -24,11 +24,15 @@ The following directories provide:
 
 # JSON Schema for OSCAL Models
 
-JSON Schema based on the [JSON Schema Draft-07](https://json-schema.org/specification.html) are provided for the following [OSCAL models](https://pages.nist.gov/OSCAL/docs/):
+JSON Schema based on the [JSON Schema Draft-07](https://json-schema.org/specification-links.html#draft-7) are provided for the following [OSCAL models](https://pages.nist.gov/OSCAL/documentation/schema/):
 
-- [Catalog JSON Schema](schema/oscal_catalog_schema.json): Supports the validation of OSCAL JSON-based control catalogs.
-- [Profile JSON Schema](schema/oscal_profile_schema.json): Supports the validation of OSCAL JSON-based control baselines.
-- [System Security Plan (SSP) JSON Schema](schema/oscal_ssp_schema.json): (Experimental) Supports the validation of OSCAL JSON-based SSPs.
+- [Catalog JSON Schema](schema/oscal_catalog_schema.json)(Draft): Supports the validation of OSCAL JSON-based control catalog content.
+- [Profile JSON Schema](schema/oscal_profile_schema.json) (Draft): Supports the validation of OSCAL JSON-based control baselines.
+- [System Security Plan (SSP) JSON Schema](schema/oscal_ssp_schema.json) (Draft): Supports the validation of OSCAL JSON-based SSP content.
+- [Component Definition XML Schema](schema/oscal_component_schema.json) (Draft): Supports the validation of OSCAL JSON-based component definition content.
+- [Assessment Plan (AP) XML Schema](schema/oscal_assessment-plan_schema.json) (Draft): Supports the validation of OSCAL JSON-based assessment plan content.
+- [Assessment Results (AR) XML Schema](schema/oscal_assessment-results_schema.json) (Draft):  Supports the validation of OSCAL JSON-based assessment results content.
+- [Plan of Action and Milestones (POA&M) XML Schema](schema/oscal_poam_schema.json) (Draft): Supports the validation of OSCAL JSON-based POA&M content.
 
 ## Validating OSCAL JSON Content
 
@@ -44,17 +48,21 @@ The [online documentation](https://github.com/jessedc/ajv-cli) for *ajv-cli* pro
 
 # OSCAL XML to JSON Converters
 
-The OSCAL project provides Extensible Stylesheet Language Transformation (XSLT) templates based on [XSLT 3.0](https://www.w3.org/TR/xslt-30/) and [XPath 3.1](https://www.w3.org/TR/xpath-31/) for the following [OSCAL models](https://pages.nist.gov/OSCAL/docs/):
+The OSCAL project provides Extensible Stylesheet Language Transformation (XSLT) templates based on [XSLT 3.0](https://www.w3.org/TR/xslt-30/) and [XPath 3.1](https://www.w3.org/TR/xpath-31/) for the following [OSCAL models](https://pages.nist.gov/OSCAL/documentation/schema/):
 
-- [Catalog XML-to-JSON](convert/oscal_catalog_xml-to-json-converter.xsl): Supports the conversion of OSCAL XML-based control catalogs to the OSCAL JSON catalog format.
-- [Profile XML-to-JSON](convert/oscal_profile_xml-to-json-converter.xsl): Supports the conversion of OSCAL XML-based control baselines to the OSCAL JSON profile format.
-- [System Security Plan (SSP) XML-to-JSON](convert/oscal_ssp_xml-to-json-converter.xsl): (Experimental) Supports the conversion of OSCAL XML-based SSPs to the OSCAL JSON SSP format.
+- [Catalog XML-to-JSON](convert/oscal_catalog_xml-to-json-converter.xsl) (Draft): Supports the conversion of OSCAL XML-based control catalog content to the OSCAL JSON catalog format.
+- [Profile XML-to-JSON](convert/oscal_profile_xml-to-json-converter.xsl) (Draft): Supports the conversion of OSCAL XML-based control baselines to the OSCAL JSON profile format.
+- [System Security Plan (SSP) XML-to-JSON](convert/oscal_ssp_xml-to-json-converter.xsl) (Draft): (Draft) Supports the conversion of OSCAL XML-based SSP content to the OSCAL JSON SSP format.
+- [Component Definition XML Schema](convert/oscal_component_xml-to-json-converter.xsl) (Draft): Supports the conversion of OSCAL XML-based component definition content to the OSCAL JSON component definition format.
+- [Assessment Plan (AP) XML Schema](convert/oscal_assessment-plan_xml-to-json-converter.xsl) (Draft): Supports the conversion of OSCAL XML-based assessment plan content to the OSCAL JSON assessment plan format.
+- [Assessment Results (AR) XML Schema](convert/oscal_assessment-results_xml-to-json-converter.xsl) (Draft): Supports the conversion of OSCAL XML-based assessment results content to the OSCAL JSON assessment results format.
+- [Plan of Action and Milestones (POA&M) XML Schema](convert/oscal_poam_xml-to-json-converter.xsl) (Draft): Supports the conversion of OSCAL XML-based POA&M content to the OSCAL JSON POA&M format.
 
 **IMPORTANT** : XSLT 3.0 and XPath 3.1 are only required when using the NIST provided tools for converting OSCAL content between JSON and XML. Any version of XSLT or XPath may be used when transforming or querying OSCAL files for other reasons. These newer versions of XSLT and XPath offer more robust capabilities, that are needed to support the OSCAL converters.
 
 ## Converting OSCAL XML Content to JSON
 
-The OSCAL project uses [Saxon-HE (Saxon Home Edition)](http://saxon.sourceforge.net/) to evaluate the XSLT templates supporting conversion of OSCAL XML and JSON [content](../content) provided in this repository. *Saxon-HE* is an open source implementation of XSLT 3.0, XPath 2.0 and 3.1, and XQuery 3.1 supporting Java and .NET programming environments. These versions of *Saxon-HE* can be [downloaded directly](http://saxon.sourceforge.net/#F9.9HE) or the Java version can be downloaded using [Apache Maven](https://mvnrepository.com/artifact/net.sf.saxon/Saxon-HE). Saxonica also offers Saxon PE and EE versions, which are commercial products with technical support and redistribution rights.
+The OSCAL project uses [Saxon-HE (Saxon Home Edition)](http://saxon.sourceforge.net/) to evaluate the XSLT templates supporting conversion of OSCAL XML and JSON [content](../content) provided in this repository. *Saxon-HE* is an open source implementation of XSLT 3.0, XPath 2.0 and 3.1, and XQuery 3.1 supporting Java and .NET programming environments. These versions of *Saxon-HE* can be [downloaded directly](http://saxon.sourceforge.net/#F9.9HE) or the Java version can be [downloaded](https://search.maven.org/artifact/net.sf.saxon/Saxon-HE) using Apache Maven. Saxonica also offers Saxon PE and EE versions, which are commercial products with technical support and redistribution rights.
 
 The OSCAL project uses *Saxon-HE* with Java version 8 or greater.
 

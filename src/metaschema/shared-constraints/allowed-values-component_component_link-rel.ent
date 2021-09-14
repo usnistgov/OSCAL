@@ -1,0 +1,8 @@
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="depends-on">A reference to another component that this component has a dependency on.</enum>
+<!-- CHANGED (BJR): validated-by to validation per  https://github.com/usnistgov/OSCAL/blob/metaschema-m4-integration/docs/content/documentation/schema/implementation-layer/validation-modeling.md -->
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="validation">A reference to another component of component-type=validation, that is a validation (e.g., FIPS 140-2) for this component</enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="proof-of-compliance">A pointer to a validation record (e.g., FIPS 140-2) or other compliance information.</enum>
+<!-- rel values to also be allowed in implemented-component -->
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="baseline-template">A reference to the baseline template used to configure the asset.</enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="uses-service">This service is used by the referenced component identifier.</enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="system-security-plan">A link to the system security plan of the external system.</enum>

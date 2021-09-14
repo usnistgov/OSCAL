@@ -10,7 +10,7 @@
 <!ATTLIST xs:simpleContent   id  ID  #IMPLIED>
 <!ATTLIST xs:extension       id  ID  #IMPLIED>
 <!ATTLIST xs:element         id  ID  #IMPLIED>
-<!ATTLIST xs:group           id  ID  #IMPLIED> 
+<!ATTLIST xs:group           id  ID  #IMPLIED>
 <!ATTLIST xs:all             id  ID  #IMPLIED>
 <!ATTLIST xs:choice          id  ID  #IMPLIED>
 <!ATTLIST xs:sequence        id  ID  #IMPLIED>
@@ -341,7 +341,7 @@
     <xs:choice>
       <xs:element name="element" type="xs:localElement"/>
       <xs:element name="group" type="xs:groupRef"/>
-      
+
       <xs:element ref="xs:choice"/>
       <xs:element ref="xs:sequence"/>
       <xs:element ref="xs:any"/>
@@ -378,7 +378,7 @@
         <xs:attribute name="fixed" type="xs:string"/>
         <xs:attribute name="form" type="xs:formChoice"/>
         <xs:attribute name="targetNamespace" type="xs:anyURI"/>
-          
+
         <xs:attribute name="inheritable" type="xs:boolean"/>
       </xs:extension>
     </xs:complexContent>
@@ -516,7 +516,7 @@
       <xs:extension base="xs:annotated">
         <xs:sequence>
           <xs:choice minOccurs="0">
-            
+
             <xs:sequence>
               <xs:element ref="xs:openContent" minOccurs="0"/>
               <xs:group ref="xs:typeDefParticle"/>
@@ -540,7 +540,7 @@
               <xs:documentation>This choice is added simply to
                    make this a valid restriction per the REC</xs:documentation>
             </xs:annotation>
-            
+
             <xs:sequence>
               <xs:element ref="xs:openContent" minOccurs="0"/>
               <xs:group ref="xs:typeDefParticle"/>
@@ -563,7 +563,7 @@
           <xs:group ref="xs:assertions"/>
         </xs:sequence>
         <xs:attribute name="base" type="xs:QName" use="required"/>
-        
+
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
@@ -609,7 +609,7 @@
               </xs:restriction>
             </xs:simpleType>
           </xs:attribute>
-          
+
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
@@ -635,7 +635,7 @@
               </xs:restriction>
             </xs:simpleType>
           </xs:attribute>
-          
+
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
@@ -740,14 +740,14 @@
             <xs:element name="simpleType" type="xs:localSimpleType"/>
             <xs:element name="complexType" type="xs:localComplexType"/>
           </xs:choice>
-          <xs:element name="alternative" type="xs:altType" 
+          <xs:element name="alternative" type="xs:altType"
                     minOccurs="0" maxOccurs="unbounded"/>
           <xs:group ref="xs:identityConstraint" minOccurs="0"
                     maxOccurs="unbounded"/>
         </xs:sequence>
         <xs:attributeGroup ref="xs:defRef"/>
         <xs:attribute name="type" type="xs:QName"/>
-        
+
         <xs:attribute name="substitutionGroup">
          <xs:simpleType>
           <xs:list itemType="xs:QName"/>
@@ -775,7 +775,7 @@
             <xs:element name="simpleType" type="xs:localSimpleType"/>
             <xs:element name="complexType" type="xs:localComplexType"/>
           </xs:choice>
-          <xs:element name="alternative" type="xs:altType" 
+          <xs:element name="alternative" type="xs:altType"
                     minOccurs="0" maxOccurs="unbounded"/>
           <xs:group ref="xs:identityConstraint" minOccurs="0"
                     maxOccurs="unbounded"/>
@@ -799,7 +799,7 @@
             <xs:element name="simpleType" type="xs:localSimpleType"/>
             <xs:element name="complexType" type="xs:localComplexType"/>
           </xs:choice>
-          <xs:element name="alternative" type="xs:altType" 
+          <xs:element name="alternative" type="xs:altType"
                     minOccurs="0" maxOccurs="unbounded"/>
           <xs:group ref="xs:identityConstraint" minOccurs="0"
                     maxOccurs="unbounded"/>
@@ -843,9 +843,9 @@
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="xs:annotated">
-        
+
           <xs:group ref="xs:particle" minOccurs="0" maxOccurs="unbounded"/>
-          
+
         <xs:attributeGroup ref="xs:defRef"/>
         <xs:attributeGroup ref="xs:occurs"/>
       </xs:extension>
@@ -861,7 +861,7 @@
             <xs:element ref="xs:choice"/>
             <xs:element ref="xs:sequence"/>
           </xs:choice>
-          
+
         </xs:sequence>
         <xs:anyAttribute namespace="##other" processContents="lax"/>
       </xs:restriction>
@@ -1039,7 +1039,7 @@
   <xs:complexType name="wildcard">
     <xs:complexContent>
       <xs:extension base="xs:annotated">
-        
+
          <xs:attributeGroup ref="xs:anyAttrGroup"/>
       </xs:extension>
     </xs:complexContent>
@@ -1071,7 +1071,7 @@
               ##other    - - any non-conflicting WFXML/attribute from
                               namespace other than targetNS
 
-              ##local    - - any unqualified non-conflicting WFXML/attribute 
+              ##local    - - any unqualified non-conflicting WFXML/attribute
 
               one or     - - any non-conflicting WFXML/attribute from
               more URI        the listed namespaces
@@ -1087,7 +1087,7 @@
       <xs:documentation>
    A utility type, not for public use</xs:documentation>
     </xs:annotation>
-    
+
     <xs:union memberTypes="xs:specialNamespaceList xs:basicNamespaceList" />
   </xs:simpleType>
   <xs:simpleType name="basicNamespaceList">
@@ -1175,9 +1175,9 @@
   <xs:complexType name="attributeGroup" abstract="true">
     <xs:complexContent>
       <xs:extension base="xs:annotated">
-        
+
           <xs:group ref="xs:attrDecls"/>
-          
+
         <xs:attributeGroup ref="xs:defRef"/>
       </xs:extension>
     </xs:complexContent>
@@ -1188,7 +1188,7 @@
         <xs:sequence>
           <xs:element ref="xs:annotation" minOccurs="0"/>
           <xs:group ref="xs:attrDecls"/>
-          
+
         </xs:sequence>
         <xs:attribute name="name" type="xs:NCName" use="required"/>
         <xs:attribute name="ref" use="prohibited"/>
@@ -1296,7 +1296,7 @@ in selectors</xs:documentation>
 use</xs:documentation>
               </xs:annotation>
               <xs:restriction base="xs:token"/>
-                
+
             </xs:simpleType>
           </xs:attribute>
           <xs:attribute name="xpathDefaultNamespace" type="xs:xpathDefaultNamespace"/>
@@ -1320,7 +1320,7 @@ in fields</xs:documentation>
 use</xs:documentation>
               </xs:annotation>
               <xs:restriction base="xs:token"/>
-                
+
             </xs:simpleType>
           </xs:attribute>
           <xs:attribute name="xpathDefaultNamespace" type="xs:xpathDefaultNamespace"/>
@@ -1466,21 +1466,21 @@ use</xs:documentation>
 
   <xs:annotation>
     <xs:documentation>
-      In keeping with the XML Schema WG's standard versioning policy, 
+      In keeping with the XML Schema WG's standard versioning policy,
       the material in this schema document will persist at the URI
       http://www.w3.org/2012/04/XMLSchema.xsd.
 
       At the date of issue it can also be found at the URI
       http://www.w3.org/2009/XMLSchema/XMLSchema.xsd.
 
-      The schema document at that URI may however change in the future, 
-      in order to remain compatible with the latest version of XSD 
-      and its namespace.  In other words, if XSD or the XML Schema 
-      namespace change, the version of this document at 
-      http://www.w3.org/2009/XMLSchema/XMLSchema.xsd will change accordingly; 
+      The schema document at that URI may however change in the future,
+      in order to remain compatible with the latest version of XSD
+      and its namespace.  In other words, if XSD or the XML Schema
+      namespace change, the version of this document at
+      http://www.w3.org/2009/XMLSchema/XMLSchema.xsd will change accordingly;
       the version at http://www.w3.org/2012/04/XMLSchema.xsd will not change.
 
-      Previous dated (and unchanging) versions of this schema document 
+      Previous dated (and unchanging) versions of this schema document
       include:
 
        http://www.w3.org/2012/01/XMLSchema.xsd
@@ -1624,7 +1624,7 @@ use</xs:documentation>
   <xs:group name="simpleRestrictionModel">
     <xs:sequence>
       <xs:element name="simpleType" type="xs:localSimpleType" minOccurs="0"/>
-      <xs:choice minOccurs="0" 
+      <xs:choice minOccurs="0"
           maxOccurs="unbounded">
         <xs:element ref="xs:facet"/>
         <xs:any processContents="lax"
@@ -1713,7 +1713,7 @@ use</xs:documentation>
       </xs:restriction>
     </xs:complexContent>
   </xs:complexType>
-  <xs:element name="minExclusive" type="xs:facet"  
+  <xs:element name="minExclusive" type="xs:facet"
     id="minExclusive"
     substitutionGroup="xs:facet">
     <xs:annotation>
@@ -1721,7 +1721,7 @@ use</xs:documentation>
            source="http://www.w3.org/TR/xmlschema11-2/#element-minExclusive"/>
     </xs:annotation>
   </xs:element>
-  <xs:element name="minInclusive" type="xs:facet" 
+  <xs:element name="minInclusive" type="xs:facet"
     id="minInclusive"
     substitutionGroup="xs:facet">
     <xs:annotation>
@@ -1729,7 +1729,7 @@ use</xs:documentation>
            source="http://www.w3.org/TR/xmlschema11-2/#element-minInclusive"/>
     </xs:annotation>
   </xs:element>
-  <xs:element name="maxExclusive" type="xs:facet" 
+  <xs:element name="maxExclusive" type="xs:facet"
     id="maxExclusive"
     substitutionGroup="xs:facet">
     <xs:annotation>
@@ -1737,7 +1737,7 @@ use</xs:documentation>
            source="http://www.w3.org/TR/xmlschema11-2/#element-maxExclusive"/>
     </xs:annotation>
   </xs:element>
-  <xs:element name="maxInclusive" type="xs:facet"  
+  <xs:element name="maxInclusive" type="xs:facet"
     id="maxInclusive"
     substitutionGroup="xs:facet">
     <xs:annotation>
@@ -1751,7 +1751,7 @@ use</xs:documentation>
         <xs:sequence>
           <xs:element ref="xs:annotation" minOccurs="0"/>
         </xs:sequence>
-        <xs:attribute name="value"  
+        <xs:attribute name="value"
             type="xs:nonNegativeInteger" use="required"/>
         <xs:anyAttribute namespace="##other" processContents="lax"/>
       </xs:restriction>
@@ -1788,7 +1788,7 @@ use</xs:documentation>
       </xs:complexContent>
     </xs:complexType>
   </xs:element>
-  <xs:element name="fractionDigits" type="xs:numFacet"  
+  <xs:element name="fractionDigits" type="xs:numFacet"
     id="fractionDigits"
     substitutionGroup="xs:facet">
     <xs:annotation>
@@ -1804,7 +1804,7 @@ use</xs:documentation>
            source="http://www.w3.org/TR/xmlschema11-2/#element-length"/>
     </xs:annotation>
   </xs:element>
-  <xs:element name="minLength" type="xs:numFacet"  
+  <xs:element name="minLength" type="xs:numFacet"
     id="minLength"
     substitutionGroup="xs:facet">
     <xs:annotation>
@@ -1812,7 +1812,7 @@ use</xs:documentation>
            source="http://www.w3.org/TR/xmlschema11-2/#element-minLength"/>
     </xs:annotation>
   </xs:element>
-  <xs:element name="maxLength" type="xs:numFacet"  
+  <xs:element name="maxLength" type="xs:numFacet"
     id="maxLength"
     substitutionGroup="xs:facet">
     <xs:annotation>
@@ -1820,7 +1820,7 @@ use</xs:documentation>
            source="http://www.w3.org/TR/xmlschema11-2/#element-maxLength"/>
     </xs:annotation>
   </xs:element>
-  <xs:element name="enumeration" type="xs:noFixedFacet"  
+  <xs:element name="enumeration" type="xs:noFixedFacet"
     id="enumeration"
     substitutionGroup="xs:facet">
     <xs:annotation>
@@ -1866,9 +1866,9 @@ use</xs:documentation>
           <xs:sequence>
             <xs:element ref="xs:annotation" minOccurs="0"/>
           </xs:sequence>
-          <xs:attribute name="value" type="xs:string"  
+          <xs:attribute name="value" type="xs:string"
               use="required"/>
-          <xs:anyAttribute namespace="##other"  
+          <xs:anyAttribute namespace="##other"
               processContents="lax"/>
         </xs:restriction>
       </xs:complexContent>
@@ -1910,21 +1910,21 @@ use</xs:documentation>
 
   <xs:annotation>
     <xs:documentation>
-      In keeping with the XML Schema WG's standard versioning policy, 
+      In keeping with the XML Schema WG's standard versioning policy,
       this schema document will persist at the URI
       http://www.w3.org/2012/04/datatypes.xsd.
 
       At the date of issue it can also be found at the URI
       http://www.w3.org/2009/XMLSchema/datatypes.xsd.
 
-      The schema document at that URI may however change in the future, 
-      in order to remain compatible with the latest version of XSD 
-      and its namespace.  In other words, if XSD or the XML Schema 
-      namespace change, the version of this document at 
-      http://www.w3.org/2009/XMLSchema/datatypes.xsd will change accordingly; 
+      The schema document at that URI may however change in the future,
+      in order to remain compatible with the latest version of XSD
+      and its namespace.  In other words, if XSD or the XML Schema
+      namespace change, the version of this document at
+      http://www.w3.org/2009/XMLSchema/datatypes.xsd will change accordingly;
       the version at http://www.w3.org/2012/04/datatypes.xsd will not change.
 
-      Previous dated (and unchanging) versions of this schema document 
+      Previous dated (and unchanging) versions of this schema document
       include:
 
         http://www.w3.org/2012/01/datatypes.xsd

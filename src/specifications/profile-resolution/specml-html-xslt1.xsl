@@ -3,86 +3,86 @@
    xmlns:o="http://csrc.nist.gov/ns/oscal/specml"
    xmlns="http://www.w3.org/1999/xhtml"
     exclude-result-prefixes="o">
-   
+
    <xsl:strip-space elements="o:SPECIFICATION o:div o:ul o:li o:section o:mapping o:cf"/>
-   
+
    <xsl:output method="html" omit-xml-declaration="yes"/>
-   
+
    <xsl:template match="o:SPECIFICATION">
       <body>
          <xsl:apply-templates/>
       </body>
    </xsl:template>
-   
+
    <!-- suppress since the page template produces the page header from YAML metadata -->
    <xsl:template match="o:SPECIFICATION/o:head">
-      
+
    </xsl:template>
-   
+
    <xsl:template match="o:head" mode="header-text">
      <xsl:apply-templates/>
    </xsl:template>
-   
+
    <xsl:template match="o:head">
       <h1 id="{generate-id()}-head">
          <xsl:apply-templates select="." mode="header-text"/>
       </h1>
    </xsl:template>
-   
+
    <xsl:template priority="1" match="o:section/o:head">
       <h2 id="{generate-id()}-head">
          <xsl:apply-templates select="." mode="header-text"/>
       </h2>
    </xsl:template>
-   
+
    <xsl:template priority="2" match="o:section/o:section/o:head">
       <h3 id="{generate-id()}-head">
          <xsl:apply-templates select="." mode="header-text"/>
       </h3>
    </xsl:template>
-   
+
    <xsl:template priority="2" match="o:div/o:head">
       <h3 class="divhead" id="{generate-id()}-head">
          <xsl:apply-templates select="." mode="header-text"/>
       </h3>
    </xsl:template>
-   
+
    <xsl:template priority="3" match="o:section/o:section/o:section/o:head">
       <h4 id="{generate-id()}-head">
          <xsl:apply-templates select="." mode="header-text"/>
       </h4>
    </xsl:template>
-   
+
    <xsl:template priority="4" match="o:section/o:section/o:section/o:section/o:head">
       <h5 id="{generate-id()}-head">
          <xsl:apply-templates select="." mode="header-text"/>
       </h5>
    </xsl:template>
-   
+
    <xsl:template priority="5" match="o:section/o:section/o:section/o:section/o:section/o:head">
       <h6 id="{generate-id()}-head">
          <xsl:apply-templates select="." mode="header-text"/>
       </h6>
    </xsl:template>
-   
+
    <xsl:template match="o:p">
       <p>
         <xsl:apply-templates/>
       </p>
    </xsl:template>
-   
+
    <xsl:template match="o:term">
       <b class="{local-name()}">
         <xsl:apply-templates/>
       </b>
    </xsl:template>
-   
+
    <xsl:template match="o:q">
       <q class="{local-name()}">
          <xsl:apply-templates/>
       </q>
    </xsl:template>
-   
+
    <!--<xsl:template match="o:div">
       <div class="{local-name()}">
          <xsl:apply-templates/>
@@ -107,8 +107,8 @@
       </ul>
    </xsl:template>
 
-<xsl:key match="*[exists(@id)]" use="@id" name="by-id"/>
-   
+   <xsl:key match="*[@id]" use="@id" name="by-id"/>
+
    <xsl:template match="o:xref">
       <xsl:text>[See: </xsl:text>
       <xsl:for-each select="key('by-id',@rid)/o:head">
@@ -118,7 +118,7 @@
       </xsl:for-each>
       <xsl:text>]</xsl:text>
    </xsl:template>
-   
+
    <xsl:template match="o:li">
       <li>
          <xsl:apply-templates/>
@@ -137,13 +137,13 @@
          <xsl:apply-templates/>
       </a>
    </xsl:template>
-   
+
    <xsl:template match="o:em">
       <em class="{local-name()}">
          <xsl:apply-templates/>
       </em>
    </xsl:template>
-   
+
    <xsl:template match="o:xpath">
       <b class="{local-name()}">
          <xsl:apply-templates/>

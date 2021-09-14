@@ -7,10 +7,17 @@
 }
 
 @media print {
-  #nist-header {
+  .nist-header {
     display: none;
   }
+
   .nist-footer {
     display: none;
+  }
+}
+
+.usa-nav__secondary-links {
+  @include at-media($theme-header-min-width) {
+    float: inherit;
   }
 }

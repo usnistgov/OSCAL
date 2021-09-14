@@ -6,11 +6,11 @@
     exclude-result-prefixes="xs math"
     xpath-default-namespace="http://csrc.nist.gov/ns/oscal/specml"
     version="3.0">
-    
+
     <xsl:import href="specml-html-xslt1.xsl"/>
 
     <xsl:output method="xml"/>
-    
+
     <xsl:template name="yaml-header">
         <xsl:text>---</xsl:text>
         <xsl:text>&#xA;title: OSCAL Profile Resolution</xsl:text>
@@ -35,22 +35,22 @@
             <xsl:apply-templates/>
         </xsl:copy>
     </xsl:template>
-        
+
     <xsl:template match="tagging" mode="for-serialization">
         <xsl:text disable-output-escaping="true">{{&lt; highlight xml>}}</xsl:text>
         <xsl:value-of select="string(.)" disable-output-escaping="yes"/>
         <xsl:text disable-output-escaping="true">{{&lt;/highlight>}}</xsl:text>
     </xsl:template>
-    
+
     <xsl:template match="* | @*" mode="for-serialization">
         <xsl:element name="{local-name()}">
             <xsl:copy-of select="@*"/>
             <xsl:apply-templates select="node()" mode="#current"/>
         </xsl:element>
     </xsl:template>
-    
-    
-    
-    
-    
+
+
+
+
+
 </xsl:stylesheet>

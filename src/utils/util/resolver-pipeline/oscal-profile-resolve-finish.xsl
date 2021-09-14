@@ -8,13 +8,13 @@
     xmlns:opr="http://csrc.nist.gov/ns/oscal/profile-resolution"
     exclude-result-prefixes="#all"
     xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0" >
-    
+
     <xsl:template match="* | @*" mode="#all">
         <xsl:copy copy-namespaces="no">
             <xsl:apply-templates mode="#current" select="node() | @*"/>
         </xsl:copy>
     </xsl:template>
-    
+
     <!-- Finalizing profile resolution into a catalog:
            reordering metadata, group and control contents to valid order
            removing loose orphan parameters
@@ -22,22 +22,22 @@
            removing unclaimed inventory
              defined as any 'citation' or 'resource' in back matter
                without something somewhere linking to it
-               
-               
+
+
          What we are not doing:
            removing broken links
-           remove opqr and xsi namespaces (that happens in the shell)   
+           remove opqr and xsi namespaces (that happens in the shell)
     -->
 <!-- An XQuery run on a metaschema can return a sequence of instructions
-    
+
     let $where := 'metadata'
     for $n in (//*:define-assembly[@name=$where]/*:model/*/(@name | @ref))
     return <apply-templates mode="#current" select="{ $n }"/>
-    
+
     -->
-    
+
     <xsl:param name="path-to-source" as="xs:string?"/>
-    
+
     <xsl:template match="metadata/link[@rel='resolution-source']">
         <!-- splicing together a path with '/' -->
         <link rel="resolution-source" href="{string-join(
@@ -57,7 +57,7 @@
             <xsl:apply-templates mode="#current" select="back-matter"/>
         </xsl:copy>
     </xsl:template>
-    
+
     <xsl:template match="metadata">
         <xsl:copy copy-namespaces="no">
             <xsl:apply-templates mode="#current" select="@*"/>
@@ -75,20 +75,20 @@
             <xsl:apply-templates mode="#current" select="remarks"/>
         </xsl:copy>
     </xsl:template>
-    
+
     <xsl:template match="group">
         <xsl:copy copy-namespaces="no">
             <xsl:apply-templates mode="#current" select="@*"/>
             <xsl:apply-templates mode="#current" select="title"/>
             <xsl:apply-templates mode="#current" select="param"/>
             <xsl:apply-templates mode="#current" select="prop"/>
-       
+
             <xsl:apply-templates mode="#current" select="part"/>
             <xsl:apply-templates mode="#current" select="control"/>
             <xsl:apply-templates mode="#current" select="group"/>
         </xsl:copy>
     </xsl:template>
-    
+
     <xsl:template match="control">
         <xsl:copy copy-namespaces="no">
             <xsl:apply-templates mode="#current" select="@*"/>
@@ -101,9 +101,9 @@
             <xsl:apply-templates mode="#current" select="control"/>
         </xsl:copy>
     </xsl:template>
- 
+
   <xsl:key name="param-insertions" match="insert" use="@param-id"/>
-    
+
   <xsl:template match="catalog/param[empty(key('param-insertions',@id))]
       | group/param[empty(key('param-insertions',@id))]"/>
 
@@ -113,11 +113,9 @@
             <xsl:next-match/>
         </xsl:where-populated>
     </xsl:template>
-    
+
     <xsl:key name="cross-reference" match="*[starts-with(@href,'#')]" use="substring-after(@href,'#')"/>
-    
-    <xsl:template match="citation[empty(key('cross-reference',@id))]"/>
-    
-    <xsl:template match="resource[empty(key('cross-reference',@id))]"/>
-    
+
+    <xsl:template match="resource[empty(key('cross-reference',@uuid))][not(prop[@name='keep']='always')]"/>
+
 </xsl:stylesheet>

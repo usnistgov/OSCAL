@@ -1,0 +1,14 @@
+<!--  TODO: define values  -->
+<!--  CHANGHD "os" to "operating-system" -->
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="operating-system">System software that manages computer hardware, software resources, and provides common services for computer programs.</enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="database">An electronic collection of data, or information, that is specially organized for rapid search and retrieval.</enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="web-server">A system that delivers content or services to end users over the Internet or an intranet.</enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="dns-server">A system that resolves domain names to internet protocol (IP) addresses.</enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="email-server">A computer system that sends and receives electronic mail messages.</enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="directory-server">A  system that stores, organizes and provides access to directory information in order to unify network resources.</enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="pbx">A private branch exchange (PBX) provides a a private telephone switchboard.</enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="firewall">A network security system that monitors and controls incoming and outgoing network traffic based on predetermined security rules.</enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="router">A physical or virtual networking device that forwards data packets between computer networks.</enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="switch">A physical or virtual networking device that connects devices within a computer network by using packet switching to receive and forward data to the destination device.</enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="storage-array">A consolidated, block-level data storage capability.</enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="appliance">A physical or virtual machine that centralizes hardware, software, or services for a specific purpose.</enum>

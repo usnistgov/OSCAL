@@ -5,17 +5,17 @@
     stylesheet="../../oscal-profile-resolve-merge.xsl">
     <x:scenario label="Base">
         <x:context>
-            <catalog id="zzz"/>
+            <catalog uuid="zzz"/>
         </x:context>
 
         <x:expect label="root becomes root">
-            <catalog id="zzz"/>
+            <catalog uuid="zzz"/>
         </x:expect>
     </x:scenario>
     <x:scenario label="Single import, as-is merge">
         <x:context>
             <catalog>
-                <selection id="xyz-tiny_catalog" opr:id="xyz-tiny_catalog">
+                <selection uuid="xyz-tiny_catalog" opr:id="...">
                     <group id="x" opr:id="xyz-tiny_catalog#x">
                         <title>Group X of XYZ</title>
                         <control id="x1" opr:id="xyz-tiny_catalog#x1"><title>Control X1</title></control>
@@ -46,7 +46,7 @@
         </x:context>
         <x:expect label="XYZ catalog with original grouping">
             <catalog>
-                
+
                     <group id="x">
                         <title>Group X of XYZ</title>
                         <control id="x1"><title>Control X1</title></control>
@@ -75,7 +75,7 @@
     <x:scenario label="Parallel imports, as-is merge">
         <x:context>
             <catalog>
-                <selection id="xyz-tiny_catalog" opr:id="xyz-tiny_catalog">
+                <selection id="xyz-tiny_catalog" opr:id="xyz-tiny_catalog#xyz-tiny_catalog">
                     <group id="x" opr:id="xyz-tiny_catalog#x">
                         <title>Group X of XYZ</title>
                         <control id="x1" opr:id="xyz-tiny_catalog#x1"><title>Control X1</title></control>
@@ -90,7 +90,7 @@
                         </control>
                     </group>
                 </selection>
-                <selection id="xyz-tiny_catalog" opr:id="xyz-tiny_catalog">
+                <selection id="xyz-tiny_catalog" opr:id="xyz-tiny_catalog#xyz-tiny_catalog">
                     <group id="x" opr:id="xyz-tiny_catalog#x">
                         <title>Group X of XYZ</title>
                         <control id="x1" opr:id="xyz-tiny_catalog#x1"><title>Control X1</title></control>
@@ -150,10 +150,10 @@
     <x:scenario label="Ugly merge with loose parameters and stuff">
         <x:context>
             <catalog>
-                <selection id="xyz-tiny_catalog" opr:id="xyz-tiny_catalog">
+                <selection id="xyz-tiny_catalog" opr:id="xyz-tiny_catalog#xyz-tiny_catalog">
                     <group id="x" opr:id="xyz-tiny_catalog#x">
                         <title>Group X of XYZ</title>
-                        <prop name="status">special</prop>
+                        <prop value="special" name="status"/>
                         <param id="param-x">
                             <label>Param X</label>
                             <constraint>no control</constraint>
@@ -170,13 +170,15 @@
                         </control>
                     </group>
                 </selection>
-                <selection id="xyz-tiny_catalog" opr:id="xyz-tiny_catalog">
+                <selection id="xyz-tiny_catalog" opr:id="xyz-tiny_catalog#xyz-tiny_catalog">
                     <group id="x" opr:id="xyz-tiny_catalog#x">
                         <title>Group X of XYZ</title>
-                        <prop name="status">special</prop>
+                        <prop value="special" name="status"/>
                         <param id="param-x">
-                            <label>Param X</label>
-                            <constraint>some control</constraint>
+                            <select>
+                                <choice>some choice</choice>
+                                <choice>some other choice</choice>
+                            </select>
                         </param>
                         <control id="x1" opr:id="xyz-tiny_catalog#x1"><title>Control X1</title></control>
                         <control id="x2" opr:id="xyz-tiny_catalog#x2"><title>Control X2</title></control>
@@ -205,15 +207,17 @@
             <catalog>
                 <group id="x">
                     <title>Group X of XYZ</title>
-                    <prop name="status">special</prop>
-                    <prop name="status">special</prop>
+                    <prop value="special" name="status"/>
+                    <prop value="special" name="status"/>
                     <param id="param-x">
                         <label>Param X</label>
                         <constraint>no control</constraint>
                     </param>
                     <param id="param-x">
-                        <label>Param X</label>
-                        <constraint>some control</constraint>
+                        <select>
+                            <choice>some choice</choice>
+                            <choice>some other choice</choice>
+                        </select>
                     </param>
                     <control id="x1"><title>Control X1</title></control>
                     <control id="x1"><title>Control X1</title></control>
@@ -242,5 +246,5 @@
             </catalog>
         </x:expect>
     </x:scenario>
-    
+
 </x:description>

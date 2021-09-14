@@ -1,0 +1,10 @@
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="asset-owner">Accountable for ensuring the asset is managed in accordance with organizational policies and procedures.</enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="asset-administrator">Responsible for administering a set of assets.</enum>
+<!-- CHANGE: from "soc" to "security-operations" -->
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="security-operations">Members of the security operations center (SOC).</enum>
+<!-- CHANGE: from "noc" to "network-operations" -->
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="network-operations">Members of the network operations center (NOC).</enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="incident-response">Responsible for responding to an event that could lead to loss of, or disruption to, an organization's operations, services or functions.</enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="help-desk">Responsible for providing information and support to users.</enum>
+<!-- CHANGE: from "configuration-management-lead" to "configuration-management" -->
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="configuration-management">Responsible for the configuration management processes governing changes to the asset.</enum>

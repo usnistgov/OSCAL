@@ -159,30 +159,30 @@ if [ "$PERFORM_CONTENT_GENERATION" == "YES" ] && "${script_path}/generate-schema
     exit 2
   fi
 fi
-if [ "$PERFORM_VALIDATION" == "YES" ] && "${script_path}/validate-content.sh" -w "$WORKING_DIR" ${extra_args}; then
-  if [ $? -ne 0 ]; then
-    echo "${P_ERROR}*** Failed to validate all content${P_END}"
-    exit 3
-  fi
-fi
+#if [ "$PERFORM_VALIDATION" == "YES" ] && "${script_path}/validate-content.sh" ${extra_args}; then
+#  if [ $? -ne 0 ]; then
+#    echo "${P_ERROR}*** Failed to validate all content${P_END}"
+#    exit 3
+#  fi
+#fi
 if [ "$PERFORM_CONTENT_GENERATION" == "YES" ] && "${script_path}/generate-content-converters.sh" -w "$WORKING_DIR" ${extra_args}; then
   if [ $? -ne 0 ]; then
     echo "${P_ERROR}*** Failed to generate content converters${P_END}"
     exit 4
   fi
 fi
-if [ "$PERFORM_CONTENT_CONVERSION" == "YES" ] && "${script_path}/copy-and-convert-content.sh" -w "$WORKING_DIR" ${extra_args}; then
-  if [ $? -ne 0 ]; then
-    echo "${P_ERROR}*** Failed to convert content${P_END}"
-    exit 5
-  fi
-fi
-if [ "$PERFORM_VALIDATION" == "YES" ] && "${script_path}/validate-content-conversion-round-trips.sh" -w "$WORKING_DIR" --scratch-dir "$SCRATCH_DIR" ${extra_args}; then
-  if [ $? -ne 0 ]; then
-    echo "${P_ERROR}*** Failed to validate all XML->JSON->XML round-trips${P_END}"
-    exit 6
-  fi
-fi
+#if [ "$PERFORM_CONTENT_CONVERSION" == "YES" ] && "${script_path}/copy-and-convert-content.sh" -w "$WORKING_DIR" ${extra_args}; then
+#  if [ $? -ne 0 ]; then
+#    echo "${P_ERROR}*** Failed to convert content${P_END}"
+#    exit 5
+#  fi
+#fi
+#if [ "$PERFORM_VALIDATION" == "YES" ] && "${script_path}/validate-content-conversion-round-trips.sh" -w "$WORKING_DIR" --scratch-dir "$SCRATCH_DIR" ${extra_args}; then
+#  if [ $? -ne 0 ]; then
+#    echo "${P_ERROR}*** Failed to validate all XML->JSON->XML round-trips${P_END}"
+#    exit 6
+#  fi
+#fi
 if [ "$PERFORM_SITE_GENERATION" == "YES" ] && "${script_path}/generate-model-documentation.sh" -w "$WORKING_DIR" ${extra_args}; then
   if [ $? -ne 0 ]; then
     echo "${P_ERROR}*** Failed to generate website schema model content${P_END}"

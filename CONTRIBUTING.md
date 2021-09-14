@@ -11,7 +11,7 @@ We track our current work items using GitHub [project cards](https://github.com/
 ## Contribution options
 
 The OSCAL project is producing several types of deliverables, including the following:
-- *Schemas* for the OSCAL component models  
+- *Schemas* for the OSCAL component models
 - *Schematron definitions*, which are basically an extension of the XML schemas that provide more validation capabilities
 - *XSL templates* for production of human-readable versions of OSCAL XML content
 - *CSS*, so people who are developing catalogs and profiles using XML tools can use CSS for data entry, which offers a much more usable interface
@@ -32,8 +32,8 @@ The core OSCAL project team regularly reviews the open issues, prioritizes their
 
 There are two mailing lists for the project:
 
-- *oscal-dev@nist.gov* for communication among parties interested in contributing to the development of OSCAL or exchanging ideas. Subscribe by sending an email to [oscal-dev-join@nist.gov](mailto:oscal-dev-join@nist.gov). To unsubscribe send an email to [oscal-dev-leave@nist.gov](mailto:oscal-dev-leave@nist.gov).
-- *oscal-updates@nist.gov* for low-frequency updates on the status of the OSCAL project. Subscribe by sending an email to [oscal-updates-join@nist.gov](mailto:oscal-updates-join@nist.gov). To unsubscribe send an email to [oscal-updates-leave@nist.gov](mailto:oscal-updates-leave@nist.gov).
+- *oscal-dev@nist.gov* for communication among parties interested in contributing to the development of OSCAL or exchanging ideas. Subscribe by sending an email to [oscal-dev+subscribe@list.nist.gov](mailto:oscal-dev+subscribe@list.nist.gov). To unsubscribe send an email to [oscal-dev+unsubscribe@list.nist.gov](mailto:oscal-dev+unsubscribe@list.nist.gov).
+- *oscal-updates@list.nist.gov* for low-frequency updates on the status of the OSCAL project. Subscribe by sending an email to [oscal-updates+subscribe@list.nist.gov](mailto:oscal-updates+subscribe@list.nist.gov). To unsubscribe send an email to [oscal-updates+unsubscribe@list.nist.gov](mailto:oscal-updates+unsubscribe@list.nist.gov).
 
 ## Contributing to the OSCAL repository
 
@@ -51,12 +51,12 @@ The OSCAL project uses a typical GitHub fork and pull request [workflow](https:/
 This repository consists of the following directories and files pertaining to the OSCAL project:
 
 - [.github](.github): Contains GitHub issue and pull request templates for the OSCAL project.
-- [content](content): Provides numerous OSCAL examples in both, XML and JSON formats. Some examples are considered provisional "completed" versions of OSCAL catalogs and profiles; they are not authoritative but are intended as demonstrations of OSCAL. Other examples are works in progress. Each subdirectory within the examples directory clearly indicates the current status of its example files.
 - [json](json): Provides OSCAL JavaScript Object Notation (JSON) schemas and utilities that can be used to convert content in other OSCAL formats to OSCAL JSON-based formats.
 - [xml](xml): Provides OSCAL Extensible Markup Language (XML) schemas and utilities that can be used to convert content in other OSCAL formats to OSCAL XML-based formats.
 - [docs](docs): Stores sources for the [OSCAL website](https://pages.nist.gov/OSCAL).
+- [content](content): This directory once stored XML, JSON, and YAML content examples. These examples have been moved to the OSCAL content GitHub [repository](https://github.com/usnistgov/oscal-content/tree/master).
 - [build](build): Contains a collection of scripts, eXtensible Stylesheet Language Transformations (XSLTs), and other artifacts used to support this repository's continuous integration and continuous deployment (CI/CD) processes.
-- [src](src): Stores source artifacts used to produce the content, JSON, and XML resources provided in this repository.
+- [src](src): This includes the resources used by the NIST OSCAL Team to manage OSCAL development, including the metaschema files used to maintain the OSCAL models across all supported formats. This directory once stored source artifacts used to produce the XML, JSON, and YAML resources that were provided in this repository. These resources have been moved to the OSCAL content GitHub [repository](https://github.com/usnistgov/oscal-content/tree/master/src).
 - [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md): This file contains a code of conduct for OSCAL project contributors.
 - [CONTRIBUTING.md](CONTRIBUTING.md): This file is for potential contributors to the OSCAL project. It provides basic information on the OSCAL project, describes the main ways people can make contributions, explains how to report issues with OSCAL, and lists pointers to additional sources of information. It also has instructions on establishing a development environment for contributing to the OSCAL project and using GitHub project cards to track development sprints.
 - [LICENSE.md](LICENSE.md): This file contains license and copyright information for the files in the OSCAL GitHub repository.
@@ -69,7 +69,7 @@ The NIST OSCAL team is using the GitHub [project cards](https://github.com/usnis
 
 ### User Stories
 
-Each development sprint consists of a set of [user stories](https://github.com/usnistgov/OSCAL/issues?q=is%3Aopen+is%3Aissue+label%3A%22User+Story%22), that represent features, actions, or enhancements that are intended to be developed during the sprint. Each user story is based on a [template](https://github.com/usnistgov/OSCAL/issues/new?template=feature_request.md&labels=enhancement%2C+User+Story) and describes the basic problem or need to be addressed, a set of detailed goals to accomplish, any dependencies that must be addressed to start or complete the user story, and the criteria for acceptance of the contribution. 
+Each development sprint consists of a set of [user stories](https://github.com/usnistgov/OSCAL/issues?q=is%3Aopen+is%3Aissue+label%3A%22User+Story%22), that represent features, actions, or enhancements that are intended to be developed during the sprint. Each user story is based on a [template](https://github.com/usnistgov/OSCAL/issues/new?template=feature_request.md&labels=enhancement%2C+User+Story) and describes the basic problem or need to be addressed, a set of detailed goals to accomplish, any dependencies that must be addressed to start or complete the user story, and the criteria for acceptance of the contribution.
 
 The goals in a user story will be bulleted, indicating that each goal can be worked on in parallel, or numbered, indicating that each goal must be worked on sequentially. Each goal will be assigned to one or more individuals to accomplish.
 
@@ -102,3 +102,39 @@ The project cards for each sprint will be in one of the following states:
 - "Done" - Once the contributed work has been reviewed and the pull request has been merged, the user story will be marked as "Done".
 
 Note: A pull request must be submitted for all goals before an issue will be moved to the "under review" status. If any goals or acceptance criteria have not been met, then the user story will be commented on to provide feedback, and the issue will be returned to the "In progress" state.
+
+## Git Client Setup
+
+### Initializing Git submodules
+
+This GitHub repository makes use of Git submodules to mount other repositories as subdirectories.
+
+When cloning this repo for the first time, you need to initialize the submodules that this repository depends on. To do this you must execute the following command:
+
+```
+git submodule update --init
+```
+
+You can perform the clone and submodule initialization in a single step by using the following command:
+
+```
+git clone --recurse-submodules https://github.com/usnistgov/OSCAL.git
+```
+
+### Configuring Submodules to Use SSH
+
+Some clients will make use of Git over SSH with a private SSH key for GitHub projects. For convenience, the submodules are configured to use HTTP instead of SSH. To override this default behavior, you will need to configure your Git client to use SSH instead of HTTP using the following command:
+
+```
+git config --global url."git@github.com:".insteadOf https://github.com/
+```
+
+This instructs your Git client to dynamically replace the HTTP-based URLs with the proper SSH URL when using GitHub.
+
+### Updating submodules
+
+Submodule contents will be periodically updated. To ensure you have the latest commits for a configured submodule, you will need to run the following command:
+
+```
+git submodule update --init --recursive
+```

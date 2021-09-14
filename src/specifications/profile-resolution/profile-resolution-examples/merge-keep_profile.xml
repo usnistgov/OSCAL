@@ -1,33 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="../example-checkup.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!-- Modified by conversion XSLT 2021-04-05T11:22:10.321-04:00 - RC2 OSCAL becomes RC3 OSCAL -->
 <profile xmlns="http://csrc.nist.gov/ns/oscal/1.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/1.0 ../../../../xml/schema/oscal_profile_schema.xsd"
-    id="merge-keep_profile">
-    <metadata>
-        <title>Test Profile</title>
-        <last-modified>2019-10-13T13:41:58.548-04:00</last-modified>
-        <version>1.0</version>
-        <oscal-version>1.0-MR2</oscal-version>
-    </metadata>
-    <import href="#catalog">
-        <include>
-            <call control-id="a1"/>
-            <call control-id="b1"/>
-        </include>
-    </import>
-    <import href="#catalog">
-        <include>
-            <call control-id="a1"/>
-            <call control-id="b1"/>
-        </include>
-    </import>
-    <merge>
-        <combine method="keep"/>
-    </merge>
-    <back-matter>
-        <resource id="catalog">
-            <rlink href="catalogs/abc-simple_catalog.xml"/>
-        </resource>
-    </back-matter>
+         uuid="b359559f-3c86-4e62-85a8-f96125e74751">
+   <metadata>
+      <title>Test Profile</title>
+      <last-modified>2020-05-30T14:39:49.443-04:00</last-modified>
+      <version>1.0</version>
+      <oscal-version>1.0.0-rc2</oscal-version>
+   </metadata>
+   <import href="#a097e626-2606-4213-8ae0-390e3d3d2aaa">
+      <include-controls>
+         <with-id>a1</with-id>
+         <with-id>b1</with-id>
+      </include-controls>
+   </import>
+   <import href="#a097e626-2606-4213-8ae0-390e3d3d2aaa">
+      <include-controls>
+         <with-id>a1</with-id>
+         <with-id>b1</with-id>
+      </include-controls>
+   </import>
+   <merge>
+      <combine method="keep"/>
+   </merge>
+   <back-matter>
+      <resource uuid="a097e626-2606-4213-8ae0-390e3d3d2aaa">
+         <rlink href="catalogs/abc-simple_catalog.xml"/>
+      </resource>
+   </back-matter>
 </profile>

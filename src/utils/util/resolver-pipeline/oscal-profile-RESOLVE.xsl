@@ -7,15 +7,15 @@
     xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
 
     <!--
-        
+
     An XSLT 3.0 stylesheet using XPath 3.1 functions including transform()
-        
+
     This XSLT orchestrates a sequence of transformations over its input.
-    
+
     The first transformation, "selection", aggregates the source with external (referenced) contents.
-    
+
     Subsequent transformations, "merge" and "modify", are self-contained: all inputs are included.
-    
+
     -->
 
     <xsl:output method="xml" indent="yes"/>
@@ -28,15 +28,15 @@
     <!-- Turning $trace to 'on' will
          - emit runtime messages with each transformation, and
          - retain opr:ERROR and opr:WARNING messages in results. -->
-    
+
     <xsl:param name="trace" as="xs:string">off</xsl:param>
 
     <xsl:param name="uri-stack" as="xs:anyURI*" select="()"/>
-    
-    <!-- $path-to-source should point back to the source catalog from its result,
+
+    <!-- $path-to-source should point back to the location of the source catalog (or profile) from its result,
          so '..' is appropriate when writing results down a directory. -->
     <xsl:param name="path-to-source" as="xs:string?"/>
-    
+
     <xsl:variable name="louder" select="$trace = 'on'"/>
 
     <xsl:variable name="home" select="/"/>
@@ -135,7 +135,7 @@
 
     <!-- Likewise, intermediate processing directives. -->
     <xsl:template mode="opr:finalize" match="opr:* | @opr:*"/>
-    
+
     <!-- But keep warnings and errors when tracing. -->
     <xsl:template mode="opr:finalize" match="opr:ERROR[$louder] | opr:WARNING[$louder]">
         <xsl:copy-of copy-namespaces="no" select="."/>
@@ -143,14 +143,14 @@
             <xsl:with-param name="msg" select="string(.)"/>
         </xsl:call-template>
     </xsl:template>
-    
+
     <!-- In 'finalize' mode, copying everything else without namespaces. -->
     <xsl:template mode="opr:finalize" match="node() | @*">
         <xsl:copy copy-namespaces="no">
             <xsl:apply-templates select="node() | @*" mode="#current"/>
         </xsl:copy>
     </xsl:template>
-    
+
     <xsl:template name="alert">
         <xsl:param name="msg"/>
         <xsl:if test="$louder">
@@ -159,5 +159,5 @@
             </xsl:message>
         </xsl:if>
     </xsl:template>
-    
+
 </xsl:stylesheet>

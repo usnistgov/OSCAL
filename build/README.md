@@ -6,7 +6,7 @@ This subdirectory contains a set of build scripts used to create OSCAL-related a
 
 If using Docker:
 
-- [Docker 19.03+](https://docs.docker.com/install/)
+- [Docker 20.10+](https://docs.docker.com/install/)
 
 If not using Docker:
 
@@ -23,69 +23,86 @@ A Docker container configuration is provided that establishes the runtime enviro
 
 2. Build the Docker container
 
-    You can build the Docker conatiner for the build environment using Docker Compose as follows:
+    You can build the Docker container for the build environment using Docker Compose as follows from the OSCAL `/build` directory:
 
     ```
-    docker-compose build
+    docker compose build
     ```
 
 3. Run the Docker container
 
     Executing the container will launch an interactive shell that is preconfigured with all required tools and the needed environment pre-configured.
 
-    You can run the Docker conatiner for the build environment using Docker Compose as follows:
+    You can run the Docker container for the build environment using Docker Compose as follows:
 
     ```
-    docker-compose run cli
+    docker compose run cli
     ```
 
-    On Windows environments, you may need to execute in a pty that allows for using an interactive shell. In such a case you can run the Docker conatiner as follows:
+    On Windows environments, you may need to execute in a pty that allows for using an interactive shell. In such a case you can run the Docker container as follows:
 
 
     ```
-    winpty docker-compose run cli
+    winpty docker compose run cli
     ```
 
     This should launch an interactive shell.
 
-## Manual Setup of the Build Environment
+## Manual Setup of the Build Environment (Linux)
 
-The following steps are known to work on Ubuntu [18.04 LTS](http://releases.ubuntu.com/18.04.4/).
+The following steps are known to work on [Ubuntu](https://ubuntu.com/) (tested in [18.04 LTS](http://old-releases.ubuntu.com/releases/bionic/) and [20.04 LTS](http://old-releases.ubuntu.com/releases/focal/).
 
 1. Setup environment variables
 
-    A few environment variables are used to configure the runtime environment.
+    Environment variables are used to configure the runtime environment.
 
     - SAXON_VERSION - Defines which version of Saxon-HE to use
-    - SCHEMATRON_HOME - Defines the directory where the Schematron Skeleton will be checked out
-    - OSCAL_TOOLS_DIR - Defines the directory where the OSCAL tools will be checked out. The OSCAL Java Validation API is one of the needed tools located in this repo.
-    - JSON_CLI_VERSION - Defines the version of the OSCAL Java Validation API
+    - HUGO_VERSION - Defines which version of Hugo to use
+    - CALABASH_VERSION - Defines which version of XML Calabash to use
+    - CALABASH_HOME - Defines where calabash will be installed
 
-    The following is an example of how to configure the environment. You will need to customize the `SCHEMATRON_HOME` and `OSCAL_TOOLS_DIR` variables for your own environment.
+    The following is an example of how to configure the environment.
 
     ```bash
     export SAXON_VERSION="9.9.1-3"
-    export SCHEMATRON_HOME=/home/user/git-schematron
-    export OSCAL_TOOLS_DIR=/home/user/oscal-tools
-    export JSON_CLI_VERSION=0.0.1-SNAPSHOT
+    export HUGO_VERSION="0.83.1"
+    export CALABASH_VERSION="1.2.5-100"
+    export CALABASH_HOME="$HOME/calabash"
     ```
 
-    You may want to add these exports to your `~/.bashrc` to persist the configuration.
+    You may want to add this export to your `~/.bashrc` to persist the configuration.
 
 1. Install required packages
 
     To install the required Linux packages, run the following:
 
     ```bash
-    apt-get update && apt-get install -y apt-utils libxml2-utils jq maven hugo nodejs npm build-essential python3-pip git && apt-get clean
+    sudo apt-get update
+    sudo apt-get install -y apt-utils libxml2-utils jq maven nodejs npm build-essential python3-pip git
+    sudo apt-get clean
+    ```
+
+1. Install Hugo
+
+    The version of Hugo available on Ubuntu is outdated. To install a current version of Hugo, run the following:
+
+    ```bash
+    wget https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_Linux-64bit.deb
+    sudo apt install ./hugo_extended_${HUGO_VERSION}_Linux-64bit.deb
     ```
 
 1. Install Node.js modules
 
-    To install the required Node.js modules, run the following:
+    To install the required Node.js modules globally (for all users), run the following:
 
     ```bash
-    npm install -g prettyjson markdown-link-check json-diff
+    sudo npm install -g ajv-formats@"^1.5.x" ajv-cli@"^4.0.x" yaml-convert@"^1.0.x" markdown-link-check json-diff
+    ```
+
+    Or to install locally
+
+    ```bash
+    npm install prettyjson markdown-link-check json-diff
     ```
 
 1. Install Python modules
@@ -96,37 +113,23 @@ The following steps are known to work on Ubuntu [18.04 LTS](http://releases.ubun
     pip3 install lxml
     ```
 
-1. Install Schematron Skeleton
-
-    The build environment uses the [ISO Schematron](http://schematron.com/) Skeleton to generate Schematron schemas used for some validation operations.
-
-    To install the Schematron Skeleton, run the following:
-
-    ```bash
-    mkdir -p "${SCHEMATRON_HOME}"
-    git clone --depth 1 --no-checkout https://github.com/Schematron/schematron.git ."${SCHEMATRON_HOME}"
-    cd "${SCHEMATRON_HOME}"
-    git checkout master -- trunk/schematron/code
-    ```
-
-1. Install and Build the Java JSON Validation CLI
-
-    The build environment uses a custom JSON validation API command line tool to validate JSON content.
-
-    To install the JSON validation API command line tool, run the following:
-
-    ```bash
-    mkdir -p "${OSCAL_TOOLS_DIR}"
-    git clone --depth 1 https://github.com/usnistgov/oscal-tools.git "${OSCAL_TOOLS_DIR}"
-    cd "${OSCAL_TOOLS_DIR}/json-cli"
-    mvn install
-    ```
 1. Install Saxon-HE
 
     To install Saxon-HE, run the following:
 
     ```bash
     mvn org.apache.maven.plugins:maven-dependency-plugin:2.10:get -DartifactId=Saxon-HE -DgroupId=net.sf.saxon -Dversion=${SAXON_VERSION}
+    ```
+
+1. Install Calabash
+
+    To install Calabash, run the following:
+
+    ```bash
+    wget https://github.com/ndw/xmlcalabash1/releases/download/${CALABASH_VERSION}/xmlcalabash-${CALABASH_VERSION}.zip
+    mkdir -p "${CALABASH_HOME}"
+    unzip -d "${CALABASH_HOME}" "xmlcalabash-${CALABASH_VERSION}.zip"
+    mv "${CALABASH_HOME}"/*/* "${CALABASH_HOME}"
     ```
 
 Your environment should be setup.
@@ -153,7 +156,7 @@ To build the XML and JSON Schema for the OSCAL models, run the following:
 ./build/ci-cd/generate-schema.sh
 ```
 
-This will generate schemas for the Metaschema definitions defined in the metaschema [configuration file][metaschema-config].
+This will generate schemas based on the Metaschema definitions in the metaschema [configuration file][metaschema-config].
 
 ### Building XML-to-JSON and JSON-to-XML Converters for the OSCAL models
 
@@ -163,7 +166,7 @@ To build the XML-to-JSON and JSON-to-XML Converters for the OSCAL models, run th
 ./build/ci-cd/generate-content-converters.sh
 ```
 
-This will generate converters for the Metaschema definitions defined in the metaschema [configuration file][metaschema-config].
+This will generate converters based on the definitions in the metaschema [configuration file][metaschema-config].
 
 ### Building Website Documentation
 

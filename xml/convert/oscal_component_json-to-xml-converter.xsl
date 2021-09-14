@@ -1,1565 +1,2793 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                xmlns:m="http://csrc.nist.gov/ns/oscal/1.0/md-convertor"
+                xmlns:m="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
+                xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel"
+                xmlns:j="http://www.w3.org/2005/xpath-functions"
+                xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel"
                 version="3.0"
-                xpath-default-namespace="http://www.w3.org/2005/xpath-functions"
                 exclude-result-prefixes="#all">
-   <xsl:output indent="yes" method="xml"/>
-   <!-- OSCAL component-definition conversion stylesheet supports JSON->XML conversion -->
-   <xsl:param name="target-ns"
-              as="xs:string?"
-              select="'http://csrc.nist.gov/ns/oscal/1.0'"/>
-   <!-- 00000000000000000000000000000000000000000000000000000000000000 -->
-   <xsl:output indent="yes"/>
-   <xsl:strip-space elements="*"/>
-   <xsl:preserve-space elements="string"/>
-   <xsl:param name="json-file" as="xs:string?"/>
-   <xsl:variable name="using-json-file"
-                 select="replace($json-file,'^/','') ! ('file:///' || .)"/>
-   <xsl:variable name="json-xml"
-                 select="unparsed-text($using-json-file) ! json-to-xml(.)"/>
-   <xsl:template name="xsl:initial-template" match="/">
+<!-- JSON to XML conversion: pipeline -->
+   <xsl:output indent="true"/>
+   <!-- Processing architecture -->
+   <!-- $file should be a URI, absolute or relative to the XSLT transformation-->
+   <xsl:param name="file" as="xs:anyURI?"/>
+   <!-- Pass in $produce=supermodel to produce OSCAL M4 supermodel intermediate format -->
+   <xsl:param name="produce" as="xs:string">xml</xsl:param>
+   <xsl:template name="from-json">
+      <xsl:if test="not(unparsed-text-available($file))" expand-text="true">
+         <nm:ERROR xmlns:nm="http://csrc.nist.gov/ns/metaschema">No file found at { $file }</nm:ERROR>
+      </xsl:if>
+      <xsl:call-template name="from-xdm-json-xml">
+         <xsl:with-param name="source">
+            <xsl:try xmlns:err="http://www.w3.org/2005/xqt-errors"
+                     select="unparsed-text($file) ! json-to-xml(.)">
+               <xsl:catch expand-text="true">
+                  <nm:ERROR xmlns:nm="http://csrc.nist.gov/ns/metaschema" code="{ $err:code }">{{ $err:description }}</nm:ERROR>
+               </xsl:catch>
+            </xsl:try>
+         </xsl:with-param>
+      </xsl:call-template>
+   </xsl:template>
+   <xsl:mode name="cast-md" on-no-match="shallow-copy"/>
+   <xsl:template match="/" name="from-xdm-json-xml" expand-text="true">
+      <xsl:param name="source">
+         <xsl:choose><!-- evaluate { $file } as URI (absolute or relative to stylesheet)-->
+            <xsl:when test="exists($file)">
+               <xsl:try xmlns:err="http://www.w3.org/2005/xqt-errors" select="document($file)">
+                  <xsl:catch expand-text="true">
+                     <nm:ERROR xmlns:nm="http://csrc.nist.gov/ns/metaschema" code="{ $err:code }">{ $err:description }</nm:ERROR>
+                  </xsl:catch>
+               </xsl:try>
+            </xsl:when>
+            <xsl:otherwise>
+               <xsl:sequence select="/"/>
+            </xsl:otherwise>
+         </xsl:choose>
+      </xsl:param>
+      <xsl:if test="empty($source/j:map)" expand-text="true">
+         <nm:ERROR xmlns:nm="http://csrc.nist.gov/ns/metaschema">No XPath (XML) JSON found at { $file } - using syntax of http://www.w3.org/2005/xpath-functions</nm:ERROR>
+      </xsl:if>
+      <xsl:variable name="near-supermodel">
+         <xsl:apply-templates select="$source/*"/>
+      </xsl:variable>
+      <xsl:variable name="supermodel">
+         <xsl:apply-templates select="$near-supermodel/*" mode="cast-md"/>
+      </xsl:variable>
       <xsl:choose>
-         <xsl:when test="matches($json-file,'\S') and exists($json-xml/map)">
-            <xsl:apply-templates select="$json-xml" mode="json2xml"/>
+         <xsl:when test="$produce = 'supermodel'">
+            <xsl:sequence select="$supermodel"/>
          </xsl:when>
          <xsl:otherwise>
-            <xsl:apply-templates mode="json2xml"/>
+            <xsl:apply-templates select="$supermodel" mode="write-xml"/>
          </xsl:otherwise>
       </xsl:choose>
    </xsl:template>
-   <xsl:template match="/map[empty(@key)]" priority="10" mode="json2xml">
-      <xsl:apply-templates mode="#current" select="*[@key=('component-definition')]"/>
-   </xsl:template>
-   <xsl:template match="array" priority="10" mode="json2xml">
-      <xsl:apply-templates mode="#current"/>
-   </xsl:template>
-   <xsl:template match="string[@key='RICHTEXT']" mode="json2xml">
-      <xsl:call-template name="parse">
-         <xsl:with-param name="markdown-str" select="string(.)"/>
-      </xsl:call-template>
-   </xsl:template>
-   <xsl:template match="string[@key='STRVALUE']" mode="json2xml">
-      <xsl:apply-templates mode="#current"/>
-   </xsl:template>
-   <xsl:template mode="as-attribute" match="*"/>
-   <xsl:template mode="as-attribute" match="string[@key='id']" priority="0.4">
-      <xsl:attribute name="id">
-         <xsl:apply-templates mode="#current"/>
-      </xsl:attribute>
-   </xsl:template>
-   <!-- 00000000000000000000000000000000000000000000000000000000000000 -->
-   <!-- *** Handling assembly "metadata" *** -->
-   <!-- *** NB - template matching 'array' overrides this one *** -->
-   <xsl:template match="*[@key='metadata']" priority="4" mode="json2xml">
-      <xsl:element name="metadata" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('title')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('published')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('last-modified')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('version')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('oscal-version')]"/>
-         <xsl:for-each-group group-by="true()" select="*[@key=('revision', 'revision-history')]">
-            <xsl:element name="revision-history" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-               <xsl:apply-templates mode="#current" select="current-group()"/>
-            </xsl:element>
-         </xsl:for-each-group>
-         <xsl:apply-templates mode="#current" select="*[@key=('doc-id', 'document-ids')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('prop', 'properties')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('link', 'links')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('role', 'roles')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('location', 'locations')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('party', 'parties')]"/>
-         <xsl:apply-templates mode="#current"
-                              select="*[@key=('responsible-party', 'responsible-parties')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('remarks')]"/>
-      </xsl:element>
-   </xsl:template>
-   <!-- *** Handling assembly "back-matter" *** -->
-   <!-- *** NB - template matching 'array' overrides this one *** -->
-   <xsl:template match="*[@key='back-matter']" priority="4" mode="json2xml">
-      <xsl:element name="back-matter" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('resource', 'resources')]"/>
-      </xsl:element>
-   </xsl:template>
-   <!-- *** Handling assembly "revision" *** -->
-   <!-- *** NB - template matching 'array' overrides this one *** -->
-   <xsl:template match="*[@key='revision'] | array[@key='revision-history']/* | map[@key='revision-history']"
-                 priority="4"
-                 mode="json2xml">
-      <xsl:element name="revision" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('title')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('published')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('last-modified')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('version')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('oscal-version')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('prop', 'properties')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('link', 'links')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('remarks')]"/>
-      </xsl:element>
-   </xsl:template>
-   <!-- *** Handling field "link" *** -->
-   <!--*[@key='link'] | *[@key='links']  | *[@key='links']/*-->
-   <!-- *** NB - template matching 'array' overrides this one *** -->
-   <xsl:template match="*[@key='link'] | *[@key='links']  | *[@key='links']/*"
-                 priority="5"
-                 mode="json2xml">
-      <xsl:element name="link" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:for-each select="string[@key='text'], self::string">
-            <xsl:variable name="markup">
-               <xsl:apply-templates mode="infer-inlines"/>
-            </xsl:variable>
-            <xsl:apply-templates mode="cast-ns" select="$markup"/>
-         </xsl:for-each>
-      </xsl:element>
-   </xsl:template>
-   <xsl:template match="(*[@key='link'] | *[@key='links']  | *[@key='links']/*)/string[@key='text']"
-                 mode="as-attribute"/>
-   <xsl:template priority="8"
-                 match="(*[@key='link'] | *[@key='links']  | *[@key='links']/*)/string[@key='text']"
-                 mode="json2xml">
-      <xsl:apply-templates mode="#current"/>
-   </xsl:template>
-   <xsl:template priority="3"
-                 mode="json2xml"
-                 match="map[@key = 'links']/array[@key = 'text'] | array[@key = 'links']/map/array[@key = 'text']">
-      <xsl:variable name="expanded" as="element()*">
-         <array xmlns="http://www.w3.org/2005/xpath-functions" key="links">
-            <xsl:apply-templates mode="expand" select="array[@key = 'text']/string"/>
-         </array>
-      </xsl:variable>
-      <xsl:apply-templates select="$expanded" mode="json2xml"/>
-   </xsl:template>
-   <xsl:template mode="expand"
-                 match="map[@key = 'links']/array[@key = 'text']/string | array[@key = 'links']/map/array[@key = 'text']/string">
-      <xsl:variable name="me" select="."/>
-      <xsl:for-each select="parent::array/parent::map">
-         <xsl:copy>
-            <xsl:copy-of select="* except array[@key = 'text']"/>
-            <string xmlns="http://www.w3.org/2005/xpath-functions" key="text">
-               <xsl:value-of select="$me"/>
-            </string>
-         </xsl:copy>
-      </xsl:for-each>
-   </xsl:template>
-   <!-- *** Handling field "published" *** -->
-   <!--*[@key='published']-->
-   <!-- *** NB - template matching 'array' overrides this one *** -->
-   <xsl:template match="*[@key='published']" priority="5" mode="json2xml">
-      <xsl:element name="published" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
-         <xsl:for-each select="self::string | self::boolean | self::number">
-            <xsl:apply-templates mode="json2xml"/>
-         </xsl:for-each>
-      </xsl:element>
-   </xsl:template>
-   <!-- *** Handling field "last-modified" *** -->
-   <!--*[@key='last-modified']-->
-   <!-- *** NB - template matching 'array' overrides this one *** -->
-   <xsl:template match="*[@key='last-modified']" priority="5" mode="json2xml">
-      <xsl:element name="last-modified" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
-         <xsl:for-each select="self::string | self::boolean | self::number">
-            <xsl:apply-templates mode="json2xml"/>
-         </xsl:for-each>
-      </xsl:element>
-   </xsl:template>
-   <!-- *** Handling field "version" *** -->
-   <!--*[@key='version']-->
-   <!-- *** NB - template matching 'array' overrides this one *** -->
-   <xsl:template match="*[@key='version']" priority="5" mode="json2xml">
-      <xsl:element name="version" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
-         <xsl:for-each select="self::string | self::boolean | self::number">
-            <xsl:apply-templates mode="json2xml"/>
-         </xsl:for-each>
-      </xsl:element>
-   </xsl:template>
-   <!-- *** Handling field "oscal-version" *** -->
-   <!--*[@key='oscal-version']-->
-   <!-- *** NB - template matching 'array' overrides this one *** -->
-   <xsl:template match="*[@key='oscal-version']" priority="5" mode="json2xml">
-      <xsl:element name="oscal-version" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
-         <xsl:for-each select="self::string | self::boolean | self::number">
-            <xsl:apply-templates mode="json2xml"/>
-         </xsl:for-each>
-      </xsl:element>
-   </xsl:template>
-   <!-- *** Handling field "doc-id" *** -->
-   <!--*[@key='doc-id'] | *[@key='document-ids']  | *[@key='document-ids']/*-->
-   <!-- *** NB - template matching 'array' overrides this one *** -->
-   <xsl:template match="*[@key='doc-id'] | *[@key='document-ids']  | *[@key='document-ids']/*"
-                 priority="5"
-                 mode="json2xml">
-      <xsl:element name="doc-id" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates select="string[@key='identifier']" mode="json2xml"/>
-         <xsl:for-each select="self::string | self::boolean | self::number">
-            <xsl:apply-templates mode="json2xml"/>
-         </xsl:for-each>
-      </xsl:element>
-   </xsl:template>
-   <xsl:template match="(*[@key='doc-id'] | *[@key='document-ids']  | *[@key='document-ids']/*)/string[@key='identifier']"
-                 mode="as-attribute"/>
-   <xsl:template priority="8"
-                 match="(*[@key='doc-id'] | *[@key='document-ids']  | *[@key='document-ids']/*)/string[@key='identifier']"
-                 mode="json2xml">
-      <xsl:apply-templates mode="#current"/>
-   </xsl:template>
-   <xsl:template priority="3"
-                 mode="json2xml"
-                 match="map[@key = 'document-ids']/array[@key = 'identifier'] | array[@key = 'document-ids']/map/array[@key = 'identifier']">
-      <xsl:variable name="expanded" as="element()*">
-         <array xmlns="http://www.w3.org/2005/xpath-functions" key="document-ids">
-            <xsl:apply-templates mode="expand" select="array[@key = 'identifier']/string"/>
-         </array>
-      </xsl:variable>
-      <xsl:apply-templates select="$expanded" mode="json2xml"/>
-   </xsl:template>
-   <xsl:template mode="expand"
-                 match="map[@key = 'document-ids']/array[@key = 'identifier']/string | array[@key = 'document-ids']/map/array[@key = 'identifier']/string">
-      <xsl:variable name="me" select="."/>
-      <xsl:for-each select="parent::array/parent::map">
-         <xsl:copy>
-            <xsl:copy-of select="* except array[@key = 'identifier']"/>
-            <string xmlns="http://www.w3.org/2005/xpath-functions" key="identifier">
-               <xsl:value-of select="$me"/>
-            </string>
-         </xsl:copy>
-      </xsl:for-each>
-   </xsl:template>
-   <!-- *** Handling flag @type *** -->
-   <xsl:template match="*[@key='type']" priority="6" mode="json2xml"/>
-   <xsl:template priority="2"
-                 match="*[@key='doc-id']/*[@key='type'] | *[@key='document-ids']/*[@key='type'] | array[@key='document-ids']/*/*[@key='type'] | map[@key='document-ids']/*/*[@key='type'] | *[@key='person-id']/*[@key='type'] | *[@key='person-ids']/*[@key='type'] | array[@key='person-ids']/*/*[@key='type'] | map[@key='person-ids']/*/*[@key='type'] | *[@key='org-id']/*[@key='type'] | *[@key='organization-ids']/*[@key='type'] | array[@key='organization-ids']/*/*[@key='type'] | map[@key='organization-ids']/*/*[@key='type'] | *[@key='address']/*[@key='type'] | *[@key='addresses']/*[@key='type'] | array[@key='addresses']/*/*[@key='type'] | map[@key='addresses']/*/*[@key='type'] | *[@key='phone']/*[@key='type'] | *[@key='telephone-numbers']/*[@key='type'] | array[@key='telephone-numbers']/*/*[@key='type'] | map[@key='telephone-numbers']/*/*[@key='type']"
-                 mode="as-attribute">
-      <xsl:attribute name="type">
-         <xsl:apply-templates mode="#current"/>
-      </xsl:attribute>
-   </xsl:template>
-   <!-- *** Handling field "prop" *** -->
-   <!--*[@key='prop'] | *[@key='properties']  | *[@key='properties']/*-->
-   <!-- *** NB - template matching 'array' overrides this one *** -->
-   <xsl:template match="*[@key='prop'] | *[@key='properties']  | *[@key='properties']/*"
-                 priority="5"
-                 mode="json2xml">
-      <xsl:element name="prop" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates select="string[@key='value']" mode="json2xml"/>
-         <xsl:for-each select="self::string | self::boolean | self::number">
-            <xsl:apply-templates mode="json2xml"/>
-         </xsl:for-each>
-      </xsl:element>
-   </xsl:template>
-   <xsl:template match="(*[@key='prop'] | *[@key='properties']  | *[@key='properties']/*)/string[@key='value']"
-                 mode="as-attribute"/>
-   <xsl:template priority="8"
-                 match="(*[@key='prop'] | *[@key='properties']  | *[@key='properties']/*)/string[@key='value']"
-                 mode="json2xml">
-      <xsl:apply-templates mode="#current"/>
-   </xsl:template>
-   <xsl:template priority="3"
-                 mode="json2xml"
-                 match="map[@key = 'properties']/array[@key = 'value'] | array[@key = 'properties']/map/array[@key = 'value']">
-      <xsl:variable name="expanded" as="element()*">
-         <array xmlns="http://www.w3.org/2005/xpath-functions" key="properties">
-            <xsl:apply-templates mode="expand" select="array[@key = 'value']/string"/>
-         </array>
-      </xsl:variable>
-      <xsl:apply-templates select="$expanded" mode="json2xml"/>
-   </xsl:template>
-   <xsl:template mode="expand"
-                 match="map[@key = 'properties']/array[@key = 'value']/string | array[@key = 'properties']/map/array[@key = 'value']/string">
-      <xsl:variable name="me" select="."/>
-      <xsl:for-each select="parent::array/parent::map">
-         <xsl:copy>
-            <xsl:copy-of select="* except array[@key = 'value']"/>
-            <string xmlns="http://www.w3.org/2005/xpath-functions" key="value">
-               <xsl:value-of select="$me"/>
-            </string>
-         </xsl:copy>
-      </xsl:for-each>
-   </xsl:template>
-   <!-- *** Handling assembly "annotation" *** -->
-   <!-- *** NB - template matching 'array' overrides this one *** -->
-   <xsl:template match="*[@key='annotation'] | array[@key='annotations']/* | map[@key='annotations']"
-                 priority="4"
-                 mode="json2xml">
-      <xsl:element name="annotation" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('remarks')]"/>
-      </xsl:element>
-   </xsl:template>
-   <!-- *** Handling flag "annotation/@value" *** -->
-   <!-- suppressing when matched in json2xml traversal-->
-   <xsl:template match="*[@key='annotation']/*[@key='value'] | *[@key='annotations']/*[@key='value'] | *[@key='annotations']/*/*[@key='value']"
-                 priority="7"
-                 mode="json2xml"/>
-   <xsl:template priority="3"
-                 match="*[@key='annotation']/*[@key='value'] | *[@key='annotations']/*[@key='value'] | *[@key='annotations']/*/*[@key='value']"
-                 mode="as-attribute">
-      <xsl:attribute name="value">
-         <xsl:apply-templates mode="#current"/>
-      </xsl:attribute>
-   </xsl:template>
-   <!-- *** Handling flag @name *** -->
-   <xsl:template match="*[@key='name']" priority="6" mode="json2xml"/>
-   <xsl:template priority="2"
-                 match="*[@key='prop']/*[@key='name'] | *[@key='properties']/*[@key='name'] | array[@key='properties']/*/*[@key='name'] | map[@key='properties']/*/*[@key='name'] | *[@key='annotation']/*[@key='name'] | *[@key='annotations']/*[@key='name'] | array[@key='annotations']/*/*[@key='name'] | map[@key='annotations']/*/*[@key='name'] | *[@key='component']/*[@key='name'] | *[@key='components']/*[@key='name'] | array[@key='components']/*/*[@key='name'] | map[@key='components']/*/*[@key='name'] | *[@key='capability']/*[@key='name'] | *[@key='capabilities']/*[@key='name'] | array[@key='capabilities']/*/*[@key='name'] | map[@key='capabilities']/*/*[@key='name']"
-                 mode="as-attribute">
-      <xsl:attribute name="name">
-         <xsl:apply-templates mode="#current"/>
-      </xsl:attribute>
-   </xsl:template>
-   <!-- *** Handling flag @ns *** -->
-   <xsl:template match="*[@key='ns']" priority="6" mode="json2xml"/>
-   <xsl:template priority="2"
-                 match="*[@key='prop']/*[@key='ns'] | *[@key='properties']/*[@key='ns'] | array[@key='properties']/*/*[@key='ns'] | map[@key='properties']/*/*[@key='ns'] | *[@key='annotation']/*[@key='ns'] | *[@key='annotations']/*[@key='ns'] | array[@key='annotations']/*/*[@key='ns'] | map[@key='annotations']/*/*[@key='ns']"
-                 mode="as-attribute">
-      <xsl:attribute name="ns">
-         <xsl:apply-templates mode="#current"/>
-      </xsl:attribute>
-   </xsl:template>
-   <!-- *** Handling flag @class *** -->
-   <xsl:template match="*[@key='class']" priority="6" mode="json2xml"/>
-   <xsl:template priority="2"
-                 match="*[@key='prop']/*[@key='class'] | *[@key='properties']/*[@key='class'] | array[@key='properties']/*/*[@key='class'] | map[@key='properties']/*/*[@key='class']"
-                 mode="as-attribute">
-      <xsl:attribute name="class">
-         <xsl:apply-templates mode="#current"/>
-      </xsl:attribute>
-   </xsl:template>
-   <!-- *** Handling assembly "location" *** -->
-   <!-- *** NB - template matching 'array' overrides this one *** -->
-   <xsl:template match="*[@key='location'] | array[@key='locations']/* | map[@key='locations']"
-                 priority="4"
-                 mode="json2xml">
-      <xsl:element name="location" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('address')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('email', 'email-addresses')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('phone', 'telephone-numbers')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('url', 'URLs')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('prop', 'properties')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('annotation', 'annotations')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('link', 'links')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('remarks')]"/>
-      </xsl:element>
-   </xsl:template>
-   <!-- *** Handling field "location-id" *** -->
-   <!--*[@key='location-id'] | *[@key='location-ids']  | *[@key='location-ids']/*-->
-   <!-- *** NB - template matching 'array' overrides this one *** -->
-   <xsl:template match="*[@key='location-id'] | *[@key='location-ids']  | *[@key='location-ids']/*"
-                 priority="5"
-                 mode="json2xml">
-      <xsl:element name="location-id" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
-         <xsl:for-each select="self::string | self::boolean | self::number">
-            <xsl:apply-templates mode="json2xml"/>
-         </xsl:for-each>
-      </xsl:element>
-   </xsl:template>
-   <xsl:template priority="3"
-                 mode="json2xml"
-                 match="map[@key = 'location-ids']/array[@key = 'STRVALUE'] | array[@key = 'location-ids']/map/array[@key = 'STRVALUE']">
-      <xsl:variable name="expanded" as="element()*">
-         <array xmlns="http://www.w3.org/2005/xpath-functions" key="location-ids">
-            <xsl:apply-templates mode="expand" select="array[@key = 'STRVALUE']/string"/>
-         </array>
-      </xsl:variable>
-      <xsl:apply-templates select="$expanded" mode="json2xml"/>
-   </xsl:template>
-   <xsl:template mode="expand"
-                 match="map[@key = 'location-ids']/array[@key = 'STRVALUE']/string | array[@key = 'location-ids']/map/array[@key = 'STRVALUE']/string">
-      <xsl:variable name="me" select="."/>
-      <xsl:for-each select="parent::array/parent::map">
-         <xsl:copy>
-            <xsl:copy-of select="* except array[@key = 'STRVALUE']"/>
-            <string xmlns="http://www.w3.org/2005/xpath-functions" key="STRVALUE">
-               <xsl:value-of select="$me"/>
-            </string>
-         </xsl:copy>
-      </xsl:for-each>
-   </xsl:template>
-   <!-- *** Handling assembly "party" *** -->
-   <!-- *** NB - template matching 'array' overrides this one *** -->
-   <xsl:template match="*[@key='party'] | array[@key='parties']/* | map[@key='parties']"
-                 priority="4"
-                 mode="json2xml">
-      <xsl:element name="party" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('person', 'persons')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('org')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('prop', 'properties')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('annotation', 'annotations')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('link', 'links')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('remarks')]"/>
-      </xsl:element>
-   </xsl:template>
-   <!-- *** Handling field "party-id" *** -->
-   <!--*[@key='party-id'] | *[@key='party-ids']  | *[@key='party-ids']/*-->
-   <!-- *** NB - template matching 'array' overrides this one *** -->
-   <xsl:template match="*[@key='party-id'] | *[@key='party-ids']  | *[@key='party-ids']/*"
-                 priority="5"
-                 mode="json2xml">
-      <xsl:element name="party-id" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
-         <xsl:for-each select="self::string | self::boolean | self::number">
-            <xsl:apply-templates mode="json2xml"/>
-         </xsl:for-each>
-      </xsl:element>
-   </xsl:template>
-   <xsl:template priority="3"
-                 mode="json2xml"
-                 match="map[@key = 'party-ids']/array[@key = 'STRVALUE'] | array[@key = 'party-ids']/map/array[@key = 'STRVALUE']">
-      <xsl:variable name="expanded" as="element()*">
-         <array xmlns="http://www.w3.org/2005/xpath-functions" key="party-ids">
-            <xsl:apply-templates mode="expand" select="array[@key = 'STRVALUE']/string"/>
-         </array>
-      </xsl:variable>
-      <xsl:apply-templates select="$expanded" mode="json2xml"/>
-   </xsl:template>
-   <xsl:template mode="expand"
-                 match="map[@key = 'party-ids']/array[@key = 'STRVALUE']/string | array[@key = 'party-ids']/map/array[@key = 'STRVALUE']/string">
-      <xsl:variable name="me" select="."/>
-      <xsl:for-each select="parent::array/parent::map">
-         <xsl:copy>
-            <xsl:copy-of select="* except array[@key = 'STRVALUE']"/>
-            <string xmlns="http://www.w3.org/2005/xpath-functions" key="STRVALUE">
-               <xsl:value-of select="$me"/>
-            </string>
-         </xsl:copy>
-      </xsl:for-each>
-   </xsl:template>
-   <!-- *** Handling assembly "person" *** -->
-   <!-- *** NB - template matching 'array' overrides this one *** -->
-   <xsl:template match="*[@key='person'] | array[@key='persons']/* | map[@key='persons']"
-                 priority="4"
-                 mode="json2xml">
-      <xsl:element name="person" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('person-name')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('short-name')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('org-name')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('person-id', 'person-ids')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('org-id', 'organization-ids')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('address', 'addresses')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('location-id', 'location-ids')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('email', 'email-addresses')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('phone', 'telephone-numbers')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('url', 'URLs')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('prop', 'properties')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('annotation', 'annotations')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('link', 'links')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('remarks')]"/>
-      </xsl:element>
-   </xsl:template>
-   <!-- *** Handling assembly "org" *** -->
-   <!-- *** NB - template matching 'array' overrides this one *** -->
-   <xsl:template match="*[@key='org']" priority="4" mode="json2xml">
-      <xsl:element name="org" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('org-name')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('short-name')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('org-id', 'organization-ids')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('address', 'addresses')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('location-id', 'location-ids')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('email', 'email-addresses')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('phone', 'telephone-numbers')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('url', 'URLs')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('prop', 'properties')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('annotation', 'annotations')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('link', 'links')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('remarks')]"/>
-      </xsl:element>
-   </xsl:template>
-   <!-- *** Handling field "person-id" *** -->
-   <!--*[@key='person-id'] | *[@key='person-ids']  | *[@key='person-ids']/*-->
-   <!-- *** NB - template matching 'array' overrides this one *** -->
-   <xsl:template match="*[@key='person-id'] | *[@key='person-ids']  | *[@key='person-ids']/*"
-                 priority="5"
-                 mode="json2xml">
-      <xsl:element name="person-id" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates select="string[@key='id']" mode="json2xml"/>
-         <xsl:for-each select="self::string | self::boolean | self::number">
-            <xsl:apply-templates mode="json2xml"/>
-         </xsl:for-each>
-      </xsl:element>
-   </xsl:template>
-   <xsl:template match="(*[@key='person-id'] | *[@key='person-ids']  | *[@key='person-ids']/*)/string[@key='id']"
-                 mode="as-attribute"/>
-   <xsl:template priority="8"
-                 match="(*[@key='person-id'] | *[@key='person-ids']  | *[@key='person-ids']/*)/string[@key='id']"
-                 mode="json2xml">
-      <xsl:apply-templates mode="#current"/>
-   </xsl:template>
-   <xsl:template priority="3"
-                 mode="json2xml"
-                 match="map[@key = 'person-ids']/array[@key = 'id'] | array[@key = 'person-ids']/map/array[@key = 'id']">
-      <xsl:variable name="expanded" as="element()*">
-         <array xmlns="http://www.w3.org/2005/xpath-functions" key="person-ids">
-            <xsl:apply-templates mode="expand" select="array[@key = 'id']/string"/>
-         </array>
-      </xsl:variable>
-      <xsl:apply-templates select="$expanded" mode="json2xml"/>
-   </xsl:template>
-   <xsl:template mode="expand"
-                 match="map[@key = 'person-ids']/array[@key = 'id']/string | array[@key = 'person-ids']/map/array[@key = 'id']/string">
-      <xsl:variable name="me" select="."/>
-      <xsl:for-each select="parent::array/parent::map">
-         <xsl:copy>
-            <xsl:copy-of select="* except array[@key = 'id']"/>
-            <string xmlns="http://www.w3.org/2005/xpath-functions" key="id">
-               <xsl:value-of select="$me"/>
-            </string>
-         </xsl:copy>
-      </xsl:for-each>
-   </xsl:template>
-   <!-- *** Handling field "org-id" *** -->
-   <!--*[@key='org-id'] | *[@key='organization-ids']  | *[@key='organization-ids']/*-->
-   <!-- *** NB - template matching 'array' overrides this one *** -->
-   <xsl:template match="*[@key='org-id'] | *[@key='organization-ids']  | *[@key='organization-ids']/*"
-                 priority="5"
-                 mode="json2xml">
-      <xsl:element name="org-id" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates select="string[@key='id']" mode="json2xml"/>
-         <xsl:for-each select="self::string | self::boolean | self::number">
-            <xsl:apply-templates mode="json2xml"/>
-         </xsl:for-each>
-      </xsl:element>
-   </xsl:template>
-   <xsl:template match="(*[@key='org-id'] | *[@key='organization-ids']  | *[@key='organization-ids']/*)/string[@key='id']"
-                 mode="as-attribute"/>
-   <xsl:template priority="8"
-                 match="(*[@key='org-id'] | *[@key='organization-ids']  | *[@key='organization-ids']/*)/string[@key='id']"
-                 mode="json2xml">
-      <xsl:apply-templates mode="#current"/>
-   </xsl:template>
-   <xsl:template priority="3"
-                 mode="json2xml"
-                 match="map[@key = 'organization-ids']/array[@key = 'id'] | array[@key = 'organization-ids']/map/array[@key = 'id']">
-      <xsl:variable name="expanded" as="element()*">
-         <array xmlns="http://www.w3.org/2005/xpath-functions" key="organization-ids">
-            <xsl:apply-templates mode="expand" select="array[@key = 'id']/string"/>
-         </array>
-      </xsl:variable>
-      <xsl:apply-templates select="$expanded" mode="json2xml"/>
-   </xsl:template>
-   <xsl:template mode="expand"
-                 match="map[@key = 'organization-ids']/array[@key = 'id']/string | array[@key = 'organization-ids']/map/array[@key = 'id']/string">
-      <xsl:variable name="me" select="."/>
-      <xsl:for-each select="parent::array/parent::map">
-         <xsl:copy>
-            <xsl:copy-of select="* except array[@key = 'id']"/>
-            <string xmlns="http://www.w3.org/2005/xpath-functions" key="id">
-               <xsl:value-of select="$me"/>
-            </string>
-         </xsl:copy>
-      </xsl:for-each>
-   </xsl:template>
-   <!-- *** Handling assembly "rlink" *** -->
-   <!-- *** NB - template matching 'array' overrides this one *** -->
-   <xsl:template match="*[@key='rlink'] | array[@key='rlinks']/* | map[@key='rlinks']"
-                 priority="4"
-                 mode="json2xml">
-      <xsl:element name="rlink" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('hash', 'hashes')]"/>
-      </xsl:element>
-   </xsl:template>
-   <!-- *** Handling flag @rel *** -->
-   <xsl:template match="*[@key='rel']" priority="6" mode="json2xml"/>
-   <xsl:template priority="2"
-                 match="*[@key='link']/*[@key='rel'] | *[@key='links']/*[@key='rel'] | array[@key='links']/*/*[@key='rel'] | map[@key='links']/*/*[@key='rel']"
-                 mode="as-attribute">
-      <xsl:attribute name="rel">
-         <xsl:apply-templates mode="#current"/>
-      </xsl:attribute>
-   </xsl:template>
-   <!-- *** Handling flag @media-type *** -->
-   <xsl:template match="*[@key='media-type']" priority="6" mode="json2xml"/>
-   <xsl:template priority="2"
-                 match="*[@key='link']/*[@key='media-type'] | *[@key='links']/*[@key='media-type'] | array[@key='links']/*/*[@key='media-type'] | map[@key='links']/*/*[@key='media-type'] | *[@key='rlink']/*[@key='media-type'] | *[@key='rlinks']/*[@key='media-type'] | array[@key='rlinks']/*/*[@key='media-type'] | map[@key='rlinks']/*/*[@key='media-type'] | *[@key='base64']/*[@key='media-type'] | *[@key='attachments']/*[@key='media-type'] | array[@key='attachments']/*/*[@key='media-type'] | map[@key='attachments']/*/*[@key='media-type']"
-                 mode="as-attribute">
-      <xsl:attribute name="media-type">
-         <xsl:apply-templates mode="#current"/>
-      </xsl:attribute>
-   </xsl:template>
-   <!-- *** Handling field "person-name" *** -->
-   <!--*[@key='person-name']-->
-   <!-- *** NB - template matching 'array' overrides this one *** -->
-   <xsl:template match="*[@key='person-name']" priority="5" mode="json2xml">
-      <xsl:element name="person-name" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
-         <xsl:for-each select="self::string | self::boolean | self::number">
-            <xsl:apply-templates mode="json2xml"/>
-         </xsl:for-each>
-      </xsl:element>
-   </xsl:template>
-   <!-- *** Handling field "org-name" *** -->
-   <!--*[@key='org-name']-->
-   <!-- *** NB - template matching 'array' overrides this one *** -->
-   <xsl:template match="*[@key='org-name']" priority="5" mode="json2xml">
-      <xsl:element name="org-name" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
-         <xsl:for-each select="self::string | self::boolean | self::number">
-            <xsl:apply-templates mode="json2xml"/>
-         </xsl:for-each>
-      </xsl:element>
-   </xsl:template>
-   <!-- *** Handling field "short-name" *** -->
-   <!--*[@key='short-name']-->
-   <!-- *** NB - template matching 'array' overrides this one *** -->
-   <xsl:template match="*[@key='short-name']" priority="5" mode="json2xml">
-      <xsl:element name="short-name" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
-         <xsl:for-each select="self::string | self::boolean | self::number">
-            <xsl:apply-templates mode="json2xml"/>
-         </xsl:for-each>
-      </xsl:element>
-   </xsl:template>
-   <!-- *** Handling assembly "address" *** -->
-   <!-- *** NB - template matching 'array' overrides this one *** -->
-   <xsl:template match="*[@key='address'] | array[@key='addresses']/* | map[@key='addresses']"
-                 priority="4"
-                 mode="json2xml">
-      <xsl:element name="address" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('addr-line', 'postal-address')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('city')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('state')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('postal-code')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('country')]"/>
-      </xsl:element>
-   </xsl:template>
-   <!-- *** Handling field "addr-line" *** -->
-   <!--*[@key='addr-line'] | *[@key='postal-address']  | *[@key='postal-address']/*-->
-   <!-- *** NB - template matching 'array' overrides this one *** -->
-   <xsl:template match="*[@key='addr-line'] | *[@key='postal-address']  | *[@key='postal-address']/*"
-                 priority="5"
-                 mode="json2xml">
-      <xsl:element name="addr-line" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
-         <xsl:for-each select="self::string | self::boolean | self::number">
-            <xsl:apply-templates mode="json2xml"/>
-         </xsl:for-each>
-      </xsl:element>
-   </xsl:template>
-   <xsl:template priority="3"
-                 mode="json2xml"
-                 match="map[@key = 'postal-address']/array[@key = 'STRVALUE'] | array[@key = 'postal-address']/map/array[@key = 'STRVALUE']">
-      <xsl:variable name="expanded" as="element()*">
-         <array xmlns="http://www.w3.org/2005/xpath-functions" key="postal-address">
-            <xsl:apply-templates mode="expand" select="array[@key = 'STRVALUE']/string"/>
-         </array>
-      </xsl:variable>
-      <xsl:apply-templates select="$expanded" mode="json2xml"/>
-   </xsl:template>
-   <xsl:template mode="expand"
-                 match="map[@key = 'postal-address']/array[@key = 'STRVALUE']/string | array[@key = 'postal-address']/map/array[@key = 'STRVALUE']/string">
-      <xsl:variable name="me" select="."/>
-      <xsl:for-each select="parent::array/parent::map">
-         <xsl:copy>
-            <xsl:copy-of select="* except array[@key = 'STRVALUE']"/>
-            <string xmlns="http://www.w3.org/2005/xpath-functions" key="STRVALUE">
-               <xsl:value-of select="$me"/>
-            </string>
-         </xsl:copy>
-      </xsl:for-each>
-   </xsl:template>
-   <!-- *** Handling field "city" *** -->
-   <!--*[@key='city']-->
-   <!-- *** NB - template matching 'array' overrides this one *** -->
-   <xsl:template match="*[@key='city']" priority="5" mode="json2xml">
-      <xsl:element name="city" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
-         <xsl:for-each select="self::string | self::boolean | self::number">
-            <xsl:apply-templates mode="json2xml"/>
-         </xsl:for-each>
-      </xsl:element>
-   </xsl:template>
-   <!-- *** Handling field "state" *** -->
-   <!--*[@key='state']-->
-   <!-- *** NB - template matching 'array' overrides this one *** -->
-   <xsl:template match="*[@key='state']" priority="5" mode="json2xml">
-      <xsl:element name="state" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
-         <xsl:for-each select="self::string | self::boolean | self::number">
-            <xsl:apply-templates mode="json2xml"/>
-         </xsl:for-each>
-      </xsl:element>
-   </xsl:template>
-   <!-- *** Handling field "postal-code" *** -->
-   <!--*[@key='postal-code']-->
-   <!-- *** NB - template matching 'array' overrides this one *** -->
-   <xsl:template match="*[@key='postal-code']" priority="5" mode="json2xml">
-      <xsl:element name="postal-code" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
-         <xsl:for-each select="self::string | self::boolean | self::number">
-            <xsl:apply-templates mode="json2xml"/>
-         </xsl:for-each>
-      </xsl:element>
-   </xsl:template>
-   <!-- *** Handling field "country" *** -->
-   <!--*[@key='country']-->
-   <!-- *** NB - template matching 'array' overrides this one *** -->
-   <xsl:template match="*[@key='country']" priority="5" mode="json2xml">
-      <xsl:element name="country" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
-         <xsl:for-each select="self::string | self::boolean | self::number">
-            <xsl:apply-templates mode="json2xml"/>
-         </xsl:for-each>
-      </xsl:element>
-   </xsl:template>
-   <!-- *** Handling field "email" *** -->
-   <!--*[@key='email'] | *[@key='email-addresses']  | *[@key='email-addresses']/*-->
-   <!-- *** NB - template matching 'array' overrides this one *** -->
-   <xsl:template match="*[@key='email'] | *[@key='email-addresses']  | *[@key='email-addresses']/*"
-                 priority="5"
-                 mode="json2xml">
-      <xsl:element name="email" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
-         <xsl:for-each select="self::string | self::boolean | self::number">
-            <xsl:apply-templates mode="json2xml"/>
-         </xsl:for-each>
-      </xsl:element>
-   </xsl:template>
-   <xsl:template priority="3"
-                 mode="json2xml"
-                 match="map[@key = 'email-addresses']/array[@key = 'STRVALUE'] | array[@key = 'email-addresses']/map/array[@key = 'STRVALUE']">
-      <xsl:variable name="expanded" as="element()*">
-         <array xmlns="http://www.w3.org/2005/xpath-functions" key="email-addresses">
-            <xsl:apply-templates mode="expand" select="array[@key = 'STRVALUE']/string"/>
-         </array>
-      </xsl:variable>
-      <xsl:apply-templates select="$expanded" mode="json2xml"/>
-   </xsl:template>
-   <xsl:template mode="expand"
-                 match="map[@key = 'email-addresses']/array[@key = 'STRVALUE']/string | array[@key = 'email-addresses']/map/array[@key = 'STRVALUE']/string">
-      <xsl:variable name="me" select="."/>
-      <xsl:for-each select="parent::array/parent::map">
-         <xsl:copy>
-            <xsl:copy-of select="* except array[@key = 'STRVALUE']"/>
-            <string xmlns="http://www.w3.org/2005/xpath-functions" key="STRVALUE">
-               <xsl:value-of select="$me"/>
-            </string>
-         </xsl:copy>
-      </xsl:for-each>
-   </xsl:template>
-   <!-- *** Handling field "phone" *** -->
-   <!--*[@key='phone'] | *[@key='telephone-numbers']  | *[@key='telephone-numbers']/*-->
-   <!-- *** NB - template matching 'array' overrides this one *** -->
-   <xsl:template match="*[@key='phone'] | *[@key='telephone-numbers']  | *[@key='telephone-numbers']/*"
-                 priority="5"
-                 mode="json2xml">
-      <xsl:element name="phone" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates select="string[@key='number']" mode="json2xml"/>
-         <xsl:for-each select="self::string | self::boolean | self::number">
-            <xsl:apply-templates mode="json2xml"/>
-         </xsl:for-each>
-      </xsl:element>
-   </xsl:template>
-   <xsl:template match="(*[@key='phone'] | *[@key='telephone-numbers']  | *[@key='telephone-numbers']/*)/string[@key='number']"
-                 mode="as-attribute"/>
-   <xsl:template priority="8"
-                 match="(*[@key='phone'] | *[@key='telephone-numbers']  | *[@key='telephone-numbers']/*)/string[@key='number']"
-                 mode="json2xml">
-      <xsl:apply-templates mode="#current"/>
-   </xsl:template>
-   <xsl:template priority="3"
-                 mode="json2xml"
-                 match="map[@key = 'telephone-numbers']/array[@key = 'number'] | array[@key = 'telephone-numbers']/map/array[@key = 'number']">
-      <xsl:variable name="expanded" as="element()*">
-         <array xmlns="http://www.w3.org/2005/xpath-functions" key="telephone-numbers">
-            <xsl:apply-templates mode="expand" select="array[@key = 'number']/string"/>
-         </array>
-      </xsl:variable>
-      <xsl:apply-templates select="$expanded" mode="json2xml"/>
-   </xsl:template>
-   <xsl:template mode="expand"
-                 match="map[@key = 'telephone-numbers']/array[@key = 'number']/string | array[@key = 'telephone-numbers']/map/array[@key = 'number']/string">
-      <xsl:variable name="me" select="."/>
-      <xsl:for-each select="parent::array/parent::map">
-         <xsl:copy>
-            <xsl:copy-of select="* except array[@key = 'number']"/>
-            <string xmlns="http://www.w3.org/2005/xpath-functions" key="number">
-               <xsl:value-of select="$me"/>
-            </string>
-         </xsl:copy>
-      </xsl:for-each>
-   </xsl:template>
-   <!-- *** Handling field "url" *** -->
-   <!--*[@key='url'] | *[@key='URLs']  | *[@key='URLs']/*-->
-   <!-- *** NB - template matching 'array' overrides this one *** -->
-   <xsl:template match="*[@key='url'] | *[@key='URLs']  | *[@key='URLs']/*"
-                 priority="5"
-                 mode="json2xml">
-      <xsl:element name="url" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
-         <xsl:for-each select="self::string | self::boolean | self::number">
-            <xsl:apply-templates mode="json2xml"/>
-         </xsl:for-each>
-      </xsl:element>
-   </xsl:template>
-   <xsl:template priority="3"
-                 mode="json2xml"
-                 match="map[@key = 'URLs']/array[@key = 'STRVALUE'] | array[@key = 'URLs']/map/array[@key = 'STRVALUE']">
-      <xsl:variable name="expanded" as="element()*">
-         <array xmlns="http://www.w3.org/2005/xpath-functions" key="URLs">
-            <xsl:apply-templates mode="expand" select="array[@key = 'STRVALUE']/string"/>
-         </array>
-      </xsl:variable>
-      <xsl:apply-templates select="$expanded" mode="json2xml"/>
-   </xsl:template>
-   <xsl:template mode="expand"
-                 match="map[@key = 'URLs']/array[@key = 'STRVALUE']/string | array[@key = 'URLs']/map/array[@key = 'STRVALUE']/string">
-      <xsl:variable name="me" select="."/>
-      <xsl:for-each select="parent::array/parent::map">
-         <xsl:copy>
-            <xsl:copy-of select="* except array[@key = 'STRVALUE']"/>
-            <string xmlns="http://www.w3.org/2005/xpath-functions" key="STRVALUE">
-               <xsl:value-of select="$me"/>
-            </string>
-         </xsl:copy>
-      </xsl:for-each>
-   </xsl:template>
-   <!-- *** Handling field "desc" *** -->
-   <!--*[@key='desc']-->
-   <!-- *** NB - template matching 'array' overrides this one *** -->
-   <xsl:template match="*[@key='desc']" priority="5" mode="json2xml">
-      <xsl:element name="desc" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
-         <xsl:for-each select="self::string | self::boolean | self::number">
-            <xsl:apply-templates mode="json2xml"/>
-         </xsl:for-each>
-      </xsl:element>
-   </xsl:template>
-   <!-- *** Handling field "text" *** -->
-   <!--*[@key='text']-->
-   <!-- *** NB - template matching 'array' overrides this one *** -->
-   <xsl:template match="*[@key='text']" priority="5" mode="json2xml">
-      <xsl:element name="text" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:for-each select="string[@key='RICHTEXT'], self::string">
-            <xsl:variable name="markup">
-               <xsl:apply-templates mode="infer-inlines"/>
-            </xsl:variable>
-            <xsl:apply-templates mode="cast-ns" select="$markup"/>
-         </xsl:for-each>
-      </xsl:element>
-   </xsl:template>
-   <!-- *** Handling assembly "biblio" *** -->
-   <!-- *** NB - template matching 'array' overrides this one *** -->
-   <xsl:template match="*[@key='biblio']" priority="4" mode="json2xml">
-      <xsl:element name="biblio" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates mode="as-attribute"/>
-      </xsl:element>
-   </xsl:template>
-   <!-- *** Handling assembly "resource" *** -->
-   <!-- *** NB - template matching 'array' overrides this one *** -->
-   <xsl:template match="*[@key='resource'] | array[@key='resources']/* | map[@key='resources']"
-                 priority="4"
-                 mode="json2xml">
-      <xsl:element name="resource" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('title')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('desc')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('prop', 'properties')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('doc-id', 'document-ids')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('citation')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('rlink', 'rlinks')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('base64', 'attachments')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('remarks')]"/>
-      </xsl:element>
-   </xsl:template>
-   <!-- *** Handling assembly "citation" *** -->
-   <!-- *** NB - template matching 'array' overrides this one *** -->
-   <xsl:template match="*[@key='citation']" priority="4" mode="json2xml">
-      <xsl:element name="citation" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('text')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('prop', 'properties')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('biblio')]"/>
-      </xsl:element>
-   </xsl:template>
-   <!-- *** Handling field "hash" *** -->
-   <!--*[@key='hash'] | *[@key='hashes']  | *[@key='hashes']/*-->
-   <!-- *** NB - template matching 'array' overrides this one *** -->
-   <xsl:template match="*[@key='hash'] | *[@key='hashes']  | *[@key='hashes']/*"
-                 priority="5"
-                 mode="json2xml">
-      <xsl:element name="hash" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates select="string[@key='value']" mode="json2xml"/>
-         <xsl:for-each select="self::string | self::boolean | self::number">
-            <xsl:apply-templates mode="json2xml"/>
-         </xsl:for-each>
-      </xsl:element>
-   </xsl:template>
-   <xsl:template match="(*[@key='hash'] | *[@key='hashes']  | *[@key='hashes']/*)/string[@key='value']"
-                 mode="as-attribute"/>
-   <xsl:template priority="8"
-                 match="(*[@key='hash'] | *[@key='hashes']  | *[@key='hashes']/*)/string[@key='value']"
-                 mode="json2xml">
-      <xsl:apply-templates mode="#current"/>
-   </xsl:template>
-   <xsl:template priority="3"
-                 mode="json2xml"
-                 match="map[@key = 'hashes']/array[@key = 'value'] | array[@key = 'hashes']/map/array[@key = 'value']">
-      <xsl:variable name="expanded" as="element()*">
-         <array xmlns="http://www.w3.org/2005/xpath-functions" key="hashes">
-            <xsl:apply-templates mode="expand" select="array[@key = 'value']/string"/>
-         </array>
-      </xsl:variable>
-      <xsl:apply-templates select="$expanded" mode="json2xml"/>
-   </xsl:template>
-   <xsl:template mode="expand"
-                 match="map[@key = 'hashes']/array[@key = 'value']/string | array[@key = 'hashes']/map/array[@key = 'value']/string">
-      <xsl:variable name="me" select="."/>
-      <xsl:for-each select="parent::array/parent::map">
-         <xsl:copy>
-            <xsl:copy-of select="* except array[@key = 'value']"/>
-            <string xmlns="http://www.w3.org/2005/xpath-functions" key="value">
-               <xsl:value-of select="$me"/>
-            </string>
-         </xsl:copy>
-      </xsl:for-each>
-   </xsl:template>
-   <!-- *** Handling flag @algorithm *** -->
-   <xsl:template match="*[@key='algorithm']" priority="6" mode="json2xml"/>
-   <xsl:template priority="2"
-                 match="*[@key='hash']/*[@key='algorithm'] | *[@key='hashes']/*[@key='algorithm'] | array[@key='hashes']/*/*[@key='algorithm'] | map[@key='hashes']/*/*[@key='algorithm']"
-                 mode="as-attribute">
-      <xsl:attribute name="algorithm">
-         <xsl:apply-templates mode="#current"/>
-      </xsl:attribute>
-   </xsl:template>
-   <!-- *** Handling assembly "role" *** -->
-   <!-- *** NB - template matching 'array' overrides this one *** -->
-   <xsl:template match="*[@key='role'] | array[@key='roles']/* | map[@key='roles']"
-                 priority="4"
-                 mode="json2xml">
-      <xsl:element name="role" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('title')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('short-name')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('desc')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('prop', 'properties')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('annotation', 'annotations')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('link', 'links')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('remarks')]"/>
-      </xsl:element>
-   </xsl:template>
-   <!-- *** Handling assembly "responsible-party" *** -->
-   <!-- *** NB - template matching 'array' overrides this one *** -->
-   <xsl:template match="*[@key='responsible-party'] | array[@key='responsible-parties']/* | map[@key='responsible-parties']"
-                 priority="4"
-                 mode="json2xml">
-      <xsl:element name="responsible-party" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates select="@key" mode="as-attribute"/>
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('party-id', 'party-ids')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('prop', 'properties')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('annotation', 'annotations')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('link', 'links')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('remarks')]"/>
-      </xsl:element>
-   </xsl:template>
-   <xsl:template match="map[@key=('responsible-parties')]"
-                 priority="5"
-                 mode="json2xml">
-      <xsl:apply-templates mode="json2xml"/>
-   </xsl:template>
-   <xsl:template priority="2"
-                 match="map[@key=('responsible-parties')]/*/@key"
-                 mode="as-attribute">
-      <xsl:attribute name="role-id">
+   <xsl:template match="/j:map[empty(@key)]" priority="10">
+      <xsl:apply-templates/>
+   </xsl:template>
+   <!-- JSON to XML conversion: object filters -->
+   <xsl:strip-space elements="j:map j:array"/>
+   <!-- METASCHEMA conversion stylesheet supports JSON -> METASCHEMA/SUPERMODEL conversion -->
+   <!-- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ -->
+   <!-- METASCHEMA:  in namespace "http://csrc.nist.gov/ns/oscal/1.0"-->
+   <xsl:template match="j:map[@key='component-definition']">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition" -->
+      <assembly name="component-definition"
+                key="component-definition"
+                gi="component-definition">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">component-definition</xsl:attribute>
+         </xsl:if>
+         <xsl:if test=".. is /j:map">
+            <xsl:attribute name="namespace">http://csrc.nist.gov/ns/oscal/1.0</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="*[@key='uuid']"/>
+         <xsl:apply-templates select="*[@key='metadata']"/>
+         <xsl:apply-templates select="*[@key='import-component-definitions']"/>
+         <xsl:apply-templates select="*[@key='components']"/>
+         <xsl:apply-templates select="*[@key='capabilities']"/>
+         <xsl:apply-templates select="*[@key='back-matter']"/>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="j:map[@key='metadata']">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="metadata" -->
+      <assembly name="metadata" key="metadata" gi="metadata">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">metadata</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="*[@key='title']"/>
+         <xsl:apply-templates select="*[@key='published']"/>
+         <xsl:apply-templates select="*[@key='last-modified']"/>
+         <xsl:apply-templates select="*[@key='version']"/>
+         <xsl:apply-templates select="*[@key='oscal-version']"/>
+         <xsl:apply-templates select="*[@key='revisions']"/>
+         <xsl:apply-templates select="*[@key='document-ids']"/>
+         <xsl:apply-templates select="*[@key='props']"/>
+         <xsl:apply-templates select="*[@key='links']"/>
+         <xsl:apply-templates select="*[@key='roles']"/>
+         <xsl:apply-templates select="*[@key='locations']"/>
+         <xsl:apply-templates select="*[@key='parties']"/>
+         <xsl:apply-templates select="*[@key='responsible-parties']"/>
+         <xsl:apply-templates select="*[@key='remarks']"/>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="j:array[@key='props']/j:map">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="prop" -->
+      <assembly name="property" gi="prop">
+         <xsl:apply-templates select="*[@key='name']"/>
+         <xsl:apply-templates select="*[@key='uuid']"/>
+         <xsl:apply-templates select="*[@key='ns']"/>
+         <xsl:apply-templates select="*[@key='value']"/>
+         <xsl:apply-templates select="*[@key='class']"/>
+         <xsl:apply-templates select="*[@key='remarks']"/>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="j:array[@key='links']/j:map">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="link" -->
+      <assembly name="link" gi="link">
+         <xsl:apply-templates select="*[@key='href']"/>
+         <xsl:apply-templates select="*[@key='rel']"/>
+         <xsl:apply-templates select="*[@key='media-type']"/>
+         <xsl:apply-templates select="*[@key='text']"/>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="j:array[@key='roles']/j:map">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="role" -->
+      <assembly name="role" gi="role">
+         <xsl:apply-templates select="*[@key='id']"/>
+         <xsl:apply-templates select="*[@key='title']"/>
+         <xsl:apply-templates select="*[@key='short-name']"/>
+         <xsl:apply-templates select="*[@key='description']"/>
+         <xsl:apply-templates select="*[@key='props']"/>
+         <xsl:apply-templates select="*[@key='links']"/>
+         <xsl:apply-templates select="*[@key='remarks']"/>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="j:array[@key='locations']/j:map">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="location" -->
+      <assembly name="location" gi="location">
+         <xsl:apply-templates select="*[@key='uuid']"/>
+         <xsl:apply-templates select="*[@key='title']"/>
+         <xsl:apply-templates select="*[@key='address']"/>
+         <xsl:apply-templates select="*[@key='email-addresses']"/>
+         <xsl:apply-templates select="*[@key='telephone-numbers']"/>
+         <xsl:apply-templates select="*[@key='urls']"/>
+         <xsl:apply-templates select="*[@key='props']"/>
+         <xsl:apply-templates select="*[@key='links']"/>
+         <xsl:apply-templates select="*[@key='remarks']"/>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="j:array[@key='parties']/j:map">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="party" -->
+      <assembly name="party" gi="party">
+         <xsl:apply-templates select="*[@key='uuid']"/>
+         <xsl:apply-templates select="*[@key='type']"/>
+         <xsl:apply-templates select="*[@key='name']"/>
+         <xsl:apply-templates select="*[@key='short-name']"/>
+         <xsl:apply-templates select="*[@key='external-ids']"/>
+         <xsl:apply-templates select="*[@key='props']"/>
+         <xsl:apply-templates select="*[@key='links']"/>
+         <xsl:apply-templates select="*[@key='email-addresses']"/>
+         <xsl:apply-templates select="*[@key='telephone-numbers']"/>
+         <xsl:apply-templates select="*[@key='addresses']"/>
+         <xsl:apply-templates select="*[@key='location-uuids']"/>
+         <xsl:apply-templates select="*[@key='member-of-organizations']"/>
+         <xsl:apply-templates select="*[@key='remarks']"/>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="j:array[@key='responsible-parties']/j:map">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="responsible-party" -->
+      <assembly name="responsible-party" gi="responsible-party">
+         <xsl:apply-templates select="*[@key='role-id']"/>
+         <xsl:apply-templates select="*[@key='party-uuids']"/>
+         <xsl:apply-templates select="*[@key='props']"/>
+         <xsl:apply-templates select="*[@key='links']"/>
+         <xsl:apply-templates select="*[@key='remarks']"/>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="j:array[@key='import-component-definitions']/j:map">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="import-component-definition" -->
+      <assembly as-type="empty"
+                name="import-component-definition"
+                gi="import-component-definition">
+         <xsl:apply-templates select="*[@key='href']"/>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="j:array[@key='components']/j:map">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component" -->
+      <assembly name="defined-component" gi="component">
+         <xsl:apply-templates select="*[@key='uuid']"/>
+         <xsl:apply-templates select="*[@key='type']"/>
+         <xsl:apply-templates select="*[@key='title']"/>
+         <xsl:apply-templates select="*[@key='description']"/>
+         <xsl:apply-templates select="*[@key='purpose']"/>
+         <xsl:apply-templates select="*[@key='props']"/>
+         <xsl:apply-templates select="*[@key='links']"/>
+         <xsl:apply-templates select="*[@key='responsible-roles']"/>
+         <xsl:apply-templates select="*[@key='protocols']"/>
+         <xsl:apply-templates select="*[@key='control-implementations']"/>
+         <xsl:apply-templates select="*[@key='remarks']"/>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="j:array[@key='responsible-roles']/j:map">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="responsible-role" -->
+      <assembly name="responsible-role" gi="responsible-role">
+         <xsl:apply-templates select="*[@key='role-id']"/>
+         <xsl:apply-templates select="*[@key='props']"/>
+         <xsl:apply-templates select="*[@key='links']"/>
+         <xsl:apply-templates select="*[@key='party-uuids']"/>
+         <xsl:apply-templates select="*[@key='remarks']"/>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="j:array[@key='protocols']/j:map">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="protocol" -->
+      <assembly name="protocol" gi="protocol">
+         <xsl:apply-templates select="*[@key='uuid']"/>
+         <xsl:apply-templates select="*[@key='name']"/>
+         <xsl:apply-templates select="*[@key='title']"/>
+         <xsl:apply-templates select="*[@key='port-ranges']"/>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="j:array[@key='port-ranges']/j:map">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="port-range" -->
+      <assembly as-type="empty" name="port-range" gi="port-range">
+         <xsl:apply-templates select="*[@key='start']"/>
+         <xsl:apply-templates select="*[@key='end']"/>
+         <xsl:apply-templates select="*[@key='transport']"/>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="j:array[@key='set-parameters']/j:map">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="set-parameter" -->
+      <assembly name="set-parameter" gi="set-parameter">
+         <xsl:apply-templates select="*[@key='param-id']"/>
+         <xsl:apply-templates select="*[@key='values']"/>
+         <xsl:apply-templates select="*[@key='remarks']"/>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="j:array[@key='capabilities']/j:map">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="capability" -->
+      <assembly name="capability" gi="capability">
+         <xsl:apply-templates select="*[@key='uuid']"/>
+         <xsl:apply-templates select="*[@key='name']"/>
+         <xsl:apply-templates select="*[@key='description']"/>
+         <xsl:apply-templates select="*[@key='props']"/>
+         <xsl:apply-templates select="*[@key='links']"/>
+         <xsl:apply-templates select="*[@key='incorporates-components']"/>
+         <xsl:apply-templates select="*[@key='control-implementations']"/>
+         <xsl:apply-templates select="*[@key='remarks']"/>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="j:array[@key='incorporates-components']/j:map">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="incorporates-component" -->
+      <assembly name="incorporates-component" gi="incorporates-component">
+         <xsl:apply-templates select="*[@key='component-uuid']"/>
+         <xsl:apply-templates select="*[@key='description']"/>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="j:map[@key='back-matter']">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="back-matter" -->
+      <assembly name="back-matter" key="back-matter" gi="back-matter">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">back-matter</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="*[@key='resources']"/>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="j:string[@key='remarks']">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="remarks" -->
+      <field in-xml="WITH_WRAPPER"
+             collapsible="no"
+             as-type="markup-multiline"
+             name="remarks"
+             key="remarks"
+             gi="remarks"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">remarks</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:string[@key='remarks']"
+                 mode="get-value-property"
+                 priority="8">
+      <value as-type="markup-multiline" in-json="string">
          <xsl:value-of select="."/>
-      </xsl:attribute>
+      </value>
    </xsl:template>
-   <xsl:template match="map[@key=('responsible-parties')]/map"
-                 priority="3"
-                 mode="json2xml">
-      <xsl:element name="responsible-party" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates select="@key" mode="as-attribute"/>
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('party-id', 'party-ids')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('prop', 'properties')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('annotation', 'annotations')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('link', 'links')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('remarks')]"/>
-      </xsl:element>
+   <xsl:template match="j:array[@key='location-uuids']/j:string">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="location-uuid" -->
+      <field collapsible="no"
+             as-type="uuid"
+             name="location-uuid"
+             gi="location-uuid"
+             in-json="SCALAR">
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
    </xsl:template>
-   <!-- *** Handling flag "responsible-party/@role-id" *** -->
-   <!-- suppressing when matched in json2xml traversal-->
-   <xsl:template match="*[@key='responsible-party']/*[@key='role-id'] | *[@key='responsible-parties']/*[@key='role-id'] | *[@key='responsible-parties']/*/*[@key='role-id']"
-                 priority="7"
-                 mode="json2xml"/>
-   <xsl:template priority="3"
-                 match="*[@key='responsible-party']/*[@key='role-id'] | *[@key='responsible-parties']/*[@key='role-id'] | *[@key='responsible-parties']/*/*[@key='role-id']"
-                 mode="as-attribute">
-      <xsl:attribute name="role-id">
-         <xsl:apply-templates mode="#current"/>
-      </xsl:attribute>
+   <xsl:template match="j:array[@key='location-uuids']/j:string"
+                 mode="get-value-property"
+                 priority="8">
+      <value as-type="uuid" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
    </xsl:template>
-   <!-- *** Handling flag @href *** -->
-   <xsl:template match="*[@key='href']" priority="6" mode="json2xml"/>
-   <xsl:template priority="2"
-                 match="*[@key='link']/*[@key='href'] | *[@key='links']/*[@key='href'] | array[@key='links']/*/*[@key='href'] | map[@key='links']/*/*[@key='href'] | *[@key='rlink']/*[@key='href'] | *[@key='rlinks']/*[@key='href'] | array[@key='rlinks']/*/*[@key='href'] | map[@key='rlinks']/*/*[@key='href'] | *[@key='import-component-definition']/*[@key='href'] | *[@key='import-component-definitions']/*[@key='href'] | array[@key='import-component-definitions']/*/*[@key='href'] | map[@key='import-component-definitions']/*/*[@key='href']"
-                 mode="as-attribute">
-      <xsl:attribute name="href">
-         <xsl:apply-templates mode="#current"/>
-      </xsl:attribute>
+   <xsl:template match="j:array[@key='party-uuids']/j:string">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="party-uuid" -->
+      <field collapsible="no"
+             as-type="uuid"
+             name="party-uuid"
+             gi="party-uuid"
+             in-json="SCALAR">
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
    </xsl:template>
-   <!-- *** Handling flag @id *** -->
-   <xsl:template match="*[@key='id']" priority="6" mode="json2xml"/>
-   <xsl:template priority="2"
-                 match="*[@key='prop']/*[@key='id'] | *[@key='properties']/*[@key='id'] | array[@key='properties']/*/*[@key='id'] | map[@key='properties']/*/*[@key='id'] | *[@key='annotation']/*[@key='id'] | *[@key='annotations']/*[@key='id'] | array[@key='annotations']/*/*[@key='id'] | map[@key='annotations']/*/*[@key='id'] | *[@key='location']/*[@key='id'] | *[@key='locations']/*[@key='id'] | array[@key='locations']/*/*[@key='id'] | map[@key='locations']/*/*[@key='id'] | *[@key='party']/*[@key='id'] | *[@key='parties']/*[@key='id'] | array[@key='parties']/*/*[@key='id'] | map[@key='parties']/*/*[@key='id'] | *[@key='resource']/*[@key='id'] | *[@key='resources']/*[@key='id'] | array[@key='resources']/*/*[@key='id'] | map[@key='resources']/*/*[@key='id'] | *[@key='role']/*[@key='id'] | *[@key='roles']/*[@key='id'] | array[@key='roles']/*/*[@key='id'] | map[@key='roles']/*/*[@key='id'] | *[@key='component']/*[@key='id'] | *[@key='components']/*[@key='id'] | array[@key='components']/*/*[@key='id'] | map[@key='components']/*/*[@key='id'] | *[@key='capability']/*[@key='id'] | *[@key='capabilities']/*[@key='id'] | array[@key='capabilities']/*/*[@key='id'] | map[@key='capabilities']/*/*[@key='id'] | *[@key='implemented-requirement']/*[@key='id'] | *[@key='implemented-requirements']/*[@key='id'] | array[@key='implemented-requirements']/*/*[@key='id'] | map[@key='implemented-requirements']/*/*[@key='id']"
-                 mode="as-attribute">
-      <xsl:attribute name="id">
-         <xsl:apply-templates mode="#current"/>
-      </xsl:attribute>
+   <xsl:template match="j:array[@key='party-uuids']/j:string"
+                 mode="get-value-property"
+                 priority="7">
+      <value as-type="uuid" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
    </xsl:template>
-   <!-- *** Handling field "title" *** -->
-   <!--*[@key='title']-->
-   <!-- *** NB - template matching 'array' overrides this one *** -->
-   <xsl:template match="*[@key='title']" priority="5" mode="json2xml">
-      <xsl:element name="title" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:for-each select="string[@key='RICHTEXT'], self::string">
-            <xsl:variable name="markup">
-               <xsl:apply-templates mode="infer-inlines"/>
-            </xsl:variable>
-            <xsl:apply-templates mode="cast-ns" select="$markup"/>
-         </xsl:for-each>
-      </xsl:element>
+   <xsl:template match="j:array[@key='hashes']/j:map">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="hash" -->
+      <field collapsible="no" as-type="string" name="hash" gi="hash">
+         <xsl:apply-templates select="*[@key='algorithm']"/>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
    </xsl:template>
-   <!-- *** Handling field "base64" *** -->
-   <!--*[@key='base64'] | *[@key='attachments']  | *[@key='attachments']/*-->
-   <!-- *** NB - template matching 'array' overrides this one *** -->
-   <xsl:template match="*[@key='base64'] | *[@key='attachments']  | *[@key='attachments']/*"
-                 priority="5"
-                 mode="json2xml">
-      <xsl:element name="base64" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates select="string[@key='value']" mode="json2xml"/>
-         <xsl:for-each select="self::string | self::boolean | self::number">
-            <xsl:apply-templates mode="json2xml"/>
-         </xsl:for-each>
-      </xsl:element>
+   <!-- matching hash-->
+   <xsl:template match="j:array[@key='hashes']/j:map" mode="get-value-property">
+      <value as-type="string" key="value" in-json="string">
+         <xsl:apply-templates mode="keep-value-property"/>
+      </value>
    </xsl:template>
-   <xsl:template match="(*[@key='base64'] | *[@key='attachments']  | *[@key='attachments']/*)/string[@key='value']"
-                 mode="as-attribute"/>
-   <xsl:template priority="8"
-                 match="(*[@key='base64'] | *[@key='attachments']  | *[@key='attachments']/*)/string[@key='value']"
-                 mode="json2xml">
-      <xsl:apply-templates mode="#current"/>
+   <xsl:template match="j:map[@key='component-definition']/j:string[@key='uuid']"><!-- XML match="component-definition/@uuid" -->
+      <flag in-json="string"
+            as-type="uuid"
+            name="uuid"
+            key="uuid"
+            gi="uuid">
+         <xsl:value-of select="."/>
+      </flag>
    </xsl:template>
-   <xsl:template priority="3"
-                 mode="json2xml"
-                 match="map[@key = 'attachments']/array[@key = 'value'] | array[@key = 'attachments']/map/array[@key = 'value']">
-      <xsl:variable name="expanded" as="element()*">
-         <array xmlns="http://www.w3.org/2005/xpath-functions" key="attachments">
-            <xsl:apply-templates mode="expand" select="array[@key = 'value']/string"/>
-         </array>
+   <xsl:template match="j:map[@key='component-definition']/j:string[@key='uuid']"
+                 mode="keep-value-property"
+                 priority="3"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:array[@key='props']/j:map/j:string[@key='name']"><!-- XML match="prop/@name" -->
+      <flag in-json="string"
+            as-type="token"
+            name="name"
+            key="name"
+            gi="name">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:array[@key='props']/j:map/j:string[@key='name']"
+                 mode="keep-value-property"
+                 priority="8"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:array[@key='props']/j:map/j:string[@key='uuid']"><!-- XML match="prop/@uuid" -->
+      <flag in-json="string"
+            as-type="uuid"
+            name="uuid"
+            key="uuid"
+            gi="uuid">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:array[@key='props']/j:map/j:string[@key='uuid']"
+                 mode="keep-value-property"
+                 priority="8"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:array[@key='props']/j:map/j:string[@key='ns']"><!-- XML match="prop/@ns" -->
+      <flag in-json="string" as-type="uri" name="ns" key="ns" gi="ns">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:array[@key='props']/j:map/j:string[@key='ns']"
+                 mode="keep-value-property"
+                 priority="8"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:array[@key='props']/j:map/j:string[@key='value']"><!-- XML match="prop/@value" -->
+      <flag in-json="string"
+            as-type="string"
+            name="value"
+            key="value"
+            gi="value">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:array[@key='props']/j:map/j:string[@key='value']"
+                 mode="keep-value-property"
+                 priority="8"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:array[@key='props']/j:map/j:string[@key='class']"><!-- XML match="prop/@class" -->
+      <flag in-json="string"
+            as-type="token"
+            name="class"
+            key="class"
+            gi="class">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:array[@key='props']/j:map/j:string[@key='class']"
+                 mode="keep-value-property"
+                 priority="8"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:array[@key='links']/j:map/j:string[@key='href']"><!-- XML match="link/@href" -->
+      <flag in-json="string"
+            as-type="uri-reference"
+            name="href"
+            key="href"
+            gi="href">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:array[@key='links']/j:map/j:string[@key='href']"
+                 mode="keep-value-property"
+                 priority="8"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:array[@key='links']/j:map/j:string[@key='rel']"><!-- XML match="link/@rel" -->
+      <flag in-json="string"
+            as-type="token"
+            name="rel"
+            key="rel"
+            gi="rel">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:array[@key='links']/j:map/j:string[@key='rel']"
+                 mode="keep-value-property"
+                 priority="8"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:array[@key='links']/j:map/j:string[@key='media-type']"><!-- XML match="link/@media-type" -->
+      <flag in-json="string"
+            as-type="string"
+            name="media-type"
+            key="media-type"
+            gi="media-type">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:array[@key='links']/j:map/j:string[@key='media-type']"
+                 mode="keep-value-property"
+                 priority="8"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='document-ids']/j:map/j:string[@key='scheme'] | j:map[@key='component-definition']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:array[@key='document-ids']/j:map/j:string[@key='scheme']"
+                 priority="6"><!-- XML match="component-definition/metadata/document-id/@scheme | component-definition/back-matter/resource/document-id/@scheme" -->
+      <flag in-json="string"
+            as-type="uri"
+            name="scheme"
+            key="scheme"
+            gi="scheme">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='document-ids']/j:map/j:string[@key='scheme'] | j:map[@key='component-definition']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:array[@key='document-ids']/j:map/j:string[@key='scheme']"
+                 mode="keep-value-property"
+                 priority="6"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:array[@key='roles']/j:map/j:string[@key='id']"><!-- XML match="role/@id" -->
+      <flag in-json="string" as-type="token" name="id" key="id" gi="id">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:array[@key='roles']/j:map/j:string[@key='id']"
+                 mode="keep-value-property"
+                 priority="6"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:array[@key='locations']/j:map/j:string[@key='uuid']"><!-- XML match="location/@uuid" -->
+      <flag in-json="string"
+            as-type="uuid"
+            name="uuid"
+            key="uuid"
+            gi="uuid">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:array[@key='locations']/j:map/j:string[@key='uuid']"
+                 mode="keep-value-property"
+                 priority="6"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:map[@key='address']/j:string[@key='type'] | j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='addresses']/j:map/j:string[@key='type']"><!-- XML match="component-definition/metadata/location/address/@type | component-definition/metadata/party/address/@type" -->
+      <flag in-json="string"
+            as-type="token"
+            name="location-type"
+            key="type"
+            gi="type">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:map[@key='address']/j:string[@key='type'] | j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='addresses']/j:map/j:string[@key='type']"
+                 mode="keep-value-property"
+                 priority="7"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:array[@key='telephone-numbers']/j:map/j:string[@key='type'] | j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='telephone-numbers']/j:map/j:string[@key='type']"
+                 priority="8"><!-- XML match="component-definition/metadata/location/telephone-number/@type | component-definition/metadata/party/telephone-number/@type" -->
+      <flag in-json="string"
+            as-type="string"
+            name="type"
+            key="type"
+            gi="type">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:array[@key='telephone-numbers']/j:map/j:string[@key='type'] | j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='telephone-numbers']/j:map/j:string[@key='type']"
+                 mode="keep-value-property"
+                 priority="8"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:array[@key='parties']/j:map/j:string[@key='uuid']"><!-- XML match="party/@uuid" -->
+      <flag in-json="string"
+            as-type="uuid"
+            name="uuid"
+            key="uuid"
+            gi="uuid">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:array[@key='parties']/j:map/j:string[@key='uuid']"
+                 mode="keep-value-property"
+                 priority="6"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:array[@key='parties']/j:map/j:string[@key='type']"><!-- XML match="party/@type" -->
+      <flag in-json="string"
+            as-type="string"
+            name="type"
+            key="type"
+            gi="type">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:array[@key='parties']/j:map/j:string[@key='type']"
+                 mode="keep-value-property"
+                 priority="6"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='external-ids']/j:map/j:string[@key='scheme']"
+                 priority="8"><!-- XML match="component-definition/metadata/party/external-id/@scheme" -->
+      <flag in-json="string"
+            as-type="uri"
+            name="scheme"
+            key="scheme"
+            gi="scheme">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='external-ids']/j:map/j:string[@key='scheme']"
+                 mode="keep-value-property"
+                 priority="8"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:array[@key='responsible-parties']/j:map/j:string[@key='role-id']"><!-- XML match="responsible-party/@role-id" -->
+      <flag in-json="string"
+            as-type="token"
+            name="role-id"
+            key="role-id"
+            gi="role-id">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:array[@key='responsible-parties']/j:map/j:string[@key='role-id']"
+                 mode="keep-value-property"
+                 priority="6"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:array[@key='import-component-definitions']/j:map/j:string[@key='href']"><!-- XML match="import-component-definition/@href" -->
+      <flag in-json="string"
+            as-type="uri-reference"
+            name="href"
+            key="href"
+            gi="href">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:array[@key='import-component-definitions']/j:map/j:string[@key='href']"
+                 mode="keep-value-property"
+                 priority="5"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:array[@key='components']/j:map/j:string[@key='uuid']"><!-- XML match="component/@uuid" -->
+      <flag in-json="string"
+            as-type="uuid"
+            name="uuid"
+            key="uuid"
+            gi="uuid">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:array[@key='components']/j:map/j:string[@key='uuid']"
+                 mode="keep-value-property"
+                 priority="5"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:array[@key='components']/j:map/j:string[@key='type']"><!-- XML match="component/@type" -->
+      <flag in-json="string"
+            as-type="string"
+            name="defined-component-type"
+            key="type"
+            gi="type">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:array[@key='components']/j:map/j:string[@key='type']"
+                 mode="keep-value-property"
+                 priority="5"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:array[@key='responsible-roles']/j:map/j:string[@key='role-id']"><!-- XML match="responsible-role/@role-id" -->
+      <flag in-json="string"
+            as-type="token"
+            name="role-id"
+            key="role-id"
+            gi="role-id">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:array[@key='responsible-roles']/j:map/j:string[@key='role-id']"
+                 mode="keep-value-property"
+                 priority="7"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:array[@key='protocols']/j:map/j:string[@key='uuid']"><!-- XML match="protocol/@uuid" -->
+      <flag in-json="string"
+            as-type="uuid"
+            name="uuid"
+            key="uuid"
+            gi="uuid">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:array[@key='protocols']/j:map/j:string[@key='uuid']"
+                 mode="keep-value-property"
+                 priority="7"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:array[@key='protocols']/j:map/j:string[@key='name']"><!-- XML match="protocol/@name" -->
+      <flag in-json="string"
+            as-type="string"
+            name="name"
+            key="name"
+            gi="name">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:array[@key='protocols']/j:map/j:string[@key='name']"
+                 mode="keep-value-property"
+                 priority="7"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:array[@key='port-ranges']/j:map/j:number[@key='start']"><!-- XML match="port-range/@start" -->
+      <flag in-json="number"
+            as-type="nonNegativeInteger"
+            name="start"
+            key="start"
+            gi="start">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:array[@key='port-ranges']/j:map/j:number[@key='start']"
+                 mode="keep-value-property"
+                 priority="9"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:array[@key='port-ranges']/j:map/j:number[@key='end']"><!-- XML match="port-range/@end" -->
+      <flag in-json="number"
+            as-type="nonNegativeInteger"
+            name="end"
+            key="end"
+            gi="end">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:array[@key='port-ranges']/j:map/j:number[@key='end']"
+                 mode="keep-value-property"
+                 priority="9"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:array[@key='port-ranges']/j:map/j:string[@key='transport']"><!-- XML match="port-range/@transport" -->
+      <flag in-json="string"
+            as-type="token"
+            name="transport"
+            key="transport"
+            gi="transport">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:array[@key='port-ranges']/j:map/j:string[@key='transport']"
+                 mode="keep-value-property"
+                 priority="9"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:array[@key='components']/j:map/j:array[@key='control-implementations']/j:map/j:string[@key='uuid'] | j:map[@key='component-definition']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:string[@key='uuid']"
+                 priority="7"><!-- XML match="component-definition/component/control-implementation/@uuid | component-definition/capability/control-implementation/@uuid" -->
+      <flag in-json="string"
+            as-type="uuid"
+            name="uuid"
+            key="uuid"
+            gi="uuid">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:array[@key='components']/j:map/j:array[@key='control-implementations']/j:map/j:string[@key='uuid'] | j:map[@key='component-definition']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:string[@key='uuid']"
+                 mode="keep-value-property"
+                 priority="7"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:array[@key='components']/j:map/j:array[@key='control-implementations']/j:map/j:string[@key='source'] | j:map[@key='component-definition']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:string[@key='source']"><!-- XML match="component-definition/component/control-implementation/@source | component-definition/capability/control-implementation/@source" -->
+      <flag in-json="string"
+            as-type="uri-reference"
+            name="source"
+            key="source"
+            gi="source">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:array[@key='components']/j:map/j:array[@key='control-implementations']/j:map/j:string[@key='source'] | j:map[@key='component-definition']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:string[@key='source']"
+                 mode="keep-value-property"
+                 priority="7"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:array[@key='set-parameters']/j:map/j:string[@key='param-id']"><!-- XML match="set-parameter/@param-id" -->
+      <flag in-json="string"
+            as-type="token"
+            name="param-id"
+            key="param-id"
+            gi="param-id">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:array[@key='set-parameters']/j:map/j:string[@key='param-id']"
+                 mode="keep-value-property"
+                 priority="9"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:array[@key='components']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:string[@key='uuid'] | j:map[@key='component-definition']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:string[@key='uuid']"
+                 priority="9"><!-- XML match="component-definition/component/control-implementation/implemented-requirement/@uuid | component-definition/capability/control-implementation/implemented-requirement/@uuid" -->
+      <flag in-json="string"
+            as-type="uuid"
+            name="uuid"
+            key="uuid"
+            gi="uuid">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:array[@key='components']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:string[@key='uuid'] | j:map[@key='component-definition']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:string[@key='uuid']"
+                 mode="keep-value-property"
+                 priority="9"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:array[@key='components']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:string[@key='control-id'] | j:map[@key='component-definition']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:string[@key='control-id']"><!-- XML match="component-definition/component/control-implementation/implemented-requirement/@control-id | component-definition/capability/control-implementation/implemented-requirement/@control-id" -->
+      <flag in-json="string"
+            as-type="token"
+            name="control-id"
+            key="control-id"
+            gi="control-id">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:array[@key='components']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:string[@key='control-id'] | j:map[@key='component-definition']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:string[@key='control-id']"
+                 mode="keep-value-property"
+                 priority="9"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:array[@key='components']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='statements']/j:map/j:string[@key='statement-id'] | j:map[@key='component-definition']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='statements']/j:map/j:string[@key='statement-id']"><!-- XML match="component-definition/component/control-implementation/implemented-requirement/statement/@statement-id | component-definition/capability/control-implementation/implemented-requirement/statement/@statement-id" -->
+      <flag in-json="string"
+            as-type="token"
+            name="statement-id"
+            key="statement-id"
+            gi="statement-id">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:array[@key='components']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='statements']/j:map/j:string[@key='statement-id'] | j:map[@key='component-definition']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='statements']/j:map/j:string[@key='statement-id']"
+                 mode="keep-value-property"
+                 priority="11"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:array[@key='components']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='statements']/j:map/j:string[@key='uuid'] | j:map[@key='component-definition']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='statements']/j:map/j:string[@key='uuid']"
+                 priority="11"><!-- XML match="component-definition/component/control-implementation/implemented-requirement/statement/@uuid | component-definition/capability/control-implementation/implemented-requirement/statement/@uuid" -->
+      <flag in-json="string"
+            as-type="uuid"
+            name="uuid"
+            key="uuid"
+            gi="uuid">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:array[@key='components']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='statements']/j:map/j:string[@key='uuid'] | j:map[@key='component-definition']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='statements']/j:map/j:string[@key='uuid']"
+                 mode="keep-value-property"
+                 priority="11"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:array[@key='capabilities']/j:map/j:string[@key='uuid']"><!-- XML match="capability/@uuid" -->
+      <flag in-json="string"
+            as-type="uuid"
+            name="uuid"
+            key="uuid"
+            gi="uuid">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:array[@key='capabilities']/j:map/j:string[@key='uuid']"
+                 mode="keep-value-property"
+                 priority="5"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:array[@key='capabilities']/j:map/j:string[@key='name']"><!-- XML match="capability/@name" -->
+      <flag in-json="string"
+            as-type="string"
+            name="name"
+            key="name"
+            gi="name">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:array[@key='capabilities']/j:map/j:string[@key='name']"
+                 mode="keep-value-property"
+                 priority="5"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:array[@key='incorporates-components']/j:map/j:string[@key='component-uuid']"><!-- XML match="incorporates-component/@component-uuid" -->
+      <flag in-json="string"
+            as-type="uuid"
+            name="component-uuid"
+            key="component-uuid"
+            gi="component-uuid">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:array[@key='incorporates-components']/j:map/j:string[@key='component-uuid']"
+                 mode="keep-value-property"
+                 priority="7"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:string[@key='uuid']"
+                 priority="6"><!-- XML match="component-definition/back-matter/resource/@uuid" -->
+      <flag in-json="string"
+            as-type="uuid"
+            name="uuid"
+            key="uuid"
+            gi="uuid">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:string[@key='uuid']"
+                 mode="keep-value-property"
+                 priority="6"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:array[@key='rlinks']/j:map/j:string[@key='href']"
+                 priority="8"><!-- XML match="component-definition/back-matter/resource/rlink/@href" -->
+      <flag in-json="string"
+            as-type="uri-reference"
+            name="href"
+            key="href"
+            gi="href">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:array[@key='rlinks']/j:map/j:string[@key='href']"
+                 mode="keep-value-property"
+                 priority="8"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:array[@key='rlinks']/j:map/j:string[@key='media-type']"><!-- XML match="component-definition/back-matter/resource/rlink/@media-type" -->
+      <flag in-json="string"
+            as-type="string"
+            name="media-type"
+            key="media-type"
+            gi="media-type">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:array[@key='rlinks']/j:map/j:string[@key='media-type']"
+                 mode="keep-value-property"
+                 priority="8"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:array[@key='hashes']/j:map/j:string[@key='algorithm']"><!-- XML match="hash/@algorithm" -->
+      <flag in-json="string"
+            as-type="string"
+            name="algorithm"
+            key="algorithm"
+            gi="algorithm">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:array[@key='hashes']/j:map/j:string[@key='algorithm']"
+                 mode="keep-value-property"
+                 priority="10"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:map[@key='base64']/j:string[@key='filename']"
+                 priority="7"><!-- XML match="component-definition/back-matter/resource/base64/@filename" -->
+      <flag in-json="string"
+            as-type="uri-reference"
+            name="filename"
+            key="filename"
+            gi="filename">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:map[@key='base64']/j:string[@key='filename']"
+                 mode="keep-value-property"
+                 priority="7"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:map[@key='base64']/j:string[@key='media-type']"><!-- XML match="component-definition/back-matter/resource/base64/@media-type" -->
+      <flag in-json="string"
+            as-type="string"
+            name="media-type"
+            key="media-type"
+            gi="media-type">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:map[@key='base64']/j:string[@key='media-type']"
+                 mode="keep-value-property"
+                 priority="7"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:string[@key='title']"
+                 priority="4">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/metadata/title" -->
+      <field collapsible="no"
+             as-type="markup-line"
+             name="title"
+             key="title"
+             gi="title"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">title</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:string[@key='title']"
+                 mode="get-value-property"
+                 priority="4">
+      <value as-type="markup-line" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:string[@key='published']"
+                 priority="4">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/metadata/published" -->
+      <field collapsible="no"
+             as-type="dateTime-with-timezone"
+             name="published"
+             key="published"
+             gi="published"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">published</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:string[@key='published']"
+                 mode="get-value-property"
+                 priority="4">
+      <value as-type="dateTime-with-timezone" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:string[@key='last-modified']"
+                 priority="4">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/metadata/last-modified" -->
+      <field collapsible="no"
+             as-type="dateTime-with-timezone"
+             name="last-modified"
+             key="last-modified"
+             gi="last-modified"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">last-modified</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:string[@key='last-modified']"
+                 mode="get-value-property"
+                 priority="4">
+      <value as-type="dateTime-with-timezone" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:string[@key='version']"
+                 priority="4">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/metadata/version" -->
+      <field collapsible="no"
+             as-type="string"
+             name="version"
+             key="version"
+             gi="version"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">version</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:string[@key='version']"
+                 mode="get-value-property"
+                 priority="4">
+      <value as-type="string" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:string[@key='oscal-version']"
+                 priority="4">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/metadata/oscal-version" -->
+      <field collapsible="no"
+             as-type="string"
+             name="oscal-version"
+             key="oscal-version"
+             gi="oscal-version"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">oscal-version</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:string[@key='oscal-version']"
+                 mode="get-value-property"
+                 priority="4">
+      <value as-type="string" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='revisions']/j:array[@key='revisions']/j:map"
+                 priority="5">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/metadata/revisions/revision" -->
+      <assembly name="revision" gi="revision">
+         <xsl:apply-templates select="*[@key='title']"/>
+         <xsl:apply-templates select="*[@key='published']"/>
+         <xsl:apply-templates select="*[@key='last-modified']"/>
+         <xsl:apply-templates select="*[@key='version']"/>
+         <xsl:apply-templates select="*[@key='oscal-version']"/>
+         <xsl:apply-templates select="*[@key='props']"/>
+         <xsl:apply-templates select="*[@key='links']"/>
+         <xsl:apply-templates select="*[@key='remarks']"/>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='revisions']"
+                 priority="4">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/metadata/revisions" -->
+      <group in-xml="SHOWN"
+             gi="revisions"
+             group-json="ARRAY"
+             name="revision"
+             key="revisions">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">revisions</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="*"/>
+      </group>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='revisions']/j:array[@key='revisions']/j:map/j:string[@key='title']"
+                 priority="6">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/metadata/revisions/revision/title" -->
+      <field collapsible="no"
+             as-type="markup-line"
+             name="title"
+             key="title"
+             gi="title"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">title</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='revisions']/j:array[@key='revisions']/j:map/j:string[@key='title']"
+                 mode="get-value-property"
+                 priority="6">
+      <value as-type="markup-line" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='revisions']/j:array[@key='revisions']/j:map/j:string[@key='published']"
+                 priority="6">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/metadata/revisions/revision/published" -->
+      <field collapsible="no"
+             as-type="dateTime-with-timezone"
+             name="published"
+             key="published"
+             gi="published"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">published</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='revisions']/j:array[@key='revisions']/j:map/j:string[@key='published']"
+                 mode="get-value-property"
+                 priority="6">
+      <value as-type="dateTime-with-timezone" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='revisions']/j:array[@key='revisions']/j:map/j:string[@key='last-modified']"
+                 priority="6">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/metadata/revisions/revision/last-modified" -->
+      <field collapsible="no"
+             as-type="dateTime-with-timezone"
+             name="last-modified"
+             key="last-modified"
+             gi="last-modified"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">last-modified</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='revisions']/j:array[@key='revisions']/j:map/j:string[@key='last-modified']"
+                 mode="get-value-property"
+                 priority="6">
+      <value as-type="dateTime-with-timezone" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='revisions']/j:array[@key='revisions']/j:map/j:string[@key='version']"
+                 priority="6">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/metadata/revisions/revision/version" -->
+      <field collapsible="no"
+             as-type="string"
+             name="version"
+             key="version"
+             gi="version"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">version</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='revisions']/j:array[@key='revisions']/j:map/j:string[@key='version']"
+                 mode="get-value-property"
+                 priority="6">
+      <value as-type="string" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='revisions']/j:array[@key='revisions']/j:map/j:string[@key='oscal-version']"
+                 priority="6">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/metadata/revisions/revision/oscal-version" -->
+      <field collapsible="no"
+             as-type="string"
+             name="oscal-version"
+             key="oscal-version"
+             gi="oscal-version"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">oscal-version</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='revisions']/j:array[@key='revisions']/j:map/j:string[@key='oscal-version']"
+                 mode="get-value-property"
+                 priority="6">
+      <value as-type="string" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='revisions']/j:array[@key='revisions']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+                 priority="8">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/metadata/revisions/revision/link/text" -->
+      <field collapsible="no"
+             as-type="markup-line"
+             name="text"
+             key="text"
+             gi="text"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">text</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='revisions']/j:array[@key='revisions']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+                 mode="get-value-property"
+                 priority="8">
+      <value as-type="markup-line" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='document-ids']/j:map"
+                 priority="5">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/metadata/document-id" -->
+      <field collapsible="no"
+             as-type="string"
+             name="document-id"
+             gi="document-id">
+         <xsl:apply-templates select="*[@key='scheme']"/>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <!-- matching component-definition/metadata/document-id-->
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='document-ids']/j:map"
+                 mode="get-value-property">
+      <value as-type="string" key="identifier" in-json="string">
+         <xsl:apply-templates mode="keep-value-property"/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='links']/j:map/j:string[@key='text']"
+                 priority="6">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/metadata/link/text" -->
+      <field collapsible="no"
+             as-type="markup-line"
+             name="text"
+             key="text"
+             gi="text"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">text</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='links']/j:map/j:string[@key='text']"
+                 mode="get-value-property"
+                 priority="6">
+      <value as-type="markup-line" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='roles']/j:map/j:string[@key='title']"
+                 priority="6">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/metadata/role/title" -->
+      <field collapsible="no"
+             as-type="markup-line"
+             name="title"
+             key="title"
+             gi="title"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">title</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='roles']/j:map/j:string[@key='title']"
+                 mode="get-value-property"
+                 priority="6">
+      <value as-type="markup-line" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='roles']/j:map/j:string[@key='short-name']"
+                 priority="6">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/metadata/role/short-name" -->
+      <field collapsible="no"
+             as-type="string"
+             name="short-name"
+             key="short-name"
+             gi="short-name"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">short-name</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='roles']/j:map/j:string[@key='short-name']"
+                 mode="get-value-property"
+                 priority="6">
+      <value as-type="string" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='roles']/j:map/j:string[@key='description']"
+                 priority="6">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/metadata/role/description" -->
+      <field in-xml="WITH_WRAPPER"
+             collapsible="no"
+             as-type="markup-multiline"
+             name="description"
+             key="description"
+             gi="description"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">description</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='roles']/j:map/j:string[@key='description']"
+                 mode="get-value-property"
+                 priority="6">
+      <value as-type="markup-multiline" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='roles']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+                 priority="8">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/metadata/role/link/text" -->
+      <field collapsible="no"
+             as-type="markup-line"
+             name="text"
+             key="text"
+             gi="text"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">text</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='roles']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+                 mode="get-value-property"
+                 priority="8">
+      <value as-type="markup-line" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:string[@key='title']"
+                 priority="6">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/metadata/location/title" -->
+      <field collapsible="no"
+             as-type="markup-line"
+             name="title"
+             key="title"
+             gi="title"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">title</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:string[@key='title']"
+                 mode="get-value-property"
+                 priority="6">
+      <value as-type="markup-line" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:map[@key='address']"
+                 priority="6">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/metadata/location/address" -->
+      <assembly name="address" key="address" gi="address">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">address</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="*[@key='type']"/>
+         <xsl:apply-templates select="*[@key='addr-lines']"/>
+         <xsl:apply-templates select="*[@key='city']"/>
+         <xsl:apply-templates select="*[@key='state']"/>
+         <xsl:apply-templates select="*[@key='postal-code']"/>
+         <xsl:apply-templates select="*[@key='country']"/>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:map[@key='address']/j:array[@key='addr-lines']/j:string"
+                 priority="8">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/metadata/location/address/addr-line" -->
+      <field collapsible="no"
+             as-type="string"
+             name="addr-line"
+             gi="addr-line"
+             in-json="SCALAR">
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:map[@key='address']/j:array[@key='addr-lines']/j:string"
+                 mode="get-value-property"
+                 priority="8">
+      <value as-type="string" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:map[@key='address']/j:string[@key='city']"
+                 priority="7">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/metadata/location/address/city" -->
+      <field collapsible="no"
+             as-type="string"
+             name="city"
+             key="city"
+             gi="city"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">city</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:map[@key='address']/j:string[@key='city']"
+                 mode="get-value-property"
+                 priority="7">
+      <value as-type="string" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:map[@key='address']/j:string[@key='state']"
+                 priority="7">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/metadata/location/address/state" -->
+      <field collapsible="no"
+             as-type="string"
+             name="state"
+             key="state"
+             gi="state"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">state</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:map[@key='address']/j:string[@key='state']"
+                 mode="get-value-property"
+                 priority="7">
+      <value as-type="string" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:map[@key='address']/j:string[@key='postal-code']"
+                 priority="7">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/metadata/location/address/postal-code" -->
+      <field collapsible="no"
+             as-type="string"
+             name="postal-code"
+             key="postal-code"
+             gi="postal-code"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">postal-code</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:map[@key='address']/j:string[@key='postal-code']"
+                 mode="get-value-property"
+                 priority="7">
+      <value as-type="string" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:map[@key='address']/j:string[@key='country']"
+                 priority="7">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/metadata/location/address/country" -->
+      <field collapsible="no"
+             as-type="string"
+             name="country"
+             key="country"
+             gi="country"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">country</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:map[@key='address']/j:string[@key='country']"
+                 mode="get-value-property"
+                 priority="7">
+      <value as-type="string" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:array[@key='email-addresses']/j:string"
+                 priority="7">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/metadata/location/email-address" -->
+      <field collapsible="no"
+             as-type="email"
+             name="email-address"
+             gi="email-address"
+             in-json="SCALAR">
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:array[@key='email-addresses']/j:string"
+                 mode="get-value-property"
+                 priority="7">
+      <value as-type="email" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:array[@key='telephone-numbers']/j:map"
+                 priority="7">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/metadata/location/telephone-number" -->
+      <field collapsible="no"
+             as-type="string"
+             name="telephone-number"
+             gi="telephone-number">
+         <xsl:apply-templates select="*[@key='type']"/>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <!-- matching component-definition/metadata/location/telephone-number-->
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:array[@key='telephone-numbers']/j:map"
+                 mode="get-value-property">
+      <value as-type="string" key="number" in-json="string">
+         <xsl:apply-templates mode="keep-value-property"/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:array[@key='urls']/j:string"
+                 priority="7">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/metadata/location/url" -->
+      <field collapsible="no"
+             as-type="uri"
+             name="url"
+             gi="url"
+             in-json="SCALAR">
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:array[@key='urls']/j:string"
+                 mode="get-value-property"
+                 priority="7">
+      <value as-type="uri" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+                 priority="8">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/metadata/location/link/text" -->
+      <field collapsible="no"
+             as-type="markup-line"
+             name="text"
+             key="text"
+             gi="text"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">text</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='locations']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+                 mode="get-value-property"
+                 priority="8">
+      <value as-type="markup-line" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:string[@key='name']"
+                 priority="6">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/metadata/party/name" -->
+      <field collapsible="no"
+             as-type="string"
+             name="name"
+             key="name"
+             gi="name"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">name</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:string[@key='name']"
+                 mode="get-value-property"
+                 priority="6">
+      <value as-type="string" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:string[@key='short-name']"
+                 priority="6">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/metadata/party/short-name" -->
+      <field collapsible="no"
+             as-type="string"
+             name="short-name"
+             key="short-name"
+             gi="short-name"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">short-name</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:string[@key='short-name']"
+                 mode="get-value-property"
+                 priority="6">
+      <value as-type="string" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='external-ids']/j:map"
+                 priority="7">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/metadata/party/external-id" -->
+      <field collapsible="no"
+             as-type="string"
+             name="external-id"
+             gi="external-id">
+         <xsl:apply-templates select="*[@key='scheme']"/>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <!-- matching component-definition/metadata/party/external-id-->
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='external-ids']/j:map"
+                 mode="get-value-property">
+      <value as-type="string" key="id" in-json="string">
+         <xsl:apply-templates mode="keep-value-property"/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+                 priority="8">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/metadata/party/link/text" -->
+      <field collapsible="no"
+             as-type="markup-line"
+             name="text"
+             key="text"
+             gi="text"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">text</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+                 mode="get-value-property"
+                 priority="8">
+      <value as-type="markup-line" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='email-addresses']/j:string"
+                 priority="7">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/metadata/party/email-address" -->
+      <field collapsible="no"
+             as-type="email"
+             name="email-address"
+             gi="email-address"
+             in-json="SCALAR">
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='email-addresses']/j:string"
+                 mode="get-value-property"
+                 priority="7">
+      <value as-type="email" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='telephone-numbers']/j:map"
+                 priority="7">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/metadata/party/telephone-number" -->
+      <field collapsible="no"
+             as-type="string"
+             name="telephone-number"
+             gi="telephone-number">
+         <xsl:apply-templates select="*[@key='type']"/>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <!-- matching component-definition/metadata/party/telephone-number-->
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='telephone-numbers']/j:map"
+                 mode="get-value-property">
+      <value as-type="string" key="number" in-json="string">
+         <xsl:apply-templates mode="keep-value-property"/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='addresses']/j:map"
+                 priority="8">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/metadata/party/address" -->
+      <assembly name="address" gi="address">
+         <xsl:apply-templates select="*[@key='type']"/>
+         <xsl:apply-templates select="*[@key='addr-lines']"/>
+         <xsl:apply-templates select="*[@key='city']"/>
+         <xsl:apply-templates select="*[@key='state']"/>
+         <xsl:apply-templates select="*[@key='postal-code']"/>
+         <xsl:apply-templates select="*[@key='country']"/>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='addresses']/j:map/j:array[@key='addr-lines']/j:string"
+                 priority="10">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/metadata/party/address/addr-line" -->
+      <field collapsible="no"
+             as-type="string"
+             name="addr-line"
+             gi="addr-line"
+             in-json="SCALAR">
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='addresses']/j:map/j:array[@key='addr-lines']/j:string"
+                 mode="get-value-property"
+                 priority="10">
+      <value as-type="string" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='addresses']/j:map/j:string[@key='city']"
+                 priority="9">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/metadata/party/address/city" -->
+      <field collapsible="no"
+             as-type="string"
+             name="city"
+             key="city"
+             gi="city"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">city</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='addresses']/j:map/j:string[@key='city']"
+                 mode="get-value-property"
+                 priority="9">
+      <value as-type="string" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='addresses']/j:map/j:string[@key='state']"
+                 priority="9">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/metadata/party/address/state" -->
+      <field collapsible="no"
+             as-type="string"
+             name="state"
+             key="state"
+             gi="state"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">state</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='addresses']/j:map/j:string[@key='state']"
+                 mode="get-value-property"
+                 priority="9">
+      <value as-type="string" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='addresses']/j:map/j:string[@key='postal-code']"
+                 priority="9">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/metadata/party/address/postal-code" -->
+      <field collapsible="no"
+             as-type="string"
+             name="postal-code"
+             key="postal-code"
+             gi="postal-code"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">postal-code</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='addresses']/j:map/j:string[@key='postal-code']"
+                 mode="get-value-property"
+                 priority="9">
+      <value as-type="string" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='addresses']/j:map/j:string[@key='country']"
+                 priority="9">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/metadata/party/address/country" -->
+      <field collapsible="no"
+             as-type="string"
+             name="country"
+             key="country"
+             gi="country"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">country</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='addresses']/j:map/j:string[@key='country']"
+                 mode="get-value-property"
+                 priority="9">
+      <value as-type="string" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='member-of-organizations']/j:string"
+                 priority="7">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/metadata/party/member-of-organization" -->
+      <field collapsible="no"
+             as-type="uuid"
+             name="member-of-organization"
+             gi="member-of-organization"
+             in-json="SCALAR">
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='parties']/j:map/j:array[@key='member-of-organizations']/j:string"
+                 mode="get-value-property"
+                 priority="7">
+      <value as-type="uuid" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='responsible-parties']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+                 priority="8">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/metadata/responsible-party/link/text" -->
+      <field collapsible="no"
+             as-type="markup-line"
+             name="text"
+             key="text"
+             gi="text"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">text</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='metadata']/j:array[@key='responsible-parties']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+                 mode="get-value-property"
+                 priority="8">
+      <value as-type="markup-line" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:array[@key='components']/j:map/j:string[@key='title']"
+                 priority="5">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/component/title" -->
+      <field collapsible="no"
+             as-type="markup-line"
+             name="title"
+             key="title"
+             gi="title"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">title</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:array[@key='components']/j:map/j:string[@key='title']"
+                 mode="get-value-property"
+                 priority="5">
+      <value as-type="markup-line" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:array[@key='components']/j:map/j:string[@key='description']"
+                 priority="5">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/component/description" -->
+      <field in-xml="WITH_WRAPPER"
+             collapsible="no"
+             as-type="markup-multiline"
+             name="description"
+             key="description"
+             gi="description"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">description</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:array[@key='components']/j:map/j:string[@key='description']"
+                 mode="get-value-property"
+                 priority="5">
+      <value as-type="markup-multiline" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:array[@key='components']/j:map/j:string[@key='purpose']"
+                 priority="5">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/component/purpose" -->
+      <field collapsible="no"
+             as-type="markup-line"
+             name="purpose"
+             key="purpose"
+             gi="purpose"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">purpose</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:array[@key='components']/j:map/j:string[@key='purpose']"
+                 mode="get-value-property"
+                 priority="5">
+      <value as-type="markup-line" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:array[@key='components']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+                 priority="7">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/component/link/text" -->
+      <field collapsible="no"
+             as-type="markup-line"
+             name="text"
+             key="text"
+             gi="text"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">text</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:array[@key='components']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+                 mode="get-value-property"
+                 priority="7">
+      <value as-type="markup-line" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:array[@key='components']/j:map/j:array[@key='responsible-roles']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+                 priority="9">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/component/responsible-role/link/text" -->
+      <field collapsible="no"
+             as-type="markup-line"
+             name="text"
+             key="text"
+             gi="text"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">text</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:array[@key='components']/j:map/j:array[@key='responsible-roles']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+                 mode="get-value-property"
+                 priority="9">
+      <value as-type="markup-line" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:array[@key='components']/j:map/j:array[@key='protocols']/j:map/j:string[@key='title']"
+                 priority="7">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/component/protocol/title" -->
+      <field collapsible="no"
+             as-type="markup-line"
+             name="title"
+             key="title"
+             gi="title"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">title</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:array[@key='components']/j:map/j:array[@key='protocols']/j:map/j:string[@key='title']"
+                 mode="get-value-property"
+                 priority="7">
+      <value as-type="markup-line" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:array[@key='components']/j:map/j:array[@key='control-implementations']/j:map"
+                 priority="6">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/component/control-implementation" -->
+      <assembly name="control-implementation" gi="control-implementation">
+         <xsl:apply-templates select="*[@key='uuid']"/>
+         <xsl:apply-templates select="*[@key='source']"/>
+         <xsl:apply-templates select="*[@key='description']"/>
+         <xsl:apply-templates select="*[@key='props']"/>
+         <xsl:apply-templates select="*[@key='links']"/>
+         <xsl:apply-templates select="*[@key='set-parameters']"/>
+         <xsl:apply-templates select="*[@key='implemented-requirements']"/>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:array[@key='components']/j:map/j:array[@key='control-implementations']/j:map/j:string[@key='description']"
+                 priority="7">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/component/control-implementation/description" -->
+      <field in-xml="WITH_WRAPPER"
+             collapsible="no"
+             as-type="markup-multiline"
+             name="description"
+             key="description"
+             gi="description"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">description</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:array[@key='components']/j:map/j:array[@key='control-implementations']/j:map/j:string[@key='description']"
+                 mode="get-value-property"
+                 priority="7">
+      <value as-type="markup-multiline" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:array[@key='components']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+                 priority="9">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/component/control-implementation/link/text" -->
+      <field collapsible="no"
+             as-type="markup-line"
+             name="text"
+             key="text"
+             gi="text"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">text</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:array[@key='components']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+                 mode="get-value-property"
+                 priority="9">
+      <value as-type="markup-line" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:array[@key='components']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='set-parameters']/j:map/j:array[@key='values']/j:string"
+                 priority="10">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/component/control-implementation/set-parameter/value" -->
+      <field collapsible="no"
+             as-type="string"
+             name="parameter-value"
+             gi="value"
+             in-json="SCALAR">
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:array[@key='components']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='set-parameters']/j:map/j:array[@key='values']/j:string"
+                 mode="get-value-property"
+                 priority="10">
+      <value as-type="string" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:array[@key='components']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map"
+                 priority="8">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/component/control-implementation/implemented-requirement" -->
+      <assembly name="implemented-requirement" gi="implemented-requirement">
+         <xsl:apply-templates select="*[@key='uuid']"/>
+         <xsl:apply-templates select="*[@key='control-id']"/>
+         <xsl:apply-templates select="*[@key='description']"/>
+         <xsl:apply-templates select="*[@key='props']"/>
+         <xsl:apply-templates select="*[@key='links']"/>
+         <xsl:apply-templates select="*[@key='set-parameters']"/>
+         <xsl:apply-templates select="*[@key='responsible-roles']"/>
+         <xsl:apply-templates select="*[@key='statements']"/>
+         <xsl:apply-templates select="*[@key='remarks']"/>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:array[@key='components']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:string[@key='description']"
+                 priority="9">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/component/control-implementation/implemented-requirement/description" -->
+      <field in-xml="WITH_WRAPPER"
+             collapsible="no"
+             as-type="markup-multiline"
+             name="description"
+             key="description"
+             gi="description"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">description</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:array[@key='components']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:string[@key='description']"
+                 mode="get-value-property"
+                 priority="9">
+      <value as-type="markup-multiline" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:array[@key='components']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+                 priority="11">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/component/control-implementation/implemented-requirement/link/text" -->
+      <field collapsible="no"
+             as-type="markup-line"
+             name="text"
+             key="text"
+             gi="text"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">text</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:array[@key='components']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+                 mode="get-value-property"
+                 priority="11">
+      <value as-type="markup-line" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:array[@key='components']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='set-parameters']/j:map/j:array[@key='values']/j:string"
+                 priority="12">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/component/control-implementation/implemented-requirement/set-parameter/value" -->
+      <field collapsible="no"
+             as-type="string"
+             name="parameter-value"
+             gi="value"
+             in-json="SCALAR">
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:array[@key='components']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='set-parameters']/j:map/j:array[@key='values']/j:string"
+                 mode="get-value-property"
+                 priority="12">
+      <value as-type="string" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:array[@key='components']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='responsible-roles']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+                 priority="13">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/component/control-implementation/implemented-requirement/responsible-role/link/text" -->
+      <field collapsible="no"
+             as-type="markup-line"
+             name="text"
+             key="text"
+             gi="text"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">text</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:array[@key='components']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='responsible-roles']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+                 mode="get-value-property"
+                 priority="13">
+      <value as-type="markup-line" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:array[@key='components']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='statements']/j:map"
+                 priority="10">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/component/control-implementation/implemented-requirement/statement" -->
+      <assembly name="statement" gi="statement">
+         <xsl:apply-templates select="*[@key='statement-id']"/>
+         <xsl:apply-templates select="*[@key='uuid']"/>
+         <xsl:apply-templates select="*[@key='description']"/>
+         <xsl:apply-templates select="*[@key='props']"/>
+         <xsl:apply-templates select="*[@key='links']"/>
+         <xsl:apply-templates select="*[@key='responsible-roles']"/>
+         <xsl:apply-templates select="*[@key='remarks']"/>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:array[@key='components']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='statements']/j:map/j:string[@key='description']"
+                 priority="11">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/component/control-implementation/implemented-requirement/statement/description" -->
+      <field in-xml="WITH_WRAPPER"
+             collapsible="no"
+             as-type="markup-multiline"
+             name="description"
+             key="description"
+             gi="description"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">description</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:array[@key='components']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='statements']/j:map/j:string[@key='description']"
+                 mode="get-value-property"
+                 priority="11">
+      <value as-type="markup-multiline" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:array[@key='components']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='statements']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+                 priority="13">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/component/control-implementation/implemented-requirement/statement/link/text" -->
+      <field collapsible="no"
+             as-type="markup-line"
+             name="text"
+             key="text"
+             gi="text"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">text</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:array[@key='components']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='statements']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+                 mode="get-value-property"
+                 priority="13">
+      <value as-type="markup-line" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:array[@key='components']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='statements']/j:map/j:array[@key='responsible-roles']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+                 priority="15">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/component/control-implementation/implemented-requirement/statement/responsible-role/link/text" -->
+      <field collapsible="no"
+             as-type="markup-line"
+             name="text"
+             key="text"
+             gi="text"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">text</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:array[@key='components']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='statements']/j:map/j:array[@key='responsible-roles']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+                 mode="get-value-property"
+                 priority="15">
+      <value as-type="markup-line" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:array[@key='capabilities']/j:map/j:string[@key='description']"
+                 priority="5">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/capability/description" -->
+      <field in-xml="WITH_WRAPPER"
+             collapsible="no"
+             as-type="markup-multiline"
+             name="description"
+             key="description"
+             gi="description"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">description</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:array[@key='capabilities']/j:map/j:string[@key='description']"
+                 mode="get-value-property"
+                 priority="5">
+      <value as-type="markup-multiline" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:array[@key='capabilities']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+                 priority="7">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/capability/link/text" -->
+      <field collapsible="no"
+             as-type="markup-line"
+             name="text"
+             key="text"
+             gi="text"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">text</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:array[@key='capabilities']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+                 mode="get-value-property"
+                 priority="7">
+      <value as-type="markup-line" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:array[@key='capabilities']/j:map/j:array[@key='incorporates-components']/j:map/j:string[@key='description']"
+                 priority="7">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/capability/incorporates-component/description" -->
+      <field in-xml="WITH_WRAPPER"
+             collapsible="no"
+             as-type="markup-multiline"
+             name="description"
+             key="description"
+             gi="description"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">description</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:array[@key='capabilities']/j:map/j:array[@key='incorporates-components']/j:map/j:string[@key='description']"
+                 mode="get-value-property"
+                 priority="7">
+      <value as-type="markup-multiline" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map"
+                 priority="6">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/capability/control-implementation" -->
+      <assembly name="control-implementation" gi="control-implementation">
+         <xsl:apply-templates select="*[@key='uuid']"/>
+         <xsl:apply-templates select="*[@key='source']"/>
+         <xsl:apply-templates select="*[@key='description']"/>
+         <xsl:apply-templates select="*[@key='props']"/>
+         <xsl:apply-templates select="*[@key='links']"/>
+         <xsl:apply-templates select="*[@key='set-parameters']"/>
+         <xsl:apply-templates select="*[@key='implemented-requirements']"/>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:string[@key='description']"
+                 priority="7">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/capability/control-implementation/description" -->
+      <field in-xml="WITH_WRAPPER"
+             collapsible="no"
+             as-type="markup-multiline"
+             name="description"
+             key="description"
+             gi="description"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">description</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:string[@key='description']"
+                 mode="get-value-property"
+                 priority="7">
+      <value as-type="markup-multiline" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+                 priority="9">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/capability/control-implementation/link/text" -->
+      <field collapsible="no"
+             as-type="markup-line"
+             name="text"
+             key="text"
+             gi="text"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">text</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+                 mode="get-value-property"
+                 priority="9">
+      <value as-type="markup-line" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='set-parameters']/j:map/j:array[@key='values']/j:string"
+                 priority="10">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/capability/control-implementation/set-parameter/value" -->
+      <field collapsible="no"
+             as-type="string"
+             name="parameter-value"
+             gi="value"
+             in-json="SCALAR">
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='set-parameters']/j:map/j:array[@key='values']/j:string"
+                 mode="get-value-property"
+                 priority="10">
+      <value as-type="string" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map"
+                 priority="8">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/capability/control-implementation/implemented-requirement" -->
+      <assembly name="implemented-requirement" gi="implemented-requirement">
+         <xsl:apply-templates select="*[@key='uuid']"/>
+         <xsl:apply-templates select="*[@key='control-id']"/>
+         <xsl:apply-templates select="*[@key='description']"/>
+         <xsl:apply-templates select="*[@key='props']"/>
+         <xsl:apply-templates select="*[@key='links']"/>
+         <xsl:apply-templates select="*[@key='set-parameters']"/>
+         <xsl:apply-templates select="*[@key='responsible-roles']"/>
+         <xsl:apply-templates select="*[@key='statements']"/>
+         <xsl:apply-templates select="*[@key='remarks']"/>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:string[@key='description']"
+                 priority="9">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/capability/control-implementation/implemented-requirement/description" -->
+      <field in-xml="WITH_WRAPPER"
+             collapsible="no"
+             as-type="markup-multiline"
+             name="description"
+             key="description"
+             gi="description"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">description</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:string[@key='description']"
+                 mode="get-value-property"
+                 priority="9">
+      <value as-type="markup-multiline" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+                 priority="11">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/capability/control-implementation/implemented-requirement/link/text" -->
+      <field collapsible="no"
+             as-type="markup-line"
+             name="text"
+             key="text"
+             gi="text"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">text</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+                 mode="get-value-property"
+                 priority="11">
+      <value as-type="markup-line" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='set-parameters']/j:map/j:array[@key='values']/j:string"
+                 priority="12">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/capability/control-implementation/implemented-requirement/set-parameter/value" -->
+      <field collapsible="no"
+             as-type="string"
+             name="parameter-value"
+             gi="value"
+             in-json="SCALAR">
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='set-parameters']/j:map/j:array[@key='values']/j:string"
+                 mode="get-value-property"
+                 priority="12">
+      <value as-type="string" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='responsible-roles']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+                 priority="13">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/capability/control-implementation/implemented-requirement/responsible-role/link/text" -->
+      <field collapsible="no"
+             as-type="markup-line"
+             name="text"
+             key="text"
+             gi="text"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">text</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='responsible-roles']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+                 mode="get-value-property"
+                 priority="13">
+      <value as-type="markup-line" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='statements']/j:map"
+                 priority="10">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/capability/control-implementation/implemented-requirement/statement" -->
+      <assembly name="statement" gi="statement">
+         <xsl:apply-templates select="*[@key='statement-id']"/>
+         <xsl:apply-templates select="*[@key='uuid']"/>
+         <xsl:apply-templates select="*[@key='description']"/>
+         <xsl:apply-templates select="*[@key='props']"/>
+         <xsl:apply-templates select="*[@key='links']"/>
+         <xsl:apply-templates select="*[@key='responsible-roles']"/>
+         <xsl:apply-templates select="*[@key='remarks']"/>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='statements']/j:map/j:string[@key='description']"
+                 priority="11">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/capability/control-implementation/implemented-requirement/statement/description" -->
+      <field in-xml="WITH_WRAPPER"
+             collapsible="no"
+             as-type="markup-multiline"
+             name="description"
+             key="description"
+             gi="description"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">description</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='statements']/j:map/j:string[@key='description']"
+                 mode="get-value-property"
+                 priority="11">
+      <value as-type="markup-multiline" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='statements']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+                 priority="13">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/capability/control-implementation/implemented-requirement/statement/link/text" -->
+      <field collapsible="no"
+             as-type="markup-line"
+             name="text"
+             key="text"
+             gi="text"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">text</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='statements']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+                 mode="get-value-property"
+                 priority="13">
+      <value as-type="markup-line" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='statements']/j:map/j:array[@key='responsible-roles']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+                 priority="15">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/capability/control-implementation/implemented-requirement/statement/responsible-role/link/text" -->
+      <field collapsible="no"
+             as-type="markup-line"
+             name="text"
+             key="text"
+             gi="text"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">text</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:array[@key='capabilities']/j:map/j:array[@key='control-implementations']/j:map/j:array[@key='implemented-requirements']/j:map/j:array[@key='statements']/j:map/j:array[@key='responsible-roles']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+                 mode="get-value-property"
+                 priority="15">
+      <value as-type="markup-line" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='back-matter']/j:array[@key='resources']/j:map"
+                 priority="5">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/back-matter/resource" -->
+      <assembly name="resource" gi="resource">
+         <xsl:apply-templates select="*[@key='uuid']"/>
+         <xsl:apply-templates select="*[@key='title']"/>
+         <xsl:apply-templates select="*[@key='description']"/>
+         <xsl:apply-templates select="*[@key='props']"/>
+         <xsl:apply-templates select="*[@key='document-ids']"/>
+         <xsl:apply-templates select="*[@key='citation']"/>
+         <xsl:apply-templates select="*[@key='rlinks']"/>
+         <xsl:apply-templates select="*[@key='base64']"/>
+         <xsl:apply-templates select="*[@key='remarks']"/>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:string[@key='title']"
+                 priority="6">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/back-matter/resource/title" -->
+      <field collapsible="no"
+             as-type="markup-line"
+             name="title"
+             key="title"
+             gi="title"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">title</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:string[@key='title']"
+                 mode="get-value-property"
+                 priority="6">
+      <value as-type="markup-line" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:string[@key='description']"
+                 priority="6">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/back-matter/resource/description" -->
+      <field in-xml="WITH_WRAPPER"
+             collapsible="no"
+             as-type="markup-multiline"
+             name="description"
+             key="description"
+             gi="description"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">description</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:string[@key='description']"
+                 mode="get-value-property"
+                 priority="6">
+      <value as-type="markup-multiline" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:array[@key='document-ids']/j:map"
+                 priority="7">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/back-matter/resource/document-id" -->
+      <field collapsible="no"
+             as-type="string"
+             name="document-id"
+             gi="document-id">
+         <xsl:apply-templates select="*[@key='scheme']"/>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <!-- matching component-definition/back-matter/resource/document-id-->
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:array[@key='document-ids']/j:map"
+                 mode="get-value-property">
+      <value as-type="string" key="identifier" in-json="string">
+         <xsl:apply-templates mode="keep-value-property"/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:map[@key='citation']"
+                 priority="6">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/back-matter/resource/citation" -->
+      <assembly name="citation" key="citation" gi="citation">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">citation</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="*[@key='text']"/>
+         <xsl:apply-templates select="*[@key='props']"/>
+         <xsl:apply-templates select="*[@key='links']"/>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:map[@key='citation']/j:string[@key='text']"
+                 priority="7">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/back-matter/resource/citation/text" -->
+      <field collapsible="no"
+             as-type="markup-line"
+             name="text"
+             key="text"
+             gi="text"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">text</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:map[@key='citation']/j:string[@key='text']"
+                 mode="get-value-property"
+                 priority="7">
+      <value as-type="markup-line" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:map[@key='citation']/j:array[@key='links']/j:map/j:string[@key='text']"
+                 priority="9">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/back-matter/resource/citation/link/text" -->
+      <field collapsible="no"
+             as-type="markup-line"
+             name="text"
+             key="text"
+             gi="text"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">text</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:map[@key='citation']/j:array[@key='links']/j:map/j:string[@key='text']"
+                 mode="get-value-property"
+                 priority="9">
+      <value as-type="markup-line" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:array[@key='rlinks']/j:map"
+                 priority="7">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/back-matter/resource/rlink" -->
+      <assembly name="rlink" gi="rlink">
+         <xsl:apply-templates select="*[@key='href']"/>
+         <xsl:apply-templates select="*[@key='media-type']"/>
+         <xsl:apply-templates select="*[@key='hashes']"/>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:map[@key='base64']"
+                 priority="6">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="component-definition/back-matter/resource/base64" -->
+      <field collapsible="no"
+             as-type="base64Binary"
+             name="base64"
+             key="base64"
+             gi="base64">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">base64</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="*[@key='filename']"/>
+         <xsl:apply-templates select="*[@key='media-type']"/>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <!-- matching component-definition/back-matter/resource/base64-->
+   <xsl:template match="j:map[@key='component-definition']/j:map[@key='back-matter']/j:array[@key='resources']/j:map/j:map[@key='base64']"
+                 mode="get-value-property">
+      <value as-type="base64Binary" key="value" in-json="string">
+         <xsl:apply-templates mode="keep-value-property"/>
+      </value>
+   </xsl:template>
+   <!-- by default, fields traverse their properties to find a value -->
+   <xsl:template match="*" mode="get-value-property">
+      <xsl:apply-templates mode="keep-value-property"/>
+   </xsl:template>
+   <xsl:template match="*" mode="keep-value-property">
+      <xsl:value-of select="."/>
+   </xsl:template>
+   <!-- JSON to XML conversion: Markdown to markup inferencing -->
+   <xsl:template mode="cast-md"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel"
+                 match="value[@as-type=('markup-line')]">
+      <xsl:copy>
+         <xsl:copy-of select="@*"/>
+         <!-- if this is valid only a single p comes back but who can tell? -->
+         <xsl:call-template name="parse-markdown-line">
+            <xsl:with-param name="markdown-str" select="string(.)"/>
+         </xsl:call-template>
+      </xsl:copy>
+   </xsl:template>
+   <xsl:template mode="cast-md"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel"
+                 match="value[@as-type=('markup-multiline')]">
+      <xsl:copy>
+         <xsl:copy-of select="@*"/>
+         <xsl:call-template name="parse-markdown">
+            <xsl:with-param name="markdown-str" select="string(.)"/>
+         </xsl:call-template>
+      </xsl:copy>
+   </xsl:template>
+   <xsl:template name="parse-markdown-line">
+      <xsl:param name="markdown-str" as="xs:string" required="yes"/>
+      <xsl:variable name="str-as-textnode">
+         <xsl:value-of select="string($markdown-str) =&gt; replace('\\n','&#xA;')"/>
       </xsl:variable>
-      <xsl:apply-templates select="$expanded" mode="json2xml"/>
+      <xsl:apply-templates select="$str-as-textnode" mode="infer-inlines"/>
    </xsl:template>
-   <xsl:template mode="expand"
-                 match="map[@key = 'attachments']/array[@key = 'value']/string | array[@key = 'attachments']/map/array[@key = 'value']/string">
-      <xsl:variable name="me" select="."/>
-      <xsl:for-each select="parent::array/parent::map">
-         <xsl:copy>
-            <xsl:copy-of select="* except array[@key = 'value']"/>
-            <string xmlns="http://www.w3.org/2005/xpath-functions" key="value">
-               <xsl:value-of select="$me"/>
-            </string>
-         </xsl:copy>
-      </xsl:for-each>
-   </xsl:template>
-   <!-- *** Handling flag @filename *** -->
-   <xsl:template match="*[@key='filename']" priority="6" mode="json2xml"/>
-   <xsl:template priority="2"
-                 match="*[@key='base64']/*[@key='filename'] | *[@key='attachments']/*[@key='filename'] | array[@key='attachments']/*/*[@key='filename'] | map[@key='attachments']/*/*[@key='filename']"
-                 mode="as-attribute">
-      <xsl:attribute name="filename">
-         <xsl:apply-templates mode="#current"/>
-      </xsl:attribute>
-   </xsl:template>
-   <!--*[@key='description']-->
-   <xsl:template match="*[@key='description']" priority="5" mode="json2xml">
-      <xsl:element name="description" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:for-each select="string[@key='description'], self::string">
-            <xsl:call-template name="parse">
-               <xsl:with-param name="markdown-str" select="string(.)"/>
-            </xsl:call-template>
-         </xsl:for-each>
-      </xsl:element>
-   </xsl:template>
-   <!--*[@key='remarks']-->
-   <xsl:template match="*[@key='remarks']" priority="5" mode="json2xml">
-      <xsl:element name="remarks" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:for-each select="string[@key='remarks'], self::string">
-            <xsl:call-template name="parse">
-               <xsl:with-param name="markdown-str" select="string(.)"/>
-            </xsl:call-template>
-         </xsl:for-each>
-      </xsl:element>
-   </xsl:template>
-   <!-- *** Handling flag @component-type *** -->
-   <xsl:template match="*[@key='component-type']" priority="6" mode="json2xml"/>
-   <xsl:template priority="2"
-                 match="*[@key='component']/*[@key='component-type'] | *[@key='components']/*[@key='component-type'] | array[@key='components']/*/*[@key='component-type'] | map[@key='components']/*/*[@key='component-type']"
-                 mode="as-attribute">
-      <xsl:attribute name="component-type">
-         <xsl:apply-templates mode="#current"/>
-      </xsl:attribute>
-   </xsl:template>
-   <!-- *** Handling flag @source *** -->
-   <xsl:template match="*[@key='source']" priority="6" mode="json2xml"/>
-   <xsl:template priority="2"
-                 match="*[@key='can-meet-requirement-set']/*[@key='source'] | *[@key='can-meet-requirement-sets']/*[@key='source'] | array[@key='can-meet-requirement-sets']/*/*[@key='source'] | map[@key='can-meet-requirement-sets']/*/*[@key='source']"
-                 mode="as-attribute">
-      <xsl:attribute name="source">
-         <xsl:apply-templates mode="#current"/>
-      </xsl:attribute>
-   </xsl:template>
-   <!-- *** Handling flag @control-id *** -->
-   <xsl:template match="*[@key='control-id']" priority="6" mode="json2xml"/>
-   <xsl:template priority="2"
-                 match="*[@key='implemented-requirement']/*[@key='control-id'] | *[@key='implemented-requirements']/*[@key='control-id'] | array[@key='implemented-requirements']/*/*[@key='control-id'] | map[@key='implemented-requirements']/*/*[@key='control-id']"
-                 mode="as-attribute">
-      <xsl:attribute name="control-id">
-         <xsl:apply-templates mode="#current"/>
-      </xsl:attribute>
-   </xsl:template>
-   <!-- *** Handling assembly "only-statement" *** -->
-   <!-- *** NB - template matching 'array' overrides this one *** -->
-   <xsl:template match="*[@key='only-statement'] | array[@key='only-statements']/* | map[@key='only-statements']"
-                 priority="4"
-                 mode="json2xml">
-      <xsl:element name="only-statement" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates select="@key" mode="as-attribute"/>
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('description')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('prop', 'properties')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('link', 'links')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('remarks')]"/>
-      </xsl:element>
-   </xsl:template>
-   <xsl:template match="map[@key=('only-statements')]" priority="5" mode="json2xml">
-      <xsl:apply-templates mode="json2xml"/>
-   </xsl:template>
-   <xsl:template priority="2"
-                 match="map[@key=('only-statements')]/*/@key"
-                 mode="as-attribute">
-      <xsl:attribute name="statement-id">
-         <xsl:value-of select="."/>
-      </xsl:attribute>
-   </xsl:template>
-   <xsl:template match="map[@key=('only-statements')]/map"
-                 priority="3"
-                 mode="json2xml">
-      <xsl:element name="only-statement" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates select="@key" mode="as-attribute"/>
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('description')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('prop', 'properties')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('link', 'links')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('remarks')]"/>
-      </xsl:element>
-   </xsl:template>
-   <!-- *** Handling flag @statement-id *** -->
-   <xsl:template match="*[@key='statement-id']" priority="6" mode="json2xml"/>
-   <xsl:template priority="2"
-                 match="*[@key='only-statement']/*[@key='statement-id'] | *[@key='only-statements']/*[@key='statement-id'] | array[@key='only-statements']/*/*[@key='statement-id'] | map[@key='only-statements']/*/*[@key='statement-id']"
-                 mode="as-attribute">
-      <xsl:attribute name="statement-id">
-         <xsl:apply-templates mode="#current"/>
-      </xsl:attribute>
-   </xsl:template>
-   <!-- *** Handling flag @component-id *** -->
-   <xsl:template match="*[@key='component-id']" priority="6" mode="json2xml"/>
-   <xsl:template priority="2"
-                 match="*[@key='incorporates-component']/*[@key='component-id'] | *[@key='incorporates-components']/*[@key='component-id'] | array[@key='incorporates-components']/*/*[@key='component-id'] | map[@key='incorporates-components']/*/*[@key='component-id']"
-                 mode="as-attribute">
-      <xsl:attribute name="component-id">
-         <xsl:apply-templates mode="#current"/>
-      </xsl:attribute>
-   </xsl:template>
-   <!-- *** Handling assembly "incorporates-component" *** -->
-   <!-- *** NB - template matching 'array' overrides this one *** -->
-   <xsl:template match="*[@key='incorporates-component'] | array[@key='incorporates-components']/* | map[@key='incorporates-components']"
-                 priority="4"
-                 mode="json2xml">
-      <xsl:element name="incorporates-component"
-                   namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates select="@key" mode="as-attribute"/>
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('description')]"/>
-      </xsl:element>
-   </xsl:template>
-   <xsl:template match="map[@key=('incorporates-components')]"
-                 priority="5"
-                 mode="json2xml">
-      <xsl:apply-templates mode="json2xml"/>
-   </xsl:template>
-   <xsl:template priority="2"
-                 match="map[@key=('incorporates-components')]/*/@key"
-                 mode="as-attribute">
-      <xsl:attribute name="component-id">
-         <xsl:value-of select="."/>
-      </xsl:attribute>
-   </xsl:template>
-   <xsl:template match="map[@key=('incorporates-components')]/map"
-                 priority="3"
-                 mode="json2xml">
-      <xsl:element name="incorporates-component"
-                   namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates select="@key" mode="as-attribute"/>
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('description')]"/>
-      </xsl:element>
-   </xsl:template>
-   <!-- *** Handling assembly "incorporates-capability" *** -->
-   <!-- *** NB - template matching 'array' overrides this one *** -->
-   <xsl:template match="*[@key='incorporates-capability'] | array[@key='incorporates-capabilities']/* | map[@key='incorporates-capabilities']"
-                 priority="4"
-                 mode="json2xml">
-      <xsl:element name="incorporates-capability"
-                   namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates select="@key" mode="as-attribute"/>
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('description')]"/>
-      </xsl:element>
-   </xsl:template>
-   <xsl:template match="map[@key=('incorporates-capabilities')]"
-                 priority="5"
-                 mode="json2xml">
-      <xsl:apply-templates mode="json2xml"/>
-   </xsl:template>
-   <xsl:template priority="2"
-                 match="map[@key=('incorporates-capabilities')]/*/@key"
-                 mode="as-attribute">
-      <xsl:attribute name="capability-id">
-         <xsl:value-of select="."/>
-      </xsl:attribute>
-   </xsl:template>
-   <xsl:template match="map[@key=('incorporates-capabilities')]/map"
-                 priority="3"
-                 mode="json2xml">
-      <xsl:element name="incorporates-capability"
-                   namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates select="@key" mode="as-attribute"/>
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('description')]"/>
-      </xsl:element>
-   </xsl:template>
-   <!-- *** Handling flag "incorporates-capability/@capability-id" *** -->
-   <!-- suppressing when matched in json2xml traversal-->
-   <xsl:template match="*[@key='incorporates-capability']/*[@key='capability-id'] | *[@key='incorporates-capabilities']/*[@key='capability-id'] | *[@key='incorporates-capabilities']/*/*[@key='capability-id']"
-                 priority="7"
-                 mode="json2xml"/>
-   <xsl:template priority="3"
-                 match="*[@key='incorporates-capability']/*[@key='capability-id'] | *[@key='incorporates-capabilities']/*[@key='capability-id'] | *[@key='incorporates-capabilities']/*/*[@key='capability-id']"
-                 mode="as-attribute">
-      <xsl:attribute name="capability-id">
-         <xsl:apply-templates mode="#current"/>
-      </xsl:attribute>
-   </xsl:template>
-   <!-- *** Handling assembly "component-definition" *** -->
-   <!-- *** NB - template matching 'array' overrides this one *** -->
-   <xsl:template match="*[@key='component-definition'] | /map[empty(@key)]"
-                 priority="4"
-                 mode="json2xml">
-      <xsl:element name="component-definition"
-                   namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('metadata')]"/>
-         <xsl:apply-templates mode="#current"
-                              select="*[@key=('import-component-definition', 'import-component-definitions')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('component', 'components')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('capability', 'capabilities')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('back-matter')]"/>
-      </xsl:element>
-   </xsl:template>
-   <!-- *** Handling field "import-component-definition" *** -->
-   <!--*[@key='import-component-definition'] | *[@key='import-component-definitions']  | *[@key='import-component-definitions']/*-->
-   <!-- *** NB - template matching 'array' overrides this one *** -->
-   <xsl:template match="*[@key='import-component-definition'] | *[@key='import-component-definitions']  | *[@key='import-component-definitions']/*"
-                 priority="5"
-                 mode="json2xml">
-      <xsl:element name="import-component-definition"
-                   namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates select="*" mode="as-attribute"/>
-         <xsl:apply-templates select="string[@key='STRVALUE']" mode="json2xml"/>
-         <xsl:for-each select="self::string | self::boolean | self::number">
-            <xsl:apply-templates mode="json2xml"/>
-         </xsl:for-each>
-      </xsl:element>
-   </xsl:template>
-   <xsl:template priority="3"
-                 mode="json2xml"
-                 match="map[@key = 'import-component-definitions']/array[@key = 'STRVALUE'] | array[@key = 'import-component-definitions']/map/array[@key = 'STRVALUE']">
-      <xsl:variable name="expanded" as="element()*">
-         <array xmlns="http://www.w3.org/2005/xpath-functions"
-                key="import-component-definitions">
-            <xsl:apply-templates mode="expand" select="array[@key = 'STRVALUE']/string"/>
-         </array>
-      </xsl:variable>
-      <xsl:apply-templates select="$expanded" mode="json2xml"/>
-   </xsl:template>
-   <xsl:template mode="expand"
-                 match="map[@key = 'import-component-definitions']/array[@key = 'STRVALUE']/string | array[@key = 'import-component-definitions']/map/array[@key = 'STRVALUE']/string">
-      <xsl:variable name="me" select="."/>
-      <xsl:for-each select="parent::array/parent::map">
-         <xsl:copy>
-            <xsl:copy-of select="* except array[@key = 'STRVALUE']"/>
-            <string xmlns="http://www.w3.org/2005/xpath-functions" key="STRVALUE">
-               <xsl:value-of select="$me"/>
-            </string>
-         </xsl:copy>
-      </xsl:for-each>
-   </xsl:template>
-   <!-- *** Handling flag "import-component-definition/@href" *** -->
-   <!-- suppressing when matched in json2xml traversal-->
-   <xsl:template match="*[@key='import-component-definition']/*[@key='href'] | *[@key='import-component-definitions']/*[@key='href'] | *[@key='import-component-definitions']/*/*[@key='href']"
-                 priority="7"
-                 mode="json2xml"/>
-   <xsl:template priority="3"
-                 match="*[@key='import-component-definition']/*[@key='href'] | *[@key='import-component-definitions']/*[@key='href'] | *[@key='import-component-definitions']/*/*[@key='href']"
-                 mode="as-attribute">
-      <xsl:attribute name="href">
-         <xsl:apply-templates mode="#current"/>
-      </xsl:attribute>
-   </xsl:template>
-   <!-- *** Handling assembly "component" *** -->
-   <!-- *** NB - template matching 'array' overrides this one *** -->
-   <xsl:template match="*[@key='component'] | array[@key='components']/* | map[@key='components']"
-                 priority="4"
-                 mode="json2xml">
-      <xsl:element name="component" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates select="@key" mode="as-attribute"/>
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('title')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('description')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('prop', 'properties')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('link', 'links')]"/>
-         <xsl:apply-templates mode="#current"
-                              select="*[@key=('responsible-party', 'responsible-parties')]"/>
-         <xsl:apply-templates mode="#current"
-                              select="*[@key=('control-implementation', 'control-implementations')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('remarks')]"/>
-      </xsl:element>
-   </xsl:template>
-   <xsl:template match="map[@key=('components')]" priority="5" mode="json2xml">
-      <xsl:apply-templates mode="json2xml"/>
-   </xsl:template>
-   <xsl:template priority="2"
-                 match="map[@key=('components')]/*/@key"
-                 mode="as-attribute">
-      <xsl:attribute name="id">
-         <xsl:value-of select="."/>
-      </xsl:attribute>
-   </xsl:template>
-   <xsl:template match="map[@key=('components')]/map" priority="3" mode="json2xml">
-      <xsl:element name="component" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates select="@key" mode="as-attribute"/>
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('title')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('description')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('prop', 'properties')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('link', 'links')]"/>
-         <xsl:apply-templates mode="#current"
-                              select="*[@key=('responsible-party', 'responsible-parties')]"/>
-         <xsl:apply-templates mode="#current"
-                              select="*[@key=('control-implementation', 'control-implementations')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('remarks')]"/>
-      </xsl:element>
-   </xsl:template>
-   <!-- *** Handling flag "component/@id" *** -->
-   <!-- suppressing when matched in json2xml traversal-->
-   <xsl:template match="*[@key='component']/*[@key='id'] | *[@key='components']/*[@key='id'] | *[@key='components']/*/*[@key='id']"
-                 priority="7"
-                 mode="json2xml"/>
-   <xsl:template priority="3"
-                 match="*[@key='component']/*[@key='id'] | *[@key='components']/*[@key='id'] | *[@key='components']/*/*[@key='id']"
-                 mode="as-attribute">
-      <xsl:attribute name="id">
-         <xsl:apply-templates mode="#current"/>
-      </xsl:attribute>
-   </xsl:template>
-   <!-- *** Handling flag "component/@name" *** -->
-   <!-- suppressing when matched in json2xml traversal-->
-   <xsl:template match="*[@key='component']/*[@key='name'] | *[@key='components']/*[@key='name'] | *[@key='components']/*/*[@key='name']"
-                 priority="7"
-                 mode="json2xml"/>
-   <xsl:template priority="3"
-                 match="*[@key='component']/*[@key='name'] | *[@key='components']/*[@key='name'] | *[@key='components']/*/*[@key='name']"
-                 mode="as-attribute">
-      <xsl:attribute name="name">
-         <xsl:apply-templates mode="#current"/>
-      </xsl:attribute>
-   </xsl:template>
-   <!-- *** Handling assembly "capability" *** -->
-   <!-- *** NB - template matching 'array' overrides this one *** -->
-   <xsl:template match="*[@key='capability'] | array[@key='capabilities']/* | map[@key='capabilities']"
-                 priority="4"
-                 mode="json2xml">
-      <xsl:element name="capability" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates select="@key" mode="as-attribute"/>
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('description')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('prop', 'properties')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('link', 'links')]"/>
-         <xsl:apply-templates mode="#current"
-                              select="*[@key=('incorporates-capability', 'incorporates-capabilities')]"/>
-         <xsl:apply-templates mode="#current"
-                              select="*[@key=('incorporates-component', 'incorporates-components')]"/>
-         <xsl:apply-templates mode="#current"
-                              select="*[@key=('control-implementation', 'control-implementations')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('remarks')]"/>
-      </xsl:element>
-   </xsl:template>
-   <xsl:template match="map[@key=('capabilities')]" priority="5" mode="json2xml">
-      <xsl:apply-templates mode="json2xml"/>
-   </xsl:template>
-   <xsl:template priority="2"
-                 match="map[@key=('capabilities')]/*/@key"
-                 mode="as-attribute">
-      <xsl:attribute name="id">
-         <xsl:value-of select="."/>
-      </xsl:attribute>
-   </xsl:template>
-   <xsl:template match="map[@key=('capabilities')]/map" priority="3" mode="json2xml">
-      <xsl:element name="capability" namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates select="@key" mode="as-attribute"/>
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('description')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('prop', 'properties')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('link', 'links')]"/>
-         <xsl:apply-templates mode="#current"
-                              select="*[@key=('incorporates-capability', 'incorporates-capabilities')]"/>
-         <xsl:apply-templates mode="#current"
-                              select="*[@key=('incorporates-component', 'incorporates-components')]"/>
-         <xsl:apply-templates mode="#current"
-                              select="*[@key=('control-implementation', 'control-implementations')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('remarks')]"/>
-      </xsl:element>
-   </xsl:template>
-   <!-- *** Handling flag "capability/@id" *** -->
-   <!-- suppressing when matched in json2xml traversal-->
-   <xsl:template match="*[@key='capability']/*[@key='id'] | *[@key='capabilities']/*[@key='id'] | *[@key='capabilities']/*/*[@key='id']"
-                 priority="7"
-                 mode="json2xml"/>
-   <xsl:template priority="3"
-                 match="*[@key='capability']/*[@key='id'] | *[@key='capabilities']/*[@key='id'] | *[@key='capabilities']/*/*[@key='id']"
-                 mode="as-attribute">
-      <xsl:attribute name="id">
-         <xsl:apply-templates mode="#current"/>
-      </xsl:attribute>
-   </xsl:template>
-   <!-- *** Handling flag "capability/@name" *** -->
-   <!-- suppressing when matched in json2xml traversal-->
-   <xsl:template match="*[@key='capability']/*[@key='name'] | *[@key='capabilities']/*[@key='name'] | *[@key='capabilities']/*/*[@key='name']"
-                 priority="7"
-                 mode="json2xml"/>
-   <xsl:template priority="3"
-                 match="*[@key='capability']/*[@key='name'] | *[@key='capabilities']/*[@key='name'] | *[@key='capabilities']/*/*[@key='name']"
-                 mode="as-attribute">
-      <xsl:attribute name="name">
-         <xsl:apply-templates mode="#current"/>
-      </xsl:attribute>
-   </xsl:template>
-   <!-- *** Handling assembly "control-implementation" *** -->
-   <!-- *** NB - template matching 'array' overrides this one *** -->
-   <xsl:template match="*[@key='control-implementation'] | array[@key='control-implementations']/* | map[@key='control-implementations']"
-                 priority="4"
-                 mode="json2xml">
-      <xsl:element name="control-implementation"
-                   namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('description')]"/>
-         <xsl:apply-templates mode="#current"
-                              select="*[@key=('can-meet-requirement-set', 'can-meet-requirement-sets')]"/>
-      </xsl:element>
-   </xsl:template>
-   <!-- *** Handling assembly "can-meet-requirement-set" *** -->
-   <!-- *** NB - template matching 'array' overrides this one *** -->
-   <xsl:template match="*[@key='can-meet-requirement-set'] | array[@key='can-meet-requirement-sets']/* | map[@key='can-meet-requirement-sets']"
-                 priority="4"
-                 mode="json2xml">
-      <xsl:element name="can-meet-requirement-set"
-                   namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('description')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('prop', 'properties')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('link', 'links')]"/>
-         <xsl:apply-templates mode="#current"
-                              select="*[@key=('implemented-requirement', 'implemented-requirements')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('remarks')]"/>
-      </xsl:element>
-   </xsl:template>
-   <!-- *** Handling assembly "implemented-requirement" *** -->
-   <!-- *** NB - template matching 'array' overrides this one *** -->
-   <xsl:template match="*[@key='implemented-requirement'] | array[@key='implemented-requirements']/* | map[@key='implemented-requirements']"
-                 priority="4"
-                 mode="json2xml">
-      <xsl:element name="implemented-requirement"
-                   namespace="http://csrc.nist.gov/ns/oscal/1.0">
-         <xsl:apply-templates mode="as-attribute"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('only-statement', 'only-statements')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('description')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('prop', 'properties')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('link', 'links')]"/>
-         <xsl:apply-templates mode="#current" select="*[@key=('remarks')]"/>
-      </xsl:element>
-   </xsl:template>
-   <!-- *** Handling flag "implemented-requirement/@requirement-id" *** -->
-   <!-- suppressing when matched in json2xml traversal-->
-   <xsl:template match="*[@key='implemented-requirement']/*[@key='requirement-id'] | *[@key='implemented-requirements']/*[@key='requirement-id'] | *[@key='implemented-requirements']/*/*[@key='requirement-id']"
-                 priority="7"
-                 mode="json2xml"/>
-   <xsl:template priority="3"
-                 match="*[@key='implemented-requirement']/*[@key='requirement-id'] | *[@key='implemented-requirements']/*[@key='requirement-id'] | *[@key='implemented-requirements']/*/*[@key='requirement-id']"
-                 mode="as-attribute">
-      <xsl:attribute name="requirement-id">
-         <xsl:apply-templates mode="#current"/>
-      </xsl:attribute>
-   </xsl:template>
-   <!-- 00000000000000000000000000000000000000000000000000000000000000 -->
-   <!-- Markdown converter-->
-   <xsl:output indent="yes"/>
-   <xsl:template name="parse"><!-- First, group according to ``` delimiters btw codeblocks and not
+   <xsl:template name="parse-markdown">
+        
+<!-- First, group according to ``` delimiters btw codeblocks and not
         within codeblock, escape & and < (only)
         within not-codeblock split lines at \n\s*\n
         
-        --><!-- $str may be passed in, or we can process the current node -->
+        -->
+        <!-- $str may be passed in, or we can process the current node -->
       <xsl:param name="markdown-str" as="xs:string" required="yes"/>
       <xsl:variable name="str" select="string($markdown-str) =&gt; replace('\\n','&#xA;')"/>
       <xsl:variable name="starts-with-code" select="matches($str,'^```')"/>
@@ -1567,9 +2795,10 @@
       <xsl:variable name="blocks">
          <xsl:for-each-group select="tokenize($str, '\n')"
                              group-starting-with=".[matches(., '^```')]">
+                <!-- odd groups are code if the first one has code, otherwise evens -->
             <xsl:variable name="this-is-code"
                           select="not((position() mod 2) + number($starts-with-code))"/>
-            <m:p><!-- Adding an attribute flag when this is a code block, code='code' -->
+            <p><!-- Adding an attribute flag when this is a code block, code='code' -->
                <xsl:if test="$this-is-code">
                   <xsl:variable name="language"
                                 expand-text="true"
@@ -1577,12 +2806,13 @@
                   <xsl:attribute name="code" select="if ($language) then $language else 'code'"/>
                </xsl:if>
                <xsl:value-of select="string-join(current-group()[not(matches(., '^```'))],'&#xA;')"/>
-            </m:p>
+            </p>
          </xsl:for-each-group>
       </xsl:variable>
       <xsl:variable name="rough-blocks">
          <xsl:apply-templates select="$blocks" mode="parse-block"/>
       </xsl:variable>
+      <!-- for debugging <xsl:copy-of select="$rough-blocks"/> -->
       <xsl:variable name="flat-structures">
          <xsl:apply-templates select="$rough-blocks" mode="mark-structures"/>
       </xsl:variable>
@@ -1594,7 +2824,7 @@
       <xsl:variable name="fully-marked">
          <xsl:apply-templates select="$nested-structures" mode="infer-inlines"/>
       </xsl:variable>
-      <xsl:apply-templates select="$fully-marked" mode="cast-ns"/>
+      <xsl:sequence select="$fully-marked"/>
    </xsl:template>
    <xsl:template match="*" mode="copy mark-structures build-structures infer-inlines">
       <xsl:copy>
@@ -1604,22 +2834,21 @@
    </xsl:template>
    <xsl:template mode="parse-block"
                  priority="1"
-                 match="m:p[exists(@code)]"
+                 match="p[exists(@code)]"
                  expand-text="true">
-      <xsl:element name="m:pre" namespace="{ $target-ns }">
-         <xsl:element name="code" namespace="{ $target-ns }">
-            <xsl:for-each select="@code[not(.='code')]">
-               <xsl:attribute name="class">language-{.}</xsl:attribute>
-            </xsl:for-each>
-            <xsl:value-of select="string(.)"/>
-         </xsl:element>
-      </xsl:element>
+      <pre>
+         <xsl:for-each select="@code[not(.='code')]">
+            <xsl:attribute name="class">language-{.}</xsl:attribute>
+         </xsl:for-each>
+         <xsl:value-of select="string(.)"/>
+      </pre>
    </xsl:template>
-   <xsl:template mode="parse-block" match="m:p" expand-text="true">
+   <xsl:template mode="parse-block" match="p" expand-text="true">
       <xsl:for-each select="tokenize(string(.),'\n\s*\n')[normalize-space(.)]">
-         <m:p>
-            <xsl:value-of select="replace(.,'^\s*\n','')"/>
-         </m:p>
+         <p>
+                <!-- trimming leading and trailing whitespace here -->
+            <xsl:value-of select="replace(.,'(^\s*\n|\s+$)','')"/>
+         </p>
       </xsl:for-each>
    </xsl:template>
    <xsl:function name="m:is-table-row-demarcator" as="xs:boolean">
@@ -1627,87 +2856,91 @@
       <xsl:sequence select="matches($line,'^[\|\-:\s]+$')"/>
    </xsl:function>
    <xsl:function name="m:is-table" as="xs:boolean">
-      <xsl:param name="line" as="element(m:p)"/>
+      <xsl:param name="line" as="element(p)"/>
       <xsl:variable name="lines" select="tokenize($line,'\s*\n')[matches(.,'\S')]"/>
       <xsl:sequence select="(every $l in $lines satisfies matches($l,'^\|')) and (some $l in $lines satisfies m:is-table-row-demarcator($l))"/>
    </xsl:function>
-   <xsl:template mode="mark-structures" priority="5" match="m:p[m:is-table(.)]">
+   <xsl:template mode="mark-structures" priority="5" match="p[m:is-table(.)]">
       <xsl:variable name="rows">
          <xsl:for-each select="tokenize(string(.),'\s*\n')">
-            <m:tr>
+            <tr>
                <xsl:value-of select="."/>
-            </m:tr>
+            </tr>
          </xsl:for-each>
       </xsl:variable>
-      <m:table>
-         <xsl:apply-templates select="$rows/m:tr" mode="make-row"/>
-      </m:table>
+      <table>
+         <xsl:apply-templates select="$rows/tr" mode="make-row"/>
+      </table>
    </xsl:template>
-   <xsl:template match="m:tr[m:is-table-row-demarcator(string(.))]"
+   <xsl:template match="tr[m:is-table-row-demarcator(string(.))]"
                  priority="5"
                  mode="make-row"/>
-   <xsl:template match="m:tr" mode="make-row">
-      <m:tr>
+   <xsl:template match="tr" mode="make-row">
+      <tr>
          <xsl:for-each select="tokenize(string(.), '\s*\|\s*')[not(position() = (1,last())) ]">
-            <m:td>
+            <td>
                <xsl:value-of select="."/>
-            </m:td>
+            </td>
          </xsl:for-each>
-      </m:tr>
+      </tr>
    </xsl:template>
-   <xsl:template match="m:tr[some $f in (following-sibling::tr) satisfies m:is-table-row-demarcator(string($f))]"
+   <xsl:template match="tr[some $f in (following-sibling::tr) satisfies m:is-table-row-demarcator(string($f))]"
                  mode="make-row">
-      <m:tr>
+      <tr>
          <xsl:for-each select="tokenize(string(.), '\s*\|\s*')[not(position() = (1,last())) ]">
-            <m:th>
+            <th>
                <xsl:value-of select="."/>
-            </m:th>
+            </th>
          </xsl:for-each>
-      </m:tr>
+      </tr>
    </xsl:template>
-   <xsl:template mode="mark-structures" match="m:p[matches(.,'^#')]"><!-- 's' flag is dot-matches-all, so \n does not impede -->
-      <m:p header-level="{ replace(.,'[^#].*$','','s') ! string-length(.) }">
+   <xsl:template mode="mark-structures" match="p[matches(.,'^#')]">
+        <!-- 's' flag is dot-matches-all, so \n does not impede -->
+      <p header-level="{ replace(.,'[^#].*$','','s') ! string-length(.) }">
          <xsl:value-of select="replace(.,'^#+\s*','') ! replace(.,'\s+$','')"/>
-      </m:p>
+      </p>
    </xsl:template>
    <xsl:variable name="li-regex" as="xs:string">^\s*(\*|\d+\.)\s</xsl:variable>
-   <xsl:template mode="mark-structures" match="m:p[matches(.,$li-regex)]">
-      <m:list>
+   <xsl:template mode="mark-structures" match="p[matches(.,$li-regex)]">
+      <list>
          <xsl:for-each-group group-starting-with=".[matches(.,$li-regex)]"
                              select="tokenize(., '\n')">
-            <m:li level="{ replace(.,'\S.*$','') ! floor(string-length(.) div 2)}"
-                  type="{ if (matches(.,'\s*\d')) then 'ol' else 'ul' }">
+            <li level="{ replace(.,'\S.*$','') ! floor(string-length(.) div 2)}"
+                type="{ if (matches(.,'\s*\d')) then 'ol' else 'ul' }">
                <xsl:for-each select="current-group()[normalize-space(.)]">
                   <xsl:if test="not(position() eq 1)">
-                     <m:br/>
+                     <br/>
                   </xsl:if>
                   <xsl:value-of select="replace(., $li-regex, '')"/>
                </xsl:for-each>
-            </m:li>
+            </li>
          </xsl:for-each-group>
-      </m:list>
+      </list>
    </xsl:template>
-   <xsl:template mode="build-structures" match="m:p[@header-level]">
+   <xsl:template mode="build-structures" match="p[@header-level]">
       <xsl:variable name="level" select="(@header-level[6 &gt;= .],6)[1]"/>
-      <xsl:element name="m:h{$level}"
-                   namespace="http://csrc.nist.gov/ns/oscal/1.0/md-convertor">
+      <xsl:element name="h{$level}"
+                   namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
          <xsl:value-of select="."/>
       </xsl:element>
    </xsl:template>
-   <xsl:template mode="build-structures" match="m:list" name="nest-lists"><!-- Starting at level 0 and grouping  --><!--        -->
+   <xsl:template mode="build-structures" match="list" name="nest-lists">
+        <!-- Starting at level 0 and grouping  -->
+        <!--        -->
       <xsl:param name="level" select="0"/>
-      <xsl:param name="group" select="m:li"/>
+      <xsl:param name="group" select="li"/>
       <xsl:variable name="this-type" select="$group[1]/@type"/>
       <!--first, splitting ul from ol groups -->
       <!--<xsl:for-each-group select="$group" group-starting-with="*[@level = $level and not(@type = preceding-sibling::*[1]/@type)]">-->
       <!--<xsl:for-each-group select="$group" group-starting-with="*[@level = $level]">-->
-      <xsl:element name="m:{ $group[1]/@type }"
-                   namespace="http://csrc.nist.gov/ns/oscal/1.0/md-convertor">
+      <xsl:element name="{ $group[1]/@type }"
+                   namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
          <xsl:for-each-group select="$group"
-                             group-starting-with="m:li[(@level = $level) or not(@type = preceding-sibling::*[1]/@type)]">
+                             group-starting-with="li[(@level = $level) or not(@type = preceding-sibling::*[1]/@type)]">
             <xsl:choose>
                <xsl:when test="@level = $level (: checking first item in group :)">
-                  <m:li><!--<xsl:copy-of select="@level"/>-->
+                  <li>
+                            <!--<xsl:copy-of select="@level"/>-->
                      <xsl:apply-templates mode="copy"/>
                      <xsl:if test="current-group()/@level &gt; $level (: go deeper? :)">
                         <xsl:call-template name="nest-lists">
@@ -1715,27 +2948,29 @@
                            <xsl:with-param name="group" select="current-group()[@level &gt; $level]"/>
                         </xsl:call-template>
                      </xsl:if>
-                  </m:li>
+                  </li>
                </xsl:when>
-               <xsl:otherwise><!-- fallback for skipping levels -->
-                  <m:li><!-- level="{$level}"-->
+               <xsl:otherwise>
+                        <!-- fallback for skipping levels -->
+                  <li>
+                                <!-- level="{$level}"-->
                      <xsl:call-template name="nest-lists">
                         <xsl:with-param name="level" select="$level + 1"/>
                         <xsl:with-param name="group" select="current-group()"/>
                      </xsl:call-template>
-                  </m:li>
+                  </li>
                </xsl:otherwise>
             </xsl:choose>
          </xsl:for-each-group>
       </xsl:element>
       <!--</xsl:for-each-group>-->
    </xsl:template>
-   <xsl:template match="m:pre//text()" mode="infer-inlines">
+   <xsl:template match="pre//text()" mode="infer-inlines">
       <xsl:copy-of select="."/>
    </xsl:template>
    <xsl:template match="text()" mode="infer-inlines">
       <xsl:variable name="markup">
-         <xsl:apply-templates select="$tag-replacements/m:rules">
+         <xsl:apply-templates select="$tag-replacements/rules" mode="replacements">
             <xsl:with-param name="original" tunnel="yes" as="text()" select="."/>
          </xsl:apply-templates>
       </xsl:variable>
@@ -1743,13 +2978,9 @@
          <xsl:catch select="."/>
       </xsl:try>
    </xsl:template>
-   <xsl:template mode="cast-ns" match="*">
-      <xsl:element name="{local-name()}" namespace="{ $target-ns }">
-         <xsl:copy-of select="@*[matches(.,'\S')]"/>
-         <xsl:apply-templates mode="#current"/>
-      </xsl:element>
-   </xsl:template>
-   <xsl:template match="m:rules" as="xs:string"><!-- Original is only provided for processing text nodes -->
+   <xsl:template match="rules" as="xs:string" mode="replacements">
+
+        <!-- Original is only provided for processing text nodes -->
       <xsl:param name="original" as="text()?" tunnel="yes"/>
       <xsl:param name="starting" as="xs:string" select="string($original)"/>
       <xsl:iterate select="*">
@@ -1758,22 +2989,23 @@
          <xsl:on-completion select="$str"/>
          <xsl:next-iteration>
             <xsl:with-param name="str">
-               <xsl:apply-templates select=".">
+               <xsl:apply-templates select="." mode="replacements">
                   <xsl:with-param name="str" select="$str"/>
                </xsl:apply-templates>
             </xsl:with-param>
          </xsl:next-iteration>
       </xsl:iterate>
    </xsl:template>
-   <xsl:template match="m:replace" expand-text="true">
+   <xsl:template match="replace" expand-text="true" mode="replacements">
       <xsl:param name="str" as="xs:string"/>
       <!--<xsl:value-of>replace({$str},{@match},{string(.)})</xsl:value-of>-->
-      <xsl:sequence select="replace($str, @match, string(.))"/>
+      <!-- 's' sets dot-matches-all       -->
+      <xsl:sequence select="replace($str, @match, string(.),'s')"/>
       <!--<xsl:copy-of select="."/>-->
    </xsl:template>
-   <xsl:variable xmlns="http://csrc.nist.gov/ns/oscal/1.0/md-convertor"
-                 name="tag-replacements">
-      <rules><!-- first, literal replacements -->
+   <xsl:variable name="tag-replacements">
+      <rules>
+            <!-- first, literal replacements -->
          <replace match="&amp;">&amp;amp;</replace>
          <replace match="&lt;">&amp;lt;</replace>
          <!-- next, explicit escape sequences -->
@@ -1797,14 +3029,14 @@
          </xsl:for-each>
       </rules>
    </xsl:variable>
-   <xsl:variable xmlns="http://csrc.nist.gov/ns/oscal/1.0/md-convertor"
-                 name="tag-specification"
-                 as="element(m:tag-spec)">
-      <tag-spec><!-- The XML notation represents the substitution by showing both delimiters and tags  --><!-- Note that text contents are regex notation for matching so * must be \* -->
+   <xsl:variable name="tag-specification" as="element()">
+      <tag-spec>
+            <!-- The XML notation represents the substitution by showing both delimiters and tags  -->
+            <!-- Note that text contents are regex notation for matching so * must be \* -->
          <q>"<text/>"</q>
          <img alt="!\[{{$noclosebracket}}\]" src="\({{$nocloseparen}}\)"/>
-         <insert param-id="\{{\{{{{$nws}}\}}\}}"/>
-         <a href="\[{{$nocloseparen}}\]">\(<text not="\)"/>\)</a>
+         <insert>\{\{\s*insert: <type/>,\s*<id-ref/>\s*\}\}</insert>
+         <a href="\[{{$noclosebracket}}\]">\(<text not="\)"/>\)</a>
          <code>`<text/>`</code>
          <strong>
             <em>\*\*\*<text/>\*\*\*</em>
@@ -1815,18 +3047,6 @@
          <sup>\^<text/>\^</sup>
       </tag-spec>
    </xsl:variable>
-   <xsl:template match="*" mode="write-replace"><!-- we can write an open/close pair even for an empty element b/c
-             it will be parsed and serialized -->
-      <xsl:text>&lt;</xsl:text>
-      <xsl:value-of select="local-name()"/>
-      <!-- coercing the order to ensure correct formation of regegex       -->
-      <xsl:apply-templates mode="#current" select="@*"/>
-      <xsl:text>&gt;</xsl:text>
-      <xsl:apply-templates mode="#current" select="*"/>
-      <xsl:text>&lt;/</xsl:text>
-      <xsl:value-of select="local-name()"/>
-      <xsl:text>&gt;</xsl:text>
-   </xsl:template>
    <xsl:template match="*" mode="write-match">
       <xsl:apply-templates select="@*, node()" mode="write-match"/>
    </xsl:template>
@@ -1839,32 +3059,99 @@
    <xsl:template match="@*[matches(., '\{\$noclosebracket\}')]" mode="write-match">
       <xsl:value-of select="replace(., '\{\$noclosebracket\}', '([^\\[]*)?')"/>
    </xsl:template>
-   <xsl:template match="@*[matches(., '\{\$nws\}')]" mode="write-match"><!--<xsl:value-of select="."/>--><!--<xsl:value-of select="replace(., '\{\$nws\}', '(\S*)?')"/>-->
-      <xsl:value-of select="replace(., '\{\$nws\}', '\\s*(\\S+)?\\s*')"/>
+   <xsl:template match="text" mode="write-match">
+      <xsl:text>(.*?)</xsl:text>
    </xsl:template>
-   <xsl:template match="m:text" mode="write-replace">
+   <xsl:template match="insert/type | insert/id-ref" mode="write-match">
+      <xsl:text>(\i\c*?)</xsl:text>
+   </xsl:template>
+   <xsl:template match="text[@not]" mode="write-match">
+      <xsl:text expand-text="true">([^{ @not }]*?)</xsl:text>
+   </xsl:template>
+   <xsl:template match="*" mode="write-replace">
+        <!-- we can write an open/close pair even for an empty element b/c
+             it will be parsed and serialized -->
+      <xsl:text>&lt;</xsl:text>
+      <xsl:value-of select="local-name()"/>
+      <!-- forcing the namespace! -->
+      <xsl:text> xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel"</xsl:text>
+      <!-- coercing the order to ensure correct formation of regegex       -->
+      <xsl:apply-templates mode="#current" select="@*"/>
+      <xsl:text>&gt;</xsl:text>
+      <xsl:apply-templates mode="#current" select="*"/>
+      <xsl:text>&lt;/</xsl:text>
+      <xsl:value-of select="local-name()"/>
+      <xsl:text>&gt;</xsl:text>
+   </xsl:template>
+   <xsl:template match="text" mode="write-replace">
       <xsl:text>$1</xsl:text>
    </xsl:template>
-   <xsl:template match="m:insert/@param-id" mode="write-replace">
-      <xsl:text> param-id='$1'</xsl:text>
+   <xsl:template match="insert" mode="write-replace">
+        <!-- we can write an open/close pair even for an empty element b/c
+             it will be parsed and serialized -->
+      <xsl:text>&lt;insert xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel"</xsl:text>
+      <!-- coercing the order to ensure correct formation of regegex       -->
+      <xsl:apply-templates mode="#current" select="*"/>
+      <xsl:text>/&gt;</xsl:text>
    </xsl:template>
-   <xsl:template match="m:a/@href" mode="write-replace">
+   <xsl:template match="insert/type" mode="write-replace">
+      <xsl:text> type='$1'</xsl:text>
+   </xsl:template>
+   <xsl:template match="insert/id-ref" mode="write-replace">
+      <xsl:text> id-ref='$2'</xsl:text>
+   </xsl:template>
+   <xsl:template match="a/@href" mode="write-replace">
       <xsl:text> href='$2'</xsl:text>
       <!--<xsl:value-of select="replace(.,'\{\$insert\}','\$2')"/>-->
    </xsl:template>
-   <xsl:template match="m:img/@alt" mode="write-replace">
+   <xsl:template match="img/@alt" mode="write-replace">
       <xsl:text> alt='$1'</xsl:text>
       <!--<xsl:value-of select="replace(.,'\{\$insert\}','\$2')"/>-->
    </xsl:template>
-   <xsl:template match="m:img/@src" mode="write-replace">
+   <xsl:template match="img/@src" mode="write-replace">
       <xsl:text> src='$2'</xsl:text>
       <!--<xsl:value-of select="replace(.,'\{\$insert\}','\$2')"/>-->
    </xsl:template>
-   <xsl:template match="m:text" mode="write-match">
-      <xsl:text>(.*?)</xsl:text>
-   </xsl:template>
-   <xsl:template match="m:text[@not]" mode="write-match">
-      <xsl:text expand-text="true">([^{ @not }]*?)</xsl:text>
-   </xsl:template>
    <xsl:variable name="line-example" xml:space="preserve"> { insertion } </xsl:variable>
+   <!-- JSON to XML conversion: Supermodel serialization as XML -->
+   <xsl:strip-space xmlns:s="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel"
+                    elements="s:*"/>
+   <xsl:preserve-space xmlns:s="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel"
+                       elements="s:flag s:value"/>
+   <xsl:mode xmlns:s="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel"
+             name="write-xml"/>
+   <xsl:template xmlns:s="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel"
+                 match="s:*[exists(@gi)]"
+                 mode="write-xml">
+      <xsl:element name="{@gi}" namespace="http://csrc.nist.gov/ns/oscal/1.0">
+            <!-- putting flags first in case of disarranged inputs -->
+         <xsl:apply-templates select="s:flag, (* except s:flag)" mode="write-xml"/>
+      </xsl:element>
+   </xsl:template>
+   <xsl:template xmlns:s="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel"
+                 match="s:value[@as-type=('markup-line','markup-multiline')]"
+                 mode="write-xml">
+      <xsl:apply-templates mode="cast-prose"/>
+   </xsl:template>
+   <xsl:template xmlns:s="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel"
+                 match="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
+      <xsl:apply-templates select="." mode="cast-prose"/>
+   </xsl:template>
+   <xsl:template xmlns:s="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel"
+                 priority="2"
+                 match="s:flag"
+                 mode="write-xml">
+      <xsl:attribute name="{@gi}">
+         <xsl:value-of select="."/>
+      </xsl:attribute>
+   </xsl:template>
+   <xsl:template xmlns:s="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel"
+                 match="*"
+                 mode="cast-prose">
+      <xsl:element name="{local-name()}" namespace="http://csrc.nist.gov/ns/oscal/1.0">
+         <xsl:copy-of select="@*"/>
+         <xsl:apply-templates mode="#current"/>
+      </xsl:element>
+   </xsl:template>
 </xsl:stylesheet>

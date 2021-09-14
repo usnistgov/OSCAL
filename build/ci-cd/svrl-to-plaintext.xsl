@@ -9,21 +9,21 @@
   xmlns:iso="http://purl.oclc.org/dsdl/schematron"
   xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
   exclude-result-prefixes="xs xhtml schold saxon s xsd iso svrl" version="1.0">
-  
+
   <xsl:output method="text" indent="no"/>
-  <!-- when embedded in XProc, serialize as plain text to 
+  <!-- when embedded in XProc, serialize as plain text to
        avoid XML markup in the results -->
-  
+
   <xsl:variable name="incidents"
     select="//svrl:failed-assert | //svrl:successful-report"/>
-  
+
   <xsl:template match="/">
     <report>
       <xsl:if test="not($incidents)">You are well formed</xsl:if>
       <xsl:apply-templates select="$incidents"/>
     </report>
   </xsl:template>
-  
+
   <xsl:template match="svrl:failed-assert | svrl:successful-report">
     <incident>
       <xsl:text>&#xA;</xsl:text>
@@ -40,5 +40,5 @@
       <xsl:value-of select="normalize-space(.)"/>
     </incident>
   </xsl:template>
-  
+
 </xsl:stylesheet>

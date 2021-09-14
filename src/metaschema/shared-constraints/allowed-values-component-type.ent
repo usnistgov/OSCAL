@@ -1,0 +1,12 @@
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="interconnection">A connection to something outside this system.</enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="software">Any software, operating system, or firmware.</enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="hardware">A physical device.</enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="service">A service that may provide APIs.</enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="policy">An enforceable policy.</enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="physical">A tangible asset used to provide physical protections or countermeasures.</enum>
+<!-- CHANGED combined "process" and "procedure" as "process-proceedure" -->
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="process-procedure">A list of steps or actions to take to achieve some end result.</enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="plan">An applicable plan.</enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="guidance">Any guideline or recommendation.</enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="standard">Any organizational or industry standard.</enum>
+<enum xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" value="validation">An external assessment performed on some other component, that has been validated by a third-party.</enum>

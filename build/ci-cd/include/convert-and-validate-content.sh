@@ -4,15 +4,16 @@ validate_content() {
   local target_file="$1"; shift
   local target_format="$1"; shift
   local model="$1"; shift
+  local oscal_dir="$1"; shift
 
   # validate target
   case $target_format in
   xml)
-    target_schema="$WORKING_DIR/$target_format/schema/oscal_${model}_schema.xsd"
+    target_schema="${oscal_dir}/${target_format}/schema/oscal_${model}_schema.xsd"
     result=$(validate_xml "$target_schema" "$target_file")
     ;;
   json)
-    target_schema="$WORKING_DIR/$target_format/schema/oscal_${model}_schema.json"
+    target_schema="${oscal_dir}/${target_format}/schema/oscal_${model}_schema.json"
     result=$(validate_json "$target_schema" "$target_file")
     ;;
   *)
@@ -40,14 +41,15 @@ convert_to_format_and_validate() {
   local source_format="$1"; shift
   local target_format="$1"; shift
   local model="$1"; shift
+  local oscal_dir="$1"; shift
 
   # get the schema to use for validating the target
   case $target_format in
   xml)
-    target_converter="$WORKING_DIR/xml/convert/oscal_${model}_json-to-xml-converter.xsl"
+    target_converter="$oscal_dir/xml/convert/oscal_${model}_json-to-xml-converter.xsl"
     ;;
   json)
-    target_converter="$WORKING_DIR/json/convert/oscal_${model}_xml-to-json-converter.xsl"
+    target_converter="$oscal_dir/json/convert/oscal_${model}_xml-to-json-converter.xsl"
     ;;
   *)
     echo -e "${P_WARN}Unsupported target format '${target_format^^}'.${P_END}"
@@ -70,12 +72,14 @@ convert_to_format_and_validate() {
       return 1;
   fi
 
-  result=$(validate_content "$target_file" "$target_format" "$model")
-  echo -ne "${result}"
+  result=$(validate_content "$target_file" "$target_format" "$model" "$oscal_dir")
   cmd_exitcode=$?
+  if [ -n "$result" ]; then
+    echo -ne "${result}"
+  fi
+
   if [ $cmd_exitcode != 0 ]; then
       return 1;
   fi
   return 0;
 }
-
