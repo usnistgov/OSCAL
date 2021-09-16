@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0" 
+    id="uuid-956c32af-8a15-4732-a4d9-f976a1149c4b">
+    <metadata>
+        <title>Sample Security Profile - Select All Controls</title>
+        <published>2020-03-24T11:01:04.736-04:00</published>
+        <last-modified>2020-03-24T11:01:04.736-04:00</last-modified>
+        <version>1.0</version>
+        <oscal-version>1.0.0</oscal-version>
+        <prop name="keywords">Assurance, computer security, FISMA, security controls, security requirements</prop>
+        <role id="creator">
+            <title>Document creator</title>
+        </role>
+        <role id="contact">
+            <title>Contact</title>
+        </role>
+        <party id="NIST">
+            <org>
+                <org-name>National Institute ofStandards and Technology</org-name>
+                <email>oscal@nist.gov</email>
+                <url>https://www.nist.gov/oscal</url>
+            </org>
+        </party>
+        <responsible-party role-id="creator">
+            <party-id>NIST</party-id>
+        </responsible-party>
+        <responsible-party role-id="contact">
+            <party-id>NIST</party-id>
+        </responsible-party>
+    </metadata>
+    <import href="#catalog">
+        <!-- IMPORT ALL CONTROLS (NO EXCLUDED CONTROL) -->
+        <!-- When no include is given (whether an exclude is given or not), an include/all is assumed
+            (that is, all controls will be included by default). -->
+   </import>
+    <merge>
+        <as-is>true</as-is>
+    </merge>
+    <modify>
+        <!-- - - - - ALTER CONTROL - - - - - -->
+        <!-- - - ISO-SC27 1.1.1 - -  -->
+        <alter control-id="s1.1.1">
+            <add position="ending" id-ref="s1.1.1_gdn"> 
+                <part id="s1.1.1_smp_gnd" name="item" ns="sample">
+                    <title>1.1.1 Additional Sample Profile Requirements and Guidance</title>
+                    <part id="s1.1.1_smp_gnd.1" name="item" ns="sample">
+                        <prop name="label">Implementation Guidance:</prop>
+                        <p>The organizations should identify critical information system assets supporting essential missions and business functions.</p>    
+                    </part>
+                </part>
+            </add>
+            <add position="ending" id-ref="s1.1.1_inf"> 
+                <part id="s1.1.1_smp_inf" name="item" ns="sample">
+                    <title>1.1.1 Additional Sample Profile Requirements and Guidance</title>
+                    <part id="s1.1.1_smp_inf.1" name="item" ns="sample">
+                        <prop name="label">Other Information:</prop>
+                        <p>The appointed owners of the assets must report the results of assets' security verification
+                            to the information security manager.</p>    
+                    </part>
+                </part>
+            </add>
+        </alter>
+        <!-- - - ISO-SC27 1.1.2 - -  -->
+        <!-- - - ISO-SC27 2.1.1 - -  -->
+        <!-- - - ISO-SC27 2.1.2 - -  -->  
+    </modify>
+    <back-matter>
+        <resource id="catalog">
+            <desc>Catalog Sample (Derived from ISO/IEC 27002)</desc>
+            <rlink href="../catalog/Catalog%20Sample.xml" media-type="application/oscal.catalog+xml"/>
+        </resource>
+    </back-matter>
+</profile>
+
+    
+
