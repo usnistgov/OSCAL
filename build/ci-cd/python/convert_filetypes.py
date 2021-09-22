@@ -172,7 +172,7 @@ def dry_run_file(file):
     file, file_ext = os.path.splitext(file)
     return f"{file}_test{file_ext}"
 
-def process():
+def handler(():
     parser = ArgumentParser(description='Convert file extensions in fields with hyperlinks for OSCAL JSON, XML, and YAML document instances.')
     parser.add_argument('--old-extension', '-o', dest='old', type=str, help='original file extension you want to convert from')
     parser.add_argument('--new-extension', '-n', dest='new', type=str, help='target file extension you want to convert to')
@@ -194,4 +194,4 @@ def process():
         sys.exit(1)
 
 if __name__ == '__main__':
-    process()
+    handler(()
