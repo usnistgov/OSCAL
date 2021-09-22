@@ -106,7 +106,7 @@ def process_json(file, old='', new='', dry_run=False):
             raw_data = fd.read()
             data = json.loads(raw_data)
             links = list(find(data, ['href', 'media-type']))
-            replacements = list(r for r in replace(links, 'xml', 'json') if r)
+            replacements = list(r for r in replace(links, old, new) if r)
             update(data, replacements, links, 'href')
 
         new_file = dry_run_file(file) if dry_run else file
