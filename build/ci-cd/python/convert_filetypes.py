@@ -85,6 +85,34 @@ def update(data, updates=[{}], originals=[{}], compare_key=None):
                 target[k] = update[k]
 
 def update_xml(data, namespaces={}, updates=[{}], originals=[{}], compare_key=None):
+    """Iterates through a list of potential updates matched from an OSCAL XML
+    document instance, checking for duplicates as defined by a compare key to
+    avoid modifications where post-update there would be duplicate adjacent 
+    elements.
+
+    :param data: the OSCAL XML document data to be modified, passed by reference    
+    :type data: dict
+
+    :param namespaces: a collection of additional XML namespaces to consider when
+    processing additional updates, not including `oscal` or `o`, the default XML
+    for NIST OSCAL development.
+    :type namespaces: dict
+
+    :param updates: a subset list of potential updates with confirmed matches for given
+    key-value pairs from originals, the complete list of matching keys (whether or not
+    the value is a match) from the target OSCAL XML document instance.
+    :type updates: list
+
+    :param originals: the complete list of all fields that match a given key found by
+    searching a target OSCAL XML document instance.
+    :type originals: list
+
+    :param compare_key:
+    :type compare_key: str
+
+    :return: None
+    :rtype: None
+    """
     maybe_dupes = [o.get(compare_key) for o in originals]
 
     for update in updates:
@@ -101,6 +129,25 @@ def update_xml(data, namespaces={}, updates=[{}], originals=[{}], compare_key=No
                 target.attrib[k] = update[k]
 
 def process_json(file, old='', new='', dry_run=False):
+    """Analyze OSCAL JSON document instances and replace extensions for href
+    fields accordingly.
+
+    :param file: the original target path and file
+    :type file: str
+
+    :param old: the original file extension to match
+    :type old: str
+
+    :param new: the replacement file extension to replace upon match
+    :type new: str
+
+    :param dry_run: a setting, when True, that enables dry-run mode to prevent
+    editing of the original target file; defaults to False
+    :type dry_run: bool
+
+    :return: an updated path and filename for writing dry run results
+    :rtype: str    
+    """
     try:
         with open(file) as fd:
             raw_data = fd.read()
@@ -118,6 +165,26 @@ def process_json(file, old='', new='', dry_run=False):
         logging.exception(err)
 
 def process_xml(file, old='', new='', dry_run=False):
+    """Analyze OSCAL XML document instances and replace extensions for href
+    fields accordingly.
+
+    :param file: the original target path and file
+    :type file: str
+
+    :param old: the original file extension to match
+    :type old: str
+
+    :param new: the replacement file extension to replace upon match
+    :type new: str
+
+    :param dry_run: a setting, when True, that enables dry-run mode to prevent
+    editing of the original target file; defaults to False
+    :type dry_run: bool
+
+    :return: an updated path and filename for writing dry run results
+    :rtype: str    
+    """
+
     try:
         with open(file) as fd:
             namespaces = {
@@ -138,6 +205,25 @@ def process_xml(file, old='', new='', dry_run=False):
         logging.exception(err)
 
 def process_yaml(file, old='', new='', dry_run=False):
+    """Analyze OSCAL YAML document instances and replace extensions for href
+    fields accordingly.
+
+    :param file: the original target path and file
+    :type file: str
+
+    :param old: the original file extension to match
+    :type old: str
+
+    :param new: the replacement file extension to replace upon match
+    :type new: str
+
+    :param dry_run: a setting, when True, that enables dry-run mode to prevent
+    editing of the original target file; defaults to False
+    :type dry_run: bool
+
+    :return: an updated path and filename for writing dry run results
+    :rtype: str    
+    """
     try:
         with open(file) as fd:
             raw_data = fd.read()
@@ -169,10 +255,25 @@ def process_yaml(file, old='', new='', dry_run=False):
         logging.exception(err)
 
 def dry_run_file(file):
+    """Format a file name properly for dry-run mode, e.g. do not edit the original
+    target file and return a modified path to modify a temporary file.
+
+    :param file: the original target path and file
+    :type file: str
+
+    :return: an updated path and filename for writing dry run results
+    :rtype: str
+    """
     file, file_ext = os.path.splitext(file)
     return f"{file}_test{file_ext}"
 
-def handler(():
+def handler():
+    """Core function that encapsulates complete operational logic of the script,
+    as not to pollute the '__main__' scope.
+
+    :return: None
+    :rtype: None
+    """
     parser = ArgumentParser(description='Convert file extensions in fields with hyperlinks for OSCAL JSON, XML, and YAML document instances.')
     parser.add_argument('--old-extension', '-o', dest='old', type=str, help='original file extension you want to convert from')
     parser.add_argument('--new-extension', '-n', dest='new', type=str, help='target file extension you want to convert to')
@@ -194,4 +295,4 @@ def handler(():
         sys.exit(1)
 
 if __name__ == '__main__':
-    handler(()
+    handler()
