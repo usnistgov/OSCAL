@@ -6,9 +6,9 @@
 <!-- OSCAL Implementation Layer: System Security Plan (SSP) METASCHEMA -->
 <!-- validate with XSD and Schematron (linked) -->
 <!DOCTYPE METASCHEMA [
-   <!ENTITY allowed-values-responsible-roles-system SYSTEM "shared-constraints/allowed-values-responsible-roles-system.ent">
-<!ENTITY allowed-values-responsible-roles-operations SYSTEM "shared-constraints/allowed-values-responsible-roles-operations.ent">
-<!ENTITY allowed-values-responsible-roles-component-production SYSTEM "shared-constraints/allowed-values-responsible-roles-component-production.ent">
+  <!ENTITY allowed-values-responsible-roles-system SYSTEM "./shared-constraints/allowed-values-responsible-roles-system.ent">
+  <!ENTITY allowed-values-responsible-roles-operations SYSTEM "./shared-constraints/allowed-values-responsible-roles-operations.ent">
+  <!ENTITY allowed-values-responsible-roles-component-production SYSTEM "./shared-constraints/allowed-values-responsible-roles-component-production.ent">
 ]>
 <METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/toolchains/xslt-M4/validate/metaschema.xsd">
@@ -126,7 +126,7 @@
         <enum value="federation-assurance-level">A value of 1, 2, or 3 as defined by <a href="https://doi.org/10.6028/NIST.SP.800-63-3">SP 800-63-3</a>.
         </enum>
       </allowed-values>
-      <allowed-values target="prop[@name=('identity-assurance-level','authenticator-assurance-level','federation-assurance-level')]/value()">
+      <allowed-values target="prop[@name=('identity-assurance-level','authenticator-assurance-level','federation-assurance-level')]/@value">
         <enum value="1">As defined by <a href="https://doi.org/10.6028/NIST.SP.800-63-3">SP 800-63-3</a>.
         </enum>
         <enum value="2">As defined by <a href="https://doi.org/10.6028/NIST.SP.800-63-3">SP 800-63-3</a>.
@@ -134,11 +134,11 @@
         <enum value="3">As defined by <a href="https://doi.org/10.6028/NIST.SP.800-63-3">SP 800-63-3</a>.
         </enum>
       </allowed-values>
-      <allowed-values target="property/@name" allow-other="yes">
+      <allowed-values target="prop/@name" allow-other="yes">
         <enum value="cloud-deployment-model">The associated value is one of: public-cloud, private-cloud, community-cloud, government-only-cloud, hybrid-cloud, or other.</enum>
         <enum value="cloud-service-model">The associated value is one of: saas, paas, iaas, or other.</enum>
       </allowed-values>
-      <allowed-values target="prop[@name='cloud-deployment-model']/value()">
+      <allowed-values target="prop[@name='cloud-deployment-model']/@value">
         <enum value="public-cloud">The public cloud deployment model as defined by <a href="https://doi.org/10.6028/NIST.SP.800-145">The NIST Definition of Cloud Computing</a>.
         </enum>
         <enum value="private-cloud">The private cloud deployment model as defined by <a href="https://doi.org/10.6028/NIST.SP.800-145">The NIST Definition of Cloud Computing</a>.
@@ -146,13 +146,13 @@
         <enum value="community-cloud">The community cloud deployment model as defined by <a href="https://doi.org/10.6028/NIST.SP.800-145">The NIST Definition of Cloud Computing</a>.
         </enum>
         <!-- TODO: consider generalizing this in a way that applies to other usage contexts. -->
-        <enum value="government-only-cloud">TODO: define</enum>
+        <enum value="government-only-cloud">A specific type of community-cloud for use only by government services.</enum>
         <enum value="other">Any other type of cloud deployment model that is exclusive to the other choices.</enum>
         <remarks>
           <p>The hybrid cloud deployment model, as defined by <a href="https://doi.org/10.6028/NIST.SP.800-145">The NIST Definition of Cloud Computing</a>, can be supported by selecting two or more of the existing deployment models.</p>
         </remarks>
       </allowed-values>
-      <allowed-values target="prop[@name='cloud-service-model']/value()">
+      <allowed-values target="prop[@name='cloud-service-model']/@value">
         <enum value="saas">Software as a service (SaaS) cloud service model as defined by <a href="https://doi.org/10.6028/NIST.SP.800-145">The NIST Definition of Cloud Computing</a>.
         </enum>
         <enum value="paas">Platform as a service (PaaS) cloud service model as defined by <a href="https://doi.org/10.6028/NIST.SP.800-145">The NIST Definition of Cloud Computing</a>.
@@ -161,7 +161,7 @@
         </enum>
         <enum value="other">Any other type of cloud service model that is exclusive to the other choices.</enum>
       </allowed-values>
-      <is-unique name="unique-ssp-system-characteristics-responsible-party" target="responsible-party">
+      <is-unique id="unique-ssp-system-characteristics-responsible-party" target="responsible-party">
         <key-field target="@role-id"/>
         <remarks>
           <p>Since <code>responsible-party</code> associates multiple <code>party-uuid</code> entries with a single <code>role-id</code>, each role-id must be referenced only once.</p>
@@ -284,7 +284,7 @@
       <allowed-values target="prop/@name" allow-other="yes">
         <enum value="privacy-designation">Is this a privacy sensitive system? yes or no</enum>
       </allowed-values>
-      <allowed-values target="prop[@name='privacy-designation']/value()">
+      <allowed-values target="prop[@name='privacy-designation']/@value">
         <enum value="yes">The system is privacy sensitive.</enum>
         <enum value="no">The system isnot privacy sensitive.</enum>
       </allowed-values>
@@ -292,11 +292,11 @@
         <enum value="privacy-impact-assessment">A link to the privacy impact assessment.</enum>
       </allowed-values>
       <matches target="link[@rel='privacy-impact-assessment']/@href[starts-with(.,'#')]" datatype="uri-reference"/>
-      <index-has-key name="index-back-matter-resource" target="link[@rel='privacy-impact-assessment' and [starts-with(@href,'#')]]">
+      <index-has-key name="index-back-matter-resource" target="link[@rel='privacy-impact-assessment' and starts-with(@href,'#')]">
         <key-field target="@href" pattern="#(.*)"/>
       </index-has-key>
       <matches target="link[@rel='privacy-impact-assessment']/@href[not(starts-with(.,'#'))]" datatype="uri"/>
-      <allowed-values target="security-sensitivity-level|security-impact-level/(security-objective-confidentiality|security-objective-integrity|security-objective-availability)|system-information/information-type/(confidentiality-impact|integrity-impact|availability-impact)/(base|selected}">
+      <allowed-values target="information-type/(confidentiality-impact|integrity-impact|availability-impact)/(base|selected)">
         <enum value="fips-199-low">A 'low' sensitivity level as defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.
         </enum>
         <enum value="fips-199-moderate">A 'moderate' sensitivity level as defined in <a href="https://doi.org/10.6028/NIST.FIPS.199">FIPS-199</a>.
@@ -396,7 +396,7 @@
       </define-field>
     </model>
     <constraint>
-      <is-unique name="unique-ssp-authorization-boundary-diagram" target="diagram">
+      <is-unique id="unique-ssp-authorization-boundary-diagram" target="diagram">
         <key-field target="@uuid"/>
         <remarks>
           <p>A given <code>uuid</code> must be assigned only once to a diagram.</p>
@@ -439,8 +439,8 @@
       <allowed-values target="link/@rel">
         <enum value="diagram">A reference to the diagram image.</enum>
       </allowed-values>
-      <matches target="link[@rel='diagramn']/@href[starts-with(.,'#')]" datatype="uri-reference"/>
-      <index-has-key name="index-back-matter-resource" target="link[@rel='diagram' and [starts-with(@href,'#')]]">
+      <matches target="link[@rel='diagram']/@href[starts-with(.,'#')]" datatype="uri-reference"/>
+      <index-has-key name="index-back-matter-resource" target="link[@rel='diagram' and starts-with(@href,'#')]">
         <key-field target="@href" pattern="#(.*)"/>
       </index-has-key>
       <matches target="link[@rel='diagram']/@href[not(starts-with(.,'#'))]" datatype="uri"/>
@@ -479,7 +479,7 @@
       <field ref="remarks" in-xml="WITH_WRAPPER"/>
     </model>
     <constraint>
-      <is-unique name="unique-ssp-network-architecture-diagram" target="diagram">
+      <is-unique id="unique-ssp-network-architecture-diagram" target="diagram">
         <key-field target="@uuid"/>
         <remarks>
           <p>A given <code>uuid</code> must be assigned only once to a diagram.</p>
@@ -509,7 +509,7 @@
       <field ref="remarks" in-xml="WITH_WRAPPER"/>
     </model>
     <constraint>
-      <is-unique name="unique-ssp-data-flow-diagram" target="diagram">
+      <is-unique id="unique-ssp-data-flow-diagram" target="diagram">
         <key-field target="@uuid"/>
         <remarks>
           <p>A given <code>uuid</code> must be assigned only once to a diagram.</p>
@@ -564,7 +564,7 @@
             <enum value="system-security-plan">A reference to the system security plan for the leveraged authorization.</enum>
           </allowed-values>
           <matches target="link[@rel='system-security-plan']/@href[starts-with(.,'#')]" datatype="uri-reference"/>
-          <index-has-key name="index-back-matter-resource" target="link[@rel='system-security-plan' and [starts-with(@href,'#')]]">
+          <index-has-key name="index-back-matter-resource" target="link[@rel='system-security-plan' and starts-with(@href,'#')]">
             <key-field target="@href" pattern="#(.*)"/>
           </index-has-key>
           <matches target="link[@rel='system-security-plan']/@href[not(starts-with(.,'#'))]" datatype="uri"/>
@@ -597,7 +597,7 @@
         <key-field target="@uuid"/>
       </index>
       <index-has-key name="index-system-implementation-leveraged-authorization-uuid" target="component/prop[@name='leveraged-authorization-uuid']">
-        <key-field target="value()"/>
+        <key-field target="@value"/>
       </index-has-key>
 
       <!-- References to components -->
@@ -642,7 +642,7 @@
 
       <!-- TODO: only allow a single "this-system" component -->
 
-      <is-unique name="unique-ssp-system-implementation-user" target="user">
+      <is-unique id="unique-ssp-system-implementation-user" target="user">
         <key-field target="@uuid"/>
         <remarks>
           <p>A given <code>uuid</code> must be assigned only once to a user.</p>
@@ -667,7 +667,7 @@
       </assembly>
     </model>
     <constraint>
-      <is-unique name="unique-ssp-control-implementation-set-parameter" target="set-parameter">
+      <is-unique id="unique-ssp-control-implementation-set-parameter" target="set-parameter">
         <key-field target="@param-id"/>
         <remarks>
           <p>Since multiple <code>set-parameter</code> entries can be provided, each parameter must be set only once.</p>
@@ -727,35 +727,35 @@
             &allowed-values-responsible-roles-operations;
       </allowed-values>
       <index-has-key name="index-metadata-role-id" target="responsible-role|statement/responsible-role|.//by-component//responsible-role">
-        <key-field target="@role-id"></key-field>
+        <key-field target="@role-id"/>
       </index-has-key>
       <index-has-key name="index-metadata-party-uuid" target="responsible-role|statement/responsible-role|.//by-component//responsible-role">
-        <key-field target="@party-uuid"></key-field>
+        <key-field target="party-uuid"/>
       </index-has-key>
       <has-cardinality target=".//by-component" min-occurs="1">
         <remarks>
           <p>Since all implementation statements are defined at the by-component level (e.g., type=this-system), there must be at least one by-component.</p>
         </remarks>
       </has-cardinality>
-      <is-unique name="unique-ssp-implemented-requirement-set-parameter" target="set-parameter">
+      <is-unique id="unique-ssp-implemented-requirement-set-parameter" target="set-parameter">
         <key-field target="@param-id"/>
         <remarks>
           <p>Since multiple <code>set-parameter</code> entries can be provided, each parameter must be set only once.</p>
         </remarks>
       </is-unique>
-      <is-unique name="unique-ssp-implemented-requirement-responsible-role" target="responsible-role">
+      <is-unique id="unique-ssp-implemented-requirement-responsible-role" target="responsible-role">
         <key-field target="@role-id"/>
         <remarks>
           <p>Since <code>responsible-role</code> associates multiple <code>party-uuid</code> entries with a single <code>role-id</code>, each role-id must be referenced only once.</p>
         </remarks>
       </is-unique>
-      <is-unique name="unique-ssp-implemented-requirement-statement" target="statement">
+      <is-unique id="unique-ssp-implemented-requirement-statement" target="statement">
         <key-field target="@statement-id"/>
         <remarks>
           <p>Since <code>statement</code> entries can be referenced using the statement's statement-id, each statement must be referenced only once.</p>
         </remarks>
       </is-unique>
-      <is-unique name="unique-ssp-implemented-requirement-by-component" target="by-component">
+      <is-unique id="unique-ssp-implemented-requirement-by-component" target="by-component">
         <key-field target="@component-uuid"/>
         <remarks>
           <p>Since <code>by-component</code> can reference <code>component</code> entries using the component's uuid, each component must be referenced only once. This ensures that all implementation statements are contained in the same <code>by-component</code> entry.</p>
@@ -794,13 +794,13 @@
       <allowed-values target="responsible-role/@role-id" allow-other="yes">
             &allowed-values-responsible-roles-operations;
       </allowed-values>
-      <is-unique name="unique-ssp-statement-responsible-role" target="responsible-role">
+      <is-unique id="unique-ssp-statement-responsible-role" target="responsible-role">
         <key-field target="@role-id"/>
         <remarks>
           <p>Since <code>responsible-role</code> associates multiple <code>party-uuid</code> entries with a single <code>role-id</code>, each role-id must be referenced only once.</p>
         </remarks>
       </is-unique>
-      <is-unique name="unique-ssp-implemented-requirement-statement-by-component" target="by-component">
+      <is-unique id="unique-ssp-implemented-requirement-statement-by-component" target="by-component">
         <key-field target="@component-uuid"/>
         <remarks>
           <p>Since <code>by-component</code> can reference <code>component</code> entries using the component's uuid, each component must be referenced only once. This ensures that all implementation statements are contained in the same <code>by-component</code> entry.</p>
@@ -882,7 +882,7 @@
               <field ref="remarks" in-xml="WITH_WRAPPER"/>
             </model>
             <constraint>
-              <is-unique name="unique-provided-responsible-role" target="responsible-role">
+              <is-unique id="unique-provided-responsible-role" target="responsible-role">
                 <key-field target="@role-id"/>
                 <remarks>
                   <p>Since <code>responsible-role</code> associates multiple <code>party-uuid</code> entries with a single <code>role-id</code>, each role-id must be referenced only once.</p>
@@ -920,7 +920,7 @@
               <field ref="remarks" in-xml="WITH_WRAPPER"/>
             </model>
             <constraint>
-              <is-unique name="unique-responsibility-responsible-role" target="responsible-role">
+              <is-unique id="unique-responsibility-responsible-role" target="responsible-role">
                 <key-field target="@role-id"/>
                 <remarks>
                   <p>Since <code>responsible-role</code> associates multiple <code>party-uuid</code> entries with a single <code>role-id</code>, each role-id must be referenced only once.</p>
@@ -932,7 +932,7 @@
         </model>
         <constraint>
           <has-cardinality target="provided|responsibility" min-occurs="1"/>
-          <index name="by-component-export-provided-uuid" target="">
+          <index name="by-component-export-provided-uuid" target="provided">
             <key-field target="@uuid"/>
           </index>
           <index-has-key name="by-component-export-provided-uuid" target="responsibility">
@@ -967,7 +967,7 @@
           </assembly>
         </model>
         <constraint>
-          <is-unique name="unique-inherited-responsible-role" target="responsible-role">
+          <is-unique id="unique-inherited-responsible-role" target="responsible-role">
             <key-field target="@role-id"/>
             <remarks>
               <p>Since <code>responsible-role</code> associates multiple <code>party-uuid</code> entries with a single <code>role-id</code>, each role-id must be referenced only once.</p>
@@ -1003,7 +1003,7 @@
           <field ref="remarks" in-xml="WITH_WRAPPER"/>
         </model>
         <constraint>
-          <is-unique name="unique-satisfied-responsible-role" target="responsible-role">
+          <is-unique id="unique-satisfied-responsible-role" target="responsible-role">
             <key-field target="@role-id"/>
             <remarks>
               <p>Since <code>responsible-role</code> associates multiple <code>party-uuid</code> entries with a single <code>role-id</code>, each role-id must be referenced only once.</p>
@@ -1022,7 +1022,7 @@
             &allowed-values-responsible-roles-operations;
             &allowed-values-responsible-roles-component-production;
       </allowed-values>
-      <is-unique name="unique-ssp-by-component-set-parameter" target="set-parameter">
+      <is-unique id="unique-ssp-by-component-set-parameter" target="set-parameter">
         <key-field target="@param-id"/>
         <remarks>
           <p>Since multiple <code>set-parameter</code> entries can be provided, each parameter must be set only once.</p>

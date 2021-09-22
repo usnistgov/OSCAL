@@ -293,3 +293,9 @@ Comparing the ISO 27002 and NIST SP 800-53 examples illustrates obvious differen
 To address these differences, OSCAL is designed to take disparate control definitions from different sources and express them in a standardized way using the catalog model. The OSCAL catalog model defines structured, machine-readable XML, JSON, and YAML representations of the information contained within a control. A control defined using the OSCAL catalog model supports including control statements, guidance, assessment objectives, and many other features. By combining all of this information in a single model, the OSCAL catalog model simplifies the entire control-based operational model.
 
 {{</todo>}}
+
+## Related Tutorials
+
+The following tutorial is provided related to the catalog model.
+
+- [Creating a Control Catalog](/learn/tutorials/catalog/): Covers overs creating a basic OSCAL control catalog.

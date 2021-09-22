@@ -58,21 +58,21 @@
             <index id="index-metadata-roles" name="index-metadata-role-ids" target="role">
                 <key-field target="@id"/>
             </index>
-            <is-unique id="unique-metadata-doc-id" name="unique-metadata-doc-id" target="document-id">
+            <is-unique id="unique-metadata-doc-id" target="document-id">
                 <!--  CHANGE: Fixing field name @type -> @scheme   -->
                 <key-field target="@scheme"/>
-                <key-field target="value()"/>
+                <key-field target="."/>
             </is-unique>
-            <is-unique id="unique-metadata-property" name="unique-metadata-property" target="prop">
+            <is-unique id="unique-metadata-property" target="prop">
                 <key-field target="@name"/>
                 <key-field target="@ns"/>
                 <key-field target="@class"/>
                 <key-field target="@value"/>
             </is-unique>
-            <index id="index-metadata-property-id" name="index-metadata-property-id" target=".//prop">
-                <key-field target="@id"/>
+            <index id="index-metadata-property-uuid" name="index-metadata-property-uuid" target=".//prop">
+                <key-field target="@uuid"/>
             </index>
-            <is-unique id="unique-metadata-link" name="unique-metadata-link" target="link">
+            <is-unique id="unique-metadata-link" target="link">
                 <key-field target="@href"/>
                 <key-field target="@rel"/>
                 <key-field target="@media-type"/>
@@ -94,7 +94,7 @@
             <index id="index-metadata-party-organizations-uuid" name="index-metadata-party-organizations-uuid" target="party[@type='organization']">
                 <key-field target="@uuid"/>
             </index>
-            <is-unique name="unique-metadata-responsible-party" target="responsible-party">
+            <is-unique id="unique-metadata-responsible-party" target="responsible-party">
                 <key-field target="@role-id"/>
                 <remarks>
                     <p>Since <code>responsible-party</code> associates multiple <code>party-uuid</code> entries with a single <code>role-id</code>, each role-id must be referenced only once.</p>
@@ -199,7 +199,7 @@
                 <enum value="type">Characterizes the kind of location.</enum>
             </allowed-values>
             <allowed-values target="prop[@name='type']/@value" allow-other="yes">
-                <enum value="data-center">A location that contains computing assets. A <code>class</code> can be used to indicate a subclass of data-center.</enum>
+                <enum value="data-center">A location that contains computing assets. A <code>class</code> can be used to indicate the sub-type of data-center as <em>primary</em> or <em>alternate</em>.</enum>
             </allowed-values>
             <allowed-values target="prop[@name='type' and @value='data-center']/@class" allow-other="yes">
                 <enum value="primary">The location is a data-center used for normal operations.</enum>
@@ -214,9 +214,9 @@
         </description>
         <constraint>
             <!-- TODO: Dave to resolve syntax error. Likely requires updated metaschema schema -->
-            <index-has-key name="index-metadata-location-uuid" target=".">
+            <index-has-key name="index-metadata-location-uuid">
                 <!-- TODO: This is impacted by cross-document cross-references We need to relocate or localize this constraint. -->
-                <key-field target="value()"/>
+                <key-field target="."/>
             </index-has-key>
         </constraint>
     </define-flag>
@@ -228,7 +228,7 @@
         <constraint>
             <index-has-key name="index-metadata-location-uuid" target=".">
                 <!-- TODO: This is impacted by cross-document cross-references We need to relocate or localize this constraint. -->
-                <key-field target="value()"/>
+                <key-field target="."/>
             </index-has-key>
         </constraint>
     </define-field>
@@ -312,7 +312,7 @@
                 <group-as name="member-of-organizations" in-json="ARRAY"/>
                 <constraint>
                     <index-has-key name="index-metadata-party-organizations-uuid" target=".">
-                        <key-field target="value()"/>
+                        <key-field target="."/>
                     </index-has-key>
                 </constraint>
                 <remarks>
@@ -338,7 +338,7 @@
         <constraint>
             <index-has-key name="index-metadata-party-uuid" target=".">
                 <!-- TODO: This is impacted by cross-document cross-references We need to relocate or localize this constraint. -->
-                <key-field target="value()"/>
+                <key-field target="."/>
             </index-has-key>
         </constraint>
     </define-field>
@@ -387,7 +387,7 @@
         <constraint>
             <index-has-key name="index-metadata-role-id" target=".">
                 <!-- TODO: This is impacted by cross-document cross-references We need to relocate or localize this constraint. -->
-                <key-field target="value()"/>
+                <key-field target="."/>
             </index-has-key>
         </constraint>
     </define-field>
@@ -528,13 +528,13 @@
                         <enum value="agreement">Indicates the resource is a formal agreement between two or more parties.</enum>
                     </allowed-values>
                     <has-cardinality target="rlink|base64" min-occurs="1"/>
-                    <is-unique name="unique-resource-rlink-href" target="rlink">
+                    <is-unique id="unique-resource-rlink-href" target="rlink">
                         <key-field target="@href"/>
                         <remarks>
                             <p>Ensures that each rlink item references a unique resource.</p>
                         </remarks>
                     </is-unique>
-                    <is-unique name="unique-resource-base64-filename" target="base64">
+                    <is-unique id="unique-resource-base64-filename" target="base64">
                         <key-field target="@filename"/>
                         <remarks>
                             <p>Ensures that all base64 resources have a unique <code>filename</code>.
@@ -733,7 +733,7 @@
                 <key-field target="@role-id"/>
             </index-has-key>
             <index-has-key name="index-metadata-party-uuid" target="party-uuid">
-                <key-field target="value()"/>
+                <key-field target="."/>
             </index-has-key>
         </constraint>
     </define-assembly>
