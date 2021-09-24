@@ -20,7 +20,7 @@ def _get_oscal_file_type(filename):
 
 def read_file(filename, ftype):
     with io.open(filename, 'r', encoding="utf-8") as f:
-        if ftype is "json":
+        if ftype == "json":
             filedata = json.load(f)
         else:
             filedata = f.read()
@@ -42,9 +42,9 @@ def oscal_validator(oscal_schema, oscal_data):
     schema, stype = read_file(oscal_schema, _get_oscal_file_type(oscal_schema))
     data, ftype = read_file(oscal_data, _get_oscal_file_type(oscal_data))
 
-    if ftype is 'json':
+    if ftype == 'json':
         validate(data, schema)
-    if ftype is 'xml':
+    if ftype == 'xml':
         xmlschema.validate(data, schema)
 
 
