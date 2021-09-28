@@ -112,20 +112,32 @@ def replace(items=[{}], old='', new=''):
     :type new: str
     """
     for i in items:
+        # Iterate through each item dict i in list of potential replacement points.
+        # Initialize empty update object.
         update = {}
 
         for k in i.keys():
+            # Iterate through each key-value pair in dict i (one i from list i of items)
             old_value = i[k]
             update[k] = old_value.replace(old, new) if isinstance(old_value, str) else old_value
 
+            # ignore `path` as this key is added by this script for another pre-processing step
+            # to encode an array to walk the JSON/YAML path or a full XPath query for XML source
+            # data; we do not want to process this path key-value, it is internal metadata.
             if k != 'path' and update[k] != old_value:
+                # This is the first key to be added to the `update` nested dict `original`, so
+                # initialize if there has not been a previous use.
                 update['original'] = {} if not update.get('original') else update.get('original')
+                # Now a new key-value can be added and maintain previous additions as well.
                 update['original'][k] = old_value
 
         if update == i:
+            # if the update is equivalent to the potentially changed `i` item, yield None
             yield
 
         else:
+            # the `i` item is different, and has an original key to stuff what value changed
+            # for future processing, yield the discrete update
             yield update
 
 def pick(data={}, path=[]):
