@@ -11,7 +11,7 @@ from ruamel.yaml import YAML
 from lxml import etree
 import sys
 
-def find(data={}, lookups=[], path=None):
+def find(data, lookups=None, path=None):
     """Search data from an OSCAL JSON or YAML document instance in dictionary
     form and perform lookups to find one or more keys for the names of OSCAL
     fields or flags.
@@ -33,6 +33,7 @@ def find(data={}, lookups=[], path=None):
     found
     :rtype: Iterable[dict]
     """
+    lookups = lookups if lookups else []
     path = path if path else []    
 
     # In case this is a list
@@ -56,7 +57,7 @@ def find(data={}, lookups=[], path=None):
                 matches = { l: data[l] for l in lookups if data.get(l) }
                 yield { 'path': new_path, **matches }
 
-def find_xml(data={}, namespaces={}, lookups=None):
+def find_xml(data, namespaces=None, lookups=None):
     """Search data from an OSCAL XML document instance with a XPath query
     to perform lookups to find one or more keys for the names of OSCAL
     fields or flags.
@@ -74,6 +75,9 @@ def find_xml(data={}, namespaces={}, lookups=None):
     found
     :rtype: Iterable[dict]
     """
+    namespaces = namespaces if namespaces else {}
+    lookups = lookups if lookups else ''
+
     for result in list(data.xpath(lookups, namespaces=namespaces)):
         yield { 
             'path': get_full_xpath(result),
@@ -93,7 +97,7 @@ def get_full_xpath(element=None):
     if element.getparent() is None: return f"/{element.tag}"
     return f"{get_full_xpath(element.getparent())}/{element.tag}"
 
-def replace(items=[{}], old='', new=''):
+def replace(items, old='', new=''):
     """Takes OSCAL JSON, XML, and YAML source data matches as key value pairs
     in memory and makes changes in place, before persisting results to disk.
 
@@ -111,6 +115,8 @@ def replace(items=[{}], old='', new=''):
     :param new: the 'new' value to replace
     :type new: str
     """
+    items = items if items else [{}]
+
     for i in items:
         # Iterate through each item dict i in list of potential replacement points.
         # Initialize empty update object.
@@ -140,7 +146,7 @@ def replace(items=[{}], old='', new=''):
             # for future processing, yield the discrete update
             yield update
 
-def pick(data={}, path=[]):
+def pick(data, path=None):
     """
     Convenience function to flatten nested collections of OSCAL data (from JSON
     and YAML) data and pick on the relevant elements by their "path" identifier.
@@ -156,9 +162,10 @@ def pick(data={}, path=[]):
     data.
     :rtype: collections.OrderedDict
     """
+    path = path if path else []
     return reduce(operator.getitem, path, data)
 
-def pick_xml(data={}, namespaces={}, path=None):
+def pick_xml(data, namespaces=None, path=None):
     """
     Convenience function to use composable XPath queries to select specific
     key-value data from OSCAL data sourced from OSCAL XML document instances.
@@ -177,10 +184,16 @@ def pick_xml(data={}, namespaces={}, path=None):
     data.
     :rtype: collections.OrderedDict
     """
-    results = data.xpath(path, namespaces=namespaces)
-    if len(results) > 0: return results[0]
+    namespaces = namespaces if namespaces else {}
+    path = path if path else ''
 
-def update(data, updates=[{}], originals=[{}], compare_key=None):
+    results = data.xpath(path, namespaces=namespaces)
+    if len(results) > 0:
+        return results[0]
+    else:
+        return None
+
+def update(data, updates=None, originals=None, compare_key=None):
     """Iterates through a list of potential updates matched from an OSCAL JSON
     or YAML document instance, checking for duplicates as defined by a compare
     key to avoid modifications where post-update there would be duplicate adjacent 
@@ -211,6 +224,8 @@ def update(data, updates=[{}], originals=[{}], compare_key=None):
     :return: None
     :rtype: None
     """
+    updates = updates if updates else [{}]
+    originals = originals if originals else [{}]
     maybe_dupes = [o.get(compare_key) for o in originals]
 
     for update in updates:
@@ -223,7 +238,7 @@ def update(data, updates=[{}], originals=[{}], compare_key=None):
             if target.get(k) and not k == 'path' and not k == 'original':
                 target[k] = update[k]
 
-def update_xml(data, namespaces={}, updates=[{}], originals=[{}], compare_key=None):
+def update_xml(data, namespaces=None, updates=None, originals=None, compare_key=None):
     """Iterates through a list of potential updates matched from an OSCAL XML
     document instance, checking for duplicates as defined by a compare key to
     avoid modifications where post-update there would be duplicate adjacent 
@@ -253,6 +268,9 @@ def update_xml(data, namespaces={}, updates=[{}], originals=[{}], compare_key=No
     :return: None
     :rtype: None
     """
+    namespaces = namespaces if namespaces else {}
+    updates = updates if updates else [{}]
+    originals = originals if originals else [{}]
     maybe_dupes = [o.get(compare_key) for o in originals]
 
     for update in updates:
