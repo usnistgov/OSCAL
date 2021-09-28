@@ -12,6 +12,27 @@ from lxml import etree
 import sys
 
 def find(data={}, lookups=[], path=None):
+    """Search data from an OSCAL JSON or YAML document instance in dictionary
+    form and perform lookups to find one or more keys for the names of OSCAL
+    fields or flags.
+
+    :param data: a parsed OSCAL JSON or YAML document instance in dictionary
+    form
+    :type data: dict
+
+    :param lookups: a list of zero, one, or more key names when looking for key
+    value pairs to match
+    :type lookups: list[str]
+
+    :param path: an optional path for the JSON or YAML location of the current
+    path, if not at the beginning of traversing the nested dictionaries, and
+    will update the path as it walks the recursive nested structure
+    :type path: str
+
+    :return: an iterable sequence (from yield) with a dictionary of each match
+    found
+    :rtype: Iterable[dict]
+    """
     path = path if path else []    
 
     # In case this is a list
@@ -36,6 +57,23 @@ def find(data={}, lookups=[], path=None):
                 yield { 'path': new_path, **matches }
 
 def find_xml(data={}, namespaces={}, lookups=None):
+    """Search data from an OSCAL XML document instance with a XPath query
+    to perform lookups to find one or more keys for the names of OSCAL
+    fields or flags.
+
+    :param data: XML data to search
+    :type data: lxml.etree._ElementTree
+
+    :namespaces: an optional list of XML namespaces to constrain your search
+    :type namespaces: dict
+
+    :param lookups: a XPath query used to perform the search
+    :type lookups: str
+
+    :return: an iterable sequence (from yield) with a dictionary of each match
+    found
+    :rtype: Iterable[dict]
+    """
     for result in list(data.xpath(lookups, namespaces=namespaces)):
         yield { 
             'path': get_full_xpath(result),
@@ -43,10 +81,36 @@ def find_xml(data={}, namespaces={}, lookups=None):
         }
 
 def get_full_xpath(element=None):
+    """Construct a XPath query with an absolute path to the instance of the
+    element passed in place of a relative one.
+
+    :param element: the target XML element
+    :type element: lxml.etree._ElementTree
+
+    :return: the absolute path to the element
+    :rtype: str
+    """
     if element.getparent() is None: return f"/{element.tag}"
     return f"{get_full_xpath(element.getparent())}/{element.tag}"
 
 def replace(items=[{}], old='', new=''):
+    """Takes OSCAL JSON, XML, and YAML source data matches as key value pairs
+    in memory and makes changes in place, before persisting results to disk.
+
+    This uses the python str.replace function, so substring or complete string
+    replacements are supported. If `old` does not match the complete original
+    string of an item in `items` it only replaces that substring.
+
+    :param items: the list of matched items that will be changed and have values
+    replaced.
+    :type items: list[dict]
+
+    :param old: the 'old' target value that is a candidate for replacement
+    :type old: str
+
+    :param new: the 'new' value to replace
+    :type new: str
+    """
     for i in items:
         update = {}
 
@@ -65,13 +129,76 @@ def replace(items=[{}], old='', new=''):
             yield update
 
 def pick(data={}, path=[]):
+    """
+    Convenience function to flatten nested collections of OSCAL data (from JSON
+    and YAML) data and pick on the relevant elements by their "path" identifier.
+
+    :param data: the data from the document instance in dictionary form
+    :type data: dict
+
+    :param path: a list of one or more key names to find, and if found, return key
+    value pairs while discarding those keys not in the path list.
+    :type path: list(str)
+
+    :return: the flattened collection of only the relevant key-value pairs from the
+    data.
+    :rtype: collections.OrderedDict
+    """
     return reduce(operator.getitem, path, data)
 
 def pick_xml(data={}, namespaces={}, path=None):
+    """
+    Convenience function to use composable XPath queries to select specific
+    key-value data from OSCAL data sourced from OSCAL XML document instances.
+
+    :param data: the data from the document instance in dictionary form
+    :type data: dict
+
+    :param namespaces: an optional allow list of XML namespaces to use exclusively
+    to query the data for results.
+    :type namespaces: dict
+
+    :param path: a XPath query used to collect the key-value pairs.
+    :type path: str
+
+    :return: the flattened collection of only the relevant key-value pairs from the
+    data.
+    :rtype: collections.OrderedDict
+    """
     results = data.xpath(path, namespaces=namespaces)
     if len(results) > 0: return results[0]
 
 def update(data, updates=[{}], originals=[{}], compare_key=None):
+    """Iterates through a list of potential updates matched from an OSCAL JSON
+    or YAML document instance, checking for duplicates as defined by a compare
+    key to avoid modifications where post-update there would be duplicate adjacent 
+    elements.
+
+    :param data: the OSCAL XML document data to be modified, passed by reference to
+    modify the data in place 
+    :type data: dict
+
+    :param namespaces: a collection of additional XML namespaces to consider when
+    processing additional updates, not including `oscal` or `o`, the default XML
+    for NIST OSCAL development.
+    :type namespaces: dict
+
+    :param updates: a subset list of potential updates with confirmed matches for given
+    key-value pairs from originals, the complete list of matching keys (whether or not
+    the value is a match) from the target OSCAL XML document instance.
+    :type updates: list
+
+    :param originals: the complete list of all fields that match a given key found by
+    searching a target OSCAL XML document instance.
+    :type originals: list
+
+    :param compare_key: the key of a key-value pair used to test for equivalence where
+    two items are considered equal iff this key in both objects has the same value
+    :type compare_key: str
+
+    :return: None
+    :rtype: None
+    """
     maybe_dupes = [o.get(compare_key) for o in originals]
 
     for update in updates:
@@ -107,7 +234,8 @@ def update_xml(data, namespaces={}, updates=[{}], originals=[{}], compare_key=No
     searching a target OSCAL XML document instance.
     :type originals: list
 
-    :param compare_key:
+    :param compare_key: the key of a key-value pair used to test for equivalence where
+    two items are considered equal iff this key in both objects has the same value
     :type compare_key: str
 
     :return: None
@@ -129,8 +257,9 @@ def update_xml(data, namespaces={}, updates=[{}], originals=[{}], compare_key=No
                 target.attrib[k] = update[k]
 
 def process_json(file, old='', new='', dry_run=False):
-    """Analyze OSCAL JSON document instances and replace extensions for href
-    fields accordingly.
+    """Analyze OSCAL JSON document instances and replace extensions for the
+    specified fields, replace fields, and modify results in the target file
+    or optionally a separate file for testing purposes.
 
     :param file: the original target path and file
     :type file: str
@@ -165,8 +294,9 @@ def process_json(file, old='', new='', dry_run=False):
         logging.exception(err)
 
 def process_xml(file, old='', new='', dry_run=False):
-    """Analyze OSCAL XML document instances and replace extensions for href
-    fields accordingly.
+    """Analyze OSCAL XML document instances and replace extensions for the
+    specified fields, replace fields, and modify results in the target file
+    or optionally a separate file for testing purposes.
 
     :param file: the original target path and file
     :type file: str
