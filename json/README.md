@@ -71,6 +71,10 @@ The following example uses **Saxon HE** to convert an OSCAL catalog XML file to 
 ```
 java -jar "saxon9he.jar" -xsl:"oscal_catalog_xml-to-json-converter.xsl" -s:"oscal-catalog.xml" -o:"oscal-catalog.json" json-indent=yes
 ```
+
+> *Note*: at time of writing, Saxon 9 users are being encouraged to upgrade systems to Saxon use 10, and the stylesheets provided should function equally well or better with the later software. However until we have experience testing it and assuring it runs without error, Saxon 9 is designated here.
+>
+> Operators of XSLT-based platforms should by all means test these processes with any XSLT 3.0 conformant processor, and report problems to us via Github Issues.
  
 Paths\names of these files need to be provided based on the location of the files on your computer:
 
@@ -88,7 +92,5 @@ The configuration just provided will convert a JSON file given as a file referen
 * `-it:from-xml` (indicating initial template) - provides the default XSLT entry point explicitly.
 * `-file:mycatalog.xml` used with explicit `-it:from-xml` will look for the XML at the location given by the parameter, instead of on the source port (given by `-s`). This configuration parallels the JSON-to-XML converter.
 * `produce=supermodel` as a runtime parameter will emit not OSCAL XML, but the intermediate format produced by the converter (a so-called 'OSCAL supermodel' derived from its metaschema): useful for debugging or as a pivot to other serializations.
-* `produce=xpath-json` will produce the results in an XML format defined by the XPath function `json-to-xml()`, which when consumed by the complementary function `xml-to-json()` can deterministically provide syntactically correct JSON. As the results of the conversion transformation, this format can be very useful for debugging when for any reason transformation outputs do not cast correctly into JSON.
-
-See https://www.w3.org/TR/xpath-functions-31/#func-json-to-xml for more details on this format.
+* `produce=xpath-json` will produce the results in an XML format defined by the XPath function `json-to-xml()`, which when consumed by the complementary function `xml-to-json()` can deterministically provide syntactically correct JSON. This XML format is used internally to provide the JSON data description, to be cast into JSON as a (terminal) serialization step. Expressing the transformation results in this format directly can provide insight for debugging, especially in failure conditions (when the syntax cannot be written). See https://www.w3.org/TR/xpath-functions-31/#func-json-to-xml for more details on this format.
 
