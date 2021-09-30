@@ -20,7 +20,7 @@ As with all parts of OSCAL, the Metadata Section provides machine-readable forma
 
 ## The Fields of Metadata
 
-The widget below shows the high-level structure of the Metadata Section in XML, JSON, and YAML. Below, each field is defined and briefly explained.
+Below is the high-level structure of the Metadata Section in XML, JSON, and YAML followed by a listing of each fields' definition with a brief description.
 
 {{< tabs XML JSON YAML >}}
 {{% tab %}}
@@ -44,6 +44,7 @@ The widget below shows the high-level structure of the Metadata Section in XML, 
 {{< /highlight >}}
 
 Element definitions:
+
 - [`<title>`](/reference/latest/complete/xml-reference/#/catalog/metadata/title) (Required) - A human-readable title for the document. Expressed as [Markdown content](/reference/datatypes/#markup-line).
 - [`<published>`](/reference/latest/complete/xml-reference/#/catalog/metadata/published) (Optional) - The date and time that this document was originally published. Expressed as a [DateTime](/reference/datatypes/#datetime-with-timezone).
 - [`<last-modified>`](/reference/latest/complete/xml-reference/#/catalog/metadata/last-modified) (Required) - The date and time that this document instance was last modified. If any part of the document is changed, this should be updated to the current date and time. Expressed as a [DateTime](/reference/datatypes/#datetime-with-timezone).
@@ -58,7 +59,6 @@ Element definitions:
 - [`<party>`](/reference/latest/catalog/xml-reference/#/catalog/metadata/party) (Optionally Many) - A responsible entity which is either a person or an organization.
 - [`<responsible-party>`](/reference/latest/catalog/xml-reference/#/catalog/metadata/responsible-party) (Optionally Many) - A reference to a set of organizations or persons that have responsibility for performing a referenced role in the context of the containing object.
 - [`<remarks>`](/reference/latest/catalog/xml-reference/#/catalog/metadata/remarks) (Optional) - Markup formatted plaintext with notes for human readers of the content.
-
 
 {{% /tab %}}
 {{% tab %}}
@@ -85,6 +85,7 @@ Element definitions:
 
 Note that in JSON, any objects that may appear multiple times are contained in a JSON Array.
 Field definitions:
+
 - [`<title>`](/reference/latest/complete/json-reference/#/catalog/metadata/title) (Required) - A human-readable title for the document. Expressed as [Markdown content](/reference/datatypes/#markup-line).
 - [`<published>`](/reference/latest/complete/json-reference/#/catalog/metadata/published) (Optional) - The date and time that this document was originally published. Expressed as a [DateTime](/reference/datatypes/#datetime-with-timezone).
 - [`<last-modified>`](/reference/latest/complete/json-reference/#/catalog/metadata/last-modified) (Required) - The date and time that this document instance was last modified. If any part of the document is changed, this should be updated to the current date and time. Expressed as a [DateTime](/reference/datatypes/#datetime-with-timezone).
@@ -99,7 +100,6 @@ Field definitions:
 - [`<party>`](/reference/latest/catalog/json-reference/#/catalog/metadata/parties) (Optionally Many) - A responsible entity which is either a person or an organization.
 - [`<responsible-party>`](/reference/latest/catalog/json-reference/#/catalog/metadata/responsible-parties) (Optionally Many) - A reference to a set of organizations or persons that have responsibility for performing a referenced role in the context of the containing object.
 - [`<remarks>`](/reference/latest/catalog/json-reference/#/catalog/metadata/remarks) (Optional) - Markup formatted plaintext with notes for human readers of the content.
-
 
 {{% /tab %}}
 {{% tab %}}
@@ -111,19 +111,20 @@ metadata :
     last-modified: dateTime-with-timezone
     version: string
     oscal-version: string
-    revisions: … 
-    document-ids: … 
-    props: … 
-    links: … 
-    roles: … 
-    locations: … 
-    parties: … 
-    responsible-parties: … 
+    revisions: …
+    document-ids: …
+    props: …
+    links: …
+    roles: …
+    locations: …
+    parties: …
+    responsible-parties: …
     remarks: markup-multiline
 {{< /highlight >}}
 
 Note that in YAML, any objects that may appear multiple times are contained in a YAML Array.
 Field definitions:
+
 - [`<title>`](/reference/latest/complete/json-reference/#/catalog/metadata/title) (Required) - A human-readable title for the document. Expressed as [Markdown content](/reference/datatypes/#markup-line).
 - [`<published>`](/reference/latest/complete/json-reference/#/catalog/metadata/published) (Optional) - The date and time that this document was originally published. Expressed as a [DateTime](/reference/datatypes/#datetime-with-timezone).
 - [`<last-modified>`](/reference/latest/complete/json-reference/#/catalog/metadata/last-modified) (Required) - The date and time that this document instance was last modified. If any part of the document is changed, this should be updated to the current date and time. Expressed as a [DateTime](/reference/datatypes/#datetime-with-timezone).
@@ -139,9 +140,9 @@ Field definitions:
 - [`<responsible-party>`](/reference/latest/catalog/json-reference/#/catalog/metadata/responsible-parties) (Optionally Many) - A reference to a set of organizations or persons that have responsibility for performing a referenced role in the context of the containing object.
 - [`<remarks>`](/reference/latest/catalog/json-reference/#/catalog/metadata/remarks) (Optional) - Markup formatted plaintext with notes for human readers of the content.
 
-
 {{% /tab %}}
 {{% /tabs %}}
+
 ## Creating a Metadata Section
 
 All OSCAL documents require a Metadata section with a number of basic elements. This tutorial will cover creating this section and populating the required elements. We will also cover several important optional elements, and how they can be used to achieve specialized use cases.
@@ -189,16 +190,13 @@ Although technically outside of the Metadata Section, the `uuid` of a document i
 {{% /tab %}}
 {{% /tabs %}}
 
-
 ## Starting Simple with Required Elements
-
 
 {{< tabs XML JSON YAML >}}
 
-
 {{% tab %}}
 
-First, we start with the `<title>` element. This should be populated with a human-readable title that is exactly or closely matches the existing name of the document. 
+First, we start with the `<title>` element. This should be populated with a human-readable title that is exactly or closely matches the existing name of the document.
 
 For our example, this would look like:
 
@@ -208,9 +206,7 @@ For our example, this would look like:
 
 {{< /highlight >}}
 
-
 Next we have two date-based elements. This uses the OSCAL DataTime data type as defined here: [date-with-timezone](/reference/datatypes/#date-with-timezone). `<published>` gives the DateTime of when the document was published for the first time. Since we are publishing this document for the first time today (1/1/2021), the published date will be today, and the time is the moment (or near to it) that this document was published. `<last-modified>` provides the DateTime of the most recent change to this document. As we have never published this particular document before, the DateTime should be identical to the one given by `<published>`. In our example, this will look like:
-
 
 {{< highlight xml "linenos=table" >}}
 <published> 2021-01-01T00:00:00-5:00 </published>
@@ -252,10 +248,9 @@ However, the Metadata Section has several other optional fields of importance, w
 
 {{% /tab %}}
 
-
 {{% tab %}}
 
-First, we start with the `"title"` field. This should be populated with a human-readable title that exactly or closely matches an existing name of the document. 
+First, we start with the `"title"` field. This should be populated with a human-readable title that exactly or closely matches an existing name of the document.
 
 For our example, this would look like:
 
@@ -266,7 +261,6 @@ For our example, this would look like:
 {{< /highlight >}}
 
 Next we have two date based fields. This uses the OSCAL DataTime data type as defined here: [date-with-timezone](/reference/datatypes/#date-with-timezone). `"published"` gives the DateTime of when the document was published for the first time. Since we are publishing this document for the first time today (1/1/2021), the published date will be today, and the time is the moment (or near to it) that this document was published. `"last-modified"` provides the DateTime of the most recent change to this document. As we have never published this particular document before, the DateTime should be identical to the one given by `"published"`. In our example, this will look like:
-
 
 {{< highlight json "linenos=table" >}}
 {
@@ -315,10 +309,9 @@ We have now covered all required fields of the Metadata Section, and could now p
 However, the Metadata Section has several other optional fields of importance, which we will cover in the following sections.
 {{% /tab %}}
 
-
 {{% tab %}}
 
-First, we start with the `title` field. This should be populated with a human-readable title that is exactly or closely matches the existing name of the document. 
+First, we start with the `title` field. This should be populated with a human-readable title that is exactly or closely matches the existing name of the document.
 
 For our example, this would look like:
 
@@ -330,7 +323,6 @@ title:Example OSCAL Catalog
 {{< /highlight >}}
 
 Next we have two date based fields. This uses the OSCAL DataTime data type as defined here: [date-with-timezone](/reference/datatypes/#date-with-timezone). `published` gives the DateTime of when the document was published for the first time. Since we are publishing this document for the first time today (1/1/2021), the published date will be today, and the time is the moment (or near to it) that this document was published. `last-modified` provides the DateTime of the most recent change to this document. As we have never published this particular document before, the DateTime should be identical to the one given by `published`. In our example, this will look like:
-
 
 {{< highlight yaml "linenos=table" >}}
 ---
@@ -387,7 +379,7 @@ A "Document Instance" is defined as a single document that is part of a "Documen
 
 In OSCAL we use `<document-id>` to track "Document Series", and `uuid` to track "Document Instance".
 
-Back to our OSCAL Catalog example, we have already generated a uuid to identify the particular instance that we are publishing. Since we are publishing the first document in a series, we should also define a `<document-id>`. The `scheme` attribute is a (URI)[/reference/datatypes/#uri] that identifies the naming scheme we are using for the ID. While there are no strict requirements around the scheme and the ID, it is recommended that an existing identification scheme is used. For our example we will use [DOI](https://www.doi.org/).
+Back to our OSCAL Catalog example, we have already generated a uuid to identify the particular instance that we are publishing. Since we are publishing the first document in a series, we should also define a `<document-id>`. The `scheme` attribute is a [URI](/reference/datatypes/#uri) that identifies the naming scheme we are using for the ID. While there are no strict requirements around the scheme and the ID, it is recommended that an existing identification scheme is used. For our example we will use [DOI](https://www.doi.org/).
 
 {{< highlight xml "linenos=table" >}}
 <document-id scheme=https://www.doi.org/>10.1000/182<document-id>
@@ -409,7 +401,7 @@ A "Document Instance" is defined as a single document that is part of a "Documen
 
 In OSCAL we use `"document-ids"` to track "Document Series", and `"uuid"` to track "Document Instance".
 
-Back to our OSCAL Catalog example, we have already generated a uuid to identify the particular instance that we are publishing. Since we are publishing the first document in a series, we should also define a `"document-ids"`. The `"scheme"` field is a (URI)[/reference/datatypes/#uri] that identifies the naming scheme we are using for the ID. While there are no strict requirements around the scheme and the ID, it is recommended that an existing identification scheme is used. For our example we will use [DOI](https://www.doi.org/).
+Back to our OSCAL Catalog example, we have already generated a uuid to identify the particular instance that we are publishing. Since we are publishing the first document in a series, we should also define a `"document-ids"`. The `"scheme"` field is a [URI](/reference/datatypes/#uri) that identifies the naming scheme we are using for the ID. While there are no strict requirements around the scheme and the ID, it is recommended that an existing identification scheme is used. For our example we will use [DOI](https://www.doi.org/).
 
 {{< highlight json "linenos=table" >}}
 {
@@ -427,7 +419,6 @@ In the future, any updated versions of this document we publish will have the sa
 In the case that a document does not explicitly provide at least one object inside `"document-ids"`, it is given a value implicitly that is equal to it's `"uuid"`. This means that if we publish a new document without a `"document-ids"`, then later need to publish an update to it, we can tie it back to the original document.
 {{% /tab %}}
 
-
 {{% tab %}}
 OSCAL documents, by their nature, will often receive updates of varying impact. It is important to track these updates in a way that can be automated and managed by a wide array of systems and users. To that end, we must cover the concepts of "Document Series" and "Document Instances".
 
@@ -436,7 +427,7 @@ A "Document Instance" is defined as a single document that is part of a "Documen
 
 In OSCAL we use `document-id` to track "Document Series", and `uuid` to track "Document Instance".
 
-Back to our OSCAL Catalog example, we have already generated a uuid to identify the particular instance that we are publishing. Since we are publishing the first document in a series, we should also define a `document-id`. The `scheme` field is a (URI)[/reference/datatypes/#uri] that identifies the naming scheme we are using for the ID. While there are no strict requirements around the scheme and the ID, it is recommended that an existing identification scheme is used. For our example we will use [DOI](https://www.doi.org/).
+Back to our OSCAL Catalog example, we have already generated a uuid to identify the particular instance that we are publishing. Since we are publishing the first document in a series, we should also define a `document-id`. The `scheme` field is a [URI](/reference/datatypes/#uri) that identifies the naming scheme we are using for the ID. While there are no strict requirements around the scheme and the ID, it is recommended that an existing identification scheme is used. For our example we will use [DOI](https://www.doi.org/).
 
 {{< highlight yaml "linenos=table" >}}
 ---
@@ -473,11 +464,13 @@ The optional attributes of `<prop>` are as follows:
 - ns: A namespace qualifying the property's name. This allows different organizations to associate distinct semantics with the same name.
 
 Additionally, the content of the `<prop>` element is optionally Markup content that represents [Remarks](https://pages.nist.gov/OSCAL/documentation/schema/assessment-layer/assessment-plan/xml-schema/#global_remarks_h2).
+
+More information on the use of `<prop>` is provided in the [Props and Links tutorial](/learn/tutorials/extensions/#props).  
 {{% /tab %}}
 {{% tab %}}
 The `"props"` array provides any number of key-value pairing to provide additional information alongside the well-defined fields of the Metadata Section. Some common use cases include labels, sorting tags, and classification. There are no restrictions on using custom `"name"` and `"value"` pairs making `"props"` an excellent place to do extension of the OSCAL model to meet proprietary use cases.
 
-For our example, we will create a `"props"` array to mark an OSCAL document with a [Traffic Light Protocol (TLP)](https://en.wikipedia.org/wiki/Traffic_Light_Protocol) classification. 
+For our example, we will create a `"props"` array to mark an OSCAL document with a [Traffic Light Protocol (TLP)](https://en.wikipedia.org/wiki/Traffic_Light_Protocol) classification.
 
 {{< highlight json "linenos=table" >}}
 {
@@ -500,11 +493,13 @@ The optional fields of objects inside `"props"` are as follows:
 - `"ns"`: A namespace qualifying the property's name. This allows different organizations to associate distinct semantics with the same name.
 - `"remarks"`: Additional commentary on the containing object. See [Remarks](https://pages.nist.gov/OSCAL/documentation/schema/assessment-layer/assessment-plan/xml-schema/#global_remarks_h2).
 
+More information on the use of `props` is provided in the [Props and Links tutorial](/learn/tutorials/extensions/#props).  
+
 {{% /tab %}}
 {{% tab %}}
-The `props` array provides any number of key-value pairings to provide additional information alongside the well-defined fields of the Metadata Section. Some common use cases include labels, sorting tags, and classification. There are no restrictions on using custom `name` and `value` pairs making `prop` an excellent place to do extension of the OSCAL model to meet proprietary use cases. 
+The `props` array provides any number of key-value pairings to provide additional information alongside the well-defined fields of the Metadata Section. Some common use cases include labels, sorting tags, and classification. There are no restrictions on using custom `name` and `value` pairs making `prop` an excellent place to do extension of the OSCAL model to meet proprietary use cases.
 
-For our example, we will create a `props` to mark an OSCAL document with a [Traffic Light Protocol (TLP)](https://en.wikipedia.org/wiki/Traffic_Light_Protocol) classification. 
+For our example, we will create a `props` to mark an OSCAL document with a [Traffic Light Protocol (TLP)](https://en.wikipedia.org/wiki/Traffic_Light_Protocol) classification.
 
 {{< highlight yaml "linenos=table" >}}
 ---
@@ -523,6 +518,8 @@ The optional fields of the objects inside `props` are as follows:
 - `ns`: A namespace qualifying the property's name. This allows different organizations to associate distinct semantics with the same name.
 - `remarks`: Additional commentary on the containing object. See [Remarks](https://pages.nist.gov/OSCAL/documentation/schema/assessment-layer/assessment-plan/xml-schema/#global_remarks_h2).
 
+More information on the use of `props` is provided in the [Props and Links tutorial](/learn/tutorials/extensions/#props).  
+
 {{% /tab %}}
 {{% /tabs %}}
 
@@ -531,11 +528,12 @@ The optional fields of the objects inside `props` are as follows:
 {{< tabs XML JSON YAML >}}
 {{% tab %}}
 Alongside the `<prop>` element, `<link>` is way of providing additional information in the Metadata section that is not covered by the other elements. Each `<link>` must contain a single `href` attribute, which contains a resolvable URI. Each `<link>` should also include a `rel` attribute, which describes the type of relationship provided by the `href`. Although any string can be used in the `rel` attribute, OSCAL identifies five common link relationships that are frequently useful:
-  - canonical: The link identifies the authoritative location for this file.
-  - alternate: The link identifies an alternative location or format for this file.
-  - latest-version: This link identifies a resource containing the latest version in the version history. Defined by RFC 5829.
-  - predecessor-version: This link identifies a resource containing the predecessor version in the version history. RFC 5829.
-  - successor-version: This link identifies a resource containing the predecessor version in the version history. RFC 5829.
+
+- canonical: The link identifies the authoritative location for this file.
+- alternate: The link identifies an alternative location or format for this file.
+- latest-version: This link identifies a resource containing the latest version in the version history. Defined by RFC 5829.
+- predecessor-version: This link identifies a resource containing the predecessor version in the version history. RFC 5829.
+- successor-version: This link identifies a resource containing the predecessor version in the version history. RFC 5829.
 
 For this example, we will create a "latest-version" link, which provides a static link to the latest version of this Document Series. By pointing to a static URL, but updating the contents of that URL as the document is updated, any user that has an old version of the document can quickly and easily update.
 
@@ -548,16 +546,18 @@ The "predecessor-version" and "successor-version" links could be used in tandem 
 By using other custom `rel` values, any relevant or related resource can be described and linked to in the OSCAL Document's Metadata Section.
 
 Use of the optional `media-type` attribute can provide consumers with processing instructions based on the media type of the resource found at the `href`. See [IANA Media Types](https://www.iana.org/assignments/media-types/media-types.xhtml).
-{{% /tab %}}
 
+Review the [Props and Links tutorial](/learn/tutorials/extensions/#links) to learn more about `<link>` and how to implement them.
+{{% /tab %}}
 
 {{% tab %}}
 Alongside the `"props"` array, the `"links"` array is a way of providing additional information in the Metadata section that is not covered by the other fields. Each object inside the `"links"` array must contain a single `"href"` field, which contains a resolvable URI. Each object should also include a `"rel"` field, which describes the type of relationship provided by the `"href"`. Although any string can be used in the `"rel"` field, OSCAL identifies five common link relationships that are frequently useful:
-  - canonical: The link identifies the authoritative location for this file.
-  - alternate: The link identifies an alternative location or format for this file.
-  - latest-version: This link identifies a resource containing the latest version in the version history. Defined by RFC 5829.
-  - predecessor-version: This link identifies a resource containing the predecessor version in the version history. RFC 5829.
-  - successor-version: This link identifies a resource containing the predecessor version in the version history. RFC 5829.
+
+- canonical: The link identifies the authoritative location for this file.
+- alternate: The link identifies an alternative location or format for this file.
+- latest-version: This link identifies a resource containing the latest version in the version history. Defined by RFC 5829.
+- predecessor-version: This link identifies a resource containing the predecessor version in the version history. RFC 5829.
+- successor-version: This link identifies a resource containing the predecessor version in the version history. RFC 5829.
 
 For this example, we will create a "latest-version" link, which provides a static link to the latest version of this Document Series. By pointing to a static URL, but updating the contents of that URL as the document is updated, any user that has an old version of the document can quickly and easily update.
 
@@ -577,17 +577,18 @@ The "predecessor-version" and "successor-version" links could be used in tandem 
 By using other custom `"rel"` values, any relevant or related resource can be described and linked to in the OSCAL Document's Metadata Section.
 
 Use of the optional `"media-type"` field can provide consumers with processing instructions based on the media type of the resource found at the `"href"`. See [IANA Media Types](https://www.iana.org/assignments/media-types/media-types.xhtml).
+
+Review the [Props and Links tutorial](/learn/tutorials/extensions/#links) to learn more about `links` and how to implement them.
 {{% /tab %}}
-
-
 
 {{% tab %}}
 Alongside the `props` array, the `links` array is way of providing additional information in the Metadata section that is not covered by the other fields. Each object inside the `links` array must contain a single `href` field, which contains a resolvable URI. Each object should also include a `rel` field, which describes the type of relationship provided by the `href`. Although any string can be used in the `rel` field, OSCAL identifies five common link relationships that are frequently useful:
-  - canonical: The link identifies the authoritative location for this file.
-  - alternate: The link identifies an alternative location or format for this file.
-  - latest-version: This link identifies a resource containing the latest version in the version history. Defined by RFC 5829.
-  - predecessor-version: This link identifies a resource containing the predecessor version in the version history. RFC 5829.
-  - successor-version: This link identifies a resource containing the predecessor version in the version history. RFC 5829.
+
+- canonical: The link identifies the authoritative location for this file.
+- alternate: The link identifies an alternative location or format for this file.
+- latest-version: This link identifies a resource containing the latest version in the version history. Defined by RFC 5829.
+- predecessor-version: This link identifies a resource containing the predecessor version in the version history. RFC 5829.
+- successor-version: This link identifies a resource containing the predecessor version in the version history. RFC 5829.
 
 For this example, we will create a "latest-version" link, which provides a static link to the latest version of this Document Series. By pointing to a static URL, but updating the contents of that URL as the document is updated, any user that has an old version of the document can quickly and easily update.
 
@@ -603,18 +604,23 @@ The "predecessor-version" and "successor-version" links could be used in tandem 
 By using other custom `rel` values, any relevant or related resource can be described and linked to in the OSCAL Document's Metadata Section.
 
 Use of the optional `media-type` field can provide consumers with processing instructions based on the media type of the resource found at the `href`. See [IANA Media Types](https://www.iana.org/assignments/media-types/media-types.xhtml).
+
+Review the [Props and Links tutorial](/learn/tutorials/extensions/#links) to learn more about `links` and how to implement them.
 {{% /tab %}}
 {{% /tabs %}}
+
 ## The Other Optional Elements
+
 {{< tabs XML JSON YAML >}}
 {{% tab %}}
 
 The remainder of this tutorial will briefly cover the other optional elements inside the Metadata Section. While not required by the specification, these elements provide invaluable information, particularly for providence and authorship data. This information is declared in the Metadata Section, and is often passed by-reference to other parts of the OSCAL Document. Each element can be clicked to get additional information.
 
 [`<role>`](https://pages.nist.gov/OSCAL/documentation/schema/catalog-layer/catalog/xml-schema/#global_role) - Roles define some function or purpose that is to be assigned to some entity later in the document. Role elements have a `id` attribute with a [NCName](https://pages.nist.gov/OSCAL/documentation/schema/datatypes/#ncname) that is used to reference the role elsewhere in the OSCAL document. A number of pre-defined roles exist in OSCAL, but differ depending on context. In the Metadata Section they are as follows:
-  - prepared-by: Indicates the organization that created this content.
-  - prepared-for: Indicates the organization for which this content was created.
-  - content-approver: Indicates the organization responsible for all content represented in the "document".
+
+- prepared-by: Indicates the organization that created this content.
+- prepared-for: Indicates the organization for which this content was created.
+- content-approver: Indicates the organization responsible for all content represented in the "document".
 Other roles can be locally defined by the content creator.
 
 [`<location>`](https://pages.nist.gov/OSCAL/documentation/schema/catalog-layer/catalog/xml-schema/#global_location) - Geographic data defined by a street address. Locations have a `uuid` attribute that allow them to be referenced elsewhere in the OSCAL Document. Includes elements to describe a variety of data describing the location in question.
@@ -626,15 +632,15 @@ Other roles can be locally defined by the content creator.
 `<remarks>` - [Markup](https://pages.nist.gov/OSCAL/documentation/schema/datatypes/#markup-multiline) formatted plaintext with notes and remarks regarding the Metadata Section of this document.
 {{% /tab %}}
 
-
 {{% tab %}}
 
 The remainder of this tutorial will briefly cover the other optional objects inside the Metadata Section. While not required by the specification, these objects provide invaluable information, particularly for providence and authorship data. This information is declared in the Metadata Section, and is often passed by-reference to other parts of the OSCAL Document. Each object can be clicked to get additional information.
 
 [`"roles"`](https://pages.nist.gov/OSCAL/documentation/schema/catalog-layer/catalog/json-schema/#global_role) - An array of Role objects. Roles define some function or purpose that is to be assigned to some entity later in the document. Role objects have a `"id"` field with a [NCName](https://pages.nist.gov/OSCAL/documentation/schema/datatypes/#ncname) that is used to reference the role elsewhere in the OSCAL document. A number of pre-defined roles exist in OSCAL, but differ depending on context. In the Metadata Section they are as follows:
-  - prepared-by: Indicates the organization that created this content.
-  - prepared-for: Indicates the organization for which this content was created.
-  - content-approver: Indicates the organization responsible for all content represented in the "document".
+
+- prepared-by: Indicates the organization that created this content.
+- prepared-for: Indicates the organization for which this content was created.
+- content-approver: Indicates the organization responsible for all content represented in the "document".
 Other roles can be locally defined by the content creator.
 
 [`"locations"`](https://pages.nist.gov/OSCAL/documentation/schema/catalog-layer/catalog/json-schema/#global_location) - An array of Location objects. Geographic data defined by a street address. Locations have a `"uuid"` field that allow them to be referenced elsewhere in the OSCAL Document. Includes fields to describe a variety of data describing the location in question.
@@ -646,15 +652,15 @@ Other roles can be locally defined by the content creator.
 `"remarks"` - [Markup](https://pages.nist.gov/OSCAL/documentation/schema/datatypes/#markup-multiline) formatted plaintext with notes and remarks regarding the Metadata Section of this document.
 {{% /tab %}}
 
-
 {{% tab %}}
 
 The remainder of this tutorial will briefly cover the other optional objects inside the Metadata Section. While not required by the specification, these objects provide invaluable information, particularly for providence and authorship data. This information is declared in the Metadata Section, and is often passed by-reference to other parts of the OSCAL Document. Each object can be clicked to get additional information.
 
 [`role`](https://pages.nist.gov/OSCAL/documentation/schema/catalog-layer/catalog/json-schema/#global_role) - Roles define some function or purpose that is to be assigned to some entity later in the document. Role objects have a `id` field with a [NCName](https://pages.nist.gov/OSCAL/documentation/schema/datatypes/#ncname) that is used to reference the role elsewhere in the OSCAL document. A number of pre-defined roles exist in OSCAL, but differ depending on context. In the Metadata Section they are as follows:
-  - prepared-by: Indicates the organization that created this content.
-  - prepared-for: Indicates the organization for which this content was created.
-  - content-approver: Indicates the organization responsible for all content represented in the "document".
+
+- prepared-by: Indicates the organization that created this content.
+- prepared-for: Indicates the organization for which this content was created.
+- content-approver: Indicates the organization responsible for all content represented in the "document".
 Other roles can be locally defined by the content creator.
 
 [`location`](https://pages.nist.gov/OSCAL/documentation/schema/catalog-layer/catalog/json-schema/#global_location) - Geographic data defined by a street address. Locations have a `uuid` field that allow them to be referenced elsewhere in the OSCAL Document. Includes fields to describe a variety of data describing the location in question.
@@ -665,8 +671,6 @@ Other roles can be locally defined by the content creator.
 
 `remarks` - [Markup](https://pages.nist.gov/OSCAL/documentation/schema/datatypes/#markup-multiline) formatted plaintext with notes and remarks regarding the Metadata Section of this document.
 {{% /tab %}}
-
-
 
 {{% /tabs %}}
 ## Putting it all together 
