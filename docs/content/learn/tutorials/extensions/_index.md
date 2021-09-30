@@ -35,13 +35,15 @@ Finally, the optional `class` attribute should be used in cases where a property
 
 ### Using an Existing Prop
 
-This sections covers the basic use of a `prop` leveraging all of its attributes.  The OSCAL SSP metadata allows for zero or more `location` data items, each containing zero or more `props`.  In this example, an organization needs to document their primary and alternate data center locations.  This is achieved by specifying the `name`, `value`, and `class` of the properties (on lines #10 and #14) for each location.
+This sections covers the basic use of a `prop` leveraging all of its attributes.  The OSCAL SSP [metadata](/concepts/layer/overview/#metadata-overview) allows for zero or more `location` data items, each containing zero or more `props`.  The [Metadata Tutorial](/learn/tutorials/metadata/) provides in-depth description and walk-through examples of creating OSCAL metadata.
+
+In this example, an organization needs to document their primary and alternate data center locations.  This is achieved by specifying the `name`, `value`, and `class` of the properties (on lines #10 and #14) for each location.
 
 {{< tabs XML >}}
 {{% tab %}}
 {{< highlight xml "linenos=table" >}}
 <?xml version="1.0" encoding="UTF-8"?>
-<system-security-plan ...>
+<system-security-plan uuid="">
   <metadata>
     <title>OSCAL Basic Prop Example</title>
     <last-modified>2001-12-17T09:30:47Z</last-modified>
@@ -56,9 +58,9 @@ This sections covers the basic use of a `prop` leveraging all of its attributes.
       <prop name="type" value="data-center" class="alternate">
     </location>
   </metadata>
-  <import-profile .../>
-  <system-characteristics .../>
-  <system-implementation .../>
+  <import-profile>...</import-profile>
+  <system-characteristics>...</system-characteristics>
+  <system-implementation>...</system-implementation>
 </system-security-plan>
 {{< /highlight >}}
 {{% /tab %}}
@@ -70,13 +72,13 @@ The `name` is set to "type" which is an OSCAL pre-defined property. The `value` 
 
 One of the most common scenarios for extending an OSCAL `prop` is when adding values to an existing OSCAL property. Again, if using an OSCAL defined `prop`, the `ns` namespace attribute does not need to be specified since the default OSCAL namespace applies.  
 
-The following example demonstrates how to extend a SSP metadata location "type" `prop` with an additional value.  Currently, the only OSCAL defined value for this `prop` is "data-center".  However, because this particular `prop` is defined with an `allow-other=yes` attribute (in Metaschema), additional "type" values can be specified as shown below on line #10.
+The following example demonstrates how to extend a SSP metadata location "type" `prop` with an additional value. Again, for a detailed overview of how to implement metadata, please refer to the [Metadata Tutorial](/learn/tutorials/metadata/). Currently, the only OSCAL defined value for the SSP metadata location `prop` is "data-center".  However, because this particular `prop` is defined with an `allow-other=yes` attribute (in Metaschema), additional "type" values can be specified as shown below on line #10.
 
 {{< tabs XML >}}
 {{% tab %}}
 {{< highlight xml "linenos=table" >}}
 <?xml version="1.0" encoding="UTF-8"?>
-<system-security-plan ...>
+<system-security-plan uuid="">
   <metadata>
     <title>OSCAL Basic Prop Example</title>
     <last-modified>2001-12-17T09:30:47Z</last-modified>
@@ -87,9 +89,9 @@ The following example demonstrates how to extend a SSP metadata location "type" 
       <prop name="type" value="security-operations-center">
     </location>
   </metadata>
-  <import-profile .../>
-  <system-characteristics .../>
-  <system-implementation .../>
+  <import-profile>...</import-profile>
+  <system-characteristics>...</system-characteristics>
+  <system-implementation>...</system-implementation>
 </system-security-plan>
 {{< /highlight >}}
 {{% /tab %}}
@@ -105,7 +107,7 @@ The previous examples leveraged an existing OSCAL `prop` to document location de
 {{% tab %}}
 {{< highlight xml "linenos=table" >}}
 <?xml version="1.0" encoding="UTF-8"?>
-<system-security-plan ...>
+<system-security-plan uuid="">
   <metadata>
     <title>OSCAL New Prop Example</title>
     <last-modified>2001-12-17T09:30:47Z</last-modified>
@@ -119,9 +121,9 @@ The previous examples leveraged an existing OSCAL `prop` to document location de
       <prop name="glc" ns="http://federal-agency.gov/ns/oscal" value="840" class="country-code">
     </location>
   </metadata>
-  <import-profile .../>
-  <system-characteristics .../>
-  <system-implementation .../>
+  <import-profile>...</import-profile>
+  <system-characteristics>...</system-characteristics>
+  <system-implementation>...</system-implementation>
 </system-security-plan>
 {{< /highlight >}}
 {{% /tab %}}
@@ -153,7 +155,7 @@ Organizations may need their documentation (e.g., SSP) to reference external ite
 {{% tab %}}
 {{< highlight xml "linenos=table" >}}
 <?xml version="1.0" encoding="UTF-8"?>
-<system-security-plan ...>
+<system-security-plan uuid="">
   <metadata>
     <title>OSCAL SSP Component Link Example</title>
     <last-modified>2001-12-17T09:30:47Z</last-modified>
@@ -164,9 +166,9 @@ Organizations may need their documentation (e.g., SSP) to reference external ite
     </link>
     <link href="http://federal-agency.gov/img/official-agency-logo.png" rel="logo" media-type="image/png" />
   </metadata>
-  <import-profile .../>
-  <system-characteristics .../>
-  <system-implementation .../>
+  <import-profile>...</import-profile>
+  <system-characteristics>...</system-characteristics>
+  <system-implementation>...</system-implementation>
 </system-security-plan>
 {{< /highlight >}}
 {{% /tab %}}
@@ -188,7 +190,7 @@ In the previous section, multiple `links` would need to be created in the SSP me
 {{% tab %}}
 {{< highlight xml "linenos=table" >}}
 <?xml version="1.0" encoding="UTF-8"?>
-<system-security-plan ...>
+<system-security-plan uuid="">
   <metadata>
     <title>OSCAL SSP Link to Back Matter Resource Example</title>
     <last-modified>2001-12-17T09:30:47Z</last-modified>
@@ -198,8 +200,8 @@ In the previous section, multiple `links` would need to be created in the SSP me
       <text>Applicable Laws and Regulations, Standards, and Guides</text>
     </link>
   </metadata>
-  <import-profile .../>
-  <system-characteristics .../>
+  <import-profile>...</import-profile>
+  <system-characteristics>...</system-characteristics>
   <control-implementation>...</control-implementation>
   <back-matter>
     <resource uuid="a7584118-3d2d-46c8-b388-df747309c0fa">
