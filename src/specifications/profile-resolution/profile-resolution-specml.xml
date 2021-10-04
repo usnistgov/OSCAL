@@ -101,7 +101,7 @@ Standing list of general TODO:
         <p>By representing the steps by which a base catalog can be sliced, sifted, amended and
           edited, into a (nominally) finished or ready set of control requirements, a profile makes
           it easier to codify and preserve even very incidental or temporary local revisions of a
-          control catalog. Once expressed as a profile in OSCAL format, a set of emendations to a
+          control catalog. Once expressed as a profile in OSCAL format, a set of amendments to a
           catalog can be managed entirely separately and independently from the catalog. Because a
           conformant processor can always create the customized catalog by resolving the profile
           against its sources (executing the transformation described in this document), the profile
@@ -161,7 +161,7 @@ Standing list of general TODO:
               document, the following style is used: <src>source-object</src>.</p>
           </li>
           <li>
-            <p><term>target</term> - the intended output of the transformation, typically a catalog
+            <p><term>target</term> - the intended output of the transformation, a catalog
               document. In this document, when referring to objects of a <term>target</term>
               document, the following style is used: <tgt>target-object</tgt>.</p>
           </li>
@@ -174,7 +174,7 @@ Standing list of general TODO:
           </li>
           <li>
             <p><term>original order</term> - the order of objects as presented in the
-                <term>source</term> document(s). See Below.</p>
+                <term>source</term> document(s). See XYZ.</p>
           </li>
           <li>
             <p><term>canonical order</term> - the order of objects as required in the appropriate
@@ -209,7 +209,7 @@ Standing list of general TODO:
         <p>YAML maps cleanly to JSON, thus allowing easy use of existing JSON/XML transformers where
           needed. With that in mind, the <a
             href="https://pages.nist.gov/OSCAL/reference/latest/complete/json-reference/">OSCAL
-            Complete JSON Reference</a> is a valuable resource for parsing the YAML in this
+            Complete JSON Reference</a> is a valuable resource for understanding the YAML-based information structures used in this
           document. All JSON properties and objects defined in the reference equate to a YAML
           mapping, list, or dictionary.</p>
       </section>
@@ -270,7 +270,7 @@ Standing list of general TODO:
         <p><term>Please note</term>: As referenced in the Purpose section <xref rid="purpose"/>,
           this specification makes no hard requirements on the specifics of implementation. It is
           feasible for an implementation to use no intermediate representation, and to directly and
-          iteratively build the output. As long as all output requirements are satisfied, any
+          iteratively build the output. As long as all processing and output requirements are satisfied, any
           approach is allowed. With that said, the specification has been laid out to aid in
           implementation by providing a firm organization structure.</p>
       </section>
@@ -283,13 +283,13 @@ Standing list of general TODO:
           intermediate".</p>
 
         <p>Any examples that are labelled as "Intermediate" are psuedo-code, designed to represent
-          how this data structure may look as we apply different operations to it. The example
+          how this data structure might look as we apply different operations to it. The example
           intermediates are often not valid OSCAL, and are not to be taken as guidance, but rather a
           useful visualization tool for implementers.</p>
 
         <p>The authors believe that applying the steps of resolution in order against this
-          persistent representation is the simplest way to achieve full compliance with the
-          specification. HOWEVER, there is no requirement to implement Profile Resolution in this
+          intermediate representation is the simplest way to achieve full compliance with the
+          specification. However, there is no requirement to implement Profile Resolution in this
           way. Requirements are given as restrictions on the output of resolution, and as such,
           tools can operate any way they would like internally.</p>
       </section>
@@ -329,7 +329,7 @@ Standing list of general TODO:
       </li>
     </ul>
     <p>As described in the previous section, when resolved, an OSCAL profile takes the form of an
-      OSCAL catalog. The phases described below will produce outputs conforming to this model.</p>
+      OSCAL catalog. The phases described below will produce outputs conforming to the catalog model.</p>
     <section id="import">
       <head>Import Phase</head>
       <p>A profile begins by listing a set of Catalogs and/or Profiles to be imported. Each is
@@ -398,8 +398,7 @@ profile:
             document. These references follow the pattern of "#{{objectID}}". For example, the URI
             Fragment "#param1" is referencing the Parameter with unique ID "param1".</p>
           <p>Tools MUST resolve and acquire URI Fragments by fetching the OSCAL object referenced.
-            The reference must only be searched for within the list of IDs of all objects in the
-            document in which the reference appears.</p>
+            The referenced identifier MUST only be searched for within the scope of IDs for which the reference type allows.</p>
           <p>If the object fetched cannot be found or is not a valid OSCAL object, the tool MUST
             cease processing and provide an error.</p>
           <tagging whose="source_profile"><![CDATA[
@@ -427,10 +426,9 @@ profile:
           <p>If the resource acquired is an OSCAL Profile, the tool MUST apply this specification to
             resolve it, then continue processing having imported the resulting catalog.</p>
           <p>When a profile imports a profile, the subordinate profile is resolved into a catalog
-            using this specification. This presents a possibility of circular imports, when a
+            using this specification. This presents the possibility of circular imports, when a
             profile is directed to import itself either directly or indirectly.</p>
-          <p>A <term>circular import</term> is defined as a directive to import a profile, which has
-            already been called higher in the import hierarchy. For example, if Profile A imports
+          <p>A <term>circular import</term> occurs when a profile imports an already imported profile, which was called at an earlier place in the import hierarchy. For example, if Profile A imports
             Profile B, and Profile B imports Profile A, the second import is circular. (An import at
             the top can only be circular if a profile tries to import itself.) If A imports B, B
             imports C and C imports A, C’s import is circular.</p>
@@ -510,12 +508,12 @@ intermediate:
           </tagging>
 
           <p>The control selections are combined and collapsed in the next phase of processing,
-              <term>merge</term> (see below) .</p>
-          <p>Multiple imports may result in outputs with clashing controls (see below). Typically
+              <term>merge</term> (see XYZ) .</p>
+          <p>Multiple imports may result in outputs with clashing controls (see XYZ). Typically
             this will be because a control has been selected twice (in selection or in the
             selections of underlying profiles), and no merge behavior has been indicated to resolve
             the clash.</p>
-          <p>Typical cases of multiple imports of the same (underlying) resource will be when a
+          <p>Typical cases of multiple imports of the same (underlying) resource will be when
             profile A imports another profile B, which calls catalog Z, and then profile A calls
             catalog Z again to acquire other controls not included in profile B, or in an original
             form unmodified by profile B.</p>
@@ -528,7 +526,7 @@ intermediate:
           included. Throughout the rest of this document, we will refer to "explicit" vs "implicit"
           inclusion. Explicit Inclusion refers to anything that has been referenced directly by any
           of the below directives. Implicit Inclusion refers to objects that have been included due
-          to other circumstances, but that have not been referenced by the inclusion directives. </p>
+          to other circumstances, but that have not been directly referenced by the inclusion directives. </p>
 
         <p>It is RECOMMENDED that implementations track which objects are explicitly included vs
           implicitly included as the intermediate is built out. This information is required to be
