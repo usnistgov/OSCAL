@@ -3,22 +3,24 @@ title: Creating and Using Metadata in OSCAL
 description: A tutorial that covers the usage of the Metadata Section in OSCAL
 weight: 5
 suppresstopiclist: true
+toc:
+  enabled: true
 ---
 
-This tutorial covers the basics of the common Metadata Section, and provides a walk-through on creating one for a new document. Before reading this tutorial you should:
+This tutorial covers the basics of the common OSCAL Metadata Section, and provides a walk-through on creating one for a new OSCAL document. Before reading this tutorial you should:
 
 - Have some familiarity with the [XML](https://www.w3.org/standards/xml/core), [JSON](https://www.json.org/), or [YAML](https://yaml.org/spec/) formats.
 - Have a basic understanding of OSCAL Models and their overall structure. ([OSCAL High-Level Overview](/concepts/layer/overview/))
 
 ## What is the Metadata Section?
 
-All OSCAL Models share some common structure and elements, as discussed in [Common High-Level Structure](/concepts/layer/overview/#common-high-level-structure). The foremost of these is the Metadata section, which includes important identifying and categorizing information. A number of mandatory fields inside of Metadata are vital to the processing of OSCAL documents, and have stricter requirements that help ensure interoperability. A second, larger set of fields are optional, and designed to allow OSCAL content creators great flexibility in expressing additional information. These optional fields may enable extra functionality, utilize proprietary data, contain contact info, and more.
+All OSCAL models share some common structure and elements, as discussed in [Common High-Level Structure](/concepts/layer/overview/#common-high-level-structure). The foremost of these is the Metadata Section, which includes important identifying and categorizing information. A number of mandatory fields inside of metadata are vital to the processing of OSCAL documents, and have stricter requirements that help ensure interoperability. A second, larger set of fields are optional, and designed to allow OSCAL content creators great flexibility in expressing additional information. These optional fields may enable extra functionality, utilize proprietary data, contain contact info, and more.
 
 The definition of the Metadata Section is the same regardless of where it appears, so this tutorial is not bound to a single OSCAL Model.
 
 As with all parts of OSCAL, the Metadata Section provides machine-readable formats in XML, JSON, and YAML, which support representing an equivalent set of information. Examples in this tutorial are provided for XML, JSON, and YAML to show the equivalent representations.
 
-## The Fields of Metadata
+## Metadata Fields
 
 Below is the high-level structure of the Metadata Section in XML, JSON, and YAML followed by a listing of each fields' definition with a brief description.
 
@@ -145,23 +147,23 @@ Field definitions:
 
 ## Creating a Metadata Section
 
-All OSCAL documents require a Metadata section with a number of basic elements. This tutorial will cover creating this section and populating the required elements. We will also cover several important optional elements, and how they can be used to achieve specialized use cases.
+All OSCAL documents require a Metadata Section with a number of basic elements. This tutorial will cover creating this section and populating the required elements. We will also cover several important optional fields, and how they can be used to achieve specialized use cases.
 
-Lets start with a nominal example OSCAL document to explain how you would create Metadata.
+Lets start with a nominal example of an OSCAL Catalog document to demonstrate how to create Metadata.
 
-This OSCAL document is a Catalog, called "Example OSCAL Catalog". It was created today (1/1/2021) by me, Example Person, employee of Example Company.
+### Document UUID
 
-## The `uuid` of the Document
+UUIDs are a globally unique identifier randomly generated at the same time an OSCAL document is created. This provides a stable and unique way to refer to a given instance of an OSCAL document.
 
 {{< tabs XML JSON YAML >}}
 {{% tab %}}
 {{< highlight xml "linenos=table" >}}
 
-<catalog uuid=c3da6d1d-c20c-4c7c-ae73-4010167a186b>
+<catalog uuid="c3da6d1d-c20c-4c7c-ae73-4010167a186b">
 
 {{< /highlight >}}
 
-Although technically outside of the Metadata Section, the `@uuid` of a document is always given as an attribute on the root element, and shares its structure across all OSCAL document types. This is provided using the [uuid](/reference/datatypes/#uuid) datatype. UUIDs are a globally unique identifier randomly generated at the same time an OSCAL document is created. This provides a stable and unique way to refer to a given instance of an OSCAL document. Many tools provide easy ways to generate version 4 UUIDs. For our example we have generated one using a trivial UUIDv4 generator.
+Although technically outside of the Metadata Section, the `@uuid` of a document is always given as an attribute on the root element, and shares its structure across all OSCAL document types. This is provided using the [uuid](/reference/datatypes/#uuid) datatype. Many tools provide easy ways to generate version 4 UUIDs. For our example we have generated one using a trivial UUIDv4 generator.
 
 {{% /tab %}}
 {{% tab %}}
@@ -173,24 +175,23 @@ Although technically outside of the Metadata Section, the `@uuid` of a document 
 }
 {{< /highlight >}}
 
-Although technically outside of the Metadata Section, the `uuid` of a document is always given as a field of the root element, and shares its structure across all OSCAL document types. This is provided using the [uuid](/reference/datatypes/#uuid) datatype. UUIDs are a globally unique identifier randomly generated at the same time an OSCAL document is created. This provides a stable and unique way to refer to a given instance of an OSCAL document. Many tools provide easy ways to generate version 4 UUIDs. For our example we have generated one using a trivial UUIDv4 generator.
+Although technically outside of the Metadata Section, the `uuid` of a document is always given as a field of the root element, and shares its structure across all OSCAL document types. This is provided using the [uuid](/reference/datatypes/#uuid) datatype. Many tools provide easy ways to generate version 4 UUIDs. For our example we have generated one using a trivial UUIDv4 generator.
 
 {{% /tab %}}
 {{% tab %}}
 {{< highlight yaml "linenos=table" >}}
 ---
-
 catalog:
   uuid: c3da6d1d-c20c-4c7c-ae73-4010167a186
 
 {{< /highlight >}}
 
-Although technically outside of the Metadata Section, the `uuid` of a document is always given as a field of the root element, and shares its structure across all OSCAL document types. This is provided using the [uuid](/reference/datatypes/#uuid) datatype. UUIDs are a globally unique identifier randomly generated at the same time an OSCAL document is created. This provides a stable and unique way to refer to a given instance of an OSCAL document. Many tools provide easy ways to generate version 4 UUIDs. For our example we have generated one using a trivial UUIDv4 generator.
+Although technically outside of the Metadata Section, the `uuid` of a document is always given as a field of the root element, and shares its structure across all OSCAL document types. This is provided using the [uuid](/reference/datatypes/#uuid) datatype. Many tools provide easy ways to generate version 4 UUIDs. For our example we have generated one using a trivial UUIDv4 generator.
 
 {{% /tab %}}
 {{% /tabs %}}
 
-## Starting Simple with Required Elements
+### Starting with Required and Recommended Fields
 
 {{< tabs XML JSON YAML >}}
 
@@ -202,49 +203,47 @@ For our example, this would look like:
 
 {{< highlight xml "linenos=table" >}}
 
-<title> Example OSCAL Catalog </title>
+<title>Example OSCAL Catalog</title>
 
 {{< /highlight >}}
 
-Next we have two date-based elements. This uses the OSCAL DataTime data type as defined here: [date-with-timezone](/reference/datatypes/#date-with-timezone). `<published>` gives the DateTime of when the document was published for the first time. Since we are publishing this document for the first time today (1/1/2021), the published date will be today, and the time is the moment (or near to it) that this document was published. `<last-modified>` provides the DateTime of the most recent change to this document. As we have never published this particular document before, the DateTime should be identical to the one given by `<published>`. In our example, this will look like:
+Next we have two date-based elements. This uses the OSCAL DataTime data type as defined here: [date-with-timezone](/reference/datatypes/#date-with-timezone). The `<published>` element is <em>not</em> required but is strongly recommended.  It gives the DateTime of when the document was published for the first time. For this example, we'll presume the document was published for the first time on January 1st, 2021, and the time was the moment (or near to it) that this document was published. The `<last-modified>` element provides the DateTime of the most recent change to this document. Since this document was never previously published, the DateTime should be identical to the one given by `<published>`. In our example, this will look like:
 
 {{< highlight xml "linenos=table" >}}
-<published> 2021-01-01T00:00:00-5:00 </published>
-<last-modified> 2021-01-01T00:00:00-5:00 </last-modified>
+<published>2021-01-01T00:00:00-5:00</published>
+<last-modified>2021-01-01T00:00:00-5:00</last-modified>
 {{< /highlight >}}
 
-Note that `<published>` is not required, but is strongly recommended.
-
-Thirdly we must provide a `<version>` element. This refers to the version of the OSCAL document itself, not the version of any other content. OSCAL does not place requirements on the version string itself, as versioning is a complicated process that differs from content creator to content creator. Since this is the first time we've created this document, some variation on a "1.0" would be appropriate.
+Thirdly, we must provide a `<version>` element. This refers to the version of the OSCAL document itself, not the version of any other content. OSCAL does not place requirements on the version string itself, as versioning is a complicated process that differs from content creator to content creator. Since this is the first time we've created this document, some variation on a "1.0" would be appropriate.
 
 {{< highlight xml "linenos=table" >}}
-<version> 1.0.0 <version>
+<version> 1.0.0 </version>
 {{< /highlight >}}
 
 Where possible, use well formatted versions with clear and defined rules. This version will be incremented whenever the OSCAL document is updated.
 
-The final required element is `<oscal-version>`, which provides consumers of the document that the version of OSCAL that was used to create this document.
+The final required element is `<oscal-version>`, which indicates what version of OSCAL was used to create this document.
 
 {{< highlight xml "linenos=table" >}}
 <oscal-version>1.0.0-rc2</oscal-version>
 {{< /highlight >}}
 
-We have now covered all required fields of the Metadata Section, and could now publish our document as a valid OSCAL document. Lets take a look at what it would look like all together:
+We have now covered all required fields of the Metadata Section, and could publish our document as a valid OSCAL document. Here is what it would look like all together:
 
 {{< highlight xml "linenos=table" >}}
-<catalog uuid=c3da6d1d-c20c-4c7c-ae73-4010167a186b>
+<catalog uuid="c3da6d1d-c20c-4c7c-ae73-4010167a186b">
   <metadata>
-      <title> Example OSCAL Document </title>
-      <published> 2021-01-01T00:00:00-5:00 </published>
-      <last-modified> 2021-01-01T00:00:00-5:00 </last-modified>
-      <version> 1.0.0 <version>
+      <title>Example OSCAL Document</title>
+      <published>2021-01-01T00:00:00-5:00</published>
+      <last-modified>2021-01-01T00:00:00-5:00</last-modified>
+      <version>1.0.0<version>
       <oscal-version>1.0.0-rc2</oscal-version>
   </metadata>
   ...
 </catalog>
 {{< /highlight >}}
 
-However, the Metadata Section has several other optional fields of importance, which we will cover in the following sections.
+However, the Metadata Section has several other optional but important fields which we will cover in the following sections.
 
 {{% /tab %}}
 
@@ -260,7 +259,7 @@ For our example, this would look like:
 }
 {{< /highlight >}}
 
-Next we have two date based fields. This uses the OSCAL DataTime data type as defined here: [date-with-timezone](/reference/datatypes/#date-with-timezone). `published` gives the DateTime of when the document was published for the first time. Since we are publishing this document for the first time today (1/1/2021), the published date will be today, and the time is the moment (or near to it) that this document was published. `last-modified` provides the DateTime of the most recent change to this document. As we have never published this particular document before, the DateTime should be identical to the one given by `published`. In our example, this will look like:
+Next we have two date-based elements. This uses the OSCAL DataTime data type as defined here: [date-with-timezone](/reference/datatypes/#date-with-timezone). The `published` field is <em>not</em> required but is strongly recommended.  It gives the DateTime of when the document was published for the first time. For this example, we'll presume the document was published for the first time on January 1st, 2021, and the time was the moment (or near to it) that this document was published. The `last-modified` field provides the DateTime of the most recent change to this document. Since this document was never previously published, the DateTime should be identical to the one given by `published`. In our example, this will look like:
 
 {{< highlight json "linenos=table" >}}
 {
@@ -268,8 +267,6 @@ Next we have two date based fields. This uses the OSCAL DataTime data type as de
 "last-modified": "2021-01-01T00:00:00-5:00"
 }
 {{< /highlight >}}
-
-Note that `published` is not required, but is strongly recommended.
 
 Thirdly we must provide a `version` field. This refers to the version of the OSCAL document itself, not the version of any other content. OSCAL does not place requirements on the version string itself, as versioning is a complicated process that differs from content creator to content creator. Since this is the first time we've created this document, some variation on a "1.0" would be appropriate.
 
@@ -281,7 +278,7 @@ Thirdly we must provide a `version` field. This refers to the version of the OSC
 
 Where possible, use well formatted versions with clear and defined rules. This version will be incremented whenever the OSCAL document is updated.
 
-The final required field is `oscal-version`, which provides consumers of the document that the version of OSCAL that was used to create this document.
+The final required field is `oscal-version`, which indicates what version of OSCAL was used to create this document.
 
 {{< highlight json "linenos=table" >}}
 {
@@ -289,7 +286,7 @@ The final required field is `oscal-version`, which provides consumers of the doc
 }
 {{< /highlight >}}
 
-We have now covered all required fields of the Metadata Section, and could now publish our document as a valid OSCAL document. Lets take a look at what it would look like all together:
+We have now covered all required fields of the Metadata Section, and could publish our document as a valid OSCAL document. Here is what it would look like all together:
 
 {{< highlight json "linenos=table" >}}
 {
@@ -306,7 +303,7 @@ We have now covered all required fields of the Metadata Section, and could now p
 }
 {{< /highlight >}}
 
-However, the Metadata Section has several other optional fields of importance, which we will cover in the following sections.
+However, the Metadata Section has several other optional but important fields which we will cover in the following sections.
 {{% /tab %}}
 
 {{% tab %}}
@@ -322,15 +319,13 @@ title:Example OSCAL Catalog
 
 {{< /highlight >}}
 
-Next we have two date based fields. This uses the OSCAL DataTime data type as defined here: [date-with-timezone](/reference/datatypes/#date-with-timezone). `published` gives the DateTime of when the document was published for the first time. Since we are publishing this document for the first time today (1/1/2021), the published date will be today, and the time is the moment (or near to it) that this document was published. `last-modified` provides the DateTime of the most recent change to this document. As we have never published this particular document before, the DateTime should be identical to the one given by `published`. In our example, this will look like:
+Next we have two date-based elements. This uses the OSCAL DataTime data type as defined here: [date-with-timezone](/reference/datatypes/#date-with-timezone). The `published` field is <em>not</em> required but is strongly recommended.  It gives the DateTime of when the document was published for the first time. For this example, we'll presume the document was published for the first time on January 1st, 2021, and the time was the moment (or near to it) that this document was published. The `last-modified` field provides the DateTime of the most recent change to this document. Since this document was never previously published, the DateTime should be identical to the one given by `published`. In our example, this will look like:
 
 {{< highlight yaml "linenos=table" >}}
 ---
   published: 2021-01-01T00:00:00-5:00,
   last-modified: 2021-01-01T00:00:00-5:00
 {{< /highlight >}}
-
-Note that `published` is not required, but is strongly recommended.
 
 Thirdly we must provide a `version` field. This refers to the version of the OSCAL document itself, not the version of any other content. OSCAL does not place requirements on the version string itself, as versioning is a complicated process that differs from content creator to content creator. Since this is the first time we've created this document, some variation on a "1.0" would be appropriate.
 
@@ -341,7 +336,7 @@ Thirdly we must provide a `version` field. This refers to the version of the OSC
 
 Where possible, use well formatted versions with clear and defined rules. This version will be incremented whenever the OSCAL document is updated.
 
-The final required field is `oscal-version`, which provides consumers of the document that the version of OSCAL that was used to create this document.
+The final required field is `oscal-version`, which indicates what version of OSCAL was used to create this document.
 
 {{< highlight yaml "linenos=table" >}}
 ---
@@ -350,7 +345,7 @@ oscal-version: 1.0.0
 }
 {{< /highlight >}}
 
-We have now covered all required fields of the Metadata Section, and could now publish our document as a valid OSCAL document. Lets take a look at what it would look like all together:
+We have now covered all required fields of the Metadata Section, and could publish our document as a valid OSCAL document. Here is what it would look like all together:
 
 {{< highlight yaml "linenos=table" >}}
 ---
@@ -364,25 +359,27 @@ We have now covered all required fields of the Metadata Section, and could now p
       oscal-version: 1.0.0
 {{< /highlight >}}
 
-However, the Metadata Section has several other optional fields of importance, which we will cover in the following sections.
+However, the Metadata Section has several other optional but important fields which we will cover in the following sections.
 {{% /tab %}}
 {{% /tabs %}}
 
-## Understanding and Using `document-id`
+### Understanding and Using the Document-Id
+
+OSCAL documents, by their nature, may often require updates of varying impact. It is important to track these updates in a way that can be automated and managed by a wide array of systems and users. To that end, we must cover the concepts of "Document Series" and "Document Instances".
+
+A "Document Series" is defined as a document and all of its updates and versions. In more human terms, if a content author writes "Document 1 version 1", "Document 1 version 2", and "Document 1 version 3.4", we could say that the "Document Series" is simply "Document 1".
+
+A "Document Instance" is defined as a single document that is part of a "Document Series". Using the above example, "Document 1 version 2" is a "Document Instance".
 
 {{< tabs XML JSON YAML >}}
 {{% tab %}}
-OSCAL documents, by their nature, will often receive updates of varying impact. It is important to track these updates in a way that can be automated and managed by a wide array of systems and users. To that end, we must cover the concepts of "Document Series" and "Document Instances".
-
-A "Document Series" is defined as a document and all of its updates and versions. In more human terms if I have written "Document 1 version 1", "Document 1 version 2", and "Document 1 version 3.4", we could say that the "Document Series" is simply "Document 1".
-A "Document Instance" is defined as a single document that is part of a "Document Series". Using the above example, "Document 1 version 2" is a "Document Instance"
 
 In OSCAL we use `<document-id>` to track "Document Series", and `@uuid` to track "Document Instance".
 
-Back to our OSCAL Catalog example, we have already generated a uuid to identify the particular instance that we are publishing. Since we are publishing the first document in a series, we should also define a `<document-id>`. The `@scheme` attribute is a [URI](/reference/datatypes/#uri) that identifies the naming scheme we are using for the ID. While there are no strict requirements around the scheme and the ID, it is recommended that an existing identification scheme is used. For our example we will use [DOI](https://www.doi.org/).
+Continuing with our OSCAL Catalog example, we have already generated a uuid to identify the particular instance that we are publishing. Since we are publishing the first document in a series, we should also define a `<document-id>`. The `@scheme` attribute is a [URI](/reference/datatypes/#uri) that identifies the naming scheme we are using for the ID. While there are no strict requirements around the scheme and the ID, it is recommended that an existing identification scheme is used. For our example we will use [DOI](https://www.doi.org/).
 
 {{< highlight xml "linenos=table" >}}
-<document-id scheme=https://www.doi.org/>10.1000/182<document-id>
+<document-id scheme="https://www.doi.org/">10.1000/182</document-id>
 {{< /highlight >}}
 
 In the future, any updated versions of this document we publish will have the same `<document-id>` value, but a different `@uuid`.
@@ -393,14 +390,10 @@ Multiple `<document-id>` elements denote that a document is a part of multiple D
 {{% /tab %}}
 
 {{% tab %}}
-OSCAL documents, by their nature, will often receive updates of varying impact. It is important to track these updates in a way that can be automated and managed by a wide array of systems and users. To that end, we must cover the concepts of "Document Series" and "Document Instances".
-
-A "Document Series" is defined as a document and all of its updates and versions. In more human terms if I have written "Document 1 version 1", "Document 1 version 2", and "Document 1 version 3.4", we could say that the "Document Series" is simply "Document 1".
-A "Document Instance" is defined as a single document that is part of a "Document Series". Using the above example, "Document 1 version 2" is a "Document Instance"
 
 In OSCAL we use `document-ids` to track "Document Series", and `uuid` to track "Document Instance".
 
-Back to our OSCAL Catalog example, we have already generated a uuid to identify the particular instance that we are publishing. Since we are publishing the first document in a series, we should also define a `document-ids`. The `scheme` field is a [URI](/reference/datatypes/#uri) that identifies the naming scheme we are using for the ID. While there are no strict requirements around the scheme and the ID, it is recommended that an existing identification scheme is used. For our example we will use [DOI](https://www.doi.org/).
+Continuing with our OSCAL Catalog example, we have already generated a uuid to identify the particular instance that we are publishing. Since we are publishing the first document in a series, we should also define a `document-ids`. The `scheme` field is a [URI](/reference/datatypes/#uri) that identifies the naming scheme we are using for the ID. While there are no strict requirements around the scheme and the ID, it is recommended that an existing identification scheme is used. For our example we will use [DOI](https://www.doi.org/).
 
 {{< highlight json "linenos=table" >}}
 {
@@ -419,14 +412,10 @@ In the case that a document does not explicitly provide at least one object insi
 {{% /tab %}}
 
 {{% tab %}}
-OSCAL documents, by their nature, will often receive updates of varying impact. It is important to track these updates in a way that can be automated and managed by a wide array of systems and users. To that end, we must cover the concepts of "Document Series" and "Document Instances".
-
-A "Document Series" is defined as a document and all of its updates and versions. In more human terms if I have written "Document 1 version 1", "Document 1 version 2", and "Document 1 version 3.4", we could say that the "Document Series" is simply "Document 1".
-A "Document Instance" is defined as a single document that is part of a "Document Series". Using the above example, "Document 1 version 2" is a "Document Instance"
 
 In OSCAL we use `document-id` to track "Document Series", and `uuid` to track "Document Instance".
 
-Back to our OSCAL Catalog example, we have already generated a uuid to identify the particular instance that we are publishing. Since we are publishing the first document in a series, we should also define a `document-id`. The `scheme` field is a [URI](/reference/datatypes/#uri) that identifies the naming scheme we are using for the ID. While there are no strict requirements around the scheme and the ID, it is recommended that an existing identification scheme is used. For our example we will use [DOI](https://www.doi.org/).
+Continuing with our OSCAL Catalog example, we have already generated a uuid to identify the particular instance that we are publishing. Since we are publishing the first document in a series, we should also define a `document-id`. The `scheme` field is a [URI](/reference/datatypes/#uri) that identifies the naming scheme we are using for the ID. While there are no strict requirements around the scheme and the ID, it is recommended that an existing identification scheme is used. For our example we will use [DOI](https://www.doi.org/).
 
 {{< highlight yaml "linenos=table" >}}
 ---
@@ -441,33 +430,24 @@ In the case that a document does not explicitly provide a `document-id` value, i
 {{% /tab %}}
 {{% /tabs %}}
 
-## Using Props
+### Using Props
 {{< tabs XML JSON YAML >}}
 {{% tab %}}
-The `<prop>` element provides a key-value pairing to provide additional information alongside the well-defined elements of the Metadata Section. Some common use cases include labels, sorting tags, and classification. There are no restrictions on using custom `@name` and `@value` pairs making `<prop>` an excellent place to do extension of the OSCAL model to meet proprietary use cases. The Metadata Section may include any number of `<prop>` elements.
+The Metadata Section may include any number of `<prop>` elements.  The `<prop>` element provides a key-value pairing to provide additional information alongside the well-defined elements of the Metadata Section. Some common use cases include labels, sorting tags, and classification. There are no restrictions on using custom `@name` and `@value` pairs making `<prop>` an excellent place to do extension of the OSCAL model to meet proprietary use cases. The Metadata Section may include any number of `<prop>` elements.  More information on the use of `<prop>` is provided in the [Props and Links tutorial](/learn/tutorials/extensions/#props).
 
-For our example, we will create a `<prop>` to mark an OSCAL document with a [Traffic Light Protocol (TLP)](https://en.wikipedia.org/wiki/Traffic_Light_Protocol) classification.
+For this example, we will create a `<prop>` to mark an OSCAL document with a [Traffic Light Protocol (TLP)](https://en.wikipedia.org/wiki/Traffic_Light_Protocol) classification.
 
 {{< highlight xml "linenos=table" >}}
 <prop name="marking" value="red" class="TLP"/>
 {{< /highlight >}}
 
-The `@name` attribute is the key, and the `@value` attribute is the value. Together they form a key-value pair to facilitate automated data lookup. Here we use an optional `@class` attribute to provide an additional layer of information, noting that the marking we are using is the TLP protocol.
-
-The optional attributes of `<prop>` are as follows:
-
-- class: A textual label that provides a sub-type or characterization of the property's name. This can be used to further distinguish or discriminate between the semantics of multiple properties of the same object with the same name and ns.
-- uuid: A unique identifier that can be used to reference this property elsewhere in an OSCAL document. A UUID should be consistently used for a given location across revisions of the document.
-- ns: A namespace qualifying the property's name. This allows different organizations to associate distinct semantics with the same name.
-
-Additionally, the content of the `<prop>` element is optionally Markup content that represents [Remarks](https://pages.nist.gov/OSCAL/documentation/schema/assessment-layer/assessment-plan/xml-schema/#global_remarks_h2).
-
-More information on the use of `<prop>` is provided in the [Props and Links tutorial](/learn/tutorials/extensions/#props).  
+The `@name` attribute is the key, and the `@value` attribute is the value. Together they form a key-value pair to facilitate automated data lookup. Here we use an optional `@class` attribute to provide an additional layer of information, noting that the marking we are using is the TLP protocol.  The [Props and Links tutorial](/learn/tutorials/extensions/#using-an-existing-prop) provides more details on these attributes.
+  
 {{% /tab %}}
 {{% tab %}}
-The `props` object array provides any number of key-value pairing to provide additional information alongside the well-defined fields of the Metadata Section. Some common use cases include labels, sorting tags, and classification. There are no restrictions on using custom `name` and `value` pairs making `props` an excellent place to do extension of the OSCAL model to meet proprietary use cases.
+The `props` object array provides any number of key-value pairing to provide additional information alongside the well-defined fields of the Metadata Section. Some common use cases include labels, sorting tags, and classification. There are no restrictions on using custom `name` and `value` pairs making `props` an excellent place to do extension of the OSCAL model to meet proprietary use cases. More information on the use of `props` is provided in the [Props and Links tutorial](/learn/tutorials/extensions/#props).
 
-For our example, we will create a `props` array to mark an OSCAL document with a [Traffic Light Protocol (TLP)](https://en.wikipedia.org/wiki/Traffic_Light_Protocol) classification.
+For this example, we will create a `props` array to mark an OSCAL document with a [Traffic Light Protocol (TLP)](https://en.wikipedia.org/wiki/Traffic_Light_Protocol) classification.
 
 {{< highlight json "linenos=table" >}}
 {
@@ -481,22 +461,13 @@ For our example, we will create a `props` array to mark an OSCAL document with a
 }
 {{< /highlight >}}
 
-The `name` field is the key, and the `value` field is the value. Together they form a key-value pair to facilitate automated data lookup. Here we use an optional `class` field to provide an additional layer of information, noting that the marking we are using is the TLP protocol.
-
-The optional fields of objects inside `props` are as follows:
-
-- `class`: A textual label that provides a sub-type or characterization of the property's name. This can be used to further distinguish or discriminate between the semantics of multiple properties of the same object with the same name and ns.
-- `uuid`: A unique identifier that can be used to reference this property elsewhere in an OSCAL document. A UUID should be consistently used for a given location across revisions of the document.
-- `ns`: A namespace qualifying the property's name. This allows different organizations to associate distinct semantics with the same name.
-- `remarks`: Additional commentary on the containing object. See [Remarks](https://pages.nist.gov/OSCAL/documentation/schema/assessment-layer/assessment-plan/xml-schema/#global_remarks_h2).
-
-More information on the use of `props` is provided in the [Props and Links tutorial](/learn/tutorials/extensions/#props).  
+The `name` field is the key, and the `value` field is the value. Together they form a key-value pair to facilitate automated data lookup. Here we use an optional `class` field to provide an additional layer of information, noting that the marking we are using is the TLP protocol.  The [Props and Links tutorial](/learn/tutorials/extensions/#using-an-existing-prop) provides more details on these fields.
 
 {{% /tab %}}
 {{% tab %}}
-The `props` array provides any number of key-value pairings to provide additional information alongside the well-defined fields of the Metadata Section. Some common use cases include labels, sorting tags, and classification. There are no restrictions on using custom `name` and `value` pairs making `prop` an excellent place to do extension of the OSCAL model to meet proprietary use cases.
+The `props` array provides any number of key-value pairings to provide additional information alongside the well-defined fields of the Metadata Section. Some common use cases include labels, sorting tags, and classification. There are no restrictions on using custom `name` and `value` pairs making `prop` an excellent place to do extension of the OSCAL model to meet proprietary use cases. More information on the use of `props` is provided in the [Props and Links tutorial](/learn/tutorials/extensions/#props).
 
-For our example, we will create a `props` to mark an OSCAL document with a [Traffic Light Protocol (TLP)](https://en.wikipedia.org/wiki/Traffic_Light_Protocol) classification.
+For this example, we will create a `props` to mark an OSCAL document with a [Traffic Light Protocol (TLP)](https://en.wikipedia.org/wiki/Traffic_Light_Protocol) classification.
 
 {{< highlight yaml "linenos=table" >}}
 ---
@@ -506,31 +477,16 @@ For our example, we will create a `props` to mark an OSCAL document with a [Traf
      class: TLP
 {{< /highlight >}}
 
-The `name` field is the key, and the `value` field is the value. Together they form a key-value pair to facilitate automated data lookup. Here we use an optional `class` field to provide an additional layer of information, noting that the marking we are using is the TLP protocol.
-
-The optional fields of the objects inside `props` are as follows:
-
-- `class`: A textual label that provides a sub-type or characterization of the property's name. This can be used to further distinguish or discriminate between the semantics of multiple properties of the same object with the same name and ns.
-- `uuid`: A unique identifier that can be used to reference this property elsewhere in an OSCAL document. A UUID should be consistently used for a given location across revisions of the document.
-- `ns`: A namespace qualifying the property's name. This allows different organizations to associate distinct semantics with the same name.
-- `remarks`: Additional commentary on the containing object. See [Remarks](https://pages.nist.gov/OSCAL/documentation/schema/assessment-layer/assessment-plan/xml-schema/#global_remarks_h2).
-
-More information on the use of `props` is provided in the [Props and Links tutorial](/learn/tutorials/extensions/#props).  
+The `name` field is the key, and the `value` field is the value. Together they form a key-value pair to facilitate automated data lookup. Here we use an optional `class` field to provide an additional layer of information, noting that the marking we are using is the TLP protocol.  The [Props and Links tutorial](/learn/tutorials/extensions/#using-an-existing-prop) provides more details on these fields.
 
 {{% /tab %}}
 {{% /tabs %}}
 
-## Using Link
+### Using Link
 
 {{< tabs XML JSON YAML >}}
 {{% tab %}}
-Alongside the `<prop>` element, `<link>` is way of providing additional information in the Metadata section that is not covered by the other elements. Each `<link>` must contain a single `@href` attribute, which contains a resolvable URI. Each `<link>` should also include a `@rel` attribute, which describes the type of relationship provided by the `@href`. Although any string can be used in the `@rel` attribute, OSCAL identifies five common link relationships that are frequently useful:
-
-- canonical: The link identifies the authoritative location for this file.
-- alternate: The link identifies an alternative location or format for this file.
-- latest-version: This link identifies a resource containing the latest version in the version history. Defined by RFC 5829.
-- predecessor-version: This link identifies a resource containing the predecessor version in the version history. RFC 5829.
-- successor-version: This link identifies a resource containing the predecessor version in the version history. RFC 5829.
+Alongside the `<prop>` element, `<link>` is way of providing additional information in the Metadata section that is not covered by the other elements. Each `<link>` must contain a single `@href` attribute, which contains a resolvable URI. Each `<link>` should also include a `@rel` attribute, which describes the type of relationship provided by the `@href`.  The [Props and Links tutorial](/learn/tutorials/extensions/#links) provides comprehensive examples of how to implement a `<link>`.
 
 For this example, we will create a "latest-version" link, which provides a static link to the latest version of this Document Series. By pointing to a static URL, but updating the contents of that URL as the document is updated, any user that has an old version of the document can quickly and easily update.
 
@@ -542,19 +498,10 @@ The "predecessor-version" and "successor-version" links could be used in tandem 
 
 By using other custom `@rel` values, any relevant or related resource can be described and linked to in the OSCAL Document's Metadata Section.
 
-Use of the optional `@media-type` attribute can provide consumers with processing instructions based on the media type of the resource found at the `@href`. See [IANA Media Types](https://www.iana.org/assignments/media-types/media-types.xhtml).
-
-Review the [Props and Links tutorial](/learn/tutorials/extensions/#links) to learn more about `<link>` and how to implement them.
 {{% /tab %}}
 
 {{% tab %}}
-Alongside the `props` array, the `links` array is a way of providing additional information in the Metadata section that is not covered by the other fields. Each object inside the `links` array must contain a single `href` field, which contains a resolvable URI. Each object should also include a `rel` field, which describes the type of relationship provided by the `href`. Although any string can be used in the `rel` field, OSCAL identifies five common link relationships that are frequently useful:
-
-- canonical: The link identifies the authoritative location for this file.
-- alternate: The link identifies an alternative location or format for this file.
-- latest-version: This link identifies a resource containing the latest version in the version history. Defined by RFC 5829.
-- predecessor-version: This link identifies a resource containing the predecessor version in the version history. RFC 5829.
-- successor-version: This link identifies a resource containing the predecessor version in the version history. RFC 5829.
+Alongside the `props` array, the `links` array is a way of providing additional information in the Metadata section that is not covered by the other fields. Each object inside the `links` array must contain a single `href` field, which contains a resolvable URI. Each object should also include a `rel` field, which describes the type of relationship provided by the `href`. The [Props and Links tutorial](/learn/tutorials/extensions/#links) provides comprehensive examples of how to implement a `link`.
 
 For this example, we will create a "latest-version" link, which provides a static link to the latest version of this Document Series. By pointing to a static URL, but updating the contents of that URL as the document is updated, any user that has an old version of the document can quickly and easily update.
 
@@ -573,19 +520,10 @@ The "predecessor-version" and "successor-version" links could be used in tandem 
 
 By using other custom `rel` values, any relevant or related resource can be described and linked to in the OSCAL Document's Metadata Section.
 
-Use of the optional `media-type` field can provide consumers with processing instructions based on the media type of the resource found at the `href`. See [IANA Media Types](https://www.iana.org/assignments/media-types/media-types.xhtml).
-
-Review the [Props and Links tutorial](/learn/tutorials/extensions/#links) to learn more about `links` and how to implement them.
 {{% /tab %}}
 
 {{% tab %}}
-Alongside the `props` array, the `links` array is way of providing additional information in the Metadata section that is not covered by the other fields. Each object inside the `links` array must contain a single `href` field, which contains a resolvable URI. Each object should also include a `rel` field, which describes the type of relationship provided by the `href`. Although any string can be used in the `rel` field, OSCAL identifies five common link relationships that are frequently useful:
-
-- canonical: The link identifies the authoritative location for this file.
-- alternate: The link identifies an alternative location or format for this file.
-- latest-version: This link identifies a resource containing the latest version in the version history. Defined by RFC 5829.
-- predecessor-version: This link identifies a resource containing the predecessor version in the version history. RFC 5829.
-- successor-version: This link identifies a resource containing the predecessor version in the version history. RFC 5829.
+Alongside the `props` array, the `links` array is way of providing additional information in the Metadata section that is not covered by the other fields. Each object inside the `links` array must contain a single `href` field, which contains a resolvable URI. Each object should also include a `rel` field, which describes the type of relationship provided by the `href`. The [Props and Links tutorial](/learn/tutorials/extensions/#links) provides comprehensive examples of how to implement a `link`.
 
 For this example, we will create a "latest-version" link, which provides a static link to the latest version of this Document Series. By pointing to a static URL, but updating the contents of that URL as the document is updated, any user that has an old version of the document can quickly and easily update.
 
@@ -600,18 +538,15 @@ The "predecessor-version" and "successor-version" links could be used in tandem 
 
 By using other custom `rel` values, any relevant or related resource can be described and linked to in the OSCAL Document's Metadata Section.
 
-Use of the optional `media-type` field can provide consumers with processing instructions based on the media type of the resource found at the `href`. See [IANA Media Types](https://www.iana.org/assignments/media-types/media-types.xhtml).
-
-Review the [Props and Links tutorial](/learn/tutorials/extensions/#links) to learn more about `links` and how to implement them.
 {{% /tab %}}
 {{% /tabs %}}
 
-## The Other Optional Elements
+### Using Other Optional Elements
 
 {{< tabs XML JSON YAML >}}
 {{% tab %}}
 
-The remainder of this tutorial will briefly cover the other optional elements inside the Metadata Section. While not required by the specification, these elements provide invaluable information, particularly for providence and authorship data. This information is declared in the Metadata Section, and is often passed by-reference to other parts of the OSCAL Document. Each element can be clicked to get additional information.
+The remainder of this tutorial briefly covers the other optional elements inside the Metadata Section. While not required by the specification, these elements provide invaluable information, particularly for providence and authorship data. This information is declared in the Metadata Section, and is often passed by-reference to other parts of the OSCAL Document. Each element can be clicked to get additional information.
 
 [`<role>`](https://pages.nist.gov/OSCAL/documentation/schema/catalog-layer/catalog/xml-schema/#global_role) - Roles define some function or purpose that is to be assigned to some entity later in the document. Role elements have a `id` attribute with a [NCName](https://pages.nist.gov/OSCAL/documentation/schema/datatypes/#ncname) that is used to reference the role elsewhere in the OSCAL document. A number of pre-defined roles exist in OSCAL, but differ depending on context. In the Metadata Section they are as follows:
 
@@ -670,16 +605,18 @@ Other roles can be locally defined by the content creator.
 {{% /tab %}}
 
 {{% /tabs %}}
-## Putting it all together 
+
+## Putting It All Together
+
 {{< tabs XML JSON YAML >}}
 {{% tab %}}
 {{< highlight xml "linenos=table" >}}
-<catalog uuid=c3da6d1d-c20c-4c7c-ae73-4010167a186b>
+<catalog uuid="c3da6d1d-c20c-4c7c-ae73-4010167a186b">
   <metadata>
       <title>Example OSCAL Document</title>
       <published>2021-01-01T00:00:00-5:00</published>
       <last-modified>2021-01-01T00:00:00-5:00</last-modified>
-      <version>1.0.0<version>
+      <version>1.0.0</version>
       <oscal-version>1.0.0</oscal-version>
       <document-id scheme="https://www.doi.org/">10.1000/182</document-id>
       <prop name="marking" class="TrafficLightProtocol" value="red"/>
