@@ -62,7 +62,7 @@ In this example, an organization needs to document their primary and alternate d
 </system-security-plan>
 {{< /highlight >}}
 
-The `@name` attribute is set to "type" which is an OSCAL pre-defined property. The `@value` attribute is set to "data-center" which is an OSCAL pre-defined value for location "type" properties. The `@class` attribute in this case is used to indicate a subclass of data-center, and is set the the appropriate OSCAL pre-defined values for data center location properties.  Note that in this example, the `@ns` attribute is omitted because we are using a standard OSCAL defined `<prop>` element.
+The `@name` attribute is set to "type" which is an OSCAL pre-defined property. The `@value` attribute is set to "data-center" which is an [OSCAL pre-defined](/reference/latest/system-security-plan/xml-reference/#/system-security-plan/metadata/location) value for location "type" properties. The `@class` attribute in this case is used to indicate a subclass of data-center, and is set the the appropriate [OSCAL pre-defined](/reference/latest/system-security-plan/xml-reference/#/system-security-plan/metadata/location)  values for data center location properties.  Note that in this example, the `@ns` attribute is omitted because we are using a standard OSCAL defined `<prop>` element.
 
 {{% /tab %}}
 
@@ -105,7 +105,7 @@ The `@name` attribute is set to "type" which is an OSCAL pre-defined property. T
 }
 {{< /highlight >}}
 
-In the `props` object array, the prop object's `name` property is set to "type" which is an OSCAL pre-defined property. The `value` property is set to "data-center" which is an OSCAL pre-defined value for location "type" properties. The `class` property in this case is used to indicate a subclass of data-center, and is set the the appropriate OSCAL pre-defined values for data center location `prop`.  Note that in this example, the `ns` property is omitted because we are using a standard OSCAL defined `prop` object.
+In the `props` object array, the prop object's `name` property is set to "type" which is an OSCAL pre-defined property. The `value` property is set to "data-center" which is an [OSCAL pre-defined](/reference/latest/system-security-plan/json-reference/#/system-security-plan/metadata/locations) value for location "type" properties. The `class` property in this case is used to indicate a subclass of data-center, and is set the the appropriate [OSCAL pre-defined](/reference/latest/system-security-plan/json-reference/#/system-security-plan/metadata/locations) values for data center location `prop`.  Note that in this example, the `ns` property is omitted because we are using a standard OSCAL defined `prop` object.
 
 {{% /tab %}}
 
@@ -134,7 +134,7 @@ system-security-plan:
   system-implementation: ...
 {{< /highlight >}}
 
-In the `props` object array, the prop object's `name` property is set to "type" which is an OSCAL pre-defined property. The `value` property is set to "data-center" which is an OSCAL pre-defined value for location "type" properties. The `class` property in this case is used to indicate a subclass of data-center, and is set the the appropriate OSCAL pre-defined values for data center location `prop`.  Note that in this example, the `ns` property is omitted because we are using a standard OSCAL defined `prop` object.
+In the `props` object array, the prop object's `name` property is set to "type" which is an OSCAL pre-defined property. The `value` property is set to "data-center" which is an [OSCAL pre-defined](/reference/latest/system-security-plan/json-reference/#/system-security-plan/metadata/locations) value for location "type" properties. The `class` property in this case is used to indicate a subclass of data-center, and is set the the appropriate [OSCAL pre-defined](/reference/latest/system-security-plan/json-reference/#/system-security-plan/metadata/locations) values for data center location `prop`.  Note that in this example, the `ns` property is omitted because we are using a standard OSCAL defined `prop` object.
 
 {{% /tab %}}
 
