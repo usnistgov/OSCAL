@@ -91,15 +91,8 @@
             <model>
                   <assembly ref="combine"/>
                   <choice>
-                        <define-assembly name="flat" min-occurs="1">
-                              <formal-name>Flat</formal-name>
-                              <description>Use the flat structuring method.</description>
-                        </define-assembly>
-                        <define-field name="as-is" as-type="boolean" min-occurs="1">
-                              <formal-name>As is</formal-name>
-                              <description>An As-is element indicates that the controls should be structured in resolution as they are structured in their source catalogs. It does not contain any elements or attributes.</description>
-                        </define-field>
-                        <assembly ref="custom" min-occurs="1"/>
+                        <field ref="as-is"/>
+                        <assembly ref="custom"/>
                   </choice>
             </model>
             <remarks>
@@ -116,7 +109,10 @@
                   <p>This setting permits a profile designer to apply a rule for the resolution of such cases. In a well-designed profile, such collisions would ordinarily be avoided, but this setting can be useful for defining what to do when it occurs.</p>
             </remarks>
       </define-assembly>
-
+      <define-field name="as-is" as-type="boolean">
+            <formal-name>As is</formal-name>
+            <description>An As-is element indicates that the controls should be structured in resolution as they are structured in their source catalogs. It does not contain any elements or attributes.</description>
+      </define-field>
       <define-flag name="method" as-type="string">
             <formal-name>Combination method</formal-name>
             <description>How clashing controls should be handled</description>
@@ -438,7 +434,7 @@
             <constraint>
                   <allowed-values>
                         <enum value="yes">Include child controls with an included control.</enum>
-                        <enum value="no">(default) When importing a control, only include child controls that are also explicitly called.</enum>
+                        <enum value="no">When importing a control, only include child controls that are also explicitly called.</enum>
                   </allowed-values>
             </constraint>
       </define-flag>
