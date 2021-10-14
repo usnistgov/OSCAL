@@ -35,8 +35,10 @@ Below is the high-level structure of the Metadata Section in XML, JSON, and YAML
     <oscal-version>string</oscal-version> [1]
     <revisions> … </revisions> [0 or 1]
     <document-id scheme="uri">string</document-id> [0 to ∞]
-    <prop name="ncname" uuid="uuid" ns="uri" value="string" class="ncname"> … </prop> [0 to ∞]
-    <link href="uri-reference" rel="ncname" media-type="string"> … </link> [0 to ∞]
+    <prop name="ncname" uuid="uuid" ns="uri"
+          value="string" class="ncname"> … </prop> [0 to ∞]
+    <link href="uri-reference" rel="ncname"
+          media-type="string"> … </link> [0 to ∞]
     <role id="ncname"> … </role> [0 to ∞]
     <location uuid="uuid"> … </location> [0 to ∞]
     <party uuid="uuid" type="string"> … </party> [0 to ∞]
@@ -433,7 +435,11 @@ In the case that a document does not explicitly provide a `document-id` value, i
 ### Using Props
 {{< tabs XML JSON YAML >}}
 {{% tab %}}
-The Metadata Section may include any number of `<prop>` elements.  The `<prop>` element provides a key-value pairing to provide additional information alongside the well-defined elements of the Metadata Section. Some common use cases include labels, sorting tags, and classification. There are no restrictions on using custom `@name` and `@value` pairs making `<prop>` an excellent place to do extension of the OSCAL model to meet proprietary use cases. The Metadata Section may include any number of `<prop>` elements.  More information on the use of `<prop>` is provided in the [Props and Links tutorial](/learn/tutorials/extensions/#props).
+The Metadata Section may include any number of `<prop>` elements.  The `<prop>` element provides a key-value pairing to provide additional information alongside the well-defined elements of the Metadata Section. Some common use cases include labels, sorting tags, and classification. There are no restrictions on using custom `@name` and `@value` pairs making `<prop>` an excellent place to do extension of the OSCAL model to meet proprietary use cases. The Metadata Section may include any number of `<prop>` elements.  
+
+{{% callout note %}}
+More information on the use of `<prop>` is provided in the [Props and Links tutorial](/learn/tutorials/extensions/#props).
+{{% /callout %}}
 
 For this example, we will create a `<prop>` to mark an OSCAL document with a [Traffic Light Protocol (TLP)](https://en.wikipedia.org/wiki/Traffic_Light_Protocol) classification.
 
@@ -441,11 +447,16 @@ For this example, we will create a `<prop>` to mark an OSCAL document with a [Tr
 <prop name="marking" value="red" class="TLP"/>
 {{< /highlight >}}
 
-The `@name` attribute is the key, and the `@value` attribute is the value. Together they form a key-value pair to facilitate automated data lookup. Here we use an optional `@class` attribute to provide an additional layer of information, noting that the marking we are using is the TLP protocol.  The [Props and Links tutorial](/learn/tutorials/extensions/#using-an-existing-prop) provides more details on these attributes.
+The `@name` attribute is the key, and the `@value` attribute is the value. Together they form a key-value pair to facilitate automated data lookup. Here we use an optional `@class` attribute to provide an additional layer of information, noting that the marking we are using is the TLP protocol.  
+The [Props and Links tutorial](/learn/tutorials/extensions/#using-an-existing-prop) provides more details on these attributes.
   
 {{% /tab %}}
 {{% tab %}}
-The `props` object array provides any number of key-value pairing to provide additional information alongside the well-defined fields of the Metadata Section. Some common use cases include labels, sorting tags, and classification. There are no restrictions on using custom `name` and `value` pairs making `props` an excellent place to do extension of the OSCAL model to meet proprietary use cases. More information on the use of `props` is provided in the [Props and Links tutorial](/learn/tutorials/extensions/#props).
+The `props` object array provides any number of key-value pairing to provide additional information alongside the well-defined fields of the Metadata Section. Some common use cases include labels, sorting tags, and classification. There are no restrictions on using custom `name` and `value` pairs making `props` an excellent place to do extension of the OSCAL model to meet proprietary use cases. 
+
+{{% callout note %}}
+More information on the use of `props` is provided in the [Props and Links tutorial](/learn/tutorials/extensions/#props).
+{{% /callout %}}
 
 For this example, we will create a `props` array to mark an OSCAL document with a [Traffic Light Protocol (TLP)](https://en.wikipedia.org/wiki/Traffic_Light_Protocol) classification.
 
@@ -465,7 +476,11 @@ The `name` field is the key, and the `value` field is the value. Together they f
 
 {{% /tab %}}
 {{% tab %}}
-The `props` array provides any number of key-value pairings to provide additional information alongside the well-defined fields of the Metadata Section. Some common use cases include labels, sorting tags, and classification. There are no restrictions on using custom `name` and `value` pairs making `prop` an excellent place to do extension of the OSCAL model to meet proprietary use cases. More information on the use of `props` is provided in the [Props and Links tutorial](/learn/tutorials/extensions/#props).
+The `props` array provides any number of key-value pairings to provide additional information alongside the well-defined fields of the Metadata Section. Some common use cases include labels, sorting tags, and classification. There are no restrictions on using custom `name` and `value` pairs making `prop` an excellent place to do extension of the OSCAL model to meet proprietary use cases. 
+
+{{% callout note %}}
+More information on the use of `props` is provided in the [Props and Links tutorial](/learn/tutorials/extensions/#props).
+{{% /callout %}}
 
 For this example, we will create a `props` to mark an OSCAL document with a [Traffic Light Protocol (TLP)](https://en.wikipedia.org/wiki/Traffic_Light_Protocol) classification.
 
@@ -486,12 +501,17 @@ The `name` field is the key, and the `value` field is the value. Together they f
 
 {{< tabs XML JSON YAML >}}
 {{% tab %}}
-Alongside the `<prop>` element, `<link>` is way of providing additional information in the Metadata section that is not covered by the other elements. Each `<link>` must contain a single `@href` attribute, which contains a resolvable URI. Each `<link>` should also include a `@rel` attribute, which describes the type of relationship provided by the `@href`.  The [Props and Links tutorial](/learn/tutorials/extensions/#links) provides comprehensive examples of how to implement a `<link>`.
+Alongside the `<prop>` element, `<link>` is way of providing additional information in the Metadata section that is not covered by the other elements. Each `<link>` must contain a single `@href` attribute, which contains a resolvable URI. Each `<link>` should also include a `@rel` attribute, which describes the type of relationship provided by the `@href`.  
+
+{{% callout note %}}
+The [Props and Links tutorial](/learn/tutorials/extensions/#links) provides comprehensive examples of how to implement a `<link>`.
+{{% /callout %}}
 
 For this example, we will create a "latest-version" link, which provides a static link to the latest version of this Document Series. By pointing to a static URL, but updating the contents of that URL as the document is updated, any user that has an old version of the document can quickly and easily update.
 
 {{< highlight xml "linenos=table" >}}
-<link rel="latest-version" href="https://www.examplecompany.com/catalog/exampleoscalcatalog/latest"/>
+<link rel="latest-version"
+      href="https://www.examplecompany.com/catalog/exampleoscalcatalog/latest"/>
 {{< /highlight >}}
 
 The "predecessor-version" and "successor-version" links could be used in tandem with the above to create a navigable web of document versions.
@@ -501,7 +521,11 @@ By using other custom `@rel` values, any relevant or related resource can be des
 {{% /tab %}}
 
 {{% tab %}}
-Alongside the `props` array, the `links` array is a way of providing additional information in the Metadata section that is not covered by the other fields. Each object inside the `links` array must contain a single `href` field, which contains a resolvable URI. Each object should also include a `rel` field, which describes the type of relationship provided by the `href`. The [Props and Links tutorial](/learn/tutorials/extensions/#links) provides comprehensive examples of how to implement a `link`.
+Alongside the `props` array, the `links` array is a way of providing additional information in the Metadata section that is not covered by the other fields. Each object inside the `links` array must contain a single `href` field, which contains a resolvable URI. Each object should also include a `rel` field, which describes the type of relationship provided by the `href`. 
+
+{{% callout note %}}
+The [Props and Links tutorial](/learn/tutorials/extensions/#links) provides comprehensive examples of how to implement a `link`.
+{{% /callout %}}
 
 For this example, we will create a "latest-version" link, which provides a static link to the latest version of this Document Series. By pointing to a static URL, but updating the contents of that URL as the document is updated, any user that has an old version of the document can quickly and easily update.
 
@@ -523,7 +547,11 @@ By using other custom `rel` values, any relevant or related resource can be desc
 {{% /tab %}}
 
 {{% tab %}}
-Alongside the `props` array, the `links` array is way of providing additional information in the Metadata section that is not covered by the other fields. Each object inside the `links` array must contain a single `href` field, which contains a resolvable URI. Each object should also include a `rel` field, which describes the type of relationship provided by the `href`. The [Props and Links tutorial](/learn/tutorials/extensions/#links) provides comprehensive examples of how to implement a `link`.
+Alongside the `props` array, the `links` array is way of providing additional information in the Metadata section that is not covered by the other fields. Each object inside the `links` array must contain a single `href` field, which contains a resolvable URI. Each object should also include a `rel` field, which describes the type of relationship provided by the `href`. 
+
+{{% callout note %}}
+The [Props and Links tutorial](/learn/tutorials/extensions/#links) provides comprehensive examples of how to implement a `link`.
+{{% /callout %}}
 
 For this example, we will create a "latest-version" link, which provides a static link to the latest version of this Document Series. By pointing to a static URL, but updating the contents of that URL as the document is updated, any user that has an old version of the document can quickly and easily update.
 
@@ -620,7 +648,8 @@ Other roles can be locally defined by the content creator.
       <oscal-version>1.0.0</oscal-version>
       <document-id scheme="https://www.doi.org/">10.1000/182</document-id>
       <prop name="marking" class="TrafficLightProtocol" value="red"/>
-      <link rel="latest-version" href="https://www.examplecompany.com/catalog/exampleoscalcatalog/latest"/>
+      <link rel="latest-version"
+        href="https://www.examplecompany.com/catalog/exampleoscalcatalog/latest"/>
       <party uuid="15d2e37c-0452-4695-9c6a-ddc1ff15397b" type="organization">
         <name>Example Company</name>
       </party>
