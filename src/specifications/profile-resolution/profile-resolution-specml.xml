@@ -88,7 +88,7 @@ Standing list of general TODO:
           edited, into a (nominally) finished or ready set of control requirements, a profile makes
           it easier to codify and preserve even very incidental or temporary local revisions of a
           control catalog. Once expressed as a profile in OSCAL format, a set of amendments to a
-          catalog can be managed entirely separately and independently from the catalog. Because a
+          catalog (also known as "tailoring") can be managed entirely separately and independently from the catalog. Because a
           conformant processor can always create the customized catalog by resolving the profile
           against its sources (executing the transformation described in this document), the profile
           can also be examined and used as a proxy for that catalog for other purposes. The
@@ -268,7 +268,7 @@ Standing list of general TODO:
           feasible for an implementation to use no intermediate representation, and to directly and
           iteratively build the output. As long as all processing and output requirements are satisfied, any
           approach is allowed. With that said, the specification has been laid out to aid in
-          implementation by providing a firm organization structure.</p>
+          implementation by providing a clear organization as a sequence of distinct operations.</p>
     </section>
     <section id="intermediate">
       <head>The Intermediate and Implementation Guidance</head>
@@ -309,15 +309,15 @@ Standing list of general TODO:
       <li>
         <p>
           <term>merge</term> - designates the rules for how controls will be organized (ordered
-          and/or grouped) and merged (fixing conflicts or ambiguities) in the result catalog.
-          Optionally controlled by the <src>merge</src> directive in source profiles; if none are
+          and/or grouped) and merged (addressing conflicts or ambiguities) in the result catalog.
+          Controlled by the <src>merge</src> directive in source profiles; if none are
           included, default merge rules are used;</p>
       </li>
       <li>
         <p>
           <term>modify</term> - indicates how controls and their parameters in the underlying
           catalog are to be altered, edited, amended or added in the final result catalog. Logical
-          evaluation and parameter constraints provide advanced processing. Optionally controlled by
+          evaluation and parameter constraints provide advanced processing. Controlled by
           the <src>modify</src> directive in source profiles. If a <src>modify</src> directive is
           not provided, no changes will be made to the controls that have been imported/merged. </p>
       </li>
@@ -357,13 +357,28 @@ profile:
       include-controls: ${{ list of selected controls }}
     - href: "../../NIST_SP-800-53_rev5_catalog.yaml"
       include-controls: ${{ list of selected controls }} ]]></tagging>
-      <!--TODO: Add Internal example-->
+
+
+
+    <p>While an internal reference appears as below (see <xref rid="internalref"/>
+): </p>
+    <tagging whose="source_profile">
+      <![CDATA[
+profile:
+  uuid: ~~~
+  metadata: ~~~
+  imports:
+    - href: #80052rev4
+      include-controls: ${{ list of selected controls }}
+    - href: #80052rev5
+      include-controls: ${{ list of selected controls }} ]]></tagging>
+    <!--TODO: Add Internal example-->
     <p>All import directives will contain either <src>include-all: ~</src> or
       <src>include-controls</src>. These directives indicate which controls from the imported
         document are explicitly selected <xref rid="select-phase"/>
 .</p>
-    <p>The following section contains requirements for processing the &quot;import&quot; child of a source
-        profile.</p>
+    <p>The following section contains requirements for processing the <source>import</source> child of a source <source>profile</source>
+    </p>
     <section id="importhrefs">
       <head>Import href Requirements</head>
       <section id="resolving-uris">
@@ -510,7 +525,7 @@ intermediate:
             catalog Z again to acquire other controls not included in profile B, or in an original
             form unmodified by profile B.</p>
       </section>
-          <section id="mapping">      <!-- TODO: Remove generic definition, Add below types:
+      <section id="mapping">        <!-- TODO: Remove generic definition, Add below types:
       mapping:
         control
         group
@@ -518,37 +533,37 @@ intermediate:
         role 
         part 
        -->
-      <head>Mapping Controls</head>
-      <p>The optional &quot;mapping&quot; child of a given &quot;import&quot; provides a simple ID remapping for
+        <head>Mapping Controls</head>
+        <p>The optional <source>mapping</source> child of a given <source>import</source> provides a simple ID remapping for
           objects included from that specific import. This provides the means for profile authors to
           proactively avoid clashing IDs of controls and other objects. </p>
-      <p>The Mapping section consists of 5 optional subsections, each covering a particular type
+        <p>The Mapping section consists of 5 optional subsections, each covering a particular type
           of object. Each subsection is a list of ID mappings to be applied for objects that are the
           parent object type.</p>
-      <p>When encountering a given mapping instruction, processors:</p>
-      <ul>
-        <li>
-          <p>MUST locate the included object in the intermediate whose distinctive ID matches the
-              value of the &quot;from&quot; object and whose object type is the same as the name as the
+        <p>When encountering a given mapping instruction, processors:</p>
+        <ul>
+          <li>
+            <p>MUST locate the included object in the intermediate whose distinctive ID matches the
+              value of the <source>from</source> object and whose object type is the same as the name as the
               parent. If none is found, the processor SHOULD provide a warning, but MAY continue
               processing. In the case there are more than one included objects of the specified type
               with the same distinctive ID, behavior is unspecified, as this means the source
               catalog was malformed.</p>
-        </li>
-        <li>
-          <p>MUST change the distinctive ID of that object to be equal to the value of the &quot;to&quot;
+          </li>
+          <li>
+            <p>MUST change the distinctive ID of that object to be equal to the value of the <source>to</source>
               object.</p>
-        </li>
-        <li>
-          <p>MUST update all references to the old ID, allowing the new ID to be used in subsequent profile sections.</p>
-        </li>
-      </ul>
-      <p>Since mapping is a self contained process inside each import, the rest of this
+          </li>
+          <li>
+            <p>MUST update all references to the old ID, allowing the new ID to be used in subsequent profile sections.</p>
+          </li>
+        </ul>
+        <p>Since mapping is a self contained process inside each import, the rest of this
           specification will continue to reference IDs with the assumption that mapping has already
           been applied if it was present. Since mapping is most commonly used to avoid clashing IDs,
           processors should take care to not handle duplicate IDs until after mapping is
           complete.</p>
-    </section>
+      </section>
     </section>
     <section id="select-phase">
       <head>Including Controls</head>
@@ -559,7 +574,8 @@ intermediate:
           to other circumstances, but that have not been directly referenced by the inclusion directives. </p>
       <p>It is REQUIRED that implementations track which objects are explicitly included vs
           implicitly included as the intermediate is built out. This information is required to be
-          used during the pruning process <xref rid="cleanup"/>. </p>
+          used during the pruning process <xref rid="cleanup"/>
+. </p>
       <section id="include-all">
         <head>include-all</head>
         <p>When an import provides the <src>include-all</src> directive, all controls in the
@@ -584,7 +600,7 @@ include-controls:
   - with-ids:
     - id: ac-1
     - id: ac-2]]></tagging>
-        <p>Using &quot;with-id&quot;, all non-control, non-parameter, children of included controls MUST also be explicitly
+        <p>Using <source>with-id</source>, all non-control, non-parameter, children of included controls MUST also be explicitly
             included.</p>
       </section>
       <section id="include-by-match">
@@ -603,7 +619,7 @@ include-controls:
 include-controls:
   - matching:
     - pattern: "ac*" ]]></tagging>
-        <p>Using &quot;matching&quot;, all non-control children of included controls MUST also be explicitly
+        <p>Using <source>matching</source>, all non-control children of included controls MUST also be explicitly
             included.</p>
       </section>
       <section id="include-child-controls">
@@ -650,7 +666,7 @@ include-controls:
 ). This applies to both explicit and
             implicit inclusion.</p>
         <p>Note that this requirement only applies to controls included within the context of a
-            single import. Controls with duplicate IDs included with a different &quot;import&quot; are not
+            single import. Controls with duplicate IDs included with a different <source>import</source> are not
             discarded.</p>
       </section>
       <section id="import-groups">
@@ -727,7 +743,7 @@ include-controls:
         directive.</p>
     <p>It is RECOMMENDED that tools apply the &quot;combine&quot; directive to the intermediate generated by
         the Import phase first, then apply the &quot;structuring&quot; directive.</p>
-    <p>The following section contains requirements for processing the &quot;merge&quot; child of a source
+    <p>The following section contains requirements for processing the <source>merge</source> child of a source
         profile.</p>
     <section id="merge-combine">
       <head>The &quot;combine&quot; Directive</head>
@@ -871,7 +887,9 @@ intermediate:
         </mapping>
       </section>
       <section id="merge-combination-rule">
-        <head>&quot;method:merge&quot;</head>
+        <head>
+          <source>method:merge</source>
+        </head>
         <p>Unspecified behaviour.</p>
       </section>
     </section>
@@ -879,7 +897,7 @@ intermediate:
       <head>The &quot;structuring&quot; Directive</head>
       <p>This section describes how a profile may dictate the body of the target
         <tgt>catalog</tgt>, apart from its <tgt>metadata</tgt> or <tgt>back-matter</tgt>.
-          Optionally, one of three &quot;structuring&quot; directives can be included as a child of &quot;merge&quot;:
+          Optionally, one of three &quot;structuring&quot; directives can be included as a child of <source>merge</source>:
         <src>flat</src>,        <src>as-is</src> and <src>custom</src>. When one of these appears with
           a value of &quot;true&quot;, it is the selected structuring directive. If more than one appears with
           a value of &quot;true&quot;, processors MUST generate an error and cease processing. Processing
@@ -1036,30 +1054,30 @@ intermediate:
             output catalog.</p>
         <section id="custom-groups">
           <head>Creating Custom Groups</head>
-          <p>A <src>group</src> object given under &quot;custom&quot; MUST result in a <tgt>group</tgt> with
-              the exact same content (excluding &quot;insert-controls&quot;) in the target catalog. </p>
+          <p>A <src>group</src> object given under <source>custom</source> MUST result in a <tgt>group</tgt> with
+              the exact same content (excluding <source>insert-controls</source>) in the target catalog. </p>
           <p>If the ID of the group matches the ID of a group that has been included during the
               import phase, all contents inside the group, including <src>title</src>,
             <src>param</src>,            <src>prop</src> and <src>part</src> objects MUST be copied into
               the target, appearing in the same order as in the source.</p>
-          <p>Note that groups defined in &quot;custom&quot; may vary from fully featured to minimally
+          <p>Note that groups defined in <source>custom</source> may vary from fully featured to minimally
               instantiated. This includes arbitrary nesting of such groups inside of one another. No
               groups other than those explicitly declared should appear in the output catalog. </p>
         </section>
         <section id="custom-selection">
           <head>Inserting Controls</head>
-          <p>The &quot;insert-controls&quot; directive may appear anywhere under &quot;custom&quot;, whether as a
+          <p>The <source>insert-controls</source> directive may appear anywhere under <source>custom</source>, whether as a
               direct child or inside any of the defined groups. Inside insert-controls,
-              &quot;include-controls&quot; and &quot;include-all&quot; from the Import Phase <xref rid="import"/>
+            <source>include-controls</source> and <source>include-all</source> from the Import Phase <xref rid="import"/>
  are
               used with the same basic behavior to configure which controls are selected and
               inserted at the current location.</p>
           <p>In order to provide clarity, controls that match the various conditions of these
-              inclusion directives inside the &quot;custom&quot; object will be referred to as &quot;selected&quot;
+              inclusion directives inside the <source>custom</source> object will be referred to as &quot;selected&quot;
               instead of &quot;included&quot;. There is no concept of &quot;explicit&quot; vs &quot;implicit&quot; when using
-              these directives in &quot;custom&quot;. Only directly selected controls will appear in the
+              these directives in <source>custom</source>. Only directly selected controls will appear in the
               target catalog.</p>
-          <p>A &quot;insert-controls&quot; with an &quot;include-controls&quot; child results in the following
+          <p>A <source>insert-controls</source> with an <source>include-controls</source> child results in the following
               behavior: </p>
           <ul>
             <li>
@@ -1076,10 +1094,11 @@ intermediate:
                   given in the same order as they appear in the input control selection(s).</p>
             </li>
           </ul>
-          <p>An &quot;insert-controls&quot; with an &quot;include-all&quot; child results in all explicitly included
+          <p>An <source>insert-controls</source> with an <source>include-all</source> child results in all explicitly included
               controls being selected and inserted. They are given in the same order as they appear
               in the input control selection(s).</p>
-          <p>&quot;insert-controls&quot; can also indicate the order that the selected controls are to be
+          <p>
+            <source>insert-controls</source> can also indicate the order that the selected controls are to be
               emitted in the result catalog using an <src>order</src> child. Three values MUST be
               supported and handled as specified below:</p>
           <ul>
@@ -1112,7 +1131,7 @@ intermediate:
       <p>After the merge phase, the intermediate should now closely resemble the content and
           structure of the final output catalog. Controls and groups have been included, remapped,
           de-duplicated, then placed into their final location within the output&apos;s structure. If
-          using the &quot;custom&quot; structuring directive, tools MAY discard unused controls and groups. If
+          using the <source>custom</source> structuring directive, tools MAY discard unused (unreferenced and unselected) controls and groups. If
           using &quot;flat&quot; or &quot;as-is&quot;, there is still an opportunity for implicitly included controls or
           groups to become referenced; and therefore, not eligible for pruning <xref rid="cleanup"/>
 . </p>
@@ -1125,13 +1144,14 @@ intermediate:
     <p>There are two ways profiles may further modify the results of profile resolution: setting
         parameters, and altering controls. These activities are defined as two child objects inside
         the third step of profile resolution, the Modify Phase. </p>
-    <p>The following section contains requirements for processing the &quot;modify&quot; child of a source
+    <p>The following section contains requirements for processing the <source>modify</source> child of a source
         profile.</p>
     <section id="param-setting">
       <head>Setting Parameters</head>
       <p>Modification of parameter settings is indicated using the <src>set-parameter</src> object
-          under &quot;modify&quot;. For this section, a given &quot;set-parameter&quot; object will be referred to as
-          the &quot;source&quot;.</p>
+          under <source>modify</source>. For this section, a given <source>set-parameter</source> object will be referred to as
+          the <source>source</source>.
+      </p>
       <p>Profile Resolution Tools MUST adhere to the following requirements for processing
           &quot;set-parameter&quot;:</p>
       <ul>
@@ -1172,7 +1192,7 @@ intermediate:
             There are two forms of alteration: with implicit and explicit bindings.</p>
         <section id="add-to-control">
           <head>Implicit binding</head>
-          <p>An <src>add</src> directive with no <src>id-ref</src> is taken to apply to the
+          <p>An <src>add</src> directive with no <src>by-id</src> is taken to apply to the
               control as a whole. Its <src>position</src> may be either of two values:
             <code>starting</code> and <code>ending</code>.
           </p>
@@ -1184,7 +1204,7 @@ intermediate:
                 prop, link, part, control</code>. Subsequent to adding new objects, the control
               contents are sorted to appear in the required order. As a consequence, a new
             <tgt>prop</tgt> appears after any <src>prop</src> already in the control, when
-            <src>position</src> is <code>ending</code>, or not given,, or before any
+            <src>position</src> is <code>ending</code>, or not given, or before any
             <src>prop</src> in the control when <src>position</src> is
             <code>starting</code>.
           </p>
@@ -1306,7 +1326,7 @@ control:
             </p>
             <tagging whose="source_catalog">
                 YAML Example
-                                                                                                  <!--TODO &lt;control id="a1"> &lt;title>Basic
+                                                                                                                                                          <!--TODO &lt;control id="a1"> &lt;title>Basic
                 precautions&lt;/title> &lt;prop name="status" value="ready"/> &lt;part id="a1.b" name="recommendations"> &lt;part id="a1.b1">&lt;p>Collect recycling for
                 pickup.&lt;/p>&lt;/part> &lt;part id="a1.b2">&lt;p>Sweep surfaces free of
                 dust.&lt;/p>&lt;/part> &lt;/part> &lt;/control>--></tagging>
@@ -1314,13 +1334,13 @@ control:
               <code>a1.b1</code> as its target.</p>
             <tagging whose="source_profile">YAML Example
                 
-                                                                                                  <!--TODO &lt;alter control-id="a1"> &lt;add position="after" ref-id="a1.b1"> &lt;prop name="basis" value="allocated"/> &lt;part name="caution">&lt;p>Unavailable on weekends.&lt;/p>&lt;/part> &lt;/add>
+                                                                                                                                                          <!--TODO &lt;alter control-id="a1"> &lt;add position="after" ref-id="a1.b1"> &lt;prop name="basis" value="allocated"/> &lt;part name="caution">&lt;p>Unavailable on weekends.&lt;/p>&lt;/part> &lt;/add>
                 &lt;/alter>
                 -->            </tagging>
             <tagging whose="target_catalog">
                 YAML Example
                 
-                                                                                                  <!-- TODO &lt;control id="a1"> &lt;title>Basic
+                                                                                                                                                          <!-- TODO &lt;control id="a1"> &lt;title>Basic
                 precautions&lt;/title> &lt;prop name="status" value="ready"/> &lt;part id="a1.b" name="recommendations"> &lt;part id="a1.b1">&lt;p>Collect recycling for
                 pickup.&lt;/p>&lt;/part> &lt;prop name="basis" value="allocated"/> &lt;part name="caution">&lt;p>Unavailable on weekends.&lt;/p>&lt;/part> &lt;part id="a1.b2">&lt;p>Sweep surfaces free of dust.&lt;/p>&lt;/part> &lt;/part>
                 &lt;/control> --></tagging>
@@ -1362,7 +1382,7 @@ control:
         <ul>
           <li>
             <p>
-              <src>id-ref</src>, like <src>add:id-ref</src>, matches an object by its
+              <src>by-id</src>, like <src>add:by-id</src>, matches an object by its
               <src>id</src> value.</p>
             <p>Because <src>id</src> values are unique, the remove directive will remove only a
                 single object. Ordinarily this would not combined with other identifiers for
@@ -1461,8 +1481,7 @@ control:
         </li>
         <li>
           <p>The value of metadata:version in the target MUST be set with a string that identifies
-              the version of this document. This SHOULD differ from the version of the source
-              profile, and should be used to track updates to this specific output document. </p>
+              the version of this document. This SHOULD be used to track updates to this specific output document. </p>
         </li>
         <li>
           <p>The value of metadata:oscal-version in the target MUST be set with a string that
@@ -1587,7 +1606,7 @@ control:
       <ul>
         <li>
           <p>.
-                                                                                  <!-- TODO: Add links to OSCAL conversion libraries, format guidance pages, etc. --></p>
+                                                                                                                                  <!-- TODO: Add links to OSCAL conversion libraries, format guidance pages, etc. --></p>
         </li>
       </ul>
       <p>The following sections provide additional requirements and guidance for each format.</p>
