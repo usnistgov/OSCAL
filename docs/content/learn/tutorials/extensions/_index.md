@@ -32,7 +32,11 @@ The `prop` property in OSCAL is used to extend core models when 1) there is a ne
 
 ### Using an Existing Prop
 
-This sections covers the basic use of a `prop` leveraging all of its attributes.  The OSCAL SSP [metadata](/concepts/layer/overview/#metadata-overview) allows for zero or more `location` data items, each containing zero or more `props`.  The [Metadata Tutorial](/learn/tutorials/metadata/) provides in-depth description and walk-through examples of creating OSCAL metadata.
+This sections covers the basic use of a `prop` leveraging all of its attributes.  The OSCAL SSP [metadata](/concepts/layer/overview/#metadata-overview) allows for zero or more `location` data items, each containing zero or more `props`.  
+
+{{% callout note %}}
+The [Metadata Tutorial](/learn/tutorials/metadata/) provides in-depth description and walk-through examples of creating OSCAL metadata.
+{{% /callout %}}
 
 In this example, an organization needs to document their primary and alternate data center locations.  This is achieved by specifying the `name`, `value`, and `class` of the properties for each location.
 
@@ -144,7 +148,13 @@ In the `props` object array, the prop object's `name` property is set to "type" 
 
 One of the most common scenarios for extending an OSCAL `prop` is when adding values to an existing OSCAL property. Again, if using an OSCAL defined `prop`, the `ns` namespace attribute does not need to be specified since the default OSCAL namespace applies.  
 
-The following example demonstrates how to extend a SSP metadata location "type" `prop` with an additional value. Again, for a detailed overview of how to implement metadata, please refer to the [Metadata Tutorial](/learn/tutorials/metadata/). Currently, the only OSCAL defined value for the SSP metadata location `prop` is "data-center".  However, because this particular `prop` is defined with an `allow-other=yes` attribute (in Metaschema), additional "type" values can be specified as shown below on line #10.
+The following example demonstrates how to extend a SSP metadata location "type" `prop` with an additional value.
+
+{{% callout note %}}
+Again, for a detailed overview of how to implement metadata, please refer to the [Metadata Tutorial](/learn/tutorials/metadata/).
+{{% /callout %}}
+
+Currently, the only OSCAL defined value for the SSP metadata location `prop` is "data-center".  However, because this particular `prop` is defined with an `allow-other=yes` attribute (in Metaschema), additional "type" values can be specified as shown below on line #10.
 
 {{< tabs XML JSON YAML >}}
 
@@ -231,7 +241,7 @@ The `class` property was not specified but could be added if there was a need fo
 
 ### Creating a New Prop
 
-The previous examples leveraged an existing OSCAL `prop` to document location details (e.g., location "type") within an SSP.  But what if there were other pertinent location details that needed to be captured as well? For example, some government organizations with distributed global physical locations may want to use [Geographic Locator Codes (GLC)](https://www.gsa.gov/reference/geographic-locator-codes-glcs-overview) to facilitate interchange of location data with other government agencies.  The example below demonstrates how this could be documented by specifying a new GLC `prop` property (see lines #11-13).
+The previous examples leveraged an existing OSCAL `prop` to document location details (e.g., location "type") within an SSP.  But what if there were other pertinent location details that needed to be captured as well? For example, some government organizations with distributed global physical locations may want to use [Geographic Locator Codes (GLC)](https://www.gsa.gov/reference/geographic-locator-codes-glcs-overview) to facilitate interchange of location data with other government agencies.  The example below demonstrates how this could be documented by specifying a new GLC `prop` property (see lines #15-33).
 
 {{< tabs XML JSON YAML >}}
 
@@ -246,10 +256,29 @@ The previous examples leveraged an existing OSCAL `prop` to document location de
     <oscal-version>1.0.0</oscal-version>
     <location uuid="1f190601-2e87-4787-a50a-d08b78e4a980">
       <title>....</title>
-      <prop name="type" value="security-operations-center" class="regional">...</prop>
-      <prop name="glc" ns="http://federal-agency.gov/ns/oscal" value="11" class="state-code">...</prop>
-      <prop name="glc" ns="http://federal-agency.gov/ns/oscal" value="0010" class="city-code">...</prop>
-      <prop name="glc" ns="http://federal-agency.gov/ns/oscal" value="840" class="country-code">...</prop>
+      <prop name="type"
+            value="security-operations-center"
+            class="regional">
+        ...
+      </prop>
+      <prop name="glc"
+            ns="http://federal-agency.gov/ns/oscal"
+            value="11"
+            class="state-code">
+        ...
+      </prop>
+      <prop name="glc"
+            ns="http://federal-agency.gov/ns/oscal"
+            value="0010"
+            class="city-code">
+        ...
+      </prop>
+      <prop name="glc"
+            ns="http://federal-agency.gov/ns/oscal"
+            value="840"
+            class="country-code">
+        ...
+      </prop>
     </location>
   </metadata>
   <import-profile>...</import-profile>
@@ -403,16 +432,19 @@ Organizations may need their documentation (e.g., SSP) to reference external ite
 {{% tab %}}
 {{< highlight xml "linenos=table" >}}
 <?xml version="1.0" encoding="UTF-8"?>
-<system-security-plan uuid="">
+<system-security-plan uuid="ce16b9af-6853-4abe-9e27-b79d034c0adc">
   <metadata>
     <title>OSCAL SSP Component Link Example</title>
     <last-modified>2001-12-17T09:30:47Z</last-modified>
     <version>20210707</version>
     <oscal-version>1.0.0</oscal-version>
-    <link href="https://www.dhs.gov/homeland-security-presidential-directive-12" rel="reference">
+    <link href="https://www.dhs.gov/homeland-security-presidential-directive-12"
+          rel="reference">
       <text>HSPD-12</text>
     </link>
-    <link href="http://federal-agency.gov/img/official-agency-logo.png" rel="logo" media-type="image/png" />
+    <link href="http://federal-agency.gov/img/official-agency-logo.png"
+          rel="logo"
+          media-type="image/png" />
   </metadata>
   <import-profile>...</import-profile>
   <system-characteristics>...</system-characteristics>
@@ -432,6 +464,7 @@ The next section demonstrates how to reference back matter resources with links.
 {{< highlight json "linenos=table" >}}
 {
   "system-security-plan": {
+    "uuid": "ce16b9af-6853-4abe-9e27-b79d034c0adc",
     "metadata": {
       "title": "OSCAL SSP Component Link Example",
       "last-modified": "2001-12-17T09:30:47Z",
@@ -468,6 +501,7 @@ The next section demonstrates how to reference back matter resources with links.
 {{% tab %}}
 {{< highlight yaml "linenos=table" >}}
 system-security-plan:
+  uuid: ce16b9af-6853-4abe-9e27-b79d034c0adc
   metadata:
     title: OSCAL SSP Component Link Example
     last-modified: '2001-12-17T09:30:47Z'
@@ -507,13 +541,14 @@ In the previous section, multiple `links` would need to be created in the SSP me
 {{% tab %}}
 {{< highlight xml "linenos=table" >}}
 <?xml version="1.0" encoding="UTF-8"?>
-<system-security-plan uuid="">
+<system-security-plan uuid="ce16b9af-6853-4abe-9e27-b79d034c0adc">
   <metadata>
     <title>OSCAL SSP Link to Back Matter Resource Example</title>
     <last-modified>2001-12-17T09:30:47Z</last-modified>
     <version>20210707</version>
-    <oscal-version>1.0.0</oscal-version>""
-    <link href="#a7584118-3d2d-46c8-b388-df747309c0fa" rel="reference">
+    <oscal-version>1.0.0</oscal-version>
+    <link href="#a7584118-3d2d-46c8-b388-df747309c0fa"
+          rel="reference">
       <text>Applicable Laws and Regulations, Standards, and Guides</text>
     </link>
   </metadata>
@@ -522,9 +557,14 @@ In the previous section, multiple `links` would need to be created in the SSP me
   <control-implementation>...</control-implementation>
   <back-matter>
     <resource uuid="a7584118-3d2d-46c8-b388-df747309c0fa">
-      <rlink href="https://www.dhs.gov/homeland-security-presidential-directive-12" />
-      <rlink href="https://csrc.nist.gov/csrc/media/publications/fips/199/final/documents/fips-pub-199-final.pdf" media-type="application/pdf" />
-      <rlink href="/security/standards/IT-Rules-of-Behavior.docx" media-type="application/msword">
+      <rlink
+          href="https://www.dhs.gov/homeland-security-presidential-directive-12" />
+      <rlink
+          href="https://csrc.nist.gov/csrc/media/publications/fips/199/final/documents/fips-pub-199-final.pdf"
+          media-type="application/pdf" />
+      <rlink
+          href="/security/standards/IT-Rules-of-Behavior.docx"
+          media-type="application/msword" />
     </resource>
   </back-matter>
 </system-security-plan>
@@ -538,6 +578,7 @@ Notice that in this example, the `<link>` element on line #8 only provides a fra
 {{< highlight json "linenos=table" >}}
 {
   "system-security-plan": {
+    "uuid": "ce16b9af-6853-4abe-9e27-b79d034c0adc",
     "metadata": {
       "title": "OSCAL SSP Link to Back Matter Resource Example",
       "last-modified": "2001-12-17T09:30:47Z",
@@ -581,6 +622,7 @@ Notice that in this example, the `links` object array on line #8 only provides a
 {{% tab %}}
 {{< highlight yaml "linenos=table" >}}
 system-security-plan:
+  uuid: ce16b9af-6853-4abe-9e27-b79d034c0adc
   metadata:
     title: OSCAL SSP Link to Back Matter Resource Example
     last-modified: '2001-12-17T09:30:47Z'
