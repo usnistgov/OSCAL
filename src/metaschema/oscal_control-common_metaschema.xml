@@ -23,19 +23,9 @@
                         <!-- This is an id because the idenfier is intended to be human-readable. -->
                         <formal-name>Part Identifier</formal-name>
                         <!-- Identifier Declaration -->
-<<<<<<< HEAD
                         <description>A <em>human-oriented</em>, <em>locally unique</em> identifier with <em>cross-instance</em> scope that can be used to reference this defined part elsewhere in this and other OSCAL instances. When referenced from another OSCAL instance, this identifier must be referenced in the context of the containing resource (e.g., import-profile). This id should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
                         <remarks>
                             <p>See the <a href="/concepts/identifier-use/#human-oriented">Concepts - Identifier Use</a> page for additional information regarding this <em>human-oriented</em> identifier's uniqueness and scope.</p>
-=======
-                        <description>A <em>human-oriented</em>, <em>locally unique</em> identifier with <em>cross-instance</em> scope that can be used to reference this defined part elsewhere in this and other OSCAL instances. This id should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
-                        <remarks>
-                                <!-- token -->
-                                <p>Type: human-oriented</p>
-                                <p>Uniqueness: locally unique</p>
-                                <p>Scope: cross-instance - provides an identifier that can be used to refer to this part in this or other OSCAL instances</p>
-                                <p>Consistency: per-subject</p>
->>>>>>> a25eadc7 (common control metaschema updates)
                         </remarks>
                 </define-flag>
                 <define-flag name="name" as-type="token" required="yes">
@@ -137,19 +127,9 @@
                         <!-- This is an id because the idenfier is intended to be human-readable. -->
                         <formal-name>Parameter Identifier</formal-name>
                         <!-- Identifier Declaration -->
-<<<<<<< HEAD
                         <description>A <em>human-oriented</em>, <em>locally unique</em> identifier with <em>cross-instance</em> scope that can be used to reference this defined parameter elsewhere in this or other OSCAL instances. When referenced from another OSCAL instance, this identifier must be referenced in the context of the containing resource (e.g., import-profile). This id should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
                         <remarks>
                                 <p>See the <a href="/concepts/identifier-use/#human-oriented">Concepts - Identifier Use</a> page for additional information regarding this <em>human-oriented</em> identifier's uniqueness and scope.</p>
-=======
-                        <description>A <em>human-oriented</em>, <em>locally unique</em> identifier with <em>cross-instance</em> scope that can be used to reference this defined parameter elsewhere in this or other OSCAL instances. This id should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
-                        <remarks>
-                                <!-- token -->
-                                <p>Type: human-oriented</p>
-                                <p>Uniqueness: locally unique</p>
-                                <p>Scope: cross-instance - provides an identifier that can be used to refer to this part in this or other OSCAL instances</p>
-                                <p>Consistency: per-subject</p>
->>>>>>> a25eadc7 (common control metaschema updates)
                         </remarks>
                 </define-flag>
                 <!-- TODO: What is the semantics of class here? -->
@@ -293,16 +273,9 @@
         <define-flag name="control-id" as-type="token">
                 <formal-name>Control Identifier Reference</formal-name>
                 <!-- Identifier Reference -->
-<<<<<<< HEAD
                 <description>A <em>human-oriented</em> identifier reference to a control with a corresponding <code>id</code> value. When referencing an externally defined <code>control</code>, the <code>Control Identifier Reference</code> must be used in the context of the external / imported OSCAL instance (e.g., uri-reference).</description>
                 <remarks>
                         <p>See the <a href="/concepts/identifier-use/#scope">Concepts - Identifier Use</a> page for additional information about the referenced identifier's scope.</p>
-=======
-                <description>A <em>human-oriented</em> identifier reference to a control with a corresponding <code>id</code> value.</description>
-                <remarks>
-                        <p>Type: human-oriented</p>
-                        <p>Source: cross-instance - References a control identifer defined in this or another OSCAL instance</p>
->>>>>>> a25eadc7 (common control metaschema updates)
                 </remarks>
         </define-flag>
 </METASCHEMA>
