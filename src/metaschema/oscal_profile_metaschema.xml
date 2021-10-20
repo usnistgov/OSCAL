@@ -22,8 +22,17 @@
             <description>Each OSCAL profile is defined by a Profile element</description>
             <root-name>profile</root-name>
             <define-flag name="uuid" as-type="uuid" required="yes">
-                  <formal-name>Catalog Universally Unique Identifier</formal-name>
+                  <formal-name>Profile Universally Unique Identifier</formal-name>
                   <description>A globally unique identifier for this profile instance. This UUID should be changed when this document is revised.</description>
+                  <!-- Identifier Declaration -->
+                  <description>A <em>machine-oriented</em>, <em>globally unique</em> identifier with <em>cross-instance</em> scope that can be used to reference this profile elsewhere in this and other OSCAL instances. This identifier should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same profile across revisions of the document.</description>
+                  <remarks>
+                        <!-- UUID -->
+                        <p>Type: machine-oriented</p>
+                        <p>Uniqueness: globally unique</p>
+                        <p>Scope: cross-instance - provides an identifier that can be used to refer to this profile in this or other OSCAL instances</p>
+                        <p>Consistency: per-subject</p>
+                  </remarks>
             </define-flag>
             <model>
                   <assembly ref="metadata" min-occurs="1"/>
@@ -145,7 +154,15 @@
             <define-flag name="id" as-type="token">
                   <!-- This is an id because the idenfier is assigned and managed externally by humans. -->
                   <formal-name>Group Identifier</formal-name>
-                  <description>A unique identifier for a specific group instance that can be used to reference the group within this and in other OSCAL documents. This identifier's uniqueness is document scoped and is intended to be consistent for the same group across minor revisions of the document.</description>
+                  <!-- Identifier Declaration -->
+                  <description>A <em>human-oriented</em>, <em>locally unique</em> identifier with <em>cross-instance</em> scope that can be used to reference this defined group elsewhere in this or other OSCAL instances. This id should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same group across revisions of the document.</description>
+                  <remarks>
+                        <!-- token -->
+                        <p>Type: human-oriented</p>
+                        <p>Uniqueness: locally unique</p>
+                        <p>Scope: cross-instance - provides an identifier that can be used to refer to this part in this or other OSCAL instances</p>
+                        <p>Consistency: per-subject</p>
+                  </remarks>
             </define-flag>
             <define-flag name="class" as-type="token">
                   <formal-name>Group Class</formal-name>
@@ -196,7 +213,15 @@
                         <define-flag required="yes" name="param-id" as-type="token">
                               <!-- This is an id because the idenfier is assigned and managed by humans. -->
                               <formal-name>Parameter ID</formal-name>
-                              <description>Indicates the value of the 'id' flag on a target parameter; i.e. which parameter to set</description>
+                              <!-- Identifier Declaration -->
+                              <description>A <em>human-oriented</em>, <em>locally unique</em> identifier with <em>cross-instance</em> scope that can be used to reference this defined parameter elsewhere in this or other OSCAL instances. This id should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+                              <remarks>
+                                    <!-- token -->
+                                    <p>Type: human-oriented</p>
+                                    <p>Uniqueness: locally unique</p>
+                                    <p>Scope: cross-instance - provides an identifier that can be used to refer to this part in this or other OSCAL instances</p>
+                                    <p>Consistency: per-subject</p>
+                              </remarks>
                         </define-flag>
                         <define-flag name="class" as-type="token">
                               <formal-name>Parameter Class</formal-name>
