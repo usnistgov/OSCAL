@@ -12,16 +12,16 @@ weight: 10
 
 {{% usa-intro %}}To increase communication with the OSCAL community, the NIST OSCAL team is hosting a one-hour teleconference to discuss OSCAL development.{{% /usa-intro %}}
 
-Note: (1/10/2020) The Bluejeans info below has changed.
+Note: (10/20/2021) The Bluejeans info below has changed.
 
 {{% usa-tag %}}Day and Time{{% /usa-tag %}} Every other Thursday at noon EST/EDT
 
-{{% usa-tag %}}Meeting Link{{% /usa-tag %}} https://bluejeans.com/187858571/0183 ([ICS file](lunch-with-the-devs.ics))
+{{% usa-tag %}}Meeting Link{{% /usa-tag %}} https://bluejeans.com/4483/4483 ([ICS file](lunch-with-the-devs.ics))
 
 {{% usa-tag %}}Meeting Details{{% /usa-tag %}}
 
-Meeting ID: 187 858 571<br>
-Participant Passcode: 0183
+Meeting ID: 304 794 155<br>
+Participant Passcode: 4483
 
 {{% usa-tag %}}Phone Dial-in{{% /usa-tag %}}
 
