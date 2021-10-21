@@ -16,18 +16,7 @@ Note: (1/10/2020) The Bluejeans info below has changed.
 
 {{% usa-tag %}}Day and Time{{% /usa-tag %}} Every other Thursday at noon EST/EDT
 
-{{% usa-tag %}}Meeting Link{{% /usa-tag %}} https://bluejeans.com/187858571/0183 ([ICS file](lunch-with-the-devs.ics))
-
-{{% usa-tag %}}Meeting Details{{% /usa-tag %}}
-
-Meeting ID: 187 858 571<br>
-Participant Passcode: 0183
-
-{{% usa-tag %}}Phone Dial-in{{% /usa-tag %}}
-
-+1.408.317.9254 (US (San Jose))<br>
-+1.408.740.7256 (US (San Jose))<br>
-[Global Numbers](https://www.bluejeans.com/premium-numbers)
+{{% usa-tag %}}Meeting Info{{% /usa-tag %}} Please email [oscal@nist.gov](mailto:oscal@nist.gov) to request the web meeting information.
 
 {{% usa-tag %}}Who Can Attend?{{% /usa-tag %}} Open to all members of the public
 
