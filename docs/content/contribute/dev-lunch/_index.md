@@ -16,7 +16,7 @@ Note: (10/20/2021) The Bluejeans info below has changed.
 
 {{% usa-tag %}}Day and Time{{% /usa-tag %}} Every other Thursday at noon EST/EDT
 
-{{% usa-tag %}}Meeting Link{{% /usa-tag %}} https://bluejeans.com/304 794 155/4483 ([ICS file](lunch-with-the-devs.ics))
+{{% usa-tag %}}Meeting Link{{% /usa-tag %}} [https://bluejeans.com/304794155/4483](https://bluejeans.com/304794155/4483) ([ICS file](lunch-with-the-devs.ics))
 
 {{% usa-tag %}}Meeting Details{{% /usa-tag %}}
 
