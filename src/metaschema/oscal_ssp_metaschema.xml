@@ -226,6 +226,13 @@
                 <description>A <em>human-oriented</em>, <em>globally unique</em> identifier qualified by the given identification <code>system</code> used, such as NIST SP 800-60.  This identifier has <em>cross-instance</em> scope and can be used to reference this system elsewhere in this or other OSCAL instances. This id should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
                 <json-value-key>id</json-value-key>
                 <group-as name="information-type-ids" in-json="ARRAY"/>
+                <remarks>
+                      <!-- string -->
+                      <p>Type: human-oriented</p>
+                      <p>Uniqueness: globally unique</p>
+                      <p>Scope: cross-instance - provides an identifier that can be used to refer to this information system type in this or other OSCAL instances</p>
+                      <p>Consistency: per-subject</p>
+                </remarks>
               </define-field>
             </model>
           </define-assembly>
