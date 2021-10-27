@@ -23,7 +23,6 @@
             <root-name>profile</root-name>
             <define-flag name="uuid" as-type="uuid" required="yes">
                   <formal-name>Profile Universally Unique Identifier</formal-name>
-                  <description>A globally unique identifier for this profile instance. This UUID should be changed when this document is revised.</description>
                   <!-- Identifier Declaration -->
                   <description>A <em>machine-oriented</em>, <em>globally unique</em> identifier with <em>cross-instance</em> scope that can be used to reference this profile elsewhere in this and other OSCAL instances. This identifier should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same profile across revisions of the document.</description>
                   <remarks>

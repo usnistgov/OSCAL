@@ -33,7 +33,15 @@
     <root-name>component-definition</root-name>
     <define-flag name="uuid" as-type="uuid" required="yes">
       <formal-name>Component Definition Universally Unique Identifier</formal-name>
-      <description>A globally unique identifier for this component definition instance. This UUID should be changed when this document is revised.</description>
+      <!-- Identifier Declaration -->
+      <description>A <em>machine-oriented</em>, <em>globally unique</em> identifier with <em>cross-instance</em> scope that can be used to reference this component definition elsewhere in this or other OSCAL instances. This UUID should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+      <remarks>
+            <!-- UUID -->
+            <p>Type: machine-oriented</p>
+            <p>Uniqueness: globally unique</p>
+            <p>Scope: cross-instance - provides an identifier that can be used to refer to this component definition in this or other OSCAL instances</p>
+            <p>Consistency: per-subject</p>
+      </remarks>
     </define-flag>
     <model>
       <assembly ref="metadata" min-occurs="1"/>
@@ -79,7 +87,15 @@
     <description>A defined component that can be part of an implemented system.</description>
     <define-flag name="uuid" as-type="uuid" required="yes">
       <formal-name>Component Identifier</formal-name>
-      <description>The unique identifier for the component. This identifier's uniqueness is document scoped and is intended to be consistent for the same component across minor revisions of the document.</description>
+      <!-- Identifier Declaration -->
+      <description>A <em>machine-oriented</em>, <em>globally unique</em> identifier with <em>cross-instance</em> scope that can be used to reference this component elsewhere in this or other OSCAL instances. This UUID should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+      <remarks>
+            <!-- UUID -->
+            <p>Type: machine-oriented</p>
+            <p>Uniqueness: globally unique</p>
+            <p>Scope: cross-instance - provides an identifier that can be used to refer to this component in this or other OSCAL instances</p>
+            <p>Consistency: per-subject</p>
+      </remarks>
     </define-flag>
     <flag ref="defined-component-type" required="yes">
       <use-name>type</use-name>
@@ -249,7 +265,15 @@
     <description>A grouping of other components and/or capabilities.</description>
     <define-flag required="yes" name="uuid" as-type="uuid">
       <formal-name>Capability Identifier</formal-name>
-      <description>A unique identifier for a capability. This identifier's uniqueness is document scoped and is intended to be consistent for the same capability across minor revisions of the document.</description>
+      <!-- Identifier Declaration -->
+      <description>A <em>machine-oriented</em>, <em>globally unique</em> identifier with <em>cross-instance</em> scope that can be used to reference this capability elsewhere in this or other OSCAL instances. This UUID should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+      <remarks>
+            <!-- UUID -->
+            <p>Type: machine-oriented</p>
+            <p>Uniqueness: globally unique</p>
+            <p>Scope: cross-instance - provides an identifier that can be used to refer to this capability in this or other OSCAL instances</p>
+            <p>Consistency: per-subject</p>
+      </remarks>
     </define-flag>
     <define-flag name="name" as-type="string" required="yes">
       <formal-name>Capability Name</formal-name>
@@ -289,7 +313,13 @@
     <description>TBD</description>
     <define-flag required="yes" name="component-uuid" as-type="uuid">
       <formal-name>Component Reference</formal-name>
-      <description>A reference to a component by its identifier</description>
+      <!-- Identifer Reference -->
+      <description>A <em>machine-oriented</em> identifier reference to a <code>component</code>.</description>
+      <remarks>
+            <!-- UUID -->
+            <p>Type: human-oriented</p>
+            <p>Source: cross-instance - References a component identifer defined in this or other OSCAL instances</p>
+      </remarks>
     </define-flag>
     <model>
       <define-field name="description" as-type="markup-multiline" min-occurs="1" in-xml="WITH_WRAPPER">
@@ -304,7 +334,15 @@
     <description>Defines how the component or capability supports a set of controls.</description>
     <define-flag name="uuid" as-type="uuid" required="yes">
       <formal-name>Control Implementation Set Identifier</formal-name>
-      <description>A unique identifier for the set of implemented controls. This identifier's uniqueness is document scoped and is intended to be consistent for the same control implementation set across minor revisions of the document.</description>
+      <!-- Identifier Declaration -->
+      <description>A <em>machine-oriented</em>, <em>globally unique</em> identifier with <em>cross-instance</em> scope that can be used to reference a set of implemented controls elsewhere in this or other OSCAL instances. This UUID should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+      <remarks>
+            <!-- UUID -->
+            <p>Type: machine-oriented</p>
+            <p>Uniqueness: globally unique</p>
+            <p>Scope: cross-instance - provides an identifier that can be used to refer to a seet of implemented controls in this or other OSCAL instances</p>
+            <p>Consistency: per-subject</p>
+      </remarks>
     </define-flag>
     <flag ref="source" required="yes">
       <remarks>
@@ -346,7 +384,15 @@
     <description>Describes how the containing component or capability implements an individual control.</description>
     <define-flag name="uuid" as-type="uuid" required="yes">
       <formal-name>Control Implementation Identifier</formal-name>
-      <description>A unique identifier for a specific control implementation. This identifier's uniqueness is document scoped and is intended to be consistent for the same control implementation across minor revisions of the document.</description>
+      <!-- Identifier Declaration -->
+      <description>A <em>machine-oriented</em>, <em>globally unique</em> identifier with <em>cross-instance</em> scope that can be used to reference a specific control implementation elsewhere in this or other OSCAL instances. This UUID should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+      <remarks>
+            <!-- UUID -->
+            <p>Type: machine-oriented</p>
+            <p>Uniqueness: globally unique</p>
+            <p>Scope: cross-instance - provides an identifier that can be used to refer to a specific control implementation in this or other OSCAL instances</p>
+            <p>Consistency: per-subject</p>
+      </remarks>
     </define-flag>
     <flag ref="control-id" required="yes"/>
     <model>
@@ -402,7 +448,15 @@
     </flag>
     <define-flag name="uuid" as-type="uuid" required="yes">
       <formal-name>Control Statement Reference Universally Unique Identifier</formal-name>
-      <description>A globally unique identifier that can be used to reference this control statement entry elsewhere in an OSCAL document. A UUID should be consistently used for a given resource across revisions of the document.</description>
+      <!-- Identifier Declaration -->
+      <description>A <em>machine-oriented</em>, <em>globally unique</em> identifier with <em>cross-instance</em> scope that can be used to reference this control statement elsewhere in this or other OSCAL instances. This UUID should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+      <remarks>
+            <!-- UUID -->
+            <p>Type: machine-oriented</p>
+            <p>Uniqueness: globally unique</p>
+            <p>Scope: cross-instance - provides an identifier that can be used to refer to this control statement in this or other OSCAL instances</p>
+            <p>Consistency: per-subject</p>
+      </remarks>
     </define-flag>
     <model>
       <define-field name="description" as-type="markup-multiline" min-occurs="1" in-xml="WITH_WRAPPER">

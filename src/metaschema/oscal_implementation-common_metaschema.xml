@@ -30,7 +30,15 @@
             <description>A defined component that can be part of an implemented system.</description>
             <define-flag name="uuid" as-type="uuid" required="yes">
                   <formal-name>Component Identifier</formal-name>
-                  <description>The unique identifier for the component. This identifier's uniqueness is document scoped and is intended to be consistent for the same component across minor revisions of the document.</description>
+                  <!-- Identifier Declaration -->
+                  <description>A <em>machine-oriented</em>, <em>globally unique</em> identifier with <em>cross-instance</em> scope that can be used to reference this component elsewhere in this or other OSCAL instances. This UUID should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+                  <remarks>
+                        <!-- UUID -->
+                        <p>Type: machine-oriented</p>
+                        <p>Uniqueness: globally unique</p>
+                        <p>Scope: cross-instance - provides an identifier that can be used to refer to this component in this or other OSCAL instances</p>
+                        <p>Consistency: per-subject</p>
+                  </remarks>
             </define-flag>
             <flag ref="system-component-type" required="yes">
                   <!-- CHANGED: "component-type" to "type" -->
@@ -249,7 +257,15 @@
             <description>Information about the protocol used to provide a service.</description>
             <define-flag name="uuid" as-type="uuid">
                   <formal-name>Service Protocol Information Universally Unique Identifier</formal-name>
-                  <description>A globally unique identifier that can be used to reference this service protocol entry elsewhere in an OSCAL document. A UUID should be consistently used for a given resource across revisions of the document.</description>
+                  <!-- Identifier Declaration -->
+                  <description>A <em>machine-oriented</em>, <em>globally unique</em> identifier with <em>cross-instance</em> scope that can be used to reference this service protocol information elsewhere in this or other OSCAL instances. This UUID should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+                  <remarks>
+                        <!-- UUID -->
+                        <p>Type: machine-oriented</p>
+                        <p>Uniqueness: globally unique</p>
+                        <p>Scope: cross-instance - provides an identifier that can be used to refer to this service protocol information in this or other OSCAL instances</p>
+                        <p>Consistency: per-subject</p>
+                  </remarks>
             </define-flag>
             <define-flag name="name" required="yes">
                   <formal-name>Protocol Name</formal-name>
@@ -337,7 +353,15 @@
             <description>A type of user that interacts with the system based on an associated role.</description>
             <define-flag name="uuid" as-type="uuid" required="yes">
                   <formal-name>User Universally Unique Identifier</formal-name>
-                  <description>The unique identifier for the user class. This identifier's uniqueness is document scoped and is intended to be consistent for the same user universally unique idenfier across minor revisions of the document.</description>
+                  <!-- Identifier Declaration -->
+                  <description>A <em>machine-oriented</em>, <em>globally unique</em> identifier with <em>cross-instance</em> scope that can be used to reference this user class elsewhere in this or other OSCAL instances. This UUID should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+                  <remarks>
+                        <!-- UUID -->
+                        <p>Type: machine-oriented</p>
+                        <p>Uniqueness: globally unique</p>
+                        <p>Scope: cross-instance - provides an identifier that can be used to refer to this user class in this or other OSCAL instances</p>
+                        <p>Consistency: per-subject</p>
+                  </remarks>
             </define-flag>
             <model>
                   <define-field name="title" as-type="markup-line">
@@ -422,7 +446,15 @@
 -->
             <define-flag name="uuid" as-type="uuid" required="yes">
                   <formal-name>Inventory Item Universally Unique Identifier</formal-name>
-                  <description>A globally unique identifier that can be used to reference this inventory item entry elsewhere in an OSCAL document. A UUID should be consistently used for a given resource across revisions of the document.</description>
+                  <!-- Identifier Declaration -->
+                  <description>A <em>machine-oriented</em>, <em>globally unique</em> identifier with <em>cross-instance</em> scope that can be used to reference this inventory item elsewhere in this or other OSCAL instances. This UUID should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+                  <remarks>
+                        <!-- UUID -->
+                        <p>Type: machine-oriented</p>
+                        <p>Uniqueness: globally unique</p>
+                        <p>Scope: cross-instance - provides an identifier that can be used to refer to this inventory item in this or other OSCAL instances</p>
+                        <p>Consistency: per-subject</p>
+                  </remarks>
             </define-flag>
             <!-- CHANGED: Moved to property[@name='asset-id']. -->
             <!--      <define-flag name="asset-id">
@@ -452,7 +484,13 @@
 
                         <define-flag required="yes" name="component-uuid" as-type="uuid">
                               <formal-name>Component Universally Unique Identifier Reference</formal-name>
-                              <description>A reference to a component that is implemented as part of an inventory item. This identifier's uniqueness is document scoped and is intended to be consistent for the same component across minor revisions of the document.</description>
+                              <!-- Identifer Reference -->
+                              <description>A <em>machine-oriented</em> identifier reference to a <code>component</code> that is implemented as part of an inventory item.</description>
+                              <remarks>
+                                    <!-- UUID -->
+                                    <p>Type: human-oriented</p>
+                                    <p>Source: cross-instance - References a component identifer defined in this or other OSCAL instances</p>
+                              </remarks>
                         </define-flag>
 
                         <!-- CHANGED (daw): the following is not needed since it is required on the referenced component -->
@@ -631,7 +669,13 @@
 -->
       <define-flag name="statement-id" as-type="token">
             <formal-name>Control Statement Reference</formal-name>
-            <description>A reference to a control statement by its identifier</description>
+            <!-- Identifer Reference -->
+            <description>A <em>human-oriented</em> identifier reference to a <code>control statement</code>.</description>
+            <remarks>
+                  <!-- token -->
+                  <p>Type: human-oriented</p>
+                  <p>Source: instance - References a control state by its identifer as defined in this OSCAL instance</p>
+            </remarks>
       </define-flag>
       <define-assembly name="set-parameter">
             <formal-name>Set Parameter Value</formal-name>
@@ -653,11 +697,19 @@
       <define-field name="system-id" as-type="string">
             <!-- This is an id because the idenfier is assigned and managed by humans. -->
             <formal-name>System Identification</formal-name>
-            <description>A unique identifier for the system described by this system security plan.</description>
+            <!-- Identifier Declaration -->
+            <description>A <em>human-oriented</em>, <em>globally unique</em> identifier with <em>cross-instance</em> scope that can be used to reference this system identification property elsewhere in this and other OSCAL instances. This string should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same system across revisions of the document.</description>
+            <remarks>
+                  <!-- string -->
+                  <p>Type: human-oriented</p>
+                  <p>Uniqueness: globally unique</p>
+                  <p>Scope: cross-instance - provides an identifier that can be used to refer to this system in this or other OSCAL instances</p>
+                  <p>Consistency: per-subject</p>
+            </remarks>
             <json-value-key>id</json-value-key>
             <define-flag name="identifier-type" as-type="uri">
                   <formal-name>Identification System Type</formal-name>
-                  <description>Identifies the identification system from which the provided identifier was assigned. This is a globally unique identifier and should be consistently used for a given system across revisions of the document.</description>
+                  <description>Identifies the identification system from which the provided identifier was assigned. </description>
                   <constraint>
                         <allowed-values allow-other="yes">
                               <enum value="https://fedramp.gov">The identifier was assigned by FedRAMP.</enum>
@@ -671,7 +723,13 @@
       <define-flag name="param-id" as-type="token">
             <!-- This is an id because the idenfier is assigned and managed by humans. -->
             <formal-name>Parameter ID</formal-name>
-            <description>A reference to a parameter within a control, who's catalog has been imported into the current implementation context.  This identifier's uniqueness is document scoped and is intended to be consistent for the same param across minor revisions of the document.</description>
+            <!-- Identifer Reference -->
+            <description>A <em>human-oriented</em> reference to a <code>parameter</code> within a control, who's catalog has been imported into the current implementation context.</description>
+            <remarks>
+                <!-- token -->
+                <p>Type: human-oriented</p>
+                <p>Source: cross-instance - References a parameter defined within a control in this or other OSCAL instances</p>
+            </remarks>
             <example>
                   <set-param xmlns="http://csrc.nist.gov/ns/oscal/example" param-id="ac-2_prm_2">
                         <enum>System ISSO</enum>
