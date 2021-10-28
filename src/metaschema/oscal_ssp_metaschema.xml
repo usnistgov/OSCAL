@@ -881,7 +881,7 @@
       <description>A <em>machine-oriented</em> identifier reference to the <code>component</code> that is implemeting a given control.</description>
       <remarks>
             <!-- UUID -->
-            <p>Type: human-oriented</p>
+            <p>Type: machine-oriented</p>
             <p>Source: cross-instance - References a component identifer defined in this or other OSCAL instances</p>
       </remarks>
     </define-flag>
@@ -1145,7 +1145,7 @@
     <description>A <em>machine-oriented</em> identifier reference to an inherited control implementation that a leveraging system is inheriting from a leveraged system.</description>
     <remarks>
           <!-- UUID -->
-          <p>Type: human-oriented</p>
+          <p>Type: machine-oriented</p>
           <p>Source: cross-instance - References a provided control implementation in this or other OSCAL instances</p>
     </remarks>
   </define-flag>
@@ -1156,7 +1156,7 @@
     <description>A <em>machine-oriented</em> identifier reference to a control implementation that satisfies a responsibility imposed by a leveraged system.</description>
     <remarks>
           <!-- UUID -->
-          <p>Type: human-oriented</p>
+          <p>Type: machine-oriented</p>
           <p>Source: cross-instance - References a satisfied control implementation in this or other OSCAL instances</p>
     </remarks>
   </define-flag>
