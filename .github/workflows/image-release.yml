@@ -8,7 +8,6 @@ env:
 jobs:
   release-image:
     name: Build and publish the container image
-    id: build-image
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
