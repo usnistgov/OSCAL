@@ -1,7 +1,4 @@
-on:
-  push:
-    tags:
-      - "v*"
+on: [push, pull_request]
 name: Release OSCAL tools container image
 env:
   HOME_REPO: oscal-club/oscal
