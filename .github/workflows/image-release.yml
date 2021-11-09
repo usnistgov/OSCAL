@@ -3,7 +3,7 @@ name: Release OSCAL tools container image
 env:
   HOME_REPO: oscal-club/oscal
   IMAGE_NAME: cli
-  RAW_REPO: ${{ github.repository }}'
+  RAW_REPO: ${{ github.repository }}
   REGISTRY_USER: ${{ github.actor }}
   REGISTRY_PASSWORD: ${{ github.token }}
 
