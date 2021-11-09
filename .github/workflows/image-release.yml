@@ -2,6 +2,7 @@ on: [push, pull_request]
 name: Release OSCAL tools container image
 env:
   HOME_REPO: oscal-club/oscal
+  REGISTRY: ghcr.io/oscal-club/oscal
   REGISTRY_USER: ${{ github.actor }}
   REGISTRY_PASSWORD: ${{ github.token }}
 
@@ -43,6 +44,6 @@ jobs:
         with:
           image: ${{ steps.image-build.outputs.image }}
           tags: ${{ steps.image-build.outputs.tags }}
-          registry: ghcr.io/${{ env.HOME_REPO }}
+          registry: ${{ env.REGISTRY }}
           username: ${{ env.REGISTRY_USER }}
           password: ${{ env.REGISTRY_PASSWORD }}
