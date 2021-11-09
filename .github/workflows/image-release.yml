@@ -44,3 +44,5 @@ jobs:
           image: ${{ steps.image-build.outputs.image }}
           tags: ${{ steps.image-build.outputs.tags }}
           registry: ghcr.io/${{ env.HOME_REPO }}
+          username: ${{ env.REGISTRY_USER }}
+          password: ${{ env.REGISTRY_PASSWORD }}
