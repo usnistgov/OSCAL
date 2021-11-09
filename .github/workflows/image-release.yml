@@ -3,7 +3,7 @@ name: Release OSCAL tools container image
 env:
   HOME_REPO: oscal-club/oscal
   IMAGE_NAME: cli
-  REGISTRY: ghcr.io/${{ github.repository }}
+  RAW_REPO: ${{ github.repository_owner }}'
   REGISTRY_USER: ${{ github.actor }}
   REGISTRY_PASSWORD: ${{ github.token }}
 
@@ -25,6 +25,7 @@ jobs:
           RELEASE_TAG="${GITHUB_REF#refs/*/}"
           RELEASE_VERSION="${RELEASE_TAG#"v"}"
           RELEASE_NAME="oscal-${RELEASE_VERSION}"
+          echo "REPO=${RAW_REPO,,}" >>${GITHUB_ENV}
           echo "RELEASE_TAG=${RELEASE_TAG}" >> $GITHUB_ENV
           echo "RELEASE_VERSION=${RELEASE_VERSION}" >> $GITHUB_ENV
           echo "RELEASE_NAME=${RELEASE_NAME}" >> $GITHUB_ENV
@@ -45,6 +46,6 @@ jobs:
         with:
           image: ${{ steps.image-build.outputs.image }}
           tags: ${{ steps.image-build.outputs.tags }}
-          registry: ${{ env.REGISTRY }}
+          registry: ghcr.io/${{ env.RAW_REPO }}
           username: ${{ env.REGISTRY_USER }}
           password: ${{ env.REGISTRY_PASSWORD }}
