@@ -41,6 +41,6 @@ jobs:
         id: image-push
         uses: redhat-actions/push-to-registry@v2
         with:
-          image: ghcr.io/${{ env.HOME_REPO }}/cli
-          tags: ${{ steps.build-image.outputs.tags }}
+          image: ${{ steps.image-build.outputs.image }}
+          tags: ${{ steps.image-build.outputs.tags }}
           registry: ghcr.io/${{ env.OSCAL_HOME }}
