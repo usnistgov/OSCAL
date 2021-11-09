@@ -30,7 +30,7 @@ jobs:
         id: image-build
         uses: redhat-actions/buildah-build@v2
         with:
-          image: ghcr.io/${{ env.HOME_REPO }}/cli
+          image: cli
           tags: ${{ github.sha }} ${{ env.RELEASE_VERSION }} latest
           dockerfiles: ./build/Dockerfile
           build-args: |
@@ -43,4 +43,4 @@ jobs:
         with:
           image: ${{ steps.image-build.outputs.image }}
           tags: ${{ steps.image-build.outputs.tags }}
-          registry: ghcr.io
+          registry: ghcr.io/${{ env.HOME_REPO }}
