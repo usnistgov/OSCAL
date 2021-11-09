@@ -33,14 +33,14 @@ jobs:
           image: ghcr.io/${{ env.HOME_REPO }}/cli
           tags: ${{ github.sha }} ${{ env.RELEASE_VERSION }} latest
           dockerfiles: ./build/Dockerfile
-          build_args: |
+          build-args: |
             saxonversion=9.9.0-1
             hugoversion=0.69.2
             calabashversion=1.3.2-100
-      - uses: redhat-actions/push-to-registry@v2
+      - name: Publish Image to GitHub Container Registry
+        id: image-push
+        uses: redhat-actions/push-to-registry@v2
         with:
-          name: Publish Image to GitHub Container Registry
-          id: image-push
           image: ${{ steps.build-image.outputs.image }}
           tags: ${{ steps.build-image.outputs.tags }}
           registry: ghcr.io/${{ env.OSCAL_HOME }}
