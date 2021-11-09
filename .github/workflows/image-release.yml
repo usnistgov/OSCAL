@@ -43,4 +43,4 @@ jobs:
         with:
           image: ${{ steps.image-build.outputs.image }}
           tags: ${{ steps.image-build.outputs.tags }}
-          registry: ghcr.io/${{ env.OSCAL_HOME }}
+          registry: ghcr.io
