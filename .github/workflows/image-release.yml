@@ -2,7 +2,8 @@ on: [push, pull_request]
 name: Release OSCAL tools container image
 env:
   HOME_REPO: oscal-club/oscal
-  REGISTRY: ghcr.io/oscal-club/oscal
+  IMAGE_NAME: cli
+  REGISTRY: ghcr.io/${{ github.repository }}
   REGISTRY_USER: ${{ github.actor }}
   REGISTRY_PASSWORD: ${{ github.token }}
 
@@ -31,7 +32,7 @@ jobs:
         id: image-build
         uses: redhat-actions/buildah-build@v2
         with:
-          image: cli
+          image: ${{ env.IMAGE_NAME }}
           tags: ${{ github.sha }} ${{ env.RELEASE_VERSION }} latest
           dockerfiles: ./build/Dockerfile
           build-args: |
