@@ -10,11 +10,11 @@ jobs:
     name: Build and publish the container image
     runs-on: ubuntu-18.04
     steps:
-      - uses: actions/checkout@v2
+      - name: Check out code
+        id: setup-checkout
+        uses: actions/checkout@v2
         # if: github.repository == env.HOME_REPO
         with:
-          name: Check out code
-          id: setup-checkout
           path: ${{ env.OSCAL_HOME }}
           submodules: recursive
       - name: Set up environment
