@@ -5,7 +5,7 @@ env:
   IMAGE_NAME: cli
   SAXON_VERSION: 9.9.0-1
   HUGO_VERSION: 0.69.2
-  CALABSH_VERSION: 1.3.2-100
+  CALABASH_VERSION: 1.3.2-100
   RAW_REPO: ${{ github.repository }}
   REGISTRY_USER: ${{ github.actor }}
   REGISTRY_PASSWORD: ${{ github.token }}
