@@ -1,7 +1,7 @@
 on: [push, pull_request]
 name: Release OSCAL tools container image
 env:
-  HOME_REPO: oscal-club/oscal
+  HOME_REPO: usnistgov/oscal
   IMAGE_NAME: cli
   SAXON_VERSION: 9.9.0-1
   HUGO_VERSION: 0.69.2
