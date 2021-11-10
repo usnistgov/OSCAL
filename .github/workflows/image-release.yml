@@ -44,6 +44,8 @@ jobs:
             saxonversion=${{ env.SAXON_VERSION }}
             hugoversion=${{ env.HUGO_VERSION }}
             calabashversion=${{ env.CALABASH_VERSION }}
+          extra-args: |
+            --ignorefile .dockerignore
       - name: Publish Image to GitHub Container Registry
         id: image-push
         uses: redhat-actions/push-to-registry@v2
