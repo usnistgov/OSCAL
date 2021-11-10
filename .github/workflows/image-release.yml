@@ -3,6 +3,9 @@ name: Release OSCAL tools container image
 env:
   HOME_REPO: oscal-club/oscal
   IMAGE_NAME: cli
+  SAXON_VERSION: 9.9.0-1
+  HUGO_VERSION: 0.69.2
+  CALABSH_VERSION: 1.3.2-100
   RAW_REPO: ${{ github.repository }}
   REGISTRY_USER: ${{ github.actor }}
   REGISTRY_PASSWORD: ${{ github.token }}
@@ -15,7 +18,7 @@ jobs:
       - name: Check out code
         id: setup-checkout
         uses: actions/checkout@v2
-        # if: github.repository == env.HOME_REPO
+        # if: env.REPO == env.HOME_REPO
         with:
           path: ${{ env.OSCAL_HOME }}
           submodules: recursive
@@ -35,11 +38,12 @@ jobs:
         with:
           image: ${{ env.IMAGE_NAME }}
           tags: ${{ github.sha }} ${{ env.RELEASE_VERSION }} latest
-          dockerfiles: ./build/Dockerfile
+          containerfiles: ./build/Dockerfile
+          oci: true
           build-args: |
-            saxonversion=9.9.0-1
-            hugoversion=0.69.2
-            calabashversion=1.3.2-100
+            saxonversion=${{ env.SAXON_VERSION }}
+            hugoversion=${{ env.HUGO_VERSION }}
+            calabashversion=${{ env.CALABASH_VERSION }}
       - name: Publish Image to GitHub Container Registry
         id: image-push
         uses: redhat-actions/push-to-registry@v2
