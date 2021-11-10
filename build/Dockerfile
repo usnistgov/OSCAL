@@ -44,4 +44,6 @@ WORKDIR /oscal
 
 FROM oscal-base as cli
 
+ADD . /oscal
+
 ENTRYPOINT ["/bin/bash"]
