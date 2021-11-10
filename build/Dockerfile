@@ -17,9 +17,6 @@ RUN n latest
 RUN npm install --loglevel verbose -g ajv-cli@"^4.0.x" ajv-formats@"^1.5.x" json-diff markdown-link-check yaml-convert@"^1.0.x" yargs
 RUN pip3 install lxml
 
-#RUN useradd --create-home --home-dir /home/user user
-#USER user
-
 ENV SAXON_VERSION=${saxonversion}
 
 RUN mvn org.apache.maven.plugins:maven-dependency-plugin:2.10:get -DartifactId=Saxon-HE -DgroupId=net.sf.saxon -Dversion=${SAXON_VERSION}
@@ -36,7 +33,9 @@ RUN mkdir -p "${CALABASH_HOME}"
 RUN unzip -d "${CALABASH_HOME}" "xmlcalabash-${CALABASH_VERSION}.zip"
 RUN f=`ls -d "${CALABASH_HOME}"/*| xargs` && mv "${CALABASH_HOME}"/*/* "${CALABASH_HOME}" && rmdir "${f}"
 
-#RUN chown -R user:user /home/user
+RUN useradd --create-home --home-dir /home/oscal oscal
+RUN chown -R oscal:oscal /home/oscal
+USER oscal
 
 FROM oscal-dependencies as oscal-base
 VOLUME ["/oscal"]
