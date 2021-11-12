@@ -25,7 +25,7 @@ We use GitHub as a collaboration platform for the development of the OSCAL model
 - [Guidelines](https://github.com/usnistgov/OSCAL/blob/main/CONTRIBUTING.md) on contributing to this project.
 - A [project board](https://github.com/usnistgov/OSCAL/projects) that shows the issues the team is currently working on.
 
-You can connect with us and other developers working on OSCAL related projects on the [OSCAL Gitter](https://gitter.im/usnistgov-OSCAL/Lobby) or using the [oscal-dev@nist.gov mailing list](/contact/#oscal-mailing-lists).
+You can connect with us and other developers working on OSCAL related projects on the [OSCAL Gitter](https://gitter.im/usnistgov-OSCAL/Lobby) or using the [oscal-dev@list.nist.gov mailing list](/contact/#oscal-mailing-lists).
 
 ## Community Meetings
 
