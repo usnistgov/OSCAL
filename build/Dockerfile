@@ -19,8 +19,6 @@ RUN pip3 install lxml
 
 ENV SAXON_VERSION=${saxonversion}
 
-RUN mvn org.apache.maven.plugins:maven-dependency-plugin:2.10:get -DartifactId=Saxon-HE -DgroupId=net.sf.saxon -Dversion=${SAXON_VERSION}
-
 ENV HUGO_VERSION=${hugoversion}
 RUN wget https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_Linux-64bit.deb
 RUN dpkg -i hugo_extended_${HUGO_VERSION}_Linux-64bit.deb
@@ -36,6 +34,8 @@ RUN f=`ls -d "${CALABASH_HOME}"/*| xargs` && mv "${CALABASH_HOME}"/*/* "${CALABA
 RUN useradd --create-home --home-dir /home/oscal oscal
 RUN chown -R oscal:oscal /home/oscal
 USER oscal
+
+RUN mvn org.apache.maven.plugins:maven-dependency-plugin:2.10:get -DartifactId=Saxon-HE -DgroupId=net.sf.saxon -Dversion=${SAXON_VERSION}
 
 FROM oscal-dependencies as oscal-base
 VOLUME ["/oscal"]
