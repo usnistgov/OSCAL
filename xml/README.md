@@ -90,11 +90,13 @@ The [online documentation](http://www.saxonica.com/documentation/#!using-xsl/com
 
 The configuration just provided will convert a JSON file given as a file reference, into OSCAL XML. However it may sometimes be convenient (for example when invoking programmatically) to pass the JSON into the converter as a literal.
 
-Use the `json` parameter to do this. On the command line this would be:
+Use the `json` runtime parameter to do this. On the command line this might be:
 
 ```
-java -jar "saxon9he.jar" -xsl:"oscal_catalog_json-to-xml-converter.xsl" -o:"oscal-catalog.xml" -it:make-xml json="{ catalog: {} }"
+java -jar "saxon9he.jar" -xsl:"oscal_catalog_json-to-xml-converter.xsl" -o:"oscal-catalog.xml" -it:make-xml json="{ "catalog": {} }"
 ```
+
+(With allowances made for quote marks etc.)
 
 There are also different configurations available for debugging:
 
