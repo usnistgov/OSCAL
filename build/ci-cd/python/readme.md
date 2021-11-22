@@ -6,7 +6,7 @@ This code provides test coverage to validate the OSCAL artifacts as new document
 
 1. [Python 2.7.10 or greater](https://www.python.org/)
 2. [xmllint](http://xmlsoft.org/xmllint.html)
-3. [Java 8.0 or greater](https://www.java.com/en/)
+3. Java 8.0 or greater
 4. [Saxon 9 HE](http://saxon.sourceforge.net/)
 
 ### Instructions
