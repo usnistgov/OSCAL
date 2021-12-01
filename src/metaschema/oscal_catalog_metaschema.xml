@@ -66,7 +66,7 @@
                   <!-- This is an id because the idenfier is assigned and managed externally by humans. -->
                   <formal-name>Group Identifier</formal-name>
                   <!-- Identifier Declaration -->
-                  <description>A <em>human-oriented</em>, <em>locally unique</em> identifier with <em>cross-instance</em> scope that can be used to reference this defined group elsewhere in this or other OSCAL instances. This id should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same group across revisions of the document.</description>
+                  <description>A <em>human-oriented</em>, <em>locally unique</em> identifier with <em>cross-instance</em> scope that can be used to reference this defined group elsewhere in this or other OSCAL instances. When referenced from another OSCAL instance, this identifier must be referenced in the context of the containing resource (e.g., import-profile). This id should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same group across revisions of the document.</description>
                   <remarks>
                         <!-- token -->
                         <p>Type: human-oriented</p>

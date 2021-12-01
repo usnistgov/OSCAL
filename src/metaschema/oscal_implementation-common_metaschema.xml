@@ -31,14 +31,7 @@
             <define-flag name="uuid" as-type="uuid" required="yes">
                   <formal-name>Component Identifier</formal-name>
                   <!-- Identifier Declaration -->
-                  <description>A <em>machine-oriented</em>, <em>globally unique</em> identifier with <em>cross-instance</em> scope that can be used to reference this component elsewhere in this or other OSCAL instances. This UUID should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
-                  <remarks>
-                        <!-- UUID -->
-                        <p>Type: machine-oriented</p>
-                        <p>Uniqueness: globally unique</p>
-                        <p>Scope: cross-instance - provides an identifier that can be used to refer to this component in this or other OSCAL instances</p>
-                        <p>Consistency: per-subject</p>
-                  </remarks>
+                  <description>A <em>machine-oriented</em>, <em>globally unique</em> identifier with <em>cross-instance</em> scope that can be used to reference this component elsewhere in this or other OSCAL instances. The locally defined <em>UUID</em> of the <code>component</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
             </define-flag>
             <flag ref="system-component-type" required="yes">
                   <!-- CHANGED: "component-type" to "type" -->
@@ -258,14 +251,7 @@
             <define-flag name="uuid" as-type="uuid">
                   <formal-name>Service Protocol Information Universally Unique Identifier</formal-name>
                   <!-- Identifier Declaration -->
-                  <description>A <em>machine-oriented</em>, <em>globally unique</em> identifier with <em>cross-instance</em> scope that can be used to reference this service protocol information elsewhere in this or other OSCAL instances. This UUID should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
-                  <remarks>
-                        <!-- UUID -->
-                        <p>Type: machine-oriented</p>
-                        <p>Uniqueness: globally unique</p>
-                        <p>Scope: cross-instance - provides an identifier that can be used to refer to this service protocol information in this or other OSCAL instances</p>
-                        <p>Consistency: per-subject</p>
-                  </remarks>
+                  <description>A <em>machine-oriented</em>, <em>globally unique</em> identifier with <em>cross-instance</em> scope that can be used to reference this service protocol information elsewhere in this or other OSCAL instances. The locally defined <em>UUID</em> of the <code>service protocol</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
             </define-flag>
             <define-flag name="name" required="yes">
                   <formal-name>Protocol Name</formal-name>
@@ -354,14 +340,7 @@
             <define-flag name="uuid" as-type="uuid" required="yes">
                   <formal-name>User Universally Unique Identifier</formal-name>
                   <!-- Identifier Declaration -->
-                  <description>A <em>machine-oriented</em>, <em>globally unique</em> identifier with <em>cross-instance</em> scope that can be used to reference this user class elsewhere in this or other OSCAL instances. This UUID should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
-                  <remarks>
-                        <!-- UUID -->
-                        <p>Type: machine-oriented</p>
-                        <p>Uniqueness: globally unique</p>
-                        <p>Scope: cross-instance - provides an identifier that can be used to refer to this user class in this or other OSCAL instances</p>
-                        <p>Consistency: per-subject</p>
-                  </remarks>
+                  <description>A <em>machine-oriented</em>, <em>globally unique</em> identifier with <em>cross-instance</em> scope that can be used to reference this user class elsewhere in this or other OSCAL instances. The locally defined <em>UUID</em> of the <code>system user</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
             </define-flag>
             <model>
                   <define-field name="title" as-type="markup-line">
@@ -447,14 +426,7 @@
             <define-flag name="uuid" as-type="uuid" required="yes">
                   <formal-name>Inventory Item Universally Unique Identifier</formal-name>
                   <!-- Identifier Declaration -->
-                  <description>A <em>machine-oriented</em>, <em>globally unique</em> identifier with <em>cross-instance</em> scope that can be used to reference this inventory item elsewhere in this or other OSCAL instances. This UUID should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
-                  <remarks>
-                        <!-- UUID -->
-                        <p>Type: machine-oriented</p>
-                        <p>Uniqueness: globally unique</p>
-                        <p>Scope: cross-instance - provides an identifier that can be used to refer to this inventory item in this or other OSCAL instances</p>
-                        <p>Consistency: per-subject</p>
-                  </remarks>
+                  <description>A <em>machine-oriented</em>, <em>globally unique</em> identifier with <em>cross-instance</em> scope that can be used to reference this inventory item elsewhere in this or other OSCAL instances. The locally defined <em>UUID</em> of the <code>inventory item</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
             </define-flag>
             <!-- CHANGED: Moved to property[@name='asset-id']. -->
             <!--      <define-flag name="asset-id">
@@ -698,14 +670,7 @@
             <!-- This is an id because the idenfier is assigned and managed by humans. -->
             <formal-name>System Identification</formal-name>
             <!-- Identifier Declaration -->
-            <description>A <em>human-oriented</em>, <em>globally unique</em> identifier with <em>cross-instance</em> scope that can be used to reference this system identification property elsewhere in this and other OSCAL instances. This string should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same system across revisions of the document.</description>
-            <remarks>
-                  <!-- string -->
-                  <p>Type: human-oriented</p>
-                  <p>Uniqueness: globally unique</p>
-                  <p>Scope: cross-instance - provides an identifier that can be used to refer to this system in this or other OSCAL instances</p>
-                  <p>Consistency: per-subject</p>
-            </remarks>
+            <description>A <em>human-oriented</em>, <em>globally unique</em> identifier with <em>cross-instance</em> scope that can be used to reference this system identification property elsewhere in this and other OSCAL instances. When referencing an externally defined <code>system identification</code>, the <code>system identification</code> must be used in the context of the external / imported OSCAL instance (e.g., uri-reference). This string should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same system across revisions of the document.</description>
             <json-value-key>id</json-value-key>
             <define-flag name="identifier-type" as-type="uri">
                   <formal-name>Identification System Type</formal-name>
