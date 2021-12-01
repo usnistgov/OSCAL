@@ -23,18 +23,7 @@
     <define-flag name="uuid" required="yes" as-type="uuid">
       <formal-name>Assessment Results Universally Unique Identifier</formal-name>
       <!-- Identifier Declaration -->
-<<<<<<< HEAD
       <description>A <em>machine-oriented</em>, <em>globally unique</em> identifier with <em>cross-instance</em> scope that can be used to reference this assessment results instance in this or other OSCAL instances. The locally defined <em>UUID</em> of the <code>assessment result</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
-=======
-      <description>A <em>machine-oriented</em>, <em>globally unique</em> identifier with <em>cross-instance</em> scope that can be used to reference this assessment results instance in this or other OSCAL instances. This UUID should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
-      <remarks>
-          <!-- UUID -->
-          <p>Type: machine-oriented</p>
-          <p>Uniqueness: globally unique</p>
-          <p>Scope: cross-instance - provides an identifier that can be used to refer to this assessment results in this or other OSCAL instances</p>
-          <p>Consistency: per-subject</p>
-      </remarks>
->>>>>>> e391783d (assessment layers updates)
     </define-flag>
     <model>
       <assembly ref="metadata" min-occurs="1" max-occurs="1"/>
@@ -87,18 +76,7 @@
     <define-flag name="uuid" required="yes" as-type="uuid">
       <formal-name>Results Universally Unique Identifier</formal-name>
       <!-- Identifier Declaration -->
-<<<<<<< HEAD
       <description>A <em>machine-oriented</em>, <em>globally unique</em> identifier with <em>cross-instance</em> scope that can be used to reference this set of results in this or other OSCAL instances. The locally defined <em>UUID</em> of the <code>assessment result</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
-=======
-      <description>A <em>machine-oriented</em>, <em>globally unique</em> identifier with <em>cross-instance</em> scope that can be used to reference this set of results in this or other OSCAL instances. This UUID should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
-      <remarks>
-          <!-- UUID -->
-          <p>Type: machine-oriented</p>
-          <p>Uniqueness: globally unique</p>
-          <p>Scope: cross-instance - provides an identifier that can be used to refer to this set of results in this or other OSCAL instances</p>
-          <p>Consistency: per-subject</p>
-      </remarks>
->>>>>>> e391783d (assessment layers updates)
     </define-flag>
     <model>
       <define-field name="title" min-occurs="1" max-occurs="1" as-type="markup-line">
@@ -224,18 +202,7 @@
             <define-flag name="uuid" required="yes" as-type="uuid">
               <formal-name>Assessment Log Entry Universally Unique Identifier</formal-name>
               <!-- Identifier Declaration -->
-<<<<<<< HEAD
               <description>A <em>machine-oriented</em>, <em>globally unique</em> identifier with <em>cross-instance</em> scope that can be used to reference an assessment event in this or other OSCAL instances. The locally defined <em>UUID</em> of the <code>assessment log entry</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
-=======
-              <description>A <em>machine-oriented</em>, <em>globally unique</em> identifier with <em>cross-instance</em> scope that can be used to reference an assessment event in this or other OSCAL instances. This UUID should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
-              <remarks>
-                  <!-- UUID -->
-                  <p>Type: machine-oriented</p>
-                  <p>Uniqueness: globally unique</p>
-                  <p>Scope: cross-instance - provides an identifier that can be used to refer to this assessment event in this or other OSCAL instances</p>
-                  <p>Consistency: per-subject</p>
-              </remarks>
->>>>>>> e391783d (assessment layers updates)
             </define-flag>
             <model>
               <define-field name="title" min-occurs="0" max-occurs="1" as-type="markup-line">
@@ -296,18 +263,7 @@
     <define-flag name="uuid" required="yes" as-type="uuid">
       <formal-name>Finding Universally Unique Identifier</formal-name>
       <!-- Identifier Declaration -->
-<<<<<<< HEAD
       <description>A <em>machine-oriented</em>, <em>globally unique</em> identifier with <em>cross-instance</em> scope that can be used to reference this finding in this or other OSCAL instances. The locally defined <em>UUID</em> of the <code>finding</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
-=======
-      <description>A <em>machine-oriented</em>, <em>globally unique</em> identifier with <em>cross-instance</em> scope that can be used to reference this finding in this or other OSCAL instances. This UUID should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
-      <remarks>
-          <!-- UUID -->
-          <p>Type: machine-oriented</p>
-          <p>Uniqueness: globally unique</p>
-          <p>Scope: cross-instance - provides an identifier that can be used to refer to this finding in this or other OSCAL instances</p>
-          <p>Consistency: per-subject</p>
-      </remarks>
->>>>>>> e391783d (assessment layers updates)
     </define-flag>
     <model>
       <define-field name="title" min-occurs="1" as-type="markup-line">

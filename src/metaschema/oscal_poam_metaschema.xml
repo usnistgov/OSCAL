@@ -25,16 +25,6 @@
             <formal-name>POA&amp;M Universally Unique Identifier</formal-name>
              <!-- Identifier Declaration -->
             <description>A <em>machine-oriented</em>, <em>globally unique</em> identifier with <em>cross-instance</em> scope that can be used to reference this POA&amp;M instance in this or other OSCAL instances. This UUID should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
-<<<<<<< HEAD
-=======
-            <remarks>
-                <!-- UUID -->
-                <p>Type: machine-oriented</p>
-                <p>Uniqueness: globally unique</p>
-                <p>Scope: cross-instance - provides an identifier that can be used to refer to this POA&amp;M instance in this or other OSCAL instances</p>
-                <p>Consistency: per-subject</p>
-            </remarks>
->>>>>>> e391783d (assessment layers updates)
         </define-flag>
         <model>
             <assembly ref="metadata" min-occurs="1" max-occurs="1"/>
@@ -101,16 +91,6 @@
             <formal-name>POA&amp;M Item Universally Unique Identifier</formal-name>
             <!-- Identifier Declaration -->
             <description>A <em>machine-oriented</em>, <em>globally unique</em> identifier with <em>cross-instance</em> scope that can be used to reference this POA&amp;M item entry in this or other OSCAL instances. This UUID should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
-<<<<<<< HEAD
-=======
-            <remarks>
-                <!-- UUID -->
-                <p>Type: machine-oriented</p>
-                <p>Uniqueness: globally unique</p>
-                <p>Scope: cross-instance - provides an identifier that can be used to refer to this POA&amp;M item entry in this or other OSCAL instances</p>
-                <p>Consistency: per-subject</p>
-            </remarks>
->>>>>>> e391783d (assessment layers updates)
         </define-flag>
         <model>
             <define-field name="title" min-occurs="1" max-occurs="1" as-type="markup-line">

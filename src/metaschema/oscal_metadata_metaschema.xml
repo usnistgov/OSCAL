@@ -219,11 +219,6 @@
         <!-- identifier reference -->
         <description>A <em>machine-oriented</em> identifier reference to a <code>location</code> defined in the <code>metadata</code> section of this or another OSCAL instance. The <em>UUID</em> of the <code>location</code> in the source OSCAL instance is sufficient to reference the data item locally or globally (e.g., in an imported OSCAL instance).
         </description>
-        <remarks>
-            <!-- UUID -->
-            <p>Type: machine-oriented</p>
-            <p>Source: instance - References a location a <code>location</code> defined in the <code>metadata</code> section of this OSCAL instance.</p>
-        </remarks>
         <constraint>
             <!-- TODO: Dave to resolve syntax error. Likely requires updated metaschema schema -->
             <index-has-key name="index-metadata-location-uuid">
@@ -241,11 +236,6 @@
         <!-- identifier reference -->
         <description>A <em>machine-oriented</em> identifier reference to a <code>location</code> defined in the <code>metadata</code> section of this or another OSCAL instance. The <em>UUID</em> of the <code>location</code> in the source OSCAL instance is sufficient to reference the data item locally or globally (e.g., in an imported OSCAL instance).
         </description>
-        <remarks>
-            <!-- UUID -->
-            <p>Type: machine-oriented</p>
-            <p>Source: instance - References a location a <code>location</code> defined in the <code>metadata</code> section of this OSCAL instance.</p>
-        </remarks>
         <constraint>
             <index-has-key name="index-metadata-location-uuid" target=".">
                 <!-- TODO: This is impacted by cross-document cross-references We need to relocate or localize this constraint. -->
@@ -366,11 +356,6 @@
         <!-- identifier reference -->
         <description>A <em>machine-oriented</em> identifier reference to another <code>party</code> defined in <code>metadata</code>. The <em>UUID</em> of the <code>party</code> in the source OSCAL instance is sufficient to reference the data item locally or globally (e.g., in an imported OSCAL instance).
         </description>
-        <remarks>
-            <!-- UUID -->
-            <p>Type: machine-oriented</p>
-            <p>Source: instance - References a <code>party</code> defined in the <code>metadata</code> section of this OSCAL instance.</p>
-        </remarks>
         <constraint>
             <index-has-key name="index-metadata-party-uuid" target=".">
                 <!-- TODO: This is impacted by cross-document cross-references We need to relocate or localize this constraint. -->
@@ -964,7 +949,7 @@
         <!-- This is an id because the idenfier is assigned and managed externally by humans. -->
         <formal-name>Document Identifier</formal-name>
         <!-- identifier declaration -->
-        <description>A document identifier qualified by an identifier <code>scheme</code>. A document identifier provides a <em>globally-unique</em> identifier with a <em>cross-instance</em> scope that is used for a group of documents that are to be treated as different versions of the same document. If this element does not appear, or if the value of this element is empty, the value of "document-id" is equal to the value of the "uuid" flag of the top-level root element.</description>
+        <description>A document identifier qualified by an identifier <code>scheme</code>. A document identifier provides a <em>globally-unique</em> identifier with a <em>cross-instance</em> scope that is used for a group of documents that are to be treated as different versions of the same document. The locally defined <em>document-id</em> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). If this element does not appear, or if the value of this element is empty, the value of "document-id" is equal to the value of the "uuid" flag of the top-level root element.</description>
         <json-value-key>identifier</json-value-key>
         <!-- CHANGE: "type" to "scheme" -->
         <!-- CHANGE: "Required" to "no" -->
