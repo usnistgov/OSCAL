@@ -68,14 +68,14 @@ The OSCAL project uses *Saxon-HE* with Java version 8 or greater.
 The following example uses **Saxon HE** to convert an OSCAL catalog JSON file to XML using one of the NIST-provided [JSON to XML XSLT converters](convert). This example assumes that has been installed and the Saxon-HE jar files have already unzipped.
 
 ```
-java -jar "saxon9he.jar" -xsl:"oscal_catalog_json-to-xml-converter.xsl" -o:"oscal-catalog.xml" -it:make-xml file="oscal-catalog.json"
+java -jar "saxon9he.jar" -xsl:"oscal_catalog_json-to-xml-converter.xsl" -o:"oscal-catalog.xml" -it:from-json file="oscal-catalog.json"
 ```
 
 > *Note*: at time of writing, Saxon 9 users are being encouraged to upgrade systems to use Saxon 10, and the stylesheets provided should function equally well or better with the later software. While Saxon 9 is designated here, please feel free to use the latest Saxon or indeed any conformant XSLT 3.0 processor.
 >
 > Operators of XSLT-based platforms should by all means test these processes with any XSLT 3.0 conformant processor, and report problems to us via Github Issues.
 
-`-it` indicates the initial template (XSLT entry point) should be `make-xml`.
+`-it` indicates the initial template (XSLT entry point) should be `from-json`. (As documented in the source code, other entry points are offered for diagnostics or integration.)
 
 Paths/names given to other settings are offered as relative or absolute system paths or URIs:
 
