@@ -91,8 +91,8 @@
             <model>
                   <assembly ref="combine"/>
                   <choice>
-                        <field ref="as-is"/>
-                        <field ref="flat"/>
+                        <assembly ref="as-is"/>
+                        <assembly ref="flat"/>
                         <assembly ref="custom"/>
                   </choice>
             </model>
@@ -110,14 +110,14 @@
                   <p>This setting permits a profile designer to apply a rule for the resolution of such cases. In a well-designed profile, such collisions would ordinarily be avoided, but this setting can be useful for defining what to do when it occurs.</p>
             </remarks>
       </define-assembly>
-      <define-field name="as-is" as-type="empty">
+      <define-assembly name="as-is">
             <formal-name>As is</formal-name>
             <description>An As-is element indicates that the controls should be structured in resolution as they are structured in their source catalogs. It does not contain any elements or attributes.</description>
-      </define-field>
-      <define-field name="flat" as-type="empty">
+      </define-assembly>
+      <define-assembly name="flat">
             <formal-name>Flat</formal-name>
             <description>A Flat element indicates that the controls should be structured in a completely flat list. It does not contain any elements or attributes.</description>
-      </define-field>
+      </define-assembly>
       <define-flag name="method" as-type="string">
             <formal-name>Combination method</formal-name>
             <description>How clashing controls should be handled</description>
