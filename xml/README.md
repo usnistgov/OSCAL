@@ -84,7 +84,7 @@ Paths/names given to other settings are offered as relative or absolute system p
 * The source catalog JSON file is specified as ```file="oscal-catalog.json"``` (URI)
 * The destination catalog XML file is specified as ```-o:"oscal-catalog.xml"``` (URI)
 
-The [online documentation](http://www.saxonica.com/documentation/#!using-xsl/commandline) for *Saxon* provides more information on the command line arguments.
+The [online documentation](http://www.saxonica.com) for *Saxon* provides more information on the command line arguments.
 
 ### Alternate invocations
 
