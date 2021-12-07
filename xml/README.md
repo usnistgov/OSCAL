@@ -93,7 +93,7 @@ The configuration just provided will convert a JSON file given as a file referen
 Use the `json` runtime parameter to do this. On the command line this might be:
 
 ```
-java -jar "saxon9he.jar" -xsl:"oscal_catalog_json-to-xml-converter.xsl" -o:"oscal-catalog.xml" -it:make-xml json="{ "catalog": {} }"
+java -jar "saxon9he.jar" -xsl:"oscal_catalog_json-to-xml-converter.xsl" -o:"oscal-catalog.xml" -it:from-json json="{ "catalog": {} }"
 ```
 
 (With allowances made for quote marks etc.)
