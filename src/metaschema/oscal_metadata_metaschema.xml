@@ -125,7 +125,7 @@
             </define-field>
             <field ref="published" />
             <field ref="last-modified"/>
-            <field ref="version"/>
+            <field ref="version" min-occurs="1"/>
             <field ref="oscal-version"/>
             <assembly ref="property" max-occurs="unbounded">
                 <group-as name="props" in-json="ARRAY"/>
@@ -136,7 +136,9 @@
             <field ref="remarks" in-xml="WITH_WRAPPER"/>
         </model>
         <constraint>
-            <has-cardinality target="published|last-modified|version|link[@rel='canonical']" min-occurs="1"/>
+<!-- TODO: consider making this a warning
+            <has-cardinality target="published|last-modified|link[@rel='canonical']" min-occurs="1"/>
+-->
             <allowed-values target="link/@rel" allow-other="yes">
                 <enum value="canonical">The link identifies the authoritative location for this file. Defined by <a href="https://tools.ietf.org/html/rfc6596">RFC 6596</a>.</enum>
                 <enum value="alternate">The link identifies an alternative location or format for this file. Defined by <a href="https://html.spec.whatwg.org/multipage/links.html#linkTypes">the HTML Living Standard</a></enum>
