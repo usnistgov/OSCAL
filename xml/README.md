@@ -68,27 +68,37 @@ The OSCAL project uses *Saxon-HE* with Java version 8 or greater.
 The following example uses **Saxon HE** to convert an OSCAL catalog JSON file to XML using one of the NIST-provided [JSON to XML XSLT converters](convert). This example assumes that has been installed and the Saxon-HE jar files have already unzipped.
 
 ```
-java -jar "saxon9he.jar" -xsl:"oscal_catalog_json-to-xml-converter.xsl" -o:"oscal-catalog.xml" -it:make-xml json-file="oscal-catalog.json"
+java -jar "saxon9he.jar" -xsl:"oscal_catalog_json-to-xml-converter.xsl" -o:"oscal-catalog.xml" -it:from-json file="oscal-catalog.json"
 ```
 
-> *Note*: at time of writing, Saxon 9 users are being encouraged to upgrade systems to use Saxon 10, and the stylesheets provided should function equally well or better with the later software. However until we have experience testing it and assuring it runs without error, Saxon 9 is designated here.
+> *Note*: at time of writing, Saxon 9 users are being encouraged to upgrade systems to use Saxon 10, and the stylesheets provided should function equally well or better with the later software. While Saxon 9 is designated here, please feel free to use the latest Saxon or indeed any conformant XSLT 3.0 processor.
 >
 > Operators of XSLT-based platforms should by all means test these processes with any XSLT 3.0 conformant processor, and report problems to us via Github Issues.
 
-`-it` indicates the initial template (XSLT entry point) should be `make-xml`.
+`-it` indicates the initial template (XSLT entry point) should be `from-json`. (As documented in the source code, other entry points are offered for diagnostics or integration.)
 
-Paths\names given to other settings are offered as relative or absolute system paths or URIs:
+Paths/names given to other settings are offered as relative or absolute system paths or URIs:
 
 * The Saxon JAR file is named ```saxon9he.jar``` (system path).
 * The catalog converter is specified as ```-xsl:"oscal_catalog_json-to-xml-converter.xsl"``` (relative or absolute URI)
-* The source catalog JSON file is specified as ```json-file="oscal-catalog.json"``` (URI)
+* The source catalog JSON file is specified as ```file="oscal-catalog.json"``` (URI)
 * The destination catalog XML file is specified as ```-o:"oscal-catalog.xml"``` (URI)
 
-The [online documentation](http://www.saxonica.com/documentation/#!using-xsl/commandline) for *Saxon* provides more information on the command line arguments.
+The [online documentation](http://www.saxonica.com) for *Saxon* provides more information on the command line arguments.
 
 ### Alternate invocations
 
-The configuration just provided will convert a JSON file given as a file reference, into OSCAL XML. There are also different configurations available for debugging:
+The configuration just provided will convert a JSON file given as a file reference, into OSCAL XML. However it may sometimes be convenient (for example when invoking programmatically) to pass the JSON into the converter as a literal.
+
+Use the `json` runtime parameter to do this. On the command line this might be:
+
+```
+java -jar "saxon9he.jar" -xsl:"oscal_catalog_json-to-xml-converter.xsl" -o:"oscal-catalog.xml" -it:from-json json="{ "catalog": {} }"
+```
+
+(With allowances made for quote marks etc.)
+
+There are also different configurations available for debugging:
 
 * `-it` (initial template) `from-xdm-json-xml` - assume the source is not given as a URI reference to a file, but as XML conformant to the model returned by the XPath function 'json-to-xml()'. In this case, the `file` parameter must point to this XML file not a JSON file.
 * Alternatively, `-s:file.xml` (with or instead of `-it`) will operate the same way, except finding the XML at `file.xml`.
