@@ -83,7 +83,7 @@ Paths\names of these files need to be provided based on the location of the file
 * The source catalog XML file is specified as ```-s:"oscal-catalog.xml"```
 * The destination catalog JSON file is specified as ```-o:"oscal-catalog.json"```.
 
-The [online documentation](http://www.saxonica.com/documentation/#!using-xsl/commandline) for *Saxon* provides more information on the command line arguments.
+The [online documentation](http://www.saxonica.com) for *Saxon* provides more information on the command line arguments.
 
 ### Alternate invocations
 
