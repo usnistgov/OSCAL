@@ -29,7 +29,7 @@ The primary CircleCI supported CI/CD workflow, ```build```, is uses a series of 
 The bash scripts used in the CI/CD workflow can be run locally in the correct environment. In addition to a bash shell, to run these scripts the following must be installed:
 
 - [xmlint](http://xmlsoft.org/xmllint.html)
-- [Java](https://www.java.com/en/) 8.0 or greater
+- Java 8.0 or greater
 - [Apache Maven](https://maven.apache.org/) 3.6.1 or greater
 - [Node.js and Node Package Manager (NPM)](https://nodejs.org/en/) 10.15.3 or greater
 - 'Another Json Validator' Command Line Interface ([ajv-cli](https://github.com/jessedc/ajv-cli)) v3.0.0 or greater
