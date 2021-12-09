@@ -11,7 +11,7 @@ sidenav:
   inactiverenderdepth: 2
 ---
 
-This page reviews important concepts to be aware of when declaring or referencing identifiers in OSCAL models.  
+This page reviews important concepts to be aware of when declaring or referencing identifiers in OSCAL models, with in-depth explanations of identifier uniqueness and scope.  
 
 ### **Identifier Type** 
 By design, OSCAL supports [*machine-oriented*](/concepts/identifier-use/#machine-oriented) and [*human-oriented*](/concepts/identifier-use/#human-oriented) identifiers. The OSCAL models dictate which are used for different data items.
