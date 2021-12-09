@@ -166,7 +166,7 @@
                   <!-- <any/> -->
             </model>
             <constraint>
-                  <has-cardinality target="part[@name='statement']" min-occurs="1" max-occurs="1" />
+                  <has-cardinality id="catalog-control-require-statement-when-not-withdrawn" target=".[not(exists(prop[@name='status'])) or prop[@name='status']/@value != 'withdrawn']/part[@name='statement']" min-occurs="1" max-occurs="1" />
                   <allowed-values target="prop/@name" allow-other="yes">
             &allowed-values-control-group-property-name;
                         <enum value="status">The status of a <code>control</code>. For example, a value of 'withdrawn' can indicate that the <code>control</code> has been withdrawn and should no longer be used.</enum>

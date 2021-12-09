@@ -125,7 +125,7 @@
             </define-field>
             <field ref="published" />
             <field ref="last-modified"/>
-            <field ref="version"/>
+            <field ref="version" min-occurs="1"/>
             <field ref="oscal-version"/>
             <assembly ref="property" max-occurs="unbounded">
                 <group-as name="props" in-json="ARRAY"/>
@@ -136,7 +136,9 @@
             <field ref="remarks" in-xml="WITH_WRAPPER"/>
         </model>
         <constraint>
-            <has-cardinality target="published|last-modified|version|link[@rel='canonical']" min-occurs="1"/>
+<!-- TODO: consider making this a warning
+            <has-cardinality target="published|last-modified|link[@rel='canonical']" min-occurs="1"/>
+-->
             <allowed-values target="link/@rel" allow-other="yes">
                 <enum value="canonical">The link identifies the authoritative location for this file. Defined by <a href="https://tools.ietf.org/html/rfc6596">RFC 6596</a>.</enum>
                 <enum value="alternate">The link identifies an alternative location or format for this file. Defined by <a href="https://html.spec.whatwg.org/multipage/links.html#linkTypes">the HTML Living Standard</a></enum>
@@ -252,7 +254,7 @@
         </define-flag>
         <model>
             <!-- CHANGE: changed from "party-name" to "name" -->
-            <define-field name="name" min-occurs="1">
+            <define-field name="name">
                 <formal-name>Party Name</formal-name>
                 <description>The full name of the party. This is typically the legal name associated with the party.</description>
             </define-field>
@@ -541,13 +543,11 @@
                             </p>
                         </remarks>
                     </is-unique>
-                    <require when="citation">
-                        <has-cardinality target="title" min-occurs="1">
-                            <remarks>
-                                <p>A <code>title</code> is required when a citation is provided.</p>
-                            </remarks>
-                        </has-cardinality>
-                    </require>
+                    <has-cardinality target=".[citation]/title" min-occurs="1">
+                        <remarks>
+                            <p>A <code>title</code> is required when a citation is provided.</p>
+                        </remarks>
+                    </has-cardinality>
                 </constraint>
                 <remarks>
                     <p>A resource can be used in two ways. 1) it may point to an specific retrievable network resource using a <code>rlink</code>, or 2) it may be included as an attachment using a <code>base64</code>. A resource may contain multiple <code>rlink</code> and <code>base64</code> entries that represent alternative download locations (rlink) and attachments (base64) for the same resource. Both rlink and base64 allow for a <code>media-type</code> to be specified, which is used to distinguish between different representations of the same resource (e.g., Microsoft Word, PDF). When multiple <code>rlink</code> and <code>base64</code> items are included for a given resource, all items must contain equivalent information. This allows the document consumer to choose a preferred item to process based on a the selected item's <code>media-type</code>. This is extremely important when the items represent OSCAL content that is represented in alternate formats (i.e., XML, JSON, YAML), allowing the same OSCAL data to be processed from any of the available formats indicated by the items.</p>
@@ -669,17 +669,11 @@
             </define-field>
         </model>
         <constraint>
-            <require when="@rel=('reference')">
-                <require when="starts-with(@href,'#')">
-                    <matches target="@href" datatype="uri-reference"/>
-                    <index-has-key name="index-back-matter-resource" target=".">
-                        <key-field target="@href" pattern="#(.*)"/>
-                    </index-has-key>
-                </require>
-                <require when="not(starts-with(@href,'#'))">
-                    <matches target="@href" datatype="uri"/>
-                </require>
-            </require>
+            <matches target=".[@rel=('reference') and starts-with(@href,'#')]/@href" datatype="uri-reference"/>
+            <index-has-key name="index-back-matter-resource" target=".[@rel=('reference') and starts-with(@href,'#')]">
+                <key-field target="@href" pattern="#(.*)"/>
+            </index-has-key>
+            <matches target=".[@rel=('reference') and not(starts-with(@href,'#'))]/@href" datatype="uri"/>
         </constraint>
         <remarks>
             <p>To provide a cryptographic hash for a remote target resource, a local reference to a back matter <code>resource</code> is needed. The resource allows one or more hash values to be provided using the <code>rlink/hash</code> object.</p>
