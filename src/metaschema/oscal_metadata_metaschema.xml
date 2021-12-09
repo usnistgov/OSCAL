@@ -949,7 +949,7 @@
         <!-- This is an id because the idenfier is assigned and managed externally by humans. -->
         <formal-name>Document Identifier</formal-name>
         <!-- identifier declaration -->
-        <description>A document identifier qualified by an identifier <code>scheme</code>. A document identifier provides a <em>globally-unique</em> identifier with a <em>cross-instance</em> scope that is used for a group of documents that are to be treated as different versions of the same document. The locally defined <em>document-id</em> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). If this element does not appear, or if the value of this element is empty, the value of "document-id" is equal to the value of the "uuid" flag of the top-level root element.</description>
+        <description>A document identifier qualified by an identifier <code>scheme</code>. A document identifier provides a <em>globally-unique</em> identifier with a <em>cross-instance</em> scope that is used for a group of documents that are to be treated as different versions of the same document. If this element does not appear, or if the value of this element is empty, the value of "document-id" is equal to the value of the "uuid" flag of the top-level root element.</description>
         <json-value-key>identifier</json-value-key>
         <!-- CHANGE: "type" to "scheme" -->
         <!-- CHANGE: "Required" to "no" -->
