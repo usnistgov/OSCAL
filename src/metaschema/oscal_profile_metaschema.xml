@@ -37,6 +37,7 @@
             </model>
             <remarks>
                   <p>An OSCAL document that describes a tailoring of controls from one or more catalogs, with possible modification of multiple controls. It provides mechanisms by which controls may be selected (<code>import</code>), merged or (re)structured (<code>merge</code>), and amended (<code>modify</code>). OSCAL profiles may select subsets of controls, set parameter values for them in application, and even adjust the representation of controls as given in and by a catalog. They may also serve as sources for further modification in and by other profiles, that import them.</p>
+                  <p>See the [Concepts - Identifier Use](https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented) page for additional information regarding this identifier's uniqueness and scope.</p>
             </remarks>
       </define-assembly>
       <define-assembly name="import">

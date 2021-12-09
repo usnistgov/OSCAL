@@ -23,7 +23,7 @@
                         <!-- This is an id because the idenfier is intended to be human-readable. -->
                         <formal-name>Part Identifier</formal-name>
                         <!-- Identifier Declaration -->
-                        <description>A <a href="https://pages.nist.gov/OSCAL/concepts/identifier-use/#human-oriented"><em>human-oriented</em></a>, <em>locally unique</em> identifier with <em>cross-instance</em> scope that can be used to reference this defined part elsewhere in this and other OSCAL instances. When referenced from another OSCAL instance, this identifier must be referenced in the context of the containing resource (e.g., import-profile). This id should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+                        <description>A <em>human-oriented</em>, <em>locally unique</em> identifier with <em>cross-instance</em> scope that can be used to reference this defined part elsewhere in this and other OSCAL instances. When referenced from another OSCAL instance, this identifier must be referenced in the context of the containing resource (e.g., import-profile). This id should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
                 </define-flag>
                 <define-flag name="name" as-type="token" required="yes">
                         <formal-name>Part Name</formal-name>
