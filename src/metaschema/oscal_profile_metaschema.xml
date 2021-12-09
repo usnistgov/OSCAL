@@ -91,7 +91,7 @@
             <model>
                   <assembly ref="combine"/>
                   <choice>
-                        <assembly ref="as-is"/>
+                        <field ref="as-is"/>
                         <assembly ref="flat"/>
                         <assembly ref="custom"/>
                   </choice>
@@ -110,10 +110,10 @@
                   <p>This setting permits a profile designer to apply a rule for the resolution of such cases. In a well-designed profile, such collisions would ordinarily be avoided, but this setting can be useful for defining what to do when it occurs.</p>
             </remarks>
       </define-assembly>
-      <define-assembly name="as-is">
+      <define-field name="as-is" as-type="boolean">
             <formal-name>As is</formal-name>
             <description>An As-is element indicates that the controls should be structured in resolution as they are structured in their source catalogs. It does not contain any elements or attributes.</description>
-      </define-assembly>
+      </define-field>
       <define-assembly name="flat">
             <formal-name>Flat</formal-name>
             <description>A Flat element indicates that the controls should be structured in a completely flat list. It does not contain any elements or attributes.</description>
