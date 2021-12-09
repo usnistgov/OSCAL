@@ -21,22 +21,7 @@
         <define-flag name="uuid" required="yes" as-type="uuid">
             <formal-name>Assessment Plan Universally Unique Identifier</formal-name>
             <!-- Identifier Declaration -->
-<<<<<<< HEAD
-<<<<<<< HEAD
             <description>A <em>machine-oriented</em>, <em>globally unique</em> identifier with <em>cross-instance</em> scope that can be used to reference this assessment plan in this or other OSCAL instances. The locally defined <em>UUID</em> of the <code>assessment plan</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
-=======
-            <description>A <em>machine-oriented</em>, <em>globally unique</em> identifier with <em>cross-instance</em> scope that can be used to reference this assessment plan in this or other OSCAL instances. This UUID should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
-            <remarks>
-                <!-- UUID -->
-                <p>Type: machine-oriented</p>
-                <p>Uniqueness: globally unique</p>
-                <p>Scope: cross-instance - provides an identifier that can be used to refer to this assessment plan in this or other OSCAL instances</p>
-                <p>Consistency: per-subject</p>
-            </remarks>
->>>>>>> e391783d (assessment layers updates)
-=======
-            <description>A <em>machine-oriented</em>, <em>globally unique</em> identifier with <em>cross-instance</em> scope that can be used to reference this assessment plan in this or other OSCAL instances. The locally defined <em>UUID</em> of the <code>assessment plan</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
->>>>>>> 890064fc (revised identifier descriptions)
         </define-flag>
         <model>
             <assembly ref="metadata" min-occurs="1" max-occurs="1"/>
