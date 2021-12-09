@@ -91,15 +91,8 @@
             <model>
                   <assembly ref="combine"/>
                   <choice>
-                        <define-assembly name="flat" min-occurs="1">
-                              <formal-name>Flat</formal-name>
-                              <description>Use the flat structuring method.</description>
-                        </define-assembly>
-                        <define-field name="as-is" as-type="boolean" min-occurs="1">
-                              <formal-name>As is</formal-name>
-                              <description>An As-is element indicates that the controls should be structured in resolution as they are structured in their source catalogs. It does not contain any elements or attributes.</description>
-                        </define-field>
-                        <assembly ref="custom" min-occurs="1"/>
+                        <field ref="as-is"/>
+                        <assembly ref="custom"/>
                   </choice>
             </model>
             <remarks>
@@ -249,14 +242,6 @@
                                     </assembly>
                               </choice>
                         </model>
-                        <constraint>
-                              <is-unique id="unique-profile-modify-set-parameter" target="set-parameter">
-                                    <key-field target="@param-id"/>
-                                    <remarks>
-                                          <p>Since multiple <code>set-parameter</code> entries can be provided, each parameter must be set only once.</p>
-                                    </remarks>
-                              </is-unique>
-                        </constraint>
                   </define-assembly>
                   <assembly ref="alter" max-occurs="unbounded">
                         <group-as name="alters" in-json="ARRAY"/>
@@ -437,7 +422,7 @@
             <constraint>
                   <allowed-values>
                         <enum value="yes">Include child controls with an included control.</enum>
-                        <enum value="no">(default) When importing a control, only include child controls that are also explicitly called.</enum>
+                        <enum value="no">When importing a control, only include child controls that are also explicitly called.</enum>
                   </allowed-values>
             </constraint>
       </define-flag>
