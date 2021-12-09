@@ -122,7 +122,7 @@
                               <formal-name>As-Is Structuring Directive</formal-name>
                               <description>An As-is element indicates that the controls should be structured in resolution as they are structured in their source catalogs. It does not contain any elements or attributes.</description>
                         </define-field>
-                        <define-assembly name="custom">
+                        <define-assembly name="custom" min-occurs="1">
                               <formal-name>Custom grouping</formal-name>
                               <description>A Custom element frames a structure for embedding represented controls in resolution.</description>
                               <model>
