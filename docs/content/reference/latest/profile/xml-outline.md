@@ -1,6 +1,6 @@
 ---
-title: "OSCAL Profile Model v1.0.0 XML Format Outline"
-heading: "Profile Model v1.0.0 XML Format Outline"
+title: "OSCAL Profile Model v XML Format Outline"
+heading: "Profile Model v XML Format Outline"
 custom_js:
   - "/js/oscal-metaschema-map-expander.js"
 weight: 50
@@ -572,6 +572,12 @@ The following outline is a representation of the [XML format](https://github.com
                            <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/profile/merge/as-is">as-is</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#boolean">boolean</a></span><span class="nobr">&lt;/as-is&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 or 1]</span></span></summary>
                            <p class="OM-map-name">a <span class="OM-datatype"><a href="/reference/datatypes/#boolean">boolean</a></span> value</p>
                            <p class="close-tag nobr">&lt;/as-is&gt;</p>
+                        </details>
+                     </div>
+                     <div class="OM-choice">
+                        <details class="OM-entry">
+                           <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/profile/merge/flat">flat</a></span>/&gt;</span><span class="sq cardinality"> <span class="OM-cardinality">[0 or 1]</span></span></summary>
+                           <p class="OM-map-name">[Empty]</p>
                         </details>
                      </div>
                      <div class="OM-choice">

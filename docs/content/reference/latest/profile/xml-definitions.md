@@ -1,6 +1,6 @@
 ---
-title: "OSCAL Profile Model v1.0.0 XML Format Metaschema Reference"
-heading: "Profile Model v1.0.0 XML Metaschema Reference"
+title: "OSCAL Profile Model v XML Format Metaschema Reference"
+heading: "Profile Model v XML Metaschema Reference"
 weight: 80
 generateanchors: false
 sidenav:
@@ -1156,6 +1156,18 @@ The following is a reference for the XML element and attribute types derived fro
    </div>
    <div class="model-entry definition define-assembly">
       <div class="definition-header">
+         <h1 id="/assembly/oscal-profile/flat" class="toc1 name">flat</h1>
+         <p class="type">assembly<br class="br" /> </p>
+         <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-profile/flat">Switch to JSON</a></div>
+         <p class="formal-name">Flat</p>
+      </div>
+      <div class="body">
+         <p class="description"><span class="usa-tag">description</span> A Flat element indicates that the controls should be structured in a completely flat
+            list. It does not contain any elements or attributes.</p>
+      </div>
+   </div>
+   <div class="model-entry definition define-assembly">
+      <div class="definition-header">
          <h1 id="/assembly/oscal-profile/group" class="toc1 name">group</h1>
          <p class="type">assembly<br class="br" /> </p>
          <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-profile/group">Switch to JSON</a></div>
@@ -1952,8 +1964,8 @@ The following is a reference for the XML element and attribute types derived fro
                <p>The value <b>may be locally defined</b>, or the following:</p>
                <ul>
                   
-                  <li><strong>data-center</strong>: A location that contains computing assets. A class can be used to indicate a subclass
-                     of data-center.</li>
+                  <li><strong>data-center</strong>: A location that contains computing assets. A class can be used to indicate the sub-type
+                     of data-center as primary or alternate.</li>
                   </ul>
             </div>
             
@@ -2183,7 +2195,7 @@ The following is a reference for the XML element and attribute types derived fro
             
             
             <div class="constraint">
-               <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-location-uuid</code> using a key constructed of key field(s) <code>value()</code></p>
+               <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-location-uuid</code> using a key constructed of key field(s) <code>.</code></p>
             </div>
             </details>
       </div>
@@ -2201,7 +2213,7 @@ The following is a reference for the XML element and attribute types derived fro
             <summary>Constraint (1)</summary>
             
             <div class="constraint">
-               <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-location-uuid</code> using a key constructed of key field(s) <code>value()</code></p>
+               <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-location-uuid</code> using a key constructed of key field(s) <code>.</code></p>
             </div>
             </details>
       </div>
@@ -2278,6 +2290,18 @@ The following is a reference for the XML element and attribute types derived fro
                </div>
                <div class="model-entry definition assembly">
                   <div class="instance-header">
+                     <h2 id="/assembly/oscal-profile/merge/flat" class="toc2 name">flat</h2>
+                     <p class="type">assembly<br class="br" /> </p>
+                     <p class="occurrence">[0 or 1]</p>
+                     <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-profile/merge/flat">Switch to JSON</a></div>
+                     <p class="formal-name">Flat</p>
+                  </div>
+                  <div class="body">
+                     <p class="definition-link"><a href="#/assembly/oscal-profile/flat">See definition</a></p>
+                  </div>
+               </div>
+               <div class="model-entry definition assembly">
+                  <div class="instance-header">
                      <h2 id="/assembly/oscal-profile/merge/custom" class="toc2 name">custom</h2>
                      <p class="type">assembly<br class="br" /> </p>
                      <p class="occurrence">[0 or 1]</p>
@@ -2328,7 +2352,7 @@ The following is a reference for the XML element and attribute types derived fro
             </div>
             
             <div class="constraint">
-               <p><span class="usa-tag">index</span> for <code class="path">.//prop</code> an index <code>index-metadata-property-id</code> shall list values returned by targets <code>.//prop</code> using keys constructed of key field(s) <code>@id</code></p>
+               <p><span class="usa-tag">index</span> for <code class="path">.//prop</code> an index <code>index-metadata-property-uuid</code> shall list values returned by targets <code>.//prop</code> using keys constructed of key field(s) <code>@uuid</code></p>
             </div>
             
             <div class="constraint">
@@ -2715,6 +2739,13 @@ The following is a reference for the XML element and attribute types derived fro
       </div>
       <div class="body">
          <p class="description"><span class="usa-tag">description</span> Set parameters or amend controls in resolution</p>
+         <details>
+            <summary>Constraint (1)</summary>
+            
+            <div class="constraint">
+               <p><span class="usa-tag">is unique</span> for <code class="path">set-parameter</code>: any target value must be unique (i.e., occur only once)</p>
+            </div>
+            </details>
          <details open="open">
             <summary>Elements (2):</summary>
             <div class="model assembly-model">
@@ -4015,7 +4046,7 @@ The following is a reference for the XML element and attribute types derived fro
                         <summary>Constraint (1)</summary>
                         
                         <div class="constraint">
-                           <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-party-organizations-uuid</code> using a key constructed of key field(s) <code>value()</code></p>
+                           <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-party-organizations-uuid</code> using a key constructed of key field(s) <code>.</code></p>
                         </div>
                         </details>
                   </div>
@@ -4049,7 +4080,7 @@ The following is a reference for the XML element and attribute types derived fro
             <summary>Constraint (1)</summary>
             
             <div class="constraint">
-               <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-party-uuid</code> using a key constructed of key field(s) <code>value()</code></p>
+               <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-party-uuid</code> using a key constructed of key field(s) <code>.</code></p>
             </div>
             </details>
       </div>
@@ -4504,7 +4535,7 @@ The following is a reference for the XML element and attribute types derived fro
             </div>
             
             <div class="constraint">
-               <p><span class="usa-tag">index has key</span> for <code class="path">party-uuid</code>this value must correspond to a listing in the index <code>index-metadata-party-uuid</code> using a key constructed of key field(s) <code>value()</code></p>
+               <p><span class="usa-tag">index has key</span> for <code class="path">party-uuid</code>this value must correspond to a listing in the index <code>index-metadata-party-uuid</code> using a key constructed of key field(s) <code>.</code></p>
             </div>
             </details>
          <details open="open">
@@ -5125,7 +5156,7 @@ The following is a reference for the XML element and attribute types derived fro
             <summary>Constraint (1)</summary>
             
             <div class="constraint">
-               <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-role-id</code> using a key constructed of key field(s) <code>value()</code></p>
+               <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-role-id</code> using a key constructed of key field(s) <code>.</code></p>
             </div>
             </details>
       </div>
