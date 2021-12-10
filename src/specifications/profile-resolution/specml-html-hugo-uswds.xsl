@@ -17,6 +17,9 @@
         <xsl:text>&#xA;description: Transforming a profile into the tailored catalog it represents</xsl:text>
         <!--<xsl:text>&#xA;custom_css:</xsl:text>
         <xsl:text>&#xA;  - /css/oscal-specs.css</xsl:text>-->
+        <xsl:text>&#xA;toc:</xsl:text>
+        <xsl:text>&#xA;  enabled: true</xsl:text>
+        <xsl:text>&#xA;  headingselectors: "h1, h2, h3, h4, h5"</xsl:text>
         <xsl:text>&#xA;---&#xA;</xsl:text>
     </xsl:template>
 
