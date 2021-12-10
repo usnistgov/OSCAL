@@ -1,10 +1,10 @@
 # OSCAL Utilities
 
-Current best tooling for OSCAL can be found listed on our web site:
+The OSCAL project maintains [a list of tools for OSCAL on our web site](https://pages.nist.gov/OSCAL/tools/ "OSCAL tools page").
 
-See in particular the repository at https://github.com/usnistgov/oscal-tools
+Additionally, we maintain a repository of tools at https://github.com/usnistgov/oscal-tools; and members of the community offer OSCAL tools, frequently in open repositories free to use, which we do not maintain.
 
-Functionality maintained here includes:
+Functionality archived here includes:
 
 `resolver-pipeline` a demonstration implementation of OSCAL Profile resolution.
 
