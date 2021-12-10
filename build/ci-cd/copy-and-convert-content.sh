@@ -154,7 +154,7 @@ post_process_content() {
       if [ "$VERBOSE" = "true" ]; then
         echo -e "${P_INFO}Translating relative XML paths to JSON paths in '${P_END}${target_file_relative}${P_INFO}'.${P_END}"
       fi
-      python "$OSCALDIR/build/ci-cd/python/convert-filetypes.py" --old-extension xml --new-extension json "${target_file}"
+      python3 "$OSCALDIR/build/ci-cd/python/convert_filetypes.py" --old-extension xml --new-extension json "${target_file}"
     fi
 
     # produce pretty JSON
@@ -199,7 +199,7 @@ post_process_content() {
     if [ "$VERBOSE" = "true" ]; then
       echo -e "${P_INFO}Translating relative paths in '${P_END}${yaml_file_relative}${P_INFO}'.${P_END}"
     fi
-    python "$OSCALDIR/build/ci-cd/python/convert-filetypes.py" --old-extension json --new-extension yaml "${yaml_file}"
+    python3 "$OSCALDIR/build/ci-cd/python/convert_filetypes.py" --old-extension json --new-extension yaml "${yaml_file}"
     echo -e "${P_OK}Created YAML '${P_END}${yaml_file_relative}${P_OK}'.${P_END}"
     ;;
   xml)
