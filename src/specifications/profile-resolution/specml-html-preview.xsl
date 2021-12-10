@@ -20,6 +20,7 @@
         <html>
             <head>
                 <title>{ child::head } Specification</title>
+                <!--<script type="text/javascript" src="https://livejs.com/live.js"></script>-->
                 <xsl:call-template name="css"/>
             </head>
             <body>
@@ -59,6 +60,7 @@ h1, h2, h3, h4, h5, h6 {{  font-family: { $display-font } }}
 
 code.src {{ font-size:90%; font-weight:bold; background-color: lightsteelblue; padding: 0.2em }}
 code.tgt {{ font-size:90%; font-weight:bold; background-color: lemonchiffon; padding: 0.2em }}
+code.int {{ font-size:90%; font-weight:bold; background-color: pink; padding: 0.2em }}
 b.term, b.xpath {{ font-family: { $display-font } }}
 
 .secnum {{ padding: 0.2em; color: midnightblue; font-weight: bold; font-size: 110% }}
@@ -74,6 +76,7 @@ a.linked {{ color: inherit }}
 .example.source_profile-tagging {{  background-color: lightsteelblue }}
 .example.source_catalog-tagging {{  background-color: powderblue }}
 .example.target_catalog-tagging {{  background-color: lemonchiffon }}
+.example.inter_catalog-tagging {{  background-color: lemonchiffon }}
 
 .revisit {{ font-style: italic; color: red; background-color: yellow }}
 
@@ -146,6 +149,11 @@ a.linked {{ color: inherit }}
 
     <xsl:template match="tagging[@whose='source_profile']" mode="tagging-label">
         <h4 class="label">Source (profile):</h4>
+    </xsl:template>
+    
+    
+    <xsl:template match="tagging[@whose='inter_catalog']" mode="tagging-label">
+        <h4 class="label">Intermediate (catalog):</h4>
     </xsl:template>
 
     <xsl:template match="tagging">
