@@ -1,6 +1,6 @@
 ---
-title: "OSCAL System Security Plan Model v1.0.0 XML Format Metaschema Reference"
-heading: "System Security Plan Model v1.0.0 XML Metaschema Reference"
+title: "OSCAL System Security Plan Model v XML Format Metaschema Reference"
+heading: "System Security Plan Model v XML Metaschema Reference"
 weight: 80
 generateanchors: false
 sidenav:
@@ -1027,7 +1027,7 @@ The following is a reference for the XML element and attribute types derived fro
                         </div>
                         
                         <div class="constraint">
-                           <p><span class="usa-tag">index</span> an index <code>by-component-export-provided-uuid</code> shall contain values  using keys constructed of key field(s) <code>@uuid</code></p>
+                           <p><span class="usa-tag">index</span> for <code class="path">provided</code> an index <code>by-component-export-provided-uuid</code> shall list values returned by targets <code>provided</code> using keys constructed of key field(s) <code>@uuid</code></p>
                         </div>
                         
                         <div class="constraint">
@@ -1962,11 +1962,11 @@ The following is a reference for the XML element and attribute types derived fro
             </div>
             
             <div class="constraint">
-               <p><span class="usa-tag">matches</span> for <code class="path">link[@rel='diagramn']/@href[starts-with(.,'#')]</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
+               <p><span class="usa-tag">matches</span> for <code class="path">link[@rel='diagram']/@href[starts-with(.,'#')]</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
             </div>
             
             <div class="constraint">
-               <p><span class="usa-tag">index has key</span> for <code class="path">link[@rel='diagram' and [starts-with(@href,'#')]]</code>this value must correspond to a listing in the index <code>index-back-matter-resource</code> using a key constructed of key field(s) <code>@href</code></p>
+               <p><span class="usa-tag">index has key</span> for <code class="path">link[@rel='diagram' and starts-with(@href,'#')]</code>this value must correspond to a listing in the index <code>index-back-matter-resource</code> using a key constructed of key field(s) <code>@href</code></p>
             </div>
             
             <div class="constraint">
@@ -2400,7 +2400,7 @@ The following is a reference for the XML element and attribute types derived fro
             </div>
             
             <div class="constraint">
-               <p><span class="usa-tag">index has key</span> for <code class="path">responsible-role|statement/responsible-role|.//by-component//responsible-role</code>this value must correspond to a listing in the index <code>index-metadata-party-uuid</code> using a key constructed of key field(s) <code>@party-uuid</code></p>
+               <p><span class="usa-tag">index has key</span> for <code class="path">responsible-role|statement/responsible-role|.//by-component//responsible-role</code>this value must correspond to a listing in the index <code>index-metadata-party-uuid</code> using a key constructed of key field(s) <code>party-uuid</code></p>
             </div>
             
             <div class="constraint">
@@ -2842,7 +2842,7 @@ The following is a reference for the XML element and attribute types derived fro
             </div>
             
             <div class="constraint">
-               <p><span class="usa-tag">index has key</span> for <code class="path">responsible-party</code>this value must correspond to a listing in the index <code>index-metadata-party-uuid</code> using a key constructed of key field(s) <code>@party-uuid</code></p>
+               <p><span class="usa-tag">index has key</span> for <code class="path">responsible-party</code>this value must correspond to a listing in the index <code>index-metadata-party-uuid</code> using a key constructed of key field(s) <code>party-uuid</code></p>
             </div>
             
             <div class="constraint">
@@ -3377,8 +3377,8 @@ The following is a reference for the XML element and attribute types derived fro
                <p>The value <b>may be locally defined</b>, or the following:</p>
                <ul>
                   
-                  <li><strong>data-center</strong>: A location that contains computing assets. A class can be used to indicate a subclass
-                     of data-center.</li>
+                  <li><strong>data-center</strong>: A location that contains computing assets. A class can be used to indicate the sub-type
+                     of data-center as primary or alternate.</li>
                   </ul>
             </div>
             
@@ -3608,7 +3608,7 @@ The following is a reference for the XML element and attribute types derived fro
             
             
             <div class="constraint">
-               <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-location-uuid</code> using a key constructed of key field(s) <code>value()</code></p>
+               <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-location-uuid</code> using a key constructed of key field(s) <code>.</code></p>
             </div>
             </details>
       </div>
@@ -3626,7 +3626,7 @@ The following is a reference for the XML element and attribute types derived fro
             <summary>Constraint (1)</summary>
             
             <div class="constraint">
-               <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-location-uuid</code> using a key constructed of key field(s) <code>value()</code></p>
+               <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-location-uuid</code> using a key constructed of key field(s) <code>.</code></p>
             </div>
             </details>
       </div>
@@ -3668,7 +3668,7 @@ The following is a reference for the XML element and attribute types derived fro
             </div>
             
             <div class="constraint">
-               <p><span class="usa-tag">index</span> for <code class="path">.//prop</code> an index <code>index-metadata-property-id</code> shall list values returned by targets <code>.//prop</code> using keys constructed of key field(s) <code>@id</code></p>
+               <p><span class="usa-tag">index</span> for <code class="path">.//prop</code> an index <code>index-metadata-property-uuid</code> shall list values returned by targets <code>.//prop</code> using keys constructed of key field(s) <code>@uuid</code></p>
             </div>
             
             <div class="constraint">
@@ -5191,7 +5191,7 @@ The following is a reference for the XML element and attribute types derived fro
                         <summary>Constraint (1)</summary>
                         
                         <div class="constraint">
-                           <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-party-organizations-uuid</code> using a key constructed of key field(s) <code>value()</code></p>
+                           <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-party-organizations-uuid</code> using a key constructed of key field(s) <code>.</code></p>
                         </div>
                         </details>
                   </div>
@@ -5225,7 +5225,7 @@ The following is a reference for the XML element and attribute types derived fro
             <summary>Constraint (1)</summary>
             
             <div class="constraint">
-               <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-party-uuid</code> using a key constructed of key field(s) <code>value()</code></p>
+               <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-party-uuid</code> using a key constructed of key field(s) <code>.</code></p>
             </div>
             </details>
       </div>
@@ -5642,7 +5642,7 @@ The following is a reference for the XML element and attribute types derived fro
             </div>
             
             <div class="constraint">
-               <p><span class="usa-tag">index has key</span> for <code class="path">party-uuid</code>this value must correspond to a listing in the index <code>index-metadata-party-uuid</code> using a key constructed of key field(s) <code>value()</code></p>
+               <p><span class="usa-tag">index has key</span> for <code class="path">party-uuid</code>this value must correspond to a listing in the index <code>index-metadata-party-uuid</code> using a key constructed of key field(s) <code>.</code></p>
             </div>
             </details>
          <details open="open">
@@ -6263,7 +6263,7 @@ The following is a reference for the XML element and attribute types derived fro
             <summary>Constraint (1)</summary>
             
             <div class="constraint">
-               <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-role-id</code> using a key constructed of key field(s) <code>value()</code></p>
+               <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-role-id</code> using a key constructed of key field(s) <code>.</code></p>
             </div>
             </details>
       </div>
@@ -6702,7 +6702,7 @@ The following is a reference for the XML element and attribute types derived fro
             </div>
             
             <div class="constraint">
-               <p><span class="usa-tag">allowed values</span> for <code class="path">prop[@name=('identity-assurance-level','authenticator-assurance-level','federation-assurance-level')]/value()</code></p>
+               <p><span class="usa-tag">allowed values</span> for <code class="path">prop[@name=('identity-assurance-level','authenticator-assurance-level','federation-assurance-level')]/@value</code></p>
                <p>The value <b>must</b> be one of the following:</p>
                <ul>
                   
@@ -6718,7 +6718,7 @@ The following is a reference for the XML element and attribute types derived fro
             </div>
             
             <div class="constraint">
-               <p><span class="usa-tag">allowed values</span> for <code class="path">property/@name</code></p>
+               <p><span class="usa-tag">allowed values</span> for <code class="path">prop/@name</code></p>
                <p>The value <b>may be locally defined</b>, or one of the following:</p>
                <ul>
                   
@@ -6730,7 +6730,7 @@ The following is a reference for the XML element and attribute types derived fro
             </div>
             
             <div class="constraint">
-               <p><span class="usa-tag">allowed values</span> for <code class="path">prop[@name='cloud-deployment-model']/value()</code></p>
+               <p><span class="usa-tag">allowed values</span> for <code class="path">prop[@name='cloud-deployment-model']/@value</code></p>
                <p>The value <b>must</b> be one of the following:</p>
                <ul>
                   
@@ -6745,7 +6745,7 @@ The following is a reference for the XML element and attribute types derived fro
                      </li>
                   
                   
-                  <li><strong>government-only-cloud</strong>: TODO: define</li>
+                  <li><strong>government-only-cloud</strong>: A specific type of community-cloud for use only by government services.</li>
                   
                   <li><strong>other</strong>: Any other type of cloud deployment model that is exclusive to the other choices.</li>
                   The hybrid cloud deployment model, as defined by The NIST Definition of Cloud Computing,
@@ -6754,7 +6754,7 @@ The following is a reference for the XML element and attribute types derived fro
             </div>
             
             <div class="constraint">
-               <p><span class="usa-tag">allowed values</span> for <code class="path">prop[@name='cloud-service-model']/value()</code></p>
+               <p><span class="usa-tag">allowed values</span> for <code class="path">prop[@name='cloud-service-model']/@value</code></p>
                <p>The value <b>must</b> be one of the following:</p>
                <ul>
                   
@@ -7402,7 +7402,7 @@ The following is a reference for the XML element and attribute types derived fro
             </div>
             
             <div class="constraint">
-               <p><span class="usa-tag">allowed values</span> for <code class="path">prop[(@name=('ipv4-address','ipv6-address')]/@class</code></p>
+               <p><span class="usa-tag">allowed values</span> for <code class="path">prop[@name=('ipv4-address','ipv6-address')]/@class</code></p>
                <p>The value <b>may be locally defined</b>, or one of the following:</p>
                <ul>
                   
@@ -7452,7 +7452,7 @@ The following is a reference for the XML element and attribute types derived fro
             </div>
             
             <div class="constraint">
-               <p><span class="usa-tag">allowed values</span> for <code class="path">prop[@name='direction')]/@value</code></p>
+               <p><span class="usa-tag">allowed values</span> for <code class="path">prop[@name='direction']/@value</code></p>
                <p>The value <b>may be locally defined</b>, or one of the following:</p>
                <ul>
                   
@@ -7811,7 +7811,7 @@ The following is a reference for the XML element and attribute types derived fro
             </div>
             
             <div class="constraint">
-               <p><span class="usa-tag">index has key</span> for <code class="path">component/prop[@name='leveraged-authorization-uuid']</code>this value must correspond to a listing in the index <code>index-system-implementation-leveraged-authorization-uuid</code> using a key constructed of key field(s) <code>value()</code></p>
+               <p><span class="usa-tag">index has key</span> for <code class="path">component/prop[@name='leveraged-authorization-uuid']</code>this value must correspond to a listing in the index <code>index-system-implementation-leveraged-authorization-uuid</code> using a key constructed of key field(s) <code>@value</code></p>
             </div>
             
             
@@ -7960,7 +7960,7 @@ The following is a reference for the XML element and attribute types derived fro
                         </div>
                         
                         <div class="constraint">
-                           <p><span class="usa-tag">index has key</span> for <code class="path">link[@rel='system-security-plan' and [starts-with(@href,'#')]]</code>this value must correspond to a listing in the index <code>index-back-matter-resource</code> using a key constructed of key field(s) <code>@href</code></p>
+                           <p><span class="usa-tag">index has key</span> for <code class="path">link[@rel='system-security-plan' and starts-with(@href,'#')]</code>this value must correspond to a listing in the index <code>index-back-matter-resource</code> using a key constructed of key field(s) <code>@href</code></p>
                         </div>
                         
                         <div class="constraint">
@@ -8200,7 +8200,7 @@ The following is a reference for the XML element and attribute types derived fro
             </div>
             
             <div class="constraint">
-               <p><span class="usa-tag">allowed values</span> for <code class="path">prop[@name='privacy-designation']/value()</code></p>
+               <p><span class="usa-tag">allowed values</span> for <code class="path">prop[@name='privacy-designation']/@value</code></p>
                <p>The value <b>must</b> be one of the following:</p>
                <ul>
                   
@@ -8224,7 +8224,7 @@ The following is a reference for the XML element and attribute types derived fro
             </div>
             
             <div class="constraint">
-               <p><span class="usa-tag">index has key</span> for <code class="path">link[@rel='privacy-impact-assessment' and [starts-with(@href,'#')]]</code>this value must correspond to a listing in the index <code>index-back-matter-resource</code> using a key constructed of key field(s) <code>@href</code></p>
+               <p><span class="usa-tag">index has key</span> for <code class="path">link[@rel='privacy-impact-assessment' and starts-with(@href,'#')]</code>this value must correspond to a listing in the index <code>index-back-matter-resource</code> using a key constructed of key field(s) <code>@href</code></p>
             </div>
             
             <div class="constraint">
@@ -8232,7 +8232,7 @@ The following is a reference for the XML element and attribute types derived fro
             </div>
             
             <div class="constraint">
-               <p><span class="usa-tag">allowed values</span> for <code class="path">security-sensitivity-level|security-impact-level/(security-objective-confidentiality|security-objective-integrity|security-objective-availability)|system-information/information-type/(confidentiality-impact|integrity-impact|availability-impact)/(base|selected}</code></p>
+               <p><span class="usa-tag">allowed values</span> for <code class="path">information-type/(confidentiality-impact|integrity-impact|availability-impact)/(base|selected)</code></p>
                <p>The value <b>must</b> be one of the following:</p>
                <ul>
                   

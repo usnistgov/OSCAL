@@ -1,6 +1,6 @@
 ---
-title: "OSCAL Plan of Action and Milestones Model v1.0.0 JSON Format Index"
-heading: "Plan of Action and Milestones Model v1.0.0 JSON Format Index"
+title: "OSCAL Plan of Action and Milestones Model v JSON Format Index"
+heading: "Plan of Action and Milestones Model v JSON Format Index"
 weight: 30
 generateanchors: false
 sidenav:

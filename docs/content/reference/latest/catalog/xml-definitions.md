@@ -1,6 +1,6 @@
 ---
-title: "OSCAL Catalog Model v1.0.0 XML Format Metaschema Reference"
-heading: "Catalog Model v1.0.0 XML Metaschema Reference"
+title: "OSCAL Catalog Model v XML Format Metaschema Reference"
+heading: "Catalog Model v XML Metaschema Reference"
 weight: 80
 generateanchors: false
 sidenav:
@@ -1674,8 +1674,8 @@ The following is a reference for the XML element and attribute types derived fro
                <p>The value <b>may be locally defined</b>, or the following:</p>
                <ul>
                   
-                  <li><strong>data-center</strong>: A location that contains computing assets. A class can be used to indicate a subclass
-                     of data-center.</li>
+                  <li><strong>data-center</strong>: A location that contains computing assets. A class can be used to indicate the sub-type
+                     of data-center as primary or alternate.</li>
                   </ul>
             </div>
             
@@ -1905,7 +1905,7 @@ The following is a reference for the XML element and attribute types derived fro
             
             
             <div class="constraint">
-               <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-location-uuid</code> using a key constructed of key field(s) <code>value()</code></p>
+               <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-location-uuid</code> using a key constructed of key field(s) <code>.</code></p>
             </div>
             </details>
       </div>
@@ -1923,7 +1923,7 @@ The following is a reference for the XML element and attribute types derived fro
             <summary>Constraint (1)</summary>
             
             <div class="constraint">
-               <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-location-uuid</code> using a key constructed of key field(s) <code>value()</code></p>
+               <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-location-uuid</code> using a key constructed of key field(s) <code>.</code></p>
             </div>
             </details>
       </div>
@@ -1965,7 +1965,7 @@ The following is a reference for the XML element and attribute types derived fro
             </div>
             
             <div class="constraint">
-               <p><span class="usa-tag">index</span> for <code class="path">.//prop</code> an index <code>index-metadata-property-id</code> shall list values returned by targets <code>.//prop</code> using keys constructed of key field(s) <code>@id</code></p>
+               <p><span class="usa-tag">index</span> for <code class="path">.//prop</code> an index <code>index-metadata-property-uuid</code> shall list values returned by targets <code>.//prop</code> using keys constructed of key field(s) <code>@uuid</code></p>
             </div>
             
             <div class="constraint">
@@ -3355,7 +3355,7 @@ The following is a reference for the XML element and attribute types derived fro
                         <summary>Constraint (1)</summary>
                         
                         <div class="constraint">
-                           <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-party-organizations-uuid</code> using a key constructed of key field(s) <code>value()</code></p>
+                           <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-party-organizations-uuid</code> using a key constructed of key field(s) <code>.</code></p>
                         </div>
                         </details>
                   </div>
@@ -3389,7 +3389,7 @@ The following is a reference for the XML element and attribute types derived fro
             <summary>Constraint (1)</summary>
             
             <div class="constraint">
-               <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-party-uuid</code> using a key constructed of key field(s) <code>value()</code></p>
+               <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-party-uuid</code> using a key constructed of key field(s) <code>.</code></p>
             </div>
             </details>
       </div>
@@ -3604,7 +3604,7 @@ The following is a reference for the XML element and attribute types derived fro
             </div>
             
             <div class="constraint">
-               <p><span class="usa-tag">index has key</span> for <code class="path">party-uuid</code>this value must correspond to a listing in the index <code>index-metadata-party-uuid</code> using a key constructed of key field(s) <code>value()</code></p>
+               <p><span class="usa-tag">index has key</span> for <code class="path">party-uuid</code>this value must correspond to a listing in the index <code>index-metadata-party-uuid</code> using a key constructed of key field(s) <code>.</code></p>
             </div>
             </details>
          <details open="open">
@@ -4225,7 +4225,7 @@ The following is a reference for the XML element and attribute types derived fro
             <summary>Constraint (1)</summary>
             
             <div class="constraint">
-               <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-role-id</code> using a key constructed of key field(s) <code>value()</code></p>
+               <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-role-id</code> using a key constructed of key field(s) <code>.</code></p>
             </div>
             </details>
       </div>

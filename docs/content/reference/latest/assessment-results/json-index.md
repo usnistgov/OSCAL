@@ -1,6 +1,6 @@
 ---
-title: "OSCAL Assessment Results Model v1.0.0 JSON Format Index"
-heading: "Assessment Results Model v1.0.0 JSON Format Index"
+title: "OSCAL Assessment Results Model v JSON Format Index"
+heading: "Assessment Results Model v JSON Format Index"
 weight: 30
 generateanchors: false
 sidenav:

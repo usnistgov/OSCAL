@@ -1,6 +1,6 @@
 ---
-title: "OSCAL Profile Model v1.0.0 JSON Format Outline"
-heading: "Profile Model v1.0.0 JSON Format Outline"
+title: "OSCAL Profile Model v JSON Format Outline"
+heading: "Profile Model v JSON Format Outline"
 custom_js:
   - "/js/oscal-metaschema-map-expander.js"
 weight: 10
@@ -820,6 +820,12 @@ The following outline is a representation of the [JSON format](https://github.co
                      </div>
                      <div class="OM-choice">
                         <details class="OM-entry">
+                           <summary><a class="OM-name" href="../json-reference/#/profile/merge/flat">flat</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit">{<span class="show-closed"> … }, </span></span></summary>
+                           <p><span class="OM-lit"> }, </span></p>
+                        </details>
+                     </div>
+                     <div class="OM-choice">
+                        <details class="OM-entry">
                            <summary><a class="OM-name" href="../json-reference/#/profile/merge/custom">custom</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit">{<span class="show-closed"> … }</span></span></summary>
                            <div class="model-container object">
                               <details class="OM-entry">
@@ -1557,7 +1563,7 @@ The following outline is a representation of the [JSON format](https://github.co
                      <p><span class="OM-lit">], </span></p>
                   </details>
                   <details class="OM-entry">
-                     <summary><span class="sq"><a class="OM-name" href="../json-reference/#/profile/modify/alters">alters</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ]</span></span></span></summary>
+                     <summary><span class="sq"><a class="OM-name" href="../json-reference/#/profile/modify/alters">alters</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
                      <div class="model-container array">
                         <div class="OM-entry">
                            <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/profile/modify/alters">alter</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
@@ -1931,7 +1937,7 @@ The following outline is a representation of the [JSON format](https://github.co
                            <p><span class="OM-lit"> }</span></p>
                         </div>
                      </div>
-                     <p><span class="OM-lit">]</span></p>
+                     <p><span class="OM-lit">], </span></p>
                   </details>
                </div>
                <p><span class="OM-lit"> }, </span></p>
