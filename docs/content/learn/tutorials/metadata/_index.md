@@ -49,20 +49,20 @@ Below is the high-level structure of the Metadata Section in XML, JSON, and YAML
 
 Element definitions:
 
-- [`<title>`](/reference/latest/complete/xml-reference/#/catalog/metadata/title) (Required) - A human-readable title for the document. Expressed as [Markdown content](/reference/datatypes/#markup-line).
-- [`<published>`](/reference/latest/complete/xml-reference/#/catalog/metadata/published) (Optional) - The date and time that this document was originally published. Expressed as a [DateTime](/reference/datatypes/#datetime-with-timezone).
-- [`<last-modified>`](/reference/latest/complete/xml-reference/#/catalog/metadata/last-modified) (Required) - The date and time that this document instance was last modified. If any part of the document is changed, this should be updated to the current date and time. Expressed as a [DateTime](/reference/datatypes/#datetime-with-timezone).
-- [`<version>`](/reference/latest/complete/xml-reference/#/catalog/metadata/version) (Required) - A string that provides a version for this document instance. If any part of the document is changed, this version should be incremented according to some standardized scheme. A [simple String](/reference/datatypes/#string).
-- [`<oscal-version>`](/reference/latest/complete/xml-reference/#/catalog/metadata/oscal-version) (Required) - The version of OSCAL that this document instance was written against. A [simple String](/reference/datatypes/#string)
-- [`<revision>`](/reference/latest/catalog/xml-reference/#/catalog/metadata/revision) (Optional) - A list of revisions to this document to enable advanced change tracking.
-- [`<document-id>`](/reference/latest/catalog/xml-reference/#/catalog/metadata/document-id) (Optionally Many) - A unique ID that identifies a document, and ties all separate instances of the document into one document series. The `@scheme` attribute provides a URI to identify the scheme used to generate the ID. See  for more information and usage guidance.
-- [`<prop>`](/reference/latest/catalog/xml-reference/#/catalog/metadata/prop) (Optionally Many) - Represents some arbitrary "property" of the document. This flexible element provides an extension point for adding additional metadata. See TODO for more information and usage guidance.
-- [`<link>`](/reference/latest/catalog/xml-reference/#/catalog/metadata/link) (Optionally Many) - Provides a resolvable URI (the `@href` attribute) to some resource. The purpose of the link is given with the `@rel` attribute, and it's media type through the `@media-type` attribute. See [here](#understanding-and-using-document-id) for more information and usage guidance.
-- [`<role>`](/reference/latest/catalog/xml-reference/#/catalog/metadata/role) (Optionally Many) - Defines a function assumed or expected to be assumed by a party in a specific situation.
-- [`<location>`](/reference/latest/catalog/xml-reference/#/catalog/metadata/location) (Optionally Many) - A location, with associated metadata that can be referenced.
-- [`<party>`](/reference/latest/catalog/xml-reference/#/catalog/metadata/party) (Optionally Many) - A responsible entity which is either a person or an organization.
-- [`<responsible-party>`](/reference/latest/catalog/xml-reference/#/catalog/metadata/responsible-party) (Optionally Many) - A reference to a set of organizations or persons that have responsibility for performing a referenced role in the context of the containing object.
-- [`<remarks>`](/reference/latest/catalog/xml-reference/#/catalog/metadata/remarks) (Optional) - Markup formatted plaintext with notes for human readers of the content.
+- [`<title>`](/reference/latest/complete/xml-reference/#/catalog/metadata/title) (required) - A human-readable title for the document, expressed as [Markdown content](/reference/datatypes/#markup-line).
+- [`<published>`](/reference/latest/complete/xml-reference/#/catalog/metadata/published) (optional) - The date and time that this document was originally published, expressed as a [DateTime](/reference/datatypes/#datetime-with-timezone).
+- [`<last-modified>`](/reference/latest/complete/xml-reference/#/catalog/metadata/last-modified) (required) - The date and time that this document instance was last modified, expressed as a [DateTime](/reference/datatypes/#datetime-with-timezone). If any part of the document is changed, this value should be updated to the current date and time.
+- [`<version>`](/reference/latest/complete/xml-reference/#/catalog/metadata/version) (required) - A [simple String](/reference/datatypes/#string) that provides the version of the document instance. If any part of the document is changed, this version value should be incremented according to the versioning scheme used.
+- [`<oscal-version>`](/reference/latest/complete/xml-reference/#/catalog/metadata/oscal-version) (required) - The version of OSCAL that this document instance was written against, expressed as a [simple String](/reference/datatypes/#string).
+- [`<revisions>`](/reference/latest/complete/xml-reference/#/catalog/metadata/revisions/revision) (optional) - A list of revisions to the document to enable advanced change tracking.
+- [`<document-id>`](/reference/latest/catalog/xml-reference/#/catalog/metadata/document-id) (zero to many) - A unique ID that identifies a document, and ties all separate instances of the document into one document series. The `@scheme` attribute provides a URI to identify the scheme used to generate the ID. See the later [section](#understanding-and-using-the-document-id) for more information and usage guidance.
+- [`<prop>`](/reference/latest/catalog/xml-reference/#/catalog/metadata/prop) (zero to many) - Represents some arbitrary "property" of the document. This flexible element provides an extension point for adding additional metadata. See the later [section](#using-props) for more information and usage guidance.
+- [`<link>`](/reference/latest/catalog/xml-reference/#/catalog/metadata/link) (zero to many) - Provides a resolvable URI (the `@href` attribute) for some resource. The purpose of the link is given with the `@rel` attribute, and it's media type through the `@media-type` attribute. See the later [section](#using-link) for more information and usage guidance.
+- [`<role>`](/reference/latest/catalog/xml-reference/#/catalog/metadata/role) (zero to many) - Defines a function or duty assumed or expected to be assumed by a party (i.e., person or organization) in a specific situation.
+- [`<location>`](/reference/latest/catalog/xml-reference/#/catalog/metadata/location) (zero to many) - A location, with associated metadata that can be referenced.
+- [`<party>`](/reference/latest/catalog/xml-reference/#/catalog/metadata/party) (zero to many) - A responsible entity which is either a person or an organization that can be referenced.
+- [`<responsible-party>`](/reference/latest/catalog/xml-reference/#/catalog/metadata/responsible-party) (zero to many) - A reference to a set of organizations or persons that have responsibility for performing a referenced role in the context of the containing object.
+- [`<remarks>`](/reference/latest/catalog/xml-reference/#/catalog/metadata/remarks) (optional) - Markup formatted text consisting of notes for human readers of the content.
 
 {{% /tab %}}
 {{% tab %}}
@@ -88,22 +88,23 @@ Element definitions:
 {{< /highlight >}}
 
 Note that in JSON, any objects that may appear multiple times are contained in a JSON Array.
+
 Field definitions:
 
-- [`title`](/reference/latest/complete/json-reference/#/catalog/metadata/title) (Required) - A human-readable title for the document. Expressed as [Markdown content](/reference/datatypes/#markup-line).
-- [`published`](/reference/latest/complete/json-reference/#/catalog/metadata/published) (Optional) - The date and time that this document was originally published. Expressed as a [DateTime](/reference/datatypes/#datetime-with-timezone).
-- [`last-modified`](/reference/latest/complete/json-reference/#/catalog/metadata/last-modified) (Required) - The date and time that this document instance was last modified. If any part of the document is changed, this should be updated to the current date and time. Expressed as a [DateTime](/reference/datatypes/#datetime-with-timezone).
-- [`version`](/reference/latest/complete/json-reference/#/catalog/metadata/version) (Required) - A string that provides a version for this document instance. If any part of the document is changed, this version should be incremented according to some standardized scheme. A [simple String](/reference/datatypes/#string).
-- [`oscal-version`](/reference/latest/complete/json-reference/#/catalog/metadata/oscal-version) (Required) - The version of OSCAL that this document instance was written against. A [simple String](/reference/datatypes/#string)
-- [`revision`](/reference/latest/catalog/json-reference/#/catalog/metadata/revision) (Optional) - A list of revisions to this document to enable advanced change tracking.
-- [`document-ids`](/reference/latest/catalog/json-reference/#/catalog/metadata/document-id) (Optionally Many) - A unique ID that identifies a document, and ties all separate instances of the document into one document series. The `scheme` attribute provides a URI to identify the scheme used to generate the ID. See  for more information and usage guidance.
-- [`props`](/reference/latest/catalog/json-reference/#/catalog/metadata/props) (Optionally Many) - Represents some arbitrary "property" of the document. This flexible element provides an extension point for adding additional metadata. See TODO for more information and usage guidance.
-- [`links`](/reference/latest/catalog/json-reference/#/catalog/metadata/links) (Optionally Many) - Provides a resolvable URI (the `href` property) to some resource. The purpose of the link is given with the `rel` attribute, and it's media type through the `media-type` property. See [here](#understanding-and-using-document-id) for more information and usage guidance.
-- [`roles`](/reference/latest/catalog/json-reference/#/catalog/metadata/roles) (Optionally Many) - Defines a function assumed or expected to be assumed by a party in a specific situation.
-- [`locations`](/reference/latest/catalog/json-reference/#/catalog/metadata/locations) (Optionally Many) - A location, with associated metadata that can be referenced.
-- [`parties`](/reference/latest/catalog/json-reference/#/catalog/metadata/parties) (Optionally Many) - A responsible entity which is either a person or an organization.
-- [`responsible-parties`](/reference/latest/catalog/json-reference/#/catalog/metadata/responsible-parties) (Optionally Many) - A reference to a set of organizations or persons that have responsibility for performing a referenced role in the context of the containing object.
-- [`remarks`](/reference/latest/catalog/json-reference/#/catalog/metadata/remarks) (Optional) - Markup formatted plaintext with notes for human readers of the content.
+- [`title`](/reference/latest/complete/json-reference/#/catalog/metadata/title) (required) - A human-readable title for the document, expressed as [Markdown content](/reference/datatypes/#markup-line).
+- [`published`](/reference/latest/complete/json-reference/#/catalog/metadata/published) (optional) - The date and time that this document was originally published, expressed as a [DateTime](/reference/datatypes/#datetime-with-timezone).
+- [`last-modified`](/reference/latest/complete/json-reference/#/catalog/metadata/last-modified) (required) - The date and time that this document instance was last modified, expressed as a [DateTime](/reference/datatypes/#datetime-with-timezone). If any part of the document is changed, this value should be updated to the current date and time.
+- [`version`](/reference/latest/complete/json-reference/#/catalog/metadata/version) (required) - A [simple String](/reference/datatypes/#string) that provides the version of the document instance. If any part of the document is changed, this version value should be incremented according to the versioning scheme used.
+- [`oscal-version`](/reference/latest/complete/json-reference/#/catalog/metadata/oscal-version) (required) - The version of OSCAL that this document instance was written against, expressed as a [simple String](/reference/datatypes/#string).
+- [`revisions`](/reference/latest/complete/json-reference/#/catalog/metadata/revisions) (optional) - A list of revisions to the document to enable advanced change tracking.
+- [`document-ids`](/reference/latest/catalog/json-reference/#/catalog/metadata/document-id) (optional, zero to many) - A unique ID that identifies a document, and ties all separate instances of the document into one document series. The `@scheme` attribute provides a URI to identify the scheme used to generate the ID. See the later [section](#understanding-and-using-the-document-id) for more information and usage guidance.
+- [`props`](/reference/latest/catalog/json-reference/#/catalog/metadata/props) (optional, zero to many) - Represents some arbitrary "property" of the document. This flexible element provides an extension point for adding additional metadata. See the later [section](#using-props) for more information and usage guidance.
+- [`links`](/reference/latest/catalog/json-reference/#/catalog/metadata/links) (optional, zero to many) - Provides a resolvable URI (the `href` property) to some resource. The purpose of the link is given with the `rel` attribute, and it's media type through the `media-type` property.  See the later [section](#using-link) for more information and usage guidance.
+- [`roles`](/reference/latest/catalog/json-reference/#/catalog/metadata/roles) (optional, zero to many) - Defines a function or duty assumed or expected to be assumed by a party (i.e., person or organization) in a specific situation.
+- [`locations`](/reference/latest/catalog/json-reference/#/catalog/metadata/locations) (optional, zero to many) - A location, with associated metadata that can be referenced.
+- [`parties`](/reference/latest/catalog/json-reference/#/catalog/metadata/parties) (optional, zero to many) - A responsible entity which is either a person or an organization that can be referenced.
+- [`responsible-parties`](/reference/latest/catalog/json-reference/#/catalog/metadata/responsible-parties) (optional, zero to many) - A reference to a set of organizations or persons that have responsibility for performing a referenced role in the context of the containing object.
+- [`remarks`](/reference/latest/catalog/json-reference/#/catalog/metadata/remarks) (optional) - Markup formatted text consisting of notes for human readers of the content.
 
 {{% /tab %}}
 {{% tab %}}
@@ -127,31 +128,31 @@ metadata :
 {{< /highlight >}}
 
 Note that in YAML, any objects that may appear multiple times are contained in a YAML Array.
+
 Field definitions:
 
-- [`title`](/reference/latest/complete/json-reference/#/catalog/metadata/title) (Required) - A human-readable title for the document. Expressed as [Markdown content](/reference/datatypes/#markup-line).
-- [`published`](/reference/latest/complete/json-reference/#/catalog/metadata/published) (Optional) - The date and time that this document was originally published. Expressed as a [DateTime](/reference/datatypes/#datetime-with-timezone).
-- [`last-modified`](/reference/latest/complete/json-reference/#/catalog/metadata/last-modified) (Required) - The date and time that this document instance was last modified. If any part of the document is changed, this should be updated to the current date and time. Expressed as a [DateTime](/reference/datatypes/#datetime-with-timezone).
-- [`version`](/reference/latest/complete/json-reference/#/catalog/metadata/version) (Required) - A string that provides a version for this document instance. If any part of the document is changed, this version should be incremented according to some standardized scheme. A [simple String](/reference/datatypes/#string).
-- [`oscal-version`](/reference/latest/complete/json-reference/#/catalog/metadata/oscal-version) (Required) - The version of OSCAL that this document instance was written against. A [simple String](/reference/datatypes/#string)
-- [`revision`](/reference/latest/catalog/json-reference/#/catalog/metadata/revision) (Optional) - A list of revisions to this document to enable advanced change tracking.
-- [`document-ids`](/reference/latest/catalog/json-reference/#/catalog/metadata/document-id) (Optionally Many) - A unique ID that identifies a document, and ties all separate instances of the document into one document series. The `scheme` property provides a URI to identify the scheme used to generate the ID. See  for more information and usage guidance.
-- [`props`](/reference/latest/catalog/json-reference/#/catalog/metadata/props) (Optionally Many) - Represents some arbitrary "property" of the document. This flexible element provides an extension point for adding additional metadata. See TODO for more information and usage guidance.
-- [`links`](/reference/latest/catalog/json-reference/#/catalog/metadata/links) (Optionally Many) - Provides a resolvable URI (the `href` property) to some resource. The purpose of the link is given with the `rel` attribute, and it's media type through the `media-type` property. See [here](#understanding-and-using-document-id) for more information and usage guidance.
-- [`roles`](/reference/latest/catalog/json-reference/#/catalog/metadata/roles) (Optionally Many) - Defines a function assumed or expected to be assumed by a party in a specific situation.
-- [`locations`](/reference/latest/catalog/json-reference/#/catalog/metadata/locations) (Optionally Many) - A location, with associated metadata that can be referenced.
-- [`parties`](/reference/latest/catalog/json-reference/#/catalog/metadata/parties) (Optionally Many) - A responsible entity which is either a person or an organization.
-- [`responsible-parties`](/reference/latest/catalog/json-reference/#/catalog/metadata/responsible-parties) (Optionally Many) - A reference to a set of organizations or persons that have responsibility for performing a referenced role in the context of the containing object.
-- [`remarks`](/reference/latest/catalog/json-reference/#/catalog/metadata/remarks) (Optional) - Markup formatted plaintext with notes for human readers of the content.
+- [`title`](/reference/latest/complete/json-reference/#/catalog/metadata/title) (required) - A human-readable title for the document, expressed as [Markdown content](/reference/datatypes/#markup-line).
+- [`published`](/reference/latest/complete/json-reference/#/catalog/metadata/published) (optional) - The date and time that this document was originally published, expressed as a [DateTime](/reference/datatypes/#datetime-with-timezone).
+- [`last-modified`](/reference/latest/complete/json-reference/#/catalog/metadata/last-modified) (required) - The date and time that this document instance was last modified, expressed as a [DateTime](/reference/datatypes/#datetime-with-timezone). If any part of the document is changed, this value should be updated to the current date and time.
+- [`version`](/reference/latest/complete/json-reference/#/catalog/metadata/version) (required) - A [simple String](/reference/datatypes/#string) that provides the version of the document instance. If any part of the document is changed, this version value should be incremented according to the versioning scheme used.
+- [`oscal-version`](/reference/latest/complete/json-reference/#/catalog/metadata/oscal-version) (required) - The version of OSCAL that this document instance was written against, expressed as a [simple String](/reference/datatypes/#string).
+- [`revisions`](/reference/latest/complete/json-reference/#/catalog/metadata/revisions) (optional) - A list of revisions to the document to enable advanced change tracking.
+- [`document-ids`](/reference/latest/catalog/json-reference/#/catalog/metadata/document-id) (optional, zero to many) - A unique ID that identifies a document, and ties all separate instances of the document into one document series. The `@scheme` attribute provides a URI to identify the scheme used to generate the ID. See the later [section](#understanding-and-using-the-document-id) for more information and usage guidance.
+- [`props`](/reference/latest/catalog/json-reference/#/catalog/metadata/props) (optional, zero to many) - Represents some arbitrary "property" of the document. This flexible element provides an extension point for adding additional metadata. See the later [section](#using-props) for more information and usage guidance.
+- [`links`](/reference/latest/catalog/json-reference/#/catalog/metadata/links) (optional, zero to many) - Provides a resolvable URI (the `href` property) to some resource. The purpose of the link is given with the `rel` attribute, and it's media type through the `media-type` property.  See the later [section](#using-link) for more information and usage guidance.
+- [`roles`](/reference/latest/catalog/json-reference/#/catalog/metadata/roles) (optional, zero to many) - Defines a function or duty assumed or expected to be assumed by a party (i.e., person or organization) in a specific situation.
+- [`locations`](/reference/latest/catalog/json-reference/#/catalog/metadata/locations) (optional, zero to many) - A location, with associated metadata that can be referenced.
+- [`parties`](/reference/latest/catalog/json-reference/#/catalog/metadata/parties) (optional, zero to many) - A responsible entity which is either a person or an organization that can be referenced.
+- [`responsible-parties`](/reference/latest/catalog/json-reference/#/catalog/metadata/responsible-parties) (optional, zero to many) - A reference to a set of organizations or
 
 {{% /tab %}}
 {{% /tabs %}}
 
 ## Creating a Metadata Section
 
-All OSCAL documents require a Metadata Section with a number of basic elements. This tutorial will cover creating this section and populating the required elements. We will also cover several important optional fields, and how they can be used to achieve specialized use cases.
+All OSCAL documents contain a required metadata section, which include a set of required basic elements. This tutorial will cover creating this section and populating the required elements. Also covered is a set of important optional fields, and how they can be used to support specific use cases.
 
-Lets start with a nominal example of an OSCAL Catalog document to demonstrate how to create Metadata.
+Lets start with a nominal example of an OSCAL Catalog document to demonstrate how to create the metadata section.
 
 ### Document UUID
 
@@ -159,10 +160,8 @@ UUIDs are a globally unique identifier randomly generated at the same time an OS
 
 {{< tabs XML JSON YAML >}}
 {{% tab %}}
-{{< highlight xml "linenos=table" >}}
-
+{{< highlight xml "linenos=false" >}}
 <catalog uuid="c3da6d1d-c20c-4c7c-ae73-4010167a186b">
-
 {{< /highlight >}}
 
 Although technically outside of the Metadata Section, the `@uuid` of a document is always given as an attribute on the root element, and shares its structure across all OSCAL document types. This is provided using the [uuid](/reference/datatypes/#uuid) datatype. Many tools provide easy ways to generate version 4 UUIDs. For our example we have generated one using a trivial UUIDv4 generator.
@@ -189,40 +188,91 @@ catalog:
 {{< /highlight >}}
 
 Although technically outside of the Metadata Section, the `uuid` of a document is always given as a field of the root element, and shares its structure across all OSCAL document types. This is provided using the [uuid](/reference/datatypes/#uuid) datatype. Many tools provide easy ways to generate version 4 UUIDs. For our example we have generated one using a trivial UUIDv4 generator.
-
 {{% /tab %}}
 {{% /tabs %}}
 
-### Starting with Required and Recommended Fields
+### Required and Recommended Fields
+
+First, we start with the document's title, which is intended to be brief, human-readable text that will help a reader understand the context of the document.
+
+The following is an example of what a title might look like expressed in OSCAL:
 
 {{< tabs XML JSON YAML >}}
-
 {{% tab %}}
-
-First, we start with the `<title>` element. This should be populated with a human-readable title that is exactly or closely matches the existing name of the document.
-
-For our example, this would look like:
-
 {{< highlight xml "linenos=table" >}}
-
 <title>Example OSCAL Catalog</title>
-
 {{< /highlight >}}
+{{% /tab %}}
+{{% tab %}}
+{{< highlight json "linenos=table" >}}
+{
+"title":"Example OSCAL Catalog"
+}
+{{< /highlight >}}
+{{% /tab %}}
+{{% tab %}}
+{{< highlight yaml "linenos=table" >}}
+---
+title:Example OSCAL Catalog
+{{< /highlight >}}
+{{% /tab %}}
+{{% /tabs %}}
 
-Next we have two date-based elements. This uses the OSCAL DataTime data type as defined here: [date-with-timezone](/reference/datatypes/#date-with-timezone). The `<published>` element is <em>not</em> required but is strongly recommended.  It gives the DateTime of when the document was published for the first time. For this example, we'll presume the document was published for the first time on January 1st, 2021, and the time was the moment (or near to it) that this document was published. The `<last-modified>` element provides the DateTime of the most recent change to this document. Since this document was never previously published, the DateTime should be identical to the one given by `<published>`. In our example, this will look like:
+Next we have the published and last modified date/time fields that represent when the document was published for the first time and most recently changed respectively. These field values are expressed using the OSCAL [DataTime-with-timezone](/reference/datatypes/#date-with-timezone) data type, which requires that the time zone offset is included to provide a localized time.
 
+If a document was:
+- published on January 1st, 2021 at "midnight" or 12:00AM with a time offset of 5 hours from Coordinated Universal Time (UTC)
+- updated on January 5th, 2021 at "midnight" or 12:00AM with a time offset of 5 hours from UTC
+
+This information would be expressed in OSCAL as follows:
+
+{{< tabs XML JSON YAML >}}
+{{% tab %}}
 {{< highlight xml "linenos=table" >}}
 <published>2021-01-01T00:00:00-5:00</published>
-<last-modified>2021-01-01T00:00:00-5:00</last-modified>
+<last-modified>2021-01-05T00:00:00-5:00</last-modified>
 {{< /highlight >}}
 
+The `<published>` element gives the date and time of when the document was published for the first time. This element is <em>not</em> required, but it is strongly recommended to include it to help the OSCAL document consumer understand when the document was orginally published.
+
+The `<last-modified>` element provides the the date and time of the most recent change to this document. If a document was never previously updated, the `<last-modified>` value should be identical to the one given by `published`.
+{{% /tab %}}
+{{% tab %}}
+{{< highlight json "linenos=table" >}}
+{
+"published": "2021-01-01T00:00:00-05:00",
+"last-modified": "2021-01-05T00:00:00-05:00"
+}
+{{< /highlight >}}
+
+The `published` property gives the date and time of when the document was published for the first time. This property is <em>not</em> required, but it is strongly recommended to include it to help the OSCAL document consumer understand when the document was orginally published.
+
+The `last-modified` property provides the the date and time of the most recent change to this document. If a document was never previously updated, the `last-modified` value should be identical to the one given by `published`.
+{{% /tab %}}
+{{% tab %}}
+{{< highlight yaml "linenos=table" >}}
+---
+  published: 2021-01-01T00:00:00-05:00,
+  last-modified: 2021-01-05T00:00:00-05:00
+{{< /highlight >}}
+
+The `published` key gives the date and time of when the document was published for the first time. This key is <em>not</em> required, but it is strongly recommended to include it to help the OSCAL document consumer understand when the document was orginally published.
+
+The `last-modified` key provides the the date and time of the most recent change to this document. If a document was never previously updated, the `last-modified` value should be identical to the one given by `published`.
+{{% /tab %}}
+{{% /tabs %}}
+
+{{< tabs XML JSON YAML >}}
+{{% tab %}}
 Thirdly, we must provide a `<version>` element. This refers to the version of the OSCAL document itself, not the version of any other content. OSCAL does not place requirements on the version string itself, as versioning is a complicated process that differs from content creator to content creator. Since this is the first time we've created this document, some variation on a "1.0" would be appropriate.
 
-{{< highlight xml "linenos=table" >}}
-<version> 1.0.0 </version>
+{{< highlight xml "linenos=false" >}}
+<version>1.0.0</version>
 {{< /highlight >}}
 
-Where possible, use well formatted versions with clear and defined rules. This version will be incremented whenever the OSCAL document is updated.
+This version will be incremented whenever the OSCAL document is updated.
+
+Where possible, use well formatted versions with a clear and well defined syntax. The NIST OSCAL team uses [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html) as the versioning scheme for all schema, Metaschema, and OSCAL documents we maintain.
 
 The final required element is `<oscal-version>`, which indicates what version of OSCAL was used to create this document.
 
@@ -244,31 +294,8 @@ We have now covered all required fields of the Metadata Section, and could publi
   ...
 </catalog>
 {{< /highlight >}}
-
-However, the Metadata Section has several other optional but important fields which we will cover in the following sections.
-
 {{% /tab %}}
-
 {{% tab %}}
-
-First, we start with the `title` field. This should be populated with a human-readable title that exactly or closely matches an existing name of the document.
-
-For our example, this would look like:
-
-{{< highlight json "linenos=table" >}}
-{
-"title":"Example OSCAL Catalog"
-}
-{{< /highlight >}}
-
-Next we have two date-based elements. This uses the OSCAL DataTime data type as defined here: [date-with-timezone](/reference/datatypes/#date-with-timezone). The `published` field is <em>not</em> required but is strongly recommended.  It gives the DateTime of when the document was published for the first time. For this example, we'll presume the document was published for the first time on January 1st, 2021, and the time was the moment (or near to it) that this document was published. The `last-modified` field provides the DateTime of the most recent change to this document. Since this document was never previously published, the DateTime should be identical to the one given by `published`. In our example, this will look like:
-
-{{< highlight json "linenos=table" >}}
-{
-"published": "2021-01-01T00:00:00-5:00",
-"last-modified": "2021-01-01T00:00:00-5:00"
-}
-{{< /highlight >}}
 
 Thirdly we must provide a `version` field. This refers to the version of the OSCAL document itself, not the version of any other content. OSCAL does not place requirements on the version string itself, as versioning is a complicated process that differs from content creator to content creator. Since this is the first time we've created this document, some variation on a "1.0" would be appropriate.
 
@@ -304,30 +331,8 @@ We have now covered all required fields of the Metadata Section, and could publi
   }
 }
 {{< /highlight >}}
-
-However, the Metadata Section has several other optional but important fields which we will cover in the following sections.
 {{% /tab %}}
-
 {{% tab %}}
-
-First, we start with the `title` field. This should be populated with a human-readable title that is exactly or closely matches the existing name of the document.
-
-For our example, this would look like:
-
-{{< highlight yaml "linenos=table" >}}
----
-
-title:Example OSCAL Catalog
-
-{{< /highlight >}}
-
-Next we have two date-based elements. This uses the OSCAL DataTime data type as defined here: [date-with-timezone](/reference/datatypes/#date-with-timezone). The `published` field is <em>not</em> required but is strongly recommended.  It gives the DateTime of when the document was published for the first time. For this example, we'll presume the document was published for the first time on January 1st, 2021, and the time was the moment (or near to it) that this document was published. The `last-modified` field provides the DateTime of the most recent change to this document. Since this document was never previously published, the DateTime should be identical to the one given by `published`. In our example, this will look like:
-
-{{< highlight yaml "linenos=table" >}}
----
-  published: 2021-01-01T00:00:00-5:00,
-  last-modified: 2021-01-01T00:00:00-5:00
-{{< /highlight >}}
 
 Thirdly we must provide a `version` field. This refers to the version of the OSCAL document itself, not the version of any other content. OSCAL does not place requirements on the version string itself, as versioning is a complicated process that differs from content creator to content creator. Since this is the first time we've created this document, some variation on a "1.0" would be appropriate.
 
@@ -360,10 +365,10 @@ We have now covered all required fields of the Metadata Section, and could publi
       version: 1.0.0,
       oscal-version: 1.0.0
 {{< /highlight >}}
-
-However, the Metadata Section has several other optional but important fields which we will cover in the following sections.
 {{% /tab %}}
 {{% /tabs %}}
+
+However, the Metadata Section has several other optional but important fields which we will cover in the following sections.
 
 ### Understanding and Using the Document-Id
 
