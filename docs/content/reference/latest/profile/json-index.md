@@ -1,6 +1,6 @@
 ---
-title: "OSCAL Profile Model v1.0.0 JSON Format Index"
-heading: "Profile Model v1.0.0 JSON Format Index"
+title: "OSCAL Profile Model v JSON Format Index"
+heading: "Profile Model v JSON Format Index"
 weight: 30
 generateanchors: false
 sidenav:
@@ -239,6 +239,12 @@ The following is an index of each JSON property used in the [JSON format](https:
       <h1 class="toc1" id="/filename">filename</h1>
       <ul>
          <li><span class="pathlink">/<a href="../json-reference/#/profile">profile</a>/<a href="../json-reference/#/profile/back-matter">back-matter</a>/<a href="../json-reference/#/profile/back-matter/resources">resources</a>/<a href="../json-reference/#/profile/back-matter/resources/base64">base64</a>/<a href="../json-reference/#/profile/back-matter/resources/base64/filename">filename</a></span> - <span class="formal-name"><a href="../json-definitions/#/assembly/oscal-metadata/back-matter/resources/base64/filename">File Name</a></span></li>
+      </ul>
+   </section>
+   <section class="named-object-group">
+      <h1 class="toc1" id="/flat">flat</h1>
+      <ul>
+         <li><span class="pathlink">/<a href="../json-reference/#/profile">profile</a>/<a href="../json-reference/#/profile/merge">merge</a>/<a href="../json-reference/#/profile/merge/flat">flat</a></span> - <span class="formal-name"><a href="../json-definitions/#/assembly/oscal-profile/merge/flat">Flat</a></span></li>
       </ul>
    </section>
    <section class="named-object-group">

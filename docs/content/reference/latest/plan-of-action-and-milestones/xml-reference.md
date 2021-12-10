@@ -1,6 +1,6 @@
 ---
-title: "OSCAL Plan of Action and Milestones Model v1.0.0 XML Format Reference"
-heading: "Plan of Action and Milestones Model v1.0.0 XML Format Reference"
+title: "OSCAL Plan of Action and Milestones Model v XML Format Reference"
+heading: "Plan of Action and Milestones Model v XML Format Reference"
 weight: 60
 generateanchors: false
 sidenav:
@@ -82,7 +82,7 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                         <p><span class="usa-tag">is unique</span>  for <code class="path">prop</code>: any target value must be unique (i.e., occur only once)</p>
                      </div>
                      <div class="constraint">
-                        <p><span class="usa-tag">index</span>  for <code class="path">.//prop</code> an index <code>index-metadata-property-id</code> shall list values returned by targets <code>.//prop</code> using keys constructed of key field(s) <code>@id</code></p>
+                        <p><span class="usa-tag">index</span>  for <code class="path">.//prop</code> an index <code>index-metadata-property-uuid</code> shall list values returned by targets <code>.//prop</code> using keys constructed of key field(s) <code>@uuid</code></p>
                      </div>
                      <div class="constraint">
                         <p><span class="usa-tag">is unique</span>  for <code class="path">link</code>: any target value must be unique (i.e., occur only once)</p>
@@ -1527,8 +1527,8 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                  <p>The value <b>may be locally defined</b>, or the following:</p>
                                  <ul>
                                     
-                                    <li><strong>data-center</strong>: A location that contains computing assets. A class can be used to indicate a subclass
-                                       of data-center.</li>
+                                    <li><strong>data-center</strong>: A location that contains computing assets. A class can be used to indicate the sub-type
+                                       of data-center as primary or alternate.</li>
                                     </ul>
                               </div>
                               <div class="constraint">
@@ -2703,7 +2703,7 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                        <details class="constraints" open="open">
                                           <summary>Constraint (1)</summary>
                                           <div class="constraint">
-                                             <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-location-uuid</code> using a key constructed of key field(s) <code>value()</code></p>
+                                             <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-location-uuid</code> using a key constructed of key field(s) <code>.</code></p>
                                           </div>
                                        </details>
                                     </div>
@@ -2731,7 +2731,7 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                     <details class="constraints" open="open">
                                        <summary>Constraint (1)</summary>
                                        <div class="constraint">
-                                          <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-party-organizations-uuid</code> using a key constructed of key field(s) <code>value()</code></p>
+                                          <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-party-organizations-uuid</code> using a key constructed of key field(s) <code>.</code></p>
                                        </div>
                                     </details>
                                  </div>
@@ -2781,7 +2781,7 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                  <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-role-id</code> using a key constructed of key field(s) <code>@role-id</code></p>
                               </div>
                               <div class="constraint">
-                                 <p><span class="usa-tag">index has key</span>  for <code class="path">party-uuid</code>this value must correspond to a listing in the index <code>index-metadata-party-uuid</code> using a key constructed of key field(s) <code>value()</code></p>
+                                 <p><span class="usa-tag">index has key</span>  for <code class="path">party-uuid</code>this value must correspond to a listing in the index <code>index-metadata-party-uuid</code> using a key constructed of key field(s) <code>.</code></p>
                               </div>
                            </details>
                            <details class="properties attributes" open="open">
@@ -2822,7 +2822,7 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                     <details class="constraints" open="open">
                                        <summary>Constraint (1)</summary>
                                        <div class="constraint">
-                                          <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-party-uuid</code> using a key constructed of key field(s) <code>value()</code></p>
+                                          <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-party-uuid</code> using a key constructed of key field(s) <code>.</code></p>
                                        </div>
                                     </details>
                                  </div>
@@ -3611,7 +3611,7 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                     </ul>
                               </div>
                               <div class="constraint">
-                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[(@name=('ipv4-address','ipv6-address')]/@class</code></p>
+                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[@name=('ipv4-address','ipv6-address')]/@class</code></p>
                                  <p>The value <b>may be locally defined</b>, or one of the following:</p>
                                  <ul>
                                     
@@ -3655,7 +3655,7 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                  <p><span class="usa-tag">matches</span>  for <code class="path">prop[@name='ipv6-address']/@value</code>: the target value must match the lexical form of the 'ip-v6-address' data type.</p>
                               </div>
                               <div class="constraint">
-                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[@name='direction')]/@value</code></p>
+                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[@name='direction']/@value</code></p>
                                  <p>The value <b>may be locally defined</b>, or one of the following:</p>
                                  <ul>
                                     
@@ -4473,7 +4473,7 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                              <details class="constraints" open="open">
                                                 <summary>Constraint (1)</summary>
                                                 <div class="constraint">
-                                                   <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-party-uuid</code> using a key constructed of key field(s) <code>value()</code></p>
+                                                   <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-party-uuid</code> using a key constructed of key field(s) <code>.</code></p>
                                                 </div>
                                              </details>
                                           </div>
@@ -4900,7 +4900,7 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                  <p><span class="usa-tag">index has key</span>  for <code class="path">responsible-party</code>this value must correspond to a listing in the index <code>index-metadata-role-id</code> using a key constructed of key field(s) <code>@role-id</code></p>
                               </div>
                               <div class="constraint">
-                                 <p><span class="usa-tag">index has key</span>  for <code class="path">responsible-party</code>this value must correspond to a listing in the index <code>index-metadata-party-uuid</code> using a key constructed of key field(s) <code>@party-uuid</code></p>
+                                 <p><span class="usa-tag">index has key</span>  for <code class="path">responsible-party</code>this value must correspond to a listing in the index <code>index-metadata-party-uuid</code> using a key constructed of key field(s) <code>party-uuid</code></p>
                               </div>
                               <div class="constraint">
                                  <p><span class="usa-tag">is unique</span>  for <code class="path">responsible-party</code>: any target value must be unique (i.e., occur only once)</p>
@@ -5254,7 +5254,7 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                           <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-role-id</code> using a key constructed of key field(s) <code>@role-id</code></p>
                                        </div>
                                        <div class="constraint">
-                                          <p><span class="usa-tag">index has key</span>  for <code class="path">party-uuid</code>this value must correspond to a listing in the index <code>index-metadata-party-uuid</code> using a key constructed of key field(s) <code>value()</code></p>
+                                          <p><span class="usa-tag">index has key</span>  for <code class="path">party-uuid</code>this value must correspond to a listing in the index <code>index-metadata-party-uuid</code> using a key constructed of key field(s) <code>.</code></p>
                                        </div>
                                     </details>
                                     <details class="properties attributes" open="open">
@@ -5295,7 +5295,7 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                              <details class="constraints" open="open">
                                                 <summary>Constraint (1)</summary>
                                                 <div class="constraint">
-                                                   <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-party-uuid</code> using a key constructed of key field(s) <code>value()</code></p>
+                                                   <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-party-uuid</code> using a key constructed of key field(s) <code>.</code></p>
                                                 </div>
                                              </details>
                                           </div>
@@ -6046,7 +6046,7 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                                    <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-role-id</code> using a key constructed of key field(s) <code>@role-id</code></p>
                                                 </div>
                                                 <div class="constraint">
-                                                   <p><span class="usa-tag">index has key</span>  for <code class="path">party-uuid</code>this value must correspond to a listing in the index <code>index-metadata-party-uuid</code> using a key constructed of key field(s) <code>value()</code></p>
+                                                   <p><span class="usa-tag">index has key</span>  for <code class="path">party-uuid</code>this value must correspond to a listing in the index <code>index-metadata-party-uuid</code> using a key constructed of key field(s) <code>.</code></p>
                                                 </div>
                                              </details>
                                              <details class="properties attributes" open="open">
@@ -6087,7 +6087,7 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                                       <details class="constraints" open="open">
                                                          <summary>Constraint (1)</summary>
                                                          <div class="constraint">
-                                                            <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-party-uuid</code> using a key constructed of key field(s) <code>value()</code></p>
+                                                            <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-party-uuid</code> using a key constructed of key field(s) <code>.</code></p>
                                                          </div>
                                                       </details>
                                                    </div>
@@ -7631,7 +7631,7 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                                    <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-role-id</code> using a key constructed of key field(s) <code>@role-id</code></p>
                                                 </div>
                                                 <div class="constraint">
-                                                   <p><span class="usa-tag">index has key</span>  for <code class="path">party-uuid</code>this value must correspond to a listing in the index <code>index-metadata-party-uuid</code> using a key constructed of key field(s) <code>value()</code></p>
+                                                   <p><span class="usa-tag">index has key</span>  for <code class="path">party-uuid</code>this value must correspond to a listing in the index <code>index-metadata-party-uuid</code> using a key constructed of key field(s) <code>.</code></p>
                                                 </div>
                                              </details>
                                              <details class="properties attributes" open="open">
@@ -7672,7 +7672,7 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                                       <details class="constraints" open="open">
                                                          <summary>Constraint (1)</summary>
                                                          <div class="constraint">
-                                                            <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-party-uuid</code> using a key constructed of key field(s) <code>value()</code></p>
+                                                            <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-party-uuid</code> using a key constructed of key field(s) <code>.</code></p>
                                                          </div>
                                                       </details>
                                                    </div>
@@ -12400,7 +12400,7 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                                    <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-role-id</code> using a key constructed of key field(s) <code>@role-id</code></p>
                                                 </div>
                                                 <div class="constraint">
-                                                   <p><span class="usa-tag">index has key</span>  for <code class="path">party-uuid</code>this value must correspond to a listing in the index <code>index-metadata-party-uuid</code> using a key constructed of key field(s) <code>value()</code></p>
+                                                   <p><span class="usa-tag">index has key</span>  for <code class="path">party-uuid</code>this value must correspond to a listing in the index <code>index-metadata-party-uuid</code> using a key constructed of key field(s) <code>.</code></p>
                                                 </div>
                                              </details>
                                              <details class="properties attributes" open="open">
@@ -12441,7 +12441,7 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                                       <details class="constraints" open="open">
                                                          <summary>Constraint (1)</summary>
                                                          <div class="constraint">
-                                                            <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-party-uuid</code> using a key constructed of key field(s) <code>value()</code></p>
+                                                            <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-party-uuid</code> using a key constructed of key field(s) <code>.</code></p>
                                                          </div>
                                                       </details>
                                                    </div>
@@ -16247,7 +16247,7 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                                             <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-role-id</code> using a key constructed of key field(s) <code>@role-id</code></p>
                                                          </div>
                                                          <div class="constraint">
-                                                            <p><span class="usa-tag">index has key</span>  for <code class="path">party-uuid</code>this value must correspond to a listing in the index <code>index-metadata-party-uuid</code> using a key constructed of key field(s) <code>value()</code></p>
+                                                            <p><span class="usa-tag">index has key</span>  for <code class="path">party-uuid</code>this value must correspond to a listing in the index <code>index-metadata-party-uuid</code> using a key constructed of key field(s) <code>.</code></p>
                                                          </div>
                                                       </details>
                                                       <details class="properties attributes" open="open">
@@ -16288,7 +16288,7 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                                                <details class="constraints" open="open">
                                                                   <summary>Constraint (1)</summary>
                                                                   <div class="constraint">
-                                                                     <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-party-uuid</code> using a key constructed of key field(s) <code>value()</code></p>
+                                                                     <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-party-uuid</code> using a key constructed of key field(s) <code>.</code></p>
                                                                   </div>
                                                                </details>
                                                             </div>
@@ -21799,7 +21799,7 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                                             <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-role-id</code> using a key constructed of key field(s) <code>@role-id</code></p>
                                                          </div>
                                                          <div class="constraint">
-                                                            <p><span class="usa-tag">index has key</span>  for <code class="path">party-uuid</code>this value must correspond to a listing in the index <code>index-metadata-party-uuid</code> using a key constructed of key field(s) <code>value()</code></p>
+                                                            <p><span class="usa-tag">index has key</span>  for <code class="path">party-uuid</code>this value must correspond to a listing in the index <code>index-metadata-party-uuid</code> using a key constructed of key field(s) <code>.</code></p>
                                                          </div>
                                                       </details>
                                                       <details class="properties attributes" open="open">
@@ -21840,7 +21840,7 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                                                <details class="constraints" open="open">
                                                                   <summary>Constraint (1)</summary>
                                                                   <div class="constraint">
-                                                                     <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-party-uuid</code> using a key constructed of key field(s) <code>value()</code></p>
+                                                                     <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-party-uuid</code> using a key constructed of key field(s) <code>.</code></p>
                                                                   </div>
                                                                </details>
                                                             </div>
@@ -24584,19 +24584,6 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                  </div>
                                  <div class="body">
                                     <p class="description"><span class="usa-tag">Description</span> Identifies an asset required to achieve remediation.</p>
-                                    <details class="constraints" open="open">
-                                       <summary>Constraint (1)</summary>
-                                       <div class="constraint">
-                                          <p><span class="usa-tag">allowed values</span>  for <code class="path">origin/@type</code></p>
-                                          <p>The value <b>must</b> be one of the following:</p>
-                                          <ul>
-                                             
-                                             <li><strong>party</strong>: The UUID of the person or organization who made the recommendation</li>
-                                             
-                                             <li><strong>tool</strong>: The UUID of the tool that made the recommendation</li>
-                                             </ul>
-                                       </div>
-                                    </details>
                                     <details class="properties attributes" open="open">
                                        <summary>Attribute (1)</summary>
                                        <div class="model-entry definition assembly">
@@ -26617,7 +26604,7 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                                                <details class="constraints" open="open">
                                                                   <summary>Constraint (1)</summary>
                                                                   <div class="constraint">
-                                                                     <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-party-uuid</code> using a key constructed of key field(s) <code>value()</code></p>
+                                                                     <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-party-uuid</code> using a key constructed of key field(s) <code>.</code></p>
                                                                   </div>
                                                                </details>
                                                             </div>
@@ -29364,7 +29351,7 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                                       <details class="constraints" open="open">
                                                          <summary>Constraint (1)</summary>
                                                          <div class="constraint">
-                                                            <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-party-uuid</code> using a key constructed of key field(s) <code>value()</code></p>
+                                                            <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-party-uuid</code> using a key constructed of key field(s) <code>.</code></p>
                                                          </div>
                                                       </details>
                                                    </div>
@@ -29487,7 +29474,7 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                              </ul>
                                        </div>
                                        <div class="constraint">
-                                          <p><span class="usa-tag">allowed values</span>  for <code class="path">prop/[@name='type']/@value</code></p>
+                                          <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[@name='type']/@value</code></p>
                                           <p>The value <b>may be locally defined</b>, or one of the following:</p>
                                           <ul>
                                              
@@ -30634,7 +30621,7 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                                                      <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-role-id</code> using a key constructed of key field(s) <code>@role-id</code></p>
                                                                   </div>
                                                                   <div class="constraint">
-                                                                     <p><span class="usa-tag">index has key</span>  for <code class="path">party-uuid</code>this value must correspond to a listing in the index <code>index-metadata-party-uuid</code> using a key constructed of key field(s) <code>value()</code></p>
+                                                                     <p><span class="usa-tag">index has key</span>  for <code class="path">party-uuid</code>this value must correspond to a listing in the index <code>index-metadata-party-uuid</code> using a key constructed of key field(s) <code>.</code></p>
                                                                   </div>
                                                                </details>
                                                                <details class="properties attributes" open="open">
@@ -30675,7 +30662,7 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                                                         <details class="constraints" open="open">
                                                                            <summary>Constraint (1)</summary>
                                                                            <div class="constraint">
-                                                                              <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-party-uuid</code> using a key constructed of key field(s) <code>value()</code></p>
+                                                                              <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-party-uuid</code> using a key constructed of key field(s) <code>.</code></p>
                                                                            </div>
                                                                         </details>
                                                                      </div>

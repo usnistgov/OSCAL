@@ -1,6 +1,6 @@
 ---
-title: "OSCAL Component Definition Model v1.0.0 XML Format Index"
-heading: "Component Definition Model v1.0.0 XML Format Index"
+title: "OSCAL Component Definition Model v XML Format Index"
+heading: "Component Definition Model v XML Format Index"
 weight: 70
 generateanchors: false
 sidenav:

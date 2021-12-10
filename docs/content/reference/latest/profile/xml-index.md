@@ -1,6 +1,6 @@
 ---
-title: "OSCAL Profile Model v1.0.0 XML Format Index"
-heading: "Profile Model v1.0.0 XML Format Index"
+title: "OSCAL Profile Model v XML Format Index"
+heading: "Profile Model v XML Format Index"
 weight: 70
 generateanchors: false
 sidenav:
@@ -234,6 +234,12 @@ The following is an index of each XML element and attribute used in the [XML for
       <h1 class="toc1" id="/@filename">@filename</h1>
       <ul>
          <li><span class="pathlink">/<a href="../xml-reference/#/profile">profile</a>/<a href="../xml-reference/#/profile/back-matter">back-matter</a>/<a href="../xml-reference/#/profile/back-matter/resource">resource</a>/<a href="../xml-reference/#/profile/back-matter/resource/base64">base64</a>/<a href="../xml-reference/#/profile/back-matter/resource/base64/@filename">@filename</a></span> - <span class="formal-name"><a href="../xml-definitions/#/assembly/oscal-metadata/back-matter/resource/base64/filename">File Name</a></span></li>
+      </ul>
+   </section>
+   <section class="named-object-group">
+      <h1 class="toc1" id="/flat">flat</h1>
+      <ul>
+         <li><span class="pathlink">/<a href="../xml-reference/#/profile">profile</a>/<a href="../xml-reference/#/profile/merge">merge</a>/<a href="../xml-reference/#/profile/merge/flat">flat</a></span> - <span class="formal-name"><a href="../xml-definitions/#/assembly/oscal-profile/merge/flat">Flat</a></span></li>
       </ul>
    </section>
    <section class="named-object-group">
