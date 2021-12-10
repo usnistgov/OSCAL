@@ -20,7 +20,7 @@
         <html>
             <head>
                 <title>{ child::head } Specification</title>
-                <script type="text/javascript" src="https://livejs.com/live.js"></script>
+                <!--<script type="text/javascript" src="https://livejs.com/live.js"></script>-->
                 <xsl:call-template name="css"/>
             </head>
             <body>
