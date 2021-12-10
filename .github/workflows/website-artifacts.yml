@@ -9,6 +9,7 @@ on:
       - 'src/metaschema/**_metaschema.xml'
       - 'build/ci-cd/metaschema'
       - 'build/ci-cd/metaschema-docs'
+      - 'docs/**'
       - 'build/ci-cd/generate-model-documentation.sh'
       - 'build/metaschema'
       - '.github/workflows/website-artifacts.yml'
@@ -21,7 +22,7 @@ on:
       - 'docs/**'
       - 'build/ci-cd/generate-model-documentation.sh'
       - 'build/metaschema'
-      - '.github/workflows/website.yml'
+      - '.github/workflows/website-artifacts.yml'
   workflow_dispatch:
     branches:
       - main
@@ -51,7 +52,7 @@ jobs:
       # use this for main repo builds on branches
       - name: Checkout working branch or Tag
         uses: actions/checkout@v2
-        if: ${{ github.repository == env.HOME_REPO && github.event_name == 'push' }}
+        if: ${{ github.repository == env.HOME_REPO && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')}}
         with:
           path: ${{ env.OSCAL_HOME }}
           submodules: recursive
