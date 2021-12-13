@@ -30,7 +30,8 @@
          - retain opr:ERROR and opr:WARNING messages in results. -->
 
     <xsl:param name="trace" as="xs:string">off</xsl:param>
-
+    <xsl:param name="assign-uuid" as="xs:string?"/>
+    
     <xsl:param name="uri-stack" as="xs:anyURI*" select="()"/>
 
     <!-- $path-to-source should point back to the location of the source catalog (or profile) from its result,
@@ -82,6 +83,7 @@
                 <xsl:map-entry key="QName('','profile-origin-uri')" select="document-uri($home)"/>
                 <xsl:map-entry key="QName('','path-to-source')"     select="$path-to-source"/>
                 <xsl:map-entry key="QName('','uri-stack-in')"       select="($uri-stack, document-uri($home))"/>
+                <xsl:map-entry key="QName('','assign-uuid')"       select="($assign-uuid,'NO_UUID')[1]"/>
             </xsl:map>
         </xsl:variable>
         <!--<xsl:variable name="runtime" select="map {
