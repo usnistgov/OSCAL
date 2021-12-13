@@ -49,8 +49,8 @@
     <xsl:variable name="use-uuid" as="xs:string">
         <xsl:choose>
             <xsl:when test="$assign-uuid = 'make-uuid'">
-                <!--<xsl:text>boo</xsl:text>-->
-                <xsl:sequence select="r:make-uuid( replace( string(current-dateTime()),'\D','') )"/>
+                <!-- seed splices a timestamp with a given @uuid -->
+                <xsl:sequence select="r:make-uuid( /*/@uuid || '-' || replace( string(current-dateTime()),'\D','') )"/>
             </xsl:when>
             <xsl:when test="matches($assign-uuid,$uuid-v4-regex)">
                 <xsl:sequence select="$assign-uuid"/>
@@ -71,7 +71,7 @@
 
     <xsl:variable name="louder" select="$trace = 'on'"/>
 
-    <xsl:variable name="home" select="/"/>
+    <xsl:param name="home" select="/"/>
 
     <!-- The $transformation-sequence declares transformations to be applied in order. -->
     <xsl:variable name="transformation-sequence">

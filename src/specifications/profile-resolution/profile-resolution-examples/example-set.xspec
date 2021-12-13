@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec" stylesheet="../../../utils/util/resolver-pipeline/oscal-profile-RESOLVE.xsl" run-as="external">
+
+<!-- x:description/@run-as permits the context item to be determined dynamically 
+    per scenario
+    cf https://github.com/xspec/xspec/wiki/External-Transformation#global-context-item
+    
+    but whitespace comparison issues remain!
+    -->
+    <x:scenario label="Base test">
+        
+        <x:context href="base-test_profile.xml"/>
+        <x:expect label="Base test - fully resolved"
+            href="output-expected/base-test_profile_RESOLVED.xml"/>
+    </x:scenario>
+</x:description>

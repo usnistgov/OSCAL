@@ -17,15 +17,9 @@
     
     <xsl:variable name="uuid-v4-regex" as="xs:string">^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$</xsl:variable>
     
-    <xsl:variable name="use-uuid" as="xs:string">
-        <xsl:choose>
-            <xsl:when test="matches($assign-uuid,$uuid-v4-regex)">
-                 <xsl:sequence select="$assign-uuid"/>
-            </xsl:when>
-            <xsl:otherwise>00000000-0000-4000-B000-000000000000</xsl:otherwise>
-        </xsl:choose>
-    </xsl:variable>
-    
+    <xsl:variable name="use-uuid" as="xs:string"
+        select="( $assign-uuid[matches(.,$uuid-v4-regex)], '00000000-0000-4000-B000-000000000000' )[1]"/>
+       
     <xsl:template match="* | @*" mode="#all">
         <xsl:copy>
             <xsl:apply-templates mode="#current" select="node() | @*"/>
