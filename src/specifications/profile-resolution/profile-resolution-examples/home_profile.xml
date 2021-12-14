@@ -7,7 +7,7 @@
       <title>Test Profile</title>
       <last-modified>2020-05-30T14:39:41.965-04:00</last-modified>
       <version>1.0</version>
-      <oscal-version>1.0.0-rc2</oscal-version>
+      <oscal-version>1.0.0</oscal-version>
    </metadata>
    <import href="circular_profile.xml">
       <include-controls>

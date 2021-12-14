@@ -7,7 +7,7 @@
       <title>Test Profile</title>
       <last-modified>2020-05-30T14:39:48.703-04:00</last-modified>
       <version>1.0</version>
-      <oscal-version>1.0.0-rc2</oscal-version>
+      <oscal-version>1.0.0</oscal-version>
    </metadata>
    <import href="#01ecd6cc-e281-472c-bb7a-0394bdf938f2">
       <include-controls>
