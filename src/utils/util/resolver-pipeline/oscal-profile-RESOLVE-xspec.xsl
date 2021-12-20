@@ -22,7 +22,7 @@
 
     <xsl:output method="xml" indent="yes"/>
 
-    <xsl:import href="random-util.xsl"/>
+    <!--<xsl:import href="random-util.xsl"/>-->
     
     <xsl:strip-space
         elements="catalog group control param guideline select part
@@ -48,19 +48,19 @@
 
     <xsl:variable name="use-uuid" as="xs:string">
         <xsl:choose>
-            <xsl:when test="$assign-uuid = 'make-uuid' and function-available('r:make-uuid')">
-                <!-- seed splices a timestamp with a given @uuid -->
+            <!--<xsl:when test="$assign-uuid = 'make-uuid' and function-available('r:make-uuid')">
+                <!-\- seed splices a timestamp with a given @uuid -\->
                 <xsl:sequence select="r:make-uuid( /*/@uuid || '-' || replace( string(current-dateTime()),'\D','') )"/>
-            </xsl:when>
+            </xsl:when>-->
             <xsl:when test="matches($assign-uuid,$uuid-v4-regex)">
                 <xsl:sequence select="$assign-uuid"/>
             </xsl:when>
-            <xsl:when test="function-available('javaUUID:randomUUID')">
+            <!--<xsl:when test="function-available('javaUUID:randomUUID')">
                 <xsl:sequence select="javaUUID:randomUUID()"/>
             </xsl:when>
             <xsl:when test="unparsed-text-available($uuid-service)">
                 <xsl:sequence select="unparsed-text($uuid-service)"/>
-            </xsl:when>
+            </xsl:when>-->
             <xsl:otherwise>00000000-0000-4000-B000-000000000000</xsl:otherwise>
         </xsl:choose>
     </xsl:variable>

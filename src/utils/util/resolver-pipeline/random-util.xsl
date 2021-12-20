@@ -52,7 +52,9 @@ v4 UUID
     <xsl:function name="r:make-uuid-sequence" as="xs:string*">
         <xsl:param name="seed" as="item()"/>
         <xsl:param name="length" as="xs:integer"/>
-        <xsl:sequence select="r:produce-uuid-sequence($length,random-number-generator($seed))"/>
+        <xsl:if test="function-available('random-number-generator')">
+          <xsl:sequence select="r:produce-uuid-sequence($length,random-number-generator($seed))"/>
+        </xsl:if>
     </xsl:function>
 
     <xsl:function name="r:produce-uuid-sequence" as="xs:string*">
@@ -65,9 +67,11 @@ v4 UUID
     </xsl:function>
 
     <!-- make-uuid produces a UUID for a given seed - the same UUID every time for the same seed -->
-    <xsl:function name="r:make-uuid" as="xs:string">
+    <xsl:function name="r:make-uuid" as="xs:string?">
         <xsl:param name="seed" as="item()"/>
-        <xsl:sequence select="r:produce-uuid($uuid-v4-template, random-number-generator($seed))"/>
+        <xsl:if test="function-available('random-number-generator')">
+            <xsl:sequence select="r:produce-uuid($uuid-v4-template, random-number-generator($seed))"/>
+        </xsl:if>
     </xsl:function>
 
     <!--$template is a string to serve as a template for the UUID syntax

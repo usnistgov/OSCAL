@@ -17,8 +17,6 @@
 
     <xsl:output method="xml" indent="yes"/>
 
-    <xsl:import href="random-util.xsl"/>
-    
     <xsl:strip-space
         elements="catalog group control param guideline select part
         metadata back-matter annotation party person org rlink address resource role responsible-party citation
