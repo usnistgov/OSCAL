@@ -35,10 +35,10 @@
          </constraint>
       </set-parameter>
       <alter control-id="a1">
-         <add position="starting" id-ref="a1">
-            <prop name="CORE" ns="https://fedramp.gov/ns/oscal" value=""/>
+         <add position="starting" by-id="a1">
+            <prop name="CORE" ns="https://fedramp.gov/ns/oscal" value="core"/>
          </add>
-         <add position="starting" id-ref="a1-stmt">
+         <add position="starting" by-id="a1-stmt">
             <prop name="conformity"
                   ns="https://fedramp.gov/ns/oscal"
                   value="assessment-objective"/>

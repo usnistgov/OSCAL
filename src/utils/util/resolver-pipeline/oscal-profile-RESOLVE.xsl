@@ -48,14 +48,14 @@
 
     <xsl:variable name="use-uuid" as="xs:string">
         <xsl:choose>
-            <xsl:when test="$assign-uuid = 'make-uuid' and function-available('r:make-uuid')">
-                <!-- seed splices a timestamp with a given @uuid -->
-                <xsl:sequence select="r:make-uuid( /*/@uuid || '-' || replace( string(current-dateTime()),'\D','') )"/>
-            </xsl:when>
             <xsl:when test="matches($assign-uuid,$uuid-v4-regex)">
                 <xsl:sequence select="$assign-uuid"/>
             </xsl:when>
-            <xsl:when test="function-available('javaUUID:randomUUID')">
+            <xsl:when use-when="function-available('random-number-generator')" test="$assign-uuid = 'make-uuid'">
+                <!-- seed splices a timestamp with a given @uuid -->
+                <xsl:sequence select="r:make-uuid( /*/@uuid || '-' || replace( string(current-dateTime()),'\D','') )"/>
+            </xsl:when>
+            <xsl:when use-when="function-available('javaUUID:randomUUID')" test="function-available('javaUUID:randomUUID')">
                 <xsl:sequence select="javaUUID:randomUUID()"/>
             </xsl:when>
             <xsl:when test="unparsed-text-available($uuid-service)">

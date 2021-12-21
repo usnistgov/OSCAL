@@ -20,7 +20,7 @@
                </description>
             </constraint>
          </param>
-         <prop name="CORE" ns="https://fedramp.gov/ns/oscal" value=""/>
+         <prop name="CORE" ns="https://fedramp.gov/ns/oscal" value="core"/>
          <prop name="place" value="first"/>
          <part name="statement" id="a1-stmt">
             <prop name="conformity"

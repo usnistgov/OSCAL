@@ -13,6 +13,7 @@
 
     <xsl:param name="profile-origin-uri">urn:UNKNOWN</xsl:param>
 
+    <!-- Accepts a uuid as $assign-uuid, or provides a dummy UUID. A calling application can provide a 'random' UUID.  -->
     <xsl:param name="assign-uuid"  as="xs:string?"/>
     
     <xsl:variable name="uuid-v4-regex" as="xs:string">^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$</xsl:variable>

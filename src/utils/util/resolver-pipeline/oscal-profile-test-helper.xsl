@@ -18,19 +18,19 @@
     <xsl:output method="xml" indent="yes"/>
 
     <xsl:strip-space
-        elements="catalog group control param guideline select part
-        metadata back-matter annotation party person org rlink address resource role responsible-party citation
-        profile import merge custom modify include exclude set alter add"/>
+        elements="catalog metadata param control group back-matter prop link part usage constraint guideline select remarks description test revisions revision role location party responsible-party address external-id resource citation rlink base64"/>
 
 
-    <!--All assemblies defined in the profile model:
+    <!--All assemblies defined in the catalog model:
         
         https://raw.githubusercontent.com/wendellpiez/OSCAL/profile-resolution-update-v1a/xml/schema/oscal_catalog_schema.xsd
-        //xs:element[ends-with(@type,'ASSEMBLY')]/@name => distinct-values() => string-join(' | ')
         
-        profile | metadata | import | merge | modify | back-matter | include-all | include-controls | exclude-controls | combine | custom | group | insert-controls | param | prop | link | part | constraint | guideline | select | alter | remove | add | revision | role | location | party | responsible-party | address
-       
-       catalog | metadata | param | control | group | back-matter | prop | link | part | constraint | guideline | select | revision | role | location | party | responsible-party | address
+        //xs:element[ends-with(@type,'ASSEMBLY') or exists(xs:complexType[not(@mixed='true')])]/@name => distinct-values() => string-join(' | ')
+        
+        
+        catalog | metadata | param | control | group | back-matter | prop | link | part | usage | constraint | guideline | select | remarks | description | test | revisions | revision | role | location | party | responsible-party | address | external-id | resource | citation | rlink | base64
+        
+        
     -->
     
     <xsl:function name="opr:scrub" as="document-node()">
@@ -47,6 +47,14 @@
         </xsl:copy>
     </xsl:template>
 
+    <!-- defends against whitespace/indentation glitches -->
+    <xsl:template mode="scrubbing" match="text()[matches(.,'\S') => not()]">
+        <xsl:variable name="wrapper" select="ancestor::p[1] | ancestor::li[1]"/>
+        <xsl:if test="not(. is $wrapper/descendant::text()[1]) and not(. is $wrapper/descendant::text()[last()])">
+            <xsl:next-match/>
+        </xsl:if>
+    </xsl:template>
+    
     <xsl:template mode="scrubbing" match="last-modified">
         <xsl:copy>...</xsl:copy>
     </xsl:template>
@@ -55,8 +63,7 @@
         <xsl:attribute name="uuid">...</xsl:attribute>
     </xsl:template>
     
-    <xsl:template mode="scrubbing" match="catalog | metadata | param | control | group | back-matter | prop | link | part | constraint | guideline | select | revision | role | location | party | responsible-party | address |
-        profile | import | merge | modify | include-all | include-controls | exclude-controls | combine | custom | insert-controls | alter | remove | add">
+    <xsl:template mode="scrubbing" match="catalog | metadata | param | control | group | back-matter | prop | link | part | usage | constraint | guideline | select | remarks | description | test | revisions | revision | role | location | party | responsible-party | address | external-id | resource | citation | rlink | base64">
         <xsl:copy>
             <xsl:apply-templates mode="#current" select="@*"/>
             <!-- strips comments and PIs too!  -->
@@ -64,4 +71,5 @@
         </xsl:copy>
     </xsl:template>
 
+    
 </xsl:stylesheet>
