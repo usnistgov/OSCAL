@@ -45,6 +45,13 @@
          <part name="statement" id="c3-stmt">
             <p>C3 A ccccc cccccccccccccc.</p>
          </part>
+         <control id="c3.a-1">
+            <title>Control C3-A-1</title>
+            <prop name="place" value="eleventh"/>
+            <part name="statement" id="c3-stmt">
+               <p>C3 A-1 ccccc cccccccccccccc.</p>
+            </part>
+         </control>
       </control>
    </control>
 </catalog>
