@@ -56,18 +56,20 @@ tagging { font-family: monospace; white-space: pre-wrap; padding: 0.5em; margin:
 tagging[whose=source_catalog] { background-color: #FFF0F0 }
 tagging[whose=source_profile] { background-color: #F0FFF0 }
 tagging[whose=target_catalog] { background-color: #F0F0FF }
+tagging[whose=inter_catalog] { background-color: #F0F0FF }
 
 hi { display: inline; font-style: italic; font-weight: bold; color: grey }
 tagging[whose=source_catalog] hi { background-color: #FFCCCC }
 tagging[whose=source_profile] hi { background-color: #CCFFCC }
 tagging[whose=target_catalog] hi { background-color: #CCCCFF }
+tagging[whose=inter_catalog] { background-color: #CCCCFF }
 
 tagging:after {
     content:
         oxy_combobox(
             edit, "@whose",
             editable, false,
-            values, "source_catalog, source_profile, target_catalog");
+            values, "source_catalog, source_profile, target_catalog, inter_catalog");
 }
 
 mapping:before {
@@ -99,6 +101,8 @@ xref:before { font-weight: bold; font-size: 80%; content: " [See section \201C" 
   'for $t in (@rid) return //section[@id=$t]/string(head)')  "\201D] " }
 
 tgt { display: inline; color: midnightblue; font-weight: bold; font-size: 90%; font-family: sans-serif }
+
+int { display: inline; color: pink; font-weight: bold; font-size: 90%; font-family: sans-serif }
 
 src { display: inline; color: darkgreen; font-weight: bold; font-size: 90%; font-family: sans-serif }
 
