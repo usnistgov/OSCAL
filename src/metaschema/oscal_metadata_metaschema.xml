@@ -158,6 +158,9 @@
             <formal-name>Location Universally Unique Identifier</formal-name>
             <!-- identifier declaration -->
             <description>A <em>machine-oriented</em>, <em>globally unique</em> identifier with <em>cross-instance</em> scope that can be used to reference this defined location elsewhere in this or other OSCAL instances. The locally defined <em>UUID</em> of the <code>location</code> can be used to reference the data item locally or globally (e.g., from an importing OSCAL instance). This UUID should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+            <remarks>
+                <p>See the <a href="/concepts/identifier-use/#machine-oriented">Concepts - Identifier Use</a> page for additional information regarding this <em>machine-oriented</em> identifier's uniqueness and scope.</p>
+              </remarks>
         </define-flag>
         <model>
             <define-field name="title" as-type="markup-line">
@@ -223,6 +226,9 @@
                 <key-field target="."/>
             </index-has-key>
         </constraint>
+        <remarks>
+            <p>See the <a href="/concepts/identifier-use/#scope">Concepts - Identifier Use</a> page for additional information about the referenced identifier's scope.</p>
+          </remarks>
     </define-flag>
 
     <define-field name="location-uuid" as-type="uuid">
@@ -236,6 +242,9 @@
                 <key-field target="."/>
             </index-has-key>
         </constraint>
+        <remarks>
+            <p>See the <a href="/concepts/identifier-use/#scope">Concepts - Identifier Use</a> page for additional information about the referenced identifier's scope.</p>
+          </remarks>
     </define-field>
 
     <define-assembly name="party">
@@ -245,6 +254,9 @@
             <formal-name>Party Universally Unique Identifier</formal-name>
             <!-- identifier declaration -->
             <description>A <em>machine-oriented</em>, <em>globally unique</em> identifier with <em>cross-instance</em> scope that can be used to reference this defined party elsewhere in this or other OSCAL instances. The locally defined <em>UUID</em> of the <code>party</code> can be used to reference the data item locally or globally (e.g., from an importing OSCAL instance). This UUID should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+            <remarks>
+                <p>See the <a href="/concepts/identifier-use/#machine-oriented">Concepts - Identifier Use</a> page for additional information regarding this <em>machine-oriented</em> identifier's uniqueness and scope.</p>
+              </remarks>
         </define-flag>
         <define-flag name="type" as-type="string" required="yes">
             <formal-name>Party Type</formal-name>
@@ -325,7 +337,7 @@
                 </constraint>
                 <remarks>
                     <p>Parties of both the <code>person</code> or <code>organization</code> type can be associated with an organization using the <code>member-of-organization</code>.</p>
-                    <p>See the [Concepts - Identifier Use](https://pages.nist.gov/OSCAL/concepts/identifier-use/#scope) page for additional information about the referenced identifier's scope.</p>
+                    <p>See the <a href="/concepts/identifier-use/#scope">Concepts - Identifier Use</a> page for additional information about the referenced identifier's scope.</p>
                 </remarks>
             </define-field>
             <field ref="remarks" in-xml="WITH_WRAPPER"/>
@@ -350,6 +362,9 @@
                 <key-field target="."/>
             </index-has-key>
         </constraint>
+        <remarks>
+            <p>See the <a href="/concepts/identifier-use/#scope">Concepts - Identifier Use</a> page for additional information about the referenced identifier's scope.</p>
+          </remarks>
     </define-field>
 
     <define-assembly name="role">
@@ -358,8 +373,10 @@
         <define-flag name="id" as-type="token" required="yes">
             <!-- This is an id because the idenfier is assigned and managed by humans. -->
             <!-- identifier declarations -->
-            <description>A <em>human-oriented</em>, <em>locally-unique</em> identifier with <em>cross-instance</em> scope that can be used to reference this defined role elsewhere in this and other OSCAL instances. When referenced from another OSCAL instance, the locally defined <em>ID</em> of the <code>Role<code> from the imported OSCAL instance must be referenced in the context of the containing resource (e.g., import, import-component-definition, import-profile, import-ssp or import-ap). This ID should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
-
+            <description>A <em>human-oriented</em>, <em>locally-unique</em> identifier with <em>cross-instance</em> scope that can be used to reference this defined role elsewhere in this and other OSCAL instances. When referenced from another OSCAL instance, the locally defined <em>ID</em> of the <code>Role</code> from the imported OSCAL instance must be referenced in the context of the containing resource (e.g., import, import-component-definition, import-profile, import-ssp or import-ap). This ID should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+            <remarks>
+                <p>See the <a href="/concepts/identifier-use/#human-oriented">Concepts - Identifier Use</a> page for additional information regarding this <em>human-oriented</em> identifier's uniqueness and scope.</p>
+              </remarks>
         </define-flag>
         <model>
             <define-field name="title" as-type="markup-line" min-occurs="1">
@@ -386,7 +403,6 @@
         <remarks>
             <p>Permissible values to be determined closer to the application (e.g. by a receiving authority).</p>
                 <p>OSCAL has defined a set of standardized roles for consistent use in OSCAL documents. This allows tools consuming OSCAL content to infer specific semantics when these roles are used. These roles are documented in the specific contexts of their use (e.g., responsible-party, responsible-role). When using such a role, it is necessary to define these roles in this list, which will then allow such a role to be referenced.</p>
-                <p>See the [Concepts - Identifier Use](https://pages.nist.gov/OSCAL/concepts/identifier-use/#human-oriented) page for additional information regarding this identifier's uniqueness and scope.</p>
             </remarks>
     </define-assembly>
 
@@ -417,6 +433,9 @@
                     <formal-name>Resource Universally Unique Identifier</formal-name>
                     <!-- identifier declaration -->
                     <description>A <em>machine-oriented</em>, <em>globally unique</em> identifier with <em>cross-instance</em> scope that can be used to reference this defined resource elsewhere in this or other OSCAL instances. This UUID should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+                    <remarks>
+                        <p>See the <a href="/concepts/identifier-use/#machine-oriented">Concepts - Identifier Use</a> page for additional information regarding this <em>machine-oriented</em> identifier's uniqueness and scope.</p>
+                      </remarks>
                 </define-flag>
                 <model>
                     <define-field name="title" as-type="markup-line">
@@ -611,6 +630,9 @@
             <formal-name>Property Universally Unique Identifier</formal-name>
             <!-- identifier declaration -->
             <description>A <em>machine-oriented</em>, <em>globally unique</em> identifier with <em>cross-instance</em> scope that can be used to reference this defined property elsewhere in this and other OSCAL instances. This UUID should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+            <remarks>
+                <p>See the <a href="/concepts/identifier-use/#machine-oriented">Concepts - Identifier Use</a> page for additional information regarding this <em>machine-oriented</em> identifier's uniqueness and scope.</p>
+              </remarks>
         </define-flag>
         <!-- CHANGED: data type to uri -->
         <define-flag name="ns" as-type="uri">
@@ -942,7 +964,7 @@
         </define-flag>
         <remarks>
             <p>This element is optional, but it will always have a valid value, as if it is missing the value of "document-id" is assumed to be equal to the UUID of the root. This requirement allows for document creators to retroactively link an update to the original version, by providing a document-id on the new document that is equal to the uuid of the original document.</p>
-            <p>See the [Concepts - Identifier Use](https://pages.nist.gov/OSCAL/concepts/identifier-use/#human-oriented) page for additional information regarding this identifier's uniqueness and scope.</p>
+            <p>See the <a href="/concepts/identifier-use/">Concepts - Identifier Use</a> page for additional information regarding this *machine-oriented* identifier's uniqueness and scope.</p>
         </remarks>
     </define-field>
 

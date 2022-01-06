@@ -25,6 +25,9 @@
                   <formal-name>Profile Universally Unique Identifier</formal-name>
                   <!-- Identifier Declaration -->
                   <description>A <em>machine-oriented</em>, <em>globally unique</em> identifier with <em>cross-instance</em> scope that can be used to reference this profile elsewhere in this and other OSCAL instances. The locally defined <em>UUID</em> of the <code>profile</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance).This identifier should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same profile across revisions of the document.</description>
+                  <remarks>
+                        <p>See the <a href="/concepts/identifier-use/#machine-oriented">Concepts - Identifier Use</a> page for additional information regarding this <em>machine-oriented</em> identifier's uniqueness and scope.</p>
+                      </remarks>
             </define-flag>
             <model>
                   <assembly ref="metadata" min-occurs="1"/>
@@ -37,7 +40,7 @@
             </model>
             <remarks>
                   <p>An OSCAL document that describes a tailoring of controls from one or more catalogs, with possible modification of multiple controls. It provides mechanisms by which controls may be selected (<code>import</code>), merged or (re)structured (<code>merge</code>), and amended (<code>modify</code>). OSCAL profiles may select subsets of controls, set parameter values for them in application, and even adjust the representation of controls as given in and by a catalog. They may also serve as sources for further modification in and by other profiles, that import them.</p>
-                  <p>See the [Concepts - Identifier Use](https://pages.nist.gov/OSCAL/concepts/identifier-use/#machine-oriented) page for additional information regarding this identifier's uniqueness and scope.</p>
+                  <p>See the <a href="/concepts/identifier-use/">Concepts - Identifier Use</a> page for additional information regarding this identifier's uniqueness and scope.</p>
             </remarks>
       </define-assembly>
       <define-assembly name="import">
@@ -149,6 +152,9 @@
                   <formal-name>Group Identifier</formal-name>
                   <!-- Identifier Declaration -->
                   <description>A <em>human-oriented</em>, <em>locally unique</em> identifier with <em>cross-instance</em> scope that can be used to reference this defined group elsewhere in this or other OSCAL instances. When referenced from another OSCAL instance, this identifier must be referenced in the context of the containing resource (e.g., import-profile). This id should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same group across revisions of the document.</description>
+                  <remarks>
+                        <p>See the <a href="/concepts/identifier-use/#human-oriented">Concepts - Identifier Use</a> page for additional information regarding this <em>human-oriented</em> identifier's uniqueness and scope.</p>
+                      </remarks>
             </define-flag>
             <define-flag name="class" as-type="token">
                   <formal-name>Group Class</formal-name>
@@ -201,6 +207,9 @@
                               <formal-name>Parameter ID</formal-name>
                               <!-- Identifier Declaration -->
                               <description>A <em>human-oriented</em>, <em>locally unique</em> identifier with <em>cross-instance</em> scope that can be used to reference this defined parameter elsewhere in this or other OSCAL instances. When referenced from another OSCAL instance, this identifier must be referenced in the context of the containing resource (e.g., import-profile). This id should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+                              <remarks>
+                                    <p>See the <a href="/concepts/identifier-use/#human-oriented">Concepts - Identifier Use</a> page for additional information regarding this <em>human-oriented</em> identifier's uniqueness and scope.</p>
+                                  </remarks>
                         </define-flag>
                         <define-flag name="class" as-type="token">
                               <formal-name>Parameter Class</formal-name>

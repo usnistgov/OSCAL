@@ -24,6 +24,9 @@
                         <formal-name>Part Identifier</formal-name>
                         <!-- Identifier Declaration -->
                         <description>A <em>human-oriented</em>, <em>locally unique</em> identifier with <em>cross-instance</em> scope that can be used to reference this defined part elsewhere in this and other OSCAL instances. When referenced from another OSCAL instance, this identifier must be referenced in the context of the containing resource (e.g., import-profile). This id should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+                        <remarks>
+                            <p>See the <a href="/concepts/identifier-use/#human-oriented">Concepts - Identifier Use</a> page for additional information regarding this <em>human-oriented</em> identifier's uniqueness and scope.</p>
+                        </remarks>
                 </define-flag>
                 <define-flag name="name" as-type="token" required="yes">
                         <formal-name>Part Name</formal-name>
@@ -125,6 +128,9 @@
                         <formal-name>Parameter Identifier</formal-name>
                         <!-- Identifier Declaration -->
                         <description>A <em>human-oriented</em>, <em>locally unique</em> identifier with <em>cross-instance</em> scope that can be used to reference this defined parameter elsewhere in this or other OSCAL instances. When referenced from another OSCAL instance, this identifier must be referenced in the context of the containing resource (e.g., import-profile). This id should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+                        <remarks>
+                                <p>See the <a href="/concepts/identifier-use/#human-oriented">Concepts - Identifier Use</a> page for additional information regarding this <em>human-oriented</em> identifier's uniqueness and scope.</p>
+                        </remarks>
                 </define-flag>
                 <!-- TODO: What is the semantics of class here? -->
                 <define-flag name="class" as-type="token">
@@ -268,5 +274,8 @@
                 <formal-name>Control Identifier Reference</formal-name>
                 <!-- Identifier Reference -->
                 <description>A <em>human-oriented</em> identifier reference to a control with a corresponding <code>id</code> value. When referencing an externally defined <code>control</code>, the <code>Control Identifier Reference</code> must be used in the context of the external / imported OSCAL instance (e.g., uri-reference).</description>
+                <remarks>
+                        <p>See the <a href="/concepts/identifier-use/#scope">Concepts - Identifier Use</a> page for additional information about the referenced identifier's scope.</p>
+                </remarks>
         </define-flag>
 </METASCHEMA>
