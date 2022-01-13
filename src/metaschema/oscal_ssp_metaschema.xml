@@ -36,6 +36,9 @@
       <formal-name>System Security Plan Universally Unique Identifier</formal-name>
       <!-- Identifier Declaration -->
       <description>A <em>machine-oriented</em>, <em>globally unique</em> identifier with <em>cross-instance</em> scope that can be used to reference this system security plan (SSP) elsewhere in this or other OSCAL instances. The locally defined <em>UUID</em> of the <code>SSP</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance).This UUID should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+      <remarks>
+            <p>See the <a href="/concepts/identifier-use/#machine-oriented">Concepts - Identifier Use</a> page for additional information regarding this <em>machine-oriented</em> identifier's uniqueness and scope.</p>
+      </remarks>
     </define-flag>
     <model>
       <assembly ref="metadata" min-occurs="1"/>
@@ -193,6 +196,9 @@
           <formal-name>Information Type Universally Unique Identifier</formal-name>
           <!-- Identifier Declaration -->
           <description>A <em>machine-oriented</em>, <em>globally unique</em> identifier with <em>cross-instance</em> scope that can be used to reference this information type elsewhere in this or other OSCAL instances. The locally defined <em>UUID</em> of the <code>information type</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+          <remarks>
+                <p>See the <a href="/concepts/identifier-use/#machine-oriented">Concepts - Identifier Use</a> page for additional information regarding this <em>machine-oriented</em> identifier's uniqueness and scope.</p>
+          </remarks>
         </define-flag>
         <model>
           <define-field name="title" as-type="markup-line" min-occurs="1">
@@ -226,6 +232,9 @@
                 <description>A <em>human-oriented</em>, <em>globally unique</em> identifier qualified by the given identification <code>system</code> used, such as NIST SP 800-60.  This identifier has <em>cross-instance</em> scope and can be used to reference this system elsewhere in this or other OSCAL instances. This id should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
                 <json-value-key>id</json-value-key>
                 <group-as name="information-type-ids" in-json="ARRAY"/>
+                <remarks>
+                      <p>See the <a href="/concepts/identifier-use/#human-oriented">Concepts - Identifier Use</a> page for additional information regarding this <em>human-oriented</em> identifier's uniqueness and scope.</p>
+                </remarks>
               </define-field>
             </model>
           </define-assembly>
@@ -414,6 +423,9 @@
       <formal-name>Diagram ID</formal-name>
       <!-- Identifier Declaration -->
       <description>A <em>machine-oriented</em>, <em>globally unique</em> identifier with <em>cross-instance</em> scope that can be used to reference this diagram elsewhere in this or other OSCAL instances. The locally defined <em>UUID</em> of the <code>diagram</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+      <remarks>
+            <p>See the <a href="/concepts/identifier-use/#machine-oriented">Concepts - Identifier Use</a> page for additional information regarding this <em>machine-oriented</em> identifier's uniqueness and scope.</p>
+      </remarks>
     </define-flag>
     <model>
       <define-field name="description" as-type="markup-multiline" in-xml="WITH_WRAPPER">
@@ -545,6 +557,9 @@
           <formal-name>Leveraged Authorization Universally Unique Identifier</formal-name>
           <!-- Identifier Declaration -->
           <description>A <em>machine-oriented</em>, <em>globally unique</em> identifier with <em>cross-instance</em> scope and can be used to reference this leveraged authorization elsewhere in this or other OSCAL instances. The locally defined <em>UUID</em> of the <code>leveraged authorization</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+          <remarks>
+                <p>See the <a href="/concepts/identifier-use/#machine-oriented">Concepts - Identifier Use</a> page for additional information regarding this <em>machine-oriented</em> identifier's uniqueness and scope.</p>
+          </remarks>
         </define-flag>
         <model>
           <define-field name="title" as-type="markup-line" min-occurs="1">
@@ -696,6 +711,9 @@
       <formal-name>Control Requirement Universally Unique Identifier</formal-name>
       <!-- Identifier Declaration -->
       <description>A <em>machine-oriented</em>, <em>globally unique</em> identifier with <em>cross-instance</em> scope that can be used to reference this control requirement elsewhere in this or other OSCAL instances. The locally defined <em>UUID</em> of the <code>control requirement</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+      <remarks>
+            <p>See the <a href="/concepts/identifier-use/#machine-oriented">Concepts - Identifier Use</a> page for additional information regarding this <em>machine-oriented</em> identifier's uniqueness and scope.</p>
+      </remarks>
     </define-flag>
     <flag ref="control-id" required="yes"/>
     <model>
@@ -787,6 +805,9 @@
       <formal-name>Control Statement Reference Universally Unique Identifier</formal-name>
       <!-- Identifier Reference -->
       <description>A <em>machine-oriented</em>, <em>globally unique</em> identifier with <em>cross-instance</em> scope that can be used to reference this control statement elsewhere in this or other OSCAL instances. The <em>UUID</em> of the <code>control statement</code> in the source OSCAL instance is sufficient to reference the data item locally or globally (e.g., in an imported OSCAL instance).</description>
+      <remarks>
+            <p>See the <a href="/concepts/identifier-use/#machine-oriented">Concepts - Identifier Use</a> page for additional information regarding this <em>machine-oriented</em> identifier's uniqueness and scope.</p>
+      </remarks>
     </define-flag>
     <model>
       <assembly ref="property" max-occurs="unbounded">
@@ -840,6 +861,9 @@
       <formal-name>By-Component Universally Unique Identifier</formal-name>
       <!-- Identifier Declaration -->
       <description>A <em>machine-oriented</em>, <em>globally unique</em> identifier with <em>cross-instance</em> scope that can be used to reference this by-component entry elsewhere in this or other OSCAL instances. The locally defined <em>UUID</em> of the <code>by-component</code> entry can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+      <remarks>
+            <p>See the <a href="/concepts/identifier-use/#machine-oriented">Concepts - Identifier Use</a> page for additional information regarding this <em>machine-oriented</em> identifier's uniqueness and scope.</p>
+      </remarks>
     </define-flag>
     <model>
       <define-field name="description" as-type="markup-multiline" min-occurs="1" in-xml="WITH_WRAPPER">
@@ -884,6 +908,9 @@
               <formal-name>Provided Universally Unique Identifier</formal-name>
               <!-- Identifier Declaration -->
               <description>A <em>machine-oriented</em>, <em>globally unique</em> identifier with <em>cross-instance</em> scope that can be used to reference this provided entry elsewhere in this or other OSCAL instances. The locally defined <em>UUID</em> of the <code>provided</code> entry can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+              <remarks>
+                    <p>See the <a href="/concepts/identifier-use/#machine-oriented">Concepts - Identifier Use</a> page for additional information regarding this <em>machine-oriented</em> identifier's uniqueness and scope.</p>
+              </remarks>
             </define-flag>
             <model>
               <define-field name="description" as-type="markup-multiline" min-occurs="1" in-xml="WITH_WRAPPER">
@@ -919,6 +946,9 @@
               <formal-name>Responsibility Universally Unique Identifier</formal-name>
               <!-- Identifier Declaration -->
               <description>A <em>machine-oriented</em>, <em>globally unique</em> identifier with <em>cross-instance</em> scope that can be used to reference this responsibility elsewhere in this or other OSCAL instances. The locally defined <em>UUID</em> of the <code>responsibility</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+              <remarks>
+                    <p>See the <a href="/concepts/identifier-use/#machine-oriented">Concepts - Identifier Use</a> page for additional information regarding this <em>machine-oriented</em> identifier's uniqueness and scope.</p>
+              </remarks>
             </define-flag>
             <flag ref="provided-uuid" required="no" />
             <model>
@@ -971,6 +1001,9 @@
           <formal-name>Inherited Universally Unique Identifier</formal-name>
           <!-- Identifier Declaration -->
           <description>A <em>machine-oriented</em>, <em>globally unique</em> identifier with <em>cross-instance</em> scope that can be used to reference this inherited entry elsewhere in this or other OSCAL instances. The locally defined <em>UUID</em> of the <code>inherited control implementation</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+          <remarks>
+                <p>See the <a href="/concepts/identifier-use/#machine-oriented">Concepts - Identifier Use</a> page for additional information regarding this <em>machine-oriented</em> identifier's uniqueness and scope.</p>
+          </remarks>
         </define-flag>
         <flag ref="provided-uuid" required="no" />
         <model>
@@ -1007,6 +1040,9 @@
           <formal-name>Satisfied Universally Unique Identifier</formal-name>
           <!-- Identifier Declaration -->
           <description>A <em>machine-oriented</em>, <em>globally unique</em> identifier with <em>cross-instance</em> scope that can be used to reference this satisfied control implementation entry elsewhere in this or other OSCAL instances. The locally defined <em>UUID</em> of the <code>control implementation</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+          <remarks>
+                <p>See the <a href="/concepts/identifier-use/#machine-oriented">Concepts - Identifier Use</a> page for additional information regarding this <em>machine-oriented</em> identifier's uniqueness and scope.</p>
+          </remarks>
         </define-flag>
         <flag ref="responsibility-uuid" required="no" />
         <model>

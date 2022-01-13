@@ -35,6 +35,9 @@
       <formal-name>Component Definition Universally Unique Identifier</formal-name>
       <!-- Identifier Declaration -->
       <description>A <em>machine-oriented</em>, <em>globally unique</em> identifier with <em>cross-instance</em> scope that can be used to reference this component definition elsewhere in this or other OSCAL instances. The locally defined <em>UUID</em> of the <code>component definition</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+      <remarks>
+            <p>See the <a href="/concepts/identifier-use/#machine-oriented">Concepts - Identifier Use</a> page for additional information regarding this <em>machine-oriented</em> identifier's uniqueness and scope.</p>
+      </remarks>
     </define-flag>
     <model>
       <assembly ref="metadata" min-occurs="1"/>
@@ -82,6 +85,9 @@
       <formal-name>Component Identifier</formal-name>
       <!-- Identifier Declaration -->
       <description>A <em>machine-oriented</em>, <em>globally unique</em> identifier with <em>cross-instance</em> scope that can be used to reference this component elsewhere in this or other OSCAL instances. The locally defined <em>UUID</em> of the <code>component</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+      <remarks>
+            <p>See the <a href="/concepts/identifier-use/#machine-oriented">Concepts - Identifier Use</a> page for additional information regarding this <em>machine-oriented</em> identifier's uniqueness and scope.</p>
+      </remarks>
     </define-flag>
     <flag ref="defined-component-type" required="yes">
       <use-name>type</use-name>
@@ -253,6 +259,9 @@
       <formal-name>Capability Identifier</formal-name>
       <!-- Identifier Declaration -->
       <description>A <em>machine-oriented</em>, <em>globally unique</em> identifier with <em>cross-instance</em> scope that can be used to reference this capability elsewhere in this or other OSCAL instances. The locally defined <em>UUID</em> of the <code>capability</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance).This UUID should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+      <remarks>
+            <p>See the <a href="/concepts/identifier-use/#machine-oriented">Concepts - Identifier Use</a> page for additional information regarding this <em>machine-oriented</em> identifier's uniqueness and scope.</p>
+      </remarks>
     </define-flag>
     <define-flag name="name" as-type="string" required="yes">
       <formal-name>Capability Name</formal-name>
@@ -315,6 +324,9 @@
       <formal-name>Control Implementation Set Identifier</formal-name>
       <!-- Identifier Declaration -->
       <description>A <em>machine-oriented</em>, <em>globally unique</em> identifier with <em>cross-instance</em> scope that can be used to reference a set of implemented controls elsewhere in this or other OSCAL instances. The locally defined <em>UUID</em> of the <code>control implementation set</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+      <remarks>
+            <p>See the <a href="/concepts/identifier-use/#machine-oriented">Concepts - Identifier Use</a> page for additional information regarding this <em>machine-oriented</em> identifier's uniqueness and scope.</p>
+      </remarks>
     </define-flag>
     <flag ref="source" required="yes">
       <remarks>
@@ -358,6 +370,9 @@
       <formal-name>Control Implementation Identifier</formal-name>
       <!-- Identifier Declaration -->
       <description>A <em>machine-oriented</em>, <em>globally unique</em> identifier with <em>cross-instance</em> scope that can be used to reference a specific control implementation elsewhere in this or other OSCAL instances. The locally defined <em>UUID</em> of the <code>control implementation</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance).This UUID should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+      <remarks>
+            <p>See the <a href="/concepts/identifier-use/#machine-oriented">Concepts - Identifier Use</a> page for additional information regarding this <em>machine-oriented</em> identifier's uniqueness and scope.</p>
+      </remarks>
     </define-flag>
     <flag ref="control-id" required="yes"/>
     <model>
@@ -415,6 +430,9 @@
       <formal-name>Control Statement Reference Universally Unique Identifier</formal-name>
       <!-- Identifier Reference -->
       <description>A <em>machine-oriented</em>, <em>globally unique</em> identifier with <em>cross-instance</em> scope that can be used to reference this control statement elsewhere in this or other OSCAL instances. The <em>UUID</em> of the <code>control statement</code> in the source OSCAL instance is sufficient to reference the data item locally or globally (e.g., in an imported OSCAL instance).</description>
+      <remarks>
+            <p>See the <a href="/concepts/identifier-use/#machine-oriented">Concepts - Identifier Use</a> page for additional information regarding this <em>machine-oriented</em> identifier's uniqueness and scope.</p>
+      </remarks>
     </define-flag>
     <model>
       <define-field name="description" as-type="markup-multiline" min-occurs="1" in-xml="WITH_WRAPPER">

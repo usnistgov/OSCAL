@@ -24,6 +24,9 @@
       <formal-name>Assessment Results Universally Unique Identifier</formal-name>
       <!-- Identifier Declaration -->
       <description>A <em>machine-oriented</em>, <em>globally unique</em> identifier with <em>cross-instance</em> scope that can be used to reference this assessment results instance in this or other OSCAL instances. The locally defined <em>UUID</em> of the <code>assessment result</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+      <remarks>
+            <p>See the <a href="/concepts/identifier-use/#machine-oriented">Concepts - Identifier Use</a> page for additional information regarding this <em>machine-oriented</em> identifier's uniqueness and scope.</p>
+      </remarks>
     </define-flag>
     <model>
       <assembly ref="metadata" min-occurs="1" max-occurs="1"/>
@@ -77,6 +80,9 @@
       <formal-name>Results Universally Unique Identifier</formal-name>
       <!-- Identifier Declaration -->
       <description>A <em>machine-oriented</em>, <em>globally unique</em> identifier with <em>cross-instance</em> scope that can be used to reference this set of results in this or other OSCAL instances. The locally defined <em>UUID</em> of the <code>assessment result</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+      <remarks>
+            <p>See the <a href="/concepts/identifier-use/#machine-oriented">Concepts - Identifier Use</a> page for additional information regarding this <em>machine-oriented</em> identifier's uniqueness and scope.</p>
+      </remarks>
     </define-flag>
     <model>
       <define-field name="title" min-occurs="1" max-occurs="1" as-type="markup-line">
@@ -203,6 +209,9 @@
               <formal-name>Assessment Log Entry Universally Unique Identifier</formal-name>
               <!-- Identifier Declaration -->
               <description>A <em>machine-oriented</em>, <em>globally unique</em> identifier with <em>cross-instance</em> scope that can be used to reference an assessment event in this or other OSCAL instances. The locally defined <em>UUID</em> of the <code>assessment log entry</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+              <remarks>
+                    <p>See the <a href="/concepts/identifier-use/#machine-oriented">Concepts - Identifier Use</a> page for additional information regarding this <em>machine-oriented</em> identifier's uniqueness and scope.</p>
+              </remarks>
             </define-flag>
             <model>
               <define-field name="title" min-occurs="0" max-occurs="1" as-type="markup-line">
@@ -264,6 +273,9 @@
       <formal-name>Finding Universally Unique Identifier</formal-name>
       <!-- Identifier Declaration -->
       <description>A <em>machine-oriented</em>, <em>globally unique</em> identifier with <em>cross-instance</em> scope that can be used to reference this finding in this or other OSCAL instances. The locally defined <em>UUID</em> of the <code>finding</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+      <remarks>
+            <p>See the <a href="/concepts/identifier-use/#machine-oriented">Concepts - Identifier Use</a> page for additional information regarding this <em>machine-oriented</em> identifier's uniqueness and scope.</p>
+      </remarks>
     </define-flag>
     <model>
       <define-field name="title" min-occurs="1" as-type="markup-line">
@@ -328,9 +340,7 @@
           <!-- Identifer Reference -->
           <description>A <em>machine-oriented</em> identifier reference to a risk defined in the list of risks.</description>
           <remarks>
-                <!-- UUID -->
-                <p>Type: machine-oriented</p>
-                <p>Source: cross-instance - References the a risk in this or other OSCAL instances</p>
+                <p>See the <a href="/concepts/identifier-use/#machine-oriented">Concepts - Identifier Use</a> page for additional information regarding this <em>machine-oriented</em> identifier's uniqueness and scope.</p>
           </remarks>
         </define-flag>
       </define-assembly>

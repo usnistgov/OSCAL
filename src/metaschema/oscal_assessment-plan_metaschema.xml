@@ -22,6 +22,9 @@
             <formal-name>Assessment Plan Universally Unique Identifier</formal-name>
             <!-- Identifier Declaration -->
             <description>A <em>machine-oriented</em>, <em>globally unique</em> identifier with <em>cross-instance</em> scope that can be used to reference this assessment plan in this or other OSCAL instances. The locally defined <em>UUID</em> of the <code>assessment plan</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+            <remarks>
+                  <p>See the <a href="/concepts/identifier-use/#machine-oriented">Concepts - Identifier Use</a> page for additional information regarding this <em>machine-oriented</em> identifier's uniqueness and scope.</p>
+            </remarks>
         </define-flag>
         <model>
             <assembly ref="metadata" min-occurs="1" max-occurs="1"/>
