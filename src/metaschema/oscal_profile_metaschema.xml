@@ -87,53 +87,56 @@
       </define-assembly>
       <define-assembly name="merge">
             <formal-name>Merge controls</formal-name>
-            <description>A Merge element merges controls in resolution.</description>
+            <description>A Merge element provides structuring directives that drive how controls are organized after resolution.</description>
             <model>
-                  <assembly ref="combine"/>
+                  <define-assembly name="combine">
+                        <formal-name>Combination rule</formal-name>
+                        <description>A Combine element defines whether and how to combine multiple (competing) versions of the same control</description>
+                        <define-flag name="method" as-type="string">
+                              <formal-name>Combination method</formal-name>
+                              <description>How clashing controls should be handled</description>
+                              <constraint>
+                                    <allowed-values>
+                                          <enum value="use-first">Use the first definition - the first control with a given ID is used; subsequent ones are discarded</enum>
+                                          <enum value="merge">**(deprecated)** **(unspecified)** Merge - controls with the same ID are combined</enum>
+                                          <enum value="keep">Keep - controls with the same ID are kept, retaining the clash</enum>
+                                    </allowed-values>
+                              </constraint>
+                        </define-flag>
+                        <constraint>
+                              <expect id="expect-profile-combine-method-merge-unused" target="." test="not(exists(combine[@method='merge']))"/>
+                        </constraint>
+                        <remarks>
+                              <p>Whenever combining controls from multiple (import) pathways, an issue arises of what to do with clashing invocations (multiple competing versions of a control). </p>
+                              <p>This setting permits a profile designer to apply a rule for the resolution of such cases. In a well-designed profile, such collisions would ordinarily be avoided, but this setting can be useful for defining what to do when it occurs.</p>
+                        </remarks>
+                  </define-assembly>
                   <choice>
-                        <field ref="as-is"/>
-                        <assembly ref="custom"/>
+                        <define-field name="as-is" as-type="boolean">
+                              <formal-name>As-Is Structuring Directive</formal-name>
+                              <description>An As-is element indicates that the controls should be structured in resolution as they are structured in their source catalogs. It does not contain any elements or attributes. This method has been deprecated and should not be used. The `source` structuring directive syntax should be used instead.</description>
+                        </define-field>
+                        <define-assembly name="custom">
+                              <formal-name>Custom grouping</formal-name>
+                              <description>A Custom element frames a structure for embedding represented controls in resolution.</description>
+                              <model>
+                                    <assembly ref="group" max-occurs="unbounded">
+                                          <group-as name="groups" in-json="ARRAY"/>
+                                    </assembly>
+                                    <assembly ref="insert-controls" max-occurs="unbounded">
+                                          <group-as name="insert-controls" in-json="ARRAY"/>
+                                    </assembly>
+                              </model>
+                              <remarks>
+                                    <p>The <code>custom</code> element represents a custom arrangement or organization of controls in the resolution of a catalog.</p>
+                                    <p>While the <code>as-is</code> element provides for a restitution of a control set's organization (in one or more source catalogs), this element permits the definition of an entirely different structure.</p>
+                              </remarks>
+                        </define-assembly>
                   </choice>
             </model>
             <remarks>
                   <p>The contents of the <code>merge</code> element may be used to <q>reorder</q> or <q>restructure</q> controls by indicating an order and/or structure in resolution.</p>
                   <p>Implicitly, a <code>merge</code> element is also a filter: controls that are included in a profile, but not included (implicitly or explicitly) in the scope of a <code>merge</code> element, will not be merged into (will be dropped) in the resulting resolution.</p>
-            </remarks>
-      </define-assembly>
-      <define-assembly name="combine">
-            <formal-name>Combination rule</formal-name>
-            <description>A Combine element defines whether and how to combine multiple (competing) versions of the same control</description>
-            <flag ref="method"/>
-            <remarks>
-                  <p>Whenever combining controls from multiple (import) pathways, an issue arises of what to do with clashing invocations (multiple competing versions of a control). </p>
-                  <p>This setting permits a profile designer to apply a rule for the resolution of such cases. In a well-designed profile, such collisions would ordinarily be avoided, but this setting can be useful for defining what to do when it occurs.</p>
-            </remarks>
-      </define-assembly>
-      <define-flag name="method" as-type="string">
-            <formal-name>Combination method</formal-name>
-            <description>How clashing controls should be handled</description>
-            <constraint>
-                  <allowed-values>
-                        <enum value="use-first">Use the first definition - the first control with a given ID is used; subsequent ones are discarded</enum>
-                        <enum value="merge">Merge - controls with the same ID are combined</enum>
-                        <enum value="keep">Keep - controls with the same ID are kept, retaining the clash</enum>
-                  </allowed-values>
-            </constraint>
-      </define-flag>
-      <define-assembly name="custom">
-            <formal-name>Custom grouping</formal-name>
-            <description>A Custom element frames a structure for embedding represented controls in resolution.</description>
-            <model>
-                  <assembly ref="group" max-occurs="unbounded">
-                        <group-as name="groups" in-json="ARRAY"/>
-                  </assembly>
-                  <assembly ref="insert-controls" max-occurs="unbounded">
-                        <group-as name="insert-controls" in-json="ARRAY"/>
-                  </assembly>
-            </model>
-            <remarks>
-                  <p>The <code>custom</code> element represents a custom arrangement or organization of controls in the resolution of a catalog.</p>
-                  <p>While the <code>as-is</code> element provides for a restitution of a control set's organization (in one or more source catalogs), this element permits the definition of an entirely different structure.</p>
             </remarks>
       </define-assembly>
       <define-assembly name="group">
