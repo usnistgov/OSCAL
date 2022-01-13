@@ -5,7 +5,6 @@ import io
 import json
 import argparse
 from jsonschema import validate
-import json
 import xmlschema
 
 
