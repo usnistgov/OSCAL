@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0"
-         uuid="01e36471-1263-4274-ab8f-1d964ac6c255">
+   uuid="4e44c016-f69e-4ef0-9041-7c3afc2c6ae7">
    <metadata>
       <title>Test Profile</title>
       <last-modified>2021-04-06T15:00:48.692-04:00</last-modified>
       <version>1.0</version>
-      <oscal-version>1.0.0-rc2</oscal-version>
+      <oscal-version>1.0.0</oscal-version>
       <link rel="resolution-source" href="base-test_profile.xml"/>
    </metadata>
    <control id="a1">
@@ -34,16 +34,29 @@
    </control>
    <control id="c3">
       <title>Control C3</title>
-      <prop name="place" value="ninth"/>
-      <part name="statement" id="c3-stmt">
+      <prop name="place"
+         value="ninth" />
+      <part name="statement"
+         id="c3-stmt">
          <p>C3 ccccc cccccccccccccc.</p>
       </part>
       <control id="c3.a">
          <title>Control C3-A</title>
-         <prop name="place" value="tenth"/>
-         <part name="statement" id="c3-stmt">
+         <prop name="place"
+            value="tenth" />
+         <part name="statement"
+            id="c3-stmt">
             <p>C3 A ccccc cccccccccccccc.</p>
          </part>
+         <control id="c3.a-1">
+            <title>Control C3-A-1</title>
+            <prop name="place"
+               value="eleventh" />
+            <part name="statement"
+               id="c3-stmt">
+               <p>C3 A-1 ccccc cccccccccccccc.</p>
+            </part>
+         </control>
       </control>
    </control>
 </catalog>

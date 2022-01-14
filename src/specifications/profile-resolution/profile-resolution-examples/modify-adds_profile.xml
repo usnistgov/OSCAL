@@ -7,7 +7,7 @@
       <title>Example</title>
       <last-modified>2020-05-30T14:39:50.536-04:00</last-modified>
       <version>1.2</version>
-      <oscal-version>1.0.0-rc2</oscal-version>
+      <oscal-version>1.0.0</oscal-version>
    </metadata>
    <import href="#4d263315-ebac-45cc-801e-f5a986cd59a9">
       <include-controls>
@@ -35,10 +35,10 @@
          </constraint>
       </set-parameter>
       <alter control-id="a1">
-         <add position="starting" id-ref="a1">
-            <prop name="CORE" ns="https://fedramp.gov/ns/oscal" value=""/>
+         <add position="starting" by-id="a1">
+            <prop name="CORE" ns="https://fedramp.gov/ns/oscal" value="core"/>
          </add>
-         <add position="starting" id-ref="a1-stmt">
+         <add position="starting" by-id="a1-stmt">
             <prop name="conformity"
                   ns="https://fedramp.gov/ns/oscal"
                   value="assessment-objective"/>

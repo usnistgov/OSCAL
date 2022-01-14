@@ -13,8 +13,14 @@
 
     <xsl:param name="profile-origin-uri">urn:UNKNOWN</xsl:param>
 
-    <xsl:variable name="uuid-service" select="'https://www.uuidgenerator.net/api/version4'"/>
-
+    <!-- Accepts a uuid as $assign-uuid, or provides a dummy UUID. A calling application can provide a 'random' UUID.  -->
+    <xsl:param name="assign-uuid"  as="xs:string?"/>
+    
+    <xsl:variable name="uuid-v4-regex" as="xs:string">^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$</xsl:variable>
+    
+    <xsl:variable name="use-uuid" as="xs:string"
+        select="( $assign-uuid[matches(.,$uuid-v4-regex)], '00000000-0000-4000-B000-000000000000' )[1]"/>
+       
     <xsl:template match="* | @*" mode="#all">
         <xsl:copy>
             <xsl:apply-templates mode="#current" select="node() | @*"/>
@@ -22,8 +28,7 @@
     </xsl:template>
 
     <xsl:template match="profile" priority="1">
-        <xsl:variable name="uuid" select="unparsed-text($uuid-service)"/>
-        <catalog uuid="{ $uuid }">
+        <catalog uuid="{ $use-uuid }">
             <!-- Rewriting top-level @id -->
             <!--<xsl:if test="function-available('uuid:randomUUID')" xmlns:uuid="java:java.util.UUID">
                 <xsl:attribute name="uuid" select="uuid:randomUUID()"/>
