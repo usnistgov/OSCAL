@@ -5,7 +5,7 @@
       <title>Test Profile</title>
       <last-modified>2021-04-06T15:00:52.172-04:00</last-modified>
       <version>1.0</version>
-      <oscal-version>1.0.0-rc2</oscal-version>
+      <oscal-version>1.0.0</oscal-version>
       <link rel="resolution-source"
             href="include-call-with-children-test_profile.xml"/>
    </metadata>
@@ -45,6 +45,13 @@
          <part name="statement" id="c3-stmt">
             <p>C3 A ccccc cccccccccccccc.</p>
          </part>
+         <control id="c3.a-1">
+            <title>Control C3-A-1</title>
+            <prop name="place" value="eleventh"/>
+            <part name="statement" id="c3-stmt">
+               <p>C3 A-1 ccccc cccccccccccccc.</p>
+            </part>
+         </control>
       </control>
    </control>
 </catalog>
