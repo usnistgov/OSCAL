@@ -5,7 +5,7 @@
       <title>Test Profile</title>
       <last-modified>2021-04-06T15:00:52.649-04:00</last-modified>
       <version>1.0</version>
-      <oscal-version>1.0.0-rc2</oscal-version>
+      <oscal-version>1.0.0</oscal-version>
       <link rel="resolution-source" href="include-match-test_profile.xml"/>
    </metadata>
 </catalog>
