@@ -6,7 +6,7 @@ import json
 import argparse
 from jsonschema import validate
 import xmlschema
-import yaml
+from ruamel.yaml import YAML
 
 
 def _get_oscal_file_type(filename):
@@ -25,6 +25,7 @@ def read_file(filename, ftype):
         if ftype == "json":
             filedata = json.load(f)
         if ftype == "yaml":
+            yaml = YAML()
             filedata = yaml.load(f)
         else:
             filedata = f.read()
