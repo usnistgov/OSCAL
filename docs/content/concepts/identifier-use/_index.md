@@ -35,7 +35,7 @@ The [OSCAL Reference Index](/reference/latest/complete/xml-index/#/@uuid) provid
 
 #### Human-Oriented
 
-OSCAL generally implements *`human-oriented`* identifiers as Token data types, which are non-colonized names (add link to data type).  These *`human-oriented`* identifiers have the benefit of allowing authors to incorporate semantics that support readability and processing by humans.  For example, control identifiers in a catalog may use a nomenclature that is familiar to the intended audience, allowing them to quickly determine what security control is being referred to, simply by its ID.  
+A *`human-oriented`* identifier incorporates semantics that support readability and processing by humans. OSCAL implements *`human-oriented`* identifiers as Token data types, which are non-colonized names (add link to data type). For example, control identifiers in a catalog may use a nomenclature that is familiar to the intended audience, allowing them to quickly determine what security control is being referred to, simply by its identifier value.  
 
 The [OSCAL Reference Index](/reference/latest/complete/xml-index/#/@id) provides a comprehensive listing of the *`human-oriented`* IDs in OSCAL.  References to these IDs are typically named according to the referenced object type (e.g., control) followed by “-id”, as seen here in the [Reference Index](/reference/latest/complete/xml-index/#/@control-id).
 
