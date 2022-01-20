@@ -28,7 +28,7 @@ UUIDs were chosen because:
 - UUIDs can be issued without a central authority
 - UUIDs are represented in 128bits, providing for a large address space with low risk of identifier collisions for randomly generated values
 
-> **NOTE**: While UUIDs are used as machine-oriented identifiers catering to use cases where automated processing is desired, they are not ideal for wildcard matching scenarios.  UUIDs should only be used when exact matches are expected.
+The opaque nature of UUIDs, which consist of a series of hexadecimal characters, makes them less than ideal for wildcard matching scenarios.  Thus, their use in OSCAL is intended for identification only where an exact match is required. Where wildcard matching is needed, the other data elements associated with the entity should be evaluated for a match instead. 
 
 
 The [OSCAL Reference Index](/reference/latest/complete/xml-index/#/@uuid) provides a complete listing of UUIDs in OSCAL.  References to these identifiers typically follow a naming convention of the object type followed by “-uuid”.  For example, see the reference index for [location-uuid](/reference/latest/complete/xml-index/#/location-uuid).
