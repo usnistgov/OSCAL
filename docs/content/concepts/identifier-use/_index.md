@@ -1,6 +1,6 @@
 ---
 title: Identifier Use
-description: Provides details on the scope an duniqueness of dientifiers used within the OSCAL models.
+description: Provides details on the scope and uniqueness of identifiers used within the OSCAL models.
 suppresstopiclist: true
 weight: 50
 toc:
