@@ -45,6 +45,8 @@ The OSCAL project uses a typical GitHub fork and pull request [workflow](https:/
 1. Once you have staged your changes, you will need to commit them. When committing, you will need to include a commit message. The commit message should describe the nature of your changes (e.g., added new feature X which supports Y). You can also reference an issue from the OSCAL repository by using the hash symbol. For example, to reference issue #34, you would include the text "#34". The full command would be: ```git commit -m "added new feature X which supports Y addressing issue #34"```.
 1. Next, you must push your changes to your personal repo. You can do this with the command: ```git push```.
 1. Finally, you can [create a pull request](https://help.github.com/articles/creating-a-pull-request-from-a-fork/).
+    - Please allow the NIST OSCAL developers to efficiently merge your pull with request. [Always allow edits from the maintainers](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/allowing-changes-to-a-pull-request-branch-created-from-a-fork).
+    - Review [the OSCAL release and versioning strategy](./versioning-and-branching.md) and [choose the base branch](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/changing-the-base-branch-of-a-pull-request) accordingly. Normally, you should target `develop` as the base branch unless otherwise asked. A maintainer from the NIST team may ask you to target `main`, or for specifically targeting an upcoming OSCAL release, a `release-x.y` branch. Please do so before requesting a review from a maintainer or your pull request may be delayed.
 
 ### Repository structure
 
