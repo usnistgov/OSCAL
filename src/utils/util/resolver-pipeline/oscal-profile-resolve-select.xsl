@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet version="2.0"
+<xsl:stylesheet version="3.0"
     xmlns="http://csrc.nist.gov/ns/oscal/1.0"
     xmlns:o="http://csrc.nist.gov/ns/oscal/1.0"
     xmlns:opr="http://csrc.nist.gov/ns/oscal/profile-resolution"
@@ -10,7 +10,7 @@
     xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
 
     <!-- Purpose: perform operations supporting the selection stage of OSCAL profile resolution. -->
-    <!-- XSLT version: 2.0 -->
+    <!-- XSLT version: 3.0 -->
 
     <xsl:strip-space elements="catalog group control param guideline select part
         metadata back-matter annotation party person org rlink address resource role responsible-party citation
@@ -83,7 +83,6 @@
         </metadata>
     </xsl:template>-->
 
-    <xsl:key name="cross-reference" match="resource" use="'#' || @id"/>
     <xsl:key name="cross-reference" match="resource" use="'#' || @uuid"/>
 
     <xsl:template priority="2" mode="o:select" match="import[starts-with(@href,'#')]">
@@ -94,7 +93,16 @@
 
     <xsl:template match="resource" mode="o:import">
         <xsl:variable name="linked-xml" select="child::rlink[ends-with(@href,'.xml') or matches(@media-type,'xml')][1]"/>
+        <xsl:choose>
+            <xsl:when test="exists($linked-xml)">
         <xsl:apply-templates mode="o:select" select="o:resource-or-warning($linked-xml/@href)"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:message terminate="yes"
+                    expand-text="yes">Document not acquired for resource with uuid {@uuid
+                    }: No rlink with media-type='xml' or href ending with '.xml'</xsl:message>
+            </xsl:otherwise>
+        </xsl:choose>
     </xsl:template>
 
     <xsl:template priority="1" mode="o:select" match="import">
@@ -118,10 +126,11 @@
         </xsl:copy>
     </xsl:template>
 
-    <xsl:template name="add-process-id">
+    <xsl:template name="add-process-id" as="attribute(opr:id)">
+        <xsl:param name="context" select="." as="element()"/>
         <xsl:attribute name="opr:id" namespace="http://csrc.nist.gov/ns/oscal/profile-resolution">
             <xsl:value-of
-                select="concat(opr:catalog-identifier(/o:catalog), '#', (@id, generate-id())[1])"/>
+                select="concat(opr:catalog-identifier($context/root()/o:catalog), '#', $context/(@id, generate-id())[1])"/>
         </xsl:attribute>
     </xsl:template>
 
@@ -131,7 +140,7 @@
     </xsl:function>
 
     <!-- A control is included if it is selected by the provided import instruction -->
-    <xsl:template match="control" mode="o:select">
+    <xsl:template match="control" mode="o:select" as="element(o:control)?">
         <xsl:param name="import-instruction" tunnel="yes" required="yes"/>
         <xsl:if test="o:selects($import-instruction,.)">
             <xsl:copy copy-namespaces="no">
@@ -174,22 +183,30 @@
             <xsl:sequence select="exists($importing/include-all)"/>
             <xsl:sequence select="some $c in ($importing/include-controls/with-id)
                                   satisfies ($c = $candidate/@id)"/>
+            <xsl:sequence select="some $c in ($importing/include-controls[o:calls-parents(.)]/with-id)
+                satisfies ($c = $candidate/descendant::control/@id)"/>
             <xsl:sequence select="some $c in ($importing/include-controls[o:calls-children(.)]/with-id)
                 satisfies ($c = $candidate/ancestor::control/@id)"/>
-            <xsl:sequence select="some $m in ($importing/include-controls/matching)
+            <xsl:sequence select="some $m in ($importing/include-controls/matching[@pattern != ''])
                                   satisfies (matches($candidate/@id,$m/@pattern/o:glob-as-regex(string(.)) ))"/>
-            <xsl:sequence select="some $m in ($importing/include/matching[o:calls-children(.)])
-                satisfies (matches($candidate/ancestor::control/@id,$m/@pattern/o:glob-as-regex(string(.))))"/>
+            <xsl:sequence select="some $m in ($importing/include-controls[o:calls-parents(.)]/matching[@pattern != '']), $a in $candidate/descendant::control 
+                satisfies (matches($a/@id,$m/@pattern/o:glob-as-regex(string(.))))"/>
+            <xsl:sequence select="some $m in ($importing/include-controls[o:calls-children(.)]/matching[@pattern != '']), $a in $candidate/ancestor::control 
+                satisfies (matches($a/@id,$m/@pattern/o:glob-as-regex(string(.))))"/>
         </xsl:variable>
         <xsl:variable name="exclude-reasons" as="xs:boolean+">
             <xsl:sequence select="exists($candidate/parent::control) and $importing/include-all/@with-child-controls='no'"/>
             <xsl:sequence select="some $c in ($importing/exclude-controls/with-id) satisfies ($c = $candidate/@id)"/>
+            <xsl:sequence select="some $c in ($importing/exclude-controls[o:calls-parents(.)]/with-id)
+                satisfies ($c = $candidate/descendant::control/@id)"/>
             <xsl:sequence select="some $c in ($importing/exclude-controls[o:calls-children(.)]/with-id)
                 satisfies ($c = $candidate/ancestor::control/@id)"/>
-            <xsl:sequence select="some $m in ($importing/exclude-controls/matching)
+            <xsl:sequence select="some $m in ($importing/exclude-controls/matching[@pattern != ''])
                 satisfies (matches($candidate/@id,$m/@pattern/o:glob-as-regex(string(.))))"/>
-            <xsl:sequence select="some $m in ($importing/exclude-controls[o:calls-children(.)]/matcjomg)
-                satisfies (matches($candidate/ancestor::control/@id,$m/@pattern/o:glob-as-regex(string(.))))"/>
+            <xsl:sequence select="some $m in ($importing/exclude-controls[o:calls-parents(.)]/matching[@pattern != '']), $a in $candidate/descendant::control
+                satisfies (matches($a/@id,$m/@pattern/o:glob-as-regex(string(.))))"/>
+            <xsl:sequence select="some $m in ($importing/exclude-controls[o:calls-children(.)]/matching[@pattern != '']), $a in $candidate/ancestor::control
+                satisfies (matches($a/@id,$m/@pattern/o:glob-as-regex(string(.))))"/>
         </xsl:variable>
         <!-- predicate [.] filters reasons as booleans -->
         <xsl:sequence select="exists($include-reasons[.]) and empty($exclude-reasons[.])"/>
@@ -200,26 +217,19 @@
         <xsl:sequence select="$caller/@with-child-controls='yes'"/>
     </xsl:function>
 
-    <!-- Returns a document when found, a <opr:warning> element when not. -->
+    <xsl:function name="o:calls-parents" as="xs:boolean">
+        <xsl:param name="caller" as="element()"/>
+        <xsl:sequence select="not($caller/@with-parent-controls='no')"/>
+    </xsl:function>
+
+    <!-- Returns a document when found, a fatal error when not. -->
     <xsl:function name="o:resource-or-warning" as="document-node()">
         <xsl:param name="href" as="attribute(href)"/>
         <xsl:variable name="resolved-href" select="resolve-uri($href,$href/base-uri())"/>
-        <xsl:choose>
-            <xsl:when test="doc-available($resolved-href)">
+        <xsl:assert test="doc-available($resolved-href)"
+            expand-text="yes">Document not acquired: {$href} resolved as {
+        $resolved-href} (as OSCAL XML)</xsl:assert>
                 <xsl:sequence select="document($resolved-href)"/>
-            </xsl:when>
-            <xsl:otherwise>
-                <xsl:document>
-                    <opr:WARNING>
-                        <xsl:text>Document not acquired: '</xsl:text>
-                        <xsl:value-of select="$href"/>
-                        <xsl:text>' resolved as '</xsl:text>
-                        <xsl:value-of select="$resolved-href"/>
-                        <xsl:text>' (as OSCAL XML)</xsl:text>
-                    </opr:WARNING>
-                </xsl:document>
-            </xsl:otherwise>
-        </xsl:choose>
     </xsl:function>
 
     <xsl:include href="oscal-profile-resolve-functions.xsl"/>
@@ -237,7 +247,7 @@
         <xsl:variable name="runtime" as="map(xs:string, item())">
             <xsl:map>
                 <xsl:map-entry key="'xslt-version'"        select="3.0"/>
-                <xsl:map-entry key="'stylesheet-location'" select="'../oscal-profile-RESOLVE.xsl'"/>
+                <xsl:map-entry key="'stylesheet-location'" select="'oscal-profile-RESOLVE.xsl'"/>
                 <xsl:map-entry key="'source-node'"         select="root($profile)"/>
                 <xsl:map-entry key="'stylesheet-params'"   select="$runtime-params"/>
             </xsl:map>
