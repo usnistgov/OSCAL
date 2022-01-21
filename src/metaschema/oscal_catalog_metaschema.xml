@@ -66,10 +66,7 @@
                   <!-- This is an id because the idenfier is assigned and managed externally by humans. -->
                   <formal-name>Group Identifier</formal-name>
                   <!-- Identifier Declaration -->
-                  <description>A <em>human-oriented</em>, <em>locally unique</em> identifier with <em>cross-instance</em> scope that can be used to reference this defined group elsewhere in this or other OSCAL instances (e.g., profiles). This id should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same group across revisions of the document.</description>
-                  <remarks>
-                        <p>See the <a href="/concepts/identifier-use/#human-oriented">Concepts - Identifier Use</a> page for additional information regarding this <em>human-oriented</em> identifier's uniqueness and scope.</p>
-                      </remarks>
+                  <description>A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a>, <a href="/concepts/identifier-use/#locally-unique">locally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined group elsewhere in <a href="/concepts/identifier-use/#catalog-identifiers">in this and other OSCAL instances (e.g., profiles)</a>. This id should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same group across revisions of the document.</description>
             </define-flag>
             <define-flag name="class" as-type="token">
                   <formal-name>Group Class</formal-name>
@@ -135,10 +132,7 @@
                   <!-- This is an id because the idenfier is managed externally. -->
                   <formal-name>Control Identifier</formal-name>
                   <!-- Identifier Declaration -->
-                  <description>A <em>human-oriented</em>, <em>locally unique</em> identifier with <em>instance</em> scope that can be used to reference this control elsewhere in this and other OSCAL instances (e.g., profiles). This id should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same control across revisions of the document.</description>
-                  <remarks>
-                        <p>See the [<a href="/concepts/identifier-use/#human-oriented">Concepts - Identifier Use</a> page for additional information regarding this <em>human-oriented</em> identifier's uniqueness and scope.</p>
-                      </remarks>
+                  <description>A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a>, <a href="/concepts/identifier-use/#locally-unique">locally unique</a> identifier with <a href="/concepts/identifier-use/#instance">instance</a> scope that can be used to reference this control elsewhere <a href="/concepts/identifier-use/#catalog-identifiers">in this and other OSCAL instances (e.g., profiles)</a>. This id should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same control across revisions of the document.</description>
             </define-flag>
             <define-flag name="class" as-type="token">
                   <formal-name>Control Class</formal-name>

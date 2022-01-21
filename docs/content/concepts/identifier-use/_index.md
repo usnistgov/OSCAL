@@ -40,11 +40,15 @@ A [*human-oriented*](#human-oriented) identifier incorporates semantic that supp
 The [OSCAL XML Reference Index](/reference/latest/complete/xml-index/#/@id) and [OSCAL JSON Reference Index](/reference/latest/complete/json-index/#/id) provide a comprehensive listing of the [*human-oriented*](#human-oriented) IDs in the core OSCAL models.  References to these IDs are typically named according to the referenced object type (e.g., control) followed by “-id”, as seen here in the [XML Reference Index](/reference/latest/complete/xml-index/#/@control-id) (and likewise [JSON Reference Index](/reference/latest/complete/json-index/#/control-id) in the JSON reference index).
 
 ### **Uniqueness** 
-OSCAL identifier uniqueness is categorized as <a name="locally-unique">*locally-unique*</a> or <a name="globally-unique">*globally-unique*</a>.  As implied by the category name, [*locally-unique*](#locally-unique) identifiers must be unique within the current document, whereas [*globally-unique*](#globally-unique) identifiers are guaranteed to be unique across all other identifiers.  OSCAL’s [*machine-oriented*](#machine-oriented) UUID identifiers are always [*globally-unique*](#globally-unique).  [*Human-oriented*](#human-oriented) identifiers must be defined and managed organizationally and are more susceptible to identifier duplication or collisions. Thus, [*human-oriented*](#human-oriented) identifiers are less likely or cannot be guaranteed to be [*globally-unique*](#globally-unique).  
+OSCAL identifier uniqueness is categorized as <em id="locally-unique">*locally-unique*</em> or <em id="globally-unique">*globally-unique*</em>.  As implied by the category name, [*locally-unique*](#locally-unique) identifiers must be unique within the current document, whereas [*globally-unique*](#globally-unique) identifiers are guaranteed to be unique across all other identifiers.  OSCAL’s [*machine-oriented*](#machine-oriented) UUID identifiers are always [*globally-unique*](#globally-unique).  [*Human-oriented*](#human-oriented) identifiers must be defined and managed organizationally and are more susceptible to identifier duplication or collisions. Thus, [*human-oriented*](#human-oriented) identifiers are less likely or cannot be guaranteed to be [*globally-unique*](#globally-unique).  
 
 ### **Scope** 
 
+<<<<<<< HEAD
 Identifiers that are only intended for use within the same OSCAL instance are categorized as <a name="instance">*instance*</a> scope.  However, since OSCAL supports composition relationships, there are cases where identifiers in a source OSCAL instance need to be referenced from other OSCAL instances.  These are considered <a name="cross-instance">*cross-instance*</a> scoped identifier references.  The figure below illustrates how OSCAL models relationships are established through import and link mechanisms.
+=======
+Identifiers that are only intended for use within the same OSCAL instance are categorized as <em id="instance">*instance*</em> scope.  However, since OSCAL supports composition relationships, there are many cases where identifiers in a source OSCAL instance need to be referenced from other OSCAL instances.  These are considered <em id="cross-instance">*cross-instance*</em> scoped identifier references.  The figure below illustrates how the core OSCAL models relationships are established through import and link mechanisms, enabling [*cross-instance*](#cross-instance) references.
+>>>>>>> 59a25042 (identifier documentation updates)
 
 ![A diagram depicting the relationships between OSCAL models. The solid black arrows depict relationships implemented via the import mechanism (e.g., import, import-profile, import-component-definition, import-ssp, and import-ap), whereas the dashed red line arrows illustrate relationships established through links.](oscal-model-relationships.svg)
 
@@ -55,12 +59,12 @@ The following import types are supported:
 - import-ssp - see [XML index](/reference/latest/complete/xml-index/#/import-ssp) or [JSON index](/reference/latest/complete/json-index/#/import-ssp)
 - import-ap - see [XML index](/reference/latest/complete/xml-index/#/import-ap) or [JSON index](/reference/latest/complete/json-index/#/import-ap)
 
-When implementing [*cross-instance*](#cross-instance) references, the appropriate import attribute should be used (similar to a namespacing) to deconflict identifiers with the same values in the associated OSCAL instances.  This is particularly important for [*human-oriented*](#human-oriented) identifiers that may not be globally unique but still require [*cross-instance*](#cross-instance) scoping.  For example, this technique allows for the same control IDs to be used and referenced in a profile and its imported catalog(s) without conflict.  
+When implementing [*cross-instance*](#cross-instance) references, identifier must be referenced in the context of the containing resource.  The appropriate import attribute should be used (similar to a namespacing) to deconflict identifiers with the same values in the associated OSCAL instances.  This is particularly important for [*human-oriented*](#human-oriented) identifiers that may not be globally unique but still require [*cross-instance*](#cross-instance) scoping.  For example, this technique allows for the same control IDs to be used and referenced in a profile and its imported catalog(s) without conflict.  
  
-The next secttion describes the identifier scoping per defining model.
+The next section describes the identifier scoping per defining model.
 
 #### **Catalog Identifiers**
-Identifiers defined in a catalog may be referenced locally or from an importing profile ([see the diagram in theScope section](#scope)). Additionally, identifiers defined in a catalog may be referenced in other upstream OSCAL instances in a hierarchical set of associated OSCAL documents (e.g., SSPs, assessment plans, assessment results, and POA&Ms). 
+Identifiers defined in a catalog may be referenced locally or from an importing profile ([see the diagram in the Scope section](#scope)). Additionally, identifiers defined in a catalog may be referenced in other upstream OSCAL instances in a hierarchical set of associated OSCAL documents (e.g., SSPs, assessment plans, assessment results, and POA&Ms). The table below provides a listing of the core OSCAL catalog model identifiers.
 
 |**Defining Model**|**Identifier Type**|**Identifiers**|
 |:------|:-------|:-----:|
@@ -68,7 +72,7 @@ Identifiers defined in a catalog may be referenced locally or from an importing 
 |Catalog|Human-Oriented|[XML Index](/reference/latest/catalog/xml-index/#/@id) &#124; [JSON Index](/reference/latest/catalog/json-index/#/id)|
 
 #### **Profile Identifiers**
-Identifiers defined in a profile may be referenced locally or from an importing profile or SSP ([see the diagram in the Scope section](#scope)). Component definitions may also reference these identifiers through its [control-implementation - source](/reference/latest/component-definition/xml-reference/#/component-definition/component/control-implementation/@source) reference to the profile.  The other OSCAL models in the table can also reference these identifiers via the hierarchical set of associated OSCAL documents.
+Identifiers defined in a profile may be referenced locally or from an importing profile or SSP ([see the diagram in the Scope section](#scope)). Component definitions can reference these identifiers through its [control-implementation - source](/reference/latest/component-definition/xml-reference/#/component-definition/component/control-implementation/@source) reference to the profile.  Other upstream OSCAL models, including assessment plans, assessment results, and POA&Ms can also reference these profile identifiers via the hierarchical set of associated OSCAL documents.  The table below provides a listing of the core OSCAL profile model identifiers.
 
 |**Defining Model**|**Identifier Type**|**Identifiers**|
 |:------|:-------|:-----:|
@@ -76,7 +80,7 @@ Identifiers defined in a profile may be referenced locally or from an importing 
 |Profile|Human-Oriented|[XML Index](/reference/latest/profile/xml-index/#/@id) &#124; [JSON Index](/reference/latest/profile/json-index/#/id)|
 
 #### **Component Definition Identifiers**
-Identifiers defined in a component definition may be referenced locally or from an importing component definition instance ([see the diagram in the Scope section](#scope)). SSPs may also reference identifiers from a component definitions through its implementation of links for a given component.
+Identifiers defined in a component definition may be referenced locally or from an importing component definition instance ([see the diagram in the Scope section](#scope)). SSPs may also reference identifiers from a component definitions through its implementation of links for a given component.Other upstream OSCAL models, including assessment plans, assessment results, and POA&Ms can also reference these component definition indirectly (e.g., via reference to an SSP component that has a a link to a component definition).  The table below provides a listing of the core OSCAL component definition model identifiers.
 
 |**Defining Model**|**Identifier Type**|**Identifiers**|
 |:------|:-------|:-----:|
@@ -84,7 +88,7 @@ Identifiers defined in a component definition may be referenced locally or from 
 |Component Definition|Human-Oriented|[XML Index](/reference/latest/component-definition/xml-index/#/@id) &#124; [JSON Index](/reference/latest/component-definition/json-index/#/id)|
 
 #### **SSP Identifiers**
-Identifiers defined in an SSP may be referenced locally or from an importing AP or POA&M ([see the diagram in the Scope section](#scope)). These identifiers can also be referenced from the AR through its hierarchical relationship with AP. 
+Identifiers defined in an SSP may be referenced locally or from an importing AP or POA&M ([see the diagram in the Scope section](#scope)). SSP identifiers can also be referenced from the AR through its hierarchical relationship with AP. The table below provides a listing of the core OSCAL SSP model identifiers.
 
 |**Defining Model**|**Identifier Type**|**Identifiers**|
 |:------|:-------|:-----:|
@@ -92,7 +96,7 @@ Identifiers defined in an SSP may be referenced locally or from an importing AP 
 |SSP|Human-Oriented|[XML Index](/reference/latest/system-security-plan/xml-index/#/@id) &#124; [JSON Index](/reference/latest/system-security-plan/json-index/#/id)|
 
 #### **AP Identifiers**
-Identifiers defined in an AP may be referenced locally or from an importing AR ([see the diagram in the Scope section](#scope)). 
+Identifiers defined in an AP may be referenced locally or from an importing AR ([see the diagram in the Scope section](#scope)). The table below provides a listing of the core OSCAL AP model identifiers.
 
 |**Defining Model**|**Identifier Type**|**Identifiers**|
 |:------|:-------|:-----:|
@@ -100,7 +104,7 @@ Identifiers defined in an AP may be referenced locally or from an importing AR (
 |AP|Human-Oriented|[XML Index](/reference/latest/assessment-plan/xml-index/#/@id) &#124; [JSON Index](/reference/latest/assessment-plan/json-index/#/id)|
 
 #### **AR Identifiers**
-Identifiers defined in an AR may be referenced locally ([see the diagram in the Scope section](#scope)).  However, observations, risks, and findings may also be referenced in the POA&M.
+Identifiers defined in an AR may be referenced locally ([see the diagram in the Scope section](#scope)).  However, observations, risks, and findings may also be referenced implicitly in the POA&M. The table below provides a listing of the core OSCAL AR model identifiers.
 
 |**Defining Model**|**Identifier Type**|**Identifiers**|
 |:------|:-------|:-----:|
@@ -108,7 +112,7 @@ Identifiers defined in an AR may be referenced locally ([see the diagram in the 
 |AR|Human-Oriented|[XML Index](/reference/latest/assessment-results/xml-index/#/@id) &#124; [JSON Index](/reference/latest/assessment-results/json-index/#/id)|
 
 #### **POA&M Identifiers**
-Identifiers defined in a POA&M may be referenced locally ([see the diagram in the Scope section](#scope)). However, observations, risks, and poam items may also be referenced in the AR.
+Identifiers defined in a POA&M are only referenced locally ([see the diagram in the Scope section](#scope)). The table below provides a listing of the core OSCAL POA&M model identifiers.
 
 |**Defining Model**|**Identifier Type**|**Identifiers**|
 |:------|:-------|:-----:|

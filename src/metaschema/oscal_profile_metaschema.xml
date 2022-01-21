@@ -24,10 +24,7 @@
             <define-flag name="uuid" as-type="uuid" required="yes">
                   <formal-name>Profile Universally Unique Identifier</formal-name>
                   <!-- Identifier Declaration -->
-                  <description>A <em>machine-oriented</em>, <em>globally unique</em> identifier with <em>cross-instance</em> scope that can be used to reference this profile elsewhere in this and other OSCAL instances. The locally defined <em>UUID</em> of the <code>profile</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance).This identifier should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same profile across revisions of the document.</description>
-                  <remarks>
-                        <p>See the <a href="/concepts/identifier-use/#machine-oriented">Concepts - Identifier Use</a> page for additional information regarding this <em>machine-oriented</em> identifier's uniqueness and scope.</p>
-                      </remarks>
+                  <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this profile elsewhere in <a href="/concepts/identifier-use/#profile-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>profile</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance).This identifier should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same profile across revisions of the document.</description>
             </define-flag>
             <model>
                   <assembly ref="metadata" min-occurs="1"/>
@@ -151,10 +148,7 @@
                   <!-- This is an id because the idenfier is assigned and managed externally by humans. -->
                   <formal-name>Group Identifier</formal-name>
                   <!-- Identifier Declaration -->
-                  <description>A <em>human-oriented</em>, <em>locally unique</em> identifier with <em>cross-instance</em> scope that can be used to reference this defined group elsewhere in this or other OSCAL instances. When referenced from another OSCAL instance, this identifier must be referenced in the context of the containing resource (e.g., import-profile). This id should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same group across revisions of the document.</description>
-                  <remarks>
-                        <p>See the <a href="/concepts/identifier-use/#human-oriented">Concepts - Identifier Use</a> page for additional information regarding this <em>human-oriented</em> identifier's uniqueness and scope.</p>
-                      </remarks>
+                  <description>A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a>, <a href="/concepts/identifier-use/#locally-unique">locally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined group elsewhere in <a href="/concepts/identifier-use/#profile-identifiers">this or other OSCAL instances</a>. When referenced from another OSCAL instance, this identifier must be referenced in the context of the containing resource (e.g., import-profile). This id should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same group across revisions of the document.</description>
             </define-flag>
             <define-flag name="class" as-type="token">
                   <formal-name>Group Class</formal-name>
@@ -206,10 +200,7 @@
                               <!-- This is an id because the idenfier is assigned and managed by humans. -->
                               <formal-name>Parameter ID</formal-name>
                               <!-- Identifier Declaration -->
-                              <description>A <em>human-oriented</em>, <em>locally unique</em> identifier with <em>cross-instance</em> scope that can be used to reference this defined parameter elsewhere in this or other OSCAL instances. When referenced from another OSCAL instance, this identifier must be referenced in the context of the containing resource (e.g., import-profile). This id should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
-                              <remarks>
-                                    <p>See the <a href="/concepts/identifier-use/#human-oriented">Concepts - Identifier Use</a> page for additional information regarding this <em>human-oriented</em> identifier's uniqueness and scope.</p>
-                                  </remarks>
+                              <description>A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a>, <a href="/concepts/identifier-use/#locally-unique">locally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined parameter elsewhere in <a href="/concepts/identifier-use/#profile-identifiers">this or other OSCAL instances</a>. When referenced from another OSCAL instance, this identifier must be referenced in the context of the containing resource (e.g., import-profile). This id should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
                         </define-flag>
                         <define-flag name="class" as-type="token">
                               <formal-name>Parameter Class</formal-name>
