@@ -52,105 +52,105 @@
     </x:scenario>
 
     <x:scenario label="Tests for match='profile' template">
-    <x:scenario label="Profile root">
-        <x:context>
-            <profile/>
-        </x:context>
-
-        <x:expect label="root becomes root">
-            <profile/>
-        </x:expect>
-    </x:scenario>
-    <x:scenario label="Profile select empty import">
-        <x:context>
-            <profile>
-                    <import href="{$ov:filedir}/catalogs/xyz-tiny_catalog.xml"/>
-            </profile>
-        </x:context>
-
-            <x:expect label="Include group structure but select no controls">
-            <profile>
-                <selection uuid="..." opr:src="...">
-                    <metadata>
-                        <title>XYZ Tiny Catalog</title>
-                        <last-modified>2020-05-30T14:51:42.355-04:00</last-modified>
-                        <version>1.0</version>
-                        <oscal-version>1.0.0-rc2</oscal-version>
-                    </metadata>
-                        <group opr:id="...">
-                        <title>Group X of XYZ</title>
-                    </group>
-                        <group opr:id="...">
-                        <title>Group Y of XYZ</title>
-                    </group>
-                        <group opr:id="...">
-                        <title>Group Z of XYZ</title>
-                    </group>
-                </selection>
-            </profile>
-        </x:expect>
-            <x:expect label="opr:id values are unique"
-                test="$x:result//*/@opr:id => $ov:unique()"/>
-            <!-- If the pattern of opr:id values isn't worth testing, then delete the next
-                variables and assertions. Similar in "Profile select include all" scenario.--> 
-            <x:variable name="ov:group_id" as="attribute()+" select="$x:result//o:group/@opr:id"/>
-            <x:variable name="ov:catalog_uuid" as="xs:string" select="doc($ov:filedir || '/catalogs/xyz-tiny_catalog.xml')/o:catalog/@uuid"/>
-            <x:expect label="Each group has opr:id whose substring before # matches the selection uuid,"
-                test="every $id in $ov:group_id satisfies starts-with($id, $id/ancestor::o:selection/@uuid || '#')"/>
-            <x:expect label="which matches the original catalog's top-level uuid."
-                test="$x:result/o:selection/@uuid = $ov:catalog_uuid"/>
+        <x:scenario label="Profile root">
+            <x:context>
+                <profile/>
+            </x:context>
+    
+            <x:expect label="root becomes root">
+                <profile/>
+            </x:expect>
         </x:scenario>
-        <x:scenario label="Error case: Profile cannot find catalog" catch="yes">
+        <x:scenario label="Profile select empty import">
             <x:context>
                 <profile>
-                    <import href="nonexistent_catalog.xml"/>
+                    <import href="{$ov:filedir}/catalogs/xyz-tiny_catalog.xml"/>
                 </profile>
             </x:context>
-            <x:expect label="Fatal XSLT error"
-                test="$x:result instance of map(*) and $x:result('err') instance of map(*)"/>
-    </x:scenario>
-    <x:scenario label="Profile select include all">
-        <x:context>
-            <profile>
+    
+            <x:expect label="Include group structure but select no controls">
+                <profile>
+                    <selection uuid="..." opr:src="...">
+                        <metadata>
+                            <title>XYZ Tiny Catalog</title>
+                            <last-modified>2020-05-30T14:51:42.355-04:00</last-modified>
+                            <version>1.0</version>
+                            <oscal-version>1.0.0-rc2</oscal-version>
+                        </metadata>
+                            <group opr:id="...">
+                            <title>Group X of XYZ</title>
+                        </group>
+                            <group opr:id="...">
+                            <title>Group Y of XYZ</title>
+                        </group>
+                            <group opr:id="...">
+                            <title>Group Z of XYZ</title>
+                        </group>
+                    </selection>
+                </profile>
+            </x:expect>
+            <x:expect label="opr:id values are unique"
+                test="$x:result//*/@opr:id => $ov:unique()"/>
+                <!-- If the pattern of opr:id values isn't worth testing, then delete the next
+                    variables and assertions. Similar in "Profile select include all" scenario.--> 
+                <x:variable name="ov:group_id" as="attribute()+" select="$x:result//o:group/@opr:id"/>
+                <x:variable name="ov:catalog_uuid" as="xs:string" select="doc($ov:filedir || '/catalogs/xyz-tiny_catalog.xml')/o:catalog/@uuid"/>
+                <x:expect label="Each group has opr:id whose substring before # matches the selection uuid,"
+                    test="every $id in $ov:group_id satisfies starts-with($id, $id/ancestor::o:selection/@uuid || '#')"/>
+                <x:expect label="which matches the original catalog's top-level uuid."
+                    test="$x:result/o:selection/@uuid = $ov:catalog_uuid"/>
+            </x:scenario>
+            <x:scenario label="Error case: Profile cannot find catalog" catch="yes">
+                <x:context>
+                    <profile>
+                        <import href="nonexistent_catalog.xml"/>
+                    </profile>
+                </x:context>
+                <x:expect label="Fatal XSLT error"
+                    test="$x:result instance of map(*) and $x:result('err') instance of map(*)"/>
+        </x:scenario>
+        <x:scenario label="Profile select include all">
+            <x:context>
+                <profile>
                     <import href="{$ov:filedir}/catalogs/xyz-tiny_catalog.xml">
-                    <include-all/>
-                </import>
-            </profile>
-        </x:context>
-        <x:expect label="Select all controls, grouped">
-            <profile>
-                <selection uuid="..." opr:src="...">
-                    <metadata>
-                        <title>XYZ Tiny Catalog</title>
-                        <last-modified>2020-05-30T14:51:42.355-04:00</last-modified>
-                        <version>1.0</version>
-                        <oscal-version>1.0.0-rc2</oscal-version>
-                    </metadata>
-                    <group opr:id="...">
-                        <title>Group X of XYZ</title>
-                        <control id="x1" opr:id="..."><title>Control X1</title></control>
-                        <control id="x2" opr:id="..."><title>Control X2</title></control>
-                        <control id="x3" opr:id="..."><title>Control X3</title></control>
-                    </group>
-                    <group opr:id="...">
-                        <title>Group Y of XYZ</title>
-                        <control id="y1" opr:id="..."><title>Control Y1</title></control>
-                        <control id="y2" opr:id="..."><title>Control Y2</title></control>
-                        <control id="y3" opr:id="..."><title>Control Y3</title></control>
-                    </group>
-                    <group opr:id="...">
-                        <title>Group Z of XYZ</title>
-                        <control id="z1" opr:id="..."><title>Control Z1</title></control>
-                        <control id="z2" opr:id="..."><title>Control Z2</title></control>
-                        <control id="z3" opr:id="..."><title>Control Z3</title>
-                            <control id="z3.a" opr:id="..."><title>Control Z3-A</title>
-                                <control id="z3.a-1" opr:id="..."><title>Control Z3-A-1</title></control>
+                        <include-all/>
+                    </import>
+                </profile>
+            </x:context>
+            <x:expect label="Select all controls, grouped">
+                <profile>
+                    <selection uuid="..." opr:src="...">
+                        <metadata>
+                            <title>XYZ Tiny Catalog</title>
+                            <last-modified>2020-05-30T14:51:42.355-04:00</last-modified>
+                            <version>1.0</version>
+                            <oscal-version>1.0.0-rc2</oscal-version>
+                        </metadata>
+                        <group opr:id="...">
+                            <title>Group X of XYZ</title>
+                            <control id="x1" opr:id="..."><title>Control X1</title></control>
+                            <control id="x2" opr:id="..."><title>Control X2</title></control>
+                            <control id="x3" opr:id="..."><title>Control X3</title></control>
+                        </group>
+                        <group opr:id="...">
+                            <title>Group Y of XYZ</title>
+                            <control id="y1" opr:id="..."><title>Control Y1</title></control>
+                            <control id="y2" opr:id="..."><title>Control Y2</title></control>
+                            <control id="y3" opr:id="..."><title>Control Y3</title></control>
+                        </group>
+                        <group opr:id="...">
+                            <title>Group Z of XYZ</title>
+                            <control id="z1" opr:id="..."><title>Control Z1</title></control>
+                            <control id="z2" opr:id="..."><title>Control Z2</title></control>
+                            <control id="z3" opr:id="..."><title>Control Z3</title>
+                                <control id="z3.a" opr:id="..."><title>Control Z3-A</title>
+                                    <control id="z3.a-1" opr:id="..."><title>Control Z3-A-1</title></control>
+                                </control>
                             </control>
-                        </control>
-                    </group>
-                </selection>
-            </profile>
-        </x:expect>
+                        </group>
+                    </selection>
+                </profile>
+            </x:expect>
             <x:expect label="opr:id values are unique"
                 test="$x:result//*/@opr:id => $ov:unique()"/>
             <x:variable name="ov:control_id" as="attribute()+" select="$x:result//o:control/@opr:id"/>
@@ -159,289 +159,289 @@
                 test="every $id in $ov:control_id satisfies starts-with($id, $id/ancestor::o:selection/@uuid || '#')"/>
             <x:expect label="which matches the original catalog's top-level uuid."
                 test="$x:result/o:selection/@uuid = $ov:catalog_uuid"/>
-    </x:scenario>
-    <x:scenario label="Profile select include call control-id">
-        <x:context>
-            <profile>
+        </x:scenario>
+        <x:scenario label="Profile select include call control-id">
+            <x:context>
+                <profile>
                     <import href="{$ov:filedir}/catalogs/xyz-tiny_catalog.xml">
-                    <include-controls>
-                        <with-id>x1</with-id>
-                    </include-controls>
-                </import>
-            </profile>
-        </x:context>
-
-        <x:expect label="Control x1, in its group, with other groups empty">
-            <profile>
-                <selection uuid="..." opr:src="...">
-                    <metadata>
-                        <title>XYZ Tiny Catalog</title>
-                        <last-modified>2020-05-30T14:51:42.355-04:00</last-modified>
-                        <version>1.0</version>
-                        <oscal-version>1.0.0-rc2</oscal-version>
-                    </metadata>
-                    <group opr:id="...">
+                        <include-controls>
+                            <with-id>x1</with-id>
+                        </include-controls>
+                    </import>
+                </profile>
+            </x:context>
+    
+            <x:expect label="Control x1, in its group, with other groups empty">
+                <profile>
+                    <selection uuid="..." opr:src="...">
+                        <metadata>
+                            <title>XYZ Tiny Catalog</title>
+                            <last-modified>2020-05-30T14:51:42.355-04:00</last-modified>
+                            <version>1.0</version>
+                            <oscal-version>1.0.0-rc2</oscal-version>
+                        </metadata>
+                        <group opr:id="...">
                             <title>Group X of XYZ</title>
                             <control id="x1" opr:id="..."><title>Control X1</title></control>
                         </group>
                        <group opr:id="..."><title>Group Y of XYZ</title></group>
                        <group opr:id="..."><title>Group Z of XYZ</title></group>
                    </selection>
-            </profile>
-        </x:expect>
-    </x:scenario>
-
-    <x:scenario label="Profile select include call match">
-        <x:context>
-            <profile>
+                </profile>
+            </x:expect>
+        </x:scenario>
+    
+        <x:scenario label="Profile select include call match">
+            <x:context>
+                <profile>
                     <import href="{$ov:filedir}/catalogs/xyz-tiny_catalog.xml">
-                    <include-controls>
-                        <!-- any x control -->
-                        <matching pattern="x*"/>
-                    </include-controls>
-                </import>
-            </profile>
-        </x:context>
-
-        <x:expect label="The x controls, matched as such">
-            <profile>
-                <selection uuid="..." opr:src="...">
-                    <metadata>
-                        <title>XYZ Tiny Catalog</title>
-                        <last-modified>2020-05-30T14:51:42.355-04:00</last-modified>
-                        <version>1.0</version>
-                        <oscal-version>1.0.0-rc2</oscal-version>
-                    </metadata>
-                    <group opr:id="...">
-                        <title>Group X of XYZ</title>
-                        <control id="x1" opr:id="..."><title>Control X1</title></control>
-                        <control id="x2" opr:id="..."><title>Control X2</title></control>
-                        <control id="x3" opr:id="..."><title>Control X3</title></control>
-                    </group>
-                    <group opr:id="..."><title>Group Y of XYZ</title></group>
-                    <group opr:id="..."><title>Group Z of XYZ</title></group>
-                </selection>
-            </profile>
-        </x:expect>
-    </x:scenario>
-
-    <x:scenario label="Profile implicit select all, excluding x1 y1 z1">
-        <x:context>
-            <profile>
+                        <include-controls>
+                            <!-- any x control -->
+                            <matching pattern="x*"/>
+                        </include-controls>
+                    </import>
+                </profile>
+            </x:context>
+    
+            <x:expect label="The x controls, matched as such">
+                <profile>
+                    <selection uuid="..." opr:src="...">
+                        <metadata>
+                            <title>XYZ Tiny Catalog</title>
+                            <last-modified>2020-05-30T14:51:42.355-04:00</last-modified>
+                            <version>1.0</version>
+                            <oscal-version>1.0.0-rc2</oscal-version>
+                        </metadata>
+                        <group opr:id="...">
+                            <title>Group X of XYZ</title>
+                            <control id="x1" opr:id="..."><title>Control X1</title></control>
+                            <control id="x2" opr:id="..."><title>Control X2</title></control>
+                            <control id="x3" opr:id="..."><title>Control X3</title></control>
+                        </group>
+                        <group opr:id="..."><title>Group Y of XYZ</title></group>
+                        <group opr:id="..."><title>Group Z of XYZ</title></group>
+                    </selection>
+                </profile>
+            </x:expect>
+        </x:scenario>
+    
+        <x:scenario label="Profile implicit select all, excluding x1 y1 z1">
+            <x:context>
+                <profile>
                     <import href="{$ov:filedir}/catalogs/xyz-tiny_catalog.xml">
-                    <include-all/>
-                    <exclude-controls>
-                        <with-id>x1</with-id>
-                        <with-id>y1</with-id>
-                        <with-id>z1</with-id>
-                    </exclude-controls>
-                </import>
-            </profile>
-        </x:context>
-
-        <x:expect label="All controls but x1,y1,z1, grouped">
-            <profile>
-                <selection uuid="..." opr:src="...">
-                    <metadata>
-                        <title>XYZ Tiny Catalog</title>
-                        <last-modified>2020-05-30T14:51:42.355-04:00</last-modified>
-                        <version>1.0</version>
-                        <oscal-version>1.0.0-rc2</oscal-version>
-                    </metadata>
-                    <group opr:id="...">
-                        <title>Group X of XYZ</title>
-                        <control id="x2" opr:id="..."><title>Control X2</title></control>
-                        <control id="x3" opr:id="..."><title>Control X3</title></control>
-                    </group>
-                    <group opr:id="...">
-                        <title>Group Y of XYZ</title>
-                        <control id="y2" opr:id="..."><title>Control Y2</title></control>
-                        <control id="y3" opr:id="..."><title>Control Y3</title></control>
-                    </group>
-                    <group opr:id="...">
-                        <title>Group Z of XYZ</title>
-                        <control id="z2" opr:id="..."><title>Control Z2</title></control>
-                        <control id="z3" opr:id="..."><title>Control Z3</title>
-                            <control id="z3.a" opr:id="..."><title>Control Z3-A</title>
-                                <control id="z3.a-1" opr:id="..."><title>Control Z3-A-1</title></control>
+                        <include-all/>
+                        <exclude-controls>
+                            <with-id>x1</with-id>
+                            <with-id>y1</with-id>
+                            <with-id>z1</with-id>
+                        </exclude-controls>
+                    </import>
+                </profile>
+            </x:context>
+    
+            <x:expect label="All controls but x1,y1,z1, grouped">
+                <profile>
+                    <selection uuid="..." opr:src="...">
+                        <metadata>
+                            <title>XYZ Tiny Catalog</title>
+                            <last-modified>2020-05-30T14:51:42.355-04:00</last-modified>
+                            <version>1.0</version>
+                            <oscal-version>1.0.0-rc2</oscal-version>
+                        </metadata>
+                        <group opr:id="...">
+                            <title>Group X of XYZ</title>
+                            <control id="x2" opr:id="..."><title>Control X2</title></control>
+                            <control id="x3" opr:id="..."><title>Control X3</title></control>
+                        </group>
+                        <group opr:id="...">
+                            <title>Group Y of XYZ</title>
+                            <control id="y2" opr:id="..."><title>Control Y2</title></control>
+                            <control id="y3" opr:id="..."><title>Control Y3</title></control>
+                        </group>
+                        <group opr:id="...">
+                            <title>Group Z of XYZ</title>
+                            <control id="z2" opr:id="..."><title>Control Z2</title></control>
+                            <control id="z3" opr:id="..."><title>Control Z3</title>
+                                <control id="z3.a" opr:id="..."><title>Control Z3-A</title>
+                                    <control id="z3.a-1" opr:id="..."><title>Control Z3-A-1</title></control>
+                                </control>
                             </control>
-                        </control>
-                    </group>
-                </selection>
-            </profile>
-        </x:expect>
-    </x:scenario>
-
-    <x:scenario label="Recursive 'with-child-controls'">
-        <x:context>
-            <profile>
+                        </group>
+                    </selection>
+                </profile>
+            </x:expect>
+        </x:scenario>
+    
+        <x:scenario label="Recursive 'with-child-controls'">
+            <x:context>
+                <profile>
                     <import href="{$ov:filedir}/catalogs/xyz-tiny_catalog.xml">
-                    <include-controls with-child-controls="yes">
-                        <with-id>z3</with-id>
-                    </include-controls>
-                </import>
-            </profile>
-        </x:context>
-
-        <x:expect label="Only the Z3 control, with all control descendants">
-            <profile>
-                <selection uuid="..." opr:src="...">
-                    <metadata>
-                        <title>XYZ Tiny Catalog</title>
-                        <last-modified>2020-05-30T14:51:42.355-04:00</last-modified>
-                        <version>1.0</version>
-                        <oscal-version>1.0.0-rc2</oscal-version>
-                    </metadata>
-                    <group opr:id="...">
-                        <title>Group X of XYZ</title>
-                    </group>
-                    <group opr:id="...">
-                        <title>Group Y of XYZ</title>
-                    </group>
-                    <group opr:id="...">
-                        <title>Group Z of XYZ</title>
-                        <control id="z3" opr:id="..."><title>Control Z3</title>
-                            <control id="z3.a" opr:id="..."><title>Control Z3-A</title>
-                                <control id="z3.a-1" opr:id="..."><title>Control Z3-A-1</title></control>
+                        <include-controls with-child-controls="yes">
+                            <with-id>z3</with-id>
+                        </include-controls>
+                    </import>
+                </profile>
+            </x:context>
+    
+            <x:expect label="Only the Z3 control, with all control descendants">
+                <profile>
+                    <selection uuid="..." opr:src="...">
+                        <metadata>
+                            <title>XYZ Tiny Catalog</title>
+                            <last-modified>2020-05-30T14:51:42.355-04:00</last-modified>
+                            <version>1.0</version>
+                            <oscal-version>1.0.0-rc2</oscal-version>
+                        </metadata>
+                        <group opr:id="...">
+                            <title>Group X of XYZ</title>
+                        </group>
+                        <group opr:id="...">
+                            <title>Group Y of XYZ</title>
+                        </group>
+                        <group opr:id="...">
+                            <title>Group Z of XYZ</title>
+                            <control id="z3" opr:id="..."><title>Control Z3</title>
+                                <control id="z3.a" opr:id="..."><title>Control Z3-A</title>
+                                    <control id="z3.a-1" opr:id="..."><title>Control Z3-A-1</title></control>
+                                </control>
                             </control>
-                        </control>
-                    </group>
-                </selection>
-            </profile>
-        </x:expect>
-    </x:scenario>
-
-    <x:scenario label="Doubled import, exclusive call">
-        <x:context>
-            <profile>
+                        </group>
+                    </selection>
+                </profile>
+            </x:expect>
+        </x:scenario>
+    
+        <x:scenario label="Doubled import, exclusive call">
+            <x:context>
+                <profile>
                     <import href="{$ov:filedir}/catalogs/xyz-tiny_catalog.xml">
-                    <include-controls>
-                        <with-id>x1</with-id>
-                    </include-controls>
-                </import>
+                        <include-controls>
+                            <with-id>x1</with-id>
+                        </include-controls>
+                    </import>
                     <import href="{$ov:filedir}/catalogs/xyz-tiny_catalog.xml">
-                    <include-controls>
-                        <with-id>y1</with-id>
-                    </include-controls>
-                </import>
-            </profile>
-        </x:context>
-
-        <x:expect label="Showing two control selections">
-            <profile>
-                <selection uuid="..." opr:src="...">
-                    <metadata>
-                        <title>XYZ Tiny Catalog</title>
-                        <last-modified>2020-05-30T14:51:42.355-04:00</last-modified>
-                        <version>1.0</version>
-                        <oscal-version>1.0.0-rc2</oscal-version>
-                    </metadata>
-                    <group opr:id="...">
-                        <title>Group X of XYZ</title>
-                        <control id="x1" opr:id="..."><title>Control X1</title></control>
-                    </group>
-                    <group opr:id="..."><title>Group Y of XYZ</title></group>
-                    <group opr:id="..."><title>Group Z of XYZ</title></group>
-                </selection>
-                <selection uuid="..." opr:src="...">
-                    <metadata>
-                        <title>XYZ Tiny Catalog</title>
-                        <last-modified>2020-05-30T14:51:42.355-04:00</last-modified>
-                        <version>1.0</version>
-                        <oscal-version>1.0.0-rc2</oscal-version>
-                    </metadata>
-                    <group opr:id="...">
-                        <title>Group X of XYZ</title>
-                    </group>
-                    <group opr:id="...">
-                        <title>Group Y of XYZ</title>
-                        <control id="y1" opr:id="..."><title>Control Y1</title></control>
-                    </group>
-                    <group opr:id="..."><title>Group Z of XYZ</title></group>
-                </selection>
-            </profile>
-        </x:expect>
+                        <include-controls>
+                            <with-id>y1</with-id>
+                        </include-controls>
+                    </import>
+                </profile>
+            </x:context>
+    
+            <x:expect label="Showing two control selections">
+                <profile>
+                    <selection uuid="..." opr:src="...">
+                        <metadata>
+                            <title>XYZ Tiny Catalog</title>
+                            <last-modified>2020-05-30T14:51:42.355-04:00</last-modified>
+                            <version>1.0</version>
+                            <oscal-version>1.0.0-rc2</oscal-version>
+                        </metadata>
+                        <group opr:id="...">
+                            <title>Group X of XYZ</title>
+                            <control id="x1" opr:id="..."><title>Control X1</title></control>
+                        </group>
+                        <group opr:id="..."><title>Group Y of XYZ</title></group>
+                        <group opr:id="..."><title>Group Z of XYZ</title></group>
+                    </selection>
+                    <selection uuid="..." opr:src="...">
+                        <metadata>
+                            <title>XYZ Tiny Catalog</title>
+                            <last-modified>2020-05-30T14:51:42.355-04:00</last-modified>
+                            <version>1.0</version>
+                            <oscal-version>1.0.0-rc2</oscal-version>
+                        </metadata>
+                        <group opr:id="...">
+                            <title>Group X of XYZ</title>
+                        </group>
+                        <group opr:id="...">
+                            <title>Group Y of XYZ</title>
+                            <control id="y1" opr:id="..."><title>Control Y1</title></control>
+                        </group>
+                        <group opr:id="..."><title>Group Z of XYZ</title></group>
+                    </selection>
+                </profile>
+            </x:expect>
             <x:expect label="In this implementation, the doubled import makes the group IDs non-unique"
                 test="$x:result//o:group/@opr:id => $ov:unique() => not()"/>
             <x:expect label="In this implementation, the doubled import makes the selection UUIDs non-unique"
                 test="$x:result//o:selection/@uuid => $ov:unique() => not()"/>
             <x:expect label="Within each selection, opr:id values are unique"
                 test="every $sel in $x:result//o:selection satisfies $sel//*/@opr:id => $ov:unique()"/>
-    </x:scenario>
-
-    <x:scenario label="Loose parameters">
-        <x:context>
-            <profile>
+        </x:scenario>
+    
+        <x:scenario label="Loose parameters">
+            <x:context>
+                <profile>
                     <import href="{$ov:filedir}/catalogs/abc-full_catalog.xml">
-                    <include-controls>
-                        <with-id>a1</with-id>
-                        <with-id>b1</with-id>
-                    </include-controls>
-                </import>
-            </profile>
-        </x:context>
-
-        <x:expect label="Two controls in three groups with back matter and loose parameters">
-            <profile>
-                <selection uuid="..." opr:src="...">
-                    <metadata xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-                        <title>ABC Catalog</title>
-                        <last-modified>2020-05-30T14:51:38.311-04:00</last-modified>
-                        <version>1.0</version>
-                        <oscal-version>1.0.0-rc2</oscal-version>
-                    </metadata>
-                    <group opr:id="...">
-                        <title>Group A of C</title>
-                        <param id="param-A.a" opr:id="...">
-                            <label>A.a parameter</label>
-                            <value>A.a value</value>
-                        </param>
-                        <param id="param-A.b" opr:id="...">
-                            <select>
-                                <choice>A.b parameter selection choice 1</choice>
-                                <choice>A.b parameter selection choice 2</choice>
-                                <choice>A.b parameter selection choice 3</choice>
-                            </select>
-                        </param>
-                        <control id="a1" opr:id="...">
-                            <title>Control A1</title>
-                            <param id="param-a1.a" opr:id="...">
-                                <label>a1.a parameter</label>
-                                <value>a1.a value</value>
+                        <include-controls>
+                            <with-id>a1</with-id>
+                            <with-id>b1</with-id>
+                        </include-controls>
+                    </import>
+                </profile>
+            </x:context>
+    
+            <x:expect label="Two controls in three groups with back matter and loose parameters">
+                <profile>
+                    <selection uuid="..." opr:src="...">
+                        <metadata xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                            <title>ABC Catalog</title>
+                            <last-modified>2020-05-30T14:51:38.311-04:00</last-modified>
+                            <version>1.0</version>
+                            <oscal-version>1.0.0-rc2</oscal-version>
+                        </metadata>
+                        <group opr:id="...">
+                            <title>Group A of C</title>
+                            <param id="param-A.a" opr:id="...">
+                                <label>A.a parameter</label>
+                                <value>A.a value</value>
                             </param>
-                            <prop name="place" value="1st"/>
-                            <part name="statement" id="a1-stmt">
-                                <p>A1 aaaaa aaaaaaaaaa</p>
-                                <p>Parameter A.a is set: <insert type="param" id-ref="param-A.a"/>...</p>
-                                <p>Parameter a1.a is set: <insert type="param" id-ref="param-a1.a"/>...</p>
-                                <p>Also, we <a href="#citation">refer to a citation</a>.</p>
-                            </part>
-                        </control>
-                    </group>
-                    <group opr:id="...">
-                        <title>Group B of C</title>
-                        <control id="b1" opr:id="...">
-                            <title>Control B1</title>
-                            <prop name="place" value="4th"/>
-                            <part name="statement" id="b1-stmt">
-                                <p>B1 bbbb bbbbbbb.</p>
-                            </part>
-                        </control>
-                    </group>
-                    <group opr:id="...">
-                        <title>Group C of C</title>
-                    </group>
-                    <back-matter>
-                        <resource uuid="...">
-                            <citation>
-                                <text>A citation to an out of line document.</text>
-                            </citation>
-                        </resource>
-                    </back-matter>
-                </selection>
-            </profile>
-        </x:expect>
-    </x:scenario>
+                            <param id="param-A.b" opr:id="...">
+                                <select>
+                                    <choice>A.b parameter selection choice 1</choice>
+                                    <choice>A.b parameter selection choice 2</choice>
+                                    <choice>A.b parameter selection choice 3</choice>
+                                </select>
+                            </param>
+                            <control id="a1" opr:id="...">
+                                <title>Control A1</title>
+                                <param id="param-a1.a" opr:id="...">
+                                    <label>a1.a parameter</label>
+                                    <value>a1.a value</value>
+                                </param>
+                                <prop name="place" value="1st"/>
+                                <part name="statement" id="a1-stmt">
+                                    <p>A1 aaaaa aaaaaaaaaa</p>
+                                    <p>Parameter A.a is set: <insert type="param" id-ref="param-A.a"/>...</p>
+                                    <p>Parameter a1.a is set: <insert type="param" id-ref="param-a1.a"/>...</p>
+                                    <p>Also, we <a href="#citation">refer to a citation</a>.</p>
+                                </part>
+                            </control>
+                        </group>
+                        <group opr:id="...">
+                            <title>Group B of C</title>
+                            <control id="b1" opr:id="...">
+                                <title>Control B1</title>
+                                <prop name="place" value="4th"/>
+                                <part name="statement" id="b1-stmt">
+                                    <p>B1 bbbb bbbbbbb.</p>
+                                </part>
+                            </control>
+                        </group>
+                        <group opr:id="...">
+                            <title>Group C of C</title>
+                        </group>
+                        <back-matter>
+                            <resource uuid="...">
+                                <citation>
+                                    <text>A citation to an out of line document.</text>
+                                </citation>
+                            </resource>
+                        </back-matter>
+                    </selection>
+                </profile>
+            </x:expect>
+        </x:scenario>
     </x:scenario>
 
     <x:scenario label="Tests for match='profile' mode='o:select' template">

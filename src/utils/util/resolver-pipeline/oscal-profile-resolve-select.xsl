@@ -228,8 +228,8 @@
         <xsl:variable name="resolved-href" select="resolve-uri($href,$href/base-uri())"/>
         <xsl:assert test="doc-available($resolved-href)"
             expand-text="yes">Document not acquired: {$href} resolved as {
-        $resolved-href} (as OSCAL XML)</xsl:assert>
-                <xsl:sequence select="document($resolved-href)"/>
+            $resolved-href} (as OSCAL XML)</xsl:assert>
+        <xsl:sequence select="document($resolved-href)"/>
     </xsl:function>
 
     <xsl:include href="oscal-profile-resolve-functions.xsl"/>
