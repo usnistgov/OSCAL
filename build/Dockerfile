@@ -1,5 +1,7 @@
 FROM ubuntu:20.04 as base-environment
 
+ADD ./ci-cd/python/requirements.txt .
+
 ENV TZ=US/Eastern
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
@@ -15,7 +17,7 @@ RUN apt-get install -y apt-utils build-essential git jq libxml2-utils maven node
 RUN npm install -g npm n
 RUN n latest
 RUN npm install --loglevel verbose -g ajv-cli@"^4.0.x" ajv-formats@"^1.5.x" json-diff markdown-link-check yaml-convert@"^1.0.x" yargs
-RUN pip3 install lxml
+RUN pip3 install -r requirements.txt
 
 #RUN useradd --create-home --home-dir /home/user user
 #USER user
