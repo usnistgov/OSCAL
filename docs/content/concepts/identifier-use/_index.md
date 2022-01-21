@@ -27,7 +27,6 @@ UUIDs were chosen because:
 - UUIDs are represented in 128 bits, providing for a large address space with low risk of identifier collisions for randomly generated values
 
 The opaque nature of UUIDs, which consist of a series of hexadecimal characters, makes them less than ideal for wildcard matching scenarios.  Thus, their use in OSCAL is intended for identification only where an exact match is required. Where wildcard matching is needed, the other data elements associated with the entity should be evaluated for a match instead. 
->>>>>>> d1b234ed (identifier use page review edits)
 
 {{<callout>}}The opaque nature of UUIDs, which consist of a series of hexadecimal characters, makes them less than ideal for wildcard matching scenarios.  Thus, their use in OSCAL is intended for identification only where an exact match is required. Where wildcard matching is needed, the other data elements associated with the entity should be evaluated for a match instead. {{</callout>}}
 
@@ -44,11 +43,7 @@ OSCAL identifier uniqueness is categorized as <em id="locally-unique">*locally-u
 
 ### **Scope** 
 
-<<<<<<< HEAD
-Identifiers that are only intended for use within the same OSCAL instance are categorized as <a name="instance">*instance*</a> scope.  However, since OSCAL supports composition relationships, there are cases where identifiers in a source OSCAL instance need to be referenced from other OSCAL instances.  These are considered <a name="cross-instance">*cross-instance*</a> scoped identifier references.  The figure below illustrates how OSCAL models relationships are established through import and link mechanisms.
-=======
 Identifiers that are only intended for use within the same OSCAL instance are categorized as <em id="instance">*instance*</em> scope.  However, since OSCAL supports composition relationships, there are many cases where identifiers in a source OSCAL instance need to be referenced from other OSCAL instances.  These are considered <em id="cross-instance">*cross-instance*</em> scoped identifier references.  The figure below illustrates how the core OSCAL models relationships are established through import and link mechanisms, enabling [*cross-instance*](#cross-instance) references.
->>>>>>> 59a25042 (identifier documentation updates)
 
 ![A diagram depicting the relationships between OSCAL models. The solid black arrows depict relationships implemented via the import mechanism (e.g., import, import-profile, import-component-definition, import-ssp, and import-ap), whereas the dashed red line arrows illustrate relationships established through links.](oscal-model-relationships.svg)
 
