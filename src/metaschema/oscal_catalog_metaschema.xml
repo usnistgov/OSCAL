@@ -24,7 +24,7 @@
             <root-name>catalog</root-name>
             <define-flag name="uuid" as-type="uuid" required="yes">
                   <formal-name>Catalog Universally Unique Identifier</formal-name>
-                  <description>A globally unique identifier for this catalog instance. This UUID should be changed when this document is revised.</description>
+                  <description>A globally unique identifier with cross-instance scope for this catalog instance. This UUID should be changed when this document is revised.</description>
             </define-flag>
 
             <model>
@@ -65,7 +65,8 @@
             <define-flag name="id" as-type="token">
                   <!-- This is an id because the idenfier is assigned and managed externally by humans. -->
                   <formal-name>Group Identifier</formal-name>
-                  <description>A unique identifier for a specific group instance that can be used to reference the group within this and in other OSCAL documents. This identifier's uniqueness is document scoped and is intended to be consistent for the same group across minor revisions of the document.</description>
+                  <!-- Identifier Declaration -->
+                  <description>A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a>, <a href="/concepts/identifier-use/#locally-unique">locally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined group elsewhere in <a href="/concepts/identifier-use/#catalog-identifiers">in this and other OSCAL instances (e.g., profiles)</a>. This id should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same group across revisions of the document.</description>
             </define-flag>
             <define-flag name="class" as-type="token">
                   <formal-name>Group Class</formal-name>
@@ -130,7 +131,8 @@
             <define-flag name="id" as-type="token" required="yes">
                   <!-- This is an id because the idenfier is managed externally. -->
                   <formal-name>Control Identifier</formal-name>
-                  <description>A unique identifier for a specific control instance that can be used to reference the control in other OSCAL documents. This identifier's uniqueness is document scoped and is intended to be consistent for the same control across minor revisions of the document.</description>
+                  <!-- Identifier Declaration -->
+                  <description>A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a>, <a href="/concepts/identifier-use/#locally-unique">locally unique</a> identifier with <a href="/concepts/identifier-use/#instance">instance</a> scope that can be used to reference this control elsewhere <a href="/concepts/identifier-use/#catalog-identifiers">in this and other OSCAL instances (e.g., profiles)</a>. This id should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same control across revisions of the document.</description>
             </define-flag>
             <define-flag name="class" as-type="token">
                   <formal-name>Control Class</formal-name>

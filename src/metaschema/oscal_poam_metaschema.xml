@@ -23,7 +23,8 @@
         <root-name>plan-of-action-and-milestones</root-name>
         <define-flag name="uuid" required="yes" as-type="uuid">
             <formal-name>POA&amp;M Universally Unique Identifier</formal-name>
-            <description>Uniquely identifies this POA&amp;M. This UUID must be changed each time the content of the POA&amp;M changes.</description>
+             <!-- Identifier Declaration -->
+            <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#instance">instance</a>scope that can be used to reference this POA&amp;M instance in <a href="/concepts/identifier-use/#poam-identifiers">this OSCAL instance</a>. This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
         </define-flag>
         <model>
             <assembly ref="metadata" min-occurs="1" max-occurs="1"/>
@@ -88,7 +89,8 @@
         <description>Describes an individual POA&amp;M item.</description>
         <define-flag name="uuid" required="no" as-type="uuid">
             <formal-name>POA&amp;M Item Universally Unique Identifier</formal-name>
-            <description>Uniquely identifies the POA&amp;M entry. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. A UUID should be consistently used for a given POA&amp;M item across revisions of the document.</description>
+            <!-- Identifier Declaration -->
+            <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#instance">instance</a> scope that can be used to reference this POA&amp;M item entry in <a href="/concepts/identifier-use/#poam-identifiers">this OSCAL instance</a>. This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
         </define-flag>
         <model>
             <define-field name="title" min-occurs="1" max-occurs="1" as-type="markup-line">
@@ -132,7 +134,8 @@
                 <group-as name="related-observations" in-json="ARRAY"/>
                 <define-flag name="observation-uuid" as-type="uuid" required="yes">
                     <formal-name>Observation Universally Unique Identifier Reference</formal-name>
-                    <description>References an observation defined in the list of observations.</description>
+                    <!-- Identifier Reference -->
+                    <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to an observation defined in the list of observations.</description>
                 </define-flag>
             </define-assembly>
 
@@ -143,7 +146,8 @@
                 <group-as name="related-risks" in-json="ARRAY"/>
                 <define-flag name="risk-uuid" as-type="uuid" required="yes">
                     <formal-name>Risk Universally Unique Identifier Reference</formal-name>
-                    <description>References an risk defined in the list of risks.</description>
+                    <!-- Identifier Reference -->
+                    <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to a risk defined in the list of risks.</description>
                 </define-flag>
             </define-assembly>
             <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
