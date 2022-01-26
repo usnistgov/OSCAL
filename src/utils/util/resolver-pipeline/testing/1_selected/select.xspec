@@ -91,23 +91,23 @@
             </x:expect>
             <x:expect label="opr:id values are unique"
                 test="$x:result//*/@opr:id => $ov:unique()"/>
-                <!-- If the pattern of opr:id values isn't worth testing, then delete the next
-                    variables and assertions. Similar in "Profile select include all" scenario.--> 
-                <x:variable name="ov:group_id" as="attribute()+" select="$x:result//o:group/@opr:id"/>
-                <x:variable name="ov:catalog_uuid" as="xs:string" select="doc($ov:filedir || '/catalogs/xyz-tiny_catalog.xml')/o:catalog/@uuid"/>
-                <x:expect label="Each group has opr:id whose substring before # matches the selection uuid,"
-                    test="every $id in $ov:group_id satisfies starts-with($id, $id/ancestor::o:selection/@uuid || '#')"/>
-                <x:expect label="which matches the original catalog's top-level uuid."
-                    test="$x:result/o:selection/@uuid = $ov:catalog_uuid"/>
-            </x:scenario>
-            <x:scenario label="Error case: Profile cannot find catalog" catch="yes">
-                <x:context>
-                    <profile>
-                        <import href="nonexistent_catalog.xml"/>
-                    </profile>
-                </x:context>
-                <x:expect label="Fatal XSLT error"
-                    test="$x:result instance of map(*) and $x:result('err') instance of map(*)"/>
+            <!-- If the pattern of opr:id values isn't worth testing, then delete the next
+                variables and assertions. Similar in "Profile select include all" scenario.--> 
+            <x:variable name="ov:group_id" as="attribute()+" select="$x:result//o:group/@opr:id"/>
+            <x:variable name="ov:catalog_uuid" as="xs:string" select="doc($ov:filedir || '/catalogs/xyz-tiny_catalog.xml')/o:catalog/@uuid"/>
+            <x:expect label="Each group has opr:id whose substring before # matches the selection uuid,"
+                test="every $id in $ov:group_id satisfies starts-with($id, $id/ancestor::o:selection/@uuid || '#')"/>
+            <x:expect label="which matches the original catalog's top-level uuid."
+                test="$x:result/o:selection/@uuid = $ov:catalog_uuid"/>
+        </x:scenario>
+        <x:scenario label="Error case: Profile cannot find catalog" catch="yes">
+            <x:context>
+                <profile>
+                    <import href="nonexistent_catalog.xml"/>
+                </profile>
+            </x:context>
+            <x:expect label="Fatal XSLT error"
+                test="$x:result instance of map(*) and $x:result('err') instance of map(*)"/>
         </x:scenario>
         <x:scenario label="Profile select include all">
             <x:context>
@@ -543,7 +543,7 @@
             </x:context>
             <x:variable name="ov:expected_error" as="xs:string">Document not acquired for resource with uuid foo: No rlink with media-type='xml' or href ending with '.xml'</x:variable>
             <x:expect label="Fatal XSLT error"
-            test="$x:result instance of map(*) and $x:result('err') instance of map(*)"/>
+                test="$x:result instance of map(*) and $x:result('err') instance of map(*)"/>
             <!-- The next assertion requires a newer XSpec version; passes in Oxygen v24, fails in Oxygen v22.1 -->
             <x:expect label="with message specific to situation"
                 test="$x:result('err')('value')/string()"
@@ -601,7 +601,7 @@
             </x:context>
             <x:call template="add-process-id"/>
             <x:expect label="opr:id attribute"
-            test="$x:result instance of attribute(opr:id)"/>
+                test="$x:result instance of attribute(opr:id)"/>
             <x:expect label="whose value is hash-separated join of catalog uuid and context id"
                 test="$x:result/string()" select="'catalog-uuid#control-id'"/>
         </x:scenario>
@@ -858,7 +858,7 @@
                     <x:param name="importing">
                         <import>
                             <include-controls>
-                                <matching pattern=""/>
+                                <matching/>
                             </include-controls>
                         </import>
                     </x:param>
