@@ -45,6 +45,14 @@
                         </remarks>
                   </assembly>
             </model>
+            <constraint>
+                  <allowed-values target="metadata/prop/@name">
+                        <enum value="resolution-tool">The tool used to produce a resolved profile.</enum>
+                  </allowed-values>
+                  <allowed-values target="metadata/link/@rel">
+                        <enum value="source-profile">The tool used to produce a resolved profile.</enum>
+                  </allowed-values>
+            </constraint>
             <remarks>
                   <p>Catalogs may use one or more <code>group</code> objects to subdivide the control contents of a catalog.</p>
                   <p>An OSCAL catalog model provides a structured representation of control information.</p>
@@ -168,7 +176,7 @@
                   <!-- <any/> -->
             </model>
             <constraint>
-                  <has-cardinality id="catalog-control-require-statement-when-not-withdrawn" target=".[not(exists(prop[@name='status'])) or prop[@name='status']/@value != 'withdrawn']/part[@name='statement']" min-occurs="1" max-occurs="1" />
+                  <expect id="catalog-control-require-statement-when-not-withdrawn" target="." test="prop[@name='status']/@value='withdrawn' or part[@name='statement']" />
                   <allowed-values target="prop/@name" allow-other="yes">
             &allowed-values-control-group-property-name;
                         <enum value="status">The status of a <code>control</code>. For example, a value of 'withdrawn' can indicate that the <code>control</code> has been withdrawn and should no longer be used.</enum>
