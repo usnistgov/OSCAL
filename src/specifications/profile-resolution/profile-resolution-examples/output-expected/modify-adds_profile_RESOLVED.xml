@@ -6,7 +6,8 @@
       <last-modified>2021-04-06T15:00:53.695-04:00</last-modified>
       <version>1.2</version>
       <oscal-version>1.0.0</oscal-version>
-      <link rel="resolution-source" href="modify-adds_profile.xml"/>
+      <prop name="resolution-tool" value="some value"/>
+      <link rel="source-profile" href="../modify-adds_profile.xml"/>
    </metadata>
    <group>
       <title>Group A of C</title>
