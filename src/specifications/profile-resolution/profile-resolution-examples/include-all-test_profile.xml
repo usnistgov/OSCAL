@@ -12,4 +12,7 @@
    <import href="catalogs/abc-full_catalog.xml">
       <include-all/>
    </import>
+   <merge>
+      <as-is>true</as-is>
+   </merge>
 </profile>

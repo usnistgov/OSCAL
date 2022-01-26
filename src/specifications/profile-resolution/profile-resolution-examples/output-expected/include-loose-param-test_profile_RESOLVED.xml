@@ -6,20 +6,32 @@
       <last-modified>2021-04-06T15:00:52.401-04:00</last-modified>
       <version>1.0</version>
       <oscal-version>1.0.0</oscal-version>
-      <link rel="resolution-source" href="include-loose-param-test_profile.xml"/>
+      <prop name="resolution-tool" value="some value"/>
+      <link rel="source-profile" href="../include-loose-param-test_profile.xml"/>
    </metadata>
+   <param id="param-A.a">
+      <label>A.a parameter</label>
+      <value>A.a value</value>
+   </param>
    <control id="a1">
       <title>Control A1</title>
       <param id="param-a1.a">
          <label>a1.a parameter</label>
          <value>a1.a value</value>
       </param>
-      <prop name="place" value="1st"/>
+      <prop name="label" value="1st"/>
       <part name="statement" id="a1-stmt">
          <p>A1 aaaaa aaaaaaaaaa</p>
-         <p>Parameter A.a is set: <insert type="param" id-ref="param-A.a"/>...</p>
-         <p>Parameter a1.a is set: <insert type="param" id-ref="param-a1.a"/>...</p>
-         <p>Also, we <a href="#citation">refer to a citation</a>.</p>
+         <p>Parameter A.a is set: <insert type="param" id-ref="param-A.a"/></p>
+         <p>Parameter a1.a is set: <insert type="param" id-ref="param-a1.a"/></p>
       </part>
    </control>
+   <back-matter>
+      <resource uuid="70830fd9-7899-40f8-acfe-70a5d1a56353">
+      	 <prop name="keep" value="always"/>
+         <citation>
+            <text>A citation to an out of line document.</text>
+         </citation>
+      </resource>
+   </back-matter>
 </catalog>

@@ -6,6 +6,7 @@
       <last-modified>2021-04-06T15:00:49.676-04:00</last-modified>
       <version>1.0</version>
       <oscal-version>1.0.0</oscal-version>
-      <link rel="resolution-source" href="broken_profile.xml"/>
+      <prop name="resolution-tool" value="some value"/>
+      <link rel="source-profile" href="../broken_profile.xml"/>
    </metadata>
 </catalog>
