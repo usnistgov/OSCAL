@@ -88,7 +88,7 @@
                         <allowed-values target=".[@name='assessment']/prop/@name" allow-other="yes">
                                 <enum value="method">The assessment method to use. This typically appears on parts with the name "assessment".</enum>
                         </allowed-values>
-                        <has-cardinality target=".[@name='assessment']/prop[@name='method']" min-occurs="1"/>
+                        <expect level="WARNING" target=".[@name='assessment']" test="prop[@name='method']"/>
                         <allowed-values target=".[@name='assessment']/prop[@name='method']/@value">
                                 <enum value="INTERVIEW">The process of holding discussions with individuals or groups of individuals within an organization to once again, facilitate assessor understanding, achieve clarification, or obtain evidence.</enum>
                                 <enum value="EXAMINE">The process of reviewing, inspecting, observing, studying, or analyzing one or more assessment objects (i.e., specifications, mechanisms, or activities).</enum>
