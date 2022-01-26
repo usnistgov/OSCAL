@@ -335,7 +335,7 @@
       <define-assembly name="alter">
             <formal-name>Alteration</formal-name>
             <description>An Alter element specifies changes to be made to an included control when a profile is resolved.</description>
-            <flag ref="control-id"/>
+            <flag ref="control-id" required="yes"/>
             <model>
                   <assembly ref="remove" max-occurs="unbounded">
                         <group-as name="removes" in-json="ARRAY"/>
