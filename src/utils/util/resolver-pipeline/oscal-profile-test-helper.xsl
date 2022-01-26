@@ -15,8 +15,8 @@
     
     -->
 
-    <xsl:output method="xml" indent="yes"/>
-
+    <xsl:output method="xml"/>
+    
     <xsl:strip-space
         elements="catalog metadata param control group back-matter prop link part usage constraint guideline select remarks description test revisions revision role location party responsible-party address external-id resource citation rlink base64"/>
 
@@ -32,7 +32,13 @@
         
         
     -->
-    
+    <xsl:template match="/">
+        <xsl:param name="source" select="." as="document-node()"/>
+        <xsl:document>
+          <xsl:apply-templates select="$source" mode="scrubbing"/>
+        </xsl:document>
+    </xsl:template>
+
     <xsl:function name="opr:scrub" as="document-node()">
         <xsl:param name="n" as="node()"/>
         <xsl:document>
@@ -54,7 +60,15 @@
             <xsl:next-match/>
         </xsl:if>
     </xsl:template>
-    
+
+    <xsl:template mode="scrubbing" match="catalog/metadata/prop[@name='resolution-tool']/@value">
+        <xsl:attribute name="value">...</xsl:attribute>
+    </xsl:template>
+
+    <xsl:template mode="scrubbing" match="catalog/metadata/link[@rel='source-profile']/@href">
+        <xsl:attribute name="href">...</xsl:attribute>
+    </xsl:template>
+
     <xsl:template mode="scrubbing" match="last-modified">
         <xsl:copy>...</xsl:copy>
     </xsl:template>
