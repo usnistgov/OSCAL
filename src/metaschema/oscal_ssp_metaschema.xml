@@ -679,6 +679,9 @@
           <p>Since multiple <code>set-parameter</code> entries can be provided, each parameter must be set only once.</p>
         </remarks>
       </is-unique>
+      <index name="by-component-export-provided-uuid" target="implemented-requirement/by-component/export/provided">
+        <key-field target="@uuid"/>
+      </index>
     </constraint>
     <remarks>
       <p>Use of <code>set-parameter</code> in this context, sets the parameter for all related controls referenced in an <code>implemented-requirement</code>. If the same parameter is also set in a specific <code>implemented-requirement</code>, then the new value will override this value.</p>
@@ -944,9 +947,6 @@
         </model>
         <constraint>
           <has-cardinality target="provided|responsibility" min-occurs="1"/>
-          <index name="by-component-export-provided-uuid" target="provided">
-            <key-field target="@uuid"/>
-          </index>
           <index-has-key name="by-component-export-provided-uuid" target="responsibility">
             <key-field target="@provided-uuid"/>
           </index-has-key>
