@@ -362,16 +362,16 @@ Note: Markdown does not have an equivalent of the HTML &lt;i&gt; and &lt;b&gt; t
 
 The OSCAL catalog, profile, and implementation layer models allow for control parameters to be defined and injected into prose text.
 
-Parameter injection is handled in OSCAL as follows using the &lt;insert&gt; tag:
+Parameter injection is handled in OSCAL as follows using the <code>&lt;insert&gt;</code> tag, where you must provide its <code>type</code> and the identifier reference with <code>id-ref</code>:
 
 ```html
-Reviews and updates the risk management strategy <insert param-id="pm-9_prm_1"/> or as required, to address organizational changes.
+This implements <insert type="param" id-ref="pm-9_prm_1"/> as required to address organizational changes.
 ```
 
 The same string in Markdown is represented as follows:
 
 ```markdown
-Reviews and updates the risk management strategy {{ pm-9_prm_1 }} or as required, to address organizational changes.
+This implements {{ insert: param, pm-9_prm_1 }} as required to address organizational changes.
 ```
 
 #### Specialized Character Mapping
