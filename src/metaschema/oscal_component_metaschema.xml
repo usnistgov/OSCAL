@@ -182,7 +182,7 @@
       </allowed-values>
 
       <allowed-values target="prop[@name='implementation-point']/@value">
-        <enum value="inteneral">The component is implemented within the system boundary.</enum>
+        <enum value="internal">The component is implemented within the system boundary.</enum>
         <enum value="external">The component is implemented outside the system boundary.</enum>
       </allowed-values>
       <!-- ========================================================================================================== -->
