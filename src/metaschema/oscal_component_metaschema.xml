@@ -38,6 +38,9 @@
     </define-flag>
     <model>
       <assembly ref="metadata" min-occurs="1"/>
+      <assembly ref="rule" min-occurs="0" max-occurs="unbounded">
+        <group-as name="rules" in-json="ARRAY"/>
+      </assembly>
       <assembly ref="import-component-definition" max-occurs="unbounded">
         <group-as name="import-component-definitions" in-json="ARRAY"/>
       </assembly>
