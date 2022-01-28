@@ -46,7 +46,7 @@
                   </assembly>
             </model>
             <constraint>
-                  <allowed-values target="metadata/prop/@name">
+                  <allowed-values target="metadata/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
                         <enum value="resolution-tool">The tool used to produce a resolved profile.</enum>
                   </allowed-values>
                   <allowed-values target="metadata/link/@rel">
@@ -115,8 +115,11 @@
             </model>
             <constraint>
                   <!-- CHANGE: added allowed values for a property/@name -->
-                  <allowed-values target="prop/@name" allow-other="yes">
+                  <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
             &allowed-values-control-group-property-name;
+                  </allowed-values>
+                  <allowed-values target="part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+                        <enum value="overview">An introduction to a control or a group of controls.</enum>
                   </allowed-values>
             </constraint>
             <remarks>
@@ -177,11 +180,11 @@
             </model>
             <constraint>
                   <expect id="catalog-control-require-statement-when-not-withdrawn" target="." test="prop[@name='status']/@value='withdrawn' or part[@name='statement']" />
-                  <allowed-values target="prop/@name" allow-other="yes">
+                  <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
             &allowed-values-control-group-property-name;
                         <enum value="status">The status of a <code>control</code>. For example, a value of 'withdrawn' can indicate that the <code>control</code> has been withdrawn and should no longer be used.</enum>
                   </allowed-values>
-                  <allowed-values target="prop[@name='status']/@value">
+                  <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='status']/@value">
                         <enum value="withdrawn">The control is no longer used.</enum>
                   </allowed-values>
                   <allowed-values target="link/@rel" allow-other="yes">
@@ -189,6 +192,48 @@
                         <enum value="related">The link identifies another control with bearing to this control.</enum>
                         <enum value="required">The link identifies another control that must be present if this control is present.</enum>
                         <enum value="incorporated-into">The link identifies other control content where this control content is now addressed.</enum>
+                        <enum value="moved-to">The containing control definition was moved to the referenced control.</enum>
+                  </allowed-values>
+                  
+                  <allowed-values target="part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+                        <enum value="overview">An introduction to a control or a group of controls.</enum>
+                        <enum value="statement">A set of control implementation requirements.</enum>
+                        <enum value="guidance">Additional information to consider when selecting, implementing, assessing, and monitoring a control.</enum>
+                        <enum value="assessment">(deprecated) Use 'assessment-method' instead.</enum>
+                        <enum value="assessment-method">The part describes a method-based assessment over a set of assessment objects.</enum>
+                  </allowed-values>
+                  <allowed-values target="part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='statement']//part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+                        <enum value="item">An individual item within a control statement.</enum>
+                        <remarks>
+                              <p>Nested statement parts are "item" parts.</p>
+                        </remarks>
+                  </allowed-values>
+                  <allowed-values target=".//part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+                        <enum value="objective">(deprecated) Use 'assessment-objective' instead.</enum>
+                        <enum value="assessment-objective">The part describes a set of assessment objectives.</enum>
+                        <remarks>
+                              <p>Objectives can be nested.</p>
+                        </remarks>
+                  </allowed-values>
+                  <allowed-values target="part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('assessment','assessment-method')]/part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+                        <enum value="objects">(deprecated) Use 'assessment-objects' instead.</enum>
+                        <enum value="assessment-objects">Provides a listing of assessment objects.</enum>
+                        <remarks>
+                              <p>Assessment objects appear on assessment methods.</p>
+                        </remarks>
+                  </allowed-values>
+                  
+                  <allowed-values target="part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('assessment','assessment-method')]/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+                        <enum value="method">(deprecated) Use 'method' in the 'http://csrc.nist.gov/ns/rmf' namespace. The assessment method to use. This typically appears on parts with the name "assessment".</enum>
+                  </allowed-values>
+                  <allowed-values target="part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('assessment','assessment-method')]/prop[has-oscal-namespace('http://csrc.nist.gov/ns/rmf')]/@name">
+                        <enum value="method">The assessment method to use. This typically appears on parts with the name "assessment".</enum>
+                  </allowed-values>
+                  <expect level="WARNING" target="part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('assessment','assessment-method')]" test="prop[has-oscal-namespace(('http://csrc.nist.gov/ns/oscal','http://csrc.nist.gov/ns/rmf')) and @name='method']"/>
+                  <allowed-values target="part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('assessment','assessment-method')]/prop[has-oscal-namespace(('http://csrc.nist.gov/ns/oscal','http://csrc.nist.gov/ns/rmf')) and @name='method']/@value">
+                        <enum value="INTERVIEW">The process of holding discussions with individuals or groups of individuals within an organization to once again, facilitate assessor understanding, achieve clarification, or obtain evidence.</enum>
+                        <enum value="EXAMINE">The process of reviewing, inspecting, observing, studying, or analyzing one or more assessment objects (i.e., specifications, mechanisms, or activities).</enum>
+                        <enum value="TEST">The process of exercising one or more assessment objects (i.e., activities or mechanisms) under specified conditions to compare actual with expected behavior.</enum>
                   </allowed-values>
             </constraint>
             <remarks>

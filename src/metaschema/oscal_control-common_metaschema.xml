@@ -28,18 +28,6 @@
                 <define-flag name="name" as-type="token" required="yes">
                         <formal-name>Part Name</formal-name>
                         <description>A textual label that uniquely identifies the part's semantic type.</description>
-                        <constraint>
-                                <allowed-values allow-other="yes">
-                                        <!-- QUESTION: "method" doesn't appear in this list, but has a constraint below. Why? -->
-                                        <enum value="overview">An introduction to a control or a group of controls.</enum>
-                                        <enum value="statement">A set of control implementation requirements.</enum>
-                                        <enum value="item">An individual item within a control statement.</enum>
-                                        <enum value="guidance">Additional information to consider when selecting, implementing, assessing, and monitoring a control.</enum>
-                                        <enum value="objective">Describes a set of assessment objectives.</enum>
-                                        <enum value="assessment">Describes a method-based assessment over a set of assessment objects.</enum>
-                                        <enum value="objects">Provides a list of assessment objects.</enum>
-                                </allowed-values>
-                        </constraint>
                 </define-flag>
                 <define-flag name="ns" as-type="uri">
                         <!-- CHANGED: data type to uri -->
@@ -82,17 +70,8 @@
                 </model>
                 <constraint>
                         <!-- CHANGE: added allowed values for a property/@name -->
-                        <allowed-values target="prop/@name" allow-other="yes">
+                        <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
             &allowed-values-control-group-property-name;
-                        </allowed-values>
-                        <allowed-values target=".[@name='assessment']/prop/@name" allow-other="yes">
-                                <enum value="method">The assessment method to use. This typically appears on parts with the name "assessment".</enum>
-                        </allowed-values>
-                        <expect level="WARNING" target=".[@name='assessment']" test="prop[@name='method']"/>
-                        <allowed-values target=".[@name='assessment']/prop[@name='method']/@value">
-                                <enum value="INTERVIEW">The process of holding discussions with individuals or groups of individuals within an organization to once again, facilitate assessor understanding, achieve clarification, or obtain evidence.</enum>
-                                <enum value="EXAMINE">The process of reviewing, inspecting, observing, studying, or analyzing one or more assessment objects (i.e., specifications, mechanisms, or activities).</enum>
-                                <enum value="TEST">The process of exercising one or more assessment objects (i.e., activities or mechanisms) under specified conditions to compare actual with expected behavior.</enum>
                         </allowed-values>
                 </constraint>
                 <remarks>
@@ -182,6 +161,15 @@
                         <field ref="remarks" in-xml="WITH_WRAPPER"/>
                         <!-- <any/> -->
                 </model>
+                <constraint>
+                        <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+                                &allowed-values-control-group-property-name;
+                                <enum value="alt-label">An alternate to the value provided by the parameter's label. This will typically be qualified by a class.</enum>
+                        </allowed-values>
+                        <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/rmf')]/@name">
+                                <enum value="aggregates">The parent parameter provides an aggregation of 2 or more other parameters, each described by this property.</enum>
+                        </allowed-values>
+                </constraint>
                 <remarks>
                         <p>In a catalog, a parameter is typically used as a placeholder for the future assignment of a parameter value, although the OSCAL model allows for the direct assignment of a value if desired by the control author. The <code>value</code> may be optionally used to specify one or more values. If no value is provided, then it is expected that the value will be provided at the Profile or Implementation layer.</p>
                         <p>A parameter can include a variety of metadata options that support the future solicitation of one or more values. A <code>label</code> provides a textual placeholder that can be used in a tool to solicit parameter value input, or to display in catalog documentation. The <code>desc</code> provides a short description of what the parameter is used for, which can be used in tooling to help a user understand how to use the parameter. A <code>constraint</code> can be used to provide criteria for the allowed values. A <code>guideline</code> provides a recommendation for the use of a parameter.</p>
