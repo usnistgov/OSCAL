@@ -495,8 +495,9 @@
                                 <formal-name>Rule Condition</formal-name>
                                 <description>The state of the system subject to test and evaluation of the rule as supporting evidence of factual assertions for other OSCAL data.</description>                                
                         </define-field>
-                        <assembly ref="activity" min-occurs="0" max-occurs="unbounded">
-                                <group-as name="activities" in-json="ARRAY"/>
+                        <assembly ref="activity" min-occurs="0" max-occurs="unbounded" >
+                                <use-name>condition-evaluator</use-name>
+                                <group-as name="condition-evaluator" in-json="ARRAY"/>
                         </assembly>
                 </model>
         </define-assembly>
