@@ -479,11 +479,25 @@
                         <description>A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a> identifier for the rule instance.</description>
                 </define-flag>
                 <define-flag name="uuid" type="token" required="yes">
-                        <formal-name>Rule UUID</formal-name>
-                        <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier for the rule instance.</description>
+                        <formal-name>Rule Universally Unique Identifier</formal-name>
+                        <description>A unique identifier<a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier for the rule instance.</description>
                 </define-flag>
                 <model>
-                        <assembly ref="activity"></assembly>
+                        <define-field name="title" min-occurs="0" max-occurs="1" as-type="markup-line">
+                                <formal-name>Rule Title</formal-name>
+                                <description>The title for this rule.</description>
+                        </define-field>
+                        <define-field name="description" min-occurs="0" max-occurs="1" as-type="markup-multiline" in-xml="WITH_WRAPPER">
+                                <formal-name>Rule Description</formal-name>
+                                <description>A human-readable description of this rule.</description>
+                        </define-field>
+                        <define-field name="condition" min-occurs="1" max-occurs="1" as-type="markup-line">
+                                <formal-name>Rule Condition</formal-name>
+                                <description>The state of the system subject to test and evaluation of the rule as supporting evidence of factual assertions for other OSCAL data.</description>                                
+                        </define-field>
+                        <assembly ref="activity" min-occurs="0" max-occurs="unbounded">
+                                <group-as name="activities" in-json="ARRAY"/>
+                        </assembly>
                 </model>
         </define-assembly>
 
