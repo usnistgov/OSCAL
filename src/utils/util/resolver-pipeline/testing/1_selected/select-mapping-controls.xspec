@@ -34,8 +34,7 @@
                     </include-controls>
                     <mapping>
                         <controls>
-                            <from>x1</from>
-                            <to>map-x1</to>
+                            <map from="x1" to="map-x1"/>
                         </controls>
                     </mapping>
                 </import>
@@ -65,8 +64,7 @@
                     </include-controls>
                     <mapping>
                         <controls>
-                            <from>x1</from>
-                            <to>map1-x1</to>
+                            <map from="x1" to="map1-x1"/>
                         </controls>
                     </mapping>
                 </import>
@@ -76,8 +74,7 @@
                     </include-controls>
                     <mapping>
                         <controls>
-                            <from>x1</from>
-                            <to>map2-x1</to>
+                            <map from="x1" to="map2-x1"/>
                         </controls>
                     </mapping>
                 </import>
@@ -115,8 +112,7 @@
                     </include-controls>
                     <mapping>
                         <controls>
-                            <from>z3.a</from>
-                            <to>map-z3.a</to>
+                            <map from="z3.a" to="map-z3.a"/>
                         </controls>
                     </mapping>
                 </import>
@@ -138,8 +134,7 @@
                     </include-controls>
                     <mapping>
                         <controls>
-                            <from>z3*</from>
-                            <to>map-z3*</to>
+                            <map from="z3*" to="map-z3"/>
                         </controls>
                     </mapping>
                 </import>
@@ -161,10 +156,8 @@
                     </include-controls>
                     <mapping>
                         <controls>
-                            <from>x1</from>
-                            <to>map-x1</to>
-                            <from>x1</from>
-                            <to>map-again-x1</to>
+                            <map from="x1" to="map-x1"/>
+                            <map from="x1" to="map-again-x1"/>
                         </controls>
                     </mapping>
                 </import>
@@ -181,10 +174,8 @@
                     </include-controls>
                     <mapping>
                         <controls>
-                            <from>x1</from>
-                            <to>map-x1</to>
-                            <from>map-x1</from>
-                            <to>map-again-x1</to>
+                            <map from="x1" to="map-x1"/>
+                            <map from="map-x1" to="map-again-x1"/>
                         </controls>
                     </mapping>
                 </import>
@@ -204,8 +195,7 @@
                     </exclude-controls>
                     <mapping>
                         <controls>
-                            <from>x1</from>
-                            <to>map-x1</to>
+                            <map from="x1" to="map-x1"/>
                         </controls>
                     </mapping>
                 </import>
@@ -221,8 +211,7 @@
                     </include-controls>
                     <mapping>
                         <params>
-                            <from>x1</from>
-                            <to>map-x1</to>
+                            <map from="x1" to="map-x1"/>
                         </params>
                     </mapping>
                 </import>
@@ -239,8 +228,7 @@
                     </include-controls>
                     <mapping>
                         <controls>
-                            <from>nonexistent</from>
-                            <to>map-x1</to>
+                            <map from="nonexistent" to="map-x1"/>
                         </controls>
                     </mapping>
                 </import>
