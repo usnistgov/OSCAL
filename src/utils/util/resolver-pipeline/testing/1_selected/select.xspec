@@ -1440,15 +1440,15 @@
         </x:scenario>
     </x:scenario>
 
-    <x:scenario label="Tests for o:resource-or-warning function">
+    <x:scenario label="Tests for o:resource-or-error function">
         <x:scenario label="Document is available">
-            <x:call function="o:resource-or-warning">
+            <x:call function="o:resource-or-error">
                 <x:param select="(doc($ov:filedir || '/base-test_profile.xml')//o:import)[1]/@href"/>
             </x:call>
             <x:expect label="Resolved document" test="exists($x:result/self::document-node()/o:catalog)"/>
         </x:scenario>
         <x:scenario label="Error case: Document is not available" catch="yes">
-            <x:call function="o:resource-or-warning">
+            <x:call function="o:resource-or-error">
                 <x:param select="(doc($ov:filedir || '/broken_profile.xml')//o:import)[1]/@href"/>
             </x:call>
             <x:expect label="Fatal XSLT error"

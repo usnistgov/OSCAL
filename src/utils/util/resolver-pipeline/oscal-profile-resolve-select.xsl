@@ -95,7 +95,7 @@
         <xsl:variable name="linked-xml" select="child::rlink[ends-with(@href,'.xml') or matches(@media-type,'xml')][1]"/>
         <xsl:choose>
             <xsl:when test="exists($linked-xml)">
-        <xsl:apply-templates mode="o:select" select="o:resource-or-warning($linked-xml/@href)"/>
+        <xsl:apply-templates mode="o:select" select="o:resource-or-error($linked-xml/@href)"/>
             </xsl:when>
             <xsl:otherwise>
                 <xsl:message terminate="yes"
@@ -112,7 +112,7 @@
         <xsl:apply-templates select="$linked-resource" mode="o:import">
             <xsl:with-param name="import-instruction" select="." tunnel="yes"/>
         </xsl:apply-templates>
-        <xsl:apply-templates mode="#current" select="o:resource-or-warning(@href)">
+        <xsl:apply-templates mode="#current" select="o:resource-or-error(@href)">
             <xsl:with-param name="import-instruction" select="." tunnel="yes"/>
         </xsl:apply-templates>
     </xsl:template>
@@ -223,7 +223,7 @@
     </xsl:function>
 
     <!-- Returns a document when found, a fatal error when not. -->
-    <xsl:function name="o:resource-or-warning" as="document-node()">
+    <xsl:function name="o:resource-or-error" as="document-node()">
         <xsl:param name="href" as="attribute(href)"/>
         <xsl:variable name="resolved-href" select="resolve-uri($href,$href/base-uri())"/>
         <xsl:assert test="doc-available($resolved-href)"
