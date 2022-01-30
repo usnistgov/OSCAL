@@ -1,5 +1,5 @@
 ---
-title: "Assessment Results Model v Reference"
+title: "Assessment Results Model v1.0.1 Reference"
 summary: "Assessment Results Model"
 weight: 20
 suppresstopiclist: true
@@ -10,7 +10,7 @@ sidenav:
   inactiverenderdepth: 1
 ---
 
-<p><span class="usa-tag">Release Version</span> OSCAL v</p>
+<p><span class="usa-tag">Release Version</span> OSCAL v1.0.1</p>
 <p><span class="usa-tag">Github</span> <a href="https://github.com/usnistgov/OSCAL">usnistgov/OSCAL</a> <span class="usa-tag">Branch</span> <a href="https://github.com/usnistgov/OSCAL/tree/main">main</a></p>
 
 The following reference documentation is available for the OSCAL Assessment Results model.

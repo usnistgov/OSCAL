@@ -1,6 +1,6 @@
 ---
-title: "OSCAL Component Definition Model v XML Format Reference"
-heading: "Component Definition Model v XML Format Reference"
+title: "OSCAL Component Definition Model v1.0.1 XML Format Reference"
+heading: "Component Definition Model v1.0.1 XML Format Reference"
 weight: 60
 generateanchors: false
 sidenav:
