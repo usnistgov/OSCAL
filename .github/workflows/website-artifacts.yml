@@ -59,7 +59,7 @@ jobs:
           submodules: recursive
           token: ${{ secrets.COMMIT_TOKEN }}
       - name: Get latest from repo
-        if: ${{ github.repository == env.HOME_REPO && github.event_name == 'push' }}
+        if: ${{ github.repository == env.HOME_REPO && github.ref == format('refs/heads/{0}',env.HOME_BRANCH) && github.event_name == 'push' }}
         # This will ensure that any files committed by the previous job, will be updated
         run: |
           git pull --ff-only
