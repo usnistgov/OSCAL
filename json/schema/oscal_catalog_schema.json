@@ -12,7 +12,7 @@
         "properties" : 
         { "uuid" : 
           { "title" : "Catalog Universally Unique Identifier",
-            "description" : "A globally unique identifier for this catalog instance. This UUID should be changed when this document is revised.",
+            "description" : "A globally unique identifier with cross-instance scope for this catalog instance. This UUID should be changed when this document is revised.",
             "type" : "string",
             "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
           "metadata" : 
@@ -46,7 +46,7 @@
         "properties" : 
         { "id" : 
           { "title" : "Group Identifier",
-            "description" : "A unique identifier for a specific group instance that can be used to reference the group within this and in other OSCAL documents. This identifier's uniqueness is document scoped and is intended to be consistent for the same group across minor revisions of the document.",
+            "description" : "A human-oriented, locally unique identifier with cross-instance scope that can be used to reference this defined group elsewhere in in this and other OSCAL instances (e.g., profiles). This id should be assigned per-subject, which means it should be consistently used to identify the same group across revisions of the document.",
             "type" : "string",
             "pattern" : "^[_A-Za-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD][_A-Za-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD\\-\\.0-9\\u00B7\\u0300-\\u036F\\u203F-\\u2040]*$" },
           "class" : 
@@ -99,7 +99,7 @@
         "properties" : 
         { "id" : 
           { "title" : "Control Identifier",
-            "description" : "A unique identifier for a specific control instance that can be used to reference the control in other OSCAL documents. This identifier's uniqueness is document scoped and is intended to be consistent for the same control across minor revisions of the document.",
+            "description" : "A human-oriented, locally unique identifier with instance scope that can be used to reference this control elsewhere in this and other OSCAL instances (e.g., profiles). This id should be assigned per-subject, which means it should be consistently used to identify the same control across revisions of the document.",
             "type" : "string",
             "pattern" : "^[_A-Za-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD][_A-Za-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD\\-\\.0-9\\u00B7\\u0300-\\u036F\\u203F-\\u2040]*$" },
           "class" : 
@@ -148,7 +148,7 @@
         "properties" : 
         { "id" : 
           { "title" : "Part Identifier",
-            "description" : "A unique identifier for a specific part instance. This identifier's uniqueness is document scoped and is intended to be consistent for the same part across minor revisions of the document.",
+            "description" : "A human-oriented, locally unique identifier with cross-instance scope that can be used to reference this defined part elsewhere in this or other OSCAL instances. When referenced from another OSCAL instance, this identifier must be referenced in the context of the containing resource (e.g., import-profile). This id should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.",
             "type" : "string",
             "pattern" : "^[_A-Za-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD][_A-Za-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD\\-\\.0-9\\u00B7\\u0300-\\u036F\\u203F-\\u2040]*$" },
           "name" : 
@@ -200,7 +200,7 @@
         "properties" : 
         { "id" : 
           { "title" : "Parameter Identifier",
-            "description" : "A unique identifier for a specific parameter instance. This identifier's uniqueness is document scoped and is intended to be consistent for the same parameter across minor revisions of the document.",
+            "description" : "A human-oriented, locally unique identifier with cross-instance scope that can be used to reference this defined parameter elsewhere in this or other OSCAL instances. When referenced from another OSCAL instance, this identifier must be referenced in the context of the containing resource (e.g., import-profile). This id should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.",
             "type" : "string",
             "pattern" : "^[_A-Za-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD][_A-Za-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD\\-\\.0-9\\u00B7\\u0300-\\u036F\\u203F-\\u2040]*$" },
           "class" : 
@@ -210,7 +210,7 @@
             "pattern" : "^[_A-Za-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD][_A-Za-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD\\-\\.0-9\\u00B7\\u0300-\\u036F\\u203F-\\u2040]*$" },
           "depends-on" : 
           { "title" : "Depends on",
-            "description" : "Another parameter invoking this one",
+            "description" : "**(deprecated)** Another parameter invoking this one. This construct has been deprecated and should not be used.",
             "type" : "string",
             "pattern" : "^[_A-Za-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD][_A-Za-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD\\-\\.0-9\\u00B7\\u0300-\\u036F\\u203F-\\u2040]*$" },
           "props" : 
@@ -419,6 +419,8 @@
             { "$ref" : "#assembly_oscal-metadata_link" } },
           "remarks" : 
           { "$ref" : "#field_oscal-metadata_remarks" } },
+        "required" : 
+        [ "version" ],
         "additionalProperties" : false },
       "oscal-catalog-oscal-metadata:location" : 
       { "title" : "Location",
@@ -428,7 +430,7 @@
         "properties" : 
         { "uuid" : 
           { "title" : "Location Universally Unique Identifier",
-            "description" : "A unique identifier that can be used to reference this defined location elsewhere in an OSCAL document. A UUID should be consistently used for a given location across revisions of the document.",
+            "description" : "A machine-oriented, globally unique identifier with cross-instance scope that can be used to reference this defined location elsewhere in this or other OSCAL instances. The locally defined UUID of the location can be used to reference the data item locally or globally (e.g., from an importing OSCAL instance). This UUID should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.",
             "type" : "string",
             "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
           "title" : 
@@ -473,7 +475,7 @@
         "additionalProperties" : false },
       "oscal-catalog-oscal-metadata:location-uuid" : 
       { "title" : "Location Reference",
-        "description" : "References a location defined in metadata.",
+        "description" : "A machine-oriented identifier reference to a location defined in the metadata section of this or another OSCAL instance. The UUID of the location in the source OSCAL instance is sufficient to reference the data item locally or globally (e.g., in an imported OSCAL instance).",
         "$id" : "#field_oscal-metadata_location-uuid",
         "type" : "string",
         "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
@@ -485,7 +487,7 @@
         "properties" : 
         { "uuid" : 
           { "title" : "Party Universally Unique Identifier",
-            "description" : "A unique identifier that can be used to reference this defined location elsewhere in an OSCAL document. A UUID should be consistently used for a given party across revisions of the document.",
+            "description" : "A machine-oriented, globally unique identifier with cross-instance scope that can be used to reference this defined party elsewhere in this or other OSCAL instances. The locally defined UUID of the party can be used to reference the data item locally or globally (e.g., from an importing OSCAL instance). This UUID should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.",
             "type" : "string",
             "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
           "type" : 
@@ -560,7 +562,7 @@
             "minItems" : 1,
             "items" : 
             { "title" : "Organizational Affiliation",
-              "description" : "Identifies that the party object is a member of the organization associated with the provided UUID.",
+              "description" : "A machine-oriented identifier reference to another party (person or organization) that this subject is associated with. The UUID of the party in the source OSCAL instance is sufficient to reference the data item locally or globally (e.g., in an imported OSCAL instance).",
               "type" : "string",
               "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" } },
           "remarks" : 
@@ -571,7 +573,7 @@
         "additionalProperties" : false },
       "oscal-catalog-oscal-metadata:party-uuid" : 
       { "title" : "Party Reference",
-        "description" : "References a party defined in metadata.",
+        "description" : "A machine-oriented identifier reference to another party defined in metadata. The UUID of the party in the source OSCAL instance is sufficient to reference the data item locally or globally (e.g., in an imported OSCAL instance).",
         "$id" : "#field_oscal-metadata_party-uuid",
         "type" : "string",
         "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
@@ -583,7 +585,7 @@
         "properties" : 
         { "id" : 
           { "title" : "Role Identifier",
-            "description" : "A unique identifier for a specific role instance. This identifier's uniqueness is document scoped and is intended to be consistent for the same role across minor revisions of the document.",
+            "description" : "A human-oriented, locally unique identifier with cross-instance scope that can be used to reference this defined role elsewhere in this or other OSCAL instances. When referenced from another OSCAL instance, the locally defined ID of the Role from the imported OSCAL instance must be referenced in the context of the containing resource (e.g., import, import-component-definition, import-profile, import-ssp or import-ap). This ID should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.",
             "type" : "string",
             "pattern" : "^[_A-Za-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD][_A-Za-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD\\-\\.0-9\\u00B7\\u0300-\\u036F\\u203F-\\u2040]*$" },
           "title" : 
@@ -617,7 +619,7 @@
         "additionalProperties" : false },
       "oscal-catalog-oscal-metadata:role-id" : 
       { "title" : "Role Identifier Reference",
-        "description" : "A reference to the roles served by the user.",
+        "description" : "A human-oriented identifier reference to roles served by the user.",
         "$id" : "#field_oscal-metadata_role-id",
         "type" : "string",
         "pattern" : "^[_A-Za-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD][_A-Za-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD\\-\\.0-9\\u00B7\\u0300-\\u036F\\u203F-\\u2040]*$" },
@@ -637,7 +639,7 @@
               "properties" : 
               { "uuid" : 
                 { "title" : "Resource Universally Unique Identifier",
-                  "description" : "A globally unique identifier that can be used to reference this defined resource elsewhere in an OSCAL document. A UUID should be consistently used for a given resource across revisions of the document.",
+                  "description" : "A machine-oriented, globally unique identifier with cross-instance scope that can be used to reference this defined resource elsewhere in this or other OSCAL instances. This UUID should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.",
                   "type" : "string",
                   "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
                 "title" : 
@@ -745,7 +747,7 @@
             "pattern" : "^[_A-Za-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD][_A-Za-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD\\-\\.0-9\\u00B7\\u0300-\\u036F\\u203F-\\u2040]*$" },
           "uuid" : 
           { "title" : "Property Universally Unique Identifier",
-            "description" : "A unique identifier that can be used to reference this property elsewhere in an OSCAL document. A UUID should be consistently used for a given location across revisions of the document.",
+            "description" : "A machine-oriented, globally unique identifier with cross-instance scope that can be used to reference this defined property elsewhere in this or other OSCAL instances. This UUID should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.",
             "type" : "string",
             "pattern" : "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$" },
           "ns" : 
@@ -805,7 +807,7 @@
         "properties" : 
         { "role-id" : 
           { "title" : "Responsible Role",
-            "description" : "The role that the party is responsible for.",
+            "description" : "A human-oriented identifier reference to roles served by the user.",
             "type" : "string",
             "pattern" : "^[_A-Za-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD][_A-Za-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD\\-\\.0-9\\u00B7\\u0300-\\u036F\\u203F-\\u2040]*$" },
           "party-uuids" : 
@@ -837,7 +839,7 @@
         "properties" : 
         { "role-id" : 
           { "title" : "Responsible Role ID",
-            "description" : "The role that is responsible for the business function.",
+            "description" : "A human-oriented identifier reference to roles responsible for the business function.",
             "type" : "string",
             "pattern" : "^[_A-Za-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD][_A-Za-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD\\-\\.0-9\\u00B7\\u0300-\\u036F\\u203F-\\u2040]*$" },
           "props" : 
@@ -976,7 +978,7 @@
         "pattern" : "^\\S(.*\\S)?$" },
       "oscal-catalog-oscal-metadata:document-id" : 
       { "title" : "Document Identifier",
-        "description" : "A document identifier qualified by an identifier scheme. A document identifier provides a globally unique identifier for a group of documents that are to be treated as different versions of the same document. If this element does not appear, or if the value of this element is empty, the value of \"document-id\" is equal to the value of the \"uuid\" flag of the top-level root element.",
+        "description" : "A document identifier qualified by an identifier scheme. A document identifier provides a globally unique identifier with a cross-instance scope that is used for a group of documents that are to be treated as different versions of the same document. If this element does not appear, or if the value of this element is empty, the value of \"document-id\" is equal to the value of the \"uuid\" flag of the top-level root element.",
         "$id" : "#field_oscal-metadata_document-id",
         "type" : "object",
         "properties" : 
