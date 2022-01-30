@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="../../build/metaschema/toolchains/xslt-M4/validate/metaschema-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-model href="../../build/metaschema/toolchains/xslt-M4/validate/metaschema-composition-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <!DOCTYPE METASCHEMA [
    <!ENTITY allowed-values-control-group-property-name SYSTEM "./shared-constraints/allowed-values-control-group-property-name.ent">
 ]>
@@ -22,8 +22,9 @@
             <description>Each OSCAL profile is defined by a Profile element</description>
             <root-name>profile</root-name>
             <define-flag name="uuid" as-type="uuid" required="yes">
-                  <formal-name>Catalog Universally Unique Identifier</formal-name>
-                  <description>A globally unique identifier for this profile instance. This UUID should be changed when this document is revised.</description>
+                  <formal-name>Profile Universally Unique Identifier</formal-name>
+                  <!-- Identifier Declaration -->
+                  <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this profile elsewhere in <a href="/concepts/identifier-use/#profile-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>profile</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance).This identifier should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same profile across revisions of the document.</description>
             </define-flag>
             <model>
                   <assembly ref="metadata" min-occurs="1"/>
@@ -36,6 +37,7 @@
             </model>
             <remarks>
                   <p>An OSCAL document that describes a tailoring of controls from one or more catalogs, with possible modification of multiple controls. It provides mechanisms by which controls may be selected (<code>import</code>), merged or (re)structured (<code>merge</code>), and amended (<code>modify</code>). OSCAL profiles may select subsets of controls, set parameter values for them in application, and even adjust the representation of controls as given in and by a catalog. They may also serve as sources for further modification in and by other profiles, that import them.</p>
+                  <p>See the <a href="/concepts/identifier-use/">Concepts - Identifier Use</a> page for additional information regarding this identifier's uniqueness and scope.</p>
             </remarks>
       </define-assembly>
       <define-assembly name="import">
@@ -87,62 +89,60 @@
       </define-assembly>
       <define-assembly name="merge">
             <formal-name>Merge controls</formal-name>
-            <description>A Merge element merges controls in resolution.</description>
+            <description>A Merge element provides structuring directives that drive how controls are organized after resolution.</description>
             <model>
-                  <assembly ref="combine"/>
+                  <define-assembly name="combine">
+                        <formal-name>Combination rule</formal-name>
+                        <description>A Combine element defines whether and how to combine multiple (competing) versions of the same control</description>
+                        <define-flag name="method" as-type="string">
+                              <formal-name>Combination method</formal-name>
+                              <description>How clashing controls should be handled</description>
+                              <constraint>
+                                    <allowed-values>
+                                          <enum value="use-first">Use the first definition - the first control with a given ID is used; subsequent ones are discarded</enum>
+                                          <enum value="merge" deprecated="1.0.1">**(deprecated)** **(unspecified)** Merge - controls with the same ID are combined</enum>
+                                          <enum value="keep">Keep - controls with the same ID are kept, retaining the clash</enum>
+                                    </allowed-values>
+                              </constraint>
+                        </define-flag>
+                        <constraint>
+                              <expect id="expect-profile-combine-method-merge-unused" target="." test="not(exists(combine[@method='merge']))"/>
+                        </constraint>
+                        <remarks>
+                              <p>Whenever combining controls from multiple (import) pathways, an issue arises of what to do with clashing invocations (multiple competing versions of a control). </p>
+                              <p>This setting permits a profile designer to apply a rule for the resolution of such cases. In a well-designed profile, such collisions would ordinarily be avoided, but this setting can be useful for defining what to do when it occurs.</p>
+                        </remarks>
+                  </define-assembly>
                   <choice>
-                        <field ref="as-is"/>
-                        <assembly ref="flat"/>
-                        <assembly ref="custom"/>
+                        <define-assembly name="flat" min-occurs="1">
+                              <formal-name>Flat</formal-name>
+                              <description>Use the flat structuring method.</description>
+                        </define-assembly>
+                        <define-field name="as-is" as-type="boolean" min-occurs="1">
+                              <formal-name>As-Is Structuring Directive</formal-name>
+                              <description>An As-is element indicates that the controls should be structured in resolution as they are structured in their source catalogs. It does not contain any elements or attributes.</description>
+                        </define-field>
+                        <define-assembly name="custom">
+                              <formal-name>Custom grouping</formal-name>
+                              <description>A Custom element frames a structure for embedding represented controls in resolution.</description>
+                              <model>
+                                    <assembly ref="group" max-occurs="unbounded">
+                                          <group-as name="groups" in-json="ARRAY"/>
+                                    </assembly>
+                                    <assembly ref="insert-controls" max-occurs="unbounded">
+                                          <group-as name="insert-controls" in-json="ARRAY"/>
+                                    </assembly>
+                              </model>
+                              <remarks>
+                                    <p>The <code>custom</code> element represents a custom arrangement or organization of controls in the resolution of a catalog.</p>
+                                    <p>While the <code>as-is</code> element provides for a restitution of a control set's organization (in one or more source catalogs), this element permits the definition of an entirely different structure.</p>
+                              </remarks>
+                        </define-assembly>
                   </choice>
             </model>
             <remarks>
                   <p>The contents of the <code>merge</code> element may be used to <q>reorder</q> or <q>restructure</q> controls by indicating an order and/or structure in resolution.</p>
                   <p>Implicitly, a <code>merge</code> element is also a filter: controls that are included in a profile, but not included (implicitly or explicitly) in the scope of a <code>merge</code> element, will not be merged into (will be dropped) in the resulting resolution.</p>
-            </remarks>
-      </define-assembly>
-      <define-assembly name="combine">
-            <formal-name>Combination rule</formal-name>
-            <description>A Combine element defines whether and how to combine multiple (competing) versions of the same control</description>
-            <flag ref="method"/>
-            <remarks>
-                  <p>Whenever combining controls from multiple (import) pathways, an issue arises of what to do with clashing invocations (multiple competing versions of a control). </p>
-                  <p>This setting permits a profile designer to apply a rule for the resolution of such cases. In a well-designed profile, such collisions would ordinarily be avoided, but this setting can be useful for defining what to do when it occurs.</p>
-            </remarks>
-      </define-assembly>
-      <define-field name="as-is" as-type="boolean">
-            <formal-name>As is</formal-name>
-            <description>An As-is element indicates that the controls should be structured in resolution as they are structured in their source catalogs. It does not contain any elements or attributes.</description>
-      </define-field>
-      <define-assembly name="flat">
-            <formal-name>Flat</formal-name>
-            <description>A Flat element indicates that the controls should be structured in a completely flat list. It does not contain any elements or attributes.</description>
-      </define-assembly>
-      <define-flag name="method" as-type="string">
-            <formal-name>Combination method</formal-name>
-            <description>How clashing controls should be handled</description>
-            <constraint>
-                  <allowed-values>
-                        <enum value="use-first">Use the first definition - the first control with a given ID is used; subsequent ones are discarded</enum>
-                        <enum value="merge">Merge - controls with the same ID are combined</enum>
-                        <enum value="keep">Keep - controls with the same ID are kept, retaining the clash</enum>
-                  </allowed-values>
-            </constraint>
-      </define-flag>
-      <define-assembly name="custom">
-            <formal-name>Custom grouping</formal-name>
-            <description>A Custom element frames a structure for embedding represented controls in resolution.</description>
-            <model>
-                  <assembly ref="group" max-occurs="unbounded">
-                        <group-as name="groups" in-json="ARRAY"/>
-                  </assembly>
-                  <assembly ref="insert-controls" max-occurs="unbounded">
-                        <group-as name="insert-controls" in-json="ARRAY"/>
-                  </assembly>
-            </model>
-            <remarks>
-                  <p>The <code>custom</code> element represents a custom arrangement or organization of controls in the resolution of a catalog.</p>
-                  <p>While the <code>as-is</code> element provides for a restitution of a control set's organization (in one or more source catalogs), this element permits the definition of an entirely different structure.</p>
             </remarks>
       </define-assembly>
       <define-assembly name="group">
@@ -151,7 +151,8 @@
             <define-flag name="id" as-type="token">
                   <!-- This is an id because the idenfier is assigned and managed externally by humans. -->
                   <formal-name>Group Identifier</formal-name>
-                  <description>A unique identifier for a specific group instance that can be used to reference the group within this and in other OSCAL documents. This identifier's uniqueness is document scoped and is intended to be consistent for the same group across minor revisions of the document.</description>
+                  <!-- Identifier Declaration -->
+                  <description>A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a>, <a href="/concepts/identifier-use/#locally-unique">locally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined group elsewhere in <a href="/concepts/identifier-use/#profile-identifiers">this or other OSCAL instances</a>. When referenced from another OSCAL instance, this identifier must be referenced in the context of the containing resource (e.g., import-profile). This id should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same group across revisions of the document.</description>
             </define-flag>
             <define-flag name="class" as-type="token">
                   <formal-name>Group Class</formal-name>
@@ -202,7 +203,8 @@
                         <define-flag required="yes" name="param-id" as-type="token">
                               <!-- This is an id because the idenfier is assigned and managed by humans. -->
                               <formal-name>Parameter ID</formal-name>
-                              <description>Indicates the value of the 'id' flag on a target parameter; i.e. which parameter to set</description>
+                              <!-- Identifier Declaration -->
+                              <description>A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a>, <a href="/concepts/identifier-use/#locally-unique">locally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined parameter elsewhere in <a href="/concepts/identifier-use/#profile-identifiers">this or other OSCAL instances</a>. When referenced from another OSCAL instance, this identifier must be referenced in the context of the containing resource (e.g., import-profile). This id should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
                         </define-flag>
                         <define-flag name="class" as-type="token">
                               <formal-name>Parameter Class</formal-name>
@@ -211,7 +213,10 @@
                                     <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of a specific <code>class</code> value.</p>
                               </remarks>
                         </define-flag>
-                        <flag ref="depends-on"/>
+                        <define-flag name="depends-on" as-type="token" deprecated="1.0.1">
+                              <formal-name>Depends on</formal-name>
+                              <description>**(deprecated)** Another parameter invoking this one. This construct has been deprecated and should not be used.</description>
+                        </define-flag>
                         <model>
                               <assembly ref="property" max-occurs="unbounded">
                                     <group-as name="props" in-json="ARRAY"/>
@@ -251,14 +256,6 @@
                                     </assembly>
                               </choice>
                         </model>
-                        <constraint>
-                              <is-unique id="unique-profile-modify-set-parameter" target="set-parameter">
-                                    <key-field target="@param-id"/>
-                                    <remarks>
-                                          <p>Since multiple <code>set-parameter</code> entries can be provided, each parameter must be set only once.</p>
-                                    </remarks>
-                              </is-unique>
-                        </constraint>
                   </define-assembly>
                   <assembly ref="alter" max-occurs="unbounded">
                         <group-as name="alters" in-json="ARRAY"/>
@@ -341,7 +338,7 @@
       <define-assembly name="alter">
             <formal-name>Alteration</formal-name>
             <description>An Alter element specifies changes to be made to an included control when a profile is resolved.</description>
-            <flag ref="control-id"/>
+            <flag ref="control-id" required="yes"/>
             <model>
                   <assembly ref="remove" max-occurs="unbounded">
                         <group-as name="removes" in-json="ARRAY"/>
