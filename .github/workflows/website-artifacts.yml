@@ -3,6 +3,7 @@ on:
     branches:
       - main
       - develop
+      - release-**
     tags:
       - "v*"
     paths:
