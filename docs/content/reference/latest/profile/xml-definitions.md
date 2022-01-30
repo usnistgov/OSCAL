@@ -1,6 +1,6 @@
 ---
-title: "OSCAL Profile Model v1.0.1 XML Format Metaschema Reference"
-heading: "Profile Model v1.0.1 XML Metaschema Reference"
+title: "OSCAL Profile Model v XML Format Metaschema Reference"
+heading: "Profile Model v XML Metaschema Reference"
 weight: 80
 generateanchors: false
 sidenav:

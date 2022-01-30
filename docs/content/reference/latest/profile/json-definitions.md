@@ -1,6 +1,6 @@
 ---
-title: "OSCAL Profile Model v1.0.1 JSON Format Metaschema Reference"
-heading: "Profile Model v1.0.1 Model JSON Metaschema Reference"
+title: "OSCAL Profile Model v JSON Format Metaschema Reference"
+heading: "Profile Model v Model JSON Metaschema Reference"
 weight: 40
 generateanchors: false
 sidenav:

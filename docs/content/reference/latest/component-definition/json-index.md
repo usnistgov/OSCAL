@@ -1,6 +1,6 @@
 ---
-title: "OSCAL Component Definition Model v1.0.1 JSON Format Index"
-heading: "Component Definition Model v1.0.1 JSON Format Index"
+title: "OSCAL Component Definition Model v JSON Format Index"
+heading: "Component Definition Model v JSON Format Index"
 weight: 30
 generateanchors: false
 sidenav:
