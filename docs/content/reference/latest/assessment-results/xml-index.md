@@ -1,6 +1,6 @@
 ---
-title: "OSCAL Assessment Results Model v XML Format Index"
-heading: "Assessment Results Model v XML Format Index"
+title: "OSCAL Assessment Results Model v1.0.1 XML Format Index"
+heading: "Assessment Results Model v1.0.1 XML Format Index"
 weight: 70
 generateanchors: false
 sidenav:

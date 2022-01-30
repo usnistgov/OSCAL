@@ -1,6 +1,6 @@
 ---
-title: "OSCAL Plan of Action and Milestones Model v JSON Format Outline"
-heading: "Plan of Action and Milestones Model v JSON Format Outline"
+title: "OSCAL Plan of Action and Milestones Model v1.0.1 JSON Format Outline"
+heading: "Plan of Action and Milestones Model v1.0.1 JSON Format Outline"
 custom_js:
   - "/js/oscal-metaschema-map-expander.js"
 weight: 10
