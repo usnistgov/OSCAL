@@ -71,6 +71,10 @@ jobs:
         with:
           path: ${{ env.OSCAL_HOME }}
           submodules: recursive
+      - name: Fetch tags
+        run: |
+          cd ${{ env.OSCAL_HOME }}
+          git pull --tags
       # Setup runtime environment
       # -------------------------
       # Operating System packages
