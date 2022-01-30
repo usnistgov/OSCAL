@@ -58,7 +58,7 @@ The following outline is a representation of the [JSON format](https://github.co
                                  <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/metadata/revisions/last-modified">last-modified</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#datetime-with-timezone">dateTime-with-timezone</a></span><span class="OM-lit">,</span></p>
                               </div>
                               <div class="OM-entry">
-                                 <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/metadata/revisions/version">version</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
+                                 <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/metadata/revisions/version">version</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
                               </div>
                               <div class="OM-entry">
                                  <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/metadata/revisions/oscal-version">oscal-version</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
@@ -6909,7 +6909,7 @@ The following outline is a representation of the [JSON format](https://github.co
                            <p><span class="OM-lit">], </span></p>
                         </details>
                         <div class="OM-entry">
-                           <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/poam-items/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span></p>
+                           <p class="OM-line"><a class="OM-name" href="../json-reference/#/plan-of-action-and-milestones/poam-items/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
                         </div>
                      </div>
                      <p><span class="OM-lit"> }</span></p>
