@@ -1,6 +1,6 @@
 ---
-title: "OSCAL Profile Model v1.0.1 JSON Format Outline"
-heading: "Profile Model v1.0.1 JSON Format Outline"
+title: "OSCAL Profile Model v JSON Format Outline"
+heading: "Profile Model v JSON Format Outline"
 custom_js:
   - "/js/oscal-metaschema-map-expander.js"
 weight: 10

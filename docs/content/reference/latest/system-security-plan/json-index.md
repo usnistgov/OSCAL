@@ -1,6 +1,6 @@
 ---
-title: "OSCAL System Security Plan Model v1.0.1 JSON Format Index"
-heading: "System Security Plan Model v1.0.1 JSON Format Index"
+title: "OSCAL System Security Plan Model v JSON Format Index"
+heading: "System Security Plan Model v JSON Format Index"
 weight: 30
 generateanchors: false
 sidenav:

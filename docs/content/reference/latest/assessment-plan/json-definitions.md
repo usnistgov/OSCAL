@@ -1,6 +1,6 @@
 ---
-title: "OSCAL Assessment Plan Model v1.0.1 JSON Format Metaschema Reference"
-heading: "Assessment Plan Model v1.0.1 Model JSON Metaschema Reference"
+title: "OSCAL Assessment Plan Model v JSON Format Metaschema Reference"
+heading: "Assessment Plan Model v Model JSON Metaschema Reference"
 weight: 40
 generateanchors: false
 sidenav:

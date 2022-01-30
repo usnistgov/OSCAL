@@ -1,6 +1,6 @@
 ---
-title: "OSCAL Profile Model v1.0.1 JSON Format Reference"
-heading: "Profile Model v1.0.1 JSON Format Reference"
+title: "OSCAL Profile Model v JSON Format Reference"
+heading: "Profile Model v JSON Format Reference"
 weight: 20
 generateanchors: false
 sidenav:
