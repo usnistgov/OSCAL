@@ -6,6 +6,7 @@
    <!ENTITY allowed-values-control-group-property-name SYSTEM "shared-constraints/allowed-values-control-group-property-name.ent">
 ]>
 <METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns:meta="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
       xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/toolchains/xslt-M4/validate/metaschema.xsd">
       <schema-name>OSCAL Control Catalog Model</schema-name>
       <schema-version>1.0.0</schema-version>
@@ -199,8 +200,8 @@
                         <enum value="overview">An introduction to a control or a group of controls.</enum>
                         <enum value="statement">A set of control implementation requirements.</enum>
                         <enum value="guidance">Additional information to consider when selecting, implementing, assessing, and monitoring a control.</enum>
-                        <enum value="assessment">(deprecated) Use 'assessment-method' instead.</enum>
-                        <enum value="assessment-method">The part describes a method-based assessment over a set of assessment objects.</enum>
+                        <enum value="assessment" deprecated="1.0.1">**(deprecated)** Use 'assessment-method' instead.</enum>
+                        <enum value="assessment-method" deprecated="1.0.1">The part describes a method-based assessment over a set of assessment objects.</enum>
                   </allowed-values>
                   <allowed-values target="part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='statement']//part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
                         <enum value="item">An individual item within a control statement.</enum>
@@ -209,14 +210,14 @@
                         </remarks>
                   </allowed-values>
                   <allowed-values target=".//part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
-                        <enum value="objective">(deprecated) Use 'assessment-objective' instead.</enum>
+                        <enum value="objective" deprecated="1.0.1">**(deprecated)** Use 'assessment-objective' instead.</enum>
                         <enum value="assessment-objective">The part describes a set of assessment objectives.</enum>
                         <remarks>
                               <p>Objectives can be nested.</p>
                         </remarks>
                   </allowed-values>
                   <allowed-values target="part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('assessment','assessment-method')]/part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
-                        <enum value="objects">(deprecated) Use 'assessment-objects' instead.</enum>
+                        <enum value="objects" deprecated="1.0.1">**(deprecated)** Use 'assessment-objects' instead.</enum>
                         <enum value="assessment-objects">Provides a listing of assessment objects.</enum>
                         <remarks>
                               <p>Assessment objects appear on assessment methods.</p>
@@ -224,7 +225,7 @@
                   </allowed-values>
                   
                   <allowed-values target="part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('assessment','assessment-method')]/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
-                        <enum value="method">(deprecated) Use 'method' in the 'http://csrc.nist.gov/ns/rmf' namespace. The assessment method to use. This typically appears on parts with the name "assessment".</enum>
+                        <enum value="method" deprecated="1.0.1">**(deprecated)** Use 'method' in the 'http://csrc.nist.gov/ns/rmf' namespace. The assessment method to use. This typically appears on parts with the name "assessment".</enum>
                   </allowed-values>
                   <allowed-values target="part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('assessment','assessment-method')]/prop[has-oscal-namespace('http://csrc.nist.gov/ns/rmf')]/@name">
                         <enum value="method">The assessment method to use. This typically appears on parts with the name "assessment".</enum>

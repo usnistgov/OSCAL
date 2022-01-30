@@ -113,7 +113,10 @@
                                 <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of a specific <code>class</code> value.</p>
                         </remarks>
                 </define-flag>
-                <flag ref="depends-on"/>
+                <define-flag name="depends-on" as-type="token" deprecated="1.0.1">
+                        <formal-name>Depends on</formal-name>
+                        <description>**(deprecated)** Another parameter invoking this one. This construct has been deprecated and should not be used.</description>
+                </define-flag>
                 <model>
                         <assembly ref="property" max-occurs="unbounded">
                                 <group-as name="props" in-json="ARRAY"/>
@@ -169,6 +172,9 @@
                         <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/rmf')]/@name">
                                 <enum value="aggregates">The parent parameter provides an aggregation of 2 or more other parameters, each described by this property.</enum>
                         </allowed-values>
+                        <expect target="." test="not(exists(@depends-on))">
+                                <message>depends-on is deprecated</message>
+                        </expect>
                 </constraint>
                 <remarks>
                         <p>In a catalog, a parameter is typically used as a placeholder for the future assignment of a parameter value, although the OSCAL model allows for the direct assignment of a value if desired by the control author. The <code>value</code> may be optionally used to specify one or more values. If no value is provided, then it is expected that the value will be provided at the Profile or Implementation layer.</p>
@@ -247,11 +253,6 @@
                         <p>A set of parameter value choices, that may be picked from to set the parameter value.</p>
                 </remarks>
         </define-assembly>
-        <define-flag name="depends-on" as-type="token">
-                <!-- TODO: Work out cross-reference constraints -->
-                <formal-name>Depends on</formal-name>
-                <description>Another parameter invoking this one</description>
-        </define-flag>
         <define-flag name="control-id" as-type="token">
                 <formal-name>Control Identifier Reference</formal-name>
                 <!-- Identifier Reference -->

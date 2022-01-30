@@ -87,7 +87,7 @@
     <define-assembly name="poam-item">
         <formal-name>POA&amp;M Item</formal-name>
         <description>Describes an individual POA&amp;M item.</description>
-        <define-flag name="uuid" required="no" as-type="uuid">
+        <define-flag name="uuid" as-type="uuid">
             <formal-name>POA&amp;M Item Universally Unique Identifier</formal-name>
             <!-- Identifier Declaration -->
             <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#instance">instance</a> scope that can be used to reference this POA&amp;M item entry in <a href="/concepts/identifier-use/#poam-identifiers">this OSCAL instance</a>. This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
@@ -152,5 +152,10 @@
             </define-assembly>
             <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
         </model>
+        <constraint>
+            <expect level="WARNING" target="." test="@uuid">
+                <message>It is a best practice to provide a UUID.</message>
+            </expect>
+        </constraint>
     </define-assembly>
 </METASCHEMA>
