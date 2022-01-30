@@ -1,6 +1,6 @@
 ---
-title: "OSCAL Complete v JSON Format Metaschema Reference"
-heading: "Complete v Model JSON Metaschema Reference"
+title: "OSCAL Complete v1.0.1 JSON Format Metaschema Reference"
+heading: "Complete v1.0.1 Model JSON Metaschema Reference"
 weight: 40
 generateanchors: false
 sidenav:

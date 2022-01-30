@@ -1,6 +1,6 @@
 ---
-title: "OSCAL Complete v XML Format Metaschema Reference"
-heading: "Complete v XML Metaschema Reference"
+title: "OSCAL Complete v1.0.1 XML Format Metaschema Reference"
+heading: "Complete v1.0.1 XML Metaschema Reference"
 weight: 80
 generateanchors: false
 sidenav:

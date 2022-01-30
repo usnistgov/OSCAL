@@ -1,6 +1,6 @@
 ---
-title: "OSCAL Profile Model v XML Format Index"
-heading: "Profile Model v XML Format Index"
+title: "OSCAL Profile Model v1.0.1 XML Format Index"
+heading: "Profile Model v1.0.1 XML Format Index"
 weight: 70
 generateanchors: false
 sidenav:

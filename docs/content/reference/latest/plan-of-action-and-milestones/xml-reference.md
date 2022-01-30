@@ -1,6 +1,6 @@
 ---
-title: "OSCAL Plan of Action and Milestones Model v XML Format Reference"
-heading: "Plan of Action and Milestones Model v XML Format Reference"
+title: "OSCAL Plan of Action and Milestones Model v1.0.1 XML Format Reference"
+heading: "Plan of Action and Milestones Model v1.0.1 XML Format Reference"
 weight: 60
 generateanchors: false
 sidenav:
