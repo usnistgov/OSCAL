@@ -100,7 +100,7 @@
                               <constraint>
                                     <allowed-values>
                                           <enum value="use-first">Use the first definition - the first control with a given ID is used; subsequent ones are discarded</enum>
-                                          <enum value="merge">**(deprecated)** **(unspecified)** Merge - controls with the same ID are combined</enum>
+                                          <enum value="merge" deprecated="1.0.1">**(deprecated)** **(unspecified)** Merge - controls with the same ID are combined</enum>
                                           <enum value="keep">Keep - controls with the same ID are kept, retaining the clash</enum>
                                     </allowed-values>
                               </constraint>
@@ -213,7 +213,10 @@
                                     <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of a specific <code>class</code> value.</p>
                               </remarks>
                         </define-flag>
-                        <flag ref="depends-on"/>
+                        <define-flag name="depends-on" as-type="token" deprecated="1.0.1">
+                              <formal-name>Depends on</formal-name>
+                              <description>**(deprecated)** Another parameter invoking this one. This construct has been deprecated and should not be used.</description>
+                        </define-flag>
                         <model>
                               <assembly ref="property" max-occurs="unbounded">
                                     <group-as name="props" in-json="ARRAY"/>

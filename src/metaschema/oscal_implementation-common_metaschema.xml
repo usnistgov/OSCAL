@@ -270,6 +270,11 @@
                         <group-as name="port-ranges" in-json="ARRAY"/>
                   </assembly>
             </model>
+            <constraint>
+                  <expect level="WARNING" target="." test="@uuid">
+                        <message>It is a best practice to provide a UUID.</message>
+                  </expect>
+            </constraint>
       </define-assembly>
       <define-assembly name="port-range">
             <formal-name>Port Range</formal-name>

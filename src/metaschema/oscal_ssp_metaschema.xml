@@ -281,6 +281,11 @@
             </model>
           </define-assembly>
         </model>
+        <constraint>
+          <expect level="WARNING" target="." test="@uuid">
+            <message>It is a best practice to provide a UUID.</message>
+          </expect>
+        </constraint>
       </define-assembly>
     </model>
     <constraint>
