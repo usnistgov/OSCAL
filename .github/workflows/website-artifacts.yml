@@ -58,6 +58,7 @@ jobs:
           path: ${{ env.OSCAL_HOME }}
           submodules: recursive
           token: ${{ secrets.COMMIT_TOKEN }}
+          fetch-depth: 0
       - name: Get latest from repo
         if: ${{ github.repository == env.HOME_REPO && github.ref == format('refs/heads/{0}',env.HOME_BRANCH) && github.event_name == 'push' }}
         # This will ensure that any files committed by the previous job, will be updated
@@ -71,10 +72,6 @@ jobs:
         with:
           path: ${{ env.OSCAL_HOME }}
           submodules: recursive
-      - name: Fetch tags
-        run: |
-          cd ${{ env.OSCAL_HOME }}
-          git pull --tags
       # Setup runtime environment
       # -------------------------
       # Operating System packages
