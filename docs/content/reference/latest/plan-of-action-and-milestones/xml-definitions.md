@@ -1,6 +1,6 @@
 ---
-title: "OSCAL Plan of Action and Milestones Model v XML Format Metaschema Reference"
-heading: "Plan of Action and Milestones Model v XML Metaschema Reference"
+title: "OSCAL Plan of Action and Milestones Model v1.0.1 XML Format Metaschema Reference"
+heading: "Plan of Action and Milestones Model v1.0.1 XML Metaschema Reference"
 weight: 80
 generateanchors: false
 sidenav:

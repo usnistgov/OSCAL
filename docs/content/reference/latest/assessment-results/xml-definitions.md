@@ -1,6 +1,6 @@
 ---
-title: "OSCAL Assessment Results Model v XML Format Metaschema Reference"
-heading: "Assessment Results Model v XML Metaschema Reference"
+title: "OSCAL Assessment Results Model v1.0.1 XML Format Metaschema Reference"
+heading: "Assessment Results Model v1.0.1 XML Metaschema Reference"
 weight: 80
 generateanchors: false
 sidenav:
