@@ -1,6 +1,6 @@
 
   { "$schema" : "http://json-schema.org/draft-07/schema#",
-    "$id" : "http://csrc.nist.gov/ns/oscal/1.0.0/oscal-poam-schema.json",
+    "$id" : "http://csrc.nist.gov/ns/oscal/1.0.1/oscal-poam-schema.json",
     "$comment" : "OSCAL Plan of Action and Milestones (POA&M) Model: JSON Schema",
     "type" : "object",
     "definitions" : 
