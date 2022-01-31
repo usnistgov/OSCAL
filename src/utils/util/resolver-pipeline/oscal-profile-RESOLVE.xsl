@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="3.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:opr="http://csrc.nist.gov/ns/oscal/profile-resolution"
+    xmlns:u="http://csrc.nist.gov/ns/uuid"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     exclude-result-prefixes="#all"
-    xmlns:javaUUID="java.util.UUID"
-    xmlns:r="http://csrc.nist.gov/ns/random"
     xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
 
     <!--
@@ -22,8 +21,10 @@
 
     <xsl:output method="xml" indent="yes"/>
 
-    <xsl:import href="random-util.xsl"/>
-    
+    <!-- uuid-method-choice.xsl has global parameters
+        $uuid-method, $top-uuid, and $uuid-service. -->
+    <xsl:import href="uuid-method-choice.xsl"/>
+
     <xsl:strip-space
         elements="catalog group control param guideline select part
         metadata back-matter annotation party person org rlink address resource role responsible-party citation
@@ -35,36 +36,8 @@
 
     <xsl:param name="trace" as="xs:string">off</xsl:param>
     
-    <!-- Provide a top-level UUID for the result catalog as $assign-uuid,
-         or assign-uuid=make-uuid for a native (XSLT 3.0) function call. -->
-    <xsl:param name="assign-uuid" as="xs:string?"/>
-    <!-- Alternatively, call a web site if the processor supports it -->
-    <xsl:param name="uuid-service" select="'https://www.uuidgenerator.net/api/version4'"/>
-    
-    <!-- For checking a UUID before assigning it. -->
-    <xsl:variable name="uuid-v4-regex" as="xs:string">^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$</xsl:variable>
-    
     <xsl:param name="uri-stack" as="xs:anyURI*" select="()"/>
-
-    <xsl:variable name="use-uuid" as="xs:string">
-        <xsl:choose>
-            <xsl:when test="matches($assign-uuid,$uuid-v4-regex)">
-                <xsl:sequence select="$assign-uuid"/>
-            </xsl:when>
-            <xsl:when use-when="function-available('random-number-generator')" test="$assign-uuid = 'make-uuid'">
-                <!-- seed splices a timestamp with a given @uuid -->
-                <xsl:sequence select="r:make-uuid( /*/@uuid || '-' || replace( string(current-dateTime()),'\D','') )"/>
-            </xsl:when>
-            <xsl:when use-when="function-available('javaUUID:randomUUID')" test="function-available('javaUUID:randomUUID')">
-                <xsl:sequence select="javaUUID:randomUUID()"/>
-            </xsl:when>
-            <xsl:when test="unparsed-text-available($uuid-service)">
-                <xsl:sequence select="unparsed-text($uuid-service)"/>
-            </xsl:when>
-            <xsl:otherwise>00000000-0000-4000-B000-000000000000</xsl:otherwise>
-        </xsl:choose>
-    </xsl:variable>
-
+    
     <!-- $path-to-source should point back to the location of the source catalog (or profile) from its result,
          so '..' is appropriate when writing results down a directory. -->
     <xsl:param name="path-to-source" as="xs:string?"/>
@@ -72,6 +45,10 @@
     <xsl:variable name="louder" select="$trace = 'on'"/>
 
     <xsl:param name="home" select="/"/>
+
+    <!-- If true, do not record profile URI in output catalog's source-profile
+        metadata, due to privacy or security concerns. -->
+    <xsl:param name="hide-source-profile-uri" as="xs:boolean" select="false()"/>
 
     <!-- The $transformation-sequence declares transformations to be applied in order. -->
     <xsl:variable name="transformation-sequence">
@@ -109,8 +86,10 @@
     <xsl:template mode="opr:provide-parameters" match="opr:transform"/>
     
     <xsl:template mode="opr:provide-parameters" match="opr:transform[.='oscal-profile-resolve-metadata.xsl']">
-        <!-- Since the fallback is not a valid URI the processor will try Java -->
-        <xsl:map-entry key="QName('','assign-uuid')" select="$use-uuid"/>
+        <xsl:map-entry key="QName('','top-uuid-computed')">
+            <xsl:call-template name="u:determine-uuid"/>
+        </xsl:map-entry>
+        <xsl:map-entry key="QName('','hide-source-profile-uri')" select="$hide-source-profile-uri"/>
     </xsl:template>
     
     <!-- for opr:transformation, the semantics are "apply this XSLT" -->
