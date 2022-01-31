@@ -5,11 +5,11 @@
            xmlns:oscal-prose="http://csrc.nist.gov/ns/oscal/1.0"
            elementFormDefault="qualified"
            targetNamespace="http://csrc.nist.gov/ns/oscal/1.0"
-           version="1.0.0">
+           version="1.0.1">
    <xs:annotation>
       <xs:appinfo>
          <m:schema-name>OSCAL Control Catalog Model</m:schema-name>
-         <m:schema-version>1.0.0</m:schema-version>
+         <m:schema-version>1.0.1</m:schema-version>
          <m:short-name>oscal-catalog</m:short-name>
          <m:remarks>
             <p>The OSCAL Control Catalog format can be used to describe a collection of security controls and related control enhancements, along with contextualizing documentation and metadata. The root of the Control Catalog format is <code>catalog</code>. </p>
