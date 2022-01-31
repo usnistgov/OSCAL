@@ -12,7 +12,7 @@ If you are interested in contributing to the development of OSCAL, refer to the 
 
 ## Project Status
 
-OSCAL [1.0.1](https://github.com/usnistgov/OSCAL/releases) was released on ne 7, 2021January 30, 2022. There are also [release notes](https://pages.nist.gov/OSCAL/reference/release-notes/) containing a summary of changes in this and previous releases.
+OSCAL [1.0.1](https://github.com/usnistgov/OSCAL/releases) was released on January 30th, 2022. There are also [release notes](https://pages.nist.gov/OSCAL/reference/release-notes/) containing a summary of changes in this and previous releases.
 
 These changes were made based on all the excellent feedback we received from the OSCAL community. The NIST OSCAL team is very thankful for all of the great feedback we have received.
 
