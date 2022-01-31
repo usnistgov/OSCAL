@@ -1,6 +1,6 @@
 
   { "$schema" : "http://json-schema.org/draft-07/schema#",
-    "$id" : "http://csrc.nist.gov/ns/oscal/1.0.0/oscal-catalog-schema.json",
+    "$id" : "http://csrc.nist.gov/ns/oscal/1.0.1/oscal-catalog-schema.json",
     "$comment" : "OSCAL Control Catalog Model: JSON Schema",
     "type" : "object",
     "definitions" : 
