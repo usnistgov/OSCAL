@@ -73,7 +73,7 @@
                         <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
             &allowed-values-control-group-property-name;
                         </allowed-values>
-                        <allowed-values target=".[@name='assessment']/prop/@name" allow-other="yes">
+<!--                        <allowed-values target=".[@name='assessment']/prop/@name" allow-other="yes">
                                 <enum value="method">The assessment method to use. This typically appears on parts with the name "assessment".</enum>
                         </allowed-values>
                         <has-cardinality target=".[@name='assessment']/prop[@name='method']" min-occurs="1"/>
@@ -82,7 +82,7 @@
                                 <enum value="EXAMINE">The process of reviewing, inspecting, observing, studying, or analyzing one or more assessment objects (i.e., specifications, mechanisms, or activities).</enum>
                                 <enum value="TEST">The process of exercising one or more assessment objects (i.e., activities or mechanisms) under specified conditions to compare actual with expected behavior.</enum>
                         </allowed-values>
-                </constraint>
+-->                </constraint>
                 <remarks>
                         <p>A <code>part</code> provides for logical partitioning of prose, and can be thought of as a grouping structure (e.g., section). A <code>part</code> can have child parts allowing for arbitrary nesting of prose content (e.g., statement hierarchy). A <code>part</code> can contain <code>prop</code> objects that allow for enriching prose text with structured name/value information.</p>
                         <p>A <code>part</code> can be assigned an optional <code>id</code>, which allows for internal and external references to the textual concept contained within a <code>part</code>. A <code>id</code> provides a means for an OSCAL profile, or a higher layer OSCAL model to reference a specific part within a <code>catalog</code>. For example, an <code>id</code> can be used to reference or to make modifications to a control statement in a profile.</p>
