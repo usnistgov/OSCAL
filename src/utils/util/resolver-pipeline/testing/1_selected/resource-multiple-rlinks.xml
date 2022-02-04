@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../../../../specifications/profile-resolution/example-checkup.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!-- Modified by conversion XSLT 2021-04-05T11:22:08.131-04:00 - RC2 OSCAL becomes RC3 OSCAL -->
+<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+         uuid="427f8c54-c3af-4ca3-a92c-f6abaa015ba5">
+   <metadata>
+      <title>Test Profile with Nonstandard File Name Extension in resource/rlink</title>
+      <last-modified>2020-05-30T14:39:37.3-04:00</last-modified>
+      <version>1.0</version>
+      <oscal-version>1.0.0-rc2</oscal-version>
+   </metadata>
+   <import href="#0050231f-4fd0-43d6-8fa0-431367cd83e1">
+      <include-all/>
+   </import>
+   <back-matter>
+      <resource uuid="0050231f-4fd0-43d6-8fa0-431367cd83e1">
+         <rlink href="catalog-nonstandard-file-name-ext.xmlcat" media-type="xml"/>
+         <rlink href="catalog-no-uuid.xml"/>
+      </resource>
+   </back-matter>
+</profile>
