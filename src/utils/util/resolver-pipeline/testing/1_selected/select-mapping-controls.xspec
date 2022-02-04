@@ -20,6 +20,7 @@
 
     <!-- SPEC QUESTION: What are the optional sections of <mapping>
         other than <controls>? Are groups, params, and parts among them?
+        https://github.com/usnistgov/OSCAL/discussions/1114
         When this is determined, tests can be added for those sections. -->
 
     <!-- Location of sample files, relative to compiled test in xspec/ subdirectory -->
@@ -52,7 +53,7 @@
                     <group opr:id="...">...</group>
                 </selection>
             </x:expect>
-            <x:expect label="opr:id of Control X1 has mapped ID after # (SPEC QUESTION: Is this the correct behavior?)"
+            <x:expect label="opr:id of Control X1 has mapped ID after #"
                 test="$x:result//o:title[.='Control X1']/parent::o:control/@opr:id ! substring-after(.,'#')"
                 select="'map-x1'"/>
         </x:scenario>
@@ -162,7 +163,7 @@
                     </mapping>
                 </import>
             </x:context>
-            <x:expect label="ID of Control X1 uses first value (SPEC QUESTION: is that the expected behavior?)"
+            <x:expect label="ID of Control X1 uses first value (SPEC QUESTION: is that the expected behavior? https://github.com/usnistgov/OSCAL/discussions/1115)"
                 test="$x:result//o:title[.='Control X1']/parent::o:control/@id/string()"
                 select="'map-x1'"/>
         </x:scenario>
@@ -180,7 +181,7 @@
                     </mapping>
                 </import>
             </x:context>
-            <x:expect label="ID of Control X1 uses 'to' value, ignoring subsequent mapping (SPEC QUESTION: is that the expected behavior?)"
+            <x:expect label="ID of Control X1 uses 'to' value, ignoring subsequent mapping (SPEC QUESTION: is that the expected behavior? https://github.com/usnistgov/OSCAL/discussions/1115)"
                 test="$x:result//o:title[.='Control X1']/parent::o:control/@id/string()"
                 select="'map-x1'"/>
         </x:scenario>
@@ -200,7 +201,7 @@
                     </mapping>
                 </import>
             </x:context>
-            <x:expect label="Control X1 is included (mapping occurs after exclusion logic) (SPEC QUESTION: is that the expected behavior?)"
+            <x:expect label="Control X1 is included (mapping occurs after exclusion logic) (SPEC QUESTION: is that the expected behavior? https://github.com/usnistgov/OSCAL/discussions/1116)"
                 test="exists($x:result//o:title[.='Control X1'])"/>
         </x:scenario>
         <x:scenario label="ID matches but mapping is not for controls">
