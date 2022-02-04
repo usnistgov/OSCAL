@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE x:description [
-<!ENTITY filedir "file:/C:/Users/wap1/Documents/usnistgov/OSCAL/src/specifications/profile-resolution/profile-resolution-examples/catalogs" >
+<!ENTITY filedir "../../../../../../../src/specifications/profile-resolution/profile-resolution-examples/catalogs" >
 ]>
 <x:description xmlns="http://csrc.nist.gov/ns/oscal/1.0"
     xmlns:opr="http://csrc.nist.gov/ns/oscal/profile-resolution"
@@ -101,7 +101,7 @@
                 </back-matter>
             </profile>
         </x:context>
-        <x:expect label="Select all controls, grouped">
+        <x:expect label="Control selected from XML remote resource, ignoring JSON resource">
             <profile>
                 <selection uuid="..." opr:src="...">
                     <metadata>
