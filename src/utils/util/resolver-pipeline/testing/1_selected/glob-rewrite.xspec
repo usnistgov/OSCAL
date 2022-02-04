@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE x:description [
-<!ENTITY filedir "file:/C:/Users/wap1/Documents/usnistgov/OSCAL/src/specifications/profile-resolution/profile-resolution-examples/catalogs" >
-]>
 <x:description xmlns="http://csrc.nist.gov/ns/oscal/1.0"
     xmlns:o="http://csrc.nist.gov/ns/oscal/1.0"
     xmlns:opr="http://csrc.nist.gov/ns/oscal/profile-resolution"
     xmlns:x="http://www.jenitennison.com/xslt/xspec"
     stylesheet="../../oscal-profile-resolve-select.xsl">
+    <x:scenario label="Tests for o:glob-as-regex function">
     <x:scenario label="Simple string">
         <x:call function="o:glob-as-regex">
             <x:param>ac</x:param>
@@ -30,5 +28,12 @@
             <x:param>ac-1(*)</x:param>
         </x:call>
         <x:expect label="Anchored and escaped with substitution" select="'^ac-1\(.*\)$'"/>
+        </x:scenario>
+        <x:scenario label="Empty string (degenerate case)">
+            <x:call function="o:glob-as-regex">
+                <x:param select="''"/>
+            </x:call>
+            <x:expect label="Anchored empty string" select="'^$'"/>
+        </x:scenario>
     </x:scenario>
 </x:description>
