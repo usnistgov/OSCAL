@@ -1,8 +1,9 @@
 # The Open Security Controls Assessment Language (OSCAL)
 
-NIST is developing OSCAL as a set of machine-readable data exchange formats, referred to as "OSCAL models" (https://pages.nist.gov/OSCAL/documentation/schema/). These models enable organizations to express and exchange detailed, security and privacy control-related information in an implementation neutral way that spans the needs of multiple industries and compliance regimes. NIST is facilitating the creation and maintenance of the core OSCAL models. These models are provided in Extensible Markup Language (XML), JavaScript Object Notation (JSON), and YAML Ain't Markup Language (YAML) formats that are synchronized allowing them to represent  the same information. OSCAL has been designed to be extended by other organizations to address industry-specific, compliance-specific, or organization-specific content.
+NIST is developing OSCAL as a set of machine-readable data exchange formats, referred to as "OSCAL models" (https://pages.nist.gov/OSCAL/concepts/layer/). These models enable organizations to express and exchange detailed, security and privacy control-related information in an implementation neutral way that spans the needs of multiple industries and compliance regimes. NIST is facilitating the creation and maintenance of the core OSCAL models. These models are provided in Extensible Markup Language (XML), JavaScript Object Notation (JSON), and YAML Ain't Markup Language (YAML) formats that are synchronized allowing them to represent  the same information. OSCAL has been designed to be extended by other organizations to address industry-specific, compliance-specific, or organization-specific content.
 
 More information about OSCAL can be found on the OSCAL Project Website: https://nist.gov/oscal.
+Documentation for the OSCAL models can be found at: https://pages.nist.gov/OSCAL/reference/
 
 # Release Contents
 

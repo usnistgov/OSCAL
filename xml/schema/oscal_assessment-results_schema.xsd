@@ -5,11 +5,11 @@
            xmlns:oscal-prose="http://csrc.nist.gov/ns/oscal/1.0"
            elementFormDefault="qualified"
            targetNamespace="http://csrc.nist.gov/ns/oscal/1.0"
-           version="1.0.0">
+           version="1.0.1">
    <xs:annotation>
       <xs:appinfo>
          <m:schema-name>OSCAL Assessment Results Model</m:schema-name>
-         <m:schema-version>1.0.0</m:schema-version>
+         <m:schema-version>1.0.1</m:schema-version>
          <m:short-name>oscal-ar</m:short-name>
          <m:remarks>
             <p>The OSCAL assessment results format is used to describe the information typically provided by an assessor following an assessment.</p>
@@ -88,10 +88,10 @@
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Assessment Results Universally Unique Identifier</m:formal-name>
-               <m:description>Uniquely identifies this assessment results file. This UUID must be changed each time the content of the results changes.</m:description>
+               <m:description>A <m:a>machine-oriented</m:a>, <m:a>globally unique</m:a> identifier with <m:a>cross-instance</m:a> scope that can be used to reference this assessment results instance in <m:a>this or other OSCAL instances</m:a>. The locally defined <m:em>UUID</m:em> of the <m:code>assessment result</m:code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <m:a>per-subject</m:a>, which means it should be consistently used to identify the same subject across revisions of the document.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>Assessment Results Universally Unique Identifier</b>: Uniquely identifies this assessment results file. This UUID must be changed each time the content of the results changes.</xs:documentation>
+               <b>Assessment Results Universally Unique Identifier</b>: A machine-oriented, globally unique identifier with cross-instance scope that can be used to reference this assessment results instance in this or other OSCAL instances. The locally defined UUID of the assessment result can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
@@ -343,10 +343,10 @@
                            <xs:annotation>
                               <xs:appinfo>
                                  <m:formal-name>Assessment Log Entry Universally Unique Identifier</m:formal-name>
-                                 <m:description>Uniquely identifies an assessment event. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. A UUID should be consistently used for this schedule across revisions of the document.</m:description>
+                                 <m:description>A <m:a>machine-oriented</m:a>, <m:a>globally unique</m:a> identifier with <m:a>cross-instance</m:a> scope that can be used to reference an assessment event in <m:a>this or other OSCAL instances</m:a>. The locally defined <m:em>UUID</m:em> of the <m:code>assessment log entry</m:code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <m:a>per-subject</m:a>, which means it should be consistently used to identify the same subject across revisions of the document.</m:description>
                               </xs:appinfo>
                               <xs:documentation>
-                                 <b>Assessment Log Entry Universally Unique Identifier</b>: Uniquely identifies an assessment event. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. A UUID should be consistently used for this schedule across revisions of the document.</xs:documentation>
+                                 <b>Assessment Log Entry Universally Unique Identifier</b>: A machine-oriented, globally unique identifier with cross-instance scope that can be used to reference an assessment event in this or other OSCAL instances. The locally defined UUID of the assessment log entry can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.</xs:documentation>
                            </xs:annotation>
                         </xs:attribute>
                      </xs:complexType>
@@ -386,10 +386,10 @@
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Results Universally Unique Identifier</m:formal-name>
-               <m:description>Uniquely identifies this set of results. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. Once assigned, a UUID should be consistently used for a given set of results across revisions.</m:description>
+               <m:description>A <m:a>machine-oriented</m:a>, <m:a>globally unique</m:a> identifier with <m:a>cross-instance</m:a> scope that can be used to reference this set of results in <m:a>this or other OSCAL instances</m:a>. The locally defined <m:em>UUID</m:em> of the <m:code>assessment result</m:code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <m:a>per-subject</m:a>, which means it should be consistently used to identify the same subject across revisions of the document.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>Results Universally Unique Identifier</b>: Uniquely identifies this set of results. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. Once assigned, a UUID should be consistently used for a given set of results across revisions.</xs:documentation>
+               <b>Results Universally Unique Identifier</b>: A machine-oriented, globally unique identifier with cross-instance scope that can be used to reference this set of results in this or other OSCAL instances. The locally defined UUID of the assessment result can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
@@ -454,10 +454,10 @@
                <xs:annotation>
                   <xs:appinfo>
                      <m:formal-name>Implementation Statement UUID</m:formal-name>
-                     <m:description>Identifies the implementation statement in the SSP to which this finding is related.</m:description>
+                     <m:description>A <m:a>machine-oriented</m:a> identifier reference to the implementation statement in the SSP to which this finding is related.</m:description>
                   </xs:appinfo>
                   <xs:documentation>
-                     <b>Implementation Statement UUID</b>: Identifies the implementation statement in the SSP to which this finding is related.</xs:documentation>
+                     <b>Implementation Statement UUID</b>: A machine-oriented identifier reference to the implementation statement in the SSP to which this finding is related.</xs:documentation>
                </xs:annotation>
                <xs:restriction base="oscal-ar:uuid"/>
             </xs:simpleType>
@@ -476,10 +476,10 @@
                   <xs:annotation>
                      <xs:appinfo>
                         <m:formal-name>Observation Universally Unique Identifier Reference</m:formal-name>
-                        <m:description>References an observation defined in the list of observations.</m:description>
+                        <m:description>A <m:a>machine-oriented</m:a> identifier reference to an observation defined in the list of observations.</m:description>
                      </xs:appinfo>
                      <xs:documentation>
-                        <b>Observation Universally Unique Identifier Reference</b>: References an observation defined in the list of observations.</xs:documentation>
+                        <b>Observation Universally Unique Identifier Reference</b>: A machine-oriented identifier reference to an observation defined in the list of observations.</xs:documentation>
                   </xs:annotation>
                </xs:attribute>
             </xs:complexType>
@@ -498,10 +498,10 @@
                   <xs:annotation>
                      <xs:appinfo>
                         <m:formal-name>Risk Universally Unique Identifier Reference</m:formal-name>
-                        <m:description>References an risk defined in the list of risks.</m:description>
+                        <m:description>A <m:a>machine-oriented</m:a> identifier reference to a risk defined in the list of risks.</m:description>
                      </xs:appinfo>
                      <xs:documentation>
-                        <b>Risk Universally Unique Identifier Reference</b>: References an risk defined in the list of risks.</xs:documentation>
+                        <b>Risk Universally Unique Identifier Reference</b>: A machine-oriented identifier reference to a risk defined in the list of risks.</xs:documentation>
                   </xs:annotation>
                </xs:attribute>
             </xs:complexType>
@@ -526,10 +526,10 @@
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Finding Universally Unique Identifier</m:formal-name>
-               <m:description>Uniquely identifies this finding. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. Once assigned, a UUID should be consistently used for a given finding across revisions.</m:description>
+               <m:description>A <m:a>machine-oriented</m:a>, <m:a>globally unique</m:a> identifier with <m:a>cross-instance</m:a> scope that can be used to reference this finding in <m:a>this or other OSCAL instances</m:a>. The locally defined <m:em>UUID</m:em> of the <m:code>finding</m:code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <m:a>per-subject</m:a>, which means it should be consistently used to identify the same subject across revisions of the document.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>Finding Universally Unique Identifier</b>: Uniquely identifies this finding. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. Once assigned, a UUID should be consistently used for a given finding across revisions.</xs:documentation>
+               <b>Finding Universally Unique Identifier</b>: A machine-oriented, globally unique identifier with cross-instance scope that can be used to reference this finding in this or other OSCAL instances. The locally defined UUID of the finding can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
@@ -701,7 +701,7 @@
                      maxOccurs="1"/>
          <xs:element name="version"
                      type="oscal-ar:oscal-metadata-version-FIELD"
-                     minOccurs="0"
+                     minOccurs="1"
                      maxOccurs="1"/>
          <xs:element name="oscal-version"
                      type="oscal-ar:oscal-metadata-oscal-version-FIELD"
@@ -810,10 +810,10 @@
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Location Universally Unique Identifier</m:formal-name>
-               <m:description>A unique identifier that can be used to reference this defined location elsewhere in an OSCAL document. A UUID should be consistently used for a given location across revisions of the document.</m:description>
+               <m:description>A <m:a>machine-oriented</m:a>, <m:a>globally unique</m:a> identifier with <m:a>cross-instance</m:a> scope that can be used to reference this defined location elsewhere in <m:a>this or other OSCAL instances</m:a>. The locally defined <m:em>UUID</m:em> of the <m:code>location</m:code> can be used to reference the data item locally or globally (e.g., from an importing OSCAL instance). This UUID should be assigned <m:a>per-subject</m:a>, which means it should be consistently used to identify the same subject across revisions of the document.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>Location Universally Unique Identifier</b>: A unique identifier that can be used to reference this defined location elsewhere in an OSCAL document. A UUID should be consistently used for a given location across revisions of the document.</xs:documentation>
+               <b>Location Universally Unique Identifier</b>: A machine-oriented, globally unique identifier with cross-instance scope that can be used to reference this defined location elsewhere in this or other OSCAL instances. The locally defined UUID of the location can be used to reference the data item locally or globally (e.g., from an importing OSCAL instance). This UUID should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
@@ -821,10 +821,10 @@
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Location Reference</m:formal-name>
-            <m:description>References a <m:code>location</m:code> defined in <m:code>metadata</m:code>. </m:description>
+            <m:description>A <m:a>machine-oriented</m:a> identifier reference to a <m:code>location</m:code> defined in the <m:code>metadata</m:code> section of this or another OSCAL instance. The <m:em>UUID</m:em> of the <m:code>location</m:code> in the source OSCAL instance is sufficient to reference the data item locally or globally (e.g., in an imported OSCAL instance). </m:description>
          </xs:appinfo>
          <xs:documentation>
-            <b>Location Reference</b>: References a location defined in metadata. </xs:documentation>
+            <b>Location Reference</b>: A machine-oriented identifier reference to a location defined in the metadata section of this or another OSCAL instance. The UUID of the location in the source OSCAL instance is sufficient to reference the data item locally or globally (e.g., in an imported OSCAL instance). </xs:documentation>
       </xs:annotation>
       <xs:restriction base="oscal-ar:uuid"/>
    </xs:simpleType>
@@ -921,10 +921,10 @@
                <xs:annotation>
                   <xs:appinfo>
                      <m:formal-name>Organizational Affiliation</m:formal-name>
-                     <m:description>Identifies that the party object is a member of the organization associated with the provided UUID.</m:description>
+                     <m:description>A <m:a>machine-oriented</m:a> identifier reference to another <m:code>party</m:code> (<m:code>person</m:code> or <m:code>organization</m:code>) that this subject is associated with. The <m:em>UUID</m:em> of the <m:code>party</m:code> in the source OSCAL instance is sufficient to reference the data item locally or globally (e.g., in an imported OSCAL instance). </m:description>
                   </xs:appinfo>
                   <xs:documentation>
-                     <b>Organizational Affiliation</b>: Identifies that the party object is a member of the organization associated with the provided UUID.</xs:documentation>
+                     <b>Organizational Affiliation</b>: A machine-oriented identifier reference to another party (person or organization) that this subject is associated with. The UUID of the party in the source OSCAL instance is sufficient to reference the data item locally or globally (e.g., in an imported OSCAL instance). </xs:documentation>
                </xs:annotation>
                <xs:restriction base="oscal-ar:uuid"/>
             </xs:simpleType>
@@ -949,10 +949,10 @@
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Party Universally Unique Identifier</m:formal-name>
-               <m:description>A unique identifier that can be used to reference this defined location elsewhere in an OSCAL document. A UUID should be consistently used for a given party across revisions of the document.</m:description>
+               <m:description>A <m:a>machine-oriented</m:a>, <m:a>globally unique</m:a> identifier with <m:a>cross-instance</m:a> scope that can be used to reference this defined party elsewhere in <m:a>this or other OSCAL instances</m:a>. The locally defined <m:em>UUID</m:em> of the <m:code>party</m:code> can be used to reference the data item locally or globally (e.g., from an importing OSCAL instance). This UUID should be assigned <m:a>per-subject</m:a>, which means it should be consistently used to identify the same subject across revisions of the document.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>Party Universally Unique Identifier</b>: A unique identifier that can be used to reference this defined location elsewhere in an OSCAL document. A UUID should be consistently used for a given party across revisions of the document.</xs:documentation>
+               <b>Party Universally Unique Identifier</b>: A machine-oriented, globally unique identifier with cross-instance scope that can be used to reference this defined party elsewhere in this or other OSCAL instances. The locally defined UUID of the party can be used to reference the data item locally or globally (e.g., from an importing OSCAL instance). This UUID should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
       <xs:attribute name="type" use="required" type="oscal-ar:string">
@@ -970,10 +970,10 @@
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Party Reference</m:formal-name>
-            <m:description>References a <m:code>party</m:code> defined in <m:code>metadata</m:code>. </m:description>
+            <m:description>A <m:a>machine-oriented</m:a> identifier reference to another <m:code>party</m:code> defined in <m:code>metadata</m:code>. The <m:em>UUID</m:em> of the <m:code>party</m:code> in the source OSCAL instance is sufficient to reference the data item locally or globally (e.g., in an imported OSCAL instance). </m:description>
          </xs:appinfo>
          <xs:documentation>
-            <b>Party Reference</b>: References a party defined in metadata. </xs:documentation>
+            <b>Party Reference</b>: A machine-oriented identifier reference to another party defined in metadata. The UUID of the party in the source OSCAL instance is sufficient to reference the data item locally or globally (e.g., in an imported OSCAL instance). </xs:documentation>
       </xs:annotation>
       <xs:restriction base="oscal-ar:uuid"/>
    </xs:simpleType>
@@ -1058,10 +1058,10 @@
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Role Identifier</m:formal-name>
-               <m:description>A unique identifier for a specific role instance. This identifier's uniqueness is document scoped and is intended to be consistent for the same role across minor revisions of the document.</m:description>
+               <m:description>A <m:a>human-oriented</m:a>, <m:a>locally unique</m:a> identifier with <m:a>cross-instance</m:a> scope that can be used to reference this defined role elsewhere in <m:a>this or other OSCAL instances</m:a>. When referenced from another OSCAL instance, the locally defined <m:em>ID</m:em> of the <m:code>Role</m:code> from the imported OSCAL instance must be referenced in the context of the containing resource (e.g., import, import-component-definition, import-profile, import-ssp or import-ap). This ID should be assigned <m:a>per-subject</m:a>, which means it should be consistently used to identify the same subject across revisions of the document.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>Role Identifier</b>: A unique identifier for a specific role instance. This identifier's uniqueness is document scoped and is intended to be consistent for the same role across minor revisions of the document.</xs:documentation>
+               <b>Role Identifier</b>: A human-oriented, locally unique identifier with cross-instance scope that can be used to reference this defined role elsewhere in this or other OSCAL instances. When referenced from another OSCAL instance, the locally defined ID of the Role from the imported OSCAL instance must be referenced in the context of the containing resource (e.g., import, import-component-definition, import-profile, import-ssp or import-ap). This ID should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
@@ -1069,10 +1069,10 @@
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Role Identifier Reference</m:formal-name>
-            <m:description>A reference to the roles served by the user.</m:description>
+            <m:description>A <m:a>human-oriented</m:a> identifier reference to <m:code>roles</m:code> served by the user.</m:description>
          </xs:appinfo>
          <xs:documentation>
-            <b>Role Identifier Reference</b>: A reference to the roles served by the user.</xs:documentation>
+            <b>Role Identifier Reference</b>: A human-oriented identifier reference to roles served by the user.</xs:documentation>
       </xs:annotation>
       <xs:restriction base="oscal-ar:token"/>
    </xs:simpleType>
@@ -1266,10 +1266,10 @@
                   <xs:annotation>
                      <xs:appinfo>
                         <m:formal-name>Resource Universally Unique Identifier</m:formal-name>
-                        <m:description>A globally unique identifier that can be used to reference this defined resource elsewhere in an OSCAL document. A UUID should be consistently used for a given resource across revisions of the document.</m:description>
+                        <m:description>A <m:a>machine-oriented</m:a>, <m:a>globally unique</m:a> identifier with <m:a>cross-instance</m:a> scope that can be used to reference this defined resource elsewhere in <m:a>this or other OSCAL instances</m:a>. This UUID should be assigned <m:a>per-subject</m:a>, which means it should be consistently used to identify the same subject across revisions of the document.</m:description>
                      </xs:appinfo>
                      <xs:documentation>
-                        <b>Resource Universally Unique Identifier</b>: A globally unique identifier that can be used to reference this defined resource elsewhere in an OSCAL document. A UUID should be consistently used for a given resource across revisions of the document.</xs:documentation>
+                        <b>Resource Universally Unique Identifier</b>: A machine-oriented, globally unique identifier with cross-instance scope that can be used to reference this defined resource elsewhere in this or other OSCAL instances. This UUID should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.</xs:documentation>
                   </xs:annotation>
                </xs:attribute>
             </xs:complexType>
@@ -1316,10 +1316,10 @@
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Property Universally Unique Identifier</m:formal-name>
-               <m:description>A unique identifier that can be used to reference this property elsewhere in an OSCAL document. A UUID should be consistently used for a given location across revisions of the document.</m:description>
+               <m:description>A <m:a>machine-oriented</m:a>, <m:a>globally unique</m:a> identifier with <m:a>cross-instance</m:a> scope that can be used to reference this defined property elsewhere in <m:a>this or other OSCAL instances</m:a>. This UUID should be assigned <m:a>per-subject</m:a>, which means it should be consistently used to identify the same subject across revisions of the document.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>Property Universally Unique Identifier</b>: A unique identifier that can be used to reference this property elsewhere in an OSCAL document. A UUID should be consistently used for a given location across revisions of the document.</xs:documentation>
+               <b>Property Universally Unique Identifier</b>: A machine-oriented, globally unique identifier with cross-instance scope that can be used to reference this defined property elsewhere in this or other OSCAL instances. This UUID should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
       <xs:attribute name="ns" type="oscal-ar:uri">
@@ -1452,10 +1452,10 @@
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Responsible Role</m:formal-name>
-               <m:description>The role that the party is responsible for.</m:description>
+               <m:description>A <m:a>human-oriented</m:a> identifier reference to <m:code>roles</m:code> served by the user.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>Responsible Role</b>: The role that the party is responsible for.</xs:documentation>
+               <b>Responsible Role</b>: A human-oriented identifier reference to roles served by the user.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
@@ -1501,10 +1501,10 @@
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Responsible Role ID</m:formal-name>
-               <m:description>The role that is responsible for the business function.</m:description>
+               <m:description>A <m:a>human-oriented</m:a> identifier reference to <m:code>roles</m:code> responsible for the business function.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>Responsible Role ID</b>: The role that is responsible for the business function.</xs:documentation>
+               <b>Responsible Role ID</b>: A human-oriented identifier reference to roles responsible for the business function.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
@@ -1717,10 +1717,10 @@
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Document Identifier</m:formal-name>
-            <m:description>A document identifier qualified by an identifier <m:code>scheme</m:code>. A document identifier provides a globally unique identifier for a group of documents that are to be treated as different versions of the same document. If this element does not appear, or if the value of this element is empty, the value of "document-id" is equal to the value of the "uuid" flag of the top-level root element.</m:description>
+            <m:description>A document identifier qualified by an identifier <m:code>scheme</m:code>. A document identifier provides a <m:a>globally unique</m:a> identifier with a <m:a>cross-instance</m:a> scope that is used for a group of documents that are to be treated as different versions of the same document. If this element does not appear, or if the value of this element is empty, the value of "document-id" is equal to the value of the "uuid" flag of the top-level root element.</m:description>
          </xs:appinfo>
          <xs:documentation>
-            <b>Document Identifier</b>: A document identifier qualified by an identifier scheme. A document identifier provides a globally unique identifier for a group of documents that are to be treated as different versions of the same document. If this element does not appear, or if the value of this element is empty, the value of "document-id" is equal to the value of the "uuid" flag of the top-level root element.</xs:documentation>
+            <b>Document Identifier</b>: A document identifier qualified by an identifier scheme. A document identifier provides a globally unique identifier with a cross-instance scope that is used for a group of documents that are to be treated as different versions of the same document. If this element does not appear, or if the value of this element is empty, the value of "document-id" is equal to the value of the "uuid" flag of the top-level root element.</xs:documentation>
       </xs:annotation>
       <xs:simpleContent>
          <xs:extension base="oscal-ar:string">
@@ -1831,10 +1831,10 @@
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Control Identifier Reference</m:formal-name>
-               <m:description>A reference to a control with a corresponding <m:code>id</m:code> value.</m:description>
+               <m:description>A <m:a>human-oriented</m:a> identifier reference to a control with a corresponding <m:code>id</m:code> value. When referencing an externally defined <m:code>control</m:code>, the <m:code>Control Identifier Reference</m:code> must be used in the context of the external / imported OSCAL instance (e.g., uri-reference).</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>Control Identifier Reference</b>: A reference to a control with a corresponding id value.</xs:documentation>
+               <b>Control Identifier Reference</b>: A human-oriented identifier reference to a control with a corresponding id value. When referencing an externally defined control, the Control Identifier Reference must be used in the context of the external / imported OSCAL instance (e.g., uri-reference).</xs:documentation>
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
@@ -1895,10 +1895,10 @@
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Assessment Method Universally Unique Identifier</m:formal-name>
-               <m:description>Uniquely identifies this defined assessment method. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. A UUID should be consistently used for a given assessment method across revisions of the document.</m:description>
+               <m:description>A <m:a>machine-oriented</m:a>, <m:a>globally unique</m:a> identifier with <m:a>cross-instance</m:a> scope that can be used to reference this assessment method elsewhere in <m:a>this or other OSCAL instances</m:a>. The locally defined <m:em>UUID</m:em> of the <m:code>assessment method</m:code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <m:a>per-subject</m:a>, which means it should be consistently used to identify the same subject across revisions of the document.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>Assessment Method Universally Unique Identifier</b>: Uniquely identifies this defined assessment method. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. A UUID should be consistently used for a given assessment method across revisions of the document.</xs:documentation>
+               <b>Assessment Method Universally Unique Identifier</b>: A machine-oriented, globally unique identifier with cross-instance scope that can be used to reference this assessment method elsewhere in this or other OSCAL instances. The locally defined UUID of the assessment method can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
@@ -2027,10 +2027,10 @@
                   <xs:annotation>
                      <xs:appinfo>
                         <m:formal-name>Step Universally Unique Identifier</m:formal-name>
-                        <m:description>Uniquely identifies a step. This UUID may be referenced elsewhere in an OSCAL document when referring to this step. A UUID should be consistently used for a given test step across revisions of the document.</m:description>
+                        <m:description>A <m:a>machine-oriented</m:a>, <m:a>globally unique</m:a> identifier with <m:a>cross-instance</m:a> scope that can be used to reference this step elsewhere in <m:a>this or other OSCAL instances</m:a>. The locally defined <m:em>UUID</m:em> of the <m:code>step</m:code> (in a series of steps) can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <m:a>per-subject</m:a>, which means it should be consistently used to identify the same subject across revisions of the document.</m:description>
                      </xs:appinfo>
                      <xs:documentation>
-                        <b>Step Universally Unique Identifier</b>: Uniquely identifies a step. This UUID may be referenced elsewhere in an OSCAL document when referring to this step. A UUID should be consistently used for a given test step across revisions of the document.</xs:documentation>
+                        <b>Step Universally Unique Identifier</b>: A machine-oriented, globally unique identifier with cross-instance scope that can be used to reference this step elsewhere in this or other OSCAL instances. The locally defined UUID of the step (in a series of steps) can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.</xs:documentation>
                   </xs:annotation>
                </xs:attribute>
             </xs:complexType>
@@ -2063,10 +2063,10 @@
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Assessment Activity Universally Unique Identifier</m:formal-name>
-               <m:description>Uniquely identifies this assessment activity. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. A UUID should be consistently used for a given included activity across revisions of the document.</m:description>
+               <m:description>A <m:a>machine-oriented</m:a>, <m:a>globally unique</m:a>&gt; identifier with <m:a>cross-instance</m:a> scope that can be used to reference this assessment activity elsewhere in <m:a>this or other OSCAL instances</m:a>. The locally defined <m:em>UUID</m:em> of the <m:code>activity</m:code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <m:a>per-subject</m:a>, which means it should be consistently used to identify the same subject across revisions of the document.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>Assessment Activity Universally Unique Identifier</b>: Uniquely identifies this assessment activity. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. A UUID should be consistently used for a given included activity across revisions of the document.</xs:documentation>
+               <b>Assessment Activity Universally Unique Identifier</b>: A machine-oriented, globally unique&gt; identifier with cross-instance scope that can be used to reference this assessment activity elsewhere in this or other OSCAL instances. The locally defined UUID of the activity can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
@@ -2251,10 +2251,10 @@
                   <xs:annotation>
                      <xs:appinfo>
                         <m:formal-name>Task Universally Unique Identifier Reference</m:formal-name>
-                        <m:description>References a unique task by UUID.</m:description>
+                        <m:description>A <m:a>machine-oriented</m:a> identifier reference to a unique task.</m:description>
                      </xs:appinfo>
                      <xs:documentation>
-                        <b>Task Universally Unique Identifier Reference</b>: References a unique task by UUID.</xs:documentation>
+                        <b>Task Universally Unique Identifier Reference</b>: A machine-oriented identifier reference to a unique task.</xs:documentation>
                   </xs:annotation>
                </xs:attribute>
             </xs:complexType>
@@ -2310,10 +2310,10 @@
                   <xs:annotation>
                      <xs:appinfo>
                         <m:formal-name>Activity Universally Unique Identifier Reference</m:formal-name>
-                        <m:description>References an activity defined in the list of activities.</m:description>
+                        <m:description>A <m:a>machine-oriented</m:a> identifier reference to an activity defined in the list of activities.</m:description>
                      </xs:appinfo>
                      <xs:documentation>
-                        <b>Activity Universally Unique Identifier Reference</b>: References an activity defined in the list of activities.</xs:documentation>
+                        <b>Activity Universally Unique Identifier Reference</b>: A machine-oriented identifier reference to an activity defined in the list of activities.</xs:documentation>
                   </xs:annotation>
                </xs:attribute>
             </xs:complexType>
@@ -2346,10 +2346,10 @@
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Task Universally Unique Identifier</m:formal-name>
-               <m:description>Uniquely identifies this assessment task. </m:description>
+               <m:description>A <m:a>machine-oriented</m:a>, <m:a>globally unique</m:a> identifier with <m:a>cross-instance</m:a> scope that can be used to reference this task elsewhere in <m:a>this or other OSCAL instances</m:a>. The locally defined <m:em>UUID</m:em> of the <m:code>task</m:code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <m:a>per-subject</m:a>, which means it should be consistently used to identify the same subject across revisions of the document.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>Task Universally Unique Identifier</b>: Uniquely identifies this assessment task. </xs:documentation>
+               <b>Task Universally Unique Identifier</b>: A machine-oriented, globally unique identifier with cross-instance scope that can be used to reference this task elsewhere in this or other OSCAL instances. The locally defined UUID of the task can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
       <xs:attribute name="type" use="required" type="oscal-ar:token">
@@ -2591,10 +2591,10 @@
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Control Identifier Reference</m:formal-name>
-               <m:description>A reference to a control with a corresponding <m:code>id</m:code> value.</m:description>
+               <m:description>A <m:a>human-oriented</m:a> identifier reference to a control with a corresponding <m:code>id</m:code> value. When referencing an externally defined <m:code>control</m:code>, the <m:code>Control Identifier Reference</m:code> must be used in the context of the external / imported OSCAL instance (e.g., uri-reference).</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>Control Identifier Reference</b>: A reference to a control with a corresponding id value.</xs:documentation>
+               <b>Control Identifier Reference</b>: A human-oriented identifier reference to a control with a corresponding id value. When referencing an externally defined control, the Control Identifier Reference must be used in the context of the external / imported OSCAL instance (e.g., uri-reference).</xs:documentation>
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
@@ -2657,10 +2657,10 @@
                   <xs:annotation>
                      <xs:appinfo>
                         <m:formal-name>Task Universally Unique Identifier</m:formal-name>
-                        <m:description>Uniquely identifies an assessment activity to be performed as part of the event. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. A UUID should be consistently used for this schedule across revisions of the document.</m:description>
+                        <m:description>A <m:a>machine-oriented</m:a>, <m:a>globally unique</m:a> identifier with <m:a>cross-instance</m:a> scope that can be used to reference (in this or other OSCAL instances) an assessment activity to be performed as part of the event. The locally defined <m:em>UUID</m:em> of the <m:code>task</m:code> can be used to reference the data item locally or globally (e.g., in an <m:a>imported OSCAL instance</m:a>). This UUID should be assigned <m:em>per-subject</m:em>, which means it should be consistently used to identify the same subject across revisions of the document.</m:description>
                      </xs:appinfo>
                      <xs:documentation>
-                        <b>Task Universally Unique Identifier</b>: Uniquely identifies an assessment activity to be performed as part of the event. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. A UUID should be consistently used for this schedule across revisions of the document.</xs:documentation>
+                        <b>Task Universally Unique Identifier</b>: A machine-oriented, globally unique identifier with cross-instance scope that can be used to reference (in this or other OSCAL instances) an assessment activity to be performed as part of the event. The locally defined UUID of the task can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.</xs:documentation>
                   </xs:annotation>
                </xs:attribute>
             </xs:complexType>
@@ -2693,10 +2693,10 @@
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Assessment Subject Placeholder Universally Unique Identifier</m:formal-name>
-               <m:description>Uniquely identifies a set of assessment subjects that will be identified by a task or an activity that is part of a task.</m:description>
+               <m:description>A <m:a>machine-oriented</m:a>, <m:a>globally unique</m:a> identifier for a set of assessment subjects that will be identified by a task or an activity that is part of a task. The locally defined <m:em>UUID</m:em> of the <m:code>assessment subject placeholder</m:code> can be used to reference the data item locally or globally (e.g., in an <m:a>imported OSCAL instance</m:a>). This UUID should be assigned <m:a>per-subject</m:a>, which means it should be consistently used to identify the same subject across revisions of the document.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>Assessment Subject Placeholder Universally Unique Identifier</b>: Uniquely identifies a set of assessment subjects that will be identified by a task or an activity that is part of a task.</xs:documentation>
+               <b>Assessment Subject Placeholder Universally Unique Identifier</b>: A machine-oriented, globally unique identifier for a set of assessment subjects that will be identified by a task or an activity that is part of a task. The locally defined UUID of the assessment subject placeholder can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
@@ -2820,10 +2820,10 @@
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Subject Universally Unique Identifier Reference</m:formal-name>
-               <m:description>A pointer to a component, inventory-item, location, party, user, or resource using it's UUID.</m:description>
+               <m:description>A <m:a>machine-oriented</m:a> identifier reference to a component, inventory-item, location, party, user, or resource using it's UUID.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>Subject Universally Unique Identifier Reference</b>: A pointer to a component, inventory-item, location, party, user, or resource using it's UUID.</xs:documentation>
+               <b>Subject Universally Unique Identifier Reference</b>: A machine-oriented identifier reference to a component, inventory-item, location, party, user, or resource using it's UUID.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
       <xs:attribute name="type" use="required" type="oscal-ar:token">
@@ -2841,10 +2841,10 @@
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Identifies the Subject</m:formal-name>
-            <m:description>A pointer to a resource based on its universally unique identifier (UUID). Use type to indicate whether the identified resource is a component, inventory item, location, user, or something else.</m:description>
+            <m:description>A <m:a>human-oriented</m:a> identifier reference to a resource. Use type to indicate whether the identified resource is a component, inventory item, location, user, or something else.</m:description>
          </xs:appinfo>
          <xs:documentation>
-            <b>Identifies the Subject</b>: A pointer to a resource based on its universally unique identifier (UUID). Use type to indicate whether the identified resource is a component, inventory item, location, user, or something else.</xs:documentation>
+            <b>Identifies the Subject</b>: A human-oriented identifier reference to a resource. Use type to indicate whether the identified resource is a component, inventory item, location, user, or something else.</xs:documentation>
       </xs:annotation>
       <xs:sequence>
          <xs:element name="title" minOccurs="0" maxOccurs="1">
@@ -2890,10 +2890,10 @@
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Subject Universally Unique Identifier Reference</m:formal-name>
-               <m:description>A pointer to a component, inventory-item, location, party, user, or resource using it's UUID.</m:description>
+               <m:description>A <m:a>machine-oriented</m:a> identifier reference to a component, inventory-item, location, party, user, or resource using it's UUID.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>Subject Universally Unique Identifier Reference</b>: A pointer to a component, inventory-item, location, party, user, or resource using it's UUID.</xs:documentation>
+               <b>Subject Universally Unique Identifier Reference</b>: A machine-oriented identifier reference to a component, inventory-item, location, party, user, or resource using it's UUID.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
       <xs:attribute name="type" use="required" type="oscal-ar:token">
@@ -2998,10 +2998,10 @@
                            <xs:annotation>
                               <xs:appinfo>
                                  <m:formal-name>Component Universally Unique Identifier Reference</m:formal-name>
-                                 <m:description>A reference to a component that is implemented as part of an inventory item.</m:description>
+                                 <m:description>A <m:a>machine-oriented</m:a> identifier reference to a component that is implemented as part of an inventory item.</m:description>
                               </xs:appinfo>
                               <xs:documentation>
-                                 <b>Component Universally Unique Identifier Reference</b>: A reference to a component that is implemented as part of an inventory item.</xs:documentation>
+                                 <b>Component Universally Unique Identifier Reference</b>: A machine-oriented identifier reference to a component that is implemented as part of an inventory item.</xs:documentation>
                            </xs:annotation>
                         </xs:attribute>
                      </xs:complexType>
@@ -3026,10 +3026,10 @@
                   <xs:annotation>
                      <xs:appinfo>
                         <m:formal-name>Assessment Platform Universally Unique Identifier</m:formal-name>
-                        <m:description>Uniquely identifies this assessment Platform.</m:description>
+                        <m:description>A <m:a>machine-oriented</m:a>, <m:a>globally unique</m:a> identifier with <m:a>cross-instance</m:a> scope that can be used to reference this assessment platform elsewhere in this or other OSCAL instances. The locally defined <m:em>UUID</m:em> of the <m:code>assessment platform</m:code> can be used to reference the data item locally or globally (e.g., in an <m:a>imported OSCAL instance</m:a>). This UUID should be assigned <m:a>per-subject</m:a>, which means it should be consistently used to identify the same subject across revisions of the document.</m:description>
                      </xs:appinfo>
                      <xs:documentation>
-                        <b>Assessment Platform Universally Unique Identifier</b>: Uniquely identifies this assessment Platform.</xs:documentation>
+                        <b>Assessment Platform Universally Unique Identifier</b>: A machine-oriented, globally unique identifier with cross-instance scope that can be used to reference this assessment platform elsewhere in this or other OSCAL instances. The locally defined UUID of the assessment platform can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.</xs:documentation>
                   </xs:annotation>
                </xs:attribute>
             </xs:complexType>
@@ -3167,10 +3167,10 @@
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Finding Target Identifier Reference</m:formal-name>
-               <m:description>Identifies the specific target qualified by the <m:code>type</m:code>.</m:description>
+               <m:description>A <m:a>machine-oriented</m:a> identifier reference for a specific target qualified by the <m:code>type</m:code>.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>Finding Target Identifier Reference</b>: Identifies the specific target qualified by the type.</xs:documentation>
+               <b>Finding Target Identifier Reference</b>: A machine-oriented identifier reference for a specific target qualified by the type.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
@@ -3364,10 +3364,10 @@
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Observation Universally Unique Identifier</m:formal-name>
-               <m:description>Uniquely identifies this observation. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. Once assigned, a UUID should be consistently used for a given observation across revisions.</m:description>
+               <m:description>A <m:a>machine-oriented</m:a>, <m:a>globally unique</m:a> identifier with <m:em>cross-instance</m:em> scope that can be used to reference this observation elsewhere in <m:a>this or other OSCAL instances</m:a>. The locally defined <m:em>UUID</m:em> of the <m:code>observation</m:code> can be used to reference the data item locally or globally (e.g., in an imorted OSCAL instance). This UUID should be assigned <m:a>per-subject</m:a>, which means it should be consistently used to identify the same subject across revisions of the document.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>Observation Universally Unique Identifier</b>: Uniquely identifies this observation. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. Once assigned, a UUID should be consistently used for a given observation across revisions.</xs:documentation>
+               <b>Observation Universally Unique Identifier</b>: A machine-oriented, globally unique identifier with cross-instance scope that can be used to reference this observation elsewhere in this or other OSCAL instances. The locally defined UUID of the observation can be used to reference the data item locally or globally (e.g., in an imorted OSCAL instance). This UUID should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
@@ -3424,10 +3424,10 @@
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Actor Universally Unique Identifier Reference</m:formal-name>
-               <m:description>A pointer to the tool or person based on the associated type.</m:description>
+               <m:description>A <m:a>machine-oriented</m:a> identifier reference to the tool or person based on the associated type.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>Actor Universally Unique Identifier Reference</b>: A pointer to the tool or person based on the associated type.</xs:documentation>
+               <b>Actor Universally Unique Identifier Reference</b>: A machine-oriented identifier reference to the tool or person based on the associated type.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
       <xs:attribute name="role-id" type="oscal-ar:token">
@@ -3487,10 +3487,10 @@
                   <xs:annotation>
                      <xs:appinfo>
                         <m:formal-name>Assessment Subject Placeholder Universally Unique Identifier Reference</m:formal-name>
-                        <m:description>References a unique assessment subject placeholder defined by this task.</m:description>
+                        <m:description>A <m:a>machine-oriented</m:a> identifier reference to a unique assessment subject placeholder defined by this task.</m:description>
                      </xs:appinfo>
                      <xs:documentation>
-                        <b>Assessment Subject Placeholder Universally Unique Identifier Reference</b>: References a unique assessment subject placeholder defined by this task.</xs:documentation>
+                        <b>Assessment Subject Placeholder Universally Unique Identifier Reference</b>: A machine-oriented identifier reference to a unique assessment subject placeholder defined by this task.</xs:documentation>
                   </xs:annotation>
                </xs:attribute>
             </xs:complexType>
@@ -3515,10 +3515,10 @@
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Task Universally Unique Identifier Reference</m:formal-name>
-               <m:description>References a unique task by UUID.</m:description>
+               <m:description>A <m:a>machine-oriented</m:a> identifier reference to a unique task.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>Task Universally Unique Identifier Reference</b>: References a unique task by UUID.</xs:documentation>
+               <b>Task Universally Unique Identifier Reference</b>: A machine-oriented identifier reference to a unique task.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
@@ -3687,20 +3687,20 @@
                   <xs:annotation>
                      <xs:appinfo>
                         <m:formal-name>Mitigating Factor Universally Unique Identifier</m:formal-name>
-                        <m:description>Uniquely identifies this mitigating factor. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. Once assigned, a UUID should be consistently used for a given mitigating factor across revisions.</m:description>
+                        <m:description>A <m:a>machine-oriented</m:a>, <m:a>globally unique</m:a> identifier with <m:a>cross-instance</m:a> scope that can be used to reference this mitigating factor elsewhere in <m:a>this or other OSCAL instances</m:a>. The locally defined <m:em>UUID</m:em> of the <m:code>mitigating factor</m:code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <m:a>per-subject</m:a>, which means it should be consistently used to identify the same subject across revisions of the document.</m:description>
                      </xs:appinfo>
                      <xs:documentation>
-                        <b>Mitigating Factor Universally Unique Identifier</b>: Uniquely identifies this mitigating factor. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. Once assigned, a UUID should be consistently used for a given mitigating factor across revisions.</xs:documentation>
+                        <b>Mitigating Factor Universally Unique Identifier</b>: A machine-oriented, globally unique identifier with cross-instance scope that can be used to reference this mitigating factor elsewhere in this or other OSCAL instances. The locally defined UUID of the mitigating factor can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.</xs:documentation>
                   </xs:annotation>
                </xs:attribute>
                <xs:attribute name="implementation-uuid" type="oscal-ar:uuid">
                   <xs:annotation>
                      <xs:appinfo>
                         <m:formal-name>Implementation UUID</m:formal-name>
-                        <m:description>Points to an implementation statement in the SSP.</m:description>
+                        <m:description>A <m:a>machine-oriented</m:a>, <m:a>globally unique</m:a> identifier with <m:a>cross-instance</m:a> scope that can be used to reference this implementation statement elsewhere in <m:a>this or other OSCAL instances</m:a>s. The locally defined <m:em>UUID</m:em> of the <m:code>implementation statement</m:code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <m:a>per-subject</m:a>, which means it should be consistently used to identify the same subject across revisions of the document.</m:description>
                      </xs:appinfo>
                      <xs:documentation>
-                        <b>Implementation UUID</b>: Points to an implementation statement in the SSP.</xs:documentation>
+                        <b>Implementation UUID</b>: A machine-oriented, globally unique identifier with cross-instance scope that can be used to reference this implementation statement elsewhere in this or other OSCAL instancess. The locally defined UUID of the implementation statement can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.</xs:documentation>
                   </xs:annotation>
                </xs:attribute>
             </xs:complexType>
@@ -3859,10 +3859,10 @@
                                     <xs:annotation>
                                        <xs:appinfo>
                                           <m:formal-name>Response Universally Unique Identifier Reference</m:formal-name>
-                                          <m:description>References a unique risk response by UUID.</m:description>
+                                          <m:description>A <m:a>machine-oriented</m:a> identifier reference to a unique risk response.</m:description>
                                        </xs:appinfo>
                                        <xs:documentation>
-                                          <b>Response Universally Unique Identifier Reference</b>: References a unique risk response by UUID.</xs:documentation>
+                                          <b>Response Universally Unique Identifier Reference</b>: A machine-oriented identifier reference to a unique risk response.</xs:documentation>
                                     </xs:annotation>
                                  </xs:attribute>
                               </xs:complexType>
@@ -3887,10 +3887,10 @@
                            <xs:annotation>
                               <xs:appinfo>
                                  <m:formal-name>Risk Log Entry Universally Unique Identifier</m:formal-name>
-                                 <m:description>Uniquely identifies a risk log entry. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. A UUID should be consistently used for this schedule across revisions of the document.</m:description>
+                                 <m:description>A <m:a>machine-oriented</m:a>, <m:a>globally unique</m:a> identifier with <m:a>cross-instance</m:a> scope that can be used to reference this risk log entry elsewhere in <m:a>this or other OSCAL instances</m:a>. The locally defined <m:em>UUID</m:em> of the <m:code>risk log entry</m:code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <m:a>per-subject</m:a>, which means it should be consistently used to identify the same subject across revisions of the document.</m:description>
                               </xs:appinfo>
                               <xs:documentation>
-                                 <b>Risk Log Entry Universally Unique Identifier</b>: Uniquely identifies a risk log entry. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. A UUID should be consistently used for this schedule across revisions of the document.</xs:documentation>
+                                 <b>Risk Log Entry Universally Unique Identifier</b>: A machine-oriented, globally unique identifier with cross-instance scope that can be used to reference this risk log entry elsewhere in this or other OSCAL instances. The locally defined UUID of the risk log entry can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.</xs:documentation>
                            </xs:annotation>
                         </xs:attribute>
                      </xs:complexType>
@@ -3912,10 +3912,10 @@
                   <xs:annotation>
                      <xs:appinfo>
                         <m:formal-name>Observation Universally Unique Identifier Reference</m:formal-name>
-                        <m:description>References an observation defined in the list of observations.</m:description>
+                        <m:description>A <m:a>machine-oriented</m:a> identifier reference to an observation defined in the list of observations.</m:description>
                      </xs:appinfo>
                      <xs:documentation>
-                        <b>Observation Universally Unique Identifier Reference</b>: References an observation defined in the list of observations.</xs:documentation>
+                        <b>Observation Universally Unique Identifier Reference</b>: A machine-oriented identifier reference to an observation defined in the list of observations.</xs:documentation>
                   </xs:annotation>
                </xs:attribute>
             </xs:complexType>
@@ -3925,10 +3925,10 @@
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Risk Universally Unique Identifier</m:formal-name>
-               <m:description>Uniquely identifies this risk. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. Once assigned, a UUID should be consistently used for a given risk across revisions.</m:description>
+               <m:description>A <m:a>machine-oriented</m:a>, <m:a>globally unique</m:a> identifier with <m:a>cross-instance</m:a> scope that can be used to reference this risk elsewhere in <m:a>this or other OSCAL instances</m:a>. The locally defined <m:em>UUID</m:em> of the <m:code>risk</m:code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <m:a>per-subject</m:a>, which means it should be consistently used to identify the same subject across revisions of the document.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>Risk Universally Unique Identifier</b>: Uniquely identifies this risk. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. Once assigned, a UUID should be consistently used for a given risk across revisions.</xs:documentation>
+               <b>Risk Universally Unique Identifier</b>: A machine-oriented, globally unique identifier with cross-instance scope that can be used to reference this risk elsewhere in this or other OSCAL instances. The locally defined UUID of the risk can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
@@ -3945,10 +3945,10 @@
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Party UUID Reference</m:formal-name>
-               <m:description>A pointer to the party who is making the log entry.</m:description>
+               <m:description>A <m:a>machine-oriented</m:a> identifier reference to the party who is making the log entry.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>Party UUID Reference</b>: A pointer to the party who is making the log entry.</xs:documentation>
+               <b>Party UUID Reference</b>: A machine-oriented identifier reference to the party who is making the log entry.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
       <xs:attribute name="role-id" type="oscal-ar:token">
@@ -4189,10 +4189,10 @@
                   <xs:annotation>
                      <xs:appinfo>
                         <m:formal-name>Required Universally Unique Identifier</m:formal-name>
-                        <m:description>Uniquely identifies this required asset. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. Once assigned, a UUID should be consistently used for a given required asset across revisions.</m:description>
+                        <m:description>A <m:a>machine-oriented</m:a>, <m:a>globally unique</m:a> identifier with <m:a>cross-instance</m:a> scope that can be used to reference this required asset elsewhere in <m:a>this or other OSCAL instances</m:a>. The locally defined <m:em>UUID</m:em> of the <m:code>asset</m:code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <m:a>per-subject</m:a>, which means it should be consistently used to identify the same subject across revisions of the document.</m:description>
                      </xs:appinfo>
                      <xs:documentation>
-                        <b>Required Universally Unique Identifier</b>: Uniquely identifies this required asset. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. Once assigned, a UUID should be consistently used for a given required asset across revisions.</xs:documentation>
+                        <b>Required Universally Unique Identifier</b>: A machine-oriented, globally unique identifier with cross-instance scope that can be used to reference this required asset elsewhere in this or other OSCAL instances. The locally defined UUID of the asset can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.</xs:documentation>
                   </xs:annotation>
                </xs:attribute>
             </xs:complexType>
@@ -4221,10 +4221,10 @@
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Remediation Universally Unique Identifier</m:formal-name>
-               <m:description>Uniquely identifies this remediation. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. Once assigned, a UUID should be consistently used for a given remediation across revisions.</m:description>
+               <m:description>A <m:a>machine-oriented</m:a>, <m:a>globally unique</m:a> identifier with <m:a>cross-instance</m:a> scope that can be used to reference this remediation elsewhere in <m:a>this or other OSCAL instances</m:a>. The locally defined <m:em>UUID</m:em> of the <m:code>risk response</m:code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <m:a>per-subject</m:a>, which means it should be consistently used to identify the same subject across revisions of the document.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>Remediation Universally Unique Identifier</b>: Uniquely identifies this remediation. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. Once assigned, a UUID should be consistently used for a given remediation across revisions.</xs:documentation>
+               <b>Remediation Universally Unique Identifier</b>: A machine-oriented, globally unique identifier with cross-instance scope that can be used to reference this remediation elsewhere in this or other OSCAL instances. The locally defined UUID of the risk response can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
       <xs:attribute name="lifecycle" use="required" type="oscal-ar:token">
@@ -4283,10 +4283,10 @@
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Part Identifier</m:formal-name>
-               <m:description>A unique identifier for a specific part instance. This identifier's uniqueness is document scoped and is intended to be consistent for the same part across minor revisions of the document.</m:description>
+               <m:description>A <m:a>machine-oriented</m:a>, <m:a>globally unique</m:a> identifier with <m:a>cross-instance</m:a> scope that can be used to reference this part elsewhere in <m:a>this or other OSCAL instances</m:a>. The locally defined <m:em>UUID</m:em> of the <m:code>part</m:code> can be used to reference the data item locally or globally (e.g., in an ported OSCAL instance). This UUID should be assigned <m:a>per-subject</m:a>, which means it should be consistently used to identify the same subject across revisions of the document.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>Part Identifier</b>: A unique identifier for a specific part instance. This identifier's uniqueness is document scoped and is intended to be consistent for the same part across minor revisions of the document.</xs:documentation>
+               <b>Part Identifier</b>: A machine-oriented, globally unique identifier with cross-instance scope that can be used to reference this part elsewhere in this or other OSCAL instances. The locally defined UUID of the part can be used to reference the data item locally or globally (e.g., in an ported OSCAL instance). This UUID should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
       <xs:attribute name="name" use="required" type="oscal-ar:token">
@@ -4365,10 +4365,10 @@
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Part Identifier</m:formal-name>
-               <m:description>A unique identifier for a specific part instance. This identifier's uniqueness is document scoped and is intended to be consistent for the same part across minor revisions of the document.</m:description>
+               <m:description>A <m:a>human-oriented</m:a>, <m:a>locally unique</m:a> identifier with <m:a>cross-instance</m:a> scope that can be used to reference this defined part elsewhere in <m:a>this or other OSCAL instances</m:a>. When referenced from another OSCAL instance, this identifier must be referenced in the context of the containing resource (e.g., import-profile). This id should be assigned <m:a>per-subject</m:a>, which means it should be consistently used to identify the same subject across revisions of the document.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>Part Identifier</b>: A unique identifier for a specific part instance. This identifier's uniqueness is document scoped and is intended to be consistent for the same part across minor revisions of the document.</xs:documentation>
+               <b>Part Identifier</b>: A human-oriented, locally unique identifier with cross-instance scope that can be used to reference this defined part elsewhere in this or other OSCAL instances. When referenced from another OSCAL instance, this identifier must be referenced in the context of the containing resource (e.g., import-profile). This id should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
       <xs:attribute name="name" use="required" type="oscal-ar:token">
@@ -4488,10 +4488,10 @@
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Parameter Identifier</m:formal-name>
-               <m:description>A unique identifier for a specific parameter instance. This identifier's uniqueness is document scoped and is intended to be consistent for the same parameter across minor revisions of the document.</m:description>
+               <m:description>A <m:a>human-oriented</m:a>, <m:a>locally unique</m:a> identifier with <m:a>cross-instance</m:a> scope that can be used to reference this defined parameter elsewhere in <m:a>this or other OSCAL instances</m:a>. When referenced from another OSCAL instance, this identifier must be referenced in the context of the containing resource (e.g., import-profile). This id should be assigned <m:a>per-subject</m:a>, which means it should be consistently used to identify the same subject across revisions of the document.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>Parameter Identifier</b>: A unique identifier for a specific parameter instance. This identifier's uniqueness is document scoped and is intended to be consistent for the same parameter across minor revisions of the document.</xs:documentation>
+               <b>Parameter Identifier</b>: A human-oriented, locally unique identifier with cross-instance scope that can be used to reference this defined parameter elsewhere in this or other OSCAL instances. When referenced from another OSCAL instance, this identifier must be referenced in the context of the containing resource (e.g., import-profile). This id should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
       <xs:attribute name="class" type="oscal-ar:token">
@@ -4508,10 +4508,10 @@
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Depends on</m:formal-name>
-               <m:description>Another parameter invoking this one</m:description>
+               <m:description>**(deprecated)** Another parameter invoking this one. This construct has been deprecated and should not be used.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>Depends on</b>: Another parameter invoking this one</xs:documentation>
+               <b>Depends on</b>: **(deprecated)** Another parameter invoking this one. This construct has been deprecated and should not be used.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
@@ -4777,10 +4777,10 @@
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Component Identifier</m:formal-name>
-               <m:description>The unique identifier for the component.</m:description>
+               <m:description>A <m:a>machine-oriented</m:a>, <m:a>globally unique</m:a> identifier with <m:a>cross-instance</m:a> scope that can be used to reference this component elsewhere in <m:a>this or other OSCAL instances</m:a>. The locally defined <m:em>UUID</m:em> of the <m:code>component</m:code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <m:a>per-subject</m:a>, which means it should be consistently used to identify the same subject across revisions of the document.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>Component Identifier</b>: The unique identifier for the component.</xs:documentation>
+               <b>Component Identifier</b>: A machine-oriented, globally unique identifier with cross-instance scope that can be used to reference this component elsewhere in this or other OSCAL instances. The locally defined UUID of the component can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
       <xs:attribute name="type" use="required" type="oscal-ar:string">
@@ -4828,10 +4828,10 @@
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Service Protocol Information Universally Unique Identifier</m:formal-name>
-               <m:description>A globally unique identifier that can be used to reference this service protocol entry elsewhere in an OSCAL document. A UUID should be consistently used for a given resource across revisions of the document.</m:description>
+               <m:description>A <m:a>machine-oriented</m:a>, <m:a>globally unique</m:a> identifier with <m:a>cross-instance</m:a> scope that can be used to reference this service protocol information elsewhere in <m:a>this or other OSCAL instances</m:a>. The locally defined <m:em>UUID</m:em> of the <m:code>service protocol</m:code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <m:a>per-subject</m:a>, which means it should be consistently used to identify the same subject across revisions of the document.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>Service Protocol Information Universally Unique Identifier</b>: A globally unique identifier that can be used to reference this service protocol entry elsewhere in an OSCAL document. A UUID should be consistently used for a given resource across revisions of the document.</xs:documentation>
+               <b>Service Protocol Information Universally Unique Identifier</b>: A machine-oriented, globally unique identifier with cross-instance scope that can be used to reference this service protocol information elsewhere in this or other OSCAL instances. The locally defined UUID of the service protocol can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
       <xs:attribute name="name" use="required" type="oscal-ar:string">
@@ -5011,10 +5011,10 @@
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>User Universally Unique Identifier</m:formal-name>
-               <m:description>The unique identifier for the user class.</m:description>
+               <m:description>A <m:a>machine-oriented</m:a>, <m:a>globally unique</m:a> identifier with <m:a>cross-instance</m:a> scope that can be used to reference this user class elsewhere in <m:a>this or other OSCAL instances</m:a>. The locally defined <m:em>UUID</m:em> of the <m:code>system user</m:code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <m:a>per-subject</m:a>, which means it should be consistently used to identify the same subject across revisions of the document.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>User Universally Unique Identifier</b>: The unique identifier for the user class.</xs:documentation>
+               <b>User Universally Unique Identifier</b>: A machine-oriented, globally unique identifier with cross-instance scope that can be used to reference this user class elsewhere in this or other OSCAL instances. The locally defined UUID of the system user can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
@@ -5155,10 +5155,10 @@
                   <xs:annotation>
                      <xs:appinfo>
                         <m:formal-name>Component Universally Unique Identifier Reference</m:formal-name>
-                        <m:description>A reference to a component that is implemented as part of an inventory item.</m:description>
+                        <m:description>A <m:a>machine-oriented</m:a> identifier reference to a <m:code>component</m:code> that is implemented as part of an inventory item.</m:description>
                      </xs:appinfo>
                      <xs:documentation>
-                        <b>Component Universally Unique Identifier Reference</b>: A reference to a component that is implemented as part of an inventory item.</xs:documentation>
+                        <b>Component Universally Unique Identifier Reference</b>: A machine-oriented identifier reference to a component that is implemented as part of an inventory item.</xs:documentation>
                   </xs:annotation>
                </xs:attribute>
             </xs:complexType>
@@ -5183,10 +5183,10 @@
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Inventory Item Universally Unique Identifier</m:formal-name>
-               <m:description>A globally unique identifier that can be used to reference this inventory item entry elsewhere in an OSCAL document. A UUID should be consistently used for a given resource across revisions of the document.</m:description>
+               <m:description>A <m:a>machine-oriented</m:a>, <m:a>globally unique</m:a> identifier with <m:a>cross-instance</m:a> scope that can be used to reference this inventory item elsewhere in <m:a>this or other OSCAL instances</m:a>. The locally defined <m:em>UUID</m:em> of the <m:code>inventory item</m:code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <m:a>per-subject</m:a>, which means it should be consistently used to identify the same subject across revisions of the document.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>Inventory Item Universally Unique Identifier</b>: A globally unique identifier that can be used to reference this inventory item entry elsewhere in an OSCAL document. A UUID should be consistently used for a given resource across revisions of the document.</xs:documentation>
+               <b>Inventory Item Universally Unique Identifier</b>: A machine-oriented, globally unique identifier with cross-instance scope that can be used to reference this inventory item elsewhere in this or other OSCAL instances. The locally defined UUID of the inventory item can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
@@ -5233,10 +5233,10 @@
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Parameter ID</m:formal-name>
-               <m:description>A reference to a parameter within a control, who's catalog has been imported into the current implementation context.</m:description>
+               <m:description>A <m:a>human-oriented</m:a> reference to a <m:code>parameter</m:code> within a control, who's catalog has been imported into the current implementation context.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>Parameter ID</b>: A reference to a parameter within a control, who's catalog has been imported into the current implementation context.</xs:documentation>
+               <b>Parameter ID</b>: A human-oriented reference to a parameter within a control, who's catalog has been imported into the current implementation context.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
@@ -5244,10 +5244,10 @@
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>System Identification</m:formal-name>
-            <m:description>A unique identifier for the system described by this system security plan.</m:description>
+            <m:description>A <m:a>human-oriented</m:a>, <m:a>globally unique</m:a> identifier with <m:a>cross-instance</m:a> scope that can be used to reference this system identification property elsewhere in <m:a>this or other OSCAL instances</m:a>. When referencing an externally defined <m:code>system identification</m:code>, the <m:code>system identification</m:code> must be used in the context of the external / imported OSCAL instance (e.g., uri-reference). This string should be assigned <m:a>per-subject</m:a>, which means it should be consistently used to identify the same system across revisions of the document.</m:description>
          </xs:appinfo>
          <xs:documentation>
-            <b>System Identification</b>: A unique identifier for the system described by this system security plan.</xs:documentation>
+            <b>System Identification</b>: A human-oriented, globally unique identifier with cross-instance scope that can be used to reference this system identification property elsewhere in this or other OSCAL instances. When referencing an externally defined system identification, the system identification must be used in the context of the external / imported OSCAL instance (e.g., uri-reference). This string should be assigned per-subject, which means it should be consistently used to identify the same system across revisions of the document.</xs:documentation>
       </xs:annotation>
       <xs:simpleContent>
          <xs:extension base="oscal-ar:string">
@@ -5255,10 +5255,10 @@
                <xs:annotation>
                   <xs:appinfo>
                      <m:formal-name>Identification System Type</m:formal-name>
-                     <m:description>Identifies the identification system from which the provided identifier was assigned.</m:description>
+                     <m:description>Identifies the identification system from which the provided identifier was assigned. </m:description>
                   </xs:appinfo>
                   <xs:documentation>
-                     <b>Identification System Type</b>: Identifies the identification system from which the provided identifier was assigned.</xs:documentation>
+                     <b>Identification System Type</b>: Identifies the identification system from which the provided identifier was assigned. </xs:documentation>
                </xs:annotation>
             </xs:attribute>
          </xs:extension>

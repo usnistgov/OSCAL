@@ -1,6 +1,6 @@
 ---
-title: "OSCAL Profile Model v JSON Format Index"
-heading: "Profile Model v JSON Format Index"
+title: "OSCAL Profile Model v1.0.1 JSON Format Index"
+heading: "Profile Model v1.0.1 JSON Format Index"
 weight: 30
 generateanchors: false
 sidenav:
@@ -55,7 +55,7 @@ The following is an index of each JSON property used in the [JSON format](https:
    <section class="named-object-group">
       <h1 class="toc1" id="/as-is">as-is</h1>
       <ul>
-         <li><span class="pathlink">/<a href="../json-reference/#/profile">profile</a>/<a href="../json-reference/#/profile/merge">merge</a>/<a href="../json-reference/#/profile/merge/as-is">as-is</a></span> - <span class="formal-name"><a href="../json-definitions/#/assembly/oscal-profile/merge/as-is">As is</a></span></li>
+         <li><span class="pathlink">/<a href="../json-reference/#/profile">profile</a>/<a href="../json-reference/#/profile/merge">merge</a>/<a href="../json-reference/#/profile/merge/as-is">as-is</a></span> - <span class="formal-name"><a href="../json-definitions/#/assembly/oscal-profile/merge/as-is">As-Is Structuring Directive</a></span></li>
       </ul>
    </section>
    <section class="named-object-group">
@@ -250,7 +250,7 @@ The following is an index of each JSON property used in the [JSON format](https:
    <section class="named-object-group">
       <h1 class="toc1" id="/groups">groups</h1>
       <ul>
-         <li><span class="pathlink">/<a href="../json-reference/#/profile">profile</a>/<a href="../json-reference/#/profile/merge">merge</a>/<a href="../json-reference/#/profile/merge/custom">custom</a>/<a href="../json-reference/#/profile/merge/custom/groups">groups</a></span> - <span class="formal-name"><a href="../json-definitions/#/assembly/oscal-profile/custom/groups">Control group</a></span></li>
+         <li><span class="pathlink">/<a href="../json-reference/#/profile">profile</a>/<a href="../json-reference/#/profile/merge">merge</a>/<a href="../json-reference/#/profile/merge/custom">custom</a>/<a href="../json-reference/#/profile/merge/custom/groups">groups</a></span> - <span class="formal-name"><a href="../json-definitions/#/assembly/oscal-profile/merge/custom/groups">Control group</a></span></li>
          <li><span class="pathlink">/<a href="../json-reference/#/profile">profile</a>/<a href="../json-reference/#/profile/merge">merge</a>/<a href="../json-reference/#/profile/merge/custom">custom</a>/<a href="../json-reference/#/profile/merge/custom/groups">groups</a>/<a href="../json-reference/#/profile/merge/custom/groups/groups">groups</a></span> - <span class="formal-name"><a href="../json-definitions/#/assembly/oscal-profile/group/groups">Control group</a></span></li>
       </ul>
    </section>
@@ -342,7 +342,7 @@ The following is an index of each JSON property used in the [JSON format](https:
       <h1 class="toc1" id="/insert-controls">insert-controls</h1>
       <ul>
          <li><span class="pathlink">/<a href="../json-reference/#/profile">profile</a>/<a href="../json-reference/#/profile/merge">merge</a>/<a href="../json-reference/#/profile/merge/custom">custom</a>/<a href="../json-reference/#/profile/merge/custom/groups">groups</a>/<a href="../json-reference/#/profile/merge/custom/groups/insert-controls">insert-controls</a></span> - <span class="formal-name"><a href="../json-definitions/#/assembly/oscal-profile/group/insert-controls">Select controls</a></span></li>
-         <li><span class="pathlink">/<a href="../json-reference/#/profile">profile</a>/<a href="../json-reference/#/profile/merge">merge</a>/<a href="../json-reference/#/profile/merge/custom">custom</a>/<a href="../json-reference/#/profile/merge/custom/insert-controls">insert-controls</a></span> - <span class="formal-name"><a href="../json-definitions/#/assembly/oscal-profile/custom/insert-controls">Select controls</a></span></li>
+         <li><span class="pathlink">/<a href="../json-reference/#/profile">profile</a>/<a href="../json-reference/#/profile/merge">merge</a>/<a href="../json-reference/#/profile/merge/custom">custom</a>/<a href="../json-reference/#/profile/merge/custom/insert-controls">insert-controls</a></span> - <span class="formal-name"><a href="../json-definitions/#/assembly/oscal-profile/merge/custom/insert-controls">Select controls</a></span></li>
       </ul>
    </section>
    <section class="named-object-group">
@@ -444,7 +444,7 @@ The following is an index of each JSON property used in the [JSON format](https:
    <section class="named-object-group">
       <h1 class="toc1" id="/method">method</h1>
       <ul>
-         <li><span class="pathlink">/<a href="../json-reference/#/profile">profile</a>/<a href="../json-reference/#/profile/merge">merge</a>/<a href="../json-reference/#/profile/merge/combine">combine</a>/<a href="../json-reference/#/profile/merge/combine/method">method</a></span> - <span class="formal-name"><a href="../json-definitions/#/assembly/oscal-profile/combine/method">Combination method</a></span></li>
+         <li><span class="pathlink">/<a href="../json-reference/#/profile">profile</a>/<a href="../json-reference/#/profile/merge">merge</a>/<a href="../json-reference/#/profile/merge/combine">combine</a>/<a href="../json-reference/#/profile/merge/combine/method">method</a></span> - <span class="formal-name"><a href="../json-definitions/#/assembly/oscal-profile/merge/combine/method">Combination method</a></span></li>
       </ul>
    </section>
    <section class="named-object-group">
@@ -825,7 +825,7 @@ The following is an index of each JSON property used in the [JSON format](https:
    <section class="named-object-group">
       <h1 class="toc1" id="/uuid">uuid</h1>
       <ul>
-         <li><span class="pathlink">/<a href="../json-reference/#/profile">profile</a>/<a href="../json-reference/#/profile/uuid">uuid</a></span> - <span class="formal-name"><a href="../json-definitions/#/assembly/oscal-profile/profile/uuid">Catalog Universally Unique Identifier</a></span></li>
+         <li><span class="pathlink">/<a href="../json-reference/#/profile">profile</a>/<a href="../json-reference/#/profile/uuid">uuid</a></span> - <span class="formal-name"><a href="../json-definitions/#/assembly/oscal-profile/profile/uuid">Profile Universally Unique Identifier</a></span></li>
          <li><span class="pathlink">/<a href="../json-reference/#/profile">profile</a>/<a href="../json-reference/#/profile/metadata">metadata</a>/<a href="../json-reference/#/profile/metadata/revisions">revisions</a>/<a href="../json-reference/#/profile/metadata/revisions/props">props</a>/<a href="../json-reference/#/profile/metadata/revisions/props/uuid">uuid</a></span> - <span class="formal-name"><a href="../json-definitions/#/assembly/oscal-metadata/property/uuid">Property Universally Unique Identifier</a></span></li>
          <li><span class="pathlink">/<a href="../json-reference/#/profile">profile</a>/<a href="../json-reference/#/profile/metadata">metadata</a>/<a href="../json-reference/#/profile/metadata/props">props</a>/<a href="../json-reference/#/profile/metadata/props/uuid">uuid</a></span> - <span class="formal-name"><a href="../json-definitions/#/assembly/oscal-metadata/property/uuid">Property Universally Unique Identifier</a></span></li>
          <li><span class="pathlink">/<a href="../json-reference/#/profile">profile</a>/<a href="../json-reference/#/profile/metadata">metadata</a>/<a href="../json-reference/#/profile/metadata/roles">roles</a>/<a href="../json-reference/#/profile/metadata/roles/props">props</a>/<a href="../json-reference/#/profile/metadata/roles/props/uuid">uuid</a></span> - <span class="formal-name"><a href="../json-definitions/#/assembly/oscal-metadata/property/uuid">Property Universally Unique Identifier</a></span></li>

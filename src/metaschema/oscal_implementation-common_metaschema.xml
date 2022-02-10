@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="../../build/metaschema/toolchains/xslt-M4/validate/metaschema-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-model href="../../build/metaschema/toolchains/xslt-M4/validate/metaschema-composition-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <!DOCTYPE METASCHEMA [
       <!ENTITY allowed-values-responsible-roles-operations SYSTEM "./shared-constraints/allowed-values-responsible-roles-operations.ent">
       <!ENTITY allowed-values-responsible-roles-component-production SYSTEM "./shared-constraints/allowed-values-responsible-roles-component-production.ent">
@@ -14,7 +14,7 @@
 <METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/toolchains/xslt-M4/validate/metaschema.xsd" abstract="yes">
       <schema-name>OSCAL Implementation Common Information</schema-name>
-      <schema-version>1.0.0</schema-version>
+      <schema-version>1.0.1</schema-version>
       <short-name>oscal-implementation-common</short-name>
       <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
       <json-base-uri>http://csrc.nist.gov/ns/oscal</json-base-uri>
@@ -30,7 +30,8 @@
             <description>A defined component that can be part of an implemented system.</description>
             <define-flag name="uuid" as-type="uuid" required="yes">
                   <formal-name>Component Identifier</formal-name>
-                  <description>The unique identifier for the component.</description>
+                  <!-- Identifier Declaration -->
+                  <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this component elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>component</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
             </define-flag>
             <flag ref="system-component-type" required="yes">
                   <!-- CHANGED: "component-type" to "type" -->
@@ -138,7 +139,7 @@
                   </allowed-values>
 
                   <allowed-values target="prop[@name='implementation-point']/@value">
-                        <enum value="inteneral">The component is implemented within the system boundary.</enum>
+                        <enum value="internal">The component is implemented within the system boundary.</enum>
                         <enum value="external">The component is implemented outside the system boundary.</enum>
                   </allowed-values>
 
@@ -249,7 +250,8 @@
             <description>Information about the protocol used to provide a service.</description>
             <define-flag name="uuid" as-type="uuid">
                   <formal-name>Service Protocol Information Universally Unique Identifier</formal-name>
-                  <description>A globally unique identifier that can be used to reference this service protocol entry elsewhere in an OSCAL document. A UUID should be consistently used for a given resource across revisions of the document.</description>
+                  <!-- Identifier Declaration -->
+                  <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this service protocol information elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>service protocol</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
             </define-flag>
             <define-flag name="name" required="yes">
                   <formal-name>Protocol Name</formal-name>
@@ -268,6 +270,11 @@
                         <group-as name="port-ranges" in-json="ARRAY"/>
                   </assembly>
             </model>
+            <constraint>
+                  <expect level="WARNING" target="." test="@uuid">
+                        <message>It is a best practice to provide a UUID.</message>
+                  </expect>
+            </constraint>
       </define-assembly>
       <define-assembly name="port-range">
             <formal-name>Port Range</formal-name>
@@ -337,7 +344,8 @@
             <description>A type of user that interacts with the system based on an associated role.</description>
             <define-flag name="uuid" as-type="uuid" required="yes">
                   <formal-name>User Universally Unique Identifier</formal-name>
-                  <description>The unique identifier for the user class.</description>
+                  <!-- Identifier Declaration -->
+                  <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this user class elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>system user</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
             </define-flag>
             <model>
                   <define-field name="title" as-type="markup-line">
@@ -422,7 +430,8 @@
 -->
             <define-flag name="uuid" as-type="uuid" required="yes">
                   <formal-name>Inventory Item Universally Unique Identifier</formal-name>
-                  <description>A globally unique identifier that can be used to reference this inventory item entry elsewhere in an OSCAL document. A UUID should be consistently used for a given resource across revisions of the document.</description>
+                  <!-- Identifier Declaration -->
+                  <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this inventory item elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>inventory item</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
             </define-flag>
             <!-- CHANGED: Moved to property[@name='asset-id']. -->
             <!--      <define-flag name="asset-id">
@@ -452,7 +461,8 @@
 
                         <define-flag required="yes" name="component-uuid" as-type="uuid">
                               <formal-name>Component Universally Unique Identifier Reference</formal-name>
-                              <description>A reference to a component that is implemented as part of an inventory item.</description>
+                              <!-- Identifier Reference -->
+                              <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to a <code>component</code> that is implemented as part of an inventory item.</description>
                         </define-flag>
 
                         <!-- CHANGED (daw): the following is not needed since it is required on the referenced component -->
@@ -631,7 +641,8 @@
 -->
       <define-flag name="statement-id" as-type="token">
             <formal-name>Control Statement Reference</formal-name>
-            <description>A reference to a control statement by its identifier</description>
+            <!-- Identifier Reference -->
+            <description>A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a> identifier reference to a <code>control statement</code>.</description>
       </define-flag>
       <define-assembly name="set-parameter">
             <formal-name>Set Parameter Value</formal-name>
@@ -653,11 +664,12 @@
       <define-field name="system-id" as-type="string">
             <!-- This is an id because the idenfier is assigned and managed by humans. -->
             <formal-name>System Identification</formal-name>
-            <description>A unique identifier for the system described by this system security plan.</description>
+            <!-- Identifier Declaration -->
+            <description>A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this system identification property elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. When referencing an externally defined <code>system identification</code>, the <code>system identification</code> must be used in the context of the external / imported OSCAL instance (e.g., uri-reference). This string should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same system across revisions of the document.</description>
             <json-value-key>id</json-value-key>
             <define-flag name="identifier-type" as-type="uri">
                   <formal-name>Identification System Type</formal-name>
-                  <description>Identifies the identification system from which the provided identifier was assigned.</description>
+                  <description>Identifies the identification system from which the provided identifier was assigned. </description>
                   <constraint>
                         <allowed-values allow-other="yes">
                               <enum value="https://fedramp.gov">The identifier was assigned by FedRAMP.</enum>
@@ -671,7 +683,8 @@
       <define-flag name="param-id" as-type="token">
             <!-- This is an id because the idenfier is assigned and managed by humans. -->
             <formal-name>Parameter ID</formal-name>
-            <description>A reference to a parameter within a control, who's catalog has been imported into the current implementation context.</description>
+            <!-- Identifier Reference -->
+            <description>A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a> reference to a <code>parameter</code> within a control, who's catalog has been imported into the current implementation context.</description>
             <example>
                   <set-param xmlns="http://csrc.nist.gov/ns/oscal/example" param-id="ac-2_prm_2">
                         <enum>System ISSO</enum>

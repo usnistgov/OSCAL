@@ -5,8 +5,9 @@
       <title>Example</title>
       <last-modified>2021-04-06T15:00:53.695-04:00</last-modified>
       <version>1.2</version>
-      <oscal-version>1.0.0-rc2</oscal-version>
-      <link rel="resolution-source" href="modify-adds_profile.xml"/>
+      <oscal-version>1.0.0</oscal-version>
+      <prop name="resolution-tool" value="some value"/>
+      <link rel="source-profile" href="../modify-adds_profile.xml"/>
    </metadata>
    <group>
       <title>Group A of C</title>
@@ -20,7 +21,7 @@
                </description>
             </constraint>
          </param>
-         <prop name="CORE" ns="https://fedramp.gov/ns/oscal" value=""/>
+         <prop name="CORE" ns="https://fedramp.gov/ns/oscal" value="core"/>
          <prop name="place" value="first"/>
          <part name="statement" id="a1-stmt">
             <prop name="conformity"

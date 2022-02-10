@@ -2,11 +2,11 @@ version: "3.7"
 
 services:
   docs:
+    environment:
+    - OSCAL_WORKING_PATH=/oscal
     extends:
       file: ../build/docker-compose.yml
       service: cli
     ports:
       - "1313:1313"
-    volumes:
-      - "./:/docs"
-    entrypoint: /docs/run-server.sh
+    entrypoint: /oscal/docs/run-server.sh

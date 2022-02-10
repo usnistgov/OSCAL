@@ -22,7 +22,7 @@
    <xsl:output omit-xml-declaration="true" method="xml"/>
    <xsl:variable name="write-options" as="map(*)">
       <xsl:map>
-         <xsl:map-entry key="'indent'" expand-text="true">{ $json-indent='yes' }</xsl:map-entry>
+         <xsl:map-entry key="'indent'" select="$json-indent='yes'"/>
       </xsl:map>
    </xsl:variable>
    <xsl:variable name="source-xml" select="/"/>
@@ -700,6 +700,7 @@
       </field>
    </xsl:template>
    <xsl:template match="catalog/@uuid"
+                 priority="1"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
             as-type="uuid"
@@ -710,6 +711,7 @@
       </flag>
    </xsl:template>
    <xsl:template match="prop/@name"
+                 priority="1"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
             as-type="token"
@@ -720,6 +722,7 @@
       </flag>
    </xsl:template>
    <xsl:template match="prop/@uuid"
+                 priority="1"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
             as-type="uuid"
@@ -730,12 +733,14 @@
       </flag>
    </xsl:template>
    <xsl:template match="prop/@ns"
+                 priority="1"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string" as-type="uri" name="ns" key="ns" gi="ns">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
    <xsl:template match="prop/@value"
+                 priority="1"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
             as-type="string"
@@ -746,6 +751,7 @@
       </flag>
    </xsl:template>
    <xsl:template match="prop/@class"
+                 priority="1"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
             as-type="token"
@@ -756,6 +762,7 @@
       </flag>
    </xsl:template>
    <xsl:template match="link/@href"
+                 priority="1"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
             as-type="uri-reference"
@@ -766,6 +773,7 @@
       </flag>
    </xsl:template>
    <xsl:template match="link/@rel"
+                 priority="1"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
             as-type="token"
@@ -797,12 +805,14 @@
       </flag>
    </xsl:template>
    <xsl:template match="role/@id"
+                 priority="1"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string" as-type="token" name="id" key="id" gi="id">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
    <xsl:template match="location/@uuid"
+                 priority="1"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
             as-type="uuid"
@@ -834,6 +844,7 @@
       </flag>
    </xsl:template>
    <xsl:template match="party/@uuid"
+                 priority="1"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
             as-type="uuid"
@@ -844,6 +855,7 @@
       </flag>
    </xsl:template>
    <xsl:template match="party/@type"
+                 priority="1"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
             as-type="string"
@@ -865,6 +877,7 @@
       </flag>
    </xsl:template>
    <xsl:template match="responsible-party/@role-id"
+                 priority="1"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
             as-type="token"
@@ -875,12 +888,14 @@
       </flag>
    </xsl:template>
    <xsl:template match="param/@id"
+                 priority="1"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string" as-type="token" name="id" key="id" gi="id">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
    <xsl:template match="param/@class"
+                 priority="1"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
             as-type="token"
@@ -891,16 +906,19 @@
       </flag>
    </xsl:template>
    <xsl:template match="param/@depends-on"
+                 priority="1"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
             as-type="token"
             name="depends-on"
             key="depends-on"
+            deprecated="1.0.1"
             gi="depends-on">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
    <xsl:template match="select/@how-many"
+                 priority="1"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
             as-type="token"
@@ -911,12 +929,14 @@
       </flag>
    </xsl:template>
    <xsl:template match="control/@id"
+                 priority="1"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string" as-type="token" name="id" key="id" gi="id">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
    <xsl:template match="control/@class"
+                 priority="1"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
             as-type="token"
@@ -927,12 +947,14 @@
       </flag>
    </xsl:template>
    <xsl:template match="part/@id"
+                 priority="1"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string" as-type="token" name="id" key="id" gi="id">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
    <xsl:template match="part/@name"
+                 priority="1"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
             as-type="token"
@@ -943,12 +965,14 @@
       </flag>
    </xsl:template>
    <xsl:template match="part/@ns"
+                 priority="1"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string" as-type="uri" name="ns" key="ns" gi="ns">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
    <xsl:template match="part/@class"
+                 priority="1"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
             as-type="token"
@@ -959,12 +983,14 @@
       </flag>
    </xsl:template>
    <xsl:template match="group/@id"
+                 priority="1"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string" as-type="token" name="id" key="id" gi="id">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
    <xsl:template match="group/@class"
+                 priority="1"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
             as-type="token"
@@ -1007,6 +1033,7 @@
       </flag>
    </xsl:template>
    <xsl:template match="hash/@algorithm"
+                 priority="3"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
             as-type="string"
