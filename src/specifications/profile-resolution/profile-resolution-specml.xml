@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="spec-checkup.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <?xml-model href="specml.rnc" type="application/relax-ng-compact-syntax"?>
+<!--<?xml-stylesheet type="text/xsl" href="specml-html-xslt1.xsl"?>-->
+<?xml-stylesheet type="text/css" href="specml.css"?>
 <SPECIFICATION xmlns="http://csrc.nist.gov/ns/oscal/specml">
   <head>OSCAL Profile Resolution</head>
   <section id="draft">
