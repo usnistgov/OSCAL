@@ -329,7 +329,7 @@
     <description>Used by assessment-results to import information about the original plan for assessing the system.</description>
     <define-flag name="href" required="yes" as-type="uri-reference">
       <formal-name>Assessment Plan Reference</formal-name>
-      <description>>A resolvable URL reference to the assessment plan governing the assessment activities.</description>
+      <description>A resolvable URL reference to the assessment plan governing the assessment activities.</description>
       <remarks>
         <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment that points to a <code>back-matter</code>
           <code>resource</code> in the same document.</p>
