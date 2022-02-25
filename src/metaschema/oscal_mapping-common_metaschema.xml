@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../build/metaschema/toolchains/xslt-M4/validate/metaschema-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/toolchains/xslt-M4/validate/metaschema.xsd" abstract="yes">
+    <schema-name>OSCAL Mapping Model -- Common Models</schema-name>
+    <schema-version>1.0.0</schema-version>
+    <short-name>oscal-mapping-common</short-name>
+    <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
+    <json-base-uri>http://csrc.nist.gov/ns/oscal</json-base-uri>
+
+    <import href="oscal_metadata_metaschema.xml"/>
+
+    <define-assembly name="map">
+        <formal-name>Mapping Entry</formal-name>
+        <description>An individual entry that is part of a larger mapping.</description>
+        <define-flag name="uuid" as-type="uuid" required="yes">
+            <formal-name>Mapping Entry Identifier</formal-name>
+            <description>The unique identifier for the mapping entry.</description>
+        </define-flag>
+        <model>
+            <assembly ref="property" max-occurs="unbounded">
+                <group-as name="props" in-json="ARRAY"/>
+            </assembly>
+            <assembly ref="link" max-occurs="unbounded">
+                <group-as name="links" in-json="ARRAY"/>
+            </assembly>
+            <define-field name="relationship" min-occurs="1">
+                <formal-name>Mapping Entry Relationship</formal-name>
+                <description>The relationship type for the mapping entry.</description>
+                <define-flag name="ns" as-type="uri">
+                    <formal-name>Relationship Value Namespace</formal-name>
+                    <description>A namespace qualifying the relationship's value. This allows different organizations to associate distinct semantics for relationships with the same name.</description>
+                    <remarks>
+                        <p>An organization MUST use a URI that they have control over. e.g., a domain registered to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
+                        <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
+                    </remarks>
+                </define-flag>
+                <constraint>
+                    <allowed-values target=".[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]">
+                        <enum value="equal-to">The source is equivalent in semantic meaning to the target.</enum>
+                        <enum value="subset-of">The source is a semantic subset of the target.</enum>
+                        <enum value="superset-of">The source is a semantic superset of the target.</enum>
+                    </allowed-values>
+                </constraint>
+            </define-field>
+            <assembly ref="mapping-item" min-occurs="1" max-occurs="unbounded">
+                <use-name>source</use-name>
+                <group-as name="sources" in-json="ARRAY"/>
+            </assembly>
+            <assembly ref="mapping-item" min-occurs="1" max-occurs="unbounded">
+                <use-name>target</use-name>
+                <group-as name="targets" in-json="ARRAY"/>
+            </assembly>
+            <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
+        </model>
+    </define-assembly>
+    <define-assembly name="mapping-item">
+        <formal-name>Mapping Entry Item (source or target)</formal-name>
+        <description>Identfies a specific edge within a source or target that is the subject of a mapping.</description>
+        <define-flag name="type" as-type="token" required="yes">
+            <formal-name>Subject Type</formal-name>
+            <description>The semantic type of the subject.</description>
+        </define-flag>
+        <define-flag name="id-ref" as-type="string" required="yes">
+            <formal-name>Subject Type</formal-name>
+            <description>The semantic type of the subject.</description>
+        </define-flag>
+        <model>
+            <assembly ref="property" max-occurs="unbounded">
+                <group-as name="props" in-json="ARRAY"/>
+            </assembly>
+            <assembly ref="link" max-occurs="unbounded">
+                <group-as name="links" in-json="ARRAY"/>
+            </assembly>
+            <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
+        </model>
+    </define-assembly>
+
+    <define-assembly name="mapping-resource-reference">
+        <formal-name>Mapped Resource Reference</formal-name>
+        <description>A reference to a back-matter resource that is either the source or target of a mapping.</description>
+        <define-flag name="type" as-type="token" required="yes">
+            <formal-name>Resource Type</formal-name>
+            <description>The semantic type of the resource.</description>
+        </define-flag>
+        <define-flag name="href" as-type="uri-reference" required="yes">
+            <formal-name>Catalog or Profile Reference</formal-name>
+            <description>A resolvable URL reference to the base catalog or profile that this profile is tailoring.</description>
+            <remarks>
+                <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment that points to a <code>back-matter</code>
+                    <code>resource</code> in the same document.</p>
+                <!-- TODO: Add a link to "within the scope of the containing OSCAL document" to point to documentation of identification scopes" -->
+                <p>If a local reference using a fragment is used, this will be indicated by a fragment "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
+                <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URL pointing to the location of the referenced resource. A relative URL will be resolved relative to the location of the document containing the link.</p>
+            </remarks>
+        </define-flag>
+        <model>
+            <assembly ref="property" max-occurs="unbounded">
+                <group-as name="props" in-json="ARRAY"/>
+            </assembly>
+            <assembly ref="link" max-occurs="unbounded">
+                <group-as name="links" in-json="ARRAY"/>
+            </assembly>
+            <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
+        </model>
+    </define-assembly>
+</METASCHEMA>
