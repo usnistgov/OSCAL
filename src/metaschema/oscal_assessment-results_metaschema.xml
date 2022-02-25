@@ -99,7 +99,7 @@
       </define-field>
 
       <assembly ref="property" max-occurs="unbounded">
-        <group-as name="prop" in-json="ARRAY"/>
+        <group-as name="props" in-json="ARRAY"/>
       </assembly>
       <assembly ref="link" max-occurs="unbounded">
         <group-as name="links" in-json="ARRAY"/>
