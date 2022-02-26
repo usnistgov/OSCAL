@@ -2651,6 +2651,25 @@ The following is a reference for the JSON object definitions derived from the [m
    </div>
    <div class="model-entry definition define-assembly">
       <div class="definition-header">
+         <h1 id="/assembly/oscal-catalog-common/include-all" class="toc1 name">include-all</h1>
+         <p class="type">assembly<br class="br" /> </p>
+         <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-catalog-common/include-all">Switch to XML</a></div>
+         <p class="formal-name">Include All</p>
+      </div>
+      <div class="body">
+         <p class="description"><span class="usa-tag">description</span> Include all controls from the imported catalog or profile resources.</p>
+         <div class="remarks-group usa-prose">
+            <details open="open">
+               <summary class="subhead">Remarks</summary>
+               <div class="remarks">
+                  <p>This element provides an alternative to calling controls individually from a catalog.</p>
+               </div>
+            </details>
+         </div>
+      </div>
+   </div>
+   <div class="model-entry definition define-assembly">
+      <div class="definition-header">
          <h1 id="/assembly/oscal-implementation-common/inventory-item" class="toc1 name">inventory-item</h1>
          <p class="type">assembly<br class="br" /> </p>
          <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-implementation-common/inventory-item">Switch to XML</a></div>

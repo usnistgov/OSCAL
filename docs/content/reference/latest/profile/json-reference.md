@@ -3195,11 +3195,10 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                               <p class="type"><a href="/reference/datatypes/#empty">empty</a></p>
                               <p class="occurrence">[1]</p>
                               <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/import/include-all">Switch to XML</a></div>
-                              <p class="formal-name">Insert All</p>
+                              <p class="formal-name">Include All</p>
                            </div>
                            <div class="body">
-                              <p class="description"><span class="usa-tag">Description</span> Insert all controls from the imported catalog or profile resources identified in
-                                 the <code>import</code> directive.</p>
+                              <p class="description"><span class="usa-tag">Description</span> Include all controls from the imported catalog or profile resources.</p>
                               <div class="remarks-group usa-prose">
                                  <details open="open">
                                     <summary class="subhead">Remarks</summary>
@@ -5149,11 +5148,10 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                                <p class="type"><a href="/reference/datatypes/#empty">empty</a></p>
                                                                <p class="occurrence">[1]</p>
                                                                <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/group/insert-controls/include-all">Switch to XML</a></div>
-                                                               <p class="formal-name">Insert All</p>
+                                                               <p class="formal-name">Include All</p>
                                                             </div>
                                                             <div class="body">
-                                                               <p class="description"><span class="usa-tag">Description</span> Insert all controls from the imported catalog or profile resources identified in
-                                                                  the <code>import</code> directive.</p>
+                                                               <p class="description"><span class="usa-tag">Description</span> Include all controls from the imported catalog or profile resources.</p>
                                                                <div class="remarks-group usa-prose">
                                                                   <details open="open">
                                                                      <summary class="subhead">Remarks</summary>
@@ -5447,11 +5445,10 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                    <p class="type"><a href="/reference/datatypes/#empty">empty</a></p>
                                                    <p class="occurrence">[1]</p>
                                                    <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom/insert-controls/include-all">Switch to XML</a></div>
-                                                   <p class="formal-name">Insert All</p>
+                                                   <p class="formal-name">Include All</p>
                                                 </div>
                                                 <div class="body">
-                                                   <p class="description"><span class="usa-tag">Description</span> Insert all controls from the imported catalog or profile resources identified in
-                                                      the <code>import</code> directive.</p>
+                                                   <p class="description"><span class="usa-tag">Description</span> Include all controls from the imported catalog or profile resources.</p>
                                                    <div class="remarks-group usa-prose">
                                                       <details open="open">
                                                          <summary class="subhead">Remarks</summary>

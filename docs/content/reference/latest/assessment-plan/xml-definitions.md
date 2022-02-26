@@ -1500,16 +1500,24 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="definition-link"><a href="#/assembly/oscal-metadata/link">See definition</a></p>
                   </div>
                </div>
-               <div class="model-entry definition define-assembly">
+               <div class="model-entry definition assembly">
                   <div class="instance-header">
                      <h2 id="/assembly/oscal-assessment-common/assessment-subject/include-all" class="toc2 name">include-all</h2>
                      <p class="type">assembly<br class="br" /> </p>
                      <p class="occurrence">[1]</p>
                      <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-assessment-common/assessment-subject/include-all">Switch to JSON</a></div>
-                     <p class="formal-name">All</p>
+                     <p class="formal-name">Include All</p>
                   </div>
                   <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> A key word to indicate all.</p>
+                     <div class="remarks-group usa-prose">
+                        <details open="open">
+                           <summary class="subhead">Remarks</summary>
+                           <div class="remarks">
+                              <p>This element provides an alternative to calling controls individually from a catalog.</p>
+                           </div>
+                        </details>
+                     </div>
+                     <p class="definition-link"><a href="#/assembly/oscal-catalog-common/include-all">See definition</a></p>
                   </div>
                </div>
                <div class="model-entry definition assembly">
@@ -3550,6 +3558,25 @@ The following is a reference for the XML element and attribute types derived fro
                </div>
             </div>
          </details>
+      </div>
+   </div>
+   <div class="model-entry definition define-assembly">
+      <div class="definition-header">
+         <h1 id="/assembly/oscal-catalog-common/include-all" class="toc1 name">include-all</h1>
+         <p class="type">assembly<br class="br" /> </p>
+         <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-catalog-common/include-all">Switch to JSON</a></div>
+         <p class="formal-name">Include All</p>
+      </div>
+      <div class="body">
+         <p class="description"><span class="usa-tag">description</span> Include all controls from the imported catalog or profile resources.</p>
+         <div class="remarks-group usa-prose">
+            <details open="open">
+               <summary class="subhead">Remarks</summary>
+               <div class="remarks">
+                  <p>This element provides an alternative to calling controls individually from a catalog.</p>
+               </div>
+            </details>
+         </div>
       </div>
    </div>
    <div class="model-entry definition define-assembly">
@@ -8520,16 +8547,24 @@ The following is a reference for the XML element and attribute types derived fro
                                  <p class="definition-link"><a href="#/assembly/oscal-metadata/link">See definition</a></p>
                               </div>
                            </div>
-                           <div class="model-entry definition define-assembly">
+                           <div class="model-entry definition assembly">
                               <div class="instance-header">
                                  <h3 id="/assembly/oscal-assessment-common/reviewed-controls/control-selection/include-all" class="toc3 name">include-all</h3>
                                  <p class="type">assembly<br class="br" /> </p>
                                  <p class="occurrence">[1]</p>
                                  <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-assessment-common/reviewed-controls/control-selections/include-all">Switch to JSON</a></div>
-                                 <p class="formal-name">All</p>
+                                 <p class="formal-name">Include All</p>
                               </div>
                               <div class="body">
-                                 <p class="description"><span class="usa-tag">description</span> A key word to indicate all.</p>
+                                 <div class="remarks-group usa-prose">
+                                    <details open="open">
+                                       <summary class="subhead">Remarks</summary>
+                                       <div class="remarks">
+                                          <p>This element provides an alternative to calling controls individually from a catalog.</p>
+                                       </div>
+                                    </details>
+                                 </div>
+                                 <p class="definition-link"><a href="#/assembly/oscal-catalog-common/include-all">See definition</a></p>
                               </div>
                            </div>
                            <div class="model-entry definition assembly">
@@ -8681,16 +8716,24 @@ The following is a reference for the XML element and attribute types derived fro
                                  <p class="definition-link"><a href="#/assembly/oscal-metadata/link">See definition</a></p>
                               </div>
                            </div>
-                           <div class="model-entry definition define-assembly">
+                           <div class="model-entry definition assembly">
                               <div class="instance-header">
                                  <h3 id="/assembly/oscal-assessment-common/reviewed-controls/control-objective-selection/include-all" class="toc3 name">include-all</h3>
                                  <p class="type">assembly<br class="br" /> </p>
                                  <p class="occurrence">[1]</p>
                                  <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-assessment-common/reviewed-controls/control-objective-selections/include-all">Switch to JSON</a></div>
-                                 <p class="formal-name">All</p>
+                                 <p class="formal-name">Include All</p>
                               </div>
                               <div class="body">
-                                 <p class="description"><span class="usa-tag">description</span> A key word to indicate all.</p>
+                                 <div class="remarks-group usa-prose">
+                                    <details open="open">
+                                       <summary class="subhead">Remarks</summary>
+                                       <div class="remarks">
+                                          <p>This element provides an alternative to calling controls individually from a catalog.</p>
+                                       </div>
+                                    </details>
+                                 </div>
+                                 <p class="definition-link"><a href="#/assembly/oscal-catalog-common/include-all">See definition</a></p>
                               </div>
                            </div>
                            <div class="model-entry definition assembly">
