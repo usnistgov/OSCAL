@@ -84,7 +84,7 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="formal-name">Assessment Activity Universally Unique Identifier</p>
                   </div>
                   <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a>&gt; identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this assessment activity elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>activity</code> can be used to reference the data item locally or globally (e.g., in an imported
+                     <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this assessment activity elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>activity</code> can be used to reference the data item locally or globally (e.g., in an imported
                         OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
                         of the document.</p>
                   </div>
@@ -3123,7 +3123,7 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="formal-name">System Security Plan Reference</p>
                   </div>
                   <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> &gt;A resolvable URL reference to the system security plan for the system being assessed.</p>
+                     <p class="description"><span class="usa-tag">description</span> A resolvable URL reference to the system security plan for the system being assessed.</p>
                      <div class="remarks-group usa-prose">
                         <details open="open">
                            <summary class="subhead">Remarks</summary>
@@ -5142,7 +5142,7 @@ The following is a reference for the XML element and attribute types derived fro
                                  <p class="formal-name">Relevant Evidence Reference</p>
                               </div>
                               <div class="body">
-                                 <p class="description"><span class="usa-tag">description</span> &gt;A resolvable URL reference to relevant evidence.</p>
+                                 <p class="description"><span class="usa-tag">description</span> A resolvable URL reference to relevant evidence.</p>
                                  <div class="remarks-group usa-prose">
                                     <details open="open">
                                        <summary class="subhead">Remarks</summary>
