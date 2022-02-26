@@ -6478,13 +6478,13 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                              <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-characteristics/authorization-boundary/diagrams/remarks">Switch to JSON</a></div>
-                                             <p class="formal-name">remarks field</p>
+                                             <p class="formal-name">Remarks</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> Commentary about the diagram that enhances it.</p>
+                                             <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
                                              <details class="properties elements" open="open">
                                                 <summary>Element (0+)</summary>
-                                                <div class="model-entry definition assembly">
+                                                <div class="model-entry definition field">
                                                    <div class="instance-header">
                                                       <h5 id="/system-security-plan/system-characteristics/authorization-boundary/diagram/remarks/_VALUE" class="toc5 name">(unwrapped)</h5>
                                                       <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
@@ -6506,13 +6506,13 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                     <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-characteristics/authorization-boundary/remarks">Switch to JSON</a></div>
-                                    <p class="formal-name">remarks field</p>
+                                    <p class="formal-name">Remarks</p>
                                  </div>
                                  <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> Commentary about the system's authorization boundary that enhances the diagram.</p>
+                                    <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
                                     <details class="properties elements" open="open">
                                        <summary>Element (0+)</summary>
-                                       <div class="model-entry definition assembly">
+                                       <div class="model-entry definition field">
                                           <div class="instance-header">
                                              <h4 id="/system-security-plan/system-characteristics/authorization-boundary/remarks/_VALUE" class="toc4 name">(unwrapped)</h4>
                                              <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
@@ -7254,13 +7254,13 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                              <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-characteristics/network-architecture/diagrams/remarks">Switch to JSON</a></div>
-                                             <p class="formal-name">remarks field</p>
+                                             <p class="formal-name">Remarks</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> Commentary about the diagram that enhances it.</p>
+                                             <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
                                              <details class="properties elements" open="open">
                                                 <summary>Element (0+)</summary>
-                                                <div class="model-entry definition assembly">
+                                                <div class="model-entry definition field">
                                                    <div class="instance-header">
                                                       <h5 id="/system-security-plan/system-characteristics/network-architecture/diagram/remarks/_VALUE" class="toc5 name">(unwrapped)</h5>
                                                       <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
@@ -8030,13 +8030,13 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                              <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/system-security-plan/system-characteristics/data-flow/diagrams/remarks">Switch to JSON</a></div>
-                                             <p class="formal-name">remarks field</p>
+                                             <p class="formal-name">Remarks</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> Commentary about the diagram that enhances it.</p>
+                                             <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
                                              <details class="properties elements" open="open">
                                                 <summary>Element (0+)</summary>
-                                                <div class="model-entry definition assembly">
+                                                <div class="model-entry definition field">
                                                    <div class="instance-header">
                                                       <h5 id="/system-security-plan/system-characteristics/data-flow/diagram/remarks/_VALUE" class="toc5 name">(unwrapped)</h5>
                                                       <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
