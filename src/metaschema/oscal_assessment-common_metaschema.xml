@@ -400,10 +400,7 @@
                   <group-as name="links" in-json="ARRAY"/>
                </assembly>
                <choice>
-                  <define-assembly name="include-all" min-occurs="1">
-                     <formal-name>All</formal-name>
-                     <description>A key word to indicate all.</description>
-                  </define-assembly>
+                  <assembly ref="include-all" min-occurs="1"/>
                   <assembly ref="select-control-by-id" min-occurs="1" max-occurs="unbounded">
                      <use-name>include-control</use-name>
                      <group-as name="include-controls" in-json="ARRAY"/>
@@ -443,10 +440,7 @@
                   <group-as name="links" in-json="ARRAY"/>
                </assembly>
                <choice>
-                  <define-assembly name="include-all" min-occurs="1">
-                     <formal-name>All</formal-name>
-                     <description>A key word to indicate all.</description>
-                  </define-assembly>
+                  <assembly ref="include-all" min-occurs="1"/>
                   <assembly ref="select-objective-by-id" min-occurs="1" max-occurs="unbounded">
                      <use-name>include-objective</use-name>
                      <group-as name="include-objectives" in-json="ARRAY"/>
@@ -560,10 +554,7 @@
             <group-as name="links" in-json="ARRAY"/>
          </assembly>
          <choice>
-            <define-assembly name="include-all" min-occurs="1">
-               <formal-name>All</formal-name>
-               <description>A key word to indicate all.</description>
-            </define-assembly>
+            <assembly ref="include-all" min-occurs="1"/>
             <assembly ref="select-subject-by-id" min-occurs="1" max-occurs="unbounded">
                <use-name>include-subject</use-name>
                <group-as name="include-subjects" in-json="ARRAY"/>
