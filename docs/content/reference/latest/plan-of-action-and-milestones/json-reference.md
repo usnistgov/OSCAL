@@ -3154,7 +3154,7 @@ The following is the JSON format reference for this [model](/concepts/layer/asse
                            <p class="formal-name">System Security Plan Reference</p>
                         </div>
                         <div class="body">
-                           <p class="description"><span class="usa-tag">Description</span> &gt;A resolvable URL reference to the system security plan for the system being assessed.</p>
+                           <p class="description"><span class="usa-tag">Description</span> A resolvable URL reference to the system security plan for the system being assessed.</p>
                            <div class="remarks-group usa-prose">
                               <details open="open">
                                  <summary class="subhead">Remarks</summary>
@@ -10422,7 +10422,7 @@ The following is the JSON format reference for this [model](/concepts/layer/asse
                                     <p class="formal-name">Relevant Evidence Reference</p>
                                  </div>
                                  <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> &gt;A resolvable URL reference to relevant evidence.</p>
+                                    <p class="description"><span class="usa-tag">Description</span> A resolvable URL reference to relevant evidence.</p>
                                     <div class="remarks-group usa-prose">
                                        <details open="open">
                                           <summary class="subhead">Remarks</summary>
