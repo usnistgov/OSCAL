@@ -2301,16 +2301,16 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="definition-link"><a href="#/assembly/oscal-ssp/diagram">See definition</a></p>
                   </div>
                </div>
-               <div class="model-entry definition define-field">
+               <div class="model-entry definition field">
                   <div class="instance-header">
                      <h2 id="/assembly/oscal-ssp/authorization-boundary/remarks" class="toc2 name">remarks</h2>
                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                      <p class="occurrence">[0 or 1]</p>
                      <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-ssp/authorization-boundary/remarks">Switch to JSON</a></div>
-                     <p class="formal-name">remarks field</p>
+                     <p class="formal-name">Remarks</p>
                   </div>
                   <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> Commentary about the system's authorization boundary that enhances the diagram.</p>
+                     <p class="definition-link"><a href="#/field/oscal-metadata/remarks">See definition</a></p>
                   </div>
                </div>
             </div>
@@ -6396,16 +6396,16 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="description"><span class="usa-tag">description</span> A brief caption to annotate the diagram.</p>
                   </div>
                </div>
-               <div class="model-entry definition define-field">
+               <div class="model-entry definition field">
                   <div class="instance-header">
                      <h2 id="/assembly/oscal-ssp/diagram/remarks" class="toc2 name">remarks</h2>
                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                      <p class="occurrence">[0 or 1]</p>
                      <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-ssp/diagram/remarks">Switch to JSON</a></div>
-                     <p class="formal-name">remarks field</p>
+                     <p class="formal-name">Remarks</p>
                   </div>
                   <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> Commentary about the diagram that enhances it.</p>
+                     <p class="definition-link"><a href="#/field/oscal-metadata/remarks">See definition</a></p>
                   </div>
                </div>
             </div>
