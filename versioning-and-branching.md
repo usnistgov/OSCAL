@@ -1,7 +1,26 @@
+# Versioning and Branching
 
-# OSCAL Versioning
+This guide provides information on how [release versions](#versioning) and [branches](#branching) are handled in this repository.
 
-The OSCAL project uses [semantic versioning](https://semver.org/spec/v2.0.0.html) to version releases.
+- [Versioning and Branching](#versioning-and-branching)
+  - [Versioning](#versioning)
+  - [Branching](#branching)
+  - [Git Setup](#git-setup)
+- [Branching for contributors](#branching-for-contributors)
+  - [Personal Working Branches](#personal-working-branches)
+- [Branching for repository maintainers](#branching-for-repository-maintainers)
+  - [Release Branches](#release-branches)
+    - [Creating a Release Branch](#creating-a-release-branch)
+    - [Releasing a Release Branch](#releasing-a-release-branch)
+    - [Releasing a PATCH Revision](#releasing-a-patch-revision)
+  - [Feature Branches](#feature-branches)
+    - [Creating a Feature Branch](#creating-a-feature-branch)
+    - [Syncing a Feature Branch with `develop`](#syncing-a-feature-branch-with-develop)
+    - [Merging a Feature Branch](#merging-a-feature-branch)
+
+## Versioning
+
+This repository uses [semantic versioning](https://semver.org/spec/v2.0.0.html) to version releases.
 
 Semantic versions are in the form of `MAJOR.MINOR.PATCH`. Given a version number, increment the:
 
@@ -13,15 +32,19 @@ An incompatible model change will occur when all content produced under a given 
 
 A backwards compatible feature change can entail an addition to a model that adds a new construct, perhaps even deprecating an existing construct, but all previously created content is still schema valid with the new model.
 
-# OSCAL Branching
+Note: In rare cases, a PATCH release might contain an incompatible model change to correct a typographic error or to fix functionality that is inoperable due to a significant defect.
+
+A PATCH release will be made more frequenly than *MAJOR* or *MINOR* releases.
+
+## Branching
 
 The main branches of this repository are:
-- `main` is the current supported, production-ready release.
-- `develop` is the current set of development changes for the next release.
-  - This branch can be considered an integration branch where development code can be tested
-  - This branch will be merged into `main` when the developed code is ready for release.
-- `nist-pages` is the currently deployed website content, which is managed by the CI/CD process.
-- `release-*` where `*` matches a MAJOR.MINOR version number.
+- **[main](../../tree/main)** contains the current supported, production-ready release.
+- **[develop](../../tree/develop)** contains the current set of development changes for the next release. New features can be [contributed](./CONTRIBUTING.md#contributing-to-the-repository) to this branch.
+  - This branch is an integration branch where development code can be tested prior to promoting the code to a release.
+  - This branch will be used to create a release-*major*.*minor* branch when the developed code is ready to be staged for release.
+- **[nist-pages](../../tree/nist-pages)** contains the currently deployed website content, which is managed by the CI/CD process.
+- **release-\*** branches, where `*` matches a MAJOR.MINOR version number, are used to support patch releases for a major or minor version of OSCAL. You should provide changes only to the highest numbered *minor* release for a given *major* release.
 
 ## Git Setup
 
@@ -32,6 +55,20 @@ You must do all work in a personal fork of the OSCAL Git repository.
 ```
 git remote add upstream git@github.com:usnistgov/OSCAL.git
 ```
+
+# Branching for contributors
+
+## Personal Working Branches
+
+All individual work will be done in branches in a personal fork of this repository.
+
+Personal branches should be named using the convention `<issue #>-brief-dashed-name`.
+
+Once work is complete on a personal branch, the branch should be interactively rebased to tidy any commits. Then a PR should be opened against the target `feature-*` branch or the `develop` branch if the changes are to be included in the next release.
+
+For more information on how to do this, please refer to [our contribution guide](./CONTRIBUTING.md#contributing-to-the-repository).
+
+# Branching for repository maintainers
 
 ## Release Branches
 
@@ -128,14 +165,3 @@ git branch -d feature-myfeature
 # push the branch to the upstream repository
 git push upstream develop
 ```
-
-## Personal Working Branches
-
-All individual work will be done in branches in a personal fork of the `upstream` repository.
-
-Personal branches should be named using either:
-
-- `<issue #>-brief-dashed-name` (preferred)
-- `wip-brief-dashed-name`
-
-Once work is complete on a personal branch, the branch should be interactively rebased to tidy any commits. Then a PR should be opened against the target `feature-*` branch or the `develop` branch if the changes are to be included in the next release.
