@@ -253,9 +253,19 @@
                         <p>A set of parameter value choices, that may be picked from to set the parameter value.</p>
                 </remarks>
         </define-assembly>
+        <!-- ############################## -->
+        <!-- # Control-related constructs # -->
+        <!-- ############################## -->
         <define-flag name="control-id" as-type="token">
                 <formal-name>Control Identifier Reference</formal-name>
                 <!-- Identifier Reference -->
                 <description>A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a> identifier reference to a control with a corresponding <code>id</code> value. When referencing an externally defined <code>control</code>, the <code>Control Identifier Reference</code> must be used in the context of the external / imported OSCAL instance (e.g., uri-reference).</description>
         </define-flag>
+        <define-assembly name="include-all">
+                <formal-name>Include All</formal-name>
+                <description>Include all controls from the imported catalog or profile resources.</description>
+                <remarks>
+                        <p>This element provides an alternative to calling controls individually from a catalog.</p>
+                </remarks>
+        </define-assembly>
 </METASCHEMA>
