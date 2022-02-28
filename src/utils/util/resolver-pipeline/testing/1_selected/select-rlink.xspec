@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE x:description [
-<!ENTITY filedir "../../../../../../../src/specifications/profile-resolution/profile-resolution-examples/catalogs" >
-]>
 <x:description xmlns="http://csrc.nist.gov/ns/oscal/1.0"
     xmlns:opr="http://csrc.nist.gov/ns/oscal/profile-resolution"
+    xmlns:ov="http://csrc.nist.gov/ns/oscal/test/variable"
     xmlns:x="http://www.jenitennison.com/xslt/xspec"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
     stylesheet="../../oscal-profile-resolve-select.xsl">
+    
+    <!-- Location of sample files, relative to compiled test in xspec/ subdirectory -->
+    <x:variable name="ov:filedir" as="xs:string" select="resolve-uri('../../../../../../specifications/profile-resolution/profile-resolution-examples')"/>
+
     <x:scenario label="Direct import by file href">
         <x:context>
             <profile>
-                <import href="&filedir;/xyz-tiny_catalog.xml">
+                <import href="{$ov:filedir}/catalogs/xyz-tiny_catalog.xml">
                     <include-controls>
                         <with-id>z3</with-id>
                     </include-controls>
@@ -50,7 +53,7 @@
                 <back-matter>
                     <resource uuid="6e57d296-39c1-4e83-8107-4dcc2ede751b">
                         <title>Tiny Catalog</title>
-                        <rlink href="&filedir;/xyz-tiny_catalog.xml"/>
+                        <rlink href="{$ov:filedir}/catalogs/xyz-tiny_catalog.xml"/>
                     </resource>
                 </back-matter>
             </profile>
@@ -95,8 +98,8 @@
                 <back-matter>
                     <resource uuid="6e57d296-39c1-4e83-8107-4dcc2ede751b">
                         <title>Tiny Catalog</title>
-                        <rlink href="&filedir;/xyz-tiny_catalog.xml"/>
-                        <rlink href="&filedir;/xyz-tiny_catalog.json"/>
+                        <rlink href="{$ov:filedir}/catalogs/xyz-tiny_catalog.xml"/>
+                        <rlink href="{$ov:filedir}/catalogs/xyz-tiny_catalog.json"/>
                     </resource>
                 </back-matter>
             </profile>
