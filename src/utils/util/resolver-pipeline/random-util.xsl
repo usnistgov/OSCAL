@@ -27,8 +27,8 @@ v4 UUID
     -->
     <xsl:output indent="yes"/>
 
-    <!-- set $germ to a string for reproducible outputs of r:make-uuid-sequence
-         pass in a blind value - and don't save it - for irreproducible outputs -->
+    <!-- Set $germ to a string for reproducible outputs of r:make-uuid.
+         Pass in a blind value - and don't save it - for irreproducible outputs. -->
 
     <xsl:param name="germ" select="current-dateTime() || document-uri(/)"/>
 
@@ -49,48 +49,62 @@ v4 UUID
         </randomness>
     </xsl:template>
 
-    <xsl:function name="r:make-uuid-sequence" as="xs:string*">
-        <xsl:param name="seed" as="item()"/>
-        <xsl:param name="length" as="xs:integer"/>
-        <xsl:sequence use-when="function-available('random-number-generator')" select="r:produce-uuid-sequence($length,random-number-generator($seed))"/>
-    </xsl:function>
-
-    <xsl:function name="r:produce-uuid-sequence" as="xs:string*">
-        <xsl:param name="length" as="xs:integer"/>
-        <xsl:param name="PRNG" as="map(xs:string, item())"/>
-        <xsl:if test="$length gt 0">
-            <xsl:sequence select="string($PRNG?number) => r:make-uuid()"/>
-            <xsl:sequence select="r:produce-uuid-sequence($length - 1, $PRNG?next())"/>
-        </xsl:if>
-    </xsl:function>
-
-    <!-- make-uuid produces a UUID for a given seed - the same UUID every time for the same seed -->
+    <!-- r:make-uuid produces one v4 UUID. Output is repeatable for a given seed.
+         If the random-number-generator() function is not available,
+         this function returns an empty sequence. -->
     <xsl:function name="r:make-uuid" as="xs:string?">
         <xsl:param name="seed" as="item()"/>
-        <xsl:sequence use-when="function-available('random-number-generator')" select="r:produce-uuid($uuid-v4-template, random-number-generator($seed))"/>
+        <xsl:sequence select="r:make-uuid-sequence($seed, 1)"/>
     </xsl:function>
 
-    <!--$template is a string to serve as a template for the UUID syntax
-        $PRNG is a pseudo-random-number generator produced by fn:random-number-generator() -->
-    <xsl:function name="r:produce-uuid" as="xs:string">
+    <!-- r:make-uuid-sequence produces a sequence of $seq-length v4 UUIDs.
+         Output is repeatable for a given seed. If the random-number-generator()
+         function is not available, this function returns an empty sequence. -->
+    <xsl:function name="r:make-uuid-sequence" as="xs:string*">
+        <xsl:param name="seed" as="item()"/>
+        <xsl:param name="seq-length" as="xs:integer"/>
+        <xsl:variable name="uuid-v4-template" as="xs:string">________-____-4___-=___-____________</xsl:variable>
+        <!--                                                 a847eaab-cec8-41bd-98e2-02d02900b554            -->
+        <xsl:sequence select="r:make-random-string-sequence($seed, $seq-length, $uuid-v4-template)"/>
+    </xsl:function>
+
+    <!-- r:make-random-string-sequence produces a sequence of $seq-length strings.
+         The $template parameter specifies the pattern of characters in each
+         string, where:
+           * '_' becomes a random hex value 0-9a-f
+           * '=' becomes one of '8','9','a','b' at random
+           * Any other character is copied to the output string
+         Output is repeatable for a given seed. If the random-number-generator()
+         function is not available, this function returns an empty sequence. -->
+    <xsl:function name="r:make-random-string-sequence" as="xs:string*">
+        <xsl:param name="seed" as="item()"/>
+        <xsl:param name="seq-length" as="xs:integer"/>
         <xsl:param name="template" as="xs:string"/>
-        <xsl:param name="PRNG" as="map(xs:string, item())"/>
-        <xsl:value-of>
-            <xsl:apply-templates select="substring($template, 1, 1)" mode="uuid-char">
-                <xsl:with-param name="PRNG" select="$PRNG"/>
-            </xsl:apply-templates>
-            <xsl:if test="matches($template, '.')">
-                <xsl:sequence select="r:produce-uuid(substring($template, 2), $PRNG?next())"/>
-            </xsl:if>
-        </xsl:value-of>
+        <xsl:sequence use-when="function-available('random-number-generator')">
+            <xsl:variable name="PRNG" as="map(xs:string, item())" select="random-number-generator($seed)"/>
+            <xsl:variable name="template-length" as="xs:integer" select="string-length($template)"/>
+            <!-- Draw one long stream from PRNG, advancing state in each iteration. -->
+            <xsl:variable name="random-chars" as="xs:string">
+                <xsl:value-of>
+                    <xsl:iterate select="(0 to ($seq-length * $template-length - 1))">
+                        <xsl:param name="PRNG" as="map(xs:string, item())" select="$PRNG"/>
+                        <xsl:variable name="this-char" as="xs:string"
+                            select="substring($template, (1 + current() mod $template-length), 1)"/>
+                        <xsl:apply-templates select="$this-char" mode="uuid-char">
+                            <xsl:with-param name="PRNG" select="$PRNG"/>
+                        </xsl:apply-templates>
+                        <xsl:next-iteration>
+                            <xsl:with-param name="PRNG" select="$PRNG?next()"/>
+                        </xsl:next-iteration>
+                    </xsl:iterate>
+                </xsl:value-of>
+            </xsl:variable>
+            <!-- Divide $random-chars into nonoverlapping strings:
+                $seq-length of them, each of length $template-length. -->
+            <xsl:sequence select="for $idx in (0 to $seq-length - 1)
+                return substring($random-chars, 1 + $idx * $template-length, $template-length)"/>
+        </xsl:sequence>
     </xsl:function>
-
-    <xsl:variable name="uuid-v4-template" as="xs:string">________-____-4___-=___-____________</xsl:variable>
-    <!--                                                 a847eaab-cec8-41bd-98e2-02d02900b554            -->
-    <!-- replacements for UUID v4:
-           '_' becomes a random hex value 0-9a-f
-           '=' becomes one of '8','9','a','b' at random
-           any other character is copied -->
 
     <xsl:variable name="hex-digits" select="tokenize('0 1 2 3 4 5 6 7 8 9 a b c d e f', ' ')"/>
 
