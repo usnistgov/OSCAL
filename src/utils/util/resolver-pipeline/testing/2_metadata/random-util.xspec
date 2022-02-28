@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+    xmlns:ov="http://csrc.nist.gov/ns/oscal/xspec/variable"
+    xmlns:r="http://csrc.nist.gov/ns/random"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+    stylesheet="../../random-util.xsl"
+    xslt-version="3.0">
+
+    <!-- For repeatable testing, use a fixed germ. Also, XSpec
+        cannot evaluate document-uri(/) in the default parameter
+        value from the XSLT. -->
+    <x:param name="germ">x</x:param>
+
+    <x:variable name="ov:uuid-v4-regex" as="xs:string">^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$</x:variable>
+    <x:variable name="ov:seed" as="item()" select="'x'"/>
+    <x:variable name="ov:PRNG" as="map(xs:string, item())" select="random-number-generator($ov:seed)"/>
+
+    <x:scenario label="Tests for top-level template">
+        <x:call template="xsl:initial-template"/>
+        <!-- Assertions here are minimal because r:make-uuid
+            has function-level tests below. -->
+        <x:expect label="Repeatable result for the seed, 'a'"
+            test="$x:result/a[1]/string()" select="$x:result/a[2]/string()"/>
+        <x:expect label="The 'b' uuid is different from the 'a' uuid"
+            test="not($x:result/a[1]/string() = $x:result/b/string())"/>
+    </x:scenario>
+
+    <x:scenario label="Tests for r:make-uuid function">
+        <x:call function="r:make-uuid">
+            <x:param name="seed" select="$ov:seed"/>
+        </x:call>
+        <x:expect label="Same as calling r:make-uuid-sequence with seq-length=1"
+            select="r:make-uuid-sequence($ov:seed, 1)"/>      
+    </x:scenario>
+    <x:scenario label="Tests for r:make-uuid-sequence function">
+        <x:scenario label="seq-length=1">
+            <x:variable name="ov:seq-length" as="xs:integer" select="1"/>
+            <x:call function="r:make-uuid-sequence">
+                <x:param name="seed" select="$ov:seed"/>
+                <x:param name="seq-length" select="$ov:seq-length"/>
+            </x:call>
+            <x:like label="SHARED: Check sequence of uuids"/>
+        </x:scenario>
+        <x:scenario label="seq-length=10000">
+            <x:variable name="ov:seq-length" as="xs:integer" select="10000"/>
+            <x:call function="r:make-uuid-sequence">
+                <x:param name="seed" select="$ov:seed"/>
+                <x:param name="seq-length" select="$ov:seq-length"/>
+            </x:call>
+            <x:like label="SHARED: Check sequence of uuids"/>
+            <x:expect label="Check uniqueness of strings in the sequence"
+                test="$x:result => distinct-values() => count() = $ov:seq-length"/>
+            <x:expect label="Check that 2nd uuid is not a shift of 1st uuid"
+                test="not(starts-with($x:result[2],substring($x:result[1],2,7)))"/>
+        </x:scenario>
+        <x:scenario label="seq-length=500,000" pending="To save time, run only when needed">
+            <x:variable name="ov:seq-length" as="xs:integer" select="500000"/>
+            <x:call function="r:make-uuid-sequence">
+                <x:param name="seed" select="$ov:seed"/>
+                <x:param name="seq-length" select="$ov:seq-length"/>
+            </x:call>
+            <x:like label="SHARED: Check sequence of uuids"/>
+            <x:expect label="Check uniqueness of strings in the sequence"
+                test="$x:result => distinct-values() => count() = $ov:seq-length"/>
+        </x:scenario>
+        <x:scenario label="Edge case: seq-length=0">
+            <x:call function="r:make-uuid-sequence">
+                <x:param name="seed" select="$ov:seed"/>
+                <x:param name="seq-length" as="xs:integer" select="0"/>
+            </x:call>
+            <x:expect label="Nothing" select="()"/>
+        </x:scenario>
+    </x:scenario>
+    <x:scenario label="Tests for r:make-random-string-sequence function">
+        <x:scenario label="Template starts with _">
+            <x:variable name="ov:template" select="'_xyz'"/>
+            <x:call function="r:make-random-string-sequence">
+                <x:param name="seed" select="$ov:seed"/>
+                <x:param name="seq-length" select="1"/>
+                <x:param name="template" select="$ov:template"/>
+            </x:call>
+            <x:expect label="Starts with hex digit"
+                test="matches($x:result,'^[0-9a-f]')"/>
+            <x:expect label="Same length as template"
+                test="string-length($x:result)=string-length($ov:template)"/>
+            <x:expect label="For this template, characters after the first are not hex digits"
+                test="not(matches(substring($x:result,2),'[0-9a-f]'))"/>
+        </x:scenario>
+        <x:scenario label="Template starts with =">
+            <x:variable name="ov:template" select="'=xyz'"/>
+            <x:call function="r:make-random-string-sequence">
+                <x:param name="seed" select="$ov:seed"/>
+                <x:param name="seq-length" select="1"/>
+                <x:param name="template" select="$ov:template"/>
+            </x:call>
+            <x:expect label="Starts with 8, 9, a, or b"
+                test="matches($x:result,'^[89ab]')"/>
+            <x:expect label="Same length as template"
+                test="string-length($x:result)=string-length($ov:template)"/>
+            <x:expect label="For this template, characters after the first are not 8, 9, a, or b"
+                test="not(matches(substring($x:result,2),'[89ab]'))"/>
+        </x:scenario>
+        <x:scenario label="Template is empty string">
+            <x:call function="r:make-random-string-sequence">
+                <x:param name="seed" select="$ov:seed"/>
+                <x:param name="seq-length" select="1"/>
+                <x:param name="template" select="''"/>
+            </x:call>
+            <x:expect label="Empty string" select="''"/>
+        </x:scenario>
+        <x:scenario label="Long template of repeated '_' characters">
+            <x:variable name="ov:template" select="string-join(for $j in (1 to 10000) return '_','')"/>
+            <x:variable name="ov:expected-digits" as="xs:string" select="'^[0-9a-f]+$'"/>
+            <x:call function="r:make-random-string-sequence">
+                <x:param name="seed" select="$ov:seed"/>
+                <x:param name="seq-length" select="1"/>
+                <x:param name="template" select="$ov:template"/>
+            </x:call>
+            <x:like label="SHARED: Check long output"/>
+        </x:scenario>
+        <x:scenario label="Long template of repeated '=' characters">
+            <x:variable name="ov:template" select="string-join(for $j in (1 to 10000) return '=','')"/>
+            <x:variable name="ov:expected-digits" as="xs:string" select="'^[89ab]+$'"/>
+            <x:call function="r:make-random-string-sequence">
+                <x:param name="seed" select="$ov:seed"/>
+                <x:param name="seq-length" select="1"/>
+                <x:param name="template" select="$ov:template"/>
+            </x:call>
+            <x:like label="SHARED: Check long output"/>
+        </x:scenario>
+    </x:scenario>
+
+    <x:scenario label="Test for '_' character with mode=uuid-char">
+        <x:context select="'_'" mode="uuid-char">
+            <x:param name="PRNG" select="$ov:PRNG"/>
+        </x:context>
+        <x:expect label="One hex digit"
+            test="matches($x:result,'^[0-9a-f]$')"/>
+        <!-- The "Long template of repeated '_' characters" scenario
+            checks that it is not the same hex digit for all PRNG inputs. -->
+    </x:scenario>
+    <x:scenario label="Test for '=' character with mode=uuid-char">
+        <x:context select="'='" mode="uuid-char">
+            <x:param name="PRNG" select="$ov:PRNG"/>
+        </x:context>
+        <x:expect label="One character 8, 9, a, or b"
+            test="matches($x:result,'^[89ab]$')"/>
+        <!-- The "Long template of repeated '=' characters" scenario
+            checks that it is not the same hex digit for all PRNG inputs. -->
+    </x:scenario>
+    <x:scenario label="Tests for characters other than '_' or '=', with mode=uuid-char">
+        <!-- These tests exercise the default template behavior for mode="uuid-char". -->
+        <x:scenario label="Empty string">
+            <x:context select="''" mode="uuid-char">
+                <x:param name="PRNG" select="$ov:PRNG"/>
+            </x:context>
+            <x:expect label="Text node with no content"
+                test="$x:result instance of text() and string-length($x:result) eq 0"/>
+        </x:scenario>
+        <x:scenario label="Hyphen">
+            <x:context select="'-'" mode="uuid-char">
+                <x:param name="PRNG" select="$ov:PRNG"/>
+            </x:context>
+            <x:expect label="Text node with hyphen">-</x:expect>
+        </x:scenario>
+        <x:scenario label="A non-ASCII character">
+            <x:variable name="ov:charnum" as="xs:integer" select="500"/>
+            <x:context select="codepoints-to-string($ov:charnum)" mode="uuid-char">
+                <x:param name="PRNG" select="random-number-generator('123')"/>
+            </x:context>
+            <x:expect label="Text node with same character"
+                expand-text="yes">{codepoints-to-string($ov:charnum)}</x:expect>
+        </x:scenario>
+    </x:scenario>
+
+    <!-- SHARED scenarios -->
+
+    <x:scenario shared="yes" label="SHARED: Check long output">
+        <!-- This set of shared assertions expects the referencing
+            scenario to have defined <x:variable name="ov:expected-digits" .../> -->
+        <x:expect label="String of digits in expected set"
+            test="matches($x:result,$ov:expected-digits)"/>
+        <x:expect label="Same length as template"
+            test="string-length($x:result) = string-length($ov:template)"/>
+        <x:variable name="ov:distinct-codepoints" as="xs:integer+"
+            select="$x:result => string-to-codepoints() => distinct-values()"/>
+        <x:expect label="String is not the same digit repeated"
+            test="count($ov:distinct-codepoints) gt 1"/>
+    </x:scenario>
+    
+    <x:scenario shared="yes" label="SHARED: Check sequence of uuids">
+        <!-- This set of shared assertions expects the referencing
+            scenario or its ancestor to have defined
+            <x:variable name="ov:seq-length" .../> and
+            <x:variable name="ov:seed" .../> -->
+        <x:expect label="Correct number of strings"
+            test="$x:result instance of xs:string+ and count($x:result) eq $ov:seq-length"/>
+        <x:expect label="Each string matches uuid regular expression"
+            test="every $uuid in $x:result satisfies matches($uuid, $ov:uuid-v4-regex)"/>
+        <x:expect label="Check repeatability for same seed"
+            test="deep-equal($x:result, r:make-uuid-sequence($ov:seed, $ov:seq-length))"/>
+        <x:expect label="Not typically equal to function output for a different seed"
+            test="not(deep-equal($x:result, r:make-uuid-sequence($ov:seed || '1', $ov:seq-length)))"/>
+    </x:scenario>
+
+</x:description>
