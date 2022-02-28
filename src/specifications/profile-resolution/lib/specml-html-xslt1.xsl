@@ -100,7 +100,13 @@
          <xsl:apply-templates/>
       </code>
    </xsl:template>
-
+   
+   <xsl:template match="o:int">
+      <code class="int">
+         <xsl:apply-templates/>
+      </code>
+   </xsl:template>
+   
    <xsl:template match="o:ul">
       <ul>
          <xsl:apply-templates/>
@@ -143,7 +149,21 @@
          <xsl:apply-templates/>
       </em>
    </xsl:template>
-
+   
+   <xsl:template match="o:req">
+      <span class="{local-name()} {@level}">
+         <xsl:copy-of select="@id"/>
+         <xsl:apply-templates select="." mode="reqlabel"/>
+         <xsl:apply-templates/>
+      </span>
+   </xsl:template>
+   
+   <xsl:template match="o:req" mode="reqlabel">
+      <span class="reqlabel">
+         <xsl:value-of select="@id"/>
+      </span>
+   </xsl:template>
+   
    <xsl:template match="o:xpath">
       <b class="{local-name()}">
          <xsl:apply-templates/>

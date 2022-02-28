@@ -6,32 +6,23 @@ Please post Issues in Github or questions to the OSCAL mailing list, or ask abou
 
 The specifications are being edited in an ad-hoc XML back end format, a lightweight extension to HTML tagging. If you wish to edit the files directly, we have stylesheets for presentation and HTML conversion along with Schematron for validation (runtime or at check points); please contact us.
 
+### Capabilities
 
-TODO:
+- XML authoring of specifications
+- HTML previews with ToC / requirements index
+- HTML rendering for Hugo / site load
+- Back end validation support for specialized semantics
+- Tagging of requirements integrates with unit tests
+- Cosmetic reformatter rewrites your document with clean tagging and whitespace
 
-### Requirements index
+- Unit test set (XSpec) is annotated with keys (links) back to spec document
+- Two-way indexing enables assessment of coverage by unit tests (per marked up requirements)
 
-Annotate a copy/mirror of profile metaschema (composed)
-  link to requirements
-  link to test(s)
+- The tests themselves can be illustrated (in/out) using another rendering XSLT
 
-current XSpecs
-  for each test
-    if green
-      confirm correctness of test
-    if pink
-    
-XSLT to poll unit tests
-  drawing profile model element tree with links to tests showing usages
+### oXygen project for editing specs
 
+Included in this folder is an oXygen XML Editor project file with settings for many of these operations.
 
-            
-new XSpecs
-  
-    
-for every test document, list
-- objects of interest (assembles fields flags or flag/values) - xpath
-- for each of these
-  - requirement(s) being tested
-  - index into spec (section title/phrase)
+### Next steps / ongoing
 
