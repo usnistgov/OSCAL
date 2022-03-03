@@ -4,7 +4,7 @@
 
 ### All Submissions:
 
-- [ ] Have you selected the correct base branch per  [Contributing](https://github.com/usnistgov/OSCAL/blob/master/CONTRIBUTING.md) guidance?
+- [ ] Have you selected the correct base branch per [Contributing](https://github.com/usnistgov/OSCAL/blob/master/CONTRIBUTING.md) guidance?
 - [ ] Have you set "[Allow edits and access to secrets by maintainers
 ](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/allowing-changes-to-a-pull-request-branch-created-from-a-fork)"?
 - [ ] Have you checked to ensure there aren't other open [Pull Requests](https://github.com/usnistgov/OSCAL/pulls) for the same update/change?
