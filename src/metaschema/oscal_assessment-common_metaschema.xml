@@ -1063,20 +1063,9 @@
          <assembly ref="link" max-occurs="unbounded">
             <group-as name="links" in-json="ARRAY"/>
          </assembly>
-         <define-field name="status" as-type="token" min-occurs="1">
-            <formal-name>Status</formal-name>
-            <description>Describes the status of the associated risk.</description>
-            <constraint>
-               <allowed-values target="." allow-other="yes">
-                  <enum value="open">The risk has been identified.</enum>
-                  <enum value="investigating">The identified risk is being investigated. (Open risk)</enum>
-                  <enum value="remediating">Remediation activities are underway, but are not yet complete. (Open risk)</enum>
-                  <enum value="deviation-requested">A risk deviation, such as false positive, risk reduction, or operational requirement has been submitted for approval. (Open risk)</enum>
-                  <enum value="deviation-approved">A risk deviation, such as false positive, risk reduction, or operational requirement has been approved. (Open risk)</enum>
-                  <enum value="closed">The risk has been resolved.</enum>
-               </allowed-values>
-            </constraint>
-         </define-field>
+         <field ref="risk-status" as-type="token" min-occurs="1">
+            <use-name>status</use-name>
+         </field>
          <assembly ref="origin" max-occurs="unbounded">
             <group-as name="origins" in-json="ARRAY"/>
             <remarks>
