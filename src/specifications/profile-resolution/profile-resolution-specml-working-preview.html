@@ -1,0 +1,2045 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+      <title>OSCAL Profile Resolution Specification</title>
+      <style type="text/css">
+
+body { line-height: 140%; font-family: "Cambria", serif }
+
+* { box-sizing: border-box }
+
+aside.navpanel { position: fixed; overflow-y: scroll; max-width: 36%; top: 1em; bottom: 0px; font-family:  'Corbel', sans-serif  }
+
+aside.navpanel div.rqrmts * { margin: 0em }
+
+.req { background-color: pink; padding: 0.2em; font-size: 110%; margin-top: 0.2em !important }
+div.rqrmts .req { font-size: 90%; border-top: thin solid red; border-bottom: thin solid red }
+.req.should { background-color: peachpuff; border-top: thin solid orange; border-bottom: thin solid orange }
+.req.may { background-color: cornsilk; border-top: thin solid gold; border-bottom: thin solid gold }
+.req.recommended { background-color: mintcream; border-top: thin solid blue; border-bottom: thin solid blue }
+
+span.reqlabel { background-color: mintcream; color: forestgreen; margin-right: 0.4em; padding: 0.1em; border: thin solid green } 
+
+.toc ul   { list-style: none; padding-left: 1em }
+
+main      { margin-left: 40%; max-width: 48em }
+
+details { margin-top: 1.5em }
+
+details details { border-left: thin solid black; padding-left: 1em }
+
+summary > * { display: inline }
+
+pre { white-space:  pre-wrap }
+
+h1, h2, h3, h4, h5, h6 {  font-family:  'Corbel', sans-serif  }
+
+code.src { font-size:90%; font-weight:bold; background-color: lightsteelblue; padding: 0.2em }
+code.tgt { font-size:90%; font-weight:bold; background-color: lemonchiffon; padding: 0.2em }
+code.int { font-size:90%; font-weight:bold; background-color: pink; padding: 0.2em }
+b.term, b.xpath { font-family:  'Corbel', sans-serif  }
+
+.secnum { padding: 0.2em; color: midnightblue; font-weight: bold; font-size: 110% }
+
+a { color: inherit }
+a.linked { color: inherit }
+.toc a { text-decoration: none }
+
+span.req { color: royalblue }
+span.req:hover { background-color: beige }
+
+.example { padding: 0.5em; border: thin dotted black; margin-top: 1em  }
+.example > *:first-child { margin-top: 0em }
+
+.example.source_profile-tagging {  background-color: lightsteelblue }
+.example.source_catalog-tagging {  background-color: powderblue }
+.example.target_catalog-tagging {  background-color: lemonchiffon }
+.example.inter_catalog-tagging {  background-color: lemonchiffon }
+
+.revisit { font-style: italic; color: red; background-color: yellow }
+
+.xref { font-weight: bold; font-family:  'Corbel', sans-serif  }
+
+        </style>
+   </head>
+   <body>
+      <aside class="navpanel">
+         <nav class="toc">
+            <h3>OSCAL Profile Resolution Specification</h3>
+            <ul>
+               <li><a href="#d2e8-head"><span class="secnum">1</span> Notice of Draft Status</a></li>
+               <li><a href="#d2e14-head"><span class="secnum">2</span> Abstract</a></li>
+               <li><a href="#d2e20-head"><span class="secnum">3</span> Introduction</a><ul>
+                     <li><a href="#d2e22-head"><span class="secnum">3.1</span> Purpose</a></li>
+                  </ul>
+               </li>
+               <li><a href="#d2e26-head"><span class="secnum">4</span> Reading This Document</a><ul>
+                     <li><a href="#d2e29-head"><span class="secnum">4.1</span> Terminology</a></li>
+                     <li><a href="#d2e108-head"><span class="secnum">4.2</span> Requirement Keywords</a></li>
+                     <li><a href="#d2e120-head"><span class="secnum">4.3</span> Use of YAML</a></li>
+                     <li><a href="#d2e136-head"><span class="secnum">4.4</span> Reading YAML Examples</a></li>
+                     <li><a href="#d2e179-head"><span class="secnum">4.5</span> Document Layout</a></li>
+                     <li><a href="#d2e196-head"><span class="secnum">4.6</span> The Intermediate and Implementation Guidance</a></li>
+                  </ul>
+               </li>
+               <li><a href="#d2e201-head"><span class="secnum">5</span> Phases of Profile Processing</a></li>
+               <li><a href="#d2e238-head"><span class="secnum">6</span> Import Phase</a><ul>
+                     <li><a href="#d2e269-head"><span class="secnum">6.1</span> Import href Requirements</a><ul>
+                           <li><a href="#d2e271-head"><span class="secnum">6.1.1</span> Import URI Resolution</a></li>
+                           <li><a href="#d2e281-head"><span class="secnum">6.1.2</span> Import Resource Acquisition</a></li>
+                           <li><a href="#d2e298-head"><span class="secnum">6.1.3</span> Internal References</a></li>
+                           <li><a href="#d2e315-head"><span class="secnum">6.1.4</span> Resolving Imports of Profiles</a></li>
+                           <li><a href="#d2e352-head"><span class="secnum">6.1.5</span> Multiple imports</a></li>
+                           <li><a href="#d2e372-head"><span class="secnum">6.1.6</span> Mapping Controls</a></li>
+                        </ul>
+                     </li>
+                     <li><a href="#d2e401-head"><span class="secnum">6.2</span> Including Controls</a><ul>
+                           <li><a href="#d2e404-head"><span class="secnum">6.2.1</span> include-all</a></li>
+                           <li><a href="#d2e413-head"><span class="secnum">6.2.2</span> include-controls plus with-id</a></li>
+                           <li><a href="#d2e428-head"><span class="secnum">6.2.3</span> include-controls plus matching</a></li>
+                           <li><a href="#d2e451-head"><span class="secnum">6.2.4</span> Dealing with Nested Controls and Groups</a><ul>
+                                 <li><a href="#d2e459-head"><span class="secnum">6.2.4.1</span> with-child-controls</a></li>
+                                 <li><a href="#d2e485-head"><span class="secnum">6.2.4.2</span> with-parent-controls</a></li>
+                              </ul>
+                           </li>
+                           <li><a href="#d2e518-head"><span class="secnum">6.2.5</span> exclude-controls</a></li>
+                           <li><a href="#d2e538-head"><span class="secnum">6.2.6</span> Redundant Inclusions and Exclusions</a></li>
+                           <li><a href="#d2e549-head"><span class="secnum">6.2.7</span> Handling Params</a></li>
+                           <li><a href="#d2e566-head"><span class="secnum">6.2.8</span> Handling Groups</a></li>
+                           <li><a href="#d2e572-head"><span class="secnum">6.2.9</span> Avoiding Implementation Pitfalls</a></li>
+                        </ul>
+                     </li>
+                     <li><a href="#d2e582-head"><span class="secnum">6.3</span> Wrapping up the Import Phase</a></li>
+                  </ul>
+               </li>
+               <li><a href="#d2e590-head"><span class="secnum">7</span> Merge Phase</a><ul>
+                     <li><a href="#d2e605-head"><span class="secnum">7.1</span> The "combine" Directive</a><ul>
+                           <li><a href="#d2e629-head"><span class="secnum">7.1.1</span> No Combine Directive</a></li>
+                           <li><a href="#d2e650-head"><span class="secnum">7.1.2</span> <q class="q">method:keep</q></a></li>
+                           <li><a href="#d2e682-head"><span class="secnum">7.1.3</span> <q class="q">method:use-first</q></a></li>
+                           <li><a href="#d2e700-head"><span class="secnum">7.1.4</span> <code class="src">method:merge</code></a></li>
+                        </ul>
+                     </li>
+                     <li><a href="#d2e704-head"><span class="secnum">7.2</span> The "structuring" Directive</a><ul>
+                           <li><a href="#d2e725-head"><span class="secnum">7.2.1</span> No Structuring Directive</a></li>
+                           <li><a href="#d2e743-head"><span class="secnum">7.2.2</span> "flat"</a></li>
+                           <li><a href="#d2e772-head"><span class="secnum">7.2.3</span> <q class="q">as-is</q></a></li>
+                           <li><a href="#d2e802-head"><span class="secnum">7.2.4</span> <q class="q">custom</q></a><ul>
+                                 <li><a href="#d2e809-head"><span class="secnum">7.2.4.1</span> Creating Custom Groups</a></li>
+                                 <li><a href="#d2e837-head"><span class="secnum">7.2.4.2</span> Inserting Controls</a></li>
+                              </ul>
+                           </li>
+                        </ul>
+                     </li>
+                     <li><a href="#d2e915-head"><span class="secnum">7.3</span> Wrapping up the Merge Phase</a></li>
+                  </ul>
+               </li>
+               <li><a href="#d2e922-head"><span class="secnum">8</span> Modify Phase</a><ul>
+                     <li><a href="#d2e929-head"><span class="secnum">8.1</span> Setting Parameters</a></li>
+                     <li><a href="#d2e969-head"><span class="secnum">8.2</span> Altering controls</a><ul>
+                           <li><a href="#d2e979-head"><span class="secnum">8.2.1</span> Adding contents to controls</a><ul>
+                                 <li><a href="#d2e982-head"><span class="secnum">8.2.1.1</span> Implicit binding</a></li>
+                                 <li><a href="#d2e1076-head"><span class="secnum">8.2.1.2</span> Explicit binding</a></li>
+                                 <li><a href="#d2e1169-head"><span class="secnum">8.2.1.3</span> Modifying controls inside controls</a></li>
+                              </ul>
+                           </li>
+                           <li><a href="#d2e1181-head"><span class="secnum">8.2.2</span> Removing contents from controls</a></li>
+                        </ul>
+                     </li>
+                  </ul>
+               </li>
+               <li><a href="#d2e1247-head"><span class="secnum">9</span> Final Operations</a><ul>
+                     <li><a href="#d2e1249-head"><span class="secnum">9.1</span> Backmatter Resolution</a></li>
+                     <li><a href="#d2e1302-head"><span class="secnum">9.2</span> Metadata Resolution</a></li>
+                     <li><a href="#d2e1353-head"><span class="secnum">9.3</span> Pruning and Ordering</a></li>
+                  </ul>
+               </li>
+               <li><a href="#d2e1399-head"><span class="secnum">10</span> Items of Note</a><ul>
+                     <li><a href="#d2e1401-head"><span class="secnum">10.1</span> Distinct ID of Objects</a></li>
+                     <li><a href="#d2e1419-head"><span class="secnum">10.2</span> Dealing with Multiple Formats</a><ul>
+                           <li><a href="#d2e1434-head"><span class="secnum">10.2.1</span> Requirements and Guidance for XML Output</a></li>
+                           <li><a href="#d2e1444-head"><span class="secnum">10.2.2</span> Requirements and Guidance for JSON Output</a></li>
+                           <li><a href="#d2e1457-head"><span class="secnum">10.2.3</span> Requirements and Guidance for YAML Output</a></li>
+                           <li><a href="#d2e1471-head"><span class="secnum">10.2.4</span> Order of objects in serialization</a></li>
+                           <li><a href="#d2e1483-head"><span class="secnum">10.2.5</span> Comments in result documents</a></li>
+                        </ul>
+                     </li>
+                  </ul>
+               </li>
+            </ul>
+         </nav>
+         <div class="rqrmts">
+            <h3>Requirements</h3>
+            <h5><a href="#d2e8-head"><span class="secnum">1</span> Notice of Draft Status</a></h5>
+            <h5><a href="#d2e14-head"><span class="secnum">2</span> Abstract</a></h5>
+            <h5><a href="#d2e20-head"><span class="secnum">3</span> Introduction</a></h5>
+            <h5><a href="#d2e22-head"><span class="secnum">3.1</span> Purpose</a></h5>
+            <h5><a href="#d2e26-head"><span class="secnum">4</span> Reading This Document</a></h5>
+            <h5><a href="#d2e29-head"><span class="secnum">4.1</span> Terminology</a></h5>
+            <h5><a href="#d2e108-head"><span class="secnum">4.2</span> Requirement Keywords</a></h5>
+            <h5><a href="#d2e120-head"><span class="secnum">4.3</span> Use of YAML</a></h5>
+            <h5><a href="#d2e136-head"><span class="secnum">4.4</span> Reading YAML Examples</a></h5>
+            <h5><a href="#d2e179-head"><span class="secnum">4.5</span> Document Layout</a></h5>
+            <h5><a href="#d2e196-head"><span class="secnum">4.6</span> The Intermediate and Implementation Guidance</a></h5>
+            <h5><a href="#d2e201-head"><span class="secnum">5</span> Phases of Profile Processing</a></h5>
+            <p class="req recommended" id="ix-req-phase-order"><a href="#req-phase-order"><span class="reqlabel">req-phase-order</span></a> It is strongly RECOMMENDED that implementations execute the following steps in the
+               order that they are provided here (import, merge, modify).</p>
+            <h5><a href="#d2e238-head"><span class="secnum">6</span> Import Phase</a></h5>
+            <h5><a href="#d2e269-head"><span class="secnum">6.1</span> Import href Requirements</a></h5>
+            <h5><a href="#d2e271-head"><span class="secnum">6.1.1</span> Import URI Resolution</a></h5>
+            <p class="req must" id="ix-req-uri-resolve"><a href="#req-uri-resolve"><span class="reqlabel">req-uri-resolve</span></a> Tools MUST resolve URIs by following <a class="a" href="https://datatracker.ietf.org/doc/html/rfc3986#section-5">Section 5 of RFC3986</a>, with the exception of URI Fragments (URIs that start with "#"). URI Fragments MUST
+               instead be resolved as defined in [See: <a href="#d2e298-head" class="xref"><span class="secnum">6.1.3</span> Internal References</a>].</p>
+            <h5><a href="#d2e281-head"><span class="secnum">6.1.2</span> Import Resource Acquisition</a></h5>
+            <p class="req must" id="ix-req-uri-aquire"><a href="#req-uri-aquire"><span class="reqlabel">req-uri-aquire</span></a> Tools MUST acquire resources at the resolved URI by following <a class="a" href="https://datatracker.ietf.org/doc/html/rfc3986#section-5">Section 5 of RFC3986</a>, with the exception of URI Fragments (URIs that start with "#"). URI Fragments MUST
+               instead be acquired as defined in [See: <a href="#d2e298-head" class="xref"><span class="secnum">6.1.3</span> Internal References</a>].</p>
+            <p class="req must" id="ix-req-uri-base"><a href="#req-uri-base"><span class="reqlabel">req-uri-base</span></a> For the purposes of resolving URIs using the above specification, the Base URI MUST
+               be considered to be the absolute URI of the containing profile.</p>
+            <p class="req must" id="ix-req-uri-error"><a href="#req-uri-error"><span class="reqlabel">req-uri-error</span></a> In the case that acquiring a resource fails, the tool MUST cease processing and provide
+               an error. In order to ensure profile resolution results in the same catalog regardless
+               of which tool resolves it, all imports must successfully resolve. While this may cause
+               inconvenience if resources are frequently not available, it ensures interoperability.</p>
+            <h5><a href="#d2e298-head"><span class="secnum">6.1.3</span> Internal References</a></h5>
+            <p class="req must" id="ix-req-internal"><a href="#req-internal"><span class="reqlabel">req-internal</span></a> In the context of the Import Phase, internal references will only appear as a reference
+               to a profile or catalog that is in the <code class="src">resources</code> section of the source. When tools encounter such a reference, they MUST locate the
+               object in <code class="src">resources</code> with the matching ID value, and resolve the import using the <code class="src">rlink</code> URI and the above resolution requirements.</p>
+            <p class="req must" id="ix-req-internal-error"><a href="#req-internal-error"><span class="reqlabel">req-internal-error</span></a> If the object fetched cannot be found or is not a valid OSCAL object, the tool MUST
+               cease processing and provide an error.</p>
+            <h5><a href="#d2e315-head"><span class="secnum">6.1.4</span> Resolving Imports of Profiles</a></h5>
+            <p class="req must" id="ix-req-circular-resolve"><a href="#req-circular-resolve"><span class="reqlabel">req-circular-resolve</span></a> If the resource acquired is an OSCAL Profile, the tool MUST apply this specification
+               to resolve it, then continue processing having imported the resulting catalog.</p>
+            <p class="req should" id="ix-req-circular-catalog"><a href="#req-circular-catalog"><span class="reqlabel">req-circular-catalog</span></a> When a profile imports a profile, the subordinate profile SHOULD be resolved first
+               into a catalog using this specification, before it is imported.</p>
+            <p class="req must" id="ix-req-circular-error"><a href="#req-circular-error"><span class="reqlabel">req-circular-error</span></a> If a processor encounters a <b class="term">circular import</b> as described above (self-imports are inherently circular), the processor MUST cease
+               processing and generate an error.</p>
+            <h5><a href="#d2e352-head"><span class="secnum">6.1.5</span> Multiple imports</a></h5>
+            <h5><a href="#d2e372-head"><span class="secnum">6.1.6</span> Mapping Controls</a></h5>
+            <h5><a href="#d2e401-head"><span class="secnum">6.2</span> Including Controls</a></h5>
+            <h5><a href="#d2e404-head"><span class="secnum">6.2.1</span> include-all</a></h5>
+            <p class="req must" id="ix-req-include-all"><a href="#req-include-all"><span class="reqlabel">req-include-all</span></a> When an import provides the <code class="src">include-all</code> directive, ALL controls and groups in the referenced document (including nested controls)
+               MUST be included.</p>
+            <h5><a href="#d2e413-head"><span class="secnum">6.2.2</span> include-controls plus with-id</a></h5>
+            <p class="req must" id="ix-req-include-by-id"><a href="#req-include-by-id"><span class="reqlabel">req-include-by-id</span></a> When an import provides the <code class="src">include-controls</code> directive, with a <code class="src">with-id</code> child, all controls in the referenced document whose <code class="code">id</code> match one of the listed <code class="code">id</code> values MUST be included.</p>
+            <h5><a href="#d2e428-head"><span class="secnum">6.2.3</span> include-controls plus matching</a></h5>
+            <p class="req must" id="ix-req-include-by-match"><a href="#req-include-by-match"><span class="reqlabel">req-include-by-match</span></a> When an import provides the <code class="src">include-controls</code> directive, with a <code class="src">matching</code> child, all controls in the referenced document whose <code class="code">id</code> matches one of the listed <code class="code">pattern</code> values (Glob matching) MUST be included.</p>
+            <p class="req must" id="ix-req-include-by-match-empty"><a href="#req-include-by-match-empty"><span class="reqlabel">req-include-by-match-empty</span></a> If a <code class="code">matching</code> object is provided with no <code class="code">pattern</code>, it MUST be treated as matching nothing. While not providing a pattern is technically
+               valid, resolution tool implementers should be aware that it is generally undesirable,
+               and warnings or notices to the user may be appropriate.</p>
+            <h5><a href="#d2e451-head"><span class="secnum">6.2.4</span> Dealing with Nested Controls and Groups</a></h5>
+            <h5><a href="#d2e459-head"><span class="secnum">6.2.4.1</span> with-child-controls</a></h5>
+            <p class="req must" id="ix-req-with-child-controls-yes"><a href="#req-with-child-controls-yes"><span class="reqlabel">req-with-child-controls-yes</span></a> A <code class="src">with-child-controls: yes</code> directive on an <code class="src">include-controls</code> indicates that <em class="em">all descendant controls</em> of the included control MUST also be included.</p>
+            <p class="req must" id="ix-req-with-child-controls-no"><a href="#req-with-child-controls-no"><span class="reqlabel">req-with-child-controls-no</span></a> A <code class="src">with-child-controls: no</code> directive on an <code class="src">include-controls</code> indicates that ONLY the matching control is included, any descendant children MUST
+               NOT be included.</p>
+            <p class="req must" id="ix-req-with-child-controls-none"><a href="#req-with-child-controls-none"><span class="reqlabel">req-with-child-controls-none</span></a> If no <code class="src">with-child-controls</code> is provided, the processor MUST consider the directive as being equivalent to one
+               having <code class="src">with-child-controls:no</code>.</p>
+            <h5><a href="#d2e485-head"><span class="secnum">6.2.4.2</span> with-parent-controls</a></h5>
+            <p class="req must" id="ix-req-with-parent-controls-yes"><a href="#req-with-parent-controls-yes"><span class="reqlabel">req-with-parent-controls-yes</span></a> A <code class="src">with-parent-controls: yes</code> directive on an <code class="src">include-controls</code> indicates that <em class="em">all parent controls</em> of the included control MUST also be included.</p>
+            <p class="req must" id="ix-req-with-parent-controls-no"><a href="#req-with-parent-controls-no"><span class="reqlabel">req-with-parent-controls-no</span></a> A <code class="src">with-parent-controls: no</code> directive on an <code class="src">include-controls</code> indicates that ONLY the matching control is included, any parents MUST NOT be included.</p>
+            <p class="req must" id="ix-req-with-parent-controls-none"><a href="#req-with-parent-controls-none"><span class="reqlabel">req-with-parent-controls-none</span></a> If no <code class="src">with-parent-controls</code> is provided, the processor MUST consider the directive as being equivalent to one
+               having <code class="src">with-parent-controls:yes</code>.</p>
+            <h5><a href="#d2e518-head"><span class="secnum">6.2.5</span> exclude-controls</a></h5>
+            <p class="req must" id="ix-req-exclude"><a href="#req-exclude"><span class="reqlabel">req-exclude</span></a> Any control designated to be both included and excluded, MUST be excluded. This holds
+               irrespective of the specificity of the selection for inclusion or exclusion.</p>
+            <p class="req must" id="ix-req-exclude-additional"><a href="#req-exclude-additional"><span class="reqlabel">req-exclude-additional</span></a> When <code class="src">exclude-controls</code> has at least one <code class="src">with-ids</code> or <code class="src">matching</code> directive, the processor MUST follow the same rules as defined in the relevant sections
+               above for these directives, but exclude instead of include any controls. All optional
+               features (with-child-controls, etc.) also apply to exclusion directives.</p>
+            <h5><a href="#d2e538-head"><span class="secnum">6.2.6</span> Redundant Inclusions and Exclusions</a></h5>
+            <p class="req must" id="ix-req-redundant"><a href="#req-redundant"><span class="reqlabel">req-redundant</span></a> A given <code class="src">import</code> may have any number of inclusion statements and any number of exclusion statements.
+               Their effect is cumulative; any control that is included (or excluded) more than once
+               MUST be considered to be included (or excluded) only once. In other words, a given
+               control being included or excluded more than once has no effect. Exclusion still takes
+               priority over inclusion (see above).</p>
+            <h5><a href="#d2e549-head"><span class="secnum">6.2.7</span> Handling Params</a></h5>
+            <p class="req must" id="ix-req-loose-param"><a href="#req-loose-param"><span class="reqlabel">req-loose-param</span></a> All loose params from both imported documents and the profile source MUST be included.
+               These params will be kept in the final output if document contains any references
+               to them, and discarded otherwise. See [See: <a href="#d2e1353-head" class="xref"><span class="secnum">9.3</span> Pruning and Ordering</a>].</p>
+            <h5><a href="#d2e566-head"><span class="secnum">6.2.8</span> Handling Groups</a></h5>
+            <h5><a href="#d2e572-head"><span class="secnum">6.2.9</span> Avoiding Implementation Pitfalls</a></h5>
+            <h5><a href="#d2e582-head"><span class="secnum">6.3</span> Wrapping up the Import Phase</a></h5>
+            <h5><a href="#d2e590-head"><span class="secnum">7</span> Merge Phase</a></h5>
+            <p class="req recommended" id="ix-req-merge-order"><a href="#req-merge-order"><span class="reqlabel">req-merge-order</span></a> It is RECOMMENDED that tools apply the "combine" directive to the intermediate generated
+               by the Import phase first, then apply the "structuring" directive.</p>
+            <h5><a href="#d2e605-head"><span class="secnum">7.1</span> The "combine" Directive</a></h5>
+            <p class="req must" id="ix-req-merge-combine"><a href="#req-merge-combine"><span class="reqlabel">req-merge-combine</span></a> Note that "merge: combine" is deprecated, and MUST be considered undefined behavior
+               when encountered.</p>
+            <h5><a href="#d2e629-head"><span class="secnum">7.1.1</span> No Combine Directive</a></h5>
+            <p class="req must" id="ix-req-merge-none"><a href="#req-merge-none"><span class="reqlabel">req-merge-none</span></a> If no <code class="src">merge</code> directive is given in the profile, or if a <code class="src">merge</code> is given without a <code class="src">combine</code>, merge conflicts MUST be treated as if <code class="src">method: keep</code> was given.</p>
+            <h5><a href="#d2e650-head"><span class="secnum">7.1.2</span> <q class="q">method:keep</q></a></h5>
+            <p class="req must" id="ix-req-merge-keep"><a href="#req-merge-keep"><span class="reqlabel">req-merge-keep</span></a> When a merge is indicated by <code class="src">method:keep</code>, or when no merge directive is given, the <q class="q">keep</q> combination rule is used. Any controls with the same distinctive ID [See: <a href="#d2e1401-head" class="xref"><span class="secnum">10.1</span> Distinct ID of Objects</a>] MUST NOT not merged. (They are kept.)</p>
+            <p class="req should" id="ix-req-merge-keep-warning"><a href="#req-merge-keep-warning"><span class="reqlabel">req-merge-keep-warning</span></a> Processors SHOULD provide a warning under the merge:keep directive when duplicate
+               controls are detected.</p>
+            <p class="req may" id="ix-req-merge-keep-error"><a href="#req-merge-keep-error"><span class="reqlabel">req-merge-keep-error</span></a> The processor MAY throw an error and cease processing (short-circuiting a certain
+               future error) when duplicate controls are detected under the merge:keep directive.</p>
+            <h5><a href="#d2e682-head"><span class="secnum">7.1.3</span> <q class="q">method:use-first</q></a></h5>
+            <p class="req must" id="ix-req-merge-use-first"><a href="#req-merge-use-first"><span class="reqlabel">req-merge-use-first</span></a> When the <q class="q">use-first</q> combination rule is applied, and controls that share a distinctive ID are found,
+               the first control encountered MUST be kept, the rest MUST be discarded.<q class="q">First</q> MUST be determined by a top-down, depth-first traversal of the source profile's import
+               hierarchy.</p>
+            <h5><a href="#d2e700-head"><span class="secnum">7.1.4</span> <code class="src">method:merge</code></a></h5>
+            <h5><a href="#d2e704-head"><span class="secnum">7.2</span> The "structuring" Directive</a></h5>
+            <p class="req must" id="ix-req-stucture"><a href="#req-stucture"><span class="reqlabel">req-stucture</span></a> Optionally, one of three "structuring" directives can be included as a child of <code class="src">merge</code>:<code class="src">flat</code>,<code class="src">as-is</code> and <code class="src">custom</code>. When one of these appears, it is the selected structuring directive. If more than
+               one appears, processors MUST generate an error and cease processing.</p>
+            <h5><a href="#d2e725-head"><span class="secnum">7.2.1</span> No Structuring Directive</a></h5>
+            <p class="req must" id="ix-req-structure-none"><a href="#req-structure-none"><span class="reqlabel">req-structure-none</span></a> If no <code class="src">merge</code> directive is given in the profile, or if a <code class="src">merge</code> is given without a structuring directive, structuring the output MUST be treated
+               as if the structuring directive <code class="src">flat</code> was given. For example, a profile with no <code class="src">merge</code> directive:</p>
+            <h5><a href="#d2e743-head"><span class="secnum">7.2.2</span> "flat"</a></h5>
+            <p class="req must" id="ix-req-merge-flat"><a href="#req-merge-flat"><span class="reqlabel">req-merge-flat</span></a> Profiles with the "flat" merge directive MUST be resolved as unstructured catalogs,
+               with no grouping or nesting of controls.</p>
+            <p class="req must" id="ix-req-merge-flat-list"><a href="#req-merge-flat-list"><span class="reqlabel">req-merge-flat-list</span></a> Unstructured catalog output MUST be produced by adhering to the following requirements:</p>
+            <p class="req must" id="ix-req-merge-flat-list-1"><a href="#req-merge-flat-list-1"><span class="reqlabel">req-merge-flat-list-1</span></a> All included controls are output to the target as a flat list directly under "catalog".</p>
+            <p class="req must" id="ix-req-merge-flat-list-2"><a href="#req-merge-flat-list-2"><span class="reqlabel">req-merge-flat-list-2</span></a> Any included "loose params" are output to the target as a flat list directly under
+               "catalog".</p>
+            <p class="req must" id="ix-req-merge-flat-list-3"><a href="#req-merge-flat-list-3"><span class="reqlabel">req-merge-flat-list-3</span></a> Any groups are discarded.</p>
+            <h5><a href="#d2e772-head"><span class="secnum">7.2.3</span> <q class="q">as-is</q></a></h5>
+            <p class="req must" id="ix-id-structure-as-is-list"><a href="#id-structure-as-is-list"><span class="reqlabel">id-structure-as-is-list</span></a> Processors MUST handle the <code class="src">as-is</code> directive by adhering to the following requirements:</p>
+            <p class="req must" id="ix-id-structure-as-is-list-1"><a href="#id-structure-as-is-list-1"><span class="reqlabel">id-structure-as-is-list-1</span></a> All included controls are output to the target, keeping the structure of the groups
+               and nested controls. Any group that holds an included control MUST appear in the output
+               with all of its non-control children intact. If an included control has a parent control
+               that was not included, that control's output location is "up-leveled", or made equal
+               to the non-included parent. This applies recursively until the control is directly
+               under either "catalog" or another included control.</p>
+            <p class="req must" id="ix-id-structure-as-is-list-2"><a href="#id-structure-as-is-list-2"><span class="reqlabel">id-structure-as-is-list-2</span></a> Any included "loose params" are output to the target as a flat list directly under
+               "catalog".</p>
+            <h5><a href="#d2e802-head"><span class="secnum">7.2.4</span> <q class="q">custom</q></a></h5>
+            <h5><a href="#d2e809-head"><span class="secnum">7.2.4.1</span> Creating Custom Groups</a></h5>
+            <p class="req must" id="ix-req-custom-group"><a href="#req-custom-group"><span class="reqlabel">req-custom-group</span></a> A <code class="src">group</code> object given under <code class="src">custom</code> MUST result in a <code class="tgt">group</code> with the exact same content (excluding <code class="src">insert-controls</code>) in the target catalog.</p>
+            <p class="req must" id="ix-req-custom-group-contents"><a href="#req-custom-group-contents"><span class="reqlabel">req-custom-group-contents</span></a> If the ID of the group matches the ID of a group that has been included during the
+               import phase, all contents inside the group, including <code class="src">title</code>,<code class="src">param</code>,<code class="src">prop</code> and <code class="src">part</code> objects MUST be copied into the target, appearing in the same order as in the source.</p>
+            <h5><a href="#d2e837-head"><span class="secnum">7.2.4.2</span> Inserting Controls</a></h5>
+            <p class="req must" id="ix-req-custom-select"><a href="#req-custom-select"><span class="reqlabel">req-custom-select</span></a> When processing the control selection of a <code class="src">custom</code> element, the behavior defined in this section MUST be followed to generate the output.</p>
+            <p class="req must" id="ix-req-custom-select-ignore"><a href="#req-custom-select-ignore"><span class="reqlabel">req-custom-select-ignore</span></a> In the case that a control selection matches none of the included controls, it MUST
+               be ignored.</p>
+            <p class="req should" id="ix-req-custom-select-warning"><a href="#req-custom-select-warning"><span class="reqlabel">req-custom-select-warning</span></a> In the case that a control selection matches none of the included controls, a warning
+               SHOULD be provided.</p>
+            <h5><a href="#d2e915-head"><span class="secnum">7.3</span> Wrapping up the Merge Phase</a></h5>
+            <h5><a href="#d2e922-head"><span class="secnum">8</span> Modify Phase</a></h5>
+            <h5><a href="#d2e929-head"><span class="secnum">8.1</span> Setting Parameters</a></h5>
+            <p class="req should" id="ix-req-modify-set-param-warning"><a href="#req-modify-set-param-warning"><span class="reqlabel">req-modify-set-param-warning</span></a> If no such parameter is found, a warning SHOULD be issued.</p>
+            <p class="req must" id="ix-req-modify-set-param-id-ignore"><a href="#req-modify-set-param-id-ignore"><span class="reqlabel">req-modify-set-param-id-ignore</span></a> If no such parameter is found, processing MUST still continue.</p>
+            <p class="req must" id="ix-req-modify-set-param-objects1"><a href="#req-modify-set-param-objects1"><span class="reqlabel">req-modify-set-param-objects1</span></a> For the following objects inside the source: class, depends-on, label, usage, values,
+               select; the object MUST be copied into the target from the source, first removing
+               any existing objects with the same name.</p>
+            <p class="req must" id="ix-req-modify-set-param-objects2"><a href="#req-modify-set-param-objects2"><span class="reqlabel">req-modify-set-param-objects2</span></a> For the following objects inside the source: props, links, constraints, guidelines;
+               the contents of the object MUST be added to the contents of the target object of the
+               same name. If no such object exists in the target, it is created.</p>
+            <p class="req must" id="ix-req-modify-set-param-objects3"><a href="#req-modify-set-param-objects3"><span class="reqlabel">req-modify-set-param-objects3</span></a> For the following objects inside the source: prop, link; the object MUST be copied
+               into the target from the source, first removing any existing objects with the same
+               distinctive ID. ([See: <a href="#d2e1401-head" class="xref"><span class="secnum">10.1</span> Distinct ID of Objects</a>]).</p>
+            <p class="req must" id="ix-req-modify-param-multi"><a href="#req-modify-param-multi"><span class="reqlabel">req-modify-param-multi</span></a> If more than one <code class="src">set-parameter</code> directive is given for the same parameter, all MUST BE applied, in the sequence given
+               in the profile.</p>
+            <h5><a href="#d2e969-head"><span class="secnum">8.2</span> Altering controls</a></h5>
+            <h5><a href="#d2e979-head"><span class="secnum">8.2.1</span> Adding contents to controls</a></h5>
+            <h5><a href="#d2e982-head"><span class="secnum">8.2.1.1</span> Implicit binding</a></h5>
+            <p class="req must" id="ix-req-modify-alter-add-implicit"><a href="#req-modify-alter-add-implicit"><span class="reqlabel">req-modify-alter-add-implicit</span></a> An <code class="src">add</code> directive with no <code class="src">by-id</code> child MUST be considered an implicit binding, and will apply to the control as a
+               whole.</p>
+            <p class="req must" id="ix-req-modify-alter-add-implicit0contents"><a href="#req-modify-alter-add-implicit0contents"><span class="reqlabel">req-modify-alter-add-implicit0contents</span></a> The contents of an implicitly bound add directive MUST be added to the control contents
+               in the target, either after its <code class="tgt">title</code> when <code class="src">position</code> is <code class="code">starting</code>, or at the end if its position is <code class="code">ending</code>, or if no valid poisition is given.</p>
+            <p class="req must" id="ix-req-modify-alter-add-implicit-position"><a href="#req-modify-alter-add-implicit-position"><span class="reqlabel">req-modify-alter-add-implicit-position</span></a> When an add directive is implicitly bound, the <code class="src">position</code> values <code class="code">before</code> and <code class="code">after</code> MUST be treated like <code class="code">starting</code> and <code class="code">ending</code>, respectively.</p>
+            <p class="req must" id="ix-req-modify-alter-add-implicit-order"><a href="#req-modify-alter-add-implicit-order"><span class="reqlabel">req-modify-alter-add-implicit-order</span></a> After processing an implicitly bound add directive, the control contents MUST be sorted
+               to appear in the required order: a new <code class="tgt">prop</code> appears after any <code class="src">prop</code> already in the control, when <code class="src">position</code> is <code class="code">ending</code>, or not given, or before any <code class="src">prop</code> in the control when <code class="src">position</code> is <code class="code">starting</code>.</p>
+            <h5><a href="#d2e1076-head"><span class="secnum">8.2.1.2</span> Explicit binding</a></h5>
+            <p class="req must" id="ix-req-modify-alter-add-explicit"><a href="#req-modify-alter-add-explicit"><span class="reqlabel">req-modify-alter-add-explicit</span></a> An <code class="src">add</code> directive with a <code class="src">by-id</code> child MUST be considered an explicit binding, and applies to only a single object
+               inside the control.</p>
+            <p class="req must" id="ix-req-modify-alter-add-explicit-id"><a href="#req-modify-alter-add-explicit-id"><span class="reqlabel">req-modify-alter-add-explicit-id</span></a> When an add directive is explitly bound, the value of the <code class="src">by-id</code> child MUST correspond to the value of an <code class="src">id</code> on an object inside the control, and not the control itself.</p>
+            <p class="req must" id="ix-req-modify-alter-add-explicit-id-ignore"><a href="#req-modify-alter-add-explicit-id-ignore"><span class="reqlabel">req-modify-alter-add-explicit-id-ignore</span></a> If <code class="src">by-id</code> does not correspond to such a value, the <code class="src">add</code> directive MUST be considered inoperative and ignored.</p>
+            <p class="req may" id="ix-req-modify-alter-add-explicit-id-warning"><a href="#req-modify-alter-add-explicit-id-warning"><span class="reqlabel">req-modify-alter-add-explicit-id-warning</span></a> An inoperative add directive MAY result in a warning.</p>
+            <p class="req must" id="ix-req-modify-alter-add-explicit-inside"><a href="#req-modify-alter-add-explicit-inside"><span class="reqlabel">req-modify-alter-add-explicit-inside</span></a> When <code class="src">position</code> has a value of <code class="code">starting</code> or <code class="code">ending</code>, the contents of the source MUST be added inside the target, either at the start
+               or end of its contents, respectively.</p>
+            <p class="req must" id="ix-req-modify-alter-add-explicit-outside"><a href="#req-modify-alter-add-explicit-outside"><span class="reqlabel">req-modify-alter-add-explicit-outside</span></a> When <code class="src">position</code> has a value of <code class="code">before</code> or <code class="code">after</code>, the contents of the source MUST be added outside the target, either directly before
+               or after it, respectively.</p>
+            <h5><a href="#d2e1169-head"><span class="secnum">8.2.1.3</span> Modifying controls inside controls</a></h5>
+            <p class="req must" id="ix-req-modify-alter-add-nested"><a href="#req-modify-alter-add-nested"><span class="reqlabel">req-modify-alter-add-nested</span></a> Profile Resolution tools MUST be able to correctly handle add directives targetting
+               nested controls. This includes directives that target a child control as well as directives
+               that target a parent control and modify the child.</p>
+            <h5><a href="#d2e1181-head"><span class="secnum">8.2.2</span> Removing contents from controls</a></h5>
+            <p class="req must" id="ix-req-modify-alter-remove-match"><a href="#req-modify-alter-remove-match"><span class="reqlabel">req-modify-alter-remove-match</span></a> An object inside the control MUST be removed from the output if and only if it meets
+               all of the criteria given by the child objects of the remove directive.</p>
+            <p class="req must" id="ix-req-modify-alter-remove-by-id"><a href="#req-modify-alter-remove-by-id"><span class="reqlabel">req-modify-alter-remove-by-id</span></a> The remove directive criteria <code class="src">by-id</code> MUST match an object if and only its value is identical to the <code class="src">id</code> value of that object.</p>
+            <p class="req must" id="ix-req-modify-alter-remove-name-ref"><a href="#req-modify-alter-remove-name-ref"><span class="reqlabel">req-modify-alter-remove-name-ref</span></a> The remove directive criteria <code class="src">name-ref</code> MUST match an object if and only its value is identical to the value of that object's
+               <code class="src">name</code> child.</p>
+            <p class="req must" id="ix-req-modify-alter-remove-ns-ref"><a href="#req-modify-alter-remove-ns-ref"><span class="reqlabel">req-modify-alter-remove-ns-ref</span></a> The remove directive criteria <code class="src">ns-ref</code> MUST match an object if and only its value is identical to the value of that object's
+               <code class="src">ns</code> child.</p>
+            <p class="req must" id="ix-req-modify-alter-remove-class-ref"><a href="#req-modify-alter-remove-class-ref"><span class="reqlabel">req-modify-alter-remove-class-ref</span></a> The remove directive criteria <code class="src">class-ref</code> MUST match an object if and only its value is identical to the value of that object's
+               <code class="src">class</code> child.</p>
+            <p class="req must" id="ix-req-modify-alter-remove-item-name"><a href="#req-modify-alter-remove-item-name"><span class="reqlabel">req-modify-alter-remove-item-name</span></a> The remove directive criteria <code class="src">item-name</code> MUST match an object if and only its value is identical to the value of that object's
+               serialized name.</p>
+            <p class="req must" id="ix-req-modify-alter-remove-item-name-array"><a href="#req-modify-alter-remove-item-name-array"><span class="reqlabel">req-modify-alter-remove-item-name-array</span></a> In serialization formats that use arrays of objects in the OSCAL model, an object's
+               name MUST be considered the singular form of its containing parent array.</p>
+            <h5><a href="#d2e1247-head"><span class="secnum">9</span> Final Operations</a></h5>
+            <h5><a href="#d2e1249-head"><span class="secnum">9.1</span> Backmatter Resolution</a></h5>
+            <p class="req must" id="ix-req-backmatter"><a href="#req-backmatter"><span class="reqlabel">req-backmatter</span></a> The output's backmatter MUST be generated by copying in each <code class="src">resource</code> object from the backmatters of the imported catalogs/profiles in top-to-bottom order,
+               then by copying in each <code class="src">resource</code> object from the backmatter of the source profile itself. These objects MUST be processed
+               in the order they are given in their respective documents.</p>
+            <p class="req must" id="ix-req-backmatter-dupe"><a href="#req-backmatter-dupe"><span class="reqlabel">req-backmatter-dupe</span></a> If a given <code class="src">resource</code> has the same <code class="src">uuid</code> as a resource that has already been added, the previous resource MUST be removed,
+               and the more recent one added, unless superceded by other requirements.</p>
+            <p class="req must" id="ix-req-backmatter-keep"><a href="#req-backmatter-keep"><span class="reqlabel">req-backmatter-keep</span></a> A <code class="src">resource</code> with a child <code class="src">prop</code> of <code class="src">name:keep</code> and <code class="src">value:always</code> MUST NOT be replaced by the addition of another <code class="src">resource</code>, unless the new resource also has a child <code class="src">prop</code> of <code class="src">name:keep</code> and <code class="src">value:always</code>.</p>
+            <p class="req may" id="ix-req-backmatter-prune"><a href="#req-backmatter-prune"><span class="reqlabel">req-backmatter-prune</span></a> Tools MAY check for pruning conditions [See: <a href="#d2e1353-head" class="xref"><span class="secnum">9.3</span> Pruning and Ordering</a>] as resources are added as long as the final result is the same as if the pruning
+               had taken place at the end of all resource addition.</p>
+            <h5><a href="#d2e1302-head"><span class="secnum">9.2</span> Metadata Resolution</a></h5>
+            <p class="req must" id="ix-req-meta-uuid"><a href="#req-meta-uuid"><span class="reqlabel">req-meta-uuid</span></a> The output catalog's metadata MUST have a unique top-level UUID (metadata:uuid). This
+               UUID may be generated as seen fit by the tool, as long as it is reasonable to assume
+               it is globally unique. It is RECOMMENDED that tools use a combination of meaningful
+               text and a uniquely generated value (Ex.<code class="code">{{sourceprofilename}}-RESOLVED-{{GUIDv5}}</code>).</p>
+            <p class="req must" id="ix-req-meta-version"><a href="#req-meta-version"><span class="reqlabel">req-meta-version</span></a> The value of metadata:version in the target MUST be set with a string that identifies
+               the version of that document.</p>
+            <p class="req should" id="ix-req-meta-version-track"><a href="#req-meta-version-track"><span class="reqlabel">req-meta-version-track</span></a> The metadata:version SHOULD be used to track updates to this specific output document.</p>
+            <p class="req must" id="ix-req-meta-oscal-version"><a href="#req-meta-oscal-version"><span class="reqlabel">req-meta-oscal-version</span></a> The value of metadata:oscal-version in the target MUST be set with a string that identifies
+               the version of OSCAL used by this tool to resolve the profile (ex. 1.0.0). This value
+               MUST be determined by compiling the oscal-versions from each imported document and
+               the source profile, and taking the most recent minor version. If this version is more
+               recent than what the resolution tool is using, then the value of the output oscal-version
+               MUST be the version that the tool used internally.</p>
+            <p class="req must" id="ix-req-meta-oscalversion-error"><a href="#req-meta-oscalversion-error"><span class="reqlabel">req-meta-oscalversion-error</span></a> If any of the above OSCAL versions (imported document versions, source profile version,
+               tool version) are of a different major version (the first digit differs), the tool
+               SHOULD provide an error and cease processing.</p>
+            <p class="req must" id="ix-req-meta-last-modified"><a href="#req-meta-last-modified"><span class="reqlabel">req-meta-last-modified</span></a> The value of metadata:last-modified in the target MUST be set with a valid timestamp
+               representing the time the profile resolution completed.</p>
+            <p class="req should" id="ix-req-meta-source-profile"><a href="#req-meta-source-profile"><span class="reqlabel">req-meta-source-profile</span></a> The value of metadata:source-profile in the target SHOULD be set with a valid URI
+               that points to the profile that resulted in this catalog.</p>
+            <p class="req may" id="ix-req-meta-source-profile-privacy"><a href="#req-meta-source-profile-privacy"><span class="reqlabel">req-meta-source-profile-privacy</span></a> If there are privacy or security concerns, the value of metadata:source-profile MAY
+               be set to anything, in which case the simple existence of the source-profile property
+               indicates that this is a resolved profile.</p>
+            <p class="req should" id="ix-req-meta-resolution-tool"><a href="#req-meta-resolution-tool"><span class="reqlabel">req-meta-resolution-tool</span></a> The value of metadata:resolution-tool in the target SHOULD be set with a string that
+               represents the tool that was used to resolve this catalog.</p>
+            <p class="req must" id="ix-req-meta-keep"><a href="#req-meta-keep"><span class="reqlabel">req-meta-keep</span></a> For any metadata:roles or metadata:parties that exist in the source catalogs, if they
+               have a <code class="src">prop</code> child with name:keep and value:always, they are to be copied as is into the output
+               metadata.</p>
+            <h5><a href="#d2e1353-head"><span class="secnum">9.3</span> Pruning and Ordering</a></h5>
+            <p class="req should" id="ix-req-prune"><a href="#req-prune"><span class="reqlabel">req-prune</span></a> The processor SHOULD prune the resulting output catalog by removing unused objects.</p>
+            <p class="req must" id="ix-req-prune-keep"><a href="#req-prune-keep"><span class="reqlabel">req-prune-keep</span></a> Any object that has a child <code class="src">prop</code> with a <code class="src">name</code> of "keep" and a <code class="src">value</code> of "always" MUST NOT be pruned.</p>
+            <p class="req must" id="ix-req-prune-include"><a href="#req-prune-include"><span class="reqlabel">req-prune-include</span></a> If an object was explicitly included in the [See: <a href="#d2e401-head" class="xref"><span class="secnum">6.2</span> Including Controls</a>], it MUST NOT be pruned.</p>
+            <p class="req must" id="ix-req-prune-custom"><a href="#req-prune-custom"><span class="reqlabel">req-prune-custom</span></a> If an object was referenced in a <code class="src">custom</code> section of the source profile, it MUST NOT be pruned.</p>
+            <p class="req must" id="ix-req-prune-modify"><a href="#req-prune-modify"><span class="reqlabel">req-prune-modify</span></a> If an object was referenced in the <code class="src">modify</code> section of the source profile, it MUST NOT be pruned. Any objects removed in that
+               section are still removed.</p>
+            <p class="req must" id="ix-req-prune-ref"><a href="#req-prune-ref"><span class="reqlabel">req-prune-ref</span></a> If the object appears in a reference anywhere in the final result catalog, except
+               in other objects that also meet all other pruning criteria, it MUST NOT be removed.
+               A reference to a given object exists if "#{distinctiveID}" appears anywhere, where
+               {distinctiveID} is the distinctive ID of the object [See: <a href="#d2e1401-head" class="xref"><span class="secnum">10.1</span> Distinct ID of Objects</a>].</p>
+            <p class="req must" id="ix-req-reorder"><a href="#req-reorder"><span class="reqlabel">req-reorder</span></a> Tools MUST reorder the output catalog into canonical order [See: <a href="#d2e1471-head" class="xref"><span class="secnum">10.2.4</span> Order of objects in serialization</a>], except where this specification provides different ordering requirements.</p>
+            <h5><a href="#d2e1399-head"><span class="secnum">10</span> Items of Note</a></h5>
+            <h5><a href="#d2e1401-head"><span class="secnum">10.1</span> Distinct ID of Objects</a></h5>
+            <p class="req must" id="ix-req-id-id"><a href="#req-id-id"><span class="reqlabel">req-id-id</span></a> For the objects control, param, and group, distinctiveness MUST be determined by the
+               value of the <q class="q">id</q> child object.</p>
+            <p class="req must" id="ix-req-id-uuid"><a href="#req-id-uuid"><span class="reqlabel">req-id-uuid</span></a> For the object resource, distinctiveness MUST be determined by the value of the <q class="q">uuid</q> [See: <a href="#d2e1249-head" class="xref"><span class="secnum">9.1</span> Backmatter Resolution</a>].</p>
+            <h5><a href="#d2e1419-head"><span class="secnum">10.2</span> Dealing with Multiple Formats</a></h5>
+            <p class="req should" id="ix-req-multiformat"><a href="#req-multiformat"><span class="reqlabel">req-multiformat</span></a> Profile Resolution tools SHOULD be able to handle source profiles, imported catalogs,
+               and imported profiles that are serialized in XML, JSON, or YAML.</p>
+            <p class="req must" id="ix-req-multiformat-differ"><a href="#req-multiformat-differ"><span class="reqlabel">req-multiformat-differ</span></a> A different serialization format of any given input MUST NOT result in a differing
+               output catalog.</p>
+            <h5><a href="#d2e1434-head"><span class="secnum">10.2.1</span> Requirements and Guidance for XML Output</a></h5>
+            <p class="req must" id="ix-req-output-xml"><a href="#req-output-xml"><span class="reqlabel">req-output-xml</span></a> The final Catalog output, if using XML, MUST be valid as defined by the XML model
+               documentation for the OSCAL Catalog. See <a class="a" href="https://pages.nist.gov/OSCAL/reference/latest/complete/xml-definitions/">the complete XML reference</a> for model requirements.</p>
+            <h5><a href="#d2e1444-head"><span class="secnum">10.2.2</span> Requirements and Guidance for JSON Output</a></h5>
+            <p class="req must" id="ix-req-output-json"><a href="#req-output-json"><span class="reqlabel">req-output-json</span></a> The final Catalog output, if using JSON, MUST be valid as defined by the JSON model
+               documentation for the OSCAL Catalog. See the <a class="a" href="https://pages.nist.gov/OSCAL/reference/latest/complete/json-reference/">complete JSON reference</a> for model requirements.</p>
+            <h5><a href="#d2e1457-head"><span class="secnum">10.2.3</span> Requirements and Guidance for YAML Output</a></h5>
+            <p class="req must" id="ix-req-output-yaml"><a href="#req-output-yaml"><span class="reqlabel">req-output-yaml</span></a> The final Catalog output, if using YAML, MUST be valid as defined by the JSON model
+               documentation for the OSCAL Catalog.</p>
+            <h5><a href="#d2e1471-head"><span class="secnum">10.2.4</span> Order of objects in serialization</a></h5>
+            <p class="req must" id="ix-req-order"><a href="#req-order"><span class="reqlabel">req-order</span></a> When the output format is XML, tools MUST use the OSCAL canonical order as described
+               above. When using the YAML or JSON formats, order conveys no meaning, and is not considered
+               important.</p>
+            <h5><a href="#d2e1483-head"><span class="secnum">10.2.5</span> Comments in result documents</a></h5>
+         </div>
+      </aside>
+      <main>
+         <details open="open">
+            <summary>
+               <h2 id="d2e8-head"><span class="secnum">1</span> Notice of Draft Status</h2>
+            </summary>
+            <p>Please note that this specification is currently a work in progress and is subject
+               to change. If you have any feedback or comments, please create an issue at the NIST
+               OSCAL Github Repository:<a class="a" href="https://github.com/usnistgov/OSCAL"></a>.</p>
+         </details>
+         <details open="open">
+            <summary>
+               <h2 id="d2e14-head"><span class="secnum">2</span> Abstract</h2>
+            </summary>
+            <p>This specification provides the minimal requirements for processing an OSCAL Profile
+               to create a new OSCAL Catalog Document. This process of applying a profile to a catalog
+               to create a new catalog is called <b class="term">Profile Resolution</b>. Not all OSCAL Profiles will be resolved, nor are expected to be; however, the resolution
+               requirements in this document are crucial to understanding the intended functionality
+               of any given OSCAL Profile. This specification is intended for software developers
+               who intend to develop an OSCAL Profile Resolver, or for OSCAL Profile authors who
+               want a more in-depth understanding of profile resolution.</p>
+         </details>
+         <details open="open">
+            <summary>
+               <h2 id="d2e20-head"><span class="secnum">3</span> Introduction</h2>
+            </summary>
+            <details open="open">
+               <summary>
+                  <h3 id="d2e22-head"><span class="secnum">3.1</span> Purpose</h3>
+               </summary>
+               <p>This document defines the normative requirements for an OSCAL Profile Resolver. Profile
+                  resolution is core to addressing a fundamental OSCAL requirement: the representation
+                  of baselines separately from the control catalogs on which they depend). The requirements
+                  for resolution must therefore be well-defined and deterministic, enabling tool developers
+                  and parties exchanging OSCAL Profiles can work from a common understanding.</p>
+               <p>No requirements are placed on implementation-level details, instead, requirements
+                  are laid out as what the output of resolution must look like given a certain input.
+                  By adhering to these requirements OSCAL producers, OSCAL consumers, and any other
+                  members of the OSCAL ecosystem can create and resolve profiles deterministically,
+                  with repeatable results, regardless of the tool used.</p>
+            </details>
+         </details>
+         <details open="open">
+            <summary>
+               <h2 id="d2e26-head"><span class="secnum">4</span> Reading This Document</h2>
+            </summary>
+            <details open="open">
+               <summary>
+                  <h3 id="d2e29-head"><span class="secnum">4.1</span> Terminology</h3>
+               </summary>
+               <p>Many core OSCAL concepts are defined on the <a class="a" href="https://pages.nist.gov/OSCAL/concepts/terminology/">OSCAL Terminology Page</a>. The most important are repeated in this document, but readers should verify their
+                  understanding of all core OSCAL terms before reading this document.</p>
+               <p>Additionally, many terms in the wider domain have overloaded definitions. Unless defined
+                  otherwise by OSCAL or explicitly in this document, terms are to be understood as defined
+                  in the <a class="a" href="https://csrc.nist.gov/glossary">NIST CSRC Glossary</a>.</p>
+               <ul>
+                  <li>
+                     <p><b class="term">profile</b>- an OSCAL Profile Document. Defines a set of inclusions, modifications, and transformations
+                        against a <b class="term">catalog</b>. See <a class="a" href="https://pages.nist.gov/OSCAL/concepts/layer/control/profile/">OSCAL Profile Model</a>.</p>
+                  </li>
+                  <li>
+                     <p><b class="term">catalog</b>- an OSCAL Catalog Document. Contains a well-defined set of <b class="term">controls</b>. See <a class="a" href="https://pages.nist.gov/OSCAL/concepts/layer/control/catalog/">OSCAL Catalog Model</a>.</p>
+                  </li>
+                  <li>
+                     <p><b class="term">control</b>- an individual item in an OSCAL Catalog. See <a class="a" href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-53r5.pdf">NIST Special Publication 800-53r5</a> for a more in-depth definition.</p>
+                  </li>
+                  <li>
+                     <p><b class="term">profile resolution</b>- The process of consuming one or more OSCAL Profiles and the OSCAL Catalogs that
+                        they reference to produce a new tailored <b class="term">catalog</b>. See <a class="a" href="https://pages.nist.gov/OSCAL/concepts/layer/control/catalog/">OSCAL Catalog Model</a>.</p>
+                  </li>
+                  <li>
+                     <p><b class="term">source</b>- refers to the profile document that is input into the profile resolution processor.
+                        This is the profile being resolved. In this document, when referring to objects from
+                        the <b class="term">source</b> document, the following style is used:<code class="src">source-object</code>.</p>
+                  </li>
+                  <li>
+                     <p><b class="term">target</b>- the intended output of the transformation, a catalog document. In this document,
+                        when referring to objects of a <b class="term">target</b> document, the following style is used:<code class="tgt">target-object</code>.</p>
+                  </li>
+                  <li>
+                     <p><b class="term">directive</b>- refers to an object or combination of objects in source documents, which is designed
+                        to affect a particular outcome in the target catalog. For the most part, directives
+                        are in the source profile document – for example, a <code class="src">set-parameter</code> object in a source profile is a directive to set a parameter value in the target
+                        catalog.</p>
+                  </li>
+                  <li>
+                     <p><b class="term">original order</b>- the order of objects as presented in the <b class="term">source</b> document(s). See XYZ.</p>
+                  </li>
+                  <li>
+                     <p><b class="term">canonical order</b>- the order of objects as required in the appropriate OSCAL Model (Profile, Catalog,
+                        etc.). This can differ from the above order when converting between "ordered" formats
+                        (ex. XML), and "non-ordered" formats (ex. JSON).</p>
+                  </li>
+               </ul>
+            </details>
+            <details open="open">
+               <summary>
+                  <h3 id="d2e108-head"><span class="secnum">4.2</span> Requirement Keywords</h3>
+               </summary>
+               <p>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD
+                  NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are
+                  to be interpreted as described in <a class="a" href="https://tools.ietf.org/pdf/bcp14.pdf">BCP 14</a> <a class="a" href="https://tools.ietf.org/pdf/rfc2119">[RFC2119]</a><a class="a" href="https://tools.ietf.org/pdf/rfc8174">[RFC8174]</a> when, and only when, they appear in all capitals, as shown here.</p>
+            </details>
+            <details open="open">
+               <summary>
+                  <h3 id="d2e120-head"><span class="secnum">4.3</span> Use of YAML</h3>
+               </summary>
+               <p>OSCAL supports a variety of serialization formats, each of which having it's own benefits
+                  and drawbacks. In this document, YAML (YAML Ain't Markup Language) is used to represent
+                  the various objects of the <b class="term">source</b> and <b class="term">target</b>. All examples and in-line references will be represented using <a class="a" href="https://yaml.org/spec/1.2/spec.html">YAML 1.2</a>.</p>
+               <p>YAML maps cleanly to JSON, thus allowing easy use of existing JSON/XML transformers
+                  where needed. With that in mind, the <a class="a" href="https://pages.nist.gov/OSCAL/reference/latest/complete/json-reference/">OSCAL Complete JSON Reference</a> is a valuable resource for understanding the YAML-based information structures used
+                  in this document. All JSON properties and objects defined in the reference equate
+                  to a YAML mapping, list, or dictionary.</p>
+            </details>
+            <details open="open">
+               <summary>
+                  <h3 id="d2e136-head"><span class="secnum">4.4</span> Reading YAML Examples</h3>
+               </summary>
+               <p>YAML is a particularly human-readable format. For those unfamiliar with the format,
+                  the basics:</p>
+               <ul>
+                  <li>
+                     <p>Each line is a key-value pair, presented as <code class="code">key:value</code>, or as <code class="code">key:</code> with any number of list items on the following lines.</p>
+                  </li>
+                  <li>
+                     <p>Indentation, spacing, and white space matters. Items below a key and indented one
+                        level in are members (or children) of that key.</p>
+                  </li>
+                  <li>
+                     <p>List items are represented with a preceding dash <code class="code">- listitemkey:value</code>.</p>
+                  </li>
+               </ul>
+               <p>The YAML specification is freely available here:<a class="a" href="https://yaml.org/spec/1.2/spec.html">YAML 1.2</a>.</p>
+               <p>Additionally, in order to unambiguously express information, this specification uses
+                  additional conventions, as described below.</p>
+               <p>There are some objects whose values must be determined dynamically at processing time.
+                  The most common example of this is timestamping output as it is processed. In this
+                  case, and any other dynamic-value cases, the expression <code class="code">${{ }}</code> is used.</p>
+               <p>For example:</p>
+               <div class="target_catalog-tagging example">
+                  <h4 class="label">Target (catalog):</h4>
+                  <pre class="tagging">
+last-modified: ${{ timestamp }}</pre>
+               </div>
+               <p>Indicates the <code class="tgt">last-modified</code> object should be produced with contents generated appropriately, in this case, the
+                  timestamp at the time of processing.</p>
+               <p>Some examples may elide content to enhance readability or save space. In these cases,
+                  a YAML comment (any line that starts with <code class="code">#</code>) will be used to explain the elision.</p>
+               <p>Finally, although examples are syntactically faithful to OSCAL, they are not necessarily
+                  always formally valid in every respect. For example, OSCAL defines allowed property
+                  names (<code class="src">props</code>) and values, and those rules may not be observed here. Examples are given for purposes
+                  of illustrating profile resolution semantics only, and should not be taken as normative
+                  for any actual use.</p>
+            </details>
+            <details open="open">
+               <summary>
+                  <h3 id="d2e179-head"><span class="secnum">4.5</span> Document Layout</h3>
+               </summary>
+               <p>The specification is broken into the following major sections:</p>
+               <ul>
+                  <li>
+                     <p><b class="term">Phases of Profile Resolution</b>- Lays out the necessary steps and phases of profile resolution. As each phase executes,
+                        the processor is understood to be creating and editing an intermediate representation
+                        of the output. There is one section for each of the three main phases.</p>
+                  </li>
+                  <li>
+                     <p><b class="term">Target Catalog Structure</b>- Provides the requirements for structuring the final output from the intermediate
+                        representation generated throughout the previous section.</p>
+                  </li>
+               </ul>
+               <p><b class="term">Please note</b>: As referenced in the Purpose section [See: <a href="#d2e22-head" class="xref"><span class="secnum">3.1</span> Purpose</a>], this specification makes no hard requirements on the specifics of implementation.
+                  It is feasible for an implementation to use no intermediate representation, and to
+                  directly and iteratively build the output. As long as all processing and output requirements
+                  are satisfied, any approach is allowed. With that said, the specification has been
+                  laid out to aid in implementation by providing a clear organization as a sequence
+                  of distinct operations.</p>
+            </details>
+            <details open="open">
+               <summary>
+                  <h3 id="d2e196-head"><span class="secnum">4.6</span> The Intermediate and Implementation Guidance</h3>
+               </summary>
+               <p>The overall intent of this document, in addition to defining strict requirements,
+                  is to provide rough guidelines on implementing an OSCAL Profile Resolution Tool. To
+                  this end, each phase of resolution will be framed as a series of transformations applied
+                  to an internal data structure that is persistent throughout the process. We call this
+                  "the intermediate".</p>
+               <p>Any examples that are labelled as "Intermediate" are pseudo-code, designed to represent
+                  how this data structure might look as we apply different operations to it. The example
+                  intermediates are often not valid OSCAL, and are not to be taken as guidance, but
+                  rather a useful visualization tool for implementers.</p>
+               <p>The authors believe that applying the steps of resolution in order against this intermediate
+                  representation is the simplest way to achieve full compliance with the specification.
+                  However, there is no requirement to implement profile resolution in this way. Requirements
+                  are given as rules on the output of resolution, and as such, tools can operate any
+                  way they would like internally.</p>
+            </details>
+         </details>
+         <details open="open">
+            <summary>
+               <h2 id="d2e201-head"><span class="secnum">5</span> Phases of Profile Processing</h2>
+            </summary>
+            <p>An OSCAL Profile has three major sections, each which correspond to a phase of profile
+               resolution. In order to complete the profile resolution process, each section must
+               be fully parsed and a catalog output created.</p>
+            <p><span class="req recommended" id="req-phase-order"><a href="#ix-req-phase-order"><span class="reqlabel">req-phase-order</span></a>It is strongly RECOMMENDED that implementations execute the following steps in the
+                  order that they are provided here (import, merge, modify).</span> While it is possible to achieve compliance with a non-standard approach, the iterative
+               nature of profile resolution lends itself to linear processing.</p>
+            <p>The three steps are <b class="term">import</b>;<b class="term">merge</b>; and <b class="term">modify</b>. In brief:</p>
+            <ul>
+               <li>
+                  <p><b class="term">import</b>- identifies one or more control sources (catalogs or profiles) and defines the controls
+                     within them to be included in the result catalog. If nothing is imported, no resulting
+                     catalog is produced. Invoked by <code class="src">import</code> directives in source profiles;</p>
+               </li>
+               <li>
+                  <p><b class="term">merge</b>- designates the rules for how controls will be organized (ordered and/or grouped)
+                     and merged (addressing conflicts or ambiguities) in the result catalog. Controlled
+                     by the <code class="src">merge</code> directive in source profiles; if none are included, default merge rules are used;</p>
+               </li>
+               <li>
+                  <p><b class="term">modify</b>- indicates how controls and their parameters in the underlying catalog are to be
+                     altered, edited, amended or added in the final result catalog. Logical evaluation
+                     and parameter constraints provide advanced processing. Controlled by the <code class="src">modify</code> directive in source profiles. If a <code class="src">modify</code> directive is not provided, no changes will be made to the controls that have been
+                     imported/merged.</p>
+               </li>
+            </ul>
+            <p>As described in the previous section, when resolved, an OSCAL Profile takes the form
+               of an OSCAL Catalog. The phases described below will produce outputs conforming to
+               the catalog model.</p>
+         </details>
+         <details open="open">
+            <summary>
+               <h2 id="d2e238-head"><span class="secnum">6</span> Import Phase</h2>
+            </summary>
+            <p>A profile begins by listing a set of catalogs and/or profiles to be imported. Each
+               is represented by a resolvable resource URI and a directive specifying which controls
+               to import from that resource. These resources may be available as static resources,
+               or they may be produced dynamically on request; such as is the case when a profile
+               is imported. Imports are given in sequence after the metadata:</p>
+            <div class="source_profile-tagging example">
+               <h4 class="label">Source (profile):</h4>
+               <pre class="tagging">
+profile:
+  uuid: ~
+  metadata: ~
+  imports:
+    - href: ${{ catalog URI }}
+      include-controls: ${{ list of selected controls }}
+    - href: ${{ profile URI }}
+      include-controls: ${{ list of selected controls }} 
+   </pre>
+            </div>
+            <p>In an import directive, the reference to the resource to be imported appears on an
+               <code class="src">href</code> child object. It takes either of two forms, external or internal:</p>
+            <p>An external reference appears as an absolute or relative URL:</p>
+            <div class="source_profile-tagging example">
+               <h4 class="label">Source (profile):</h4>
+               <pre class="tagging">
+profile:
+  uuid: ~
+  metadata: ~
+  imports:
+    - href: >-
+        https://github.com/usnistgov/oscal-content/tree
+        /master/nist.gov/SP800-53/rev4/yaml/NIST_SP-800-53_rev4_catalog.yaml
+      include-controls: ${{ list of selected controls }}
+    - href: "../../NIST_SP-800-53_rev5_catalog.yaml"
+      include-controls: ${{ list of selected controls }} 
+   </pre>
+            </div>
+            <p>While an internal reference appears as below (see [See: <a href="#d2e298-head" class="xref"><span class="secnum">6.1.3</span> Internal References</a>]):</p>
+            <div class="source_profile-tagging example">
+               <h4 class="label">Source (profile):</h4>
+               <pre class="tagging">
+profile:
+  uuid: ~
+  metadata: ~
+  imports:
+    - href: #80052rev4
+      include-controls: ${{ list of selected controls }}
+    - href: #80052rev5
+      include-controls: ${{ list of selected controls }} 
+   </pre>
+            </div>
+            <p>All import directives will contain either <code class="src">include-all: ~</code> or <code class="src">include-controls</code>. These directives indicate which controls from the imported document are explicitly
+               selected [See: <a href="#d2e401-head" class="xref"><span class="secnum">6.2</span> Including Controls</a>].</p>
+            <p>The following section contains requirements for processing the <code class="src">import</code> child of a source <code class="src">profile</code></p>
+            <details open="open">
+               <summary>
+                  <h3 id="d2e269-head"><span class="secnum">6.1</span> Import href Requirements</h3>
+               </summary>
+               <details open="open">
+                  <summary>
+                     <h4 id="d2e271-head"><span class="secnum">6.1.1</span> Import URI Resolution</h4>
+                  </summary>
+                  <p><span class="req must" id="req-uri-resolve"><a href="#ix-req-uri-resolve"><span class="reqlabel">req-uri-resolve</span></a>Tools MUST resolve URIs by following <a class="a" href="https://datatracker.ietf.org/doc/html/rfc3986#section-5">Section 5 of RFC3986</a>, with the exception of URI Fragments (URIs that start with "#"). URI Fragments MUST
+                        instead be resolved as defined in [See: <a href="#d2e298-head" class="xref"><span class="secnum">6.1.3</span> Internal References</a>].</span></p>
+               </details>
+               <details open="open">
+                  <summary>
+                     <h4 id="d2e281-head"><span class="secnum">6.1.2</span> Import Resource Acquisition</h4>
+                  </summary>
+                  <p><span class="req must" id="req-uri-aquire"><a href="#ix-req-uri-aquire"><span class="reqlabel">req-uri-aquire</span></a>Tools MUST acquire resources at the resolved URI by following <a class="a" href="https://datatracker.ietf.org/doc/html/rfc3986#section-5">Section 5 of RFC3986</a>, with the exception of URI Fragments (URIs that start with "#"). URI Fragments MUST
+                        instead be acquired as defined in [See: <a href="#d2e298-head" class="xref"><span class="secnum">6.1.3</span> Internal References</a>].</span></p>
+                  <p><span class="req must" id="req-uri-base"><a href="#ix-req-uri-base"><span class="reqlabel">req-uri-base</span></a>For the purposes of resolving URIs using the above specification, the Base URI MUST
+                        be considered to be the absolute URI of the containing profile.</span></p>
+                  <p><span class="req must" id="req-uri-error"><a href="#ix-req-uri-error"><span class="reqlabel">req-uri-error</span></a>In the case that acquiring a resource fails, the tool MUST cease processing and provide
+                        an error. In order to ensure profile resolution results in the same catalog regardless
+                        of which tool resolves it, all imports must successfully resolve. While this may cause
+                        inconvenience if resources are frequently not available, it ensures interoperability.</span></p>
+                  <p>Note that receiving a cached version of an import, or resolving an import that is
+                     otherwise unavailable through some other (but automatic) means still satisfies the
+                     above requirement. This specification does not put requirements on the precise function
+                     of the import, as long as the correct document is retrieved.</p>
+               </details>
+               <details open="open">
+                  <summary>
+                     <h4 id="d2e298-head"><span class="secnum">6.1.3</span> Internal References</h4>
+                  </summary>
+                  <p>URI Fragments in OSCAL represent internal references to other OSCAL objects in the
+                     same document. These references follow the pattern of "#{{objectID}}". For example,
+                     the URI Fragment "#param1" is referencing the Parameter with unique ID "param1".</p>
+                  <p><span class="req must" id="req-internal"><a href="#ix-req-internal"><span class="reqlabel">req-internal</span></a>In the context of the Import Phase, internal references will only appear as a reference
+                        to a profile or catalog that is in the <code class="src">resources</code> section of the source. When tools encounter such a reference, they MUST locate the
+                        object in <code class="src">resources</code> with the matching ID value, and resolve the import using the <code class="src">rlink</code> URI and the above resolution requirements.</span></p>
+                  <p><span class="req must" id="req-internal-error"><a href="#ix-req-internal-error"><span class="reqlabel">req-internal-error</span></a>If the object fetched cannot be found or is not a valid OSCAL object, the tool MUST
+                        cease processing and provide an error.</span></p>
+                  <div class="source_profile-tagging example">
+                     <h4 class="label">Source (profile):</h4>
+                     <pre class="tagging">
+profile:
+  metadata: ~
+  imports:
+    - href: "#nist-sp800-53_catalog"
+      include-controls: ${{ list of selected controls }}
+    
+  # Content Elided
+    
+  backmatter:
+    resources:
+      - uuid: "nist-sp800-53_catalog"
+        description: "NIST SP 800-53 rev5 OSCAL format, on Github."
+        rlinks:
+          - rlink:
+              href: >-
+                https://github.com/usnistgov/oscal-content/tree
+                /master/nist.gov/SP800-53/rev4/xml/NIST_SP-800-53_rev5_catalog.xml   
+       </pre>
+                  </div>
+               </details>
+               <details open="open">
+                  <summary>
+                     <h4 id="d2e315-head"><span class="secnum">6.1.4</span> Resolving Imports of Profiles</h4>
+                  </summary>
+                  <p><span class="req must" id="req-circular-resolve"><a href="#ix-req-circular-resolve"><span class="reqlabel">req-circular-resolve</span></a>If the resource acquired is an OSCAL Profile, the tool MUST apply this specification
+                        to resolve it, then continue processing having imported the resulting catalog.</span></p>
+                  <p><span class="req should" id="req-circular-catalog"><a href="#ix-req-circular-catalog"><span class="reqlabel">req-circular-catalog</span></a>When a profile imports a profile, the subordinate profile SHOULD be resolved first
+                        into a catalog using this specification, before it is imported.</span> This presents the possibility of circular imports, when a profile is directed to
+                     import itself either directly or indirectly.</p>
+                  <p>A <b class="term">circular import</b> occurs when a profile imports an already imported profile, which was called at an
+                     earlier place in the import hierarchy. For example, if profile A imports profile B,
+                     and profile B imports profile A, the second import is circular. (An import at the
+                     top can only be circular if a profile tries to import itself.) If A imports B, B imports
+                     C and C imports A, C’s import is circular.</p>
+                  <p>Note that an import can only be circular within the context of processing a particular
+                     profile. In the last example, C’s import would not be circular if invoked in the context
+                     of resolving B by itself.</p>
+                  <p><span class="req must" id="req-circular-error"><a href="#ix-req-circular-error"><span class="reqlabel">req-circular-error</span></a>If a processor encounters a <b class="term">circular import</b> as described above (self-imports are inherently circular), the processor MUST cease
+                        processing and generate an error.</span></p>
+                  <p>A profile identified as <code class="code">home_profile.yaml</code> imports another one identified as <code class="code">circular_profile.yaml</code>:</p>
+                  <div class="source_profile-tagging example">
+                     <h4 class="label">Source (profile):</h4>
+                     <pre class="tagging">
+profile:
+  id: "home_profile.yaml"
+  metadata: ~
+  imports:
+    - href: "circular_profile.yaml"
+      include-controls: ${{ list of selected controls }} 
+         </pre>
+                  </div>
+                  <p>In turn this file invokes <code class="code">home_profile.xml</code>:</p>
+                  <div class="source_profile-tagging example">
+                     <h4 class="label">Source (profile):</h4>
+                     <pre class="tagging">
+profile:
+  id: "circular_profile.yaml"
+  metadata: ~
+  imports:
+    - href: "home_profile.yaml"
+      include-controls: ${{ list of selected controls }} 
+         </pre>
+                  </div>
+                  <p>Once detected, this circular import will result in an error and no further processing
+                     will take place.</p>
+                  <div class="target_catalog-tagging example">
+                     <h4 class="label">Target (catalog):</h4>
+                     <pre class="tagging">
+# Import at href: "circular_profile.yaml" failed.
+  # Reason: Error during profile import:
+  # Import at href: "home_profile.yaml" failed.
+  # Reason: Circular import 
+         </pre>
+                  </div>
+               </details>
+               <details open="open">
+                  <summary>
+                     <h4 id="d2e352-head"><span class="secnum">6.1.5</span> Multiple imports</h4>
+                  </summary>
+                  <p>Each import directive is processed to produce a set of controls. Note that this occurs
+                     even if the same catalog is imported multiple times: each distinct import collects
+                     controls into a separate <code class="int">selection</code>:</p>
+                  <div class="source_profile-tagging example">
+                     <h4 class="label">Source (profile):</h4>
+                     <pre class="tagging">
+profile:
+  uuid: ~
+  metadata: ~
+  imports:
+    - href: "#catalog"
+      include-controls:
+       - with-ids:
+          - ac-1
+          - ac-2
+    - href: "#catalog"
+      include-controls:
+       - with-ids:
+          - ac-3
+          - ac-4 
+       </pre>
+                  </div>
+                  <div class="inter_catalog-tagging example">
+                     <h4 class="label">Intermediate (catalog):</h4>
+                     <pre class="tagging">
+intermediate:
+  inclusions:
+    - id: ${{uuid of #catalog}}
+      included-controls:
+          - ac-1
+          - ac-2
+    - id: ${{uuid of #catalog}}
+      included-controls:
+          - ac-3
+          - ac-4 
+       </pre>
+                  </div>
+                  <p>The control inclusions are combined and collapsed in the next phase of processing,<b class="term">merge</b>(see [See: <a href="#d2e590-head" class="xref"><span class="secnum">7</span> Merge Phase</a>]) .</p>
+                  <p>Multiple imports against the same resource are allowed, and would most commonly occur
+                     when the profile author is using [See: <a href="#d2e372-head" class="xref"><span class="secnum">6.1.6</span> Mapping Controls</a>] to create very specific output. Multiple imports may result in outputs with clashing
+                     control IDs if mapping or the merge directive is not set correctly.</p>
+               </details>
+               <details open="open">
+                  <summary>
+                     <h4 id="d2e372-head"><span class="secnum">6.1.6</span> Mapping Controls</h4>
+                  </summary>
+                  <p>The optional <code class="src">mapping</code> child of a given <code class="src">import</code> provides a simple ID remapping for objects included from that specific import. This
+                     provides the means for profile authors to proactively avoid clashing IDs of controls
+                     and other objects.</p>
+                  <p>The Mapping section consists of 5 optional subsections, each covering a particular
+                     type of object. Each subsection is a list of ID mappings to be applied for objects
+                     that are the parent object type.</p>
+                  <p>When encountering a given mapping instruction, processors:</p>
+                  <ul>
+                     <li>
+                        <p>MUST change the distinctive ID of that object to be equal to the value of the <code class="src">to</code> object.</p>
+                     </li>
+                     <li>
+                        <p>MUST update all known references to the old ID in other included content, allowing
+                           the new ID to be used in subsequent profile sections.</p>
+                     </li>
+                  </ul>
+                  <p>Since mapping is a self contained process inside each import, the rest of this specification
+                     will continue to reference IDs with the assumption that mapping has already been applied
+                     if it was present. Since mapping is most commonly used to avoid clashing IDs, processors
+                     should take care to not handle duplicate IDs until after mapping is complete.</p>
+                  <p>Below is a simple example of mapping. The second <code class="src">import</code> is included controls from a different catalog whose ID values happen to collide.
+                     Knowing this, the profile author has remapped those IDs to new values.</p>
+                  <div class="source_profile-tagging example">
+                     <h4 class="label">Source (profile):</h4>
+                     <pre class="tagging">
+profile:
+  uuid: ~
+  metadata: ~
+  imports:
+    - href: "#catalog"
+      include-controls:
+       - with-ids:
+          - ac-1
+          - ac-2
+    - href: "#catalog2"
+      include-controls:
+       - with-ids:
+          - ac-1
+          - ac-2
+      mapping:
+       - controls:
+          - from: ac-1
+            to: map-ac-1
+          - from: ac-2
+            to: map-ac-2
+       </pre>
+                  </div>
+                  <p>Using the intermediate approach, an internal data structure resembling the following
+                     would result from the above profile:</p>
+                  <div class="inter_catalog-tagging example">
+                     <h4 class="label">Intermediate (catalog):</h4>
+                     <pre class="tagging">
+intermediate:
+  metadata: ~
+  inclusions:
+    - id: ${{uuid of #catalog}}
+      included-controls:
+          - ac-1
+          - ac-2
+    - id: ${{uuid of #catalog2}}
+      included-controls:
+          - map-ac-1
+          - map-ac-2 
+       </pre>
+                  </div>
+               </details>
+            </details>
+            <details open="open">
+               <summary>
+                  <h3 id="d2e401-head"><span class="secnum">6.2</span> Including Controls</h3>
+               </summary>
+               <p>Each import contains directives on which controls from the imported catalog are to
+                  be fetched and used for further processing. Throughout the rest of the document we
+                  will refer to this as "inclusion". If a control is included, and the source profile
+                  makes no other changes to it, it will be present in the output. Exclusion directives
+                  in this section, as well as directives in the following two major sections (merge
+                  and modify), may make changes to an included control or group that could cause it
+                  to appear differently, or not at all, in the output. Using the intermediate implementation
+                  approach, any control(s) that are included would be extracted from the referenced
+                  catalogs, any applicable mappings would be applied, then the controls(s) would be
+                  stored.</p>
+               <details open="open">
+                  <summary>
+                     <h4 id="d2e404-head"><span class="secnum">6.2.1</span> include-all</h4>
+                  </summary>
+                  <p><span class="req must" id="req-include-all"><a href="#ix-req-include-all"><span class="reqlabel">req-include-all</span></a>When an import provides the <code class="src">include-all</code> directive, ALL controls and groups in the referenced document (including nested controls)
+                        MUST be included.</span></p>
+                  <div class="source_profile-tagging example">
+                     <h4 class="label">Source (profile):</h4>
+                     <pre class="tagging">
+include-all: ~</pre>
+                  </div>
+               </details>
+               <details open="open">
+                  <summary>
+                     <h4 id="d2e413-head"><span class="secnum">6.2.2</span> include-controls plus with-id</h4>
+                  </summary>
+                  <p><span class="req must" id="req-include-by-id"><a href="#ix-req-include-by-id"><span class="reqlabel">req-include-by-id</span></a>When an import provides the <code class="src">include-controls</code> directive, with a <code class="src">with-id</code> child, all controls in the referenced document whose <code class="code">id</code> match one of the listed <code class="code">id</code> values MUST be included.</span></p>
+                  <div class="source_profile-tagging example">
+                     <h4 class="label">Source (profile):</h4>
+                     <pre class="tagging">
+include-controls:
+  - with-ids:
+    - id: ac-1
+    - id: ac-2
+       </pre>
+                  </div>
+               </details>
+               <details open="open">
+                  <summary>
+                     <h4 id="d2e428-head"><span class="secnum">6.2.3</span> include-controls plus matching</h4>
+                  </summary>
+                  <p>Controls may also be included using match patterns against their IDs. This is useful
+                     because related controls (either in a hierarchy, or together in a group) frequently
+                     have related IDs as well.</p>
+                  <p><span class="req must" id="req-include-by-match"><a href="#ix-req-include-by-match"><span class="reqlabel">req-include-by-match</span></a>When an import provides the <code class="src">include-controls</code> directive, with a <code class="src">matching</code> child, all controls in the referenced document whose <code class="code">id</code> matches one of the listed <code class="code">pattern</code> values (Glob matching) MUST be included.</span></p>
+                  <p><span class="req must" id="req-include-by-match-empty"><a href="#ix-req-include-by-match-empty"><span class="reqlabel">req-include-by-match-empty</span></a>If a <code class="code">matching</code> object is provided with no <code class="code">pattern</code>, it MUST be treated as matching nothing. While not providing a pattern is technically
+                        valid, resolution tool implementers should be aware that it is generally undesirable,
+                        and warnings or notices to the user may be appropriate.</span></p>
+                  <div class="source_profile-tagging example">
+                     <h4 class="label">Source (profile):</h4>
+                     <pre class="tagging">
+include-controls:
+  - matching:
+    - pattern: "ac*" 
+       </pre>
+                  </div>
+               </details>
+               <details open="open">
+                  <summary>
+                     <h4 id="d2e451-head"><span class="secnum">6.2.4</span> Dealing with Nested Controls and Groups</h4>
+                  </summary>
+                  <p>In OSCAL, controls may contain child controls. For instance, in SP 800-53 many controls
+                     are supplemented with control enhancements; in OSCAL these are represented as child
+                     controls within parent controls. So parent AC-2 (in a given catalog) has children
+                     AC-2(1) through AC-2(13), for example.</p>
+                  <p>By default, inclusion of a control also causes any of that control's ancestors (or
+                     parents) to also be included. By default, inclusion of a control DOES NOT cause the
+                     inclusion of any descendants (or children) of that control to be included. This applies
+                     to both controls and groups.</p>
+                  <p>This default behavior can be modified by the following two optional children of the
+                     <code class="src">include-controls</code> object.</p>
+                  <details open="open">
+                     <summary>
+                        <h5 id="d2e459-head"><span class="secnum">6.2.4.1</span> with-child-controls</h5>
+                     </summary>
+                     <p>Child controls are, for the most part, treated the same as top level controls: they
+                        can be explicitly included using the selection directives above. As a shortcut to
+                        manually including all of the desired descendant controls of a given control, OSCAL
+                        provides the "with-child-controls" option. "with-child-controls" appears as a child
+                        object under a given inclusion directive, and defines additional behavior that is
+                        to be executed alongside the parent inclusion.</p>
+                     <p><span class="req must" id="req-with-child-controls-yes"><a href="#ix-req-with-child-controls-yes"><span class="reqlabel">req-with-child-controls-yes</span></a>A <code class="src">with-child-controls: yes</code> directive on an <code class="src">include-controls</code> indicates that <em class="em">all descendant controls</em> of the included control MUST also be included.</span></p>
+                     <p><span class="req must" id="req-with-child-controls-no"><a href="#ix-req-with-child-controls-no"><span class="reqlabel">req-with-child-controls-no</span></a>A <code class="src">with-child-controls: no</code> directive on an <code class="src">include-controls</code> indicates that ONLY the matching control is included, any descendant children MUST
+                           NOT be included.</span></p>
+                     <p><span class="req must" id="req-with-child-controls-none"><a href="#ix-req-with-child-controls-none"><span class="reqlabel">req-with-child-controls-none</span></a>If no <code class="src">with-child-controls</code> is provided, the processor MUST consider the directive as being equivalent to one
+                           having <code class="src">with-child-controls:no</code>.</span></p>
+                  </details>
+                  <details open="open">
+                     <summary>
+                        <h5 id="d2e485-head"><span class="secnum">6.2.4.2</span> with-parent-controls</h5>
+                     </summary>
+                     <p>Although similar to the above <code class="src">with-child-controls</code>, the optional <code class="src">with-parent-controls</code> applies to parents of the included control, and has the opposite default behavior.
+                        In order to maintain the structure of the source catalog, profile resolution includes
+                        all parents of an included control by default. If a profile author wants to change
+                        this structure, they could use an exclude directive that lists all of the undesired
+                        parents. As a shortcut for this,<code class="src">with-parent-controls</code> provides the following functionality:</p>
+                     <p><span class="req must" id="req-with-parent-controls-yes"><a href="#ix-req-with-parent-controls-yes"><span class="reqlabel">req-with-parent-controls-yes</span></a>A <code class="src">with-parent-controls: yes</code> directive on an <code class="src">include-controls</code> indicates that <em class="em">all parent controls</em> of the included control MUST also be included.</span></p>
+                     <p><span class="req must" id="req-with-parent-controls-no"><a href="#ix-req-with-parent-controls-no"><span class="reqlabel">req-with-parent-controls-no</span></a>A <code class="src">with-parent-controls: no</code> directive on an <code class="src">include-controls</code> indicates that ONLY the matching control is included, any parents MUST NOT be included.</span></p>
+                     <p><span class="req must" id="req-with-parent-controls-none"><a href="#ix-req-with-parent-controls-none"><span class="reqlabel">req-with-parent-controls-none</span></a>If no <code class="src">with-parent-controls</code> is provided, the processor MUST consider the directive as being equivalent to one
+                           having <code class="src">with-parent-controls:yes</code>.</span></p>
+                  </details>
+               </details>
+               <details open="open">
+                  <summary>
+                     <h4 id="d2e518-head"><span class="secnum">6.2.5</span> exclude-controls</h4>
+                  </summary>
+                  <p>Exclusions work the same way as inclusions, except with the opposite effect - the
+                     indicated control(s) do not appear in the target catalog.</p>
+                  <p><span class="req must" id="req-exclude"><a href="#ix-req-exclude"><span class="reqlabel">req-exclude</span></a>Any control designated to be both included and excluded, MUST be excluded. This holds
+                        irrespective of the specificity of the selection for inclusion or exclusion.</span> For example, if AC-1 is included by id <code class="code">ac-1</code> and excluded by matching <code class="code">ac.*</code>, it is excluded.</p>
+                  <p><span class="req must" id="req-exclude-additional"><a href="#ix-req-exclude-additional"><span class="reqlabel">req-exclude-additional</span></a>When <code class="src">exclude-controls</code> has at least one <code class="src">with-ids</code> or <code class="src">matching</code> directive, the processor MUST follow the same rules as defined in the relevant sections
+                        above for these directives, but exclude instead of include any controls. All optional
+                        features (with-child-controls, etc.) also apply to exclusion directives.</span></p>
+               </details>
+               <details open="open">
+                  <summary>
+                     <h4 id="d2e538-head"><span class="secnum">6.2.6</span> Redundant Inclusions and Exclusions</h4>
+                  </summary>
+                  <p><span class="req must" id="req-redundant"><a href="#ix-req-redundant"><span class="reqlabel">req-redundant</span></a>A given <code class="src">import</code> may have any number of inclusion statements and any number of exclusion statements.
+                        Their effect is cumulative; any control that is included (or excluded) more than once
+                        MUST be considered to be included (or excluded) only once. In other words, a given
+                        control being included or excluded more than once has no effect. Exclusion still takes
+                        priority over inclusion (see above).</span></p>
+                  <p>Note that this requirement only applies to controls included within the context of
+                     a single import. Controls with duplicate IDs included under a different <code class="src">import</code> are not discarded. Also note that this redundancy pruning happens after any relevant
+                     mappings have been applied.</p>
+               </details>
+               <details open="open">
+                  <summary>
+                     <h4 id="d2e549-head"><span class="secnum">6.2.7</span> Handling Params</h4>
+                  </summary>
+                  <p>Any <code class="src">param</code> that is not directly under a control is referred to as a <q class="q">loose</q> param.</p>
+                  <p><span class="req must" id="req-loose-param"><a href="#ix-req-loose-param"><span class="reqlabel">req-loose-param</span></a>All loose params from both imported documents and the profile source MUST be included.
+                        These params will be kept in the final output if document contains any references
+                        to them, and discarded otherwise. See [See: <a href="#d2e1353-head" class="xref"><span class="secnum">9.3</span> Pruning and Ordering</a>].</span> Since new references can be created during the <code class="src">modify</code> phase, tools should be careful not to prune params without fully understanding the
+                     final state of the output document.</p>
+               </details>
+               <details open="open">
+                  <summary>
+                     <h4 id="d2e566-head"><span class="secnum">6.2.8</span> Handling Groups</h4>
+                  </summary>
+                  <p>Some source catalogs use <code class="src">group</code> objects to place controls into arbitrary groupings. Tools will need to be aware of
+                     these groups when executing the "merge" phase below, as they will duplicated into
+                     the output under the "as-is" mode and can be referenced in "custom" mode. The naïve
+                     intermediate approach would keep all groups until all other phases are complete, but
+                     implementations may find it more performant to look ahead and prune unused groups
+                     early.</p>
+               </details>
+               <details open="open">
+                  <summary>
+                     <h4 id="d2e572-head"><span class="secnum">6.2.9</span> Avoiding Implementation Pitfalls</h4>
+                  </summary>
+                  <p>In order to ensure that implementers have as much flexibility as possible, requirements
+                     in this section have purposefully been kept minimal. Below are some common issues
+                     for implementers to be aware of:</p>
+                  <ul>
+                     <li>
+                        <p>The ordering and hierarchical organization of included controls as they were present
+                           in the original catalog may be used later in the resolution process. Specifically,
+                           if the profile is using the "as-is" structuring directive, the ordering and organziation
+                           of the output should match the source catalog as closely as possible. Implementations
+                           may want to track this information, or look ahead to see what structuring mode is
+                           being used. Note that "as-is" also requires implementations to replicate any use of
+                           the <code class="src">group</code> element.</p>
+                     </li>
+                  </ul>
+               </details>
+            </details>
+            <details open="open">
+               <summary>
+                  <h3 id="d2e582-head"><span class="secnum">6.3</span> Wrapping up the Import Phase</h3>
+               </summary>
+               <p>At this point all requirements for content importing and control inclusion have been
+                  covered. If using the intermediate approach, the processor should have an intermediate
+                  that contains: a set of included controls and all of their child informational (non-control,
+                  non-group) objects, any relevant <code class="src">group</code> objects and their informational content, and a set of included "loose params"[See: <a href="#d2e549-head" class="xref"><span class="secnum">6.2.7</span> Handling Params</a>](zero to many). The general structure of the intermediate would match that of the
+                  imported catalogs (i.e. Nested controls remain nested, grouped controls remain grouped).</p>
+            </details>
+         </details>
+         <details open="open">
+            <summary>
+               <h2 id="d2e590-head"><span class="secnum">7</span> Merge Phase</h2>
+            </summary>
+            <p>Profiles may contain a <code class="src">merge</code> section, where directives are given to instruct the processor how to combine the
+               set of included objects collected during the Import Phase.<code class="code">merge</code> has two parts: a "combine" directive, and a "structuring" directive.</p>
+            <p><span class="req recommended" id="req-merge-order"><a href="#ix-req-merge-order"><span class="reqlabel">req-merge-order</span></a>It is RECOMMENDED that tools apply the "combine" directive to the intermediate generated
+                  by the Import phase first, then apply the "structuring" directive.</span></p>
+            <p>The following section contains requirements for processing the <code class="src">merge</code> child of a source profile.</p>
+            <details open="open">
+               <summary>
+                  <h3 id="d2e605-head"><span class="secnum">7.1</span> The "combine" Directive</h3>
+               </summary>
+               <p><code class="code">combine</code> is an optional child of <code class="code">merge</code> that provides the rules for dealing with objects that have duplicate (or clashing)
+                  distinct IDs [See: <a href="#d2e1401-head" class="xref"><span class="secnum">10.1</span> Distinct ID of Objects</a>].</p>
+               <p>There are two valid combination methods provided by OSCAL, provided by the <code class="src">method</code> child of <code class="src">combine</code>:</p>
+               <ul>
+                  <li>
+                     <p>use-first: Use the first definition - the first control with a given ID is used; subsequent
+                        ones are discarded</p>
+                  </li>
+                  <li>
+                     <p>keep: Keep - controls with the same ID are kept, retaining the clash</p>
+                  </li>
+               </ul>
+               <p><span class="req must" id="req-merge-combine"><a href="#ix-req-merge-combine"><span class="reqlabel">req-merge-combine</span></a>Note that "merge: combine" is deprecated, and MUST be considered undefined behavior
+                     when encountered.</span></p>
+               <p>In order to apply the combination method, IDs of each control explicitly included
+                  are compared against one another. As IDs are unique across entire OSCAL documents,
+                  different imports or any groupings have no bearing on collision. Processing requirements
+                  for each method are described below.</p>
+               <details open="open">
+                  <summary>
+                     <h4 id="d2e629-head"><span class="secnum">7.1.1</span> No Combine Directive</h4>
+                  </summary>
+                  <p><span class="req must" id="req-merge-none"><a href="#ix-req-merge-none"><span class="reqlabel">req-merge-none</span></a>If no <code class="src">merge</code> directive is given in the profile, or if a <code class="src">merge</code> is given without a <code class="src">combine</code>, merge conflicts MUST be treated as if <code class="src">method: keep</code> was given.</span> For example, a profile with no <code class="src">merge</code> directive:</p>
+                  <div class="source_profile-tagging example">
+                     <h4 class="label">Source (profile):</h4>
+                     <pre class="tagging">
+profile:
+  imports:
+    - href: #catalogURI
+      include-all: ~ 
+       </pre>
+                  </div>
+                  <p>is the same as</p>
+                  <div class="source_profile-tagging example">
+                     <h4 class="label">Source (profile):</h4>
+                     <pre class="tagging">
+profile:
+  imports:
+    - href: #catalogURI
+      include-all: ~
+  merge:
+    combine:
+      method: keep
+      flat: ~ 
+       </pre>
+                  </div>
+               </details>
+               <details open="open">
+                  <summary>
+                     <h4 id="d2e650-head"><span class="secnum">7.1.2</span> <q class="q">method:keep</q></h4>
+                  </summary>
+                  <p><span class="req must" id="req-merge-keep"><a href="#ix-req-merge-keep"><span class="reqlabel">req-merge-keep</span></a>When a merge is indicated by <code class="src">method:keep</code>, or when no merge directive is given, the <q class="q">keep</q> combination rule is used. Any controls with the same distinctive ID [See: <a href="#d2e1401-head" class="xref"><span class="secnum">10.1</span> Distinct ID of Objects</a>] MUST NOT not merged. (They are kept.)</span></p>
+                  <div class="source_profile-tagging example">
+                     <h4 class="label">Source (profile):</h4>
+                     <pre class="tagging">
+merge:
+    combine:
+      method: keep 
+       </pre>
+                  </div>
+                  <p>Under this directive, colliding controls will result in invalid results, as they will
+                     both appear in the results with the same ID. Accordingly, this setting may be useful
+                     in ensuring integrity of references to controls as given in the profile: if any included
+                     control is called only once, clashing controls will not be produced and validation
+                     will succeed.</p>
+                  <div class="source_profile-tagging example">
+                     <h4 class="label">Source (profile):</h4>
+                     <pre class="tagging">
+profile:
+  imports:
+    - href: #catalog1
+      include-controls:
+        - with-ids
+            id: ac-1
+            id: ac-2
+    - href: #catalog1
+      include-controls:
+        - with-ids
+            id: ac-1
+            id: ac-2 
+  merge:
+    combine:
+      method: keep
+       </pre>
+                  </div>
+                  <p>In the intermediate (showing control inclusions):</p>
+                  <div class="inter_catalog-tagging example">
+                     <h4 class="label">Intermediate (catalog):</h4>
+                     <pre class="tagging">
+intermediate:
+  inclusions:
+    - explicitly-included-controls:
+          - ac-1
+          - ac-2
+          - ac-1
+          - ac-2 
+       </pre>
+                  </div>
+                  <p>In this case, downstream errors should be expected: the two <code class="code">ac-1</code> controls clash with each other, as do the two <code class="code">ac-2</code> controls.</p>
+                  <p><span class="req should" id="req-merge-keep-warning"><a href="#ix-req-merge-keep-warning"><span class="reqlabel">req-merge-keep-warning</span></a>Processors SHOULD provide a warning under the merge:keep directive when duplicate
+                        controls are detected.</span> <span class="req may" id="req-merge-keep-error"><a href="#ix-req-merge-keep-error"><span class="reqlabel">req-merge-keep-error</span></a>The processor MAY throw an error and cease processing (short-circuiting a certain
+                        future error) when duplicate controls are detected under the merge:keep directive.</span></p>
+               </details>
+               <details open="open">
+                  <summary>
+                     <h4 id="d2e682-head"><span class="secnum">7.1.3</span> <q class="q">method:use-first</q></h4>
+                  </summary>
+                  <div class="source_profile-tagging example">
+                     <h4 class="label">Source (profile):</h4>
+                     <pre class="tagging">
+merge:
+    combine:
+      method: use-first 
+       </pre>
+                  </div>
+                  <p><span class="req must" id="req-merge-use-first"><a href="#ix-req-merge-use-first"><span class="reqlabel">req-merge-use-first</span></a>When the <q class="q">use-first</q> combination rule is applied, and controls that share a distinctive ID are found,
+                        the first control encountered MUST be kept, the rest MUST be discarded.<q class="q">First</q> MUST be determined by a top-down, depth-first traversal of the source profile's import
+                        hierarchy.</span></p>
+                  <div class="source_profile-tagging example">
+                     <h4 class="label">Source (profile):</h4>
+                     <pre class="tagging">
+profile:
+  imports:
+    - href: #catalog1
+      include-controls:
+        - with-ids
+            id: ac-1
+            id: ac-3
+    - href: #catalog1
+      include-controls:
+        - with-ids
+            id: ac-1
+            id: ac-2 
+  merge:
+    combine:
+      method: use-first
+         </pre>
+                  </div>
+                  <p>In the intermediate(showing control inclusions):</p>
+                  <div class="inter_catalog-tagging example">
+                     <h4 class="label">Intermediate (catalog):</h4>
+                     <pre class="tagging">
+intermediate:
+  inclusions:
+    - explicitly-included-controls:
+          - ac-1 (From catalog1)
+          - ac-3
+          - ac-2 
+         </pre>
+                  </div>
+               </details>
+               <details open="open">
+                  <summary>
+                     <h4 id="d2e700-head"><span class="secnum">7.1.4</span> <code class="src">method:merge</code></h4>
+                  </summary>
+                  <p>Deprecated, unspecified behavior.</p>
+               </details>
+            </details>
+            <details open="open">
+               <summary>
+                  <h3 id="d2e704-head"><span class="secnum">7.2</span> The "structuring" Directive</h3>
+               </summary>
+               <p>This section describes how a profile may dictate the structure of the target <code class="tgt">catalog</code>, apart from its <code class="tgt">metadata</code> or <code class="tgt">back-matter</code>.<span class="req must" id="req-stucture"><a href="#ix-req-stucture"><span class="reqlabel">req-stucture</span></a>Optionally, one of three "structuring" directives can be included as a child of <code class="src">merge</code>:<code class="src">flat</code>,<code class="src">as-is</code> and <code class="src">custom</code>. When one of these appears, it is the selected structuring directive. If more than
+                     one appears, processors MUST generate an error and cease processing.</span> Processing requirements for each are given below:</p>
+               <details open="open">
+                  <summary>
+                     <h4 id="d2e725-head"><span class="secnum">7.2.1</span> No Structuring Directive</h4>
+                  </summary>
+                  <p><span class="req must" id="req-structure-none"><a href="#ix-req-structure-none"><span class="reqlabel">req-structure-none</span></a>If no <code class="src">merge</code> directive is given in the profile, or if a <code class="src">merge</code> is given without a structuring directive, structuring the output MUST be treated
+                        as if the structuring directive <code class="src">flat</code> was given. For example, a profile with no <code class="src">merge</code> directive:</span></p>
+                  <div class="source_profile-tagging example">
+                     <h4 class="label">Source (profile):</h4>
+                     <pre class="tagging">
+profile:
+  imports:
+    - href: #catalogURI
+      include-all: ~ 
+       </pre>
+                  </div>
+                  <p>is the same as</p>
+                  <div class="source_profile-tagging example">
+                     <h4 class="label">Source (profile):</h4>
+                     <pre class="tagging">
+profile:
+  imports:
+    - href: #catalogURI
+      include-all: ~
+  merge:
+    combine:
+      method: keep 
+      flat: ~ 
+       </pre>
+                  </div>
+               </details>
+               <details open="open">
+                  <summary>
+                     <h4 id="d2e743-head"><span class="secnum">7.2.2</span> "flat"</h4>
+                  </summary>
+                  <p><span class="req must" id="req-merge-flat"><a href="#ix-req-merge-flat"><span class="reqlabel">req-merge-flat</span></a>Profiles with the "flat" merge directive MUST be resolved as unstructured catalogs,
+                        with no grouping or nesting of controls.</span></p>
+                  <p><span class="req must" id="req-merge-flat-list"><a href="#ix-req-merge-flat-list"><span class="reqlabel">req-merge-flat-list</span></a>Unstructured catalog output MUST be produced by adhering to the following requirements:</span></p>
+                  <ul>
+                     <li>
+                        <p><span class="req must" id="req-merge-flat-list-1"><a href="#ix-req-merge-flat-list-1"><span class="reqlabel">req-merge-flat-list-1</span></a>All included controls are output to the target as a flat list directly under "catalog".</span></p>
+                     </li>
+                     <li>
+                        <p><span class="req must" id="req-merge-flat-list-2"><a href="#ix-req-merge-flat-list-2"><span class="reqlabel">req-merge-flat-list-2</span></a>Any included "loose params" are output to the target as a flat list directly under
+                              "catalog".</span></p>
+                     </li>
+                     <li>
+                        <p><span class="req must" id="req-merge-flat-list-3"><a href="#ix-req-merge-flat-list-3"><span class="reqlabel">req-merge-flat-list-3</span></a>Any groups are discarded.</span></p>
+                     </li>
+                  </ul>
+                  <p>An example of flat structuring is provided below</p>
+                  <div class="source_catalog-tagging example">
+                     <h4 class="label">Source (catalog):</h4>
+                     <pre class="tagging">
+catalog:
+  groups:
+    - groupA
+      - ac-1
+      - ac-2
+    - groupB
+      - bc-1 
+       </pre>
+                  </div>
+                  <div class="source_profile-tagging example">
+                     <h4 class="label">Source (profile):</h4>
+                     <pre class="tagging">
+profile:
+  imports:
+    - href: #catalogURI
+      include-controls:
+        with-ids:
+          - ac-1
+          - ac-2
+          - bc-1
+  merge:
+    combine:
+      method: keep 
+      flat: ~ 
+       </pre>
+                  </div>
+                  <div class="inter_catalog-tagging example">
+                     <h4 class="label">Intermediate (catalog):</h4>
+                     <pre class="tagging">
+intermediate:
+  controls:
+    - ac-1
+    - ac-2
+    - bc-1 
+       </pre>
+                  </div>
+               </details>
+               <details open="open">
+                  <summary>
+                     <h4 id="d2e772-head"><span class="secnum">7.2.3</span> <q class="q">as-is</q></h4>
+                  </summary>
+                  <p>An <code class="src">as-is</code> directive is used to reproduce the structure of the source documents in the target
+                     catalog.</p>
+                  <p><span class="req must" id="id-structure-as-is-list"><a href="#ix-id-structure-as-is-list"><span class="reqlabel">id-structure-as-is-list</span></a>Processors MUST handle the <code class="src">as-is</code> directive by adhering to the following requirements:</span> </p>
+                  <ul>
+                     <li>
+                        <p><span class="req must" id="id-structure-as-is-list-1"><a href="#ix-id-structure-as-is-list-1"><span class="reqlabel">id-structure-as-is-list-1</span></a>All included controls are output to the target, keeping the structure of the groups
+                              and nested controls. Any group that holds an included control MUST appear in the output
+                              with all of its non-control children intact. If an included control has a parent control
+                              that was not included, that control's output location is "up-leveled", or made equal
+                              to the non-included parent. This applies recursively until the control is directly
+                              under either "catalog" or another included control.</span></p>
+                     </li>
+                     <li>
+                        <p><span class="req must" id="id-structure-as-is-list-2"><a href="#ix-id-structure-as-is-list-2"><span class="reqlabel">id-structure-as-is-list-2</span></a>Any included "loose params" are output to the target as a flat list directly under
+                              "catalog".</span></p>
+                     </li>
+                  </ul>
+                  <p>Example:</p>
+                  <div class="source_catalog-tagging example">
+                     <h4 class="label">Source (catalog):</h4>
+                     <pre class="tagging">
+catalog:
+  groups:
+    - groupA
+      - ac-1
+      - ac-2
+    - groupB
+      - bc-1 
+       </pre>
+                  </div>
+                  <div class="source_profile-tagging example">
+                     <h4 class="label">Source (profile):</h4>
+                     <pre class="tagging">
+profile:
+  imports:
+    - href: #catalogURI
+      include-controls:
+        with-ids:
+          - ac-1
+          - ac-2
+          - bc-1
+  merge:
+    combine:
+      method: keep 
+      as-is: ~ 
+       </pre>
+                  </div>
+                  <div class="inter_catalog-tagging example">
+                     <h4 class="label">Intermediate (catalog):</h4>
+                     <pre class="tagging">
+intermediate: 
+#In this approach, the original hierarchy of the controls under the groups is stored,
+#but is not shown in this example.
+  controls:
+    - ac-1
+    - ac-2
+    - bc-1
+  groups:
+    - groupA
+    - groupB 
+       </pre>
+                  </div>
+               </details>
+               <details open="open">
+                  <summary>
+                     <h4 id="d2e802-head"><span class="secnum">7.2.4</span> <q class="q">custom</q></h4>
+                  </summary>
+                  <p>The <code class="src">custom</code> directive provides the target catalog with a custom structure. A one-to-one mapping
+                     of the desired structure of the target catalog is defined alongside control matching
+                     instructions, resulting in a strictly controlled output catalog.</p>
+                  <details open="open">
+                     <summary>
+                        <h5 id="d2e809-head"><span class="secnum">7.2.4.1</span> Creating Custom Groups</h5>
+                     </summary>
+                     <p><span class="req must" id="req-custom-group"><a href="#ix-req-custom-group"><span class="reqlabel">req-custom-group</span></a>A <code class="src">group</code> object given under <code class="src">custom</code> MUST result in a <code class="tgt">group</code> with the exact same content (excluding <code class="src">insert-controls</code>) in the target catalog.</span></p>
+                     <p><span class="req must" id="req-custom-group-contents"><a href="#ix-req-custom-group-contents"><span class="reqlabel">req-custom-group-contents</span></a>If the ID of the group matches the ID of a group that has been included during the
+                           import phase, all contents inside the group, including <code class="src">title</code>,<code class="src">param</code>,<code class="src">prop</code> and <code class="src">part</code> objects MUST be copied into the target, appearing in the same order as in the source.</span></p>
+                     <p>Note that groups defined in <code class="src">custom</code> may vary from fully featured to minimally instantiated. This includes arbitrary nesting
+                        of such groups inside of one another. No groups other than those explicitly declared
+                        should appear in the output catalog.</p>
+                  </details>
+                  <details open="open">
+                     <summary>
+                        <h5 id="d2e837-head"><span class="secnum">7.2.4.2</span> Inserting Controls</h5>
+                     </summary>
+                     <p>The <code class="src">insert-controls</code> directive may appear anywhere under <code class="src">custom</code>, whether as a direct child or inside any of the defined groups. Inside insert-controls,<code class="src">include-controls</code> and <code class="src">include-all</code> from the Import Phase [See: <a href="#d2e238-head" class="xref"><span class="secnum">6</span> Import Phase</a>] are used with the same basic behavior to configure which controls are selected and
+                        inserted at the current location.</p>
+                     <p>In order to provide clarity, controls that match the various conditions of these inclusion
+                        directives inside the <code class="src">custom</code> object will be referred to as "selected" instead of "included". Only directly selected
+                        controls will appear in the target catalog.</p>
+                     <p><span class="req must" id="req-custom-select"><a href="#ix-req-custom-select"><span class="reqlabel">req-custom-select</span></a>When processing the control selection of a <code class="src">custom</code> element, the behavior defined in this section MUST be followed to generate the output.</span></p>
+                     <p>A <code class="src">insert-controls</code> with an <code class="src">include-controls</code> child results in the following behavior:</p>
+                     <ul>
+                        <li>
+                           <p><code class="src">with-id</code> results in selecting and inserting, at that point inside the new grouping, the included
+                              controls with the <code class="src">id</code> given by <code class="src">with-id</code>. They should be given in the same order as they appear in the control selection(s).</p>
+                        </li>
+                        <li>
+                           <p>A <code class="src">matching</code> directive results in selecting and inserting, at that point inside the new grouping,
+                              all included controls whose <code class="src">id</code> match, as a Glob expression, the pattern given in the <code class="src">pattern</code>. They are given in the same order as they appear in the input control selection(s).</p>
+                        </li>
+                     </ul>
+                     <p>An <code class="src">insert-controls</code> with an <code class="src">include-all</code> child results in all included controls being selected and inserted. They are given
+                        in the same order as they appear in the input control selection(s).</p>
+                     <p><code class="src">insert-controls</code> can also indicate the order that the selected controls are to be emitted in the result
+                        catalog using an <code class="src">order</code> child. Three values MUST be supported and handled as specified below:</p>
+                     <ul>
+                        <li>
+                           <p><code class="code">ascending</code> will sort all selected controls into ascending alphanumeric order by their ID.</p>
+                        </li>
+                        <li>
+                           <p><code class="code">descending</code> will sort all selected controls into descending alphanumeric order by their ID.</p>
+                        </li>
+                        <li>
+                           <p><code class="code">keep</code> indicates that controls should be inserted in the order of their appearance, using
+                              a depth-first traversal of the source profile's imports.</p>
+                        </li>
+                     </ul>
+                     <p><span class="req must" id="req-custom-select-ignore"><a href="#ix-req-custom-select-ignore"><span class="reqlabel">req-custom-select-ignore</span></a>In the case that a control selection matches none of the included controls, it MUST
+                           be ignored.</span> <span class="req should" id="req-custom-select-warning"><a href="#ix-req-custom-select-warning"><span class="reqlabel">req-custom-select-warning</span></a>In the case that a control selection matches none of the included controls, a warning
+                           SHOULD be provided.</span> If a control that was included by the Import Phase is never selected, no error occurs,
+                        that control simply does not appear in the output catalog.</p>
+                  </details>
+               </details>
+            </details>
+            <details open="open">
+               <summary>
+                  <h3 id="d2e915-head"><span class="secnum">7.3</span> Wrapping up the Merge Phase</h3>
+               </summary>
+               <p>After the merge phase, the intermediate should now closely resemble the content and
+                  structure of the final output catalog. Controls and groups have been included, remapped,
+                  de-duplicated, then placed into their final location within the output's structure.
+                  Note: there is still an opportunity for included controls or groups to become referenced;
+                  and therefore, not eligible for pruning [See: <a href="#d2e1353-head" class="xref"><span class="secnum">9.3</span> Pruning and Ordering</a>] in the next phase.</p>
+               <p>Regardless of any merge directives, there also likely remains "loose params" that
+                  have been propagated forward; these too must be persisted.</p>
+            </details>
+         </details>
+         <details open="open">
+            <summary>
+               <h2 id="d2e922-head"><span class="secnum">8</span> Modify Phase</h2>
+            </summary>
+            <p>There are two ways profiles may further modify the results of profile resolution:
+               setting parameters, and altering controls. These activities are defined as two child
+               objects inside the third step of profile resolution, the Modify Phase.</p>
+            <p>The following section contains requirements for processing the <code class="src">modify</code> child of a source profile.</p>
+            <details open="open">
+               <summary>
+                  <h3 id="d2e929-head"><span class="secnum">8.1</span> Setting Parameters</h3>
+               </summary>
+               <p>Modification of parameter settings is indicated using the <code class="src">set-parameter</code> object under <code class="src">modify</code>. For this section, a given <code class="src">set-parameter</code> object will be referred to as the source.</p>
+               <p>Profile Resolution Tools MUST adhere to the following requirements for processing
+                  "set-parameter":</p>
+               <ul>
+                  <li>
+                     <p>First, the list of included params (among "loose params" and remaining included controls
+                        and groups) is searched for a param who has an "id" equal to this object's "param-id".
+                        This is the "target".<span class="req should" id="req-modify-set-param-warning"><a href="#ix-req-modify-set-param-warning"><span class="reqlabel">req-modify-set-param-warning</span></a>If no such parameter is found, a warning SHOULD be issued.</span> <span class="req must" id="req-modify-set-param-id-ignore"><a href="#ix-req-modify-set-param-id-ignore"><span class="reqlabel">req-modify-set-param-id-ignore</span></a>If no such parameter is found, processing MUST still continue.</span></p>
+                  </li>
+                  <li>
+                     <p><span class="req must" id="req-modify-set-param-objects1"><a href="#ix-req-modify-set-param-objects1"><span class="reqlabel">req-modify-set-param-objects1</span></a>For the following objects inside the source: class, depends-on, label, usage, values,
+                           select; the object MUST be copied into the target from the source, first removing
+                           any existing objects with the same name.</span></p>
+                  </li>
+                  <li>
+                     <p><span class="req must" id="req-modify-set-param-objects2"><a href="#ix-req-modify-set-param-objects2"><span class="reqlabel">req-modify-set-param-objects2</span></a>For the following objects inside the source: props, links, constraints, guidelines;
+                           the contents of the object MUST be added to the contents of the target object of the
+                           same name. If no such object exists in the target, it is created.</span></p>
+                  </li>
+                  <li>
+                     <p><span class="req must" id="req-modify-set-param-objects3"><a href="#ix-req-modify-set-param-objects3"><span class="reqlabel">req-modify-set-param-objects3</span></a>For the following objects inside the source: prop, link; the object MUST be copied
+                           into the target from the source, first removing any existing objects with the same
+                           distinctive ID. ([See: <a href="#d2e1401-head" class="xref"><span class="secnum">10.1</span> Distinct ID of Objects</a>]).</span></p>
+                  </li>
+                  <li>
+                     <p><span class="req must" id="req-modify-param-multi"><a href="#ix-req-modify-param-multi"><span class="reqlabel">req-modify-param-multi</span></a>If more than one <code class="src">set-parameter</code> directive is given for the same parameter, all MUST BE applied, in the sequence given
+                           in the profile.</span></p>
+                  </li>
+               </ul>
+            </details>
+            <details open="open">
+               <summary>
+                  <h3 id="d2e969-head"><span class="secnum">8.2</span> Altering controls</h3>
+               </summary>
+               <p>A control can be altered by an <code class="src">alter</code> object inside "modify". The <code class="src">control-id</code> child object under the <code class="src">alter</code> indicates the control to which the alteration is applied.</p>
+               <details open="open">
+                  <summary>
+                     <h4 id="d2e979-head"><span class="secnum">8.2.1</span> Adding contents to controls</h4>
+                  </summary>
+                  <p>Contents may be added to controls using an add directive inside an alter directive.
+                     There are two forms of alteration: with implicit and explicit bindings.</p>
+                  <details open="open">
+                     <summary>
+                        <h5 id="d2e982-head"><span class="secnum">8.2.1.1</span> Implicit binding</h5>
+                     </summary>
+                     <p><span class="req must" id="req-modify-alter-add-implicit"><a href="#ix-req-modify-alter-add-implicit"><span class="reqlabel">req-modify-alter-add-implicit</span></a>An <code class="src">add</code> directive with no <code class="src">by-id</code> child MUST be considered an implicit binding, and will apply to the control as a
+                           whole.</span></p>
+                     <p><span class="req must" id="req-modify-alter-add-implicit0contents"><a href="#ix-req-modify-alter-add-implicit0contents"><span class="reqlabel">req-modify-alter-add-implicit0contents</span></a>The contents of an implicitly bound add directive MUST be added to the control contents
+                           in the target, either after its <code class="tgt">title</code> when <code class="src">position</code> is <code class="code">starting</code>, or at the end if its position is <code class="code">ending</code>, or if no valid poisition is given.</span></p>
+                     <p><span class="req must" id="req-modify-alter-add-implicit-position"><a href="#ix-req-modify-alter-add-implicit-position"><span class="reqlabel">req-modify-alter-add-implicit-position</span></a>When an add directive is implicitly bound, the <code class="src">position</code> values <code class="code">before</code> and <code class="code">after</code> MUST be treated like <code class="code">starting</code> and <code class="code">ending</code>, respectively.</span></p>
+                     <p>Control contents in catalogs must appear in the order <code class="code">title, param, prop, link, part, control</code> per the OSCAL model documentation.<span class="req must" id="req-modify-alter-add-implicit-order"><a href="#ix-req-modify-alter-add-implicit-order"><span class="reqlabel">req-modify-alter-add-implicit-order</span></a>After processing an implicitly bound add directive, the control contents MUST be sorted
+                           to appear in the required order: a new <code class="tgt">prop</code> appears after any <code class="src">prop</code> already in the control, when <code class="src">position</code> is <code class="code">ending</code>, or not given, or before any <code class="src">prop</code> in the control when <code class="src">position</code> is <code class="code">starting</code>.</span></p>
+                     <p>An addition operating on a control with implicit binding and position <code class="code">starting</code></p>
+                     <div class="source_catalog-tagging example">
+                        <h4 class="label">Source (catalog):</h4>
+                        <pre class="tagging">
+control:
+  id: a1
+  title: Basic precautions
+  props:
+    - name: status
+      value: ready 
+           </pre>
+                     </div>
+                     <div class="source_profile-tagging example">
+                        <h4 class="label">Source (profile):</h4>
+                        <pre class="tagging">
+alter:
+  control-id: a1
+  add:
+    position: starting
+    props:
+      - name: basis
+        value: enumerated
+    parts:
+      - name: caution
+        prose: \\n\\nPending scheduled testing. 
+           </pre>
+                     </div>
+                     <div class="target_catalog-tagging example">
+                        <h4 class="label">Target (catalog):</h4>
+                        <pre class="tagging">
+control:
+  id: a1
+  title: Basic precautions
+  props:
+    - name: basis
+      value: enumerated
+    - name: status
+      value: ready
+  parts:
+    - name: caution
+      prose: \\n\\nPending scheduled testing. 
+           </pre>
+                     </div>
+                     <p>Position is <code class="code">starting</code> but the new <code class="tgt">part</code> is added after the existing <code class="tgt">prop</code>, because <code class="tgt">prop</code> objects must always occur first.</p>
+                     <p>An addition operating on a control with implicit binding and position <code class="code">ending</code></p>
+                     <div class="source_catalog-tagging example">
+                        <h4 class="label">Source (catalog):</h4>
+                        <pre class="tagging">
+control:
+  id: a1
+  title: Basic precautions
+  props:
+    - name: status
+      value: ready 
+           </pre>
+                     </div>
+                     <div class="source_profile-tagging example">
+                        <h4 class="label">Source (profile):</h4>
+                        <pre class="tagging">
+alter:
+  control-id: a1
+  add:
+    position: starting
+    props:
+      - name: basis
+        value: enumerated
+    parts:
+      - name: caution
+        prose: \\n\\nPending scheduled testing. 
+           </pre>
+                     </div>
+                     <div class="target_catalog-tagging example">
+                        <h4 class="label">Target (catalog):</h4>
+                        <pre class="tagging">
+control:
+  id: a1
+  title: Basic precautions
+  props:
+    - name: status
+      value: ready
+    - name: basis
+      value: enumerated
+  parts:
+    - name: caution
+      prose: \\n\\nPending scheduled testing. 
+           </pre>
+                     </div>
+                     <p>The <code class="src">position</code> is <code class="code">ending</code> so the new <code class="tgt">prop</code> appears after the existing <code class="tgt">prop</code>.</p>
+                  </details>
+                  <details open="open">
+                     <summary>
+                        <h5 id="d2e1076-head"><span class="secnum">8.2.1.2</span> Explicit binding</h5>
+                     </summary>
+                     <p>An explicit binding on an addition permits inserting new contents anywhere in a control,
+                        not only at the top level.<span class="req must" id="req-modify-alter-add-explicit"><a href="#ix-req-modify-alter-add-explicit"><span class="reqlabel">req-modify-alter-add-explicit</span></a>An <code class="src">add</code> directive with a <code class="src">by-id</code> child MUST be considered an explicit binding, and applies to only a single object
+                           inside the control.</span> <span class="req must" id="req-modify-alter-add-explicit-id"><a href="#ix-req-modify-alter-add-explicit-id"><span class="reqlabel">req-modify-alter-add-explicit-id</span></a>When an add directive is explitly bound, the value of the <code class="src">by-id</code> child MUST correspond to the value of an <code class="src">id</code> on an object inside the control, and not the control itself.</span> <span class="req must" id="req-modify-alter-add-explicit-id-ignore"><a href="#ix-req-modify-alter-add-explicit-id-ignore"><span class="reqlabel">req-modify-alter-add-explicit-id-ignore</span></a>If <code class="src">by-id</code> does not correspond to such a value, the <code class="src">add</code> directive MUST be considered inoperative and ignored.</span> <span class="req may" id="req-modify-alter-add-explicit-id-warning"><a href="#ix-req-modify-alter-add-explicit-id-warning"><span class="reqlabel">req-modify-alter-add-explicit-id-warning</span></a>An inoperative add directive MAY result in a warning.</span></p>
+                     <p>The object with <code class="src">id</code> equal to the value of <code class="src">by-id</code> is considered the <b class="term">target</b> of the addition.</p>
+                     <p><span class="req must" id="req-modify-alter-add-explicit-inside"><a href="#ix-req-modify-alter-add-explicit-inside"><span class="reqlabel">req-modify-alter-add-explicit-inside</span></a>When <code class="src">position</code> has a value of <code class="code">starting</code> or <code class="code">ending</code>, the contents of the source MUST be added inside the target, either at the start
+                           or end of its contents, respectively.</span></p>
+                     <p><span class="req must" id="req-modify-alter-add-explicit-outside"><a href="#ix-req-modify-alter-add-explicit-outside"><span class="reqlabel">req-modify-alter-add-explicit-outside</span></a>When <code class="src">position</code> has a value of <code class="code">before</code> or <code class="code">after</code>, the contents of the source MUST be added outside the target, either directly before
+                           or after it, respectively.</span></p>
+                     <p>An addition operating on a control with explicit binding and position <code class="code">after</code></p>
+                     <div class="source_catalog-tagging example">
+                        <h4 class="label">Source (catalog):</h4>
+                        <pre class="tagging">
+control:
+  id: a1
+  title: Basic precautions
+  props:
+    - name: status
+      value: ready
+  parts:
+    - name: recommendations
+      id: a1.b
+      parts: 
+        - name: task1
+          id: a1.b1
+          prose: Collect recycling for pickup
+        - name: task2
+          id: a1.b2
+          prose: Sweep surfaces free of dust
+           </pre>
+                     </div>
+                     <p>Note that the <code class="src">add</code> directive identifies the object with <code class="src">id</code>  <code class="code">a1.b1</code> as its target.</p>
+                     <div class="source_profile-tagging example">
+                        <h4 class="label">Source (profile):</h4>
+                        <pre class="tagging">
+alter:
+  control-id: a1
+  add:
+    position: after
+    by-id: a1.b1
+    props:
+      - name: basis
+        value: allocated
+    parts:
+      - name: caution
+        prose: Unavailable on weekends 
+           </pre>
+                     </div>
+                     <div class="target_catalog-tagging example">
+                        <h4 class="label">Target (catalog):</h4>
+                        <pre class="tagging">
+control:
+  id: a1
+  title: Basic precautions
+  props:
+    - name: status
+      value: ready
+  parts:
+    - name: recommendations
+      id: a1.b
+      parts: 
+        - name: task1
+          id: a1.b1
+          prose: Collect recycling for pickup
+        - name: caution
+          prose: Unavailable on weekends
+        - name: task2
+          id: a1.b2
+          prose: Sweep surfaces free of dust
+      props:
+        - name: basis
+          value: allocated
+           </pre>
+                     </div>
+                     <p>The <code class="src">position</code> is <code class="code">after</code> so both objects inside <code class="src">add</code> are added after (not inside) the target object. Since the target object is inside
+                        another <code class="tgt">part</code> in the control, the new additions appear there as well.</p>
+                     <p>Note that the result in this case will be schema-invalid since a <code class="tgt">prop</code> may not occur directly following a <code class="tgt">part</code>. A better result can be obtained (a better target may be defined) by using two <code class="src">add</code> directives, to insert the new <code class="tgt">prop</code> separately before any <code class="tgt">part</code> objects in the target.</p>
+                  </details>
+                  <details open="open">
+                     <summary>
+                        <h5 id="d2e1169-head"><span class="secnum">8.2.1.3</span> Modifying controls inside controls</h5>
+                     </summary>
+                     <p>OSCAL supports controls inside controls in the form of <code class="src">control</code> objects inside <code class="src">control</code> objects. Because the semantics of the <code class="src">add</code> and remove directives target any (object) contents of controls, they can be used
+                        to target these child controls for modification as well as other contents.<span class="req must" id="req-modify-alter-add-nested"><a href="#ix-req-modify-alter-add-nested"><span class="reqlabel">req-modify-alter-add-nested</span></a>Profile Resolution tools MUST be able to correctly handle add directives targetting
+                           nested controls. This includes directives that target a child control as well as directives
+                           that target a parent control and modify the child.</span></p>
+                  </details>
+               </details>
+               <details open="open">
+                  <summary>
+                     <h4 id="d2e1181-head"><span class="secnum">8.2.2</span> Removing contents from controls</h4>
+                  </summary>
+                  <p>Contents inside controls can be removed from them in catalog targets. In combination
+                     with adding new contents, this feature can be used to edit controls as well as amend
+                     them.</p>
+                  <p>A <code class="src">remove</code> directive inside an <code class="src">alter</code> directive identifies an object or set of objects inside a control to be removed.
+                     It does this using any of five child objects.</p>
+                  <p><span class="req must" id="req-modify-alter-remove-match"><a href="#ix-req-modify-alter-remove-match"><span class="reqlabel">req-modify-alter-remove-match</span></a>An object inside the control MUST be removed from the output if and only if it meets
+                        all of the criteria given by the child objects of the remove directive.</span> When more than one child appears under the remove directive, an object would need
+                     to match all of them, otherwise it is not removed.</p>
+                  <ul>
+                     <li>
+                        <p><span class="req must" id="req-modify-alter-remove-by-id"><a href="#ix-req-modify-alter-remove-by-id"><span class="reqlabel">req-modify-alter-remove-by-id</span></a>The remove directive criteria <code class="src">by-id</code> MUST match an object if and only its value is identical to the <code class="src">id</code> value of that object.</span> Because <code class="src">id</code> values are unique, this criteria will result in the remove directive removing only
+                           a single object.</p>
+                     </li>
+                     <li>
+                        <p><span class="req must" id="req-modify-alter-remove-name-ref"><a href="#ix-req-modify-alter-remove-name-ref"><span class="reqlabel">req-modify-alter-remove-name-ref</span></a>The remove directive criteria <code class="src">name-ref</code> MUST match an object if and only its value is identical to the value of that object's
+                              <code class="src">name</code> child.</span></p>
+                     </li>
+                     <li>
+                        <p><span class="req must" id="req-modify-alter-remove-ns-ref"><a href="#ix-req-modify-alter-remove-ns-ref"><span class="reqlabel">req-modify-alter-remove-ns-ref</span></a>The remove directive criteria <code class="src">ns-ref</code> MUST match an object if and only its value is identical to the value of that object's
+                              <code class="src">ns</code> child.</span></p>
+                     </li>
+                     <li>
+                        <p><span class="req must" id="req-modify-alter-remove-class-ref"><a href="#ix-req-modify-alter-remove-class-ref"><span class="reqlabel">req-modify-alter-remove-class-ref</span></a>The remove directive criteria <code class="src">class-ref</code> MUST match an object if and only its value is identical to the value of that object's
+                              <code class="src">class</code> child.</span></p>
+                     </li>
+                     <li>
+                        <p><span class="req must" id="req-modify-alter-remove-item-name"><a href="#ix-req-modify-alter-remove-item-name"><span class="reqlabel">req-modify-alter-remove-item-name</span></a>The remove directive criteria <code class="src">item-name</code> MUST match an object if and only its value is identical to the value of that object's
+                              serialized name.</span> For example,<code class="code">remove:item-name:prop</code> has the effect of removing all <code class="src">prop</code> objects from inside the control.</p>
+                        <p><span class="req must" id="req-modify-alter-remove-item-name-array"><a href="#ix-req-modify-alter-remove-item-name-array"><span class="reqlabel">req-modify-alter-remove-item-name-array</span></a>In serialization formats that use arrays of objects in the OSCAL model, an object's
+                              name MUST be considered the singular form of its containing parent array.</span> For example, in the JSON format, remove:item-name:link would remove all of the objects
+                           inside of the <code class="src">links</code> array.</p>
+                     </li>
+                  </ul>
+               </details>
+            </details>
+         </details>
+         <details open="open">
+            <summary>
+               <h2 id="d2e1247-head"><span class="secnum">9</span> Final Operations</h2>
+            </summary>
+            <details open="open">
+               <summary>
+                  <h3 id="d2e1249-head"><span class="secnum">9.1</span> Backmatter Resolution</h3>
+               </summary>
+               <p><code class="tgt">back-matter</code> in the result is produced by combining all objects within <code class="src">back-matter</code> in all source catalogs, with the <code class="src">back-matter</code> in the input profile.</p>
+               <ul>
+                  <li>
+                     <p><span class="req must" id="req-backmatter"><a href="#ix-req-backmatter"><span class="reqlabel">req-backmatter</span></a>The output's backmatter MUST be generated by copying in each <code class="src">resource</code> object from the backmatters of the imported catalogs/profiles in top-to-bottom order,
+                           then by copying in each <code class="src">resource</code> object from the backmatter of the source profile itself. These objects MUST be processed
+                           in the order they are given in their respective documents.</span></p>
+                  </li>
+                  <li>
+                     <p><span class="req must" id="req-backmatter-dupe"><a href="#ix-req-backmatter-dupe"><span class="reqlabel">req-backmatter-dupe</span></a>If a given <code class="src">resource</code> has the same <code class="src">uuid</code> as a resource that has already been added, the previous resource MUST be removed,
+                           and the more recent one added, unless superceded by other requirements.</span></p>
+                  </li>
+                  <li>
+                     <p><span class="req must" id="req-backmatter-keep"><a href="#ix-req-backmatter-keep"><span class="reqlabel">req-backmatter-keep</span></a>A <code class="src">resource</code> with a child <code class="src">prop</code> of <code class="src">name:keep</code> and <code class="src">value:always</code> MUST NOT be replaced by the addition of another <code class="src">resource</code>, unless the new resource also has a child <code class="src">prop</code> of <code class="src">name:keep</code> and <code class="src">value:always</code>.</span></p>
+                  </li>
+               </ul>
+               <p><span class="req may" id="req-backmatter-prune"><a href="#ix-req-backmatter-prune"><span class="reqlabel">req-backmatter-prune</span></a>Tools MAY check for pruning conditions [See: <a href="#d2e1353-head" class="xref"><span class="secnum">9.3</span> Pruning and Ordering</a>] as resources are added as long as the final result is the same as if the pruning
+                     had taken place at the end of all resource addition.</span></p>
+               <p>Placing the keep always prop on a resource in a catalog has the effect of ensuring
+                  it will always appear in the output produced by any profile importing that catalog,
+                  even if nothing links to the resource. This version of the resource will also be the
+                  one copied, unless a later-imported catalog or importing profile offers its own version
+                  marked to keep always.</p>
+            </details>
+            <details open="open">
+               <summary>
+                  <h3 id="d2e1302-head"><span class="secnum">9.2</span> Metadata Resolution</h3>
+               </summary>
+               <p>The following requirements MUST be followed with regards to the Metadata section of
+                  the output catalog:</p>
+               <ul>
+                  <li>
+                     <p><span class="req must" id="req-meta-uuid"><a href="#ix-req-meta-uuid"><span class="reqlabel">req-meta-uuid</span></a>The output catalog's metadata MUST have a unique top-level UUID (metadata:uuid). This
+                           UUID may be generated as seen fit by the tool, as long as it is reasonable to assume
+                           it is globally unique. It is RECOMMENDED that tools use a combination of meaningful
+                           text and a uniquely generated value (Ex.<code class="code">{{sourceprofilename}}-RESOLVED-{{GUIDv5}}</code>).</span></p>
+                  </li>
+                  <li>
+                     <p><span class="req must" id="req-meta-version"><a href="#ix-req-meta-version"><span class="reqlabel">req-meta-version</span></a>The value of metadata:version in the target MUST be set with a string that identifies
+                           the version of that document.</span> <span class="req should" id="req-meta-version-track"><a href="#ix-req-meta-version-track"><span class="reqlabel">req-meta-version-track</span></a>The metadata:version SHOULD be used to track updates to this specific output document.</span></p>
+                  </li>
+                  <li>
+                     <p><span class="req must" id="req-meta-oscal-version"><a href="#ix-req-meta-oscal-version"><span class="reqlabel">req-meta-oscal-version</span></a>The value of metadata:oscal-version in the target MUST be set with a string that identifies
+                           the version of OSCAL used by this tool to resolve the profile (ex. 1.0.0). This value
+                           MUST be determined by compiling the oscal-versions from each imported document and
+                           the source profile, and taking the most recent minor version. If this version is more
+                           recent than what the resolution tool is using, then the value of the output oscal-version
+                           MUST be the version that the tool used internally.</span> <span class="req must" id="req-meta-oscalversion-error"><a href="#ix-req-meta-oscalversion-error"><span class="reqlabel">req-meta-oscalversion-error</span></a>If any of the above OSCAL versions (imported document versions, source profile version,
+                           tool version) are of a different major version (the first digit differs), the tool
+                           SHOULD provide an error and cease processing.</span></p>
+                  </li>
+                  <li>
+                     <p><span class="req must" id="req-meta-last-modified"><a href="#ix-req-meta-last-modified"><span class="reqlabel">req-meta-last-modified</span></a>The value of metadata:last-modified in the target MUST be set with a valid timestamp
+                           representing the time the profile resolution completed.</span></p>
+                  </li>
+                  <li>
+                     <p><span class="req should" id="req-meta-source-profile"><a href="#ix-req-meta-source-profile"><span class="reqlabel">req-meta-source-profile</span></a>The value of metadata:source-profile in the target SHOULD be set with a valid URI
+                           that points to the profile that resulted in this catalog.</span> <span class="req may" id="req-meta-source-profile-privacy"><a href="#ix-req-meta-source-profile-privacy"><span class="reqlabel">req-meta-source-profile-privacy</span></a>If there are privacy or security concerns, the value of metadata:source-profile MAY
+                           be set to anything, in which case the simple existence of the source-profile property
+                           indicates that this is a resolved profile.</span></p>
+                  </li>
+                  <li>
+                     <p><span class="req should" id="req-meta-resolution-tool"><a href="#ix-req-meta-resolution-tool"><span class="reqlabel">req-meta-resolution-tool</span></a>The value of metadata:resolution-tool in the target SHOULD be set with a string that
+                           represents the tool that was used to resolve this catalog.</span></p>
+                  </li>
+                  <li>
+                     <p><span class="req must" id="req-meta-keep"><a href="#ix-req-meta-keep"><span class="reqlabel">req-meta-keep</span></a>For any metadata:roles or metadata:parties that exist in the source catalogs, if they
+                           have a <code class="src">prop</code> child with name:keep and value:always, they are to be copied as is into the output
+                           metadata.</span></p>
+                  </li>
+               </ul>
+               <p>Beyond these requirements, tools are free to use any and all of the objects inside
+                  metadata to provide additional information downstream.</p>
+               <p>Because of options in producing metadata and especially the requirement for a timestamp,
+                  developers and users should note that two different resolutions of the same profile
+                  will not, ordinarily, be identical inside <code class="tgt">metadata</code>.</p>
+            </details>
+            <details open="open">
+               <summary>
+                  <h3 id="d2e1353-head"><span class="secnum">9.3</span> Pruning and Ordering</h3>
+               </summary>
+               <p><span class="req should" id="req-prune"><a href="#ix-req-prune"><span class="reqlabel">req-prune</span></a>The processor SHOULD prune the resulting output catalog by removing unused objects.</span></p>
+               <ul>
+                  <li>
+                     <p><span class="req must" id="req-prune-keep"><a href="#ix-req-prune-keep"><span class="reqlabel">req-prune-keep</span></a>Any object that has a child <code class="src">prop</code> with a <code class="src">name</code> of "keep" and a <code class="src">value</code> of "always" MUST NOT be pruned.</span></p>
+                  </li>
+                  <li>
+                     <p><span class="req must" id="req-prune-include"><a href="#ix-req-prune-include"><span class="reqlabel">req-prune-include</span></a>If an object was explicitly included in the [See: <a href="#d2e401-head" class="xref"><span class="secnum">6.2</span> Including Controls</a>], it MUST NOT be pruned.</span></p>
+                  </li>
+                  <li>
+                     <p><span class="req must" id="req-prune-custom"><a href="#ix-req-prune-custom"><span class="reqlabel">req-prune-custom</span></a>If an object was referenced in a <code class="src">custom</code> section of the source profile, it MUST NOT be pruned.</span></p>
+                  </li>
+                  <li>
+                     <p><span class="req must" id="req-prune-modify"><a href="#ix-req-prune-modify"><span class="reqlabel">req-prune-modify</span></a>If an object was referenced in the <code class="src">modify</code> section of the source profile, it MUST NOT be pruned. Any objects removed in that
+                           section are still removed.</span></p>
+                  </li>
+                  <li>
+                     <p><span class="req must" id="req-prune-ref"><a href="#ix-req-prune-ref"><span class="reqlabel">req-prune-ref</span></a>If the object appears in a reference anywhere in the final result catalog, except
+                           in other objects that also meet all other pruning criteria, it MUST NOT be removed.
+                           A reference to a given object exists if "#{distinctiveID}" appears anywhere, where
+                           {distinctiveID} is the distinctive ID of the object [See: <a href="#d2e1401-head" class="xref"><span class="secnum">10.1</span> Distinct ID of Objects</a>].</span></p>
+                  </li>
+               </ul>
+               <p>Implementers should note that pruning need not take place after all other steps. As
+                  long as all above criteria are respected, pruning can happen at any time, and doing
+                  so is a likely performance and memory overhead improvement.</p>
+               <p><span class="req must" id="req-reorder"><a href="#ix-req-reorder"><span class="reqlabel">req-reorder</span></a>Tools MUST reorder the output catalog into canonical order [See: <a href="#d2e1471-head" class="xref"><span class="secnum">10.2.4</span> Order of objects in serialization</a>], except where this specification provides different ordering requirements.</span></p>
+            </details>
+         </details>
+         <details open="open">
+            <summary>
+               <h2 id="d2e1399-head"><span class="secnum">10</span> Items of Note</h2>
+            </summary>
+            <details open="open">
+               <summary>
+                  <h3 id="d2e1401-head"><span class="secnum">10.1</span> Distinct ID of Objects</h3>
+               </summary>
+               <p>Whenever this specification refers to <q class="q">distinctiveness</q>, it is to be interpreted as is defined in this section with regards to the object
+                  in question.</p>
+               <p><span class="req must" id="req-id-id"><a href="#ix-req-id-id"><span class="reqlabel">req-id-id</span></a>For the objects control, param, and group, distinctiveness MUST be determined by the
+                     value of the <q class="q">id</q> child object.</span></p>
+               <p><span class="req must" id="req-id-uuid"><a href="#ix-req-id-uuid"><span class="reqlabel">req-id-uuid</span></a>For the object resource, distinctiveness MUST be determined by the value of the <q class="q">uuid</q> [See: <a href="#d2e1249-head" class="xref"><span class="secnum">9.1</span> Backmatter Resolution</a>].</span></p>
+            </details>
+            <details open="open">
+               <summary>
+                  <h3 id="d2e1419-head"><span class="secnum">10.2</span> Dealing with Multiple Formats</h3>
+               </summary>
+               <p><span class="req should" id="req-multiformat"><a href="#ix-req-multiformat"><span class="reqlabel">req-multiformat</span></a>Profile Resolution tools SHOULD be able to handle source profiles, imported catalogs,
+                     and imported profiles that are serialized in XML, JSON, or YAML.</span> <span class="req must" id="req-multiformat-differ"><a href="#ix-req-multiformat-differ"><span class="reqlabel">req-multiformat-differ</span></a>A different serialization format of any given input MUST NOT result in a differing
+                     output catalog.</span></p>
+               <p>In order to help bootstrap this format management, the following resources are provided
+                  for implementers:</p>
+               <ul>
+                  <li>
+                     <p>.</p>
+                  </li>
+               </ul>
+               <p>The following sections provide additional requirements and guidance for each format.</p>
+               <details open="open">
+                  <summary>
+                     <h4 id="d2e1434-head"><span class="secnum">10.2.1</span> Requirements and Guidance for XML Output</h4>
+                  </summary>
+                  <p><span class="req must" id="req-output-xml"><a href="#ix-req-output-xml"><span class="reqlabel">req-output-xml</span></a>The final Catalog output, if using XML, MUST be valid as defined by the XML model
+                        documentation for the OSCAL Catalog. See <a class="a" href="https://pages.nist.gov/OSCAL/reference/latest/complete/xml-definitions/">the complete XML reference</a> for model requirements.</span></p>
+               </details>
+               <details open="open">
+                  <summary>
+                     <h4 id="d2e1444-head"><span class="secnum">10.2.2</span> Requirements and Guidance for JSON Output</h4>
+                  </summary>
+                  <p><span class="req must" id="req-output-json"><a href="#ix-req-output-json"><span class="reqlabel">req-output-json</span></a>The final Catalog output, if using JSON, MUST be valid as defined by the JSON model
+                        documentation for the OSCAL Catalog. See the <a class="a" href="https://pages.nist.gov/OSCAL/reference/latest/complete/json-reference/">complete JSON reference</a> for model requirements.</span></p>
+                  <p>The JSON format, in general use, does not require the preservation of order of fields.
+                     As order matters in OSCAL, care should be taken to adhere to the canonical OSCAL order
+                     [See: <a href="#d2e1471-head" class="xref"><span class="secnum">10.2.4</span> Order of objects in serialization</a>] when outputting a catalog in JSON.</p>
+               </details>
+               <details open="open">
+                  <summary>
+                     <h4 id="d2e1457-head"><span class="secnum">10.2.3</span> Requirements and Guidance for YAML Output</h4>
+                  </summary>
+                  <p><span class="req must" id="req-output-yaml"><a href="#ix-req-output-yaml"><span class="reqlabel">req-output-yaml</span></a>The final Catalog output, if using YAML, MUST be valid as defined by the JSON model
+                        documentation for the OSCAL Catalog.</span> YAML is considered a simple variation on the JSON format. Beyond cosmetic differences
+                     there are no differences in the information structure between these formats. Therefore,
+                     the <a class="a" href="https://pages.nist.gov/OSCAL/reference/latest/complete/json-reference/">complete JSON reference</a> provides model requirements.</p>
+                  <p>The YAML format, in general use, does not require the preservation of order of fields.
+                     As order matters in OSCAL, care should be taken to adhere to the canonical OSCAL order
+                     [See: <a href="#d2e1471-head" class="xref"><span class="secnum">10.2.4</span> Order of objects in serialization</a>] when outputting a catalog in YAML.</p>
+               </details>
+               <details open="open">
+                  <summary>
+                     <h4 id="d2e1471-head"><span class="secnum">10.2.4</span> Order of objects in serialization</h4>
+                  </summary>
+                  <p>In OSCAL, order of top level objects (those that are direct children of the root element)
+                     is considered important only when the XML format is used. To facilitate this, OSCAL
+                     provides the concept of <b class="term">canonical order</b>. This order is provided by the OSCAL Metaschema files for a given document type (see
+                     <a class="a" href="https://pages.nist.gov/OSCAL/concepts/layer/overview/#modeling-approach">an overview of Metaschema</a>.</p>
+                  <p><span class="req must" id="req-order"><a href="#ix-req-order"><span class="reqlabel">req-order</span></a>When the output format is XML, tools MUST use the OSCAL canonical order as described
+                        above. When using the YAML or JSON formats, order conveys no meaning, and is not considered
+                        important.</span></p>
+               </details>
+               <details open="open">
+                  <summary>
+                     <h4 id="d2e1483-head"><span class="secnum">10.2.5</span> Comments in result documents</h4>
+                  </summary>
+                  <p>In an XML-based profile resolution, XML comments are one straightforward way for a
+                     processor to record events or conditions without affecting the output's nominal semantics.
+                     To support this, while two processors are obliged to return the same catalog XML for
+                     the same profile XML inputs, they are not required to match one another's comments,
+                     white space usage, attribute order, or processing instructions, only each other's
+                     objects, attributes and data content.</p>
+                  <p>One consequence of this is that processes intended to compare two profile resolutions
+                     may have to accommodate differences in comments, considering them as insignificant
+                     along with other differences in serialization.</p>
+               </details>
+            </details>
+         </details>
+      </main>
+   </body>
+</html>

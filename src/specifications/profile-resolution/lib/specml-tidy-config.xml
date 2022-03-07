@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<refactoringOperationDescriptor 
+    xmlns="http://www.oxygenxml.com/ns/xmlRefactoring" 
+    id="tidySpecML" 
+    name="Tidy (reformat) SpecML">
+	<description>Any assigned ID is normalized. IDs are assigned to some elements that do not have them.</description>    
+	<script type="XSLT" href="specml-tidy.xsl"/>
+	<category>NIST ITL/CSD SpecML</category>
+</refactoringOperationDescriptor>

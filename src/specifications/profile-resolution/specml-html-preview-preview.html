@@ -1,0 +1,59 @@
+{ child::head } Specification{ child::head } SpecificationRequirements 'Corbel', sans-serif 
+
+body {{ line-height: 140%; font-family: "Cambria", serif }}
+
+* {{ box-sizing: border-box }}
+
+aside.navpanel {{ position: fixed; overflow-y: scroll; max-width: 36%; top: 1em; bottom: 0px; font-family: { $display-font } }}
+
+aside.navpanel div.rqrmts * {{ margin: 0em }}
+
+.req {{ background-color: pink; padding: 0.2em; font-size: 120%; border-top: thin solid red; border-bottom: thin solid red; margin-top: 0.2em !important }}
+nav .req {{ font-size: 90% }}
+.req.should {{ background-color: peachpuff; border-top: thin solid orange; border-bottom: thin solid orange }}
+.req.may {{ background-color: cornsilk; border-top: thin solid gold; border-bottom: thin solid gold }}
+.req.recommended {{ background-color: mintcream; border-top: thin solid blue; border-bottom: thin solid blue }}
+
+span.reqlabel {{ background-color: mintcream; color: forestgreen; margin-right: 0.4em; padding: 0.1em; border: thin solid green }} 
+
+.toc ul   {{ list-style: none; padding-left: 1em }}
+
+main      {{ margin-left: 40%; max-width: 48em }}
+
+details {{ margin-top: 1.5em }}
+
+details details {{ border-left: thin solid black; padding-left: 1em }}
+
+summary > * {{ display: inline }}
+
+pre {{ white-space:  pre-wrap }}
+
+h1, h2, h3, h4, h5, h6 {{  font-family: { $display-font } }}
+
+code.src {{ font-size:90%; font-weight:bold; background-color: lightsteelblue; padding: 0.2em }}
+code.tgt {{ font-size:90%; font-weight:bold; background-color: lemonchiffon; padding: 0.2em }}
+code.int {{ font-size:90%; font-weight:bold; background-color: pink; padding: 0.2em }}
+b.term, b.xpath {{ font-family: { $display-font } }}
+
+.secnum {{ padding: 0.2em; color: midnightblue; font-weight: bold; font-size: 110% }}
+
+a {{ color: inherit }}
+a.linked {{ color: inherit }}
+.toc a {{ text-decoration: none }}
+
+span.req {{ color: royalblue }}
+span.req:hover {{ background-color: beige }}
+
+.example {{ padding: 0.5em; border: thin dotted black; margin-top: 1em  }}
+.example > *:first-child {{ margin-top: 0em }}
+
+.example.source_profile-tagging {{  background-color: lightsteelblue }}
+.example.source_catalog-tagging {{  background-color: powderblue }}
+.example.target_catalog-tagging {{  background-color: lemonchiffon }}
+.example.inter_catalog-tagging {{  background-color: lemonchiffon }}
+
+.revisit {{ font-style: italic; color: red; background-color: yellow }}
+
+.xref {{ font-weight: bold; font-family: { $display-font } }}
+
+        Unit test: { . }Source data:Target (catalog):Source (catalog):Source (profile):Intermediate (catalog):
