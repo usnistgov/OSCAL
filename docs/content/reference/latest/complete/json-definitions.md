@@ -83,7 +83,7 @@ The following is a reference for the JSON object definitions derived from this m
                      <p class="formal-name">Assessment Activity Universally Unique Identifier</p>
                   </div>
                   <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a>&gt; identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this assessment activity elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>activity</code> can be used to reference the data item locally or globally (e.g., in an imported
+                     <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this assessment activity elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>activity</code> can be used to reference the data item locally or globally (e.g., in an imported
                         OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
                         of the document.</p>
                   </div>
@@ -1970,16 +1970,24 @@ The following is a reference for the JSON object definitions derived from this m
                      <p class="definition-link"><a href="#/assembly/oscal-metadata/link">See definition</a></p>
                   </div>
                </div>
-               <div class="model-entry definition define-assembly">
+               <div class="model-entry definition assembly">
                   <div class="instance-header">
                      <h2 id="/assembly/oscal-assessment-common/assessment-subject/include-all" class="toc2 name">include-all</h2>
                      <p class="type">assembly<br class="br" /> </p>
                      <p class="occurrence">[1]</p>
                      <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-assessment-common/assessment-subject/include-all">Switch to XML</a></div>
-                     <p class="formal-name">All</p>
+                     <p class="formal-name">Include All</p>
                   </div>
                   <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> A key word to indicate all.</p>
+                     <div class="remarks-group usa-prose">
+                        <details open="open">
+                           <summary class="subhead">Remarks</summary>
+                           <div class="remarks">
+                              <p>This element provides an alternative to calling controls individually from a catalog.</p>
+                           </div>
+                        </details>
+                     </div>
+                     <p class="definition-link"><a href="#/assembly/oscal-catalog-common/include-all">See definition</a></p>
                   </div>
                </div>
                <div class="model-entry definition assembly">
@@ -2279,16 +2287,16 @@ The following is a reference for the JSON object definitions derived from this m
                      <p class="definition-link"><a href="#/assembly/oscal-ssp/diagram">See definition</a></p>
                   </div>
                </div>
-               <div class="model-entry definition define-field">
+               <div class="model-entry definition field">
                   <div class="instance-header">
                      <h2 id="/assembly/oscal-ssp/authorization-boundary/remarks" class="toc2 name">remarks</h2>
                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                      <p class="occurrence">[0 or 1]</p>
                      <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-ssp/authorization-boundary/remarks">Switch to XML</a></div>
-                     <p class="formal-name">remarks field</p>
+                     <p class="formal-name">Remarks</p>
                   </div>
                   <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> Commentary about the system's authorization boundary that enhances the diagram.</p>
+                     <p class="definition-link"><a href="#/field/oscal-metadata/remarks">See definition</a></p>
                   </div>
                </div>
             </div>
@@ -6380,16 +6388,16 @@ The following is a reference for the JSON object definitions derived from this m
                      <p class="description"><span class="usa-tag">description</span> A brief caption to annotate the diagram.</p>
                   </div>
                </div>
-               <div class="model-entry definition define-field">
+               <div class="model-entry definition field">
                   <div class="instance-header">
                      <h2 id="/assembly/oscal-ssp/diagram/remarks" class="toc2 name">remarks</h2>
                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                      <p class="occurrence">[0 or 1]</p>
                      <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-ssp/diagram/remarks">Switch to XML</a></div>
-                     <p class="formal-name">remarks field</p>
+                     <p class="formal-name">Remarks</p>
                   </div>
                   <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> Commentary about the diagram that enhances it.</p>
+                     <p class="definition-link"><a href="#/field/oscal-metadata/remarks">See definition</a></p>
                   </div>
                </div>
             </div>
@@ -8141,7 +8149,7 @@ The following is a reference for the JSON object definitions derived from this m
                      <p class="type">assembly<br class="br" /> </p>
                      <p class="occurrence">[1]</p>
                      <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-profile/import/include-all">Switch to XML</a></div>
-                     <p class="formal-name">Insert All</p>
+                     <p class="formal-name">Include All</p>
                   </div>
                   <div class="body">
                      <div class="remarks-group usa-prose">
@@ -8155,7 +8163,7 @@ The following is a reference for the JSON object definitions derived from this m
                            </div>
                         </details>
                      </div>
-                     <p class="definition-link"><a href="#/assembly/oscal-profile/include-all">See definition</a></p>
+                     <p class="definition-link"><a href="#/assembly/oscal-catalog-common/include-all">See definition</a></p>
                   </div>
                </div>
                <div class="model-entry definition assembly">
@@ -8242,7 +8250,7 @@ The following is a reference for the JSON object definitions derived from this m
                      <p class="formal-name">Assessment Plan Reference</p>
                   </div>
                   <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> &gt;A resolvable URL reference to the assessment plan governing the assessment activities.</p>
+                     <p class="description"><span class="usa-tag">description</span> A resolvable URL reference to the assessment plan governing the assessment activities.</p>
                      <div class="remarks-group usa-prose">
                         <details open="open">
                            <summary class="subhead">Remarks</summary>
@@ -8379,7 +8387,7 @@ The following is a reference for the JSON object definitions derived from this m
                      <p class="formal-name">System Security Plan Reference</p>
                   </div>
                   <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> &gt;A resolvable URL reference to the system security plan for the system being assessed.</p>
+                     <p class="description"><span class="usa-tag">description</span> A resolvable URL reference to the system security plan for the system being assessed.</p>
                      <div class="remarks-group usa-prose">
                         <details open="open">
                            <summary class="subhead">Remarks</summary>
@@ -8414,14 +8422,13 @@ The following is a reference for the JSON object definitions derived from this m
    </div>
    <div class="model-entry definition define-assembly">
       <div class="definition-header">
-         <h1 id="/assembly/oscal-profile/include-all" class="toc1 name">include-all</h1>
+         <h1 id="/assembly/oscal-catalog-common/include-all" class="toc1 name">include-all</h1>
          <p class="type">assembly<br class="br" /> </p>
-         <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-profile/include-all">Switch to XML</a></div>
-         <p class="formal-name">Insert All</p>
+         <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-catalog-common/include-all">Switch to XML</a></div>
+         <p class="formal-name">Include All</p>
       </div>
       <div class="body">
-         <p class="description"><span class="usa-tag">description</span> Insert all controls from the imported catalog or profile resources identified in
-            the <code>import</code> directive.</p>
+         <p class="description"><span class="usa-tag">description</span> Include all controls from the imported catalog or profile resources.</p>
          <div class="remarks-group usa-prose">
             <details open="open">
                <summary class="subhead">Remarks</summary>
@@ -8528,7 +8535,7 @@ The following is a reference for the JSON object definitions derived from this m
                      <p class="type">assembly<br class="br" /> </p>
                      <p class="occurrence">[1]</p>
                      <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-profile/insert-controls/include-all">Switch to XML</a></div>
-                     <p class="formal-name">Insert All</p>
+                     <p class="formal-name">Include All</p>
                   </div>
                   <div class="body">
                      <div class="remarks-group usa-prose">
@@ -8539,7 +8546,7 @@ The following is a reference for the JSON object definitions derived from this m
                            </div>
                         </details>
                      </div>
-                     <p class="definition-link"><a href="#/assembly/oscal-profile/include-all">See definition</a></p>
+                     <p class="definition-link"><a href="#/assembly/oscal-catalog-common/include-all">See definition</a></p>
                   </div>
                </div>
                <div class="model-entry definition assembly">
@@ -11165,7 +11172,7 @@ The following is a reference for the JSON object definitions derived from this m
                                  <p class="formal-name">Relevant Evidence Reference</p>
                               </div>
                               <div class="body">
-                                 <p class="description"><span class="usa-tag">description</span> &gt;A resolvable URL reference to relevant evidence.</p>
+                                 <p class="description"><span class="usa-tag">description</span> A resolvable URL reference to relevant evidence.</p>
                                  <div class="remarks-group usa-prose">
                                     <details open="open">
                                        <summary class="subhead">Remarks</summary>
@@ -14765,7 +14772,7 @@ The following is a reference for the JSON object definitions derived from this m
                </div>
                <div class="model-entry definition assembly">
                   <div class="instance-header">
-                     <h2 id="/assembly/oscal-ar/result/prop" class="toc2 name">property</h2>
+                     <h2 id="/assembly/oscal-ar/result/props" class="toc2 name">property</h2>
                      <p class="type">assembly<br class="br" /> </p>
                      <p class="occurrence">[0 to ∞]</p>
                      <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-ar/result/prop">Switch to XML</a></div>
@@ -14773,7 +14780,7 @@ The following is a reference for the JSON object definitions derived from this m
                   </div>
                   <div class="body">
                      <p><span class="usa-tag">use name</span> <code class="name">prop</code></p>
-                     <p><span class="usa-tag">group as</span> <code class="name">prop</code></p>
+                     <p><span class="usa-tag">group as</span> <code class="name">props</code></p>
                      <div class="remarks-group usa-prose">
                         <details open="open">
                            <summary class="subhead">Remarks</summary>
@@ -15508,16 +15515,24 @@ The following is a reference for the JSON object definitions derived from this m
                                  <p class="definition-link"><a href="#/assembly/oscal-metadata/link">See definition</a></p>
                               </div>
                            </div>
-                           <div class="model-entry definition define-assembly">
+                           <div class="model-entry definition assembly">
                               <div class="instance-header">
                                  <h3 id="/assembly/oscal-assessment-common/reviewed-controls/control-selections/include-all" class="toc3 name">include-all</h3>
                                  <p class="type">assembly<br class="br" /> </p>
                                  <p class="occurrence">[1]</p>
                                  <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-assessment-common/reviewed-controls/control-selection/include-all">Switch to XML</a></div>
-                                 <p class="formal-name">All</p>
+                                 <p class="formal-name">Include All</p>
                               </div>
                               <div class="body">
-                                 <p class="description"><span class="usa-tag">description</span> A key word to indicate all.</p>
+                                 <div class="remarks-group usa-prose">
+                                    <details open="open">
+                                       <summary class="subhead">Remarks</summary>
+                                       <div class="remarks">
+                                          <p>This element provides an alternative to calling controls individually from a catalog.</p>
+                                       </div>
+                                    </details>
+                                 </div>
+                                 <p class="definition-link"><a href="#/assembly/oscal-catalog-common/include-all">See definition</a></p>
                               </div>
                            </div>
                            <div class="model-entry definition assembly">
@@ -15674,16 +15689,24 @@ The following is a reference for the JSON object definitions derived from this m
                                  <p class="definition-link"><a href="#/assembly/oscal-metadata/link">See definition</a></p>
                               </div>
                            </div>
-                           <div class="model-entry definition define-assembly">
+                           <div class="model-entry definition assembly">
                               <div class="instance-header">
                                  <h3 id="/assembly/oscal-assessment-common/reviewed-controls/control-objective-selections/include-all" class="toc3 name">include-all</h3>
                                  <p class="type">assembly<br class="br" /> </p>
                                  <p class="occurrence">[1]</p>
                                  <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-assessment-common/reviewed-controls/control-objective-selection/include-all">Switch to XML</a></div>
-                                 <p class="formal-name">All</p>
+                                 <p class="formal-name">Include All</p>
                               </div>
                               <div class="body">
-                                 <p class="description"><span class="usa-tag">description</span> A key word to indicate all.</p>
+                                 <div class="remarks-group usa-prose">
+                                    <details open="open">
+                                       <summary class="subhead">Remarks</summary>
+                                       <div class="remarks">
+                                          <p>This element provides an alternative to calling controls individually from a catalog.</p>
+                                       </div>
+                                    </details>
+                                 </div>
+                                 <p class="definition-link"><a href="#/assembly/oscal-catalog-common/include-all">See definition</a></p>
                               </div>
                            </div>
                            <div class="model-entry definition assembly">

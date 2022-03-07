@@ -91,6 +91,6 @@ Multiple examples of baselines expressed using the OSCAL profile model can be fo
 |:---|:---|
 | NIST SP 800-53 rev 5 | \[[XML]({{< param "contentRepoPath" >}}/nist.gov/SP800-53/rev5/xml/)\] \[[JSON]({{< param "contentRepoPath" >}}/nist.gov/SP800-53/rev5/json/)\] \[[YAML]({{< param "contentRepoPath" >}}/nist.gov/SP800-53/rev5/yaml/)\]
 | NIST SP 800-53 rev 4 | \[[XML]({{< param "contentRepoPath" >}}/nist.gov/SP800-53/rev4/xml/)\] \[[JSON]({{< param "contentRepoPath" >}}/nist.gov/SP800-53/rev4/json/)\] \[[YAML]({{< param "contentRepoPath" >}}/nist.gov/SP800-53/rev4/yaml/)\]
-| FedRAMP Baselines | \[[XML](https://github.com/gsa/fedramp-automation/blob/master/baselines/rev4/xml/)\] \[[JSON](https://github.com/gsa/fedramp-automation/blob/master/baselines/rev4/json/)\] \[[YAML](https://github.com/gsa/fedramp-automation/blob/master/baselines/rev4/yaml/)\]
+| FedRAMP Baselines | \[[XML](https://github.com/GSA/fedramp-automation/tree/master/dist/content/baselines/rev4/xml)\] \[[JSON](https://github.com/GSA/fedramp-automation/tree/master/dist/content/baselines/rev4/json)\] \[[YAML](https://github.com/GSA/fedramp-automation/tree/master/dist/content/baselines/rev4/yaml/)\]
 
 You will also find the "resolved" version of each profile. These files end with the suffix `-resolved-profile_catalog` to indicate that the profile [resolution process](/concepts/processing/profile-resolution/) has been performed to generate a catalog containing only the selected and tailored controls defined by the profile.

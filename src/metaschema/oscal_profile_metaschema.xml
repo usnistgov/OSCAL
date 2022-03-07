@@ -306,14 +306,6 @@
                   <p>If this directive is not provided, then no controls are to be inserted; i.e., all controls are included explicitly.</p>
             </remarks>
       </define-assembly>
-
-      <define-assembly name="include-all">
-            <formal-name>Insert All</formal-name>
-            <description>Insert all controls from the imported catalog or profile resources identified in the <code>import</code> directive.</description>
-            <remarks>
-                  <p>This element provides an alternative to calling controls individually from a catalog.</p>
-            </remarks>
-      </define-assembly>
       <define-assembly name="select-control-by-id" scope="local">
             <formal-name>Call</formal-name>
             <description>Call a control by its ID</description>

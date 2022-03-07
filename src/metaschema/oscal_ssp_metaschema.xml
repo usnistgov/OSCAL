@@ -398,10 +398,7 @@
           <p>A visual depiction of the system's authorization boundary.</p>
         </remarks>
       </assembly>
-      <define-field name="remarks" as-type="markup-multiline" in-xml="WITH_WRAPPER">
-        <formal-name>remarks field</formal-name>
-        <description>Commentary about the system's authorization boundary that enhances the diagram.</description>
-      </define-field>
+      <field ref="remarks" in-xml="WITH_WRAPPER"/>
     </model>
     <constraint>
       <is-unique id="unique-ssp-authorization-boundary-diagram" target="diagram">
@@ -439,10 +436,7 @@
         <formal-name>Caption</formal-name>
         <description>A brief caption to annotate the diagram.</description>
       </define-field>
-      <define-field name="remarks" as-type="markup-multiline" in-xml="WITH_WRAPPER">
-        <formal-name>remarks field</formal-name>
-        <description>Commentary about the diagram that enhances it.</description>
-      </define-field>
+      <field ref="remarks" in-xml="WITH_WRAPPER"/>
     </model>
     <constraint>
       <allowed-values target="link/@rel">

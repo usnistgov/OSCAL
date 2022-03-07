@@ -3200,7 +3200,7 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                            <p class="formal-name">System Security Plan Reference</p>
                         </div>
                         <div class="body">
-                           <p class="description"><span class="usa-tag">Description</span> &gt;A resolvable URL reference to the system security plan for the system being assessed.</p>
+                           <p class="description"><span class="usa-tag">Description</span> A resolvable URL reference to the system security plan for the system being assessed.</p>
                            <div class="remarks-group usa-prose">
                               <details open="open">
                                  <summary class="subhead">Remarks</summary>
@@ -7965,7 +7965,7 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                     <p class="formal-name">Assessment Activity Universally Unique Identifier</p>
                                  </div>
                                  <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a>&gt; identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this assessment activity elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>activity</code> can be used to reference the data item locally or globally (e.g., in an imported
+                                    <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this assessment activity elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>activity</code> can be used to reference the data item locally or globally (e.g., in an imported
                                        OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
                                        of the document.</p>
                                  </div>
@@ -9342,10 +9342,18 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                                                   <p class="type"><a href="/reference/datatypes/#empty">empty</a></p>
                                                                   <p class="occurrence">[1]</p>
                                                                   <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/local-definitions/activities/steps/reviewed-controls/control-selections/include-all">Switch to JSON</a></div>
-                                                                  <p class="formal-name">All</p>
+                                                                  <p class="formal-name">Include All</p>
                                                                </div>
                                                                <div class="body">
-                                                                  <p class="description"><span class="usa-tag">Description</span> A key word to indicate all.</p>
+                                                                  <p class="description"><span class="usa-tag">Description</span> Include all controls from the imported catalog or profile resources.</p>
+                                                                  <div class="remarks-group usa-prose">
+                                                                     <details open="open">
+                                                                        <summary class="subhead">Remarks</summary>
+                                                                        <div class="remarks">
+                                                                           <p>This element provides an alternative to calling controls individually from a catalog.</p>
+                                                                        </div>
+                                                                     </details>
+                                                                  </div>
                                                                </div>
                                                             </div>
                                                             <div class="model-entry definition assembly">
@@ -9828,10 +9836,18 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                                                   <p class="type"><a href="/reference/datatypes/#empty">empty</a></p>
                                                                   <p class="occurrence">[1]</p>
                                                                   <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/local-definitions/activities/steps/reviewed-controls/control-objective-selections/include-all">Switch to JSON</a></div>
-                                                                  <p class="formal-name">All</p>
+                                                                  <p class="formal-name">Include All</p>
                                                                </div>
                                                                <div class="body">
-                                                                  <p class="description"><span class="usa-tag">Description</span> A key word to indicate all.</p>
+                                                                  <p class="description"><span class="usa-tag">Description</span> Include all controls from the imported catalog or profile resources.</p>
+                                                                  <div class="remarks-group usa-prose">
+                                                                     <details open="open">
+                                                                        <summary class="subhead">Remarks</summary>
+                                                                        <div class="remarks">
+                                                                           <p>This element provides an alternative to calling controls individually from a catalog.</p>
+                                                                        </div>
+                                                                     </details>
+                                                                  </div>
                                                                </div>
                                                             </div>
                                                             <div class="model-entry definition assembly">
@@ -11056,10 +11072,18 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                                          <p class="type"><a href="/reference/datatypes/#empty">empty</a></p>
                                                          <p class="occurrence">[1]</p>
                                                          <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/local-definitions/activities/related-controls/control-selections/include-all">Switch to JSON</a></div>
-                                                         <p class="formal-name">All</p>
+                                                         <p class="formal-name">Include All</p>
                                                       </div>
                                                       <div class="body">
-                                                         <p class="description"><span class="usa-tag">Description</span> A key word to indicate all.</p>
+                                                         <p class="description"><span class="usa-tag">Description</span> Include all controls from the imported catalog or profile resources.</p>
+                                                         <div class="remarks-group usa-prose">
+                                                            <details open="open">
+                                                               <summary class="subhead">Remarks</summary>
+                                                               <div class="remarks">
+                                                                  <p>This element provides an alternative to calling controls individually from a catalog.</p>
+                                                               </div>
+                                                            </details>
+                                                         </div>
                                                       </div>
                                                    </div>
                                                    <div class="model-entry definition assembly">
@@ -11542,10 +11566,18 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                                          <p class="type"><a href="/reference/datatypes/#empty">empty</a></p>
                                                          <p class="occurrence">[1]</p>
                                                          <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/local-definitions/activities/related-controls/control-objective-selections/include-all">Switch to JSON</a></div>
-                                                         <p class="formal-name">All</p>
+                                                         <p class="formal-name">Include All</p>
                                                       </div>
                                                       <div class="body">
-                                                         <p class="description"><span class="usa-tag">Description</span> A key word to indicate all.</p>
+                                                         <p class="description"><span class="usa-tag">Description</span> Include all controls from the imported catalog or profile resources.</p>
+                                                         <div class="remarks-group usa-prose">
+                                                            <details open="open">
+                                                               <summary class="subhead">Remarks</summary>
+                                                               <div class="remarks">
+                                                                  <p>This element provides an alternative to calling controls individually from a catalog.</p>
+                                                               </div>
+                                                            </details>
+                                                         </div>
                                                       </div>
                                                    </div>
                                                    <div class="model-entry definition assembly">
@@ -13378,10 +13410,18 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                        <p class="type"><a href="/reference/datatypes/#empty">empty</a></p>
                                        <p class="occurrence">[1]</p>
                                        <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/reviewed-controls/control-selections/include-all">Switch to JSON</a></div>
-                                       <p class="formal-name">All</p>
+                                       <p class="formal-name">Include All</p>
                                     </div>
                                     <div class="body">
-                                       <p class="description"><span class="usa-tag">Description</span> A key word to indicate all.</p>
+                                       <p class="description"><span class="usa-tag">Description</span> Include all controls from the imported catalog or profile resources.</p>
+                                       <div class="remarks-group usa-prose">
+                                          <details open="open">
+                                             <summary class="subhead">Remarks</summary>
+                                             <div class="remarks">
+                                                <p>This element provides an alternative to calling controls individually from a catalog.</p>
+                                             </div>
+                                          </details>
+                                       </div>
                                     </div>
                                  </div>
                                  <div class="model-entry definition assembly">
@@ -13864,10 +13904,18 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                        <p class="type"><a href="/reference/datatypes/#empty">empty</a></p>
                                        <p class="occurrence">[1]</p>
                                        <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/reviewed-controls/control-objective-selections/include-all">Switch to JSON</a></div>
-                                       <p class="formal-name">All</p>
+                                       <p class="formal-name">Include All</p>
                                     </div>
                                     <div class="body">
-                                       <p class="description"><span class="usa-tag">Description</span> A key word to indicate all.</p>
+                                       <p class="description"><span class="usa-tag">Description</span> Include all controls from the imported catalog or profile resources.</p>
+                                       <div class="remarks-group usa-prose">
+                                          <details open="open">
+                                             <summary class="subhead">Remarks</summary>
+                                             <div class="remarks">
+                                                <p>This element provides an alternative to calling controls individually from a catalog.</p>
+                                             </div>
+                                          </details>
+                                       </div>
                                     </div>
                                  </div>
                                  <div class="model-entry definition assembly">
@@ -14384,10 +14432,18 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                               <p class="type"><a href="/reference/datatypes/#empty">empty</a></p>
                               <p class="occurrence">[1]</p>
                               <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/assessment-subjects/include-all">Switch to JSON</a></div>
-                              <p class="formal-name">All</p>
+                              <p class="formal-name">Include All</p>
                            </div>
                            <div class="body">
-                              <p class="description"><span class="usa-tag">Description</span> A key word to indicate all.</p>
+                              <p class="description"><span class="usa-tag">Description</span> Include all controls from the imported catalog or profile resources.</p>
+                              <div class="remarks-group usa-prose">
+                                 <details open="open">
+                                    <summary class="subhead">Remarks</summary>
+                                    <div class="remarks">
+                                       <p>This element provides an alternative to calling controls individually from a catalog.</p>
+                                    </div>
+                                 </details>
+                              </div>
                            </div>
                         </div>
                         <div class="model-entry definition assembly">
@@ -19350,10 +19406,18 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                                 <p class="type"><a href="/reference/datatypes/#empty">empty</a></p>
                                                 <p class="occurrence">[1]</p>
                                                 <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/tasks/associated-activities/subjects/include-all">Switch to JSON</a></div>
-                                                <p class="formal-name">All</p>
+                                                <p class="formal-name">Include All</p>
                                              </div>
                                              <div class="body">
-                                                <p class="description"><span class="usa-tag">Description</span> A key word to indicate all.</p>
+                                                <p class="description"><span class="usa-tag">Description</span> Include all controls from the imported catalog or profile resources.</p>
+                                                <div class="remarks-group usa-prose">
+                                                   <details open="open">
+                                                      <summary class="subhead">Remarks</summary>
+                                                      <div class="remarks">
+                                                         <p>This element provides an alternative to calling controls individually from a catalog.</p>
+                                                      </div>
+                                                   </details>
+                                                </div>
                                              </div>
                                           </div>
                                           <div class="model-entry definition assembly">
@@ -20551,10 +20615,18 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                        <p class="type"><a href="/reference/datatypes/#empty">empty</a></p>
                                        <p class="occurrence">[1]</p>
                                        <div class="crosslink"><a class="usa-button" href="../json-reference/#/assessment-plan/tasks/subjects/include-all">Switch to JSON</a></div>
-                                       <p class="formal-name">All</p>
+                                       <p class="formal-name">Include All</p>
                                     </div>
                                     <div class="body">
-                                       <p class="description"><span class="usa-tag">Description</span> A key word to indicate all.</p>
+                                       <p class="description"><span class="usa-tag">Description</span> Include all controls from the imported catalog or profile resources.</p>
+                                       <div class="remarks-group usa-prose">
+                                          <details open="open">
+                                             <summary class="subhead">Remarks</summary>
+                                             <div class="remarks">
+                                                <p>This element provides an alternative to calling controls individually from a catalog.</p>
+                                             </div>
+                                          </details>
+                                       </div>
                                     </div>
                                  </div>
                                  <div class="model-entry definition assembly">

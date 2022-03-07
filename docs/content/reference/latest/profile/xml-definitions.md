@@ -1400,7 +1400,7 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="type">assembly<br class="br" /> </p>
                      <p class="occurrence">[1]</p>
                      <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-profile/import/include-all">Switch to JSON</a></div>
-                     <p class="formal-name">Insert All</p>
+                     <p class="formal-name">Include All</p>
                   </div>
                   <div class="body">
                      <div class="remarks-group usa-prose">
@@ -1414,7 +1414,7 @@ The following is a reference for the XML element and attribute types derived fro
                            </div>
                         </details>
                      </div>
-                     <p class="definition-link"><a href="#/assembly/oscal-profile/include-all">See definition</a></p>
+                     <p class="definition-link"><a href="#/assembly/oscal-catalog-common/include-all">See definition</a></p>
                   </div>
                </div>
                <div class="model-entry definition assembly">
@@ -1479,14 +1479,13 @@ The following is a reference for the XML element and attribute types derived fro
    </div>
    <div class="model-entry definition define-assembly">
       <div class="definition-header">
-         <h1 id="/assembly/oscal-profile/include-all" class="toc1 name">include-all</h1>
+         <h1 id="/assembly/oscal-catalog-common/include-all" class="toc1 name">include-all</h1>
          <p class="type">assembly<br class="br" /> </p>
-         <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-profile/include-all">Switch to JSON</a></div>
-         <p class="formal-name">Insert All</p>
+         <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-catalog-common/include-all">Switch to JSON</a></div>
+         <p class="formal-name">Include All</p>
       </div>
       <div class="body">
-         <p class="description"><span class="usa-tag">description</span> Insert all controls from the imported catalog or profile resources identified in
-            the <code>import</code> directive.</p>
+         <p class="description"><span class="usa-tag">description</span> Include all controls from the imported catalog or profile resources.</p>
          <div class="remarks-group usa-prose">
             <details open="open">
                <summary class="subhead">Remarks</summary>
@@ -1558,7 +1557,7 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="type">assembly<br class="br" /> </p>
                      <p class="occurrence">[1]</p>
                      <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-profile/insert-controls/include-all">Switch to JSON</a></div>
-                     <p class="formal-name">Insert All</p>
+                     <p class="formal-name">Include All</p>
                   </div>
                   <div class="body">
                      <div class="remarks-group usa-prose">
@@ -1569,7 +1568,7 @@ The following is a reference for the XML element and attribute types derived fro
                            </div>
                         </details>
                      </div>
-                     <p class="definition-link"><a href="#/assembly/oscal-profile/include-all">See definition</a></p>
+                     <p class="definition-link"><a href="#/assembly/oscal-catalog-common/include-all">See definition</a></p>
                   </div>
                </div>
                <div class="model-entry definition assembly">

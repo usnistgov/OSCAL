@@ -6251,10 +6251,10 @@ The following is the JSON format reference for this [model](/concepts/layer/impl
                                              <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-characteristics/authorization-boundary/diagram/remarks">Switch to XML</a></div>
-                                             <p class="formal-name">remarks field</p>
+                                             <p class="formal-name">Remarks</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> Commentary about the diagram that enhances it.</p>
+                                             <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
                                           </div>
                                        </div>
                                     </details>
@@ -6266,10 +6266,10 @@ The following is the JSON format reference for this [model](/concepts/layer/impl
                                     <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                     <p class="occurrence">[0 or 1]</p>
                                     <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-characteristics/authorization-boundary/remarks">Switch to XML</a></div>
-                                    <p class="formal-name">remarks field</p>
+                                    <p class="formal-name">Remarks</p>
                                  </div>
                                  <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> Commentary about the system's authorization boundary that enhances the diagram.</p>
+                                    <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
                                  </div>
                               </div>
                            </details>
@@ -6959,10 +6959,10 @@ The following is the JSON format reference for this [model](/concepts/layer/impl
                                              <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-characteristics/network-architecture/diagram/remarks">Switch to XML</a></div>
-                                             <p class="formal-name">remarks field</p>
+                                             <p class="formal-name">Remarks</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> Commentary about the diagram that enhances it.</p>
+                                             <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
                                           </div>
                                        </div>
                                     </details>
@@ -7667,10 +7667,10 @@ The following is the JSON format reference for this [model](/concepts/layer/impl
                                              <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                                              <p class="occurrence">[0 or 1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../xml-reference/#/system-security-plan/system-characteristics/data-flow/diagram/remarks">Switch to XML</a></div>
-                                             <p class="formal-name">remarks field</p>
+                                             <p class="formal-name">Remarks</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> Commentary about the diagram that enhances it.</p>
+                                             <p class="description"><span class="usa-tag">Description</span> Additional commentary on the containing object.</p>
                                           </div>
                                        </div>
                                     </details>
