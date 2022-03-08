@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                xmlns:xs="http://www.w3.org/2001/XMLSchema"
                 xmlns="http://csrc.nist.gov/ns/oscal/1.0"
                 xmlns:uuid="java:java.util.UUID"
                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0"
@@ -13,6 +15,8 @@
    <xsl:mode on-no-match="shallow-copy"/>
    
    <xsl:mode name="copy" on-no-match="shallow-copy"/>
+
+   <xsl:param name="schema-location" as="xs:string" select="''"/>
    
    <xsl:variable select="uuid:randomUUID()" name="new-document-uuid"/>
    
@@ -20,12 +24,22 @@
    
    <xsl:template match="/*">
       <xsl:comment expand-text="true"> Modified by the OSCAL 1.0.0 RC2 to OSCAL 1.0.0 conversion XSLT on { current-dateTime() } </xsl:comment>
-      <xsl:copy>
+      <xsl:copy copy-namespaces="no">
          <xsl:apply-templates select="@* except @id"/>
          <xsl:attribute name="uuid" select="$new-document-uuid"/>
+         <xsl:choose>
+            <xsl:when test="$schema-location => boolean()">
+               <xsl:attribute name="xsi:schemaLocation" namespace="http://www.w3.org/2001/XMLSchema-instance" select="$schema-location"/>
+            </xsl:when>
+            <xsl:otherwise>
+               <xsl:message>xsi:schemaLocation not set, parameter schema-location is undefined.</xsl:message>
+            </xsl:otherwise>
+         </xsl:choose>
          <xsl:apply-templates/>
       </xsl:copy>
    </xsl:template>
+
+   <xsl:template match="@xsi:schemaLocation"/>
    
    <xsl:template match="oscal-version">
       <oscal-version>1.0.0</oscal-version>
