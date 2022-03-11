@@ -66,6 +66,36 @@ The figure below expresses represents the portion of the OSCAL stack as it relat
 
 {{<partialCached "note-to-developers-uuid.html" >}}
 
+### Identifier References
+
+An OSCAL SSP may contain references to information that is defined locally (e.g., in the SSP model) or externally (e.g., in a referenced profile, catalog, or component definition model).  The following lists the mechanisms through which objects in an OSCAL SSP may "link" to other OSCAL content:
+
+- **Local**: Scenario where an identifier references information in the same OSCAL instance.  This scenario supports  “compile time” enforcement of constraints since the validity of the reference can be checked as soon as the SSP is authored.
+- **Import-Profile**:  Scenario where an identifier references information in its imported profile.  This scenario can support “compile time” enforcement of constraints if there is access to the imported OSCAL profile.
+- **Leveraged-Authorizations/Links**:  In this scenario where an OSCAL SSP has leveraged-authorization(s), some of the information in the leveraged SSP may be referenced (e.g., if the leveraged SSP is also in OSCAL format).  This scenario supports “runtime” validation of constraints since SSP author may or may not have access the leveraged system SSP to validate / enforce the referential integrity.  However, the authorizing official (AO) must ultimately validate any such links and references.
+- **Component Definition (CDEF) Links**:  Scenario where an OSCAL SSP component has a reference to a component definition and/or references to specific component within a component definition.  This scenario can support “compile time” enforcement of constraints if the component definition is available for validation.
+- **Links**: Aside from OSCAL specific links such as Leveraged-Authorizations/link, general OSCAL links do not provide enough contextual information to know if the link target 1) is an OSCAL document and 2) what type of OSCAL model. Additionally, there is no assurance that SSP authors have access to linked OSCAL instances, so any references to content in external links cannot be validated.
+
+### Reference Constraints
+
+The following table summarizes constraints for identifier references in an OSCAL SSP:
+
+| Reference | Target Scope | Target Element | Target ID Type | Referential Constraint Description |
+| :-------- | :----------- | :------------: | :------------: | :--------------------------------- |
+| [by-component/@component-uuid](/reference/latest/system-security-plan/xml-index/#/@control-id) | Local SSP, Leveraged-Authorization | Component | UUID | A single target component must be found in target SSP instance. Component must be defined in local SSP or leveraged SSP. |
+| [implemented-component/@component-uuid](/reference/latest/system-security-plan/xml-index/#/@control-id) | Local SSP | Component | UUID | A single target component must be found in source. Implemented component references a single managed inventory item within a system.  This should exclude leveraged items since they are not managed by the leveraging system. |
+| [implemented-requirement/@control-id](/reference/latest/system-security-plan/xml-index/#/@control-id) | Baseline (e.g., Import-Profile) | Control | Token | A single target control must be found in the baseline. |
+| [inherited/@provided-uuid](/reference/latest/system-security-plan/xml-index/#/@provided-uuid) | Leveraged-Authorization | Export/<br/>Provided | UUID | A single target control must be found in the target. Pointer to control that is inherited from the leveraged system. |
+| [leveraged-authorization/party-uuid](/reference/latest/system-security-plan/xml-index/#/party-uuid) | Leveraged-Authorization | Party | UUID | A single target party must be found in the target. Pointer to the party that manages the leveraged system. |
+| [responsibility/@provided-uuid](/reference/latest/system-security-plan/xml-index/#/@provided-uuid) | Local SSP | Export/<br/>Responsibility | UUID | A single target control must be found in the source. Reference to a control, in the local SSP, that is exported as a customer responsibility for leveraging systems. |
+| [responsible-party/@role-id](/reference/latest/system-security-plan/xml-index/#/@role-id) | Local SSP | Role | Token | A single target role must be found in the source. System-characteristics/responsible-party/@role-id and inventory-item\*/responsible-party/@role-id are points of reference, so it is appropriate to enforce a local constraint. |
+| [responsible-party/party-uuid](/reference/latest/system-security-plan/xml-index/#/party-uuid) | Local SSP | Party | UUID | A single target party must be found in the source. System-characteristics/responsible-party/party-uuid and inventory-item\*/responsible-party/party-uid seem to be the points of reference, so seems appropriate to enforce a local constraint. |
+| [responsible-role/@role-id](/reference/latest/system-security-plan/xml-index/#/@role-id) | Local SSP, Leveraged-Authorization | Role | Token | A single target role must be found the target. |
+| [responsible-role/party-uuid](/reference/latest/system-security-plan/xml-index/#/party-uuid) | Local SSP, Leveraged-Authorization | Party | UUID         | A single target role must be found the target. |
+| [set-parameter/@param-id](/reference/latest/system-security-plan/xml-index/#/@param-id) | Baseline (e.g., Import-Profile) | Param | Token | A single target param must be found in the baseline. |
+| [statement/@statement-id](/reference/latest/system-security-plan/xml-index/#/@statement-id) | Baseline (e.g., Import-Profile) | Control/Part | Token | A single target part must be found in the baseline. |
+| [user/role-id](/reference/latest/system-security-plan/xml-index/#/role-id) | Local SSP | Role | Token | A single target role must be found in the source. Role could be defined in local instance metadata. |
+
 ### Modeling Validation Information
 OSCAL is designed to allow capture relevant details related to independent validation of components. See the [Validation Modeling](/learn/tutorials/validation-modeling/) tutorial for details.
 
