@@ -1382,8 +1382,7 @@ control:
       <p>The following requirements MUST be followed with regards to the Metadata section of the output catalog:</p>
       <ul>
         <li>
-          <p><req level="must" id="req-meta-uuid">The output catalog's metadata MUST have a unique top-level UUID (metadata:uuid). This UUID may be generated as seen fit by the tool, as long as it is reasonable to assume it is globally unique. It is RECOMMENDED that tools use a combination of meaningful text and a uniquely generated value (Ex.
-            <code>{{sourceprofilename}}-RESOLVED-{{GUIDv5}}</code>).
+          <p><req level="must" id="req-meta-uuid">The output catalog's metadata MUST have a unique top-level UUID (metadata:uuid). This UUID MAY  be generated as seen fit by the tool, as long as it is reasonable to assume it is globally unique. It is RECOMMENDED that tools use a Version 4 UUID as specified in <a href="https://datatracker.ietf.org/doc/html/rfc4122">Section 4 of RFC 4122</a>.
           </req></p>
         </li>
         <li>
