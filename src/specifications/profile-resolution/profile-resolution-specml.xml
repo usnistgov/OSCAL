@@ -20,9 +20,9 @@
     <head>Introduction</head>
     <section id="purpose">
       <head>Purpose</head>
-      <p>This document defines the normative requirements for an OSCAL Profile Resolver. Profile resolution is core to addressing a fundamental OSCAL requirement: 
-        the representation of baselines separately from the control catalogs on which they depend). The requirements for resolution must therefore be well-defined and deterministic, 
-        enabling tool developers and parties exchanging OSCAL Profiles can work from a common understanding.</p>
+      <p>
+        Information systems are implemented against a baseline of security controls. An OSCAL Profile defines the selection and potential alterations to a control catalog that are needed to establish a baseline. However, the OSCAL implementation layer depends on having an OSCAL Catalog that represents the baseline of controls to be implemented. Profile Resolution allows for computing an effective catalog based on an OSCAL Profile. For a given OSCAL Profile, the Profile Resolution process needs to result in the same OSCAL Catalog when executed by different tools on different endpoints. The requirements for resolution must therefore be well-defined and deterministic, enabling tool developers and parties exchanging OSCAL Profiles to work from a common understanding. This document defines the normative requirements for an OSCAL Profile Resolver.
+</p>
 
       <p>No requirements are placed on implementation-level details, instead, requirements are laid out as what the output of resolution must look like given a certain input.
          By adhering to these requirements OSCAL producers, OSCAL consumers, and any other members of the OSCAL ecosystem can create and resolve profiles deterministically, 
@@ -289,9 +289,20 @@ profile:
       <section id="internalref">
         <head>Internal References</head>
         <p>URI Fragments in OSCAL represent internal references to other OSCAL objects in the same document. These references follow the pattern of <code>#{{objectID}}</code>. For example, the URI Fragment <code>#param1</code> is referencing the Parameter with unique ID <code>param1</code>.</p>
-        <p><req level="must" id="req-internal">In the context of the Import Phase, internal references will only appear as a reference to a profile or catalog that is in the <src>resources</src> section of the source. When tools encounter such a reference, they MUST locate the object in <src>resources</src> with the matching ID value, and resolve the import using the
-          <src>rlink</src> URI and the above resolution requirements.
+        <p><req level="must" id="req-internal">In the context of the Import Phase, internal references will only appear as a reference to a profile or catalog that is in the <src>resources</src> section of the source. When tools encounter such a reference, they MUST locate the object in <src>resources</src> with the matching ID value, and resolve the resource. 
+          By OSCAL model requirements, a given <src>resource</src> can have zero to many <src>rlink</src> objects and zero to one <src>base64</src> objects; however, it must have at least one of the two present. Tools can assume that any of these each resolves to the same underlying OSCAL object, although potentially in different serialization formats.
+          For deterministic resolution of these backmatter OSCAL objects, tools need to adhere to the following requirements:
         </req></p>
+        <ul>
+          <li><p><req level="may" id="req-internal-resolve1">Tools MAY use any of the <src>rlink</src> or <src>base64</src> objects present in the <src>resource</src>.</req> </p> </li>
+          <li><p><req level="may" id="req-internal-resolve2">Tools MAY verify that each above objects resolves to the same underlying OSCAL object. If there are OSCAL Model content differences between the resolved obejcts, the tool SHOULD provide a warning. </req></p> </li>
+          <li><p><req level="must" id="req-internal-resolve3">When a <src>rlink</src> is encountered and is to be resolved, it MUST be resolved by using a HTTP Client request to retrieve a Byte Stream. </req></p> </li>
+          <li><p><req level="must" id="req-internal-resolve4">When a <src>base64</src> is encountered and is to be resolved, it MUST be considered a Byte Stream.</req> </p> </li>
+          <li><p><req level="must" id="req-internal-resolve5">Regardless of its source, the Byte Stream MUST be decoded based on the algorithm defined in <a href="https://datatracker.ietf.org/doc/html/rfc4648"> Section 4 RFC 4648</a>. </req></p> </li>
+        </ul>
+        
+        
+        
         <p><req level="must" id="req-internal-error">If the object fetched cannot be found or is not a valid OSCAL object, the tool MUST cease processing and provide an error.</req></p>
         <tagging whose="source_profile">
           <![CDATA[
@@ -596,6 +607,7 @@ include-controls:
         <p>Some source catalogs use
           <src>group</src> objects to place controls into arbitrary groupings. Tools will need to be aware of these groups when executing the "merge" phase below, as they will duplicated into the output under the "as-is" mode and can be referenced in "custom" mode. The naïve intermediate approach would keep all groups until all other phases are complete, but implementations may find it more performant to look ahead and prune unused groups early.
         </p>
+        <p>Group objects that have a child <src>prop</src> object with name:keep and value:always MUST NOT be pruned (see <xref rid="cleanup"/>. Additional details on handling the final outputting of these groups can be found in the "merge" phase below.</p>
       </section>
       <section id="import-pitfalls">
         <head>Avoiding Implementation Pitfalls</head>
@@ -1384,10 +1396,11 @@ control:
           <p><req level="must" id="req-meta-last-modified">The value of metadata:last-modified in the target MUST be set with a valid timestamp representing the time the profile resolution completed.</req></p>
         </li>
         <li>
-          <p><req level="should" id="req-meta-source-profile">The value of metadata:source-profile in the target SHOULD be set with a valid URI that points to the profile that resulted in this catalog. </req> <req level="may" id="req-meta-source-profile-privacy"> If there are privacy or security concerns, the value of metadata:source-profile MAY be set to anything, in which case the simple existence of the source-profile property indicates that this is a resolved profile.</req></p>
+          <p><req level="should" id="req-meta-source-profile">A child <src>prop</src> object with <src>name:source-profile</src> MUST be created. The <src>value</src> object of this <src>prop</src> SHOULD be set with a valid URI that points to the profile that resulted in this catalog. </req> 
+            <req level="may" id="req-meta-source-profile-privacy"> If there are privacy or security concerns, the <src>value</src> object of this <src>prop</src> MAY be set to anything, in which case the simple existence of the source-profile property indicates that this is a resolved profile.</req></p>
         </li>
         <li>
-          <p><req level="should" id="req-meta-resolution-tool">The value of metadata:resolution-tool in the target SHOULD be set with a string that represents the tool that was used to resolve this catalog.</req></p> <!-- TODO: Should this be generalized? -->
+          <p><req level="should" id="req-meta-resolution-tool">A child <src>prop</src> object with <src>name:resolution-tool</src> SHOULD be created. The <src>value</src> object of this <src>prop</src> in the target SHOULD be set with a string that represents the tool that was used to resolve this catalog.</req></p>
         </li>
         <li><p><req level="must" id="req-meta-keep">For any metadata:roles or metadata:parties that exist in the source catalogs, if they have a <src>prop</src> child with name:keep and value:always, they are to be copied as is into the output metadata.</req></p></li>
       </ul>
@@ -1457,25 +1470,25 @@ control:
         <head>Requirements and Guidance for XML Output</head>
         <p><req level="must" id="req-output-xml">The final Catalog output, if using XML, MUST be valid as defined by the XML model documentation for the OSCAL Catalog. See
           <a href="https://pages.nist.gov/OSCAL/reference/latest/complete/xml-definitions/">the complete XML reference</a> for model requirements.</req>
-        </p> <!-- TODO: Add Namespace --> <!-- TODO: Consult XML Wizards on namespacing and other XML requirements -->
+        </p> 
       </section>
       <section id="jsonrequirements">
         <head>Requirements and Guidance for JSON Output</head>
         <p><req level="must" id="req-output-json">The final Catalog output, if using JSON, MUST be valid as defined by the JSON model documentation for the OSCAL Catalog. See the
           <a href="https://pages.nist.gov/OSCAL/reference/latest/complete/json-reference/">complete JSON reference</a> for model requirements. </req>
         </p>
-        <p>The JSON format, in general use, does not require the preservation of order of fields. As order matters in OSCAL, care should be taken to adhere to the canonical OSCAL order
+        <p>The JSON format, in general use, does not require the preservation of order of fields. As order matters in OSCAL, tools SHOULD adhere to the canonical OSCAL order
           <xref rid="order" /> when outputting a catalog in JSON.
-        </p> <!-- TODO: Add Namespace (BaseURI) -->
+        </p> 
       </section>
       <section id="yamlrequirements">
         <head>Requirements and Guidance for YAML Output</head>
         <p><req level="must" id="req-output-yaml">The final Catalog output, if using YAML, MUST be valid as defined by the JSON model documentation for the OSCAL Catalog. </req> YAML is considered a simple variation on the JSON format. Beyond cosmetic differences there are no differences in the information structure between these formats. Therefore, the
           <a href="https://pages.nist.gov/OSCAL/reference/latest/complete/json-reference/">complete JSON reference</a> provides model requirements.
         </p>
-        <p>The YAML format, in general use, does not require the preservation of order of fields. As order matters in OSCAL, care should be taken to adhere to the canonical OSCAL order
-          <xref rid="order" />when outputting a catalog in YAML.
-        </p> <!-- TODO: Add Namespace (BaseURI) -->
+        <p>The YAML format, in general use, does not require the preservation of order of fields. As order matters in OSCAL, tools SHOULD adhere to the canonical OSCAL order
+          <xref rid="order" /> when outputting a catalog in YAML.
+        </p> 
       </section>
       <section id="order">
         <head>Order of objects in serialization</head>
