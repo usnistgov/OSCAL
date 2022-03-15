@@ -8,6 +8,41 @@ This GitHub repository uses a CI/CD process that provides automation for:
 
 Using a CI/CD process ensures that all artifacts in [pull requests](https://github.com/usnistgov/OSCAL/blob/master/CONTRIBUTING.md) and in the [master branch](https://github.com/usnistgov/OSCAL) are valid and usable.
 
+## Workflow
+
+The NIST OSCAL repository provide scripts and orchestrates them through [GitHub Actions job declarations]. Below is a diagram illustrating the tasks an OSCAL stakeholder will want to perform and the relevant GitHub Actions jobs and scripts they trigger.
+
+```mermaid
+graph TD
+    Dev[I'm a developer] 
+    --> ChoiceAction{and I want to?}
+    %% ChoiceAction stepper
+    ChoiceAction -->|change the Metaschema models| EditMetaschemaModels(update the Metaschema model)
+    ChoiceAction -->|change OSCAL models| EditModels(edit the OSCAL models)
+    ChoiceAction -->|change the website documentation| EditWebsite(update the website content)
+    ChoiceAction -->|deploy the website to pages.nist.gov| PublishWebsite(check for relevant git branch)
+    ChoiceAction -->|publish an OSCAL release| PublishRelease(select relevant changes)
+    %% I want to edit the OSCAL models
+    EditModels -->|push to GitHub and trigger Actions| PipelineMetaschemaArtifacts(fab:fa-github metaschema-artifacts.yaml)
+    PipelineMetaschemaArtifacts -->|trigger first script| GenerateSchemas(fas:fa-terminal generate-schema.sh)
+    GenerateSchemas -->|update content converters| GenerateContentConverters(fas:fa-terminal generate-content-converters.sh)
+    GenerateContentConverters -->|test the changes| RunUnitTests(fas:fa-terminal run-unittests.sh)
+    RunUnitTests -->|publish auto-converted artifacts| GitAutoCommitAction(fab:fa-github stefanzweifel/git-auto-commit-action)
+    GitAutoCommitAction --> Done(Done, good job!)
+    %% I want to change the website documentation
+    EditWebsite -->|push to GitHub and trigger Actions| PipelineWebsiteArtifacts(fab:fa-github website-artifacts.yaml)
+    PipelineWebsiteArtifacts -->|trigger first script| GenerateSpecificationDocs(fas:fa-terminal generate-specification-documentation.sh)
+    GenerateSpecificationDocs -->|upload converted specs XML to HTML| UploadArtifact(fab:fa-github actions/upload-artifact)
+    UploadArtifact -->|build website with site generator| BuildWebsiteSSG(fas:fa-terminal hugo)
+    BuildWebsiteSSG -->|upload converted Markdown to HTML| UploadArtifact(fab:fa-github actions/upload-artifact)
+    UploadArtifact -->|check hyperlinks are valid| CheckHyperlinks(fab:fa-github untitaker/hyperlink)
+    CheckHyperlinks -->|publish artifacts| GitAutoCommitAction
+    %% I want to deploy the website
+    PublishWebsite -->|push to GitHub and trigger Actions| PipelineDeployWebsite(fab:fa-github website-deploy.yaml)
+    PipelineDeployWebsite -->|trigger first script| DeployWebsite(fas:fa-terminal deploy.sh)
+    %% I want to publish an OSCAL release
+```
+
 ## Provided Scripts
 
 The primary CircleCI supported CI/CD workflow, ```build```, is uses a series of bash scripts. The following scripts are used in this workflow for all PRs that are submitted:
