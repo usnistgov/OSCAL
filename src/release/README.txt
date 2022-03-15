@@ -16,6 +16,8 @@ These directories provide stable, released versions of the resources provided on
 
 Please note that OSCAL content examples, which were once included in these archives are now located at: https://github.com/usnistgov/oscal-content.
 
+If you have existing content targeting the previous `oscal-version` from a prior release, you can use the content upgrade transforms to upgrade them to this release as documented in this directory's README: https://github.com/usnistgov/OSCAL/tree/main/src/release/content-upgrade/.
+
 # The OSCAL Roadmap
 
 OSCAL is being developed through a series of milestone releases, which are focused around stabilizing the OSCAL model layers in a progression. While the project is being developed iteratively, the OSCAL team is working to reduce the impact of changes between each milestone release, to provide for early adoption of OSCAL content and the development of tools supporting the lower-layer models.
