@@ -289,14 +289,14 @@ profile:
       <section id="internalref">
         <head>Internal References</head>
         <p>URI Fragments in OSCAL represent internal references to other OSCAL objects in the same document. These references follow the pattern of <code>#{{objectID}}</code>. For example, the URI Fragment <code>#param1</code> is referencing the Parameter with unique ID <code>param1</code>.</p>
-        <p><req level="must" id="req-internal">In the context of the Import Phase, internal references will only appear as a reference to a profile or catalog that is in the <src>resources</src> section of the source. When tools encounter such a reference, they MUST locate the object in <src>resources</src> with the matching ID value, and resolve the resource. 
+        <p><req level="must" id="req-internal">In the context of the Import Phase, internal references will only appear as a reference to a profile or catalog that is in the <src>resources</src> section of the source. When tools encounter such a reference, they MUST locate the object in <src>resources</src> with the matching UUID value, and resolve the resource. 
           By OSCAL model requirements, a given <src>resource</src> can have zero to many <src>rlink</src> objects and zero to one <src>base64</src> objects; however, it must have at least one of the two present. Tools can assume that any of these each resolves to the same underlying OSCAL object, although potentially in different serialization formats.
           For deterministic resolution of these backmatter OSCAL objects, tools need to adhere to the following requirements:
         </req></p>
         <ul>
           <li><p><req level="may" id="req-internal-resolve1">Tools MAY use any of the <src>rlink</src> or <src>base64</src> objects present in the <src>resource</src>.</req> </p> </li>
-          <li><p><req level="may" id="req-internal-resolve2">Tools MAY verify that each above objects resolves to the same underlying OSCAL object. If there are OSCAL Model content differences between the resolved obejcts, the tool SHOULD provide a warning. </req></p> </li>
-          <li><p><req level="must" id="req-internal-resolve3">When a <src>rlink</src> is encountered and is to be resolved, it MUST be resolved by using a HTTP Client request to retrieve a Byte Stream. </req></p> </li>
+          <li><p><req level="may" id="req-internal-resolve2">Tools MAY verify that each above objects resolves to the same underlying OSCAL object. If there are OSCAL Model content differences between the resolved objects, the tool SHOULD provide a warning. </req></p> </li>
+          <li><p><req level="must" id="req-internal-resolve3">When a <src>rlink</src> is encountered and is to be resolved, it MUST be resolved by using a HTTP request to retrieve a byte stream. </req></p> </li>
           <li><p><req level="must" id="req-internal-resolve4">When a <src>base64</src> is encountered and is to be resolved, it MUST be considered a Byte Stream.</req> </p> </li>
           <li><p><req level="must" id="req-internal-resolve5">Regardless of its source, the Byte Stream MUST be decoded based on the algorithm defined in <a href="https://datatracker.ietf.org/doc/html/rfc4648"> Section 4 RFC 4648</a>. </req></p> </li>
         </ul>
@@ -1382,7 +1382,7 @@ control:
       <p>The following requirements MUST be followed with regards to the Metadata section of the output catalog:</p>
       <ul>
         <li>
-          <p><req level="must" id="req-meta-uuid">The output catalog's metadata MUST have a unique top-level UUID (metadata:uuid). This UUID MAY  be generated as seen fit by the tool, as long as it is reasonable to assume it is globally unique. It is RECOMMENDED that tools use a Version 4 UUID as specified in <a href="https://datatracker.ietf.org/doc/html/rfc4122">Section 4 of RFC 4122</a>.
+          <p><req level="must" id="req-meta-uuid">The output catalog's metadata MUST have a unique top-level UUID (metadata:uuid). This UUID MAY be generated as seen fit by the tool, as long as it is reasonable to assume it is globally unique. It is RECOMMENDED that tools use a Version 4 UUID as specified in <a href="https://datatracker.ietf.org/doc/html/rfc4122">Section 4 of RFC 4122</a>.
           </req></p>
         </li>
         <li>
