@@ -2,13 +2,13 @@
 
 # Open Security Controls Assessment Language (OSCAL)
 
-NIST is developing the [Open Security Controls Assessment Language](https://csrc.nist.gov/Projects/Open-Security-Controls-Assessment-Language) (OSCAL), a set of hierarchical, XML-, JSON-, and YAML-based formats that provide a standardized representations of information pertaining to the publication, implementation, and assessment of security controls. OSCAL is being developed through a [collaborative approach](https://github.com/usnistgov/OSCAL/blob/master/CONTRIBUTING.md) with the public. Public contributions to this project are welcome.
+NIST is developing the [Open Security Controls Assessment Language](https://csrc.nist.gov/Projects/Open-Security-Controls-Assessment-Language) (OSCAL), a set of hierarchical, XML-, JSON-, and YAML-based formats that provide a standardized representations of information pertaining to the publication, implementation, and assessment of security controls. OSCAL is being developed through a [collaborative approach](https://github.com/usnistgov/OSCAL/blob/main/CONTRIBUTING.md) with the public. Public contributions to this project are welcome.
 
 With this effort, we are stressing the agile development of a set of *minimal* formats that are both generic enough to capture the breadth of data in scope (controls specifications), while also capable of ad-hoc tuning and extension to support peculiarities of both (industry or sector) standard and new control types.
 
 The [OSCAL website](https://www.nist.gov/oscal) provides an overview of the OSCAL project, including an XML and JSON [schema reference](https://pages.nist.gov/OSCAL/docs/schemas/), [examples](https://pages.nist.gov/OSCAL/resources/examples/), and other resources.
 
-If you are interested in contributing to the development of OSCAL, refer to the [contributor guidance](https://github.com/usnistgov/OSCAL/blob/master/CONTRIBUTING.md) for more information.
+If you are interested in contributing to the development of OSCAL, refer to the [contributor guidance](https://github.com/usnistgov/OSCAL/blob/main/CONTRIBUTING.md) for more information.
 
 ## Project Status
 
@@ -24,8 +24,8 @@ For additional information on the OSCAL project, please see the NIST’s Cyberse
 
 The NIST team is also maintaining **OSCAL content** that is updated to the latest OSCAL revision. The [OSCAL content repository](https://github.com/usnistgov/oscal-content/) provides OSCAL examples, in addition to:
 
-- The [NIST SP 800-53 revision 5 catalog](https://github.com/usnistgov/oscal-content/tree/master/nist.gov/SP800-53/rev5) and the security and privacy [NIST SP 800-53B baselines](https://github.com/usnistgov/oscal-content/tree/master/nist.gov/SP800-53/rev5).
-- The [NIST SP 800-53 revision 4 catalog](https://github.com/usnistgov/oscal-content/tree/master/nist.gov/SP800-53/rev4) and the [three NIST SP 800-53 revision 4 baselines](https://github.com/usnistgov/oscal-content/tree/master/nist.gov/SP800-53/rev4).
+- The [NIST SP 800-53 revision 5 catalog](https://github.com/usnistgov/oscal-content/tree/main/nist.gov/SP800-53/rev5) and the security and privacy [NIST SP 800-53B baselines](https://github.com/usnistgov/oscal-content/tree/main/nist.gov/SP800-53/rev5).
+- The [NIST SP 800-53 revision 4 catalog](https://github.com/usnistgov/oscal-content/tree/main/nist.gov/SP800-53/rev4) and the [three NIST SP 800-53 revision 4 baselines](https://github.com/usnistgov/oscal-content/tree/main/nist.gov/SP800-53/rev4).
 - The [FedRAMP SP 800-53 revision 4 baselines](https://github.com/usnistgov/oscal-content/tree/master/fedramp.gov). Please note, these baselines are also available on [GSA/fedramp-automation](https://github.com/GSA/fedramp-automation/tree/master/baselines) repository.
 
 All of this OSCAL content is provided in XML, JSON and YAML formats.
