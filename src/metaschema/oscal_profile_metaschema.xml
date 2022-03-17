@@ -42,15 +42,15 @@
       </define-assembly>
       <define-assembly name="import">
             <formal-name>Import resource</formal-name>
-            <description>The <code>import</code> designates a catalog, profile, or other resource to be included (referenced and potentially modified) by this profile. The import also identifies which controls to select using the <code>include-all</code>, <code>include-controls</code>, and <code>exclude-controls</code> directives.</description>
+            <description>The <code>import</code> designates a catalog or profile to be included (referenced and potentially modified) by this profile. The import also identifies which controls to select using the <code>include-all</code>, <code>include-controls</code>, and <code>exclude-controls</code> directives.</description>
             <define-flag name="href" as-type="uri-reference" required="yes">
                   <formal-name>Catalog or Profile Reference</formal-name>
                   <description>A resolvable URL reference to the base catalog or profile that this profile is tailoring.</description>
                   <remarks>
-                        <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment that points to a <code>back-matter</code>
+                        <p>The value of the <code>href</code> can be an internet resource, or an internal reference using a fragment e.g. #fragment that points to a <code>back-matter</code>
                               <code>resource</code> in the same document.</p>
                         <!-- TODO: Add a link to "within the scope of the containing OSCAL document" to point to documentation of identification scopes" -->
-                        <p>If a local reference using a fragment is used, this will be indicated by a fragment "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
+                        <p>If a local reference using a fragment is used, this will be indicated by a fragment "#" followed by an identifier which references the <code>uuid</code> value of a <code>resource</code> in the document's <code>back-matter</code>.</p>
                         <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URL pointing to the location of the referenced resource. A relative URL will be resolved relative to the location of the document containing the link.</p>
                   </remarks>
             </define-flag>
@@ -93,7 +93,7 @@
             <model>
                   <define-assembly name="combine">
                         <formal-name>Combination rule</formal-name>
-                        <description>A Combine element defines whether and how to combine multiple (competing) versions of the same control</description>
+                        <description>A Combine element defines how to combine multiple (competing) versions of the same control.</description>
                         <define-flag name="method" as-type="string">
                               <formal-name>Combination method</formal-name>
                               <description>How clashing controls should be handled</description>
@@ -110,7 +110,8 @@
                         </constraint>
                         <remarks>
                               <p>Whenever combining controls from multiple (import) pathways, an issue arises of what to do with clashing invocations (multiple competing versions of a control). </p>
-                              <p>This setting permits a profile designer to apply a rule for the resolution of such cases. In a well-designed profile, such collisions would ordinarily be avoided, but this setting can be useful for defining what to do when it occurs.</p>
+                              <p>This setting permits a profile designer to apply a rule for the resolution of such cases. In a well-designed profile (e.g. one that uses mapping), such collisions would ordinarily be avoided, but this setting can be useful for defining what to do when it occurs.</p>
+                              <p>If no <code>combine</code> element appears, it is considered equivalent to providing a <code>combine</code> element with a <code>method</code> of value <q>keep</q>. </p>
                         </remarks>
                   </define-assembly>
                   <choice>

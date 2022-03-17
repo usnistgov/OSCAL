@@ -13,8 +13,8 @@
 
     <xsl:template name="yaml-header">
         <xsl:text>---</xsl:text>
-        <xsl:text>&#xA;title: OSCAL Profile Resolution</xsl:text>
-        <xsl:text>&#xA;description: Transforming a profile into the tailored catalog it represents</xsl:text>
+        <xsl:text>&#xA;title: OSCAL Profile Resolution Specification Draft</xsl:text>
+        <xsl:text>&#xA;description: Working draft of the profile resolution specification.</xsl:text>
         <!--<xsl:text>&#xA;custom_css:</xsl:text>
         <xsl:text>&#xA;  - /css/oscal-specs.css</xsl:text>-->
         <xsl:text>&#xA;toc:</xsl:text>
@@ -51,9 +51,5 @@
             <xsl:apply-templates select="node()" mode="#current"/>
         </xsl:element>
     </xsl:template>
-
-
-
-
 
 </xsl:stylesheet>
