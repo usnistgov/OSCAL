@@ -1,346 +1,346 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="../../build/metaschema/toolchains/xslt-M4/validate/metaschema-composition-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/toolchains/xslt-M4/validate/metaschema.xsd">
-  <schema-name>OSCAL Assessment Results Model</schema-name>
-  <schema-version>1.0.1</schema-version>
-  <short-name>oscal-ar</short-name>
-  <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
-  <json-base-uri>http://csrc.nist.gov/ns/oscal</json-base-uri>
-  <remarks>
-    <p>The OSCAL assessment results format is used to describe the information typically provided by an assessor following an assessment.</p>
-    <p>The root of the OSCAL assessment results format is <code>assessment-results</code>.
-    </p>
-  </remarks>
-  <!-- IMPORT STATEMENTS -->
-  <import href="oscal_metadata_metaschema.xml"/>
-  <import href="oscal_assessment-common_metaschema.xml"/>
-  <!-- TOP LEVEL ASSEMBLY -->
-  <define-assembly name="assessment-results">
-    <formal-name>Security Assessment Results (SAR)</formal-name>
-    <description>Security assessment results, such as those provided by a FedRAMP assessor in the FedRAMP Security Assessment Report.</description>
-    <root-name>assessment-results</root-name>
-    <define-flag name="uuid" required="yes" as-type="uuid">
-      <formal-name>Assessment Results Universally Unique Identifier</formal-name>
-      <!-- Identifier Declaration -->
-      <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this assessment results instance in <a href="/concepts/identifier-use/#ar-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>assessment result</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
-    </define-flag>
-    <model>
-      <assembly ref="metadata" min-occurs="1" max-occurs="1"/>
-      <assembly ref="import-ap" min-occurs="1" max-occurs="1">
-        <remarks>
-          <p>Used by the SAR to import information about the original plan for assessing the system.</p>
-        </remarks>
-      </assembly>
-      <define-assembly name="local-definitions">
-        <!-- CHANGE: added "local-definitions" -->
-        <formal-name>Local Definitions</formal-name>
-        <description>Used to define data objects that are used in the assessment plan, that do not appear in the referenced SSP.</description>
+    xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/toolchains/xslt-M4/validate/metaschema.xsd">
+    <schema-name>OSCAL Assessment Results Model</schema-name>
+    <schema-version>1.0.1</schema-version>
+    <short-name>oscal-ar</short-name>
+    <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
+    <json-base-uri>http://csrc.nist.gov/ns/oscal</json-base-uri>
+    <remarks>
+        <p>The OSCAL assessment results format is used to describe the information typically provided by an assessor following an assessment.</p>
+        <p>The root of the OSCAL assessment results format is <code>assessment-results</code>.
+        </p>
+    </remarks>
+    <!-- IMPORT STATEMENTS -->
+    <import href="oscal_metadata_metaschema.xml"/>
+    <import href="oscal_assessment-common_metaschema.xml"/>
+    <!-- TOP LEVEL ASSEMBLY -->
+    <define-assembly name="assessment-results">
+        <formal-name>Security Assessment Results (SAR)</formal-name>
+        <description>Security assessment results, such as those provided by a FedRAMP assessor in the FedRAMP Security Assessment Report.</description>
+        <root-name>assessment-results</root-name>
+        <define-flag name="uuid" required="yes" as-type="uuid">
+            <formal-name>Assessment Results Universally Unique Identifier</formal-name>
+            <!-- Identifier Declaration -->
+            <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this assessment results instance in <a href="/concepts/identifier-use/#ar-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>assessment result</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+        </define-flag>
         <model>
-          <assembly ref="local-objective" min-occurs="0" max-occurs="unbounded">
-            <use-name>objectives-and-methods</use-name>
-            <group-as name="objectives-and-methods" in-json="ARRAY"/>
-          </assembly>
+            <assembly ref="metadata" min-occurs="1" max-occurs="1"/>
+            <assembly ref="import-ap" min-occurs="1" max-occurs="1">
+                <remarks>
+                    <p>Used by the SAR to import information about the original plan for assessing the system.</p>
+                </remarks>
+            </assembly>
+            <define-assembly name="local-definitions">
+                <!-- CHANGE: added "local-definitions" -->
+                <formal-name>Local Definitions</formal-name>
+                <description>Used to define data objects that are used in the assessment plan, that do not appear in the referenced SSP.</description>
+                <model>
+                    <assembly ref="local-objective" min-occurs="0" max-occurs="unbounded">
+                        <use-name>objectives-and-methods</use-name>
+                        <group-as name="objectives-and-methods" in-json="ARRAY"/>
+                    </assembly>
 
-          <!-- CHANGED: implemented new model -->
-          <assembly ref="activity" min-occurs="0" max-occurs="unbounded">
-            <use-name>activity</use-name>
-            <group-as name="activities" in-json="ARRAY"/>
-          </assembly>
-          <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
+                    <!-- CHANGED: implemented new model -->
+                    <assembly ref="activity" min-occurs="0" max-occurs="unbounded">
+                        <use-name>activity</use-name>
+                        <group-as name="activities" in-json="ARRAY"/>
+                    </assembly>
+                    <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
+                </model>
+            </define-assembly>
+            <assembly ref="result" min-occurs="1" max-occurs="unbounded">
+                <!-- CHANGED: "results" to "result" -->
+                <use-name>result</use-name>
+                <!-- CHANGED: "results_group" to "results" -->
+                <group-as name="results" in-json="ARRAY"/>
+            </assembly>
+            <assembly ref="back-matter" min-occurs="0" max-occurs="1"/>
         </model>
-      </define-assembly>
-      <assembly ref="result" min-occurs="1" max-occurs="unbounded">
-        <!-- CHANGED: "results" to "result" -->
-        <use-name>result</use-name>
-        <!-- CHANGED: "results_group" to "results" -->
-        <group-as name="results" in-json="ARRAY"/>
-      </assembly>
-      <assembly ref="back-matter" min-occurs="0" max-occurs="1"/>
-    </model>
-  </define-assembly>
+    </define-assembly>
 
-  <!-- ===============================  -->
-  <!-- ========= NEW CONTENT =========  -->
-  <!-- ===============================  -->
+    <!-- ===============================    -->
+    <!-- ========= NEW CONTENT =========    -->
+    <!-- ===============================    -->
 
 
-  <!-- ===============================  -->
-  <!-- ======= END NEW CONTENT =======  -->
-  <!-- ===============================  -->
+    <!-- ===============================    -->
+    <!-- ======= END NEW CONTENT =======    -->
+    <!-- ===============================    -->
 
-  <!-- ********** RESULTS Assembly ********** -->
-  <define-assembly name="result">
-    <formal-name>Assessment Result</formal-name>
-    <description>Used by the assessment results and POA&amp;M. In the assessment results, this identifies all of the assessment observations and findings, initial and residual risks, deviations, and disposition. In the POA&amp;M, this identifies initial and residual risks, deviations, and disposition.</description>
-    <define-flag name="uuid" required="yes" as-type="uuid">
-      <formal-name>Results Universally Unique Identifier</formal-name>
-      <!-- Identifier Declaration -->
-      <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this set of results in <a href="/concepts/identifier-use/#ar-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>assessment result</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
-    </define-flag>
-    <model>
-      <define-field name="title" min-occurs="1" max-occurs="1" as-type="markup-line">
-        <formal-name>Results Title</formal-name>
-        <description>The title for this set of results.</description>
-      </define-field>
-      <!-- CHANGE: Added WITH_WRAPPER to description -->
-      <define-field name="description" min-occurs="1" max-occurs="1" in-xml="WITH_WRAPPER" as-type="markup-multiline">
-        <formal-name>Results Description</formal-name>
-        <description>A human-readable description of this set of test results.</description>
-      </define-field>
-
-      <define-field name="start" as-type="dateTime-with-timezone" min-occurs="1" max-occurs="1">
-        <formal-name>start field</formal-name>
-        <description>Date/time stamp identifying the start of the evidence collection reflected in these results.</description>
-      </define-field>
-      <define-field name="end" as-type="dateTime-with-timezone" max-occurs="1">
-        <formal-name>end field</formal-name>
-        <description>Date/time stamp identifying the end of the evidence collection reflected in these results. In a continuous motoring scenario, this may contain the same value as start if appropriate.</description>
-      </define-field>
-
-      <assembly ref="property" max-occurs="unbounded">
-        <group-as name="props" in-json="ARRAY"/>
-      </assembly>
-      <assembly ref="link" max-occurs="unbounded">
-        <group-as name="links" in-json="ARRAY"/>
-      </assembly>
-      <define-assembly name="local-definitions">
-        <!-- CHANGE: added "local-definitions" -->
-        <formal-name>Local Definitions</formal-name>
-        <description>Used to define data objects that are used in the assessment plan, that do not appear in the referenced SSP.</description>
+    <!-- ********** RESULTS Assembly ********** -->
+    <define-assembly name="result">
+        <formal-name>Assessment Result</formal-name>
+        <description>Used by the assessment results and POA&amp;M. In the assessment results, this identifies all of the assessment observations and findings, initial and residual risks, deviations, and disposition. In the POA&amp;M, this identifies initial and residual risks, deviations, and disposition.</description>
+        <define-flag name="uuid" required="yes" as-type="uuid">
+            <formal-name>Results Universally Unique Identifier</formal-name>
+            <!-- Identifier Declaration -->
+            <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this set of results in <a href="/concepts/identifier-use/#ar-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>assessment result</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+        </define-flag>
         <model>
-          <assembly ref="system-component" min-occurs="0" max-occurs="unbounded">
-            <use-name>component</use-name>
-            <group-as name="components" in-json="ARRAY"/>
-            <remarks>
-              <p>Used to add any components, not defined via the System Security Plan (AR-&gt;AP-&gt;SSP)</p>
-            </remarks>
-          </assembly>
-          <assembly ref="inventory-item" min-occurs="0" max-occurs="unbounded">
-            <group-as name="inventory-items" in-json="ARRAY"/>
-            <remarks>
-              <p>Used to add any inventory-items, not defined via the System Security Plan (AR-&gt;AP-&gt;SSP)</p>
-            </remarks>
-          </assembly>
-          <assembly ref="system-user" min-occurs="0" max-occurs="unbounded">
-            <use-name>user</use-name>
-            <group-as name="users" in-json="ARRAY"/>
-            <remarks>
-              <p>Used to add any users, not defined via the System Security Plan (AR-&gt;AP-&gt;SSP)</p>
-            </remarks>
-          </assembly>
+            <define-field name="title" min-occurs="1" max-occurs="1" as-type="markup-line">
+                <formal-name>Results Title</formal-name>
+                <description>The title for this set of results.</description>
+            </define-field>
+            <!-- CHANGE: Added WITH_WRAPPER to description -->
+            <define-field name="description" min-occurs="1" max-occurs="1" in-xml="WITH_WRAPPER" as-type="markup-multiline">
+                <formal-name>Results Description</formal-name>
+                <description>A human-readable description of this set of test results.</description>
+            </define-field>
 
-          <assembly ref="assessment-assets" min-occurs="0" max-occurs="1">
-            <!-- To augment the assessment plan -->
-            <remarks>
-              <p>This needs to be defined in the results if an assessment platform used is different from the one described in the assessment plan. Else the platform(s) defined in the plan may be referenced within the results.</p>
-            </remarks>
-          </assembly>
+            <define-field name="start" as-type="dateTime-with-timezone" min-occurs="1" max-occurs="1">
+                <formal-name>start field</formal-name>
+                <description>Date/time stamp identifying the start of the evidence collection reflected in these results.</description>
+            </define-field>
+            <define-field name="end" as-type="dateTime-with-timezone" max-occurs="1">
+                <formal-name>end field</formal-name>
+                <description>Date/time stamp identifying the end of the evidence collection reflected in these results. In a continuous motoring scenario, this may contain the same value as start if appropriate.</description>
+            </define-field>
 
-          <assembly ref="task" min-occurs="0" max-occurs="unbounded">
-            <use-name>assessment-task</use-name>
-            <group-as name="tasks" in-json="ARRAY"/>
-          </assembly>
-        </model>
-        <constraint>
-          <is-unique id="unique-ar-local-definitions-component" target="component">
-            <key-field target="@uuid"/>
-            <remarks>
-              <p>Since multiple <code>component</code> entries can be provided, each component must have a unique <code>uuid</code>.</p>
-            </remarks>
-          </is-unique>
-          <is-unique id="unique-ar-local-definitions-user" target="user">
-            <key-field target="@uuid"/>
-            <remarks>
-              <p>A given <code>uuid</code> must be assigned only once to a user.</p>
-            </remarks>
-          </is-unique>
-        </constraint>
-      </define-assembly>
-      <!-- CHANGED: "objectives" to "reviewed-controls" -->
-      <assembly ref="reviewed-controls" min-occurs="1" max-occurs="1">
-        <remarks>
-          <p>The Assessment Results <code>control-selection</code> ignores any control selection in the Assessment Plan and re-selects controls from the baseline identified by the SSP.</p>
-          <p>The Assessment Results <code>control-objective-selection</code> ignores any control objective selection in the Assessment Plan and re-selects control objectives from the baseline identified by the SSP.</p>
-          <p>Any additional control objectives defined in the Assessment Plan <code>local-definitions</code> do not need to be re-defined in the Assessment Results <code>local-definitions</code>; however, if they were explicitly referenced with an Assessment Plan <code>control-objective-selection</code>, they need to be selected again in the Assessment Results <code>control-objective-selection</code>.</p>
-        </remarks>
-      </assembly>
-
-      <define-assembly name="attestation" max-occurs="unbounded">
-        <formal-name>Attestation Statements</formal-name>
-        <description>A set of textual statements, typically written by the assessor.</description>
-        <group-as name="attestations" in-json="ARRAY"/>
-        <model>
-          <assembly ref="responsible-party" max-occurs="unbounded">
-            <group-as name="responsible-parties" in-json="ARRAY"/>
-          </assembly>
-          <assembly ref="assessment-part" min-occurs="1" max-occurs="unbounded">
-            <!-- TODO: defined allowed parts: authorization-statement -->
-            <use-name>part</use-name>
-            <group-as name="parts" in-json="ARRAY"/>
-          </assembly>
-        </model>
-        <constraint>
-          <is-unique id="unique-ar-attestation-responsible-party" target="responsible-party">
-            <key-field target="@role-id"/>
-            <remarks>
-              <p>Since <code>responsible-party</code> associates multiple <code>party-uuid</code> entries with a single <code>role-id</code>, each role-id must be referenced only once.</p>
-            </remarks>
-          </is-unique>
-        </constraint>
-      </define-assembly>
-      <!-- CHANGED: removed "schedule" and replaced with "assessment-log" -->
-      <define-assembly name="assessment-log">
-        <formal-name>Assessment Log</formal-name>
-        <description>A log of all assessment-related actions taken.</description>
-        <model>
-          <define-assembly name="entry" min-occurs="1" max-occurs="unbounded">
-            <formal-name>Assessment Log Entry</formal-name>
-            <!-- TODO: improve this description -->
-            <description>Identifies the result of an action and/or task that occurred as part of executing an assessment plan or an assessment event that occurred in producing the assessment results.</description>
-            <group-as name="entries" in-json="ARRAY"/>
-            <define-flag name="uuid" required="yes" as-type="uuid">
-              <formal-name>Assessment Log Entry Universally Unique Identifier</formal-name>
-              <!-- Identifier Declaration -->
-              <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference an assessment event in <a href="/concepts/identifier-use/#ar-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>assessment log entry</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
-            </define-flag>
-            <model>
-              <define-field name="title" min-occurs="0" max-occurs="1" as-type="markup-line">
-                <formal-name>Action Title</formal-name>
-                <description>The title for this event.</description>
-              </define-field>
-              <!-- CHANGE: Added WITH_WRAPPER to description -->
-              <define-field name="description" min-occurs="0" max-occurs="1" as-type="markup-multiline" in-xml="WITH_WRAPPER">
-                <formal-name>Action Description</formal-name>
-                <description>A human-readable description of this event.</description>
-              </define-field>
-              <define-field name="start" as-type="dateTime-with-timezone" min-occurs="1" max-occurs="1">
-                <formal-name>Start</formal-name>
-                <description>Identifies the start date and time of an event.</description>
-              </define-field>
-              <define-field name="end" as-type="dateTime-with-timezone" max-occurs="1">
-                <formal-name>End</formal-name>
-                <description>Identifies the end date and time of an event. If the event is a point in time, the start and end will be the same date and time.</description>
-              </define-field>
-              <assembly ref="property" max-occurs="unbounded">
+            <assembly ref="property" max-occurs="unbounded">
                 <group-as name="props" in-json="ARRAY"/>
-              </assembly>
-              <assembly ref="link" max-occurs="unbounded">
+            </assembly>
+            <assembly ref="link" max-occurs="unbounded">
                 <group-as name="links" in-json="ARRAY"/>
-              </assembly>
-              <assembly ref="logged-by" max-occurs="unbounded">
-                <group-as name="logged-by" in-json="ARRAY"/>
-              </assembly>
-              <!-- CHANGED: Added "related-task" -->
-              <assembly ref="related-task" max-occurs="unbounded">
-                <group-as name="related-tasks" in-json="ARRAY"/>
-              </assembly>
-              <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
-            </model>
-          </define-assembly>
+            </assembly>
+            <define-assembly name="local-definitions">
+                <!-- CHANGE: added "local-definitions" -->
+                <formal-name>Local Definitions</formal-name>
+                <description>Used to define data objects that are used in the assessment plan, that do not appear in the referenced SSP.</description>
+                <model>
+                    <assembly ref="system-component" min-occurs="0" max-occurs="unbounded">
+                        <use-name>component</use-name>
+                        <group-as name="components" in-json="ARRAY"/>
+                        <remarks>
+                            <p>Used to add any components, not defined via the System Security Plan (AR-&gt;AP-&gt;SSP)</p>
+                        </remarks>
+                    </assembly>
+                    <assembly ref="inventory-item" min-occurs="0" max-occurs="unbounded">
+                        <group-as name="inventory-items" in-json="ARRAY"/>
+                        <remarks>
+                            <p>Used to add any inventory-items, not defined via the System Security Plan (AR-&gt;AP-&gt;SSP)</p>
+                        </remarks>
+                    </assembly>
+                    <assembly ref="system-user" min-occurs="0" max-occurs="unbounded">
+                        <use-name>user</use-name>
+                        <group-as name="users" in-json="ARRAY"/>
+                        <remarks>
+                            <p>Used to add any users, not defined via the System Security Plan (AR-&gt;AP-&gt;SSP)</p>
+                        </remarks>
+                    </assembly>
+
+                    <assembly ref="assessment-assets" min-occurs="0" max-occurs="1">
+                        <!-- To augment the assessment plan -->
+                        <remarks>
+                            <p>This needs to be defined in the results if an assessment platform used is different from the one described in the assessment plan. Else the platform(s) defined in the plan may be referenced within the results.</p>
+                        </remarks>
+                    </assembly>
+
+                    <assembly ref="task" min-occurs="0" max-occurs="unbounded">
+                        <use-name>assessment-task</use-name>
+                        <group-as name="tasks" in-json="ARRAY"/>
+                    </assembly>
+                </model>
+                <constraint>
+                    <is-unique id="unique-ar-local-definitions-component" target="component">
+                        <key-field target="@uuid"/>
+                        <remarks>
+                            <p>Since multiple <code>component</code> entries can be provided, each component must have a unique <code>uuid</code>.</p>
+                        </remarks>
+                    </is-unique>
+                    <is-unique id="unique-ar-local-definitions-user" target="user">
+                        <key-field target="@uuid"/>
+                        <remarks>
+                            <p>A given <code>uuid</code> must be assigned only once to a user.</p>
+                        </remarks>
+                    </is-unique>
+                </constraint>
+            </define-assembly>
+            <!-- CHANGED: "objectives" to "reviewed-controls" -->
+            <assembly ref="reviewed-controls" min-occurs="1" max-occurs="1">
+                <remarks>
+                    <p>The Assessment Results <code>control-selection</code> ignores any control selection in the Assessment Plan and re-selects controls from the baseline identified by the SSP.</p>
+                    <p>The Assessment Results <code>control-objective-selection</code> ignores any control objective selection in the Assessment Plan and re-selects control objectives from the baseline identified by the SSP.</p>
+                    <p>Any additional control objectives defined in the Assessment Plan <code>local-definitions</code> do not need to be re-defined in the Assessment Results <code>local-definitions</code>; however, if they were explicitly referenced with an Assessment Plan <code>control-objective-selection</code>, they need to be selected again in the Assessment Results <code>control-objective-selection</code>.</p>
+                </remarks>
+            </assembly>
+
+            <define-assembly name="attestation" max-occurs="unbounded">
+                <formal-name>Attestation Statements</formal-name>
+                <description>A set of textual statements, typically written by the assessor.</description>
+                <group-as name="attestations" in-json="ARRAY"/>
+                <model>
+                    <assembly ref="responsible-party" max-occurs="unbounded">
+                        <group-as name="responsible-parties" in-json="ARRAY"/>
+                    </assembly>
+                    <assembly ref="assessment-part" min-occurs="1" max-occurs="unbounded">
+                        <!-- TODO: defined allowed parts: authorization-statement -->
+                        <use-name>part</use-name>
+                        <group-as name="parts" in-json="ARRAY"/>
+                    </assembly>
+                </model>
+                <constraint>
+                    <is-unique id="unique-ar-attestation-responsible-party" target="responsible-party">
+                        <key-field target="@role-id"/>
+                        <remarks>
+                            <p>Since <code>responsible-party</code> associates multiple <code>party-uuid</code> entries with a single <code>role-id</code>, each role-id must be referenced only once.</p>
+                        </remarks>
+                    </is-unique>
+                </constraint>
+            </define-assembly>
+            <!-- CHANGED: removed "schedule" and replaced with "assessment-log" -->
+            <define-assembly name="assessment-log">
+                <formal-name>Assessment Log</formal-name>
+                <description>A log of all assessment-related actions taken.</description>
+                <model>
+                    <define-assembly name="entry" min-occurs="1" max-occurs="unbounded">
+                        <formal-name>Assessment Log Entry</formal-name>
+                        <!-- TODO: improve this description -->
+                        <description>Identifies the result of an action and/or task that occurred as part of executing an assessment plan or an assessment event that occurred in producing the assessment results.</description>
+                        <group-as name="entries" in-json="ARRAY"/>
+                        <define-flag name="uuid" required="yes" as-type="uuid">
+                            <formal-name>Assessment Log Entry Universally Unique Identifier</formal-name>
+                            <!-- Identifier Declaration -->
+                            <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference an assessment event in <a href="/concepts/identifier-use/#ar-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>assessment log entry</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+                        </define-flag>
+                        <model>
+                            <define-field name="title" min-occurs="0" max-occurs="1" as-type="markup-line">
+                                <formal-name>Action Title</formal-name>
+                                <description>The title for this event.</description>
+                            </define-field>
+                            <!-- CHANGE: Added WITH_WRAPPER to description -->
+                            <define-field name="description" min-occurs="0" max-occurs="1" as-type="markup-multiline" in-xml="WITH_WRAPPER">
+                                <formal-name>Action Description</formal-name>
+                                <description>A human-readable description of this event.</description>
+                            </define-field>
+                            <define-field name="start" as-type="dateTime-with-timezone" min-occurs="1" max-occurs="1">
+                                <formal-name>Start</formal-name>
+                                <description>Identifies the start date and time of an event.</description>
+                            </define-field>
+                            <define-field name="end" as-type="dateTime-with-timezone" max-occurs="1">
+                                <formal-name>End</formal-name>
+                                <description>Identifies the end date and time of an event. If the event is a point in time, the start and end will be the same date and time.</description>
+                            </define-field>
+                            <assembly ref="property" max-occurs="unbounded">
+                                <group-as name="props" in-json="ARRAY"/>
+                            </assembly>
+                            <assembly ref="link" max-occurs="unbounded">
+                                <group-as name="links" in-json="ARRAY"/>
+                            </assembly>
+                            <assembly ref="logged-by" max-occurs="unbounded">
+                                <group-as name="logged-by" in-json="ARRAY"/>
+                            </assembly>
+                            <!-- CHANGED: Added "related-task" -->
+                            <assembly ref="related-task" max-occurs="unbounded">
+                                <group-as name="related-tasks" in-json="ARRAY"/>
+                            </assembly>
+                            <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
+                        </model>
+                    </define-assembly>
+                </model>
+            </define-assembly>
+
+            <!-- CHANGE: move "observation" from finding -->
+            <assembly ref="observation" min-occurs="0" max-occurs="unbounded">
+                <group-as name="observations" in-json="ARRAY"/>
+            </assembly>
+
+            <!-- CHANGE: move "risk" from finding -->
+            <assembly ref="risk" max-occurs="unbounded">
+                <group-as name="risks" in-json="ARRAY"/>
+            </assembly>
+            <assembly ref="finding" max-occurs="unbounded">
+                <group-as name="findings" in-json="ARRAY"/>
+            </assembly>
+            <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
         </model>
-      </define-assembly>
+    </define-assembly>
 
-      <!-- CHANGE: move "observation" from finding -->
-      <assembly ref="observation" min-occurs="0" max-occurs="unbounded">
-        <group-as name="observations" in-json="ARRAY"/>
-      </assembly>
-
-      <!-- CHANGE: move "risk" from finding -->
-      <assembly ref="risk" max-occurs="unbounded">
-        <group-as name="risks" in-json="ARRAY"/>
-      </assembly>
-      <assembly ref="finding" max-occurs="unbounded">
-        <group-as name="findings" in-json="ARRAY"/>
-      </assembly>
-      <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
-    </model>
-  </define-assembly>
-
-  <define-assembly name="finding">
-    <formal-name>Finding</formal-name>
-    <description>Describes an individual finding.</description>
-    <define-flag name="uuid" required="yes" as-type="uuid">
-      <formal-name>Finding Universally Unique Identifier</formal-name>
-      <!-- Identifier Declaration -->
-      <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this finding in <a href="/concepts/identifier-use/#ar-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>finding</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
-    </define-flag>
-    <model>
-      <define-field name="title" min-occurs="1" as-type="markup-line">
-        <formal-name>Finding Title</formal-name>
-        <description>The title for this finding.</description>
-      </define-field>
-      <!-- CHANGE: Added WITH_WRAPPER to description -->
-      <define-field name="description" min-occurs="1" in-xml="WITH_WRAPPER" as-type="markup-multiline">
-        <formal-name>Finding Description</formal-name>
-        <description>A human-readable description of this finding.</description>
-      </define-field>
-
-      <assembly ref="property" max-occurs="unbounded">
-        <group-as name="props" in-json="ARRAY"/>
-      </assembly>
-      <assembly ref="link" max-occurs="unbounded">
-        <group-as name="links" in-json="ARRAY"/>
-      </assembly>
-
-      <assembly ref="origin" max-occurs="unbounded">
-        <group-as name="origins" in-json="ARRAY"/>
-        <remarks>
-          <p>Used to identify the individual and/or tool generated this finding.</p>
-        </remarks>
-      </assembly>
-      <assembly ref="finding-target" min-occurs="1">
-        <use-name>target</use-name>
-      </assembly>
-      <define-field name="implementation-statement-uuid" as-type="uuid" min-occurs="0" max-occurs="1">
-        <formal-name>Implementation Statement UUID</formal-name>
-        <!-- Identifier Reference -->
-        <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to the implementation statement in the SSP to which this finding is related.</description>
-      </define-field>
-      <!-- CHANGED: replaced embedded observation with references -->
-      <define-assembly name="related-observation" max-occurs="unbounded">
-        <formal-name>Related Observation</formal-name>
-        <description>Relates the finding to a set of referenced observations that were used to determine the finding.</description>
-        <group-as name="related-observations" in-json="ARRAY"/>
-        <define-flag name="observation-uuid" as-type="uuid" required="yes">
-          <formal-name>Observation Universally Unique Identifier Reference</formal-name>
-          <!-- Identifier Reference -->
-          <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to an observation defined in the list of observations.</description>
+    <define-assembly name="finding">
+        <formal-name>Finding</formal-name>
+        <description>Describes an individual finding.</description>
+        <define-flag name="uuid" required="yes" as-type="uuid">
+            <formal-name>Finding Universally Unique Identifier</formal-name>
+            <!-- Identifier Declaration -->
+            <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this finding in <a href="/concepts/identifier-use/#ar-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>finding</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
         </define-flag>
-      </define-assembly>
-      <!-- CHANGED: replaced "risk" with new "assciated-risk" -->
-      <define-assembly name="associated-risk" max-occurs="unbounded">
-        <formal-name>Associated Risk</formal-name>
-        <description>Relates the finding to a set of referenced risks that were used to determine the finding.</description>
-        <group-as name="related-risks" in-json="ARRAY"/>
-        <define-flag name="risk-uuid" as-type="uuid" required="yes">
-          <formal-name>Risk Universally Unique Identifier Reference</formal-name>
-          <!-- Identifier Reference -->
-          <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to a risk defined in the list of risks.</description>
-        </define-flag>
-      </define-assembly>
-      <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
-    </model>
-  </define-assembly>
+        <model>
+            <define-field name="title" min-occurs="1" as-type="markup-line">
+                <formal-name>Finding Title</formal-name>
+                <description>The title for this finding.</description>
+            </define-field>
+            <!-- CHANGE: Added WITH_WRAPPER to description -->
+            <define-field name="description" min-occurs="1" in-xml="WITH_WRAPPER" as-type="markup-multiline">
+                <formal-name>Finding Description</formal-name>
+                <description>A human-readable description of this finding.</description>
+            </define-field>
 
-  <!-- Assessment Plan Import -->
-  <define-assembly name="import-ap">
-    <formal-name>Import Assessment Plan</formal-name>
-    <description>Used by assessment-results to import information about the original plan for assessing the system.</description>
-    <define-flag name="href" required="yes" as-type="uri-reference">
-      <formal-name>Assessment Plan Reference</formal-name>
-      <description>A resolvable URL reference to the assessment plan governing the assessment activities.</description>
-      <remarks>
-        <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment that points to a <code>back-matter</code>
-          <code>resource</code> in the same document.</p>
-        <!-- TODO: Add a link to "within the scope of the containing OSCAL document" to point to documentation of identification scopes" -->
-        <p>If a local reference using a fragment is used, this will be indicated by a fragment "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
-        <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced resource. A relative URI will be resolved relative to the location of the document containing the link.</p>
-      </remarks>
-    </define-flag>
-    <model>
-      <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
-    </model>
-  </define-assembly>
+            <assembly ref="property" max-occurs="unbounded">
+                <group-as name="props" in-json="ARRAY"/>
+            </assembly>
+            <assembly ref="link" max-occurs="unbounded">
+                <group-as name="links" in-json="ARRAY"/>
+            </assembly>
+
+            <assembly ref="origin" max-occurs="unbounded">
+                <group-as name="origins" in-json="ARRAY"/>
+                <remarks>
+                    <p>Used to identify the individual and/or tool generated this finding.</p>
+                </remarks>
+            </assembly>
+            <assembly ref="finding-target" min-occurs="1">
+                <use-name>target</use-name>
+            </assembly>
+            <define-field name="implementation-statement-uuid" as-type="uuid" min-occurs="0" max-occurs="1">
+                <formal-name>Implementation Statement UUID</formal-name>
+                <!-- Identifier Reference -->
+                <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to the implementation statement in the SSP to which this finding is related.</description>
+            </define-field>
+            <!-- CHANGED: replaced embedded observation with references -->
+            <define-assembly name="related-observation" max-occurs="unbounded">
+                <formal-name>Related Observation</formal-name>
+                <description>Relates the finding to a set of referenced observations that were used to determine the finding.</description>
+                <group-as name="related-observations" in-json="ARRAY"/>
+                <define-flag name="observation-uuid" as-type="uuid" required="yes">
+                    <formal-name>Observation Universally Unique Identifier Reference</formal-name>
+                    <!-- Identifier Reference -->
+                    <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to an observation defined in the list of observations.</description>
+                </define-flag>
+            </define-assembly>
+            <!-- CHANGED: replaced "risk" with new "assciated-risk" -->
+            <define-assembly name="associated-risk" max-occurs="unbounded">
+                <formal-name>Associated Risk</formal-name>
+                <description>Relates the finding to a set of referenced risks that were used to determine the finding.</description>
+                <group-as name="related-risks" in-json="ARRAY"/>
+                <define-flag name="risk-uuid" as-type="uuid" required="yes">
+                    <formal-name>Risk Universally Unique Identifier Reference</formal-name>
+                    <!-- Identifier Reference -->
+                    <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to a risk defined in the list of risks.</description>
+                </define-flag>
+            </define-assembly>
+            <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
+        </model>
+    </define-assembly>
+
+    <!-- Assessment Plan Import -->
+    <define-assembly name="import-ap">
+        <formal-name>Import Assessment Plan</formal-name>
+        <description>Used by assessment-results to import information about the original plan for assessing the system.</description>
+        <define-flag name="href" required="yes" as-type="uri-reference">
+            <formal-name>Assessment Plan Reference</formal-name>
+            <description>A resolvable URL reference to the assessment plan governing the assessment activities.</description>
+            <remarks>
+                <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment that points to a <code>back-matter</code>
+                    <code>resource</code> in the same document.</p>
+                <!-- TODO: Add a link to "within the scope of the containing OSCAL document" to point to documentation of identification scopes" -->
+                <p>If a local reference using a fragment is used, this will be indicated by a fragment "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
+                <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced resource. A relative URI will be resolved relative to the location of the document containing the link.</p>
+            </remarks>
+        </define-flag>
+        <model>
+            <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
+        </model>
+    </define-assembly>
 
 </METASCHEMA>

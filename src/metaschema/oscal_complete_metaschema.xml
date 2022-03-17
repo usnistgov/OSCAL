@@ -6,19 +6,19 @@
    <!ENTITY allowed-values-control-group-property-name SYSTEM "./shared-constraints/allowed-values-control-group-property-name.ent">
 ]>
 <METASCHEMA xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0">
-      <schema-name>OSCAL Unified Model of Models</schema-name>
-      <schema-version>1.0.1</schema-version>
-      <short-name>oscal-complete</short-name>
-      <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
-      <json-base-uri>http://csrc.nist.gov/ns/oscal/1.0</json-base-uri>
-      <remarks>
-            <p>This format represents a combination of all of the OSCAL models.</p>
-      </remarks>
-      <import href="oscal_catalog_metaschema.xml"/>
-      <import href="oscal_profile_metaschema.xml"/>
-      <import href="oscal_component_metaschema.xml"/>
-      <import href="oscal_ssp_metaschema.xml"/>
-      <import href="oscal_assessment-plan_metaschema.xml"/>
-      <import href="oscal_assessment-results_metaschema.xml"/>
-      <import href="oscal_poam_metaschema.xml"/>
+    <schema-name>OSCAL Unified Model of Models</schema-name>
+    <schema-version>1.0.1</schema-version>
+    <short-name>oscal-complete</short-name>
+    <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
+    <json-base-uri>http://csrc.nist.gov/ns/oscal/1.0</json-base-uri>
+    <remarks>
+        <p>This format represents a combination of all of the OSCAL models.</p>
+    </remarks>
+    <import href="oscal_catalog_metaschema.xml"/>
+    <import href="oscal_profile_metaschema.xml"/>
+    <import href="oscal_component_metaschema.xml"/>
+    <import href="oscal_ssp_metaschema.xml"/>
+    <import href="oscal_assessment-plan_metaschema.xml"/>
+    <import href="oscal_assessment-results_metaschema.xml"/>
+    <import href="oscal_poam_metaschema.xml"/>
 </METASCHEMA>
