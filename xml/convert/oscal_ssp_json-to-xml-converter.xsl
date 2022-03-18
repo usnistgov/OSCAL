@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-                xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                xmlns:m="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
-                xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel"
+<xsl:stylesheet xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel"
                 xmlns:j="http://www.w3.org/2005/xpath-functions"
+                xmlns:m="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
+                xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel"
                 version="3.0"
                 exclude-result-prefixes="#all">
@@ -3083,54 +3083,6 @@
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='system-characteristics']/j:map[@key='authorization-boundary']/j:array[@key='diagrams']/j:map/j:string[@key='remarks']"
-                 priority="7">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="system-security-plan/system-characteristics/authorization-boundary/diagram/remarks" -->
-      <field in-xml="WITH_WRAPPER"
-             collapsible="no"
-             as-type="markup-multiline"
-             name="remarks"
-             key="remarks"
-             gi="remarks"
-             in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">remarks</xsl:attribute>
-         </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
-      </field>
-   </xsl:template>
-   <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='system-characteristics']/j:map[@key='authorization-boundary']/j:array[@key='diagrams']/j:map/j:string[@key='remarks']"
-                 mode="get-value-property"
-                 priority="7">
-      <value as-type="markup-multiline" in-json="string">
-         <xsl:value-of select="."/>
-      </value>
-   </xsl:template>
-   <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='system-characteristics']/j:map[@key='authorization-boundary']/j:string[@key='remarks']"
-                 priority="5">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="system-security-plan/system-characteristics/authorization-boundary/remarks" -->
-      <field in-xml="WITH_WRAPPER"
-             collapsible="no"
-             as-type="markup-multiline"
-             name="remarks"
-             key="remarks"
-             gi="remarks"
-             in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">remarks</xsl:attribute>
-         </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
-      </field>
-   </xsl:template>
-   <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='system-characteristics']/j:map[@key='authorization-boundary']/j:string[@key='remarks']"
-                 mode="get-value-property"
-                 priority="5">
-      <value as-type="markup-multiline" in-json="string">
-         <xsl:value-of select="."/>
-      </value>
-   </xsl:template>
    <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='system-characteristics']/j:map[@key='network-architecture']/j:string[@key='description']"
                  priority="5">
       <xsl:param name="with-key" select="true()"/>
@@ -3248,30 +3200,6 @@
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='system-characteristics']/j:map[@key='network-architecture']/j:array[@key='diagrams']/j:map/j:string[@key='remarks']"
-                 priority="7">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="system-security-plan/system-characteristics/network-architecture/diagram/remarks" -->
-      <field in-xml="WITH_WRAPPER"
-             collapsible="no"
-             as-type="markup-multiline"
-             name="remarks"
-             key="remarks"
-             gi="remarks"
-             in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">remarks</xsl:attribute>
-         </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
-      </field>
-   </xsl:template>
-   <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='system-characteristics']/j:map[@key='network-architecture']/j:array[@key='diagrams']/j:map/j:string[@key='remarks']"
-                 mode="get-value-property"
-                 priority="7">
-      <value as-type="markup-multiline" in-json="string">
-         <xsl:value-of select="."/>
-      </value>
-   </xsl:template>
    <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='system-characteristics']/j:map[@key='data-flow']/j:string[@key='description']"
                  priority="5">
       <xsl:param name="with-key" select="true()"/>
@@ -3386,30 +3314,6 @@
                  mode="get-value-property"
                  priority="7">
       <value as-type="markup-line" in-json="string">
-         <xsl:value-of select="."/>
-      </value>
-   </xsl:template>
-   <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='system-characteristics']/j:map[@key='data-flow']/j:array[@key='diagrams']/j:map/j:string[@key='remarks']"
-                 priority="7">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="system-security-plan/system-characteristics/data-flow/diagram/remarks" -->
-      <field in-xml="WITH_WRAPPER"
-             collapsible="no"
-             as-type="markup-multiline"
-             name="remarks"
-             key="remarks"
-             gi="remarks"
-             in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">remarks</xsl:attribute>
-         </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
-      </field>
-   </xsl:template>
-   <xsl:template match="j:map[@key='system-security-plan']/j:map[@key='system-characteristics']/j:map[@key='data-flow']/j:array[@key='diagrams']/j:map/j:string[@key='remarks']"
-                 mode="get-value-property"
-                 priority="7">
-      <value as-type="markup-multiline" in-json="string">
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
