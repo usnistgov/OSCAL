@@ -8,13 +8,13 @@ The website is built using the [Hugo](https://gohugo.io/) static site generator 
 
 If using Docker:
 
-- [Saxon-HE for Java](http://saxon.sourceforge.net/#F9.9HE)
+- [Saxon-HE for Java](http://saxon.sourceforge.net/)
 - [Docker 20.10+](https://docs.docker.com/install/)
 
 If not using Docker:
 
 - macOS, Linux or Windows Subsystem for Linux (WSL) (model doc build scripts don't support Windows natively at this time)
-- [Saxon-HE for Java](http://saxon.sourceforge.net/#F9.9HE)
+- [Saxon-HE for Java](http://saxon.sourceforge.net/)
 - [Hugo](https://gohugo.io/)
 
 ## Generating the model documentation
