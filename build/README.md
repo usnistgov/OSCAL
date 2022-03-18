@@ -64,7 +64,7 @@ The following steps are known to work on [Ubuntu](https://ubuntu.com/) (tested i
     The following is an example of how to configure the environment.
 
     ```bash
-    export SAXON_VERSION="9.9.1-3"
+    export SAXON_VERSION="10.6"
     export HUGO_VERSION="0.83.1"
     export CALABASH_VERSION="1.2.5-100"
     export CALABASH_HOME="$HOME/calabash"

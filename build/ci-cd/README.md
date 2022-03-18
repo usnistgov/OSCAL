@@ -91,7 +91,7 @@ The Saxon jar file needs to be retrieved. This can be two ways:
     For example:
 
     ```bash
-    export SAXON_VERSION=9.9.1-3
+    export SAXON_VERSION=10.6
     ```
 
 2. You can manually download any variant of Saxon (e.g., HE, ) from [Saxonica](https://www.saxonica.com/download/java.xml) and set the ```SAXON_HOME``` environment variable to the location of the Saxon JAR.
@@ -180,7 +180,7 @@ sudo apt install maven
 Then run Maven to acquire Saxon:
 
 ```bash
-export SAXON_VERSION=9.9.1-3
+export SAXON_VERSION=10.6
 mvn org.apache.maven.plugins:maven-dependency-plugin:2.10:get -DartifactId=Saxon-HE -DgroupId=net.sf.saxon -Dversion=$SAXON_VERSION
 ```
 

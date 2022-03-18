@@ -7,7 +7,7 @@ This code provides test coverage to validate the OSCAL artifacts as new document
 1. [Python 2.7.10 or greater](https://www.python.org/)
 2. [xmllint](http://xmlsoft.org/xmllint.html)
 3. Java 8.0 or greater
-4. [Saxon 9 HE](http://saxon.sourceforge.net/)
+4. [Saxon 10 HE](http://saxon.sourceforge.net/)
 
 ### Instructions
 
@@ -36,7 +36,7 @@ The command line will provide more detailed error messaging for troubleshooting 
 
 Reading JSON files is done via simplejson (pip install simplejson).  This library reads the JSON files and passes to JSON schema above.
 
-To cover transformations, the testing relies on the Saxon 9 HE open source library.  This can be command line driven with Java to perform transformations.  This library will be used to do round trip transformations to create temporary files that can be validated by additional Python scripts to provide full test coverage.
+To cover transformations, the testing relies on the Saxon HE open source library.  This can be command line driven with Java to perform transformations.  This library will be used to do round trip transformations to create temporary files that can be validated by additional Python scripts to provide full test coverage.
 
 ### Future State Work
 
