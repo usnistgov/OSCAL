@@ -7,14 +7,10 @@ services:
       context: .
       target: cli
       args:
-        saxonversion: 9.9.1-3
+        saxonversion: 10.6
         hugoversion: 0.83.1
         calabashversion: 1.2.5-100
     volumes:
       - "../:/oscal"
     ports:
       - "1313:1313"
-#    environment:
-#      - SAXON_VERSION=9.9.1-3
-#      - JSON_CLI_VERSION=0.0.1-SNAPSHOT
-#      - CALABASH_VERSION=1.2.5-100

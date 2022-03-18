@@ -11,7 +11,7 @@ sudo npm install -g ajv-cli prettyjson
 
 pip install --user lxml
 
-export SAXON_VERSION=9.9.1-3
+export SAXON_VERSION=10.6
 export GITHUB_DIR="$HOME/github"
 export SCHEMATRON_HOME="$GITHUB_DIR/Schematron/schematron"
 export OSCAL_TOOLS_DIR="$GITHUB_DIR/usnistgov/oscal-tools"

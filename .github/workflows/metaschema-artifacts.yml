@@ -20,7 +20,7 @@ env:
   HOME_REPO: usnistgov/OSCAL
   HOME_BRANCH: main
   # dependency versions
-  SAXON_VERSION: 9.9.1-3
+  SAXON_VERSION: 10.6
   # build-specific environment
   SCHEMATRON_HOME: git-content/schematron
   OSCAL_HOME: git-content/oscal

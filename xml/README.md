@@ -9,9 +9,10 @@ This part of the OSCAL GitHub repository contains useful resources for working w
 - [Table of Contents](#table-of-contents)
 - [Available XML Resources](#available-xml-resources)
 - [XML Schema for OSCAL Models](#xml-schema-for-oscal-models)
-    - [Validating OSCAL XML Content](#validating-oscal-xml-content)
+  - [Validating OSCAL XML Content](#validating-oscal-xml-content)
 - [OSCAL JSON to XML Converters](#oscal-json-to-xml-converters)
-    - [Converting OSCAL JSON Content to XML](#converting-oscal-json-content-to-xml)
+  - [Converting OSCAL JSON Content to XML](#converting-oscal-json-content-to-xml)
+    - [Alternate invocations](#alternate-invocations)
 
 <!-- /TOC -->
 # Available XML Resources
@@ -68,10 +69,10 @@ The OSCAL project uses *Saxon-HE* with Java version 8 or greater.
 The following example uses **Saxon HE** to convert an OSCAL catalog JSON file to XML using one of the NIST-provided [JSON to XML XSLT converters](convert). This example assumes that has been installed and the Saxon-HE jar files have already unzipped.
 
 ```
-java -jar "saxon9he.jar" -xsl:"oscal_catalog_json-to-xml-converter.xsl" -o:"oscal-catalog.xml" -it:from-json file="oscal-catalog.json"
+java -jar "saxon10he.jar" -xsl:"oscal_catalog_json-to-xml-converter.xsl" -o:"oscal-catalog.xml" -it:from-json file="oscal-catalog.json"
 ```
 
-> *Note*: at time of writing, Saxon 9 users are being encouraged to upgrade systems to use Saxon 10, and the stylesheets provided should function equally well or better with the later software. While Saxon 9 is designated here, please feel free to use the latest Saxon or indeed any conformant XSLT 3.0 processor.
+> *Note*: at time of writing, Saxon 9 users are being encouraged to upgrade systems to use Saxon 10, and the stylesheets provided should function equally well or better with the later software. Please feel free to use the latest Saxon or indeed any conformant XSLT 3.0 processor.
 >
 > Operators of XSLT-based platforms should by all means test these processes with any XSLT 3.0 conformant processor, and report problems to us via Github Issues.
 
@@ -93,7 +94,7 @@ The configuration just provided will convert a JSON file given as a file referen
 Use the `json` runtime parameter to do this. On the command line this might be:
 
 ```
-java -jar "saxon9he.jar" -xsl:"oscal_catalog_json-to-xml-converter.xsl" -o:"oscal-catalog.xml" -it:from-json json="{ "catalog": {} }"
+java -jar "saxon10he.jar" -xsl:"oscal_catalog_json-to-xml-converter.xsl" -o:"oscal-catalog.xml" -it:from-json json="{ "catalog": {} }"
 ```
 
 (With allowances made for quote marks etc.)
