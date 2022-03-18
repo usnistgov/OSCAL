@@ -60,15 +60,6 @@
     </model>
   </define-assembly>
 
-  <!-- ===============================  -->
-  <!-- ========= NEW CONTENT =========  -->
-  <!-- ===============================  -->
-
-
-  <!-- ===============================  -->
-  <!-- ======= END NEW CONTENT =======  -->
-  <!-- ===============================  -->
-
   <!-- ********** RESULTS Assembly ********** -->
   <define-assembly name="result">
     <formal-name>Assessment Result</formal-name>

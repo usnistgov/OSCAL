@@ -34,9 +34,6 @@
       </model>
    </define-assembly>
 
-   <!-- =========== -->
-   <!-- === NEW === -->
-   <!-- =========== -->
    <define-assembly name="local-objective">
       <formal-name>Assessment-Specific Control Objective</formal-name>
       <description>A local definition of a control objective for this assessment. Uses catalog syntax for control objective and assessment actions.</description>
@@ -98,9 +95,6 @@
       </model>
    </define-assembly>
 
-   <!-- ===============================  -->
-   <!-- ========= NEW CONTENT =========  -->
-   <!-- ===============================  -->
    <define-assembly name="activity">
       <formal-name>Activity</formal-name>
       <description>Identifies an assessment or related process that can be performed. In the assessment plan, this is an intended activity which may be associated with an assessment task. In the assessment results, this an activity that was actually performed as part of an assessment.</description>
@@ -364,9 +358,6 @@
          <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
       </model>
    </define-assembly>
-   <!-- =========== -->
-   <!-- = END NEW = -->
-   <!-- =========== -->
 
    <!-- ********** OBJECTIVES Assembly ********** -->
    <define-assembly name="reviewed-controls">
