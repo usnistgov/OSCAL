@@ -33,7 +33,7 @@ env:
   HOME_REPO: usnistgov/OSCAL
   HOME_BRANCH: main
   # dependency versions
-  SAXON_VERSION: 9.9.0-1
+  SAXON_VERSION: 10.6
   HUGO_VERSION: 0.83.1
   CALABASH_VERSION: 1.2.5-100
   # build-specific environment
