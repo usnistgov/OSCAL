@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-                xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                xmlns:m="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
-                xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel"
+<xsl:stylesheet xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel"
                 xmlns:j="http://www.w3.org/2005/xpath-functions"
+                xmlns:m="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
+                xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel"
                 version="3.0"
                 exclude-result-prefixes="#all">
@@ -367,6 +367,18 @@
          <xsl:apply-templates select="*[@key='remarks']"/>
       </assembly>
    </xsl:template>
+   <xsl:template match="j:map[@key='include-all']">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="include-all" -->
+      <assembly as-type="empty"
+                name="include-all"
+                key="include-all"
+                gi="include-all">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">include-all</xsl:attribute>
+         </xsl:if>
+      </assembly>
+   </xsl:template>
    <xsl:template match="j:array[@key='include-subjects']/j:map">
       <xsl:param name="with-key" select="true()"/>
       <!-- XML match="include-subject" -->
@@ -550,6 +562,28 @@
    <xsl:template match="j:map[@key='system-id']" mode="get-value-property">
       <value as-type="string" key="id" in-json="string">
          <xsl:apply-templates mode="keep-value-property"/>
+      </value>
+   </xsl:template>
+   <xsl:template match="(j:map[@key='status'] | j:string[@key='status'])">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="status" -->
+      <field collapsible="no"
+             as-type="token"
+             name="risk-status"
+             key="status"
+             gi="status"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">status</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="(j:map[@key='status'] | j:string[@key='status'])"
+                 mode="get-value-property"
+                 priority="5">
+      <value as-type="token" in-json="string">
+         <xsl:value-of select="."/>
       </value>
    </xsl:template>
    <xsl:template match="j:array[@key='threat-ids']/j:map">
@@ -3017,19 +3051,6 @@
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='plan-of-action-and-milestones']/j:array[@key='observations']/j:map/j:array[@key='origins']/j:map/j:array[@key='related-tasks']/j:map/j:array[@key='subjects']/j:map/j:map[@key='include-all']"
-                 priority="12">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="plan-of-action-and-milestones/observation/origin/related-task/subject/include-all" -->
-      <assembly as-type="empty"
-                name="include-all"
-                key="include-all"
-                gi="include-all">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">include-all</xsl:attribute>
-         </xsl:if>
-      </assembly>
-   </xsl:template>
    <xsl:template match="j:map[@key='plan-of-action-and-milestones']/j:array[@key='observations']/j:map/j:array[@key='origins']/j:map/j:array[@key='related-tasks']/j:map/j:array[@key='subjects']/j:map/j:array[@key='include-subjects']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
                  priority="16">
       <xsl:param name="with-key" select="true()"/>
@@ -3136,19 +3157,6 @@
       <value as-type="markup-line" in-json="string">
          <xsl:value-of select="."/>
       </value>
-   </xsl:template>
-   <xsl:template match="j:map[@key='plan-of-action-and-milestones']/j:array[@key='observations']/j:map/j:array[@key='origins']/j:map/j:array[@key='related-tasks']/j:map/j:map[@key='identified-subject']/j:array[@key='subjects']/j:map/j:map[@key='include-all']"
-                 priority="13">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="plan-of-action-and-milestones/observation/origin/related-task/identified-subject/subject/include-all" -->
-      <assembly as-type="empty"
-                name="include-all"
-                key="include-all"
-                gi="include-all">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">include-all</xsl:attribute>
-         </xsl:if>
-      </assembly>
    </xsl:template>
    <xsl:template match="j:map[@key='plan-of-action-and-milestones']/j:array[@key='observations']/j:map/j:array[@key='origins']/j:map/j:array[@key='related-tasks']/j:map/j:map[@key='identified-subject']/j:array[@key='subjects']/j:map/j:array[@key='include-subjects']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
                  priority="17">
@@ -3454,29 +3462,6 @@
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='plan-of-action-and-milestones']/j:array[@key='risks']/j:map/j:string[@key='status']"
-                 priority="5">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="plan-of-action-and-milestones/risk/status" -->
-      <field collapsible="no"
-             as-type="token"
-             name="status"
-             key="status"
-             gi="status"
-             in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">status</xsl:attribute>
-         </xsl:if>
-         <xsl:apply-templates select="." mode="get-value-property"/>
-      </field>
-   </xsl:template>
-   <xsl:template match="j:map[@key='plan-of-action-and-milestones']/j:array[@key='risks']/j:map/j:string[@key='status']"
-                 mode="get-value-property"
-                 priority="5">
-      <value as-type="token" in-json="string">
-         <xsl:value-of select="."/>
-      </value>
-   </xsl:template>
    <xsl:template match="j:map[@key='plan-of-action-and-milestones']/j:array[@key='risks']/j:map/j:array[@key='origins']/j:map/j:array[@key='actors']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
                  priority="11">
       <xsl:param name="with-key" select="true()"/>
@@ -3593,19 +3578,6 @@
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='plan-of-action-and-milestones']/j:array[@key='risks']/j:map/j:array[@key='origins']/j:map/j:array[@key='related-tasks']/j:map/j:array[@key='subjects']/j:map/j:map[@key='include-all']"
-                 priority="12">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="plan-of-action-and-milestones/risk/origin/related-task/subject/include-all" -->
-      <assembly as-type="empty"
-                name="include-all"
-                key="include-all"
-                gi="include-all">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">include-all</xsl:attribute>
-         </xsl:if>
-      </assembly>
-   </xsl:template>
    <xsl:template match="j:map[@key='plan-of-action-and-milestones']/j:array[@key='risks']/j:map/j:array[@key='origins']/j:map/j:array[@key='related-tasks']/j:map/j:array[@key='subjects']/j:map/j:array[@key='include-subjects']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
                  priority="16">
       <xsl:param name="with-key" select="true()"/>
@@ -3712,19 +3684,6 @@
       <value as-type="markup-line" in-json="string">
          <xsl:value-of select="."/>
       </value>
-   </xsl:template>
-   <xsl:template match="j:map[@key='plan-of-action-and-milestones']/j:array[@key='risks']/j:map/j:array[@key='origins']/j:map/j:array[@key='related-tasks']/j:map/j:map[@key='identified-subject']/j:array[@key='subjects']/j:map/j:map[@key='include-all']"
-                 priority="13">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="plan-of-action-and-milestones/risk/origin/related-task/identified-subject/subject/include-all" -->
-      <assembly as-type="empty"
-                name="include-all"
-                key="include-all"
-                gi="include-all">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">include-all</xsl:attribute>
-         </xsl:if>
-      </assembly>
    </xsl:template>
    <xsl:template match="j:map[@key='plan-of-action-and-milestones']/j:array[@key='risks']/j:map/j:array[@key='origins']/j:map/j:array[@key='related-tasks']/j:map/j:map[@key='identified-subject']/j:array[@key='subjects']/j:map/j:array[@key='include-subjects']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
                  priority="17">
@@ -3911,19 +3870,6 @@
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='plan-of-action-and-milestones']/j:array[@key='risks']/j:map/j:array[@key='characterizations']/j:map/j:map[@key='origin']/j:array[@key='related-tasks']/j:map/j:array[@key='subjects']/j:map/j:map[@key='include-all']"
-                 priority="13">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="plan-of-action-and-milestones/risk/characterization/origin/related-task/subject/include-all" -->
-      <assembly as-type="empty"
-                name="include-all"
-                key="include-all"
-                gi="include-all">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">include-all</xsl:attribute>
-         </xsl:if>
-      </assembly>
-   </xsl:template>
    <xsl:template match="j:map[@key='plan-of-action-and-milestones']/j:array[@key='risks']/j:map/j:array[@key='characterizations']/j:map/j:map[@key='origin']/j:array[@key='related-tasks']/j:map/j:array[@key='subjects']/j:map/j:array[@key='include-subjects']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
                  priority="17">
       <xsl:param name="with-key" select="true()"/>
@@ -4030,19 +3976,6 @@
       <value as-type="markup-line" in-json="string">
          <xsl:value-of select="."/>
       </value>
-   </xsl:template>
-   <xsl:template match="j:map[@key='plan-of-action-and-milestones']/j:array[@key='risks']/j:map/j:array[@key='characterizations']/j:map/j:map[@key='origin']/j:array[@key='related-tasks']/j:map/j:map[@key='identified-subject']/j:array[@key='subjects']/j:map/j:map[@key='include-all']"
-                 priority="14">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="plan-of-action-and-milestones/risk/characterization/origin/related-task/identified-subject/subject/include-all" -->
-      <assembly as-type="empty"
-                name="include-all"
-                key="include-all"
-                gi="include-all">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">include-all</xsl:attribute>
-         </xsl:if>
-      </assembly>
    </xsl:template>
    <xsl:template match="j:map[@key='plan-of-action-and-milestones']/j:array[@key='risks']/j:map/j:array[@key='characterizations']/j:map/j:map[@key='origin']/j:array[@key='related-tasks']/j:map/j:map[@key='identified-subject']/j:array[@key='subjects']/j:map/j:array[@key='include-subjects']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
                  priority="18">
@@ -4471,19 +4404,6 @@
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='plan-of-action-and-milestones']/j:array[@key='risks']/j:map/j:array[@key='remediations']/j:map/j:array[@key='origins']/j:map/j:array[@key='related-tasks']/j:map/j:array[@key='subjects']/j:map/j:map[@key='include-all']"
-                 priority="14">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="plan-of-action-and-milestones/risk/response/origin/related-task/subject/include-all" -->
-      <assembly as-type="empty"
-                name="include-all"
-                key="include-all"
-                gi="include-all">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">include-all</xsl:attribute>
-         </xsl:if>
-      </assembly>
-   </xsl:template>
    <xsl:template match="j:map[@key='plan-of-action-and-milestones']/j:array[@key='risks']/j:map/j:array[@key='remediations']/j:map/j:array[@key='origins']/j:map/j:array[@key='related-tasks']/j:map/j:array[@key='subjects']/j:map/j:array[@key='include-subjects']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
                  priority="18">
       <xsl:param name="with-key" select="true()"/>
@@ -4590,19 +4510,6 @@
       <value as-type="markup-line" in-json="string">
          <xsl:value-of select="."/>
       </value>
-   </xsl:template>
-   <xsl:template match="j:map[@key='plan-of-action-and-milestones']/j:array[@key='risks']/j:map/j:array[@key='remediations']/j:map/j:array[@key='origins']/j:map/j:array[@key='related-tasks']/j:map/j:map[@key='identified-subject']/j:array[@key='subjects']/j:map/j:map[@key='include-all']"
-                 priority="15">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="plan-of-action-and-milestones/risk/response/origin/related-task/identified-subject/subject/include-all" -->
-      <assembly as-type="empty"
-                name="include-all"
-                key="include-all"
-                gi="include-all">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">include-all</xsl:attribute>
-         </xsl:if>
-      </assembly>
    </xsl:template>
    <xsl:template match="j:map[@key='plan-of-action-and-milestones']/j:array[@key='risks']/j:map/j:array[@key='remediations']/j:map/j:array[@key='origins']/j:map/j:array[@key='related-tasks']/j:map/j:map[@key='identified-subject']/j:array[@key='subjects']/j:map/j:array[@key='include-subjects']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
                  priority="19">
@@ -5032,19 +4939,6 @@
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='plan-of-action-and-milestones']/j:array[@key='risks']/j:map/j:array[@key='remediations']/j:map//j:array[@key='tasks']/j:map/j:array[@key='associated-activities']/j:map/j:array[@key='subjects']/j:map/j:map[@key='include-all']"
-                 priority="14">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="plan-of-action-and-milestones/risk/response//task/associated-activity/subject/include-all" -->
-      <assembly as-type="empty"
-                name="include-all"
-                key="include-all"
-                gi="include-all">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">include-all</xsl:attribute>
-         </xsl:if>
-      </assembly>
-   </xsl:template>
    <xsl:template match="j:map[@key='plan-of-action-and-milestones']/j:array[@key='risks']/j:map/j:array[@key='remediations']/j:map//j:array[@key='tasks']/j:map/j:array[@key='associated-activities']/j:map/j:array[@key='subjects']/j:map/j:array[@key='include-subjects']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
                  priority="18">
       <xsl:param name="with-key" select="true()"/>
@@ -5137,19 +5031,6 @@
       <value as-type="markup-line" in-json="string">
          <xsl:value-of select="."/>
       </value>
-   </xsl:template>
-   <xsl:template match="j:map[@key='plan-of-action-and-milestones']/j:array[@key='risks']/j:map/j:array[@key='remediations']/j:map//j:array[@key='tasks']/j:map/j:array[@key='subjects']/j:map/j:map[@key='include-all']"
-                 priority="12">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="plan-of-action-and-milestones/risk/response//task/subject/include-all" -->
-      <assembly as-type="empty"
-                name="include-all"
-                key="include-all"
-                gi="include-all">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">include-all</xsl:attribute>
-         </xsl:if>
-      </assembly>
    </xsl:template>
    <xsl:template match="j:map[@key='plan-of-action-and-milestones']/j:array[@key='risks']/j:map/j:array[@key='remediations']/j:map//j:array[@key='tasks']/j:map/j:array[@key='subjects']/j:map/j:array[@key='include-subjects']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
                  priority="16">
@@ -5493,19 +5374,6 @@
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
-   <xsl:template match="j:map[@key='plan-of-action-and-milestones']/j:array[@key='risks']/j:map/j:map[@key='risk-log']/j:array[@key='entries']/j:map/j:array[@key='related-responses']/j:map/j:array[@key='related-tasks']/j:map/j:array[@key='subjects']/j:map/j:map[@key='include-all']"
-                 priority="15">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="plan-of-action-and-milestones/risk/risk-log/entry/related-response/related-task/subject/include-all" -->
-      <assembly as-type="empty"
-                name="include-all"
-                key="include-all"
-                gi="include-all">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">include-all</xsl:attribute>
-         </xsl:if>
-      </assembly>
-   </xsl:template>
    <xsl:template match="j:map[@key='plan-of-action-and-milestones']/j:array[@key='risks']/j:map/j:map[@key='risk-log']/j:array[@key='entries']/j:map/j:array[@key='related-responses']/j:map/j:array[@key='related-tasks']/j:map/j:array[@key='subjects']/j:map/j:array[@key='include-subjects']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
                  priority="19">
       <xsl:param name="with-key" select="true()"/>
@@ -5612,19 +5480,6 @@
       <value as-type="markup-line" in-json="string">
          <xsl:value-of select="."/>
       </value>
-   </xsl:template>
-   <xsl:template match="j:map[@key='plan-of-action-and-milestones']/j:array[@key='risks']/j:map/j:map[@key='risk-log']/j:array[@key='entries']/j:map/j:array[@key='related-responses']/j:map/j:array[@key='related-tasks']/j:map/j:map[@key='identified-subject']/j:array[@key='subjects']/j:map/j:map[@key='include-all']"
-                 priority="16">
-      <xsl:param name="with-key" select="true()"/>
-      <!-- XML match="plan-of-action-and-milestones/risk/risk-log/entry/related-response/related-task/identified-subject/subject/include-all" -->
-      <assembly as-type="empty"
-                name="include-all"
-                key="include-all"
-                gi="include-all">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">include-all</xsl:attribute>
-         </xsl:if>
-      </assembly>
    </xsl:template>
    <xsl:template match="j:map[@key='plan-of-action-and-milestones']/j:array[@key='risks']/j:map/j:map[@key='risk-log']/j:array[@key='entries']/j:map/j:array[@key='related-responses']/j:map/j:array[@key='related-tasks']/j:map/j:map[@key='identified-subject']/j:array[@key='subjects']/j:map/j:array[@key='include-subjects']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
                  priority="20">

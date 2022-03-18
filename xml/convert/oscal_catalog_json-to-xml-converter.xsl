@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-                xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                xmlns:m="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
-                xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel"
+<xsl:stylesheet xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel"
                 xmlns:j="http://www.w3.org/2005/xpath-functions"
+                xmlns:m="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
+                xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel"
                 version="3.0"
                 exclude-result-prefixes="#all">

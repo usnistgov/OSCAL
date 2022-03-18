@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="us-ascii"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           xmlns:m="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
+<xs:schema xmlns:m="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
            xmlns:oscal-ap="http://csrc.nist.gov/ns/oscal/1.0"
            xmlns:oscal-prose="http://csrc.nist.gov/ns/oscal/1.0"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
            elementFormDefault="qualified"
            targetNamespace="http://csrc.nist.gov/ns/oscal/1.0"
-           version="1.0.1">
+           version="1.0.2">
    <xs:annotation>
       <xs:appinfo>
          <m:schema-name>OSCAL Assessment Plan Model</m:schema-name>
-         <m:schema-version>1.0.1</m:schema-version>
+         <m:schema-version>1.0.2</m:schema-version>
          <m:short-name>oscal-ap</m:short-name>
          <m:remarks>
             <p>The OSCAL assessment plan format is used to describe the information typically provided by an assessor during the preparation for an assessment.</p>
@@ -1334,10 +1334,10 @@
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>System Security Plan Reference</m:formal-name>
-               <m:description>&gt;A resolvable URL reference to the system security plan for the system being assessed.</m:description>
+               <m:description>A resolvable URL reference to the system security plan for the system being assessed.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>System Security Plan Reference</b>: &gt;A resolvable URL reference to the system security plan for the system being assessed.</xs:documentation>
+               <b>System Security Plan Reference</b>: A resolvable URL reference to the system security plan for the system being assessed.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
@@ -1630,10 +1630,10 @@
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Assessment Activity Universally Unique Identifier</m:formal-name>
-               <m:description>A <m:a>machine-oriented</m:a>, <m:a>globally unique</m:a>&gt; identifier with <m:a>cross-instance</m:a> scope that can be used to reference this assessment activity elsewhere in <m:a>this or other OSCAL instances</m:a>. The locally defined <m:em>UUID</m:em> of the <m:code>activity</m:code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <m:a>per-subject</m:a>, which means it should be consistently used to identify the same subject across revisions of the document.</m:description>
+               <m:description>A <m:a>machine-oriented</m:a>, <m:a>globally unique</m:a> identifier with <m:a>cross-instance</m:a> scope that can be used to reference this assessment activity elsewhere in <m:a>this or other OSCAL instances</m:a>. The locally defined <m:em>UUID</m:em> of the <m:code>activity</m:code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <m:a>per-subject</m:a>, which means it should be consistently used to identify the same subject across revisions of the document.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>Assessment Activity Universally Unique Identifier</b>: A machine-oriented, globally unique&gt; identifier with cross-instance scope that can be used to reference this assessment activity elsewhere in this or other OSCAL instances. The locally defined UUID of the activity can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.</xs:documentation>
+               <b>Assessment Activity Universally Unique Identifier</b>: A machine-oriented, globally unique identifier with cross-instance scope that can be used to reference this assessment activity elsewhere in this or other OSCAL instances. The locally defined UUID of the activity can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned per-subject, which means it should be consistently used to identify the same subject across revisions of the document.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>
@@ -1998,18 +1998,10 @@
                               minOccurs="0"
                               maxOccurs="unbounded"/>
                   <xs:choice>
-                     <xs:element name="include-all" minOccurs="1" maxOccurs="1">
-                        <xs:complexType>
-                           <xs:annotation>
-                              <xs:appinfo>
-                                 <m:formal-name>All</m:formal-name>
-                                 <m:description>A key word to indicate all.</m:description>
-                              </xs:appinfo>
-                              <xs:documentation>
-                                 <b>All</b>: A key word to indicate all.</xs:documentation>
-                           </xs:annotation>
-                        </xs:complexType>
-                     </xs:element>
+                     <xs:element name="include-all"
+                                 type="oscal-ap:oscal-catalog-common-include-all-ASSEMBLY"
+                                 minOccurs="1"
+                                 maxOccurs="1"/>
                      <xs:element name="include-control"
                                  type="oscal-ap:oscal-assessment-common-select-control-by-id-ASSEMBLY"
                                  minOccurs="1"
@@ -2074,18 +2066,10 @@
                               minOccurs="0"
                               maxOccurs="unbounded"/>
                   <xs:choice>
-                     <xs:element name="include-all" minOccurs="1" maxOccurs="1">
-                        <xs:complexType>
-                           <xs:annotation>
-                              <xs:appinfo>
-                                 <m:formal-name>All</m:formal-name>
-                                 <m:description>A key word to indicate all.</m:description>
-                              </xs:appinfo>
-                              <xs:documentation>
-                                 <b>All</b>: A key word to indicate all.</xs:documentation>
-                           </xs:annotation>
-                        </xs:complexType>
-                     </xs:element>
+                     <xs:element name="include-all"
+                                 type="oscal-ap:oscal-catalog-common-include-all-ASSEMBLY"
+                                 minOccurs="1"
+                                 maxOccurs="1"/>
                      <xs:element name="include-objective"
                                  type="oscal-ap:oscal-assessment-common-select-objective-by-id-ASSEMBLY"
                                  minOccurs="1"
@@ -2301,18 +2285,10 @@
                      minOccurs="0"
                      maxOccurs="unbounded"/>
          <xs:choice>
-            <xs:element name="include-all" minOccurs="1" maxOccurs="1">
-               <xs:complexType>
-                  <xs:annotation>
-                     <xs:appinfo>
-                        <m:formal-name>All</m:formal-name>
-                        <m:description>A key word to indicate all.</m:description>
-                     </xs:appinfo>
-                     <xs:documentation>
-                        <b>All</b>: A key word to indicate all.</xs:documentation>
-                  </xs:annotation>
-               </xs:complexType>
-            </xs:element>
+            <xs:element name="include-all"
+                        type="oscal-ap:oscal-catalog-common-include-all-ASSEMBLY"
+                        minOccurs="1"
+                        maxOccurs="1"/>
             <xs:element name="include-subject"
                         type="oscal-ap:oscal-assessment-common-select-subject-by-id-ASSEMBLY"
                         minOccurs="1"
@@ -2877,10 +2853,10 @@
                   <xs:annotation>
                      <xs:appinfo>
                         <m:formal-name>Relevant Evidence Reference</m:formal-name>
-                        <m:description>&gt;A resolvable URL reference to relevant evidence.</m:description>
+                        <m:description>A resolvable URL reference to relevant evidence.</m:description>
                      </xs:appinfo>
                      <xs:documentation>
-                        <b>Relevant Evidence Reference</b>: &gt;A resolvable URL reference to relevant evidence.</xs:documentation>
+                        <b>Relevant Evidence Reference</b>: A resolvable URL reference to relevant evidence.</xs:documentation>
                   </xs:annotation>
                </xs:attribute>
             </xs:complexType>
@@ -3186,19 +3162,10 @@
                      type="oscal-ap:oscal-metadata-link-ASSEMBLY"
                      minOccurs="0"
                      maxOccurs="unbounded"/>
-         <xs:element name="status" minOccurs="1" maxOccurs="1">
-            <xs:simpleType>
-               <xs:annotation>
-                  <xs:appinfo>
-                     <m:formal-name>Status</m:formal-name>
-                     <m:description>Describes the status of the associated risk.</m:description>
-                  </xs:appinfo>
-                  <xs:documentation>
-                     <b>Status</b>: Describes the status of the associated risk.</xs:documentation>
-               </xs:annotation>
-               <xs:restriction base="oscal-ap:token"/>
-            </xs:simpleType>
-         </xs:element>
+         <xs:element name="status"
+                     type="oscal-ap:oscal-assessment-common-risk-status-FIELD"
+                     minOccurs="1"
+                     maxOccurs="1"/>
          <xs:element name="origin"
                      type="oscal-ap:oscal-assessment-common-origin-ASSEMBLY"
                      minOccurs="0"
@@ -4213,6 +4180,16 @@
                <b>Parameter Cardinality</b>: Describes the number of selections that must occur. Without this setting, only one value should be assumed to be permitted.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
+   </xs:complexType>
+   <xs:complexType name="oscal-catalog-common-include-all-ASSEMBLY">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Include All</m:formal-name>
+            <m:description>Include all controls from the imported catalog or profile resources.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Include All</b>: Include all controls from the imported catalog or profile resources.</xs:documentation>
+      </xs:annotation>
    </xs:complexType>
    <xs:complexType name="oscal-implementation-common-system-component-ASSEMBLY">
       <xs:annotation>

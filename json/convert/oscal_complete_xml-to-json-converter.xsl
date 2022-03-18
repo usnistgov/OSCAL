@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-                xmlns:xs="http://www.w3.org/2001/XMLSchema"
+<xsl:stylesheet xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel"
                 xmlns:m="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
-                xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel"
+                xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 version="3.0"
                 exclude-result-prefixes="#all"
                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -2096,7 +2096,7 @@
          <xsl:apply-templates select="start"/>
          <xsl:apply-templates select="end"/>
          <xsl:for-each-group select="prop" group-by="true()">
-            <group in-json="ARRAY" key="prop">
+            <group in-json="ARRAY" key="props">
                <xsl:apply-templates select="current-group()">
                   <xsl:with-param name="with-key" select="false()"/>
                </xsl:apply-templates>
@@ -2750,6 +2750,23 @@
              gi="function-performed"
              in-json="SCALAR">
          <value as-type="string" in-json="string">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
+   </xsl:template>
+   <xsl:template match="status"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <field collapsible="no"
+             as-type="token"
+             name="risk-status"
+             key="status"
+             gi="status"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">status</xsl:attribute>
+         </xsl:if>
+         <value as-type="token" in-json="string">
             <xsl:value-of select="."/>
          </value>
       </field>
@@ -11277,50 +11294,6 @@
          </value>
       </field>
    </xsl:template>
-   <xsl:template match="system-security-plan/system-characteristics/authorization-boundary/diagram/remarks"
-                 priority="7"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field in-xml="WITH_WRAPPER"
-             collapsible="no"
-             as-type="markup-multiline"
-             name="remarks"
-             key="remarks"
-             gi="remarks"
-             in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">remarks</xsl:attribute>
-         </xsl:if>
-         <value as-type="markup-multiline" in-json="string">
-            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
-                                group-by="true()">
-               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
-            </xsl:for-each-group>
-         </value>
-      </field>
-   </xsl:template>
-   <xsl:template match="system-security-plan/system-characteristics/authorization-boundary/remarks"
-                 priority="5"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field in-xml="WITH_WRAPPER"
-             collapsible="no"
-             as-type="markup-multiline"
-             name="remarks"
-             key="remarks"
-             gi="remarks"
-             in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">remarks</xsl:attribute>
-         </xsl:if>
-         <value as-type="markup-multiline" in-json="string">
-            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
-                                group-by="true()">
-               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
-            </xsl:for-each-group>
-         </value>
-      </field>
-   </xsl:template>
    <xsl:template match="system-security-plan/system-characteristics/network-architecture/description"
                  priority="5"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -11419,28 +11392,6 @@
          </value>
       </field>
    </xsl:template>
-   <xsl:template match="system-security-plan/system-characteristics/network-architecture/diagram/remarks"
-                 priority="7"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field in-xml="WITH_WRAPPER"
-             collapsible="no"
-             as-type="markup-multiline"
-             name="remarks"
-             key="remarks"
-             gi="remarks"
-             in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">remarks</xsl:attribute>
-         </xsl:if>
-         <value as-type="markup-multiline" in-json="string">
-            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
-                                group-by="true()">
-               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
-            </xsl:for-each-group>
-         </value>
-      </field>
-   </xsl:template>
    <xsl:template match="system-security-plan/system-characteristics/data-flow/description"
                  priority="5"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -11536,28 +11487,6 @@
          </xsl:if>
          <value as-type="markup-line" in-json="string">
             <xsl:apply-templates mode="cast-prose"/>
-         </value>
-      </field>
-   </xsl:template>
-   <xsl:template match="system-security-plan/system-characteristics/data-flow/diagram/remarks"
-                 priority="7"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field in-xml="WITH_WRAPPER"
-             collapsible="no"
-             as-type="markup-multiline"
-             name="remarks"
-             key="remarks"
-             gi="remarks"
-             in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">remarks</xsl:attribute>
-         </xsl:if>
-         <value as-type="markup-multiline" in-json="string">
-            <xsl:for-each-group select="p | ul | ol | pre | h1 | h2 | h3 | h4 | h5 | h6 | table"
-                                group-by="true()">
-               <xsl:apply-templates select="current-group()" mode="cast-prose"/>
-            </xsl:for-each-group>
          </value>
       </field>
    </xsl:template>
@@ -15024,19 +14953,6 @@
          </value>
       </field>
    </xsl:template>
-   <xsl:template match="assessment-plan/local-definitions/activity/step/reviewed-controls/control-selection/include-all"
-                 priority="12"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <assembly as-type="empty"
-                name="include-all"
-                key="include-all"
-                gi="include-all">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">include-all</xsl:attribute>
-         </xsl:if>
-      </assembly>
-   </xsl:template>
    <xsl:template match="assessment-plan/local-definitions/activity/step/reviewed-controls/control-selection/include-control"
                  priority="13"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -15172,19 +15088,6 @@
             <xsl:apply-templates mode="cast-prose"/>
          </value>
       </field>
-   </xsl:template>
-   <xsl:template match="assessment-plan/local-definitions/activity/step/reviewed-controls/control-objective-selection/include-all"
-                 priority="12"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <assembly as-type="empty"
-                name="include-all"
-                key="include-all"
-                gi="include-all">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">include-all</xsl:attribute>
-         </xsl:if>
-      </assembly>
    </xsl:template>
    <xsl:template match="assessment-plan/local-definitions/activity/step/responsible-role/link/text"
                  priority="12"
@@ -15322,19 +15225,6 @@
          </value>
       </field>
    </xsl:template>
-   <xsl:template match="assessment-plan/local-definitions/activity/related-controls/control-selection/include-all"
-                 priority="10"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <assembly as-type="empty"
-                name="include-all"
-                key="include-all"
-                gi="include-all">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">include-all</xsl:attribute>
-         </xsl:if>
-      </assembly>
-   </xsl:template>
    <xsl:template match="assessment-plan/local-definitions/activity/related-controls/control-selection/include-control"
                  priority="11"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -15470,19 +15360,6 @@
             <xsl:apply-templates mode="cast-prose"/>
          </value>
       </field>
-   </xsl:template>
-   <xsl:template match="assessment-plan/local-definitions/activity/related-controls/control-objective-selection/include-all"
-                 priority="10"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <assembly as-type="empty"
-                name="include-all"
-                key="include-all"
-                gi="include-all">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">include-all</xsl:attribute>
-         </xsl:if>
-      </assembly>
    </xsl:template>
    <xsl:template match="assessment-plan/local-definitions/activity/responsible-role/link/text"
                  priority="10"
@@ -15675,19 +15552,6 @@
          </value>
       </field>
    </xsl:template>
-   <xsl:template match="assessment-plan/reviewed-controls/control-selection/include-all"
-                 priority="7"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <assembly as-type="empty"
-                name="include-all"
-                key="include-all"
-                gi="include-all">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">include-all</xsl:attribute>
-         </xsl:if>
-      </assembly>
-   </xsl:template>
    <xsl:template match="assessment-plan/reviewed-controls/control-selection/include-control"
                  priority="8"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -15824,19 +15688,6 @@
          </value>
       </field>
    </xsl:template>
-   <xsl:template match="assessment-plan/reviewed-controls/control-objective-selection/include-all"
-                 priority="7"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <assembly as-type="empty"
-                name="include-all"
-                key="include-all"
-                gi="include-all">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">include-all</xsl:attribute>
-         </xsl:if>
-      </assembly>
-   </xsl:template>
    <xsl:template match="assessment-plan/assessment-subject/description"
                  priority="5"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -15876,19 +15727,6 @@
             <xsl:apply-templates mode="cast-prose"/>
          </value>
       </field>
-   </xsl:template>
-   <xsl:template match="assessment-plan/assessment-subject/include-all"
-                 priority="6"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <assembly as-type="empty"
-                name="include-all"
-                key="include-all"
-                gi="include-all">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">include-all</xsl:attribute>
-         </xsl:if>
-      </assembly>
    </xsl:template>
    <xsl:template match="assessment-plan/assessment-subject/include-subject/link/text"
                  priority="10"
@@ -16417,19 +16255,6 @@
          </value>
       </field>
    </xsl:template>
-   <xsl:template match="assessment-plan//task/associated-activity/subject/include-all"
-                 priority="10"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <assembly as-type="empty"
-                name="include-all"
-                key="include-all"
-                gi="include-all">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">include-all</xsl:attribute>
-         </xsl:if>
-      </assembly>
-   </xsl:template>
    <xsl:template match="assessment-plan//task/associated-activity/subject/include-subject/link/text"
                  priority="14"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -16505,19 +16330,6 @@
             <xsl:apply-templates mode="cast-prose"/>
          </value>
       </field>
-   </xsl:template>
-   <xsl:template match="assessment-plan//task/subject/include-all"
-                 priority="8"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <assembly as-type="empty"
-                name="include-all"
-                key="include-all"
-                gi="include-all">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">include-all</xsl:attribute>
-         </xsl:if>
-      </assembly>
    </xsl:template>
    <xsl:template match="assessment-plan//task/subject/include-subject/link/text"
                  priority="12"
@@ -17894,19 +17706,6 @@
          </value>
       </field>
    </xsl:template>
-   <xsl:template match="assessment-results/local-definitions/activity/step/reviewed-controls/control-selection/include-all"
-                 priority="12"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <assembly as-type="empty"
-                name="include-all"
-                key="include-all"
-                gi="include-all">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">include-all</xsl:attribute>
-         </xsl:if>
-      </assembly>
-   </xsl:template>
    <xsl:template match="assessment-results/local-definitions/activity/step/reviewed-controls/control-selection/include-control"
                  priority="13"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -18042,19 +17841,6 @@
             <xsl:apply-templates mode="cast-prose"/>
          </value>
       </field>
-   </xsl:template>
-   <xsl:template match="assessment-results/local-definitions/activity/step/reviewed-controls/control-objective-selection/include-all"
-                 priority="12"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <assembly as-type="empty"
-                name="include-all"
-                key="include-all"
-                gi="include-all">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">include-all</xsl:attribute>
-         </xsl:if>
-      </assembly>
    </xsl:template>
    <xsl:template match="assessment-results/local-definitions/activity/step/responsible-role/link/text"
                  priority="12"
@@ -18192,19 +17978,6 @@
          </value>
       </field>
    </xsl:template>
-   <xsl:template match="assessment-results/local-definitions/activity/related-controls/control-selection/include-all"
-                 priority="10"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <assembly as-type="empty"
-                name="include-all"
-                key="include-all"
-                gi="include-all">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">include-all</xsl:attribute>
-         </xsl:if>
-      </assembly>
-   </xsl:template>
    <xsl:template match="assessment-results/local-definitions/activity/related-controls/control-selection/include-control"
                  priority="11"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -18340,19 +18113,6 @@
             <xsl:apply-templates mode="cast-prose"/>
          </value>
       </field>
-   </xsl:template>
-   <xsl:template match="assessment-results/local-definitions/activity/related-controls/control-objective-selection/include-all"
-                 priority="10"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <assembly as-type="empty"
-                name="include-all"
-                key="include-all"
-                gi="include-all">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">include-all</xsl:attribute>
-         </xsl:if>
-      </assembly>
    </xsl:template>
    <xsl:template match="assessment-results/local-definitions/activity/responsible-role/link/text"
                  priority="10"
@@ -19362,19 +19122,6 @@
          </value>
       </field>
    </xsl:template>
-   <xsl:template match="assessment-results/result/local-definitions//assessment-task/associated-activity/subject/include-all"
-                 priority="13"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <assembly as-type="empty"
-                name="include-all"
-                key="include-all"
-                gi="include-all">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">include-all</xsl:attribute>
-         </xsl:if>
-      </assembly>
-   </xsl:template>
    <xsl:template match="assessment-results/result/local-definitions//assessment-task/associated-activity/subject/include-subject/link/text"
                  priority="17"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -19450,19 +19197,6 @@
             <xsl:apply-templates mode="cast-prose"/>
          </value>
       </field>
-   </xsl:template>
-   <xsl:template match="assessment-results/result/local-definitions//assessment-task/subject/include-all"
-                 priority="11"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <assembly as-type="empty"
-                name="include-all"
-                key="include-all"
-                gi="include-all">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">include-all</xsl:attribute>
-         </xsl:if>
-      </assembly>
    </xsl:template>
    <xsl:template match="assessment-results/result/local-definitions//assessment-task/subject/include-subject/link/text"
                  priority="15"
@@ -19636,19 +19370,6 @@
          </value>
       </field>
    </xsl:template>
-   <xsl:template match="assessment-results/result/reviewed-controls/control-selection/include-all"
-                 priority="9"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <assembly as-type="empty"
-                name="include-all"
-                key="include-all"
-                gi="include-all">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">include-all</xsl:attribute>
-         </xsl:if>
-      </assembly>
-   </xsl:template>
    <xsl:template match="assessment-results/result/reviewed-controls/control-selection/include-control"
                  priority="10"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -19784,19 +19505,6 @@
             <xsl:apply-templates mode="cast-prose"/>
          </value>
       </field>
-   </xsl:template>
-   <xsl:template match="assessment-results/result/reviewed-controls/control-objective-selection/include-all"
-                 priority="9"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <assembly as-type="empty"
-                name="include-all"
-                key="include-all"
-                gi="include-all">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">include-all</xsl:attribute>
-         </xsl:if>
-      </assembly>
    </xsl:template>
    <xsl:template match="assessment-results/result/attestation"
                  priority="6"
@@ -20101,19 +19809,6 @@
          </value>
       </field>
    </xsl:template>
-   <xsl:template match="assessment-results/result/assessment-log/entry/related-task/subject/include-all"
-                 priority="13"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <assembly as-type="empty"
-                name="include-all"
-                key="include-all"
-                gi="include-all">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">include-all</xsl:attribute>
-         </xsl:if>
-      </assembly>
-   </xsl:template>
    <xsl:template match="assessment-results/result/assessment-log/entry/related-task/subject/include-subject/link/text"
                  priority="17"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -20209,19 +19904,6 @@
             <xsl:apply-templates mode="cast-prose"/>
          </value>
       </field>
-   </xsl:template>
-   <xsl:template match="assessment-results/result/assessment-log/entry/related-task/identified-subject/subject/include-all"
-                 priority="14"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <assembly as-type="empty"
-                name="include-all"
-                key="include-all"
-                gi="include-all">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">include-all</xsl:attribute>
-         </xsl:if>
-      </assembly>
    </xsl:template>
    <xsl:template match="assessment-results/result/assessment-log/entry/related-task/identified-subject/subject/include-subject/link/text"
                  priority="18"
@@ -20439,19 +20121,6 @@
          </value>
       </field>
    </xsl:template>
-   <xsl:template match="assessment-results/result/observation/origin/related-task/subject/include-all"
-                 priority="14"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <assembly as-type="empty"
-                name="include-all"
-                key="include-all"
-                gi="include-all">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">include-all</xsl:attribute>
-         </xsl:if>
-      </assembly>
-   </xsl:template>
    <xsl:template match="assessment-results/result/observation/origin/related-task/subject/include-subject/link/text"
                  priority="18"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -20547,19 +20216,6 @@
             <xsl:apply-templates mode="cast-prose"/>
          </value>
       </field>
-   </xsl:template>
-   <xsl:template match="assessment-results/result/observation/origin/related-task/identified-subject/subject/include-all"
-                 priority="15"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <assembly as-type="empty"
-                name="include-all"
-                key="include-all"
-                gi="include-all">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">include-all</xsl:attribute>
-         </xsl:if>
-      </assembly>
    </xsl:template>
    <xsl:template match="assessment-results/result/observation/origin/related-task/identified-subject/subject/include-subject/link/text"
                  priority="19"
@@ -20838,24 +20494,6 @@
          </value>
       </field>
    </xsl:template>
-   <xsl:template match="assessment-results/result/risk/status"
-                 priority="7"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field collapsible="no"
-             as-type="token"
-             name="status"
-             key="status"
-             gi="status"
-             in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">status</xsl:attribute>
-         </xsl:if>
-         <value as-type="token" in-json="string">
-            <xsl:value-of select="."/>
-         </value>
-      </field>
-   </xsl:template>
    <xsl:template match="assessment-results/result/risk/origin/actor/link/text"
                  priority="13"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -20949,19 +20587,6 @@
             <xsl:apply-templates mode="cast-prose"/>
          </value>
       </field>
-   </xsl:template>
-   <xsl:template match="assessment-results/result/risk/origin/related-task/subject/include-all"
-                 priority="14"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <assembly as-type="empty"
-                name="include-all"
-                key="include-all"
-                gi="include-all">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">include-all</xsl:attribute>
-         </xsl:if>
-      </assembly>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/origin/related-task/subject/include-subject/link/text"
                  priority="18"
@@ -21058,19 +20683,6 @@
             <xsl:apply-templates mode="cast-prose"/>
          </value>
       </field>
-   </xsl:template>
-   <xsl:template match="assessment-results/result/risk/origin/related-task/identified-subject/subject/include-all"
-                 priority="15"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <assembly as-type="empty"
-                name="include-all"
-                key="include-all"
-                gi="include-all">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">include-all</xsl:attribute>
-         </xsl:if>
-      </assembly>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/origin/related-task/identified-subject/subject/include-subject/link/text"
                  priority="19"
@@ -21220,19 +20832,6 @@
          </value>
       </field>
    </xsl:template>
-   <xsl:template match="assessment-results/result/risk/characterization/origin/related-task/subject/include-all"
-                 priority="15"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <assembly as-type="empty"
-                name="include-all"
-                key="include-all"
-                gi="include-all">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">include-all</xsl:attribute>
-         </xsl:if>
-      </assembly>
-   </xsl:template>
    <xsl:template match="assessment-results/result/risk/characterization/origin/related-task/subject/include-subject/link/text"
                  priority="19"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -21328,19 +20927,6 @@
             <xsl:apply-templates mode="cast-prose"/>
          </value>
       </field>
-   </xsl:template>
-   <xsl:template match="assessment-results/result/risk/characterization/origin/related-task/identified-subject/subject/include-all"
-                 priority="16"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <assembly as-type="empty"
-                name="include-all"
-                key="include-all"
-                gi="include-all">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">include-all</xsl:attribute>
-         </xsl:if>
-      </assembly>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/characterization/origin/related-task/identified-subject/subject/include-subject/link/text"
                  priority="20"
@@ -21770,19 +21356,6 @@
          </value>
       </field>
    </xsl:template>
-   <xsl:template match="assessment-results/result/risk/response/origin/related-task/subject/include-all"
-                 priority="16"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <assembly as-type="empty"
-                name="include-all"
-                key="include-all"
-                gi="include-all">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">include-all</xsl:attribute>
-         </xsl:if>
-      </assembly>
-   </xsl:template>
    <xsl:template match="assessment-results/result/risk/response/origin/related-task/subject/include-subject/link/text"
                  priority="20"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -21878,19 +21451,6 @@
             <xsl:apply-templates mode="cast-prose"/>
          </value>
       </field>
-   </xsl:template>
-   <xsl:template match="assessment-results/result/risk/response/origin/related-task/identified-subject/subject/include-all"
-                 priority="17"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <assembly as-type="empty"
-                name="include-all"
-                key="include-all"
-                gi="include-all">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">include-all</xsl:attribute>
-         </xsl:if>
-      </assembly>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/response/origin/related-task/identified-subject/subject/include-subject/link/text"
                  priority="21"
@@ -22313,19 +21873,6 @@
          </value>
       </field>
    </xsl:template>
-   <xsl:template match="assessment-results/result/risk/response//task/associated-activity/subject/include-all"
-                 priority="16"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <assembly as-type="empty"
-                name="include-all"
-                key="include-all"
-                gi="include-all">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">include-all</xsl:attribute>
-         </xsl:if>
-      </assembly>
-   </xsl:template>
    <xsl:template match="assessment-results/result/risk/response//task/associated-activity/subject/include-subject/link/text"
                  priority="20"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -22401,19 +21948,6 @@
             <xsl:apply-templates mode="cast-prose"/>
          </value>
       </field>
-   </xsl:template>
-   <xsl:template match="assessment-results/result/risk/response//task/subject/include-all"
-                 priority="14"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <assembly as-type="empty"
-                name="include-all"
-                key="include-all"
-                gi="include-all">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">include-all</xsl:attribute>
-         </xsl:if>
-      </assembly>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/response//task/subject/include-subject/link/text"
                  priority="18"
@@ -22746,19 +22280,6 @@
          </value>
       </field>
    </xsl:template>
-   <xsl:template match="assessment-results/result/risk/risk-log/entry/related-response/related-task/subject/include-all"
-                 priority="17"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <assembly as-type="empty"
-                name="include-all"
-                key="include-all"
-                gi="include-all">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">include-all</xsl:attribute>
-         </xsl:if>
-      </assembly>
-   </xsl:template>
    <xsl:template match="assessment-results/result/risk/risk-log/entry/related-response/related-task/subject/include-subject/link/text"
                  priority="21"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -22854,19 +22375,6 @@
             <xsl:apply-templates mode="cast-prose"/>
          </value>
       </field>
-   </xsl:template>
-   <xsl:template match="assessment-results/result/risk/risk-log/entry/related-response/related-task/identified-subject/subject/include-all"
-                 priority="18"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <assembly as-type="empty"
-                name="include-all"
-                key="include-all"
-                gi="include-all">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">include-all</xsl:attribute>
-         </xsl:if>
-      </assembly>
    </xsl:template>
    <xsl:template match="assessment-results/result/risk/risk-log/entry/related-response/related-task/identified-subject/subject/include-subject/link/text"
                  priority="22"
@@ -23064,19 +22572,6 @@
          </value>
       </field>
    </xsl:template>
-   <xsl:template match="assessment-results/result/finding/origin/related-task/subject/include-all"
-                 priority="14"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <assembly as-type="empty"
-                name="include-all"
-                key="include-all"
-                gi="include-all">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">include-all</xsl:attribute>
-         </xsl:if>
-      </assembly>
-   </xsl:template>
    <xsl:template match="assessment-results/result/finding/origin/related-task/subject/include-subject/link/text"
                  priority="18"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -23172,19 +22667,6 @@
             <xsl:apply-templates mode="cast-prose"/>
          </value>
       </field>
-   </xsl:template>
-   <xsl:template match="assessment-results/result/finding/origin/related-task/identified-subject/subject/include-all"
-                 priority="15"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <assembly as-type="empty"
-                name="include-all"
-                key="include-all"
-                gi="include-all">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">include-all</xsl:attribute>
-         </xsl:if>
-      </assembly>
    </xsl:template>
    <xsl:template match="assessment-results/result/finding/origin/related-task/identified-subject/subject/include-subject/link/text"
                  priority="19"
@@ -24706,19 +24188,6 @@
          </value>
       </field>
    </xsl:template>
-   <xsl:template match="plan-of-action-and-milestones/observation/origin/related-task/subject/include-all"
-                 priority="12"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <assembly as-type="empty"
-                name="include-all"
-                key="include-all"
-                gi="include-all">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">include-all</xsl:attribute>
-         </xsl:if>
-      </assembly>
-   </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/observation/origin/related-task/subject/include-subject/link/text"
                  priority="16"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -24814,19 +24283,6 @@
             <xsl:apply-templates mode="cast-prose"/>
          </value>
       </field>
-   </xsl:template>
-   <xsl:template match="plan-of-action-and-milestones/observation/origin/related-task/identified-subject/subject/include-all"
-                 priority="13"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <assembly as-type="empty"
-                name="include-all"
-                key="include-all"
-                gi="include-all">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">include-all</xsl:attribute>
-         </xsl:if>
-      </assembly>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/observation/origin/related-task/identified-subject/subject/include-subject/link/text"
                  priority="17"
@@ -25105,24 +24561,6 @@
          </value>
       </field>
    </xsl:template>
-   <xsl:template match="plan-of-action-and-milestones/risk/status"
-                 priority="5"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field collapsible="no"
-             as-type="token"
-             name="status"
-             key="status"
-             gi="status"
-             in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">status</xsl:attribute>
-         </xsl:if>
-         <value as-type="token" in-json="string">
-            <xsl:value-of select="."/>
-         </value>
-      </field>
-   </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/origin/actor/link/text"
                  priority="11"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -25216,19 +24654,6 @@
             <xsl:apply-templates mode="cast-prose"/>
          </value>
       </field>
-   </xsl:template>
-   <xsl:template match="plan-of-action-and-milestones/risk/origin/related-task/subject/include-all"
-                 priority="12"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <assembly as-type="empty"
-                name="include-all"
-                key="include-all"
-                gi="include-all">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">include-all</xsl:attribute>
-         </xsl:if>
-      </assembly>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/origin/related-task/subject/include-subject/link/text"
                  priority="16"
@@ -25325,19 +24750,6 @@
             <xsl:apply-templates mode="cast-prose"/>
          </value>
       </field>
-   </xsl:template>
-   <xsl:template match="plan-of-action-and-milestones/risk/origin/related-task/identified-subject/subject/include-all"
-                 priority="13"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <assembly as-type="empty"
-                name="include-all"
-                key="include-all"
-                gi="include-all">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">include-all</xsl:attribute>
-         </xsl:if>
-      </assembly>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/origin/related-task/identified-subject/subject/include-subject/link/text"
                  priority="17"
@@ -25487,19 +24899,6 @@
          </value>
       </field>
    </xsl:template>
-   <xsl:template match="plan-of-action-and-milestones/risk/characterization/origin/related-task/subject/include-all"
-                 priority="13"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <assembly as-type="empty"
-                name="include-all"
-                key="include-all"
-                gi="include-all">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">include-all</xsl:attribute>
-         </xsl:if>
-      </assembly>
-   </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/characterization/origin/related-task/subject/include-subject/link/text"
                  priority="17"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -25595,19 +24994,6 @@
             <xsl:apply-templates mode="cast-prose"/>
          </value>
       </field>
-   </xsl:template>
-   <xsl:template match="plan-of-action-and-milestones/risk/characterization/origin/related-task/identified-subject/subject/include-all"
-                 priority="14"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <assembly as-type="empty"
-                name="include-all"
-                key="include-all"
-                gi="include-all">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">include-all</xsl:attribute>
-         </xsl:if>
-      </assembly>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/characterization/origin/related-task/identified-subject/subject/include-subject/link/text"
                  priority="18"
@@ -26037,19 +25423,6 @@
          </value>
       </field>
    </xsl:template>
-   <xsl:template match="plan-of-action-and-milestones/risk/response/origin/related-task/subject/include-all"
-                 priority="14"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <assembly as-type="empty"
-                name="include-all"
-                key="include-all"
-                gi="include-all">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">include-all</xsl:attribute>
-         </xsl:if>
-      </assembly>
-   </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/response/origin/related-task/subject/include-subject/link/text"
                  priority="18"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -26145,19 +25518,6 @@
             <xsl:apply-templates mode="cast-prose"/>
          </value>
       </field>
-   </xsl:template>
-   <xsl:template match="plan-of-action-and-milestones/risk/response/origin/related-task/identified-subject/subject/include-all"
-                 priority="15"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <assembly as-type="empty"
-                name="include-all"
-                key="include-all"
-                gi="include-all">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">include-all</xsl:attribute>
-         </xsl:if>
-      </assembly>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/response/origin/related-task/identified-subject/subject/include-subject/link/text"
                  priority="19"
@@ -26580,19 +25940,6 @@
          </value>
       </field>
    </xsl:template>
-   <xsl:template match="plan-of-action-and-milestones/risk/response//task/associated-activity/subject/include-all"
-                 priority="14"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <assembly as-type="empty"
-                name="include-all"
-                key="include-all"
-                gi="include-all">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">include-all</xsl:attribute>
-         </xsl:if>
-      </assembly>
-   </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/response//task/associated-activity/subject/include-subject/link/text"
                  priority="18"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -26668,19 +26015,6 @@
             <xsl:apply-templates mode="cast-prose"/>
          </value>
       </field>
-   </xsl:template>
-   <xsl:template match="plan-of-action-and-milestones/risk/response//task/subject/include-all"
-                 priority="12"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <assembly as-type="empty"
-                name="include-all"
-                key="include-all"
-                gi="include-all">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">include-all</xsl:attribute>
-         </xsl:if>
-      </assembly>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/response//task/subject/include-subject/link/text"
                  priority="16"
@@ -27013,19 +26347,6 @@
          </value>
       </field>
    </xsl:template>
-   <xsl:template match="plan-of-action-and-milestones/risk/risk-log/entry/related-response/related-task/subject/include-all"
-                 priority="15"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <assembly as-type="empty"
-                name="include-all"
-                key="include-all"
-                gi="include-all">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">include-all</xsl:attribute>
-         </xsl:if>
-      </assembly>
-   </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/risk-log/entry/related-response/related-task/subject/include-subject/link/text"
                  priority="19"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
@@ -27121,19 +26442,6 @@
             <xsl:apply-templates mode="cast-prose"/>
          </value>
       </field>
-   </xsl:template>
-   <xsl:template match="plan-of-action-and-milestones/risk/risk-log/entry/related-response/related-task/identified-subject/subject/include-all"
-                 priority="16"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <assembly as-type="empty"
-                name="include-all"
-                key="include-all"
-                gi="include-all">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">include-all</xsl:attribute>
-         </xsl:if>
-      </assembly>
    </xsl:template>
    <xsl:template match="plan-of-action-and-milestones/risk/risk-log/entry/related-response/related-task/identified-subject/subject/include-subject/link/text"
                  priority="20"
@@ -27480,12 +26788,12 @@
    </xsl:template>
    <!-- XML to JSON conversion: Supermodel serialization as JSON
         including markdown production -->
-   <xsl:variable xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 xmlns="http://www.w3.org/2005/xpath-functions"
+   <xsl:variable xmlns="http://www.w3.org/2005/xpath-functions"
+                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  name="ns"
                  select="/*/@namespace"/>
-   <xsl:template xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 xmlns="http://www.w3.org/2005/xpath-functions"
+   <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
+                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  match="group"
                  mode="write-json"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
@@ -27494,8 +26802,8 @@
          <xsl:apply-templates mode="#current"/>
       </array>
    </xsl:template>
-   <xsl:template xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 xmlns="http://www.w3.org/2005/xpath-functions"
+   <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
+                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  match="group[@in-json='BY_KEY']"
                  mode="write-json"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
@@ -27504,13 +26812,13 @@
          <xsl:apply-templates mode="#current"/>
       </map>
    </xsl:template>
-   <xsl:template xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 xmlns="http://www.w3.org/2005/xpath-functions"
+   <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
+                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  match="flag[@key=../@json-key-flag]"
                  mode="write-json"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel"/>
-   <xsl:template xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 xmlns="http://www.w3.org/2005/xpath-functions"
+   <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
+                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  match="group[@in-json='SINGLETON_OR_ARRAY'][count(*)=1]"
                  mode="write-json"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
@@ -27518,8 +26826,8 @@
          <xsl:with-param name="group-key" select="@key"/>
       </xsl:apply-templates>
    </xsl:template>
-   <xsl:template xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 xmlns="http://www.w3.org/2005/xpath-functions"
+   <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
+                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  priority="2"
                  match="group/assembly | group/field"
                  mode="write-json"
@@ -27540,8 +26848,8 @@
          <xsl:apply-templates mode="#current"/>
       </map>
    </xsl:template>
-   <xsl:template xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 xmlns="http://www.w3.org/2005/xpath-functions"
+   <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
+                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  priority="3"
                  match="group/field[@in-json='SCALAR']"
                  mode="write-json"
@@ -27553,8 +26861,8 @@
          <xsl:with-param name="use-key" select="flag[@key = $json-key-flag-name]"/>
       </xsl:apply-templates>
    </xsl:template>
-   <xsl:template xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 xmlns="http://www.w3.org/2005/xpath-functions"
+   <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
+                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  match="/assembly"
                  mode="write-json"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
@@ -27562,8 +26870,8 @@
          <xsl:next-match/>
       </map>
    </xsl:template>
-   <xsl:template xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 xmlns="http://www.w3.org/2005/xpath-functions"
+   <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
+                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  match="assembly"
                  mode="write-json"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
@@ -27571,8 +26879,8 @@
          <xsl:apply-templates mode="#current"/>
       </map>
    </xsl:template>
-   <xsl:template xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 xmlns="http://www.w3.org/2005/xpath-functions"
+   <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
+                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  match="field"
                  mode="write-json"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
@@ -27580,8 +26888,8 @@
          <xsl:apply-templates mode="#current"/>
       </map>
    </xsl:template>
-   <xsl:template xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 xmlns="http://www.w3.org/2005/xpath-functions"
+   <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
+                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  match="field[@in-json='SCALAR']"
                  mode="write-json"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
@@ -27593,13 +26901,13 @@
             <xsl:value-of select="value"/>
         </string> -->
    </xsl:template>
-   <xsl:template xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 xmlns="http://www.w3.org/2005/xpath-functions"
+   <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
+                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  match="flag[@key=../value/@key-flag]"
                  mode="write-json"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel"/>
-   <xsl:template xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 xmlns="http://www.w3.org/2005/xpath-functions"
+   <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
+                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  match="flag"
                  mode="write-json"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
@@ -27609,8 +26917,8 @@
          <xsl:apply-templates mode="#current"/>
       </xsl:element>
    </xsl:template>
-   <xsl:template xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 xmlns="http://www.w3.org/2005/xpath-functions"
+   <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
+                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  priority="2"
                  match="field[exists(@json-key-flag)]/value"
                  mode="write-json"
@@ -27621,8 +26929,8 @@
          <xsl:apply-templates mode="#current"/>
       </xsl:element>
    </xsl:template>
-   <xsl:template xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 xmlns="http://www.w3.org/2005/xpath-functions"
+   <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
+                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  match="value"
                  mode="write-json"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
@@ -27639,22 +26947,22 @@
          <xsl:apply-templates select="." mode="cast-data"/>
       </xsl:element>
    </xsl:template>
-   <xsl:template xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 xmlns="http://www.w3.org/2005/xpath-functions"
+   <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
+                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  match="*"
                  mode="cast-data"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
       <xsl:value-of select="."/>
    </xsl:template>
-   <xsl:template xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 xmlns="http://www.w3.org/2005/xpath-functions"
+   <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
+                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  match="value[@as-type='markup-line']"
                  mode="cast-data"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
       <xsl:apply-templates mode="md"/>
    </xsl:template>
-   <xsl:template xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 xmlns="http://www.w3.org/2005/xpath-functions"
+   <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
+                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  match="value[@as-type='markup-multiline']"
                  mode="cast-data"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
@@ -27663,16 +26971,16 @@
       </xsl:variable>
       <xsl:value-of select="$lines/self::* =&gt; string-join('&#xA;')"/>
    </xsl:template>
-   <xsl:template xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 xmlns="http://www.w3.org/2005/xpath-functions"
+   <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
+                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  name="conditional-lf"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
       <xsl:if test="exists(preceding-sibling::*)">
          <string/>
       </xsl:if>
    </xsl:template>
-   <xsl:template xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 xmlns="http://www.w3.org/2005/xpath-functions"
+   <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
+                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  mode="md"
                  match="text()[empty(ancestor::pre)]"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
@@ -27681,8 +26989,8 @@
       </xsl:variable>
       <xsl:value-of select="replace($escaped,'\s+',' ')"/>
    </xsl:template>
-   <xsl:template xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 xmlns="http://www.w3.org/2005/xpath-functions"
+   <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
+                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  mode="md"
                  match="text()"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
@@ -27693,8 +27001,8 @@
       <xsl:value-of select="replace(., '([`~\^\*&#34;])', '\\$1')"/>
       <!--<xsl:value-of select="."/>-->
    </xsl:template>
-   <xsl:template xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 xmlns="http://www.w3.org/2005/xpath-functions"
+   <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
+                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  mode="md"
                  match="p"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
@@ -27703,8 +27011,8 @@
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
-   <xsl:template xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 xmlns="http://www.w3.org/2005/xpath-functions"
+   <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
+                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  mode="md"
                  match="h1 | h2 | h3 | h4 | h5 | h6"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
@@ -27714,46 +27022,46 @@
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
-   <xsl:template xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 xmlns="http://www.w3.org/2005/xpath-functions"
+   <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
+                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  mode="mark"
                  match="h1"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel"># </xsl:template>
-   <xsl:template xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 xmlns="http://www.w3.org/2005/xpath-functions"
+   <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
+                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  mode="mark"
                  match="h2"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">## </xsl:template>
-   <xsl:template xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 xmlns="http://www.w3.org/2005/xpath-functions"
+   <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
+                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  mode="mark"
                  match="h3"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">### </xsl:template>
-   <xsl:template xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 xmlns="http://www.w3.org/2005/xpath-functions"
+   <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
+                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  mode="mark"
                  match="h4"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">#### </xsl:template>
-   <xsl:template xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 xmlns="http://www.w3.org/2005/xpath-functions"
+   <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
+                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  mode="mark"
                  match="h5"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">##### </xsl:template>
-   <xsl:template xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 xmlns="http://www.w3.org/2005/xpath-functions"
+   <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
+                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  mode="mark"
                  match="h6"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">###### </xsl:template>
-   <xsl:template xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 xmlns="http://www.w3.org/2005/xpath-functions"
+   <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
+                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  mode="md"
                  match="table"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
       <xsl:call-template name="conditional-lf"/>
       <xsl:apply-templates select="*" mode="md"/>
    </xsl:template>
-   <xsl:template xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 xmlns="http://www.w3.org/2005/xpath-functions"
+   <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
+                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  mode="md"
                  match="tr"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
@@ -27769,8 +27077,8 @@
          </string>
       </xsl:if>
    </xsl:template>
-   <xsl:template xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 xmlns="http://www.w3.org/2005/xpath-functions"
+   <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
+                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  mode="md"
                  match="th | td"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
@@ -27779,8 +27087,8 @@
       <xsl:apply-templates mode="md"/>
       <xsl:text> |</xsl:text>
    </xsl:template>
-   <xsl:template xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 xmlns="http://www.w3.org/2005/xpath-functions"
+   <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
+                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  mode="md"
                  priority="1"
                  match="pre"
@@ -27792,8 +27100,8 @@
       </string>
       <string>```</string>
    </xsl:template>
-   <xsl:template xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 xmlns="http://www.w3.org/2005/xpath-functions"
+   <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
+                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  mode="md"
                  priority="1"
                  match="ul | ol"
@@ -27802,15 +27110,15 @@
       <xsl:apply-templates mode="md"/>
       <string/>
    </xsl:template>
-   <xsl:template xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 xmlns="http://www.w3.org/2005/xpath-functions"
+   <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
+                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  mode="md"
                  match="ul//ul | ol//ol | ol//ul | ul//ol"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
       <xsl:apply-templates mode="md"/>
    </xsl:template>
-   <xsl:template xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 xmlns="http://www.w3.org/2005/xpath-functions"
+   <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
+                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  mode="md"
                  match="li"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
@@ -27822,8 +27130,8 @@
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
-   <xsl:template xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 xmlns="http://www.w3.org/2005/xpath-functions"
+   <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
+                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  mode="md"
                  match="ol/li"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
@@ -27835,8 +27143,8 @@
          <xsl:apply-templates mode="md"/>
       </string>
    </xsl:template>
-   <xsl:template xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 xmlns="http://www.w3.org/2005/xpath-functions"
+   <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
+                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  mode="md"
                  match="code | span[contains(@class, 'code')]"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
@@ -27844,8 +27152,8 @@
       <xsl:apply-templates mode="md"/>
       <xsl:text>`</xsl:text>
    </xsl:template>
-   <xsl:template xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 xmlns="http://www.w3.org/2005/xpath-functions"
+   <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
+                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  mode="md"
                  match="em | i"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
@@ -27853,8 +27161,8 @@
       <xsl:apply-templates mode="md"/>
       <xsl:text>*</xsl:text>
    </xsl:template>
-   <xsl:template xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 xmlns="http://www.w3.org/2005/xpath-functions"
+   <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
+                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  mode="md"
                  match="strong | b"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
@@ -27862,8 +27170,8 @@
       <xsl:apply-templates mode="md"/>
       <xsl:text>**</xsl:text>
    </xsl:template>
-   <xsl:template xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 xmlns="http://www.w3.org/2005/xpath-functions"
+   <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
+                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  mode="md"
                  match="q"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
@@ -27871,8 +27179,8 @@
       <xsl:apply-templates mode="md"/>
       <xsl:text>"</xsl:text>
    </xsl:template>
-   <xsl:template xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 xmlns="http://www.w3.org/2005/xpath-functions"
+   <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
+                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  mode="md"
                  match="insert"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
@@ -27880,8 +27188,8 @@
       <xsl:value-of select="@type, @id-ref" separator=", "/>
       <xsl:text> }}</xsl:text>
    </xsl:template>
-   <xsl:template xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 xmlns="http://www.w3.org/2005/xpath-functions"
+   <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
+                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  mode="md"
                  match="a"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">
@@ -27892,8 +27200,8 @@
       <xsl:value-of select="@href"/>
       <xsl:text>)</xsl:text>
    </xsl:template>
-   <xsl:template xmlns:math="http://www.w3.org/2005/xpath-functions/math"
-                 xmlns="http://www.w3.org/2005/xpath-functions"
+   <xsl:template xmlns="http://www.w3.org/2005/xpath-functions"
+                 xmlns:math="http://www.w3.org/2005/xpath-functions/math"
                  mode="md"
                  match="img"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/metaschema/1.0/supermodel">

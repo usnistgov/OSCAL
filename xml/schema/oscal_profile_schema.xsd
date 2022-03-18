@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="us-ascii"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           xmlns:m="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
+<xs:schema xmlns:m="http://csrc.nist.gov/ns/oscal/metaschema/1.0"
            xmlns:oscal-profile="http://csrc.nist.gov/ns/oscal/1.0"
            xmlns:oscal-prose="http://csrc.nist.gov/ns/oscal/1.0"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
            elementFormDefault="qualified"
            targetNamespace="http://csrc.nist.gov/ns/oscal/1.0"
-           version="1.0.1">
+           version="1.0.2">
    <xs:annotation>
       <xs:appinfo>
          <m:schema-name>OSCAL Profile Model</m:schema-name>
-         <m:schema-version>1.0.1</m:schema-version>
+         <m:schema-version>1.0.2</m:schema-version>
          <m:short-name>oscal-profile</m:short-name>
          <m:remarks>
             <p>A profile designates a selection and configuration of controls from one or more catalogs, along with a series of operations over them. The topmost element in the OSCAL profile XML schema is <code>profile</code>.</p>
@@ -64,15 +64,15 @@
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Import resource</m:formal-name>
-            <m:description>The <m:code>import</m:code> designates a catalog, profile, or other resource to be included (referenced and potentially modified) by this profile. The import also identifies which controls to select using the <m:code>include-all</m:code>, <m:code>include-controls</m:code>, and <m:code>exclude-controls</m:code> directives.</m:description>
+            <m:description>The <m:code>import</m:code> designates a catalog or profile to be included (referenced and potentially modified) by this profile. The import also identifies which controls to select using the <m:code>include-all</m:code>, <m:code>include-controls</m:code>, and <m:code>exclude-controls</m:code> directives.</m:description>
          </xs:appinfo>
          <xs:documentation>
-            <b>Import resource</b>: The import designates a catalog, profile, or other resource to be included (referenced and potentially modified) by this profile. The import also identifies which controls to select using the include-all, include-controls, and exclude-controls directives.</xs:documentation>
+            <b>Import resource</b>: The import designates a catalog or profile to be included (referenced and potentially modified) by this profile. The import also identifies which controls to select using the include-all, include-controls, and exclude-controls directives.</xs:documentation>
       </xs:annotation>
       <xs:sequence>
          <xs:choice>
             <xs:element name="include-all"
-                        type="oscal-profile:oscal-profile-include-all-ASSEMBLY"
+                        type="oscal-profile:oscal-catalog-common-include-all-ASSEMBLY"
                         minOccurs="1"
                         maxOccurs="1"/>
             <xs:element name="include-controls"
@@ -111,10 +111,10 @@
                <xs:annotation>
                   <xs:appinfo>
                      <m:formal-name>Combination rule</m:formal-name>
-                     <m:description>A Combine element defines whether and how to combine multiple (competing) versions of the same control</m:description>
+                     <m:description>A Combine element defines how to combine multiple (competing) versions of the same control.</m:description>
                   </xs:appinfo>
                   <xs:documentation>
-                     <b>Combination rule</b>: A Combine element defines whether and how to combine multiple (competing) versions of the same control</xs:documentation>
+                     <b>Combination rule</b>: A Combine element defines how to combine multiple (competing) versions of the same control.</xs:documentation>
                </xs:annotation>
                <xs:attribute name="method" type="oscal-profile:string">
                   <xs:annotation>
@@ -380,7 +380,7 @@
       <xs:sequence>
          <xs:choice>
             <xs:element name="include-all"
-                        type="oscal-profile:oscal-profile-include-all-ASSEMBLY"
+                        type="oscal-profile:oscal-catalog-common-include-all-ASSEMBLY"
                         minOccurs="1"
                         maxOccurs="1"/>
             <xs:element name="include-controls"
@@ -403,16 +403,6 @@
                <b>Order</b>: A designation of how a selection of controls in a profile is to be ordered.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
-   </xs:complexType>
-   <xs:complexType name="oscal-profile-include-all-ASSEMBLY">
-      <xs:annotation>
-         <xs:appinfo>
-            <m:formal-name>Insert All</m:formal-name>
-            <m:description>Insert all controls from the imported catalog or profile resources identified in the <m:code>import</m:code> directive.</m:description>
-         </xs:appinfo>
-         <xs:documentation>
-            <b>Insert All</b>: Insert all controls from the imported catalog or profile resources identified in the import directive.</xs:documentation>
-      </xs:annotation>
    </xs:complexType>
    <xs:complexType name="oscal-profile-select-control-by-id-ASSEMBLY">
       <xs:annotation>
@@ -2118,6 +2108,16 @@
                <b>Parameter Cardinality</b>: Describes the number of selections that must occur. Without this setting, only one value should be assumed to be permitted.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
+   </xs:complexType>
+   <xs:complexType name="oscal-catalog-common-include-all-ASSEMBLY">
+      <xs:annotation>
+         <xs:appinfo>
+            <m:formal-name>Include All</m:formal-name>
+            <m:description>Include all controls from the imported catalog or profile resources.</m:description>
+         </xs:appinfo>
+         <xs:documentation>
+            <b>Include All</b>: Include all controls from the imported catalog or profile resources.</xs:documentation>
+      </xs:annotation>
    </xs:complexType>
    <xs:complexType name="markupLineType" mixed="true">
       <xs:group ref="oscal-profile:mixedInlineMarkupGroup"/>
