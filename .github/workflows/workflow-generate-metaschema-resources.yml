@@ -1,0 +1,154 @@
+name: Generate Model Resources
+on:
+  workflow_call:
+    inputs:
+      saxon_version:
+        description: 'the version of Saxon to use'
+        required: false
+        default: '10.6'
+        type: string
+      commit_resources:
+        description: 'commit the resources after generating them. Requires the access_token to be passed'
+        required: false
+        default: false
+        type: boolean
+    secrets:
+      access_token:
+        description: 'the access token to use for commits'
+        required: false
+  workflow_dispatch:
+    branches:
+    - main
+    - develop
+    - "release-*"
+    inputs:
+      saxon_version:
+        description: 'the version of Saxon to use'
+        required: true
+        default: '10.6'
+        type: string
+      commit_resources:
+        description: 'commit the resources after generating them. Requires a PAT defined as secrets.COMMIT_TOKEN'
+        required: true
+        default: false
+        type: boolean
+jobs:
+  metaschema-artifacts:
+    name: Generate Metaschema-Based Model Resources
+    runs-on: ubuntu-latest
+    env:
+      SCHEMATRON_HOME: build/metaschema/support/schematron
+      SAXON_VERSION: ${{ github.event.inputs.saxon_version }}${{ inputs.saxon_version }}
+      CICD_PATH: ./build/ci-cd
+      MAIN_REPO_PATH: main
+      BRANCH_REPO_PATH: branch
+    steps:
+    # use this for builds triggered from the UI on protected branches
+    - name: Checkout Latest (using COMMIT_TOKEN)
+      if: github.event_name == 'workflow_dispatch' && github.event.inputs.commit_resources == true
+      uses: actions/checkout@v3
+      with:
+        token: ${{ secrets.COMMIT_TOKEN }}
+        submodules: recursive
+        fetch-depth: 0
+    # use this for builds triggered from other workflows on protected branches
+    - name: Checkout Latest (using access_token)
+      if: github.event_name == 'push' && inputs.commit_resources == true
+      uses: actions/checkout@v3
+      with:
+        token: ${{ secrets.access_token }}
+        submodules: recursive
+        fetch-depth: 0
+    # use this for overything else (i.e., pull requests) where publication is not needed
+    - name: Checkout Latest
+      if: ${{ inputs.commit_resources == false }}
+      uses: actions/checkout@v3
+      with:
+        submodules: recursive
+        fetch-depth: 0
+    # Check for work
+    # -------------------------
+    - name: Check for changed files
+      id: changed-files
+      uses: tj-actions/changed-files@v18.3
+      with:
+        files: |
+          src/metaschema
+          .github/workflows/workflow-generate-metaschema-resources.yml
+    # Setup runtime environment
+    # -------------------------
+    # Java JDK 11
+    - name: Set up JDK 11
+      if: steps.changed-files.outputs.any_modified
+      uses: actions/setup-java@v2
+      with:
+        java-version: 11
+        distribution: 'temurin'
+        cache: 'maven'
+    - name: Get Saxon-HE
+      if: steps.changed-files.outputs.any_modified
+      run: |
+        mvn org.apache.maven.plugins:maven-dependency-plugin:2.10:get -DartifactId=Saxon-HE -DgroupId=net.sf.saxon -Dversion=${SAXON_VERSION}
+    # Operating System packages
+    - name: Update APT package metadata
+      if: steps.changed-files.outputs.any_modified
+      run: |
+        sudo rm -rf /var/lib/apt/lists/* && sudo apt-get update
+    - name: Install APT dependencies
+      if: steps.changed-files.outputs.any_modified
+      run: |
+        sudo apt-get install libxml2-utils
+    # NodeJS
+    - name: Install NPM dependencies (i.e., ajv)
+      if: steps.changed-files.outputs.any_modified
+      run: |
+        sudo npm install --loglevel verbose -g yargs ajv-formats@"^1.5.x" ajv-cli@"^4.0.x" yaml-convert@"^1.0.x"
+    # Build Artifacts
+    # ---------------
+    # job-validate-metaschema
+    - name: Validate Metaschemas
+      if: steps.changed-files.outputs.any_modified
+      run: |
+        bash "${CICD_PATH}/validate-metaschema.sh" -w "${GITHUB_WORKSPACE}" --scratch-dir "${RUNNER_TEMP}"
+    # job-generate-schema
+    - name: Generate Schemas
+      if: steps.changed-files.outputs.any_modified
+      run: |
+        bash "${CICD_PATH}/generate-schema.sh" -w "${GITHUB_WORKSPACE}"
+      continue-on-error: true
+    # job-generate-converters
+    - name: Generate Content Converters
+      if: steps.changed-files.outputs.any_modified
+      run: |
+        bash "${CICD_PATH}/generate-content-converters.sh" -w "${GITHUB_WORKSPACE}"
+      continue-on-error: true
+    # job-run-unittests
+    - name: Run Content Unit Tests
+      if: steps.changed-files.outputs.any_modified
+      run: |
+        bash "${CICD_PATH}/run-unittests.sh" -w "${GITHUB_WORKSPACE}"
+    - name: Zip Artifacts for Upload
+      if: steps.changed-files.outputs.any_modified
+      run: |
+        zip ${{ runner.temp }}/metaschema-artifacts.zip -r xml/schema/*.xsd json/schema/*.json xml/convert/*.xsl json/convert/*.xsl
+    - uses: actions/upload-artifact@v2
+      if: steps.changed-files.outputs.any_modified
+      with:
+        name: schemas-and-converters
+        path: |
+          ${{ runner.temp }}/metaschema-artifacts.zip
+        retention-days: 5
+    # Store Built Artifacts
+    # ---------------
+    - name: Publish Schemas and Converters
+      # only do this on master
+      if: steps.changed-files.outputs.any_modified && (github.event.inputs.commit_resources == true || inputs.commit_resources == true)
+      uses: stefanzweifel/git-auto-commit-action@v4.9.2
+      with:
+        file_pattern: xml json
+        # push_options: --force-with-lease
+        skip_dirty_check: false
+        commit_message: Publishing generated metaschema resources [ci skip]
+#          commit_user_name: OSCAL GitHub Actions Bot
+#          commit_user_email: oscal@nist.gov
+#          commit_author: OSCAL GitHub Actions Bot <oscal@nist.gov>

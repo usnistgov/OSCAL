@@ -1,0 +1,50 @@
+name: Validate Repo Markdown
+on:
+  workflow_call:
+    inputs:
+      ignorePattern:
+        description: 'a pattern provided to grep for files/directories to ignore'
+        required: false
+        default: '^docs/'
+        type: string
+      markdownLinkCheckConfig:
+        description: 'the path to the markdown link check config file'
+        required: false
+        default: 'build/config/.markdown-link-check/config.json'
+        type: string
+  workflow_dispatch:
+    branches:
+    - main
+    - develop
+    - "release-*"
+    inputs:
+      ignorePattern:
+        description: 'a pattern provided to grep for files/directories to ignore'
+        required: false
+        default: '^docs/'
+        type: string
+      markdownLinkCheckConfig:
+        description: 'the path to the markdown link check config file'
+        required: false
+        default: 'build/config/.markdown-link-check/config.json'
+        type: string
+jobs:
+  validate-repo-markdown:
+    name: Validate Repo Markdown
+    runs-on: ubuntu-latest
+    steps:
+    # use this for pulls where checkout is anonymous
+    - uses: actions/checkout@v2
+      with:
+        submodules: recursive
+    # Setup runtime environment
+    # -------------------------
+    - name: Get markdown-link-check
+      run: |
+          sudo npm install -g markdown-link-check
+    # Build Artifacts
+    # ---------------
+    - name: Validate repo Markdown content instances
+      run: |
+        # this command will filter out any docs Markdown files, which are checked in a different job
+        git ls-files "*/*.md" -z | grep --null-data -v "${{ inputs.ignorePattern }}" | xargs -0 -n1 markdown-link-check -q -c "${{ inputs.markdownLinkCheckConfig }}"

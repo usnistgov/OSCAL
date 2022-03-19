@@ -1,0 +1,199 @@
+name: Generate Refeference Docs
+on:
+  workflow_call:
+    inputs:
+      saxon_version:
+        description: 'the version of Saxon to use'
+        required: false
+        default: '10.6'
+        type: string
+      hugo_version:
+        description: 'the version of Hugo to use'
+        required: false
+        default: '0.83.1'
+        type: string
+      calabash_version:
+        description: 'the version of XML Calabash to use'
+        required: false
+        default: '1.2.5-100'
+        type: string
+      commit_resources:
+        description: 'commit the resources after generating them. Requires the access_token to be passed'
+        required: false
+        default: false
+        type: boolean
+    secrets:
+      access_token:
+        description: 'the access token to use for commits'
+        required: false
+  workflow_dispatch:
+    branches:
+    - main
+    - develop
+    - "release-*"
+    tags:
+    - "v*"
+    inputs:
+      saxon_version:
+        description: 'the version of Saxon to use'
+        required: true
+        default: '10.6'
+        type: string
+      hugo_version:
+        description: 'the version of Hugo to use'
+        required: false
+        default: '0.83.1'
+        type: string
+      calabash_version:
+        description: 'the version of XML Calabash to use'
+        required: false
+        default: '1.2.5-100'
+        type: string
+      commit_resources:
+        description: 'commit the resources after generating them. Requires a PAT defined as secrets.COMMIT_TOKEN'
+        required: true
+        default: false
+        type: boolean
+jobs:
+  build-and-push-website:
+    name: Build and Push Website Reference
+    runs-on: ubuntu-latest
+    env:
+      SAXON_VERSION: ${{ github.event.inputs.saxon_version }}${{ inputs.saxon_version }}
+      CALABASH_HOME: ${{ github.workspace }}/dependencies/calabash
+      CALABASH_VERSION: ${{ github.event.inputs.calabash_version }}${{ inputs.calabash_version }}
+      HUGO_VERSION: ${{ github.event.inputs.hugo_version }}${{ inputs.hugo_version }}
+      CICD_PATH: ./build/ci-cd
+      MAIN_PATH: ${{ github.workspace }}/main
+      BRANCH_PATH: ${{ github.workspace }}/branch
+      MAIN_BRANCH_REF: main
+    steps:
+    # This workflow requires two branches to be checked out
+    # 1) The main branch where live web assets are managed. Generated reference pages need to be
+    #    pushed here.
+    # 2) The target branch where the metaschemas exist that are the basis of reference information.
+    # Checkout the current branch for reading
+    - name: Checkout Latest
+      uses: actions/checkout@v3
+      with:
+        path: ${{ env.BRANCH_PATH }}
+        submodules: recursive
+        fetch-depth: 0 # this ensures that the tag and commit history are available
+    # use this for builds triggered from the UI on protected branches
+    - name: Checkout Main (using COMMIT_TOKEN)
+      if: github.event_name == 'workflow_dispatch' && github.event.inputs.commit_resources == true
+      uses: actions/checkout@v3
+      with:
+        path: ${{ env.MAIN_PATH }}
+        ref: ${{ env.MAIN_BRANCH_REF }}
+        token: ${{ secrets.COMMIT_TOKEN }}
+        submodules: recursive
+    # use this for builds triggered from other workflows on protected branches
+    - name: Checkout Main (using access_token)
+      if: github.event_name == 'push' && inputs.commit_resources == true
+      uses: actions/checkout@v3
+      with:
+        path: ${{ env.MAIN_PATH }}
+        ref: ${{ env.MAIN_BRANCH_REF }}
+        token: ${{ secrets.access_token }}
+        submodules: recursive
+    # use this for overything else (i.e., pull requests) where publication is not needed
+    - name: Checkout Latest
+      if: ${{ inputs.commit_resources == false }}
+      uses: actions/checkout@v3
+      with:
+        path: ${{ env.MAIN_PATH }}
+        ref: ${{ env.MAIN_BRANCH_REF }}
+        submodules: recursive
+    # Setup runtime environment
+    # -------------------------
+    # Java JDK 11
+    - name: Set up JDK 11
+      uses: actions/setup-java@v2
+      with:
+        java-version: 11
+        distribution: 'temurin'
+        cache: 'maven'
+    - name: Get Saxon-HE
+      run: |
+        mvn org.apache.maven.plugins:maven-dependency-plugin:2.10:get -DartifactId=Saxon-HE -DgroupId=net.sf.saxon -Dversion=${SAXON_VERSION}
+    # Install Calabash
+    - name: Install Calabash
+      run: |
+        wget https://github.com/ndw/xmlcalabash1/releases/download/${CALABASH_VERSION}/xmlcalabash-${CALABASH_VERSION}.zip
+        mkdir -p "${CALABASH_HOME}"
+        unzip -d "${CALABASH_HOME}" "xmlcalabash-${CALABASH_VERSION}.zip" && f=("${CALABASH_HOME}"/*) && mv "${CALABASH_HOME}"/*/* "${CALABASH_HOME}" && rmdir "${f[@]}"
+    # Install Hugo
+    - name: Install Hugo
+      run: |
+        wget https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_Linux-64bit.deb
+        sudo apt-get install ./hugo_extended_${HUGO_VERSION}_Linux-64bit.deb
+#      # Ruby and Bundler
+#      - name: Install Ruby and Bundler
+#        uses: ruby/setup-ruby@v1
+#        with:
+#          ruby-version: 2.6 # Not needed with a .ruby-version file
+#          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+#          working-directory: ${{ env.OSCAL_WEBSITE_PATH }}
+    # Build Artifacts
+    # ---------------
+    - name: Generate Model Reference Documentation
+      # perform this step in the target branch, but generate the results to the main branch
+      run: |
+        echo "PWD: ${PWD}"
+        echo "Github Workspace: ${{ github.workspace }}"
+        echo "Branch: $(git branch --show-current)"
+
+        BRANCH="${GITHUB_REF}"
+        echo "Branch(1): ${BRANCH}"
+        if [[ "$BRANCH" =~ ^refs/pull/.* ]]; then
+          BRANCH="${GITHUB_HEAD_REF}"
+          echo "Branch(2): ${BRANCH}"
+        elif [[ "$BRANCH" =~ ^refs/heads/.* ]]; then
+          BRANCH="${GITHUB_REF#refs/heads/}"
+          echo "Branch(3): ${BRANCH}"
+        fi
+        echo "Branch(4): ${BRANCH}"
+        CALABASH_HOME="${{ github.workspace }}/${CALABASH_HOME}" bash "../build/ci-cd/generate-model-documentation.sh" -b "${BRANCH}" -w "${{ env.MAIN_PATH }}/docs"
+      working-directory: ${{ env.BRANCH_PATH }}/docs
+    - name: Run Hugo
+      run: |
+          hugo --config "config.yaml,development-config.yaml" -v --debug --minify
+      working-directory: ${{ env.MAIN_PATH }}/docs
+    - name: Zip Artifacts for Upload
+      run: |
+        zip ${{ runner.temp }}/metaschema-website.zip -r public/
+      working-directory: ${{ env.MAIN_PATH }}/docs
+    - uses: actions/upload-artifact@v2
+      with:
+        name: website
+        path: |
+          ${{ runner.temp }}/metaschema-website.zip
+        retention-days: 5
+    - name: Check internal links
+      uses: untitaker/hyperlink@0.1.15
+      with:
+        args: '"${{ env.MAIN_PATH }}/docs/public/" --sources "${{ env.MAIN_PATH }}/docs/content" --check-anchors'
+#      - name: Run HTMLProofer
+#        run: |
+#          cd "${OSCAL_WEBSITE_PATH}"
+#          bundle exec htmlproofer --check-external-hash public/ --url-swap "https\://pages.nist.gov/OSCAL/:/" --assume-extension --log-level :debug --url-ignore "/pages.nist.gov\/(?:nist-header-footer|leaveNotice)\/.+/"
+#      - uses: actions/upload-artifact@v2
+#        with:
+#          name: generated-docs
+#          path: |
+#            ${{ env.OSCAL_HOME }}/docs
+#          retention-days: 5    # Store Built Artifacts
+    - name: Publish Generated Pages
+      # only do this on master
+      if: github.event.inputs.commit_resources == true || inputs.commit_resources == true
+      uses: stefanzweifel/git-auto-commit-action@v4.9.2
+      with:
+        repository: ${{ env.MAIN_PATH }}
+        file_pattern: docs
+        # push_options: --force-with-lease
+        skip_dirty_check: false
+        commit_message: Pushing generated website pages [ci skip]
+#          commit_user_name: OSCAL GitHub Actions Bot
+#          commit_user_email: oscal@nist.gov
+#          commit_author: OSCAL GitHub Actions Bot <oscal@nist.gov>
