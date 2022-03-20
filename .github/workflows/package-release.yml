@@ -8,7 +8,7 @@ env:
   HOME_REPO: usnistgov/OSCAL
   # dependency versions
   SAXON_VERSION: 10.6
-  HUGO_VERSION: 0.69.2
+  HUGO_VERSION: 0.83.1
   # build-specific environment
   CONTENT_CONFIG_PATH: src/config
   SCHEMATRON_HOME: git-content/schematron
@@ -49,10 +49,19 @@ jobs:
             "${{ env.OSCAL_WORKING_PATH }}/${{ env.RELEASE_NAME }}.tar.bz2"
             "${{ env.OSCAL_WORKING_PATH }}/${{ env.RELEASE_NAME }}.zip"
           retention-days: 5
-      - uses: ncipollo/release-action@v1
+      - uses: ncipollo/release-action@v1.9.0
         with:
           name: OSCAL ${{ env.RELEASE_VERSION }} Release
+          allowUpdates: false
           draft: true
-          prerelease: true
+          generateReleaseNotes: true
           token: ${{ secrets.COMMIT_TOKEN }}
-          artifacts: "${{ env.RELEASE_NAME }}.tar.bz2,${{ env.RELEASE_NAME }}.zip"
+          continue-on-error: true
+      - uses: ncipollo/release-action@v1.9.0
+        with:
+          name: OSCAL ${{ env.RELEASE_VERSION }} Release
+          allowUpdates: true
+          omitBodyDuringUpdate: true
+          omitNameDuringUpdate: true
+          token: ${{ secrets.COMMIT_TOKEN }}
+          artifacts: "${{ env.OSCAL_WORKING_PATH }}/${{ env.RELEASE_NAME }}.tar.bz2,${{ env.OSCAL_WORKING_PATH }}/${{ env.RELEASE_NAME }}.zip"
