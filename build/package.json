@@ -1,0 +1,9 @@
+{
+    "name": "ci-cd-packages",
+    "version": "1.0.0",
+    "dependencies": {
+        "ajv-cli": "^4.0.x",
+        "ajv-formats": "^2.1.x",
+        "yaml-convert": "^1.0.x"
+    }
+}
