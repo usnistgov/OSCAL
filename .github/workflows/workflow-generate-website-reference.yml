@@ -154,7 +154,7 @@ jobs:
           BRANCH="${GITHUB_REF#refs/tags/}"
         fi
         echo "Using Branch: ${BRANCH}"
-        CALABASH_HOME="${{ github.workspace }}/${CALABASH_HOME}" bash "${{ env.MAIN_PATH }}/build/ci-cd/generate-model-documentation.sh" -b "${BRANCH}" -a "${BRANCH_PATH}" -w "${MAIN_PATH} -o "${MAIN_PATH}"
+        CALABASH_HOME="${{ github.workspace }}/${CALABASH_HOME}" bash "${{ env.MAIN_PATH }}/build/ci-cd/generate-model-documentation.sh" -b "${BRANCH}" -a "${BRANCH_PATH}" -w "${MAIN_PATH}" -o "${MAIN_PATH}"
       working-directory: ${{ env.BRANCH_PATH }}
     - name: Run Hugo
       run: |
