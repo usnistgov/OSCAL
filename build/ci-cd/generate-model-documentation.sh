@@ -153,7 +153,7 @@ if [[ "$BRANCH" =~ ^v.* ]]; then
   REVISION="${VERSION}"
   TYPE="tag"
 elif [ "$BRANCH" = "main" ]; then
-  VERSION="$(cd "${OSCAL_DIR}";git describe --abbrev=0)"
+  VERSION="$(cd "${ARTIFACT_DIR}";git describe --abbrev=0; cd -)"
   VERSION="${VERSION/#"v"}"
   REVISION="latest"
   TYPE="branch"
