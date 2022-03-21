@@ -22,6 +22,7 @@ The first major version of OSCAL, OSCAL v1, will be developed over a series of m
 
 OSCAL release history, in reverse chronological order:
 
+- [OSCAL 1.0.2 Patch Release](/contribute/roadmap/#oscal-102) - March 3, 2022
 - [OSCAL 1.0.1 Patch Release](/contribute/roadmap/#oscal-101) - January 30, 2022
 - [OSCAL 1.0.0 Full Release](/contribute/roadmap/#oscal-100-full-release) - June 7, 2021
 - [OSCAL 1.0.0 Release Candidate 2](/contribute/roadmap/#oscal-100-release-candidate-2) - April 12, 2021
@@ -32,11 +33,25 @@ OSCAL release history, in reverse chronological order:
 
 These releases are listed below in reverse chronological order.
 
+### OSCAL 1.0.2
+
+{{<usa-tag>}}Development Milestone{{</usa-tag>}} OSCAL [1.0.2 Release](https://github.com/usnistgov/OSCAL/milestone/13)
+
+{{<usa-tag>}}Status{{</usa-tag>}} [Released](https://github.com/usnistgov/OSCAL/releases/tag/v1.0.1) (March 3, 2022)
+
+{{<usa-tag>}}Focus{{</usa-tag>}} Bug fixes and documentation improvements.
+
+{{<usa-tag>}}Release Notes{{</usa-tag>}} [OSCAL 1.0.2 Release Notes](/reference/release-notes/#oscal-102-release)
+
+The NIST Open Security Controls Assessment Language (OSCAL) team is pleased to announce the release of OSCAL 1.0.2. This patch release of OSCAL 1.0 provides bug fixes and documentation enhancements.
+
+This release [incorporates changes](https://pages.nist.gov/OSCAL/reference/release-notes/#oscal-102-release) based on feedback from the OSCAL community. The NIST OSCAL team is very thankful for all of the great ideas and feedback we have received.
+
 ### OSCAL 1.0.1
 
-{{<usa-tag>}}Development Milestone{{</usa-tag>}} OSCAL 1.0.1 [Full Release](https://github.com/usnistgov/OSCAL/milestone/12)
+{{<usa-tag>}}Development Milestone{{</usa-tag>}} OSCAL [1.0.1 Release](https://github.com/usnistgov/OSCAL/milestone/12)
 
-{{<usa-tag>}}Status{{</usa-tag>}} [Released](https://github.com/usnistgov/OSCAL/releases/tag/v1.0.1) (January 30, 2022)
+{{<usa-tag>}}Status{{</usa-tag>}} [Released](https://github.com/usnistgov/OSCAL/releases/tag/v1.0.2) (January 30, 2022)
 
 {{<usa-tag>}}Focus{{</usa-tag>}} Bug fixes, documentation improvements, and Metaschema constraint improvements.
 
@@ -44,11 +59,11 @@ These releases are listed below in reverse chronological order.
 
 The NIST Open Security Controls Assessment Language (OSCAL) team is pleased to announce the release of OSCAL 1.0.1. This first patch release of OSCAL 1.0 provides bug fixes and documentation enhancements.
 
-This release [incorporates changes](https://pages.nist.gov/OSCAL/reference/release-notes/#oscal-101-release) based on feedback from the OSCAL community. The NIST OSCAL team is very thankful for all of the great ideas and feedback we have received to date.
+This release [incorporates changes](https://pages.nist.gov/OSCAL/reference/release-notes/#oscal-101-release) based on feedback from the OSCAL community. The NIST OSCAL team is very thankful for all of the great ideas and feedback we have received.
 
 ### OSCAL 1.0.0 Full Release
 
-{{<usa-tag>}}Development Milestone{{</usa-tag>}} OSCAL 1.0.0 [Full Release](https://github.com/usnistgov/OSCAL/milestone/4)
+{{<usa-tag>}}Development Milestone{{</usa-tag>}} OSCAL [1.0.0 Release](https://github.com/usnistgov/OSCAL/milestone/4)
 
 {{<usa-tag>}}Status{{</usa-tag>}} [Released](https://github.com/usnistgov/OSCAL/releases/tag/v1.0.0) (June 7, 2021)
 
