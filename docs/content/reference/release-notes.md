@@ -10,6 +10,50 @@ toc:
   headingselectors: "h2, h3, h4, h5, h6"
 ---
 
+## OSCAL 1.0.2 Release
+
+The following changes were made in this patch release.
+
+- #1035 Upgrade Saxon version used in CI/CD to 10.6 (#PR 1187) @david-waltermire-nist
+- #1093 Parameterize insertion of xsi:schemaLocation attribute in the content upgrader XSLTs; this feature is disabled by default (#1162) @aj-stein-nist, @wendellpiez
+   - Parameterized insertion of xsi:schemaLocation in RC2->1.0.0 content upgrader.
+   - Created README for content upgraders, document schema-location param.
+   - Added pointer from README.txt to content-upgrade docs, per @david-waltermire-nist's sync meeting review.
+- #1121 Added embeded diagram of CI/CD workflow. (PR #1165) @aj-stein-nist
+- #1130 Changed remarks fields from define-field to ref. (PR #1138) @guyzyl
+- #1137 Replace `define-assembly` for `include-all` with `assembly ref` (PR #1144) @guyzyl, @david-waltermire-nist
+- A bunch of updates to the Profile Resolution Specififcation to clarify and improve the specification. (PR #1172) @stephenbanghart, @aj-stein-nist
+   - #1140 Significant improvements around resolution of internal references. Behavior is now defined for resolving resources with different combinations of "rlink" and "base64". As these /should/ all be equal to one another, there is no standardized order or priority given in the specification at this time.
+   - #1141 Enhanced prose around Group handling, especially around expected behavior of the "keep always" prop.
+   - #1142 Core issue obsoleted by general OSCAL requirements on valid OSCAL documents. Cleaned up prose in the formats section.
+   - #1152 Added Metaschema entries for the new Mapping assembly and it's associated fields/flags. Verified the veracity of existing Profile documentation, making minor-moderate edits to bring documentation up to speed with the current specification.
+   - #1155 Fixed incorrect notation in metadata section: props are now properly refereed to as such, rather than using the value of their "name" field.
+- #1153 Added README explaining content validation concepts. (PR #1170) @aj-stein-nist, @wendellpiez, @david-waltermire-nist
+- #1153 Added information about content well-formedness and validation to the website. (PR #1169) @aj-stein-nist, @wendellpiez, @david-waltermire-nist
+- #1176 Removed stale `NEW CONTENT`, `END NEW CONTENT`, and `NEW` comment blocks from Metaschemas. (PR #1179) @guyzyl
+- Multiple changes to the Profile Resolution Specification. (PR #1089)  @stephenbanghart, @aj-stein-nist
+   - Tagged Requirements (updated .rnc), Added Draft Status, several small fixes in modify section
+   - Applying AJ's fixes, other various small fixes - pending larger automated formating
+   - Intro purpose rewrite. Editorial fixes from comments. Small edits to "Processing" page on site.
+- Added DRT Strategies Inc GRC tool to tools page (PR #1122) @vmangat
+- Add Rules Presentation from January 21, 2022 Meeting (PR #1125) @aj-stein-nist
+- Add tool oscal4neo4j to tools page (#1128) @Agh42, @bradh
+- Remove extra `>` which shows in the built schemas (PRs #1133, #1147) @guyzyl
+- Fix broken links to FedRAMP baselines (PR #1143) @rosskarchner 
+- Bumped nokogiri from 1.12.5 to 1.13.3 in /docs (PR #1154) @dependabot
+- Updated core repo documentation (PR #1157) @david-waltermire-nist, @aj-stein-nist
+   - Updated readmes with more current and relevant information.
+   - Added CODEOWNERS to drive reviews.
+   - Updated .github/PULL_REQUEST_TEMPLATE.md
+- Removed duplicated risk status construct in the assessment commonm Metaschema (PR #1159) @david-waltermire-nist
+- Updated Tools with Additional Open Source Projects (PR #1164) @rgauss
+- Fixed broken links in `README.md` (PR #1181) @guyzyl
+- Renamed `.github/README.md` file to `ABOUT.md` to fix the main index page in the GitHub repo (#1182) @guyzyl
+- Added mailing list names to contact page.
+
+The following compatibility breaking change was made:
+- In all JSON schemas, the name "props" is used to signify the list of metadata properties. There was one case where the name prop is used instead of props. Fixes this obvious typo in the assessment results metaschema. (PR #1148) @guyzyl
+
 ## OSCAL 1.0.1 Release
 
 The following changes were made in this patch release.
