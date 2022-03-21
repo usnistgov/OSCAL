@@ -98,7 +98,7 @@ jobs:
         token: ${{ secrets.access_token }}
         submodules: recursive
     # use this for overything else (i.e., pull requests) where publication is not needed
-    - name: Checkout Latest
+    - name: Checkout Main
       if: ${{ inputs.commit_resources == false }}
       uses: actions/checkout@v3
       with:
@@ -142,20 +142,20 @@ jobs:
       run: |
         echo "PWD: ${PWD}"
         echo "Github Workspace: ${{ github.workspace }}"
-        echo "Branch: $(git branch --show-current)"
+        echo "Current Branch: $(git branch --show-current)"
+        echo "GITHUB_REF: ${GITHUB_REF}"
 
         BRANCH="${GITHUB_REF}"
-        echo "Branch(1): ${BRANCH}"
         if [[ "$BRANCH" =~ ^refs/pull/.* ]]; then
           BRANCH="${GITHUB_HEAD_REF}"
-          echo "Branch(2): ${BRANCH}"
         elif [[ "$BRANCH" =~ ^refs/heads/.* ]]; then
           BRANCH="${GITHUB_REF#refs/heads/}"
-          echo "Branch(3): ${BRANCH}"
+        elif [[ "$BRANCH" =~ ^refs/tags/.* ]]; then
+          BRANCH="${GITHUB_REF#refs/tags/}"
         fi
-        echo "Branch(4): ${BRANCH}"
-        CALABASH_HOME="${{ github.workspace }}/${CALABASH_HOME}" bash "../build/ci-cd/generate-model-documentation.sh" -b "${BRANCH}" -w "${{ env.MAIN_PATH }}/docs"
-      working-directory: ${{ env.BRANCH_PATH }}/docs
+        echo "Using Branch: ${BRANCH}"
+        CALABASH_HOME="${{ github.workspace }}/${CALABASH_HOME}" bash "${{ env.MAIN_PATH }}/build/ci-cd/generate-model-documentation.sh" -b "${BRANCH}" -a "${BRANCH_PATH}" -w "${MAIN_PATH} -o "${MAIN_PATH}"
+      working-directory: ${{ env.BRANCH_PATH }}
     - name: Run Hugo
       run: |
           hugo --config "config.yaml,development-config.yaml" -v --debug --minify

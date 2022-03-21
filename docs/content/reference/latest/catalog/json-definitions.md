@@ -1,6 +1,6 @@
 ---
-title: "OSCAL Catalog Model v1.0.1 JSON Format Metaschema Reference"
-heading: "Catalog Model v1.0.1 Model JSON Metaschema Reference"
+title: "OSCAL Catalog Model v1.0.2 JSON Format Metaschema Reference"
+heading: "Catalog Model v1.0.2 Model JSON Metaschema Reference"
 weight: 40
 generateanchors: false
 sidenav:

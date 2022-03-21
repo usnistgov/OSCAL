@@ -1,6 +1,6 @@
 ---
-title: "OSCAL Plan of Action and Milestones Model v1.0.1 XML Format Index"
-heading: "Plan of Action and Milestones Model v1.0.1 XML Format Index"
+title: "OSCAL Plan of Action and Milestones Model v1.0.2 XML Format Index"
+heading: "Plan of Action and Milestones Model v1.0.2 XML Format Index"
 weight: 70
 generateanchors: false
 sidenav:
@@ -1587,7 +1587,7 @@ The following is an index of each XML element and attribute used in the [XML for
       <h1 class="toc1" id="/status">status</h1>
       <ul>
          <li><span class="pathlink">/<a href="../xml-reference/#/plan-of-action-and-milestones">plan-of-action-and-milestones</a>/<a href="../xml-reference/#/plan-of-action-and-milestones/local-definitions">local-definitions</a>/<a href="../xml-reference/#/plan-of-action-and-milestones/local-definitions/component">component</a>/<a href="../xml-reference/#/plan-of-action-and-milestones/local-definitions/component/status">status</a></span> - <span class="formal-name"><a href="../xml-definitions/#/assembly/oscal-implementation-common/system-component/status">Status</a></span></li>
-         <li><span class="pathlink">/<a href="../xml-reference/#/plan-of-action-and-milestones">plan-of-action-and-milestones</a>/<a href="../xml-reference/#/plan-of-action-and-milestones/risk">risk</a>/<a href="../xml-reference/#/plan-of-action-and-milestones/risk/status">status</a></span> - <span class="formal-name"><a href="../xml-definitions/#/assembly/oscal-assessment-common/risk/status">Status</a></span></li>
+         <li><span class="pathlink">/<a href="../xml-reference/#/plan-of-action-and-milestones">plan-of-action-and-milestones</a>/<a href="../xml-reference/#/plan-of-action-and-milestones/risk">risk</a>/<a href="../xml-reference/#/plan-of-action-and-milestones/risk/status">status</a></span> - <span class="formal-name"><a href="../xml-definitions/#/assembly/oscal-assessment-common/risk/status">Risk Status</a></span></li>
       </ul>
    </section>
    <section class="named-object-group">

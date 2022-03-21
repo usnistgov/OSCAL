@@ -1,6 +1,6 @@
 ---
-title: "OSCAL Plan of Action and Milestones Model v1.0.1 XML Format Reference"
-heading: "Plan of Action and Milestones Model v1.0.1 XML Format Reference"
+title: "OSCAL Plan of Action and Milestones Model v1.0.2 XML Format Reference"
+heading: "Plan of Action and Milestones Model v1.0.2 XML Format Reference"
 weight: 60
 generateanchors: false
 sidenav:
@@ -11683,7 +11683,7 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                            <p class="type" id="/plan-of-action-and-milestones/risk/status/_VALUE"><a href="/reference/datatypes/#token">token</a></p>
                            <p class="occurrence">[1]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/plan-of-action-and-milestones/risks/status">Switch to JSON</a></div>
-                           <p class="formal-name">Status</p>
+                           <p class="formal-name">Risk Status</p>
                         </div>
                         <div class="body">
                            <p class="description"><span class="usa-tag">Description</span> Describes the status of the associated risk.</p>
