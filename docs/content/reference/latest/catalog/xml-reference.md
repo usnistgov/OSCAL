@@ -1,6 +1,6 @@
 ---
-title: "OSCAL Catalog Model v1.0.1 XML Format Reference"
-heading: "Catalog Model v1.0.1 XML Format Reference"
+title: "OSCAL Catalog Model v1.0.2 XML Format Reference"
+heading: "Catalog Model v1.0.2 XML Format Reference"
 weight: 60
 generateanchors: false
 sidenav:

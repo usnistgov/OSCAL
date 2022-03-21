@@ -16,11 +16,13 @@ json_outline_filename="json-outline.md"
 json_reference_filename="json-reference.md"
 json_index_filename="json-index.md"
 json_definitions_filename="json-definitions.md"
-doc_path_base="/docs/content/reference/"
+doc_path_base="/content/reference/"
 BRANCH=""
 DISABLE_ARCHETYPE_CREATION=false
+ARTIFACT_DIR="${OSCALDIR}"
 OSCAL_DIR="${OSCALDIR}"
 WORKING_DIR="${OSCALDIR}"
+CONFIG_FILE="build/ci-cd/config/metaschema-docs"
 
 declare -a doc_files=("$xml_outline_filename" "$xml_reference_filename" "$xml_index_filename" "$xml_definitions_filename" "$json_outline_filename" "$json_reference_filename" "$json_index_filename" "$json_definitions_filename")
 
@@ -28,8 +30,10 @@ usage() { # Function: Print a help message.
   cat <<EOF
 Usage: $0 [options]
 
+-a DIR, --artifact-dir            Build source artifacts are stored in DIR.
 -b, --branch NAME                 The name of the release branch the generated
                                   reference documentation is for (default: develop)
+-o DIR, --oscal-dir DIR           OSCAL schema are located in DIR.
 -h, --help                        Display help
 -w DIR, --working-dir DIR         Generate artifacts in DIR
 -v                                Provide verbose output
@@ -41,9 +45,9 @@ Usage: $0 [options]
 EOF
 }
 
-OPTS=$(getopt -o o:b:w:vh --long oscal-dir:,disable-archetype-creation,branch:,release:,scratch-dir:,keep-temp-scratch-dir,help -n "$0" -- "$@")
+OPTS=$(getopt -o a:o:b:w:vh --long artifact-dir:,oscal-dir:,working-dir:,disable-archetype-creation,branch:,release:,scratch-dir:,keep-temp-scratch-dir,help -n "$0" -- "$@")
 if [[ "$OSTYPE" == "darwin"* ]]; then
-  OPTS=$(getopt b:r:w:vh $*)
+  OPTS=$(getopt a:o:b:w:vh $*)
 fi
 if [ $? != 0 ]; then
   echo "Failed parsing options." >&2
@@ -69,6 +73,10 @@ while [ $# -gt 0 ]; do
     ;;
   --keep-temp-scratch-dir)
     KEEP_TEMP_SCRATCH_DIR=true
+    ;;
+  -a|--artifact-dir)
+    ARTIFACT_DIR="$(realpath "$2")"
+    shift # past path
     ;;
   -o|--oscal-dir)
     OSCAL_DIR="$(realpath "$2")"
@@ -104,6 +112,8 @@ echo -e "${P_INFO}Generating XML and JSON Model Documentation${P_END}"
 echo -e "${P_INFO}===========================================${P_END}"
 
 if [ "$VERBOSE" = "true" ]; then
+  echo -e "${P_INFO}Using OSCAL directory:${P_END} ${OSCAL_DIR}"
+  echo -e "${P_INFO}Using artifact directory:${P_END} ${ARTIFACT_DIR}"
   echo -e "${P_INFO}Using scratch directory:${P_END} ${SCRATCH_DIR}"
 fi
 
@@ -137,7 +147,6 @@ if [ -z "$BRANCH" ]; then
 fi
 
 echo "BRANCH(initial)='${BRANCH}'"
-echo "OSCAL_DIR(initial)='${OSCAL_DIR}'"
 
 if [[ "$BRANCH" =~ ^v.* ]]; then
   VERSION="${BRANCH/#"v"}"
@@ -159,7 +168,8 @@ else
   TYPE="branch"
 fi
 
-doc_path="${WORKING_DIR}${doc_path_base}${REVISION}"
+doc_path="${DOCS_DIR}${doc_path_base}${REVISION}"
+config_file_path="${ARTIFACT_DIR}/${CONFIG_FILE}"
 
 echo "BRANCH='${BRANCH}'"
 echo "VERSION='${VERSION}'"
@@ -197,7 +207,7 @@ while IFS="|" read metaschema_path archetype model_id model_name layer_id schema
   layer_id="${layer_id##+([[:space:]])}"
   schema_id="${schema_id##+([[:space:]])}"
 
-  metaschema="$OSCAL_DIR"/"$metaschema_path"
+  metaschema="$ARTIFACT_DIR"/"$metaschema_path"
 
   # echo "metaschema: ${metaschema}"
   [ ! -f "$metaschema" ] && continue;
@@ -272,6 +282,6 @@ while IFS="|" read metaschema_path archetype model_id model_name layer_id schema
 
   echo -e "${P_OK}Generated docs for '${P_END}${metaschema_relative}${P_OK}' in '${P_END}${model_path}${P_OK}'.${P_END}"
 
-done <"${WORKING_DIR}/build/ci-cd/config/metaschema-docs"
+done <"${config_file_path}"
 
 exit $exitcode

@@ -1,6 +1,6 @@
 ---
-title: "OSCAL Profile Model v1.0.1 XML Format Outline"
-heading: "Profile Model v1.0.1 XML Format Outline"
+title: "OSCAL Profile Model v1.0.2 XML Format Outline"
+heading: "Profile Model v1.0.2 XML Format Outline"
 custom_js:
   - "/js/oscal-metaschema-map-expander.js"
 weight: 50

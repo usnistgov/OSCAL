@@ -1,6 +1,6 @@
 ---
-title: "OSCAL Assessment Plan Model v1.0.1 XML Format Outline"
-heading: "Assessment Plan Model v1.0.1 XML Format Outline"
+title: "OSCAL Assessment Plan Model v1.0.2 XML Format Outline"
+heading: "Assessment Plan Model v1.0.2 XML Format Outline"
 custom_js:
   - "/js/oscal-metaschema-map-expander.js"
 weight: 50

@@ -1,6 +1,6 @@
 ---
-title: "OSCAL Plan of Action and Milestones Model v1.0.1 JSON Format Index"
-heading: "Plan of Action and Milestones Model v1.0.1 JSON Format Index"
+title: "OSCAL Plan of Action and Milestones Model v1.0.2 JSON Format Index"
+heading: "Plan of Action and Milestones Model v1.0.2 JSON Format Index"
 weight: 30
 generateanchors: false
 sidenav:
@@ -1588,7 +1588,7 @@ The following is an index of each JSON property used in the [JSON format](https:
       <h1 class="toc1" id="/status">status</h1>
       <ul>
          <li><span class="pathlink">/<a href="../json-reference/#/plan-of-action-and-milestones">plan-of-action-and-milestones</a>/<a href="../json-reference/#/plan-of-action-and-milestones/local-definitions">local-definitions</a>/<a href="../json-reference/#/plan-of-action-and-milestones/local-definitions/components">components</a>/<a href="../json-reference/#/plan-of-action-and-milestones/local-definitions/components/status">status</a></span> - <span class="formal-name"><a href="../json-definitions/#/assembly/oscal-implementation-common/system-component/status">Status</a></span></li>
-         <li><span class="pathlink">/<a href="../json-reference/#/plan-of-action-and-milestones">plan-of-action-and-milestones</a>/<a href="../json-reference/#/plan-of-action-and-milestones/risks">risks</a>/<a href="../json-reference/#/plan-of-action-and-milestones/risks/status">status</a></span> - <span class="formal-name"><a href="../json-definitions/#/assembly/oscal-assessment-common/risk/status">Status</a></span></li>
+         <li><span class="pathlink">/<a href="../json-reference/#/plan-of-action-and-milestones">plan-of-action-and-milestones</a>/<a href="../json-reference/#/plan-of-action-and-milestones/risks">risks</a>/<a href="../json-reference/#/plan-of-action-and-milestones/risks/status">status</a></span> - <span class="formal-name"><a href="../json-definitions/#/assembly/oscal-assessment-common/risk/status">Risk Status</a></span></li>
       </ul>
    </section>
    <section class="named-object-group">

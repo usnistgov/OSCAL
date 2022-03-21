@@ -1,6 +1,6 @@
 ---
-title: "OSCAL Assessment Plan Model v1.0.1 XML Format Metaschema Reference"
-heading: "Assessment Plan Model v1.0.1 XML Metaschema Reference"
+title: "OSCAL Assessment Plan Model v1.0.2 XML Format Metaschema Reference"
+heading: "Assessment Plan Model v1.0.2 XML Metaschema Reference"
 weight: 80
 generateanchors: false
 sidenav:
@@ -9181,40 +9181,17 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="definition-link"><a href="#/assembly/oscal-metadata/link">See definition</a></p>
                   </div>
                </div>
-               <div class="model-entry definition define-field">
+               <div class="model-entry definition field">
                   <div class="instance-header">
                      <h2 id="/assembly/oscal-assessment-common/risk/status" class="toc2 name">status</h2>
                      <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                      <p class="occurrence">[1]</p>
                      <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-assessment-common/risk/status">Switch to JSON</a></div>
-                     <p class="formal-name">Status</p>
+                     <p class="formal-name">Risk Status</p>
                   </div>
                   <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> Describes the status of the associated risk.</p>
-                     <details>
-                        <summary>Constraint (1)</summary>
-                        
-                        <div class="constraint">
-                           <p><span class="usa-tag">allowed values</span></p>
-                           <p>The value <b>may be locally defined</b>, or one of the following:</p>
-                           <ul>
-                              
-                              <li><strong>open</strong>: The risk has been identified.</li>
-                              
-                              <li><strong>investigating</strong>: The identified risk is being investigated. (Open risk)</li>
-                              
-                              <li><strong>remediating</strong>: Remediation activities are underway, but are not yet complete. (Open risk)</li>
-                              
-                              <li><strong>deviation-requested</strong>: A risk deviation, such as false positive, risk reduction, or operational requirement
-                                 has been submitted for approval. (Open risk)</li>
-                              
-                              <li><strong>deviation-approved</strong>: A risk deviation, such as false positive, risk reduction, or operational requirement
-                                 has been approved. (Open risk)</li>
-                              
-                              <li><strong>closed</strong>: The risk has been resolved.</li>
-                              </ul>
-                        </div>
-                        </details>
+                     <p><span class="usa-tag">use name</span> <code class="name">status</code></p>
+                     <p class="definition-link"><a href="#/field/oscal-assessment-common/risk-status">See definition</a></p>
                   </div>
                </div>
                <div class="model-entry definition assembly">

@@ -1,6 +1,6 @@
 ---
-title: "OSCAL Assessment Results Model v1.0.1 XML Format Index"
-heading: "Assessment Results Model v1.0.1 XML Format Index"
+title: "OSCAL Assessment Results Model v1.0.2 XML Format Index"
+heading: "Assessment Results Model v1.0.2 XML Format Index"
 weight: 70
 generateanchors: false
 sidenav:
@@ -2409,7 +2409,7 @@ The following is an index of each XML element and attribute used in the [XML for
       <ul>
          <li><span class="pathlink">/<a href="../xml-reference/#/assessment-results">assessment-results</a>/<a href="../xml-reference/#/assessment-results/result">result</a>/<a href="../xml-reference/#/assessment-results/result/local-definitions">local-definitions</a>/<a href="../xml-reference/#/assessment-results/result/local-definitions/component">component</a>/<a href="../xml-reference/#/assessment-results/result/local-definitions/component/status">status</a></span> - <span class="formal-name"><a href="../xml-definitions/#/assembly/oscal-implementation-common/system-component/status">Status</a></span></li>
          <li><span class="pathlink">/<a href="../xml-reference/#/assessment-results">assessment-results</a>/<a href="../xml-reference/#/assessment-results/result">result</a>/<a href="../xml-reference/#/assessment-results/result/local-definitions">local-definitions</a>/<a href="../xml-reference/#/assessment-results/result/local-definitions/assessment-assets">assessment-assets</a>/<a href="../xml-reference/#/assessment-results/result/local-definitions/assessment-assets/component">component</a>/<a href="../xml-reference/#/assessment-results/result/local-definitions/assessment-assets/component/status">status</a></span> - <span class="formal-name"><a href="../xml-definitions/#/assembly/oscal-implementation-common/system-component/status">Status</a></span></li>
-         <li><span class="pathlink">/<a href="../xml-reference/#/assessment-results">assessment-results</a>/<a href="../xml-reference/#/assessment-results/result">result</a>/<a href="../xml-reference/#/assessment-results/result/risk">risk</a>/<a href="../xml-reference/#/assessment-results/result/risk/status">status</a></span> - <span class="formal-name"><a href="../xml-definitions/#/assembly/oscal-assessment-common/risk/status">Status</a></span></li>
+         <li><span class="pathlink">/<a href="../xml-reference/#/assessment-results">assessment-results</a>/<a href="../xml-reference/#/assessment-results/result">result</a>/<a href="../xml-reference/#/assessment-results/result/risk">risk</a>/<a href="../xml-reference/#/assessment-results/result/risk/status">status</a></span> - <span class="formal-name"><a href="../xml-definitions/#/assembly/oscal-assessment-common/risk/status">Risk Status</a></span></li>
          <li><span class="pathlink">/<a href="../xml-reference/#/assessment-results">assessment-results</a>/<a href="../xml-reference/#/assessment-results/result">result</a>/<a href="../xml-reference/#/assessment-results/result/finding">finding</a>/<a href="../xml-reference/#/assessment-results/result/finding/target">target</a>/<a href="../xml-reference/#/assessment-results/result/finding/target/status">status</a></span> - <span class="formal-name"><a href="../xml-definitions/#/assembly/oscal-assessment-common/finding-target/status">Objective Status</a></span></li>
       </ul>
    </section>

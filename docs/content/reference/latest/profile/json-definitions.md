@@ -1,6 +1,6 @@
 ---
-title: "OSCAL Profile Model v1.0.1 JSON Format Metaschema Reference"
-heading: "Profile Model v1.0.1 Model JSON Metaschema Reference"
+title: "OSCAL Profile Model v1.0.2 JSON Format Metaschema Reference"
+heading: "Profile Model v1.0.2 Model JSON Metaschema Reference"
 weight: 40
 generateanchors: false
 sidenav:
@@ -1377,9 +1377,8 @@ The following is a reference for the JSON object definitions derived from the [m
          <p class="formal-name">Import resource</p>
       </div>
       <div class="body">
-         <p class="description"><span class="usa-tag">description</span> The <code>import</code> designates a catalog, profile, or other resource to be included (referenced and potentially
-            modified) by this profile. The import also identifies which controls to select using
-            the <code>include-all</code>, <code>include-controls</code>, and <code>exclude-controls</code> directives.</p>
+         <p class="description"><span class="usa-tag">description</span> The <code>import</code> designates a catalog or profile to be included (referenced and potentially modified)
+            by this profile. The import also identifies which controls to select using the <code>include-all</code>, <code>include-controls</code>, and <code>exclude-controls</code> directives.</p>
          <div class="remarks-group usa-prose">
             <details open="open">
                <summary class="subhead">Remarks</summary>
@@ -1409,10 +1408,10 @@ The following is a reference for the JSON object definitions derived from the [m
                         <details open="open">
                            <summary class="subhead">Remarks</summary>
                            <div class="remarks">
-                              <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
+                              <p>The value of the <code>href</code> can be an internet resource, or an internal reference using a fragment e.g. #fragment
                                  that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
                               <p>If a local reference using a fragment is used, this will be indicated by a fragment
-                                 "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
+                                 "#" followed by an identifier which references the <code>uuid</code> value of a <code>resource</code> in the document's <code>back-matter</code>.</p>
                               <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URL pointing to the location of the referenced
                                  resource. A relative URL will be resolved relative to the location of the document
                                  containing the link.</p>
@@ -2140,8 +2139,8 @@ The following is a reference for the JSON object definitions derived from the [m
                      <p class="formal-name">Combination rule</p>
                   </div>
                   <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> A Combine element defines whether and how to combine multiple (competing) versions
-                        of the same control</p>
+                     <p class="description"><span class="usa-tag">description</span> A Combine element defines how to combine multiple (competing) versions of the same
+                        control.</p>
                      <div class="remarks-group usa-prose">
                         <details open="open">
                            <summary class="subhead">Remarks</summary>
@@ -2149,8 +2148,10 @@ The following is a reference for the JSON object definitions derived from the [m
                               <p>Whenever combining controls from multiple (import) pathways, an issue arises of what
                                  to do with clashing invocations (multiple competing versions of a control). </p>
                               <p>This setting permits a profile designer to apply a rule for the resolution of such
-                                 cases. In a well-designed profile, such collisions would ordinarily be avoided, but
-                                 this setting can be useful for defining what to do when it occurs.</p>
+                                 cases. In a well-designed profile (e.g. one that uses mapping), such collisions would
+                                 ordinarily be avoided, but this setting can be useful for defining what to do when
+                                 it occurs.</p>
+                              <p>If no <code>combine</code> element appears, it is considered equivalent to providing a <code>combine</code> element with a <code>method</code> of value <q>keep</q>. </p>
                            </div>
                         </details>
                      </div>

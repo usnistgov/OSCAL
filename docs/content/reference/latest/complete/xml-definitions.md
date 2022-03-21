@@ -1,6 +1,6 @@
 ---
-title: "OSCAL Complete v1.0.1 XML Format Metaschema Reference"
-heading: "Complete v1.0.1 XML Metaschema Reference"
+title: "OSCAL Complete v1.0.2 XML Format Metaschema Reference"
+heading: "Complete v1.0.2 XML Metaschema Reference"
 weight: 80
 generateanchors: false
 sidenav:
@@ -8091,9 +8091,8 @@ The following is a reference for the XML element and attribute types derived fro
          <p class="formal-name">Import resource</p>
       </div>
       <div class="body">
-         <p class="description"><span class="usa-tag">description</span> The <code>import</code> designates a catalog, profile, or other resource to be included (referenced and potentially
-            modified) by this profile. The import also identifies which controls to select using
-            the <code>include-all</code>, <code>include-controls</code>, and <code>exclude-controls</code> directives.</p>
+         <p class="description"><span class="usa-tag">description</span> The <code>import</code> designates a catalog or profile to be included (referenced and potentially modified)
+            by this profile. The import also identifies which controls to select using the <code>include-all</code>, <code>include-controls</code>, and <code>exclude-controls</code> directives.</p>
          <div class="remarks-group usa-prose">
             <details open="open">
                <summary class="subhead">Remarks</summary>
@@ -8123,10 +8122,10 @@ The following is a reference for the XML element and attribute types derived fro
                         <details open="open">
                            <summary class="subhead">Remarks</summary>
                            <div class="remarks">
-                              <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
+                              <p>The value of the <code>href</code> can be an internet resource, or an internal reference using a fragment e.g. #fragment
                                  that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
                               <p>If a local reference using a fragment is used, this will be indicated by a fragment
-                                 "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
+                                 "#" followed by an identifier which references the <code>uuid</code> value of a <code>resource</code> in the document's <code>back-matter</code>.</p>
                               <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URL pointing to the location of the referenced
                                  resource. A relative URL will be resolved relative to the location of the document
                                  containing the link.</p>
@@ -9992,8 +9991,8 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="formal-name">Combination rule</p>
                   </div>
                   <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> A Combine element defines whether and how to combine multiple (competing) versions
-                        of the same control</p>
+                     <p class="description"><span class="usa-tag">description</span> A Combine element defines how to combine multiple (competing) versions of the same
+                        control.</p>
                      <div class="remarks-group usa-prose">
                         <details open="open">
                            <summary class="subhead">Remarks</summary>
@@ -10001,8 +10000,10 @@ The following is a reference for the XML element and attribute types derived fro
                               <p>Whenever combining controls from multiple (import) pathways, an issue arises of what
                                  to do with clashing invocations (multiple competing versions of a control). </p>
                               <p>This setting permits a profile designer to apply a rule for the resolution of such
-                                 cases. In a well-designed profile, such collisions would ordinarily be avoided, but
-                                 this setting can be useful for defining what to do when it occurs.</p>
+                                 cases. In a well-designed profile (e.g. one that uses mapping), such collisions would
+                                 ordinarily be avoided, but this setting can be useful for defining what to do when
+                                 it occurs.</p>
+                              <p>If no <code>combine</code> element appears, it is considered equivalent to providing a <code>combine</code> element with a <code>method</code> of value <q>keep</q>. </p>
                            </div>
                         </details>
                      </div>
@@ -16162,40 +16163,17 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="definition-link"><a href="#/assembly/oscal-metadata/link">See definition</a></p>
                   </div>
                </div>
-               <div class="model-entry definition define-field">
+               <div class="model-entry definition field">
                   <div class="instance-header">
                      <h2 id="/assembly/oscal-assessment-common/risk/status" class="toc2 name">status</h2>
                      <p class="type"><a href="/reference/datatypes/#token">token</a></p>
                      <p class="occurrence">[1]</p>
                      <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-assessment-common/risk/status">Switch to JSON</a></div>
-                     <p class="formal-name">Status</p>
+                     <p class="formal-name">Risk Status</p>
                   </div>
                   <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> Describes the status of the associated risk.</p>
-                     <details>
-                        <summary>Constraint (1)</summary>
-                        
-                        <div class="constraint">
-                           <p><span class="usa-tag">allowed values</span></p>
-                           <p>The value <b>may be locally defined</b>, or one of the following:</p>
-                           <ul>
-                              
-                              <li><strong>open</strong>: The risk has been identified.</li>
-                              
-                              <li><strong>investigating</strong>: The identified risk is being investigated. (Open risk)</li>
-                              
-                              <li><strong>remediating</strong>: Remediation activities are underway, but are not yet complete. (Open risk)</li>
-                              
-                              <li><strong>deviation-requested</strong>: A risk deviation, such as false positive, risk reduction, or operational requirement
-                                 has been submitted for approval. (Open risk)</li>
-                              
-                              <li><strong>deviation-approved</strong>: A risk deviation, such as false positive, risk reduction, or operational requirement
-                                 has been approved. (Open risk)</li>
-                              
-                              <li><strong>closed</strong>: The risk has been resolved.</li>
-                              </ul>
-                        </div>
-                        </details>
+                     <p><span class="usa-tag">use name</span> <code class="name">status</code></p>
+                     <p class="definition-link"><a href="#/field/oscal-assessment-common/risk-status">See definition</a></p>
                   </div>
                </div>
                <div class="model-entry definition assembly">

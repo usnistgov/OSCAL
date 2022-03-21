@@ -1,6 +1,6 @@
 ---
-title: "OSCAL Assessment Results Model v1.0.1 JSON Format Index"
-heading: "Assessment Results Model v1.0.1 JSON Format Index"
+title: "OSCAL Assessment Results Model v1.0.2 JSON Format Index"
+heading: "Assessment Results Model v1.0.2 JSON Format Index"
 weight: 30
 generateanchors: false
 sidenav:
@@ -2410,7 +2410,7 @@ The following is an index of each JSON property used in the [JSON format](https:
       <ul>
          <li><span class="pathlink">/<a href="../json-reference/#/assessment-results">assessment-results</a>/<a href="../json-reference/#/assessment-results/results">results</a>/<a href="../json-reference/#/assessment-results/results/local-definitions">local-definitions</a>/<a href="../json-reference/#/assessment-results/results/local-definitions/components">components</a>/<a href="../json-reference/#/assessment-results/results/local-definitions/components/status">status</a></span> - <span class="formal-name"><a href="../json-definitions/#/assembly/oscal-implementation-common/system-component/status">Status</a></span></li>
          <li><span class="pathlink">/<a href="../json-reference/#/assessment-results">assessment-results</a>/<a href="../json-reference/#/assessment-results/results">results</a>/<a href="../json-reference/#/assessment-results/results/local-definitions">local-definitions</a>/<a href="../json-reference/#/assessment-results/results/local-definitions/assessment-assets">assessment-assets</a>/<a href="../json-reference/#/assessment-results/results/local-definitions/assessment-assets/components">components</a>/<a href="../json-reference/#/assessment-results/results/local-definitions/assessment-assets/components/status">status</a></span> - <span class="formal-name"><a href="../json-definitions/#/assembly/oscal-implementation-common/system-component/status">Status</a></span></li>
-         <li><span class="pathlink">/<a href="../json-reference/#/assessment-results">assessment-results</a>/<a href="../json-reference/#/assessment-results/results">results</a>/<a href="../json-reference/#/assessment-results/results/risks">risks</a>/<a href="../json-reference/#/assessment-results/results/risks/status">status</a></span> - <span class="formal-name"><a href="../json-definitions/#/assembly/oscal-assessment-common/risk/status">Status</a></span></li>
+         <li><span class="pathlink">/<a href="../json-reference/#/assessment-results">assessment-results</a>/<a href="../json-reference/#/assessment-results/results">results</a>/<a href="../json-reference/#/assessment-results/results/risks">risks</a>/<a href="../json-reference/#/assessment-results/results/risks/status">status</a></span> - <span class="formal-name"><a href="../json-definitions/#/assembly/oscal-assessment-common/risk/status">Risk Status</a></span></li>
          <li><span class="pathlink">/<a href="../json-reference/#/assessment-results">assessment-results</a>/<a href="../json-reference/#/assessment-results/results">results</a>/<a href="../json-reference/#/assessment-results/results/findings">findings</a>/<a href="../json-reference/#/assessment-results/results/findings/target">target</a>/<a href="../json-reference/#/assessment-results/results/findings/target/status">status</a></span> - <span class="formal-name"><a href="../json-definitions/#/assembly/oscal-assessment-common/finding-target/status">Objective Status</a></span></li>
       </ul>
    </section>
