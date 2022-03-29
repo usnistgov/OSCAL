@@ -149,7 +149,9 @@ One reason to avoid Gratuitous Capitalization is that (by giving something a nam
 
 ### Citations and links
 
-[NIST guidance on citation formats](https://www.nist.gov/open/copyright-fair-use-and-licensing-statements-srd-data-software-and-technical-series-publications#citations) is available. Additionally, see the Style Guides linked below for rational discussion. Links in the text whose end points are clearly described do not have to be provided with formal citations. As always, however, citations can and should be used to document your sources.
+[NIST guidance on citation formats](https://www.nist.gov/open/copyright-fair-use-and-licensing-statements-srd-data-software-and-technical-series-publications#citations) is available. Additionally, see the Style Guides linked below for rational discussion. Links in the text whose end points are clearly described do not have to be provided with formal citations.
+
+As always, however, citations can and should be used to document your sources. Citing sources is a way of reflecting credit on the project as well as on the works cited.
 
 Pages indexed in `data.nist.gov` (see above) should also be provided with self-citations indicating their assigned DOI.
 
@@ -209,10 +211,13 @@ Do not use inline styling for technical terms. If using a proper noun, use the c
 
 Obviously an exception to this rule is when a document uses (possibly defines) controlled vocabulary with structured tagging, such that usage of technical terms is maintained systematically. In this instance, however, you should be tagging the terms, not how they appear on screen (for example as HTML `<span class="term">term</span>`, and moreover validating this tagging (whether in XML, HTML, Markdown or other format of origin). A rendering agent (such as a CSS extension) may then provide appropriate style .
 
-### Licenses and fair use statements
+### Licenses and fair use
 
-NIST has requirements regarding license statements and disclaimers, which might apply if you are publishing software (considered broadly as anything executable in some fashion). You should see to it that all copyright and licensing-related guidelines are adhered to: see 
-https://www.nist.gov/open/copyright-fair-use-and-licensing-statements-srd-data-software-and-technical-series-publications
+NIST has requirements regarding license statements and disclaimers, which might apply if you are publishing software (considered broadly as anything executable in some fashion). You should see to it that all copyright and licensing-related guidelines are adhered to: see https://www.nist.gov/open/copyright-fair-use-and-licensing-statements-srd-data-software-and-technical-series-publications.
+
+Keep in mind these requirements apply for both providing licenses, and for acquiring permissions if and where necessary to abide by implicit or explicit licensing terms including copyright terms. Since our works go into the public domain, to publish on our sites is to put something into the public domain; so be sure you have a right to do this (fair use with citation counts as a right) or you have explicitly secured rights from the owner.
+
+A word about citations is also given in its [own section](#citations-and-links).
 
 ### Plurals
 See the word lists in friendly style guides for more help hitting the moving targets of English lexicography and morphology. We use American English spelling but will not correct yours if it is consistent. Additionally,
@@ -304,7 +309,8 @@ These excellent style guides have been produced over time but remain current and
 - [Red Hat Technical Writing Style Guide Edition 5.1](https://stylepedia.net/style/5.1/) (open source, incorporating guidance from the IBM Style Guide)
 - Google [developer documentation style guide](https://developers.google.com/style)
 - [Apple Style Guide](https://help.apple.com/applestyleguide/)
-- [Carnegie Museums Web Accessibility Guidelines](http://web-accessibility.carnegiemuseums.org/)
+- Carnegie Museums [Web Accessibility Guidelines](http://web-accessibility.carnegiemuseums.org/)
+- Microsoft [Writing Style Guide](https://docs.microsoft.com/style-guide/welcome/)
 
 If you know of a style guide we should list here please make an [Issue on Github](https://github.com/usnistgov/OSCAL/issues/new?labels=User+Story%2C+enhancement%2C+Scope:%20Website&template=feature_request.md).
 
