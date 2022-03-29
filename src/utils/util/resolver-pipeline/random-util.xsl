@@ -83,14 +83,15 @@ v4 UUID
         <xsl:sequence use-when="function-available('random-number-generator')">
             <xsl:variable name="PRNG" as="map(xs:string, item())" select="random-number-generator($seed)"/>
             <xsl:variable name="template-length" as="xs:integer" select="string-length($template)"/>
-            <!-- Draw one long stream from PRNG, advancing state in each iteration. -->
+            <xsl:variable name="template-char-seq" as="xs:string*"
+                select="$template ! string-to-codepoints(.) ! codepoints-to-string(.)"/>
+            <!-- Draw one long stream from PRNG over sequence of characters in concatenated template,
+                advancing state in each iteration. -->
             <xsl:variable name="random-chars" as="xs:string">
                 <xsl:value-of>
-                    <xsl:iterate select="(0 to ($seq-length * $template-length - 1))">
+                    <xsl:iterate select="for $idx in (1 to $seq-length) return $template-char-seq">
                         <xsl:param name="PRNG" as="map(xs:string, item())" select="$PRNG"/>
-                        <xsl:variable name="this-char" as="xs:string"
-                            select="substring($template, (1 + current() mod $template-length), 1)"/>
-                        <xsl:apply-templates select="$this-char" mode="uuid-char">
+                        <xsl:apply-templates select="current()" mode="uuid-char">
                             <xsl:with-param name="PRNG" select="$PRNG"/>
                         </xsl:apply-templates>
                         <xsl:next-iteration>
