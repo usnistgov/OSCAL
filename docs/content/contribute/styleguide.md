@@ -157,6 +157,8 @@ Pages indexed in `data.nist.gov` (see above) should also be provided with self-c
 
 Where citations are given, we permit any consistent and legible citation format that includes the vital information needed, typically a work's title, its authorship or creator, publication date, editor if applicable, and available links and time stamps.
 
+See also [Reference Format for NIST Publications](https://inet.nist.gov/library/publishing-support-nist-publications/reference-format-nist-publications) (requires NIST login).
+
 ### Headers and heading levels
 
 This rule may not apply if your page is short, you do not need tables of contents showing correctly partitioned and nested sections, or you do not care.
