@@ -421,23 +421,23 @@ intermediate:
         </p>
         <p>The Mapping section consists of 3 optional subsections, each covering a particular type of object. The valid subsections are as follows: </p>
         <ul>
-          <li>Control</li>
-          <li>Group</li>
-          <li>Resource</li>
+          <li><p>Control</p></li>
+          <li><p>Group</p></li>
+          <li><p>Resource</p></li>
         </ul>
-          
-        
           <p>Each subsection is a list of ID mappings to be applied for objects that share their name with the parent object type.</p>
         <p>When encountering a given mapping instruction, processors:</p>
         <ul>
           <li>
-            <p>MUST change the distinctive ID of that object to be equal to the value of the
-              <src>to</src> object.
+            <p><req id="mapping-id" level="MUST">MUST change the distinctive ID of that object to be equal to the value of the
+              <src>to</src> object</req>.
             </p>
           </li>
           <li>
-            <p>MUST update all known references to the old ID in other included content, allowing the new ID to be used in subsequent profile sections.</p>
+            <p><req id="mapping-cascade" level="MUST">MUST update all known references to the old ID in other included content, allowing the new ID to be used in subsequent profile sections.</req></p>
           </li>
+          <li><p><req id="mapping-duplicate-from" level="MUST">MUST ensure that any given imported object is only remapped once; that is, within each object class, any given value of <src>from</src> MUST NOT be processed more than once. If a duplicate <src>from</src> value is encountered, it MUST be ignored and an error SHOULD be thrown</req></p></li>
+          <li><p><req id="mapping-duplicate-to" level="SHOULD">SHOULD provide a warning but continue processing when a duplicate <src>to</src> value is detected. While valid, this will likely result in a clashing ID error further in the resolution process. </req></p></li>
         </ul>
         <p>Since mapping is a self contained process inside each import, the rest of this specification will continue to reference IDs with the assumption that mapping has already been applied if it was present. Since mapping is most commonly used to avoid clashing IDs, processors should take care to not handle duplicate IDs until after mapping is complete.</p>
         <p>Below is a simple example of mapping. The second
@@ -481,6 +481,8 @@ intermediate:
           - map-ac-1
           - map-ac-2 ]]>
         </tagging>
+        
+        
       </section>
     </section>
     <section id="select-phase">
