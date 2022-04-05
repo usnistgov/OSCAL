@@ -44,7 +44,7 @@
 
     <xsl:variable name="louder" select="$trace = 'on'"/>
 
-    <xsl:param name="home" select="/"/>
+    <xsl:variable name="home" select="/"/>
 
     <!-- If true, do not record profile URI in output catalog's source-profile
         metadata, due to privacy or security concerns. -->
