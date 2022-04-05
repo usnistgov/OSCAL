@@ -419,7 +419,15 @@ intermediate:
           <src>mapping</src> child of a given
           <src>import</src> provides a simple ID remapping for objects included from that specific import. This provides the means for profile authors to proactively avoid clashing IDs of controls and other objects.
         </p>
-        <p>The Mapping section consists of 5 optional subsections, each covering a particular type of object. Each subsection is a list of ID mappings to be applied for objects that are the parent object type.</p>
+        <p>The Mapping section consists of 3 optional subsections, each covering a particular type of object. The valid subsections are as follows: </p>
+        <ul>
+          <li>Control</li>
+          <li>Group</li>
+          <li>Resource</li>
+        </ul>
+          
+        
+          <p>Each subsection is a list of ID mappings to be applied for objects that share their name with the parent object type.</p>
         <p>When encountering a given mapping instruction, processors:</p>
         <ul>
           <li>
