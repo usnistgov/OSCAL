@@ -18,14 +18,14 @@
          <param id="a1_prm1">
             <label>A1 Parameter 1</label>
          </param>
-         <prop name="place" value="first"/>
+         <prop name="label" value="first"/>
          <part name="statement" id="a1-stmt">
             <p>A1 aaaaa aaaaaaaaaa</p>
          </part>
       </control>
       <control id="a2">
          <title>Control A2</title>
-         <prop name="place" value="second"/>
+         <prop name="label" value="second"/>
          <part name="statement" id="a2-stmt">
             <p>A2 aaa aaaaaaaaaa aaaaaaaaaaaaa</p>
          </part>
@@ -35,7 +35,7 @@
          <param id="a3_prm1">
             <label>A3 Parameter 1</label>
          </param>
-         <prop name="place" value="third"/>
+         <prop name="label" value="third"/>
          <part name="statement" id="a3-stmt">
             <p>A3 aaaaa aaaaaaaaaa</p>
          </part>
@@ -45,21 +45,21 @@
       <title>Group B of C</title>
       <control id="b1">
          <title>Control B1</title>
-         <prop name="place" value="fourth"/>
+         <prop name="label" value="fourth"/>
          <part name="statement" id="b1-stmt">
             <p>B1 bbbb bbbbbbb.</p>
          </part>
       </control>
       <control id="b2">
          <title>Control B2</title>
-         <prop name="place" value="fifth"/>
+         <prop name="label" value="fifth"/>
          <part name="statement" id="b2-stmt">
             <p>B2 bbb bbbbbbbbbbb bbbbbbbbbbbb.</p>
          </part>
       </control>
       <control id="b3">
          <title>Control B3</title>
-         <prop name="place" value="sixth"/>
+         <prop name="label" value="sixth"/>
          <part name="statement" id="b3-stmt">
             <p>B3 bbbb bbbbbbb bbbb.</p>
          </part>
@@ -69,33 +69,33 @@
       <title>Group C of C</title>
       <control id="c1">
          <title>Control C1</title>
-         <prop name="place" value="seventh"/>
+         <prop name="label" value="seventh"/>
          <part name="statement" id="c1-stmt">
             <p>C1 ccccc ccc ccccccccccccccccc.</p>
          </part>
       </control>
       <control id="c2">
          <title>Control C2</title>
-         <prop name="place" value="eighth"/>
+         <prop name="label" value="eighth"/>
          <part name="statement" id="c2-stmt">
             <p>C2 cccccccc ccccccccccccccccc.</p>
          </part>
       </control>
       <control id="c3">
          <title>Control C3</title>
-         <prop name="place" value="ninth"/>
+         <prop name="label" value="ninth"/>
          <part name="statement" id="c3-stmt">
             <p>C3 ccccc cccccccccccccc.</p>
          </part>
          <control id="c3.a">
             <title>Control C3-A</title>
-            <prop name="place" value="tenth"/>
+            <prop name="label" value="tenth"/>
             <part name="statement" id="c3-stmt">
                <p>C3 A ccccc cccccccccccccc.</p>
             </part>
             <control id="c3.a-1">
                <title>Control C3-A-1</title>
-               <prop name="place" value="eleventh"/>
+               <prop name="label" value="eleventh"/>
                <part name="statement" id="c3-stmt">
                   <p>C3 A-1 ccccc cccccccccccccc.</p>
                </part>

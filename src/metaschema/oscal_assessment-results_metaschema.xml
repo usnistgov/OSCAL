@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="../../build/metaschema/toolchains/xslt-M4/validate/metaschema-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-model href="../../build/metaschema/toolchains/xslt-M4/validate/metaschema-composition-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/toolchains/xslt-M4/validate/metaschema.xsd">
   <schema-name>OSCAL Assessment Results Model</schema-name>
-  <schema-version>1.0.0</schema-version>
+  <schema-version>1.0.2</schema-version>
   <short-name>oscal-ar</short-name>
   <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
   <json-base-uri>http://csrc.nist.gov/ns/oscal</json-base-uri>
@@ -22,7 +22,8 @@
     <root-name>assessment-results</root-name>
     <define-flag name="uuid" required="yes" as-type="uuid">
       <formal-name>Assessment Results Universally Unique Identifier</formal-name>
-      <description>Uniquely identifies this assessment results file. This UUID must be changed each time the content of the results changes.</description>
+      <!-- Identifier Declaration -->
+      <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this assessment results instance in <a href="/concepts/identifier-use/#ar-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>assessment result</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
     </define-flag>
     <model>
       <assembly ref="metadata" min-occurs="1" max-occurs="1"/>
@@ -59,22 +60,14 @@
     </model>
   </define-assembly>
 
-  <!-- ===============================  -->
-  <!-- ========= NEW CONTENT =========  -->
-  <!-- ===============================  -->
-
-
-  <!-- ===============================  -->
-  <!-- ======= END NEW CONTENT =======  -->
-  <!-- ===============================  -->
-
   <!-- ********** RESULTS Assembly ********** -->
   <define-assembly name="result">
     <formal-name>Assessment Result</formal-name>
     <description>Used by the assessment results and POA&amp;M. In the assessment results, this identifies all of the assessment observations and findings, initial and residual risks, deviations, and disposition. In the POA&amp;M, this identifies initial and residual risks, deviations, and disposition.</description>
     <define-flag name="uuid" required="yes" as-type="uuid">
       <formal-name>Results Universally Unique Identifier</formal-name>
-      <description>Uniquely identifies this set of results. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. Once assigned, a UUID should be consistently used for a given set of results across revisions.</description>
+      <!-- Identifier Declaration -->
+      <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this set of results in <a href="/concepts/identifier-use/#ar-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>assessment result</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
     </define-flag>
     <model>
       <define-field name="title" min-occurs="1" max-occurs="1" as-type="markup-line">
@@ -97,7 +90,7 @@
       </define-field>
 
       <assembly ref="property" max-occurs="unbounded">
-        <group-as name="prop" in-json="ARRAY"/>
+        <group-as name="props" in-json="ARRAY"/>
       </assembly>
       <assembly ref="link" max-occurs="unbounded">
         <group-as name="links" in-json="ARRAY"/>
@@ -199,7 +192,8 @@
             <group-as name="entries" in-json="ARRAY"/>
             <define-flag name="uuid" required="yes" as-type="uuid">
               <formal-name>Assessment Log Entry Universally Unique Identifier</formal-name>
-              <description>Uniquely identifies an assessment event. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. A UUID should be consistently used for this schedule across revisions of the document.</description>
+              <!-- Identifier Declaration -->
+              <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference an assessment event in <a href="/concepts/identifier-use/#ar-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>assessment log entry</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
             </define-flag>
             <model>
               <define-field name="title" min-occurs="0" max-occurs="1" as-type="markup-line">
@@ -259,7 +253,8 @@
     <description>Describes an individual finding.</description>
     <define-flag name="uuid" required="yes" as-type="uuid">
       <formal-name>Finding Universally Unique Identifier</formal-name>
-      <description>Uniquely identifies this finding. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. Once assigned, a UUID should be consistently used for a given finding across revisions.</description>
+      <!-- Identifier Declaration -->
+      <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this finding in <a href="/concepts/identifier-use/#ar-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>finding</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
     </define-flag>
     <model>
       <define-field name="title" min-occurs="1" as-type="markup-line">
@@ -290,7 +285,8 @@
       </assembly>
       <define-field name="implementation-statement-uuid" as-type="uuid" min-occurs="0" max-occurs="1">
         <formal-name>Implementation Statement UUID</formal-name>
-        <description>Identifies the implementation statement in the SSP to which this finding is related.</description>
+        <!-- Identifier Reference -->
+        <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to the implementation statement in the SSP to which this finding is related.</description>
       </define-field>
       <!-- CHANGED: replaced embedded observation with references -->
       <define-assembly name="related-observation" max-occurs="unbounded">
@@ -299,7 +295,8 @@
         <group-as name="related-observations" in-json="ARRAY"/>
         <define-flag name="observation-uuid" as-type="uuid" required="yes">
           <formal-name>Observation Universally Unique Identifier Reference</formal-name>
-          <description>References an observation defined in the list of observations.</description>
+          <!-- Identifier Reference -->
+          <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to an observation defined in the list of observations.</description>
         </define-flag>
       </define-assembly>
       <!-- CHANGED: replaced "risk" with new "assciated-risk" -->
@@ -309,7 +306,8 @@
         <group-as name="related-risks" in-json="ARRAY"/>
         <define-flag name="risk-uuid" as-type="uuid" required="yes">
           <formal-name>Risk Universally Unique Identifier Reference</formal-name>
-          <description>References an risk defined in the list of risks.</description>
+          <!-- Identifier Reference -->
+          <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to a risk defined in the list of risks.</description>
         </define-flag>
       </define-assembly>
       <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
@@ -322,7 +320,7 @@
     <description>Used by assessment-results to import information about the original plan for assessing the system.</description>
     <define-flag name="href" required="yes" as-type="uri-reference">
       <formal-name>Assessment Plan Reference</formal-name>
-      <description>>A resolvable URL reference to the assessment plan governing the assessment activities.</description>
+      <description>A resolvable URL reference to the assessment plan governing the assessment activities.</description>
       <remarks>
         <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment that points to a <code>back-matter</code>
           <code>resource</code> in the same document.</p>

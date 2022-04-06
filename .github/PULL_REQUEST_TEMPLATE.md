@@ -4,7 +4,9 @@
 
 ### All Submissions:
 
-- [ ] Have you followed the guidelines in our [Contributing](https://github.com/usnistgov/OSCAL/blob/master/CONTRIBUTING.md) document?
+- [ ] Have you selected the correct base branch per [Contributing](https://github.com/usnistgov/OSCAL/blob/master/CONTRIBUTING.md) guidance?
+- [ ] Have you set "[Allow edits and access to secrets by maintainers
+](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/allowing-changes-to-a-pull-request-branch-created-from-a-fork)"?
 - [ ] Have you checked to ensure there aren't other open [Pull Requests](https://github.com/usnistgov/OSCAL/pulls) for the same update/change?
 - [ ] Have you squashed any non-relevant commits and commit messages? \[[instructions](https://git-scm.com/book/en/v2/Git-Tools-Rewriting-History)\]
 - [ ] Do all automated CI/CD checks pass?

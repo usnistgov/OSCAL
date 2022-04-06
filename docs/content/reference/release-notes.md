@@ -10,6 +10,54 @@ toc:
   headingselectors: "h2, h3, h4, h5, h6"
 ---
 
+## OSCAL 1.0.1 Release
+
+The following changes were made in this patch release.
+
+- #635, #966 Cleaned up src/utils directory and added documentation (PR #970, #1014) @wendellpiez
+- #956 Enhanced the schema production pipeline to ensure that high-order Unicode characters are properly escaped (PR usnistgov/ metaschema#165) @wendellpiez
+- #958 Fixed an issue in the content upconverter used for updating OSCAL content from 1.0.0 RC2 to 1.0.0 (PR #960) @wendellpiez
+- #983 Fix Dockerfile entrypoint using best practices for entrypoint. (PR #984) @ohsh60
+- #986 Updated dependency versions for Saxon and AJV in the Docker config. Added dependencies for yargs. (PR #987) @ohsh60
+- #1001 Fixed bad metapath. @david-waltermire-nist
+- #1004 Refactored dockerfiles for the build and docs folders. Updated use documentation. Added missing dependency for calabash. (PR #1005) @david-waltermire-nist
+- #1020 Updated documentation around using the content converters. (PR #1027, #1055) @wendellpiez
+- #1025 Fixed SyntaxWarning for content validator oscal-content-validator.py (PR #1026) @bradh, @david-waltermire-nist
+- #1037 Clarify data types docs for param insert (PR #1112)
+- #1039, #1040, #1041, #1042, #1046 Updated the profile resolution specification (PR #1014, #1017) @stephenbanghart
+- #1044 Added warnings for non-required UUID flags. @david-waltermire-nist
+- #1053 Make @control-id for alter statements in profile required (PR #1111) @aj-stein-nist
+- #1067 Fix enum typo from inteneral->internal (PR #1110) @aj-stein-nist
+- #1102 Some Docker container improvements for local web development and testing for PRs (PR #1103) @aj-stein-nist
+- #1107 Incorporating processing directives that support schematron validation of Metaschema-based models (#1108) @aj-stein-nist
+- usnistgov/oscal-content/#59 Convert File Type for Files or Remote Hyperlinks in Continuous Deployment (PR #1010, 1070) @ohsh6o, @david-waltermire-nist
+- Fixed broken branch configuration for the metaschema submodule (PR #991) @ohsh60
+- Fixed OSCAL constraints in Metaschemas. Fixing Metapath syntax errors. (PR #1012, #1065) @david-waltermire-nist
+- Repaired a bug report on a missed control; adding test files (PR #1013) @wendellpiez
+- Removed duplicate json import in oscal-content-validator.py (PR #1077) @flickerfly
+- Improvements to XSLT-based profile resolver (PR #1071) @wendellpiez
+- Added requirements.txt for oscal-content-validator.py (PR #1077) @guyzyl
+- Add support for yaml OSCAL files validation (PR #1091) @guyzyl, @aj-stein-nist
+- Updated contributing and pull request documentation for External Developers (#1094) @aj-stein-nist
+- Bump addressable from 2.7.0 to 2.8.0 in /docs (PR #994) @dependabot
+- Bump nokogiri from 1.11.5 to 1.12.5 in /docs (PR #1029) @dependabot
+- Bump lxml from 4.6.3 to 4.6.5 in /build/ci-cd/python (PR #1096) @dependabot
+
+### Website changes
+
+- #739 Fixed 404 error when using the "Improve this page" link. (PR #995) @EasyDynamics, @david-waltermire-nist
+- #854 Added a Component Tutorial to Website (PR #935, #1015) @Rene2mt, @david-waltermire-nist
+- #860 Updated model reference documentation to better clarify the scope and uniqueness of identifiers used within the OSCAL models. (PR #941) @Rene2mt, @david-waltermire-nist, @aj-stein-nist
+- #947 Fixed a number of typos (PR #955) @david-waltermire-nist
+- #968 Fixed broken and stale links in model documentation. (PR #973) @david-waltermire-nist
+- #993 Updating tools page to use a table. Added Compliance Tressle. @iMichaela, @david-waltermire-nist
+- #996 Added blogs to website. @david-waltermire-nist
+- #1049 Added control freak to the OSCAL tools page (PR #1104) @aj-stein-nist
+- Fixed prop syntax in validation component tutorial. (PR #999) @ohsh60
+- Added link to EasyDynamics OSCAL tools (PR #1009) @afeld
+- Adding link to XML Jelly Sandwich OSCAL demos (PR #1016) @wendellpiez
+- Updated the Lunch with Devs meeting info and Tools page to include new meeting info (PR #1045) @iMichaela, @david-waltermire-nist
+
 ## OSCAL 1.0.0 Release
 
 The following changes were made in OSCAL 1.0.0 since OSCAL 1.0.0 Release Candidate (RC) 2.

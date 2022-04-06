@@ -131,3 +131,7 @@ The following is the release state of each model, along with download links for 
 | [Assessment](assessment/) | [Assessment Plan](assessment/assessment-plan/) | Released | [XML, JSON, YAML](/reference/latest/assessment-plan/) | [XML](https://raw.githubusercontent.com/usnistgov/OSCAL/main/xml/schema/oscal_assessment-plan_schema.xsd), [JSON/YAML](https://raw.githubusercontent.com/usnistgov/OSCAL/main/json/schema/oscal_assessment-plan_schema.json) |
 | [Assessment](assessment/) | [Assessment Results](assessment/assessment-results/) | Released | [XML, JSON, YAML](/reference/latest/assessment-results/) | [XML](https://raw.githubusercontent.com/usnistgov/OSCAL/main/xml/schema/oscal_assessment-results_schema.xsd), [JSON/YAML](https://raw.githubusercontent.com/usnistgov/OSCAL/main/json/schema/oscal_assessment-results_schema.json) |
 | [Assessment](assessment/) | [Plan of Action and Milestones](assessment/poam/) | Released | [XML, JSON, YAML](/reference/latest/plan-of-action-and-milestones/) | [XML](https://raw.githubusercontent.com/usnistgov/OSCAL/main/xml/schema/oscal_poam_schema.xsd), [JSON/YAML](https://raw.githubusercontent.com/usnistgov/OSCAL/main/json/schema/oscal_poam_schema.json) |
+
+## Well-formed Data and Valid OSCAL
+
+[Per our guidance](validation/), OSCAL-enabled tools must check OSCAL document instances to ensure they are well-formed and valid based upon the models in these layers. 

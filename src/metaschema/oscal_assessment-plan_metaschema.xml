@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <METASCHEMA xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0">
     <schema-name>OSCAL Assessment Plan Model</schema-name>
-    <schema-version>1.0.0</schema-version>
+    <schema-version>1.0.2</schema-version>
     <short-name>oscal-ap</short-name>
     <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
     <json-base-uri>http://csrc.nist.gov/ns/oscal</json-base-uri>
@@ -20,7 +20,8 @@
         <root-name>assessment-plan</root-name>
         <define-flag name="uuid" required="yes" as-type="uuid">
             <formal-name>Assessment Plan Universally Unique Identifier</formal-name>
-            <description>Uniquely identifies this assessment plan. This UUID must be changed each time the content of the plan changes.</description>
+            <!-- Identifier Declaration -->
+            <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this assessment plan in <a href="/concepts/identifier-use/#ap-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>assessment plan</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
         </define-flag>
         <model>
             <assembly ref="metadata" min-occurs="1" max-occurs="1"/>
@@ -118,9 +119,17 @@
             </assembly>
             <assembly ref="back-matter" min-occurs="0" max-occurs="1"/>
         </model>
+        <!-- todo: add remark need to describe how import-ssp is also importing roles, parties, locations defined in the SSP, as well as other (similar) objects that may have been imported into the SSP (e.g., control-id).  Controls that can be referenced are those imported into the SSP through resolved profile.  -->
+        <!-- bogus example
+        <constraint>
+            <index id="index-assessment-plan-roles" name="index-assessment-plan-role-ids" target="metadata/role|doc(import-ssp/@href)/metadata/role">
+                <key-field target="@id"/>
+            </index>
+            <index-has-key name="index-assessment-plan-role-ids" target="tasks/responsible-roles">
+                <key-field target="@role-id"/>
+            </index-has-key>
+        </constraint>
+        -->
     </define-assembly>
 
-    <!-- ===============================  -->
-    <!-- ======= END NEW CONTENT =======  -->
-    <!-- ===============================  -->
 </METASCHEMA>

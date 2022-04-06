@@ -1,6 +1,6 @@
 ---
-title: "OSCAL System Security Plan Model v1.0.0 XML Format Metaschema Reference"
-heading: "System Security Plan Model v1.0.0 XML Metaschema Reference"
+title: "OSCAL System Security Plan Model v1.0.1 XML Format Metaschema Reference"
+heading: "System Security Plan Model v1.0.1 XML Metaschema Reference"
 weight: 80
 generateanchors: false
 sidenav:
@@ -254,16 +254,16 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="definition-link"><a href="#/assembly/oscal-ssp/diagram">See definition</a></p>
                   </div>
                </div>
-               <div class="model-entry definition define-field">
+               <div class="model-entry definition field">
                   <div class="instance-header">
                      <h2 id="/assembly/oscal-ssp/authorization-boundary/remarks" class="toc2 name">remarks</h2>
                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                      <p class="occurrence">[0 or 1]</p>
                      <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-ssp/authorization-boundary/remarks">Switch to JSON</a></div>
-                     <p class="formal-name">remarks field</p>
+                     <p class="formal-name">Remarks</p>
                   </div>
                   <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> Commentary about the system's authorization boundary that enhances the diagram.</p>
+                     <p class="definition-link"><a href="#/field/oscal-metadata/remarks">See definition</a></p>
                   </div>
                </div>
             </div>
@@ -381,7 +381,7 @@ The following is a reference for the XML element and attribute types derived fro
                         </details>
                      </div>
                      <details>
-                        <summary>Constraints (7)</summary>
+                        <summary>Constraints (6)</summary>
                         
                         <div class="constraint">
                            <p><span class="usa-tag">allowed values</span> for <code class="path">prop/@name</code></p>
@@ -399,7 +399,7 @@ The following is a reference for the XML element and attribute types derived fro
                         </div>
                         
                         <div class="constraint">
-                           <p><span class="usa-tag">matches</span> for <code class="path">prop[(not(exists(@ns)) or @ns='http://csrc.nist.gov/ns/oscal') and @name='published']/@value</code>: the target value must match the lexical form of the 'dateTime' data type.</p>
+                           <p><span class="usa-tag">matches</span> for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='published']/@value</code>: the target value must match the lexical form of the 'dateTime' data type.</p>
                         </div>
                         
                         
@@ -476,10 +476,7 @@ The following is a reference for the XML element and attribute types derived fro
                            <p><span class="usa-tag">is unique</span> for <code class="path">base64</code>: any target value must be unique (i.e., occur only once)</p>
                         </div>
                         
-                        
-                        <div class="constraint">
-                           <p><span class="usa-tag">has cardinality</span> for <code class="path">title</code> the cardinality of  <code>title</code> is constrained: <b>1</b>; maximum <b>unbounded</b>.</p>
-                        </div>
+                        A title is required when a citation is provided.
                         
                         </details>
                      <details open="open">
@@ -494,9 +491,8 @@ The following is a reference for the XML element and attribute types derived fro
                                  <p class="formal-name">Resource Universally Unique Identifier</p>
                               </div>
                               <div class="body">
-                                 <p class="description"><span class="usa-tag">description</span> A globally unique identifier that can be used to reference this defined resource
-                                    elsewhere in an OSCAL document. A UUID should be consistently used for a given resource
-                                    across revisions of the document.</p>
+                                 <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined resource elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                                    of the document.</p>
                               </div>
                            </div>
                         </div>
@@ -890,7 +886,7 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="formal-name">Component Universally Unique Identifier Reference</p>
                   </div>
                   <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> A reference to the component that is implementing a given control or control statement.</p>
+                     <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to the <code>component</code> that is implemeting a given control.</p>
                   </div>
                </div>
                <div class="model-entry definition define-flag">
@@ -902,9 +898,9 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="formal-name">By-Component Universally Unique Identifier</p>
                   </div>
                   <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> A globally unique identifier that can be used to reference this by-component entry
-                        elsewhere in an OSCAL document. A UUID should be consistently used for a given resource
-                        across revisions of the document.</p>
+                     <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this by-component entry elsewhere in <a href="/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>by-component</code> entry can be used to reference the data item locally or globally (e.g., in an imported
+                        OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                        of the document.</p>
                   </div>
                </div>
             </div>
@@ -1020,14 +1016,10 @@ The following is a reference for the XML element and attribute types derived fro
                   <div class="body">
                      <p class="description"><span class="usa-tag">description</span> Identifies content intended for external consumption, such as with leveraged organizations.</p>
                      <details>
-                        <summary>Constraints (3)</summary>
+                        <summary>Constraints (2)</summary>
                         
                         <div class="constraint">
                            <p><span class="usa-tag">has cardinality</span> for <code class="path">provided|responsibility</code> the cardinality of  <code>provided|responsibility</code> is constrained: <b>1</b>; maximum <b>unbounded</b>.</p>
-                        </div>
-                        
-                        <div class="constraint">
-                           <p><span class="usa-tag">index</span> an index <code>by-component-export-provided-uuid</code> shall contain values  using keys constructed of key field(s) <code>@uuid</code></p>
                         </div>
                         
                         <div class="constraint">
@@ -1131,9 +1123,9 @@ The following is a reference for the XML element and attribute types derived fro
                                              <p class="formal-name">Provided Universally Unique Identifier</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">description</span> A globally unique identifier that can be used to reference this provided entry elsewhere
-                                                in an OSCAL document. A UUID should be consistently used for a given resource across
-                                                revisions of the document.</p>
+                                             <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this provided entry elsewhere in <a href="/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>provided</code> entry can be used to reference the data item locally or globally (e.g., in an imported
+                                                OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                                                of the document.</p>
                                           </div>
                                        </div>
                                     </div>
@@ -1263,9 +1255,9 @@ The following is a reference for the XML element and attribute types derived fro
                                              <p class="formal-name">Responsibility Universally Unique Identifier</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">description</span> A globally unique identifier that can be used to reference this responsibility entry
-                                                elsewhere in an OSCAL document. A UUID should be consistently used for a given resource
-                                                across revisions of the document.</p>
+                                             <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this responsibility elsewhere in <a href="/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>responsibility</code> can be used to reference the data item locally or globally (e.g., in an imported
+                                                OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                                                of the document.</p>
                                           </div>
                                        </div>
                                        <div class="model-entry definition flag">
@@ -1433,9 +1425,9 @@ The following is a reference for the XML element and attribute types derived fro
                                  <p class="formal-name">Inherited Universally Unique Identifier</p>
                               </div>
                               <div class="body">
-                                 <p class="description"><span class="usa-tag">description</span> A globally unique identifier that can be used to reference this inherited entry elsewhere
-                                    in an OSCAL document. A UUID should be consistently used for a given resource across
-                                    revisions of the document.</p>
+                                 <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this inherited entry elsewhere in <a href="/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>inherited control implementation</code> can be used to reference the data item locally or globally (e.g., in an imported
+                                    OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                                    of the document.</p>
                               </div>
                            </div>
                            <div class="model-entry definition flag">
@@ -1565,9 +1557,10 @@ The following is a reference for the XML element and attribute types derived fro
                                  <p class="formal-name">Satisfied Universally Unique Identifier</p>
                               </div>
                               <div class="body">
-                                 <p class="description"><span class="usa-tag">description</span> A globally unique identifier that can be used to reference this satisfied entry elsewhere
-                                    in an OSCAL document. A UUID should be consistently used for a given resource across
-                                    revisions of the document.</p>
+                                 <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this satisfied control implementation entry elsewhere
+                                    in <a href="/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>control implementation</code> can be used to reference the data item locally or globally (e.g., in an imported
+                                    OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                                    of the document.</p>
                               </div>
                            </div>
                            <div class="model-entry definition flag">
@@ -1576,7 +1569,7 @@ The following is a reference for the XML element and attribute types derived fro
                                  <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
                                  <p class="occurrence">[0 or 1]</p>
                                  <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-ssp/by-component/satisfied/responsibility-uuid">Switch to JSON</a></div>
-                                 <p class="formal-name">Provided UUID</p>
+                                 <p class="formal-name">Responsibility UUID</p>
                               </div>
                               <div class="body">
                                  <p class="definition-link"><a href="#/flag/oscal-ssp/responsibility-uuid">See definition</a></p>
@@ -1717,7 +1710,7 @@ The following is a reference for the XML element and attribute types derived fro
          <p class="formal-name">Control Identifier Reference</p>
       </div>
       <div class="body">
-         <p class="description"><span class="usa-tag">description</span> A reference to a control with a corresponding <code>id</code> value.</p>
+         <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a> identifier reference to a control with a corresponding <code>id</code> value. When referencing an externally defined <code>control</code>, the <code>Control Identifier Reference</code> must be used in the context of the external / imported OSCAL instance (e.g., uri-reference).</p>
       </div>
    </div>
    <div class="model-entry definition define-assembly">
@@ -1738,10 +1731,14 @@ The following is a reference for the XML element and attribute types derived fro
             </details>
          </div>
          <details>
-            <summary>Constraint (1)</summary>
+            <summary>Constraints (2)</summary>
             
             <div class="constraint">
                <p><span class="usa-tag">is unique</span> for <code class="path">set-parameter</code>: any target value must be unique (i.e., occur only once)</p>
+            </div>
+            
+            <div class="constraint">
+               <p><span class="usa-tag">index</span> for <code class="path">implemented-requirement/by-component/export/provided</code> an index <code>by-component-export-provided-uuid</code> shall list values returned by targets <code>implemented-requirement/by-component/export/provided</code> using keys constructed of key field(s) <code>@uuid</code></p>
             </div>
             </details>
          <details open="open">
@@ -1920,17 +1917,6 @@ The following is a reference for the XML element and attribute types derived fro
          <p class="description"><span class="usa-tag">description</span> The date the system received its authorization.</p>
       </div>
    </div>
-   <div class="model-entry definition define-flag">
-      <div class="definition-header">
-         <h1 id="/flag/oscal-catalog-common/depends-on" class="toc1 name">depends-on</h1>
-         <p class="type"><a href="/reference/datatypes/#token">token</a></p>
-         <div class="crosslink"><a class="usa-button" href="../json-definitions/#/flag/oscal-catalog-common/depends-on">Switch to JSON</a></div>
-         <p class="formal-name">Depends on</p>
-      </div>
-      <div class="body">
-         <p class="description"><span class="usa-tag">description</span> Another parameter invoking this one</p>
-      </div>
-   </div>
    <div class="model-entry definition define-assembly">
       <div class="definition-header">
          <h1 id="/assembly/oscal-ssp/diagram" class="toc1 name">diagram</h1>
@@ -1962,11 +1948,11 @@ The following is a reference for the XML element and attribute types derived fro
             </div>
             
             <div class="constraint">
-               <p><span class="usa-tag">matches</span> for <code class="path">link[@rel='diagramn']/@href[starts-with(.,'#')]</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
+               <p><span class="usa-tag">matches</span> for <code class="path">link[@rel='diagram']/@href[starts-with(.,'#')]</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
             </div>
             
             <div class="constraint">
-               <p><span class="usa-tag">index has key</span> for <code class="path">link[@rel='diagram' and [starts-with(@href,'#')]]</code>this value must correspond to a listing in the index <code>index-back-matter-resource</code> using a key constructed of key field(s) <code>@href</code></p>
+               <p><span class="usa-tag">index has key</span> for <code class="path">link[@rel='diagram' and starts-with(@href,'#')]</code>this value must correspond to a listing in the index <code>index-back-matter-resource</code> using a key constructed of key field(s) <code>@href</code></p>
             </div>
             
             <div class="constraint">
@@ -1985,7 +1971,9 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="formal-name">Diagram ID</p>
                   </div>
                   <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> The identifier for this diagram.</p>
+                     <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this diagram elsewhere in <a href="/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>diagram</code> can be used to reference the data item locally or globally (e.g., in an imported
+                        OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                        of the document.</p>
                   </div>
                </div>
             </div>
@@ -2078,16 +2066,16 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="description"><span class="usa-tag">description</span> A brief caption to annotate the diagram.</p>
                   </div>
                </div>
-               <div class="model-entry definition define-field">
+               <div class="model-entry definition field">
                   <div class="instance-header">
                      <h2 id="/assembly/oscal-ssp/diagram/remarks" class="toc2 name">remarks</h2>
                      <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
                      <p class="occurrence">[0 or 1]</p>
                      <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-ssp/diagram/remarks">Switch to JSON</a></div>
-                     <p class="formal-name">remarks field</p>
+                     <p class="formal-name">Remarks</p>
                   </div>
                   <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> Commentary about the diagram that enhances it.</p>
+                     <p class="definition-link"><a href="#/field/oscal-metadata/remarks">See definition</a></p>
                   </div>
                </div>
             </div>
@@ -2102,10 +2090,10 @@ The following is a reference for the XML element and attribute types derived fro
          <p class="formal-name">Document Identifier</p>
       </div>
       <div class="body">
-         <p class="description"><span class="usa-tag">description</span> A document identifier qualified by an identifier <code>scheme</code>. A document identifier provides a globally unique identifier for a group of documents
-            that are to be treated as different versions of the same document. If this element
-            does not appear, or if the value of this element is empty, the value of "document-id"
-            is equal to the value of the "uuid" flag of the top-level root element.</p>
+         <p class="description"><span class="usa-tag">description</span> A document identifier qualified by an identifier <code>scheme</code>. A document identifier provides a <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with a <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that is used for a group of documents that are to be treated as different versions
+            of the same document. If this element does not appear, or if the value of this element
+            is empty, the value of "document-id" is equal to the value of the "uuid" flag of the
+            top-level root element.</p>
          <div class="remarks-group usa-prose">
             <details open="open">
                <summary class="subhead">Remarks</summary>
@@ -2400,7 +2388,7 @@ The following is a reference for the XML element and attribute types derived fro
             </div>
             
             <div class="constraint">
-               <p><span class="usa-tag">index has key</span> for <code class="path">responsible-role|statement/responsible-role|.//by-component//responsible-role</code>this value must correspond to a listing in the index <code>index-metadata-party-uuid</code> using a key constructed of key field(s) <code>@party-uuid</code></p>
+               <p><span class="usa-tag">index has key</span> for <code class="path">responsible-role|statement/responsible-role|.//by-component//responsible-role</code>this value must correspond to a listing in the index <code>index-metadata-party-uuid</code> using a key constructed of key field(s) <code>party-uuid</code></p>
             </div>
             
             <div class="constraint">
@@ -2435,9 +2423,9 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="formal-name">Control Requirement Universally Unique Identifier</p>
                   </div>
                   <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> A globally unique identifier that can be used to reference this control requirement
-                        entry elsewhere in an OSCAL document. A UUID should be consistently used for a given
-                        resource across revisions of the document.</p>
+                     <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this control requirement elsewhere in <a href="/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>control requirement</code> can be used to reference the data item locally or globally (e.g., in an imported
+                        OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                        of the document.</p>
                   </div>
                </div>
                <div class="model-entry definition flag">
@@ -2630,6 +2618,25 @@ The following is a reference for the XML element and attribute types derived fro
                </div>
             </div>
          </details>
+      </div>
+   </div>
+   <div class="model-entry definition define-assembly">
+      <div class="definition-header">
+         <h1 id="/assembly/oscal-catalog-common/include-all" class="toc1 name">include-all</h1>
+         <p class="type">assembly<br class="br" /> </p>
+         <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-catalog-common/include-all">Switch to JSON</a></div>
+         <p class="formal-name">Include All</p>
+      </div>
+      <div class="body">
+         <p class="description"><span class="usa-tag">description</span> Include all controls from the imported catalog or profile resources.</p>
+         <div class="remarks-group usa-prose">
+            <details open="open">
+               <summary class="subhead">Remarks</summary>
+               <div class="remarks">
+                  <p>This element provides an alternative to calling controls individually from a catalog.</p>
+               </div>
+            </details>
+         </div>
       </div>
    </div>
    <div class="model-entry definition define-assembly">
@@ -2842,7 +2849,7 @@ The following is a reference for the XML element and attribute types derived fro
             </div>
             
             <div class="constraint">
-               <p><span class="usa-tag">index has key</span> for <code class="path">responsible-party</code>this value must correspond to a listing in the index <code>index-metadata-party-uuid</code> using a key constructed of key field(s) <code>@party-uuid</code></p>
+               <p><span class="usa-tag">index has key</span> for <code class="path">responsible-party</code>this value must correspond to a listing in the index <code>index-metadata-party-uuid</code> using a key constructed of key field(s) <code>party-uuid</code></p>
             </div>
             
             <div class="constraint">
@@ -2861,9 +2868,9 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="formal-name">Inventory Item Universally Unique Identifier</p>
                   </div>
                   <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> A globally unique identifier that can be used to reference this inventory item entry
-                        elsewhere in an OSCAL document. A UUID should be consistently used for a given resource
-                        across revisions of the document.</p>
+                     <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this inventory item elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>inventory item</code> can be used to reference the data item locally or globally (e.g., in an imported
+                        OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                        of the document.</p>
                   </div>
                </div>
             </div>
@@ -3073,7 +3080,7 @@ The following is a reference for the XML element and attribute types derived fro
                                  <p class="formal-name">Component Universally Unique Identifier Reference</p>
                               </div>
                               <div class="body">
-                                 <p class="description"><span class="usa-tag">description</span> A reference to a component that is implemented as part of an inventory item.</p>
+                                 <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to a <code>component</code> that is implemented as part of an inventory item.</p>
                               </div>
                            </div>
                         </div>
@@ -3236,23 +3243,17 @@ The following is a reference for the XML element and attribute types derived fro
          <details>
             <summary>Constraints (3)</summary>
             
-            
-            
             <div class="constraint">
-               <p><span class="usa-tag">matches</span> for <code class="path">@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
+               <p><span class="usa-tag">matches</span> for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
             </div>
             
             <div class="constraint">
-               <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-back-matter-resource</code> using a key constructed of key field(s) <code>@href</code></p>
+               <p><span class="usa-tag">index has key</span> for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]</code>this value must correspond to a listing in the index <code>index-back-matter-resource</code> using a key constructed of key field(s) <code>@href</code></p>
             </div>
-            
-            
             
             <div class="constraint">
-               <p><span class="usa-tag">matches</span> for <code class="path">@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
+               <p><span class="usa-tag">matches</span> for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
             </div>
-            
-            
             </details>
          <details open="open">
             <summary>Attributes (3):</summary>
@@ -3377,8 +3378,8 @@ The following is a reference for the XML element and attribute types derived fro
                <p>The value <b>may be locally defined</b>, or the following:</p>
                <ul>
                   
-                  <li><strong>data-center</strong>: A location that contains computing assets. A class can be used to indicate a subclass
-                     of data-center.</li>
+                  <li><strong>data-center</strong>: A location that contains computing assets. A class can be used to indicate the sub-type
+                     of data-center as primary or alternate.</li>
                   </ul>
             </div>
             
@@ -3405,9 +3406,9 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="formal-name">Location Universally Unique Identifier</p>
                   </div>
                   <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> A unique identifier that can be used to reference this defined location elsewhere
-                        in an OSCAL document. A UUID should be consistently used for a given location across
-                        revisions of the document.</p>
+                     <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined location elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>location</code> can be used to reference the data item locally or globally (e.g., from an importing
+                        OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                        of the document.</p>
                   </div>
                </div>
             </div>
@@ -3602,13 +3603,14 @@ The following is a reference for the XML element and attribute types derived fro
          <p class="formal-name">Location Reference</p>
       </div>
       <div class="body">
-         <p class="description"><span class="usa-tag">description</span> References a <code>location</code> defined in <code>metadata</code>. </p>
+         <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to a <code>location</code> defined in the <code>metadata</code> section of this or another OSCAL instance. The <em>UUID</em> of the <code>location</code> in the source OSCAL instance is sufficient to reference the data item locally or
+            globally (e.g., in an imported OSCAL instance). </p>
          <details>
             <summary>Constraint (1)</summary>
             
             
             <div class="constraint">
-               <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-location-uuid</code> using a key constructed of key field(s) <code>value()</code></p>
+               <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-location-uuid</code> using a key constructed of key field(s) <code>.</code></p>
             </div>
             </details>
       </div>
@@ -3621,12 +3623,21 @@ The following is a reference for the XML element and attribute types derived fro
          <p class="formal-name">Location Reference</p>
       </div>
       <div class="body">
-         <p class="description"><span class="usa-tag">description</span> References a <code>location</code> defined in <code>metadata</code>. </p>
+         <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to a <code>location</code> defined in the <code>metadata</code> section of this or another OSCAL instance. The <em>UUID</em> of the <code>location</code> in the source OSCAL instance is sufficient to reference the data item locally or
+            globally (e.g., in an imported OSCAL instance). </p>
+         <div class="remarks-group usa-prose">
+            <details open="open">
+               <summary class="subhead">Remarks</summary>
+               <div class="remarks">
+                  <p>See the <a href="/concepts/identifier-use/#scope">Concepts - Identifier Use</a> page for additional information about the referenced identifier's scope.</p>
+               </div>
+            </details>
+         </div>
          <details>
             <summary>Constraint (1)</summary>
             
             <div class="constraint">
-               <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-location-uuid</code> using a key constructed of key field(s) <code>value()</code></p>
+               <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-location-uuid</code> using a key constructed of key field(s) <code>.</code></p>
             </div>
             </details>
       </div>
@@ -3653,7 +3664,7 @@ The following is a reference for the XML element and attribute types derived fro
       <div class="body">
          <p class="description"><span class="usa-tag">description</span> Provides information about the publication and availability of the containing document.</p>
          <details>
-            <summary>Constraints (12)</summary>
+            <summary>Constraints (13)</summary>
             
             <div class="constraint">
                <p><span class="usa-tag">index</span> for <code class="path">role</code> an index <code>index-metadata-role-ids</code> shall list values returned by targets <code>role</code> using keys constructed of key field(s) <code>@id</code></p>
@@ -3668,7 +3679,7 @@ The following is a reference for the XML element and attribute types derived fro
             </div>
             
             <div class="constraint">
-               <p><span class="usa-tag">index</span> for <code class="path">.//prop</code> an index <code>index-metadata-property-id</code> shall list values returned by targets <code>.//prop</code> using keys constructed of key field(s) <code>@id</code></p>
+               <p><span class="usa-tag">index</span> for <code class="path">.//prop</code> an index <code>index-metadata-property-uuid</code> shall list values returned by targets <code>.//prop</code> using keys constructed of key field(s) <code>@uuid</code></p>
             </div>
             
             <div class="constraint">
@@ -3700,11 +3711,25 @@ The following is a reference for the XML element and attribute types derived fro
                <p>The value <b>may be locally defined</b>, or one of the following:</p>
                <ul>
                   
-                  <li><strong>prepared-by</strong>: Indicates the organization that created this content.</li>
+                  <li><strong>creator</strong>: Indicates the organization that created this content.</li>
+                  
+                  <li><strong>prepared-by</strong>: Indicates the organization that prepared this content.</li>
                   
                   <li><strong>prepared-for</strong>: Indicates the organization for which this content was created.</li>
                   
                   <li><strong>content-approver</strong>: Indicates the organization responsible for all content represented in the "document".</li>
+                  
+                  <li><strong>contact</strong>: Indicates the organization to contact for questions or support related to this content.</li>
+                  </ul>
+            </div>
+            
+            <div class="constraint">
+               <p><span class="usa-tag">allowed value</span> for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+               <p>The value <b>must</b> be one of the following:</p>
+               <ul>
+                  
+                  <li><strong>keywords</strong>: The value identifies a comma-seperated listing of keywords associated with this
+                     content. These keywords may be used as search terms for indexing and other applications.</li>
                   </ul>
             </div>
             
@@ -3960,6 +3985,11 @@ The following is a reference for the XML element and attribute types derived fro
                            <div class="remarks">
                               <p>Permissible values to be determined closer to the application (e.g. by a receiving
                                  authority).</p>
+                              <p>OSCAL has defined a set of standardized roles for consistent use in OSCAL documents.
+                                 This allows tools consuming OSCAL content to infer specific semantics when these roles
+                                 are used. These roles are documented in the specific contexts of their use (e.g.,
+                                 responsible-party, responsible-role). When using such a role, it is necessary to define
+                                 these roles in this list, which will then allow such a role to be referenced.</p>
                            </div>
                         </details>
                      </div>
@@ -4185,6 +4215,41 @@ The following is a reference for the XML element and attribute types derived fro
                </div>
             </details>
          </div>
+         <details>
+            <summary>Constraints (2)</summary>
+            
+            <div class="constraint">
+               <p><span class="usa-tag">allowed values</span> for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+               <p>The value <b>must</b> be one of the following:</p>
+               <ul>
+                  
+                  <li><strong>label</strong>: A human-readable label for the parent context, which may be rendered in place of
+                     the actual identifier for some use cases.</li>
+                  
+                  <li><strong>sort-id</strong>: An alternative identifier, whose value is easily sortable among other such values
+                     in the document.</li>
+                  
+                  <li><strong>alt-identifier</strong>: An alternate or aliased identifier for the parent context.</li>
+                  
+                  
+                  <li><strong>alt-label</strong>: An alternate to the value provided by the parameter's label. This will typically
+                     be qualified by a class.</li>
+                  </ul>
+            </div>
+            
+            <div class="constraint">
+               <p><span class="usa-tag">allowed value</span> for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/rmf')]/@name</code></p>
+               <p>The value <b>must</b> be one of the following:</p>
+               <ul>
+                  
+                  <li><strong>aggregates</strong>: The parent parameter provides an aggregation of 2 or more other parameters, each
+                     described by this property.</li>
+                  </ul>
+            </div>
+            
+            depends-on is deprecated
+            
+            </details>
          <details open="open">
             <summary>Attributes (3):</summary>
             <div class="model assembly-model">
@@ -4197,9 +4262,10 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="formal-name">Parameter Identifier</p>
                   </div>
                   <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> A unique identifier for a specific parameter instance. This identifier's uniqueness
-                        is document scoped and is intended to be consistent for the same parameter across
-                        minor revisions of the document.</p>
+                     <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a>, <a href="/concepts/identifier-use/#locally-unique">locally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined parameter elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. When referenced from another OSCAL instance, this identifier must be referenced
+                        in the context of the containing resource (e.g., import-profile). This id should be
+                        assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                        of the document.</p>
                   </div>
                </div>
                <div class="model-entry definition define-flag">
@@ -4223,7 +4289,7 @@ The following is a reference for the XML element and attribute types derived fro
                      </div>
                   </div>
                </div>
-               <div class="model-entry definition flag">
+               <div class="model-entry definition define-flag">
                   <div class="instance-header">
                      <h2 id="/assembly/oscal-catalog-common/parameter/depends-on" class="toc2 name">depends-on</h2>
                      <p class="type"><a href="/reference/datatypes/#token">token</a></p>
@@ -4232,7 +4298,8 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="formal-name">Depends on</p>
                   </div>
                   <div class="body">
-                     <p class="definition-link"><a href="#/flag/oscal-catalog-common/depends-on">See definition</a></p>
+                     <p class="description"><span class="usa-tag">description</span> **(deprecated)** Another parameter invoking this one. This construct has been deprecated
+                        and should not be used.</p>
                   </div>
                </div>
             </div>
@@ -4421,8 +4488,8 @@ The following is a reference for the XML element and attribute types derived fro
          <p class="formal-name">Parameter ID</p>
       </div>
       <div class="body">
-         <p class="description"><span class="usa-tag">description</span> A reference to a parameter within a control, who's catalog has been imported into
-            the current implementation context.</p>
+         <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a> reference to a <code>parameter</code> within a control, who's catalog has been imported into the current implementation
+            context.</p>
       </div>
    </div>
    <div class="model-entry definition define-assembly">
@@ -4637,53 +4704,24 @@ The following is a reference for the XML element and attribute types derived fro
             </details>
          </div>
          <details>
-            <summary>Constraints (4)</summary>
+            <summary>Constraint (1)</summary>
             
             
             <div class="constraint">
-               <p><span class="usa-tag">allowed values</span> for <code class="path">prop/@name</code></p>
-               <p>The value <b>may be locally defined</b>, or one of the following:</p>
+               <p><span class="usa-tag">allowed values</span> for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+               <p>The value <b>must</b> be one of the following:</p>
                <ul>
                   
-                  <li><strong>label</strong>: A human-readable label for the parent context.</li>
+                  <li><strong>label</strong>: A human-readable label for the parent context, which may be rendered in place of
+                     the actual identifier for some use cases.</li>
                   
                   <li><strong>sort-id</strong>: An alternative identifier, whose value is easily sortable among other such values
                      in the document.</li>
                   
+                  <li><strong>alt-identifier</strong>: An alternate or aliased identifier for the parent context.</li>
+                  
                   </ul>
             </div>
-            
-            
-            <div class="constraint">
-               <p><span class="usa-tag">allowed value</span> for <code class="path">prop/@name</code></p>
-               <p>The value <b>may be locally defined</b>, or the following:</p>
-               <ul>
-                  
-                  <li><strong>method</strong>: The assessment method to use. This typically appears on parts with the name "assessment".</li>
-                  </ul>
-            </div>
-            
-            <div class="constraint">
-               <p><span class="usa-tag">has cardinality</span> for <code class="path">prop[@name='method']</code> the cardinality of  <code>prop[@name='method']</code> is constrained: <b>1</b>; maximum <b>unbounded</b>.</p>
-            </div>
-            
-            <div class="constraint">
-               <p><span class="usa-tag">allowed values</span> for <code class="path">prop[@name='method']/@value</code></p>
-               <p>The value <b>must</b> be one of the following:</p>
-               <ul>
-                  
-                  <li><strong>INTERVIEW</strong>: The process of holding discussions with individuals or groups of individuals within
-                     an organization to once again, facilitate assessor understanding, achieve clarification,
-                     or obtain evidence.</li>
-                  
-                  <li><strong>EXAMINE</strong>: The process of reviewing, inspecting, observing, studying, or analyzing one or more
-                     assessment objects (i.e., specifications, mechanisms, or activities).</li>
-                  
-                  <li><strong>TEST</strong>: The process of exercising one or more assessment objects (i.e., activities or mechanisms)
-                     under specified conditions to compare actual with expected behavior.</li>
-                  </ul>
-            </div>
-            
             </details>
          <details open="open">
             <summary>Attributes (4):</summary>
@@ -4697,8 +4735,9 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="formal-name">Part Identifier</p>
                   </div>
                   <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> A unique identifier for a specific part instance. This identifier's uniqueness is
-                        document scoped and is intended to be consistent for the same part across minor revisions
+                     <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a>, <a href="/concepts/identifier-use/#locally-unique">locally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined part elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. When referenced from another OSCAL instance, this identifier must be referenced
+                        in the context of the containing resource (e.g., import-profile). This id should be
+                        assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
                         of the document.</p>
                   </div>
                </div>
@@ -4712,32 +4751,6 @@ The following is a reference for the XML element and attribute types derived fro
                   </div>
                   <div class="body">
                      <p class="description"><span class="usa-tag">description</span> A textual label that uniquely identifies the part's semantic type.</p>
-                     <details>
-                        <summary>Constraint (1)</summary>
-                        
-                        <div class="constraint">
-                           <p><span class="usa-tag">allowed values</span></p>
-                           <p>The value <b>may be locally defined</b>, or one of the following:</p>
-                           <ul>
-                              
-                              
-                              <li><strong>overview</strong>: An introduction to a control or a group of controls.</li>
-                              
-                              <li><strong>statement</strong>: A set of control implementation requirements.</li>
-                              
-                              <li><strong>item</strong>: An individual item within a control statement.</li>
-                              
-                              <li><strong>guidance</strong>: Additional information to consider when selecting, implementing, assessing, and
-                                 monitoring a control.</li>
-                              
-                              <li><strong>objective</strong>: Describes a set of assessment objectives.</li>
-                              
-                              <li><strong>assessment</strong>: Describes a method-based assessment over a set of assessment objects.</li>
-                              
-                              <li><strong>objects</strong>: Provides a list of assessment objects.</li>
-                              </ul>
-                        </div>
-                        </details>
                   </div>
                </div>
                <div class="model-entry definition define-flag">
@@ -4949,9 +4962,9 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="formal-name">Party Universally Unique Identifier</p>
                   </div>
                   <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> A unique identifier that can be used to reference this defined location elsewhere
-                        in an OSCAL document. A UUID should be consistently used for a given party across
-                        revisions of the document.</p>
+                     <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined party elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>party</code> can be used to reference the data item locally or globally (e.g., from an importing
+                        OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                        of the document.</p>
                   </div>
                </div>
                <div class="model-entry definition define-flag">
@@ -5165,6 +5178,14 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="formal-name">Location Reference</p>
                   </div>
                   <div class="body">
+                     <div class="remarks-group usa-prose">
+                        <details open="open">
+                           <summary class="subhead">Remarks</summary>
+                           <div class="remarks">
+                              <p>See the <a href="/concepts/identifier-use/#scope">Concepts - Identifier Use</a> page for additional information about the referenced identifier's scope.</p>
+                           </div>
+                        </details>
+                     </div>
                      <p class="definition-link"><a href="#/field/oscal-metadata/location-uuid">See definition</a></p>
                   </div>
                </div>
@@ -5177,13 +5198,13 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="formal-name">Organizational Affiliation</p>
                   </div>
                   <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> Identifies that the party object is a member of the organization associated with
-                        the provided UUID.</p>
+                     <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to another <code>party</code> (<code>person</code> or <code>organization</code>) that this subject is associated with. The <em>UUID</em> of the <code>party</code> in the source OSCAL instance is sufficient to reference the data item locally or
+                        globally (e.g., in an imported OSCAL instance). </p>
                      <div class="remarks-group usa-prose">
                         <details open="open">
                            <summary class="subhead">Remarks</summary>
                            <div class="remarks">
-                              <p>Parties of both the <code>person</code> or <code>organization</code> type can be associated with an organization using the <code>member-of-organization</code>. </p>
+                              <p>Parties of both the <code>person</code> or <code>organization</code> type can be associated with an organization using the <code>member-of-organization</code>.</p>
                            </div>
                         </details>
                      </div>
@@ -5191,7 +5212,7 @@ The following is a reference for the XML element and attribute types derived fro
                         <summary>Constraint (1)</summary>
                         
                         <div class="constraint">
-                           <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-party-organizations-uuid</code> using a key constructed of key field(s) <code>value()</code></p>
+                           <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-party-organizations-uuid</code> using a key constructed of key field(s) <code>.</code></p>
                         </div>
                         </details>
                   </div>
@@ -5220,12 +5241,21 @@ The following is a reference for the XML element and attribute types derived fro
          <p class="formal-name">Party Reference</p>
       </div>
       <div class="body">
-         <p class="description"><span class="usa-tag">description</span> References a <code>party</code> defined in <code>metadata</code>. </p>
+         <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to another <code>party</code> defined in <code>metadata</code>. The <em>UUID</em> of the <code>party</code> in the source OSCAL instance is sufficient to reference the data item locally or
+            globally (e.g., in an imported OSCAL instance). </p>
+         <div class="remarks-group usa-prose">
+            <details open="open">
+               <summary class="subhead">Remarks</summary>
+               <div class="remarks">
+                  <p>See the <a href="/concepts/identifier-use/#scope">Concepts - Identifier Use</a> page for additional information about the referenced identifier's scope.</p>
+               </div>
+            </details>
+         </div>
          <details>
             <summary>Constraint (1)</summary>
             
             <div class="constraint">
-               <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-party-uuid</code> using a key constructed of key field(s) <code>value()</code></p>
+               <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-party-uuid</code> using a key constructed of key field(s) <code>.</code></p>
             </div>
             </details>
       </div>
@@ -5389,8 +5419,7 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="formal-name">Property Universally Unique Identifier</p>
                   </div>
                   <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> A unique identifier that can be used to reference this property elsewhere in an OSCAL
-                        document. A UUID should be consistently used for a given location across revisions
+                     <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined property elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
                         of the document.</p>
                   </div>
                </div>
@@ -5496,9 +5525,10 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="formal-name">Service Protocol Information Universally Unique Identifier</p>
                   </div>
                   <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> A globally unique identifier that can be used to reference this service protocol
-                        entry elsewhere in an OSCAL document. A UUID should be consistently used for a given
-                        resource across revisions of the document.</p>
+                     <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this service protocol information elsewhere in
+                        <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>service protocol</code> can be used to reference the data item locally or globally (e.g., in an imported
+                        OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                        of the document.</p>
                   </div>
                </div>
                <div class="model-entry definition define-flag">
@@ -5572,7 +5602,8 @@ The following is a reference for the XML element and attribute types derived fro
          <p class="formal-name">Provided UUID</p>
       </div>
       <div class="body">
-         <p class="description"><span class="usa-tag">description</span> Identifies a 'provided' assembly associated with this assembly.</p>
+         <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to an inherited control implementation that a leveraging system
+            is inheriting from a leveraged system.</p>
       </div>
    </div>
    <div class="model-entry definition define-field">
@@ -5618,10 +5649,11 @@ The following is a reference for the XML element and attribute types derived fro
          <h1 id="/flag/oscal-ssp/responsibility-uuid" class="toc1 name">responsibility-uuid</h1>
          <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
          <div class="crosslink"><a class="usa-button" href="../json-definitions/#/flag/oscal-ssp/responsibility-uuid">Switch to JSON</a></div>
-         <p class="formal-name">Provided UUID</p>
+         <p class="formal-name">Responsibility UUID</p>
       </div>
       <div class="body">
-         <p class="description"><span class="usa-tag">description</span> Identifies a 'provided' assembly associated with this assembly.</p>
+         <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to a control implementation that satisfies a responsibility
+            imposed by a leveraged system.</p>
       </div>
    </div>
    <div class="model-entry definition define-assembly">
@@ -5642,7 +5674,7 @@ The following is a reference for the XML element and attribute types derived fro
             </div>
             
             <div class="constraint">
-               <p><span class="usa-tag">index has key</span> for <code class="path">party-uuid</code>this value must correspond to a listing in the index <code>index-metadata-party-uuid</code> using a key constructed of key field(s) <code>value()</code></p>
+               <p><span class="usa-tag">index has key</span> for <code class="path">party-uuid</code>this value must correspond to a listing in the index <code>index-metadata-party-uuid</code> using a key constructed of key field(s) <code>.</code></p>
             </div>
             </details>
          <details open="open">
@@ -5657,7 +5689,7 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="formal-name">Responsible Role</p>
                   </div>
                   <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> The role that the party is responsible for.</p>
+                     <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a> identifier reference to <code>roles</code> served by the user.</p>
                   </div>
                </div>
             </div>
@@ -5677,6 +5709,9 @@ The following is a reference for the XML element and attribute types derived fro
                      <div class="remarks-group usa-prose">
                         <details open="open">
                            <summary class="subhead">Remarks</summary>
+                           <div class="remarks">
+                              <p>See the <a href="/concepts/identifier-use/#scope">Concepts - Identifier Use</a> page for additional information about the referenced identifier's scope.</p>
+                           </div>
                            <div class="remarks">
                               <p>Specifies one or more parties that are responsible for performing the associated <code>role</code>. </p>
                            </div>
@@ -5775,7 +5810,7 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="formal-name">Responsible Role ID</p>
                   </div>
                   <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> The role that is responsible for the business function.</p>
+                     <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a> identifier reference to <code>roles</code> responsible for the business function.</p>
                   </div>
                </div>
             </div>
@@ -5844,6 +5879,14 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="formal-name">Party Reference</p>
                   </div>
                   <div class="body">
+                     <div class="remarks-group usa-prose">
+                        <details open="open">
+                           <summary class="subhead">Remarks</summary>
+                           <div class="remarks">
+                              <p>See the <a href="/concepts/identifier-use/#scope">Concepts - Identifier Use</a> page for additional information about the referenced identifier's scope.</p>
+                           </div>
+                        </details>
+                     </div>
                      <p class="definition-link"><a href="#/field/oscal-metadata/party-uuid">See definition</a></p>
                   </div>
                </div>
@@ -5884,11 +5927,8 @@ The following is a reference for the XML element and attribute types derived fro
             </details>
          </div>
          <details>
-            <summary>Constraints (2)</summary>
+            <summary>Constraint (1)</summary>
             
-            <div class="constraint">
-               <p><span class="usa-tag">has cardinality</span> for <code class="path">published|last-modified|version|link[@rel='canonical']</code> the cardinality of  <code>published|last-modified|version|link[@rel='canonical']</code> is constrained: <b>1</b>; maximum <b>unbounded</b>.</p>
-            </div>
             
             <div class="constraint">
                <p><span class="usa-tag">allowed values</span> for <code class="path">link/@rel</code></p>
@@ -5982,7 +6022,7 @@ The following is a reference for the XML element and attribute types derived fro
                   <div class="instance-header">
                      <h2 id="/assembly/oscal-metadata/revision/version" class="toc2 name">version</h2>
                      <p class="type"><a href="/reference/datatypes/#string">string</a></p>
-                     <p class="occurrence">[0 or 1]</p>
+                     <p class="occurrence">[1]</p>
                      <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-metadata/revision/version">Switch to JSON</a></div>
                      <p class="formal-name">Document Version</p>
                   </div>
@@ -6109,6 +6149,11 @@ The following is a reference for the XML element and attribute types derived fro
                <div class="remarks">
                   <p>Permissible values to be determined closer to the application (e.g. by a receiving
                      authority).</p>
+                  <p>OSCAL has defined a set of standardized roles for consistent use in OSCAL documents.
+                     This allows tools consuming OSCAL content to infer specific semantics when these roles
+                     are used. These roles are documented in the specific contexts of their use (e.g.,
+                     responsible-party, responsible-role). When using such a role, it is necessary to define
+                     these roles in this list, which will then allow such a role to be referenced.</p>
                </div>
             </details>
          </div>
@@ -6124,21 +6169,10 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="formal-name">Role Identifier</p>
                   </div>
                   <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> A unique identifier for a specific role instance. This identifier's uniqueness is
-                        document scoped and is intended to be consistent for the same role across minor revisions
+                     <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a>, <a href="/concepts/identifier-use/#locally-unique">locally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined role elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. When referenced from another OSCAL instance, the locally defined <em>ID</em> of the <code>Role</code> from the imported OSCAL instance must be referenced in the context of the containing
+                        resource (e.g., import, import-component-definition, import-profile, import-ssp or
+                        import-ap). This ID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
                         of the document.</p>
-                     <div class="remarks-group usa-prose">
-                        <details open="open">
-                           <summary class="subhead">Remarks</summary>
-                           <div class="remarks">
-                              <p>OSCAL has defined a set of standardized roles for consistent use in OSCAL documents.
-                                 This allows tools consuming OSCAL content to infer specific semantics when these roles
-                                 are used. These roles are documented in the specific contexts of their use (e.g.,
-                                 responsible-party, responsible-role). When using such a role, it is necessary to define
-                                 these roles in this list, which will then allow such a role to be referenced.</p>
-                           </div>
-                        </details>
-                     </div>
                   </div>
                </div>
             </div>
@@ -6258,12 +6292,12 @@ The following is a reference for the XML element and attribute types derived fro
          <p class="formal-name">Role Identifier Reference</p>
       </div>
       <div class="body">
-         <p class="description"><span class="usa-tag">description</span> A reference to the roles served by the user.</p>
+         <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a> identifier reference to <code>roles</code> served by the user.</p>
          <details>
             <summary>Constraint (1)</summary>
             
             <div class="constraint">
-               <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-role-id</code> using a key constructed of key field(s) <code>value()</code></p>
+               <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-role-id</code> using a key constructed of key field(s) <code>.</code></p>
             </div>
             </details>
       </div>
@@ -6486,9 +6520,8 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="formal-name">Control Statement Reference Universally Unique Identifier</p>
                   </div>
                   <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> A globally unique identifier that can be used to reference this control statement
-                        entry elsewhere in an OSCAL document. A UUID should be consistently used for a given
-                        resource across revisions of the document.</p>
+                     <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this control statement elsewhere in <a href="/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The <em>UUID</em> of the <code>control statement</code> in the source OSCAL instance is sufficient to reference the data item locally or
+                        globally (e.g., in an imported OSCAL instance).</p>
                   </div>
                </div>
             </div>
@@ -6596,7 +6629,7 @@ The following is a reference for the XML element and attribute types derived fro
          <p class="formal-name">Control Statement Reference</p>
       </div>
       <div class="body">
-         <p class="description"><span class="usa-tag">description</span> A reference to a control statement by its identifier</p>
+         <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a> identifier reference to a <code>control statement</code>.</p>
       </div>
    </div>
    <div class="model-entry definition define-assembly">
@@ -6702,7 +6735,7 @@ The following is a reference for the XML element and attribute types derived fro
             </div>
             
             <div class="constraint">
-               <p><span class="usa-tag">allowed values</span> for <code class="path">prop[@name=('identity-assurance-level','authenticator-assurance-level','federation-assurance-level')]/value()</code></p>
+               <p><span class="usa-tag">allowed values</span> for <code class="path">prop[@name=('identity-assurance-level','authenticator-assurance-level','federation-assurance-level')]/@value</code></p>
                <p>The value <b>must</b> be one of the following:</p>
                <ul>
                   
@@ -6718,7 +6751,7 @@ The following is a reference for the XML element and attribute types derived fro
             </div>
             
             <div class="constraint">
-               <p><span class="usa-tag">allowed values</span> for <code class="path">property/@name</code></p>
+               <p><span class="usa-tag">allowed values</span> for <code class="path">prop/@name</code></p>
                <p>The value <b>may be locally defined</b>, or one of the following:</p>
                <ul>
                   
@@ -6730,7 +6763,7 @@ The following is a reference for the XML element and attribute types derived fro
             </div>
             
             <div class="constraint">
-               <p><span class="usa-tag">allowed values</span> for <code class="path">prop[@name='cloud-deployment-model']/value()</code></p>
+               <p><span class="usa-tag">allowed values</span> for <code class="path">prop[@name='cloud-deployment-model']/@value</code></p>
                <p>The value <b>must</b> be one of the following:</p>
                <ul>
                   
@@ -6745,7 +6778,7 @@ The following is a reference for the XML element and attribute types derived fro
                      </li>
                   
                   
-                  <li><strong>government-only-cloud</strong>: TODO: define</li>
+                  <li><strong>government-only-cloud</strong>: A specific type of community-cloud for use only by government services.</li>
                   
                   <li><strong>other</strong>: Any other type of cloud deployment model that is exclusive to the other choices.</li>
                   The hybrid cloud deployment model, as defined by The NIST Definition of Cloud Computing,
@@ -6754,7 +6787,7 @@ The following is a reference for the XML element and attribute types derived fro
             </div>
             
             <div class="constraint">
-               <p><span class="usa-tag">allowed values</span> for <code class="path">prop[@name='cloud-service-model']/value()</code></p>
+               <p><span class="usa-tag">allowed values</span> for <code class="path">prop[@name='cloud-service-model']/@value</code></p>
                <p>The value <b>must</b> be one of the following:</p>
                <ul>
                   
@@ -7294,7 +7327,7 @@ The following is a reference for the XML element and attribute types derived fro
                <p>The value <b>must</b> be one of the following:</p>
                <ul>
                   
-                  <li><strong>inteneral</strong>: The component is implemented within the system boundary.</li>
+                  <li><strong>internal</strong>: The component is implemented within the system boundary.</li>
                   
                   <li><strong>external</strong>: The component is implemented outside the system boundary.</li>
                   </ul>
@@ -7402,7 +7435,7 @@ The following is a reference for the XML element and attribute types derived fro
             </div>
             
             <div class="constraint">
-               <p><span class="usa-tag">allowed values</span> for <code class="path">prop[(@name=('ipv4-address','ipv6-address')]/@class</code></p>
+               <p><span class="usa-tag">allowed values</span> for <code class="path">prop[@name=('ipv4-address','ipv6-address')]/@class</code></p>
                <p>The value <b>may be locally defined</b>, or one of the following:</p>
                <ul>
                   
@@ -7452,7 +7485,7 @@ The following is a reference for the XML element and attribute types derived fro
             </div>
             
             <div class="constraint">
-               <p><span class="usa-tag">allowed values</span> for <code class="path">prop[@name='direction')]/@value</code></p>
+               <p><span class="usa-tag">allowed values</span> for <code class="path">prop[@name='direction']/@value</code></p>
                <p>The value <b>may be locally defined</b>, or one of the following:</p>
                <ul>
                   
@@ -7478,7 +7511,9 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="formal-name">Component Identifier</p>
                   </div>
                   <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> The unique identifier for the component.</p>
+                     <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this component elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>component</code> can be used to reference the data item locally or globally (e.g., in an imported
+                        OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                        of the document.</p>
                   </div>
                </div>
                <div class="model-entry definition flag">
@@ -7759,7 +7794,10 @@ The following is a reference for the XML element and attribute types derived fro
          <p class="formal-name">System Identification</p>
       </div>
       <div class="body">
-         <p class="description"><span class="usa-tag">description</span> A unique identifier for the system described by this system security plan.</p>
+         <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this system identification property elsewhere
+            in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. When referencing an externally defined <code>system identification</code>, the <code>system identification</code> must be used in the context of the external / imported OSCAL instance (e.g., uri-reference).
+            This string should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same system across revisions
+            of the document.</p>
          <details open="open">
             <summary>Attribute (1):</summary>
             <div class="model field-model">
@@ -7772,7 +7810,8 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="formal-name">Identification System Type</p>
                   </div>
                   <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> Identifies the identification system from which the provided identifier was assigned.</p>
+                     <p class="description"><span class="usa-tag">description</span> Identifies the identification system from which the provided identifier was assigned.
+                        </p>
                      <details>
                         <summary>Constraint (1)</summary>
                         
@@ -7811,7 +7850,7 @@ The following is a reference for the XML element and attribute types derived fro
             </div>
             
             <div class="constraint">
-               <p><span class="usa-tag">index has key</span> for <code class="path">component/prop[@name='leveraged-authorization-uuid']</code>this value must correspond to a listing in the index <code>index-system-implementation-leveraged-authorization-uuid</code> using a key constructed of key field(s) <code>value()</code></p>
+               <p><span class="usa-tag">index has key</span> for <code class="path">component/prop[@name='leveraged-authorization-uuid']</code>this value must correspond to a listing in the index <code>index-system-implementation-leveraged-authorization-uuid</code> using a key constructed of key field(s) <code>@value</code></p>
             </div>
             
             
@@ -7960,7 +7999,7 @@ The following is a reference for the XML element and attribute types derived fro
                         </div>
                         
                         <div class="constraint">
-                           <p><span class="usa-tag">index has key</span> for <code class="path">link[@rel='system-security-plan' and [starts-with(@href,'#')]]</code>this value must correspond to a listing in the index <code>index-back-matter-resource</code> using a key constructed of key field(s) <code>@href</code></p>
+                           <p><span class="usa-tag">index has key</span> for <code class="path">link[@rel='system-security-plan' and starts-with(@href,'#')]</code>this value must correspond to a listing in the index <code>index-back-matter-resource</code> using a key constructed of key field(s) <code>@href</code></p>
                         </div>
                         
                         <div class="constraint">
@@ -7979,9 +8018,9 @@ The following is a reference for the XML element and attribute types derived fro
                                  <p class="formal-name">Leveraged Authorization Universally Unique Identifier</p>
                               </div>
                               <div class="body">
-                                 <p class="description"><span class="usa-tag">description</span> A globally unique identifier that can be used to reference this leveraged authorization
-                                    entry elsewhere in an OSCAL document. A UUID should be consistently used for a given
-                                    resource across revisions of the document.</p>
+                                 <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope and can be used to reference this leveraged authorization elsewhere in <a href="/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>leveraged authorization</code> can be used to reference the data item locally or globally (e.g., in an imported
+                                    OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                                    of the document.</p>
                               </div>
                            </div>
                         </div>
@@ -8062,7 +8101,7 @@ The following is a reference for the XML element and attribute types derived fro
                                  <p class="formal-name">party-uuid field</p>
                               </div>
                               <div class="body">
-                                 <p class="description"><span class="usa-tag">description</span> A reference to the party that manages the leveraged system.</p>
+                                 <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to the <code>party</code> that manages the leveraged system.</p>
                               </div>
                            </div>
                            <div class="model-entry definition field">
@@ -8200,7 +8239,7 @@ The following is a reference for the XML element and attribute types derived fro
             </div>
             
             <div class="constraint">
-               <p><span class="usa-tag">allowed values</span> for <code class="path">prop[@name='privacy-designation']/value()</code></p>
+               <p><span class="usa-tag">allowed values</span> for <code class="path">prop[@name='privacy-designation']/@value</code></p>
                <p>The value <b>must</b> be one of the following:</p>
                <ul>
                   
@@ -8224,7 +8263,7 @@ The following is a reference for the XML element and attribute types derived fro
             </div>
             
             <div class="constraint">
-               <p><span class="usa-tag">index has key</span> for <code class="path">link[@rel='privacy-impact-assessment' and [starts-with(@href,'#')]]</code>this value must correspond to a listing in the index <code>index-back-matter-resource</code> using a key constructed of key field(s) <code>@href</code></p>
+               <p><span class="usa-tag">index has key</span> for <code class="path">link[@rel='privacy-impact-assessment' and starts-with(@href,'#')]</code>this value must correspond to a listing in the index <code>index-back-matter-resource</code> using a key constructed of key field(s) <code>@href</code></p>
             </div>
             
             <div class="constraint">
@@ -8232,7 +8271,7 @@ The following is a reference for the XML element and attribute types derived fro
             </div>
             
             <div class="constraint">
-               <p><span class="usa-tag">allowed values</span> for <code class="path">security-sensitivity-level|security-impact-level/(security-objective-confidentiality|security-objective-integrity|security-objective-availability)|system-information/information-type/(confidentiality-impact|integrity-impact|availability-impact)/(base|selected}</code></p>
+               <p><span class="usa-tag">allowed values</span> for <code class="path">information-type/(confidentiality-impact|integrity-impact|availability-impact)/(base|selected)</code></p>
                <p>The value <b>must</b> be one of the following:</p>
                <ul>
                   
@@ -8327,9 +8366,9 @@ The following is a reference for the XML element and attribute types derived fro
                                  <p class="formal-name">Information Type Universally Unique Identifier</p>
                               </div>
                               <div class="body">
-                                 <p class="description"><span class="usa-tag">description</span> A globally unique identifier that can be used to reference this information type
-                                    entry elsewhere in an OSCAL document. A UUID should be consistently used for a given
-                                    resource across revisions of the document.</p>
+                                 <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this information type elsewhere in <a href="/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>information type</code> can be used to reference the data item locally or globally (e.g., in an imported
+                                    OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                                    of the document.</p>
                               </div>
                            </div>
                         </div>
@@ -8415,7 +8454,8 @@ The following is a reference for the XML element and attribute types derived fro
                                              <p class="formal-name">Information Type Systematized Identifier</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">description</span> An identifier qualified by the given identification <code>system</code> used, such as NIST SP 800-60.</p>
+                                             <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier qualified by the given identification <code>system</code> used, such as NIST SP 800-60. This identifier has <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope and can be used to reference this system elsewhere in <a href="/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. This id should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                                                of the document.</p>
                                           </div>
                                        </div>
                                     </div>
@@ -8822,8 +8862,10 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="formal-name">System Security Plan Universally Unique Identifier</p>
                   </div>
                   <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> A globally unique identifier for this catalog instance. This UUID should be changed
-                        when this document is revised.</p>
+                     <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this system security plan (SSP) elsewhere in
+                        <a href="/concepts/identifier-use/#ssp-identifiers">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>SSP</code> can be used to reference the data item locally or globally (e.g., in an imported
+                        OSCAL instance).This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                        of the document.</p>
                   </div>
                </div>
             </div>
@@ -9027,7 +9069,9 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="formal-name">User Universally Unique Identifier</p>
                   </div>
                   <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> The unique identifier for the user class.</p>
+                     <p class="description"><span class="usa-tag">description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this user class elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>system user</code> can be used to reference the data item locally or globally (e.g., in an imported
+                        OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                        of the document.</p>
                   </div>
                </div>
             </div>

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="../../build/metaschema/toolchains/xslt-M4/validate/metaschema-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-model href="../../build/metaschema/toolchains/xslt-M4/validate/metaschema-composition-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <!-- OSCAL CATALOG METASCHEMA -->
 <!-- validate with XSD and Schematron (linked) -->
 <METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/toolchains/xslt-M4/validate/metaschema.xsd" abstract="yes">
     <schema-name>OSCAL Document Metadata Description</schema-name>
-    <schema-version>1.0.0</schema-version>
+    <schema-version>1.0.2</schema-version>
     <short-name>oscal-metadata</short-name>
     <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
     <json-base-uri>http://csrc.nist.gov/ns/oscal</json-base-uri>
@@ -101,9 +101,14 @@
                 </remarks>
             </is-unique>
             <allowed-values id="allowed-metadata-responsibe-party-role-ids" target="responsible-party/@role-id" allow-other="yes">
-                <enum value="prepared-by">Indicates the organization that created this content.</enum>
+                <enum value="creator">Indicates the organization that created this content.</enum>
+                <enum value="prepared-by">Indicates the organization that prepared this content.</enum>
                 <enum value="prepared-for">Indicates the organization for which this content was created.</enum>
                 <enum value="content-approver">Indicates the organization responsible for all content represented in the "document".</enum>
+                <enum value="contact">Indicates the organization to contact for questions or support related to this content.</enum>
+            </allowed-values>
+            <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+                <enum value="keywords">The value identifies a comma-seperated listing of keywords associated with this content. These keywords may be used as search terms for indexing and other applications.</enum>
             </allowed-values>
             <allowed-values target="link/@rel" allow-other="yes">
                 <enum value="canonical">The link identifies the authoritative location for this file. Defined by <a href="https://tools.ietf.org/html/rfc6596">RFC 6596</a>.</enum>
@@ -125,7 +130,7 @@
             </define-field>
             <field ref="published" />
             <field ref="last-modified"/>
-            <field ref="version"/>
+            <field ref="version" min-occurs="1"/>
             <field ref="oscal-version"/>
             <assembly ref="property" max-occurs="unbounded">
                 <group-as name="props" in-json="ARRAY"/>
@@ -136,7 +141,9 @@
             <field ref="remarks" in-xml="WITH_WRAPPER"/>
         </model>
         <constraint>
-            <has-cardinality target="published|last-modified|version|link[@rel='canonical']" min-occurs="1"/>
+<!-- TODO: consider making this a warning
+            <has-cardinality target="published|last-modified|link[@rel='canonical']" min-occurs="1"/>
+-->
             <allowed-values target="link/@rel" allow-other="yes">
                 <enum value="canonical">The link identifies the authoritative location for this file. Defined by <a href="https://tools.ietf.org/html/rfc6596">RFC 6596</a>.</enum>
                 <enum value="alternate">The link identifies an alternative location or format for this file. Defined by <a href="https://html.spec.whatwg.org/multipage/links.html#linkTypes">the HTML Living Standard</a></enum>
@@ -154,7 +161,8 @@
         <description>A location, with associated metadata that can be referenced.</description>
         <define-flag name="uuid" as-type="uuid" required="yes">
             <formal-name>Location Universally Unique Identifier</formal-name>
-            <description>A unique identifier that can be used to reference this defined location elsewhere in an OSCAL document. A UUID should be consistently used for a given location across revisions of the document.</description>
+            <!-- identifier declaration -->
+            <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined location elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>location</code> can be used to reference the data item locally or globally (e.g., from an importing OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
         </define-flag>
         <model>
             <define-field name="title" as-type="markup-line">
@@ -210,7 +218,8 @@
 
     <define-flag name="location-uuid" as-type="uuid">
         <formal-name>Location Reference</formal-name>
-        <description>References a <code>location</code> defined in <code>metadata</code>.
+        <!-- identifier reference -->
+        <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to a <code>location</code> defined in the <code>metadata</code> section of this or another OSCAL instance. The <em>UUID</em> of the <code>location</code> in the source OSCAL instance is sufficient to reference the data item locally or globally (e.g., in an imported OSCAL instance).
         </description>
         <constraint>
             <!-- TODO: Dave to resolve syntax error. Likely requires updated metaschema schema -->
@@ -223,7 +232,8 @@
 
     <define-field name="location-uuid" as-type="uuid">
         <formal-name>Location Reference</formal-name>
-        <description>References a <code>location</code> defined in <code>metadata</code>.
+        <!-- identifier reference -->
+        <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to a <code>location</code> defined in the <code>metadata</code> section of this or another OSCAL instance. The <em>UUID</em> of the <code>location</code> in the source OSCAL instance is sufficient to reference the data item locally or globally (e.g., in an imported OSCAL instance).
         </description>
         <constraint>
             <index-has-key name="index-metadata-location-uuid" target=".">
@@ -231,6 +241,9 @@
                 <key-field target="."/>
             </index-has-key>
         </constraint>
+        <remarks>
+            <p>See the <a href="/concepts/identifier-use/#scope">Concepts - Identifier Use</a> page for additional information about the referenced identifier's scope.</p>
+          </remarks>
     </define-field>
 
     <define-assembly name="party">
@@ -238,7 +251,8 @@
         <description>A responsible entity which is either a person or an organization.</description>
         <define-flag name="uuid" as-type="uuid" required="yes">
             <formal-name>Party Universally Unique Identifier</formal-name>
-            <description>A unique identifier that can be used to reference this defined location elsewhere in an OSCAL document. A UUID should be consistently used for a given party across revisions of the document.</description>
+            <!-- identifier declaration -->
+            <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined party elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>party</code> can be used to reference the data item locally or globally (e.g., from an importing OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
         </define-flag>
         <define-flag name="type" as-type="string" required="yes">
             <formal-name>Party Type</formal-name>
@@ -308,7 +322,9 @@
             </choice>
             <define-field name="member-of-organization" as-type="uuid" max-occurs="unbounded">
                 <formal-name>Organizational Affiliation</formal-name>
-                <description>Identifies that the party object is a member of the organization associated with the provided UUID.</description>
+                <!-- identifier reference -->
+                <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to another <code>party</code> (<code>person</code> or <code>organization</code>) that this subject is associated with. The <em>UUID</em> of the <code>party</code> in the source OSCAL instance is sufficient to reference the data item locally or globally (e.g., in an imported OSCAL instance).
+                </description>
                 <group-as name="member-of-organizations" in-json="ARRAY"/>
                 <constraint>
                     <index-has-key name="index-metadata-party-organizations-uuid" target=".">
@@ -316,8 +332,7 @@
                     </index-has-key>
                 </constraint>
                 <remarks>
-                    <p>Parties of both the <code>person</code> or <code>organization</code> type can be associated with an organization using the <code>member-of-organization</code>.
-                    </p>
+                    <p>Parties of both the <code>person</code> or <code>organization</code> type can be associated with an organization using the <code>member-of-organization</code>.</p>
                 </remarks>
             </define-field>
             <field ref="remarks" in-xml="WITH_WRAPPER"/>
@@ -333,7 +348,8 @@
 
     <define-field name="party-uuid" as-type="uuid">
         <formal-name>Party Reference</formal-name>
-        <description>References a <code>party</code> defined in <code>metadata</code>.
+        <!-- identifier reference -->
+        <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to another <code>party</code> defined in <code>metadata</code>. The <em>UUID</em> of the <code>party</code> in the source OSCAL instance is sufficient to reference the data item locally or globally (e.g., in an imported OSCAL instance).
         </description>
         <constraint>
             <index-has-key name="index-metadata-party-uuid" target=".">
@@ -341,6 +357,9 @@
                 <key-field target="."/>
             </index-has-key>
         </constraint>
+        <remarks>
+            <p>See the <a href="/concepts/identifier-use/#scope">Concepts - Identifier Use</a> page for additional information about the referenced identifier's scope.</p>
+          </remarks>
     </define-field>
 
     <define-assembly name="role">
@@ -348,11 +367,9 @@
         <description>Defines a function assumed or expected to be assumed by a party in a specific situation.</description>
         <define-flag name="id" as-type="token" required="yes">
             <!-- This is an id because the idenfier is assigned and managed by humans. -->
+            <!-- identifier declarations -->
             <formal-name>Role Identifier</formal-name>
-            <description>A unique identifier for a specific role instance. This identifier's uniqueness is document scoped and is intended to be consistent for the same role across minor revisions of the document.</description>
-            <remarks>
-                <p>OSCAL has defined a set of standardized roles for consistent use in OSCAL documents. This allows tools consuming OSCAL content to infer specific semantics when these roles are used. These roles are documented in the specific contexts of their use (e.g., responsible-party, responsible-role). When using such a role, it is necessary to define these roles in this list, which will then allow such a role to be referenced.</p>
-            </remarks>
+            <description>A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a>, <a href="/concepts/identifier-use/#locally-unique">locally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined role elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. When referenced from another OSCAL instance, the locally defined <em>ID</em> of the <code>Role</code> from the imported OSCAL instance must be referenced in the context of the containing resource (e.g., import, import-component-definition, import-profile, import-ssp or import-ap). This ID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
         </define-flag>
         <model>
             <define-field name="title" as-type="markup-line" min-occurs="1">
@@ -378,12 +395,14 @@
         </model>
         <remarks>
             <p>Permissible values to be determined closer to the application (e.g. by a receiving authority).</p>
-        </remarks>
+                <p>OSCAL has defined a set of standardized roles for consistent use in OSCAL documents. This allows tools consuming OSCAL content to infer specific semantics when these roles are used. These roles are documented in the specific contexts of their use (e.g., responsible-party, responsible-role). When using such a role, it is necessary to define these roles in this list, which will then allow such a role to be referenced.</p>
+            </remarks>
     </define-assembly>
 
     <define-field name="role-id" as-type="token">
         <formal-name>Role Identifier Reference</formal-name>
-        <description>A reference to the roles served by the user.</description>
+        <!-- identifier reference -->
+        <description>A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a> identifier reference to <code>roles</code> served by the user.</description>
         <constraint>
             <index-has-key name="index-metadata-role-id" target=".">
                 <!-- TODO: This is impacted by cross-document cross-references We need to relocate or localize this constraint. -->
@@ -405,7 +424,8 @@
                 <group-as name="resources" in-json="ARRAY"/>
                 <define-flag name="uuid" as-type="uuid" required="yes">
                     <formal-name>Resource Universally Unique Identifier</formal-name>
-                    <description>A globally unique identifier that can be used to reference this defined resource elsewhere in an OSCAL document. A UUID should be consistently used for a given resource across revisions of the document.</description>
+                    <!-- identifier declaration -->
+                    <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined resource elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
                 </define-flag>
                 <model>
                     <define-field name="title" as-type="markup-line">
@@ -496,7 +516,7 @@
                         <enum value="version">For resources representing a published document, this represents the version number of that document.</enum>
                         <enum value="published">For resources representing a published document, this represents the publication date of that document.</enum>
                     </allowed-values>
-                    <matches target="prop[(not(exists(@ns)) or @ns='http://csrc.nist.gov/ns/oscal') and @name='published']/@value" datatype="dateTime"/>
+                    <matches target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='published']/@value" datatype="dateTime"/>
                     <!-- CHANGED: Added enumerated choices for the resource type property -->
                     <allowed-values target="prop[@name='type']/@value" allow-other="yes">
                         <!-- More general. Applies across all models. -->
@@ -527,7 +547,7 @@
                         <enum value="report">Indicates the resource is a report.</enum>
                         <enum value="agreement">Indicates the resource is a formal agreement between two or more parties.</enum>
                     </allowed-values>
-                    <has-cardinality target="rlink|base64" min-occurs="1"/>
+                    <has-cardinality level="WARNING" target="rlink|base64" min-occurs="1"/>
                     <is-unique id="unique-resource-rlink-href" target="rlink">
                         <key-field target="@href"/>
                         <remarks>
@@ -541,13 +561,11 @@
                             </p>
                         </remarks>
                     </is-unique>
-                    <require when="citation">
-                        <has-cardinality target="title" min-occurs="1">
-                            <remarks>
-                                <p>A <code>title</code> is required when a citation is provided.</p>
-                            </remarks>
-                        </has-cardinality>
-                    </require>
+                    <expect target=".[citation]" test="title">
+                        <remarks>
+                            <p>A <code>title</code> is required when a citation is provided.</p>
+                        </remarks>
+                    </expect>
                 </constraint>
                 <remarks>
                     <p>A resource can be used in two ways. 1) it may point to an specific retrievable network resource using a <code>rlink</code>, or 2) it may be included as an attachment using a <code>base64</code>. A resource may contain multiple <code>rlink</code> and <code>base64</code> entries that represent alternative download locations (rlink) and attachments (base64) for the same resource. Both rlink and base64 allow for a <code>media-type</code> to be specified, which is used to distinguish between different representations of the same resource (e.g., Microsoft Word, PDF). When multiple <code>rlink</code> and <code>base64</code> items are included for a given resource, all items must contain equivalent information. This allows the document consumer to choose a preferred item to process based on a the selected item's <code>media-type</code>. This is extremely important when the items represent OSCAL content that is represented in alternate formats (i.e., XML, JSON, YAML), allowing the same OSCAL data to be processed from any of the available formats indicated by the items.</p>
@@ -600,7 +618,8 @@
         </define-flag>
         <define-flag name="uuid" as-type="uuid">
             <formal-name>Property Universally Unique Identifier</formal-name>
-            <description>A unique identifier that can be used to reference this property elsewhere in an OSCAL document. A UUID should be consistently used for a given location across revisions of the document.</description>
+            <!-- identifier declaration -->
+            <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined property elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
         </define-flag>
         <!-- CHANGED: data type to uri -->
         <define-flag name="ns" as-type="uri">
@@ -669,17 +688,11 @@
             </define-field>
         </model>
         <constraint>
-            <require when="@rel=('reference')">
-                <require when="starts-with(@href,'#')">
-                    <matches target="@href" datatype="uri-reference"/>
-                    <index-has-key name="index-back-matter-resource" target=".">
-                        <key-field target="@href" pattern="#(.*)"/>
-                    </index-has-key>
-                </require>
-                <require when="not(starts-with(@href,'#'))">
-                    <matches target="@href" datatype="uri"/>
-                </require>
-            </require>
+            <matches target=".[@rel=('reference') and starts-with(@href,'#')]/@href" datatype="uri-reference"/>
+            <index-has-key name="index-back-matter-resource" target=".[@rel=('reference') and starts-with(@href,'#')]">
+                <key-field target="@href" pattern="#(.*)"/>
+            </index-has-key>
+            <matches target=".[@rel=('reference') and not(starts-with(@href,'#'))]/@href" datatype="uri"/>
         </constraint>
         <remarks>
             <p>To provide a cryptographic hash for a remote target resource, a local reference to a back matter <code>resource</code> is needed. The resource allows one or more hash values to be provided using the <code>rlink/hash</code> object.</p>
@@ -710,7 +723,8 @@
         <description>A reference to a set of organizations or persons that have responsibility for performing a referenced role in the context of the containing object.</description>
         <define-flag required="yes" name="role-id" as-type="token">
             <formal-name>Responsible Role</formal-name>
-            <description>The role that the party is responsible for.</description>
+            <!-- identifier reference -->
+            <description>A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a> identifier reference to <code>roles</code> served by the user.</description>
         </define-flag>
         <model>
             <field ref="party-uuid" min-occurs="1" max-occurs="unbounded">
@@ -742,7 +756,8 @@
         <description>A reference to one or more roles with responsibility for performing a function relative to the containing object.</description>
         <define-flag name="role-id" as-type="token" required="yes">
             <formal-name>Responsible Role ID</formal-name>
-            <description>The role that is responsible for the business function.</description>
+            <!-- identifier reference -->
+            <description>A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a> identifier reference to <code>roles</code> responsible for the business function.</description>
         </define-flag>
         <model>
             <assembly ref="property" max-occurs="unbounded">
@@ -920,7 +935,8 @@
     <define-field name="document-id" scope="local">
         <!-- This is an id because the idenfier is assigned and managed externally by humans. -->
         <formal-name>Document Identifier</formal-name>
-        <description>A document identifier qualified by an identifier <code>scheme</code>. A document identifier provides a globally unique identifier for a group of documents that are to be treated as different versions of the same document. If this element does not appear, or if the value of this element is empty, the value of "document-id" is equal to the value of the "uuid" flag of the top-level root element.</description>
+        <!-- identifier declaration -->
+        <description>A document identifier qualified by an identifier <code>scheme</code>. A document identifier provides a <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with a <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that is used for a group of documents that are to be treated as different versions of the same document. If this element does not appear, or if the value of this element is empty, the value of "document-id" is equal to the value of the "uuid" flag of the top-level root element.</description>
         <json-value-key>identifier</json-value-key>
         <!-- CHANGE: "type" to "scheme" -->
         <!-- CHANGE: "Required" to "no" -->

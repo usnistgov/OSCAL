@@ -9,9 +9,10 @@ This part of the OSCAL GitHub repository contains useful resources for working w
 - [Table of Contents](#table-of-contents)
 - [Available JSON Resources](#available-json-resources)
 - [JSON Schema for OSCAL Models](#json-schema-for-oscal-models)
-    - [Validating OSCAL JSON Content](#validating-oscal-json-content)
+  - [Validating OSCAL JSON Content](#validating-oscal-json-content)
 - [OSCAL XML to JSON Converters](#oscal-xml-to-json-converters)
-    - [Converting OSCAL XML Content to JSON](#converting-oscal-xml-content-to-json)
+  - [Converting OSCAL XML Content to JSON](#converting-oscal-xml-content-to-json)
+    - [Alternate invocations](#alternate-invocations)
 
 <!-- /TOC -->
 
@@ -69,21 +70,21 @@ The OSCAL project uses *Saxon-HE* with Java version 8 or greater.
 The following example uses **Saxon HE** to convert an OSCAL catalog XML file to JSON using one of the NIST-provided [JSON to XML XSLT converters](convert). This example assumes that Java 8+ has been installed and the Saxon-HE jar files have already unzipped.
 
 ```
-java -jar "saxon9he.jar" -xsl:"oscal_catalog_xml-to-json-converter.xsl" -s:"oscal-catalog.xml" -o:"oscal-catalog.json" json-indent=yes
+java -jar "saxon10he.jar" -xsl:"oscal_catalog_xml-to-json-converter.xsl" -s:"oscal-catalog.xml" -o:"oscal-catalog.json" json-indent=yes
 ```
 
-> *Note*: at time of writing, Saxon 9 users are being encouraged to upgrade systems to Saxon use 10, and the stylesheets provided should function equally well or better with the later software. However until we have experience testing it and assuring it runs without error, Saxon 9 is designated here.
+> *Note*: at time of writing, Saxon 9 users are being encouraged to upgrade systems to use Saxon 10, and the stylesheets provided should function equally well or better with the later software. Please feel free to use the latest Saxon or indeed any conformant XSLT 3.0 processor.
 >
 > Operators of XSLT-based platforms should by all means test these processes with any XSLT 3.0 conformant processor, and report problems to us via Github Issues.
  
 Paths\names of these files need to be provided based on the location of the files on your computer:
 
-* The Saxon JAR file is named ```saxon9he.jar```.
+* The Saxon JAR file is named ```saxon10he.jar```.
 * The catalog converter is specified as ```-xsl:"oscal_catalog_xml-to-json-converter.xsl"```
 * The source catalog XML file is specified as ```-s:"oscal-catalog.xml"```
 * The destination catalog JSON file is specified as ```-o:"oscal-catalog.json"```.
 
-The [online documentation](http://www.saxonica.com/documentation/#!using-xsl/commandline) for *Saxon* provides more information on the command line arguments.
+The [online documentation](http://www.saxonica.com) for *Saxon* provides more information on the command line arguments.
 
 ### Alternate invocations
 

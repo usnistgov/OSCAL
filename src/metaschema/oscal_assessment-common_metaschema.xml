@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <METASCHEMA xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" abstract="yes">
    <schema-name>OSCAL Assessment Layer Format -- Common Modules</schema-name>
-   <schema-version>1.0.0</schema-version>
+   <schema-version>1.0.2</schema-version>
    <short-name>oscal-assessment-common</short-name>
    <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
    <json-base-uri>http://csrc.nist.gov/ns/oscal</json-base-uri>
@@ -21,7 +21,7 @@
       <description>Used by the assessment plan and POA&amp;M to import information about the system.</description>
       <define-flag name="href" required="yes" as-type="uri-reference">
          <formal-name>System Security Plan Reference</formal-name>
-         <description>>A resolvable URL reference to the system security plan for the system being assessed.</description>
+         <description>A resolvable URL reference to the system security plan for the system being assessed.</description>
          <remarks>
             <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
             <p>If a local reference using a fragment is used, this will be indicated by a fragment "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is <a href="/concepts/layer/assessment/assessment-plan/#key-concepts">within the scope of the containing OSCAL document</a>.</p>
@@ -34,9 +34,6 @@
       </model>
    </define-assembly>
 
-   <!-- =========== -->
-   <!-- === NEW === -->
-   <!-- =========== -->
    <define-assembly name="local-objective">
       <formal-name>Assessment-Specific Control Objective</formal-name>
       <description>A local definition of a control objective for this assessment. Uses catalog syntax for control objective and assessment actions.</description>
@@ -62,14 +59,16 @@
          <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
       </model>
       <constraint>
-         <allowed-values target="part">
-            <enum value="objective"></enum>
-            <enum value="assessment"></enum>
+         <allowed-values target="part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]">
+            <enum value="objective" deprecated="1.0.1">**(deprecated)** Use 'assessment-objective' instead.</enum>
+            <enum value="assessment" deprecated="1.0.1">**(deprecated)** Use 'assessment-method' instead</enum>
+            <enum value="assessment-objective">The part defines an assessment objective.</enum>
+            <enum value="assessment-method">The part defines an assessment method.</enum>
          </allowed-values>
-         <has-cardinality target="part[@name='objective']" max-occurs="1" />
-         <has-cardinality target="part[@name='assessment']/prop[@name='method']" min-occurs="1" max-occurs="1" />
-         <has-cardinality target="part[@name='assessment']/part[@name='objects']" min-occurs="1" max-occurs="1" />
-         <has-cardinality target="part[@name='objective']/prop[@name='method-id']" min-occurs="1" />
+         <has-cardinality target="part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('objective','assessment-objective')]" max-occurs="1" />
+         <has-cardinality target="part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('assessment','assessment-method')]/prop[has-oscal-namespace(('http://csrc.nist.gov/ns/oscal','http://csrc.nist.gov/ns/rmf')) and @name='method']" min-occurs="1" max-occurs="1" />
+         <has-cardinality target="part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('assessment','assessment-method')]/part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('objects','assessment-objects')]" min-occurs="1" max-occurs="1" />
+         <has-cardinality target="part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('objective','assessment-objective')]/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='method-id']" min-occurs="1" />
       </constraint>
    </define-assembly>
    <define-assembly name="assessment-method">
@@ -77,7 +76,8 @@
       <description>A local definition of a control objective. Uses catalog syntax for control objective and assessment activities.</description>
       <define-flag name="uuid" required="yes" as-type="uuid">
          <formal-name>Assessment Method Universally Unique Identifier</formal-name>
-         <description>Uniquely identifies this defined assessment method. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. A UUID should be consistently used for a given assessment method across revisions of the document.</description>
+         <!-- Identifier Declaration -->
+         <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this assessment method elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>assessment method</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
       </define-flag>
       <model>
          <define-field name="description" min-occurs="0" max-occurs="1" in-xml="WITH_WRAPPER" as-type="markup-multiline">
@@ -95,15 +95,13 @@
       </model>
    </define-assembly>
 
-   <!-- ===============================  -->
-   <!-- ========= NEW CONTENT =========  -->
-   <!-- ===============================  -->
    <define-assembly name="activity">
       <formal-name>Activity</formal-name>
       <description>Identifies an assessment or related process that can be performed. In the assessment plan, this is an intended activity which may be associated with an assessment task. In the assessment results, this an activity that was actually performed as part of an assessment.</description>
       <define-flag name="uuid" required="yes" as-type="uuid">
          <formal-name>Assessment Activity Universally Unique Identifier</formal-name>
-         <description>Uniquely identifies this assessment activity. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. A UUID should be consistently used for a given included activity across revisions of the document.</description>
+         <!-- Identifier Declaration -->
+         <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this assessment activity elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>activity</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
       </define-flag>
       <model>
          <define-field name="title" min-occurs="0" max-occurs="1" as-type="markup-line">
@@ -126,7 +124,8 @@
             <group-as name="steps" in-json="ARRAY"/>
             <define-flag name="uuid" required="yes" as-type="uuid">
                <formal-name>Step Universally Unique Identifier</formal-name>
-               <description>Uniquely identifies a step. This UUID may be referenced elsewhere in an OSCAL document when referring to this step. A UUID should be consistently used for a given test step across revisions of the document.</description>
+               <!-- Identifier Declaration -->
+               <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this step elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>step</code> (in a series of steps) can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
             </define-flag>
             <model>
                <define-field name="title" min-occurs="0" max-occurs="1" as-type="markup-line">
@@ -204,7 +203,8 @@
       <description>Represents a scheduled event or milestone, which may be associated with a series of assessment actions.</description>
       <define-flag name="uuid" required="yes" as-type="uuid">
          <formal-name>Task Universally Unique Identifier</formal-name>
-         <description>Uniquely identifies this assessment task. </description>
+         <!-- Identifier Declaration -->
+         <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this task elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>task</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
       </define-flag>
       <define-flag name="type" required="yes" as-type="token">
          <formal-name>Task Type</formal-name>
@@ -288,7 +288,8 @@
             <group-as name="dependencies" in-json="ARRAY"/>
             <define-flag name="task-uuid" required="yes" as-type="uuid">
                <formal-name>Task Universally Unique Identifier Reference</formal-name>
-               <description>References a unique task by UUID.</description>
+               <!-- Identifier Reference -->
+               <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to a unique task.</description>
             </define-flag>
             <model>
                <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
@@ -304,7 +305,8 @@
             <group-as name="associated-activities" in-json="ARRAY"/>
             <define-flag name="activity-uuid" required="yes" as-type="uuid">
                <formal-name>Activity Universally Unique Identifier Reference</formal-name>
-               <description>References an activity defined in the list of activities.</description>
+               <!-- Identifier Reference -->
+               <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to an activity defined in the list of activities.</description>
             </define-flag>
             <model>
                <assembly ref="property" max-occurs="unbounded">
@@ -350,14 +352,12 @@
             <group-as name="responsible-roles" in-json="ARRAY"/>
             <remarks>
                <p>Identifies the person or organization responsible for performing a specific role related to the task.</p>
+               <!-- todo: role id and party id scope is defined at the document level.  Refer to root object within which the data is declared for...mention resolved through imports.  Note: wh-->
             </remarks>
          </assembly>
          <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
       </model>
    </define-assembly>
-   <!-- =========== -->
-   <!-- = END NEW = -->
-   <!-- =========== -->
 
    <!-- ********** OBJECTIVES Assembly ********** -->
    <define-assembly name="reviewed-controls">
@@ -391,10 +391,7 @@
                   <group-as name="links" in-json="ARRAY"/>
                </assembly>
                <choice>
-                  <define-assembly name="include-all" min-occurs="1">
-                     <formal-name>All</formal-name>
-                     <description>A key word to indicate all.</description>
-                  </define-assembly>
+                  <assembly ref="include-all" min-occurs="1"/>
                   <assembly ref="select-control-by-id" min-occurs="1" max-occurs="unbounded">
                      <use-name>include-control</use-name>
                      <group-as name="include-controls" in-json="ARRAY"/>
@@ -434,10 +431,7 @@
                   <group-as name="links" in-json="ARRAY"/>
                </assembly>
                <choice>
-                  <define-assembly name="include-all" min-occurs="1">
-                     <formal-name>All</formal-name>
-                     <description>A key word to indicate all.</description>
-                  </define-assembly>
+                  <assembly ref="include-all" min-occurs="1"/>
                   <assembly ref="select-objective-by-id" min-occurs="1" max-occurs="unbounded">
                      <use-name>include-objective</use-name>
                      <group-as name="include-objectives" in-json="ARRAY"/>
@@ -495,7 +489,8 @@
       <description>Used when the assessment subjects will be determined as part of one or more other assessment activities. These assessment subjects will be recorded in the assessment results in the assessment log.</description>
       <define-flag name="uuid" required="yes" as-type="uuid">
          <formal-name>Assessment Subject Placeholder Universally Unique Identifier</formal-name>
-         <description>Uniquely identifies a set of assessment subjects that will be identified by a task or an activity that is part of a task.</description>
+          <!-- Identifier Declaration -->
+         <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier for a set of assessment subjects that will be identified by a task or an activity that is part of a task. The locally defined <em>UUID</em> of the <code>assessment subject placeholder</code> can be used to reference the data item locally or globally (e.g., in an <a href="/concepts/identifier-use/#scope">imported OSCAL instance</a>). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
       </define-flag>
       <model>
          <define-field name="description" as-type="markup-multiline" in-xml="WITH_WRAPPER">
@@ -508,7 +503,8 @@
             <group-as name="sources" in-json="ARRAY"/>
             <define-flag name="task-uuid" required="yes" as-type="uuid">
                <formal-name>Task Universally Unique Identifier</formal-name>
-               <description>Uniquely identifies an assessment activity to be performed as part of the event. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. A UUID should be consistently used for this schedule across revisions of the document.</description>
+               <!-- Identifier Declaration -->
+               <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference (in this or other OSCAL instances) an assessment activity to be performed as part of the event. The locally defined <em>UUID</em> of the <code>task</code> can be used to reference the data item locally or globally (e.g., in an <a href="/concepts/identifier-use/#scope">imported OSCAL instance</a>). This UUID should be assigned <em>per-subject</em>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
             </define-flag>
          </define-assembly>
          <assembly ref="property" max-occurs="unbounded">
@@ -549,10 +545,7 @@
             <group-as name="links" in-json="ARRAY"/>
          </assembly>
          <choice>
-            <define-assembly name="include-all" min-occurs="1">
-               <formal-name>All</formal-name>
-               <description>A key word to indicate all.</description>
-            </define-assembly>
+            <assembly ref="include-all" min-occurs="1"/>
             <assembly ref="select-subject-by-id" min-occurs="1" max-occurs="unbounded">
                <use-name>include-subject</use-name>
                <group-as name="include-subjects" in-json="ARRAY"/>
@@ -589,7 +582,8 @@
    
    <define-flag name="subject-uuid" as-type="uuid" scope="local">
       <formal-name>Subject Universally Unique Identifier Reference</formal-name>
-      <description>A pointer to a component, inventory-item, location, party, user, or resource using it's UUID.</description>
+      <!-- Identifier Reference -->
+      <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to a component, inventory-item, location, party, user, or resource using it's UUID.</description>
    </define-flag>
    
    <define-flag name="subject-type" as-type="token" scope="local">
@@ -609,7 +603,8 @@
    
    <define-assembly name="subject-reference" scope="local">
       <formal-name>Identifies the Subject</formal-name>
-      <description>A pointer to a resource based on its universally unique identifier (UUID). Use type to indicate whether the identified resource is a component, inventory item, location, user, or something else.</description>
+      <!-- Identifier Reference -->
+      <description>A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a> identifier reference to a resource. Use type to indicate whether the identified resource is a component, inventory item, location, user, or something else.</description>
       <flag ref="subject-uuid" required="yes"/>
       <flag ref="subject-type" required="yes">
          <use-name>type</use-name>
@@ -653,7 +648,8 @@
             <group-as name="assessment-platforms" in-json="ARRAY"/>
             <define-flag name="uuid" required="yes" as-type="uuid">
                <formal-name>Assessment Platform Universally Unique Identifier</formal-name>
-               <description>Uniquely identifies this assessment Platform.</description>
+               <!-- Identifier Declaration -->
+               <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this assessment platform elsewhere in this or other OSCAL instances. The locally defined <em>UUID</em> of the <code>assessment platform</code> can be used to reference the data item locally or globally (e.g., in an <a href="/concepts/identifier-use/#scope">imported OSCAL instance</a>). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
             </define-flag>
             <model>
                <define-field name="title" max-occurs="1" as-type="markup-line">
@@ -672,7 +668,8 @@
                   <group-as name="uses-components" in-json="ARRAY"/>
                   <define-flag required="yes" name="component-uuid" as-type="uuid">
                      <formal-name>Component Universally Unique Identifier Reference</formal-name>
-                     <description>A reference to a component that is implemented as part of an inventory item.</description>
+                     <!-- Identifier Reference -->
+                     <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to a component that is implemented as part of an inventory item.</description>
                   </define-flag>
                   <model>
                      <assembly ref="property" max-occurs="unbounded">
@@ -728,7 +725,8 @@
       </define-flag>
       <define-flag name="target-id" as-type="token" required="yes">
          <formal-name>Finding Target Identifier Reference</formal-name>
-         <description>Identifies the specific target qualified by the <code>type</code>.</description>
+         <!-- Identifier Reference -->
+         <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference for a specific target qualified by the <code>type</code>.</description>
       </define-flag>
       <model>
          <define-field name="title" min-occurs="0" max-occurs="1" as-type="markup-line">
@@ -790,7 +788,8 @@
       <description>Describes an individual observation.</description>
       <define-flag name="uuid" required="yes" as-type="uuid">
          <formal-name>Observation Universally Unique Identifier</formal-name>
-         <description>Uniquely identifies this observation. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. Once assigned, a UUID should be consistently used for a given observation across revisions.</description>
+         <!-- Identifier Declaration -->
+         <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <em>cross-instance</em> scope that can be used to reference this observation elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>observation</code> can be used to reference the data item locally or globally (e.g., in an imorted OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
       </define-flag>
       <model>
          <define-field name="title" min-occurs="0" max-occurs="1" as-type="markup-line">
@@ -856,7 +855,7 @@
             <group-as name="relevant-evidence" in-json="ARRAY"/>
             <define-flag name="href" required="no" as-type="uri-reference">
                <formal-name>Relevant Evidence Reference</formal-name>
-               <description>>A resolvable URL reference to relevant evidence.</description>
+               <description>A resolvable URL reference to relevant evidence.</description>
                <remarks>
                   <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
                   <p>If a local reference using a fragment is used, this will be indicated by a fragment "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is <a href="/concepts/layer/assessment/assessment-plan/#key-concepts">within the scope of the containing OSCAL document</a>.</p>
@@ -930,7 +929,8 @@
       </define-flag>
       <define-flag name="actor-uuid" as-type="uuid" required="yes">
          <formal-name>Actor Universally Unique Identifier Reference</formal-name>
-         <description>A pointer to the tool or person based on the associated type.</description>
+         <!-- Identifier Reference -->
+         <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to the tool or person based on the associated type.</description>
       </define-flag>
       <define-flag name="role-id" as-type="token">
          <formal-name>Actor Role</formal-name>
@@ -951,7 +951,8 @@
       <description>Identifies an individual task for which the containing object is a consequence of.</description>
       <define-flag name="task-uuid" required="yes" as-type="uuid">
          <formal-name>Task Universally Unique Identifier Reference</formal-name>
-         <description>References a unique task by UUID.</description>
+         <!-- Identifier Reference -->
+         <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to a unique task.</description>
       </define-flag>
       <model>
          <assembly ref="property" max-occurs="unbounded">
@@ -979,7 +980,8 @@
 
             <define-flag name="subject-placeholder-uuid" required="yes" as-type="uuid">
                <formal-name>Assessment Subject Placeholder Universally Unique Identifier Reference</formal-name>
-               <description>References a unique assessment subject placeholder defined by this task.</description>
+               <!-- Identifier Reference -->
+               <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to a unique assessment subject placeholder defined by this task.</description>
             </define-flag>
             <model>
                <assembly ref="assessment-subject" min-occurs="1" max-occurs="unbounded">
@@ -1028,7 +1030,8 @@
       <description>An identified risk.</description>
       <define-flag name="uuid" required="yes" as-type="uuid">
          <formal-name>Risk Universally Unique Identifier</formal-name>
-         <description>Uniquely identifies this risk. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. Once assigned, a UUID should be consistently used for a given risk across revisions.</description>
+         <!-- Identifier Declaration -->
+         <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this risk elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>risk</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
       </define-flag>
       <model>
          <define-field name="title" min-occurs="1" max-occurs="1" as-type="markup-line">
@@ -1051,20 +1054,9 @@
          <assembly ref="link" max-occurs="unbounded">
             <group-as name="links" in-json="ARRAY"/>
          </assembly>
-         <define-field name="status" as-type="token" min-occurs="1">
-            <formal-name>Status</formal-name>
-            <description>Describes the status of the associated risk.</description>
-            <constraint>
-               <allowed-values target="." allow-other="yes">
-                  <enum value="open">The risk has been identified.</enum>
-                  <enum value="investigating">The identified risk is being investigated. (Open risk)</enum>
-                  <enum value="remediating">Remediation activities are underway, but are not yet complete. (Open risk)</enum>
-                  <enum value="deviation-requested">A risk deviation, such as false positive, risk reduction, or operational requirement has been submitted for approval. (Open risk)</enum>
-                  <enum value="deviation-approved">A risk deviation, such as false positive, risk reduction, or operational requirement has been approved. (Open risk)</enum>
-                  <enum value="closed">The risk has been resolved.</enum>
-               </allowed-values>
-            </constraint>
-         </define-field>
+         <field ref="risk-status" as-type="token" min-occurs="1">
+            <use-name>status</use-name>
+         </field>
          <assembly ref="origin" max-occurs="unbounded">
             <group-as name="origins" in-json="ARRAY"/>
             <remarks>
@@ -1085,11 +1077,13 @@
             <group-as name="mitigating-factors" in-json="ARRAY"/>
             <define-flag name="uuid" required="yes" as-type="uuid">
                <formal-name>Mitigating Factor Universally Unique Identifier</formal-name>
-               <description>Uniquely identifies this mitigating factor. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. Once assigned, a UUID should be consistently used for a given mitigating factor across revisions.</description>
+               <!-- Identifier Declaration -->
+               <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this mitigating factor elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>mitigating factor</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
             </define-flag>
             <define-flag name="implementation-uuid" as-type="uuid">
                <formal-name>Implementation UUID</formal-name>
-               <description>Points to an implementation statement in the SSP.</description>
+               <!-- Identifier Declaration -->
+               <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this implementation statement elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>s. The locally defined <em>UUID</em> of the <code>implementation statement</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
             </define-flag>
             <model>
                <define-field name="description" min-occurs="1" max-occurs="1" in-xml="WITH_WRAPPER" as-type="markup-multiline">
@@ -1130,7 +1124,8 @@
                   <group-as name="entries" in-json="ARRAY"/>
                   <define-flag name="uuid" required="yes" as-type="uuid">
                      <formal-name>Risk Log Entry Universally Unique Identifier</formal-name>
-                     <description>Uniquely identifies a risk log entry. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. A UUID should be consistently used for this schedule across revisions of the document.</description>
+                     <!-- Identifier Declaration -->
+                     <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this risk log entry elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>risk log entry</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
                   </define-flag>
                   <model>
                      <define-field name="title" min-occurs="0" max-occurs="1" as-type="markup-line">
@@ -1170,7 +1165,8 @@
                         <group-as name="related-responses" in-json="ARRAY"/>
                         <define-flag name="response-uuid" required="yes" as-type="uuid">
                            <formal-name>Response Universally Unique Identifier Reference</formal-name>
-                           <description>References a unique risk response by UUID.</description>
+                           <!-- Identifier Reference -->
+                           <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to a unique risk response.</description>
                         </define-flag>
                         <model>
                            <assembly ref="property" max-occurs="unbounded">
@@ -1218,7 +1214,8 @@
             <group-as name="related-observations" in-json="ARRAY"/>
             <define-flag name="observation-uuid" as-type="uuid" required="yes">
                <formal-name>Observation Universally Unique Identifier Reference</formal-name>
-               <description>References an observation defined in the list of observations.</description>
+               <!-- Identifier Reference -->
+               <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to an observation defined in the list of observations.</description>
             </define-flag>
          </define-assembly>
       </model>
@@ -1238,7 +1235,8 @@
       <description>Used to indicate who created a log entry in what role.</description>
       <define-flag name="party-uuid" as-type="uuid" required="yes">
          <formal-name>Party UUID Reference</formal-name>
-         <description>A pointer to the party who is making the log entry.</description>
+         <!-- Identifier Reference -->
+         <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to the party who is making the log entry.</description>
       </define-flag>
       <define-flag name="role-id" as-type="token">
          <formal-name>Actor Role</formal-name>
@@ -1519,7 +1517,8 @@
       <description>Describes either recommended or an actual plan for addressing the risk.</description>
       <define-flag name="uuid" required="yes" as-type="uuid">
          <formal-name>Remediation Universally Unique Identifier</formal-name>
-         <description>Uniquely identifies this remediation. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. Once assigned, a UUID should be consistently used for a given remediation across revisions.</description>
+         <!-- Identifier Declaration -->
+         <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this remediation elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>risk response</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
       </define-flag>
       <define-flag name="lifecycle" as-type="token" required="yes">
          <formal-name>Remediation Intent</formal-name>
@@ -1561,7 +1560,8 @@
             <group-as name="required-assets" in-json="ARRAY"/>
             <define-flag name="uuid" required="yes" as-type="uuid">
                <formal-name>Required Universally Unique Identifier</formal-name>
-               <description>Uniquely identifies this required asset. This UUID may be referenced elsewhere in an OSCAL document when referring to this information. Once assigned, a UUID should be consistently used for a given required asset across revisions.</description>
+               <!-- Identifier Declaration -->
+               <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this required asset elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>asset</code> can be used to reference the data item locally or globally (e.g., in an imported OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
             </define-flag>
             <model>
                <assembly ref="subject-reference" min-occurs="0" max-occurs="unbounded">
@@ -1623,7 +1623,8 @@
       <define-flag name="uuid" as-type="uuid">
          <!-- CHANGE: from uuiid to uuid -->
          <formal-name>Part Identifier</formal-name>
-         <description>A unique identifier for a specific part instance. This identifier's uniqueness is document scoped and is intended to be consistent for the same part across minor revisions of the document.</description>
+         <!-- Identifier Declaration -->
+         <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this part elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>part</code> can be used to reference the data item locally or globally (e.g., in an ported OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
       </define-flag>
       <define-flag name="name" as-type="token" required="yes">
          <formal-name>Part Name</formal-name>
@@ -1677,17 +1678,15 @@
          <!-- <any/> -->
       </model>
       <constraint>
-         <require when="@name='assessment'">
-            <allowed-values target="prop/@name" allow-other="yes">
-               <enum value="method">The assessment method to use. This typically appears on parts with the name "assessment".</enum>
-            </allowed-values>
-            <has-cardinality target="prop[@name='method']" min-occurs="1"/>
-            <allowed-values target="prop[@name='method']/@value">
-               <enum value="INTERVIEW">The process of holding discussions with individuals or groups of individuals within an organization to once again, facilitate assessor understanding, achieve clarification, or obtain evidence.</enum>
-               <enum value="EXAMINE">The process of reviewing, inspecting, observing, studying, or analyzing one or more assessment objects (i.e., specifications, mechanisms, or activities).</enum>
-               <enum value="TEST">The process of exercising one or more assessment objects (i.e., activities or mechanisms) under specified conditions to compare actual with expected behavior.</enum>
-            </allowed-values>
-         </require>
+         <allowed-values target=".[@name='objective']/prop/@name" allow-other="yes">
+            <enum value="method">The assessment method to use. This typically appears on parts with the name "objective".</enum>
+         </allowed-values>
+         <has-cardinality target=".[@name='objective']/prop[@name='method']" min-occurs="1"/>
+         <allowed-values target=".[@name='objective']/prop[@name='method']/@value">
+            <enum value="INTERVIEW">The process of holding discussions with individuals or groups of individuals within an organization to once again, facilitate assessor understanding, achieve clarification, or obtain evidence.</enum>
+            <enum value="EXAMINE">The process of reviewing, inspecting, observing, studying, or analyzing one or more assessment objects (i.e., specifications, mechanisms, or activities).</enum>
+            <enum value="TEST">The process of exercising one or more assessment objects (i.e., activities or mechanisms) under specified conditions to compare actual with expected behavior.</enum>
+         </allowed-values>
       </constraint>
       <remarks>
          <p>A <code>part</code> provides for logical partitioning of prose, and can be thought of as a grouping structure (e.g., section). A <code>part</code> can have child parts allowing for arbitrary nesting of prose content (e.g., statement hierarchy). A <code>part</code> can contain <code>prop</code> objects that allow for enriching prose text with structured name/value information.</p>

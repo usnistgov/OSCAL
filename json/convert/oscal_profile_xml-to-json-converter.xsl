@@ -22,7 +22,7 @@
    <xsl:output omit-xml-declaration="true" method="xml"/>
    <xsl:variable name="write-options" as="map(*)">
       <xsl:map>
-         <xsl:map-entry key="'indent'" expand-text="true">{ $json-indent='yes' }</xsl:map-entry>
+         <xsl:map-entry key="'indent'" select="$json-indent='yes'"/>
       </xsl:map>
    </xsl:variable>
    <xsl:variable name="source-xml" select="/"/>
@@ -76,7 +76,7 @@
       </xsl:if>
    </xsl:template>
    <!-- XML to JSON conversion: object filters -->
-   <xsl:strip-space elements="profile metadata revision prop link role location address party responsible-party import include-all include-controls matching exclude-controls merge combine custom group param constraint test guideline select part insert-controls modify set-parameter alter remove add back-matter resource citation rlink"/>
+   <xsl:strip-space elements="profile metadata revision prop link role location address party responsible-party import include-all include-controls matching exclude-controls merge combine flat custom group param constraint test guideline select part insert-controls modify set-parameter alter remove add back-matter resource citation rlink"/>
    <!-- METASCHEMA conversion stylesheet supports XML -> METASCHEMA/SUPERMODEL conversion -->
    <!-- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ -->
    <!-- METASCHEMA:  in namespace "http://csrc.nist.gov/ns/oscal/1.0"-->
@@ -399,41 +399,9 @@
             <xsl:attribute name="key">merge</xsl:attribute>
          </xsl:if>
          <xsl:apply-templates select="combine"/>
+         <xsl:apply-templates select="flat"/>
          <xsl:apply-templates select="as-is"/>
          <xsl:apply-templates select="custom"/>
-      </assembly>
-   </xsl:template>
-   <xsl:template match="combine"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <assembly as-type="empty" name="combine" key="combine" gi="combine">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">combine</xsl:attribute>
-         </xsl:if>
-         <xsl:apply-templates select="@method"/>
-      </assembly>
-   </xsl:template>
-   <xsl:template match="custom"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <assembly name="custom" key="custom" gi="custom">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">custom</xsl:attribute>
-         </xsl:if>
-         <xsl:for-each-group select="group" group-by="true()">
-            <group in-json="ARRAY" key="groups">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
-         <xsl:for-each-group select="insert-controls" group-by="true()">
-            <group in-json="ARRAY" key="insert-controls">
-               <xsl:apply-templates select="current-group()">
-                  <xsl:with-param name="with-key" select="false()"/>
-               </xsl:apply-templates>
-            </group>
-         </xsl:for-each-group>
       </assembly>
    </xsl:template>
    <xsl:template match="group"
@@ -812,23 +780,6 @@
          </value>
       </field>
    </xsl:template>
-   <xsl:template match="as-is"
-                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
-      <xsl:param name="with-key" select="true()"/>
-      <field collapsible="no"
-             as-type="boolean"
-             name="as-is"
-             key="as-is"
-             gi="as-is"
-             in-json="SCALAR">
-         <xsl:if test="$with-key">
-            <xsl:attribute name="key">as-is</xsl:attribute>
-         </xsl:if>
-         <value as-type="boolean" in-json="boolean">
-            <xsl:value-of select="."/>
-         </value>
-      </field>
-   </xsl:template>
    <xsl:template match="value"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <xsl:param name="with-key" select="true()"/>
@@ -853,6 +804,7 @@
       </field>
    </xsl:template>
    <xsl:template match="profile/@uuid"
+                 priority="1"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
             as-type="uuid"
@@ -863,6 +815,7 @@
       </flag>
    </xsl:template>
    <xsl:template match="prop/@name"
+                 priority="1"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
             as-type="token"
@@ -873,6 +826,7 @@
       </flag>
    </xsl:template>
    <xsl:template match="prop/@uuid"
+                 priority="1"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
             as-type="uuid"
@@ -883,12 +837,14 @@
       </flag>
    </xsl:template>
    <xsl:template match="prop/@ns"
+                 priority="1"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string" as-type="uri" name="ns" key="ns" gi="ns">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
    <xsl:template match="prop/@value"
+                 priority="1"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
             as-type="string"
@@ -899,6 +855,7 @@
       </flag>
    </xsl:template>
    <xsl:template match="prop/@class"
+                 priority="1"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
             as-type="token"
@@ -909,6 +866,7 @@
       </flag>
    </xsl:template>
    <xsl:template match="link/@href"
+                 priority="1"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
             as-type="uri-reference"
@@ -919,6 +877,7 @@
       </flag>
    </xsl:template>
    <xsl:template match="link/@rel"
+                 priority="1"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
             as-type="token"
@@ -950,12 +909,14 @@
       </flag>
    </xsl:template>
    <xsl:template match="role/@id"
+                 priority="1"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string" as-type="token" name="id" key="id" gi="id">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
    <xsl:template match="location/@uuid"
+                 priority="1"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
             as-type="uuid"
@@ -987,6 +948,7 @@
       </flag>
    </xsl:template>
    <xsl:template match="party/@uuid"
+                 priority="1"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
             as-type="uuid"
@@ -997,6 +959,7 @@
       </flag>
    </xsl:template>
    <xsl:template match="party/@type"
+                 priority="1"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
             as-type="string"
@@ -1018,6 +981,7 @@
       </flag>
    </xsl:template>
    <xsl:template match="responsible-party/@role-id"
+                 priority="1"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
             as-type="token"
@@ -1028,6 +992,7 @@
       </flag>
    </xsl:template>
    <xsl:template match="import/@href"
+                 priority="1"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
             as-type="uri-reference"
@@ -1057,7 +1022,8 @@
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
-   <xsl:template match="combine/@method"
+   <xsl:template match="profile/merge/combine/@method"
+                 priority="5"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
             as-type="string"
@@ -1068,12 +1034,14 @@
       </flag>
    </xsl:template>
    <xsl:template match="group/@id"
+                 priority="1"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string" as-type="token" name="id" key="id" gi="id">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
    <xsl:template match="group/@class"
+                 priority="1"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
             as-type="token"
@@ -1084,12 +1052,14 @@
       </flag>
    </xsl:template>
    <xsl:template match="param/@id"
+                 priority="1"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string" as-type="token" name="id" key="id" gi="id">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
    <xsl:template match="param/@class"
+                 priority="1"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
             as-type="token"
@@ -1100,16 +1070,19 @@
       </flag>
    </xsl:template>
    <xsl:template match="param/@depends-on"
+                 priority="1"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
             as-type="token"
             name="depends-on"
             key="depends-on"
+            deprecated="1.0.1"
             gi="depends-on">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
    <xsl:template match="select/@how-many"
+                 priority="1"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
             as-type="token"
@@ -1120,12 +1093,14 @@
       </flag>
    </xsl:template>
    <xsl:template match="part/@id"
+                 priority="1"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string" as-type="token" name="id" key="id" gi="id">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
    <xsl:template match="part/@name"
+                 priority="1"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
             as-type="token"
@@ -1136,12 +1111,14 @@
       </flag>
    </xsl:template>
    <xsl:template match="part/@ns"
+                 priority="1"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string" as-type="uri" name="ns" key="ns" gi="ns">
          <xsl:value-of select="."/>
       </flag>
    </xsl:template>
    <xsl:template match="part/@class"
+                 priority="1"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
             as-type="token"
@@ -1152,6 +1129,7 @@
       </flag>
    </xsl:template>
    <xsl:template match="insert-controls/@order"
+                 priority="1"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
             as-type="token"
@@ -1184,11 +1162,13 @@
       </flag>
    </xsl:template>
    <xsl:template match="profile/modify/set-parameter/@depends-on"
+                 priority="6"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
             as-type="token"
             name="depends-on"
             key="depends-on"
+            deprecated="1.0.1"
             gi="depends-on">
          <xsl:value-of select="."/>
       </flag>
@@ -1204,6 +1184,7 @@
       </flag>
    </xsl:template>
    <xsl:template match="remove/@by-name"
+                 priority="1"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
             as-type="token"
@@ -1214,6 +1195,7 @@
       </flag>
    </xsl:template>
    <xsl:template match="remove/@by-class"
+                 priority="1"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
             as-type="token"
@@ -1224,6 +1206,7 @@
       </flag>
    </xsl:template>
    <xsl:template match="remove/@by-id"
+                 priority="1"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
             as-type="token"
@@ -1234,6 +1217,7 @@
       </flag>
    </xsl:template>
    <xsl:template match="remove/@by-item-name"
+                 priority="1"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
             as-type="token"
@@ -1244,6 +1228,7 @@
       </flag>
    </xsl:template>
    <xsl:template match="remove/@by-ns"
+                 priority="1"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
             as-type="token"
@@ -1254,6 +1239,7 @@
       </flag>
    </xsl:template>
    <xsl:template match="add/@position"
+                 priority="1"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
             as-type="token"
@@ -1264,6 +1250,7 @@
       </flag>
    </xsl:template>
    <xsl:template match="add/@by-id"
+                 priority="1"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
             as-type="token"
@@ -1306,6 +1293,7 @@
       </flag>
    </xsl:template>
    <xsl:template match="hash/@algorithm"
+                 priority="3"
                  xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
       <flag in-json="string"
             as-type="string"
@@ -2189,6 +2177,69 @@
       <xsl:param name="with-key" select="true()"/>
       <assembly as-type="empty" name="matching" gi="matching">
          <xsl:apply-templates select="@pattern"/>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="profile/merge/combine"
+                 priority="4"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <assembly as-type="empty" name="combine" key="combine" gi="combine">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">combine</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="@method"/>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="profile/merge/flat"
+                 priority="5"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <assembly as-type="empty" name="flat" key="flat" gi="flat">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">flat</xsl:attribute>
+         </xsl:if>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="profile/merge/as-is"
+                 priority="5"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <field collapsible="no"
+             as-type="boolean"
+             name="as-is"
+             key="as-is"
+             gi="as-is"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">as-is</xsl:attribute>
+         </xsl:if>
+         <value as-type="boolean" in-json="boolean">
+            <xsl:value-of select="."/>
+         </value>
+      </field>
+   </xsl:template>
+   <xsl:template match="profile/merge/custom"
+                 priority="5"
+                 xpath-default-namespace="http://csrc.nist.gov/ns/oscal/1.0">
+      <xsl:param name="with-key" select="true()"/>
+      <assembly name="custom" key="custom" gi="custom">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">custom</xsl:attribute>
+         </xsl:if>
+         <xsl:for-each-group select="group" group-by="true()">
+            <group in-json="ARRAY" key="groups">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
+         <xsl:for-each-group select="insert-controls" group-by="true()">
+            <group in-json="ARRAY" key="insert-controls">
+               <xsl:apply-templates select="current-group()">
+                  <xsl:with-param name="with-key" select="false()"/>
+               </xsl:apply-templates>
+            </group>
+         </xsl:for-each-group>
       </assembly>
    </xsl:template>
    <xsl:template match="profile/merge/custom//group/title"

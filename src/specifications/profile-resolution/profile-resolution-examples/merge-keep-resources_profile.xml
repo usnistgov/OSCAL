@@ -7,17 +7,17 @@
       <title>Test Profile</title>
       <last-modified>2020-05-30T14:39:48.703-04:00</last-modified>
       <version>1.0</version>
-      <oscal-version>1.0.0-rc2</oscal-version>
+      <oscal-version>1.0.0</oscal-version>
    </metadata>
    <import href="#01ecd6cc-e281-472c-bb7a-0394bdf938f2">
       <include-controls>
          <with-id>a1</with-id>
-         <with-id>b1</with-id>
+         <with-id>b2</with-id>
       </include-controls>
    </import>
    <back-matter>
       <resource uuid="01ecd6cc-e281-472c-bb7a-0394bdf938f2">
-         <rlink href="catalogs/abc-simple_catalog.xml"/>
+         <rlink href="catalogs/abc-full_catalog.xml"/>
       </resource>
       <resource uuid="761205f0-fd61-42d3-9c66-2fb89e844a19">
          <title>Risk Management Framework for Information Systems and Organizations: A System Life Cycle Approach for Security and Privacy</title>

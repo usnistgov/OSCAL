@@ -7,7 +7,7 @@
       <title>Test Profile</title>
       <last-modified>2020-05-30T14:39:46.462-04:00</last-modified>
       <version>1.0</version>
-      <oscal-version>1.0.0-rc2</oscal-version>
+      <oscal-version>1.0.0</oscal-version>
    </metadata>
    <import href="catalogs/abc-full_catalog.xml">
       <include-controls><!-- a1 includes an insert[@param-id="A.a"], so that parameter should be propagated. -->

@@ -1,6 +1,6 @@
 ---
-title: "OSCAL Catalog Model v1.0.0 JSON Format Outline"
-heading: "Catalog Model v1.0.0 JSON Format Outline"
+title: "OSCAL Catalog Model v1.0.1 JSON Format Outline"
+heading: "Catalog Model v1.0.1 JSON Format Outline"
 custom_js:
   - "/js/oscal-metaschema-map-expander.js"
 weight: 10
@@ -59,7 +59,7 @@ The following outline is a representation of the [JSON format](https://github.co
                                  <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/metadata/revisions/last-modified">last-modified</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#datetime-with-timezone">dateTime-with-timezone</a></span><span class="OM-lit">,</span></p>
                               </div>
                               <div class="OM-entry">
-                                 <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/metadata/revisions/version">version</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
+                                 <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/metadata/revisions/version">version</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
                               </div>
                               <div class="OM-entry">
                                  <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/metadata/revisions/oscal-version">oscal-version</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>

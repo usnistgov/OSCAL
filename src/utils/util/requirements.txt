@@ -1,0 +1,3 @@
+jsonschema==4.4.0
+ruamel.yaml==0.17.10
+xmlschema==1.9.2

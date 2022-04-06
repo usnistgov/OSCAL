@@ -3,12 +3,14 @@ on:
     branches:
       - main
       - develop
+      - release-**
     tags:
       - "v*"
     paths:
       - 'src/metaschema/**_metaschema.xml'
       - 'build/ci-cd/metaschema'
       - 'build/ci-cd/metaschema-docs'
+      - 'docs/**'
       - 'build/ci-cd/generate-model-documentation.sh'
       - 'build/metaschema'
       - '.github/workflows/website-artifacts.yml'
@@ -21,7 +23,7 @@ on:
       - 'docs/**'
       - 'build/ci-cd/generate-model-documentation.sh'
       - 'build/metaschema'
-      - '.github/workflows/website.yml'
+      - '.github/workflows/website-artifacts.yml'
   workflow_dispatch:
     branches:
       - main
@@ -31,7 +33,7 @@ env:
   HOME_REPO: usnistgov/OSCAL
   HOME_BRANCH: main
   # dependency versions
-  SAXON_VERSION: 9.9.0-1
+  SAXON_VERSION: 10.6
   HUGO_VERSION: 0.83.1
   CALABASH_VERSION: 1.2.5-100
   # build-specific environment
@@ -51,13 +53,14 @@ jobs:
       # use this for main repo builds on branches
       - name: Checkout working branch or Tag
         uses: actions/checkout@v2
-        if: ${{ github.repository == env.HOME_REPO && github.event_name == 'push' }}
+        if: ${{ github.repository == env.HOME_REPO && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')}}
         with:
           path: ${{ env.OSCAL_HOME }}
           submodules: recursive
           token: ${{ secrets.COMMIT_TOKEN }}
+          fetch-depth: 0
       - name: Get latest from repo
-        if: ${{ github.repository == env.HOME_REPO && github.event_name == 'push' }}
+        if: ${{ github.repository == env.HOME_REPO && github.ref == format('refs/heads/{0}',env.HOME_BRANCH) && github.event_name == 'push' }}
         # This will ensure that any files committed by the previous job, will be updated
         run: |
           git pull --ff-only

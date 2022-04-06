@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--<?xml-model href="../../build/metaschema/toolchains/xslt-M4/validate/metaschema-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>-->
+<?xml-model href="../../build/metaschema/toolchains/xslt-M4/validate/metaschema-composition-check.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <!-- OSCAL GRAND UNIFIED MEGALOMETASCHEMA -->
 <!-- validate with XSD and Schematron (linked) -->
 <!DOCTYPE METASCHEMA [
@@ -7,7 +7,7 @@
 ]>
 <METASCHEMA xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0">
       <schema-name>OSCAL Unified Model of Models</schema-name>
-      <schema-version>1.0.0</schema-version>
+      <schema-version>1.0.2</schema-version>
       <short-name>oscal-complete</short-name>
       <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
       <json-base-uri>http://csrc.nist.gov/ns/oscal/1.0</json-base-uri>
