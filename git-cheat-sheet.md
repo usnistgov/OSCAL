@@ -16,18 +16,18 @@ To add the OSCAL repo as a remote named "upstream":
 git remote add upstream https://github.com/usnistgov/OSCAL.git
 ```
 
-## Update local master branch
+## Update local "main" branch
 
 ```
-git checkout master
+git checkout main
 git pull
 git fetch upstream
-git rebase upstream/master
+git rebase upstream/main
 ```
 
 ## Updating a feature branch
 
-First make sure that your local master branch is up-to-date with the upstream as described above.
+First make sure that your local "main" branch is up-to-date with the "upstream" as described above.
 
 Switch to the feature branch.
 
