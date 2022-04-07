@@ -13,7 +13,6 @@ custom_css:
   - oscal-styleguide.css
 ---
 
-
 ## Goals, scope and audience
 
 This style guide is offered for authors and editors contributing to the NIST OSCAL project and related projects. Use it as a reference of first resort for questions of style or styling in contributions to OSCAL (treated broadly). At the foot are links to more extensive resources, which we recommend.
@@ -143,7 +142,7 @@ There are cases where the general rule does not apply, because an acronym has be
 
 Capitalization is tricky. As a rule, a proper noun is capitalized in English, and hence a reference to a formal object (such as an OSCAL <q>Control</q> object or a Github <q>Issue</q>) should be capitalized, when it has its own name. Both abstractions and things that are not abstract may have names, such as the host of our web presence, which is named <q>Pages</q> (or <q>the NIST Pages site</q>). (Other examples include Avogadro's Number, the Second Law of Thermodynamics, the OSCAL Style Guide, and Markdown, a family of text encoding technologies.)
 
-But even a well-known abstraction such as <q>1 + 1 = 2</q> is not called an <q>Equation</q> (capitalized). To use capitals when referring to something by name is different from instantly or implicitly coining a new technical term out of nothing, by using capitals. To call a Github ticket an <q>Issue</q> is not incorrect if that is what Github calls it; but a ticket in another tracking system is not an <q>Issue</q> (capitalized). In an OSCAL context, even a technical term such as <q>profile resolution</q> should not be capitalized just because is used in a specialized sense.
+But even a well-known abstraction such as <q>1 + 1 = 2</q> is not called an <q>Equation</q> (capitalized). To use capitals when referring to something by name is different from instantly or implicitly coining a new technical term out of nothing, by using capitals. To call a Github ticket an <q>Issue</q> is not incorrect if that is what Github calls it; but a ticket in another tracking system is not an <q>Issue</q> (capitalized). In an OSCAL context, even a technical term such as <q>profile resolution</q> should not be capitalized just because it is used in a specialized sense.
 
 One reason to avoid Gratuitous Capitalization is that (by giving something a name) it can convey Unintentional Irony (appearing as if you are meaning to say something you are not saying, when you are not).
 
