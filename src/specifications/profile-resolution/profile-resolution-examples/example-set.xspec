@@ -3,7 +3,8 @@
     xmlns:opr="http://csrc.nist.gov/ns/oscal/profile-resolution"
     stylesheet="../../../utils/util/resolver-pipeline/oscal-profile-RESOLVE.xsl"
     run-as="external">
-    <!--<x:param name="assign-uuid">00000000-0000-4000-A000-000000000000</x:param>-->
+    <!--<x:param name="top-uuid">00000000-0000-4000-A000-000000000000</x:param>
+        <x:param name="uuid-method" select="'user-provided'"/>-->
     
 <!-- x:description/@run-as='external' permits the context item to be determined dynamically per scenario
     cf https://github.com/xspec/xspec/wiki/External-Transformation#global-context-item
