@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+    xmlns:ov="http://csrc.nist.gov/ns/oscal/xspec/variable"
+    xmlns:u="http://csrc.nist.gov/ns/uuid"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    stylesheet="../../uuid-method-choice.xsl">
+    
+    <x:scenario label="Tests for u:determine-uuid template">
+        <x:variable name="ov:fixed" as="xs:string" select="'00000000-0000-4000-B000-000000000000'"/>
+        <x:variable name="ov:specified" as="xs:string" select="'f0ad1e6c-5de5-44cd-b92e-a4c507805f0f'"/>
+        <x:variable name="ov:service" as="xs:string" select="resolve-uri('../uuid-value.txt')"/>
+        <x:scenario label="Valid user-provided UUID">
+            <x:call template="u:determine-uuid">
+                <x:param name="top-uuid" select="$ov:specified"/>
+                <x:param name="uuid-method" select="'user-provided'"/>
+            </x:call>
+            <x:expect label="Specified UUID" select="$ov:specified"/>
+        </x:scenario>
+        <x:scenario label="Invalid user-provided UUID">
+            <x:call template="u:determine-uuid">
+                <x:param name="top-uuid" select="'123'"/>
+                <x:param name="uuid-method" select="'user-provided'"/>
+            </x:call>
+            <x:expect label="Fixed UUID" select="$ov:fixed"/>
+        </x:scenario>
+        <x:scenario label="Random UUID using XSLT">
+            <!-- Random XSLT method requires a global context item.
+                For this test's purpose, the context item does not
+                matter, so just use this file itself. -->
+            <x:context href="uuid-method-choice.xspec"/>
+            <x:call template="u:determine-uuid">
+                <x:param name="top-uuid" select="$ov:specified"/>
+                <x:param name="uuid-method" select="'random-xslt'"/>
+            </x:call>
+            <x:expect label="Nonempty string"
+                test="$x:result instance of xs:string and $x:result != ''"/>
+            <x:expect label="UUID is neither fixed one nor specified one"
+                test="$x:result ne $ov:specified and $x:result ne $ov:fixed"/>
+        </x:scenario>
+        <x:scenario label="Random UUID using Java">
+            <x:call template="u:determine-uuid">
+                <x:param name="top-uuid" select="$ov:specified"/>
+                <x:param name="uuid-method" select="'random-java'"/>
+            </x:call>
+            <x:expect label="Nonempty string"
+                test="$x:result instance of xs:string and $x:result != ''"/>
+            <x:expect label="UUID is neither fixed one nor specified one"
+                test="$x:result ne $ov:specified and $x:result ne $ov:fixed"/>
+        </x:scenario>
+        <!-- FYI: Because the transform relies on use-when, which is evaluated at
+            compile time, the same test invocation cannot check both
+            when the XSLT and Java random number generators are available
+            and when they are unavailable. This XSpec test does not cover
+            the fallback behavior that produces the fixed UUID value. -->
+        <x:scenario label="web-service method, available">
+            <!-- To avoid having the test require access to the Internet,
+                mock the web service as a text file that XSLT reads using
+                unparsed-text(). -->
+            <x:call template="u:determine-uuid">
+                <x:param name="uuid-service" select="$ov:service"/>
+                <x:param name="uuid-method" select="'web-service'"/>
+            </x:call>
+            <x:expect label="Value from the 'web service' (in this case, a text file)"
+                select="'309deb03-491b-4677-9148-bc1b79a21c9c'"/>
+        </x:scenario>
+        <x:scenario label="web-service method, unavailable">
+            <x:call template="u:determine-uuid">
+                <x:param name="uuid-service" select="'nonexistent.txt'"/>
+                <x:param name="uuid-method" select="'web-service'"/>
+            </x:call>
+            <x:expect label="Fixed UUID" select="$ov:fixed"/>
+        </x:scenario>
+        <x:scenario label="Fixed UUID">
+            <x:call template="u:determine-uuid">
+                <x:param name="uuid-method" select="'fixed'"/>
+            </x:call>
+            <x:expect label="Fixed UUID" select="$ov:fixed"/>
+        </x:scenario>
+        <x:scenario label="Unrecognized method">
+            <x:call template="u:determine-uuid">
+                <x:param name="uuid-method" select="'junk'"/>
+            </x:call>
+            <x:expect label="Fixed UUID" select="$ov:fixed"/>
+        </x:scenario>
+    </x:scenario>
+</x:description>
