@@ -136,7 +136,9 @@ If publishing a PDF and not simply web resources through the Pages platform, ple
 
 The general rule is to spell out acronyms on first use. Keep in mind not all readers are experts in every technology or domain being discussed.
 
-There are cases where the general rule does not apply, because an acronym has become a well-known term of art. <q>HTML</q> does not have to be explained on a page that assumes web technology as context. If an acronym does not actually provide information to anyone in the audience, consider whether it is necessary to explain it. As always, context should be the determining factor. Another example is <q>PR</q> used in reference to git or Github. Similarly this style guide, because it is focused on a web publishing platform, does not explain HTML or CSS, and knowing that HTML expands to <q>Hypertext Markup Language</q> is not important enough to stress, given how easy it is to discover in any case.
+Acronyms listed in [Key Concepts and Terms Used in OSCAL](https://pages.nist.gov/OSCAL/concepts/terminology/) and in the [NIST CSRC (Computer Security Resource Center) Glossary](https://csrc.nist.gov/glossary) are safe to use; any acronyms not defined in either should be defined with reference to appropriate citations when available. 
+
+There are cases where the general rule does not apply, because an acronym has become a well-known term of art. <q>HTML</q> does not have to be explained on a page that assumes web technology as context. If an acronym does not actually provide information to anyone in the audience, consider whether it is necessary to explain it. Another example is <q>PR</q> used in reference to git or Github. Similarly this style guide, because it is focused on a web publishing platform, does not explain HTML or CSS, and knowing that HTML expands to <q>Hypertext Markup Language</q> is not important enough to stress, given how easy it is to discover in any case. As always, context should be the determining factor, while erring on the side of clarity.
 
 ### Capitalization
 
@@ -265,7 +267,7 @@ For example, whenever writing about <q>validation</q>, be specific as to what ki
 
 Similarly, <q>control</q> has both an OSCAL sense, and an RMF sense (Risk Management Framework as defined by NIST SP800-37); a document that uses the term specifically in one of these senses, the other, or both (when OSCAL is being used to model RMF), might indicate this.
 
-Yet not every use of an overloaded term must be qualified. Various senses might be left implicit if no confusion is caused (again, considered in context). In accordance with a more general rule that plain common nouns are to be preferred over jargon, terms such as <q>control</q> or <q>profile</q> might be used without further explanation when context makes it clear enough what is meant *even if a term is also overloaded* (means other things in other contexts). Within the context of describing a processing pipeline for OSCAL profiles, <q>valid profile</q> might be taken as shorthand for <q>XML \[or JSON] document known to be valid using a \[profile] schema</q>, especially when this is stated outright at the top. The fact that other kinds of validation may be implicit, or not relevant, does not have to be explained.
+Yet not every use of an overloaded term must be qualified. Various senses might be left implicit if no confusion is caused (again, considered in context). In accordance with a more general rule that plain common nouns are to be preferred over jargon, terms such as <q>control</q> or <q>profile</q> might be used without further explanation when context makes it clear enough what is meant *even if a term is also overloaded* (means other things in other contexts). Within the context of describing a processing pipeline for OSCAL profiles, <q>valid profile</q> might be taken as shorthand for <q>XML \[or JSON] document known to be valid using a \[profile] schema</q>, especially when this is stated outright at the top. The fact that other kinds of validation may be implicit, or not relevant, does not *always* have to be explained.
 
 #### OSCAL objects and formal names
 
@@ -287,9 +289,9 @@ With the same objective of lucidity and lightness, a document intended for a spe
 
 In addition to maintaining web platforms, the OSCAL project publishes resources and tools through the formal NIST data publishing process, for release through NIST's [Science Data Portal](http://data.nist.gov). This is appropriate for (NIST-authored) contributions that should be indexed as scientific publications, or archived as discrete data sets.
 
-The formal review process this entails will presumably not be a problem for works the site editors are also reviewing. Mechanically, the process can be lightweight, requiring nothing more than a structured metadata record with a link to a published (web-accessible) OSCAL resource. This record is provided and maintained in NIST's metadata repository for [Management of Institutional Data Assets](https://midas.nist.gov/)). 
+The formal review process this entails will presumably not be a problem for works the site editors are also reviewing. Mechanically, the process can be lightweight, requiring nothing more than a structured metadata record with a link to a published (web-accessible) OSCAL resource. This record is provided and maintained in NIST's metadata repository, MIDAS [Management of Institutional Data Assets]. For a link to the MIDAS enty screen where listings can be created, search on the NIST Intranet with appropriate credentials.  
 
-With NIST access credentials, consult the [Publishing Instructions on the NIST Intranet](https://inet.nist.gov/adlp/open-access-research-oar/publishing-instructions). If your work has undergone a formal review process (external to ours, such as for a conference or journal), it might be a <q>paper</q>. Even if not (that is, if published on the web site or in a repository), depending on its design and purposes, it might constitute <q>software</q> or <q>data</q>.
+For more detail, with NIST access credentials, also search for Open Access Research Publishing Instructions on the NIST Intranet]. If your work has undergone a formal review process (external to ours, such as for a conference or journal), it might be eligible to list as a <q>paper</q>. Even if not (that is, if published on the web site or in a repository), depending on its design and purposes, it might constitute <q>software</q> or <q>data</q>.
 
 Additional Resources linked at the foot of this page include a useful checklist for project documentation such as `readme` documentation. Nothing it describes is mandatory for all projects, but any of this guidance might apply in a given instance, and is worth considering for any project or repository, not only those published formally.
 
@@ -317,8 +319,6 @@ If you know of a style guide we should list here please make an [Issue on Github
 
 ### NIST style guides
 
-Even if submitting work only for the web site, NIST authors will want to be aware of NIST-specific guidance for its formal publications:
-
-- [Guidance for Authorship of Scholarly and Technical Publications](https://inet.nist.gov/adlp/directives/guidance-authorship-scholarly-technical-publications) (requires NIST authentication)
+Even if submitting work only for the web site, NIST authors will want to be aware of NIST-specific guidance for its formal publications, which can be found on the NIST Intranet as **Guidance for Authorship of Scholarly and Technical Publications**.
 
 
