@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0"
-         uuid="628d8b55-8a67-469e-ad66-14e1bcb81a06">
+         uuid="df7094f5-22ff-4052-a231-b5a0c23a0b9b">
    <metadata>
       <title>Test Profile</title>
-      <last-modified>2022-04-18T15:24:18.5370204-04:00</last-modified>
+      <last-modified>2022-04-18T15:24:17.90803-04:00</last-modified>
       <version>1.0</version>
       <oscal-version>1.0.0</oscal-version>
-      <link rel="resolution-source" href="req-include-all-asis.xml"/>
+      <link rel="resolution-source" href="req-import-by-resource.xml"/>
    </metadata>
    <group>
       <title>Group B of C</title>
