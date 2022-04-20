@@ -136,7 +136,7 @@ If publishing a PDF and not simply web resources through the Pages platform, ple
 
 The general rule is to spell out acronyms on first use. Keep in mind not all readers are experts in every technology or domain being discussed.
 
-Acronyms listed in [Key Concepts and Terms Used in OSCAL](https://pages.nist.gov/OSCAL/concepts/terminology/) and in the [NIST CSRC (Computer Security Resource Center) Glossary](https://csrc.nist.gov/glossary) are safe to use; any acronyms not defined in either should be defined with reference to appropriate citations when available. 
+Acronyms listed in [Key Concepts and Terms Used in OSCAL](https://pages.nist.gov/OSCAL/concepts/terminology/) and in the [NIST CSRC (Computer Security Resource Center) Glossary](https://csrc.nist.gov/glossary) are safe to use; any acronyms not defined in either should be defined by reference to appropriate citations where available. 
 
 There are cases where the general rule does not apply, because an acronym has become a well-known term of art. <q>HTML</q> does not have to be explained on a page that assumes web technology as context. If an acronym does not actually provide information to anyone in the audience, consider whether it is necessary to explain it. Another example is <q>PR</q> used in reference to git or Github. Similarly this style guide, because it is focused on a web publishing platform, does not explain HTML or CSS, and knowing that HTML expands to <q>Hypertext Markup Language</q> is not important enough to stress, given how easy it is to discover in any case. As always, context should be the determining factor, while erring on the side of clarity.
 
