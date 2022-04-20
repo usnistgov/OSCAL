@@ -37,11 +37,11 @@
                         <scenarioAssociation-array>
                             <scenarioAssociation>
                                 <field name="url">
-                                    <String>lib/build-xspec.xsl</String>
+                                    <String>requirement-tests/req-include-exclude2.xml</String>
                                 </field>
                                 <field name="scenarioIds">
                                     <list>
-                                        <String>Produce XSpec for //req/@eg (file list) from SpecML</String>
+                                        <String>RESOLVE the current profile and write result to ./output-actual</String>
                                     </list>
                                 </field>
                                 <field name="scenarioTypes">
@@ -57,11 +57,11 @@
                             </scenarioAssociation>
                             <scenarioAssociation>
                                 <field name="url">
-                                    <String>requirements-working-set.xspec</String>
+                                    <String>requirement-tests/req-include-exclude1.xml</String>
                                 </field>
                                 <field name="scenarioIds">
                                     <list>
-                                        <String>Produce XSpec for //req/@eg (file list) from SpecML</String>
+                                        <String>RESOLVE the current profile and write result to ./output-actual</String>
                                     </list>
                                 </field>
                                 <field name="scenarioTypes">
@@ -77,11 +77,11 @@
                             </scenarioAssociation>
                             <scenarioAssociation>
                                 <field name="url">
-                                    <String>profile-resolution-specml-working.xml</String>
+                                    <String>requirement-tests/req-include-by-match.xml</String>
                                 </field>
                                 <field name="scenarioIds">
                                     <list>
-                                        <String>Produce XSpec for //req/@eg (file list) from SpecML</String>
+                                        <String>RESOLVE the current profile and write result to ./output-actual</String>
                                     </list>
                                 </field>
                                 <field name="scenarioTypes">
@@ -97,11 +97,51 @@
                             </scenarioAssociation>
                             <scenarioAssociation>
                                 <field name="url">
-                                    <String>requirement-tests/req-include-all-flat.xml</String>
+                                    <String>profile-resolution-specml-102plus.xml</String>
                                 </field>
                                 <field name="scenarioIds">
                                     <list>
-                                        <String>RESOLVE the current profile and write result to ./output-expected</String>
+                                        <String>Produce XSpec for //req from SpecML</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>XSL</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioStorageLocations">
+                                    <list>
+                                        <Byte>2</Byte>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>requirement-tests/req-include-by-id.xml</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>RESOLVE the current profile and write result to ./output-actual</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>XSL</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioStorageLocations">
+                                    <list>
+                                        <Byte>2</Byte>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>lib/build-examples-xspec.xsl</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>Produce XSpec for //eg (file list) from SpecML</String>
                                     </list>
                                 </field>
                                 <field name="scenarioTypes">
@@ -122,26 +162,6 @@
                                 <field name="scenarioIds">
                                     <list>
                                         <String>Produce HTML preview for (this) SpecML XML - refresh</String>
-                                    </list>
-                                </field>
-                                <field name="scenarioTypes">
-                                    <list>
-                                        <String>XSL</String>
-                                    </list>
-                                </field>
-                                <field name="scenarioStorageLocations">
-                                    <list>
-                                        <Byte>2</Byte>
-                                    </list>
-                                </field>
-                            </scenarioAssociation>
-                            <scenarioAssociation>
-                                <field name="url">
-                                    <String>profile-resolution-specml.xml</String>
-                                </field>
-                                <field name="scenarioIds">
-                                    <list>
-                                        <String>Produce Profile Resolution Spec - preview (HTML) - refresh and open</String>
                                     </list>
                                 </field>
                                 <field name="scenarioTypes">
@@ -700,7 +720,7 @@
                                     <null/>
                                 </field>
                                 <field name="name">
-                                    <String>Produce XSpec for //req/@eg (file list) from SpecML</String>
+                                    <String>Produce XSpec for //eg (file list) from SpecML</String>
                                 </field>
                                 <field name="baseURL">
                                     <String></String>
@@ -718,7 +738,7 @@
                                     <String></String>
                                 </field>
                                 <field name="inputXSLURL">
-                                    <String>${pdu}/lib/build-xspec.xsl</String>
+                                    <String>${pdu}/lib/build-examples-xspec.xsl</String>
                                 </field>
                                 <field name="inputXMLURL">
                                     <String>${currentFileURL}</String>
@@ -733,13 +753,13 @@
                                     <String>XSL</String>
                                 </field>
                                 <field name="saveAs">
-                                    <Boolean>true</Boolean>
+                                    <Boolean>false</Boolean>
                                 </field>
                                 <field name="openInBrowser">
                                     <Boolean>false</Boolean>
                                 </field>
                                 <field name="outputResource">
-                                    <String>${cfn}-${timeStamp}.xspec</String>
+                                    <String>${pdu}/${cfn}-${timeStamp}.xspec</String>
                                 </field>
                                 <field name="openOtherLocationInBrowser">
                                     <Boolean>false</Boolean>
@@ -783,7 +803,90 @@
                                     <null/>
                                 </field>
                                 <field name="name">
-                                    <String>RESOLVE the current profile and write result to ./output-expected</String>
+                                    <String>Produce XSpec for //req from SpecML</String>
+                                </field>
+                                <field name="baseURL">
+                                    <String></String>
+                                </field>
+                                <field name="footerURL">
+                                    <String></String>
+                                </field>
+                                <field name="fOPMethod">
+                                    <String>pdf</String>
+                                </field>
+                                <field name="fOProcessorName">
+                                    <String>Apache FOP</String>
+                                </field>
+                                <field name="headerURL">
+                                    <String></String>
+                                </field>
+                                <field name="inputXSLURL">
+                                    <String>${pdu}/lib/build-reqs-xspec.xsl</String>
+                                </field>
+                                <field name="inputXMLURL">
+                                    <String>${currentFileURL}</String>
+                                </field>
+                                <field name="defaultScenario">
+                                    <Boolean>false</Boolean>
+                                </field>
+                                <field name="isFOPPerforming">
+                                    <Boolean>false</Boolean>
+                                </field>
+                                <field name="type">
+                                    <String>XSL</String>
+                                </field>
+                                <field name="saveAs">
+                                    <Boolean>false</Boolean>
+                                </field>
+                                <field name="openInBrowser">
+                                    <Boolean>false</Boolean>
+                                </field>
+                                <field name="outputResource">
+                                    <String>${pdu}/${cfn}-${timeStamp}.xspec</String>
+                                </field>
+                                <field name="openOtherLocationInBrowser">
+                                    <Boolean>false</Boolean>
+                                </field>
+                                <field name="locationToOpenInBrowserURL">
+                                    <null/>
+                                </field>
+                                <field name="openInEditor">
+                                    <Boolean>true</Boolean>
+                                </field>
+                                <field name="showInHTMLPane">
+                                    <Boolean>false</Boolean>
+                                </field>
+                                <field name="showInXMLPane">
+                                    <Boolean>false</Boolean>
+                                </field>
+                                <field name="showInSVGPane">
+                                    <Boolean>false</Boolean>
+                                </field>
+                                <field name="showInResultSetPane">
+                                    <Boolean>false</Boolean>
+                                </field>
+                                <field name="useXSLTInput">
+                                    <Boolean>true</Boolean>
+                                </field>
+                                <field name="xsltParams">
+                                    <list/>
+                                </field>
+                                <field name="cascadingStylesheets">
+                                    <String-array/>
+                                </field>
+                                <field name="xslTransformer">
+                                    <String>Saxon-PE</String>
+                                </field>
+                                <field name="extensionURLs">
+                                    <String-array/>
+                                </field>
+                            </scenario>
+                            <scenario>
+                                <field name="advancedOptionsMap">
+                                    <null/>
+                                </field>
+                                <field name="name">
+                                    <String>RESOLVE the current profile and write result to ./output-actual</String>
                                 </field>
                                 <field name="baseURL">
                                     <String></String>
@@ -949,6 +1052,26 @@
                     <entry>
                         <String>validation.scenario.associations</String>
                         <scenarioAssociation-array>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>requirement-tests/req-include-exclude1.xml</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>OSCAL Profile schema (current local copy)</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>Validation_scenario</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioStorageLocations">
+                                    <list>
+                                        <Byte>2</Byte>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
                             <scenarioAssociation>
                                 <field name="url">
                                     <String>requirement-tests/output-actual/</String>

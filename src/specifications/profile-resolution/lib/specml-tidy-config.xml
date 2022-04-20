@@ -3,7 +3,7 @@
     xmlns="http://www.oxygenxml.com/ns/xmlRefactoring" 
     id="tidySpecML" 
     name="Tidy (reformat) SpecML">
-	<description>Any assigned ID is normalized. IDs are assigned to some elements that do not have them.</description>    
+	<description>Basic whitespace cleanup</description>    
 	<script type="XSLT" href="specml-tidy.xsl"/>
 	<category>NIST ITL/CSD SpecML</category>
 </refactoringOperationDescriptor>

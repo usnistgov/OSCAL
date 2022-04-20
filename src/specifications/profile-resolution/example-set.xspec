@@ -7,7 +7,8 @@
                run-as="external"
                xmlns:ov="http://csrc.nist.gov/ns/oscal/test/variable">
    <x:helper stylesheet="lib/oscal-profile-test-helper.xsl"/>
-   
+   <!-- old tests are out of whack need update to current functionality /spec  -->
+   <!-- but the XSpec provides a functional model -->
    <x:scenario label="Base test">
       <!-- Alternative model for test scrubbing both the result and the expected
            result for comparison -->

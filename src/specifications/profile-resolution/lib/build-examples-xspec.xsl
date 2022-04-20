@@ -39,13 +39,11 @@
     </xsl:template>
 
     <xsl:template match="SPECIFICATION" mode="make-file-scenario" expand-text="true">
-        <xsl:for-each-group select="descendant::req" group-by="@eg/tokenize(.,'\s+')">
+        <xsl:for-each-group select="//eg" group-by="@href">
             <x:scenario label="{ current-grouping-key() }">
-                <x:context href="requirement-tests/{ current-grouping-key() }"/>
+                <x:context href="{ current-grouping-key() }"/>
                 <xsl:apply-templates select="current-group()"
-                    mode="make-file-scenario">
-                    <xsl:with-param name="filename" select="current-grouping-key()"/>
-                </xsl:apply-templates>
+                    mode="make-file-scenario"/>
             </x:scenario>
         </xsl:for-each-group>
     </xsl:template>
@@ -68,41 +66,43 @@
         <xsl:apply-templates/>
     </xsl:template>
     
-    <!--<xsl:template match="req" mode="make-file-scenario" expand-text="true">
-        <xsl:variable name="me" select="."/>
-        <xsl:variable name="test-header">
-            <xsl:apply-templates select="$me" mode="test-header"/>
-        </xsl:variable>
+<!-- dropped in default (no mode) traversal -->
+    <xsl:template match="eg"/>
             
-        <x:scenario label="{ $test-header => normalize-space() }">
-            <xsl:if test="not(matches(@eg,'\S'))">
-                <xsl:attribute name="pending">[dev]</xsl:attribute>
-            </xsl:if>
-            <xsl:iterate select="@eg/tokenize(.,'\s+')">
-            <xsl:call-template name="make-file-scenario">
-                <xsl:with-param name="req-id" select="$me/@id"/>
-                <xsl:with-param name="filename" select="."/>
-            </xsl:call-template>
-        </xsl:iterate>
-        </x:scenario>
-        
-    </xsl:template>-->
+    
+    
+    <xsl:template match="eg" mode="make-file-scenario" expand-text="true">
+        <xsl:apply-templates select="ancestor::req" mode="#current">
+            <xsl:with-param name="eg" select="."/>
+        </xsl:apply-templates>
+    </xsl:template>
     
     <xsl:template match="req" mode="make-file-scenario" expand-text="true">
-        <xsl:param name="filename" as="xs:string" required="true"/>
-        <xsl:variable name="filepath" as="xs:string">requirement-tests/{$filename}</xsl:variable>
+        <xsl:param  required="true" name="eg" as="element(eg)?" />
         <xsl:variable name="test-header">
             <xsl:apply-templates select="." mode="test-header"/>
         </xsl:variable>
-        
-        <x:scenario label="{ $test-header => normalize-space() }">
-            <xsl:text>&#xA;      </xsl:text>
-            <xsl:processing-instruction name="requirement">{ @id } </xsl:processing-instruction>
-            <!--<x:context href="requirement-tests/{ $filename }"/>-->
             
-            <x:expect label="Resolution of { $filename }" select="opr:scrub(.)"
-                href="requirement-tests/output-expected/{ replace($filename,'\.xml$','_RESOLVED') }.xml"/>
+        <x:scenario label="{ $test-header => normalize-space() }">
+            <xsl:if test="starts-with($eg,'PENDING')">
+                <xsl:attribute name="pending">[spec]</xsl:attribute>
+            </xsl:if>
+            <xsl:call-template name="make-file-scenario">
+                <xsl:with-param name="req-id" select="@id"/>
+                <xsl:with-param name="egfile" select="$eg/@href"/>
+            </xsl:call-template>
         </x:scenario>
+        
+    </xsl:template>
+    
+    <xsl:template name="make-file-scenario" expand-text="true">
+        <xsl:param name="req-id" as="xs:string" required="true"/>
+        <xsl:param name="egfile" as="xs:string?" required="true"/>
+        <xsl:variable name="basename" as="xs:string" select="$egfile => substring-after('requirement-tests/') => replace('\.xml$','')"/>
+           <xsl:processing-instruction name="requirement">{ $req-id} </xsl:processing-instruction>
+            <!--<x:context href="requirement-tests/{ $egfile }"/>-->
+            
+            <x:expect label="Resolution of { $basename }.xml" select="opr:scrub(.)" href="requirement-tests/output-expected/{$basename}_RESOLVED.xml"/>
     </xsl:template>
 
     <xsl:template match="xref" expand-text="true">

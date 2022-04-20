@@ -22,7 +22,7 @@
         <sch:rule context="x:description/processing-instruction('specification')">
             <sch:assert test="exists(document(normalize-space(.),.))">No specification found at <sch:value-of select="."/></sch:assert>
         </sch:rule>
-        <sch:rule context="x:scenario">
+        <sch:rule context="x:scenario[empty(x:scenario)]">
                 <sch:assert test="exists(processing-instruction('requirement')) or exists(@pending)">Scenario given without any test bindings</sch:assert>
             
             <!-- Turn these on when ready -->

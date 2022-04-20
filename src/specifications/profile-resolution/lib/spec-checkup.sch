@@ -25,11 +25,22 @@
         <sch:rule context="os:req">
             <sch:let name="me" value="."/>
             <sch:assert test="count($all-requirements[@id=$me/@id]) eq 1">Requirement id '<sch:value-of select="@id"/>' is not distinct</sch:assert>
-            <sch:assert role="warning" test="exists($known-tests[.=$me/@id])">Requirement id '<sch:value-of select="@id"/>' is not assigned to any tests in <sch:value-of select="os:or-sequence($test-filenames)"/> </sch:assert><sch:assert role="warning" test="exists($known-tests[.=$me/@id])">Requirement id '<sch:value-of select="@id"/>' is not assigned to any tests in <sch:value-of select="os:or-sequence($test-filenames)"/> </sch:assert>
-            <sch:let name="paths" value="@eg/tokenize(.,'\s+') ! ('requirement-tests/' || .)"/>
-            <sch:let name="missing-eg" value="$paths[empty(document(.,$me)/o:profile)]"/>
-            <sch:assert test="empty($missing-eg)">Requirement is missing example(s) <sch:value-of select="os:and-sequence($missing-eg)"/></sch:assert>
             
+            <sch:report role="warning" test="empty(descendant::os:eg)">No example yet for requirement "<sch:value-of select="."/>"</sch:report>
+            <!--<sch:let name="paths" value="descendant::os:eg"/>
+            <sch:let name="missing-eg" value="$paths[not(doc-available( resolve-uri(.,base-uri($me)) ))]"/>
+            <sch:assert test="empty($missing-eg)">No file found for example(s) <sch:value-of select="os:and-sequence($missing-eg)"/></sch:assert>
+            
+            <sch:let name="not-profile-eg" value="$paths[not(.=$missing-eg)][empty(document(.,$me)/o:profile)]"/>
+            <sch:assert test="empty($not-profile-eg)">Example files(s) not an OSCAL profile: <sch:value-of select="os:and-sequence($not-profile-eg)"/></sch:assert>-->
+            </sch:rule>
+        
+        <sch:rule context="os:eg">
+            <sch:let name="stub" value="starts-with(.,'PENDING')"/>
+            <sch:let name="missing" value="not(doc-available( resolve-uri(@href,base-uri(.)) ))"/>
+            <sch:let name="not-profile-eg" value=".[not($missing)]/empty(document(@href,root())/o:profile) "/>
+            <sch:report test="$missing and not($stub)">No file found for example(s) <sch:value-of select="@href"/></sch:report>
+            <sch:report test="$not-profile-eg and not($stub)">Example <sch:value-of select="@href"/> is not an OSCAL profile</sch:report>
         </sch:rule>
     </sch:pattern>
     
