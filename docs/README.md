@@ -27,7 +27,7 @@ From the root directory of the repository, execute the following command to gene
 ./build/ci-cd/generate-model-documentation.sh
 ```
 
-Check the `ci-cd` directory for any similar scripts that may need to be run, such as `generate-specification-documentation.sh`.
+Check the `./build/ci-cd` directory for any similar scripts that may need to be run, such as `generate-specification-documentation.sh`.
 
 ## Using Hugo
 
