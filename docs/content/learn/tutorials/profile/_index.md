@@ -272,7 +272,7 @@ There are cases where manually listing each control to be included would be tedi
 <?xml version="1.0" encoding="UTF-8"?>
 <profile xmlns="http://csrc.nist.gov/ns/oscal/1.0"
     uuid="bad4b7fe-4c0a-4aaa-94de-1468d7dab38f">
-    <metadata/>
+    <metadata> ... </metadata>
     <import href="NIST_SP-800-53_rev5_catalog.xml">
         <include-all/>
         <exclude-controls>
@@ -324,22 +324,255 @@ In this example, the baseline would be all controls in the linked catalog, excep
 
 ### Mapping
 
-TODO
+Pending release of Mapping Functionality. Planned for OSCAL 1.1 release.
 
 ## Merge Phase
 
-TODO
+The Merge Phase is the second major section of an OSCAL Profile. This section contains instructions on how to structure and format the Control Baseline, including handling of duplicated control IDs. While this section is optional, leaving out will result in a generated OSCAL Catalog that has no formatting.
+
+### Setting a Combine Method
+
+Lets take a took at the first half of the Merge Phase, handling duplicated control IDs. This section is optional, but is important to include and config if you are importing from multiple Catalogs whose controls may have overlapping IDs. This issue is better handled using the Mapping feature above, but is covered here for pre-OSCAL version 1.1 releases.
+
+{{< tabs XML JSON YAML >}}
+{{% tab %}}
+{{< highlight xml "linenos=table" >}}
+<?xml version="1.0" encoding="UTF-8"?>
+<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+    uuid="bad4b7fe-4c0a-4aaa-94de-1468d7dab38f">
+    <metadata> ... </metadata>
+    <import> ... </import>
+    <merge>
+      <combine method="use-first"/>
+    </merge>
+</profile>
+{{< /highlight >}}
+
+Above we see the use of the `<merge>` element, which contains all of the instructions of the Merge Phase. The first child element is what we are covering in this section: `<combine>`.
+
+`<combine>` will always have an attribute `method`, which can be set to one of two string values: `"use-first"` or `"keep"`. Depending on the value chosen, duplicated IDs will be handled in the follow ways:
+
+- `"use-first"`: If a control with a duplicate ID is found, the control that is found early in the imported documents will take priority, and the newly discovered control will be discarded entirely. Using this method risks losing controls, but will prevent duplicate ID errors in the Baseline.
+
+- `"keep"`: When a duplicate Control ID is found, simply import it into the Baseline and continue. Using this method will cause a fatal error whenever two controls with the same ID are imported, ensuring that no information is lost, but preventing the generation of the Baseline.
+
+If the `<merge>` element is not provided, or the `<combine>` element is not provided, or the `"method"` attribute is incorrectly set (or not set at all), the default behavior will be identical to if `"keep"` was used.
+
+{{% /tab %}}
+
+{{% tab %}}
+{{< highlight json "linenos=table" >}}
+"profile": {
+    "metadata": {},
+    "imports": [],
+    "merge": {
+      "combine":
+        "method":"use-first"
+    }
+}
+{{< /highlight >}}
+
+Above we see the use of the `"merge"` object, which contains all of the instructions of the Merge Phase. The first child object is what we are covering in this section: `"combine"`.
+
+`"combine"` will always have an object `"method"`, which can be set to one of two string values: `"use-first"` or `"keep"`. Depending on the value chosen, duplicated IDs will be handled in the follow ways:
+
+- `"use-first"`: If a control with a duplicate ID is found, the control that is found early in the imported documents will take priority, and the newly discovered control will be discarded entirely. Using this method risks losing controls, but will prevent duplicate ID errors in the Baseline.
+
+- `"keep"`: When a duplicate Control ID is found, simply import it into the Baseline and continue. Using this method will cause a fatal error whenever two controls with the same ID are imported, ensuring that no information is lost, but preventing the generation of the Baseline.
+
+If the `"merge"` object is not provided, or the `"combine"` object is not provided, or the `"method"` object is incorrectly set (or not set at all), the default behavior will be identical to if `"keep"` was used.
+
+
+{{% /tab %}}
+{{% tab %}}
+{{< highlight yaml "linenos=table" >}}
+profile:
+    metadata: ~
+    imports: ~
+    merge:
+      combine:
+        method: "use-first"
+
+{{< /highlight >}}
+
+Above we see the use of the `merge` object, which contains all of the instructions of the Merge Phase. The first child object is what we are covering in this section: `combine`.
+
+`combine` will always have an object `method`, which can be set to one of two string values: `"use-first"` or `"keep"`. Depending on the value chosen, duplicated IDs will be handled in the follow ways:
+
+- `"use-first"`: If a control with a duplicate ID is found, the control that is found early in the imported documents will take priority, and the newly discovered control will be discarded entirely. Using this method risks losing controls, but will prevent duplicate ID errors in the Baseline.
+
+- `"keep"`: When a duplicate Control ID is found, simply import it into the Baseline and continue. Using this method will cause a fatal error whenever two controls with the same ID are imported, ensuring that no information is lost, but preventing the generation of the Baseline.
+
+If the `merge` object is not provided, or the `combine` object is not provided, or the `method` object is incorrectly set (or not set at all), the default behavior will be identical to if `"keep"` was used.
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### Structuring the Baseline
+
+Now we will cover the second part of the Merge Phase, structuring the Baseline. There are several options for handling this, depending on how much control you as the author want to have over the resulting Baseline. We will cover the two most common uses first, then cover the last option afterwards. This final option, referred to as Custom Structuring, is signifigantly more complex, and is only needed for specialized use cases.
+
+{{< tabs XML JSON YAML >}}
+{{% tab %}}
+{{< highlight xml "linenos=table" >}}
+<?xml version="1.0" encoding="UTF-8"?>
+<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+    uuid="bad4b7fe-4c0a-4aaa-94de-1468d7dab38f">
+    <metadata> ... </metadata>
+    <import> ... </import>
+    <merge>
+      <combine method="use-first"/>
+      <flat/> OR <as-is> true </as-is>
+    </merge>
+</profile>
+{{< /highlight >}}
+
+We have combined the first two options into one example above. In a real profile only one of the choices referred to by the `OR` would appear on that line.
+
+When you provide the `<flat/>` choice, the outputted Baseline will be stripped of ALL formatting. Any and all controls or groups that have been imported during the previous Import Phase will be output into a flat list, with no hierarchy or structure. This means that controls that are children of a parent control will appear alongside, or on the same level as, their parents in the baseline. This loss of information is typically not preferable, but can be useful when creating small baselines, or when creating a machine-readable baseline that does not care about control structuring.
+
+When you provide the `<as-is> true </as-is>` choice, structuring information is extracted from the Source Catalog(s) and replicated in the output Baseline. This means that child controls will still appear as children of their parents, and grouped controls will still appear under their respective groups in the Baseline. This is the most typical choice when creating a Baseline that imports from a single source Catalog.
+
+If no `<merge>` element is provided, or none of the three structuring directives are provided, the default behavior will be identical to if you provided `<flat/>`.
+
+
+{{% /tab %}}
+
+{{% tab %}}
+{{< highlight json "linenos=table" >}}
+"profile": {
+    "metadata": {},
+    "imports": [],
+    "merge": {
+      "combine":
+        "method":"use-first"
+      "flat": null OR "as-is": "true"
+    }
+}
+{{< /highlight >}}
+
+We have combined the first two options into one example above. In a real profile only one of the choices referred to by the `OR` would appear on that line.
+
+When you provide the `"flat"` choice, the outputted Baseline will be stripped of ALL formatting. Any and all controls or groups that have been imported during the previous Import Phase will be output into a flat list, with no hierarchy or structure. This means that controls that are children of a parent control will appear alongside, or on the same level as, their parents in the baseline. This loss of information is typically not preferable, but can be useful when creating small baselines, or when creating a machine-readable baseline that does not care about control structuring.
+
+When you provide the `"as-is": "true"` choice, structuring information is extracted from the Source Catalog(s) and replicated in the output Baseline. This means that child controls will still appear as children of their parents, and grouped controls will still appear under their respective groups in the Baseline. This is the most typical choice when creating a Baseline that imports from a single source Catalog.
+
+If no `"merge"` object is provided, or none of the three structuring directives are provided, the default behavior will be identical to if you provided `"flat"`.
+
+
+{{% /tab %}}
+{{% tab %}}
+{{< highlight yaml "linenos=table" >}}
+profile:
+    metadata: ~
+    imports: ~
+    merge:
+      combine:
+        method: "use-first"
+      flat: ~ OR as-is: true
+
+{{< /highlight >}}
+
+We have combined the first two options into one example above. In a real profile only one of the choices referred to by the `OR` would appear on that line.
+
+When you provide the `flat` choice, the outputted Baseline will be stripped of ALL formatting. Any and all controls or groups that have been imported during the previous Import Phase will be output into a flat list, with no hierarchy or structure. This means that controls that are children of a parent control will appear alongside, or on the same level as, their parents in the baseline. This loss of information is typically not preferable, but can be useful when creating small baselines, or when creating a machine-readable baseline that does not care about control structuring.
+
+When you provide the `as-is: true` choice, structuring information is extracted from the Source Catalog(s) and replicated in the output Baseline. This means that child controls will still appear as children of their parents, and grouped controls will still appear under their respective groups in the Baseline. This is the most typical choice when creating a Baseline that imports from a single source Catalog.
+
+If no `merge` object is provided, or none of the three structuring directives are provided, the default behavior will be identical to if you provided `flat`.
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### The Custom Structuring Directive
+
+There is a third choice besides `flat` and `as-is`, which is `custom`. This allows for you as the author to fully control the exact structure of the output Baseline. `custom` is useful for when you have very specific needs for the structure of the output, but you want to define that structure in a format neutral way in the profile, such that it can be shared to other users.
+
+As `custom` is both complex and only used in limited cases, it will not be covered in this tutorial. Please refer to the [Profile Resolution Specification](/concepts/processing/profile-resolution/) or the [Profile model][profile-docs] for more information.
 
 ## Modify Phase
 
-TODO
+The third and final part of an OSCAL Profile is the `modify` section. In this section fine-grained edits can be made to the output baseline. There is a great deal of in-depth functionality available to use in this section, but we will only cover the most common use case in this tutorial: setting parameter values.
+
+{{< tabs XML JSON YAML >}}
+{{% tab %}}
+{{< highlight xml "linenos=table" >}}
+<?xml version="1.0" encoding="UTF-8"?>
+<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+    uuid="bad4b7fe-4c0a-4aaa-94de-1468d7dab38f">
+    <metadata> ... </metadata>
+    <import> ... </import>
+    <merge> ... </merge>
+    <modify>
+      <set-parameter param-id="param1">
+        <value>true</value>
+      </set-parameter>
+    </modify>
+</profile>
+{{< /highlight >}}
+
+In the above example, we see the `<modify>` section with a single `<set-parameter>` child. The `<modify>` element is optional, and can contain any number of `<set-parameter>` children.
+
+Each `<set-parameter>` can make changes to a single parameter that has been imported from the source Catalog. The mandatory attribute `param-id` would be set to the exact ID of the parameter you want to make changes to. In this example we are setting the `<value>` of the parameter with ID `param1` to be `true`.
+
+There are many other changes that can applied to parameters using the `<set-parameter>` element, but those are out-of-scope of this tutorial.
+
+{{% /tab %}}
+
+{{% tab %}}
+{{< highlight json "linenos=table" >}}
+"profile": {
+    "metadata": {},
+    "imports": [],
+    "merge": {},
+    "modify":
+      "set-parameters": [
+        {
+          "param-id": "param1"
+          "value": "true"
+        }
+      ]
+}
+{{< /highlight >}}
+
+In the above example, we see the `"modify"` section with a single `"set-parameter"` child. The `"modify"` object is optional, and can contain any number of `"set-parameter"` children.
+
+Each `"set-parameter"` can make changes to a single parameter that has been imported from the source Catalog. The mandatory child `"param-id"` would be set to the exact ID of the parameter you want to make changes to. In this example we are setting the `"value"` of the parameter with ID `"param1"` to be `"true"`.
+
+There are many other changes that can applied to parameters using the `"set-parameter"` object, but those are out-of-scope of this tutorial.
+
+{{% /tab %}}
+{{% tab %}}
+{{< highlight yaml "linenos=table" >}}
+profile:
+    metadata: ~
+    imports: ~
+    merge: ~
+    modify:
+      set-parameters:
+        - param-id: param1
+          value: true
+
+{{< /highlight >}}
+
+In the above example, we see the `modify` section with a single `set-parameter` child. The `modify` object is optional, and can contain any number of `set-parameter` children.
+
+Each `set-parameter` can make changes to a single parameter that has been imported from the source Catalog. The mandatory child `param-id` would be set to the exact ID of the parameter you want to make changes to. In this example we are setting the `value` of the parameter with ID `param1` to be `true`.
+
+There are many other changes that can applied to parameters using the `set-parameter` object, but those are out-of-scope of this tutorial.
+{{% /tab %}}
+{{< /tabs >}}
+
+
 
 ## Summary
 
 This concludes the tutorial. At this point you should be familiar with:
 
 - The basic structure of a control baseline expressed in OSCAL.
-- How to provide the basic metadata required to be included in an OSCAL profile.
+- The use of the Import Section to select controls from a Source Catalog
+- Using the Merge Section to structure the output Baseline
+- The use of the Modify Section to set the values of parameters
 
 For more information you can review the [OSCAL profile model documentation][profile-docs].
 
