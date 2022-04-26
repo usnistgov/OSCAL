@@ -370,24 +370,25 @@ profile:
       </section>
       <section id="URI-circular">
         <head>Resolving Imports of Profiles</head>
-        <p><req level="must" id="req-circular-resolve"><eg
-              href="requirement-tests/req-chained-all-asis.xml">chained profiles</eg>If the resource
-            acquired is an OSCAL Profile, the tool MUST apply this specification to resolve it, then
-            continue processing having imported the resulting catalog.</req></p>
-        <p><req level="should" id="req-circular-catalog"><eg
-              href="requirement-tests/req-chained-all-asis.xml">chained profiles</eg>When a profile
-            imports a profile, the subordinate profile SHOULD be resolved first into a catalog using
-            this specification, before it is imported. </req> This presents the possibility of
-          circular imports, when a profile is directed to import itself either directly or
-          indirectly.</p>
+        <p><req level="must" id="req-circular-resolve"><eg href="requirement-tests/req-chained-all-asis.xml"
+              >PENDING chained profiles</eg>If the resource acquired is an OSCAL Profile, the tool
+            MUST apply this specification to resolve it, then continue processing having imported
+            the resulting catalog.</req></p>
+        <p><req level="should" id="req-resolve-profile"><eg
+              href="requirement-tests/req-chained-all-asis.xml">PENDING chained profiles</eg><eg
+              href="requirement-tests/req-chained-deepA.xml">PENDING [bug repair] chained profile
+              merged with controls from its own source catalog</eg>When a profile imports a profile,
+            the subordinate profile SHOULD be resolved first into a catalog using this
+            specification, before it is imported. </req> This presents the possibility of circular
+          imports, when a profile is directed to import itself either directly or indirectly.</p>
         <p>A
           <term>circular import</term> occurs when a profile imports an already imported profile, which was called at an earlier place in the import hierarchy. For example, if profile A imports profile B, and profile B imports profile A, the second import is circular. (An import at the top can only be circular if a profile tries to import itself.) If A imports B, B imports C and C imports A, C’s import is circular.
         </p>
         <p>Note that an import can only be circular within the context of processing a particular profile. In the last example, C’s import would not be circular if invoked in the context of resolving B by itself.</p>
-        <p><req level="must" id="req-circular-error"><eg
-              href="requirement-tests/req-circular_import.xml"/>If a processor encounters a
-              <term>circular import</term> as described above (self-imports are inherently
-            circular), the processor MUST cease processing and generate an error. </req></p>
+        <p><req level="must" id="req-circular-error"><eg href="requirement-tests/req-circular_import.xml"
+              >PENDING circular import detection</eg>If a processor encounters a <term>circular
+              import</term> as described above (self-imports are inherently circular), the processor
+            MUST cease processing and generate an error. </req></p>
         <mapping>
           <p>A profile identified as <code>home_profile.yaml</code>imports another one identified as
               <code>circular_profile.yaml</code>: </p>
@@ -423,9 +424,11 @@ profile:
       </section>
       <section id="URI-multiple">
         <head>Multiple imports</head>
-        <p>Each import directive is processed to produce a set of controls. Note that this occurs even if the same catalog is imported multiple times: each distinct import collects controls into a separate
-          <int>selection</int>:
-        </p>
+        <p>Each import directive is processed to produce a set of controls. <req
+            id="rq-mulitple-imports"><eg href="requirement-tests/req-chained-deepA.xml">PENDING
+              chained profiles</eg>Note that this occurs even if the same catalog is imported
+            multiple times: each distinct import collects controls into a separate
+              <int>selection</int></req>: </p>
         <tagging whose="source_profile">
           <![CDATA[
 profile:
@@ -456,9 +459,9 @@ intermediate:
           - ac-3
           - ac-4 ]]>
         </tagging>
-        <p>The control inclusions are combined and collapsed in the next phase of processing,
-          <term>merge</term>(see <xref rid="merge-phase"/>) .
-        </p>
+        <p><req id="rq-multiple-merge"><eg href="requirement-tests/req-chained-deepA.xml">PENDING
+              chained profiles</eg>The control inclusions are combined and collapsed in the next
+            phase of processing</req>, <term>merge</term>(see <xref rid="merge-phase"/>) . </p>
         <p>Multiple imports against the same resource are allowed, and would most commonly occur when the profile author is using <xref rid="mapping"/> to create very specific output. 
           Multiple imports may result in outputs with clashing control IDs if mapping or the merge directive is not set correctly.</p>
       </section>
@@ -624,17 +627,22 @@ include-controls:
             included and excluded, MUST be excluded. This holds irrespective of the specificity of
             the selection for inclusion or exclusion.</req> For example, if AC-1 is included by id
             <code>ac-1</code> and excluded by matching <code>ac*</code>, it is excluded. </p>
-        <p><req level="must" id="req-exclude-additional">When
-          <src>exclude-controls</src> has at least one
-          <src>with-ids</src> or
-          <src>matching</src> directive, the processor MUST follow the same rules as defined in the relevant sections above for these directives, but exclude instead of include any controls. All optional features (<src>with-child-controls</src>, etc.) also apply to exclusion directives.
-        </req></p>
+        <p><req level="must" id="req-exclude-additional"><eg
+              href="requirement-tests/req-include-exclude4.xml"/>When <src>exclude-controls</src>
+            has at least one <src>with-ids</src> or <src>matching</src> directive, the processor
+            MUST follow the same rules as defined in the relevant sections above for these
+            directives, but exclude instead of include any controls. All optional features
+              (<src>with-child-controls</src>, etc.) also apply to exclusion directives. </req></p>
       </section>
       <section id="redundant-calls">
         <head>Redundant Inclusions and Exclusions</head>
-        <p><req level="must" id="req-redundant">A given
-          <src>import</src> may have any number of inclusion statements and any number of exclusion statements. Their effect is cumulative; any control that is included (or excluded) more than once MUST be considered to be included (or excluded) only once. In other words, a given control being included or excluded more than once has no effect. Exclusion still takes priority over inclusion (see above).
-        </req></p>
+        <p><req level="must" id="req-redundant"><eg
+              href="requirement-tests/req-include-exclude4.xml"/>A given <src>import</src> may have
+            any number of inclusion statements and any number of exclusion statements. Their effect
+            is cumulative; any control that is included (or excluded) more than once MUST be
+            considered to be included (or excluded) only once. In other words, a given control being
+            included or excluded more than once has no effect. Exclusion still takes priority over
+            inclusion (see above). </req></p>
         <p>Note that this requirement only applies to controls included within the context of a single import. Controls with duplicate IDs included under a different
           <src>import</src> are not discarded. Also note that this redundancy pruning happens after any relevant mappings have been applied.
         </p>
@@ -713,13 +721,11 @@ include-controls:
       <p>In order to apply the combination method, IDs of each control explicitly included are compared against one another. As IDs are unique across entire OSCAL documents, different imports or any groupings have no bearing on collision. Processing requirements for each method are described below.</p>
       <section id="no-merge-explicit">
         <head>No Combine Directive</head>
-        <p><req level="must" id="req-merge-none"> If no
-          <src>merge</src> directive is given in the profile, or if a
-          <src>merge</src> is given without a
-          <src>combine</src>, merge conflicts MUST be treated as if
-          <src>method: keep</src> was given. </req> For example, a profile with no
-          <src>merge</src> directive:
-        </p>
+        <p><req level="must" id="req-merge-none">
+            <eg href="requirement-tests/keep-everything-twice.xml"/>If no <src>merge</src> directive
+            is given in the profile, or if a <src>merge</src> is given without a <src>combine</src>,
+            merge conflicts MUST be treated as if <src>method: keep</src> was given. </req> For
+          example, a profile with no <src>merge</src> directive: </p>
         <tagging whose="source_profile">
           <![CDATA[
 profile:
