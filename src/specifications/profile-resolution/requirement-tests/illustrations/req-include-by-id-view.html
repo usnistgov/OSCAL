@@ -1,0 +1,487 @@
+<!DOCTYPE HTML><html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      
+      <style type="text/css">
+
+body { display: grid; grid-template-columns: 1fr 1fr 1fr;
+       grid-column-gap: 1vw;
+       font-family: sans-serif }
+       
+body > section {  border: thin solid black; padding: 0.4em; margin-top: 1em; max-height: 90vh; overflow: auto }
+
+.docmap p { margin: 0em }
+
+.docmap .element { outline: medium solid transparent }
+.docmap .element:hover { outline: medium solid #FDD7E4 }
+
+.docmap details.element { padding-left: 1em; margin-top: 0.2em }
+.docmap div.element { padding-left: 1em; margin-left: 1em; margin-top: 0.2em }
+
+details.element:not([open]) div.cnts { display: none }
+
+summary { display: list-item; list-style-position: outside; margin-left: 1em }
+
+div.eflex { display: inline-flex; align-items: start; gap:0.2em }
+
+div.eflex > * { flex: initial }
+
+p.tag { display: inline-block; background-color: midnightblue; color: white; padding: 0.4em; border-radius: 0.2em  }
+p.tag span.flag { display: inline-block; background-color: white; color: black;
+  padding: 0.1em; margin-left: 0.5em; }
+
+div.cnts  p.tag { margin-top:0.2em }
+p.tag.drctv { background-color: slategrey }
+
+div.cnts { display: inline-block; font-size: 80% }
+
+p.flsb:hover { background-color: royalblue }
+
+p.tag.ON { transition: background-color 0s, font-size 0.3s ease-out;
+      font-size: 120%;
+      background-color: steelblue !important }
+
+      h3 code { background-color: gainsboro }
+
+            </style>
+      <script type="text/javascript">
+                 function flashClass(elemID) {
+                 let ilk = document.getElementsByClassName(elemID);
+                 for (let i of ilk) { i.classList.toggle('ON'); }
+            }
+            </script>
+      </head>
+   <body>
+      <section id="import-maps">
+         <h3>Importing <code>catalogs/abc-simple_catalog.xml</code></h3>
+         <h4>In catalog<code> catalogs/abc-simple_catalog.xml</code></h4>
+         <div class="docmap">
+            <details class="element" open>
+               <summary>
+                  <div class="eflex">
+                     <p class="tag">catalog</p>
+                  </div>
+               </summary>
+               <details class="element" open>
+                  <summary>
+                     <div class="eflex">
+                        <p class="tag">group</p>
+                        <div class="cnts">
+                           <div class="cnts-row">
+                              <p class="tag">title <span class="flag">Group A of C</span></p>
+                           </div>
+                        </div>
+                     </div>
+                  </summary>
+                  <details class="element" open>
+                     <summary>
+                        <div class="eflex">
+                           <p class="tag flsb ID_a1" onclick="flashClass('ID_a1')">control <span class="flag">a1</span></p>
+                           <div class="cnts">
+                              <div class="cnts-row">
+                                 <p class="tag">title <span class="flag">Control A1</span></p>
+                              </div>
+                           </div>
+                        </div>
+                     </summary>
+                     <div class="element">
+                        <div class="eflex">
+                           <p class="tag flsb ID_a1_prm1" onclick="flashClass('ID_a1_prm1')">param <span class="flag">a1_prm1</span></p>
+                           <div class="cnts">
+                              <div class="cnts-row">
+                                 <p class="flsb tag ID_a1_prm1-label" onclick="flashClass('ID_a1_prm1-label')">label <span class="flag">A1 Parameter 1</span></p>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="element">
+                        <div class="eflex">
+                           <p class="flsb tag ID_a1-stmt" onclick="flashClass('ID_a1-stmt')"> part <b>statement</b><span class="flag">a1-stmt</span> ▮</p>
+                        </div>
+                     </div>
+                  </details>
+                  <details class="element" open>
+                     <summary>
+                        <div class="eflex">
+                           <p class="tag flsb ID_a2" onclick="flashClass('ID_a2')">control <span class="flag">a2</span></p>
+                           <div class="cnts">
+                              <div class="cnts-row">
+                                 <p class="tag">title <span class="flag">Control A2</span></p>
+                              </div>
+                           </div>
+                        </div>
+                     </summary>
+                     <div class="element">
+                        <div class="eflex">
+                           <p class="flsb tag ID_a2-stmt" onclick="flashClass('ID_a2-stmt')"> part <b>statement</b><span class="flag">a2-stmt</span> ▮</p>
+                        </div>
+                     </div>
+                  </details>
+                  <details class="element" open>
+                     <summary>
+                        <div class="eflex">
+                           <p class="tag flsb ID_a3" onclick="flashClass('ID_a3')">control <span class="flag">a3</span></p>
+                           <div class="cnts">
+                              <div class="cnts-row">
+                                 <p class="tag">title <span class="flag">Control A3</span></p>
+                              </div>
+                           </div>
+                        </div>
+                     </summary>
+                     <div class="element">
+                        <div class="eflex">
+                           <p class="tag flsb ID_a3_prm1" onclick="flashClass('ID_a3_prm1')">param <span class="flag">a3_prm1</span></p>
+                           <div class="cnts">
+                              <div class="cnts-row">
+                                 <p class="flsb tag ID_a3_prm1-label" onclick="flashClass('ID_a3_prm1-label')">label <span class="flag">A3 Parameter 1</span></p>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="element">
+                        <div class="eflex">
+                           <p class="flsb tag ID_a3-stmt" onclick="flashClass('ID_a3-stmt')"> part <b>statement</b><span class="flag">a3-stmt</span> ▮</p>
+                        </div>
+                     </div>
+                  </details>
+               </details>
+               <details class="element" open>
+                  <summary>
+                     <div class="eflex">
+                        <p class="tag">group</p>
+                        <div class="cnts">
+                           <div class="cnts-row">
+                              <p class="tag">title <span class="flag">Group B of C</span></p>
+                           </div>
+                        </div>
+                     </div>
+                  </summary>
+                  <details class="element" open>
+                     <summary>
+                        <div class="eflex">
+                           <p class="tag flsb ID_b1" onclick="flashClass('ID_b1')">control <span class="flag">b1</span></p>
+                           <div class="cnts">
+                              <div class="cnts-row">
+                                 <p class="tag">title <span class="flag">Control B1</span></p>
+                              </div>
+                           </div>
+                        </div>
+                     </summary>
+                     <div class="element">
+                        <div class="eflex">
+                           <p class="flsb tag ID_b1-stmt" onclick="flashClass('ID_b1-stmt')"> part <b>statement</b><span class="flag">b1-stmt</span> ▮</p>
+                        </div>
+                     </div>
+                  </details>
+                  <details class="element" open>
+                     <summary>
+                        <div class="eflex">
+                           <p class="tag flsb ID_b2" onclick="flashClass('ID_b2')">control <span class="flag">b2</span></p>
+                           <div class="cnts">
+                              <div class="cnts-row">
+                                 <p class="tag">title <span class="flag">Control B2</span></p>
+                              </div>
+                           </div>
+                        </div>
+                     </summary>
+                     <div class="element">
+                        <div class="eflex">
+                           <p class="flsb tag ID_b2-stmt" onclick="flashClass('ID_b2-stmt')"> part <b>statement</b><span class="flag">b2-stmt</span> ▮</p>
+                        </div>
+                     </div>
+                  </details>
+                  <details class="element" open>
+                     <summary>
+                        <div class="eflex">
+                           <p class="tag flsb ID_b3" onclick="flashClass('ID_b3')">control <span class="flag">b3</span></p>
+                           <div class="cnts">
+                              <div class="cnts-row">
+                                 <p class="tag">title <span class="flag">Control B3</span></p>
+                              </div>
+                           </div>
+                        </div>
+                     </summary>
+                     <div class="element">
+                        <div class="eflex">
+                           <p class="flsb tag ID_b3-stmt" onclick="flashClass('ID_b3-stmt')"> part <b>statement</b><span class="flag">b3-stmt</span> ▮</p>
+                        </div>
+                     </div>
+                  </details>
+               </details>
+               <details class="element" open>
+                  <summary>
+                     <div class="eflex">
+                        <p class="tag">group</p>
+                        <div class="cnts">
+                           <div class="cnts-row">
+                              <p class="tag">title <span class="flag">Group C of C</span></p>
+                           </div>
+                        </div>
+                     </div>
+                  </summary>
+                  <details class="element" open>
+                     <summary>
+                        <div class="eflex">
+                           <p class="tag flsb ID_c1" onclick="flashClass('ID_c1')">control <span class="flag">c1</span></p>
+                           <div class="cnts">
+                              <div class="cnts-row">
+                                 <p class="tag">title <span class="flag">Control C1</span></p>
+                              </div>
+                           </div>
+                        </div>
+                     </summary>
+                     <div class="element">
+                        <div class="eflex">
+                           <p class="flsb tag ID_c1-stmt" onclick="flashClass('ID_c1-stmt')"> part <b>statement</b><span class="flag">c1-stmt</span> ▮</p>
+                        </div>
+                     </div>
+                  </details>
+                  <details class="element" open>
+                     <summary>
+                        <div class="eflex">
+                           <p class="tag flsb ID_c2" onclick="flashClass('ID_c2')">control <span class="flag">c2</span></p>
+                           <div class="cnts">
+                              <div class="cnts-row">
+                                 <p class="tag">title <span class="flag">Control C2</span></p>
+                              </div>
+                           </div>
+                        </div>
+                     </summary>
+                     <div class="element">
+                        <div class="eflex">
+                           <p class="flsb tag ID_c2-stmt" onclick="flashClass('ID_c2-stmt')"> part <b>statement</b><span class="flag">c2-stmt</span> ▮</p>
+                        </div>
+                     </div>
+                  </details>
+                  <details class="element" open>
+                     <summary>
+                        <div class="eflex">
+                           <p class="tag flsb ID_c3" onclick="flashClass('ID_c3')">control <span class="flag">c3</span></p>
+                           <div class="cnts">
+                              <div class="cnts-row">
+                                 <p class="tag">title <span class="flag">Control C3</span></p>
+                              </div>
+                           </div>
+                        </div>
+                     </summary>
+                     <div class="element">
+                        <div class="eflex">
+                           <p class="flsb tag ID_c3-stmt" onclick="flashClass('ID_c3-stmt')"> part <b>statement</b><span class="flag">c3-stmt</span> ▮</p>
+                        </div>
+                     </div>
+                     <details class="element" open>
+                        <summary>
+                           <div class="eflex">
+                              <p class="tag flsb ID_c3.a" onclick="flashClass('ID_c3.a')">control <span class="flag">c3.a</span></p>
+                              <div class="cnts">
+                                 <div class="cnts-row">
+                                    <p class="tag">title <span class="flag">Control C3-A</span></p>
+                                 </div>
+                              </div>
+                           </div>
+                        </summary>
+                        <div class="element">
+                           <div class="eflex">
+                              <p class="flsb tag ID_c3-stmt" onclick="flashClass('ID_c3-stmt')"> part <b>statement</b><span class="flag">c3-stmt</span> ▮</p>
+                           </div>
+                        </div>
+                        <details class="element" open>
+                           <summary>
+                              <div class="eflex">
+                                 <p class="tag flsb ID_c3.a-1" onclick="flashClass('ID_c3.a-1')">control <span class="flag">c3.a-1</span></p>
+                                 <div class="cnts">
+                                    <div class="cnts-row">
+                                       <p class="tag">title <span class="flag">Control C3-A-1</span></p>
+                                    </div>
+                                 </div>
+                              </div>
+                           </summary>
+                           <div class="element">
+                              <div class="eflex">
+                                 <p class="flsb tag ID_c3-stmt" onclick="flashClass('ID_c3-stmt')"> part <b>statement</b><span class="flag">c3-stmt</span> ▮</p>
+                              </div>
+                           </div>
+                        </details>
+                     </details>
+                  </details>
+               </details>
+            </details>
+         </div>
+      </section>
+      <section id="profile-map">
+         <h3>Profile <code>req-include-by-id.xml</code></h3>
+         <div class="docmap">
+            <details class="element" open>
+               <summary>
+                  <div class="eflex">
+                     <p class="tag drctv">profile</p>
+                  </div>
+               </summary>
+               <details class="element" open>
+                  <summary>
+                     <div class="eflex">
+                        <p class="tag drctv">import<span class="flag">catalogs/abc-simple_catalog.xml</span></p>
+                     </div>
+                  </summary>
+                  <details class="element" open>
+                     <summary>
+                        <div class="eflex">
+                           <p class="tag drctv">include-controls</p>
+                           <div class="cnts">
+                              <div class="cnts-row">
+                                 <p class="tag drctv">with child controls <span class="flag">yes </span></p>
+                              </div>
+                           </div>
+                        </div>
+                     </summary>
+                     <div class="element">
+                        <div class="eflex">
+                           <p class="flsb drctv tag ID_a1" onclick="flashClass('ID_a1')">with-id <span class="flag">a1</span></p>
+                        </div>
+                     </div>
+                     <div class="element">
+                        <div class="eflex">
+                           <p class="flsb drctv tag ID_b1" onclick="flashClass('ID_b1')">with-id <span class="flag">b1</span></p>
+                        </div>
+                     </div>
+                     <div class="element">
+                        <div class="eflex">
+                           <p class="flsb drctv tag ID_c1" onclick="flashClass('ID_c1')">with-id <span class="flag">c1</span></p>
+                        </div>
+                     </div>
+                     <div class="element">
+                        <div class="eflex">
+                           <p class="flsb drctv tag ID_c3" onclick="flashClass('ID_c3')">with-id <span class="flag">c3</span></p>
+                        </div>
+                     </div>
+                  </details>
+               </details>
+            </details>
+         </div>
+      </section>
+      <section id="result-map">
+         <h3>Result <code>output-expected/req-include-by-id_RESOLVED.xml</code></h3>
+         <div class="docmap">
+            <details class="element" open>
+               <summary>
+                  <div class="eflex">
+                     <p class="tag">catalog</p>
+                  </div>
+               </summary>
+               <details class="element" open>
+                  <summary>
+                     <div class="eflex">
+                        <p class="tag flsb ID_a1" onclick="flashClass('ID_a1')">control <span class="flag">a1</span></p>
+                        <div class="cnts">
+                           <div class="cnts-row">
+                              <p class="tag">title <span class="flag">Control A1</span></p>
+                           </div>
+                        </div>
+                     </div>
+                  </summary>
+                  <div class="element">
+                     <div class="eflex">
+                        <p class="tag flsb ID_a1_prm1" onclick="flashClass('ID_a1_prm1')">param <span class="flag">a1_prm1</span></p>
+                        <div class="cnts">
+                           <div class="cnts-row">
+                              <p class="flsb tag ID_a1_prm1-label" onclick="flashClass('ID_a1_prm1-label')">label <span class="flag">A1 Parameter 1</span></p>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="element">
+                     <div class="eflex">
+                        <p class="flsb tag ID_a1-stmt" onclick="flashClass('ID_a1-stmt')"> part <b>statement</b><span class="flag">a1-stmt</span> ▮</p>
+                     </div>
+                  </div>
+               </details>
+               <details class="element" open>
+                  <summary>
+                     <div class="eflex">
+                        <p class="tag flsb ID_b1" onclick="flashClass('ID_b1')">control <span class="flag">b1</span></p>
+                        <div class="cnts">
+                           <div class="cnts-row">
+                              <p class="tag">title <span class="flag">Control B1</span></p>
+                           </div>
+                        </div>
+                     </div>
+                  </summary>
+                  <div class="element">
+                     <div class="eflex">
+                        <p class="flsb tag ID_b1-stmt" onclick="flashClass('ID_b1-stmt')"> part <b>statement</b><span class="flag">b1-stmt</span> ▮</p>
+                     </div>
+                  </div>
+               </details>
+               <details class="element" open>
+                  <summary>
+                     <div class="eflex">
+                        <p class="tag flsb ID_c1" onclick="flashClass('ID_c1')">control <span class="flag">c1</span></p>
+                        <div class="cnts">
+                           <div class="cnts-row">
+                              <p class="tag">title <span class="flag">Control C1</span></p>
+                           </div>
+                        </div>
+                     </div>
+                  </summary>
+                  <div class="element">
+                     <div class="eflex">
+                        <p class="flsb tag ID_c1-stmt" onclick="flashClass('ID_c1-stmt')"> part <b>statement</b><span class="flag">c1-stmt</span> ▮</p>
+                     </div>
+                  </div>
+               </details>
+               <details class="element" open>
+                  <summary>
+                     <div class="eflex">
+                        <p class="tag flsb ID_c3" onclick="flashClass('ID_c3')">control <span class="flag">c3</span></p>
+                        <div class="cnts">
+                           <div class="cnts-row">
+                              <p class="tag">title <span class="flag">Control C3</span></p>
+                           </div>
+                        </div>
+                     </div>
+                  </summary>
+                  <div class="element">
+                     <div class="eflex">
+                        <p class="flsb tag ID_c3-stmt" onclick="flashClass('ID_c3-stmt')"> part <b>statement</b><span class="flag">c3-stmt</span> ▮</p>
+                     </div>
+                  </div>
+                  <details class="element" open>
+                     <summary>
+                        <div class="eflex">
+                           <p class="tag flsb ID_c3.a" onclick="flashClass('ID_c3.a')">control <span class="flag">c3.a</span></p>
+                           <div class="cnts">
+                              <div class="cnts-row">
+                                 <p class="tag">title <span class="flag">Control C3-A</span></p>
+                              </div>
+                           </div>
+                        </div>
+                     </summary>
+                     <div class="element">
+                        <div class="eflex">
+                           <p class="flsb tag ID_c3-stmt" onclick="flashClass('ID_c3-stmt')"> part <b>statement</b><span class="flag">c3-stmt</span> ▮</p>
+                        </div>
+                     </div>
+                     <details class="element" open>
+                        <summary>
+                           <div class="eflex">
+                              <p class="tag flsb ID_c3.a-1" onclick="flashClass('ID_c3.a-1')">control <span class="flag">c3.a-1</span></p>
+                              <div class="cnts">
+                                 <div class="cnts-row">
+                                    <p class="tag">title <span class="flag">Control C3-A-1</span></p>
+                                 </div>
+                              </div>
+                           </div>
+                        </summary>
+                        <div class="element">
+                           <div class="eflex">
+                              <p class="flsb tag ID_c3-stmt" onclick="flashClass('ID_c3-stmt')"> part <b>statement</b><span class="flag">c3-stmt</span> ▮</p>
+                           </div>
+                        </div>
+                     </details>
+                  </details>
+               </details>
+            </details>
+         </div>
+      </section>
+   </body>
+</html>
