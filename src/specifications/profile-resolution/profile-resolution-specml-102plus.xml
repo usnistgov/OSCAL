@@ -617,10 +617,11 @@ include-controls:
                 https://github.com/usnistgov/OSCAL/pull/1207</eg>A <src>with-parent-controls:
                 no</src> directive on an <src>include-controls</src> indicates that ONLY the
               matching control is included, any parent MUST NOT be included. </req></p>
-          <p><req level="must" id="req-with-parent-controls-none"><eg>PENDING PR
-                https://github.com/usnistgov/OSCAL/pull/1207</eg>If no
-                <src>with-parent-controls</src> is provided, the processor MUST consider the
-              directive as being equivalent to one having <src>with-parent-controls:yes</src>. </req></p>
+          <p><req level="must" id="req-with-parent-controls-none"><eg
+                href="requirement-tests/req-with-parent-controls-none.xml">Neither setting is
+                given</eg>If no <src>with-parent-controls</src> is provided, the processor MUST
+              consider the directive as being equivalent to one having
+                <src>with-parent-controls:yes</src>. </req></p>
         </section>
       </section>
       <section id="exclude-directive">
