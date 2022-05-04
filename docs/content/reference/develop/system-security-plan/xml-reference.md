@@ -3191,7 +3191,8 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                            <p class="formal-name">Profile Reference</p>
                         </div>
                         <div class="body">
-                           <p class="description"><span class="usa-tag">Description</span> A resolvable URL reference to the profile to use as the system's control baseline.</p>
+                           <p class="description"><span class="usa-tag">Description</span> A resolvable URL reference to the profile or catalog to use as the system's control
+                              baseline.</p>
                            <div class="remarks-group usa-prose">
                               <details open="open">
                                  <summary class="subhead">Remarks</summary>
@@ -3199,10 +3200,22 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                     <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
                                        that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
                                     <p>If a local reference using a fragment is used, this will be indicated by a fragment
-                                       "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
-                                    <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the referenced
+                                       "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document. The
+                                       identified resource will be used instead as the target resource.</p>
+                                    <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URI pointing to the location of the target
                                        resource. A relative URI will be resolved relative to the location of the document
                                        containing the link.</p>
+                                    <p>If the resource is an OSCAL profile, it is expected that a tool will resolve the profile
+                                       according to the OSCAL [profile resolution specification](https://pages.nist.gov/OSCAL/concepts/processing/profile-resolution/)
+                                       to produce a resolved profile for use when processing the containing system security
+                                       plan. This allows a system security plan processor to use the baseline as a catalog
+                                       of controls.</p>
+                                    <p>While it is possible to reference a previously resolved OSCAL profile as a catalog,
+                                       this practice is discouraged since the unresolved form of the profile communicates
+                                       more information about selections and changes to the underlying catalog. Furthermore,
+                                       the underlying catalog can be maintained seperately from the profile, which also has
+                                       maintenance advantages for distinct maintainers, ensuring that the best available
+                                       information is produced through profile resolution.</p>
                                  </div>
                               </details>
                            </div>
