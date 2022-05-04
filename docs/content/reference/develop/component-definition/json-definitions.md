@@ -126,7 +126,7 @@ The following is a reference for the JSON object definitions derived from the [m
                         <summary>Constraint (1)</summary>
                         
                         <div class="constraint">
-                           <p><span class="usa-tag">matches</span>: a target (value) must match the regular expression '[A-Z](2)'.</p>
+                           <p><span class="usa-tag">matches</span>: a target (value) must match the regular expression '[A-Z]{2}'.</p>
                         </div>
                         </details>
                   </div>

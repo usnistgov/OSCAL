@@ -1628,7 +1628,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                              <details class="constraints" open="open">
                                                 <summary>Constraint (1)</summary>
                                                 <div class="constraint">
-                                                   <p><span class="usa-tag">matches</span>: a target (value) must match the regular expression '[A-Z](2)'.</p>
+                                                   <p><span class="usa-tag">matches</span>: a target (value) must match the regular expression '[A-Z]{2}'.</p>
                                                 </div>
                                              </details>
                                           </div>
@@ -2657,7 +2657,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                 <details class="constraints" open="open">
                                                    <summary>Constraint (1)</summary>
                                                    <div class="constraint">
-                                                      <p><span class="usa-tag">matches</span>: a target (value) must match the regular expression '[A-Z](2)'.</p>
+                                                      <p><span class="usa-tag">matches</span>: a target (value) must match the regular expression '[A-Z]{2}'.</p>
                                                    </div>
                                                 </details>
                                              </div>
