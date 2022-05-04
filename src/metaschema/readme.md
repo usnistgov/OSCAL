@@ -10,7 +10,7 @@ OSCAL Metaschemas are used to generate other OSCAL artifacts based on the metasc
 
 Use of Metaschemas in OSCAL allow us to maintain seamless and consistent support for multiple OSCAL model formats, including XML and JSON. Content can also be kept up-to-date in multiple formats using generated content converters, and can be validated using generated schema. Adding support for new formats (e.g., YAML) can accomplished by extending the Metaschema tooling to produce schema and converters for other formats.
 
-The Metaschema syntax (an XML application) is also described and constrained with its [own schema](https://github.com/usnistgov/metaschema/blob/master/toolchains/xslt-M4/validate/metaschema.xsd), and with a [Schematron constraints set](https://github.com/usnistgov/metaschema/blob/master/toolchains/xslt-M4/validate/metaschema-composition-check.sch). The latter is able to enforce some of the rules described below.
+The Metaschema syntax (an XML application) is also described and constrained with its [own schema](https://github.com/usnistgov/metaschema/blob/main/toolchains/xslt-M4/validate/metaschema.xsd), and with a [Schematron constraints set](https://github.com/usnistgov/metaschema/blob/main/toolchains/xslt-M4/validate/metaschema-composition-check.sch). The latter is able to enforce some of the rules described below.
 
 ## Enumerated values
 

@@ -1,3 +1,3 @@
 # Content Moved
 
-All OSCAL FedRAMP content files have been moved to the [OSCAL content GitHub repository](https://github.com/usnistgov/oscal-content/tree/master/fedramp.gov).
+All OSCAL FedRAMP content files have been moved to the [OSCAL content GitHub repository](https://github.com/usnistgov/oscal-content/tree/main/fedramp.gov).
