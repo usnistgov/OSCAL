@@ -95,7 +95,7 @@
         <xsl:variable name="linked-xml" select="child::rlink[ends-with(@href,'.xml') or matches(@media-type,'xml')][1]"/>
         <xsl:choose>
             <xsl:when test="exists($linked-xml)">
-        <xsl:apply-templates mode="o:select" select="o:resource-or-error($linked-xml/@href)"/>
+                <xsl:apply-templates mode="o:select" select="o:resource-or-error($linked-xml/@href)"/>
             </xsl:when>
             <xsl:otherwise>
                 <xsl:message terminate="yes"
@@ -126,30 +126,6 @@
         </xsl:copy>
     </xsl:template>
 
-    <xsl:template name="add-process-id" as="attribute(opr:id)">
-        <xsl:param name="context" select="." as="element()"/>
-        <xsl:attribute name="opr:id" namespace="http://csrc.nist.gov/ns/oscal/profile-resolution">
-            <xsl:value-of
-                select="concat(opr:catalog-identifier($context/root()/o:catalog), '#', $context/(@id, generate-id())[1])"/>
-        </xsl:attribute>
-    </xsl:template>
-
-    <xsl:function name="opr:catalog-identifier" as="xs:string">
-        <xsl:param name="catalog" as="element(o:catalog)"/>
-        <xsl:sequence select="$catalog/(@uuid,document-uri(root(.)))[1]"/>
-    </xsl:function>
-
-    <!-- A control is included if it is selected by the provided import instruction -->
-    <xsl:template match="control" mode="o:select" as="element(o:control)?">
-        <xsl:param name="import-instruction" tunnel="yes" required="yes"/>
-        <xsl:if test="o:selects($import-instruction,.)">
-            <xsl:copy copy-namespaces="no">
-                <xsl:call-template name="add-process-id"/>
-                <xsl:apply-templates mode="#current" select="node() | @*"/>
-            </xsl:copy>
-        </xsl:if>
-    </xsl:template>
-
     <!-- Parameters are always passed through until later stages. -->
     <xsl:template match="param" mode="o:select">
         <xsl:copy copy-namespaces="no">
@@ -170,58 +146,6 @@
         </xsl:if>
     </xsl:template>-->
 
-    <!-- Function o:selects($importing,$candidate) returns a true or false
-         depending on whether the import calls the candidate control  -->
-
-<!-- @with-child-controls='yes' is recursive - given on a control it brings all control descendants, not only children   -->
-    <xsl:function name="o:selects" as="xs:boolean">
-        <xsl:param name="importing" as="element(o:import)"/>
-        <xsl:param name="candidate" as="element(o:control)"/>
-        <xsl:variable name="include-reasons" as="xs:boolean+">
-<!-- we are not optimizing for performance here; nothing is done to prevent all checks even if the first passes -->
-            <!--<xsl:sequence select="empty($importing/include)"/>-->
-            <xsl:sequence select="exists($importing/include-all)"/>
-            <xsl:sequence select="some $c in ($importing/include-controls/with-id)
-                                  satisfies ($c = $candidate/@id)"/>
-            <xsl:sequence select="some $c in ($importing/include-controls[o:calls-parents(.)]/with-id)
-                satisfies ($c = $candidate/descendant::control/@id)"/>
-            <xsl:sequence select="some $c in ($importing/include-controls[o:calls-children(.)]/with-id)
-                satisfies ($c = $candidate/ancestor::control/@id)"/>
-            <xsl:sequence select="some $m in ($importing/include-controls/matching[@pattern != ''])
-                                  satisfies (matches($candidate/@id,$m/@pattern/o:glob-as-regex(string(.)) ))"/>
-            <xsl:sequence select="some $m in ($importing/include-controls[o:calls-parents(.)]/matching[@pattern != '']), $a in $candidate/descendant::control 
-                satisfies (matches($a/@id,$m/@pattern/o:glob-as-regex(string(.))))"/>
-            <xsl:sequence select="some $m in ($importing/include-controls[o:calls-children(.)]/matching[@pattern != '']), $a in $candidate/ancestor::control 
-                satisfies (matches($a/@id,$m/@pattern/o:glob-as-regex(string(.))))"/>
-        </xsl:variable>
-        <xsl:variable name="exclude-reasons" as="xs:boolean+">
-            <xsl:sequence select="exists($candidate/parent::control) and $importing/include-all/@with-child-controls='no'"/>
-            <xsl:sequence select="some $c in ($importing/exclude-controls/with-id) satisfies ($c = $candidate/@id)"/>
-            <xsl:sequence select="some $c in ($importing/exclude-controls[o:calls-parents(.)]/with-id)
-                satisfies ($c = $candidate/descendant::control/@id)"/>
-            <xsl:sequence select="some $c in ($importing/exclude-controls[o:calls-children(.)]/with-id)
-                satisfies ($c = $candidate/ancestor::control/@id)"/>
-            <xsl:sequence select="some $m in ($importing/exclude-controls/matching[@pattern != ''])
-                satisfies (matches($candidate/@id,$m/@pattern/o:glob-as-regex(string(.))))"/>
-            <xsl:sequence select="some $m in ($importing/exclude-controls[o:calls-parents(.)]/matching[@pattern != '']), $a in $candidate/descendant::control
-                satisfies (matches($a/@id,$m/@pattern/o:glob-as-regex(string(.))))"/>
-            <xsl:sequence select="some $m in ($importing/exclude-controls[o:calls-children(.)]/matching[@pattern != '']), $a in $candidate/ancestor::control
-                satisfies (matches($a/@id,$m/@pattern/o:glob-as-regex(string(.))))"/>
-        </xsl:variable>
-        <!-- predicate [.] filters reasons as booleans -->
-        <xsl:sequence select="exists($include-reasons[.]) and empty($exclude-reasons[.])"/>
-    </xsl:function>
-
-    <xsl:function name="o:calls-children" as="xs:boolean">
-        <xsl:param name="caller" as="element()"/>
-        <xsl:sequence select="$caller/@with-child-controls='yes'"/>
-    </xsl:function>
-
-    <xsl:function name="o:calls-parents" as="xs:boolean">
-        <xsl:param name="caller" as="element()"/>
-        <xsl:sequence select="not($caller/@with-parent-controls='no')"/>
-    </xsl:function>
-
     <!-- Returns a document when found, a fatal error when not. -->
     <xsl:function name="o:resource-or-error" as="document-node()">
         <xsl:param name="href" as="attribute(href)"/>
@@ -232,7 +156,7 @@
         <xsl:sequence select="document($resolved-href)"/>
     </xsl:function>
 
-    <xsl:include href="oscal-profile-resolve-functions.xsl"/>
+    <xsl:include href="select-or-custom-merge.xsl"/>
 
     <xsl:function name="o:resolve-profile">
         <xsl:param name="profile" as="element(profile)"/>
