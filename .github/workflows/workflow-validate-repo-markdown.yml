@@ -13,10 +13,6 @@ on:
         default: 'build/config/.markdown-link-check/config.json'
         type: string
   workflow_dispatch:
-    branches:
-    - main
-    - develop
-    - "release-*"
     inputs:
       ignorePattern:
         description: 'a pattern provided to grep for files/directories to ignore'
@@ -34,14 +30,30 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     # use this for pulls where checkout is anonymous
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3 # current: dcd71f646680f2efd8db4afa5ad64fdcba30e748
       with:
         submodules: recursive
     # Setup runtime environment
     # -------------------------
-    - name: Get markdown-link-check
+    - name: Set up NodeJS
+      uses: actions/setup-node@v3 # current: 56337c425554a6be30cdef71bf441f15be286854 
+      with:
+        node-version-file: 'build/.nvmrc'
+        cache: 'npm'
+        cache-dependency-path: '**/package-lock.json'
+    - name: Setup Dependencies
       run: |
-          sudo npm install -g markdown-link-check
+        # NodeJS
+        cd "${{ github.workspace }}/build"
+        # If you are a developer and need to modify the workflow, be sure to review
+        # the package.json and package-lock.json to ensure the following deps are
+        # at least installed (they will be updated by dependabot):
+        # - ajv-cli
+        # - ajv-formats
+        # - markdown-link-check
+        # - yaml-convert
+        npm install --loglevel verbose
+        echo "$PWD/node_modules/.bin/" >> $GITHUB_PATH
     # Build Artifacts
     # ---------------
     - name: Validate repo Markdown content instances

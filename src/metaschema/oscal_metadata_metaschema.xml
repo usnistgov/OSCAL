@@ -910,7 +910,7 @@
                 <formal-name>Country Code</formal-name>
                 <description>The ISO 3166-1 alpha-2 country code for the mailing address.</description>
                 <constraint>
-                    <matches target="." regex="[A-Z](2)"/>
+                    <matches target="." regex="[A-Z]{2}"/>
                 </constraint>
             </define-field>
             <!-- More address stuff -->
