@@ -3298,11 +3298,11 @@
             <xs:simpleType>
                <xs:annotation>
                   <xs:appinfo>
-                     <m:formal-name>collected field</m:formal-name>
+                     <m:formal-name>Collected Field</m:formal-name>
                      <m:description>Date/time stamp identifying when the finding information was collected.</m:description>
                   </xs:appinfo>
                   <xs:documentation>
-                     <b>collected field</b>: Date/time stamp identifying when the finding information was collected.</xs:documentation>
+                     <b>Collected Field</b>: Date/time stamp identifying when the finding information was collected.</xs:documentation>
                </xs:annotation>
                <xs:restriction base="oscal-ar:dateTime-with-timezone"/>
             </xs:simpleType>
@@ -3311,11 +3311,11 @@
             <xs:simpleType>
                <xs:annotation>
                   <xs:appinfo>
-                     <m:formal-name>expires field</m:formal-name>
+                     <m:formal-name>Expires Field</m:formal-name>
                      <m:description>Date/time identifying when the finding information is out-of-date and no longer valid. Typically used with continuous assessment scenarios.</m:description>
                   </xs:appinfo>
                   <xs:documentation>
-                     <b>expires field</b>: Date/time identifying when the finding information is out-of-date and no longer valid. Typically used with continuous assessment scenarios.</xs:documentation>
+                     <b>Expires Field</b>: Date/time identifying when the finding information is out-of-date and no longer valid. Typically used with continuous assessment scenarios.</xs:documentation>
                </xs:annotation>
                <xs:restriction base="oscal-ar:dateTime-with-timezone"/>
             </xs:simpleType>

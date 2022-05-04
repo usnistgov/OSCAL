@@ -96,10 +96,10 @@
          <xs:annotation>
             <xs:appinfo>
                <m:formal-name>Profile Reference</m:formal-name>
-               <m:description>A resolvable URL reference to the profile to use as the system's control baseline.</m:description>
+               <m:description>A resolvable URL reference to the profile or catalog to use as the system's control baseline.</m:description>
             </xs:appinfo>
             <xs:documentation>
-               <b>Profile Reference</b>: A resolvable URL reference to the profile to use as the system's control baseline.</xs:documentation>
+               <b>Profile Reference</b>: A resolvable URL reference to the profile or catalog to use as the system's control baseline.</xs:documentation>
          </xs:annotation>
       </xs:attribute>
    </xs:complexType>

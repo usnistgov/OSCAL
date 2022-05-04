@@ -43,7 +43,7 @@
         "properties" : 
         { "href" : 
           { "title" : "Profile Reference",
-            "description" : "A resolvable URL reference to the profile to use as the system's control baseline.",
+            "description" : "A resolvable URL reference to the profile or catalog to use as the system's control baseline.",
             "type" : "string",
             "format" : "uri-reference" },
           "remarks" : 
