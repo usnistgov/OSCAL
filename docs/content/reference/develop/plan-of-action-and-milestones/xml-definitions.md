@@ -2891,7 +2891,7 @@ The following is a reference for the XML element and attribute types derived fro
                                           
                                           <li><strong>fail</strong>: The target system or system component did not satisfy all the conditions.</li>
                                           
-                                          <li><strong>other</strong>: Some other event took place that is not a pass or a fail. </li>
+                                          <li><strong>other</strong>: Some other event took place that is not a pass or a fail.</li>
                                           </ul>
                                     </div>
                                     </details>
@@ -4006,7 +4006,7 @@ The following is a reference for the XML element and attribute types derived fro
                   
                   <li><strong>objective</strong>: **(deprecated)** Use 'assessment-objective' instead.</li>
                   
-                  <li><strong>assessment</strong>: **(deprecated)** Use 'assessment-method' instead</li>
+                  <li><strong>assessment</strong>: **(deprecated)** Use 'assessment-method' instead.</li>
                   
                   <li><strong>assessment-objective</strong>: The part defines an assessment objective.</li>
                   
@@ -5277,7 +5277,7 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="type"><a href="/reference/datatypes/#datetime-with-timezone">dateTime-with-timezone</a></p>
                      <p class="occurrence">[1]</p>
                      <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-assessment-common/observation/collected">Switch to JSON</a></div>
-                     <p class="formal-name">collected field</p>
+                     <p class="formal-name">Collected Field</p>
                   </div>
                   <div class="body">
                      <p class="description"><span class="usa-tag">description</span> Date/time stamp identifying when the finding information was collected.</p>
@@ -5289,7 +5289,7 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="type"><a href="/reference/datatypes/#datetime-with-timezone">dateTime-with-timezone</a></p>
                      <p class="occurrence">[0 or 1]</p>
                      <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-assessment-common/observation/expires">Switch to JSON</a></div>
-                     <p class="formal-name">expires field</p>
+                     <p class="formal-name">Expires Field</p>
                   </div>
                   <div class="body">
                      <p class="description"><span class="usa-tag">description</span> Date/time identifying when the finding information is out-of-date and no longer valid.
@@ -7898,7 +7898,7 @@ The following is a reference for the XML element and attribute types derived fro
                            <p>The value <b>may be locally defined</b>, or one of the following:</p>
                            <ul>
                               
-                              <li><strong>recommendation</strong>: Recommended Remediation</li>
+                              <li><strong>recommendation</strong>: Recommended remediation.</li>
                               
                               <li><strong>planned</strong>: The actions intended to resolve the risk.</li>
                               

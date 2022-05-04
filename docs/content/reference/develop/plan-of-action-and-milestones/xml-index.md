@@ -201,7 +201,7 @@ The following is an index of each XML element and attribute used in the [XML for
    <section class="named-object-group">
       <h1 class="toc1" id="/collected">collected</h1>
       <ul>
-         <li><span class="pathlink">/<a href="../xml-reference/#/plan-of-action-and-milestones">plan-of-action-and-milestones</a>/<a href="../xml-reference/#/plan-of-action-and-milestones/observation">observation</a>/<a href="../xml-reference/#/plan-of-action-and-milestones/observation/collected">collected</a></span> - <span class="formal-name"><a href="../xml-definitions/#/assembly/oscal-assessment-common/observation/collected">collected field</a></span></li>
+         <li><span class="pathlink">/<a href="../xml-reference/#/plan-of-action-and-milestones">plan-of-action-and-milestones</a>/<a href="../xml-reference/#/plan-of-action-and-milestones/observation">observation</a>/<a href="../xml-reference/#/plan-of-action-and-milestones/observation/collected">collected</a></span> - <span class="formal-name"><a href="../xml-definitions/#/assembly/oscal-assessment-common/observation/collected">Collected Field</a></span></li>
       </ul>
    </section>
    <section class="named-object-group">
@@ -324,7 +324,7 @@ The following is an index of each XML element and attribute used in the [XML for
    <section class="named-object-group">
       <h1 class="toc1" id="/expires">expires</h1>
       <ul>
-         <li><span class="pathlink">/<a href="../xml-reference/#/plan-of-action-and-milestones">plan-of-action-and-milestones</a>/<a href="../xml-reference/#/plan-of-action-and-milestones/observation">observation</a>/<a href="../xml-reference/#/plan-of-action-and-milestones/observation/expires">expires</a></span> - <span class="formal-name"><a href="../xml-definitions/#/assembly/oscal-assessment-common/observation/expires">expires field</a></span></li>
+         <li><span class="pathlink">/<a href="../xml-reference/#/plan-of-action-and-milestones">plan-of-action-and-milestones</a>/<a href="../xml-reference/#/plan-of-action-and-milestones/observation">observation</a>/<a href="../xml-reference/#/plan-of-action-and-milestones/observation/expires">expires</a></span> - <span class="formal-name"><a href="../xml-definitions/#/assembly/oscal-assessment-common/observation/expires">Expires Field</a></span></li>
       </ul>
    </section>
    <section class="named-object-group">

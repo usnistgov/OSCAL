@@ -6775,7 +6775,7 @@ The following is the JSON format reference for this [model](/concepts/layer/asse
                                     
                                     <li><strong>objective</strong>: **(deprecated)** Use 'assessment-objective' instead.</li>
                                     
-                                    <li><strong>assessment</strong>: **(deprecated)** Use 'assessment-method' instead</li>
+                                    <li><strong>assessment</strong>: **(deprecated)** Use 'assessment-method' instead.</li>
                                     
                                     <li><strong>assessment-objective</strong>: The part defines an assessment objective.</li>
                                     

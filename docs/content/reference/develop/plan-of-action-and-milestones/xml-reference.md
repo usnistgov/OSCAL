@@ -11229,7 +11229,7 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                            <p class="type" id="/plan-of-action-and-milestones/observation/collected/_VALUE"><a href="/reference/datatypes/#datetime-with-timezone">dateTime-with-timezone</a></p>
                            <p class="occurrence">[1]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/plan-of-action-and-milestones/observations/collected">Switch to JSON</a></div>
-                           <p class="formal-name">collected field</p>
+                           <p class="formal-name">Collected Field</p>
                         </div>
                         <div class="body">
                            <p class="description"><span class="usa-tag">Description</span> Date/time stamp identifying when the finding information was collected.</p>
@@ -11241,7 +11241,7 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                            <p class="type" id="/plan-of-action-and-milestones/observation/expires/_VALUE"><a href="/reference/datatypes/#datetime-with-timezone">dateTime-with-timezone</a></p>
                            <p class="occurrence">[0 or 1]</p>
                            <div class="crosslink"><a class="usa-button" href="../json-reference/#/plan-of-action-and-milestones/observations/expires">Switch to JSON</a></div>
-                           <p class="formal-name">expires field</p>
+                           <p class="formal-name">Expires Field</p>
                         </div>
                         <div class="body">
                            <p class="description"><span class="usa-tag">Description</span> Date/time identifying when the finding information is out-of-date and no longer valid.
@@ -20790,7 +20790,7 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                           <p>The value <b>may be locally defined</b>, or one of the following:</p>
                                           <ul>
                                              
-                                             <li><strong>recommendation</strong>: Recommended Remediation</li>
+                                             <li><strong>recommendation</strong>: Recommended remediation.</li>
                                              
                                              <li><strong>planned</strong>: The actions intended to resolve the risk.</li>
                                              

@@ -7014,7 +7014,7 @@ The following is the XML format reference for this [model](/concepts/layer/asses
                                     
                                     <li><strong>objective</strong>: **(deprecated)** Use 'assessment-objective' instead.</li>
                                     
-                                    <li><strong>assessment</strong>: **(deprecated)** Use 'assessment-method' instead</li>
+                                    <li><strong>assessment</strong>: **(deprecated)** Use 'assessment-method' instead.</li>
                                     
                                     <li><strong>assessment-objective</strong>: The part defines an assessment objective.</li>
                                     
