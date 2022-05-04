@@ -45,6 +45,13 @@ jobs:
       run: |
         # NodeJS
         cd "${{ github.workspace }}/build"
+        # If you are a developer and need to modify the workflow, be sure to review
+        # the package.json and package-lock.json to ensure the following deps are
+        # at least installed (they will be updated by dependabot):
+        # - ajv-cli
+        # - ajv-formats
+        # - markdown-link-check
+        # - yaml-convert
         npm install --loglevel verbose
         echo "$PWD/node_modules/.bin/" >> $GITHUB_PATH
     # Build Artifacts
