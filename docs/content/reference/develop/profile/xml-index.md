@@ -10,7 +10,7 @@ toc:
   headingselectors: "h1.toc1"
 ---
 
-The following is an index of each XML element and attribute used in the [XML format](https://github.com/usnistgov/OSCAL/blob/develop/xml/schema/oscal_profile_schema.xsd) for this [model](/concepts/layer/control/profile/). Each entry in the index lists all uses of the given element or attribute in the format, which is linked to the corresponding entry in the [XML Format Reference](../xml-reference/). Each entry also lists the formal name for the given element or attribute which is linked to the corresponding XML type in the [XML Format Metaschema Reference](../xml-definitions/).
+The following is an index of each XML element and attribute used in the [XML format](https://github.com/usnistgov/OSCAL/blob/release-1.0/xml/schema/oscal_profile_schema.xsd) for this [model](/concepts/layer/control/profile/). Each entry in the index lists all uses of the given element or attribute in the format, which is linked to the corresponding entry in the [XML Format Reference](../xml-reference/). Each entry also lists the formal name for the given element or attribute which is linked to the corresponding XML type in the [XML Format Metaschema Reference](../xml-definitions/).
 
 <!-- DO NOT REMOVE. Generated text below -->
 {{< rawhtml >}}
@@ -50,7 +50,7 @@ The following is an index of each XML element and attribute used in the [XML for
    <section class="named-object-group">
       <h1 class="toc1" id="/as-is">as-is</h1>
       <ul>
-         <li><span class="pathlink">/<a href="../xml-reference/#/profile">profile</a>/<a href="../xml-reference/#/profile/merge">merge</a>/<a href="../xml-reference/#/profile/merge/as-is">as-is</a></span> - <span class="formal-name"><a href="../xml-definitions/#/assembly/oscal-profile/merge/as-is">As is</a></span></li>
+         <li><span class="pathlink">/<a href="../xml-reference/#/profile">profile</a>/<a href="../xml-reference/#/profile/merge">merge</a>/<a href="../xml-reference/#/profile/merge/as-is">as-is</a></span> - <span class="formal-name"><a href="../xml-definitions/#/assembly/oscal-profile/merge/as-is">As-Is Structuring Directive</a></span></li>
       </ul>
    </section>
    <section class="named-object-group">
@@ -237,9 +237,15 @@ The following is an index of each XML element and attribute used in the [XML for
       </ul>
    </section>
    <section class="named-object-group">
+      <h1 class="toc1" id="/flat">flat</h1>
+      <ul>
+         <li><span class="pathlink">/<a href="../xml-reference/#/profile">profile</a>/<a href="../xml-reference/#/profile/merge">merge</a>/<a href="../xml-reference/#/profile/merge/flat">flat</a></span> - <span class="formal-name"><a href="../xml-definitions/#/assembly/oscal-profile/merge/flat">Flat</a></span></li>
+      </ul>
+   </section>
+   <section class="named-object-group">
       <h1 class="toc1" id="/group">group</h1>
       <ul>
-         <li><span class="pathlink">/<a href="../xml-reference/#/profile">profile</a>/<a href="../xml-reference/#/profile/merge">merge</a>/<a href="../xml-reference/#/profile/merge/custom">custom</a>/<a href="../xml-reference/#/profile/merge/custom/group">group</a></span> - <span class="formal-name"><a href="../xml-definitions/#/assembly/oscal-profile/custom/group">Control group</a></span></li>
+         <li><span class="pathlink">/<a href="../xml-reference/#/profile">profile</a>/<a href="../xml-reference/#/profile/merge">merge</a>/<a href="../xml-reference/#/profile/merge/custom">custom</a>/<a href="../xml-reference/#/profile/merge/custom/group">group</a></span> - <span class="formal-name"><a href="../xml-definitions/#/assembly/oscal-profile/merge/custom/group">Control group</a></span></li>
          <li><span class="pathlink">/<a href="../xml-reference/#/profile">profile</a>/<a href="../xml-reference/#/profile/merge">merge</a>/<a href="../xml-reference/#/profile/merge/custom">custom</a>/<a href="../xml-reference/#/profile/merge/custom/group">group</a>/<a href="../xml-reference/#/profile/merge/custom/group/group">group</a></span> - <span class="formal-name"><a href="../xml-definitions/#/assembly/oscal-profile/group/group">Control group</a></span></li>
       </ul>
    </section>
@@ -306,9 +312,9 @@ The following is an index of each XML element and attribute used in the [XML for
    <section class="named-object-group">
       <h1 class="toc1" id="/include-all">include-all</h1>
       <ul>
-         <li><span class="pathlink">/<a href="../xml-reference/#/profile">profile</a>/<a href="../xml-reference/#/profile/import">import</a>/<a href="../xml-reference/#/profile/import/include-all">include-all</a></span> - <span class="formal-name"><a href="../xml-definitions/#/assembly/oscal-profile/import/include-all">Insert All</a></span></li>
-         <li><span class="pathlink">/<a href="../xml-reference/#/profile">profile</a>/<a href="../xml-reference/#/profile/merge">merge</a>/<a href="../xml-reference/#/profile/merge/custom">custom</a>/<a href="../xml-reference/#/profile/merge/custom/group">group</a>/<a href="../xml-reference/#/profile/merge/custom/group/insert-controls">insert-controls</a>/<a href="../xml-reference/#/profile/merge/custom/group/insert-controls/include-all">include-all</a></span> - <span class="formal-name"><a href="../xml-definitions/#/assembly/oscal-profile/insert-controls/include-all">Insert All</a></span></li>
-         <li><span class="pathlink">/<a href="../xml-reference/#/profile">profile</a>/<a href="../xml-reference/#/profile/merge">merge</a>/<a href="../xml-reference/#/profile/merge/custom">custom</a>/<a href="../xml-reference/#/profile/merge/custom/insert-controls">insert-controls</a>/<a href="../xml-reference/#/profile/merge/custom/insert-controls/include-all">include-all</a></span> - <span class="formal-name"><a href="../xml-definitions/#/assembly/oscal-profile/insert-controls/include-all">Insert All</a></span></li>
+         <li><span class="pathlink">/<a href="../xml-reference/#/profile">profile</a>/<a href="../xml-reference/#/profile/import">import</a>/<a href="../xml-reference/#/profile/import/include-all">include-all</a></span> - <span class="formal-name"><a href="../xml-definitions/#/assembly/oscal-profile/import/include-all">Include All</a></span></li>
+         <li><span class="pathlink">/<a href="../xml-reference/#/profile">profile</a>/<a href="../xml-reference/#/profile/merge">merge</a>/<a href="../xml-reference/#/profile/merge/custom">custom</a>/<a href="../xml-reference/#/profile/merge/custom/group">group</a>/<a href="../xml-reference/#/profile/merge/custom/group/insert-controls">insert-controls</a>/<a href="../xml-reference/#/profile/merge/custom/group/insert-controls/include-all">include-all</a></span> - <span class="formal-name"><a href="../xml-definitions/#/assembly/oscal-profile/insert-controls/include-all">Include All</a></span></li>
+         <li><span class="pathlink">/<a href="../xml-reference/#/profile">profile</a>/<a href="../xml-reference/#/profile/merge">merge</a>/<a href="../xml-reference/#/profile/merge/custom">custom</a>/<a href="../xml-reference/#/profile/merge/custom/insert-controls">insert-controls</a>/<a href="../xml-reference/#/profile/merge/custom/insert-controls/include-all">include-all</a></span> - <span class="formal-name"><a href="../xml-definitions/#/assembly/oscal-profile/insert-controls/include-all">Include All</a></span></li>
       </ul>
    </section>
    <section class="named-object-group">
@@ -323,7 +329,7 @@ The following is an index of each XML element and attribute used in the [XML for
       <h1 class="toc1" id="/insert-controls">insert-controls</h1>
       <ul>
          <li><span class="pathlink">/<a href="../xml-reference/#/profile">profile</a>/<a href="../xml-reference/#/profile/merge">merge</a>/<a href="../xml-reference/#/profile/merge/custom">custom</a>/<a href="../xml-reference/#/profile/merge/custom/group">group</a>/<a href="../xml-reference/#/profile/merge/custom/group/insert-controls">insert-controls</a></span> - <span class="formal-name"><a href="../xml-definitions/#/assembly/oscal-profile/group/insert-controls">Select controls</a></span></li>
-         <li><span class="pathlink">/<a href="../xml-reference/#/profile">profile</a>/<a href="../xml-reference/#/profile/merge">merge</a>/<a href="../xml-reference/#/profile/merge/custom">custom</a>/<a href="../xml-reference/#/profile/merge/custom/insert-controls">insert-controls</a></span> - <span class="formal-name"><a href="../xml-definitions/#/assembly/oscal-profile/custom/insert-controls">Select controls</a></span></li>
+         <li><span class="pathlink">/<a href="../xml-reference/#/profile">profile</a>/<a href="../xml-reference/#/profile/merge">merge</a>/<a href="../xml-reference/#/profile/merge/custom">custom</a>/<a href="../xml-reference/#/profile/merge/custom/insert-controls">insert-controls</a></span> - <span class="formal-name"><a href="../xml-definitions/#/assembly/oscal-profile/merge/custom/insert-controls">Select controls</a></span></li>
       </ul>
    </section>
    <section class="named-object-group">
@@ -425,7 +431,7 @@ The following is an index of each XML element and attribute used in the [XML for
    <section class="named-object-group">
       <h1 class="toc1" id="/@method">@method</h1>
       <ul>
-         <li><span class="pathlink">/<a href="../xml-reference/#/profile">profile</a>/<a href="../xml-reference/#/profile/merge">merge</a>/<a href="../xml-reference/#/profile/merge/combine">combine</a>/<a href="../xml-reference/#/profile/merge/combine/@method">@method</a></span> - <span class="formal-name"><a href="../xml-definitions/#/assembly/oscal-profile/combine/method">Combination method</a></span></li>
+         <li><span class="pathlink">/<a href="../xml-reference/#/profile">profile</a>/<a href="../xml-reference/#/profile/merge">merge</a>/<a href="../xml-reference/#/profile/merge/combine">combine</a>/<a href="../xml-reference/#/profile/merge/combine/@method">@method</a></span> - <span class="formal-name"><a href="../xml-definitions/#/assembly/oscal-profile/merge/combine/method">Combination method</a></span></li>
       </ul>
    </section>
    <section class="named-object-group">
@@ -800,7 +806,7 @@ The following is an index of each XML element and attribute used in the [XML for
    <section class="named-object-group">
       <h1 class="toc1" id="/@uuid">@uuid</h1>
       <ul>
-         <li><span class="pathlink">/<a href="../xml-reference/#/profile">profile</a>/<a href="../xml-reference/#/profile/@uuid">@uuid</a></span> - <span class="formal-name"><a href="../xml-definitions/#/assembly/oscal-profile/profile/uuid">Catalog Universally Unique Identifier</a></span></li>
+         <li><span class="pathlink">/<a href="../xml-reference/#/profile">profile</a>/<a href="../xml-reference/#/profile/@uuid">@uuid</a></span> - <span class="formal-name"><a href="../xml-definitions/#/assembly/oscal-profile/profile/uuid">Profile Universally Unique Identifier</a></span></li>
          <li><span class="pathlink">/<a href="../xml-reference/#/profile">profile</a>/<a href="../xml-reference/#/profile/metadata">metadata</a>/<a href="../xml-reference/#/profile/metadata/revisions">revisions</a>/<a href="../xml-reference/#/profile/metadata/revisions/revision">revision</a>/<a href="../xml-reference/#/profile/metadata/revisions/revision/prop">prop</a>/<a href="../xml-reference/#/profile/metadata/revisions/revision/prop/@uuid">@uuid</a></span> - <span class="formal-name"><a href="../xml-definitions/#/assembly/oscal-metadata/property/uuid">Property Universally Unique Identifier</a></span></li>
          <li><span class="pathlink">/<a href="../xml-reference/#/profile">profile</a>/<a href="../xml-reference/#/profile/metadata">metadata</a>/<a href="../xml-reference/#/profile/metadata/prop">prop</a>/<a href="../xml-reference/#/profile/metadata/prop/@uuid">@uuid</a></span> - <span class="formal-name"><a href="../xml-definitions/#/assembly/oscal-metadata/property/uuid">Property Universally Unique Identifier</a></span></li>
          <li><span class="pathlink">/<a href="../xml-reference/#/profile">profile</a>/<a href="../xml-reference/#/profile/metadata">metadata</a>/<a href="../xml-reference/#/profile/metadata/role">role</a>/<a href="../xml-reference/#/profile/metadata/role/prop">prop</a>/<a href="../xml-reference/#/profile/metadata/role/prop/@uuid">@uuid</a></span> - <span class="formal-name"><a href="../xml-definitions/#/assembly/oscal-metadata/property/uuid">Property Universally Unique Identifier</a></span></li>

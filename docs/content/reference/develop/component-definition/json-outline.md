@@ -10,7 +10,7 @@ sidenav:
 
 ---
 
-The following outline is a representation of the [JSON format](https://github.com/usnistgov/OSCAL/blob/develop/json/schema/oscal_component-definition_schema.json) for this [model](/concepts/layer/implementation/component-definition/). For each property, the name links to the corresponding entry in the [JSON Format Reference](../json-reference/). The cardinality and data type are also provided for each property where appropriate.
+The following outline is a representation of the [JSON format](https://github.com/usnistgov/OSCAL/blob/release-1.0/json/schema/oscal_component-definition_schema.json) for this [model](/concepts/layer/implementation/component-definition/). For each property, the name links to the corresponding entry in the [JSON Format Reference](../json-reference/). The cardinality and data type are also provided for each property where appropriate.
 
 <!-- DO NOT REMOVE. Generated text below -->
 {{< rawhtml >}}
@@ -56,7 +56,7 @@ The following outline is a representation of the [JSON format](https://github.co
                                  <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/metadata/revisions/last-modified">last-modified</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#datetime-with-timezone">dateTime-with-timezone</a></span><span class="OM-lit">,</span></p>
                               </div>
                               <div class="OM-entry">
-                                 <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/metadata/revisions/version">version</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
+                                 <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/metadata/revisions/version">version</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
                               </div>
                               <div class="OM-entry">
                                  <p class="OM-line"><a class="OM-name" href="../json-reference/#/component-definition/metadata/revisions/oscal-version">oscal-version</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>

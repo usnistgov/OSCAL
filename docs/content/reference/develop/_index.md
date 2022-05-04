@@ -11,7 +11,7 @@ sidenav:
   debug: false
 oscal:
     type: "branch"
-    branch: "develop"
+    branch: "release-1.0"
     revision: "develop"
     version: "develop"
 ---

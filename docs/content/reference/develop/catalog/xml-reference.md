@@ -38,6 +38,25 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                </div>
             </details>
          </div>
+         <details class="constraints" open="open">
+            <summary>Constraints (2)</summary>
+            <div class="constraint">
+               <p><span class="usa-tag">allowed value</span>  for <code class="path">metadata/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+               <p>The value <b>must</b> be one of the following:</p>
+               <ul>
+                  
+                  <li><strong>resolution-tool</strong>: The tool used to produce a resolved profile.</li>
+                  </ul>
+            </div>
+            <div class="constraint">
+               <p><span class="usa-tag">allowed value</span>  for <code class="path">metadata/link/@rel</code></p>
+               <p>The value <b>must</b> be one of the following:</p>
+               <ul>
+                  
+                  <li><strong>source-profile</strong>: The tool used to produce a resolved profile.</li>
+                  </ul>
+            </div>
+         </details>
          <details class="properties attributes" open="open">
             <summary>Attribute (1)</summary>
             <div class="model-entry definition assembly">
@@ -49,8 +68,8 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                   <p class="formal-name">Catalog Universally Unique Identifier</p>
                </div>
                <div class="body">
-                  <p class="description"><span class="usa-tag">Description</span> A globally unique identifier for this catalog instance. This UUID should be changed
-                     when this document is revised.</p>
+                  <p class="description"><span class="usa-tag">Description</span> A globally unique identifier with cross-instance scope for this catalog instance.
+                     This UUID should be changed when this document is revised.</p>
                </div>
             </div>
          </details>
@@ -67,7 +86,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                <div class="body">
                   <p class="description"><span class="usa-tag">Description</span> Provides information about the publication and availability of the containing document.</p>
                   <details class="constraints" open="open">
-                     <summary>Constraints (12)</summary>
+                     <summary>Constraints (13)</summary>
                      <div class="constraint">
                         <p><span class="usa-tag">index</span>  for <code class="path">role</code> an index <code>index-metadata-role-ids</code> shall list values returned by targets <code>role</code> using keys constructed of key field(s) <code>@id</code></p>
                      </div>
@@ -78,7 +97,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                         <p><span class="usa-tag">is unique</span>  for <code class="path">prop</code>: any target value must be unique (i.e., occur only once)</p>
                      </div>
                      <div class="constraint">
-                        <p><span class="usa-tag">index</span>  for <code class="path">.//prop</code> an index <code>index-metadata-property-id</code> shall list values returned by targets <code>.//prop</code> using keys constructed of key field(s) <code>@id</code></p>
+                        <p><span class="usa-tag">index</span>  for <code class="path">.//prop</code> an index <code>index-metadata-property-uuid</code> shall list values returned by targets <code>.//prop</code> using keys constructed of key field(s) <code>@uuid</code></p>
                      </div>
                      <div class="constraint">
                         <p><span class="usa-tag">is unique</span>  for <code class="path">link</code>: any target value must be unique (i.e., occur only once)</p>
@@ -103,11 +122,24 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                         <p>The value <b>may be locally defined</b>, or one of the following:</p>
                         <ul>
                            
-                           <li><strong>prepared-by</strong>: Indicates the organization that created this content.</li>
+                           <li><strong>creator</strong>: Indicates the organization that created this content.</li>
+                           
+                           <li><strong>prepared-by</strong>: Indicates the organization that prepared this content.</li>
                            
                            <li><strong>prepared-for</strong>: Indicates the organization for which this content was created.</li>
                            
                            <li><strong>content-approver</strong>: Indicates the organization responsible for all content represented in the "document".</li>
+                           
+                           <li><strong>contact</strong>: Indicates the organization to contact for questions or support related to this content.</li>
+                           </ul>
+                     </div>
+                     <div class="constraint">
+                        <p><span class="usa-tag">allowed value</span>  for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                        <p>The value <b>must</b> be one of the following:</p>
+                        <ul>
+                           
+                           <li><strong>keywords</strong>: The value identifies a comma-seperated listing of keywords associated with this
+                              content. These keywords may be used as search terms for indexing and other applications.</li>
                            </ul>
                      </div>
                      <div class="constraint">
@@ -282,10 +314,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </details>
                                     </div>
                                     <details class="constraints" open="open">
-                                       <summary>Constraints (2)</summary>
-                                       <div class="constraint">
-                                          <p><span class="usa-tag">has cardinality</span>  for <code class="path">published|last-modified|version|link[@rel='canonical']</code> the cardinality of  <code>published|last-modified|version|link[@rel='canonical']</code> is constrained: <b>1</b>; maximum <b>unbounded</b>.</p>
-                                       </div>
+                                       <summary>Constraint (1)</summary>
                                        <div class="constraint">
                                           <p><span class="usa-tag">allowed values</span>  for <code class="path">link/@rel</code></p>
                                           <p>The value <b>may be locally defined</b>, or one of the following:</p>
@@ -379,7 +408,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                           <div class="instance-header">
                                              <h5 id="/catalog/metadata/revisions/revision/version" class="toc5 name">version</h5>
                                              <p class="type" id="/catalog/metadata/revisions/revision/version/_VALUE"><a href="/reference/datatypes/#string">string</a></p>
-                                             <p class="occurrence">[0 or 1]</p>
+                                             <p class="occurrence">[1]</p>
                                              <div class="crosslink"><a class="usa-button" href="../json-reference/#/catalog/metadata/revisions/version">Switch to JSON</a></div>
                                              <p class="formal-name">Document Version</p>
                                           </div>
@@ -490,8 +519,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                       <p class="formal-name">Property Universally Unique Identifier</p>
                                                    </div>
                                                    <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> A unique identifier that can be used to reference this property elsewhere in an OSCAL
-                                                         document. A UUID should be consistently used for a given location across revisions
+                                                      <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined property elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
                                                          of the document.</p>
                                                    </div>
                                                 </div>
@@ -609,13 +637,13 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                              <details class="constraints" open="open">
                                                 <summary>Constraints (3)</summary>
                                                 <div class="constraint">
-                                                   <p><span class="usa-tag">matches</span>  for <code class="path">@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
+                                                   <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                                 </div>
                                                 <div class="constraint">
-                                                   <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-back-matter-resource</code> using a key constructed of key field(s) <code>@href</code></p>
+                                                   <p><span class="usa-tag">index has key</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]</code>this value must correspond to a listing in the index <code>index-back-matter-resource</code> using a key constructed of key field(s) <code>@href</code></p>
                                                 </div>
                                                 <div class="constraint">
-                                                   <p><span class="usa-tag">matches</span>  for <code class="path">@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
+                                                   <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                                 </div>
                                              </details>
                                              <details class="properties attributes" open="open">
@@ -751,10 +779,10 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                            <p class="formal-name">Document Identifier</p>
                         </div>
                         <div class="body">
-                           <p class="description"><span class="usa-tag">Description</span> A document identifier qualified by an identifier <code>scheme</code>. A document identifier provides a globally unique identifier for a group of documents
-                              that are to be treated as different versions of the same document. If this element
-                              does not appear, or if the value of this element is empty, the value of "document-id"
-                              is equal to the value of the "uuid" flag of the top-level root element.</p>
+                           <p class="description"><span class="usa-tag">Description</span> A document identifier qualified by an identifier <code>scheme</code>. A document identifier provides a <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with a <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that is used for a group of documents that are to be treated as different versions
+                              of the same document. If this element does not appear, or if the value of this element
+                              is empty, the value of "document-id" is equal to the value of the "uuid" flag of the
+                              top-level root element.</p>
                            <div class="remarks-group usa-prose">
                               <details open="open">
                                  <summary class="subhead">Remarks</summary>
@@ -863,8 +891,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                     <p class="formal-name">Property Universally Unique Identifier</p>
                                  </div>
                                  <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> A unique identifier that can be used to reference this property elsewhere in an OSCAL
-                                       document. A UUID should be consistently used for a given location across revisions
+                                    <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined property elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
                                        of the document.</p>
                                  </div>
                               </div>
@@ -982,13 +1009,13 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                            <details class="constraints" open="open">
                               <summary>Constraints (3)</summary>
                               <div class="constraint">
-                                 <p><span class="usa-tag">matches</span>  for <code class="path">@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
+                                 <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                               </div>
                               <div class="constraint">
-                                 <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-back-matter-resource</code> using a key constructed of key field(s) <code>@href</code></p>
+                                 <p><span class="usa-tag">index has key</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]</code>this value must correspond to a listing in the index <code>index-back-matter-resource</code> using a key constructed of key field(s) <code>@href</code></p>
                               </div>
                               <div class="constraint">
-                                 <p><span class="usa-tag">matches</span>  for <code class="path">@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
+                                 <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                               </div>
                            </details>
                            <details class="properties attributes" open="open">
@@ -1100,6 +1127,11 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                  <div class="remarks">
                                     <p>Permissible values to be determined closer to the application (e.g. by a receiving
                                        authority).</p>
+                                    <p>OSCAL has defined a set of standardized roles for consistent use in OSCAL documents.
+                                       This allows tools consuming OSCAL content to infer specific semantics when these roles
+                                       are used. These roles are documented in the specific contexts of their use (e.g.,
+                                       responsible-party, responsible-role). When using such a role, it is necessary to define
+                                       these roles in this list, which will then allow such a role to be referenced.</p>
                                  </div>
                               </details>
                            </div>
@@ -1114,21 +1146,10 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                     <p class="formal-name">Role Identifier</p>
                                  </div>
                                  <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> A unique identifier for a specific role instance. This identifier's uniqueness is
-                                       document scoped and is intended to be consistent for the same role across minor revisions
+                                    <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a>, <a href="/concepts/identifier-use/#locally-unique">locally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined role elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. When referenced from another OSCAL instance, the locally defined <em>ID</em> of the <code>Role</code> from the imported OSCAL instance must be referenced in the context of the containing
+                                       resource (e.g., import, import-component-definition, import-profile, import-ssp or
+                                       import-ap). This ID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
                                        of the document.</p>
-                                    <div class="remarks-group usa-prose">
-                                       <details open="open">
-                                          <summary class="subhead">Remarks</summary>
-                                          <div class="remarks">
-                                             <p>OSCAL has defined a set of standardized roles for consistent use in OSCAL documents.
-                                                This allows tools consuming OSCAL content to infer specific semantics when these roles
-                                                are used. These roles are documented in the specific contexts of their use (e.g.,
-                                                responsible-party, responsible-role). When using such a role, it is necessary to define
-                                                these roles in this list, which will then allow such a role to be referenced.</p>
-                                          </div>
-                                       </details>
-                                    </div>
                                  </div>
                               </div>
                            </details>
@@ -1249,8 +1270,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                              <p class="formal-name">Property Universally Unique Identifier</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> A unique identifier that can be used to reference this property elsewhere in an OSCAL
-                                                document. A UUID should be consistently used for a given location across revisions
+                                             <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined property elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
                                                 of the document.</p>
                                           </div>
                                        </div>
@@ -1368,13 +1388,13 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                     <details class="constraints" open="open">
                                        <summary>Constraints (3)</summary>
                                        <div class="constraint">
-                                          <p><span class="usa-tag">matches</span>  for <code class="path">@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
+                                          <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                        </div>
                                        <div class="constraint">
-                                          <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-back-matter-resource</code> using a key constructed of key field(s) <code>@href</code></p>
+                                          <p><span class="usa-tag">index has key</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]</code>this value must correspond to a listing in the index <code>index-back-matter-resource</code> using a key constructed of key field(s) <code>@href</code></p>
                                        </div>
                                        <div class="constraint">
-                                          <p><span class="usa-tag">matches</span>  for <code class="path">@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
+                                          <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                        </div>
                                     </details>
                                     <details class="properties attributes" open="open">
@@ -1523,8 +1543,8 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                  <p>The value <b>may be locally defined</b>, or the following:</p>
                                  <ul>
                                     
-                                    <li><strong>data-center</strong>: A location that contains computing assets. A class can be used to indicate a subclass
-                                       of data-center.</li>
+                                    <li><strong>data-center</strong>: A location that contains computing assets. A class can be used to indicate the sub-type
+                                       of data-center as primary or alternate.</li>
                                     </ul>
                               </div>
                               <div class="constraint">
@@ -1549,9 +1569,9 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                     <p class="formal-name">Location Universally Unique Identifier</p>
                                  </div>
                                  <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> A unique identifier that can be used to reference this defined location elsewhere
-                                       in an OSCAL document. A UUID should be consistently used for a given location across
-                                       revisions of the document.</p>
+                                    <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined location elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>location</code> can be used to reference the data item locally or globally (e.g., from an importing
+                                       OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                                       of the document.</p>
                                  </div>
                               </div>
                            </details>
@@ -1836,8 +1856,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                              <p class="formal-name">Property Universally Unique Identifier</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> A unique identifier that can be used to reference this property elsewhere in an OSCAL
-                                                document. A UUID should be consistently used for a given location across revisions
+                                             <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined property elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
                                                 of the document.</p>
                                           </div>
                                        </div>
@@ -1955,13 +1974,13 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                     <details class="constraints" open="open">
                                        <summary>Constraints (3)</summary>
                                        <div class="constraint">
-                                          <p><span class="usa-tag">matches</span>  for <code class="path">@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
+                                          <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                        </div>
                                        <div class="constraint">
-                                          <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-back-matter-resource</code> using a key constructed of key field(s) <code>@href</code></p>
+                                          <p><span class="usa-tag">index has key</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]</code>this value must correspond to a listing in the index <code>index-back-matter-resource</code> using a key constructed of key field(s) <code>@href</code></p>
                                        </div>
                                        <div class="constraint">
-                                          <p><span class="usa-tag">matches</span>  for <code class="path">@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
+                                          <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                        </div>
                                     </details>
                                     <details class="properties attributes" open="open">
@@ -2121,9 +2140,9 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                     <p class="formal-name">Party Universally Unique Identifier</p>
                                  </div>
                                  <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> A unique identifier that can be used to reference this defined location elsewhere
-                                       in an OSCAL document. A UUID should be consistently used for a given party across
-                                       revisions of the document.</p>
+                                    <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined party elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>party</code> can be used to reference the data item locally or globally (e.g., from an importing
+                                       OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                                       of the document.</p>
                                  </div>
                               </div>
                               <div class="model-entry definition assembly">
@@ -2284,8 +2303,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                              <p class="formal-name">Property Universally Unique Identifier</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> A unique identifier that can be used to reference this property elsewhere in an OSCAL
-                                                document. A UUID should be consistently used for a given location across revisions
+                                             <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined property elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
                                                 of the document.</p>
                                           </div>
                                        </div>
@@ -2403,13 +2421,13 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                     <details class="constraints" open="open">
                                        <summary>Constraints (3)</summary>
                                        <div class="constraint">
-                                          <p><span class="usa-tag">matches</span>  for <code class="path">@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
+                                          <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                        </div>
                                        <div class="constraint">
-                                          <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-back-matter-resource</code> using a key constructed of key field(s) <code>@href</code></p>
+                                          <p><span class="usa-tag">index has key</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]</code>this value must correspond to a listing in the index <code>index-back-matter-resource</code> using a key constructed of key field(s) <code>@href</code></p>
                                        </div>
                                        <div class="constraint">
-                                          <p><span class="usa-tag">matches</span>  for <code class="path">@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
+                                          <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                        </div>
                                     </details>
                                     <details class="properties attributes" open="open">
@@ -2695,11 +2713,20 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        <p class="formal-name">Location Reference</p>
                                     </div>
                                     <div class="body">
-                                       <p class="description"><span class="usa-tag">Description</span> References a <code>location</code> defined in <code>metadata</code>. </p>
+                                       <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to a <code>location</code> defined in the <code>metadata</code> section of this or another OSCAL instance. The <em>UUID</em> of the <code>location</code> in the source OSCAL instance is sufficient to reference the data item locally or
+                                          globally (e.g., in an imported OSCAL instance). </p>
+                                       <div class="remarks-group usa-prose">
+                                          <details open="open">
+                                             <summary class="subhead">Remarks</summary>
+                                             <div class="remarks">
+                                                <p>See the <a href="/concepts/identifier-use/#scope">Concepts - Identifier Use</a> page for additional information about the referenced identifier's scope.</p>
+                                             </div>
+                                          </details>
+                                       </div>
                                        <details class="constraints" open="open">
                                           <summary>Constraint (1)</summary>
                                           <div class="constraint">
-                                             <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-location-uuid</code> using a key constructed of key field(s) <code>value()</code></p>
+                                             <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-location-uuid</code> using a key constructed of key field(s) <code>.</code></p>
                                           </div>
                                        </details>
                                     </div>
@@ -2714,20 +2741,20 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                     <p class="formal-name">Organizational Affiliation</p>
                                  </div>
                                  <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> Identifies that the party object is a member of the organization associated with
-                                       the provided UUID.</p>
+                                    <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to another <code>party</code> (<code>person</code> or <code>organization</code>) that this subject is associated with. The <em>UUID</em> of the <code>party</code> in the source OSCAL instance is sufficient to reference the data item locally or
+                                       globally (e.g., in an imported OSCAL instance). </p>
                                     <div class="remarks-group usa-prose">
                                        <details open="open">
                                           <summary class="subhead">Remarks</summary>
                                           <div class="remarks">
-                                             <p>Parties of both the <code>person</code> or <code>organization</code> type can be associated with an organization using the <code>member-of-organization</code>. </p>
+                                             <p>Parties of both the <code>person</code> or <code>organization</code> type can be associated with an organization using the <code>member-of-organization</code>.</p>
                                           </div>
                                        </details>
                                     </div>
                                     <details class="constraints" open="open">
                                        <summary>Constraint (1)</summary>
                                        <div class="constraint">
-                                          <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-party-organizations-uuid</code> using a key constructed of key field(s) <code>value()</code></p>
+                                          <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-party-organizations-uuid</code> using a key constructed of key field(s) <code>.</code></p>
                                        </div>
                                     </details>
                                  </div>
@@ -2777,7 +2804,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                  <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-role-id</code> using a key constructed of key field(s) <code>@role-id</code></p>
                               </div>
                               <div class="constraint">
-                                 <p><span class="usa-tag">index has key</span>  for <code class="path">party-uuid</code>this value must correspond to a listing in the index <code>index-metadata-party-uuid</code> using a key constructed of key field(s) <code>value()</code></p>
+                                 <p><span class="usa-tag">index has key</span>  for <code class="path">party-uuid</code>this value must correspond to a listing in the index <code>index-metadata-party-uuid</code> using a key constructed of key field(s) <code>.</code></p>
                               </div>
                            </details>
                            <details class="properties attributes" open="open">
@@ -2791,7 +2818,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                     <p class="formal-name">Responsible Role</p>
                                  </div>
                                  <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> The role that the party is responsible for.</p>
+                                    <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a> identifier reference to <code>roles</code> served by the user.</p>
                                  </div>
                               </div>
                            </details>
@@ -2806,10 +2833,14 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                     <p class="formal-name">Party Reference</p>
                                  </div>
                                  <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> References a <code>party</code> defined in <code>metadata</code>. </p>
+                                    <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to another <code>party</code> defined in <code>metadata</code>. The <em>UUID</em> of the <code>party</code> in the source OSCAL instance is sufficient to reference the data item locally or
+                                       globally (e.g., in an imported OSCAL instance). </p>
                                     <div class="remarks-group usa-prose">
                                        <details open="open">
                                           <summary class="subhead">Remarks</summary>
+                                          <div class="remarks">
+                                             <p>See the <a href="/concepts/identifier-use/#scope">Concepts - Identifier Use</a> page for additional information about the referenced identifier's scope.</p>
+                                          </div>
                                           <div class="remarks">
                                              <p>Specifies one or more parties that are responsible for performing the associated <code>role</code>. </p>
                                           </div>
@@ -2818,7 +2849,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                     <details class="constraints" open="open">
                                        <summary>Constraint (1)</summary>
                                        <div class="constraint">
-                                          <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-party-uuid</code> using a key constructed of key field(s) <code>value()</code></p>
+                                          <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-party-uuid</code> using a key constructed of key field(s) <code>.</code></p>
                                        </div>
                                     </details>
                                  </div>
@@ -2889,8 +2920,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                              <p class="formal-name">Property Universally Unique Identifier</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> A unique identifier that can be used to reference this property elsewhere in an OSCAL
-                                                document. A UUID should be consistently used for a given location across revisions
+                                             <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined property elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
                                                 of the document.</p>
                                           </div>
                                        </div>
@@ -3008,13 +3038,13 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                     <details class="constraints" open="open">
                                        <summary>Constraints (3)</summary>
                                        <div class="constraint">
-                                          <p><span class="usa-tag">matches</span>  for <code class="path">@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
+                                          <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                        </div>
                                        <div class="constraint">
-                                          <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-back-matter-resource</code> using a key constructed of key field(s) <code>@href</code></p>
+                                          <p><span class="usa-tag">index has key</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]</code>this value must correspond to a listing in the index <code>index-back-matter-resource</code> using a key constructed of key field(s) <code>@href</code></p>
                                        </div>
                                        <div class="constraint">
-                                          <p><span class="usa-tag">matches</span>  for <code class="path">@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
+                                          <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                        </div>
                                     </details>
                                     <details class="properties attributes" open="open">
@@ -3191,6 +3221,36 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                         </div>
                      </details>
                   </div>
+                  <details class="constraints" open="open">
+                     <summary>Constraints (2)</summary>
+                     <div class="constraint">
+                        <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                        <p>The value <b>must</b> be one of the following:</p>
+                        <ul>
+                           
+                           <li><strong>label</strong>: A human-readable label for the parent context, which may be rendered in place of
+                              the actual identifier for some use cases.</li>
+                           
+                           <li><strong>sort-id</strong>: An alternative identifier, whose value is easily sortable among other such values
+                              in the document.</li>
+                           
+                           <li><strong>alt-identifier</strong>: An alternate or aliased identifier for the parent context.</li>
+                           
+                           
+                           <li><strong>alt-label</strong>: An alternate to the value provided by the parameter's label. This will typically
+                              be qualified by a class.</li>
+                           </ul>
+                     </div>
+                     <div class="constraint">
+                        <p><span class="usa-tag">allowed value</span>  for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/rmf')]/@name</code></p>
+                        <p>The value <b>must</b> be one of the following:</p>
+                        <ul>
+                           
+                           <li><strong>aggregates</strong>: The parent parameter provides an aggregation of 2 or more other parameters, each
+                              described by this property.</li>
+                           </ul>
+                     </div>
+                  </details>
                   <details class="properties attributes" open="open">
                      <summary>Attributes (3)</summary>
                      <div class="model-entry definition assembly">
@@ -3202,9 +3262,10 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                            <p class="formal-name">Parameter Identifier</p>
                         </div>
                         <div class="body">
-                           <p class="description"><span class="usa-tag">Description</span> A unique identifier for a specific parameter instance. This identifier's uniqueness
-                              is document scoped and is intended to be consistent for the same parameter across
-                              minor revisions of the document.</p>
+                           <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a>, <a href="/concepts/identifier-use/#locally-unique">locally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined parameter elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. When referenced from another OSCAL instance, this identifier must be referenced
+                              in the context of the containing resource (e.g., import-profile). This id should be
+                              assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                              of the document.</p>
                         </div>
                      </div>
                      <div class="model-entry definition assembly">
@@ -3237,7 +3298,8 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                            <p class="formal-name">Depends on</p>
                         </div>
                         <div class="body">
-                           <p class="description"><span class="usa-tag">Description</span> Another parameter invoking this one</p>
+                           <p class="description"><span class="usa-tag">Description</span> **(deprecated)** Another parameter invoking this one. This construct has been deprecated
+                              and should not be used.</p>
                         </div>
                      </div>
                   </details>
@@ -3309,8 +3371,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                     <p class="formal-name">Property Universally Unique Identifier</p>
                                  </div>
                                  <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> A unique identifier that can be used to reference this property elsewhere in an OSCAL
-                                       document. A UUID should be consistently used for a given location across revisions
+                                    <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined property elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
                                        of the document.</p>
                                  </div>
                               </div>
@@ -3428,13 +3489,13 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                            <details class="constraints" open="open">
                               <summary>Constraints (3)</summary>
                               <div class="constraint">
-                                 <p><span class="usa-tag">matches</span>  for <code class="path">@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
+                                 <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                               </div>
                               <div class="constraint">
-                                 <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-back-matter-resource</code> using a key constructed of key field(s) <code>@href</code></p>
+                                 <p><span class="usa-tag">index has key</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]</code>this value must correspond to a listing in the index <code>index-back-matter-resource</code> using a key constructed of key field(s) <code>@href</code></p>
                               </div>
                               <div class="constraint">
-                                 <p><span class="usa-tag">matches</span>  for <code class="path">@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
+                                 <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                               </div>
                            </details>
                            <details class="properties attributes" open="open">
@@ -3835,19 +3896,19 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                      </details>
                   </div>
                   <details class="constraints" open="open">
-                     <summary>Constraints (4)</summary>
+                     <summary>Constraints (10)</summary>
                      <div class="constraint">
-                        <p><span class="usa-tag">has cardinality</span>  for <code class="path">part[@name='statement']</code> the cardinality of  <code>part[@name='statement']</code> is constrained: <b>1</b>; maximum <b>1</b>.</p>
-                     </div>
-                     <div class="constraint">
-                        <p><span class="usa-tag">allowed values</span>  for <code class="path">prop/@name</code></p>
-                        <p>The value <b>may be locally defined</b>, or one of the following:</p>
+                        <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                        <p>The value <b>must</b> be one of the following:</p>
                         <ul>
                            
-                           <li><strong>label</strong>: A human-readable label for the parent context.</li>
+                           <li><strong>label</strong>: A human-readable label for the parent context, which may be rendered in place of
+                              the actual identifier for some use cases.</li>
                            
                            <li><strong>sort-id</strong>: An alternative identifier, whose value is easily sortable among other such values
                               in the document.</li>
+                           
+                           <li><strong>alt-identifier</strong>: An alternate or aliased identifier for the parent context.</li>
                            
                            
                            <li><strong>status</strong>: The status of a control. For example, a value of 'withdrawn' can indicate that the
@@ -3855,7 +3916,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                            </ul>
                      </div>
                      <div class="constraint">
-                        <p><span class="usa-tag">allowed value</span>  for <code class="path">prop[@name='status']/@value</code></p>
+                        <p><span class="usa-tag">allowed value</span>  for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='status']/@value</code></p>
                         <p>The value <b>must</b> be one of the following:</p>
                         <ul>
                            
@@ -3874,6 +3935,90 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                            <li><strong>required</strong>: The link identifies another control that must be present if this control is present.</li>
                            
                            <li><strong>incorporated-into</strong>: The link identifies other control content where this control content is now addressed.</li>
+                           
+                           <li><strong>moved-to</strong>: The containing control definition was moved to the referenced control.</li>
+                           </ul>
+                     </div>
+                     <div class="constraint">
+                        <p><span class="usa-tag">allowed values</span>  for <code class="path">part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                        <p>The value <b>must</b> be one of the following:</p>
+                        <ul>
+                           
+                           <li><strong>overview</strong>: An introduction to a control or a group of controls.</li>
+                           
+                           <li><strong>statement</strong>: A set of control implementation requirements.</li>
+                           
+                           <li><strong>guidance</strong>: Additional information to consider when selecting, implementing, assessing, and
+                              monitoring a control.</li>
+                           
+                           <li><strong>assessment</strong>: **(deprecated)** Use 'assessment-method' instead.</li>
+                           
+                           <li><strong>assessment-method</strong>: The part describes a method-based assessment over a set of assessment objects.</li>
+                           </ul>
+                     </div>
+                     <div class="constraint">
+                        <p><span class="usa-tag">allowed value</span>  for <code class="path">part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='statement']//part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                        <p>The value <b>must</b> be one of the following:</p>
+                        <ul>
+                           
+                           <li><strong>item</strong>: An individual item within a control statement.</li>
+                           Nested statement parts are "item" parts.
+                           </ul>
+                     </div>
+                     <div class="constraint">
+                        <p><span class="usa-tag">allowed values</span>  for <code class="path">.//part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                        <p>The value <b>must</b> be one of the following:</p>
+                        <ul>
+                           
+                           <li><strong>objective</strong>: **(deprecated)** Use 'assessment-objective' instead.</li>
+                           
+                           <li><strong>assessment-objective</strong>: The part describes a set of assessment objectives.</li>
+                           Objectives can be nested.
+                           </ul>
+                     </div>
+                     <div class="constraint">
+                        <p><span class="usa-tag">allowed values</span>  for <code class="path">part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('assessment','assessment-method')]/part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                        <p>The value <b>must</b> be one of the following:</p>
+                        <ul>
+                           
+                           <li><strong>objects</strong>: **(deprecated)** Use 'assessment-objects' instead.</li>
+                           
+                           <li><strong>assessment-objects</strong>: Provides a listing of assessment objects.</li>
+                           Assessment objects appear on assessment methods.
+                           </ul>
+                     </div>
+                     <div class="constraint">
+                        <p><span class="usa-tag">allowed value</span>  for <code class="path">part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('assessment','assessment-method')]/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                        <p>The value <b>must</b> be one of the following:</p>
+                        <ul>
+                           
+                           <li><strong>method</strong>: **(deprecated)** Use 'method' in the 'http://csrc.nist.gov/ns/rmf' namespace. The
+                              assessment method to use. This typically appears on parts with the name "assessment".</li>
+                           </ul>
+                     </div>
+                     <div class="constraint">
+                        <p><span class="usa-tag">allowed value</span>  for <code class="path">part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('assessment','assessment-method')]/prop[has-oscal-namespace('http://csrc.nist.gov/ns/rmf')]/@name</code></p>
+                        <p>The value <b>must</b> be one of the following:</p>
+                        <ul>
+                           
+                           <li><strong>method</strong>: The assessment method to use. This typically appears on parts with the name "assessment".</li>
+                           </ul>
+                     </div>
+                     <div class="constraint">
+                        <p><span class="usa-tag">allowed values</span>  for <code class="path">part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('assessment','assessment-method')]/prop[has-oscal-namespace(('http://csrc.nist.gov/ns/oscal','http://csrc.nist.gov/ns/rmf'))
+                              and @name='method']/@value</code></p>
+                        <p>The value <b>must</b> be one of the following:</p>
+                        <ul>
+                           
+                           <li><strong>INTERVIEW</strong>: The process of holding discussions with individuals or groups of individuals within
+                              an organization to once again, facilitate assessor understanding, achieve clarification,
+                              or obtain evidence.</li>
+                           
+                           <li><strong>EXAMINE</strong>: The process of reviewing, inspecting, observing, studying, or analyzing one or more
+                              assessment objects (i.e., specifications, mechanisms, or activities).</li>
+                           
+                           <li><strong>TEST</strong>: The process of exercising one or more assessment objects (i.e., activities or mechanisms)
+                              under specified conditions to compare actual with expected behavior.</li>
                            </ul>
                      </div>
                   </details>
@@ -3888,10 +4033,8 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                            <p class="formal-name">Control Identifier</p>
                         </div>
                         <div class="body">
-                           <p class="description"><span class="usa-tag">Description</span> A unique identifier for a specific control instance that can be used to reference
-                              the control in other OSCAL documents. This identifier's uniqueness is document scoped
-                              and is intended to be consistent for the same control across minor revisions of the
-                              document.</p>
+                           <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a>, <a href="/concepts/identifier-use/#locally-unique">locally unique</a> identifier with <a href="/concepts/identifier-use/#instance">instance</a> scope that can be used to reference this control elsewhere <a href="/concepts/identifier-use/#catalog-identifiers">in this and other OSCAL instances (e.g., profiles)</a>. This id should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same control across revisions
+                              of the document.</p>
                         </div>
                      </div>
                      <div class="model-entry definition assembly">
@@ -3957,6 +4100,36 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                  </div>
                               </details>
                            </div>
+                           <details class="constraints" open="open">
+                              <summary>Constraints (2)</summary>
+                              <div class="constraint">
+                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                 <p>The value <b>must</b> be one of the following:</p>
+                                 <ul>
+                                    
+                                    <li><strong>label</strong>: A human-readable label for the parent context, which may be rendered in place of
+                                       the actual identifier for some use cases.</li>
+                                    
+                                    <li><strong>sort-id</strong>: An alternative identifier, whose value is easily sortable among other such values
+                                       in the document.</li>
+                                    
+                                    <li><strong>alt-identifier</strong>: An alternate or aliased identifier for the parent context.</li>
+                                    
+                                    
+                                    <li><strong>alt-label</strong>: An alternate to the value provided by the parameter's label. This will typically
+                                       be qualified by a class.</li>
+                                    </ul>
+                              </div>
+                              <div class="constraint">
+                                 <p><span class="usa-tag">allowed value</span>  for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/rmf')]/@name</code></p>
+                                 <p>The value <b>must</b> be one of the following:</p>
+                                 <ul>
+                                    
+                                    <li><strong>aggregates</strong>: The parent parameter provides an aggregation of 2 or more other parameters, each
+                                       described by this property.</li>
+                                    </ul>
+                              </div>
+                           </details>
                            <details class="properties attributes" open="open">
                               <summary>Attributes (3)</summary>
                               <div class="model-entry definition assembly">
@@ -3968,9 +4141,10 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                     <p class="formal-name">Parameter Identifier</p>
                                  </div>
                                  <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> A unique identifier for a specific parameter instance. This identifier's uniqueness
-                                       is document scoped and is intended to be consistent for the same parameter across
-                                       minor revisions of the document.</p>
+                                    <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a>, <a href="/concepts/identifier-use/#locally-unique">locally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined parameter elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. When referenced from another OSCAL instance, this identifier must be referenced
+                                       in the context of the containing resource (e.g., import-profile). This id should be
+                                       assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                                       of the document.</p>
                                  </div>
                               </div>
                               <div class="model-entry definition assembly">
@@ -4003,7 +4177,8 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                     <p class="formal-name">Depends on</p>
                                  </div>
                                  <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> Another parameter invoking this one</p>
+                                    <p class="description"><span class="usa-tag">Description</span> **(deprecated)** Another parameter invoking this one. This construct has been deprecated
+                                       and should not be used.</p>
                                  </div>
                               </div>
                            </details>
@@ -4075,8 +4250,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                              <p class="formal-name">Property Universally Unique Identifier</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> A unique identifier that can be used to reference this property elsewhere in an OSCAL
-                                                document. A UUID should be consistently used for a given location across revisions
+                                             <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined property elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
                                                 of the document.</p>
                                           </div>
                                        </div>
@@ -4194,13 +4368,13 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                     <details class="constraints" open="open">
                                        <summary>Constraints (3)</summary>
                                        <div class="constraint">
-                                          <p><span class="usa-tag">matches</span>  for <code class="path">@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
+                                          <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                        </div>
                                        <div class="constraint">
-                                          <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-back-matter-resource</code> using a key constructed of key field(s) <code>@href</code></p>
+                                          <p><span class="usa-tag">index has key</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]</code>this value must correspond to a listing in the index <code>index-back-matter-resource</code> using a key constructed of key field(s) <code>@href</code></p>
                                        </div>
                                        <div class="constraint">
-                                          <p><span class="usa-tag">matches</span>  for <code class="path">@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
+                                          <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                        </div>
                                     </details>
                                     <details class="properties attributes" open="open">
@@ -4644,8 +4818,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                     <p class="formal-name">Property Universally Unique Identifier</p>
                                  </div>
                                  <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> A unique identifier that can be used to reference this property elsewhere in an OSCAL
-                                       document. A UUID should be consistently used for a given location across revisions
+                                    <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined property elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
                                        of the document.</p>
                                  </div>
                               </div>
@@ -4763,13 +4936,13 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                            <details class="constraints" open="open">
                               <summary>Constraints (3)</summary>
                               <div class="constraint">
-                                 <p><span class="usa-tag">matches</span>  for <code class="path">@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
+                                 <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                               </div>
                               <div class="constraint">
-                                 <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-back-matter-resource</code> using a key constructed of key field(s) <code>@href</code></p>
+                                 <p><span class="usa-tag">index has key</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]</code>this value must correspond to a listing in the index <code>index-back-matter-resource</code> using a key constructed of key field(s) <code>@href</code></p>
                               </div>
                               <div class="constraint">
-                                 <p><span class="usa-tag">matches</span>  for <code class="path">@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
+                                 <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                               </div>
                            </details>
                            <details class="properties attributes" open="open">
@@ -4901,44 +5074,20 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </details>
                            </div>
                            <details class="constraints" open="open">
-                              <summary>Constraints (4)</summary>
+                              <summary>Constraint (1)</summary>
                               <div class="constraint">
-                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">prop/@name</code></p>
-                                 <p>The value <b>may be locally defined</b>, or one of the following:</p>
+                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                 <p>The value <b>must</b> be one of the following:</p>
                                  <ul>
                                     
-                                    <li><strong>label</strong>: A human-readable label for the parent context.</li>
+                                    <li><strong>label</strong>: A human-readable label for the parent context, which may be rendered in place of
+                                       the actual identifier for some use cases.</li>
                                     
                                     <li><strong>sort-id</strong>: An alternative identifier, whose value is easily sortable among other such values
                                        in the document.</li>
                                     
-                                    </ul>
-                              </div>
-                              <div class="constraint">
-                                 <p><span class="usa-tag">allowed value</span>  for <code class="path">prop/@name</code></p>
-                                 <p>The value <b>may be locally defined</b>, or the following:</p>
-                                 <ul>
+                                    <li><strong>alt-identifier</strong>: An alternate or aliased identifier for the parent context.</li>
                                     
-                                    <li><strong>method</strong>: The assessment method to use. This typically appears on parts with the name "assessment".</li>
-                                    </ul>
-                              </div>
-                              <div class="constraint">
-                                 <p><span class="usa-tag">has cardinality</span>  for <code class="path">prop[@name='method']</code> the cardinality of  <code>prop[@name='method']</code> is constrained: <b>1</b>; maximum <b>unbounded</b>.</p>
-                              </div>
-                              <div class="constraint">
-                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[@name='method']/@value</code></p>
-                                 <p>The value <b>must</b> be one of the following:</p>
-                                 <ul>
-                                    
-                                    <li><strong>INTERVIEW</strong>: The process of holding discussions with individuals or groups of individuals within
-                                       an organization to once again, facilitate assessor understanding, achieve clarification,
-                                       or obtain evidence.</li>
-                                    
-                                    <li><strong>EXAMINE</strong>: The process of reviewing, inspecting, observing, studying, or analyzing one or more
-                                       assessment objects (i.e., specifications, mechanisms, or activities).</li>
-                                    
-                                    <li><strong>TEST</strong>: The process of exercising one or more assessment objects (i.e., activities or mechanisms)
-                                       under specified conditions to compare actual with expected behavior.</li>
                                     </ul>
                               </div>
                            </details>
@@ -4953,8 +5102,9 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                     <p class="formal-name">Part Identifier</p>
                                  </div>
                                  <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> A unique identifier for a specific part instance. This identifier's uniqueness is
-                                       document scoped and is intended to be consistent for the same part across minor revisions
+                                    <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a>, <a href="/concepts/identifier-use/#locally-unique">locally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined part elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. When referenced from another OSCAL instance, this identifier must be referenced
+                                       in the context of the containing resource (e.g., import-profile). This id should be
+                                       assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
                                        of the document.</p>
                                  </div>
                               </div>
@@ -4968,31 +5118,6 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                  </div>
                                  <div class="body">
                                     <p class="description"><span class="usa-tag">Description</span> A textual label that uniquely identifies the part's semantic type.</p>
-                                    <details class="constraints" open="open">
-                                       <summary>Constraint (1)</summary>
-                                       <div class="constraint">
-                                          <p><span class="usa-tag">allowed values</span></p>
-                                          <p>The value <b>may be locally defined</b>, or one of the following:</p>
-                                          <ul>
-                                             
-                                             
-                                             <li><strong>overview</strong>: An introduction to a control or a group of controls.</li>
-                                             
-                                             <li><strong>statement</strong>: A set of control implementation requirements.</li>
-                                             
-                                             <li><strong>item</strong>: An individual item within a control statement.</li>
-                                             
-                                             <li><strong>guidance</strong>: Additional information to consider when selecting, implementing, assessing, and
-                                                monitoring a control.</li>
-                                             
-                                             <li><strong>objective</strong>: Describes a set of assessment objectives.</li>
-                                             
-                                             <li><strong>assessment</strong>: Describes a method-based assessment over a set of assessment objects.</li>
-                                             
-                                             <li><strong>objects</strong>: Provides a list of assessment objects.</li>
-                                             </ul>
-                                       </div>
-                                    </details>
                                  </div>
                               </div>
                               <div class="model-entry definition assembly">
@@ -5126,8 +5251,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                              <p class="formal-name">Property Universally Unique Identifier</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> A unique identifier that can be used to reference this property elsewhere in an OSCAL
-                                                document. A UUID should be consistently used for a given location across revisions
+                                             <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined property elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
                                                 of the document.</p>
                                           </div>
                                        </div>
@@ -5268,44 +5392,20 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </details>
                                     </div>
                                     <details class="constraints" open="open">
-                                       <summary>Constraints (4)</summary>
+                                       <summary>Constraint (1)</summary>
                                        <div class="constraint">
-                                          <p><span class="usa-tag">allowed values</span>  for <code class="path">prop/@name</code></p>
-                                          <p>The value <b>may be locally defined</b>, or one of the following:</p>
+                                          <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                          <p>The value <b>must</b> be one of the following:</p>
                                           <ul>
                                              
-                                             <li><strong>label</strong>: A human-readable label for the parent context.</li>
+                                             <li><strong>label</strong>: A human-readable label for the parent context, which may be rendered in place of
+                                                the actual identifier for some use cases.</li>
                                              
                                              <li><strong>sort-id</strong>: An alternative identifier, whose value is easily sortable among other such values
                                                 in the document.</li>
                                              
-                                             </ul>
-                                       </div>
-                                       <div class="constraint">
-                                          <p><span class="usa-tag">allowed value</span>  for <code class="path">prop/@name</code></p>
-                                          <p>The value <b>may be locally defined</b>, or the following:</p>
-                                          <ul>
+                                             <li><strong>alt-identifier</strong>: An alternate or aliased identifier for the parent context.</li>
                                              
-                                             <li><strong>method</strong>: The assessment method to use. This typically appears on parts with the name "assessment".</li>
-                                             </ul>
-                                       </div>
-                                       <div class="constraint">
-                                          <p><span class="usa-tag">has cardinality</span>  for <code class="path">prop[@name='method']</code> the cardinality of  <code>prop[@name='method']</code> is constrained: <b>1</b>; maximum <b>unbounded</b>.</p>
-                                       </div>
-                                       <div class="constraint">
-                                          <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[@name='method']/@value</code></p>
-                                          <p>The value <b>must</b> be one of the following:</p>
-                                          <ul>
-                                             
-                                             <li><strong>INTERVIEW</strong>: The process of holding discussions with individuals or groups of individuals within
-                                                an organization to once again, facilitate assessor understanding, achieve clarification,
-                                                or obtain evidence.</li>
-                                             
-                                             <li><strong>EXAMINE</strong>: The process of reviewing, inspecting, observing, studying, or analyzing one or more
-                                                assessment objects (i.e., specifications, mechanisms, or activities).</li>
-                                             
-                                             <li><strong>TEST</strong>: The process of exercising one or more assessment objects (i.e., activities or mechanisms)
-                                                under specified conditions to compare actual with expected behavior.</li>
                                              </ul>
                                        </div>
                                     </details>
@@ -5334,13 +5434,13 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                     <details class="constraints" open="open">
                                        <summary>Constraints (3)</summary>
                                        <div class="constraint">
-                                          <p><span class="usa-tag">matches</span>  for <code class="path">@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
+                                          <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                        </div>
                                        <div class="constraint">
-                                          <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-back-matter-resource</code> using a key constructed of key field(s) <code>@href</code></p>
+                                          <p><span class="usa-tag">index has key</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]</code>this value must correspond to a listing in the index <code>index-back-matter-resource</code> using a key constructed of key field(s) <code>@href</code></p>
                                        </div>
                                        <div class="constraint">
-                                          <p><span class="usa-tag">matches</span>  for <code class="path">@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
+                                          <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                        </div>
                                     </details>
                                     <details class="properties attributes" open="open">
@@ -5462,19 +5562,19 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </details>
                            </div>
                            <details class="constraints" open="open">
-                              <summary>Constraints (4)</summary>
+                              <summary>Constraints (10)</summary>
                               <div class="constraint">
-                                 <p><span class="usa-tag">has cardinality</span>  for <code class="path">part[@name='statement']</code> the cardinality of  <code>part[@name='statement']</code> is constrained: <b>1</b>; maximum <b>1</b>.</p>
-                              </div>
-                              <div class="constraint">
-                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">prop/@name</code></p>
-                                 <p>The value <b>may be locally defined</b>, or one of the following:</p>
+                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                 <p>The value <b>must</b> be one of the following:</p>
                                  <ul>
                                     
-                                    <li><strong>label</strong>: A human-readable label for the parent context.</li>
+                                    <li><strong>label</strong>: A human-readable label for the parent context, which may be rendered in place of
+                                       the actual identifier for some use cases.</li>
                                     
                                     <li><strong>sort-id</strong>: An alternative identifier, whose value is easily sortable among other such values
                                        in the document.</li>
+                                    
+                                    <li><strong>alt-identifier</strong>: An alternate or aliased identifier for the parent context.</li>
                                     
                                     
                                     <li><strong>status</strong>: The status of a control. For example, a value of 'withdrawn' can indicate that the
@@ -5482,7 +5582,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                     </ul>
                               </div>
                               <div class="constraint">
-                                 <p><span class="usa-tag">allowed value</span>  for <code class="path">prop[@name='status']/@value</code></p>
+                                 <p><span class="usa-tag">allowed value</span>  for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='status']/@value</code></p>
                                  <p>The value <b>must</b> be one of the following:</p>
                                  <ul>
                                     
@@ -5501,6 +5601,90 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                     <li><strong>required</strong>: The link identifies another control that must be present if this control is present.</li>
                                     
                                     <li><strong>incorporated-into</strong>: The link identifies other control content where this control content is now addressed.</li>
+                                    
+                                    <li><strong>moved-to</strong>: The containing control definition was moved to the referenced control.</li>
+                                    </ul>
+                              </div>
+                              <div class="constraint">
+                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                 <p>The value <b>must</b> be one of the following:</p>
+                                 <ul>
+                                    
+                                    <li><strong>overview</strong>: An introduction to a control or a group of controls.</li>
+                                    
+                                    <li><strong>statement</strong>: A set of control implementation requirements.</li>
+                                    
+                                    <li><strong>guidance</strong>: Additional information to consider when selecting, implementing, assessing, and
+                                       monitoring a control.</li>
+                                    
+                                    <li><strong>assessment</strong>: **(deprecated)** Use 'assessment-method' instead.</li>
+                                    
+                                    <li><strong>assessment-method</strong>: The part describes a method-based assessment over a set of assessment objects.</li>
+                                    </ul>
+                              </div>
+                              <div class="constraint">
+                                 <p><span class="usa-tag">allowed value</span>  for <code class="path">part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='statement']//part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                 <p>The value <b>must</b> be one of the following:</p>
+                                 <ul>
+                                    
+                                    <li><strong>item</strong>: An individual item within a control statement.</li>
+                                    Nested statement parts are "item" parts.
+                                    </ul>
+                              </div>
+                              <div class="constraint">
+                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">.//part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                 <p>The value <b>must</b> be one of the following:</p>
+                                 <ul>
+                                    
+                                    <li><strong>objective</strong>: **(deprecated)** Use 'assessment-objective' instead.</li>
+                                    
+                                    <li><strong>assessment-objective</strong>: The part describes a set of assessment objectives.</li>
+                                    Objectives can be nested.
+                                    </ul>
+                              </div>
+                              <div class="constraint">
+                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('assessment','assessment-method')]/part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                 <p>The value <b>must</b> be one of the following:</p>
+                                 <ul>
+                                    
+                                    <li><strong>objects</strong>: **(deprecated)** Use 'assessment-objects' instead.</li>
+                                    
+                                    <li><strong>assessment-objects</strong>: Provides a listing of assessment objects.</li>
+                                    Assessment objects appear on assessment methods.
+                                    </ul>
+                              </div>
+                              <div class="constraint">
+                                 <p><span class="usa-tag">allowed value</span>  for <code class="path">part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('assessment','assessment-method')]/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                 <p>The value <b>must</b> be one of the following:</p>
+                                 <ul>
+                                    
+                                    <li><strong>method</strong>: **(deprecated)** Use 'method' in the 'http://csrc.nist.gov/ns/rmf' namespace. The
+                                       assessment method to use. This typically appears on parts with the name "assessment".</li>
+                                    </ul>
+                              </div>
+                              <div class="constraint">
+                                 <p><span class="usa-tag">allowed value</span>  for <code class="path">part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('assessment','assessment-method')]/prop[has-oscal-namespace('http://csrc.nist.gov/ns/rmf')]/@name</code></p>
+                                 <p>The value <b>must</b> be one of the following:</p>
+                                 <ul>
+                                    
+                                    <li><strong>method</strong>: The assessment method to use. This typically appears on parts with the name "assessment".</li>
+                                    </ul>
+                              </div>
+                              <div class="constraint">
+                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('assessment','assessment-method')]/prop[has-oscal-namespace(('http://csrc.nist.gov/ns/oscal','http://csrc.nist.gov/ns/rmf'))
+                                       and @name='method']/@value</code></p>
+                                 <p>The value <b>must</b> be one of the following:</p>
+                                 <ul>
+                                    
+                                    <li><strong>INTERVIEW</strong>: The process of holding discussions with individuals or groups of individuals within
+                                       an organization to once again, facilitate assessor understanding, achieve clarification,
+                                       or obtain evidence.</li>
+                                    
+                                    <li><strong>EXAMINE</strong>: The process of reviewing, inspecting, observing, studying, or analyzing one or more
+                                       assessment objects (i.e., specifications, mechanisms, or activities).</li>
+                                    
+                                    <li><strong>TEST</strong>: The process of exercising one or more assessment objects (i.e., activities or mechanisms)
+                                       under specified conditions to compare actual with expected behavior.</li>
                                     </ul>
                               </div>
                            </details>
@@ -5531,17 +5715,28 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                      </details>
                   </div>
                   <details class="constraints" open="open">
-                     <summary>Constraint (1)</summary>
+                     <summary>Constraints (2)</summary>
                      <div class="constraint">
-                        <p><span class="usa-tag">allowed values</span>  for <code class="path">prop/@name</code></p>
-                        <p>The value <b>may be locally defined</b>, or one of the following:</p>
+                        <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                        <p>The value <b>must</b> be one of the following:</p>
                         <ul>
                            
-                           <li><strong>label</strong>: A human-readable label for the parent context.</li>
+                           <li><strong>label</strong>: A human-readable label for the parent context, which may be rendered in place of
+                              the actual identifier for some use cases.</li>
                            
                            <li><strong>sort-id</strong>: An alternative identifier, whose value is easily sortable among other such values
                               in the document.</li>
                            
+                           <li><strong>alt-identifier</strong>: An alternate or aliased identifier for the parent context.</li>
+                           
+                           </ul>
+                     </div>
+                     <div class="constraint">
+                        <p><span class="usa-tag">allowed value</span>  for <code class="path">part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                        <p>The value <b>must</b> be one of the following:</p>
+                        <ul>
+                           
+                           <li><strong>overview</strong>: An introduction to a control or a group of controls.</li>
                            </ul>
                      </div>
                   </details>
@@ -5556,9 +5751,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                            <p class="formal-name">Group Identifier</p>
                         </div>
                         <div class="body">
-                           <p class="description"><span class="usa-tag">Description</span> A unique identifier for a specific group instance that can be used to reference the
-                              group within this and in other OSCAL documents. This identifier's uniqueness is document
-                              scoped and is intended to be consistent for the same group across minor revisions
+                           <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a>, <a href="/concepts/identifier-use/#locally-unique">locally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined group elsewhere in <a href="/concepts/identifier-use/#catalog-identifiers">in this and other OSCAL instances (e.g., profiles)</a>. This id should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same group across revisions
                               of the document.</p>
                         </div>
                      </div>
@@ -5625,6 +5818,36 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                  </div>
                               </details>
                            </div>
+                           <details class="constraints" open="open">
+                              <summary>Constraints (2)</summary>
+                              <div class="constraint">
+                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                 <p>The value <b>must</b> be one of the following:</p>
+                                 <ul>
+                                    
+                                    <li><strong>label</strong>: A human-readable label for the parent context, which may be rendered in place of
+                                       the actual identifier for some use cases.</li>
+                                    
+                                    <li><strong>sort-id</strong>: An alternative identifier, whose value is easily sortable among other such values
+                                       in the document.</li>
+                                    
+                                    <li><strong>alt-identifier</strong>: An alternate or aliased identifier for the parent context.</li>
+                                    
+                                    
+                                    <li><strong>alt-label</strong>: An alternate to the value provided by the parameter's label. This will typically
+                                       be qualified by a class.</li>
+                                    </ul>
+                              </div>
+                              <div class="constraint">
+                                 <p><span class="usa-tag">allowed value</span>  for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/rmf')]/@name</code></p>
+                                 <p>The value <b>must</b> be one of the following:</p>
+                                 <ul>
+                                    
+                                    <li><strong>aggregates</strong>: The parent parameter provides an aggregation of 2 or more other parameters, each
+                                       described by this property.</li>
+                                    </ul>
+                              </div>
+                           </details>
                            <details class="properties attributes" open="open">
                               <summary>Attributes (3)</summary>
                               <div class="model-entry definition assembly">
@@ -5636,9 +5859,10 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                     <p class="formal-name">Parameter Identifier</p>
                                  </div>
                                  <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> A unique identifier for a specific parameter instance. This identifier's uniqueness
-                                       is document scoped and is intended to be consistent for the same parameter across
-                                       minor revisions of the document.</p>
+                                    <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a>, <a href="/concepts/identifier-use/#locally-unique">locally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined parameter elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. When referenced from another OSCAL instance, this identifier must be referenced
+                                       in the context of the containing resource (e.g., import-profile). This id should be
+                                       assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                                       of the document.</p>
                                  </div>
                               </div>
                               <div class="model-entry definition assembly">
@@ -5671,7 +5895,8 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                     <p class="formal-name">Depends on</p>
                                  </div>
                                  <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> Another parameter invoking this one</p>
+                                    <p class="description"><span class="usa-tag">Description</span> **(deprecated)** Another parameter invoking this one. This construct has been deprecated
+                                       and should not be used.</p>
                                  </div>
                               </div>
                            </details>
@@ -5743,8 +5968,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                              <p class="formal-name">Property Universally Unique Identifier</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> A unique identifier that can be used to reference this property elsewhere in an OSCAL
-                                                document. A UUID should be consistently used for a given location across revisions
+                                             <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined property elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
                                                 of the document.</p>
                                           </div>
                                        </div>
@@ -5862,13 +6086,13 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                     <details class="constraints" open="open">
                                        <summary>Constraints (3)</summary>
                                        <div class="constraint">
-                                          <p><span class="usa-tag">matches</span>  for <code class="path">@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
+                                          <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                        </div>
                                        <div class="constraint">
-                                          <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-back-matter-resource</code> using a key constructed of key field(s) <code>@href</code></p>
+                                          <p><span class="usa-tag">index has key</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]</code>this value must correspond to a listing in the index <code>index-back-matter-resource</code> using a key constructed of key field(s) <code>@href</code></p>
                                        </div>
                                        <div class="constraint">
-                                          <p><span class="usa-tag">matches</span>  for <code class="path">@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
+                                          <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                        </div>
                                     </details>
                                     <details class="properties attributes" open="open">
@@ -6312,8 +6536,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                     <p class="formal-name">Property Universally Unique Identifier</p>
                                  </div>
                                  <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> A unique identifier that can be used to reference this property elsewhere in an OSCAL
-                                       document. A UUID should be consistently used for a given location across revisions
+                                    <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined property elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
                                        of the document.</p>
                                  </div>
                               </div>
@@ -6431,13 +6654,13 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                            <details class="constraints" open="open">
                               <summary>Constraints (3)</summary>
                               <div class="constraint">
-                                 <p><span class="usa-tag">matches</span>  for <code class="path">@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
+                                 <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                               </div>
                               <div class="constraint">
-                                 <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-back-matter-resource</code> using a key constructed of key field(s) <code>@href</code></p>
+                                 <p><span class="usa-tag">index has key</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]</code>this value must correspond to a listing in the index <code>index-back-matter-resource</code> using a key constructed of key field(s) <code>@href</code></p>
                               </div>
                               <div class="constraint">
-                                 <p><span class="usa-tag">matches</span>  for <code class="path">@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
+                                 <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                               </div>
                            </details>
                            <details class="properties attributes" open="open">
@@ -6569,44 +6792,20 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </details>
                            </div>
                            <details class="constraints" open="open">
-                              <summary>Constraints (4)</summary>
+                              <summary>Constraint (1)</summary>
                               <div class="constraint">
-                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">prop/@name</code></p>
-                                 <p>The value <b>may be locally defined</b>, or one of the following:</p>
+                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                 <p>The value <b>must</b> be one of the following:</p>
                                  <ul>
                                     
-                                    <li><strong>label</strong>: A human-readable label for the parent context.</li>
+                                    <li><strong>label</strong>: A human-readable label for the parent context, which may be rendered in place of
+                                       the actual identifier for some use cases.</li>
                                     
                                     <li><strong>sort-id</strong>: An alternative identifier, whose value is easily sortable among other such values
                                        in the document.</li>
                                     
-                                    </ul>
-                              </div>
-                              <div class="constraint">
-                                 <p><span class="usa-tag">allowed value</span>  for <code class="path">prop/@name</code></p>
-                                 <p>The value <b>may be locally defined</b>, or the following:</p>
-                                 <ul>
+                                    <li><strong>alt-identifier</strong>: An alternate or aliased identifier for the parent context.</li>
                                     
-                                    <li><strong>method</strong>: The assessment method to use. This typically appears on parts with the name "assessment".</li>
-                                    </ul>
-                              </div>
-                              <div class="constraint">
-                                 <p><span class="usa-tag">has cardinality</span>  for <code class="path">prop[@name='method']</code> the cardinality of  <code>prop[@name='method']</code> is constrained: <b>1</b>; maximum <b>unbounded</b>.</p>
-                              </div>
-                              <div class="constraint">
-                                 <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[@name='method']/@value</code></p>
-                                 <p>The value <b>must</b> be one of the following:</p>
-                                 <ul>
-                                    
-                                    <li><strong>INTERVIEW</strong>: The process of holding discussions with individuals or groups of individuals within
-                                       an organization to once again, facilitate assessor understanding, achieve clarification,
-                                       or obtain evidence.</li>
-                                    
-                                    <li><strong>EXAMINE</strong>: The process of reviewing, inspecting, observing, studying, or analyzing one or more
-                                       assessment objects (i.e., specifications, mechanisms, or activities).</li>
-                                    
-                                    <li><strong>TEST</strong>: The process of exercising one or more assessment objects (i.e., activities or mechanisms)
-                                       under specified conditions to compare actual with expected behavior.</li>
                                     </ul>
                               </div>
                            </details>
@@ -6621,8 +6820,9 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                     <p class="formal-name">Part Identifier</p>
                                  </div>
                                  <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> A unique identifier for a specific part instance. This identifier's uniqueness is
-                                       document scoped and is intended to be consistent for the same part across minor revisions
+                                    <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a>, <a href="/concepts/identifier-use/#locally-unique">locally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined part elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. When referenced from another OSCAL instance, this identifier must be referenced
+                                       in the context of the containing resource (e.g., import-profile). This id should be
+                                       assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
                                        of the document.</p>
                                  </div>
                               </div>
@@ -6636,31 +6836,6 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                  </div>
                                  <div class="body">
                                     <p class="description"><span class="usa-tag">Description</span> A textual label that uniquely identifies the part's semantic type.</p>
-                                    <details class="constraints" open="open">
-                                       <summary>Constraint (1)</summary>
-                                       <div class="constraint">
-                                          <p><span class="usa-tag">allowed values</span></p>
-                                          <p>The value <b>may be locally defined</b>, or one of the following:</p>
-                                          <ul>
-                                             
-                                             
-                                             <li><strong>overview</strong>: An introduction to a control or a group of controls.</li>
-                                             
-                                             <li><strong>statement</strong>: A set of control implementation requirements.</li>
-                                             
-                                             <li><strong>item</strong>: An individual item within a control statement.</li>
-                                             
-                                             <li><strong>guidance</strong>: Additional information to consider when selecting, implementing, assessing, and
-                                                monitoring a control.</li>
-                                             
-                                             <li><strong>objective</strong>: Describes a set of assessment objectives.</li>
-                                             
-                                             <li><strong>assessment</strong>: Describes a method-based assessment over a set of assessment objects.</li>
-                                             
-                                             <li><strong>objects</strong>: Provides a list of assessment objects.</li>
-                                             </ul>
-                                       </div>
-                                    </details>
                                  </div>
                               </div>
                               <div class="model-entry definition assembly">
@@ -6794,8 +6969,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                              <p class="formal-name">Property Universally Unique Identifier</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> A unique identifier that can be used to reference this property elsewhere in an OSCAL
-                                                document. A UUID should be consistently used for a given location across revisions
+                                             <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined property elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
                                                 of the document.</p>
                                           </div>
                                        </div>
@@ -6936,44 +7110,20 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </details>
                                     </div>
                                     <details class="constraints" open="open">
-                                       <summary>Constraints (4)</summary>
+                                       <summary>Constraint (1)</summary>
                                        <div class="constraint">
-                                          <p><span class="usa-tag">allowed values</span>  for <code class="path">prop/@name</code></p>
-                                          <p>The value <b>may be locally defined</b>, or one of the following:</p>
+                                          <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                          <p>The value <b>must</b> be one of the following:</p>
                                           <ul>
                                              
-                                             <li><strong>label</strong>: A human-readable label for the parent context.</li>
+                                             <li><strong>label</strong>: A human-readable label for the parent context, which may be rendered in place of
+                                                the actual identifier for some use cases.</li>
                                              
                                              <li><strong>sort-id</strong>: An alternative identifier, whose value is easily sortable among other such values
                                                 in the document.</li>
                                              
-                                             </ul>
-                                       </div>
-                                       <div class="constraint">
-                                          <p><span class="usa-tag">allowed value</span>  for <code class="path">prop/@name</code></p>
-                                          <p>The value <b>may be locally defined</b>, or the following:</p>
-                                          <ul>
+                                             <li><strong>alt-identifier</strong>: An alternate or aliased identifier for the parent context.</li>
                                              
-                                             <li><strong>method</strong>: The assessment method to use. This typically appears on parts with the name "assessment".</li>
-                                             </ul>
-                                       </div>
-                                       <div class="constraint">
-                                          <p><span class="usa-tag">has cardinality</span>  for <code class="path">prop[@name='method']</code> the cardinality of  <code>prop[@name='method']</code> is constrained: <b>1</b>; maximum <b>unbounded</b>.</p>
-                                       </div>
-                                       <div class="constraint">
-                                          <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[@name='method']/@value</code></p>
-                                          <p>The value <b>must</b> be one of the following:</p>
-                                          <ul>
-                                             
-                                             <li><strong>INTERVIEW</strong>: The process of holding discussions with individuals or groups of individuals within
-                                                an organization to once again, facilitate assessor understanding, achieve clarification,
-                                                or obtain evidence.</li>
-                                             
-                                             <li><strong>EXAMINE</strong>: The process of reviewing, inspecting, observing, studying, or analyzing one or more
-                                                assessment objects (i.e., specifications, mechanisms, or activities).</li>
-                                             
-                                             <li><strong>TEST</strong>: The process of exercising one or more assessment objects (i.e., activities or mechanisms)
-                                                under specified conditions to compare actual with expected behavior.</li>
                                              </ul>
                                        </div>
                                     </details>
@@ -7002,13 +7152,13 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                     <details class="constraints" open="open">
                                        <summary>Constraints (3)</summary>
                                        <div class="constraint">
-                                          <p><span class="usa-tag">matches</span>  for <code class="path">@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
+                                          <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                        </div>
                                        <div class="constraint">
-                                          <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-back-matter-resource</code> using a key constructed of key field(s) <code>@href</code></p>
+                                          <p><span class="usa-tag">index has key</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]</code>this value must correspond to a listing in the index <code>index-back-matter-resource</code> using a key constructed of key field(s) <code>@href</code></p>
                                        </div>
                                        <div class="constraint">
-                                          <p><span class="usa-tag">matches</span>  for <code class="path">@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
+                                          <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                        </div>
                                     </details>
                                     <details class="properties attributes" open="open">
@@ -7131,17 +7281,28 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                  </details>
                               </div>
                               <details class="constraints" open="open">
-                                 <summary>Constraint (1)</summary>
+                                 <summary>Constraints (2)</summary>
                                  <div class="constraint">
-                                    <p><span class="usa-tag">allowed values</span>  for <code class="path">prop/@name</code></p>
-                                    <p>The value <b>may be locally defined</b>, or one of the following:</p>
+                                    <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                    <p>The value <b>must</b> be one of the following:</p>
                                     <ul>
                                        
-                                       <li><strong>label</strong>: A human-readable label for the parent context.</li>
+                                       <li><strong>label</strong>: A human-readable label for the parent context, which may be rendered in place of
+                                          the actual identifier for some use cases.</li>
                                        
                                        <li><strong>sort-id</strong>: An alternative identifier, whose value is easily sortable among other such values
                                           in the document.</li>
                                        
+                                       <li><strong>alt-identifier</strong>: An alternate or aliased identifier for the parent context.</li>
+                                       
+                                       </ul>
+                                 </div>
+                                 <div class="constraint">
+                                    <p><span class="usa-tag">allowed value</span>  for <code class="path">part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                    <p>The value <b>must</b> be one of the following:</p>
+                                    <ul>
+                                       
+                                       <li><strong>overview</strong>: An introduction to a control or a group of controls.</li>
                                        </ul>
                                  </div>
                               </details>
@@ -7170,19 +7331,19 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                  </details>
                               </div>
                               <details class="constraints" open="open">
-                                 <summary>Constraints (4)</summary>
+                                 <summary>Constraints (10)</summary>
                                  <div class="constraint">
-                                    <p><span class="usa-tag">has cardinality</span>  for <code class="path">part[@name='statement']</code> the cardinality of  <code>part[@name='statement']</code> is constrained: <b>1</b>; maximum <b>1</b>.</p>
-                                 </div>
-                                 <div class="constraint">
-                                    <p><span class="usa-tag">allowed values</span>  for <code class="path">prop/@name</code></p>
-                                    <p>The value <b>may be locally defined</b>, or one of the following:</p>
+                                    <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                    <p>The value <b>must</b> be one of the following:</p>
                                     <ul>
                                        
-                                       <li><strong>label</strong>: A human-readable label for the parent context.</li>
+                                       <li><strong>label</strong>: A human-readable label for the parent context, which may be rendered in place of
+                                          the actual identifier for some use cases.</li>
                                        
                                        <li><strong>sort-id</strong>: An alternative identifier, whose value is easily sortable among other such values
                                           in the document.</li>
+                                       
+                                       <li><strong>alt-identifier</strong>: An alternate or aliased identifier for the parent context.</li>
                                        
                                        
                                        <li><strong>status</strong>: The status of a control. For example, a value of 'withdrawn' can indicate that the
@@ -7190,7 +7351,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        </ul>
                                  </div>
                                  <div class="constraint">
-                                    <p><span class="usa-tag">allowed value</span>  for <code class="path">prop[@name='status']/@value</code></p>
+                                    <p><span class="usa-tag">allowed value</span>  for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='status']/@value</code></p>
                                     <p>The value <b>must</b> be one of the following:</p>
                                     <ul>
                                        
@@ -7209,6 +7370,90 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        <li><strong>required</strong>: The link identifies another control that must be present if this control is present.</li>
                                        
                                        <li><strong>incorporated-into</strong>: The link identifies other control content where this control content is now addressed.</li>
+                                       
+                                       <li><strong>moved-to</strong>: The containing control definition was moved to the referenced control.</li>
+                                       </ul>
+                                 </div>
+                                 <div class="constraint">
+                                    <p><span class="usa-tag">allowed values</span>  for <code class="path">part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                    <p>The value <b>must</b> be one of the following:</p>
+                                    <ul>
+                                       
+                                       <li><strong>overview</strong>: An introduction to a control or a group of controls.</li>
+                                       
+                                       <li><strong>statement</strong>: A set of control implementation requirements.</li>
+                                       
+                                       <li><strong>guidance</strong>: Additional information to consider when selecting, implementing, assessing, and
+                                          monitoring a control.</li>
+                                       
+                                       <li><strong>assessment</strong>: **(deprecated)** Use 'assessment-method' instead.</li>
+                                       
+                                       <li><strong>assessment-method</strong>: The part describes a method-based assessment over a set of assessment objects.</li>
+                                       </ul>
+                                 </div>
+                                 <div class="constraint">
+                                    <p><span class="usa-tag">allowed value</span>  for <code class="path">part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='statement']//part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                    <p>The value <b>must</b> be one of the following:</p>
+                                    <ul>
+                                       
+                                       <li><strong>item</strong>: An individual item within a control statement.</li>
+                                       Nested statement parts are "item" parts.
+                                       </ul>
+                                 </div>
+                                 <div class="constraint">
+                                    <p><span class="usa-tag">allowed values</span>  for <code class="path">.//part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                    <p>The value <b>must</b> be one of the following:</p>
+                                    <ul>
+                                       
+                                       <li><strong>objective</strong>: **(deprecated)** Use 'assessment-objective' instead.</li>
+                                       
+                                       <li><strong>assessment-objective</strong>: The part describes a set of assessment objectives.</li>
+                                       Objectives can be nested.
+                                       </ul>
+                                 </div>
+                                 <div class="constraint">
+                                    <p><span class="usa-tag">allowed values</span>  for <code class="path">part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('assessment','assessment-method')]/part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                    <p>The value <b>must</b> be one of the following:</p>
+                                    <ul>
+                                       
+                                       <li><strong>objects</strong>: **(deprecated)** Use 'assessment-objects' instead.</li>
+                                       
+                                       <li><strong>assessment-objects</strong>: Provides a listing of assessment objects.</li>
+                                       Assessment objects appear on assessment methods.
+                                       </ul>
+                                 </div>
+                                 <div class="constraint">
+                                    <p><span class="usa-tag">allowed value</span>  for <code class="path">part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('assessment','assessment-method')]/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                    <p>The value <b>must</b> be one of the following:</p>
+                                    <ul>
+                                       
+                                       <li><strong>method</strong>: **(deprecated)** Use 'method' in the 'http://csrc.nist.gov/ns/rmf' namespace. The
+                                          assessment method to use. This typically appears on parts with the name "assessment".</li>
+                                       </ul>
+                                 </div>
+                                 <div class="constraint">
+                                    <p><span class="usa-tag">allowed value</span>  for <code class="path">part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('assessment','assessment-method')]/prop[has-oscal-namespace('http://csrc.nist.gov/ns/rmf')]/@name</code></p>
+                                    <p>The value <b>must</b> be one of the following:</p>
+                                    <ul>
+                                       
+                                       <li><strong>method</strong>: The assessment method to use. This typically appears on parts with the name "assessment".</li>
+                                       </ul>
+                                 </div>
+                                 <div class="constraint">
+                                    <p><span class="usa-tag">allowed values</span>  for <code class="path">part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('assessment','assessment-method')]/prop[has-oscal-namespace(('http://csrc.nist.gov/ns/oscal','http://csrc.nist.gov/ns/rmf'))
+                                          and @name='method']/@value</code></p>
+                                    <p>The value <b>must</b> be one of the following:</p>
+                                    <ul>
+                                       
+                                       <li><strong>INTERVIEW</strong>: The process of holding discussions with individuals or groups of individuals within
+                                          an organization to once again, facilitate assessor understanding, achieve clarification,
+                                          or obtain evidence.</li>
+                                       
+                                       <li><strong>EXAMINE</strong>: The process of reviewing, inspecting, observing, studying, or analyzing one or more
+                                          assessment objects (i.e., specifications, mechanisms, or activities).</li>
+                                       
+                                       <li><strong>TEST</strong>: The process of exercising one or more assessment objects (i.e., activities or mechanisms)
+                                          under specified conditions to compare actual with expected behavior.</li>
                                        </ul>
                                  </div>
                               </details>
@@ -7223,10 +7468,8 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        <p class="formal-name">Control Identifier</p>
                                     </div>
                                     <div class="body">
-                                       <p class="description"><span class="usa-tag">Description</span> A unique identifier for a specific control instance that can be used to reference
-                                          the control in other OSCAL documents. This identifier's uniqueness is document scoped
-                                          and is intended to be consistent for the same control across minor revisions of the
-                                          document.</p>
+                                       <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a>, <a href="/concepts/identifier-use/#locally-unique">locally unique</a> identifier with <a href="/concepts/identifier-use/#instance">instance</a> scope that can be used to reference this control elsewhere <a href="/concepts/identifier-use/#catalog-identifiers">in this and other OSCAL instances (e.g., profiles)</a>. This id should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same control across revisions
+                                          of the document.</p>
                                     </div>
                                  </div>
                                  <div class="model-entry definition assembly">
@@ -7292,6 +7535,36 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                              </div>
                                           </details>
                                        </div>
+                                       <details class="constraints" open="open">
+                                          <summary>Constraints (2)</summary>
+                                          <div class="constraint">
+                                             <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                             <p>The value <b>must</b> be one of the following:</p>
+                                             <ul>
+                                                
+                                                <li><strong>label</strong>: A human-readable label for the parent context, which may be rendered in place of
+                                                   the actual identifier for some use cases.</li>
+                                                
+                                                <li><strong>sort-id</strong>: An alternative identifier, whose value is easily sortable among other such values
+                                                   in the document.</li>
+                                                
+                                                <li><strong>alt-identifier</strong>: An alternate or aliased identifier for the parent context.</li>
+                                                
+                                                
+                                                <li><strong>alt-label</strong>: An alternate to the value provided by the parameter's label. This will typically
+                                                   be qualified by a class.</li>
+                                                </ul>
+                                          </div>
+                                          <div class="constraint">
+                                             <p><span class="usa-tag">allowed value</span>  for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/rmf')]/@name</code></p>
+                                             <p>The value <b>must</b> be one of the following:</p>
+                                             <ul>
+                                                
+                                                <li><strong>aggregates</strong>: The parent parameter provides an aggregation of 2 or more other parameters, each
+                                                   described by this property.</li>
+                                                </ul>
+                                          </div>
+                                       </details>
                                        <details class="properties attributes" open="open">
                                           <summary>Attributes (3)</summary>
                                           <div class="model-entry definition assembly">
@@ -7303,9 +7576,10 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                 <p class="formal-name">Parameter Identifier</p>
                                              </div>
                                              <div class="body">
-                                                <p class="description"><span class="usa-tag">Description</span> A unique identifier for a specific parameter instance. This identifier's uniqueness
-                                                   is document scoped and is intended to be consistent for the same parameter across
-                                                   minor revisions of the document.</p>
+                                                <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a>, <a href="/concepts/identifier-use/#locally-unique">locally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined parameter elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. When referenced from another OSCAL instance, this identifier must be referenced
+                                                   in the context of the containing resource (e.g., import-profile). This id should be
+                                                   assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                                                   of the document.</p>
                                              </div>
                                           </div>
                                           <div class="model-entry definition assembly">
@@ -7338,7 +7612,8 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                 <p class="formal-name">Depends on</p>
                                              </div>
                                              <div class="body">
-                                                <p class="description"><span class="usa-tag">Description</span> Another parameter invoking this one</p>
+                                                <p class="description"><span class="usa-tag">Description</span> **(deprecated)** Another parameter invoking this one. This construct has been deprecated
+                                                   and should not be used.</p>
                                              </div>
                                           </div>
                                        </details>
@@ -7410,8 +7685,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                          <p class="formal-name">Property Universally Unique Identifier</p>
                                                       </div>
                                                       <div class="body">
-                                                         <p class="description"><span class="usa-tag">Description</span> A unique identifier that can be used to reference this property elsewhere in an OSCAL
-                                                            document. A UUID should be consistently used for a given location across revisions
+                                                         <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined property elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
                                                             of the document.</p>
                                                       </div>
                                                    </div>
@@ -7529,13 +7803,13 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                 <details class="constraints" open="open">
                                                    <summary>Constraints (3)</summary>
                                                    <div class="constraint">
-                                                      <p><span class="usa-tag">matches</span>  for <code class="path">@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
+                                                      <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                                    </div>
                                                    <div class="constraint">
-                                                      <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-back-matter-resource</code> using a key constructed of key field(s) <code>@href</code></p>
+                                                      <p><span class="usa-tag">index has key</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]</code>this value must correspond to a listing in the index <code>index-back-matter-resource</code> using a key constructed of key field(s) <code>@href</code></p>
                                                    </div>
                                                    <div class="constraint">
-                                                      <p><span class="usa-tag">matches</span>  for <code class="path">@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
+                                                      <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                                    </div>
                                                 </details>
                                                 <details class="properties attributes" open="open">
@@ -7979,8 +8253,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                 <p class="formal-name">Property Universally Unique Identifier</p>
                                              </div>
                                              <div class="body">
-                                                <p class="description"><span class="usa-tag">Description</span> A unique identifier that can be used to reference this property elsewhere in an OSCAL
-                                                   document. A UUID should be consistently used for a given location across revisions
+                                                <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined property elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
                                                    of the document.</p>
                                              </div>
                                           </div>
@@ -8098,13 +8371,13 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                        <details class="constraints" open="open">
                                           <summary>Constraints (3)</summary>
                                           <div class="constraint">
-                                             <p><span class="usa-tag">matches</span>  for <code class="path">@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
+                                             <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                           </div>
                                           <div class="constraint">
-                                             <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-back-matter-resource</code> using a key constructed of key field(s) <code>@href</code></p>
+                                             <p><span class="usa-tag">index has key</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]</code>this value must correspond to a listing in the index <code>index-back-matter-resource</code> using a key constructed of key field(s) <code>@href</code></p>
                                           </div>
                                           <div class="constraint">
-                                             <p><span class="usa-tag">matches</span>  for <code class="path">@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
+                                             <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                           </div>
                                        </details>
                                        <details class="properties attributes" open="open">
@@ -8236,44 +8509,20 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                           </details>
                                        </div>
                                        <details class="constraints" open="open">
-                                          <summary>Constraints (4)</summary>
+                                          <summary>Constraint (1)</summary>
                                           <div class="constraint">
-                                             <p><span class="usa-tag">allowed values</span>  for <code class="path">prop/@name</code></p>
-                                             <p>The value <b>may be locally defined</b>, or one of the following:</p>
+                                             <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                             <p>The value <b>must</b> be one of the following:</p>
                                              <ul>
                                                 
-                                                <li><strong>label</strong>: A human-readable label for the parent context.</li>
+                                                <li><strong>label</strong>: A human-readable label for the parent context, which may be rendered in place of
+                                                   the actual identifier for some use cases.</li>
                                                 
                                                 <li><strong>sort-id</strong>: An alternative identifier, whose value is easily sortable among other such values
                                                    in the document.</li>
                                                 
-                                                </ul>
-                                          </div>
-                                          <div class="constraint">
-                                             <p><span class="usa-tag">allowed value</span>  for <code class="path">prop/@name</code></p>
-                                             <p>The value <b>may be locally defined</b>, or the following:</p>
-                                             <ul>
+                                                <li><strong>alt-identifier</strong>: An alternate or aliased identifier for the parent context.</li>
                                                 
-                                                <li><strong>method</strong>: The assessment method to use. This typically appears on parts with the name "assessment".</li>
-                                                </ul>
-                                          </div>
-                                          <div class="constraint">
-                                             <p><span class="usa-tag">has cardinality</span>  for <code class="path">prop[@name='method']</code> the cardinality of  <code>prop[@name='method']</code> is constrained: <b>1</b>; maximum <b>unbounded</b>.</p>
-                                          </div>
-                                          <div class="constraint">
-                                             <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[@name='method']/@value</code></p>
-                                             <p>The value <b>must</b> be one of the following:</p>
-                                             <ul>
-                                                
-                                                <li><strong>INTERVIEW</strong>: The process of holding discussions with individuals or groups of individuals within
-                                                   an organization to once again, facilitate assessor understanding, achieve clarification,
-                                                   or obtain evidence.</li>
-                                                
-                                                <li><strong>EXAMINE</strong>: The process of reviewing, inspecting, observing, studying, or analyzing one or more
-                                                   assessment objects (i.e., specifications, mechanisms, or activities).</li>
-                                                
-                                                <li><strong>TEST</strong>: The process of exercising one or more assessment objects (i.e., activities or mechanisms)
-                                                   under specified conditions to compare actual with expected behavior.</li>
                                                 </ul>
                                           </div>
                                        </details>
@@ -8288,8 +8537,9 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                 <p class="formal-name">Part Identifier</p>
                                              </div>
                                              <div class="body">
-                                                <p class="description"><span class="usa-tag">Description</span> A unique identifier for a specific part instance. This identifier's uniqueness is
-                                                   document scoped and is intended to be consistent for the same part across minor revisions
+                                                <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a>, <a href="/concepts/identifier-use/#locally-unique">locally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined part elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. When referenced from another OSCAL instance, this identifier must be referenced
+                                                   in the context of the containing resource (e.g., import-profile). This id should be
+                                                   assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
                                                    of the document.</p>
                                              </div>
                                           </div>
@@ -8303,31 +8553,6 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                              </div>
                                              <div class="body">
                                                 <p class="description"><span class="usa-tag">Description</span> A textual label that uniquely identifies the part's semantic type.</p>
-                                                <details class="constraints" open="open">
-                                                   <summary>Constraint (1)</summary>
-                                                   <div class="constraint">
-                                                      <p><span class="usa-tag">allowed values</span></p>
-                                                      <p>The value <b>may be locally defined</b>, or one of the following:</p>
-                                                      <ul>
-                                                         
-                                                         
-                                                         <li><strong>overview</strong>: An introduction to a control or a group of controls.</li>
-                                                         
-                                                         <li><strong>statement</strong>: A set of control implementation requirements.</li>
-                                                         
-                                                         <li><strong>item</strong>: An individual item within a control statement.</li>
-                                                         
-                                                         <li><strong>guidance</strong>: Additional information to consider when selecting, implementing, assessing, and
-                                                            monitoring a control.</li>
-                                                         
-                                                         <li><strong>objective</strong>: Describes a set of assessment objectives.</li>
-                                                         
-                                                         <li><strong>assessment</strong>: Describes a method-based assessment over a set of assessment objects.</li>
-                                                         
-                                                         <li><strong>objects</strong>: Provides a list of assessment objects.</li>
-                                                         </ul>
-                                                   </div>
-                                                </details>
                                              </div>
                                           </div>
                                           <div class="model-entry definition assembly">
@@ -8461,8 +8686,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                          <p class="formal-name">Property Universally Unique Identifier</p>
                                                       </div>
                                                       <div class="body">
-                                                         <p class="description"><span class="usa-tag">Description</span> A unique identifier that can be used to reference this property elsewhere in an OSCAL
-                                                            document. A UUID should be consistently used for a given location across revisions
+                                                         <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined property elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
                                                             of the document.</p>
                                                       </div>
                                                    </div>
@@ -8603,44 +8827,20 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                    </details>
                                                 </div>
                                                 <details class="constraints" open="open">
-                                                   <summary>Constraints (4)</summary>
+                                                   <summary>Constraint (1)</summary>
                                                    <div class="constraint">
-                                                      <p><span class="usa-tag">allowed values</span>  for <code class="path">prop/@name</code></p>
-                                                      <p>The value <b>may be locally defined</b>, or one of the following:</p>
+                                                      <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                                      <p>The value <b>must</b> be one of the following:</p>
                                                       <ul>
                                                          
-                                                         <li><strong>label</strong>: A human-readable label for the parent context.</li>
+                                                         <li><strong>label</strong>: A human-readable label for the parent context, which may be rendered in place of
+                                                            the actual identifier for some use cases.</li>
                                                          
                                                          <li><strong>sort-id</strong>: An alternative identifier, whose value is easily sortable among other such values
                                                             in the document.</li>
                                                          
-                                                         </ul>
-                                                   </div>
-                                                   <div class="constraint">
-                                                      <p><span class="usa-tag">allowed value</span>  for <code class="path">prop/@name</code></p>
-                                                      <p>The value <b>may be locally defined</b>, or the following:</p>
-                                                      <ul>
+                                                         <li><strong>alt-identifier</strong>: An alternate or aliased identifier for the parent context.</li>
                                                          
-                                                         <li><strong>method</strong>: The assessment method to use. This typically appears on parts with the name "assessment".</li>
-                                                         </ul>
-                                                   </div>
-                                                   <div class="constraint">
-                                                      <p><span class="usa-tag">has cardinality</span>  for <code class="path">prop[@name='method']</code> the cardinality of  <code>prop[@name='method']</code> is constrained: <b>1</b>; maximum <b>unbounded</b>.</p>
-                                                   </div>
-                                                   <div class="constraint">
-                                                      <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[@name='method']/@value</code></p>
-                                                      <p>The value <b>must</b> be one of the following:</p>
-                                                      <ul>
-                                                         
-                                                         <li><strong>INTERVIEW</strong>: The process of holding discussions with individuals or groups of individuals within
-                                                            an organization to once again, facilitate assessor understanding, achieve clarification,
-                                                            or obtain evidence.</li>
-                                                         
-                                                         <li><strong>EXAMINE</strong>: The process of reviewing, inspecting, observing, studying, or analyzing one or more
-                                                            assessment objects (i.e., specifications, mechanisms, or activities).</li>
-                                                         
-                                                         <li><strong>TEST</strong>: The process of exercising one or more assessment objects (i.e., activities or mechanisms)
-                                                            under specified conditions to compare actual with expected behavior.</li>
                                                          </ul>
                                                    </div>
                                                 </details>
@@ -8669,13 +8869,13 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                 <details class="constraints" open="open">
                                                    <summary>Constraints (3)</summary>
                                                    <div class="constraint">
-                                                      <p><span class="usa-tag">matches</span>  for <code class="path">@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
+                                                      <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                                    </div>
                                                    <div class="constraint">
-                                                      <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-back-matter-resource</code> using a key constructed of key field(s) <code>@href</code></p>
+                                                      <p><span class="usa-tag">index has key</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]</code>this value must correspond to a listing in the index <code>index-back-matter-resource</code> using a key constructed of key field(s) <code>@href</code></p>
                                                    </div>
                                                    <div class="constraint">
-                                                      <p><span class="usa-tag">matches</span>  for <code class="path">@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
+                                                      <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                                    </div>
                                                 </details>
                                                 <details class="properties attributes" open="open">
@@ -8797,19 +8997,19 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                           </details>
                                        </div>
                                        <details class="constraints" open="open">
-                                          <summary>Constraints (4)</summary>
+                                          <summary>Constraints (10)</summary>
                                           <div class="constraint">
-                                             <p><span class="usa-tag">has cardinality</span>  for <code class="path">part[@name='statement']</code> the cardinality of  <code>part[@name='statement']</code> is constrained: <b>1</b>; maximum <b>1</b>.</p>
-                                          </div>
-                                          <div class="constraint">
-                                             <p><span class="usa-tag">allowed values</span>  for <code class="path">prop/@name</code></p>
-                                             <p>The value <b>may be locally defined</b>, or one of the following:</p>
+                                             <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                             <p>The value <b>must</b> be one of the following:</p>
                                              <ul>
                                                 
-                                                <li><strong>label</strong>: A human-readable label for the parent context.</li>
+                                                <li><strong>label</strong>: A human-readable label for the parent context, which may be rendered in place of
+                                                   the actual identifier for some use cases.</li>
                                                 
                                                 <li><strong>sort-id</strong>: An alternative identifier, whose value is easily sortable among other such values
                                                    in the document.</li>
+                                                
+                                                <li><strong>alt-identifier</strong>: An alternate or aliased identifier for the parent context.</li>
                                                 
                                                 
                                                 <li><strong>status</strong>: The status of a control. For example, a value of 'withdrawn' can indicate that the
@@ -8817,7 +9017,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                 </ul>
                                           </div>
                                           <div class="constraint">
-                                             <p><span class="usa-tag">allowed value</span>  for <code class="path">prop[@name='status']/@value</code></p>
+                                             <p><span class="usa-tag">allowed value</span>  for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='status']/@value</code></p>
                                              <p>The value <b>must</b> be one of the following:</p>
                                              <ul>
                                                 
@@ -8836,6 +9036,90 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                 <li><strong>required</strong>: The link identifies another control that must be present if this control is present.</li>
                                                 
                                                 <li><strong>incorporated-into</strong>: The link identifies other control content where this control content is now addressed.</li>
+                                                
+                                                <li><strong>moved-to</strong>: The containing control definition was moved to the referenced control.</li>
+                                                </ul>
+                                          </div>
+                                          <div class="constraint">
+                                             <p><span class="usa-tag">allowed values</span>  for <code class="path">part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                             <p>The value <b>must</b> be one of the following:</p>
+                                             <ul>
+                                                
+                                                <li><strong>overview</strong>: An introduction to a control or a group of controls.</li>
+                                                
+                                                <li><strong>statement</strong>: A set of control implementation requirements.</li>
+                                                
+                                                <li><strong>guidance</strong>: Additional information to consider when selecting, implementing, assessing, and
+                                                   monitoring a control.</li>
+                                                
+                                                <li><strong>assessment</strong>: **(deprecated)** Use 'assessment-method' instead.</li>
+                                                
+                                                <li><strong>assessment-method</strong>: The part describes a method-based assessment over a set of assessment objects.</li>
+                                                </ul>
+                                          </div>
+                                          <div class="constraint">
+                                             <p><span class="usa-tag">allowed value</span>  for <code class="path">part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='statement']//part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                             <p>The value <b>must</b> be one of the following:</p>
+                                             <ul>
+                                                
+                                                <li><strong>item</strong>: An individual item within a control statement.</li>
+                                                Nested statement parts are "item" parts.
+                                                </ul>
+                                          </div>
+                                          <div class="constraint">
+                                             <p><span class="usa-tag">allowed values</span>  for <code class="path">.//part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                             <p>The value <b>must</b> be one of the following:</p>
+                                             <ul>
+                                                
+                                                <li><strong>objective</strong>: **(deprecated)** Use 'assessment-objective' instead.</li>
+                                                
+                                                <li><strong>assessment-objective</strong>: The part describes a set of assessment objectives.</li>
+                                                Objectives can be nested.
+                                                </ul>
+                                          </div>
+                                          <div class="constraint">
+                                             <p><span class="usa-tag">allowed values</span>  for <code class="path">part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('assessment','assessment-method')]/part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                             <p>The value <b>must</b> be one of the following:</p>
+                                             <ul>
+                                                
+                                                <li><strong>objects</strong>: **(deprecated)** Use 'assessment-objects' instead.</li>
+                                                
+                                                <li><strong>assessment-objects</strong>: Provides a listing of assessment objects.</li>
+                                                Assessment objects appear on assessment methods.
+                                                </ul>
+                                          </div>
+                                          <div class="constraint">
+                                             <p><span class="usa-tag">allowed value</span>  for <code class="path">part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('assessment','assessment-method')]/prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name</code></p>
+                                             <p>The value <b>must</b> be one of the following:</p>
+                                             <ul>
+                                                
+                                                <li><strong>method</strong>: **(deprecated)** Use 'method' in the 'http://csrc.nist.gov/ns/rmf' namespace. The
+                                                   assessment method to use. This typically appears on parts with the name "assessment".</li>
+                                                </ul>
+                                          </div>
+                                          <div class="constraint">
+                                             <p><span class="usa-tag">allowed value</span>  for <code class="path">part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('assessment','assessment-method')]/prop[has-oscal-namespace('http://csrc.nist.gov/ns/rmf')]/@name</code></p>
+                                             <p>The value <b>must</b> be one of the following:</p>
+                                             <ul>
+                                                
+                                                <li><strong>method</strong>: The assessment method to use. This typically appears on parts with the name "assessment".</li>
+                                                </ul>
+                                          </div>
+                                          <div class="constraint">
+                                             <p><span class="usa-tag">allowed values</span>  for <code class="path">part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name=('assessment','assessment-method')]/prop[has-oscal-namespace(('http://csrc.nist.gov/ns/oscal','http://csrc.nist.gov/ns/rmf'))
+                                                   and @name='method']/@value</code></p>
+                                             <p>The value <b>must</b> be one of the following:</p>
+                                             <ul>
+                                                
+                                                <li><strong>INTERVIEW</strong>: The process of holding discussions with individuals or groups of individuals within
+                                                   an organization to once again, facilitate assessor understanding, achieve clarification,
+                                                   or obtain evidence.</li>
+                                                
+                                                <li><strong>EXAMINE</strong>: The process of reviewing, inspecting, observing, studying, or analyzing one or more
+                                                   assessment objects (i.e., specifications, mechanisms, or activities).</li>
+                                                
+                                                <li><strong>TEST</strong>: The process of exercising one or more assessment objects (i.e., activities or mechanisms)
+                                                   under specified conditions to compare actual with expected behavior.</li>
                                                 </ul>
                                           </div>
                                        </details>
@@ -8908,7 +9192,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               </details>
                            </div>
                            <details class="constraints" open="open">
-                              <summary>Constraints (7)</summary>
+                              <summary>Constraints (6)</summary>
                               <div class="constraint">
                                  <p><span class="usa-tag">allowed values</span>  for <code class="path">prop/@name</code></p>
                                  <p>The value <b>must</b> be one of the following:</p>
@@ -8924,7 +9208,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                     </ul>
                               </div>
                               <div class="constraint">
-                                 <p><span class="usa-tag">matches</span>  for <code class="path">prop[(not(exists(@ns)) or @ns='http://csrc.nist.gov/ns/oscal') and @name='published']/@value</code>: the target value must match the lexical form of the 'dateTime' data type.</p>
+                                 <p><span class="usa-tag">matches</span>  for <code class="path">prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='published']/@value</code>: the target value must match the lexical form of the 'dateTime' data type.</p>
                               </div>
                               <div class="constraint">
                                  <p><span class="usa-tag">allowed values</span>  for <code class="path">prop[@name='type']/@value</code></p>
@@ -8995,9 +9279,6 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                               <div class="constraint">
                                  <p><span class="usa-tag">is unique</span>  for <code class="path">base64</code>: any target value must be unique (i.e., occur only once)</p>
                               </div>
-                              <div class="constraint">
-                                 <p><span class="usa-tag">has cardinality</span>  for <code class="path">title</code> the cardinality of  <code>title</code> is constrained: <b>1</b>; maximum <b>unbounded</b>.</p>
-                              </div>
                            </details>
                            <details class="properties attributes" open="open">
                               <summary>Attribute (1)</summary>
@@ -9010,9 +9291,8 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                     <p class="formal-name">Resource Universally Unique Identifier</p>
                                  </div>
                                  <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> A globally unique identifier that can be used to reference this defined resource
-                                       elsewhere in an OSCAL document. A UUID should be consistently used for a given resource
-                                       across revisions of the document.</p>
+                                    <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined resource elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
+                                       of the document.</p>
                                  </div>
                               </div>
                            </details>
@@ -9121,8 +9401,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                              <p class="formal-name">Property Universally Unique Identifier</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> A unique identifier that can be used to reference this property elsewhere in an OSCAL
-                                                document. A UUID should be consistently used for a given location across revisions
+                                             <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined property elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
                                                 of the document.</p>
                                           </div>
                                        </div>
@@ -9226,10 +9505,10 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                     <p class="formal-name">Document Identifier</p>
                                  </div>
                                  <div class="body">
-                                    <p class="description"><span class="usa-tag">Description</span> A document identifier qualified by an identifier <code>scheme</code>. A document identifier provides a globally unique identifier for a group of documents
-                                       that are to be treated as different versions of the same document. If this element
-                                       does not appear, or if the value of this element is empty, the value of "document-id"
-                                       is equal to the value of the "uuid" flag of the top-level root element.</p>
+                                    <p class="description"><span class="usa-tag">Description</span> A document identifier qualified by an identifier <code>scheme</code>. A document identifier provides a <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with a <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that is used for a group of documents that are to be treated as different versions
+                                       of the same document. If this element does not appear, or if the value of this element
+                                       is empty, the value of "document-id" is equal to the value of the "uuid" flag of the
+                                       top-level root element.</p>
                                     <div class="remarks-group usa-prose">
                                        <details open="open">
                                           <summary class="subhead">Remarks</summary>
@@ -9372,8 +9651,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                                       <p class="formal-name">Property Universally Unique Identifier</p>
                                                    </div>
                                                    <div class="body">
-                                                      <p class="description"><span class="usa-tag">Description</span> A unique identifier that can be used to reference this property elsewhere in an OSCAL
-                                                         document. A UUID should be consistently used for a given location across revisions
+                                                      <p class="description"><span class="usa-tag">Description</span> A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined property elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions
                                                          of the document.</p>
                                                    </div>
                                                 </div>
@@ -9491,13 +9769,13 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                                              <details class="constraints" open="open">
                                                 <summary>Constraints (3)</summary>
                                                 <div class="constraint">
-                                                   <p><span class="usa-tag">matches</span>  for <code class="path">@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
+                                                   <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]/@href</code>: the target value must match the lexical form of the 'uri-reference' data type.</p>
                                                 </div>
                                                 <div class="constraint">
-                                                   <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-back-matter-resource</code> using a key constructed of key field(s) <code>@href</code></p>
+                                                   <p><span class="usa-tag">index has key</span>  for <code class="path">.[@rel=('reference') and starts-with(@href,'#')]</code>this value must correspond to a listing in the index <code>index-back-matter-resource</code> using a key constructed of key field(s) <code>@href</code></p>
                                                 </div>
                                                 <div class="constraint">
-                                                   <p><span class="usa-tag">matches</span>  for <code class="path">@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
+                                                   <p><span class="usa-tag">matches</span>  for <code class="path">.[@rel=('reference') and not(starts-with(@href,'#'))]/@href</code>: the target value must match the lexical form of the 'uri' data type.</p>
                                                 </div>
                                              </details>
                                              <details class="properties attributes" open="open">
