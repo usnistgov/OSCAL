@@ -81,25 +81,27 @@ jobs:
         fetch-depth: 0 # this ensures that the tag and commit history are available
     # use this for builds triggered from the UI on protected branches
     - name: Checkout Main (using COMMIT_TOKEN)
-      if: github.event_name == 'workflow_dispatch' && github.event.inputs.commit_resources == true
+      if: github.event_name == 'workflow_dispatch' && github.event.inputs.commit_resources == 'true'
       uses: actions/checkout@v3
       with:
         path: ${{ env.MAIN_PATH }}
         ref: ${{ env.MAIN_BRANCH_REF }}
         token: ${{ secrets.COMMIT_TOKEN }}
         submodules: recursive
+      id: checkout_main_workflow
     # use this for builds triggered from other workflows on protected branches
     - name: Checkout Main (using access_token)
-      if: github.event_name == 'push' && inputs.commit_resources == true
+      if: github.event_name == 'push' && inputs.commit_resources == 'true'
       uses: actions/checkout@v3
       with:
         path: ${{ env.MAIN_PATH }}
         ref: ${{ env.MAIN_BRANCH_REF }}
         token: ${{ secrets.access_token }}
         submodules: recursive
+      id: checkout_main_push
     # use this for overything else (i.e., pull requests) where publication is not needed
     - name: Checkout Main
-      if: ${{ inputs.commit_resources == false }}
+      if: steps.checkout_main_workflow.conclusion == 'skipped' && steps.checkout_main_push.conclusion == 'skipped'
       uses: actions/checkout@v3
       with:
         path: ${{ env.MAIN_PATH }}
@@ -128,13 +130,6 @@ jobs:
       run: |
         wget https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_Linux-64bit.deb
         sudo apt-get install ./hugo_extended_${HUGO_VERSION}_Linux-64bit.deb
-#      # Ruby and Bundler
-#      - name: Install Ruby and Bundler
-#        uses: ruby/setup-ruby@v1
-#        with:
-#          ruby-version: 2.6 # Not needed with a .ruby-version file
-#          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
-#          working-directory: ${{ env.OSCAL_WEBSITE_PATH }}
     # Build Artifacts
     # ---------------
     - name: Generate Model Reference Documentation
@@ -170,23 +165,9 @@ jobs:
         path: |
           ${{ runner.temp }}/metaschema-website.zip
         retention-days: 5
-    - name: Check internal links
-      uses: untitaker/hyperlink@0.1.15
-      with:
-        args: '"${{ env.MAIN_PATH }}/docs/public/" --sources "${{ env.MAIN_PATH }}/docs/content" --check-anchors'
-#      - name: Run HTMLProofer
-#        run: |
-#          cd "${OSCAL_WEBSITE_PATH}"
-#          bundle exec htmlproofer --check-external-hash public/ --url-swap "https\://pages.nist.gov/OSCAL/:/" --assume-extension --log-level :debug --url-ignore "/pages.nist.gov\/(?:nist-header-footer|leaveNotice)\/.+/"
-#      - uses: actions/upload-artifact@v2
-#        with:
-#          name: generated-docs
-#          path: |
-#            ${{ env.OSCAL_HOME }}/docs
-#          retention-days: 5    # Store Built Artifacts
     - name: Publish Generated Pages
       # only do this on master
-      if: github.event.inputs.commit_resources == true || inputs.commit_resources == true
+      if: github.event.inputs.commit_resources == 'true' || inputs.commit_resources == 'true'
       uses: stefanzweifel/git-auto-commit-action@v4.9.2
       with:
         repository: ${{ env.MAIN_PATH }}
@@ -194,6 +175,3 @@ jobs:
         # push_options: --force-with-lease
         skip_dirty_check: false
         commit_message: Pushing generated website pages [ci skip]
-#          commit_user_name: OSCAL GitHub Actions Bot
-#          commit_user_email: oscal@nist.gov
-#          commit_author: OSCAL GitHub Actions Bot <oscal@nist.gov>
