@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+    xmlns:o="http://csrc.nist.gov/ns/oscal/1.0"
+    xmlns:opr="http://csrc.nist.gov/ns/oscal/profile-resolution"
+    xmlns:ov="http://csrc.nist.gov/ns/oscal/xspec/variable"
+    xmlns:x="http://www.jenitennison.com/xslt/xspec"
+    stylesheet="../../oscal-profile-resolve-merge.xsl">
+
+    <!-- Override value of $in_xspec global XSLT variable so that error behavior
+        in "Error case: Elements of different kinds" scenario can differ for
+        testing vs. production usage. -->
+    <x:param name="in_xspec" select="true()"/>
+
+    <!-- These variables provide contexts that indicate how to combine elements. -->
+    <x:variable name="ov:combine-merge">
+        <catalog>
+            <merge>
+                <combine method="merge"/>
+            </merge>
+        </catalog>
+    </x:variable>
+    <x:variable name="ov:combine-use-first">
+        <catalog>
+            <merge>
+                <combine method="use-first"/>
+            </merge>
+        </catalog>
+    </x:variable>
+    <x:variable name="ov:combine-keep">
+        <catalog/>
+    </x:variable>
+
+    <x:scenario label="Tests for combine-elements template">
+        <x:variable name="ov:who" as="element(o:control)+" select="//o:control">
+            <selection>
+                <control id="a" attr="val"><title>Control A</title></control>
+                <control id="b"><title>Control B</title></control>
+                <control id="a" attr1="val1"><title>Control A1</title></control>
+            </selection>
+        </x:variable>
+        <x:scenario label="Typical case: $who is nonempty and context has ancestor catalog ">
+            <x:scenario label="with 'merge' method">
+                <x:context select="$ov:combine-merge"/>
+                <x:call template="combine-elements">
+                    <x:param name="who" select="$ov:who"/>
+                </x:call>
+                <x:expect label="Dispatches to handler for 'merge' method">
+                    <control id="a" attr="val" attr1="val1">
+                        <title>Control A</title>
+                        <title>Control A1</title>
+                    </control>
+                    <control id="b"><title>Control B</title></control>
+                </x:expect>
+            </x:scenario>
+            <x:scenario label="with 'use-first' method">
+                <x:context select="$ov:combine-use-first"/>
+                <x:call template="combine-elements">
+                    <x:param name="who" select="$ov:who"/>
+                </x:call>
+                <x:expect label="Dispatches to handler for 'use-first' method">
+                    <control id="a" attr="val"><title>Control A</title></control>
+                </x:expect>
+            </x:scenario>
+            <x:scenario label="with no method">
+                <x:context select="$ov:combine-keep"/>
+                <x:call template="combine-elements">
+                    <x:param name="who" select="$ov:who"/>
+                </x:call>
+                <x:expect label="Dispatches to handler for 'keep' method">
+                    <control id="a" attr="val"><title>Control A</title></control>
+                    <control id="b"><title>Control B</title></control>
+                    <control id="a" attr1="val1"><title>Control A1</title></control>
+                </x:expect>
+            </x:scenario>
+        </x:scenario>
+        <x:scenario label="Edge case: No elements">
+            <x:context select="$ov:combine-keep"/>
+            <x:call template="combine-elements">
+                <x:param name="who" as="empty-sequence()"/>
+            </x:call>
+            <x:expect label="Nothing"/>
+        </x:scenario>
+        <x:scenario label="Edge case that shouldn't happen: No catalog ancestor">
+            <x:context>
+                <not-catalog/>
+            </x:context>
+            <x:call template="combine-elements">
+                <x:param name="who" select="$ov:who"/>
+            </x:call>
+            <x:expect label="Nothing"/>
+        </x:scenario>
+    </x:scenario>
+
+    <x:scenario label="Tests for match=catalog[merge/combine/@method='merge'] priority=10 mode=o:combine-elements template">
+        <x:scenario label="Elements of same kind with duplicate id but distinct opr:id">
+            <x:context mode="o:combine-elements" select="$ov:combine-merge">
+                <x:param name="elements" as="element()+">
+                    <control id="a" opr:id="a"><title>Control A</title></control>
+                    <control id="a" opr:id="a1"><title>Control A1</title></control>
+                </x:param>
+            </x:context>
+            <x:expect label="Distinct elements">
+                <control id="a"><title>Control A</title></control>
+                <control id="a"><title>Control A1</title></control>
+            </x:expect>
+        </x:scenario>
+        <x:scenario label="Elements of same kind with duplicate identifier">
+            <x:context mode="o:combine-elements" select="$ov:combine-merge">
+                <x:param name="elements" as="element()+" select="//o:control">
+                    <catalog>
+                        <control id="a" attr="val"><title>Control A</title></control>
+                        <control id="b"><title>Control B</title></control>
+                        <control id="a" attr1="val1"><title>Control A1</title></control>
+                    </catalog>
+                </x:param>
+            </x:context>
+            <x:expect label="For each distinct identifier, one wrapper element and merged attributes and child elements">
+                <control id="a" attr="val" attr1="val1">
+                    <title>Control A</title>
+                    <title>Control A1</title>
+                </control>
+                <control id="b">
+                    <title>Control B</title>
+                </control>
+            </x:expect>
+        </x:scenario>
+        <x:scenario label="Edge case: Elements of same kind despite different notation">
+            <x:context mode="o:combine-elements" select="$ov:combine-merge">
+                <x:param name="elements" as="element()+" xmlns="foo" select="//*:control">
+                    <some-wrapper>
+                        <o:control id="a" attr="val"><o:title>Control A</o:title></o:control>
+                        <ccc:control xmlns:ccc="http://csrc.nist.gov/ns/oscal/1.0" id="b"><ccc:title>Control B</ccc:title></ccc:control>
+                        <control xmlns="http://csrc.nist.gov/ns/oscal/1.0" id="a" attr1="val1"><title>Control A1</title></control>
+                    </some-wrapper>
+                </x:param>
+            </x:context>
+            <x:expect label="Same result as in case of consistent notation, and no error">
+                <control id="a" attr="val" attr1="val1">
+                    <title>Control A</title>
+                    <title>Control A1</title>
+                </control>
+                <control id="b">
+                    <title>Control B</title>
+                </control>
+            </x:expect>
+        </x:scenario>
+        <x:scenario label="Error case: Elements of different kinds" catch="yes">
+            <x:context mode="o:combine-elements" select="$ov:combine-merge">
+                <x:param name="elements" as="element()+" select="//*:control">
+                    <selection>
+                        <control/>
+                        <control xmlns="foo"/>
+                    </selection>
+                </x:param>
+            </x:context>
+            <x:expect label="XSLT error, fatal when $in_xspec is true"
+                test="$x:result instance of map(*) and $x:result('err') instance of map(*)"/>            
+        </x:scenario>
+        <x:scenario label="Empty sequence">
+            <x:context mode="o:combine-elements" select="$ov:combine-merge">
+                <x:param name="elements" select="()"/>
+            </x:context>
+            <x:expect label="Nothing" select="()"/>
+        </x:scenario>
+    </x:scenario>
+    
+    <x:scenario label="Tests for match=catalog[merge/combine/@method='use-first'] priority=10 mode=o:combine-elements template">
+        <x:scenario label="Elements of same kind with duplicate id but distinct opr:id">
+            <x:context mode="o:combine-elements" select="$ov:combine-use-first">
+                <x:param name="elements" as="element()+" select="//o:control">
+                    <selection>
+                        <control id="a" opr:id="a"><title>Control A</title></control>
+                        <control id="a" opr:id="a1"><title>Control A1</title></control>
+                    </selection>
+                </x:param>
+            </x:context>
+            <x:expect label="First element">
+                <control id="a">
+                    <title>Control A</title>
+                </control>
+            </x:expect>
+        </x:scenario>
+        <x:scenario label="Elements of same kind with duplicate identifier">
+            <x:context mode="o:combine-elements" select="$ov:combine-use-first">
+                <x:param name="elements" as="element()+" select="//o:control">
+                    <selection>
+                        <control id="a" attr="val"><title>Control A</title></control>
+                        <control id="b"><title>Control B</title></control>
+                        <control id="a" attr1="val1"><title>Control A1</title></control>
+                    </selection>
+                </x:param>
+            </x:context>
+            <x:expect label="First element">
+                <control id="a" attr="val">
+                    <title>Control A</title>
+                </control>
+            </x:expect>
+            <x:expect label="No title from 2nd id=a control" test="empty(//title[.='Control  A1'])"/>
+            <x:expect label="No attr1 from 2nd id=a control" test="empty(//*[@attr1])"/>
+        </x:scenario>
+        <x:scenario label="Elements of different kinds">
+            <x:context mode="o:combine-elements" select="$ov:combine-use-first">
+                <x:param name="elements" as="element()+" select="//*:control">
+                    <selection>
+                        <control/>
+                        <control xmlns="foo"/>
+                    </selection>
+                </x:param>
+            </x:context>
+            <x:expect label="First element">
+                <control/>
+            </x:expect>
+        </x:scenario>
+        <x:scenario label="Empty sequence">
+            <x:context mode="o:combine-elements" select="$ov:combine-use-first">
+                <x:param name="elements" select="()"/>
+            </x:context>
+            <x:expect label="Nothing" select="()"/>
+        </x:scenario>
+    </x:scenario>
+
+    <x:scenario label="Tests for match=catalog priority=5 mode=o:combine-elements template">
+        <x:scenario label="Elements of same kind with duplicate id but distinct opr:id">
+            <x:context mode="o:combine-elements" select="$ov:combine-keep">
+                <x:param name="elements" as="element()+" select="//o:control">
+                    <selection>
+                        <control id="a" opr:id="a"><title>Control A</title></control>
+                        <control id="a" opr:id="a1"><title>Control A1</title></control>
+                    </selection>
+                </x:param>
+            </x:context>
+            <x:expect label="All elements">
+                <control id="a"><title>Control A</title></control>
+                <control id="a"><title>Control A1</title></control>
+            </x:expect>
+        </x:scenario>
+        <x:scenario label="Elements of same kind with duplicate identifier">
+            <x:context mode="o:combine-elements" select="$ov:combine-keep">
+                <x:param name="elements" as="element()+" select="//o:control">
+                    <selection>
+                        <control id="a" attr="val"><title>Control A</title></control>
+                        <control id="b"><title>Control B</title></control>
+                        <control id="a" attr1="val1"><title>Control A1</title></control>
+                    </selection>
+                </x:param>
+            </x:context>
+            <x:expect label="All elements">
+                <control id="a" attr="val"><title>Control A</title></control>
+                <control id="b"><title>Control B</title></control>
+                <control id="a" attr1="val1"><title>Control A1</title></control>
+            </x:expect>
+        </x:scenario>
+        <x:scenario label="Elements of different kinds">
+            <x:context mode="o:combine-elements" select="$ov:combine-keep">
+                <x:param name="elements" as="element()+" select="//*:control">
+                    <selection>
+                        <control/>
+                        <control xmlns="foo"/>
+                    </selection>
+                </x:param>
+            </x:context>
+            <x:expect label="All elements">
+                <control/>
+                <control xmlns="foo"/>
+            </x:expect>
+        </x:scenario>
+        <x:scenario label="Empty sequence">
+            <x:context mode="o:combine-elements" select="$ov:combine-keep">
+                <x:param name="elements" select="()"/>
+            </x:context>
+            <x:expect label="Nothing" select="()"/>
+        </x:scenario>
+    </x:scenario>
+
+</x:description>

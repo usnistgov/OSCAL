@@ -1,17 +1,57 @@
-<?xml version="1.0" encoding="UTF-8"?><x:description xmlns="http://csrc.nist.gov/ns/oscal/1.0" xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:opr="http://csrc.nist.gov/ns/oscal/profile-resolution" stylesheet="../../oscal-profile-resolve-merge.xsl">
-    <x:scenario label="Base">
-        <x:context>
-            <catalog/>
-        </x:context>
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+    xmlns:o="http://csrc.nist.gov/ns/oscal/1.0"
+    xmlns:opr="http://csrc.nist.gov/ns/oscal/profile-resolution"
+    xmlns:ov="http://csrc.nist.gov/ns/oscal/xspec/variable"
+    xmlns:x="http://www.jenitennison.com/xslt/xspec"
+    stylesheet="../../oscal-profile-resolve-merge.xsl">
 
-        <x:expect label="profile becomes catalog">
-            <catalog/>
+    <x:scenario label="Tests for match='/ | * | @*' template for all modes">
+        <!-- Include wrapper in $ov:arbitrary-element to bypass match="/*" template. -->
+        <x:variable name="ov:arbitrary-element" as="element(arbitrary-element)" select="//arbitrary-element">
+            <some-wrapper>
+                <arbitrary-element xmlns="" arbitrary-attribute="val">text<child/></arbitrary-element>
+            </some-wrapper>
+        </x:variable>
+        <x:scenario label="Element">
+            <x:context select="$ov:arbitrary-element"/>
+            <x:expect label="Copy" select="$ov:arbitrary-element"/>
+        </x:scenario>
+        <x:scenario label="Attribute">
+            <x:context select="$ov:arbitrary-element/@arbitrary-attribute"/>
+            <x:expect label="Copy"
+                test="$x:result instance of attribute(arbitrary-attribute) and $x:result/string()='val'"/>
+        </x:scenario>
+    </x:scenario>
+
+
+    <x:scenario label="Test for match=/* priority=1 template, which should not be reached in practice">
+        <x:context>
+            <not-a-catalog/>
+        </x:context>
+        <x:expect label="Nothing" select="()"/>
+    </x:scenario>
+
+    <x:scenario label="Test for match=catalog priority=2 template">
+        <!-- Context is a catalog with neither selection nor merge. -->
+        <x:context>
+            <catalog uuid="zzz">
+                <metadata/>
+            </catalog>
+        </x:context>
+        <x:expect label="Copy of catalog">
+            <catalog uuid="zzz">
+                <metadata/>
+            </catalog>
         </x:expect>
     </x:scenario>
-    <x:scenario label="Single import, no merge (flat)">
-        <x:context>
-            <catalog>
-                <selection uuid="xyz-tiny_catalog">
+
+    <x:scenario label="Tests for match=catalog[exists(selection)] priority=10 template">
+        <!-- Context is a catalog with at least one selection child but no merge child. -->
+        <x:scenario label="Single import, no merge (flat)">
+            <x:context>
+                <catalog>
+                    <selection uuid="xyz-tiny_catalog">
                         <group id="x">
                             <title>Group X of XYZ</title>
                             <control id="x1" opr:id="xyz-tiny_catalog#x1"><title>Control X1</title></control>
@@ -36,29 +76,206 @@
                             </control>
                         </group>
                     </selection>
-                <!-- no merge -->
-            </catalog>
-        </x:context>
-        <x:expect label="All XYZ controls, ungrouped">
-            <catalog>
-                <control id="x1"><title>Control X1</title></control>
-                <control id="x2"><title>Control X2</title></control>
-                <control id="x3"><title>Control X3</title></control>
-                <control id="y1"><title>Control Y1</title></control>
-                <control id="y2"><title>Control Y2</title></control>
-                <control id="y3"><title>Control Y3</title></control>
-                <control id="z1"><title>Control Z1</title></control>
-                <control id="z2"><title>Control Z2</title></control>
-                <control id="z3"><title>Control Z3</title>
-                    <control id="z3.a"><title>Control Z3-A</title>
-                        <control id="z3.a-1"><title>Control Z3-A-1</title></control>
+                    <!-- no merge -->
+                </catalog>
+            </x:context>
+            <x:expect label="All XYZ controls, ungrouped">
+                <catalog>
+                    <control id="x1"><title>Control X1</title></control>
+                    <control id="x2"><title>Control X2</title></control>
+                    <control id="x3"><title>Control X3</title></control>
+                    <control id="y1"><title>Control Y1</title></control>
+                    <control id="y2"><title>Control Y2</title></control>
+                    <control id="y3"><title>Control Y3</title></control>
+                    <control id="z1"><title>Control Z1</title></control>
+                    <control id="z2"><title>Control Z2</title></control>
+                    <control id="z3"><title>Control Z3</title>
+                        <control id="z3.a"><title>Control Z3-A</title>
+                            <control id="z3.a-1"><title>Control Z3-A-1</title></control>
+                        </control>
                     </control>
-                </control>
-            </catalog>
-        </x:expect>
+                </catalog>
+            </x:expect>
+        </x:scenario>
+        <x:scenario label="Parallel imports, no merge, keeping all">
+            <x:context>
+                <catalog>
+                    <selection uuid="xyz-tiny_catalog">
+                        <group id="x">
+                            <title>Group X of XYZ</title>
+                            <control id="x1" opr:id="xyz-tiny_catalog#x1"><title>Control X1</title></control>
+                        </group>
+                        <group id="z">
+                            <title>Group Z of XYZ</title>
+                            <control id="z1" opr:id="xyz-tiny_catalog#z1"><title>Control Z1</title></control>
+                            <control id="z3" opr:id="xyz-tiny_catalog#z3"><title>Control Z3</title>
+                                <control id="z3.a" opr:id="xyz-tiny_catalog#z3.a"><title>Control Z3-A</title>
+                                    <control id="z3.a-1" opr:id="xyz-tiny_catalog#z3.a-1"><title>Control Z3-A-1</title></control>
+                                </control>
+                            </control>
+                        </group>
+                    </selection>
+                    <selection uuid="xyz-tiny_catalog">
+                        <group id="x">
+                            <title>Group X of XYZ</title>
+                            <control id="x1" opr:id="xyz-tiny_catalog#x1">
+                                <title>Control X1</title>
+                                <prop value="modified property" name="mod"/>
+                            </control>
+                            <control id="x2" opr:id="xyz-tiny_catalog#x2"><title>Control X2</title></control>
+                        </group>
+                        <group id="y">
+                            <title>Group Y of XYZ</title>
+                            <control id="y1" opr:id="xyz-tiny_catalog#y1"><title>Control Y1</title></control>
+                            <control id="y2" opr:id="xyz-tiny_catalog#y2"><title>Control Y2</title></control>
+                            <control id="y3" opr:id="xyz-tiny_catalog#y3"><title>Control Y3</title></control>
+                        </group>
+                        <group id="z">
+                            <title>Group Z of XYZ</title>
+                            <control id="z3" opr:id="xyz-tiny_catalog#z3"><title>Control Z3</title>
+                                <control id="z3.a" opr:id="xyz-tiny_catalog#z3.a"><title>Control Z3-A</title>
+                                    <control id="z3.a-1" opr:id="xyz-tiny_catalog#z3.a-1"><title>Control Z3-A-1</title></control>
+                                </control>
+                            </control>
+                        </group>
+                    </selection>
+                    <!-- no merge -->
+                </catalog>
+            </x:context>
+            <x:expect label="XYZ catalog twice, flat, with clashing controls">
+                <catalog>
+                    <control id="x1"><title>Control X1</title></control>
+                    <control id="z1"><title>Control Z1</title></control>
+                    <control id="z3"><title>Control Z3</title>
+                        <control id="z3.a"><title>Control Z3-A</title>
+                            <control id="z3.a-1"><title>Control Z3-A-1</title></control>
+                        </control>
+                    </control>
+                    <control id="x1">
+                        <title>Control X1</title>
+                        <prop value="modified property" name="mod"/>
+                    </control>
+                    <control id="x2"><title>Control X2</title></control>
+                    <control id="y1"><title>Control Y1</title></control>
+                    <control id="y2"><title>Control Y2</title></control>
+                    <control id="y3"><title>Control Y3</title></control>
+                    <control id="z3"><title>Control Z3</title>
+                        <control id="z3.a"><title>Control Z3-A</title>
+                            <control id="z3.a-1"><title>Control Z3-A-1</title></control>
+                        </control>
+                    </control>
+                </catalog>
+            </x:expect>
+        </x:scenario>
+        <x:scenario label="Catalog with attribute, metadata, and modify child">
+            <x:context>
+                <catalog uuid="zzz">
+                    <metadata>
+                        <title>Test Profile</title>
+                        <last-modified>2019-11-13T12:41:07.061-05:00</last-modified>
+                        <version>1.3</version>
+                        <oscal-version>1.0.2</oscal-version>
+                        <prop name="resolution-tool" value="OSCAL Profile Resolver XSLT Pipeline OPRXP" />
+                        <link href="urn:UNKNOWN" rel="source-profile" />
+                    </metadata>
+                    <selection uuid="xyz-tiny_catalog">
+                        <control id="x1"><title>Control X1</title></control>
+                    </selection>
+                    <!-- no merge -->
+                    <modify>
+                        <set-parameter param-id="a1_prm1">
+                            <constraint>
+                                <description>
+                                    <p>at least every 3 years</p>
+                                </description>
+                            </constraint>
+                        </set-parameter>
+                    </modify>
+                </catalog>
+            </x:context>
+            <x:expect label="Output includes catalog attribute, metadata, and modify child">
+                <catalog uuid="zzz">
+                    <metadata>
+                        <title>Test Profile</title>
+                        <last-modified>2019-11-13T12:41:07.061-05:00</last-modified>
+                        <version>1.3</version>
+                        <oscal-version>1.0.2</oscal-version>
+                        <prop name="resolution-tool" value="OSCAL Profile Resolver XSLT Pipeline OPRXP" />
+                        <link href="urn:UNKNOWN" rel="source-profile" />
+                    </metadata>
+                    <control id="x1"><title>Control X1</title></control>
+                    <modify>
+                        <set-parameter param-id="a1_prm1">
+                            <constraint>
+                                <description>
+                                    <p>at least every 3 years</p>
+                                </description>
+                            </constraint>
+                        </set-parameter>
+                    </modify>
+                </catalog>
+            </x:expect>
+        </x:scenario>
+        <x:scenario label="Catalog with back matter inside and outside selection">
+            <x:context>
+                <catalog uuid="zzz">
+                    <selection uuid="xyz-tiny_catalog">
+                        <control id="x1"><title>Control X1</title></control>
+                        <back-matter>
+                            <resource uuid="0050231f-4fd0-43d6-8fa0-431367cd83e2">
+                                <title>Ref BBB</title>
+                                <citation>
+                                    <text>Bbb bbbbb Bbb b.</text>
+                                </citation>
+                                <rlink href="bbb.html"/>
+                            </resource>
+                        </back-matter>
+                    </selection>
+                    <!-- no merge -->
+                    <back-matter>
+                        <resource uuid="0050231f-4fd0-43d6-8fa0-431367cd83e1">
+                            <title>Ref AAA</title>
+                            <citation>
+                                <text>Aaaa aaaa aaaa</text>
+                            </citation>
+                            <rlink href="aaa.html"/>
+                        </resource>
+                    </back-matter>
+                </catalog>
+            </x:context>
+            <x:expect label="Output includes consolidated back matter">
+                <catalog uuid="zzz">
+                    <control id="x1"><title>Control X1</title></control>
+                    <back-matter>
+                        <resource uuid="0050231f-4fd0-43d6-8fa0-431367cd83e2">
+                            <title>Ref BBB</title>
+                            <citation>
+                                <text>Bbb bbbbb Bbb b.</text>
+                            </citation>
+                            <rlink href="bbb.html"/>
+                        </resource>
+                        <resource uuid="0050231f-4fd0-43d6-8fa0-431367cd83e1">
+                            <title>Ref AAA</title>
+                            <citation>
+                                <text>Aaaa aaaa aaaa</text>
+                            </citation>
+                            <rlink href="aaa.html"/>
+                        </resource>
+                    </back-matter>
+                </catalog>
+            </x:expect>
+        </x:scenario>
+        <x:scenario label="as-is element appears but content is not true">
+            <x:variable name="ov:as-is-content">0</x:variable>
+            <x:like label="SHARED: as-is element with placeholder for content"/>
+        </x:scenario>
+        <x:scenario label="as-is element appears but has no content">
+            <x:variable name="ov:as-is-content"/>
+            <x:like label="SHARED: as-is element with placeholder for content"/>
+        </x:scenario>
     </x:scenario>
 
-    <x:scenario label="Parallel imports, no merge, keeping all">
+    <x:scenario shared="yes" label="SHARED: as-is element with placeholder for content">
         <x:context>
             <catalog>
                 <selection uuid="xyz-tiny_catalog">
@@ -66,65 +283,450 @@
                         <title>Group X of XYZ</title>
                         <control id="x1" opr:id="xyz-tiny_catalog#x1"><title>Control X1</title></control>
                     </group>
-                    <group id="z">
-                        <title>Group Z of XYZ</title>
-                        <control id="z1" opr:id="xyz-tiny_catalog#z1"><title>Control Z1</title></control>
-                        <control id="z3" opr:id="xyz-tiny_catalog#z3"><title>Control Z3</title>
-                            <control id="z3.a" opr:id="xyz-tiny_catalog#z3.a"><title>Control Z3-A</title>
-                                <control id="z3.a-1" opr:id="xyz-tiny_catalog#z3.a-1"><title>Control Z3-A-1</title></control>
-                            </control>
-                        </control>
-                    </group>
-                </selection>
-                <selection uuid="xyz-tiny_catalog">
-                    <group id="x">
-                        <title>Group X of XYZ</title>
-                        <control id="x1" opr:id="xyz-tiny_catalog#x1">
-                            <title>Control X1</title>
-                            <prop value="modified property" name="mod"/>
-                        </control>
-                        <control id="x2" opr:id="xyz-tiny_catalog#x2"><title>Control X2</title></control>
-                    </group>
                     <group id="y">
                         <title>Group Y of XYZ</title>
                         <control id="y1" opr:id="xyz-tiny_catalog#y1"><title>Control Y1</title></control>
-                        <control id="y2" opr:id="xyz-tiny_catalog#y2"><title>Control Y2</title></control>
-                        <control id="y3" opr:id="xyz-tiny_catalog#y3"><title>Control Y3</title></control>
-                    </group>
-                    <group id="z">
-                        <title>Group Z of XYZ</title>
-                        <control id="z3" opr:id="xyz-tiny_catalog#z3"><title>Control Z3</title>
-                            <control id="z3.a" opr:id="xyz-tiny_catalog#z3.a"><title>Control Z3-A</title>
-                                <control id="z3.a-1" opr:id="xyz-tiny_catalog#z3.a-1"><title>Control Z3-A-1</title></control>
-                            </control>
-                        </control>
                     </group>
                 </selection>
+                <merge>
+                    <as-is x:expand-text="true">{$ov:as-is-content}</as-is>
+                </merge>
             </catalog>
         </x:context>
-        <x:expect label="XYZ catalog twice, flat, with clashing controls">
+        <x:expect label="Flat structure, not grouped">
             <catalog>
                 <control id="x1"><title>Control X1</title></control>
-                <control id="z1"><title>Control Z1</title></control>
-                <control id="z3"><title>Control Z3</title>
-                    <control id="z3.a"><title>Control Z3-A</title>
-                        <control id="z3.a-1"><title>Control Z3-A-1</title></control>
-                    </control>
-                </control>
-                <control id="x1">
-                    <title>Control X1</title>
-                    <prop value="modified property" name="mod"/>
-                </control>
-                <control id="x2"><title>Control X2</title></control>
                 <control id="y1"><title>Control Y1</title></control>
-                <control id="y2"><title>Control Y2</title></control>
-                <control id="y3"><title>Control Y3</title></control>
-                <control id="z3"><title>Control Z3</title>
-                    <control id="z3.a"><title>Control Z3-A</title>
-                        <control id="z3.a-1"><title>Control Z3-A-1</title></control>
-                    </control>
-                </control>
             </catalog>
         </x:expect>
+    </x:scenario>
+
+    <!-- Tests for match=catalog[merge/as-is=$true-content] priority=12 template are in merge-as-is.xspec -->
+    <!-- Tests for match=catalog[exists(merge/custom)] priority=13 template are in merge-custom.xspec -->
+
+    <x:scenario label="Tests for detect-multiple-structuring-directives template">
+        <x:scenario label="Error case: custom appears and as-is is true" catch="yes">
+            <x:context>
+                <catalog uuid="xyz-tiny_catalog">
+                    <merge>
+                        <custom/>
+                        <as-is>1</as-is>
+                    </merge>
+                </catalog>
+            </x:context>
+            <x:call template="detect-multiple-structuring-directives"/>
+            <x:expect label="Fatal XSLT error"
+                test="$x:result instance of map(*) and $x:result('err') instance of map(*)"/>            
+        </x:scenario>
+        <x:scenario label="Error case: custom appears and flat is true" catch="yes">
+            <x:context>
+                <catalog uuid="xyz-tiny_catalog">
+                    <merge>
+                        <custom/>
+                        <flat>true</flat>
+                    </merge>
+                </catalog>
+            </x:context>
+            <x:call template="detect-multiple-structuring-directives"/>
+            <x:expect label="Fatal XSLT error"
+                test="$x:result instance of map(*) and $x:result('err') instance of map(*)"/>            
+        </x:scenario>
+        <x:scenario label="Error case: as-is and flat are both true" catch="yes">  
+            <x:context>
+                <catalog>
+                    <merge>
+                        <flat>true</flat>
+                        <as-is>1</as-is>
+                    </merge>
+                </catalog>
+            </x:context>
+            <x:call template="detect-multiple-structuring-directives"/>
+            <x:expect label="Fatal XSLT error"
+                test="$x:result instance of map(*) and $x:result('err') instance of map(*)"/>            
+        </x:scenario>
+        <x:scenario label="Non-error case: as-is and flat both appear but flat is not true" catch="no">  
+            <x:context>
+                <catalog>
+                    <merge>
+                        <flat/>
+                        <as-is>1</as-is>
+                    </merge>
+                </catalog>
+            </x:context>
+            <x:call template="detect-multiple-structuring-directives"/>
+            <x:expect label="No XSLT error" select="()"/>
+        </x:scenario>
+    </x:scenario>
+
+    <x:scenario label="Tests for combine-back-matter template">
+        <x:scenario label="Back matter as child of catalog">
+            <x:context>
+                <catalog>
+                    <back-matter>
+                        <resource>
+                            <title>Ref CCC</title>
+                        </resource>
+                        <resource uuid="0050231f-4fd0-43d6-8fa0-431367cd83e2">
+                            <title>Ref BBB</title>
+                        </resource>
+                        <resource opr:id="ref001">
+                            <title>Ref AAA</title>
+                        </resource>
+                    </back-matter>
+                </catalog>
+            </x:context>
+            <x:call template="combine-back-matter"/>
+            <x:expect label="back-matter with items, @opr:id omitted">
+                <back-matter>
+                    <resource>
+                        <title>Ref CCC</title>
+                    </resource>
+                    <resource uuid="0050231f-4fd0-43d6-8fa0-431367cd83e2">
+                        <title>Ref BBB</title>
+                    </resource>
+                    <resource>
+                        <title>Ref AAA</title>
+                    </resource>
+                </back-matter>
+            </x:expect>
+        </x:scenario>
+        <x:scenario label="Back matter as child of selection">
+            <x:context>
+                <catalog>
+                    <selection uuid="xyz-tiny_catalog">
+                        <control id="x1"><title>Control X1</title></control>
+                        <back-matter>
+                            <resource>
+                                <title>Ref CCC</title>
+                            </resource>
+                            <resource uuid="0050231f-4fd0-43d6-8fa0-431367cd83e2">
+                                <title>Ref BBB</title>
+                            </resource>
+                        </back-matter>
+                    </selection>
+                    <selection uuid="xyz-tiny_catalog2">
+                        <control id="x2"><title>Control X2</title></control>
+                        <back-matter>
+                            <resource opr:id="ref001">
+                                <title>Ref AAA</title>
+                            </resource>
+                        </back-matter>
+                    </selection>
+                </catalog>
+            </x:context>
+            <x:call template="combine-back-matter"/>
+            <x:expect label="back-matter with items, @opr:id omitted">
+                <back-matter>
+                    <resource>
+                        <title>Ref CCC</title>
+                    </resource>
+                    <resource uuid="0050231f-4fd0-43d6-8fa0-431367cd83e2">
+                        <title>Ref BBB</title>
+                    </resource>
+                    <resource>
+                        <title>Ref AAA</title>
+                    </resource>
+                </back-matter>
+            </x:expect>
+        </x:scenario>
+        <x:scenario label="Back matter in multiple places with duplication">
+            <x:context>
+                <catalog>
+                    <selection uuid="xyz-tiny_catalog">
+                        <control id="x1"><title>Control X1</title></control>
+                        <back-matter>
+                            <resource>
+                                <title>Ref CCC</title>
+                            </resource>
+                            <resource uuid="0050231f-4fd0-43d6-8fa0-431367cd83e2">
+                                <title>Ref BBB, first</title>
+                            </resource>
+                            <resource opr:id="ref001">
+                                <title>Ref AAA</title>
+                            </resource>
+                        </back-matter>
+                    </selection>
+                    <selection uuid="xyz-tiny_catalog2">
+                        <control id="x2"><title>Control X2</title></control>
+                        <back-matter>
+                            <resource>
+                                <title>Ref CCC</title>
+                            </resource>
+                            <resource uuid="0050231f-4fd0-43d6-8fa0-431367cd83e2">
+                                <title>Ref BBB, second</title>
+                            </resource>
+                            <resource opr:id="ref001">
+                                <title>Ref AAA</title>
+                            </resource>
+                        </back-matter>
+                    </selection>
+                    <back-matter>
+                        <resource>
+                            <title>Ref CCC</title>
+                        </resource>
+                        <resource uuid="0050231f-4fd0-43d6-8fa0-431367cd83e2">
+                            <title>Ref BBB, third</title>
+                        </resource>
+                        <resource opr:id="ref001">
+                            <title>Ref AAA</title>
+                        </resource>
+                    </back-matter>
+                </catalog>
+            </x:context>
+            <x:call template="combine-back-matter"/>
+            <x:expect label="back-matter with last item for each distinct uuid or distinct opr:id.">
+                <back-matter>
+                    <resource>
+                        <title>Ref CCC</title>
+                    </resource>
+                    <resource uuid="0050231f-4fd0-43d6-8fa0-431367cd83e2">
+                        <title>Ref BBB, third</title>
+                    </resource>
+                    <resource>
+                        <title>Ref AAA</title>
+                    </resource>
+                    <resource>
+                        <title>Ref CCC</title>
+                    </resource>
+                    <resource>
+                        <title>Ref CCC</title>
+                    </resource>
+                </back-matter>
+            </x:expect>
+        </x:scenario>
+        <x:scenario label="No back matter in input context">
+            <x:context>
+                <catalog>
+                    <selection>
+                        <back-matter/>
+                    </selection>
+                    <back-matter/>
+                </catalog>
+            </x:context>
+            <x:call template="combine-back-matter"/>
+            <x:expect label="Nothing (in particular, no empty back-matter wrapper)" select="()"/>
+        </x:scenario>
+    </x:scenario>
+
+    <x:scenario label="Tests for match=selection template">
+        <!-- In <x:context>, <selection> must have a parent element.
+            Otherwise, we reach the match="/*" template instead of the
+            match="selection" template. -->
+        <x:scenario label="Parameters grouped and ungrouped">
+            <x:context select="//o:selection">
+                <catalog>
+                    <selection id="xyz-tiny_catalog" opr:id="xyz-tiny_catalog#xyz-tiny_catalog">
+                        <param id="param-a">
+                            <label>Param A</label>
+                            <constraint>no control</constraint>
+                        </param>
+                        <group>
+                            <title>Group X of XYZ</title>
+                            <param id="param-x">
+                                <label>Param X</label>
+                                <constraint>no control</constraint>
+                            </param>
+                            <param id="param-y">
+                                <label>Param Y</label>
+                                <constraint>no control</constraint>
+                            </param>
+                            <group>
+                                <title>Group X2</title>
+                                <param id="param-x2">
+                                    <label>Param X2</label>
+                                    <constraint>no control</constraint>
+                                </param>
+                                <param id="param-y2">
+                                    <label>Param Y2</label>
+                                    <constraint>no control</constraint>
+                                </param>
+                            </group>
+                        </group>
+                    </selection>
+                </catalog>
+            </x:context>
+            <x:expect label="All parameters in document order at all group levels">
+                <param id="param-a">
+                    <label>Param A</label>
+                    <constraint>no control</constraint>
+                </param>
+                <param id="param-x">
+                    <label>Param X</label>
+                    <constraint>no control</constraint>
+                </param>
+                <param id="param-y">
+                    <label>Param Y</label>
+                    <constraint>no control</constraint>
+                </param>
+                <param id="param-x2">
+                    <label>Param X2</label>
+                    <constraint>no control</constraint>
+                </param>
+                <param id="param-y2">
+                    <label>Param Y2</label>
+                    <constraint>no control</constraint>
+                </param>
+            </x:expect>
+        </x:scenario>
+        <x:scenario label="Controls grouped and ungrouped">
+            <x:context select="//o:selection">
+                <catalog>
+                    <selection id="xyz-tiny_catalog" opr:id="xyz-tiny_catalog#xyz-tiny_catalog">
+                        <control id="a"><title>Control A</title></control>
+                        <group>
+                            <title>Group X of XYZ</title>
+                            <control id="x1"><title>Control X1</title></control>
+                            <control id="y1"><title>Control Y1</title></control>
+                            <group>
+                                <title>Group X2</title>
+                                <control id="x2"><title>Control X2</title></control>
+                                <control id="y2"><title>Control Y2</title></control>
+                            </group>
+                        </group>
+                    </selection>
+                </catalog>
+            </x:context>
+            <x:expect label="All controls in document order at all group levels">
+                <control id="a"><title>Control A</title></control>
+                <control id="x1"><title>Control X1</title></control>
+                <control id="y1"><title>Control Y1</title></control>
+                <control id="x2"><title>Control X2</title></control>
+                <control id="y2"><title>Control Y2</title></control>
+            </x:expect>
+        </x:scenario>
+        <x:scenario label="Parameters and controls">
+            <x:context select="//o:selection">
+                <catalog>
+                    <selection id="xyz-tiny_catalog" opr:id="xyz-tiny_catalog#xyz-tiny_catalog">
+                        <param id="param-a">
+                            <label>Param A</label>
+                            <constraint>no control</constraint>
+                        </param>
+                        <control id="a"><title>Control A</title></control>
+                        <group>
+                            <title>Group X of XYZ</title>
+                            <param id="param-x1">
+                                <label>Param X1</label>
+                                <constraint>no control</constraint>
+                            </param>
+                            <control id="x1"><title>Control X1</title></control>
+                        </group>
+                    </selection>
+                </catalog>
+            </x:context>
+            <x:expect label="All parameters followed by all controls">
+                <param id="param-a">...</param>
+                <param id="param-x1">...</param>
+                <control id="a">...</control>
+                <control id="x1">...</control>
+            </x:expect>
+        </x:scenario>
+    </x:scenario>
+
+    <!-- Tests for all mode=o:custom-merge templates are in merge-custom.xspec -->
+    
+    <x:scenario label="Tests for match=selection|selection//group mode=o:select template">
+        <x:variable name="ov:control">
+            <control id="x1" opr:id="xyz-tiny_catalog#x1"><title>Control X1</title></control>            
+        </x:variable>
+        <x:scenario label="Context is selection with child control">
+            <x:variable name="ov:context">
+                <catalog uuid="zzz">
+                    <selection>
+                        <control id="x1" opr:id="xyz-tiny_catalog#x1"><title>Control X1</title></control>
+                    </selection>
+                    <merge>
+                        <custom>
+                            <insert-controls>
+                                <include-all/>
+                            </insert-controls>
+                        </custom>
+                    </merge>
+                </catalog>
+            </x:variable>
+            <x:context mode="o:select" select="$ov:context//o:selection">
+                <x:param name="import-instruction" tunnel="yes" select="$ov:context//o:insert-controls"/>
+            </x:context>
+            <x:expect label="Child control" select="$ov:control"/>
+        </x:scenario>
+        <x:scenario label="Context is selection with child group">
+            <x:variable name="ov:context">
+                <catalog uuid="zzz">
+                    <selection>
+                        <group id="parent">
+                            <control id="x1" opr:id="xyz-tiny_catalog#x1"><title>Control X1</title></control>
+                        </group>
+                    </selection>
+                    <merge>
+                        <custom>
+                            <insert-controls>
+                                <include-all/>
+                            </insert-controls>
+                        </custom>
+                    </merge>
+                </catalog>
+            </x:variable>
+            <x:context mode="o:select" select="$ov:context//o:selection">
+                <x:param name="import-instruction" tunnel="yes" select="$ov:context//o:insert-controls"/>
+            </x:context>
+            <x:expect label="Descendant control" select="$ov:control"/>
+        </x:scenario>
+        <x:scenario label="Context is group with nested group">
+            <x:variable name="ov:context">
+                <catalog uuid="zzz">
+                    <selection>
+                        <group id="parent">
+                            <group id="child">
+                                <control id="x1" opr:id="xyz-tiny_catalog#x1"><title>Control X1</title></control>
+                            </group>
+                        </group>
+                    </selection>
+                    <merge>
+                        <custom>
+                            <insert-controls>
+                                <include-all/>
+                            </insert-controls>
+                        </custom>
+                    </merge>
+                </catalog>
+            </x:variable>
+            <x:context mode="o:select" select="$ov:context//o:group[@id='parent']">
+                <x:param name="import-instruction" tunnel="yes" select="$ov:context//o:insert-controls"/>
+            </x:context>
+            <x:expect label="Descendant control" select="$ov:control"/>
+        </x:scenario>
+        <x:scenario label="Context is group with child control">
+            <x:variable name="ov:context">
+                <catalog uuid="zzz">
+                    <selection>
+                        <group id="parent">
+                            <control id="x1" opr:id="xyz-tiny_catalog#x1"><title>Control X1</title></control>
+                        </group>
+                    </selection>
+                    <merge>
+                        <custom>
+                            <insert-controls>
+                                <include-all/>
+                            </insert-controls>
+                        </custom>
+                    </merge>
+                </catalog>
+            </x:variable>
+            <x:context mode="o:select" select="$ov:context//o:group">
+                <x:param name="import-instruction" tunnel="yes" select="$ov:context//o:insert-controls"/>
+            </x:context>
+            <x:expect label="Child control" select="$ov:control"/>
+        </x:scenario>
+    </x:scenario>
+
+    <!-- Tests for o:merge-groups-as-is template are in merge-as-is.xspec -->
+    <!-- Tests for combine-elements template are in merge-combine.xspec -->
+    <!-- Tests for all mode="o:combine-elements" templates are in merge-combine.xspec -->
+
+    <x:scenario label="Tests for match=@opr:id template">
+        <x:context select="@opr:id">
+            <foo opr:id="intermediate-value-id"/>
+        </x:context>
+        <x:expect label="Nothing" select="()"/>
     </x:scenario>
 </x:description>
