@@ -156,29 +156,36 @@
                 test="$x:result/o:selection/@uuid = $ov:catalog_uuid"/>
         </x:scenario>
         <x:scenario label="Profile select include call control-id">
-            <x:context>
+            <x:variable name="ov:profile-using-with-id" as="element(o:profile)">
                 <profile>
                     <import href="{$ov:filedir}/catalogs/xyz-tiny_catalog.xml">
                         <include-controls>
+                            <with-id>x2</with-id>
                             <with-id>x1</with-id>
                         </include-controls>
                     </import>
                 </profile>
-            </x:context>
-    
-            <x:expect label="Control x1, in its group, with other groups empty">
+            </x:variable>
+            <x:context select="$ov:profile-using-with-id"/>
+            <x:expect label="Control x1 and x2, in their group, with other groups empty">
                 <profile>
                     <selection uuid="..." opr:src="...">
                         <metadata>...</metadata>
                         <group opr:id="...">
                             <title>Group X of XYZ</title>
                             <control id="x1" opr:id="..."><title>Control X1</title></control>
+                            <control id="x2" opr:id="..."><title>Control X2</title></control>
                         </group>
                        <group opr:id="..."><title>Group Y of XYZ</title></group>
                        <group opr:id="..."><title>Group Z of XYZ</title></group>
                    </selection>
                 </profile>
             </x:expect>
+            <!-- Assertions about the order of controls in output catalog are relevant for merge phase. -->
+            <x:expect label="Order of controls in output is x1, x2 as in the input catalog."
+                test="$x:result//o:control/@id/string()" select="('x1','x2')"/>
+            <x:expect label="In this case, order of controls in output does not match order of with-id elements in profile."
+                test="not(deep-equal($x:result//o:control/@id/string(), $ov:profile-using-with-id//o:control/@id/string()))"/>
         </x:scenario>
     
         <x:scenario label="Profile select include call match">
@@ -286,6 +293,70 @@
             </x:expect>
         </x:scenario>
     
+        <x:scenario label="Default value of 'with-parent-controls' (yes)">
+            <x:context>
+                <profile>
+                    <import href="{$ov:filedir}/catalogs/xyz-tiny_catalog.xml">
+                        <include-controls with-parent-controls="yes">
+                            <with-id>z3.a-1</with-id>
+                        </include-controls>
+                    </import>
+                </profile>
+            </x:context>
+            
+            <x:expect label="Control Z3-A-1 and all its ancestors">
+                <profile>
+                    <selection uuid="..." opr:src="...">
+                        <metadata>...</metadata>
+                        <group opr:id="...">
+                            <title>Group X of XYZ</title>
+                        </group>
+                        <group opr:id="...">
+                            <title>Group Y of XYZ</title>
+                        </group>
+                        <group opr:id="...">
+                            <title>Group Z of XYZ</title>
+                            <control id="z3" opr:id="..."><title>Control Z3</title>
+                                <control id="z3.a" opr:id="..."><title>Control Z3-A</title>
+                                    <control id="z3.a-1" opr:id="..."><title>Control Z3-A-1</title></control>
+                                </control>
+                            </control>
+                        </group>
+                    </selection>
+                </profile>
+            </x:expect>
+        </x:scenario>
+
+        <x:scenario label="Nondefault value of 'with-parent-controls' (no)">
+            <x:context>
+                <profile>
+                    <import href="{$ov:filedir}/catalogs/xyz-tiny_catalog.xml">
+                        <include-controls with-parent-controls="no">
+                            <with-id>z3.a-1</with-id>
+                        </include-controls>
+                    </import>
+                </profile>
+            </x:context>
+            
+            <x:expect label="Control Z3-A-1 without its ancestor controls">
+                <profile>
+                    <selection uuid="..." opr:src="...">
+                        <metadata>...</metadata>
+                        <group opr:id="...">
+                            <title>Group X of XYZ</title>
+                        </group>
+                        <group opr:id="...">
+                            <title>Group Y of XYZ</title>
+                        </group>
+                        <group opr:id="...">
+                            <title>Group Z of XYZ</title>
+                            <control id="z3.a-1" opr:id="..."><title>Control Z3-A-1</title></control>
+                        </group>
+                    </selection>
+                </profile>
+            </x:expect>
+        </x:scenario>
+
         <x:scenario label="Doubled import, exclusive call">
             <x:context>
                 <profile>
