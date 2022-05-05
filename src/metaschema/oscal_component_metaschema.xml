@@ -358,7 +358,7 @@
     <model>
       <define-field name="description" as-type="markup-multiline" min-occurs="1" in-xml="WITH_WRAPPER">
         <formal-name>Control Implementation Description</formal-name>
-        <description>A description of how the specified control is implemented for the containing component or capability.</description>
+        <description>A suggestion for how the specified control may be implemented if the containing component or capability is instantiated in a system security plan.</description>
       </define-field>
       <assembly ref="property" max-occurs="unbounded">
         <group-as name="props" in-json="ARRAY"/>
@@ -397,6 +397,9 @@
         </remarks>
       </is-unique>
     </constraint>
+    <remarks>
+      <p>Implemented requirements within a component or capability in a component definition provide a means to suggest possible control implementation details, which may be used by a different party when authoring a system security plan. Thus, these requirements defined in a component definition are only a suggestion of how to implement, which may be adopted wholesale, changed, or ignored by a person defining an information system implementation.</p>
+    </remarks>
   </define-assembly>
   <define-assembly name="statement" scope="local">
     <formal-name>Control Statement Implementation</formal-name>
