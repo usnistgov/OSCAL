@@ -44,23 +44,25 @@ jobs:
     steps:
     # use this for builds triggered from the UI on protected branches
     - name: Checkout Latest (using COMMIT_TOKEN)
-      if: github.event_name == 'workflow_dispatch' && github.event.inputs.commit_resources == true
+      if: github.event_name == 'workflow_dispatch' && github.event.inputs.commit_resources == 'true'
       uses: actions/checkout@v3
       with:
         path: ${{ env.CHECKOUT_PATH }}
         token: ${{ secrets.COMMIT_TOKEN }}
         submodules: recursive
+      id: checkout_latest_workflow
     # use this for builds triggered from other workflows on protected branches
     - name: Checkout Latest (using access_token)
-      if: github.event_name == 'push' && inputs.commit_resources == true
+      if: github.event_name == 'push' && inputs.commit_resources == 'true'
       uses: actions/checkout@v3
       with:
         path: ${{ env.CHECKOUT_PATH }}
         token: ${{ secrets.access_token }}
         submodules: recursive
+      id: checkout_latest_push
     # use this for overything else (i.e., pull requests) where publication is not needed
     - name: Checkout Latest
-      if: ${{ inputs.commit_resources == false }}
+      if: steps.checkout_latest_workflow.conclusion == 'skipped' && steps.checkout_latest_push.conclusion == 'skipped'
       uses: actions/checkout@v3
       with:
         path: ${{ env.CHECKOUT_PATH }}
@@ -69,7 +71,6 @@ jobs:
     # -------------------------
     # Java JDK 11
     - name: Set up JDK
-      if: steps.changed-files.outputs.any_modified
       uses: actions/setup-java@v2
       with:
         java-version: 11
@@ -130,7 +131,7 @@ jobs:
     # ---------------
     - name: Publish Schemas and Converters
       # only do this on master
-      if: github.event.inputs.commit_resources == true || inputs.commit_resources == true
+      if: github.event.inputs.commit_resources == 'true' || inputs.commit_resources == 'true'
       uses: stefanzweifel/git-auto-commit-action@v4.9.2
       with:
         repository: ${{ env.CHECKOUT_PATH }}

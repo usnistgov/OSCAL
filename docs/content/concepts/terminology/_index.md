@@ -35,7 +35,7 @@ Many privacy and security compliance programs are based on or make use of **cont
 In OSCAL, a control is *a requirement or guideline, which when implemented will reduce an aspect of risk related to an information system and its information.*
 
 {{% callout %}}
-A **security control** is defined in NIST Special Publication (SP) [SP 800-53 revision 5)](https://doi.org/10.6028/NIST.SP.800-53r5) and the Office of Management and Budget Memorandum Circular [A-130](https://www.whitehouse.gov/sites/whitehouse.gov/files/omb/circulars/A130/a130revised.pdf), *Managing Information as a Strategic Resource*, as:
+A **security control** is defined in NIST Special Publication (SP) [SP 800-53 revision 5)](https://doi.org/10.6028/NIST.SP.800-53r5) and the Office of Management and Budget Memorandum Circular [A-130](https://obamawhitehouse.archives.gov/sites/default/files/omb/assets/OMB/circulars/a130/a130revised.pdf), *Managing Information as a Strategic Resource*, as:
 
 > The safeguards or countermeasures prescribed for an information system or an organization to protect the confidentiality, integrity, and availability of the system and its information.
 
