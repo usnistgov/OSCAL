@@ -1015,7 +1015,7 @@
          <description>Specifies the source of the threat information.</description>
          <constraint>
             <allowed-values allow-other="yes">
-               <enum value="https://fedramp.gov">The value conforms to FedRAMP definitions.</enum>
+               <enum value="http://fedramp.gov">The value conforms to FedRAMP definitions.</enum>
             </allowed-values>
          </constraint>
       </define-flag>

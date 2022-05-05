@@ -672,8 +672,8 @@
                   <description>Identifies the identification system from which the provided identifier was assigned. </description>
                   <constraint>
                         <allowed-values allow-other="yes">
-                              <enum value="https://fedramp.gov">The identifier was assigned by FedRAMP.</enum>
-                              <enum value="https://ietf.org/rfc/rfc4122">A Universally Unique Identifier (UUID) as defined by RFC4122.</enum>
+                              <enum value="http://fedramp.gov">The identifier was assigned by FedRAMP.</enum>
+                              <enum value="http://ietf.org/rfc/rfc4122">A Universally Unique Identifier (UUID) as defined by RFC4122.</enum>
                         </allowed-values>
                   </constraint>
             </define-flag>

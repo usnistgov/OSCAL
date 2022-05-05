@@ -286,7 +286,7 @@
                     <description>Indicates the type of external identifier.</description>
                     <constraint>
                         <allowed-values allow-other="yes">
-                            <enum value="https://orcid.org/">The identifier is Open Researcher and Contributor ID (ORCID).</enum>
+                            <enum value="http://orcid.org/">The identifier is Open Researcher and Contributor ID (ORCID).</enum>
                         </allowed-values>
                     </constraint>
                 </define-flag>
@@ -945,7 +945,7 @@
             <description>Qualifies the kind of document identifier using a URI. If the scheme is not provided the value of the element will be interpreted as a string of characters. </description>
             <constraint>
                 <allowed-values allow-other="yes">
-                    <enum value="https://www.doi.org/">A <a href="https://www.doi.org/hb.html">Digital Object Identifier</a> (DOI); use is preferred, since this allows for retrieval of a full bibliographic record.</enum>
+                    <enum value="http://www.doi.org/">A <a href="https://www.doi.org/hb.html">Digital Object Identifier</a> (DOI); use is preferred, since this allows for retrieval of a full bibliographic record.</enum>
                 </allowed-values>
             </constraint>
         </define-flag>
