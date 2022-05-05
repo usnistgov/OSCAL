@@ -60,8 +60,18 @@ jobs:
       - uses: ncipollo/release-action@v1.9.0
         with:
           name: OSCAL ${{ env.RELEASE_VERSION }} Release
+          draft: true
           allowUpdates: true
           omitBodyDuringUpdate: true
           omitNameDuringUpdate: true
           token: ${{ secrets.COMMIT_TOKEN }}
-          artifacts: "${{ env.OSCAL_WORKING_PATH }}/${{ env.RELEASE_NAME }}.tar.bz2,${{ env.OSCAL_WORKING_PATH }}/${{ env.RELEASE_NAME }}.zip"
+          artifacts: ${{ env.OSCAL_WORKING_PATH }}/${{ env.RELEASE_NAME }}.tar.bz2
+      - uses: ncipollo/release-action@v1.9.0
+        with:
+          name: OSCAL ${{ env.RELEASE_VERSION }} Release
+          draft: true
+          allowUpdates: true
+          omitBodyDuringUpdate: true
+          omitNameDuringUpdate: true
+          token: ${{ secrets.COMMIT_TOKEN }}
+          artifacts: ${{ env.OSCAL_WORKING_PATH }}/${{ env.RELEASE_NAME }}.zip
