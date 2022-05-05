@@ -685,7 +685,7 @@
       </index>
     </constraint>
     <remarks>
-      <p>Use of <code>set-parameter</code> in this context, sets the parameter for all related controls referenced in an <code>implemented-requirement</code>. If the same parameter is also set in a specific <code>implemented-requirement</code>, then the new value will override this value.</p>
+      <p>Use of <code>set-parameter</code> in this context, sets the parameter for all controls referenced by any <code>implemented-requirement</code> contained in this context. Any <code>set-parameter</code> defined in a child context will override this value. If not overridden by a child, this value applies in the child context.</p>
     </remarks>
   </define-assembly>
   <define-assembly name="implemented-requirement" scope="local">
@@ -773,6 +773,9 @@
         </remarks>
       </is-unique>
     </constraint>
+    <remarks>
+      <p>Use of <code>set-parameter</code> in this context, sets the parameter for the referenced control. Any <code>set-parameter</code> defined in a child context will override this value. If not overridden by a child, this value applies in the child context.</p>
+    </remarks>
   </define-assembly>
   <define-assembly name="statement" scope="local">
     <formal-name>Specific Control Statement</formal-name>
@@ -1044,6 +1047,9 @@
         </remarks>
       </is-unique>
     </constraint>
+    <remarks>
+      <p>Use of <code>set-parameter</code> in this context, sets the parameter for the control referenced in the containing <code>implemented-requirement</code> applied to the referenced component. If the <code>by-component</code> is used as a child of a <code>statement</code>, then the parameter value also applies only in the context of the referenced statement. If the same parameter is also set in the <code>control-implementation</code> or a specific <code>implemented-requirement</code>, then this <code>by-component/set-parameter</code> value will override the other value(s) in the context of the referenced component, control, and statement (if parent).</p>
+    </remarks>
   </define-assembly>
 
   <define-flag name="provided-uuid" as-type="uuid" scope="local">
