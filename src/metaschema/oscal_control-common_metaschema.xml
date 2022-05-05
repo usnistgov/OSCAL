@@ -89,7 +89,7 @@
                 <example>
                         <description>Multiple Parts with Different Organization-Specific Names</description>
                         <o:part xmlns:o="http://csrc.nist.gov/ns/oscal/example" name="statement" id="statement-A">
-                                <o:part ns="https://fedramp.gov/ns/oscal" name="status" id="statement-A-FedRAMP">Something FedRAMP Cares About</o:part>
+                                <o:part ns="http://fedramp.gov/ns/oscal" name="status" id="statement-A-FedRAMP">Something FedRAMP Cares About</o:part>
                                 <o:part ns="https://defense.gov" name="status" id="statement-A-DoD">Something DoD Cares About</o:part>
                         </o:part>
                 </example>
