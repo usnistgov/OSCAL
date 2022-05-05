@@ -1,3 +1,3 @@
-# OSCAL 1.0.2
+# OSCAL Release Notes
 
-Full release notes can be found at: https://pages.nist.gov/OSCAL/reference/release-notes/
+Release information can be found at: https://github.com/usnistgov/OSCAL/releases
