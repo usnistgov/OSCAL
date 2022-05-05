@@ -690,7 +690,7 @@
   </define-assembly>
   <define-assembly name="implemented-requirement" scope="local">
     <formal-name>Control-based Requirement</formal-name>
-    <description>Describes how the system satisfies an individual control.</description>
+    <description>Describes how the system satisfies the requirements of an individual control.</description>
     <define-flag name="uuid" as-type="uuid" required="yes">
       <formal-name>Control Requirement Universally Unique Identifier</formal-name>
       <!-- Identifier Declaration -->
