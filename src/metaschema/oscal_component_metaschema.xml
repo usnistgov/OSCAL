@@ -343,7 +343,7 @@
       </is-unique>
     </constraint>
     <remarks>
-      <p>Use of <code>set-parameter</code> in this context, sets the parameter for all related controls referenced in an <code>implemented-requirement</code>. If the same parameter is also set in a specific <code>implemented-requirement</code>, then the new value will override this value.</p>
+      <p>Use of <code>set-parameter</code> in this context, sets the parameter for all controls referenced by any <code>implemented-requirement</code> contained in this context. Any <code>set-parameter</code> defined in a child context will override this value. If not overridden by a child, this value applies in the child context.</p>
     </remarks>
   </define-assembly>
   <define-assembly name="implemented-requirement" scope="local">
@@ -399,6 +399,7 @@
     </constraint>
     <remarks>
       <p>Implemented requirements within a component or capability in a component definition provide a means to suggest possible control implementation details, which may be used by a different party when authoring a system security plan. Thus, these requirements defined in a component definition are only a suggestion of how to implement, which may be adopted wholesale, changed, or ignored by a person defining an information system implementation.</p>
+      <p>Use of <code>set-parameter</code> in this context, sets the parameter for the referenced control and any associated statements.</p>
     </remarks>
   </define-assembly>
   <define-assembly name="statement" scope="local">
