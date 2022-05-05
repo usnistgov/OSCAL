@@ -215,8 +215,7 @@
               <description>Specifies the information type identification system used.</description>
               <constraint>
                 <allowed-values allow-other="yes">
-                  <enum value="https://doi.org/10.6028/NIST.SP.800-60v2r1">Based on the section identifiers in NIST <a href="https://doi.org/10.6028/NIST.SP.800-60v2r1">Special Publication 800-60 Volume II Revision 1</a>.
-                  </enum>
+                  <enum value="http://doi.org/10.6028/NIST.SP.800-60v2r1">Based on the section identifiers in NIST <a href="https://doi.org/10.6028/NIST.SP.800-60v2r1">Special Publication 800-60 Volume II Revision 1</a>.</enum>
                 </allowed-values>
               </constraint>
             </define-flag>
