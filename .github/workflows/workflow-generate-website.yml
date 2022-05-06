@@ -62,6 +62,11 @@ on:
         required: false
         default: true
         type: boolean
+      create_issue:
+        description: 'create new GitHub issue if broken links found'
+        required: false
+        default: false
+        type: boolean
 jobs:
   build-and-push-website:
     name: Build and Push Website
@@ -148,14 +153,14 @@ jobs:
       uses: lycheeverse/lychee-action@f1da3291e1d03cbe11a413ae9f16b62fec99e6b6 # v1.4.1
       with:
         args: --exclude-file ./build/config/.lycheeignore --verbose --no-progress './docs/public/**/*.html' --accept 200,206,429
-        format: json
-        output: html_link_report.json
+        format: markdown
+        output: html_link_report.md
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - uses: actions/upload-artifact@v3 # current: 6673cd052c4cd6fcf4b4e6e60ea986c889389535
       with:
         name: html_link_report
-        path: html_link_report.json
+        path: html_link_report.md
         retention-days: 5
     - uses: actions/github-script@v3 # current: f05a81df23035049204b043b50c3322045ce7eb3
       if: steps.linkchecker.outputs.exit_code != 0
