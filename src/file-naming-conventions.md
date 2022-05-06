@@ -99,7 +99,7 @@ oscal_{OSCAL Model}_schema[_{File Revision}].{File Extension}
 
 ## Schema Examples
 
-The following XML schema for the OSCAL catalog model:
+The following JSON schema for the OSCAL catalog model:
 
 ```
 oscal_catalog_schema_1.0-M1.json
