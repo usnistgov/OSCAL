@@ -91,7 +91,7 @@ jobs:
       id: checkout_main_workflow
     # use this for builds triggered from other workflows on protected branches
     - name: Checkout Main (using access_token)
-      if: github.event_name == 'push' && inputs.commit_resources == 'true'
+      if: github.event_name == 'push' && inputs.commit_resources == true
       uses: actions/checkout@v3
       with:
         path: ${{ env.MAIN_PATH }}
@@ -167,7 +167,7 @@ jobs:
         retention-days: 5
     - name: Publish Generated Pages
       # only do this on master
-      if: github.event.inputs.commit_resources == 'true' || inputs.commit_resources == 'true'
+      if: github.event.inputs.commit_resources == 'true' || inputs.commit_resources == true
       uses: stefanzweifel/git-auto-commit-action@v4.9.2
       with:
         repository: ${{ env.MAIN_PATH }}
