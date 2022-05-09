@@ -126,7 +126,7 @@ The following is a reference for the JSON object definitions derived from the [m
                         <summary>Constraint (1)</summary>
                         
                         <div class="constraint">
-                           <p><span class="usa-tag">matches</span>: a target (value) must match the regular expression '[A-Z](2)'.</p>
+                           <p><span class="usa-tag">matches</span>: a target (value) must match the regular expression '[A-Z]{2}'.</p>
                         </div>
                         </details>
                   </div>
@@ -828,7 +828,8 @@ The following is a reference for the JSON object definitions derived from the [m
                         <details open="open">
                            <summary class="subhead">Remarks</summary>
                            <div class="remarks">
-                              <p>Use of <code>set-parameter</code> in this context, sets the parameter for all related controls referenced in an <code>implemented-requirement</code>. If the same parameter is also set in a specific <code>implemented-requirement</code>, then the new value will override this value.</p>
+                              <p>Use of <code>set-parameter</code> in this context, sets the parameter for all controls referenced by any <code>implemented-requirement</code> contained in this context. Any <code>set-parameter</code> defined in a child context will override this value. If not overridden by a child,
+                                 this value applies in the child context.</p>
                            </div>
                         </details>
                      </div>
@@ -1004,7 +1005,8 @@ The following is a reference for the JSON object definitions derived from the [m
             <details open="open">
                <summary class="subhead">Remarks</summary>
                <div class="remarks">
-                  <p>Use of <code>set-parameter</code> in this context, sets the parameter for all related controls referenced in an <code>implemented-requirement</code>. If the same parameter is also set in a specific <code>implemented-requirement</code>, then the new value will override this value.</p>
+                  <p>Use of <code>set-parameter</code> in this context, sets the parameter for all controls referenced by any <code>implemented-requirement</code> contained in this context. Any <code>set-parameter</code> defined in a child context will override this value. If not overridden by a child,
+                     this value applies in the child context.</p>
                </div>
             </details>
          </div>
@@ -1143,6 +1145,21 @@ The following is a reference for the JSON object definitions derived from the [m
                   </div>
                   <div class="body">
                      <p><span class="usa-tag">group as</span> <code class="name">implemented-requirements</code></p>
+                     <div class="remarks-group usa-prose">
+                        <details open="open">
+                           <summary class="subhead">Remarks</summary>
+                           <div class="remarks">
+                              <p>Implemented requirements within a component or capability in a component definition
+                                 provide a means to suggest possible control implementation details, which may be used
+                                 by a different party when authoring a system security plan. Thus, these requirements
+                                 defined in a component definition are only a suggestion of how to implement, which
+                                 may be adopted wholesale, changed, or ignored by a person defining an information
+                                 system implementation.</p>
+                              <p>Use of <code>set-parameter</code> in this context, sets the parameter for the referenced control and any associated
+                                 statements.</p>
+                           </div>
+                        </details>
+                     </div>
                      <p class="definition-link"><a href="#/assembly/oscal-component-definition/implemented-requirement">See definition</a></p>
                   </div>
                </div>
@@ -1632,7 +1649,8 @@ The following is a reference for the JSON object definitions derived from the [m
                         <details open="open">
                            <summary class="subhead">Remarks</summary>
                            <div class="remarks">
-                              <p>Use of <code>set-parameter</code> in this context, sets the parameter for all related controls referenced in an <code>implemented-requirement</code>. If the same parameter is also set in a specific <code>implemented-requirement</code>, then the new value will override this value.</p>
+                              <p>Use of <code>set-parameter</code> in this context, sets the parameter for all controls referenced by any <code>implemented-requirement</code> contained in this context. Any <code>set-parameter</code> defined in a child context will override this value. If not overridden by a child,
+                                 this value applies in the child context.</p>
                            </div>
                         </details>
                      </div>
@@ -1748,7 +1766,7 @@ The following is a reference for the JSON object definitions derived from the [m
                            <p>The value <b>may be locally defined</b>, or the following:</p>
                            <ul>
                               
-                              <li><strong>https://www.doi.org/</strong>: A Digital Object Identifier (DOI); use is preferred, since this allows for retrieval
+                              <li><strong>http://www.doi.org/</strong>: A Digital Object Identifier (DOI); use is preferred, since this allows for retrieval
                                  of a full bibliographic record.</li>
                               </ul>
                         </div>
@@ -1955,6 +1973,21 @@ The following is a reference for the JSON object definitions derived from the [m
       </div>
       <div class="body">
          <p class="description"><span class="usa-tag">description</span> Describes how the containing component or capability implements an individual control.</p>
+         <div class="remarks-group usa-prose">
+            <details open="open">
+               <summary class="subhead">Remarks</summary>
+               <div class="remarks">
+                  <p>Implemented requirements within a component or capability in a component definition
+                     provide a means to suggest possible control implementation details, which may be used
+                     by a different party when authoring a system security plan. Thus, these requirements
+                     defined in a component definition are only a suggestion of how to implement, which
+                     may be adopted wholesale, changed, or ignored by a person defining an information
+                     system implementation.</p>
+                  <p>Use of <code>set-parameter</code> in this context, sets the parameter for the referenced control and any associated
+                     statements.</p>
+               </div>
+            </details>
+         </div>
          <details>
             <summary>Constraints (3)</summary>
             
@@ -2009,8 +2042,8 @@ The following is a reference for the JSON object definitions derived from the [m
                      <p class="formal-name">Control Implementation Description</p>
                   </div>
                   <div class="body">
-                     <p class="description"><span class="usa-tag">description</span> A description of how the specified control is implemented for the containing component
-                        or capability.</p>
+                     <p class="description"><span class="usa-tag">description</span> A suggestion for how the specified control may be implemented if the containing component
+                        or capability is instantiated in a system security plan.</p>
                   </div>
                </div>
                <div class="model-entry definition assembly">
@@ -4145,7 +4178,7 @@ The following is a reference for the JSON object definitions derived from the [m
                      <code>ns</code> is provided, the name is expected to be in the "OSCAL" namespace.</p>
                   <p>To ensure a <code>ns</code> is unique to an organization and naming conflicts are avoided, a URI containing a
                      DNS or other globally defined organization name should be used. For example, if FedRAMP
-                     and DoD both extend OSCAL, FedRAMP will use the <code>ns</code> "https://fedramp.gov", while DoD will use the <code>ns</code> "https://defense.gov" for any organization specific <code>name</code>. </p>
+                     and DoD both extend OSCAL, FedRAMP will use the <code>ns</code> <code>http://fedramp.gov/ns/oscal</code>, while DoD might use the <code>ns</code> <code>https://defense.gov</code> for any organization specific <code>name</code>.</p>
                   <p>Tools that process OSCAL content are not required to interpret unrecognized OSCAL
                      extensions; however, OSCAL compliant tools should not modify or remove unrecognized
                      extensions, unless there is a compelling reason to do so, such as data sensitivity.</p>
@@ -4335,7 +4368,7 @@ The following is a reference for the JSON object definitions derived from the [m
                                  <code>ns</code> is provided, the name is expected to be in the "OSCAL" namespace.</p>
                               <p>To ensure a <code>ns</code> is unique to an organization and naming conflicts are avoided, a URI containing a
                                  DNS or other globally defined organization name should be used. For example, if FedRAMP
-                                 and DoD both extend OSCAL, FedRAMP will use the <code>ns</code> "https://fedramp.gov", while DoD will use the <code>ns</code> "https://defense.gov" for any organization specific <code>name</code>. </p>
+                                 and DoD both extend OSCAL, FedRAMP will use the <code>ns</code> <code>http://fedramp.gov/ns/oscal</code>, while DoD might use the <code>ns</code> <code>https://defense.gov</code> for any organization specific <code>name</code>.</p>
                               <p>Tools that process OSCAL content are not required to interpret unrecognized OSCAL
                                  extensions; however, OSCAL compliant tools should not modify or remove unrecognized
                                  extensions, unless there is a compelling reason to do so, such as data sensitivity.</p>
@@ -4499,7 +4532,7 @@ The following is a reference for the JSON object definitions derived from the [m
                                        <p>The value <b>may be locally defined</b>, or the following:</p>
                                        <ul>
                                           
-                                          <li><strong>https://orcid.org/</strong>: The identifier is Open Researcher and Contributor ID (ORCID).</li>
+                                          <li><strong>http://orcid.org/</strong>: The identifier is Open Researcher and Contributor ID (ORCID).</li>
                                           </ul>
                                     </div>
                                     </details>
@@ -6686,9 +6719,15 @@ The following is a reference for the JSON object definitions derived from the [m
                            <p>The value <b>may be locally defined</b>, or one of the following:</p>
                            <ul>
                               
-                              <li><strong>https://fedramp.gov</strong>: The identifier was assigned by FedRAMP.</li>
+                              <li><strong>https://fedramp.gov</strong>: **deprecated** The identifier was assigned by FedRAMP. This has been deprecated;
+                                 use http://fedramp.gov/ns/oscal instead.</li>
                               
-                              <li><strong>https://ietf.org/rfc/rfc4122</strong>: A Universally Unique Identifier (UUID) as defined by RFC4122.</li>
+                              <li><strong>http://fedramp.gov/ns/oscal</strong>: The identifier was assigned by FedRAMP.</li>
+                              
+                              <li><strong>https://ietf.org/rfc/rfc4122</strong>: **deprecated** A Universally Unique Identifier (UUID) as defined by RFC4122. This
+                                 value has been deprecated; use http://ietf.org/rfc/rfc4122 instead.</li>
+                              
+                              <li><strong>http://ietf.org/rfc/rfc4122</strong>: A Universally Unique Identifier (UUID) as defined by RFC4122.</li>
                               </ul>
                         </div>
                         </details>

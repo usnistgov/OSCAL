@@ -200,7 +200,7 @@ The following is an index of each JSON property used in the [JSON format](https:
    <section class="named-object-group">
       <h1 class="toc1" id="/collected">collected</h1>
       <ul>
-         <li><span class="pathlink">/<a href="../json-reference/#/plan-of-action-and-milestones">plan-of-action-and-milestones</a>/<a href="../json-reference/#/plan-of-action-and-milestones/observations">observations</a>/<a href="../json-reference/#/plan-of-action-and-milestones/observations/collected">collected</a></span> - <span class="formal-name"><a href="../json-definitions/#/assembly/oscal-assessment-common/observation/collected">collected field</a></span></li>
+         <li><span class="pathlink">/<a href="../json-reference/#/plan-of-action-and-milestones">plan-of-action-and-milestones</a>/<a href="../json-reference/#/plan-of-action-and-milestones/observations">observations</a>/<a href="../json-reference/#/plan-of-action-and-milestones/observations/collected">collected</a></span> - <span class="formal-name"><a href="../json-definitions/#/assembly/oscal-assessment-common/observation/collected">Collected Field</a></span></li>
       </ul>
    </section>
    <section class="named-object-group">
@@ -318,7 +318,7 @@ The following is an index of each JSON property used in the [JSON format](https:
    <section class="named-object-group">
       <h1 class="toc1" id="/expires">expires</h1>
       <ul>
-         <li><span class="pathlink">/<a href="../json-reference/#/plan-of-action-and-milestones">plan-of-action-and-milestones</a>/<a href="../json-reference/#/plan-of-action-and-milestones/observations">observations</a>/<a href="../json-reference/#/plan-of-action-and-milestones/observations/expires">expires</a></span> - <span class="formal-name"><a href="../json-definitions/#/assembly/oscal-assessment-common/observation/expires">expires field</a></span></li>
+         <li><span class="pathlink">/<a href="../json-reference/#/plan-of-action-and-milestones">plan-of-action-and-milestones</a>/<a href="../json-reference/#/plan-of-action-and-milestones/observations">observations</a>/<a href="../json-reference/#/plan-of-action-and-milestones/observations/expires">expires</a></span> - <span class="formal-name"><a href="../json-definitions/#/assembly/oscal-assessment-common/observation/expires">Expires Field</a></span></li>
       </ul>
    </section>
    <section class="named-object-group">

@@ -805,7 +805,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                           <p>The value <b>may be locally defined</b>, or the following:</p>
                                           <ul>
                                              
-                                             <li><strong>https://www.doi.org/</strong>: A Digital Object Identifier (DOI); use is preferred, since this allows for retrieval
+                                             <li><strong>http://www.doi.org/</strong>: A Digital Object Identifier (DOI); use is preferred, since this allows for retrieval
                                                 of a full bibliographic record.</li>
                                              </ul>
                                        </div>
@@ -1689,7 +1689,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                              <details class="constraints" open="open">
                                                 <summary>Constraint (1)</summary>
                                                 <div class="constraint">
-                                                   <p><span class="usa-tag">matches</span>: a target (value) must match the regular expression '[A-Z](2)'.</p>
+                                                   <p><span class="usa-tag">matches</span>: a target (value) must match the regular expression '[A-Z]{2}'.</p>
                                                 </div>
                                              </details>
                                           </div>
@@ -2218,7 +2218,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                    <p>The value <b>may be locally defined</b>, or the following:</p>
                                                    <ul>
                                                       
-                                                      <li><strong>https://orcid.org/</strong>: The identifier is Open Researcher and Contributor ID (ORCID).</li>
+                                                      <li><strong>http://orcid.org/</strong>: The identifier is Open Researcher and Contributor ID (ORCID).</li>
                                                       </ul>
                                                 </div>
                                              </details>
@@ -2686,7 +2686,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                 <details class="constraints" open="open">
                                                    <summary>Constraint (1)</summary>
                                                    <div class="constraint">
-                                                      <p><span class="usa-tag">matches</span>: a target (value) must match the regular expression '[A-Z](2)'.</p>
+                                                      <p><span class="usa-tag">matches</span>: a target (value) must match the regular expression '[A-Z]{2}'.</p>
                                                    </div>
                                                 </details>
                                              </div>
@@ -4425,7 +4425,8 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                               <details open="open">
                                  <summary class="subhead">Remarks</summary>
                                  <div class="remarks">
-                                    <p>Use of <code>set-parameter</code> in this context, sets the parameter for all related controls referenced in an <code>implemented-requirement</code>. If the same parameter is also set in a specific <code>implemented-requirement</code>, then the new value will override this value.</p>
+                                    <p>Use of <code>set-parameter</code> in this context, sets the parameter for all controls referenced by any <code>implemented-requirement</code> contained in this context. Any <code>set-parameter</code> defined in a child context will override this value. If not overridden by a child,
+                                       this value applies in the child context.</p>
                                  </div>
                               </details>
                            </div>
@@ -4866,6 +4867,21 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                  </div>
                                  <div class="body">
                                     <p class="description"><span class="usa-tag">Description</span> Describes how the containing component or capability implements an individual control.</p>
+                                    <div class="remarks-group usa-prose">
+                                       <details open="open">
+                                          <summary class="subhead">Remarks</summary>
+                                          <div class="remarks">
+                                             <p>Implemented requirements within a component or capability in a component definition
+                                                provide a means to suggest possible control implementation details, which may be used
+                                                by a different party when authoring a system security plan. Thus, these requirements
+                                                defined in a component definition are only a suggestion of how to implement, which
+                                                may be adopted wholesale, changed, or ignored by a person defining an information
+                                                system implementation.</p>
+                                             <p>Use of <code>set-parameter</code> in this context, sets the parameter for the referenced control and any associated
+                                                statements.</p>
+                                          </div>
+                                       </details>
+                                    </div>
                                     <details class="constraints" open="open">
                                        <summary>Constraints (3)</summary>
                                        <div class="constraint">
@@ -4919,8 +4935,8 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                              <p class="formal-name">Control Implementation Description</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> A description of how the specified control is implemented for the containing component
-                                                or capability.</p>
+                                             <p class="description"><span class="usa-tag">Description</span> A suggestion for how the specified control may be implemented if the containing component
+                                                or capability is instantiated in a system security plan.</p>
                                              <details class="properties elements" open="open">
                                                 <summary>Element (0+)</summary>
                                                 <div class="model-entry definition assembly">
@@ -6908,7 +6924,8 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                               <details open="open">
                                  <summary class="subhead">Remarks</summary>
                                  <div class="remarks">
-                                    <p>Use of <code>set-parameter</code> in this context, sets the parameter for all related controls referenced in an <code>implemented-requirement</code>. If the same parameter is also set in a specific <code>implemented-requirement</code>, then the new value will override this value.</p>
+                                    <p>Use of <code>set-parameter</code> in this context, sets the parameter for all controls referenced by any <code>implemented-requirement</code> contained in this context. Any <code>set-parameter</code> defined in a child context will override this value. If not overridden by a child,
+                                       this value applies in the child context.</p>
                                  </div>
                               </details>
                            </div>
@@ -7349,6 +7366,21 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                  </div>
                                  <div class="body">
                                     <p class="description"><span class="usa-tag">Description</span> Describes how the containing component or capability implements an individual control.</p>
+                                    <div class="remarks-group usa-prose">
+                                       <details open="open">
+                                          <summary class="subhead">Remarks</summary>
+                                          <div class="remarks">
+                                             <p>Implemented requirements within a component or capability in a component definition
+                                                provide a means to suggest possible control implementation details, which may be used
+                                                by a different party when authoring a system security plan. Thus, these requirements
+                                                defined in a component definition are only a suggestion of how to implement, which
+                                                may be adopted wholesale, changed, or ignored by a person defining an information
+                                                system implementation.</p>
+                                             <p>Use of <code>set-parameter</code> in this context, sets the parameter for the referenced control and any associated
+                                                statements.</p>
+                                          </div>
+                                       </details>
+                                    </div>
                                     <details class="constraints" open="open">
                                        <summary>Constraints (3)</summary>
                                        <div class="constraint">
@@ -7402,8 +7434,8 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                              <p class="formal-name">Control Implementation Description</p>
                                           </div>
                                           <div class="body">
-                                             <p class="description"><span class="usa-tag">Description</span> A description of how the specified control is implemented for the containing component
-                                                or capability.</p>
+                                             <p class="description"><span class="usa-tag">Description</span> A suggestion for how the specified control may be implemented if the containing component
+                                                or capability is instantiated in a system security plan.</p>
                                              <details class="properties elements" open="open">
                                                 <summary>Element (0+)</summary>
                                                 <div class="model-entry definition assembly">
@@ -9370,7 +9402,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                                    <p>The value <b>may be locally defined</b>, or the following:</p>
                                                    <ul>
                                                       
-                                                      <li><strong>https://www.doi.org/</strong>: A Digital Object Identifier (DOI); use is preferred, since this allows for retrieval
+                                                      <li><strong>http://www.doi.org/</strong>: A Digital Object Identifier (DOI); use is preferred, since this allows for retrieval
                                                          of a full bibliographic record.</li>
                                                       </ul>
                                                 </div>

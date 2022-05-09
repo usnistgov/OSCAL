@@ -531,7 +531,7 @@ The following is a reference for the XML element and attribute types derived fro
                         <summary>Constraint (1)</summary>
                         
                         <div class="constraint">
-                           <p><span class="usa-tag">matches</span>: a target (value) must match the regular expression '[A-Z](2)'.</p>
+                           <p><span class="usa-tag">matches</span>: a target (value) must match the regular expression '[A-Z]{2}'.</p>
                         </div>
                         </details>
                   </div>
@@ -950,7 +950,7 @@ The following is a reference for the XML element and attribute types derived fro
                                  <code>ns</code> is provided, the name is expected to be in the "OSCAL" namespace.</p>
                               <p>To ensure a <code>ns</code> is unique to an organization and naming conflicts are avoided, a URI containing a
                                  DNS or other globally defined organization name should be used. For example, if FedRAMP
-                                 and DoD both extend OSCAL, FedRAMP will use the <code>ns</code> "https://fedramp.gov", while DoD will use the <code>ns</code> "https://defense.gov" for any organization specific <code>name</code>.</p>
+                                 and DoD both extend OSCAL, FedRAMP will use the <code>ns</code> <code>http://fedramp.gov/ns/oscal</code>, while DoD might use the <code>ns</code> <code>https://defense.gov</code> for any organization specific <code>name</code>.</p>
                               <p>Tools that process OSCAL content are not required to interpret unrecognized OSCAL
                                  extensions; however, OSCAL compliant tools should not modify or remove unrecognized
                                  extensions, unless there is a compelling reason to do so, such as data sensitivity.</p>
@@ -1252,7 +1252,7 @@ The following is a reference for the XML element and attribute types derived fro
                                              <code>ns</code> is provided, the name is expected to be in the "OSCAL" namespace.</p>
                                           <p>To ensure a <code>ns</code> is unique to an organization and naming conflicts are avoided, a URI containing a
                                              DNS or other globally defined organization name should be used. For example, if FedRAMP
-                                             and DoD both extend OSCAL, FedRAMP will use the <code>ns</code> "https://fedramp.gov", while DoD will use the <code>ns</code> "https://defense.gov" for any organization specific <code>name</code>.</p>
+                                             and DoD both extend OSCAL, FedRAMP will use the <code>ns</code> <code>http://fedramp.gov/ns/oscal</code>, while DoD might use the <code>ns</code> <code>https://defense.gov</code> for any organization specific <code>name</code>.</p>
                                           <p>Tools that process OSCAL content are not required to interpret unrecognized OSCAL
                                              extensions; however, OSCAL compliant tools should not modify or remove unrecognized
                                              extensions, unless there is a compelling reason to do so, such as data sensitivity.</p>
@@ -2369,7 +2369,7 @@ The following is a reference for the XML element and attribute types derived fro
                         
                         
                         <div class="constraint">
-                           <p><span class="usa-tag">allowed values</span> for <code class="path">(.)[@system='http://csrc.nist.gov/oscal']/@name</code></p>
+                           <p><span class="usa-tag">allowed values</span> for <code class="path">(.)[@system='http://csrc.nist.gov/ns/oscal']/@name</code></p>
                            <p>The value <b>may be locally defined</b>, or one of the following:</p>
                            <ul>
                               
@@ -2384,7 +2384,7 @@ The following is a reference for the XML element and attribute types derived fro
                         </div>
                         
                         <div class="constraint">
-                           <p><span class="usa-tag">allowed values</span> for <code class="path">(.)[@system='http://fedramp.gov']/@name</code></p>
+                           <p><span class="usa-tag">allowed values</span> for <code class="path">(.)[@system=('http://fedramp.gov','http://fedramp.gov/ns/oscal')]/@name</code></p>
                            <p>The value <b>may be locally defined</b>, or one of the following:</p>
                            <ul>
                               
@@ -2880,7 +2880,10 @@ The following is a reference for the XML element and attribute types derived fro
                                        <p>The value <b>may be locally defined</b>, or one of the following:</p>
                                        <ul>
                                           
-                                          <li><strong>http://fedramp.gov</strong></li>
+                                          <li><strong>http://fedramp.gov</strong>: **deprecated** The FedRAMP naming system. This has been deprecated; use http://fedramp.gov/ns/oscal
+                                             instead.</li>
+                                          
+                                          <li><strong>http://fedramp.gov/ns/oscal</strong>: The FedRAMP naming system.</li>
                                           
                                           <li><strong>http://csrc.nist.gov/ns/oscal</strong></li>
                                           
@@ -3046,7 +3049,7 @@ The following is a reference for the XML element and attribute types derived fro
                            <p>The value <b>may be locally defined</b>, or the following:</p>
                            <ul>
                               
-                              <li><strong>https://www.doi.org/</strong>: A Digital Object Identifier (DOI); use is preferred, since this allows for retrieval
+                              <li><strong>http://www.doi.org/</strong>: A Digital Object Identifier (DOI); use is preferred, since this allows for retrieval
                                  of a full bibliographic record.</li>
                               </ul>
                         </div>
@@ -3282,7 +3285,7 @@ The following is a reference for the XML element and attribute types derived fro
                                           
                                           <li><strong>fail</strong>: The target system or system component did not satisfy all the conditions.</li>
                                           
-                                          <li><strong>other</strong>: Some other event took place that is not a pass or a fail. </li>
+                                          <li><strong>other</strong>: Some other event took place that is not a pass or a fail.</li>
                                           </ul>
                                     </div>
                                     </details>
@@ -4312,7 +4315,7 @@ The following is a reference for the XML element and attribute types derived fro
                   
                   <li><strong>objective</strong>: **(deprecated)** Use 'assessment-objective' instead.</li>
                   
-                  <li><strong>assessment</strong>: **(deprecated)** Use 'assessment-method' instead</li>
+                  <li><strong>assessment</strong>: **(deprecated)** Use 'assessment-method' instead.</li>
                   
                   <li><strong>assessment-objective</strong>: The part defines an assessment objective.</li>
                   
@@ -4462,7 +4465,7 @@ The following is a reference for the XML element and attribute types derived fro
                                  <code>ns</code> is provided, the name is expected to be in the "OSCAL" namespace.</p>
                               <p>To ensure a <code>ns</code> is unique to an organization and naming conflicts are avoided, a URI containing a
                                  DNS or other globally defined organization name should be used. For example, if FedRAMP
-                                 and DoD both extend OSCAL, FedRAMP will use the <code>ns</code> "https://fedramp.gov", while DoD will use the <code>ns</code> "https://defense.gov" for any organization specific <code>name</code>. </p>
+                                 and DoD both extend OSCAL, FedRAMP will use the <code>ns</code> <code>http://fedramp.gov/ns/oscal</code>, while DoD might use the <code>ns</code> <code>https://defense.gov</code> for any organization specific <code>name</code>.</p>
                               <p>Tools that process OSCAL content are not required to interpret unrecognized OSCAL
                                  extensions; however, OSCAL compliant tools should not modify or remove unrecognized
                                  extensions, unless there is a compelling reason to do so, such as data sensitivity.</p>
@@ -5583,7 +5586,7 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="type"><a href="/reference/datatypes/#datetime-with-timezone">dateTime-with-timezone</a></p>
                      <p class="occurrence">[1]</p>
                      <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-assessment-common/observation/collected">Switch to JSON</a></div>
-                     <p class="formal-name">collected field</p>
+                     <p class="formal-name">Collected Field</p>
                   </div>
                   <div class="body">
                      <p class="description"><span class="usa-tag">description</span> Date/time stamp identifying when the finding information was collected.</p>
@@ -5595,7 +5598,7 @@ The following is a reference for the XML element and attribute types derived fro
                      <p class="type"><a href="/reference/datatypes/#datetime-with-timezone">dateTime-with-timezone</a></p>
                      <p class="occurrence">[0 or 1]</p>
                      <div class="crosslink"><a class="usa-button" href="../json-definitions/#/assembly/oscal-assessment-common/observation/expires">Switch to JSON</a></div>
-                     <p class="formal-name">expires field</p>
+                     <p class="formal-name">Expires Field</p>
                   </div>
                   <div class="body">
                      <p class="description"><span class="usa-tag">description</span> Date/time identifying when the finding information is out-of-date and no longer valid.
@@ -6313,7 +6316,7 @@ The following is a reference for the XML element and attribute types derived fro
                      <code>ns</code> is provided, the name is expected to be in the "OSCAL" namespace.</p>
                   <p>To ensure a <code>ns</code> is unique to an organization and naming conflicts are avoided, a URI containing a
                      DNS or other globally defined organization name should be used. For example, if FedRAMP
-                     and DoD both extend OSCAL, FedRAMP will use the <code>ns</code> "https://fedramp.gov", while DoD will use the <code>ns</code> "https://defense.gov" for any organization specific <code>name</code>.</p>
+                     and DoD both extend OSCAL, FedRAMP will use the <code>ns</code> <code>http://fedramp.gov/ns/oscal</code>, while DoD might use the <code>ns</code> <code>https://defense.gov</code> for any organization specific <code>name</code>.</p>
                   <p>Tools that process OSCAL content are not required to interpret unrecognized OSCAL
                      extensions; however, OSCAL compliant tools should not modify or remove unrecognized
                      extensions, unless there is a compelling reason to do so, such as data sensitivity.</p>
@@ -6536,7 +6539,7 @@ The following is a reference for the XML element and attribute types derived fro
                                  <code>ns</code> is provided, the name is expected to be in the "OSCAL" namespace.</p>
                               <p>To ensure a <code>ns</code> is unique to an organization and naming conflicts are avoided, a URI containing a
                                  DNS or other globally defined organization name should be used. For example, if FedRAMP
-                                 and DoD both extend OSCAL, FedRAMP will use the <code>ns</code> "https://fedramp.gov", while DoD will use the <code>ns</code> "https://defense.gov" for any organization specific <code>name</code>.</p>
+                                 and DoD both extend OSCAL, FedRAMP will use the <code>ns</code> <code>http://fedramp.gov/ns/oscal</code>, while DoD might use the <code>ns</code> <code>https://defense.gov</code> for any organization specific <code>name</code>.</p>
                               <p>Tools that process OSCAL content are not required to interpret unrecognized OSCAL
                                  extensions; however, OSCAL compliant tools should not modify or remove unrecognized
                                  extensions, unless there is a compelling reason to do so, such as data sensitivity.</p>
@@ -6599,7 +6602,7 @@ The following is a reference for the XML element and attribute types derived fro
                      <code>ns</code> is provided, the name is expected to be in the "OSCAL" namespace.</p>
                   <p>To ensure a <code>ns</code> is unique to an organization and naming conflicts are avoided, a URI containing a
                      DNS or other globally defined organization name should be used. For example, if FedRAMP
-                     and DoD both extend OSCAL, FedRAMP will use the <code>ns</code> "https://fedramp.gov", while DoD will use the <code>ns</code> "https://defense.gov" for any organization specific <code>name</code>. </p>
+                     and DoD both extend OSCAL, FedRAMP will use the <code>ns</code> <code>http://fedramp.gov/ns/oscal</code>, while DoD might use the <code>ns</code> <code>https://defense.gov</code> for any organization specific <code>name</code>.</p>
                   <p>Tools that process OSCAL content are not required to interpret unrecognized OSCAL
                      extensions; however, OSCAL compliant tools should not modify or remove unrecognized
                      extensions, unless there is a compelling reason to do so, such as data sensitivity.</p>
@@ -6792,7 +6795,7 @@ The following is a reference for the XML element and attribute types derived fro
                                  <code>ns</code> is provided, the name is expected to be in the "OSCAL" namespace.</p>
                               <p>To ensure a <code>ns</code> is unique to an organization and naming conflicts are avoided, a URI containing a
                                  DNS or other globally defined organization name should be used. For example, if FedRAMP
-                                 and DoD both extend OSCAL, FedRAMP will use the <code>ns</code> "https://fedramp.gov", while DoD will use the <code>ns</code> "https://defense.gov" for any organization specific <code>name</code>. </p>
+                                 and DoD both extend OSCAL, FedRAMP will use the <code>ns</code> <code>http://fedramp.gov/ns/oscal</code>, while DoD might use the <code>ns</code> <code>https://defense.gov</code> for any organization specific <code>name</code>.</p>
                               <p>Tools that process OSCAL content are not required to interpret unrecognized OSCAL
                                  extensions; however, OSCAL compliant tools should not modify or remove unrecognized
                                  extensions, unless there is a compelling reason to do so, such as data sensitivity.</p>
@@ -6958,7 +6961,7 @@ The following is a reference for the XML element and attribute types derived fro
                                        <p>The value <b>may be locally defined</b>, or the following:</p>
                                        <ul>
                                           
-                                          <li><strong>https://orcid.org/</strong>: The identifier is Open Researcher and Contributor ID (ORCID).</li>
+                                          <li><strong>http://orcid.org/</strong>: The identifier is Open Researcher and Contributor ID (ORCID).</li>
                                           </ul>
                                     </div>
                                     </details>
@@ -7825,7 +7828,7 @@ The following is a reference for the XML element and attribute types derived fro
                            <p>The value <b>may be locally defined</b>, or one of the following:</p>
                            <ul>
                               
-                              <li><strong>recommendation</strong>: Recommended Remediation</li>
+                              <li><strong>recommendation</strong>: Recommended remediation.</li>
                               
                               <li><strong>planned</strong>: The actions intended to resolve the risk.</li>
                               
@@ -11183,9 +11186,15 @@ The following is a reference for the XML element and attribute types derived fro
                            <p>The value <b>may be locally defined</b>, or one of the following:</p>
                            <ul>
                               
-                              <li><strong>https://fedramp.gov</strong>: The identifier was assigned by FedRAMP.</li>
+                              <li><strong>https://fedramp.gov</strong>: **deprecated** The identifier was assigned by FedRAMP. This has been deprecated;
+                                 use http://fedramp.gov/ns/oscal instead.</li>
                               
-                              <li><strong>https://ietf.org/rfc/rfc4122</strong>: A Universally Unique Identifier (UUID) as defined by RFC4122.</li>
+                              <li><strong>http://fedramp.gov/ns/oscal</strong>: The identifier was assigned by FedRAMP.</li>
+                              
+                              <li><strong>https://ietf.org/rfc/rfc4122</strong>: **deprecated** A Universally Unique Identifier (UUID) as defined by RFC4122. This
+                                 value has been deprecated; use http://ietf.org/rfc/rfc4122 instead.</li>
+                              
+                              <li><strong>http://ietf.org/rfc/rfc4122</strong>: A Universally Unique Identifier (UUID) as defined by RFC4122.</li>
                               </ul>
                         </div>
                         </details>
@@ -12057,11 +12066,14 @@ The following is a reference for the XML element and attribute types derived fro
                         <summary>Constraint (1)</summary>
                         
                         <div class="constraint">
-                           <p><span class="usa-tag">allowed value</span></p>
-                           <p>The value <b>may be locally defined</b>, or the following:</p>
+                           <p><span class="usa-tag">allowed values</span></p>
+                           <p>The value <b>may be locally defined</b>, or one of the following:</p>
                            <ul>
                               
-                              <li><strong>https://fedramp.gov</strong>: The value conforms to FedRAMP definitions.</li>
+                              <li><strong>http://fedramp.gov</strong>: **deprecated** The value conforms to FedRAMP definitions. This value has been deprecated;
+                                 use http://fedramp.gov/ns/oscal instead.</li>
+                              
+                              <li><strong>http://fedramp.gov/ns/oscal</strong>: The value conforms to FedRAMP definitions.</li>
                               </ul>
                         </div>
                         </details>
