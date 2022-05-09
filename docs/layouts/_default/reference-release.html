@@ -46,7 +46,7 @@
           <p>The following documentation is provided for this release.</p>
           <ul>
           {{- range .Pages -}}
-            <li><a href='{{ .Permalink }}'>{{.Summary}}</a></li>
+            <li><a href='{{ .RelPermalink }}'>{{.Summary}}</a></li>
           {{ end }}
           </ul>
           {{ end }}

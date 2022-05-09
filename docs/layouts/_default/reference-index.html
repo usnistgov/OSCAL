@@ -45,7 +45,7 @@
           <ul>
           {{ range .Pages }}
             {{ if not (.Params.suppressintopiclist | default false) }}
-            <li><a href='{{ .Permalink }}'>{{.Summary}}</a></li>
+            <li><a href='{{ .RelPermalink }}'>{{.Summary}}</a></li>
             {{ end }}
           {{ end }}
           </ul>
