@@ -127,7 +127,7 @@ jobs:
       with:
         name: specification-docs
         path: |
-          docs/content/documentation/processing/profile-resolution.html
+          docs/content/concepts/processing/profile-resolution.html
         retention-days: 5
     - name: Run Hugo
       run: |
