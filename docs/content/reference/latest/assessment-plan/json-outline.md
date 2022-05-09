@@ -1,6 +1,6 @@
 ---
-title: "OSCAL Assessment Plan Model v1.0.3-alpha JSON Format Outline"
-heading: "Assessment Plan Model v1.0.3-alpha JSON Format Outline"
+title: "OSCAL Assessment Plan Model v1.0.3 JSON Format Outline"
+heading: "Assessment Plan Model v1.0.3 JSON Format Outline"
 custom_js:
   - "/js/oscal-metaschema-map-expander.js"
 weight: 10

@@ -1,6 +1,6 @@
 ---
-title: "OSCAL Component Definition Model v1.0.3-alpha XML Format Outline"
-heading: "Component Definition Model v1.0.3-alpha XML Format Outline"
+title: "OSCAL Component Definition Model v1.0.3 XML Format Outline"
+heading: "Component Definition Model v1.0.3 XML Format Outline"
 custom_js:
   - "/js/oscal-metaschema-map-expander.js"
 weight: 50

@@ -1,6 +1,6 @@
 ---
-title: "OSCAL System Security Plan Model v1.0.3-alpha JSON Format Metaschema Reference"
-heading: "System Security Plan Model v1.0.3-alpha Model JSON Metaschema Reference"
+title: "OSCAL System Security Plan Model v1.0.3 JSON Format Metaschema Reference"
+heading: "System Security Plan Model v1.0.3 Model JSON Metaschema Reference"
 weight: 40
 generateanchors: false
 sidenav:

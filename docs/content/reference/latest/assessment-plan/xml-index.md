@@ -1,6 +1,6 @@
 ---
-title: "OSCAL Assessment Plan Model v1.0.3-alpha XML Format Index"
-heading: "Assessment Plan Model v1.0.3-alpha XML Format Index"
+title: "OSCAL Assessment Plan Model v1.0.3 XML Format Index"
+heading: "Assessment Plan Model v1.0.3 XML Format Index"
 weight: 70
 generateanchors: false
 sidenav:

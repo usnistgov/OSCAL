@@ -1,6 +1,6 @@
 ---
-title: "OSCAL Catalog Model v1.0.3-alpha JSON Format Reference"
-heading: "Catalog Model v1.0.3-alpha JSON Format Reference"
+title: "OSCAL Catalog Model v1.0.3 JSON Format Reference"
+heading: "Catalog Model v1.0.3 JSON Format Reference"
 weight: 20
 generateanchors: false
 sidenav:

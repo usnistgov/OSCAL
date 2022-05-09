@@ -1,6 +1,6 @@
 ---
-title: "OSCAL Assessment Plan Model v1.0.3-alpha JSON Format Reference"
-heading: "Assessment Plan Model v1.0.3-alpha JSON Format Reference"
+title: "OSCAL Assessment Plan Model v1.0.3 JSON Format Reference"
+heading: "Assessment Plan Model v1.0.3 JSON Format Reference"
 weight: 20
 generateanchors: false
 sidenav:

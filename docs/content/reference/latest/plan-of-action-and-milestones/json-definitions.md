@@ -1,6 +1,6 @@
 ---
-title: "OSCAL Plan of Action and Milestones Model v1.0.3-alpha JSON Format Metaschema Reference"
-heading: "Plan of Action and Milestones Model v1.0.3-alpha Model JSON Metaschema Reference"
+title: "OSCAL Plan of Action and Milestones Model v1.0.3 JSON Format Metaschema Reference"
+heading: "Plan of Action and Milestones Model v1.0.3 Model JSON Metaschema Reference"
 weight: 40
 generateanchors: false
 sidenav:

@@ -1,6 +1,6 @@
 ---
-title: "OSCAL System Security Plan Model v1.0.3-alpha XML Format Index"
-heading: "System Security Plan Model v1.0.3-alpha XML Format Index"
+title: "OSCAL System Security Plan Model v1.0.3 XML Format Index"
+heading: "System Security Plan Model v1.0.3 XML Format Index"
 weight: 70
 generateanchors: false
 sidenav:

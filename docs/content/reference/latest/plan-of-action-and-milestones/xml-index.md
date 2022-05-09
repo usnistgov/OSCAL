@@ -1,6 +1,6 @@
 ---
-title: "OSCAL Plan of Action and Milestones Model v1.0.3-alpha XML Format Index"
-heading: "Plan of Action and Milestones Model v1.0.3-alpha XML Format Index"
+title: "OSCAL Plan of Action and Milestones Model v1.0.3 XML Format Index"
+heading: "Plan of Action and Milestones Model v1.0.3 XML Format Index"
 weight: 70
 generateanchors: false
 sidenav:
