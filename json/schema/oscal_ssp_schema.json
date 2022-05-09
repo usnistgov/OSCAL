@@ -557,7 +557,7 @@
         "additionalProperties" : false },
       "oscal-ssp-oscal-ssp:implemented-requirement" : 
       { "title" : "Control-based Requirement",
-        "description" : "Describes how the system satisfies an individual control.",
+        "description" : "Describes how the system satisfies the requirements of an individual control.",
         "$id" : "#assembly_oscal-ssp_implemented-requirement",
         "type" : "object",
         "properties" : 

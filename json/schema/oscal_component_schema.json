@@ -232,7 +232,7 @@
             "type" : "string" },
           "description" : 
           { "title" : "Control Implementation Description",
-            "description" : "A description of how the specified control is implemented for the containing component or capability.",
+            "description" : "A suggestion for how the specified control may be implemented if the containing component or capability is instantiated in a system security plan.",
             "type" : "string" },
           "props" : 
           { "type" : "array",

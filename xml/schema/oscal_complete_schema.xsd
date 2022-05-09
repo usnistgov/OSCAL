@@ -2677,10 +2677,10 @@
                <xs:annotation>
                   <xs:appinfo>
                      <m:formal-name>Control Implementation Description</m:formal-name>
-                     <m:description>A description of how the specified control is implemented for the containing component or capability.</m:description>
+                     <m:description>A suggestion for how the specified control may be implemented if the containing component or capability is instantiated in a system security plan.</m:description>
                   </xs:appinfo>
                   <xs:documentation>
-                     <b>Control Implementation Description</b>: A description of how the specified control is implemented for the containing component or capability.</xs:documentation>
+                     <b>Control Implementation Description</b>: A suggestion for how the specified control may be implemented if the containing component or capability is instantiated in a system security plan.</xs:documentation>
                </xs:annotation>
                <xs:complexContent>
                   <xs:extension base="oscal-complete:markupMultilineType"/>
@@ -4437,10 +4437,10 @@
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Control-based Requirement</m:formal-name>
-            <m:description>Describes how the system satisfies an individual control.</m:description>
+            <m:description>Describes how the system satisfies the requirements of an individual control.</m:description>
          </xs:appinfo>
          <xs:documentation>
-            <b>Control-based Requirement</b>: Describes how the system satisfies an individual control.</xs:documentation>
+            <b>Control-based Requirement</b>: Describes how the system satisfies the requirements of an individual control.</xs:documentation>
       </xs:annotation>
       <xs:sequence>
          <xs:element name="prop"

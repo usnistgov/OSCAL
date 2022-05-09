@@ -394,10 +394,10 @@
                <xs:annotation>
                   <xs:appinfo>
                      <m:formal-name>Control Implementation Description</m:formal-name>
-                     <m:description>A description of how the specified control is implemented for the containing component or capability.</m:description>
+                     <m:description>A suggestion for how the specified control may be implemented if the containing component or capability is instantiated in a system security plan.</m:description>
                   </xs:appinfo>
                   <xs:documentation>
-                     <b>Control Implementation Description</b>: A description of how the specified control is implemented for the containing component or capability.</xs:documentation>
+                     <b>Control Implementation Description</b>: A suggestion for how the specified control may be implemented if the containing component or capability is instantiated in a system security plan.</xs:documentation>
                </xs:annotation>
                <xs:complexContent>
                   <xs:extension base="oscal-component-definition:markupMultilineType"/>

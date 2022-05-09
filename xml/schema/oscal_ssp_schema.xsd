@@ -1020,10 +1020,10 @@
       <xs:annotation>
          <xs:appinfo>
             <m:formal-name>Control-based Requirement</m:formal-name>
-            <m:description>Describes how the system satisfies an individual control.</m:description>
+            <m:description>Describes how the system satisfies the requirements of an individual control.</m:description>
          </xs:appinfo>
          <xs:documentation>
-            <b>Control-based Requirement</b>: Describes how the system satisfies an individual control.</xs:documentation>
+            <b>Control-based Requirement</b>: Describes how the system satisfies the requirements of an individual control.</xs:documentation>
       </xs:annotation>
       <xs:sequence>
          <xs:element name="prop"
