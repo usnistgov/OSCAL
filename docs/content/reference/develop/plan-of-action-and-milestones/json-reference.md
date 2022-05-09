@@ -770,7 +770,7 @@ The following is the JSON format reference for this [model](/concepts/layer/asse
                                           <p>The value <b>may be locally defined</b>, or the following:</p>
                                           <ul>
                                              
-                                             <li><strong>https://www.doi.org/</strong>: A Digital Object Identifier (DOI); use is preferred, since this allows for retrieval
+                                             <li><strong>http://www.doi.org/</strong>: A Digital Object Identifier (DOI); use is preferred, since this allows for retrieval
                                                 of a full bibliographic record.</li>
                                              </ul>
                                        </div>
@@ -2161,7 +2161,7 @@ The following is the JSON format reference for this [model](/concepts/layer/asse
                                                    <p>The value <b>may be locally defined</b>, or the following:</p>
                                                    <ul>
                                                       
-                                                      <li><strong>https://orcid.org/</strong>: The identifier is Open Researcher and Contributor ID (ORCID).</li>
+                                                      <li><strong>http://orcid.org/</strong>: The identifier is Open Researcher and Contributor ID (ORCID).</li>
                                                       </ul>
                                                 </div>
                                              </details>
@@ -3216,9 +3216,15 @@ The following is the JSON format reference for this [model](/concepts/layer/asse
                                  <p>The value <b>may be locally defined</b>, or one of the following:</p>
                                  <ul>
                                     
-                                    <li><strong>https://fedramp.gov</strong>: The identifier was assigned by FedRAMP.</li>
+                                    <li><strong>https://fedramp.gov</strong>: **deprecated** The identifier was assigned by FedRAMP. This has been deprecated;
+                                       use http://fedramp.gov/ns/oscal instead.</li>
                                     
-                                    <li><strong>https://ietf.org/rfc/rfc4122</strong>: A Universally Unique Identifier (UUID) as defined by RFC4122.</li>
+                                    <li><strong>http://fedramp.gov/ns/oscal</strong>: The identifier was assigned by FedRAMP.</li>
+                                    
+                                    <li><strong>https://ietf.org/rfc/rfc4122</strong>: **deprecated** A Universally Unique Identifier (UUID) as defined by RFC4122. This
+                                       value has been deprecated; use http://ietf.org/rfc/rfc4122 instead.</li>
+                                    
+                                    <li><strong>http://ietf.org/rfc/rfc4122</strong>: A Universally Unique Identifier (UUID) as defined by RFC4122.</li>
                                     </ul>
                               </div>
                            </details>
@@ -14550,11 +14556,14 @@ The following is the JSON format reference for this [model](/concepts/layer/asse
                                     <details class="constraints" open="open">
                                        <summary>Constraint (1)</summary>
                                        <div class="constraint">
-                                          <p><span class="usa-tag">allowed value</span></p>
-                                          <p>The value <b>may be locally defined</b>, or the following:</p>
+                                          <p><span class="usa-tag">allowed values</span></p>
+                                          <p>The value <b>may be locally defined</b>, or one of the following:</p>
                                           <ul>
                                              
-                                             <li><strong>https://fedramp.gov</strong>: The value conforms to FedRAMP definitions.</li>
+                                             <li><strong>http://fedramp.gov</strong>: **deprecated** The value conforms to FedRAMP definitions. This value has been deprecated;
+                                                use http://fedramp.gov/ns/oscal instead.</li>
+                                             
+                                             <li><strong>http://fedramp.gov/ns/oscal</strong>: The value conforms to FedRAMP definitions.</li>
                                              </ul>
                                        </div>
                                     </details>
@@ -18233,7 +18242,7 @@ The following is the JSON format reference for this [model](/concepts/layer/asse
                                              </ul>
                                        </div>
                                        <div class="constraint">
-                                          <p><span class="usa-tag">allowed values</span>  for <code class="path">(.)[@system='http://csrc.nist.gov/oscal']/@name</code></p>
+                                          <p><span class="usa-tag">allowed values</span>  for <code class="path">(.)[@system='http://csrc.nist.gov/ns/oscal']/@name</code></p>
                                           <p>The value <b>may be locally defined</b>, or one of the following:</p>
                                           <ul>
                                              
@@ -18247,7 +18256,7 @@ The following is the JSON format reference for this [model](/concepts/layer/asse
                                              </ul>
                                        </div>
                                        <div class="constraint">
-                                          <p><span class="usa-tag">allowed values</span>  for <code class="path">(.)[@system='http://fedramp.gov']/@name</code></p>
+                                          <p><span class="usa-tag">allowed values</span>  for <code class="path">(.)[@system=('http://fedramp.gov','http://fedramp.gov/ns/oscal')]/@name</code></p>
                                           <p>The value <b>may be locally defined</b>, or one of the following:</p>
                                           <ul>
                                              
@@ -18714,7 +18723,10 @@ The following is the JSON format reference for this [model](/concepts/layer/asse
                                                    <p>The value <b>may be locally defined</b>, or one of the following:</p>
                                                    <ul>
                                                       
-                                                      <li><strong>http://fedramp.gov</strong></li>
+                                                      <li><strong>http://fedramp.gov</strong>: **deprecated** The FedRAMP naming system. This has been deprecated; use http://fedramp.gov/ns/oscal
+                                                         instead.</li>
+                                                      
+                                                      <li><strong>http://fedramp.gov/ns/oscal</strong>: The FedRAMP naming system.</li>
                                                       
                                                       <li><strong>http://csrc.nist.gov/ns/oscal</strong></li>
                                                       
@@ -33081,7 +33093,7 @@ The following is the JSON format reference for this [model](/concepts/layer/asse
                                                    <p>The value <b>may be locally defined</b>, or the following:</p>
                                                    <ul>
                                                       
-                                                      <li><strong>https://www.doi.org/</strong>: A Digital Object Identifier (DOI); use is preferred, since this allows for retrieval
+                                                      <li><strong>http://www.doi.org/</strong>: A Digital Object Identifier (DOI); use is preferred, since this allows for retrieval
                                                          of a full bibliographic record.</li>
                                                       </ul>
                                                 </div>

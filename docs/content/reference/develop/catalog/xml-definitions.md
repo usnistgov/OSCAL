@@ -1124,7 +1124,7 @@ The following is a reference for the XML element and attribute types derived fro
                                  <code>ns</code> is provided, the name is expected to be in the "OSCAL" namespace.</p>
                               <p>To ensure a <code>ns</code> is unique to an organization and naming conflicts are avoided, a URI containing a
                                  DNS or other globally defined organization name should be used. For example, if FedRAMP
-                                 and DoD both extend OSCAL, FedRAMP will use the <code>ns</code> "https://fedramp.gov", while DoD will use the <code>ns</code> "https://defense.gov" for any organization specific <code>name</code>. </p>
+                                 and DoD both extend OSCAL, FedRAMP will use the <code>ns</code> <code>http://fedramp.gov/ns/oscal</code>, while DoD might use the <code>ns</code> <code>https://defense.gov</code> for any organization specific <code>name</code>.</p>
                               <p>Tools that process OSCAL content are not required to interpret unrecognized OSCAL
                                  extensions; however, OSCAL compliant tools should not modify or remove unrecognized
                                  extensions, unless there is a compelling reason to do so, such as data sensitivity.</p>
@@ -1218,7 +1218,7 @@ The following is a reference for the XML element and attribute types derived fro
                            <p>The value <b>may be locally defined</b>, or the following:</p>
                            <ul>
                               
-                              <li><strong>https://www.doi.org/</strong>: A Digital Object Identifier (DOI); use is preferred, since this allows for retrieval
+                              <li><strong>http://www.doi.org/</strong>: A Digital Object Identifier (DOI); use is preferred, since this allows for retrieval
                                  of a full bibliographic record.</li>
                               </ul>
                         </div>
@@ -1452,7 +1452,7 @@ The following is a reference for the XML element and attribute types derived fro
                                  <code>ns</code> is provided, the name is expected to be in the "OSCAL" namespace.</p>
                               <p>To ensure a <code>ns</code> is unique to an organization and naming conflicts are avoided, a URI containing a
                                  DNS or other globally defined organization name should be used. For example, if FedRAMP
-                                 and DoD both extend OSCAL, FedRAMP will use the <code>ns</code> "https://fedramp.gov", while DoD will use the <code>ns</code> "https://defense.gov" for any organization specific <code>name</code>. </p>
+                                 and DoD both extend OSCAL, FedRAMP will use the <code>ns</code> <code>http://fedramp.gov/ns/oscal</code>, while DoD might use the <code>ns</code> <code>https://defense.gov</code> for any organization specific <code>name</code>.</p>
                               <p>Tools that process OSCAL content are not required to interpret unrecognized OSCAL
                                  extensions; however, OSCAL compliant tools should not modify or remove unrecognized
                                  extensions, unless there is a compelling reason to do so, such as data sensitivity.</p>
@@ -2980,7 +2980,7 @@ The following is a reference for the XML element and attribute types derived fro
                      <code>ns</code> is provided, the name is expected to be in the "OSCAL" namespace.</p>
                   <p>To ensure a <code>ns</code> is unique to an organization and naming conflicts are avoided, a URI containing a
                      DNS or other globally defined organization name should be used. For example, if FedRAMP
-                     and DoD both extend OSCAL, FedRAMP will use the <code>ns</code> "https://fedramp.gov", while DoD will use the <code>ns</code> "https://defense.gov" for any organization specific <code>name</code>. </p>
+                     and DoD both extend OSCAL, FedRAMP will use the <code>ns</code> <code>http://fedramp.gov/ns/oscal</code>, while DoD might use the <code>ns</code> <code>https://defense.gov</code> for any organization specific <code>name</code>.</p>
                   <p>Tools that process OSCAL content are not required to interpret unrecognized OSCAL
                      extensions; however, OSCAL compliant tools should not modify or remove unrecognized
                      extensions, unless there is a compelling reason to do so, such as data sensitivity.</p>
@@ -3173,7 +3173,7 @@ The following is a reference for the XML element and attribute types derived fro
                                  <code>ns</code> is provided, the name is expected to be in the "OSCAL" namespace.</p>
                               <p>To ensure a <code>ns</code> is unique to an organization and naming conflicts are avoided, a URI containing a
                                  DNS or other globally defined organization name should be used. For example, if FedRAMP
-                                 and DoD both extend OSCAL, FedRAMP will use the <code>ns</code> "https://fedramp.gov", while DoD will use the <code>ns</code> "https://defense.gov" for any organization specific <code>name</code>. </p>
+                                 and DoD both extend OSCAL, FedRAMP will use the <code>ns</code> <code>http://fedramp.gov/ns/oscal</code>, while DoD might use the <code>ns</code> <code>https://defense.gov</code> for any organization specific <code>name</code>.</p>
                               <p>Tools that process OSCAL content are not required to interpret unrecognized OSCAL
                                  extensions; however, OSCAL compliant tools should not modify or remove unrecognized
                                  extensions, unless there is a compelling reason to do so, such as data sensitivity.</p>
@@ -3339,7 +3339,7 @@ The following is a reference for the XML element and attribute types derived fro
                                        <p>The value <b>may be locally defined</b>, or the following:</p>
                                        <ul>
                                           
-                                          <li><strong>https://orcid.org/</strong>: The identifier is Open Researcher and Contributor ID (ORCID).</li>
+                                          <li><strong>http://orcid.org/</strong>: The identifier is Open Researcher and Contributor ID (ORCID).</li>
                                           </ul>
                                     </div>
                                     </details>
