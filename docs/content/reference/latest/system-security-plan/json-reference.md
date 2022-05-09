@@ -1,6 +1,6 @@
 ---
-title: "OSCAL System Security Plan Model v1.0.2 JSON Format Reference"
-heading: "System Security Plan Model v1.0.2 JSON Format Reference"
+title: "OSCAL System Security Plan Model v1.0.3-alpha JSON Format Reference"
+heading: "System Security Plan Model v1.0.3-alpha JSON Format Reference"
 weight: 20
 generateanchors: false
 sidenav:

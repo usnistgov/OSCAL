@@ -1,6 +1,6 @@
 ---
-title: "OSCAL Plan of Action and Milestones Model v1.0.2 JSON Format Reference"
-heading: "Plan of Action and Milestones Model v1.0.2 JSON Format Reference"
+title: "OSCAL Plan of Action and Milestones Model v1.0.3-alpha JSON Format Reference"
+heading: "Plan of Action and Milestones Model v1.0.3-alpha JSON Format Reference"
 weight: 20
 generateanchors: false
 sidenav:

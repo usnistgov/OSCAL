@@ -1,6 +1,6 @@
 ---
-title: "OSCAL Catalog Model v1.0.2 XML Format Outline"
-heading: "Catalog Model v1.0.2 XML Format Outline"
+title: "OSCAL Catalog Model v1.0.3-alpha XML Format Outline"
+heading: "Catalog Model v1.0.3-alpha XML Format Outline"
 custom_js:
   - "/js/oscal-metaschema-map-expander.js"
 weight: 50

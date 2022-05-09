@@ -1,10 +1,10 @@
 ---
-title: "OSCAL v1.0.2 Reference"
-summary: "Latest Release (v1.0.2)"
+title: "OSCAL v1.0.3-alpha Reference"
+summary: "Latest Release (v1.0.3-alpha)"
 layout: reference-release
 weight: 50
 sidenav:
-  title: Latest Release (v1.0.2)
+  title: Latest Release (v1.0.3-alpha)
   focusrenderdepth: 2
   activerenderdepth: -1
   inactiverenderdepth: 1
@@ -13,5 +13,5 @@ oscal:
     type: "branch"
     branch: "main"
     revision: "latest"
-    version: "1.0.2"
+    version: "1.0.3-alpha"
 ---

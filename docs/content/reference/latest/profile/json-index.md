@@ -1,6 +1,6 @@
 ---
-title: "OSCAL Profile Model v1.0.2 JSON Format Index"
-heading: "Profile Model v1.0.2 JSON Format Index"
+title: "OSCAL Profile Model v1.0.3-alpha JSON Format Index"
+heading: "Profile Model v1.0.3-alpha JSON Format Index"
 weight: 30
 generateanchors: false
 sidenav:
