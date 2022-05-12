@@ -3745,7 +3745,7 @@ The following is the JSON format reference for this [model](/concepts/layer/impl
                                     
                                     <li><strong>yes</strong>: The system is privacy sensitive.</li>
                                     
-                                    <li><strong>no</strong>: The system isnot privacy sensitive.</li>
+                                    <li><strong>no</strong>: The system is not privacy sensitive.</li>
                                     </ul>
                               </div>
                               <div class="constraint">

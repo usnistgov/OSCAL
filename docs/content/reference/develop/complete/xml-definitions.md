@@ -19631,7 +19631,7 @@ The following is a reference for the XML element and attribute types derived fro
                   
                   <li><strong>yes</strong>: The system is privacy sensitive.</li>
                   
-                  <li><strong>no</strong>: The system isnot privacy sensitive.</li>
+                  <li><strong>no</strong>: The system is not privacy sensitive.</li>
                   </ul>
             </div>
             

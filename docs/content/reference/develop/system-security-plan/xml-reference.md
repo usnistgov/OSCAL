@@ -3827,7 +3827,7 @@ The following is the XML format reference for this [model](/concepts/layer/imple
                                     
                                     <li><strong>yes</strong>: The system is privacy sensitive.</li>
                                     
-                                    <li><strong>no</strong>: The system isnot privacy sensitive.</li>
+                                    <li><strong>no</strong>: The system is not privacy sensitive.</li>
                                     </ul>
                               </div>
                               <div class="constraint">

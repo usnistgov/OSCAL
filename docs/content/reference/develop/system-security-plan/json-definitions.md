@@ -8353,7 +8353,7 @@ The following is a reference for the JSON object definitions derived from the [m
                   
                   <li><strong>yes</strong>: The system is privacy sensitive.</li>
                   
-                  <li><strong>no</strong>: The system isnot privacy sensitive.</li>
+                  <li><strong>no</strong>: The system is not privacy sensitive.</li>
                   </ul>
             </div>
             
