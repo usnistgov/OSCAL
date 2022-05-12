@@ -12,13 +12,13 @@ If you are interested in contributing to the development of OSCAL, refer to the 
 
 ## Project Status
 
-OSCAL [1.0.1](https://github.com/usnistgov/OSCAL/releases) was released on January 30th, 2022. There are also [release notes](https://pages.nist.gov/OSCAL/reference/release-notes/) containing a summary of changes in this and previous releases.
+To view the latest release of OSCAL check out [GitHub releases](https://github.com/usnistgov/OSCAL/releases). The [release notes](https://pages.nist.gov/OSCAL/reference/release-notes/) are also available on the NIST OSCAL website, and contain a summary of the changes between the different releases.
 
-These changes were made based on all the excellent feedback we received from the OSCAL community. The NIST OSCAL team is very thankful for all of the great feedback we have received.
+All changes are made based on the excellent feedback and contributions that are received from the OSCAL community. The NIST OSCAL team is very thankful for all of it.
 
-Please direct any feedback on this release by emailing the NIST OSCAL team at [oscal@nist.gov](mailto:oscal@nist.gov) or by [creating an issue](https://github.com/usnistgov/OSCAL/issues) on our GitHub repository.
+Any feedback may be emailed to the NIST OSCAL team at [oscal@nist.gov](mailto:oscal@nist.gov) or by [creating an issue](https://github.com/usnistgov/OSCAL/issues) on the GitHub repository.
 
-Looking forward, the NIST OSCAL team is excited to continue working with the [OSCAL community](/contribute/) to continue enhancing OSCAL through [additional minor releases](#beyond-the-oscal-100-full-release). Future efforts will include providing a more complete set of documentation for all the OSCAL layers and models, creating more examples, and providing a diverse set of tutorials.
+Looking forward, the NIST OSCAL team is excited to continue working with the [OSCAL community](https://pages.nist.gov/OSCAL/contribute/) to continue enhancing OSCAL through additional minor releases. Future efforts will include providing a more complete set of documentation for all the OSCAL layers and models, creating more examples, and providing a diverse set of tutorials.
 
 For additional information on the OSCAL project, please see the NIST’s Cybersecurity Insights blog: [*“The Foundation for Interoperable and Portable Security Automation is Revealed in NIST’s OSCAL Project”*](https://www.nist.gov/blogs/cybersecurity-insights/foundation-interoperable-and-portable-security-automation-revealed) and the [OSCAL website](https://pages.nist.gov/OSCAL/).
 
