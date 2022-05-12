@@ -295,7 +295,7 @@
       </allowed-values>
       <allowed-values target="prop[@name='privacy-designation']/@value">
         <enum value="yes">The system is privacy sensitive.</enum>
-        <enum value="no">The system isnot privacy sensitive.</enum>
+        <enum value="no">The system is not privacy sensitive.</enum>
       </allowed-values>
       <allowed-values target="link/@rel">
         <enum value="privacy-impact-assessment">A link to the privacy impact assessment.</enum>
