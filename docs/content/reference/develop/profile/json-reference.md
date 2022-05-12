@@ -686,6 +686,11 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
                                                    <div class="remarks">
+                                                      <p>The IANA Media Types Registry should be used, but currently there is no official media
+                                                         type for YAML. OSCAL documents should specify <code>application/yaml</code> for general YAML content, or <code>application/oscal+yaml</code> for YAML-based OSCAL content. This approach aligns with use of a structured name
+                                                         suffix, per <a href="https://www.rfc-editor.org/rfc/rfc6838.html#section-4.2.8">RFC 6838 Section 4.2.8</a>.</p>
+                                                   </div>
+                                                   <div class="remarks">
                                                       <p>The <code>media-type</code> provides a hint about the content model of the referenced resource. A valid entry
                                                          from the <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">IANA Media Types registry</a> SHOULD be used.</p>
                                                    </div>
@@ -1046,6 +1051,11 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                        <details open="open">
                                           <summary class="subhead">Remarks</summary>
                                           <div class="remarks">
+                                             <p>The IANA Media Types Registry should be used, but currently there is no official media
+                                                type for YAML. OSCAL documents should specify <code>application/yaml</code> for general YAML content, or <code>application/oscal+yaml</code> for YAML-based OSCAL content. This approach aligns with use of a structured name
+                                                suffix, per <a href="https://www.rfc-editor.org/rfc/rfc6838.html#section-4.2.8">RFC 6838 Section 4.2.8</a>.</p>
+                                          </div>
+                                          <div class="remarks">
                                              <p>The <code>media-type</code> provides a hint about the content model of the referenced resource. A valid entry
                                                 from the <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">IANA Media Types registry</a> SHOULD be used.</p>
                                           </div>
@@ -1404,6 +1414,11 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                              <div class="remarks-group usa-prose">
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
+                                                   <div class="remarks">
+                                                      <p>The IANA Media Types Registry should be used, but currently there is no official media
+                                                         type for YAML. OSCAL documents should specify <code>application/yaml</code> for general YAML content, or <code>application/oscal+yaml</code> for YAML-based OSCAL content. This approach aligns with use of a structured name
+                                                         suffix, per <a href="https://www.rfc-editor.org/rfc/rfc6838.html#section-4.2.8">RFC 6838 Section 4.2.8</a>.</p>
+                                                   </div>
                                                    <div class="remarks">
                                                       <p>The <code>media-type</code> provides a hint about the content model of the referenced resource. A valid entry
                                                          from the <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">IANA Media Types registry</a> SHOULD be used.</p>
@@ -1996,6 +2011,11 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
                                                    <div class="remarks">
+                                                      <p>The IANA Media Types Registry should be used, but currently there is no official media
+                                                         type for YAML. OSCAL documents should specify <code>application/yaml</code> for general YAML content, or <code>application/oscal+yaml</code> for YAML-based OSCAL content. This approach aligns with use of a structured name
+                                                         suffix, per <a href="https://www.rfc-editor.org/rfc/rfc6838.html#section-4.2.8">RFC 6838 Section 4.2.8</a>.</p>
+                                                   </div>
+                                                   <div class="remarks">
                                                       <p>The <code>media-type</code> provides a hint about the content model of the referenced resource. A valid entry
                                                          from the <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">IANA Media Types registry</a> SHOULD be used.</p>
                                                    </div>
@@ -2435,6 +2455,11 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                              <div class="remarks-group usa-prose">
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
+                                                   <div class="remarks">
+                                                      <p>The IANA Media Types Registry should be used, but currently there is no official media
+                                                         type for YAML. OSCAL documents should specify <code>application/yaml</code> for general YAML content, or <code>application/oscal+yaml</code> for YAML-based OSCAL content. This approach aligns with use of a structured name
+                                                         suffix, per <a href="https://www.rfc-editor.org/rfc/rfc6838.html#section-4.2.8">RFC 6838 Section 4.2.8</a>.</p>
+                                                   </div>
                                                    <div class="remarks">
                                                       <p>The <code>media-type</code> provides a hint about the content model of the referenced resource. A valid entry
                                                          from the <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">IANA Media Types registry</a> SHOULD be used.</p>
@@ -3072,6 +3097,11 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                              <div class="remarks-group usa-prose">
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
+                                                   <div class="remarks">
+                                                      <p>The IANA Media Types Registry should be used, but currently there is no official media
+                                                         type for YAML. OSCAL documents should specify <code>application/yaml</code> for general YAML content, or <code>application/oscal+yaml</code> for YAML-based OSCAL content. This approach aligns with use of a structured name
+                                                         suffix, per <a href="https://www.rfc-editor.org/rfc/rfc6838.html#section-4.2.8">RFC 6838 Section 4.2.8</a>.</p>
+                                                   </div>
                                                    <div class="remarks">
                                                       <p>The <code>media-type</code> provides a hint about the content model of the referenced resource. A valid entry
                                                          from the <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">IANA Media Types registry</a> SHOULD be used.</p>
@@ -4001,6 +4031,11 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                                      <details open="open">
                                                                         <summary class="subhead">Remarks</summary>
                                                                         <div class="remarks">
+                                                                           <p>The IANA Media Types Registry should be used, but currently there is no official media
+                                                                              type for YAML. OSCAL documents should specify <code>application/yaml</code> for general YAML content, or <code>application/oscal+yaml</code> for YAML-based OSCAL content. This approach aligns with use of a structured name
+                                                                              suffix, per <a href="https://www.rfc-editor.org/rfc/rfc6838.html#section-4.2.8">RFC 6838 Section 4.2.8</a>.</p>
+                                                                        </div>
+                                                                        <div class="remarks">
                                                                            <p>The <code>media-type</code> provides a hint about the content model of the referenced resource. A valid entry
                                                                               from the <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">IANA Media Types registry</a> SHOULD be used.</p>
                                                                         </div>
@@ -4532,6 +4567,11 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                             <details open="open">
                                                                <summary class="subhead">Remarks</summary>
                                                                <div class="remarks">
+                                                                  <p>The IANA Media Types Registry should be used, but currently there is no official media
+                                                                     type for YAML. OSCAL documents should specify <code>application/yaml</code> for general YAML content, or <code>application/oscal+yaml</code> for YAML-based OSCAL content. This approach aligns with use of a structured name
+                                                                     suffix, per <a href="https://www.rfc-editor.org/rfc/rfc6838.html#section-4.2.8">RFC 6838 Section 4.2.8</a>.</p>
+                                                               </div>
+                                                               <div class="remarks">
                                                                   <p>The <code>media-type</code> provides a hint about the content model of the referenced resource. A valid entry
                                                                      from the <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">IANA Media Types registry</a> SHOULD be used.</p>
                                                                </div>
@@ -5029,6 +5069,11 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                                   <div class="remarks-group usa-prose">
                                                                      <details open="open">
                                                                         <summary class="subhead">Remarks</summary>
+                                                                        <div class="remarks">
+                                                                           <p>The IANA Media Types Registry should be used, but currently there is no official media
+                                                                              type for YAML. OSCAL documents should specify <code>application/yaml</code> for general YAML content, or <code>application/oscal+yaml</code> for YAML-based OSCAL content. This approach aligns with use of a structured name
+                                                                              suffix, per <a href="https://www.rfc-editor.org/rfc/rfc6838.html#section-4.2.8">RFC 6838 Section 4.2.8</a>.</p>
+                                                                        </div>
                                                                         <div class="remarks">
                                                                            <p>The <code>media-type</code> provides a hint about the content model of the referenced resource. A valid entry
                                                                               from the <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">IANA Media Types registry</a> SHOULD be used.</p>
@@ -6018,6 +6063,11 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                 <details open="open">
                                                    <summary class="subhead">Remarks</summary>
                                                    <div class="remarks">
+                                                      <p>The IANA Media Types Registry should be used, but currently there is no official media
+                                                         type for YAML. OSCAL documents should specify <code>application/yaml</code> for general YAML content, or <code>application/oscal+yaml</code> for YAML-based OSCAL content. This approach aligns with use of a structured name
+                                                         suffix, per <a href="https://www.rfc-editor.org/rfc/rfc6838.html#section-4.2.8">RFC 6838 Section 4.2.8</a>.</p>
+                                                   </div>
+                                                   <div class="remarks">
                                                       <p>The <code>media-type</code> provides a hint about the content model of the referenced resource. A valid entry
                                                          from the <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">IANA Media Types registry</a> SHOULD be used.</p>
                                                    </div>
@@ -6880,6 +6930,11 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                                   <details open="open">
                                                                      <summary class="subhead">Remarks</summary>
                                                                      <div class="remarks">
+                                                                        <p>The IANA Media Types Registry should be used, but currently there is no official media
+                                                                           type for YAML. OSCAL documents should specify <code>application/yaml</code> for general YAML content, or <code>application/oscal+yaml</code> for YAML-based OSCAL content. This approach aligns with use of a structured name
+                                                                           suffix, per <a href="https://www.rfc-editor.org/rfc/rfc6838.html#section-4.2.8">RFC 6838 Section 4.2.8</a>.</p>
+                                                                     </div>
+                                                                     <div class="remarks">
                                                                         <p>The <code>media-type</code> provides a hint about the content model of the referenced resource. A valid entry
                                                                            from the <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">IANA Media Types registry</a> SHOULD be used.</p>
                                                                      </div>
@@ -7411,6 +7466,11 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                          <details open="open">
                                                             <summary class="subhead">Remarks</summary>
                                                             <div class="remarks">
+                                                               <p>The IANA Media Types Registry should be used, but currently there is no official media
+                                                                  type for YAML. OSCAL documents should specify <code>application/yaml</code> for general YAML content, or <code>application/oscal+yaml</code> for YAML-based OSCAL content. This approach aligns with use of a structured name
+                                                                  suffix, per <a href="https://www.rfc-editor.org/rfc/rfc6838.html#section-4.2.8">RFC 6838 Section 4.2.8</a>.</p>
+                                                            </div>
+                                                            <div class="remarks">
                                                                <p>The <code>media-type</code> provides a hint about the content model of the referenced resource. A valid entry
                                                                   from the <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">IANA Media Types registry</a> SHOULD be used.</p>
                                                             </div>
@@ -7908,6 +7968,11 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                                <div class="remarks-group usa-prose">
                                                                   <details open="open">
                                                                      <summary class="subhead">Remarks</summary>
+                                                                     <div class="remarks">
+                                                                        <p>The IANA Media Types Registry should be used, but currently there is no official media
+                                                                           type for YAML. OSCAL documents should specify <code>application/yaml</code> for general YAML content, or <code>application/oscal+yaml</code> for YAML-based OSCAL content. This approach aligns with use of a structured name
+                                                                           suffix, per <a href="https://www.rfc-editor.org/rfc/rfc6838.html#section-4.2.8">RFC 6838 Section 4.2.8</a>.</p>
+                                                                     </div>
                                                                      <div class="remarks">
                                                                         <p>The <code>media-type</code> provides a hint about the content model of the referenced resource. A valid entry
                                                                            from the <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">IANA Media Types registry</a> SHOULD be used.</p>
@@ -8639,6 +8704,11 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                                          <details open="open">
                                                             <summary class="subhead">Remarks</summary>
                                                             <div class="remarks">
+                                                               <p>The IANA Media Types Registry should be used, but currently there is no official media
+                                                                  type for YAML. OSCAL documents should specify <code>application/yaml</code> for general YAML content, or <code>application/oscal+yaml</code> for YAML-based OSCAL content. This approach aligns with use of a structured name
+                                                                  suffix, per <a href="https://www.rfc-editor.org/rfc/rfc6838.html#section-4.2.8">RFC 6838 Section 4.2.8</a>.</p>
+                                                            </div>
+                                                            <div class="remarks">
                                                                <p>The <code>media-type</code> provides a hint about the content model of the referenced resource. A valid entry
                                                                   from the <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">IANA Media Types registry</a> SHOULD be used.</p>
                                                             </div>
@@ -8717,6 +8787,16 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> Specifies a media type as defined by the Internet Assigned Numbers Authority (IANA)
                                                 <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">Media Types Registry</a>. </p>
+                                             <div class="remarks-group usa-prose">
+                                                <details open="open">
+                                                   <summary class="subhead">Remarks</summary>
+                                                   <div class="remarks">
+                                                      <p>The IANA Media Types Registry should be used, but currently there is no official media
+                                                         type for YAML. OSCAL documents should specify <code>application/yaml</code> for general YAML content, or <code>application/oscal+yaml</code> for YAML-based OSCAL content. This approach aligns with use of a structured name
+                                                         suffix, per <a href="https://www.rfc-editor.org/rfc/rfc6838.html#section-4.2.8">RFC 6838 Section 4.2.8</a>.</p>
+                                                   </div>
+                                                </details>
+                                             </div>
                                           </div>
                                        </div>
                                        <div class="model-entry definition assembly">
@@ -8851,6 +8931,16 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                                           <div class="body">
                                              <p class="description"><span class="usa-tag">Description</span> Specifies a media type as defined by the Internet Assigned Numbers Authority (IANA)
                                                 <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">Media Types Registry</a>. </p>
+                                             <div class="remarks-group usa-prose">
+                                                <details open="open">
+                                                   <summary class="subhead">Remarks</summary>
+                                                   <div class="remarks">
+                                                      <p>The IANA Media Types Registry should be used, but currently there is no official media
+                                                         type for YAML. OSCAL documents should specify <code>application/yaml</code> for general YAML content, or <code>application/oscal+yaml</code> for YAML-based OSCAL content. This approach aligns with use of a structured name
+                                                         suffix, per <a href="https://www.rfc-editor.org/rfc/rfc6838.html#section-4.2.8">RFC 6838 Section 4.2.8</a>.</p>
+                                                   </div>
+                                                </details>
+                                             </div>
                                           </div>
                                        </div>
                                        <div class="model-entry definition assembly">
