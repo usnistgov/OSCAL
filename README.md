@@ -18,7 +18,7 @@ All changes are made based on the excellent feedback and contributions that are 
 
 Any feedback may be emailed to the NIST OSCAL team at [oscal@nist.gov](mailto:oscal@nist.gov) or by [creating an issue](https://github.com/usnistgov/OSCAL/issues) on the GitHub repository.
 
-Looking forward, the NIST OSCAL team is excited to continue working with the [OSCAL community](/contribute/) to continue enhancing OSCAL through [additional minor releases](#beyond-the-oscal-100-full-release). Future efforts will include providing a more complete set of documentation for all the OSCAL layers and models, creating more examples, and providing a diverse set of tutorials.
+Looking forward, the NIST OSCAL team is excited to continue working with the [OSCAL community](https://pages.nist.gov/OSCAL/contribute/) to continue enhancing OSCAL through additional minor releases. Future efforts will include providing a more complete set of documentation for all the OSCAL layers and models, creating more examples, and providing a diverse set of tutorials.
 
 For additional information on the OSCAL project, please see the NIST’s Cybersecurity Insights blog: [*“The Foundation for Interoperable and Portable Security Automation is Revealed in NIST’s OSCAL Project”*](https://www.nist.gov/blogs/cybersecurity-insights/foundation-interoperable-and-portable-security-automation-revealed) and the [OSCAL website](https://pages.nist.gov/OSCAL/).
 
