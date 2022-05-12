@@ -1,6 +1,6 @@
 
   { "$schema" : "http://json-schema.org/draft-07/schema#",
-    "$id" : "http://csrc.nist.gov/ns/oscal/1.0.3/oscal-profile-schema.json",
+    "$id" : "http://csrc.nist.gov/ns/oscal/1.0.4/oscal-profile-schema.json",
     "$comment" : "OSCAL Profile Model: JSON Schema",
     "type" : "object",
     "definitions" : 

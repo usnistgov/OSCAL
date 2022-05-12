@@ -5,11 +5,11 @@
            xmlns:xs="http://www.w3.org/2001/XMLSchema"
            elementFormDefault="qualified"
            targetNamespace="http://csrc.nist.gov/ns/oscal/1.0"
-           version="1.0.3">
+           version="1.0.4">
    <xs:annotation>
       <xs:appinfo>
          <m:schema-name>OSCAL Unified Model of Models</m:schema-name>
-         <m:schema-version>1.0.3</m:schema-version>
+         <m:schema-version>1.0.4</m:schema-version>
          <m:short-name>oscal-complete</m:short-name>
          <m:remarks>
             <p>This format represents a combination of all of the OSCAL models.</p>

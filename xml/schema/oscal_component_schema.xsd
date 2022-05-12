@@ -5,11 +5,11 @@
            xmlns:xs="http://www.w3.org/2001/XMLSchema"
            elementFormDefault="qualified"
            targetNamespace="http://csrc.nist.gov/ns/oscal/1.0"
-           version="1.0.3">
+           version="1.0.4">
    <xs:annotation>
       <xs:appinfo>
          <m:schema-name>OSCAL Component Definition Model</m:schema-name>
-         <m:schema-version>1.0.3</m:schema-version>
+         <m:schema-version>1.0.4</m:schema-version>
          <m:short-name>oscal-component-definition</m:short-name>
          <m:remarks>
             <p>The OSCAL Component Definition Model can be used to describe the implementation of controls in a <code>component</code> or a set of components grouped as a <code>capability</code>. A component can be either a <em>technical component</em>, or a <em>documentary component</em>. A technical component is a component that is implemented in hardware (physical or virtual) or software. A documentary component is a component implemented in a document, such as a process, procedure, or policy.</p>
