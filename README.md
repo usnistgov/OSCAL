@@ -1,4 +1,4 @@
-[![Gitter](https://img.shields.io/gitter/room/usnistgov-OSCAL/Lobby)](https://gitter.im/usnistgov-OSCAL/Lobby) [![Build Artifacts and Documentation](https://github.com/usnistgov/OSCAL/actions/workflows/metaschema-artifacts.yml/badge.svg)](https://github.com/usnistgov/OSCAL/actions/workflows/metaschema-artifacts.yml) ![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/usnistgov/OSCAL?color=brightgreen&include_prereleases)
+[![Gitter](https://img.shields.io/gitter/room/usnistgov-OSCAL/Lobby)](https://gitter.im/usnistgov-OSCAL/Lobby) [![CI/CD](https://github.com/usnistgov/OSCAL/actions/workflows/status-ci-cd.yml/badge.svg)](https://github.com/usnistgov/OSCAL/actions/workflows/status-ci-cd.yml) [![GitHub release (latest by date)](https://img.shields.io/github/v/release/usnistgov/OSCAL?color=green)](https://github.com/usnistgov/OSCAL/releases)
 
 # Open Security Controls Assessment Language (OSCAL)
 
