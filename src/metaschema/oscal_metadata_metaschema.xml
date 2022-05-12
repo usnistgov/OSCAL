@@ -14,8 +14,8 @@
     <!-- # Metadata Assembly and supporting constructs # -->
     <!-- ############################################### -->
     <define-assembly name="metadata">
-        <formal-name>Publication metadata</formal-name>
-        <description>Provides information about the publication and availability of the containing document.</description>
+        <formal-name>Document Metadata</formal-name>
+        <description>Provides information about the the containing document, and defines concepts that are shared across the document.</description>
         <model>
             <define-field name="title" as-type="markup-line" min-occurs="1">
                 <formal-name>Document Title</formal-name>
@@ -122,6 +122,11 @@
                 <enum value="successor-version">This link identifies a resource containing the predecessor version in the version history. Defined by <a href="https://tools.ietf.org/html/rfc5829">RFC 5829</a>.</enum>
             </allowed-values>
         </constraint>
+        <remarks>
+            <p>All OSCAL documents use the same metadata structure, that provides a consistent way of expressing OSCAL document metadata across all OSCAL models. The metadata section also includes declarations of individual objects (i.e., roles, location, parties) that may be referenced within and across linked OSCAL documents.</p>
+            <p>The metadata in an OSCAL document has few required fields, representing only the bare minimum data needed to differentiate one instance from another. Tools and users creating OSCAL documents may choose to use any of the optional fields, as well as extension mechanisms (e.g., properties, links) to go beyond this minimum to suit their use cases.</p>
+            <p>A publisher of OSCAL content can use the <code>published</code>, <code>last-modified</code>, and <code>version</code> fields to establish information about an individual in a sequence of successive revisions of a given OSCAL-based publication. The metadata for a previous revision can be represented as a <code>revision</code> within this object. Links may also be provided using the <code>predecessor-version</code> and <code>successor-version</code> link relations to provide for direct access to the related resource. These relations can be provided as a link child of this object or as <code>link</code> within a given <code>revision</code>.</p>
+        </remarks>
     </define-assembly>
 
     <define-assembly name="revision" scope="local">
@@ -893,30 +898,31 @@
     <!-- #################### -->
     <define-field name="published" as-type="dateTime-with-timezone" scope="local">
         <formal-name>Publication Timestamp</formal-name>
-        <description>The date and time the document was published. The date-time value must be formatted according to <a href="https://tools.ietf.org/html/rfc3339">RFC 3339</a> with full time and time zone included.</description>
+        <description>The date and time the document was last made available.</description>
         <remarks>
-            <p>This value represents the point in time when the OSCAL document was published. Typically, this date value will be machine generated at the time the containing document is published.</p>
-            <p>In some cases, an OSCAL document may be derived from some source material in a different format. In such a case, the <code>published</code> value should indicate when the OSCAL document was published, not the source material. Where necessary, the publication date of the original source material can be captured as a named property or custom metadata construct.</p>
-            <p>A publisher of OSCAL content can use this data point along with its siblings <code>last-modified</code> and <code>version</code> to establish a sequence of successive revisions of a given OSCAL-based publication. The metadata for previous revisions can be represented as a <code>revision</code> in this object.</p>
+            <p>Typically, this date value will be machine-generated at the time the containing document is published.</p>
+            <p>In some cases, an OSCAL document may be derived from some source material provided in a different format. In such a case, the <code>published</code> value should indicate when the OSCAL document instance was last published, not the source material.</p>
+            <!-- TODO: (AJ) State how to do the following: Where necessary, the publication date of the original source material can be captured as a named property. Define the link relation, and document here how to do this. -->
         </remarks>
     </define-field>
 
     <define-field name="last-modified" as-type="dateTime-with-timezone" scope="local">
         <formal-name>Last Modified Timestamp</formal-name>
-        <description>The date and time the document was last modified. The date-time value must be formatted according to <a href="https://tools.ietf.org/html/rfc3339">RFC 3339</a> with full time and time zone included.</description>
+        <description>The date and time the document was last stored for later retrieval.</description>
         <remarks>
-            <p>This value represents the point in time when the OSCAL document was last updated, or at the point of creation the creation date. Typically, this date value will be machine generated at time of creation or modification.</p>
-            <p>In some cases, an OSCAL document may be derived from some source material in a different format. In such a case, the <code>last-modified</code> value should indicate the modification time of the OSCAL document, not the source material.</p>
-            <p>A publisher of OSCAL content can use this data point along with its siblings <code>published</code> and <code>version</code> to establish a sequence of successive revisions of a given OSCAL-based publication. The metadata for previous revisions can be represented as a <code>revision</code> in this object.</p>
+            <p>This value represents the point in time when the OSCAL document was last updated, or at the point of creation the creation date. Typically, this date value will be machine generated at time of creation or modification. Ideally, this field will be managed by the editing tool or service used to make modifications when storing the modified document.</p>
+            <p>The intent of the last modified timestamp is to distinguish between significant change milestones when the document may be accessed by multiple entities. This allows a given entity to differentiate between mutiple document states at specific points in time. It is possible to make multiple modifications to the document without storing these changes. In such a case, the last modified timestamp might not be updated until the document is finally stored.</p>
+            <p>In some cases, an OSCAL document may be derived from some source material in a different format. In such a case, the <code>last-modified</code> value should indicate the last modification time of the OSCAL document instance, not the source material.</p>
         </remarks>
     </define-field>
     <define-field name="version" scope="local">
         <formal-name>Document Version</formal-name>
-        <description>A string used to distinguish the current version of the document from other previous (and future) versions.</description>
+        <description>A string used to distinguish a specific revision of an OSCAL document from other previous and future version
+            s.</description>
         <remarks>
-            <p>A version string may be a release number, sequence number, date, or other identifier suffcient to distinguish between different document versions. This version is typically set by the document owner or by the tool used to maintain the content.</p>
+            <p>A version string may be a release number, sequence number, date, or other identifier suffcient to distinguish between different document revisions.</p>
             <p>While not required, it is recommended that OSCAL content authors use <a href="https://semver.org/spec/v2.0.0.html">Semantic Versioning</a> as a format for version strings. This allows for the easy identification of a version tree consisting of major, minor, and patch numbers.</p>
-            <p>A publisher of OSCAL content can use this data point along with its siblings <code>published</code> and <code>last-modified</code> to establish a sequence of successive revisions of a given OSCAL-based publication. The metadata for previous revisions can be represented as a <code>revision</code> in this object.</p>
+            <p>A version is typically set by the document owner or by the tool used to maintain the content.</p>
         </remarks>
     </define-field>
     <define-field name="oscal-version" scope="local">
