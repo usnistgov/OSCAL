@@ -15,7 +15,7 @@
     <!-- ############################################### -->
     <define-assembly name="metadata">
         <formal-name>Document Metadata</formal-name>
-        <description>Provides information about the the containing document, and defines concepts that are shared across the document.</description>
+        <description>Provides information about the containing document, and defines concepts that are shared across the document.</description>
         <model>
             <define-field name="title" as-type="markup-line" min-occurs="1">
                 <formal-name>Document Title</formal-name>
@@ -26,11 +26,8 @@
             <field ref="version" min-occurs="1"/>
             <field ref="oscal-version" min-occurs="1"/>
             <assembly ref="revision" max-occurs="unbounded">
-                <!-- CHANGED: "revision-history" to "revisions" -->
-                <!-- QUESTION: Should this be grouped in XML? -->
                 <group-as name="revisions" in-xml="GROUPED" in-json="ARRAY"/>
             </assembly>
-            <!-- CHANGED from "doc-id" to "document-id" -->
             <field ref="document-id" max-occurs="unbounded">
                 <group-as name="document-ids" in-json="ARRAY"/>
             </field>
@@ -131,7 +128,7 @@
 
     <define-assembly name="revision" scope="local">
         <formal-name>Revision History Entry</formal-name>
-        <description>An entry in a sequential list of revisions to the containing document in reverse chronological order (i.e., most recent previous revision first).</description>
+        <description>An entry in a sequential list of revisions to the containing document, expected to be in reverse chronological order (i.e. latest first).</description>
         <model>
             <define-field name="title" as-type="markup-line">
                 <formal-name>Document Title</formal-name>
@@ -167,10 +164,9 @@
 
     <define-assembly name="location">
         <formal-name>Location</formal-name>
-        <description>A location, with associated metadata that can be referenced.</description>
+        <description>A physical point of presence, which may be associated with people, organizations, or other concepts within the current or linked OSCAL document.</description>
         <define-flag name="uuid" as-type="uuid" required="yes">
             <formal-name>Location Universally Unique Identifier</formal-name>
-            <!-- identifier declaration -->
             <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined location elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>location</code> can be used to reference the data item locally or globally (e.g., from an importing OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
         </define-flag>
         <model>
@@ -256,8 +252,8 @@
     </define-field>
 
     <define-assembly name="party">
-        <formal-name>Party (organization or person)</formal-name>
-        <description>A responsible entity which is either a person or an organization.</description>
+        <formal-name>Party</formal-name>
+        <description>An organization or person, which may be associated with roles or other concepts within the current or linked OSCAL document.</description>
         <define-flag name="uuid" as-type="uuid" required="yes">
             <formal-name>Party Universally Unique Identifier</formal-name>
             <!-- identifier declaration -->
@@ -373,7 +369,7 @@
 
     <define-assembly name="role">
         <formal-name>Role</formal-name>
-        <description>Defines a function assumed or expected to be assumed by a party in a specific situation.</description>
+        <description>Defines a function, which might be assigned to a party in a specific situation.</description>
         <define-flag name="id" as-type="token" required="yes">
             <!-- This is an id because the idenfier is assigned and managed by humans. -->
             <!-- identifier declarations -->
@@ -403,6 +399,8 @@
             <field ref="remarks" in-xml="WITH_WRAPPER"/>
         </model>
         <remarks>
+            <!-- TODO: roles only appear in metadata. Referenced in the document and linked instances. -->
+            <!-- TODO: discuss built-in roles. -->
             <p>Permissible values to be determined closer to the application (e.g. by a receiving authority).</p>
                 <p>OSCAL has defined a set of standardized roles for consistent use in OSCAL documents. This allows tools consuming OSCAL content to infer specific semantics when these roles are used. These roles are documented in the specific contexts of their use (e.g., responsible-party, responsible-role). When using such a role, it is necessary to define these roles in this list, which will then allow such a role to be referenced.</p>
             </remarks>
@@ -614,7 +612,7 @@
     <!-- ##################### -->
     <define-assembly name="property">
         <formal-name>Property</formal-name>
-        <description>An attribute, characteristic, or quality of the containing object expressed as a namespace qualified name/value pair. The value of a property is a simple scalar value, which may be expressed as a list of values.</description>
+        <description>An attribute, characteristic, or quality of the containing object expressed as a namespace-qualified name/value pair.</description>
         <use-name>prop</use-name>
         <define-flag name="name" as-type="token" required="yes">
             <formal-name>Property Name</formal-name>
@@ -664,6 +662,7 @@
             <field ref="remarks" in-xml="WITH_WRAPPER"/>
         </model>
         <remarks>
+            <!-- TODO: discuss the optional namespace -->
             <p>Properties permit the deployment and management of arbitrary controlled values, within OSCAL objects. A property can be included for any purpose useful to an application or implementation. Typically, properties will be used to sort, filter, select, order, and arrange OSCAL content objects, to relate OSCAL objects to one another, or to associate an OSCAL object to class hierarchies, taxonomies, or external authorities. Thus, the lexical composition of properties may be constrained by external processes to ensure consistency.</p>
             <p>Property allows for associated remarks that describe why the specific property value was applied to the containing object, or the significance of the value in the context of the containing object.</p>
         </remarks>
@@ -671,7 +670,7 @@
 
     <define-assembly name="link">
         <formal-name>Link</formal-name>
-        <description>A reference to a local or remote resource</description>
+        <description>A reference to a local or remote resource, in a specific relation to the containing object.</description>
         <define-flag name="href" as-type="uri-reference" required="yes">
             <formal-name>Hypertext Reference</formal-name>
             <description>A resolvable URL reference to a resource.</description>
@@ -736,7 +735,7 @@
 
     <define-assembly name="responsible-party">
         <formal-name>Responsible Party</formal-name>
-        <description>A reference to a set of organizations or persons that have responsibility for performing a referenced role in the context of the containing object.</description>
+        <description>A reference to a set of persons and/or organizations that have responsibility for performing a referenced role in the context of the containing object.</description>
         <define-flag required="yes" name="role-id" as-type="token">
             <formal-name>Responsible Role</formal-name>
             <!-- identifier reference -->
@@ -766,6 +765,10 @@
                 <key-field target="."/>
             </index-has-key>
         </constraint>
+        <remarks>
+            <!-- Speak to the difference between a reponsible-role/reponsible-party. #1243 -->
+            <p>TODO</p>
+        </remarks>
     </define-assembly>
  
     <define-assembly name="action">
@@ -822,10 +825,9 @@
  
     <define-assembly name="responsible-role">
         <formal-name>Responsible Role</formal-name>
-        <description>A reference to one or more roles with responsibility for performing a function relative to the containing object.</description>
+        <description>A reference to a role with responsibility for performing a function relative to the containing object, optionally associated with a set of persons and/or organizations that perform that role.</description>
         <define-flag name="role-id" as-type="token" required="yes">
             <formal-name>Responsible Role ID</formal-name>
-            <!-- identifier reference -->
             <description>A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a> identifier reference to <code>roles</code> responsible for the business function.</description>
         </define-flag>
         <model>
@@ -840,6 +842,10 @@
             </field>
             <field ref="remarks" in-xml="WITH_WRAPPER"/>
         </model>
+        <remarks>
+            <!-- Speak to the difference between a reponsible-role/reponsible-party. #1243 -->
+            <p>TODO</p>
+        </remarks>
     </define-assembly>
 
     <define-field name="hash">
@@ -891,6 +897,10 @@
     <define-field name="remarks" as-type="markup-multiline">
         <formal-name>Remarks</formal-name>
         <description>Additional commentary on the containing object.</description>
+        <remarks>
+            <!-- TODO: this is not a dumping ground! -->
+            <p>TODO</p>
+        </remarks>
     </define-field>
 
     <!-- #################### -->
@@ -917,19 +927,19 @@
     </define-field>
     <define-field name="version" scope="local">
         <formal-name>Document Version</formal-name>
-        <description>A string used to distinguish a specific revision of an OSCAL document from other previous and future version
-            s.</description>
+        <description>Used to distinguish a specific revision of an OSCAL document from other previous and future versions.</description>
         <remarks>
-            <p>A version string may be a release number, sequence number, date, or other identifier suffcient to distinguish between different document revisions.</p>
-            <p>While not required, it is recommended that OSCAL content authors use <a href="https://semver.org/spec/v2.0.0.html">Semantic Versioning</a> as a format for version strings. This allows for the easy identification of a version tree consisting of major, minor, and patch numbers.</p>
+            <p>A version may be a release number, sequence number, date, or other identifier sufficient to distinguish between different document revisions.</p>
+            <p>While not required, it is recommended that OSCAL content authors use <a href="https://semver.org/spec/v2.0.0.html">Semantic Versioning</a> as the version format. This allows for the easy identification of a version tree consisting of major, minor, and patch numbers.</p>
             <p>A version is typically set by the document owner or by the tool used to maintain the content.</p>
         </remarks>
     </define-field>
     <define-field name="oscal-version" scope="local">
-        <formal-name>OSCAL version</formal-name>
-        <description>The OSCAL model version the document was authored against.</description>
+        <formal-name>OSCAL Version</formal-name>
+        <description>The OSCAL model version the document was authored against and will conform to as valid.</description>
         <remarks>
-            <p>Indicates the version of the OSCAL model to which this data set conforms, for example <q>1.1.0</q> or <q>1.0.0-M1</q>. That can be used as a hint by a tool to indicate which version of the OSCAL XML or JSON schema to use for validation.</p>
+            <p>Indicates the version of the OSCAL model to which the document conforms, for example <q>1.1.0</q> or <q>1.0.0-M1</q>. This can be used as a hint by a tool to indicate which version of the OSCAL XML or JSON schema to use for validation.</p>
+            <p>The OSCAL version serves a different purpose from the document version and is used to represent a different concept. If both have the same value, this is coincidental.</p>
         </remarks>
     </define-field>
 
@@ -1006,7 +1016,6 @@
     </define-flag>
 
     <define-field name="document-id" scope="local">
-        <!-- This is an id because the idenfier is assigned and managed externally by humans. -->
         <formal-name>Document Identifier</formal-name>
         <!-- identifier declaration -->
         <description>A document identifier qualified by an identifier <code>scheme</code>. A document identifier provides a <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with a <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that is used for a group of documents that are to be treated as different versions of the same document. If this element does not appear, or if the value of this element is empty, the value of "document-id" is equal to the value of the "uuid" flag of the top-level root element.</description>
@@ -1023,7 +1032,9 @@
             </constraint>
         </define-flag>
         <remarks>
-            <p>This element is optional, but it will always have a valid value, as if it is missing the value of "document-id" is assumed to be equal to the UUID of the root. This requirement allows for document creators to retroactively link an update to the original version, by providing a document-id on the new document that is equal to the uuid of the original document.</p>
+            <p>A document identifier provides an additional data point for identifying a document that can be assigned by a publisher or organization for purposes in a wider system, such as a digital object identifier (DOI) or a local content management system identifier.</p>
+            <p>Use of a document identifier allows for document creators to associate sets of documents that are related in some way.</p>
+            <p>An OSCAL document always has an implicit document identifier provided by the document's UUID. Having a default UUID-based identifier ensures all documents can be minimally identified when other document identifiers are omitted.</p>
         </remarks>
     </define-field>
 
