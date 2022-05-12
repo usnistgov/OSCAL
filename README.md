@@ -6,15 +6,15 @@ NIST is developing the [Open Security Controls Assessment Language](https://csrc
 
 With this effort, we are stressing the agile development of a set of *minimal* formats that are both generic enough to capture the breadth of data in scope (controls specifications), while also capable of ad-hoc tuning and extension to support peculiarities of both (industry or sector) standard and new control types.
 
-The [OSCAL website](https://www.nist.gov/oscal) provides an overview of the OSCAL project, including an XML and JSON [schema reference](https://pages.nist.gov/OSCAL/docs/schemas/), [examples](https://pages.nist.gov/OSCAL/resources/examples/), and other resources.
+The [OSCAL website](https://www.nist.gov/oscal) provides an overview of the OSCAL project, including an XML and JSON [schema reference](https://pages.nist.gov/OSCAL/reference/), [examples](https://pages.nist.gov/OSCAL/concepts/examples/), and other resources.
 
 If you are interested in contributing to the development of OSCAL, refer to the [contributor guidance](https://github.com/usnistgov/OSCAL/blob/main/CONTRIBUTING.md) for more information.
 
 ## Project Status
 
-To view the latest release of OSCAL check out [GitHub releases](https://github.com/usnistgov/OSCAL/releases). The [release notes](https://pages.nist.gov/OSCAL/reference/release-notes/) are also available on the NIST OSCAL website, and contain a summary of the changes between the different releases.
+To view the latest release of OSCAL check out [GitHub releases](https://github.com/usnistgov/OSCAL/releases). Each release on that page provides a complete summary of the changes made in each release.
 
-All changes are made based on the excellent feedback and contributions that are received from the OSCAL community. The NIST OSCAL team is very thankful for all of it.
+The changes made in each release are based on the excellent feedback and contributions that are received from the OSCAL community. The NIST OSCAL team is very thankful for all of it.
 
 Any feedback may be emailed to the NIST OSCAL team at [oscal@nist.gov](mailto:oscal@nist.gov) or by [creating an issue](https://github.com/usnistgov/OSCAL/issues) on the GitHub repository.
 

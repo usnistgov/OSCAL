@@ -10,97 +10,10 @@ toc:
   headingselectors: "h2, h3, h4, h5, h6"
 ---
 
-## OSCAL 1.0.2 Release
 
-The following changes were made in this patch release.
+Detailed release notes are provided with each OSCAL [release](https://github.com/usnistgov/OSCAL/releases).
 
-- #1035 Upgrade Saxon version used in CI/CD to 10.6 (#PR 1187) @david-waltermire-nist
-- #1093 Parameterize insertion of xsi:schemaLocation attribute in the content upgrader XSLTs; this feature is disabled by default (#1162) @aj-stein-nist, @wendellpiez
-   - Parameterized insertion of xsi:schemaLocation in RC2->1.0.0 content upgrader.
-   - Created README for content upgraders, document schema-location param.
-   - Added pointer from README.txt to content-upgrade docs, per @david-waltermire-nist's sync meeting review.
-- #1121 Added embeded diagram of CI/CD workflow. (PR #1165) @aj-stein-nist
-- #1130 Changed remarks fields from define-field to ref. (PR #1138) @guyzyl
-- #1137 Replace `define-assembly` for `include-all` with `assembly ref` (PR #1144) @guyzyl, @david-waltermire-nist
-- A bunch of updates to the Profile Resolution Specififcation to clarify and improve the specification. (PR #1172) @stephenbanghart, @aj-stein-nist
-   - #1140 Significant improvements around resolution of internal references. Behavior is now defined for resolving resources with different combinations of "rlink" and "base64". As these /should/ all be equal to one another, there is no standardized order or priority given in the specification at this time.
-   - #1141 Enhanced prose around Group handling, especially around expected behavior of the "keep always" prop.
-   - #1142 Core issue obsoleted by general OSCAL requirements on valid OSCAL documents. Cleaned up prose in the formats section.
-   - #1152 Added Metaschema entries for the new Mapping assembly and it's associated fields/flags. Verified the veracity of existing Profile documentation, making minor-moderate edits to bring documentation up to speed with the current specification.
-   - #1155 Fixed incorrect notation in metadata section: props are now properly refereed to as such, rather than using the value of their "name" field.
-- #1153 Added README explaining content validation concepts. (PR #1170) @aj-stein-nist, @wendellpiez, @david-waltermire-nist
-- #1153 Added information about content well-formedness and validation to the website. (PR #1169) @aj-stein-nist, @wendellpiez, @david-waltermire-nist
-- #1176 Removed stale `NEW CONTENT`, `END NEW CONTENT`, and `NEW` comment blocks from Metaschemas. (PR #1179) @guyzyl
-- Multiple changes to the Profile Resolution Specification. (PR #1089)  @stephenbanghart, @aj-stein-nist
-   - Tagged Requirements (updated .rnc), Added Draft Status, several small fixes in modify section
-   - Applying AJ's fixes, other various small fixes - pending larger automated formating
-   - Intro purpose rewrite. Editorial fixes from comments. Small edits to "Processing" page on site.
-- Added DRT Strategies Inc GRC tool to tools page (PR #1122) @vmangat
-- Add Rules Presentation from January 21, 2022 Meeting (PR #1125) @aj-stein-nist
-- Add tool oscal4neo4j to tools page (#1128) @Agh42, @bradh
-- Remove extra `>` which shows in the built schemas (PRs #1133, #1147) @guyzyl
-- Fix broken links to FedRAMP baselines (PR #1143) @rosskarchner 
-- Bumped nokogiri from 1.12.5 to 1.13.3 in /docs (PR #1154) @dependabot
-- Updated core repo documentation (PR #1157) @david-waltermire-nist, @aj-stein-nist
-   - Updated readmes with more current and relevant information.
-   - Added CODEOWNERS to drive reviews.
-   - Updated .github/PULL_REQUEST_TEMPLATE.md
-- Removed duplicated risk status construct in the assessment commonm Metaschema (PR #1159) @david-waltermire-nist
-- Updated Tools with Additional Open Source Projects (PR #1164) @rgauss
-- Fixed broken links in `README.md` (PR #1181) @guyzyl
-- Renamed `.github/README.md` file to `ABOUT.md` to fix the main index page in the GitHub repo (#1182) @guyzyl
-- Added mailing list names to contact page.
-
-The following compatibility breaking change was made:
-- In all JSON schemas, the name "props" is used to signify the list of metadata properties. There was one case where the name prop is used instead of props. Fixes this obvious typo in the assessment results metaschema. (PR #1148) @guyzyl
-
-## OSCAL 1.0.1 Release
-
-The following changes were made in this patch release.
-
-- #635, #966 Cleaned up src/utils directory and added documentation (PR #970, #1014) @wendellpiez
-- #956 Enhanced the schema production pipeline to ensure that high-order Unicode characters are properly escaped (PR usnistgov/ metaschema#165) @wendellpiez
-- #958 Fixed an issue in the content upconverter used for updating OSCAL content from 1.0.0 RC2 to 1.0.0 (PR #960) @wendellpiez
-- #983 Fix Dockerfile entrypoint using best practices for entrypoint. (PR #984) @ohsh60
-- #986 Updated dependency versions for Saxon and AJV in the Docker config. Added dependencies for yargs. (PR #987) @ohsh60
-- #1001 Fixed bad metapath. @david-waltermire-nist
-- #1004 Refactored dockerfiles for the build and docs folders. Updated use documentation. Added missing dependency for calabash. (PR #1005) @david-waltermire-nist
-- #1020 Updated documentation around using the content converters. (PR #1027, #1055) @wendellpiez
-- #1025 Fixed SyntaxWarning for content validator oscal-content-validator.py (PR #1026) @bradh, @david-waltermire-nist
-- #1037 Clarify data types docs for param insert (PR #1112)
-- #1039, #1040, #1041, #1042, #1046 Updated the profile resolution specification (PR #1014, #1017) @stephenbanghart
-- #1044 Added warnings for non-required UUID flags. @david-waltermire-nist
-- #1053 Make @control-id for alter statements in profile required (PR #1111) @aj-stein-nist
-- #1067 Fix enum typo from inteneral->internal (PR #1110) @aj-stein-nist
-- #1102 Some Docker container improvements for local web development and testing for PRs (PR #1103) @aj-stein-nist
-- #1107 Incorporating processing directives that support schematron validation of Metaschema-based models (#1108) @aj-stein-nist
-- usnistgov/oscal-content/#59 Convert File Type for Files or Remote Hyperlinks in Continuous Deployment (PR #1010, 1070) @ohsh6o, @david-waltermire-nist
-- Fixed broken branch configuration for the metaschema submodule (PR #991) @ohsh60
-- Fixed OSCAL constraints in Metaschemas. Fixing Metapath syntax errors. (PR #1012, #1065) @david-waltermire-nist
-- Repaired a bug report on a missed control; adding test files (PR #1013) @wendellpiez
-- Removed duplicate json import in oscal-content-validator.py (PR #1077) @flickerfly
-- Improvements to XSLT-based profile resolver (PR #1071) @wendellpiez
-- Added requirements.txt for oscal-content-validator.py (PR #1077) @guyzyl
-- Add support for yaml OSCAL files validation (PR #1091) @guyzyl, @aj-stein-nist
-- Updated contributing and pull request documentation for External Developers (#1094) @aj-stein-nist
-- Bump addressable from 2.7.0 to 2.8.0 in /docs (PR #994) @dependabot
-- Bump nokogiri from 1.11.5 to 1.12.5 in /docs (PR #1029) @dependabot
-- Bump lxml from 4.6.3 to 4.6.5 in /build/ci-cd/python (PR #1096) @dependabot
-
-### Website changes
-
-- #739 Fixed 404 error when using the "Improve this page" link. (PR #995) @EasyDynamics, @david-waltermire-nist
-- #854 Added a Component Tutorial to Website (PR #935, #1015) @Rene2mt, @david-waltermire-nist
-- #860 Updated model reference documentation to better clarify the scope and uniqueness of identifiers used within the OSCAL models. (PR #941) @Rene2mt, @david-waltermire-nist, @aj-stein-nist
-- #947 Fixed a number of typos (PR #955) @david-waltermire-nist
-- #968 Fixed broken and stale links in model documentation. (PR #973) @david-waltermire-nist
-- #993 Updating tools page to use a table. Added Compliance Tressle. @iMichaela, @david-waltermire-nist
-- #996 Added blogs to website. @david-waltermire-nist
-- #1049 Added control freak to the OSCAL tools page (PR #1104) @aj-stein-nist
-- Fixed prop syntax in validation component tutorial. (PR #999) @ohsh60
-- Added link to EasyDynamics OSCAL tools (PR #1009) @afeld
-- Adding link to XML Jelly Sandwich OSCAL demos (PR #1016) @wendellpiez
-- Updated the Lunch with Devs meeting info and Tools page to include new meeting info (PR #1045) @iMichaela, @david-waltermire-nist
+The following are extra release notes for some older OSCAL releases.
 
 ## OSCAL 1.0.0 Release
 
