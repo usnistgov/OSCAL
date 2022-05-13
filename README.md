@@ -12,7 +12,7 @@ If you are interested in contributing to the development of OSCAL, refer to the 
 
 ## Project Status
 
-To view the latest release of OSCAL check out [GitHub releases](https://github.com/usnistgov/OSCAL/releases). Each release on that page provides a complete summary of the changes made in each release.
+To view the latest release of OSCAL check out [GitHub releases](../../releases). Each release on that page provides a complete summary of the changes made in each release.
 
 The changes made in each release are based on the excellent feedback and contributions that are received from the OSCAL community. The NIST OSCAL team is very thankful for all of it.
 
