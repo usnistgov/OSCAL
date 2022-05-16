@@ -20,7 +20,7 @@ This guide provides information on how [release versions](#versioning) and [bran
 
 ## Versioning
 
-This repository uses [semantic versioning](https://semver.org/spec/v2.0.0.html) to version releases.
+This repository uses [semantic versioning](https://semver.org/spec/v2.0.0.html) to version [releases](../../releases).
 
 Semantic versions are in the form of `MAJOR.MINOR.PATCH`. Given a version number, increment the:
 
