@@ -10,7 +10,7 @@ toc:
   headingselectors: "h1.toc1, h2.toc2, h3.toc3, h4.toc4, h5.toc5, h6.toc6"
 ---
 
-The following is a reference for the JSON object definitions derived from the [metaschema](https://github.com/usnistgov/OSCAL/blob/release-1.0//src/metaschema/oscal_profile_metaschema.xml) for this [model](/concepts/layer/control/profile/).
+The following is a reference for the JSON object definitions derived from the [metaschema](https://github.com/usnistgov/OSCAL/blob/develop//src/metaschema/oscal_profile_metaschema.xml) for this [model](/concepts/layer/control/profile/).
 
 <!-- DO NOT REMOVE. Generated text below -->
 {{< rawhtml >}}
@@ -2256,7 +2256,7 @@ The following is a reference for the JSON object definitions derived from the [m
                   <div class="instance-header">
                      <h2 id="/assembly/oscal-profile/merge/custom" class="toc2 name">custom</h2>
                      <p class="type">assembly<br class="br" /> </p>
-                     <p class="occurrence">[0 or 1]</p>
+                     <p class="occurrence">[1]</p>
                      <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-profile/merge/custom">Switch to XML</a></div>
                      <p class="formal-name">Custom grouping</p>
                   </div>
