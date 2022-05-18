@@ -7,7 +7,7 @@ toc:
   enabled: true
 ---
 
-This tutorial covers the basics of the common OSCAL metadata section, and provides a walk-through on creating ```metadata``` for a new OSCAL document. Before reading this tutorial you should:
+This tutorial covers the basics of the common OSCAL metadata section, and provides a walk-through on creating `metadata` for a new OSCAL document. Before reading this tutorial you should:
 
 - Have some familiarity with the [XML](https://www.w3.org/standards/xml/core), [JSON](https://www.json.org/), or [YAML](https://yaml.org/spec/) formats.
 - Have a basic understanding of OSCAL Models and their overall structure. ([OSCAL High-Level Overview](/concepts/layer/overview/))
