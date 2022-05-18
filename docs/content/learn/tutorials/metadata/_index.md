@@ -498,7 +498,6 @@ The `name` field is the key, and the `value` field is the value. Together they f
 The `props` array provides any number of key-value pairings to provide additional information alongside the well-defined fields of the metadata section. Some common use cases include labels, sorting tags, and classification. There are no restrictions on using custom `name` and `value` pairs making `prop` an excellent place to do extension of the OSCAL model to meet proprietary use cases. 
 
 {{% callout note %}}
-More information on the use of `props` is provided in the [Props and Links tutorial](/learn/tutorials/extensions/#props).
 {{% /callout %}}
 
 For this example, we will create a `props` to mark an OSCAL document with a [Traffic Light Protocol (TLP)](https://en.wikipedia.org/wiki/Traffic_Light_Protocol) classification.
