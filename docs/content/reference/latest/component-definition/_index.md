@@ -1,5 +1,5 @@
 ---
-title: "Component Definition Model v1.0.3 Reference"
+title: "Component Definition Model v1.0.4 Reference"
 summary: "Component Definition Model"
 weight: 20
 suppresstopiclist: true
@@ -10,7 +10,7 @@ sidenav:
   inactiverenderdepth: 1
 ---
 
-<p><span class="usa-tag">Release Version</span> OSCAL v1.0.3</p>
+<p><span class="usa-tag">Release Version</span> OSCAL v1.0.4</p>
 <p><span class="usa-tag">Github</span> <a href="https://github.com/usnistgov/OSCAL">usnistgov/OSCAL</a> <span class="usa-tag">Branch</span> <a href="https://github.com/usnistgov/OSCAL/tree/main">main</a></p>
 
 The following reference documentation is available for the OSCAL Component Definition model.

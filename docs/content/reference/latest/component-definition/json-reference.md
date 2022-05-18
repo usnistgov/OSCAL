@@ -1,6 +1,6 @@
 ---
-title: "OSCAL Component Definition Model v1.0.3 JSON Format Reference"
-heading: "Component Definition Model v1.0.3 JSON Format Reference"
+title: "OSCAL Component Definition Model v1.0.4 JSON Format Reference"
+heading: "Component Definition Model v1.0.4 JSON Format Reference"
 weight: 20
 generateanchors: false
 sidenav:
