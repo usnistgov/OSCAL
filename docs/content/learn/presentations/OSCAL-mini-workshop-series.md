@@ -1,12 +1,12 @@
 # OSCAL Mini Workshop Series
 
-The NIST [OSCAL](https://pages.nist.gov/OSCAL/) team is hosting a new series of mini workshops. that aim to address topics of interest for our community and to open this forum for its members to present their [OSCAL](https://pages.nist.gov/OSCAL/)-related work. Unless specifically stated, the workshops will not require a deep, technical understanding of [OSCAL](https://pages.nist.gov/OSCAL/), and the dialog is informal, allowing the community to interact with the presenters and with the [OSCAL](https://pages.nist.gov/OSCAL/) team members. 
+The NIST [OSCAL](/) team is hosting a new series of mini workshops. that aim to address topics of interest for our community and to open this forum for its members to present their [OSCAL](/)-related work. Unless specifically stated, the workshops will not require a deep, technical understanding of [OSCAL](/), and the dialog is informal, allowing the community to interact with the presenters and with the [OSCAL](/) team members. 
 
-Please see below the call for proposals if you are interested in presenting your [OSCAL](https://pages.nist.gov/OSCAL/) work. To submit topics for discussion, please email us at [oscal@nist.gov](oscal@nist.gov).
+Please see below the call for proposals if you are interested in presenting your [OSCAL](/) work. To submit topics for discussion, please email us at [oscal@nist.gov](oscal@nist.gov).
 
-The [OSCAL](https://pages.nist.gov/OSCAL/) project and this workshop series are aligned with NIST’s mission of promoting U.S. innovation and industrial competitiveness by advancing measurement science, standards, and technology in ways that enhance economic security and improve our quality of life. NIST works to maximize its impact and mission fulfillment by positioning itself to anticipate future technology trends and develop the most important measurements and standards products that are aligned with industry drivers and needs.
+The [OSCAL](/) project and this workshop series are aligned with NIST’s mission of promoting U.S. innovation and industrial competitiveness by advancing measurement science, standards, and technology in ways that enhance economic security and improve our quality of life. NIST works to maximize its impact and mission fulfillment by positioning itself to anticipate future technology trends and develop the most important measurements and standards products that are aligned with industry drivers and needs.
 
-We encourage developers of control-oriented security tools and organizations that want to use or create [OSCAL](https://pages.nist.gov/OSCAL/)-based information to automate the security assessment and plan on moving towards continuous Authorization to Operate (ATO), to attend the workshops.
+We encourage developers of control-oriented security tools and organizations that want to use or create [OSCAL](/)-based information to automate the security assessment and plan on moving towards continuous Authorization to Operate (ATO), to attend the workshops.
 
 Who should attend:
 - Leaders in digital transformation and security automation from the government, private, and academic sectors;
@@ -16,7 +16,7 @@ Who should attend:
 
 ## Call for Proposals
 
-NIST [OSCAL](https://pages.nist.gov/OSCAL/) Mini Workshop program committee is seeking timely, topical, and thought-provoking **technical** **presentations or demonstrations** highlighting [OSCAL](https://pages.nist.gov/OSCAL/) editorial tools, OSCAL-based security assessment automation processes, and Governance Risk and Compliance (GRC) tools supporting OSCAL formats for integration into such processes. 
+NIST [OSCAL](/) Mini Workshop program committee is seeking timely, topical, and thought-provoking **technical** **presentations or demonstrations** highlighting [OSCAL](/) editorial tools, OSCAL-based security assessment automation processes, and Governance Risk and Compliance (GRC) tools supporting OSCAL formats for integration into such processes. 
 
 **NIST is not endorsing any of the OSCAL tools or services presented and presentation or demos promoting such tools or services as opposed to focusing on the OSCAL-related technical aspects will not be permitted.**
 
