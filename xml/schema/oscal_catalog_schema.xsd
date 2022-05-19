@@ -1953,7 +1953,7 @@
           dot decimal notation.</xs:documentation>
       </xs:annotation>
       <xs:restriction base="metaschema-datatypes:StringDatatype">
-         <xs:pattern value="((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])"/>
+         <xs:pattern value="((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9]).){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])"/>
       </xs:restriction>
    </xs:simpleType>
    <xs:simpleType name="IPV6AddressDatatype">
