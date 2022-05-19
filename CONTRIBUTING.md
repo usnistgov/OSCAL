@@ -62,7 +62,7 @@ Contributions can be made to the following branches in this repository:
 - **release-\***: The release branches are used to provide patches to a major or minor version of OSCAL. The branches are named release-*major*.*minor*. You should provide changes only to the highest numbered *minor* release for a given *major* release. Patch releases are made more frequently than *major* or *minor* releases.
 - **develop**: This branch is used to queue changes for the next *major*/*minor* release of OSCAL. A *major*/*minor* release will result in the creation of a new release branch, once the development has been completed and the update is to be staged for release.
 
-More information about how [releases](../../releases) are managed in this repository can be found in the [versioning and branching guide](./versioning-and-branching.md).
+More information about how [releases](../../releases) are managed in this repository can be found in the [versioning and branching guide](versioning-and-branching.md).
 
 The OSCAL project uses a typical GitHub fork and pull request [workflow](https://guides.github.com/introduction/flow/). To establish a development environment for contributing to the OSCAL project, you must do the following:
 
