@@ -32,17 +32,17 @@ Submit your proposal via email to [oscal@nist.gov](oscal@nist.gov), with the sub
 | ---- | ---- | ---------------------| ----------------------- | ---- | --------------- | ------ |
 | 2022/05/18 | 11:00AM-12:00PM EDT | 1.  Compliance as Code for Big Bang Risk Management Framework (RMF) Control Mapping to Accelerate Department of Defense (DoD) Authorization to Operate (ATO) | Maj Camdon Cady, Chief Operating Officer, Platform One, US Airforce | presentation |  L2 |   |
 |  |  | 2. OSCAL Catalog Authoring Tool (CAT) | Dmitry Cousin, NIST |demo |  L1 |  | 
-|  2011/06/15 |  11:00AM-12:00PM EDT  | 1. Trestle - compliance as codeorchestrator and automation workflow | Dr. Anca Sailer, IBM | presentation | L3 |  | 
+|  2022/06/15 |  11:00AM-12:00PM EDT  | 1. Trestle - compliance as codeorchestrator and automation workflow | Dr. Anca Sailer, IBM | presentation | L3 |  | 
 |  |  | 2. |  |  |  |  | 
-|  2011/07/13 |  11:00AM-12:00PM EDT  | 1. |  |  |  |  | 
+|  2022/07/13 |  11:00AM-12:00PM EDT  | 1. |  |  |  |  | 
 |  |  | 2. |  |  |  |  |
-|  2011/08/10 |  11:00AM-12:00PM EDT  | 1. |  |  |  |  | 
+|  2022/08/10 |  11:00AM-12:00PM EDT  | 1. |  |  |  |  | 
 |  |  | 2. |   |  |  |  |
-|  2011/09/07 |  11:00AM-12:00PM EDT  | 1. |  |  |  |  | 
+|  2022/09/07 |  11:00AM-12:00PM EDT  | 1. |  |  |  |  | 
 |  |  | 2. |   |  |  |  |
-|  2011/10/05 |  11:00AM-12:00PM EDT  | 1. |  |  |  |  | 
+|  2022/10/05 |  11:00AM-12:00PM EDT  | 1. |  |  |  |  | 
 |  |  | 2. |   |  |  |  |
-|  2011/11/02 |  11:00AM-12:00PM EDT  | 1. |  |  |  |  | 
+|  2022/11/02 |  11:00AM-12:00PM EDT  | 1. |  |  |  |  | 
 |  |  | 2. |   |  |  |  | 
-|  2011/11/30 |  11:00AM-12:00PM EDT  | 1. |  |  |  |  | 
+|  2022/11/30 |  11:00AM-12:00PM EDT  | 1. |  |  |  |  | 
 |  |  | 2. |   |  |  |  |
