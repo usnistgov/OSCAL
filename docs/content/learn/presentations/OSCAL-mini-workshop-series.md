@@ -6,7 +6,7 @@ Please see below the call for proposals if you are interested in presenting your
 
 The [OSCAL](/) project and this workshop series are aligned with NIST’s mission of promoting U.S. innovation and industrial competitiveness by advancing measurement science, standards, and technology in ways that enhance economic security and improve our quality of life. NIST works to maximize its impact and mission fulfillment by positioning itself to anticipate future technology trends and develop the most important measurements and standards products that are aligned with industry drivers and needs.
 
-We encourage developers of control-oriented security tools and organizations that want to use or create [OSCAL](/)-based information to automate the security assessment and plan on moving towards continuous Authorization to Operate (ATO), to attend the workshops.
+We encourage developers of control-oriented security tools, organizations that want to use or create [OSCAL](/)-based information to automate security assessment, and those planning to move towards continuous Authorization to Operate (cATO) to attend the workshops.
 
 Who should attend:
 - Leaders in digital transformation and security automation from the government, private, and academic sectors;
