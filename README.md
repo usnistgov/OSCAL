@@ -36,3 +36,11 @@ To provide feedback, to ask questions, or to let us know about an OSCAL implemen
 
 Please find instructions for joining the OSCAL development and update lists on our [contacts page](https://pages.nist.gov/OSCAL/contact/).
 If you have any questions about OSCAL in general or if you would like to get involved in the OSCAL project, please contact us at: [oscal@nist.gov](mailto:oscal@nist.gov) or on [Gitter](https://gitter.im/usnistgov-OSCAL/Lobby).
+
+# Cloning this repository
+
+Run the following Git command to clone the OSCAL repository.
+
+```
+git clone --recurse-submodules https://github.com/usnistgov/OSCAL.git
+```
