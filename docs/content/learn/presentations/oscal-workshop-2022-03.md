@@ -6,7 +6,7 @@ toc:
 ---
 
 {{% usa-tag %}}When{{% /usa-tag %}} March 1, 2022 thru March 2nd, 2022
-{{% usa-tag %}}Purpose{{% /usa-tag %}} The workshop will provide attendees an opportunity to familiarize themselves and build skills in the  development and use of OSCAL. We encourage developers of control-oriented security tools, and organizations that want to use or create OSCAL-based information, to register and attend the workshop. 
+{{% usa-tag %}}Purpose{{% /usa-tag %}} The workshop will provide attendees an opportunity to familiarize themselves and build skills in the development and use of OSCAL. We encourage developers of control-oriented security tools, and organizations that want to use or create OSCAL-based information, to register and attend the workshop. 
 
 The following presentations are available from this workshop. Recordings are also provided where available. The [full agenda](https://www.nist.gov/system/files/documents/2022/02/28/Open%20Security%20Controls%20Assessment%20Language_AGENDA_2022.03.01_final_1.pdf) is also available. The [speakers' bios](https://www.nist.gov/system/files/documents/2022/02/28/2022_OSCAL-Speaker-Bios_final.pdf) is available for review.
 
