@@ -148,6 +148,52 @@ fi
 
 echo "BRANCH(initial)='${BRANCH}'"
 
+# Compute owner and repo from parsing revision symbolic data to support local
+# and remote automated CI/CD git clone scenarios more comprehensively. The
+# remote might be origin, or might be something custom, do no rely on this.
+# Out of this git rev-parse command is like owner/reponame
+OWNER_REPO_NAME="$(git rev-parse --abbrev-ref --symbolic-full-name '@{u}')"
+# Use regex to group OWNER_REPO_NAME into (owner) (/) (reponame) in array at
+# indices 1 and 3, drop slash at index 2.
+remote_branch_filter='^([a-zA-Z0-9-]+)(\/)([a-zA-Z0-9_-]+)$'
+# Set defaults if error occurs and detection fails
+DEFAULT_REMOTE_NAME="origin"
+DEFAULT_REMOTE_URL="git@github.com:usnistgov/OSCAL.git"
+
+if [[ "${OWNER_REPO_NAME}" =~ $remote_branch_filter ]]; then
+    remote_name="${BASH_REMATCH[1]}"
+    remote_url="$(git remote get-url ${remote_name})"
+else
+    echo -e "${P_ERROR}Name and URL for remote not detected, using default${P_END}"
+    remote_name="${DEFAULT_REMOTE_NAME}"
+    remote_url="${DEFAULT_REMOTE_URL}"
+fi
+
+# Use regex to group variations of a GitHub remote URL determined by resolving
+# a git remote get-url remotename and consistently format it into a HTTPS URL
+# stub for the correct org name or username. Each group is below with the
+# numeric index of the array for BASH_REMATCH
+# 0: full matching string
+# 1: required SSH username, git protocol URI or HTTPS URI protocol, so git@ or
+#    git:// or https://
+# 2: required github.com hostname to match only GitHub orgs and user forks
+# 3: required colon or slash to support git SSH or GitHub HTTPS URL separators
+# 4: required GitHub org or username, this can be letters, numbers, or hyphens
+# 5: required slash, the separator between org/username and reponame
+# 6: required repo name, letters, numbers, hyphens, underscores, and periods,
+#    there are no official GH docs on this, common reference stackoverflow.com/a/59082561
+# 7: optional .git ending, common with git SSH URIs but also allow for HTTPS
+github_url_filter='^(git@|git:\/\/|https:\/\/)(github.com)(:|\/)([a-zA-Z0-9-]+)(\/)([a-zA-Z0-9_-]+)(.git){0,1}$'
+# Set defaults if error occurs and detection fails
+DEFAULT_REMOTE="usnistgov/OSCAL"
+
+if [[ "${remote_url}" =~ $github_url_filter ]]; then
+    REMOTE="${BASH_REMATCH[4]}/${BASH_REMATCH[6]}"
+else
+    echo -e "${P_ERROR}No URL detected remote matching pattern, setting remote stub to default${P_END}"
+    REMOTE="${DEFAULT_REMOTE}"
+fi
+
 if [[ "$BRANCH" =~ ^v.* ]]; then
   VERSION="${BRANCH/#"v"}"
   REVISION="${VERSION}"
@@ -182,7 +228,7 @@ if [ ! -d "${doc_path}" ] || [ "$DISABLE_ARCHETYPE_CREATION" = "false" ]; then
   rm -rf "${doc_path}"
   #mkdir -p "${doc_path}"
 
-  result=$(cd ${DOCS_DIR};HUGO_REF_TYPE="${TYPE}" HUGO_REF_BRANCH="${BRANCH}" HUGO_REF_VERSION="${VERSION}" HUGO_REF_REVISION="${REVISION}" hugo new --kind reference-index "${doc_path}/_index.md" 2>&1)
+  result=$(cd ${DOCS_DIR};HUGO_REF_TYPE="${TYPE}" HUGO_REF_REMOTE="${REMOTE}" HUGO_REF_BRANCH="${BRANCH}" HUGO_REF_VERSION="${VERSION}" HUGO_REF_REVISION="${REVISION}" hugo new --kind reference-index "${doc_path}/_index.md" 2>&1)
   cmd_exitcode=$?
   if [ $cmd_exitcode -ne 0 ]; then
     echo -e "${P_ERROR}Generating index page failed for revision '${P_END}${REVISION}${P_ERROR}' on branch '${P_END}${BRANCH}${P_ERROR}'.${P_END}"
@@ -236,7 +282,7 @@ while IFS="|" read metaschema_path archetype model_id model_name layer_id schema
     # build the version folder
     #if [ -d "${model_path}" ] && rm -rf "${doc_path}"
 
-    result=$(cd ${DOCS_DIR};HUGO_REF_TYPE="${TYPE}" HUGO_REF_BRANCH="${BRANCH}" HUGO_REF_VERSION="${VERSION}" HUGO_REF_REVISION="${REVISION}" HUGO_MODEL_NAME="${model_name}" HUGO_MODEL_ID="${model_id}" HUGO_SCHEMA_ID="${schema_id}" HUGO_MODEL_CONCEPTS_URL="/concepts/layer/${layer_id}/${schema_id}/" hugo new --kind ${archetype} "${model_path}" 2>&1)
+    result=$(cd ${DOCS_DIR};HUGO_REF_TYPE="${TYPE}" HUGO_REF_REMOTE="${REMOTE}" HUGO_REF_BRANCH="${BRANCH}" HUGO_REF_VERSION="${VERSION}" HUGO_REF_REVISION="${REVISION}" HUGO_MODEL_NAME="${model_name}" HUGO_MODEL_ID="${model_id}" HUGO_SCHEMA_ID="${schema_id}" HUGO_MODEL_CONCEPTS_URL="/concepts/layer/${layer_id}/${schema_id}/" hugo new --kind ${archetype} "${model_path}" 2>&1)
     cmd_exitcode=$?
     if [ $cmd_exitcode -ne 0 ]; then
       echo -e "${P_ERROR}Generating '${P_END}${model_id}${P_OK}' model page failed for revision '${P_END}${REVISION}${P_ERROR}' on branch '${P_END}${BRANCH}${P_ERROR}'.${P_END}"

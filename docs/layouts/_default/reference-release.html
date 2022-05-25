@@ -40,7 +40,11 @@
             {{ if isset .Params "heading" }}<h1>{{ .Params.heading }}</h1>{{else}}<h1>{{ .Title }}</h1>{{ end }}
           </header>
           <p><span class="usa-tag">Release Version</span> {{ if eq .Params.oscal.version "develop" }}Latest Development Snapshot{{ else }}OSCAL v{{ .Params.oscal.version }}{{ end }}</p>
+          {{ if isset .Params.oscal "remote" }}
+          <p><span class="usa-tag">Github</span> <a href="https://github.com/{{ .Params.oscal.remote }}">{{ .Params.oscal.remote }}</a> <span class="usa-tag">{{ if eq .Params.oscal.type "tag" }}Tag{{ else }}Branch{{end}}</span> <a href="https://github.com/{{ .Params.oscal.remote }}/tree/{{ .Params.oscal.branch }}">{{ .Params.oscal.branch }}</a></p>
+          {{ else }}
           <p><span class="usa-tag">Github</span> <a href="https://github.com/usnistgov/OSCAL">usnistgov/OSCAL</a> <span class="usa-tag">{{ if eq .Params.oscal.type "tag" }}Tag{{ else }}Branch{{end}}</span> <a href="https://github.com/usnistgov/OSCAL/tree/{{ .Params.oscal.branch }}">{{ .Params.oscal.branch }}</a></p>
+          {{ end }}
           {{ .Content }}
           {{ if gt (len .Pages) 0 }}
           <p>The following documentation is provided for this release.</p>
