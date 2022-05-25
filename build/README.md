@@ -78,7 +78,7 @@ The following steps are known to work on [Ubuntu](https://ubuntu.com/) (tested i
 
     ```bash
     sudo apt-get update
-    sudo apt-get install -y apt-utils libxml2-utils jq maven nodejs npm build-essential python3-pip git
+    sudo apt-get install -y apt-utils libxml2-utils jq maven nodejs npm build-essential python3-pip git unzip
     sudo apt-get clean
     ```
 
