@@ -1,6 +1,6 @@
 # OSCAL Mini Workshop Series
 
-The NIST [OSCAL](/) team is hosting a new series of mini workshops. that aim to address topics of interest for our community and to open this forum for its members to present their [OSCAL](/)-related work. Unless specifically stated, the workshops will not require a deep, technical understanding of [OSCAL](/), and the dialog is informal, allowing the community to interact with the presenters and with the [OSCAL](/) team members. 
+The NIST [OSCAL](/) team is hosting a new series of mini workshops. They aim to address topics of interest for our community and to open this forum for its members to present their [OSCAL](/)-related work. Unless specifically stated, the workshops will not require a deep, technical understanding of [OSCAL](/), and the dialog is informal, allowing the community to interact with the presenters and with the [OSCAL](/) team members. 
 
 Please see below the call for proposals if you are interested in presenting your [OSCAL](/) work. To submit topics for discussion, please email us at [oscal@nist.gov](oscal@nist.gov).
 
