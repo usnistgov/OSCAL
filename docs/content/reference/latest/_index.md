@@ -11,6 +11,7 @@ sidenav:
   debug: false
 oscal:
     type: "branch"
+    remote: "usnistgov/OSCAL"
     branch: "main"
     revision: "latest"
     version: "1.0.4"
