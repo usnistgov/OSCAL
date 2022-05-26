@@ -11,6 +11,7 @@ sidenav:
   debug: false
 oscal:
     type: "{{ getenv "HUGO_REF_TYPE" }}"
+    remote: "{{ getenv "HUGO_REF_REMOTE" }}"
     branch: "{{ getenv "HUGO_REF_BRANCH" }}"
     revision: "{{ getenv "HUGO_REF_REVISION" }}"
     version: "{{ getenv "HUGO_REF_VERSION" }}"
