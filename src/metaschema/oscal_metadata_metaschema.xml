@@ -220,7 +220,7 @@
                 <formal-name>Location Title</formal-name>
                 <description>A name given to the location, which may be used by a tool for display and navigation.</description>
             </define-field>
-            <assembly ref="address" min-occurs="1">
+            <assembly ref="address">
                 <remarks>
                     <p>Typically, the physical address of the location will be used here. If this information is sensitive, then a mailing address can be used instead.</p>
                 </remarks>
@@ -264,6 +264,12 @@
                 <enum value="primary">The location is a data-center used for normal operations.</enum>
                 <enum value="alternate">The location is a data-center used for fail-over or backup operations.</enum>
             </allowed-values>
+            <has-cardinality target="address" level="WARNING" min-occurs="1">
+                <description>In most cases, it is useful to define a location. In some cases, defining an explicit location may represent a security risk.</description>
+            </has-cardinality>
+            <has-cardinality target="title|address|email-address|telephone-number" level="ERROR" min-occurs="1">
+                <description>A location must have at least a title, address, email-address, or telephone number.</description>
+            </has-cardinality>
         </constraint>
     </define-assembly>
 
