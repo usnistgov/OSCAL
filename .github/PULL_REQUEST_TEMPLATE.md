@@ -11,6 +11,8 @@
 - [ ] Have you squashed any non-relevant commits and commit messages? \[[instructions](https://git-scm.com/book/en/v2/Git-Tools-Rewriting-History)\]
 - [ ] Do all automated CI/CD checks pass?
 
+By submitting a pull request, you are agreeing to provide this contribution under the [CC0 1.0 Universal public domain](https://creativecommons.org/publicdomain/zero/1.0/) dedication.
+
 ### Changes to Core Features:
 
 - [ ] Have you added an explanation of what your changes do and why you'd like us to include them?
