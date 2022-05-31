@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+         uuid="c9fae162-e184-4f25-9987-ee7ab3e59a10">
+   <metadata>
+      <title>Test Profile</title>
+      <last-modified>2022-04-26T17:11:18.9602994-04:00</last-modified>
+      <version>1.0</version>
+      <oscal-version>1.0.0</oscal-version>
+      <link rel="resolution-source" href="req-with-parent-controls-yes1.xml"/>
+   </metadata>
+   <control id="c3">
+      <title>Control C3</title>
+      <prop name="label" value="ninth"/>
+      <part name="statement" id="c3-stmt">
+         <p>C3 ccccc cccccccccccccc.</p>
+      </part>
+      <control id="c3.a">
+         <title>Control C3-A</title>
+         <prop name="label" value="tenth"/>
+         <part name="statement" id="c3-stmt">
+            <p>C3 A ccccc cccccccccccccc.</p>
+         </part>
+         <control id="c3.a-1">
+            <title>Control C3-A-1</title>
+            <prop name="label" value="eleventh"/>
+            <part name="statement" id="c3-stmt">
+               <p>C3 A-1 ccccc cccccccccccccc.</p>
+            </part>
+         </control>
+      </control>
+   </control>
+</catalog>

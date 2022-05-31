@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+         uuid="dce8a59e-d0a7-4222-b3a2-9cdcee1e12f6">
+   <metadata>
+      <title>Test Profile</title>
+      <last-modified>2022-04-20T11:29:12.5084741-04:00</last-modified>
+      <version>1.0</version>
+      <oscal-version>1.0.0</oscal-version>
+      <link rel="resolution-source" href="req-include-exclude3.xml"/>
+   </metadata>
+   <control id="b2">
+      <title>Control B2</title>
+      <prop name="label" value="fifth"/>
+      <part name="statement" id="b2-stmt">
+         <p>B2 bbb bbbbbbbbbbb bbbbbbbbbbbb.</p>
+      </part>
+   </control>
+   <control id="c3">
+      <title>Control C3</title>
+      <prop name="label" value="ninth"/>
+      <part name="statement" id="c3-stmt">
+         <p>C3 ccccc cccccccccccccc.</p>
+      </part>
+   </control>
+</catalog>
