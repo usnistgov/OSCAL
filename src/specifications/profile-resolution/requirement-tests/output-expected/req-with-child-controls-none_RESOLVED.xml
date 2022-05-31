@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+         uuid="5f42683a-3ec8-42c3-a737-91d84d5540d0">
+   <metadata>
+      <title>Test Profile</title>
+      <last-modified>2022-04-19T16:27:33.9704261-04:00</last-modified>
+      <version>1.0</version>
+      <oscal-version>1.0.0</oscal-version>
+      <link rel="resolution-source" href="req-with-child-controls-none.xml"/>
+   </metadata>
+   <control id="a1">
+      <title>Control A1</title>
+      <param id="a1_prm1">
+         <label>A1 Parameter 1</label>
+      </param>
+      <prop name="label" value="first"/>
+      <part name="statement" id="a1-stmt">
+         <p>A1 aaaaa aaaaaaaaaa</p>
+      </part>
+   </control>
+   <control id="b1">
+      <title>Control B1</title>
+      <prop name="label" value="fourth"/>
+      <part name="statement" id="b1-stmt">
+         <p>B1 bbbb bbbbbbb.</p>
+      </part>
+   </control>
+   <control id="c1">
+      <title>Control C1</title>
+      <prop name="label" value="seventh"/>
+      <part name="statement" id="c1-stmt">
+         <p>C1 ccccc ccc ccccccccccccccccc.</p>
+      </part>
+   </control>
+   <control id="c3">
+      <title>Control C3</title>
+      <prop name="label" value="ninth"/>
+      <part name="statement" id="c3-stmt">
+         <p>C3 ccccc cccccccccccccc.</p>
+      </part>
+   </control>
+</catalog>

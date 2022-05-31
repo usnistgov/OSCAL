@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../example-checkup.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!-- Modified by conversion XSLT 2021-04-05T11:22:09.89-04:00 - RC2 OSCAL becomes RC3 OSCAL -->
+<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+         uuid="3ad7db02-7024-4176-af24-8090182356d5">
+   <metadata>
+      <title>Test Profile</title>
+      <last-modified>2020-05-30T14:39:47.217-04:00</last-modified>
+      <version>1.0</version>
+      <oscal-version>1.0.0</oscal-version>
+   </metadata>
+   <import href="catalogs/abc-simple_catalog.xml">
+      <include-controls>
+         <matching/>
+         <matching pattern=""/>
+      </include-controls>
+   </import>
+</profile>
