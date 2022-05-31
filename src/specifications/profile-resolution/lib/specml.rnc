@@ -24,16 +24,13 @@ tagging.elem = element tagging { attribute whose { text }, (text | hi | revisit)
 
 cf.elem = element cf { attribute file { text }?, empty }
 
-mapping.elem = element mapping {
-                attribute unit-test { text }?,
-                    head.elem?, (blocks*, tagging.elem)*, blocks* }
+mapping.elem = element mapping { head.elem?, (blocks*, tagging.elem)*, blocks* }
 
 section.elem = element section { attribute id { xsd:ID }?, head.elem, misc, section.elem* }
 
-inline-mixed = (text | a | code | term | revisit | propose | em | strong | q | src | tgt | xpath | xref | int | inter | req )*
+inline-mixed = (text | a | code | term | revisit | propose | em | strong | q | src | tgt | xpath | xref | int | req | eg)*
 
 req = element req { attribute id { xsd:ID }?, attribute level { text }?, inline-mixed }
-inter = element inter { text }
 a       = element a       { attribute href { text }, text }
 code    = element code    { text }
 term    = element term    { text }
@@ -41,6 +38,7 @@ revisit = element revisit { inline-mixed }
 propose = element propose { inline-mixed }
 q       = element q       { inline-mixed }
 em      = element em      { text }
+eg      = element eg      { attribute href { text }?, text } # href should be a URI
 strong  = element strong  { text }
 src     = element src     { text }
 tgt     = element tgt     { text }

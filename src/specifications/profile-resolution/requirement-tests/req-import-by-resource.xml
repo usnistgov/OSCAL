@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../example-checkup.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+         uuid="0a281290-eb91-423f-9430-576e8099cae4">
+    <metadata>
+        <title>Test Profile</title>
+        <last-modified>2022-02-14T17:44:59.245623-05:00</last-modified>
+        <version>1.0</version>
+        <oscal-version>1.0.0</oscal-version>
+    </metadata>
+    <import href="#449ce77c-24d3-4740-b0bd-1b37239437ff">
+        <include-all/>
+    </import>
+    <merge>
+        <as-is>true</as-is>
+    </merge>
+    <back-matter>
+        <resource uuid="449ce77c-24d3-4740-b0bd-1b37239437ff">
+            <rlink href="catalogs/abc-mixed-up_catalog.xml"/>
+        </resource>
+    </back-matter>
+</profile>
