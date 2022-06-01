@@ -5,6 +5,7 @@ suppresstopiclists: true
 
 The following are presentations on OSCAL-related topics. Some of the older presentations were based on earlier versions of OSCAL, which may be slightly different from the current OSCAL releases. In such cases, the  content will still apply conceptually and will give you a good overview of the core OSCAL concepts.
 
+- [3rd NIST OSCAL Workshop](oscal-workshop-2022-03/) - March 1-2, 2022
 - [OSCAL Deep Diff Introduction](/presentations/OSCAL-deep-diff-LWtD-20220505.pdf) presented during the [Lunch with the OSCAL Developers](/contribute/dev-lunch/) - May 5, 2022
 - [Blog: Innovating Security Compliance Through Open Standards](https://blogs.easydynamics.com/2021/07/07/innovating-security-compliance-through-open-standards/) - July 7, 2021
 - [Blog: The Foundation for Interoperable and Portable Security Automation is Revealed in NIST’s OSCAL Project](https://www.nist.gov/blogs/cybersecurity-insights/foundation-interoperable-and-portable-security-automation-revealed) - May 19. 2021
