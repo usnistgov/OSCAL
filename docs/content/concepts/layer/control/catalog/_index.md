@@ -62,7 +62,11 @@ An OSCAL catalog is organized as follows, which is based on the standard OSCAL [
 
 ## Key Concepts
 
-OSCAL catalogs define sets of *related*, *complementary* controls. The primary use of the catalog model is to represent a comprehensive collection of controls from which an organization can create a *baseline*, by means of control selection and tailoring. A trusted machine-readable representation of a canonical control set such as NIST SP 800-53 is a significant (and arguably indispensable) asset for any organization tasked with understanding and implementing it; the OSCAL catalog model enables this by providing a common set of rules for encoding this catalog (control set), like others, thereby promoting interoperability and leveraging commodity tools. In addition, the catalog model provides a convenient representation of the tailored selection of controls, with their tailoring in place, which results when an OSCAL **profile** (which represents a set of selections and modifications of controls from catalogs, in abstracted form) is *resolved* against the catalog(s) it imports: as a "tailored control selection" (baseline) ready for display or further processing.
+OSCAL catalogs define organized sets of controls. The primary use of the catalog model is to represent a comprehensive collection of controls from which an organization can create a *baseline*, by means of control selection and tailoring. A trusted machine-readable representation of a canonical control set such as NIST SP 800-53 is a significant (and arguably indispensable) asset for any organization tasked with understanding and implementing it; the OSCAL catalog model supports this by providing a common set of rules for encoding this catalog (control set), like others, thereby promoting interoperability and enabling commodity tools.
+
+Because it is suited to represent any set of controls, however, there is a second important application for the OSCAL catalog model within OSCAL, namely as the *result* of processing an OSCAL **profile**, a document which represents a set of selections and modifications of controls from OSCAL catalogs suitable for use as a baseline. The controls themselves are not in the profile, but by *resolving* the profile against its imported catalogs, the controls can be collected and presented in the form of a catalog.
+
+Consequently, tools and applications designed to browse and process OSCAL catalogs can also be used, with resolved profiles, to show controls as they appear in baselines.
 
 In both uses (and in others to be developed), the OSCAL catalog model provides:
 
@@ -226,7 +230,7 @@ No rule in OSCAL prevents a link from targeting any resource or target whatsoeve
 
 *References*, however (in contrast to related controls),  function as bibliographic citations, using a code for each reference given in the PDF source. In the OSCAL, the bibliographic items are collected and encoded in the catalog back matter (`<back-matter>`) as `<resource>` elements.
 
-So for example, in its back matter the catalog XML for SP 800-53 has:
+So for example, in its back matter the catalog XML for SP 800-53 may have something like:
 
 {{<highlight xml "nowrap=false" >}}
 <resource uuid="27847491-5ce1-4f6a-a1e4-9e483782f0ef">
@@ -235,14 +239,14 @@ So for example, in its back matter the catalog XML for SP 800-53 has:
     <text>Office of Management and Budget Memorandum Circular A-130,
     <em>Managing Information as a Strategic Resource</em> , July 2016.</text>
   </citation>
-  <rlink href="https://www.whitehouse.gov/sites/whitehouse.gov/files/
-  omb/circulars/A130/a130revised.pdf"/>
 </resource>
 {{< / highlight >}}
 
-The `uuid` value on this `<resource>` serves as its ID for linking purposes. Incidentally, a survey of the catalog source data in this case also shows this particular reference is made from 96 different controls.
+(*Note*: in the actual data, this resource is also provided with a link, not shown here.)
 
-Note that here, the code phrase used in the source to identify the bibliographic item (such as "OMB A-130") is regarded as a presentational artifact, not as a control point or formal identifier. This allows both freedom and fidelity to anomalous (and potentially conflicting) data sources, while providing for the linkage itself to be robust, expressed by means of a UUID. In rendition or display, any link to this resource can retrieve from it a title, citation text or link as needed, where they are available.
+The `uuid` value on this `<resource>` serves as its ID for internal links targeting this element. Incidentally, a survey of the catalog source data in this case also shows this particular reference is made from 96 different controls.
+
+Note that here, the code phrase used in the source to identify the bibliographic item (such as "OMB A-130") is regarded as a presentational artifact, not as a control point or formal identifier. This allows both freedom and fidelity to anomalous (and potentially conflicting) data sources, while providing for the linkage itself to be robust, expressed by means of a UUID. In rendition or display, any link to this resource can retrieve and show a title, citation text or outbound link as needed, where they are available.
 
 #### Parts
 
