@@ -2,7 +2,7 @@
 title: Representing Test Validation Information
 heading: "Representing Test Validation Information for Components"
 summary: "A mini-tutorial on providing test validation information (e.g., FIPS 140-2 validation) as an OSCAL component."
-weight: 60
+weight: 90
 toc:
   enabled: true
 sidenav:
@@ -12,7 +12,9 @@ aliases:
   - /documentation/schema/implementation-layer/validation-modeling/
 ---
 
-This tutorial covers describing test validation information (e.g., FIPS-140-2) using an OSCAL component. Before reading this tutorial you should:
+This tutorial covers describing test validation information (e.g., FIPS-140-2) using an OSCAL component.
+
+Before reading this tutorial you should:
 
 - Have some familiarity with the [XML](https://www.w3.org/standards/xml/core), [JSON](https://www.json.org/), or [YAML](https://yaml.org/spec/) formats.
 - Read the OSCAL implementation layer [overview](/concepts/layer/implementation/).

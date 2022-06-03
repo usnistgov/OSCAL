@@ -1,7 +1,7 @@
 ---
 title: Creating a Control Catalog
 description: A tutorial on creating an OSCAL control catalog.
-weight: 5
+weight: 20
 suppresstopiclist: true
 toc:
   enabled: true
@@ -9,7 +9,9 @@ aliases:
   - /tutorials/catalog/
 ---
 
-This tutorial covers creating a basic OSCAL control catalog. Before reading this tutorial you should:
+This tutorial covers creating a basic OSCAL control catalog.
+
+Before reading this tutorial you should:
 
 - Have some familiarity with the [XML](https://www.w3.org/standards/xml/core), [JSON](https://www.json.org/), or [YAML](https://yaml.org/spec/) formats.
 - Read the OSCAL control layer [overview](/concepts/layer/control/).

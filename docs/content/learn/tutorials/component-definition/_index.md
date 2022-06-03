@@ -1,7 +1,7 @@
 ---
 title: Creating a Component Definition
 description: A tutorial on creating an OSCAL component definition.
-weight: 6
+weight: 40
 suppresstopiclist: true
 toc:
   enabled: true

@@ -1,7 +1,7 @@
 ---
 title: Extending OSCAL Models with Props and Links
 description: A tutorial on extending OSCAL models by using props and links.
-weight: 5
+weight: 10
 suppresstopiclist: true
 toc:
   enabled: true
@@ -17,9 +17,9 @@ This tutorial describes the mechanisms for extending basic OSCAL models. Before 
 
 OSCAL is designed with the goal of simultaneously supporting multiple cybersecurity frameworks. The core OSCAL syntax achieves this goal by focusing on properties that are universal or have applicability across various frameworks.
 
-In creating OSCAL, NIST anticipated the importance of extensibility for unique requirements when organizations implement their security compliance programs. It was important to establish extension mechanisms from the onset, to allow OSCAL content creators to tailor OSCAL for their specific (organizational) needs.
+In creating OSCAL, NIST anticipated the importance of extensibility for unique requirements when organizations implement their security and privacy risk management programs. It was important to establish extension mechanisms from the onset, to allow OSCAL content creators to tailor OSCAL for their specific (organizational) needs.
 
-Thus, OSCAL is designed with extensibility as one of its key principles, allowing the OSCAL models to be extended wherever there are prop or link properties in the core models. This tutorial describes both extension mechanisms, explaining when to utilize them and illustrating their proper use.
+Thus, OSCAL is designed with extensibility as one of its key principles, allowing the OSCAL models to be extended wherever there are prop or link properties in the core OSCAL models. This tutorial describes both extension mechanisms, explaining when to utilize them and illustrating their proper use.
 
 {{% callout note %}}
 Ellipsis (...) is used throughout this tutorial's examples where sample code is omitted for sake of simplicity.
@@ -27,27 +27,28 @@ Ellipsis (...) is used throughout this tutorial's examples where sample code is 
 
 ## Props
 
+The OSCAL property is a primary method for providing extended data in OSCAL. A property is a namespaced name and value pair, which appears on many of the key fields within an OSCAL model. The following section provides details around the use of OSCAL properties.
+
+### Syntax
+
+The following examples illustrate the syntax of an OSCAL property in XML, JSON, and YAML.
+
 {{< tabs XML JSON YAML >}}
 {{% tab %}}
-
-The `<prop>` element in OSCAL is used to extend core models when 1) there is a need to capture information that is not in the core OSCAL model or 2) there is a need to accommodate for property values that are not in core OSCAL. Here is a nominal example of a `<prop>` element.
-
 {{< highlight xml "linenos=table" >}}
 <prop name="..." ns="..." value="..." class="...">...</prop>
 {{< /highlight >}} 
 
-Props are defined by their given `@name`, namespace `@ns`, `@value`, and `@class` attributes, although only `@name` and `@value` are always required.  Below is a description of each attribute:  
+A property in OSCAL XML is represented using the `<prop>` element, which can be repeated in a sequence multiple times to define multiple OSCAL properties.
 
-- `@name` (Required) - The `@name` attribute is required for every `<prop>` and must be a [token](/reference/datatypes/#token) data type.  Depending on the OSCAL model data item, a `<prop>` may have OSCAL pre-defined names.  For example, the OSCAL SSP model's system characteristics data item has a pre-defined `<prop>` named [`data-center`](/reference/latest/system-security-plan/xml-reference/#/system-security-plan/system-characteristics/prop).  Other data items, such as the OSCAL SSP security sensitivity level data item has its own pre-defined `<prop>` elements (e.g., [`privacy-designation`](/reference/latest/system-security-plan/xml-reference/#/system-security-plan/system-characteristics/security-sensitivity-level)).  And in other cases, such as the SSP authorization boundary data item, `<prop>` does not have any pre-defined `@name` values. OSCAL content authors need to determine whether to use the OSCAL prescribed prop names or to locally define their own. To view existing `<prop>` name values or determine if `@name` can be defined locally, review the [model reference index](/reference/latest/complete/xml-index/#/prop).  Requests and recommendations to add pre-defined `@name` values should be sent to the OSCAL NIST team (see the [Contact Us Page](/contact)).
-- `@ns` (Optional) - The optional `@ns` attribute is used to specify the namespace for a `<prop>` and must be a [universal resource identifier (URI)](/reference/datatypes/#uri) formatted according to [RFC 3986](https://datatracker.ietf.org/doc/html/rfc3986). The default namespace `@ns` attribute for OSCAL `<prop>` is `http://csrc.nist.gov/ns/oscal`, and can be omitted when using OSCAL define pre-defined properties (e.g., [`data-center`](/reference/latest/system-security-plan/xml-reference/#/system-security-plan/system-characteristics/prop)). Namespaces qualify a property's name. This allows different organizations to associate distinct semantics with the same name.  Organizations and other stakeholders have the ability to extend OSCAL with their own properties, which could lead to naming conflicts, however, the namespace `@ns` can be specified by OSCAL content authors to prevent name collisions.  
-- `@value` (Required) - The `@value` attribute is required for every `<prop>` and must be a [string](/reference/datatypes/#string) data type. Generally, OSCAL content authors may specify any `@value` for a `<prop>`.  However, when using props with pre-defined `@name` values, there are usually some constraints on acceptable `value`.  For example, the OSCAL SSP [system characteristics](/reference/latest/system-security-plan/xml-reference/#/system-security-plan/system-characteristics) data item pre-defined property named "identity-assurance-level" must have a value of 1, 2, or 3 as defined by NIST SP 800-63-3.  The ability to extend with additional values depends on the `<prop>` (see the [model reference index](/reference/latest/complete/xml-index/#/prop)). The constraints for these `<prop>` properties are defined within the [OSCAL Metaschemas](https://github.com/usnistgov/OSCAL/tree/main/src/metaschema).  Where applicable, Metaschema defines the `allowed-values` for the `<prop>` properties.  The `<prop>` properties that are extensible are defined with an `@allow-other=yes` attribute in Metaschema.  
-- `@class` (Optional) - Finally, the optional `@class` attribute should be used in cases where a property needs the same `@name` and `@ns` namespace.  It is a textual label that provides a sub-type or characterization of the property's name. This can be used to further distinguish or discriminate between the semantics of multiple properties of the same object with the same name and ns. The `@class` attribute must be a [token](/reference/datatypes/#token) data type and can be used in those circumstances to enable the &quot;overloading&quot; of the `<prop>`.
+Below is a description of each attribute of the `<prop>` element.
 
+- `@name` (Required) - The required *name* of the OSCAL property that must be a [token](/reference/datatypes/#token) data type.
+- `@ns` (Optional) - The optional *namespace* of the OSCAL property that must be a [universal resource identifier (URI)](/reference/datatypes/#uri) formatted according to [RFC 3986](https://datatracker.ietf.org/doc/html/rfc3986).
+- `@value` (Required) - The required *value* of the OSCAL property that must be a [string](/reference/datatypes/#string) value.
+- `@class` (Optional) - The optional *class* of the OSCAL property that must be a [string](/reference/datatypes/#string) value, which can be used to further qualify the property's value.
 {{% /tab %}}
 {{% tab %}}
-
-The `props` object array in OSCAL is used to extend core models when 1) there is a need to capture information that is not in the core OSCAL model or 2) there is a need to accommodate for property values that are not in core OSCAL. Here is a nominal example of a `props` object array.
-
 {{< highlight json "linenos=table" >}}
 {
   "props": [
@@ -61,16 +62,16 @@ The `props` object array in OSCAL is used to extend core models when 1) there is
 }
 {{< /highlight >}} 
 
-Props are defined by their given `name`, namespace `ns`, `value`, and `class` properties, although only `name` and `value` are always required.  Below is a description of each property:  
+A listing of properties in OSCAL JSON are represented using the `props` object array, with each property defined as an individual JSON object array member.
 
-- `name` (Required) - The `name` property is required for every `prop` and must be a [token](/reference/datatypes/#token) data type.  Depending on the OSCAL model data item, a `prop` may have OSCAL pre-defined names.  For example, the OSCAL SSP model's system characteristics data item has a pre-defined `prop` named [`data-center`](/reference/latest/system-security-plan/json-reference/#/system-security-plan/system-characteristics/props).  Other data items, such as the OSCAL SSP security sensitivity level data item has its own pre-defined `prop` objects (e.g., [`privacy-designation`](/reference/latest/system-security-plan/json-reference/#/system-security-plan/system-characteristics/security-sensitivity-level)).  And in other cases, such as the SSP authorization boundary data item, `prop` does not have any pre-defined `name` values. OSCAL content authors need to determine whether to use the OSCAL prescribed prop names or to locally define their own. To view existing `prop` name values or determine if `name` can be defined locally, review the [model reference index](/reference/latest/complete/json-index/#/props).  Requests and recommendations to add pre-defined `name` values should be sent to the OSCAL NIST team (see the [Contact Us Page](/contact)).
-- `ns` (Optional) - The optional `ns` property is used to specify the namespace for a `prop` and must be a [universal resource identifier (URI)](/reference/datatypes/#uri) formatted according to [RFC 3986](https://datatracker.ietf.org/doc/html/rfc3986). The default namespace `ns` property for OSCAL `prop` is `http://csrc.nist.gov/ns/oscal`, and can be omitted when using OSCAL define pre-defined properties (e.g., [`data-center`](/reference/latest/system-security-plan/json-reference/#/system-security-plan/system-characteristics/props)). Namespaces qualify a property's name. This allows different organizations to associate distinct semantics with the same name.  Organizations and other stakeholders have the ability to extend OSCAL with their own properties, which could lead to naming conflicts, however, the namespace `ns` can be specified by OSCAL content authors to prevent name collisions.  
-- `value` (Required) - The `value` property is required for every `prop` and must be a [string](/reference/datatypes/#string) data type. Generally, OSCAL content authors may specify any `value` for a `prop`.  However, when using props with pre-defined `name` values, there are usually some constraints on acceptable `value`.  For example, the OSCAL SSP [system characteristics](/reference/latest/system-security-plan/json-reference/#/system-security-plan/system-characteristics) data item pre-defined property named "identity-assurance-level" must have a value of 1, 2, or 3 as defined by NIST SP 800-63-3.  The ability to extend with additional values depends on the `prop` (see the [model reference index](/reference/latest/complete/json-index/#/props)). The constraints for these `prop` properties are defined within the [OSCAL Metaschemas](https://github.com/usnistgov/OSCAL/tree/main/src/metaschema).  Where applicable, Metaschema defines the `allowed-values` for the `prop` properties.  The `prop` properties that are extensible are defined with an `allow-other=yes` property in Metaschema.  
-- `class` (Optional) - Finally, the optional `class` property should be used in cases where a property needs the same `name` and `ns` namespace.  It is a textual label that provides a sub-type or characterization of the property's name. This can be used to further distinguish or discriminate between the semantics of multiple properties of the same object with the same name and ns. The `class` property must be a [token](/reference/datatypes/#token) data type and can be used in those circumstances to enable the &quot;overloading&quot; of the `prop`.
+Each *property* object can have the following JSON property names.
+
+- `name` (Required) - The required *name* of the OSCAL property that must be a [token](/reference/datatypes/#token) data type.
+- `ns` (Optional) - The optional *namespace* of the OSCAL property that must be a [universal resource identifier (URI)](/reference/datatypes/#uri) formatted according to [RFC 3986](https://datatracker.ietf.org/doc/html/rfc3986).
+- `value` (Required) - The required *value* of the OSCAL property that must be a [string](/reference/datatypes/#string) value.
+- `class` (Optional) - The optional *class* of the OSCAL property  that must be a [string](/reference/datatypes/#string) value, which can be used to further qualify the value that must be a [string](/reference/datatypes/#string) value, which can be used to further qualify the property's value.
 {{% /tab %}}
 {{% tab %}}
-The `props` key-value pair array in OSCAL is used to extend core models when 1) there is a need to capture information that is not in the core OSCAL model or 2) there is a need to accommodate for key values that are not in core OSCAL. Here is a nominal example of a `props` key-value pair array.
-
 {{< highlight yaml "linenos=table" >}}
   props:
     - name: ...
@@ -79,27 +80,59 @@ The `props` key-value pair array in OSCAL is used to extend core models when 1) 
       class: ...
 {{< /highlight >}} 
 
-Props are defined by their given `name`, namespace `ns`, `value`, and `class` keys, although only `name` and `value` are always required.  Below is a description of each key:  
+A `props` list in YAML contains individual OSCAL property items.
 
-- `name` (Required) - The `name` key is required for every `prop` and must be a [token](/reference/datatypes/#token) data type.  Depending on the OSCAL model data item, a `prop` may have OSCAL pre-defined names.  For example, the OSCAL SSP model's system characteristics data item has a pre-defined `prop` named [`data-center`](/reference/latest/system-security-plan/json-reference/#/system-security-plan/system-characteristics/props).  Other data items, such as the OSCAL SSP security sensitivity level data item has its own pre-defined `prop` objects (e.g., [`privacy-designation`](/reference/latest/system-security-plan/json-reference/#/system-security-plan/system-characteristics/security-sensitivity-level)).  And in other cases, such as the SSP authorization boundary data item, `prop` does not have any pre-defined `name` values. OSCAL content authors need to determine whether to use the OSCAL prescribed prop names or to locally define their own. To view existing `prop` name values or determine if `name` can be defined locally, review the [model reference index](/reference/latest/complete/json-index/#/props).  Requests and recommendations to add pre-defined `name` values should be sent to the OSCAL NIST team (see the [Contact Us Page](/contact)).
-- `ns` (Optional) - The optional `ns` key is used to specify the namespace for a `prop` and must be a [universal resource identifier (URI)](/reference/datatypes/#uri) formatted according to [RFC 3986](https://datatracker.ietf.org/doc/html/rfc3986). The default namespace `ns` key for OSCAL `prop` is `http://csrc.nist.gov/ns/oscal`, and can be omitted when using OSCAL define pre-defined keys (e.g., [`data-center`](/reference/latest/system-security-plan/json-reference/#/system-security-plan/system-characteristics/props)). Namespaces qualify a property's name. This allows different organizations to associate distinct semantics with the same name.  Organizations and other stakeholders have the ability to extend OSCAL with their own keys, which could lead to naming conflicts, however, the namespace `ns` can be specified by OSCAL content authors to prevent name collisions.  
-- `value` (Required) - The `value` key is required for every `prop` and must be a [string](/reference/datatypes/#string) data type. Generally, OSCAL content authors may specify any `value` for a `prop`.  However, when using props with pre-defined `name` values, there are usually some constraints on acceptable `value`.  For example, the OSCAL SSP [system characteristics](/reference/latest/system-security-plan/json-reference/#/system-security-plan/system-characteristics) data item pre-defined key named "identity-assurance-level" must have a value of 1, 2, or 3 as defined by NIST SP 800-63-3.  The ability to extend with additional values depends on the `prop` (see the [model reference index](/reference/latest/complete/json-index/#/props)). The constraints for these `prop` keys are defined within the [OSCAL Metaschemas](https://github.com/usnistgov/OSCAL/tree/main/src/metaschema).  Where applicable, Metaschema defines the `allowed-values` for the `prop` keys.  The `prop` keys that are extensible are defined with an `allow-other=yes` key-value in Metaschema.  
-- `class` (Optional) - Finally, the optional `class` key should be used in cases where a property needs the same `name` and `ns` namespace.  It is a textual label that provides a sub-type or characterization of the property's name. This can be used to further distinguish or discriminate between the semantics of multiple keys of the same object with the same name and ns. The `class` key must be a [token](/reference/datatypes/#token) data type and can be used in those circumstances to enable the &quot;overloading&quot; of the `prop`.
+Each property item can have the following keys:
+
+- `name` (Required) - The required *name* of the OSCAL property that must be a [token](/reference/datatypes/#token) data type.
+- `ns` (Optional) - The optional *namespace* of the OSCAL property that must be a [universal resource identifier (URI)](/reference/datatypes/#uri) formatted according to [RFC 3986](https://datatracker.ietf.org/doc/html/rfc3986).
+- `value` (Required) - The required *value* of the OSCAL property that must be a [string](/reference/datatypes/#string) value.
+- `class` (Optional) - The optional *class* of the OSCAL property  that must be a [string](/reference/datatypes/#string) value, which can be used to further qualify the value that must be a [string](/reference/datatypes/#string) value, which can be used to further qualify the property's value.
 {{% /tab %}}
 {{% /tabs %}}
 
+### Concepts
+
+Now that the syntax of a property is more clear, let's discuss how the property's *namespace*, *name*, *value*, and *class* are used to extend OSCAL.
+
+As we mentioned earlier, a property is a *namespaced name* and *value* pair, which appears on many of the key fields within an OSCAL model. The OSCAL field on which the property is declared is considered the property's *context*. A property's context establishes the subject of the property; the thing the property is about.
+
+A property's *namespace* defines the value space of possible names for a property. Each namespace is represented by a Uniform Resource Identifier (URI), which is defined by [RFC 3986](https://datatracker.ietf.org/doc/html/rfc3986). Namespaces allow the same property name to be used for different purposes or to have different meanings for each namespace it is defined in.
+
+The default namespace for an OSCAL property is `http://csrc.nist.gov/ns/oscal`, which is used as the namespace when no namespace is provided.
+
+A namespace is managed by a given organization or individual. Using a namespace, different organizations can assign a unique semantic meaning to the use of a property name within their namespace; thus, the different meaning of two properties with the same name can be easily determined by identifying the associated namespaces. This allows different organizations to assign names within their own namespace, without coordinating with other organizations, avoiding naming conflicts. This provides a low effort means to ensure that naming clashes are avoided.
+
+The *name* of a property defines the semantic meaning or topical nature of the value. The topic a name relates to is often associated with the property's *context*.
+
+For example, the property name "marking" might identify some information sensitivity classification scheme for the context data field, while the property name "label" might refer to a textual label for the context data field.
+
+In OSCAL, many data fields have pre-defined names defined in the OSCAL namespace `http://csrc.nist.gov/ns/oscal`, which is the default value for the namespace when no namespace is provided. These pre-defined property names provided for standardized naming of properties, which can be recognized by multiple consumers to have a consistent meaning. The namespace can be omitted when using an OSCAL define pre-defined property name.
+
+For example, the OSCAL SSP model's system characteristics data field has a pre-defined property name `data-center` \[[XML](/reference/latest/system-security-plan/xml-reference/#/system-security-plan/system-characteristics/prop)\] \[[JSON/YAML](/reference/latest/system-security-plan/json-reference/#/system-security-plan/system-characteristics/props)\].
+
+OSCAL content authors need to determine whether to use a pre-defined property name in a given situation or to define their own name in their own namespace. To view existing property names, review the model index \[[XML](/reference/latest/complete/xml-index/#/prop)\] \[[JSON/YAML](/reference/latest/complete/json-index/#/props)\].
+  
+New pre-defined names will be added to OSCAL over time on an as-needed basis. To suggest or request the addition of a new pre-defined name in the OSCAL namespace, please [open an issue](https://github.com/usnistgov/OSCAL/issues/new?assignees=&labels=User+Story%2Cenhancement&template=feature_request.yaml) in the OSCAL GitHub repository.
+
+A property's *name* defines a data set, while the property's *value* provides the specific member of that set. A data sets for a given name may contain a set of identifier reference values, an enumerated set of values, or allow for open ended values. Part of defining a new namespaced property name is defining the value space of the allowed values.
+
+Many of the OSCAL pre-defined property names have a constrained set of values. The allowed values may be further constrained by the context data field. Which values are allowed depends on the context of use, name and namespace of the property. The constraints for these properties are defined within the [OSCAL Metaschemas](https://github.com/usnistgov/OSCAL/tree/main/src/metaschema). Where applicable, a given Metaschema defines the `allowed-values` that can be used for a property name in a given context of use. The properties that are extensible are defined with an `@allow-other=yes` attribute in Metaschema.  
+
+The *class* of a property is a textual label that provides a sub-type or characterization of the property's name and/or value. This can be used to further distinguish or discriminate between the semantics of multiple properties in a given context with the same name and namespace.
+
 ### Using an Existing Prop
 
-{{< tabs XML JSON YAML >}}
-{{% tab %}}
-This sections covers the basic use of a `<prop>` leveraging all of its attributes.  The OSCAL SSP [metadata](/concepts/layer/overview/#metadata-overview) allows for zero or more `<location>` data items, each containing zero or more `<prop>` elements.  
+This sections covers the basic use of a property leveraging all of its attributes.
+
+The OSCAL SSP [metadata](/concepts/layer/overview/#metadata-overview) allows for zero or more location data items, each allowing for properties to be defined. In this example, an organization needs to document their primary and alternate data center locations. This is achieved by specifying properties for each location.
 
 {{% callout note %}}
 The [Metadata Tutorial](/learn/tutorials/metadata/) provides in-depth description and walk-through examples of creating OSCAL metadata.
 {{% /callout %}}
 
-In this example, an organization needs to document their primary and alternate data center locations.  This is achieved by specifying the `@name`, `@value`, and `@class` of the properties for each location.
-
+{{< tabs XML JSON YAML >}}
+{{% tab %}}
 {{< highlight xml "linenos=table" >}}
 <?xml version="1.0" encoding="UTF-8"?>
 <system-security-plan uuid="ce16b9af-6853-4abe-9e27-b79d034c0adc">
@@ -107,14 +140,14 @@ In this example, an organization needs to document their primary and alternate d
     <title>OSCAL Basic Prop Example</title>
     <last-modified>2022-01-01T09:30:00-005</last-modified>
     <version>20220531</version>
-    <oscal-version>1.0.0</oscal-version>
+    <oscal-version>1.0.4</oscal-version>
     <location uuid="location uuid">
       <title>...</title>
-      <prop name="type" value="data-center" class="primary">...</prop>
+      <prop name="type" value="data-center" class="primary"/>
     </location>
     <location uuid="location uuid">
       <title>...</title>
-      <prop name="type" value="data-center" class="alternate">...</prop>
+      <prop name="type" value="data-center" class="alternate"/>
     </location>
   </metadata>
   <import-profile>...</import-profile>
@@ -123,17 +156,11 @@ In this example, an organization needs to document their primary and alternate d
 </system-security-plan>
 {{< /highlight >}}  
 
-The `@name` attribute is set to "type" which is an OSCAL pre-defined property. The `@value` attribute is set to "data-center" which is an [OSCAL pre-defined](/reference/latest/system-security-plan/xml-reference/#/system-security-plan/metadata/location) value for location "type" properties. The `@class` attribute in this case is used to indicate a subclass of data-center, and is set the the appropriate [OSCAL pre-defined](/reference/latest/system-security-plan/xml-reference/#/system-security-plan/metadata/location)  values for data center location properties.  Note that in this example, the `@ns` attribute is omitted because we are using a standard OSCAL defined `<prop>` element.
+The `@name` attribute is set to "type" which is an OSCAL pre-defined property for locations. The `@value` attribute is set to "data-center" which is an [OSCAL pre-defined](/reference/latest/system-security-plan/xml-reference/#/system-security-plan/metadata/location) value for location "type" properties. The `@class` attribute in this case is used to indicate a subclass of data-center, and is set to one of the appropriate [OSCAL pre-defined](/reference/latest/system-security-plan/xml-reference/#/system-security-plan/metadata/location) values for data center location class.
+
+Note that in this example, the `@ns` attribute is omitted because we are using a pre-defined property name in the OSCAL namespace.
 {{% /tab %}}
 {{% tab %}}
-This sections covers the basic use of a `prop` leveraging all of its properties.  The OSCAL SSP [metadata](/concepts/layer/overview/#metadata-overview) allows for zero or more `location` objects, each containing zero or more `<prop>` objects.  
-
-{{% callout note %}}
-The [Metadata Tutorial](/learn/tutorials/metadata/) provides in-depth description and walk-through examples of creating OSCAL metadata.
-{{% /callout %}}
-
-In this example, an organization needs to document their primary and alternate data center locations.  This is achieved by specifying the `name`, `value`, and `class` of the key-value pairs for each location.
-
 {{< highlight json "linenos=table" >}}
 {
   "system-security-plan": {
@@ -142,7 +169,7 @@ In this example, an organization needs to document their primary and alternate d
       "title": "OSCAL Basic Prop Example",
       "last-modified": "2022-01-01T09:30:00-005",
       "version": 20220531,
-      "oscal-version": "1.0.0",
+      "oscal-version": "1.0.4",
       "locations": [
       {
         "title": "...",
@@ -172,17 +199,11 @@ In this example, an organization needs to document their primary and alternate d
 }
 {{< /highlight >}}
 
-In the `props` object array, the prop object's `name` property is set to "type" which is an OSCAL pre-defined property. The `value` property is set to "data-center" which is an [OSCAL pre-defined](/reference/latest/system-security-plan/json-reference/#/system-security-plan/metadata/locations) value for location "type" properties. The `class` property in this case is used to indicate a subclass of data-center, and is set the the appropriate [OSCAL pre-defined](/reference/latest/system-security-plan/json-reference/#/system-security-plan/metadata/locations) values for data center location `prop`.  Note that in this example, the `ns` property is omitted because we are using a standard OSCAL defined `prop` object.
+In the `props` object array, the prop object's `name` property is set to "type" which is an OSCAL pre-defined property for locations. The `value` property is set to "data-center" which is an [OSCAL pre-defined](/reference/latest/system-security-plan/json-reference/#/system-security-plan/metadata/locations) value for location "type" properties. The `class` JSON property in this case is used to indicate a subclass of data-center, and is set to one of the appropriate [OSCAL pre-defined](/reference/latest/system-security-plan/json-reference/#/system-security-plan/metadata/locations) values for data center location class.
+
+Note that in this example, the `ns` JSON property is omitted because we are using a pre-defined property name in the OSCAL namespace.
 {{% /tab %}}
 {{% tab %}}
-This sections covers the basic use of a `prop` leveraging all of its properties.  The OSCAL SSP [metadata](/concepts/layer/overview/#metadata-overview) allows for zero or more `location` objects, each containing zero or more `<prop>` objects.  
-
-{{% callout note %}}
-The [Metadata Tutorial](/learn/tutorials/metadata/) provides in-depth description and walk-through examples of creating OSCAL metadata.
-{{% /callout %}}
-
-In this example, an organization needs to document their primary and alternate data center locations.  This is achieved by specifying the `name`, `value`, and `class` of the key-value pairs for each location.
-
 {{< highlight yaml "linenos=table" >}}
 system-security-plan:
   uuid: ce16b9af-6853-4abe-9e27-b79d034c0adc
@@ -190,41 +211,43 @@ system-security-plan:
     title: OSCAL Basic Prop Example
     last-modified: '2022-01-01T09:30:00-005'
     version: 20220531
-    oscal-version: 1.0.0
+    oscal-version: 1.0.04
     locations:
-      - title: ...
-        props:
-          - name: type
-            value: data-center
-            class: primary
-      - title: ...
-        props:
-          - name: type
-            value: data-center
-            class: alternate
+    - title: ...
+      props:
+      - name: type
+        value: data-center
+        class: primary
+    - title: ...
+      props:
+        - name: type
+          value: data-center
+          class: alternate
   import-profile: ...
   system-characteristics: ...
   system-implementation: ...
 {{< /highlight >}}
 
-In the `props` object array, the prop object's `name` property is set to "type" which is an OSCAL pre-defined property. The `value` property is set to "data-center" which is an [OSCAL pre-defined](/reference/latest/system-security-plan/json-reference/#/system-security-plan/metadata/locations) value for location "type" properties. The `class` property in this case is used to indicate a subclass of data-center, and is set the the appropriate [OSCAL pre-defined](/reference/latest/system-security-plan/json-reference/#/system-security-plan/metadata/locations) values for data center location `prop`.  Note that in this example, the `ns` property is omitted because we are using a standard OSCAL defined `prop` object.
+In the `props` list, the item's `name` key is set to "type" which is an OSCAL pre-defined property for locations. The `value` key is set to "data-center" which is an [OSCAL pre-defined](/reference/latest/system-security-plan/json-reference/#/system-security-plan/metadata/locations) value for location "type" properties. The `class` key in this case is used to indicate a subclass of data-center, and is set to one of the appropriate [OSCAL pre-defined](/reference/latest/system-security-plan/json-reference/#/system-security-plan/metadata/locations) values for data center location class.
+
+Note that in this example, the `ns` key is omitted because we are using a standard OSCAL defined `prop` object.
 {{% /tab %}}
 {{% /tabs %}}
 
 ### Extending Existing Prop Values
 
-{{< tabs XML JSON YAML >}}
-{{% tab %}}
-One of the most common scenarios for extending an OSCAL `<prop>` is when adding values to an existing OSCAL property. Again, if using an OSCAL defined `<prop>`, the `@ns` namespace attribute does not need to be specified since the default OSCAL namespace applies.  
+One of the most common scenarios for extending an OSCAL property is using a new value for an existing OSCAL property. Again, if using an OSCAL defined `<prop>`, the `@ns` namespace attribute does not need to be specified since the default OSCAL namespace applies.  
 
 The following example demonstrates how to extend a SSP metadata location "type" `<prop>` with an additional value.
+
+Currently, the only OSCAL pre-defined value for the SSP metadata location property is "data-center".  However, because this particular property allows other values to be defined (with an `@allow-other=yes` attribute in Metaschema), additional "type" values can be specified as shown below.
 
 {{% callout note %}}
 Again, for a detailed overview of how to implement metadata, please refer to the [Metadata Tutorial](/learn/tutorials/metadata/).
 {{% /callout %}}
 
-Currently, the only OSCAL defined value for the SSP metadata location `<prop>` is "data-center".  However, because this particular `<prop>` is defined with an `@allow-other=yes` attribute (in Metaschema), additional "type" values can be specified as shown below on line #10.
-
+{{< tabs XML JSON YAML >}}
+{{% tab %}}
 {{< highlight xml "linenos=table" >}}
 <?xml version="1.0" encoding="UTF-8"?>
 <system-security-plan uuid="ce16b9af-6853-4abe-9e27-b79d034c0adc">
@@ -235,7 +258,7 @@ Currently, the only OSCAL defined value for the SSP metadata location `<prop>` i
     <oscal-version>1.0.0</oscal-version>
     <location uuid="1f190601-2e87-4787-a50a-d08b78e4a980">
       <title>...</title>
-      <prop name="type" value="security-operations-center">...</prop>
+      <prop name="type" value="security-operations-center"/>
     </location>
   </metadata>
   <import-profile>...</import-profile>
@@ -244,20 +267,11 @@ Currently, the only OSCAL defined value for the SSP metadata location `<prop>` i
 </system-security-plan>
 {{< /highlight >}}
 
-The `@class` attribute was not specified but could be added if there was a need for semantic classification of "security operations center" (e.g., regional or global).
+The example above defines a new "type" property `@value` "security-operations-center" on line 10.
 
+The `@class` attribute was not specified but could be added if there was a need for semantic classification of "security operations center" (e.g., regional or global).
 {{% /tab %}}
 {{% tab %}}
-One of the most common scenarios for extending an OSCAL `prop` is when adding values to an existing OSCAL property. Again, if using an OSCAL defined `prop`, the `ns` namespace property does not need to be specified since the default OSCAL namespace applies.  
-
-The following example demonstrates how to extend a SSP metadata location "type" `prop` with an additional value.
-
-{{% callout note %}}
-Again, for a detailed overview of how to implement metadata, please refer to the [Metadata Tutorial](/learn/tutorials/metadata/).
-{{% /callout %}}
-
-Currently, the only OSCAL defined value for the SSP metadata location `prop` is "data-center".  However, because this particular `prop` is defined with an `allow-other=yes` property (in Metaschema), additional "type" values can be specified as shown below on line #14.
-
 {{< highlight json "linenos=table" >}}
 {
   "system-security-plan": {
@@ -285,20 +299,11 @@ Currently, the only OSCAL defined value for the SSP metadata location `prop` is 
 }
 {{< /highlight >}}
 
-The `class` property was not specified but could be added if there was a need for semantic classification of "security operations center" (e.g., regional or global).
+The example above defines a new "type" property `value` "security-operations-center" on line 15.
 
+The `class` property was not specified but could be added if there was a need for semantic classification of "security operations center" (e.g., regional or global).
 {{% /tab %}}
 {{% tab %}}
-One of the most common scenarios for extending an OSCAL `prop` is when adding values to an existing OSCAL property. Again, if using an OSCAL defined `prop`, the `ns` namespace key-value does not need to be specified since the default OSCAL namespace applies.  
-
-The following example demonstrates how to extend a SSP metadata location "type" `prop` with an additional value.
-
-{{% callout note %}}
-Again, for a detailed overview of how to implement metadata, please refer to the [Metadata Tutorial](/learn/tutorials/metadata/).
-{{% /callout %}}
-
-Currently, the only OSCAL defined value for the SSP metadata location `prop` is "data-center".  However, because this particular `prop` is defined with an `allow-other=yes` key-value pair (in Metaschema), additional "type" values can be specified as shown below on line #12.
-
 {{< highlight yaml "linenos=table" >}}
 system-security-plan:
   uuid: ce16b9af-6853-4abe-9e27-b79d034c0adc
@@ -317,18 +322,20 @@ system-security-plan:
   system-implementation: ...
 {{< /highlight >}}
 
+The example above defines a new "type" property `value` "security-operations-center" on line 12.
+
 The `class` property was not specified but could be added if there was a need for semantic classification of "security operations center" (e.g., regional or global).
-
 {{% /tab %}}
-
 {{% /tabs %}}
 
 ### Creating a New Prop
 
+The previous examples leveraged an existing OSCAL property to document location details (e.g., location "type") within an SSP. But what if there were other pertinent location details that needed to be captured as well?
+
+For example, some government organizations with distributed global physical locations may want to use [Geographic Locator Codes (GLC)](https://www.gsa.gov/reference/geographic-locator-codes-glcs-overview) to facilitate interchange of location data with other government agencies.  The example below demonstrates how this could be documented by specifying a new GLC property.
+
 {{< tabs XML JSON YAML >}}
 {{% tab %}}
-The previous examples leveraged an existing OSCAL `<prop>` to document location details (e.g., location "type") within an SSP.  But what if there were other pertinent location details that needed to be captured as well? For example, some government organizations with distributed global physical locations may want to use [Geographic Locator Codes (GLC)](https://www.gsa.gov/reference/geographic-locator-codes-glcs-overview) to facilitate interchange of location data with other government agencies.  The example below demonstrates how this could be documented by specifying a new GLC `<prop>` property (see lines #15-33).
-
 {{< highlight xml "linenos=table" >}}
 <?xml version="1.0" encoding="UTF-8"?>
 <system-security-plan uuid="ce16b9af-6853-4abe-9e27-b79d034c0adc">
@@ -341,27 +348,19 @@ The previous examples leveraged an existing OSCAL `<prop>` to document location 
       <title>...</title>
       <prop name="type"
             value="security-operations-center"
-            class="regional">
-        ...
-      </prop>
+            class="regional"/>
       <prop name="glc"
             ns="http://federal-agency.gov/ns/oscal"
             value="11"
-            class="state-code">
-        ...
-      </prop>
+            class="state-code"/>
       <prop name="glc"
             ns="http://federal-agency.gov/ns/oscal"
             value="0010"
-            class="city-code">
-        ...
-      </prop>
+            class="city-code"/>
       <prop name="glc"
             ns="http://federal-agency.gov/ns/oscal"
             value="840"
-            class="country-code">
-        ...
-      </prop>
+            class="country-code"/>
     </location>
   </metadata>
   <import-profile>...</import-profile>
@@ -375,8 +374,6 @@ A new GLC property was created by setting the `<prop>` element's `@name` attribu
 Props are prevalent throughout OSCAL models appearing not only in `<metadata>` and `<back-matter>`, but in the majority of OSCAL data items.  Regardless of which OSCAL element is being extended, the approach is consistent, as described in this section of the tutorial.
 {{% /tab %}}
 {{% tab %}}
-The previous examples leveraged an existing OSCAL `prop` to document location details (e.g., location "type") within an SSP.  But what if there were other pertinent location details that needed to be captured as well? For example, some government organizations with distributed global physical locations may want to use [Geographic Locator Codes (GLC)](https://www.gsa.gov/reference/geographic-locator-codes-glcs-overview) to facilitate interchange of location data with other government agencies.  The example below demonstrates how this could be documented by specifying a new GLC `prop` property (see lines #22-51).
-
 {{< highlight json "linenos=table" >}}
 {
   "system-security-plan": {
@@ -394,34 +391,19 @@ The previous examples leveraged an existing OSCAL `prop` to document location de
             "name":"type",
             "value":"security-operations-center",
             "class":"regional"
-          }
-        ]
-      },
-      {
-          "title": "...",
-          "props": [
+          },
           {
             "name":"glc",
             "ns":"http://federal-agency.gov/ns/oscal",
             "value":"11",
             "class":"state-code"
-          }
-        ]
-      },
-      {
-          "title": "...",
-          "props": [
+          },
           {
             "name":"glc",
             "ns":"http://federal-agency.gov/ns/oscal",
             "value":"0010",
             "class":"city-code"
-          }
-        ]
-      },
-      {
-          "title": "...",
-          "props": [
+          },
           {
             "name":"glc",
             "ns":"http://federal-agency.gov/ns/oscal",
@@ -441,11 +423,8 @@ The previous examples leveraged an existing OSCAL `prop` to document location de
 A new GLC property was created by setting the `prop` object's `name` property to "glc".  The acronym "glc" could be used by other organizations (and have a completely different meaning) so a namespace `ns` was set.  Lastly, GLCs have many data attributes including territory, country codes, state codes, county codes, city codes, and duty station codes, so this example defined a single "glc" `prop` but used `class` to provide context for the property's set `value`.
 
 Props are prevalent throughout OSCAL models appearing not only in `metadata` and `back-matter` objects, but in the majority of OSCAL data items.  Regardless of which OSCAL property is being extended, the approach is consistent, as described in this section of the tutorial.
-
 {{% /tab %}}
 {{% tab %}}
-The previous examples leveraged an existing OSCAL `prop` to document location details (e.g., location "type") within an SSP.  But what if there were other pertinent location details that needed to be captured as well? For example, some government organizations with distributed global physical locations may want to use [Geographic Locator Codes (GLC)](https://www.gsa.gov/reference/geographic-locator-codes-glcs-overview) to facilitate interchange of location data with other government agencies.  The example below demonstrates how this could be documented by specifying a new GLC `prop` property (see lines #15-31).
-
 {{< highlight yaml "linenos=table" >}}
 system-security-plan:
   uuid: ce16b9af-6853-4abe-9e27-b79d034c0adc
@@ -460,20 +439,14 @@ system-security-plan:
           - name: type
             value: security-operations-center
             class: regional
-      - title: ...
-        props:
           - name: glc
             ns: http://federal-agency.gov/ns/oscal
             value: '11'
             class: state-code
-      - title: ...
-        props:
           - name: glc
             ns: http://federal-agency.gov/ns/oscal
             value: '0010'
             class: city-code
-      - title: ...
-        props:
           - name: glc
             ns: http://federal-agency.gov/ns/oscal
             value: '840'
@@ -481,7 +454,6 @@ system-security-plan:
   import-profile: ...
   system-characteristics: ...
   system-implementation: ...
-
 {{< /highlight >}}
 
 A new GLC property was created by setting the `prop` object's `name` property to "glc".  The acronym "glc" could be used by other organizations (and have a completely different meaning) so a namespace `ns` was set.  Lastly, GLCs have many data attributes including territory, country codes, state codes, county codes, city codes, and duty station codes, so this example defined a single "glc" `prop` but used `class` to provide context for the property's set `value`.
