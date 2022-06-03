@@ -25,9 +25,41 @@
             <field ref="last-modified" min-occurs="1"/>
             <field ref="version" min-occurs="1"/>
             <field ref="oscal-version" min-occurs="1"/>
-            <assembly ref="revision" max-occurs="unbounded">
-                <group-as name="revisions" in-xml="GROUPED" in-json="ARRAY"/>
-            </assembly>
+            <define-assembly name="revision" max-occurs="unbounded">
+                <formal-name>Revision History Entry</formal-name>
+                <description>An entry in a sequential list of revisions to the containing document, expected to be in reverse chronological order (i.e. latest first).</description>
+                <group-as name="revisions" in-xml="GROUPED" in-json="ARRAY"/>                <model>
+                    <define-field name="title" as-type="markup-line">
+                        <formal-name>Document Title</formal-name>
+                        <description>A name given to the document revision, which may be used by a tool for display and navigation.</description>
+                    </define-field>
+                    <field ref="published" />
+                    <field ref="last-modified"/>
+                    <field ref="version" min-occurs="1"/>
+                    <field ref="oscal-version"/>
+                    <assembly ref="property" max-occurs="unbounded">
+                        <group-as name="props" in-json="ARRAY"/>
+                    </assembly>
+                    <assembly ref="link" max-occurs="unbounded">
+                        <group-as name="links" in-json="ARRAY"/>
+                    </assembly>
+                    <field ref="remarks" in-xml="WITH_WRAPPER"/>
+                </model>
+                <constraint>
+                    <!-- TODO: consider making this a warning
+            <has-cardinality target="published|last-modified|link[@rel='canonical']" min-occurs="1"/>
+-->
+                    <allowed-values target="link/@rel" allow-other="yes">
+                        <enum value="canonical">The link identifies the authoritative location for this resource. Defined by <a href="https://tools.ietf.org/html/rfc6596">RFC 6596</a>.</enum>
+                        <enum value="alternate">The link identifies an alternative location or format for this resource. Defined by <a href="https://html.spec.whatwg.org/multipage/links.html#linkTypes">the HTML Living Standard</a></enum>
+                        <enum value="predecessor-version">This link identifies a resource containing the predecessor version in the version history. Defined by  <a href="https://tools.ietf.org/html/rfc5829">RFC 5829</a>.</enum>
+                        <enum value="successor-version">This link identifies a resource containing the predecessor version in the version history. Defined by <a href="https://tools.ietf.org/html/rfc5829">RFC 5829</a>.</enum>
+                    </allowed-values>
+                </constraint>
+                <remarks>
+                    <p>While <code>published</code>, <code>last-modified</code>, and <code>oscal-version</code> are not required, values for these entries should be provided if the information is known. A <code>link</code> with a <code>rel</code> of <q>source</q> should be provided if the information is known.</p>
+                </remarks>
+            </define-assembly>
             <field ref="document-id" max-occurs="unbounded">
                 <group-as name="document-ids" in-json="ARRAY"/>
             </field>
@@ -37,8 +69,39 @@
             <assembly ref="link" max-occurs="unbounded">
                 <group-as name="links" in-json="ARRAY"/>
             </assembly>
-            <assembly ref="role" max-occurs="unbounded">
+            <define-assembly name="role" max-occurs="unbounded">
+                <formal-name>Role</formal-name>
+                <description>Defines a function, which might be assigned to a party in a specific situation.</description>
                 <group-as name="roles" in-json="ARRAY"/>
+                <define-flag name="id" as-type="token" required="yes">
+                    <!-- This is an id because the idenfier is assigned and managed by humans. -->
+                    <!-- identifier declarations -->
+                    <formal-name>Role Identifier</formal-name>
+                    <description>A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a>, <a href="/concepts/identifier-use/#locally-unique">locally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined role elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. When referenced from another OSCAL instance, the locally defined <em>ID</em> of the <code>Role</code> from the imported OSCAL instance must be referenced in the context of the containing resource (e.g., import, import-component-definition, import-profile, import-ssp or import-ap). This ID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+                    <!-- TODO: discuss overriding of locally defined values. -->
+                </define-flag>
+                <model>
+                    <define-field name="title" as-type="markup-line" min-occurs="1">
+                        <formal-name>Role Title</formal-name>
+                        <description>A name given to the role, which may be used by a tool for display and navigation.</description>
+                    </define-field>
+                    <define-field name="short-name">
+                        <formal-name>Role Short Name</formal-name>
+                        <description>A short common name, abbreviation, or acronym for the role.</description>
+                    </define-field>
+                    <!-- CHANGE "desc" to "description" -->
+                    <define-field name="description" in-xml="WITH_WRAPPER" as-type="markup-multiline">
+                        <formal-name>Role Description</formal-name>
+                        <description>A summary of the role's purpose and associated responsibilities.</description>
+                    </define-field>
+                    <assembly ref="property" max-occurs="unbounded">
+                        <group-as name="props" in-json="ARRAY"/>
+                    </assembly>
+                    <assembly ref="link" max-occurs="unbounded">
+                        <group-as name="links" in-json="ARRAY"/>
+                    </assembly>
+                    <field ref="remarks" in-xml="WITH_WRAPPER"/>
+                </model>
                 <!-- TODO: Add support for builtin objects -->
                 <!--
                 <builtins>
@@ -79,13 +142,174 @@
                     </role>
                 </builtins>
                 -->
-            </assembly>
-            <assembly ref="location" max-occurs="unbounded">
+                <remarks>
+                    <!-- TODO: roles only appear in metadata. Referenced in the document and linked instances. -->
+                    <!-- TODO: discuss built-in roles. -->
+                    <p>Permissible values to be determined closer to the application (e.g. by a receiving authority).</p>
+                    <p>OSCAL has defined a set of standardized roles for consistent use in OSCAL documents. This allows tools consuming OSCAL content to infer specific semantics when these roles are used. These roles are documented in the specific contexts of their use (e.g., responsible-party, responsible-role). When using such a role, it is necessary to define these roles in this list, which will then allow such a role to be referenced.</p>
+                </remarks>
+            </define-assembly>
+            <define-assembly name="location" max-occurs="unbounded">
+                <formal-name>Location</formal-name>
+                <description>A physical point of presence, which may be associated with people, organizations, or other concepts within the current or linked OSCAL document.</description>
                 <group-as name="locations" in-json="ARRAY"/>
-            </assembly>
-            <assembly ref="party" max-occurs="unbounded">
+                <define-flag name="uuid" as-type="uuid" required="yes">
+                    <formal-name>Location Universally Unique Identifier</formal-name>
+                    <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined location elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>location</code> can be used to reference the data item locally or globally (e.g., from an importing OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+                </define-flag>
+                <model>
+                    <define-field name="title" as-type="markup-line">
+                        <formal-name>Location Title</formal-name>
+                        <description>A name given to the location, which may be used by a tool for display and navigation.</description>
+                    </define-field>
+                    <assembly ref="address">
+                        <remarks>
+                            <p>The physical address of the location.</p>
+                        </remarks>
+                    </assembly>
+                    <field ref="email-address" max-occurs="unbounded">
+                        <group-as name="email-addresses" in-json="ARRAY"/>
+                        <remarks>
+                            <p>A contact email associated with the location.</p>
+                        </remarks>
+                    </field>
+                    <field ref="telephone-number" max-occurs="unbounded">
+                        <group-as name="telephone-numbers" in-json="ARRAY"/>
+                        <remarks>
+                            <p>A phone number used to contact the location.</p>
+                        </remarks>
+                    </field>
+                    <define-field name="url" as-type="uri" max-occurs="unbounded">
+                        <formal-name>Location URL</formal-name>
+                        <description>The uniform resource locator (URL) for a web site or other resource associated with the location.</description>
+                        <group-as name="urls" in-json="ARRAY"/>
+                    </define-field>
+                    <assembly ref="property" max-occurs="unbounded">
+                        <group-as name="props" in-json="ARRAY"/>
+                    </assembly>
+                    <assembly ref="link" max-occurs="unbounded">
+                        <group-as name="links" in-json="ARRAY"/>
+                    </assembly>
+                    <field ref="remarks" in-xml="WITH_WRAPPER"/>
+                </model>
+                <constraint>
+                    <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+                        <enum value="type">Characterizes the kind of location.</enum>
+                    </allowed-values>
+                    <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='type']/@value">
+                        <enum value="data-center">A location that contains computing assets. A <code>class</code> can be used to indicate the sub-type of data-center as <em>primary</em> or <em>alternate</em>.</enum>
+                    </allowed-values>
+                    <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='type' and @value='data-center']/@class">
+                        <enum value="primary">The location is a data-center used for normal operations.</enum>
+                        <enum value="alternate">The location is a data-center used for fail-over or backup operations.</enum>
+                    </allowed-values>
+                    <has-cardinality target="address" level="WARNING" min-occurs="1">
+                        <description>In most cases, it is useful to define a location. In some cases, defining an explicit location may represent a security risk.</description>
+                    </has-cardinality>
+                    <has-cardinality target="title|address|email-address|telephone-number" level="ERROR" min-occurs="1">
+                        <description>A location must have at least a title, address, email-address, or telephone number.</description>
+                    </has-cardinality>
+                </constraint>
+                <remarks>
+                    <p>An address might be sensitive in nature. In such cases a title, mailing address, email-address, and/or phone number may be used instead.</p>
+                </remarks>
+            </define-assembly>
+            <define-assembly name="party" max-occurs="unbounded">
+                <formal-name>Party</formal-name>
+                <description>An organization or person, which may be associated with roles or other concepts within the current or linked OSCAL document.</description>
                 <group-as name="parties" in-json="ARRAY"/>
-            </assembly>
+                <define-flag name="uuid" as-type="uuid" required="yes">
+                    <formal-name>Party Universally Unique Identifier</formal-name>
+                    <!-- identifier declaration -->
+                    <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined party elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>party</code> can be used to reference the data item locally or globally (e.g., from an importing OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+                </define-flag>
+                <define-flag name="type" as-type="string" required="yes">
+                    <formal-name>Party Type</formal-name>
+                    <description>A category describing the kind of party the object describes.</description>
+                    <constraint>
+                        <allowed-values>
+                            <enum value="person">A human being regarded as an individual.</enum>
+                            <enum value="organization">An organized group of one or more <code>person</code> individuals with a specific purpose.</enum>
+                        </allowed-values>
+                    </constraint>
+                </define-flag>
+                <model>
+                    <define-field name="name">
+                        <formal-name>Party Name</formal-name>
+                        <description>The full name of the party. This is typically the legal name associated with the party.</description>
+                    </define-field>
+                    <define-field name="short-name">
+                        <formal-name>Party Short Name</formal-name>
+                        <description>A short common name, abbreviation, or acronym for the party.</description>
+                    </define-field>
+                    <define-field name="external-id" max-occurs="unbounded">
+                        <!-- This is an id because the idenfier is assigned and managed externally by humans. -->
+                        <formal-name>Party External Identifier</formal-name>
+                        <description>An identifier for a person or organization using a designated scheme. e.g. an Open Researcher and Contributor ID (ORCID)</description>
+                        <json-value-key>id</json-value-key>
+                        <group-as name="external-ids" in-json="ARRAY"/>
+                        <define-flag name="scheme" as-type="uri" required="yes">
+                            <formal-name>External Identifier Schema</formal-name>
+                            <description>Indicates the type of external identifier.</description>
+                            <constraint>
+                                <allowed-values allow-other="yes">
+                                    <enum value="http://orcid.org/">The identifier is Open Researcher and Contributor ID (ORCID).</enum>
+                                </allowed-values>
+                            </constraint>
+                        </define-flag>
+                    </define-field>
+                    <assembly ref="property" max-occurs="unbounded">
+                        <group-as name="props" in-json="ARRAY"/>
+                    </assembly>
+                    <assembly ref="link" max-occurs="unbounded">
+                        <group-as name="links" in-json="ARRAY"/>
+                    </assembly>
+                    <field ref="email-address" max-occurs="unbounded">
+                        <group-as name="email-addresses" in-json="ARRAY"/>
+                        <remarks>
+                            <p>This is a contact email associated with the party.</p>
+                        </remarks>
+                    </field>
+                    <field ref="telephone-number" max-occurs="unbounded">
+                        <group-as name="telephone-numbers" in-json="ARRAY"/>
+                        <remarks>
+                            <p>A phone number used to contact the party.</p>
+                        </remarks>
+                    </field>
+                    <choice>
+                        <assembly ref="address" max-occurs="unbounded">
+                            <group-as name="addresses" in-json="ARRAY"/>
+                        </assembly>
+                        <field ref="location-uuid" max-occurs="unbounded">
+                            <group-as name="location-uuids" in-json="ARRAY"/>
+                        </field>
+                    </choice>
+                    <define-field name="member-of-organization" as-type="uuid" max-occurs="unbounded">
+                        <formal-name>Organizational Affiliation</formal-name>
+                        <!-- identifier reference -->
+                        <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to another <code>party</code> (<code>person</code> or <code>organization</code>) that this subject is associated with. The <em>UUID</em> of the <code>party</code> in the source OSCAL instance is sufficient to reference the data item locally or globally (e.g., in an imported OSCAL instance).
+                        </description>
+                        <group-as name="member-of-organizations" in-json="ARRAY"/>
+                        <constraint>
+                            <!-- TODO: Move to top-level to address cross-document issues. -->
+                            <index-has-key name="index-metadata-party-organizations-uuid" target=".">
+                                <key-field target="."/>
+                            </index-has-key>
+                        </constraint>
+                        <remarks>
+                            <p>Parties of both the <code>person</code> or <code>organization</code> type can be associated with an organization using the <code>member-of-organization</code>.</p>
+                        </remarks>
+                    </define-field>
+                    <field ref="remarks" in-xml="WITH_WRAPPER"/>
+                </model>
+                <constraint>
+                    <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
+                        <enum value="mail-stop">A mail stop associated with the party.</enum>
+                        <enum value="office">The name or number of the party's office.</enum>
+                        <enum value="job-title">The formal job title of a person.</enum>
+                    </allowed-values>
+                </constraint>
+            </define-assembly>
             <assembly ref="responsible-party" max-occurs="unbounded">
                 <group-as name="responsible-parties" in-json="ARRAY"/>
             </assembly>
@@ -158,8 +382,8 @@
                 <enum value="keywords">The value identifies a comma-seperated listing of keywords associated with this content. These keywords may be used as search terms for indexing and other applications.</enum>
             </allowed-values>
             <allowed-values target="link/@rel" allow-other="yes">
-                <enum value="canonical">The link identifies the authoritative location for this file. Defined by <a href="https://tools.ietf.org/html/rfc6596">RFC 6596</a>.</enum>
-                <enum value="alternate">The link identifies an alternative location or format for this file. Defined by <a href="https://html.spec.whatwg.org/multipage/links.html#linkTypes">the HTML Living Standard</a></enum>
+                <enum value="canonical">The link identifies the authoritative location for this resource. Defined by <a href="https://tools.ietf.org/html/rfc6596">RFC 6596</a>.</enum>
+                <enum value="alternate">The link identifies an alternative location or format for this resource. Defined by <a href="https://html.spec.whatwg.org/multipage/links.html#linkTypes">the HTML Living Standard</a></enum>
                 <enum value="latest-version">This link identifies a resource containing the latest version in the version history. Defined by <a href="https://tools.ietf.org/html/rfc5829">RFC 5829</a>.</enum>
                 <enum value="predecessor-version">This link identifies a resource containing the predecessor version in the version history. Defined by  <a href="https://tools.ietf.org/html/rfc5829">RFC 5829</a>.</enum>
                 <enum value="successor-version">This link identifies a resource containing the predecessor version in the version history. Defined by <a href="https://tools.ietf.org/html/rfc5829">RFC 5829</a>.</enum>
@@ -169,112 +393,12 @@
             <p>All OSCAL documents use the same metadata structure, that provides a consistent way of expressing OSCAL document metadata across all OSCAL models. The metadata section also includes declarations of individual objects (i.e., roles, location, parties) that may be referenced within and across linked OSCAL documents.</p>
             <p>The metadata in an OSCAL document has few required fields, representing only the bare minimum data needed to differentiate one instance from another. Tools and users creating OSCAL documents may choose to use any of the optional fields, as well as extension mechanisms (e.g., properties, links) to go beyond this minimum to suit their use cases.</p>
             <p>A publisher of OSCAL content can use the <code>published</code>, <code>last-modified</code>, and <code>version</code> fields to establish information about an individual in a sequence of successive revisions of a given OSCAL-based publication. The metadata for a previous revision can be represented as a <code>revision</code> within this object. Links may also be provided using the <code>predecessor-version</code> and <code>successor-version</code> link relations to provide for direct access to the related resource. These relations can be provided as a link child of this object or as <code>link</code> within a given <code>revision</code>.</p>
-        </remarks>
-    </define-assembly>
-
-    <define-assembly name="revision" scope="local">
-        <formal-name>Revision History Entry</formal-name>
-        <description>An entry in a sequential list of revisions to the containing document, expected to be in reverse chronological order (i.e. latest first).</description>
-        <model>
-            <define-field name="title" as-type="markup-line">
-                <formal-name>Document Title</formal-name>
-                <description>A name given to the document revision, which may be used by a tool for display and navigation.</description>
-            </define-field>
-            <field ref="published" />
-            <field ref="last-modified"/>
-            <field ref="version" min-occurs="1"/>
-            <field ref="oscal-version"/>
-            <assembly ref="property" max-occurs="unbounded">
-                <group-as name="props" in-json="ARRAY"/>
-            </assembly>
-            <assembly ref="link" max-occurs="unbounded">
-                <group-as name="links" in-json="ARRAY"/>
-            </assembly>
-            <field ref="remarks" in-xml="WITH_WRAPPER"/>
-        </model>
-        <constraint>
-<!-- TODO: consider making this a warning
-            <has-cardinality target="published|last-modified|link[@rel='canonical']" min-occurs="1"/>
--->
-            <allowed-values target="link/@rel" allow-other="yes">
-                <enum value="canonical">The link identifies the authoritative location for this file. Defined by <a href="https://tools.ietf.org/html/rfc6596">RFC 6596</a>.</enum>
-                <enum value="alternate">The link identifies an alternative location or format for this file. Defined by <a href="https://html.spec.whatwg.org/multipage/links.html#linkTypes">the HTML Living Standard</a></enum>
-                <enum value="predecessor-version">This link identifies a resource containing the predecessor version in the version history. Defined by  <a href="https://tools.ietf.org/html/rfc5829">RFC 5829</a>.</enum>
-                <enum value="successor-version">This link identifies a resource containing the predecessor version in the version history. Defined by <a href="https://tools.ietf.org/html/rfc5829">RFC 5829</a>.</enum>
-            </allowed-values>
-        </constraint>
-        <remarks>
-            <p>While <code>published</code>, <code>last-modified</code>, <code>oscal-version</code>, and <code>version</code> are not required, values for these entries should be provided if the information is known. For a revision entry to be considered valid, at least one of the following items must be provided: <code>published</code>, <code>last-modified</code>, <code>version</code>, or a <code>link</code> with a <code>rel</code> of <q>source</q>.</p>
-        </remarks>
-    </define-assembly>
-
-    <define-assembly name="location">
-        <formal-name>Location</formal-name>
-        <description>A physical point of presence, which may be associated with people, organizations, or other concepts within the current or linked OSCAL document.</description>
-        <define-flag name="uuid" as-type="uuid" required="yes">
-            <formal-name>Location Universally Unique Identifier</formal-name>
-            <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined location elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>location</code> can be used to reference the data item locally or globally (e.g., from an importing OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
-        </define-flag>
-        <model>
-            <define-field name="title" as-type="markup-line">
-                <formal-name>Location Title</formal-name>
-                <description>A name given to the location, which may be used by a tool for display and navigation.</description>
-            </define-field>
-            <assembly ref="address">
-                <remarks>
-                    <p>The physical address of the location.</p>
-                </remarks>
-            </assembly>
-            <field ref="email-address" max-occurs="unbounded">
-                <group-as name="email-addresses" in-json="ARRAY"/>
-                <remarks>
-                    <p>A contact email associated with the location.</p>
-                </remarks>
-            </field>
-            <field ref="telephone-number" max-occurs="unbounded">
-                <group-as name="telephone-numbers" in-json="ARRAY"/>
-                <remarks>
-                    <p>A phone number used to contact the location.</p>
-                </remarks>
-            </field>
-            <define-field name="url" as-type="uri" max-occurs="unbounded">
-                <formal-name>Location URL</formal-name>
-                <description>The uniform resource locator (URL) for a web site or other resource associated with the location.</description>
-                <group-as name="urls" in-json="ARRAY"/>
-            </define-field>
-            <assembly ref="property" max-occurs="unbounded">
-                <group-as name="props" in-json="ARRAY"/>
-            </assembly>
-            <assembly ref="link" max-occurs="unbounded">
-                <group-as name="links" in-json="ARRAY"/>
-            </assembly>
-            <field ref="remarks" in-xml="WITH_WRAPPER"/>
-        </model>
-        <constraint>
-            <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
-                <enum value="type">Characterizes the kind of location.</enum>
-            </allowed-values>
-            <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='type']/@value">
-                <enum value="data-center">A location that contains computing assets. A <code>class</code> can be used to indicate the sub-type of data-center as <em>primary</em> or <em>alternate</em>.</enum>
-            </allowed-values>
-            <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='type' and @value='data-center']/@class">
-                <enum value="primary">The location is a data-center used for normal operations.</enum>
-                <enum value="alternate">The location is a data-center used for fail-over or backup operations.</enum>
-            </allowed-values>
-            <has-cardinality target="address" level="WARNING" min-occurs="1">
-                <description>In most cases, it is useful to define a location. In some cases, defining an explicit location may represent a security risk.</description>
-            </has-cardinality>
-            <has-cardinality target="title|address|email-address|telephone-number" level="ERROR" min-occurs="1">
-                <description>A location must have at least a title, address, email-address, or telephone number.</description>
-            </has-cardinality>
-        </constraint>
-        <remarks>
-            <p>An address might be sensitive in nature. In such cases a title, mailing address, email-address, and/or phone number may be used instead.</p>
+            <p>A <code>responsible-party</code> entry in this context refers to roles and parties that have responsibility relative to the production, review, publication, and use of the containing document.</p>
         </remarks>
     </define-assembly>
 
     <define-flag name="location-uuid" as-type="uuid">
-        <formal-name>Location Reference</formal-name>
+        <formal-name>Location Universally Unique Identifier Reference</formal-name>
         <!-- identifier reference -->
         <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to a <code>location</code> defined in the <code>metadata</code> section of this or another OSCAL instance. The <em>UUID</em> of the <code>location</code> in the source OSCAL instance is sufficient to reference the data item locally or globally (e.g., in an imported OSCAL instance).
         </description>
@@ -288,7 +412,7 @@
     </define-flag>
 
     <define-field name="location-uuid" as-type="uuid">
-        <formal-name>Location Reference</formal-name>
+        <formal-name>Location Universally Unique Identifier Reference</formal-name>
         <!-- identifier reference -->
         <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to a <code>location</code> defined in the <code>metadata</code> section of this or another OSCAL instance. The <em>UUID</em> of the <code>location</code> in the source OSCAL instance is sufficient to reference the data item locally or globally (e.g., in an imported OSCAL instance).
         </description>
@@ -303,104 +427,8 @@
           </remarks>
     </define-field>
 
-    <define-assembly name="party">
-        <formal-name>Party</formal-name>
-        <description>An organization or person, which may be associated with roles or other concepts within the current or linked OSCAL document.</description>
-        <define-flag name="uuid" as-type="uuid" required="yes">
-            <formal-name>Party Universally Unique Identifier</formal-name>
-            <!-- identifier declaration -->
-            <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined party elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. The locally defined <em>UUID</em> of the <code>party</code> can be used to reference the data item locally or globally (e.g., from an importing OSCAL instance). This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
-        </define-flag>
-        <define-flag name="type" as-type="string" required="yes">
-            <formal-name>Party Type</formal-name>
-            <description>A category describing the kind of party the object describes.</description>
-            <constraint>
-                <allowed-values>
-                    <enum value="person">A human being regarded as an individual.</enum>
-                    <enum value="organization">An organized group of one or more <code>person</code> individuals with a specific purpose.</enum>
-                </allowed-values>
-            </constraint>
-        </define-flag>
-        <model>
-            <define-field name="name">
-                <formal-name>Party Name</formal-name>
-                <description>The full name of the party. This is typically the legal name associated with the party.</description>
-            </define-field>
-            <define-field name="short-name">
-                <formal-name>Party Short Name</formal-name>
-                <description>A short common name, abbreviation, or acronym for the party.</description>
-            </define-field>
-            <define-field name="external-id" max-occurs="unbounded">
-                <!-- This is an id because the idenfier is assigned and managed externally by humans. -->
-                <formal-name>Party External Identifier</formal-name>
-                <description>An identifier for a person or organization using a designated scheme. e.g. an Open Researcher and Contributor ID (ORCID)</description>
-                <json-value-key>id</json-value-key>
-                <group-as name="external-ids" in-json="ARRAY"/>
-                <define-flag name="scheme" as-type="uri" required="yes">
-                    <formal-name>External Identifier Schema</formal-name>
-                    <description>Indicates the type of external identifier.</description>
-                    <constraint>
-                        <allowed-values allow-other="yes">
-                            <enum value="http://orcid.org/">The identifier is Open Researcher and Contributor ID (ORCID).</enum>
-                        </allowed-values>
-                    </constraint>
-                </define-flag>
-            </define-field>
-            <assembly ref="property" max-occurs="unbounded">
-                <group-as name="props" in-json="ARRAY"/>
-            </assembly>
-            <assembly ref="link" max-occurs="unbounded">
-                <group-as name="links" in-json="ARRAY"/>
-            </assembly>
-            <field ref="email-address" max-occurs="unbounded">
-                <group-as name="email-addresses" in-json="ARRAY"/>
-                <remarks>
-                    <p>This is a contact email associated with the party.</p>
-                </remarks>
-            </field>
-            <field ref="telephone-number" max-occurs="unbounded">
-                <group-as name="telephone-numbers" in-json="ARRAY"/>
-                <remarks>
-                    <p>A phone number used to contact the party.</p>
-                </remarks>
-            </field>
-            <choice>
-                <assembly ref="address" max-occurs="unbounded">
-                    <group-as name="addresses" in-json="ARRAY"/>
-                </assembly>
-                <field ref="location-uuid" max-occurs="unbounded">
-                    <group-as name="location-uuids" in-json="ARRAY"/>
-                </field>
-            </choice>
-            <define-field name="member-of-organization" as-type="uuid" max-occurs="unbounded">
-                <formal-name>Organizational Affiliation</formal-name>
-                <!-- identifier reference -->
-                <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to another <code>party</code> (<code>person</code> or <code>organization</code>) that this subject is associated with. The <em>UUID</em> of the <code>party</code> in the source OSCAL instance is sufficient to reference the data item locally or globally (e.g., in an imported OSCAL instance).
-                </description>
-                <group-as name="member-of-organizations" in-json="ARRAY"/>
-                <constraint>
-                    <!-- TODO: Move to top-level to address cross-document issues. -->
-                    <index-has-key name="index-metadata-party-organizations-uuid" target=".">
-                        <key-field target="."/>
-                    </index-has-key>
-                </constraint>
-                <remarks>
-                    <p>Parties of both the <code>person</code> or <code>organization</code> type can be associated with an organization using the <code>member-of-organization</code>.</p>
-                </remarks>
-            </define-field>
-            <field ref="remarks" in-xml="WITH_WRAPPER"/>
-        </model>
-        <constraint>
-            <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
-                <enum value="mail-stop">A mail stop associated with the party.</enum>
-                <enum value="office">The name or number of the party's office.</enum>
-                <enum value="job-title">The formal job title of a person.</enum>
-            </allowed-values>
-        </constraint>
-    </define-assembly>
-
     <define-field name="party-uuid" as-type="uuid">
-        <formal-name>Party Reference</formal-name>
+        <formal-name>Party Universally Unique Identifier Reference</formal-name>
         <!-- identifier reference -->
         <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a> identifier reference to another <code>party</code> defined in <code>metadata</code>. The <em>UUID</em> of the <code>party</code> in the source OSCAL instance is sufficient to reference the data item locally or globally (e.g., in an imported OSCAL instance).
         </description>
@@ -414,46 +442,6 @@
             <p>See the <a href="/concepts/identifier-use/#scope">Concepts - Identifier Use</a> page for additional information about the referenced identifier's scope.</p>
           </remarks>
     </define-field>
-
-    <define-assembly name="role">
-        <formal-name>Role</formal-name>
-        <description>Defines a function, which might be assigned to a party in a specific situation.</description>
-        <define-flag name="id" as-type="token" required="yes">
-            <!-- This is an id because the idenfier is assigned and managed by humans. -->
-            <!-- identifier declarations -->
-            <formal-name>Role Identifier</formal-name>
-            <description>A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a>, <a href="/concepts/identifier-use/#locally-unique">locally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined role elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. When referenced from another OSCAL instance, the locally defined <em>ID</em> of the <code>Role</code> from the imported OSCAL instance must be referenced in the context of the containing resource (e.g., import, import-component-definition, import-profile, import-ssp or import-ap). This ID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
-            <!-- TODO: discuss overriding of locally defined values. -->
-        </define-flag>
-        <model>
-            <define-field name="title" as-type="markup-line" min-occurs="1">
-                <formal-name>Role Title</formal-name>
-                <description>A name given to the role, which may be used by a tool for display and navigation.</description>
-            </define-field>
-            <define-field name="short-name">
-                <formal-name>Role Short Name</formal-name>
-                <description>A short common name, abbreviation, or acronym for the role.</description>
-            </define-field>
-            <!-- CHANGE "desc" to "description" -->
-            <define-field name="description" in-xml="WITH_WRAPPER" as-type="markup-multiline">
-                <formal-name>Role Description</formal-name>
-                <description>A summary of the role's purpose and associated responsibilities.</description>
-            </define-field>
-            <assembly ref="property" max-occurs="unbounded">
-                <group-as name="props" in-json="ARRAY"/>
-            </assembly>
-            <assembly ref="link" max-occurs="unbounded">
-                <group-as name="links" in-json="ARRAY"/>
-            </assembly>
-            <field ref="remarks" in-xml="WITH_WRAPPER"/>
-        </model>
-        <remarks>
-            <!-- TODO: roles only appear in metadata. Referenced in the document and linked instances. -->
-            <!-- TODO: discuss built-in roles. -->
-            <p>Permissible values to be determined closer to the application (e.g. by a receiving authority).</p>
-            <p>OSCAL has defined a set of standardized roles for consistent use in OSCAL documents. This allows tools consuming OSCAL content to infer specific semantics when these roles are used. These roles are documented in the specific contexts of their use (e.g., responsible-party, responsible-role). When using such a role, it is necessary to define these roles in this list, which will then allow such a role to be referenced.</p>
-            </remarks>
-    </define-assembly>
 
     <define-field name="role-id" as-type="token">
         <formal-name>Role Identifier Reference</formal-name>
@@ -784,19 +772,16 @@
 
     <define-assembly name="responsible-party">
         <formal-name>Responsible Party</formal-name>
-        <description>A reference to a set of persons and/or organizations that have responsibility for performing a referenced role in the context of the containing object.</description>
+        <description>A reference to a set of persons and/or organizations that have responsibility for performing the referenced role in the context of the containing object.</description>
         <define-flag required="yes" name="role-id" as-type="token">
             <formal-name>Responsible Role</formal-name>
             <!-- identifier reference -->
-            <description>A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a> identifier reference to <code>roles</code> served by the user.</description>
+            <description>A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a> identifier reference to a <code>role</code> performed.</description>
         </define-flag>
         <model>
             <field ref="party-uuid" min-occurs="1" max-occurs="unbounded">
+                <description>Specifies one or more parties responsible for performing the associated <code>role</code>.</description>
                 <group-as name="party-uuids" in-json="ARRAY"/>
-                <remarks>
-                    <p>Specifies one or more parties that are responsible for performing the associated <code>role</code>.
-                    </p>
-                </remarks>
             </field>
             <assembly ref="property" max-occurs="unbounded">
                 <group-as name="props" in-json="ARRAY"/>
@@ -815,8 +800,8 @@
             </index-has-key>
         </constraint>
         <remarks>
-            <!-- Speak to the difference between a reponsible-role/reponsible-party. #1243 -->
-            <p>TODO</p>
+            <p>A <code>responsible-party</code> requires one or more <code>party-uuid</code> references creating a strong relationship arc between the referenced <code>role-id</code> and the reference parties. This differs in semantics from <code>responsible-role</code> which doesn't require that a <code>party-uuid</code> is referenced.</p>
+            <p>The scope of use of this object determines if the responsibility has been performed or will be performed in the future. The containing object will describe the intent.</p>
         </remarks>
     </define-assembly>
  
@@ -877,7 +862,7 @@
         <description>A reference to a role with responsibility for performing a function relative to the containing object, optionally associated with a set of persons and/or organizations that perform that role.</description>
         <define-flag name="role-id" as-type="token" required="yes">
             <formal-name>Responsible Role ID</formal-name>
-            <description>A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a> identifier reference to <code>roles</code> responsible for the business function.</description>
+            <description>A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a> identifier reference to a <code>role</code> performed.</description>
         </define-flag>
         <model>
             <assembly ref="property" max-occurs="unbounded">
@@ -887,13 +872,14 @@
                 <group-as name="links" in-json="ARRAY"/>
             </assembly>
             <field ref="party-uuid" max-occurs="unbounded">
+                <description>Specifies zero or more parties responsible for performing the associated <code>role</code>.</description>
                 <group-as name="party-uuids" in-json="ARRAY"/>
             </field>
             <field ref="remarks" in-xml="WITH_WRAPPER"/>
         </model>
         <remarks>
-            <!-- Speak to the difference between a reponsible-role/reponsible-party. #1243 -->
-            <p>TODO</p>
+            <p>A <code>responsible-role</code> allows zero or more <code>party-uuid</code> references, each of which creates a relationship arc between the referenced <code>role-id</code> and the referenced party. This differs in semantics from <code>responsible-party</code>, which requires that at least one <code>party-uuid</code> is referenced.</p>
+            <p>The scope of use of this object determines if the responsibility has been performed or will be performed in the future. The containing object will describe the intent.</p>
         </remarks>
     </define-assembly>
 
