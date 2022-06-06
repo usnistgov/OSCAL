@@ -4,8 +4,8 @@ heading: "OSCAL Control Layer"
 weight: 70
 suppresstopiclist: true
 sidenav:
-    activerenderdepth: 2
-    inactiverenderdepth: 2
+    activerenderdepth: 3
+    inactiverenderdepth: 3
 toc:
   enabled: true
 aliases:
@@ -20,6 +20,8 @@ The OSCAL control layer consists of the following models.
 The **[Catalog Model](catalog/)** provides a structured, machine-readable representation of a **[catalog](../../terminology/#catalog)** of **[controls](../../terminology/#control)**. The OSCAL catalog model can be represented in XML, JSON, and YAML formats.
   
 It is important to note that the OSCAL catalog model is not a catalog document format, since the introductory prose included in many control catalogs is not present (or supported) in the OSCAL catalog model. Instead, the OSCAL catalog formats provide a robust syntax for representing collections of controls, including control statements, assessment objectives, and other control details. This structured form of a control catalog allows control information to be easily imported, exported, indexed, and searched by applications.
+
+Controls, as the constituent parts of catalogs, must also be encoded in a standard machine-readable form. The OSCAL model gives the designers of catalogs great flexibility in the details of how controls are defined, with their consistuent parts. This is described further in a page providing a high-level introductory walkthrough of an [Annotated Example](catalog/sp800-53rev5-example) of a control, as defined by NIST SP 800-53 Rev 5.
 
 ## Profile Model
 
