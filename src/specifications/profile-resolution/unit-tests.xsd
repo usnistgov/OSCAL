@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns="http://csrc.nist.gov/ns/metaschema/test-suite/1.0"
+    targetNamespace="http://csrc.nist.gov/ns/metaschema/test-suite/1.0" elementFormDefault="qualified">
+  <xs:include schemaLocation="metaschema-datatypes.xsd"/>
+  
+  <xs:element name="test-suite">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="test-collection" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="test-collection">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="test-scenario" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="location" type="URIReferenceDatatype" use="required"/>
+      <xs:attribute name="name" type="StringDatatype" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="test-scenario">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="example-description" type="xs:string" minOccurs="0"
+          maxOccurs="1"/>
+        <xs:element name="addresses-requirement"  minOccurs="0"
+          maxOccurs="unbounded">
+          <xs:complexType mixed="true">
+            <xs:attribute name="requirement-id" type="StringDatatype" use="required"/>
+          </xs:complexType>
+          
+        </xs:element>
+        <xs:choice>
+          <xs:sequence>
+            <xs:element ref="generate-schema"/>
+            <xs:element name="validation-case" type="ContentCaseType" minOccurs="0"
+              maxOccurs="unbounded"/>
+          </xs:sequence>
+          <xs:sequence>
+            <xs:element ref="resolve-profile"/>
+            <xs:element name="expected-resolution" type="SourceCaseType" minOccurs="0"
+              maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="name" type="StringDatatype" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="generate-schema">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="metaschema"/>
+        <xs:element name="generation-case" type="GenerationCaseType" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="generation-result" type="GenerationResultType" default="SUCCESS"/>
+      <xs:attribute name="validation-result" type="ValidationResultType" default="VALID"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="resolve-profile">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="profile-source" type="SourceCaseType" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="metaschema">
+    <xs:complexType>
+      <xs:attribute name="location" type="URIReferenceDatatype" use="required"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:complexType name="SourceCaseType">
+    <xs:attribute name="source-format" use="required" type="FormatType"/>
+    <xs:attribute name="location" type="URIReferenceDatatype" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="ContentCaseType">
+    <xs:complexContent>
+      <xs:extension base="SourceCaseType">
+        <xs:attribute name="validation-result" type="ValidationResultType" default="VALID"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  
+  <xs:complexType name="GenerationCaseType">
+    <xs:complexContent>
+      <xs:extension base="SourceCaseType">
+        <xs:attribute name="match-result" type="MatchResultType" default="MATCH"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  
+  <xs:simpleType name="GenerationResultType">
+    <xs:restriction base="TokenDatatype">
+      <xs:enumeration value="SUCCESS">
+        <xs:annotation>
+          <xs:documentation>Generation succeeded.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="FAILURE">
+        <xs:annotation>
+          <xs:documentation>Generation resulted in failure caused by some error.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:simpleType name="FormatType">
+    <xs:restriction base="TokenDatatype">
+      <xs:enumeration value="XML">
+        <xs:annotation>
+          <xs:documentation>Content is XML.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="JSON">
+        <xs:annotation>
+          <xs:documentation>Content is JSON.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="YAML">
+        <xs:annotation>
+          <xs:documentation>Content is YAML.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:simpleType name="MatchResultType">
+    <xs:restriction base="TokenDatatype">
+      <xs:enumeration value="MATCH">
+        <xs:annotation>
+          <xs:documentation>The actual content matched the expectect content.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="MISMATCH">
+        <xs:annotation>
+          <xs:documentation>The actual content did not match the expectect content.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:simpleType name="ValidationResultType">
+    <xs:restriction base="TokenDatatype">
+      <xs:enumeration value="VALID">
+        <xs:annotation>
+          <xs:documentation>Validation succeeded.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="INVALID">
+        <xs:annotation>
+          <xs:documentation>Validation resulted in failure caused by some content defect or error.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

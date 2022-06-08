@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<test-suite xmlns="http://csrc.nist.gov/ns/metaschema/test-suite/1.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://csrc.nist.gov/ns/metaschema/test-suite/1.0 ../unit-tests.xsd">
+    <test-collection name="Feature: Allowed Values Constraint" location="allowed-values/">
+        <test-scenario name="basic">
+            <generate-schema>
+                <metaschema location="allowed-values-basic_metaschema.xml"/>
+                <generation-case source-format="XML" location="expected/allowed-values-basic_schema.xsd" />
+                <generation-case source-format="JSON" location="expected/allowed-values-basic_schema.json"/>
+            </generate-schema>
+            <validation-case source-format="JSON" location="allowed-values-basic_test_baddates_FAIL.json" validation-result="INVALID"/>
+            <validation-case source-format="JSON" location="allowed-values-basic_test_badvalues_FAIL.json" validation-result="INVALID"/>
+            <validation-case source-format="JSON" location="allowed-values-basic_test_valid_PASS.json"/>
+        </test-scenario>
+    </test-collection>
+    <test-collection name="Feature: Choice" location="choice/">
+        <test-scenario name="Multiple">
+            <generate-schema>
+                <metaschema location="choice-multiple_metaschema.xml"/>
+            </generate-schema>
+            <validation-case source-format="JSON" location="choice-multiple_test_multiple_PASS.json"/>
+        </test-scenario>
+    </test-collection>
+    <test-collection name="Feature: Collapsible" location="collapsible/">
+        <test-scenario name="NoOp">
+            <generate-schema>
+                <metaschema location="collapsible-no-op_metaschema.xml"/>
+            </generate-schema>
+        </test-scenario>
+        <test-scenario name="Simple">
+            <generate-schema>
+                <metaschema location="collapsible_metaschema.xml"/>
+            </generate-schema>
+            <validation-case source-format="JSON" location="collapsible_test_multiple_PASS.json"/>
+            <validation-case source-format="JSON" location="collapsible_test_singleton_PASS.json"/>
+        </test-scenario>
+    </test-collection>
+    <test-collection name="Feature: Datatype" location="datatypes/">
+        <test-scenario name="Character Strings">
+            <generate-schema>
+                <metaschema location="charstrings_metaschema.xml"/>
+            </generate-schema>
+            <validation-case source-format="JSON" location="charstrings_test_okay_PASS.json"/>
+            <validation-case source-format="XML" location="charstrings_test_okay_PASS.xml"/>
+        </test-scenario>
+        <test-scenario name="Date">
+            <generate-schema>
+                <metaschema location="datatypes-date_metaschema.xml"/>
+            </generate-schema>
+            <validation-case source-format="XML" location="datatypes-date_test_fancy_FAIL.xml" validation-result="INVALID"/>
+            <validation-case source-format="JSON" location="datatypes-date_test_tricky_FAIL.json" validation-result="INVALID"/>
+            <validation-case source-format="JSON" location="datatypes-date_test_valid_PASS.json"/>
+            <validation-case source-format="XML" location="datatypes-date_test_valid_PASS.xml"/>
+        </test-scenario>
+        <test-scenario name="Date/Time w/ optional timezone">
+            <generate-schema>
+                <metaschema location="datatypes-datetime-no-tz_metaschema.xml"/>
+            </generate-schema>
+            <validation-case source-format="JSON" location="datatypes-datetime-no-tz_test_valid_PASS.json"/>
+        </test-scenario>
+        <test-scenario name="Date/Time w/ required timezone">
+            <generate-schema>
+                <metaschema location="datatypes-datetime_metaschema.xml"/>
+            </generate-schema>
+            <validation-case source-format="JSON" location="datatypes-datetime_test_valid_PASS.json"/>
+        </test-scenario>
+        <test-scenario name="Prose">
+            <generate-schema>
+                <metaschema location="datatypes-prose_metaschema.xml"/>
+            </generate-schema>
+            <validation-case source-format="JSON" location="datatypes-prose_test_bad-date_FAIL.json" validation-result="INVALID"/>
+            <validation-case source-format="JSON" location="datatypes-prose_test_valid_PASS.json"/>
+        </test-scenario>
+        <test-scenario name="URI">
+            <generate-schema>
+                <metaschema location="datatypes-uri_metaschema.xml"/>
+            </generate-schema>
+            <validation-case source-format="JSON" location="datatypes-uri_test_broken_FAIL.json" validation-result="INVALID"/>
+            <validation-case source-format="JSON" location="datatypes-uri_test_valid_PASS.json"/>
+        </test-scenario>
+        <test-scenario name="UUID">
+            <generate-schema>
+                <metaschema location="datatypes-uuid_metaschema.xml"/>
+            </generate-schema>
+            <validation-case source-format="JSON" location="datatypes-uuid_test_version-1-invalid_FAIL.json" validation-result="INVALID"/>
+            <validation-case source-format="JSON" location="datatypes-uuid_test_valid_PASS.json"/>
+        </test-scenario>
+    </test-collection>
+    <test-collection name="Feature: Flag" location="flag/">
+        <test-scenario name="Basic">
+            <generate-schema>
+                <metaschema location="flag-basic_metaschema.xml"/>
+            </generate-schema>
+            <validation-case source-format="JSON" location="flag-basic_test_datatype_FAIL.json" validation-result="INVALID"/>
+            <validation-case source-format="JSON" location="flag-basic_test_simple_PASS.json"/>
+        </test-scenario>
+        <test-scenario name="Override Type">
+            <generate-schema>
+                <metaschema location="flag-override_metaschema.xml"/>
+            </generate-schema>
+        </test-scenario>
+    </test-collection>
+    <test-collection name="Feature: Group As" location="group-as/">
+        <test-scenario name="Array">
+            <generate-schema>
+                <metaschema location="group-as-array_metaschema.xml"/>
+            </generate-schema>
+            <validation-case source-format="JSON" location="group-as-array_test_valid_PASS.json"/>
+            <validation-case source-format="JSON" location="group-as-array_test_singleton_FAIL.json" validation-result="INVALID"/>
+        </test-scenario>
+        <test-scenario name="Array Invalid">
+            <generate-schema generation-result="FAILURE">
+                <metaschema location="group-as-array-invalid-max_metaschema.xml"/>
+            </generate-schema>
+        </test-scenario>
+        <test-scenario name="Array Bounded">
+            <generate-schema>
+                <metaschema location="group-as-array-bounded_metaschema.xml"/>
+            </generate-schema>
+            <validation-case source-format="JSON" location="group-as-array-bounded_test_array-inside_PASS.json"/>
+            <validation-case source-format="JSON" location="group-as-array-bounded_test_array-inside_PASS.json"/>
+            <validation-case source-format="JSON" location="group-as-array-bounded_test_array-singleton_FAIL.json" validation-result="INVALID"/>
+            <validation-case source-format="JSON" location="group-as-array-bounded_test_array-upper_FAIL.json" validation-result="INVALID"/>
+        </test-scenario>
+        <test-scenario name="Array Optional">
+            <generate-schema>
+                <metaschema location="group-as-array-optional_metaschema.xml"/>
+            </generate-schema>
+            <validation-case source-format="JSON" location="group-as-array-optional_test_valid_PASS.json"/>
+            <validation-case source-format="JSON" location="group-as-array-optional_test_empty_FAIL.json" validation-result="INVALID"/>
+        </test-scenario>
+        <test-scenario name="By Key">
+            <generate-schema>
+                <metaschema location="group-as-by-key_metaschema.xml"/>
+            </generate-schema>
+            <validation-case source-format="JSON" location="group-as-by-key_test_valid_PASS.json"/>
+            <validation-case source-format="JSON" location="group-as-by-key_test_invalid-child_FAIL.json" validation-result="INVALID"/>
+        </test-scenario>
+        <test-scenario name="Singleton or Array">
+            <generate-schema>
+                <metaschema location="group-as-singleton-or-array_metaschema.xml"/>
+            </generate-schema>
+            <validation-case source-format="JSON" location="group-as-singleton-or-array_test_singleton_PASS.json"/>
+            <validation-case source-format="JSON" location="group-as-singleton-or-array_test_valid-array_PASS.json"/>
+        </test-scenario>
+        <test-scenario name="Singleton or Array Optional">
+            <generate-schema>
+                <metaschema location="group-as-singleton-or-array-optional_metaschema.xml"/>
+            </generate-schema>
+            <validation-case source-format="JSON" location="group-as-singleton-or-array-optional_test_valid-array_PASS.json"/>
+            <validation-case source-format="JSON" location="group-as-singleton-or-array-optional_test_valid-singleton_PASS.json"/>
+            <validation-case source-format="JSON" location="group-as-singleton-or-array-optional_test_empty_FAIL.json" validation-result="INVALID"/>
+            <validation-case source-format="JSON" location="group-as-singleton-or-array-optional_test_invalid-array-singleton_FAIL.json" validation-result="INVALID"/>
+        </test-scenario>
+        <test-scenario name="Misc">
+            <generate-schema>
+                <metaschema location="group-as-misc_metaschema.xml"/>
+            </generate-schema>
+        </test-scenario>
+    </test-collection>
+    <test-collection name="JSON Value Key" location="json-value-key/">
+        <test-scenario name="Field">
+            <generate-schema>
+                <metaschema location="json-value-key-field_metaschema.xml"/>
+            </generate-schema>
+            <validation-case source-format="JSON" location="json-value-key-field_test_valid_PASS.json"/>
+        </test-scenario>
+        <test-scenario name="Label">
+            <generate-schema>
+                <metaschema location="json-value-key-label_metaschema.xml"/>
+            </generate-schema>
+            <validation-case source-format="JSON" location="json-value-key-label_test_valid2_PASS.json"/>
+            <validation-case source-format="JSON" location="json-value-key-label_test_valid_PASS.json"/>
+        </test-scenario>
+    </test-collection>
+    <test-collection name="Local Definitions" location="local-declarations/">
+        <test-scenario name="Global and Local">
+            <generate-schema>
+                <metaschema location="global-and-local_metaschema.xml"/>
+            </generate-schema>
+        </test-scenario>
+        <test-scenario name="Global and Scoped Local">
+            <generate-schema>
+                <metaschema location="global-and-scoped-local_metaschema.xml"/>
+            </generate-schema>
+        </test-scenario>
+        <test-scenario name="Modular">
+            <generate-schema>
+                <metaschema location="modular_metaschema.xml"/>
+            </generate-schema>
+        </test-scenario>
+    </test-collection>
+</test-suite>
