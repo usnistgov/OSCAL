@@ -353,7 +353,7 @@ def process_xml(file, old='', new='', dry_run=False):
             }
             data = etree.parse(fd)
             links = list(find_xml(data, namespaces, "//*[@href or @media-type]"))
-            replacements = list(r for r in replace(links, 'yaml', 'xml') if r)
+            replacements = list(r for r in replace(links, old, new) if r)
             update_xml(data, namespaces, replacements, links, 'href')
 
         new_file = dry_run_file(file) if dry_run else file
@@ -403,7 +403,7 @@ def process_yaml(file, old='', new='', dry_run=False):
             yaml.constructor.yaml_constructors.pop(u'tag:yaml.org,2002:timestamp', None)
             data = yaml.load(raw_data)
             links = list(find(data, ['href', 'media-type']))
-            replacements = list(r for r in replace(links, 'json', 'yaml') if r)
+            replacements = list(r for r in replace(links, old, new) if r)
             update(data, replacements, links, 'href')
 
         new_file = dry_run_file(file) if dry_run else file
