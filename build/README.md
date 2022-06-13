@@ -39,7 +39,7 @@ A Docker container configuration is provided that establishes the runtime enviro
     docker compose run cli
     ```
 
-    In Windows environments, you may need to execute in a pty that allows for using an interactive shell. In such a case you can run the Docker container as follows:
+    In Windows environments, you may need to execute in a pseudoterminal (pty) that allows for using an interactive shell. In such a case, you can run the Docker container with [`winpty`](https://github.com/rprichard/winpty) as follows:
 
 
     ```
@@ -78,7 +78,7 @@ The following steps are known to work on [Ubuntu](https://ubuntu.com/) (tested i
 
     ```bash
     sudo apt-get update
-    sudo apt-get install -y apt-utils libxml2-utils jq maven nodejs npm build-essential python3-pip git
+    sudo apt-get install -y apt-utils build-essential git-core jq libxml2-utils maven nodejs npm python3-pip unzip
     sudo apt-get clean
     ```
 
@@ -91,12 +91,18 @@ The following steps are known to work on [Ubuntu](https://ubuntu.com/) (tested i
     sudo apt install ./hugo_extended_${HUGO_VERSION}_Linux-64bit.deb
     ```
 
-1. Install Node.js modules
+1. Install Node.js modules and set path 
 
     To install the required Node.js modules, run the following:
 
     ```bash
-    npm install
+    npm install # run inside ./build directory
+    ```
+
+    You must add the path for Node.js executable to the `$PATH`. You may want to add this export to your `~/.bashrc` to persist the configuration.
+
+    ```bash
+    export PATH="$(npm bin):${PATH}" # run inside ./build directory
     ```
 
 1. Install Python modules
@@ -104,7 +110,7 @@ The following steps are known to work on [Ubuntu](https://ubuntu.com/) (tested i
     To install the required Python modules, run the following:
 
     ```bash
-    pip3 install -r ./python/requirements.txt
+    pip3 install -r ./ci-cd/python/requirements.txt # run inside ./build directory
     ```
 
 1. Install Saxon-HE
@@ -150,7 +156,7 @@ To build the XML and JSON Schema for the OSCAL models, run the following:
 ./build/ci-cd/generate-schema.sh
 ```
 
-This will generate schemas based on the Metaschema definitions in the metaschema [configuration file][./build/ci-cd/config/metaschema].
+This will generate schemas based on the Metaschema definitions in the Metaschema [configuration file](./ci-cd/config/metaschema).
 
 ### Building XML-to-JSON and JSON-to-XML Converters for the OSCAL models
 
@@ -160,7 +166,7 @@ To build the XML-to-JSON and JSON-to-XML Converters for the OSCAL models, run th
 ./build/ci-cd/generate-content-converters.sh
 ```
 
-This will generate converters based on the definitions in the metaschema [configuration file][metaschema-config].
+This will generate converters based on the definitions in the Metaschema [configuration file](./ci-cd/config/metaschema).
 
 ### Building Website Documentation
 
@@ -169,5 +175,3 @@ To generate OSCAL model documentation, which is used as part of the [website gen
 ```
 ./build/ci-cd/generate-model-documentation.sh
 ```
-
-[metaschema-config]: ci-cd/config/metaschema
