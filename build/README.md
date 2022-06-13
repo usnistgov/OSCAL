@@ -1,4 +1,4 @@
-# OSCAL Ci/CD Build Tools
+# OSCAL CI/CD Build Tools
 
 This subdirectory contains a set of build scripts used to create OSCAL-related artifacts (e.g., schemas, converters, documentation). Below are instructions for building using these scripts.
 
@@ -19,11 +19,11 @@ A Docker container configuration is provided that establishes the runtime enviro
 1. Install Docker and Docker Compose
 
     - Follow the Docker installation [instructions](https://docs.docker.com/install/) for your system.
-    - Follow the Docker Compose installation [instructions](https://docs.docker.com/compose/install/) for your system. Note: Some docker installations also install docker compose. The installation instructions will tell you if this is the case.
+    - Follow the Docker Compose installation [instructions](https://docs.docker.com/compose/install/) for your system. Note: Some packages install `docker` and `docker-compose` together. The installation instructions will tell you if this is the case.
 
 2. Build the Docker container
 
-    You can build the Docker container for the build environment using Docker Compose as follows from the OSCAL `/build` directory:
+    You can build the Docker container for the build environment using Docker Compose as follows from the OSCAL `./build` directory:
 
     ```
     docker compose build
@@ -39,7 +39,7 @@ A Docker container configuration is provided that establishes the runtime enviro
     docker compose run cli
     ```
 
-    On Windows environments, you may need to execute in a pty that allows for using an interactive shell. In such a case you can run the Docker container as follows:
+    In Windows environments, you may need to execute in a pty that allows for using an interactive shell. In such a case you can run the Docker container as follows:
 
 
     ```
@@ -93,16 +93,10 @@ The following steps are known to work on [Ubuntu](https://ubuntu.com/) (tested i
 
 1. Install Node.js modules
 
-    To install the required Node.js modules globally (for all users), run the following:
+    To install the required Node.js modules, run the following:
 
     ```bash
-    sudo npm install -g ajv-formats@"^1.5.x" ajv-cli@"^4.0.x" yaml-convert@"^1.0.x" markdown-link-check json-diff
-    ```
-
-    Or to install locally
-
-    ```bash
-    npm install prettyjson markdown-link-check json-diff
+    npm install
     ```
 
 1. Install Python modules
@@ -110,7 +104,7 @@ The following steps are known to work on [Ubuntu](https://ubuntu.com/) (tested i
     To install the required Python modules, run the following:
 
     ```bash
-    pip3 install lxml
+    pip3 install -r ./python/requirements.txt
     ```
 
 1. Install Saxon-HE
@@ -156,7 +150,7 @@ To build the XML and JSON Schema for the OSCAL models, run the following:
 ./build/ci-cd/generate-schema.sh
 ```
 
-This will generate schemas based on the Metaschema definitions in the metaschema [configuration file][metaschema-config].
+This will generate schemas based on the Metaschema definitions in the metaschema [configuration file][./build/ci-cd/config/metaschema].
 
 ### Building XML-to-JSON and JSON-to-XML Converters for the OSCAL models
 
