@@ -19,11 +19,11 @@ A Docker container configuration is provided that establishes the runtime enviro
 1. Install Docker and Docker Compose
 
     - Follow the Docker installation [instructions](https://docs.docker.com/install/) for your system.
-    - Follow the Docker Compose installation [instructions](https://docs.docker.com/compose/install/) for your system. Note: Some docker installations also install docker compose. The installation instructions will tell you if this is the case.
+    - Follow the Docker Compose installation [instructions](https://docs.docker.com/compose/install/) for your system. Note: Some packages install `docker` and `docker-compose` together. The installation instructions will tell you if this is the case.
 
 2. Build the Docker container
 
-    You can build the Docker container for the build environment using Docker Compose as follows from the OSCAL `/build` directory:
+    You can build the Docker container for the build environment using Docker Compose as follows from the OSCAL `./build` directory:
 
     ```
     docker compose build
@@ -39,7 +39,7 @@ A Docker container configuration is provided that establishes the runtime enviro
     docker compose run cli
     ```
 
-    On Windows environments, you may need to execute in a pty that allows for using an interactive shell. In such a case you can run the Docker container as follows:
+    In Windows environments, you may need to execute in a pty that allows for using an interactive shell. In such a case you can run the Docker container as follows:
 
 
     ```
@@ -130,7 +130,7 @@ To build the XML and JSON Schema for the OSCAL models, run the following:
 ./build/ci-cd/generate-schema.sh
 ```
 
-This will generate schemas based on the Metaschema definitions in the metaschema [configuration file][metaschema-config].
+This will generate schemas based on the Metaschema definitions in the metaschema [configuration file][./build/ci-cd/config/metaschema].
 
 ### Building XML-to-JSON and JSON-to-XML Converters for the OSCAL models
 
