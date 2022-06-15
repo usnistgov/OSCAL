@@ -529,8 +529,7 @@
                             <field ref="hash" max-occurs="unbounded">
                                 <group-as name="hashes" in-json="ARRAY"/>
                                 <remarks>
-                                    <p>When appearing as part of a <code>resource/rlink</code>, the hash applies to the resource referenced by the <code>href</code>.
-                                    </p>
+                                    <p>The <code>hash</code> value can be used to confirm that the resource referenced by the <code>href</code> is the same resources that was previously hashed, by retrieving the resource, calculating a hash, and comparing the result to this value.</p>
                                 </remarks>
                             </field>
                         </model>
@@ -884,13 +883,13 @@
     </define-assembly>
 
     <define-field name="hash">
-        <!-- TODO: need a hex binary type. Maybe base64 binary? -->
+        <!-- TODO: need a hex binary type. -->
         <formal-name>Hash</formal-name>
         <description>A representation of a cryptographic digest generated over a resource using a specified hash algorithm.</description>
         <json-value-key>value</json-value-key>
         <define-flag name="algorithm" as-type="string" required="yes">
             <formal-name>Hash algorithm</formal-name>
-            <description>Method by which a hash is derived</description>
+            <description>The digest method by which a hash is derived.</description>
             <constraint>
                 <allowed-values allow-other="yes">
                     <enum value="SHA-224">The SHA-224 algorithm as defined by <a href="https://doi.org/10.6028/NIST.FIPS.180-4">NIST FIPS 180-4</a>.
@@ -912,29 +911,33 @@
                 </allowed-values>
             </constraint>
             <remarks>
-                <p>Any other value used MUST be a value defined in the W3C <a href="http://www.w3.org/TR/xmlsec-algorithms/#digest-method">XML Security Algorithm Cross-Reference</a> Digest Methods (W3C, April 2013) or <a href="https://tools.ietf.org/html/rfc6931#section-2.1.5">RFC 6931 Section 2.1.5</a> New SHA Functions.</p>
+                <p>Any other value used MUST be a value defined in the W3C <a href="https://www.w3.org/TR/xmlsec-algorithms/#digest-method-uris">XML Security Algorithm Cross-Reference</a> Digest Methods (W3C, April 2013) or <a href="https://tools.ietf.org/html/rfc6931#section-2.1.5">RFC 6931 Section 2.1.5</a> New SHA Functions.</p>
             </remarks>
         </define-flag>
-        <remarks>
-            <p>A hash value can be used to authenticate that a referenced resource is the same resources as was pointed to by the author of the reference.</p>
-        </remarks>
+        <constraint>
+            <matches target=".[@algorithm=('SHA-224','SHA3-224')" regex="^[0-9a-fA-F]{28}$"/>
+            <matches target=".[@algorithm=('SHA-256','SHA3-256')" regex="^[0-9a-fA-F]{32}$"/>
+            <matches target=".[@algorithm=('SHA-384','SHA3-384')" regex="^[0-9a-fA-F]{48}$"/>
+            <matches target=".[@algorithm=('SHA-512','SHA3-512')" regex="^[0-9a-fA-F]{64}$"/>
+        </constraint>
     </define-field>
 
     <define-flag name="media-type" as-type="string">
         <formal-name>Media Type</formal-name>
-        <description>Specifies a media type as defined by the Internet Assigned Numbers Authority (IANA) <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">Media Types Registry</a>.
+        <description>A media type provides a label that indicates the nature of a resource. The Internet Assigned Numbers Authority (IANA) <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">Media Types Registry</a> defines a standardized set of media types, which may be used here.
         </description>
         <remarks>
-            <p>The IANA Media Types Registry should be used, but currently there is no official media type for YAML. OSCAL documents should specify <code>application/yaml</code> for general YAML content, or <code>application/oscal+yaml</code> for YAML-based OSCAL content. This approach aligns with use of a structured name suffix, per <a href="https://www.rfc-editor.org/rfc/rfc6838.html#section-4.2.8">RFC 6838 Section 4.2.8</a>.</p>
+            <p>The <code>application/oscal+xml</code>, <code>application/oscal+json</code> or <code>application/oscal+yaml</code> media types SHOULD be used when referencing OSCAL XML, JSON, or YAML resources respectively.</p>
+            <p>**Note: There is no official media type for YAML at this time.** OSCAL documents should specify <code>application/yaml</code> for general YAML content, or <code>application/oscal+yaml</code> for YAML-based OSCAL content. This approach aligns with use of a structured name suffix, per <a href="https://www.rfc-editor.org/rfc/rfc6838.html#section-4.2.8">RFC 6838 Section 4.2.8</a>.</p>
+            <p>Some earlier OSCAL content incorporated the model into the media type. For example: <code>application/oscal.catalog+xml</code>. This practice SHOULD be avoided, since the OSCAL model can be detected by parsing the initial content of the referenced resource.</p>
         </remarks>
     </define-flag>
 
     <define-field name="remarks" as-type="markup-multiline">
         <formal-name>Remarks</formal-name>
-        <description>Additional commentary on the containing object.</description>
+        <description>Additional commentary about the containing object.</description>
         <remarks>
-            <!-- TODO: this is not a dumping ground! -->
-            <p>TODO</p>
+            <p>The <code>remarks</code> field SHOULD not be used to store arbitrary data. Instead, a <code>prop</code> or <code>link</code> should be used to annotate or reference any additional data not formally supported by OSCAL.</p>
         </remarks>
     </define-field>
 
@@ -973,7 +976,7 @@
         <formal-name>OSCAL Version</formal-name>
         <description>The OSCAL model version the document was authored against and will conform to as valid.</description>
         <remarks>
-            <p>Indicates the version of the OSCAL model to which the document conforms, for example <q>1.1.0</q> or <q>1.0.0-M1</q>. This can be used as a hint by a tool to indicate which version of the OSCAL XML or JSON schema to use for validation.</p>
+            <p>Indicates the version of the OSCAL model to which the document conforms, for example <q>1.1.0</q> or <q>1.0.0-M1</q>. That can be used as a hint for a tool indicating which version of the OSCAL XML or JSON schema to use for validation.</p>
             <p>The OSCAL version serves a different purpose from the document version and is used to represent a different concept. If both have the same value, this is coincidental.</p>
         </remarks>
     </define-field>
@@ -986,7 +989,7 @@
 
     <define-field name="telephone-number" scope="local">
         <formal-name>Telephone Number</formal-name>
-        <description>Contact number by telephone.</description>
+        <description>A telephone service number as defined by <a href="https://www.itu.int/rec/T-REC-E.164-201011-I/en">ITU-T E.164</a>.</description>
         <json-value-key>number</json-value-key>
         <define-flag name="type">
             <formal-name>type flag</formal-name>
@@ -999,6 +1002,13 @@
                 </allowed-values>
             </constraint>
         </define-flag>
+        <constraint>
+            <matches level="WARNING" target="." regex="^[0-9]{3}[0-9]{1,12}$">
+                <remarks>
+                    <p>Providing a country code provides an international means to interpret the phone number.</p>
+                </remarks>
+            </matches>
+        </constraint>
     </define-field>
 
     <define-assembly name="address" scope="local">
