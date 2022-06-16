@@ -21,7 +21,7 @@ jobs:
     steps:
       - uses: alex-page/github-project-automation-plus@bb266ff4dde9242060e2d5418e120a133586d488 #current tag: v0.8.1
         with:
-          project: Triage Test Board
+          project: Issue Triage
           column: Done
           action: delete
           repo-token: ${{ secrets.COMMIT_TOKEN }}
