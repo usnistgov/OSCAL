@@ -39,7 +39,7 @@ A Docker container configuration is provided that establishes the runtime enviro
     docker compose run cli
     ```
 
-    In Windows environments, you may need to execute in a pty that allows for using an interactive shell. In such a case you can run the Docker container as follows:
+    In Windows environments, you may need to execute in a pseudoterminal (pty) that allows for using an interactive shell. In such a case, you can run the Docker container with [`winpty`](https://github.com/rprichard/winpty) as follows:
 
 
     ```
@@ -72,7 +72,7 @@ The following steps are known to work on [Ubuntu](https://ubuntu.com/) (tested i
     hugo version
     ```
 
-1. Install Node.js modules
+1. Install Node.js modules and set path 
 
     To install the supported Node.js modules pinned as a dependency in the repository, run the following:
 
@@ -130,7 +130,7 @@ To build the XML and JSON Schema for the OSCAL models, run the following:
 ./build/ci-cd/generate-schema.sh
 ```
 
-This will generate schemas based on the Metaschema definitions in the metaschema [configuration file][./build/ci-cd/config/metaschema].
+This will generate schemas based on the Metaschema definitions in the Metaschema [configuration file](./ci-cd/config/metaschema).
 
 ### Building XML-to-JSON and JSON-to-XML Converters for the OSCAL models
 
@@ -140,7 +140,7 @@ To build the XML-to-JSON and JSON-to-XML Converters for the OSCAL models, run th
 ./build/ci-cd/generate-content-converters.sh
 ```
 
-This will generate converters based on the definitions in the metaschema [configuration file][metaschema-config].
+This will generate converters based on the definitions in the Metaschema [configuration file](./ci-cd/config/metaschema).
 
 ### Building Website Documentation
 
