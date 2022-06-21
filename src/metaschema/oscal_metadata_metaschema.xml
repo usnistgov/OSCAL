@@ -388,6 +388,13 @@
                 <enum value="predecessor-version">This link identifies a resource containing the predecessor version in the version history. Defined by  <a href="https://tools.ietf.org/html/rfc5829">RFC 5829</a>.</enum>
                 <enum value="successor-version">This link identifies a resource containing the predecessor version in the version history. Defined by <a href="https://tools.ietf.org/html/rfc5829">RFC 5829</a>.</enum>
             </allowed-values>
+            <is-unique target="document-id">
+                <key-field target="@scheme"/>
+                <key-field target="."/>
+                <remarks>
+                    <p>The combination of <code>scheme</code> and the field value must be unique.</p>
+                </remarks>
+            </is-unique>
         </constraint>
         <remarks>
             <p>All OSCAL documents use the same metadata structure, that provides a consistent way of expressing OSCAL document metadata across all OSCAL models. The metadata section also includes declarations of individual objects (i.e., roles, location, parties) that may be referenced within and across linked OSCAL documents.</p>
@@ -1063,10 +1070,8 @@
     <define-field name="document-id" scope="local">
         <formal-name>Document Identifier</formal-name>
         <!-- identifier declaration -->
-        <description>A document identifier qualified by an identifier <code>scheme</code>. A document identifier provides a <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with a <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that is used for a group of documents that are to be treated as different versions of the same document. If this element does not appear, or if the value of this element is empty, the value of "document-id" is equal to the value of the "uuid" flag of the top-level root element.</description>
+        <description>A document identifier qualified by an identifier <code>scheme</code>. A document identifier provides a <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with a <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that is used for a group of documents that are to be treated as different versions of the same document. If this element does not appear, the value of the "uuid" flag of the top-level root field can serve as a document identifier.</description>
         <json-value-key>identifier</json-value-key>
-        <!-- CHANGE: "type" to "scheme" -->
-        <!-- CHANGE: "Required" to "no" -->
         <define-flag name="scheme" as-type="uri" required="no">
             <formal-name>Document Identification Scheme</formal-name>
             <description>Qualifies the kind of document identifier using a URI. If the scheme is not provided the value of the element will be interpreted as a string of characters. </description>
@@ -1078,15 +1083,8 @@
         </define-flag>
         <remarks>
             <p>A document identifier provides an additional data point for identifying a document that can be assigned by a publisher or organization for purposes in a wider system, such as a digital object identifier (DOI) or a local content management system identifier.</p>
-            <p>Use of a document identifier allows for document creators to associate sets of documents that are related in some way.</p>
-            <p>An OSCAL document always has an implicit document identifier provided by the document's UUID. Having a default UUID-based identifier ensures all documents can be minimally identified when other document identifiers are omitted.</p>
+            <p>Use of a document identifier allows for document creators to associate sets of documents that are related in some way by the same <code>document-id</code>.</p>
+            <p>An OSCAL document always has an implicit document identifier provided by the document's UUID, defined by the <code>uuid</code> on the top-level object. Having a default UUID-based identifier ensures all documents can be minimally identified when other document identifiers are not provided.</p>
         </remarks>
     </define-field>
-
-
-    <!--   <define-field name="description" as-type="markup-multiline">
-      <formal-name>Description</formal-name>
-      <description>A description supporting the parent item.</description>
-   </define-field>
--->
 </METASCHEMA>
