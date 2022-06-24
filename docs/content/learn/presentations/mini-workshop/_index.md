@@ -4,7 +4,7 @@ heading: Open Security Controls Assessment Language (OSCAL) Mini Workshop Series
 toc:
   enabled: true
 aliases:
-- /learn/presentations/oscal-mini-workshop-series/
+  - /learn/presentations/oscal-mini-workshop-series/
 ---
 
 # OSCAL Mini Workshop Series
@@ -33,7 +33,7 @@ We encourage proposals from a diverse array of organizations and individuals wit
 
 Please find below the calendar of proposed dates. Before submitting a proposal, please consult the calendar and indicate the preferred date with your submission and the duration of your presentation (30 min or 60 min, including Q&A). We will do our best to update the calendar as soon as a submission is approved.
 
-Submit your proposal via email to [oscal@nist.gov](mailto:oscal@nist.gov), with the subject line: “OSCAL Workshop - [Date: yyyy/mm/dd]”, where the “Date” is the selected date from the calendar below. Please include in your submission a preassessment of the OSCAL knowledge level the audience will need using a 4-levels scale with level one (L1/bronze) being equivalent to novice and level four (L4/platinum) being an OSCAL expert. 
+Submit your proposal via email to [oscal@nist.gov](mailto:oscal@nist.gov), with the subject line: “OSCAL Workshop - [Date: yyyy/mm/dd]”, where the “Date” is the selected date from the calendar below. Please include in your submission a pre-assessment of the OSCAL knowledge level the audience will need using a 4-levels scale with level one (L1/bronze) being equivalent to novice and level four (L4/platinum) being an OSCAL expert. 
 
 ## Workshops Calendar
 
