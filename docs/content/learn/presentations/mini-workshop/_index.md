@@ -1,8 +1,10 @@
 ---
-title: OSCAL Mini Workshops Series
-heading: 3rd Open Security Controls Assessment Language (OSCAL) Workshop
+title: OSCAL Mini Workshop Series
+heading: Open Security Controls Assessment Language (OSCAL) Mini Workshop Series
 toc:
   enabled: true
+aliases:
+- /learn/presentations/oscal-mini-workshop-series/
 ---
 
 # OSCAL Mini Workshop Series
@@ -23,9 +25,9 @@ Who should attend:
 
 ## Call for Proposals
 
-NIST OSCAL Mini Workshop program committee is seeking timely, topical, and thought-provoking **technical** **presentations or demonstrations** highlighting OSCAL editorial tools, OSCAL-based security assessment automation processes, and Governance Risk and Compliance (GRC) tools supporting OSCAL formats for integration into such processes. 
+NIST OSCAL Mini Workshop program committee is seeking timely, topical, and thought-provoking **technical presentations or demonstrations** highlighting OSCAL editorial tools, OSCAL-based security assessment automation processes, and Governance Risk and Compliance (GRC) tools supporting OSCAL formats for integration into such processes. 
 
-**NIST is not endorsing any of the OSCAL tools or services presented and presentation or demos promoting such tools or services as opposed to focusing on the OSCAL-related technical aspects will not be permitted.**
+**NIST does not endorse any of the OSCAL tools or services presented. Presentations or demos promoting such tools or services, as opposed to focusing on the OSCAL-related technical aspects, will not be permitted.**
 
 We encourage proposals from a diverse array of organizations and individuals with different perspectives, from the public and private sectors, international bodies, assessment and authorization (A&A), or certification and authorization (C&A) providers.
 
@@ -39,12 +41,9 @@ Submit your proposal via email to [oscal@nist.gov](mailto:oscal@nist.gov), with 
 | ---- | ---- | ---------------------| ----------------------- | ---- | --------------- |
 | 2022/05/18 | 11:00AM-12:00PM EDT | 1.  Compliance as Code for Big Bang Risk Management Framework (RMF) Control Mapping to Accelerate Department of Defense (DoD) Authorization to Operate (ATO) | Maj Camdon Cady, Chief Operating Officer, Platform One, US Airforce & Tom Runyon, Defense Unicorns   | presentation |  L2 |
 |  |  | 2. OSCAL Catalog Authoring Tool (CAT) | Dmitry Cousin, NIST |demo |  L1 | 
-|  2022/06/15 |  11:00AM-12:00PM EDT  | 1. Trestle - compliance as codeorchestrator and automation workflow | Dr. Anca Sailer, IBM | presentation | L3 |  
-|  |  | 2. |  |  |  |  
-|  2022/07/13 |  11:00AM-12:00PM EDT  | 1. |  |  |  |   
-|  |  | 2. |  |  |  |  
-|  2022/08/10 |  11:00AM-12:00PM EDT  | 1. |  |  |  |  
-|  |  | 2. |  |  |  |  
+|  2022/06/15 |  11:00AM-12:00PM EDT  | Trestle - compliance as code orchestrator and automation workflow  | Dr. Anca Sailer, Vikas Agarwal, and Lou DeGenaro, IBM| [presentation](trestle-agile-authoring.pdf) & [demo](trestle-agile-authoring-demo.pdf) | L3 |   
+|  2022/07/13 |  11:00AM-12:00PM EDT  | OSCAL Implementation: Early Lessons Learned | Matthew Donkin, AWS | presentation | L2 |    
+|  2022/08/10 |  11:00AM-12:00PM EDT  | Extreme Automation with OSCAL - Exercising the Full OSCAL Stack in a Next Generation GRC | Travis Howerton, RegScale | presentation & demo | L1-L3 |    
 |  2022/09/07 |  11:00AM-12:00PM EDT  | 1. |  |  |  |  
 |  |  | 2. |  |  |  |  
 |  2022/10/05 |  11:00AM-12:00PM EDT  | 1. |  |  |  |  
