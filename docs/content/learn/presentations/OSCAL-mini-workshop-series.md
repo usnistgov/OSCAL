@@ -1,6 +1,6 @@
 ---
 title: OSCAL Mini Workshops Series
-heading: 3rd Open Security Controls Assessment Language (OSCAL) Workshop
+heading: Open Security Controls Assessment Language (OSCAL) Mini Workshop Series
 toc:
   enabled: true
 ---
