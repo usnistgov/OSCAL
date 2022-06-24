@@ -10,7 +10,7 @@ sidenav:
 
 ---
 
-The following outline is a representation of the [XML format](https://github.com/usnistgov/OSCAL/blob/develop/xml/schema/oscal_profile_schema.xsd) for this [model](/concepts/layer/control/profile/). For each element or attribute, the name links to the corresponding entry in the [XML Format Reference](../xml-reference/). The cardinality and data type are also provided for each element or attribute where appropriate.
+The following outline is a representation of the [XML format](https://github.com/usnistgov/OSCAL/blob/release-1.0/xml/schema/oscal_profile_schema.xsd) for this [model](/concepts/layer/control/profile/). For each element or attribute, the name links to the corresponding entry in the [XML Format Reference](../xml-reference/). The cardinality and data type are also provided for each element or attribute where appropriate.
 
 <!-- DO NOT REMOVE. Generated text below -->{{< rawhtml >}}
 <div xmlns="http://www.w3.org/1999/xhtml" class="xml-outline">
@@ -579,7 +579,7 @@ The following outline is a representation of the [XML format](https://github.com
                      </div>
                      <div class="OM-choice">
                         <details class="OM-entry">
-                           <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/profile/merge/custom">custom</a></span>&gt;<span class="show-closed"> … <span class="nobr">&lt;/custom&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[1]</span></span></summary>
+                           <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/profile/merge/custom">custom</a></span>&gt;<span class="show-closed"> … <span class="nobr">&lt;/custom&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 or 1]</span></span></summary>
                            <div class="model-container">
                               <details class="OM-entry">
                                  <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/profile/merge/custom/group">group</a></span> <span class="nobr" id="/profile/merge/custom/group/@id"><a class="OM-name" href="../xml-reference/#/profile/merge/custom/group/@id">id</a>="<span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span>"</span> <span class="nobr" id="/profile/merge/custom/group/@class"><a class="OM-name" href="../xml-reference/#/profile/merge/custom/group/@class">class</a>="<span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span>"</span>&gt;<span class="show-closed"> … <span class="nobr">&lt;/group&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
