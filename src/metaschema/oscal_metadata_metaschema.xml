@@ -467,11 +467,11 @@
     <!-- ############################################### -->
     <define-assembly name="back-matter">
         <formal-name>Back matter</formal-name>
-        <description>A collection of resources, which may be included directly or by reference.</description>
+        <description>A collection of resources that may be referenced from within the OSCAL document instance.</description>
         <model>
             <define-assembly name="resource" max-occurs="unbounded">
                 <formal-name>Resource</formal-name>
-                <description>A resource associated with content in the containing document. A resource may be directly included in the document base64 encoded or may point to one or more equivalent internet resources.</description>
+                <description>A resource associated with content in the containing document instance. A resource may be directly included in the document using base64 encoding or may point to one or more equivalent internet resources.</description>
                 <group-as name="resources" in-json="ARRAY"/>
                 <define-flag name="uuid" as-type="uuid" required="yes">
                     <formal-name>Resource Universally Unique Identifier</formal-name>
@@ -481,23 +481,21 @@
                 <model>
                     <define-field name="title" as-type="markup-line">
                         <formal-name>Resource Title</formal-name>
-                        <description>A name given to the resource, which may be used by a tool for display and navigation.</description>
+                        <description>An optional name given to the resource, which may be used by a tool for display and navigation.</description>
                     </define-field>
                     <define-field name="description" in-xml="WITH_WRAPPER" as-type="markup-multiline">
-                        <!-- CHANGED from "desc" to "description" -->
                         <formal-name>Resource Description</formal-name>
-                        <description>A short summary of the resource used to indicate the purpose of the resource.</description>
+                        <description>An optional short summary of the resource used to indicate the purpose of the resource.</description>
                     </define-field>
                     <assembly ref="property" max-occurs="unbounded">
                         <group-as name="props" in-json="ARRAY"/>
                     </assembly>
                     <field ref="document-id" max-occurs="unbounded">
-                        <!-- CHANGED "doc-id" to "document-id" -->
                         <group-as name="document-ids" in-json="ARRAY"/>
                     </field>
                     <define-assembly name="citation">
                         <formal-name>Citation</formal-name>
-                        <description>A citation consisting of end note text and optional structured bibliographic data.</description>
+                        <description>An optional citation consisting of end note text using structured markup.</description>
                         <model>
                             <define-field name="text" as-type="markup-line" min-occurs="1">
                                 <formal-name>Citation Text</formal-name>
@@ -510,46 +508,51 @@
                                 <group-as name="links" in-json="ARRAY"/>
                             </assembly>
                             
-<!--                            <define-assembly name="biblio">
+<!--
+                            <define-assembly name="biblio">
                                 <formal-name>Bibliographic Definition</formal-name>
                                 <description>A container for structured bibliographic information. The model of this information is undefined by OSCAL.</description>
                                 <model>
                                     <any/>
                                 </model>
                             </define-assembly>
--->                        </model>
+-->
+                            </model>
+<!--
                         <remarks>
                             <p>The <code>text</code> is used to define the endnote text, without any required bibliographic structure. If structured bibliographic data is needed, then the <code>biblio</code> can be used for this purpose.</p>
                             <p>A <code>biblio</code> can be used to capture a structured bibliographical citation in an appropriate format.</p>
                         </remarks>
+-->
                     </define-assembly>
                     <define-assembly name="rlink" max-occurs="unbounded">
                         <formal-name>Resource link</formal-name>
-                        <description>A pointer to an external resource with an optional hash for verification and change detection.</description>
+                        <description>A URL-based pointer to an external resource with an optional hash for verification and change detection.</description>
                         <group-as name="rlinks" in-json="ARRAY"/>
                         <define-flag name="href" as-type="uri-reference" required="yes">
                             <formal-name>Hypertext Reference</formal-name>
-                            <description>A resolvable URI reference to a resource.</description>
+                            <description>A resolvable URL pointing to the referenced resource.</description>
                         </define-flag>
                         <flag ref="media-type"/>
                         <model>
                             <field ref="hash" max-occurs="unbounded">
+                                <description>A hash of the resource identified by <code>href</code>, which can be used to verify the resource was not changed since it was hashed.</description>
                                 <group-as name="hashes" in-json="ARRAY"/>
                                 <remarks>
-                                    <p>The <code>hash</code> value can be used to confirm that the resource referenced by the <code>href</code> is the same resources that was previously hashed, by retrieving the resource, calculating a hash, and comparing the result to this value.</p>
+                                    <p>The <code>hash</code> value can be used to confirm that the resource referenced by the <code>href</code> is the same resources that was hashed by retrieving the resource, calculating a hash, and comparing the result to this value.</p>
                                 </remarks>
                             </field>
                         </model>
                         <remarks>
-                            <p>This construct is different from <code>link</code>, which makes no provision for a hash or formal title.</p>
-                            <p>Multiple <code>rlink</code> can be included for a resource. In such a case, all provided <code>rlink</code> items are intended to be equivalent in content, but may differ in structure. A <code>media-type</code> is used to identify the format of a given rlink, and can be used to differentiate a items in a collection of rlinks. The <code>media-type</code> also provides a hint to the OSCAL document consumer about the structure of the resource referenced by the <code>rlink</code>.
+                            <p>Multiple <code>rlink</code> objects can be included for a resource. In such a case, all provided <code>rlink</code> items are intended to be equivalent in content, but may differ in structure or format.</p>
+                            <p>A <code>media-type</code> is used to identify the format of a given rlink, and can be used to differentiate items in a collection of rlinks. The <code>media-type</code> provides a hint to the OSCAL document consumer about the structure of the resource referenced by the <code>rlink</code>.
                             </p>
                         </remarks>
                     </define-assembly>
 
                     <define-field name="base64" as-type="base64Binary">
                         <formal-name>Base64</formal-name>
-                        <description>The Base64 alphabet in RFC 2045 - aligned with XSD.</description>
+                        <description>A resource encoded using the Base64 alphabet defined by <a href="https://www.rfc-editor.org/rfc/rfc2045.html">RFC 2045</a>.</description>
                         <json-value-key>value</json-value-key>
                         <define-flag name="filename" as-type="uri-reference">
                             <formal-name>File Name</formal-name>
@@ -562,13 +565,12 @@
                 </model>
                 <constraint>
                     <allowed-values target="prop/@name">
-                        <enum value="type">Identifies the type of resource represented.</enum>
+                        <enum value="type">Identifies the type of resource represented. The most specific appropriate type value SHOULD be used.</enum>
                         <enum value="version">For resources representing a published document, this represents the version number of that document.</enum>
                         <enum value="published">For resources representing a published document, this represents the publication date of that document.</enum>
                     </allowed-values>
-                    <matches target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='published']/@value" datatype="dateTime"/>
-                    <!-- CHANGED: Added enumerated choices for the resource type property -->
-                    <allowed-values target="prop[@name='type']/@value" allow-other="yes">
+                    <matches target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='published']/@value" datatype="dateTime-with-timezone"/>
+                    <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal') and @name='type']/@value">
                         <!-- More general. Applies across all models. -->
                         <enum value="logo">Indicates the resource is an organization's logo.</enum>
                         <enum value="image">Indicates the resource represents an image.</enum>
@@ -589,7 +591,7 @@
                         <enum value="plan">Indicates the resource represents a plan.</enum>
                         <!-- More related to assessment layers. -->
                         <enum value="artifact">Indicates the resource represents an artifact, such as may be reviewed by an assessor.</enum>
-                        <enum value="evidence">Indicates the resource represents evidence, such as to support an assessment findiing.</enum>
+                        <enum value="evidence">Indicates the resource represents evidence, such as to support an assessment finding.</enum>
                         <enum value="tool-output">Indicates the resource represents output from a tool.</enum>
                         <enum value="raw-data">Indicates the resource represents machine data, which may require a tool or analysis for interpretation or presentation.</enum>
                         <enum value="interview-notes">Indicates the resource represents notes from an interview, such as may be collected during an assessment.</enum>
@@ -597,28 +599,25 @@
                         <enum value="report">Indicates the resource is a report.</enum>
                         <enum value="agreement">Indicates the resource is a formal agreement between two or more parties.</enum>
                     </allowed-values>
-                    <has-cardinality level="WARNING" target="rlink|base64" min-occurs="1"/>
+                    <has-cardinality level="WARNING" target="rlink|base64" min-occurs="1">
+                        <description>A resource should provide at least an <code>rlink</code> or <code>base64</code> object.</description>
+                    </has-cardinality>
                     <is-unique id="unique-resource-rlink-href" target="rlink">
+                        <description>Ensure that each rlink item references a unique resource.</description>
                         <key-field target="@href"/>
-                        <remarks>
-                            <p>Ensures that each rlink item references a unique resource.</p>
-                        </remarks>
+                        <key-field target="@media-type"/>
                     </is-unique>
                     <is-unique id="unique-resource-base64-filename" target="base64">
+                        <description>Ensure that all base64 resources have a unique <code>filename</code>.</description>
                         <key-field target="@filename"/>
-                        <remarks>
-                            <p>Ensures that all base64 resources have a unique <code>filename</code>.
-                            </p>
-                        </remarks>
                     </is-unique>
                     <expect target=".[citation]" test="title">
-                        <remarks>
-                            <p>A <code>title</code> is required when a citation is provided.</p>
-                        </remarks>
+                        <description>A <code>title</code> is required when a <code>citation</code> is provided.</description>
                     </expect>
                 </constraint>
                 <remarks>
-                    <p>A resource can be used in two ways. 1) it may point to an specific retrievable network resource using a <code>rlink</code>, or 2) it may be included as an attachment using a <code>base64</code>. A resource may contain multiple <code>rlink</code> and <code>base64</code> entries that represent alternative download locations (rlink) and attachments (base64) for the same resource. Both rlink and base64 allow for a <code>media-type</code> to be specified, which is used to distinguish between different representations of the same resource (e.g., Microsoft Word, PDF). When multiple <code>rlink</code> and <code>base64</code> items are included for a given resource, all items must contain equivalent information. This allows the document consumer to choose a preferred item to process based on a the selected item's <code>media-type</code>. This is extremely important when the items represent OSCAL content that is represented in alternate formats (i.e., XML, JSON, YAML), allowing the same OSCAL data to be processed from any of the available formats indicated by the items.</p>
+                    <p>A resource can be used in two ways. 1) it may point to an specific retrievable network resource using a <code>rlink</code>, or 2) it may be included as an attachment using a <code>base64</code>. A resource may contain multiple <code>rlink</code> and <code>base64</code> entries that represent alternative download locations (rlink) and attachments (base64) for the same resource.</p>
+                    <p>Both rlink and base64 allow for a <code>media-type</code> to be specified, which is used to distinguish between different representations of the same resource (e.g., Microsoft Word, PDF). When multiple <code>rlink</code> and <code>base64</code> items are included for a given resource, all items must contain equivalent information. This allows the document consumer to choose a preferred item to process based on a the selected item's <code>media-type</code>. This is extremely important when the items represent OSCAL content that is represented in alternate formats (i.e., XML, JSON, YAML), allowing the same OSCAL data to be processed from any of the available formats indicated by the items.</p>
                     <p>When a resource includes a citation, then the <code>title</code> and <code>citation</code> properties must both be included.</p>
                 </remarks>
             </define-assembly>
@@ -629,7 +628,7 @@
             </index>
         </constraint>
         <remarks>
-            <p>Provides a collection of identified <code>resource</code> objects that can be referenced by a <code>link</code> with a <code>rel</code> value of "reference" and an <code>href</code> value that is a fragment "#" followed by a reference to a reference identifier. Other specialized link "rel" values also use this pattern when indicated in that context of use.</p>
+            <p>Provides a collection of identified <code>resource</code> objects that can be referenced by a <code>link</code> with a <code>rel</code> value of "reference" and an <code>href</code> value that is a fragment "#" followed by a reference to a reference's <code>uuid</code>. Other specialized link "rel" values also use this pattern when indicated in that context of use.</p>
         </remarks>
         <example>
             <!-- TODO: revisit this example -->
@@ -639,10 +638,10 @@
             </remarks>
             <o:profile xmlns:o="http://csrc.nist.gov/ns/oscal/example">
                 <o:metadata>
-                    <o:link rel="citation" href="#resource1">My citation</o:link>
+                    <o:link rel="citation" href="#a53da8f9-4182-4f11-9d1f-50f08ac2117b">My citation</o:link>
                 </o:metadata>
                 <o:back-matter>
-                    <o:resource id="resource1">
+                    <o:resource uuid="a53da8f9-4182-4f11-9d1f-50f08ac2117b">
                         <o:rlink href="https://example.org/some-resource"/>
                     </o:resource>
                 </o:back-matter>
@@ -655,13 +654,15 @@
     <!-- ##################### -->
     <define-assembly name="property">
         <formal-name>Property</formal-name>
-        <description>An attribute, characteristic, or quality of the containing object expressed as a namespace-qualified name/value pair.</description>
+        <description>An attribute, characteristic, or quality of the containing object expressed as a namespace qualified name/value pair.</description>
         <use-name>prop</use-name>
         <define-flag name="name" as-type="token" required="yes">
             <formal-name>Property Name</formal-name>
-            <description>A textual label that uniquely identifies a specific attribute, characteristic, or quality of the property's containing object.</description>
+            <description>A textual label, within a namespace, that uniquely identifies a specific attribute, characteristic, or quality of the property's containing object.</description>
             <constraint>
-                <allowed-values allow-other="yes">
+                
+                <allowed-values>
+                    <!-- TODO: make extensible="model" -->
                     <enum value="marking">A label or descriptor that is tied to a sensitivity or classification marking system. An optional class can be used to define the specific marking system used for the associated value.</enum>
                 </allowed-values>
             </constraint>
@@ -671,9 +672,7 @@
             <!-- identifier declaration -->
             <description>A <a href="/concepts/identifier-use/#machine-oriented">machine-oriented</a>, <a href="/concepts/identifier-use/#globally-unique">globally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined property elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. This UUID should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
         </define-flag>
-        <!-- CHANGED: data type to uri -->
         <define-flag name="ns" as-type="uri">
-            <!-- CHANGED: data type to uri -->
             <formal-name>Property Namespace</formal-name>
             <description>A namespace qualifying the property's name. This allows different organizations to associate distinct semantics with the same name.</description>
             <remarks>
@@ -705,7 +704,6 @@
             <field ref="remarks" in-xml="WITH_WRAPPER"/>
         </model>
         <remarks>
-            <!-- TODO: discuss the optional namespace -->
             <p>Properties permit the deployment and management of arbitrary controlled values, within OSCAL objects. A property can be included for any purpose useful to an application or implementation. Typically, properties will be used to sort, filter, select, order, and arrange OSCAL content objects, to relate OSCAL objects to one another, or to associate an OSCAL object to class hierarchies, taxonomies, or external authorities. Thus, the lexical composition of properties may be constrained by external processes to ensure consistency.</p>
             <p>Property allows for associated remarks that describe why the specific property value was applied to the containing object, or the significance of the value in the context of the containing object.</p>
         </remarks>
@@ -713,7 +711,7 @@
 
     <define-assembly name="link">
         <formal-name>Link</formal-name>
-        <description>A reference to a local or remote resource, in a specific relation to the containing object.</description>
+        <description>A reference to a local or remote resource, that has a specific relation to the containing object.</description>
         <define-flag name="href" as-type="uri-reference" required="yes">
             <formal-name>Hypertext Reference</formal-name>
             <description>A resolvable URL reference to a resource.</description>
@@ -746,6 +744,12 @@
             </define-field>
         </model>
         <constraint>
+            <expect target=".[starts-with(@href,'#')]" test="not(exists(@media-type))">
+                <description>A local reference SHOULD NOT have a media-type.</description>
+                <remarks>
+                    <p>Since both <code>link</code> and <code>back-matter/resource</code> both allow specification of a <code>media-type</code>, the <code>media-type</code> on <code>link</code> may conflict with the any <code>media-type</code> entries on a resource's <code>rlink</code> or <code>base64</code> objects. This constraint prevents this from occurring.</p>
+                </remarks>
+            </expect>
             <matches target=".[@rel=('reference') and starts-with(@href,'#')]/@href" datatype="uri-reference"/>
             <index-has-key name="index-back-matter-resource" target=".[@rel=('reference') and starts-with(@href,'#')]">
                 <key-field target="@href" pattern="#(.*)"/>

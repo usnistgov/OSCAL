@@ -18,21 +18,23 @@
         <!-- ######################################## -->
         <define-assembly name="part">
                 <formal-name>Part</formal-name>
-                <description>A partition of a control's definition or a child of another part.</description>
+                <description>An annotated, markup-based textual element of a control's or catalog group's definition, or a child of another part.</description>
                 <define-flag name="id" as-type="token">
                         <!-- This is an id because the idenfier is intended to be human-readable. -->
                         <formal-name>Part Identifier</formal-name>
                         <!-- Identifier Declaration -->
                         <description>A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a>, <a href="/concepts/identifier-use/#locally-unique">locally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined part elsewhere in <a href="/concepts/identifier-use/#scope">this or other OSCAL instances</a>. When referenced from another OSCAL instance, this identifier must be referenced in the context of the containing resource (e.g., import-profile). This id should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same subject across revisions of the document.</description>
+                        <remarks>
+                                <p>While a part is not required to have an id, it is often desirable for an identifier to be provided, which allows the part to be referenced elsewhere in OSCAL document instances. For this reason, it is RECOMMENDED to provide a part identifier.</p>
+                        </remarks>
                 </define-flag>
                 <define-flag name="name" as-type="token" required="yes">
                         <formal-name>Part Name</formal-name>
-                        <description>A textual label that uniquely identifies the part's semantic type.</description>
+                        <description>A textual label that uniquely identifies the part's semantic type, which exists in a value space qualified by the <code>ns</code>.</description>
                 </define-flag>
                 <define-flag name="ns" as-type="uri">
-                        <!-- CHANGED: data type to uri -->
                         <formal-name>Part Namespace</formal-name>
-                        <description>A namespace qualifying the part's name. This allows different organizations to associate distinct semantics with the same name.</description>
+                        <description>An optional namespace qualifying the part's <code>name</code>. This allows different organizations to associate distinct semantics with the same name.</description>
                         <remarks>
                                 <p>Provides a means to segment the value space for the <code>name</code>, so that different organizations and individuals can assert control over the allowed names and associated text used in a part. This allows the semantics associated with a given name to be defined on an organization-by-organization basis.</p>
                                 <p>An organization MUST use a URI that they have control over. e.g., a domain registered to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
@@ -41,7 +43,7 @@
                 </define-flag>
                 <define-flag name="class" as-type="token">
                         <formal-name>Part Class</formal-name>
-                        <description>A textual label that provides a sub-type or characterization of the part's <code>name</code>. This can be used to further distinguish or discriminate between the semantics of multiple parts of the same control with the same <code>name</code> and <code>ns</code>.
+                        <description>An optional textual label that provides a sub-type or characterization of the part's <code>name</code>. This can be used to further distinguish or discriminate between the semantics of multiple parts of the same control with the same <code>name</code> and <code>ns</code>.
                         </description>
                         <remarks>
                                 <p>A <code>class</code> can be used in validation rules to express extra constraints over named items of a specific <code>class</code> value.</p>
@@ -51,7 +53,7 @@
                 <model>
                         <define-field name="title" as-type="markup-line">
                                 <formal-name>Part Title</formal-name>
-                                <description>A name given to the part, which may be used by a tool for display and navigation.</description>
+                                <description>An optional name given to the part, which may be used by a tool for display and navigation.</description>
                         </define-field>
                         <assembly ref="property" max-occurs="unbounded">
                                 <group-as name="props" in-json="ARRAY"/>
@@ -69,7 +71,6 @@
                         <!-- <any/> -->
                 </model>
                 <constraint>
-                        <!-- CHANGE: added allowed values for a property/@name -->
                         <allowed-values target="prop[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
             &allowed-values-control-group-property-name;
                         </allowed-values>
@@ -102,6 +103,7 @@
         <!-- ############################################# -->
         <!-- # Parameter Assembly and related constructs # -->
         <!-- ############################################# -->
+        <!-- continue here -->
         <define-assembly name="parameter">
                 <formal-name>Parameter</formal-name>
                 <description>Parameters provide a mechanism for the dynamic assignment of value(s) in a control.</description>

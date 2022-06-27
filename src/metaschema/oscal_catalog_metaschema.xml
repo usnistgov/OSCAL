@@ -22,7 +22,7 @@
       <import href="oscal_mapping-common_metaschema.xml"/>
       <define-assembly name="catalog">
             <formal-name>Catalog</formal-name>
-            <description>A collection of controls.</description>
+            <description>A structured, <a href="https://pages.nist.gov/OSCAL/concepts/terminology/#catalog">organized collection</a> of control information.</description>
             <root-name>catalog</root-name>
             <define-flag name="uuid" as-type="uuid" required="yes">
                   <formal-name>Catalog Universally Unique Identifier</formal-name>
@@ -32,7 +32,6 @@
             <model>
                   <assembly ref="metadata" min-occurs="1"/>
                   <assembly ref="parameter" max-occurs="unbounded">
-                        <!-- CHANGED: "parameters" to "params" -->
                         <group-as name="params" in-json="ARRAY"/>
                   </assembly>
                   <assembly ref="control" max-occurs="unbounded">
@@ -52,19 +51,34 @@
                         <enum value="resolution-tool">The tool used to produce a resolved profile.</enum>
                   </allowed-values>
                   <allowed-values target="metadata/link/@rel">
-                        <enum value="source-profile">The tool used to produce a resolved profile.</enum>
+                        <enum value="source-profile">The profile from which a tailored catalog was produced using <a href="https://pages.nist.gov/OSCAL/concepts/processing/profile-resolution/">profile resolution</a>.</enum>
                   </allowed-values>
+                  <index name="catalog-parts" target="//part" >
+                        <key-field target="@id"/>
+                  </index>
+                  <index name="catalog-props" target="//prop" >
+                        <key-field target="@uuid"/>
+                  </index>
+                  <index name="catalog-controls" target="//control" >
+                        <key-field target="@id"/>
+                  </index>
+                  <index name="catalog-params" target="//param" >
+                        <key-field target="@id"/>
+                  </index>
+                  <index name="catalog-groups" target="//group" >
+                        <key-field target="@id"/>
+                  </index>
             </constraint>
             <remarks>
                   <p>Catalogs may use one or more <code>group</code> objects to subdivide the control contents of a catalog.</p>
-                  <p>An OSCAL catalog model provides a structured representation of control information.</p>
             </remarks>
             <example>
-                  <description>A small catalog with a single control</description>
-                  <catalog xmlns="http://csrc.nist.gov/ns/oscal/example" id="simple-example" model-version="0.99">
+                  <description>A small catalog with a single control.</description>
+                  <catalog xmlns="http://csrc.nist.gov/ns/oscal/example" uuid="35566cd4-7331-43ba-b023-988c38d62673">
                         <title>A Miniature Catalog</title>
                         <control id="single">
                               <title>A Single Control</title>
+                              <!-- TODO: this is not a complete valid example. Fix this. -->
                         </control>
                   </catalog>
             </example>
@@ -140,7 +154,7 @@
       </define-assembly>
       <define-assembly name="control">
             <formal-name>Control</formal-name>
-            <description>A structured information object representing a security or privacy control. Each security or privacy control within the Catalog is defined by a distinct control instance.</description>
+            <description>A <a href="https://pages.nist.gov/OSCAL/concepts/terminology/#control">structured object</a> representing a requirement or guideline, which when implemented will reduce an aspect of risk related to an information system and its information. Each security or privacy control within the catalog is defined by a distinct control instance.</description>
             <define-flag name="id" as-type="token" required="yes">
                   <!-- This is an id because the idenfier is managed externally. -->
                   <formal-name>Control Identifier</formal-name>
@@ -213,7 +227,10 @@
                         <enum value="incorporated-into">The link identifies other control content where this control content is now addressed.</enum>
                         <enum value="moved-to">The containing control definition was moved to the referenced control.</enum>
                   </allowed-values>
-                  
+                  <!-- TODO: add expect constraint to check for controls that reference themselves -->
+                  <index-has-key name="catalog-controls" target="link[@rel=('related','required','incorporated-into','moved-to') and starts-with(@href,'#')]">
+                        <key-field target="@href" pattern="#(.*)"/>
+                  </index-has-key>
                   <allowed-values target="part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
                         <enum value="overview">An introduction to a control or a group of controls.</enum>
                         <enum value="statement">A set of control implementation requirements.</enum>
