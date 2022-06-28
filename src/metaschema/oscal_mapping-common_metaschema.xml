@@ -24,7 +24,7 @@
             <assembly ref="link" max-occurs="unbounded">
                 <group-as name="links" in-json="ARRAY"/>
             </assembly>
-            <define-field name="relationship" min-occurs="1">
+            <define-field name="relationship" as-type="token" min-occurs="1">
                 <formal-name>Mapping Entry Relationship</formal-name>
                 <description>The relationship type for the mapping entry.</description>
                 <define-flag name="ns" as-type="uri">
@@ -37,11 +37,16 @@
                 </define-flag>
                 <constraint>
                     <allowed-values target=".[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]">
-                        <enum value="equal-to">The source is equivalent in semantic meaning to the target.</enum>
+                        <enum value="equivalent-to">The source is equivalent in semantic meaning to the target. The words may differ, but both mapped elements have the same effective meaning.</enum>
+                        <enum value="equal-to">The source is the same as the target. Differences in capitalization, spelling, and grammar can be ignored, if these differences do not change the meaning.</enum>
                         <enum value="subset-of">The source is a semantic subset of the target.</enum>
                         <enum value="superset-of">The source is a semantic superset of the target.</enum>
+                        <enum value="intersects-with">The source and target have some semantic equivalence, but not all effective requirements from each are contained within the other. Statement level mapping using 'equivalent-to', 'subset-of', and/or 'superset-of' may provide a richer mapping that using this relationship type.</enum>
                     </allowed-values>
                 </constraint>
+                <remarks>
+                    <p>When establishing relationships, mapping SHOULD be done at the control statement level where possible. This approach allows for more use of 'equivalent-to', which represents a stronger relationship than the other relationship types.</p>
+                </remarks>
             </define-field>
             <assembly ref="mapping-item" min-occurs="1" max-occurs="unbounded">
                 <use-name>source</use-name>
@@ -56,10 +61,16 @@
     </define-assembly>
     <define-assembly name="mapping-item">
         <formal-name>Mapping Entry Item (source or target)</formal-name>
-        <description>Identfies a specific edge within a source or target that is the subject of a mapping.</description>
+        <description>Identifies a specific edge within a source or target that is the subject of a mapping.</description>
         <define-flag name="type" as-type="token" required="yes">
             <formal-name>Subject Type</formal-name>
             <description>The semantic type of the subject.</description>
+            <constraint>
+                <allowed-values>
+                    <enum value="control">A control as <a href="https://pages.nist.gov/OSCAL/concepts/terminology/#control">defined</a> by OSCAL.</enum>
+                    <enum value="statement">A textual element of a control that defines part of the control's requirements.</enum>
+                </allowed-values>
+            </constraint>
         </define-flag>
         <define-flag name="id-ref" as-type="string" required="yes">
             <formal-name>Subject Type</formal-name>
@@ -82,6 +93,11 @@
         <define-flag name="type" as-type="token" required="yes">
             <formal-name>Resource Type</formal-name>
             <description>The semantic type of the resource.</description>
+            <constraint>
+                <allowed-values>
+                    <enum value="catalog">The mapped resource is a control catalog.</enum>
+                </allowed-values>
+            </constraint>
         </define-flag>
         <define-flag name="href" as-type="uri-reference" required="yes">
             <formal-name>Catalog or Profile Reference</formal-name>
