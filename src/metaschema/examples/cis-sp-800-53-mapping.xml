@@ -13,7 +13,7 @@
         <source-resource type="catalog" href="#a84961de-55ae-4bf3-a2d3-86cc32b651af"></source-resource>
         <target-resource type="catalog" href="#711085f6-c390-4b25-b5f1-30066a56073d"></target-resource>
         <map uuid="6a9a1161-770e-4556-9740-41e1809e14ea">
-            <relationship>equal-to</relationship>
+            <relationship>equivalent-to</relationship>
             <source type="control" id-ref="#cis-1.1"/>
             <target type="control" id-ref="#cm-8">
                 <!-- TODO: consider a way to reference parameters allowing the review period of at least bi-annually to be described -->
