@@ -19,9 +19,8 @@ EOF
 
 # Setup the commandline argument parsing via getopt, defines the long ("--") and short ("-") options
 # See https://man7.org/linux/man-pages/man1/getopt.1.html
-OPTS=`getopt -o w:vh --long working-dir:,help -n "$0" -- "$@"`
 # if the getopt parsing failed (i.e., non-zero return code), display message and usage
-if [ $? != 0 ] ; then echo "Failed parsing options." >&2 ; usage ; exit 1 ; fi
+if ! OPTS=$(getopt -o w:vh --long working-dir:,help -n "$0" -- "$@"); then echo "Failed parsing options." >&2 ; usage ; exit 1 ; fi
 
 # Process commandline arguments
 eval set -- "$OPTS"

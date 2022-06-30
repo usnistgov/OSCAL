@@ -20,16 +20,16 @@ on:
 jobs:
   validate-repo-markdown:
     name: Validate Repo Markdown
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
     # use this for pulls where checkout is anonymous
-    - uses: actions/checkout@v3 # current: dcd71f646680f2efd8db4afa5ad64fdcba30e748
+    - uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
       with:
         submodules: recursive
     # Setup runtime environment
     # -------------------------
     - name: Set up NodeJS
-      uses: actions/setup-node@v3 # current: 56337c425554a6be30cdef71bf441f15be286854 
+      uses: actions/setup-node@1f8c6b94b26d0feae1e387ca63ccbdc44d27b561
       with:
         node-version-file: 'build/.nvmrc'
         cache: 'npm'

@@ -1,49 +1,53 @@
-FROM ubuntu:20.04 as base-environment
-
-ADD ./ci-cd/python/requirements.txt .
+FROM ubuntu:22.04 as base-environment
 
 ENV TZ=US/Eastern
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 RUN apt-get update && apt-get dist-upgrade -y
 
-FROM base-environment as oscal-dependencies
+FROM base-environment as oscal-os-dependencies
 
-ARG saxonversion
-ARG hugoversion
-ARG calabashversion
+RUN apt-get install -y \
+    apt-utils build-essential git jq libxml2-utils maven nodejs npm python3-pip unzip wget && \
+    apt-get clean
 
-RUN apt-get install -y apt-utils build-essential git jq libxml2-utils maven nodejs npm python3-pip unzip wget && apt-get clean
-RUN npm install -g npm n
-RUN n latest
-RUN npm install --loglevel verbose -g ajv-cli@"^4.0.x" ajv-formats@"^1.5.x" json-diff markdown-link-check yaml-convert@"^1.0.x" yargs
-RUN pip3 install -r requirements.txt
+FROM golang:1.18.3-bullseye as oscal-hugo-build
 
-#RUN useradd --create-home --home-dir /home/user user
-#USER user
+RUN mkdir -p /go/src/github.com/usnistgov/OSCAL/build
 
-ENV SAXON_VERSION=${saxonversion}
+WORKDIR /go/src/github.com/usnistgov/OSCAL/build
 
-RUN mvn org.apache.maven.plugins:maven-dependency-plugin:2.10:get -DartifactId=Saxon-HE -DgroupId=net.sf.saxon -Dversion=${SAXON_VERSION}
+ADD tools.go .
+ADD go.mod .
+ADD go.sum .
 
-ENV HUGO_VERSION=${hugoversion}
-RUN wget https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_Linux-64bit.deb
-RUN dpkg -i hugo_extended_${HUGO_VERSION}_Linux-64bit.deb
+RUN go install -tags "extended" github.com/gohugoio/hugo
 
-# calabash
-ENV CALABASH_VERSION=${calabashversion}
-ENV CALABASH_HOME=/dependencies/calabash
-RUN wget https://github.com/ndw/xmlcalabash1/releases/download/${CALABASH_VERSION}/xmlcalabash-${CALABASH_VERSION}.zip
-RUN mkdir -p "${CALABASH_HOME}"
-RUN unzip -d "${CALABASH_HOME}" "xmlcalabash-${CALABASH_VERSION}.zip"
-RUN f=`ls -d "${CALABASH_HOME}"/*| xargs` && mv "${CALABASH_HOME}"/*/* "${CALABASH_HOME}" && rmdir "${f}"
+FROM oscal-os-dependencies as oscal-runtime-dependencies
 
-#RUN chown -R user:user /home/user
+RUN mkdir -p /opt/oscal
 
-FROM oscal-dependencies as oscal-base
+WORKDIR /opt/oscal
+
+ADD ./ci-cd/python/requirements.txt .
+ADD ./package.json .
+ADD ./package-lock.json .
+ADD ./pom.xml .
+
+RUN npm ci && \
+    pip3 install -r requirements.txt && \
+    mvn dependency:copy-dependencies -DoutputDirectory=/opt/oscal
+
+FROM oscal-runtime-dependencies as oscal-base
 VOLUME ["/oscal"]
 WORKDIR /oscal
 
 FROM oscal-base as cli
+
+COPY --from=oscal-hugo-build /go/bin/hugo /usr/local/bin
+
+ENV SAXON_HOME=/opt/oscal
+ENV CALABASH_HOME=${SAXON_HOME}
+ENV PATH=/opt/oscal/node_modules/.bin:${PATH}
 
 ENTRYPOINT ["/bin/bash"]

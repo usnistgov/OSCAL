@@ -1,4 +1,4 @@
-# OSCAL Ci/CD Build Tools
+# OSCAL CI/CD Build Tools
 
 This subdirectory contains a set of build scripts used to create OSCAL-related artifacts (e.g., schemas, converters, documentation). Below are instructions for building using these scripts.
 
@@ -50,27 +50,7 @@ A Docker container configuration is provided that establishes the runtime enviro
 
 ## Manual Setup of the Build Environment (Linux)
 
-The following steps are known to work on [Ubuntu](https://ubuntu.com/) (tested in [18.04 LTS](http://old-releases.ubuntu.com/releases/bionic/) and [20.04 LTS](http://old-releases.ubuntu.com/releases/focal/).
-
-1. Setup environment variables
-
-    Environment variables are used to configure the runtime environment.
-
-    - SAXON_VERSION - Defines which version of Saxon-HE to use
-    - HUGO_VERSION - Defines which version of Hugo to use
-    - CALABASH_VERSION - Defines which version of XML Calabash to use
-    - CALABASH_HOME - Defines where calabash will be installed
-
-    The following is an example of how to configure the environment.
-
-    ```bash
-    export SAXON_VERSION="10.6"
-    export HUGO_VERSION="0.83.1"
-    export CALABASH_VERSION="1.2.5-100"
-    export CALABASH_HOME="$HOME/calabash"
-    ```
-
-    You may want to add this export to your `~/.bashrc` to persist the configuration.
+The following steps are known to work on [Ubuntu](https://ubuntu.com/) (tested in [20.04 LTS](https://releases.ubuntu.com/releases/focal/) and [22.04 LTS](https://releases.ubuntu.com/releases/jammy/).
 
 1. Install required packages
 
@@ -78,58 +58,52 @@ The following steps are known to work on [Ubuntu](https://ubuntu.com/) (tested i
 
     ```bash
     sudo apt-get update
-    sudo apt-get install -y apt-utils libxml2-utils jq maven nodejs npm build-essential python3-pip git unzip
-    sudo apt-get clean
+    sudo apt-get install -y apt-utils build-essential git golang-1.18 jq libxml2-utils maven nodejs npm python3-pip unzip wget
     ```
 
 1. Install Hugo
 
-    The version of Hugo available on Ubuntu is outdated. To install a current version of Hugo, run the following:
+    To install the supported version of Hugo pinned as a dependency in the repository, run the following:
 
     ```bash
-    wget https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_Linux-64bit.deb
-    sudo apt install ./hugo_extended_${HUGO_VERSION}_Linux-64bit.deb
+    cd path/to/repo/OSCAL/build
+    go install -tags "extended" github.com/gohugoio/hugo
+    export PATH="~/go/bin:${PATH}"
+    hugo version
     ```
 
 1. Install Node.js modules
 
-    To install the required Node.js modules globally (for all users), run the following:
+    To install the supported Node.js modules pinned as a dependency in the repository, run the following:
 
     ```bash
-    sudo npm install -g ajv-formats@"^1.5.x" ajv-cli@"^4.0.x" yaml-convert@"^1.0.x" markdown-link-check json-diff
-    ```
-
-    Or to install locally
-
-    ```bash
-    npm install prettyjson markdown-link-check json-diff
+    cd path/to/repo/OSCAL/build
+    npm ci
+    export PATH="$(pwd)/node_modules/.bin:${PATH}"
+    ajv help
     ```
 
 1. Install Python modules
 
-    To install the required Python modules, run the following:
+    To install the supported Python modules pinned as a dependency in the repository, run the following:
 
     ```bash
-    pip3 install lxml
+    cd path/to/repo/OSCAL/build
+    pip3 -r requirements.txt
     ```
 
-1. Install Saxon-HE
+1. Install Saxon-HE and XML Calabash
 
-    To install Saxon-HE, run the following:
-
-    ```bash
-    mvn org.apache.maven.plugins:maven-dependency-plugin:2.10:get -DartifactId=Saxon-HE -DgroupId=net.sf.saxon -Dversion=${SAXON_VERSION}
-    ```
-
-1. Install Calabash
-
-    To install Calabash, run the following:
+    To install the supported Saxon-HE and XML Calabash versions pinned as a dependency in the repository, run the following:
 
     ```bash
-    wget https://github.com/ndw/xmlcalabash1/releases/download/${CALABASH_VERSION}/xmlcalabash-${CALABASH_VERSION}.zip
-    mkdir -p "${CALABASH_HOME}"
-    unzip -d "${CALABASH_HOME}" "xmlcalabash-${CALABASH_VERSION}.zip"
-    mv "${CALABASH_HOME}"/*/* "${CALABASH_HOME}"
+    cd path/to/repo/OSCAL/build
+    export JAVA_CLASSPATH=/opt/oscal
+    sudo mkdir -p "${JAVA_CLASSPATH}"
+    sudo chown -R $USER:USER "${JAVA_CLASSPATH}"
+    mvn dependency:copy-dependencies -DoutputDirectory="${JAVA_CLASSPATH}"
+    export CALABASH_HOME="${JAVA_CLASSPATH}"
+    export SAXON_HOME="${JAVA_CLASSPATH}"
     ```
 
 Your environment should be setup.
@@ -176,4 +150,4 @@ To generate OSCAL model documentation, which is used as part of the [website gen
 ./build/ci-cd/generate-model-documentation.sh
 ```
 
-[metaschema-config]: ci-cd/config/metaschema
+To customize which OSCAL models have generated documentation, review and modify the [metaschema configuration file](./ci-cd/config/metaschema) accordingly.

@@ -6,9 +6,6 @@ name: Package Release
 env:
   # the name of the repo
   HOME_REPO: usnistgov/OSCAL
-  # dependency versions
-  SAXON_VERSION: 10.6
-  HUGO_VERSION: 0.83.1
   # build-specific environment
   CONTENT_CONFIG_PATH: src/config
   SCHEMATRON_HOME: git-content/schematron
@@ -20,10 +17,10 @@ env:
 jobs:
   tagged-release:
     name: Package GitHub Release
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     steps:
       # use this for main repo master builds
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
         with:
           path: ${{ env.OSCAL_HOME }}
           submodules: recursive
@@ -41,14 +38,14 @@ jobs:
           bash "${OSCAL_CICD_PATH}/package-release.sh" "${OSCAL_WORKING_PATH}"
           tar -jcvf "${OSCAL_WORKING_PATH}/${RELEASE_NAME}.tar.bz2" -C "${OSCAL_WORKING_PATH}/archive" .
           (cd "${OSCAL_WORKING_PATH}/archive" && zip -r "../${RELEASE_NAME}.zip" .)
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@3cea5372237819ed00197afe530f5a7ea3e805c8
         with:
           name: release-artifacts
           path: |
             ${{ env.OSCAL_WORKING_PATH }}/${{ env.RELEASE_NAME }}.tar.bz2
             ${{ env.OSCAL_WORKING_PATH }}/${{ env.RELEASE_NAME }}.zip
           retention-days: 5
-      - uses: ncipollo/release-action@58ae73b360456532aafd58ee170c045abbeaee37 # v1.10.0
+      - uses: ncipollo/release-action@58ae73b360456532aafd58ee170c045abbeaee37
         with:
           name: OSCAL ${{ env.RELEASE_VERSION }} Release
           allowUpdates: false
