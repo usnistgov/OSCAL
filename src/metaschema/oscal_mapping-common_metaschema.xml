@@ -12,7 +12,7 @@
 
     <define-assembly name="map">
         <formal-name>Mapping Entry</formal-name>
-        <description>An individual entry that is part of a larger mapping.</description>
+        <description>A relationship-based mapping between a source and target set consisting of members (i.e., controls, control statements) from the respective source and target.</description>
         <define-flag name="uuid" as-type="uuid" required="yes">
             <formal-name>Mapping Entry Identifier</formal-name>
             <description>The unique identifier for the mapping entry.</description>
@@ -26,7 +26,7 @@
             </assembly>
             <define-field name="relationship" as-type="token" min-occurs="1">
                 <formal-name>Mapping Entry Relationship</formal-name>
-                <description>The relationship type for the mapping entry.</description>
+                <description>The relationship type for the mapping entry, which describes the relationship between the effective requirements of the specified source and target sets.</description>
                 <define-flag name="ns" as-type="uri">
                     <formal-name>Relationship Value Namespace</formal-name>
                     <description>A namespace qualifying the relationship's value. This allows different organizations to associate distinct semantics for relationships with the same name.</description>
@@ -37,11 +37,11 @@
                 </define-flag>
                 <constraint>
                     <allowed-values target=".[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]">
-                        <enum value="equivalent-to">The source is equivalent in semantic meaning to the target. The words may differ, but both mapped elements have the same effective meaning.</enum>
-                        <enum value="equal-to">The source is the same as the target. Differences in capitalization, spelling, and grammar can be ignored, if these differences do not change the meaning.</enum>
-                        <enum value="subset-of">The source is a semantic subset of the target.</enum>
-                        <enum value="superset-of">The source is a semantic superset of the target.</enum>
-                        <enum value="intersects-with">The source and target have some semantic equivalence, but not all effective requirements from each are contained within the other. Statement level mapping using 'equivalent-to', 'subset-of', and/or 'superset-of' may provide a richer mapping that using this relationship type.</enum>
+                        <enum value="equivalent-to">The effective requirements of the source is equivalent in semantic meaning to the effective requirements of the target. The words may differ, but both mapped sets convey similar information with the same effective meaning. This relationship may be reversed, since `A equivalent-to B` also means that `B equivalent-to A`.</enum>
+                        <enum value="equal-to">The actual requirements of the source are the same as the actual requirements target. Differences in capitalization, spelling, and grammar can be ignored, if these differences do not change the meaning. This relationship may be reversed, since `A equal-to B` also means that `B equal-to A`.</enum>
+                        <enum value="subset-of">The effective requirements of the source is a semantic subset of the effective requirements of the target. This relationship may be reversed as a `superset-of`, since `A subset-of B` also means that `B superset-of A`.</enum>
+                        <enum value="superset-of">The effective requirements of the source is a semantic superset of the effective requirements of the target. This relationship may be reversed as a `subset-of`, since `A superset-of B` also means that `B subset-of A`.</enum>
+                        <enum value="intersects-with">The effective requirements of the source and target have some semantic equivalence, but not all effective requirements from each are contained within the other. This relationship may be reversed, since `A intersects-with B` also means that `B intersects-with A`. A lower granularity mapping, such as a statement level mapping using 'equivalent-to', 'subset-of', and/or 'superset-of', may provide a more functional mapping that allows for more inference than using this relationship type.</enum>
                     </allowed-values>
                 </constraint>
                 <remarks>
