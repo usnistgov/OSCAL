@@ -3572,7 +3572,7 @@ The following is the JSON format reference for this [model](/concepts/layer/cont
                            <div class="instance-header">
                               <h3 id="/profile/merge/custom" class="toc3 name">custom</h3>
                               <p class="type">object<br /></p>
-                              <p class="occurrence">[0 or 1]</p>
+                              <p class="occurrence">[1]</p>
                               <div class="crosslink"><a class="usa-button" href="../xml-reference/#/profile/merge/custom">Switch to XML</a></div>
                               <p class="formal-name">Custom grouping</p>
                            </div>
