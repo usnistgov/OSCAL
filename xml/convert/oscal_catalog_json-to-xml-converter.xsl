@@ -264,6 +264,7 @@
          <xsl:apply-templates select="*[@key='props']"/>
          <xsl:apply-templates select="*[@key='links']"/>
          <xsl:apply-templates select="*[@key='parts']"/>
+         <xsl:apply-templates select="*[@key='mapping']"/>
          <xsl:apply-templates select="*[@key='controls']"/>
       </assembly>
    </xsl:template>
@@ -280,6 +281,57 @@
          <xsl:apply-templates select="*[@key='prose']"/>
          <xsl:apply-templates select="*[@key='parts']"/>
          <xsl:apply-templates select="*[@key='links']"/>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="j:map[@key='target-resource']">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="target-resource" -->
+      <assembly name="mapping-resource-reference"
+                key="target-resource"
+                gi="target-resource">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">target-resource</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="*[@key='type']"/>
+         <xsl:apply-templates select="*[@key='href']"/>
+         <xsl:apply-templates select="*[@key='props']"/>
+         <xsl:apply-templates select="*[@key='links']"/>
+         <xsl:apply-templates select="*[@key='remarks']"/>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="j:array[@key='maps']/j:map">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="map" -->
+      <assembly name="map" gi="map">
+         <xsl:apply-templates select="*[@key='uuid']"/>
+         <xsl:apply-templates select="*[@key='props']"/>
+         <xsl:apply-templates select="*[@key='links']"/>
+         <xsl:apply-templates select="*[@key='relationship']"/>
+         <xsl:apply-templates select="*[@key='sources']"/>
+         <xsl:apply-templates select="*[@key='targets']"/>
+         <xsl:apply-templates select="*[@key='remarks']"/>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="j:array[@key='sources']/j:map">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="source" -->
+      <assembly name="mapping-item" gi="source">
+         <xsl:apply-templates select="*[@key='type']"/>
+         <xsl:apply-templates select="*[@key='id-ref']"/>
+         <xsl:apply-templates select="*[@key='props']"/>
+         <xsl:apply-templates select="*[@key='links']"/>
+         <xsl:apply-templates select="*[@key='remarks']"/>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="j:array[@key='targets']/j:map">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="target" -->
+      <assembly name="mapping-item" gi="target">
+         <xsl:apply-templates select="*[@key='type']"/>
+         <xsl:apply-templates select="*[@key='id-ref']"/>
+         <xsl:apply-templates select="*[@key='props']"/>
+         <xsl:apply-templates select="*[@key='links']"/>
+         <xsl:apply-templates select="*[@key='remarks']"/>
       </assembly>
    </xsl:template>
    <xsl:template match="j:array[@key='groups']/j:map">
@@ -721,6 +773,92 @@
    <xsl:template match="j:array[@key='parts']/j:map/j:string[@key='class']"
                  mode="keep-value-property"
                  priority="7"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='controls']/j:map/j:map[@key='mapping']/j:string[@key='uuid'] | j:map[@key='catalog']//j:array[@key='groups']/j:map//j:array[@key='controls']/j:map/j:map[@key='mapping']/j:string[@key='uuid']"
+                 priority="6"><!-- XML match="catalog//control/mapping/@uuid | catalog//group//control/mapping/@uuid" -->
+      <flag in-json="string"
+            as-type="uuid"
+            name="uuid"
+            key="uuid"
+            gi="uuid">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='controls']/j:map/j:map[@key='mapping']/j:string[@key='uuid'] | j:map[@key='catalog']//j:array[@key='groups']/j:map//j:array[@key='controls']/j:map/j:map[@key='mapping']/j:string[@key='uuid']"
+                 mode="keep-value-property"
+                 priority="6"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:map[@key='target-resource']/j:string[@key='type']"
+                 priority="1"><!-- XML match="target-resource/@type" -->
+      <flag in-json="string"
+            as-type="token"
+            name="type"
+            key="type"
+            gi="type">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:map[@key='target-resource']/j:string[@key='type']"
+                 mode="keep-value-property"
+                 priority="7"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:map[@key='target-resource']/j:string[@key='href']"
+                 priority="1"><!-- XML match="target-resource/@href" -->
+      <flag in-json="string"
+            as-type="uri-reference"
+            name="href"
+            key="href"
+            gi="href">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:map[@key='target-resource']/j:string[@key='href']"
+                 mode="keep-value-property"
+                 priority="7"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:array[@key='maps']/j:map/j:string[@key='uuid']" priority="1"><!-- XML match="map/@uuid" -->
+      <flag in-json="string"
+            as-type="uuid"
+            name="uuid"
+            key="uuid"
+            gi="uuid">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:array[@key='maps']/j:map/j:string[@key='uuid']"
+                 mode="keep-value-property"
+                 priority="8"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='controls']/j:map/j:map[@key='mapping']/j:array[@key='maps']/j:map/j:map[@key='relationship']/j:string[@key='ns'] | j:map[@key='catalog']//j:array[@key='groups']/j:map//j:array[@key='controls']/j:map/j:map[@key='mapping']/j:array[@key='maps']/j:map/j:map[@key='relationship']/j:string[@key='ns']"
+                 priority="9"><!-- XML match="catalog//control/mapping/map/relationship/@ns | catalog//group//control/mapping/map/relationship/@ns" -->
+      <flag in-json="string" as-type="uri" name="ns" key="ns" gi="ns">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='controls']/j:map/j:map[@key='mapping']/j:array[@key='maps']/j:map/j:map[@key='relationship']/j:string[@key='ns'] | j:map[@key='catalog']//j:array[@key='groups']/j:map//j:array[@key='controls']/j:map/j:map[@key='mapping']/j:array[@key='maps']/j:map/j:map[@key='relationship']/j:string[@key='ns']"
+                 mode="keep-value-property"
+                 priority="9"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:array[@key='sources']/j:map/j:string[@key='type'] | j:array[@key='targets']/j:map/j:string[@key='type']"
+                 priority="1"><!-- XML match="source/@type | target/@type" -->
+      <flag in-json="string"
+            as-type="token"
+            name="type"
+            key="type"
+            gi="type">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:array[@key='sources']/j:map/j:string[@key='type'] | j:array[@key='targets']/j:map/j:string[@key='type']"
+                 mode="keep-value-property"
+                 priority="10"><!-- Not keeping the flag here. --></xsl:template>
+   <xsl:template match="j:array[@key='sources']/j:map/j:string[@key='id-ref'] | j:array[@key='targets']/j:map/j:string[@key='id-ref']"
+                 priority="1"><!-- XML match="source/@id-ref | target/@id-ref" -->
+      <flag in-json="string"
+            as-type="string"
+            name="id-ref"
+            key="id-ref"
+            gi="id-ref">
+         <xsl:value-of select="."/>
+      </flag>
+   </xsl:template>
+   <xsl:template match="j:array[@key='sources']/j:map/j:string[@key='id-ref'] | j:array[@key='targets']/j:map/j:string[@key='id-ref']"
+                 mode="keep-value-property"
+                 priority="10"><!-- Not keeping the flag here. --></xsl:template>
    <xsl:template match="j:array[@key='groups']/j:map/j:string[@key='id']" priority="1"><!-- XML match="group/@id" -->
       <flag in-json="string" as-type="token" name="id" key="id" gi="id">
          <xsl:value-of select="."/>
@@ -2212,6 +2350,134 @@
          <xsl:value-of select="."/>
       </value>
    </xsl:template>
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='controls']/j:map/j:map[@key='mapping']"
+                 priority="5">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="catalog//control/mapping" -->
+      <assembly name="mapping" key="mapping" gi="mapping">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">mapping</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="*[@key='uuid']"/>
+         <xsl:apply-templates select="*[@key='target-resource']"/>
+         <xsl:apply-templates select="*[@key='maps']"/>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='controls']/j:map/j:map[@key='mapping']/j:map[@key='target-resource']/j:array[@key='links']/j:map/j:string[@key='text']"
+                 priority="9">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="catalog//control/mapping/target-resource/link/text" -->
+      <field collapsible="no"
+             as-type="markup-line"
+             name="text"
+             key="text"
+             gi="text"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">text</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='controls']/j:map/j:map[@key='mapping']/j:map[@key='target-resource']/j:array[@key='links']/j:map/j:string[@key='text']"
+                 mode="get-value-property"
+                 priority="9">
+      <value as-type="markup-line" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='controls']/j:map/j:map[@key='mapping']/j:array[@key='maps']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+                 priority="10">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="catalog//control/mapping/map/link/text" -->
+      <field collapsible="no"
+             as-type="markup-line"
+             name="text"
+             key="text"
+             gi="text"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">text</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='controls']/j:map/j:map[@key='mapping']/j:array[@key='maps']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+                 mode="get-value-property"
+                 priority="10">
+      <value as-type="markup-line" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='controls']/j:map/j:map[@key='mapping']/j:array[@key='maps']/j:map/j:map[@key='relationship']"
+                 priority="8">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="catalog//control/mapping/map/relationship" -->
+      <field collapsible="no"
+             as-type="token"
+             name="relationship"
+             key="relationship"
+             gi="relationship">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">relationship</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="*[@key='ns']"/>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <!-- matching catalog//control/mapping/map/relationship-->
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='controls']/j:map/j:map[@key='mapping']/j:array[@key='maps']/j:map/j:map[@key='relationship']"
+                 mode="get-value-property">
+      <value as-type="token" key="STRVALUE" in-json="string">
+         <xsl:apply-templates mode="keep-value-property"/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='controls']/j:map/j:map[@key='mapping']/j:array[@key='maps']/j:map/j:array[@key='sources']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+                 priority="12">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="catalog//control/mapping/map/source/link/text" -->
+      <field collapsible="no"
+             as-type="markup-line"
+             name="text"
+             key="text"
+             gi="text"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">text</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='controls']/j:map/j:map[@key='mapping']/j:array[@key='maps']/j:map/j:array[@key='sources']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+                 mode="get-value-property"
+                 priority="12">
+      <value as-type="markup-line" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='controls']/j:map/j:map[@key='mapping']/j:array[@key='maps']/j:map/j:array[@key='targets']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+                 priority="12">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="catalog//control/mapping/map/target/link/text" -->
+      <field collapsible="no"
+             as-type="markup-line"
+             name="text"
+             key="text"
+             gi="text"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">text</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='controls']/j:map/j:map[@key='mapping']/j:array[@key='maps']/j:map/j:array[@key='targets']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+                 mode="get-value-property"
+                 priority="12">
+      <value as-type="markup-line" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
    <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map/j:string[@key='title']"
                  priority="5">
       <xsl:param name="with-key" select="true()"/>
@@ -2778,6 +3044,134 @@
    <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map//j:array[@key='controls']/j:map//j:array[@key='parts']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
                  mode="get-value-property"
                  priority="12">
+      <value as-type="markup-line" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map//j:array[@key='controls']/j:map/j:map[@key='mapping']"
+                 priority="8">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="catalog//group//control/mapping" -->
+      <assembly name="mapping" key="mapping" gi="mapping">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">mapping</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="*[@key='uuid']"/>
+         <xsl:apply-templates select="*[@key='target-resource']"/>
+         <xsl:apply-templates select="*[@key='maps']"/>
+      </assembly>
+   </xsl:template>
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map//j:array[@key='controls']/j:map/j:map[@key='mapping']/j:map[@key='target-resource']/j:array[@key='links']/j:map/j:string[@key='text']"
+                 priority="12">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="catalog//group//control/mapping/target-resource/link/text" -->
+      <field collapsible="no"
+             as-type="markup-line"
+             name="text"
+             key="text"
+             gi="text"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">text</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map//j:array[@key='controls']/j:map/j:map[@key='mapping']/j:map[@key='target-resource']/j:array[@key='links']/j:map/j:string[@key='text']"
+                 mode="get-value-property"
+                 priority="12">
+      <value as-type="markup-line" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map//j:array[@key='controls']/j:map/j:map[@key='mapping']/j:array[@key='maps']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+                 priority="13">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="catalog//group//control/mapping/map/link/text" -->
+      <field collapsible="no"
+             as-type="markup-line"
+             name="text"
+             key="text"
+             gi="text"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">text</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map//j:array[@key='controls']/j:map/j:map[@key='mapping']/j:array[@key='maps']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+                 mode="get-value-property"
+                 priority="13">
+      <value as-type="markup-line" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map//j:array[@key='controls']/j:map/j:map[@key='mapping']/j:array[@key='maps']/j:map/j:map[@key='relationship']"
+                 priority="11">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="catalog//group//control/mapping/map/relationship" -->
+      <field collapsible="no"
+             as-type="token"
+             name="relationship"
+             key="relationship"
+             gi="relationship">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">relationship</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="*[@key='ns']"/>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <!-- matching catalog//group//control/mapping/map/relationship-->
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map//j:array[@key='controls']/j:map/j:map[@key='mapping']/j:array[@key='maps']/j:map/j:map[@key='relationship']"
+                 mode="get-value-property">
+      <value as-type="token" key="STRVALUE" in-json="string">
+         <xsl:apply-templates mode="keep-value-property"/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map//j:array[@key='controls']/j:map/j:map[@key='mapping']/j:array[@key='maps']/j:map/j:array[@key='sources']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+                 priority="15">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="catalog//group//control/mapping/map/source/link/text" -->
+      <field collapsible="no"
+             as-type="markup-line"
+             name="text"
+             key="text"
+             gi="text"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">text</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map//j:array[@key='controls']/j:map/j:map[@key='mapping']/j:array[@key='maps']/j:map/j:array[@key='sources']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+                 mode="get-value-property"
+                 priority="15">
+      <value as-type="markup-line" in-json="string">
+         <xsl:value-of select="."/>
+      </value>
+   </xsl:template>
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map//j:array[@key='controls']/j:map/j:map[@key='mapping']/j:array[@key='maps']/j:map/j:array[@key='targets']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+                 priority="15">
+      <xsl:param name="with-key" select="true()"/>
+      <!-- XML match="catalog//group//control/mapping/map/target/link/text" -->
+      <field collapsible="no"
+             as-type="markup-line"
+             name="text"
+             key="text"
+             gi="text"
+             in-json="SCALAR">
+         <xsl:if test="$with-key">
+            <xsl:attribute name="key">text</xsl:attribute>
+         </xsl:if>
+         <xsl:apply-templates select="." mode="get-value-property"/>
+      </field>
+   </xsl:template>
+   <xsl:template match="j:map[@key='catalog']//j:array[@key='groups']/j:map//j:array[@key='controls']/j:map/j:map[@key='mapping']/j:array[@key='maps']/j:map/j:array[@key='targets']/j:map/j:array[@key='links']/j:map/j:string[@key='text']"
+                 mode="get-value-property"
+                 priority="15">
       <value as-type="markup-line" in-json="string">
          <xsl:value-of select="."/>
       </value>
