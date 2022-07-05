@@ -14,7 +14,7 @@ jobs:
         uses: peter-evans/create-or-update-project-card@866533e2ae61f13c35fd1d374049713fab43c729 # current tag: v2
         with:
           project-name: Issue Triage
-          column-name: To do
+          column-name: Needs Triage
   removeCard:
     runs-on: ubuntu-latest
     if: github.event.action == 'closed'
