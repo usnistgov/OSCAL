@@ -43,13 +43,13 @@ First we start with the following control text from SP 800-53. (Formatting adjus
 >
 > __References__: [OMB A-130], [SP 800-12], [SP 800-30], [SP 800-39], [SP 800-100], [IR 7874].
 
-Encoding this text in OSCAL entails an analysis that turns it "inside out" and exposes the implicit structures (the "bones") as a kind of exoskeleton around the text, using a common and non-proprietary data encoding standard such as XML or JSON to provide the "form" of the cast. Such a transcoding or re-expression into electronic form makes all these data points distinguishable and recognizable to any downstream processor (consumer) who expects, or who can interpret, OSCAL, defined both narrowly (in its technical senses) and broadly (as a standard, a set of norms and conventions, a collection of tools, applications and resources, and a community of practice). Based on such discriminating recognition, the text's "original format" (or something like it) can be restored, but much else can be done as well -- the semantics of the information (the set of meaningful discriminations) can be mined, sifted, collated, ranked, annotated, and related to other data points internal or external.
+Encoding this text in OSCAL entails an analysis that turns it "inside out" and exposes the implicit structures (the "bones") as a kind of exoskeleton around the text, using a common and non-proprietary data encoding standard such as XML or JSON to provide the "form" of the cast. Within this organization, all these data points become distinguishable and recognizable to any downstream processor (consumer or partner) who expects OSCAL, or who can interpret it, defining OSCAL both narrowly, in its technical senses, and broadly: as a standard, a set of norms and conventions, a collection of tools, applications and resources, and a community of practice. From the encoded data, the text's "original format" (or something like it) can be restored, but much else can be done as well: the semantics of the information (the set of meaningful discriminations) can be mined, sifted, collated, ranked, annotated, and related to other data points internal or external.
 
 Since OSCAL is designed purposefully to represent such data sets (in a specific semantic domain, namely the [NIST Risk Management Framework](https://csrc.nist.gov/publications/detail/sp/800-37/rev-2/final) or RMF), the casting of this information into OSCAL encoding can be straightforward, economical and clean.
 
 ## Control, ID and title
 
-This control has a number of high-level data elements, including a security control identifier ("AC-1"), a title ("ACCESS CONTROL POLICY AND PROCEDURES"), the control (text) itself, supplemental guidance, control enhancements (although not in this example), and references.
+This control has a number of high-level data elements, including a security control identifier ("AC-1"), a title ("POLICY AND PROCEDURES"), the control (text) itself, supplemental guidance, control enhancements (although not in this example), and references.
 
 See the source code as currently available in [raw XML from Github](https://raw.githubusercontent.com/usnistgov/oscal-content/main/nist.gov/SP800-53/rev5/xml/NIST_SP-800-53_rev5_catalog.xml). The control is identified in code with tagging that looks *mainly* as follows, with slight simplifactions. Control AC-1 starts:
 
@@ -60,6 +60,7 @@ See the source code as currently available in [raw XML from Github](https://raw.
 
 - The control is assigned a class, "SP800-53". This serves as an indicator to a downstream processor of the control's origin (with respect to the catalog or catalog type), with implications for related expectations, including expectations in detail regarding how the control and its contents may be structured.
 - The control ID is "ac-1". All `id` values are unique within the document and serve for addressing and linking. The lexical form of the `id` is designed to be consistent with its formal (conventional) code or label, which is *also* encoded within the control (in this case, "AC-1"). While such regularities are normal and to be expected, this one is a feature of this data set, not a requirement of OSCAL generally.
+- The `<title>` of the control captures the text of the control's title as given in display and navigation. Unlike `id` values, titles are not required to be unique, and indeed in this catalog, each family of controls is headed by a control entitled "Policy and Procedures". In an application, the control title can be adjusted for display in any way needed - for example, prepended with the name of the family as **Access Control - Policy and Procedures", or converted into all upper case.
 
 ## Parameters
 
@@ -113,7 +114,7 @@ OSCAL parameters are worth special coverage as a topic in themselves. As shown h
 
 ## Properties
 
-After all parameters are defined, a control may be provided with a set of `<prop>` elements, each one of which specifies a single *property*, representing a name-value pair, in OSCAL. The particular meaning of each property is subject to definition by its originator (who defines the name and namespace and attributes the semantics), as interpreted by recipients in their own operational (semantic) context -- and is therefore subject to *negotiation*, *contracting*, and ultimately to *standardization* (external specification by third parties). Industry-standard names and value spaces for common properties -- along with technological platforms for validating them -- are being defined to help OSCAL developers and consumers leverage their common work, while also rapidly exploring and describing the problem space.
+After all parameters are defined, a control may be provided with a set of `<prop>` elements, each one of which specifies a single *property*, representing a name-value pair, in OSCAL. The particular meaning of each property is subject to definition by its originator (who defines the name, namespace and intended use), as interpreted by recipients in their own operational (semantic) context -- and is therefore subject to *negotiation*, *contracting*, and ultimately to *standardization* (external specification by third parties). Industry-standard names and value spaces for common properties -- along with technological platforms for validating them -- are being defined to help OSCAL developers and consumers leverage their common work, while also exploring and describing the problem space.
 
 {{<highlight xml "nowrap=false" >}}
 <prop name="label" value="AC-1"/>
