@@ -2,6 +2,13 @@ name: Bug report
 description: Create a report to help us improve
 labels: ['bug']
 body:
+  - type: checkboxes
+    attributes:
+      label: Is there an existing issue for this?
+      description: Please search to see if an issue already exists for the bug you encountered.
+      options:
+        - label: I have searched the existing issues
+          required: true
   - type: textarea
     id: bug-description
     attributes:
@@ -16,26 +23,35 @@ body:
       description: Describe the stakeholders affected by this bug
     validations:
       required: true
-  - type: textarea
+  - type: dropdown
     id: bug-affecting-what
     attributes:
       label: What is affected by this bug
-      description: Describe the impact this bug is having
+      description: Select the area(s) describing the scope of this bug
+      options:
+        - CI/CD
+        - OSCAL Content
+        - Documentation
+        - Metaschema
+        - Modeling
+        - Tooling & API
+        - Website
+      multiple: true
     validations:
       required: true
-  - type: textarea
-    id: bug-conditions
-    attributes:
-      label: When does this occur
-      description: Describe the conditions under which the bug is occuring
-    validations:
-      required: true
+  # - type: textarea
+  #   id: bug-conditions
+  #   attributes:
+  #     label: When does this occur
+  #     description: Describe the conditions under which the bug is occuring
+  #   validations:
+  #     required: true
   - type: textarea
     id: bug-replication
     attributes:
       label: How do we replicate this issue
       description: What are the steps to reproduce this behavior (use screenshots if applicable)
-      value: |
+      placeholder: |
         1. Do this...
         2. Then this...
         3. See error...
