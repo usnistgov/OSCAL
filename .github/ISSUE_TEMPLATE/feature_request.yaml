@@ -33,5 +33,6 @@ body:
         - [ ] The CI-CD build process runs without any reported errors on the PR. This can be confirmed by reviewing that all checks have passed in the PR.
 
         <!-- The items above are general acceptance criteria for all User Stories. Please describe anything else that must be completed for this issue to be considered resolved.-->
-
+    validations:
+      required: true
     
