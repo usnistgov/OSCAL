@@ -266,7 +266,7 @@ In the example following, it is worth nothing how part name given, `guidance`, i
 </control>
 {{< / highlight >}}
 
-Note that this code sample ends with the XML closing tag for the `<control>` element, indicated its end. Had this control any enhancements (subcontrols), they would appear here.
+Note that this code sample ends with the XML closing tag `</control>` for the element, indicating its end. Had this control any enhancements (subcontrols), they would appear here.
 
 ## Control enhancements
 
