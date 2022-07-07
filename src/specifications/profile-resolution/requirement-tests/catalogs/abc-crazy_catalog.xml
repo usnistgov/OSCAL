@@ -82,6 +82,10 @@
    </group>
    <group>
       <title>Group C of C</title>
+      <part name="overview">
+         <p>Group C of C contains subgroups CA and CB.</p></part>
+      <group id="CA">
+         <title>Group CA</title>
       <control id="c1">
          <title>Control C1</title>
          <prop name="label" value="7th"/>
@@ -98,6 +102,9 @@
             <p>C2 cccccccc ccccccccccccccccc.</p>
          </part>
       </control>
+      </group>
+      <group id="CB">
+         <title>Group CB</title>
       <control id="c3">
          <title>Control C3</title>
          <prop name="label" value="9th"/>
@@ -119,6 +126,7 @@
             </control>
          </control>
       </control>
+      </group>
    </group>
    <back-matter>
       <resource uuid="4a3990e7-2020-4b8f-902c-d679ebea2b58">
@@ -132,7 +140,7 @@
          </citation>
       </resource>
       <resource uuid="70830fd9-7899-40f8-acfe-70a5d1a56353">
-      	 <prop name="keep" value="always"/>
+      	<prop name="keep" value="always"/>
          <citation>
             <text>A citation to an out of line document.</text>
          </citation>

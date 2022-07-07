@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+         uuid="85c7333c-5880-4d80-83ea-e9d4aa71f4ce">
+   <metadata>
+      <title>Test Profile</title>
+      <last-modified>2022-06-15T16:22:58.1586252-04:00</last-modified>
+      <version>1.0</version>
+      <oscal-version>TODO: Not implemented yet</oscal-version>
+      <prop name="resolution-tool"
+            value="OSCAL Profile Resolver XSLT Pipeline OPRXP"/>
+      <link href="file:/C:/Users/wap1/Documents/usnistgov/OSCAL-dev/src/specifications/profile-resolution/requirement-tests/req-modify-alter-remove-match2.xml"
+            rel="source-profile"/>
+   </metadata>
+   <param id="param-A.a">
+      <label>A.a parameter</label>
+      <value>A.a value</value>
+   </param>
+   <param id="param-A.b">
+      <select>
+         <choice>A.b parameter selection choice 1</choice>
+         <choice>A.b parameter selection choice 2</choice>
+         <choice>A.b parameter selection choice 3</choice>
+      </select>
+   </param>
+   <control id="a1">
+      <title>Control A1</title>
+      <param id="param-a1.a">
+         <label>a1.a parameter</label>
+         <value>a1.a value</value>
+      </param>
+      <prop name="extra" value="ex3" ns="http://somens.url"/>
+      <part name="statement" id="a1-stmt">
+         <p>A1 aaaaa aaaaaaaaaa</p>
+         <p>Parameter A.a is set: <insert type="param" id-ref="param-A.a"/>
+         </p>
+         <p>Parameter a1.a is set: <insert type="param" id-ref="param-a1.a"/>
+         </p>
+      </part>
+   </control>
+   <control id="a2">
+      <title>Control A2</title>
+      <prop name="extra" value="ex1"/>
+      <prop name="extra" value="ex2"/>
+      <prop name="extra" value="ex3" ns="http://somens.url"/>
+      <part name="statement" id="a2-stmt">
+         <p>A2 aaa aaaaaaaaaa aaaaaaaaaaaaa</p>
+         <p>Parameter A.b is set: <insert type="param" id-ref="param-A.b"/>
+         </p>
+      </part>
+   </control>
+   <control id="a3">
+      <title>Control A3</title>
+      <part name="statement" id="a3-stmt">
+         <p>A3 aaaaa aaaaaaaaaa</p>
+      </part>
+   </control>
+   <control id="a4">
+      <title>Control A4</title>
+      <prop name="extra" value="ex1"/>
+      <prop name="extra" value="ex2"/>
+      <prop name="extra" value="ex4" class="special"/>
+      <prop name="label" value="3rd"/>
+      <part name="statement" id="a3-stmt">
+         <p>A4 aaaaa aaaaaaaaaa</p>
+      </part>
+   </control>
+   <control id="a5">
+      <title>Control A5</title>
+      <prop name="extra" value="ex1"/>
+      <prop name="extra" value="ex2"/>
+      <prop name="extra" value="ex4" class="special"/>
+      <prop name="label" value="3rd"/>
+      <part name="statement" id="a3-stmt">
+         <p>A5 aaaaa aaaaaaaaaa</p>
+      </part>
+   </control>
+</catalog>

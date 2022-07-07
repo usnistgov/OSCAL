@@ -11,19 +11,17 @@
    run-as="external">
    <x:helper stylesheet="lib/oscal-profile-test-helper.xsl"/>
 
-   <!--<x:scenario
-      label=" ... ">
+   <x:scenario label=" ... ">
       <?requirement req-include-all ?>
       <x:context href="requirement-tests/req-spoofing-resource.xml"/>
-      <!-\-<x:expect label="Error showing retrieval failure" select="opr:scrub(.)"
-         href="requirement-tests/output-expected/req-include-all-asis_RESOLVED.xml"/>-\->
-      <!-\-Base URI for resolving a relative URI from a resource corresponds to the document URI of the containing profile-\->
+      <!--<x:expect label="Error showing retrieval failure" select="opr:scrub(.)"
+         href="requirement-tests/output-expected/req-include-all-asis_RESOLVED.xml"/>-->
+      <!--Base URI for resolving a relative URI from a resource corresponds to the document URI of the containing profile-->
       <x:expect label="As the base URI of the resource does not match document URI of containing profile (in the spoofing scenario) we should get an error not a successful resolution" href="requirement-tests/output-expected/req-spoofing-dropped-UNRESOLVED.xml"/>
-<!-\- nb we need to test      -\->
-   </x:scenario>-->
+<!-- nb we need to test      -->
+   </x:scenario>
    
-   <x:scenario
-      label=" ... ">
+   <x:scenario label=" ... ">
       <?requirement req-resolve-profile ?>
       <x:context href="requirement-tests/req-chained-deepA.xml"/>
       <x:expect label="A (chained) profile resolution merged with a catalog" select="opr:scrub(.)"

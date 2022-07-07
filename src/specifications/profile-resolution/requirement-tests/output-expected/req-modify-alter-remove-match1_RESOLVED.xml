@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+         uuid="f5e749ae-2d5a-47a6-970e-62fffe85fa62">
+   <metadata>
+      <title>Test Profile</title>
+      <last-modified>2022-06-15T10:30:30.4321464-04:00</last-modified>
+      <version>1.0</version>
+      <oscal-version>TODO: Not implemented yet</oscal-version>
+      <prop name="resolution-tool"
+            value="OSCAL Profile Resolver XSLT Pipeline OPRXP"/>
+      <link href="file:/C:/Users/wap1/Documents/usnistgov/OSCAL-dev/src/specifications/profile-resolution/requirement-tests/req-modify-alter-remove-match1.xml"
+            rel="source-profile"/>
+   </metadata>
+   <control id="a3">
+      <title>Control A3</title>
+      <param id="a3_prm1">
+         <label>A3 Parameter 1</label>
+      </param>
+   </control>
+   <control id="a2">
+      <title>Control A2</title>
+      <prop name="label" value="second"/>
+   </control>
+   <control id="a1">
+      <title>Control A1</title>
+      <param id="a1_prm1">
+         <label>A1 Parameter 1</label>
+      </param>
+      <part name="statement" id="a1-stmt">
+         <p>A1 aaaaa aaaaaaaaaa</p>
+      </part>
+   </control>
+   <control id="c3">
+      <title>Control C3</title>
+      <prop name="label" value="ninth"/>
+      <part name="statement" id="c3-stmt">
+         <p>C3 ccccc cccccccccccccc.</p>
+      </part>
+      <control id="c3.a">
+         <title>Control C3-A</title>
+         <prop name="label" value="tenth"/>
+         <part name="statement" id="c3-stmt">
+            <p>C3 A ccccc cccccccccccccc.</p>
+         </part>
+         <control id="c3.a-1">
+            <title>Control C3-A-1</title>
+            <prop name="label" value="eleventh"/>
+            <part name="statement" id="c3-stmt">
+               <p>C3 A-1 ccccc cccccccccccccc.</p>
+            </part>
+         </control>
+      </control>
+   </control>
+   <control id="c1">
+      <title>Control C1</title>
+      <prop name="label" value="seventh"/>
+      <part name="statement" id="c1-stmt">
+         <p>C1 ccccc ccc ccccccccccccccccc.</p>
+      </part>
+   </control>
+   <control id="c2">
+      <title>Control C2</title>
+      <prop name="label" value="eighth"/>
+   </control>
+</catalog>

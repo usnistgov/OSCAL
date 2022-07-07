@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../example-checkup.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+         uuid="b636f129-d980-41c8-95e3-d3649a1fd546">
+   <metadata>
+      <title>Test Profile</title>
+      <last-modified>2022-02-15T13:33:09.325121-05:00</last-modified>
+      <version>1.0</version>
+      <oscal-version>1.0.0</oscal-version>
+   </metadata>
+   <import href="catalogs/busy_catalog.xml">
+      <include-all/>
+      <exclude-controls>
+         <matching pattern="b*"/>
+      </exclude-controls>
+   </import>
+   <modify>
+      <alter control-id="a1">
+         <remove by-name="label"/><!-- removes a prop -->
+         <remove by-name="extra" by-ns="http://csrc.nist.gov/ns/oscal"/><!-- removes three props, leaves one -->
+      </alter>
+      <alter control-id="a2">
+         <remove by-name="label"/><!-- removes a prop -->
+         <remove by-name="extra" by-class="special"/><!-- removes one prop -->
+      </alter>
+      <alter control-id="a3">
+         <remove by-name="label"/><!-- removes a prop -->
+         <remove by-name="extra"/><!-- removes four props -->
+      </alter>
+      <alter control-id="a4">
+         <remove by-name="extra" by-ns="http://somens.url"/><!-- removes one prop-->
+      </alter>
+      <alter control-id="a5">
+         <remove by-ns="http://somens.url"/><!-- removes one prop-->
+      </alter>
+   </modify>
+</profile>

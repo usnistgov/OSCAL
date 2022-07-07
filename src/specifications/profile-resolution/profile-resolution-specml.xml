@@ -22,7 +22,9 @@
     <head>Introduction</head>
     <section id="purpose">
       <head>Purpose</head>
-      <p>
+      <p><!-- For purposes of security assessment, an information system is designed and built (implemented) against a baseline of security controls. 
+      An OSCAL Profile defines the selection and (where appropriate) amendments or alterations to a control catalog that are needed to establish a baseline.
+      By design, OSCAL artifacts in the Implementation layer make reference to a catalog of controls. Profile Resolution allows for computing an effective catalog of controls from an OSCAL Profile.-->
         Information systems are implemented against a baseline of security controls. An OSCAL Profile defines the selection and potential alterations to a control catalog that are needed to establish a baseline. However, the OSCAL implementation layer depends on having an OSCAL Catalog that represents the baseline of controls to be implemented. Profile Resolution allows for computing an effective catalog based on an OSCAL Profile. For a given OSCAL Profile, the Profile Resolution process needs to result in the same OSCAL Catalog when executed by different tools on different endpoints. The requirements for resolution must therefore be well-defined and deterministic, enabling tool developers and parties exchanging OSCAL Profiles to work from a common understanding. This document defines the normative requirements for an OSCAL Profile Resolver.
 </p>
 
@@ -659,7 +661,8 @@ include-controls:
           <src>param</src>that is not directly under a control is referred to as a
           <q>loose</q>param.
         </p>
-        <p><req level="must" id="req-loose-param">All loose params from both imported documents and the profile source MUST be included. These params will be kept in the final output if the document contains any references to them, and discarded otherwise. See
+        <p><req level="must" id="req-loose-param"><eg href="requirement-tests/req-loose-params1.xml"
+        />All loose params from both imported documents and the profile source MUST be included. These params will be kept in the final output if the document contains any references to them, and discarded otherwise. See
           <xref rid="cleanup" />.</req> Since new references can be created during the
           <src>modify</src> phase, tools should be careful not to prune params without fully understanding the final state of the output document.
         </p>
@@ -756,7 +759,7 @@ profile:
         <head>
           <q>method:keep</q>
         </head>
-        <p><req level="must" id="req-merge-keep">When a merge is indicated by
+        <p><req level="must" id="req-merge-keep"><eg href="requirement-tests/req-merge-keep1.xml"/><eg href="requirement-tests/req-merge-keep2.xml"/>When a merge is indicated by
           <src>method:keep</src>, or when no merge directive is given, the
           <q>keep</q>combination rule is used. Any control with the same distinctive ID
           <xref rid="id" />MUST NOT not merged. (They are kept.)
@@ -801,7 +804,7 @@ intermediate:
           <code>ac-1</code> controls clash with each other, as do the two
           <code>ac-2</code> controls.
         </p>
-        <p><req level="should" id="req-merge-keep-warning">Processors SHOULD provide a warning under the merge:keep directive when duplicate controls are detected.</req> <req level="may" id="req-merge-keep-error">The processor MAY throw an error and cease processing (short-circuiting a certain future error) when duplicate controls are detected under the merge:keep directive.</req></p>
+        <p><req level="should" id="req-merge-keep-warning"><eg href="requirement-tests/req-merge-keep1.xml"/><eg href="requirement-tests/req-merge-keep2.xml"/>Processors SHOULD provide a warning under the merge:keep directive when duplicate controls are detected.</req> <req level="may" id="req-merge-keep-error"><eg href="requirement-tests/req-merge-keep1.xml"/><eg href="requirement-tests/req-merge-keep2.xml"/>The processor MAY throw an error and cease processing (short-circuiting a certain future error) when duplicate controls are detected under the merge:keep directive.</req></p>
       </section>
       <section id="use-first-combination-rule">
         <head>
@@ -813,7 +816,7 @@ intermediate:
     combine:
       method: use-first ]]>
         </tagging>
-        <p><req level="must" id="req-merge-use-first">When the
+        <p><req level="must" id="req-merge-use-first"><eg href="requirement-tests/req-merge-usefirst1.xml"/><eg href="requirement-tests/req-merge-usefirst2.xml"/>When the
           &quot;use-first&quot;combination rule is applied, and controls that share a distinctive ID are found, the first control encountered MUST be kept, the rest MUST be discarded.
           &quot;First&quot; MUST be determined by a top-down, depth-first traversal of the source profile&apos;s import hierarchy.
         </req></p>
@@ -860,7 +863,7 @@ intermediate:
       <p>This section describes how a profile may dictate the structure of the target
         <tgt>catalog</tgt>, apart from its
         <tgt>metadata</tgt> or
-        <tgt>back-matter</tgt>. <req level="must" id="req-stucture">Optionally, one of three &quot;structuring&quot; directives can be included as a child of
+        <tgt>back-matter</tgt>. <req level="must" id="req-stucture"><eg>PENDING how do we test this?</eg>Optionally, one of three &quot;structuring&quot; directives can be included as a child of
         <src>merge</src>:
         <src>flat</src>,
         <src>as-is</src>and
@@ -896,16 +899,16 @@ profile:
       </section>
       <section id="merge-flat">
         <head>&quot;flat&quot;</head>
-        <p><req level="must" id="req-merge-flat">Profiles with the &quot;flat&quot; merge directive MUST be resolved as unstructured catalogs, with no grouping or nesting of controls.</req></p>
+        <p><req level="must" id="req-merge-flat"><eg href="requirement-tests/req-include-all-flat.xml"/>Profiles with the &quot;flat&quot; merge directive MUST be resolved as unstructured catalogs, with no grouping or nesting of controls.</req></p>
         <p><req level="must" id="req-merge-flat-list">Unstructured catalog output MUST be produced by adhering to the following requirements:</req></p> <!-- TODO, ISSUE, REQ TAGGING OF LISTS -->
         <ul>
           <li>
-            <p><req level="must" id="req-merge-flat-list-1">All included controls are output to the target as a flat list directly under &quot;catalog&quot;. </req></p>
+            <p><req level="must" id="req-merge-flat-list-1"><eg href="requirement-tests/req-include-all-flat.xml"/>All included controls are output to the target as a flat list directly under &quot;catalog&quot;. </req></p>
           </li>
           <li>
-            <p><req level="must" id="req-merge-flat-list-2">Any included &quot;loose params&quot; are output to the target as a flat list directly under &quot;catalog&quot;.</req></p>
+            <p><req level="must" id="req-merge-flat-list-2"><eg href="requirement-tests/req-loose-params2.xml"/>Any included &quot;loose params&quot; are output to the target as a flat list directly under &quot;catalog&quot;.</req></p>
           </li>
-          <li><p><req level="must" id="req-merge-flat-list-3">Any groups are discarded.</req></p></li>
+          <li><p><req level="must" id="req-merge-flat-list-3"><eg href="requirement-tests/req-include-all-flat.xml"/><eg href="requirement-tests/req-loose-params2.xml"/>Any groups are discarded.</req></p></li>
         </ul>
         <p>An example of flat structuring is provided below</p>
         <tagging whose="source_catalog">
@@ -1385,17 +1388,17 @@ control:
           <src>remove</src>directive inside an
           <src>alter</src> directive identifies an object or set of objects inside a control to be removed. It does this using any of five child objects.
         </p>
-        <p><req level="must" id="req-modify-alter-remove-match"> An object inside the control MUST be removed from the output if and only if it meets all of the criteria given by the child objects of the remove directive.</req> When more than one child appears under the remove directive, an object would need to match all of them, otherwise it is not removed. </p>
+        <p><req level="must" id="req-modify-alter-remove-match"><eg href="requirement-tests/req-modify-alter-remove-match1.xml"/> An object inside the control MUST be removed from the output if and only if it meets all of the criteria given by the child objects of the remove directive.</req> When more than one child appears under the remove directive, an object would need to match all of them, otherwise it is not removed.</p>
         <ul>
           <li>
             <p>
-              <req level="must" id="req-modify-alter-remove-by-id">The remove directive criteria <src>by-id</src> MUST match an object if and only if its value is identical to the <src>id</src> value of that object.</req> Because
+              <req level="must" id="req-modify-alter-remove-by-id"><eg href="requirement-tests/req-modify-alter-remove-match1.xml"/>The remove directive criteria <src>by-id</src> MUST match an object if and only if its value is identical to the <src>id</src> value of that object.</req> Because
               <src>id</src> values are unique, this criteria will result in the remove directive removing only a single object.
             </p>
           </li>
           <li>
             <p>
-              <req level="must" id="req-modify-alter-remove-name-ref">The remove directive criteria <src>name-ref</src> MUST match an object if and only if its value is identical to the value of that object's <src>name</src> child.</req>
+              <req level="must" id="req-modify-alter-remove-name-ref"><eg href="requirement-tests/req-modify-alter-remove-match1.xml"/>The remove directive criteria <src>name-ref</src> MUST match an object if and only if its value is identical to the value of that object's <src>name</src> child.</req>
             </p>
           </li>
           <li>
@@ -1405,7 +1408,7 @@ control:
             <p><req level="must" id="req-modify-alter-remove-class-ref">The remove directive criteria <src>class-ref</src> MUST match an object if and only if its value is identical to the value of that object's <src>class</src> child.</req></p>
           </li>
           <li>
-            <p><req level="must" id="req-modify-alter-remove-item-name">The remove directive criteria <src>item-name</src> MUST match an object if and only if its value is identical to the value of that object's serialized name.</req> For example,
+            <p><req level="must" id="req-modify-alter-remove-item-name"><eg href="requirement-tests/req-modify-alter-remove-match1.xml"/>The remove directive criteria <src>item-name</src> MUST match an object if and only if its value is identical to the value of that object's serialized name.</req> For example,
               <code>remove:item-name:prop</code> has the effect of removing all
               <src>prop</src>objects from inside the control.
             </p>
@@ -1453,10 +1456,10 @@ control:
           <p><req level="must" id="req-meta-version">The value of metadata:version in the target MUST be set with a string that identifies the version of that document.</req> <req level="should" id="req-meta-version-track">The metadata:version SHOULD be used to track updates to this specific output document.</req></p>
         </li>
         <li>
-          <p><req level="must" id="req-meta-oscal-version">The value of metadata:oscal-version in the target MUST be set with a string that identifies the version of OSCAL used by this tool to resolve the profile (ex. 1.0.0). This value MUST be determined by compiling the oscal-versions from each imported document and the source profile, and taking the most recent minor version. If this version is more recent than what the resolution tool is using, then the value of oscal-version MUST be the version that the tool used internally.</req> <req level="must" id="req-meta-oscalversion-error">If any of the above OSCAL versions (imported document versions, source profile version, tool version) are of a different major version (the first digit differs), the tool SHOULD provide an error and cease processing.</req></p>
+          <p><req level="must" id="req-meta-oscal-version"><eg>PENDING https://github.com/usnistgov/OSCAL/issues/1313</eg>The value of metadata:oscal-version in the target MUST be set with a string that identifies the version of OSCAL used by this tool to resolve the profile (ex. 1.0.0). This value MUST be determined by compiling the oscal-versions from each imported document and the source profile, and taking the most recent minor version. If this version is more recent than what the resolution tool is using, then the value of oscal-version MUST be the version that the tool used internally.</req> <req level="must" id="req-meta-oscalversion-error">If any of the above OSCAL versions (imported document versions, source profile version, tool version) are of a different major version (the first digit differs), the tool SHOULD provide an error and cease processing.</req></p>
         </li>
         <li>
-          <p><req level="must" id="req-meta-last-modified">The value of metadata:last-modified in the target MUST be set with a valid timestamp representing the time the profile resolution completed.</req></p>
+          <p><req level="must" id="req-meta-last-modified"><eg>PENDING develop an external (XPath) test</eg>The value of metadata:last-modified in the target MUST be set with a valid timestamp representing the time the profile resolution completed.</req></p>
         </li>
         <li>
           <p><req level="should" id="req-meta-source-profile">A child <src>prop</src> object with <src>name:source-profile</src> MUST be created. The <src>value</src> object of this <src>prop</src> SHOULD be set with a valid URI that points to the profile that resulted in this catalog. </req> 
@@ -1474,30 +1477,30 @@ control:
     </section>
     <section id="cleanup">
       <head>Pruning and Ordering</head>
-      <p><req level="should" id="req-prune">The processor SHOULD prune the resulting output catalog by removing unused objects. </req></p>
+      <p><req level="should" id="req-prune"><eg href="requirement-tests/req-modify-alter-remove-match2.xml"/>The processor SHOULD prune the resulting output catalog by removing unused objects.</req></p>
       <ul>
         <li>
-          <p><req level="must" id="req-prune-keep">Any object that has a child <src>prop</src> with a <src>name</src> of "keep" and a <src>value</src> of "always" MUST NOT be pruned.</req></p>
+          <p><req level="must" id="req-prune-keep"><eg href="requirement-tests/req-modify-alter-remove-match2.xml"/>Any object that has a child <src>prop</src> with a <src>name</src> of "keep" and a <src>value</src> of "always" MUST NOT be pruned.</req></p>
         </li>
         <li>
-          <p><req level="must" id="req-prune-include">If an object was explicitly included in the
+          <p><req level="must" id="req-prune-include"><eg>PENDING How to test? isn't this just selection semantics</eg>If an object was explicitly included in the
             <xref rid="select-phase" />, it MUST NOT be pruned.</req>
           </p>
         </li>
         <li>
-          <p><req level="must" id="req-prune-custom">If an object was referenced in a <src>custom</src> section of the source profile, it MUST NOT be pruned.</req></p>
+          <p><req level="must" id="req-prune-custom"><eg>PENDING clarification</eg>If an object was referenced in a <src>custom</src> section of the source profile, it MUST NOT be pruned.</req></p>
         </li>
         <li>
-          <p><req level="must" id="req-prune-modify">If an object was referenced in the <src>modify</src> section of the source profile, it MUST NOT be pruned. Any objects removed in that section are still removed.</req></p>
+          <p><req level="must" id="req-prune-modify"><eg>PENDING clarification</eg>If an object was referenced in the <src>modify</src> section of the source profile, it MUST NOT be pruned. Any objects removed in that section are still removed.</req></p>
         </li>
         <li>
-          <p><req level="must" id="req-prune-ref">If the object appears in a reference anywhere in the final result catalog, except in other objects that also meet all other pruning criteria, it MUST NOT be removed. A reference to a given object exists if <code>#{distinctiveID}</code> appears anywhere, where <code>{distinctiveID}</code> is the distinctive ID of the object
+          <p><req level="must" id="req-prune-ref"><eg>PENDING clarification</eg>If the object appears in a reference anywhere in the final result catalog, except in other objects that also meet all other pruning criteria, it MUST NOT be removed. A reference to a given object exists if <code>#{distinctiveID}</code> appears anywhere, where <code>{distinctiveID}</code> is the distinctive ID of the object
             <xref rid="id" />.</req>
           </p>
         </li>
       </ul>
       <p>Implementers should note that pruning need not take place after all other steps. As long as all above criteria are respected, pruning can happen at any time, and doing so is a likely performance and memory overhead improvement.</p>
-      <p><req level="must" id="req-reorder">Tools MUST reorder the output catalog into canonical order
+      <p><req level="must" id="req-reorder"><eg>PENDING how do we test?</eg>Tools MUST reorder the output catalog into canonical order
         <xref rid="order" />, except where this specification provides different ordering requirements.</req>
       </p>
     </section>
@@ -1509,17 +1512,17 @@ control:
       <p>Whenever this specification refers to
         &quot;distinctiveness&quot;, it is to be interpreted as is defined in this section with regards to the object in question.
       </p>
-      <p><req level="must" id="req-id-id">For the objects control, param, and group, distinctiveness MUST be determined by the value of the
+      <p><req level="must" id="req-id-id"><eg>PENDING how do we test? Query outputs for duplicate IDs? Example docs?</eg>For the objects control, param, and group, distinctiveness MUST be determined by the value of the
         &quot;id&quot; child object.</req>
       </p>
-      <p><req level="must" id="req-id-uuid">For the object resource, distinctiveness MUST be determined by the value of the
+      <p><req level="must" id="req-id-uuid"><eg>PENDING how do we test? Query outputs for duplicate UUIDs? Example docs?</eg>For the object resource, distinctiveness MUST be determined by the value of the
         &quot;uuid&quot;
         <xref rid="target-back-matter" />.</req>
       </p>
     </section>
     <section id="multiformat">
       <head>Dealing with Multiple Formats</head>
-      <p><req level="should" id="req-multiformat">Profile Resolution tools SHOULD be able to handle source profiles, imported catalogs, and imported profiles that are serialized in XML, JSON, or YAML.</req> <req level="must" id="req-multiformat-differ">A different serialization format of any given input MUST NOT result in a differing output catalog.</req></p>
+      <p><req level="should" id="req-multiformat"><eg>PENDING how do we test?</eg>Profile Resolution tools SHOULD be able to handle source profiles, imported catalogs, and imported profiles that are serialized in XML, JSON, or YAML.</req> <req level="must" id="req-multiformat-differ"><eg>PENDING how do we test?</eg>A different serialization format of any given input MUST NOT result in a differing output catalog.</req></p>
       <p>In order to help bootstrap this format management, the following resources are provided for implementers:</p>
       <ul>
         <li>
@@ -1531,13 +1534,13 @@ control:
       <p>The following sections provide additional requirements and guidance for each format.</p>
       <section id="xmlrequirements">
         <head>Requirements and Guidance for XML Output</head>
-        <p><req level="must" id="req-output-xml">The final Catalog output, if using XML, MUST be valid as defined by the XML model documentation for the OSCAL Catalog. See
+        <p><req level="must" id="req-output-xml"><eg>PENDING how do we test?</eg>The final Catalog output, if using XML, MUST be valid as defined by the XML model documentation for the OSCAL Catalog. See
           <a href="https://pages.nist.gov/OSCAL/reference/latest/complete/xml-definitions/">the complete XML reference</a> for model requirements.</req>
         </p> 
       </section>
       <section id="jsonrequirements">
         <head>Requirements and Guidance for JSON Output</head>
-        <p><req level="must" id="req-output-json">The final Catalog output, if using JSON, MUST be valid as defined by the JSON model documentation for the OSCAL Catalog. See the
+        <p><req level="must" id="req-output-json"><eg>PENDING how do we test?</eg>The final Catalog output, if using JSON, MUST be valid as defined by the JSON model documentation for the OSCAL Catalog. See the
           <a href="https://pages.nist.gov/OSCAL/reference/latest/complete/json-reference/">complete JSON reference</a> for model requirements. </req>
         </p>
         <p>The JSON format, in general use, does not require the preservation of order of fields. As order matters in OSCAL, tools SHOULD adhere to the canonical OSCAL order
@@ -1546,7 +1549,7 @@ control:
       </section>
       <section id="yamlrequirements">
         <head>Requirements and Guidance for YAML Output</head>
-        <p><req level="must" id="req-output-yaml">The final Catalog output, if using YAML, MUST be valid as defined by the JSON model documentation for the OSCAL Catalog. </req> YAML is considered a simple variation on the JSON format. Beyond cosmetic differences there are no differences in the information structure between these formats. Therefore, the
+        <p><req level="must" id="req-output-yaml"><eg>PENDING how do we test?</eg>The final Catalog output, if using YAML, MUST be valid as defined by the JSON model documentation for the OSCAL Catalog. </req> YAML is considered a simple variation on the JSON format. Beyond cosmetic differences there are no differences in the information structure between these formats. Therefore, the
           <a href="https://pages.nist.gov/OSCAL/reference/latest/complete/json-reference/">complete JSON reference</a> provides model requirements.
         </p>
         <p>The YAML format, in general use, does not require the preservation of order of fields. As order matters in OSCAL, tools SHOULD adhere to the canonical OSCAL order
@@ -1559,7 +1562,7 @@ control:
           <term>canonical order</term>. This order is provided by the OSCAL Metaschema files for a given document type (see
           <a href="https://pages.nist.gov/OSCAL/concepts/layer/overview/#modeling-approach">an overview of Metaschema</a>.
         </p>
-        <p><req level="must" id="req-order">When the output format is XML, tools MUST use the OSCAL canonical order as described above. When using the YAML or JSON formats, order conveys no meaning, and is not considered important.</req></p>
+        <p><req level="must" id="req-order"><eg>PENDING how do we test this?</eg>When the output format is XML, tools MUST use the OSCAL canonical order as described above. When using the YAML or JSON formats, order conveys no meaning, and is not considered important.</req></p>
       </section>
       <section id="comments-in-result">
         <head>Comments in result documents</head>
