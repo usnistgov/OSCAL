@@ -30,13 +30,13 @@ See the [NIST Software Disclaimer](https://www.nist.gov/disclaimer) for more det
 
 In order to support data interchange and semantic interoperability in this heterogeneous environment, the OSCAL project publishes some basic software components along with the OSCAL specifications, to help serve as reference points or "scaffolding" for developers and for partners in data exchange.
 
-See the [OSCAL XML Resources](https://github.com/usnistgov/OSCAL/tree/main/xml) and [OSCAL JSON Resources](https://github.com/usnistgov/OSCAL/tree/main/json) pages in the project repository for more details.
+See the OSCAL  [XML](https://github.com/usnistgov/OSCAL/tree/main/xml) and [JSON/YAML](https://github.com/usnistgov/OSCAL/tree/main/json) resource pages in the project repository for more details.
 
 ### Validation
 
-OSCAL can be formally *validated* to help confirm its correctness and fitness for processing. Validation of any OSCAL can be accomplished by applying the appropriate schema for the respective format. For example, an SSP (System Security Plan) in OSCAL XML can be validated against [the SSP XML Schema](https://github.com/usnistgov/OSCAL/blob/main/xml/schema/oscal_ssp_schema.xsd), which defines (in machinable form) the tagging rules for OSCAL XML SSPs. Validation operations are based entirely on non-proprietary (standardized) processes available in multiple implementations, by reference to open, publically available schemas, located in the [OSCAL repository](https://github.com/usnistgov/OSCAL/) for [XML](https://github.com/usnistgov/OSCAL/tree/main/xml/schema) and [JSON](https://github.com/usnistgov/OSCAL/tree/main/json/schema) respectively.
+OSCAL can be formally *validated* to help confirm its correctness and fitness for processing. Validation of any OSCAL content instance can be accomplished by applying the appropriate schema for the respective format. For example, a System Security Plan (SSP) in represented in OSCAL XML can be validated against the [SSP XML Schema](https://github.com/usnistgov/OSCAL/blob/main/xml/schema/oscal_ssp_schema.xsd), which defines (in machinable form) the validation rules for OSCAL SSPs in XML. Validation operations are based entirely on non-proprietary, standardized processes available in multiple tool implementations, by reference to open, publicly available schemas, located in the [OSCAL repository](https://github.com/usnistgov/OSCAL/) for [XML](https://github.com/usnistgov/OSCAL/tree/main/xml/schema) and [JSON/YAML](https://github.com/usnistgov/OSCAL/tree/main/json/schema) respectively.
 
-YAML developers should take note that the JSON Schemas can be applied to YAML.
+YAML developers should take note that the JSON Schemas can be applied to YAML content instances.
 
 More details about validation are offered on the page [Well-formed Data Formats and Valid OSCAL](https://pages.nist.gov/OSCAL/concepts/layer/validation/).
 
