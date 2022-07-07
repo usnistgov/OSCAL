@@ -1,0 +1,62 @@
+name: Link Check
+
+on:
+  schedule:
+    - cron: "00 8 * * *" # 0800 UTC is 0400 AM EDT
+  repository_dispatch:
+  workflow_dispatch:
+    inputs:
+      ignorePattern:
+        description: 'a pattern provided to grep for files/directories to ignore'
+        required: false
+        default: '^docs/'
+        type: string
+      markdownLinkCheckConfig:
+        description: 'the path to the markdown link check config file'
+        required: false
+        default: 'build/config/.markdown-link-check/config.json'
+        type: string
+      site_git_ref:
+        description: 'git ref, a SHA commit or branch or tag, for the published HTML content'
+        required: true
+        default: 'nist-pages'
+        type: string
+      site_git_ref_path:
+        description: 'the subdirectory to check out git ref and check links in website content'
+        required: true
+        default: 'published'
+        type: string
+      create_issue:
+        description: 'create new GitHub issue if broken links found'
+        required: false
+        default: true
+        type: boolean
+jobs:
+  schedule-validate-repo-markdown-links:
+    uses: ./.github/workflows/workflow-validate-repo-markdown.yml
+    if: github.event_name != 'workflow_dispatch'
+    with:
+      ignorePattern: '^docs/'
+      markdownLinkCheckConfig: 'build/config/.markdown-link-check/config.json'
+      create_issue: true
+  schedule-validate-repo-markdown-links-debug:
+    uses: ./.github/workflows/workflow-validate-repo-markdown.yml
+    if: github.event_name == 'workflow_dispatch'
+    with:
+      ignorePattern: ${{ github.event.inputs.ignorePattern }}
+      markdownLinkCheckConfig: ${{ github.event.inputs.markdownLinkCheckConfig }}
+      create_issue: ${{ contains('true', github.event.inputs.create_issue) }}
+  schedule-validate-website-links:
+    uses: ./.github/workflows/workflow-validate-website-content.yml
+    if: github.event_name != 'workflow_dispatch'
+    with:
+      site_git_ref: 'nist-pages'
+      site_git_ref_path: 'published'
+      create_issue: true
+  schedule-validate-website-links-debug:
+    uses: ./.github/workflows/workflow-validate-website-content.yml
+    if: github.event_name == 'workflow_dispatch'
+    with:
+      site_git_ref: ${{ github.event.inputs.site_git_ref }}
+      site_git_ref_path: ${{ github.event.inputs.site_git_ref_path }}
+      create_issue: ${{ contains('true', github.event.inputs.create_issue) }}

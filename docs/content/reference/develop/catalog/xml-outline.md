@@ -10,7 +10,7 @@ sidenav:
 
 ---
 
-The following outline is a representation of the [XML format](https://github.com/usnistgov/OSCAL/blob/release-1.0/xml/schema/oscal_catalog_schema.xsd) for this [model](/concepts/layer/control/catalog/). For each element or attribute, the name links to the corresponding entry in the [XML Format Reference](../xml-reference/). The cardinality and data type are also provided for each element or attribute where appropriate.
+The following outline is a representation of the [XML format](https://github.com/usnistgov/OSCAL/blob/develop/xml/schema/oscal_catalog_schema.xsd) for this [model](/concepts/layer/control/catalog/). For each element or attribute, the name links to the corresponding entry in the [XML Format Reference](../xml-reference/). The cardinality and data type are also provided for each element or attribute where appropriate.
 
 <!-- DO NOT REMOVE. Generated text below -->{{< rawhtml >}}
 <div xmlns="http://www.w3.org/1999/xhtml" class="xml-outline">
@@ -847,6 +847,208 @@ The following outline is a representation of the [XML format](https://github.com
                      <p class="close-tag nobr">&lt;/part&gt;</p>
                   </details>
                   <details class="OM-entry">
+                     <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/catalog/control/mapping">mapping</a></span> <span class="nobr" id="/catalog/control/mapping/@uuid"><a class="OM-name" href="../xml-reference/#/catalog/control/mapping/@uuid">uuid</a>="<span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span>"</span>&gt;<span class="show-closed"> … <span class="nobr">&lt;/mapping&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 or 1]</span></span></summary>
+                     <div class="model-container">
+                        <details class="OM-entry">
+                           <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/catalog/control/mapping/target-resource">target-resource</a></span> <span class="nobr" id="/catalog/control/mapping/target-resource/@type"><a class="OM-name" href="../xml-reference/#/catalog/control/mapping/target-resource/@type">type</a>="<span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span>"</span> <span class="nobr" id="/catalog/control/mapping/target-resource/@href"><a class="OM-name" href="../xml-reference/#/catalog/control/mapping/target-resource/@href">href</a>="<span class="OM-datatype"><a href="/reference/datatypes/#uri-reference">uri-reference</a></span>"</span>&gt;<span class="show-closed"> … <span class="nobr">&lt;/target-resource&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[1]</span></span></summary>
+                           <div class="model-container">
+                              <details class="OM-entry">
+                                 <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/catalog/control/mapping/target-resource/prop">prop</a></span> <span class="nobr" id="/catalog/control/mapping/target-resource/prop/@name"><a class="OM-name" href="../xml-reference/#/catalog/control/mapping/target-resource/prop/@name">name</a>="<span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span>"</span> <span class="nobr" id="/catalog/control/mapping/target-resource/prop/@uuid"><a class="OM-name" href="../xml-reference/#/catalog/control/mapping/target-resource/prop/@uuid">uuid</a>="<span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span>"</span> <span class="nobr" id="/catalog/control/mapping/target-resource/prop/@ns"><a class="OM-name" href="../xml-reference/#/catalog/control/mapping/target-resource/prop/@ns">ns</a>="<span class="OM-datatype"><a href="/reference/datatypes/#uri">uri</a></span>"</span> <span class="nobr" id="/catalog/control/mapping/target-resource/prop/@value"><a class="OM-name" href="../xml-reference/#/catalog/control/mapping/target-resource/prop/@value">value</a>="<span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span>"</span> <span class="nobr" id="/catalog/control/mapping/target-resource/prop/@class"><a class="OM-name" href="../xml-reference/#/catalog/control/mapping/target-resource/prop/@class">class</a>="<span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span>"</span>&gt;<span class="show-closed"> … <span class="nobr">&lt;/prop&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
+                                 <div class="model-container">
+                                    <details class="OM-entry">
+                                       <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/catalog/control/mapping/target-resource/prop/remarks">remarks</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="nobr">&lt;/remarks&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 or 1]</span></span></summary>
+                                       <p class="OM-map-name">One or more blocks of text: a <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span> value</p>
+                                       <div class="OM-entry">
+                                          <p class="OM-line">&lt;p&gt; <span class="OM-lit OM-gloss">or other elements defined as <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span></span> <span class="OM-cardinality">[0 to ∞]</span></p>
+                                       </div>
+                                       <p class="close-tag nobr">&lt;/remarks&gt;</p>
+                                    </details>
+                                 </div>
+                                 <p class="close-tag nobr">&lt;/prop&gt;</p>
+                              </details>
+                              <details class="OM-entry">
+                                 <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/catalog/control/mapping/target-resource/link">link</a></span> <span class="nobr" id="/catalog/control/mapping/target-resource/link/@href"><a class="OM-name" href="../xml-reference/#/catalog/control/mapping/target-resource/link/@href">href</a>="<span class="OM-datatype"><a href="/reference/datatypes/#uri-reference">uri-reference</a></span>"</span> <span class="nobr" id="/catalog/control/mapping/target-resource/link/@rel"><a class="OM-name" href="../xml-reference/#/catalog/control/mapping/target-resource/link/@rel">rel</a>="<span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span>"</span> <span class="nobr" id="/catalog/control/mapping/target-resource/link/@media-type"><a class="OM-name" href="../xml-reference/#/catalog/control/mapping/target-resource/link/@media-type">media-type</a>="<span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span>"</span>&gt;<span class="show-closed"> … <span class="nobr">&lt;/link&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
+                                 <div class="model-container">
+                                    <details class="OM-entry">
+                                       <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/catalog/control/mapping/target-resource/link/text">text</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#markup-line">markup-line</a></span><span class="nobr">&lt;/text&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 or 1]</span></span></summary>
+                                       <p class="OM-map-name">a <span class="OM-datatype"><a href="/reference/datatypes/#markup-line">markup-line</a></span> value</p>
+                                       <div class="OM-entry">
+                                          <p class="OM-line OM-lit OM-gloss"> Text and inline markup including <code>&lt;insert&gt;</code><code>&lt;em&gt;</code>, <code>&lt;strong&gt;</code>, <code>&lt;code&gt;</code>. </p>
+                                       </div>
+                                       <p class="close-tag nobr">&lt;/text&gt;</p>
+                                    </details>
+                                 </div>
+                                 <p class="close-tag nobr">&lt;/link&gt;</p>
+                              </details>
+                              <details class="OM-entry">
+                                 <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/catalog/control/mapping/target-resource/remarks">remarks</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="nobr">&lt;/remarks&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 or 1]</span></span></summary>
+                                 <p class="OM-map-name">One or more blocks of text: a <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span> value</p>
+                                 <div class="OM-entry">
+                                    <p class="OM-line">&lt;p&gt; <span class="OM-lit OM-gloss">or other elements defined as <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span></span> <span class="OM-cardinality">[0 to ∞]</span></p>
+                                 </div>
+                                 <p class="close-tag nobr">&lt;/remarks&gt;</p>
+                              </details>
+                           </div>
+                           <p class="close-tag nobr">&lt;/target-resource&gt;</p>
+                        </details>
+                        <details class="OM-entry">
+                           <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/catalog/control/mapping/map">map</a></span> <span class="nobr" id="/catalog/control/mapping/map/@uuid"><a class="OM-name" href="../xml-reference/#/catalog/control/mapping/map/@uuid">uuid</a>="<span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span>"</span>&gt;<span class="show-closed"> … <span class="nobr">&lt;/map&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[1 to ∞]</span></span></summary>
+                           <div class="model-container">
+                              <details class="OM-entry">
+                                 <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/catalog/control/mapping/map/prop">prop</a></span> <span class="nobr" id="/catalog/control/mapping/map/prop/@name"><a class="OM-name" href="../xml-reference/#/catalog/control/mapping/map/prop/@name">name</a>="<span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span>"</span> <span class="nobr" id="/catalog/control/mapping/map/prop/@uuid"><a class="OM-name" href="../xml-reference/#/catalog/control/mapping/map/prop/@uuid">uuid</a>="<span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span>"</span> <span class="nobr" id="/catalog/control/mapping/map/prop/@ns"><a class="OM-name" href="../xml-reference/#/catalog/control/mapping/map/prop/@ns">ns</a>="<span class="OM-datatype"><a href="/reference/datatypes/#uri">uri</a></span>"</span> <span class="nobr" id="/catalog/control/mapping/map/prop/@value"><a class="OM-name" href="../xml-reference/#/catalog/control/mapping/map/prop/@value">value</a>="<span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span>"</span> <span class="nobr" id="/catalog/control/mapping/map/prop/@class"><a class="OM-name" href="../xml-reference/#/catalog/control/mapping/map/prop/@class">class</a>="<span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span>"</span>&gt;<span class="show-closed"> … <span class="nobr">&lt;/prop&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
+                                 <div class="model-container">
+                                    <details class="OM-entry">
+                                       <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/catalog/control/mapping/map/prop/remarks">remarks</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="nobr">&lt;/remarks&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 or 1]</span></span></summary>
+                                       <p class="OM-map-name">One or more blocks of text: a <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span> value</p>
+                                       <div class="OM-entry">
+                                          <p class="OM-line">&lt;p&gt; <span class="OM-lit OM-gloss">or other elements defined as <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span></span> <span class="OM-cardinality">[0 to ∞]</span></p>
+                                       </div>
+                                       <p class="close-tag nobr">&lt;/remarks&gt;</p>
+                                    </details>
+                                 </div>
+                                 <p class="close-tag nobr">&lt;/prop&gt;</p>
+                              </details>
+                              <details class="OM-entry">
+                                 <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/catalog/control/mapping/map/link">link</a></span> <span class="nobr" id="/catalog/control/mapping/map/link/@href"><a class="OM-name" href="../xml-reference/#/catalog/control/mapping/map/link/@href">href</a>="<span class="OM-datatype"><a href="/reference/datatypes/#uri-reference">uri-reference</a></span>"</span> <span class="nobr" id="/catalog/control/mapping/map/link/@rel"><a class="OM-name" href="../xml-reference/#/catalog/control/mapping/map/link/@rel">rel</a>="<span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span>"</span> <span class="nobr" id="/catalog/control/mapping/map/link/@media-type"><a class="OM-name" href="../xml-reference/#/catalog/control/mapping/map/link/@media-type">media-type</a>="<span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span>"</span>&gt;<span class="show-closed"> … <span class="nobr">&lt;/link&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
+                                 <div class="model-container">
+                                    <details class="OM-entry">
+                                       <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/catalog/control/mapping/map/link/text">text</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#markup-line">markup-line</a></span><span class="nobr">&lt;/text&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 or 1]</span></span></summary>
+                                       <p class="OM-map-name">a <span class="OM-datatype"><a href="/reference/datatypes/#markup-line">markup-line</a></span> value</p>
+                                       <div class="OM-entry">
+                                          <p class="OM-line OM-lit OM-gloss"> Text and inline markup including <code>&lt;insert&gt;</code><code>&lt;em&gt;</code>, <code>&lt;strong&gt;</code>, <code>&lt;code&gt;</code>. </p>
+                                       </div>
+                                       <p class="close-tag nobr">&lt;/text&gt;</p>
+                                    </details>
+                                 </div>
+                                 <p class="close-tag nobr">&lt;/link&gt;</p>
+                              </details>
+                              <details class="OM-entry">
+                                 <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/catalog/control/mapping/map/relationship">relationship</a></span> <span class="nobr" id="/catalog/control/mapping/map/relationship/@ns"><a class="OM-name" href="../xml-reference/#/catalog/control/mapping/map/relationship/@ns">ns</a>="<span class="OM-datatype"><a href="/reference/datatypes/#uri">uri</a></span>"</span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="nobr">&lt;/relationship&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[1]</span></span></summary>
+                                 <p class="OM-map-name">a <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span> value</p>
+                                 
+                                 The effective requirements of the source is equivalent in semantic meaning to the
+                                 effective requirements of the target. The words may differ, but both mapped sets convey
+                                 similar information with the same effective meaning. This relationship may be reversed,
+                                 since `A equivalent-to B` also means that `B equivalent-to A`.
+                                 The actual requirements of the source are the same as the actual requirements target.
+                                 Differences in capitalization, spelling, and grammar can be ignored, if these differences
+                                 do not change the meaning. This relationship may be reversed, since `A equal-to B`
+                                 also means that `B equal-to A`.
+                                 The effective requirements of the source is a semantic subset of the effective requirements
+                                 of the target. This relationship may be reversed as a `superset-of`, since `A subset-of
+                                 B` also means that `B superset-of A`.
+                                 The effective requirements of the source is a semantic superset of the effective requirements
+                                 of the target. This relationship may be reversed as a `subset-of`, since `A superset-of
+                                 B` also means that `B subset-of A`.
+                                 The effective requirements of the source and target have some semantic equivalence,
+                                 but not all effective requirements from each are contained within the other. This
+                                 relationship may be reversed, since `A intersects-with B` also means that `B intersects-with
+                                 A`. A lower granularity mapping, such as a statement level mapping using 'equivalent-to',
+                                 'subset-of', and/or 'superset-of', may provide a more functional mapping that allows
+                                 for more inference than using this relationship type.
+                                 
+                                 
+                                 <p class="close-tag nobr">&lt;/relationship&gt;</p>
+                              </details>
+                              <details class="OM-entry">
+                                 <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/catalog/control/mapping/map/source">source</a></span> <span class="nobr" id="/catalog/control/mapping/map/source/@type"><a class="OM-name" href="../xml-reference/#/catalog/control/mapping/map/source/@type">type</a>="<span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span>"</span> <span class="nobr" id="/catalog/control/mapping/map/source/@id-ref"><a class="OM-name" href="../xml-reference/#/catalog/control/mapping/map/source/@id-ref">id-ref</a>="<span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span>"</span>&gt;<span class="show-closed"> … <span class="nobr">&lt;/source&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[1 to ∞]</span></span></summary>
+                                 <div class="model-container">
+                                    <details class="OM-entry">
+                                       <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/catalog/control/mapping/map/source/prop">prop</a></span> <span class="nobr" id="/catalog/control/mapping/map/source/prop/@name"><a class="OM-name" href="../xml-reference/#/catalog/control/mapping/map/source/prop/@name">name</a>="<span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span>"</span> <span class="nobr" id="/catalog/control/mapping/map/source/prop/@uuid"><a class="OM-name" href="../xml-reference/#/catalog/control/mapping/map/source/prop/@uuid">uuid</a>="<span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span>"</span> <span class="nobr" id="/catalog/control/mapping/map/source/prop/@ns"><a class="OM-name" href="../xml-reference/#/catalog/control/mapping/map/source/prop/@ns">ns</a>="<span class="OM-datatype"><a href="/reference/datatypes/#uri">uri</a></span>"</span> <span class="nobr" id="/catalog/control/mapping/map/source/prop/@value"><a class="OM-name" href="../xml-reference/#/catalog/control/mapping/map/source/prop/@value">value</a>="<span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span>"</span> <span class="nobr" id="/catalog/control/mapping/map/source/prop/@class"><a class="OM-name" href="../xml-reference/#/catalog/control/mapping/map/source/prop/@class">class</a>="<span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span>"</span>&gt;<span class="show-closed"> … <span class="nobr">&lt;/prop&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
+                                       <div class="model-container">
+                                          <details class="OM-entry">
+                                             <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/catalog/control/mapping/map/source/prop/remarks">remarks</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="nobr">&lt;/remarks&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 or 1]</span></span></summary>
+                                             <p class="OM-map-name">One or more blocks of text: a <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span> value</p>
+                                             <div class="OM-entry">
+                                                <p class="OM-line">&lt;p&gt; <span class="OM-lit OM-gloss">or other elements defined as <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span></span> <span class="OM-cardinality">[0 to ∞]</span></p>
+                                             </div>
+                                             <p class="close-tag nobr">&lt;/remarks&gt;</p>
+                                          </details>
+                                       </div>
+                                       <p class="close-tag nobr">&lt;/prop&gt;</p>
+                                    </details>
+                                    <details class="OM-entry">
+                                       <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/catalog/control/mapping/map/source/link">link</a></span> <span class="nobr" id="/catalog/control/mapping/map/source/link/@href"><a class="OM-name" href="../xml-reference/#/catalog/control/mapping/map/source/link/@href">href</a>="<span class="OM-datatype"><a href="/reference/datatypes/#uri-reference">uri-reference</a></span>"</span> <span class="nobr" id="/catalog/control/mapping/map/source/link/@rel"><a class="OM-name" href="../xml-reference/#/catalog/control/mapping/map/source/link/@rel">rel</a>="<span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span>"</span> <span class="nobr" id="/catalog/control/mapping/map/source/link/@media-type"><a class="OM-name" href="../xml-reference/#/catalog/control/mapping/map/source/link/@media-type">media-type</a>="<span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span>"</span>&gt;<span class="show-closed"> … <span class="nobr">&lt;/link&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
+                                       <div class="model-container">
+                                          <details class="OM-entry">
+                                             <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/catalog/control/mapping/map/source/link/text">text</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#markup-line">markup-line</a></span><span class="nobr">&lt;/text&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 or 1]</span></span></summary>
+                                             <p class="OM-map-name">a <span class="OM-datatype"><a href="/reference/datatypes/#markup-line">markup-line</a></span> value</p>
+                                             <div class="OM-entry">
+                                                <p class="OM-line OM-lit OM-gloss"> Text and inline markup including <code>&lt;insert&gt;</code><code>&lt;em&gt;</code>, <code>&lt;strong&gt;</code>, <code>&lt;code&gt;</code>. </p>
+                                             </div>
+                                             <p class="close-tag nobr">&lt;/text&gt;</p>
+                                          </details>
+                                       </div>
+                                       <p class="close-tag nobr">&lt;/link&gt;</p>
+                                    </details>
+                                    <details class="OM-entry">
+                                       <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/catalog/control/mapping/map/source/remarks">remarks</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="nobr">&lt;/remarks&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 or 1]</span></span></summary>
+                                       <p class="OM-map-name">One or more blocks of text: a <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span> value</p>
+                                       <div class="OM-entry">
+                                          <p class="OM-line">&lt;p&gt; <span class="OM-lit OM-gloss">or other elements defined as <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span></span> <span class="OM-cardinality">[0 to ∞]</span></p>
+                                       </div>
+                                       <p class="close-tag nobr">&lt;/remarks&gt;</p>
+                                    </details>
+                                 </div>
+                                 <p class="close-tag nobr">&lt;/source&gt;</p>
+                              </details>
+                              <details class="OM-entry">
+                                 <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/catalog/control/mapping/map/target">target</a></span> <span class="nobr" id="/catalog/control/mapping/map/target/@type"><a class="OM-name" href="../xml-reference/#/catalog/control/mapping/map/target/@type">type</a>="<span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span>"</span> <span class="nobr" id="/catalog/control/mapping/map/target/@id-ref"><a class="OM-name" href="../xml-reference/#/catalog/control/mapping/map/target/@id-ref">id-ref</a>="<span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span>"</span>&gt;<span class="show-closed"> … <span class="nobr">&lt;/target&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[1 to ∞]</span></span></summary>
+                                 <div class="model-container">
+                                    <details class="OM-entry">
+                                       <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/catalog/control/mapping/map/target/prop">prop</a></span> <span class="nobr" id="/catalog/control/mapping/map/target/prop/@name"><a class="OM-name" href="../xml-reference/#/catalog/control/mapping/map/target/prop/@name">name</a>="<span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span>"</span> <span class="nobr" id="/catalog/control/mapping/map/target/prop/@uuid"><a class="OM-name" href="../xml-reference/#/catalog/control/mapping/map/target/prop/@uuid">uuid</a>="<span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span>"</span> <span class="nobr" id="/catalog/control/mapping/map/target/prop/@ns"><a class="OM-name" href="../xml-reference/#/catalog/control/mapping/map/target/prop/@ns">ns</a>="<span class="OM-datatype"><a href="/reference/datatypes/#uri">uri</a></span>"</span> <span class="nobr" id="/catalog/control/mapping/map/target/prop/@value"><a class="OM-name" href="../xml-reference/#/catalog/control/mapping/map/target/prop/@value">value</a>="<span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span>"</span> <span class="nobr" id="/catalog/control/mapping/map/target/prop/@class"><a class="OM-name" href="../xml-reference/#/catalog/control/mapping/map/target/prop/@class">class</a>="<span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span>"</span>&gt;<span class="show-closed"> … <span class="nobr">&lt;/prop&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
+                                       <div class="model-container">
+                                          <details class="OM-entry">
+                                             <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/catalog/control/mapping/map/target/prop/remarks">remarks</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="nobr">&lt;/remarks&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 or 1]</span></span></summary>
+                                             <p class="OM-map-name">One or more blocks of text: a <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span> value</p>
+                                             <div class="OM-entry">
+                                                <p class="OM-line">&lt;p&gt; <span class="OM-lit OM-gloss">or other elements defined as <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span></span> <span class="OM-cardinality">[0 to ∞]</span></p>
+                                             </div>
+                                             <p class="close-tag nobr">&lt;/remarks&gt;</p>
+                                          </details>
+                                       </div>
+                                       <p class="close-tag nobr">&lt;/prop&gt;</p>
+                                    </details>
+                                    <details class="OM-entry">
+                                       <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/catalog/control/mapping/map/target/link">link</a></span> <span class="nobr" id="/catalog/control/mapping/map/target/link/@href"><a class="OM-name" href="../xml-reference/#/catalog/control/mapping/map/target/link/@href">href</a>="<span class="OM-datatype"><a href="/reference/datatypes/#uri-reference">uri-reference</a></span>"</span> <span class="nobr" id="/catalog/control/mapping/map/target/link/@rel"><a class="OM-name" href="../xml-reference/#/catalog/control/mapping/map/target/link/@rel">rel</a>="<span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span>"</span> <span class="nobr" id="/catalog/control/mapping/map/target/link/@media-type"><a class="OM-name" href="../xml-reference/#/catalog/control/mapping/map/target/link/@media-type">media-type</a>="<span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span>"</span>&gt;<span class="show-closed"> … <span class="nobr">&lt;/link&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
+                                       <div class="model-container">
+                                          <details class="OM-entry">
+                                             <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/catalog/control/mapping/map/target/link/text">text</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#markup-line">markup-line</a></span><span class="nobr">&lt;/text&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 or 1]</span></span></summary>
+                                             <p class="OM-map-name">a <span class="OM-datatype"><a href="/reference/datatypes/#markup-line">markup-line</a></span> value</p>
+                                             <div class="OM-entry">
+                                                <p class="OM-line OM-lit OM-gloss"> Text and inline markup including <code>&lt;insert&gt;</code><code>&lt;em&gt;</code>, <code>&lt;strong&gt;</code>, <code>&lt;code&gt;</code>. </p>
+                                             </div>
+                                             <p class="close-tag nobr">&lt;/text&gt;</p>
+                                          </details>
+                                       </div>
+                                       <p class="close-tag nobr">&lt;/link&gt;</p>
+                                    </details>
+                                    <details class="OM-entry">
+                                       <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/catalog/control/mapping/map/target/remarks">remarks</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="nobr">&lt;/remarks&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 or 1]</span></span></summary>
+                                       <p class="OM-map-name">One or more blocks of text: a <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span> value</p>
+                                       <div class="OM-entry">
+                                          <p class="OM-line">&lt;p&gt; <span class="OM-lit OM-gloss">or other elements defined as <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span></span> <span class="OM-cardinality">[0 to ∞]</span></p>
+                                       </div>
+                                       <p class="close-tag nobr">&lt;/remarks&gt;</p>
+                                    </details>
+                                 </div>
+                                 <p class="close-tag nobr">&lt;/target&gt;</p>
+                              </details>
+                              <details class="OM-entry">
+                                 <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/catalog/control/mapping/map/remarks">remarks</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="nobr">&lt;/remarks&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 or 1]</span></span></summary>
+                                 <p class="OM-map-name">One or more blocks of text: a <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span> value</p>
+                                 <div class="OM-entry">
+                                    <p class="OM-line">&lt;p&gt; <span class="OM-lit OM-gloss">or other elements defined as <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span></span> <span class="OM-cardinality">[0 to ∞]</span></p>
+                                 </div>
+                                 <p class="close-tag nobr">&lt;/remarks&gt;</p>
+                              </details>
+                           </div>
+                           <p class="close-tag nobr">&lt;/map&gt;</p>
+                        </details>
+                     </div>
+                     <p class="close-tag nobr">&lt;/mapping&gt;</p>
+                  </details>
+                  <details class="OM-entry">
                      <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/catalog/control/control">control</a></span>&gt;<span class="show-closed"><span class="OM-lit OM-gloss"> (recursive: model like parent <span class="OM-ref">control</span>) </span><span class="nobr">&lt;/control&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
                      <p class="OM-map-name">[Empty]</p>
                   </details>
@@ -1287,6 +1489,208 @@ The following outline is a representation of the [XML format](https://github.com
                                     </details>
                                  </div>
                                  <p class="close-tag nobr">&lt;/part&gt;</p>
+                              </details>
+                              <details class="OM-entry">
+                                 <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/catalog/group/control/mapping">mapping</a></span> <span class="nobr" id="/catalog/group/control/mapping/@uuid"><a class="OM-name" href="../xml-reference/#/catalog/group/control/mapping/@uuid">uuid</a>="<span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span>"</span>&gt;<span class="show-closed"> … <span class="nobr">&lt;/mapping&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 or 1]</span></span></summary>
+                                 <div class="model-container">
+                                    <details class="OM-entry">
+                                       <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/catalog/group/control/mapping/target-resource">target-resource</a></span> <span class="nobr" id="/catalog/group/control/mapping/target-resource/@type"><a class="OM-name" href="../xml-reference/#/catalog/group/control/mapping/target-resource/@type">type</a>="<span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span>"</span> <span class="nobr" id="/catalog/group/control/mapping/target-resource/@href"><a class="OM-name" href="../xml-reference/#/catalog/group/control/mapping/target-resource/@href">href</a>="<span class="OM-datatype"><a href="/reference/datatypes/#uri-reference">uri-reference</a></span>"</span>&gt;<span class="show-closed"> … <span class="nobr">&lt;/target-resource&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[1]</span></span></summary>
+                                       <div class="model-container">
+                                          <details class="OM-entry">
+                                             <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/catalog/group/control/mapping/target-resource/prop">prop</a></span> <span class="nobr" id="/catalog/group/control/mapping/target-resource/prop/@name"><a class="OM-name" href="../xml-reference/#/catalog/group/control/mapping/target-resource/prop/@name">name</a>="<span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span>"</span> <span class="nobr" id="/catalog/group/control/mapping/target-resource/prop/@uuid"><a class="OM-name" href="../xml-reference/#/catalog/group/control/mapping/target-resource/prop/@uuid">uuid</a>="<span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span>"</span> <span class="nobr" id="/catalog/group/control/mapping/target-resource/prop/@ns"><a class="OM-name" href="../xml-reference/#/catalog/group/control/mapping/target-resource/prop/@ns">ns</a>="<span class="OM-datatype"><a href="/reference/datatypes/#uri">uri</a></span>"</span> <span class="nobr" id="/catalog/group/control/mapping/target-resource/prop/@value"><a class="OM-name" href="../xml-reference/#/catalog/group/control/mapping/target-resource/prop/@value">value</a>="<span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span>"</span> <span class="nobr" id="/catalog/group/control/mapping/target-resource/prop/@class"><a class="OM-name" href="../xml-reference/#/catalog/group/control/mapping/target-resource/prop/@class">class</a>="<span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span>"</span>&gt;<span class="show-closed"> … <span class="nobr">&lt;/prop&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
+                                             <div class="model-container">
+                                                <details class="OM-entry">
+                                                   <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/catalog/group/control/mapping/target-resource/prop/remarks">remarks</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="nobr">&lt;/remarks&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 or 1]</span></span></summary>
+                                                   <p class="OM-map-name">One or more blocks of text: a <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span> value</p>
+                                                   <div class="OM-entry">
+                                                      <p class="OM-line">&lt;p&gt; <span class="OM-lit OM-gloss">or other elements defined as <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span></span> <span class="OM-cardinality">[0 to ∞]</span></p>
+                                                   </div>
+                                                   <p class="close-tag nobr">&lt;/remarks&gt;</p>
+                                                </details>
+                                             </div>
+                                             <p class="close-tag nobr">&lt;/prop&gt;</p>
+                                          </details>
+                                          <details class="OM-entry">
+                                             <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/catalog/group/control/mapping/target-resource/link">link</a></span> <span class="nobr" id="/catalog/group/control/mapping/target-resource/link/@href"><a class="OM-name" href="../xml-reference/#/catalog/group/control/mapping/target-resource/link/@href">href</a>="<span class="OM-datatype"><a href="/reference/datatypes/#uri-reference">uri-reference</a></span>"</span> <span class="nobr" id="/catalog/group/control/mapping/target-resource/link/@rel"><a class="OM-name" href="../xml-reference/#/catalog/group/control/mapping/target-resource/link/@rel">rel</a>="<span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span>"</span> <span class="nobr" id="/catalog/group/control/mapping/target-resource/link/@media-type"><a class="OM-name" href="../xml-reference/#/catalog/group/control/mapping/target-resource/link/@media-type">media-type</a>="<span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span>"</span>&gt;<span class="show-closed"> … <span class="nobr">&lt;/link&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
+                                             <div class="model-container">
+                                                <details class="OM-entry">
+                                                   <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/catalog/group/control/mapping/target-resource/link/text">text</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#markup-line">markup-line</a></span><span class="nobr">&lt;/text&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 or 1]</span></span></summary>
+                                                   <p class="OM-map-name">a <span class="OM-datatype"><a href="/reference/datatypes/#markup-line">markup-line</a></span> value</p>
+                                                   <div class="OM-entry">
+                                                      <p class="OM-line OM-lit OM-gloss"> Text and inline markup including <code>&lt;insert&gt;</code><code>&lt;em&gt;</code>, <code>&lt;strong&gt;</code>, <code>&lt;code&gt;</code>. </p>
+                                                   </div>
+                                                   <p class="close-tag nobr">&lt;/text&gt;</p>
+                                                </details>
+                                             </div>
+                                             <p class="close-tag nobr">&lt;/link&gt;</p>
+                                          </details>
+                                          <details class="OM-entry">
+                                             <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/catalog/group/control/mapping/target-resource/remarks">remarks</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="nobr">&lt;/remarks&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 or 1]</span></span></summary>
+                                             <p class="OM-map-name">One or more blocks of text: a <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span> value</p>
+                                             <div class="OM-entry">
+                                                <p class="OM-line">&lt;p&gt; <span class="OM-lit OM-gloss">or other elements defined as <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span></span> <span class="OM-cardinality">[0 to ∞]</span></p>
+                                             </div>
+                                             <p class="close-tag nobr">&lt;/remarks&gt;</p>
+                                          </details>
+                                       </div>
+                                       <p class="close-tag nobr">&lt;/target-resource&gt;</p>
+                                    </details>
+                                    <details class="OM-entry">
+                                       <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/catalog/group/control/mapping/map">map</a></span> <span class="nobr" id="/catalog/group/control/mapping/map/@uuid"><a class="OM-name" href="../xml-reference/#/catalog/group/control/mapping/map/@uuid">uuid</a>="<span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span>"</span>&gt;<span class="show-closed"> … <span class="nobr">&lt;/map&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[1 to ∞]</span></span></summary>
+                                       <div class="model-container">
+                                          <details class="OM-entry">
+                                             <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/catalog/group/control/mapping/map/prop">prop</a></span> <span class="nobr" id="/catalog/group/control/mapping/map/prop/@name"><a class="OM-name" href="../xml-reference/#/catalog/group/control/mapping/map/prop/@name">name</a>="<span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span>"</span> <span class="nobr" id="/catalog/group/control/mapping/map/prop/@uuid"><a class="OM-name" href="../xml-reference/#/catalog/group/control/mapping/map/prop/@uuid">uuid</a>="<span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span>"</span> <span class="nobr" id="/catalog/group/control/mapping/map/prop/@ns"><a class="OM-name" href="../xml-reference/#/catalog/group/control/mapping/map/prop/@ns">ns</a>="<span class="OM-datatype"><a href="/reference/datatypes/#uri">uri</a></span>"</span> <span class="nobr" id="/catalog/group/control/mapping/map/prop/@value"><a class="OM-name" href="../xml-reference/#/catalog/group/control/mapping/map/prop/@value">value</a>="<span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span>"</span> <span class="nobr" id="/catalog/group/control/mapping/map/prop/@class"><a class="OM-name" href="../xml-reference/#/catalog/group/control/mapping/map/prop/@class">class</a>="<span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span>"</span>&gt;<span class="show-closed"> … <span class="nobr">&lt;/prop&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
+                                             <div class="model-container">
+                                                <details class="OM-entry">
+                                                   <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/catalog/group/control/mapping/map/prop/remarks">remarks</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="nobr">&lt;/remarks&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 or 1]</span></span></summary>
+                                                   <p class="OM-map-name">One or more blocks of text: a <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span> value</p>
+                                                   <div class="OM-entry">
+                                                      <p class="OM-line">&lt;p&gt; <span class="OM-lit OM-gloss">or other elements defined as <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span></span> <span class="OM-cardinality">[0 to ∞]</span></p>
+                                                   </div>
+                                                   <p class="close-tag nobr">&lt;/remarks&gt;</p>
+                                                </details>
+                                             </div>
+                                             <p class="close-tag nobr">&lt;/prop&gt;</p>
+                                          </details>
+                                          <details class="OM-entry">
+                                             <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/catalog/group/control/mapping/map/link">link</a></span> <span class="nobr" id="/catalog/group/control/mapping/map/link/@href"><a class="OM-name" href="../xml-reference/#/catalog/group/control/mapping/map/link/@href">href</a>="<span class="OM-datatype"><a href="/reference/datatypes/#uri-reference">uri-reference</a></span>"</span> <span class="nobr" id="/catalog/group/control/mapping/map/link/@rel"><a class="OM-name" href="../xml-reference/#/catalog/group/control/mapping/map/link/@rel">rel</a>="<span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span>"</span> <span class="nobr" id="/catalog/group/control/mapping/map/link/@media-type"><a class="OM-name" href="../xml-reference/#/catalog/group/control/mapping/map/link/@media-type">media-type</a>="<span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span>"</span>&gt;<span class="show-closed"> … <span class="nobr">&lt;/link&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
+                                             <div class="model-container">
+                                                <details class="OM-entry">
+                                                   <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/catalog/group/control/mapping/map/link/text">text</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#markup-line">markup-line</a></span><span class="nobr">&lt;/text&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 or 1]</span></span></summary>
+                                                   <p class="OM-map-name">a <span class="OM-datatype"><a href="/reference/datatypes/#markup-line">markup-line</a></span> value</p>
+                                                   <div class="OM-entry">
+                                                      <p class="OM-line OM-lit OM-gloss"> Text and inline markup including <code>&lt;insert&gt;</code><code>&lt;em&gt;</code>, <code>&lt;strong&gt;</code>, <code>&lt;code&gt;</code>. </p>
+                                                   </div>
+                                                   <p class="close-tag nobr">&lt;/text&gt;</p>
+                                                </details>
+                                             </div>
+                                             <p class="close-tag nobr">&lt;/link&gt;</p>
+                                          </details>
+                                          <details class="OM-entry">
+                                             <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/catalog/group/control/mapping/map/relationship">relationship</a></span> <span class="nobr" id="/catalog/group/control/mapping/map/relationship/@ns"><a class="OM-name" href="../xml-reference/#/catalog/group/control/mapping/map/relationship/@ns">ns</a>="<span class="OM-datatype"><a href="/reference/datatypes/#uri">uri</a></span>"</span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="nobr">&lt;/relationship&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[1]</span></span></summary>
+                                             <p class="OM-map-name">a <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span> value</p>
+                                             
+                                             The effective requirements of the source is equivalent in semantic meaning to the
+                                             effective requirements of the target. The words may differ, but both mapped sets convey
+                                             similar information with the same effective meaning. This relationship may be reversed,
+                                             since `A equivalent-to B` also means that `B equivalent-to A`.
+                                             The actual requirements of the source are the same as the actual requirements target.
+                                             Differences in capitalization, spelling, and grammar can be ignored, if these differences
+                                             do not change the meaning. This relationship may be reversed, since `A equal-to B`
+                                             also means that `B equal-to A`.
+                                             The effective requirements of the source is a semantic subset of the effective requirements
+                                             of the target. This relationship may be reversed as a `superset-of`, since `A subset-of
+                                             B` also means that `B superset-of A`.
+                                             The effective requirements of the source is a semantic superset of the effective requirements
+                                             of the target. This relationship may be reversed as a `subset-of`, since `A superset-of
+                                             B` also means that `B subset-of A`.
+                                             The effective requirements of the source and target have some semantic equivalence,
+                                             but not all effective requirements from each are contained within the other. This
+                                             relationship may be reversed, since `A intersects-with B` also means that `B intersects-with
+                                             A`. A lower granularity mapping, such as a statement level mapping using 'equivalent-to',
+                                             'subset-of', and/or 'superset-of', may provide a more functional mapping that allows
+                                             for more inference than using this relationship type.
+                                             
+                                             
+                                             <p class="close-tag nobr">&lt;/relationship&gt;</p>
+                                          </details>
+                                          <details class="OM-entry">
+                                             <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/catalog/group/control/mapping/map/source">source</a></span> <span class="nobr" id="/catalog/group/control/mapping/map/source/@type"><a class="OM-name" href="../xml-reference/#/catalog/group/control/mapping/map/source/@type">type</a>="<span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span>"</span> <span class="nobr" id="/catalog/group/control/mapping/map/source/@id-ref"><a class="OM-name" href="../xml-reference/#/catalog/group/control/mapping/map/source/@id-ref">id-ref</a>="<span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span>"</span>&gt;<span class="show-closed"> … <span class="nobr">&lt;/source&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[1 to ∞]</span></span></summary>
+                                             <div class="model-container">
+                                                <details class="OM-entry">
+                                                   <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/catalog/group/control/mapping/map/source/prop">prop</a></span> <span class="nobr" id="/catalog/group/control/mapping/map/source/prop/@name"><a class="OM-name" href="../xml-reference/#/catalog/group/control/mapping/map/source/prop/@name">name</a>="<span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span>"</span> <span class="nobr" id="/catalog/group/control/mapping/map/source/prop/@uuid"><a class="OM-name" href="../xml-reference/#/catalog/group/control/mapping/map/source/prop/@uuid">uuid</a>="<span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span>"</span> <span class="nobr" id="/catalog/group/control/mapping/map/source/prop/@ns"><a class="OM-name" href="../xml-reference/#/catalog/group/control/mapping/map/source/prop/@ns">ns</a>="<span class="OM-datatype"><a href="/reference/datatypes/#uri">uri</a></span>"</span> <span class="nobr" id="/catalog/group/control/mapping/map/source/prop/@value"><a class="OM-name" href="../xml-reference/#/catalog/group/control/mapping/map/source/prop/@value">value</a>="<span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span>"</span> <span class="nobr" id="/catalog/group/control/mapping/map/source/prop/@class"><a class="OM-name" href="../xml-reference/#/catalog/group/control/mapping/map/source/prop/@class">class</a>="<span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span>"</span>&gt;<span class="show-closed"> … <span class="nobr">&lt;/prop&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
+                                                   <div class="model-container">
+                                                      <details class="OM-entry">
+                                                         <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/catalog/group/control/mapping/map/source/prop/remarks">remarks</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="nobr">&lt;/remarks&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 or 1]</span></span></summary>
+                                                         <p class="OM-map-name">One or more blocks of text: a <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span> value</p>
+                                                         <div class="OM-entry">
+                                                            <p class="OM-line">&lt;p&gt; <span class="OM-lit OM-gloss">or other elements defined as <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span></span> <span class="OM-cardinality">[0 to ∞]</span></p>
+                                                         </div>
+                                                         <p class="close-tag nobr">&lt;/remarks&gt;</p>
+                                                      </details>
+                                                   </div>
+                                                   <p class="close-tag nobr">&lt;/prop&gt;</p>
+                                                </details>
+                                                <details class="OM-entry">
+                                                   <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/catalog/group/control/mapping/map/source/link">link</a></span> <span class="nobr" id="/catalog/group/control/mapping/map/source/link/@href"><a class="OM-name" href="../xml-reference/#/catalog/group/control/mapping/map/source/link/@href">href</a>="<span class="OM-datatype"><a href="/reference/datatypes/#uri-reference">uri-reference</a></span>"</span> <span class="nobr" id="/catalog/group/control/mapping/map/source/link/@rel"><a class="OM-name" href="../xml-reference/#/catalog/group/control/mapping/map/source/link/@rel">rel</a>="<span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span>"</span> <span class="nobr" id="/catalog/group/control/mapping/map/source/link/@media-type"><a class="OM-name" href="../xml-reference/#/catalog/group/control/mapping/map/source/link/@media-type">media-type</a>="<span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span>"</span>&gt;<span class="show-closed"> … <span class="nobr">&lt;/link&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
+                                                   <div class="model-container">
+                                                      <details class="OM-entry">
+                                                         <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/catalog/group/control/mapping/map/source/link/text">text</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#markup-line">markup-line</a></span><span class="nobr">&lt;/text&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 or 1]</span></span></summary>
+                                                         <p class="OM-map-name">a <span class="OM-datatype"><a href="/reference/datatypes/#markup-line">markup-line</a></span> value</p>
+                                                         <div class="OM-entry">
+                                                            <p class="OM-line OM-lit OM-gloss"> Text and inline markup including <code>&lt;insert&gt;</code><code>&lt;em&gt;</code>, <code>&lt;strong&gt;</code>, <code>&lt;code&gt;</code>. </p>
+                                                         </div>
+                                                         <p class="close-tag nobr">&lt;/text&gt;</p>
+                                                      </details>
+                                                   </div>
+                                                   <p class="close-tag nobr">&lt;/link&gt;</p>
+                                                </details>
+                                                <details class="OM-entry">
+                                                   <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/catalog/group/control/mapping/map/source/remarks">remarks</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="nobr">&lt;/remarks&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 or 1]</span></span></summary>
+                                                   <p class="OM-map-name">One or more blocks of text: a <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span> value</p>
+                                                   <div class="OM-entry">
+                                                      <p class="OM-line">&lt;p&gt; <span class="OM-lit OM-gloss">or other elements defined as <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span></span> <span class="OM-cardinality">[0 to ∞]</span></p>
+                                                   </div>
+                                                   <p class="close-tag nobr">&lt;/remarks&gt;</p>
+                                                </details>
+                                             </div>
+                                             <p class="close-tag nobr">&lt;/source&gt;</p>
+                                          </details>
+                                          <details class="OM-entry">
+                                             <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/catalog/group/control/mapping/map/target">target</a></span> <span class="nobr" id="/catalog/group/control/mapping/map/target/@type"><a class="OM-name" href="../xml-reference/#/catalog/group/control/mapping/map/target/@type">type</a>="<span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span>"</span> <span class="nobr" id="/catalog/group/control/mapping/map/target/@id-ref"><a class="OM-name" href="../xml-reference/#/catalog/group/control/mapping/map/target/@id-ref">id-ref</a>="<span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span>"</span>&gt;<span class="show-closed"> … <span class="nobr">&lt;/target&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[1 to ∞]</span></span></summary>
+                                             <div class="model-container">
+                                                <details class="OM-entry">
+                                                   <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/catalog/group/control/mapping/map/target/prop">prop</a></span> <span class="nobr" id="/catalog/group/control/mapping/map/target/prop/@name"><a class="OM-name" href="../xml-reference/#/catalog/group/control/mapping/map/target/prop/@name">name</a>="<span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span>"</span> <span class="nobr" id="/catalog/group/control/mapping/map/target/prop/@uuid"><a class="OM-name" href="../xml-reference/#/catalog/group/control/mapping/map/target/prop/@uuid">uuid</a>="<span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span>"</span> <span class="nobr" id="/catalog/group/control/mapping/map/target/prop/@ns"><a class="OM-name" href="../xml-reference/#/catalog/group/control/mapping/map/target/prop/@ns">ns</a>="<span class="OM-datatype"><a href="/reference/datatypes/#uri">uri</a></span>"</span> <span class="nobr" id="/catalog/group/control/mapping/map/target/prop/@value"><a class="OM-name" href="../xml-reference/#/catalog/group/control/mapping/map/target/prop/@value">value</a>="<span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span>"</span> <span class="nobr" id="/catalog/group/control/mapping/map/target/prop/@class"><a class="OM-name" href="../xml-reference/#/catalog/group/control/mapping/map/target/prop/@class">class</a>="<span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span>"</span>&gt;<span class="show-closed"> … <span class="nobr">&lt;/prop&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
+                                                   <div class="model-container">
+                                                      <details class="OM-entry">
+                                                         <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/catalog/group/control/mapping/map/target/prop/remarks">remarks</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="nobr">&lt;/remarks&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 or 1]</span></span></summary>
+                                                         <p class="OM-map-name">One or more blocks of text: a <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span> value</p>
+                                                         <div class="OM-entry">
+                                                            <p class="OM-line">&lt;p&gt; <span class="OM-lit OM-gloss">or other elements defined as <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span></span> <span class="OM-cardinality">[0 to ∞]</span></p>
+                                                         </div>
+                                                         <p class="close-tag nobr">&lt;/remarks&gt;</p>
+                                                      </details>
+                                                   </div>
+                                                   <p class="close-tag nobr">&lt;/prop&gt;</p>
+                                                </details>
+                                                <details class="OM-entry">
+                                                   <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/catalog/group/control/mapping/map/target/link">link</a></span> <span class="nobr" id="/catalog/group/control/mapping/map/target/link/@href"><a class="OM-name" href="../xml-reference/#/catalog/group/control/mapping/map/target/link/@href">href</a>="<span class="OM-datatype"><a href="/reference/datatypes/#uri-reference">uri-reference</a></span>"</span> <span class="nobr" id="/catalog/group/control/mapping/map/target/link/@rel"><a class="OM-name" href="../xml-reference/#/catalog/group/control/mapping/map/target/link/@rel">rel</a>="<span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span>"</span> <span class="nobr" id="/catalog/group/control/mapping/map/target/link/@media-type"><a class="OM-name" href="../xml-reference/#/catalog/group/control/mapping/map/target/link/@media-type">media-type</a>="<span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span>"</span>&gt;<span class="show-closed"> … <span class="nobr">&lt;/link&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>
+                                                   <div class="model-container">
+                                                      <details class="OM-entry">
+                                                         <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/catalog/group/control/mapping/map/target/link/text">text</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#markup-line">markup-line</a></span><span class="nobr">&lt;/text&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 or 1]</span></span></summary>
+                                                         <p class="OM-map-name">a <span class="OM-datatype"><a href="/reference/datatypes/#markup-line">markup-line</a></span> value</p>
+                                                         <div class="OM-entry">
+                                                            <p class="OM-line OM-lit OM-gloss"> Text and inline markup including <code>&lt;insert&gt;</code><code>&lt;em&gt;</code>, <code>&lt;strong&gt;</code>, <code>&lt;code&gt;</code>. </p>
+                                                         </div>
+                                                         <p class="close-tag nobr">&lt;/text&gt;</p>
+                                                      </details>
+                                                   </div>
+                                                   <p class="close-tag nobr">&lt;/link&gt;</p>
+                                                </details>
+                                                <details class="OM-entry">
+                                                   <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/catalog/group/control/mapping/map/target/remarks">remarks</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="nobr">&lt;/remarks&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 or 1]</span></span></summary>
+                                                   <p class="OM-map-name">One or more blocks of text: a <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span> value</p>
+                                                   <div class="OM-entry">
+                                                      <p class="OM-line">&lt;p&gt; <span class="OM-lit OM-gloss">or other elements defined as <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span></span> <span class="OM-cardinality">[0 to ∞]</span></p>
+                                                   </div>
+                                                   <p class="close-tag nobr">&lt;/remarks&gt;</p>
+                                                </details>
+                                             </div>
+                                             <p class="close-tag nobr">&lt;/target&gt;</p>
+                                          </details>
+                                          <details class="OM-entry">
+                                             <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/catalog/group/control/mapping/map/remarks">remarks</a></span>&gt;<span class="show-closed"><span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="nobr">&lt;/remarks&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 or 1]</span></span></summary>
+                                             <p class="OM-map-name">One or more blocks of text: a <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span> value</p>
+                                             <div class="OM-entry">
+                                                <p class="OM-line">&lt;p&gt; <span class="OM-lit OM-gloss">or other elements defined as <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span></span> <span class="OM-cardinality">[0 to ∞]</span></p>
+                                             </div>
+                                             <p class="close-tag nobr">&lt;/remarks&gt;</p>
+                                          </details>
+                                       </div>
+                                       <p class="close-tag nobr">&lt;/map&gt;</p>
+                                    </details>
+                                 </div>
+                                 <p class="close-tag nobr">&lt;/mapping&gt;</p>
                               </details>
                               <details class="OM-entry">
                                  <summary><span class="sq"><span class="nobr">&lt;<a class="OM-name" href="../xml-reference/#/catalog/group/control/control">control</a></span>&gt;<span class="show-closed"><span class="OM-lit OM-gloss"> (recursive: model like parent <span class="OM-ref">control</span>) </span><span class="nobr">&lt;/control&gt;</span></span></span><span class="sq cardinality"> <span class="OM-cardinality">[0 to ∞]</span></span></summary>

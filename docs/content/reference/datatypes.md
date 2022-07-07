@@ -20,14 +20,6 @@ The OSCAL models share a set of data type primitives. These data types are docum
 
 ## Simple Data types
 
-### empty
-
-This data type indicates that the model information element contains no value content, but may contain other structured information elements.
-
-In XML, this may represent an element without text content.
-
-In JSON, this may represent an object with labels corresponding to other child information elements, but no label corresponding to a text value.
-
 ### boolean
 
 A boolean value mapped in XML, JSON, and YAML as follows:
@@ -37,47 +29,47 @@ A boolean value mapped in XML, JSON, and YAML as follows:
 | true | `true` or `1` | `true` | `true` |
 | false | `false` or `0` | `false` | `false` |
 
-### string
+In XML Schema this is represented as a restriction on the built-in type [boolean](https://www.w3.org/TR/xmlschema11-2/#boolean) as follows:
 
-A string of Unicode characters.
+```XML
+<xs:simpleType name="BooleanDatatype">
+  <xs:restriction base="xs:boolean">
+    <xs:pattern value="\S(.*\S)?">
+      <xs:annotation>
+        <xs:documentation>A trimmed string, at least one character with no leading or
+          trailing whitespace.</xs:documentation>
+      </xs:annotation>
+    </xs:pattern>
+  </xs:restriction>
+</xs:simpleType>
+```
 
-### token
+In JSON Schema, this is represented as:
 
-A non-colonized name as defined by [XML Schema Part 2: Datatypes Second Edition](https://www.w3.org/TR/xmlschema11-2/#NCName).
-
-### NCName
-
-A non-colonized name as defined by [XML Schema Part 2: Datatypes Second Edition](https://www.w3.org/TR/xmlschema11-2/#NCName).
-
-### integer
-
-An integer value.
-
-OSCAL represents integers [as defined in XSD](https://www.w3.org/TR/xmlschema11-2/#integer).
-
-In JSON Schema, the [`integer` type](https://tools.ietf.org/html/draft-handrews-json-schema-validation-01#section-6.1.1) is used. Additionally, the `multipleOf` keyword is set to `1.0` to ensure an integer value in systems that do not have a native type.
-
-### nonNegativeInteger
-
-An integer value that is equal to or greater than `0`.
-
-In XSD, [nonNegativeInteger](https://www.w3.org/TR/xmlschema11-2/#nonNegativeInteger) is a built in type derived from the `integer` type.
-
-In JSON Schema, this becomes an `integer` value with an additional `minimum` constraint of `0`. Additionally, the `multipleOf` keyword is set to `1.0` to ensure an integer value in systems that do not have a native type.
-
-### positiveInteger
-
-A positive integer value.
-
-In XML Schema, [positiveInteger](https://www.w3.org/TR/xmlschema11-2/#nonNegativeInteger) is a built in type derived from the 'nonNegativeInteger' type.
-
-In JSON Schema, this becomes an `integer` value with an additional `minimum` constraint of `1`. Additionally, the `multipleOf` keyword is set to `1.0` to ensure an integer value in systems that do not have a native type.
+```JSON
+{
+  "type": "boolean"
+}
+```
 
 ### decimal
 
 A real number expressed using decimal numerals.
 
-In XML Schema this is represented as the built in type [decimal](https://www.w3.org/TR/xmlschema11-2/#decimal).
+In XML Schema this is represented as a restriction on the built-in type [decimal](https://www.w3.org/TR/xmlschema11-2/#decimal) as follows:
+
+```XML
+<xs:simpleType name="DecimalDatatype">
+  <xs:restriction base="xs:decimal">
+    <xs:pattern value="\S(.*\S)?">
+      <xs:annotation>
+        <xs:documentation>A trimmed string, at least one character with no leading or
+          trailing whitespace.</xs:documentation>
+      </xs:annotation>
+    </xs:pattern>
+  </xs:restriction>
+</xs:simpleType>
+```
 
 In JSON Schema, this is represented as:
 
@@ -85,6 +77,99 @@ In JSON Schema, this is represented as:
 {
   "type": "number",
   "pattern": "(\\+|-)?([0-9]+(\\.[0-9]*)?|\\.[0-9]+)"
+}
+```
+
+### empty
+
+This data type indicates that the model information element contains no value content, but may contain other structured information elements.
+
+In XML, this may represent an element without text content.
+
+In JSON, this may represent an object with labels corresponding to other child information elements, but no label corresponding to a text value.
+
+**Note: Use of this data type has been *deprecated* with no replacement, since this can be handled with format-specific syntax.**
+
+### integer
+
+An integer value.
+
+In XML Schema this is represented as a restriction on the built-in type [integer](https://www.w3.org/TR/xmlschema11-2/#integer) as follows:
+
+```XML
+<xs:simpleType name="IntegerDatatype">
+  <xs:restriction base="xs:integer">
+    <xs:pattern value="\S(.*\S)?">
+      <xs:annotation>
+        <xs:documentation>A trimmed string, at least one character with no leading or
+          trailing whitespace.</xs:documentation>
+      </xs:annotation>
+    </xs:pattern>
+  </xs:restriction>
+</xs:simpleType>
+```
+
+In JSON Schema, this is represented as:
+
+```JSON
+{
+  "type": "integer"
+}
+```
+
+### nonNegativeInteger
+
+An integer value that is equal to or greater than `0`.
+
+In XML Schema this is represented as a restriction on the built-in type [nonNegativeInteger](https://www.w3.org/TR/xmlschema11-2/#nonNegativeInteger) as follows:
+
+```XML
+<xs:simpleType name="NonNegativeIntegerDatatype">
+  <xs:restriction base="xs:nonNegativeInteger">
+    <xs:pattern value="\S(.*\S)?">
+      <xs:annotation>
+        <xs:documentation>A trimmed string, at least one character with no leading or
+          trailing whitespace.</xs:documentation>
+      </xs:annotation>
+    </xs:pattern>
+  </xs:restriction>
+</xs:simpleType>
+```
+
+In JSON Schema, this is represented as:
+
+```JSON
+{
+  "type": "integer",
+  "minimum": 0
+}
+```
+
+### positiveInteger
+
+A positive integer value.
+
+In XML Schema this is represented as a restriction on the built-in type [positiveInteger](https://www.w3.org/TR/xmlschema11-2/#nonNegativeInteger) as follows:
+
+```XML
+<xs:simpleType name="PositiveIntegerDatatype">
+  <xs:restriction base="xs:positiveInteger">
+    <xs:pattern value="\S(.*\S)?">
+      <xs:annotation>
+        <xs:documentation>A trimmed string, at least one character with no leading or
+          trailing whitespace.</xs:documentation>
+      </xs:annotation>
+    </xs:pattern>
+  </xs:restriction>
+</xs:simpleType>
+```
+
+In JSON Schema, this is represented as:
+
+```JSON
+{
+  "type": "integer",
+  "minimum": 1
 }
 ```
 
@@ -96,25 +181,55 @@ The following are data types based on strings.
 
 A string representing arbitrary Base64-encoded binary data.
 
-In XML Schema this is represented as the built in type [base64Binary](https://www.w3.org/TR/xmlschema11-2/#base64Binary) until a suitable pattern can be developed.
+In XML Schema this is represented as a restriction on the built-in type [base64Binary](https://www.w3.org/TR/xmlschema11-2/#base64Binary) as follows:
+
+```XML
+<xs:simpleType name="Base64Datatype">
+  <xs:restriction base="xs:base64Binary">
+    <xs:pattern value="\S(.*\S)?">
+      <xs:annotation>
+        <xs:documentation>A trimmed string, at least one character with no leading or
+          trailing whitespace.</xs:documentation>
+      </xs:annotation>
+    </xs:pattern>
+  </xs:restriction>
+</xs:simpleType>
+```
 
 In JSON Schema, this is represented as:
 
 ```JSON
 {
   "type": "string",
+  "pattern": "^[0-9A-Fa-f]+$",
   "contentEncoding": "base64"
 }
 ```
 
-Once a suitable pattern for XML is developed, this pattern will be ported to JSON for more consistent validation.
-
 ### date
 
-In XML, the [date](https://www.w3.org/TR/xmlschema11-2/#date) datatype is used. This is the same as
-[date-with-timezone](#date-with-timezone), except the time zone portion is optional.
+This is the same as [date-with-timezone](#date-with-timezone), except the time zone portion is optional.
 
-In JSON, lexical conformance to dates with optional time zones is provided by a regular expression, the same as given above for [date-with-timezone](#date-with-timezone), except as adjusted for the requirement.
+In XML Schema this is represented as a restriction on the built-in type [date](https://www.w3.org/TR/xmlschema11-2/#date) as follows:
+
+```XML
+<xs:simpleType name="DateDatatype">
+  <xs:restriction base="xs:date">
+    <xs:pattern
+      value="(((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30)))(Z|[+-][0-9]{2}:[0-9]{2})?"
+    />
+  </xs:restriction>
+</xs:simpleType>
+```
+
+In JSON Schema, this is represented as:
+
+```JSON
+{
+  "type": "string",
+  "pattern": "^(((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30)))(Z|[+-][0-9]{2}:[0-9]{2})?$"
+}
+```
 
 ### date-with-timezone
 
@@ -130,12 +245,11 @@ For example:
 In XML Schema this is represented as a restriction on the built-in type [date](https://www.w3.org/TR/xmlschema11-2/#date) as follows:
 
 ```XML
-<xs:simpleType name="date-with-timezone">
-  <xs:annotation>
-    <xs:documentation>The xs:date with a required timezone.</xs:documentation>
-  </xs:annotation>
-  <xs:restriction base="xs:date">
-    <xs:pattern value="((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))(Z|[+-][0-9]{2}:[0-9]{2})(Z|[+-][0-9]{2}:[0-9]{2})"/>
+<xs:simpleType name="DateWithTimezoneDatatype">
+  <xs:restriction base="DateDatatype">
+    <xs:pattern
+      value="(((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30)))(Z|[+-][0-9]{2}:[0-9]{2})"
+    />
   </xs:restriction>
 </xs:simpleType>
 ```
@@ -145,16 +259,34 @@ In JSON Schema, this is represented as:
 ```JSON
 {
   "type": "string",
-  "pattern": "((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))(Z|[+-][0-9]{2}:[0-9]{2})(Z|[+-][0-9]{2}:[0-9]{2})"
+  "pattern": "^(((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30)))(Z|[+-][0-9]{2}:[0-9]{2})$"
 }
 ```
 
 ### dateTime
 
-In XML, the [dateTime](https://www.w3.org/TR/xmlschema11-2/#dateTime) datatype is used. This is the same as
-[dateTime-with-timezone](#datetime-with-timezone), except the time zone portion is optional.
+This is the same as [dateTime-with-timezone](#datetime-with-timezone), except the time zone portion is optional.
 
-In JSON, lexical conformance to date-times with optional time zones is provided by a regular expression, the same as given above for [dateTime-with-timezone](#datetime-with-timezone), except as adjusted for the requirement.
+In XML Schema this is represented as a restriction on the built-in type [dateTime](https://www.w3.org/TR/xmlschema11-2/#dateTime) as follows:
+
+```XML
+<xs:simpleType name="DateTimeDatatype">
+  <xs:restriction base="xs:dateTime">
+    <xs:pattern
+      value="(((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30)))T((2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?)(Z|[+-][0-9]{2}:[0-9]{2})?"
+    />
+  </xs:restriction>
+</xs:simpleType>
+```
+
+In JSON Schema, this is represented as:
+
+```JSON
+{
+  "type": "string",
+  "pattern": "^(((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30)))T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})?$"
+}
+```
 
 ### dateTime-with-timezone
 
@@ -171,12 +303,11 @@ For example:
 In XML Schema this is represented as a restriction on the built in type [dateTime](https://www.w3.org/TR/xmlschema11-2/#dateTime) as follows:
 
 ```XML
-<xs:simpleType name="dateTime-with-timezone">
-  <xs:annotation>
-    <xs:documentation>The xs:dateTime with a required timezone.</xs:documentation>
-  </xs:annotation>
-  <xs:restriction base="xs:dateTime">
-    <xs:pattern value="((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})"/>
+<xs:simpleType name="DateWithTimezoneDatatype">
+  <xs:restriction base="DateDatatype">
+    <xs:pattern
+      value="(((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30)))(Z|[+-][0-9]{2}:[0-9]{2})"
+    />
   </xs:restriction>
 </xs:simpleType>
 ```
@@ -187,7 +318,7 @@ In JSON Schema, this is represented as:
 {
   "type": "string",
   "format": "date-time",
-  "pattern": "((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})"
+  "pattern": "^(((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)|(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))|(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))|(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30)))T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})$"
 }
 ```
 
@@ -195,31 +326,50 @@ In JSON Schema, this is represented as:
 
 An email address string formatted according to [RFC 6531](https://tools.ietf.org/html/rfc6531).
 
-In XML Schema this is represented as the built in type [string](https://www.w3.org/TR/xmlschema11-2/#string) until a suitable pattern can be developed.
+In XML Schema this is represented as a restriction on the built in type [string](https://www.w3.org/TR/xmlschema11-2/#string) as follows:
+
+```XML
+<xs:simpleType name="EmailAddressDatatype">
+  <xs:restriction base="StringDatatype">
+    <xs:pattern value="\S.*@.*\S">
+      <xs:annotation>
+        <xs:documentation>Need a better pattern.</xs:documentation>
+      </xs:annotation>
+    </xs:pattern>
+  </xs:restriction>
+</xs:simpleType>
+```
 
 In JSON Schema, this is represented as:
 
 ```JSON
 {
   "type": "string",
-  "format": "idn-email",
-  "pattern": ".+@.+"
+  "format": "email",
+  "pattern": "^.+@.+$"
 }
 ```
-
-Once a suitable pattern for XML is developed, this pattern will be ported to JSON for more consistent validation.
 
 ### hostname
 
 An internationalized Internet host name string formatted according to [section 2.3.2.3](https://tools.ietf.org/html/rfc5890#section-2.3.2.3) of RFC 5890.
 
-In XML Schema this is represented as the built in type [string](https://www.w3.org/TR/xmlschema11-2/#string) until a suitable pattern can be developed.
+In XML Schema this is represented as a restriction on the built in type [string](https://www.w3.org/TR/xmlschema11-2/#string) as follows:
+
+```XML
+<xs:simpleType name="HostnameDatatype">
+  <xs:restriction base="StringDatatype"/>
+</xs:simpleType>
+```
+
+**Note: A better pattern is needed for normalizing hostname, since the current data type is very open-ended.**
 
 In JSON Schema, this is represented as:
 
 ```JSON
 {
   "type": "string",
+  "pattern": "^\\S(.*\\S)?$",
   "format": "idn-hostname"
 }
 ```
@@ -233,13 +383,11 @@ An Internet Protocol version 4 address in dotted-quad ABNF syntax as defined in 
 In XML Schema this is represented as a restriction on the built in type [string](https://www.w3.org/TR/xmlschema11-2/#string) as follows:
 
 ```XML
-<xs:simpleType name="ip-v4-address">
-  <xs:annotation>
-    <xs:documentation>The ip-v4-address type specifies an IPv4 address in dot decimal notation.</xs:documentation>
-  </xs:annotation>
-  <xs:restriction base="xs:string">
-    <xs:whiteSpace value="collapse"/>
-    <xs:pattern value="((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9]).){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])"/>
+<xs:simpleType name="IPV4AddressDatatype">
+  <xs:restriction base="StringDatatype">
+    <xs:pattern
+      value="((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9]).){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])"
+    />
   </xs:restriction>
 </xs:simpleType>
 ```
@@ -250,7 +398,7 @@ In JSON Schema, this is represented as:
 {
   "type": "string",
   "format": "ipv4",
-  "pattern": "((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9]).){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])"
+  "pattern": "^((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9]).){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])$"
 }
 ```
 
@@ -261,13 +409,12 @@ An Internet Protocol version 6 address in dotted-quad ABNF syntax as defined in 
 In XML Schema this is represented as a restriction on the built in type [string](https://www.w3.org/TR/xmlschema11-2/#string) as follows:
 
 ```XML
-<xs:simpleType name="ip-v6-address">
-  <xs:annotation>
-    <xs:documentation>The ip-v4-address type specifies an IPv4 address in dot decimal notation.</xs:documentation>
-  </xs:annotation>
+<xs:simpleType name="IPV6AddressDatatype">
   <xs:restriction base="xs:string">
     <xs:whiteSpace value="collapse"/>
-    <xs:pattern value="(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|[fF][eE]80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::([fF]{4}(:0{1,4}){0,1}:){0,1}((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9]).){3,3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9]).){3,3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9]))"/>
+    <xs:pattern
+      value="(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|[fF][eE]80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::([fF]{4}(:0{1,4}){0,1}:){0,1}((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9]).){3,3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9]).){3,3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9]))"
+    />
   </xs:restriction>
 </xs:simpleType>
 ```
@@ -278,7 +425,65 @@ In JSON Schema, this is represented as:
 {
   "type": "string",
   "format": "ipv6",
-  "pattern": "(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|[fF][eE]80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::([fF]{4}(:0{1,4}){0,1}:){0,1}((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9]).){3,3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9]).){3,3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9]))"
+  "pattern": "^(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|[fF][eE]80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::([fF]{4}(:0{1,4}){0,1}:){0,1}((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9]).){3,3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9]).){3,3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9]))$"
+}
+```
+
+### NCName
+
+A non-colonized name as defined by [XML Schema Part 2: Datatypes Second Edition](https://www.w3.org/TR/xmlschema11-2/#NCName).
+
+**Note: Use of this data type has been *deprecated* in favor of [token](#token).**
+
+### string
+
+A string of Unicode characters, but not empty and not whitespace-only (whitespace is U+9, U+10, U+32 or [ \n\t]+).
+
+In XML Schema this is represented as a restriction on the built in type [string](https://www.w3.org/TR/xmlschema11-2/#string) as follows:
+
+```XML
+<xs:simpleType name="StringDatatype">
+  <xs:restriction base="xs:string">
+    <xs:whiteSpace value="preserve"/>
+    <xs:pattern value="\S(.*\S)?">
+      <xs:annotation>
+        <xs:documentation>A trimmed string, at least one character with no leading or
+          trailing whitespace.</xs:documentation>
+      </xs:annotation>
+    </xs:pattern>
+  </xs:restriction>
+</xs:simpleType>
+```
+
+In JSON Schema, this is represented as:
+
+```JSON
+{
+  "type": "string",
+  "pattern": "^\\S(.*\\S)?$"
+}
+```
+
+### token
+
+A non-colonized name as defined by [XML Schema Part 2: Datatypes Second Edition](https://www.w3.org/TR/xmlschema11-2/#NCName).
+
+In XML Schema this is represented as a restriction on the built in type [string](https://www.w3.org/TR/xmlschema11-2/#string) as follows:
+
+```XML
+<xs:simpleType name="TokenDatatype">
+  <xs:restriction base="StringDatatype">
+    <xs:pattern value="(\p{L}|_)(\p{L}|\p{N}|[.\-_])*"/>
+  </xs:restriction>
+</xs:simpleType>
+```
+
+In JSON Schema, this is represented as:
+
+```JSON
+{
+  "type": "string",
+  "pattern": "^(\\p{L}|_)(\\p{L}|\\p{N}|[.\\-_])*$"
 }
 ```
 
@@ -286,24 +491,48 @@ In JSON Schema, this is represented as:
 
 A universal resource identifier (URI) formatted according to [RFC3986](https://tools.ietf.org/html/rfc3986).
 
-In XML Schema this is represented as the built in type [anyURI](https://www.w3.org/TR/xmlschema11-2/#anyURI) until a suitable pattern can be developed.
+In XML Schema this is represented as a restriction on the built in type [anyURI](https://www.w3.org/TR/xmlschema11-2/#anyURI) as follows:
+
+```XML
+<xs:simpleType name="URIDatatype">
+  <xs:restriction base="xs:anyURI">
+    <xs:pattern value="[a-zA-Z][a-zA-Z0-9+\-.]+:.*\S">
+      <xs:annotation>
+        <xs:documentation>Requires a scheme with colon per RFC 3986.</xs:documentation>
+      </xs:annotation>
+    </xs:pattern>
+  </xs:restriction>
+</xs:simpleType>
+```
 
 In JSON Schema, this is represented as:
 
 ```JSON
 {
   "type": "string",
-  "format": "uri"
+  "format": "uri",
+  "pattern": "^[a-zA-Z][a-zA-Z0-9+\\-.]+:.+$"
 }
 ```
 
-Once a suitable pattern for XML is developed, this pattern will be ported to JSON for more consistent validation.
-
 ### uri-reference
 
-A URI Reference (either a URI or a relative-reference) formatted according to [section 4.1](https://tools.ietf.org/html/rfc3986#section-4.1) of RFC3986,
+A URI Reference (either a URI or a relative-reference) formatted according to [section 4.1](https://tools.ietf.org/html/rfc3986#section-4.1) of RFC3986.
 
-In XML Schema this is represented as the built in type [anyURI](https://www.w3.org/TR/xmlschema11-2/#anyURI) until a suitable pattern can be developed.
+In XML Schema this is represented as a restriction on the built in type [anyURI](https://www.w3.org/TR/xmlschema11-2/#anyURI) as follows:
+
+```XML
+<xs:simpleType name="URIReferenceDatatype">
+  <xs:restriction base="xs:anyURI">
+    <xs:pattern value="\S(.*\S)?">
+      <xs:annotation>
+        <xs:documentation>A trimmed URI, at least one character with no leading or
+          trailing whitespace.</xs:documentation>
+      </xs:annotation>
+    </xs:pattern>
+  </xs:restriction>
+</xs:simpleType>
+```
 
 In JSON Schema, this is represented as:
 
@@ -314,11 +543,34 @@ In JSON Schema, this is represented as:
 }
 ```
 
-Once a suitable pattern for XML is developed, this pattern will be ported to JSON for more consistent validation.
-
 ### uuid
 
-A version 4 Universally Unique Identifier (UUID) as defined by [RFC 4122](https://tools.ietf.org/html/rfc4122).
+A version 4 or 5 Universally Unique Identifier (UUID) as defined by [RFC 4122](https://tools.ietf.org/html/rfc4122).
+
+In XML Schema this is represented as a restriction on the built in type [string](https://www.w3.org/TR/xmlschema11-2/#string) as follows:
+
+```XML
+<xs:simpleType name="UUIDDatatype">
+  <xs:restriction base="StringDatatype">
+    <xs:pattern
+      value="[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[45][0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}">
+      <xs:annotation>
+        <xs:documentation>A sequence of 8-4-4-4-12 hex digits, with extra constraints in
+          the 13th and 17-18th places for version 4 and 5 </xs:documentation>
+      </xs:annotation>
+    </xs:pattern>
+  </xs:restriction>
+</xs:simpleType>
+```
+
+In JSON Schema, this is represented as:
+
+```JSON
+{
+  "type": "string",
+  "pattern": "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[45][0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$"
+}
+```
 
 ## Markup Data Types
 

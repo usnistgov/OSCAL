@@ -10,7 +10,7 @@ toc:
   headingselectors: "h1.toc1, h2.toc2, h3.toc3, h4.toc4, h5.toc5, h6.toc6"
 ---
 
-The following is a reference for the XML element and attribute types derived from the [metaschema](https://github.com/usnistgov/OSCAL/blob/release-1.0//src/metaschema/oscal_assessment-results_metaschema.xml) for this [model](/concepts/layer/assessment/assessment-results/).
+The following is a reference for the XML element and attribute types derived from the [metaschema](https://github.com/usnistgov/OSCAL/blob/develop//src/metaschema/oscal_assessment-results_metaschema.xml) for this [model](/concepts/layer/assessment/assessment-results/).
 
 <!-- DO NOT REMOVE. Generated text below -->{{< rawhtml >}}
 <div xmlns="http://www.w3.org/1999/xhtml" class="xml-definition">
@@ -1920,6 +1920,16 @@ The following is a reference for the XML element and attribute types derived fro
                                              <p class="formal-name">Media Type</p>
                                           </div>
                                           <div class="body">
+                                             <div class="remarks-group usa-prose">
+                                                <details open="open">
+                                                   <summary class="subhead">Remarks</summary>
+                                                   <div class="remarks">
+                                                      <p>The IANA Media Types Registry should be used, but currently there is no official media
+                                                         type for YAML. OSCAL documents should specify <code>application/yaml</code> for general YAML content, or <code>application/oscal+yaml</code> for YAML-based OSCAL content. This approach aligns with use of a structured name
+                                                         suffix, per <a href="https://www.rfc-editor.org/rfc/rfc6838.html#section-4.2.8">RFC 6838 Section 4.2.8</a>.</p>
+                                                   </div>
+                                                </details>
+                                             </div>
                                              <p class="definition-link"><a href="#/flag/oscal-metadata/media-type">See definition</a></p>
                                           </div>
                                        </div>
@@ -1990,6 +2000,16 @@ The following is a reference for the XML element and attribute types derived fro
                                              <p class="formal-name">Media Type</p>
                                           </div>
                                           <div class="body">
+                                             <div class="remarks-group usa-prose">
+                                                <details open="open">
+                                                   <summary class="subhead">Remarks</summary>
+                                                   <div class="remarks">
+                                                      <p>The IANA Media Types Registry should be used, but currently there is no official media
+                                                         type for YAML. OSCAL documents should specify <code>application/yaml</code> for general YAML content, or <code>application/oscal+yaml</code> for YAML-based OSCAL content. This approach aligns with use of a structured name
+                                                         suffix, per <a href="https://www.rfc-editor.org/rfc/rfc6838.html#section-4.2.8">RFC 6838 Section 4.2.8</a>.</p>
+                                                   </div>
+                                                </details>
+                                             </div>
                                              <p class="definition-link"><a href="#/flag/oscal-metadata/media-type">See definition</a></p>
                                           </div>
                                        </div>
@@ -4323,6 +4343,11 @@ The following is a reference for the XML element and attribute types derived fro
                         <details open="open">
                            <summary class="subhead">Remarks</summary>
                            <div class="remarks">
+                              <p>The IANA Media Types Registry should be used, but currently there is no official media
+                                 type for YAML. OSCAL documents should specify <code>application/yaml</code> for general YAML content, or <code>application/oscal+yaml</code> for YAML-based OSCAL content. This approach aligns with use of a structured name
+                                 suffix, per <a href="https://www.rfc-editor.org/rfc/rfc6838.html#section-4.2.8">RFC 6838 Section 4.2.8</a>.</p>
+                           </div>
+                           <div class="remarks">
                               <p>The <code>media-type</code> provides a hint about the content model of the referenced resource. A valid entry
                                  from the <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">IANA Media Types registry</a> SHOULD be used.</p>
                            </div>
@@ -4889,6 +4914,16 @@ The following is a reference for the XML element and attribute types derived fro
       <div class="body">
          <p class="description"><span class="usa-tag">description</span> Specifies a media type as defined by the Internet Assigned Numbers Authority (IANA)
             <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">Media Types Registry</a>. </p>
+         <div class="remarks-group usa-prose">
+            <details open="open">
+               <summary class="subhead">Remarks</summary>
+               <div class="remarks">
+                  <p>The IANA Media Types Registry should be used, but currently there is no official media
+                     type for YAML. OSCAL documents should specify <code>application/yaml</code> for general YAML content, or <code>application/oscal+yaml</code> for YAML-based OSCAL content. This approach aligns with use of a structured name
+                     suffix, per <a href="https://www.rfc-editor.org/rfc/rfc6838.html#section-4.2.8">RFC 6838 Section 4.2.8</a>.</p>
+               </div>
+            </details>
+         </div>
       </div>
    </div>
    <div class="model-entry definition define-assembly">
