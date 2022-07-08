@@ -3,6 +3,7 @@
 <!DOCTYPE METASCHEMA [
    <!ENTITY allowed-values-control-group-property-name SYSTEM "./shared-constraints/allowed-values-control-group-property-name.ent">
 ]>
+<?xml-stylesheet type="text/css" href="../../build/metaschema/toolchains/xslt-M4/util/metaschema-author.css"?>
 <METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/toolchains/xslt-M4/validate/metaschema.xsd">
       <schema-name>OSCAL Profile Model</schema-name>
@@ -11,7 +12,9 @@
       <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
       <json-base-uri>http://csrc.nist.gov/ns/oscal</json-base-uri>
       <remarks>
-            <p>A profile designates a selection and configuration of controls from one or more catalogs, along with a series of operations over them. The topmost element in the OSCAL profile XML schema is <code>profile</code>.</p>
+            <p>In OSCAL a <a href="https://pages.nist.gov/OSCAL/concepts/layer/control/profile/">profile</a> represents a <a href="https://pages.nist.gov/OSCAL/concepts/terminology/#baseline">baseline</a> of selected <a href="https://pages.nist.gov/OSCAL/concepts/terminology/#control">controls</a> from one or more control catalogs. An OSCAL profile is used in an OSCAL <a href="https://pages.nist.gov/OSCAL/concepts/layer/implementation/ssp/">system security plan</a> (SSP) to determine the baseline of controls that must be implemented by the information system. The effective set of controls is generated through <a href="https://pages.nist.gov/OSCAL/concepts/processing/profile-resolution/">profile resolution</a>.</p>
+            <p>A profile declares a set of selections and possible modifications of controls from one or more imported catalogs and/or profiles. When a profile is resolved, controls are selected from the imported catalog(s) for use by another profile or SSP. A profile may also be used for other purposes, such as documentation generation.</p>
+            <p>When a profile is used as input to the profile resolution process, it describes how the resulting catalog, representing a baseline, is structured and any alteration or tailoring to the resulting catalog structure and controls.</p>
       </remarks>
 
       <import href="oscal_metadata_metaschema.xml"/>
@@ -19,7 +22,7 @@
 
       <define-assembly name="profile">
             <formal-name>Profile</formal-name>
-            <description>Each OSCAL profile is defined by a Profile element</description>
+            <description>Each OSCAL profile is defined by a <code>profile</code> element</description>
             <root-name>profile</root-name>
             <define-flag name="uuid" as-type="uuid" required="yes">
                   <formal-name>Profile Universally Unique Identifier</formal-name>
