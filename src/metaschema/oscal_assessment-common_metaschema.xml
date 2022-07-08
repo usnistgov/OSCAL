@@ -59,7 +59,7 @@
          <field ref="remarks" in-xml="WITH_WRAPPER" min-occurs="0" max-occurs="1"/>
       </model>
       <constraint>
-         <allowed-values target="part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]">
+         <allowed-values target="part[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]/@name">
             <enum value="objective" deprecated="1.0.1">**(deprecated)** Use 'assessment-objective' instead.</enum>
             <enum value="assessment" deprecated="1.0.1">**(deprecated)** Use 'assessment-method' instead.</enum>
             <enum value="assessment-objective">The part defines an assessment objective.</enum>
