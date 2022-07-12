@@ -5,7 +5,7 @@
 <METASCHEMA xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0" xsi:schemaLocation="http://csrc.nist.gov/ns/oscal/metaschema/1.0 ../../build/metaschema/toolchains/xslt-M4/validate/metaschema.xsd" abstract="yes">
     <schema-name>OSCAL Document Metadata Description</schema-name>
-    <schema-version>1.0.3</schema-version>
+    <schema-version>1.0.4</schema-version>
     <short-name>oscal-metadata</short-name>
     <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
     <json-base-uri>http://csrc.nist.gov/ns/oscal</json-base-uri>
@@ -814,6 +814,9 @@
         <formal-name>Media Type</formal-name>
         <description>Specifies a media type as defined by the Internet Assigned Numbers Authority (IANA) <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">Media Types Registry</a>.
         </description>
+        <remarks>
+            <p>The IANA Media Types Registry should be used, but currently there is no official media type for YAML. OSCAL documents should specify <code>application/yaml</code> for general YAML content, or <code>application/oscal+yaml</code> for YAML-based OSCAL content. This approach aligns with use of a structured name suffix, per <a href="https://www.rfc-editor.org/rfc/rfc6838.html#section-4.2.8">RFC 6838 Section 4.2.8</a>.</p>
+        </remarks>
     </define-flag>
 
     <define-field name="remarks" as-type="markup-multiline">

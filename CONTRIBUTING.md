@@ -14,6 +14,9 @@
   - [Initializing Git submodules](#initializing-git-submodules)
   - [Configuring Submodules to Use SSH](#configuring-submodules-to-use-ssh)
   - [Updating submodules](#updating-submodules)
+- [Licenses and attribution](#licenses-and-attribution)
+  - [This project is in the public domain](#this-project-is-in-the-public-domain)
+  - [Contributions will be released into the public domain](#contributions-will-be-released-into-the-public-domain)
 
 # Overview
 
@@ -59,10 +62,10 @@ There are two mailing lists for the project:
 
 Contributions can be made to the following branches in this repository:
 
-- **release-\***: The release branches are used to provide patches to a major or minor version of OSCAL. The branches are named release-*major*.*minor*. You should provide changes only to the highest numbered *minor* release for a given *major* release. Patch releases are made more frequenly than *major* or *minor* releases.
+- **release-\***: The release branches are used to provide patches to a major or minor version of OSCAL. The branches are named release-*major*.*minor*. You should provide changes only to the highest numbered *minor* release for a given *major* release. Patch releases are made more frequently than *major* or *minor* releases.
 - **develop**: This branch is used to queue changes for the next *major*/*minor* release of OSCAL. A *major*/*minor* release will result in the creation of a new release branch, once the development has been completed and the update is to be staged for release.
 
-More information about how releases are managed in this repository can be found in the [versioning and branching guide](./versioning-and-branching.md).
+More information about how [releases](../../releases) are managed in this repository can be found in the [versioning and branching guide](versioning-and-branching.md).
 
 The OSCAL project uses a typical GitHub fork and pull request [workflow](https://guides.github.com/introduction/flow/). To establish a development environment for contributing to the OSCAL project, you must do the following:
 
@@ -158,3 +161,15 @@ Submodule contents will be periodically updated. To ensure you have the latest c
 ```
 git submodule update --init --recursive
 ```
+
+# Licenses and attribution
+
+## This project is in the public domain
+
+This project is in the worldwide public domain.
+
+This project is in the public domain within the United States, and copyright and related rights in the work worldwide are waived through the [CC0 1.0 Universal public domain](https://creativecommons.org/publicdomain/zero/1.0/) dedication.
+
+## Contributions will be released into the public domain
+
+All contributions to this repository are provided under the [CC0 1.0 Universal public domain](https://creativecommons.org/publicdomain/zero/1.0/) dedication. By submitting a pull request, you are agreeing to comply with this waiver of copyright interest.

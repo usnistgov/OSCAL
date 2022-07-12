@@ -1,151 +1,34 @@
-This project includes a mix of the following:
-
-- Open source work by the U.S. government that is in the public domain contributed under the National Institute of Standards and Technology License.
-- Open source work contributed by members of the public based on the CC0 1.0 Universal license.
+- [This project is in the worldwide public domain](#this-project-is-in-the-worldwide-public-domain)
+  - [Fair Use of NIST Data/Works](#fair-use-of-nist-dataworks)
+  - [NIST Software](#nist-software)
+- [Contributions to this project](#contributions-to-this-project)
 
 # This project is in the worldwide public domain
 
-This project includes a mix of the following:
+As a work of the United States government, the work in this repository is in the public domain within the United States. See [Fair Use of NIST Data/Works](#fair-use-of-nist-dataworks) and [NIST Software](#nist-software) for more information. 
 
-- Open source work by the United States government. This work is in the public domain within the United States under the [National Institute of Standards and Technology License](#national-institute-of-standards-and-technology-license). Additionally, we waive copyright and related rights for the work worldwide through the CC0 1.0 Universal public domain dedication.
-- Open source work produced by members of the public based on the [CC0 1.0 Universal license](#cc0-10-universal-license).
+Additionally, the work in this repository is made available in the public domain worldwide using the [CC0 1.0 Universal public domain dedication](https://creativecommons.org/publicdomain/zero/1.0/).
 
-# National Institute of Standards and Technology License
+## Fair Use of NIST Data/Works
 
-Portions of this software were developed by employees of the National Institute
-of Standards and Technology (NIST), an agency of the Federal Government.
-Pursuant to [title 17 section 105 of the United States Code](https://www.govinfo.gov/content/pkg/USCODE-2010-title17/html/USCODE-2010-title17-chap1-sec105.htm), works of NIST employees are
-not subject to copyright protection in the United States and are considered to
-be in the public domain. Permission to freely use, copy, modify, and distribute
-this software and its documentation without fee is hereby granted, provided that
-this notice and disclaimer of warranty appears in all copies.
+This data/work was created by employees of the National Institute of Standards and Technology (NIST), an agency of the Federal Government. Pursuant to title 17 United States Code Section 105, works of NIST employees are not subject to copyright protection in the United States.  This data/work may be subject to foreign copyright.
 
-THE SOFTWARE IS PROVIDED 'AS IS' WITHOUT ANY WARRANTY OF ANY KIND, EITHER
-EXPRESSED, IMPLIED, OR STATUTORY, INCLUDING, BUT NOT LIMITED TO, ANY WARRANTY
-THAT THE SOFTWARE WILL CONFORM TO SPECIFICATIONS, ANY IMPLIED WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND FREEDOM FROM
-INFRINGEMENT, AND ANY WARRANTY THAT THE DOCUMENTATION WILL CONFORM TO THE
-SOFTWARE, OR ANY WARRANTY THAT THE SOFTWARE WILL BE ERROR FREE. IN NO EVENT
-SHALL NIST BE LIABLE FOR ANY DAMAGES, INCLUDING, BUT NOT LIMITED TO, DIRECT,
-INDIRECT, SPECIAL OR CONSEQUENTIAL DAMAGES, ARISING OUT OF, RESULTING FROM, OR
-IN ANY WAY CONNECTED WITH THIS SOFTWARE, WHETHER OR NOT BASED UPON WARRANTY,
-CONTRACT, TORT, OR OTHERWISE, WHETHER OR NOT INJURY WAS SUSTAINED BY PERSONS OR
-PROPERTY OR OTHERWISE, AND WHETHER OR NOT LOSS WAS SUSTAINED FROM, OR AROSE OUT
-OF THE RESULTS OF, OR USE OF, THE SOFTWARE OR SERVICES PROVIDED HEREUNDER.
+The data/work is provided by NIST as a public service and is expressly provided “AS IS.” NIST MAKES NO WARRANTY OF ANY KIND, EXPRESS, IMPLIED OR STATUTORY, INCLUDING, WITHOUT LIMITATION, THE IMPLIED WARRANTY OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, NON-INFRINGEMENT AND DATA ACCURACY. NIST does not warrant or make any representations regarding the use of the data or the results thereof, including but not limited to the correctness, accuracy, reliability or usefulness of the data. NIST SHALL NOT BE LIABLE AND YOU HEREBY RELEASE NIST FROM LIABILITY FOR ANY INDIRECT, CONSEQUENTIAL, SPECIAL, OR INCIDENTAL DAMAGES (INCLUDING DAMAGES FOR LOSS OF BUSINESS PROFITS, BUSINESS INTERRUPTION, LOSS OF BUSINESS INFORMATION, AND THE LIKE), WHETHER ARISING IN TORT, CONTRACT, OR OTHERWISE, ARISING FROM OR RELATING TO THE DATA (OR THE USE OF OR INABILITY TO USE THIS DATA), EVEN IF NIST HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
 
-# CC0 1.0 Universal License
+To the extent that NIST may hold copyright in countries other than the United States, you are hereby granted the non-exclusive irrevocable and unconditional right to print, publish, prepare derivative works and distribute the NIST data, in any medium, or authorize others to do so on your behalf, on a royalty-free basis throughout the world.
 
-Statement of Purpose
+You may improve, modify, and create derivative works of the data or any portion of the data, and you may copy and distribute such modifications or works. Modified works should carry a notice stating that you changed the data and should note the date and nature of any such change. Please explicitly acknowledge the National Institute of Standards and Technology as the source of the data:  Data citation recommendations are provided at https://www.nist.gov/open/license.
 
-The laws of most jurisdictions throughout the world automatically confer
-exclusive Copyright and Related Rights (defined below) upon the creator and
-subsequent owner(s) (each and all, an "owner") of an original work of
-authorship and/or a database (each, a "Work").
+Permission to use this data is contingent upon your acceptance of the terms of this agreement and upon your providing appropriate acknowledgments of NIST’s creation of the data/work.
 
-Certain owners wish to permanently relinquish those rights to a Work for the
-purpose of contributing to a commons of creative, cultural and scientific
-works ("Commons") that the public can reliably and without fear of later
-claims of infringement build upon, modify, incorporate in other works, reuse
-and redistribute as freely as possible in any form whatsoever and for any
-purposes, including without limitation commercial purposes. These owners may
-contribute to the Commons to promote the ideal of a free culture and the
-further production of creative, cultural and scientific works, or to gain
-reputation or greater distribution for their Work in part through the use and
-efforts of others.
+## NIST Software
 
-For these and/or other purposes and motivations, and without any expectation
-of additional consideration or compensation, the person associating CC0 with a
-Work (the "Affirmer"), to the extent that he or she is an owner of Copyright
-and Related Rights in the Work, voluntarily elects to apply CC0 to the Work
-and publicly distribute the Work under its terms, with knowledge of his or her
-Copyright and Related Rights in the Work and the meaning and intended legal
-effect of CC0 on those rights.
+NIST-developed software is provided by NIST as a public service. You may use, copy, and distribute copies of the software in any medium, provided that you keep intact this entire notice. You may improve, modify, and create derivative works of the software or any portion of the software, and you may copy and distribute such modifications or works. Modified works should carry a notice stating that you changed the software and should note the date and nature of any such change. Please explicitly acknowledge the National Institute of Standards and Technology as the source of the software. 
 
-1. Copyright and Related Rights. A Work made available under CC0 may be
-protected by copyright and related or neighboring rights ("Copyright and
-Related Rights"). Copyright and Related Rights include, but are not limited
-to, the following:
+NIST-developed software is expressly provided "AS IS." NIST MAKES NO WARRANTY OF ANY KIND, EXPRESS, IMPLIED, IN FACT, OR ARISING BY OPERATION OF LAW, INCLUDING, WITHOUT LIMITATION, THE IMPLIED WARRANTY OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, NON-INFRINGEMENT, AND DATA ACCURACY. NIST NEITHER REPRESENTS NOR WARRANTS THAT THE OPERATION OF THE SOFTWARE WILL BE UNINTERRUPTED OR ERROR-FREE, OR THAT ANY DEFECTS WILL BE CORRECTED. NIST DOES NOT WARRANT OR MAKE ANY REPRESENTATIONS REGARDING THE USE OF THE SOFTWARE OR THE RESULTS THEREOF, INCLUDING BUT NOT LIMITED TO THE CORRECTNESS, ACCURACY, RELIABILITY, OR USEFULNESS OF THE SOFTWARE.
 
-  i. the right to reproduce, adapt, distribute, perform, display, communicate,
-  and translate a Work;
+You are solely responsible for determining the appropriateness of using and distributing the software and you assume all risks associated with its use, including but not limited to the risks and costs of program errors, compliance with applicable laws, damage to or loss of data, programs or equipment, and the unavailability or interruption of operation. This software is not intended to be used in any situation where a failure could cause risk of injury or damage to property. The software developed by NIST employees is not subject to copyright protection within the United States.
 
-  ii. moral rights retained by the original author(s) and/or performer(s);
+# Contributions to this project
 
-  iii. publicity and privacy rights pertaining to a person's image or likeness
-  depicted in a Work;
-
-  iv. rights protecting against unfair competition in regards to a Work,
-  subject to the limitations in paragraph 4(a), below;
-
-  v. rights protecting the extraction, dissemination, use and reuse of data in
-  a Work;
-
-  vi. database rights (such as those arising under Directive 96/9/EC of the
-  European Parliament and of the Council of 11 March 1996 on the legal
-  protection of databases, and under any national implementation thereof,
-  including any amended or successor version of such directive); and
-
-  vii. other similar, equivalent or corresponding rights throughout the world
-  based on applicable law or treaty, and any national implementations thereof.
-
-2. Waiver. To the greatest extent permitted by, but not in contravention of,
-applicable law, Affirmer hereby overtly, fully, permanently, irrevocably and
-unconditionally waives, abandons, and surrenders all of Affirmer's Copyright
-and Related Rights and associated claims and causes of action, whether now
-known or unknown (including existing as well as future claims and causes of
-action), in the Work (i) in all territories worldwide, (ii) for the maximum
-duration provided by applicable law or treaty (including future time
-extensions), (iii) in any current or future medium and for any number of
-copies, and (iv) for any purpose whatsoever, including without limitation
-commercial, advertising or promotional purposes (the "Waiver"). Affirmer makes
-the Waiver for the benefit of each member of the public at large and to the
-detriment of Affirmer's heirs and successors, fully intending that such Waiver
-shall not be subject to revocation, rescission, cancellation, termination, or
-any other legal or equitable action to disrupt the quiet enjoyment of the Work
-by the public as contemplated by Affirmer's express Statement of Purpose.
-
-3. Public License Fallback. Should any part of the Waiver for any reason be
-judged legally invalid or ineffective under applicable law, then the Waiver
-shall be preserved to the maximum extent permitted taking into account
-Affirmer's express Statement of Purpose. In addition, to the extent the Waiver
-is so judged Affirmer hereby grants to each affected person a royalty-free,
-non transferable, non sublicensable, non exclusive, irrevocable and
-unconditional license to exercise Affirmer's Copyright and Related Rights in
-the Work (i) in all territories worldwide, (ii) for the maximum duration
-provided by applicable law or treaty (including future time extensions), (iii)
-in any current or future medium and for any number of copies, and (iv) for any
-purpose whatsoever, including without limitation commercial, advertising or
-promotional purposes (the "License"). The License shall be deemed effective as
-of the date CC0 was applied by Affirmer to the Work. Should any part of the
-License for any reason be judged legally invalid or ineffective under
-applicable law, such partial invalidity or ineffectiveness shall not
-invalidate the remainder of the License, and in such case Affirmer hereby
-affirms that he or she will not (i) exercise any of his or her remaining
-Copyright and Related Rights in the Work or (ii) assert any associated claims
-and causes of action with respect to the Work, in either case contrary to
-Affirmer's express Statement of Purpose.
-
-4. Limitations and Disclaimers.
-
-  a. No trademark or patent rights held by Affirmer are waived, abandoned,
-  surrendered, licensed or otherwise affected by this document.
-
-  b. Affirmer offers the Work as-is and makes no representations or warranties
-  of any kind concerning the Work, express, implied, statutory or otherwise,
-  including without limitation warranties of title, merchantability, fitness
-  for a particular purpose, non infringement, or the absence of latent or
-  other defects, accuracy, or the present or absence of errors, whether or not
-  discoverable, all to the greatest extent permissible under applicable law.
-
-  c. Affirmer disclaims responsibility for clearing rights of other persons
-  that may apply to the Work or any use thereof, including without limitation
-  any person's Copyright and Related Rights in the Work. Further, Affirmer
-  disclaims responsibility for obtaining any necessary consents, permissions
-  or other rights required for any use of the Work.
-
-  d. Affirmer understands and acknowledges that Creative Commons is not a
-  party to this document and has no duty or obligation with respect to this
-  CC0 or use of the Work.
-
-For more information, please see
-<http://creativecommons.org/publicdomain/zero/1.0/>
+As stated in [CONTRIBUTING](CONTRIBUTING.md), all contributions to this repository are made under the [CC0 1.0 Universal public domain dedication](https://creativecommons.org/publicdomain/zero/1.0/). By submitting a pull request, you are agreeing to comply with this waiver of copyright interest.

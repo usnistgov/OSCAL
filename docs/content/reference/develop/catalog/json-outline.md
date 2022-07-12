@@ -10,7 +10,7 @@ sidenav:
 
 ---
 
-The following outline is a representation of the [JSON format](https://github.com/usnistgov/OSCAL/blob/release-1.0/json/schema/oscal_catalog_schema.json) for this [model](/concepts/layer/control/catalog/). For each property, the name links to the corresponding entry in the [JSON Format Reference](../json-reference/). The cardinality and data type are also provided for each property where appropriate.
+The following outline is a representation of the [JSON format](https://github.com/usnistgov/OSCAL/blob/develop/json/schema/oscal_catalog_schema.json) for this [model](/concepts/layer/control/catalog/). For each property, the name links to the corresponding entry in the [JSON Format Reference](../json-reference/). The cardinality and data type are also provided for each property where appropriate.
 
 <!-- DO NOT REMOVE. Generated text below -->
 {{< rawhtml >}}
@@ -1188,6 +1188,318 @@ The following outline is a representation of the [JSON format](https://github.co
                            <p><span class="OM-lit">], </span></p>
                         </details>
                         <details class="OM-entry">
+                           <summary><a class="OM-name" href="../json-reference/#/catalog/controls/mapping">mapping</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit">{<span class="show-closed"> … }, </span></span></summary>
+                           <div class="model-container object">
+                              <div class="OM-entry">
+                                 <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/controls/mapping/uuid">uuid</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="OM-lit">,</span></p>
+                              </div>
+                              <details class="OM-entry">
+                                 <summary><a class="OM-name" href="../json-reference/#/catalog/controls/mapping/target-resource">target-resource</a> <span class="OM-cardinality">[1]</span>: <span class="OM-lit">{<span class="show-closed"> … }, </span></span></summary>
+                                 <div class="model-container object">
+                                    <div class="OM-entry">
+                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/controls/mapping/target-resource/type">type</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                    </div>
+                                    <div class="OM-entry">
+                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/controls/mapping/target-resource/href">href</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uri-reference">uri-reference</a></span><span class="OM-lit">,</span></p>
+                                    </div>
+                                    <details class="OM-entry">
+                                       <summary><span class="sq"><a class="OM-name" href="../json-reference/#/catalog/controls/mapping/target-resource/props">props</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                                       <div class="model-container array">
+                                          <div class="OM-entry">
+                                             <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/catalog/controls/mapping/target-resource/props">prop</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                             <div class="model-container object">
+                                                <div class="OM-entry">
+                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/controls/mapping/target-resource/props/name">name</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                </div>
+                                                <div class="OM-entry">
+                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/controls/mapping/target-resource/props/uuid">uuid</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="OM-lit">,</span></p>
+                                                </div>
+                                                <div class="OM-entry">
+                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/controls/mapping/target-resource/props/ns">ns</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uri">uri</a></span><span class="OM-lit">,</span></p>
+                                                </div>
+                                                <div class="OM-entry">
+                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/controls/mapping/target-resource/props/value">value</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
+                                                </div>
+                                                <div class="OM-entry">
+                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/controls/mapping/target-resource/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                </div>
+                                                <div class="OM-entry">
+                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/controls/mapping/target-resource/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
+                                                </div>
+                                             </div>
+                                             <p><span class="OM-lit"> }</span></p>
+                                          </div>
+                                       </div>
+                                       <p><span class="OM-lit">], </span></p>
+                                    </details>
+                                    <details class="OM-entry">
+                                       <summary><span class="sq"><a class="OM-name" href="../json-reference/#/catalog/controls/mapping/target-resource/links">links</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                                       <div class="model-container array">
+                                          <div class="OM-entry">
+                                             <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/catalog/controls/mapping/target-resource/links">link</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                             <div class="model-container object">
+                                                <div class="OM-entry">
+                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/controls/mapping/target-resource/links/href">href</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uri-reference">uri-reference</a></span><span class="OM-lit">,</span></p>
+                                                </div>
+                                                <div class="OM-entry">
+                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/controls/mapping/target-resource/links/rel">rel</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                </div>
+                                                <div class="OM-entry">
+                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/controls/mapping/target-resource/links/media-type">media-type</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
+                                                </div>
+                                                <div class="OM-entry">
+                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/controls/mapping/target-resource/links/text">text</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-line">markup-line</a></span><span class="OM-lit">,</span></p>
+                                                </div>
+                                             </div>
+                                             <p><span class="OM-lit"> }</span></p>
+                                          </div>
+                                       </div>
+                                       <p><span class="OM-lit">], </span></p>
+                                    </details>
+                                    <div class="OM-entry">
+                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/controls/mapping/target-resource/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span></p>
+                                    </div>
+                                 </div>
+                                 <p><span class="OM-lit"> }, </span></p>
+                              </details>
+                              <details class="OM-entry">
+                                 <summary><span class="sq"><a class="OM-name" href="../json-reference/#/catalog/controls/mapping/maps">maps</a> <span class="OM-cardinality">[1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ]</span></span></span></summary>
+                                 <div class="model-container array">
+                                    <div class="OM-entry">
+                                       <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/catalog/controls/mapping/maps">map</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                       <div class="model-container object">
+                                          <div class="OM-entry">
+                                             <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/controls/mapping/maps/uuid">uuid</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="OM-lit">,</span></p>
+                                          </div>
+                                          <details class="OM-entry">
+                                             <summary><span class="sq"><a class="OM-name" href="../json-reference/#/catalog/controls/mapping/maps/props">props</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                                             <div class="model-container array">
+                                                <div class="OM-entry">
+                                                   <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/catalog/controls/mapping/maps/props">prop</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                                   <div class="model-container object">
+                                                      <div class="OM-entry">
+                                                         <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/controls/mapping/maps/props/name">name</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                      </div>
+                                                      <div class="OM-entry">
+                                                         <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/controls/mapping/maps/props/uuid">uuid</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="OM-lit">,</span></p>
+                                                      </div>
+                                                      <div class="OM-entry">
+                                                         <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/controls/mapping/maps/props/ns">ns</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uri">uri</a></span><span class="OM-lit">,</span></p>
+                                                      </div>
+                                                      <div class="OM-entry">
+                                                         <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/controls/mapping/maps/props/value">value</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
+                                                      </div>
+                                                      <div class="OM-entry">
+                                                         <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/controls/mapping/maps/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                      </div>
+                                                      <div class="OM-entry">
+                                                         <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/controls/mapping/maps/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
+                                                      </div>
+                                                   </div>
+                                                   <p><span class="OM-lit"> }</span></p>
+                                                </div>
+                                             </div>
+                                             <p><span class="OM-lit">], </span></p>
+                                          </details>
+                                          <details class="OM-entry">
+                                             <summary><span class="sq"><a class="OM-name" href="../json-reference/#/catalog/controls/mapping/maps/links">links</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                                             <div class="model-container array">
+                                                <div class="OM-entry">
+                                                   <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/catalog/controls/mapping/maps/links">link</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                                   <div class="model-container object">
+                                                      <div class="OM-entry">
+                                                         <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/controls/mapping/maps/links/href">href</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uri-reference">uri-reference</a></span><span class="OM-lit">,</span></p>
+                                                      </div>
+                                                      <div class="OM-entry">
+                                                         <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/controls/mapping/maps/links/rel">rel</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                      </div>
+                                                      <div class="OM-entry">
+                                                         <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/controls/mapping/maps/links/media-type">media-type</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
+                                                      </div>
+                                                      <div class="OM-entry">
+                                                         <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/controls/mapping/maps/links/text">text</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-line">markup-line</a></span><span class="OM-lit">,</span></p>
+                                                      </div>
+                                                   </div>
+                                                   <p><span class="OM-lit"> }</span></p>
+                                                </div>
+                                             </div>
+                                             <p><span class="OM-lit">], </span></p>
+                                          </details>
+                                          <details class="OM-entry">
+                                             <summary><a class="OM-name" href="../json-reference/#/catalog/controls/mapping/maps/relationship">relationship</a> <span class="OM-cardinality">[1]</span>: <span class="OM-lit">{<span class="show-closed"> … }, </span></span></summary>
+                                             <div class="model-container object">
+                                                <div class="OM-entry">
+                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/controls/mapping/maps/relationship/ns">ns</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uri">uri</a></span><span class="OM-lit">,</span></p>
+                                                </div>
+                                                <div class="OM-entry">
+                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/controls/mapping/maps/relationship/STRVALUE">STRVALUE</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                </div>
+                                             </div>
+                                             <p><span class="OM-lit"> }, </span></p>
+                                          </details>
+                                          <details class="OM-entry">
+                                             <summary><span class="sq"><a class="OM-name" href="../json-reference/#/catalog/controls/mapping/maps/sources">sources</a> <span class="OM-cardinality">[1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                                             <div class="model-container array">
+                                                <div class="OM-entry">
+                                                   <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/catalog/controls/mapping/maps/sources">source</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                                   <div class="model-container object">
+                                                      <div class="OM-entry">
+                                                         <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/controls/mapping/maps/sources/type">type</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                      </div>
+                                                      <div class="OM-entry">
+                                                         <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/controls/mapping/maps/sources/id-ref">id-ref</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
+                                                      </div>
+                                                      <details class="OM-entry">
+                                                         <summary><span class="sq"><a class="OM-name" href="../json-reference/#/catalog/controls/mapping/maps/sources/props">props</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                                                         <div class="model-container array">
+                                                            <div class="OM-entry">
+                                                               <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/catalog/controls/mapping/maps/sources/props">prop</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                                               <div class="model-container object">
+                                                                  <div class="OM-entry">
+                                                                     <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/controls/mapping/maps/sources/props/name">name</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                  </div>
+                                                                  <div class="OM-entry">
+                                                                     <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/controls/mapping/maps/sources/props/uuid">uuid</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="OM-lit">,</span></p>
+                                                                  </div>
+                                                                  <div class="OM-entry">
+                                                                     <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/controls/mapping/maps/sources/props/ns">ns</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uri">uri</a></span><span class="OM-lit">,</span></p>
+                                                                  </div>
+                                                                  <div class="OM-entry">
+                                                                     <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/controls/mapping/maps/sources/props/value">value</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
+                                                                  </div>
+                                                                  <div class="OM-entry">
+                                                                     <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/controls/mapping/maps/sources/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                  </div>
+                                                                  <div class="OM-entry">
+                                                                     <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/controls/mapping/maps/sources/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
+                                                                  </div>
+                                                               </div>
+                                                               <p><span class="OM-lit"> }</span></p>
+                                                            </div>
+                                                         </div>
+                                                         <p><span class="OM-lit">], </span></p>
+                                                      </details>
+                                                      <details class="OM-entry">
+                                                         <summary><span class="sq"><a class="OM-name" href="../json-reference/#/catalog/controls/mapping/maps/sources/links">links</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                                                         <div class="model-container array">
+                                                            <div class="OM-entry">
+                                                               <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/catalog/controls/mapping/maps/sources/links">link</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                                               <div class="model-container object">
+                                                                  <div class="OM-entry">
+                                                                     <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/controls/mapping/maps/sources/links/href">href</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uri-reference">uri-reference</a></span><span class="OM-lit">,</span></p>
+                                                                  </div>
+                                                                  <div class="OM-entry">
+                                                                     <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/controls/mapping/maps/sources/links/rel">rel</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                  </div>
+                                                                  <div class="OM-entry">
+                                                                     <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/controls/mapping/maps/sources/links/media-type">media-type</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
+                                                                  </div>
+                                                                  <div class="OM-entry">
+                                                                     <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/controls/mapping/maps/sources/links/text">text</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-line">markup-line</a></span><span class="OM-lit">,</span></p>
+                                                                  </div>
+                                                               </div>
+                                                               <p><span class="OM-lit"> }</span></p>
+                                                            </div>
+                                                         </div>
+                                                         <p><span class="OM-lit">], </span></p>
+                                                      </details>
+                                                      <div class="OM-entry">
+                                                         <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/controls/mapping/maps/sources/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span></p>
+                                                      </div>
+                                                   </div>
+                                                   <p><span class="OM-lit"> }</span></p>
+                                                </div>
+                                             </div>
+                                             <p><span class="OM-lit">], </span></p>
+                                          </details>
+                                          <details class="OM-entry">
+                                             <summary><span class="sq"><a class="OM-name" href="../json-reference/#/catalog/controls/mapping/maps/targets">targets</a> <span class="OM-cardinality">[1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                                             <div class="model-container array">
+                                                <div class="OM-entry">
+                                                   <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/catalog/controls/mapping/maps/targets">target</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                                   <div class="model-container object">
+                                                      <div class="OM-entry">
+                                                         <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/controls/mapping/maps/targets/type">type</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                      </div>
+                                                      <div class="OM-entry">
+                                                         <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/controls/mapping/maps/targets/id-ref">id-ref</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
+                                                      </div>
+                                                      <details class="OM-entry">
+                                                         <summary><span class="sq"><a class="OM-name" href="../json-reference/#/catalog/controls/mapping/maps/targets/props">props</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                                                         <div class="model-container array">
+                                                            <div class="OM-entry">
+                                                               <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/catalog/controls/mapping/maps/targets/props">prop</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                                               <div class="model-container object">
+                                                                  <div class="OM-entry">
+                                                                     <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/controls/mapping/maps/targets/props/name">name</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                  </div>
+                                                                  <div class="OM-entry">
+                                                                     <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/controls/mapping/maps/targets/props/uuid">uuid</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="OM-lit">,</span></p>
+                                                                  </div>
+                                                                  <div class="OM-entry">
+                                                                     <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/controls/mapping/maps/targets/props/ns">ns</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uri">uri</a></span><span class="OM-lit">,</span></p>
+                                                                  </div>
+                                                                  <div class="OM-entry">
+                                                                     <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/controls/mapping/maps/targets/props/value">value</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
+                                                                  </div>
+                                                                  <div class="OM-entry">
+                                                                     <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/controls/mapping/maps/targets/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                  </div>
+                                                                  <div class="OM-entry">
+                                                                     <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/controls/mapping/maps/targets/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
+                                                                  </div>
+                                                               </div>
+                                                               <p><span class="OM-lit"> }</span></p>
+                                                            </div>
+                                                         </div>
+                                                         <p><span class="OM-lit">], </span></p>
+                                                      </details>
+                                                      <details class="OM-entry">
+                                                         <summary><span class="sq"><a class="OM-name" href="../json-reference/#/catalog/controls/mapping/maps/targets/links">links</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                                                         <div class="model-container array">
+                                                            <div class="OM-entry">
+                                                               <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/catalog/controls/mapping/maps/targets/links">link</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                                               <div class="model-container object">
+                                                                  <div class="OM-entry">
+                                                                     <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/controls/mapping/maps/targets/links/href">href</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uri-reference">uri-reference</a></span><span class="OM-lit">,</span></p>
+                                                                  </div>
+                                                                  <div class="OM-entry">
+                                                                     <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/controls/mapping/maps/targets/links/rel">rel</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                  </div>
+                                                                  <div class="OM-entry">
+                                                                     <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/controls/mapping/maps/targets/links/media-type">media-type</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
+                                                                  </div>
+                                                                  <div class="OM-entry">
+                                                                     <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/controls/mapping/maps/targets/links/text">text</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-line">markup-line</a></span><span class="OM-lit">,</span></p>
+                                                                  </div>
+                                                               </div>
+                                                               <p><span class="OM-lit"> }</span></p>
+                                                            </div>
+                                                         </div>
+                                                         <p><span class="OM-lit">], </span></p>
+                                                      </details>
+                                                      <div class="OM-entry">
+                                                         <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/controls/mapping/maps/targets/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span></p>
+                                                      </div>
+                                                   </div>
+                                                   <p><span class="OM-lit"> }</span></p>
+                                                </div>
+                                             </div>
+                                             <p><span class="OM-lit">], </span></p>
+                                          </details>
+                                          <div class="OM-entry">
+                                             <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/controls/mapping/maps/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span></p>
+                                          </div>
+                                       </div>
+                                       <p><span class="OM-lit"> }</span></p>
+                                    </div>
+                                 </div>
+                                 <p><span class="OM-lit">]</span></p>
+                              </details>
+                           </div>
+                           <p><span class="OM-lit"> }, </span></p>
+                        </details>
+                        <details class="OM-entry">
                            <summary><span class="sq"><a class="OM-name" href="../json-reference/#/catalog/controls/controls">controls</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
                            <div class="model-container array">
                               <div class="OM-entry">
@@ -1875,6 +2187,318 @@ The following outline is a representation of the [JSON format](https://github.co
                                                 </div>
                                              </div>
                                              <p><span class="OM-lit">], </span></p>
+                                          </details>
+                                          <details class="OM-entry">
+                                             <summary><a class="OM-name" href="../json-reference/#/catalog/groups/controls/mapping">mapping</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit">{<span class="show-closed"> … }, </span></span></summary>
+                                             <div class="model-container object">
+                                                <div class="OM-entry">
+                                                   <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/groups/controls/mapping/uuid">uuid</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="OM-lit">,</span></p>
+                                                </div>
+                                                <details class="OM-entry">
+                                                   <summary><a class="OM-name" href="../json-reference/#/catalog/groups/controls/mapping/target-resource">target-resource</a> <span class="OM-cardinality">[1]</span>: <span class="OM-lit">{<span class="show-closed"> … }, </span></span></summary>
+                                                   <div class="model-container object">
+                                                      <div class="OM-entry">
+                                                         <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/groups/controls/mapping/target-resource/type">type</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                      </div>
+                                                      <div class="OM-entry">
+                                                         <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/groups/controls/mapping/target-resource/href">href</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uri-reference">uri-reference</a></span><span class="OM-lit">,</span></p>
+                                                      </div>
+                                                      <details class="OM-entry">
+                                                         <summary><span class="sq"><a class="OM-name" href="../json-reference/#/catalog/groups/controls/mapping/target-resource/props">props</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                                                         <div class="model-container array">
+                                                            <div class="OM-entry">
+                                                               <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/catalog/groups/controls/mapping/target-resource/props">prop</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                                               <div class="model-container object">
+                                                                  <div class="OM-entry">
+                                                                     <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/groups/controls/mapping/target-resource/props/name">name</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                  </div>
+                                                                  <div class="OM-entry">
+                                                                     <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/groups/controls/mapping/target-resource/props/uuid">uuid</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="OM-lit">,</span></p>
+                                                                  </div>
+                                                                  <div class="OM-entry">
+                                                                     <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/groups/controls/mapping/target-resource/props/ns">ns</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uri">uri</a></span><span class="OM-lit">,</span></p>
+                                                                  </div>
+                                                                  <div class="OM-entry">
+                                                                     <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/groups/controls/mapping/target-resource/props/value">value</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
+                                                                  </div>
+                                                                  <div class="OM-entry">
+                                                                     <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/groups/controls/mapping/target-resource/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                  </div>
+                                                                  <div class="OM-entry">
+                                                                     <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/groups/controls/mapping/target-resource/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
+                                                                  </div>
+                                                               </div>
+                                                               <p><span class="OM-lit"> }</span></p>
+                                                            </div>
+                                                         </div>
+                                                         <p><span class="OM-lit">], </span></p>
+                                                      </details>
+                                                      <details class="OM-entry">
+                                                         <summary><span class="sq"><a class="OM-name" href="../json-reference/#/catalog/groups/controls/mapping/target-resource/links">links</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                                                         <div class="model-container array">
+                                                            <div class="OM-entry">
+                                                               <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/catalog/groups/controls/mapping/target-resource/links">link</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                                               <div class="model-container object">
+                                                                  <div class="OM-entry">
+                                                                     <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/groups/controls/mapping/target-resource/links/href">href</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uri-reference">uri-reference</a></span><span class="OM-lit">,</span></p>
+                                                                  </div>
+                                                                  <div class="OM-entry">
+                                                                     <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/groups/controls/mapping/target-resource/links/rel">rel</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                  </div>
+                                                                  <div class="OM-entry">
+                                                                     <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/groups/controls/mapping/target-resource/links/media-type">media-type</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
+                                                                  </div>
+                                                                  <div class="OM-entry">
+                                                                     <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/groups/controls/mapping/target-resource/links/text">text</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-line">markup-line</a></span><span class="OM-lit">,</span></p>
+                                                                  </div>
+                                                               </div>
+                                                               <p><span class="OM-lit"> }</span></p>
+                                                            </div>
+                                                         </div>
+                                                         <p><span class="OM-lit">], </span></p>
+                                                      </details>
+                                                      <div class="OM-entry">
+                                                         <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/groups/controls/mapping/target-resource/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span></p>
+                                                      </div>
+                                                   </div>
+                                                   <p><span class="OM-lit"> }, </span></p>
+                                                </details>
+                                                <details class="OM-entry">
+                                                   <summary><span class="sq"><a class="OM-name" href="../json-reference/#/catalog/groups/controls/mapping/maps">maps</a> <span class="OM-cardinality">[1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ]</span></span></span></summary>
+                                                   <div class="model-container array">
+                                                      <div class="OM-entry">
+                                                         <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/catalog/groups/controls/mapping/maps">map</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                                         <div class="model-container object">
+                                                            <div class="OM-entry">
+                                                               <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/groups/controls/mapping/maps/uuid">uuid</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="OM-lit">,</span></p>
+                                                            </div>
+                                                            <details class="OM-entry">
+                                                               <summary><span class="sq"><a class="OM-name" href="../json-reference/#/catalog/groups/controls/mapping/maps/props">props</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                                                               <div class="model-container array">
+                                                                  <div class="OM-entry">
+                                                                     <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/catalog/groups/controls/mapping/maps/props">prop</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                                                     <div class="model-container object">
+                                                                        <div class="OM-entry">
+                                                                           <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/groups/controls/mapping/maps/props/name">name</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                        </div>
+                                                                        <div class="OM-entry">
+                                                                           <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/groups/controls/mapping/maps/props/uuid">uuid</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="OM-lit">,</span></p>
+                                                                        </div>
+                                                                        <div class="OM-entry">
+                                                                           <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/groups/controls/mapping/maps/props/ns">ns</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uri">uri</a></span><span class="OM-lit">,</span></p>
+                                                                        </div>
+                                                                        <div class="OM-entry">
+                                                                           <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/groups/controls/mapping/maps/props/value">value</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
+                                                                        </div>
+                                                                        <div class="OM-entry">
+                                                                           <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/groups/controls/mapping/maps/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                        </div>
+                                                                        <div class="OM-entry">
+                                                                           <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/groups/controls/mapping/maps/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
+                                                                        </div>
+                                                                     </div>
+                                                                     <p><span class="OM-lit"> }</span></p>
+                                                                  </div>
+                                                               </div>
+                                                               <p><span class="OM-lit">], </span></p>
+                                                            </details>
+                                                            <details class="OM-entry">
+                                                               <summary><span class="sq"><a class="OM-name" href="../json-reference/#/catalog/groups/controls/mapping/maps/links">links</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                                                               <div class="model-container array">
+                                                                  <div class="OM-entry">
+                                                                     <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/catalog/groups/controls/mapping/maps/links">link</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                                                     <div class="model-container object">
+                                                                        <div class="OM-entry">
+                                                                           <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/groups/controls/mapping/maps/links/href">href</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uri-reference">uri-reference</a></span><span class="OM-lit">,</span></p>
+                                                                        </div>
+                                                                        <div class="OM-entry">
+                                                                           <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/groups/controls/mapping/maps/links/rel">rel</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                        </div>
+                                                                        <div class="OM-entry">
+                                                                           <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/groups/controls/mapping/maps/links/media-type">media-type</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
+                                                                        </div>
+                                                                        <div class="OM-entry">
+                                                                           <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/groups/controls/mapping/maps/links/text">text</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-line">markup-line</a></span><span class="OM-lit">,</span></p>
+                                                                        </div>
+                                                                     </div>
+                                                                     <p><span class="OM-lit"> }</span></p>
+                                                                  </div>
+                                                               </div>
+                                                               <p><span class="OM-lit">], </span></p>
+                                                            </details>
+                                                            <details class="OM-entry">
+                                                               <summary><a class="OM-name" href="../json-reference/#/catalog/groups/controls/mapping/maps/relationship">relationship</a> <span class="OM-cardinality">[1]</span>: <span class="OM-lit">{<span class="show-closed"> … }, </span></span></summary>
+                                                               <div class="model-container object">
+                                                                  <div class="OM-entry">
+                                                                     <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/groups/controls/mapping/maps/relationship/ns">ns</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uri">uri</a></span><span class="OM-lit">,</span></p>
+                                                                  </div>
+                                                                  <div class="OM-entry">
+                                                                     <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/groups/controls/mapping/maps/relationship/STRVALUE">STRVALUE</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                  </div>
+                                                               </div>
+                                                               <p><span class="OM-lit"> }, </span></p>
+                                                            </details>
+                                                            <details class="OM-entry">
+                                                               <summary><span class="sq"><a class="OM-name" href="../json-reference/#/catalog/groups/controls/mapping/maps/sources">sources</a> <span class="OM-cardinality">[1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                                                               <div class="model-container array">
+                                                                  <div class="OM-entry">
+                                                                     <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/catalog/groups/controls/mapping/maps/sources">source</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                                                     <div class="model-container object">
+                                                                        <div class="OM-entry">
+                                                                           <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/groups/controls/mapping/maps/sources/type">type</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                        </div>
+                                                                        <div class="OM-entry">
+                                                                           <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/groups/controls/mapping/maps/sources/id-ref">id-ref</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
+                                                                        </div>
+                                                                        <details class="OM-entry">
+                                                                           <summary><span class="sq"><a class="OM-name" href="../json-reference/#/catalog/groups/controls/mapping/maps/sources/props">props</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                                                                           <div class="model-container array">
+                                                                              <div class="OM-entry">
+                                                                                 <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/catalog/groups/controls/mapping/maps/sources/props">prop</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                                                                 <div class="model-container object">
+                                                                                    <div class="OM-entry">
+                                                                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/groups/controls/mapping/maps/sources/props/name">name</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                                    </div>
+                                                                                    <div class="OM-entry">
+                                                                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/groups/controls/mapping/maps/sources/props/uuid">uuid</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="OM-lit">,</span></p>
+                                                                                    </div>
+                                                                                    <div class="OM-entry">
+                                                                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/groups/controls/mapping/maps/sources/props/ns">ns</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uri">uri</a></span><span class="OM-lit">,</span></p>
+                                                                                    </div>
+                                                                                    <div class="OM-entry">
+                                                                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/groups/controls/mapping/maps/sources/props/value">value</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
+                                                                                    </div>
+                                                                                    <div class="OM-entry">
+                                                                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/groups/controls/mapping/maps/sources/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                                    </div>
+                                                                                    <div class="OM-entry">
+                                                                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/groups/controls/mapping/maps/sources/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
+                                                                                    </div>
+                                                                                 </div>
+                                                                                 <p><span class="OM-lit"> }</span></p>
+                                                                              </div>
+                                                                           </div>
+                                                                           <p><span class="OM-lit">], </span></p>
+                                                                        </details>
+                                                                        <details class="OM-entry">
+                                                                           <summary><span class="sq"><a class="OM-name" href="../json-reference/#/catalog/groups/controls/mapping/maps/sources/links">links</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                                                                           <div class="model-container array">
+                                                                              <div class="OM-entry">
+                                                                                 <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/catalog/groups/controls/mapping/maps/sources/links">link</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                                                                 <div class="model-container object">
+                                                                                    <div class="OM-entry">
+                                                                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/groups/controls/mapping/maps/sources/links/href">href</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uri-reference">uri-reference</a></span><span class="OM-lit">,</span></p>
+                                                                                    </div>
+                                                                                    <div class="OM-entry">
+                                                                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/groups/controls/mapping/maps/sources/links/rel">rel</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                                    </div>
+                                                                                    <div class="OM-entry">
+                                                                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/groups/controls/mapping/maps/sources/links/media-type">media-type</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
+                                                                                    </div>
+                                                                                    <div class="OM-entry">
+                                                                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/groups/controls/mapping/maps/sources/links/text">text</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-line">markup-line</a></span><span class="OM-lit">,</span></p>
+                                                                                    </div>
+                                                                                 </div>
+                                                                                 <p><span class="OM-lit"> }</span></p>
+                                                                              </div>
+                                                                           </div>
+                                                                           <p><span class="OM-lit">], </span></p>
+                                                                        </details>
+                                                                        <div class="OM-entry">
+                                                                           <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/groups/controls/mapping/maps/sources/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span></p>
+                                                                        </div>
+                                                                     </div>
+                                                                     <p><span class="OM-lit"> }</span></p>
+                                                                  </div>
+                                                               </div>
+                                                               <p><span class="OM-lit">], </span></p>
+                                                            </details>
+                                                            <details class="OM-entry">
+                                                               <summary><span class="sq"><a class="OM-name" href="../json-reference/#/catalog/groups/controls/mapping/maps/targets">targets</a> <span class="OM-cardinality">[1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                                                               <div class="model-container array">
+                                                                  <div class="OM-entry">
+                                                                     <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/catalog/groups/controls/mapping/maps/targets">target</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                                                     <div class="model-container object">
+                                                                        <div class="OM-entry">
+                                                                           <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/groups/controls/mapping/maps/targets/type">type</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                        </div>
+                                                                        <div class="OM-entry">
+                                                                           <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/groups/controls/mapping/maps/targets/id-ref">id-ref</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
+                                                                        </div>
+                                                                        <details class="OM-entry">
+                                                                           <summary><span class="sq"><a class="OM-name" href="../json-reference/#/catalog/groups/controls/mapping/maps/targets/props">props</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                                                                           <div class="model-container array">
+                                                                              <div class="OM-entry">
+                                                                                 <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/catalog/groups/controls/mapping/maps/targets/props">prop</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                                                                 <div class="model-container object">
+                                                                                    <div class="OM-entry">
+                                                                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/groups/controls/mapping/maps/targets/props/name">name</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                                    </div>
+                                                                                    <div class="OM-entry">
+                                                                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/groups/controls/mapping/maps/targets/props/uuid">uuid</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uuid">uuid</a></span><span class="OM-lit">,</span></p>
+                                                                                    </div>
+                                                                                    <div class="OM-entry">
+                                                                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/groups/controls/mapping/maps/targets/props/ns">ns</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uri">uri</a></span><span class="OM-lit">,</span></p>
+                                                                                    </div>
+                                                                                    <div class="OM-entry">
+                                                                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/groups/controls/mapping/maps/targets/props/value">value</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
+                                                                                    </div>
+                                                                                    <div class="OM-entry">
+                                                                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/groups/controls/mapping/maps/targets/props/class">class</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                                    </div>
+                                                                                    <div class="OM-entry">
+                                                                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/groups/controls/mapping/maps/targets/props/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span><span class="OM-lit">,</span></p>
+                                                                                    </div>
+                                                                                 </div>
+                                                                                 <p><span class="OM-lit"> }</span></p>
+                                                                              </div>
+                                                                           </div>
+                                                                           <p><span class="OM-lit">], </span></p>
+                                                                        </details>
+                                                                        <details class="OM-entry">
+                                                                           <summary><span class="sq"><a class="OM-name" href="../json-reference/#/catalog/groups/controls/mapping/maps/targets/links">links</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
+                                                                           <div class="model-container array">
+                                                                              <div class="OM-entry">
+                                                                                 <p><span class="OM-lit">An array of <a class="OM-name" href="../json-reference/#/catalog/groups/controls/mapping/maps/targets/links">link</a> objects</span>  <span class="OM-cardinality">[1 to ∞]</span><span class="OM-lit"> { </span></p>
+                                                                                 <div class="model-container object">
+                                                                                    <div class="OM-entry">
+                                                                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/groups/controls/mapping/maps/targets/links/href">href</a> <span class="OM-cardinality">[1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#uri-reference">uri-reference</a></span><span class="OM-lit">,</span></p>
+                                                                                    </div>
+                                                                                    <div class="OM-entry">
+                                                                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/groups/controls/mapping/maps/targets/links/rel">rel</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#token">token</a></span><span class="OM-lit">,</span></p>
+                                                                                    </div>
+                                                                                    <div class="OM-entry">
+                                                                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/groups/controls/mapping/maps/targets/links/media-type">media-type</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#string">string</a></span><span class="OM-lit">,</span></p>
+                                                                                    </div>
+                                                                                    <div class="OM-entry">
+                                                                                       <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/groups/controls/mapping/maps/targets/links/text">text</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-line">markup-line</a></span><span class="OM-lit">,</span></p>
+                                                                                    </div>
+                                                                                 </div>
+                                                                                 <p><span class="OM-lit"> }</span></p>
+                                                                              </div>
+                                                                           </div>
+                                                                           <p><span class="OM-lit">], </span></p>
+                                                                        </details>
+                                                                        <div class="OM-entry">
+                                                                           <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/groups/controls/mapping/maps/targets/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span></p>
+                                                                        </div>
+                                                                     </div>
+                                                                     <p><span class="OM-lit"> }</span></p>
+                                                                  </div>
+                                                               </div>
+                                                               <p><span class="OM-lit">], </span></p>
+                                                            </details>
+                                                            <div class="OM-entry">
+                                                               <p class="OM-line"><a class="OM-name" href="../json-reference/#/catalog/groups/controls/mapping/maps/remarks">remarks</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-datatype"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></span></p>
+                                                            </div>
+                                                         </div>
+                                                         <p><span class="OM-lit"> }</span></p>
+                                                      </div>
+                                                   </div>
+                                                   <p><span class="OM-lit">]</span></p>
+                                                </details>
+                                             </div>
+                                             <p><span class="OM-lit"> }, </span></p>
                                           </details>
                                           <details class="OM-entry">
                                              <summary><span class="sq"><a class="OM-name" href="../json-reference/#/catalog/groups/controls/controls">controls</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>

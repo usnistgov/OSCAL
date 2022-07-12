@@ -4,12 +4,14 @@
 
 ### All Submissions:
 
-- [ ] Have you selected the correct base branch per [Contributing](https://github.com/usnistgov/OSCAL/blob/master/CONTRIBUTING.md) guidance?
+- [ ] Have you selected the correct base branch per [Contributing](https://github.com/usnistgov/OSCAL/blob/main/CONTRIBUTING.md) guidance?
 - [ ] Have you set "[Allow edits and access to secrets by maintainers
 ](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/allowing-changes-to-a-pull-request-branch-created-from-a-fork)"?
 - [ ] Have you checked to ensure there aren't other open [Pull Requests](https://github.com/usnistgov/OSCAL/pulls) for the same update/change?
 - [ ] Have you squashed any non-relevant commits and commit messages? \[[instructions](https://git-scm.com/book/en/v2/Git-Tools-Rewriting-History)\]
 - [ ] Do all automated CI/CD checks pass?
+
+By submitting a pull request, you are agreeing to provide this contribution under the [CC0 1.0 Universal public domain](https://creativecommons.org/publicdomain/zero/1.0/) dedication.
 
 ### Changes to Core Features:
 

@@ -1,5 +1,5 @@
 ---
-title: " Model v1.0.3 Reference"
+title: " Model v1.0.4 Reference"
 summary: "All Models Combined"
 weight: 20
 suppresstopiclist: true
@@ -10,7 +10,7 @@ sidenav:
   inactiverenderdepth: 1
 ---
 
-<p><span class="usa-tag">Release Version</span> OSCAL v1.0.3</p>
+<p><span class="usa-tag">Release Version</span> OSCAL v1.0.4</p>
 <p><span class="usa-tag">Github</span> <a href="https://github.com/usnistgov/OSCAL">usnistgov/OSCAL</a> <span class="usa-tag">Branch</span> <a href="https://github.com/usnistgov/OSCAL/tree/main">main</a></p>
 
 This reference combines the information items used in all the OSCAL models into a single, comprehensive view. The following reference documentation is available.

@@ -10,7 +10,7 @@ sidenav:
 
 ---
 
-The following outline is a representation of the [JSON format](https://github.com/usnistgov/OSCAL/blob/release-1.0/json/schema/oscal_profile_schema.json) for this [model](/concepts/layer/control/profile/). For each property, the name links to the corresponding entry in the [JSON Format Reference](../json-reference/). The cardinality and data type are also provided for each property where appropriate.
+The following outline is a representation of the [JSON format](https://github.com/usnistgov/OSCAL/blob/develop/json/schema/oscal_profile_schema.json) for this [model](/concepts/layer/control/profile/). For each property, the name links to the corresponding entry in the [JSON Format Reference](../json-reference/). The cardinality and data type are also provided for each property where appropriate.
 
 <!-- DO NOT REMOVE. Generated text below -->
 {{< rawhtml >}}
@@ -823,7 +823,7 @@ The following outline is a representation of the [JSON format](https://github.co
                      </div>
                      <div class="OM-choice">
                         <details class="OM-entry">
-                           <summary><a class="OM-name" href="../json-reference/#/profile/merge/custom">custom</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit">{<span class="show-closed"> … }</span></span></summary>
+                           <summary><a class="OM-name" href="../json-reference/#/profile/merge/custom">custom</a> <span class="OM-cardinality">[1]</span>: <span class="OM-lit">{<span class="show-closed"> … }</span></span></summary>
                            <div class="model-container object">
                               <details class="OM-entry">
                                  <summary><span class="sq"><a class="OM-name" href="../json-reference/#/profile/merge/custom/groups">groups</a> <span class="OM-cardinality">[0 or 1]</span>: <span class="OM-lit"> [ <span class="show-closed">… ], </span></span></span></summary>
