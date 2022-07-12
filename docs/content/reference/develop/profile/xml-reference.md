@@ -3603,7 +3603,7 @@ The following is the XML format reference for this [model](/concepts/layer/contr
                            <div class="instance-header">
                               <h3 id="/profile/merge/custom" class="toc3 name">custom</h3>
                               <p class="type">element<br /></p>
-                              <p class="occurrence">[0 or 1]</p>
+                              <p class="occurrence">[1]</p>
                               <div class="crosslink"><a class="usa-button" href="../json-reference/#/profile/merge/custom">Switch to JSON</a></div>
                               <p class="formal-name">Custom grouping</p>
                            </div>

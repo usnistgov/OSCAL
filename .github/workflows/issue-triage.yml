@@ -13,8 +13,8 @@ jobs:
       - name: Add New Issues to Issue Triage Board
         uses: peter-evans/create-or-update-project-card@866533e2ae61f13c35fd1d374049713fab43c729 # current tag: v2
         with:
-          project-name: Triage Test Board
-          column-name: To do
+          project-name: Issue Triage
+          column-name: Needs Triage
   removeCard:
     runs-on: ubuntu-latest
     if: github.event.action == 'closed'

@@ -10,7 +10,7 @@ toc:
   headingselectors: "h1.toc1, h2.toc2, h3.toc3, h4.toc4, h5.toc5, h6.toc6"
 ---
 
-The following is a reference for the JSON object definitions derived from the [metaschema](https://github.com/usnistgov/OSCAL/blob/release-1.0//src/metaschema/oscal_catalog_metaschema.xml) for this [model](/concepts/layer/control/catalog/).
+The following is a reference for the JSON object definitions derived from the [metaschema](https://github.com/usnistgov/OSCAL/blob/develop//src/metaschema/oscal_catalog_metaschema.xml) for this [model](/concepts/layer/control/catalog/).
 
 <!-- DO NOT REMOVE. Generated text below -->
 {{< rawhtml >}}
@@ -989,7 +989,7 @@ The following is a reference for the JSON object definitions derived from the [m
             </div>
             </details>
          <details open="open">
-            <summary>Properties (8)</summary>
+            <summary>Properties (9)</summary>
             <div class="model assembly-model">
                <div class="model-entry definition define-flag">
                   <div class="instance-header">
@@ -1158,6 +1158,61 @@ The following is a reference for the JSON object definitions derived from the [m
                         </details>
                      </div>
                      <p class="definition-link"><a href="#/assembly/oscal-catalog-common/part">See definition</a></p>
+                  </div>
+               </div>
+               <div class="model-entry definition define-assembly">
+                  <div class="instance-header">
+                     <h2 id="/assembly/oscal-catalog/control/mapping" class="toc2 name">mapping</h2>
+                     <p class="type">assembly<br class="br" /> </p>
+                     <p class="occurrence">[0 or 1]</p>
+                     <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-catalog/control/mapping">Switch to XML</a></div>
+                     <p class="formal-name">Mapping</p>
+                  </div>
+                  <div class="body">
+                     <p class="description"><span class="usa-tag">description</span> A mapping between the containing control and another resource.</p>
+                     <details open="open">
+                        <summary>Properties (3)</summary>
+                        <div class="model assembly-model">
+                           <div class="model-entry definition define-flag">
+                              <div class="instance-header">
+                                 <h3 id="/assembly/oscal-catalog/control/mapping/uuid" class="toc3 name">uuid</h3>
+                                 <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                                 <p class="occurrence">[0 or 1]</p>
+                                 <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-catalog/control/mapping/uuid">Switch to XML</a></div>
+                                 <p class="formal-name">Mapping Identifier</p>
+                              </div>
+                              <div class="body">
+                                 <p class="description"><span class="usa-tag">description</span> The unique identifier for the mapping.</p>
+                              </div>
+                           </div>
+                           <div class="model-entry definition assembly">
+                              <div class="instance-header">
+                                 <h3 id="/assembly/oscal-catalog/control/mapping/target-resource" class="toc3 name">target-resource</h3>
+                                 <p class="type">assembly<br class="br" /> </p>
+                                 <p class="occurrence">[1]</p>
+                                 <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-catalog/control/mapping/target-resource">Switch to XML</a></div>
+                                 <p class="formal-name">Mapped Resource Reference</p>
+                              </div>
+                              <div class="body">
+                                 <p><span class="usa-tag">use name</span> <code class="name">target-resource</code></p>
+                                 <p class="definition-link"><a href="#/assembly/oscal-mapping-common/mapping-resource-reference">See definition</a></p>
+                              </div>
+                           </div>
+                           <div class="model-entry definition assembly">
+                              <div class="instance-header">
+                                 <h3 id="/assembly/oscal-catalog/control/mapping/maps" class="toc3 name">map</h3>
+                                 <p class="type">assembly<br class="br" /> </p>
+                                 <p class="occurrence">[1 to ∞]</p>
+                                 <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-catalog/control/mapping/map">Switch to XML</a></div>
+                                 <p class="formal-name">Mapping Entry</p>
+                              </div>
+                              <div class="body">
+                                 <p><span class="usa-tag">group as</span> <code class="name">maps</code></p>
+                                 <p class="definition-link"><a href="#/assembly/oscal-mapping-common/map">See definition</a></p>
+                              </div>
+                           </div>
+                        </div>
+                     </details>
                   </div>
                </div>
                <div class="model-entry definition assembly">
@@ -2112,6 +2167,479 @@ The following is a reference for the JSON object definitions derived from the [m
                <p><span class="usa-tag">index has key</span>this value must correspond to a listing in the index <code>index-metadata-location-uuid</code> using a key constructed of key field(s) <code>.</code></p>
             </div>
             </details>
+      </div>
+   </div>
+   <div class="model-entry definition define-assembly">
+      <div class="definition-header">
+         <h1 id="/assembly/oscal-mapping-common/map" class="toc1 name">map</h1>
+         <p class="type">assembly<br class="br" /> </p>
+         <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-mapping-common/map">Switch to XML</a></div>
+         <p class="formal-name">Mapping Entry</p>
+      </div>
+      <div class="body">
+         <p class="description"><span class="usa-tag">description</span> A relationship-based mapping between a source and target set consisting of members
+            (i.e., controls, control statements) from the respective source and target.</p>
+         <details open="open">
+            <summary>Properties (7)</summary>
+            <div class="model assembly-model">
+               <div class="model-entry definition define-flag">
+                  <div class="instance-header">
+                     <h2 id="/assembly/oscal-mapping-common/map/uuid" class="toc2 name">uuid</h2>
+                     <p class="type"><a href="/reference/datatypes/#uuid">uuid</a></p>
+                     <p class="occurrence">[0 or 1]</p>
+                     <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-mapping-common/map/uuid">Switch to XML</a></div>
+                     <p class="formal-name">Mapping Entry Identifier</p>
+                  </div>
+                  <div class="body">
+                     <p class="description"><span class="usa-tag">description</span> The unique identifier for the mapping entry.</p>
+                  </div>
+               </div>
+               <div class="model-entry definition assembly">
+                  <div class="instance-header">
+                     <h2 id="/assembly/oscal-mapping-common/map/props" class="toc2 name">property</h2>
+                     <p class="type">assembly<br class="br" /> </p>
+                     <p class="occurrence">[0 to ∞]</p>
+                     <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-mapping-common/map/prop">Switch to XML</a></div>
+                     <p class="formal-name">Property</p>
+                  </div>
+                  <div class="body">
+                     <p><span class="usa-tag">use name</span> <code class="name">prop</code></p>
+                     <p><span class="usa-tag">group as</span> <code class="name">props</code></p>
+                     <div class="remarks-group usa-prose">
+                        <details open="open">
+                           <summary class="subhead">Remarks</summary>
+                           <div class="remarks">
+                              <p>Properties permit the deployment and management of arbitrary controlled values, within
+                                 OSCAL objects. A property can be included for any purpose useful to an application
+                                 or implementation. Typically, properties will be used to sort, filter, select, order,
+                                 and arrange OSCAL content objects, to relate OSCAL objects to one another, or to associate
+                                 an OSCAL object to class hierarchies, taxonomies, or external authorities. Thus, the
+                                 lexical composition of properties may be constrained by external processes to ensure
+                                 consistency.</p>
+                              <p>Property allows for associated remarks that describe why the specific property value
+                                 was applied to the containing object, or the significance of the value in the context
+                                 of the containing object.</p>
+                           </div>
+                        </details>
+                     </div>
+                     <p class="definition-link"><a href="#/assembly/oscal-metadata/property">See definition</a></p>
+                  </div>
+               </div>
+               <div class="model-entry definition assembly">
+                  <div class="instance-header">
+                     <h2 id="/assembly/oscal-mapping-common/map/links" class="toc2 name">link</h2>
+                     <p class="type">assembly<br class="br" /> </p>
+                     <p class="occurrence">[0 to ∞]</p>
+                     <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-mapping-common/map/link">Switch to XML</a></div>
+                     <p class="formal-name">Link</p>
+                  </div>
+                  <div class="body">
+                     <p><span class="usa-tag">group as</span> <code class="name">links</code></p>
+                     <div class="remarks-group usa-prose">
+                        <details open="open">
+                           <summary class="subhead">Remarks</summary>
+                           <div class="remarks">
+                              <p>To provide a cryptographic hash for a remote target resource, a local reference to
+                                 a back matter <code>resource</code> is needed. The resource allows one or more hash values to be provided using the <code>rlink/hash</code> object.</p>
+                              <p>The OSCAL <code>link</code> is a roughly based on the HTML <a href="https://www.w3.org/TR/html401/struct/links.html#edef-LINK">link element</a>. </p>
+                           </div>
+                        </details>
+                     </div>
+                     <p class="definition-link"><a href="#/assembly/oscal-metadata/link">See definition</a></p>
+                  </div>
+               </div>
+               <div class="model-entry definition define-field">
+                  <div class="instance-header">
+                     <h2 id="/assembly/oscal-mapping-common/map/relationship" class="toc2 name">relationship</h2>
+                     <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                     <p class="occurrence">[1]</p>
+                     <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-mapping-common/map/relationship">Switch to XML</a></div>
+                     <p class="formal-name">Mapping Entry Relationship</p>
+                  </div>
+                  <div class="body">
+                     <p class="description"><span class="usa-tag">description</span> The relationship type for the mapping entry, which describes the relationship between
+                        the effective requirements of the specified source and target sets.</p>
+                     <div class="remarks-group usa-prose">
+                        <details open="open">
+                           <summary class="subhead">Remarks</summary>
+                           <div class="remarks">
+                              <p>When establishing relationships, mapping SHOULD be done at the control statement level
+                                 where possible. This approach allows for more use of 'equivalent-to', which represents
+                                 a stronger relationship than the other relationship types.</p>
+                           </div>
+                        </details>
+                     </div>
+                     <details>
+                        <summary>Constraint (1)</summary>
+                        
+                        <div class="constraint">
+                           <p><span class="usa-tag">allowed values</span> for <code class="path">.[has-oscal-namespace('http://csrc.nist.gov/ns/oscal')]</code></p>
+                           <p>The value <b>must</b> be one of the following:</p>
+                           <ul>
+                              
+                              <li><strong>equivalent-to</strong>: The effective requirements of the source is equivalent in semantic meaning to the
+                                 effective requirements of the target. The words may differ, but both mapped sets convey
+                                 similar information with the same effective meaning. This relationship may be reversed,
+                                 since `A equivalent-to B` also means that `B equivalent-to A`.</li>
+                              
+                              <li><strong>equal-to</strong>: The actual requirements of the source are the same as the actual requirements target.
+                                 Differences in capitalization, spelling, and grammar can be ignored, if these differences
+                                 do not change the meaning. This relationship may be reversed, since `A equal-to B`
+                                 also means that `B equal-to A`.</li>
+                              
+                              <li><strong>subset-of</strong>: The effective requirements of the source is a semantic subset of the effective requirements
+                                 of the target. This relationship may be reversed as a `superset-of`, since `A subset-of
+                                 B` also means that `B superset-of A`.</li>
+                              
+                              <li><strong>superset-of</strong>: The effective requirements of the source is a semantic superset of the effective
+                                 requirements of the target. This relationship may be reversed as a `subset-of`, since
+                                 `A superset-of B` also means that `B subset-of A`.</li>
+                              
+                              <li><strong>intersects-with</strong>: The effective requirements of the source and target have some semantic equivalence,
+                                 but not all effective requirements from each are contained within the other. This
+                                 relationship may be reversed, since `A intersects-with B` also means that `B intersects-with
+                                 A`. A lower granularity mapping, such as a statement level mapping using 'equivalent-to',
+                                 'subset-of', and/or 'superset-of', may provide a more functional mapping that allows
+                                 for more inference than using this relationship type.</li>
+                              </ul>
+                        </div>
+                        </details>
+                     <details open="open">
+                        <summary>Properties (2)</summary>
+                        <div class="model field-model">
+                           <div class="model-entry definition define-flag">
+                              <div class="instance-header">
+                                 <h3 id="/assembly/oscal-mapping-common/map/relationship/ns" class="toc3 name">ns</h3>
+                                 <p class="type"><a href="/reference/datatypes/#uri">uri</a></p>
+                                 <p class="occurrence">[0 or 1]</p>
+                                 <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-mapping-common/map/relationship/ns">Switch to XML</a></div>
+                                 <p class="formal-name">Relationship Value Namespace</p>
+                              </div>
+                              <div class="body">
+                                 <p class="description"><span class="usa-tag">description</span> A namespace qualifying the relationship's value. This allows different organizations
+                                    to associate distinct semantics for relationships with the same name.</p>
+                                 <div class="remarks-group usa-prose">
+                                    <details open="open">
+                                       <summary class="subhead">Remarks</summary>
+                                       <div class="remarks">
+                                          <p>An organization MUST use a URI that they have control over. e.g., a domain registered
+                                             to the organization in a URI, a registered uniform resource names (URN) namespace.</p>
+                                          <p>When a <code>ns</code> is not provided, its value should be assumed to be <code>http://csrc.nist.gov/ns/oscal</code> and the name should be a name defined by the associated OSCAL model.</p>
+                                       </div>
+                                    </details>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="model-entry definition m:define-flag">
+                              <div class="instance-header">
+                                 <h3 id="/assembly/oscal-mapping-common/map/relationship/STRVALUE" class="toc3 name">STRVALUE</h3>
+                                 <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                                 <p class="occurrence">[0 or 1]</p>
+                                 <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-mapping-common/map/relationship">Switch to XML</a></div>
+                                 <p class="formal-name">Mapping Entry Relationship Value</p>
+                              </div>
+                              <div class="body">
+                                 <p class="description"><span class="usa-tag">description</span> This property provides the (nominal) value for this object as a whole.</p>
+                              </div>
+                           </div>
+                        </div>
+                     </details>
+                  </div>
+               </div>
+               <div class="model-entry definition assembly">
+                  <div class="instance-header">
+                     <h2 id="/assembly/oscal-mapping-common/map/sources" class="toc2 name">source</h2>
+                     <p class="type">assembly<br class="br" /> </p>
+                     <p class="occurrence">[1 to ∞]</p>
+                     <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-mapping-common/map/source">Switch to XML</a></div>
+                     <p class="formal-name">Mapping Entry Item (source or target)</p>
+                  </div>
+                  <div class="body">
+                     <p><span class="usa-tag">use name</span> <code class="name">source</code></p>
+                     <p><span class="usa-tag">group as</span> <code class="name">sources</code></p>
+                     <p class="definition-link"><a href="#/assembly/oscal-mapping-common/mapping-item">See definition</a></p>
+                  </div>
+               </div>
+               <div class="model-entry definition assembly">
+                  <div class="instance-header">
+                     <h2 id="/assembly/oscal-mapping-common/map/targets" class="toc2 name">target</h2>
+                     <p class="type">assembly<br class="br" /> </p>
+                     <p class="occurrence">[1 to ∞]</p>
+                     <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-mapping-common/map/target">Switch to XML</a></div>
+                     <p class="formal-name">Mapping Entry Item (source or target)</p>
+                  </div>
+                  <div class="body">
+                     <p><span class="usa-tag">use name</span> <code class="name">target</code></p>
+                     <p><span class="usa-tag">group as</span> <code class="name">targets</code></p>
+                     <p class="definition-link"><a href="#/assembly/oscal-mapping-common/mapping-item">See definition</a></p>
+                  </div>
+               </div>
+               <div class="model-entry definition field">
+                  <div class="instance-header">
+                     <h2 id="/assembly/oscal-mapping-common/map/remarks" class="toc2 name">remarks</h2>
+                     <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                     <p class="occurrence">[0 or 1]</p>
+                     <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-mapping-common/map/remarks">Switch to XML</a></div>
+                     <p class="formal-name">Remarks</p>
+                  </div>
+                  <div class="body">
+                     <p class="definition-link"><a href="#/field/oscal-metadata/remarks">See definition</a></p>
+                  </div>
+               </div>
+            </div>
+         </details>
+      </div>
+   </div>
+   <div class="model-entry definition define-assembly">
+      <div class="definition-header">
+         <h1 id="/assembly/oscal-mapping-common/mapping-item" class="toc1 name">mapping-item</h1>
+         <p class="type">assembly<br class="br" /> </p>
+         <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-mapping-common/mapping-item">Switch to XML</a></div>
+         <p class="formal-name">Mapping Entry Item (source or target)</p>
+      </div>
+      <div class="body">
+         <p class="description"><span class="usa-tag">description</span> Identifies a specific edge within a source or target that is the subject of a mapping.</p>
+         <details open="open">
+            <summary>Properties (5)</summary>
+            <div class="model assembly-model">
+               <div class="model-entry definition define-flag">
+                  <div class="instance-header">
+                     <h2 id="/assembly/oscal-mapping-common/mapping-item/type" class="toc2 name">type</h2>
+                     <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                     <p class="occurrence">[0 or 1]</p>
+                     <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-mapping-common/mapping-item/type">Switch to XML</a></div>
+                     <p class="formal-name">Subject Type</p>
+                  </div>
+                  <div class="body">
+                     <p class="description"><span class="usa-tag">description</span> The semantic type of the subject.</p>
+                     <details>
+                        <summary>Constraint (1)</summary>
+                        
+                        <div class="constraint">
+                           <p><span class="usa-tag">allowed values</span></p>
+                           <p>The value <b>must</b> be one of the following:</p>
+                           <ul>
+                              
+                              <li><strong>control</strong>: A control as defined by OSCAL.</li>
+                              
+                              <li><strong>statement</strong>: A textual element of a control that defines part of the control's requirements.</li>
+                              </ul>
+                        </div>
+                        </details>
+                  </div>
+               </div>
+               <div class="model-entry definition define-flag">
+                  <div class="instance-header">
+                     <h2 id="/assembly/oscal-mapping-common/mapping-item/id-ref" class="toc2 name">id-ref</h2>
+                     <p class="type"><a href="/reference/datatypes/#string">string</a></p>
+                     <p class="occurrence">[0 or 1]</p>
+                     <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-mapping-common/mapping-item/id-ref">Switch to XML</a></div>
+                     <p class="formal-name">Subject Type</p>
+                  </div>
+                  <div class="body">
+                     <p class="description"><span class="usa-tag">description</span> The semantic type of the subject.</p>
+                  </div>
+               </div>
+               <div class="model-entry definition assembly">
+                  <div class="instance-header">
+                     <h2 id="/assembly/oscal-mapping-common/mapping-item/props" class="toc2 name">property</h2>
+                     <p class="type">assembly<br class="br" /> </p>
+                     <p class="occurrence">[0 to ∞]</p>
+                     <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-mapping-common/mapping-item/prop">Switch to XML</a></div>
+                     <p class="formal-name">Property</p>
+                  </div>
+                  <div class="body">
+                     <p><span class="usa-tag">use name</span> <code class="name">prop</code></p>
+                     <p><span class="usa-tag">group as</span> <code class="name">props</code></p>
+                     <div class="remarks-group usa-prose">
+                        <details open="open">
+                           <summary class="subhead">Remarks</summary>
+                           <div class="remarks">
+                              <p>Properties permit the deployment and management of arbitrary controlled values, within
+                                 OSCAL objects. A property can be included for any purpose useful to an application
+                                 or implementation. Typically, properties will be used to sort, filter, select, order,
+                                 and arrange OSCAL content objects, to relate OSCAL objects to one another, or to associate
+                                 an OSCAL object to class hierarchies, taxonomies, or external authorities. Thus, the
+                                 lexical composition of properties may be constrained by external processes to ensure
+                                 consistency.</p>
+                              <p>Property allows for associated remarks that describe why the specific property value
+                                 was applied to the containing object, or the significance of the value in the context
+                                 of the containing object.</p>
+                           </div>
+                        </details>
+                     </div>
+                     <p class="definition-link"><a href="#/assembly/oscal-metadata/property">See definition</a></p>
+                  </div>
+               </div>
+               <div class="model-entry definition assembly">
+                  <div class="instance-header">
+                     <h2 id="/assembly/oscal-mapping-common/mapping-item/links" class="toc2 name">link</h2>
+                     <p class="type">assembly<br class="br" /> </p>
+                     <p class="occurrence">[0 to ∞]</p>
+                     <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-mapping-common/mapping-item/link">Switch to XML</a></div>
+                     <p class="formal-name">Link</p>
+                  </div>
+                  <div class="body">
+                     <p><span class="usa-tag">group as</span> <code class="name">links</code></p>
+                     <div class="remarks-group usa-prose">
+                        <details open="open">
+                           <summary class="subhead">Remarks</summary>
+                           <div class="remarks">
+                              <p>To provide a cryptographic hash for a remote target resource, a local reference to
+                                 a back matter <code>resource</code> is needed. The resource allows one or more hash values to be provided using the <code>rlink/hash</code> object.</p>
+                              <p>The OSCAL <code>link</code> is a roughly based on the HTML <a href="https://www.w3.org/TR/html401/struct/links.html#edef-LINK">link element</a>. </p>
+                           </div>
+                        </details>
+                     </div>
+                     <p class="definition-link"><a href="#/assembly/oscal-metadata/link">See definition</a></p>
+                  </div>
+               </div>
+               <div class="model-entry definition field">
+                  <div class="instance-header">
+                     <h2 id="/assembly/oscal-mapping-common/mapping-item/remarks" class="toc2 name">remarks</h2>
+                     <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                     <p class="occurrence">[0 or 1]</p>
+                     <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-mapping-common/mapping-item/remarks">Switch to XML</a></div>
+                     <p class="formal-name">Remarks</p>
+                  </div>
+                  <div class="body">
+                     <p class="definition-link"><a href="#/field/oscal-metadata/remarks">See definition</a></p>
+                  </div>
+               </div>
+            </div>
+         </details>
+      </div>
+   </div>
+   <div class="model-entry definition define-assembly">
+      <div class="definition-header">
+         <h1 id="/assembly/oscal-mapping-common/mapping-resource-reference" class="toc1 name">mapping-resource-reference</h1>
+         <p class="type">assembly<br class="br" /> </p>
+         <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-mapping-common/mapping-resource-reference">Switch to XML</a></div>
+         <p class="formal-name">Mapped Resource Reference</p>
+      </div>
+      <div class="body">
+         <p class="description"><span class="usa-tag">description</span> A reference to a back-matter resource that is either the source or target of a mapping.</p>
+         <details open="open">
+            <summary>Properties (5)</summary>
+            <div class="model assembly-model">
+               <div class="model-entry definition define-flag">
+                  <div class="instance-header">
+                     <h2 id="/assembly/oscal-mapping-common/mapping-resource-reference/type" class="toc2 name">type</h2>
+                     <p class="type"><a href="/reference/datatypes/#token">token</a></p>
+                     <p class="occurrence">[0 or 1]</p>
+                     <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-mapping-common/mapping-resource-reference/type">Switch to XML</a></div>
+                     <p class="formal-name">Resource Type</p>
+                  </div>
+                  <div class="body">
+                     <p class="description"><span class="usa-tag">description</span> The semantic type of the resource.</p>
+                     <details>
+                        <summary>Constraint (1)</summary>
+                        
+                        <div class="constraint">
+                           <p><span class="usa-tag">allowed value</span></p>
+                           <p>The value <b>must</b> be one of the following:</p>
+                           <ul>
+                              
+                              <li><strong>catalog</strong>: The mapped resource is a control catalog.</li>
+                              </ul>
+                        </div>
+                        </details>
+                  </div>
+               </div>
+               <div class="model-entry definition define-flag">
+                  <div class="instance-header">
+                     <h2 id="/assembly/oscal-mapping-common/mapping-resource-reference/href" class="toc2 name">href</h2>
+                     <p class="type"><a href="/reference/datatypes/#uri-reference">uri-reference</a></p>
+                     <p class="occurrence">[0 or 1]</p>
+                     <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-mapping-common/mapping-resource-reference/href">Switch to XML</a></div>
+                     <p class="formal-name">Catalog or Profile Reference</p>
+                  </div>
+                  <div class="body">
+                     <p class="description"><span class="usa-tag">description</span> A resolvable URL reference to the base catalog or profile that this profile is tailoring.</p>
+                     <div class="remarks-group usa-prose">
+                        <details open="open">
+                           <summary class="subhead">Remarks</summary>
+                           <div class="remarks">
+                              <p>The value of the <code>href</code> can be an internet resource, or a local reference using a fragment e.g. #fragment
+                                 that points to a <code>back-matter</code> <code>resource</code> in the same document.</p>
+                              <p>If a local reference using a fragment is used, this will be indicated by a fragment
+                                 "#" followed by an identifier which references an identified <code>resource</code> in the document's <code>back-matter</code> or another object that is within the scope of the containing OSCAL document.</p>
+                              <p>If an internet resource is used, the <code>href</code> value will be an absolute or relative URL pointing to the location of the referenced
+                                 resource. A relative URL will be resolved relative to the location of the document
+                                 containing the link.</p>
+                           </div>
+                        </details>
+                     </div>
+                  </div>
+               </div>
+               <div class="model-entry definition assembly">
+                  <div class="instance-header">
+                     <h2 id="/assembly/oscal-mapping-common/mapping-resource-reference/props" class="toc2 name">property</h2>
+                     <p class="type">assembly<br class="br" /> </p>
+                     <p class="occurrence">[0 to ∞]</p>
+                     <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-mapping-common/mapping-resource-reference/prop">Switch to XML</a></div>
+                     <p class="formal-name">Property</p>
+                  </div>
+                  <div class="body">
+                     <p><span class="usa-tag">use name</span> <code class="name">prop</code></p>
+                     <p><span class="usa-tag">group as</span> <code class="name">props</code></p>
+                     <div class="remarks-group usa-prose">
+                        <details open="open">
+                           <summary class="subhead">Remarks</summary>
+                           <div class="remarks">
+                              <p>Properties permit the deployment and management of arbitrary controlled values, within
+                                 OSCAL objects. A property can be included for any purpose useful to an application
+                                 or implementation. Typically, properties will be used to sort, filter, select, order,
+                                 and arrange OSCAL content objects, to relate OSCAL objects to one another, or to associate
+                                 an OSCAL object to class hierarchies, taxonomies, or external authorities. Thus, the
+                                 lexical composition of properties may be constrained by external processes to ensure
+                                 consistency.</p>
+                              <p>Property allows for associated remarks that describe why the specific property value
+                                 was applied to the containing object, or the significance of the value in the context
+                                 of the containing object.</p>
+                           </div>
+                        </details>
+                     </div>
+                     <p class="definition-link"><a href="#/assembly/oscal-metadata/property">See definition</a></p>
+                  </div>
+               </div>
+               <div class="model-entry definition assembly">
+                  <div class="instance-header">
+                     <h2 id="/assembly/oscal-mapping-common/mapping-resource-reference/links" class="toc2 name">link</h2>
+                     <p class="type">assembly<br class="br" /> </p>
+                     <p class="occurrence">[0 to ∞]</p>
+                     <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-mapping-common/mapping-resource-reference/link">Switch to XML</a></div>
+                     <p class="formal-name">Link</p>
+                  </div>
+                  <div class="body">
+                     <p><span class="usa-tag">group as</span> <code class="name">links</code></p>
+                     <div class="remarks-group usa-prose">
+                        <details open="open">
+                           <summary class="subhead">Remarks</summary>
+                           <div class="remarks">
+                              <p>To provide a cryptographic hash for a remote target resource, a local reference to
+                                 a back matter <code>resource</code> is needed. The resource allows one or more hash values to be provided using the <code>rlink/hash</code> object.</p>
+                              <p>The OSCAL <code>link</code> is a roughly based on the HTML <a href="https://www.w3.org/TR/html401/struct/links.html#edef-LINK">link element</a>. </p>
+                           </div>
+                        </details>
+                     </div>
+                     <p class="definition-link"><a href="#/assembly/oscal-metadata/link">See definition</a></p>
+                  </div>
+               </div>
+               <div class="model-entry definition field">
+                  <div class="instance-header">
+                     <h2 id="/assembly/oscal-mapping-common/mapping-resource-reference/remarks" class="toc2 name">remarks</h2>
+                     <p class="type"><a href="/reference/datatypes/#markup-multiline">markup-multiline</a></p>
+                     <p class="occurrence">[0 or 1]</p>
+                     <div class="crosslink"><a class="usa-button" href="../xml-definitions/#/assembly/oscal-mapping-common/mapping-resource-reference/remarks">Switch to XML</a></div>
+                     <p class="formal-name">Remarks</p>
+                  </div>
+                  <div class="body">
+                     <p class="definition-link"><a href="#/field/oscal-metadata/remarks">See definition</a></p>
+                  </div>
+               </div>
+            </div>
+         </details>
       </div>
    </div>
    <div class="model-entry definition define-flag">
