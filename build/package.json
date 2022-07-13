@@ -2,7 +2,7 @@
     "name": "ci-cd-packages",
     "version": "1.0.0",
     "dependencies": {
-        "ajv-cli": "^4.0.x",
+        "ajv-cli": "^5.0.x",
         "ajv-formats": "^2.1.x",
         "markdown-link-check": "^3.10.2",
         "yaml-convert": "^1.0.x"
