@@ -43,9 +43,9 @@ graph TD
     %% I want to publish an OSCAL release
 ```
 
-## Provided Scripts
+## Provided Scripts and Tools
 
-The primary CircleCI supported CI/CD workflow, ```build```, is uses a series of bash scripts. The following scripts are used in this workflow for all PRs that are submitted:
+The following scripts and tools in this repository and its submodules are itemized below. 
 
 1. [run-all.sh](run-all.sh): Runs all of the scripts in workflow order.
 1. [validate-metaschema.sh](validate-metaschema.sh): Ensures that all [metaschema](https://github.com/usnistgov/OSCAL/tree/master/src/metaschema) are valid according to the [metaschema XML schema](https://github.com/usnistgov/metaschema/blob/master/toolchains/xslt-M4/validate/metaschema.xsd).
@@ -55,9 +55,11 @@ The primary CircleCI supported CI/CD workflow, ```build```, is uses a series of 
 1. [copy-and-convert-content.sh](copy-and-convert-content.sh): Copies selective content from the [src/content](https://github.com/usnistgov/OSCAL/tree/master/src/content) directory, and generates instance of this content in alternate OSCAL formats using the appropriate content converters. Note __This script requires that the process have write access to the Git repository branch that the CI/CD is operating on to work completely.__
 1. [validate-content-conversion-round-trips.sh](validate-content-conversion-round-trips.sh): Performs round trip validations of the content from XML->JSON->XML to confirm that the conversions are lossless and that resulting files comply with their schemas.
 
-    Additional scripts are provided that generate content for the OSCAL project website, supported by the CircleCI ```build``` workflow on the ```master``` branch.
+    Additional scripts are provided that generate content for the OSCAL project website, supported by the GitHub Actions ```build``` workflow on the ```master``` branch.
 
 1. [generate-model-documentation.sh](generate-model-documentation.sh): This is used as part of the site generation pipeline to build HTML documentation for the OSCAL models.
+
+Not every script above is run with every pull request as part of the CI/CD system. Some are only for local development and testing. Please review the [../../.github/workflows](GitHub Actions workflows) for current inventory of what is used for CI and CD for every pull request.
 
 ## Running the Scripts Locally
 

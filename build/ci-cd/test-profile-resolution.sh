@@ -26,8 +26,7 @@ EOF
 }
 
 
-OPTS=`getopt -o w:vh --long working-dir:,scratch-dir:,keep-temp-scratch-dir,help -n "$0" -- "$@"`
-if [ $? != 0 ] ; then echo -e "Failed parsing options." >&2 ; usage ; exit 1 ; fi
+if ! OPTS=$(getopt -o w:vh --long working-dir:,scratch-dir:,keep-temp-scratch-dir,help -n "$0" -- "$@"); then echo -e "Failed parsing options." >&2 ; usage ; exit 1 ; fi
 
 # Process arguments
 eval set -- "$OPTS"

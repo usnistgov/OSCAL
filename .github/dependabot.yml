@@ -1,0 +1,47 @@
+
+version: 2
+updates:
+
+  - package-ecosystem: "gitsubmodule"
+    directory: "/build/metaschema"
+    schedule:
+      interval: "daily"
+    target-branch: "develop"
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    # GitHub Actions workflow updates should target main as the repo default branch, not develop
+    target-branch: "main"
+
+  - package-ecosystem: "docker"
+    directory: "/build"
+    schedule:
+      interval: "daily"
+    target-branch: "develop"
+
+  - package-ecosystem: "gomod"
+    directory: "/build"
+    schedule:
+      interval: "daily"
+    # Golang changes for hugo are really for GitHub Actions workflows.
+    # They should target main, not develop.
+    target-branch: "main"
+
+  - package-ecosystem: "npm"
+    directory: "/build"
+    schedule:
+      interval: "daily"
+    # NPM changes for the NodeJS markdown-link-check tool executed in GitHub
+    # Actions workflows. They should target main, not develop.
+    target-branch: "main"
+
+  - package-ecosystem: "pip"
+    directory: "/build/python"
+    schedule:
+      interval: "daily"
+    # PyPI changes for Python scripts that run OSCAL content post-processing
+    # executed within GitHub Actions workflows. They should target main, not
+    # develop.
+    target-branch: "main"

@@ -29,8 +29,8 @@ Usage: $0 [options]
 EOF
 }
 
-OPTS=`getopt -o a:o:w:c:hv --long resolve-profiles,artifact-dir:,oscal-dir:,working-dir:,config-file:,help -n "$0" -- "$@"`
-if [ $? != 0 ] ; then echo "Failed parsing options." >&2 ; usage ; exit 1 ; fi
+
+if ! OPTS=$(getopt -o a:o:w:c:hv --long resolve-profiles,artifact-dir:,oscal-dir:,working-dir:,config-file:,help -n "$0" -- "$@"); then echo "Failed parsing options." >&2 ; usage ; exit 1 ; fi
 
 # Process arguments
 eval set -- "$OPTS"
@@ -154,7 +154,7 @@ post_process_content() {
       if [ "$VERBOSE" = "true" ]; then
         echo -e "${P_INFO}Translating relative XML paths to JSON paths in '${P_END}${target_file_relative}${P_INFO}'.${P_END}"
       fi
-      python3 "$OSCALDIR/build/ci-cd/python/convert_filetypes.py" --old-extension xml --new-extension json "${target_file}"
+      if ! python3 "$OSCALDIR/build/ci-cd/python/convert_filetypes.py" --old-extension xml --new-extension json "${target_file}"; then echo "Failed running conversion of file extensions in content URIs" >&2 ; exit 1 ; fi
     fi
 
     # produce pretty JSON

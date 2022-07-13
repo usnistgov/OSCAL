@@ -26,8 +26,7 @@ Usage: $0 [options]
 EOF
 }
 
-OPTS=`getopt -o o:vhc:a: --long artifact-dir:,oscal-dir:,help,config-file: -n "$0" -- "$@"`
-if [ $? != 0 ] ; then echo "Failed parsing options." >&2 ; usage ; exit 1 ; fi
+if ! OPTS=$(getopt -o o:vhc:a: --long artifact-dir:,oscal-dir:,help,config-file: -n "$0" -- "$@"); then echo "Failed parsing options." >&2 ; usage ; exit 1 ; fi
 
 # Process arguments
 eval set -- "$OPTS"
