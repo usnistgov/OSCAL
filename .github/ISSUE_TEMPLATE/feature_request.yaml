@@ -1,0 +1,38 @@
+name: Feature Request
+description: Suggest an idea for this project
+labels: ['User Story', 'enhancement']
+body:
+  - type: textarea
+    id: story
+    attributes:
+      label: User Story
+      description: Describe the feature from the user's perspective, e.g. "As a an OSCAL ..., I need to be able to..."
+      placeholder: |
+        As an OSCAL {stakeholder}, I {provide a clear and concise description of what the problem is. Ex. I need to be able to ...}
+    validations:
+      required: true
+  - type: textarea
+    id: goals
+    attributes:
+      label: Goals
+      description: Describe what you want to happen. This should be outcome focused. Include descriptions of any alternative solutions or features you've considered. Feel free to include any screenshots or examples.
+    validations:
+      required: true
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: Dependencies
+      description: Describe any previous issues or related work that must be completed to start or complete this issue.
+  - type: textarea
+    id: acceptance_criteria
+    attributes:
+      label: Acceptance Criteria
+      value: |
+        - [ ] All [OSCAL website](https://pages.nist.gov/OSCAL) and readme documentation affected by the changes in this issue have been updated. Changes to the OSCAL website can be made in the docs/content directory of your branch.
+        - [ ] A Pull Request (PR) is submitted that fully addresses the goals of this User Story. This issue is referenced in the PR.
+        - [ ] The CI-CD build process runs without any reported errors on the PR. This can be confirmed by reviewing that all checks have passed in the PR.
+
+        <!-- The items above are general acceptance criteria for all User Stories. Please describe anything else that must be completed for this issue to be considered resolved.-->
+    validations:
+      required: true
+    
