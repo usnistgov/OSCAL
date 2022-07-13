@@ -1,4 +1,4 @@
-FROM ubuntu:20.04 as base-environment
+FROM ubuntu:22.04 as base-environment
 
 ADD ./ci-cd/python/requirements.txt .
 
