@@ -77,7 +77,7 @@ jobs:
         mkdir -p "${JAVA_CLASSPATH}"
         mvn dependency:copy-dependencies -DoutputDirectory="${JAVA_CLASSPATH}"
     - name: Set up NodeJS
-      uses: actions/setup-node@1f8c6b94b26d0feae1e387ca63ccbdc44d27b561
+      uses: actions/setup-node@5b949b50c3461bbcd5a540b150c368278160234a
       with:
         node-version-file: '${{ env.CHECKOUT_PATH }}/build/.nvmrc'
         cache: 'npm'
