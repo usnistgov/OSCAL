@@ -13,20 +13,47 @@ toc:
 
 The [OSCAL models](/concepts/layer/) provide standardized formats for exchanging control, control implementation, and control assessment information in XML, JSON, and YAML. These formats allow this information to be exchanged between tools and for individual tools to process exchanged data, supporting analytics, user interaction, and increased automation.
 
-Tools exist that support the use of the OSCAL models. These tools are listed below in the following categories:
+Tools supporting the use of the OSCAL models are listed below in the following categories:
 
-- OSCAL Project provided tools and libraries
-- Open Source Tools provided by 3rd parties
+- Commodity tooling supporting basic operations
+- Tools and applications developed by the OSCAL team or by third parties
 
-If you have produced a tool that supports the OSCAL formats that you would like to have listed on this page, please [contact us](/contact/).
+If you have produced a tool that supports the OSCAL formats which you would like to have listed on this page, please [contact us](/contact/).
 
 ## Disclaimer
 
-**Certain products may be identified on this web page, but such identification doesn’t imply recommendation by the US National Institute of Standards and Technology or other agencies of the US Government, nor does it imply that the products identified are necessarily the best available for the purpose.**
+**Certain products may be identified on this web page, but such identification does not imply recommendation by the US National Institute of Standards and Technology or other agencies of the US Government, nor does it imply that the products identified are necessarily the best available for the purpose.**
 
-See the [NIST Software Disclaimer](https://www.nist.gov/disclaimer) for more information.
+See the [NIST Software Disclaimer](https://www.nist.gov/disclaimer) for more details.
 
-## OSCAL Tools and Libraries
+## Commodity Tooling - Basic Operations
+
+In order to support data interchange and semantic interoperability in this heterogeneous environment, the OSCAL project publishes some basic software components along with the OSCAL specifications, to help serve as reference points or "scaffolding" for developers and for partners in data exchange.
+
+See the OSCAL  [XML](https://github.com/usnistgov/OSCAL/tree/main/xml) and [JSON/YAML](https://github.com/usnistgov/OSCAL/tree/main/json) resource pages in the project repository for more details.
+
+### Validation
+
+OSCAL can be formally *validated* to help confirm its correctness and fitness for processing. Validation of any OSCAL content instance can be accomplished by applying the appropriate schema for the respective format. For example, a System Security Plan (SSP) represented in OSCAL XML can be validated against the [SSP XML Schema](https://github.com/usnistgov/OSCAL/blob/main/xml/schema/oscal_ssp_schema.xsd), which defines (in machinable form) the validation rules for OSCAL SSPs in XML. Validation operations are based entirely on non-proprietary, standardized processes available in multiple tool implementations, by reference to open, publicly available schemas, located in the [OSCAL repository](https://github.com/usnistgov/OSCAL/) for [XML](https://github.com/usnistgov/OSCAL/tree/main/xml/schema) and [JSON/YAML](https://github.com/usnistgov/OSCAL/tree/main/json/schema) respectively.
+
+YAML developers should take note that the JSON Schemas can be applied to YAML content instances.
+
+More details about validation are offered on the page [Well-formed Data Formats and Valid OSCAL](https://pages.nist.gov/OSCAL/concepts/layer/validation/).
+
+### Data conversion
+
+Because OSCAL can be XML, JSON or YAML, it is sometimes useful to convert OSCAL XML into the equivalent OSCAL JSON, or vice-versa.  The OSCAL project publishes data convertors for this purpose. Using an appropriate converter, OSCAL in any format, valid to one of the OSCAL models, can be converted into another format also valid to its (corresponding) model. Note that since JSON and YAML express the same data model (YAML syntax being defined as a superset of JSON syntax), conversion between these formats is more straightforward and does not require "OSCAL-awareness".
+
+Additionally, OSCAL applications such as those listed below, when reading and writing OSCAL, may themselves support more than one syntax. Check the features of your processor in case you do not need a standalone tool for data conversion.
+
+Details on acquiring and running the converters:
+
+- converting *into* JSON - [XML to JSON](https://github.com/usnistgov/OSCAL/tree/main/json)
+- converting *into* XML - [JSON to XML](https://github.com/usnistgov/OSCAL/tree/main/xml)
+ 
+## OSCAL Application Frameworks, Tools and Libraries
+
+Valid OSCAL is open-ended in application. Some of the tools described provide validation and conversion, while others do not, presuming that inputs are already valid.
 
 | Name | Provider/Developer | Description | Type |
 |:---|:---|:---|:---|
