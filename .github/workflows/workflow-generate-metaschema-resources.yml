@@ -66,7 +66,7 @@ jobs:
     # -------------------------
     # Java JDK 11
     - name: Set up JDK
-      uses: actions/setup-java@f0bb91606209742fe3ea40199be2f3ef195ecabf
+      uses: actions/setup-java@2c7a4878f5d120bd643426d54ae1209b29cc01a3
       with:
         java-version: 11
         distribution: 'temurin'
