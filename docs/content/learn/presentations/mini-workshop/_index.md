@@ -35,6 +35,14 @@ Please find below the calendar of proposed dates. Before submitting a proposal, 
 
 Submit your proposal via email to [oscal@nist.gov](mailto:oscal@nist.gov), with the subject line: “OSCAL Workshop - [Date: yyyy/mm/dd]”, where the “Date” is the selected date from the calendar below. Please include in your submission a pre-assessment of the OSCAL knowledge level the audience will need using a 4-levels scale with level one (L1/bronze) being equivalent to novice and level four (L4/platinum) being an OSCAL expert. 
 
+[Join the meetings here](https://bluejeans.com/743906781/9254)  or dial one of the following numbers:
++1.202.795.3352,,, 743 906 781 ,,, 9254  (United States (Washington DC))
++1.408.317.9254,,, 743 906 781 ,,, 9254  (US (San Jose))
+(To see all available numbers, go to: [https://www.bluejeans.com/numbers](https://www.bluejeans.com/numbers))
+Enter the meeting ID and passcode as follows:
+Meeting ID: 743 906 781
+Participant Passcode: 9254
+
 ## Workshops Calendar
 
 | Date | Time | Talk/Demo/Discussion | Presenter & Affiliation | Type | Knowledge Level |
@@ -42,7 +50,7 @@ Submit your proposal via email to [oscal@nist.gov](mailto:oscal@nist.gov), with 
 | 2022/05/18 | 11:00AM-12:00PM EDT | 1.  Compliance as Code for Big Bang Risk Management Framework (RMF) Control Mapping to Accelerate Department of Defense (DoD) Authorization to Operate (ATO) | Maj Camdon Cady, Chief Operating Officer, Platform One, US Airforce & Tom Runyon, Defense Unicorns   | presentation |  L2 |
 |  |  | 2. OSCAL Catalog Authoring Tool (CAT) | Dmitry Cousin, NIST |demo |  L1 | 
 |  2022/06/15 |  11:00AM-12:00PM EDT  | IBM's Trestle - compliance as code orchestrator and automation workflow  | Dr. Anca Sailer [video](https://csrc.nist.gov/csrc/media/Presentations/2022/oscal-mini-workshop-2-ibm-s-trestle/images-media/IBM-Trestle-part1-ASailer-2022-06-15-caption.mp4), Dr. Vikas Agarwal [video](https://csrc.nist.gov/csrc/media/Presentations/2022/oscal-mini-workshop-2-ibm-s-trestle/images-media/IBM-Trestle-part2-VAgarwal-2022-06-15-caption.mp4), and Lou DeGenaro [video](https://csrc.nist.gov/csrc/media/Presentations/2022/oscal-mini-workshop-2-ibm-s-trestle/images-media/IBM-Trestle-part3-LDegenaro-2022-06-15-caption.mp4)| [presentation](trestle-agile-authoring.pdf) & [demo summary](trestle-agile-authoring-demo.pdf) | L3 |   
-|  2022/07/13 |  11:00AM-12:00PM EDT  | OSCAL Implementation: Early Lessons Learned | Matthew Donkin, AWS | presentation | L2 |    
+|  2022/07/13 |  11:00AM-12:00PM EDT  | OSCAL Implementation: Early Lessons Learned | Matthew Donkin, Security Assurance Manager, AWS & Stephanie Lacy, Senior Solutions Architect, Telos| presentation | L2 |
 |  2022/08/10 |  11:00AM-12:00PM EDT  | Extreme Automation with OSCAL - Exercising the Full OSCAL Stack in a Next Generation GRC | Travis Howerton, RegScale | presentation & demo | L1-L3 |    
 |  2022/09/07 |  11:00AM-12:00PM EDT  | 1. |  |  |  |  
 |  |  | 2. |  |  |  |  
