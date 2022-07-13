@@ -40,7 +40,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Create issue if bad links detected
       if: steps.linkchecker.outputs.exit_code != 0 && inputs.create_issue
-      uses: peter-evans/create-issue-from-file@97e6f902a416aac38834e23fa52e166aad0437d2
+      uses: peter-evans/create-issue-from-file@99b87c35610e986ad2034a7b0518a9b3ebea541b
       with:
         title: Scheduled Check of Website Content Found Bad Hyperlinks
         content-filepath: ./lychee/out.md
