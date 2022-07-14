@@ -15,7 +15,7 @@ toc:
 - Full versions of the NIST SP 800-53 Revision 5 catalog are available in OSCAL [XML]({{< param "contentRepoPath" >}}/nist.gov/SP800-53/rev5/xml/NIST_SP-800-53_rev5_catalog.xml), [JSON]({{< param "contentRepoPath" >}}/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json), and [YAML]({{< param "contentRepoPath" >}}/nist.gov/SP800-53/rev5/yaml/NIST_SP-800-53_rev5_catalog.yaml) formats in the OSCAL content GitHub repository. These examples also include assessment and objective content from NIST SP 800-53A Revision 5, *not shown here*.
 {{</callout>}}
 
-The following is a non-normative, partial illustration showing how control **AC-1** from NIST SP [800-53 Rev. 5](https://doi.org/10.6028/NIST.SP.800-53r5) can be rendered in OSCAL Catalog XML format with a `<control>` element.
+The following is a non-normative, partial illustration showing how control **AC-1** from NIST SP [800-53 Revision 5](https://doi.org/10.6028/NIST.SP.800-53r5) can be rendered in OSCAL Catalog XML format with a `<control>` element.
 
 First we start with the following control text from SP 800-53. (Formatting adjusted for conciseness and legibility.)
 
