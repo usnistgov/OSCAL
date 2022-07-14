@@ -168,7 +168,7 @@ So for example, in its back matter the catalog XML for SP 800-53 may have someth
 
 The `uuid` value on this `<resource>` serves as its ID for internal links targeting this element. Incidentally, a survey of the catalog source data in this case also shows this particular reference is made from 96 different controls.
 
-Note that here, the code phrase used in the source to identify the bibliographic item (such as "OMB A-130") is regarded as a presentational artifact, not as a control point or formal identifier. This allows both freedom and fidelity to anomalous (and potentially conflicting) data sources, while providing for the linkage itself to be robust, expressed by means of a UUID. In rendition or display, any link to this resource can retrieve and show a title, citation text or outbound link as needed, where they are available.
+Note that here, the string or "bibliographic identifier" used in the text to identify the resource (such as "OMB A-130") is regarded as a property of the object (in a loose sense) and a presentational artifact, but is not used as a control point or formal identifier. This allows both freedom and fidelity to anomalous (and potentially conflicting) data sources, while providing for the linkage itself to be robust, expressed by means of a UUID. In rendition or display, any link to this resource can retrieve and show a title, citation text or outbound link as needed, where they are available.
 
 ## Parts
 
