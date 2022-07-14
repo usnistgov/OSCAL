@@ -25,7 +25,7 @@ Controls must also be encoded in a standard machine-readable form. The OSCAL mod
 
 ## Profile Model
 
-The **[Profile Model](profile/)** provides a structured, machine-readable representation of a **[baseline](../../terminology/#baseline)**. As the starting point for defining an organization's security mission and security posture, a baseline must be defined by any organization undertaking an RMF-based (Risk Management Framework) security program or security assessment, typically by selecting and adapting controls from an authoritative catalog of controls, or from another baseline that has already been defined and described.
+The **[Profile Model](profile/)** provides a structured, machine-readable representation of a **[baseline](../../terminology/#baseline)**. As the starting point for defining an organization's security mission and security posture, a baseline must be defined by any organization undertaking a risk-based security program or security assessment, typically by selecting and adapting controls from an authoritative catalog of controls, or from another baseline that has already been defined and described.
 
 The OSCAL profile model allows for selecting security controls from catalogs using a number of different mechanisms, as well as for tailoring those controls (e.g., assigning parameter values, modifying requirements). An OSCAL profile can select controls from more than one catalog, allowing an organization to have a single profile that references controls from several catalogs. OSCAL profiles can also be based on other OSCAL profiles, allowing baselines to be established as customizations of other baselines. This technical capability reflects the real-world use case for organizations and programs who need to do this.
 
