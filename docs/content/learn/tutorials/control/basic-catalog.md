@@ -7,6 +7,7 @@ toc:
   enabled: true
 aliases:
   - /tutorials/catalog/
+  - /learn/tutorials/catalog/
 ---
 
 This tutorial covers creating a basic OSCAL control catalog.

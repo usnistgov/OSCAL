@@ -1,10 +1,13 @@
 ---
-title: Creating and Using Metadata in OSCAL
+title: Creating and Using Metadata
+heading: Creating and Using Metadata in OSCAL
 description: A tutorial that covers the usage of the metadata section in OSCAL
 weight: 5
 suppresstopiclist: true
 toc:
   enabled: true
+alias:
+- /learn/tutorials/metadata/
 ---
 
 This tutorial provides a walk-through for creating the `metadata` section of an OSCAL document, which appears in all OSCAL documents.

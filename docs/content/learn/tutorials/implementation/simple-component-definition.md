@@ -5,6 +5,8 @@ weight: 40
 suppresstopiclist: true
 toc:
   enabled: true
+alias:
+- /learn/tutorials/component-definition/
 ---
 
 This tutorial covers creating a basic OSCAL component definition. Before reading this tutorial you should:

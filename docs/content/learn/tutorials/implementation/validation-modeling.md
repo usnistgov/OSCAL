@@ -10,6 +10,7 @@ sidenav:
     inactiverenderdepth: 2
 aliases:
   - /documentation/schema/implementation-layer/validation-modeling/
+  - /learn/tutorials/validation-modeling/
 ---
 
 This tutorial covers describing test validation information (e.g., FIPS-140-2) using an OSCAL component.
