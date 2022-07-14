@@ -148,7 +148,7 @@ On links, `href` follows the semantics of `href` as defined for HTML/HTTP by W3C
 <link rel="related" href="#si-12"/>
 {{< / highlight >}}
 
-No rule in OSCAL prevents a link from targeting any resource or target whatsoever; but catalog authors can be expected to manage their links according to regimes appropriate to their catalogs. In the case of SP 800-53, internal links (from one control to another) are represented as __Related Controls__ in the formatted source. These are easily indicated via `href` fragment identifiers - `#ia-1` referencing the entity with `id` value `ia-1`, which of course happens to be control IA-1.
+Nothing in OSCAL prevents a link from targeting any resource; but catalog authors can be expected to manage their links according to regimes appropriate to their catalogs. In the case of SP 800-53, internal links (from one control to another) are represented as __Related Controls__ in the formatted source. These are easily indicated via `href` fragment identifiers - `#ia-1` referencing the entity with `id` value `ia-1`, which of course happens to be control IA-1.
 
 *References*, however (in contrast to related controls), function as bibliographic citations, using a code for each reference given in the PDF source. In the OSCAL, the bibliographic items are collected and encoded in the catalog back matter (`<back-matter>`) as `<resource>` elements.
 
