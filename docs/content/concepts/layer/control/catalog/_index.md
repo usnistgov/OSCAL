@@ -63,7 +63,7 @@ An OSCAL catalog is organized as follows, which is based on the standard OSCAL [
 
 ## Key Concepts
 
-OSCAL catalogs define organized sets of controls. The primary use of the catalog model is to represent, in machine-readable form, a comprehensive collection of controls from which an organization can create a *baseline*, by means of control selection and tailoring. A public catalog such as SP 800-53 (rev 4 and rev5), available in such a format, is a significant (and arguably indispensable) asset for any organization tasked with understanding and implementing and assessing its controls. The OSCAL catalog model supports this by providing a common set of rules for encoding this catalog (control set), like others, thereby promoting interoperability of tools, portability of data, and the development of commodity software applications.
+OSCAL catalogs define organized sets of controls. The primary use of the catalog model is to represent, in machine-readable form, a comprehensive collection of controls from which an organization can create a *baseline*, by means of control selection and tailoring. A public catalog such as SP 800-53 (Revision 4 and Revision 5), available in such a format, is a significant (and arguably indispensable) asset for any organization tasked with understanding, implementing, and assessing its controls. The OSCAL catalog model supports this by providing a common set of rules for encoding this catalog (control set), like others, thereby promoting interoperability of tools, portability of data, and the development of commodity software applications.
 
 Because the OSCAL catalog model is suited to represent any set of controls, it has a second important application: to represent the *output* of a process applied to [OSCAL **profile**](../profile/) documents, called *resolution*. (See the [Profile Resolution Specification](../../../processing/profile-resolution/) for details.) This application of the catalog model is important to consumers of baselines, giving them the ability to import, view and further process the controls represented in a baseline in one place, with their tailoring, and treat catalogs and baselines together within a single unified set of operations.
 
@@ -75,7 +75,7 @@ In both of these applications (and in others to be developed), the OSCAL catalog
   * control parameters: a mechanism for the dynamic assignment of values in a control;
   * control guidance: additional control implementation guidance, intended to supplement the control definition;
   * control objectives: clearly stated objectives that should be achieved by a proper implementation of the control definition;
-  * assessment methods: prescribed actions for ensuring the control has been implemented consistent with its definition and achieving its objectives;
+  * assessment methods: prescribed activities for ensuring the control has been implemented consistent with its definition and achieving its objectives;
   * related controls: identification of other controls in the catalog related to the control;
   * references: supporting references related to the control.
 
@@ -83,6 +83,6 @@ In both of these applications (and in others to be developed), the OSCAL catalog
 
 ## Content Examples
 
-The NIST SP 800-53 revision 4 and 5 control catalogs are provided as [OSCAL examples]({{< param "contentRepoPath" >}}/nist.gov/SP800-53/) in the OSCAL content GitHub repository. These examples are maintained by NIST in OSCAL XML, JSON, and YAML formats. OSCAL catalogs and baselines are being produced by other stakeholders to represent different control regimens as well.
+The NIST SP 800-53 Revision 4 and 5 control catalogs are provided as [OSCAL examples]({{< param "contentRepoPath" >}}/nist.gov/SP800-53/) in the OSCAL content GitHub repository. These examples are maintained by NIST in OSCAL XML, JSON, and YAML formats. OSCAL catalogs and baselines are being produced by other stakeholders to represent different control regimens as well.
 
-Read an [Annotated Example](sp800-53rev5-example/) of the contents and organization of an OSCAL control from NIST SP800-53 rev 5.
+Read an [Annotated Example](sp800-53rev5-example/) of the contents and organization of an OSCAL control from NIST SP800-53 Revision 5.

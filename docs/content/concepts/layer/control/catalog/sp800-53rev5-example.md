@@ -12,7 +12,7 @@ toc:
 {{<callout>}}**Please note:**
 
 - The following commentary uses and shows XML syntax. A later revision will offer JSON and YAML translations.
-- Full versions of the NIST SP 800-53 Rev. 5 catalog are available in OSCAL [XML]({{< param "contentRepoPath" >}}/nist.gov/SP800-53/rev5/xml/NIST_SP-800-53_rev5_catalog.xml), [JSON]({{< param "contentRepoPath" >}}/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json), and [YAML]({{< param "contentRepoPath" >}}/nist.gov/SP800-53/rev5/yaml/NIST_SP-800-53_rev5_catalog.yaml) formats in the OSCAL content GitHub repository. These examples also include assessment and objective content from NIST SP 800-53A Rev. 5, *not shown here*.
+- Full versions of the NIST SP 800-53 Revision 5 catalog are available in OSCAL [XML]({{< param "contentRepoPath" >}}/nist.gov/SP800-53/rev5/xml/NIST_SP-800-53_rev5_catalog.xml), [JSON]({{< param "contentRepoPath" >}}/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json), and [YAML]({{< param "contentRepoPath" >}}/nist.gov/SP800-53/rev5/yaml/NIST_SP-800-53_rev5_catalog.yaml) formats in the OSCAL content GitHub repository. These examples also include assessment and objective content from NIST SP 800-53A Revision 5, *not shown here*.
 {{</callout>}}
 
 The following is a non-normative, partial illustration showing how control **AC-1** from NIST SP [800-53 Rev. 5](https://doi.org/10.6028/NIST.SP.800-53r5) can be rendered in OSCAL Catalog XML format with a `<control>` element.
@@ -43,9 +43,9 @@ First we start with the following control text from SP 800-53. (Formatting adjus
 >
 > __References__: [OMB A-130], [SP 800-12], [SP 800-30], [SP 800-39], [SP 800-100], [IR 7874].
 
-Encoding this text in OSCAL entails an analysis that turns it "inside out" and exposes the implicit structures (the "bones") as a kind of exoskeleton around the text, using a common and non-proprietary data encoding standard such as XML or JSON to provide the "form" of the cast. Within this organization, all these data points become distinguishable and recognizable to any downstream processor (consumer or partner) who expects OSCAL, or who can interpret it, defining OSCAL both narrowly, in its technical senses, and broadly: as a standard, a set of norms and conventions, a collection of tools, applications and resources, and a community of practice. From the encoded data, the text's "original format" (or something like it) can be restored, but much else can be done as well: the semantics of the information (the set of meaningful discriminations) can be mined, sifted, collated, ranked, annotated, and related to other data points internal or external.
+Representing this text in a machine readable form involves providing more structure around the text, allowing each data point to be easily identified by a machine. OSCAL defines the syntax for XML, JSON, and YAML structures to represent this information, allowing any downstream consumer, who expects OSCAL, to parse this data. This allows a processor to produce the text's "original" or any other format from the structured OSCAL representation. The processor can also sort, analyze, filter, enrich or transform this data for any purpose.
 
-Since OSCAL is designed purposefully to represent such data sets (in a specific semantic domain, namely the [NIST Risk Management Framework](https://csrc.nist.gov/publications/detail/sp/800-37/rev-2/final) or RMF), the casting of this information into OSCAL encoding can be straightforward, economical and clean.
+Since OSCAL is designed purposefully to represent such data sets, the casting of this information into OSCAL encoding can be straightforward, economical and clean.
 
 ## Control, ID and title
 
@@ -60,11 +60,11 @@ See the source code as currently available in [raw XML from Github](https://raw.
 
 - The control is assigned a class, "SP800-53". This serves as an indicator to a downstream processor of the control's origin (with respect to the catalog or catalog type), with implications for related expectations, including expectations in detail regarding how the control and its contents may be structured.
 - The control ID is "ac-1". All `id` values are unique within the document and serve for addressing and linking. The lexical form of the `id` is designed to be consistent with its formal (conventional) code or label, which is *also* encoded within the control (in this case, "AC-1"). While such regularities are normal and to be expected, this one is a feature of this data set, not a requirement of OSCAL generally.
-- The `<title>` of the control captures the text of the control's title as given in display and navigation. Unlike `id` values, titles are not required to be unique, and indeed in this catalog, each family of controls is headed by a control entitled "Policy and Procedures". In an application, the control title can be adjusted for display in any way needed - for example, prepended with the name of the family as **Access Control - Policy and Procedures", or converted into all upper case.
+- The `<title>` of the control captures the text of the control's title as given in display and navigation. Unlike `id` values, titles are not required to be unique, and indeed in this catalog, each family of controls (or in OSCAL catalogs, `group`s with a `class` of `family`) is headed by a control entitled "Policy and Procedures". In an application, the control title can be adjusted for display in any way needed - for example, prepended with the name of the family as **Access Control - Policy and Procedures", or converted into all upper case.
 
 ## Parameters
 
-The control continues with `<param>` elements. This is the first place where the electronic file definitively and explicitly captures information about the source data that is left implicit in in its published form (that is, as a document). In this case, the information captured regards options for control configuration (by users of the catalog) in detail, which will subsequently be reflected in the control text as rendered, but which are called out here as first-class objects so that OSCAL consumers can handle them in appropriate ways.
+The control continues with `<param>` elements. This is the first place where the structured form captures information about the source data that is left implicit in in its published form (that is, as a document). In this case, the information captured regards options for control configuration (by users of the catalog) in detail, which will subsequently be reflected in the control text as rendered, but which are called out here as first-class objects so that OSCAL consumers can handle them in appropriate ways.
 
 A *parameter* in OSCAL (tagged as `<param>` in XML or, in JSON or YAML, as an object member of a `parameters` array) corresponds to and supports the construct called *controlled parameter value* (CPV) in NIST SP 800-53A, while not being limited exclusively to that use.
 
@@ -108,7 +108,7 @@ A *parameter* in OSCAL (tagged as `<param>` in XML or, in JSON or YAML, as an ob
 [... params ac-01_odp.04 through ac-01_odp.08 ...]
 {{< / highlight >}}
 
-`<param>` elements define parameter values for the control that permit (and may require) setting in context. Typically, a catalog will expose parameters where profiling applications are expected either to define appropriate values themselves (that is, values appropriate to a baseline) or to permit setting at higher levels of implementation (such as system plans implementing a baseline). These values are available for reference (and even display) in the language of the control as presented, using corresponding `<insert>` elements, as described in detail below.
+`<param>` elements define parameter values for the control that permit (and may require) setting in context. Typically, a catalog will expose parameters where applications that implement profile resolution are expected either to define appropriate values themselves (that is, values appropriate to a baseline) or to permit setting at higher levels of implementation (such as system plans implementing a baseline). These values are available for reference (and even display) in the language of the control as presented, using corresponding `<insert>` elements, as described in detail below.
 
 OSCAL parameters are worth special coverage as a topic in themselves. As shown here, they can and commonly do have internal structure and properties of their own, sometimes specific to a particular application, requirement or use case. For example, in this data set, `<prop>` elements are given to provide extra information -- `alt-identifier` values -- helping assure parameters' correspondences across versions of SP 800-53. Consumers of OSCAL content can determine where and how such information is useful to them, and ignore or discard it when it constitutes noise.
 
@@ -150,7 +150,7 @@ On links, `href` follows the semantics of `href` as defined for HTML/HTTP by W3C
 
 No rule in OSCAL prevents a link from targeting any resource or target whatsoever; but catalog authors can be expected to manage their links according to regimes appropriate to their catalogs. In the case of SP 800-53, internal links (from one control to another) are represented as __Related Controls__ in the formatted source. These are easily indicated via `href` fragment identifiers - `#ia-1` referencing the entity with `id` value `ia-1`, which of course happens to be control IA-1.
 
-*References*, however (in contrast to related controls),  function as bibliographic citations, using a code for each reference given in the PDF source. In the OSCAL, the bibliographic items are collected and encoded in the catalog back matter (`<back-matter>`) as `<resource>` elements.
+*References*, however (in contrast to related controls), function as bibliographic citations, using a code for each reference given in the PDF source. In the OSCAL, the bibliographic items are collected and encoded in the catalog back matter (`<back-matter>`) as `<resource>` elements.
 
 So for example, in its back matter the catalog XML for SP 800-53 may have something like:
 
