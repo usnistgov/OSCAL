@@ -1055,7 +1055,7 @@
          <assembly ref="link" max-occurs="unbounded">
             <group-as name="links" in-json="ARRAY"/>
          </assembly>
-         <field ref="risk-status" as-type="token" min-occurs="1">
+         <field ref="risk-status" min-occurs="1">
             <use-name>status</use-name>
          </field>
          <assembly ref="origin" max-occurs="unbounded">
