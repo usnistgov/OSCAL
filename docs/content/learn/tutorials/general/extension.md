@@ -98,13 +98,19 @@ Each property item can have the following keys:
 
 Now that the syntax of a property is more clear, let's discuss how the property's *namespace*, *name*, *value*, and *class* are used to extend OSCAL.
 
+#### Context
+
 As we mentioned earlier, a property is a *namespaced name* and *value* pair, which appears on many of the key fields within an OSCAL model. The OSCAL field on which the property is declared is considered the property's *context*. A property's context establishes the subject of the property; the thing the property is about.
+
+#### Namespace
 
 A property's *namespace* defines the value space of possible names for a property. Each namespace is represented by a Uniform Resource Identifier (URI), which is defined by [RFC 3986](https://datatracker.ietf.org/doc/html/rfc3986). Namespaces allow the same property name to be used for different purposes or to have different meanings for each namespace it is defined in.
 
 The default namespace for an OSCAL property is `http://csrc.nist.gov/ns/oscal`, which is used as the namespace when no namespace is provided.
 
 A namespace is managed by a given organization or individual. Using a namespace, different organizations can assign a unique semantic meaning to the use of a property name within their namespace; thus, the different meaning of two properties with the same name can be easily determined by identifying the associated namespaces. This allows different organizations to assign names within their own namespace, without coordinating with other organizations, avoiding naming conflicts. This provides a low effort means to ensure that naming clashes are avoided.
+
+#### Name
 
 The *name* of a property defines the semantic meaning or topical nature of the value. The topic a name relates to is often associated with the property's *context*.
 
@@ -118,9 +124,13 @@ OSCAL content authors need to determine whether to use a pre-defined property na
   
 New pre-defined names will be added to OSCAL over time on an as-needed basis. To suggest or request the addition of a new pre-defined name in the OSCAL namespace, please [open an issue](https://github.com/usnistgov/OSCAL/issues/new?assignees=&labels=User+Story%2Cenhancement&template=feature_request.yaml) in the OSCAL GitHub repository.
 
+#### Value
+
 A property's *name* defines a data set, while the property's *value* provides the specific member of that set. A data sets for a given name may contain a set of identifier reference values, an enumerated set of values, or allow for open ended values. Part of defining a new namespaced property name is defining the value space of the allowed values.
 
 Many of the OSCAL pre-defined property names have a constrained set of values. The allowed values may be further constrained by the context data field. Which values are allowed depends on the context of use, name and namespace of the property. The constraints for these properties are defined within the [OSCAL Metaschemas](https://github.com/usnistgov/OSCAL/tree/main/src/metaschema). Where applicable, a given Metaschema defines the `allowed-values` that can be used for a property name in a given context of use. The properties that are extensible are defined with an `@allow-other=yes` attribute in Metaschema.  
+
+#### Class
 
 The *class* of a property is a textual label that provides a sub-type or characterization of the property's name and/or value. This can be used to further distinguish or discriminate between the semantics of multiple properties in a given context with the same name and namespace.
 
@@ -131,7 +141,7 @@ This sections covers the basic use of a property leveraging all of its attribute
 The OSCAL SSP [metadata](/concepts/layer/overview/#metadata-overview) allows for zero or more location data items, each allowing for properties to be defined. In this example, an organization needs to document their primary and alternate data center locations. This is achieved by specifying properties for each location.
 
 {{% callout note %}}
-The [Metadata Tutorial](/learn/tutorials/metadata/) provides in-depth description and walk-through examples of creating OSCAL metadata.
+The [Metadata Tutorial](../metadata/) provides in-depth description and walk-through examples of creating OSCAL metadata.
 {{% /callout %}}
 
 {{< tabs XML JSON YAML >}}
@@ -246,7 +256,7 @@ The following example demonstrates how to extend a SSP metadata location "type" 
 Currently, the only OSCAL pre-defined value for the SSP metadata location property is "data-center".  However, because this particular property allows other values to be defined (with an `@allow-other=yes` attribute in Metaschema), additional "type" values can be specified as shown below.
 
 {{% callout note %}}
-Again, for a detailed overview of how to implement metadata, please refer to the [Metadata Tutorial](/learn/tutorials/metadata/).
+Again, for a detailed overview of how to implement metadata, please refer to the [Metadata Tutorial](../metadata/).
 {{% /callout %}}
 
 {{< tabs XML JSON YAML >}}

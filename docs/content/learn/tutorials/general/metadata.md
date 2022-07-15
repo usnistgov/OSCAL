@@ -544,7 +544,7 @@ Like most OSCAL objects, the metadata section provides for the ability to define
 In OSCAL properties are namespaced, key/value pairs that allow additional information to provided that annotate the containing object. In the metadata section, properties are used to provide document-level annotations. Common use cases for properties includes providing keywords, tags, and classifications.
 
 {{% callout note %}}
-More information on the use of properties is provided in the [Props and Links tutorial](/learn/tutorials/extensions/#props).
+More information on the use of properties is provided in the [Props and Links tutorial](../extension/#props).
 {{% /callout %}}
 
 For this example, we will create a property named `marking` in the default OSCAL namespace `http://csrc.nist.gov/ns/oscal` to mark an OSCAL document with a [Traffic Light Protocol (TLP)](https://www.first.org/tlp/) classification of `red`. 
@@ -597,7 +597,7 @@ This completes defining the marking property.
 Alongside properties, links are another way of providing additional information in the metadata section that is not covered by the other fields. Links are a means to establish a relationship between an OSCAL object and another OSCAL objects or web resource.
 
 {{% callout note %}}
-The [Props and Links tutorial](/learn/tutorials/extensions/#links) provides comprehensive examples of how to implement a `<link>`.
+The [Props and Links tutorial](../extension/#links) provides comprehensive examples of how to implement a `<link>`.
 {{% /callout %}}
 
 The following example illustrates how to establish a `latest-version` link to the latest version of the OSCAL document. This link will reference a static URL whose contents can be updated to reflect the latest revision of the document, which makes it easy for consumers to quickly and easily update their content.
