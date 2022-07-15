@@ -11,7 +11,7 @@ RUN apt-get install -y \
     apt-utils build-essential git jq libxml2-utils maven nodejs npm python3-pip unzip wget && \
     apt-get clean
 
-FROM golang:1.18.3-bullseye as oscal-hugo-build
+FROM golang:1.18.4-bullseye as oscal-hugo-build
 
 RUN mkdir -p /go/src/github.com/usnistgov/OSCAL/build
 
