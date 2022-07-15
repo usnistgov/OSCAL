@@ -34,7 +34,7 @@
         <dependency>
             <groupId>net.sf.saxon</groupId>
             <artifactId>Saxon-HE</artifactId>
-            <version>10.6</version>
+            <version>10.8</version>
         </dependency>
         <dependency>
             <groupId>com.xmlcalabash</groupId>
