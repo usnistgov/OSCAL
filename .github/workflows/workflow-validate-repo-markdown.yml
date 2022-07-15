@@ -29,7 +29,7 @@ jobs:
     # Setup runtime environment
     # -------------------------
     - name: Set up NodeJS
-      uses: actions/setup-node@5b949b50c3461bbcd5a540b150c368278160234a
+      uses: actions/setup-node@2fddd8803e2f5c9604345a0b591c3020ee971a93
       with:
         node-version-file: 'build/.nvmrc'
         cache: 'npm'
