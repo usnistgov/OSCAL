@@ -14,8 +14,7 @@
       <namespace>http://csrc.nist.gov/ns/oscal/1.0</namespace>
       <json-base-uri>http://csrc.nist.gov/ns/oscal</json-base-uri>
       <remarks>
-            <p>The OSCAL Control Catalog format can be used to describe a collection of security controls and related control enhancements, along with contextualizing documentation and metadata. The root of the Control Catalog format is <code>catalog</code>.
-            </p>
+            <p>The OSCAL Control Catalog format can be used to describe a collection of security controls and related control enhancements, along with contextualizing documentation and metadata. The root of the Control Catalog format is <code>catalog</code>.</p>
       </remarks>
       <import href="oscal_control-common_metaschema.xml"/>
       <import href="oscal_metadata_metaschema.xml"/>
@@ -26,7 +25,12 @@
             <root-name>catalog</root-name>
             <define-flag name="uuid" as-type="uuid" required="yes">
                   <formal-name>Catalog Universally Unique Identifier</formal-name>
-                  <description>A globally unique identifier with cross-instance scope for this catalog instance. This UUID should be changed when this document is revised.</description>
+                  <description>Provides a globally unique means to identify a given catalog instance.</description>
+                  <prop name="value-type" value="identifier"/>
+                  <prop name="identifier-type" value="machine-oriented"/>
+                  <prop name="identifier-uniqueness" value="global"/>
+                  <prop name="identifier-scope" value="cross-instance"/>
+                  <prop name="identifier-persistence" value="change-on-write"/>
             </define-flag>
 
             <model>
@@ -90,7 +94,12 @@
                   <!-- This is an id because the idenfier is assigned and managed externally by humans. -->
                   <formal-name>Group Identifier</formal-name>
                   <!-- Identifier Declaration -->
-                  <description>A <a href="/concepts/identifier-use/#human-oriented">human-oriented</a>, <a href="/concepts/identifier-use/#locally-unique">locally unique</a> identifier with <a href="/concepts/identifier-use/#cross-instance">cross-instance</a> scope that can be used to reference this defined group elsewhere in <a href="/concepts/identifier-use/#catalog-identifiers">in this and other OSCAL instances (e.g., profiles)</a>. This id should be assigned <a href="/concepts/identifier-use/#consistency">per-subject</a>, which means it should be consistently used to identify the same group across revisions of the document.</description>
+                  <description>Identifies the group for the purpose of cross-linking within the defining instance or other instances that reference the catalog.</description>
+                  <prop name="value-type" value="identifier"/>
+                  <prop name="identifier-type" value="human-oriented"/>
+                  <prop name="identifier-uniqueness" value="instance"/>
+                  <prop name="identifier-scope" value="cross-instance"/>
+                  <prop name="identifier-persistence" value="per-subject"/>
             </define-flag>
             <define-flag name="class" as-type="token">
                   <formal-name>Group Class</formal-name>
