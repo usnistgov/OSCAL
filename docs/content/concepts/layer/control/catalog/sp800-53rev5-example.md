@@ -1,6 +1,6 @@
 ---
 title: SP800-53 Control Example
-heading: "NIST SP 800-53 rev 5 Annotated Example"
+heading: "Annotated Example - NIST SP 800-53 Revision 5 Control"
 weight: 30
 sidenav:
   title: SP800-53 Control Example
