@@ -20,7 +20,7 @@ This tutorial describes the mechanisms for extending basic OSCAL models. Before 
 
 OSCAL is designed with the goal of simultaneously supporting multiple cybersecurity frameworks. The core OSCAL syntax achieves this goal by focusing on properties that are universal or have applicability across various frameworks.
 
-In creating OSCAL, NIST anticipated the importance of extensibility for unique requirements when organizations implement their security and privacy risk management programs. It was important to establish extension mechanisms from the onset, to allow OSCAL content creators to tailor OSCAL for their specific (organizational) needs.
+In creating OSCAL, NIST anticipated the importance of extensibility for unique requirements when organizations implement their security and privacy risk management programs. It was important to establish extension mechanisms from the onset, to allow OSCAL content creators to adapt OSCAL for their specific (organizational) needs.
 
 Thus, OSCAL is designed with extensibility as one of its key principles, allowing the OSCAL models to be extended wherever there are prop or link properties in the core OSCAL models. This tutorial describes both extension mechanisms, explaining when to utilize them and illustrating their proper use.
 
@@ -46,10 +46,10 @@ A property in OSCAL XML is represented using the `<prop>` element, which can be 
 
 Below is a description of each attribute of the `<prop>` element.
 
-- `@name` (Required) - The required *name* of the OSCAL property that must be a [token](/reference/datatypes/#token) data type.
-- `@ns` (Optional) - The optional *namespace* of the OSCAL property that must be a [universal resource identifier (URI)](/reference/datatypes/#uri) formatted according to [RFC 3986](https://datatracker.ietf.org/doc/html/rfc3986).
-- `@value` (Required) - The required *value* of the OSCAL property that must be a [string](/reference/datatypes/#string) value.
-- `@class` (Optional) - The optional *class* of the OSCAL property that must be a [string](/reference/datatypes/#string) value, which can be used to further qualify the property's value.
+- `@name` (Required) - The *name* of the OSCAL property that must be a [token](/reference/datatypes/#token) data type.
+- `@ns` (Optional) - The *namespace* of the OSCAL property that must be a [universal resource identifier (URI)](/reference/datatypes/#uri) formatted according to [RFC 3986](https://datatracker.ietf.org/doc/html/rfc3986).
+- `@value` (Required) - The *value* of the OSCAL property that must be a [string](/reference/datatypes/#string) value.
+- `@class` (Optional) - The *class* of the OSCAL property that must be a [string](/reference/datatypes/#string) value, which can be used to further qualify the property's value.
 {{% /tab %}}
 {{% tab %}}
 {{< highlight json "linenos=table" >}}
@@ -69,10 +69,10 @@ A listing of properties in OSCAL JSON are represented using the `props` object a
 
 Each *property* object can have the following JSON property names.
 
-- `name` (Required) - The required *name* of the OSCAL property that must be a [token](/reference/datatypes/#token) data type.
-- `ns` (Optional) - The optional *namespace* of the OSCAL property that must be a [universal resource identifier (URI)](/reference/datatypes/#uri) formatted according to [RFC 3986](https://datatracker.ietf.org/doc/html/rfc3986).
-- `value` (Required) - The required *value* of the OSCAL property that must be a [string](/reference/datatypes/#string) value.
-- `class` (Optional) - The optional *class* of the OSCAL property  that must be a [string](/reference/datatypes/#string) value, which can be used to further qualify the value that must be a [string](/reference/datatypes/#string) value, which can be used to further qualify the property's value.
+- `name` (Required) - The *name* of the OSCAL property that must be a [token](/reference/datatypes/#token) data type.
+- `ns` (Optional) - The *namespace* of the OSCAL property that must be a [universal resource identifier (URI)](/reference/datatypes/#uri) formatted according to [RFC 3986](https://datatracker.ietf.org/doc/html/rfc3986).
+- `value` (Required) - The *value* of the OSCAL property that must be a [string](/reference/datatypes/#string) value.
+- `class` (Optional) - The *class* of the OSCAL property  that must be a [string](/reference/datatypes/#string) value, which can be used to further qualify the value that must be a [string](/reference/datatypes/#string) value, which can be used to further qualify the property's value.
 {{% /tab %}}
 {{% tab %}}
 {{< highlight yaml "linenos=table" >}}
@@ -87,10 +87,10 @@ A `props` list in YAML contains individual OSCAL property items.
 
 Each property item can have the following keys:
 
-- `name` (Required) - The required *name* of the OSCAL property that must be a [token](/reference/datatypes/#token) data type.
-- `ns` (Optional) - The optional *namespace* of the OSCAL property that must be a [universal resource identifier (URI)](/reference/datatypes/#uri) formatted according to [RFC 3986](https://datatracker.ietf.org/doc/html/rfc3986).
-- `value` (Required) - The required *value* of the OSCAL property that must be a [string](/reference/datatypes/#string) value.
-- `class` (Optional) - The optional *class* of the OSCAL property  that must be a [string](/reference/datatypes/#string) value, which can be used to further qualify the value that must be a [string](/reference/datatypes/#string) value, which can be used to further qualify the property's value.
+- `name` (Required) - The *name* of the OSCAL property that must be a [token](/reference/datatypes/#token) data type.
+- `ns` (Optional) - The *namespace* of the OSCAL property that must be a [universal resource identifier (URI)](/reference/datatypes/#uri) formatted according to [RFC 3986](https://datatracker.ietf.org/doc/html/rfc3986).
+- `value` (Required) - The *value* of the OSCAL property that must be a [string](/reference/datatypes/#string) value.
+- `class` (Optional) - The *class* of the OSCAL property  that must be a [string](/reference/datatypes/#string) value, which can be used to further qualify the value that must be a [string](/reference/datatypes/#string) value, which can be used to further qualify the property's value.
 {{% /tab %}}
 {{% /tabs %}}
 
@@ -100,7 +100,7 @@ Now that the syntax of a property is more clear, let's discuss how the property'
 
 #### Context
 
-As we mentioned earlier, a property is a *namespaced name* and *value* pair, which appears on many of the key fields within an OSCAL model. The OSCAL field on which the property is declared is considered the property's *context*. A property's context establishes the subject of the property; the thing the property is about.
+As we mentioned earlier, a property is a *namespaced name* and *value* pair, which appears on many of the key fields within an OSCAL model. The OSCAL field on which the property is declared is considered the property's *context*. A property's context establishes the subject of the property: the thing the property is about.
 
 #### Namespace
 
@@ -108,7 +108,7 @@ A property's *namespace* defines the value space of possible names for a propert
 
 The default namespace for an OSCAL property is `http://csrc.nist.gov/ns/oscal`, which is used as the namespace when no namespace is provided.
 
-A namespace is managed by a given organization or individual. Using a namespace, different organizations can assign a unique semantic meaning to the use of a property name within their namespace; thus, the different meaning of two properties with the same name can be easily determined by identifying the associated namespaces. This allows different organizations to assign names within their own namespace, without coordinating with other organizations, avoiding naming conflicts. This provides a low effort means to ensure that naming clashes are avoided.
+A namespace is managed by a given organization or individual. Using a namespace, different organizations can assign a unique semantic meaning to the use of a property name within their namespace; thus, the different meaning of two properties with the same name can be easily determined by identifying the associated namespaces. This allows different organizations to assign names within their own namespace, without coordinating with other organizations, avoiding naming conflicts. This provides a low-effort means to ensure that naming clashes are avoided.
 
 #### Name
 
@@ -116,17 +116,17 @@ The *name* of a property defines the semantic meaning or topical nature of the v
 
 For example, the property name "marking" might identify some information sensitivity classification scheme for the context data field, while the property name "label" might refer to a textual label for the context data field.
 
-In OSCAL, many data fields have pre-defined names defined in the OSCAL namespace `http://csrc.nist.gov/ns/oscal`, which is the default value for the namespace when no namespace is provided. These pre-defined property names provided for standardized naming of properties, which can be recognized by multiple consumers to have a consistent meaning. The namespace can be omitted when using an OSCAL define pre-defined property name.
+In OSCAL, many data fields have pre-defined names defined in the OSCAL namespace `http://csrc.nist.gov/ns/oscal`, which is the default value for the namespace when no namespace is provided. These pre-defined property names provided for standardized naming of properties, which can be recognized by multiple consumers to have a consistent meaning. The namespace can be omitted when using a property name pre-defined by OSCAL.
 
 For example, the OSCAL SSP model's system characteristics data field has a pre-defined property name `data-center` \[[XML](/reference/latest/system-security-plan/xml-reference/#/system-security-plan/system-characteristics/prop)\] \[[JSON/YAML](/reference/latest/system-security-plan/json-reference/#/system-security-plan/system-characteristics/props)\].
 
 OSCAL content authors need to determine whether to use a pre-defined property name in a given situation or to define their own name in their own namespace. To view existing property names, review the model index \[[XML](/reference/latest/complete/xml-index/#/prop)\] \[[JSON/YAML](/reference/latest/complete/json-index/#/props)\].
   
-New pre-defined names will be added to OSCAL over time on an as-needed basis. To suggest or request the addition of a new pre-defined name in the OSCAL namespace, please [open an issue](https://github.com/usnistgov/OSCAL/issues/new?assignees=&labels=User+Story%2Cenhancement&template=feature_request.yaml) in the OSCAL GitHub repository.
+New pre-defined names will be added to OSCAL over time as needed. To suggest or request the addition of a new pre-defined name in the OSCAL namespace, please [open an issue](https://github.com/usnistgov/OSCAL/issues/new?assignees=&labels=User+Story%2Cenhancement&template=feature_request.yaml) in the OSCAL GitHub repository.
 
 #### Value
 
-A property's *name* defines a data set, while the property's *value* provides the specific member of that set. A data sets for a given name may contain a set of identifier reference values, an enumerated set of values, or allow for open ended values. Part of defining a new namespaced property name is defining the value space of the allowed values.
+A property's *name* defines a value space, while the property's *value* provides a specific member of that value space. The value space for a given name may contain a set of identifier reference values, an enumerated set of values, or allow for open-ended values. Defining the rules for allowed values in a value space is a critical part of defining a new property name within a given namespace.
 
 Many of the OSCAL pre-defined property names have a constrained set of values. The allowed values may be further constrained by the context data field. Which values are allowed depends on the context of use, name and namespace of the property. The constraints for these properties are defined within the [OSCAL Metaschemas](https://github.com/usnistgov/OSCAL/tree/main/src/metaschema). Where applicable, a given Metaschema defines the `allowed-values` that can be used for a property name in a given context of use. The properties that are extensible are defined with an `@allow-other=yes` attribute in Metaschema.  
 
@@ -483,7 +483,7 @@ Links in OSCAL provide a means to reference an arbitrary resource, which allows 
 
 A link can:
 
-1. Reference (external) information that is not represented in OSCAL format.  This could include references to (cybersecurity) laws and regulations, references to organizational standards and guides, references to software bill of materials (SBOM), and more.
+1. Reference (external) information that is not represented in OSCAL format.  This could include references to (cybersecurity) laws and regulations, references to organizational standards and guides, references to a software bill of materials (SBOM), and more.
 2. Reference objects within the current OSCAL document.
 
 Organizations can limit duplication of content, reduce the size of their OSCAL files, and maintain important content relationships by using links.
@@ -502,9 +502,9 @@ Here is a nominal example of a link in OSCAL.
 
 Below is description of `<link>` attributes and sub-element:
 - `@href` (Required) - The `@href` attribute, or "hypertext reference", is a required, [resolvable URL reference](/reference/datatypes/#uri-reference) to a resource. This can either be an internet resource or a fragment that points to a back matter resource in the same document.
-- `@rel` (Optional) - The optional `@rel` attribute is a [token](/reference/datatypes/#token) datatype that can be used to describe the link&#39;s purpose.  Some OSCAL links may have pre-defined `@rel` values (e.g., reference), but generally, OSCAL content authors can specify any token value for a `@rel` attribute.
-- `@media-type` (Optional) - The optional `@media-type` attribute can be used to provide the consumer of the OSCAL content a hint about the type of data referenced in the link. Supported media types are defined by the [Internet Assigned Numbers Authority (IANA)](https://www.iana.org/assignments/media-types/media-types.xhtml).  The `@media-type` attribute accepts [string](/reference/datatypes/#string) values.
-- `<text>` (Optional) - Finally, the optional `<text>` sub-element can be used for as a textual label for the `<link>` and accepts [markup-line](/reference/datatypes/#markup-line) datatype. The subsequent sections demonstrate the proper use of links.
+- `@rel` (Optional) - The `@rel` attribute is a [token](/reference/datatypes/#token) datatype that can be used to describe the link&#39;s purpose.  Some OSCAL links may have pre-defined `@rel` values (e.g., reference), but generally, OSCAL content authors can specify any token value for a `@rel` attribute.
+- `@media-type` (Optional) - The `@media-type` attribute can be used to provide the consumer of the OSCAL content a hint about the type of data referenced in the link. Supported media types are defined by the [Internet Assigned Numbers Authority (IANA)](https://www.iana.org/assignments/media-types/media-types.xhtml).  The `@media-type` attribute accepts [string](/reference/datatypes/#string) values.
+- `<text>` (Optional) - Finally, the `<text>` sub-element can be used for as a textual label for the `<link>` and accepts [markup-line](/reference/datatypes/#markup-line) datatype. The subsequent sections demonstrate the proper use of links.
 {{% /tab %}}
 {{% tab %}}
 {{< highlight json "linenos=table" >}}
@@ -523,9 +523,9 @@ The `links` object array represents a collection of links.
 
 Below is description of properties of a link object:
 - `href` (Required) - The `href` property, or "hypertext reference", is a required, [resolvable URL reference](/reference/datatypes/#uri-reference) to a resource. This can either be an internet resource or a fragment that points to a back matter resource in the same document.
-- `rel` (Optional) - The optional `rel` property is a [token](/reference/datatypes/#token) datatype that can be used to describe the link&#39;s purpose.  Some OSCAL link properties may have pre-defined `rel` values (e.g., reference), but generally, OSCAL content authors can specify any token value for a `rel` property.  
-- `media-type` (Optional) - The optional `media-type` property can be used to provide the consumer of the OSCAL content a hint about the type of data referenced in the link. Supported media types are as defined by the [Internet Assigned Numbers Authority (IANA)](https://www.iana.org/assignments/media-types/media-types.xhtml).  The `media-type` property accepts [string](/reference/datatypes/#string) values.
-- `text` (Optional) - Finally, the optional `text` property can be used for as a textual label for the `link` and accepts [markup-line](/reference/datatypes/#markup-line) datatype. The subsequent sections demonstrate the proper use of links.
+- `rel` (Optional) - The `rel` property is a [token](/reference/datatypes/#token) datatype that can be used to describe the link&#39;s purpose.  Some OSCAL link properties may have pre-defined `rel` values (e.g., reference), but generally, OSCAL content authors can specify any token value for a `rel` property.  
+- `media-type` (Optional) - The `media-type` property can be used to provide the consumer of the OSCAL content a hint about the type of data referenced in the link. Supported media types are as defined by the [Internet Assigned Numbers Authority (IANA)](https://www.iana.org/assignments/media-types/media-types.xhtml).  The `media-type` property accepts [string](/reference/datatypes/#string) values.
+- `text` (Optional) - Finally, the `text` property can be used for as a textual label for the `link` and accepts [markup-line](/reference/datatypes/#markup-line) datatype. The subsequent sections demonstrate the proper use of links.
 {{% /tab %}}
 {{% tab %}}
 {{< highlight yaml "linenos=table" >}}
@@ -540,13 +540,13 @@ The `links` list contains individual link items.
 
 Below is description of `links` key-values:
 - `href` (Required) - The `href` key, or "hypertext reference", is a required, [resolvable URL reference](/reference/datatypes/#uri-reference) to a resource. This can either be an internet resource or a fragment that points to a back matter resource in the same document.
-- `rel` (Optional) - The optional `rel` key is a [token](/reference/datatypes/#token) datatype that can be used to describe the link&#39;s purpose.  Some OSCAL link properties may have pre-defined `rel` values (e.g., reference), but generally, OSCAL content authors can specify any token value for a `rel` key.
-- `media-type` (Optional) - The optional `media-type` key can be used to provide the consumer of the OSCAL content a hint about the type of data referenced in the link. Supported media types are as defined by the [Internet Assigned Numbers Authority (IANA)](https://www.iana.org/assignments/media-types/media-types.xhtml).  The `media-type` key accepts [string](/reference/datatypes/#string) values.
-- `text` (Optional) - Finally, the optional `text` key can be used for as a textual label for the `link` and accepts [markup-line](/reference/datatypes/#markup-line) datatype. The subsequent sections demonstrate the proper use of links.
+- `rel` (Optional) - The `rel` key is a [token](/reference/datatypes/#token) datatype that can be used to describe the link&#39;s purpose.  Some OSCAL link properties may have pre-defined `rel` values (e.g., reference), but generally, OSCAL content authors can specify any token value for a `rel` key.
+- `media-type` (Optional) - The `media-type` key can be used to provide the consumer of the OSCAL content a hint about the type of data referenced in the link. Supported media types are as defined by the [Internet Assigned Numbers Authority (IANA)](https://www.iana.org/assignments/media-types/media-types.xhtml).  The `media-type` key accepts [string](/reference/datatypes/#string) values.
+- `text` (Optional) - Finally, the `text` key can be used for as a textual label for the `link` and accepts [markup-line](/reference/datatypes/#markup-line) datatype. The subsequent sections demonstrate the proper use of links.
 {{% /tab %}}
 {{% /tabs %}}
 
-### Link to internet URL
+### Link to Internet URL
 
 Organizations may need their documentation (e.g., SSP) to reference external resources, such applicable laws and regulations (e.g., HSPD-12) and other organizational items (e.g., official agency logos).  This first example illustrates how an OSCAL SSP might make use of a link to an internet URL to reference a government policy and an agency logo.
 
@@ -639,6 +639,8 @@ In this case, the `links` object array on line 9 provides a reference to Homelan
 Lines 11-13 demonstrate the use of link to point to the organization's official logo. An absolute URL was used to point to the location of the referenced content, however, it should be noted that the `href` property also permits the use of relative URL paths.  If the referenced resource is located is on the same host, then a relative URL path could be used. The `rel` property was set to "logo" to indicate the link is to a logo image. The `media-type` property was included to let any rendering tools know that the logo content is a Portable Network Graphics (PNG) image type.  The optional `text` property was excluded for brevity of this example.
 {{% /tab %}}
 {{% /tabs %}}
+
+As a final note, providing link text is not required. Link text should only be provided as a way to include additional context and can be omitted when a link is self-explanatory.
 
 ### Referencing Back-Matter
 

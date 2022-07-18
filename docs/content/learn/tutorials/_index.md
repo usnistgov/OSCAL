@@ -3,7 +3,7 @@ title: Walkthrough Tutorials
 suppresstopiclist: true
 ---
 
-The following tutorials provide step-by-step walkthroughs explaining how to create OSCAL content of various types.
+The following tutorials provide step-by-step walk-throughs explaining how to create OSCAL content of various types.
 
 ## [General Topics](general/)
 
