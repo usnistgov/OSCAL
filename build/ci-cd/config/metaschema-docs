@@ -7,3 +7,4 @@ src/metaschema/oscal_component_metaschema.xml|model-reference|component-definiti
 src/metaschema/oscal_assessment-plan_metaschema.xml|model-reference|assessment-plan|Assessment Plan|assessment|assessment-plan
 src/metaschema/oscal_assessment-results_metaschema.xml|model-reference|assessment-results|Assessment Results|assessment|assessment-results
 src/metaschema/oscal_poam_metaschema.xml|model-reference|plan-of-action-and-milestones|Plan of Action and Milestones|assessment|poam
+src/metaschema/oscal_mapping_metaschema.xml|model-reference|mapping|Control Mapping|control|mapping
