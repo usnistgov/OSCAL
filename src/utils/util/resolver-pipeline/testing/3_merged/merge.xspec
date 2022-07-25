@@ -494,6 +494,127 @@
                 </back-matter>
             </x:expect>
         </x:scenario>
+        <x:scenario label="Testing keep instructions: Three resources with same uuid, where">
+            <x:scenario label="1st has keep instruction and others do not">
+                <x:context>
+                    <catalog>
+                        <selection uuid="xyz-tiny_catalog">
+                            <control id="x1"><title>Control X1</title></control>
+                            <back-matter>
+                                <resource uuid="0050231f-4fd0-43d6-8fa0-431367cd83e2">
+                                    <title>Ref BBB, first</title>
+                                    <prop name="keep" value="always"/>
+                                </resource>
+                            </back-matter>
+                        </selection>
+                        <selection uuid="xyz-tiny_catalog2">
+                            <control id="x2"><title>Control X2</title></control>
+                            <back-matter>
+                                <resource uuid="0050231f-4fd0-43d6-8fa0-431367cd83e2">
+                                    <title>Ref BBB, second</title>
+                                </resource>
+                            </back-matter>
+                        </selection>
+                        <back-matter>
+                            <resource uuid="0050231f-4fd0-43d6-8fa0-431367cd83e2">
+                                <title>Ref BBB, third</title>
+                            </resource>
+                        </back-matter>
+                    </catalog>
+                </x:context>
+                <x:call template="combine-back-matter"/>
+                <x:expect label="back-matter with 1st and 3rd items. 2nd item was superseded by 3rd item.">
+                    <back-matter>
+                        <resource uuid="0050231f-4fd0-43d6-8fa0-431367cd83e2">
+                            <title>Ref BBB, first</title>
+                            <prop name="keep" value="always"/>
+                        </resource>
+                        <resource uuid="0050231f-4fd0-43d6-8fa0-431367cd83e2">
+                            <title>Ref BBB, third</title>
+                        </resource>
+                    </back-matter>
+                </x:expect>
+            </x:scenario>
+            <x:scenario label="1st and 3rd have keep instruction and 2nd does not">
+                <x:context>
+                    <catalog>
+                        <selection uuid="xyz-tiny_catalog">
+                            <control id="x1"><title>Control X1</title></control>
+                            <back-matter>
+                                <resource uuid="0050231f-4fd0-43d6-8fa0-431367cd83e2">
+                                    <title>Ref BBB, first</title>
+                                    <prop name="keep" value="always"/>
+                                </resource>
+                            </back-matter>
+                        </selection>
+                        <selection uuid="xyz-tiny_catalog2">
+                            <control id="x2"><title>Control X2</title></control>
+                            <back-matter>
+                                <resource uuid="0050231f-4fd0-43d6-8fa0-431367cd83e2">
+                                    <title>Ref BBB, second</title>
+                                </resource>
+                            </back-matter>
+                        </selection>
+                        <back-matter>
+                            <resource uuid="0050231f-4fd0-43d6-8fa0-431367cd83e2">
+                                <title>Ref BBB, third</title>
+                                <prop name="keep" value="always"/>
+                            </resource>
+                        </back-matter>
+                    </catalog>
+                </x:context>
+                <x:call template="combine-back-matter"/>
+                <x:expect label="back-matter with last item only.">
+                    <back-matter>
+                        <resource uuid="0050231f-4fd0-43d6-8fa0-431367cd83e2">
+                            <title>Ref BBB, third</title>
+                            <prop name="keep" value="always"/>
+                        </resource>
+                    </back-matter>
+                </x:expect>
+            </x:scenario>
+            <x:scenario label="1st and 2nd have keep instruction and 3rd does not">
+                <x:context>
+                    <catalog>
+                        <selection uuid="xyz-tiny_catalog">
+                            <control id="x1"><title>Control X1</title></control>
+                            <back-matter>
+                                <resource uuid="0050231f-4fd0-43d6-8fa0-431367cd83e2">
+                                    <title>Ref BBB, first</title>
+                                    <prop name="keep" value="always"/>
+                                </resource>
+                            </back-matter>
+                        </selection>
+                        <selection uuid="xyz-tiny_catalog2">
+                            <control id="x2"><title>Control X2</title></control>
+                            <back-matter>
+                                <resource uuid="0050231f-4fd0-43d6-8fa0-431367cd83e2">
+                                    <title>Ref BBB, second</title>
+                                    <prop name="keep" value="always"/>
+                                </resource>
+                            </back-matter>
+                        </selection>
+                        <back-matter>
+                            <resource uuid="0050231f-4fd0-43d6-8fa0-431367cd83e2">
+                                <title>Ref BBB, third</title>
+                            </resource>
+                        </back-matter>
+                    </catalog>
+                </x:context>
+                <x:call template="combine-back-matter"/>
+                <x:expect label="back-matter with 2nd and 3rd items. 1st item was superseded by 2nd item.">
+                    <back-matter>
+                        <resource uuid="0050231f-4fd0-43d6-8fa0-431367cd83e2">
+                            <title>Ref BBB, second</title>
+                            <prop name="keep" value="always"/>
+                        </resource>
+                        <resource uuid="0050231f-4fd0-43d6-8fa0-431367cd83e2">
+                            <title>Ref BBB, third</title>
+                        </resource>
+                    </back-matter>
+                </x:expect>
+            </x:scenario>
+        </x:scenario>
         <x:scenario label="No back matter in input context">
             <x:context>
                 <catalog>
