@@ -303,7 +303,7 @@ profile:
         
         
         
-        <p><req level="must" id="req-internal-error">If the object fetched cannot be found or is not a valid OSCAL object, the tool MUST cease processing and provide an error.</req></p>
+        <p><req level="must" id="req-internal-error">If the object fetched cannot be found, or does not parse as an OSCAL catalog or profile, the tool MUST cease processing and provide an error.</req></p>
         <tagging whose="source_profile">
           <![CDATA[
 profile:
@@ -703,7 +703,7 @@ profile:
     combine:
       method: keep ]]>
         </tagging>
-        <p>Under this directive, colliding controls will result in invalid results, as they will both appear in the results with the same ID. Accordingly, this setting may be useful in ensuring integrity of references to controls as given in the profile: if any included control is called only once, clashing controls will not be produced and validation will succeed.</p>
+        <p>Under this directive, colliding controls will result in invalid results, as they will both appear in the results with the same ID. Accordingly, this setting may be useful in ensuring integrity of references to controls as given in the profile: if any included control is called only once, clashing controls will not be produced, disambiguating the result and avoiding validation errors.</p>
         <tagging whose="source_profile">
           <![CDATA[
 profile:
