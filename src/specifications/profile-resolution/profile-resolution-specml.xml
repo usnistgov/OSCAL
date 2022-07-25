@@ -1325,27 +1325,28 @@ control:
         <ul>
           <li>
             <p>
-              <req level="must" id="req-modify-alter-remove-by-id">The remove directive criteria <src>by-id</src> MUST match an object if and only if its value is identical to the <src>id</src> value of that object.</req> Because
-              <src>id</src> values are unique, this criteria will result in the remove directive removing only a single object.
+              <req level="must" id="req-modify-alter-remove-by-id">The remove directive criterion <src>by-id</src> MUST match an object if and only if its value is identical to the <src>id</src> value of that object.</req> Because
+              <src>id</src> values are unique, this criterion has the effect of removing a single object.
             </p>
           </li>
           <li>
             <p>
-              <req level="must" id="req-modify-alter-remove-name-ref">The remove directive criteria <src>name-ref</src> MUST match an object if and only if its value is identical to the value of that object's <src>name</src> child.</req>
+              <req level="must" id="req-modify-alter-remove-name-ref">The remove directive criterion <src>by-name</src> MUST match an object if and only if its value is identical to the value of that object's <src>name</src> child.</req>
             </p>
           </li>
           <li>
-            <p><req level="must" id="req-modify-alter-remove-ns-ref">The remove directive criteria <src>ns-ref</src> MUST match an object if and only if its value is identical to the value of that object's <src>ns</src> child.</req></p>
+            <p><req level="must" id="req-modify-alter-remove-ns-ref">The remove directive criterion <src>by-ns</src> MUST match an object if and only if its value is identical to the value of that object's <src>ns</src> child. This directive
+              is intended to be used in combination with <src>by-name</src> but may also be used to match all objects assigned to a given namespace (<src>ns</src>). Note that <src>by-ns="http://csrc.nist.gov/ns/oscal"</src> will address objects assigned to that namespace by default (where no explicit <src>ns</src> is given).</req></p>
           </li>
           <li>
-            <p><req level="must" id="req-modify-alter-remove-class-ref">The remove directive criteria <src>class-ref</src> MUST match an object if and only if its value is identical to the value of that object's <src>class</src> child.</req></p>
+            <p><req level="must" id="req-modify-alter-remove-class-ref">The remove directive criterion <src>by-class</src> MUST match an object if and only if its value is identical to the value of that object's <src>class</src> child.</req></p>
           </li>
           <li>
-            <p><req level="must" id="req-modify-alter-remove-item-name">The remove directive criteria <src>item-name</src> MUST match an object if and only if its value is identical to the value of that object's serialized name.</req> For example,
-              <code>remove:item-name:prop</code> has the effect of removing all
-              <src>prop</src>objects from inside the control.
+            <p><req level="must" id="req-modify-alter-remove-item-name">The remove directive criterion <src>by-item-name</src> MUST match an object if and only if its value is identical to the value of that object's serialized name.</req> For example,
+              <code>remove.by-item-name: "prop"</code> has the effect of removing all
+              <src>prop</src> objects from inside the control.
             </p>
-            <p><req level="must" id="req-modify-alter-remove-item-name-array">In serialization formats that use arrays of objects in the OSCAL model, an object's name MUST be referenced as singular form of its containing parent array. </req> For example, in the JSON format, remove:item-name:link would remove all of the objects inside of the <src>links</src> array. </p>
+            <p><req level="must" id="req-modify-alter-remove-item-name-array">In serialization formats that represent objects as (unlabeled) members of arrays, an object's name MUST be referenced in its (implicit) singular form, not the name of its containing array.</req> For example, in the JSON format, <src>remove.item-name: "link"</src> would remove all members of the <src>links</src> array, along with the array itself (as being empty it would no longer be valid). </p>
           </li>
         </ul>
       </section>
