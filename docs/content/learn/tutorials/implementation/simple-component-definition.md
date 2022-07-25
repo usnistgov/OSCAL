@@ -1,10 +1,12 @@
 ---
 title: Creating a Component Definition
 description: A tutorial on creating an OSCAL component definition.
-weight: 6
+weight: 40
 suppresstopiclist: true
 toc:
   enabled: true
+alias:
+- /learn/tutorials/component-definition/
 ---
 
 This tutorial covers creating a basic OSCAL component definition. Before reading this tutorial you should:
@@ -57,9 +59,9 @@ The root of the OSCAL component definition model is [`<component-definition>`](/
 
 A `<component-definition>` contains the following elements:
 
-- `<metadata>` (required) - Provides document metadata for the component definition. This is covered in the [next section](/learn/tutorials/component-definition/#defining-the-component-definitions-metadata) to a limited extent. The metadata used here is similar to metadata for other OSCAL models, therefor is not described extensively in this tutorial.
+- `<metadata>` (required) - Provides document metadata for the component definition. This is covered in the [next section](#defining-the-component-definitions-metadata) to a limited extent. The metadata used here is similar to metadata for other OSCAL models, therefor is not described extensively in this tutorial.
 - `<import-component-definition>` (optional) – Identifies a collection of external component definitions from other resources from which related information is referenced within this component definition. Use of `<import-component-definition>` is not covered in this tutorial.
-- `<component>` (optional) - Defines a given component in the component definition. Zero or more `<component>` elements may be used. Use of this element is [discussed later](/learn/tutorials/component-definition/#defining-the-mongodb-component) in this tutorial.
+- `<component>` (optional) - Defines a given component in the component definition. Zero or more `<component>` elements may be used. Use of this element is [discussed later](#defining-the-mongodb-component) in this tutorial.
 - `<capability>` (optional) - Defines a given capability in the component definition. Zero or more `<capability>` elements may be used. Capabilities are not covered in this tutorial.
 - `<back-matter>` (optional) – Contains resources which are referenced within the component definition. Use of `<back-matter>` is not covered in this tutorial.
 {{% /tab %}}
@@ -81,9 +83,9 @@ The root of the OSCAL component definition model is [`component-definition`](/re
 
 A `component-definition` contains the following properties:
 
-- `metadata` (required) - Provides document metadata for the component definition. This is covered in the [next section](/learn/tutorials/component-definition/#defining-the-component-definitions-metadata) to a limited extent. The metadata used here is similar to metadata for other OSCAL models, therefor is not described extensively in this tutorial.
+- `metadata` (required) - Provides document metadata for the component definition. This is covered in the [next section](#defining-the-component-definitions-metadata) to a limited extent. The metadata used here is similar to metadata for other OSCAL models, therefor is not described extensively in this tutorial.
 - `import-component-definitions` (optional) – Identifies a collection of external component definitions from other resources from which related information is referenced within this component definition.  Use of `import-component-definitions` is not covered in this tutorial.
-- `components` (optional) - Groups `component` objects which each define a given component in the component definition. One or more `component` objects may be provided. Use of this property is [discussed later](/learn/tutorials/component-definition/#defining-the-mongodb-component) in this tutorial.
+- `components` (optional) - Groups `component` objects which each define a given component in the component definition. One or more `component` objects may be provided. Use of this property is [discussed later](#defining-the-mongodb-component) in this tutorial.
 - `capabilities` (optional) - Defines a group of given capabilities in the component definition. One or more `capability` objects may be used. Capabilities are not covered in this tutorial.
 - `back-matter` (optional) – Contains references which are referenced within the component definition. Use of `back-matter` is not covered in this tutorial.
 {{% /tab %}}
@@ -104,9 +106,9 @@ The root of the OSCAL component definition model is [`component-definition`](/re
 
 A `component-definition` contains the following keys:
 
-- `metadata` (required) - Provides document metadata for the component definition. This is covered in the [next section](/learn/tutorials/component-definition/#defining-the-component-definitions-metadata) to a limited extent. The metadata used here is similar to metadata for other OSCAL models, therefor is not described extensively in this tutorial.
+- `metadata` (required) - Provides document metadata for the component definition. This is covered in the [next section](#defining-the-component-definitions-metadata) to a limited extent. The metadata used here is similar to metadata for other OSCAL models, therefor is not described extensively in this tutorial.
 - `import-component-definitions` (optional) – Identifies a collection of external component definitions from other resources from which related information is referenced within this component definition.  Use of `import-component-definitions` is not covered in this tutorial.
-- `components` (optional) - Groups `component` items which define given component(s) in the component definition. One or more `component` items may be used. Use of this key is [discussed later](/learn/tutorials/component-definition/#defining-the-mongodb-component) in this tutorial.
+- `components` (optional) - Groups `component` items which define given component(s) in the component definition. One or more `component` items may be used. Use of this key is [discussed later](#defining-the-mongodb-component) in this tutorial.
 - `capabilities` (optional) - Defines a group of given capabilities in the component definition. One or more `capability` items may be used. Capabilities are not covered in this tutorial.
 - `back-matter` (optional) – Contains references which are referenced within the component definition. Use of `back-matter` is not covered in this tutorial.
 {{% /tab %}}

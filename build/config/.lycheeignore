@@ -1,4 +1,6 @@
 https://defense.gov/
+https://federal-agency.gov/.*
+http://federal-agency.gov/ns/oscal
 http://fedramp.gov/ns/oscal
 https://fedramp.gov/ns/oscal
 http://www.first.org/cvss/v2.0
@@ -10,3 +12,4 @@ http://csrc.nist.gov/oscal
 https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/xxxx
 https://cdn.telos.com/wp-content/uploads/2021/06/22150746/Xacta-360-EULA-US.pdf
 https://search.usa.gov/search
+https://example.com/.*

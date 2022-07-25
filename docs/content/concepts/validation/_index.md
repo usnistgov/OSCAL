@@ -4,6 +4,8 @@ weight: 50
 description: Explanation of well-formedness, validation, and how they relate to OSCAL
 aliases: []
 suppresstopiclist: true
+aliases:
+- /concepts/layer/validation/
 ---
 
 ## Who is this document for?
