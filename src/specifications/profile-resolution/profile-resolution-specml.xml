@@ -1346,7 +1346,7 @@ control:
               <code>remove.by-item-name: "prop"</code> has the effect of removing all
               <src>prop</src> objects from inside the control.
             </p>
-            <p><req level="must" id="req-modify-alter-remove-item-name-array">In serialization formats that represent objects as (unlabelled) members of arrays, an object's name MUST be referenced in its (implicit) singular form, not the name of its containing array.</req> For example, in the JSON format, <src>remove.item-name: "link"</src> would remove all members of the <src>links</src> array, along with the array itself (as being empty it would no longer be valid). </p>
+            <p><req level="must" id="req-modify-alter-remove-item-name-array">In serialization formats that represent objects as (unlabeled) members of arrays, an object's name MUST be referenced in its (implicit) singular form, not the name of its containing array.</req> For example, in the JSON format, <src>remove.item-name: "link"</src> would remove all members of the <src>links</src> array, along with the array itself (as being empty it would no longer be valid). </p>
           </li>
         </ul>
       </section>
