@@ -1,171 +1,572 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <x:description xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+    xmlns:o="http://csrc.nist.gov/ns/oscal/1.0"
+    xmlns:opr="http://csrc.nist.gov/ns/oscal/profile-resolution"
+    xmlns:ov="http://csrc.nist.gov/ns/oscal/xspec/variable"
     xmlns:x="http://www.jenitennison.com/xslt/xspec"
     stylesheet="../../oscal-profile-resolve-finish.xsl">
-    <x:scenario label="Base">
-        <x:context>
-            <catalog id="abc"/>
-        </x:context>
-        <x:expect label="profile becomes catalog">
-            <catalog id="abc"/>
-        </x:expect>
+
+    <x:scenario label="Tests for match=* | @* template in all modes">
+        <x:variable name="ov:arbitrary-element" as="element(arbitrary-element)">
+            <arbitrary-element xmlns="" arbitrary-attribute="val">text<child/></arbitrary-element>
+        </x:variable>
+        <x:scenario label="Element">
+            <x:context select="$ov:arbitrary-element"/>
+            <x:expect label="Copy" select="$ov:arbitrary-element"/>
+        </x:scenario>
+        <x:scenario label="Attribute">
+            <x:context select="$ov:arbitrary-element/@arbitrary-attribute"/>
+            <x:expect label="Copy"
+                test="$x:result instance of attribute(arbitrary-attribute) and $x:result/string()='val'"/>
+        </x:scenario>
     </x:scenario>
-    <x:scenario label="Loose parameter, unreferenced">
-        <x:context>
-            <catalog id="worksheet">
-                <metadata>
-                    <title>Catalog</title>
-                </metadata>
-                <param id="loose">
-                    <label>Loose parameter</label>
-                </param>
-                <control id="control_A">
-                    <title>Control A</title>
-                </control>
-            </catalog>
-        </x:context>
-        <x:expect label="orphan parameter is dropped">
-            <catalog id="worksheet">
-                <metadata>
-                    <title>Catalog</title>
-                </metadata>
-                <control id="control_A">
-                    <title>Control A</title>
-                </control>
-            </catalog>
-        </x:expect>
+
+    <x:scenario label="Tests for match=catalog template">
+        <x:scenario label="Base">
+            <x:context>
+                <catalog id="abc"/>
+            </x:context>
+            <x:expect label="profile becomes catalog">
+                <catalog id="abc"/>
+            </x:expect>
+        </x:scenario>
+        <x:scenario label="Catalog with incorrectly sequenced children">
+            <x:context>
+                <catalog id="worksheet">
+                    <back-matter>
+                        <opr:foo/>
+                    </back-matter>
+                    <group>
+                        <title>Group 1</title>
+                    </group>
+                    <control id="control_A">
+                        <title>Control A</title>
+                        <part>
+                            <p><insert type="param" id-ref="loose"/> goes here.</p>
+                        </part>
+                    </control>
+                    <param id="loose">
+                        <label>Loose parameter</label>
+                    </param>
+                    <opr:foo/>
+                    <metadata>
+                        <title>Catalog</title>
+                    </metadata>
+                </catalog>                
+            </x:context>
+            <x:expect label="Catalog with correct sequence of children">
+                <catalog id="worksheet">
+                    <metadata>...</metadata>
+                    <opr:foo/>
+                    <param id="loose">...</param>
+                    <control id="control_A">...</control>
+                    <group>...</group>
+                    <back-matter>...</back-matter>
+                </catalog>
+            </x:expect>
+        </x:scenario>
+        <x:scenario label="Catalog with multiple metadata and back-matter children">
+            <x:context>
+                <catalog id="worksheet">
+                    <metadata>
+                        <title>Catalog X</title>
+                        <version>1.2</version>
+                    </metadata>
+                    <metadata>
+                        <title>Catalog Y</title>
+                        <version>1.3</version>
+                    </metadata>
+                    <back-matter>
+                        <opr:foo/>
+                    </back-matter>
+                    <back-matter>
+                        <opr:bar/>
+                    </back-matter>
+                </catalog>                
+            </x:context>
+            <x:expect label="Catalog with last metadata child and last back-matter child">
+                <catalog id="worksheet">
+                    <metadata>
+                        <title>Catalog Y</title>
+                        <version>1.3</version>
+                    </metadata>
+                    <back-matter>
+                        <opr:bar/>
+                    </back-matter>
+                </catalog>                                
+            </x:expect>
+        </x:scenario>
+        <x:scenario label="Catalog with loose parameter as child, ">
+            <x:scenario label="unreferenced">
+                <x:context>
+                    <catalog id="worksheet">
+                        <metadata>
+                            <title>Catalog</title>
+                        </metadata>
+                        <param id="loose">
+                            <label>Loose parameter</label>
+                        </param>
+                        <control id="control_A">
+                            <title>Control A</title>
+                        </control>
+                    </catalog>
+                </x:context>
+                <x:expect label="orphan parameter is dropped">
+                    <catalog id="worksheet">
+                        <metadata>
+                            <title>Catalog</title>
+                        </metadata>
+                        <control id="control_A">
+                            <title>Control A</title>
+                        </control>
+                    </catalog>
+                </x:expect>
+            </x:scenario>
+            <x:scenario label="referenced">
+                <x:context>
+                    <catalog id="worksheet">
+                        <metadata>
+                            <title>Catalog</title>
+                        </metadata>
+                        <param id="loose">
+                            <label>Loose parameter</label>
+                        </param>
+                        <control id="control_A">
+                            <title>Control A</title>
+                            <part>
+                                <p><insert type="param" id-ref="loose"/> goes here.</p>
+                            </part>
+                        </control>
+                    </catalog>
+                </x:context>
+                <x:expect label="referenced loose parameter is kept">
+                    <catalog id="worksheet">
+                        <metadata>
+                            <title>Catalog</title>
+                        </metadata>
+                        <param id="loose">
+                            <label>Loose parameter</label>
+                        </param>
+                        <control id="control_A">
+                            <title>Control A</title>
+                            <part>
+                                <p><insert type="param" id-ref="loose"/> goes here.</p>
+                            </part>
+                        </control>
+                    </catalog>
+                </x:expect>
+            </x:scenario>
+        </x:scenario>
     </x:scenario>
-    <x:scenario label="Loose parameter, referenced">
-        <x:context>
-            <catalog id="worksheet">
+
+    <x:scenario label="Tests for match=metadata template">
+        <x:scenario label="Metadata contents out of sequence">
+            <x:context>
                 <metadata>
-                    <title>Catalog</title>
+                    <remarks/>
+                    <responsible-party/>
+                    <party/>
+                    <location/>
+                    <role/>
+                    <link/>
+                    <prop/>
+                    <document-id/>
+                    <revisions/>
+                    <oscal-version/>
+                    <version/>
+                    <last-modified/>
+                    <published/>
+                    <title/>
                 </metadata>
-                <param id="loose">
-                    <label>Loose parameter</label>
-                </param>
-                <control id="control_A">
-                    <title>Control A</title>
-                    <part>
-                        <p><insert type="param" id-ref="loose"/> goes here.</p></part>
-                </control>
-            </catalog>
-        </x:context>
-        <x:expect label="referenced loose parameter is kept">
-            <catalog id="worksheet">
+            </x:context>
+            <x:expect label="Metadata with all children in correct sequence">
                 <metadata>
-                    <title>Catalog</title>
+                    <title/>
+                    <published/>
+                    <last-modified/>
+                    <version/>
+                    <oscal-version/>
+                    <revisions/>
+                    <document-id/>
+                    <prop/>
+                    <link/>
+                    <role/>
+                    <location/>
+                    <party/>
+                    <responsible-party/>
+                    <remarks/>
+                </metadata>                
+            </x:expect>
+        </x:scenario>
+        <x:scenario label="Metadata with multiple elements of same type">
+            <x:context>
+                <metadata>
+                    <title>Title 1</title>
+                    <title>Title 2</title>
+                    <published>2019-11-13T12:41:07.061-05:00</published>
+                    <last-modified>2019-11-13T12:41:07.061-05:00</last-modified>
+                    <published>2021-11-13T12:41:07.061-05:00</published>
+                    <last-modified>2021-11-13T12:41:07.061-05:00</last-modified>
+                    <version>1.0</version>
+                    <oscal-version>1.0.1</oscal-version>
+                    <version>1.1</version>
+                    <oscal-version>1.0.2</oscal-version>
+                    <revisions>
+                        <revision>
+                            <version>1.0</version>
+                        </revision>
+                    </revisions>
+                    <revisions>
+                        <revision>
+                            <version>1.1</version>
+                        </revision>
+                    </revisions>
+                    <remarks><p>Remark 1</p></remarks>
+                    <remarks><p>Remark 2</p></remarks>
                 </metadata>
-                <param id="loose">
-                    <label>Loose parameter</label>
-                </param>
-                <control id="control_A">
-                    <title>Control A</title>
-                    <part>
-                        <p><insert type="param" id-ref="loose"/> goes here.</p>
-                    </part>
-                </control>
-            </catalog>
-        </x:expect>
+            </x:context>
+            <x:expect label="Metadata with last instance of each child type that cannot occur multiple times">
+                <metadata>
+                    <title>Title 2</title>
+                    <published>2021-11-13T12:41:07.061-05:00</published>
+                    <last-modified>2021-11-13T12:41:07.061-05:00</last-modified>
+                    <version>1.1</version>
+                    <oscal-version>1.0.2</oscal-version>
+                    <revisions>
+                        <revision>
+                            <version>1.1</version>
+                        </revision>
+                    </revisions>
+                    <remarks><p>Remark 2</p></remarks>
+                </metadata>
+            </x:expect>
+        </x:scenario>
     </x:scenario>
-    <x:scenario label="Control contents re-ordered">
-        <x:context>
-            <catalog id="worksheet">
-                <metadata>
-                    <title>Catalog</title>
-                </metadata>
-                <control id="control_A">
-                    <title>Control A</title>
-                    <link href="file.xml"><text>A link</text></link>
-                    <prop name="somewhat">property</prop>
-                </control>
-            </catalog>
-        </x:context>
-        <x:expect label="in valid order">
-            <catalog id="worksheet">
-                <metadata>
-                    <title>Catalog</title>
-                </metadata>
-                <control id="control_A">
-                    <title>Control A</title>
-                    <prop name="somewhat">property</prop>
-                    <link href="file.xml"><text>A link</text></link>
-                </control>
-            </catalog>
-        </x:expect>
+
+    <x:scenario label="Tests for match=group template">
+        <x:scenario label="Group contents out of sequence, ">
+            <x:scenario label="link vs. prop">
+                <x:context select="//o:group">
+                    <catalog id="worksheet">
+                        <metadata>
+                            <title>Catalog</title>
+                        </metadata>
+                        <group id="group_A">
+                            <title>Group A</title>
+                            <link href="file.xml"><text>A link</text></link>
+                            <prop name="somewhat">property</prop>
+                        </group>
+                    </catalog>
+                </x:context>
+                <x:expect label="in valid order: link after prop">
+                    <group id="group_A">
+                        <title>Group A</title>
+                        <prop name="somewhat">property</prop>
+                        <link href="file.xml"><text>A link</text></link>
+                    </group>
+                </x:expect>
+            </x:scenario>
+            <x:scenario label="prop vs. link and part">
+                <x:context select="//o:group">
+                    <catalog id="abc">
+                        <group id="a123">
+                            <title>Group A</title>
+                            <link href="linkme.pdf"><text>Link Me</text></link>
+                            <prop name="rating" value="AAA"/>
+                            <part name="statement"><p>Statement</p></part>
+                            <prop name="due_date" value="2020-02-20"/>
+                        </group>
+                    </catalog>
+                </x:context>
+                <x:expect label="Link and part after prop">
+                    <group id="a123">
+                        <title>Group A</title>
+                        <prop name="rating" value="AAA"/>
+                        <prop name="due_date" value="2020-02-20"></prop>
+                        <link href="linkme.pdf"><text>Link Me</text></link>
+                        <part name="statement"><p>Statement</p></part>
+                    </group>
+                </x:expect>
+            </x:scenario>
+            <x:scenario label="All children out of sequence">
+                <x:context>
+                    <group id="a123">
+                        <group id="b456"/>
+                        <control id="a123.1"/>
+                        <part name="statement">
+                            <p><insert type="param" id-ref="param-X"/> goes here.</p>
+                        </part>
+                        <link href="linkme.pdf"><text>Link Me</text></link>
+                        <prop name="rating" value="AAA"/>
+                        <param id="param-X"><label>X</label></param>
+                        <title>Group A</title>
+                    </group>
+                </x:context>
+                <x:expect label="Group with all children in correct sequence">
+                    <group id="a123">
+                        <title>Group A</title>
+                        <param id="param-X">...</param>
+                        <prop name="rating" value="AAA"/>
+                        <link href="linkme.pdf">...</link>
+                        <part name="statement">...</part>
+                        <control id="a123.1"/>
+                        <group id="b456"/>
+                    </group>                    
+                </x:expect>
+            </x:scenario>
+        </x:scenario>
+        <x:scenario label="Group with multiple titles">
+            <x:context>
+                <group id="a123">
+                    <title>Original title</title>
+                    <title>Revised title</title>
+                </group>
+            </x:context>
+            <x:expect label="Group with last title">
+                <group id="a123">
+                    <title>Revised title</title>
+                </group>
+            </x:expect>
+        </x:scenario>
     </x:scenario>
-    <x:scenario label="Superfluous back matter discarded">
-        <x:context>
-            <catalog id="worksheet">
-                <metadata>
-                    <title>Catalog</title>
-                </metadata>
-                <back-matter>
-                    <resource uuid="cit1">citation</resource>
-                </back-matter>
-            </catalog>
-        </x:context>
-        <x:expect label="discarding empty back-matter">
-            <catalog id="worksheet">
-                <metadata>
-                    <title>Catalog</title>
-                </metadata>
-            </catalog>
-        </x:expect>
-    </x:scenario>
-    <x:scenario label="Non-superfluous back matter retained">
-        <x:context>
-            <catalog id="worksheet">
-                <metadata>
-                    <title>Catalog</title>
-                </metadata>
-                <control>
-                    <title>Control A</title>
-                    <link href="#citA"><text>link to good citation</text></link>
-                </control>
-                <back-matter>
-                    <resource uuid="cit1">unclaimed citation</resource>
-                    <resource uuid="citA">good citation</resource>
-                </back-matter>
-            </catalog>
-        </x:context>
-        <x:expect label="keeping back-matter with a citation">
-            <catalog id="worksheet">
-                <metadata>
-                    <title>Catalog</title>
-                </metadata>
-                <control>
-                    <title>Control A</title>
-                    <link href="#citA"><text>link to good citation</text></link>
-                </control>
-                <back-matter>
-                    <resource uuid="citA">good citation</resource>
-                </back-matter>
-            </catalog>
-        </x:expect>
-    </x:scenario>
-    <x:scenario label="Restoring order of control contents">
-        <x:context>
-            <catalog id="abc">
+
+    <x:scenario label="Tests for match=control template">
+        <x:scenario label="Control contents out of sequence, ">
+            <x:scenario label="link vs. prop">
+                <x:context select="//o:control">
+                    <catalog id="worksheet">
+                        <metadata>
+                            <title>Catalog</title>
+                        </metadata>
+                        <control id="control_A">
+                            <title>Control A</title>
+                            <link href="file.xml"><text>A link</text></link>
+                            <prop name="somewhat">property</prop>
+                        </control>
+                    </catalog>
+                </x:context>
+                <x:expect label="in valid order: link after prop">
+                    <control id="control_A">
+                        <title>Control A</title>
+                        <prop name="somewhat">property</prop>
+                        <link href="file.xml"><text>A link</text></link>
+                    </control>
+                </x:expect>
+            </x:scenario>
+            <x:scenario label="prop vs. link and part">
+                <x:context select="//o:control">
+                    <catalog id="abc">
+                        <control id="a123">
+                            <title>Control A</title>
+                            <link href="linkme.pdf"><text>Link Me</text></link>
+                            <prop name="rating" value="AAA"/>
+                            <part name="statement"><p>Statement</p></part>
+                            <prop name="due_date" value="2020-02-20"/>
+                        </control>
+                    </catalog>
+                </x:context>
+                <x:expect label="Link and part after prop">
+                    <control id="a123">
+                        <title>Control A</title>
+                        <prop name="rating" value="AAA"/>
+                        <prop name="due_date" value="2020-02-20"></prop>
+                        <link href="linkme.pdf"><text>Link Me</text></link>
+                        <part name="statement"><p>Statement</p></part>
+                    </control>
+                </x:expect>
+            </x:scenario>
+            <x:scenario label="All children out of sequence">
+                <x:context>
+                    <control id="a123">
+                        <control id="a123.1"/>
+                        <part name="statement"><p>Statement</p></part>
+                        <link href="linkme.pdf"><text>Link Me</text></link>
+                        <prop name="rating" value="AAA"/>
+                        <param id="param-X"><label>X</label></param>
+                        <title>Control A</title>
+                    </control>
+                </x:context>
+                <x:expect label="Control with all children in correct sequence">
+                    <control id="a123">
+                        <title>Control A</title>
+                        <param id="param-X"><label>X</label></param>
+                        <prop name="rating" value="AAA"/>
+                        <link href="linkme.pdf"><text>Link Me</text></link>
+                        <part name="statement"><p>Statement</p></part>
+                        <control id="a123.1"/>
+                    </control>                    
+                </x:expect>
+            </x:scenario>
+        </x:scenario>
+        <x:scenario label="Control with multiple titles">
+            <x:context>
                 <control id="a123">
-                    <title>Control A</title>
-                    <link href="linkme.pdf"><text>Link Me</text></link>
-                    <prop name="rating" value="AAA"/>
-                    <part name="statement"><p>Statement</p></part>
-                    <prop name="due_date" value="2020-02-20"/>
+                    <title>Original title</title>
+                    <title>First revision added during modify phase</title>
+                    <title>Second revision added during modify phase</title>
                 </control>
-            </catalog>
-        </x:context>
-        <x:expect label="Link and part after prop">
-            <catalog id="abc">
+            </x:context>
+            <x:expect label="Control with last title">
                 <control id="a123">
-                    <title>Control A</title>
-                    <prop name="rating" value="AAA"/>
-                    <prop name="due_date" value="2020-02-20"></prop>
-                    <link href="linkme.pdf"><text>Link Me</text></link>
-                    <part name="statement"><p>Statement</p></part>
+                    <title>Second revision added during modify phase</title>
                 </control>
-            </catalog>
-        </x:expect>
+            </x:expect>
+        </x:scenario>
+    </x:scenario>
+
+    <x:scenario label="Tests for catalog/param[...] | group/param[...] template">
+        <!-- The catalog/param case is tested at the catalog level in
+            the scenario labeled "Catalog with loose parameter as child, " -->
+        <x:scenario label="Unreferenced loose parameter as child of group">
+            <x:context select="//o:param">
+                <catalog id="worksheet">
+                    <group id="group1">
+                        <title>Group 1</title>
+                        <param id="loose-in-group1">
+                            <label>Loose parameter</label>
+                        </param>
+                        <control id="control_A">
+                            <title>Control A</title>
+                        </control>
+                    </group>
+                </catalog>
+            </x:context>
+            <x:expect label="Nothing because selected param is not referenced"
+                select="()"/>
+        </x:scenario>
+        <x:scenario label="Unreferenced loose parameter, where XSLT key is nonempty">
+            <x:context select="(//o:param)[1]">
+                <catalog id="worksheet">
+                    <group id="group1">
+                        <title>Group 1</title>
+                        <param id="loose1-in-group1">
+                            <label>Unreferenced parameter being tested</label>
+                        </param>
+                        <param id="loose2-in-group1">
+                            <label>Referenced parameter</label>
+                        </param>
+                        <control id="control_A">
+                            <title>Control A</title>
+                            <part>
+                                <p><insert type="param" id-ref="loose2-in-group1"/> goes here.</p>
+                            </part>
+                        </control>
+                    </group>
+                </catalog>
+            </x:context>
+            <x:expect label="Nothing because selected param is not referenced"
+                select="()"/>
+        </x:scenario>
+        <x:scenario label="Unreferenced loose parameter with prop name=keep value=always">
+            <x:context select="//o:param">
+                <catalog id="worksheet">
+                    <group id="group1">
+                        <title>Group 1</title>
+                        <param id="loose-in-group1">
+                            <prop name="keep" value="always"/>
+                            <label>Loose parameter</label>
+                        </param>
+                        <control id="control_A">
+                            <title>Control A</title>
+                        </control>
+                    </group>
+                </catalog>
+            </x:context>
+            <x:expect label="Copy of param, even though it is unreferenced">
+                <param id="loose-in-group1">
+                    <prop name="keep" value="always"/>
+                    <label>Loose parameter</label>
+                </param>
+            </x:expect>
+        </x:scenario>
+    </x:scenario>
+
+    <x:scenario label="Tests for match=back-matter template">
+        <x:scenario label="Superfluous back matter discarded">
+            <x:context select="//o:back-matter">
+                <catalog id="worksheet">
+                    <metadata>
+                        <title>Catalog</title>
+                    </metadata>
+                    <back-matter>
+                        <resource uuid="cit1">citation</resource>
+                    </back-matter>
+                </catalog>
+            </x:context>
+            <x:expect label="Nothing" select="()"/>
+        </x:scenario>
+        <x:scenario label="Back matter retained ">
+            <!-- This scenario relies on the combination of
+                a) match=back-matter template
+                b) nonmatching predicate expressions in the match=resource[...] template
+                c) match="* | @*" template -->
+            <x:scenario label="for cited resource">
+                <x:context select="//o:back-matter">
+                    <catalog id="worksheet">
+                        <metadata>
+                            <title>Catalog</title>
+                        </metadata>
+                        <control>
+                            <title>Control A</title>
+                            <link href="#citA"><text>link to good citation</text></link>
+                        </control>
+                        <back-matter>
+                            <resource uuid="cit1">unclaimed citation</resource>
+                            <resource uuid="citA">good citation</resource>
+                        </back-matter>
+                    </catalog>
+                </x:context>
+                <x:expect label="back-matter containing the cited resource">
+                    <back-matter>
+                        <resource uuid="citA">good citation</resource>
+                    </back-matter>
+                </x:expect>                
+            </x:scenario>
+            <x:scenario label="for resource with prop name=keep value=always">
+                <x:context select="//o:back-matter">
+                    <catalog id="worksheet">
+                        <control>
+                            <title>Control A</title>
+                        </control>
+                        <back-matter>
+                            <resource uuid="cit1">
+                                <prop name="keep" value="always"/>
+                            </resource>
+                            <resource uuid="cit2">unclaimed citation</resource>
+                        </back-matter>
+                    </catalog>
+                </x:context>
+                <x:expect label="back-matter containing the resource with special prop">
+                    <back-matter>
+                        <resource uuid="cit1">
+                            <prop name="keep" value="always"/>
+                        </resource>
+                    </back-matter>
+                </x:expect>
+            </x:scenario>
+        </x:scenario>
+    </x:scenario>
+    
+    <x:scenario label="Tests for match=resource[...] template">
+        <!-- A simple case is tested at the back-matter level in
+            the scenario labeled "Superfluous back matter discarded" -->
+        <x:scenario label="resource without citation or special prop, where XSLT key is nonempty">
+            <x:context select="(//o:resource)[1]">
+                <catalog id="worksheet">
+                    <metadata>
+                        <title>Catalog</title>
+                    </metadata>
+                    <control>
+                        <title>Control A</title>
+                        <link href="#citA"><text>link to good citation</text></link>
+                    </control>
+                    <back-matter>
+                        <resource uuid="cit1"><prop name="keep" value=""/></resource>
+                        <resource uuid="citA">good citation</resource>
+                    </back-matter>
+                </catalog>
+            </x:context>
+            <x:expect label="Nothing" select="()"/>
+        </x:scenario>
     </x:scenario>
 </x:description>
