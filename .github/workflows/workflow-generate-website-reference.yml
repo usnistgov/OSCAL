@@ -114,6 +114,11 @@ jobs:
       run: |
         cd "${{ env.BRANCH_PATH }}/build"
         go install -tags "extended" github.com/gohugoio/hugo
+    - name: Setup Swap Space
+      # Since Hugo is requiring more memory
+      uses: pierotofy/set-swap-space@49819abfb41bd9b44fb781159c033dba90353a7c
+      with:
+        swap-size-gb: 10
     # Build Artifacts
     # ---------------
     - name: Generate Model Reference Documentation
