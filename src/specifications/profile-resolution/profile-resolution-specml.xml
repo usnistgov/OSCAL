@@ -1167,6 +1167,10 @@ intermediate:
             <src>prop</src> in the control when
             <src>position</src> is
             <code>starting</code>.</req>
+            <req level="must" id="req-modify-alter-add-one-title">If an add directive adds a new
+              <tgt>title</tgt> to a control or other object that the schema limits to one title,
+              the processor MUST keep only the last title of that object. That is, an added title
+              replaces, not supplements, an existing title.</req>
           </p>
 
           <mapping>
