@@ -92,13 +92,25 @@ jobs:
         mkdir -p "${JAVA_CLASSPATH}"
         mvn dependency:copy-dependencies -DoutputDirectory="${JAVA_CLASSPATH}"
     # Install Hugo
+    - name: Store Hugo Executable in Cache
+      uses: actions/cache@0865c47f36e68161719c5b124609996bb5c40129
+      with:
+        path: /home/runner/go/bin/hugo
+        key: ${{ runner.os }}-hugo-${{ hashFiles(format('{0}/build/go.sum', env.BRANCH_PATH)) }}
+      id: cache-hugo
+    - name: Add Cached Hugo Executable to PATH
+      if: steps.cache-hugo.outputs.cache-hit == 'true'
+      run: |
+        echo "/home/runner/go/bin" >> $GITHUB_PATH
     - name: Setup Golang
+      if: steps.cache-hugo.outputs.cache-hit != 'true'
       uses: actions/setup-go@b22fbbc2921299758641fab08929b4ac52b32923
       with:
         go-version-file: '${{ env.BRANCH_PATH }}/build/go.mod'
         cache: true
         cache-dependency-path: '${{ env.BRANCH_PATH }}/build/go.sum'
     - name: Install Hugo
+      if: steps.cache-hugo.outputs.cache-hit != 'true'
       run: |
         cd "${{ env.BRANCH_PATH }}/build"
         go install -tags "extended" github.com/gohugoio/hugo
