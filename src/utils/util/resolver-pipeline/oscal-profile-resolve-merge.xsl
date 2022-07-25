@@ -110,10 +110,18 @@
             <back-matter>
                 <!-- Using combination logic on back matter elements. -->
                 <xsl:for-each-group select="back-matter/* | selection/back-matter/*" group-by="(@opr:id,@uuid,generate-id())[1]">
+                    <xsl:variable name="last" as="element(resource)" select="current-group()[last()]"/>
+                    <!-- The final phase needs the ability to keep unreferenced
+                            back matter items based on keep instructions, so the merge
+                            phase must preserve these items. -->
+                    <xsl:variable name="keepers" as="element(resource)*"
+                        select="current-group()[child::prop[@name='keep' and @value='always']]"/>
                     <xsl:call-template name="combine-elements">
-                        <!-- Take last one in group because of spec
-                            requirement id="req-backmatter-dupe". -->
-                        <xsl:with-param name="who" select="current-group()[last()]" as="element(resource)"/>
+                        <!-- Take last one in group because of spec requirement
+                            id="req-backmatter-dupe". -->
+                        <!-- Take last item with keep instruction, because
+                            of spec requirement id="req-backmatter-keep". -->
+                        <xsl:with-param name="who" select="$keepers[last()] | $last" as="element(resource)+"/>
                     </xsl:call-template>
                 </xsl:for-each-group>
             </back-matter>
