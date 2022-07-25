@@ -86,6 +86,11 @@ jobs:
         cd "${BUILD_PATH}"
         mkdir -p "${JAVA_CLASSPATH}"
         mvn dependency:copy-dependencies -DoutputDirectory="${JAVA_CLASSPATH}"
+    - name: Setup Swap Space
+      # Since Hugo is requiring more memory
+      uses: pierotofy/set-swap-space@49819abfb41bd9b44fb781159c033dba90353a7c
+      with:
+        swap-size-gb: 10
     # Build Artifacts
     # ---------------
     - name: Generate specification documentation
